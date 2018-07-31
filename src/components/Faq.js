@@ -3,7 +3,9 @@ import Typography from '@material-ui/core/Typography';
 
 class Faq extends React.Component{
     render (){
-        return <Typography>Preguntas frecuentes </Typography>
+        return (
+            <Typography>Preguntas frecuentes</Typography>
+        );
     }
 }
 
