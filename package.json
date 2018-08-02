@@ -15,11 +15,8 @@
     "react-dom": "^16.4.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
-<<<<<<< Updated upstream
-    "request": "^2.87.0"
-=======
+    "request": "^2.87.0",
     "react-d3-core": "latest"
->>>>>>> Stashed changes
   },
   "scripts": {
     "start": "react-scripts start",
