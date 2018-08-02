@@ -2,6 +2,7 @@ import Home from '../components/Home';
 import About from '../components/About';
 import Faq from '../components/Faq';
 import Datos from '../components/datos/Datos';
+import Sancionados from '../components/Sacionados/Sancionados';
 
 const pdnRoutes = [
     {
@@ -19,6 +20,10 @@ const pdnRoutes = [
     {
         path: "/datos",
         component: Datos
+    },
+    {
+        path: "/sancionados",
+        component: Sancionados
     }
 ];
 

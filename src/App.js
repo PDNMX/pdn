@@ -5,6 +5,7 @@ import Home from './components/Home';
 import About from './components/About';
 import Faq from './components/Faq';
 import Datos from './components/datos/Datos';
+import Sancionados from './components/Sacionados/Sancionados';
 
 const p404 = () => {
     return (
@@ -22,6 +23,7 @@ class App extends React.Component {
                     <Route path='/about' component={About}/>
                     <Route path='/faq' component={Faq}/>
                     <Route path='/datos' component={Datos}/>
+                    <Route path='/sancionados' component={Sancionados}/>
                     {/* {pndRoutes.map((prop, key) => {
                     return <Route path={prop.path} component={prop.component} key={key} />;
                 })}
