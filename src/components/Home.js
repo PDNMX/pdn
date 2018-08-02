@@ -3,7 +3,8 @@ import './home.css';
 import imgHeader from "../assets/img/BannereDark_PDN.png";
 import Grid from '@material-ui/core/Grid';
 import Card from  '../components/SimpleCard'
-
+import Header from '../components/Header/Header';
+import Footer from "./Footer/Footer";
 
 const charts1 =[
     'Declaraciones 3x3',
@@ -19,7 +20,8 @@ class Home extends React.Component{
     render (){
         return (
             <div className="App">
-                <p className="App-intro">
+                <Header/>
+                <div className="App-intro">
                     <img style={{width: '100%', height: 'auto'}} src={imgHeader}/>
 
                     <Grid container spacing={16}>
@@ -43,7 +45,8 @@ class Home extends React.Component{
                         </Grid>
 
                     </Grid>
-                </p>
+                </div>
+                <Footer/>
             </div>
         );
     }

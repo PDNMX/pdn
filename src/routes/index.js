@@ -14,8 +14,7 @@ const pdnRoutes = [
     {
         path: "/faq",
         component: Faq
-    },
-    { redirect: true, path: "/", to: "/home"}
+    }
 ];
 
 export default pdnRoutes;
