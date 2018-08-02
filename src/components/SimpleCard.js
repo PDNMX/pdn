@@ -12,7 +12,7 @@ const styles = {
         marginTop: "30px",
         borderRadius: "6px",
         color: "rgba(0, 0, 0, 0.87)",
-        background: "#fff",
+        background: "#ffffff",
         width: "400px",
         boxShadow: "0 1px 4px 0 rgba(0, 0, 0, 0.14)",
         position: "relative",
@@ -37,22 +37,20 @@ const styles = {
     },
 };
 
-const test = (
-    <div id ='line-user'></div>
-
-);
 
 function SimpleCard(props) {
     const { classes } = props;
     const title = props.titleCard;
+    const contenido = props.content;
     return (
         <div>
+
             <Card className={classes.card}>
                 <CardContent id={'line-user'}>
                     <Typography variant="title">
                         {title}
                     </Typography>
-                    {test}
+                        {contenido}
                 </CardContent>
             </Card>
         </div>

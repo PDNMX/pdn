@@ -1,5 +1,6 @@
 .App {
-  text-align: center;
+  text-align : center;
+  padding-top : 38px;
 }
 
 .App-header {
@@ -17,17 +18,25 @@
 
 .App-intro {
   font-size: large;
-  background-color: darkgrey;
-  min-height: 1200px;
+  background-color: #e5e5e5;
+  min-height: 868px;
 }
 .footer{
   background-color: black;
-  height: 50px;
+  height: 70px;
 }
 .right{
   padding: 15px 0;
   margin:0;
   float: right!important
+}
+.left{
+  padding: 15px 0;
+  margin:0;
+  float: left!important
+}
+.textRight{
+  text-align: right;
 }
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }

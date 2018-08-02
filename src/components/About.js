@@ -4,7 +4,7 @@ import {withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
-
+import Header from "./Header/Header";
 const styles = theme => ({
     root: {
         flexGrow: 1,
@@ -25,6 +25,7 @@ class About extends React.Component {
 
         return (
             <div className={classes.root}>
+               <Header/>
                 <Grid container spacing={24}>
                     <Grid item xs={12}>
                         <Paper className = {classes.paper}>
