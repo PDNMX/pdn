@@ -1,22 +1,44 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import pndRoutes from './routes/index';
+import { Switch, Route, Redirect, Router } from "react-router-dom";
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import appStyle from './AppStyle';
+import { createBrowserHistory } from "history";
 
-import Home from './components/Home';
-import About from './components/About';
-import Faq from './components/Faq';
-import Datos from './components/datos/Datos';
 
-class App extends Component {
+const hist = createBrowserHistory();
+
+const switchRoutes = (
+    <Router history={hist}>
+        <Switch>
+            {pndRoutes.map((prop, key) => {
+                return <Route path={prop.path} component={prop.component} key={key} />;
+            })}
+        </Switch>
+    </Router>
+);
+
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        }
+
   render() {
     return (
-        <Router>
+        <div className={appStyle.mainPanel} ref="mainPanel">
             <div>
-                <Route exact path={'/'} component={Home}/>
-                <Route path={'/about'} component={About}/>
-                <Route path={'/faq'} component={Faq}/>
-                <Route path={'/datos'} component={Datos}/>
+                <Header
+                    routes={switchRoutes}
+                />
+                <div className={appStyle.content}>
+                    <div className={appStyle.container}>{switchRoutes}</div>
+                </div>
+                <Footer/>
+
             </div>
-        </Router>
+        </div>
+
     );
   }
 }

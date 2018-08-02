@@ -5,13 +5,21 @@
   "dependencies": {
     "@material-ui/core": "^1.4.2",
     "@material-ui/icons": "^2.0.0",
+    "chartist": "^0.11.0",
     "d3": "^5.5.0",
     "promise": "^8.0.1",
     "react": "^16.4.1",
+    "react-chartist": "^0.13.1",
+    "react-d3": "^0.4.0",
+    "react-d3-basic": "^1.6.11",
     "react-dom": "^16.4.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
+<<<<<<< Updated upstream
     "request": "^2.87.0"
+=======
+    "react-d3-core": "latest"
+>>>>>>> Stashed changes
   },
   "scripts": {
     "start": "react-scripts start",
