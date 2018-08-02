@@ -4,6 +4,8 @@ import {BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-do
 import Home from './components/Home';
 import About from './components/About';
 import Faq from './components/Faq';
+import Datos from './components/datos/Datos';
+
 const p404 = () => {
     return (
         <div style={{padding: '75px'}}>
@@ -12,25 +14,23 @@ const p404 = () => {
     )
 };
 class App extends React.Component {
-    constructor(props) {
-        super(props);
-        }
-
-  render() {
-    return (
-        <Router>
-            <Switch>
-                <Route exact path='/' component={Home}/>
-                <Route path='/about' component={About}/>
-                <Route path='/faq' component={Faq}/>
-               /* {pndRoutes.map((prop, key) => {
+    render() {
+        return (
+            <Router>
+                <Switch>
+                    <Route exact path='/' component={Home}/>
+                    <Route path='/about' component={About}/>
+                    <Route path='/faq' component={Faq}/>
+                    <Route path='/datos' component={Datos}/>
+                    {/* {pndRoutes.map((prop, key) => {
                     return <Route path={prop.path} component={prop.component} key={key} />;
                 })}
-                */
-                <Route render={p404}/>
-            </Switch>
-        </Router>
-       /* <div className={appStyle.mainPanel} ref="mainPanel">
+                */}
+                    <Route render={p404}/>
+                </Switch>
+            </Router>
+        );
+        {/* <div className={appStyle.mainPanel} ref="mainPanel">
             <div>
                 <Header
                     routes={switchRoutes}
@@ -42,9 +42,8 @@ class App extends React.Component {
 
             </div>
         </div>
-*/
-    );
-  }
+        */}
+    }
 }
 
 export default App;
