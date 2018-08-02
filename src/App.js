@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import pndRoutes from './routes/index';
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
 const p404 = () => {
     return (
         <div style={{padding: '75px'}}>
@@ -25,6 +26,7 @@ class App extends React.Component {
         </Router>
     );
   }
+
 }
 
 export default App;
