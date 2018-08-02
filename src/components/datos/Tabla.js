@@ -32,11 +32,11 @@ function getSorting(order, orderBy) {
 }
 
 const columnData = [
-    { id: 'name', numeric: false, disablePadding: true, label: 'Dessert (100g serving)' },
-    { id: 'calories', numeric: true, disablePadding: false, label: 'Calories' },
-    { id: 'fat', numeric: true, disablePadding: false, label: 'Fat (g)' },
-    { id: 'carbs', numeric: true, disablePadding: false, label: 'Carbs (g)' },
-    { id: 'protein', numeric: true, disablePadding: false, label: 'Protein (g)' },
+    { id: 'name', numeric: false, disablePadding: true, label: 'Dato' },
+    { id: 'calories', numeric: true, disablePadding: false, label: 'Sistema' },
+    { id: 'fat', numeric: true, disablePadding: false, label: 'Publicante' },
+    { id: 'carbs', numeric: true, disablePadding: false, label: 'Metadatos' },
+    { id: 'protein', numeric: true, disablePadding: false, label: 'Descargar' },
 ];
 
 class EnhancedTableHead extends React.Component {
@@ -327,6 +327,8 @@ class EnhancedTable extends React.Component {
                     }}
                     onChangePage={this.handleChangePage}
                     onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                    labelRowsPerPage = 'Registros por página'
+                    labelDisplayedRows = {({ from, to, count}) => { return `${from}-${to} de ${count}`; }}
                 />
             </Paper>
         );
