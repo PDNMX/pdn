@@ -2,7 +2,7 @@ import Home from '../components/Home';
 import About from '../components/About';
 import Faq from '../components/Faq';
 import Datos from '../components/datos/Datos';
-import Sancionados from '../components/Sacionados/Sancionados';
+import Sancionados from '../components/Sancionados/Sancionados';
 
 const pdnRoutes = [
     {
