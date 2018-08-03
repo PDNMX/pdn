@@ -7,6 +7,8 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import BusquedaSancionados from './BusquedaSancionados';
+import TablaContratistas from './TablaContratistas';
+import TablaServidores from './TablaServidores';
 
 function TabContainer({ children, dir }) {
     return (
@@ -65,11 +67,15 @@ class FullWidthTabs extends React.Component {
                     index={this.state.value}
                     onChangeIndex={this.handleChangeIndex}
                 >
-                    <TabContainer dir={theme.direction}>
+                    <TabContainer dir={theme.direction} style={{
+                        margin: 0
+                    }}>
                         <BusquedaSancionados/>
+                        <TablaServidores/>
                     </TabContainer>
                     <TabContainer dir={theme.direction}>
                         <BusquedaSancionados/>
+                        <TablaContratistas/>
                     </TabContainer>
                 </SwipeableViews>
             </div>

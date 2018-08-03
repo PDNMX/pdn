@@ -137,7 +137,7 @@ let EnhancedTableToolbar = props => {
                     </Typography>
                 ) : (
                     <Typography variant="title" id="tableTitle">
-                        Contratistas
+                        Servidores Públicos
                     </Typography>
                 )}
             </div>
