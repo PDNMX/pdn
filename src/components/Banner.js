@@ -17,8 +17,7 @@ var styles = {
         backgroundPosition:'bottom',
         backgroundRepeat: 'no-repeat',
         textAlign:'left',
-        backgroundSize:'cover',
-        paddingTop: '4em'
+        backgroundSize:'cover'
     },
     container:{
         marginLeft :'auto',

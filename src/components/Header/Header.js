@@ -6,7 +6,7 @@ import imgHeader from "../../assets/img/logo_fondo_bco.png";
 
 function Header(props){
     return (
-        <AppBar color="white" >
+        <AppBar color="white"  position="static" >
 
             <div style={{paddingLeft:'4em',paddingRight:'4em'}}>
                 <div className="left">

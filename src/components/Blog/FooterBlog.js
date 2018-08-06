@@ -1,6 +1,5 @@
 import React from 'react';
 import '../home.css';
-import Grid from '@material-ui/core/Grid';
 import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/es/styles/withStyles";
 
@@ -19,7 +18,6 @@ function FooterBlog (props){
     const { classes } = props;
         return (
             <div className={classes.containerFooterBlog}>
-
                     <Typography variant={"title"} style={{fontSize:'2.5em'}}>
                         Blog
                     </Typography>
@@ -37,7 +35,7 @@ function FooterBlog (props){
                         </Typography>
                     </a><br/>
                     <a href="/datos">
-                        <Typography variant={"subheading"}>Guia de apertura anticorrupcion
+                        <Typography variant={"subheading"}>Guia de apertura anticorrupción
                         </Typography>
                     </a>
 

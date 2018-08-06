@@ -9,13 +9,10 @@ const styles = theme => ({
 class Footer extends React.Component {
 
     render(){
-
-        const { classes } = this.props;
-
         return (
             <footer className='footer'>
                 <div className='container'>
-                   
+
                 </div>
             </footer>
         );

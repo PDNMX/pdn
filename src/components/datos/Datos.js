@@ -2,10 +2,11 @@ import React from 'react';
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Tabla from './Tabla';
 import Busqueda from './Busqueda';
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 const styles = theme => ({
     root: {
@@ -28,7 +29,10 @@ class Datos extends React.Component {
         const { classes } = this.props;
 
         return (
-            <div className={classes.root}>
+            <div>
+                <Header/>
+                <div className={classes.root}>
+
                 <Grid container spacing={24}>
                     <Grid item xs={12}>
 
@@ -46,6 +50,9 @@ class Datos extends React.Component {
 
                     </Grid>
                 </Grid>
+
+            </div>
+                <Footer/>
             </div>
         )
     }

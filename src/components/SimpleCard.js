@@ -5,9 +5,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from "@material-ui/core/CardMedia/CardMedia";
 import CardHeader from "@material-ui/core/CardHeader/CardHeader";
-import CardActions from "@material-ui/core/CardActions/CardActions";
 import {Link} from 'react-router-dom';
-import Typography from "@material-ui/core/Typography/Typography";
 const styles = {
     card: {
         border: "0",
