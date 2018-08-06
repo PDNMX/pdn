@@ -8,9 +8,9 @@ function Header(props){
     return (
         <AppBar color="white" >
 
-            <div>
+            <div style={{paddingLeft:'4em',paddingRight:'4em'}}>
                 <div className="left">
-                    <img src={imgHeader} alt="logoPDN" style={{width:'4em',padding:'0 0 0 4em'}}/>
+                    <img src={imgHeader} alt="logoPDN" style={{width:'4em'}}/>
                 </div>
                 <div className="right">
                     <Button component={Link} to="/datos">

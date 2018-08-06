@@ -6,11 +6,7 @@ function Footer( ) {
     return (
         <footer className='footer'>
             <div className='container'>
-                <p className='center'>
-          <span style={{color:'white', fontSize:'2em'}}>
-              gob.mx
-          </span>
-                </p>
+
             </div>
         </footer>
     );

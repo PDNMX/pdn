@@ -7,6 +7,7 @@ import CardMedia from "@material-ui/core/CardMedia/CardMedia";
 import CardHeader from "@material-ui/core/CardHeader/CardHeader";
 import CardActions from "@material-ui/core/CardActions/CardActions";
 import {Link} from 'react-router-dom';
+import Typography from "@material-ui/core/Typography/Typography";
 const styles = {
     card: {
         border: "0",
@@ -15,7 +16,7 @@ const styles = {
         borderRadius: "6px",
         color: "rgba(0, 0, 0, 0.87)",
         background: "#ffffff",
-        width: "400px",
+        width: "350px",
         boxShadow: "0 1px 4px 0 rgba(0, 0, 0, 0.14)",
         position: "relative",
         display: "flex",
@@ -39,7 +40,10 @@ const styles = {
     },
     media: {
         height: 0,
-        paddingTop: '40%', // 16:9
+        paddingTop: '60%', // 16:9
+    },
+    headerCard:{
+        fontSize : '1.5em'
     },
 };
 
@@ -53,19 +57,20 @@ function SimpleCard(props) {
         <div>
             <Card className={classes.card}>
                 <CardHeader
-                    title={title}
+                    classes={{
+                        title: classes.headerCard,
+                    }}
+                     title={title}
+                     titletitle={title}Style={{'fontSize':'20px', 'fontWeight':'bold'}}
                 />
                 <CardContent>
-
                 </CardContent>
                 <CardMedia className={classes.media}
                     image={imagen}
-                    title={title}
+
                     component={Link}
                     to ={to}
                 />
-                <CardActions>
-                </CardActions>
             </Card>
         </div>
     );

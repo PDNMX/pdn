@@ -1,3 +1,6 @@
+.Root{
+  background-color: #e5e5e5;
+}
 .App {
   text-align : center;
   padding-top : 38px;
@@ -17,21 +20,22 @@
 }
 
 .App-intro {
-  font-size: large;
-  background-color: #e5e5e5;
-  min-height: 868px;
+  min-height: 818px;
+  padding-left: 4em;
+  padding-right: 4em;
+  padding-top: 1em;
 }
 .footer{
   background-color: black;
   height: 70px;
 }
 .right{
-  padding: 15px 0;
+  padding: 1em 0;
   margin:0;
   float: right!important
 }
 .left{
-  padding: 15px 0;
+  padding: 1em 0;
   margin:0;
   float: left!important
 }
@@ -42,16 +46,17 @@
   width: 100%;
   margin-right: auto;
   margin-left : auto;
-  /*padding-right : 15px;
-  padding-left:  15px;
-  */
+  padding-right : 0em;
+  padding-left:  0em;
+  padding-top: 0em;
+
 }
 .containerL2{
   width: 100%;
   margin-right: auto;
   margin-left : auto;
-  padding-right : 15px;
-  padding-left:  15px;
+  padding-right : 1em;
+  padding-left:  1em;
 
 }
 @keyframes App-logo-spin {

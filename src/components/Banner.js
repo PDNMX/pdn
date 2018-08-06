@@ -13,17 +13,18 @@ var styles = {
     bgImg:{
         height: '350px',
         backgroundImage: 'url(/BannereDark_PDN.png)',
-        padding: '50px 0',
+        /*padding: '50px 0',*/
         backgroundPosition:'bottom',
         backgroundRepeat: 'no-repeat',
-        textAlign:'center',
-        backgroundSize:'cover'
+        textAlign:'left',
+        backgroundSize:'cover',
+        paddingTop: '4em'
     },
     container:{
         marginLeft :'auto',
         marginRight : 'auto',
-        paddingRight : '15px',
-        paddingLeft:  '15px'
+        paddingRight : '1em',
+        paddingLeft:  '1em'
     }
 }
 function Banner(props){
@@ -31,8 +32,11 @@ function Banner(props){
     return (
             <div className={classes.bgImg}>
                 <div className={classes.container}>
-                    <Typography variant="display3" style={{color:'white',paddingTop:'10px'}}>
-                        Plataforma Diginal Nacional
+                    <Typography variant="display3" style={{color:'white',paddingTop:'.5em'}}>
+                        Plataforma Digital Nacional
+                    </Typography>
+                    <Typography variant="display1" style={{color:'white',paddingTop:'.5em'}}>
+                       Inteligencia de datos anticorrupción
                     </Typography>
                 </div>
 
