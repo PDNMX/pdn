@@ -19,7 +19,7 @@ class App extends React.Component {
         <Router>
             <Switch>
                 {pndRoutes.map((prop, key) => {
-                    return <Route exact path={prop.path} component={prop.component}   />;
+                    return <Route exact path={prop.path} component={prop.component}  key={key} />;
                 })}
                 <Route render={p404}/>
             </Switch>
