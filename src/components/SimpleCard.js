@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
-
+import CardMedia from "@material-ui/core/CardMedia/CardMedia";
+import CardHeader from "@material-ui/core/CardHeader/CardHeader";
+import CardActions from "@material-ui/core/CardActions/CardActions";
+import {Link} from 'react-router-dom';
 const styles = {
     card: {
         border: "0",
@@ -35,23 +37,35 @@ const styles = {
     pos: {
         marginBottom: 12,
     },
+    media: {
+        height: 0,
+        paddingTop: '40%', // 16:9
+    },
 };
 
 
 function SimpleCard(props) {
     const { classes } = props;
     const title = props.titleCard;
-    const contenido = props.content;
+    const imagen = props.content;
+    const to = props.to;
     return (
         <div>
-
             <Card className={classes.card}>
-                <CardContent id={'line-user'}>
-                    <Typography variant="title">
-                        {title}
-                    </Typography>
-                        {contenido}
+                <CardHeader
+                    title={title}
+                />
+                <CardContent>
+
                 </CardContent>
+                <CardMedia className={classes.media}
+                    image={imagen}
+                    title={title}
+                    component={Link}
+                    to ={to}
+                />
+                <CardActions>
+                </CardActions>
             </Card>
         </div>
     );

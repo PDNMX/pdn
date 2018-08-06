@@ -38,6 +38,22 @@
 .textRight{
   text-align: right;
 }
+.container{
+  width: 100%;
+  margin-right: auto;
+  margin-left : auto;
+  /*padding-right : 15px;
+  padding-left:  15px;
+  */
+}
+.containerL2{
+  width: 100%;
+  margin-right: auto;
+  margin-left : auto;
+  padding-right : 15px;
+  padding-left:  15px;
+
+}
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
