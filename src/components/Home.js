@@ -56,6 +56,7 @@ class Home extends React.Component {
         return (
             <div className={classes.root}>
                 <Header/>
+                <br/>
                 <Banner/>
                 <div className={classes.homeBody}>
                     <Grid container spacing={24}>

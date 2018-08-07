@@ -41,7 +41,7 @@ function FooterBlog (props){
             </Typography>
 
             <br/>
-            
+
             <Typography variant={"subheading"} component = {Link}  to="/datos">
                 Guia de apertura anticorrupción
             </Typography>
