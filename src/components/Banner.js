@@ -15,8 +15,8 @@ const styles = theme => ({
         backgroundSize:'cover'
     },
     container: {
-        marginLeft: '50px',
-        marginRight: '50px'
+        marginLeft: '100px',
+        marginRight: '100px'
     }
 });
 
