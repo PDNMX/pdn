@@ -1,6 +1,7 @@
 import React from "react";
 import withStyles from "@material-ui/core/es/styles/withStyles";
 import Typography from "@material-ui/core/Typography/Typography";
+import PropTypes from "prop-types";
 
 const styles = theme => ({
     appBar: {
@@ -44,5 +45,9 @@ class Banner extends React.Component {
         );
     }
 }
+
+Banner.propTypes = {
+    classes: PropTypes.object.isRequired
+};
 
 export default withStyles(styles)(Banner);
