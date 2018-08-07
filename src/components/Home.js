@@ -2,6 +2,7 @@ import React from 'react';
 //import './home.css';
 import Grid from '@material-ui/core/Grid';
 import Card from '../components/SimpleCard'
+import NewCard from '../components/NewCard';
 import Header from '../components/Header/Header';
 import Footer from "./Footer/Footer";
 import Typography from "@material-ui/core/Typography";
@@ -21,9 +22,7 @@ import Paper from '@material-ui/core/Paper';
 const charts1 = [
     {'key': '1', 'title': 'Declaraciones 3x3', 'content': img1, 'to': '/datos'},
     {'key': '2', 'title': 'Servidores que intervienen en procesos de contratacion', 'content': img2, 'to': '/datos'},
-    {'key': '3', 'title': 'Servidores públicos y particulares sancionados', 'content': img5, 'to': '/sancionados'}
-];
-const charts2 = [
+    {'key': '3', 'title': 'Servidores públicos y particulares sancionados', 'content': img5, 'to': '/sancionados'},
     {'key': '4', 'title': 'Contrataciones públicas', 'content': img4, 'to': '/datos'},
     {'key': '5', 'title': 'Denuncias públicas', 'content': img3, 'to': '/datos'},
     {'key': '6', 'title': 'Comunicación del Sistema Nacional de Fiscalización', 'content': img6, 'to': '/datos'}
@@ -36,7 +35,10 @@ const styles = theme => ({
         //padding: '50px',
     },
     homeBody:{
-        margin: '50px',
+        marginTop: '50px',
+        marginBottom: '50px',
+        marginLeft: '100px',
+        marginRight: '100px',
     },
     paper: {
         padding: theme.spacing.unit * 2,
@@ -65,60 +67,25 @@ class Home extends React.Component {
                             </Typography>
                         </Grid>
 
-                        <Grid item xs={4}>
-                            <Paper className={classes.paper}>
-                                <Typography>
-                                    Lorem Ipsum
-                                </Typography>
-                            </Paper>
-                        </Grid>
 
-                        <Grid item xs={4}>
-                            <Paper className={classes.paper}>
-                                <Typography>
-                                    Lorem Ipsum
-                                </Typography>
-                            </Paper>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <Paper className={classes.paper}>
-                                <Typography>
-                                    Lorem Ipsum
-                                </Typography>
-                            </Paper>
-                        </Grid>
-
-                        <Grid item xs={4}>
-                            <Paper className={classes.paper}>
-                                <Typography>
-                                    Lorem Ipsum
-                                </Typography>
-                            </Paper>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <Paper className={classes.paper}>
-                                <Typography>
-                                    Lorem Ipsum
-                                </Typography>
-                            </Paper>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <Paper className={classes.paper}>
-                                <Typography>
-                                    Lorem Ipsum
-                                </Typography>
-                            </Paper>
-                        </Grid>
+                        {
+                            charts1.map((prop, key) => {
+                                return (
+                                    <Grid item xs={4} key={key}>
+                                        <NewCard data = {prop}/>
+                                    </Grid>
+                                );
+                            })
+                        }
 
 
 
 
 
                         {/*<div className="App-intro">*/}
+
                         {/*
-                    <Typography variant={"display1"} component="p">
-                        Explora los sistemas de la PDN
-                    </Typography>
+
 
                     {charts1.map((prop, key) => (
                         <Grid item key={prop.key} xs={4}>
@@ -131,7 +98,13 @@ class Home extends React.Component {
                             <Card titleCard={prop.title} content={prop.content} to={prop.to}/>
                         </Grid>
                     ))}
-                    */}
+
+
+
+                        */}
+
+
+
 
                         {/*</div>*/}
                     </Grid>

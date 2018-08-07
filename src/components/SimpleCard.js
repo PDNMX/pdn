@@ -14,7 +14,7 @@ const styles = {
         borderRadius: "6px",
         color: "rgba(0, 0, 0, 0.87)",
         background: "#ffffff",
-        width: "350px",
+        //width: "350px",
         boxShadow: "0 1px 4px 0 rgba(0, 0, 0, 0.14)",
         position: "relative",
         display: "flex",
