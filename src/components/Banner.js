@@ -2,7 +2,7 @@ import React from "react";
 import withStyles from "@material-ui/core/es/styles/withStyles";
 import Typography from "@material-ui/core/Typography/Typography";
 
-var styles = {
+const styles = {
     appBar: {
         flexWrap: 'wrap'
     },
@@ -12,35 +12,38 @@ var styles = {
     },
     bgImg:{
         height: '350px',
-        backgroundImage: 'url(/BannereDark_PDN.png)',
+        backgroundImage: 'url(/Header.png)',/*'url(/BannereDark_PDN.png)',*/
         /*padding: '50px 0',*/
         backgroundPosition:'bottom',
         backgroundRepeat: 'no-repeat',
         textAlign:'left',
         backgroundSize:'cover'
     },
-    container:{
+    container: {
         marginLeft :'auto',
         marginRight : 'auto',
         paddingRight : '1em',
         paddingLeft:  '1em'
     }
-}
-function Banner(props){
-    const { classes } = props;
-    return (
+};
+
+class Banner extends React.Component {
+    render(){
+        const { classes } = this.props;
+        return (
             <div className={classes.bgImg}>
                 <div className={classes.container}>
-                    <Typography variant="display3" style={{color:'white',paddingTop:'.5em'}}>
+                    <Typography variant="display2" style={{color: 'white', paddingTop: '30px'}}>
                         Plataforma Digital Nacional
                     </Typography>
-                    <Typography variant="display1" style={{color:'white',paddingTop:'.5em'}}>
-                       Inteligencia de datos anticorrupción
+                    <Typography variant="subheading" style={{color: 'white', paddingTop: '10px'}}>
+                        Inteligencia de datos anticorrupción
                     </Typography>
                 </div>
 
             </div>
-    );
-
+        );
+    }
 }
+
 export default withStyles(styles)(Banner);
