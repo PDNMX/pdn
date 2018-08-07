@@ -8,7 +8,7 @@ class Header extends React.Component {
     render(){
         return (
             <AppBar color="white"  position="static" >
-                <div style={{paddingLeft:'4em',paddingRight:'4em'}}>
+                <div style={{paddingLeft:'100px',paddingRight:'100px'}}>
                     <div className="left">
                         <img src={imgHeader} alt="logoPDN" style={{width:'4em'}}/>
                     </div>
