@@ -15,8 +15,14 @@ const styles = theme => ({
         backgroundSize:'cover'
     },
     container: {
-        marginLeft: '100px',
-        marginRight: '100px'
+        [theme.breakpoints.up('sm')]:{
+            marginLeft: '100px',
+            marginRight: '100px'
+        },
+        [theme.breakpoints.down('sm')]:{
+            marginLeft: theme.spacing.unit,
+            marginRight: theme.spacing.unit
+        }
     }
 });
 
