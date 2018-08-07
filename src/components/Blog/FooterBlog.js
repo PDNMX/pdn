@@ -7,8 +7,8 @@ var styles = {
     containerFooterBlog:{
         height: '230px',
         backgroundColor: 'white',
-        paddingLeft : '4em',
-        paddingRight: '4em',
+        paddingLeft : '100px',
+        paddingRight: '100px',
         paddingTop:'2em',
         paddingBottom: '2em'
     }
