@@ -4,16 +4,22 @@ import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/es/styles/withStyles";
 import {Link} from "react-router-dom";
 
-const styles = {
+const styles = theme => ({
     containerFooterBlog:{
         height: '230px',
         backgroundColor: 'white',
-        paddingLeft : '100px',
-        paddingRight: '100px',
+        [theme.breakpoints.up('sm')]:{
+            paddingLeft: '100px',
+            paddingRight: '100px'
+        },
+        [theme.breakpoints.down('sm')]:{
+            paddingLeft: theme.spacing.unit,
+            paddingRight: theme.spacing.unit
+        },
         paddingTop:'2em',
         paddingBottom: '2em'
     }
-};
+});
 
 function FooterBlog (props){
     const { classes } = props;
