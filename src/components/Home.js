@@ -61,7 +61,7 @@ class Home extends React.Component {
                     <Grid container spacing={24}>
 
                         <Grid item xs={12}>
-                            <Typography variant={"Headline"}>
+                            <Typography variant={"headline"}>
                                 Explora los sistemas de la PDN
                             </Typography>
                         </Grid>
