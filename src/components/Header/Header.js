@@ -31,8 +31,8 @@ class Header extends React.Component {
 
         return (
             <div className={classes.root}>
-            <AppBar color="default"  position="static" >
-                {/*
+                <AppBar color="default"  position="static" >
+                    {/*
                 <div style={{paddingLeft:'100px',paddingRight:'100px'}}>
                     <div className="left">
                         <img src={imgHeader} alt="logoPDN" style={{width:'4em'}}/>
@@ -54,28 +54,28 @@ class Header extends React.Component {
                 </div>
                 */}
 
-                <Toolbar>
-                    <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography variant="title" color="inherit" className={classes.flex}>
-                        PDN
-                    </Typography>
+                    <Toolbar>
+                        <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+                            <MenuIcon />
+                        </IconButton>
+                        <Typography variant="title" color="inherit" className={classes.flex}>
+                            PDN
+                        </Typography>
 
-                    <Button color="inherit" component={Link} to="/datos">
-                        Datos
-                    </Button>
-                    <Button color="inherit" component={Link} to="/blog">
-                        Blog
-                    </Button>
-                    <Button color="inherit" component={Link} to="/about">
-                        Acerca
-                    </Button>
-                    <Button color="inherit" component={Link} to="/faq">
-                        FAQ
-                    </Button>
-                </Toolbar>
-            </AppBar>
+                        <Button color="inherit" component={Link} to="/datos">
+                            Datos
+                        </Button>
+                        <Button color="inherit" component={Link} to="/blog">
+                            Blog
+                        </Button>
+                        <Button color="inherit" component={Link} to="/about">
+                            Acerca
+                        </Button>
+                        <Button color="inherit" component={Link} to="/faq">
+                            FAQ
+                        </Button>
+                    </Toolbar>
+                </AppBar>
             </div>
         );
     }
