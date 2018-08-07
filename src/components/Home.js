@@ -1,5 +1,4 @@
 import React from 'react';
-//import './home.css';
 import Grid from '@material-ui/core/Grid';
 import Card from '../components/SimpleCard'
 import NewCard from '../components/NewCard';
@@ -16,7 +15,7 @@ import Banner from "./Banner";
 import FooterBlog from "./Blog/FooterBlog";
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import Paper from '@material-ui/core/Paper';
+
 
 
 const charts1 = [
@@ -72,7 +71,7 @@ class Home extends React.Component {
                             charts1.map((prop, key) => {
                                 return (
                                     <Grid item xs={4} key={key}>
-                                        <NewCard data = {prop}/>
+                                        <Card titleCard={prop.title} content={prop.content} to={prop.to}/>
                                     </Grid>
                                 );
                             })
