@@ -2,7 +2,7 @@ import React from "react";
 import withStyles from "@material-ui/core/es/styles/withStyles";
 import Typography from "@material-ui/core/Typography/Typography";
 
-const styles = {
+const styles = theme => ({
     appBar: {
         flexWrap: 'wrap'
     },
@@ -25,7 +25,7 @@ const styles = {
         paddingRight : '1em',
         paddingLeft:  '1em'
     }
-};
+});
 
 class Banner extends React.Component {
     render(){
@@ -40,7 +40,6 @@ class Banner extends React.Component {
                         Inteligencia de datos anticorrupción
                     </Typography>
                 </div>
-
             </div>
         );
     }
