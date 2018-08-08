@@ -9,7 +9,16 @@ import Header from "./Header/Header";
 const styles = theme => ({
     root: {
         flexGrow: 1,
-        padding: theme.spacing.unit * 5
+        paddingTop: theme.spacing.unit * 5,
+        paddingBottom: theme.spacing.unit * 5,
+        [theme.breakpoints.up('sm')]:{
+            marginLeft: '100px',
+            marginRight: '100px'
+        },
+        [theme.breakpoints.down('sm')]:{
+            marginLeft: theme.spacing.unit,
+            marginRight: theme.spacing.unit
+        }
     },
     paper: {
         padding: theme.spacing.unit * 2,
@@ -22,15 +31,17 @@ class Faq extends React.Component{
     render (){
         const { classes } = this.props;
         return (
-            <div className={classes.root}>
+            <div>
                 <Header/>
-                <Grid container spacing={24}>
-                    <Grid item xs={12}>
-                        <Paper className={classes.paper}>
-                            <Typography>Preguntas frecuentes</Typography>
-                        </Paper>
+                <div className={classes.root}>
+                    <Grid container spacing={24}>
+                        <Grid item xs={12}>
+                            <Paper className={classes.paper}>
+                                <Typography>Preguntas frecuentes</Typography>
+                            </Paper>
+                        </Grid>
                     </Grid>
-                </Grid>
+                </div>
             </div>
         );
     }

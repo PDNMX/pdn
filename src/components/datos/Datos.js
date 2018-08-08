@@ -13,8 +13,14 @@ const styles = theme => ({
         flexGrow: 1,
         paddingTop: theme.spacing.unit * 5,
         paddingBottom: theme.spacing.unit * 5,
-        paddingRight: theme.spacing.unit * 25,
-        paddingLeft: theme.spacing.unit * 25,
+        [theme.breakpoints.up('sm')]:{
+            marginLeft: '100px',
+            marginRight: '100px'
+        },
+        [theme.breakpoints.down('sm')]:{
+            marginLeft: theme.spacing.unit,
+            marginRight: theme.spacing.unit
+        }
     },
     paper: {
         padding: theme.spacing.unit * 2,
