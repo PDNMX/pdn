@@ -18,11 +18,14 @@ import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import { lighten } from '@material-ui/core/styles/colorManipulator';
+import test from '../../data/csvjson';
 
 let counter = 0;
-function createData(name, calories, fat, carbs, protein) {
+function createData(institucion, abreviacion, unidadResponsable, registroBase, descripcion) {
     counter += 1;
-    return { id: counter, name, calories, fat, carbs, protein };
+    var item = { id: counter, institucion:institucion, abreviacion:abreviacion, unidadResponsable:unidadResponsable, registroBase:registroBase, descripcion:descripcion };
+    console.log("item: ",item);
+    return item;
 }
 
 function getSorting(order, orderBy) {
@@ -32,11 +35,11 @@ function getSorting(order, orderBy) {
 }
 
 const columnData = [
-    { id: 'name', numeric: false, disablePadding: true, label: 'Dato' },
-    { id: 'calories', numeric: true, disablePadding: false, label: 'Sistema' },
-    { id: 'fat', numeric: true, disablePadding: false, label: 'Publicante' },
-    { id: 'carbs', numeric: true, disablePadding: false, label: 'Metadatos' },
-    { id: 'protein', numeric: true, disablePadding: false, label: 'Descargar' },
+    { id: 'institucion', numeric: false, disablePadding: true, label: 'Institución' },
+    { id: 'abreviacion', numeric: false, disablePadding: false, label: 'Abreviación' },
+    { id: 'unidadResponsable', numeric: false, disablePadding: false, label: 'Unidad Responsable' },
+    { id: 'registroBase', numeric: false, disablePadding: false, label: 'Registro Base' },
+    { id: 'descipcripcion', numeric: false, disablePadding: false, label: 'Descripción' },
 ];
 
 class EnhancedTableHead extends React.Component {
@@ -137,7 +140,7 @@ let EnhancedTableToolbar = props => {
                     </Typography>
                 ) : (
                     <Typography variant="title" id="tableTitle">
-                        Nutrition
+                        Conjunto de datos
                     </Typography>
                 )}
             </div>
@@ -184,26 +187,18 @@ const styles = theme => ({
 class EnhancedTable extends React.Component {
     constructor(props) {
         super(props);
-
-        this.state = {
+        let dataAux =new Array();
+            test.map((item) => {
+                dataAux.push(
+                        createData(item.institucion, item.abreviacion, item.unidad_responsable, item.sistema_registro_base, item.descripcion)
+                    );
+            }
+        )
+            this.state = {
             order: 'asc',
-            orderBy: 'calories',
+            orderBy: 'id',
             selected: [],
-            data: [
-                createData('Cupcake', 305, 3.7, 67, 4.3),
-                createData('Donut', 452, 25.0, 51, 4.9),
-                createData('Eclair', 262, 16.0, 24, 6.0),
-                createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-                createData('Gingerbread', 356, 16.0, 49, 3.9),
-                createData('Honeycomb', 408, 3.2, 87, 6.5),
-                createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-                createData('Jelly Bean', 375, 0.0, 94, 0.0),
-                createData('KitKat', 518, 26.0, 65, 7.0),
-                createData('Lollipop', 392, 0.2, 98, 0.0),
-                createData('Marshmallow', 318, 0, 81, 2.0),
-                createData('Nougat', 360, 19.0, 9, 37.0),
-                createData('Oreo', 437, 18.0, 63, 4.0),
-            ],
+            data: dataAux,
             page: 0,
             rowsPerPage: 5,
         };
@@ -270,7 +265,7 @@ class EnhancedTable extends React.Component {
                 <div className={classes.tableWrapper}>
                     <Table className={classes.table} aria-labelledby="tableTitle">
                         <EnhancedTableHead
-                            numSelected={selected.length}
+                             numSelected={selected.length}
                             order={order}
                             orderBy={orderBy}
                             onSelectAllClick={this.handleSelectAllClick}
@@ -297,12 +292,12 @@ class EnhancedTable extends React.Component {
                                                 <Checkbox checked={isSelected} />
                                             </TableCell>
                                             <TableCell component="th" scope="row" padding="none">
-                                                {n.name}
+                                                {n.institucion}
                                             </TableCell>
-                                            <TableCell numeric>{n.calories}</TableCell>
-                                            <TableCell numeric>{n.fat}</TableCell>
-                                            <TableCell numeric>{n.carbs}</TableCell>
-                                            <TableCell numeric>{n.protein}</TableCell>
+                                            <TableCell >{n.abreviacion}</TableCell>
+                                            <TableCell >{n.unidadResponsable}</TableCell>
+                                            <TableCell >{n.registroBase}</TableCell>
+                                            <TableCell >{n.descripcion}</TableCell>
                                         </TableRow>
                                     );
                                 })}

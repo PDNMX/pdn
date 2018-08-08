@@ -41,7 +41,6 @@ class Datos extends React.Component {
 
                 <Grid container spacing={24}>
                     <Grid item xs={12}>
-
                         <Typography variant='title'>
                             Catálogo de datos anticorrupción
                         </Typography>
