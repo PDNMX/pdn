@@ -58,7 +58,7 @@ class Header extends React.Component {
                         <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
                             <MenuIcon />
                         </IconButton>
-                        <Typography variant="title" color="inherit" className={classes.flex}>
+                        <Typography variant="title" color="inherit" className={classes.flex} component={Link} to="/">
                             PDN
                         </Typography>
 
