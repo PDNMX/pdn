@@ -2,16 +2,16 @@ import React from "react";
 import {Link} from 'react-router-dom';
 import AppBar from "@material-ui/core/AppBar/AppBar";
 import Button from '@material-ui/core/Button';
-import imgHeader from "../../assets/img/logo_fondo_bco.png";
+import imgHeader from "../../assets/img/logo_sin_fondo.png";
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+//import MenuIcon from '@material-ui/icons/Menu';
 
 
-const styles = {
+const styles = theme => ({
     root: {
         flexGrow: 1,
     },
@@ -19,10 +19,15 @@ const styles = {
         flexGrow: 1,
     },
     menuButton: {
-        marginLeft: -12,
+        [theme.breakpoints.up('sm')]:{
+            marginLeft: '80px'
+        },
+        [theme.breakpoints.down('sm')]:{
+            marginLeft: theme.spacing.unit
+        },
         marginRight: 20,
     },
-};
+});
 
 class Header extends React.Component {
 
@@ -55,11 +60,12 @@ class Header extends React.Component {
                 */}
 
                     <Toolbar>
-                        <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-                            <MenuIcon />
+                        <IconButton className={classes.menuButton} color="inherit" aria-label="Menu" component={Link} to="/">
+                                <img src={imgHeader} alt="logoPDN" style={{width:'55px'}}/>
+
                         </IconButton>
-                        <Typography variant="title" color="inherit" className={classes.flex} component={Link} to="/">
-                            PDN
+                        <Typography variant="title" color="inherit" className={classes.flex}>
+
                         </Typography>
 
                         <Button color="inherit" component={Link} to="/datos">
