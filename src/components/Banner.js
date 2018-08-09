@@ -34,10 +34,10 @@ class Banner extends React.Component {
                 <div className={classes.container}>
                     <Grid container spacing={24}>
                         <Grid item xs={12}>
-                            <Typography variant="display2" style={{color: 'white', paddingTop: '30px'}}>
+                            <Typography variant="display2" style={{color: "#fff", paddingTop: '30px'}}>
                                 Plataforma Digital Nacional
                             </Typography>
-                            <Typography variant="subheading" style={{color: 'white', paddingTop: '10px'}}>
+                            <Typography variant="subheading" style={{color: '#fff', paddingTop: '10px'}}>
                                 Inteligencia de datos anticorrupción
                             </Typography>
                         </Grid>
