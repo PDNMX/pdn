@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -13,17 +13,24 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
-import { lighten } from '@material-ui/core/styles/colorManipulator';
+import {lighten} from '@material-ui/core/styles/colorManipulator';
 import fileJSON from '../../data/csvjson';
 import VerIcon from '@material-ui/icons/Launch';
 import Busqueda from "./Busqueda";
-import TextField from "@material-ui/core/TextField/TextField";
 
 let counter = 0;
-let value='';
+
 function createData(institucion, abreviacion, unidadResponsable, registroBase, descripcion, url) {
     counter += 1;
-    var item = { id: counter, institucion:institucion, abreviacion:abreviacion, unidadResponsable:unidadResponsable, registroBase:registroBase, descripcion:descripcion,url:url };
+    var item = {
+        id: counter,
+        institucion: institucion,
+        abreviacion: abreviacion,
+        unidadResponsable: unidadResponsable,
+        registroBase: registroBase,
+        descripcion: descripcion,
+        url: url
+    };
     return item;
 }
 
@@ -34,12 +41,12 @@ function getSorting(order, orderBy) {
 }
 
 const columnData = [
-    { id: 'institucion', numeric: false, disablePadding: false, label: 'Institución' },
-    { id: 'abreviacion', numeric: false, disablePadding: false, label: 'Abreviación' },
-    { id: 'unidadResponsable', numeric: false, disablePadding: false, label: 'Unidad Responsable' },
-    { id: 'registroBase', numeric: false, disablePadding: false, label: 'Registro Base' },
-    { id: 'descipcripcion', numeric: false, disablePadding: false, label: 'Descripción' },
-    {id: 'url',numeric:false, disablePadding: false, label:'Consultar'}
+    {id: 'institucion', numeric: false, disablePadding: false, label: 'Institución', position: 1},
+    {id: 'abreviacion', numeric: false, disablePadding: false, label: 'Abreviatura', position: 2},
+    {id: 'unidadResponsable', numeric: false, disablePadding: false, label: 'Unidad Responsable', position: 3},
+    {id: 'registroBase', numeric: false, disablePadding: false, label: 'Registro Base', position: 4},
+    {id: 'descipcripcion', numeric: false, disablePadding: false, label: 'Descripción', position: 5},
+    {id: 'url', numeric: false, disablePadding: false, label: 'Consultar', position: 6}
 ];
 
 class EnhancedTableHead extends React.Component {
@@ -48,7 +55,7 @@ class EnhancedTableHead extends React.Component {
     };
 
     render() {
-        const { onSelectAllClick, order, orderBy, numSelected, rowCount } = this.props;
+        const {onSelectAllClick, order, orderBy, numSelected, rowCount} = this.props;
 
         return (
             <TableHead>
@@ -119,13 +126,14 @@ const toolbarStyles = theme => ({
 
 
 let EnhancedTableToolbar = props => {
-    const { numSelected, classes ,value,handleSearch} = props;
+    const {numSelected, classes} = props;
     return (
+
         <Toolbar
-             /* className={classNames(classes.root, {
-                [classes.highlight]: numSelected > 0,
-            })}
-            */
+            /* className={classNames(classes.root, {
+               [classes.highlight]: numSelected > 0,
+           })}
+           */
         >
             <div className={classes.title}>
                 {/*
@@ -139,13 +147,13 @@ let EnhancedTableToolbar = props => {
                     </Typography>
                 )}
                 */}
-               <Typography variant="title" id="tableTitle">
-                        Conjunto de datos
-               </Typography>
-                <TextField  placeholder="Buscar" onChange={handleSearch} value={value}/>
+                <Typography variant="title" id="tableTitle">
+                    Conjunto de datos
+                </Typography>
+
 
             </div>
-            <div className={classes.spacer} />
+            <div className={classes.spacer}/>
             {/*
                 <div className={classes.actions}>
                 {numSelected > 0 ? (
@@ -192,22 +200,21 @@ const styles = theme => ({
 class EnhancedTable extends React.Component {
     constructor(props) {
         super(props);
-        let dataAux = [];
-            fileJSON.map((item) => {
-                dataAux.push(
-                        createData(item.institucion, item.abreviacion, item.unidad_responsable, item.sistema_registro_base, item.descripcion, item.url_conjunto)
-                    );
+        let dataAux = fileJSON.map((item, key) => {
+                return createData(item.institucion, item.abreviacion, item.unidad_responsable, item.sistema_registro_base, item.descripcion, item.url_conjunto)
             }
-        )
-            this.state = {
+        );
+
+        this.state = {
             order: 'asc',
             orderBy: 'institucion',
             selected: [],
-            searchValue:'',
+            searchValue: '',
             data: dataAux,
-            filterData:dataAux,
+            filterData: dataAux,
             page: 0,
             rowsPerPage: 5,
+            campo: 0
         };
     }
 
@@ -219,20 +226,20 @@ class EnhancedTable extends React.Component {
             order = 'asc';
         }
 
-        this.setState({ order, orderBy });
+        this.setState({order, orderBy});
     };
 
     handleSelectAllClick = (event, checked) => {
         if (checked) {
-            this.setState(state => ({ selected: state.data.map(n => n.id) }));
+            this.setState(state => ({selected: state.data.map(n => n.id)}));
             return;
         }
-        this.setState({ selected: [] });
+        this.setState({selected: []});
     };
 
 
     handleClick = (event, id) => {
-        const { selected } = this.state;
+        const {selected} = this.state;
         const selectedIndex = selected.indexOf(id);
         let newSelected = [];
 
@@ -249,123 +256,155 @@ class EnhancedTable extends React.Component {
             );
         }
 
-        this.setState({ selected: newSelected });
+        this.setState({selected: newSelected});
     };
 
     handleChangePage = (event, page) => {
-        this.setState({ page });
+        this.setState({page});
     };
 
     handleChangeRowsPerPage = event => {
-        this.setState({ rowsPerPage: event.target.value });
+        this.setState({rowsPerPage: event.target.value});
     };
 
     isSelected = id => this.state.selected.indexOf(id) !== -1;
 
     handleSearch = event => {
-        const {data} = this.state
+        const {data} = this.state;
+        const {campo} = this.state;
+        const {searchValue} = this.state;
         let filteredDatas = [];
-        filteredDatas = data.filter(e => {
-            let mathesItems = Object.values(e)
-            let retVal = false;
-            mathesItems.some(e => {
-                const regex = new RegExp(event.target.value, 'gi')
-                if (typeof e === 'string'){
-                    if(e.match(regex)!=null && e.match(regex).length>0){
-                        retVal= true
-                        return retVal;
+        const regex = new RegExp(searchValue, 'gi');
+
+        if (campo === 0) {
+            filteredDatas = data.filter(e => {
+                let mathesItems = Object.values(e);
+                let retVal = false;
+                mathesItems.some(e => {
+                    if (typeof e === 'string') {
+                        if (e.match(regex) != null && e.match(regex).length > 0) {
+                            retVal = true
+                            return retVal;
+                        }
                     }
-
+                })
+                return retVal;
+            });
+        } else {
+            filteredDatas = data.filter(e => {
+                let mathesItems = Object.values(e);
+                let retVal = false;
+                let columnaBusqueda = mathesItems[campo];
+                if (typeof columnaBusqueda === 'string') {
+                    if (columnaBusqueda.match(regex) != null && columnaBusqueda.match(regex).length > 0) {
+                        retVal = true
+                    }
                 }
+                return retVal;
+            });
+        }
 
-            })
-            return retVal;
-        })
-        console.log("searchValue: ",event.target.value);
-        console.log("FILTERDATA: ",filteredDatas);
+        if (event)
+            this.setState({filterData: filteredDatas, searchValue: event.target.value})
+        else
+            this.setState({filterData: filteredDatas})
+    };
 
-        this.setState({filterData: filteredDatas, searchValue: event.target.value})
-    }
+    handleChangeCampo = event => {
+        var valor = event.target.value;
+        this.setState({campo: valor}, () => {
+            if (this.state.searchValue)
+                this.handleSearch();
+        });
+
+    };
 
     render() {
-        const { classes } = this.props;
-        const { data, order, orderBy, selected, rowsPerPage, page,filterData } = this.state;
+        const {classes} = this.props;
+        const {data, order, orderBy, selected, rowsPerPage, page, filterData} = this.state;
         const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
 
         return (
-            <Paper className={classes.root}>
-                <EnhancedTableToolbar numSelected={selected.length} handleSearch={this.handleSearch}
-                                      value={this.searchValue} />
-                <div className={classes.tableWrapper}>
-                    <Table className={classes.table} aria-labelledby="tableTitle">
-                        <EnhancedTableHead
-                             numSelected={selected.length}
-                            order={order}
-                            orderBy={orderBy}
-                            onSelectAllClick={this.handleSelectAllClick}
-                            onRequestSort={this.handleRequestSort}
-                            rowCount={data.length}
-                        />
-                        <TableBody>
-                            {filterData
-                                .sort(getSorting(order, orderBy))
-                                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                                .map(n => {
-                                    const isSelected = this.isSelected(n.id);
-                                    return (
-                                        <TableRow
-                                            hover
-                                            onClick={event => this.handleClick(event, n.id)}
-                                            role="checkbox"
-                                            aria-checked={isSelected}
-                                            tabIndex={-1}
-                                            key={n.id}
-                                            selected={isSelected}
-                                        >
-                                            <TableCell component="th" scope="row" padding="default">
-                                                {n.institucion}
-                                            </TableCell>
-                                            <TableCell >{n.abreviacion}</TableCell>
-                                            <TableCell >{n.unidadResponsable}</TableCell>
-                                            <TableCell >{n.registroBase}</TableCell>
-                                            <TableCell >{n.descripcion}</TableCell>
-                                            <TableCell>
-                                                <a href={n.url} target="_blank">
-                                                    <Tooltip title="Ir a sitio">
-                                                    <IconButton color="primary" className={classes.button} component="span">
-                                                        <VerIcon />
-                                                    </IconButton>
-                                                    </Tooltip>
-                                                </a>
-                                            </TableCell>
-                                        </TableRow>
-                                    );
-                                })}
-                            {emptyRows > 0 && (
-                                <TableRow style={{ height: 49 * emptyRows }}>
-                                    <TableCell colSpan={6} />
-                                </TableRow>
-                            )}
-                        </TableBody>
-                    </Table>
-                </div>
-                <TablePagination
-                    component="div"
-                    count={data.length}
-                    rowsPerPage={rowsPerPage}
-                    page={page}
-                    backIconButtonProps={{
-                        'aria-label': 'Previous Page',
-                    }}
-                    nextIconButtonProps={{
-                        'aria-label': 'Next Page',
-                    }}
-                    onChangePage={this.handleChangePage}
-                    onChangeRowsPerPage={this.handleChangeRowsPerPage}
-                    labelRowsPerPage = 'Registros por página'
-                    labelDisplayedRows = {({ from, to, count}) => { return `${from}-${to} de ${count}`; }}
-                />
-            </Paper>
+            <div>
+                <Busqueda handleSearch={this.handleSearch} value={this.state.searchValue}
+                          campo={this.state.campo} handleChangeCampo={this.handleChangeCampo}/>
+                <Paper className={classes.root}>
+
+                    <EnhancedTableToolbar numSelected={selected.length}/>
+                    <div className={classes.tableWrapper}>
+                        <Table className={classes.table} aria-labelledby="tableTitle">
+                            <EnhancedTableHead
+                                numSelected={selected.length}
+                                order={order}
+                                orderBy={orderBy}
+                                onSelectAllClick={this.handleSelectAllClick}
+                                onRequestSort={this.handleRequestSort}
+                                rowCount={data.length}
+                            />
+                            <TableBody>
+                                {filterData
+                                    .sort(getSorting(order, orderBy))
+                                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                                    .map(n => {
+                                        const isSelected = this.isSelected(n.id);
+                                        return (
+                                            <TableRow
+                                                hover
+                                                onClick={event => this.handleClick(event, n.id)}
+                                                role="checkbox"
+                                                aria-checked={isSelected}
+                                                tabIndex={-1}
+                                                key={n.id}
+                                                selected={isSelected}
+                                            >
+                                                <TableCell component="th" scope="row" padding="default">
+                                                    {n.institucion}
+                                                </TableCell>
+                                                <TableCell>{n.abreviacion}</TableCell>
+                                                <TableCell>{n.unidadResponsable}</TableCell>
+                                                <TableCell>{n.registroBase}</TableCell>
+                                                <TableCell>{n.descripcion}</TableCell>
+                                                <TableCell>
+                                                    <a href={n.url} target="_blank">
+                                                        <Tooltip title="Ir a sitio">
+                                                            <IconButton color="primary" className={classes.button}
+                                                                        component="span">
+                                                                <VerIcon/>
+                                                            </IconButton>
+                                                        </Tooltip>
+                                                    </a>
+                                                </TableCell>
+                                            </TableRow>
+                                        );
+                                    })}
+                                {emptyRows > 0 && (
+                                    <TableRow style={{height: 49 * emptyRows}}>
+                                        <TableCell colSpan={6}/>
+                                    </TableRow>
+                                )}
+                            </TableBody>
+                        </Table>
+                    </div>
+                    <TablePagination
+                        component="div"
+                        count={data.length}
+                        rowsPerPage={rowsPerPage}
+                        page={page}
+                        backIconButtonProps={{
+                            'aria-label': 'Previous Page',
+                        }}
+                        nextIconButtonProps={{
+                            'aria-label': 'Next Page',
+                        }}
+                        onChangePage={this.handleChangePage}
+                        onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                        labelRowsPerPage='Registros por página'
+                        labelDisplayedRows={({from, to, count}) => {
+                            return `${from}-${to} de ${count}`;
+                        }}
+                    />
+                </Paper>
+            </div>
         );
     }
 }
