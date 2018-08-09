@@ -33,15 +33,17 @@ const styles = theme => ({
         //padding: '50px',
     },
     homeBody:{
-        marginTop: '50px',
-        marginBottom: '50px',
         [theme.breakpoints.up('sm')]:{
             marginLeft: '100px',
-            marginRight: '100px'
+            marginRight: '100px',
+            //marginTop: '50px',
+            //marginBottom: '50px',
         },
         [theme.breakpoints.down('sm')]:{
             marginLeft: theme.spacing.unit,
-            marginRight: theme.spacing.unit
+            marginRight: theme.spacing.unit,
+            marginTop: theme.spacing.unit,
+            marginBottom: theme.spacing.unit
         }
     },
     paper: {
@@ -76,7 +78,7 @@ class Home extends React.Component {
                         {
                             charts1.map((prop, key) => {
                                 return (
-                                    <Grid item md={4} xs={12} key={key}>
+                                    <Grid item md={4} sm={12} key={key}>
                                         <Card titleCard={prop.title} content={prop.content} to={prop.to}/>
                                     </Grid>
                                 );
