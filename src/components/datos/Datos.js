@@ -11,15 +11,17 @@ import Footer from "../Footer/Footer";
 const styles = theme => ({
     root: {
         flexGrow: 1,
-        paddingTop: theme.spacing.unit * 5,
-        paddingBottom: theme.spacing.unit * 5,
         [theme.breakpoints.up('sm')]:{
             marginLeft: '100px',
-            marginRight: '100px'
+            marginRight: '100px',
+            paddingTop: theme.spacing.unit * 5,
+            paddingBottom: theme.spacing.unit * 5,
         },
         [theme.breakpoints.down('sm')]:{
             marginLeft: theme.spacing.unit,
-            marginRight: theme.spacing.unit
+            marginRight: theme.spacing.unit,
+            paddingTop: theme.spacing.unit,
+            paddingBottom: theme.spacing.unit,
         }
     },
     paper: {
