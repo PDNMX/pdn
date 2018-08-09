@@ -53,6 +53,9 @@ const styles = theme => ({
         textAlign: 'center',
         color: theme.palette.text.secondary,
     },
+    appBar: {
+        marginBottom: theme.spacing.unit * 5
+    }
 });
 
 class Home extends React.Component {
@@ -63,7 +66,6 @@ class Home extends React.Component {
         return (
             <div className={classes.root}>
                 <Header/>
-                <br/>
                 <Banner/>
                 <div className={classes.homeBody}>
                     <Grid container spacing={24}>
