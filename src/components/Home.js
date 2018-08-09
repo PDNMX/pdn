@@ -36,8 +36,8 @@ const styles = theme => ({
         [theme.breakpoints.up('sm')]:{
             marginLeft: '100px',
             marginRight: '100px',
-            //marginTop: '50px',
-            //marginBottom: '50px',
+            marginTop: theme.spacing.unit * 2,
+            marginBottom: theme.spacing.unit * 2
         },
         [theme.breakpoints.down('sm')]:{
             marginLeft: theme.spacing.unit,
