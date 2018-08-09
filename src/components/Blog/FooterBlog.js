@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 
 const styles = theme => ({
     containerFooterBlog:{
-        height: '170px',
+        height: '160px',
         backgroundColor: '#fff',
         [theme.breakpoints.up('sm')]:{
             paddingLeft: '100px',
