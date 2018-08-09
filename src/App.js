@@ -1,32 +1,29 @@
 import React from 'react';
 import pndRoutes from './routes/index';
-import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import P404 from './components/P404';
 
 const p404 = () => {
-    return (
-        <div style={{padding: '75px'}}>
-            <h1>404: Page not found</h1>
-        </div>
-    )
+    return <P404/>
 };
+
 class App extends React.Component {
     constructor(props) {
         super(props);
-        }
+    }
 
-  render() {
-    return (
-        <Router>
-            <Switch>
-                {pndRoutes.map((prop, key) => {
-                    return <Route exact path={prop.path} component={prop.component}  key={key} />;
-                })}
-                <Route render={p404}/>
-            </Switch>
-        </Router>
-    );
-  }
-
+    render() {
+        return (
+            <Router>
+                <Switch>
+                    {pndRoutes.map((prop, key) => {
+                        return <Route exact path={prop.path} component={prop.component}  key={key} />;
+                    })}
+                    <Route render={p404}/>
+                </Switch>
+            </Router>
+        );
+    }
 }
 
 export default App;
