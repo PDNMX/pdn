@@ -6,8 +6,8 @@ import {Link} from "react-router-dom";
 
 const styles = theme => ({
     containerFooterBlog:{
-        height: '230px',
-        backgroundColor: 'white',
+        height: '170px',
+        backgroundColor: '#fff',
         [theme.breakpoints.up('sm')]:{
             paddingLeft: '100px',
             paddingRight: '100px'
@@ -18,6 +18,9 @@ const styles = theme => ({
         },
         paddingTop:'2em',
         paddingBottom: '2em'
+    },
+    text: {
+        paddingBottom: theme.spacing.unit
     }
 });
 
@@ -25,30 +28,22 @@ function FooterBlog (props){
     const { classes } = props;
     return (
         <div className={classes.containerFooterBlog}>
-            <Typography variant={"title"} style={{fontSize:'2.5em'}}>
+            <Typography variant="display1" className={classes.text}>
                 Blog
             </Typography>
-            <br/>
-
-
-            <Typography variant={"subheading"} component = {Link} to="/datos">
+            <Typography component = {Link} to="/datos" className = {classes.text}>
                 Hola de la Plataforma Digital Nacional
             </Typography>
-            <br/>
 
-            <Typography variant={"subheading"} component = {Link}  to="/datos">
+            <Typography component = {Link}  to="/datos" className = {classes.text}>
                 Indicadores
             </Typography>
 
-            <br/>
-
-            <Typography variant={"subheading"} component = {Link} to="/datos">
+            <Typography component = {Link} to="/datos" className = {classes.text}>
                 ¿Qué puedes esperar?
             </Typography>
 
-            <br/>
-
-            <Typography variant={"subheading"} component = {Link}  to="/datos">
+            <Typography component = {Link}  to="/datos" className = {classes.text}>
                 Guia de apertura anticorrupción
             </Typography>
         </div>
