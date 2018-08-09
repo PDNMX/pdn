@@ -67,7 +67,7 @@ class Home extends React.Component {
                 <Header/>
                 <Banner/>
                 <div className={classes.homeBody}>
-                    <Grid container xs= {12}  justify="center" spacing={12}>
+                    <Grid container  justify="center" spacing={12}>
                         <Grid item xs={12}>
                             <Typography variant={"headline"}>
                                 Explora los sistemas de la PDN

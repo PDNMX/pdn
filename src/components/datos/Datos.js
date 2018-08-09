@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Tabla from './Tabla';
 import Busqueda from './Busqueda';
 import Header from "../Header/Header";
+import FooterBlog from "../Blog/FooterBlog";
 import Footer from "../Footer/Footer";
 
 const styles = theme => ({
@@ -14,8 +15,8 @@ const styles = theme => ({
         [theme.breakpoints.up('sm')]:{
             marginLeft: '100px',
             marginRight: '100px',
-            paddingTop: theme.spacing.unit * 5,
-            paddingBottom: theme.spacing.unit * 5,
+            paddingTop: theme.spacing.unit,
+            paddingBottom: theme.spacing.unit *3
         },
         [theme.breakpoints.down('sm')]:{
             marginLeft: theme.spacing.unit,
@@ -59,6 +60,7 @@ class Datos extends React.Component {
                 </Grid>
 
             </div>
+                <FooterBlog/>
                 <Footer/>
             </div>
         )
