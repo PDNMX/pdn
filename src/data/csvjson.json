@@ -5,7 +5,7 @@
     "unidad_responsable": "Dirección General de Cooperación Técnica y Científica, Agencia Mexicana de Cooperación Internacional para el Desarrollo",
     "lave_sistema_PDN": "",
     "sistema_registro_base": "Registro Nacional de Cooperación para el Desarrollo (RENCID)",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/proyectos-de-oferta-de-cooperacion-internacional-para-el-desarrollo",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/proyectos-de-oferta-de-cooperacion-internacional-para-el-desarrollo",
     "descripcion": "Registro de las acciones de cooperación internacional",
     "campos_contenidos": "Región, contraparte, título del proyecto, sector, vertiente, ámbito"
   },
@@ -15,7 +15,7 @@
     "unidad_responsable": "Coordinación General de Mejora Regulatoria, Comisión Federal de Mejora Regulatoria",
     "lave_sistema_PDN": "",
     "sistema_registro_base": "Anteproyectos Regulatorios enviados por las dependencias a la COFEMER",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/anteproyectos-regulatorios",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/anteproyectos-regulatorios",
     "descripcion": "Registro de los últimos cambios en las regulaciones antes de su publicación en el Diario Oficial de la Federación (DOF)",
     "campos_contenidos": "Cambio en la regulación; Regulación; Fecha del cambio; Institución"
   },
@@ -25,7 +25,7 @@
     "unidad_responsable": "Coordinación de Mejora Regulatoria Institucional, Comisión Federal de Mejora Regulatoria",
     "lave_sistema_PDN": 7,
     "sistema_registro_base": "Registro Federal de Trámites y Servicios (RFTS)",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/rfts",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/rfts",
     "descripcion": "Inventario en línea de todos los trámites y formatos federales",
     "campos_contenidos": "Homoclave; Siglas; Dependencia; Unidad Administrativa; Nombre del trámite; Nombre de la modalidad"
   },
@@ -35,7 +35,7 @@
     "unidad_responsable": "Comisión de Fomento de las Actividades de las Organizaciones de la Sociedad Civil (SHCP; SEGOB; SEDESOL (INDESOL); SRE",
     "lave_sistema_PDN": "",
     "sistema_registro_base": "Registro Federal de las Organizaciones de la Sociedad Civil (OSC)",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/registro-federal-de-las-organizaciones-de-la-sociedad-civil",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/registro-federal-de-las-organizaciones-de-la-sociedad-civil",
     "descripcion": "Distintos tipos de datos acerca de las organizaciones inscritas en el Registro Federal de las OSC, en el marco de la Ley Federal de Fomento a las Actividades Realizadas por Organizaciones de la Sociedad Civil",
     "campos_contenidos": "-Entidad federativa; Municipio o Delegación; CLUNI; OSC; FC; Estatus; Figura jurídica; Representantes legales; Representación; Correos; Teléfonos; Colonia o Asentamiento; Calle; No; No. Exterior; No. Interior; C.P. \n-Apoyos y estímulos que otorgan la"
   },
@@ -45,7 +45,7 @@
     "unidad_responsable": "Comisión de Fomento de las Actividades de las Organizaciones de la Sociedad Civil (SHCP; SEGOB; SEDESOL (INDESOL); SRE",
     "lave_sistema_PDN": 2,
     "sistema_registro_base": "Organizaciones de la Sociedad Civil con Procedimiento Administrativo y Resoluciones",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/organizaciones-de-la-sociedad-civil-osc-con-procedimiento-administrativo-y-resoluciones",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/organizaciones-de-la-sociedad-civil-osc-con-procedimiento-administrativo-y-resoluciones",
     "descripcion": "Procedimiento administrativo, resolución y las sanciones derivadas de las infracciones cometidas por las Organizaciones de la Sociedad Civil",
     "campos_contenidos": "OSC; Expediente administrativo; Fecha y Acuerdo de la Sesión; Fecha de Resolución; Sanción; Dependencia que otorgó el apoyo"
   },
@@ -55,7 +55,7 @@
     "unidad_responsable": "Subsistema Nacional de Información Demográfica y Social, Instituto Nacional de Estadística y Geografía",
     "lave_sistema_PDN": 7,
     "sistema_registro_base": "Directorio Estadístico Nacional de Unidades Económicas (DENUE)",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/directorio-estadistico-nacional-de-unidades-economicas-denue-03-2017-por-actividad-economica",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/directorio-estadistico-nacional-de-unidades-economicas-denue-03-2017-por-actividad-economica",
     "descripcion": "Se ofrecen los datos de identificación, ubicación, actividad económica, y tamaño de los negocios activos en el territorio mexicano, actualizados, fundamentalmente, en el segmento de los establecimien grandes. Actualmente, se cuentan con los datos de 5 millones de 39 mil 911 negocios",
     "campos_contenidos": "Datos de identificación; ubicación; actividad económica; y tamaño de los negocios activos en el territorio mexicano"
   },
@@ -65,7 +65,7 @@
     "unidad_responsable": "Procuraduría General de la República",
     "lave_sistema_PDN": "",
     "sistema_registro_base": "Incidencia delictiva del fuero federal",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/incidencia-delictiva-del-fuero-federal-excel",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/incidencia-delictiva-del-fuero-federal-excel",
     "descripcion": "Presuntos delitos del fuero federal registrados en las averiguaciones previas o carpetas de investigación iniciadas, reportados mensualmente por la Procuraduría General de la República",
     "campos_contenidos": "Campo,Descripción ANO,Año de registro de las Averiguaciones Previas y/o carpetas de investigación ENTIDAD,Entidad federativa de registro de las Averiguaciones Previas y/o carpetas de investigación CLAVE MARCO GEOESTADISTICO NAL,Clave INEGI LEY,Primera clasificación de los delitos en las Averiguaciones Previas y/o carpetas de investigación"
   },
@@ -75,7 +75,7 @@
     "unidad_responsable": "Procuraduría General de la República",
     "lave_sistema_PDN": 7,
     "sistema_registro_base": "Estadística de la Dirección General de Control de Procesos Penales y Amparo en Materia de Delitos Federales",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/estadistica-de-la-dgcppamdf-seidf-pgr",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/estadistica-de-la-dgcppamdf-seidf-pgr",
     "descripcion": "Control de Procesos Penales y Amparo en Materia de Delitos Federales",
     "campos_contenidos": "Por tipo de consignación (con y sin detenido); Por Unidad; Por delito; Por año; Obtención de órdenes de aprehensión (libradas y negadas)"
   },
@@ -85,7 +85,7 @@
     "unidad_responsable": "Procuraduría General de la República",
     "lave_sistema_PDN": "",
     "sistema_registro_base": "Cohecho internacional",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/cohecho-internacional-de-pgr",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/cohecho-internacional-de-pgr",
     "descripcion": "Información sobre investigaciones  sobre el delito de cohecho internacional",
     "campos_contenidos": "Siglas, AC, UEDE, CI, A%uFF91O, NUMERO, FECHA, ORIGEN, PAIS, ESTADO, COMENTARIOS"
   },
@@ -95,7 +95,7 @@
     "unidad_responsable": "Jefatura de Servicios de Administración, Servicio de Administración Tributaria",
     "lave_sistema_PDN": 6,
     "sistema_registro_base": "Directorio de Donatarias Autorizadas",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/informes-de-donatarias-autorizadas",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/informes-de-donatarias-autorizadas",
     "descripcion": "Registro de las 9, 300 organizaciones que pueden ser susceptibles de impuesto sobre la renta.\nEn el Registro interno se tiene el RFC; nombre de la organización, si pueden o no recibir donativos del extranjero. Vienen sus direcciones de correo electrónico, representante legal, página web, cómo acredito sus actividades y la zona en la que se encuentra. Tiene 12 tipos de actividades posibles",
     "campos_contenidos": "RFC; Razón social; Tipo donataria; entidad federativa; Donativo efectivo nacional; donativo efectivo extranjero; donativo especie nacional; donativo especie extranjero; Unidad de medida; ejercicio fiscal"
   },
@@ -105,7 +105,7 @@
     "unidad_responsable": "Subsecretaría de Promoción de la Industria y el Comercio Exterior, Secretaría de Economía",
     "lave_sistema_PDN": 7,
     "sistema_registro_base": "Sistema de información empresarial Mexicano",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/sistema-de-informacion-empresarial-mexicano-siem",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/sistema-de-informacion-empresarial-mexicano-siem",
     "descripcion": "Integra un registro completo de las empresas existentes. Suministra información oportuna y confiable sobre las características y ubicación de los establecimientos con actividad productiva sea de comercio, servicios, turismo e industria en el país",
     "campos_contenidos": "Razón social, estado, municipio, domicilio, colonia, código postal, teléfono, correo, giro, scian, rango empleados, registrado por"
   },
@@ -115,7 +115,7 @@
     "unidad_responsable": "Dirección General de Inversión Extranjera, Secretaría de Economía",
     "lave_sistema_PDN": "",
     "sistema_registro_base": "Listado del Registro de Empresas Extranjeras inscritas en el Registro Nacional de Inversiones Extranjeras que realizan actos de comercio en México",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/registro-nacional-de-inversiones-extranjeras-rnie",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/registro-nacional-de-inversiones-extranjeras-rnie",
     "descripcion": "Conjunto de datos que presenta las Empresas extranjeras inscritas en el Registro Nacional de Inversiones Extranjeras",
     "campos_contenidos": "Número de expediente; Razón social; País de origen; Sector; Estado; Municipio; Código Postal; Colonia; Calle Número; Representante Legal; Fecha inicio de operaciones"
   },
@@ -125,7 +125,7 @@
     "unidad_responsable": "Coordinación General de Modernización y Vinculación Registral y Catastral, Secretaria de Desarrollo Agrario, Territorial y Urbano",
     "lave_sistema_PDN": "",
     "sistema_registro_base": "Plataforma Nacional de Información Registral y Catastral",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/gestion-digital-del-territorio-catalogo-de-informacion-registral-y-catastral",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/gestion-digital-del-territorio-catalogo-de-informacion-registral-y-catastral",
     "descripcion": "Se integra la información de los distintos tipos de propiedad en los tres ámbitos de gobierno. A través del programa de modernización se brindan recursos a los estados para implementar el sistema de folio real electrónico. Con esta información, se podrán integrar a la plataforma de manera interoperable diversa información mobiliaria, propiedad privada, pública y social, de tal forma que sea un mapa de ordenamiento territorial.",
     "campos_contenidos": "tipo de predio, número_cta, predio, delimitaciones"
   },
@@ -135,7 +135,7 @@
     "unidad_responsable": "Dirección General Adjunta del Diario Oficial de la Federación, Secretaría de Gobernación",
     "lave_sistema_PDN": "",
     "sistema_registro_base": "Diario Oficial de la Federación (DOF)",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/direccion-general-adjunta-del-diario-oficial-de-la-federacion",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/direccion-general-adjunta-del-diario-oficial-de-la-federacion",
     "descripcion": "Normas Oficiales e Indicadores del DOF",
     "campos_contenidos": "descripción, alta, fecha, autores"
   },
@@ -145,7 +145,7 @@
     "unidad_responsable": "Unidad de Políticas de Mejora de la Gestión, Secretaría de la Función Pública",
     "lave_sistema_PDN": "",
     "sistema_registro_base": "Inventario de Normas Internas Vigentes",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/normas-de-la-administracion-publica-federal",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/normas-de-la-administracion-publica-federal",
     "descripcion": "-Normas internas de cada una de las Dependencias y Entidades de la Administración Pública Federal (APF)\n-Normas transversales (normateca general de la APF, en la que se incluyen las normas administrativas relacionadas a los manuales administrativos de a",
     "campos_contenidos": "Tipo de norma; Homoclave; Nombre de la norma; Materia; Institución; Tipo de calificación; Fecha de emisión; Fecha de registro; Folio"
   },
@@ -155,7 +155,7 @@
     "unidad_responsable": "Unidad de Políticas de Mejora de la Gestión, Secretaría de la Función Pública",
     "lave_sistema_PDN": "",
     "sistema_registro_base": "Sistema de Información de Proyectos de Mejora Gubernamental",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/reporte-de-proyectos-de-mejora-concluidos",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/reporte-de-proyectos-de-mejora-concluidos",
     "descripcion": "Registro de los proyectos de mejora institucional para modernizar la gestión pública",
     "campos_contenidos": "Ramo, Sector , Descripción, Estatus, Resultado"
   },
@@ -165,7 +165,7 @@
     "unidad_responsable": "Dirección General de Controversias y Sanciones, Secretaría de la Función Pública",
     "lave_sistema_PDN": 2,
     "sistema_registro_base": "Directorio de Proveedores y Contratistas sancionados (DPSC)",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/proveedores-y-contratistas-sancionados",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/proveedores-y-contratistas-sancionados",
     "descripcion": "Datos a 2015. Directorio de Licitantes, Proveedores y Contratistas sancionados con el impedimento para presentar propuestas o celebrar contratos con las Dependencias y Entidades de la Administración Pública Federal y de los Gobiernos de los Estados. Las personas físicas y morales sancionadas desaparecen de este Directorio cuando cumplen con el periodo de sanción y pagan su multa correspondiente (en su caso)",
     "campos_contenidos": "Infractor; Número de expediente; Fecha de notificación de resolución; Publicación en el DOF; Monto de la multa; Plazo de inhabilitación; Inicia; Termina; Objeto social o del contrato; Causa; OIC Responsable; Cargo; Teléfono; Correo electrónico"
   },
@@ -175,7 +175,7 @@
     "unidad_responsable": "Unidad de Control y Evaluación de la Gestión Pública, Secretaría de la Función Pública",
     "lave_sistema_PDN": 6,
     "sistema_registro_base": "Programa Anual de Auditorías",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/programas-anuales-de-auditorias-2013-a-la-fecha",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/programas-anuales-de-auditorias-2013-a-la-fecha",
     "descripcion": "Programa Anual de Auditorías",
     "campos_contenidos": "Ejercicio; Número; Ente público; Tipo de Ente público; Proyectos financiados por organismos internacionales; Auditorías"
   },
@@ -185,7 +185,7 @@
     "unidad_responsable": "Dirección General de Auditorías Externas, Secretaría de la Función Pública",
     "lave_sistema_PDN": 6,
     "sistema_registro_base": "Lista de firmas de Auditores externos elegibles",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/listado-de-firmas-de-auditores-externos-elegibles",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/listado-de-firmas-de-auditores-externos-elegibles",
     "descripcion": "Listado de firmas de Auditores Externos Elegibles para la Secretaría de la Función Pública para realizar Auditorías Externas a los entes públicos de la Administración Pública Federal",
     "campos_contenidos": "Ejercicio; Mes; Corte; No.; Firma; Socio_Director; Dirección, Teléfono"
   },
@@ -195,7 +195,7 @@
     "unidad_responsable": "Dirección General de Auditorías Externas, Secretaría de la Función Pública",
     "lave_sistema_PDN": 6,
     "sistema_registro_base": "Resultados de Designación de Auditores Externos",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/resultados-de-designacion-de-auditores-externos",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/resultados-de-designacion-de-auditores-externos",
     "descripcion": "Datos de la designación de Auditor Externo a entes públicos de la Administración Pública Federal",
     "campos_contenidos": "Designación; No.; Ente público; Firma de auditores externos; órgano Interno de Control"
   },
@@ -205,7 +205,7 @@
     "unidad_responsable": "Unidad de Control y Evaluación de la Gestión Pública, Secretaría de la Función Pública",
     "lave_sistema_PDN": 6,
     "sistema_registro_base": "Sistema Integral de Auditoría (SIA)",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/resultados-de-los-programas-anuales-de-auditorias-de-los-organos-internos-de-control-de-la-admi",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/resultados-de-los-programas-anuales-de-auditorias-de-los-organos-internos-de-control-de-la-admi",
     "descripcion": "-Resultados de las auditorías de los 213 OIC de la APF.\n-Las auditorías se realizan con base en un mapa de riesgos. Dicho mapa permite identificar las áreas en las cuales se presenta algún fenómeno relacionado a la corrupción. Con base en este mapa,",
     "campos_contenidos": "Ejercicio (año anual del programa de auditoría externa); Número consecutivo; Ente público; Tipo de ente público; Proyectos financiados por organismos financieros internacionales; Número de auditorías realizadas"
   },
@@ -215,7 +215,7 @@
     "unidad_responsable": "Unidad de Control y Auditoría a Obra Pública, Secretaría de la Función Pública",
     "lave_sistema_PDN": 6,
     "sistema_registro_base": "Resultados de Auditoría y Acciones de Fiscalización",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/resultado-de-auditorias-y-acciones-de-fiscalizacion-caop-2013-a-la-fecha",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/resultado-de-auditorias-y-acciones-de-fiscalizacion-caop-2013-a-la-fecha",
     "descripcion": "Datos estadísticos derivados de las acciones de fiscalización efectuadas por la Unidad de Control y Auditoría a Obra Pública",
     "campos_contenidos": "Ente; Auditorías; Observaciones de auditor; Visitas de inspección; Observaciones de visitas de inspección; Supervisión a OIC; Observaciones a OIC"
   },
@@ -225,7 +225,7 @@
     "unidad_responsable": "Subsecretaría de Control y Evaluación de la Gestión Pública, Secretaría de la Función Pública",
     "lave_sistema_PDN": 6,
     "sistema_registro_base": "Sistema Informático de Contraloría Social (SICS)",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/programas-y-proyectos-de-contraloria-social-2014-2017",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/programas-y-proyectos-de-contraloria-social-2014-2017",
     "descripcion": "Sistema interno de las contralorías con información de las auditorías a la obra pública, procesos de adquisición, las auditorías que también realizan los despachos externos, los OIC y las realizadas por la Unidad de Control y Evaluación de la Gestión",
     "campos_contenidos": "Datos.gob.mx: ejercicio; mes; programas; comités; tootal; hombres; % hombres; mujeres; % mujeres; apoyos; entidades; municipios; localidades"
   },
@@ -235,7 +235,7 @@
     "unidad_responsable": "Unidad de Operación Regional y Contraloría Social, Secretaría de la Función Pública",
     "lave_sistema_PDN": 6,
     "sistema_registro_base": "Resultados de Auditoría y Acciones de Fiscalización (UORCS)",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/resultados-de-auditoria-y-acciones-de-fiscalizacion-uorcs-2014-a-la-fecha",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/resultados-de-auditoria-y-acciones-de-fiscalizacion-uorcs-2014-a-la-fecha",
     "descripcion": "Acciones de fiscalización (auditorías y visitas de inspección) que realiza la Unidad de Operación Regional y Contraloría Social a los recursos públicos de los fondos y programas transferidos a las entidades federativas, los municipios y a las alcaldías de la Ciudad de México",
     "campos_contenidos": "Ejercicio; Fondo o programa; Entidad federativa; acto de fiscalización; número de entes locales revisados; número de observaciones; hallazgos"
   },
@@ -245,7 +245,7 @@
     "unidad_responsable": "Dirección General de Responsabilidades y Situación Patrimonial, Secretaría de la Función Pública",
     "lave_sistema_PDN": 1,
     "sistema_registro_base": "DeclaraNet",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/organization/sfp?q=declaraciones+patrimoniales&sort=score+desc%2C+metadata_modified+desc",
+    "url_conjunto": "https://datos.gob.mx/busca/organization/sfp?q=declaraciones+patrimoniales&sort=score+desc%2C+metadata_modified+desc",
     "descripcion": "Declaración patrimonial de los servidores públicos de la APF",
     "campos_contenidos": "En el sistema: Datos del Declarante; Datos patrimoniales; Datos del cónyuge, concubina o concubinario y/o dependientes económicos; Datos del encargo; Bienes inmuebles; Vehículos; Bienes muebles; Inversiones, cuentas bancarias y otro tipo de valores; Adeudos; Observaciones y aclaraciones\nDatos.gob.mx: Dependencia; Nombe; Fecha envío; Declaración; Fecha inicio; Fecha conclusion; Estatus"
   },
@@ -255,7 +255,7 @@
     "unidad_responsable": "#%uFFFDNOMBRE?",
     "lave_sistema_PDN": 7,
     "sistema_registro_base": "Listado de trámites y servicios más susceptibles a la corrupción",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/resultados-consulta-de-tramites-senalados-por-la-comunidad-empresarial-para-revision",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/resultados-consulta-de-tramites-senalados-por-la-comunidad-empresarial-para-revision",
     "descripcion": "Resultados consulta de trámites señalados por la comunidad empresarial para revisión. La consulta tiene como objetivo recabar la opinión de la sociedad sobre los trámites que el sector empresarial en México ha identificado para su revisión y la cual permitirá identificar acciones claras para incrementar la eficiencia en la realización de dichos trámites.",
     "campos_contenidos": "01- ¿Cuál ha sido su experiencia al realizar este trámite?; 02- ¿Ha presenciado o ha sido víctima de algún acto de corrupción al realizar este trámite?; 03- En caso de haber contestado sí a la pregunta anterior ¿Ha denunciado?; 04- ¿Qué acciones considera necesarias para evitar este tipo de actos en la presentación de dichos trámites?(1); 04- ¿Qué acciones considera necesarias para evitar este tipo de actos en la presentación de dichos trámites?(2); 04- ¿Qué acciones considera necesarias para evitar este tipo de actos en la presentación de dichos trámites?(3); 04- ¿Qué acciones considera necesarias para evitar este tipo de actos en la presentación de dichos trámites?(4); 05- Comentarios y sugerencias"
   },
@@ -265,7 +265,7 @@
     "unidad_responsable": "Unidad de Política de Contrataciones Públicas, Secretaría de la Función Pública",
     "lave_sistema_PDN": 4,
     "sistema_registro_base": "Registro Único de Proveedores y Contratistas (RUPC)",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/compranet-rupc",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/compranet-rupc",
     "descripcion": "El Registro Único de Proveedores y Contratistas (RUPC) es un conjunto de proveedores o contratistas que han solicitado su inscripción al RUPC a las instituciones públicas con las que han celebrado contratos. Para mayor información consultar las disposiciones de CompraNet:",
     "campos_contenidos": "Folio RUPC; RFC; Nombre de la empresa; País; Entidad; Estratificación; Usuario; Sector; Giro; Contratos; Número de inscripción; contratos evaluados; grado de cumplimiento; sitio web de la empresa"
   },
@@ -275,7 +275,7 @@
     "unidad_responsable": "Unidad de Política de Contrataciones Públicas, Secretaría de la Función Pública",
     "lave_sistema_PDN": 4,
     "sistema_registro_base": "CompraNet",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/concentrado-de-contrataciones-abiertas-de-la-apf",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/concentrado-de-contrataciones-abiertas-de-la-apf",
     "descripcion": "El sistema de contrataciones públicas contiene:\n-La lista de contratistas\n-Los procedimientos de adquisición y contratación vigentes. Tienen más de un millón de procedimientos, pero no están disponibles en formatos descargables\n-Datos de los subsidios relacionados a los contratos permeados a los municipios\n-Quejas a los procesos de contratación. Se captan las inconformidades electrónicas y se hacen de conocimiento a la Dirección General de Responsabilidades y Situación Patrimonial de la Secretaría de la Función Pública\n-Directorio de Proveedores y Contratistas Sancionados\n-Registro Único de Proveedores y Contratistas",
     "campos_contenidos": "Gobierno; Siglas; Dependencia; Clave de Unidad Compradora; Nombre de la UC; Responsable; Código del Expediente; Número de Procedimiento; Expediente Fecha fallo; Fecha de Publicación de procedimiento; Expediente fecha de apertura; Caracter; Tipo de contratación; Tipo de Procedimiento; Forma de Procedimiento; Código de contrato; Título de contrato; Fecha inicio contrato; Importe contrato; Moneda; Estatus contrato; Archivado; Convenio Modificatorio; Ramo; Clave Programa; Aportación Federal; Fecha celebración; Contrato Marco; Identificador del Contrato Marco; Compra Consolidada; Plurianual; Clave de Cartera; Estratificación Manifestada por la UC; Folio; Proveedor contratista; Estratificación declarada por el proveedor o contratista de la fecha de emisión del reporte; País; Estatus Empresa; Cuenta Administrada por; Crédito externo; Nombre del organismo financiero internacional; Anunico"
   },
@@ -285,7 +285,7 @@
     "unidad_responsable": "Unidad de Política de Contrataciones Públicas, Secretaría de la Función Pública",
     "lave_sistema_PDN": 4,
     "sistema_registro_base": "Unidades Compradoras",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/concentrado-de-contrataciones-abiertas-de-la-apf",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/concentrado-de-contrataciones-abiertas-de-la-apf",
     "descripcion": "Listado de Unidades Compradoras de las Dependencias y Entidades del Gobierno Federal y de los Gobiernos Estatales y Municipales",
     "campos_contenidos": "Id Dependencia Entidad; Siglas; Dependencia; Ramo; Clave CompraNet 3.0; Clave UC CompraNet 5.0; Nombre de la UC; Registro Federal de Contribuyentes; Estado; Delegación; Teléfono; Dirección; C.P; Página web; Tipo; Zona horaria; Responsable; Puesto"
   },
@@ -295,7 +295,7 @@
     "unidad_responsable": "Unidad de Control y Auditoría de Obra Pública, Secretaría de la Función Pública",
     "lave_sistema_PDN": 4,
     "sistema_registro_base": "Bitácora Electrónica de Obras Pública para la Administración Pública Federal (BEOP)",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/bitacora-electronica-de-obra-publica-beop-del-2013-a-la-fecha",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/bitacora-electronica-de-obra-publica-beop-del-2013-a-la-fecha",
     "descripcion": "Número de bitácoras registradas en el sistema de Bitácora Electrónica de Obra Pública (BEOP), por las Dependencias y Entidades de la Administración Pública Federal, que ejecutan obras públicas y servicios relacionados con las mismas.",
     "campos_contenidos": "Cantidad de bitácoras; Dependencia"
   },
@@ -305,7 +305,7 @@
     "unidad_responsable": "Unidad de Control y Auditoría de Obra Pública, Secretaría de la Función Pública",
     "lave_sistema_PDN": 4,
     "sistema_registro_base": "Estado contractual de la Obra Pública",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/bitacora-electronica-de-obra-publica-beop-del-2013-a-la-fecha",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/bitacora-electronica-de-obra-publica-beop-del-2013-a-la-fecha",
     "descripcion": "Número de bitácoras registradas en el sistema de Bitácora Electrónica de Obra Pública (BEOP), por las Dependencias y Entidades de la Administración Pública Federal, que ejecutan obras públicas y servicios relacionados con las mismas.",
     "campos_contenidos": ""
   },
@@ -315,7 +315,7 @@
     "unidad_responsable": "Unidad de Política de Recursos Humanos de la Administración Pública Federal, Secretaría de la Función Pública",
     "lave_sistema_PDN": 7,
     "sistema_registro_base": "RHNet",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/organization/sfp?q=Concursos+TrabajaEn&sort=score+desc%2C+metadata_modified+desc\nhttps://datos.gob.mx/busca/dataset/asignaciones-al-amparo-del-articulo-34",
+    "url_conjunto": "https://datos.gob.mx/busca/organization/sfp?q=Concursos+TrabajaEn&sort=score+desc%2C+metadata_modified+desc\nhttps://datos.gob.mx/busca/dataset/asignaciones-al-amparo-del-articulo-34",
     "descripcion": "Información de los servidores públicos actuales o que trabajaron en las instituciones que están dentro del Servicio Profesional de Carrera de la Administración Pública Federal. También contiene información curricular de los mismos.",
     "campos_contenidos": "Nombre del servidor público; CURP; RFC; Escolaridad máxima; datos del puesto como clave y nivel salarial; si están encargados de contrataciones o no; fecha de alta y el catálogo del inmueble donde se localizan los servidores públicos"
   },
@@ -325,7 +325,7 @@
     "unidad_responsable": "Dirección General de Responsabilidades y Situación Patrimonial, Secretaría de la Función Pública",
     "lave_sistema_PDN": 2,
     "sistema_registro_base": "Registro de servidores públicos sancionados (RSPS)",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/servidores-publicos-sancionados",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/servidores-publicos-sancionados",
     "descripcion": "Registro de los servidores públicos de la Administración Pública Federal de acuerdo con sus niveles de responsabilidad (no se contempla a organismos autónomos). Contiene la información de más de 300 instituciones, desde la ubicación, el puesto de la persona, el inmueble donde se localiza. Son casi 50 campos en total.",
     "campos_contenidos": "Expediente; Fecha de Resolución; Servidor público; Autoridad; Dependencia; Sanción; Inicio; Fin; Monto, Causa"
   },
@@ -335,7 +335,7 @@
     "unidad_responsable": "Unidad de Política de Recursos Humanos de la Administración Pública Federal, Secretaría de la Función Pública",
     "lave_sistema_PDN": 3,
     "sistema_registro_base": "Registro de Servidores Públicos de la Administración Pública Federal que intervienen en procedimientos de contrataciones públicas, el otorgamiento de licencias, permisos, concesiones y autorizaciones, así como en la enajenación de bienes muebles de la administración pública federal y en la asignación y emisión de dictámenes en materia de avalúos y justipreciación de rentas (RENIRESP)",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/registro-de-servidores-publicos-que-intervienen-en-contrataciones-publicas",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/registro-de-servidores-publicos-que-intervienen-en-contrataciones-publicas",
     "descripcion": "Registro de los servidores públicos de la Administración Pública Federal que interviene en procedimientos de contrataciones públicas, el otorgamiento de licencias, etc.",
     "campos_contenidos": "Sistema: Nombre del servidor público; Puesto; Nivel de responsabilidad (atención, tramitación o resolución)\nDatos.gob.mx: ID Ramo; ID UR; Ramo; Unidad responsable; Institución; Servidor público; puesto; tipo de área; procedimiento; tipo nivel;"
   },
@@ -345,7 +345,7 @@
     "unidad_responsable": "Unidad de Control y Evaluación de la Gestión Pública, Secretaría de la Función Pública",
     "lave_sistema_PDN": "",
     "sistema_registro_base": "Sistema Integral de Información de Padrones y Programas Gubernamentales (SIIPP-G)",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/estadisticas-del-sistema-integral-de-informacion-de-padrones-de-programas-gubernamentales-siipp",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/estadisticas-del-sistema-integral-de-informacion-de-padrones-de-programas-gubernamentales-siipp",
     "descripcion": "Contiene la lista de los programas gubernamentales por dependencia que dan subsidios a la población. En este sistema se agrupan los beneficiarios por cada programa",
     "campos_contenidos": "Ejercicio; persona; dependencia; institución; programa; intra programa; entidad género; beneficiarios únicos; monto"
   },
@@ -355,7 +355,7 @@
     "unidad_responsable": "Unidad de Control y Evaluación de la Gestión Pública, Secretaría de la Función Pública",
     "lave_sistema_PDN": 6,
     "sistema_registro_base": "Sistema de Información de Donativos en Efectivo Otorgados por la Federación (donativos y presupuesto)",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/presupuesto-asignado-a-donativos",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/presupuesto-asignado-a-donativos",
     "descripcion": "Presupuesto autorizado, modificado y ejercido de las partidas de gasto: 48101 Donativos a Instituciones sin fines de lucro 48201 Donativos a entidades federativas o municipios 48301 Donativos a fideicomisos privados 48401 Donativos a fideicomisos estatales 48501 Donativos internacionales",
     "campos_contenidos": "ejercicio, nombre de la institución, partida, presupuesto, modificado, ejercido, comprometido"
   },
@@ -365,7 +365,7 @@
     "unidad_responsable": "Unidad de Inversiones, Secretaría de Hacienda y Crédito Público",
     "lave_sistema_PDN": 4,
     "sistema_registro_base": "Registro de Proyectos de Asociaciones Público Privadas",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/obra-publica-abierta",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/obra-publica-abierta",
     "descripcion": "Registro para efectos estadísticos de los proyectos de proyectos de asociaciones público privadas",
     "campos_contenidos": "http://www.transparenciapresupuestaria.gob.mx/work/models/PTP/DatosAbiertos/Diccionarios/diccionario_opa.xlsx"
   },
@@ -375,7 +375,7 @@
     "unidad_responsable": "Unidad de Inversiones, Secretaría de Hacienda y Crédito Público",
     "lave_sistema_PDN": 4,
     "sistema_registro_base": "Registro de la cartera de obra de inversión",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/obra-publica-abierta",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/obra-publica-abierta",
     "descripcion": "Contiene información de los Programas y Proyectos de Inversión de la Obra Pública con presupuesto aprobados, además brinda datos para poder revisar su seguimiento y el detalle de cada Proyecto o Programa de Inversión",
     "campos_contenidos": "http://www.transparenciapresupuestaria.gob.mx/work/models/PTP/DatosAbiertos/Diccionarios/diccionario_opa.xlsx"
   },
@@ -385,7 +385,7 @@
     "unidad_responsable": "Unidad de Contabilidad Gubernamental, Secretaría de Hacienda y Crédito Público",
     "lave_sistema_PDN": 4,
     "sistema_registro_base": "Sistema de Contabilidad y Presupuesto (SICOP)",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/concentrado-de-contrataciones-abiertas-de-la-apf",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/concentrado-de-contrataciones-abiertas-de-la-apf",
     "descripcion": "-El Sistema Contable tiene los estados financieros del Poder Ejecutivo\n-El Sistema de Control de presupuesto lo emplean todos los ejecutores del gasto, y actualmente cuenta con 17 mil usuarios (cada uno de los usuarios tienen permisos específicos para ev",
     "campos_contenidos": "Como dato abierto, sólo se cuentan con las contrataciones públicas: Número de procedimiento, Número de contrato y Número de expediente"
   },
@@ -395,7 +395,7 @@
     "unidad_responsable": "Unidad de Contabilidad Gubernamental, Secretaría de Hacienda y Crédito Público",
     "lave_sistema_PDN": "",
     "sistema_registro_base": "Estadísticas oportunas de Finanzas Públicas",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/estadisticas-oportunas-de-finanzas-publicas-principales-indicadores-fiscales",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/estadisticas-oportunas-de-finanzas-publicas-principales-indicadores-fiscales",
     "descripcion": "Estadísticas oportunas de Finanzas Públicas",
     "campos_contenidos": "CICLO        MES        CLAVE_DE_CONCEPTO        NOMBRE        TEMA        SUBTEMA        SECTOR        ÁMBITO        TIPO DE INFORMACION        BASE_DE_REGISTRO        UNIDAD_DE_MEDIDA        PERIODO INICIO        PERIODO FINAL        FRECUENCIA        DIFUSIÓN        MONTO"
   },
@@ -405,7 +405,7 @@
     "unidad_responsable": "Unidad de Contabilidad Gubernamental, Secretaría de Hacienda y Crédito Público",
     "lave_sistema_PDN": 4,
     "sistema_registro_base": "Asignación y ejecución del presupuesto de egresos de la federación",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/asignacion-y-ejecucion-del-presupuesto-de-egresos-de-la-federacion",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/asignacion-y-ejecucion-del-presupuesto-de-egresos-de-la-federacion",
     "descripcion": "Asignación y ejecución del presupuesto de egresos de la federación",
     "campos_contenidos": "CICLO        MES        CLAVE_DE_CONCEPTO        NOMBRE        TEMA        SUBTEMA        SECTOR        ÁMBITO        TIPO DE INFORMACION        BASE_DE_REGISTRO        UNIDAD_DE_MEDIDA        PERIODO INICIO        PERIODO FINAL        FRECUENCIA        DIFUSIÓN        MONTO"
   },
@@ -415,7 +415,7 @@
     "unidad_responsable": "Unidad de Contabilidad Gubernamental, Secretaría de Hacienda y Crédito Público",
     "lave_sistema_PDN": 4,
     "sistema_registro_base": "Proyectos entidades federativas",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/proyectos-entidades-federativas",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/proyectos-entidades-federativas",
     "descripcion": "Contiene la información que reportan las entidades federativas, municipios y demarcaciones territoriales del Distrito Federal sobre los avances físicos y financieros de los programas y proyectos de inversión que llevan a cabo con recursos que les transfiere la Federación a través de aportaciones federales, subsidios y convenios",
     "campos_contenidos": "FOLIO        NOMBRE_PROYECTO        NUMERO_PROYECTO        ID_ENTIDAD_FEDERATIVA        ENTIDAD        ID_MUNICIPIO        MUNICIPIO        ID_LOCALIDAD        LOCALIDAD        LATITUD        LONGITUD        AMBITO        ID_RECURSO        RECURSO        CLAVE_PROGRAMA_PRESUPUESTARIO        PROGRAMA_PRESUPUESTARIO        ID_RAMO        RAMO        INSTITUCION_EJECUTORA        ID_CLASIFICACION        CLASIFICACION        ID_TIPOPPI        TIPOPPI        BENEFICIARIOS        INICIO        TERMINO        DIRECCION        ID_CONCURRENCIA_DE_RECURSOS        CONCURRENCIA        CICLO_RECURSO        AUTORIZADO /1        MODIFICADO /1        MINISTRADO /2        COMPROMETIDO /1        DEVENGADO /1        EJERCIDO /1        PAGADO /1        AVANCE_FINANCIERO        UNIDADMEDIDA        POBLACION_ANUAL        AVANCE_ESTIMADO_ANUAL        AVANCE_FISICO        ID_ESTATUS_FLUJO_VALIDACION        ESTATUS_FLUJO_VALIDACION        OBSER_FISICO_PER        KA_ESTATUS /3        DESC_ESTATUS /3"
   },
@@ -425,7 +425,7 @@
     "unidad_responsable": "Unidad de Contabilidad Gubernamental, Secretaría de Hacienda y Crédito Público",
     "lave_sistema_PDN": 4,
     "sistema_registro_base": "Contratos de gasto federalizado",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/contratos-de-gasto-federalizado",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/contratos-de-gasto-federalizado",
     "descripcion": "Contiene información de los Programas y Proyectos de Inversión de la Obra Pública con presupuesto aprobado para el año fiscal 2015",
     "campos_contenidos": "CICLO; MES; KA_PROYECTO; FOLIO; NOMBRE_PROYECTO; NUMERO_PROYECTO; KA_ESTATUS; DESC_ESTATUS; ID_ENTIDAD_FEDERATIVA; ENTIDAD_FEDERATIVA; KA_MUNICIPIO; ID_MUNICIPIO; MUNICIPIO; ID_LOCALIDAD; LOCALIDAD; AMBITO; RECURSO; DESC_RECURSO; RAMO; DESC_RAMO; PP; DESC_PROGRAMA; KA_PROGRAMA_ESPECIFICO; PROGRAMA_ESPECIFICO; KA_MODALIDAD_CONTRATACION; MODALIDAD_CONTRATACION; NUMERO_CONTRATO; OBRA_ADMINSTRACION_CONTRATO; ID_CONTRATACION; CONTRATACION; CONTRATO; MONTO; JUSTIFICACION; ANTICIPO_SN; ANTICIPO; PORCENT_ANT; FECHA_FIRMA; RFC_CONVOCANTE; CONVOCANTE; RFC_CONTRATISTA; CONTRATISTA; URL; ID_ESTATUS_CONTRATO; ESTATUS_CONTRATO; IMPORTE_MODIFICADO; FECHA_CONCLUSION_CONTRATO; FECHA_CONCLUSION; URL_DOCUMENTO"
   },
@@ -435,7 +435,7 @@
     "unidad_responsable": "Unidad de Planeación Económica, Secretaría de Hacienda y Crédito Público",
     "lave_sistema_PDN": "",
     "sistema_registro_base": "Recaudación de ingresos tributarios del Gobierno Federal",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/recaudacion-de-ingresos-tributarios-del-gobierno-federal",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/recaudacion-de-ingresos-tributarios-del-gobierno-federal",
     "descripcion": "Importe de los ingresos recaudados por el Gobierno Federal en materia de impuestos: Impuesto Sobre la Renta (ISR), Impuesto al Valor Agregado (IVA), Impuesto Especial sobre Producción y Servicios (IEPS), Importaciones, Impuesto sobre Automóviles Nuevos (ISAN), Impuesto por la Actividad de Exploración y Extracción de Hidrocarburos, Otros ingresos tributarios (incluye los conceptos: Impuesto empresarial a tasa única (IETU), Impuesto a los depósitos en efectivo (IDE), Impuesto sobre tenencia o uso de vehículos (ISTUV), Exportaciones y Accesorios)",
     "campos_contenidos": "Año; mes; ingresos por impuesto; total de ingresos tributarios"
   },
@@ -445,7 +445,7 @@
     "unidad_responsable": "Unidad de Inteligencia Financiera, Secretaría de Hacienda y Crédito Público",
     "lave_sistema_PDN": 7,
     "sistema_registro_base": "Lista de cargos públicos que son considerados personas políticamente expuestas nacionales",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/cargos-politicamente-expuestos",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/cargos-politicamente-expuestos",
     "descripcion": "Lista de los cargos públicos que serán considerados para definir a las personas políticamente expuestas nacionales",
     "campos_contenidos": "tipo de administración pública, entidad, dependencia, cargo,"
   },
@@ -455,7 +455,7 @@
     "unidad_responsable": "Unidad de Evaluación de Desempeño, Secretaría de Hacienda y Crédito Público",
     "lave_sistema_PDN": 7,
     "sistema_registro_base": "Transparencia Presupuestaria",
-    "url(s)_conjunto": "http://www.transparenciapresupuestaria.gob.mx/es/PTP/Datos_Abiertos",
+    "url_conjunto": "http://www.transparenciapresupuestaria.gob.mx/es/PTP/Datos_Abiertos",
     "descripcion": "Información del presupuesto para 2008-2017 en el Estándar Internacional de Datos Presupuestarios Abiertos",
     "campos_contenidos": ""
   },
@@ -465,7 +465,7 @@
     "unidad_responsable": "Administración del Patrimonio de la Beneficencia Pública, Secretaría de Salud",
     "lave_sistema_PDN": 4,
     "sistema_registro_base": "Montos otorgados en proyectos de coinversión a organizaciones de la sociedad civil",
-    "url(s)_conjunto": "https://datos.gob.mx/busca/dataset/montos-otorgados-en-proyectos-de-coinversion-a-organizaciones-de-la-sociedad-civil",
+    "url_conjunto": "https://datos.gob.mx/busca/dataset/montos-otorgados-en-proyectos-de-coinversion-a-organizaciones-de-la-sociedad-civil",
     "descripcion": "Montos otorgados a organizaciones de la sociedad civil para desarrollar proyectos de coinversión en materia de salud y asistencia social",
     "campos_contenidos": "Organización; Proyecto; Estado; Monto otorgado"
   }

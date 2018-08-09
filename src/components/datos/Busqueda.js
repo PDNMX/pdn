@@ -39,7 +39,7 @@ class Busqueda extends React.Component{
         const { classes } = this.props;
 
         return (
-            <form className={classes.container} noValidate autocomplete='off'>
+            <form className={classes.container} noValidate autoComplete='on'>
                 <TextField
                     id="search"
                     label="Buscar datos"

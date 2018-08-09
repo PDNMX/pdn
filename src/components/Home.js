@@ -1,7 +1,6 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Card from '../components/SimpleCard'
-import NewCard from '../components/NewCard';
 import Header from '../components/Header/Header';
 import Footer from "./Footer/Footer";
 import Typography from "@material-ui/core/Typography";

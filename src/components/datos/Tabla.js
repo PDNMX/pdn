@@ -1,5 +1,4 @@
 import React from 'react';
-import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -12,19 +11,19 @@ import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
-import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
-import DeleteIcon from '@material-ui/icons/Delete';
-import FilterListIcon from '@material-ui/icons/FilterList';
 import { lighten } from '@material-ui/core/styles/colorManipulator';
-import test from '../../data/csvjson';
+import fileJSON from '../../data/csvjson';
+import VerIcon from '@material-ui/icons/Launch';
+import Busqueda from "./Busqueda";
+import TextField from "@material-ui/core/TextField/TextField";
 
 let counter = 0;
-function createData(institucion, abreviacion, unidadResponsable, registroBase, descripcion) {
+let value='';
+function createData(institucion, abreviacion, unidadResponsable, registroBase, descripcion, url) {
     counter += 1;
-    var item = { id: counter, institucion:institucion, abreviacion:abreviacion, unidadResponsable:unidadResponsable, registroBase:registroBase, descripcion:descripcion };
-    console.log("item: ",item);
+    var item = { id: counter, institucion:institucion, abreviacion:abreviacion, unidadResponsable:unidadResponsable, registroBase:registroBase, descripcion:descripcion,url:url };
     return item;
 }
 
@@ -35,11 +34,12 @@ function getSorting(order, orderBy) {
 }
 
 const columnData = [
-    { id: 'institucion', numeric: false, disablePadding: true, label: 'Institución' },
+    { id: 'institucion', numeric: false, disablePadding: false, label: 'Institución' },
     { id: 'abreviacion', numeric: false, disablePadding: false, label: 'Abreviación' },
     { id: 'unidadResponsable', numeric: false, disablePadding: false, label: 'Unidad Responsable' },
     { id: 'registroBase', numeric: false, disablePadding: false, label: 'Registro Base' },
     { id: 'descipcripcion', numeric: false, disablePadding: false, label: 'Descripción' },
+    {id: 'url',numeric:false, disablePadding: false, label:'Consultar'}
 ];
 
 class EnhancedTableHead extends React.Component {
@@ -53,13 +53,6 @@ class EnhancedTableHead extends React.Component {
         return (
             <TableHead>
                 <TableRow>
-                    <TableCell padding="checkbox">
-                        <Checkbox
-                            indeterminate={numSelected > 0 && numSelected < rowCount}
-                            checked={numSelected === rowCount}
-                            onChange={onSelectAllClick}
-                        />
-                    </TableCell>
                     {columnData.map(column => {
                         return (
                             <TableCell
@@ -124,42 +117,52 @@ const toolbarStyles = theme => ({
     },
 });
 
+
 let EnhancedTableToolbar = props => {
     const { numSelected, classes } = props;
-
     return (
         <Toolbar
-            className={classNames(classes.root, {
+             /* className={classNames(classes.root, {
                 [classes.highlight]: numSelected > 0,
             })}
+            */
         >
             <div className={classes.title}>
-                {numSelected > 0 ? (
+                {/*
+                    {numSelected > 0 ? (
                     <Typography color="inherit" variant="subheading">
-                        {numSelected} selected
+                        {numSelected} seleccionado
                     </Typography>
                 ) : (
                     <Typography variant="title" id="tableTitle">
                         Conjunto de datos
                     </Typography>
                 )}
+                */}
+               <Typography variant="title" id="tableTitle">
+                        Conjunto de datos
+               </Typography>
             </div>
             <div className={classes.spacer} />
-            <div className={classes.actions}>
+            {/*
+                <div className={classes.actions}>
                 {numSelected > 0 ? (
-                    <Tooltip title="Delete">
-                        <IconButton aria-label="Delete">
+                    <Tooltip title="Borrar">
+                        <IconButton aria-label="Borrar">
                             <DeleteIcon />
                         </IconButton>
                     </Tooltip>
                 ) : (
-                    <Tooltip title="Filter list">
-                        <IconButton aria-label="Filter list">
+                    <Tooltip title="Filtrar lista">
+                        <IconButton aria-label="Filtrar lista">
                             <FilterListIcon />
                         </IconButton>
                     </Tooltip>
                 )}
             </div>
+            */}
+
+
         </Toolbar>
     );
 };
@@ -187,10 +190,10 @@ const styles = theme => ({
 class EnhancedTable extends React.Component {
     constructor(props) {
         super(props);
-        let dataAux =new Array();
-            test.map((item) => {
+        let dataAux = [];
+            fileJSON.map((item) => {
                 dataAux.push(
-                        createData(item.institucion, item.abreviacion, item.unidad_responsable, item.sistema_registro_base, item.descripcion)
+                        createData(item.institucion, item.abreviacion, item.unidad_responsable, item.sistema_registro_base, item.descripcion, item.url_conjunto)
                     );
             }
         )
@@ -222,6 +225,7 @@ class EnhancedTable extends React.Component {
         }
         this.setState({ selected: [] });
     };
+
 
     handleClick = (event, id) => {
         const { selected } = this.state;
@@ -288,16 +292,22 @@ class EnhancedTable extends React.Component {
                                             key={n.id}
                                             selected={isSelected}
                                         >
-                                            <TableCell padding="checkbox">
-                                                <Checkbox checked={isSelected} />
-                                            </TableCell>
-                                            <TableCell component="th" scope="row" padding="none">
+                                            <TableCell component="th" scope="row" padding="default">
                                                 {n.institucion}
                                             </TableCell>
                                             <TableCell >{n.abreviacion}</TableCell>
                                             <TableCell >{n.unidadResponsable}</TableCell>
                                             <TableCell >{n.registroBase}</TableCell>
                                             <TableCell >{n.descripcion}</TableCell>
+                                            <TableCell>
+                                                <a href={n.url} target="_blank">
+                                                    <Tooltip title="Ir a sitio">
+                                                    <IconButton color="primary" className={classes.button} component="span">
+                                                        <VerIcon />
+                                                    </IconButton>
+                                                    </Tooltip>
+                                                </a>
+                                            </TableCell>
                                         </TableRow>
                                     );
                                 })}
