@@ -119,7 +119,7 @@ const toolbarStyles = theme => ({
 
 
 let EnhancedTableToolbar = props => {
-    const { numSelected, classes } = props;
+    const { numSelected, classes ,value,handleSearch} = props;
     return (
         <Toolbar
              /* className={classNames(classes.root, {
@@ -142,6 +142,8 @@ let EnhancedTableToolbar = props => {
                <Typography variant="title" id="tableTitle">
                         Conjunto de datos
                </Typography>
+                <TextField  placeholder="Buscar" onChange={handleSearch} value={value}/>
+
             </div>
             <div className={classes.spacer} />
             {/*
@@ -199,9 +201,11 @@ class EnhancedTable extends React.Component {
         )
             this.state = {
             order: 'asc',
-            orderBy: 'id',
+            orderBy: 'institucion',
             selected: [],
+            searchValue:'',
             data: dataAux,
+            filterData:dataAux,
             page: 0,
             rowsPerPage: 5,
         };
@@ -258,14 +262,40 @@ class EnhancedTable extends React.Component {
 
     isSelected = id => this.state.selected.indexOf(id) !== -1;
 
+    handleSearch = event => {
+        const {data} = this.state
+        let filteredDatas = [];
+        filteredDatas = data.filter(e => {
+            let mathesItems = Object.values(e)
+            let retVal = false;
+            mathesItems.some(e => {
+                const regex = new RegExp(event.target.value, 'gi')
+                if (typeof e === 'string'){
+                    if(e.match(regex)!=null && e.match(regex).length>0){
+                        retVal= true
+                        return retVal;
+                    }
+
+                }
+
+            })
+            return retVal;
+        })
+        console.log("searchValue: ",event.target.value);
+        console.log("FILTERDATA: ",filteredDatas);
+
+        this.setState({filterData: filteredDatas, searchValue: event.target.value})
+    }
+
     render() {
         const { classes } = this.props;
-        const { data, order, orderBy, selected, rowsPerPage, page } = this.state;
+        const { data, order, orderBy, selected, rowsPerPage, page,filterData } = this.state;
         const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
 
         return (
             <Paper className={classes.root}>
-                <EnhancedTableToolbar numSelected={selected.length} />
+                <EnhancedTableToolbar numSelected={selected.length} handleSearch={this.handleSearch}
+                                      value={this.searchValue} />
                 <div className={classes.tableWrapper}>
                     <Table className={classes.table} aria-labelledby="tableTitle">
                         <EnhancedTableHead
@@ -277,7 +307,7 @@ class EnhancedTable extends React.Component {
                             rowCount={data.length}
                         />
                         <TableBody>
-                            {data
+                            {filterData
                                 .sort(getSorting(order, orderBy))
                                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                 .map(n => {

@@ -62,34 +62,26 @@ class Home extends React.Component {
     render() {
 
         const {classes} = this.props;
-
         return (
             <div className={classes.root}>
                 <Header/>
                 <Banner/>
                 <div className={classes.homeBody}>
-                    <Grid container spacing={24}>
-
+                    <Grid container xs= {12}  justify="center" spacing={12}>
                         <Grid item xs={12}>
                             <Typography variant={"headline"}>
                                 Explora los sistemas de la PDN
                             </Typography>
                         </Grid>
-
-
                         {
                             charts1.map((prop, key) => {
                                 return (
-                                    <Grid item md={4} sm={12} key={key}>
+                                    <Grid item md={4} sm={12} key={key} style={{marginBottom:"10px"}}>
                                         <Card titleCard={prop.title} content={prop.content} to={prop.to}/>
                                     </Grid>
                                 );
                             })
                         }
-
-
-
-
 
                         {/*<div className="App-intro">*/}
 

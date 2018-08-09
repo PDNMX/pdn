@@ -7,25 +7,34 @@ import CardHeader from "@material-ui/core/CardHeader/CardHeader";
 import {Link} from 'react-router-dom';
 const styles = theme => ({
     card: {
-        height: theme.spacing.unit * 32,
+        [theme.breakpoints.up('md')]:{
+            height: 350,
+            maxWidth: 350,
+            minWidth:350
+        },
+        [theme.breakpoints.down('md')]:{
+            height: 250,
+            maxWidth: 250,
+            minWidth:250
+        },
+
     },
     media: {
+        paddingTop : '75%',
         //width: '100%',
-       // height:'70%',
+        height:'0',
         //height: theme.spacing.unit * 32*0.7,
         //maxHeight:'70%'
-        width: '100%',
-        backgroundPosition:'top',
-        height: '75%'
 
     },
     headerCard:{
-        [theme.breakpoints.up('sm')]:{
+        [theme.breakpoints.up('md')]:{
             fontSize: 'calc(1.1vw)',
         },
-        [theme.breakpoints.down('sm')]:{
-            fontSize: 'calc(.5rem + 2vw)',
+        [theme.breakpoints.down('md')]:{
+            fontSize: 'calc(1rem)',
         }
+
 
     },
     headerCardRoot:{
