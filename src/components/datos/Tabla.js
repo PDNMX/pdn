@@ -59,7 +59,7 @@ const styles = theme => ({
         overflowX: 'auto',
     },
     tableHead:{
-        backgroundColor: theme.palette.secondary.light
+        backgroundColor: theme.palette.secondary.main
     }
 });
 class EnhancedTableHead extends React.Component {
@@ -120,7 +120,7 @@ const toolbarStyles = theme => ({
     },
     highlight:{
         color: theme.palette.secondary.main,
-        backgroundColor: theme.palette.secondary.main
+        backgroundColor: theme.palette.primary.main
     },
     spacer: {
         flex: '1 1 100%',
