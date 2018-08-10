@@ -3,6 +3,7 @@ import About from '../components/About';
 import Faq from '../components/Faq';
 import Datos from '../components/datos/Datos';
 import Sancionados from '../components/Sancionados/Sancionados';
+import Servidores from '../components/ServidoresIntervienenContrataciones/Index';
 
 const pdnRoutes = [
     {
@@ -24,6 +25,10 @@ const pdnRoutes = [
     {
         path: "/sancionados",
         component: Sancionados
+    },
+    {
+        path: "/servidores",
+        component: Servidores
     }
 ];
 
