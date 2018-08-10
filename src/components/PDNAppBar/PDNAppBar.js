@@ -30,7 +30,7 @@ const styles = theme => ({
     },
 });
 
-class Header extends React.Component {
+class PDNAppBar extends React.Component {
 
     render(){
         const {classes } = this.props;
@@ -88,8 +88,8 @@ class Header extends React.Component {
     }
 }
 
-Header.propTypes= {
+PDNAppBar.propTypes= {
     classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Header);
+export default withStyles(styles)(PDNAppBar);

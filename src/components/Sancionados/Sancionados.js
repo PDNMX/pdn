@@ -6,7 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import Tabs from './Tabs';
 //import Paper from '@material-ui/core/Paper';
 import BusquedaSancionados from './BusquedaSancionados';
-import Header from "../Header/Header";
+import Header from "../PDNAppBar/PDNAppBar";
 import Footer from "../Footer/Footer";
 
 const styles = theme => ({

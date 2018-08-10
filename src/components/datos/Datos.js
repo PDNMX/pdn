@@ -5,8 +5,8 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Tabla from './Tabla';
 import Busqueda from './Busqueda';
-import Header from "../Header/Header";
-import FooterBlog from "../Blog/FooterBlog";
+import Header from "../PDNAppBar/PDNAppBar";
+import FooterBlog from "../PDNLinks/PDNLinks";
 import Footer from "../Footer/Footer";
 
 const styles = theme => ({

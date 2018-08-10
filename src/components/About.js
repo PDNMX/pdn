@@ -4,7 +4,7 @@ import {withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
-import Header from "./Header/Header";
+import Header from "./PDNAppBar/PDNAppBar";
 const styles = theme => ({
     root: {
         flexGrow: 1,

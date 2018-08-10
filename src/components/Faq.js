@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import Header from "./Header/Header";
+import Header from "./PDNAppBar/PDNAppBar";
 
 const styles = theme => ({
     root: {

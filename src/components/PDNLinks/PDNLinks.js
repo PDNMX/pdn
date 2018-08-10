@@ -24,7 +24,7 @@ const styles = theme => ({
     }
 });
 
-function FooterBlog (props){
+function PDNLinks (props){
     const { classes } = props;
     return (
         <div className={classes.containerFooterBlog}>
@@ -50,4 +50,4 @@ function FooterBlog (props){
     );
 }
 
-export default withStyles(styles)(FooterBlog);
+export default withStyles(styles)(PDNLinks);
