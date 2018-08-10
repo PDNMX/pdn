@@ -5,9 +5,17 @@ import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Header from "./PDNAppBar/PDNAppBar";
+import PDNLinks from "./PDNLinks/PDNLinks";
+import Footer from "./Footer/Footer";
 
 const styles = theme => ({
-    root: {
+    root:{
+        flexGrow: 1,
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100vh'
+    },
+    contents: {
         flexGrow: 1,
         paddingTop: theme.spacing.unit * 5,
         paddingBottom: theme.spacing.unit * 5,
@@ -31,9 +39,9 @@ class Faq extends React.Component{
     render (){
         const { classes } = this.props;
         return (
-            <div>
+            <div className={classes.root}>
                 <Header/>
-                <div className={classes.root}>
+                <div className={classes.contents}>
                     <Grid container spacing={24}>
                         <Grid item xs={12}>
                             <Paper className={classes.paper}>
@@ -47,6 +55,8 @@ class Faq extends React.Component{
                         </Grid>
                     </Grid>
                 </div>
+                <PDNLinks/>
+                <Footer/>
             </div>
         );
     }
