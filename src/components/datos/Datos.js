@@ -4,14 +4,9 @@ import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Tabla from './Tabla';
-<<<<<<< HEAD
-import Header from "../Header/Header";
-import FooterBlog from "../Blog/FooterBlog";
-=======
-import Busqueda from './Busqueda';
+//import Busqueda from './Busqueda';
 import Header from "../PDNAppBar/PDNAppBar";
 import FooterBlog from "../PDNLinks/PDNLinks";
->>>>>>> dec2c5d1c93fd4d9d39321276367cfe59e45e4db
 import Footer from "../Footer/Footer";
 
 const styles = theme => ({
