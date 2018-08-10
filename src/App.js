@@ -9,14 +9,14 @@ import MuiThemeProvider from "@material-ui/core/es/styles/MuiThemeProvider";
 const theme = createMuiTheme({
     palette: {
         primary: {
-            main:'#00695c',
-            ligth:'#439889',
-            dark:'#003d33'
+            main:'#295c53',
+            ligth:'#56897f',
+            dark:'#00322b'
         },
         secondary: {
-            main: '#00bfa5',
-            ligth: "#5df2d6",
-            dark:'#008e76'
+            main: '#8fe19f',
+            ligth: "#c1ffd0",
+            dark:'#5eaf70'
         },
 
     },
