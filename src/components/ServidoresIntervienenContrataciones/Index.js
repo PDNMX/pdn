@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import PDNAppBar from '../PDNAppBar/PDNAppBar';
 import PDNLinks from '../PDNLinks/PDNLinks';
 import Footer from '../Footer/Footer';
+import Controles from './Controles';
+import Resultados from './Resultados'
 
 
 
@@ -24,7 +26,7 @@ const styles = theme => ({
             marginRight: theme.spacing.unit,
             marginTop: theme.spacing.unit,
             marginBottom: theme.spacing.unit
-        }
+        },
     },
     paper: {
         padding: theme.spacing.unit * 2,
@@ -45,11 +47,20 @@ class Index extends React.Component{
             <div className={classes.root}>
                 <PDNAppBar/>
                 <div className={classes.contents}>
-                    <Typography>
+                    <Typography variant="title">
                         Servidores que intervienen en procesos de contratación
                     </Typography>
+                    <Typography>
+                        Conoce quiénes son los servidores públicos que intervienen en las contrataciones públicas, el otorgamiento de licencias, permisos, concesiones y autorizaciones, así como en la enajenación de bienes muebles de la administración pública federal y en la asignación y emisión de dictámenes en materia de avalúos y justipreciación de rentas.
+                    </Typography>
+
+                    <br/>
+
+                    <Controles/>
+                    <Resultados/>
+
                 </div>
-                
+
                 <PDNLinks/>
                 <Footer/>
             </div>
