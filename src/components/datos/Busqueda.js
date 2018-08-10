@@ -14,17 +14,13 @@ const styles = theme => ({
         flexWrap: 'wrap',
     },
     textField: {
-        //marginLeft: theme.spacing.unit,
         marginRight: theme.spacing.unit,
-        width: 500,
     },
     menu: {
         width: 200,
     },
     formControl: {
-        //margin: theme.spacing.unit,
         minWidth: 120,
-       // marginTop:16
     },
 });
 
@@ -58,8 +54,9 @@ class Busqueda extends React.Component{
                             id: 'campo',
                         }}
                         input={<Input name="campo" id="campo" />}
+                        defaultValue={0}
                     >
-                        <MenuItem value="">
+                        <MenuItem value={0}>
                             <em>Sin filtro</em>
                         </MenuItem>
                         <MenuItem value={1}>Institución</MenuItem>

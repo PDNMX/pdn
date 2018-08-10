@@ -9,11 +9,9 @@ import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
-import {lighten} from '@material-ui/core/styles/colorManipulator';
 import fileJSON from '../../data/csvjson';
 import VerIcon from '@material-ui/icons/Launch';
 import Busqueda from "./Busqueda";
@@ -49,16 +47,32 @@ const columnData = [
     {id: 'url', numeric: false, disablePadding: false, label: 'Consultar', position: 6}
 ];
 
+const styles = theme => ({
+    root: {
+        width: '100%',
+        marginTop: theme.spacing.unit * 3,
+    },
+    table: {
+        minWidth: 1020,
+    },
+    tableWrapper: {
+        overflowX: 'auto',
+    },
+    tableHead:{
+        backgroundColor: theme.palette.secondary.light
+    }
+});
 class EnhancedTableHead extends React.Component {
     createSortHandler = property => event => {
         this.props.onRequestSort(event, property);
     };
 
+
     render() {
-        const {onSelectAllClick, order, orderBy, numSelected, rowCount} = this.props;
+        const {order, orderBy,classes} = this.props;
 
         return (
-            <TableHead>
+            <TableHead className={classes.tableHead}>
                 <TableRow>
                     {columnData.map(column => {
                         return (
@@ -98,21 +112,16 @@ EnhancedTableHead.propTypes = {
     orderBy: PropTypes.string.isRequired,
     rowCount: PropTypes.number.isRequired,
 };
+EnhancedTableHead = withStyles(styles)(EnhancedTableHead);
 
 const toolbarStyles = theme => ({
     root: {
         paddingRight: theme.spacing.unit,
     },
-    highlight:
-        theme.palette.type === 'light'
-            ? {
-                color: theme.palette.secondary.main,
-                backgroundColor: lighten(theme.palette.secondary.light, 0.85),
-            }
-            : {
-                color: theme.palette.text.primary,
-                backgroundColor: theme.palette.secondary.dark,
-            },
+    highlight:{
+        color: theme.palette.secondary.main,
+        backgroundColor: theme.palette.secondary.main
+    },
     spacer: {
         flex: '1 1 100%',
     },
@@ -126,76 +135,21 @@ const toolbarStyles = theme => ({
 
 
 let EnhancedTableToolbar = props => {
-    const {numSelected, classes} = props;
+    const {classes,searchValue,handleSearch,campo,handleChangeCampo} = props;
     return (
-
-        <Toolbar
-            /* className={classNames(classes.root, {
-               [classes.highlight]: numSelected > 0,
-           })}
-           */
-        >
-            <div className={classes.title}>
-                {/*
-                    {numSelected > 0 ? (
-                    <Typography color="inherit" variant="subheading">
-                        {numSelected} seleccionado
-                    </Typography>
-                ) : (
-                    <Typography variant="title" id="tableTitle">
-                        Conjunto de datos
-                    </Typography>
-                )}
-                */}
-                <Typography variant="title" id="tableTitle">
-                    Conjunto de datos
-                </Typography>
-
-
-            </div>
-            <div className={classes.spacer}/>
-            {/*
-                <div className={classes.actions}>
-                {numSelected > 0 ? (
-                    <Tooltip title="Borrar">
-                        <IconButton aria-label="Borrar">
-                            <DeleteIcon />
-                        </IconButton>
-                    </Tooltip>
-                ) : (
-                    <Tooltip title="Filtrar lista">
-                        <IconButton aria-label="Filtrar lista">
-                            <FilterListIcon />
-                        </IconButton>
-                    </Tooltip>
-                )}
-            </div>
-            */}
-
-
-        </Toolbar>
+        <Toolbar className={classes.highlight}>
+            <Busqueda handleSearch={handleSearch} value={searchValue}
+                      campo={campo} handleChangeCampo={handleChangeCampo}/>
+            </Toolbar>
     );
 };
 
 EnhancedTableToolbar.propTypes = {
-    classes: PropTypes.object.isRequired,
-    numSelected: PropTypes.number.isRequired,
+    classes: PropTypes.object.isRequired
 };
 
 EnhancedTableToolbar = withStyles(toolbarStyles)(EnhancedTableToolbar);
 
-const styles = theme => ({
-    root: {
-        width: '100%',
-        marginTop: theme.spacing.unit * 3,
-    },
-    table: {
-        minWidth: 1020,
-    },
-    tableWrapper: {
-        overflowX: 'auto',
-    },
-});
 
 class EnhancedTable extends React.Component {
     constructor(props) {
@@ -236,7 +190,6 @@ class EnhancedTable extends React.Component {
         }
         this.setState({selected: []});
     };
-
 
     handleClick = (event, id) => {
         const {selected} = this.state;
@@ -287,6 +240,7 @@ class EnhancedTable extends React.Component {
                             return retVal;
                         }
                     }
+                    return retVal;
                 })
                 return retVal;
             });
@@ -326,11 +280,9 @@ class EnhancedTable extends React.Component {
 
         return (
             <div>
-                <Busqueda handleSearch={this.handleSearch} value={this.state.searchValue}
-                          campo={this.state.campo} handleChangeCampo={this.handleChangeCampo}/>
                 <Paper className={classes.root}>
-
-                    <EnhancedTableToolbar numSelected={selected.length}/>
+                    <EnhancedTableToolbar campo={this.state.campo} handleChangeCampo = {this.handleChangeCampo}
+                        searchValue={this.state.searchValue} handleSearch={this.handleSearch}/>
                     <div className={classes.tableWrapper}>
                         <Table className={classes.table} aria-labelledby="tableTitle">
                             <EnhancedTableHead

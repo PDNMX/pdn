@@ -3,7 +3,6 @@ import Grid from '@material-ui/core/Grid';
 import Card from '../components/SimpleCard'
 import Header from '../components/Header/Header';
 import Footer from "./Footer/Footer";
-import Typography from "@material-ui/core/Typography";
 import img1 from "../assets/img/BI.png";
 import img2 from "../assets/img/contratacion.jpg";
 import img3 from "../assets/img/bar_chart.png";
@@ -14,8 +13,7 @@ import Banner from "./Banner";
 import FooterBlog from "./Blog/FooterBlog";
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-
-
+import Typography from "@material-ui/core/Typography/Typography";
 
 const charts1 = [
     {'key': '1', 'title': 'Declaraciones 3x3', 'content': img1, 'to': '/datos'},
@@ -60,7 +58,6 @@ const styles = theme => ({
 
 class Home extends React.Component {
     render() {
-
         const {classes} = this.props;
         return (
             <div className={classes.root}>
@@ -83,31 +80,6 @@ class Home extends React.Component {
                             })
                         }
 
-                        {/*<div className="App-intro">*/}
-
-                        {/*
-
-
-                    {charts1.map((prop, key) => (
-                        <Grid item key={prop.key} xs={4}>
-                            <Card titleCard={prop.title} content={prop.content} to={prop.to}/>
-                        </Grid>
-                    ))}
-
-                    {charts2.map((prop, key) => (
-                        <Grid key={prop.title} xs={4}>
-                            <Card titleCard={prop.title} content={prop.content} to={prop.to}/>
-                        </Grid>
-                    ))}
-
-
-
-                        */}
-
-
-
-
-                        {/*</div>*/}
                     </Grid>
                 </div>
                 <FooterBlog/>
