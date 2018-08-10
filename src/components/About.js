@@ -4,9 +4,17 @@ import {withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
-import Header from "./Header/Header";
+import PDNAppBar from "./PDNAppBar/PDNAppBar";
+import PDNLinks from "./PDNLinks/PDNLinks";
+import Footer from "./Footer/Footer";
 const styles = theme => ({
     root: {
+        flexGrow: 1,
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100vh'
+    },
+    contents: {
         flexGrow: 1,
         paddingTop: theme.spacing.unit * 5,
         paddingBottom: theme.spacing.unit * 5,
@@ -33,9 +41,9 @@ class About extends React.Component {
         const { classes } = this.props;
 
         return (
-            <div>
-                <Header/>
-                <div className={classes.root}>
+            <div className={classes.root}>
+                <PDNAppBar/>
+                <div className={classes.contents}>
                     <Grid container spacing={24}>
                         <Grid item xs={12}>
                             <Paper className = {classes.paper}>
@@ -49,6 +57,8 @@ class About extends React.Component {
                         </Grid>
                     </Grid>
                 </div>
+                <PDNLinks/>
+                <Footer/>
             </div>
         );
     }

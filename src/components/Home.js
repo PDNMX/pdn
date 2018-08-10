@@ -1,7 +1,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Card from '../components/SimpleCard'
-import Header from '../components/Header/Header';
+import Header from './PDNAppBar/PDNAppBar';
 import Footer from "./Footer/Footer";
 import img1 from "../assets/img/BI.png";
 import img2 from "../assets/img/contratacion.jpg";
@@ -10,7 +10,7 @@ import img4 from "../assets/img/reporting.png";
 import img5 from "../assets/img/sancion.jpg";
 import img6 from '../assets/img/Auditoria.jpg';
 import Banner from "./Banner";
-import FooterBlog from "./Blog/FooterBlog";
+import FooterBlog from "./PDNLinks/PDNLinks";
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Typography from "@material-ui/core/Typography/Typography";
