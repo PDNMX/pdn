@@ -18,6 +18,9 @@ const theme = createMuiTheme({
             ligth: "#c1ffd0",
             dark:'#5eaf70'
         },
+        fontLigth:{
+            color:"#e0e0e0"
+        }
     },
     overrides:{
         MuiTableHead:{
