@@ -20,7 +20,7 @@ let counter = 0;
 
 function createData(institucion, abreviacion, unidadResponsable, registroBase, descripcion, url) {
     counter += 1;
-    var item = {
+    let item = {
         id: counter,
         institucion: institucion,
         abreviacion: abreviacion,
@@ -221,9 +221,7 @@ class EnhancedTable extends React.Component {
     isSelected = id => this.state.selected.indexOf(id) !== -1;
 
     handleSearch = event => {
-        const {data} = this.state;
-        const {campo} = this.state;
-        const {searchValue} = this.state;
+        const {data, campo, searchValue} = this.state;
         let filteredDatas = [];
         const regex = new RegExp(searchValue, 'gi');
 
@@ -239,7 +237,7 @@ class EnhancedTable extends React.Component {
                         }
                     }
                     return retVal;
-                })
+                });
                 return retVal;
             });
         } else {
@@ -263,7 +261,7 @@ class EnhancedTable extends React.Component {
     };
 
     handleChangeCampo = event => {
-        var valor = event.target.value;
+        let valor = event.target.value;
         this.setState({campo: valor}, () => {
             if (this.state.searchValue)
                 this.handleSearch();
