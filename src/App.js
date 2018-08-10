@@ -18,8 +18,15 @@ const theme = createMuiTheme({
             ligth: "#c1ffd0",
             dark:'#5eaf70'
         },
-
     },
+    overrides:{
+        MuiTableHead:{
+            root:{
+                backgroundColor: '#8fe19f'
+            }
+        }
+    }
+
 });
 
 const p404 = () => {

@@ -58,9 +58,7 @@ const styles = theme => ({
     tableWrapper: {
         overflowX: 'auto',
     },
-    tableHead:{
-        backgroundColor: theme.palette.secondary.main
-    }
+
 });
 class EnhancedTableHead extends React.Component {
     createSortHandler = property => event => {
@@ -72,7 +70,7 @@ class EnhancedTableHead extends React.Component {
         const {order, orderBy,classes} = this.props;
 
         return (
-            <TableHead className={classes.tableHead}>
+            <TableHead>
                 <TableRow>
                     {columnData.map(column => {
                         return (
