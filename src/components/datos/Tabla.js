@@ -337,7 +337,7 @@ class EnhancedTable extends React.Component {
                     </div>
                     <TablePagination
                         component="div"
-                        count={data.length}
+                        count={filterData.length}
                         rowsPerPage={rowsPerPage}
                         page={page}
                         backIconButtonProps={{
