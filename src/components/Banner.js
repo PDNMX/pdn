@@ -35,7 +35,7 @@ class Banner extends React.Component {
                 <div className={classes.container}>
                     <Grid container spacing={24}>
                         <Grid item xs={12} align="center">
-                            <Typography variant="display2" style={{color: "#f5f5f5", paddingTop: '30px'}}>
+                            <Typography variant="display2" style={{color: "#f5f5f5", paddingTop: '55px'}}>
                                 Plataforma Digital Nacional
                             </Typography>
                             <Typography variant="subheading" style={{color: '#f5f5f5', paddingTop: '10px'}}>

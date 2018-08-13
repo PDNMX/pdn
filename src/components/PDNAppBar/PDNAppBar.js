@@ -14,7 +14,7 @@ import IconButton from '@material-ui/core/IconButton';
 const styles = theme => ({
     root: {
         flexGrow: 1,
-        marginBottom: theme.spacing.unit * 1.5
+        marginBottom: theme.spacing.unit * 1.7
     },
     flex: {
         flexGrow: 1,
