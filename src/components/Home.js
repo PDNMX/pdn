@@ -24,7 +24,6 @@ const charts1 = [
     {'key': '6', 'title': 'Comunicación del Sistema Nacional de Fiscalización', 'content': img6, 'to': '/datos'}
 ];
 
-
 const styles = theme => ({
     root: {
         flexGrow: 1,
@@ -53,6 +52,12 @@ const styles = theme => ({
     },
     appBar: {
         marginBottom: theme.spacing.unit * 5
+    },
+    p: {
+        marginBottom: theme.spacing.unit * 2
+    },
+    gridItem: {
+        marginBottom: theme.spacing.unit * 2
     }
 });
 
@@ -66,14 +71,14 @@ class Home extends React.Component {
                 <div className={classes.homeBody}>
                     <Grid container  justify="center" spacing={12}>
                         <Grid item xs={12}>
-                            <Typography variant={"headline"}>
+                            <Typography variant="headline" className={classes.p}>
                                 Explora los sistemas de la PDN
                             </Typography>
                         </Grid>
                         {
                             charts1.map((prop, key) => {
                                 return (
-                                    <Grid item lg={4} md={6} sm={12} key={key} style={{marginBottom:"10px"}}>
+                                    <Grid item lg={4} md={6} sm={12} key={key} className={classes.gridItem}>
                                         <Card titleCard={prop.title} content={prop.content} to={prop.to}/>
                                     </Grid>
                                 );
