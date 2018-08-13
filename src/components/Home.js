@@ -3,11 +3,11 @@ import Grid from '@material-ui/core/Grid';
 import Card from '../components/SimpleCard'
 import Header from './PDNAppBar/PDNAppBar';
 import Footer from "./Footer/Footer";
-import img1 from "../assets/img/helloquence-51716-unsplash.jpg";
-import img2 from "../assets/img/servidores.jpg";
+import img1 from "../assets/img/tresportresl.jpg";
+import img2 from "../assets/img/servidoresl.jpg";
 import img3 from "../assets/img/contrataciones.jpg";
-import img4 from "../assets/img/arnaud-jaegers-253360-unsplash.jpg";
-import img5 from "../assets/img/sancionados.jpg";
+import img4 from "../assets/img/denunciasl.jpg";
+import img5 from "../assets/img/sancionadosl.jpg";
 import img6 from '../assets/img/fiscal.jpg';
 import Banner from "./Banner";
 import FooterBlog from "./PDNLinks/PDNLinks";
