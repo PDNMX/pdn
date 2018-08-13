@@ -118,7 +118,7 @@ const toolbarStyles = theme => ({
         flex: '0 0 auto',
     },
 });
-
+/*
 let EnhancedTableToolbar = props => {
     const { numSelected, classes } = props;
 
@@ -165,6 +165,7 @@ EnhancedTableToolbar.propTypes = {
 };
 
 EnhancedTableToolbar = withStyles(toolbarStyles)(EnhancedTableToolbar);
+*/
 
 const styles = theme => ({
     root: {
@@ -264,7 +265,7 @@ class EnhancedTable extends React.Component {
 
         return (
             <Paper className={classes.root}>
-                <EnhancedTableToolbar numSelected={selected.length} />
+                {/*<EnhancedTableToolbar numSelected={selected.length} />*/}
                 <div className={classes.tableWrapper}>
                     <Table className={classes.table} aria-labelledby="tableTitle">
                         <EnhancedTableHead
@@ -285,7 +286,7 @@ class EnhancedTable extends React.Component {
                                         <TableRow
                                             hover
                                             onClick={event => this.handleClick(event, n.id)}
-                                            role="checkbox"
+                                            //role="checkbox"
                                             aria-checked={isSelected}
                                             tabIndex={-1}
                                             key={n.id}

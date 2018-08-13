@@ -20,7 +20,7 @@ let counter = 0;
 
 function createData(institucion, abreviacion, unidadResponsable, registroBase, descripcion, url) {
     counter += 1;
-    let item = {
+    return {
         id: counter,
         institucion: institucion,
         abreviacion: abreviacion,
@@ -29,7 +29,7 @@ function createData(institucion, abreviacion, unidadResponsable, registroBase, d
         descripcion: descripcion,
         url: url
     };
-    return item;
+    //return item;
 }
 
 function getSorting(order, orderBy) {

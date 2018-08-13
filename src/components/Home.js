@@ -73,7 +73,7 @@ class Home extends React.Component {
                         {
                             charts1.map((prop, key) => {
                                 return (
-                                    <Grid item md={4} sm={12} key={key} style={{marginBottom:"10px"}}>
+                                    <Grid item lg={4} md={6} sm={12} key={key} style={{marginBottom:"10px"}}>
                                         <Card titleCard={prop.title} content={prop.content} to={prop.to}/>
                                     </Grid>
                                 );
