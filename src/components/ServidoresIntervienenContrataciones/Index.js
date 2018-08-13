@@ -54,8 +54,6 @@ class Index extends React.Component{
                         Conoce quiénes son los servidores públicos que intervienen en las contrataciones públicas, el otorgamiento de licencias, permisos, concesiones y autorizaciones, así como en la enajenación de bienes muebles de la administración pública federal y en la asignación y emisión de dictámenes en materia de avalúos y justipreciación de rentas.
                     </Typography>
 
-                    <br/>
-
                     <Controles/>
                     <Resultados/>
 
