@@ -318,6 +318,7 @@ class EnhancedTable extends React.Component {
                                                 <TableCell>{n.contrataciones}</TableCell>
                                                 <TableCell>{n.concesionesLicencias}</TableCell>
                                                 <TableCell>{n.enajenacion}</TableCell>
+                                                <TableCell>{n.dictamenes}</TableCell>
                                             </TableRow>
                                         );
                                     })}
