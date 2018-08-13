@@ -28,7 +28,9 @@ const styles = theme => ({
     fontLight: {
         color: theme.palette.fontLight.color,
     },
-
+    '&$focus': {
+        color: theme.palette.fontLight.color,
+    }
 });
 
 
