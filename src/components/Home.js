@@ -3,12 +3,12 @@ import Grid from '@material-ui/core/Grid';
 import Card from '../components/SimpleCard'
 import Header from './PDNAppBar/PDNAppBar';
 import Footer from "./Footer/Footer";
-import img1 from "../assets/img/img1.jpg";
-import img2 from "../assets/img/img2.png";
-import img3 from "../assets/img/img3.png";
-import img4 from "../assets/img/img4.jpg";
-import img5 from "../assets/img/img5.jpg";
-import img6 from '../assets/img/img6.png';
+import img1 from "../assets/img/helloquence-51716-unsplash.jpg";
+import img2 from "../assets/img/stephen-dawson-670638-unsplash.jpg";
+import img3 from "../assets/img/jezael-melgoza-128525-unsplash.jpg";
+import img4 from "../assets/img/arnaud-jaegers-253360-unsplash.jpg";
+import img5 from "../assets/img/mikhail-pavstyuk-8436-unsplash.jpg";
+import img6 from '../assets/img/carlos-muza-84523-unsplash.jpg';
 import Banner from "./Banner";
 import FooterBlog from "./PDNLinks/PDNLinks";
 import {withStyles} from '@material-ui/core/styles';
@@ -35,7 +35,7 @@ const styles = theme => ({
             marginRight: '100px',
             marginTop: theme.spacing.unit * 2,
             marginBottom: theme.spacing.unit * 2,
-            padding:20
+
 
         },
         [theme.breakpoints.down('sm')]:{
