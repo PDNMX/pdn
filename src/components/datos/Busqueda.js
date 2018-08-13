@@ -7,7 +7,7 @@ import Select from "@material-ui/core/Select/Select";
 import InputLabel from "@material-ui/core/InputLabel/InputLabel";
 import FormControl from "@material-ui/core/FormControl/FormControl";
 import Input from "@material-ui/core/Input/Input";
-import purple from "@material-ui/core/es/colors/purple";
+//mport purple from "@material-ui/core/es/colors/purple";
 
 const styles = theme => ({
     container: {
@@ -21,10 +21,15 @@ const styles = theme => ({
     menu: {
         width: 200,
     },
-    formControl: {
-        minWidth: 120,
+    formControlSelect: {
+        minWidth: 150,
         marginRight:10,
     },
+    formControlText: {
+        minWidth: 300,
+        marginRight:10,
+    },
+
     fontLight: {
         color: theme.palette.fontLight.color,
     },
@@ -40,7 +45,7 @@ class Busqueda extends React.Component{
         return (
             <div>
                 <form className={classes.container} noValidate autoComplete='on' >
-                    <FormControl className={classes.formControl} margin="normal">
+                    <FormControl className={classes.formControlSelect} margin="normal">
                         <InputLabel htmlFor="campoSelect" className={classes.fontLight}>Por campo</InputLabel>
                         <Select
                             value={campo}
@@ -61,7 +66,8 @@ class Busqueda extends React.Component{
                             <MenuItem value={2}>Abreviatura</MenuItem>
                         </Select>
                     </FormControl>
-                    <FormControl className={classes.formControl}>
+
+                    <FormControl className={classes.formControlText}>
                         <TextField
                             id="search"
                             label="Buscar datos"
