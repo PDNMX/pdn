@@ -13,8 +13,13 @@ const styles = theme => ({
 
         },
         [theme.breakpoints.down('sm')]:{
-            height: 25* theme.spacing.unit,
+            height: 28* theme.spacing.unit,
             width: 250
+        },
+        [theme.breakpoints.up('xl')]:{
+            height: 53* theme.spacing.unit,
+            width: '100%'
+
         },
 
     },

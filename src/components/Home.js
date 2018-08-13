@@ -27,6 +27,7 @@ const charts1 = [
 const styles = theme => ({
     root: {
         flexGrow: 1,
+
     },
     homeBody:{
         [theme.breakpoints.up('sm')]:{
@@ -34,14 +35,15 @@ const styles = theme => ({
             marginRight: '100px',
             marginTop: theme.spacing.unit * 2,
             marginBottom: theme.spacing.unit * 2,
-            flexGrow: 1,
+            padding:20
+
         },
         [theme.breakpoints.down('sm')]:{
             marginLeft: theme.spacing.unit,
             marginRight: theme.spacing.unit,
             marginTop: theme.spacing.unit,
             marginBottom: theme.spacing.unit,
-            flexGrow: 1,
+            padding:20
         }
     },
     paper: {
