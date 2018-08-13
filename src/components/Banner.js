@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
     bgImg:{
-        height: '250px',
+        height: '270px',
         backgroundImage: 'url(/Header1.png)',/*'url(/BannereDark_PDN.png)',*/
         /*padding: '50px 0',*/
         backgroundPosition:'bottom',
@@ -24,6 +24,15 @@ const styles = theme => ({
             marginLeft: theme.spacing.unit,
             marginRight: theme.spacing.unit
         }
+    },
+    pdn: {
+        [theme.breakpoints.up('sm')]:{
+            paddingTop: '55px'
+        },
+        [theme.breakpoints.down('sm')]:{
+            paddingTop: '15px'
+
+        }
     }
 });
 
@@ -35,10 +44,10 @@ class Banner extends React.Component {
                 <div className={classes.container}>
                     <Grid container spacing={24}>
                         <Grid item xs={12} align="center">
-                            <Typography variant="display2" style={{color: "#f5f5f5", paddingTop: '30px'}}>
+                            <Typography className={classes.pdn} variant="display2" >
                                 Plataforma Digital Nacional
                             </Typography>
-                            <Typography variant="subheading" style={{color: '#f5f5f5', paddingTop: '10px'}}>
+                            <Typography variant="subheading" style={{  paddingTop: '10px'}}>
                                 Inteligencia de datos anticorrupción
                             </Typography>
 

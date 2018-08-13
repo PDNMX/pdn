@@ -48,19 +48,19 @@ class EnhancedTableHead extends React.Component {
         return (
             <TableHead>
                 <TableRow>
-                    <TableCell padding="checkbox">
+                    {/*<TableCell padding="checkbox">
                         <Checkbox
                             indeterminate={numSelected > 0 && numSelected < rowCount}
                             checked={numSelected === rowCount}
                             onChange={onSelectAllClick}
                         />
-                    </TableCell>
+                    </TableCell>*/}
                     {columnData.map(column => {
                         return (
                             <TableCell
                                 key={column.id}
                                 numeric={column.numeric}
-                                padding={column.disablePadding ? 'none' : 'default'}
+                                //padding={column.disablePadding ? 'none' : 'default'}
                                 sortDirection={orderBy === column.id ? order : false}
                             >
                                 <Tooltip
@@ -118,7 +118,7 @@ const toolbarStyles = theme => ({
         flex: '0 0 auto',
     },
 });
-
+/*
 let EnhancedTableToolbar = props => {
     const { numSelected, classes } = props;
 
@@ -165,6 +165,7 @@ EnhancedTableToolbar.propTypes = {
 };
 
 EnhancedTableToolbar = withStyles(toolbarStyles)(EnhancedTableToolbar);
+*/
 
 const styles = theme => ({
     root: {
@@ -264,7 +265,7 @@ class EnhancedTable extends React.Component {
 
         return (
             <Paper className={classes.root}>
-                <EnhancedTableToolbar numSelected={selected.length} />
+                {/*<EnhancedTableToolbar numSelected={selected.length} />*/}
                 <div className={classes.tableWrapper}>
                     <Table className={classes.table} aria-labelledby="tableTitle">
                         <EnhancedTableHead
@@ -280,21 +281,21 @@ class EnhancedTable extends React.Component {
                                 .sort(getSorting(order, orderBy))
                                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                 .map(n => {
-                                    const isSelected = this.isSelected(n.id);
+                                    //const isSelected = this.isSelected(n.id);
                                     return (
                                         <TableRow
                                             hover
                                             onClick={event => this.handleClick(event, n.id)}
-                                            role="checkbox"
-                                            aria-checked={isSelected}
+                                            //role="checkbox"
+                                            //aria-checked={isSelected}
                                             tabIndex={-1}
                                             key={n.id}
-                                            selected={isSelected}
+                                            //selected={isSelected}
                                         >
-                                            <TableCell padding="checkbox">
+                                            {/*<TableCell padding="checkbox">
                                                 <Checkbox checked={isSelected} />
-                                            </TableCell>
-                                            <TableCell component="th" scope="row" padding="none">
+                                            </TableCell>*/}
+                                            <TableCell component="th" scope="row" >
                                                 {n.name}
                                             </TableCell>
                                             <TableCell numeric>{n.calories}</TableCell>

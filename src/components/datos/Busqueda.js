@@ -25,13 +25,12 @@ const styles = theme => ({
         minWidth: 120,
         marginRight:10,
     },
-    fontLigth: {
-        color: theme.palette.fontLigth.color,
-        },
-        '&$focus': {
-            color: theme.palette.fontLigth.color,
-        },
-
+    fontLight: {
+        color: theme.palette.fontLight.color,
+    },
+    '&$focus': {
+        color: theme.palette.fontLight.color,
+    }
 });
 
 
@@ -40,46 +39,46 @@ class Busqueda extends React.Component{
         const { classes,handleSearch,value,handleChangeCampo,campo } = this.props;
         return (
             <div>
-            <form className={classes.container} noValidate autoComplete='on' >
-                <FormControl className={classes.formControl} margin="normal">
-                    <InputLabel htmlFor="campoSelect" className={classes.fontLigth}>Por campo</InputLabel>
-                    <Select
-                        value={campo}
-                        onChange={handleChangeCampo}
-                        name="campoSelect"
-                        inputProps={{
-                            name: 'campo',
-                            id: 'campo',
-                            className:classes.fontLigth
-                        }}
-                        input={<Input name="campo" id="campo" />}
-                        defaultValue={0}
-                    >
-                        <MenuItem value={0}>
-                            <em>Sin filtro</em>
-                        </MenuItem>
-                        <MenuItem value={1}>Institución</MenuItem>
-                        <MenuItem value={2}>Abreviatura</MenuItem>
-                    </Select>
-                </FormControl>
-                <FormControl className={classes.formControl}>
-                    <TextField
-                        id="search"
-                        label="Buscar datos"
-                        type="search"
-                        className={classes.textField}
-                        margin="normal"
-                        onChange={handleSearch}
-                        value={value}
-                        InputProps={{
-                            className: classes.fontLigth
-                        }}
-                        InputLabelProps={{className: classes.fontLigth}}
-                    />
+                <form className={classes.container} noValidate autoComplete='on' >
+                    <FormControl className={classes.formControl} margin="normal">
+                        <InputLabel htmlFor="campoSelect" className={classes.fontLight}>Por campo</InputLabel>
+                        <Select
+                            value={campo}
+                            onChange={handleChangeCampo}
+                            name="campoSelect"
+                            inputProps={{
+                                name: 'campo',
+                                id: 'campo',
+                                className:classes.fontLight
+                            }}
+                            input={<Input name="campo" id="campo" />}
+                            defaultValue={0}
+                        >
+                            <MenuItem value={0}>
+                                <em>Todos</em>
+                            </MenuItem>
+                            <MenuItem value={1}>Institución</MenuItem>
+                            <MenuItem value={2}>Abreviatura</MenuItem>
+                        </Select>
+                    </FormControl>
+                    <FormControl className={classes.formControl}>
+                        <TextField
+                            id="search"
+                            label="Buscar datos"
+                            type="search"
+                            className={classes.textField}
+                            margin="normal"
+                            onChange={handleSearch}
+                            value={value}
+                            InputProps={{
+                                className: classes.fontLight
+                            }}
+                            InputLabelProps={{className: classes.fontLight}}
+                        />
 
-                </FormControl>
+                    </FormControl>
 
-            </form>
+                </form>
             </div>
         );
     }
