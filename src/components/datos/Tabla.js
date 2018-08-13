@@ -138,7 +138,7 @@ let EnhancedTableToolbar = props => {
         <Toolbar className={classes.highlight}>
             <Busqueda handleSearch={handleSearch} value={searchValue}
                       campo={campo} handleChangeCampo={handleChangeCampo}/>
-            </Toolbar>
+        </Toolbar>
     );
 };
 
