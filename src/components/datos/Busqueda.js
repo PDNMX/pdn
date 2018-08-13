@@ -7,6 +7,9 @@ import Select from "@material-ui/core/Select/Select";
 import InputLabel from "@material-ui/core/InputLabel/InputLabel";
 import FormControl from "@material-ui/core/FormControl/FormControl";
 import Input from "@material-ui/core/Input/Input";
+import InputAdornment from "@material-ui/core/InputAdornment/InputAdornment";
+import IconButton from "@material-ui/core/IconButton/IconButton";
+import Visibility from "@material-ui/icons/Search";
 //mport purple from "@material-ui/core/es/colors/purple";
 
 const styles = theme => ({
@@ -54,7 +57,7 @@ class Busqueda extends React.Component{
                             inputProps={{
                                 name: 'campo',
                                 id: 'campo',
-                                className:classes.fontLight
+                                className:classes.fontLight,
                             }}
                             input={<Input name="campo" id="campo" />}
                             defaultValue={0}
@@ -77,7 +80,13 @@ class Busqueda extends React.Component{
                             onChange={handleSearch}
                             value={value}
                             InputProps={{
-                                className: classes.fontLight
+                                className: classes.fontLight,
+                                endAdornment:
+                                    <InputAdornment position="end">
+                                        <IconButton className={classes.fontLight}>
+                                            <Visibility />
+                                        </IconButton>
+                                    </InputAdornment>
                             }}
                             InputLabelProps={{className: classes.fontLight}}
                         />
