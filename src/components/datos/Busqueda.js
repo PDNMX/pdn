@@ -28,6 +28,9 @@ const styles = theme => ({
     fontLigth: {
         color: theme.palette.fontLigth.color,
         },
+        '&$focus': {
+            color: theme.palette.fontLigth.color,
+        },
 
 });
 
