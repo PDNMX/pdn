@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
     bgImg:{
-        height: '270px',
+        height: '300px',
         backgroundImage: 'url(/Header1.png)',/*'url(/BannereDark_PDN.png)',*/
         /*padding: '50px 0',*/
         backgroundPosition:'bottom',
@@ -27,10 +27,10 @@ const styles = theme => ({
     },
     pdn: {
         [theme.breakpoints.up('sm')]:{
-            paddingTop: '55px'
+            paddingTop: '75px'
         },
         [theme.breakpoints.down('sm')]:{
-            paddingTop: '15px'
+            paddingTop: '40px'
 
         }
     }

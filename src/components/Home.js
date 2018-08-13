@@ -5,7 +5,7 @@ import Header from './PDNAppBar/PDNAppBar';
 import Footer from "./Footer/Footer";
 import img1 from "../assets/img/helloquence-51716-unsplash.jpg";
 import img2 from "../assets/img/stephen-dawson-670638-unsplash.jpg";
-import img3 from "../assets/img/jezael-melgoza-128525-unsplash.jpg";
+import img3 from "../assets/img/contrataciones.jpg";
 import img4 from "../assets/img/arnaud-jaegers-253360-unsplash.jpg";
 import img5 from "../assets/img/mikhail-pavstyuk-8436-unsplash.jpg";
 import img6 from '../assets/img/carlos-muza-84523-unsplash.jpg';
