@@ -2,40 +2,28 @@ import React from 'react';
 import {withStyles} from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
-import PDNAppBar from '../PDNAppBar/PDNAppBar';
-import PDNLinks from '../PDNLinks/PDNLinks';
 import Footer from '../Footer/Footer';
-import Controles from './Controles';
-import Resultados from './Resultados'
-
+import Tabs from "./Tabs";
+import Grid from "@material-ui/core/Grid/Grid";
+import Header from "../PDNAppBar/PDNAppBar";
 
 
 const styles = theme => ({
     root: {
-        flexGrow: 1
-    },
-    contents :{
+        flexGrow: 1,
         [theme.breakpoints.up('sm')]:{
             marginLeft: '100px',
             marginRight: '100px',
-            marginTop: theme.spacing.unit * 2,
-            marginBottom: theme.spacing.unit * 2
+            paddingTop: theme.spacing.unit,
+            paddingBottom: theme.spacing.unit *3
         },
         [theme.breakpoints.down('sm')]:{
             marginLeft: theme.spacing.unit,
             marginRight: theme.spacing.unit,
-            marginTop: theme.spacing.unit,
-            marginBottom: theme.spacing.unit
-        },
+            paddingTop: theme.spacing.unit,
+            paddingBottom: theme.spacing.unit,
+        }
     },
-    paper: {
-        padding: theme.spacing.unit * 2,
-        //marginRight: theme.spacing.unit * 4,
-        //marginLeft: theme.spacing.unit * 4,
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
-    },
-
 });
 
 class Index extends React.Component{
@@ -44,22 +32,27 @@ class Index extends React.Component{
         const {classes} = this.props;
 
         return (
-            <div className={classes.root}>
-                <PDNAppBar/>
-                <div className={classes.contents}>
-                    <Typography variant="title">
-                        Servidores que intervienen en procesos de contratación
-                    </Typography>
-                    <Typography>
-                        Conoce quiénes son los servidores públicos que intervienen en las contrataciones públicas, el otorgamiento de licencias, permisos, concesiones y autorizaciones, así como en la enajenación de bienes muebles de la administración pública federal y en la asignación y emisión de dictámenes en materia de avalúos y justipreciación de rentas.
-                    </Typography>
-
-                    <Controles/>
-                    <Resultados/>
-
+            <div>
+                <Header/>
+                <div className={classes.root}>
+                    <Grid containter spacing={24}>
+                        <Grid item xs={12}>
+                            <Typography variant="title">
+                                Servidores que intervienen en procesos de contratación
+                            </Typography>
+                            <Typography>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                                mollit anim id est laborum.
+                            </Typography>
+                            <br/>
+                            <Tabs/>
+                        </Grid>
+                    </Grid>
                 </div>
-
-                <PDNLinks/>
                 <Footer/>
             </div>
         );

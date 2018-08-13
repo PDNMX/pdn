@@ -12,22 +12,24 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Paper from '@material-ui/core/Paper';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
-import fileJSON from '../../data/csvjson';
+import fileJSON from '../../data/servidorPublico';
 import VerIcon from '@material-ui/icons/Launch';
-import Busqueda from "./Busqueda";
+import BusquedaServidor from "./BusquedaServidor";
 
 let counter = 0;
 
-function createData(institucion, abreviacion, unidadResponsable, registroBase, descripcion, url) {
+function createData(servidor, institucion,puesto,tipoArea,contrataciones,concesionesLicencias,enajenacion,dictamenes) {
     counter += 1;
     return {
         id: counter,
+        servidor: servidor,
         institucion: institucion,
-        abreviacion: abreviacion,
-        unidadResponsable: unidadResponsable,
-        registroBase: registroBase,
-        descripcion: descripcion,
-        url: url
+        puesto: puesto,
+        tipoArea:tipoArea,
+        contrataciones:contrataciones,
+        concesionesLicencias:concesionesLicencias,
+        enajenacion:enajenacion,
+        dictamenes:dictamenes
     };
     //return item;
 }
@@ -39,12 +41,14 @@ function getSorting(order, orderBy) {
 }
 
 const columnData = [
-    {id: 'institucion', numeric: false, disablePadding: false, label: 'Institución', position: 1},
-    {id: 'abreviacion', numeric: false, disablePadding: false, label: 'Abreviatura', position: 2},
-    {id: 'unidadResponsable', numeric: false, disablePadding: false, label: 'Unidad Responsable', position: 3},
-    {id: 'registroBase', numeric: false, disablePadding: false, label: 'Registro Base', position: 4},
-    {id: 'descipcripcion', numeric: false, disablePadding: false, label: 'Descripción', position: 5},
-    {id: 'url', numeric: false, disablePadding: false, label: 'Consultar', position: 6}
+    {id: 'servidor', numeric: false, disablePadding: false, label: 'Servidor público', position: 1},
+    {id: 'institucion', numeric: false, disablePadding: false, label: 'Institución', position: 2},
+    {id: 'puesto', numeric: false, disablePadding: false, label: 'Puesto', position: 3},
+    {id: 'tipoArea', numeric: false, disablePadding: false, label: 'Tipo de área', position: 4},
+    {id: 'contrataciones', numeric: false, disablePadding: false, label: 'Contrataciones públicas', position: 5},
+    {id: 'concesionesLicencias', numeric: false, disablePadding: false, label: 'Concesiones, licencias, permisos, autorizaciones y prórrogas', position: 6},
+    {id: 'enajenacion', numeric: false, disablePadding: false, label: 'Enajenación de bienes muebles', position: 7},
+    {id: 'dictamenes', numeric: false, disablePadding: false, label: 'Asignación y emisión de dictámenes de avalúos nacionales', position: 8},
 ];
 
 const styles = theme => ({
@@ -136,7 +140,7 @@ let EnhancedTableToolbar = props => {
     const {classes,searchValue,handleSearch,campo,handleChangeCampo} = props;
     return (
         <Toolbar className={classes.highlight}>
-            <Busqueda handleSearch={handleSearch} value={searchValue}
+            <BusquedaServidor handleSearch={handleSearch} value={searchValue}
                       campo={campo} handleChangeCampo={handleChangeCampo}/>
         </Toolbar>
     );
@@ -153,13 +157,13 @@ class EnhancedTable extends React.Component {
     constructor(props) {
         super(props);
         let dataAux = fileJSON.map((item, key) => {
-                return createData(item.institucion, item.abreviacion, item.unidad_responsable, item.sistema_registro_base, item.descripcion, item.url_conjunto)
+                return createData(item.SERVIDOR_PUBLICO, item.INSTITUCION, item.PUESTO,item.TIPO_AREA,item.CONTRATACIONES_PUBLICAS,item.CONCESIONES_LICENCIAS_PERMISOS_AUTORIZACIONES_PRORROGAS, item.ENAJENACION_DE_BIENES_MUEBLES,item.ASIGNACION_EMISION_DE_DICTAMENES_DE_AVALUOS_NACIONALES)
             }
         );
 
         this.state = {
             order: 'asc',
-            orderBy: 'institucion',
+            orderBy: 'servidor',
             selected: [],
             searchValue: '',
             data: dataAux,
@@ -223,8 +227,8 @@ class EnhancedTable extends React.Component {
     handleSearch = event => {
         const {data, campo, searchValue} = this.state;
         let filteredDatas = [];
-        let x = event ? event.target.value : searchValue;
-        const regex = new RegExp(x, 'gi');
+        const regex = new RegExp(searchValue, 'gi');
+
         if (campo === 0) {
             filteredDatas = data.filter(e => {
                 let mathesItems = Object.values(e);
@@ -278,7 +282,7 @@ class EnhancedTable extends React.Component {
             <div>
                 <Paper className={classes.root}>
                     <EnhancedTableToolbar campo={this.state.campo} handleChangeCampo = {this.handleChangeCampo}
-                        searchValue={this.state.searchValue} handleSearch={this.handleSearch}/>
+                                          searchValue={this.state.searchValue} handleSearch={this.handleSearch}/>
                     <div className={classes.tableWrapper}>
                         <Table className={classes.table} aria-labelledby="tableTitle">
                             <EnhancedTableHead
@@ -306,22 +310,15 @@ class EnhancedTable extends React.Component {
                                                 selected={isSelected}
                                             >
                                                 <TableCell component="th" scope="row" padding="default">
-                                                    {n.institucion}
+                                                    {n.servidor}
                                                 </TableCell>
-                                                <TableCell>{n.abreviacion}</TableCell>
-                                                <TableCell>{n.unidadResponsable}</TableCell>
-                                                <TableCell>{n.registroBase}</TableCell>
-                                                <TableCell>{n.descripcion}</TableCell>
-                                                <TableCell>
-                                                    <a href={n.url} target="_blank">
-                                                        <Tooltip title="Ir a sitio">
-                                                            <IconButton color="primary" className={classes.button}
-                                                                        component="span">
-                                                                <VerIcon/>
-                                                            </IconButton>
-                                                        </Tooltip>
-                                                    </a>
-                                                </TableCell>
+                                                <TableCell>{n.institucion}</TableCell>
+                                                <TableCell>{n.puesto}</TableCell>
+                                                <TableCell>{n.tipoArea}</TableCell>
+                                                <TableCell>{n.contrataciones}</TableCell>
+                                                <TableCell>{n.concesionesLicencias}</TableCell>
+                                                <TableCell>{n.enajenacion}</TableCell>
+                                                <TableCell>{n.dictamenes}</TableCell>
                                             </TableRow>
                                         );
                                     })}
