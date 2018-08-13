@@ -37,8 +37,8 @@ function getSorting(order, orderBy) {
 
 const columnData = [
     {id: 'institucion', numeric: false, disablePadding: false, label: 'Institución', position: 1},
-    {id: 'atencionTramitacion', numeric: false, disablePadding: false, label: 'Atención o tramitación', position: 2},
-    {id: 'resolucion', numeric: false, disablePadding: false, label: 'Resolución', position: 3},
+    {id: 'atencionTramitacion', numeric: true, disablePadding: false, label: 'Atención o tramitación', position: 2},
+    {id: 'resolucion', numeric: true, disablePadding: false, label: 'Resolución', position: 3},
 ];
 
 const styles = theme => ({
@@ -302,8 +302,8 @@ class EnhancedTable extends React.Component {
                                                 <TableCell component="th" scope="row" padding="default">
                                                     {n.institucion}
                                                 </TableCell>
-                                                <TableCell>{n.atencionTramitacion}</TableCell>
-                                                <TableCell>{n.resolucion}</TableCell>
+                                                <TableCell numeric>{n.atencionTramitacion}</TableCell>
+                                                <TableCell numeric>{n.resolucion}</TableCell>
                                             </TableRow>
                                         );
                                     })}

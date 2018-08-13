@@ -308,8 +308,8 @@ class EnhancedTable extends React.Component {
                                                 <TableCell component="th" scope="row" padding="default">
                                                     {n.institucion}
                                                 </TableCell>
-                                                <TableCell>{n.atencionTramitacion}</TableCell>
-                                                <TableCell>{n.resolucion}</TableCell>
+                                                <TableCell numeric>{n.atencionTramitacion}</TableCell>
+                                                <TableCell numeric>{n.resolucion}</TableCell>
                                             </TableRow>
                                         );
                                     })}
