@@ -48,19 +48,19 @@ class EnhancedTableHead extends React.Component {
         return (
             <TableHead>
                 <TableRow>
-                    <TableCell padding="checkbox">
+                    {/*<TableCell padding="checkbox">
                         <Checkbox
                             indeterminate={numSelected > 0 && numSelected < rowCount}
                             checked={numSelected === rowCount}
                             onChange={onSelectAllClick}
                         />
-                    </TableCell>
+                    </TableCell>*/}
                     {columnData.map(column => {
                         return (
                             <TableCell
                                 key={column.id}
                                 numeric={column.numeric}
-                                padding={column.disablePadding ? 'none' : 'default'}
+                                //padding={column.disablePadding ? 'none' : 'default'}
                                 sortDirection={orderBy === column.id ? order : false}
                             >
                                 <Tooltip
@@ -281,21 +281,21 @@ class EnhancedTable extends React.Component {
                                 .sort(getSorting(order, orderBy))
                                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                 .map(n => {
-                                    const isSelected = this.isSelected(n.id);
+                                    //const isSelected = this.isSelected(n.id);
                                     return (
                                         <TableRow
                                             hover
                                             onClick={event => this.handleClick(event, n.id)}
                                             //role="checkbox"
-                                            aria-checked={isSelected}
+                                            //aria-checked={isSelected}
                                             tabIndex={-1}
                                             key={n.id}
-                                            selected={isSelected}
+                                            //selected={isSelected}
                                         >
-                                            <TableCell padding="checkbox">
+                                            {/*<TableCell padding="checkbox">
                                                 <Checkbox checked={isSelected} />
-                                            </TableCell>
-                                            <TableCell component="th" scope="row" padding="none">
+                                            </TableCell>*/}
+                                            <TableCell component="th" scope="row" >
                                                 {n.name}
                                             </TableCell>
                                             <TableCell numeric>{n.calories}</TableCell>
