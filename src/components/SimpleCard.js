@@ -7,15 +7,14 @@ import CardHeader from "@material-ui/core/CardHeader/CardHeader";
 import {Link} from 'react-router-dom';
 const styles = theme => ({
     card: {
-        [theme.breakpoints.up('md')]:{
-            height: 350,
-            maxWidth: 350,
-            minWidth:350
+        [theme.breakpoints.up('sm')]:{
+            height: 43* theme.spacing.unit,
+            width: '100%'
+
         },
-        [theme.breakpoints.down('md')]:{
-            height: 250,
-            maxWidth: 250,
-            minWidth:250
+        [theme.breakpoints.down('sm')]:{
+            height: 25* theme.spacing.unit,
+            width: 250
         },
 
     },
@@ -50,7 +49,7 @@ function SimpleCard(props) {
     const imagen = props.content;
     const to = props.to;
     return (
-        <div className={classes.root}>
+        <div>
             <Card className={classes.card}>
                 <CardHeader
                     classes={{
