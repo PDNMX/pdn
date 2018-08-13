@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
     bgImg:{
-        height: '250px',
+        height: '270px',
         backgroundImage: 'url(/Header1.png)',/*'url(/BannereDark_PDN.png)',*/
         /*padding: '50px 0',*/
         backgroundPosition:'bottom',
