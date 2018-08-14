@@ -62,7 +62,7 @@ class EnhancedTableHead extends React.Component {
 
 
     render() {
-        const {order, orderBy,classes} = this.props;
+        const {order, orderBy} = this.props;
 
         return (
             <TableHead>
@@ -132,13 +132,7 @@ const toolbarStyles = theme => ({
 
 
 let EnhancedTableToolbar = props => {
-    const {classes,searchValue,handleSearch,campo,handleChangeCampo,handleDownloadCSV,data,columnas} = props;
-    let headers = columnas.map((item)=>{
-        return {
-            label: item.label,
-            key: item.id
-            }
-    });
+    const {classes,searchValue,handleSearch,campo,handleChangeCampo,data,columnas} = props;
     return (
         <Toolbar className={classes.highlight}>
             <Busqueda handleSearch={handleSearch} value={searchValue}

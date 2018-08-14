@@ -2,11 +2,7 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import MenuItem from "@material-ui/core/MenuItem/MenuItem";
-import Select from "@material-ui/core/Select/Select";
-import InputLabel from "@material-ui/core/InputLabel/InputLabel";
 import FormControl from "@material-ui/core/FormControl/FormControl";
-import Input from "@material-ui/core/Input/Input";
 import InputAdornment from "@material-ui/core/InputAdornment/InputAdornment";
 import IconButton from "@material-ui/core/IconButton/IconButton";
 import Visibility from "@material-ui/icons/Search";
@@ -43,7 +39,7 @@ const styles = theme => ({
 
 class BusquedaServidor extends React.Component{
     render (){
-        const { classes,handleSearch,value,handleChangeCampo,campo } = this.props;
+        const { classes,handleSearch,value} = this.props;
         return (
             <div>
                 <form className={classes.container} noValidate autoComplete='on' >
