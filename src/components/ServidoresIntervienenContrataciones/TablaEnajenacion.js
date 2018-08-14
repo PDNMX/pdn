@@ -10,16 +10,11 @@ import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Toolbar from '@material-ui/core/Toolbar';
 import Paper from '@material-ui/core/Paper';
-import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import fileJSON from '../../data/enajenacionBienesMuebles';
-import VerIcon from '@material-ui/icons/Launch';
 import Busqueda from "./Busqueda";
-import {CSVLink} from "react-csv";
-import DownloadIcon from "@material-ui/icons/CloudDownload";
-import classNames from 'classnames';
 import Typography from "@material-ui/core/Typography/Typography";
-import Button from "@material-ui/core/Button/Button";
+import BajarCSV from "./BajarCSV";
 
 let counter = 0;
 
@@ -63,11 +58,8 @@ class EnhancedTableHead extends React.Component {
     createSortHandler = property => event => {
         this.props.onRequestSort(event, property);
     };
-
-
     render() {
-        const {order, orderBy,classes} = this.props;
-
+        const {order, orderBy} = this.props;
         return (
             <TableHead>
                 <TableRow>
@@ -128,18 +120,6 @@ const toolbarStyles = theme => ({
     title: {
         flex: '0 0 auto',
     },
-    button: {
-        margin: theme.spacing.unit,
-    },
-    leftIcon: {
-        marginRight: theme.spacing.unit,
-    },
-    rightIcon: {
-        marginLeft: theme.spacing.unit,
-    },
-    iconSmall: {
-        fontSize: 20,
-    },
     flex: {
         flexGrow: 1,
     },
@@ -149,24 +129,13 @@ const toolbarStyles = theme => ({
 
 let EnhancedTableToolbar = props => {
     const {classes,searchValue,handleSearch,campo,handleChangeCampo,data,columnas} = props;
-    let headers = columnas.map((item)=>{
-        return {
-            label: item.label,
-            key: item.id
-        }
-    });
     return (
         <Toolbar className={classes.highlight}>
             <Busqueda handleSearch={handleSearch} value={searchValue}
                       campo={campo} handleChangeCampo={handleChangeCampo}/>
             <Typography variant="title" color="inherit" className={classes.flex}>
             </Typography>
-            <CSVLink data={data} filename={"Enajenación de bienes muebles.csv"} headers ={headers}>
-                <Button variant="contained" size="small" className={classNames(classes.button)}>
-                    <DownloadIcon className={classNames(classes.leftIcon, classes.iconSmall)} />
-                    Descargar CSV
-                </Button>
-            </CSVLink>
+            <BajarCSV data={data} nombreArchivo={"Enajenación de bienes muebles.csv"} columnas={columnas}/>
         </Toolbar>
     );
 };
