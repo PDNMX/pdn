@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 const styles = theme => ({
     bgImg:{
         height: '300px',
-        backgroundImage: 'url(/Header1.png)',/*'url(/BannereDark_PDN.png)',*/
+        backgroundImage: 'url(/Banner.jpg)',/*'url(/BannereDark_PDN.png)',*/
         /*padding: '50px 0',*/
         backgroundPosition:'bottom',
         backgroundRepeat: 'no-repeat',
@@ -33,6 +33,13 @@ const styles = theme => ({
             paddingTop: '40px'
 
         }
+    },
+    beta:{
+        ...theme.typography.button,
+        backgroundColor: theme.palette.primary.main,
+        padding: theme.spacing.unit * 0.5,
+        width: '45px',
+        borderRadius: '5px',
     }
 });
 
@@ -44,18 +51,18 @@ class Banner extends React.Component {
                 <div className={classes.container}>
                     <Grid container spacing={24}>
                         <Grid item xs={12} align="center">
-                            <Typography className={classes.pdn} variant="display2" >
+                            <Typography className={classes.pdn} variant="display2" style={{color: '#fff'}}>
                                 Plataforma Digital Nacional
                             </Typography>
-                            <Typography variant="subheading" style={{  paddingTop: '10px'}}>
+                            <Typography variant="subheading" style={{ color:'#fff',  paddingTop: '10px'}}>
                                 Inteligencia de datos anticorrupción
                             </Typography>
 
                             <br/>
 
-                            <Button size="small" disabled variant="raised">
+                            <Typography variant="body2" className={classes.beta} style={{color: '#fff'}}>
                                 beta
-                            </Button>
+                            </Typography>
 
                         </Grid>
                     </Grid>
