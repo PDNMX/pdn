@@ -16,12 +16,12 @@ import PropTypes from 'prop-types';
 import Typography from "@material-ui/core/Typography/Typography";
 
 const charts1 = [
-    {'key': '1', 'title': 'Declaraciones 3x3', 'content': img1, 'to': '/datos'},
+    {'key': '1', 'title': 'Declaraciones 3x3', 'content': img1, 'to': '/declaraciones'},
     {'key': '2', 'title': 'Servidores que intervienen en procesos de contratación', 'content': img2, 'to': '/servidores'},
     {'key': '3', 'title': 'Servidores públicos y particulares sancionados', 'content': img5, 'to': '/sancionados'},
     {'key': '4', 'title': 'Contrataciones públicas', 'content': img3, 'to': '/contrataciones'},
-    {'key': '5', 'title': 'Denuncias públicas', 'content': img4, 'to': '/datos'},
-    {'key': '6', 'title': 'Comunicación del Sistema Nacional de Fiscalización', 'content': img6, 'to': '/datos'}
+    {'key': '5', 'title': 'Denuncias públicas', 'content': img4, 'to': '/denuncias'},
+    {'key': '6', 'title': 'Comunicación del Sistema Nacional de Fiscalización', 'content': img6, 'to': '/snf'}
 ];
 
 const styles = theme => ({
