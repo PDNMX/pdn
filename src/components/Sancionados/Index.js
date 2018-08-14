@@ -10,12 +10,25 @@ import Header from "../PDNAppBar/PDNAppBar";
 import Footer from "../Footer/Footer";
 
 const styles = theme => ({
-    root: {
+
+    root:{
+        flexGrow: 1,
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100vh'
+    },
+    contents: {
         flexGrow: 1,
         paddingTop: theme.spacing.unit * 5,
         paddingBottom: theme.spacing.unit * 5,
-        paddingRight: theme.spacing.unit * 25,
-        paddingLeft: theme.spacing.unit * 25,
+        [theme.breakpoints.up('sm')]:{
+            marginLeft: '100px',
+            marginRight: '100px'
+        },
+        [theme.breakpoints.down('sm')]:{
+            marginLeft: theme.spacing.unit,
+            marginRight: theme.spacing.unit
+        }
     },
     paper: {
         padding: theme.spacing.unit * 2,
@@ -24,14 +37,14 @@ const styles = theme => ({
     },
 });
 
-class Sancionados extends React.Component {
+class Index extends React.Component {
 
     render() {
         const {classes} = this.props;
         return (
-            <div>
+            <div className={classes.root}>
                 <Header/>
-                <div className={classes.root}>
+                <div className={classes.contents}>
                     <Grid containter spacing={24}>
                         <Grid item xs={12}>
                             <Typography variant="title">
@@ -56,8 +69,8 @@ class Sancionados extends React.Component {
     }
 }
 
-Sancionados.propTypes = {
+Index.propTypes = {
     classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Sancionados);
+export default withStyles(styles)(Index);
