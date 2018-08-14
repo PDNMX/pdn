@@ -5,6 +5,7 @@ import Datos from '../components/datos/Datos';
 import Sancionados from '../components/Sancionados/Sancionados';
 import Servidores from '../components/ServidoresIntervienenContrataciones/Index';
 import Indicadores from '../components/Indicadores/Indicadores';
+import Contrataciones from '../components/Contrataciones/index';
 
 const pdnRoutes = [
     {
@@ -34,6 +35,10 @@ const pdnRoutes = [
     {
         path: "/indicadores",
         component: Indicadores
+    },
+    {
+        path: "/contrataciones",
+        component: Contrataciones
     }
 ];
 
