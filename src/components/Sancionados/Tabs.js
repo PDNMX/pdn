@@ -12,7 +12,7 @@ import TablaServidores from './TablaServidores';
 
 function TabContainer({ children, dir }) {
     return (
-        <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
+        <Typography component="div" dir={dir} style={{ padding: 0 /* 8 * 3 */ }}>
             {children}
         </Typography>
     );
