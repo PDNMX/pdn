@@ -35,7 +35,7 @@ function PDNLinks (props){
                 Hola de la Plataforma Digital Nacional
             </Typography>
 
-            <Typography component = {Link}  to="/datos" className = {classes.text}>
+            <Typography component = {Link}  to="/indicadores" className = {classes.text}>
                 Indicadores
             </Typography>
 

@@ -15,6 +15,11 @@ import Tooltip from '@material-ui/core/Tooltip';
 import fileJSON from '../../data/servidorPublico';
 import VerIcon from '@material-ui/icons/Launch';
 import BusquedaServidor from "./BusquedaServidor";
+import {CSVLink} from "react-csv";
+import DownloadIcon from "@material-ui/icons/CloudDownload";
+import Typography from "@material-ui/core/Typography/Typography";
+import Button from "@material-ui/core/Button/Button";
+import classNames from 'classnames';
 
 let counter = 0;
 
@@ -133,16 +138,47 @@ const toolbarStyles = theme => ({
     title: {
         flex: '0 0 auto',
     },
+    button: {
+        margin: theme.spacing.unit,
+    },
+    leftIcon: {
+        marginRight: theme.spacing.unit,
+    },
+    rightIcon: {
+        marginLeft: theme.spacing.unit,
+    },
+    iconSmall: {
+        fontSize: 20,
+    },
+    flex: {
+        flexGrow: 1,
+    },
+
 });
 
 
 let EnhancedTableToolbar = props => {
-    const {classes,searchValue,handleSearch,campo,handleChangeCampo} = props;
+    const {classes,searchValue,handleSearch,campo,handleChangeCampo,data,columnas} = props;
+    let headers = columnas.map((item)=>{
+        return {
+            label: item.label,
+            key: item.id
+        }
+    });
     return (
         <Toolbar className={classes.highlight}>
             <BusquedaServidor handleSearch={handleSearch} value={searchValue}
                       campo={campo} handleChangeCampo={handleChangeCampo}/>
+            <Typography variant="title" color="inherit" className={classes.flex}>
+            </Typography>
+            <CSVLink data={data} filename={"Enajenación de bienes muebles.csv"} headers ={headers}>
+                <Button variant="contained" size="small" className={classNames(classes.button)}>
+                    <DownloadIcon className={classNames(classes.leftIcon, classes.iconSmall)} />
+                    Descargar CSV
+                </Button>
+            </CSVLink>
         </Toolbar>
+
     );
 };
 
@@ -282,7 +318,8 @@ class EnhancedTable extends React.Component {
             <div>
                 <Paper className={classes.root}>
                     <EnhancedTableToolbar campo={this.state.campo} handleChangeCampo = {this.handleChangeCampo}
-                                          searchValue={this.state.searchValue} handleSearch={this.handleSearch}/>
+                                          searchValue={this.state.searchValue} handleSearch={this.handleSearch}
+                                        data={filterData} columnas={columnData}/>
                     <div className={classes.tableWrapper}>
                         <Table className={classes.table} aria-labelledby="tableTitle">
                             <EnhancedTableHead

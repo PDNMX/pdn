@@ -38,28 +38,6 @@ class PDNAppBar extends React.Component {
         return (
             <div className={classes.root}>
                 <AppBar color="default"  position="static" >
-                    {/*
-                <div style={{paddingLeft:'100px',paddingRight:'100px'}}>
-                    <div className="left">
-                        <img src={imgHeader} alt="logoPDN" style={{width:'4em'}}/>
-                    </div>
-                    <div className="right">
-                        <Button component={Link} to="/datos">
-                            Datos
-                        </Button>
-                        <Button component={Link} to="/blog">
-                            Blog
-                        </Button>
-                        <Button component={Link} to="/about">
-                            Acerca
-                        </Button>
-                        <Button component={Link} to="/faq">
-                            FAQ
-                        </Button>
-                    </div>
-                </div>
-                */}
-
                     <Toolbar>
                         <IconButton className={classes.menuButton} color="inherit" aria-label="Menu" component={Link} to="/">
                                 <img src={imgHeader} alt="logoPDN" style={{width:'55px'}}/>

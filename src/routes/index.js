@@ -4,6 +4,7 @@ import Faq from '../components/Faq';
 import Datos from '../components/datos/Datos';
 import Sancionados from '../components/Sancionados/Sancionados';
 import Servidores from '../components/ServidoresIntervienenContrataciones/Index';
+import Indicadores from '../components/Indicadores/Indicadores';
 
 const pdnRoutes = [
     {
@@ -29,6 +30,10 @@ const pdnRoutes = [
     {
         path: "/servidores",
         component: Servidores
+    },
+    {
+        path: "/indicadores",
+        component: Indicadores
     }
 ];
 
