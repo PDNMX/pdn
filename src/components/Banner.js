@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 const styles = theme => ({
     bgImg:{
         height: '300px',
-        backgroundImage: 'url(/Banner.jpg)',/*'url(/BannereDark_PDN.png)',*/
+        backgroundImage: 'url(/Banner1.jpg)',/*'url(/BannereDark_PDN.png)',*/
         /*padding: '50px 0',*/
         backgroundPosition:'bottom',
         backgroundRepeat: 'no-repeat',
