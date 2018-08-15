@@ -278,7 +278,7 @@ class EnhancedTable extends React.Component {
 
         return (
             <div>
-                <Paper className={classes.root}>
+                <Paper>
                     <EnhancedTableToolbar campo={this.state.campo} handleChangeCampo = {this.handleChangeCampo}
                                           searchValue={this.state.searchValue} handleSearch={this.handleSearch}
                                             data = {filterData} columnas ={columnData}/>

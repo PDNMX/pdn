@@ -15,6 +15,7 @@ import fileJSON from '../../data/servidorPublico';
 import BusquedaServidor from "./BusquedaServidor";
 import Typography from "@material-ui/core/Typography/Typography";
 import BajarCSV from "./BajarCSV";
+import DetalleServidor from "./DetalleServidor";
 
 let counter = 0;
 
@@ -41,14 +42,14 @@ function getSorting(order, orderBy) {
 }
 
 const columnData = [
-    {id: 'servidor', numeric: false, disablePadding: false, label: 'Servidor público', position: 1},
-    {id: 'institucion', numeric: false, disablePadding: false, label: 'Institución', position: 2},
-    {id: 'puesto', numeric: false, disablePadding: false, label: 'Puesto', position: 3},
-    {id: 'tipoArea', numeric: false, disablePadding: false, label: 'Tipo de área', position: 4},
-    {id: 'contrataciones', numeric: false, disablePadding: false, label: 'Contrataciones públicas', position: 5},
-    {id: 'concesionesLicencias', numeric: false, disablePadding: false, label: 'Concesiones, licencias, permisos, autorizaciones y prórrogas', position: 6},
-    {id: 'enajenacion', numeric: false, disablePadding: false, label: 'Enajenación de bienes muebles', position: 7},
-    {id: 'dictamenes', numeric: false, disablePadding: false, label: 'Asignación y emisión de dictámenes de avalúos nacionales', position: 8},
+    {id: 'servidor', numeric: false, disablePadding: false, label: 'Servidor público', position: 1,mostrar:true},
+    {id: 'institucion', numeric: false, disablePadding: false, label: 'Institución', position: 2, mostrar:true},
+    {id: 'puesto', numeric: false, disablePadding: false, label: 'Puesto', position: 3,mostrar:true},
+    {id: 'tipoArea', numeric: false, disablePadding: false, label: 'Tipo de área', position: 4, mostrar:true},
+    {id: 'contrataciones', numeric: false, disablePadding: false, label: 'Contrataciones públicas', position: 5,mostrar:false},
+    {id: 'concesionesLicencias', numeric: false, disablePadding: false, label: 'Concesiones, licencias, permisos, autorizaciones y prórrogas', position: 6, mostrar:false},
+    {id: 'enajenacion', numeric: false, disablePadding: false, label: 'Enajenación de bienes muebles', position: 7, mostrar:false},
+    {id: 'dictamenes', numeric: false, disablePadding: false, label: 'Asignación y emisión de dictámenes de avalúos nacionales', position: 8,mostrar:false},
 ];
 
 const styles = theme => ({
@@ -77,28 +78,31 @@ class EnhancedTableHead extends React.Component {
             <TableHead>
                 <TableRow>
                     {columnData.map(column => {
-                        return (
-                            <TableCell
-                                key={column.id}
-                                numeric={column.numeric}
-                                padding={column.disablePadding ? 'none' : 'default'}
-                                sortDirection={orderBy === column.id ? order : false}
-                            >
-                                <Tooltip
-                                    title="Sort"
-                                    placement={column.numeric ? 'bottom-end' : 'bottom-start'}
-                                    enterDelay={300}
+                        if(column.mostrar){
+                            return (
+                                <TableCell
+                                    key={column.id}
+                                    numeric={column.numeric}
+                                    padding={column.disablePadding ? 'none' : 'default'}
+                                    sortDirection={orderBy === column.id ? order : false}
                                 >
-                                    <TableSortLabel
-                                        active={orderBy === column.id}
-                                        direction={order}
-                                        onClick={this.createSortHandler(column.id)}
+                                    <Tooltip
+                                        title="Sort"
+                                        placement={column.numeric ? 'bottom-end' : 'bottom-start'}
+                                        enterDelay={300}
                                     >
-                                        {column.label}
-                                    </TableSortLabel>
-                                </Tooltip>
-                            </TableCell>
-                        );
+                                        <TableSortLabel
+                                            active={orderBy === column.id}
+                                            direction={order}
+                                            onClick={this.createSortHandler(column.id)}
+                                        >
+                                            {column.label}
+                                        </TableSortLabel>
+                                    </Tooltip>
+                                </TableCell>
+                            );
+                        }
+
                     }, this)}
                 </TableRow>
             </TableHead>
@@ -150,7 +154,6 @@ let EnhancedTableToolbar = props => {
             </Typography>
             <BajarCSV data={data} nombreArchivo={"Servidores públicos.csv"} columnas={columnas}/>
         </Toolbar>
-
     );
 };
 
@@ -178,7 +181,9 @@ class EnhancedTable extends React.Component {
             filterData: dataAux,
             page: 0,
             rowsPerPage: 5,
-            campo: 0
+            campo: 0,
+            open: false,
+            elementoSeleccionado: {}
         };
     }
 
@@ -201,8 +206,16 @@ class EnhancedTable extends React.Component {
         this.setState({selected: []});
     };
 
-    handleClick = (event, id) => {
-        const {selected} = this.state;
+    handleClose = () => {
+        this.setState({ open: false });
+    };
+
+
+    handleClick = (event, elemento) => {
+        this.setState({elementoSeleccionado: elemento});
+        this.setState({ open: true });
+
+        /*const {selected} = this.state;
         const selectedIndex = selected.indexOf(id);
         let newSelected = [];
 
@@ -220,6 +233,7 @@ class EnhancedTable extends React.Component {
         }
 
         this.setState({selected: newSelected});
+        */
     };
 
     handleChangePage = (event, page) => {
@@ -288,11 +302,12 @@ class EnhancedTable extends React.Component {
 
         return (
             <div>
-                <Paper className={classes.root}>
+                <Paper>
                     <EnhancedTableToolbar campo={this.state.campo} handleChangeCampo = {this.handleChangeCampo}
                                           searchValue={this.state.searchValue} handleSearch={this.handleSearch}
                                         data={filterData} columnas={columnData}/>
                     <div className={classes.tableWrapper}>
+                        <DetalleServidor  handleClose={this.handleClose} servidor={this.state.elementoSeleccionado} control={this.state.open}/>
                         <Table className={classes.table} aria-labelledby="tableTitle">
                             <EnhancedTableHead
                                 numSelected={selected.length}
@@ -311,7 +326,7 @@ class EnhancedTable extends React.Component {
                                         return (
                                             <TableRow
                                                 hover
-                                                onClick={event => this.handleClick(event, n.id)}
+                                                onClick={event => this.handleClick(event, n)}
                                                 role="checkbox"
                                                 aria-checked={isSelected}
                                                 tabIndex={-1}
@@ -324,10 +339,7 @@ class EnhancedTable extends React.Component {
                                                 <TableCell>{n.institucion}</TableCell>
                                                 <TableCell>{n.puesto}</TableCell>
                                                 <TableCell>{n.tipoArea}</TableCell>
-                                                <TableCell>{n.contrataciones}</TableCell>
-                                                <TableCell>{n.concesionesLicencias}</TableCell>
-                                                <TableCell>{n.enajenacion}</TableCell>
-                                                <TableCell>{n.dictamenes}</TableCell>
+
                                             </TableRow>
                                         );
                                     })}

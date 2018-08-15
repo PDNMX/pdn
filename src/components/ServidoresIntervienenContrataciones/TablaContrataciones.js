@@ -45,7 +45,7 @@ const columnData = [
 const styles = theme => ({
     root: {
         width: '100%',
-        marginTop: theme.spacing.unit * 3,
+        /*marginTop: theme.spacing.unit * 3,*/
     },
     table: {
         minWidth: 1020,
@@ -109,7 +109,7 @@ EnhancedTableHead = withStyles(styles)(EnhancedTableHead);
 
 const toolbarStyles = theme => ({
     root: {
-        paddingRight: theme.spacing.unit,
+        /*paddingRight: theme.spacing.unit,*/
     },
     highlight:{
         color: theme.palette.secondary.main,
@@ -208,7 +208,6 @@ class EnhancedTable extends React.Component {
                 selected.slice(selectedIndex + 1),
             );
         }
-
         this.setState({selected: newSelected});
     };
 
@@ -285,7 +284,7 @@ class EnhancedTable extends React.Component {
 
         return (
             <div>
-                <Paper className={classes.root}>
+                <Paper>
                     <EnhancedTableToolbar campo={this.state.campo} handleChangeCampo = {this.handleChangeCampo}
                                           searchValue={this.state.searchValue} handleSearch={this.handleSearch}
                                             data={filterData} columnas={columnData}/>

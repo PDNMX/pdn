@@ -13,7 +13,7 @@ import TablaServidores from "./TablaServidores";
 
 function TabContainer({ children, dir }) {
     return (
-        <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
+        <Typography component="div" dir={dir} style={{ paddingTop: '1px' }}>
             {children}
         </Typography>
     );
@@ -27,8 +27,7 @@ TabContainer.propTypes = {
 const styles = theme => ({
     root: {
         backgroundColor: theme.palette.background.paper,
-        //width: 500,
-        flexGrow: 1
+        flexGrow: 1,
     },
 });
 
@@ -47,7 +46,6 @@ class FullWidthTabs extends React.Component {
 
     render() {
         const { classes, theme } = this.props;
-
         return (
             <div className={classes.root}>
                 <AppBar position="static" color="default">
@@ -71,9 +69,7 @@ class FullWidthTabs extends React.Component {
                     index={this.state.value}
                     onChangeIndex={this.handleChangeIndex}
                 >
-                    <TabContainer dir={theme.direction} style={{
-                        margin: 0
-                    }}>
+                    <TabContainer dir={theme.direction} style={{padding:'0px important!'}}>
                         <TablaContraciones/>
                     </TabContainer>
                     <TabContainer dir={theme.direction}>
