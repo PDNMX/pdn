@@ -3,6 +3,7 @@ import {withStyles} from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
 import Footer from '../Footer/Footer';
+import PDNLinks from '../PDNLinks/PDNLinks';
 import Tabs from "./Tabs";
 import Grid from "@material-ui/core/Grid/Grid";
 import Header from "../PDNAppBar/PDNAppBar";
@@ -53,6 +54,7 @@ class Index extends React.Component{
                         </Grid>
                     </Grid>
                 </div>
+                <PDNLinks/>
                 <Footer/>
             </div>
         );

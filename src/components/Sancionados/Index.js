@@ -7,6 +7,7 @@ import Tabs from './Tabs';
 //import Paper from '@material-ui/core/Paper';
 import BusquedaSancionados from './BusquedaSancionados';
 import Header from "../PDNAppBar/PDNAppBar";
+import PDNLinks from "../PDNLinks/PDNLinks";
 import Footer from "../Footer/Footer";
 
 const styles = theme => ({
@@ -45,6 +46,7 @@ class Index extends React.Component {
             <div className={classes.root}>
                 <Header/>
                 <div className={classes.contents}>
+
                     <Grid containter spacing={24}>
                         <Grid item xs={12}>
                             <Typography variant="title">
@@ -58,12 +60,17 @@ class Index extends React.Component {
                                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
                                 mollit anim id est laborum.
                             </Typography>
-                            <br/>
-                            <Tabs/>
+                            <div>
+                                <Tabs/>
+                            </div>
+
                         </Grid>
                     </Grid>
+
                 </div>
+                <PDNLinks/>
                 <Footer/>
+
             </div>
         );
     }
