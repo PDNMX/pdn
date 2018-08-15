@@ -13,10 +13,6 @@ import Visibility from '@material-ui/icons/Search';
 
 
 const styles = theme => ({
-    container: {
-        display: 'flex',
-        flexWrap: 'wrap',
-    },
     textField: {
         marginRight: theme.spacing.unit,
     },
@@ -24,12 +20,26 @@ const styles = theme => ({
         width: 200,
     },
     formControlSelect: {
-        minWidth: 150,
-        marginRight:10,
+        [theme.breakpoints.up('sm')]:{
+            minWidth: 150,
+            marginRight:10,
+        },
+        [theme.breakpoints.down('sm')]:{
+            minWidth:80,
+            marginLeft: theme.spacing.unit
+        },
+
     },
     formControlText: {
-        minWidth: 300,
-        marginRight:10,
+        [theme.breakpoints.up('sm')]:{
+            minWidth: "auto",
+            marginRight:10,
+        },
+        [theme.breakpoints.down('sm')]:{
+            maxWidth: 150,
+            marginLeft: theme.spacing.unit
+        },
+
     },
 
     fontLight: {
@@ -45,8 +55,7 @@ class Busqueda extends React.Component{
     render (){
         const { classes,handleSearch,value,handleChangeCampo,campo } = this.props;
         return (
-            <div>
-                <form className={classes.container} noValidate autoComplete='on' >
+                <form noValidate autoComplete='on' >
                     <FormControl className={classes.formControlSelect} margin="normal">
                         <InputLabel htmlFor="campoSelect" className={classes.fontLight}>Por campo</InputLabel>
                         <Select
@@ -91,13 +100,10 @@ class Busqueda extends React.Component{
                             InputLabelProps={{className: classes.fontLight}}
 
                         />
-
-
-
                     </FormControl>
 
                 </form>
-            </div>
+
         );
     }
 }

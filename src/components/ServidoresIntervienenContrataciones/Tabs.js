@@ -10,6 +10,7 @@ import TablaContraciones from './TablaContrataciones';
 import TablaConcesiones from "./TablaConcesiones";
 import TablaEnajenacion from "./TablaEnajenacion";
 import TablaServidores from "./TablaServidores";
+import withWidth, { isWidthUp } from '@material-ui/core/withWidth';
 
 function TabContainer({ children, dir }) {
     return (
@@ -29,6 +30,7 @@ const styles = theme => ({
         backgroundColor: theme.palette.background.paper,
         flexGrow: 1,
     },
+
 });
 
 class FullWidthTabs extends React.Component {
@@ -46,49 +48,98 @@ class FullWidthTabs extends React.Component {
 
     render() {
         const { classes, theme } = this.props;
-        return (
-            <div className={classes.root}>
-                <AppBar position="static" color="default">
-                    <Tabs
-                        value={this.state.value}
-                        onChange={this.handleChange}
-                        indicatorColor="primary"
-                        textColor="primary"
-                        fullWidth
-                        centered
+        if (isWidthUp('sm', this.props.width)) {
+            return (
+                <div className={classes.root}>
+                    <AppBar position="static" color="default">
+
+                        <Tabs className={classes.tabs}
+                              value={this.state.value}
+                              onChange={this.handleChange}
+                              indicatorColor="primary"
+                              textColor="primary"
+                              centered
+                              fullWidth
+                        >
+                            <Tab label="Contrataciones públicas" />
+                            <Tab label="Concesiones, licencias, permisos, autorizaciones y prórrogas" />
+                            <Tab label="Enajenación de bienes muebles" />
+                            <Tab label="Asignación y emisión de dictámenes de avalúos nacionales" />
+                            <Tab label="Buscar un servidor público" />
+                        </Tabs>
+                    </AppBar>
+                    <SwipeableViews
+                        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+                        index={this.state.value}
+                        onChangeIndex={this.handleChangeIndex}
                     >
-                        <Tab label="Contrataciones públicas" />
-                        <Tab label="Concesiones, licencias, permisos, autorizaciones y prórrogas" />
-                        <Tab label="Enajenación de bienes muebles" />
-                        <Tab label="Asignación y emisión de dictámenes de avalúos nacionales" />
-                        <Tab label="Buscar un servidor público" />
-                    </Tabs>
-                </AppBar>
-                <SwipeableViews
-                    axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-                    index={this.state.value}
-                    onChangeIndex={this.handleChangeIndex}
-                >
-                    <TabContainer dir={theme.direction} style={{padding:'0px important!'}}>
-                        <TablaContraciones/>
-                    </TabContainer>
-                    <TabContainer dir={theme.direction}>
-                        <TablaConcesiones/>
-                    </TabContainer>
-                    <TabContainer dir={theme.direction}>
-                        <TablaEnajenacion/>
-                    </TabContainer>
-                    <TabContainer dir={theme.direction}>
-                        <div>
-                            No se encontraron datos
-                        </div>
-                    </TabContainer>
-                    <TabContainer dir={theme.direction}>
-                        <TablaServidores/>
-                    </TabContainer>
-                </SwipeableViews>
-            </div>
-        );
+                        <TabContainer dir={theme.direction} style={{padding:'0px important!'}}>
+                            <TablaContraciones/>
+                        </TabContainer>
+                        <TabContainer dir={theme.direction}>
+                            <TablaConcesiones/>
+                        </TabContainer>
+                        <TabContainer dir={theme.direction}>
+                            <TablaEnajenacion/>
+                        </TabContainer>
+                        <TabContainer dir={theme.direction}>
+                            <div>
+                                No se encontraron datos
+                            </div>
+                        </TabContainer>
+                        <TabContainer dir={theme.direction}>
+                            <TablaServidores/>
+                        </TabContainer>
+                    </SwipeableViews>
+                </div>
+            );
+        }else {
+            return (
+                <div className={classes.root}>
+                    <AppBar position="static" color="default">
+
+                        <Tabs className={classes.tabs}
+                              value={this.state.value}
+                              onChange={this.handleChange}
+                              indicatorColor="primary"
+                              textColor="primary"
+                              scrollable={true}
+                              scrollButtons="on"
+                        >
+                            <Tab label="Contrataciones públicas"/>
+                            <Tab label="Concesiones, licencias, permisos, autorizaciones y prórrogas"/>
+                            <Tab label="Enajenación de bienes muebles"/>
+                            <Tab label="Asignación y emisión de dictámenes de avalúos nacionales"/>
+                            <Tab label="Buscar un servidor público"/>
+                        </Tabs>
+                    </AppBar>
+                    <SwipeableViews
+                        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+                        index={this.state.value}
+                        onChangeIndex={this.handleChangeIndex}
+                    >
+                        <TabContainer dir={theme.direction} style={{padding: '0px important!'}}>
+                            <TablaContraciones/>
+                        </TabContainer>
+                        <TabContainer dir={theme.direction}>
+                            <TablaConcesiones/>
+                        </TabContainer>
+                        <TabContainer dir={theme.direction}>
+                            <TablaEnajenacion/>
+                        </TabContainer>
+                        <TabContainer dir={theme.direction}>
+                            <div>
+                                No se encontraron datos
+                            </div>
+                        </TabContainer>
+                        <TabContainer dir={theme.direction}>
+                            <TablaServidores/>
+                        </TabContainer>
+                    </SwipeableViews>
+                </div>
+            );
+        }
+
     }
 }
 
@@ -96,5 +147,6 @@ FullWidthTabs.propTypes = {
     classes: PropTypes.object.isRequired,
     theme: PropTypes.object.isRequired,
 };
+FullWidthTabs = withStyles(styles, { withTheme: true })(FullWidthTabs);
+export default withWidth()(FullWidthTabs);
 
-export default withStyles(styles, { withTheme: true })(FullWidthTabs);

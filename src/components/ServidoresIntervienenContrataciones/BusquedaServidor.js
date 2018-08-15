@@ -24,7 +24,7 @@ const styles = theme => ({
         marginRight:10,
     },
     formControlText: {
-        minWidth: 300,
+        minWidth: "auto",
         marginRight:10,
     },
 

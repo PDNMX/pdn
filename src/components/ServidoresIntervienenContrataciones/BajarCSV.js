@@ -17,7 +17,7 @@ const styles = theme => ({
         marginLeft: theme.spacing.unit,
     },
     iconSmall: {
-        fontSize: 20,
+        fontSize: 15,
     },
     flex: {
         flexGrow: 1,

@@ -23,10 +23,21 @@ function getModalStyle() {
 const styles = theme => ({
     paper: {
         position: 'absolute',
-        width: theme.spacing.unit * 80,
         backgroundColor: theme.palette.background.paper,
         boxShadow: theme.shadows[5],
         padding: theme.spacing.unit * 4,
+        [theme.breakpoints.up('sm')]:{
+            width: theme.spacing.unit * 110,
+        },
+        [theme.breakpoints.down('sm')]:{
+            width: '80%',
+            height: '80%',
+            overflowY: 'scroll',
+
+        },
+        [theme.breakpoints.up('xl')]:{
+            width: theme.spacing.unit * 130,
+        },
     },
     container: {
         display: 'flex',
@@ -62,7 +73,7 @@ class DetalleServidor extends React.Component {
                 >
                     <div style={getModalStyle()} className={classes.paper}>
                         <form>
-                            <Grid container spacing={24} justify="space-around">
+                            <Grid container spacing={8} justify="flex-start">
                                 <Grid item xs={11}>
                                     <Typography variant= "title">Detalle</Typography>
                                 </Grid>
@@ -90,7 +101,7 @@ class DetalleServidor extends React.Component {
                                         }}
                                     />
                                 </Grid>
-                                <Grid item xs={6}>
+                                <Grid item md={6} xs={12}>
                                     <TextField
                                         id="read-only-input"
                                         label="Servidor público"
@@ -109,7 +120,7 @@ class DetalleServidor extends React.Component {
                                     />
                                 </Grid>
 
-                                <Grid item xs={6}>
+                                <Grid item md={6} xs={12}>
                                     <TextField
                                         id="read-only-input"
                                         label="Puesto"
@@ -127,7 +138,7 @@ class DetalleServidor extends React.Component {
                                         }}
                                     />
                                 </Grid>
-                                <Grid item xs={6}>
+                                <Grid item md={6} xs={12}>
                                     <TextField
                                         id="read-only-input"
                                         label="Tipo de área"
@@ -145,7 +156,7 @@ class DetalleServidor extends React.Component {
                                         }}
                                     />
                                 </Grid>
-                                <Grid item xs={6}>
+                                <Grid item md={6} xs={12}>
                                     <TextField
                                         id="read-only-input"
                                         label="Contrataciones públicas"
@@ -163,7 +174,7 @@ class DetalleServidor extends React.Component {
                                         }}
                                     />
                                 </Grid>
-                                <Grid item xs={6}>
+                                <Grid item md={6} xs={12}>
                                     <TextField
                                         id="read-only-input"
                                         label="Enajenacion de bienes muebles"
@@ -181,7 +192,7 @@ class DetalleServidor extends React.Component {
                                         }}
                                     />
                                 </Grid>
-                                <Grid item xs={6}>
+                                <Grid item md={6} xs={12}>
                                     <TextField
                                         id="read-only-input"
                                         label="Concesiones, licencias, premios, autorizaciones y prórrogas"
@@ -200,7 +211,7 @@ class DetalleServidor extends React.Component {
                                     />
                                 </Grid>
 
-                                <Grid item xs={6}>
+                                <Grid item md={6} xs={12}>
                                     <TextField
                                         id="read-only-input"
                                         label="Asignación y emisión de dictámenes de avalúos nacionales"
@@ -218,7 +229,7 @@ class DetalleServidor extends React.Component {
                                         }}
                                     />
                                 </Grid>
-                                <Grid item xs={6}></Grid>
+                                <Grid item md={6} xs={12}></Grid>
 
                             </Grid>
 

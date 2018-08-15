@@ -124,9 +124,11 @@ const toolbarStyles = theme => ({
     root: {
         paddingRight: theme.spacing.unit,
     },
-    highlight:{
+    toolBarStyle:{
         color: theme.palette.secondary.main,
-        backgroundColor: theme.palette.primary.main
+        backgroundColor: theme.palette.primary.main,
+        display: 'flex',
+        flexWrap: 'wrap',
     },
     spacer: {
         flex: '1 1 100%',
@@ -147,7 +149,7 @@ const toolbarStyles = theme => ({
 let EnhancedTableToolbar = props => {
     const {classes,searchValue,handleSearch,campo,handleChangeCampo,data,columnas} = props;
     return (
-        <Toolbar className={classes.highlight}>
+        <Toolbar className={classes.toolBarStyle}>
             <BusquedaServidor handleSearch={handleSearch} value={searchValue}
                       campo={campo} handleChangeCampo={handleChangeCampo}/>
             <Typography variant="title" color="inherit" className={classes.flex}>

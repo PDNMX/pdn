@@ -109,7 +109,9 @@ const toolbarStyles = theme => ({
     },
     highlight:{
         color: theme.palette.secondary.main,
-        backgroundColor: theme.palette.primary.main
+        backgroundColor: theme.palette.primary.main,
+        display: 'flex',
+        flexWrap: 'wrap'
     },
     spacer: {
         flex: '1 1 100%',
