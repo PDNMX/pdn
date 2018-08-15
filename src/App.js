@@ -2,8 +2,9 @@ import React from 'react';
 import pndRoutes from './routes/index';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import P404 from './components/P404';
-import createMuiTheme from "@material-ui/core/es/styles/createMuiTheme";
-import MuiThemeProvider from "@material-ui/core/es/styles/MuiThemeProvider";
+//import createMuiTheme from "@material-ui/core/es/styles/createMuiTheme";
+import {createMuiTheme, MuiThemeProvider} from "@material-ui/core/styles";
+//import MuiThemeProvider from "@material-ui/core/es/styles/MuiThemeProvider";
 
 
 const theme = createMuiTheme({

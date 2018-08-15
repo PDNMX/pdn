@@ -1,7 +1,7 @@
 import React from 'react';
 import '../home.css';
 import Typography from "@material-ui/core/Typography";
-import withStyles from "@material-ui/core/es/styles/withStyles";
+import {withStyles} from "@material-ui/core/styles";
 import {Link} from "react-router-dom";
 
 const styles = theme => ({

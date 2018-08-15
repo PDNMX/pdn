@@ -1,5 +1,5 @@
 import React from "react";
-import withStyles from "@material-ui/core/es/styles/withStyles";
+import {withStyles} from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography/Typography";
 import PropTypes from "prop-types";
 import Grid from '@material-ui/core/Grid';
