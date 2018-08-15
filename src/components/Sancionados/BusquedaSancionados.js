@@ -9,8 +9,8 @@ const styles = theme => ({
         flexWrap: 'wrap',
     },
     textField: {
-        //marginLeft: theme.spacing.unit,
-        marginRight: 0,//theme.spacing.unit,
+        marginLeft: theme.spacing.unit,
+        marginRight: theme.spacing.unit,
         marginTop: 0,
         width: 500,
     },
