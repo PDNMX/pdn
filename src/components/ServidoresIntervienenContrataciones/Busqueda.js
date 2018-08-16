@@ -44,6 +44,7 @@ const styles = theme => ({
 
     fontLight: {
         color: theme.palette.fontLight.color,
+       
     },
     '&$focus': {
         color: theme.palette.fontLight.color,
@@ -56,9 +57,10 @@ class Busqueda extends React.Component{
         const { classes,handleSearch,value,handleChangeCampo,campo } = this.props;
         return (
                 <form noValidate autoComplete='on' >
-                    <FormControl className={classes.formControlSelect} margin="normal">
-                        <InputLabel htmlFor="campoSelect" className={classes.fontLight}>Por campo</InputLabel>
+                    <FormControl className={classes.formControlSelect}>
+                        <InputLabel  htmlFor="campoSelect" className={classes.fontLight}>Por campo</InputLabel>
                         <Select
+                            margin="dense"
                             value={campo}
                             onChange={handleChangeCampo}
                             name="campoSelect"
@@ -67,7 +69,7 @@ class Busqueda extends React.Component{
                                 id: 'campo',
                                 className:classes.fontLight
                             }}
-                            input={<Input name="campo" id="campo" />}
+                            input={<Input name="campo" id="campo" margin="dense"/>}
                             defaultValue={0}
                         >
                             <MenuItem value={0}>
@@ -84,7 +86,6 @@ class Busqueda extends React.Component{
                             label="Buscar datos"
                             type="search"
                             className={classes.textField}
-                            margin="normal"
                             onChange={handleSearch}
                             value={value}
                             InputProps={{
@@ -95,6 +96,7 @@ class Busqueda extends React.Component{
                                 <Visibility />
                                 </IconButton>
                                 </InputAdornment>
+
 
                             }}
                             InputLabelProps={{className: classes.fontLight}}
