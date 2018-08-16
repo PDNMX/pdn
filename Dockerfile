@@ -5,8 +5,10 @@ MAINTAINER Sergio Rodríguez <sergio.rdzsg@gmail.com>
 ADD . /pdn
 WORKDIR /pdn
 
-RUN yarn install
+RUN yarn install \
+&& yarn build \
+&& yarn global add serve
 
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD ["serve", "-s", "build"]
