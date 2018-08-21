@@ -21,6 +21,15 @@ const theme = createMuiTheme({
         },
         fontLight:{
             color: "#f5f5f5"//"#e0e0e0"
+        },
+        grey:{
+            color:"#707070"
+        },
+        greyTitle:{
+            color:"#333333"
+        },
+        graphGreen:{
+            color:"#00cc99"
         }
     },
     overrides:{
