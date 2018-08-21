@@ -54,7 +54,7 @@ class App extends React.Component {
     render() {
         return (
             <MuiThemeProvider theme={theme}>
-            <Router>
+            <Router basename={process.env.PUBLIC_URL}>
                 <Switch>
                     {pndRoutes.map((prop, key) => {
                         return <Route exact path={prop.path} component={prop.component}  key={key} />;
