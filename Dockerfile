@@ -5,7 +5,7 @@ MAINTAINER Sergio Rodríguez <sergio.rdzsg@gmail.com>
 ADD . /pdn
 WORKDIR /pdn
 
-RUN npm install -g yarn \
+RUN yarn add global yarn \
 && yarn install \
 && yarn build \
 && yarn global add serve \
