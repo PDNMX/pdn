@@ -1,9 +1,9 @@
 import React from 'react';
 import "./css/Grafica1.css"
 import * as d3 from 'd3';
-import dataFile from '../../data/muestra100'
+import dataFile from '../../data/resumenAmount'
 
-class Grafica1 extends React.Component {
+class Grafica2 extends React.Component {
 
     constructor(props) {
         super(props);
@@ -38,34 +38,42 @@ class Grafica1 extends React.Component {
                 .append("g")
                 .attr("transform",
                     "translate(" + margin.left + "," + margin.top + ")");
+            //svg.append("text").attr("y",height-4).text("test");
 
             dataFile.forEach(function (data) {
-                data.valorContrato = data.records[0].releases[0].contracts[0].valueWithTax.amount;
-                data.noContrato = data.records[0].compiledRelease.contracts[0].id;
+                data.total = data.importeTotal;
+                data.ciclo = data._id;
             });
 
             x.domain(
                 dataFile.map(function (d) {
-                        return d.noContrato;
+                        return d.ciclo;
                     }
                 )
             );
             y.domain([0, d3.max(dataFile, function (d) {
-                return d.valorContrato;
+                return (d.total);
             })]);
-            svg.selectAll("dot")
+
+            svg.selectAll(".bar")
                 .data(dataFile)
-                .enter().append("circle")
-                .attr("class", "dot")
-                .attr("r", 3)
-                .attr("cx", function(d) { return x(d.noContrato); })
-                .attr("cy", function(d) { return y(d.valorContrato); })
+                .enter().append("rect")
+                .attr("class", "bar")
+                .attr("x", function (d) {
+                    return x(d.ciclo);
+                })
+                .attr("width", x.bandwidth())
+                .attr("y", function (d) {
+                    return y(d.total);
+                })
+                .attr("height", function (d) {
+                    return height - y(d.total);
+                })
                 .on("mouseover", function(d) {
                     div.transition()
                         .duration(200)
                         .style("opacity", .9);
-                    div.html("Contrato: "+d.noContrato +"<br/>"
-                        +"Monto: "+ d.valorContrato)
+                    div.html("Total: "+d.total)
                         .style("left", (d3.event.pageX) + "px")
                         .style("top", (d3.event.pageY - 28) + "px");
                 })
@@ -75,7 +83,7 @@ class Grafica1 extends React.Component {
                         .style("opacity", 0);
                 });
 
-           // add the x Axis
+            // add the x Axis
             svg.append("g")
                 .attr("transform", "translate(0," + height + ")")
                 .call(d3.axisBottom(x));
@@ -98,4 +106,4 @@ class Grafica1 extends React.Component {
     }
 }
 
-export default Grafica1;
+export default Grafica2;

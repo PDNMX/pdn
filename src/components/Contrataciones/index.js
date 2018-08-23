@@ -9,6 +9,11 @@ import PropTypes from 'prop-types';
 import Paper from "@material-ui/core/Paper";
 import Card from "./CardChart";
 import Grafica1 from "./Grafica1"
+import Grafica2 from "./Grafica2"
+import Menu from "@material-ui/core/Menu/Menu";
+import MenuItem from "@material-ui/core/MenuItem/MenuItem";
+import Button from "@material-ui/core/Button/Button";
+import Select from "@material-ui/core/Select/Select";
 
 const styles = theme => ({
     root: {
@@ -40,10 +45,10 @@ const styles = theme => ({
         color:theme.palette.fontLight.color,
     },
     paperDerecho:{
-        height:'90%',
-        width:'95%',
-        paddingLeft:"3rem",
-        paddingTop:"3rem"
+        height:'95%%',
+        width:'100%',
+        /*paddingLeft:"3rem",
+        paddingTop:"3rem"*/
     },
     titleBox:{
         color: theme.palette.fontLight.color,
@@ -60,7 +65,7 @@ const styles = theme => ({
 
     },
     seccion:{
-        padding:"3rem"
+        padding:"2rem"
     },
     fontLight:{
         color: theme.palette.fontLight.color,
@@ -68,9 +73,29 @@ const styles = theme => ({
     }
 });
 
+let g1 = <Grafica1/>;
+let g2 = <Grafica2/>;
 class Index extends React.Component {
+    state = {
+        age: '',
+        open: false,
+    };
+
+    handleChange = event => {
+        this.setState({ [event.target.name]: event.target.value });
+    };
+
+    handleClose = () => {
+        this.setState({ open: false });
+    };
+
+    handleOpen = () => {
+        this.setState({ open: true });
+    };
+
     render() {
         const {classes} = this.props;
+        const { anchorEl } = this.state;
         return (
             <div>
                 <Header/>
@@ -80,15 +105,26 @@ class Index extends React.Component {
                             <Typography variant="headline">
                                 Contrataciones públicas
                             </Typography>
-                            <Typography>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                                nulla pariatur.
-                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                                mollit anim id est
-                                laborum.
+                            <Typography variant={"body1"}>
+                                Se muestra un
+                                <Select
+                                    open={this.state.open}
+                                    onClose={this.handleClose}
+                                    onOpen={this.handleOpen}
+                                    value={this.state.age}
+                                    onChange={this.handleChange}
+                                    defaultValue={10}
+                                    inputProps={{
+                                        name: 'age',
+                                        id: 'demo-controlled-open-select',
+                                    }}
+                                >
+                                    <MenuItem value={10}>resumen</MenuItem>
+                                    <MenuItem value={20}>puntualidad</MenuItem>
+                                    <MenuItem value={30}>eficiencia en costos</MenuItem>
+                                    <MenuItem value={40}>equidad</MenuItem>
+                                </Select>
+                                del proceso de contratación para
                             </Typography>
                         </Grid>
                     </Grid>
@@ -111,10 +147,8 @@ class Index extends React.Component {
                         </Grid>
                         <Grid item md={8} sm={12}>
                             <Paper className={classes.paperDerecho}>
-                                <Typography variant="headline" className={classes.titleBox}>
-                                    Resumen
-                                </Typography>
-                                <Grafica1/>
+                                <Card titleCard={"Contratos"} content={g1} descripcion={"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters"}/>
+                                <Card titleCard={"Monto"} content={g2} descripcion = {"El valor de los contratos en el conjunto de datos"}/>
                             </Paper>
                         </Grid>
                     </Grid>

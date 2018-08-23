@@ -5,6 +5,7 @@ import Card from '@material-ui/core/Card';
 import CardHeader from "@material-ui/core/CardHeader/CardHeader";
 import Grafica1 from './Grafica1'
 import CardContent from "@material-ui/core/CardContent/CardContent";
+import Typography from "@material-ui/core/Typography/Typography";
 
 const g = <Grafica1/>
 
@@ -26,27 +27,24 @@ const styles = theme => ({
         },
 
     },
-    media: {
-        paddingTop : '75%',
-        //width: '100%',
-        height:'0',
-        //height: theme.spacing.unit * 32*0.7,
-        //maxHeight:'70%'
+    titleBox:{
+        color: theme.palette.fontLight.color,
+        backgroundColor: theme.palette.greyTitle.color,
+        paddingTop:'1rem',
+        paddingBottom:'1rem',
+        paddingLeft:'6rem',
+        paddingRight:'2rem',
+        fontSize:'1rem',
+        display:'inline-block',
+        fontWeight:700,
+        marginLeft:"-3rem",
+        marginBottom: "2rem",
+        marginTop: "1rem"
 
     },
-    headerCard:{
-        [theme.breakpoints.up('md')]:{
-            fontSize: 'calc(1.1vw)',
-        },
-        [theme.breakpoints.down('md')]:{
-            fontSize: 'calc(1rem)',
-        }
-
-
-    },
-    headerCardRoot:{
-        height:'15%',
-        alignItems: 'unset'
+    descripcion:{
+        color:theme.palette.grey.color,
+        maxWidth:"32rem"
     }
 });
 
@@ -55,18 +53,18 @@ function CardChart(props) {
     const { classes } = props;
     const title = props.titleCard;
     const contenido = props.content;
+    const descripcion = props.descripcion;
     return (
         <div>
             <Card className={classes.card}>
-                <CardHeader
-                    classes={{
-                        title: classes.headerCard,
-                        root: classes.headerCardRoot
-                    }}
-                    title={title}
-                />
                <CardContent>
-                    {g}
+                   <Typography variant="headline" className={classes.titleBox}>
+                       {title}
+                   </Typography>
+                   <Typography variant="body1" className={classes.descripcion}>
+                       {descripcion}
+                   </Typography>
+                   {contenido}
                </CardContent>
             </Card>
         </div>
