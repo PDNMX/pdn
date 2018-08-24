@@ -8,8 +8,9 @@ import Header from "../PDNAppBar/PDNAppBar";
 import PropTypes from 'prop-types';
 import Paper from "@material-ui/core/Paper";
 import Card from "./CardChart";
-import Grafica1 from "./Grafica1"
-import Grafica2 from "./Grafica2"
+import Grafica1 from "./Grafica1";
+import Grafica2 from "./Grafica2";
+import Grafica3 from "./Grafica3";
 import Menu from "@material-ui/core/Menu/Menu";
 import MenuItem from "@material-ui/core/MenuItem/MenuItem";
 import Button from "@material-ui/core/Button/Button";
@@ -75,6 +76,7 @@ const styles = theme => ({
 
 let g1 = <Grafica1/>;
 let g2 = <Grafica2/>;
+let g3 = <Grafica3/>;
 class Index extends React.Component {
     state = {
         age: '',
@@ -147,7 +149,7 @@ class Index extends React.Component {
                         </Grid>
                         <Grid item md={8} sm={12}>
                             <Paper className={classes.paperDerecho}>
-                                <Card titleCard={"Contratos"} content={g1} descripcion={"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters"}/>
+                                <Card titleCard={"Contratos"} content={g3} descripcion={"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters"}/>
                                 <Card titleCard={"Monto"} content={g2} descripcion = {"El valor de los contratos en el conjunto de datos"}/>
                             </Paper>
                         </Grid>

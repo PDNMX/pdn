@@ -23,4 +23,7 @@ div.tooltip {
     border-radius: 8px;
     pointer-events: none;
 }
+.area{
+    fill: #00cc99;
+}
 
