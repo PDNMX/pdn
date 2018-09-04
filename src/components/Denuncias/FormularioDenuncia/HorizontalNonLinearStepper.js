@@ -113,6 +113,10 @@ class HorizontalNonLinearStepper extends React.Component {
         return this.completedSteps() === this.totalSteps();
     }
 
+    getFolio(){
+        return Math.floor(Math.random() * 1000) + 1;
+    }
+
     render() {
         const { classes } = this.props;
         const steps = getSteps();
@@ -120,7 +124,6 @@ class HorizontalNonLinearStepper extends React.Component {
 
         return (
             <div className={classes.root}>
-
                 <Stepper nonLinear activeStep={activeStep}>
                     {steps.map((label, index) => {
                         return (
@@ -139,9 +142,9 @@ class HorizontalNonLinearStepper extends React.Component {
                     {this.allStepsCompleted() ? (
                         <div>
                             <Typography className={classes.instructions}>
-                                All steps completed - you&quot;re finished
+                                Folio denuncia:{this.getFolio()} , ¿Desea enviar nueva denuncia?
                             </Typography>
-                            <Button onClick={this.handleReset}>Reset</Button>
+                            <Button onClick={this.handleReset}>Nueva</Button>
                         </div>
                     ) : (
                         <div>
