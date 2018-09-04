@@ -3,12 +3,12 @@ import Typography from '@material-ui/core/Typography';
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
-import Header from "../PDNAppBar/PDNAppBar";
-import PDNLinks from "../PDNLinks/PDNLinks";
-import Footer from "../Footer/Footer";
-import Card from "./Card";
-import img1 from "../../assets/img/hands.jpg";
-import img2 from "../../assets/img/caseFile.jpg";
+import Header from "../../PDNAppBar/PDNAppBar";
+import PDNLinks from "../../PDNLinks/PDNLinks";
+import Footer from "../../Footer/Footer";
+import Card from "../Card";
+import img1 from "../../../assets/img/hands.jpg";
+import img2 from "../../../assets/img/caseFile.jpg";
 import Paper from "@material-ui/core/Paper/Paper";
 import List from "@material-ui/core/List/List";
 import ListItem from "@material-ui/core/ListItem/ListItem";
@@ -16,6 +16,8 @@ import ListItemIcon from "@material-ui/core/ListItemIcon/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText/ListItemText";
 import DonoutIcon from '@material-ui/icons/ShowChart';
 import QuestionIcon from '@material-ui/icons/QuestionAnswer'
+import TextField from "@material-ui/core/TextField/TextField";
+import Button from "@material-ui/core/Button/Button";
 
 
 const styles = theme => ({
@@ -87,19 +89,27 @@ const styles = theme => ({
         [theme.breakpoints.up('sm')]: {
             display: "flex",
         },
-        [theme.breakpoints.down('sm')]: {
-
-        }
+        [theme.breakpoints.down('sm')]: {}
     },
     fontLight: {
         color: theme.palette.fontLight.color,
 
-    }
+    },
+    textField: {
+        marginLeft: theme.spacing.unit,
+        marginRight: theme.spacing.unit,
+        width: "100%",
+    },
 
 });
 
-
-class Index extends React.Component {
+class FormularioConsulta extends React.Component {
+    state = {
+        folio: ''
+    };
+    handleChange = name => event => {
+        this.setState({[name]: event.target.checked});
+    };
 
     render() {
         const {classes} = this.props;
@@ -121,8 +131,8 @@ class Index extends React.Component {
                             </Typography>
                         </Grid>
                     </Grid>
-                    <Grid container spacing={0}>
-                        <Paper className={classes.seccion}>
+                    <Paper className={classes.seccion}>
+                        <Grid container spacing={24}>
                             <Grid item lg={3} md={3} sm={12}>
                                 <Typography variant="headline" className={classes.titleBox}>
                                     Servicios
@@ -142,12 +152,25 @@ class Index extends React.Component {
                                     </ListItem>
                                 </List>
                             </Grid>
-                            <Grid item lg={9} md={9} sm={12} className={classes.seccion}>
-                                <Card title="Presenta tu denuncia" icon={img1} to="/formDenuncia" content="Llena el formulario y obten tu folio con el cual podrás dar seguimiento a tu denuncia."/>
-                                <Card title="Consulta tu folio" icon={img2} to="/formConsultaDenuncia" content="Ten a la mano el número de folio con el que podrás  consultar el estatus de tu denuncia"/>
+                            <Grid item xs={9} container direction="column" spacing={24}>
+                                <Grid item>
+                                    <TextField
+                                        id="folio"
+                                        label="Folio denuncia"
+                                        className={classes.textField}
+                                        value={this.state.folio}
+                                        onChange={this.handleChange('folio')}
+                                        margin="normal"
+                                    />
+                                </Grid>
+                                <Grid item xs>
+                                    <Button variant="contained" color="primary">
+                                        Consultar
+                                    </Button>
+                                </Grid>
                             </Grid>
-                        </Paper>
-                    </Grid>
+                        </Grid>
+                    </Paper>
                 </div>
                 < PDNLinks/>
                 < Footer/>
@@ -157,8 +180,8 @@ class Index extends React.Component {
     }
 }
 
-Index.propTypes = {
+FormularioConsulta.propTypes = {
     classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Index);
+export default withStyles(styles)(FormularioConsulta);

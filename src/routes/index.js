@@ -7,7 +7,8 @@ import Servidores from '../components/ServidoresIntervienen/Index';
 import Indicadores from '../components/Indicadores/Indicadores';
 import Contrataciones from '../components/Contrataciones/index';
 import Denuncias from '../components/Denuncias/Index';
-import FormularioDenuncias from '../components/Denuncias/FormularioDenuncia'
+import FormularioDenuncias from '../components/Denuncias/FormularioDenuncia/FormularioDenuncia'
+import FormularioConsula from '../components/Denuncias/ConsultaDenuncia/FormularioConsulta'
 
 const pdnRoutes = [
     {
@@ -49,6 +50,10 @@ const pdnRoutes = [
     {
         path:"/formDenuncia",
         component: FormularioDenuncias
+    },
+    {
+        path:"/formConsultaDenuncia",
+        component: FormularioConsula
     }
 ];
 
