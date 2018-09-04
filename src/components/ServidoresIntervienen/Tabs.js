@@ -72,7 +72,7 @@ class FullWidthTabs extends React.Component {
                         index={this.state.value}
                         onChangeIndex={this.handleChangeIndex}
                     >
-                        <TabContainer dir={theme.direction} style={{padding:'0px important!'}}>
+                        <TabContainer dir={theme.direction} style={{ padding:'0px important!'}}>
                             <TablaContraciones/>
                         </TabContainer>
                         <TabContainer dir={theme.direction}>

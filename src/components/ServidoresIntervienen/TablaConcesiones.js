@@ -182,7 +182,10 @@ class EnhancedTable extends React.Component {
             order = 'asc';
         }
 
-        this.setState({order, orderBy});
+        this.setState({
+            order: order,
+            orderBy: orderBy
+        });
     };
 
     handleSelectAllClick = (event, checked) => {
@@ -224,12 +227,39 @@ class EnhancedTable extends React.Component {
 
     isSelected = id => this.state.selected.indexOf(id) !== -1;
 
+
+
+
+
+
+
     handleSearch = event => {
+
         const {data, campo, searchValue} = this.state;
         let filteredDatas = [];
         const regex = new RegExp(searchValue, 'gi');
 
+        // buscar en todos los campos
+
+            filteredDatas = data.filter (e => {
+                if (campo === 0 ) {
+                    for (let k in e) {
+                        if (e.hasOwnProperty(k)) {
+                            return e[k].match(regex).length > 0
+                        }
+                    }
+                } else {
+                    let key = Object.keys(e)[campo];
+                    return e[key].match(regex).length > 0
+                }
+
+            });
+
+
+        /*
         if (campo === 0) {
+
+
             filteredDatas = data.filter(e => {
                 let mathesItems = Object.values(e);
                 let retVal = false;
@@ -244,6 +274,8 @@ class EnhancedTable extends React.Component {
                 });
                 return retVal;
             });
+
+
         } else {
             filteredDatas = data.filter(e => {
                 let mathesItems = Object.values(e);
@@ -258,20 +290,33 @@ class EnhancedTable extends React.Component {
             });
         }
 
+        */
+
         if (event)
             this.setState({filterData: filteredDatas, searchValue: event.target.value})
         else
             this.setState({filterData: filteredDatas})
     };
 
+
+
+
+
+
     handleChangeCampo = event => {
         let valor = event.target.value;
-        this.setState({campo: valor}, () => {
-            if (this.state.searchValue)
-                this.handleSearch();
-        });
 
+        this.setState({
+            campo: valor
+        }, () => {
+            this.handleSearch();
+        });
     };
+
+
+
+
+
 
     render() {
         const {classes} = this.props;

@@ -134,7 +134,7 @@ const toolbarStyles = theme => ({
 
 
 let EnhancedTableToolbar = props => {
-    const {classes,searchValue,handleSearch,campo,handleChangeCampo,data,columnas} = props;
+    const {classes, searchValue, handleSearch, campo, handleChangeCampo, data, columnas} = props;
     return (
         <Toolbar className={classes.toolBarStyle}>
             <Busqueda handleSearch={handleSearch} value={searchValue}

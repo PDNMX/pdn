@@ -3,7 +3,7 @@ import About from '../components/About';
 import Faq from '../components/Faq';
 import Datos from '../components/datos/Datos';
 import Sancionados from '../components/Sancionados/Index';
-import Servidores from '../components/ServidoresIntervienenContrataciones/Index';
+import Servidores from '../components/ServidoresIntervienen/Index';
 import Indicadores from '../components/Indicadores/Indicadores';
 import Contrataciones from '../components/Contrataciones/index';
 import Denuncias from '../components/Denuncias/Index';
