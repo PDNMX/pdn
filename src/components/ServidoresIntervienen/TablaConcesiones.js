@@ -236,24 +236,23 @@ class EnhancedTable extends React.Component {
     handleSearch = event => {
 
         const {data, campo, searchValue} = this.state;
-        let filteredDatas = [];
         const regex = new RegExp(searchValue, 'gi');
 
         // buscar en todos los campos
 
-            filteredDatas = data.filter (e => {
-                if (campo === 0 ) {
-                    for (let k in e) {
-                        if (e.hasOwnProperty(k)) {
-                            return e[k].match(regex).length > 0
-                        }
+        let filteredDatas = data.filter (e => {
+            if (campo === 0 ) {
+                for (let k in e) {
+                    if (e.hasOwnProperty(k)) {
+                        return e[k].match(regex).length > 0
                     }
-                } else {
-                    let key = Object.keys(e)[campo];
-                    return e[key].match(regex).length > 0
                 }
+            } else {
+                let key = Object.keys(e)[campo];
+                return e[key].match(regex).length > 0
+            }
 
-            });
+        });
 
 
         /*
