@@ -47,10 +47,10 @@ class PDNAppBar extends React.Component {
 
                         </Typography>
 
-                        <Button color="inherit" component={Link} to="/datos">
+                        <Button color="inherit" href="/datos">
                             Datos
                         </Button>
-                        <Button color="inherit" component={Link} to="/blog">
+                        <Button color="inherit" href="/blog">
                             Blog
                         </Button>
                         <Button color="inherit" component={Link} to="/about">
