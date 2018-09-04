@@ -11,9 +11,7 @@ import Card from "./CardChart";
 import Grafica1 from "./Grafica1";
 import Grafica2 from "./Grafica2";
 import Grafica3 from "./Grafica3";
-import Menu from "@material-ui/core/Menu/Menu";
 import MenuItem from "@material-ui/core/MenuItem/MenuItem";
-import Button from "@material-ui/core/Button/Button";
 import Select from "@material-ui/core/Select/Select";
 
 const styles = theme => ({
@@ -74,7 +72,6 @@ const styles = theme => ({
     }
 });
 
-let g1 = <Grafica1/>;
 let g2 = <Grafica2/>;
 let g3 = <Grafica3/>;
 class Index extends React.Component {
@@ -97,7 +94,6 @@ class Index extends React.Component {
 
     render() {
         const {classes} = this.props;
-        const { anchorEl } = this.state;
         return (
             <div>
                 <Header/>

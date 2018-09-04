@@ -44,6 +44,37 @@ class Grafica3 extends React.Component {
             var area = d3.area()
                 .x(function(d) { return x(d.date); })
                 .y1(function(d) { return y(d.noContratos); });
+
+            var focus = svg.append("g")
+                .attr("class", "focus")
+                .style("display", "none");
+
+            focus.append("circle")
+                .attr("r", 5);
+
+            focus.append("text")
+                .attr("x", 9)
+                .attr("dy", ".35em")
+                .style("font-size",15);
+
+            var focus2 = svg.append("g")
+                .attr("class", "focus")
+                .style("display", "none");
+
+            var bisectDate = d3.bisector(function(d) {
+                return d.date;
+            }).left;
+
+            function mousemove() {
+                var x0 = x.invert(d3.mouse(this)[0]),
+                    i = bisectDate(dataFile, x0, 1),
+                    d0 = dataFile[i - 1],
+                    d1 = dataFile[i],
+                    d= x0 - d0.date > d1.date - x0 ? d1 : d0;
+                //var depl=parseFloat(d['Safari'])+parseFloat(d['Opera'])+parseFloat(d['Firefox']);
+                focus.attr("transform", "translate(" + x(d.date) + "," + (500 - margin.top - margin.bottom)*50/100+ ")");
+                focus.select("text").text("test");
+            }
             //
 
             dataFile.forEach(function (data) {
@@ -81,6 +112,18 @@ class Grafica3 extends React.Component {
                 .text("Número de contratos");
             //
 
+            /*svg.append("rect")
+                .attr("class", "overlay")
+                .attr("width", width)
+                .attr("height", height)
+                .on("mouseover", function() {
+                    focus.style("display", null);
+                })
+                .on("mouseout", function() {
+                    focus.style("display", "none");
+                })
+                .on("mousemove", mousemove);
+                */
 
         }
         draw();

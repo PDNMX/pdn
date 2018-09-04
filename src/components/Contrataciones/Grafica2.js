@@ -38,7 +38,6 @@ class Grafica2 extends React.Component {
                 .append("g")
                 .attr("transform",
                     "translate(" + margin.left + "," + margin.top + ")");
-            //svg.append("text").attr("y",height-4).text("test");
 
             dataFile.forEach(function (data) {
                 data.total = data.importeTotal;

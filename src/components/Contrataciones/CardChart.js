@@ -2,12 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardHeader from "@material-ui/core/CardHeader/CardHeader";
-import Grafica1 from './Grafica1'
 import CardContent from "@material-ui/core/CardContent/CardContent";
 import Typography from "@material-ui/core/Typography/Typography";
-
-const g = <Grafica1/>
 
 const styles = theme => ({
     card: {
