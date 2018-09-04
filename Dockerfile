@@ -9,7 +9,7 @@ RUN yarn add global yarn \
 && yarn install \
 && yarn build \
 && yarn global add serve \
-&& yarn cache clean \
+&& yarn cache clean
 
 EXPOSE 2000
 
