@@ -236,9 +236,7 @@ class EnhancedTable extends React.Component {
         // buscar en todos los campos
         let filteredDatas = data.filter(e => {
             if (campo === 0) {
-                return Object.keys(e).some(function (k) {
-                    return regex.test(e[k]);
-                })
+                return Object.keys(e).some(k => regex.test(e[k]));
             } else {
                 let key = Object.keys(e)[campo];
                 return regex.test(e[key]);
