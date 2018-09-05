@@ -221,43 +221,21 @@ class EnhancedTable extends React.Component {
     isSelected = id => this.state.selected.indexOf(id) !== -1;
 
     handleSearch = event => {
-        const {data, campo, searchValue} = this.state;
-        let filteredDatas = [];
+        let {data, campo} = this.state;
+        let searchValue = event ? event.target.value : this.state.searchValue;
         const regex = new RegExp(searchValue, 'gi');
-
-        if (campo === 0) {
-            filteredDatas = data.filter(e => {
-                let mathesItems = Object.values(e);
-                let retVal = false;
-                mathesItems.some(e => {
-                    if (typeof e === 'string') {
-                        if (e.match(regex) != null && e.match(regex).length > 0) {
-                            retVal = true
-                            return retVal;
-                        }
-                    }
-                    return retVal;
-                });
-                return retVal;
-            });
-        } else {
-            filteredDatas = data.filter(e => {
-                let mathesItems = Object.values(e);
-                let retVal = false;
-                let columnaBusqueda = mathesItems[campo];
-                if (typeof columnaBusqueda === 'string') {
-                    if (columnaBusqueda.match(regex) != null && columnaBusqueda.match(regex).length > 0) {
-                        retVal = true
-                    }
-                }
-                return retVal;
-            });
-        }
-
-        if (event)
-            this.setState({filterData: filteredDatas, searchValue: event.target.value})
-        else
-            this.setState({filterData: filteredDatas})
+        // buscar en todos los campos
+        let filteredDatas = data.filter(e => {
+            if (campo === 0) {
+                return Object.keys(e).some(function (k) {
+                    return regex.test(e[k]);
+                })
+            } else {
+                let key = Object.keys(e)[campo];
+                return regex.test(e[key]);
+            }
+        });
+        this.setState({filterData: filteredDatas, searchValue: event ? event.target.value : this.state.searchValue})
     };
 
     handleChangeCampo = event => {

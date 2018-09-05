@@ -19,7 +19,7 @@ import BajarCSV from "./BajarCSV";
 
 let counter = 0;
 
-function createData(institucion, atencionTramitacion,resolucion) {
+function createData(institucion, atencionTramitacion, resolucion) {
     counter += 1;
     return {
         id: counter,
@@ -55,6 +55,7 @@ const styles = theme => ({
     },
 
 });
+
 class EnhancedTableHead extends React.Component {
     createSortHandler = property => event => {
         this.props.onRequestSort(event, property);
@@ -111,7 +112,7 @@ const toolbarStyles = theme => ({
     root: {
         paddingRight: theme.spacing.unit,
     },
-    highlight:{
+    highlight: {
         color: theme.palette.secondary.main,
         backgroundColor: theme.palette.primary.main,
         display: 'flex',
@@ -134,14 +135,15 @@ const toolbarStyles = theme => ({
 
 
 let EnhancedTableToolbar = props => {
-    const {classes,searchValue,handleSearch,campo,handleChangeCampo,data,columnas} = props;
+    const {classes, searchValue, handleSearch, campo, handleChangeCampo, data, columnas} = props;
     return (
         <Toolbar className={classes.highlight}>
             <Busqueda handleSearch={handleSearch} value={searchValue}
                       campo={campo} handleChangeCampo={handleChangeCampo}/>
             <Typography variant="title" color="inherit" className={classes.flex}>
             </Typography>
-            <BajarCSV data={data} nombreArchivo={"Concesiones, licencias, permisos, autorizaciones y prórrogas.csv"} columnas={columnas}/>
+            <BajarCSV data={data} nombreArchivo={"Concesiones, licencias, permisos, autorizaciones y prórrogas.csv"}
+                      columnas={columnas}/>
         </Toolbar>
     );
 };
@@ -227,95 +229,33 @@ class EnhancedTable extends React.Component {
 
     isSelected = id => this.state.selected.indexOf(id) !== -1;
 
-
-
-
-
-
-
     handleSearch = event => {
-
-        const {data, campo, searchValue} = this.state;
+        let {data, campo} = this.state;
+        let searchValue = event ? event.target.value : this.state.searchValue;
         const regex = new RegExp(searchValue, 'gi');
-
         // buscar en todos los campos
-
-        let filteredDatas = data.filter (e => {
-            if (campo === 0 ) {
-                for (let k in e) {
-                    if (e.hasOwnProperty(k)) {
-                        return e[k].match(regex).length > 0
-                    }
-                }
+        let filteredDatas = data.filter(e => {
+            if (campo === 0) {
+                return Object.keys(e).some(function (k) {
+                    return regex.test(e[k]);
+                })
             } else {
                 let key = Object.keys(e)[campo];
-                return e[key].match(regex).length > 0
+                return regex.test(e[key]);
             }
-
         });
 
-
-        /*
-        if (campo === 0) {
-
-
-            filteredDatas = data.filter(e => {
-                let mathesItems = Object.values(e);
-                let retVal = false;
-                mathesItems.some(e => {
-                    if (typeof e === 'string') {
-                        if (e.match(regex) != null && e.match(regex).length > 0) {
-                            retVal = true
-                            return retVal;
-                        }
-                    }
-                    return retVal;
-                });
-                return retVal;
-            });
-
-
-        } else {
-            filteredDatas = data.filter(e => {
-                let mathesItems = Object.values(e);
-                let retVal = false;
-                let columnaBusqueda = mathesItems[campo];
-                if (typeof columnaBusqueda === 'string') {
-                    if (columnaBusqueda.match(regex) != null && columnaBusqueda.match(regex).length > 0) {
-                        retVal = true
-                    }
-                }
-                return retVal;
-            });
-        }
-
-        */
-
-        if (event)
-            this.setState({filterData: filteredDatas, searchValue: event.target.value})
-        else
-            this.setState({filterData: filteredDatas})
+        this.setState({filterData: filteredDatas, searchValue: event ? event.target.value : this.state.searchValue})
     };
-
-
-
-
-
 
     handleChangeCampo = event => {
         let valor = event.target.value;
-
         this.setState({
             campo: valor
         }, () => {
             this.handleSearch();
         });
     };
-
-
-
-
-
 
     render() {
         const {classes} = this.props;
@@ -325,9 +265,9 @@ class EnhancedTable extends React.Component {
         return (
             <div>
                 <Paper>
-                    <EnhancedTableToolbar campo={this.state.campo} handleChangeCampo = {this.handleChangeCampo}
+                    <EnhancedTableToolbar campo={this.state.campo} handleChangeCampo={this.handleChangeCampo}
                                           searchValue={this.state.searchValue} handleSearch={this.handleSearch}
-                                            data = {filterData} columnas ={columnData}/>
+                                          data={filterData} columnas={columnData}/>
                     <div className={classes.tableWrapper}>
                         <Table className={classes.table} aria-labelledby="tableTitle">
                             <EnhancedTableHead

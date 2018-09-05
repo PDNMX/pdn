@@ -27,7 +27,6 @@ function createData(institucion, atencion, resolucion) {
         atencionTramitacion: atencion,
         resolucion: resolucion,
     };
-    //return item;
 }
 
 function getSorting(order, orderBy) {
@@ -55,15 +54,14 @@ const styles = theme => ({
     },
 
 });
+
 class EnhancedTableHead extends React.Component {
     createSortHandler = property => event => {
         this.props.onRequestSort(event, property);
     };
 
-
     render() {
         const {order, orderBy} = this.props;
-
         return (
             <TableHead>
                 <TableRow>
@@ -111,7 +109,7 @@ const toolbarStyles = theme => ({
     root: {
         /*paddingRight: theme.spacing.unit,*/
     },
-    toolBarStyle:{
+    toolBarStyle: {
         color: theme.palette.secondary.main,
         backgroundColor: theme.palette.primary.main,
         display: 'flex',
@@ -131,7 +129,6 @@ const toolbarStyles = theme => ({
     }
 
 });
-
 
 let EnhancedTableToolbar = props => {
     const {classes, searchValue, handleSearch, campo, handleChangeCampo, data, columnas} = props;
@@ -177,11 +174,9 @@ class EnhancedTable extends React.Component {
     handleRequestSort = (event, property) => {
         const orderBy = property;
         let order = 'desc';
-
         if (this.state.orderBy === property && this.state.order === 'desc') {
             order = 'asc';
         }
-
         this.setState({order, orderBy});
     };
 
@@ -197,7 +192,6 @@ class EnhancedTable extends React.Component {
         const {selected} = this.state;
         const selectedIndex = selected.indexOf(id);
         let newSelected = [];
-
         if (selectedIndex === -1) {
             newSelected = newSelected.concat(selected, id);
         } else if (selectedIndex === 0) {
@@ -224,49 +218,22 @@ class EnhancedTable extends React.Component {
     isSelected = id => this.state.selected.indexOf(id) !== -1;
 
     handleSearch = event => {
-        const {data, campo, searchValue} = this.state;
-        let filteredDatas = [];
-        let x = event?event.target.value : searchValue;
-        const regex = new RegExp(x, 'gi');
+        let {data, campo} = this.state;
+        let searchValue = event ? event.target.value : this.state.searchValue;
+        const regex = new RegExp(searchValue, 'gi');
+        // buscar en todos los campos
+        let filteredDatas = data.filter(e => {
+            if (campo === 0) {
+                return Object.keys(e).some(function (k) {
+                    return regex.test(e[k]);
+                })
+            } else {
+                let key = Object.keys(e)[campo];
+                return regex.test(e[key]);
+            }
+        });
 
-        if (campo === 0) {
-            filteredDatas = data.filter(e => {
-                let mathesItems = Object.values(e);
-                let retVal = false;
-                mathesItems.some(e => {
-                    if (typeof e === 'string') {
-                        if (e.match(regex) != null && e.match(regex).length > 0) {
-                            retVal = true
-                            return retVal;
-                        }
-                    }
-                    return retVal;
-                });
-                return retVal;
-            });
-        } else {
-            filteredDatas = data.filter(e => {
-                let mathesItems = Object.values(e);
-                let retVal = false;
-                let columnaBusqueda = mathesItems[campo];
-                if (typeof columnaBusqueda === 'string') {
-                    if (columnaBusqueda.match(regex) != null && columnaBusqueda.match(regex).length > 0) {
-                        retVal = true
-                    }
-                }else if(typeof  columnaBusqueda ==='number'){
-                    let xNum = Number(x);
-                    if(columnaBusqueda===xNum){
-                        retVal = true;
-                    }
-                }
-                return retVal;
-            });
-        }
-
-        if (event)
-            this.setState({filterData: filteredDatas, searchValue: event.target.value})
-        else
-            this.setState({filterData: filteredDatas})
+        this.setState({filterData: filteredDatas, searchValue: event ? event.target.value : this.state.searchValue})
     };
 
     handleChangeCampo = event => {
@@ -287,9 +254,9 @@ class EnhancedTable extends React.Component {
         return (
             <div>
                 <Paper>
-                    <EnhancedTableToolbar campo={this.state.campo} handleChangeCampo = {this.handleChangeCampo}
+                    <EnhancedTableToolbar campo={this.state.campo} handleChangeCampo={this.handleChangeCampo}
                                           searchValue={this.state.searchValue} handleSearch={this.handleSearch}
-                                            data={filterData} columnas={columnData}/>
+                                          data={filterData} columnas={columnData}/>
                     <div className={classes.tableWrapper}>
                         <Table className={classes.table} aria-labelledby="tableTitle">
                             <EnhancedTableHead

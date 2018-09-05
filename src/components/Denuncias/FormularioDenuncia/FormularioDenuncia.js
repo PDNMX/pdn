@@ -10,7 +10,6 @@ import Paper from "@material-ui/core/Paper/Paper";
 import HorizontalNonLinearStepper from "./HorizontalNonLinearStepper";
 
 const styles = theme => ({
-
     root: {
         flexGrow: 1,
         [theme.breakpoints.up('sm')]: {
@@ -32,8 +31,6 @@ const styles = theme => ({
             marginRight: '100px',
             marginTop: theme.spacing.unit * 2,
             marginBottom: theme.spacing.unit * 2,
-
-
         },
         [theme.breakpoints.down('sm')]: {
             marginLeft: theme.spacing.unit,
@@ -56,8 +53,6 @@ const styles = theme => ({
     paperDerecho: {
         height: '95%%',
         width: '100%',
-        /*paddingLeft:"3rem",
-        paddingTop:"3rem"*/
     },
     titleBox: {
         color: theme.palette.fontLight.color,
@@ -71,7 +66,6 @@ const styles = theme => ({
         fontWeight: 700,
         marginLeft: "-2rem",
         marginBottom: "2rem"
-
     },
     seccion: {
 
