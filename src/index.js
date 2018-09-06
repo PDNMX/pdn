@@ -7,7 +7,16 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import rootReducer from './reducers';
 
-const store = createStore(rootReducer);
+// definimos el estado inicial
+const initialState = {
+    acusados: [
+        {
+            id:1,
+            text:'Carlos Alberto López Mendoza'
+        }
+        ]
+};
+let store = createStore(rootReducer,initialState);
 
 ReactDOM.render(
     <Provider store={store}>

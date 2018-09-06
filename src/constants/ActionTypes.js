@@ -1,0 +1,4 @@
+export const ADD_ACUSADO = 'ADD_ACUSADO'
+export const REMOVE_ACUSADO = 'REMOVE_ACUSADO'
+export const NEW_REQUEST = 'NEW_REQUEST'
+export const TOOGLE_ACUSADOS = 'TOOGLE_ACUSADOS'

@@ -15,6 +15,8 @@ import MuiPickersUtilsProvider from "material-ui-pickers/utils/MuiPickersUtilsPr
 import DatePicker from "material-ui-pickers/DatePicker";
 import DateFnsUtils from 'material-ui-pickers/utils/date-fns-utils';
 import { TimePicker } from 'material-ui-pickers';
+import VisibleAcusadoList from "../../containers/VisibleAcusadoList";
+
 const styles = theme => ({
     root: {
         width: '100%',
@@ -48,6 +50,7 @@ class DatosDenuncia extends React.Component {
         nombreTestigo: '',
         empresaPais: ''
     };
+
     handleChange = name => event => {
         this.setState({[name]: event.target.checked});
     };
@@ -62,10 +65,11 @@ class DatosDenuncia extends React.Component {
 
     handleDateChange = (date) => {
         this.setState({ fechaHecho: date });
-    }
+    };
 
     render() {
         const {classes} = this.props;
+        //console.log("-->",store.getState());
         return (
             <div>
                 <Paper className={classes.form}>
@@ -240,10 +244,14 @@ class DatosDenuncia extends React.Component {
                                 margin="normal" multiline fullWidth
                             />
                         </Grid>
+
                         <Grid item lg={1} md={1} sm={12}>
                             <IconButton color="primary" className={classes.button} aria-label="Agregar">
                                 <PlusIcon/>
                             </IconButton>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <VisibleAcusadoList/>
                         </Grid>
                         <Grid item xs={12}>
                             <Typography variant={"body1"}>

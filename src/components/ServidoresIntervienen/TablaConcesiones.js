@@ -232,6 +232,7 @@ class EnhancedTable extends React.Component {
     handleSearch = event => {
         let {data, campo} = this.state;
         let searchValue = event ? event.target.value : this.state.searchValue;
+
         const regex = new RegExp(searchValue, 'gi');
         // buscar en todos los campos
         let filteredDatas = data.filter(e => {
