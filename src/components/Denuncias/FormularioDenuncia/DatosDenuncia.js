@@ -16,7 +16,7 @@ import DatePicker from "material-ui-pickers/DatePicker";
 import DateFnsUtils from 'material-ui-pickers/utils/date-fns-utils';
 import { TimePicker } from 'material-ui-pickers';
 import VisibleAcusadoList from "../../containers/VisibleAcusadoList";
-
+import FieldsAcusadoContainer from "../../containers/FieldsAcusadoContainer"
 const styles = theme => ({
     root: {
         width: '100%',
@@ -69,7 +69,6 @@ class DatosDenuncia extends React.Component {
 
     render() {
         const {classes} = this.props;
-        //console.log("-->",store.getState());
         return (
             <div>
                 <Paper className={classes.form}>
@@ -101,8 +100,6 @@ class DatosDenuncia extends React.Component {
                                     format="yyyy/MM/dd"
                                 />
                             </MuiPickersUtilsProvider>
-
-
                         </Grid>
                         <Grid item lg={3} md={3} sm={12}>
                             <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -118,7 +115,7 @@ class DatosDenuncia extends React.Component {
                             <FormControl className={classes.formControl}>
                                 <InputLabel htmlFor="age-native-helper">Motivo de la denuncia</InputLabel>
                                 <NativeSelect
-                                    value={this.state.motivoDenuncia}
+                                    value={this.state.motivo}
                                     onChange={this.handleChangeInput('motivoDenuncia')}
                                     input={<Input name="motivoDenuncia" id="motivoDenuncia-native-helper"/>}
                                 >
@@ -171,7 +168,7 @@ class DatosDenuncia extends React.Component {
                             <TextField
                                 id="nombreTramiteServicio"
                                 label="Nombre del trámite o servicio"
-                                value={this.state.nombreTramiteServicio}
+                                value={this.state.nombreTramite}
                                 onChange={this.handleChangeInput('nombreTramiteServicio')}
                                 className={classes.textField}
                                 margin="normal"
@@ -224,32 +221,9 @@ class DatosDenuncia extends React.Component {
                                 Si desea denunciar a un servidor público o a un particular, especifique:
                             </Typography>
                         </Grid>
-                        <Grid item lg={6} md={6} sm={12}>
-                            <TextField
-                                id="nombreAcusado"
-                                label="Nombre del servidor público o particular"
-                                value={this.state.nombreAcusado}
-                                onChange={this.handleChangeInput('nombreAcusado')}
-                                className={classes.textField}
-                                margin="normal"
-                            />
-                        </Grid>
-                        <Grid item lg={5} md={5} sm={12}>
-                            <TextField
-                                id="descripcionAcusado"
-                                label="Descripción física: "
-                                className={classes.textField}
-                                value={this.state.descripcionAcusado}
-                                onChange={this.handleChangeInput('descripcionAcusado')}
-                                margin="normal" multiline fullWidth
-                            />
-                        </Grid>
 
-                        <Grid item lg={1} md={1} sm={12}>
-                            <IconButton color="primary" className={classes.button} aria-label="Agregar">
-                                <PlusIcon/>
-                            </IconButton>
-                        </Grid>
+                            <FieldsAcusadoContainer/>
+
                         <Grid item xs={12}>
                             <VisibleAcusadoList/>
                         </Grid>
@@ -281,8 +255,9 @@ class DatosDenuncia extends React.Component {
     }
 }
 
+
 DatosDenuncia.propTypes = {
     classes: PropTypes.object.isRequired
 };
-
-export default withStyles(styles)(DatosDenuncia);
+DatosDenuncia = withStyles(styles)(DatosDenuncia);
+export default  DatosDenuncia;

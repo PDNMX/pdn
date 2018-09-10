@@ -1,17 +1,20 @@
 import {ADD_ACUSADO, TOOGLE_ACUSADOS} from "../constants/ActionTypes";
 
-const acusados= (state = [],action)  =>{
+const rootReducer = (state = [], action) => {
+    console.log("state: ", state)
     switch (action.type) {
         case ADD_ACUSADO:
-            return [
-                ...state,
+            state.acusados.push(
                 {
-                    id: action.id,
-                    text: action.text
+                    id: action.acusado.id,
+                    nombre: action.acusado.nombre,
+                    descripcionFisica: action.acusado.descripcionFisica
                 }
-            ]
+            )
+            return state;
+
         case TOOGLE_ACUSADOS:
-            return state.map(acusado=>
+            return state.map(acusado =>
                 acusado
             )
         default:
@@ -19,4 +22,4 @@ const acusados= (state = [],action)  =>{
     }
 }
 
-export default acusados;
+export default rootReducer;

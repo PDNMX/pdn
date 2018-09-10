@@ -1,15 +1,17 @@
 import * as types from '../constants/ActionTypes'
-import {TOOGLE_ACUSADOS} from "../constants/ActionTypes";
 
-let nextAcusadoId = 0
+let nextAcusadoId = 1;
 
-export const addAcusado = acusado =>(
-    {
-        type: types.ADD_ACUSADO,
-        acusado: acusado
-    }
-)
+export const addAcusado = acusado => {
+    acusado.id = nextAcusadoId++;
+    return (
+        {
+            type: types.ADD_ACUSADO,
+            acusado: acusado
+        }
+    )
 
-export const toogleAcusado = () =>({
-    type: TOOGLE_ACUSADOS
+}
+export const toogleAcusado = () => ({
+    type: types.TOOGLE_ACUSADOS
 })

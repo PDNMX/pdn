@@ -7,14 +7,10 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import rootReducer from './reducers';
 
+
 // definimos el estado inicial
 const initialState = {
-    acusados: [
-        {
-            id:1,
-            text:'Carlos Alberto López Mendoza'
-        }
-        ]
+    acusados:[]
 };
 let store = createStore(rootReducer,initialState);
 

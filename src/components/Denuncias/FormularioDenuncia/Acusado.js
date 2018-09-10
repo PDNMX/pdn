@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 
 const Acusado = ({acusado}) => (
     <li>
-        {acusado.text}
+        Nombre: {acusado.nombre} Descripción: {acusado.descripcionFisica}
     </li>
 )
 
 Acusado.propTypes = {
     onClick : PropTypes.func.isRequired,
-    text: PropTypes.string.isRequired
+    nombre: PropTypes.string.isRequired
 }
 
 export default Acusado
