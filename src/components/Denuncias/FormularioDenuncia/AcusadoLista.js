@@ -2,30 +2,43 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Acusado from './Acusado'
 
-class AcusadoList extends React.Component{
+class AcusadoLista extends React.Component{
+
+    state = {
+        acusados : []
+    };
+
+    componentWillReceiveProps(nextProps){
+        console.log("next props -> ", nextProps);
+
+        this.setState({
+            acusados: nextProps.acusados
+        });
+    }
+
 
    render(){
-        let acusados = this.props.acusados;
-       console.log("props:  ",this.props)
+
+        console.log("lista props ->",this.props);
+
         return (
             <ul>
-                {acusados.map(acusado =>
-                    <Acusado key={acusado.id}
-                             acusado={acusado}
-                    />
+                {this.props.acusados.map((e,i) =>
+                    <li key={i}>{ e.id }</li>
                 )}
             </ul>
         )
-    }
+   }
 }
 
-
-AcusadoList.propTypes ={
+/*
+AcusadoList.propTypes = {
     acusados: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.number.isRequired,
         nombre: PropTypes.string.isRequired,
         descripcionFisica: PropTypes.string.isRequired
     }).isRequired).isRequired
-}
+};
+*/
 
-export default AcusadoList
+export default AcusadoLista;

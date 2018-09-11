@@ -48,14 +48,14 @@ const styles = theme => ({
         backgroundColor: theme.palette.secondary.main,
         height: '100%',
         width: '100%',
-        color: theme.palette.fontLight.color,
+        //color: theme.palette.fontLight.color,
     },
     paperDerecho: {
         height: '95%%',
         width: '100%',
     },
     titleBox: {
-        color: theme.palette.fontLight.color,
+        //color: theme.palette.fontLight.color,
         backgroundColor: theme.palette.primary.main,
         paddingTop: '1rem',
         paddingBottom: '1rem',
@@ -77,7 +77,7 @@ const styles = theme => ({
 
     },
     fontLight: {
-        color: theme.palette.fontLight.color,
+        //color: theme.palette.fontLight.color,
     }
 
 });

@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux';
 //import reducers ...
-import acusados   from './acusados'
+import acusados from './acusados';
+import listReducer from './listReducer';
 
-const pdnAppReducers = combineReducers(acusados);
-
-export default acusados
+export default combineReducers({
+    fieldsReducer: acusados,
+    listReducer: listReducer
+})

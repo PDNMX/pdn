@@ -25,7 +25,7 @@ class FieldsAcusado extends React.Component {
             nombre: '',
             descripcionFisica: ''
         }
-    }
+    };
 
     handleChange = name => event => {
         this.setState({
@@ -35,8 +35,10 @@ class FieldsAcusado extends React.Component {
             }
         })
     };
+
     fireAction = () => {
-        this.props.addAcusado(this.state.acusado)
+        this.props.addAcusado(this.state.acusado);
+
         this.setState({
             acusado: {
                 nombre: '',

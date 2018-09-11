@@ -1,9 +1,22 @@
-import {ADD_ACUSADO, TOOGLE_ACUSADOS} from "../constants/ActionTypes";
+//import {ADD_ACUSADO, TOOGLE_ACUSADOS} from "../constants/ActionTypes";
 
-const rootReducer = (state = [], action) => {
-    console.log("state: ", state)
+const INITIAL_STATE = {
+    acusados : []
+};
+
+const fieldsReducer = (state = INITIAL_STATE, action) => {
+    console.log("state: ", state);
+
     switch (action.type) {
-        case ADD_ACUSADO:
+        case "ADD_ACUSADO":
+            console.log("adding acusado", action);
+
+            /*
+            return Object.assign({}, state, {
+                timestamp: action.data.timestamp
+            });
+            */
+
             state.acusados.push(
                 {
                     id: action.acusado.id,
@@ -11,9 +24,9 @@ const rootReducer = (state = [], action) => {
                     descripcionFisica: action.acusado.descripcionFisica
                 }
             );
-            return state;
+            return Object.assign({}, state);
 
-        case TOOGLE_ACUSADOS:
+        case 'TOOGLE_ACUSADOS':
             return state.map(acusado =>
                 acusado
             );
@@ -22,4 +35,4 @@ const rootReducer = (state = [], action) => {
     }
 };
 
-export default rootReducer;
+export default fieldsReducer;

@@ -7,12 +7,7 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import rootReducer from './reducers';
 
-
-// definimos el estado inicial
-const initialState = {
-    acusados:[]
-};
-let store = createStore(rootReducer,initialState);
+const store = createStore(rootReducer);
 
 ReactDOM.render(
     <Provider store={store}>
