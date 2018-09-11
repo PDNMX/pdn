@@ -1,4 +1,4 @@
-import * as types from '../constants/ActionTypes'
+import * as types from '../constants/ActionTypes';
 
 let nextAcusadoId = 1;
 
@@ -11,7 +11,8 @@ export const addAcusado = acusado => {
         }
     )
 
-}
+};
+
 export const toogleAcusado = () => ({
     type: types.TOOGLE_ACUSADOS
-})
+});

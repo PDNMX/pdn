@@ -1,7 +1,7 @@
 import Home from '../components/Home';
 import About from '../components/About';
-import Faq from '../components/Faq';
-import Datos from '../components/datos/Datos';
+import Faq from '../components/FAQ/index';
+import Datos from '../components/CatalogoDatos/Datos';
 import Sancionados from '../components/Sancionados/Index';
 import Servidores from '../components/ServidoresIntervienen/Index';
 import Indicadores from '../components/Indicadores/Indicadores';
@@ -24,7 +24,7 @@ const pdnRoutes = [
         component: Faq
     },
     {
-        path: "/datos",
+        path: "/CatalogoDatos",
         component: Datos
     },
     {
