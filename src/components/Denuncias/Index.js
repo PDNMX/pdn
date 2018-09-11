@@ -19,7 +19,6 @@ import QuestionIcon from '@material-ui/icons/QuestionAnswer'
 
 
 const styles = theme => ({
-
     root: {
         flexGrow: 1,
         [theme.breakpoints.up('sm')]: {
@@ -84,6 +83,7 @@ const styles = theme => ({
     },
     seccion: {
         padding: "2rem",
+        width : "100%",
         [theme.breakpoints.up('sm')]: {
             display: "flex",
         },

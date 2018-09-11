@@ -11,18 +11,18 @@ import HorizontalNonLinearStepper from "./HorizontalNonLinearStepper";
 
 const styles = theme => ({
     root: {
-        flexGrow: 1,
-        [theme.breakpoints.up('sm')]: {
+        [theme.breakpoints.up('sm')]:{
             marginLeft: '100px',
             marginRight: '100px',
-            paddingTop: theme.spacing.unit,
-            paddingBottom: theme.spacing.unit * 3
+            marginTop: theme.spacing.unit * 2,
+            marginBottom: theme.spacing.unit * 2,
         },
-        [theme.breakpoints.down('sm')]: {
+        [theme.breakpoints.down('sm')]:{
             marginLeft: theme.spacing.unit,
             marginRight: theme.spacing.unit,
-            paddingTop: theme.spacing.unit,
-            paddingBottom: theme.spacing.unit,
+            marginTop: theme.spacing.unit,
+            marginBottom: theme.spacing.unit,
+            padding: 10
         }
     },
     homeBody: {
@@ -67,18 +67,16 @@ const styles = theme => ({
         marginLeft: "-2rem",
         marginBottom: "2rem"
     },
-    seccion: {
-
+    containerUp: {
         [theme.breakpoints.up('sm')]: {
             display: "flex",
-            width:"100%",
             padding: "2rem",
         },
 
     },
     fontLight: {
         //color: theme.palette.fontLight.color,
-        
+
     }
 
 });
@@ -105,7 +103,7 @@ class FormularioDenuncia extends React.Component {
                             </Typography>
                         </Grid>
                         <Grid item xs={12}>
-                            <Paper className={classes.seccion}>
+                            <Paper  className={classes.containerUp} >
                                 <HorizontalNonLinearStepper/>
                             </Paper>
                         </Grid>

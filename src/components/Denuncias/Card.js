@@ -44,6 +44,9 @@ const styles = theme => ({
     },
     textoCentrado:{
         textAlign:"center"
+    },
+    containerCard:{
+        marginRight: theme.spacing.unit * 5
     }
 });
 
@@ -55,7 +58,7 @@ function SimpleCard(props) {
     const to = props.to;
     const content = props.content;
     return (
-        <div>
+        <div className={classes.containerCard}>
             <Card className={classes.card}>
                <CardContent>
                    <CardMedia className={classes.media}
