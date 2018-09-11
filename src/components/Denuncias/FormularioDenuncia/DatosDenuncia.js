@@ -15,8 +15,8 @@ import MuiPickersUtilsProvider from "material-ui-pickers/utils/MuiPickersUtilsPr
 import DatePicker from "material-ui-pickers/DatePicker";
 import DateFnsUtils from 'material-ui-pickers/utils/date-fns-utils';
 import { TimePicker } from 'material-ui-pickers';
-import VisibleAcusadoList from "../../containers/VisibleAcusadoList";
-import FieldsAcusadoContainer from "../../containers/FieldsAcusadoContainer"
+import VisibleAcusadoList from "../../../containers/VisibleAcusadoList";
+import FieldsAcusadoContainer from "../../../containers/FieldsAcusadoContainer"
 const styles = theme => ({
     root: {
         width: '100%',

@@ -10,16 +10,16 @@ const rootReducer = (state = [], action) => {
                     nombre: action.acusado.nombre,
                     descripcionFisica: action.acusado.descripcionFisica
                 }
-            )
+            );
             return state;
 
         case TOOGLE_ACUSADOS:
             return state.map(acusado =>
                 acusado
-            )
+            );
         default:
             return state
     }
-}
+};
 
 export default rootReducer;
