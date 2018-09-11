@@ -76,7 +76,6 @@ const styles = theme => ({
     },
     fontLight: {
         //color: theme.palette.fontLight.color,
-
     }
 
 });
