@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../PDNAppBar/PDNAppBar';
 import Footer from "../Footer/Footer";
+import PDNLinks from "../PDNLinks/PDNLinks";
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
@@ -52,12 +53,14 @@ class Indicadores extends React.Component {
             <div className={classes.root}>
                 <Header/>
                 <div className={classes.homeBody}>
-                    <iframe src="https://datos.gob.mx/visualizaciones/composicion/presupuestos.html?muestra=td" frameBorder="0"
-                            scrolling="no"  style={{overflow: "hidden", width: "100%", height: "700px"}}></iframe>
+                    <iframe src="https://datos.gob.mx/visualizaciones/composicion/presupuestos.html?muestra=td"
+                            frameBorder="0"
+                            scrolling="no"
+                            style={{overflow: "hidden", width: "100%", minHeight: "800px"}}/>
                 </div>
+                <PDNLinks/>
                 <Footer/>
             </div>
-
         );
     }
 }
