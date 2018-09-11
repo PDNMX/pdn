@@ -43,7 +43,7 @@ const styles = theme => ({
             marginRight: theme.spacing.unit,
             marginTop: theme.spacing.unit,
             marginBottom: theme.spacing.unit,
-            padding:20
+            padding: 10
         }
     },
     paper: {

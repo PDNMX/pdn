@@ -13,8 +13,8 @@ const styles = theme => ({
             paddingRight: '100px'
         },
         [theme.breakpoints.down('sm')]:{
-            paddingLeft: theme.spacing.unit,
-            paddingRight: theme.spacing.unit
+            paddingLeft: 20,
+            paddingRight: 20
         },
         paddingTop:'2em',
         paddingBottom: '2em'
