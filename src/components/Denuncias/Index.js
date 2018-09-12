@@ -28,31 +28,30 @@ const styles = theme => ({
             paddingBottom: theme.spacing.unit,
         }
     },
-    bgImg:{
+    bgImg: {
         height: '300px',
-        backgroundImage: 'url(libros.jpg)',/*'url(/BannereDark_PDN.png)',*/
+        backgroundImage: 'url(libros.jpg)', /*'url(/BannereDark_PDN.png)',*/
         /*padding: '50px 0',*/
-        backgroundPosition:'bottom',
+        backgroundPosition: 'bottom',
         backgroundRepeat: 'no-repeat',
-        textAlign:'left',
-        backgroundSize:'cover'
+        textAlign: 'left',
+        backgroundSize: 'cover',
+        width : '100%'
     },
-    center:{
-        textAlign: "center"
-    },
-    textPrimary:{
+    textPrimary: {
         color: theme.palette.primary.dark,
         textAlign: "center"
     },
-    textSecondary:{
-        color: theme.palette.primary.main
+    textSecondary: {
+        color: theme.palette.primary.main,
+        textAlign: "center"
     },
-    container:{
-        padding : theme.spacing.unit*2
+    container: {
+        padding: theme.spacing.unit * 2
     },
-    section:{
-        marginBottom: theme.spacing.unit*5,
-      //  backgroundColor :  theme.palette.primary.main
+    section: {
+        marginBottom: theme.spacing.unit * 5,
+        //  backgroundColor :  theme.palette.primary.main
     }
 
 });
@@ -66,43 +65,42 @@ class Index extends React.Component {
             <div>
                 <Header/>
                 <div className={classes.root}>
-                    <div>
-                        <Paper className={classes.section}>
-                            <Grid container>
-                                <Grid item lg={8} md={8} sm={12}>
-                                    <div className={classes.bgImg}></div>
-                                </Grid>
-                                <Grid item lg={4} md={4} sm={12} className={classes.container} >
-                                    <Typography variant="display1" className={classes.textPrimary}>
-                                        Denuncias
-                                    </Typography>
-                                    <Typography variant="body1" className={[classes.textSecondary,classes.center]}>
-                                        It is a long established fact that a reader will be distracted by the readable
-                                        content of a page
-                                        when looking at its layout. The point of using Lorem Ipsum is that it has a
-                                        more-or-less normal
-                                        distribution of letters
-                                    </Typography>
-                                </Grid>
-
-                            </Grid>
-                        </Paper>
-                        <Paper className={classes.section}>
-                            <Grid container spacing={16} justify="center">
-                                <Grid item lg={4} md={4} sm={12}>
-                                    <Card title="Presenta tu denuncia" icon={img1} to="/formDenuncia" content="Llena el formulario y obten tu folio con el cual podrás dar seguimiento a tu denuncia."/>
-                                </Grid>
-                                <Grid item lg={4} md={4} sm={12}>
-                                    <Card title="Consulta tu folio" icon={img2} to="/formConsultaDenuncia" content="Ten a la mano el número de folio con el que podrás  consultar el estatus de tu denuncia"/>
-                                </Grid>
-                                <Grid item lg={4} md={4} sm={12}>
-                                    <Card title="Informes" icon={img3} to="/formDenuncia" content="Visualizar informes"/>
-                                </Grid>
+                    <Paper className={classes.section}>
+                        <Grid container>
+                            <Grid item lg={8} md={8} sm={12} className={classes.bgImg}/>
+                            <Grid item lg={4} md={4} sm={12} className={classes.container}>
+                                <Typography variant="display1" className={classes.textPrimary}>
+                                    Denuncias
+                                </Typography>
+                                <Typography variant="body1" className={classes.textSecondary}>
+                                    It is a long established fact that a reader will be distracted by the readable
+                                    content of a page
+                                    when looking at its layout. The point of using Lorem Ipsum is that it has a
+                                    more-or-less normal
+                                    distribution of letters
+                                </Typography>
                             </Grid>
 
-                        </Paper>
-                    </div>
+                        </Grid>
+                    </Paper>
+                    <Paper className={classes.section}>
+                        <Grid container spacing={16} justify="center">
+                            <Grid item lg={4} md={4} sm={12}>
+                                <Card title="Presenta tu denuncia" icon={img1} to="/formDenuncia"
+                                      content="Llena el formulario y obten tu folio con el cual podrás dar seguimiento a tu denuncia."/>
+                            </Grid>
+                            <Grid item lg={4} md={4} sm={12}>
+                                <Card title="Consulta tu folio" icon={img2} to="/formConsultaDenuncia"
+                                      content="Ten a la mano el número de folio con el que podrás  consultar el estatus de tu denuncia"/>
+                            </Grid>
+                            <Grid item lg={4} md={4} sm={12}>
+                                <Card title="Informes" icon={img3} to="/formDenuncia" content="Visualizar informes"/>
+                            </Grid>
+                        </Grid>
+
+                    </Paper>
                 </div>
+
                 < PDNLinks/>
                 < Footer/>
 
