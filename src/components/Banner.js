@@ -8,7 +8,6 @@ const styles = theme => ({
     bgImg:{
         height: '300px',
         backgroundImage: 'url(Banner1_.jpg)',/*'url(/BannereDark_PDN.png)',*/
-        /*padding: '50px 0',*/
         backgroundPosition:'bottom',
         backgroundRepeat: 'no-repeat',
         textAlign:'left',

@@ -22,6 +22,7 @@ const styles = theme => ({
             width: '100%'
 
         },
+      //  backgroundColor : theme.palette.primary.light
 
     },
     media: {
@@ -46,7 +47,7 @@ const styles = theme => ({
         textAlign:"center"
     },
     containerCard:{
-        marginRight: theme.spacing.unit * 5
+        //marginRight: theme.spacing.unit * 5
     }
 });
 

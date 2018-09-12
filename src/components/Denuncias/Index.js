@@ -9,14 +9,8 @@ import Footer from "../Footer/Footer";
 import Card from "./Card";
 import img1 from "../../assets/img/hands.jpg";
 import img2 from "../../assets/img/caseFile.jpg";
+import img3 from "../../assets/img/fiscal.jpg";
 import Paper from "@material-ui/core/Paper/Paper";
-import List from "@material-ui/core/List/List";
-import ListItem from "@material-ui/core/ListItem/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText/ListItemText";
-import DonoutIcon from '@material-ui/icons/ShowChart';
-import QuestionIcon from '@material-ui/icons/QuestionAnswer'
-
 
 const styles = theme => ({
     root: {
@@ -34,66 +28,30 @@ const styles = theme => ({
             paddingBottom: theme.spacing.unit,
         }
     },
-    homeBody: {
-        [theme.breakpoints.up('sm')]: {
-            marginLeft: '100px',
-            marginRight: '100px',
-            marginTop: theme.spacing.unit * 2,
-            marginBottom: theme.spacing.unit * 2,
-
-
-        },
-        [theme.breakpoints.down('sm')]: {
-            marginLeft: theme.spacing.unit,
-            marginRight: theme.spacing.unit,
-            marginTop: theme.spacing.unit,
-            marginBottom: theme.spacing.unit,
-            padding: 20
-        }
+    bgImg:{
+        height: '300px',
+        backgroundImage: 'url(libros.jpg)',/*'url(/BannereDark_PDN.png)',*/
+        /*padding: '50px 0',*/
+        backgroundPosition:'bottom',
+        backgroundRepeat: 'no-repeat',
+        textAlign:'left',
+        backgroundSize:'cover'
     },
-    gridItem: {
-        marginBottom: theme.spacing.unit * 2
+    center:{
+        textAlign: "center"
     },
-
-    paperIzquierdo: {
-        backgroundColor: theme.palette.secondary.main,
-        height: '100%',
-        width: '100%',
-        color: theme.palette.fontLight.color,
+    textPrimary:{
+        color: theme.palette.primary.dark
     },
-    paperDerecho: {
-        height: '95%%',
-        width: '100%',
-        /*paddingLeft:"3rem",
-        paddingTop:"3rem"*/
+    textSecondary:{
+        color: theme.palette.primary.main
     },
-    titleBox: {
-        color: theme.palette.fontLight.color,
-        backgroundColor: theme.palette.primary.main,
-        paddingTop: '1rem',
-        paddingBottom: '1rem',
-        paddingLeft: '6rem',
-        paddingRight: '2rem',
-        fontSize: '1rem',
-        display: 'inline-block',
-        fontWeight: 700,
-        marginLeft: "-2rem",
-        marginBottom: "2rem"
-
+    container:{
+        padding : theme.spacing.unit*2
     },
-    seccion: {
-        padding: "2rem",
-        width : "100%",
-        [theme.breakpoints.up('sm')]: {
-            display: "flex",
-        },
-        [theme.breakpoints.down('sm')]: {
-
-        }
-    },
-    fontLight: {
-        color: theme.palette.fontLight.color,
-
+    section:{
+        marginBottom: theme.spacing.unit*5,
+      //  backgroundColor :  theme.palette.primary.main
     }
 
 });
@@ -107,47 +65,42 @@ class Index extends React.Component {
             <div>
                 <Header/>
                 <div className={classes.root}>
-                    <Grid container spacing={24}>
-                        <Grid item xs={12}>
-                            <Typography variant="headline">
-                                Denuncias
-                            </Typography>
-                            <Typography variant={"body1"}>
-                                It is a long established fact that a reader will be distracted by the readable
-                                content of a page
-                                when looking at its layout. The point of using Lorem Ipsum is that it has a
-                                more-or-less normal
-                                distribution of letters
-                            </Typography>
-                        </Grid>
-                    </Grid>
-                    <Grid container spacing={0}>
-                        <Paper className={classes.seccion}>
-                            <Grid item lg={3} md={3} sm={12}>
-                                <Typography variant="headline" className={classes.titleBox}>
-                                    Servicios
-                                </Typography>
-                                <List component="nav">
-                                    <ListItem button>
-                                        <ListItemIcon>
-                                            <QuestionIcon/>
-                                        </ListItemIcon>
-                                        <ListItemText inset primary="Preguntas frecuentes"/>
-                                    </ListItem>
-                                    <ListItem button>
-                                        <ListItemIcon>
-                                            <DonoutIcon/>
-                                        </ListItemIcon>
-                                        <ListItemText inset primary="Informes"/>
-                                    </ListItem>
-                                </List>
-                            </Grid>
-                            <Grid item lg={9} md={9} sm={12} className={classes.seccion}>
-                                <Card title="Presenta tu denuncia" icon={img1} to="/formDenuncia" content="Llena el formulario y obten tu folio con el cual podrás dar seguimiento a tu denuncia."/>
-                                <Card title="Consulta tu folio" icon={img2} to="/formConsultaDenuncia" content="Ten a la mano el número de folio con el que podrás  consultar el estatus de tu denuncia"/>
+                    <div>
+                        <Paper className={classes.section}>
+                            <Grid container>
+                                <Grid item lg={8} md={8} sm={12}>
+                                    <div className={classes.bgImg}></div>
+                                </Grid>
+                                <Grid item lg={4} md={4} sm={12} className={classes.container} >
+                                    <Typography variant="display1" className={[classes.textPrimary,classes.center]}>
+                                        Denuncias
+                                    </Typography>
+                                    <Typography variant="body1" className={[classes.textSecondary,classes.center]}>
+                                        It is a long established fact that a reader will be distracted by the readable
+                                        content of a page
+                                        when looking at its layout. The point of using Lorem Ipsum is that it has a
+                                        more-or-less normal
+                                        distribution of letters
+                                    </Typography>
+                                </Grid>
+
                             </Grid>
                         </Paper>
-                    </Grid>
+                        <Paper className={classes.section}>
+                            <Grid container spacing={16} justify="center">
+                                <Grid item lg={4} md={4} sm={12}>
+                                    <Card title="Presenta tu denuncia" icon={img1} to="/formDenuncia" content="Llena el formulario y obten tu folio con el cual podrás dar seguimiento a tu denuncia."/>
+                                </Grid>
+                                <Grid item lg={4} md={4} sm={12}>
+                                    <Card title="Consulta tu folio" icon={img2} to="/formConsultaDenuncia" content="Ten a la mano el número de folio con el que podrás  consultar el estatus de tu denuncia"/>
+                                </Grid>
+                                <Grid item lg={4} md={4} sm={12}>
+                                    <Card title="Informes" icon={img3} to="/formDenuncia" content="Visualizar informes"/>
+                                </Grid>
+                            </Grid>
+
+                        </Paper>
+                    </div>
                 </div>
                 < PDNLinks/>
                 < Footer/>
