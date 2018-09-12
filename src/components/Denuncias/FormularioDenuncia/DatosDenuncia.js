@@ -14,9 +14,10 @@ import IconButton from "@material-ui/core/IconButton/IconButton";
 import MuiPickersUtilsProvider from "material-ui-pickers/utils/MuiPickersUtilsProvider";
 import DatePicker from "material-ui-pickers/DatePicker";
 import DateFnsUtils from 'material-ui-pickers/utils/date-fns-utils';
-import { TimePicker } from 'material-ui-pickers';
+import {TimePicker} from 'material-ui-pickers';
 import VisibleAcusadoList from "../../../containers/VisibleAcusadoList";
 import FieldsAcusadoContainer from "../../../containers/FieldsAcusadoContainer"
+
 const styles = theme => ({
     root: {
         width: '100%',
@@ -38,7 +39,7 @@ const styles = theme => ({
 class DatosDenuncia extends React.Component {
     state = {
         motivo: '',
-        fechaHecho:  new Date(),
+        fechaHecho: new Date(),
         trato: '',
         institucionHecho: '',
         lugarHecho: '',
@@ -51,20 +52,15 @@ class DatosDenuncia extends React.Component {
         empresaPais: ''
     };
 
-    handleChange = name => event => {
-        this.setState({[name]: event.target.checked});
-    };
+
     handleChangeInput = name => event => {
         this.setState({
             [name]: event.target.value,
         });
     };
-    handleChangeGenero = event => {
-        this.setState({genero: event.target.value});
-    };
 
     handleDateChange = (date) => {
-        this.setState({ fechaHecho: date });
+        this.setState({fechaHecho: date});
     };
 
     render() {
@@ -103,12 +99,12 @@ class DatosDenuncia extends React.Component {
                         </Grid>
                         <Grid item lg={3} md={3} sm={12}>
                             <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                            <TimePicker
-                                autoOk
-                                label="Si conoce la hora, indíquela"
-                                value={this.state.fechaHecho}
-                                onChange={this.handleDateChange}
-                            />
+                                <TimePicker
+                                    autoOk
+                                    label="Si conoce la hora, indíquela"
+                                    value={this.state.fechaHecho}
+                                    onChange={this.handleDateChange}
+                                />
                             </MuiPickersUtilsProvider>
                         </Grid>
                         <Grid item lg={3} md={3} sm={12}>
@@ -222,9 +218,9 @@ class DatosDenuncia extends React.Component {
                             </Typography>
                         </Grid>
 
-                            <FieldsAcusadoContainer/>
+                        <FieldsAcusadoContainer/>
 
-                        <Grid item xs={12}>
+                        <Grid item md={12} sm={12}>
                             <VisibleAcusadoList/>
                         </Grid>
                         <Grid item xs={12}>
@@ -260,4 +256,4 @@ DatosDenuncia.propTypes = {
     classes: PropTypes.object.isRequired
 };
 DatosDenuncia = withStyles(styles)(DatosDenuncia);
-export default  DatosDenuncia;
+export default DatosDenuncia;

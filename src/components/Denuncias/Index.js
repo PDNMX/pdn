@@ -30,8 +30,7 @@ const styles = theme => ({
     },
     bgImg: {
         height: '300px',
-        backgroundImage: 'url(libros.jpg)', /*'url(/BannereDark_PDN.png)',*/
-        /*padding: '50px 0',*/
+        backgroundImage: 'url(libros.jpg)',
         backgroundPosition: 'bottom',
         backgroundRepeat: 'no-repeat',
         textAlign: 'left',

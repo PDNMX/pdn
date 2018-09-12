@@ -1,44 +1,47 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Acusado from './Acusado'
+import Grid from "@material-ui/core/Grid/Grid";
+import Card from "../../SimpleCard";
+import Typography from "@material-ui/core/Typography/Typography";
+import Table from "@material-ui/core/Table/Table";
+import TableHead from "@material-ui/core/TableHead/TableHead";
+import TableRow from "@material-ui/core/TableRow/TableRow";
+import TableCell from "@material-ui/core/TableCell/TableCell";
+import TableBody from "@material-ui/core/TableBody/TableBody";
 
-class AcusadoLista extends React.Component{
+class AcusadoLista extends React.Component {
 
     state = {
-        acusados : []
+        acusados: []
     };
 
-    componentWillReceiveProps(nextProps){
-        console.log("next props -> ", nextProps);
-
-        this.setState({
-            acusados: nextProps.acusados
-        });
-    }
-
-
-   render(){
-
-        console.log("lista props ->",this.props);
+    render() {
+        const {acusados} = this.props;
 
         return (
-            <ul>
-                {this.props.acusados.map((e,i) =>
-                    <li key={i}>{ e.id }</li>
-                )}
-            </ul>
-        )
-   }
-}
+            <div>
+                {acusados.length > 0 &&
+                <Table>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Nombre</TableCell>
+                            <TableCell>Descripción</TableCell>
+                            <TableCell></TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {acusados.map(acusado =>
+                            <Acusado key={acusado.id} {...acusado}/>)}
+                    </TableBody>
 
-/*
-AcusadoList.propTypes = {
-    acusados: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        nombre: PropTypes.string.isRequired,
-        descripcionFisica: PropTypes.string.isRequired
-    }).isRequired).isRequired
-};
-*/
+                </Table>
+                }
+            </div>
+
+        );
+
+    }
+}
 
 export default AcusadoLista;

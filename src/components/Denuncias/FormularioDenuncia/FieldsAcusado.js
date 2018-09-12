@@ -21,7 +21,7 @@ const styles = theme => ({
 class FieldsAcusado extends React.Component {
     state = {
         acusado: {
-            id: 2,
+            id: 0,
             nombre: '',
             descripcionFisica: ''
         }
@@ -38,9 +38,9 @@ class FieldsAcusado extends React.Component {
 
     fireAction = () => {
         this.props.addAcusado(this.state.acusado);
-
         this.setState({
             acusado: {
+                id:0,
                 nombre: '',
                 descripcionFisica: ''
             }
