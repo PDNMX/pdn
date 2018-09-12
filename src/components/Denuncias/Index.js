@@ -41,7 +41,8 @@ const styles = theme => ({
         textAlign: "center"
     },
     textPrimary:{
-        color: theme.palette.primary.dark
+        color: theme.palette.primary.dark,
+        textAlign: "center"
     },
     textSecondary:{
         color: theme.palette.primary.main
@@ -72,7 +73,7 @@ class Index extends React.Component {
                                     <div className={classes.bgImg}></div>
                                 </Grid>
                                 <Grid item lg={4} md={4} sm={12} className={classes.container} >
-                                    <Typography variant="display1" className={[classes.textPrimary,classes.center]}>
+                                    <Typography variant="display1" className={classes.textPrimary}>
                                         Denuncias
                                     </Typography>
                                     <Typography variant="body1" className={[classes.textSecondary,classes.center]}>
