@@ -18,9 +18,8 @@ const styles = theme => ({
             width: 250
         },
         [theme.breakpoints.up('xl')]:{
-           height: 53* theme.spacing.unit,
-            width: '100%'
-
+           height: 60* theme.spacing.unit,
+            width: '100%',
         },
       //  backgroundColor : theme.palette.primary.light
 
