@@ -50,7 +50,7 @@ class Index extends React.Component {
                     <Grid containter spacing={24}>
                         <Grid item xs={12}>
                             <Typography variant="title">
-                                Servidores públicos y contratistas sancionados
+                                Servidores públicos y particulares sancionados
                             </Typography>
                             <Typography>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
