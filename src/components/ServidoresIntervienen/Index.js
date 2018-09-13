@@ -53,6 +53,11 @@ class Index extends React.Component{
                             <br/>
 
                             <Tabs/>
+
+                            <br/>
+                            <br/>
+                            <Typography variant={'title'}>Particulares inhabilitados</Typography>
+                            <Typography>Tabla de particulares</Typography>
                         </Grid>
                     </Grid>
                 </div>
