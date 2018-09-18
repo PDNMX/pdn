@@ -57,7 +57,11 @@ const styles = theme => ({
     },
     button:{
         float:'right'
-    }
+    },
+    title:{
+        color : theme.palette.primary.main,
+
+    },
 });
 
 class DetalleParticular extends React.Component {
@@ -75,7 +79,7 @@ class DetalleParticular extends React.Component {
                         <form>
                             <Grid container spacing={8} justify="flex-start">
                                 <Grid item xs={11}>
-                                    <Typography variant= "title">Detalle</Typography>
+                                    <Typography variant= "title" className={classes.title}>Detalle particular</Typography>
                                 </Grid>
                                 <Grid item xs={1}>
                                     <IconButton color="primary" className={classes.button} component="span" onClick={handleClose}>

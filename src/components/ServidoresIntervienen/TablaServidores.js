@@ -83,7 +83,9 @@ const styles = theme => ({
         top: 0,
         bottom: 0
     },
-
+    container : {
+        width : '100%'
+    }
 
 });
 
@@ -287,7 +289,7 @@ class EnhancedTable extends React.Component {
         const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
 
         return (
-            <div>
+            <div className={classes.container}>
                 <Paper>
                     <EnhancedTableToolbar categoria={this.state.categoria} handleChangeCampo={this.handleChangeCampo}
                                           nombreServidor={this.state.nombreServidor}
