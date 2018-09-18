@@ -11,29 +11,34 @@ import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Toolbar from '@material-ui/core/Toolbar';
 import Paper from '@material-ui/core/Paper';
 import Tooltip from '@material-ui/core/Tooltip';
-import fileJSON from '../../data/servidorPublico';
 import BusquedaServidor from "./BusquedaServidor";
-import Typography from "@material-ui/core/Typography/Typography";
-import BajarCSV from "./BajarCSV";
 import DetalleServidor from "./DetalleServidor";
+import rp from "request-promise";
+import CircularProgress from '@material-ui/core/CircularProgress';
+import BajarCSV from "./BajarCSV";
 
 let counter = 0;
 
-function createData(servidor, institucion,puesto,tipoArea,contrataciones,concesionesLicencias,enajenacion,dictamenes) {
+let createData = (item) => {
+    let tipoArea = item.area_requirente === 1 ? "REQUIRENTE" : "" +
+    item.area_contratante === 1 ? "CONTRATANTE" : "" +
+    item.area_recnica === 1 ? "TÉCNICA" : "" +
+    item.area_responsable === 1 ? "RESPONSABLE" : "" +
+    item.area_otra === 1 ? "OTRA" : "";
+    let nivel = item.id_nivel === 1 ? "ATENCIÓN O TRAMITACIÓN" : item.id_nivel === 2 ? "RESOLUCIÓN" : "ATENCIÓN O TRAMITACIÓN Y RESOLUCIÓN";
     counter += 1;
     return {
         id: counter,
-        servidor: servidor,
-        institucion: institucion,
-        puesto: puesto,
-        tipoArea:tipoArea,
-        contrataciones:contrataciones,
-        concesionesLicencias:concesionesLicencias,
-        enajenacion:enajenacion,
-        dictamenes:dictamenes
+        servidor: item.nombre,
+        institucion: item.institucion,
+        puesto: item.puesto,
+        tipoArea: tipoArea,
+        contrataciones: item.id_procedimiento === 1 ? nivel : "",
+        concesionesLicencias: item.id_procedimiento === 2 ? nivel : "",
+        enajenacion: item.id_procedimiento === 3 ? nivel : "",
+        dictamenes: item.id_procedimiento === 4 ? nivel : ""
     };
-    //return item;
-}
+};
 
 function getSorting(order, orderBy) {
     return order === 'desc'
@@ -42,14 +47,42 @@ function getSorting(order, orderBy) {
 }
 
 const columnData = [
-    {id: 'servidor', numeric: false, disablePadding: false, label: 'Servidor público', position: 1,mostrar:true},
-    {id: 'institucion', numeric: false, disablePadding: false, label: 'Institución', position: 2, mostrar:true},
-    {id: 'puesto', numeric: false, disablePadding: false, label: 'Puesto', position: 3,mostrar:true},
-    {id: 'tipoArea', numeric: false, disablePadding: false, label: 'Tipo de área', position: 4, mostrar:true},
-    {id: 'contrataciones', numeric: false, disablePadding: false, label: 'Contrataciones públicas', position: 5,mostrar:false},
-    {id: 'concesionesLicencias', numeric: false, disablePadding: false, label: 'Concesiones, licencias, permisos, autorizaciones y prórrogas', position: 6, mostrar:false},
-    {id: 'enajenacion', numeric: false, disablePadding: false, label: 'Enajenación de bienes muebles', position: 7, mostrar:false},
-    {id: 'dictamenes', numeric: false, disablePadding: false, label: 'Asignación y emisión de dictámenes de avalúos nacionales', position: 8,mostrar:false},
+    {id: 'servidor', numeric: false, disablePadding: false, label: 'Servidor público', position: 1, mostrar: true},
+    {id: 'institucion', numeric: false, disablePadding: false, label: 'Institución', position: 2, mostrar: true},
+    {id: 'puesto', numeric: false, disablePadding: false, label: 'Puesto', position: 3, mostrar: true},
+    {id: 'tipoArea', numeric: false, disablePadding: false, label: 'Tipo de área', position: 4, mostrar: true},
+    {
+        id: 'contrataciones',
+        numeric: false,
+        disablePadding: false,
+        label: 'Contrataciones públicas',
+        position: 5,
+        mostrar: false
+    },
+    {
+        id: 'concesionesLicencias',
+        numeric: false,
+        disablePadding: false,
+        label: 'Concesiones, licencias, permisos, autorizaciones y prórrogas',
+        position: 6,
+        mostrar: false
+    },
+    {
+        id: 'enajenacion',
+        numeric: false,
+        disablePadding: false,
+        label: 'Enajenación de bienes muebles',
+        position: 7,
+        mostrar: false
+    },
+    {
+        id: 'dictamenes',
+        numeric: false,
+        disablePadding: false,
+        label: 'Asignación y emisión de dictámenes de avalúos nacionales',
+        position: 8,
+        mostrar: false
+    },
 ];
 
 const styles = theme => ({
@@ -57,28 +90,44 @@ const styles = theme => ({
         width: '100%',
         marginTop: theme.spacing.unit * 3,
     },
-    table: {
-        minWidth: 1020,
-    },
     tableWrapper: {
         overflowX: 'auto',
     },
+    tableFooter: {
+        display: 'flow-root',
+        flexWrap: 'wrap',
+    },
+    contentLeft: {
+        float: 'left'
+    },
+    contentRight: {
+        float: 'right'
+    },
+    progress: {
+        position: 'absolute',
+        margin: 'auto',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0
+    },
+
+
 
 });
+
 class EnhancedTableHead extends React.Component {
     createSortHandler = property => event => {
         this.props.onRequestSort(event, property);
     };
 
-
     render() {
         const {order, orderBy} = this.props;
-
         return (
             <TableHead>
                 <TableRow>
                     {columnData.map(column => {
-                        if(column.mostrar){
+                        if (column.mostrar) {
                             return (
                                 <TableCell
                                     key={column.id}
@@ -102,7 +151,6 @@ class EnhancedTableHead extends React.Component {
                                 </TableCell>
                             );
                         }
-
                     }, this)}
                 </TableRow>
             </TableHead>
@@ -124,7 +172,7 @@ const toolbarStyles = theme => ({
     root: {
         paddingRight: theme.spacing.unit,
     },
-    toolBarStyle:{
+    toolBarStyle: {
         color: theme.palette.secondary.main,
         backgroundColor: theme.palette.primary.main,
         display: 'flex',
@@ -142,19 +190,15 @@ const toolbarStyles = theme => ({
     flex: {
         flexGrow: 1,
     },
-
 });
 
 
 let EnhancedTableToolbar = props => {
-    const {classes,searchValue,handleSearch,campo,handleChangeCampo,data,columnas} = props;
+    const {classes, handleChangeCampo, nombreServidor, procedimiento, institucion} = props;
     return (
         <Toolbar className={classes.toolBarStyle}>
-            <BusquedaServidor handleSearch={handleSearch} value={searchValue}
-                      campo={campo} handleChangeCampo={handleChangeCampo}/>
-            <Typography variant="title" color="inherit" className={classes.flex}>
-            </Typography>
-            <BajarCSV data={data} nombreArchivo={"Servidores públicos.csv"} columnas={columnas}/>
+            <BusquedaServidor handleChangeCampo={handleChangeCampo}
+                              nombreServidor={nombreServidor} procedimiento={procedimiento} institucion={institucion}/>
         </Toolbar>
     );
 };
@@ -167,36 +211,36 @@ EnhancedTableToolbar = withStyles(toolbarStyles)(EnhancedTableToolbar);
 
 
 class EnhancedTable extends React.Component {
+
+    componentDidMount() {
+        this.handleSearchAPI('INI');
+    }
+
     constructor(props) {
         super(props);
-        let dataAux = fileJSON.map((item, key) => {
-                return createData(item.SERVIDOR_PUBLICO, item.INSTITUCION, item.PUESTO,item.TIPO_AREA,item.CONTRATACIONES_PUBLICAS,item.CONCESIONES_LICENCIAS_PERMISOS_AUTORIZACIONES_PRORROGAS, item.ENAJENACION_DE_BIENES_MUEBLES,item.ASIGNACION_EMISION_DE_DICTAMENES_DE_AVALUOS_NACIONALES)
-            }
-        );
-
         this.state = {
             order: 'asc',
             orderBy: 'servidor',
             selected: [],
-            searchValue: '',
-            data: dataAux,
-            filterData: dataAux,
+            nombreServidor: '',
+            data: [],
+            filterData: [],
             page: 0,
-            rowsPerPage: 5,
-            campo: 0,
+            rowsPerPage: 10,
+            procedimiento: 0,
             open: false,
-            elementoSeleccionado: {}
+            elementoSeleccionado: {},
+            institucion: '',
+            loading: true,
         };
     }
 
     handleRequestSort = (event, property) => {
         const orderBy = property;
         let order = 'desc';
-
         if (this.state.orderBy === property && this.state.order === 'desc') {
             order = 'asc';
         }
-
         this.setState({order, orderBy});
     };
 
@@ -209,33 +253,12 @@ class EnhancedTable extends React.Component {
     };
 
     handleClose = () => {
-        this.setState({ open: false });
+        this.setState({open: false});
     };
-
 
     handleClick = (event, elemento) => {
         this.setState({elementoSeleccionado: elemento});
-        this.setState({ open: true });
-
-        /*const {selected} = this.state;
-        const selectedIndex = selected.indexOf(id);
-        let newSelected = [];
-
-        if (selectedIndex === -1) {
-            newSelected = newSelected.concat(selected, id);
-        } else if (selectedIndex === 0) {
-            newSelected = newSelected.concat(selected.slice(1));
-        } else if (selectedIndex === selected.length - 1) {
-            newSelected = newSelected.concat(selected.slice(0, -1));
-        } else if (selectedIndex > 0) {
-            newSelected = newSelected.concat(
-                selected.slice(0, selectedIndex),
-                selected.slice(selectedIndex + 1),
-            );
-        }
-
-        this.setState({selected: newSelected});
-        */
+        this.setState({open: true});
     };
 
     handleChangePage = (event, page) => {
@@ -248,29 +271,43 @@ class EnhancedTable extends React.Component {
 
     isSelected = id => this.state.selected.indexOf(id) !== -1;
 
-    handleSearch = event => {
-        let {data, campo} = this.state;
-        let searchValue = event ? event.target.value : this.state.searchValue;
-        const regex = new RegExp(searchValue, 'gi');
-        // buscar en todos los campos
-        let filteredDatas = data.filter(e => {
-            if (campo === 0) {
-                return Object.keys(e).some(k => regex.test(e[k]));
-            } else {
-                let key = Object.keys(e)[campo];
-                return regex.test(e[key]);
-            }
+    handleSearchAPI = (typeSearch) => {
+        let {procedimiento, institucion, nombreServidor} = this.state;
+        let vUri = 'http://204.48.18.61/api/reniresp?';
+        let params = {};
+        (procedimiento && procedimiento > 0) ? params.id_procedimiento = 'eq.' + procedimiento : null;
+        (institucion) ? params.institucion = 'eq.' + institucion : null;
+        (nombreServidor) ? params.nombre = 'like.*' + nombreServidor.toUpperCase() + '*' : null;
+
+
+        vUri = vUri + ((procedimiento && procedimiento > 0) ? 'id_procedimiento=eq.' + procedimiento + '&&' : '');
+        vUri = vUri + ((institucion) ? 'institucion=eq.' + institucion + '&&' : '');
+        vUri = vUri + ((nombreServidor) ? 'nombre=like.*' + nombreServidor.toUpperCase() + '*' : '');
+
+        let options = {
+            uri: vUri,
+            json: true
+        };
+
+        rp(options)
+            .then(data => {
+                let dataAux = data.map(item => {
+                    return createData(item);
+                });
+                this.setState({filterData: dataAux, loading: false});
+                typeSearch === 'INI' ? this.setState({data: dataAux}) : null;
+            }).catch(err => {
+            this.setState({loading: false});
+            alert("_No se pudó obtener la información");
+            console.log(err);
         });
-        this.setState({filterData: filteredDatas, searchValue: event ? event.target.value : this.state.searchValue})
+
     };
 
-    handleChangeCampo = event => {
-        let valor = event.target.value;
-        this.setState({campo: valor}, () => {
-            if (this.state.searchValue)
-                this.handleSearch();
+    handleChangeCampo = (varState, event) => {
+        this.setState({loading: true, [varState]: event.target.value}, () => {
+            this.handleSearchAPI('FILTER');
         });
-
     };
 
     render() {
@@ -281,12 +318,19 @@ class EnhancedTable extends React.Component {
         return (
             <div>
                 <Paper>
-                    <EnhancedTableToolbar campo={this.state.campo} handleChangeCampo = {this.handleChangeCampo}
-                                          searchValue={this.state.searchValue} handleSearch={this.handleSearch}
-                                        data={filterData} columnas={columnData}/>
+                    <EnhancedTableToolbar categoria={this.state.categoria} handleChangeCampo={this.handleChangeCampo}
+                                          nombreServidor={this.state.nombreServidor}
+                                          procedimiento={this.state.procedimiento} data={filterData}
+                                          columnas={columnData} institucion={this.state.institucion}/>
                     <div className={classes.tableWrapper}>
-                        <DetalleServidor  handleClose={this.handleClose} servidor={this.state.elementoSeleccionado} control={this.state.open}/>
-                        <Table className={classes.table} aria-labelledby="tableTitle">
+                        <DetalleServidor handleClose={this.handleClose} servidor={this.state.elementoSeleccionado}
+                                         control={this.state.open}/>
+                        {
+                            this.state.loading &&
+                            <CircularProgress className={classes.progress} id="spinnerLoading" size={100}/>
+                        }
+                        <Table className={classes.table} aria-describedby="spinnerLoading"
+                               aria-busy={this.state.loading} aria-labelledby="tableTitle">
                             <EnhancedTableHead
                                 numSelected={selected.length}
                                 order={order}
@@ -295,7 +339,8 @@ class EnhancedTable extends React.Component {
                                 onRequestSort={this.handleRequestSort}
                                 rowCount={data.length}
                             />
-                            <TableBody>
+                            <TableBody id="tableServidores">
+
                                 {filterData
                                     .sort(getSorting(order, orderBy))
                                     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
@@ -311,13 +356,11 @@ class EnhancedTable extends React.Component {
                                                 key={n.id}
                                                 selected={isSelected}
                                             >
-                                                <TableCell component="th" scope="row" padding="default">
-                                                    {n.servidor}
-                                                </TableCell>
+                                                <TableCell component="th" scope="row"
+                                                           padding="default">{n.servidor}</TableCell>
                                                 <TableCell>{n.institucion}</TableCell>
                                                 <TableCell>{n.puesto}</TableCell>
                                                 <TableCell>{n.tipoArea}</TableCell>
-
                                             </TableRow>
                                         );
                                     })}
@@ -326,27 +369,37 @@ class EnhancedTable extends React.Component {
                                         <TableCell colSpan={6}/>
                                     </TableRow>
                                 )}
+
                             </TableBody>
                         </Table>
+                        <div>
+                            <div className={classes.contentLeft}>
+                                <BajarCSV data={data} filtrado={false} columnas={columnData}/>
+                                <BajarCSV data={filterData} filtrado={true} columnas={columnData}/>
+                            </div>
+                            <div  className={classes.contentRight}>
+                                <TablePagination
+                                    component="span"
+                                    count={filterData.length}
+                                    rowsPerPage={rowsPerPage}
+                                    page={page}
+                                    backIconButtonProps={{
+                                        'aria-label': 'Previous Page',
+                                    }}
+                                    nextIconButtonProps={{
+                                        'aria-label': 'Next Page',
+                                    }}
+                                    onChangePage={this.handleChangePage}
+                                    onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                                    labelRowsPerPage='Registros por página'
+                                    labelDisplayedRows={({from, to, count}) => {
+                                        return `${from}-${to} de ${count}`;
+                                    }}
+                                />
+                            </div>
+                        </div>
+
                     </div>
-                    <TablePagination
-                        component="div"
-                        count={filterData.length}
-                        rowsPerPage={rowsPerPage}
-                        page={page}
-                        backIconButtonProps={{
-                            'aria-label': 'Previous Page',
-                        }}
-                        nextIconButtonProps={{
-                            'aria-label': 'Next Page',
-                        }}
-                        onChangePage={this.handleChangePage}
-                        onChangeRowsPerPage={this.handleChangeRowsPerPage}
-                        labelRowsPerPage='Registros por página'
-                        labelDisplayedRows={({from, to, count}) => {
-                            return `${from}-${to} de ${count}`;
-                        }}
-                    />
                 </Paper>
             </div>
         );

@@ -27,7 +27,9 @@ const styles = theme => ({
 
 class BajarCSV extends React.Component{
     render (){
-        const { classes,data,columnas,nombreArchivo} = this.props;
+        const { classes,data,columnas,filtrado} = this.props;
+        let nombreArchivo = filtrado ? "Servidores públicos filtrados.csv" :  "Servidores públicos.csv" ;
+        let labelButton = filtrado ?   "Descargar mi búsqueda" : "Descargar todo";
         let headers = columnas.map((item)=>{
             return {
                 label: item.label,
@@ -38,7 +40,7 @@ class BajarCSV extends React.Component{
             <CSVLink data={data} filename={nombreArchivo} headers ={headers}>
                 <Button variant="contained" size="small" className={classNames(classes.button)}>
                     <DownloadIcon className={classNames(classes.leftIcon, classes.iconSmall)} />
-                    Descargar CSV
+                    {labelButton}
                 </Button>
             </CSVLink>
         );

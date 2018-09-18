@@ -7,6 +7,7 @@ import PDNLinks from '../PDNLinks/PDNLinks';
 import Tabs from "./Tabs";
 import Grid from "@material-ui/core/Grid/Grid";
 import Header from "../PDNAppBar/PDNAppBar";
+import TablaServidores from "./TablaServidores";
 
 
 const styles = theme => ({
@@ -36,7 +37,7 @@ class Index extends React.Component{
             <div>
                 <Header/>
                 <div className={classes.root}>
-                    <Grid containter spacing={24}>
+                    <Grid container>
                         <Grid item xs={12}>
                             <Typography variant="title">
                                 Servidores que intervienen en procesos de contratación
@@ -52,7 +53,7 @@ class Index extends React.Component{
 
                             <br/>
 
-                            <Tabs/>
+                            <TablaServidores/>
 
                             <br/>
                             <br/>
