@@ -16,27 +16,27 @@ import DetalleServidor from "./DetalleServidor";
 import rp from "request-promise";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import BajarCSV from "./BajarCSV";
+import BusquedaParticular from "./BusquedaParticular";
+import DetalleParticular from "./DetalleParticular";
 
 let counter = 0;
 
 let createData = (item) => {
-    let tipoArea = item.area_requirente === 1 ? "REQUIRENTE" : "" +
-    item.area_contratante === 1 ? "CONTRATANTE" : "" +
-    item.area_recnica === 1 ? "TÉCNICA" : "" +
-    item.area_responsable === 1 ? "RESPONSABLE" : "" +
-    item.area_otra === 1 ? "OTRA" : "";
-    let nivel = item.id_nivel === 1 ? "ATENCIÓN O TRAMITACIÓN" : item.id_nivel === 2 ? "RESOLUCIÓN" : "ATENCIÓN O TRAMITACIÓN Y RESOLUCIÓN";
     counter += 1;
     return {
         id: counter,
-        servidor: item.nombre,
-        institucion: item.institucion,
-        puesto: item.puesto,
-        tipoArea: tipoArea,
-        contrataciones: item.id_procedimiento === 1 ? nivel : "",
-        concesionesLicencias: item.id_procedimiento === 2 ? nivel : "",
-        enajenacion: item.id_procedimiento === 3 ? nivel : "",
-        dictamenes: item.id_procedimiento === 4 ? nivel : ""
+        proveedor: item.proveedor_o_contratista,
+        dependencia: item.dependencia,
+        expediente: item.numero_de_expediente,
+        hechos: item.hechos_de_la_irregularidad,
+        objetoSocial: item.objeto_social,
+        sentidoResolucion: item.sentido_de_resolucion,
+        fechaNotificacion: item.fecha_de_notificacion,
+        fechaResolucion: item.fecha_de_resolucion,
+        plazo: item.plazo,
+        monto: item.monto,
+        responsableInformacion: item.nombre_del_responsable_de_la_informacion,
+        fechaActualizacion: item.fecha_de_actualizacion
     };
 };
 
@@ -47,14 +47,18 @@ function getSorting(order, orderBy) {
 }
 
 const columnData = [
-    {id: 'servidor', numeric: false, disablePadding: false, label: 'Servidor público', position: 1, mostrar: true},
-    {id: 'institucion', numeric: false, disablePadding: false, label: 'Institución', position: 2, mostrar: true},
-    {id: 'puesto', numeric: false, disablePadding: false, label: 'Puesto', position: 3, mostrar: true},
-    {id: 'tipoArea', numeric: false, disablePadding: false, label: 'Tipo de área', position: 4, mostrar: true},
-    {id: 'contrataciones', numeric: false, disablePadding: false,label: 'Contrataciones públicas',position: 5,mostrar: false},
-    {id: 'concesionesLicencias',numeric: false,disablePadding: false,label: 'Concesiones, licencias, permisos, autorizaciones y prórrogas',position: 6,mostrar: false},
-    {id: 'enajenacion',numeric: false,disablePadding: false,label: 'Enajenación de bienes muebles',position: 7,mostrar: false},
-    {id: 'dictamenes',numeric: false,disablePadding: false,label: 'Asignación y emisión de dictámenes de avalúos nacionales',position: 8,mostrar: false},
+    {id: 'proveedor', numeric: false, disablePadding: false, label: 'Proveedor o contratista', position: 1, mostrar: true},
+    {id: 'dependencia', numeric: false, disablePadding: false, label: 'Dependencia', position: 2, mostrar: true},
+    {id: 'expediente', numeric: false, disablePadding: false, label: 'Número de expediente', position: 3, mostrar: true},
+    {id: 'hechos', numeric: false, disablePadding: false, label: 'Hechos de la irregularidad', position: 4, mostrar: false},
+    {id: 'objetoSocial',numeric: false,disablePadding: false,label: 'Objeto social',position: 5,mostrar: false},
+    {id: 'sentidoResolucion',numeric: false,disablePadding: false,label: 'Sentido de la resolución',position: 6,mostrar: true},
+    {id: 'fechaNotificacion',numeric: false,disablePadding: false,label: 'Fecha notificación',position: 7,mostrar: true},
+    {id: 'fechaResolucion',numeric: false,disablePadding: false,label: 'Fecha resolución',position: 8,mostrar: true},
+    {id: 'plazo', numeric: false,disablePadding:false,label: 'Plazo', position: 9, mostrar: false},
+    {id: 'monto', numeric: false, disablePadding: false, label: 'Monto', position: 10, mostrar:  false},
+    {id: 'responsableInformacion', numeric: false, disablePadding: false, label: 'Responsable de información', position: 11, mostrar: false},
+    {id: 'fechaActualizacion', numeric: false, disablePadding: false, label: 'Fecha actualización', position: 12, mostrar: false}
 ];
 
 const styles = theme => ({
@@ -83,8 +87,6 @@ const styles = theme => ({
         top: 0,
         bottom: 0
     },
-
-
 });
 
 class EnhancedTableHead extends React.Component {
@@ -165,11 +167,11 @@ const toolbarStyles = theme => ({
 
 
 let EnhancedTableToolbar = props => {
-    const {classes, handleChangeCampo, nombreServidor, procedimiento, institucion} = props;
+    const {classes, handleChangeCampo, nombreParticular, procedimiento, institucion} = props;
     return (
         <Toolbar className={classes.toolBarStyle}>
-            <BusquedaServidor handleChangeCampo={handleChangeCampo}
-                              nombreServidor={nombreServidor} procedimiento={procedimiento} institucion={institucion}/>
+            <BusquedaParticular handleChangeCampo={handleChangeCampo}
+                              nombreParticular={nombreParticular} dependencia={institucion}/>
         </Toolbar>
     );
 };
@@ -191,14 +193,13 @@ class EnhancedTable extends React.Component {
         super(props);
         this.state = {
             order: 'asc',
-            orderBy: 'servidor',
+            orderBy: 'proveedor',
             selected: [],
-            nombreServidor: '',
+            nombreParticular: '',
             data: [],
             filterData: [],
             page: 0,
             rowsPerPage: 10,
-            procedimiento: 0,
             open: false,
             elementoSeleccionado: {},
             institucion: '',
@@ -243,17 +244,15 @@ class EnhancedTable extends React.Component {
     isSelected = id => this.state.selected.indexOf(id) !== -1;
 
     handleSearchAPI = (typeSearch) => {
-        let {procedimiento, institucion, nombreServidor} = this.state;
-        let vUri = 'http://204.48.18.61/api/reniresp?';
+        let {institucion, nombreProveedor} = this.state;
+        let vUri = 'http://204.48.18.61/api/proveedores_sancionados?';
         let params = {};
-        (procedimiento && procedimiento > 0) ? params.id_procedimiento = 'eq.' + procedimiento : null;
-        (institucion) ? params.institucion = 'eq.' + institucion : null;
-        (nombreServidor) ? params.nombre = 'like.*' + nombreServidor.toUpperCase() + '*' : null;
+        (institucion) ? params.dependencia = 'eq.' + institucion : null;
+        (nombreProveedor) ? params.proveedor_o_contratista = 'like.*' + nombreProveedor.toUpperCase() + '*' : null;
 
 
-        vUri = vUri + ((procedimiento && procedimiento > 0) ? 'id_procedimiento=eq.' + procedimiento + '&&' : '');
-        vUri = vUri + ((institucion) ? 'institucion=eq.' + institucion + '&&' : '');
-        vUri = vUri + ((nombreServidor) ? 'nombre=like.*' + nombreServidor.toUpperCase() + '*' : '');
+         vUri = vUri + ((institucion) ? 'dependencia=eq.' + institucion + '&&' : '');
+        vUri = vUri + ((nombreProveedor) ? 'proveedor_o_contratista=like.*' + nombreProveedor.toUpperCase() + '*' : '');
 
         let options = {
             uri: vUri,
@@ -289,12 +288,11 @@ class EnhancedTable extends React.Component {
         return (
             <div>
                 <Paper>
-                    <EnhancedTableToolbar categoria={this.state.categoria} handleChangeCampo={this.handleChangeCampo}
-                                          nombreServidor={this.state.nombreServidor}
-                                          procedimiento={this.state.procedimiento} data={filterData}
-                                          columnas={columnData} institucion={this.state.institucion}/>
+                    <EnhancedTableToolbar handleChangeCampo={this.handleChangeCampo}
+                                          nombreParticular={this.state.nombreParticular}
+                                          data={filterData} columnas={columnData} institucion={this.state.institucion}/>
                     <div className={classes.tableWrapper}>
-                        <DetalleServidor handleClose={this.handleClose} servidor={this.state.elementoSeleccionado}
+                        <DetalleParticular handleClose={this.handleClose} particular={this.state.elementoSeleccionado}
                                          control={this.state.open}/>
                         {
                             this.state.loading &&
@@ -310,7 +308,7 @@ class EnhancedTable extends React.Component {
                                 onRequestSort={this.handleRequestSort}
                                 rowCount={data.length}
                             />
-                            <TableBody id="tableServidores">
+                            <TableBody id="tableParticulares">
 
                                 {filterData
                                     .sort(getSorting(order, orderBy))
@@ -328,10 +326,13 @@ class EnhancedTable extends React.Component {
                                                 selected={isSelected}
                                             >
                                                 <TableCell component="th" scope="row"
-                                                           padding="default">{n.servidor}</TableCell>
-                                                <TableCell>{n.institucion}</TableCell>
-                                                <TableCell>{n.puesto}</TableCell>
-                                                <TableCell>{n.tipoArea}</TableCell>
+                                                           padding="default">{n.proveedor}</TableCell>
+                                                <TableCell>{n.dependencia}</TableCell>
+                                                <TableCell>{n.expediente}</TableCell>
+                                                <TableCell>{n.sentidoResolucion}</TableCell>
+                                                <TableCell>{n.fechaNotificacion}</TableCell>
+                                                <TableCell>{n.fechaResolucion}</TableCell>
+
                                             </TableRow>
                                         );
                                     })}
@@ -348,7 +349,7 @@ class EnhancedTable extends React.Component {
                                 <BajarCSV data={data} filtrado={false} columnas={columnData}/>
                                 <BajarCSV data={filterData} filtrado={true} columnas={columnData}/>
                             </div>
-                            <div className={classes.contentRight}>
+                            <div  className={classes.contentRight}>
                                 <TablePagination
                                     component="span"
                                     count={filterData.length}
