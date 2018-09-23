@@ -44,7 +44,7 @@ class BusquedaServidor extends React.Component {
         let aux = [];
         let id = 0;
         let options = {
-            uri: 'http://204.48.18.61/api/instituciones',
+            uri: 'http://204.48.18.61/api/instituciones?order=institucion.asc',
             json: true
         };
         rp(options)

@@ -11,13 +11,12 @@ import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Toolbar from '@material-ui/core/Toolbar';
 import Paper from '@material-ui/core/Paper';
 import Tooltip from '@material-ui/core/Tooltip';
-import BusquedaServidor from "./BusquedaServidor";
-import DetalleServidor from "./DetalleServidor";
 import rp from "request-promise";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import BajarCSV from "./BajarCSV";
 import BusquedaParticular from "./BusquedaParticular";
 import DetalleParticular from "./DetalleParticular";
+import Grid from "@material-ui/core/Grid/Grid";
 
 let counter = 0;
 
@@ -47,18 +46,74 @@ function getSorting(order, orderBy) {
 }
 
 const columnData = [
-    {id: 'proveedor', numeric: false, disablePadding: false, label: 'Proveedor o contratista', position: 1, mostrar: true},
+    {
+        id: 'proveedor',
+        numeric: false,
+        disablePadding: false,
+        label: 'Proveedor o contratista',
+        position: 1,
+        mostrar: true
+    },
     {id: 'dependencia', numeric: false, disablePadding: false, label: 'Dependencia', position: 2, mostrar: true},
-    {id: 'expediente', numeric: false, disablePadding: false, label: 'Número de expediente', position: 3, mostrar: true},
-    {id: 'hechos', numeric: false, disablePadding: false, label: 'Hechos de la irregularidad', position: 4, mostrar: false},
-    {id: 'objetoSocial',numeric: false,disablePadding: false,label: 'Objeto social',position: 5,mostrar: false},
-    {id: 'sentidoResolucion',numeric: false,disablePadding: false,label: 'Sentido de la resolución',position: 6,mostrar: true},
-    {id: 'fechaNotificacion',numeric: false,disablePadding: false,label: 'Fecha notificación',position: 7,mostrar: true},
-    {id: 'fechaResolucion',numeric: false,disablePadding: false,label: 'Fecha resolución',position: 8,mostrar: true},
-    {id: 'plazo', numeric: false,disablePadding:false,label: 'Plazo', position: 9, mostrar: false},
-    {id: 'monto', numeric: false, disablePadding: false, label: 'Monto', position: 10, mostrar:  false},
-    {id: 'responsableInformacion', numeric: false, disablePadding: false, label: 'Responsable de información', position: 11, mostrar: false},
-    {id: 'fechaActualizacion', numeric: false, disablePadding: false, label: 'Fecha actualización', position: 12, mostrar: false}
+    {
+        id: 'expediente',
+        numeric: false,
+        disablePadding: false,
+        label: 'Número de expediente',
+        position: 3,
+        mostrar: true
+    },
+    {
+        id: 'hechos',
+        numeric: false,
+        disablePadding: false,
+        label: 'Hechos de la irregularidad',
+        position: 4,
+        mostrar: false
+    },
+    {id: 'objetoSocial', numeric: false, disablePadding: false, label: 'Objeto social', position: 5, mostrar: false},
+    {
+        id: 'sentidoResolucion',
+        numeric: false,
+        disablePadding: false,
+        label: 'Sentido de la resolución',
+        position: 6,
+        mostrar: true
+    },
+    {
+        id: 'fechaNotificacion',
+        numeric: false,
+        disablePadding: false,
+        label: 'Fecha notificación',
+        position: 7,
+        mostrar: true
+    },
+    {
+        id: 'fechaResolucion',
+        numeric: false,
+        disablePadding: false,
+        label: 'Fecha resolución',
+        position: 8,
+        mostrar: true
+    },
+    {id: 'plazo', numeric: false, disablePadding: false, label: 'Plazo', position: 9, mostrar: false},
+    {id: 'monto', numeric: false, disablePadding: false, label: 'Monto', position: 10, mostrar: false},
+    {
+        id: 'responsableInformacion',
+        numeric: false,
+        disablePadding: false,
+        label: 'Responsable de información',
+        position: 11,
+        mostrar: false
+    },
+    {
+        id: 'fechaActualizacion',
+        numeric: false,
+        disablePadding: false,
+        label: 'Fecha actualización',
+        position: 12,
+        mostrar: false
+    }
 ];
 
 const styles = theme => ({
@@ -87,8 +142,8 @@ const styles = theme => ({
         top: 0,
         bottom: 0
     },
-    container : {
-        width : '100%'
+    container: {
+        width: '100%'
     }
 });
 
@@ -153,6 +208,7 @@ const toolbarStyles = theme => ({
         backgroundColor: theme.palette.primary.main,
         display: 'flex',
         flexWrap: 'wrap',
+        maxHeight: 70
     },
     spacer: {
         flex: '1 1 100%',
@@ -170,11 +226,11 @@ const toolbarStyles = theme => ({
 
 
 let EnhancedTableToolbar = props => {
-    const {classes, handleChangeCampo, nombreParticular, procedimiento, institucion} = props;
+    const {classes, handleChangeCampo, nombreParticular, institucion} = props;
     return (
         <Toolbar className={classes.toolBarStyle}>
-            <BusquedaParticular handleChangeCampo={handleChangeCampo}
-                              nombreParticular={nombreParticular} dependencia={institucion}/>
+            <BusquedaParticular handleChangeCampo={handleChangeCampo} nombreParticular={nombreParticular}
+                                institucion={institucion}/>
         </Toolbar>
     );
 };
@@ -202,7 +258,7 @@ class EnhancedTable extends React.Component {
             data: [],
             filterData: [],
             page: 0,
-            rowsPerPage: 10,
+            rowsPerPage: 5,
             open: false,
             elementoSeleccionado: {},
             institucion: '',
@@ -247,21 +303,20 @@ class EnhancedTable extends React.Component {
     isSelected = id => this.state.selected.indexOf(id) !== -1;
 
     handleSearchAPI = (typeSearch) => {
-        let {institucion, nombreProveedor} = this.state;
+        let {institucion, nombreParticular} = this.state;
         let vUri = 'http://204.48.18.61/api/proveedores_sancionados?';
         let params = {};
         (institucion) ? params.dependencia = 'eq.' + institucion : null;
-        (nombreProveedor) ? params.proveedor_o_contratista = 'like.*' + nombreProveedor.toUpperCase() + '*' : null;
+        (nombreParticular) ? params.proveedor_o_contratista = 'like.*' + nombreParticular.toUpperCase() + '*' : null;
 
 
-         vUri = vUri + ((institucion) ? 'dependencia=eq.' + institucion + '&&' : '');
-        vUri = vUri + ((nombreProveedor) ? 'proveedor_o_contratista=like.*' + nombreProveedor.toUpperCase() + '*' : '');
+        vUri = vUri + ((institucion) ? 'dependencia=eq.' + institucion + '&&' : '');
+        vUri = vUri + ((nombreParticular) ? 'proveedor_o_contratista=like.*' + nombreParticular.toUpperCase() + '*' : '');
 
         let options = {
             uri: vUri,
             json: true
         };
-
         rp(options)
             .then(data => {
                 let dataAux = data.map(item => {
@@ -269,19 +324,25 @@ class EnhancedTable extends React.Component {
                 });
                 this.setState({filterData: dataAux, loading: false});
                 typeSearch === 'INI' ? this.setState({data: dataAux}) : null;
-            }).catch(err => {
-            this.setState({loading: false});
-            alert("_No se pudó obtener la información");
-            console.log(err);
-        });
+            })
+            .catch(err => {
+                this.setState({loading: false});
+                alert("_No se pudó obtener la información");
+                console.log(err);
+            });
 
     };
 
-    handleChangeCampo = (varState, event) => {
-        this.setState({loading: true, [varState]: event.target.value}, () => {
+    handleChangeCampo = varState => event => {
+        console.log("Varstate: ",varState);
+        console.log("event: ",event);
+            this.setState({loading: true, [varState]: event.target?event.target.value : event.value}, () => {
+                console.log("State: ", this.state);
             this.handleSearchAPI('FILTER');
         });
+
     };
+
 
     render() {
         const {classes} = this.props;
@@ -293,10 +354,10 @@ class EnhancedTable extends React.Component {
                 <Paper>
                     <EnhancedTableToolbar handleChangeCampo={this.handleChangeCampo}
                                           nombreParticular={this.state.nombreParticular}
-                                          data={filterData} columnas={columnData} institucion={this.state.institucion}/>
+                                          institucion={this.state.institucion}/>
                     <div className={classes.tableWrapper}>
                         <DetalleParticular handleClose={this.handleClose} particular={this.state.elementoSeleccionado}
-                                         control={this.state.open}/>
+                                           control={this.state.open}/>
                         {
                             this.state.loading &&
                             <CircularProgress className={classes.progress} id="spinnerLoading" size={100}/>
@@ -347,12 +408,14 @@ class EnhancedTable extends React.Component {
 
                             </TableBody>
                         </Table>
-                        <div>
-                            <div className={classes.contentLeft}>
+                        <Grid container>
+                            <Grid item md={3} xs={12}>
                                 <BajarCSV data={data} filtrado={false} columnas={columnData}/>
+                            </Grid>
+                            <Grid item md={3} xs={12}>
                                 <BajarCSV data={filterData} filtrado={true} columnas={columnData}/>
-                            </div>
-                            <div  className={classes.contentRight}>
+                            </Grid>
+                            <Grid item md={6} xs={12}>
                                 <TablePagination
                                     component="span"
                                     count={filterData.length}
@@ -371,8 +434,9 @@ class EnhancedTable extends React.Component {
                                         return `${from}-${to} de ${count}`;
                                     }}
                                 />
-                            </div>
-                        </div>
+                            </Grid>
+                        </Grid>
+
 
                     </div>
                 </Paper>

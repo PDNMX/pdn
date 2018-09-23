@@ -22,6 +22,10 @@ const styles = theme => ({
     flex: {
         flexGrow: 1,
     },
+    linkTransparent:{
+        color:'transparent',
+    }
+
 });
 
 
@@ -37,8 +41,8 @@ class BajarCSV extends React.Component{
             }
         });
         return (
-            <CSVLink data={data} filename={nombreArchivo} headers ={headers}>
-                <Button variant="contained" size="small" className={classNames(classes.button)}>
+            <CSVLink data={data} filename={nombreArchivo} headers ={headers} className={classes.linkTransparent}>
+                <Button color="primary" variant="contained" size="small" className={classNames(classes.button)}>
                     <DownloadIcon className={classNames(classes.leftIcon, classes.iconSmall)} />
                     {labelButton}
                 </Button>

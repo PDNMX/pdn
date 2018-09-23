@@ -24,11 +24,27 @@ const theme = createMuiTheme({
             color:"#707070"
         },
         greyTitle:{
-            color:"#333333"
+            color:'rgb(55, 70, 79)'
         },
         graphGreen:{
             color:"#00cc99"
+        },
+        textPrincipal:{
+            color:"#96cb99"
+        },
+        textSecondary:{
+            color : "#e6e6e6"
+        },
+        backLight:{
+            color : "#e5e5e5"
+        },
+        backDark:{
+            color:'rgb(55, 70, 79)'
+        },
+        textNormal:{
+            color : 'rgba(0, 0, 0, 0.87)'
         }
+
     },
     overrides:{
         MuiTableHead:{

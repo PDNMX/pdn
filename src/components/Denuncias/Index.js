@@ -6,18 +6,19 @@ import Grid from '@material-ui/core/Grid';
 import Header from "../PDNAppBar/PDNAppBar";
 import PDNLinks from "../PDNLinks/PDNLinks";
 import Footer from "../Footer/Footer";
-import Card from "./Card";
 import img1 from "../../assets/img/hands.jpg";
 import img2 from "../../assets/img/caseFile.jpg";
 import img3 from "../../assets/img/fiscal.jpg";
 import Paper from "@material-ui/core/Paper/Paper";
+import CardMedia from "@material-ui/core/CardMedia/CardMedia";
+import {Link} from "react-router-dom";
 
 const styles = theme => ({
     root: {
         flexGrow: 1,
         [theme.breakpoints.up('sm')]: {
-            marginLeft: '100px',
-            marginRight: '100px',
+            marginLeft: '150px',
+            marginRight: '150px',
             paddingTop: theme.spacing.unit,
             paddingBottom: theme.spacing.unit * 3
         },
@@ -35,7 +36,7 @@ const styles = theme => ({
         backgroundRepeat: 'no-repeat',
         textAlign: 'left',
         backgroundSize: 'cover',
-        width : '100%'
+        width: '100%'
     },
     textPrimary: {
         color: theme.palette.primary.dark,
@@ -50,8 +51,24 @@ const styles = theme => ({
     },
     section: {
         marginBottom: theme.spacing.unit * 5,
-        //  backgroundColor :  theme.palette.primary.main
-    }
+        backgroundColor :  theme.palette.backDark.color
+    },
+    image:{
+        width: '100%',
+        height: '250px',
+    },
+    title: {
+        color: theme.palette.textPrincipal.color,
+        textAlign: 'center'
+    },
+    textLight: {
+        color: "#e6e6e6",
+        textAlign: 'justify'
+    },
+    textDark: {
+        color: theme.palette.textNormal,
+        textAlign: 'justify'
+    },
 
 });
 
@@ -63,42 +80,56 @@ class Index extends React.Component {
         return (
             <div>
                 <Header/>
+                <Paper className={classes.section} name={'isela'}>
+                    <Grid container>
+                        <Grid item lg={8} md={8} sm={12} className={classes.bgImg}/>
+                        <Grid item lg={4} md={4} sm={12} className={classes.container}>
+                            <Typography variant="display1" className={classes.title}>
+                                Denuncias
+                            </Typography>
+                            <Typography variant="body1" className={classes.textLight}>
+                                It is a long established fact that a reader will be distracted by the readable
+                                content of a page
+                                when looking at its layout. The point of using Lorem Ipsum is that it has a
+                                more-or-less normal
+                                distribution of letters
+                            </Typography>
+                        </Grid>
+                    </Grid>
+                </Paper>
                 <div className={classes.root}>
-                    <Paper className={classes.section}>
-                        <Grid container>
-                            <Grid item lg={8} md={8} sm={12} className={classes.bgImg}/>
-                            <Grid item lg={4} md={4} sm={12} className={classes.container}>
-                                <Typography variant="display1" className={classes.textPrimary}>
-                                    Denuncias
-                                </Typography>
-                                <Typography variant="body1" className={classes.textSecondary}>
-                                    It is a long established fact that a reader will be distracted by the readable
-                                    content of a page
-                                    when looking at its layout. The point of using Lorem Ipsum is that it has a
-                                    more-or-less normal
-                                    distribution of letters
-                                </Typography>
-                            </Grid>
-
+                    <Grid container spacing={16}>
+                        <Grid item md={4} xs={12}>
+                            <CardMedia image={img1} className={classes.image} to="/formDenuncia" component={Link}/>
+                            <Typography variant="display1" className={classes.title}>
+                                Presenta tu denuncia
+                            </Typography>
+                            <Typography  className={classes.textPrimary}>
+                                Llena el formulario y obten tu folio con el cual podrás dar seguimiento a tu
+                                denuncia.
+                            </Typography>
                         </Grid>
-                    </Paper>
-                    <Paper className={classes.section}>
-                        <Grid container spacing={16} justify="center">
-                            <Grid item lg={4} md={4} sm={12}>
-                                <Card title="Presenta tu denuncia" icon={img1} to="/formDenuncia"
-                                      content="Llena el formulario y obten tu folio con el cual podrás dar seguimiento a tu denuncia."/>
-                            </Grid>
-                            <Grid item lg={4} md={4} sm={12}>
-                                <Card title="Consulta tu folio" icon={img2} to="/formConsultaDenuncia"
-                                      content="Ten a la mano el número de folio con el que podrás  consultar el estatus de tu denuncia"/>
-                            </Grid>
-                            <Grid item lg={4} md={4} sm={12}>
-                                <Card title="Informes" icon={img3} to="/formDenuncia" content="Visualizar informes"/>
-                            </Grid>
+                        <Grid item md={4} xs={12}>
+                            <CardMedia image={img2} className={classes.image} to="/formConsultaDenuncia" component={Link}/>
+                            <Typography variant="display1" className={classes.title}>
+                                Consulta tu folio
+                            </Typography>
+                            <Typography  className={classes.textPrimary} >
+                                Ten a la mano el número de folio con el que podrás consultar el estatus de tu
+                                denuncia
+                            </Typography>
                         </Grid>
-
-                    </Paper>
-                </div>
+                        <Grid item md={4} xs={12}>
+                            <CardMedia image={img3} className={classes.image} to="/informesDenuncias" component={Link}/>
+                            <Typography variant="display1" className={classes.title}>
+                                Informes
+                            </Typography>
+                            <Typography  className={classes.textPrimary}>
+                                Visualizar informes
+                            </Typography>
+                        </Grid>
+                    </Grid>
+                    </div>
 
                 < PDNLinks/>
                 < Footer/>

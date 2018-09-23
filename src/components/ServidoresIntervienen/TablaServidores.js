@@ -16,6 +16,7 @@ import DetalleServidor from "./DetalleServidor";
 import rp from "request-promise";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import BajarCSV from "./BajarCSV";
+import Grid from "@material-ui/core/Grid/Grid";
 
 let counter = 0;
 
@@ -199,7 +200,7 @@ class EnhancedTable extends React.Component {
             data: [],
             filterData: [],
             page: 0,
-            rowsPerPage: 10,
+            rowsPerPage: 5,
             procedimiento: 0,
             open: false,
             elementoSeleccionado: {},
@@ -345,12 +346,14 @@ class EnhancedTable extends React.Component {
 
                             </TableBody>
                         </Table>
-                        <div>
-                            <div className={classes.contentLeft}>
+                        <Grid container>
+                            <Grid item  md={3} xs={12}>
                                 <BajarCSV data={data} filtrado={false} columnas={columnData}/>
+                            </Grid>
+                            <Grid item md={3} xs={12}>
                                 <BajarCSV data={filterData} filtrado={true} columnas={columnData}/>
-                            </div>
-                            <div className={classes.contentRight}>
+                            </Grid>
+                            <Grid item md={6} xs={12}>
                                 <TablePagination
                                     component="span"
                                     count={filterData.length}
@@ -369,9 +372,8 @@ class EnhancedTable extends React.Component {
                                         return `${from}-${to} de ${count}`;
                                     }}
                                 />
-                            </div>
-                        </div>
-
+                            </Grid>
+                        </Grid>
                     </div>
                 </Paper>
             </div>
