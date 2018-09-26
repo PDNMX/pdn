@@ -39,14 +39,15 @@ const styles = theme => ({
         [theme.breakpoints.up('xl')]: {
             paddingLeft: '400px',
             paddingRight: '400px',
-            paddingTop: theme.spacing.unit,
-            paddingBottom: theme.spacing.unit,
+            paddingTop: theme.spacing.unit*3,
+            paddingBottom: theme.spacing.unit*3,
         },
         backgroundColor: theme.palette.backDark.color
     },
     title: {
         color: theme.palette.textPrincipal.color,
-        textAlign: 'center'
+        textAlign: 'center',
+        textDecoration : 'underline'
     },
     summary: {
         color: theme.palette.primary.main,
@@ -76,10 +77,11 @@ const styles = theme => ({
         [theme.breakpoints.up('xl')]: {
             paddingLeft: '400px',
             paddingRight: '400px',
-            paddingTop: theme.spacing.unit,
-            paddingBottom: theme.spacing.unit,
+            paddingTop: theme.spacing.unit*3,
+            paddingBottom: theme.spacing.unit*3,
         },
-        backgroundColor: theme.palette.backLight.color
+        backgroundColor: theme.palette.backLight.color,
+
     },
     bgPanelDark: {
         backgroundColor: theme.palette.backDark.color,

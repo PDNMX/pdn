@@ -245,11 +245,13 @@ EnhancedTableToolbar = withStyles(toolbarStyles)(EnhancedTableToolbar);
 class EnhancedTable extends React.Component {
 
     componentDidMount() {
-        this.handleSearchAPI('INI');
+        this.handleSearchAPI('FIELD_FILTER');
     }
 
     constructor(props) {
         super(props);
+        this.child = React.createRef();
+        this.btnDownloadAll = React.createRef();
         this.state = {
             order: 'asc',
             orderBy: 'proveedor',
@@ -263,6 +265,8 @@ class EnhancedTable extends React.Component {
             elementoSeleccionado: {},
             institucion: '',
             loading: true,
+            totalRows: 0,
+            filterDataAll: []
         };
     }
 
@@ -293,28 +297,46 @@ class EnhancedTable extends React.Component {
     };
 
     handleChangePage = (event, page) => {
-        this.setState({page});
+        this.setState({page}, () => {
+            this.handleSearchAPI('CHANGE_PAGE');
+        });
+
     };
 
     handleChangeRowsPerPage = event => {
-        this.setState({rowsPerPage: event.target.value});
+        this.setState({rowsPerPage: event.target.value}, () => {
+            this.handleSearchAPI('FIELD_FILTER');
+        });
     };
 
     isSelected = id => this.state.selected.indexOf(id) !== -1;
 
+    getTotalRows = (URL) => {
+        let options = {
+            uri : URL ? URL : 'http://204.48.18.61/api/proveedores_sancionados?select=count=eq.exact',
+            json : true
+        };
+        rp(options)
+            .then(data => {
+                this.setState({totalRows: data[0].count, loading: false});
+            }).catch(err => {
+            this.setState({loading: false});
+            alert("_No se pudó obtener la información");
+            console.log(err);
+        });
+    };
     handleSearchAPI = (typeSearch) => {
         let {institucion, nombreParticular} = this.state;
-        let vUri = 'http://204.48.18.61/api/proveedores_sancionados?';
-        let params = {};
-        (institucion) ? params.dependencia = 'eq.' + institucion : null;
-        (nombreParticular) ? params.proveedor_o_contratista = 'like.*' + nombreParticular.toUpperCase() + '*' : null;
-
+        const URI = 'http://204.48.18.61/api/proveedores_sancionados?';
+        let vUri = URI + ((typeSearch === 'FIELD_FILTER'||typeSearch==='CHANGE_PAGE') ? ('limit=' + this.state.rowsPerPage + '&&offset=' + (this.state.rowsPerPage * this.state.page) + '&&'):'');
 
         vUri = vUri + ((institucion) ? 'dependencia=eq.' + institucion + '&&' : '');
         vUri = vUri + ((nombreParticular) ? 'proveedor_o_contratista=like.*' + nombreParticular.toUpperCase() + '*' : '');
 
+        if(typeSearch==='FIELD_FILTER')this.getTotalRows(vUri+'&&select=count=eq.exact');
+
         let options = {
-            uri: vUri,
+            uri: typeSearch === 'ALL' ? URI : vUri,
             json: true
         };
         rp(options)
@@ -322,8 +344,13 @@ class EnhancedTable extends React.Component {
                 let dataAux = data.map(item => {
                     return createData(item);
                 });
-                this.setState({filterData: dataAux, loading: false});
-                typeSearch === 'INI' ? this.setState({data: dataAux}) : null;
+                typeSearch === 'ALL' ? this.setState({data: dataAux, loading:false}, () => {
+                    this.btnDownloadAll.triggerDown();
+                }) : (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.setState({filterData: dataAux, loading: false}) :
+                    this.setState({filterDataAll: dataAux, loading: false}, () => {
+                        this.child.triggerDown();
+                    });
+                return true;
             })
             .catch(err => {
                 this.setState({loading: false});
@@ -334,21 +361,16 @@ class EnhancedTable extends React.Component {
     };
 
     handleChangeCampo = varState => event => {
-        console.log("Varstate: ",varState);
-        console.log("event: ",event);
-            this.setState({loading: true, [varState]: event.target?event.target.value : event.value}, () => {
-                console.log("State: ", this.state);
-            this.handleSearchAPI('FILTER');
+        this.setState({loading: true, [varState]: event.target ? event.target.value : event.value}, () => {
+            this.handleSearchAPI('FIELD_FILTER');
         });
-
     };
 
 
     render() {
         const {classes} = this.props;
-        const {data, order, orderBy, selected, rowsPerPage, page, filterData} = this.state;
-        const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
-
+        const {data, order, orderBy, selected, rowsPerPage, page, filterData, totalRows, filterDataAll} = this.state;
+        const emptyRows = rowsPerPage - filterData.length;
         return (
             <div className={classes.container}>
                 <Paper>
@@ -373,10 +395,8 @@ class EnhancedTable extends React.Component {
                                 rowCount={data.length}
                             />
                             <TableBody id="tableParticulares">
-
                                 {filterData
                                     .sort(getSorting(order, orderBy))
-                                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                     .map(n => {
                                         const isSelected = this.isSelected(n.id);
                                         return (
@@ -405,20 +425,22 @@ class EnhancedTable extends React.Component {
                                         <TableCell colSpan={6}/>
                                     </TableRow>
                                 )}
-
                             </TableBody>
+
                         </Table>
                         <Grid container>
-                            <Grid item md={3} xs={12}>
-                                <BajarCSV data={data} filtrado={false} columnas={columnData}/>
+                            <Grid item md = {3} xs = {12}>
+                                <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data} filtrado = {false}
+                                          columnas={columnData} fnSearch={this.handleSearchAPI} fileName={'Particulares inhabilitados'}/>
                             </Grid>
-                            <Grid item md={3} xs={12}>
-                                <BajarCSV data={filterData} filtrado={true} columnas={columnData}/>
+                            <Grid item md = {3} xs = {12}>
+                                <BajarCSV innerRef={comp => this.child = comp} data={filterDataAll} filtrado = {true}
+                                          columnas={columnData} fnSearch={this.handleSearchAPI} fileName = {'Particulares inhabilitados'}/>
                             </Grid>
-                            <Grid item md={6} xs={12}>
+                            <Grid item md = {6} xs = {12}>
                                 <TablePagination
                                     component="span"
-                                    count={filterData.length}
+                                    count={totalRows}
                                     rowsPerPage={rowsPerPage}
                                     page={page}
                                     backIconButtonProps={{
