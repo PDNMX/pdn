@@ -11,33 +11,31 @@ import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Toolbar from '@material-ui/core/Toolbar';
 import Paper from '@material-ui/core/Paper';
 import Tooltip from '@material-ui/core/Tooltip';
-import BusquedaServidor from "./BusquedaServidor";
-import DetalleServidor from "./DetalleServidor";
 import rp from "request-promise";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import BajarCSV from "./BajarCSV";
+import BusquedaParticular from "./BusquedaParticular";
+import DetalleParticular from "./DetalleParticular";
 import Grid from "@material-ui/core/Grid/Grid";
 
 let counter = 0;
 
 let createData = (item) => {
-    let tipoArea = item.area_requirente === 1 ? "REQUIRENTE" : "" +
-    item.area_contratante === 1 ? "CONTRATANTE" : "" +
-    item.area_recnica === 1 ? "TÉCNICA" : "" +
-    item.area_responsable === 1 ? "RESPONSABLE" : "" +
-    item.area_otra === 1 ? "OTRA" : "";
-    let nivel = item.id_nivel === 1 ? "ATENCIÓN O TRAMITACIÓN" : item.id_nivel === 2 ? "RESOLUCIÓN" : "ATENCIÓN O TRAMITACIÓN Y RESOLUCIÓN";
     counter += 1;
     return {
         id: counter,
-        servidor: item.nombre,
-        institucion: item.institucion,
-        puesto: item.puesto,
-        tipoArea: tipoArea,
-        contrataciones: item.id_procedimiento === 1 ? nivel : "",
-        concesionesLicencias: item.id_procedimiento === 2 ? nivel : "",
-        enajenacion: item.id_procedimiento === 3 ? nivel : "",
-        dictamenes: item.id_procedimiento === 4 ? nivel : ""
+        proveedor: item.proveedor_o_contratista,
+        dependencia: item.dependencia,
+        expediente: item.numero_de_expediente,
+        hechos: item.hechos_de_la_irregularidad,
+        objetoSocial: item.objeto_social,
+        sentidoResolucion: item.sentido_de_resolucion,
+        fechaNotificacion: item.fecha_de_notificacion,
+        fechaResolucion: item.fecha_de_resolucion,
+        plazo: item.plazo,
+        monto: item.monto,
+        responsableInformacion: item.nombre_del_responsable_de_la_informacion,
+        fechaActualizacion: item.fecha_de_actualizacion
     };
 };
 
@@ -48,14 +46,74 @@ function getSorting(order, orderBy) {
 }
 
 const columnData = [
-    {id: 'servidor', numeric: false, disablePadding: false, label: 'Servidor público', position: 1, mostrar: true},
-    {id: 'institucion', numeric: false, disablePadding: false, label: 'Institución', position: 2, mostrar: true},
-    {id: 'puesto', numeric: false, disablePadding: false, label: 'Puesto', position: 3, mostrar: true},
-    {id: 'tipoArea', numeric: false, disablePadding: false, label: 'Tipo de área', position: 4, mostrar: true},
-    {id: 'contrataciones', numeric: false, disablePadding: false,label: 'Contrataciones públicas',position: 5,mostrar: false},
-    {id: 'concesionesLicencias',numeric: false,disablePadding: false,label: 'Concesiones, licencias, permisos, autorizaciones y prórrogas',position: 6,mostrar: false},
-    {id: 'enajenacion',numeric: false,disablePadding: false,label: 'Enajenación de bienes muebles',position: 7,mostrar: false},
-    {id: 'dictamenes',numeric: false,disablePadding: false,label: 'Asignación y emisión de dictámenes de avalúos nacionales',position: 8,mostrar: false},
+    {
+        id: 'proveedor',
+        numeric: false,
+        disablePadding: false,
+        label: 'Proveedor o contratista',
+        position: 1,
+        mostrar: true
+    },
+    {id: 'dependencia', numeric: false, disablePadding: false, label: 'Dependencia', position: 2, mostrar: true},
+    {
+        id: 'expediente',
+        numeric: false,
+        disablePadding: false,
+        label: 'Número de expediente',
+        position: 3,
+        mostrar: true
+    },
+    {
+        id: 'hechos',
+        numeric: false,
+        disablePadding: false,
+        label: 'Hechos de la irregularidad',
+        position: 4,
+        mostrar: false
+    },
+    {id: 'objetoSocial', numeric: false, disablePadding: false, label: 'Objeto social', position: 5, mostrar: false},
+    {
+        id: 'sentidoResolucion',
+        numeric: false,
+        disablePadding: false,
+        label: 'Sentido de la resolución',
+        position: 6,
+        mostrar: true
+    },
+    {
+        id: 'fechaNotificacion',
+        numeric: false,
+        disablePadding: false,
+        label: 'Fecha notificación',
+        position: 7,
+        mostrar: true
+    },
+    {
+        id: 'fechaResolucion',
+        numeric: false,
+        disablePadding: false,
+        label: 'Fecha resolución',
+        position: 8,
+        mostrar: true
+    },
+    {id: 'plazo', numeric: false, disablePadding: false, label: 'Plazo', position: 9, mostrar: false},
+    {id: 'monto', numeric: false, disablePadding: false, label: 'Monto', position: 10, mostrar: false},
+    {
+        id: 'responsableInformacion',
+        numeric: false,
+        disablePadding: false,
+        label: 'Responsable de información',
+        position: 11,
+        mostrar: false
+    },
+    {
+        id: 'fechaActualizacion',
+        numeric: false,
+        disablePadding: false,
+        label: 'Fecha actualización',
+        position: 12,
+        mostrar: false
+    }
 ];
 
 const styles = theme => ({
@@ -84,10 +142,9 @@ const styles = theme => ({
         top: 0,
         bottom: 0
     },
-    container : {
-        width : '100%'
+    container: {
+        width: '100%'
     }
-
 });
 
 class EnhancedTableHead extends React.Component {
@@ -151,6 +208,7 @@ const toolbarStyles = theme => ({
         backgroundColor: theme.palette.primary.main,
         display: 'flex',
         flexWrap: 'wrap',
+        maxHeight: 70
     },
     spacer: {
         flex: '1 1 100%',
@@ -168,11 +226,11 @@ const toolbarStyles = theme => ({
 
 
 let EnhancedTableToolbar = props => {
-    const {classes, handleChangeCampo, nombreServidor, procedimiento, institucion} = props;
+    const {classes, handleChangeCampo, nombreParticular, institucion} = props;
     return (
         <Toolbar className={classes.toolBarStyle}>
-            <BusquedaServidor handleChangeCampo={handleChangeCampo}
-                              nombreServidor={nombreServidor} procedimiento={procedimiento} institucion={institucion}/>
+            <BusquedaParticular handleChangeCampo={handleChangeCampo} nombreParticular={nombreParticular}
+                                institucion={institucion}/>
         </Toolbar>
     );
 };
@@ -196,23 +254,20 @@ class EnhancedTable extends React.Component {
         this.btnDownloadAll = React.createRef();
         this.state = {
             order: 'asc',
-            orderBy: 'servidor',
+            orderBy: 'proveedor',
             selected: [],
-            nombreServidor: '',
+            nombreParticular: '',
             data: [],
             filterData: [],
             page: 0,
             rowsPerPage: 5,
-            procedimiento: 0,
             open: false,
             elementoSeleccionado: {},
             institucion: '',
             loading: true,
-            totalRows:0,
-            filterDataAll : [],
-
+            totalRows: 0,
+            filterDataAll: []
         };
-
     }
 
     handleRequestSort = (event, property) => {
@@ -242,23 +297,23 @@ class EnhancedTable extends React.Component {
     };
 
     handleChangePage = (event, page) => {
-        this.setState({page},()=>{
+        this.setState({page}, () => {
             this.handleSearchAPI('CHANGE_PAGE');
         });
 
     };
 
     handleChangeRowsPerPage = event => {
-        this.setState({rowsPerPage: event.target.value} ,()=>{
+        this.setState({rowsPerPage: event.target.value}, () => {
             this.handleSearchAPI('FIELD_FILTER');
         });
     };
 
     isSelected = id => this.state.selected.indexOf(id) !== -1;
 
-    getTotalRows=(URL)=>{
+    getTotalRows = (URL) => {
         let options = {
-            uri : URL ? URL : 'http://204.48.18.61/api/reniresp?select=count=eq.exact',
+            uri : URL ? URL : 'http://204.48.18.61/api/proveedores_sancionados?select=count=eq.exact',
             json : true
         };
         rp(options)
@@ -271,63 +326,60 @@ class EnhancedTable extends React.Component {
         });
     };
     handleSearchAPI = (typeSearch) => {
-        let {procedimiento, institucion, nombreServidor} = this.state;
-        const URI = 'http://204.48.18.61/api/reniresp?';
-        let vUri = URI+((typeSearch === 'FIELD_FILTER'||typeSearch==='CHANGE_PAGE') ?('limit='+this.state.rowsPerPage+'&&offset='+(this.state.rowsPerPage*this.state.page)+'&&'):'');
+        let {institucion, nombreParticular} = this.state;
+        const URI = 'http://204.48.18.61/api/proveedores_sancionados?';
+        let vUri = URI + ((typeSearch === 'FIELD_FILTER'||typeSearch==='CHANGE_PAGE') ? ('limit=' + this.state.rowsPerPage + '&&offset=' + (this.state.rowsPerPage * this.state.page) + '&&'):'');
 
-        vUri = vUri + ((procedimiento && procedimiento > 0) ? 'id_procedimiento=eq.' + procedimiento + '&&' : '');
-        vUri = vUri + ((institucion) ? 'institucion=eq.' + institucion + '&&' : '');
-        vUri = vUri + ((nombreServidor) ? 'nombre=like.*' + nombreServidor.toUpperCase() + '*' : '');
+        vUri = vUri + ((institucion) ? 'dependencia=eq.' + institucion + '&&' : '');
+        vUri = vUri + ((nombreParticular) ? 'proveedor_o_contratista=like.*' + nombreParticular.toUpperCase() + '*' : '');
 
         if(typeSearch==='FIELD_FILTER')this.getTotalRows(vUri+'&&select=count=eq.exact');
 
         let options = {
-            uri: typeSearch==='ALL'? URI : vUri,
+            uri: typeSearch === 'ALL' ? URI : vUri,
             json: true
         };
-
         rp(options)
             .then(data => {
                 let dataAux = data.map(item => {
                     return createData(item);
                 });
-                typeSearch === 'ALL' ? this.setState({data: dataAux, loading:false},()=>{
+                typeSearch === 'ALL' ? this.setState({data: dataAux, loading:false}, () => {
                     this.btnDownloadAll.triggerDown();
                 }) : (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.setState({filterData: dataAux, loading: false}) :
-                    this.setState({filterDataAll : dataAux, loading : false}, () => {
+                    this.setState({filterDataAll: dataAux, loading: false}, () => {
                         this.child.triggerDown();
                     });
                 return true;
-            }).catch(err => {
-            this.setState({loading: false});
-            alert("_No se pudó obtener la información");
-            console.log(err);
-        });
+            })
+            .catch(err => {
+                this.setState({loading: false});
+                alert("_No se pudó obtener la información");
+                console.log(err);
+            });
 
     };
 
-    handleChangeCampo = (varState, event) => {
+    handleChangeCampo = varState => event => {
         this.setState({loading: true, [varState]: event.target ? event.target.value : event.value}, () => {
             this.handleSearchAPI('FIELD_FILTER');
         });
     };
 
+
     render() {
         const {classes} = this.props;
-        const {data, order, orderBy, selected, rowsPerPage, page, filterData,totalRows,filterDataAll} = this.state;
-        // const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
+        const {data, order, orderBy, selected, rowsPerPage, page, filterData, totalRows, filterDataAll} = this.state;
         const emptyRows = rowsPerPage - filterData.length;
-
         return (
             <div className={classes.container}>
                 <Paper>
-                    <EnhancedTableToolbar categoria={this.state.categoria} handleChangeCampo={this.handleChangeCampo}
-                                          nombreServidor={this.state.nombreServidor}
-                                          procedimiento={this.state.procedimiento} data={filterData}
-                                          columnas={columnData} institucion={this.state.institucion}/>
+                    <EnhancedTableToolbar handleChangeCampo={this.handleChangeCampo}
+                                          nombreParticular={this.state.nombreParticular}
+                                          institucion={this.state.institucion}/>
                     <div className={classes.tableWrapper}>
-                        <DetalleServidor handleClose={this.handleClose} servidor={this.state.elementoSeleccionado}
-                                         control={this.state.open}/>
+                        <DetalleParticular handleClose={this.handleClose} particular={this.state.elementoSeleccionado}
+                                           control={this.state.open}/>
                         {
                             this.state.loading &&
                             <CircularProgress className={classes.progress} id="spinnerLoading" size={100}/>
@@ -342,7 +394,7 @@ class EnhancedTable extends React.Component {
                                 onRequestSort={this.handleRequestSort}
                                 rowCount={data.length}
                             />
-                            <TableBody id="tableServidores">
+                            <TableBody id="tableParticulares">
                                 {filterData
                                     .sort(getSorting(order, orderBy))
                                     .map(n => {
@@ -358,10 +410,13 @@ class EnhancedTable extends React.Component {
                                                 selected={isSelected}
                                             >
                                                 <TableCell component="th" scope="row"
-                                                           padding="default">{n.servidor}</TableCell>
-                                                <TableCell>{n.institucion}</TableCell>
-                                                <TableCell>{n.puesto}</TableCell>
-                                                <TableCell>{n.tipoArea}</TableCell>
+                                                           padding="default">{n.proveedor}</TableCell>
+                                                <TableCell>{n.dependencia}</TableCell>
+                                                <TableCell>{n.expediente}</TableCell>
+                                                <TableCell>{n.sentidoResolucion}</TableCell>
+                                                <TableCell>{n.fechaNotificacion}</TableCell>
+                                                <TableCell>{n.fechaResolucion}</TableCell>
+
                                             </TableRow>
                                         );
                                     })}
@@ -370,19 +425,19 @@ class EnhancedTable extends React.Component {
                                         <TableCell colSpan={6}/>
                                     </TableRow>
                                 )}
-
                             </TableBody>
+
                         </Table>
                         <Grid container>
-                            <Grid item  md={3} xs={12}>
-                                <BajarCSV innerRef = {comp => this.btnDownloadAll = comp} data = {data} filtrado = {false}
-                                          columnas = {columnData} fnSearch = {this.handleSearchAPI} fileName = {'Servidores'}/>
+                            <Grid item md = {3} xs = {12}>
+                                <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data} filtrado = {false}
+                                          columnas={columnData} fnSearch={this.handleSearchAPI} fileName={'Particulares inhabilitados'}/>
                             </Grid>
-                            <Grid item md={3} xs={12}>
-                                <BajarCSV innerRef = {comp => this.child = comp} data = {filterDataAll} filtrado = {true}
-                                          columnas = {columnData} fnSearch = {this.handleSearchAPI} fileName = {'Servidores'}/>
+                            <Grid item md = {3} xs = {12}>
+                                <BajarCSV innerRef={comp => this.child = comp} data={filterDataAll} filtrado = {true}
+                                          columnas={columnData} fnSearch={this.handleSearchAPI} fileName = {'Particulares inhabilitados'}/>
                             </Grid>
-                            <Grid item md={6} xs={12}>
+                            <Grid item md = {6} xs = {12}>
                                 <TablePagination
                                     component="span"
                                     count={totalRows}
@@ -403,6 +458,8 @@ class EnhancedTable extends React.Component {
                                 />
                             </Grid>
                         </Grid>
+
+
                     </div>
                 </Paper>
             </div>

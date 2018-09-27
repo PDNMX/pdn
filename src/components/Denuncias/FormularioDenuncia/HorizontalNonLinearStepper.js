@@ -7,12 +7,12 @@ import StepButton from '@material-ui/core/StepButton';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import DatosSolicitante from './DatosSolicitante';
-import DatosDenuncia from './DatosDenuncia';
+import DatosDenunciaContainer from '../../../containers/DatosDenunciaContainer';
 import AvisoPrivacidad from './AvisoPrivacidad';
 
 let datosSolicitante = <DatosSolicitante/>;
-let datosDenuncia = <DatosDenuncia/>;
 let avisoPrivacidad = <AvisoPrivacidad/>
+let datosDenunciaContainer = <DatosDenunciaContainer/>
 const styles = theme => ({
     root: {
         width: '100%',
@@ -38,7 +38,7 @@ function getStepContent(step) {
         case 0:
             return datosSolicitante;
         case 1:
-            return datosDenuncia;
+            return datosDenunciaContainer;
         case 2:
             return avisoPrivacidad;
         default:

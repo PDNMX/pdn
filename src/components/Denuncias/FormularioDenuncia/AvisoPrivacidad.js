@@ -1,6 +1,7 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography/Typography";
-import withStyles from "@material-ui/core/es/styles/withStyles";
+import { withStyles } from '@material-ui/core/styles';
+
 
 const styles = theme => ({
     paperSecondary:{

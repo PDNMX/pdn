@@ -28,6 +28,11 @@ const styles = theme => ({
         },
         marginRight: 20,
     },
+    lastButton: {
+        [theme.breakpoints.up('sm')]: {
+            marginRight: '80px'
+        }
+    }
 });
 
 class PDNAppBar extends React.Component {
@@ -56,7 +61,7 @@ class PDNAppBar extends React.Component {
                         <Button color="inherit" component={Link} to="/about">
                             Acerca
                         </Button>
-                        <Button color="inherit" component={Link} to="/faq">
+                        <Button color="inherit" component={Link} to="/faq" className={classes.lastButton}>
                             FAQ
                         </Button>
                     </Toolbar>

@@ -2,9 +2,7 @@ import React from 'react';
 import pndRoutes from './routes/index';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import P404 from './components/P404';
-//import createMuiTheme from "@material-ui/core/es/styles/createMuiTheme";
 import {createMuiTheme, MuiThemeProvider} from "@material-ui/core/styles";
-//import MuiThemeProvider from "@material-ui/core/es/styles/MuiThemeProvider";
 
 
 const theme = createMuiTheme({
@@ -26,11 +24,27 @@ const theme = createMuiTheme({
             color:"#707070"
         },
         greyTitle:{
-            color:"#333333"
+            color:'rgb(55, 70, 79)'
         },
         graphGreen:{
             color:"#00cc99"
+        },
+        textPrincipal:{
+            color:"#96cb99"
+        },
+        textSecondary:{
+            color : "#e6e6e6"
+        },
+        backLight:{
+            color : "#e5e5e5"
+        },
+        backDark:{
+            color:'rgb(55, 70, 79)'
+        },
+        textNormal:{
+            color : 'rgba(0, 0, 0, 0.87)'
         }
+
     },
     overrides:{
         MuiTableHead:{

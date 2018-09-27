@@ -55,18 +55,18 @@ const styles = theme => ({
     flex: {
         flexGrow: 1,
     },
-     button:{
+    button:{
         float:'right'
-     },
+    },
     title:{
         color : theme.palette.primary.main,
 
     },
 });
 
-class DetalleServidor extends React.Component {
+class DetalleParticular extends React.Component {
     render() {
-        const {classes, handleClose, servidor, control} = this.props;
+        const {classes, handleClose, particular, control} = this.props;
         return (
             <div>
                 <Modal
@@ -79,7 +79,7 @@ class DetalleServidor extends React.Component {
                         <form>
                             <Grid container spacing={8} justify="flex-start">
                                 <Grid item xs={11}>
-                                    <Typography variant= "title" className={classes.title}>Detalle servidor</Typography>
+                                    <Typography variant= "title" className={classes.title}>Detalle particular</Typography>
                                 </Grid>
                                 <Grid item xs={1}>
                                     <IconButton color="primary" className={classes.button} component="span" onClick={handleClose}>
@@ -89,11 +89,11 @@ class DetalleServidor extends React.Component {
                                 <Grid item xs={12}>
                                     <TextField
                                         id="read-only-input"
-                                        label="Institución"
-                                        defaultValue={servidor.institucion}
+                                        label="Hechos"
+                                        defaultValue={particular.hechos}
                                         className={classes.textField}
                                         margin="normal"
-                                        multiline={true}
+                                        multiline
                                         InputProps={{
                                             readOnly: true,
                                             className:classes.fontSmall,
@@ -105,13 +105,14 @@ class DetalleServidor extends React.Component {
                                         }}
                                     />
                                 </Grid>
-                                <Grid item md={6} xs={12}>
+                                <Grid item xs={12}>
                                     <TextField
                                         id="read-only-input"
-                                        label="Servidor público"
-                                        defaultValue={servidor.servidor}
+                                        label="Objeto social"
+                                        defaultValue={particular.objetoSocial}
                                         className={classes.textField}
                                         margin="normal"
+                                        multiline
                                         InputProps={{
                                             readOnly: true,
                                             className:classes.fontSmall,
@@ -127,8 +128,8 @@ class DetalleServidor extends React.Component {
                                 <Grid item md={6} xs={12}>
                                     <TextField
                                         id="read-only-input"
-                                        label="Puesto"
-                                        defaultValue={servidor.puesto}
+                                        label="plazo"
+                                        defaultValue={particular.plazo}
                                         className={classes.textField}
                                         margin="normal"
                                         InputProps={{
@@ -145,8 +146,8 @@ class DetalleServidor extends React.Component {
                                 <Grid item md={6} xs={12}>
                                     <TextField
                                         id="read-only-input"
-                                        label="Tipo de área"
-                                        defaultValue={servidor.tipoArea}
+                                        label="Monto"
+                                        defaultValue={particular.monto}
                                         className={classes.textField}
                                         margin="normal"
                                         InputProps={{
@@ -163,8 +164,8 @@ class DetalleServidor extends React.Component {
                                 <Grid item md={6} xs={12}>
                                     <TextField
                                         id="read-only-input"
-                                        label="Contrataciones públicas"
-                                        defaultValue={servidor.contrataciones}
+                                        label="Responsable de la información"
+                                        defaultValue={particular.responsableInformacion}
                                         className={classes.textField}
                                         margin="normal"
                                         InputProps={{
@@ -181,26 +182,8 @@ class DetalleServidor extends React.Component {
                                 <Grid item md={6} xs={12}>
                                     <TextField
                                         id="read-only-input"
-                                        label="Enajenacion de bienes muebles"
-                                        defaultValue={servidor.enajenacion}
-                                        className={classes.textField}
-                                        margin="normal"
-                                        InputProps={{
-                                            readOnly: true,
-                                            className:classes.fontSmall,
-                                            startAdornment: (
-                                                <InputAdornment position="start">
-                                                    <IconFlecha/>
-                                                </InputAdornment>
-                                            )
-                                        }}
-                                    />
-                                </Grid>
-                                <Grid item md={6} xs={12}>
-                                    <TextField
-                                        id="read-only-input"
-                                        label="Concesiones, licencias, premios, autorizaciones y prórrogas"
-                                        defaultValue={servidor.concesionesLicencias}
+                                        label="Fecha de última actualización"
+                                        defaultValue={particular.fechaActualizacion}
                                         className={classes.textField}
                                         margin="normal"
                                         InputProps={{
@@ -215,24 +198,6 @@ class DetalleServidor extends React.Component {
                                     />
                                 </Grid>
 
-                                <Grid item md={6} xs={12}>
-                                    <TextField
-                                        id="read-only-input"
-                                        label="Asignación y emisión de dictámenes de avalúos nacionales"
-                                        defaultValue={servidor.dictamenes}
-                                        className={classes.textField}
-                                        margin="normal"
-                                        InputProps={{
-                                            readOnly: true,
-                                            className:classes.fontSmall,
-                                            startAdornment: (
-                                                <InputAdornment position="start">
-                                                    <IconFlecha/>
-                                                </InputAdornment>
-                                            )
-                                        }}
-                                    />
-                                </Grid>
                                 <Grid item md={6} xs={12}></Grid>
 
                             </Grid>
@@ -247,11 +212,11 @@ class DetalleServidor extends React.Component {
     }
 }
 
-DetalleServidor.propTypes = {
+DetalleParticular.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
 // We need an intermediary variable for handling the recursive nesting.
 //const SimpleModalWrapped = withStyles(styles)(SimpleModal);
 
-export default withStyles(styles)(DetalleServidor);
+export default withStyles(styles)(DetalleParticular);

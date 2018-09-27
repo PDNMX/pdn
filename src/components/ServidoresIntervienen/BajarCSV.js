@@ -22,12 +22,26 @@ const styles = theme => ({
     flex: {
         flexGrow: 1,
     },
+    linkTransparent:{
+        color:'transparent',
+    }
+
 });
 
 
 class BajarCSV extends React.Component{
+    constructor(props){
+        super(props);
+        this.cvsLink = React.createRef();
+    }
+
+    triggerDown(){
+        this.cvsLink.current.link.click();
+    };
     render (){
-        const { classes,data,columnas,nombreArchivo} = this.props;
+        const {classes,data,columnas,filtrado,fnSearch,fileName} = this.props;
+        let nombreArchivo = filtrado ? (fileName+" filtrados.csv") :  fileName+".csv" ;
+        let labelButton = filtrado ?   "Descargar mi búsqueda" : "Descargar todo";
         let headers = columnas.map((item)=>{
             return {
                 label: item.label,
@@ -35,12 +49,17 @@ class BajarCSV extends React.Component{
             }
         });
         return (
-            <CSVLink data={data} filename={nombreArchivo} headers ={headers}>
-                <Button variant="contained" size="small" className={classNames(classes.button)}>
-                    <DownloadIcon className={classNames(classes.leftIcon, classes.iconSmall)} />
-                    Descargar CSV
-                </Button>
-            </CSVLink>
+            <div >
+            <Button color="primary" variant="contained" size="small" className={classNames(classes.button)}
+                    onClick={() => {
+                        filtrado?fnSearch('FILTER'):fnSearch('ALL');
+                    }}>
+                <DownloadIcon className={classNames(classes.leftIcon, classes.iconSmall)} />
+                {labelButton}
+            </Button>
+            <CSVLink ref = {this.cvsLink} data = {data} filename = {nombreArchivo}
+                     headers = {headers} className = {classes.linkTransparent} target = "_blank"/>
+            </div>
         );
     }
 }
@@ -48,5 +67,6 @@ class BajarCSV extends React.Component{
 BajarCSV.propTypes = {
     classes : PropTypes.object.isRequired
 };
+
 
 export default withStyles(styles)(BajarCSV);

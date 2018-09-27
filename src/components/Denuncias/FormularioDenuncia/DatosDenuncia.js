@@ -14,9 +14,14 @@ import IconButton from "@material-ui/core/IconButton/IconButton";
 import MuiPickersUtilsProvider from "material-ui-pickers/utils/MuiPickersUtilsProvider";
 import DatePicker from "material-ui-pickers/DatePicker";
 import DateFnsUtils from 'material-ui-pickers/utils/date-fns-utils';
-import { TimePicker } from 'material-ui-pickers';
-import VisibleAcusadoList from "../../../containers/VisibleAcusadoList";
-import FieldsAcusadoContainer from "../../../containers/FieldsAcusadoContainer"
+import {TimePicker} from 'material-ui-pickers';
+import TableHead from "@material-ui/core/TableHead/TableHead";
+import TableRow from "@material-ui/core/TableRow/TableRow";
+import TableCell from "@material-ui/core/TableCell/TableCell";
+import TableBody from "@material-ui/core/TableBody/TableBody";
+import Acusado from "./Acusado";
+import Table from "@material-ui/core/Table/Table";
+
 const styles = theme => ({
     root: {
         width: '100%',
@@ -38,7 +43,7 @@ const styles = theme => ({
 class DatosDenuncia extends React.Component {
     state = {
         motivo: '',
-        fechaHecho:  new Date(),
+        fechaHecho: new Date(),
         trato: '',
         institucionHecho: '',
         lugarHecho: '',
@@ -48,27 +53,47 @@ class DatosDenuncia extends React.Component {
         descripcionAcusado: '',
         nombreAcusado: '',
         nombreTestigo: '',
-        empresaPais: ''
+        empresaPais: '',
+        acusado: {
+            id: 0,
+            nombre: '',
+            descripcionFisica: ''
+        }
     };
 
-    handleChange = name => event => {
-        this.setState({[name]: event.target.checked});
-    };
+
     handleChangeInput = name => event => {
         this.setState({
             [name]: event.target.value,
         });
     };
-    handleChangeGenero = event => {
-        this.setState({genero: event.target.value});
-    };
 
     handleDateChange = (date) => {
-        this.setState({ fechaHecho: date });
+        this.setState({fechaHecho: date});
     };
+
+    handleChange = name => event => {
+        this.setState({
+            acusado: {
+                ...this.state.acusado,
+                [name]: event.target.value
+            }
+        })
+    };
+    fireAction = () => {
+        this.props.addAcusado(this.state.acusado);
+        this.setState({
+            acusado: {
+                id: 0,
+                nombre: '',
+                descripcionFisica: ''
+            }
+        })
+    }
 
     render() {
         const {classes} = this.props;
+        const {acusados} = this.props;
         return (
             <div>
                 <Paper className={classes.form}>
@@ -103,12 +128,12 @@ class DatosDenuncia extends React.Component {
                         </Grid>
                         <Grid item lg={3} md={3} sm={12}>
                             <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                            <TimePicker
-                                autoOk
-                                label="Si conoce la hora, indíquela"
-                                value={this.state.fechaHecho}
-                                onChange={this.handleDateChange}
-                            />
+                                <TimePicker
+                                    autoOk
+                                    label="Si conoce la hora, indíquela"
+                                    value={this.state.fechaHecho}
+                                    onChange={this.handleDateChange}
+                                />
                             </MuiPickersUtilsProvider>
                         </Grid>
                         <Grid item lg={3} md={3} sm={12}>
@@ -221,11 +246,58 @@ class DatosDenuncia extends React.Component {
                                 Si desea denunciar a un servidor público o a un particular, especifique:
                             </Typography>
                         </Grid>
+                        <Grid container spacing={24}>
+                            <Grid item lg={6} md={6} sm={12}>
+                                <TextField
+                                    id="nombre"
+                                    label="Nombre del servidor público o particular"
+                                    value={this.state.acusado.nombre}
+                                    className={classes.textField}
+                                    margin="normal"
+                                    onChange={this.handleChange('nombre')}
+                                />
+                            </Grid>
+                            <Grid item lg={5} md={5} sm={12}>
+                                <TextField id="descripcionFisica" label="Descripción física: "
+                                           className={classes.textField}
+                                           value={this.state.acusado.descripcionFisica}
+                                           margin="normal"
+                                           multiline
+                                           fullWidth
+                                           onChange={this.handleChange('descripcionFisica')}
+                                />
+                            </Grid>
+                            <Grid item lg={1} md={1} sm={12}>
+                                <IconButton color="primary" className={classes.button} aria-label="Agregar"
+                                            onClick={() => {
+                                                this.fireAction()
+                                            }
+                                            }
 
-                            <FieldsAcusadoContainer/>
+                                >
+                                    <PlusIcon/>
+                                </IconButton>
+                            </Grid>
+                        </Grid>
 
-                        <Grid item xs={12}>
-                            <VisibleAcusadoList/>
+                        <Grid item md={12} sm={12}>
+                            {acusados.length > 0 &&
+                            <Table>
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell>Nombre</TableCell>
+                                        <TableCell>Descripción</TableCell>
+                                        <TableCell></TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    {acusados.map(acusado =>
+                                        <Acusado key={acusado.id} {...acusado}/>)}
+                                </TableBody>
+
+                            </Table>
+                            }
+
                         </Grid>
                         <Grid item xs={12}>
                             <Typography variant={"body1"}>
@@ -260,4 +332,4 @@ DatosDenuncia.propTypes = {
     classes: PropTypes.object.isRequired
 };
 DatosDenuncia = withStyles(styles)(DatosDenuncia);
-export default  DatosDenuncia;
+export default DatosDenuncia;
