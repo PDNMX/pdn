@@ -258,7 +258,7 @@ class EnhancedTable extends React.Component {
 
     getTotalRows=(URL)=>{
         let options = {
-            uri : URL ? URL : 'http://204.48.18.61/api/reniresp?select=count=eq.exact',
+            uri : URL ? URL : 'https://204.48.18.61/api/reniresp?select=count=eq.exact',
             json : true
         };
         rp(options)
@@ -272,7 +272,7 @@ class EnhancedTable extends React.Component {
     };
     handleSearchAPI = (typeSearch) => {
         let {procedimiento, institucion, nombreServidor} = this.state;
-        const URI = 'http://204.48.18.61/api/reniresp?';
+        const URI = 'https://204.48.18.61/api/reniresp?';
         let vUri = URI+((typeSearch === 'FIELD_FILTER'||typeSearch==='CHANGE_PAGE') ?('limit='+this.state.rowsPerPage+'&&offset='+(this.state.rowsPerPage*this.state.page)+'&&'):'');
 
         vUri = vUri + ((procedimiento && procedimiento > 0) ? 'id_procedimiento=eq.' + procedimiento + '&&' : '');

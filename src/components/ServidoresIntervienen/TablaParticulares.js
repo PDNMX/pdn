@@ -208,7 +208,8 @@ const toolbarStyles = theme => ({
         backgroundColor: theme.palette.primary.main,
         display: 'flex',
         flexWrap: 'wrap',
-        maxHeight: 70
+        padding : theme.spacing.unit,
+
     },
     spacer: {
         flex: '1 1 100%',
@@ -313,7 +314,7 @@ class EnhancedTable extends React.Component {
 
     getTotalRows = (URL) => {
         let options = {
-            uri : URL ? URL : 'http://204.48.18.61/api/proveedores_sancionados?select=count=eq.exact',
+            uri : URL ? URL : 'https://204.48.18.61/api/proveedores_sancionados?select=count=eq.exact',
             json : true
         };
         rp(options)
@@ -327,7 +328,7 @@ class EnhancedTable extends React.Component {
     };
     handleSearchAPI = (typeSearch) => {
         let {institucion, nombreParticular} = this.state;
-        const URI = 'http://204.48.18.61/api/proveedores_sancionados?';
+        const URI = 'https://204.48.18.61/api/proveedores_sancionados?';
         let vUri = URI + ((typeSearch === 'FIELD_FILTER'||typeSearch==='CHANGE_PAGE') ? ('limit=' + this.state.rowsPerPage + '&&offset=' + (this.state.rowsPerPage * this.state.page) + '&&'):'');
 
         vUri = vUri + ((institucion) ? 'dependencia=eq.' + institucion + '&&' : '');

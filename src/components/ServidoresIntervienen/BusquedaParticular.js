@@ -12,6 +12,9 @@ import rp from "request-promise";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import NoSsr from "@material-ui/core/NoSsr";
+import InputLabel from "@material-ui/core/InputLabel/InputLabel";
+import Tooltip from "@material-ui/core/Tooltip/Tooltip";
+import Grid from "@material-ui/core/Grid/Grid";
 
 const styles = theme => ({
     container: {
@@ -41,9 +44,9 @@ const styles = theme => ({
         height: 250,
     },
     input: {
-        display: 'flex',
-        padding: 0,
         color: theme.palette.fontLight.color,
+        minWidth: '150px',
+        display : 'contents'
     },
     valueContainer: {
         display: 'flex',
@@ -56,27 +59,22 @@ const styles = theme => ({
         padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`,
     },
     singleValue: {
-        fontSize: 16,
         color: theme.palette.fontLight.color,
-
     },
     placeholder: {
-        position: 'absolute',
-        left: 2,
-        fontSize: 12,
+        fontSize: 16,
         color: theme.palette.fontLight.color
     },
     paper: {
         position: 'absolute',
         zIndex: 20,
 
-       },
+    },
     divider: {
         height: theme.spacing.unit * 2,
     },
-    labelCustom:{
+    labelCustom: {
         color: theme.palette.fontLight.color,
-
     },
 });
 
@@ -93,29 +91,32 @@ function NoOptionsMessage(props) {
 }
 
 function inputComponent({inputRef, ...props}) {
-    return <div name="test" ref={inputRef} {...props} />;
+    return <span id={'prueba'}style={{'display':'contents'}} ref={inputRef} {...props}/>;
 }
+
 function Control(props) {
     return (
         <TextField
-            fullWidth
-            label = "Unidad"
-            margin={'normal'}
-            InputLabelProps={{className: props.selectProps.classes.labelCustom}}
-            InputProps={{
-                inputComponent,
-                inputProps: {
-                    className: props.selectProps.classes.input,
-                    inputRef: props.innerRef,
-                    children: props.children,
-                    ...props.innerProps
-                },
-            }}
-            {...props.selectProps.textFieldProps}
-        />
+                       fullWidth
+                       label="Unidad"
+                       placeholder={'TODAS'}
+                       InputProps={{
+                           inputComponent,
+                           inputProps: {
+                               className: props.selectProps.classes.input,
+                               inputRef: props.innerRef,
+                               children: props.children,
+                               ...props.innerProps
+                           },
+                       }}
+                       InputLabelProps={{
+                           className: props.selectProps.classes.labelCustom,
+                           shrink: true,
+                       }}
+                       {...props.selectProps.textFieldProps}
+            />
     );
 }
-
 
 function Option(props) {
     return (
@@ -136,7 +137,6 @@ function Option(props) {
 function Placeholder(props) {
     return (
         <Typography
-            color="textSecondary"
             className={props.selectProps.classes.placeholder}
             {...props.innerProps}
         >
@@ -163,6 +163,7 @@ function Menu(props) {
     );
 }
 
+
 const components = {
     Control,
     Menu,
@@ -182,8 +183,9 @@ class BusquedaParticular extends React.Component {
         let aux = [];
         let sug = [];
         let id = 0;
+
         let options = {
-            uri: 'http://204.48.18.61/api/instituciones?order=institucion.asc',
+            uri: 'https://204.48.18.61/api/instituciones?order=institucion.asc',
             json: true
         };
         rp(options)
@@ -197,6 +199,8 @@ class BusquedaParticular extends React.Component {
             alert("_No se puedó obtener la información");
             console.log(err);
         });
+
+
     }
 
 
@@ -210,40 +214,32 @@ class BusquedaParticular extends React.Component {
                     font: 'inherit',
                     color: theme.palette.fontLight.color,
                 },
-                margin:"dense"
+                margin: "dense"
             }),
         };
 
-        const inputProps = {
-            placeholder: 'Unidad',
-            value: institucion,
-            onChange: handleChangeCampo('institucion'),
-
-        };
         return (
-            <div>
-                <form>
+            <Grid container>
+                <Grid item xs={3}>
                     <FormControl className={classes.formControl}>
-                        <NoSsr>
-                            <Select
-                                classes={classes}
-                                styles={selectStyles}
-                                options={this.state.suggestions}
-                                components={components}
-                                value={{value: institucion, label: institucion}}
-                                onChange={handleChangeCampo('institucion')}
-                                placeholder="Todas"
-                                id="campoSelectInstitucion"
-                            />
-                        </NoSsr>
-                    </FormControl>
+                        <Select
+                            classes={classes}
+                            styles={selectStyles}
+                            options={this.state.suggestions}
+                            components={components}
+                            value={{value: institucion, label: institucion}}
+                            onChange={handleChangeCampo('institucion')}
+                            id="campoSelectInstitucion"
+                        />
 
+                    </FormControl>
+                </Grid>
+                <Grid item xs={3}>
                     <FormControl className={classes.formControl}>
                         <TextField
                             id="search"
                             label="Nombre del particular"
                             type="search"
-                            margin="normal"
                             onChange={handleChangeCampo('nombreParticular')}
                             value={nombreParticular}
                             InputProps={{
@@ -257,11 +253,10 @@ class BusquedaParticular extends React.Component {
                             }}
                             InputLabelProps={{className: classes.fontLight}}
                         />
-
                     </FormControl>
+                </Grid>
+            </Grid>
 
-                </form>
-            </div>
         );
     }
 }
