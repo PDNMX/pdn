@@ -17,6 +17,7 @@ import rp from "request-promise";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import BajarCSV from "./BajarCSV";
 import Grid from "@material-ui/core/Grid/Grid";
+import Typography from "@material-ui/core/Typography/Typography";
 
 let counter = 0;
 
@@ -70,12 +71,6 @@ const styles = theme => ({
         display: 'flow-root',
         flexWrap: 'wrap',
     },
-    contentLeft: {
-        float: 'left'
-    },
-    contentRight: {
-        float: 'right'
-    },
     progress: {
         position: 'absolute',
         margin: 'auto',
@@ -85,7 +80,16 @@ const styles = theme => ({
         bottom: 0
     },
     container : {
-        width : '100%'
+        width : '100%',
+        borderRadius : '6px',
+        display: 'flex',
+        position : 'relative',
+        marginTop : '30px',
+        marginBottom : '30px',
+        flexDirection : 'column',
+    },
+    tableHead : {
+        color : theme.palette.primary.dark
     }
 
 });
@@ -96,7 +100,7 @@ class EnhancedTableHead extends React.Component {
     };
 
     render() {
-        const {order, orderBy} = this.props;
+        const {order, orderBy,classes} = this.props;
         return (
             <TableHead>
                 <TableRow>
@@ -110,7 +114,7 @@ class EnhancedTableHead extends React.Component {
                                     sortDirection={orderBy === column.id ? order : false}
                                 >
                                     <Tooltip
-                                        title="Sort"
+                                        title="Ordenar"
                                         placement={column.numeric ? 'bottom-end' : 'bottom-start'}
                                         enterDelay={300}
                                     >
@@ -118,8 +122,12 @@ class EnhancedTableHead extends React.Component {
                                             active={orderBy === column.id}
                                             direction={order}
                                             onClick={this.createSortHandler(column.id)}
+
                                         >
-                                            {column.label}
+                                            <Typography className={classes.tableHead} variant={"body2"}>
+                                                {column.label}
+                                            </Typography>
+
                                         </TableSortLabel>
                                     </Tooltip>
                                 </TableCell>
@@ -144,13 +152,25 @@ EnhancedTableHead = withStyles(styles)(EnhancedTableHead);
 
 const toolbarStyles = theme => ({
     root: {
-        paddingRight: theme.spacing.unit,
+        width : '100%',
+        padding: theme.spacing.unit,
     },
     toolBarStyle: {
-        color: theme.palette.secondary.main,
-        backgroundColor: theme.palette.primary.main,
-        display: 'flex',
-        flexWrap: 'wrap',
+        backgroundColor : 'transparent',
+        position : 'relative',
+        padding : 0,
+        margin: '0 15px',
+        zIndex: 3,
+        borderRadius : theme.spacing.unit,
+    },
+    toolBarFloat : {
+        padding : '15px',
+        marginTop : '-30px',
+       borderRadius:  '3px',
+        background : 'linear-gradient(60deg, #295c53, #8fe19f)',
+        boxShadow : '0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgb(41, 92, 83)',
+        width : '100%',
+
     },
     spacer: {
         flex: '1 1 100%',
@@ -171,8 +191,10 @@ let EnhancedTableToolbar = props => {
     const {classes, handleChangeCampo, nombreServidor, procedimiento, institucion} = props;
     return (
         <Toolbar className={classes.toolBarStyle}>
-            <BusquedaServidor handleChangeCampo={handleChangeCampo}
-                              nombreServidor={nombreServidor} procedimiento={procedimiento} institucion={institucion}/>
+            <div className={classes.toolBarFloat}>
+                <BusquedaServidor handleChangeCampo={handleChangeCampo}
+                                  nombreServidor={nombreServidor} procedimiento={procedimiento} institucion={institucion}/>
+            </div>
         </Toolbar>
     );
 };
@@ -202,7 +224,7 @@ class EnhancedTable extends React.Component {
             data: [],
             filterData: [],
             page: 0,
-            rowsPerPage: 5,
+            rowsPerPage: 10,
             procedimiento: 0,
             open: false,
             elementoSeleccionado: {},
@@ -307,6 +329,8 @@ class EnhancedTable extends React.Component {
     };
 
     handleChangeCampo = (varState, event) => {
+        console.log("Varstate: ",varState);
+        console.log("Event: ",event);
         this.setState({loading: true, [varState]: event.target ? event.target.value : event.value}, () => {
             this.handleSearchAPI('FIELD_FILTER');
         });

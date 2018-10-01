@@ -46,14 +46,14 @@ const theme = createMuiTheme({
         }
 
     },
-    overrides:{
+ /*   overrides:{
         MuiTableHead:{
             root:{
                 backgroundColor: '#8fe19f'
             }
         }
     }
-
+*/
 });
 
 const p404 = () => {

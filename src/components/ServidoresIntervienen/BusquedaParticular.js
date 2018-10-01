@@ -10,11 +10,8 @@ import Select from "react-select";
 import MenuItem from "@material-ui/core/MenuItem";
 import rp from "request-promise";
 import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
-import NoSsr from "@material-ui/core/NoSsr";
-import InputLabel from "@material-ui/core/InputLabel/InputLabel";
-import Tooltip from "@material-ui/core/Tooltip/Tooltip";
 import Grid from "@material-ui/core/Grid/Grid";
+
 
 const styles = theme => ({
     container: {
@@ -29,14 +26,9 @@ const styles = theme => ({
 
     },
     formControl: {
-        minWidth: "150px",
-        marginRight: 10,
-
+        width : '100%'
     },
     fontLight: {
-        color: theme.palette.fontLight.color,
-    },
-    '&$focus': {
         color: theme.palette.fontLight.color,
     },
     root: {
@@ -46,7 +38,10 @@ const styles = theme => ({
     input: {
         color: theme.palette.fontLight.color,
         minWidth: '150px',
-        display : 'contents'
+        display : 'contents',
+    },
+    '&$focus': {
+        color: theme.palette.fontLight.color,
     },
     valueContainer: {
         display: 'flex',
@@ -60,6 +55,9 @@ const styles = theme => ({
     },
     singleValue: {
         color: theme.palette.fontLight.color,
+        width : 'auto',
+        overflow : 'hidden',
+        textOverflow : 'ellipsis'
     },
     placeholder: {
         fontSize: 16,
@@ -75,23 +73,13 @@ const styles = theme => ({
     },
     labelCustom: {
         color: theme.palette.fontLight.color,
-    },
+    }
 });
 
-function NoOptionsMessage(props) {
-    return (
-        <Typography
-            color="textSecondary"
-            className={props.selectProps.classes.noOptionsMessage}
-            {...props.innerProps}
-        >
-            {props.children}
-        </Typography>
-    );
-}
+
 
 function inputComponent({inputRef, ...props}) {
-    return <span id={'prueba'}style={{'display':'contents'}} ref={inputRef} {...props}/>;
+    return <div ref={inputRef} {...props}/>;
 }
 
 function Control(props) {
@@ -106,7 +94,8 @@ function Control(props) {
                                className: props.selectProps.classes.input,
                                inputRef: props.innerRef,
                                children: props.children,
-                               ...props.innerProps
+                               ...props.innerProps,
+                               id : 'inputComponentParticular'
                            },
                        }}
                        InputLabelProps={{
@@ -134,25 +123,11 @@ function Option(props) {
     );
 }
 
-function Placeholder(props) {
-    return (
-        <Typography
-            className={props.selectProps.classes.placeholder}
-            {...props.innerProps}
-        >
-            {props.children}
-        </Typography>
-    );
-}
 
 function SingleValue(props) {
     return (
-        <div className={props.selectProps.classes.singleValue}> {props.children} </div>
+        <div className={props.selectProps.classes.singleValue} > {props.children} </div>
     );
-}
-
-function ValueContainer(props) {
-    return <div>{props.children}</div>;
 }
 
 function Menu(props) {
@@ -165,18 +140,17 @@ function Menu(props) {
 
 
 const components = {
-    Control,
-    Menu,
-    Option,
-    SingleValue
+    'Control':Control,
+    'Menu':Menu,
+    'Option':Option,
+    'SingleValue':SingleValue
 };
 
 
 class BusquedaParticular extends React.Component {
     state = {
         dependencias: [],
-        suggestions: [],
-        test: null,
+        suggestions: []
     };
 
     componentDidMount() {
@@ -206,21 +180,19 @@ class BusquedaParticular extends React.Component {
 
     render() {
         let {classes, handleChangeCampo, nombreParticular, institucion, theme} = this.props;
-        let aux = '';
+
         const selectStyles = {
             input: base => ({
-                ...base,
                 '& input': {
                     font: 'inherit',
                     color: theme.palette.fontLight.color,
                 },
-                margin: "dense"
-            }),
+            })
         };
 
         return (
-            <Grid container>
-                <Grid item xs={3}>
+            <Grid container spacing={8}>
+                <Grid item md={6} xs={12}>
                     <FormControl className={classes.formControl}>
                         <Select
                             classes={classes}
@@ -231,10 +203,9 @@ class BusquedaParticular extends React.Component {
                             onChange={handleChangeCampo('institucion')}
                             id="campoSelectInstitucion"
                         />
-
                     </FormControl>
                 </Grid>
-                <Grid item xs={3}>
+                <Grid item md={6} xs={12}>
                     <FormControl className={classes.formControl}>
                         <TextField
                             id="search"
@@ -251,7 +222,10 @@ class BusquedaParticular extends React.Component {
                                         </IconButton>
                                     </InputAdornment>
                             }}
-                            InputLabelProps={{className: classes.fontLight}}
+                            InputLabelProps = {{
+                                className: classes.fontLight,
+                                shrink : true
+                            }}
                         />
                     </FormControl>
                 </Grid>

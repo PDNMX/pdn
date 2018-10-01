@@ -8,10 +8,12 @@ import IconButton from "@material-ui/core/IconButton/IconButton";
 import Visibility from "@material-ui/icons/Search";
 import InputLabel from "@material-ui/core/InputLabel/InputLabel";
 import Select from "@material-ui/core/Select/Select";
-import Input from "@material-ui/core/Input/Input";
 import MenuItem from "@material-ui/core/MenuItem/MenuItem";
 import rp from "request-promise"
-
+import Grid from "@material-ui/core/Grid/Grid";
+import Paper from "@material-ui/core/Paper/Paper";
+import SelectReact from "react-select";
+import './selectReact.css';
 
 const styles = theme => ({
     container: {
@@ -25,24 +27,130 @@ const styles = theme => ({
         width: 200,
     },
     formControl: {
-        minWidth: "150px",
-        marginRight: 10,
+        width: '100%'
     },
     fontLight: {
         color: theme.palette.fontLight.color,
     },
     '&$focus': {
         color: theme.palette.fontLight.color,
+    },
+    root: {
+        flexGrow: 1,
+        height: 250,
+    },
+    input: {
+        color: theme.palette.fontLight.color,
+        minWidth: '150px',
+        display: 'contents'
+    },
+    valueContainer: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        flex: 1,
+        alignItems: 'center',
+        minWidth: '150px',
+    },
+    noOptionsMessage: {
+        padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`,
+    },
+    singleValue: {
+        color: theme.palette.fontLight.color,
+        width : 'auto',
+        overflow : 'hidden',
+        textOverflow : 'ellipsis'
+    },
+    placeholder: {
+        fontSize : 16,
+        color: theme.palette.fontLight.color
+    },
+    paper: {
+        position: 'absolute',
+        zIndex: 20,
+
+    },
+    divider: {
+        height: theme.spacing.unit * 2,
+    },
+    labelCustom: {
+        color: theme.palette.fontLight.color,
     }
 });
 
+function inputComponent({inputRef, ...props}) {
+    return <div ref={inputRef} {...props}/>;
+}
+
+function Control(props) {
+    return (
+        <TextField
+            fullWidth
+            label="Unidad"
+            placeholder={'TODAS'}
+            InputProps={{
+                inputComponent,
+                inputProps: {
+                    className: props.selectProps.classes.input,
+                    inputRef: props.innerRef,
+                    children: props.children,
+                    ...props.innerProps,
+                    id:'inputComponentServidor'
+                },
+            }}
+            InputLabelProps={{
+                className: props.selectProps.classes.labelCustom,
+                shrink: true,
+            }}
+            {...props.selectProps.textFieldProps}
+        />
+    );
+}
+
+function Option(props) {
+    return (
+        <MenuItem
+            buttonRef={props.innerRef}
+            selected={props.isFocused}
+            component="div"
+            style={{
+                fontWeight: props.isSelected ? 400 : 300,
+            }}
+            {...props.innerProps}
+        >
+            {props.children}
+        </MenuItem>
+    );
+}
+
+
+function SingleValue(props) {
+    return (
+        <div className={props.selectProps.classes.singleValue}> {props.children} </div>
+    );
+}
+
+function Menu(props) {
+    return (
+        <Paper square className={props.selectProps.classes.paper} {...props.innerProps}>
+            {props.children}
+        </Paper>
+    );
+}
+
+const components = {
+    'Control' : Control,
+    'Menu' : Menu,
+    'Option' : Option,
+    'SingleValue' : SingleValue
+};
+
 class BusquedaServidor extends React.Component {
     state = {
-        instituciones: []
+        suggestions: []
     };
+
     componentDidMount() {
-        let aux = [];
-        let id = 0;
+        let sug = [ {value : '' ,label:'TODAS'}];
         let options = {
             uri: 'https://204.48.18.61/api/instituciones?order=institucion.asc',
             json: true
@@ -50,24 +158,33 @@ class BusquedaServidor extends React.Component {
         rp(options)
             .then(data => {
                 data.map(item => {
-                    aux.push({id: id++, nombre: item.institucion});
+                    sug.push({value: item.institucion, label: item.institucion});
                 });
-                this.setState({instituciones: aux});
+                this.setState({suggestions: sug});
             }).catch(err => {
-                alert("_No se puedó obtener la información");
+            alert("_No se puedó obtener la información");
             console.log(err);
         });
     }
 
     render() {
-        const {classes, handleChangeCampo,nombreServidor, procedimiento, institucion} = this.props;
+        const {classes, handleChangeCampo, nombreServidor, procedimiento, institucion, theme} = this.props;
+        const selectStyles = {
+            input: base => ({
+                ...base,
+                '& input': {
+                    font: 'inherit',
+                    color: theme.palette.fontLight.color,
+                }
+            }),
+        };
         return (
-            <div>
-                <form noValidate autoComplete='on'>
+            <Grid container spacing={8}>
+                <Grid item xs={12} md={3}>
                     <FormControl className={classes.formControl}>
-                        <InputLabel shrink htmlFor="campoSelectProcedimiento" className={classes.fontLight}>Categoría</InputLabel>
+                        <InputLabel shrink htmlFor="campoSelectProcedimiento"
+                                    className={classes.fontLight}>Categoría</InputLabel>
                         <Select
-                            margin="dense"
                             value={procedimiento}
                             onChange={(e) => handleChangeCampo('procedimiento', e)}
                             name="campoSelectProcedimiento"
@@ -76,10 +193,10 @@ class BusquedaServidor extends React.Component {
                                 id: 'procedimiento',
                                 className: classes.fontLight
                             }}
-                            input={<Input margin="dense"/>}
+
                         >
                             <MenuItem value={0}>
-                                <em>Todos</em>
+                                <em>TODAS</em>
                             </MenuItem>
                             <MenuItem value={1}>CONTRATACIONES PÚBLICAS</MenuItem>
                             <MenuItem value={2}>CONCESIONES,LICENCIAS, PERMISOS, AUTORIZACIONES Y PRÓROOGAS</MenuItem>
@@ -87,34 +204,29 @@ class BusquedaServidor extends React.Component {
                             <MenuItem value={4}>ASIGNACION Y EMISIÓN DE DICTÁMENES DE AVALÚOS NACIONALES</MenuItem>
                         </Select>
                     </FormControl>
+                </Grid>
+                <Grid item xs={12} md={3}>
                     <FormControl className={classes.formControl}>
-                        <InputLabel shrink htmlFor="campoSelectInstitucion" className={classes.fontLight}>Unidad</InputLabel>
-                        <Select
-                            margin="dense"
-                            value={institucion}
+                        <SelectReact
+                            classes={classes}
+                            styles={selectStyles}
+                            options={this.state.suggestions}
+                            components={components}
+                            value={{value: institucion, label: institucion}}
                             onChange={(e) => handleChangeCampo('institucion', e)}
-                            name="campoSelectInstitucion"
-                            inputProps={{
-                                name: 'institucion',
-                                id: 'institucion',
-                                className: classes.fontLight
-                            }}
-                            input={<Input margin="dense"/>}
-                        >
-                            <MenuItem key = {0} value={''}>
-                                <em>Todos</em>
-                            </MenuItem>
-                            {this.state.instituciones.map(institucion =>
-                                <MenuItem key={institucion.id} value={institucion.nombre}>{institucion.nombre}</MenuItem>)}
-                        </Select>
+                            id="campoSelectInstitucion"
+                            defaultValue={{label:'TODAS',value:''}}
+                        />
+
                     </FormControl>
+                </Grid>
+                <Grid item xs={12} md={3}>
                     <FormControl className={classes.formControl}>
                         <TextField
                             id="search"
                             label="Nombre del servidor"
                             type="search"
-                            margin="normal"
-                            onChange={(e) => handleChangeCampo('nombreServidor',e)}
+                            onChange={(e) => handleChangeCampo('nombreServidor', e)}
                             value={nombreServidor}
                             InputProps={{
                                 className: classes.fontLight,
@@ -124,14 +236,18 @@ class BusquedaServidor extends React.Component {
                                             <Visibility/>
                                         </IconButton>
                                     </InputAdornment>
+
                             }}
-                            InputLabelProps={{className: classes.fontLight}}
+                            InputLabelProps = {{
+                                className: classes.fontLight,
+                                shrink : true
+                            }}
                         />
 
                     </FormControl>
+                </Grid>
+            </Grid>
 
-                </form>
-            </div>
         );
     }
 }
@@ -140,4 +256,4 @@ BusquedaServidor.propTypes = {
     classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(BusquedaServidor);
+export default withStyles(styles, {withTheme: true})(BusquedaServidor);

@@ -15,6 +15,7 @@ import Grid from "@material-ui/core/Grid/Grid";
 import ViewListIcon from "@material-ui/icons/ViewList";
 
 
+
 const styles = theme => ({
     root: {
         flexGrow: 1,
@@ -37,8 +38,8 @@ const styles = theme => ({
             paddingBottom: theme.spacing.unit,
         },
         [theme.breakpoints.up('xl')]: {
-            paddingLeft: '400px',
-            paddingRight: '400px',
+            paddingLeft: '300px',
+            paddingRight: '300px',
             paddingTop: theme.spacing.unit*3,
             paddingBottom: theme.spacing.unit*3,
         },
@@ -75,8 +76,8 @@ const styles = theme => ({
             paddingBottom: theme.spacing.unit,
         },
         [theme.breakpoints.up('xl')]: {
-            paddingLeft: '400px',
-            paddingRight: '400px',
+            paddingLeft: '300px',
+            paddingRight: '300px',
             paddingTop: theme.spacing.unit*3,
             paddingBottom: theme.spacing.unit*3,
         },
@@ -104,7 +105,7 @@ class Index extends React.Component {
                     </Typography>
                     <br/><br/>
                     <Grid container spacing={32}>
-                        <Grid item  md={4} xs={12} xl={12} >
+                        <Grid item  xs={12}  >
                             <Typography className={classes.textDark}>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                 incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
@@ -116,8 +117,8 @@ class Index extends React.Component {
                                 mollit anim id est laborum.
                             </Typography>
                         </Grid>
-                        <Grid item md={8} xs={12} xl={12}>
-                            <ExpansionPanel classes={{root: classes.bgPanelLight}}>
+                        <Grid item xs={12}>
+                            <ExpansionPanel classes={{root: classes.bgPanelLight}} defaultExpanded={true}>
                                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>} classes={{content: classes.summary}}>
                                     <ViewListIcon/>
                                     <Typography>
@@ -136,7 +137,7 @@ class Index extends React.Component {
                     <Typography variant={'title'} className={classes.title}>Particulares inhabilitados</Typography>
                     <br/><br/>
                     <Grid container spacing={32}>
-                        <Grid item  md={4} xs={12} xl={12}>
+                        <Grid item  xs={12}>
                             <Typography className={classes.textLight}>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                 incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
@@ -148,8 +149,8 @@ class Index extends React.Component {
                                 mollit anim id est laborum.
                             </Typography>
                         </Grid>
-                        <Grid item  md={8} xs={12} xl={12}>
-                            <ExpansionPanel classes={{root: classes.bgPanelDark}}>
+                        <Grid item  xs={12}>
+                            <ExpansionPanel classes={{root: classes.bgPanelDark}} defaultExpanded={true}>
                                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}
                                                        classes={{content: classes.summary}}>
                                     <ViewListIcon/>
