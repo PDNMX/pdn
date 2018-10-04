@@ -9,6 +9,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 //import MenuIcon from '@material-ui/icons/Menu';
+import Grid from '@material-ui/core/Grid';
 
 
 const styles = theme => ({
@@ -19,19 +20,8 @@ const styles = theme => ({
     flex: {
         flexGrow: 1,
     },
-    menuButton: {
-        [theme.breakpoints.up('sm')]:{
-            marginLeft: '80px'
-        },
-        [theme.breakpoints.down('sm')]:{
-            marginLeft: theme.spacing.unit
-        },
-        marginRight: 20,
-    },
-    lastButton: {
-        [theme.breakpoints.up('sm')]: {
-            marginRight: '80px'
-        }
+    gridItem: {
+        maxWidth: '1024px'
     }
 });
 
@@ -43,28 +33,30 @@ class PDNAppBar extends React.Component {
         return (
             <div className={classes.root}>
                 <AppBar color="default"  position="static" >
-                    <Toolbar>
-                        <IconButton className={classes.menuButton} color="inherit" aria-label="Menu" component={Link} to="/">
-                                <img src={imgHeader} alt="logoPDN" style={{width:'55px'}}/>
 
-                        </IconButton>
-                        <Typography variant="title" color="inherit" className={classes.flex}>
+                    <Grid container spacing={0} justify='center'>
+                        <Grid item xs={12} className={ classes.gridItem}>
+                            <Toolbar>
+                                <IconButton  color="inherit" aria-label="Menu" component={Link} to="/">
+                                    <img src={imgHeader} alt="logoPDN" style={{width:'55px'}}/>
 
-                        </Typography>
+                                </IconButton>
+                                <Typography variant="title" color="inherit" className={classes.flex}>
 
-                        <Button color="inherit" href="/datos">
-                            Datos
-                        </Button>
-                        <Button color="inherit" href="/blog">
-                            Blog
-                        </Button>
-                        <Button color="inherit" component={Link} to="/about">
-                            Acerca
-                        </Button>
-                        <Button color="inherit" component={Link} to="/faq" className={classes.lastButton}>
-                            FAQ
-                        </Button>
-                    </Toolbar>
+                                </Typography>
+
+                                <Button color="inherit" href="https://www.plataformadigitalnacional.org/blog">
+                                    Blog
+                                </Button>
+                                <Button color="inherit" component={Link} to="/about">
+                                    Acerca
+                                </Button>
+                                <Button color="inherit" component={Link} to="/faq" >
+                                    FAQ
+                                </Button>
+                            </Toolbar>
+                        </Grid>
+                    </Grid>
                 </AppBar>
             </div>
         );

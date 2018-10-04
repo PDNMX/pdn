@@ -1,43 +1,23 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import Card from '../components/SimpleCard'
+//import Card from '../components/SimpleCard'
 import Header from './PDNAppBar/PDNAppBar';
 import Footer from "./Footer/Footer";
-import img1 from "../assets/img/tresportresl.jpg";
-import img2 from "../assets/img/servidoresl.jpg";
-import img3 from "../assets/img/contrataciones.jpg";
-import img4 from "../assets/img/denunciasl.jpg";
-import img5 from "../assets/img/sancionadosl.jpg";
-import img6 from '../assets/img/fiscal.jpg';
 import Banner from "./Banner";
-import FooterBlog from "./PDNLinks/PDNLinks";
+import PDNLinks from "./PDNLinks/PDNLinks";
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Typography from "@material-ui/core/Typography/Typography";
+import Cards from './Cards';
 
-const charts1 = [
-    {'key': '1', 'title': 'Declaraciones 3x3', 'content': img1, 'to': '/declaraciones'},
-    {'key': '2', 'title': 'Servidores que intervienen en procesos de contratación', 'content': img2, 'to': '/servidores'},
-    {'key': '3', 'title': 'Servidores públicos y particulares sancionados', 'content': img5, 'to': '/sancionados'},
-    {'key': '4', 'title': 'Contrataciones públicas', 'content': img3, 'to': '/contrataciones'},
-    {'key': '5', 'title': 'Denuncias públicas', 'content': img4, 'to': '/denuncias'},
-    {'key': '6', 'title': 'Comunicación del Sistema Nacional de Fiscalización', 'content': img6, 'to': '/snf'}
-];
 
 const styles = theme => ({
     root: {
         flexGrow: 1,
+        backgroundColor: '#e5e5e5'
 
     },
     homeBody:{
-        [theme.breakpoints.up('sm')]:{
-            marginLeft: '100px',
-            marginRight: '100px',
-            marginTop: theme.spacing.unit * 2,
-            marginBottom: theme.spacing.unit * 2,
-
-
-        },
         [theme.breakpoints.down('sm')]:{
             marginLeft: theme.spacing.unit,
             marginRight: theme.spacing.unit,
@@ -58,8 +38,18 @@ const styles = theme => ({
     },
     gridItem: {
         marginBottom: theme.spacing.unit * 2
+    },
+    section: {
+        maxWidth: '1024px',
+        paddingTop: theme.spacing.unit * 2,
+        paddingBottom: theme.spacing.unit * 2
+    },
+    links: {
+        backgroundColor: '#fff'
     }
 });
+
+
 
 class Home extends React.Component {
     render() {
@@ -69,8 +59,8 @@ class Home extends React.Component {
                 <Header/>
                 <Banner/>
                 <div className={classes.homeBody}>
-                    <Grid justify="space-around" container spacing={24} >
-                        <Grid item xs={12}>
+                    <Grid justify="center" container spacing={0}>
+                        <Grid item xs={12} className={classes.section}>
                             <Typography variant="headline" >
                                 Explora los sistemas de la PDN
                             </Typography>
@@ -78,19 +68,21 @@ class Home extends React.Component {
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                             </Typography>
                         </Grid>
-                        {
-                            charts1.map((prop, key) => {
-                                return (
-                                    <Grid item lg={4} md={6} sm={12} key={key} className={classes.gridItem}>
-                                        <Card titleCard={prop.title} content={prop.content} to={prop.to}/>
-                                    </Grid>
-                                );
-                            })
-                        }
-
+                    </Grid>
+                    <Grid container spacing={0} justify="center">
+                        <Grid item xs={12} className={classes.section}>
+                            <Cards/>
+                        </Grid>
                     </Grid>
                 </div>
-                <FooterBlog/>
+
+                <div className={classes.links}>
+                    <Grid container spacing={0} justify='center'>
+                        <Grid item xs={12} className={classes.section}>
+                            <PDNLinks/>
+                        </Grid>
+                    </Grid>
+                </div>
                 <Footer/>
             </div>
 
