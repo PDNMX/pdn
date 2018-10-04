@@ -28,6 +28,9 @@ const styles = theme => ({
     },
     button: {
         marginTop: theme.spacing.unit
+    },
+    links: {
+        maxWidth: '1024px'
     }
 });
 
@@ -47,7 +50,13 @@ class P404 extends React.Component {
                         </Paper>
                     </Grid>
                 </Grid>
-                <PDNLinks/>
+                <div style={{background: '#fff'}}>
+                    <Grid container spacing={0} justify='center'>
+                        <Grid item xs={12} className={classes.links}>
+                            <PDNLinks/>
+                        </Grid>
+                    </Grid>
+                </div>
                 <Footer/>
             </div>
         )
