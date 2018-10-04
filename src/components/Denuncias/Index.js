@@ -100,7 +100,7 @@ class Index extends React.Component {
                         </Grid>
                     </Grid>
                 </Paper>
-                <div id={'container'}className={classes.bgContainer}>
+                <div id={'container'} className={classes.bgContainer}>
                     <div className={classes.root}>
                         <Grid container spacing={32}>
                             <Grid item md={4} xs={12}>
@@ -143,6 +143,9 @@ class Index extends React.Component {
                         </Grid>
                     </Grid>
                 </div>
+
+
+
                 < Footer/>
 
             </div>
