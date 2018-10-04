@@ -25,7 +25,8 @@ const INITIAL_STATE = {
         "motivo_denuncia" : "",
         "motivo_peticion": "",
         "anonima" : false,
-        "acusados" : []
+        "acusados" : [],
+        "folio": ""
     }
 };
 

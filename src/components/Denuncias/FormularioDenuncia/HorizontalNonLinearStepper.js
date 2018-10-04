@@ -13,6 +13,7 @@ import * as jsPDF from 'jspdf';
 import logotipoSESNA from '../../../assets/img/LogotipoSESNA-01.png';
 import rp from 'request-promise';
 import {connect} from 'react-redux';
+import uuidv1 from 'uuid/v1';
 
 let datosSolicitante = <DatosSolicitante/>;
 let datosDenuncia = <DatosDenuncia/>;
@@ -121,7 +122,7 @@ class HorizontalNonLinearStepper extends React.Component {
      saveDenuncia(){
          let denuncia = this.props.denuncia;
          denuncia.hora_hecho = null;
-
+         denuncia.folio = uuidv1();
          console.log("Denuncia: ",denuncia);
 
         let options = {
@@ -172,7 +173,7 @@ class HorizontalNonLinearStepper extends React.Component {
 
         doc.setFontType('normal');
         doc.text('Fecha de la denuncia: '+(new Date().toLocaleDateString()),30,170);
-        doc.text('Número de denuncia: ',30,180);
+        doc.text('Folio de denuncia: '+d.folio,30,185);
 
 
         doc.setFontSize(11);
