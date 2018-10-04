@@ -49,7 +49,7 @@ const styles = theme => ({
     container: {
         padding: theme.spacing.unit * 2
     },
-    section: {
+    seccion: {
         backgroundColor :  theme.palette.backDark.color
     },
     image:{
@@ -71,6 +71,9 @@ const styles = theme => ({
     bgContainer : {
         backgroundColor: theme.palette.backLight.color,
         paddingTop : theme.spacing.unit * 5
+    },
+    section: {
+        maxWidth: '1024px'
     }
 
 });
@@ -83,7 +86,7 @@ class Index extends React.Component {
         return (
             <div>
                 <Header/>
-                <Paper className={classes.section} name={'isela'}>
+                <Paper className={classes.seccion} name={'isela'}>
                     <Grid container>
                         <Grid item lg={8} md={8} sm={12} className={classes.bgImg}/>
                         <Grid item lg={4} md={4} sm={12} className={classes.container}>
@@ -136,7 +139,7 @@ class Index extends React.Component {
                     </div>
                 </div>
 
-                <div className={classes.links}>
+                <div style={{backgroundColor: '#fff'}}>
                     <Grid container spacing={0} justify='center'>
                         <Grid item xs={12} className={classes.section}>
                             <PDNLinks/>
