@@ -14,6 +14,8 @@ import logotipoSESNA from '../../../assets/img/LogotipoSESNA-01.png';
 import rp from 'request-promise';
 import {connect} from 'react-redux';
 import uuidv1 from 'uuid/v1';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Table from "@material-ui/core/Table/Table";
 
 let datosSolicitante = <DatosSolicitante/>;
 let datosDenuncia = <DatosDenuncia/>;
@@ -35,6 +37,14 @@ const styles = theme => ({
         marginTop: theme.spacing.unit,
         marginBottom: theme.spacing.unit,
     },
+    progress: {
+        position: 'absolute',
+        margin: 'auto',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0
+    },
 });
 
 function getSteps() {
@@ -55,11 +65,12 @@ function getStepContent(step) {
     }
 }
 
-
+let loading = false;
 class HorizontalNonLinearStepper extends React.Component {
     state = {
         activeStep: 0,
         completed: {},
+
     };
 
     totalSteps = () => {
@@ -119,34 +130,35 @@ class HorizontalNonLinearStepper extends React.Component {
         return this.state.activeStep === this.totalSteps() - 1;
     };
 
-     saveDenuncia(){
+     saveDenuncia = () =>{
          let denuncia = this.props.denuncia;
          denuncia.hora_hecho = null;
          denuncia.folio = uuidv1();
          console.log("Denuncia: ",denuncia);
 
-        let options = {
-            method : 'POST',
-            uri : 'https://plataformadigitalnacional.org/api/denuncias',
-            headers:{
-                'Prefer' : 'return = representation',
-                'Content-Type' : 'application/json'
-            },
-            body : denuncia,
-            json:true
-        };
+         let options = {
+             method : 'POST',
+             uri : 'https://plataformadigitalnacional.org/api/denuncias',
+             headers:{
+                 'Prefer' : 'return = representation',
+                 'Content-Type' : 'application/json'
+             },
+             body : denuncia,
+             json:true
+         };
 
-        rp(options)
-            .then(parseBody => {
-                console.log("ok: ",parseBody);
-                this.printPDF();
-            })
-            .catch(err => {
-               alert("_No se pudo completar la operación");
-               console.log(err);
-            });
+         rp(options)
+             .then(parseBody => {
+                 console.log("ok: ",parseBody);
+                 this.printPDF();
+             })
+             .catch(err => {
+                 alert("_No se pudo completar la operación");
+                 console.log(err);
+             });
 
-    }
+
+    };
 
     getX(doc, texto){
         let fontSize = doc.internal.getFontSize();
@@ -169,33 +181,33 @@ class HorizontalNonLinearStepper extends React.Component {
         doc.setFontType('bold');
         doc.addImage(logotipoSESNA,'PNG',30,-20,200,180);
         doc.text('SECRETARÍA EJECUTIVA DEL SISTEMA NACIONAL ANTICORRUPCIÓN',350,60,{maxWidth:250, align : 'justify'});
-        doc.text('ACUSE DE QUEJA O DENUNCIA',doc.internal.pageSize.getWidth()/2,130,null,null,'center');
+        doc.text('ACUSE DE QUEJA O DENUNCIA',doc.internal.pageSize.getWidth()/2,150,null,null,'center');
 
         doc.setFontType('normal');
-        doc.text('Fecha de la denuncia: '+(new Date().toLocaleDateString()),30,170);
-        doc.text('Folio de denuncia: '+d.folio,30,185);
+        doc.text('Fecha de la denuncia: '+(new Date().toLocaleDateString()),30,190);
+        doc.text('Folio de denuncia: '+d.folio,30,205);
 
 
         doc.setFontSize(11);
         doc.setFontType('bold');
-        doc.text('DATOS DEL SOLICITANTE',30,220);
+        doc.text('DATOS DEL SOLICITANTE',30,240);
 
         doc.setFontType('normal');
-        doc.text('Nombre: ' + d.nombre_solicitante + ' ' + d.apellido_uno_solicitante + ' ' + d.apellido_dos_solicitante ,30,235);
-        doc.text('Teléfono: ' + d.telefono_solicitante, 30,250);
-        doc.text('Correo electrónico: ' + d.correo_solicitante,30,265);
+        doc.text('Nombre: ' + d.nombre_solicitante + ' ' + d.apellido_uno_solicitante + ' ' + d.apellido_dos_solicitante ,30,255);
+        doc.text('Teléfono: ' + d.telefono_solicitante, 30,270);
+        doc.text('Correo electrónico: ' + d.correo_solicitante,30,285);
 
 
         doc.setFontType('bold');
-        doc.text('DATOS DE LA DENUNCIA',30,320);
+        doc.text('DATOS DE LA DENUNCIA',30,340);
 
         doc.setFontType('normal');
-        doc.text('Fecha y hora del hecho: ' + d.fecha_hecho.toLocaleDateString() ,30,335);
-        doc.text('Institución: ' + d.institucion_servidor ,30,350);
-        doc.text('Motivo de la denuncia: ' + d.motivo_denuncia,30,365);
-        doc.text('Servidor público o particular: ' + d.institucion_servidor ,30,380);
-        doc.text('Hechos: '  ,30,395);
-        let y = 410;
+        doc.text('Fecha y hora del hecho: ' + d.fecha_hecho.toLocaleDateString() ,30,355);
+        doc.text('Institución: ' + d.institucion_servidor ,30,370);
+        doc.text('Motivo de la denuncia: ' + d.motivo_denuncia,30,385);
+        doc.text('Servidor público o particular: ' + d.institucion_servidor ,30,400);
+        doc.text('Hechos: '  ,30,415);
+        let y = 430;
         let text = d.motivo_peticion;
         let lengthOfPage = 440;
 
@@ -227,8 +239,14 @@ class HorizontalNonLinearStepper extends React.Component {
         const { activeStep } = this.state;
 
         return (
+
             <div className={classes.root}>
-                <Stepper nonLinear activeStep={activeStep}>
+                {
+                    loading &&
+                    <CircularProgress className={classes.progress} id="spinnerLoading" size={100}/>
+                }
+                <Stepper nonLinear activeStep={activeStep} aria-describedby="spinnerLoading"
+                         aria-busy={this.state.loading}>
                     {steps.map((label, index) => {
                         return (
                             <Step key={label}>
