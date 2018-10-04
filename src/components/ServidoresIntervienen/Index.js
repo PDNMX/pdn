@@ -89,6 +89,9 @@ const styles = theme => ({
     },
     bgPanelLight: {
         backgroundColor: theme.palette.backLight.color,
+    },
+    section: {
+        maxWidth: '1024px'
     }
 
 });
@@ -167,7 +170,14 @@ class Index extends React.Component {
 
 
                 </div>
-                <PDNLinks/>
+
+                <div style={{ backgroundColor: '#fff'}}>
+                    <Grid container spacing={0} justify='center'>
+                        <Grid item xs={12} className={classes.section}>
+                            <PDNLinks/>
+                        </Grid>
+                    </Grid>
+                </div>
                 <Footer/>
             </div>
         );

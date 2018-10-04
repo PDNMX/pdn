@@ -14,18 +14,15 @@ const styles = theme => ({
 
     root:{
         flexGrow: 1,
-        display: 'flex',
-        flexDirection: 'column',
-        height: '100vh'
+        backgroundColor: '#e5e5e5',
+        //display: 'flex',
+        //flexDirection: 'column',
+        //height: '100vh'
     },
     contents: {
         flexGrow: 1,
         paddingTop: theme.spacing.unit * 5,
         paddingBottom: theme.spacing.unit * 5,
-        [theme.breakpoints.up('sm')]:{
-            marginLeft: '100px',
-            marginRight: '100px'
-        },
         [theme.breakpoints.down('sm')]:{
             marginLeft: theme.spacing.unit,
             marginRight: theme.spacing.unit
@@ -36,6 +33,9 @@ const styles = theme => ({
         //textAlign: 'center',
         color: theme.palette.text.secondary,
     },
+    section: {
+        maxWidth: '1024px'
+    }
 });
 
 class Index extends React.Component {
@@ -47,8 +47,9 @@ class Index extends React.Component {
                 <Header/>
                 <div className={classes.contents}>
 
-                    <Grid containter spacing={24}>
-                        <Grid item xs={12}>
+                    <Grid container spacing={24} justify='center'>
+                        <Grid item xs={12} className={classes.section}>
+
                             <Typography variant="title">
                                 Servidores públicos y particulares sancionados
                             </Typography>
@@ -60,15 +61,22 @@ class Index extends React.Component {
                                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
                                 mollit anim id est laborum.
                             </Typography>
-                            <div>
-                                <Tabs/>
-                            </div>
+                            <br/>
+
+                            <Tabs/>
+
 
                         </Grid>
                     </Grid>
-
                 </div>
-                <PDNLinks/>
+
+                <div style={{backgroundColor: '#fff'}}>
+                    <Grid container spacing={0} justify='center'>
+                        <Grid item xs={12} className={classes.section}>
+                            <PDNLinks/>
+                        </Grid>
+                    </Grid>
+                </div>
                 <Footer/>
 
             </div>
