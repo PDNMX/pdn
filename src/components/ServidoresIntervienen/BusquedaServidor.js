@@ -9,11 +9,12 @@ import Visibility from "@material-ui/icons/Search";
 import InputLabel from "@material-ui/core/InputLabel/InputLabel";
 import Select from "@material-ui/core/Select/Select";
 import MenuItem from "@material-ui/core/MenuItem/MenuItem";
-import rp from "request-promise"
+import rp from "request-promise";
 import Grid from "@material-ui/core/Grid/Grid";
 import Paper from "@material-ui/core/Paper/Paper";
 import SelectReact from "react-select";
 import './selectReact.css';
+import Typography from "@material-ui/core/Typography/Typography";
 
 const styles = theme => ({
     container: {
@@ -137,11 +138,24 @@ function Menu(props) {
     );
 }
 
+function Placeholder(props) {
+    return (
+        <Typography
+            color="textSecondary"
+            className={props.selectProps.classes.placeholder}
+            {...props.innerProps}
+        >
+            {props.children}
+        </Typography>
+    );
+}
+
 const components = {
     'Control' : Control,
     'Menu' : Menu,
     'Option' : Option,
-    'SingleValue' : SingleValue
+    'SingleValue' : SingleValue,
+    'Placeholder': Placeholder
 };
 
 class BusquedaServidor extends React.Component {
@@ -177,6 +191,11 @@ class BusquedaServidor extends React.Component {
                     color: theme.palette.fontLight.color,
                 }
             }),
+            placeholder : base => ({
+                ...base,
+                fontSize: '1em',
+                fontWeight: 400
+            })
         };
         return (
             <Grid container spacing={8}>
@@ -215,7 +234,7 @@ class BusquedaServidor extends React.Component {
                             value={{value: institucion, label: institucion}}
                             onChange={(e) => handleChangeCampo('institucion', e)}
                             id="campoSelectInstitucion"
-                            defaultValue={{label:'TODAS',value:''}}
+                            placeholder = {'TODAS'}
                         />
 
                     </FormControl>

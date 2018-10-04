@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from 'react-router-dom';
 import AppBar from "@material-ui/core/AppBar/AppBar";
 import Button from '@material-ui/core/Button';
-import imgHeader from "../../assets/img/logo_sin_fondo.png";
+import imgHeader from "../../assets/img/logo_pdn.png";
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Toolbar from '@material-ui/core/Toolbar';

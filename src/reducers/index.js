@@ -1,9 +1,8 @@
 import { combineReducers } from 'redux';
-//import reducers ...
-import acusados from './acusados';
 import listReducer from './listReducer';
+import denuncia from './denuncia';
 
 export default combineReducers({
-    fieldsReducer: acusados,
-    listReducer: listReducer
+    listReducer: listReducer,
+    denunciaReducer :denuncia
 })

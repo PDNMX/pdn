@@ -7,15 +7,22 @@ import StepButton from '@material-ui/core/StepButton';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import DatosSolicitante from './DatosSolicitante';
-import DatosDenunciaContainer from '../../../containers/DatosDenunciaContainer';
+import DatosDenuncia from './DatosDenuncia';
 import AvisoPrivacidad from './AvisoPrivacidad';
+import * as jsPDF from 'jspdf';
+import logotipoSESNA from '../../../assets/img/LogotipoSESNA-01.png';
+import rp from 'request-promise';
+import {connect} from 'react-redux';
 
 let datosSolicitante = <DatosSolicitante/>;
-let avisoPrivacidad = <AvisoPrivacidad/>
-let datosDenunciaContainer = <DatosDenunciaContainer/>
+let datosDenuncia = <DatosDenuncia/>;
+
+
+let avisoPrivacidad = <AvisoPrivacidad/>;
+
 const styles = theme => ({
     root: {
-        width: '100%',
+        width: '300%',
     },
     button: {
         margin: theme.spacing.unit,
@@ -33,18 +40,20 @@ function getSteps() {
     return ['Datos solicitante', 'Datos de la denuncia', 'Aviso de privacidad'];
 }
 
+
 function getStepContent(step) {
     switch (step) {
         case 0:
             return datosSolicitante;
         case 1:
-            return datosDenunciaContainer;
+            return datosDenuncia;
         case 2:
             return avisoPrivacidad;
         default:
             return 'Unknown step';
     }
 }
+
 
 class HorizontalNonLinearStepper extends React.Component {
     state = {
@@ -58,7 +67,6 @@ class HorizontalNonLinearStepper extends React.Component {
 
     handleNext = () => {
         let activeStep;
-
         if (this.isLastStep() && !this.allStepsCompleted()) {
             // It's the last step, but not all steps have been completed,
             // find the first step that has been completed
@@ -99,6 +107,7 @@ class HorizontalNonLinearStepper extends React.Component {
             activeStep: 0,
             completed: {},
         });
+        this.props.newDenuncia();
     };
 
     completedSteps() {
@@ -107,18 +116,112 @@ class HorizontalNonLinearStepper extends React.Component {
 
     isLastStep() {
         return this.state.activeStep === this.totalSteps() - 1;
+    };
+
+     saveDenuncia(){
+         let denuncia = this.props.denuncia;
+         denuncia.hora_hecho = null;
+
+         console.log("Denuncia: ",denuncia);
+
+        let options = {
+            method : 'POST',
+            uri : 'https://plataformadigitalnacional.org/api/denuncias',
+            headers:{
+                'Prefer' : 'return = representation',
+                'Content-Type' : 'application/json'
+            },
+            body : denuncia,
+            json:true
+        };
+
+        rp(options)
+            .then(parseBody => {
+                console.log("ok: ",parseBody);
+                this.printPDF();
+            })
+            .catch(err => {
+               alert("_No se pudo completar la operación");
+               console.log(err);
+            });
+
+    }
+
+    getX(doc, texto){
+        let fontSize = doc.internal.getFontSize();
+        let pageWidth = doc.internal.pageSize.getWidth();
+        let aux = '';
+        for(var i = 0; i < texto.length ; i++){
+            aux += 'a';
+        }
+        let txtWidth =  doc.getStringUnitWidth(aux) * fontSize / doc.internal.scaleFactor;
+        let  x = (pageWidth - txtWidth) / 2;
+        return x;
+    }
+    printPDF(){
+        let doc = new jsPDF({
+            format : 'letter',
+            unit : 'pt'
+        });
+        let d = this.props.denuncia;
+        doc.setFontSize(12);
+        doc.setFontType('bold');
+        doc.addImage(logotipoSESNA,'PNG',30,-20,200,180);
+        doc.text('SECRETARÍA EJECUTIVA DEL SISTEMA NACIONAL ANTICORRUPCIÓN',350,60,{maxWidth:250, align : 'justify'});
+        doc.text('ACUSE DE QUEJA O DENUNCIA',doc.internal.pageSize.getWidth()/2,130,null,null,'center');
+
+        doc.setFontType('normal');
+        doc.text('Fecha de la denuncia: '+(new Date().toLocaleDateString()),30,170);
+        doc.text('Número de denuncia: ',30,180);
+
+
+        doc.setFontSize(11);
+        doc.setFontType('bold');
+        doc.text('DATOS DEL SOLICITANTE',30,220);
+
+        doc.setFontType('normal');
+        doc.text('Nombre: ' + d.nombre_solicitante + ' ' + d.apellido_uno_solicitante + ' ' + d.apellido_dos_solicitante ,30,235);
+        doc.text('Teléfono: ' + d.telefono_solicitante, 30,250);
+        doc.text('Correo electrónico: ' + d.correo_solicitante,30,265);
+
+
+        doc.setFontType('bold');
+        doc.text('DATOS DE LA DENUNCIA',30,320);
+
+        doc.setFontType('normal');
+        doc.text('Fecha y hora del hecho: ' + d.fecha_hecho.toLocaleDateString() ,30,335);
+        doc.text('Institución: ' + d.institucion_servidor ,30,350);
+        doc.text('Motivo de la denuncia: ' + d.motivo_denuncia,30,365);
+        doc.text('Servidor público o particular: ' + d.institucion_servidor ,30,380);
+        doc.text('Hechos: '  ,30,395);
+        let y = 410;
+        let text = d.motivo_peticion;
+        let lengthOfPage = 440;
+
+        let splitHecho = doc.splitTextToSize(text,lengthOfPage);
+       for(var c = 0, stlength = splitHecho.length ; c <stlength; c++){
+            doc.text(splitHecho[c], 30,y);
+            y+=15;
+        }
+
+        doc.setFontSize(8);
+        let t = 'Avenida Coyoacán No. 1501, Col del Valle Centro, Del. Benito Juárez, C.P.03300, Ciudad de México.';
+        doc.text(t,this.getX(doc, t),730);
+        t = 'Teléfono: 5200-1500, ext. 00000';
+        doc.text(t,this.getX(doc, t),740);
+        doc.save('Acuse.pdf');
     }
 
     allStepsCompleted() {
-        return this.completedSteps() === this.totalSteps();
+        return (this.completedSteps() === this.totalSteps());
     }
 
     getFolio(){
-        return Math.floor(Math.random() * 1000) + 1;
+        return Math.floor(Math.random() * 3000) + 1;
     }
 
     render() {
-        const { classes } = this.props;
+        const { classes, denuncia } = this.props;
         const steps = getSteps();
         const { activeStep } = this.state;
 
@@ -141,6 +244,8 @@ class HorizontalNonLinearStepper extends React.Component {
                 <div>
                     {this.allStepsCompleted() ? (
                         <div>
+                            {this.saveDenuncia()}
+
                             <Typography className={classes.instructions}>
                                 Folio denuncia:{this.getFolio()} , ¿Desea enviar nueva denuncia?
                             </Typography>
@@ -178,4 +283,21 @@ HorizontalNonLinearStepper.propTypes = {
     classes: PropTypes.object,
 };
 
-export default withStyles(styles)(HorizontalNonLinearStepper);
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+    newDenuncia : () => dispatch({type : 'NEW_DENUNCIA'}),
+});
+
+const mapStateToProps = (state, ownProps) => {
+    let newState = {
+        denuncia : state.denunciaReducer.denuncia
+    };
+    return newState;
+};
+
+let previo = withStyles(styles)(HorizontalNonLinearStepper);
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(previo)

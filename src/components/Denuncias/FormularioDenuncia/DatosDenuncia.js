@@ -15,12 +15,14 @@ import MuiPickersUtilsProvider from "material-ui-pickers/utils/MuiPickersUtilsPr
 import DatePicker from "material-ui-pickers/DatePicker";
 import DateFnsUtils from 'material-ui-pickers/utils/date-fns-utils';
 import {TimePicker} from 'material-ui-pickers';
-import TableHead from "@material-ui/core/TableHead/TableHead";
-import TableRow from "@material-ui/core/TableRow/TableRow";
-import TableCell from "@material-ui/core/TableCell/TableCell";
-import TableBody from "@material-ui/core/TableBody/TableBody";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import TableCell from "@material-ui/core/TableCell";
+import TableBody from "@material-ui/core/TableBody";
 import Acusado from "./Acusado";
-import Table from "@material-ui/core/Table/Table";
+import Table from "@material-ui/core/Table";
+import ClearIcon from "@material-ui/icons/Clear";
+import {connect} from 'react-redux';
 
 const styles = theme => ({
     root: {
@@ -42,34 +44,23 @@ const styles = theme => ({
 
 class DatosDenuncia extends React.Component {
     state = {
-        motivo: '',
-        fechaHecho: new Date(),
-        trato: '',
-        institucionHecho: '',
-        lugarHecho: '',
-        cantidadDescripcionSolicitada: '',
-        nombreTramite: '',
-        programaRelacionado: '',
-        descripcionAcusado: '',
-        nombreAcusado: '',
-        nombreTestigo: '',
-        empresaPais: '',
         acusado: {
             id: 0,
-            nombre: '',
-            descripcionFisica: ''
+            nombre: ''
+        },
+        testigo:{
+            id : 0,
+            nombre : ''
         }
     };
 
 
     handleChangeInput = name => event => {
-        this.setState({
-            [name]: event.target.value,
-        });
+       this.props.setField(name,event);
     };
 
     handleDateChange = (date) => {
-        this.setState({fechaHecho: date});
+        this.props.setDate('fecha_hecho', date);
     };
 
     handleChange = name => event => {
@@ -80,20 +71,47 @@ class DatosDenuncia extends React.Component {
             }
         })
     };
+    handleChangeTestigo = name => event => {
+      this.setState({
+          testigo : {
+              ...this.state.testigo,
+              [name] : event.target.value
+          }
+      });
+    };
     fireAction = () => {
         this.props.addAcusado(this.state.acusado);
         this.setState({
             acusado: {
-                id: 0,
-                nombre: '',
-                descripcionFisica: ''
+                id : 0,
+                nombre : ''
             }
         })
-    }
+    };
+    addTestigo = () => {
+        this.props.addTestigo(this.state.testigo);
+        this.setState({
+            testigo:{
+                id : 0,
+                nombre : ''
+            }
+        })
+    };
 
+    Testigo = (testigo) => {
+        return (
+        <TableRow key={testigo.id}>
+            <TableCell>{testigo.nombre}</TableCell>
+            <TableCell>
+                <IconButton color="primary" component="span">
+                    <ClearIcon/>
+                </IconButton>
+            </TableCell>
+        </TableRow>
+        );
+    };
     render() {
-        const {classes} = this.props;
-        const {acusados} = this.props;
+        const {classes, denuncia} = this.props;
         return (
             <div>
                 <Paper className={classes.form}>
@@ -108,15 +126,15 @@ class DatosDenuncia extends React.Component {
                                 id="motivo"
                                 label="Narre el motivo de su petición: "
                                 className={classes.textField}
-                                value={this.state.motivo}
-                                onChange={this.handleChangeInput('motivo')}
+                                value={denuncia.motivo_peticion}
+                                onChange={this.handleChangeInput('motivo_peticion')}
                                 margin="normal" multiline fullWidth rows={5}
                             />
                         </Grid>
                         <Grid item lg={3} md={3} sm={12}>
                             <MuiPickersUtilsProvider utils={DateFnsUtils}>
                                 <DatePicker
-                                    value={this.state.fechaHecho}
+                                    value={denuncia.fecha_hecho}
                                     onChange={this.handleDateChange}
                                     label="Fecha de los hechos"
                                     disableFuture
@@ -131,7 +149,7 @@ class DatosDenuncia extends React.Component {
                                 <TimePicker
                                     autoOk
                                     label="Si conoce la hora, indíquela"
-                                    value={this.state.fechaHecho}
+                                    value={denuncia.fecha_hecho}
                                     onChange={this.handleDateChange}
                                 />
                             </MuiPickersUtilsProvider>
@@ -140,8 +158,8 @@ class DatosDenuncia extends React.Component {
                             <FormControl className={classes.formControl}>
                                 <InputLabel htmlFor="age-native-helper">Motivo de la denuncia</InputLabel>
                                 <NativeSelect
-                                    value={this.state.motivo}
-                                    onChange={this.handleChangeInput('motivoDenuncia')}
+                                    value={denuncia.motivo_denuncia}
+                                    onChange={this.handleChangeInput('motivo_denuncia')}
                                     input={<Input name="motivoDenuncia" id="motivoDenuncia-native-helper"/>}
                                 >
                                     <option value=""/>
@@ -157,8 +175,8 @@ class DatosDenuncia extends React.Component {
                             <FormControl className={classes.formControl}>
                                 <InputLabel htmlFor="age-native-helper">El trato que recibió fue</InputLabel>
                                 <NativeSelect
-                                    value={this.state.trato}
-                                    onChange={this.handleChangeInput('trato')}
+                                    value={denuncia.trato_recibido}
+                                    onChange={this.handleChangeInput('trato_recibido')}
                                     input={<Input name="trato" id="trato-native-helper"/>}
                                 >
                                     <option value=""/>
@@ -174,8 +192,8 @@ class DatosDenuncia extends React.Component {
                                 id="lugarHecho"
                                 label="¿En dónde sucedieron los hechos?"
                                 className={classes.textField}
-                                value={this.state.lugarHecho}
-                                onChange={this.handleChangeInput('lugarHecho')}
+                                value={denuncia.lugar_hecho}
+                                onChange={this.handleChangeInput('lugar_hecho')}
                                 margin="normal"
                             />
                         </Grid>
@@ -183,8 +201,8 @@ class DatosDenuncia extends React.Component {
                             <TextField
                                 id="institucionHecho"
                                 label="¿De qué institución es el trámite/servicio o el personal con quien trató? *"
-                                value={this.state.institucionHecho}
-                                onChange={this.handleChangeInput('institucionHecho')}
+                                value={denuncia.institucion_servidor}
+                                onChange={this.handleChangeInput('institucion_servidor')}
                                 className={classes.textField}
                                 margin="normal"
                             />
@@ -193,8 +211,8 @@ class DatosDenuncia extends React.Component {
                             <TextField
                                 id="nombreTramiteServicio"
                                 label="Nombre del trámite o servicio"
-                                value={this.state.nombreTramite}
-                                onChange={this.handleChangeInput('nombreTramiteServicio')}
+                                value={denuncia.nombre_tramite}
+                                onChange={this.handleChangeInput('nombre_tramite')}
                                 className={classes.textField}
                                 margin="normal"
                             />
@@ -203,36 +221,19 @@ class DatosDenuncia extends React.Component {
                             <TextField
                                 id="cantidadDescripcionSolicitada"
                                 label="Cantidad solicitada o descripción de solicitud"
-                                value={this.state.cantidadDescripcionSolicitada}
-                                onChange={this.handleChangeInput('cantidadDescripcionSolicitada')}
+                                value={denuncia.solicitud_hecho}
+                                onChange={this.handleChangeInput('solicitud_hecho')}
                                 className={classes.textField}
                                 margin="normal"
                             />
                         </Grid>
                         <Grid item lg={6} md={6} sm={12}>
                             <FormControl className={classes.formControl}>
-                                <InputLabel htmlFor="age-native-helper">Programa relacionado</InputLabel>
-                                <NativeSelect
-                                    value={this.state.programaRelacionado}
-                                    onChange={this.handleChangeInput('programaRelacionado')}
-                                    input={<Input name="programaRelacionado"
-                                                  id="programaRelacionado-native-helper"/>}
-                                >
-                                    <option value=""/>
-                                    <option value={10}>Ninguno</option>
-                                    <option value={20}>Educación para adultos</option>
-                                    <option value={30}>Prevención y control de enfermedades</option>
-                                    <option value={40}>Programa de cultura física y deporte</option>
-                                </NativeSelect>
-                            </FormControl>
-                        </Grid>
-                        <Grid item lg={6} md={6} sm={12}>
-                            <FormControl className={classes.formControl}>
                                 <InputLabel htmlFor="age-native-helper">País</InputLabel>
                                 <NativeSelect
-                                    value={this.state.empresaPais}
-                                    onChange={this.handleChangeInput('empresaPais')}
-                                    input={<Input name="empresaPais" id="empresaPais-native-helper"/>}
+                                    value={denuncia.pais_hecho}
+                                    onChange={this.handleChangeInput('pais_hecho')}
+                                    input={<Input name="paisHecho" id="paisHecho-native-helper"/>}
                                 >
                                     <option value=""/>
                                     <option value={10}>Estados Unidos</option>
@@ -257,47 +258,33 @@ class DatosDenuncia extends React.Component {
                                     onChange={this.handleChange('nombre')}
                                 />
                             </Grid>
-                            <Grid item lg={5} md={5} sm={12}>
-                                <TextField id="descripcionFisica" label="Descripción física: "
-                                           className={classes.textField}
-                                           value={this.state.acusado.descripcionFisica}
-                                           margin="normal"
-                                           multiline
-                                           fullWidth
-                                           onChange={this.handleChange('descripcionFisica')}
-                                />
-                            </Grid>
                             <Grid item lg={1} md={1} sm={12}>
                                 <IconButton color="primary" className={classes.button} aria-label="Agregar"
                                             onClick={() => {
                                                 this.fireAction()
                                             }
                                             }
-
                                 >
                                     <PlusIcon/>
                                 </IconButton>
                             </Grid>
                         </Grid>
-
                         <Grid item md={12} sm={12}>
-                            {acusados.length > 0 &&
+                            {denuncia.acusados.length > 0 &&
                             <Table>
                                 <TableHead>
                                     <TableRow>
-                                        <TableCell>Nombre</TableCell>
-                                        <TableCell>Descripción</TableCell>
+                                        <TableCell>Nombre servidor público o particular</TableCell>
                                         <TableCell></TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {acusados.map(acusado =>
+                                    {denuncia.acusados.map(acusado =>
                                         <Acusado key={acusado.id} {...acusado}/>)}
                                 </TableBody>
 
                             </Table>
                             }
-
                         </Grid>
                         <Grid item xs={12}>
                             <Typography variant={"body1"}>
@@ -308,17 +295,36 @@ class DatosDenuncia extends React.Component {
                             <TextField
                                 id="nombreTestigo"
                                 label="Nombre del testigo"
-                                value={this.state.nombreTestigo}
-                                onChange={this.handleChangeInput('nombreTestigo')}
+                                value={this.state.testigo.nombre}
+                                onChange={this.handleChangeTestigo('nombre')}
                                 className={classes.textField}
                                 margin="normal"
                             />
                         </Grid>
-                        <Grid item lg={5} md={5} sm={12}/>
                         <Grid item lg={1} md={1} sm={12}>
-                            <IconButton color="primary" className={classes.button} aria-label="Agregar">
+                            <IconButton color="primary" className={classes.button} aria-label="Agregar"
+                            onClick = {() => {
+                                this.addTestigo()
+                            }}>
                                 <PlusIcon/>
                             </IconButton>
+                        </Grid>
+                        <Grid item md={12} sm={12}>
+                            {denuncia.testigos.length > 0 &&
+                            <Table>
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell>Nombre testigo</TableCell>
+                                        <TableCell></TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    {denuncia.testigos.map(testigo =>
+                                        this.Testigo(testigo)
+                                        )}
+                                </TableBody>
+                            </Table>
+                            }
                         </Grid>
                     </Grid>
                 </Paper>
@@ -331,5 +337,23 @@ class DatosDenuncia extends React.Component {
 DatosDenuncia.propTypes = {
     classes: PropTypes.object.isRequired
 };
-DatosDenuncia = withStyles(styles)(DatosDenuncia);
-export default DatosDenuncia;
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+    addAcusado : (acusado) => dispatch({type : 'ADD_ACUSADO', acusado}),
+    addTestigo : (testigo) => dispatch({type : 'ADD_TESTIGO', testigo}),
+    setField: (name,event) => dispatch({type : 'SET_FIELD', name, event}),
+    setDate : (name,date) => dispatch({type : 'SET_DATE', name, date}),
+});
+
+const mapStateToProps = (state, ownProps) => {
+    let newState = {
+        denuncia : state.denunciaReducer.denuncia
+    };
+    return newState;
+};
+
+let previo = withStyles(styles)(DatosDenuncia);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(previo)
