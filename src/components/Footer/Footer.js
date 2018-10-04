@@ -3,14 +3,20 @@ import PropTypes from "prop-types";
 import {withStyles} from "@material-ui/core/styles";
 
 const styles = theme => ({
-    root: {}
+    root: {
+        backgroundColor: '#040718',
+        height: '70px'
+    }
 });
 
 class Footer extends React.Component {
 
     render(){
+
+        const {classes} = this.props;
+
         return (
-            <footer className='footer'>
+            <footer className={classes.root}>
                 <div className='container'>
 
                 </div>
