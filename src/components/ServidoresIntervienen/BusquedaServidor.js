@@ -218,7 +218,7 @@ class BusquedaServidor extends React.Component {
                                 <em>TODAS</em>
                             </MenuItem>
                             <MenuItem value={1}>CONTRATACIONES PÚBLICAS</MenuItem>
-                            <MenuItem value={2}>CONCESIONES,LICENCIAS, PERMISOS, AUTORIZACIONES Y PRÓROOGAS</MenuItem>
+                            <MenuItem value={2}>CONCESIONES, LICENCIAS, PERMISOS, AUTORIZACIONES Y PRÓRROGAS</MenuItem>
                             <MenuItem value={3}>ENAJENACIÓN DE BIENES MUEBLES</MenuItem>
                             <MenuItem value={4}>ASIGNACION Y EMISIÓN DE DICTÁMENES DE AVALÚOS NACIONALES</MenuItem>
                         </Select>

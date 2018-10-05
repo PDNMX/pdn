@@ -23,20 +23,21 @@ let counter = 0;
 
 let createData = (item) => {
     counter += 1;
+    let leyenda = "NO EXISTE DATO EN LA BASE DE DATOS RENIRESP";
     return {
         id: counter,
-        proveedor: item.proveedor_o_contratista,
-        dependencia: item.dependencia,
-        expediente: item.numero_de_expediente,
-        hechos: item.hechos_de_la_irregularidad,
-        objetoSocial: item.objeto_social,
-        sentidoResolucion: item.sentido_de_resolucion,
-        fechaNotificacion: item.fecha_de_notificacion,
-        fechaResolucion: item.fecha_de_resolucion,
-        plazo: item.plazo,
-        monto: item.monto,
-        responsableInformacion: item.nombre_del_responsable_de_la_informacion,
-        fechaActualizacion: item.fecha_de_actualizacion
+        proveedor: item.proveedor_o_contratista ? item.proveedor_o_contratista : leyenda,
+        dependencia: item.dependencia ? item.dependencia : leyenda,
+        expediente: item.numero_de_expediente ? item.numero_de_expediente : leyenda,
+        hechos: item.hechos_de_la_irregularidad ? item.hechos_de_la_irregularidad : leyenda,
+        objetoSocial: item.objeto_social ? item.objeto_social : leyenda,
+        sentidoResolucion: item.sentido_de_resolucion ? item.sentido_de_resolucion : leyenda,
+        fechaNotificacion: item.fecha_de_notificacion ? item.fecha_de_notificacion : leyenda,
+        fechaResolucion: item.fecha_de_resolucion ? item.fecha_de_resolucion : leyenda,
+        plazo: item.plazo ? item.plazo :leyenda,
+        monto: item.monto ? item.monto : leyenda,
+        responsableInformacion: item.nombre_del_responsable_de_la_informacion ? item.nombre_del_responsable_de_la_informacion : leyenda,
+        fechaActualizacion: item.fecha_de_actualizacion ? item.fecha_de_actualizacion : leyenda
     };
 };
 
@@ -87,7 +88,7 @@ const columnData = [
         disablePadding: false,
         label: 'Fecha notificación',
         position: 7,
-        mostrar: true
+        mostrar: false
     },
     {
         id: 'fechaResolucion',
@@ -95,7 +96,7 @@ const columnData = [
         disablePadding: false,
         label: 'Fecha resolución',
         position: 8,
-        mostrar: true
+        mostrar: false
     },
     {id: 'plazo', numeric: false, disablePadding: false, label: 'Plazo', position: 9, mostrar: false},
     {id: 'monto', numeric: false, disablePadding: false, label: 'Monto', position: 10, mostrar: false},
@@ -332,7 +333,7 @@ class EnhancedTable extends React.Component {
 
     getTotalRows = (URL) => {
         let options = {
-            uri : URL ? URL : 'https://204.48.18.61/api/proveedores_sancionados?select=count=eq.exact',
+            uri : URL ? URL : 'https://204.48.18.61/api/proveedores_sancionados?sentido_de_resolucion=like.*INHABILITACI%C3%93N*&&select=count=eq.exact',
             json : true
         };
         rp(options)
@@ -347,7 +348,7 @@ class EnhancedTable extends React.Component {
     handleSearchAPI = (typeSearch) => {
         this.setState({loading: true});
         let {institucion, nombreParticular} = this.state;
-        const URI = 'https://204.48.18.61/api/proveedores_sancionados?';
+        const URI = 'https://204.48.18.61/api/proveedores_sancionados?sentido_de_resolucion=like.*INHABILITACIÓN*&&';
         let vUri = URI + ((typeSearch === 'FIELD_FILTER'||typeSearch==='CHANGE_PAGE') ? ('limit=' + this.state.rowsPerPage + '&&offset=' + (this.state.rowsPerPage * this.state.page) + '&&'):'');
 
         vUri = vUri + ((institucion) ? 'dependencia=eq.' + institucion + '&&' : '');
@@ -434,10 +435,7 @@ class EnhancedTable extends React.Component {
                                                 <TableCell>{n.dependencia}</TableCell>
                                                 <TableCell>{n.expediente}</TableCell>
                                                 <TableCell>{n.sentidoResolucion}</TableCell>
-                                                <TableCell>{n.fechaNotificacion}</TableCell>
-                                                <TableCell>{n.fechaResolucion}</TableCell>
-
-                                            </TableRow>
+                                                </TableRow>
                                         );
                                     })}
                                 {emptyRows > 0 && (

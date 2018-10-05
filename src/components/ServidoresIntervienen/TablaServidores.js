@@ -22,6 +22,7 @@ import Typography from "@material-ui/core/Typography/Typography";
 let counter = 0;
 
 let createData = (item) => {
+    let leyenda = "NO EXISTE DATO EN LA BASE DE DATOS RENIRESP";
     let tipoArea = item.area_requirente === 1 ? "REQUIRENTE" : "" +
     item.area_contratante === 1 ? "CONTRATANTE" : "" +
     item.area_recnica === 1 ? "TÉCNICA" : "" +
@@ -31,14 +32,14 @@ let createData = (item) => {
     counter += 1;
     return {
         id: counter,
-        servidor: item.nombre,
-        institucion: item.institucion,
-        puesto: item.puesto,
-        tipoArea: tipoArea,
-        contrataciones: item.id_procedimiento === 1 ? nivel : "",
-        concesionesLicencias: item.id_procedimiento === 2 ? nivel : "",
-        enajenacion: item.id_procedimiento === 3 ? nivel : "",
-        dictamenes: item.id_procedimiento === 4 ? nivel : ""
+        servidor: item.nombre ? item.nombre : leyenda,
+        institucion: item.institucion ? item.institucion : leyenda,
+        puesto: item.puesto ? item.puesto : leyenda,
+        tipoArea: tipoArea ? tipoArea : leyenda,
+        contrataciones: item.id_procedimiento === 1 ? nivel : "NO APLICA",
+        concesionesLicencias: item.id_procedimiento === 2 ? nivel : "NO APLICA",
+        enajenacion: item.id_procedimiento === 3 ? nivel : "NO APLICA",
+        dictamenes: item.id_procedimiento === 4 ? nivel : "NO APLICA"
     };
 };
 
