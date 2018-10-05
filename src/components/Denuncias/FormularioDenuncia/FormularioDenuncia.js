@@ -11,37 +11,14 @@ import HorizontalNonLinearStepper from "./HorizontalNonLinearStepper";
 
 const styles = theme => ({
     root: {
-        [theme.breakpoints.up('sm')]:{
-            marginLeft: '100px',
-            marginRight: '100px',
-            marginTop: theme.spacing.unit * 2,
-            marginBottom: theme.spacing.unit * 2,
-        },
-        [theme.breakpoints.down('sm')]:{
-            marginLeft: theme.spacing.unit,
-            marginRight: theme.spacing.unit,
-            marginTop: theme.spacing.unit,
-            marginBottom: theme.spacing.unit,
-            padding: 10
-        }
+        flexGrow: 1,
+        backgroundColor: '#e5e5e5'
     },
-    homeBody: {
-        [theme.breakpoints.up('sm')]: {
-            marginLeft: '100px',
-            marginRight: '100px',
-            marginTop: theme.spacing.unit * 2,
-            marginBottom: theme.spacing.unit * 2,
-        },
-        [theme.breakpoints.down('sm')]: {
-            marginLeft: theme.spacing.unit,
-            marginRight: theme.spacing.unit,
-            marginTop: theme.spacing.unit,
-            marginBottom: theme.spacing.unit,
-            padding: 20
-        }
+    section: {
+        maxWidth: '1024px'
     },
-    gridItem: {
-        marginBottom: theme.spacing.unit * 2
+    links: {
+      backgroundColor: '#fff'
     },
 
     paperIzquierdo: {
@@ -84,34 +61,41 @@ const styles = theme => ({
 class FormularioDenuncia extends React.Component {
     render() {
         const {classes} = this.props;
+
         return (
-            <div>
+            <div className={classes.root}>
                 <Header/>
-                <div className={classes.root}>
-                    <Grid container spacing={24}>
-                        <Grid item xs={12}>
-                            <Typography variant="headline">
-                                Denuncias
-                            </Typography>
-                            <Typography variant={"body1"}>
-                                It is a long established fact that a reader will be distracted by the readable
-                                content of a page
-                                when looking at its layout. The point of using Lorem Ipsum is that it has a
-                                more-or-less normal
-                                distribution of letters
-                            </Typography>
-                        </Grid>
-                        <Grid item xs={12}>
-                            <Paper  className={classes.containerUp} >
-                                <HorizontalNonLinearStepper/>
-                            </Paper>
+
+                <Grid container spacing={0} justify="center">
+                    <Grid item xs={12} className={classes.section}>
+                        <Typography variant="headline">
+                            Denuncias
+                        </Typography>
+                        <Typography variant="body1">
+                            It is a long established fact that a reader will be distracted by the readable
+                            content of a page
+                            when looking at its layout. The point of using Lorem Ipsum is that it has a
+                            more-or-less normal
+                            distribution of letters
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={12} className={classes.section}>
+                        <Paper  className={classes.containerUp} >
+                            <HorizontalNonLinearStepper/>
+                        </Paper>
+                    </Grid>
+                </Grid>
+
+                <br/>
+                <div className={classes.links}>
+                    <Grid container spacing={0} justify="center">
+                        <Grid item xs={12} className={classes.section}>
+                            <PDNLinks/>
                         </Grid>
                     </Grid>
-
                 </div>
-                < PDNLinks/>
-                < Footer/>
 
+                <Footer/>
             </div>
         );
     }

@@ -24,18 +24,7 @@ const styles = theme => ({
 
     root: {
         flexGrow: 1,
-        [theme.breakpoints.up('sm')]: {
-            marginLeft: '100px',
-            marginRight: '100px',
-            paddingTop: theme.spacing.unit,
-            paddingBottom: theme.spacing.unit * 3
-        },
-        [theme.breakpoints.down('sm')]: {
-            marginLeft: theme.spacing.unit,
-            marginRight: theme.spacing.unit,
-            paddingTop: theme.spacing.unit,
-            paddingBottom: theme.spacing.unit,
-        }
+        backgroundColor: '#e5e5e5'
     },
     homeBody: {
         [theme.breakpoints.up('sm')]: {
@@ -89,7 +78,8 @@ const styles = theme => ({
         [theme.breakpoints.up('sm')]: {
             display: "flex",
         },
-        [theme.breakpoints.down('sm')]: {}
+        [theme.breakpoints.down('sm')]: {},
+        minHeight: '500px'
     },
     fontLight: {
         color: theme.palette.fontLight.color,
@@ -100,7 +90,9 @@ const styles = theme => ({
         marginRight: theme.spacing.unit,
         width: "100%",
     },
-
+    section: {
+        maxWidth: '1024px'
+    }
 });
 
 class FormularioConsulta extends React.Component {
@@ -114,66 +106,77 @@ class FormularioConsulta extends React.Component {
     render() {
         const {classes} = this.props;
         return (
-            <div>
+            <div className={classes.root}>
                 <Header/>
-                <div className={classes.root}>
-                    <Grid container spacing={24}>
-                        <Grid item xs={12}>
-                            <Typography variant="headline">
-                                Denuncias
-                            </Typography>
-                            <Typography variant={"body1"}>
-                                It is a long established fact that a reader will be distracted by the readable
-                                content of a page
-                                when looking at its layout. The point of using Lorem Ipsum is that it has a
-                                more-or-less normal
-                                distribution of letters
-                            </Typography>
+                <Grid container spacing={0} justify='center'>
+                    <Grid item xs={12} className={classes.section}>
+                        <Typography variant="headline">
+                            Denuncias
+                        </Typography>
+                        <Typography variant={"body1"}>
+                            It is a long established fact that a reader will be distracted by the readable
+                            content of a page
+                            when looking at its layout. The point of using Lorem Ipsum is that it has a
+                            more-or-less normal
+                            distribution of letters
+                        </Typography>
+                        <br/>
+                    </Grid>
+                </Grid>
+                <Grid container spacing={0} justify="center">
+                    <Grid item xs={12} className={classes.section}>
+                        <Paper className={classes.seccion}>
+                            <Grid container spacing={24}>
+                                <Grid item lg={3} md={3} sm={12}>
+                                    <Typography variant="headline" className={classes.titleBox}>
+                                        Servicios
+                                    </Typography>
+                                    <List component="nav">
+                                        <ListItem button>
+                                            <ListItemIcon>
+                                                <QuestionIcon/>
+                                            </ListItemIcon>
+                                            <ListItemText inset primary="Preguntas frecuentes"/>
+                                        </ListItem>
+                                        <ListItem button>
+                                            <ListItemIcon>
+                                                <DonoutIcon/>
+                                            </ListItemIcon>
+                                            <ListItemText inset primary="Informes"/>
+                                        </ListItem>
+                                    </List>
+                                </Grid>
+                                <Grid item xs={9} container direction="column" spacing={24}>
+                                    <Grid item>
+                                        <TextField
+                                            id="folio"
+                                            label="Folio denuncia"
+                                            className={classes.textField}
+                                            value={this.state.folio}
+                                            onChange={this.handleChange('folio')}
+                                            margin="normal"
+                                        />
+                                    </Grid>
+                                    <Grid item xs>
+                                        <Button variant="contained" color="primary">
+                                            Consultar
+                                        </Button>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Paper>
+                    </Grid>
+                </Grid>
+                <br/>
+
+                <div style={{ backgroundColor: '#fff'}}>
+                    <Grid container spacing={0} justify='center'>
+                        <Grid item xs={12} className={classes.section}>
+                            <PDNLinks/>
                         </Grid>
                     </Grid>
-                    <Paper className={classes.seccion}>
-                        <Grid container spacing={24}>
-                            <Grid item lg={3} md={3} sm={12}>
-                                <Typography variant="headline" className={classes.titleBox}>
-                                    Servicios
-                                </Typography>
-                                <List component="nav">
-                                    <ListItem button>
-                                        <ListItemIcon>
-                                            <QuestionIcon/>
-                                        </ListItemIcon>
-                                        <ListItemText inset primary="Preguntas frecuentes"/>
-                                    </ListItem>
-                                    <ListItem button>
-                                        <ListItemIcon>
-                                            <DonoutIcon/>
-                                        </ListItemIcon>
-                                        <ListItemText inset primary="Informes"/>
-                                    </ListItem>
-                                </List>
-                            </Grid>
-                            <Grid item xs={9} container direction="column" spacing={24}>
-                                <Grid item>
-                                    <TextField
-                                        id="folio"
-                                        label="Folio denuncia"
-                                        className={classes.textField}
-                                        value={this.state.folio}
-                                        onChange={this.handleChange('folio')}
-                                        margin="normal"
-                                    />
-                                </Grid>
-                                <Grid item xs>
-                                    <Button variant="contained" color="primary">
-                                        Consultar
-                                    </Button>
-                                </Grid>
-                            </Grid>
-                        </Grid>
-                    </Paper>
                 </div>
-                < PDNLinks/>
-                < Footer/>
+                <Footer/>
 
             </div>
         );
