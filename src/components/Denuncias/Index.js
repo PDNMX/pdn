@@ -105,36 +105,45 @@ class Index extends React.Component {
                 </Paper>
                 <div id={'container'} className={classes.bgContainer}>
                     <div className={classes.root}>
-                        <Grid container spacing={32}>
-                            <Grid item md={4} xs={12}>
-                                <CardMedia image={img1} className={classes.image} to="/formDenuncia" component={Link}/>
-                                <Typography variant="display1" className={classes.title}>
-                                    Presenta tu denuncia
-                                </Typography>
-                                <Typography  className={classes.textPrimary}>
-                                    Llena el formulario y obten tu folio con el cual podrás dar seguimiento a tu
-                                    denuncia.
-                                </Typography>
+
+                        <Grid container spacing={0} justify="center">
+
+                            <Grid item xs={12} className={classes.section}>
+
+
+                                <Grid container spacing={32}>
+                                    <Grid item md={4} xs={12}>
+                                        <CardMedia image={img1} className={classes.image} to="/formDenuncia" component={Link}/>
+                                        <Typography variant="display1" className={classes.title}>
+                                            Presenta tu denuncia
+                                        </Typography>
+                                        <Typography  className={classes.textPrimary}>
+                                            Llena el formulario y obten tu folio con el cual podrás dar seguimiento a tu
+                                            denuncia.
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item md={4} xs={12}>
+                                        <CardMedia image={img2} className={classes.image} to="/formConsultaDenuncia" component={Link}/>
+                                        <Typography variant="display1" className={classes.title}>
+                                            Consulta tu folio
+                                        </Typography>
+                                        <Typography  className={classes.textPrimary} >
+                                            Ten a la mano el número de folio con el que podrás consultar el estatus de tu
+                                            denuncia
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item md={4} xs={12}>
+                                        <CardMedia image={img3} className={classes.image} to="/informesDenuncias" component={Link}/>
+                                        <Typography variant="display1" className={classes.title}>
+                                            Informes
+                                        </Typography>
+                                        <Typography  className={classes.textPrimary}>
+                                            Visualizar informes
+                                        </Typography>
+                                    </Grid>
+                                </Grid>
                             </Grid>
-                            <Grid item md={4} xs={12}>
-                                <CardMedia image={img2} className={classes.image} to="/formConsultaDenuncia" component={Link}/>
-                                <Typography variant="display1" className={classes.title}>
-                                    Consulta tu folio
-                                </Typography>
-                                <Typography  className={classes.textPrimary} >
-                                    Ten a la mano el número de folio con el que podrás consultar el estatus de tu
-                                    denuncia
-                                </Typography>
-                            </Grid>
-                            <Grid item md={4} xs={12}>
-                                <CardMedia image={img3} className={classes.image} to="/informesDenuncias" component={Link}/>
-                                <Typography variant="display1" className={classes.title}>
-                                    Informes
-                                </Typography>
-                                <Typography  className={classes.textPrimary}>
-                                    Visualizar informes
-                                </Typography>
-                            </Grid>
+
                         </Grid>
                     </div>
                 </div>
