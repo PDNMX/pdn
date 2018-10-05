@@ -102,74 +102,83 @@ class Index extends React.Component {
         return (
             <div className={classes.root}>
                 <Header/>
-                <div className={classes.container2}>
-                    <Typography variant="title" className={classes.title}>
-                        Servidores que intervienen en procesos de contratación
-                    </Typography>
-                    <br/><br/>
-                    <Grid container spacing={32}>
-                        <Grid item  xs={12}  >
-                            <Typography className={classes.textDark}>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                irure
-                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                pariatur.
-                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                                mollit anim id est laborum.
-                            </Typography>
-                        </Grid>
-                        <Grid item xs={12}>
-                            <ExpansionPanel classes={{root: classes.bgPanelLight}} defaultExpanded={true}>
-                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>} classes={{content: classes.summary}}>
-                                    <ViewListIcon/>
-                                    <Typography>
-                                        Ver tabla
-                                    </Typography>
-                                </ExpansionPanelSummary>
-                                <ExpansionPanelDetails>
-                                    <TablaServidores/>
-                                </ExpansionPanelDetails>
-                            </ExpansionPanel>
-                        </Grid>
-                    </Grid>
 
-                </div>
-                <div name="container2" className={classes.container1}>
-                    <Typography variant={'title'} className={classes.title}>Particulares inhabilitados</Typography>
-                    <br/><br/>
-                    <Grid container spacing={32}>
-                        <Grid item  xs={12}>
-                            <Typography className={classes.textLight}>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                irure
-                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                pariatur.
-                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                                mollit anim id est laborum.
-                            </Typography>
-                        </Grid>
-                        <Grid item  xs={12}>
-                            <ExpansionPanel classes={{root: classes.bgPanelDark}} defaultExpanded={true}>
-                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}
-                                                       classes={{content: classes.summary}}>
-                                    <ViewListIcon/>
-                                    <Typography  className={classes.textLight}>
-                                        Ver Tabla
-                                    </Typography>
-                                </ExpansionPanelSummary>
-                                <ExpansionPanelDetails>
-                                    <TablaParticulares/>
-                                </ExpansionPanelDetails>
-                            </ExpansionPanel>
-                        </Grid>
+
+                <Grid container spacing={0} justify='center'>
+                    <Grid item xs={12} className={classes.section}>
+                        <Typography variant="title" className={classes.title}>
+                            Servidores que intervienen en procesos de contratación
+                        </Typography>
+                        <br/>
+                        <br/>
+
+                        <Typography className={classes.textDark}>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                            irure
+                            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                            pariatur.
+                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                            mollit anim id est laborum.
+                        </Typography>
                     </Grid>
 
 
-                </div>
+                    <Grid item xs={12} className={classes.section}>
+                        <ExpansionPanel classes={{root: classes.bgPanelLight}} defaultExpanded={true}>
+                            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>} classes={{content: classes.summary}}>
+                                <ViewListIcon/>
+                                <Typography>
+                                    Ver tabla
+                                </Typography>
+                            </ExpansionPanelSummary>
+                            <ExpansionPanelDetails>
+                                <TablaServidores/>
+                            </ExpansionPanelDetails>
+                        </ExpansionPanel>
+
+                    </Grid>
+
+                </Grid>
+
+
+
+                <Grid container spacing={0} justify='center'>
+                    <Grid item xs={12} className={classes.section}>
+
+                        <Typography variant={'title'} className={classes.title}>Particulares inhabilitados</Typography>
+                        <br/>
+                        <br/>
+
+                        <Typography className={classes.textLight}>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                            irure
+                            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                            pariatur.
+                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                            mollit anim id est laborum.
+                        </Typography>
+                    </Grid>
+
+                    <Grid item  xs={12} className={classes.section}>
+                        <ExpansionPanel classes={{root: classes.bgPanelDark}} defaultExpanded={true}>
+                            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}
+                                                   classes={{content: classes.summary}}>
+                                <ViewListIcon/>
+                                <Typography  className={classes.textLight}>
+                                    Ver Tabla
+                                </Typography>
+                            </ExpansionPanelSummary>
+                            <ExpansionPanelDetails>
+                                <TablaParticulares/>
+                            </ExpansionPanelDetails>
+                        </ExpansionPanel>
+                    </Grid>
+                </Grid>
+
 
                 <div style={{ backgroundColor: '#fff'}}>
                     <Grid container spacing={0} justify='center'>
