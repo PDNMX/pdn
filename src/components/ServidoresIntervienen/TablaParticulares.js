@@ -345,6 +345,7 @@ class EnhancedTable extends React.Component {
         });
     };
     handleSearchAPI = (typeSearch) => {
+        this.setState({loading: true});
         let {institucion, nombreParticular} = this.state;
         const URI = 'https://204.48.18.61/api/proveedores_sancionados?';
         let vUri = URI + ((typeSearch === 'FIELD_FILTER'||typeSearch==='CHANGE_PAGE') ? ('limit=' + this.state.rowsPerPage + '&&offset=' + (this.state.rowsPerPage * this.state.page) + '&&'):'');

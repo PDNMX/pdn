@@ -293,6 +293,7 @@ class EnhancedTable extends React.Component {
         });
     };
     handleSearchAPI = (typeSearch) => {
+        this.setState({loading: true});
         let {procedimiento, institucion, nombreServidor} = this.state;
         const URI = 'https://204.48.18.61/api/reniresp?';
         let vUri = URI+((typeSearch === 'FIELD_FILTER'||typeSearch==='CHANGE_PAGE') ?('limit='+this.state.rowsPerPage+'&&offset='+(this.state.rowsPerPage*this.state.page)+'&&'):'');
@@ -329,8 +330,6 @@ class EnhancedTable extends React.Component {
     };
 
     handleChangeCampo = (varState, event) => {
-        console.log("Varstate: ",varState);
-        console.log("Event: ",event);
         this.setState({loading: true, [varState]: event.target ? event.target.value : event.value}, () => {
             this.handleSearchAPI('FIELD_FILTER');
         });
