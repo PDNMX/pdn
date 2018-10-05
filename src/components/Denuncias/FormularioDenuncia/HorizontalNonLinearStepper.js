@@ -134,6 +134,7 @@ class HorizontalNonLinearStepper extends React.Component {
          let denuncia = this.props.denuncia;
          denuncia.hora_hecho = null;
          denuncia.folio = uuidv1();
+         denuncia.edad_solicitante = denuncia.edad_solicitante? denuncia.edad_solicitante : 0;
          console.log("Denuncia: ",denuncia);
 
          let options = {
@@ -266,7 +267,7 @@ class HorizontalNonLinearStepper extends React.Component {
                             {this.saveDenuncia()}
 
                             <Typography className={classes.instructions}>
-                                Folio denuncia:{this.getFolio()} , ¿Desea enviar nueva denuncia?
+                                Folio denuncia :{denuncia.folio} , ¿Desea enviar nueva denuncia?
                             </Typography>
                             <Button onClick={this.handleReset}>Nueva</Button>
                         </div>
