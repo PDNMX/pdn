@@ -15,6 +15,8 @@ import Paper from "@material-ui/core/Paper/Paper";
 import SelectReact from "react-select";
 import './selectReact.css';
 import Typography from "@material-ui/core/Typography/Typography";
+import IconReplay from "@material-ui/icons/Replay";
+import Tooltip from "@material-ui/core/Tooltip/Tooltip";
 
 const styles = theme => ({
     container: {
@@ -75,6 +77,11 @@ const styles = theme => ({
     },
     labelCustom: {
         color: theme.palette.fontLight.color,
+    },
+    centrado:{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center'
     }
 });
 
@@ -181,6 +188,12 @@ class BusquedaServidor extends React.Component {
         });
     }
 
+    limpiarBusqueda = ()=>{
+        this.props.handleChangeCampo('nombreServidor');
+        this.props.handleChangeCampo('procedimiento');
+        this.props.handleChangeCampo('institucion');
+    };
+
     render() {
         const {classes, handleChangeCampo, nombreServidor, procedimiento, institucion, theme} = this.props;
         const selectStyles = {
@@ -264,6 +277,11 @@ class BusquedaServidor extends React.Component {
                         />
 
                     </FormControl>
+                </Grid>
+                <Grid item xs={12} md={3} className={classes.centrado}>
+                    <Tooltip title={'Limpiar'}>
+                        <IconReplay className={classes.fontLight} onClick={this.limpiarBusqueda}/>
+                    </Tooltip>
                 </Grid>
             </Grid>
 

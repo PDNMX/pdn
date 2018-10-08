@@ -11,6 +11,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 import rp from "request-promise";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid/Grid";
+import IconReplay from "@material-ui/icons/Replay";
+import Tooltip from "@material-ui/core/Tooltip/Tooltip";
 
 
 const styles = theme => ({
@@ -73,7 +75,12 @@ const styles = theme => ({
     },
     labelCustom: {
         color: theme.palette.fontLight.color,
-    }
+    },
+    centrado:{
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center'
+}
 });
 
 
@@ -177,6 +184,11 @@ class BusquedaParticular extends React.Component {
 
     }
 
+    limpiarBusqueda = ()=>{
+        this.props.handleChangeCampo('nombreParticular');
+        this.props.handleChangeCampo('institucion');
+
+    };
 
     render() {
         let {classes, handleChangeCampo, nombreParticular, institucion, theme} = this.props;
@@ -200,18 +212,18 @@ class BusquedaParticular extends React.Component {
                             options={this.state.suggestions}
                             components={components}
                             value={{value: institucion, label: institucion}}
-                            onChange={handleChangeCampo('institucion')}
+                            onChange={(e) => handleChangeCampo('institucion',e)}
                             id="campoSelectInstitucion"
                         />
                     </FormControl>
                 </Grid>
-                <Grid item md={6} xs={12}>
+                <Grid item md={5} xs={12}>
                     <FormControl className={classes.formControl}>
                         <TextField
                             id="search"
                             label="Nombre del particular"
                             type="search"
-                            onChange={handleChangeCampo('nombreParticular')}
+                            onChange={(e) => handleChangeCampo('nombreParticular',e)}
                             value={nombreParticular}
                             InputProps={{
                                 className: classes.fontLight,
@@ -228,6 +240,11 @@ class BusquedaParticular extends React.Component {
                             }}
                         />
                     </FormControl>
+                </Grid>
+                <Grid item xs={12} md={1} className={classes.centrado}>
+                    <Tooltip title={'Limpiar'}>
+                        <IconReplay className={classes.fontLight} onClick={this.limpiarBusqueda}/>
+                    </Tooltip>
                 </Grid>
             </Grid>
 

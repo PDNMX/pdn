@@ -331,7 +331,7 @@ class EnhancedTable extends React.Component {
     };
 
     handleChangeCampo = (varState, event) => {
-        this.setState({loading: true, [varState]: event.target ? event.target.value : event.value}, () => {
+        this.setState({loading: true, [varState]: event?(event.target ? event.target.value : event.value):''}, () => {
             this.handleSearchAPI('FIELD_FILTER');
         });
     };
