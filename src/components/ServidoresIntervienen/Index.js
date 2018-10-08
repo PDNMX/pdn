@@ -13,16 +13,27 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Grid from "@material-ui/core/Grid/Grid";
 import ViewListIcon from "@material-ui/icons/ViewList";
-
+import Paper from "@material-ui/core/Paper/Paper";
+import CardMedia from "@material-ui/core/CardMedia/CardMedia";
+import img1 from "../../assets/img/contrataciones.jpg";
+import {Link} from "react-router-dom";
+import img2 from "../../assets/img/sancionadosl.jpg";
+import img3 from "../../assets/img/fiscal.jpg";
 
 
 const styles = theme => ({
     root: {
         flexGrow: 1,
-        backgroundColor: '#e5e5e5',
-        display: 'flex',
-        flexDirection: 'column',
-        minHeight: '100vh'
+        [theme.breakpoints.up('sm')]: {
+            marginLeft: '150px',
+            marginRight: '150px',
+
+        },
+        [theme.breakpoints.down('sm')]: {
+            marginLeft: theme.spacing.unit,
+            marginRight: theme.spacing.unit,
+
+        }
     },
     container1: {
         flexGrow: 1,
@@ -31,7 +42,7 @@ const styles = theme => ({
     title: {
         color: theme.palette.textPrincipal.color,
         textAlign: 'center',
-        textDecoration : 'underline'
+        marginTop: theme.spacing.unit * 2,
     },
     summary: {
         color: theme.palette.primary.main,
@@ -57,99 +68,143 @@ const styles = theme => ({
     },
     section: {
         maxWidth: '1024px'
+    },
+    bgImg: {
+        height: '300px',
+        backgroundImage: 'url(contrataciones.jpg)',
+        backgroundPosition: 'bottom',
+        backgroundRepeat: 'no-repeat',
+        textAlign: 'left',
+        backgroundSize: 'cover',
+        width: '100%'
+    },
+    container: {
+        padding: theme.spacing.unit * 2
+    },
+    seccion: {
+        backgroundColor: theme.palette.backDark.color
+    },
+    image: {
+        width: '50%',
+        height: '150px',
+        borderRadius: '50px',
+        display: 'inline-block'
+    },
+    bgContainer: {
+        backgroundColor: theme.palette.backLight.color,
+        paddingTop: theme.spacing.unit * 5,
+        paddingBottom: theme.spacing.unit * 5
+    },
+    center: {
+        textAlign: 'center'
     }
 
 });
 
 class Index extends React.Component {
+    state = {
+        idContent: 0
+    };
+    changeContent = id => {
+        this.setState({idContent: id});
+    };
+
     render() {
         const {classes} = this.props;
         return (
-            <div className={classes.root}>
+            <div>
                 <Header/>
-
-
-                <div className={classes.container2}>
-                    <Grid container spacing={0} justify='center'>
-                        <Grid item xs={12} className={classes.section}>
-                            <Typography variant="title" className={classes.title}>
-                                Servidores que intervienen en procesos de contratación
+                <Paper className={classes.seccion}>
+                    <Grid container>
+                        <Grid item md={8} sm={12} className={classes.bgImg}/>
+                        <Grid item md={4} sm={12} className={classes.container}>
+                            <Typography variant="display1" className={classes.title}>
+                                Servidores que intervienen en procesos de contración
                             </Typography>
-                            <br/>
-                            <br/>
-
-                            <Typography className={classes.textDark}>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                irure
-                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                pariatur.
-                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                                mollit anim id est laborum.
+                            <Typography variant="body1" className={classes.textLight}>
+                                It is a long established fact that a reader will be distracted by the readable
+                                content of a page
+                                when looking at its layout. The point of using Lorem Ipsum is that it has a
+                                more-or-less normal
+                                distribution of letters
                             </Typography>
-                        </Grid>
-
-
-                        <Grid item xs={12} className={classes.section}>
-                            <ExpansionPanel classes={{root: classes.bgPanelLight}} defaultExpanded={true}>
-                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>} classes={{content: classes.summary}}>
-                                    <ViewListIcon/>
-                                    <Typography>
-                                        Ver tabla
-                                    </Typography>
-                                </ExpansionPanelSummary>
-                                <ExpansionPanelDetails>
-                                    <TablaServidores/>
-                                </ExpansionPanelDetails>
-                            </ExpansionPanel>
-
-                        </Grid>
-
-                    </Grid>
-                </div>
-
-
-
-                <div className={classes.container1}>
-                    <Grid container spacing={0} justify='center'>
-                        <Grid item xs={12} className={classes.section}>
-
-                            <Typography variant={'title'} className={classes.title}>Particulares inhabilitados</Typography>
-                            <br/>
-                            <br/>
-
-                            <Typography className={classes.textLight}>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                irure
-                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                pariatur.
-                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                                mollit anim id est laborum.
-                            </Typography>
-                        </Grid>
-
-                        <Grid item  xs={12} className={classes.section}>
-                            <ExpansionPanel classes={{root: classes.bgPanelDark}} defaultExpanded={true}>
-                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}
-                                                       classes={{content: classes.summary}}>
-                                    <ViewListIcon/>
-                                    <Typography  className={classes.textLight}>
-                                        Ver Tabla
-                                    </Typography>
-                                </ExpansionPanelSummary>
-                                <ExpansionPanelDetails>
-                                    <TablaParticulares/>
-                                </ExpansionPanelDetails>
-                            </ExpansionPanel>
                         </Grid>
                     </Grid>
+                </Paper>
+                <div id={'container'} className={classes.bgContainer}>
+                    <div className={classes.root}>
+                        <Grid container spacing={0} justify="center">
+                            <Grid item xs={12} className={classes.section}>
+                                <Grid container spacing={16}>
+                                    <Grid item md={4} xs={12} className={classes.center}>
+                                        <CardMedia image={img1} className={classes.image}
+                                                   onClick={() => this.changeContent(1)}/>
+                                        <Typography variant="title" className={classes.title}>
+                                            Servidores que intervienen en procesos de contratación
+                                        </Typography>
+                                        <Typography className={classes.textPrimary}>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                            tempor
+                                            incididunt ut labore et dolore magna aliqua.
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item md={4} xs={12} className={classes.center}>
+                                        <CardMedia image={img2} className={classes.image}
+                                                   onClick={() => this.changeContent(2)}/>
+                                        <Typography variant="title" className={classes.title}>
+                                            Particulares inhabilitados
+                                        </Typography>
+                                        <Typography className={classes.textPrimary}>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                            tempor
+                                            incididunt ut labore et dolore magna aliqua.
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item md={4} xs={12} className={classes.center}>
+                                        <CardMedia image={img3} className={classes.image}
+                                                   onClick={() => this.changeContent(3)}/>
+                                        <Typography variant="title" className={classes.title}>
+                                            Visualizaciones
+                                        </Typography>
+                                        <Typography className={classes.textPrimary}>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                            tempor
+                                            incididunt ut labore et dolore magna aliqua.
+                                        </Typography>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+
+                    </div>
+                </div>
+                <div className={classes.bgPanelDark}>
+                    <div className={classes.root}>
+                        <Grid container spacing={0} justify="center">
+                            <Grid item xs={12} className={classes.section}>
+                                <Grid container>
+                                    {this.state.idContent === 1 &&
+                                    <Grid item xs={12}>
+                                        <Typography variant={'title'} className={classes.title}>Servidores que intervienen en
+                                            procesos de contratación</Typography>
+                                        <TablaServidores/>
+                                    </Grid>
+                                    }
+                                    {this.state.idContent === 2 &&
+                                    <Grid item xs={12}>
+                                        <Typography variant={'title'} className={classes.title}>Particulares
+                                            inhabilitados</Typography>
+                                        <TablaParticulares/>
+                                    </Grid>
+                                    }
+                                </Grid>
+                            </Grid>
+                        </Grid>
+
+                    </div>
                 </div>
 
-
-                <div style={{ backgroundColor: '#fff'}}>
+                <div style={{backgroundColor: '#fff'}}>
                     <Grid container spacing={0} justify='center'>
                         <Grid item xs={12} className={classes.section}>
                             <PDNLinks/>
