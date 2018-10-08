@@ -23,7 +23,7 @@ let counter = 0;
 
 let createData = (item) => {
     counter += 1;
-    let leyenda = "NO EXISTE DATO EN LA BASE DE DATOS RENIRESP";
+    let leyenda = "NO EXISTE DATO EN LA BASE DE DATOS SFP";
     return {
         id: counter,
         proveedor: item.proveedor_o_contratista ? item.proveedor_o_contratista : leyenda,
@@ -172,7 +172,7 @@ class EnhancedTableHead extends React.Component {
                                     sortDirection={orderBy === column.id ? order : false}
                                 >
                                     <Tooltip
-                                        title="Sort"
+                                        title="Ordenar"
                                         placement={column.numeric ? 'bottom-end' : 'bottom-start'}
                                         enterDelay={300}
                                     >
@@ -333,7 +333,7 @@ class EnhancedTable extends React.Component {
 
     getTotalRows = (URL) => {
         let options = {
-            uri : URL ? URL : 'https://204.48.18.61/api/proveedores_sancionados?sentido_de_resolucion=like.*INHABILITACI%C3%93N*&&select=count=eq.exact',
+            uri : URL ? URL : 'https://plataformadigitalnacional.org/api/proveedores_sancionados?sentido_de_resolucion=like.*INHABILITACI%C3%93N*&&select=count=eq.exact',
             json : true
         };
         rp(options)
@@ -348,7 +348,7 @@ class EnhancedTable extends React.Component {
     handleSearchAPI = (typeSearch) => {
         this.setState({loading: true});
         let {institucion, nombreParticular} = this.state;
-        const URI = 'https://204.48.18.61/api/proveedores_sancionados?sentido_de_resolucion=like.*INHABILITACIÓN*&&';
+        const URI = 'https://plataformadigitalnacional.org/api/proveedores_sancionados?sentido_de_resolucion=like.*INHABILITACIÓN*&&';
         let vUri = URI + ((typeSearch === 'FIELD_FILTER'||typeSearch==='CHANGE_PAGE') ? ('limit=' + this.state.rowsPerPage + '&&offset=' + (this.state.rowsPerPage * this.state.page) + '&&'):'');
 
         vUri = vUri + ((institucion) ? 'dependencia=eq.' + institucion + '&&' : '');

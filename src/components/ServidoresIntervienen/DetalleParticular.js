@@ -6,9 +6,20 @@ import Modal from '@material-ui/core/Modal';
 import Grid from "@material-ui/core/Grid/Grid";
 import TextField from "@material-ui/core/TextField/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment/InputAdornment";
-import IconFlecha from '@material-ui/icons/KeyboardArrowRight';
+import IconHelp from '@material-ui/icons/HelpOutline';
 import CloseButton from '@material-ui/icons/Close'
 import IconButton from "@material-ui/core/IconButton/IconButton";
+import glosario from "./glosario.json";
+import DialogTitle from "@material-ui/core/DialogTitle/DialogTitle";
+import DialogContent from "@material-ui/core/DialogContent/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText/DialogContentText";
+import DialogActions from "@material-ui/core/DialogActions/DialogActions";
+import Button from "@material-ui/core/Button/Button";
+
+function getGlosarioItem(id){
+    return glosario.particulares[id];
+}
+
 function getModalStyle() {
     const top = 50 ;
     const left = 50 ;
@@ -62,13 +73,65 @@ const styles = theme => ({
         color : theme.palette.primary.main,
 
     },
+    paperGlosario: {
+        position: 'absolute',
+        backgroundColor: theme.palette.background.paper,
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing.unit * 4,
+        [theme.breakpoints.up('sm')]: {
+            width: theme.spacing.unit * 80,
+        },
+        [theme.breakpoints.down('sm')]: {
+            width: '80%',
+            height: '80%',
+            overflowY: 'scroll',
+        },
+        [theme.breakpoints.up('xl')]: {
+            width: theme.spacing.unit * 130,
+        },
+    },
 });
 
 class DetalleParticular extends React.Component {
+    state ={
+        open : false,
+        id : 0
+    };
+
+    openPoper = () => {
+      this.setState(state => ({
+          open : !state.open
+      }))
+    };
+
+    controlGlosario = (id) => {
+        this.setState({id : id});
+    };
+
     render() {
         const {classes, handleClose, particular, control} = this.props;
+        const {open,id} = this.state;
         return (
             <div>
+                <Modal
+                    aria-labelledby="simple-modal-title"
+                    aria-describedby="simple-modal-description"
+                    open={open}>
+                    <div style={getModalStyle()} className={classes.paperGlosario}>
+                        <DialogTitle>{getGlosarioItem(id).title}</DialogTitle>
+                        <DialogContent>
+                            <DialogContentText>
+                                {getGlosarioItem(id).description}
+                            </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={this.openPoper} color="primary">
+                                Cerrar
+                            </Button>
+                        </DialogActions>
+
+                    </div>
+                </Modal>
                 <Modal
                     aria-labelledby="simple-modal-title"
                     aria-describedby="simple-modal-description"
@@ -97,9 +160,9 @@ class DetalleParticular extends React.Component {
                                         InputProps={{
                                             readOnly: true,
                                             className:classes.fontSmall,
-                                            startAdornment: (
-                                                <InputAdornment position="start">
-                                                    <IconFlecha/>
+                                            endAdornment: (
+                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(0)}}>
+                                                    <IconHelp/>
                                                 </InputAdornment>
                                             )
                                         }}
@@ -116,9 +179,9 @@ class DetalleParticular extends React.Component {
                                         InputProps={{
                                             readOnly: true,
                                             className:classes.fontSmall,
-                                            startAdornment: (
-                                                <InputAdornment position="start">
-                                                    <IconFlecha/>
+                                            endAdornment: (
+                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(1)}}>
+                                                    <IconHelp/>
                                                 </InputAdornment>
                                             )
                                         }}
@@ -134,9 +197,9 @@ class DetalleParticular extends React.Component {
                                         InputProps={{
                                             readOnly: true,
                                             className:classes.fontSmall,
-                                            startAdornment: (
-                                                <InputAdornment position="start">
-                                                    <IconFlecha/>
+                                            endAdornment: (
+                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(2)}}>
+                                                    <IconHelp/>
                                                 </InputAdornment>
                                             )
                                         }}
@@ -152,9 +215,9 @@ class DetalleParticular extends React.Component {
                                         InputProps={{
                                             readOnly: true,
                                             className:classes.fontSmall,
-                                            startAdornment: (
-                                                <InputAdornment position="start">
-                                                    <IconFlecha/>
+                                            endAdornment: (
+                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(3)}}>
+                                                    <IconHelp/>
                                                 </InputAdornment>
                                             )
                                         }}
@@ -172,9 +235,9 @@ class DetalleParticular extends React.Component {
                                         InputProps={{
                                             readOnly: true,
                                             className:classes.fontSmall,
-                                            startAdornment: (
-                                                <InputAdornment position="start">
-                                                    <IconFlecha/>
+                                            endAdornment: (
+                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(4)}}>
+                                                    <IconHelp/>
                                                 </InputAdornment>
                                             )
                                         }}
@@ -190,9 +253,9 @@ class DetalleParticular extends React.Component {
                                         InputProps={{
                                             readOnly: true,
                                             className:classes.fontSmall,
-                                            startAdornment: (
-                                                <InputAdornment position="start">
-                                                    <IconFlecha/>
+                                            endAdornment: (
+                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(5)}}>
+                                                    <IconHelp/>
                                                 </InputAdornment>
                                             )
                                         }}
@@ -208,9 +271,9 @@ class DetalleParticular extends React.Component {
                                         InputProps={{
                                             readOnly: true,
                                             className:classes.fontSmall,
-                                            startAdornment: (
-                                                <InputAdornment position="start">
-                                                    <IconFlecha/>
+                                            endAdornment: (
+                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(6)}}>
+                                                    <IconHelp/>
                                                 </InputAdornment>
                                             )
                                         }}
@@ -226,9 +289,9 @@ class DetalleParticular extends React.Component {
                                         InputProps={{
                                             readOnly: true,
                                             className:classes.fontSmall,
-                                            startAdornment: (
-                                                <InputAdornment position="start">
-                                                    <IconFlecha/>
+                                            endAdornment: (
+                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(7)}}>
+                                                    <IconHelp/>
                                                 </InputAdornment>
                                             )
                                         }}

@@ -166,7 +166,7 @@ class BusquedaServidor extends React.Component {
     componentDidMount() {
         let sug = [ {value : '' ,label:'TODAS'}];
         let options = {
-            uri: 'https://204.48.18.61/api/instituciones?order=institucion.asc',
+            uri: 'https://plataformadigitalnacional.org/api/instituciones?order=institucion.asc',
             json: true
         };
         rp(options)

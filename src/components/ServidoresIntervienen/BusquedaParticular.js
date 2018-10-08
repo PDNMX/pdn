@@ -159,7 +159,7 @@ class BusquedaParticular extends React.Component {
         let id = 0;
 
         let options = {
-            uri: 'https://204.48.18.61/api/instituciones?order=institucion.asc',
+            uri: 'https://plataformadigitalnacional.org/api/instituciones?order=institucion.asc',
             json: true
         };
         rp(options)
