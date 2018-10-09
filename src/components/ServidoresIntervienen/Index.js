@@ -7,16 +7,10 @@ import PDNLinks from '../PDNLinks/PDNLinks';
 import Header from "../PDNAppBar/PDNAppBar";
 import TablaServidores from "./TablaServidores";
 import TablaParticulares from "./TablaParticulares";
-import ExpansionPanel from "@material-ui/core/ExpansionPanel/ExpansionPanel";
-import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails/ExpansionPanelDetails";
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Grid from "@material-ui/core/Grid/Grid";
-import ViewListIcon from "@material-ui/icons/ViewList";
 import Paper from "@material-ui/core/Paper/Paper";
 import CardMedia from "@material-ui/core/CardMedia/CardMedia";
 import img1 from "../../assets/img/contrataciones.jpg";
-import {Link} from "react-router-dom";
 import img2 from "../../assets/img/sancionadosl.jpg";
 import img3 from "../../assets/img/fiscal.jpg";
 
@@ -131,11 +125,11 @@ class Index extends React.Component {
                         </Grid>
                     </Grid>
                 </Paper>
-                <div id={'container'} className={classes.bgContainer}>
+                <div className={classes.bgContainer}>
                     <div className={classes.root}>
                         <Grid container spacing={0} justify="center">
                             <Grid item xs={12} className={classes.section}>
-                                <Grid container spacing={16}>
+                                <Grid container spacing={0}>
                                     <Grid item md={4} xs={12} className={classes.center}>
                                         <CardMedia image={img1} className={classes.image}
                                                    onClick={() => this.changeContent(1)}/>
@@ -173,20 +167,20 @@ class Index extends React.Component {
                                         </Typography>
                                     </Grid>
                                 </Grid>
+
                             </Grid>
                         </Grid>
-
                     </div>
                 </div>
                 <div className={classes.bgPanelDark}>
                     <div className={classes.root}>
-                        <Grid container spacing={0} justify="center">
+                        <Grid container justify={'center'} spacing={0}>
                             <Grid item xs={12} className={classes.section}>
-                                <Grid container>
+                                <Grid container spacing={0}>
                                     {this.state.idContent === 1 &&
                                     <Grid item xs={12}>
-                                        <Typography variant={'title'} className={classes.title}>Servidores que intervienen en
-                                            procesos de contratación</Typography>
+                                        <Typography variant={'title'} className={classes.title}>
+                                            Servidores que intervienen en procesos de contratación</Typography>
                                         <TablaServidores/>
                                     </Grid>
                                     }

@@ -54,10 +54,38 @@ const columnData = [
     {id: 'institucion', numeric: false, disablePadding: false, label: 'Institución', position: 2, mostrar: true},
     {id: 'puesto', numeric: false, disablePadding: false, label: 'Puesto', position: 3, mostrar: true},
     {id: 'tipoArea', numeric: false, disablePadding: false, label: 'Tipo de área', position: 4, mostrar: true},
-    {id: 'contrataciones', numeric: false, disablePadding: false,label: 'Contrataciones públicas',position: 5,mostrar: false},
-    {id: 'concesionesLicencias',numeric: false,disablePadding: false,label: 'Concesiones, licencias, permisos, autorizaciones y prórrogas',position: 6,mostrar: false},
-    {id: 'enajenacion',numeric: false,disablePadding: false,label: 'Enajenación de bienes muebles',position: 7,mostrar: false},
-    {id: 'dictamenes',numeric: false,disablePadding: false,label: 'Asignación y emisión de dictámenes de avalúos nacionales',position: 8,mostrar: false},
+    {
+        id: 'contrataciones',
+        numeric: false,
+        disablePadding: false,
+        label: 'Contrataciones públicas',
+        position: 5,
+        mostrar: false
+    },
+    {
+        id: 'concesionesLicencias',
+        numeric: false,
+        disablePadding: false,
+        label: 'Concesiones, licencias, permisos, autorizaciones y prórrogas',
+        position: 6,
+        mostrar: false
+    },
+    {
+        id: 'enajenacion',
+        numeric: false,
+        disablePadding: false,
+        label: 'Enajenación de bienes muebles',
+        position: 7,
+        mostrar: false
+    },
+    {
+        id: 'dictamenes',
+        numeric: false,
+        disablePadding: false,
+        label: 'Asignación y emisión de dictámenes de avalúos nacionales',
+        position: 8,
+        mostrar: false
+    },
 ];
 
 const styles = theme => ({
@@ -80,17 +108,22 @@ const styles = theme => ({
         top: 0,
         bottom: 0
     },
-    container : {
-        width : '100%',
-        borderRadius : '6px',
-        display: 'flex',
-        position : 'relative',
-        marginTop : '30px',
-        marginBottom : '30px',
-        flexDirection : 'column',
+    container: {
+        marginTop: '30px',
+        marginBottom: '30px',
     },
-    tableHead : {
-        color : theme.palette.primary.dark
+    tableHead: {
+        color: theme.palette.primary.dark
+    },
+    section: {
+        maxWidth: '1024px',
+        overflowX: 'auto'
+    },
+    table: {
+        tableLayout: 'fixed',
+    },
+    tablePagination:{
+        overflowX : 'auto',
     }
 
 });
@@ -101,7 +134,7 @@ class EnhancedTableHead extends React.Component {
     };
 
     render() {
-        const {order, orderBy,classes} = this.props;
+        const {order, orderBy, classes} = this.props;
         return (
             <TableHead>
                 <TableRow>
@@ -153,24 +186,24 @@ EnhancedTableHead = withStyles(styles)(EnhancedTableHead);
 
 const toolbarStyles = theme => ({
     root: {
-        width : '100%',
+        width: '100%',
         padding: theme.spacing.unit,
     },
     toolBarStyle: {
-        backgroundColor : 'transparent',
-        position : 'relative',
-        padding : 0,
+        backgroundColor: 'transparent',
+        position: 'relative',
+        padding: 0,
         margin: '0 15px',
         zIndex: 3,
-        borderRadius : theme.spacing.unit,
+        borderRadius: theme.spacing.unit,
     },
-    toolBarFloat : {
-        padding : '15px',
-        marginTop : '-30px',
-       borderRadius:  '3px',
-        background : 'linear-gradient(60deg, #295c53, #8fe19f)',
-        boxShadow : '0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgb(41, 92, 83)',
-        width : '100%',
+    toolBarFloat: {
+        padding: '15px',
+        marginTop: '-30px',
+        borderRadius: '3px',
+        background: 'linear-gradient(60deg, #295c53, #8fe19f)',
+        boxShadow: '0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgb(41, 92, 83)',
+        width: '100%',
 
     },
     spacer: {
@@ -194,7 +227,8 @@ let EnhancedTableToolbar = props => {
         <Toolbar className={classes.toolBarStyle}>
             <div className={classes.toolBarFloat}>
                 <BusquedaServidor handleChangeCampo={handleChangeCampo}
-                                  nombreServidor={nombreServidor} procedimiento={procedimiento} institucion={institucion}/>
+                                  nombreServidor={nombreServidor} procedimiento={procedimiento}
+                                  institucion={institucion}/>
             </div>
         </Toolbar>
     );
@@ -231,8 +265,8 @@ class EnhancedTable extends React.Component {
             elementoSeleccionado: {},
             institucion: null,
             loading: true,
-            totalRows:0,
-            filterDataAll : [],
+            totalRows: 0,
+            filterDataAll: [],
 
         };
 
@@ -265,24 +299,24 @@ class EnhancedTable extends React.Component {
     };
 
     handleChangePage = (event, page) => {
-        this.setState({page},()=>{
+        this.setState({page}, () => {
             this.handleSearchAPI('CHANGE_PAGE');
         });
 
     };
 
     handleChangeRowsPerPage = event => {
-        this.setState({rowsPerPage: event.target.value} ,()=>{
+        this.setState({rowsPerPage: event.target.value}, () => {
             this.handleSearchAPI('FIELD_FILTER');
         });
     };
 
     isSelected = id => this.state.selected.indexOf(id) !== -1;
 
-    getTotalRows=(URL)=>{
+    getTotalRows = (URL) => {
         let options = {
-            uri : URL ? URL : 'https://plataformadigitalnacional.org/api/reniresp?select=count=eq.exact',
-            json : true
+            uri: URL ? URL : 'https://plataformadigitalnacional.org/api/reniresp?select=count=eq.exact',
+            json: true
         };
         rp(options)
             .then(data => {
@@ -297,16 +331,16 @@ class EnhancedTable extends React.Component {
         this.setState({loading: true});
         let {procedimiento, institucion, nombreServidor} = this.state;
         const URI = 'https://plataformadigitalnacional.org/api/reniresp?';
-        let vUri = URI+((typeSearch === 'FIELD_FILTER'||typeSearch==='CHANGE_PAGE') ?('limit='+this.state.rowsPerPage+'&&offset='+(this.state.rowsPerPage*this.state.page)+'&&'):'');
+        let vUri = URI + ((typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? ('limit=' + this.state.rowsPerPage + '&&offset=' + (this.state.rowsPerPage * this.state.page) + '&&') : '');
 
         vUri = vUri + ((procedimiento && procedimiento > 0) ? 'id_procedimiento=eq.' + procedimiento + '&&' : '');
         vUri = vUri + ((institucion) ? 'institucion=eq.' + institucion + '&&' : '');
         vUri = vUri + ((nombreServidor) ? 'nombre=like.*' + nombreServidor.toUpperCase() + '*' : '');
 
-        if(typeSearch==='FIELD_FILTER')this.getTotalRows(vUri+'&&select=count=eq.exact');
+        if (typeSearch === 'FIELD_FILTER') this.getTotalRows(vUri + '&&select=count=eq.exact');
 
         let options = {
-            uri: typeSearch==='ALL'? URI : vUri,
+            uri: typeSearch === 'ALL' ? URI : vUri,
             json: true
         };
 
@@ -315,10 +349,13 @@ class EnhancedTable extends React.Component {
                 let dataAux = data.map(item => {
                     return createData(item);
                 });
-                typeSearch === 'ALL' ? this.setState({data: dataAux, loading:false},()=>{
+                typeSearch === 'ALL' ? this.setState({data: dataAux, loading: false}, () => {
                     this.btnDownloadAll.triggerDown();
-                }) : (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.setState({filterData: dataAux, loading: false}) :
-                    this.setState({filterDataAll : dataAux, loading : false}, () => {
+                }) : (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.setState({
+                        filterData: dataAux,
+                        loading: false
+                    }) :
+                    this.setState({filterDataAll: dataAux, loading: false}, () => {
                         this.child.triggerDown();
                     });
                 return true;
@@ -331,14 +368,17 @@ class EnhancedTable extends React.Component {
     };
 
     handleChangeCampo = (varState, event) => {
-        this.setState({loading: true, [varState]: event?(event.target ? event.target.value : event.value):''}, () => {
+        this.setState({
+            loading: true,
+            [varState]: event ? (event.target ? event.target.value : event.value) : ''
+        }, () => {
             this.handleSearchAPI('FIELD_FILTER');
         });
     };
 
     render() {
         const {classes} = this.props;
-        const {data, order, orderBy, selected, rowsPerPage, page, filterData,totalRows,filterDataAll} = this.state;
+        const {data, order, orderBy, selected, rowsPerPage, page, filterData, totalRows, filterDataAll} = this.state;
         // const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
         const emptyRows = rowsPerPage - filterData.length;
 
@@ -349,85 +389,93 @@ class EnhancedTable extends React.Component {
                                           nombreServidor={this.state.nombreServidor}
                                           procedimiento={this.state.procedimiento} data={filterData}
                                           columnas={columnData} institucion={this.state.institucion}/>
-                    <div className={classes.tableWrapper}>
-                        <DetalleServidor handleClose={this.handleClose} servidor={this.state.elementoSeleccionado}
-                                         control={this.state.open}/>
-                        {
-                            this.state.loading &&
-                            <CircularProgress className={classes.progress} id="spinnerLoading" size={100}/>
-                        }
-                        <Table className={classes.table} aria-describedby="spinnerLoading"
-                               aria-busy={this.state.loading} aria-labelledby="tableTitle">
-                            <EnhancedTableHead
-                                numSelected={selected.length}
-                                order={order}
-                                orderBy={orderBy}
-                                onSelectAllClick={this.handleSelectAllClick}
-                                onRequestSort={this.handleRequestSort}
-                                rowCount={data.length}
-                            />
-                            <TableBody id="tableServidores">
-                                {filterData
-                                    .sort(getSorting(order, orderBy))
-                                    .map(n => {
-                                        const isSelected = this.isSelected(n.id);
-                                        return (
-                                            <TableRow
-                                                hover
-                                                onClick={event => this.handleClick(event, n)}
-                                                role="checkbox"
-                                                aria-checked={isSelected}
-                                                tabIndex={-1}
-                                                key={n.id}
-                                                selected={isSelected}
-                                            >
-                                                <TableCell component="th" scope="row"
-                                                           padding="default">{n.servidor}</TableCell>
-                                                <TableCell>{n.institucion}</TableCell>
-                                                <TableCell>{n.puesto}</TableCell>
-                                                <TableCell>{n.tipoArea}</TableCell>
-                                            </TableRow>
-                                        );
-                                    })}
-                                {emptyRows > 0 && (
-                                    <TableRow style={{height: 49 * emptyRows}}>
-                                        <TableCell colSpan={6}/>
-                                    </TableRow>
-                                )}
 
-                            </TableBody>
-                        </Table>
-                        <Grid container>
-                            <Grid item  md={3} xs={12}>
-                                <BajarCSV innerRef = {comp => this.btnDownloadAll = comp} data = {data} filtrado = {false}
-                                          columnas = {columnData} fnSearch = {this.handleSearchAPI} fileName = {'Servidores'}/>
-                            </Grid>
-                            <Grid item md={3} xs={12}>
-                                <BajarCSV innerRef = {comp => this.child = comp} data = {filterDataAll} filtrado = {true}
-                                          columnas = {columnData} fnSearch = {this.handleSearchAPI} fileName = {'Servidores'}/>
-                            </Grid>
-                            <Grid item md={6} xs={12}>
-                                <TablePagination
-                                    component="span"
-                                    count={totalRows}
-                                    rowsPerPage={rowsPerPage}
-                                    page={page}
-                                    backIconButtonProps={{
-                                        'aria-label': 'Previous Page',
-                                    }}
-                                    nextIconButtonProps={{
-                                        'aria-label': 'Next Page',
-                                    }}
-                                    onChangePage={this.handleChangePage}
-                                    onChangeRowsPerPage={this.handleChangeRowsPerPage}
-                                    labelRowsPerPage='Registros por página'
-                                    labelDisplayedRows={({from, to, count}) => {
-                                        return `${from}-${to} de ${count}`;
-                                    }}
+                    <DetalleServidor handleClose={this.handleClose} servidor={this.state.elementoSeleccionado}
+                                     control={this.state.open}/>
+                    {
+                        this.state.loading &&
+                        <CircularProgress className={classes.progress} id="spinnerLoading" size={100}/>
+                    }
+
+                    <Grid container justify={'center'} spacing={0}>
+                        <Grid item xs={12} className={classes.section}>
+                            <Table aria-describedby="spinnerLoading" id={'tableServidores'}
+                                   aria-busy={this.state.loading} aria-labelledby="tableTitle"
+                                   className={classes.table}>
+                                <EnhancedTableHead
+                                    numSelected={selected.length}
+                                    order={order}
+                                    orderBy={orderBy}
+                                    onSelectAllClick={this.handleSelectAllClick}
+                                    onRequestSort={this.handleRequestSort}
+                                    rowCount={data.length}
                                 />
-                            </Grid>
+                                <TableBody>
+                                    {filterData
+                                        .sort(getSorting(order, orderBy))
+                                        .map(n => {
+                                            const isSelected = this.isSelected(n.id);
+                                            return (
+                                                <TableRow
+                                                    hover
+                                                    onClick={event => this.handleClick(event, n)}
+                                                    role="checkbox"
+                                                    aria-checked={isSelected}
+                                                    tabIndex={-1}
+                                                    key={n.id}
+                                                    selected={isSelected}
+                                                >
+                                                    <TableCell component="th" scope="row"
+                                                               padding="default">{n.servidor}</TableCell>
+                                                    <TableCell>{n.institucion}</TableCell>
+                                                    <TableCell>{n.puesto}</TableCell>
+                                                    <TableCell>{n.tipoArea}</TableCell>
+                                                </TableRow>
+                                            );
+                                        })}
+                                    {emptyRows > 0 && (
+                                        <TableRow style={{height: 49 * emptyRows}}>
+                                            <TableCell colSpan={6}/>
+                                        </TableRow>
+                                    )}
+
+                                </TableBody>
+                            </Table>
                         </Grid>
-                    </div>
+                    </Grid>
+
+
+                    <Grid container>
+                        <Grid item md={3} xs={12}>
+                            <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data} filtrado={false}
+                                      columnas={columnData} fnSearch={this.handleSearchAPI} fileName={'Servidores'}/>
+                        </Grid>
+                        <Grid item md={3} xs={12}>
+                            <BajarCSV innerRef={comp => this.child = comp} data={filterDataAll} filtrado={true}
+                                      columnas={columnData} fnSearch={this.handleSearchAPI} fileName={'Servidores'}/>
+                        </Grid>
+                        <Grid item md={6} xs={12}>
+                            <TablePagination
+                                className={classes.tablePagination}
+                                component="div"
+                                count={totalRows}
+                                rowsPerPage={rowsPerPage}
+                                page={page}
+                                backIconButtonProps={{
+                                    'aria-label': 'Previous Page',
+                                }}
+                                nextIconButtonProps={{
+                                    'aria-label': 'Next Page',
+                                }}
+                                onChangePage={this.handleChangePage}
+                                onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                                labelRowsPerPage='Registros por página'
+                                labelDisplayedRows={({from, to, count}) => {
+                                    return `${from}-${to} de ${count}`;
+                                }}
+                            />
+                        </Grid>
+                    </Grid>
                 </Paper>
             </div>
         );

@@ -26,9 +26,6 @@ const styles = theme => ({
     textField: {
         marginRight: theme.spacing.unit,
     },
-    menu: {
-        width: 200,
-    },
     formControl: {
         width: '100%'
     },
@@ -44,7 +41,6 @@ const styles = theme => ({
     },
     input: {
         color: theme.palette.fontLight.color,
-        minWidth: '150px',
         display: 'contents'
     },
     valueContainer: {
@@ -52,7 +48,6 @@ const styles = theme => ({
         flexWrap: 'wrap',
         flex: 1,
         alignItems: 'center',
-        minWidth: '150px',
     },
     noOptionsMessage: {
         padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`,

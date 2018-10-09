@@ -34,7 +34,7 @@ let createData = (item) => {
         sentidoResolucion: item.sentido_de_resolucion ? item.sentido_de_resolucion : leyenda,
         fechaNotificacion: item.fecha_de_notificacion ? item.fecha_de_notificacion : leyenda,
         fechaResolucion: item.fecha_de_resolucion ? item.fecha_de_resolucion : leyenda,
-        plazo: item.plazo ? item.plazo :leyenda,
+        plazo: item.plazo ? item.plazo : leyenda,
         monto: item.monto ? item.monto : leyenda,
         responsableInformacion: item.nombre_del_responsable_de_la_informacion ? item.nombre_del_responsable_de_la_informacion : leyenda,
         fechaActualizacion: item.fecha_de_actualizacion ? item.fecha_de_actualizacion : leyenda
@@ -140,16 +140,27 @@ const styles = theme => ({
     },
     container: {
         width: '100%',
-        borderRadius : '6px',
+        borderRadius: '6px',
         display: 'flex',
-        position : 'relative',
-        marginTop : '30px',
-        marginBottom : '30px',
-        flexDirection : 'column',
+        position: 'relative',
+        marginTop: '30px',
+        marginBottom: '30px',
+        flexDirection: 'column',
     },
-    tableHead : {
-        color : theme.palette.primary.dark
+    tableHead: {
+        color: theme.palette.primary.dark
+    },
+    section: {
+        maxWidth: '1024px',
+        overflowX: 'auto'
+    },
+    table: {
+        tableLayout: 'fixed',
+    },
+    tablePagination:{
+        overflowX : 'auto',
     }
+
 });
 
 class EnhancedTableHead extends React.Component {
@@ -158,7 +169,7 @@ class EnhancedTableHead extends React.Component {
     };
 
     render() {
-        const {order, orderBy,classes} = this.props;
+        const {order, orderBy, classes} = this.props;
         return (
             <TableHead>
                 <TableRow>
@@ -208,24 +219,24 @@ EnhancedTableHead = withStyles(styles)(EnhancedTableHead);
 
 const toolbarStyles = theme => ({
     root: {
-        width : '100%',
+        width: '100%',
         padding: theme.spacing.unit,
     },
     toolBarStyle: {
-        backgroundColor : 'transparent',
-        position : 'relative',
-        padding : 0,
+        backgroundColor: 'transparent',
+        position: 'relative',
+        padding: 0,
         margin: '0 15px',
         zIndex: 3,
-        borderRadius : theme.spacing.unit,
+        borderRadius: theme.spacing.unit,
     },
-    toolBarFloat : {
-        padding : '15px',
-        marginTop : '-30px',
-        borderRadius:  '3px',
-        background : 'linear-gradient(60deg, #295c53, #8fe19f)',
-        boxShadow : '0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgb(41, 92, 83)',
-        width : '100%',
+    toolBarFloat: {
+        padding: '15px',
+        marginTop: '-30px',
+        borderRadius: '3px',
+        background: 'linear-gradient(60deg, #295c53, #8fe19f)',
+        boxShadow: '0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgb(41, 92, 83)',
+        width: '100%',
 
     },
     spacer: {
@@ -248,8 +259,8 @@ let EnhancedTableToolbar = props => {
     return (
         <Toolbar className={classes.toolBarStyle}>
             <div className={classes.toolBarFloat}>
-            <BusquedaParticular handleChangeCampo={handleChangeCampo} nombreParticular={nombreParticular}
-                                institucion={institucion}/>
+                <BusquedaParticular handleChangeCampo={handleChangeCampo} nombreParticular={nombreParticular}
+                                    institucion={institucion}/>
             </div>
         </Toolbar>
     );
@@ -333,8 +344,8 @@ class EnhancedTable extends React.Component {
 
     getTotalRows = (URL) => {
         let options = {
-            uri : URL ? URL : 'https://plataformadigitalnacional.org/api/proveedores_sancionados?sentido_de_resolucion=like.*INHABILITACI%C3%93N*&&select=count=eq.exact',
-            json : true
+            uri: URL ? URL : 'https://plataformadigitalnacional.org/api/proveedores_sancionados?sentido_de_resolucion=like.*INHABILITACI%C3%93N*&&select=count=eq.exact',
+            json: true
         };
         rp(options)
             .then(data => {
@@ -349,12 +360,12 @@ class EnhancedTable extends React.Component {
         this.setState({loading: true});
         let {institucion, nombreParticular} = this.state;
         const URI = 'https://plataformadigitalnacional.org/api/proveedores_sancionados?sentido_de_resolucion=like.*INHABILITACIÓN*&&';
-        let vUri = URI + ((typeSearch === 'FIELD_FILTER'||typeSearch==='CHANGE_PAGE') ? ('limit=' + this.state.rowsPerPage + '&&offset=' + (this.state.rowsPerPage * this.state.page) + '&&'):'');
+        let vUri = URI + ((typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? ('limit=' + this.state.rowsPerPage + '&&offset=' + (this.state.rowsPerPage * this.state.page) + '&&') : '');
 
         vUri = vUri + ((institucion) ? 'dependencia=eq.' + institucion + '&&' : '');
         vUri = vUri + ((nombreParticular) ? 'proveedor_o_contratista=like.*' + nombreParticular.toUpperCase() + '*' : '');
 
-        if(typeSearch==='FIELD_FILTER')this.getTotalRows(vUri+'&&select=count=eq.exact');
+        if (typeSearch === 'FIELD_FILTER') this.getTotalRows(vUri + '&&select=count=eq.exact');
 
         let options = {
             uri: typeSearch === 'ALL' ? URI : vUri,
@@ -365,9 +376,12 @@ class EnhancedTable extends React.Component {
                 let dataAux = data.map(item => {
                     return createData(item);
                 });
-                typeSearch === 'ALL' ? this.setState({data: dataAux, loading:false}, () => {
+                typeSearch === 'ALL' ? this.setState({data: dataAux, loading: false}, () => {
                     this.btnDownloadAll.triggerDown();
-                }) : (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.setState({filterData: dataAux, loading: false}) :
+                }) : (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.setState({
+                        filterData: dataAux,
+                        loading: false
+                    }) :
                     this.setState({filterDataAll: dataAux, loading: false}, () => {
                         this.child.triggerDown();
                     });
@@ -381,8 +395,11 @@ class EnhancedTable extends React.Component {
 
     };
 
-    handleChangeCampo = (varState, event)=> {
-        this.setState({loading: true, [varState]: event?(event.target ? event.target.value : event.value):''}, () => {
+    handleChangeCampo = (varState, event) => {
+        this.setState({
+            loading: true,
+            [varState]: event ? (event.target ? event.target.value : event.value) : ''
+        }, () => {
             this.handleSearchAPI('FIELD_FILTER');
         });
     };
@@ -405,59 +422,67 @@ class EnhancedTable extends React.Component {
                             this.state.loading &&
                             <CircularProgress className={classes.progress} id="spinnerLoading" size={100}/>
                         }
-                        <Table className={classes.table} aria-describedby="spinnerLoading"
-                               aria-busy={this.state.loading} aria-labelledby="tableTitle">
-                            <EnhancedTableHead
-                                numSelected={selected.length}
-                                order={order}
-                                orderBy={orderBy}
-                                onSelectAllClick={this.handleSelectAllClick}
-                                onRequestSort={this.handleRequestSort}
-                                rowCount={data.length}
-                            />
-                            <TableBody id="tableParticulares">
-                                {filterData
-                                    .sort(getSorting(order, orderBy))
-                                    .map(n => {
-                                        const isSelected = this.isSelected(n.id);
-                                        return (
-                                            <TableRow
-                                                hover
-                                                onClick={event => this.handleClick(event, n)}
-                                                role="checkbox"
-                                                aria-checked={isSelected}
-                                                tabIndex={-1}
-                                                key={n.id}
-                                                selected={isSelected}
-                                            >
-                                                <TableCell component="th" scope="row"
-                                                           padding="default">{n.proveedor}</TableCell>
-                                                <TableCell>{n.dependencia}</TableCell>
-                                                <TableCell>{n.expediente}</TableCell>
-                                                <TableCell>{n.sentidoResolucion}</TableCell>
-                                                </TableRow>
-                                        );
-                                    })}
-                                {emptyRows > 0 && (
-                                    <TableRow style={{height: 49 * emptyRows}}>
-                                        <TableCell colSpan={6}/>
-                                    </TableRow>
-                                )}
-                            </TableBody>
+                        <Grid container justify={'center'} spacing={0}>
+                            <Grid item xs={12} className={classes.section}>
+                                <Table className={classes.table} aria-describedby="spinnerLoading"
+                                       aria-busy={this.state.loading} aria-labelledby="tableTitle">
+                                    <EnhancedTableHead
+                                        numSelected={selected.length}
+                                        order={order}
+                                        orderBy={orderBy}
+                                        onSelectAllClick={this.handleSelectAllClick}
+                                        onRequestSort={this.handleRequestSort}
+                                        rowCount={data.length}
+                                    />
+                                    <TableBody id="tableParticulares">
+                                        {filterData
+                                            .sort(getSorting(order, orderBy))
+                                            .map(n => {
+                                                const isSelected = this.isSelected(n.id);
+                                                return (
+                                                    <TableRow
+                                                        hover
+                                                        onClick={event => this.handleClick(event, n)}
+                                                        role="checkbox"
+                                                        aria-checked={isSelected}
+                                                        tabIndex={-1}
+                                                        key={n.id}
+                                                        selected={isSelected}
+                                                    >
+                                                        <TableCell component="th" scope="row"
+                                                                   padding="default">{n.proveedor}</TableCell>
+                                                        <TableCell>{n.dependencia}</TableCell>
+                                                        <TableCell>{n.expediente}</TableCell>
+                                                        <TableCell>{n.sentidoResolucion}</TableCell>
+                                                    </TableRow>
+                                                );
+                                            })}
+                                        {emptyRows > 0 && (
+                                            <TableRow style={{height: 49 * emptyRows}}>
+                                                <TableCell colSpan={6}/>
+                                            </TableRow>
+                                        )}
+                                    </TableBody>
 
-                        </Table>
+                                </Table>
+                            </Grid>
+                        </Grid>
+
                         <Grid container>
-                            <Grid item md = {3} xs = {12}>
-                                <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data} filtrado = {false}
-                                          columnas={columnData} fnSearch={this.handleSearchAPI} fileName={'Particulares inhabilitados'}/>
+                            <Grid item md={3} xs={12}>
+                                <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data} filtrado={false}
+                                          columnas={columnData} fnSearch={this.handleSearchAPI}
+                                          fileName={'Particulares inhabilitados'}/>
                             </Grid>
-                            <Grid item md = {3} xs = {12}>
-                                <BajarCSV innerRef={comp => this.child = comp} data={filterDataAll} filtrado = {true}
-                                          columnas={columnData} fnSearch={this.handleSearchAPI} fileName = {'Particulares inhabilitados'}/>
+                            <Grid item md={3} xs={12}>
+                                <BajarCSV innerRef={comp => this.child = comp} data={filterDataAll} filtrado={true}
+                                          columnas={columnData} fnSearch={this.handleSearchAPI}
+                                          fileName={'Particulares inhabilitados'}/>
                             </Grid>
-                            <Grid item md = {6} xs = {12}>
+                            <Grid item md={6} xs={12}>
                                 <TablePagination
-                                    component="span"
+                                    className={classes.tablePagination}
+                                    component="div"
                                     count={totalRows}
                                     rowsPerPage={rowsPerPage}
                                     page={page}
