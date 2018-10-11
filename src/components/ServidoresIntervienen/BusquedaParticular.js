@@ -172,7 +172,7 @@ class BusquedaParticular extends React.Component {
                 });
                 this.setState({dependencias: aux, suggestions: sug});
             }).catch(err => {
-            alert("_No se puedó obtener la información");
+            alert("_No se pudo obtener la información");
             console.log(err);
         });
 

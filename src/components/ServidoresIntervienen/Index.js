@@ -13,7 +13,7 @@ import CardMedia from "@material-ui/core/CardMedia/CardMedia";
 import img1 from "../../assets/img/contrataciones.jpg";
 import img2 from "../../assets/img/sancionadosl.jpg";
 import img3 from "../../assets/img/fiscal.jpg";
-
+import BubbleHolder from "./BubbleHolder";
 
 const styles = theme => ({
     root: {
@@ -177,20 +177,29 @@ class Index extends React.Component {
                         <Grid container justify={'center'} spacing={0}>
                             <Grid item xs={12} className={classes.section}>
                                 <Grid container spacing={0}>
-                                    {this.state.idContent === 1 &&
                                     <Grid item xs={12}>
-                                        <Typography variant={'title'} className={classes.title}>
+                                        {this.state.idContent === 1 &&
+                                        <div><Typography variant={'title'} className={classes.title}>
                                             Servidores que intervienen en procesos de contratación</Typography>
-                                        <TablaServidores/>
+                                            <TablaServidores/>
+                                        </div>
+                                        }
+                                        {this.state.idContent === 2 &&
+                                        <div>
+                                            <Typography variant={'title'} className={classes.title}>Particulares
+                                                inhabilitados</Typography>
+                                            <TablaParticulares/>
+                                        </div>
+                                        }
+                                        {this.state.idContent === 3 &&
+                                            <div>
+                                                <Typography variant={'title'} className={classes.title}>Visualizaciones</Typography>
+                                                <BubbleHolder/>
+                                            </div>
+
+                                        }
                                     </Grid>
-                                    }
-                                    {this.state.idContent === 2 &&
-                                    <Grid item xs={12}>
-                                        <Typography variant={'title'} className={classes.title}>Particulares
-                                            inhabilitados</Typography>
-                                        <TablaParticulares/>
-                                    </Grid>
-                                    }
+
                                 </Grid>
                             </Grid>
                         </Grid>
