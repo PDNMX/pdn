@@ -6,7 +6,8 @@ import BubbleChart from './bubbles/BubbleChart';
 import Bubbles from './bubbles/Bubbles';
 import {createNodes} from './utils';
 import rp from "request-promise";
-import { width, height, center, yearCenters } from './bubbles_constants'
+import { width, height, center } from './bubbles_constants'
+import TypePicker from "./bubbles/TypePicker";
 
 // Styles
 const styles = theme => ({
@@ -27,7 +28,9 @@ const styles = theme => ({
 
 class BubbleHolder extends React.Component{
     state = {
-        data : []
+        data : [],
+        type : 'sanciones',
+        originalData:[]
     };
 
     componentDidMount(){
@@ -40,7 +43,8 @@ class BubbleHolder extends React.Component{
             .then(data=>{
                 let aux = JSON.parse(JSON.stringify(data));
                 this.setState({
-                    data: createNodes(aux),
+                    data: createNodes(aux,'sanciones'),
+                    originalData : data,
                 });
             })
             .catch(err=>{
@@ -49,23 +53,34 @@ class BubbleHolder extends React.Component{
             });
     }
 
+    onTypeChanged = (newType)=>{
+        if(this.state.type !== newType){
+            this.setState({
+                data:createNodes(this.state.originalData,newType),
+                type : newType
+            });
+        }
+
+    };
+
     render(){
         const {classes} = this.props;
-        const {data} = this.state;
+        const {data, type} = this.state;
         return (
             <div className={classes.root}>
                 <Grid container spacing={0}>
                     <Grid item xs  = {12}>
                         <Typography variant={"display1"} className={classes.title}>
-                            Total de sanciones por dependencia
+                            Total de {this.state.type} por dependencia
                         </Typography>
                     </Grid>
                 </Grid>
 
                 <Grid container spacing={24}>
                     <Grid item xs={12}>
+                        <TypePicker onChanged={this.onTypeChanged} active={type}/>
                         <BubbleChart width={width} height={height}>
-                            <Bubbles data={data} forceStrength={0.3} center={center} groupByYear={false} />
+                            <Bubbles data={data} forceStrength={0.3} center={center} type={type} />
                         </BubbleChart>
                     </Grid>
 

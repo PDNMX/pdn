@@ -25,8 +25,8 @@ export default class Bubbles extends React.Component {
         if (nextProps.data !== this.props.data) {
             this.renderBubbles(nextProps.data)
         }
-       /* if (nextProps.groupByYear !== this.props.groupByYear) {
-            this.regroupBubbles(nextProps.groupByYear)
+        /*if (nextProps.type !== this.props.type) {
+            this.regroupBubbles(nextProps.type)
         }
         */
     }
@@ -51,9 +51,9 @@ export default class Bubbles extends React.Component {
         return -this.props.forceStrength * (d.radius ** 2.0)
     }
 
-    regroupBubbles = (groupByYear) => {
+    regroupBubbles = (type) => {
         const { forceStrength, yearCenters, center } = this.props
-        if (groupByYear) {
+        if (type==='sanciones') {
             this.simulation.force('x', d3.forceX().strength(forceStrength).x(d => yearCenters[d.year].x))
                 .force('y', d3.forceY().strength(forceStrength).y(d => yearCenters[d.year].y))
         } else {
@@ -101,15 +101,16 @@ Bubbles.propTypes = {
         y: PropTypes.number.isRequired,
     }),
     forceStrength: PropTypes.number.isRequired,
-    groupByYear: PropTypes.bool.isRequired,
     data: PropTypes.arrayOf(PropTypes.shape({
         x: PropTypes.number.isRequired,
         id: PropTypes.string.isRequired,
-        radius: PropTypes.number.isRequired,
-        value: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
+        radius: PropTypes.number.isRequired
     })),
 };
+
+function formatCurrency(n, currency) {
+    return currency + n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+}
 
 /*
 * Function called on mouseover to display the
@@ -122,8 +123,8 @@ export function showDetail(d) {
     const content = `<span class="name">Unidad: </span><span class="value">${
             d.dependencia
             }</span><br/>` +
-        `<span class="name">Monto total: </span><span class="value">$${
-            d.montoTotal
+        `<span class="name">Monto total: </span><span class="value">${
+            formatCurrency(d.montoTotal,'$')
             }</span><br/>` +
         `<span class="name">Sanciones total: </span><span class="value">${
             d.sancionesTotal
