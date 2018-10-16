@@ -2,11 +2,11 @@ import React from "react";
 import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from "@material-ui/core/Grid/Grid";
-import Bubbles from '../../Charts/bubbles/Bubbles';
+import Bubbles_SPS from '../../Charts/bubbles/Bubbles_SPS';
 import {createNodes} from './utils';
 import rp from "request-promise";
 import { width, height, center } from './bubbles_constants';
-import TypePicker from "../../Charts/bubbles/TypePicker";
+import ControlSelect from "./ControlSelect";
 import BubbleChart from "../../Charts/bubbles/BubbleChart";
 // Styles
 const styles = theme => ({
@@ -25,40 +25,70 @@ const styles = theme => ({
     },
     font: {
         color : theme.palette.textPrincipal.color
-    }
+    },
+
 });
 
 class BubbleHolder extends React.Component{
     state = {
         data : [],
-        type : 'sanciones',
-        originalData:[]
+        type : 1,
+        originalData:[],
+        group : 0,
     };
 
-    componentDidMount(){
+    getData=()=>{
         let options = {
-            uri : 'https://plataformadigitalnacional.org/api/provinha_dependencia',
+            uri : this.state.type===1?'https://plataformadigitalnacional.org/api/v_sps':'https://plataformadigitalnacional.org/api/v_particulares_sancionados',
             json : true
         };
 
         rp(options)
             .then(data=>{
-                let aux = JSON.parse(JSON.stringify(data));
+                let aux = [];
+                let d=null;
+                let sum=0;
+                data = JSON.parse(JSON.stringify(data));
+                data.forEach((item) => {
+                    if(d && d !== item.dependencia){
+                        aux.push({'dependencia' : d,'total_sanciones':sum});
+                        sum = item.sanciones_total;
+                        d = item.dependencia;
+                    }else{
+                        d = item.dependencia;
+                        sum += item.sanciones_total;
+                    }
+                });
                 this.setState({
-                    data: createNodes(aux,'sanciones'),
-                    originalData : data,
+                    data: createNodes(aux,this.state.type),
+                    originalData : aux,
                 });
             })
             .catch(err=>{
                 alert("_No se pudo obtener la información");
                 console.log(err);
             });
+    };
+    componentDidMount(){
+        this.getData();
     }
 
     onTypeChanged = (newType)=>{
-        if(this.state.type !== newType){
+        this.setState({type : newType},()=>{
+            this.getData(newType);
+        });
+
+        /*if(this.state.type !== newType){
             this.setState({
                 data:createNodes(this.state.originalData,newType),
+                type : newType
+            });
+        }
+*/
+    };
+    onGroupChanged = (newType)=>{
+        if(this.state.type !== newType){
+            this.setState({
                 type : newType
             });
         }
@@ -73,22 +103,29 @@ class BubbleHolder extends React.Component{
                 <Grid container spacing={0}>
                     <Grid item xs  = {12}>
                         <Typography variant={"display1"} className={classes.title}>
-                            Total de {this.state.type} por dependencia
+                            {this.state.type===1?'SERVIDORES PÚBLICOS SANCIONADOS' : 'PARTICULARES SANCIONADOS'}
                         </Typography>
                         <br/>
-                        <Typography variant={"body1"} className={classes.font}>{'Muestra las dependencias organizadas por el total de sanciones a particulares o bien por el monto total que han acumulado por las sanciones impuestas'}</Typography>
+                        {this.state.type===1 &&
+                    <Typography variant={"body1"} className={classes.font}>
+                        {'Muestra las dependencias y el númerp de servidores públicos sancionados que tienen'}
+                    </Typography>
+                    }
+                        {this.state.type===2 &&
+                        <Typography variant={"body1"} className={classes.font}>
+                            {'Muestra las dependencias y el número de particulares sancionados que tienen'}
+                        </Typography>
+                        }
 
                     </Grid>
-                </Grid>
-
-                <Grid container spacing={24}>
                     <Grid item xs={12}>
-                        <TypePicker onChanged={this.onTypeChanged} active={type}/>
+                        <ControlSelect onChangeGraphic={this.onTypeChanged} onChangeGroup={this.onGroupChanged} active={type}/>
+                    </Grid>
+                    <Grid item xs={12}>
                         <BubbleChart width={width} height={height}>
-                            <Bubbles data={data} forceStrength={0.3} center={center} type={type} />
+                            <Bubbles_SPS data={data} forceStrength={0.3} center={center} type={type} />
                         </BubbleChart>
                     </Grid>
-
                 </Grid>
             </div>
         );
