@@ -9,7 +9,7 @@ import InputAdornment from "@material-ui/core/InputAdornment/InputAdornment";
 import IconHelp from '@material-ui/icons/HelpOutline';
 import CloseButton from '@material-ui/icons/Close'
 import IconButton from "@material-ui/core/IconButton/IconButton";
-import glosario from "./glosario.json";
+import glosario from "../Utils/glosario.json";
 import DialogTitle from "@material-ui/core/DialogTitle/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText/DialogContentText";

@@ -18,14 +18,8 @@ export function createNodes(rawData, type) {
     const maxAmount = type==='sanciones'?d3.max(rawData, d => +  d.sanciones_total): d3.max(rawData,d=> +d.monto_total);
     const minAmount = type==='sanciones'?d3.min(rawData,d=> d.sanciones_total) : d3.min(rawData, d=> d.monto_total);
     const promAmount = type==='sanciones'?d3.median(rawData,d=> d.sanciones_total) : d3.median(rawData, d=> d.monto_total);
-    console.log("Type:",type);
-    console.log("max:",maxAmount);
-    console.log("min:",minAmount);
-    console.log("prom:",promAmount);
 
     let pivote = (maxAmount-minAmount)/3;
-
-    console.log("privote:",pivote);
     // Sizes bubbles based on area.
     // @v4: new flattened scale names.
     const radiusScale = d3.scalePow()

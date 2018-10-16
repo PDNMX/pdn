@@ -2,12 +2,12 @@ import React from "react";
 import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from "@material-ui/core/Grid/Grid";
-import BubbleChart from './bubbles/BubbleChart';
-import Bubbles from './bubbles/Bubbles';
+import BubbleChart from '../Charts/bubbles/BubbleChart';
+import Bubbles from '../Charts/bubbles/Bubbles';
 import {createNodes} from './utils';
 import rp from "request-promise";
 import { width, height, center } from './bubbles_constants'
-import TypePicker from "./bubbles/TypePicker";
+import TypePicker from "../Charts/bubbles/TypePicker";
 
 // Styles
 const styles = theme => ({
@@ -18,11 +18,14 @@ const styles = theme => ({
         maxWidth: '1024px'
     },
     title: {
-        color: theme.palette.fontLight.color,
+        color: theme.palette.textPrincipal.color,
         fontSize: 20,
         textDecoration: 'underline',
         textDecorationColor: theme.palette.secondary.main,
         textUnderlinePosition: 'under'
+    },
+    font: {
+        color : theme.palette.textPrincipal.color
     }
 });
 
@@ -73,6 +76,9 @@ class BubbleHolder extends React.Component{
                         <Typography variant={"display1"} className={classes.title}>
                             Total de {this.state.type} por dependencia
                         </Typography>
+                        <br/>
+                        <Typography variant={"body1"} className={classes.font}>{'Muestra las dependencias organizadas por el total de sanciones a particulares o bien por el monto total que han acumulado por las sanciones impuestas'}</Typography>
+
                     </Grid>
                 </Grid>
 

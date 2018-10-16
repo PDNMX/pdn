@@ -21,7 +21,7 @@ const theme = createMuiTheme({
             color: "#f5f5f5"//"#e0e0e0"
         },
         grey:{
-            color:"#707070"
+            color:"#c5c5c5"
         },
         greyTitle:{
             color:'rgb(55, 70, 79)'
@@ -30,19 +30,22 @@ const theme = createMuiTheme({
             color:"#00cc99"
         },
         textPrincipal:{
-            color:"#96cb99"
+            color:"#00322b"
         },
         textSecondary:{
             color : "#e6e6e6"
         },
         backLight:{
-            color : "#f5f5f5"
+            color : "#e6e6e6"
         },
         backDark:{
             color:'rgb(55, 70, 79)'
         },
         textNormal:{
             color : 'rgba(0, 0, 0, 0.87)'
+        },
+        white:{
+            color : "#ffff"
         }
 
     },

@@ -14,7 +14,7 @@ import DialogContent from "@material-ui/core/DialogContent/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle/DialogTitle";
 import Button from "@material-ui/core/Button/Button";
 import DialogActions from "@material-ui/core/DialogActions/DialogActions";
-import glosario from "./glosario.json";
+import glosario from "../Utils/glosario.json";
 
 function getGlosarioItem(id){
     return glosario.servidores[id];

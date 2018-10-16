@@ -38,6 +38,16 @@ const styles = theme => ({
         textAlign: 'center',
         marginTop: theme.spacing.unit * 2,
     },
+        titleLight: {
+        color: "#e6e6e6",
+        textAlign: 'center',
+        marginTop: theme.spacing.unit * 2,
+    },
+    titleDark: {
+        color: "#e6e6e6",
+        textAlign: 'center',
+        marginTop: theme.spacing.unit * 2,
+    },
     summary: {
         color: theme.palette.primary.main,
     },
@@ -52,13 +62,15 @@ const styles = theme => ({
     container2: {
         flexGrow: 1,
         backgroundColor: theme.palette.backLight.color,
-
     },
     bgPanelDark: {
         backgroundColor: theme.palette.backDark.color,
     },
     bgPanelLight: {
         backgroundColor: theme.palette.backLight.color,
+    },
+    bgPanelWhite:{
+        backgroundColor : theme.palette.white.color,
     },
     section: {
         maxWidth: '1024px'
@@ -85,7 +97,7 @@ const styles = theme => ({
         display: 'inline-block'
     },
     bgContainer: {
-        backgroundColor: theme.palette.backLight.color,
+        backgroundColor: theme.palette.grey.color,
         paddingTop: theme.spacing.unit * 5,
         paddingBottom: theme.spacing.unit * 5
     },
@@ -109,10 +121,10 @@ class Index extends React.Component {
             <div>
                 <Header/>
                 <Paper className={classes.seccion}>
-                    <Grid container>
+                    <Grid container className={classes.bgPanelDark}>
                         <Grid item md={8} sm={12} className={classes.bgImg}/>
                         <Grid item md={4} sm={12} className={classes.container}>
-                            <Typography variant="display1" className={classes.title}>
+                            <Typography variant="display1" className={classes.titleLight}>
                                 Servidores que intervienen en procesos de contración
                             </Typography>
                             <Typography variant="body1" className={classes.textLight}>
@@ -172,7 +184,7 @@ class Index extends React.Component {
                         </Grid>
                     </div>
                 </div>
-                <div className={classes.bgPanelDark}>
+                <div className={classes.bgPanelLight}>
                     <div className={classes.root}>
                         <Grid container justify={'center'} spacing={0}>
                             <Grid item xs={12} className={classes.section}>
