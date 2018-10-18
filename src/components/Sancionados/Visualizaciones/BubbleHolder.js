@@ -3,11 +3,13 @@ import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from "@material-ui/core/Grid/Grid";
 import Bubbles_SPS from '../../Charts/bubbles/Bubbles_SPS';
-import {createNodes} from './utils';
+import {createNodes, createNodesGroup} from './utils';
 import rp from "request-promise";
-import { width, height, center } from './bubbles_constants';
+import {width, height, center,yearCenters} from './bubbles_constants';
 import ControlSelect from "./ControlSelect";
 import BubbleChart from "../../Charts/bubbles/BubbleChart";
+import GroupTitle from './GroupTitle';
+
 // Styles
 const styles = theme => ({
     root: {
@@ -24,94 +26,90 @@ const styles = theme => ({
         textUnderlinePosition: 'under'
     },
     font: {
-        color : theme.palette.textPrincipal.color
+        color: theme.palette.textPrincipal.color
     },
 
 });
 
-class BubbleHolder extends React.Component{
+class BubbleHolder extends React.Component {
     state = {
-        data : [],
-        type : 1,
-        originalData:[],
-        group : 0,
+        data: [],
+        type: 1,
+        originalData: [],
+        group: false,
+        dataGroup: [],
     };
 
-    getData=()=>{
+    getData = () => {
         let options = {
-            uri : this.state.type===1?'https://plataformadigitalnacional.org/api/v_sps':'https://plataformadigitalnacional.org/api/v_particulares_sancionados',
-            json : true
+            uri: this.state.type === 1 ? 'https://plataformadigitalnacional.org/api/v_sps' : 'https://plataformadigitalnacional.org/api/v_particulares_sancionados',
+            json: true
         };
 
         rp(options)
-            .then(data=>{
-                let aux = [];
-                let d=null;
-                let sum=0;
+            .then(data => {
+                let aux = [], auxGroup = [];
+                let existe = -1, existeGroup = -1;
                 data = JSON.parse(JSON.stringify(data));
                 data.forEach((item) => {
-                    if(d && d !== item.dependencia){
-                        aux.push({'dependencia' : d,'total_sanciones':sum});
-                        sum = item.sanciones_total;
-                        d = item.dependencia;
-                    }else{
-                        d = item.dependencia;
-                        sum += item.sanciones_total;
-                    }
+                    existe = aux.findIndex(element => {
+                        return element.dependencia === item.dependencia;
+                    });
+                    existe > -1 ? aux[existe].total_sanciones += item.sanciones_total : aux.push({'dependencia': item.dependencia,'total_sanciones': item.sanciones_total});
+
+                    existeGroup = auxGroup.findIndex(element => {
+                        return element.causa === item.causa;
+                    });
+                    existeGroup > -1 ? auxGroup[existeGroup].total_sanciones += 1 : auxGroup.push({'causa': item.causa,'total_sanciones': 1});
                 });
                 this.setState({
-                    data: createNodes(aux,this.state.type),
-                    originalData : aux,
+                    data: createNodes(aux, this.state.type),
+                    originalData: data,
+                    dataGroup: auxGroup
                 });
             })
-            .catch(err=>{
+            .catch(err => {
                 alert("_No se pudo obtener la información");
                 console.log(err);
             });
     };
-    componentDidMount(){
+
+    componentDidMount() {
         this.getData();
     }
 
-    onTypeChanged = (newType)=>{
-        this.setState({type : newType},()=>{
+    onTypeChanged = (newType) => {
+        this.setState({type: newType}, () => {
             this.getData(newType);
         });
-
-        /*if(this.state.type !== newType){
-            this.setState({
-                data:createNodes(this.state.originalData,newType),
-                type : newType
-            });
-        }
-*/
-    };
-    onGroupChanged = (newType)=>{
-        if(this.state.type !== newType){
-            this.setState({
-                type : newType
-            });
-        }
-
     };
 
-    render(){
+    onGroupChanged = (newType) => {
+        let data = newType === true ? createNodesGroup(this.state.originalData) : createNodes(this.state.data,this.state.type);
+        this.setState({
+            data : data
+        },()=>{
+            this.setState({group : newType})
+        });
+    };
+
+    render() {
         const {classes} = this.props;
         const {data, type} = this.state;
         return (
             <div className={classes.root}>
                 <Grid container spacing={0}>
-                    <Grid item xs  = {12}>
+                    <Grid item xs={12}>
                         <Typography variant={"display1"} className={classes.title}>
-                            {this.state.type===1?'SERVIDORES PÚBLICOS SANCIONADOS' : 'PARTICULARES SANCIONADOS'}
+                            {this.state.type === 1 ? 'SERVIDORES PÚBLICOS SANCIONADOS' : 'PARTICULARES SANCIONADOS'}
                         </Typography>
                         <br/>
-                        {this.state.type===1 &&
-                    <Typography variant={"body1"} className={classes.font}>
-                        {'Muestra las dependencias y el númerp de servidores públicos sancionados que tienen'}
-                    </Typography>
-                    }
-                        {this.state.type===2 &&
+                        {this.state.type === 1 &&
+                        <Typography variant={"body1"} className={classes.font}>
+                            {'Muestra las dependencias y el número de servidores públicos sancionados que tienen'}
+                        </Typography>
+                        }
+                        {this.state.type === 2 &&
                         <Typography variant={"body1"} className={classes.font}>
                             {'Muestra las dependencias y el número de particulares sancionados que tienen'}
                         </Typography>
@@ -119,11 +117,16 @@ class BubbleHolder extends React.Component{
 
                     </Grid>
                     <Grid item xs={12}>
-                        <ControlSelect onChangeGraphic={this.onTypeChanged} onChangeGroup={this.onGroupChanged} active={type}/>
+                        <ControlSelect onChangeGraphic={this.onTypeChanged} onChangeGroup={this.onGroupChanged}
+                                        active={type}/>
                     </Grid>
                     <Grid item xs={12}>
                         <BubbleChart width={width} height={height}>
-                            <Bubbles_SPS data={data} forceStrength={0.3} center={center} type={type} />
+                            <Bubbles_SPS data={data} forceStrength={0.3} center={center} type={type}
+                                         group={this.state.group} yearCenters={yearCenters}/>
+                            {this.state.group &&
+                                <GroupTitle widh={width} yearCenters={yearCenters}/>
+                            }
                         </BubbleChart>
                     </Grid>
                 </Grid>

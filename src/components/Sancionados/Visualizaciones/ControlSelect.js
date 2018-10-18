@@ -6,6 +6,8 @@ import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import {withStyles} from '@material-ui/core/styles';
 import Grid from "@material-ui/core/Grid/Grid";
+import Switch from "@material-ui/core/Switch/Switch";
+import FormControlLabel from "@material-ui/core/FormControlLabel/FormControlLabel";
 
 const styles = theme =>({
     formControl: {
@@ -17,15 +19,17 @@ const styles = theme =>({
 class ControlSelect extends React.Component {
     state={
       tipo_grafica:1,
-        agrupacion:0
+      agrupacion:false,
 
     };
     onChangeG = (event) => {
-        console.log("EVEnt: ",event);
         this.props.onChangeGraphic(event.target.value)
     };
     onChangeGroup = event => {
-        this.props.onChangeGroup(event.target.value)
+        this.setState({
+            agrupacion : event.target.checked
+        });
+        this.props.onChangeGroup(event.target.checked)
     };
 
     render() {
@@ -48,29 +52,20 @@ class ControlSelect extends React.Component {
                             </Select>
                         </FormControl>
                     </Grid>
+                    {/*}
                     <Grid item xs={6}>
-                        <FormControl className={classes.formControl}>
-                            <InputLabel htmlFor={"agrupacion"}>{'Agrupación'}</InputLabel>
-                            <Select
-                                onChange={this.onChangeGroup}
-                                inputProps={{
-                                    id:'agrupacion'
-                                }}
-                                value={this.state.agrupacion}
-                            >
-
-                                <MenuItem value={0}>{'Ninguna'}</MenuItem>
-                                {this.state.tipo_grafica === 1 &&
-                                    <MenuItem value={1}>{'Causa'}</MenuItem>
-                                }
-                                {this.state.tipo_grafica === 2 &&
-                                <MenuItem value={1}>{'Sentido de resolución'}</MenuItem>
-                                }
-
-                            </Select>
-                        </FormControl>
+                        <FormControlLabel
+                            control={
+                                <Switch
+                                    checked={this.state.agrupacion}
+                                    onChange={this.onChangeGroup}
+                                    value={'agrupacion'}
+                                />
+                            }
+                            label= {this.state.tipo_grafica===1?'Agrupar por causa': 'Agrupar por sentido de resolución'}
+                        />
                     </Grid>
-
+*/}
                 </Grid>
             </div>
         )

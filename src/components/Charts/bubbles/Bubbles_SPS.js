@@ -7,7 +7,7 @@ import tooltip from './Tooltip';
 export default class Bubbles_SPS extends React.Component {
     constructor(props) {
         super(props);
-        const { forceStrength, center } = props;
+        const { forceStrength, center, group } = props;
         this.simulation = d3.forceSimulation()
             .velocityDecay(0.2)
             .force('x', d3.forceX().strength(forceStrength).x(center.x))
@@ -25,10 +25,10 @@ export default class Bubbles_SPS extends React.Component {
         if (nextProps.data !== this.props.data) {
             this.renderBubbles(nextProps.data)
         }
-        /*if (nextProps.type !== this.props.type) {
-            this.regroupBubbles(nextProps.type)
+        if (nextProps.group !== this.props.group) {
+            this.regroupBubbles(nextProps.group)
         }
-        */
+
     }
 
     shouldComponentUpdate() {
@@ -51,11 +51,15 @@ export default class Bubbles_SPS extends React.Component {
         return -this.props.forceStrength * (d.radius ** 2.0)
     }
 
-    regroupBubbles = (type) => {
-        const { forceStrength, yearCenters, center } = this.props
-        if (type==='sanciones') {
-            this.simulation.force('x', d3.forceX().strength(forceStrength).x(d => yearCenters[d.year].x))
-                .force('y', d3.forceY().strength(forceStrength).y(d => yearCenters[d.year].y))
+    regroupBubbles = (group) => {
+        const { forceStrength, yearCenters, center } = this.props;
+        this.simulation.nodes(this.props.data)
+            .alpha(1)
+            .restart();
+        if (group) {
+           this.simulation.force('x', d3.forceX().strength(forceStrength).x(d => yearCenters[d.causa].x))
+                .force('y', d3.forceY().strength(forceStrength).y(d => yearCenters[d.causa].y))
+
         } else {
             this.simulation.force('x', d3.forceX().strength(forceStrength).x(center.x))
                 .force('y', d3.forceY().strength(forceStrength).y(center.y))
@@ -78,6 +82,7 @@ export default class Bubbles_SPS extends React.Component {
             .attr('fill', d => fillColor(d.group))
             .attr('stroke', d => d3.rgb(fillColor(d.group)).darker())
             .attr('stroke-width', 2)
+            .attr('opacity',0.8)
             .on('mouseover', showDetail)  // eslint-disable-line
             .on('mouseout', hideDetail); // eslint-disable-line
 
@@ -125,9 +130,16 @@ export function showDetail(d) {
             }</span><br/>` +
         `<span class="name">Sanciones total: </span><span class="value">${
             d.sancionesTotal
-            }</span>`
+            }</span>`;
 
-    tooltip.showTooltip(content, d3.event)
+    const contentGroup = `<span class="name">Causa: </span><span class="value">${
+            d.causa
+            }</span><br/>` +
+        `<span class="name">Sanciones total: </span><span class="value">${
+            d.sancionesTotal
+            }</span>`;
+
+    this.group ? tooltip.showTooltip(contentGroup, d3.event) : tooltip.showTooltip(content, d3.event);
 }
 
 /*

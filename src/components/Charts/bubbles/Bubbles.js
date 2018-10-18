@@ -78,6 +78,7 @@ export default class Bubbles extends React.Component {
             .attr('fill', d => fillColor(d.group))
             .attr('stroke', d => d3.rgb(fillColor(d.group)).darker())
             .attr('stroke-width', 2)
+            .attr('opacity',0.8)
             .on('mouseover', showDetail)  // eslint-disable-line
             .on('mouseout', hideDetail); // eslint-disable-line
 
