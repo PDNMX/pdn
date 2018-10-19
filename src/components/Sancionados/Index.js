@@ -67,7 +67,7 @@ const styles = theme => ({
         backgroundColor: theme.palette.backDark.color,
     },
     bgPanelLight: {
-        backgroundColor: theme.palette.backLight.color,
+        backgroundColor: theme.palette.white.color,
     },
     section: {
         maxWidth: '1024px'
@@ -94,19 +94,22 @@ const styles = theme => ({
         display: 'inline-block'
     },
     bgContainer: {
-        backgroundColor: theme.palette.grey.color,
+        backgroundColor: theme.palette.grisTenue.color,
         paddingTop: theme.spacing.unit * 5,
         paddingBottom: theme.spacing.unit * 5
     },
     center: {
         textAlign: 'center'
+    },
+    links: {
+        backgroundColor: theme.palette.grisTenue.color
     }
 
 });
 
 class Index extends React.Component {
     state = {
-        idContent: 0
+        idContent: 1
     };
     changeContent = id => {
         this.setState({idContent: id});
@@ -216,7 +219,7 @@ class Index extends React.Component {
                     </div>
                 </div>
 
-                <div style={{backgroundColor: '#fff'}}>
+                <div className={classes.links}>
                     <Grid container spacing={0} justify='center'>
                         <Grid item xs={12} className={classes.section}>
                             <PDNLinks/>

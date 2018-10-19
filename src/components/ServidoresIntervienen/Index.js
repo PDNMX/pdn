@@ -29,48 +29,29 @@ const styles = theme => ({
 
         }
     },
-    container1: {
-        flexGrow: 1,
-        backgroundColor: theme.palette.backDark.color
-    },
     title: {
         color: theme.palette.textPrincipal.color,
         textAlign: 'center',
         marginTop: theme.spacing.unit * 2,
     },
-        titleLight: {
-        color: "#e6e6e6",
+    titleLight: {
+        color: theme.palette.textSecondary.color,
         textAlign: 'center',
         marginTop: theme.spacing.unit * 2,
-    },
-    titleDark: {
-        color: "#e6e6e6",
-        textAlign: 'center',
-        marginTop: theme.spacing.unit * 2,
-    },
-    summary: {
-        color: theme.palette.primary.main,
     },
     textLight: {
-        color: "#e6e6e6",
+        color: theme.palette.textSecondary.color,
         textAlign: 'justify'
     },
     textDark: {
         color: theme.palette.textNormal,
         textAlign: 'justify'
     },
-    container2: {
-        flexGrow: 1,
-        backgroundColor: theme.palette.backLight.color,
-    },
     bgPanelDark: {
         backgroundColor: theme.palette.backDark.color,
     },
     bgPanelLight: {
-        backgroundColor: theme.palette.backLight.color,
-    },
-    bgPanelWhite:{
-        backgroundColor : theme.palette.white.color,
+        backgroundColor: theme.palette.white.color,
     },
     section: {
         maxWidth: '1024px'
@@ -97,19 +78,22 @@ const styles = theme => ({
         display: 'inline-block'
     },
     bgContainer: {
-        backgroundColor: theme.palette.grey.color,
+        backgroundColor: theme.palette.grisTenue.color,
         paddingTop: theme.spacing.unit * 5,
         paddingBottom: theme.spacing.unit * 5
     },
     center: {
         textAlign: 'center'
+    },
+    links: {
+        backgroundColor: theme.palette.grisTenue.color
     }
 
 });
 
 class Index extends React.Component {
     state = {
-        idContent: 0
+        idContent: 1
     };
     changeContent = id => {
         this.setState({idContent: id});
@@ -204,10 +188,11 @@ class Index extends React.Component {
                                         </div>
                                         }
                                         {this.state.idContent === 3 &&
-                                            <div>
-                                                <Typography variant={'title'} className={classes.title}>Visualizaciones</Typography>
-                                                <BubbleHolder/>
-                                            </div>
+                                        <div>
+                                            <Typography variant={'title'}
+                                                        className={classes.title}>Visualizaciones</Typography>
+                                            <BubbleHolder/>
+                                        </div>
 
                                         }
                                     </Grid>
@@ -219,7 +204,7 @@ class Index extends React.Component {
                     </div>
                 </div>
 
-                <div style={{backgroundColor: '#fff'}}>
+                <div className={classes.links}>
                     <Grid container spacing={0} justify='center'>
                         <Grid item xs={12} className={classes.section}>
                             <PDNLinks/>

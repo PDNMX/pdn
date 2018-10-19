@@ -12,49 +12,20 @@ import HorizontalNonLinearStepper from "./HorizontalNonLinearStepper";
 const styles = theme => ({
     root: {
         flexGrow: 1,
-        backgroundColor: '#e5e5e5'
+        backgroundColor: theme.palette.white.color,
     },
     section: {
         maxWidth: '1024px'
     },
     links: {
-      backgroundColor: '#fff'
-    },
-
-    paperIzquierdo: {
-        backgroundColor: theme.palette.secondary.main,
-        height: '100%',
-        width: '100%',
-        //color: theme.palette.fontLight.color,
-    },
-    paperDerecho: {
-        height: '95%%',
-        width: '100%',
-    },
-    titleBox: {
-        //color: theme.palette.fontLight.color,
-        backgroundColor: theme.palette.primary.main,
-        paddingTop: '1rem',
-        paddingBottom: '1rem',
-        paddingLeft: '6rem',
-        paddingRight: '2rem',
-        fontSize: '1rem',
-        display: 'inline-block',
-        fontWeight: 700,
-        marginLeft: "-2rem",
-        marginBottom: "2rem"
+        backgroundColor: theme.palette.grisTenue.color
     },
     containerUp: {
         [theme.breakpoints.up('sm')]: {
             display: "flex",
             padding: "2rem",
         },
-
     },
-    fontLight: {
-        //color: theme.palette.fontLight.color,
-    }
-
 });
 
 

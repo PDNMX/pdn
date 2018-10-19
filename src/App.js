@@ -46,7 +46,10 @@ const theme = createMuiTheme({
         },
         white:{
             color : "#ffff"
-        }
+        },
+        grisTenue:{
+            color :'#f5f5f5'
+        },
 
     },
  /*   overrides:{

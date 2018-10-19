@@ -8,7 +8,7 @@ import Grid from '@material-ui/core/Grid';
 const styles = theme => ({
     containerFooterBlog:{
         height: '160px',
-        backgroundColor: '#fff',
+        backgroundColor: theme.palette.grisTenue.color,
         /*[theme.breakpoints.up('sm')]:{
             paddingLeft: '100px',
             paddingRight: '100px'

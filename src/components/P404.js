@@ -13,9 +13,6 @@ const styles = theme => ({
     root :{
         flexGrow: 1,
         backgroundColor: '#e5e5e5'
-        //display: 'flex',
-        //flexDirection: 'column',
-        //height: '100vh'
     },
     gridItem:{
         maxWidth: '1024px',
@@ -30,8 +27,12 @@ const styles = theme => ({
         marginTop: theme.spacing.unit
     },
     links: {
+        maxWidth: '1024px',
+        backgroundColor: theme.palette.grisTenue.color
+    },
+    section: {
         maxWidth: '1024px'
-    }
+    },
 });
 
 class P404 extends React.Component {
@@ -50,9 +51,9 @@ class P404 extends React.Component {
                         </Paper>
                     </Grid>
                 </Grid>
-                <div style={{background: '#fff'}}>
+                <div className={classes.links}>
                     <Grid container spacing={0} justify='center'>
-                        <Grid item xs={12} className={classes.links}>
+                        <Grid item xs={12} className={classes.section}>
                             <PDNLinks/>
                         </Grid>
                     </Grid>

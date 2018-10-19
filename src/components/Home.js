@@ -24,7 +24,8 @@ const styles = theme => ({
             marginTop: theme.spacing.unit,
             marginBottom: theme.spacing.unit,
             padding: 10
-        }
+        },
+        backgroundColor: theme.palette.white.color,
     },
     paper: {
         padding: theme.spacing.unit * 2,
@@ -45,7 +46,7 @@ const styles = theme => ({
         paddingBottom: theme.spacing.unit * 2
     },
     links: {
-        backgroundColor: '#fff'
+        backgroundColor: theme.palette.grisTenue.color
     }
 });
 
