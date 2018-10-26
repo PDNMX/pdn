@@ -17,8 +17,9 @@ import Mensaje from "./Mensaje";
 import Registro from "./Registro";
 import Tooltip from "@material-ui/core/Tooltip/Tooltip";
 import rp from "request-promise";
-import data from  "./data.json";
+import data from "./data.json";
 import {mapDeclaracion} from "./utils";
+import Avatar from "@material-ui/core/Avatar/Avatar";
 
 const styles = theme => ({
     root: {
@@ -129,16 +130,20 @@ const styles = theme => ({
     },
     formControl: {
         margin: theme.spacing.unit,
+        display: 'flex'
 
     },
     button: {
         margin: theme.spacing.unit,
     },
+    avatar: {
+        margin: 10
+    }
 });
 
 class DemoDeclaraciones extends React.Component {
     state = {
-        rol: '',
+        user: 'Auditor Superior de la Federación',
         nombre: '',
         apellidoUno: '',
         apellidoDos: '',
@@ -151,6 +156,9 @@ class DemoDeclaraciones extends React.Component {
             [name]: event.target.value,
         });
     };
+    handleChangeUser= event => {
+        this.setState({ user: event.target.value });
+    };
     search = () => {
         alert("Buscando...");
         let options = {
@@ -159,8 +167,8 @@ class DemoDeclaraciones extends React.Component {
         };
         this.setState(
             {
-                declaracion : mapDeclaracion(data)
-            },()=>{
+                declaracion: mapDeclaracion(data)
+            }, () => {
                 this.setState({bandera: this.state.bandera === 1 ? 2 : 1})
             }
         );
@@ -181,7 +189,7 @@ class DemoDeclaraciones extends React.Component {
 
     clean = () => {
         this.setState({
-            rol: '',
+            user: 'Auditor Superior de la Federación',
             nombre: '',
             apellidoUno: '',
             apellidoDos: '',
@@ -193,7 +201,7 @@ class DemoDeclaraciones extends React.Component {
         const {classes} = this.props;
         return (
             <div>
-                <Header/>
+                <Header user={this.state.user} handleChangeUser={this.handleChangeUser}/>
                 <div className={classes.bgImg}>
                     <div className={classes.container}>
                         <Grid container spacing={24}>
@@ -223,26 +231,6 @@ class DemoDeclaraciones extends React.Component {
                                         <Typography variant={'title'} className={classes.title}> Consulta</Typography>
                                     </Grid>
 
-                                    <Grid item xs={1}>
-                                        <FormControl className={classes.formControl}>
-                                            <InputLabel htmlFor="rol">Rol</InputLabel>
-                                            <Select
-                                                value={this.state.rol}
-                                                onChange={this.handleChange('rol')}
-                                                inputProps={{
-                                                    name: 'rol',
-                                                    id: 'rol',
-                                                }}
-                                            >
-                                                <MenuItem value="">
-                                                    <em>Ninguno</em>
-                                                </MenuItem>
-                                                <MenuItem value={10}>Rol 1</MenuItem>
-                                                <MenuItem value={20}>Rol 2</MenuItem>
-                                                <MenuItem value={30}>Rol 3</MenuItem>
-                                            </Select>
-                                        </FormControl>
-                                    </Grid>
                                     <Grid item xs={3}>
                                         <TextField
                                             id="standard-name"
@@ -251,6 +239,7 @@ class DemoDeclaraciones extends React.Component {
                                             value={this.state.nombre}
                                             onChange={this.handleChange('nombre')}
                                             margin="normal"
+
                                         />
                                     </Grid>
                                     <Grid item xs={3}>

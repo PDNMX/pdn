@@ -8,8 +8,11 @@ import PropTypes from 'prop-types';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-//import MenuIcon from '@material-ui/icons/Menu';
 import Grid from '@material-ui/core/Grid';
+import Avatar from "@material-ui/core/Avatar/Avatar";
+import Menu from "@material-ui/core/Menu/Menu";
+import MenuItem from "@material-ui/core/MenuItem/MenuItem";
+import Select from "@material-ui/core/Select/Select";
 
 
 const styles = theme => ({
@@ -26,10 +29,28 @@ const styles = theme => ({
 });
 
 class PDNAppBar extends React.Component {
+    state = {
+        auth: true,
+        anchorEl: null,
+        user :'Auditor Superior de la Federación',
+        open : false
+    };
+
+    handleMenu = event => {
+        this.setState({ anchorEl: event.currentTarget });
+    };
+
+    handleClose = () => {
+        this.setState({ open: false });
+    };
+
+    handleOpen = () => {
+        this.setState({ open: true });
+    };
 
     render(){
-        const {classes } = this.props;
-
+        const {classes ,user,handleChangeUser} = this.props;
+        console.log("User: ",user);
         return (
             <div className={classes.root}>
                 <AppBar color="default"  position="static" >
@@ -44,16 +65,29 @@ class PDNAppBar extends React.Component {
                                 <Typography variant="title" color="inherit" className={classes.flex}>
 
                                 </Typography>
+                                <div>
+                                    <IconButton
+                                        aria-owns={this.state.open ? 'menu-appbar' : null}
+                                        aria-haspopup="true"
+                                        onClick={this.handleMenu}
+                                        color="inherit"
+                                    >
+                                        <Avatar src="avatarUno.png" className={classes.avatar}/>
+                                    </IconButton>
+                                    <Select
+                                        id="menu-appbar"
+                                        open={this.state.open}
+                                        onClose={this.handleClose}
+                                        value = {user}
+                                        onChange = {handleChangeUser}
+                                        onOpen={this.handleOpen}
+                                    >
+                                        <MenuItem value={'Auditor Superior de la Federación'}  onClick={this.handleClose}>Auditor Superior de la Federación</MenuItem>
+                                        <MenuItem value={'Secretario de la Función Pública'}  onClick={this.handleClose}>Secretario de la Función Pública</MenuItem>
+                                        <MenuItem value={'UST-Subdirector de área'}  onClick={this.handleClose}>UST-Subdirector de área</MenuItem>
+                                    </Select>
+                                </div>
 
-                                <Button color="inherit" href="https://www.plataformadigitalnacional.org/blog">
-                                    Blog
-                                </Button>
-                                <Button color="inherit" component={Link} to="/about">
-                                    Acerca
-                                </Button>
-                                <Button color="inherit" component={Link} to="/faq" >
-                                    FAQ
-                                </Button>
                             </Toolbar>
                         </Grid>
                     </Grid>
