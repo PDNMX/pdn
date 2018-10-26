@@ -1,7 +1,6 @@
 import React from "react";
 import {Link} from 'react-router-dom';
 import AppBar from "@material-ui/core/AppBar/AppBar";
-import Button from '@material-ui/core/Button';
 import imgHeader from "../../assets/img/Demo.PNG";
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
@@ -10,7 +9,6 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
 import Avatar from "@material-ui/core/Avatar/Avatar";
-import Menu from "@material-ui/core/Menu/Menu";
 import MenuItem from "@material-ui/core/MenuItem/MenuItem";
 import Select from "@material-ui/core/Select/Select";
 
@@ -49,8 +47,8 @@ class PDNAppBar extends React.Component {
     };
 
     render(){
-        const {classes ,user,handleChangeUser} = this.props;
-        console.log("User: ",user);
+        const {classes ,user,handleChangeUser,srcAvatar} = this.props;
+
         return (
             <div className={classes.root}>
                 <AppBar color="default"  position="static" >
@@ -72,7 +70,7 @@ class PDNAppBar extends React.Component {
                                         onClick={this.handleMenu}
                                         color="inherit"
                                     >
-                                        <Avatar src="avatarUno.png" className={classes.avatar}/>
+                                        <Avatar src={srcAvatar} className={classes.avatar}/>
                                     </IconButton>
                                     <Select
                                         id="menu-appbar"

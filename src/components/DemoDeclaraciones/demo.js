@@ -5,10 +5,6 @@ import PropTypes from 'prop-types';
 import Footer from '../Footer/Footer';
 import Header from "./Header";
 import Grid from "@material-ui/core/Grid/Grid";
-import Select from "@material-ui/core/Select/Select";
-import InputLabel from "@material-ui/core/InputLabel/InputLabel";
-import FormControl from "@material-ui/core/FormControl/FormControl";
-import MenuItem from "@material-ui/core/MenuItem/MenuItem";
 import TextField from "@material-ui/core/TextField/TextField";
 import IconButton from "@material-ui/core/IconButton/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
@@ -16,10 +12,8 @@ import ClearIcon from "@material-ui/icons/Clear";
 import Mensaje from "./Mensaje";
 import Registro from "./Registro";
 import Tooltip from "@material-ui/core/Tooltip/Tooltip";
-import rp from "request-promise";
 import data from "./data.json";
 import {mapDeclaracion} from "./utils";
-import Avatar from "@material-ui/core/Avatar/Avatar";
 
 const styles = theme => ({
     root: {
@@ -148,6 +142,7 @@ class DemoDeclaraciones extends React.Component {
         apellidoUno: '',
         apellidoDos: '',
         bandera: 0,
+        srcAvatar:'avatarUno.png'
 
     };
 
@@ -157,7 +152,15 @@ class DemoDeclaraciones extends React.Component {
         });
     };
     handleChangeUser= event => {
-        this.setState({ user: event.target.value });
+        this.setState(
+            {
+                user: event.target.value,
+                nombre: '',
+                apellidoUno: '',
+                apellidoDos: '',
+                bandera: 0,
+                srcAvatar: event.target.value==='Auditor Superior de la Federación'?'avatarUno.png': event.target.value==='Secretario de la Función Pública'?'avatarDos.png':'avatarTres.png'
+            });
     };
     search = () => {
         alert("Buscando...");
@@ -201,7 +204,7 @@ class DemoDeclaraciones extends React.Component {
         const {classes} = this.props;
         return (
             <div>
-                <Header user={this.state.user} handleChangeUser={this.handleChangeUser}/>
+                <Header user={this.state.user} srcAvatar={this.state.srcAvatar} handleChangeUser={this.handleChangeUser}/>
                 <div className={classes.bgImg}>
                     <div className={classes.container}>
                         <Grid container spacing={24}>
