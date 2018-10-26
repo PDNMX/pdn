@@ -69,6 +69,7 @@ class DependientesEconomicos extends React.Component {
                             <TableCell>Proveedor/Contratista gobierno</TableCell>
                             <TableCell>¿Intereses en mismo sector?</TableCell>
                             <TableCell>¿Cabildeo?</TableCell>
+                            <TableCell>Observaciones</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -96,6 +97,7 @@ class DependientesEconomicos extends React.Component {
                                         <TableCell><Checkbox disabled checked =  {row.proveedor_contratista_gobierno} value="checkedE" /></TableCell>
                                         <TableCell><Checkbox disabled checked =  {row.tiene_intereses_mismo_sector_declarante} value="checkedE" /></TableCell>
                                         <TableCell><Checkbox disabled checked =  {row.desarrolla_cabildeo_sector_declarante} value="checkedE" /></TableCell>
+                                        <TableCell>{row.observaciones}</TableCell>
                                     </TableRow>
                                 )
                             })

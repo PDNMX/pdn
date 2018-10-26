@@ -16,6 +16,9 @@ import ClearIcon from "@material-ui/icons/Clear";
 import Mensaje from "./Mensaje";
 import Registro from "./Registro";
 import Tooltip from "@material-ui/core/Tooltip/Tooltip";
+import rp from "request-promise";
+import data from  "./data.json";
+import {mapDeclaracion} from "./utils";
 
 const styles = theme => ({
     root: {
@@ -70,7 +73,7 @@ const styles = theme => ({
     },
     bgPanelLight: {
         backgroundColor: theme.palette.white.color,
-        minHeight : '550px',
+        minHeight: '550px',
         paddingBottom: '50px',
     },
     section: {
@@ -139,276 +142,8 @@ class DemoDeclaraciones extends React.Component {
         nombre: '',
         apellidoUno: '',
         apellidoDos: '',
-        bandera: 2,
-        declaracion: {
-            informacion_personal:{
-                "informacion_general": {
-                    "nombres": "Carlos",
-                    "primer_apellido": "Pérez",
-                    "segundo_apellido": "López",
-                    "nacionalidades": [
-                        {
-                            "valor": "México",
-                            "codigo": "MX"
-                        }
-                    ],
-                    "pais_nacimiento": {
-                        "valor": "México",
-                        "codigo": "MX"
-                    },
-                    "entidad_federativa_nacimiento": {
-                        "nom_ent": "México",
-                        "cve_ent": 15
-                    },
-                    "curp": "BEML920313HMCLNS09",
-                    "rfc": "GOAP780710RH7",
-                    "fecha_nacimiento": "31/07/1980",
-                    "numero_identificacion_oficial": "a1b2c3d4",
-                    "correo_electronico": {
-                        "personal": "jperez@ejemplo.com.mx",
-                        "laboral": "jperez@ejemplo.com.mx"
-                    },
-                    "telefono": {
-                        "personal": "+525510203040",
-                        "celular": "+525510203040"
-                    },
-                    "domicilio": {
-                        "pais": {
-                            "valor": "México",
-                            "codigo": "MX"
-                        },
-                        "entidad_federativa": {
-                            "nom_ent": "México",
-                            "cve_ent": 15
-                        },
-                        "municipio": {
-                            "nom_mun": "Ecatepec de Morelos",
-                            "cve_mun": 27
-                        },
-                        "cp": 55018,
-                        "localidad": {
-                            "nom_loc": "Ecatepec de Morelos",
-                            "cve_loc": 1
-                        },
-                        "vialidad": {
-                            "tipo_vial": "CALLE",
-                            "nom_vial": "El Rosal"
-                        },
-                        "numExt": 24,
-                        "numInt": 48
-                    },
-                    "estado_civil": {
-                        "codigo": "CAS",
-                        "valor": "Casado (a)"
-                    },
-                    "regimen_matrimonial": {
-                        "codigo": "SBI",
-                        "valor": "Separación de bienes"
-                    },
-                    "fecha_declaracion": "31/07/1980"
-                },
-                "datos_curriculares": {
-                    "grado_maximo_escolaridad": "Licenciatura",
-                    "grados_academicos": [
-                        {
-                            "grado_obtenido": "Licenciatura",
-                            "institucion_educativa": "La Universidad Nacionalista México",
-                            "lugar_institucion_educativa": {
-                                "nom_ent": "México",
-                                "cve_ent": 15
-                            },
-                            "carrera": "Ing. en Sistemas Computacionales",
-                            "estatus": {
-                                "codigo": "CURS",
-                                "valor": "Cursando"
-                            },
-                            "ano_conclusion": "2005",
-                            "documento_obtenido": {
-                                "codigo": "BOL",
-                                "valor": "Boleta"
-                            },
-                            "cedula_profesional": "2094884"
-                        }
-                    ]
-                },
-                "datos_encargo_actual": {
-                    "ente_publico": "Presidencia de la República",
-                    "empleo_cargo_comision": "Director General de Datos Abiertos",
-                    "nivel_gobierno": {
-                        "codigo": "EST",
-                        "valor": "Estatal"
-                    },
-                    "poder_juridico": {
-                        "codigo": "JUD",
-                        "valor": "Judicial"
-                    },
-                    "contratado_honorarios": true,
-                    "nivel_encargo": "CA0001",
-                    "area_adscripcion": "Unidad de Política Regulatoria",
-                    "fecha_posesion": "31/07/1980",
-                    "lugar_ubicacion": {
-                        "valor": "México",
-                        "codigo": "MX"
-                    },
-                    "direccion_encargo": {
-                        "pais": {
-                            "valor": "México",
-                            "codigo": "MX"
-                        },
-                        "entidad_federativa": {
-                            "nom_ent": "México",
-                            "cve_ent": 15
-                        },
-                        "municipio": {
-                            "nom_mun": "Ecatepec de Morelos",
-                            "cve_mun": 27
-                        },
-                        "cp": 55018,
-                        "localidad": {
-                            "nom_loc": "Ecatepec de Morelos",
-                            "cve_loc": 1
-                        },
-                        "vialidad": {
-                            "tipo_vial": "CALLE",
-                            "nom_vial": "El Rosal"
-                        },
-                        "numExt": 24,
-                        "numInt": 48
-                    },
-                    "sector_industria": {
-                        "codigo": "SFS",
-                        "valor": "Servicios de salud y asistencia social"
-                    },
-                    "funciones_principales": [
-                        {
-                            "codigo": "ABI",
-                            "valor": "Administración de bienes"
-                        }
-                    ]
-                },
-                "experiencia_laboral": [
-                    {
-                        "ambito": {
-                            "codigo": "Pub",
-                            "valor": "Público"
-                        },
-                        "nivel_gobierno": {
-                            "codigo": "EST",
-                            "valor": "Estatal"
-                        },
-                        "poder_ente": {
-                            "codigo": "JUD",
-                            "valor": "Judicial"
-                        },
-                        "nombre_institucion": "Instituto Federal de Telecomunicaciones",
-                        "unidad_administrativa": "Unidad de Política Regulatoria",
-                        "direccion": {
-                            "pais": {
-                                "valor": "México",
-                                "codigo": "MX"
-                            },
-                            "entidad_federativa": {
-                                "nom_ent": "México",
-                                "cve_ent": 15
-                            },
-                            "municipio": {
-                                "nom_mun": "Ecatepec de Morelos",
-                                "cve_mun": 27
-                            },
-                            "cp": 55018,
-                            "localidad": {
-                                "nom_loc": "Ecatepec de Morelos",
-                                "cve_loc": 1
-                            },
-                            "vialidad": {
-                                "tipo_vial": "CALLE",
-                                "nom_vial": "El Rosal"
-                            },
-                            "numExt": 24,
-                            "numInt": 48
-                        },
-                        "sector_industria": {
-                            "codigo": "SFS",
-                            "valor": "Servicios de salud y asistencia social"
-                        },
-                        "jerarquia_rango": "string",
-                        "cargo_puesto": "Jefe de Departamento",
-                        "fecha_ingreso": "31/07/1980",
-                        "fecha_salida": "31/07/1980",
-                        "funciones_principales": [
-                            {
-                                "codigo": "ABI",
-                                "valor": "Administración de bienes"
-                            }
-                        ]
-                    }
-                ],
-                "datos_dependientes_economicos": [
-                    {
-                        "nombres": "Carlos",
-                        "primer_apellido": "Pérez",
-                        "segundo_apellido": "López",
-                        "tipo_relacion": {
-                            "codigo": "CONY",
-                            "valor": "Cónyuge"
-                        },
-                        "nacionalidad": {
-                            "valor": "México",
-                            "codigo": "MX"
-                        },
-                        "curp": "BEML920313HMCLNS09",
-                        "rfc": "GOAP780710RH7",
-                        "fecha_nacimiento": "31/07/1980",
-                        "numero_identificacion_nacional": "ABCD1234",
-                        "habita_domicilio_declarante": true,
-                        "domicilio": {
-                            "pais": {
-                                "valor": "México",
-                                "codigo": "MX"
-                            },
-                            "entidad_federativa": {
-                                "nom_ent": "México",
-                                "cve_ent": 15
-                            },
-                            "municipio": {
-                                "nom_mun": "Ecatepec de Morelos",
-                                "cve_mun": 27
-                            },
-                            "cp": 55018,
-                            "localidad": {
-                                "nom_loc": "Ecatepec de Morelos",
-                                "cve_loc": 1
-                            },
-                            "vialidad": {
-                                "tipo_vial": "CALLE",
-                                "nom_vial": "El Rosal"
-                            },
-                            "numExt": 24,
-                            "numInt": 48
-                        },
-                        "medio_contacto": "usuario@correo.com",
-                        "ingresos_propios": true,
-                        "ocupacion_profesion": "Administrador de empresas",
-                        "sector_industria": {
-                            "codigo": "SFS",
-                            "valor": "Servicios de salud y asistencia social"
-                        },
-                        "proveedor_contratista_gobierno": true,
-                        "tiene_intereses_mismo_sector_declarante": true,
-                        "desarrolla_cabildeo_sector_declarante": true,
-                        "beneficiario_programa_publico": [
-                            {
-                                "nombre_programa": "Prospera",
-                                "institucion_otorga_apoyo": "XE-IPN Canal 11",
-                                "tipo_apoyo": "Servicio",
-                                "valor_apoyo": 4000
-                            }
-                        ],
-                        "observaciones": "Esto es una observación"
-                    }
-                ]
-            }
-        }
+        bandera: 0,
+
     };
 
     handleChange = name => event => {
@@ -418,24 +153,42 @@ class DemoDeclaraciones extends React.Component {
     };
     search = () => {
         alert("Buscando...");
+        let options = {
+            uri: 'https://api',
+            json: true
+        };
+        this.setState(
+            {
+                declaracion : mapDeclaracion(data)
+            },()=>{
+                this.setState({bandera: this.state.bandera === 1 ? 2 : 1})
+            }
+        );
+
+        /*
+                rp(options)
+                    .then(data => {
+                        this.setState(
+                            {declaracion: mapDeclaracion(data)}
+                            );
+                    }).catch(err => {
+                    this.setState({loading: false});
+                    alert("_No se pudó obtener la información");
+                    console.log(err);
+                });
+        */
+    };
+
+    clean = () => {
         this.setState({
-            bandera : this.state.bandera===1?2:1,
             rol: '',
             nombre: '',
             apellidoUno: '',
             apellidoDos: '',
-        })
+            bandera: 0
+        });
     };
 
-    clean=()=>{
-      this.setState({
-          rol: '',
-          nombre: '',
-          apellidoUno: '',
-          apellidoDos: '',
-          bandera : 0
-      })  ;
-    };
     render() {
         const {classes} = this.props;
         return (
@@ -539,16 +292,18 @@ class DemoDeclaraciones extends React.Component {
 
                                     </Grid>
                                     <Grid item xs={12}>
-                                        {this.state.bandera!==0 && <Typography variant={'title'} className={classes.title}> Resultado</Typography>
+                                        {this.state.bandera !== 0 &&
+                                        <Typography variant={'title'} className={classes.title}> Resultado</Typography>
                                         }
 
                                     </Grid>
                                     <Grid item xs={12}>
                                         {
-                                            this.state.bandera===1 && <Mensaje mensaje={'El usuario no cuenta con los permisos suficientes'}/>
+                                            this.state.bandera === 1 &&
+                                            <Mensaje mensaje={'El usuario no cuenta con los permisos suficientes'}/>
                                         }
                                         {
-                                            this.state.bandera===2 && <Registro declaracion={this.state.declaracion}/>
+                                            this.state.bandera === 2 && <Registro declaracion={this.state.declaracion}/>
                                         }
 
                                     </Grid>
