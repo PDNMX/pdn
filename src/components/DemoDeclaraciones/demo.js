@@ -14,6 +14,9 @@ import Registro from "./Registro";
 import Tooltip from "@material-ui/core/Tooltip/Tooltip";
 import data from "./data.json";
 import {mapDeclaracion} from "./utils";
+import rp from "request-promise";
+import TablaPre from "./TablaPre";
+
 
 const styles = theme => ({
     root: {
@@ -142,8 +145,9 @@ class DemoDeclaraciones extends React.Component {
         apellidoUno: '',
         apellidoDos: '',
         bandera: 0,
-        srcAvatar:'avatarUno.png'
-
+        srcAvatar: 'avatarUno.png',
+        registros: [],
+        showTable: false
     };
 
     handleChange = name => event => {
@@ -151,7 +155,7 @@ class DemoDeclaraciones extends React.Component {
             [name]: event.target.value,
         });
     };
-    handleChangeUser= event => {
+    handleChangeUser = event => {
         this.setState(
             {
                 user: event.target.value,
@@ -159,35 +163,64 @@ class DemoDeclaraciones extends React.Component {
                 apellidoUno: '',
                 apellidoDos: '',
                 bandera: 0,
-                srcAvatar: event.target.value==='Auditor Superior de la Federación'?'avatarUno.png': event.target.value==='Secretario de la Función Pública'?'avatarDos.png':'avatarTres.png'
+                registros: [],
+                showTable: false,
+                srcAvatar: event.target.value === 'Auditor Superior de la Federación' ? 'avatarUno.png' : event.target.value === 'Secretario de la Función Pública' ? 'avatarDos.png' : 'avatarTres.png'
             });
     };
-    search = () => {
-        alert("Buscando...");
+
+    getRegistro = (id) => {
         let options = {
-            uri: 'https://api',
+            uri: 'http://204.48.18.61:6060/api/s1/declaraciones?id=' + id,
             json: true
         };
-        this.setState(
-            {
-                declaracion: mapDeclaracion(data)
-            }, () => {
-                this.setState({bandera: this.state.bandera === 1 ? 2 : 1})
-            }
-        );
 
-        /*
-                rp(options)
-                    .then(data => {
-                        this.setState(
-                            {declaracion: mapDeclaracion(data)}
-                            );
-                    }).catch(err => {
-                    this.setState({loading: false});
-                    alert("_No se pudó obtener la información");
-                    console.log(err);
-                });
-        */
+        rp(options)
+            .then(data => {
+                this.setState(
+                   {
+                       declaracion: mapDeclaracion(data)
+                   }, () => {
+                       this.setState(
+                           {
+                               bandera: 2,
+                               showTable : false
+                           })
+                   }
+               );
+
+            }).catch(err => {
+                this.setState({loading: false});
+                alert("_No se pudó obtener la información");
+                console.log(err);
+        });
+
+    }
+    search = () => {
+        let condiciones = '';
+        condiciones += this.state.nombre ? 'nombres=' + this.state.nombre : '';
+        condiciones += this.state.apellidoUno ? '&&primer_apellido=' + this.state.apellidoUno : '';
+        condiciones += this.state.apellidoDos ? '&&segundo_apellido=' + this.state.apellidoDos : '';
+
+        let options = {
+            uri: 'http://204.48.18.61:6060/api/s1/declaraciones?' + condiciones,
+            json: true
+        };
+
+        rp(options)
+            .then(data => {
+                this.setState({
+                    registros: data.results,
+                    showTable: true,
+                    bandera : 0
+                })
+
+            }).catch(err => {
+            this.setState({loading: false});
+            alert("_No se pudó obtener la información");
+            console.log(err);
+        });
+
     };
 
     clean = () => {
@@ -196,7 +229,9 @@ class DemoDeclaraciones extends React.Component {
             nombre: '',
             apellidoUno: '',
             apellidoDos: '',
-            bandera: 0
+            bandera: 0,
+            registros: [],
+            showTable: false
         });
     };
 
@@ -204,7 +239,8 @@ class DemoDeclaraciones extends React.Component {
         const {classes} = this.props;
         return (
             <div>
-                <Header user={this.state.user} srcAvatar={this.state.srcAvatar} handleChangeUser={this.handleChangeUser}/>
+                <Header user={this.state.user} srcAvatar={this.state.srcAvatar}
+                        handleChangeUser={this.handleChangeUser}/>
                 <div className={classes.bgImg}>
                     <div className={classes.container}>
                         <Grid container spacing={24}>
@@ -231,7 +267,7 @@ class DemoDeclaraciones extends React.Component {
                             <Grid item xs={12} className={classes.section}>
                                 <Grid container spacing={16}>
                                     <Grid item xs={12}>
-                                        <Typography variant={'title'} className={classes.title}> Consulta</Typography>
+                                        <Typography variant={'title'} className={classes.title}>Consulta</Typography>
                                     </Grid>
 
                                     <Grid item xs={3}>
@@ -281,14 +317,19 @@ class DemoDeclaraciones extends React.Component {
                                                 <ClearIcon/>
                                             </IconButton>
                                         </Tooltip>
-
                                     </Grid>
                                     <Grid item xs={12}>
-                                        {this.state.bandera !== 0 &&
-                                        <Typography variant={'title'} className={classes.title}> Resultado</Typography>
+                                        {this.state.showTable &&
+                                        <Typography variant={'title'} className={classes.title}> Resultados
+                                            previos</Typography>
                                         }
-
                                     </Grid>
+                                    <Grid item xs={12}>
+                                        {this.state.showTable &&
+                                        <TablaPre registros={this.state.registros} getRegistro={this.getRegistro}/>
+                                        }
+                                    </Grid>
+
                                     <Grid item xs={12}>
                                         {
                                             this.state.bandera === 1 &&

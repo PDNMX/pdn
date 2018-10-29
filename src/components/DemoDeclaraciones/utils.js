@@ -1,4 +1,5 @@
 const base = {
+    _id : 'DATO PRIVADO',
     informacion_personal: {
         "informacion_general": {
             "nombres": "DATO PRIVADO",
@@ -72,8 +73,15 @@ const base = {
                     "grado_obtenido": "DATO PRIVADO",
                     "institucion_educativa": "DATO PRIVADO",
                     "lugar_institucion_educativa": {
-                        "nom_ent": "DATO PRIVADO",
-                        "cve_ent": 0
+                        "pais":{
+                            "codigo" : "DATO PRIVADO",
+                            "valor" : "DATO PRIVADO"
+                        },
+                        "entidad": {
+                            "nom_ent": "DATO PRIVADO",
+                            "cve_ent": 0
+                        }
+
                     },
                     "carrera": "DATO PRIVADO",
                     "estatus": {
@@ -272,6 +280,7 @@ const base = {
 
 export function mapDeclaracion(data) {
     let declaracion = getAll(data, base);
+    console.log("Declaracion mapeada: ",declaracion);
     return declaracion;
 }
 
