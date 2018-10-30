@@ -12,11 +12,11 @@ import ClearIcon from "@material-ui/icons/Clear";
 import Mensaje from "./Mensaje";
 import Registro from "./Registro";
 import Tooltip from "@material-ui/core/Tooltip/Tooltip";
-import data from "./data.json";
 import {mapDeclaracion} from "./utils";
 import rp from "request-promise";
 import TablaPre from "./TablaPre";
-
+import CircularProgress from "@material-ui/core/CircularProgress";
+import dataDemo from "./data.json";
 
 const styles = theme => ({
     root: {
@@ -135,19 +135,31 @@ const styles = theme => ({
     },
     avatar: {
         margin: 10
-    }
+    },
+    progress: {
+        position: 'absolute',
+        margin: 'auto',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0
+    },
 });
 
 class DemoDeclaraciones extends React.Component {
     state = {
-        user: 'Auditor Superior de la Federación',
+        user: 'profile_1',
         nombre: '',
         apellidoUno: '',
         apellidoDos: '',
         bandera: 0,
         srcAvatar: 'avatarUno.png',
         registros: [],
-        showTable: false
+        showTable: false,
+        loading: false,
+        totalRows:0,
+        rowsPerPage : 10,
+        page : 0
     };
 
     handleChange = name => event => {
@@ -155,6 +167,7 @@ class DemoDeclaraciones extends React.Component {
             [name]: event.target.value,
         });
     };
+
     handleChangeUser = event => {
         this.setState(
             {
@@ -170,50 +183,27 @@ class DemoDeclaraciones extends React.Component {
     };
 
     getRegistro = (id) => {
+        this.setState({loading: true});
         let options = {
-            uri: 'http://204.48.18.61:6060/api/s1/declaraciones?id=' + id,
+            uri: 'https://plataformadigitalnacional.org/demo1/api/s1/declaraciones?id=' + id + '&profile=' + this.state.user,
             json: true
         };
 
         rp(options)
             .then(data => {
                 this.setState(
-                   {
-                       declaracion: mapDeclaracion(data)
-                   }, () => {
-                       this.setState(
-                           {
-                               bandera: 2,
-                               showTable : false
-                           })
-                   }
-               );
+                    {
+                        declaracion: mapDeclaracion(data)
 
-            }).catch(err => {
-                this.setState({loading: false});
-                alert("_No se pudó obtener la información");
-                console.log(err);
-        });
-
-    }
-    search = () => {
-        let condiciones = '';
-        condiciones += this.state.nombre ? 'nombres=' + this.state.nombre : '';
-        condiciones += this.state.apellidoUno ? '&&primer_apellido=' + this.state.apellidoUno : '';
-        condiciones += this.state.apellidoDos ? '&&segundo_apellido=' + this.state.apellidoDos : '';
-
-        let options = {
-            uri: 'http://204.48.18.61:6060/api/s1/declaraciones?' + condiciones,
-            json: true
-        };
-
-        rp(options)
-            .then(data => {
-                this.setState({
-                    registros: data.results,
-                    showTable: true,
-                    bandera : 0
-                })
+                    }, () => {
+                        this.setState(
+                            {
+                                bandera: 2,
+                                showTable: false,
+                                loading: false,
+                            })
+                    }
+                );
 
             }).catch(err => {
             this.setState({loading: false});
@@ -222,10 +212,49 @@ class DemoDeclaraciones extends React.Component {
         });
 
     };
+    search = () => {
+        this.setState({loading: true});
+        let condiciones = '';
+        condiciones += this.state.nombre ? 'nombres=' + this.state.nombre : '';
+        condiciones += this.state.apellidoUno ? '&&primer_apellido=' + this.state.apellidoUno : '';
+        condiciones += this.state.apellidoDos ? '&&segundo_apellido=' + this.state.apellidoDos : '';
 
+        let skip = this.state.page * this.state.rowsPerPage;
+        let options = {
+            uri: 'https://plataformadigitalnacional.org/demo1/api/s1/declaraciones?' + condiciones + '&skip='+skip,
+            json: true
+        };
+
+        rp(options)
+            .then(data => {
+                this.setState({
+                    registros: data.results,
+                    showTable: true,
+                    bandera: 0,
+                    loading: false,
+                    totalRows: data.total,
+                    rowsPerPage: data.pagination.limit,
+
+                })
+
+            }).catch(err => {
+            this.setState({loading: false});
+            alert("_No se pudó obtener la información");
+            console.log(err);
+        });
+
+
+    };
+
+    handleChangePage = (event, page) => {
+        this.setState({page}, () => {
+            this.search();
+        });
+
+    };
     clean = () => {
         this.setState({
-            user: 'Auditor Superior de la Federación',
+            user: 'profile_1',
             nombre: '',
             apellidoUno: '',
             apellidoDos: '',
@@ -263,6 +292,10 @@ class DemoDeclaraciones extends React.Component {
                 </div>
                 <div className={classes.bgPanelLight}>
                     <div className={classes.root}>
+                        {
+                            this.state.loading &&
+                            <CircularProgress className={classes.progress} id="spinnerLoading" size={100}/>
+                        }
                         <Grid container justify={'center'} spacing={0}>
                             <Grid item xs={12} className={classes.section}>
                                 <Grid container spacing={16}>
@@ -326,7 +359,9 @@ class DemoDeclaraciones extends React.Component {
                                     </Grid>
                                     <Grid item xs={12}>
                                         {this.state.showTable &&
-                                        <TablaPre registros={this.state.registros} getRegistro={this.getRegistro}/>
+                                        <TablaPre registros={this.state.registros} getRegistro={this.getRegistro}
+                                        totalRows={this.state.totalRows} rowsPerPage={this.state.rowsPerPage} page={this.state.page}
+                                                  handleChangePage={this.handleChangePage}/>
                                         }
                                     </Grid>
 
@@ -338,10 +373,7 @@ class DemoDeclaraciones extends React.Component {
                                         {
                                             this.state.bandera === 2 && <Registro declaracion={this.state.declaracion}/>
                                         }
-
                                     </Grid>
-
-
                                 </Grid>
                             </Grid>
                         </Grid>

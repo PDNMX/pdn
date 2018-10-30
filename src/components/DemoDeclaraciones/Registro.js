@@ -51,7 +51,7 @@ class Registro extends  React.Component{
                         <Typography className={classes.heading}>Experiencia laboral</Typography>
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails>
-                        <ExperienciaLaboral experiencias={declaracion.informacion_personal.experiencia_laboral}/>
+                        <ExperienciaLaboral experiencias={declaracion.informacion_personal.experiencia_laboral?declaracion.informacion_personal.experiencia_laboral:[]}/>
                     </ExpansionPanelDetails>
                 </ExpansionPanel>
                 <ExpansionPanel defaultExpanded={false}>
@@ -59,7 +59,7 @@ class Registro extends  React.Component{
                         <Typography className={classes.heading}>Dependientes económicos</Typography>
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails>
-                        <DependientesEconomicos dependientes={declaracion.informacion_personal.datos_dependientes_economicos}/>
+                        <DependientesEconomicos dependientes={declaracion.informacion_personal.datos_dependientes_economicos?declaracion.informacion_personal.datos_dependientes_economicos:[]}/>
                     </ExpansionPanelDetails>
                 </ExpansionPanel>
             </div>

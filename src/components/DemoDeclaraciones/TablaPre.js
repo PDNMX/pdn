@@ -8,6 +8,8 @@ import Table from "@material-ui/core/Table";
 import TableCell from "@material-ui/core/TableCell/TableCell";
 import TableHead from "@material-ui/core/TableHead/TableHead";
 import Button from "@material-ui/core/Button/Button";
+import Grid from "@material-ui/core/Grid/Grid";
+import TablePagination from "@material-ui/core/TablePagination/TablePagination";
 
 const styles = theme => ({
     table: {
@@ -25,7 +27,7 @@ const styles = theme => ({
 
 class TablaPre extends React.Component {
     render() {
-        const {registros, classes, getRegistro} = this.props;
+        const {registros, classes, getRegistro,totalRows,rowsPerPage,page,handleChangePage} = this.props;
         return (
             <div className={classes.tableContainer}>
                 <Table className={classes.table}>
@@ -43,7 +45,7 @@ class TablaPre extends React.Component {
                             registros.map(item => {
                                 let row = item.informacion_personal.informacion_general;
                                 return (
-                                    <TableRow>
+                                    <TableRow key={item._id}>
                                         <TableCell>{row.nombres + ' ' + row.primer_apellido + ' ' + row.segundo_apellido + ' '}</TableCell>
                                         <TableCell>{row.rfc}</TableCell>
                                         <TableCell>{row.curp}</TableCell>
@@ -59,6 +61,26 @@ class TablaPre extends React.Component {
                         }
                     </TableBody>
                 </Table>
+                <TablePagination
+                        className={classes.tablePagination}
+                        component="div"
+                        count={totalRows}
+                        rowsPerPage={rowsPerPage}
+                        page={page}
+                        backIconButtonProps={{
+                            'aria-label': 'Previous Page',
+                        }}
+                        nextIconButtonProps={{
+                            'aria-label': 'Next Page',
+                        }}
+                        onChangePage={handleChangePage}
+                        onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                        labelRowsPerPage='Registros por página'
+                        labelDisplayedRows={({from, to, count}) => {
+                            return `${from}-${to} de ${count}`;
+                        }}
+                    />
+
 
             </div>
         );

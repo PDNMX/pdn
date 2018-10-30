@@ -94,26 +94,28 @@ class DatosCurriculares extends React.Component {
                                         <Table className={classes.table}>
                                             <TableHead>
                                                 <TableRow>
+                                                    <TableCell>Grado</TableCell>
                                                     <TableCell>Carrera</TableCell>
                                                     <TableCell>Institución educativa</TableCell>
                                                     <TableCell>Estatus</TableCell>
                                                     <TableCell>Año conclusión</TableCell>
                                                     <TableCell>Documento obtenido</TableCell>
                                                     <TableCell>Cédula profesional</TableCell>
-                                                    <TableCell>Entidad federativa</TableCell>
+
                                                 </TableRow>
                                             </TableHead>
                                             <TableBody>
-                                                { datos_curriculares.grados_academicos.map(row => {
-                                                   return(
-                                                        <TableRow key={row.indexCurrent}>
+                                                { datos_curriculares.grados_academicos.map((row,index=0 )=> {
+                                                    return(
+                                                        <TableRow key={index++}>
+                                                            <TableCell>{row.grado_obtenido}</TableCell>
                                                             <TableCell>{row.carrera}</TableCell>
                                                             <TableCell>{row.institucion_educativa}</TableCell>
                                                             <TableCell>{row.estatus.valor}</TableCell>
                                                             <TableCell>{row.ano_conclusion}</TableCell>
                                                             <TableCell>{row.documento_obtenido.valor}</TableCell>
                                                             <TableCell>{row.cedula_profesional}</TableCell>
-                                                            <TableCell>{row.lugar_institucion_educativa.nom_ent}</TableCell>
+
                                                         </TableRow>
                                                     )
                                                 })

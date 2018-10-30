@@ -74,9 +74,9 @@ class DependientesEconomicos extends React.Component {
                     </TableHead>
                     <TableBody>
                         {
-                            dependientes.map(row => {
+                            dependientes.map((row,index=0) => {
                                 return(
-                                    <TableRow>
+                                    <TableRow key={index++}>
                                         <TableCell>{row.tipo_relacion.valor}</TableCell>
                                         <TableCell>{row.nombres + ' '+row.primer_apellido+' '+row.segundo_apellido+' '}</TableCell>
                                         <TableCell>{row.nacionalidad.valor}</TableCell>

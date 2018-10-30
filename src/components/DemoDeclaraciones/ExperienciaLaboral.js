@@ -69,9 +69,9 @@ class ExperienciaLaboral extends React.Component {
                     </TableHead>
                     <TableBody>
                         {
-                            experiencias.map(row => {
+                            experiencias.map((row,index=0) => {
                                 return(
-                                    <TableRow>
+                                    <TableRow key={index++}>
                                         <TableCell>{row.ambito.valor}</TableCell>
                                         <TableCell>{row.nivel_gobierno.valor}</TableCell>
                                         <TableCell>{row.poder_ente.valor}</TableCell>

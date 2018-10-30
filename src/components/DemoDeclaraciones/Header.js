@@ -80,9 +80,9 @@ class PDNAppBar extends React.Component {
                                         onChange = {handleChangeUser}
                                         onOpen={this.handleOpen}
                                     >
-                                        <MenuItem value={'Auditor Superior de la Federación'}  onClick={this.handleClose}>Auditor Superior de la Federación</MenuItem>
-                                        <MenuItem value={'Secretario de la Función Pública'}  onClick={this.handleClose}>Secretario de la Función Pública</MenuItem>
-                                        <MenuItem value={'UST-Subdirector de área'}  onClick={this.handleClose}>UST-Subdirector de área</MenuItem>
+                                        <MenuItem value={'profile_1'}  onClick={this.handleClose}>Auditor Superior de la Federación</MenuItem>
+                                        <MenuItem value={'profile_2'}  onClick={this.handleClose}>Secretario de la Función Pública</MenuItem>
+                                        <MenuItem value={'profile_3'}  onClick={this.handleClose}>UST-Subdirector de área</MenuItem>
                                     </Select>
                                 </div>
 

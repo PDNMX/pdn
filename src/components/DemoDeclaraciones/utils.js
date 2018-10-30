@@ -29,7 +29,8 @@ const base = {
             },
             "telefono": {
                 "personal": "DATO PRIVADO",
-                "celular": "DATO PRIVADO"
+                "celular": "DATO PRIVADO",
+                "laboral" : "DATO PRIVADO"
             },
             "domicilio": {
                 "pais": {
@@ -274,20 +275,26 @@ const base = {
             }
         ]
     }
-
 };
 
 
 export function mapDeclaracion(data) {
     let declaracion = getAll(data, base);
-    console.log("Declaracion mapeada: ",declaracion);
+    //console.log("Declaracion mapeada: ",declaracion);
     return declaracion;
 }
-
 function getAll(obj, base) {
     for (let i in obj) {
-        if (typeof  obj[i] === 'object') {
-            getAll(obj[i], base[i]);
+       if (typeof  obj[i] === 'object') {
+            if(Array.isArray(obj[i])){
+                let index = 0;
+                for(let j in obj[i]){
+                   base[i][index]= getAll(obj[i][j],Object.assign({},base[i][0]));
+                    index +=1;
+                }
+            }else{
+                getAll(obj[i], base[i]);
+            }
         }
         else {
             base[i] = obj[i];
