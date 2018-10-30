@@ -163,15 +163,6 @@ class InformacionPersonal extends React.Component {
                                 </Grid>
                                 <Grid item xs={3}>
                                     <TextField disabled
-                                        id="telefonoLaboral"
-                                        label="Teléfono laboral: "
-                                        className={classes.textField}
-                                        value={informacionPersonal.telefono.laboral}
-                                        margin="normal" fullWidth
-                                    />
-                                </Grid>
-                                <Grid item xs={3}>
-                                    <TextField disabled
                                         id="correoPersonal"
                                         label="Correo electrónico personal: "
                                         className={classes.textField}

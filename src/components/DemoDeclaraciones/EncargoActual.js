@@ -253,6 +253,15 @@ class EncargoActual extends React.Component {
                                         margin="normal" fullWidth
                                     />
                                 </Grid>
+                                <Grid item xs={3}>
+                                    <TextField disabled
+                                               id="telefonoLaboral"
+                                               label="Teléfono laboral: "
+                                               className={classes.textField}
+                                               value={encargo.telefono_laboral}
+                                               margin="normal" fullWidth
+                                    />
+                                </Grid>
                             </Grid>
                         </Grid>
                     </Grid>

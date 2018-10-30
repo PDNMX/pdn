@@ -151,7 +151,8 @@ const base = {
                     "codigo": "DATO RESERVADO",
                     "valor": "DATO RESERVADO"
                 }
-            ]
+            ],
+            "telefono_laboral" : "DATO RESERVADO"
         },
         "experiencia_laboral": [
             {
