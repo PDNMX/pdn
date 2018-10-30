@@ -220,8 +220,9 @@ class DemoDeclaraciones extends React.Component {
         condiciones += this.state.apellidoDos ? '&&segundo_apellido=' + this.state.apellidoDos : '';
 
         let skip = this.state.page * this.state.rowsPerPage;
+        let rpp = this.state.rowsPerPage;
         let options = {
-            uri: 'http://189.206.66.196/demo1/api/s1/declaraciones?' + condiciones + '&skip='+skip,
+            uri: 'http://189.206.66.196/demo1/api/s1/declaraciones?' + condiciones + '&skip='+skip+'&limit='+rpp,
             json: true
         };
 
@@ -251,6 +252,11 @@ class DemoDeclaraciones extends React.Component {
             this.search();
         });
 
+    };
+    handleChangeRowsPerPage = event => {
+        this.setState({ rowsPerPage: event.target.value },()=>{
+            this.search();
+        });
     };
     clean = () => {
         this.setState({
@@ -352,7 +358,7 @@ class DemoDeclaraciones extends React.Component {
                                         {this.state.showTable &&
                                         <TablaPre registros={this.state.registros} getRegistro={this.getRegistro}
                                         totalRows={this.state.totalRows} rowsPerPage={this.state.rowsPerPage} page={this.state.page}
-                                                  handleChangePage={this.handleChangePage}/>
+                                                  handleChangePage={this.handleChangePage} handleChangeRowsPerPage={this.handleChangeRowsPerPage}/>
                                         }
                                     </Grid>
 

@@ -24,7 +24,7 @@ const styles = theme => ({
 
 class TablaPre extends React.Component {
     render() {
-        const {registros, classes, getRegistro,totalRows,rowsPerPage,page,handleChangePage} = this.props;
+        const {registros, classes, getRegistro,totalRows,rowsPerPage,page,handleChangePage,handleChangeRowsPerPage} = this.props;
         return (
             <div className={classes.tableContainer}>
                 <Table className={classes.table}>
@@ -58,18 +58,14 @@ class TablaPre extends React.Component {
                         count={totalRows}
                         rowsPerPage={rowsPerPage}
                         page={page}
-                        backIconButtonProps={{
-                            'aria-label': 'Previous Page',
-                        }}
-                        nextIconButtonProps={{
-                            'aria-label': 'Next Page',
-                        }}
+
                         onChangePage={handleChangePage}
-                        onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                        onChangeRowsPerPage={handleChangeRowsPerPage}
                         labelRowsPerPage='Registros por página'
                         labelDisplayedRows={({from, to, count}) => {
                             return `${from}-${to} de ${count}`;
                         }}
+
                     />
 
 
