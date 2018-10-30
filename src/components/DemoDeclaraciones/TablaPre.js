@@ -1,14 +1,11 @@
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles'
-import Typography from '@material-ui/core/Typography';
-import EnhancedTableHead from "../Tablas/EnhancedTableHead";
+import {withStyles} from '@material-ui/core/styles';
 import TableBody from "@material-ui/core/TableBody";
 import TableRow from "@material-ui/core/TableRow";
 import Table from "@material-ui/core/Table";
 import TableCell from "@material-ui/core/TableCell/TableCell";
 import TableHead from "@material-ui/core/TableHead/TableHead";
 import Button from "@material-ui/core/Button/Button";
-import Grid from "@material-ui/core/Grid/Grid";
 import TablePagination from "@material-ui/core/TablePagination/TablePagination";
 
 const styles = theme => ({
@@ -34,10 +31,7 @@ class TablaPre extends React.Component {
                     <TableHead>
                         <TableRow>
                             <TableCell>Nombre completo</TableCell>
-                            <TableCell>RFC</TableCell>
-                            <TableCell>CURP</TableCell>
-                            <TableCell>Fecha nacimiento</TableCell>
-                            <TableCell>Consultar</TableCell>
+                           <TableCell>Consultar</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -47,9 +41,6 @@ class TablaPre extends React.Component {
                                 return (
                                     <TableRow key={item._id}>
                                         <TableCell>{row.nombres + ' ' + row.primer_apellido + ' ' + row.segundo_apellido + ' '}</TableCell>
-                                        <TableCell>{row.rfc}</TableCell>
-                                        <TableCell>{row.curp}</TableCell>
-                                        <TableCell>{row.fecha_nacimiento}</TableCell>
                                         <TableCell>
                                             <Button color="primary" className={classes.button} onClick={()=>getRegistro(item._id)}>
                                                 {'Consultar'}

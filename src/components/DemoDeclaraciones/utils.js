@@ -1,277 +1,277 @@
 const base = {
-    _id : 'DATO PRIVADO',
+    _id : 'DATO RESERVADO',
     informacion_personal: {
         "informacion_general": {
-            "nombres": "DATO PRIVADO",
-            "primer_apellido": "DATO PRIVADO",
-            "segundo_apellido": "DATO PRIVADO",
+            "nombres": "DATO RESERVADO",
+            "primer_apellido": "DATO RESERVADO",
+            "segundo_apellido": "DATO RESERVADO",
             "nacionalidades": [
                 {
-                    "valor": "DATO PRIVADO",
-                    "codigo": "DATO PRIVADO"
+                    "valor": "DATO RESERVADO",
+                    "codigo": "DATO RESERVADO"
                 }
             ],
             "pais_nacimiento": {
-                "valor": "DATO PRIVADO",
-                "codigo": "DATO PRIVADO"
+                "valor": "DATO RESERVADO",
+                "codigo": "DATO RESERVADO"
             },
             "entidad_federativa_nacimiento": {
-                "nom_ent": "DATO PRIVADO",
+                "nom_ent": "DATO RESERVADO",
                 "cve_ent": 0
             },
-            "curp": "DATO PRIVADO",
-            "rfc": "DATO PRIVADO",
-            "fecha_nacimiento": "DATO PRIVADO",
-            "numero_identificacion_oficial": "DATO PRIVADO",
+            "curp": "DATO RESERVADO",
+            "rfc": "DATO RESERVADO",
+            "fecha_nacimiento": "DATO RESERVADO",
+            "numero_identificacion_oficial": "DATO RESERVADO",
             "correo_electronico": {
-                "personal": "DATO PRIVADO",
-                "laboral": "DATO PRIVADO"
+                "personal": "DATO RESERVADO",
+                "laboral": "DATO RESERVADO"
             },
             "telefono": {
-                "personal": "DATO PRIVADO",
-                "celular": "DATO PRIVADO",
-                "laboral" : "DATO PRIVADO"
+                "personal": "DATO RESERVADO",
+                "celular": "DATO RESERVADO",
+                "laboral" : "DATO RESERVADO"
             },
             "domicilio": {
                 "pais": {
-                    "valor": "DATO PRIVADO",
-                    "codigo": "DATO PRIVADO"
+                    "valor": "DATO RESERVADO",
+                    "codigo": "DATO RESERVADO"
                 },
                 "entidad_federativa": {
-                    "nom_ent": "DATO PRIVADO",
+                    "nom_ent": "DATO RESERVADO",
                     "cve_ent": 0
                 },
                 "municipio": {
-                    "nom_mun": "DATO PRIVADO",
+                    "nom_mun": "DATO RESERVADO",
                     "cve_mun": 0
                 },
-                "cp": "DATO PRIVADO",
+                "cp": "DATO RESERVADO",
                 "localidad": {
-                    "nom_loc": "DATO PRIVADO",
+                    "nom_loc": "DATO RESERVADO",
                     "cve_loc": 0
                 },
                 "vialidad": {
-                    "tipo_vial": "DATO PRIVADO",
-                    "nom_vial": "DATO PRIVADO"
+                    "tipo_vial": "DATO RESERVADO",
+                    "nom_vial": "DATO RESERVADO"
                 },
                 "numExt": 0,
                 "numInt": 0
             },
             "estado_civil": {
-                "codigo": "DATO PRIVADO",
-                "valor": "DATO PRIVADO"
+                "codigo": "DATO RESERVADO",
+                "valor": "DATO RESERVADO"
             },
             "regimen_matrimonial": {
-                "codigo": "DATO PRIVADO",
-                "valor": "DATO PRIVADO"
+                "codigo": "DATO RESERVADO",
+                "valor": "DATO RESERVADO"
             },
-            "fecha_declaracion": "DATO PRIVADO"
+            "fecha_declaracion": "DATO RESERVADO"
         },
         "datos_curriculares": {
-            "grado_maximo_escolaridad": "DATO PRIVADO",
+            "grado_maximo_escolaridad": "DATO RESERVADO",
             "grados_academicos": [
                 {
-                    "grado_obtenido": "DATO PRIVADO",
-                    "institucion_educativa": "DATO PRIVADO",
+                    "grado_obtenido": "DATO RESERVADO",
+                    "institucion_educativa": "DATO RESERVADO",
                     "lugar_institucion_educativa": {
                         "pais":{
-                            "codigo" : "DATO PRIVADO",
-                            "valor" : "DATO PRIVADO"
+                            "codigo" : "DATO RESERVADO",
+                            "valor" : "DATO RESERVADO"
                         },
                         "entidad": {
-                            "nom_ent": "DATO PRIVADO",
+                            "nom_ent": "DATO RESERVADO",
                             "cve_ent": 0
                         }
 
                     },
-                    "carrera": "DATO PRIVADO",
+                    "carrera": "DATO RESERVADO",
                     "estatus": {
-                        "codigo": "DATO PRIVADO",
-                        "valor": "DATO PRIVADO"
+                        "codigo": "DATO RESERVADO",
+                        "valor": "DATO RESERVADO"
                     },
-                    "ano_conclusion": "DATO PRIVADO",
+                    "ano_conclusion": "DATO RESERVADO",
                     "documento_obtenido": {
-                        "codigo": "DATO PRIVADO",
-                        "valor": "DATO PRIVADO"
+                        "codigo": "DATO RESERVADO",
+                        "valor": "DATO RESERVADO"
                     },
-                    "cedula_profesional": "DATO PRIVADO"
+                    "cedula_profesional": "DATO RESERVADO"
                 }
             ]
         },
         "datos_encargo_actual": {
-            "ente_publico": "DATO PRIVADO",
-            "empleo_cargo_comision": "DATO PRIVADO",
+            "ente_publico": "DATO RESERVADO",
+            "empleo_cargo_comision": "DATO RESERVADO",
             "nivel_gobierno": {
-                "codigo": "DATO PRIVADO",
-                "valor": "DATO PRIVADO"
+                "codigo": "DATO RESERVADO",
+                "valor": "DATO RESERVADO"
             },
             "poder_juridico": {
-                "codigo": "DATO PRIVADO",
-                "valor": "DATO PRIVADO"
+                "codigo": "DATO RESERVADO",
+                "valor": "DATO RESERVADO"
             },
             "contratado_honorarios": false,
-            "nivel_encargo": "DATO PRIVADO",
-            "area_adscripcion": "DATO PRIVADO",
-            "fecha_posesion": "DATO PRIVADO",
+            "nivel_encargo": "DATO RESERVADO",
+            "area_adscripcion": "DATO RESERVADO",
+            "fecha_posesion": "DATO RESERVADO",
             "lugar_ubicacion": {
-                "valor": "DATO PRIVADO",
-                "codigo": "DATO PRIVADO"
+                "valor": "DATO RESERVADO",
+                "codigo": "DATO RESERVADO"
             },
             "direccion_encargo": {
                 "pais": {
-                    "valor": "DATO PRIVADO",
-                    "codigo": "DATO PRIVADO"
+                    "valor": "DATO RESERVADO",
+                    "codigo": "DATO RESERVADO"
                 },
                 "entidad_federativa": {
-                    "nom_ent": "DATO PRIVADO",
+                    "nom_ent": "DATO RESERVADO",
                     "cve_ent": 0
                 },
                 "municipio": {
-                    "nom_mun": "DATO PRIVADO",
+                    "nom_mun": "DATO RESERVADO",
                     "cve_mun": 0
                 },
-                "cp": "DATO PRIVADO",
+                "cp": "DATO RESERVADO",
                 "localidad": {
-                    "nom_loc": "DATO PRIVADO",
+                    "nom_loc": "DATO RESERVADO",
                     "cve_loc": 0
                 },
                 "vialidad": {
-                    "tipo_vial": "DATO PRIVADO",
-                    "nom_vial": "DATO PRIVADO"
+                    "tipo_vial": "DATO RESERVADO",
+                    "nom_vial": "DATO RESERVADO"
                 },
-                "numExt": "DATO PRIVADO",
-                "numInt": "DATO PRIVADO"
+                "numExt": "DATO RESERVADO",
+                "numInt": "DATO RESERVADO"
             },
             "sector_industria": {
-                "codigo": "DATO PRIVADO",
-                "valor": "DATO PRIVADO"
+                "codigo": "DATO RESERVADO",
+                "valor": "DATO RESERVADO"
             },
             "funciones_principales": [
                 {
-                    "codigo": "DATO PRIVADO",
-                    "valor": "DATO PRIVADO"
+                    "codigo": "DATO RESERVADO",
+                    "valor": "DATO RESERVADO"
                 }
             ]
         },
         "experiencia_laboral": [
             {
                 "ambito": {
-                    "codigo": "DATO PRIVADO",
-                    "valor": "DATO PRIVADO"
+                    "codigo": "DATO RESERVADO",
+                    "valor": "DATO RESERVADO"
                 },
                 "nivel_gobierno": {
-                    "codigo": "DATO PRIVADO",
-                    "valor": "DATO PRIVADO"
+                    "codigo": "DATO RESERVADO",
+                    "valor": "DATO RESERVADO"
                 },
                 "poder_ente": {
-                    "codigo": "DATO PRIVADO",
-                    "valor": "DATO PRIVADO"
+                    "codigo": "DATO RESERVADO",
+                    "valor": "DATO RESERVADO"
                 },
-                "nombre_institucion": "DATO PRIVADO",
-                "unidad_administrativa": "DATO PRIVADO",
+                "nombre_institucion": "DATO RESERVADO",
+                "unidad_administrativa": "DATO RESERVADO",
                 "direccion": {
                     "pais": {
-                        "valor": "DATO PRIVADO",
-                        "codigo": "DATO PRIVADO"
+                        "valor": "DATO RESERVADO",
+                        "codigo": "DATO RESERVADO"
                     },
                     "entidad_federativa": {
-                        "nom_ent": "DATO PRIVADO",
+                        "nom_ent": "DATO RESERVADO",
                         "cve_ent": 0
                     },
                     "municipio": {
-                        "nom_mun": "DATO PRIVADO",
+                        "nom_mun": "DATO RESERVADO",
                         "cve_mun": 0
                     },
-                    "cp": "DATO PRIVADO",
+                    "cp": "DATO RESERVADO",
                     "localidad": {
-                        "nom_loc": "DATO PRIVADO",
+                        "nom_loc": "DATO RESERVADO",
                         "cve_loc": 1
                     },
                     "vialidad": {
-                        "tipo_vial": "DATO PRIVADO",
-                        "nom_vial": "DATO PRIVADO"
+                        "tipo_vial": "DATO RESERVADO",
+                        "nom_vial": "DATO RESERVADO"
                     },
                     "numExt": 0,
                     "numInt": 0
                 },
                 "sector_industria": {
-                    "codigo": "DATO PRIVADO",
-                    "valor": "DATO PRIVADO"
+                    "codigo": "DATO RESERVADO",
+                    "valor": "DATO RESERVADO"
                 },
-                "jerarquia_rango": "DATO PRIVADO",
-                "cargo_puesto": "DATO PRIVADO",
-                "fecha_ingreso": "DATO PRIVADO",
-                "fecha_salida": "DATO PRIVADO",
+                "jerarquia_rango": "DATO RESERVADO",
+                "cargo_puesto": "DATO RESERVADO",
+                "fecha_ingreso": "DATO RESERVADO",
+                "fecha_salida": "DATO RESERVADO",
                 "funciones_principales": [
                     {
-                        "codigo": "DATO PRIVADO",
-                        "valor": "DATO PRIVADO"
+                        "codigo": "DATO RESERVADO",
+                        "valor": "DATO RESERVADO"
                     }
                 ]
             }
         ],
         "datos_dependientes_economicos": [
             {
-                "nombres": "DATO PRIVADO",
-                "primer_apellido": "DATO PRIVADO",
-                "segundo_apellido": "DATO PRIVADO",
+                "nombres": "DATO RESERVADO",
+                "primer_apellido": "DATO RESERVADO",
+                "segundo_apellido": "DATO RESERVADO",
                 "tipo_relacion": {
-                    "codigo": "DATO PRIVADO",
-                    "valor": "DATO PRIVADO"
+                    "codigo": "DATO RESERVADO",
+                    "valor": "DATO RESERVADO"
                 },
                 "nacionalidad": {
-                    "valor": "DATO PRIVADO",
-                    "codigo": "DATO PRIVADO"
+                    "valor": "DATO RESERVADO",
+                    "codigo": "DATO RESERVADO"
                 },
-                "curp": "DATO PRIVADO",
-                "rfc": "DATO PRIVADO",
-                "fecha_nacimiento": "DATO PRIVADO",
-                "numero_identificacion_nacional": "DATO PRIVADO",
+                "curp": "DATO RESERVADO",
+                "rfc": "DATO RESERVADO",
+                "fecha_nacimiento": "DATO RESERVADO",
+                "numero_identificacion_nacional": "DATO RESERVADO",
                 "habita_domicilio_declarante": false,
                 "domicilio": {
                     "pais": {
-                        "valor": "DATO PRIVADO",
-                        "codigo": "DATO PRIVADO"
+                        "valor": "DATO RESERVADO",
+                        "codigo": "DATO RESERVADO"
                     },
                     "entidad_federativa": {
-                        "nom_ent": "DATO PRIVADO",
+                        "nom_ent": "DATO RESERVADO",
                         "cve_ent": 0
                     },
                     "municipio": {
-                        "nom_mun": "DATO PRIVADO",
+                        "nom_mun": "DATO RESERVADO",
                         "cve_mun": 0
                     },
-                    "cp": "DATO PRIVADO",
+                    "cp": "DATO RESERVADO",
                     "localidad": {
-                        "nom_loc": "DATO PRIVADO",
+                        "nom_loc": "DATO RESERVADO",
                         "cve_loc": 0
                     },
                     "vialidad": {
-                        "tipo_vial": "DATO PRIVADO",
-                        "nom_vial": "DATO PRIVADO"
+                        "tipo_vial": "DATO RESERVADO",
+                        "nom_vial": "DATO RESERVADO"
                     },
                     "numExt": 0,
                     "numInt": 0
                 },
-                "medio_contacto": "DATO PRIVADO",
+                "medio_contacto": "DATO RESERVADO",
                 "ingresos_propios": false,
-                "ocupacion_profesion": "DATO PRIVADO",
+                "ocupacion_profesion": "DATO RESERVADO",
                 "sector_industria": {
-                    "codigo": "DATO PRIVADO",
-                    "valor": "DATO PRIVADO"
+                    "codigo": "DATO RESERVADO",
+                    "valor": "DATO RESERVADO"
                 },
                 "proveedor_contratista_gobierno": false,
                 "tiene_intereses_mismo_sector_declarante": false,
                 "desarrolla_cabildeo_sector_declarante": false,
                 "beneficiario_programa_publico": [
                     {
-                        "nombre_programa": "DATO PRIVADO",
-                        "institucion_otorga_apoyo": "DATO PRIVADO",
-                        "tipo_apoyo": "DATO PRIVADO",
+                        "nombre_programa": "DATO RESERVADO",
+                        "institucion_otorga_apoyo": "DATO RESERVADO",
+                        "tipo_apoyo": "DATO RESERVADO",
                         "valor_apoyo": 0
                     }
                 ],
-                "observaciones": "DATO PRIVADO"
+                "observaciones": "DATO RESERVADO"
             }
         ]
     }
@@ -279,7 +279,8 @@ const base = {
 
 
 export function mapDeclaracion(data) {
-    let declaracion = getAll(data, base);
+    let aux = JSON.parse(JSON.stringify(base));
+    let declaracion = getAll(data, aux);
     //console.log("Declaracion mapeada: ",declaracion);
     return declaracion;
 }
@@ -292,7 +293,7 @@ function getAll(obj, base) {
                    base[i][index]= getAll(obj[i][j],Object.assign({},base[i][0]));
                     index +=1;
                 }
-            }else{
+            }else if(base[i]){
                 getAll(obj[i], base[i]);
             }
         }

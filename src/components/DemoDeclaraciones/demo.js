@@ -16,7 +16,7 @@ import {mapDeclaracion} from "./utils";
 import rp from "request-promise";
 import TablaPre from "./TablaPre";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import dataDemo from "./data.json";
+
 
 const styles = theme => ({
     root: {
@@ -148,7 +148,7 @@ const styles = theme => ({
 
 class DemoDeclaraciones extends React.Component {
     state = {
-        user: 'profile_1',
+        user: 'profile_4',
         nombre: '',
         apellidoUno: '',
         apellidoDos: '',
@@ -185,7 +185,7 @@ class DemoDeclaraciones extends React.Component {
     getRegistro = (id) => {
         this.setState({loading: true});
         let options = {
-            uri: 'https://plataformadigitalnacional.org/demo1/api/s1/declaraciones?id=' + id + '&profile=' + this.state.user,
+            uri: 'http://189.206.66.196/demo1/api/s1/declaraciones?id=' + id + '&profile=' + this.state.user,
             json: true
         };
 
@@ -221,7 +221,7 @@ class DemoDeclaraciones extends React.Component {
 
         let skip = this.state.page * this.state.rowsPerPage;
         let options = {
-            uri: 'https://plataformadigitalnacional.org/demo1/api/s1/declaraciones?' + condiciones + '&skip='+skip,
+            uri: 'http://189.206.66.196/demo1/api/s1/declaraciones?' + condiciones + '&skip='+skip,
             json: true
         };
 
@@ -277,15 +277,6 @@ class DemoDeclaraciones extends React.Component {
                                 <Typography className={classes.pdn} variant="display2" style={{color: '#fff'}}>
                                     Sistema de declaración patrimonial y de intereses
                                 </Typography>
-                                <pre>
-                                <Typography variant="subheading" style={{color: '#fff', paddingTop: '10px'}}>
-                                    {'*Inicial \n' +
-                                    '* Conclusión, ó \n' +
-                                    '* Modificación patrimonial'
-                                    }
-                                </Typography>
-                                </pre>
-                                <br/>
                             </Grid>
                         </Grid>
                     </div>

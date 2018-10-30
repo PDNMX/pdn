@@ -74,7 +74,7 @@ const styles = theme => ({
     },
     bgImg: {
         height: '300px',
-        backgroundImage: 'url(contrataciones.jpg)',
+        backgroundImage: 'url(bannerDark3.jpg)',
         backgroundPosition: 'bottom',
         backgroundRepeat: 'no-repeat',
         textAlign: 'left',
@@ -120,23 +120,28 @@ class Index extends React.Component {
         return (
             <div>
                 <Header/>
-                <Paper className={classes.seccion}>
-                    <Grid container>
-                        <Grid item md={8} sm={12} className={classes.bgImg}/>
-                        <Grid item md={4} sm={12} className={classes.container}>
-                            <Typography variant="display1" className={classes.titleLight}>
-                                Servidores públicos y particulares sancionados
-                            </Typography>
-                            <Typography variant="body1" className={classes.textLight}>
-                                It is a long established fact that a reader will be distracted by the readable
-                                content of a page
-                                when looking at its layout. The point of using Lorem Ipsum is that it has a
-                                more-or-less normal
-                                distribution of letters
-                            </Typography>
+                <div className={classes.bgImg}>
+                    <Grid container justify={"center"} spacing={0}>
+                        <Grid item xs={12} className={classes.section}>
+                            <Grid container spacing={0}>
+                                <Grid item xs={12} align={"center"}>
+                                    <Typography variant="display1" className={classes.titleLight}>
+                                        Servidores públicos y particulares sancionados
+                                    </Typography>
+                                    <Typography variant="subheading" className={classes.textLight}>
+                                        It is a long established fact that a reader will be distracted by the
+                                        readable
+                                        content of a page when looking at its layout. The point of using Lorem Ipsum
+                                        is that it has a
+                                        more-or-less normal distribution of letters
+                                    </Typography>
+                                </Grid>
+                            </Grid>
                         </Grid>
+
                     </Grid>
-                </Paper>
+
+                </div>
                 <div className={classes.bgContainer}>
                     <div className={classes.root}>
                         <Grid container spacing={0} justify="center">
@@ -217,14 +222,6 @@ class Index extends React.Component {
                         </Grid>
 
                     </div>
-                </div>
-
-                <div className={classes.links}>
-                    <Grid container spacing={0} justify='center'>
-                        <Grid item xs={12} className={classes.section}>
-                            <PDNLinks/>
-                        </Grid>
-                    </Grid>
                 </div>
                 <Footer/>
             </div>
