@@ -75,11 +75,12 @@ class DependientesEconomicos extends React.Component {
                     <TableBody>
                         {
                             dependientes.map((row,index=0) => {
+                                console.log("ROW: ",row);
                                 return(
                                     <TableRow key={index++}>
                                         <TableCell>{row.tipo_relacion.valor}</TableCell>
                                         <TableCell>{row.nombres + ' '+row.primer_apellido+' '+row.segundo_apellido+' '}</TableCell>
-                                        <TableCell>{row.nacionalidad.valor}</TableCell>
+                                        <TableCell>{row.nacionalidades.map(item=>{return item.valor+', '})}</TableCell>
                                         <TableCell>{row.curp}</TableCell>
                                         <TableCell>{row.rfc}</TableCell>
                                         <TableCell>{row.fecha_nacimiento}</TableCell>

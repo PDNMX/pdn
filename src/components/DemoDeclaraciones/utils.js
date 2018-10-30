@@ -219,10 +219,12 @@ const base = {
                     "codigo": "DATO RESERVADO",
                     "valor": "DATO RESERVADO"
                 },
-                "nacionalidad": {
-                    "valor": "DATO RESERVADO",
-                    "codigo": "DATO RESERVADO"
-                },
+                "nacionalidades": [
+                    {
+                        "valor": "DATO RESERVADO",
+                        "codigo": "DATO RESERVADO"
+                    }
+                ],
                 "curp": "DATO RESERVADO",
                 "rfc": "DATO RESERVADO",
                 "fecha_nacimiento": "DATO RESERVADO",
@@ -281,11 +283,13 @@ const base = {
 export function mapDeclaracion(data) {
     let aux = JSON.parse(JSON.stringify(base));
     let declaracion = getAll(data, aux);
-    //console.log("Declaracion mapeada: ",declaracion);
+    console.log("Declaracion mapeada: ",declaracion);
     return declaracion;
 }
 function getAll(obj, base) {
+    console.log("Base: ",base);
     for (let i in obj) {
+        console.log("I: ",i);
        if (typeof  obj[i] === 'object') {
             if(Array.isArray(obj[i])){
                 let index = 0;
@@ -298,6 +302,7 @@ function getAll(obj, base) {
             }
         }
         else {
+            console.log("property i: ",i);
             base[i] = obj[i];
         }
     }

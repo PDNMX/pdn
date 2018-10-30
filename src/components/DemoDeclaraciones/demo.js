@@ -293,7 +293,7 @@ class DemoDeclaraciones extends React.Component {
                             this.state.loading &&
                             <CircularProgress className={classes.progress} id="spinnerLoading" size={100}/>
                         }
-                        <Grid container justify={'center'} spacing={0}>
+                        <Grid container justify={'center'} spacing={0} aria-describedby={'spinnerLoading'} aria-busy={this.state.loading}>
                             <Grid item xs={12} className={classes.section}>
                                 <Grid container spacing={16}>
                                     <Grid item xs={12}>
