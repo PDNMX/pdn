@@ -186,7 +186,8 @@ class DemoDeclaraciones extends React.Component {
         this.setState({loading: true});
         let options = {
             uri: 'https://189.206.66.196:443/demo1/api/s1/declaraciones?id=' + id + '&profile=' + this.state.user,
-            json: true
+            json: true,
+            insecure:true
         };
 
         rp(options)
@@ -223,7 +224,9 @@ class DemoDeclaraciones extends React.Component {
         let rpp = this.state.rowsPerPage;
         let options = {
             uri: 'https://189.206.66.196:443/demo1/api/s1/declaraciones?' + condiciones + '&skip='+skip+'&limit='+rpp,
-            json: true
+            json: true,
+            insecure:true
+
         };
 
         rp(options)
