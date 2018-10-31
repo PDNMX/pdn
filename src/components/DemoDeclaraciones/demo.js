@@ -185,7 +185,7 @@ class DemoDeclaraciones extends React.Component {
     getRegistro = (id) => {
         this.setState({loading: true});
         let options = {
-            uri: 'http://189.206.66.196/demo1/api/s1/declaraciones?id=' + id + '&profile=' + this.state.user,
+            uri: 'https://189.206.66.196:443/demo1/api/s1/declaraciones?id=' + id + '&profile=' + this.state.user,
             json: true
         };
 
@@ -222,7 +222,7 @@ class DemoDeclaraciones extends React.Component {
         let skip = this.state.page * this.state.rowsPerPage;
         let rpp = this.state.rowsPerPage;
         let options = {
-            uri: 'http://189.206.66.196/demo1/api/s1/declaraciones?' + condiciones + '&skip='+skip+'&limit='+rpp,
+            uri: 'https://189.206.66.196:443/demo1/api/s1/declaraciones?' + condiciones + '&skip='+skip+'&limit='+rpp,
             json: true
         };
 
