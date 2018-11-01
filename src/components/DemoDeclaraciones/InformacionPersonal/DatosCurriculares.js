@@ -16,9 +16,6 @@ const styles = theme => ({
         textAlign: 'center',
         marginTop: theme.spacing.unit * 2,
     },
-    bgPanelLight: {
-        backgroundColor: theme.palette.white.color,
-    },
     section: {
         maxWidth: '1024px'
     },
@@ -34,9 +31,6 @@ const styles = theme => ({
             marginLeft: theme.spacing.unit,
             marginRight: theme.spacing.unit
         }
-    },
-    formControl: {
-        margin: theme.spacing.unit,
     },
     table: {
         minWidth: 700,
@@ -56,14 +50,6 @@ class DatosCurriculares extends React.Component {
         apellidoDos: ''
     };
 
-    handleChange = name => event => {
-        console.log("EVent: ", event)
-        this.setState({
-            [name]: event.target.value,
-        });
-    };
-
-
     render() {
         const {classes, datos_curriculares} = this.props;
         return (
@@ -72,10 +58,6 @@ class DatosCurriculares extends React.Component {
                     <Grid container justify={'center'} spacing={0}>
                         <Grid item xs={12} className={classes.section}>
                             <Grid container spacing={24}>
-                                <Grid item xs={12}>
-                                    <Typography variant={'title'}
-                                                className={classes.title}>{'Datos curriculares'}</Typography>
-                                </Grid>
                                 <Grid item xs={12}>
                                     <TextField disabled
                                         id="gradoMaximoEscolaridad"
@@ -86,7 +68,7 @@ class DatosCurriculares extends React.Component {
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <Typography variant={'title'}
+                                    <Typography variant={'subheading'}
                                                 className={classes.title}>{'Grados académicos'}</Typography>
                                 </Grid>
                                 <Grid item xs={12}>

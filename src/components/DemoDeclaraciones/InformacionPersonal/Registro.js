@@ -20,10 +20,10 @@ class Registro extends  React.Component{
         const {declaracion,classes} = this.props;
         return (
             <div>
-                <ExpansionPanel defaultExpanded={true}>
+                <ExpansionPanel>
                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
                         <Typography className={classes.heading}>Información
-                            personal</Typography>
+                            general</Typography>
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails>
                         <InformacionPersonal

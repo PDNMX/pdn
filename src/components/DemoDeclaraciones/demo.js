@@ -10,13 +10,12 @@ import IconButton from "@material-ui/core/IconButton/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 import ClearIcon from "@material-ui/icons/Clear";
 import Mensaje from "./Mensaje";
-import Registro from "./Registro";
 import Tooltip from "@material-ui/core/Tooltip/Tooltip";
 import {mapDeclaracion} from "./utils";
 import rp from "request-promise";
 import TablaPre from "./TablaPre";
 import CircularProgress from "@material-ui/core/CircularProgress";
-
+import Tabs from "./TabsDemo";
 
 const styles = theme => ({
     root: {
@@ -32,42 +31,10 @@ const styles = theme => ({
 
         }
     },
-    container1: {
-        flexGrow: 1,
-        backgroundColor: theme.palette.backDark.color
-    },
     title: {
         color: theme.palette.textPrincipal.color,
         textAlign: 'center',
         marginTop: theme.spacing.unit * 2,
-    },
-    titleLight: {
-        color: "#e6e6e6",
-        textAlign: 'center',
-        marginTop: theme.spacing.unit * 2,
-    },
-    titleDark: {
-        color: "#e6e6e6",
-        textAlign: 'center',
-        marginTop: theme.spacing.unit * 2,
-    },
-    summary: {
-        color: theme.palette.primary.main,
-    },
-    textLight: {
-        color: "#e6e6e6",
-        textAlign: 'justify'
-    },
-    textDark: {
-        color: theme.palette.textNormal,
-        textAlign: 'justify'
-    },
-    container2: {
-        flexGrow: 1,
-        backgroundColor: theme.palette.backLight.color,
-    },
-    bgPanelDark: {
-        backgroundColor: theme.palette.backDark.color,
     },
     bgPanelLight: {
         backgroundColor: theme.palette.white.color,
@@ -86,25 +53,8 @@ const styles = theme => ({
         backgroundSize: 'cover',
         width: '100%',
     },
-    seccion: {
-        backgroundColor: theme.palette.backDark.color
-    },
-    image: {
-        width: '50%',
-        height: '150px',
-        borderRadius: '50px',
-        display: 'inline-block'
-    },
-    bgContainer: {
-        backgroundColor: theme.palette.grisTenue.color,
-        paddingTop: theme.spacing.unit * 5,
-        paddingBottom: theme.spacing.unit * 5
-    },
     center: {
         textAlign: 'center'
-    },
-    links: {
-        backgroundColor: theme.palette.grisTenue.color
     },
     container: {
         [theme.breakpoints.up('sm')]: {
@@ -124,11 +74,6 @@ const styles = theme => ({
             paddingTop: '40px'
 
         }
-    },
-    formControl: {
-        margin: theme.spacing.unit,
-        display: 'flex'
-
     },
     button: {
         margin: theme.spacing.unit,
@@ -157,9 +102,9 @@ class DemoDeclaraciones extends React.Component {
         registros: [],
         showTable: false,
         loading: false,
-        totalRows:0,
-        rowsPerPage : 10,
-        page : 0
+        totalRows: 0,
+        rowsPerPage: 10,
+        page: 0
     };
 
     handleChange = name => event => {
@@ -183,11 +128,18 @@ class DemoDeclaraciones extends React.Component {
     };
 
     getRegistro = (id) => {
+        const API_URL = process.env.API_URL || 'https://demospdn.host/demo1/api/s1/declaraciones';
+
         this.setState({loading: true});
+
         let options = {
-            uri: 'https://189.206.66.196:443/demo1/api/s1/declaraciones?id=' + id + '&profile=' + this.state.user,
+            uri: API_URL,
+            qs: {
+                id: id,
+                profile: this.state.user
+            },
             json: true,
-            insecure:true
+            insecure: true
         };
 
         rp(options)
@@ -214,18 +166,20 @@ class DemoDeclaraciones extends React.Component {
 
     };
     search = () => {
+        const API_URL = process.env.API_URL || 'https://demospdn.host/demo1/api/s1/declaraciones';
         this.setState({loading: true});
-        let condiciones = '';
-        condiciones += this.state.nombre ? 'nombres=' + this.state.nombre : '';
-        condiciones += this.state.apellidoUno ? '&&primer_apellido=' + this.state.apellidoUno : '';
-        condiciones += this.state.apellidoDos ? '&&segundo_apellido=' + this.state.apellidoDos : '';
 
-        let skip = this.state.page * this.state.rowsPerPage;
-        let rpp = this.state.rowsPerPage;
         let options = {
-            uri: 'https://189.206.66.196:443/demo1/api/s1/declaraciones?' + condiciones + '&skip='+skip+'&limit='+rpp,
+            uri: API_URL,
+            qs: {
+                nombres: this.state.nombre,
+                primer_apellido: this.state.apellidoUno,
+                segundo_apellido: this.state.apellidoDos,
+                skip: this.state.page * this.state.rowsPerPage,
+                limit: this.state.rowsPerPage
+            },
             json: true,
-            insecure:true
+            insecure: true
 
         };
 
@@ -257,7 +211,7 @@ class DemoDeclaraciones extends React.Component {
 
     };
     handleChangeRowsPerPage = event => {
-        this.setState({ rowsPerPage: event.target.value },()=>{
+        this.setState({rowsPerPage: event.target.value}, () => {
             this.search();
         });
     };
@@ -296,7 +250,8 @@ class DemoDeclaraciones extends React.Component {
                             this.state.loading &&
                             <CircularProgress className={classes.progress} id="spinnerLoading" size={100}/>
                         }
-                        <Grid container justify={'center'} spacing={0} aria-describedby={'spinnerLoading'} aria-busy={this.state.loading}>
+                        <Grid container justify={'center'} spacing={0} aria-describedby={'spinnerLoading'}
+                              aria-busy={this.state.loading}>
                             <Grid item xs={12} className={classes.section}>
                                 <Grid container spacing={16}>
                                     <Grid item xs={12}>
@@ -360,8 +315,10 @@ class DemoDeclaraciones extends React.Component {
                                     <Grid item xs={12}>
                                         {this.state.showTable &&
                                         <TablaPre registros={this.state.registros} getRegistro={this.getRegistro}
-                                        totalRows={this.state.totalRows} rowsPerPage={this.state.rowsPerPage} page={this.state.page}
-                                                  handleChangePage={this.handleChangePage} handleChangeRowsPerPage={this.handleChangeRowsPerPage}/>
+                                                  totalRows={this.state.totalRows} rowsPerPage={this.state.rowsPerPage}
+                                                  page={this.state.page}
+                                                  handleChangePage={this.handleChangePage}
+                                                  handleChangeRowsPerPage={this.handleChangeRowsPerPage}/>
                                         }
                                     </Grid>
 
@@ -371,7 +328,8 @@ class DemoDeclaraciones extends React.Component {
                                             <Mensaje mensaje={'El usuario no cuenta con los permisos suficientes'}/>
                                         }
                                         {
-                                            this.state.bandera === 2 && <Registro declaracion={this.state.declaracion}/>
+                                            // this.state.bandera === 2 && <Registro declaracion={this.state.declaracion}/>
+                                            this.state.bandera === 2 && <Tabs declaracion={this.state.declaracion}/>
                                         }
                                     </Grid>
                                 </Grid>

@@ -7,33 +7,6 @@ import TableHead from "@material-ui/core/TableHead/TableHead";
 import TableBody from "@material-ui/core/TableBody/TableBody";
 
 const styles = theme => ({
-    title: {
-        color: theme.palette.textPrincipal.color,
-        textAlign: 'center',
-        marginTop: theme.spacing.unit * 2,
-    },
-    bgPanelLight: {
-        backgroundColor: theme.palette.white.color,
-    },
-    section: {
-        maxWidth: '1024px'
-    },
-    center: {
-        textAlign: 'center'
-    },
-    container: {
-        [theme.breakpoints.up('sm')]: {
-            marginLeft: '100px',
-            marginRight: '100px'
-        },
-        [theme.breakpoints.down('sm')]: {
-            marginLeft: theme.spacing.unit,
-            marginRight: theme.spacing.unit
-        }
-    },
-    formControl: {
-        margin: theme.spacing.unit,
-    },
     table: {
         minWidth: 700,
     },
