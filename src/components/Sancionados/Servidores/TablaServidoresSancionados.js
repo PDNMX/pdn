@@ -103,6 +103,7 @@ const styles = theme => ({
     },
     tablePagination: {
         overflowX: 'auto',
+        fontSize : '0.75rem'
     },
     smallIcon: {
         color: theme.palette.primary.main
@@ -148,12 +149,12 @@ const toolbarStyles = theme => ({
 
 
 let EnhancedTableToolbar = props => {
-    const {classes, handleChangeCampo, nombreServidor, procedimiento, institucion} = props;
+    const {classes, handleChangeCampo, nombreServidor, institucion} = props;
     return (
         <Toolbar className={classes.toolBarStyle}>
             <div className={classes.toolBarFloat}>
                 <BusquedaServidor handleChangeCampo={handleChangeCampo}
-                                  nombreServidor={nombreServidor} procedimiento={procedimiento}
+                                  nombreServidor={nombreServidor}
                                   institucion={institucion}/>
             </div>
         </Toolbar>
@@ -239,10 +240,11 @@ class EnhancedTable extends React.Component {
 
     isSelected = id => this.state.selected.indexOf(id) !== -1;
 
-    getTotalRows = (URL) => {
+    getTotalRows = (params) => {
         let options = {
-            uri: URL ? URL : 'https://plataformadigitalnacional.org/api/rsps?select=count=eq.exact',
-            json: true
+            uri: 'https://plataformadigitalnacional.org/api/rsps?select=count=eq.exact',
+            json: true,
+            qs : params
         };
         rp(options)
             .then(data => {
@@ -255,19 +257,21 @@ class EnhancedTable extends React.Component {
     };
     handleSearchAPI = (typeSearch) => {
         this.setState({loading: true});
-        let {procedimiento, institucion, nombreServidor} = this.state;
+        let {institucion, nombreServidor} = this.state;
         const URI = 'https://plataformadigitalnacional.org/api/rsps?';
-        let vUri = URI + ((typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? ('limit=' + this.state.rowsPerPage + '&&offset=' + (this.state.rowsPerPage * this.state.page) + '&&') : '');
 
-        vUri = vUri + ((procedimiento && procedimiento > 0) ? 'id_procedimiento=eq.' + procedimiento + '&&' : '');
-        vUri = vUri + ((institucion) ? 'institucion=eq.' + institucion + '&&' : '');
-        vUri = vUri + ((nombreServidor) ? 'nombre=like.*' + nombreServidor.toUpperCase() + '*' : '');
+        let params ={};
+        (institucion) ? params.dependencia = 'eq.' + institucion : null;
+        (nombreServidor) ? params.servidor_publico = 'like.*' + nombreServidor.toUpperCase() + '*' : null;
+        (typeSearch==='FIELD_FILTER'||typeSearch==='CHANGE_PAGE')? params.limit = this.state.rowsPerPage:null;
+        (typeSearch==='CHANGE_PAGE')? params.offset = (this.state.rowsPerPage * this.state.page) : null;
 
-        if (typeSearch === 'FIELD_FILTER') this.getTotalRows(vUri + '&&select=count=eq.exact');
+        if (typeSearch === 'FIELD_FILTER') this.getTotalRows(params);
 
         let options = {
-            uri: typeSearch === 'ALL' ? URI : vUri,
-            json: true
+            uri: URI,
+            json: true,
+            qs : params
         };
 
         rp(options)
@@ -312,7 +316,7 @@ class EnhancedTable extends React.Component {
                 <Paper>
                     <EnhancedTableToolbar categoria={this.state.categoria} handleChangeCampo={this.handleChangeCampo}
                                           nombreServidor={this.state.nombreServidor}
-                                          procedimiento={this.state.procedimiento} data={filterData}
+                                          data={filterData}
                                           columnas={columnData} institucion={this.state.institucion}/>
 
                     <DetalleServidorSancionado handleClose={this.handleClose} servidor={this.state.elementoSeleccionado}
@@ -363,7 +367,7 @@ class EnhancedTable extends React.Component {
                                     {emptyRows > 0 && (
                                         <TableRow style={{height: 49 * emptyRows}}>
 
-                                            <TableCell colSpan={6}/>
+                                            <TableCell colSpan={4}/>
 
                                         </TableRow>
                                     )}

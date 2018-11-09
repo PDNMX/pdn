@@ -20,6 +20,9 @@ const styles = theme => ({
     button: {
         margin: theme.spacing.unit,
     },
+    tablePagination:{
+        fontSize : '0.75rem'
+    }
 });
 
 class TablaPre extends React.Component {

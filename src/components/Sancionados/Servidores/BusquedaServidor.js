@@ -75,8 +75,8 @@ const styles = theme => ({
     },
     centrado:{
         display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 });
 
@@ -168,13 +168,13 @@ class BusquedaServidor extends React.Component {
     componentDidMount() {
         let sug = [ {value : '' ,label:'TODAS'}];
         let options = {
-            uri: 'https://plataformadigitalnacional.org/api/instituciones?order=institucion.asc',
+            uri: 'https://plataformadigitalnacional.org/api/instituciones_rsps?order=dependencia.asc',
             json: true
         };
         rp(options)
             .then(data => {
                 data.map(item => {
-                    sug.push({value: item.institucion, label: item.institucion});
+                    sug.push({value: item.dependencia, label: item.dependencia});
                 });
                 this.setState({suggestions: sug});
             }).catch(err => {
@@ -190,7 +190,7 @@ class BusquedaServidor extends React.Component {
     };
 
     render() {
-        const {classes, handleChangeCampo, nombreServidor, procedimiento, institucion, theme} = this.props;
+        const {classes, handleChangeCampo, nombreServidor, institucion, theme} = this.props;
         const selectStyles = {
             input: base => ({
                 ...base,
@@ -207,32 +207,7 @@ class BusquedaServidor extends React.Component {
         };
         return (
             <Grid container spacing={8}>
-                <Grid item xs={12} md={3}>
-                    <FormControl className={classes.formControl}>
-                        <InputLabel shrink htmlFor="campoSelectProcedimiento"
-                                    className={classes.fontLight}>Categoría</InputLabel>
-                        <Select
-                            value={procedimiento}
-                            onChange={(e) => handleChangeCampo('procedimiento', e)}
-                            name="campoSelectProcedimiento"
-                            inputProps={{
-                                name: 'procedimiento',
-                                id: 'procedimiento',
-                                className: classes.fontLight
-                            }}
-
-                        >
-                            <MenuItem value={0}>
-                                <em>TODAS</em>
-                            </MenuItem>
-                            <MenuItem value={1}>CONTRATACIONES PÚBLICAS</MenuItem>
-                            <MenuItem value={2}>CONCESIONES, LICENCIAS, PERMISOS, AUTORIZACIONES Y PRÓRROGAS</MenuItem>
-                            <MenuItem value={3}>ENAJENACIÓN DE BIENES MUEBLES</MenuItem>
-                            <MenuItem value={4}>ASIGNACION Y EMISIÓN DE DICTÁMENES DE AVALÚOS NACIONALES</MenuItem>
-                        </Select>
-                    </FormControl>
-                </Grid>
-                <Grid item xs={12} md={3}>
+                <Grid item xs={12} md={4}>
                     <FormControl className={classes.formControl}>
                         <SelectReact
                             classes={classes}
@@ -247,7 +222,7 @@ class BusquedaServidor extends React.Component {
 
                     </FormControl>
                 </Grid>
-                <Grid item xs={12} md={3}>
+                <Grid item xs={12} md={4}>
                     <FormControl className={classes.formControl}>
                         <TextField
                             id="search"
@@ -273,7 +248,7 @@ class BusquedaServidor extends React.Component {
 
                     </FormControl>
                 </Grid>
-                <Grid item xs={12} md={3} className={classes.centrado}>
+                <Grid item xs={12} md={1} className={classes.centrado}>
                     <Tooltip title={'Limpiar'}>
                         <IconReplay className={classes.fontLight} onClick={this.limpiarBusqueda}/>
                     </Tooltip>

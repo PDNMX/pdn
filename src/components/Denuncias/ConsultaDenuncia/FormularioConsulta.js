@@ -168,14 +168,6 @@ class FormularioConsulta extends React.Component {
                     </Grid>
                 </Grid>
                 <br/>
-
-                <div style={{ backgroundColor: '#fff'}}>
-                    <Grid container spacing={0} justify='center'>
-                        <Grid item xs={12} className={classes.section}>
-                            <PDNLinks/>
-                        </Grid>
-                    </Grid>
-                </div>
                 <Footer/>
 
             </div>

@@ -24,7 +24,7 @@ export function createNodes(rawData, type) {
     // @v4: new flattened scale names.
     const radiusScale = d3.scalePow()
         .exponent(0.5)
-        .range([2, 85])
+        .range([5, 100])
         .domain([0, maxAmount]);
 
     // Use map() to convert raw data into node data.
@@ -34,7 +34,7 @@ export function createNodes(rawData, type) {
     const myNodesSanciones = rawData.map(d => (
         {
             id: (id + 1).toString(),
-            radius: radiusScale(+d.sanciones_total),
+            radius: radiusScale(d.sanciones_total),
             dependencia: d.dependencia,
             group: d.sanciones_total <= pivote ? 'n1' : d.sanciones_total <= pivote * 2 ? 'n2' : d.sanciones_total <= pivote * 3 ? 'n3' : d.sanciones_total <= pivote * 4 ? 'n4' : d.sanciones_total <= pivote * 5 ? 'n5' : d.sanciones_total <= pivote * 6 ? 'n6' : d.sanciones_total <= pivote * 7 ? 'n7' : d.sanciones_total <= pivote * 8 ? 'n8' : d.sanciones_total <= pivote * 9 ? 'n9' : 'n10',
             sancionesTotal: d.sanciones_total,

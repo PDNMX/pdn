@@ -58,13 +58,6 @@ class FormularioDenuncia extends React.Component {
                 </Grid>
 
                 <br/>
-                <div className={classes.links}>
-                    <Grid container spacing={0} justify="center">
-                        <Grid item xs={12} className={classes.section}>
-                            <PDNLinks/>
-                        </Grid>
-                    </Grid>
-                </div>
 
                 <Footer/>
             </div>

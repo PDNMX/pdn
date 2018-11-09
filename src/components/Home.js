@@ -65,8 +65,17 @@ class Home extends React.Component {
                             <Typography variant="headline" >
                                 Explora los sistemas de la PDN
                             </Typography>
-                            <Typography>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            <br/>
+                            <Typography variant={"subheading"} align={"justify"}>
+                                Consulta, visualiza y descarga la información pública de cada uno de los sistemas de la Plataforma Digital Nacional.
+                            </Typography>
+                            <br/>
+                            <Typography variant={"subheading"} align={"justify"}>
+                                La Plataforma permite que los datos de cada uno de los sistemas, que son generados por las instituciones, estén estandarizados y puedan ser interoperables, permitiendo que los consultes, visualices, descargues y uses libremente.
+                            </Typography>
+                            <br/>
+                            <Typography variant={"subheading"} align={"justify"}>
+                                El artículo 49 de la Ley General del Sistema Nacional Anticorrupción establece que la PDN estará integrada, inicialmente, por al menos los siguientes seis sistemas:
                             </Typography>
                         </Grid>
                     </Grid>

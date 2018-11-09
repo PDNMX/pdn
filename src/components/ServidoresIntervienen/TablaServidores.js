@@ -47,41 +47,46 @@ function getSorting(order, orderBy) {
 }
 
 const columnData = [
-    {id: 'servidor', numeric: false, disablePadding: false, label: 'Servidor público', position: 1, mostrar: true},
-    {id: 'institucion', numeric: false, disablePadding: false, label: 'Institución', position: 2, mostrar: true},
-    {id: 'puesto', numeric: false, disablePadding: false, label: 'Puesto', position: 3, mostrar: true},
-    {id: 'tipoArea', numeric: false, disablePadding: false, label: 'Tipo de área', position: 4, mostrar: true},
+    {id: 'id', numeric: true, disablePadding: false, label: 'ID', position: 1, mostrar: false,key:'id'},
+    {id: 'servidor', numeric: false, disablePadding: false, label: 'Servidor público', position: 2, mostrar: true,key:'servidor'},
+    {id: 'institucion', numeric: false, disablePadding: false, label: 'Institución', position: 3, mostrar: true,key:'institucion'},
+    {id: 'puesto', numeric: false, disablePadding: false, label: 'Puesto', position: 4, mostrar: true,key:'puesto'},
+    {id: 'tipoArea', numeric: false, disablePadding: false, label: 'Tipo de área', position: 5, mostrar: true,key:'tipoArea'},
     {
         id: 'contrataciones',
         numeric: false,
         disablePadding: false,
         label: 'Contrataciones públicas',
-        position: 5,
-        mostrar: false
+        position: 6,
+        mostrar: false,
+        key:'contrataciones'
     },
     {
         id: 'concesionesLicencias',
         numeric: false,
         disablePadding: false,
         label: 'Concesiones, licencias, permisos, autorizaciones y prórrogas',
-        position: 6,
-        mostrar: false
+        position: 7,
+        mostrar: false,
+        key:'concesionesLicencias'
     },
     {
         id: 'enajenacion',
         numeric: false,
         disablePadding: false,
         label: 'Enajenación de bienes muebles',
-        position: 7,
-        mostrar: false
+        position: 8,
+        mostrar: false,
+        key:'enajenacion'
     },
     {
         id: 'dictamenes',
         numeric: false,
         disablePadding: false,
         label: 'Asignación y emisión de dictámenes de avalúos nacionales',
-        position: 8,
-        mostrar: false
+        position: 9,
+        mostrar: false,
+        key:'dictamenes'
     },
 ];
 
@@ -118,6 +123,7 @@ const styles = theme => ({
     },
     tablePagination:{
         overflowX : 'auto',
+        fontSize :'0.75rem'
     }
 
 });
@@ -251,10 +257,11 @@ class EnhancedTable extends React.Component {
 
     isSelected = id => this.state.selected.indexOf(id) !== -1;
 
-    getTotalRows = (URL) => {
+    getTotalRows = (params) => {
         let options = {
-            uri: URL ? URL : 'https://plataformadigitalnacional.org/api/reniresp?select=count=eq.exact',
-            json: true
+            uri: 'https://plataformadigitalnacional.org/api/reniresp?select=count=eq.exact&',
+            json: true,
+            qs: params
         };
         rp(options)
             .then(data => {
@@ -269,17 +276,21 @@ class EnhancedTable extends React.Component {
         this.setState({loading: true});
         let {procedimiento, institucion, nombreServidor} = this.state;
         const URI = 'https://plataformadigitalnacional.org/api/reniresp?';
-        let vUri = URI + ((typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? ('limit=' + this.state.rowsPerPage + '&&offset=' + (this.state.rowsPerPage * this.state.page) + '&&') : '');
 
-        vUri = vUri + ((procedimiento && procedimiento > 0) ? 'id_procedimiento=eq.' + procedimiento + '&&' : '');
-        vUri = vUri + ((institucion) ? 'institucion=eq.' + institucion + '&&' : '');
-        vUri = vUri + ((nombreServidor) ? 'nombre=like.*' + nombreServidor.toUpperCase() + '*' : '');
+        let params = {};
 
-        if (typeSearch === 'FIELD_FILTER') this.getTotalRows(vUri + '&&select=count=eq.exact');
+        (procedimiento&&procedimiento) >0 ? params.id_procedimiento= 'eq.'+procedimiento : null;
+        institucion ? params.institucion = 'eq.'+institucion : null;
+        nombreServidor ? params.nombre = 'like.*'+nombreServidor.toUpperCase()+'*' : null;
+        (typeSearch==='FIELD_FILTER'||typeSearch==='CHANGE_PAGE')? params.limit = this.state.rowsPerPage:null;
+        (typeSearch==='CHANGE_PAGE')? params.offset = (this.state.rowsPerPage * this.state.page) : null;
+
+        if (typeSearch === 'FIELD_FILTER') this.getTotalRows(params);
 
         let options = {
-            uri: typeSearch === 'ALL' ? URI : vUri,
-            json: true
+            uri: URI,
+            json: true,
+            qs:params
         };
 
         rp(options)
@@ -317,7 +328,6 @@ class EnhancedTable extends React.Component {
     render() {
         const {classes} = this.props;
         const {data, order, orderBy, selected, rowsPerPage, page, filterData, totalRows, filterDataAll} = this.state;
-        // const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
         const emptyRows = rowsPerPage - filterData.length;
 
         return (
@@ -330,13 +340,12 @@ class EnhancedTable extends React.Component {
 
                     <DetalleServidor handleClose={this.handleClose} servidor={this.state.elementoSeleccionado}
                                      control={this.state.open}/>
-                    {
-                        this.state.loading &&
-                        <CircularProgress className={classes.progress} id="spinnerLoading" size={100}/>
-                    }
-
                     <Grid container justify={'center'} spacing={0}>
                         <Grid item xs={12} className={classes.section}>
+                            {
+                                this.state.loading &&
+                                <CircularProgress className={classes.progress} id="spinnerLoading" size={100}/>
+                            }
                             <Table aria-describedby="spinnerLoading" id={'tableServidores'}
                                    aria-busy={this.state.loading} aria-labelledby="tableTitle"
                                    className={classes.table}>
@@ -374,7 +383,7 @@ class EnhancedTable extends React.Component {
                                         })}
                                     {emptyRows > 0 && (
                                         <TableRow style={{height: 49 * emptyRows}}>
-                                            <TableCell colSpan={6}/>
+                                            <TableCell colSpan={4}/>
                                         </TableRow>
                                     )}
 

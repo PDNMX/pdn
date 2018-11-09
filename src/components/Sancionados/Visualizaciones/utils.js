@@ -15,7 +15,7 @@ import * as d3 from 'd3'
 export function createNodes(rawData, type) {
     // Use the max total_amount in the data as the max in the scale's domain
     // note we have to ensure the total_amount is a number.
-    const maxAmount = d3.max(rawData, d => +  d.total_sanciones);
+    const maxAmount = d3.max(rawData, d => d.total_sanciones);
     const minAmount = d3.min(rawData,d=> d.total_sanciones);
 
     let pivote = (maxAmount-minAmount)/10;

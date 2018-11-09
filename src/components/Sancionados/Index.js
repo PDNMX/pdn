@@ -42,6 +42,13 @@ const styles = theme => ({
         color: "#e6e6e6",
         textAlign: 'center',
         marginTop: theme.spacing.unit * 2,
+        [theme.breakpoints.up('sm')]:{
+            paddingTop: '75px'
+        },
+        [theme.breakpoints.down('sm')]:{
+            paddingTop: '40px'
+
+        }
     },
     titleDark: {
         color: "#e6e6e6",
@@ -128,13 +135,7 @@ class Index extends React.Component {
                                     <Typography variant="display1" className={classes.titleLight}>
                                         Servidores públicos y particulares sancionados
                                     </Typography>
-                                    <Typography variant="subheading" className={classes.textLight}>
-                                        It is a long established fact that a reader will be distracted by the
-                                        readable
-                                        content of a page when looking at its layout. The point of using Lorem Ipsum
-                                        is that it has a
-                                        more-or-less normal distribution of letters
-                                    </Typography>
+
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -153,11 +154,7 @@ class Index extends React.Component {
                                         <Typography variant="title" className={classes.title}>
                                             Servidores públicos sancionados
                                         </Typography>
-                                        <Typography className={classes.textPrimary}>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                            tempor
-                                            incididunt ut labore et dolore magna aliqua.
-                                        </Typography>
+
                                     </Grid>
                                     <Grid item md={4} xs={12} className={classes.center}>
                                         <CardMedia image={img2} className={classes.image}
@@ -165,11 +162,7 @@ class Index extends React.Component {
                                         <Typography variant="title" className={classes.title}>
                                             Particulares sancionados
                                         </Typography>
-                                        <Typography className={classes.textPrimary}>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                            tempor
-                                            incididunt ut labore et dolore magna aliqua.
-                                        </Typography>
+
                                     </Grid>
                                     <Grid item md={4} xs={12} className={classes.center}>
                                         <CardMedia image={img3} className={classes.image}
@@ -177,11 +170,7 @@ class Index extends React.Component {
                                         <Typography variant="title" className={classes.title}>
                                             Visualizaciones
                                         </Typography>
-                                        <Typography className={classes.textPrimary}>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                            tempor
-                                            incididunt ut labore et dolore magna aliqua.
-                                        </Typography>
+
                                     </Grid>
                                 </Grid>
 
@@ -197,21 +186,30 @@ class Index extends React.Component {
                                     <Grid item xs={12}>
                                         {this.state.idContent === 1 &&
                                         <div><Typography variant={'title'} className={classes.title}>
-                                            Servidores públicos sancionados</Typography>
+                                            Servidores públicos sancionados</Typography><br/>
+                                            <Typography variant={"subheading"} align={"justify"} className={classes.textPrimary}>
+                                                Consulta los datos de las sanciones o inhabilitación firmes en contra de servidores públicos por actos vinculados con faltas administrativas graves, la anotación de aquellas abstenciones que hayan realizado las autoridades investigadoras o el Tribunal  Federal de Justicia Administrativa en términos de los artículos 77 y 80 de la Ley de Responsabilidades.
+                                            </Typography><br/>
                                             <TablaServidoresSancionados/>
                                         </div>
                                         }
                                         {this.state.idContent === 2 &&
                                         <div>
                                             <Typography variant={'title'} className={classes.title}>Particulares
-                                                sancionados</Typography>
+                                                sancionados</Typography><br/>
+                                            <Typography variant={"subheading"} align={"justify"} className={classes.textPrimary}>
+                                                Consulta los datos de la relación de particulares que cuentan con algún impedimento o están inhabilitadas para ser contratadas como servidores públicos, y de persona físicas y morales que  de igual forma cuentan con un impedimento o están inhabilitadas como prestadoras de servicio o contratista derivado de una sanción grave por una falta administrativa.
+                                            </Typography><br/>
                                             <TablaParticularaesSancionados/>
                                         </div>
                                         }
                                         {this.state.idContent === 3 &&
                                         <div>
                                             <Typography variant={'title'}
-                                                        className={classes.title}>Visualizaciones</Typography>
+                                                        className={classes.title}>Visualizaciones</Typography><br/>
+                                            <Typography variant={"subheading"} align={"justify"} className={classes.textPrimary}>
+                                                Consulta cuáles son las instituciones con mayor número de servidores públicos sancionados, y las que han sancionado al mayor número de particulares.
+                                            </Typography><br/>
                                             <BubbleHolder/>
                                         </div>
                                         }

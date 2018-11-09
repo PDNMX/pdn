@@ -75,8 +75,8 @@ const styles = theme => ({
     },
     centrado:{
         display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center'
+       justifyContent: 'center',
+       alignItems: 'center'
     }
 });
 
@@ -88,7 +88,7 @@ function Control(props) {
     return (
         <TextField
             fullWidth
-            label="Unidad"
+            label="Institución"
             placeholder={'TODAS'}
             InputProps={{
                 inputComponent,
@@ -232,7 +232,7 @@ class BusquedaServidor extends React.Component {
                         </Select>
                     </FormControl>
                 </Grid>
-                <Grid item xs={12} md={3}>
+                <Grid item xs={12} md={4}>
                     <FormControl className={classes.formControl}>
                         <SelectReact
                             classes={classes}
@@ -247,7 +247,7 @@ class BusquedaServidor extends React.Component {
 
                     </FormControl>
                 </Grid>
-                <Grid item xs={12} md={3}>
+                <Grid item xs={12} md={4}>
                     <FormControl className={classes.formControl}>
                         <TextField
                             id="search"
@@ -273,7 +273,7 @@ class BusquedaServidor extends React.Component {
 
                     </FormControl>
                 </Grid>
-                <Grid item xs={12} md={3} className={classes.centrado}>
+                <Grid item xs={12} md={1} className={classes.centrado}>
                     <Tooltip title={'Limpiar'}>
                         <IconReplay className={classes.fontLight} onClick={this.limpiarBusqueda}/>
                     </Tooltip>

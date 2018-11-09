@@ -8,6 +8,7 @@ import {createNodes} from './utils';
 import rp from "request-promise";
 import { width, height, center } from './bubbles_constants'
 import TypePicker from "../Charts/bubbles/TypePicker";
+import TablaDetalle from "./TablaDetalle";
 
 // Styles
 const styles = theme => ({
@@ -33,7 +34,9 @@ class BubbleHolder extends React.Component{
     state = {
         data : [],
         type : 'sanciones',
-        originalData:[]
+        originalData:[],
+        institucion:null,
+
     };
 
     componentDidMount(){
@@ -63,7 +66,10 @@ class BubbleHolder extends React.Component{
                 type : newType
             });
         }
+    };
 
+    selectBubble = (bubble) => {
+        this.setState({institucion: bubble.dependencia});
     };
 
     render(){
@@ -74,11 +80,10 @@ class BubbleHolder extends React.Component{
                 <Grid container spacing={0}>
                     <Grid item xs  = {12}>
                         <Typography variant={"display1"} className={classes.title}>
-                            Total de {this.state.type} por dependencia
+                            Total de {this.state.type} por institución
                         </Typography>
                         <br/>
-                        <Typography variant={"body1"} className={classes.font}>{'Muestra las dependencias organizadas por el total de sanciones a particulares o bien por el monto total que han acumulado por las sanciones impuestas'}</Typography>
-
+                        <Typography variant={"subheading"} className={classes.font}>{'Muestra las instituciones organizadas por el total de sanciones a particulares o bien por el monto total que han acumulado por las sanciones impuestas'}</Typography>
                     </Grid>
                 </Grid>
 
@@ -86,10 +91,14 @@ class BubbleHolder extends React.Component{
                     <Grid item xs={12}>
                         <TypePicker onChanged={this.onTypeChanged} active={type}/>
                         <BubbleChart width={width} height={height}>
-                            <Bubbles data={data} forceStrength={0.3} center={center} type={type} />
+                            <Bubbles data={data} forceStrength={0.3} center={center} type={type} selectBubble={this.selectBubble}/>
                         </BubbleChart>
                     </Grid>
-
+                    <Grid item xs={12}>
+                        {this.state.institucion &&
+                            <TablaDetalle institucion={this.state.institucion}/>
+                        }
+                    </Grid>
                 </Grid>
             </div>
         );

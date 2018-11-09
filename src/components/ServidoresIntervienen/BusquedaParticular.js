@@ -72,10 +72,10 @@ const styles = theme => ({
         color: theme.palette.fontLight.color,
     },
     centrado:{
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center'
-}
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
 });
 
 
@@ -88,7 +88,7 @@ function Control(props) {
     return (
         <TextField
                        fullWidth
-                       label="Unidad"
+                       label="Institución"
                        placeholder={'TODAS'}
                        InputProps={{
                            inputComponent,

@@ -80,6 +80,7 @@ export default class Bubbles extends React.Component {
             .attr('stroke-width', 2)
             .attr('opacity',0.8)
             .on('mouseover', showDetail)  // eslint-disable-line
+            .on('click',this.props.selectBubble)
             .on('mouseout', hideDetail); // eslint-disable-line
 
         bubblesE.transition().duration(2000).attr('r', d => d.radius).on('end', () => {
@@ -113,6 +114,7 @@ function formatCurrency(n, currency) {
     return currency + n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
 }
 
+
 /*
 * Function called on mouseover to display the
 * details of a bubble in the tooltip.
@@ -121,7 +123,7 @@ export function showDetail(d) {
     // change outline to indicate hover state.
     d3.select(this).attr('stroke', 'black');
 
-    const content = `<span class="name">Unidad: </span><span class="value">${
+    const content = `<span class="name">Institución: </span><span class="value">${
             d.dependencia
             }</span><br/>` +
         `<span class="name">Monto total: </span><span class="value">${

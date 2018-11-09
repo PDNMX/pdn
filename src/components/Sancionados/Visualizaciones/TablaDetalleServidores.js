@@ -6,38 +6,34 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import Toolbar from '@material-ui/core/Toolbar';
 import Paper from '@material-ui/core/Paper';
 import rp from "request-promise";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import BajarCSV from "../../Tablas/BajarCSV";
-import BusquedaParticular from "./BusquedaParticular";
-import DetalleParticular from "./DetalleParticular";
 import Grid from "@material-ui/core/Grid/Grid";
 import EnhancedTableHead from '../../Tablas/EnhancedTableHead';
+import Typography from "@material-ui/core/Typography/Typography";
+import DetalleServidorSancionado from "../Servidores/DetalleServidorSancionado";
 
 let counter = 0;
 
 let createData = (item) => {
+    let leyenda = "NO EXISTE DATO EN LA BASE DE DATOS RSPS";
     counter += 1;
-    let leyenda = "NO EXISTE DATO EN LA BASE DE DATOS SFP";
     return {
         id: counter,
-        proveedor: item.proveedor_o_contratista ? item.proveedor_o_contratista : leyenda,
-        dependencia: item.dependencia ? item.dependencia : leyenda,
-        expediente: item.numero_de_expediente ? item.numero_de_expediente : leyenda,
-        hechos: item.hechos_de_la_irregularidad ? item.hechos_de_la_irregularidad : leyenda,
-        objetoSocial: item.objeto_social ? item.objeto_social : leyenda,
-        sentidoResolucion: item.sentido_de_resolucion ? item.sentido_de_resolucion : leyenda,
-        fechaNotificacion: item.fecha_de_notificacion ? item.fecha_de_notificacion : leyenda,
-        fechaResolucion: item.fecha_de_resolucion ? item.fecha_de_resolucion : leyenda,
-        plazo: item.plazo ? item.plazo : leyenda,
+        servidor: item.servidor_publico ? item.servidor_publico : leyenda,
+        institucion: item.dependencia ? item.dependencia : leyenda,
+        autoridad: item.autoridad ? item.autoridad : leyenda,
+        expediente: item.expediente ? item.expediente : leyenda,
+        fecha_resolucion: item.fecha_resolucion ? item.fecha_resolucion : leyenda,
+        sancion_impuesta: item.sancion_impuesta ? item.sancion_impuesta : leyenda,
+        fecha_inicio: item.inicio ? item.inicio : leyenda,
+        fecha_fin: item.fin ? item.fin : leyenda,
         monto: item.monto ? item.monto : leyenda,
-        responsableInformacion: item.nombre_del_responsable_de_la_informacion ? item.nombre_del_responsable_de_la_informacion : leyenda,
-        fechaActualizacion: item.fecha_de_actualizacion ? item.fecha_de_actualizacion : leyenda
+        causa: item.causa ? item.causa : leyenda
     };
 };
-
 function getSorting(order, orderBy) {
     return order === 'desc'
         ? (a, b) => (b[orderBy] < a[orderBy] ? -1 : 1)
@@ -153,77 +149,32 @@ const styles = theme => ({
     },
     tablePagination:{
         overflowX : 'auto',
-        fontSize : '0.75rem'
+        fontSize:'0.75rem'
+    },
+    title: {
+        color: theme.palette.textPrincipal.color,
+        textAlign: 'center',
+        marginTop: theme.spacing.unit * 2,
     }
 
 });
-
-
-const toolbarStyles = theme => ({
-    root: {
-        width: '100%',
-        padding: theme.spacing.unit,
-    },
-    toolBarStyle: {
-        backgroundColor: 'transparent',
-        position: 'relative',
-        padding: 0,
-        margin: '0 15px',
-        zIndex: 3,
-        borderRadius: theme.spacing.unit,
-    },
-    toolBarFloat: {
-        padding: '15px',
-        marginTop: '-30px',
-        borderRadius: '3px',
-        background: 'linear-gradient(60deg, #295c53, #8fe19f)',
-        boxShadow: '0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgb(41, 92, 83)',
-        width: '100%',
-
-    },
-    spacer: {
-        flex: '1 1 100%',
-    },
-    actions: {
-        color: theme.palette.text.secondary,
-    },
-    title: {
-        flex: '0 0 auto',
-    },
-    flex: {
-        flexGrow: 1,
-    },
-});
-
-
-let EnhancedTableToolbar = props => {
-    const {classes, handleChangeCampo, nombreParticular, institucion} = props;
-    return (
-        <Toolbar className={classes.toolBarStyle}>
-            <div className={classes.toolBarFloat}>
-                <BusquedaParticular handleChangeCampo={handleChangeCampo} nombreParticular={nombreParticular}
-                                    institucion={institucion}/>
-            </div>
-        </Toolbar>
-    );
-};
-
-EnhancedTableToolbar.propTypes = {
-    classes: PropTypes.object.isRequired
-};
-
-EnhancedTableToolbar = withStyles(toolbarStyles)(EnhancedTableToolbar);
 
 
 class EnhancedTable extends React.Component {
 
     componentDidMount() {
-        this.handleSearchAPI('FIELD_FILTER');
+        this.handleSearchAPI();
     }
+
+    componentWillReceiveProps(nextProps){
+        if(nextProps.institucion !== this.props.institucion){
+            this.handleSearchAPI(nextProps.institucion);
+        }
+    }
+
 
     constructor(props) {
         super(props);
-        this.child = React.createRef();
         this.btnDownloadAll = React.createRef();
         this.state = {
             order: 'asc',
@@ -273,7 +224,6 @@ class EnhancedTable extends React.Component {
         this.setState({page}, () => {
             this.handleSearchAPI('CHANGE_PAGE');
         });
-
     };
 
     handleChangeRowsPerPage = event => {
@@ -286,7 +236,7 @@ class EnhancedTable extends React.Component {
 
     getTotalRows = (URL) => {
         let options = {
-            uri: URL ? URL : 'https://plataformadigitalnacional.org/api/proveedores_sancionados?select=count=eq.exact',
+            uri: URL ? URL : 'https://plataformadigitalnacional.org/api/rsps?select=count=eq.exact',
             json: true
         };
         rp(options)
@@ -298,35 +248,35 @@ class EnhancedTable extends React.Component {
             console.log(err);
         });
     };
-    handleSearchAPI = (typeSearch) => {
+    handleSearchAPI = (inst) => {
+        console.log("Inst: ",inst);
         this.setState({loading: true});
-        let {institucion, nombreParticular} = this.state;
-        const URI = 'https://plataformadigitalnacional.org/api/proveedores_sancionados?';
-        let vUri = URI + ((typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? ('limit=' + this.state.rowsPerPage + '&&offset=' + (this.state.rowsPerPage * this.state.page) + '&&') : '');
 
-        vUri = vUri + ((institucion) ? 'dependencia=eq.' + institucion + '&&' : '');
-        vUri = vUri + ((nombreParticular) ? 'proveedor_o_contratista=like.*' + nombreParticular.toUpperCase() + '*' : '');
+        let institucion = inst&&inst!=='ALL'&&inst!=='CHANGE_PAGE'?inst:this.props.institucion;
+        let URI = 'https://plataformadigitalnacional.org/api/rsps?';
+        (inst !== "ALL") ? URI = URI+ '&&limit='+this.state.rowsPerPage+'&&offset='+(this.state.rowsPerPage * this.state.page): null;
+        let vUri = URI + ((institucion) ? '&&dependencia=eq.' + institucion: '');
 
-        if (typeSearch === 'FIELD_FILTER') this.getTotalRows(vUri + '&&select=count=eq.exact');
+        (inst !== 'ALL' && inst !=="CHANGE_PAGE") ? this.getTotalRows(vUri + '&&select=count=eq.exact'):null;
 
         let options = {
-            uri: typeSearch === 'ALL' ? URI : vUri,
-            json: true
+            uri: vUri,
+            json: true,
+
+
         };
         rp(options)
             .then(data => {
                 let dataAux = data.map(item => {
                     return createData(item);
                 });
-                typeSearch === 'ALL' ? this.setState({data: dataAux, loading: false}, () => {
-                    this.btnDownloadAll.triggerDown();
-                }) : (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.setState({
-                        filterData: dataAux,
-                        loading: false
-                    }) :
-                    this.setState({filterDataAll: dataAux, loading: false}, () => {
-                        this.child.triggerDown();
-                    });
+
+                this.setState({
+                    filterData : dataAux,
+                    loading : false
+                },()=>{
+                    inst ==="ALL"?this.btnDownloadAll.triggerDown():null;
+                });
                 return true;
             })
             .catch(err => {
@@ -337,36 +287,29 @@ class EnhancedTable extends React.Component {
 
     };
 
-    handleChangeCampo = (varState, event) => {
-        this.setState({
-            loading: true,
-            [varState]: event ? (event.target ? event.target.value : event.value) : ''
-        }, () => {
-            this.handleSearchAPI('FIELD_FILTER');
-        });
-    };
-
-
     render() {
-        const {classes} = this.props;
+        const {classes,institucion} = this.props;
         const {data, order, orderBy, selected, rowsPerPage, page, filterData, totalRows, filterDataAll} = this.state;
         const emptyRows = rowsPerPage - filterData.length;
         return (
             <div className={classes.container}>
                 <Paper>
-                    <EnhancedTableToolbar handleChangeCampo={this.handleChangeCampo}
-                                          nombreParticular={this.state.nombreParticular}
-                                          institucion={this.state.institucion} />
-                        <DetalleParticular handleClose={this.handleClose} particular={this.state.elementoSeleccionado}
-                                           control={this.state.open}/>
+                    <div className={classes.tableWrapper}>
+                        <DetalleServidorSancionado handleClose={this.handleClose} servidor={this.state.elementoSeleccionado}
+                                                   control={this.state.open}/>
                         {
                             this.state.loading &&
                             <CircularProgress className={classes.progress} id="spinnerLoading" size={100}/>
                         }
                         <Grid container justify={'center'} spacing={0}>
+                            <Grid item xs={12}>
+                                <Typography variant={'title'} className={classes.title}>
+                                    Detalle</Typography>
+                            </Grid>
                             <Grid item xs={12} className={classes.section}>
-                                <Table className={classes.table} aria-describedby="spinnerLoading"
-                                       aria-busy={this.state.loading} aria-labelledby="tableTitle">
+                                <Table aria-describedby="spinnerLoading" id={'tableServidores'}
+                                       aria-busy={this.state.loading} aria-labelledby="tableTitle"
+                                       className={classes.table}>
                                     <EnhancedTableHead
                                         numSelected={selected.length}
                                         order={order}
@@ -374,9 +317,9 @@ class EnhancedTable extends React.Component {
                                         onSelectAllClick={this.handleSelectAllClick}
                                         onRequestSort={this.handleRequestSort}
                                         rowCount={data.length}
-                                        columnData = {columnData}
+                                        columnData={columnData}
                                     />
-                                    <TableBody id="tableParticulares">
+                                    <TableBody>
                                         {filterData
                                             .sort(getSorting(order, orderBy))
                                             .map(n => {
@@ -392,35 +335,33 @@ class EnhancedTable extends React.Component {
                                                         selected={isSelected}
                                                     >
                                                         <TableCell component="th" scope="row"
-                                                                   padding="default">{n.proveedor}</TableCell>
-                                                        <TableCell>{n.dependencia}</TableCell>
+                                                                   padding="default">{n.servidor}</TableCell>
+                                                        <TableCell>{n.institucion}</TableCell>
+                                                        <TableCell>{n.autoridad}</TableCell>
                                                         <TableCell>{n.expediente}</TableCell>
-                                                        <TableCell>{n.sentidoResolucion}</TableCell>
+
                                                     </TableRow>
                                                 );
                                             })}
                                         {emptyRows > 0 && (
                                             <TableRow style={{height: 49 * emptyRows}}>
+
                                                 <TableCell colSpan={4}/>
+
                                             </TableRow>
                                         )}
-                                    </TableBody>
 
+                                    </TableBody>
                                 </Table>
                             </Grid>
                         </Grid>
-
                         <Grid container>
                             <Grid item md={3} xs={12}>
-                                <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data} filtrado={false}
-                                          columnas={columnData} fnSearch={this.handleSearchAPI}
-                                          fileName={'Particulares inhabilitados'}/>
+                                <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={filterData} filtrado={false}
+                                          columnas={columnData} fnSearch = {this.handleSearchAPI}
+                                          fileName={'Detalle'}/>
                             </Grid>
-                            <Grid item md={3} xs={12}>
-                                <BajarCSV innerRef={comp => this.child = comp} data={filterDataAll} filtrado={true}
-                                          columnas={columnData} fnSearch={this.handleSearchAPI}
-                                          fileName={'Particulares inhabilitados'}/>
-                            </Grid>
+                            <Grid item md={3} xs={12}/>
                             <Grid item md={6} xs={12}>
                                 <TablePagination
                                     className={classes.tablePagination}
@@ -444,6 +385,8 @@ class EnhancedTable extends React.Component {
                             </Grid>
                         </Grid>
 
+
+                    </div>
                 </Paper>
             </div>
         );

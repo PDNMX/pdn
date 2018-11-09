@@ -9,6 +9,8 @@ import {width, height, center,yearCenters} from './bubbles_constants';
 import ControlSelect from "./ControlSelect";
 import BubbleChart from "../../Charts/bubbles/BubbleChart";
 import GroupTitle from './GroupTitle';
+import TablaDetalleServidores from "./TablaDetalleServidores";
+import TablaDetalleParticulares from "./TablaDetalleParticulares";
 
 // Styles
 const styles = theme => ({
@@ -38,6 +40,7 @@ class BubbleHolder extends React.Component {
         originalData: [],
         group: false,
         dataGroup: [],
+        institucion: null,
     };
 
     getData = () => {
@@ -93,6 +96,11 @@ class BubbleHolder extends React.Component {
         });
     };
 
+    selectBubble = (bubble) => {
+        console.log("TYPE: ",this.state.type);
+        this.setState({institucion: bubble.dependencia});
+    };
+
     render() {
         const {classes} = this.props;
         const {data, type} = this.state;
@@ -105,12 +113,12 @@ class BubbleHolder extends React.Component {
                         </Typography>
                         <br/>
                         {this.state.type === 1 &&
-                        <Typography variant={"body1"} className={classes.font}>
+                        <Typography variant={"subheading"} className={classes.font}>
                             {'Muestra las dependencias y el número de servidores públicos sancionados que tienen'}
                         </Typography>
                         }
                         {this.state.type === 2 &&
-                        <Typography variant={"body1"} className={classes.font}>
+                        <Typography variant={"subheading"} className={classes.font}>
                             {'Muestra las dependencias y el número de particulares sancionados que tienen'}
                         </Typography>
                         }
@@ -123,11 +131,19 @@ class BubbleHolder extends React.Component {
                     <Grid item xs={12}>
                         <BubbleChart width={width} height={height}>
                             <Bubbles_SPS data={data} forceStrength={0.3} center={center} type={type}
-                                         group={this.state.group} yearCenters={yearCenters}/>
+                                         group={this.state.group} yearCenters={yearCenters} selectBubble={this.selectBubble}/>
                             {this.state.group &&
                                 <GroupTitle widh={width} yearCenters={yearCenters}/>
                             }
                         </BubbleChart>
+                    </Grid>
+                    <Grid item xs={12}>
+                        {this.state.institucion && this.state.type=== 1 &&
+                        <TablaDetalleServidores institucion={this.state.institucion}/>
+                        }
+                        {this.state.institucion && this.state.type=== 2 &&
+                        <TablaDetalleParticulares institucion={this.state.institucion}/>
+                        }
                     </Grid>
                 </Grid>
             </div>

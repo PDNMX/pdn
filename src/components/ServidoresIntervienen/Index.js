@@ -36,6 +36,13 @@ const styles = theme => ({
         color: theme.palette.textSecondary.color,
         textAlign: 'center',
         marginTop: theme.spacing.unit * 2,
+        [theme.breakpoints.up('sm')]:{
+            paddingTop: '75px'
+        },
+        [theme.breakpoints.down('sm')]:{
+            paddingTop: '40px'
+
+        }
     },
     textLight: {
         color: theme.palette.textSecondary.color,
@@ -111,24 +118,17 @@ class Index extends React.Component {
                 <Header/>
                 <div className={classes.bgImg}>
                     <Grid container justify={"center"} spacing={0}>
-                            <Grid item xs={12} className={classes.section}>
-                                <Grid container spacing={0}>
-                                    <Grid item xs={12} align={"center"}>
-                                        <Typography variant="display1" className={classes.titleLight}>
-                                            Servidores que intervienen en procesos de contración
-                                        </Typography>
-                                        <Typography variant="subheading" className={classes.textLight}>
-                                            It is a long established fact that a reader will be distracted by the
-                                            readable
-                                            content of a page when looking at its layout. The point of using Lorem Ipsum
-                                            is that it has a
-                                            more-or-less normal distribution of letters
-                                        </Typography>
-                                    </Grid>
+                        <Grid item xs={12} className={classes.section}>
+                            <Grid container spacing={0}>
+                                <Grid item xs={12} align={"center"}>
+                                    <Typography variant="display1" className={classes.titleLight}>
+                                        Servidores que intervienen en procesos de contración
+                                    </Typography>
                                 </Grid>
                             </Grid>
-
                         </Grid>
+
+                    </Grid>
 
                 </div>
                 <div className={classes.bgContainer}>
@@ -142,11 +142,7 @@ class Index extends React.Component {
                                         <Typography variant="title" className={classes.title}>
                                             Servidores que intervienen en procesos de contratación
                                         </Typography>
-                                        <Typography className={classes.textPrimary}>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                            tempor
-                                            incididunt ut labore et dolore magna aliqua.
-                                        </Typography>
+
                                     </Grid>
                                     <Grid item md={4} xs={12} className={classes.center}>
                                         <CardMedia image={img2} className={classes.image}
@@ -154,22 +150,12 @@ class Index extends React.Component {
                                         <Typography variant="title" className={classes.title}>
                                             Particulares inhabilitados
                                         </Typography>
-                                        <Typography className={classes.textPrimary}>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                            tempor
-                                            incididunt ut labore et dolore magna aliqua.
-                                        </Typography>
                                     </Grid>
                                     <Grid item md={4} xs={12} className={classes.center}>
                                         <CardMedia image={img3} className={classes.image}
                                                    onClick={() => this.changeContent(3)}/>
                                         <Typography variant="title" className={classes.title}>
                                             Visualizaciones
-                                        </Typography>
-                                        <Typography className={classes.textPrimary}>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                            tempor
-                                            incididunt ut labore et dolore magna aliqua.
                                         </Typography>
                                     </Grid>
                                 </Grid>
@@ -186,21 +172,42 @@ class Index extends React.Component {
                                     <Grid item xs={12}>
                                         {this.state.idContent === 1 &&
                                         <div><Typography variant={'title'} className={classes.title}>
-                                            Servidores que intervienen en procesos de contratación</Typography>
+                                            Servidores que intervienen en procesos de contratación</Typography><br/>
+                                            <Typography variant={"subheading"} className={classes.textPrimary}>
+                                                Consulta los nombres, institución, cargo y actividades de y adscripción
+                                                de los servidores públicos que intervengan en contrataciones y otros
+                                                actos de autoridad.
+                                            </Typography>
+                                            <br/>
+                                            <Typography variant={"subheading"} align={"justify"}>
+                                                Además podrás consultar:<br/><br/>
+                                                ¿Cuáles son las dependencias con más servidores públicos facultados para intervenir en procesos de contratación?<br/><br/>
+                                                ¿Cuál es el puesto de los funcionarios que intervienen en estos procesos?
+                                            </Typography><br/>
                                             <TablaServidores/>
                                         </div>
                                         }
                                         {this.state.idContent === 2 &&
                                         <div>
                                             <Typography variant={'title'} className={classes.title}>Particulares
-                                                inhabilitados</Typography>
+                                                inhabilitados</Typography><br/>
+                                            <Typography variant={"subheading"} align={"justify"} className={classes.textPrimary}>
+                                                Consulta la relación de particulares, personas físicas y morales, que se
+                                                encuentren inhabilitados para celebrar contratos con los entes públicos,
+                                                por
+                                                qué fueron inhabilitados, por cuánto tiempo y con qué monto.
+                                            </Typography><br/>
                                             <TablaParticulares/>
                                         </div>
                                         }
                                         {this.state.idContent === 3 &&
                                         <div>
                                             <Typography variant={'title'}
-                                                        className={classes.title}>Visualizaciones</Typography>
+                                                        className={classes.title}>Visualizaciones</Typography><br/>
+                                            <Typography variant={"subheading"} align={"justify"} className={classes.textPrimary}>
+                                                Consulta cuáles son las instituciones con el mayor número de sanciones a
+                                                particulares, y mayor monto.
+                                            </Typography><br/>
                                             <BubbleHolder/>
                                         </div>
                                         }

@@ -73,8 +73,8 @@ const styles = theme => ({
     },
     centrado:{
         display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 });
 
@@ -88,7 +88,7 @@ function Control(props) {
     return (
         <TextField
             fullWidth
-            label="Unidad"
+            label="Institución"
             placeholder={'TODAS'}
             InputProps={{
                 inputComponent,

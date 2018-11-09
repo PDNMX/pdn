@@ -305,7 +305,7 @@ class DetalleParticular extends React.Component {
                                 </Grid>
                                 <Grid item md={6} xs={12} className={classes.centrado}></Grid>
                                 <Grid item md={6} xs={12} className={classes.centrado}>
-                                    <Button color="primary" variant="contained" size="small">
+                                    <Button color="primary" variant="text" size="small">
                                         <DownloadIcon/>
                                         {'Descargar constancia'}
                                     </Button>

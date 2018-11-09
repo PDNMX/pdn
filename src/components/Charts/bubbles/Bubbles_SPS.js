@@ -84,6 +84,7 @@ export default class Bubbles_SPS extends React.Component {
             .attr('stroke-width', 2)
             .attr('opacity',0.8)
             .on('mouseover', showDetail)  // eslint-disable-line
+            .on('click',this.props.selectBubble)
             .on('mouseout', hideDetail); // eslint-disable-line
 
         bubblesE.transition().duration(2000).attr('r', d => d.radius).on('end', () => {

@@ -53,7 +53,7 @@ const columnData = [
         position: 1,
         mostrar: true
     },
-    {id: 'dependencia', numeric: false, disablePadding: false, label: 'Dependencia', position: 2, mostrar: true},
+    {id: 'institucion', numeric: false, disablePadding: false, label: 'Institución', position: 2, mostrar: true},
     {
         id: 'expediente',
         numeric: false,
@@ -153,6 +153,7 @@ const styles = theme => ({
     },
     tablePagination:{
         overflowX : 'auto',
+        fontSize:'0.75rem'
     }
 
 });
@@ -283,10 +284,11 @@ class EnhancedTable extends React.Component {
 
     isSelected = id => this.state.selected.indexOf(id) !== -1;
 
-    getTotalRows = (URL) => {
+    getTotalRows = (params) => {
         let options = {
-            uri: URL ? URL : 'https://plataformadigitalnacional.org/api/proveedores_sancionados?sentido_de_resolucion=like.*INHABILITACI%C3%93N*&&select=count=eq.exact',
-            json: true
+            uri: 'https://plataformadigitalnacional.org/api/proveedores_sancionados?sentido_de_resolucion=like.*INHABILITACI%C3%93N*&&select=count=eq.exact',
+            json: true,
+            qs : params,
         };
         rp(options)
             .then(data => {
@@ -301,16 +303,19 @@ class EnhancedTable extends React.Component {
         this.setState({loading: true});
         let {institucion, nombreParticular} = this.state;
         const URI = 'https://plataformadigitalnacional.org/api/proveedores_sancionados?sentido_de_resolucion=like.*INHABILITACIÓN*&&';
-        let vUri = URI + ((typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? ('limit=' + this.state.rowsPerPage + '&&offset=' + (this.state.rowsPerPage * this.state.page) + '&&') : '');
 
-        vUri = vUri + ((institucion) ? 'dependencia=eq.' + institucion + '&&' : '');
-        vUri = vUri + ((nombreParticular) ? 'proveedor_o_contratista=like.*' + nombreParticular.toUpperCase() + '*' : '');
+        let params = {};
+        institucion ? params.dependencia = 'eq.' + institucion : null;
+        nombreParticular ? params.proveedor_o_contratista = 'like.*' + nombreParticular.toUpperCase()+'*' : null;
+        (typeSearch==='FIELD_FILTER'||typeSearch==='CHANGE_PAGE')? params.limit = this.state.rowsPerPage:null;
+        (typeSearch==='CHANGE_PAGE')? params.offset = (this.state.rowsPerPage * this.state.page) : null;
 
-        if (typeSearch === 'FIELD_FILTER') this.getTotalRows(vUri + '&&select=count=eq.exact');
+        if (typeSearch === 'FIELD_FILTER') this.getTotalRows(params);
 
         let options = {
-            uri: typeSearch === 'ALL' ? URI : vUri,
-            json: true
+            uri: URI,
+            json: true,
+            qs : params,
         };
         rp(options)
             .then(data => {
@@ -401,7 +406,7 @@ class EnhancedTable extends React.Component {
                                             })}
                                         {emptyRows > 0 && (
                                             <TableRow style={{height: 49 * emptyRows}}>
-                                                <TableCell colSpan={6}/>
+                                                <TableCell colSpan={4}/>
                                             </TableRow>
                                         )}
                                     </TableBody>
