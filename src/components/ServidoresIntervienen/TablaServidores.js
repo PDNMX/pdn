@@ -47,7 +47,6 @@ function getSorting(order, orderBy) {
 }
 
 const columnData = [
-    {id: 'id', numeric: true, disablePadding: false, label: 'ID', position: 1, mostrar: false,key:'id'},
     {id: 'servidor', numeric: false, disablePadding: false, label: 'Servidor público', position: 2, mostrar: true,key:'servidor'},
     {id: 'institucion', numeric: false, disablePadding: false, label: 'Institución', position: 3, mostrar: true,key:'institucion'},
     {id: 'puesto', numeric: false, disablePadding: false, label: 'Puesto', position: 4, mostrar: true,key:'puesto'},
@@ -279,13 +278,14 @@ class EnhancedTable extends React.Component {
 
         let params = {};
 
-        (procedimiento&&procedimiento) >0 ? params.id_procedimiento= 'eq.'+procedimiento : null;
-        institucion ? params.institucion = 'eq.'+institucion : null;
-        nombreServidor ? params.nombre = 'like.*'+nombreServidor.toUpperCase()+'*' : null;
-        (typeSearch==='FIELD_FILTER'||typeSearch==='CHANGE_PAGE')? params.limit = this.state.rowsPerPage:null;
-        (typeSearch==='CHANGE_PAGE')? params.offset = (this.state.rowsPerPage * this.state.page) : null;
-
-        if (typeSearch === 'FIELD_FILTER') this.getTotalRows(params);
+        if(typeSearch!=='ALL'){
+            (procedimiento&&procedimiento) >0 ? params.id_procedimiento= 'eq.'+procedimiento : null;
+            institucion ? params.institucion = 'eq.'+institucion : null;
+            nombreServidor ? params.nombre = 'like.*'+nombreServidor.toUpperCase()+'*' : null;
+            (typeSearch==='FIELD_FILTER'||typeSearch==='CHANGE_PAGE')? params.limit = this.state.rowsPerPage:null;
+            (typeSearch==='CHANGE_PAGE')? params.offset = (this.state.rowsPerPage * this.state.page) : null;
+            (typeSearch === 'FIELD_FILTER') ? this.getTotalRows(params) : null;
+        }
 
         let options = {
             uri: URI,
@@ -396,11 +396,11 @@ class EnhancedTable extends React.Component {
                     <Grid container>
                         <Grid item md={3} xs={12}>
                             <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data} filtrado={false}
-                                      columnas={columnData} fnSearch={this.handleSearchAPI} fileName={'Servidores'}/>
+                                      columnas={columnData} fnSearch={this.handleSearchAPI} fileName={'ServidoresAll'}/>
                         </Grid>
                         <Grid item md={3} xs={12}>
                             <BajarCSV innerRef={comp => this.child = comp} data={filterDataAll} filtrado={true}
-                                      columnas={columnData} fnSearch={this.handleSearchAPI} fileName={'Servidores'}/>
+                                      columnas={columnData} fnSearch={this.handleSearchAPI} fileName={'ServidoresFilter'}/>
                         </Grid>
                         <Grid item md={6} xs={12}>
                             <TablePagination

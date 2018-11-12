@@ -261,12 +261,14 @@ class EnhancedTable extends React.Component {
         const URI = 'https://plataformadigitalnacional.org/api/rsps?';
 
         let params ={};
-        (institucion) ? params.dependencia = 'eq.' + institucion : null;
-        (nombreServidor) ? params.servidor_publico = 'like.*' + nombreServidor.toUpperCase() + '*' : null;
-        (typeSearch==='FIELD_FILTER'||typeSearch==='CHANGE_PAGE')? params.limit = this.state.rowsPerPage:null;
-        (typeSearch==='CHANGE_PAGE')? params.offset = (this.state.rowsPerPage * this.state.page) : null;
 
-        if (typeSearch === 'FIELD_FILTER') this.getTotalRows(params);
+        if(typeSearch!=='ALL'){
+            (institucion) ? params.dependencia = 'eq.' + institucion : null;
+            (nombreServidor) ? params.servidor_publico = 'like.*' + nombreServidor.toUpperCase() + '*' : null;
+            (typeSearch==='FIELD_FILTER'||typeSearch==='CHANGE_PAGE')? params.limit = this.state.rowsPerPage:null;
+            (typeSearch==='CHANGE_PAGE')? params.offset = (this.state.rowsPerPage * this.state.page) : null;
+            (typeSearch === 'FIELD_FILTER') ? this.getTotalRows(params) : null;
+        }
 
         let options = {
             uri: URI,
@@ -381,11 +383,11 @@ class EnhancedTable extends React.Component {
                     <Grid container>
                         <Grid item md={3} xs={12}>
                             <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data} filtrado={false}
-                                      columnas={columnData} fnSearch={this.handleSearchAPI} fileName={'Servidores'}/>
+                                      columnas={columnData} fnSearch={this.handleSearchAPI} fileName={'Servidores sancionados'}/>
                         </Grid>
                         <Grid item md={3} xs={12}>
                             <BajarCSV innerRef={comp => this.child = comp} data={filterDataAll} filtrado={true}
-                                      columnas={columnData} fnSearch={this.handleSearchAPI} fileName={'Servidores'}/>
+                                      columnas={columnData} fnSearch={this.handleSearchAPI} fileName={'Servidores sancionados'}/>
                         </Grid>
                         <Grid item md={6} xs={12}>
                             <TablePagination

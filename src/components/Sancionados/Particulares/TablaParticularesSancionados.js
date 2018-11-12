@@ -284,10 +284,11 @@ class EnhancedTable extends React.Component {
 
     isSelected = id => this.state.selected.indexOf(id) !== -1;
 
-    getTotalRows = (URL) => {
+    getTotalRows = (params) => {
         let options = {
-            uri: URL ? URL : 'https://plataformadigitalnacional.org/api/proveedores_sancionados?select=count=eq.exact',
-            json: true
+            uri:  'https://plataformadigitalnacional.org/api/proveedores_sancionados?select=count=eq.exact',
+            json: true,
+            qs : params
         };
         rp(options)
             .then(data => {
@@ -302,16 +303,22 @@ class EnhancedTable extends React.Component {
         this.setState({loading: true});
         let {institucion, nombreParticular} = this.state;
         const URI = 'https://plataformadigitalnacional.org/api/proveedores_sancionados?';
-        let vUri = URI + ((typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? ('limit=' + this.state.rowsPerPage + '&&offset=' + (this.state.rowsPerPage * this.state.page) + '&&') : '');
 
-        vUri = vUri + ((institucion) ? 'dependencia=eq.' + institucion + '&&' : '');
-        vUri = vUri + ((nombreParticular) ? 'proveedor_o_contratista=like.*' + nombreParticular.toUpperCase() + '*' : '');
+        let params = {};
 
-        if (typeSearch === 'FIELD_FILTER') this.getTotalRows(vUri + '&&select=count=eq.exact');
+        if(typeSearch !== 'ALL'){
+            (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? params.limit = this.state.rowsPerPage : null;
+            (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? params.offset =  (this.state.rowsPerPage * this.state.page) : null;
+            (institucion) ? params.dependencia='eq.' + institucion : null;
+            (nombreParticular) ? params.proveedor_o_contratista= 'like.*' + nombreParticular.toUpperCase() + '*': null;
+            (typeSearch === 'FIELD_FILTER')? this.getTotalRows (params) : null;
+
+        }
 
         let options = {
-            uri: typeSearch === 'ALL' ? URI : vUri,
-            json: true
+            uri:  URI ,
+            json: true,
+            qs : params
         };
         rp(options)
             .then(data => {
@@ -414,12 +421,12 @@ class EnhancedTable extends React.Component {
                             <Grid item md={3} xs={12}>
                                 <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data} filtrado={false}
                                           columnas={columnData} fnSearch={this.handleSearchAPI}
-                                          fileName={'Particulares inhabilitados'}/>
+                                          fileName={'Particulares sancionados'}/>
                             </Grid>
                             <Grid item md={3} xs={12}>
                                 <BajarCSV innerRef={comp => this.child = comp} data={filterDataAll} filtrado={true}
                                           columnas={columnData} fnSearch={this.handleSearchAPI}
-                                          fileName={'Particulares inhabilitados'}/>
+                                          fileName={'Particulares sancionados'}/>
                             </Grid>
                             <Grid item md={6} xs={12}>
                                 <TablePagination

@@ -305,12 +305,14 @@ class EnhancedTable extends React.Component {
         const URI = 'https://plataformadigitalnacional.org/api/proveedores_sancionados?sentido_de_resolucion=like.*INHABILITACIÓN*&&';
 
         let params = {};
-        institucion ? params.dependencia = 'eq.' + institucion : null;
-        nombreParticular ? params.proveedor_o_contratista = 'like.*' + nombreParticular.toUpperCase()+'*' : null;
-        (typeSearch==='FIELD_FILTER'||typeSearch==='CHANGE_PAGE')? params.limit = this.state.rowsPerPage:null;
-        (typeSearch==='CHANGE_PAGE')? params.offset = (this.state.rowsPerPage * this.state.page) : null;
 
-        if (typeSearch === 'FIELD_FILTER') this.getTotalRows(params);
+        if(typeSearch!=='ALL'){
+            institucion ? params.dependencia = 'eq.' + institucion : null;
+            nombreParticular ? params.proveedor_o_contratista = 'like.*' + nombreParticular.toUpperCase()+'*' : null;
+            (typeSearch==='FIELD_FILTER'||typeSearch==='CHANGE_PAGE')? params.limit = this.state.rowsPerPage : null;
+            (typeSearch==='CHANGE_PAGE')? params.offset = (this.state.rowsPerPage * this.state.page) : null;
+            (typeSearch === 'FIELD_FILTER') ? this.getTotalRows(params) : null;
+        }
 
         let options = {
             uri: URI,
