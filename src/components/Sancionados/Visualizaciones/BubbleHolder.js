@@ -82,7 +82,7 @@ class BubbleHolder extends React.Component {
     }
 
     onTypeChanged = (newType) => {
-        this.setState({type: newType}, () => {
+        this.setState({type: newType, institucion: null}, () => {
             this.getData(newType);
         });
     };
@@ -97,7 +97,6 @@ class BubbleHolder extends React.Component {
     };
 
     selectBubble = (bubble) => {
-        console.log("TYPE: ",this.state.type);
         this.setState({institucion: bubble.dependencia});
     };
 

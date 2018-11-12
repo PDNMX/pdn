@@ -166,12 +166,12 @@ const styles = theme => ({
 class EnhancedTable extends React.Component {
 
     componentDidMount() {
-        this.handleSearchAPI(null,this.props.institucion);
+        this.handleSearchAPI('FIELD_FILTER',this.props.institucion);
     }
 
     componentWillReceiveProps(nextProps){
        if(nextProps.institucion !== this.props.institucion){
-           this.handleSearchAPI(null,nextProps.institucion);
+           this.handleSearchAPI('FIELD_FILTER',nextProps.institucion);
         }
     }
 
@@ -253,11 +253,13 @@ class EnhancedTable extends React.Component {
         });
     };
     handleSearchAPI = (type,inst) => {
+        console.log("type: ",type);
         this.setState({loading: true});
         let URI = 'https://plataformadigitalnacional.org/api/proveedores_sancionados?sentido_de_resolucion=like.*INHABILITACIÓN*';
 
         let params = {};
         inst ? params.dependencia = 'eq.'+inst : null;
+        type ==='ALL' && !inst ? params.dependencia ='eq.'+this.state.institucion : null;
         type !== "ALL" ? params.limit = this.state.rowsPerPage : null ;
         type === "CHANGE_PAGE" ? params.offset = (this.state.rowsPerPage * this.state.page): null;
 
@@ -274,14 +276,13 @@ class EnhancedTable extends React.Component {
                     return createData(item);
                 });
 
-                this.setState({
+                type==='ALL' ? this.setState({data : dataAux,loading : false },()=>{
+                    this.btnDownloadAll.triggerDown();
+                }) : (type === 'FIELD_FILTER' || type === 'CHANGE_PAGE') ? this.setState({
                     filterData : dataAux,
-                    loading : false
-                },()=>{
-                    console.log("Filterdata: ",this.state.filterData);
-                    console.log("Inst: ",inst);
-                    inst ==="ALL"?this.btnDownloadAll.triggerDown():null;
-                });
+                    loading: false,
+                    institucion : inst
+                }):null;
                 return true;
             })
             .catch(err => {
@@ -354,7 +355,7 @@ class EnhancedTable extends React.Component {
                         </Grid>
                         <Grid container>
                             <Grid item md={3} xs={12}>
-                                <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={filterData} filtrado={false}
+                                <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data} filtrado={false}
                                           columnas={columnData} fnSearch = {this.handleSearchAPI}
                                           fileName={'Detalle'}/>
                             </Grid>

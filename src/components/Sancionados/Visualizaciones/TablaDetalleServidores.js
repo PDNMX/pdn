@@ -41,74 +41,31 @@ function getSorting(order, orderBy) {
 }
 
 const columnData = [
-    {
-        id: 'proveedor',
-        numeric: false,
-        disablePadding: false,
-        label: 'Proveedor o contratista',
-        position: 1,
-        mostrar: true
-    },
+    {id: 'servidor', numeric: false, disablePadding: false, label: 'Servidor público', position: 1, mostrar: true},
     {id: 'institucion', numeric: false, disablePadding: false, label: 'Institución', position: 2, mostrar: true},
+    {id: 'autoridad', numeric: false, disablePadding: false, label: 'Autoridad', position: 3, mostrar: true},
+    {id: 'expediente', numeric: false, disablePadding: false, label: 'Expediente', position: 4, mostrar: true},
     {
-        id: 'expediente',
-        numeric: false,
-        disablePadding: false,
-        label: 'Número de expediente',
-        position: 3,
-        mostrar: true
-    },
-    {
-        id: 'hechos',
-        numeric: false,
-        disablePadding: false,
-        label: 'Hechos de la irregularidad',
-        position: 4,
-        mostrar: false
-    },
-    {id: 'objetoSocial', numeric: false, disablePadding: false, label: 'Objeto social', position: 5, mostrar: false},
-    {
-        id: 'sentidoResolucion',
-        numeric: false,
-        disablePadding: false,
-        label: 'Sentido de la resolución',
-        position: 6,
-        mostrar: true
-    },
-    {
-        id: 'fechaNotificacion',
-        numeric: false,
-        disablePadding: false,
-        label: 'Fecha notificación',
-        position: 7,
-        mostrar: false
-    },
-    {
-        id: 'fechaResolucion',
+        id: 'fecha_resolucion',
         numeric: false,
         disablePadding: false,
         label: 'Fecha resolución',
-        position: 8,
-        mostrar: false
-    },
-    {id: 'plazo', numeric: false, disablePadding: false, label: 'Plazo', position: 9, mostrar: false},
-    {id: 'monto', numeric: false, disablePadding: false, label: 'Monto', position: 10, mostrar: false},
-    {
-        id: 'responsableInformacion',
-        numeric: false,
-        disablePadding: false,
-        label: 'Responsable de información',
-        position: 11,
+        position: 5,
         mostrar: false
     },
     {
-        id: 'fechaActualizacion',
+        id: 'sancion_impuesta',
         numeric: false,
         disablePadding: false,
-        label: 'Fecha actualización',
-        position: 12,
+        label: 'Sanción impuesta',
+        position: 6,
         mostrar: false
-    }
+    },
+    {id: 'fecha_inicio', numeric: false, disablePadding: false, label: 'Fecha inicio', position: 7, mostrar: false},
+    {id: 'fecha_fin', numeric: false, disablePadding: false, label: 'Fecha fin', position: 8, mostrar: false},
+    {id: 'monto', numeric: true, disablePadding: false, label: 'Monto', position: 9, mostrar: false},
+    {id: 'causa', numeric: false, disablePadding: false, label: 'Causa', position: 10, mostrar: false},
+    {id: 'constancia', numeric: false, disablePadding: true, label: 'Constancia', position: 11, mostrar: false}
 ];
 
 const styles = theme => ({
@@ -163,12 +120,12 @@ const styles = theme => ({
 class EnhancedTable extends React.Component {
 
     componentDidMount() {
-        this.handleSearchAPI();
+        this.handleSearchAPI('FIELD_FILTER', this.props.institucion);
     }
 
     componentWillReceiveProps(nextProps){
         if(nextProps.institucion !== this.props.institucion){
-            this.handleSearchAPI(nextProps.institucion);
+            this.handleSearchAPI('FIELD_FILTER',nextProps.institucion);
         }
     }
 
@@ -178,7 +135,7 @@ class EnhancedTable extends React.Component {
         this.btnDownloadAll = React.createRef();
         this.state = {
             order: 'asc',
-            orderBy: 'proveedor',
+            orderBy: 'servidor',
             selected: [],
             nombreParticular: '',
             data: [],
@@ -187,7 +144,7 @@ class EnhancedTable extends React.Component {
             rowsPerPage: 10,
             open: false,
             elementoSeleccionado: {},
-            institucion: '',
+            institucion: null,
             loading: true,
             totalRows: 0,
             filterDataAll: []
@@ -216,28 +173,28 @@ class EnhancedTable extends React.Component {
     };
 
     handleClick = (event, elemento) => {
-        this.setState({elementoSeleccionado: elemento});
-        this.setState({open: true});
+        this.setState({elementoSeleccionado: elemento, open:true});
     };
 
     handleChangePage = (event, page) => {
         this.setState({page}, () => {
-            this.handleSearchAPI('CHANGE_PAGE');
+            this.handleSearchAPI('CHANGE_PAGE',this.props.institucion);
         });
     };
 
     handleChangeRowsPerPage = event => {
         this.setState({rowsPerPage: event.target.value}, () => {
-            this.handleSearchAPI('FIELD_FILTER');
+            this.handleSearchAPI('FIELD_FILTER',null);
         });
     };
 
     isSelected = id => this.state.selected.indexOf(id) !== -1;
 
-    getTotalRows = (URL) => {
+    getTotalRows = (params) => {
         let options = {
-            uri: URL ? URL : 'https://plataformadigitalnacional.org/api/rsps?select=count=eq.exact',
-            json: true
+            uri: 'https://plataformadigitalnacional.org/api/rsps?select=count=eq.exact',
+            json: true,
+            qs : params
         };
         rp(options)
             .then(data => {
@@ -248,35 +205,34 @@ class EnhancedTable extends React.Component {
             console.log(err);
         });
     };
-    handleSearchAPI = (inst) => {
-        console.log("Inst: ",inst);
+    handleSearchAPI = (type,inst) => {
         this.setState({loading: true});
-
-        let institucion = inst&&inst!=='ALL'&&inst!=='CHANGE_PAGE'?inst:this.props.institucion;
         let URI = 'https://plataformadigitalnacional.org/api/rsps?';
-        (inst !== "ALL") ? URI = URI+ '&&limit='+this.state.rowsPerPage+'&&offset='+(this.state.rowsPerPage * this.state.page): null;
-        let vUri = URI + ((institucion) ? '&&dependencia=eq.' + institucion: '');
 
-        (inst !== 'ALL' && inst !=="CHANGE_PAGE") ? this.getTotalRows(vUri + '&&select=count=eq.exact'):null;
+        let params = {};
+        inst ? params.dependencia = 'eq.' + inst : null;
+        type==='ALL' && !inst ? params.dependencia = 'eq.' + this.state.institucion : null;
+        type !== "ALL" ? params.limit = this.state.rowsPerPage : null ;
+        type === "CHANGE_PAGE" ? params.offset = (this.state.rowsPerPage * this.state.page): null;
+        (type !== 'ALL' && type !=="CHANGE_PAGE") ? this.getTotalRows(params) : null;
 
         let options = {
-            uri: vUri,
+            uri: URI,
             json: true,
-
-
+            qs : params
         };
         rp(options)
             .then(data => {
                 let dataAux = data.map(item => {
                     return createData(item);
                 });
-
-                this.setState({
+                type === 'ALL'? this.setState({data : dataAux,loading : false},()=>{
+                    this.btnDownloadAll.triggerDown();
+                }) : (type === 'FIELD_FILTER' || type === 'CHANGE_PAGE') ? this.setState({
                     filterData : dataAux,
-                    loading : false
-                },()=>{
-                    inst ==="ALL"?this.btnDownloadAll.triggerDown():null;
-                });
+                    loading: false,
+                    institucion : inst
+                }) : null;
                 return true;
             })
             .catch(err => {
@@ -343,21 +299,13 @@ class EnhancedTable extends React.Component {
                                                     </TableRow>
                                                 );
                                             })}
-                                        {emptyRows > 0 && (
-                                            <TableRow style={{height: 49 * emptyRows}}>
-
-                                                <TableCell colSpan={4}/>
-
-                                            </TableRow>
-                                        )}
-
                                     </TableBody>
                                 </Table>
                             </Grid>
                         </Grid>
                         <Grid container>
                             <Grid item md={3} xs={12}>
-                                <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={filterData} filtrado={false}
+                                <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data} filtrado={false}
                                           columnas={columnData} fnSearch = {this.handleSearchAPI}
                                           fileName={'Detalle'}/>
                             </Grid>

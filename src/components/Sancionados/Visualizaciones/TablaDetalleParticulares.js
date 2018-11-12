@@ -13,7 +13,6 @@ import BajarCSV from "../../Tablas/BajarCSV";
 import Grid from "@material-ui/core/Grid/Grid";
 import EnhancedTableHead from '../../Tablas/EnhancedTableHead';
 import Typography from "@material-ui/core/Typography/Typography";
-import DetalleServidorSancionado from "../Servidores/DetalleServidorSancionado";
 import DetalleParticular from "../Particulares/DetalleParticular";
 
 let counter = 0;
@@ -52,7 +51,7 @@ const columnData = [
         position: 1,
         mostrar: true
     },
-    {id: 'institucion', numeric: false, disablePadding: false, label: 'Institución', position: 2, mostrar: true},
+    {id: 'dependencia', numeric: false, disablePadding: false, label: 'Institución', position: 2, mostrar: true},
     {
         id: 'expediente',
         numeric: false,
@@ -166,12 +165,12 @@ const styles = theme => ({
 class EnhancedTable extends React.Component {
 
     componentDidMount() {
-        this.handleSearchAPI();
+        this.handleSearchAPI('FIELD_FILTER', this.props.institucion);
     }
 
     componentWillReceiveProps(nextProps){
         if(nextProps.institucion !== this.props.institucion){
-            this.handleSearchAPI(nextProps.institucion);
+            this.handleSearchAPI('FIELD_FILTER',nextProps.institucion);
         }
     }
 
@@ -190,7 +189,7 @@ class EnhancedTable extends React.Component {
             rowsPerPage: 10,
             open: false,
             elementoSeleccionado: {},
-            institucion: '',
+            institucion: null,
             loading: true,
             totalRows: 0,
             filterDataAll: []
@@ -219,28 +218,28 @@ class EnhancedTable extends React.Component {
     };
 
     handleClick = (event, elemento) => {
-        this.setState({elementoSeleccionado: elemento});
-        this.setState({open: true});
+        this.setState({elementoSeleccionado: elemento, open: true});
     };
 
     handleChangePage = (event, page) => {
         this.setState({page}, () => {
-            this.handleSearchAPI('CHANGE_PAGE');
+            this.handleSearchAPI('CHANGE_PAGE', this.props.institucion);
         });
     };
 
     handleChangeRowsPerPage = event => {
         this.setState({rowsPerPage: event.target.value}, () => {
-            this.handleSearchAPI('FIELD_FILTER');
+            this.handleSearchAPI('FIELD_FILTER',null);
         });
     };
 
     isSelected = id => this.state.selected.indexOf(id) !== -1;
 
-    getTotalRows = (URL) => {
+    getTotalRows = (params) => {
         let options = {
-            uri: URL ? URL : 'https://plataformadigitalnacional.org/api/proveedores_sancionados?select=count=eq.exact',
-            json: true
+            uri: 'https://plataformadigitalnacional.org/api/proveedores_sancionados?select=count=eq.exact',
+            json: true,
+            qs : params
         };
         rp(options)
             .then(data => {
@@ -251,21 +250,20 @@ class EnhancedTable extends React.Component {
             console.log(err);
         });
     };
-    handleSearchAPI = (inst) => {
-        console.log("Inst: ",inst);
+    handleSearchAPI = (type,inst) => {
         this.setState({loading: true});
-
-        let institucion = inst&&inst!=='ALL'&&inst!=='CHANGE_PAGE'?inst:this.props.institucion;
         let URI = 'https://plataformadigitalnacional.org/api/proveedores_sancionados?';
-        (inst !== "ALL") ? URI = URI+ '&&limit='+this.state.rowsPerPage+'&&offset='+(this.state.rowsPerPage * this.state.page): null;
-        let vUri = URI + ((institucion) ? '&&dependencia=eq.' + institucion: '');
-
-        (inst !== 'ALL' && inst !=="CHANGE_PAGE") ? this.getTotalRows(vUri + '&&select=count=eq.exact'):null;
+        let params = {};
+        inst ? params.dependencia = 'eq.' + inst : null;
+        type==='ALL' && !inst ? params.dependencia = 'eq.' + this.state.institucion : null;
+        type !== "ALL" ? params.limit = this.state.rowsPerPage : null ;
+        type === "CHANGE_PAGE" ? params.offset = (this.state.rowsPerPage * this.state.page): null;
+        (type !== 'ALL' && type !=="CHANGE_PAGE") ? this.getTotalRows(params) : null;
 
         let options = {
-            uri: vUri,
+            uri: URI,
             json: true,
-
+            qs : params
 
         };
         rp(options)
@@ -274,12 +272,13 @@ class EnhancedTable extends React.Component {
                     return createData(item);
                 });
 
-                this.setState({
+                type==='ALL' ? this.setState({data : dataAux,loading : false},()=>{
+                    this.btnDownloadAll.triggerDown();
+                }):(type === 'FIELD_FILTER' || type === 'CHANGE_PAGE') ? this.setState({
                     filterData : dataAux,
-                    loading : false
-                },()=>{
-                    inst ==="ALL"?this.btnDownloadAll.triggerDown():null;
-                });
+                    loading: false,
+                    institucion : inst
+                }) : null;
                 return true;
             })
             .catch(err => {
@@ -344,11 +343,7 @@ class EnhancedTable extends React.Component {
                                                     </TableRow>
                                                 );
                                             })}
-                                        {emptyRows > 0 && (
-                                            <TableRow style={{height: 49 * emptyRows}}>
-                                                <TableCell colSpan={4}/>
-                                            </TableRow>
-                                        )}
+
                                     </TableBody>
 
                                 </Table>
@@ -356,7 +351,7 @@ class EnhancedTable extends React.Component {
                         </Grid>
                         <Grid container>
                             <Grid item md={3} xs={12}>
-                                <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={filterData} filtrado={false}
+                                <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data} filtrado={false}
                                           columnas={columnData} fnSearch = {this.handleSearchAPI}
                                           fileName={'Detalle'}/>
                             </Grid>

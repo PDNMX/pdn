@@ -63,7 +63,8 @@ class BubbleHolder extends React.Component{
         if(this.state.type !== newType){
             this.setState({
                 data:createNodes(this.state.originalData,newType),
-                type : newType
+                type : newType,
+                institucion : null
             });
         }
     };

@@ -18,7 +18,6 @@ class ControlSelect extends React.Component {
 
     };
     onChangeG = (param) => {
-        console.log("Param: ",param);
         this.props.onChangeGraphic(param)
     };
 

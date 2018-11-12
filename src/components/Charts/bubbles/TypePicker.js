@@ -18,11 +18,11 @@ export default class TypePicker extends React.Component {
                     <Grid item xs={3}/>
                     <Grid item xs={3}>
                         <Button variant={'text'} color={"primary"}
-                                onClick={() => this.onBtnClick("sanciones")}>{'Servidores públicos sancionados'}</Button>
+                                onClick={() => this.onBtnClick("sanciones")}>{'Sanciones'}</Button>
                     </Grid>
                     <Grid item xs={3}>
                         <Button variant={'text'} color={"primary"}
-                                onClick={() => this.onBtnClick("monto")}>{'Particulares sancionados'}</Button>
+                                onClick={() => this.onBtnClick("monto")}>{'Monto'}</Button>
                     </Grid>
                     <Grid item xs={3}/>
 
