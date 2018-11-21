@@ -122,7 +122,7 @@ class Index extends React.Component {
                             <Grid container spacing={0}>
                                 <Grid item xs={12} align={"center"}>
                                     <Typography variant="display1" className={classes.titleLight}>
-                                        Servidores que intervienen en procesos de contración
+                                        Servidores que intervienen en procesos de contratación
                                     </Typography>
                                 </Grid>
                             </Grid>
