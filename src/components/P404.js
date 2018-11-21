@@ -27,7 +27,7 @@ const styles = theme => ({
         marginTop: theme.spacing.unit
     },
     links: {
-        maxWidth: '1024px',
+        //maxWidth: '1024px',
         backgroundColor: theme.palette.grisTenue.color
     },
     section: {
