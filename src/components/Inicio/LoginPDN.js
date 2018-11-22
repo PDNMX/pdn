@@ -9,11 +9,13 @@ import Button from "@material-ui/core/Button";
 import app from "../../config/firebase";
 import PrivateRoute from "../../PrivateRoute";
 import Home from '../Home';
-const divstyle = {
-    marginTop: "150px"
-};
+
 
 const styles = theme => ({
+    item: {
+        marginTop: "150px",
+      maxWidth: '500px'
+    },
     container: {
         display: "flex",
         flexWrap: "wrap"
@@ -74,15 +76,16 @@ class LoginPDN extends Component {
         }
     };
 */
-handleClick=()=>{
-    this.props.handleSignIn(this.state.email,this.state.pass,this.props.propiedades.history);
-};
+    handleClick=()=>{
+        this.props.handleSignIn(this.state.email,this.state.pass,this.props.propiedades.history);
+    };
+
     render() {
         const {classes} = this.props;
         return (
-            <Grid style={divstyle} container spacing={24}>
-                <Grid item xs={4}/>
-                <Grid item xs={4}>
+            <Grid container spacing={24} justify='center'>
+
+                <Grid item xs={12} className={classes.item}>
                     <Card className={classes.card}>
                         <CardContent style={{textAlign: "center"}}>
                             <form autoComplete="off">
@@ -136,7 +139,6 @@ handleClick=()=>{
                         </CardContent>
                     </Card>
                 </Grid>
-                <Grid item xs={4}/>
             </Grid>
         );
     }
