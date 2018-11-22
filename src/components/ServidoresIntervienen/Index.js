@@ -15,17 +15,7 @@ import BubbleHolder from "./BubbleHolder";
 
 const styles = theme => ({
     root: {
-        flexGrow: 1,
-        [theme.breakpoints.up('sm')]: {
-            marginLeft: '150px',
-            marginRight: '150px',
-
-        },
-        [theme.breakpoints.down('sm')]: {
-            marginLeft: theme.spacing.unit,
-            marginRight: theme.spacing.unit,
-
-        }
+        flexGrow: 1
     },
     title: {
         color: theme.palette.textPrincipal.color,
@@ -114,15 +104,15 @@ class Index extends React.Component {
     render() {
         const {classes} = this.props;
         return (
-            <div>
-                <Header/>
+            <div className={classes.root}>
                 <div className={classes.bgImg}>
+                    <Header/>
                     <Grid container justify={"center"} spacing={0}>
                         <Grid item xs={12} className={classes.section}>
                             <Grid container spacing={0}>
                                 <Grid item xs={12} align={"center"}>
                                     <Typography variant="display1" className={classes.titleLight}>
-                                        Servidores que intervienen en procesos de contración
+                                        Servidores que intervienen en procesos de contratación
                                     </Typography>
                                 </Grid>
                             </Grid>
