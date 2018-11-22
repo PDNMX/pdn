@@ -47,7 +47,7 @@ class P404 extends React.Component {
                         <Paper className={classes.paper}>
                             <Typography variant="display1">404 </Typography>
                             <Typography variant="subheading">No encontramos lo que buscas </Typography>
-                            <Button className={classes.button} component={Link} variant="contained" color="primary" to="/">Regresar</Button>
+                            <Button className={classes.button} component={Link} variant="contained" color="primary" to="/home">Regresar</Button>
                         </Paper>
                     </Grid>
                 </Grid>

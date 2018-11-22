@@ -17,12 +17,12 @@ const styles = theme => ({
 });
 
 const charts1 = [
-    {'key': '1', 'title': 'Declaraciones 3x3', 'content': img1, 'to': '/declaraciones'},
-    {'key': '2', 'title': 'Servidores que intervienen en procesos de contratación', 'content': img2, 'to': '/servidores'},
-    {'key': '3', 'title': 'Servidores públicos y particulares sancionados', 'content': img5, 'to': '/sancionados'},
-    {'key': '4', 'title': 'Contrataciones públicas', 'content': img3, 'to': '/contrataciones'},
-    {'key': '5', 'title': 'Denuncias públicas', 'content': img4, 'to': '/denuncias'},
-    {'key': '6', 'title': 'Comunicación del Sistema Nacional de Fiscalización', 'content': img6, 'to': '/snf'}
+    {'key': '1', 'title': 'Servidores públicos que intervienen en procesos de contrataciones públicas', 'content': img2, 'to': '/servidores','active':true},
+    {'key': '2', 'title': 'Servidores públicos y particulares sancionados', 'content': img5, 'to': '/sancionados','active':true},
+    {'key': '3', 'title': 'Evolución patrimonial, declaración de intereses y constancia de presentación de declaración fiscal', 'content': img1, 'to': '/home','active':false},
+    {'key': '4', 'title': 'Información pública de contrataciones', 'content': img3, 'to': '/home','active':false},
+    {'key': '5', 'title': 'Denuncias públicas de faltas administrativas y hechos de corrupción', 'content': img4, 'to': '/home','active':false},
+    {'key': '6', 'title': 'Información y comunicación del Sistema Nacional de Fiscalización', 'content': img6, 'to': '/home','active':false}
 ];
 
 class Cards extends React.Component{
@@ -38,7 +38,7 @@ class Cards extends React.Component{
                         charts1.map((prop, key) => {
                             return (
                                 <Grid item  lg={4} md={6} sm={4} key={key}>
-                                    <Card titleCard={prop.title} content={prop.content} to={prop.to}/>
+                                    <Card titleCard={prop.title} content={prop.content} to={prop.to} active={prop.active}/>
                                 </Grid>
                             );
                         })

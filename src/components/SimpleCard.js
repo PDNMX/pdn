@@ -31,9 +31,14 @@ const styles = theme => ({
         //maxHeight:'70%'
 
     },
+    mediaOff: {
+        paddingTop : '75%',
+        height:'0',
+        opacity : '.5'
+    },
     headerCard:{
         [theme.breakpoints.up('md')]:{
-            fontSize: 'calc(1.1vw)',
+            fontSize: 'calc(.9vw)',
         },
         [theme.breakpoints.down('md')]:{
             fontSize: 'calc(1rem)',
@@ -53,6 +58,7 @@ function SimpleCard(props) {
     const title = props.titleCard;
     const imagen = props.content;
     const to = props.to;
+    const active = props.active;
     return (
         <div>
             <Card className={classes.card}>
@@ -63,10 +69,11 @@ function SimpleCard(props) {
                     }}
                      title={title}
                 />
-                <CardMedia className={classes.media}
+                <CardMedia className={active?classes.media:classes.mediaOff}
                                image={imagen}
                                component={Link}
                                to ={to}
+
                     />
             </Card>
         </div>

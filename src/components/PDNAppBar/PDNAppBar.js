@@ -8,62 +8,128 @@ import PropTypes from 'prop-types';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-//import MenuIcon from '@material-ui/icons/Menu';
 import Grid from '@material-ui/core/Grid';
-
+import app from "../../config/firebase";
 
 const styles = theme => ({
     root: {
         flexGrow: 1,
-        marginBottom: theme.spacing.unit * 1.7
+        marginBottom: theme.spacing.unit * 1
     },
     flex: {
         flexGrow: 1,
     },
     gridItem: {
         maxWidth: '1024px'
-    }
+    },
+    paperModal: {
+        width: '100%',
+        backgroundColor: '#671e1e',
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing.unit * 3,
+    },
+    textoDemo:{
+        color : 'white'
+    },
+
 });
 
 class PDNAppBar extends React.Component {
+    state = {
+        open: false,
+        currentUser: null,
+        loading: false,
+        authenticated: false
+    };
 
-    render(){
-        const {classes } = this.props;
+    handleClickOpen = () => {
+        this.setState({open: true});
+    };
+
+    handleClose = () => {
+        this.setState({open: false});
+    };
+
+    componentWillMount() {
+        app.auth().onAuthStateChanged(user => {
+            if (user) {
+                this.setState({
+                    authenticated: true,
+                    currentUsuer: user,
+                    loading: false
+                });
+            } else {
+                this.setState({
+                    authenticated: false,
+                    currentUser: null,
+                    loading: false
+                });
+            }
+        })
+    }
+
+    handleSignOut = () => {
+        app.auth().signOut().then(() => {
+
+        }).catch(e => {
+            alert(e);
+        })
+    };
+
+    render() {
+
+        const {classes} = this.props;
 
         return (
-            <div className={classes.root}>
-                <AppBar color="default"  position="static" >
+            <div>
+                <div className={classes.root}>
+                    <AppBar color="default" position="static">
 
-                    <Grid container spacing={0} justify='center'>
-                        <Grid item xs={12} className={ classes.gridItem}>
-                            <Toolbar>
-                                <IconButton  color="inherit" aria-label="Menu" component={Link} to="/">
-                                    <img src={imgHeader} alt="logoPDN" style={{width:'55px'}}/>
+                        <Grid container spacing={0} justify='center'>
+                            <Grid item xs={12} className={classes.gridItem}>
+                                <Toolbar>
+                                    <IconButton color="inherit" aria-label="Menu" component={Link} to="/home">
+                                        <img src={imgHeader} alt="logoPDN" style={{width: '55px'}}/>
 
-                                </IconButton>
-                                <Typography variant="title" color="inherit" className={classes.flex}>
+                                    </IconButton>
+                                    <Typography variant="title" color="inherit" className={classes.flex}>
 
-                                </Typography>
+                                    </Typography>
 
-                                <Button color="inherit" href="https://www.plataformadigitalnacional.org/blog">
-                                    Blog
-                                </Button>
-                                <Button color="inherit" component={Link} to="/about">
-                                    Acerca
-                                </Button>
-                                <Button color="inherit" component={Link} to="/faq" >
-                                    FAQ
-                                </Button>
-                            </Toolbar>
+                                    <Button color="inherit" href="https://www.plataformadigitalnacional.org/blog">
+                                        Blog
+                                    </Button>
+                                    <Button color="inherit" component={Link} to="/about">
+                                        Acerca
+                                    </Button>
+                                    <Button color="inherit" component={Link} to="/faq">
+                                        FAQ
+                                    </Button>
+                                    {
+                                        this.state.authenticated &&
+                                        <Button color="inherit" onClick={this.handleSignOut}>Cerrar sesión</Button>
+                                    }
+
+                                </Toolbar>
+
+                            </Grid>
                         </Grid>
+                    </AppBar>
+                </div>
+                <Grid container className={classes.paperModal}justify={"center"} >
+                    <Grid item xs={12} style={{textAlign: 'center'}}>
+                        <Typography variant={"title"} className={classes.textoDemo}>
+                            DEMO
+                        </Typography>
                     </Grid>
-                </AppBar>
+
+                </Grid>
             </div>
         );
     }
 }
 
-PDNAppBar.propTypes= {
+PDNAppBar.propTypes = {
     classes: PropTypes.object.isRequired
 };
 

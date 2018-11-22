@@ -7,7 +7,7 @@ import Grid from '@material-ui/core/Grid';
 const styles = theme => ({
     bgImg:{
         height: '300px',
-        backgroundImage: 'url(Banner1_.jpg)',/*'url(/BannereDark_PDN.png)',*/
+        backgroundImage: 'url(Banner1_.jpg)',/*'url(/Banner1_.png)',*/
         backgroundPosition:'bottom',
         backgroundRepeat: 'no-repeat',
         textAlign:'left',
@@ -49,6 +49,7 @@ class Banner extends React.Component {
                 <div className={classes.container}>
                     <Grid container spacing={24}>
                         <Grid item xs={12} align="center">
+
                             <Typography className={classes.pdn} variant="display2" style={{color: '#fff'}}>
                                 Plataforma Digital Nacional
                             </Typography>
@@ -61,7 +62,6 @@ class Banner extends React.Component {
                             <Typography variant="body2" className={classes.beta} style={{color: '#fff'}}>
                                 beta
                             </Typography>
-
                         </Grid>
                     </Grid>
                 </div>
