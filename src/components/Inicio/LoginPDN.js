@@ -90,7 +90,7 @@ handleClick=()=>{
                                 <Grid item xs={12}>
                                     <br/>
                                     <img
-                                        src="./logo_pdn.png"
+                                        src="logo_pdn.png"
                                         className="img-fluid"
                                         alt="PDN"
                                     />
