@@ -9,7 +9,6 @@ import Button from "@material-ui/core/Button";
 import app from "../../config/firebase";
 import PrivateRoute from "../../PrivateRoute";
 import Home from '../Home';
-
 const divstyle = {
     marginTop: "150px"
 };
@@ -90,7 +89,7 @@ handleClick=()=>{
                                 <Grid item xs={12}>
                                     <br/>
                                     <img
-                                        src="logo_pdn.png"
+                                        src="./logo_pdn.png"
                                         className="img-fluid"
                                         alt="PDN"
                                     />

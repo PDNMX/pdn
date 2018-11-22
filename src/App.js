@@ -169,9 +169,9 @@ class App extends React.Component {
 
         return (
             <MuiThemeProvider theme={theme}>
-               <Router basename={'/'}>
+               <Router basename={process.env.PUBLIC_URL}>
                     <Switch>
-                        <Route exact path={'/'} render={(props)=><LoginPDN handleSignIn={this.handleSignIn} propiedades={props}/> } />
+                        <Route exact path={process.env.PUBLIC_URL} render={(props)=><LoginPDN handleSignIn={this.handleSignIn} propiedades={props}/> } />
                         {pndRoutes.map((prop, key) => {
                             return <PrivateRoute exact path={prop.path} component={prop.component}  key={key}  authenticated={authenticated} currentUser={user}/>;
                         }
