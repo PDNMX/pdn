@@ -7,6 +7,7 @@ import PrivateRoute from "./PrivateRoute";
 import DemoDeclaraciones from './components/DemoDeclaraciones/demo';
 import app from "./config/firebase";
 import LoginPDN from "./components/Inicio/LoginPDN";
+import {connect} from 'react-redux';
 
 const theme = createMuiTheme({
     palette: {
@@ -93,7 +94,6 @@ class App extends React.Component {
                                 profile : doc.data().profile
                             },
                             authenticated : true,
-                            currentUsuer : user,
                             loading: false
                         })
                     });
@@ -141,7 +141,8 @@ class App extends React.Component {
                                             nombre : doc.data().nombre,
                                             apellidoPaterno: doc.data().apellidoPaterno,
                                             apellidoMaterno : doc.data().apellidoMaterno,
-                                            profile : doc.data().profile
+                                            profile : doc.data().profile,
+                                            email : user.email,
                                         },
                                         authenticated : true,
                                         currentUsuer : user,
@@ -171,7 +172,7 @@ class App extends React.Component {
             <MuiThemeProvider theme={theme}>
                <Router basename={process.env.PUBLIC_URL}>
                     <Switch>
-                        <Route exact path={'/'} render={(props)=><LoginPDN handleSignIn={this.handleSignIn} propiedades={props}/> } />
+                        <Route exact path={'/'} render={(props)=><LoginPDN handleSignIn={this.handleSignIn} propiedades={props }/> } />
                         {pndRoutes.map((prop, key) => {
                             return <PrivateRoute exact path={prop.path} component={prop.component}  key={key}  authenticated={authenticated} currentUser={user}/>;
                         }
@@ -185,4 +186,10 @@ class App extends React.Component {
     }
 }
 
+const mapStateToProps =(state,ownProps)=>{
+    let newState = {
+        sesion : state.sesionReducer.sesion
+    };
+    return newState;
+};
 export default App;

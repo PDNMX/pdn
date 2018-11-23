@@ -10,6 +10,8 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
 import app from "../../config/firebase";
+import Modal from "@material-ui/core/Modal/Modal";
+import Participa from "../Participa/Participa";
 
 const styles = theme => ({
     root: {
@@ -22,7 +24,7 @@ const styles = theme => ({
     gridItem: {
         maxWidth: '1024px'
     },
-    paperModal: {
+    barDemo: {
         width: '100%',
         backgroundColor: '#671e1e',
         boxShadow: theme.shadows[5],
@@ -31,6 +33,13 @@ const styles = theme => ({
     textoDemo:{
         color : 'white'
     },
+    modalParticipa: {
+    position: 'fixed',
+    width: '100%',
+    height: '100%',
+    top: 0,
+    left: 0,
+}
 
 });
 
@@ -55,7 +64,6 @@ class PDNAppBar extends React.Component {
             if (user) {
                 this.setState({
                     authenticated: true,
-                    currentUsuer: user,
                     loading: false
                 });
             } else {
@@ -105,6 +113,17 @@ class PDNAppBar extends React.Component {
                                     <Button color="inherit" component={Link} to="/faq">
                                         FAQ
                                     </Button>
+                                    <Button color="inherit" onClick={this.handleClickOpen}>
+                                        Participa
+                                    </Button>
+                                    <Modal className={classes.modalParticipa}
+                                        aria-labelledby="simple-modal-title"
+                                        aria-describedby="simple-modal-description"
+                                        open={this.state.open}
+                                        onClose={this.handleClose} disableEscapeKeyDown={true} disableBackdropClick={true}
+                                    >
+                                       <Participa onClose={this.handleClose} currentUser={this.props.currentUser}/>
+                                    </Modal>
                                     {
                                         this.state.authenticated &&
                                         <Button color="inherit" onClick={this.handleSignOut}>Cerrar sesión</Button>
@@ -116,7 +135,7 @@ class PDNAppBar extends React.Component {
                         </Grid>
                     </AppBar>
                 </div>
-                <Grid container className={classes.paperModal}justify={"center"} >
+                <Grid container className={classes.barDemo}justify={"center"} >
                     <Grid item xs={12} style={{textAlign: 'center'}}>
                         <Typography variant={"title"} className={classes.textoDemo}>
                             DEMO

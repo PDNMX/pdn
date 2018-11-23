@@ -58,7 +58,7 @@ class Home extends React.Component {
         const {classes} = this.props;
         return (
             <div className={classes.root}>
-                <Header/>
+                <Header currentUser={this.props.currentUser}/>
                 <Banner/>
                 <div className={classes.homeBody}>
                     <Grid justify="center" container spacing={0}>
