@@ -68,7 +68,7 @@ class Home extends React.Component {
         const {classes} = this.props;
         return (
             <div className={classes.root}>
-                <Header/>
+                <Header currentUser={this.props.currentUser}/>
                 <Banner/>
                 {/* <VideoBanner/> */}
                 <div className={classes.homeBody}>
