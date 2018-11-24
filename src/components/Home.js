@@ -9,7 +9,7 @@ import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Typography from "@material-ui/core/Typography/Typography";
 import Cards from './Cards';
-import VideoBanner from './VideoBanner';
+//import VideoBanner from './VideoBanner';
 import Modal from "@material-ui/core/Modal/Modal";
 
 //import video_mp4 from '../assets/videos/hero2.mp4'
