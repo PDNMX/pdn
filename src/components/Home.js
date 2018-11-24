@@ -70,7 +70,7 @@ class Home extends React.Component {
             <div className={classes.root}>
                 <Header/>
                 <Banner/>
-                <VideoBanner/>
+                {/* <VideoBanner/> */}
                 <div className={classes.homeBody}>
                     <Grid justify="center" container spacing={0}>
                         <Grid item xs={12} className={classes.section}>
