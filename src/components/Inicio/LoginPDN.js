@@ -8,7 +8,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import app from "../../config/firebase";
 import PrivateRoute from "../../PrivateRoute";
-import Home from '../Home';
+import Home from '../Home/Home';
 
 
 const styles = theme => ({
