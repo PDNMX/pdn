@@ -9,7 +9,10 @@ import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Typography from "@material-ui/core/Typography/Typography";
 import Cards from './Cards';
+import VideoBanner from './VideoBanner';
 import Modal from "@material-ui/core/Modal/Modal";
+
+//import video_mp4 from '../assets/videos/hero2.mp4'
 
 
 const styles = theme => ({
@@ -48,7 +51,14 @@ const styles = theme => ({
     },
     links: {
         backgroundColor: theme.palette.grisTenue.color
-    }
+    },
+    /*video: {
+        position: "fixed",
+        right: 0,
+        bottom: 0,
+        minWidth: '100%',
+        minHeight: '100%'
+    }*/
 });
 
 
@@ -60,6 +70,7 @@ class Home extends React.Component {
             <div className={classes.root}>
                 <Header/>
                 <Banner/>
+                <VideoBanner/>
                 <div className={classes.homeBody}>
                     <Grid justify="center" container spacing={0}>
                         <Grid item xs={12} className={classes.section}>
