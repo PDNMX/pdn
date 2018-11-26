@@ -5,9 +5,18 @@ import {withStyles} from '@material-ui/core/styles';
 import Explora from './Explora';
 import Sistemas from './Sistemas';
 import QueEsLaPDN from './QueEsLaPDN';
+import Footer from './Footer';
+import Header from "../PDNAppBar/PDNAppBar";
+import Banner from "../Banner";
 const styles = theme => ({
     root: {
         flexGrow :1
+    },
+    item: {
+        maxWidth: 1200
+    },
+    sistemas: {
+        background: '#89d4f2'
     }
 });
 class HomeGF extends React.Component{
@@ -16,17 +25,27 @@ class HomeGF extends React.Component{
         const { classes } = this.props;
         return(
             <div className={classes.root}>
+                <Header currentUser={this.props.currentUser}/>
+                <Banner/>
                 <Grid container spacing={24} justify="center">
-                    <Grid item xs={12}>
+                    <Grid item xs={12} className={classes.item}>
                         <Explora/>
                     </Grid>
-                    <Grid item xs={12}>
+                </Grid>
+
+                <Grid container spacing={24} justify="center" className={classes.sistemas}>
+                    <Grid item xs={12} className={classes.item}>
                         <Sistemas/>
                     </Grid>
-                    <Grid item xs={12}>
+                </Grid>
+
+                <Grid container spacing={24} justify="center">
+                    <Grid item xs={12} className={classes.item}>
                         <QueEsLaPDN/>
                     </Grid>
                 </Grid>
+
+                <Footer/>
             </div>
         );
     }

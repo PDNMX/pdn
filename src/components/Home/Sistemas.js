@@ -12,6 +12,10 @@ const styles = theme => ({
     root: {
         flexGrow: 1
     },
+    container: {
+      paddingTop: 100,
+      paddingBottom: 100
+    },
     icons: {
         maxWidth: 200
     }
@@ -22,7 +26,7 @@ class Sistemas extends React.Component{
         const { classes } = this.props;
         return (
             <div className={classes.root}>
-                <Grid container spacing={24} justify='center'>
+                <Grid container spacing={24} justify='center' className={classes.container}>
                     <Grid item xs={4} align="center">
                         <img src={s1} alt="Sistema 1" className={classes.icons}/>
                         <br/>
