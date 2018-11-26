@@ -22,6 +22,7 @@ const styles = theme => ({
     },
     link: {
         textDecoration: "none",
+        color: '#000'
 
     }
 });
