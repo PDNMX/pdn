@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import LogoSesna from '../../assets/sesna-gris.jpg';
 import LibreUso from '../../assets/libre-uso.png';
 import Typography from "@material-ui/core/es/Typography/Typography";
-import LogoPDN from '../../assets/logo-PDN.svg';
+import LogoPDN from '../../assets/PDN-sintexto-blue.png';
 import OK from '../../assets/ok_80x15_blue.png';
 
 const styles = theme => ({
