@@ -12,6 +12,8 @@ import Grid from '@material-ui/core/Grid';
 import app from "../../config/firebase";
 import Modal from "@material-ui/core/Modal/Modal";
 import Participa from "../Participa/Participa";
+import connect from "react-redux/es/connect/connect";
+import {withRouter } from 'react-router-dom';
 
 const styles = theme => ({
     root: {
@@ -44,6 +46,9 @@ const styles = theme => ({
 });
 
 class PDNAppBar extends React.Component {
+    constructor(props){
+        super(props);
+    };
     state = {
         open: false,
         currentUser: null,
@@ -59,26 +64,12 @@ class PDNAppBar extends React.Component {
         this.setState({open: false});
     };
 
-    componentWillMount() {
-        app.auth().onAuthStateChanged(user => {
-            if (user) {
-                this.setState({
-                    authenticated: true,
-                    loading: false
-                });
-            } else {
-                this.setState({
-                    authenticated: false,
-                    currentUser: null,
-                    loading: false
-                });
-            }
-        })
-    }
-
     handleSignOut = () => {
         app.auth().signOut().then(() => {
-
+            let aux = {};
+            localStorage.setItem("sesion",JSON.stringify(aux));
+            this.props.history.push("/");
+            this.props.removeSesion();
         }).catch(e => {
             alert(e);
         })
@@ -87,7 +78,6 @@ class PDNAppBar extends React.Component {
     render() {
 
         const {classes} = this.props;
-
         return (
             <div>
                 <div className={classes.root}>
@@ -122,10 +112,10 @@ class PDNAppBar extends React.Component {
                                         open={this.state.open}
                                         onClose={this.handleClose} disableEscapeKeyDown={true} disableBackdropClick={true}
                                     >
-                                       <Participa onClose={this.handleClose} currentUser={this.props.currentUser}/>
+                                       <Participa onClose={this.handleClose}/>
                                     </Modal>
                                     {
-                                        this.state.authenticated &&
+                                        this.props.sesion.authenticated &&
                                         <Button color="inherit" onClick={this.handleSignOut}>Cerrar sesión</Button>
                                     }
 
@@ -152,4 +142,21 @@ PDNAppBar.propTypes = {
     classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(PDNAppBar);
+
+
+const mapStateToProps = (state, ownProps) => {
+    let newState = {
+        sesion: state.sesionReducer.sesion
+    };
+    return newState;
+};
+const mapDispatchToProps = (dispatch, ownProps) => ({
+    newSesion: (sesion) => dispatch({type: 'SET_SESION', sesion}),
+    removeSesion : () => dispatch({type : 'REMOVE_SESION'}),
+});
+
+let previo =  withStyles(styles)(PDNAppBar);
+export default withRouter(connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(previo));

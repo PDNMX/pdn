@@ -1,20 +1,17 @@
 import React, {Component} from "react";
 import {withStyles} from "@material-ui/core/styles";
-import {Redirect} from "react-router";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import app from "../../config/firebase";
-import PrivateRoute from "../../PrivateRoute";
-import Home from '../Home';
+import Typography from "@material-ui/core/Typography/Typography";
 
 
 const styles = theme => ({
     item: {
         marginTop: "150px",
-      maxWidth: '500px'
+        maxWidth: '500px'
     },
     container: {
         display: "flex",
@@ -37,6 +34,9 @@ const styles = theme => ({
     },
     title: {
         fontSize: 14
+    },
+    mensaje:{
+        color : 'red'
     }
 });
 
@@ -56,28 +56,9 @@ class LoginPDN extends Component {
             [name]: event.target.value
         });
     };
-/*
 
-    handleSignIn =  (event) => {
-        event.preventDefault();
-        try {
-            const {history} = this.props;
-            console.log("History: ",history);
-            app.auth().signInWithEmailAndPassword(this.state.email, this.state.pass).then((resp)=>{
-                console.log("resp",resp);
-                if (resp.user.uid) {
-                    console.log("Redirect");
-                   // return history.push('/home');
-                }
-            });
-
-        } catch (e) {
-            alert(e);
-        }
-    };
-*/
-    handleClick=()=>{
-        this.props.handleSignIn(this.state.email,this.state.pass,this.props.propiedades.history);
+    handleClick = () => {
+        this.props.handleSignIn(this.state.email, this.state.pass, this.props.propiedades.history);
     };
 
     render() {
@@ -129,11 +110,18 @@ class LoginPDN extends Component {
                                 <div>
                                     <Button
                                         variant="contained"
-                                        onClick={()=>this.handleClick()}
+                                        onClick={() => this.handleClick()}
+                                        disabled={!this.state.email || !this.state.pass }
                                     >
                                         Ingresar
                                     </Button>
                                 </div>
+                            </Grid>
+                            <Grid item xs={12}>
+                                <br/>
+                                {this.props.mensaje &&
+                                <Typography variant={"body1"} className={classes.mensaje}>{'*'+this.props.mensaje}</Typography>
+                                }
                             </Grid>
                             <Grid item xs={12}/>
                         </CardContent>

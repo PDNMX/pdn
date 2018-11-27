@@ -5,6 +5,7 @@ import {withStyles} from '@material-ui/core/styles';
 import TextField from "@material-ui/core/TextField/TextField";
 import Button from "@material-ui/core/Button/Button";
 import rp from 'request-promise';
+import connect from "react-redux/es/connect/connect";
 
 const styles = theme => ({
     paper: {
@@ -39,12 +40,10 @@ class Participa extends React.Component {
     };
 
     enviar = () => {
-
-        console.log("User: ",this.props.currentUser);
         if (!this.state.comentario) return;
         let comentario = {
             nombre: this.state.nombre,
-            correo: this.props.currentUser.email,
+            correo: this.props.sesion.currentUser.email,
             fecha: new Date(),
             telefono: this.state.telefono,
             comentario: this.state.comentario,
@@ -82,7 +81,7 @@ class Participa extends React.Component {
                     </Grid>
                     <Grid item xs={12}>
                         <Typography variant={"subheading"} align={"justify"}>
-                            Déjanos tu comentario. Los campos necesarios están marcados con *.
+                            Déjanos tu comentario, los campos necesarios están marcados con *.
                         </Typography>
                     </Grid>
                     <Grid item xs={4}>
@@ -165,4 +164,19 @@ class Participa extends React.Component {
     }
 }
 
-export default withStyles(styles)(Participa);
+const mapStateToProps = (state, ownProps) => {
+    let sessionR = {
+        sesion: state.sesionReducer.sesion
+    };
+    return sessionR;
+};
+const mapDispatchToProps = (dispatch, ownProps) => ({
+    newSesion: (sesion) => dispatch({type: 'SET_SESION', sesion}),
+});
+
+let previo = withStyles(styles)(Participa);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(previo)
+

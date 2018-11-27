@@ -1,30 +1,25 @@
 const INITIAL_STATE = {
-    sesion:{
-        authenticated : false,
-        currentUser:null
+    sesion: {
+        authenticated: false,
+        currentUser: null
     }
 };
 
 
-const sesionReducer = (state = INITIAL_STATE, action) =>{
+const sesionReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case "GET_USER":
-            return;
-        case "SET_USER":
-            let d = {
-                ...state.denuncia,
-                [action.name] : action.date
+            return this.state.sesion.currentUser;
+        case "SET_SESION":
+            let s = {
+                sesion: action.sesion
             };
-            let obj = {denuncia : d};
-            return obj;
-        case "REMOVE_USER":
-            this.setState({
+            return s;
 
-            });
-            return true;
+        case "REMOVE_SESION":
+            return INITIAL_STATE;
         default :
             return state;
-
     }
 };
 
