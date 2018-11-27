@@ -5,7 +5,12 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+
 import Typography from "@material-ui/core/Typography/Typography";
+
+import app from "../../config/firebase";
+import PrivateRoute from "../../PrivateRoute";
+import Home from '../Home/Home';
 
 
 const styles = theme => ({

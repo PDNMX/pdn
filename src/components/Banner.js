@@ -3,6 +3,7 @@ import {withStyles} from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography/Typography";
 import PropTypes from "prop-types";
 import Grid from '@material-ui/core/Grid';
+import vid from '../assets/videos/hero2.mp4';
 
 const styles = theme => ({
     bgImg:{
@@ -30,7 +31,8 @@ const styles = theme => ({
         [theme.breakpoints.down('sm')]:{
             paddingTop: '40px'
 
-        }
+        },
+        color: '#fff'
     },
     beta:{
         ...theme.typography.button,
@@ -38,6 +40,7 @@ const styles = theme => ({
         padding: theme.spacing.unit * 0.5,
         width: '45px',
         borderRadius: '5px',
+        color: '#fff'
     }
 });
 
@@ -46,25 +49,25 @@ class Banner extends React.Component {
         const { classes } = this.props;
         return (
             <div className={classes.bgImg}>
-                <div className={classes.container}>
-                    <Grid container spacing={24}>
-                        <Grid item xs={12} align="center">
+                    <div className={classes.container}>
+                        <Grid container spacing={24}>
+                            <Grid item xs={12} align="center">
 
-                            <Typography className={classes.pdn} variant="display2" style={{color: '#fff'}}>
-                                Plataforma Digital Nacional
-                            </Typography>
-                            <Typography variant="subheading" style={{ color:'#fff',  paddingTop: '10px'}}>
-                                Inteligencia de datos anticorrupción
-                            </Typography>
+                                <Typography className={classes.pdn} variant="display2">
+                                    Plataforma Digital Nacional
+                                </Typography>
+                                <Typography variant="subheading" style={{ color:'#fff',  paddingTop: '10px'}}>
+                                    Inteligencia de datos anticorrupción
+                                </Typography>
 
-                            <br/>
+                                <br/>
 
-                            <Typography variant="body2" className={classes.beta} style={{color: '#fff'}}>
-                                beta
-                            </Typography>
+                                <Typography variant="body2" className={classes.beta}>
+                                    beta
+                                </Typography>
+                            </Grid>
                         </Grid>
-                    </Grid>
-                </div>
+                    </div>
             </div>
         );
     }
