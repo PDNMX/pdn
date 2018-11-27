@@ -98,6 +98,7 @@ class BubbleHolder extends React.Component {
 
     selectBubble = (bubble) => {
         this.setState({institucion: bubble.dependencia});
+        window.location.href = "#tablaDetalle";
     };
 
     render() {
@@ -136,7 +137,7 @@ class BubbleHolder extends React.Component {
                             }
                         </BubbleChart>
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} id={'tablaDetalle'}>
                         {this.state.institucion && this.state.type=== 1 &&
                         <TablaDetalleServidores institucion={this.state.institucion}/>
                         }
