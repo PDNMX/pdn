@@ -37,10 +37,10 @@ class QueEsLaPDN extends React.Component{
                         </Typography>
                     </Grid>
 
-                    <Grid item xs={4} align="center">
+                    <Grid item md={4} xs={12} align="center">
                         <img src={Star} alt="PDN" className={classes.star}/>
                     </Grid>
-                    <Grid item xs={8}>
+                    <Grid item md={8} xs={12}>
                         <Typography>
                             La <b>Plataforma Digital Nacional</b> es una fuente de inteligencia para construir integridad y combatir la corrupción, que creará valor para el gobierno y la sociedad, a partir de grandes cantidades de datos.
                         </Typography>

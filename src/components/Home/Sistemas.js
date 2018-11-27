@@ -33,7 +33,7 @@ class Sistemas extends React.Component{
         return (
             <div className={classes.root}>
                 <Grid container spacing={24} justify='center' className={classes.container}>
-                    <Grid item xs={4} align="center">
+                    <Grid item xl={4} lg={4} md={6} xs={12} align="center">
                         <Link to="/home" className={ classes.link }>
                             <img src={s1} alt="Sistema 1" className={classes.icons}/>
                             <br/>
@@ -42,7 +42,7 @@ class Sistemas extends React.Component{
                             </Typography>
                         </Link>
                     </Grid>
-                    <Grid item xs={4} align="center">
+                    <Grid item xl={4} lg={4} md={6} xs={12} align="center">
                         <Link to="/servidores" className={ classes.link }>
                             <img src={s2} alt="Sistema 2" className={classes.icons}/>
                             <br/>
@@ -51,7 +51,7 @@ class Sistemas extends React.Component{
                             </Typography>
                         </Link>
                     </Grid>
-                    <Grid item xs={4} align="center">
+                    <Grid item xl={4} lg={4} md={6} xs={12} align="center">
                         <Link to="/sancionados" className ={ classes.link }>
                             <img src={s3} alt="Sistema 3" className={classes.icons}/>
                             <br/>
@@ -60,7 +60,7 @@ class Sistemas extends React.Component{
                             </Typography>
                         </Link>
                     </Grid>
-                    <Grid item xs={4} align="center">
+                    <Grid item xl={4} lg={4} md={6} xs={12} align="center">
                         <Link to="/home" className={classes.link }>
                             <img src={s4} alt="Sistema 4" className={classes.icons}/>
                             <br/>
@@ -69,14 +69,14 @@ class Sistemas extends React.Component{
                             </Typography>
                         </Link>
                     </Grid>
-                    <Grid item xs={4} align="center">
+                    <Grid item xl={4} lg={4} md={6} xs={12} align="center">
                         <Link to="/home" className={classes.link }>
                             <img src={s5} alt="Sistema 5" className={classes.icons}/>
                             <br/>
                             <Typography variant="headline">Denuncias</Typography>
                         </Link>
                     </Grid>
-                    <Grid item xs={4} align="center">
+                    <Grid item xl={4} lg={4} md={6} xs={12} align="center">
                         <Link to="/home" className={classes.link}>
                             <img src={s6} alt="Sistema 6" className={classes.icons}/>
                             <br/>

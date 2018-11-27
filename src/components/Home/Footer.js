@@ -54,7 +54,7 @@ class Footer extends React.Component{
                     <Grid item xs={12} className={classes.item}>
 
                         <Grid container>
-                            <Grid item xs={6}>
+                            <Grid item xs={12} md={6}>
                                 <img src={LogoPDN} className={classes.logoPDN}/>
 
                                 <Typography className={classes.grayText}><b>Plataforma Digital Nacional</b></Typography>
@@ -64,7 +64,7 @@ class Footer extends React.Component{
                                 <br/>
                                 <img src={OK}/>
                             </Grid>
-                            <Grid item xs={3}>
+                            <Grid item xs={6} md={3}>
                                 <Typography className={classes.blueText}><b>Sistemas</b></Typography>
                                 <Typography className={classes.grayText}>Declaraciones </Typography>
                                 <Typography className={classes.grayText}>Servidores en contrataciones</Typography>
@@ -73,7 +73,7 @@ class Footer extends React.Component{
                                 <Typography className={classes.grayText}>Denuncias</Typography>
                                 <Typography className={classes.grayText}>Contrataciones</Typography>
                             </Grid>
-                            <Grid item xs={3}>
+                            <Grid item xs={6} md={3}>
                                 <Typography className={classes.blueText}><b>PDN</b></Typography>
                                 <Typography className={classes.grayText}>¿Qué es la PDN?</Typography>
                                 <Typography className={classes.grayText}>Blog</Typography>
