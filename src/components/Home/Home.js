@@ -6,7 +6,7 @@ import Banner from "../Banner";
 import PDNLinks from "../PDNLinks/PDNLinks";
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import Typography from "@material-ui/core/Typography/Typography";
+import Typography from "@material-ui/core/Typography";
 import Cards from './Cards';
 //import VideoBanner from './VideoBanner';
 import Modal from "@material-ui/core/Modal/Modal";

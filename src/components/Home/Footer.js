@@ -3,7 +3,7 @@ import {withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import LogoSesna from '../../assets/sesna-gris.jpg';
 import LibreUso from '../../assets/libre-uso.png';
-import Typography from "@material-ui/core/es/Typography/Typography";
+import Typography from "@material-ui/core/Typography";
 import LogoPDN from '../../assets/PDN-sintexto-blue.png';
 import OK from '../../assets/ok_80x15_blue.png';
 
