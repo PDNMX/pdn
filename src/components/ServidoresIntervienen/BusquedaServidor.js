@@ -30,17 +30,17 @@ const styles = theme => ({
         width: '100%'
     },
     fontLight: {
-        color: theme.palette.fontLight.color,
+        color: theme.palette.black.color,
     },
     '&$focus': {
-        color: theme.palette.fontLight.color,
+        color: theme.palette.black.color,
     },
     root: {
         flexGrow: 1,
         height: 250,
     },
     input: {
-        color: theme.palette.fontLight.color,
+        color: theme.palette.black.color,
         display: 'contents'
     },
     valueContainer: {
@@ -53,14 +53,14 @@ const styles = theme => ({
         padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`,
     },
     singleValue: {
-        color: theme.palette.fontLight.color,
+        color: theme.palette.black.color,
         width : 'auto',
         overflow : 'hidden',
         textOverflow : 'ellipsis'
     },
     placeholder: {
         fontSize : 16,
-        color: theme.palette.fontLight.color
+        color: theme.palette.black.color
     },
     paper: {
         position: 'absolute',
@@ -71,7 +71,7 @@ const styles = theme => ({
         height: theme.spacing.unit * 2,
     },
     labelCustom: {
-        color: theme.palette.fontLight.color,
+        color: theme.palette.black.color,
     },
     centrado:{
         display: 'flex',
@@ -88,8 +88,8 @@ function Control(props) {
     return (
         <TextField
             fullWidth
-            label="Institución"
-            placeholder={'TODAS'}
+            label="INSTITUCIÓN"
+            placeholder={'Selecciona una'}
             InputProps={{
                 inputComponent,
                 inputProps: {
@@ -128,7 +128,7 @@ function Option(props) {
 
 function SingleValue(props) {
     return (
-        <div className={props.selectProps.classes.singleValue}> {props.children} </div>
+        <div className={props.selectProps.classes.singleValue}>{!props.data.value?'Selecciona una':''} {props.children} </div>
     );
 }
 
@@ -147,7 +147,8 @@ function Placeholder(props) {
             className={props.selectProps.classes.placeholder}
             {...props.innerProps}
         >
-            {props.children}
+
+            {'test'}
         </Typography>
     );
 }
@@ -157,7 +158,6 @@ const components = {
     'Menu' : Menu,
     'Option' : Option,
     'SingleValue' : SingleValue,
-    'Placeholder': Placeholder
 };
 
 class BusquedaServidor extends React.Component {
@@ -196,7 +196,7 @@ class BusquedaServidor extends React.Component {
                 ...base,
                 '& input': {
                     font: 'inherit',
-                    color: theme.palette.fontLight.color,
+                    color: theme.palette.black.color,
                 }
             }),
             placeholder : base => ({
@@ -210,7 +210,7 @@ class BusquedaServidor extends React.Component {
                 <Grid item xs={12} md={3}>
                     <FormControl className={classes.formControl}>
                         <InputLabel shrink htmlFor="campoSelectProcedimiento"
-                                    className={classes.fontLight}>Categoría</InputLabel>
+                                    className={classes.fontLight}>CATEGORÍAS</InputLabel>
                         <Select
                             value={procedimiento}
                             onChange={(e) => handleChangeCampo('procedimiento', e)}
@@ -223,7 +223,7 @@ class BusquedaServidor extends React.Component {
 
                         >
                             <MenuItem value={0}>
-                                <em>TODAS</em>
+                                <em>Selecciona una</em>
                             </MenuItem>
                             <MenuItem value={1}>CONTRATACIONES PÚBLICAS</MenuItem>
                             <MenuItem value={2}>CONCESIONES, LICENCIAS, PERMISOS, AUTORIZACIONES Y PRÓRROGAS</MenuItem>
@@ -251,7 +251,7 @@ class BusquedaServidor extends React.Component {
                     <FormControl className={classes.formControl}>
                         <TextField
                             id="search"
-                            label="Nombre del servidor"
+                            label="NOMBRE DEL SERVIDOR"
                             type="search"
                             onChange={(e) => handleChangeCampo('nombreServidor', e)}
                             value={nombreServidor}

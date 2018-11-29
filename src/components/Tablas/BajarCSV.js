@@ -1,14 +1,15 @@
 import React from 'react';
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import DownloadIcon from "@material-ui/icons/CloudDownload";
+import DownloadIcon from "../../assets/descargar.svg";
 import Button from "@material-ui/core/Button/Button";
 import classNames from 'classnames';
 import PropDataUpdatedCSVLink from '../PropDataUpdatedCSVLink';
+import img3 from "../../assets/img/servidores_visualizaciones.svg";
 
 const styles = theme => ({
     button: {
-        margin: theme.spacing.unit,
+        backgroundColor : "#FFE01B"
     },
     leftIcon: {
         marginRight: theme.spacing.unit,
@@ -17,7 +18,7 @@ const styles = theme => ({
         marginLeft: theme.spacing.unit,
     },
     iconSmall: {
-        fontSize: 15,
+        width : '25px'
     },
     flex: {
         flexGrow: 1,
@@ -54,12 +55,14 @@ class BajarCSV extends React.Component {
 
         return (
             <div>
-                <Button color="primary" variant="contained" size="small" className={classNames(classes.button)}
+                <Button variant="contained" size="small" className={classNames(classes.button)}
                         onClick={() => {
                             filtrado ? fnSearch('FILTER') : fnSearch('ALL');
                         }}>
-                    <DownloadIcon className={classNames(classes.leftIcon, classes.iconSmall)}/>
                     {labelButton}
+                    <img src={DownloadIcon} alt="Visualizaciones" className={classNames(classes.rightIcon, classes.iconSmall)}
+                         />
+
                 </Button>
                 <PropDataUpdatedCSVLink ref={this.cvsLink} data={data} filename={nombreArchivo} target={"_blank"}
                          headers={headers} className={classes.linkTransparent}

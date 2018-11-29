@@ -125,7 +125,9 @@ class PDNAppBar extends React.Component {
                         </Grid>
                     </AppBar>
                 </div>
-                <Grid container className={classes.barDemo}justify={"center"} >
+                {
+                    /*
+                     <Grid container className={classes.barDemo}justify={"center"} >
                     <Grid item xs={12} style={{textAlign: 'center'}}>
                         <Typography variant={"title"} className={classes.textoDemo}>
                             DEMO
@@ -133,6 +135,9 @@ class PDNAppBar extends React.Component {
                     </Grid>
 
                 </Grid>
+                   */
+                }
+
             </div>
         );
     }

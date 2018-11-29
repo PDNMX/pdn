@@ -11,7 +11,7 @@ import {withStyles} from "@material-ui/core";
 
 const styles = theme => ({
     tableHead: {
-        color: theme.palette.primary.dark
+        color: theme.palette.black.color
     },
 });
 
@@ -23,7 +23,7 @@ class EnhancedTableHead extends React.Component {
     render() {
         const {order, orderBy, classes,columnData} = this.props;
         return (
-            <TableHead>
+            <TableHead style={{backgroundColor:'#f5f5f5'}}>
                 <TableRow>
                     {columnData.map(column => {
                         if (column.mostrar) {
