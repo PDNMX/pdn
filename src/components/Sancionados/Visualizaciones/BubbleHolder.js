@@ -16,6 +16,7 @@ import TablaDetalleParticulares from "./TablaDetalleParticulares";
 const styles = theme => ({
     root: {
         flexGrow: 1,
+        marginTop:'53px'
     },
     item: {
         maxWidth: '1024px'

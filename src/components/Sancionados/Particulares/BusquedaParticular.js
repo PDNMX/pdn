@@ -24,22 +24,21 @@ const styles = theme => ({
         marginRight: theme.spacing.unit,
     },
     formControl: {
-        width : '100%'
+        width: '100%'
     },
     fontLight: {
-        color: theme.palette.fontLight.color,
+        color: theme.palette.black.color,
+    },
+    '&$focus': {
+        color: theme.palette.black.color,
     },
     root: {
         flexGrow: 1,
         height: 250,
     },
     input: {
-        color: theme.palette.fontLight.color,
-
-        display : 'contents',
-    },
-    '&$focus': {
-        color: theme.palette.fontLight.color,
+        color: theme.palette.black.color,
+        display: 'contents'
     },
     valueContainer: {
         display: 'flex',
@@ -51,14 +50,14 @@ const styles = theme => ({
         padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`,
     },
     singleValue: {
-        color: theme.palette.fontLight.color,
+        color: theme.palette.black.color,
         width : 'auto',
         overflow : 'hidden',
         textOverflow : 'ellipsis'
     },
     placeholder: {
-        fontSize: 16,
-        color: theme.palette.fontLight.color
+        fontSize : 16,
+        color: theme.palette.black.color
     },
     paper: {
         position: 'absolute',
@@ -69,7 +68,7 @@ const styles = theme => ({
         height: theme.spacing.unit * 2,
     },
     labelCustom: {
-        color: theme.palette.fontLight.color,
+        color: theme.palette.black.color,
     },
     centrado:{
         display: 'flex',
@@ -88,8 +87,8 @@ function Control(props) {
     return (
         <TextField
             fullWidth
-            label="Institución"
-            placeholder={'TODAS'}
+            label="INSTITUCIÓN"
+            placeholder={'Selecciona una'}
             InputProps={{
                 inputComponent,
                 inputProps: {
@@ -128,7 +127,7 @@ function Option(props) {
 
 function SingleValue(props) {
     return (
-        <div className={props.selectProps.classes.singleValue} > {props.children} </div>
+        <div className={props.selectProps.classes.singleValue} >{!props.data.value?'Selecciona una':''} {props.children} </div>
     );
 }
 
@@ -216,7 +215,7 @@ class BusquedaParticular extends React.Component {
                     <FormControl className={classes.formControl}>
                         <TextField
                             id="search"
-                            label="Nombre del particular"
+                            label="NOMBRE DEL PARTICULAR"
                             type="search"
                             onChange={(e) => handleChangeCampo('nombreParticular',e)}
                             value={nombreParticular}

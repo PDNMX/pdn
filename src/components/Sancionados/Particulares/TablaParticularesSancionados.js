@@ -136,13 +136,8 @@ const styles = theme => ({
         bottom: 0
     },
     container: {
-        width: '100%',
-        borderRadius: '6px',
-        display: 'flex',
-        position: 'relative',
         marginTop: '30px',
         marginBottom: '30px',
-        flexDirection: 'column',
     },
     section: {
         maxWidth: '1024px',
@@ -153,9 +148,11 @@ const styles = theme => ({
     },
     tablePagination:{
         overflowX : 'auto',
-        fontSize : '0.75rem'
+        fontSize :'0.75rem'
+    },
+    gridTable:{
+        marginBottom : '27px'
     }
-
 });
 
 
@@ -170,13 +167,15 @@ const toolbarStyles = theme => ({
         padding: 0,
         margin: '0 15px',
         zIndex: 3,
-        borderRadius: theme.spacing.unit,
+        paddingTop: '53px',
+        paddingBottom:'61px',
     },
     toolBarFloat: {
-        padding: '15px',
+        paddingTop: '53px',
+        paddingBottom:'61px',
         marginTop: '-30px',
         borderRadius: '3px',
-        background: 'linear-gradient(60deg, #295c53, #8fe19f)',
+        background: '#fff',
         boxShadow: '0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgb(41, 92, 83)',
         width: '100%',
 
@@ -200,10 +199,9 @@ let EnhancedTableToolbar = props => {
     const {classes, handleChangeCampo, nombreParticular, institucion} = props;
     return (
         <Toolbar className={classes.toolBarStyle}>
-            <div className={classes.toolBarFloat}>
                 <BusquedaParticular handleChangeCampo={handleChangeCampo} nombreParticular={nombreParticular}
                                     institucion={institucion}/>
-            </div>
+
         </Toolbar>
     );
 };
@@ -360,7 +358,7 @@ class EnhancedTable extends React.Component {
         const emptyRows = rowsPerPage - filterData.length;
         return (
             <div className={classes.container}>
-                <Paper>
+                <div>
                     <EnhancedTableToolbar handleChangeCampo={this.handleChangeCampo}
                                           nombreParticular={this.state.nombreParticular}
                                           institucion={this.state.institucion} />
@@ -370,8 +368,8 @@ class EnhancedTable extends React.Component {
                             this.state.loading &&
                             <CircularProgress className={classes.progress} id="spinnerLoading" size={100}/>
                         }
-                        <Grid container justify={'center'} spacing={0}>
-                            <Grid item xs={12} className={classes.section}>
+                        <Grid container justify={'center'} spacing={0} className={classes.gridTable}>
+                            <Grid item xs={12} >
                                 <Table className={classes.table} aria-describedby="spinnerLoading"
                                        aria-busy={this.state.loading} aria-labelledby="tableTitle">
                                     <EnhancedTableHead
@@ -451,7 +449,7 @@ class EnhancedTable extends React.Component {
                             </Grid>
                         </Grid>
 
-                </Paper>
+                </div>
             </div>
         );
     }

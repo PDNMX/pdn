@@ -7,14 +7,10 @@ import Header from "../PDNAppBar/PDNAppBar";
 import TablaServidores from "./TablaServidores";
 import TablaParticulares from "./TablaParticulares";
 import Grid from "@material-ui/core/Grid/Grid";
-import CardMedia from "@material-ui/core/CardMedia/CardMedia";
 import img1 from "../../assets/img/servidores_intervienen_contratacion.svg";
 import img2 from "../../assets/img/servidores_particulares_inhabilitados.svg";
 import img3 from "../../assets/img/servidores_visualizaciones.svg";
 import BubbleHolder from "./BubbleHolder";
-import Card from '@material-ui/core/Card';
-import s2 from "../../assets/iconos_azul/2_icono.svg";
-import {Link} from "react-router-dom";
 import "../../index.css";
 
 const styles = theme => ({
@@ -160,7 +156,7 @@ class Index extends React.Component {
                                         <img src={img1} alt="Servidores que intervinen en procesos de contratacion"
                                              className={classes.image}
                                              onClick={() => this.changeContent(1)}/>
-                                        <Typography variant={this.state.idContent === 1 ? "subtitle1" : "body1"}
+                                        <Typography variant={this.state.idContent === 1 ? "subtitle1" : "body2"}
                                                     className={classes.titleImg}>
                                             Servidores que intervienen en procesos de contratación
                                         </Typography>
@@ -171,7 +167,7 @@ class Index extends React.Component {
                                         className={this.state.idContent !== 2 ? classes.card : classes.cardSeleccionada}>
                                         <img src={img2} alt="Particulares inhabilitados" className={classes.image}
                                              onClick={() => this.changeContent(2)}/>
-                                        <Typography variant={this.state.idContent === 2 ? "subtitle1" : "body1"}
+                                        <Typography variant={this.state.idContent === 2 ? "subtitle1" : "body2"}
                                                     className={classes.titleImg}>
                                             Particulares inhabilitados
                                         </Typography>
