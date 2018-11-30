@@ -11,14 +11,14 @@ import {connect} from 'react-redux';
 const theme = createMuiTheme({
     palette: {
         primary: {
-            main: '#295c53',
-            light: '#56897f',
-            dark: '#00322b'
+            main: '#89d4f2',
+            light: '#bdffff',
+            dark: '#56a3bf'
         },
         secondary: {
-            main: '#8fe19f',
-            light: "#c1ffd0",
-            dark: '#5eaf70'
+            main: '#ffe01b',
+            light: "#ffff5c",
+            dark: '#c8af00'
         },
         fontLight: {
             color: "#f5f5f5"//"#e0e0e0"

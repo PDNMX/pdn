@@ -101,13 +101,14 @@ const styles = theme => ({
     table: {
         tableLayout: 'fixed',
     },
-    tablePagination: {
-        overflowX: 'auto',
-        fontSize : '0.75rem'
+    tablePagination:{
+        overflowX : 'auto',
+        fontSize :'0.75rem'
     },
-    smallIcon: {
-        color: theme.palette.primary.main
-    },
+    gridTable:{
+        marginBottom : '27px'
+    }
+
 
 });
 
@@ -122,13 +123,15 @@ const toolbarStyles = theme => ({
         padding: 0,
         margin: '0 15px',
         zIndex: 3,
-        borderRadius: theme.spacing.unit,
+        paddingTop: '53px',
+        paddingBottom:'61px',
     },
     toolBarFloat: {
-        padding: '15px',
+        paddingTop: '53px',
+        paddingBottom:'61px',
         marginTop: '-30px',
         borderRadius: '3px',
-        background: 'linear-gradient(60deg, #295c53, #8fe19f)',
+        background: '#fff',
         boxShadow: '0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgb(41, 92, 83)',
         width: '100%',
 
@@ -152,11 +155,9 @@ let EnhancedTableToolbar = props => {
     const {classes, handleChangeCampo, nombreServidor, institucion} = props;
     return (
         <Toolbar className={classes.toolBarStyle}>
-            <div className={classes.toolBarFloat}>
                 <BusquedaServidor handleChangeCampo={handleChangeCampo}
                                   nombreServidor={nombreServidor}
                                   institucion={institucion}/>
-            </div>
         </Toolbar>
     );
 };
@@ -315,7 +316,7 @@ class EnhancedTable extends React.Component {
 
         return (
             <div className={classes.container}>
-                <Paper>
+                <div>
                     <EnhancedTableToolbar categoria={this.state.categoria} handleChangeCampo={this.handleChangeCampo}
                                           nombreServidor={this.state.nombreServidor}
                                           data={filterData}
@@ -328,8 +329,8 @@ class EnhancedTable extends React.Component {
                         <CircularProgress className={classes.progress} id="spinnerLoading" size={100}/>
                     }
 
-                    <Grid container justify={'center'} spacing={0}>
-                        <Grid item xs={12} className={classes.section}>
+                    <Grid container justify={'center'} spacing={0} className={classes.gridTable}>
+                        <Grid item xs={12} >
                             <Table aria-describedby="spinnerLoading" id={'tableServidores'}
                                    aria-busy={this.state.loading} aria-labelledby="tableTitle"
                                    className={classes.table}>
@@ -411,7 +412,7 @@ class EnhancedTable extends React.Component {
                             />
                         </Grid>
                     </Grid>
-                </Paper>
+                </div>
             </div>
         );
     }
