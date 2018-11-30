@@ -9,6 +9,7 @@ import s5 from '../../assets/iconos_azul/5_icono.svg';
 import s6 from '../../assets/iconos_azul/6_icono.svg';
 import {Link} from 'react-router-dom';
 import Typography from "@material-ui/core/Typography";
+import SistemasCss from './Sistemas.css';
 
 const styles = theme => ({
     root: {
@@ -18,9 +19,6 @@ const styles = theme => ({
       paddingTop: 100,
       paddingBottom: 100
     },
-    icons: {
-        maxWidth: 200
-    },
     link: {
         textDecoration: "none",
         color: '#000',
@@ -28,6 +26,8 @@ const styles = theme => ({
 });
 
 class Sistemas extends React.Component{
+
+
     render() {
         const { classes } = this.props;
         return (
@@ -35,7 +35,7 @@ class Sistemas extends React.Component{
                 <Grid container spacing={24} justify='center' className={classes.container}>
                     <Grid item xl={4} lg={4} md={6} xs={12} align="center">
                         <Link to="/home" className={ classes.link }>
-                            <img src={s1} alt="Sistema 1" className={classes.icons}/>
+                            <img src={s1} alt="Sistema 1" className="iconos-sistemas"/>
                             <br/>
                             <Typography variant="headline">
                                 Declaraciones
@@ -44,7 +44,7 @@ class Sistemas extends React.Component{
                     </Grid>
                     <Grid item xl={4} lg={4} md={6} xs={12} align="center">
                         <Link to="/servidores" className={ classes.link }>
-                            <img src={s2} alt="Sistema 2" className={classes.icons}/>
+                            <img src={s2} alt="Sistema 2" className="iconos-sistemas"/>
                             <br/>
                             <Typography variant="headline">
                                 Servidores públicos en contrataciones públicas
@@ -53,7 +53,7 @@ class Sistemas extends React.Component{
                     </Grid>
                     <Grid item xl={4} lg={4} md={6} xs={12} align="center">
                         <Link to="/sancionados" className ={ classes.link }>
-                            <img src={s3} alt="Sistema 3" className={classes.icons}/>
+                            <img src={s3} alt="Sistema 3" className="iconos-sistemas"/>
                             <br/>
                             <Typography variant="headline">
                                 Sancionados
@@ -62,7 +62,7 @@ class Sistemas extends React.Component{
                     </Grid>
                     <Grid item xl={4} lg={4} md={6} xs={12} align="center">
                         <Link to="/home" className={classes.link }>
-                            <img src={s4} alt="Sistema 4" className={classes.icons}/>
+                            <img src={s4} alt="Sistema 4" className="iconos-sistemas"/>
                             <br/>
                             <Typography variant="headline">
                                 Fiscalización
@@ -71,14 +71,14 @@ class Sistemas extends React.Component{
                     </Grid>
                     <Grid item xl={4} lg={4} md={6} xs={12} align="center">
                         <Link to="/home" className={classes.link }>
-                            <img src={s5} alt="Sistema 5" className={classes.icons}/>
+                            <img src={s5} alt="Sistema 5" className="iconos-sistemas"/>
                             <br/>
                             <Typography variant="headline">Denuncias</Typography>
                         </Link>
                     </Grid>
                     <Grid item xl={4} lg={4} md={6} xs={12} align="center">
                         <Link to="/home" className={classes.link}>
-                            <img src={s6} alt="Sistema 6" className={classes.icons}/>
+                            <img src={s6} alt="Sistema 6" className="iconos-sistemas"/>
                             <br/>
                             <Typography variant="headline">Contrataciones</Typography>
                         </Link>
