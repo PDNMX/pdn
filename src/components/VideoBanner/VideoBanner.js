@@ -3,8 +3,7 @@ import {withStyles} from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography/Typography";
 import PropTypes from "prop-types";
 import Grid from '@material-ui/core/Grid';
-import mp4 from '../../assets/videos/hero2.mp4';
-import ogv from '../../assets/videos/hero2.ogv';
+import mp4 from '../../assets/videos/pdn_intro.mp4';
 
 const styles = theme => ({
     videoBg:{
@@ -47,7 +46,6 @@ class Banner extends React.Component {
             <div className={classes.videoBg}>
                 <video autoPlay loop muted className={classes.video}>
                     <source src={mp4} type="video/mp4"/>
-                    <source src={ogv} type="video/ogv"/>
                     Tu navegador no soporta este tag
                 </video>
 
