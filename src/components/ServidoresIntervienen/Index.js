@@ -2,7 +2,7 @@ import React from 'react';
 import {withStyles} from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
-import Footer from '../Footer/Footer';
+import Footer from '../Home/Footer';
 import Header from "../PDNAppBar/PDNAppBar";
 import TablaServidores from "./TablaServidores";
 import TablaParticulares from "./TablaParticulares";
@@ -49,6 +49,7 @@ const styles = theme => ({
     },
     bgPanelTable: {
         backgroundColor: theme.palette.white.color,
+        marginBottom : '266px'
     },
     section: {
         maxWidth: '1200px'

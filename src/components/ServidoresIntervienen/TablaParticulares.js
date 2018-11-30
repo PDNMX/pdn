@@ -136,24 +136,22 @@ const styles = theme => ({
         bottom: 0
     },
     container: {
-        width: '100%',
-        borderRadius: '6px',
-        display: 'flex',
-        position: 'relative',
         marginTop: '30px',
         marginBottom: '30px',
-        flexDirection: 'column',
     },
     section: {
-        maxWidth: '1024px',
+        maxWidth: '1200px',
         overflowX: 'auto'
     },
     table: {
         tableLayout: 'fixed',
     },
-    tablePagination:{
-        overflowX : 'auto',
-        fontSize:'0.75rem'
+    tablePagination: {
+        overflowX: 'auto',
+        fontSize: '0.75rem'
+    },
+    gridTable: {
+        marginBottom: '27px'
     }
 
 });
@@ -170,13 +168,15 @@ const toolbarStyles = theme => ({
         padding: 0,
         margin: '0 15px',
         zIndex: 3,
-        borderRadius: theme.spacing.unit,
+        paddingTop: '53px',
+        paddingBottom: '61px',
     },
     toolBarFloat: {
-        padding: '15px',
+        paddingTop: '53px',
+        paddingBottom: '61px',
         marginTop: '-30px',
         borderRadius: '3px',
-        background: 'linear-gradient(60deg, #295c53, #8fe19f)',
+        background: '#fff',
         boxShadow: '0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgb(41, 92, 83)',
         width: '100%',
 
@@ -200,10 +200,9 @@ let EnhancedTableToolbar = props => {
     const {classes, handleChangeCampo, nombreParticular, institucion} = props;
     return (
         <Toolbar className={classes.toolBarStyle}>
-            <div className={classes.toolBarFloat}>
-                <BusquedaParticular handleChangeCampo={handleChangeCampo} nombreParticular={nombreParticular}
-                                    institucion={institucion}/>
-            </div>
+
+            <BusquedaParticular handleChangeCampo={handleChangeCampo} nombreParticular={nombreParticular}
+                                institucion={institucion}/>
         </Toolbar>
     );
 };
@@ -288,7 +287,7 @@ class EnhancedTable extends React.Component {
         let options = {
             uri: 'https://plataformadigitalnacional.org/api/proveedores_sancionados?sentido_de_resolucion=like.*INHABILITACI%C3%93N*&&select=count=eq.exact',
             json: true,
-            qs : params,
+            qs: params,
         };
         rp(options)
             .then(data => {
@@ -306,18 +305,18 @@ class EnhancedTable extends React.Component {
 
         let params = {};
 
-        if(typeSearch!=='ALL'){
+        if (typeSearch !== 'ALL') {
             institucion ? params.dependencia = 'eq.' + institucion : null;
-            nombreParticular ? params.proveedor_o_contratista = 'like.*' + nombreParticular.toUpperCase()+'*' : null;
-            (typeSearch==='FIELD_FILTER'||typeSearch==='CHANGE_PAGE')? params.limit = this.state.rowsPerPage : null;
-            (typeSearch==='CHANGE_PAGE')? params.offset = (this.state.rowsPerPage * this.state.page) : null;
+            nombreParticular ? params.proveedor_o_contratista = 'like.*' + nombreParticular.toUpperCase() + '*' : null;
+            (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? params.limit = this.state.rowsPerPage : null;
+            (typeSearch === 'CHANGE_PAGE') ? params.offset = (this.state.rowsPerPage * this.state.page) : null;
             (typeSearch === 'FIELD_FILTER') ? this.getTotalRows(params) : null;
         }
 
         let options = {
             uri: URI,
             json: true,
-            qs : params,
+            qs: params,
         };
         rp(options)
             .then(data => {
@@ -359,18 +358,16 @@ class EnhancedTable extends React.Component {
         const emptyRows = rowsPerPage - filterData.length;
         return (
             <div className={classes.container}>
-                <Paper>
                     <EnhancedTableToolbar handleChangeCampo={this.handleChangeCampo}
                                           nombreParticular={this.state.nombreParticular}
-                                          institucion={this.state.institucion} />
-                    <div className={classes.tableWrapper}>
+                                          institucion={this.state.institucion}/>
                         <DetalleParticular handleClose={this.handleClose} particular={this.state.elementoSeleccionado}
                                            control={this.state.open}/>
                         {
                             this.state.loading &&
                             <CircularProgress className={classes.progress} id="spinnerLoading" size={100}/>
                         }
-                        <Grid container justify={'center'} spacing={0}>
+                        <Grid container justify={'center'} spacing={0} className={classes.gridTable}>
                             <Grid item xs={12} className={classes.section}>
                                 <Table className={classes.table} aria-describedby="spinnerLoading"
                                        aria-busy={this.state.loading} aria-labelledby="tableTitle">
@@ -381,7 +378,7 @@ class EnhancedTable extends React.Component {
                                         onSelectAllClick={this.handleSelectAllClick}
                                         onRequestSort={this.handleRequestSort}
                                         rowCount={data.length}
-                                        columnData = {columnData}
+                                        columnData={columnData}
                                     />
                                     <TableBody id="tableParticulares">
                                         {filterData
@@ -451,9 +448,6 @@ class EnhancedTable extends React.Component {
                             </Grid>
                         </Grid>
 
-
-                    </div>
-                </Paper>
             </div>
         );
     }
