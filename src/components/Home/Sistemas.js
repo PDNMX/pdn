@@ -24,7 +24,7 @@ const styles = theme => ({
         color: '#000',
     },
     disabled: {
-        opacity: 0.4,
+        opacity: 0.3,
         maxWidth: 200
     }
 });
