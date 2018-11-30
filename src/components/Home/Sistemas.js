@@ -9,7 +9,7 @@ import s5 from '../../assets/iconos_azul/5_icono.svg';
 import s6 from '../../assets/iconos_azul/6_icono.svg';
 import {Link} from 'react-router-dom';
 import Typography from "@material-ui/core/Typography";
-import SistemasCss from './Sistemas.css';
+import './Sistemas.css';
 
 const styles = theme => ({
     root: {
