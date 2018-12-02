@@ -7,7 +7,9 @@ import Sistemas from './Sistemas';
 import QueEsLaPDN from './QueEsLaPDN';
 import Footer from './Footer';
 import Header from "../PDNAppBar/PDNAppBar";
-import Banner from "../Banner";//"../VideoBanner/VideoBanner";
+import Banner from "../Banner";
+import Bandita from "./Bandita";
+//"../VideoBanner/VideoBanner";
 const styles = theme => ({
     root: {
         flexGrow :1
@@ -47,6 +49,7 @@ class HomeGF extends React.Component{
                 </Grid>
 
                 <Footer/>
+                <Bandita/>
             </div>
         );
     }
