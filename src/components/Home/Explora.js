@@ -22,7 +22,7 @@ class Explora extends React.Component{
 
         return (
             <div className={classes.root}>
-                <Grid container spacing={24} justify='center' className={classes.container}>
+                <Grid container spacing={0} justify='center' className={classes.container}>
                     <Grid item xs={12} align="center">
                         <Typography variant="display2">
                             Explora los 6 sistemas de la PDN

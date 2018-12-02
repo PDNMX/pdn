@@ -30,19 +30,19 @@ class HomeGF extends React.Component{
             <div className={classes.root}>
                 <Header currentUser={this.props.currentUser}/>
                 <Banner/>
-                <Grid container spacing={24} justify="center">
+                <Grid container spacing={0} justify="center">
                     <Grid item xs={12} className={classes.item}>
                         <Explora/>
                     </Grid>
                 </Grid>
 
-                <Grid container spacing={24} justify="center" className={classes.sistemas}>
+                <Grid container spacing={0} justify="center" className={classes.sistemas}>
                     <Grid item xs={12} className={classes.item}>
                         <Sistemas/>
                     </Grid>
                 </Grid>
 
-                <Grid container spacing={24} justify="center">
+                <Grid container spacing={0} justify="center">
                     <Grid item xs={12} className={classes.item}>
                         <QueEsLaPDN/>
                     </Grid>

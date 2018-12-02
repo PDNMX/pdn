@@ -50,10 +50,10 @@ class Footer extends React.Component{
         return (
             <div className={classes.root}>
 
-                <Grid container spacing={24} className={classes.parteGris} justify='center'>
+                <Grid container spacing={0} className={classes.parteGris} justify='center'>
                     <Grid item xs={12} className={classes.item}>
 
-                        <Grid container>
+                        <Grid container spacing={24}>
                             <Grid item xs={12} md={6}>
                                 <img src={LogoPDN} className={classes.logoPDN}/>
 
@@ -86,7 +86,7 @@ class Footer extends React.Component{
                     </Grid>
                 </Grid>
 
-                <Grid container spacing={24} justify='center' className={classes.parteBlanca}>
+                <Grid container spacing={0} justify='center' className={classes.parteBlanca}>
                     <Grid item xs={12} align='center'>
                         <img src={LogoSesna} className={classes.logo}/>
                     </Grid>

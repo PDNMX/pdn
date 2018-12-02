@@ -24,7 +24,7 @@ const styles = theme => ({
         flexGrow: 1,
     },
     gridItem: {
-        maxWidth: '1024px'
+        maxWidth: '1200px'
     },
     barDemo: {
         width: '100%',
@@ -97,12 +97,12 @@ class PDNAppBar extends React.Component {
                                     <Button color="inherit" href="https://www.plataformadigitalnacional.org/blog">
                                         Blog
                                     </Button>
-                                    <Button color="inherit" component={Link} to="/about">
+                                    {/*<Button color="inherit" component={Link} to="/about">
                                         Acerca
                                     </Button>
                                     <Button color="inherit" component={Link} to="/faq">
                                         FAQ
-                                    </Button>
+                                    </Button>*/}
                                     <Button color="inherit" onClick={this.handleClickOpen}>
                                         Participa
                                     </Button>
@@ -116,7 +116,7 @@ class PDNAppBar extends React.Component {
                                     </Modal>
                                     {
                                         this.props.sesion.authenticated &&
-                                        <Button color="inherit" onClick={this.handleSignOut}>Cerrar sesión</Button>
+                                        <Button color="inherit" onClick={this.handleSignOut}>Salir</Button>
                                     }
 
                                 </Toolbar>
