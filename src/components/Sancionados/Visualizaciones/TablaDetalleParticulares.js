@@ -6,7 +6,6 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
 import rp from "request-promise";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import BajarCSV from "../../Tablas/BajarCSV";
@@ -134,16 +133,11 @@ const styles = theme => ({
         bottom: 0
     },
     container: {
-        width: '100%',
-        borderRadius: '6px',
-        display: 'flex',
-        position: 'relative',
         marginTop: '30px',
         marginBottom: '30px',
-        flexDirection: 'column',
     },
     section: {
-        maxWidth: '1024px',
+        maxWidth: '1200px',
         overflowX: 'auto'
     },
     table: {
@@ -151,14 +145,14 @@ const styles = theme => ({
     },
     tablePagination:{
         overflowX : 'auto',
-        fontSize:'0.75rem'
+        fontSize :'0.75rem'
     },
-    title: {
-        color: theme.palette.textPrincipal.color,
-        textAlign: 'center',
-        marginTop: theme.spacing.unit * 2,
+    gridTable:{
+        marginBottom : '27px'
+    },
+    titleTable:{
+        marginBottom:'61px'
     }
-
 });
 
 
@@ -295,7 +289,7 @@ class EnhancedTable extends React.Component {
         const emptyRows = rowsPerPage - filterData.length;
         return (
             <div className={classes.container}>
-                <Paper>
+                <div>
                     <div className={classes.tableWrapper}>
                         <DetalleParticular handleClose={this.handleClose} particular={this.state.elementoSeleccionado}
                                            control={this.state.open}/>
@@ -303,8 +297,8 @@ class EnhancedTable extends React.Component {
                             this.state.loading &&
                             <CircularProgress className={classes.progress} id="spinnerLoading" size={100}/>
                         }
-                        <Grid container justify={'center'} spacing={0}>
-                            <Grid item xs={12}>
+                        <Grid container justify={'center'} spacing={0} className={classes.gridTable}>
+                            <Grid item xs={12}  className={classes.titleTable}>
                                 <Typography variant={'title'} className={classes.title}>
                                     Detalle</Typography>
                             </Grid>
@@ -381,7 +375,7 @@ class EnhancedTable extends React.Component {
 
 
                     </div>
-                </Paper>
+                </div>
             </div>
         );
     }
