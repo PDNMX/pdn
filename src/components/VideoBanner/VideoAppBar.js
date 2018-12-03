@@ -35,9 +35,10 @@ function VideoAppBar(props) {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" color="inherit" className={classes.grow}>
-                        News
+
                     </Typography>
-                    <Button color="inherit">Login</Button>
+                    <Button color="inherit">Blog</Button>
+                    <Button color="inherit">Salir</Button>
                 </Toolbar>
             </AppBar>
         </div>
