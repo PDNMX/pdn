@@ -7,9 +7,9 @@ import Sistemas from './Sistemas';
 import QueEsLaPDN from './QueEsLaPDN';
 import Footer from './Footer';
 import Header from "../PDNAppBar/PDNAppBar";
-import Banner from "../Banner";
+//import Banner from "../Banner";
 import Bandita from "./Bandita";
-//"../VideoBanner/VideoBanner";
+import Banner from "../VideoBanner/VideoBanner";
 const styles = theme => ({
     root: {
         flexGrow :1
