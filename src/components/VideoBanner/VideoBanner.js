@@ -11,7 +11,11 @@ const styles = theme => ({
         zIndex: 1,
         right: 0,
         bottom: 0,
-        minWidth: '100%',
+        width: '100%',
+        [theme.breakpoints.down('md')]:{
+            width: 1280
+        },
+        //minWidth: '100%',
         position: 'absolute'
     },
     contents: {
