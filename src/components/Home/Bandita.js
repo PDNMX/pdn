@@ -1,9 +1,11 @@
 import React from 'react';
 import {withStyles} from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
+import Modal from "@material-ui/core/Modal/Modal";
+import Participa from "../Participa/Participa";
+import Toolbar from "@material-ui/core/Toolbar/Toolbar";
 
 const styles = theme => ({
     root: {
@@ -26,6 +28,18 @@ const styles = theme => ({
 
 
 class Bandita extends React.Component{
+    state = {
+        open: false,
+       
+    };
+
+    handleClickOpen = () => {
+        this.setState({open: true});
+    };
+
+    handleClose = () => {
+        this.setState({open: false});
+    };
 
     render(){
 
@@ -42,7 +56,15 @@ class Bandita extends React.Component{
                     Por favor, ingresa al siguiente formulario para dejar tus comentarios. Estos serán utilizados como insumo para la primera versión que será lanzada en 2019.
                 </Typography>
                 <br/>
-                <Button variant='contained' className={classes.comenta}>Comenta</Button>
+                <Button variant='contained' className={classes.comenta} onClick={this.handleClickOpen} >Comenta</Button>
+                <Modal className={classes.modalParticipa}
+                       aria-labelledby="simple-modal-title"
+                       aria-describedby="simple-modal-description"
+                       open={this.state.open}
+                       onClose={this.handleClose} disableEscapeKeyDown={true} disableBackdropClick={true}
+                >
+                    <Participa onClose={this.handleClose}/>
+                </Modal>
             </div>
         );
     }

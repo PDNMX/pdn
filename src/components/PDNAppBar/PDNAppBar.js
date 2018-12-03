@@ -103,17 +103,7 @@ class PDNAppBar extends React.Component {
                                     <Button color="inherit" component={Link} to="/faq">
                                         FAQ
                                     </Button>*/}
-                                    <Button color="inherit" onClick={this.handleClickOpen}>
-                                        Participa
-                                    </Button>
-                                    <Modal className={classes.modalParticipa}
-                                        aria-labelledby="simple-modal-title"
-                                        aria-describedby="simple-modal-description"
-                                        open={this.state.open}
-                                        onClose={this.handleClose} disableEscapeKeyDown={true} disableBackdropClick={true}
-                                    >
-                                       <Participa onClose={this.handleClose}/>
-                                    </Modal>
+
                                     {
                                         this.props.sesion.authenticated &&
                                         <Button color="inherit" onClick={this.handleSignOut}>Salir</Button>
