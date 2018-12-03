@@ -20,6 +20,9 @@ const styles = {
     menuButton: {
         marginLeft: -12,
         marginRight: 20,
+    },
+    buttons: {
+        color: '#fff'
     }
 };
 
@@ -41,8 +44,8 @@ function VideoAppBar(props) {
                     <Typography variant="h6" color="inherit" className={classes.grow}>
 
                     </Typography>
-                    <Button color="inherit" href="https://www.plataformadigitalnacional.org/blog">Blog</Button>
-                    <Button color="inherit">Salir</Button>
+                    <Button color="inherit" href="https://www.plataformadigitalnacional.org/blog" className={classes.buttons}>Blog</Button>
+                    <Button color="inherit" className={classes.buttons}>Salir</Button>
                 </Toolbar>
             </AppBar>
         </div>
