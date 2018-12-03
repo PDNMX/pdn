@@ -29,7 +29,7 @@ class HomeGF extends React.Component{
         return(
             <div className={classes.root}>
                 <Header currentUser={this.props.currentUser}/>
-                <Banner/>
+                <Banner currentUser={this.props.currentUser}/>
                 <Grid container spacing={0} justify="center">
                     <Grid item xs={12} className={classes.item}>
                         <Explora/>
