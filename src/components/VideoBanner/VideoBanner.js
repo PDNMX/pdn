@@ -4,6 +4,7 @@ import Typography from "@material-ui/core/Typography/Typography";
 import PropTypes from "prop-types";
 import mp4 from '../../assets/videos/pdn_intro.mp4';
 import './VideoBanner.css';
+import VideoAppBar from "./VideoAppBar";
 
 const styles = theme => ({
 
@@ -30,6 +31,11 @@ const styles = theme => ({
     },
     boldText: {
         fontWeight: 500
+    },
+    appBar: {
+        position: 'absolute',
+        zIndex: 3,
+        width: '100%'
     }
 });
 
@@ -42,6 +48,11 @@ class Banner extends React.Component {
                     <source src={mp4} type="video/mp4"/>
                     Tu navegador no soporta este tag
                 </video>
+
+
+                <div className={classes.appBar}>
+                    <VideoAppBar/>
+                </div>
 
                 <div className={classes.contents}>
                     <Typography variant="h2" className={classes.text}>
