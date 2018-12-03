@@ -10,7 +10,7 @@ import IconButton from '@material-ui/core/IconButton';
 import {Link} from "react-router-dom";
 import imgHeader from "../../assets/PDN-sintexto-blue.png";
 
-const styles = {
+const styles = theme => ({
     root: {
         flexGrow: 1,
     },
@@ -24,32 +24,37 @@ const styles = {
     buttons: {
         color: '#fff'
     }
-};
+});
 
-function VideoAppBar(props) {
-    const { classes } = props;
-    return (
-        <div className={classes.root}>
-            <AppBar position="static" style={{
-                backgroundColor: "rgba(0, 0, 0, 0)",
-                border: 0,
-                boxShadow: 'none'
-            }}>
-                <Toolbar>
+class VideoAppBar extends React.Component {
 
-                    <IconButton color="inherit" aria-label="Menu" component={Link} to="/home">
-                        <img src={imgHeader} alt="PDN" style={{width: '55px'}}/>
-                    </IconButton>
 
-                    <Typography variant="h6" color="inherit" className={classes.grow}>
+    render(){
+        const {classes} = this.props;
+        return (
+            <div className={classes.root}>
+                <AppBar position="static" style={{
+                    backgroundColor: "rgba(0, 0, 0, 0)",
+                    border: 0,
+                    boxShadow: 'none'
+                }}>
+                    <Toolbar>
 
-                    </Typography>
-                    <Button color="inherit" href="https://www.plataformadigitalnacional.org/blog" className={classes.buttons}>Blog</Button>
-                    <Button color="inherit" className={classes.buttons}>Salir</Button>
-                </Toolbar>
-            </AppBar>
-        </div>
-    );
+                        <IconButton color="inherit" aria-label="Menu" component={Link} to="/home">
+                            <img src={imgHeader} alt="PDN" style={{width: '55px'}}/>
+                        </IconButton>
+
+                        <Typography variant="h6" color="inherit" className={classes.grow}>
+
+                        </Typography>
+                        <Button color="inherit" href="https://www.plataformadigitalnacional.org/blog"
+                                className={classes.buttons}>Blog</Button>
+                        <Button color="inherit" className={classes.buttons}>Salir</Button>
+                    </Toolbar>
+                </AppBar>
+            </div>
+        );
+    }
 }
 
 VideoAppBar.propTypes = {
