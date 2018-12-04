@@ -22,7 +22,7 @@ const styles = theme => ({
         marginRight: 20,
     },
     buttons: {
-        color: '#fff'
+        color: '#666666'
     }
 });
 
