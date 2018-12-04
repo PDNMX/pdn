@@ -15,16 +15,18 @@ export default class TypePicker extends React.Component {
             <div className="GroupingPicker">
 
                 <Grid container spacing={40} justify={"center"}>
-                    <Grid item xs={3}/>
-                    <Grid item xs={3}>
+                    <Grid item xs={4} style={{textAlign:'center'}}>
+                        <Button variant={'text'} color={"primary"}
+                                onClick={() => this.onBtnClick("servidores")}>{'Servidores'}</Button>
+                    </Grid>
+                    <Grid item xs={4} style={{textAlign:'center'}}>
                         <Button variant={'text'} color={"primary"}
                                 onClick={() => this.onBtnClick("sanciones")}>{'Sanciones'}</Button>
                     </Grid>
-                    <Grid item xs={3}>
+                    <Grid item xs={4} style={{textAlign:'center'}}>
                         <Button variant={'text'} color={"primary"}
                                 onClick={() => this.onBtnClick("monto")}>{'Monto'}</Button>
                     </Grid>
-                    <Grid item xs={3}/>
 
                 </Grid>
             </div>
@@ -34,5 +36,5 @@ export default class TypePicker extends React.Component {
 
 TypePicker.propTypes = {
     onChanged: PropTypes.func.isRequired,
-    active: PropTypes.oneOf(['sanciones', 'monto']).isRequired,
+    active: PropTypes.oneOf(['sanciones', 'monto','servidores']).isRequired,
 };

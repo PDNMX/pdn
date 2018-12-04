@@ -12,6 +12,7 @@ import img2 from "../../assets/img/servidores_particulares_inhabilitados.svg";
 import img3 from "../../assets/img/servidores_visualizaciones.svg";
 import BubbleHolder from "./BubbleHolder";
 import "../../index.css";
+import BubbleHolder_Servidores_Contrataciones from "./BubbleHolder_Servidores_Contrataciones";
 
 const styles = theme => ({
     root: {
@@ -264,7 +265,7 @@ class Index extends React.Component {
                                     }
                                     {this.state.idContent === 3 &&
                                     <div>
-                                        <BubbleHolder/>
+                                        <BubbleHolder_Servidores_Contrataciones/>
                                     </div>
                                     }
                                 </Grid>

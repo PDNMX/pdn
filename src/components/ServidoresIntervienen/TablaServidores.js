@@ -7,7 +7,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import Toolbar from '@material-ui/core/Toolbar';
-import Paper from '@material-ui/core/Paper';
 import BusquedaServidor from "./BusquedaServidor";
 import DetalleServidor from "./DetalleServidor";
 import rp from "request-promise";
