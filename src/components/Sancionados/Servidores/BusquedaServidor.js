@@ -205,7 +205,7 @@ class BusquedaServidor extends React.Component {
         };
         return (
             <Grid container spacing={8}>
-                <Grid item xs={12} md={4}>
+                <Grid item xs={12} md={6}>
                     <FormControl className={classes.formControl}>
                         <SelectReact
                             classes={classes}
@@ -220,7 +220,7 @@ class BusquedaServidor extends React.Component {
 
                     </FormControl>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid item xs={12} md={5}>
                     <FormControl className={classes.formControl}>
                         <TextField
                             id="search"

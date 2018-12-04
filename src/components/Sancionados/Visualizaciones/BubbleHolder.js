@@ -31,6 +31,9 @@ const styles = theme => ({
     font: {
         color: theme.palette.textPrincipal.color
     },
+    center:{
+        textAlign  : 'center'
+    }
 
 });
 
@@ -129,7 +132,7 @@ class BubbleHolder extends React.Component {
                         <ControlSelect onChangeGraphic={this.onTypeChanged} onChangeGroup={this.onGroupChanged}
                                         active={type}/>
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} className={classes.center}>
                         <BubbleChart width={width} height={height}>
                             <Bubbles_SPS data={data} forceStrength={0.3} center={center} type={type}
                                          group={this.state.group} yearCenters={yearCenters} selectBubble={this.selectBubble}/>

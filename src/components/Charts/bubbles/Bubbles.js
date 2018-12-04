@@ -70,7 +70,8 @@ export default class Bubbles extends React.Component {
         bubbles.exit().remove();
 
         // Enter
-        const bubblesE = bubbles.enter().append('circle')
+        let bubblesE ;
+        bubblesE = this.props.type !== 'servidores' ? bubbles.enter().append('circle')
             .classed('bubble', true)
             .attr('r', 0)
             .attr('cx', d => d.x)
@@ -81,7 +82,21 @@ export default class Bubbles extends React.Component {
             .attr('opacity',0.8)
             .on('mouseover', showDetail)  // eslint-disable-line
             .on('click',this.props.selectBubble)
-            .on('mouseout', hideDetail); // eslint-disable-line
+            .on('mouseout', hideDetail)
+        :
+            bubbles.enter().append('circle')
+                .classed('bubble', true)
+                .attr('r', 0)
+                .attr('cx', d => d.x)
+                .attr('cy', d => d.y)
+                .attr('fill', d => fillColor(d.group))
+                .attr('stroke', d => d3.rgb(fillColor(d.group)).darker())
+                .attr('stroke-width', 2)
+                .attr('opacity',0.8)
+                .on('mouseover', showDetailServidores)  // eslint-disable-line
+                .on('click',this.props.selectBubble)
+                .on('mouseout', hideDetail)
+        ; // eslint-disable-line
 
         bubblesE.transition().duration(2000).attr('r', d => d.radius).on('end', () => {
             this.simulation.nodes(data)
@@ -123,7 +138,8 @@ export function showDetail(d) {
     // change outline to indicate hover state.
     d3.select(this).attr('stroke', 'black');
 
-    const content = `<span class="name">Institución: </span><span class="value">${
+    let content =
+        `<span class="name">Institución: </span><span class="value">${
             d.dependencia
             }</span><br/>` +
         `<span class="name">Monto total: </span><span class="value">${
@@ -131,11 +147,24 @@ export function showDetail(d) {
             }</span><br/>` +
         `<span class="name">Sanciones total: </span><span class="value">${
             d.sancionesTotal
-            }</span>`
+            }</span>`;
 
     tooltip.showTooltip(content, d3.event)
 }
+export function showDetailServidores(d) {
+    console.log("D:",d);
+    // change outline to indicate hover state.
+    d3.select(this).attr('stroke', 'black');
 
+    let content = `<span class="name">Institución: </span><span class="value">${
+            d.institucion
+            }</span><br/>` +
+        `<span class="name">Servidores en contrataciones: </span><span class="value">${
+            d.numero_servidores
+            }</span>`;
+
+    tooltip.showTooltip(content, d3.event)
+}
 /*
 * Hides tooltip
 */
