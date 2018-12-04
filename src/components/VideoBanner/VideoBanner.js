@@ -34,7 +34,7 @@ const styles = theme => ({
     },
     appBar: {
         position: 'absolute',
-        zIndex: 3,
+        zIndex: 4,
         width: '100%'
     }
 });
