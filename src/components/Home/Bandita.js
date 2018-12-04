@@ -16,7 +16,7 @@ const styles = theme => ({
         //opacity: 0.7,
         width: '95%',
         paddingTop: theme.spacing.unit * 2,
-        paddingBottom: theme.spacing.unit * 2,
+        paddingBottom: theme.spacing.unit * 2.5,
         paddingRight: theme.spacing.unit * 2,
         textAlign: 'right'
     },

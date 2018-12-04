@@ -23,7 +23,7 @@ const styles = theme => ({
         paddingBottom: 10
     },
     logo: {
-        maxWidth: 200
+        maxWidth: 100
     },
     libreUso: {
         maxWidth: 200,
