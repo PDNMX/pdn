@@ -1,4 +1,4 @@
-import Home from '../components/Home/HomeGF';
+import Home from '../components/Home/Home';
 import About from '../components/About';
 import Faq from '../components/FAQ/index';
 import Datos from '../components/CatalogoDatos/Datos';
