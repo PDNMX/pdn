@@ -100,7 +100,7 @@ class Footer extends React.Component{
 
                 <Grid container spacing={0} justify='center' className={classes.parteBlanca}>
                     <Grid item xs={12} align='center'>
-                        <img src={LogoSesna} className={classes.logo}/>
+                        <img alt="SESNA" src={LogoSesna} className={classes.logo}/>
                     </Grid>
                 </Grid>
             </div>
