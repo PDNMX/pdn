@@ -20,7 +20,7 @@ const styles = theme => ({
         position: 'absolute'
     },
     contents: {
-        paddingTop: 250,
+        paddingTop: 300,
         position: 'absolute',
         zIndex: 3,
         textAlign: 'center',
