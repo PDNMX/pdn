@@ -8,6 +8,7 @@ import QueEsLaPDN from './QueEsLaPDN';
 import Footer from './Footer';
 import Bandita from "./Bandita";
 import Banner from "../VideoBanner/VideoBanner";
+import AlertDialog from "./AlertDialog";
 const styles = theme => ({
     root: {
         flexGrow :1
@@ -48,6 +49,7 @@ class Home extends React.Component{
 
                 <Footer/>
                 <Bandita/>
+                <AlertDialog/>
             </div>
         );
     }
