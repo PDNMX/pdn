@@ -98,7 +98,7 @@ const styles = theme => ({
         display: 'inline-block'
     },
     cardSeleccionada: {
-        backgroundColor: theme.palette.grisTenue.color,
+        backgroundColor: theme.palette.white.color,
         borderRadius: '5px 5px 0px 0px',
         paddingBottom: '90px',
         paddingRight: '40px',
