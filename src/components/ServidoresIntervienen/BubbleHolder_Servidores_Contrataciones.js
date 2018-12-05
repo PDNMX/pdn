@@ -58,6 +58,8 @@ class BubbleHolder_Servidores_Contrataciones extends React.Component{
                 this.setState({
                     data: createNodes(aux,this.state.type),
                     originalData : data,
+                },()=>{
+                    console.log("dataCreado: ",this.state.data);
                 });
             })
             .catch(err=>{
@@ -72,7 +74,6 @@ class BubbleHolder_Servidores_Contrataciones extends React.Component{
                 type : newType,
                 institucion : null
             },()=>{
-                console.log("newType: ",newType);
                 this.getData();
             });
 
@@ -80,7 +81,7 @@ class BubbleHolder_Servidores_Contrataciones extends React.Component{
     };
 
     selectBubble = (bubble) => {
-        this.setState({institucion: bubble.dependencia});
+        this.setState({institucion: this.state.type!=='servidores'? bubble.dependencia : bubble.institucion});
         window.location.href = "#tablaDetalle";
     };
 
@@ -117,13 +118,12 @@ class BubbleHolder_Servidores_Contrataciones extends React.Component{
 
                 <Grid container spacing={24} justify={"center"}>
                     <Grid item xs={12} className={classes.center}>
-                        <TypePicker onChanged={this.onTypeChanged} active={type}/>
                         <BubbleChart width={width} height={height}>
                             <Bubbles data={data} forceStrength={0.3} center={center} type={type} selectBubble={this.selectBubble}/>
                         </BubbleChart>
                     </Grid>
                     <Grid item xs={12} id="tablaDetalle">
-                        {this.state.institucion && this.state.type!=='servidores' &&
+                        {this.state.institucion &&
                         <TablaDetalle  institucion={this.state.institucion}/>
                         }
                     </Grid>

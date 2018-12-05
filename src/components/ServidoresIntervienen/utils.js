@@ -14,6 +14,7 @@ import * as d3 from 'd3'
    */
 export function createNodes(rawData, type) {
     console.log("type:  ",type);
+   console.log("rawData: ",rawData);
     // Use the max total_amount in the data as the max in the scale's domain
     // note we have to ensure the total_amount is a number.
     const maxAmount = type === 'sanciones' ? d3.max(rawData, d => +d.sanciones_total) : type === 'monto' ? d3.max(rawData, d => +d.monto_total): d3.max(rawData, d => d.numero_servidores);
@@ -32,37 +33,14 @@ export function createNodes(rawData, type) {
     // Use map() to convert raw data into node data.
     // Checkout http://learnjsdata.com/ for more on
     // working with data.
-    let id = 0;
-    const myNodesSanciones = rawData.map(d => (
-        {
-            id: (id + 1).toString(),
-            radius: radiusScale(d.sanciones_total),
-            dependencia: d.dependencia,
-            group: d.sanciones_total <= pivote ? 'n1' : d.sanciones_total <= pivote * 2 ? 'n2' : d.sanciones_total <= pivote * 3 ? 'n3' : d.sanciones_total <= pivote * 4 ? 'n4' : d.sanciones_total <= pivote * 5 ? 'n5' : d.sanciones_total <= pivote * 6 ? 'n6' : d.sanciones_total <= pivote * 7 ? 'n7' : d.sanciones_total <= pivote * 8 ? 'n8' : d.sanciones_total <= pivote * 9 ? 'n9' : 'n10',
-            sancionesTotal: d.sanciones_total,
-            montoTotal: d.monto_total,
-            x: Math.random() * 900,
-            y: Math.random() * 800,
-        }));
-    let id2 = 0;
-    const myNodesMontos = rawData.map(d => (
-        {
-            id: (id2 + 1).toString(),
-            radius: radiusScale(+d.monto_total),
-            dependencia: d.dependencia,
-            group: d.monto_total <= pivote ? 'low' : (d.monto_total <= pivote * 2 ? 'medium' : 'high'),
-            sancionesTotal: d.sanciones_total,
-            montoTotal: d.monto_total,
-            x: Math.random() * 900,
-            y: Math.random() * 800,
-        }));
+
     let id3=0;
     const myNodesServidores = rawData.map(d =>(
         {
             id: (id3 + 1).toString(),
             radius: radiusScale(+d.numero_servidores),
             institucion : d.institucion,
-            group: d.numero_servidores <= pivote ? 'low' : (d.numero_servidores <= pivote * 2 ? 'medium' : 'high'),
+            group: d.numero_servidores <= pivote ? 'n1' : (d.numero_servidores <= pivote * 2 ? 'n2' : d.numero_servidores <= pivote * 3 ? 'n3': d.numero_servidores <= pivote *4 ? 'n4' : d.numero_servidores <= pivote * 5 ? 'n5' : d.numero_servidores <= pivote*6 ? 'n6': d.numero_servidores <= pivote*7 ? 'n7': d.numero_servidores<= pivote* 8 ? 'n8': d.numero_servidores <= pivote * 9 ? 'n9': 'n10'),
             numero_servidores: d.numero_servidores,
             x: Math.random() * 900,
             y: Math.random() * 800,
@@ -70,10 +48,10 @@ export function createNodes(rawData, type) {
     ));
 
     // sort them descending to prevent occlusion of smaller nodes.
-    type === 'sanciones' ? myNodesSanciones.sort((a, b) => b.sancionesTotal - a.sancionesTotal) : type==='monto'? myNodesMontos.sort((a, b) => b.montoTotal - a.montoTotal):
+
     myNodesServidores.sort((a,b) => b.numero_servidores -  a.numero_servidores);
 
-    return type === 'sanciones' ? myNodesSanciones : type=== 'monto' ? myNodesMontos: myNodesServidores;
+    return myNodesServidores;
 }
 
 export const fillColor = d3.scaleOrdinal().domain(['n1', 'n2', 'n3', 'n4', 'n5', 'n6', 'n7', 'n8', 'n9', 'n10']).range(['#f3e5f5', '#e1bee7', '#ce93d8', '#ba68c8', '#ab47bc', '#9c27b0', '#8e24aa', '#7b1fa2', '#6a1b9a', '#4a148c'],);

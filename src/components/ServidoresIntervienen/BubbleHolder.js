@@ -8,7 +8,7 @@ import {createNodes} from './utils';
 import rp from "request-promise";
 import { width, height, center } from './bubbles_constants'
 import TypePicker from "../Charts/bubbles/TypePicker";
-import TablaDetalle from "./TablaDetalle";
+import TablaDetalle from "../Sancionados/Visualizaciones/TablaDetalle";
 
 // Styles
 const styles = theme => ({

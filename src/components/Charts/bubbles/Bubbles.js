@@ -38,6 +38,7 @@ export default class Bubbles extends React.Component {
     };
 
     onRef = (ref) => {
+        console.log("OnRef");
         this.setState({ g: d3.select(ref) }, () => this.renderBubbles(this.props.data))
     };
 
@@ -68,10 +69,8 @@ export default class Bubbles extends React.Component {
 
         // Exit
         bubbles.exit().remove();
-
         // Enter
-        let bubblesE ;
-        bubblesE = this.props.type !== 'servidores' ? bubbles.enter().append('circle')
+        let bubblesE = this.props.type !== 'servidores' ? bubbles.enter().append('circle')
             .classed('bubble', true)
             .attr('r', 0)
             .attr('cx', d => d.x)
@@ -152,10 +151,8 @@ export function showDetail(d) {
     tooltip.showTooltip(content, d3.event)
 }
 export function showDetailServidores(d) {
-    console.log("D:",d);
     // change outline to indicate hover state.
     d3.select(this).attr('stroke', 'black');
-
     let content = `<span class="name">Institución: </span><span class="value">${
             d.institucion
             }</span><br/>` +
