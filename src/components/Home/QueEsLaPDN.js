@@ -2,7 +2,7 @@ import React from 'react';
 import {withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import Star from '../../assets/grafica.svg';
+import Star from '../../assets/grafica.png';
 import Button from '@material-ui/core/Button';
 
 const styles = theme => ({

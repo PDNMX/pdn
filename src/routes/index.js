@@ -1,4 +1,4 @@
-import Home from '../components/Home/HomeGF';
+import Home from '../components/Home/Home';
 import About from '../components/About';
 import Faq from '../components/FAQ/index';
 import Datos from '../components/CatalogoDatos/Datos';
@@ -10,7 +10,7 @@ import Denuncias from '../components/Denuncias/Index';
 import FormularioDenuncias from '../components/Denuncias/FormularioDenuncia/FormularioDenuncia';
 import FormularioConsula from '../components/Denuncias/ConsultaDenuncia/FormularioConsulta';
 import DemoDeclaraciones from '../components/DemoDeclaraciones/demo';
-import LoginPDN from "../components/Inicio/LoginPDN";
+//import LoginPDN from "../components/Inicio/LoginPDN";
 
 const pdnRoutes = [
 
