@@ -11,6 +11,7 @@ import BubbleChart from "../../Charts/bubbles/BubbleChart";
 import GroupTitle from './GroupTitle';
 import TablaDetalleServidores from "./TablaDetalleServidores";
 import TablaDetalleParticulares from "./TablaDetalleParticulares";
+import TablaDetalle from "./TablaDetalle";
 
 // Styles
 const styles = theme => ({
@@ -49,7 +50,7 @@ class BubbleHolder extends React.Component {
 
     getData = () => {
         let options = {
-            uri: this.state.type === 1 ? 'https://plataformadigitalnacional.org/api/v_sps' : 'https://plataformadigitalnacional.org/api/v_particulares_sancionados',
+            uri: this.state.type === 1 ? 'https://plataformadigitalnacional.org/api/v_sps' : this.state.type===2? 'https://plataformadigitalnacional.org/api/v_particulares_sancionados':'https://plataformadigitalnacional.org/api/provinha_dependencia',
             json: true
         };
 
@@ -147,6 +148,9 @@ class BubbleHolder extends React.Component {
                         }
                         {this.state.institucion && this.state.type=== 2 &&
                         <TablaDetalleParticulares institucion={this.state.institucion}/>
+                        }
+                        {this.state.institucion && (this.state.type==='monto' || this.state.type ==='sanciones') &&
+                        <TablaDetalle  institucion={this.state.institucion}/>
                         }
                     </Grid>
                 </Grid>

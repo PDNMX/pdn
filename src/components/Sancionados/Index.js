@@ -28,6 +28,7 @@ const styles = theme => ({
     },
     titleLight: {
         color: theme.palette.white.color,
+        paddingTop : '11%'
     },
     titleSub: {
         color: theme.palette.white.color,
@@ -126,22 +127,23 @@ class Index extends React.Component {
                         <Grid item xs={12} className={classes.section}>
                             <Grid container spacing={24}>
                                 <Grid item xs={6}>
-                                    <Typography variant="h4" className={classes.titleLight}>
-                                        Servidores públicos y particulares
-                                    </Typography>
                                     <Typography variant="h3" className={classes.titleLight}>
-                                        sancionados
+                                        Servidores públicos y particulares sancionados
                                     </Typography>
 
                                 </Grid>
                                 <Grid item xs={6}>
                                     <Typography variant="subtitle1" className={classes.titleSub}>
-                                        La justicia significa que las personas —servidores públicos, empresas o
-                                        particulares— reciban sanciones
-                                        cuando actuaron deshonestamente. La Ley General de Responsabilidades
-                                        Administrativas (LGRA) define qué
-                                        acciones de los servidores públicos y de los particulares perjudican a la
-                                        sociedad.
+                                        En este Sistema puedes consultar, visualizar y descargar datos de:
+                                    </Typography><br/>
+                                    <Typography variant="subtitle1" className={classes.titleSub}>
+                                        •    Las sanciones o inhabilitación firmes en contra de servidores públicos por actos vinculados con faltas administrativas graves,
+                                    </Typography><br/>
+                                    <Typography variant="subtitle1" className={classes.titleSub}>
+                                        •    Los particulares que están inhabilitados o cuentan con impedimentos para ser contratados como servidores públicos, y
+                                    </Typography><br/>
+                                    <Typography variant="subtitle1" className={classes.titleSub}>
+                                        •    Las persona físicas que están inhabilitadas o cuentan con impedimentos para ser contratistas o prestadores de servicios en el gobierno por faltas administrativas graves.
                                     </Typography>
                                 </Grid>
                             </Grid>
@@ -198,6 +200,7 @@ class Index extends React.Component {
                     </Grid>
 
                 </div>
+                {/*
                 <div className={classes.bgPanelLight}>
                     <Grid container justify={'center'} spacing={0}>
                         <Grid item xs={12} className={classes.section}>
@@ -264,6 +267,9 @@ class Index extends React.Component {
 
 
                 </div>
+                */
+                }
+
                 <div className={classes.bgPanelTable}>
                     <Grid container justify={'center'} spacing={0}>
                         <Grid item xs={12} className={classes.section}>

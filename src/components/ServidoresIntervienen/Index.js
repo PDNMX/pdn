@@ -29,6 +29,7 @@ const styles = theme => ({
     },
     titleLight: {
         color: theme.palette.white.color,
+        paddingTop : '10%'
     },
     titleSub: {
         color: theme.palette.white.color,
@@ -128,20 +129,21 @@ class Index extends React.Component {
                             <Grid container spacing={24}>
                                 <Grid item xs={6}>
                                     <Typography variant={"h4"} className={classes.titleLight}>Servidores que intervienen
-                                        en</Typography>
-                                    <Typography variant="h3" className={classes.titleLight}>
-                                        procesos de contratación
-                                    </Typography>
+                                        en procesos de contratación</Typography>
                                 </Grid>
                                 <Grid item xs={6}>
                                     <Typography variant="subtitle1" className={classes.titleSub}>
-                                        Las contrataciones públicas son uno de los pilares de un buen gobierno. Estos
-                                        procesos permiten que las
-                                        instituciones adquieran bienes y servicios en beneficio de las personas.
-                                        Entonces, es necesario conocer quiénes son
-                                        los servidores públicos responsables de llevar
-                                        correctamente las compras de gobierno.
+                                        En este Sistema puedes consultar, visualizar y descargar datos de:
                                     </Typography>
+                                    <br/>
+                                    <Typography variant="subtitle1" className={classes.titleSub}>
+                                        •    Los nombres, institución, cargo actividades y adscripción de los servidores públicos que intervienen en contrataciones públicas y otros actos de autoridad, y
+                                    </Typography>
+                                    <br/>
+                                    <Typography variant="subtitle1" className={classes.titleSub}>
+                                        •    La relación de personas físicas y morales que se encuentran inhabilitados para celebrar contratos con instituciones públicas, por qué fueron inhabilitados, por cuánto tiempo y con qué monto
+                                    </Typography>
+
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -191,7 +193,8 @@ class Index extends React.Component {
                     </Grid>
 
                 </div>
-                <div className={classes.bgPanelLight}>
+                {/*
+                 <div className={classes.bgPanelLight}>
                     <Grid container justify={'center'} spacing={0}>
                         <Grid item xs={12} className={classes.section}>
                             <Grid container spacing={32} justify={'center'} className={classes.section}>
@@ -248,6 +251,8 @@ class Index extends React.Component {
                     </Grid>
 
                 </div>
+                */}
+
                 <div className={classes.bgPanelTable}>
                     <Grid container justify={'center'} spacing={0}>
                         <Grid item xs={12} className={classes.section}>

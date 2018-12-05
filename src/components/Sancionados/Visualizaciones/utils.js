@@ -41,9 +41,34 @@ export function createNodes(rawData, type) {
             x: Math.random() * 900,
             y: Math.random() * 800,
         }));
+
+    id = 0;
+    const myNodesSanciones = rawData.map(d => (
+        {
+            id: (id + 1).toString(),
+            radius: radiusScale(d.sanciones_total),
+            dependencia: d.dependencia,
+            group: d.sanciones_total <= pivote ? 'n1' : d.sanciones_total <= pivote * 2 ? 'n2' : d.sanciones_total <= pivote * 3 ? 'n3' : d.sanciones_total <= pivote * 4 ? 'n4' : d.sanciones_total <= pivote * 5 ? 'n5' : d.sanciones_total <= pivote * 6 ? 'n6' : d.sanciones_total <= pivote * 7 ? 'n7' : d.sanciones_total <= pivote * 8 ? 'n8' : d.sanciones_total <= pivote * 9 ? 'n9' : 'n10',
+            sancionesTotal: d.sanciones_total,
+            montoTotal: d.monto_total,
+            x: Math.random() * 900,
+            y: Math.random() * 800,
+        }));
+    let id2 = 0;
+    const myNodesMontos = rawData.map(d => (
+        {
+            id: (id2 + 1).toString(),
+            radius: radiusScale(+d.monto_total),
+            dependencia: d.dependencia,
+            group: d.monto_total <= pivote ? 'n1' : (d.monto_total <= pivote * 2 ? 'n2' : d.monto_total <= pivote * 3 ? 'n3' : d.monto_total <= pivote * 4 ? 'n4': d.monto_total <= pivote * 5 ? 'n5' : d.monto_total <= pivote * 6 ?'n6' : d.monto_total <= pivote * 7? 'n7' : d.monto_total <= pivote*8 ? 'n8' : d.monto_total <= pivote*9? 'n9':'n10'),
+            sancionesTotal: d.sanciones_total,
+            montoTotal: d.monto_total,
+            x: Math.random() * 900,
+            y: Math.random() * 800,
+        }));
     // sort them descending to prevent occlusion of smaller nodes.
-    myNodes.sort((a, b) => b.sancionesTotal - a.sancionesTotal);
-    return myNodes;
+    type===1 || type===2 ? myNodes.sort((a, b) => b.sancionesTotal - a.sancionesTotal):type==='sanciones' ? myNodesSanciones.sort((a,b)=>b.sancionesTotal - a.sancionesTotal):  myNodesMontos.sort((a, b) => b.montoTotal - a.montoTotal);
+    return type ===1 || type===2 ? myNodes: type==='sanciones'? myNodesSanciones : myNodesMontos;
 }
 
 export function createNodesGroup(data){

@@ -9,6 +9,9 @@ const styles = theme => ({
         margin: theme.spacing.unit,
         minWidth: 120,
     },
+    centrado:{
+        textAlign : 'center'
+    }
 });
 
 class ControlSelect extends React.Component {
@@ -26,15 +29,19 @@ class ControlSelect extends React.Component {
         const {classes} = this.props;
         return (
             <div>
-                <Grid container spacing={40} justify={"center"}>
-                    <Grid item xs={3}/>
-                    <Grid item xs={3}>
+                <Grid container spacing={40} justify={"center"} >
+                    <Grid item xs={3} className={classes.centrado}>
                         <Button variant={'text'} color={"primary"}  onClick={()=>this.onChangeG(1)}>{'Servidores públicos sancionados'}</Button>
                     </Grid>
-                    <Grid item xs={3}>
+                    <Grid item xs={3} className={classes.centrado}>
                         <Button variant={'text'} color={"primary"} onClick={()=>this.onChangeG(2)}>{'Particulares sancionados'}</Button>
                     </Grid>
-                    <Grid item xs={3}/>
+                    <Grid item xs={3} className={classes.centrado}>
+                        <Button variant={'text'} color={"primary"} onClick={()=>this.onChangeG("sanciones")}>{'Total sanciones'}</Button>
+                    </Grid>
+                    <Grid item xs={3} className={classes.centrado}>
+                        <Button variant={'text'} color={"primary"} onClick={()=>this.onChangeG("monto")}>{'Monto'}</Button>
+                    </Grid>
 
                 </Grid>
             </div>

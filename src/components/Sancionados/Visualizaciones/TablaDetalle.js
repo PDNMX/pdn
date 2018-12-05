@@ -9,34 +9,31 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import rp from "request-promise";
 import CircularProgress from '@material-ui/core/CircularProgress';
-import BajarCSV from "../Tablas/BajarCSV";
-import DetalleParticular from "./DetalleParticular";
+import BajarCSV from "../../Tablas/BajarCSV";
+import DetalleParticular from "../../ServidoresIntervienen/DetalleParticular";
 import Grid from "@material-ui/core/Grid/Grid";
-import EnhancedTableHead from '../Tablas/EnhancedTableHead';
+import EnhancedTableHead from '../../Tablas/EnhancedTableHead';
 import Typography from "@material-ui/core/Typography/Typography";
-import DetalleServidor from "./DetalleServidor";
 
 let counter = 0;
 
 let createData = (item) => {
-    let leyenda = "NO EXISTE DATO EN LA BASE DE DATOS RENIRESP";
-    let tipoArea = item.area_requirente === 1 ? "REQUIRENTE" : "" +
-    item.area_contratante === 1 ? "CONTRATANTE" : "" +
-    item.area_recnica === 1 ? "TÉCNICA" : "" +
-    item.area_responsable === 1 ? "RESPONSABLE" : "" +
-    item.area_otra === 1 ? "OTRA" : "";
-    let nivel = item.id_nivel === 1 ? "ATENCIÓN O TRAMITACIÓN" : item.id_nivel === 2 ? "RESOLUCIÓN" : "ATENCIÓN O TRAMITACIÓN Y RESOLUCIÓN";
     counter += 1;
+    let leyenda = "NO EXISTE DATO EN LA BASE DE DATOS SFP";
     return {
         id: counter,
-        servidor: item.nombre ? item.nombre : leyenda,
-        institucion: item.institucion ? item.institucion : leyenda,
-        puesto: item.puesto ? item.puesto : leyenda,
-        tipoArea: tipoArea ? tipoArea : leyenda,
-        contrataciones: item.id_procedimiento === 1 ? nivel : "NO APLICA",
-        concesionesLicencias: item.id_procedimiento === 2 ? nivel : "NO APLICA",
-        enajenacion: item.id_procedimiento === 3 ? nivel : "NO APLICA",
-        dictamenes: item.id_procedimiento === 4 ? nivel : "NO APLICA"
+        proveedor: item.proveedor_o_contratista ? item.proveedor_o_contratista : leyenda,
+        dependencia: item.dependencia ? item.dependencia : leyenda,
+        expediente: item.numero_de_expediente ? item.numero_de_expediente : leyenda,
+        hechos: item.hechos_de_la_irregularidad ? item.hechos_de_la_irregularidad : leyenda,
+        objetoSocial: item.objeto_social ? item.objeto_social : leyenda,
+        sentidoResolucion: item.sentido_de_resolucion ? item.sentido_de_resolucion : leyenda,
+        fechaNotificacion: item.fecha_de_notificacion ? item.fecha_de_notificacion : leyenda,
+        fechaResolucion: item.fecha_de_resolucion ? item.fecha_de_resolucion : leyenda,
+        plazo: item.plazo ? item.plazo : leyenda,
+        monto: item.monto ? item.monto : leyenda,
+        responsableInformacion: item.nombre_del_responsable_de_la_informacion ? item.nombre_del_responsable_de_la_informacion : leyenda,
+        fechaActualizacion: item.fecha_de_actualizacion ? item.fecha_de_actualizacion : leyenda
     };
 };
 
@@ -47,48 +44,75 @@ function getSorting(order, orderBy) {
 }
 
 const columnData = [
-    {id: 'servidor', numeric: false, disablePadding: false, label: 'Servidor público', position: 2, mostrar: true,key:'servidor'},
-    {id: 'institucion', numeric: false, disablePadding: false, label: 'Institución', position: 3, mostrar: true,key:'institucion'},
-    {id: 'puesto', numeric: false, disablePadding: false, label: 'Puesto', position: 4, mostrar: true,key:'puesto'},
-    {id: 'tipoArea', numeric: false, disablePadding: false, label: 'Tipo de área', position: 5, mostrar: true,key:'tipoArea'},
     {
-        id: 'contrataciones',
+        id: 'proveedor',
         numeric: false,
         disablePadding: false,
-        label: 'Contrataciones públicas',
+        label: 'Proveedor o contratista',
+        position: 1,
+        mostrar: true
+    },
+    {id: 'institucion', numeric: false, disablePadding: false, label: 'Institución', position: 2, mostrar: true},
+    {
+        id: 'expediente',
+        numeric: false,
+        disablePadding: false,
+        label: 'Número de expediente',
+        position: 3,
+        mostrar: true
+    },
+    {
+        id: 'hechos',
+        numeric: false,
+        disablePadding: false,
+        label: 'Hechos de la irregularidad',
+        position: 4,
+        mostrar: false
+    },
+    {id: 'objetoSocial', numeric: false, disablePadding: false, label: 'Objeto social', position: 5, mostrar: false},
+    {
+        id: 'sentidoResolucion',
+        numeric: false,
+        disablePadding: false,
+        label: 'Sentido de la resolución',
         position: 6,
-        mostrar: false,
-        key:'contrataciones'
+        mostrar: true
     },
     {
-        id: 'concesionesLicencias',
+        id: 'fechaNotificacion',
         numeric: false,
         disablePadding: false,
-        label: 'Concesiones, licencias, permisos, autorizaciones y prórrogas',
+        label: 'Fecha notificación',
         position: 7,
-        mostrar: false,
-        key:'concesionesLicencias'
+        mostrar: false
     },
     {
-        id: 'enajenacion',
+        id: 'fechaResolucion',
         numeric: false,
         disablePadding: false,
-        label: 'Enajenación de bienes muebles',
+        label: 'Fecha resolución',
         position: 8,
-        mostrar: false,
-        key:'enajenacion'
+        mostrar: false
     },
+    {id: 'plazo', numeric: false, disablePadding: false, label: 'Plazo', position: 9, mostrar: false},
+    {id: 'monto', numeric: false, disablePadding: false, label: 'Monto', position: 10, mostrar: false},
     {
-        id: 'dictamenes',
+        id: 'responsableInformacion',
         numeric: false,
         disablePadding: false,
-        label: 'Asignación y emisión de dictámenes de avalúos nacionales',
-        position: 9,
-        mostrar: false,
-        key:'dictamenes'
+        label: 'Responsable de información',
+        position: 11,
+        mostrar: false
     },
+    {
+        id: 'fechaActualizacion',
+        numeric: false,
+        disablePadding: false,
+        label: 'Fecha actualización',
+        position: 12,
+        mostrar: false
+    }
 ];
-
 
 const styles = theme => ({
     root: {
@@ -141,8 +165,8 @@ class EnhancedTable extends React.Component {
     }
 
     componentWillReceiveProps(nextProps){
-        if(nextProps.institucion !== this.props.institucion){
-            this.handleSearchAPI('FIELD_FILTER',nextProps.institucion);
+       if(nextProps.institucion !== this.props.institucion){
+           this.handleSearchAPI('FIELD_FILTER',nextProps.institucion);
         }
     }
 
@@ -152,21 +176,19 @@ class EnhancedTable extends React.Component {
         this.btnDownloadAll = React.createRef();
         this.state = {
             order: 'asc',
-            orderBy: 'servidor',
+            orderBy: 'proveedor',
             selected: [],
-            nombreServidor: '',
+            nombreParticular: '',
             data: [],
             filterData: [],
             page: 0,
             rowsPerPage: 10,
-            procedimiento: 0,
             open: false,
             elementoSeleccionado: {},
-            institucion: null,
+            institucion: '',
             loading: true,
             totalRows: 0,
-            filterDataAll: [],
-
+            filterDataAll: []
         };
     }
 
@@ -212,9 +234,9 @@ class EnhancedTable extends React.Component {
 
     getTotalRows = (params) => {
         let options = {
-            uri: 'https://plataformadigitalnacional.org/api/reniresp?select=count=eq.exact&',
+            uri: 'https://plataformadigitalnacional.org/api/proveedores_sancionados?sentido_de_resolucion=like.*INHABILITACI%C3%93N*&&select=count=eq.exact',
             json: true,
-            qs: params
+            qs : params
         };
         rp(options)
             .then(data => {
@@ -225,51 +247,43 @@ class EnhancedTable extends React.Component {
             console.log(err);
         });
     };
-    handleSearchAPI = (typeSearch,inst) => {
+    handleSearchAPI = (type,inst) => {
         this.setState({loading: true});
-        const URI = 'https://plataformadigitalnacional.org/api/reniresp';
-
-
-        let {procedimiento, institucion, nombreServidor} = this.state;
-
+        let URI = 'https://plataformadigitalnacional.org/api/proveedores_sancionados?sentido_de_resolucion=like.*INHABILITACIÓN*';
 
         let params = {};
+        inst ? params.dependencia = 'eq.'+inst : null;
+        type ==='ALL' && !inst ? params.dependencia ='eq.'+this.state.institucion : null;
+        type !== "ALL" ? params.limit = this.state.rowsPerPage : null ;
+        type === "CHANGE_PAGE" ? params.offset = (this.state.rowsPerPage * this.state.page): null;
 
-        if(typeSearch!=='ALL'){
-            (procedimiento&&procedimiento) >0 ? params.id_procedimiento= 'eq.'+procedimiento : null;
-            inst ? params.institucion = 'eq.'+inst : null;
-            nombreServidor ? params.nombre = 'like.*'+nombreServidor.toUpperCase()+'*' : null;
-            (typeSearch==='FIELD_FILTER'||typeSearch==='CHANGE_PAGE')? params.limit = this.state.rowsPerPage:null;
-            (typeSearch==='CHANGE_PAGE')? params.offset = (this.state.rowsPerPage * this.state.page) : null;
-            (typeSearch === 'FIELD_FILTER') ? this.getTotalRows(params) : null;
-        }
+        (type !== 'ALL' && type !== 'CHANGE_PAGE') ? this.getTotalRows(params):null;
 
         let options = {
             uri: URI,
             json: true,
-            qs:params
+            qs : params
         };
-
         rp(options)
             .then(data => {
                 let dataAux = data.map(item => {
                     return createData(item);
                 });
-                typeSearch === 'ALL' ? this.setState({data: dataAux, loading: false}, () => {
+
+                type==='ALL' ? this.setState({data : dataAux,loading : false },()=>{
                     this.btnDownloadAll.triggerDown();
-                }) : (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.setState({
-                        filterData: dataAux,
-                        loading: false
-                    }) :
-                    this.setState({filterDataAll: dataAux, loading: false}, () => {
-                        this.child.triggerDown();
-                    });
+                }) : (type === 'FIELD_FILTER' || type === 'CHANGE_PAGE') ? this.setState({
+                    filterData : dataAux,
+                    loading: false,
+                    institucion : inst
+                }):null;
                 return true;
-            }).catch(err => {
-            this.setState({loading: false});
-            alert("_No se pudó obtener la información");
-            console.log(err);
-        });
+            })
+            .catch(err => {
+                this.setState({loading: false});
+                alert("_No se pudó obtener la información");
+                console.log(err);
+            });
 
     };
 
@@ -280,8 +294,8 @@ class EnhancedTable extends React.Component {
         return (
             <div className={classes.container}>
                 <div>
-                    <div className={classes.tableWrapper}>
-                        <DetalleServidor handleClose={this.handleClose} servidor={this.state.elementoSeleccionado}
+                   <div className={classes.tableWrapper}>
+                        <DetalleParticular handleClose={this.handleClose} particular={this.state.elementoSeleccionado}
                                            control={this.state.open}/>
                         {
                             this.state.loading &&
@@ -320,10 +334,10 @@ class EnhancedTable extends React.Component {
                                                         selected={isSelected}
                                                     >
                                                         <TableCell component="th" scope="row"
-                                                                   padding="default">{n.servidor}</TableCell>
-                                                        <TableCell>{n.institucion}</TableCell>
-                                                        <TableCell>{n.puesto}</TableCell>
-                                                        <TableCell>{n.tipoArea}</TableCell>
+                                                                   padding="default">{n.proveedor}</TableCell>
+                                                        <TableCell>{n.dependencia}</TableCell>
+                                                        <TableCell>{n.expediente}</TableCell>
+                                                        <TableCell>{n.sentidoResolucion}</TableCell>
                                                     </TableRow>
                                                 );
                                             })}
