@@ -36,6 +36,9 @@ const styles = theme => ({
     },
     mensaje:{
         color : 'red'
+    },
+    boton: {
+        background: '#ffe01b',
     }
 });
 
@@ -108,9 +111,10 @@ class LoginPDN extends Component {
                                 <br/>
                                 <div>
                                     <Button
-                                        variant="contained"
+                                        variant="raised"
                                         onClick={() => this.handleClick()}
                                         disabled={!this.state.email || !this.state.pass }
+                                        className={classes.boton}
                                     >
                                         Ingresar
                                     </Button>
