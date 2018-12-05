@@ -57,14 +57,14 @@ class Footer extends React.Component{
 
                         <Grid container spacing={24}>
                             <Grid item xs={12} md={6}>
-                                <img src={LogoPDN} className={classes.logoPDN}/>
+                                <img alt="PDN" src={LogoPDN} className={classes.logoPDN}/>
 
                                 <Typography className={classes.grayText}><b>Plataforma Digital Nacional</b></Typography>
                                 <Typography className={classes.grayText}>Inteligencia de Datos Anticorrupción</Typography>
                                 <br/>
-                                <img src ={LibreUso} className={classes.libreUso}/>
+                                <img alt="Libre Uso MX " src ={LibreUso} className={classes.libreUso}/>
                                 <br/>
-                                <img src={OK}/>
+                                <img alt="Open Knowledge" src={OK}/>
                             </Grid>
                             <Grid item xs={6} md={3}>
                                 <Typography className={classes.blueText}><b>Sistemas</b></Typography>
