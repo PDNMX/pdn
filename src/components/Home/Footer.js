@@ -6,6 +6,7 @@ import LibreUso from '../../assets/libre-uso.png';
 import Typography from "@material-ui/core/Typography";
 import LogoPDN from '../../assets/PDN-sintexto-blue.png';
 import OK from '../../assets/ok_80x15_blue.png';
+import {Link} from 'react-router-dom';
 
 const styles = theme => ({
     root: {
@@ -34,7 +35,8 @@ const styles = theme => ({
         maxWidth: 1200
     },
     grayText: {
-        color: '#ffffff'
+        color: '#ffffff',
+        textDecoration: 'none'
     },
     blueText: {
         color: '#34b3eb'
@@ -66,20 +68,30 @@ class Footer extends React.Component{
                             </Grid>
                             <Grid item xs={6} md={3}>
                                 <Typography className={classes.blueText}><b>Sistemas</b></Typography>
+                                {/*
                                 <Typography className={classes.grayText}>Declaraciones </Typography>
-                                <Typography className={classes.grayText}>Servidores en contrataciones</Typography>
-                                <Typography className={classes.grayText}>Sancionados</Typography>
+                                */}
+                                <Typography className={classes.grayText} component={Link} to="/servidores">Servidores en contrataciones</Typography>
+                                <Typography className={classes.grayText} component={Link} to="/sancionados">Sancionados</Typography>
+                                {/*
                                 <Typography className={classes.grayText}>Fiscalización</Typography>
                                 <Typography className={classes.grayText}>Denuncias</Typography>
                                 <Typography className={classes.grayText}>Contrataciones</Typography>
+                                */}
                             </Grid>
                             <Grid item xs={6} md={3}>
                                 <Typography className={classes.blueText}><b>PDN</b></Typography>
-                                <Typography className={classes.grayText}>¿Qué es la PDN?</Typography>
-                                <Typography className={classes.grayText}>Blog</Typography>
-                                <Typography className={classes.grayText}>Preguntas frecuentes</Typography>
-                                <Typography className={classes.grayText}>Términos de uso</Typography>
-                                <Typography className={classes.grayText}>Contacto</Typography>
+                                <Typography>
+                                    <a href="https://www.plataformadigitalnacional.org/" className={classes.grayText}> ¿Qué es la PDN?</a>
+                                </Typography>
+                                <Typography>
+                                    <a href="https://www.plataformadigitalnacional.org/blog" className={classes.grayText}>Blog</a>
+                                </Typography>
+                                {/*<Typography className={classes.grayText}>Preguntas frecuentes</Typography>*/}
+                                <Typography>
+                                    <a href="https://www.plataformadigitalnacional.org/terminos" className={classes.grayText}>Términos de uso</a>
+                                </Typography>
+                                {/*<Typography className={classes.grayText}>Contacto</Typography>*/}
                             </Grid>
                         </Grid>
 
