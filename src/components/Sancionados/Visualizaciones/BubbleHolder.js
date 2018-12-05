@@ -71,7 +71,7 @@ class BubbleHolder extends React.Component {
                     existeGroup > -1 ? auxGroup[existeGroup].total_sanciones += 1 : auxGroup.push({'causa': item.causa,'total_sanciones': 1});
                 });
                 this.setState({
-                    data: createNodes(aux, this.state.type),
+                    data: this.state.type===1 || this.state.type===2 ? createNodes(aux, this.state.type): createNodes(data,this.state.type),
                     originalData: data,
                     dataGroup: auxGroup
                 });

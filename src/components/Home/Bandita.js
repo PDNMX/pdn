@@ -67,7 +67,7 @@ class Bandita extends React.Component{
                        aria-labelledby="simple-modal-title"
                        aria-describedby="simple-modal-description"
                        open={this.state.open}
-                       onClose={this.handleClose} disableEscapeKeyDown={true} disableBackdropClick={true}
+                       onClose={this.handleClose}
                 >
                     <Participa onClose={this.handleClose}/>
                 </Modal>

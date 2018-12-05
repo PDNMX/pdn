@@ -74,7 +74,8 @@ export default class Bubbles_SPS extends React.Component {
         bubbles.exit().remove();
 
         // Enter
-        const bubblesE = bubbles.enter().append('circle')
+        const bubblesE = this.props.type===1 || this.props.type===2?
+            bubbles.enter().append('circle')
             .classed('bubble', true)
             .attr('r', 0)
             .attr('cx', d => d.x)
@@ -85,13 +86,26 @@ export default class Bubbles_SPS extends React.Component {
             .attr('opacity',0.8)
             .on('mouseover', showDetail)  // eslint-disable-line
             .on('click',this.props.selectBubble)
-            .on('mouseout', hideDetail); // eslint-disable-line
+            .on('mouseout', hideDetail) // eslint-disable-line
+:
+        bubbles.enter().append('circle')
+            .classed('bubble', true)
+            .attr('r', 0)
+            .attr('cx', d => d.x)
+            .attr('cy', d => d.y)
+            .attr('fill', d => fillColor(d.group))
+            .attr('stroke', d => d3.rgb(fillColor(d.group)).darker())
+            .attr('stroke-width', 2)
+            .attr('opacity',0.8)
+            .on('mouseover', showDetailSanciones)  // eslint-disable-line
+            .on('click',this.props.selectBubble)
+            .on('mouseout', hideDetail) // eslint-disable-line
 
         bubblesE.transition().duration(2000).attr('r', d => d.radius).on('end', () => {
             this.simulation.nodes(data)
                 .alpha(1)
                 .restart()
-        })
+        });
     }
 
     render() {
@@ -141,6 +155,23 @@ export function showDetail(d) {
             }</span>`;
 
     this.group ? tooltip.showTooltip(contentGroup, d3.event) : tooltip.showTooltip(content, d3.event);
+}
+export function showDetailSanciones(d) {
+    // change outline to indicate hover state.
+    d3.select(this).attr('stroke', 'black');
+
+    let content =
+        `<span class="name">Institución: </span><span class="value">${
+            d.dependencia
+            }</span><br/>` +
+        `<span class="name">Monto total: </span><span class="value">${
+            formatCurrency(d.montoTotal,'$')
+            }</span><br/>` +
+        `<span class="name">Sanciones total: </span><span class="value">${
+            d.sancionesTotal
+            }</span>`;
+
+    tooltip.showTooltip(content, d3.event)
 }
 
 /*

@@ -12,7 +12,7 @@ const styles = theme => ({
 
         backgroundColor: theme.palette.background.paper,
         position: 'fixed',
-        width: '650px',
+        maxWidth: '1200px',
         height: 'auto',
         top: '50%',
         left: '50%',
@@ -21,6 +21,10 @@ const styles = theme => ({
     },
     title: {
         color: theme.palette.primary.dark
+    },
+    contenedor:{
+        height: '634px',
+        //overflowY : 'scroll'
     }
 });
 
@@ -73,77 +77,18 @@ class Participa extends React.Component {
         const {classes} = this.props;
         return (
             <div className={classes.paper}>
-                <Grid container spacing={32}>
+
+
+                <Grid container spacing={32} className={classes.contenedor}>
                     <Grid item xs={12}>
-                        <Typography variant={"title"} align={"center"} className={classes.title}>
-                            ENCUESTA
-                        </Typography>
+                        <iframe
+                            src="https://docs.google.com/forms/d/e/1FAIpQLSc14vP4mdWiNLx0TAXMZ_Cizd43CGdhpHruWddyb6fPCJq0zg/viewform?embedded=true"
+                            width="700" height="600" frameBorder="0" marginHeight="0" marginWidth="0">Loading...
+                        </iframe>
                     </Grid>
-                    <Grid item xs={12}>
-                        <Typography variant={"subheading"} align={"justify"}>
-                            Déjanos tu comentario, los campos necesarios están marcados con *.
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={4}>
-                        <TextField
-                            id="standard-name"
-                            label="Nombre"
-                            className={classes.textField}
-                            value={this.state.nombre}
-                            onChange={this.handleChange('nombre')}
-                            margin="normal" fullWidth
-                            inputProps={{
-                                maxLength: "50"
-                            }}
-                        />
-                    </Grid>
-                    <Grid item xs={4}>
-                        <TextField
-                            id="standard-name"
-                            label="Teléfono"
-                            className={classes.textField}
-                            value={this.state.telefono}
-                            onChange={this.handleChange('telefono')}
-                            margin="normal" fullWidth
-                            inputProps={{
-                                maxLength: "20"
-                            }}
-                        />
-                    </Grid>
-                    <Grid item xs={4}>
-                        <TextField
-                            id="standard-name"
-                            label="Correo alternativo"
-                            className={classes.textField}
-                            value={this.state.correoAlternativo}
-                            onChange={this.handleChange('correoAlternativo')}
-                            margin="normal" fullWidth
-                            inputProps={{
-                                maxLength: "50"
-                            }}
-                        />
-                    </Grid>
-                    <Grid item xs={12}>
-                        <TextField
-                            id="standard-name"
-                            label="Comentario"
-                            className={classes.textField}
-                            value={this.state.comentario}
-                            onChange={this.handleChange('comentario')}
-                            margin="normal"
-                            fullWidth required={true}
-                            multiline={true} rows={3} rowsMax={3}
-                            inputProps={{
-                                maxLength: "140"
-                            }}
-                        />
-                    </Grid>
-                    <Grid item xs={12}>
-                        <Typography variant={"subheading"} align={"justify"}>
-                            {this.state.mensaje}
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={8}>
+                    {
+                        /*
+                        <Grid item xs={10}>
                     </Grid>
                     <Grid item xs={2}>
                         <Button variant="contained" color="primary" className={classes.button}
@@ -151,12 +96,9 @@ class Participa extends React.Component {
                             Cerrar
                         </Button>
                     </Grid>
-                    <Grid item xs={2}>
-                        <Button variant="contained" color="primary" className={classes.button}
-                                onClick={() => this.enviar()}>
-                            Enviar
-                        </Button>
-                    </Grid>
+                        * */
+                    }
+
 
                 </Grid>
             </div>
