@@ -120,37 +120,37 @@ class VideoAppBar extends React.Component {
 
                         */}
 
-                        <div>
-                            <IconButton
-                                aria-owns={open ? 'menu-appbar' : undefined}
-                                aria-haspopup="true"
-                                onClick={this.handleMenu}
-                                color="inherit"
-                            >
-                                <MenuIcon />
-                            </IconButton>
-                            <Menu
-                                id="menu-appbar"
-                                anchorEl={anchorEl}
-                                anchorOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
-                                transformOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
-                                open={open}
-                                onClose={this.handleClose}
-                            >
-                                {/*<MenuItem onClick={this.handleClose}>Blog</MenuItem>*/}
-                                {
-                                    this.props.sesion.authenticated &&
+                        {
+                            this.props.sesion.authenticated && (
+                            <div>
+                                <IconButton
+                                    aria-owns={open ? 'menu-appbar' : undefined}
+                                    aria-haspopup="true"
+                                    onClick={this.handleMenu}
+                                    color="inherit"
+                                >
+                                    <MenuIcon/>
+                                </IconButton>
+                                <Menu
+                                    id="menu-appbar"
+                                    anchorEl={anchorEl}
+                                    anchorOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'right',
+                                    }}
+                                    transformOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'right',
+                                    }}
+                                    open={open}
+                                    onClose={this.handleClose}
+                                >
+                                    {/*<MenuItem onClick={this.handleClose}>Blog</MenuItem>*/}
                                     <MenuItem onClick={this.handleSignOut}>Salir</MenuItem>
-                                }
-                            </Menu>
-
-                        </div>
+                                </Menu>
+                            </div>
+                            )
+                        }
 
                     </Toolbar>
                 </AppBar>
