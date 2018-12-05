@@ -27,7 +27,7 @@ const styles = theme => ({
         width: '100%'
     },
     text: {
-        color: "#fff"
+        color: "#666666"
     },
     boldText: {
         fontWeight: 500

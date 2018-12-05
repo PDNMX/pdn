@@ -6,7 +6,7 @@ import Explora from './Explora';
 import Sistemas from './Sistemas';
 import QueEsLaPDN from './QueEsLaPDN';
 import Footer from './Footer';
-import Header from "../PDNAppBar/PDNAppBar";
+//import Header from "../PDNAppBar/PDNAppBar";
 //import Banner from "../Banner";
 import Bandita from "./Bandita";
 import Banner from "../VideoBanner/VideoBanner";
@@ -28,7 +28,7 @@ class HomeGF extends React.Component{
         const { classes } = this.props;
         return(
             <div className={classes.root}>
-                <Header currentUser={this.props.currentUser}/>
+                {/*<Header currentUser={this.props.currentUser}/>*/}
                 <Banner currentUser={this.props.currentUser}/>
                 <Grid container spacing={0} justify="center">
                     <Grid item xs={12} className={classes.item}>

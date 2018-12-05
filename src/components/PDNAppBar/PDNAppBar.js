@@ -12,7 +12,7 @@ import Grid from '@material-ui/core/Grid';
 import app from "../../config/firebase";
 import Modal from "@material-ui/core/Modal/Modal";
 import Participa from "../Participa/Participa";
-import connect from "react-redux/es/connect/connect";
+import {connect} from "react-redux";
 import {withRouter } from 'react-router-dom';
 
 const styles = theme => ({

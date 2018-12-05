@@ -1,7 +1,7 @@
 import React from 'react';
 import {withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import LogoSesna from '../../assets/sesna-gris.jpg';
+import LogoSesna from '../../assets/SESNA.png';
 import LibreUso from '../../assets/libre-uso.png';
 import Typography from "@material-ui/core/Typography";
 import LogoPDN from '../../assets/PDN-sintexto-blue.png';
@@ -23,7 +23,7 @@ const styles = theme => ({
         paddingBottom: 10
     },
     logo: {
-        maxWidth: 200
+        maxWidth: 100
     },
     libreUso: {
         maxWidth: 200,
