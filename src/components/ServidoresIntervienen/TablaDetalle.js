@@ -47,10 +47,34 @@ function getSorting(order, orderBy) {
 }
 
 const columnData = [
-    {id: 'servidor', numeric: false, disablePadding: false, label: 'Servidor público', position: 2, mostrar: true,key:'servidor'},
-    {id: 'institucion', numeric: false, disablePadding: false, label: 'Institución', position: 3, mostrar: true,key:'institucion'},
-    {id: 'puesto', numeric: false, disablePadding: false, label: 'Puesto', position: 4, mostrar: true,key:'puesto'},
-    {id: 'tipoArea', numeric: false, disablePadding: false, label: 'Tipo de área', position: 5, mostrar: true,key:'tipoArea'},
+    {
+        id: 'servidor',
+        numeric: false,
+        disablePadding: false,
+        label: 'Servidor público',
+        position: 2,
+        mostrar: true,
+        key: 'servidor'
+    },
+    {
+        id: 'institucion',
+        numeric: false,
+        disablePadding: false,
+        label: 'Institución',
+        position: 3,
+        mostrar: true,
+        key: 'institucion'
+    },
+    {id: 'puesto', numeric: false, disablePadding: false, label: 'Puesto', position: 4, mostrar: true, key: 'puesto'},
+    {
+        id: 'tipoArea',
+        numeric: false,
+        disablePadding: false,
+        label: 'Tipo de área',
+        position: 5,
+        mostrar: true,
+        key: 'tipoArea'
+    },
     {
         id: 'contrataciones',
         numeric: false,
@@ -58,7 +82,7 @@ const columnData = [
         label: 'Contrataciones públicas',
         position: 6,
         mostrar: false,
-        key:'contrataciones'
+        key: 'contrataciones'
     },
     {
         id: 'concesionesLicencias',
@@ -67,7 +91,7 @@ const columnData = [
         label: 'Concesiones, licencias, permisos, autorizaciones y prórrogas',
         position: 7,
         mostrar: false,
-        key:'concesionesLicencias'
+        key: 'concesionesLicencias'
     },
     {
         id: 'enajenacion',
@@ -76,7 +100,7 @@ const columnData = [
         label: 'Enajenación de bienes muebles',
         position: 8,
         mostrar: false,
-        key:'enajenacion'
+        key: 'enajenacion'
     },
     {
         id: 'dictamenes',
@@ -85,7 +109,7 @@ const columnData = [
         label: 'Asignación y emisión de dictámenes de avalúos nacionales',
         position: 9,
         mostrar: false,
-        key:'dictamenes'
+        key: 'dictamenes'
     },
 ];
 
@@ -121,15 +145,15 @@ const styles = theme => ({
     table: {
         tableLayout: 'fixed',
     },
-    tablePagination:{
-        overflowX : 'auto',
-        fontSize :'0.75rem'
+    tablePagination: {
+        overflowX: 'auto',
+        fontSize: '0.75rem'
     },
-    gridTable:{
-        marginBottom : '27px'
+    gridTable: {
+        marginBottom: '27px'
     },
-    titleTable:{
-        marginBottom:'61px'
+    titleTable: {
+        marginBottom: '61px'
     }
 });
 
@@ -137,12 +161,13 @@ const styles = theme => ({
 class EnhancedTable extends React.Component {
 
     componentDidMount() {
-        this.handleSearchAPI('FIELD_FILTER',this.props.institucion);
+        this.handleSearchAPI('FIELD_FILTER', this.props.institucion);
     }
 
-    componentWillReceiveProps(nextProps){
-        if(nextProps.institucion !== this.props.institucion){
-            this.handleSearchAPI('FIELD_FILTER',nextProps.institucion);
+    componentWillReceiveProps(nextProps) {
+        console.log("NextProps: ", nextProps);
+        if (nextProps.institucion !== this.props.institucion) {
+            this.handleSearchAPI('FIELD_FILTER', nextProps.institucion);
         }
     }
 
@@ -198,7 +223,7 @@ class EnhancedTable extends React.Component {
 
     handleChangePage = (event, page) => {
         this.setState({page}, () => {
-            this.handleSearchAPI('CHANGE_PAGE',this.props.institucion);
+            this.handleSearchAPI('CHANGE_PAGE', this.props.institucion);
         });
     };
 
@@ -225,29 +250,25 @@ class EnhancedTable extends React.Component {
             console.log(err);
         });
     };
-    handleSearchAPI = (typeSearch,inst) => {
+    handleSearchAPI = (typeSearch, inst) => {
+        inst = inst ? inst : this.props.institucion;
         this.setState({loading: true});
         const URI = 'https://plataformadigitalnacional.org/api/reniresp';
-
-
-        let {procedimiento, institucion, nombreServidor} = this.state;
-
-
+        let {procedimiento, nombreServidor} = this.state;
         let params = {};
 
-        if(typeSearch!=='ALL'){
-            (procedimiento&&procedimiento) >0 ? params.id_procedimiento= 'eq.'+procedimiento : null;
-            inst ? params.institucion = 'eq.'+inst : null;
-            nombreServidor ? params.nombre = 'like.*'+nombreServidor.toUpperCase()+'*' : null;
-            (typeSearch==='FIELD_FILTER'||typeSearch==='CHANGE_PAGE')? params.limit = this.state.rowsPerPage:null;
-            (typeSearch==='CHANGE_PAGE')? params.offset = (this.state.rowsPerPage * this.state.page) : null;
-            (typeSearch === 'FIELD_FILTER') ? this.getTotalRows(params) : null;
-        }
+        (procedimiento && procedimiento) > 0 ? params.id_procedimiento = 'eq.' + procedimiento : null;
+        inst ? params.institucion = 'eq.' + inst : null;
+        nombreServidor ? params.nombre = 'like.*' + nombreServidor.toUpperCase() + '*' : null;
+        (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? params.limit = this.state.rowsPerPage : null;
+        (typeSearch === 'CHANGE_PAGE') ? params.offset = (this.state.rowsPerPage * this.state.page) : null;
+        (typeSearch === 'FIELD_FILTER') ? this.getTotalRows(params) : null;
+
 
         let options = {
             uri: URI,
             json: true,
-            qs:params
+            qs: params
         };
 
         rp(options)
@@ -274,7 +295,7 @@ class EnhancedTable extends React.Component {
     };
 
     render() {
-        const {classes,institucion} = this.props;
+        const {classes, institucion} = this.props;
         const {data, order, orderBy, selected, rowsPerPage, page, filterData, totalRows, filterDataAll} = this.state;
         const emptyRows = rowsPerPage - filterData.length;
         return (
@@ -282,7 +303,7 @@ class EnhancedTable extends React.Component {
                 <div>
                     <div className={classes.tableWrapper}>
                         <DetalleServidor handleClose={this.handleClose} servidor={this.state.elementoSeleccionado}
-                                           control={this.state.open}/>
+                                         control={this.state.open}/>
                         {
                             this.state.loading &&
                             <CircularProgress className={classes.progress} id="spinnerLoading" size={100}/>
@@ -302,7 +323,7 @@ class EnhancedTable extends React.Component {
                                         onSelectAllClick={this.handleSelectAllClick}
                                         onRequestSort={this.handleRequestSort}
                                         rowCount={data.length}
-                                        columnData = {columnData}
+                                        columnData={columnData}
                                     />
                                     <TableBody id="tableParticulares">
                                         {filterData
@@ -336,7 +357,7 @@ class EnhancedTable extends React.Component {
                         <Grid container>
                             <Grid item md={3} xs={12}>
                                 <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data} filtrado={false}
-                                          columnas={columnData} fnSearch = {this.handleSearchAPI}
+                                          columnas={columnData} fnSearch={this.handleSearchAPI}
                                           fileName={'Detalle'}/>
                             </Grid>
                             <Grid item md={3} xs={12}/>

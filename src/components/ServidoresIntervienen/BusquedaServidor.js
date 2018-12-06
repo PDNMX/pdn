@@ -140,19 +140,6 @@ function Menu(props) {
     );
 }
 
-function Placeholder(props) {
-    return (
-        <Typography
-            color="textSecondary"
-            className={props.selectProps.classes.placeholder}
-            {...props.innerProps}
-        >
-
-            {'test'}
-        </Typography>
-    );
-}
-
 const components = {
     'Control' : Control,
     'Menu' : Menu,

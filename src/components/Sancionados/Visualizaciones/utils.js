@@ -20,11 +20,12 @@ export function createNodes(rawData, type) {
 
     let pivote = (maxAmount-minAmount)/10;
 
+    let max =  type===1 || type===2 ? 85: type==='sanciones'? 100 : 200;
     // Sizes bubbles based on area.
     // @v4: new flattened scale names.
     const radiusScale = d3.scalePow()
         .exponent(0.5)
-        .range([2, 85])
+        .range([2, max])
         .domain([0, maxAmount]);
 
     // Use map() to convert raw data into node data.

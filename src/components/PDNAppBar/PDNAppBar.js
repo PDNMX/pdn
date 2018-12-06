@@ -10,8 +10,6 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
 import app from "../../config/firebase";
-import Modal from "@material-ui/core/Modal/Modal";
-import Participa from "../Participa/Participa";
 import {connect} from "react-redux";
 import {withRouter } from 'react-router-dom';
 
