@@ -15,14 +15,11 @@ import * as d3 from 'd3'
 export function createNodes(rawData, type) {
     // Use the max total_amount in the data as the max in the scale's domain
     // note we have to ensure the total_amount is a number.
-    console.log("type: ",type);
-    console.log("data: ",rawData);
     const maxAmount = type===1 || type===2 ? d3.max(rawData, d => d.total_sanciones):  type==='sanciones'?d3.max(rawData, d=> d.sanciones_total): d3.max(rawData, d=> d.monto_total);
     const minAmount = type===1 || type===2 ? d3.min(rawData, d => d.total_sanciones):  type==='sanciones'?d3.min(rawData, d=> d.sanciones_total): d3.min(rawData, d=> d.monto_total);
 
     let pivote = (maxAmount-minAmount)/10;
 
-    console.log("pivote: ",pivote);
     // Sizes bubbles based on area.
     // @v4: new flattened scale names.
     const radiusScale = d3.scalePow()
@@ -45,7 +42,7 @@ export function createNodes(rawData, type) {
             y: Math.random() * 800,
         }));
 
-    id = 0;
+    id = 1;
     const myNodesSanciones = rawData.map(d => (
         {
             id: (id + 1).toString(),
@@ -57,7 +54,7 @@ export function createNodes(rawData, type) {
             x: Math.random() * 900,
             y: Math.random() * 800,
         }));
-    let id2 = 0;
+    let id2 = 2;
     const myNodesMontos = rawData.map(d => (
         {
             id: (id2 + 1).toString(),

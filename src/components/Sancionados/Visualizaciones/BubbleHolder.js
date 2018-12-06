@@ -59,6 +59,7 @@ class BubbleHolder extends React.Component {
                 let aux = [], auxGroup = [];
                 let existe = -1, existeGroup = -1;
                 data = JSON.parse(JSON.stringify(data));
+                if(this.state.type===1 || this.state.type===2)
                 data.forEach((item) => {
                     existe = aux.findIndex(element => {
                         return element.dependencia === item.dependencia;
@@ -114,7 +115,7 @@ class BubbleHolder extends React.Component {
                 <Grid container spacing={0}>
                     <Grid item xs={12}>
                         <Typography variant={"display1"} className={classes.title}>
-                            {this.state.type === 1 ? 'SERVIDORES PÚBLICOS SANCIONADOS' : 'PARTICULARES SANCIONADOS'}
+                            {this.state.type === 1 ? 'SERVIDORES PÚBLICOS SANCIONADOS' : this.state.type===2?'PARTICULARES SANCIONADOS':this.state.type==='sanciones'?'TOTAL DE SANCIONES POR INSTITUCIÓN':'TOTAL DE MONTO POR INSTITUCIÓN'}
                         </Typography>
                         <br/>
                         {this.state.type === 1 &&
@@ -127,7 +128,16 @@ class BubbleHolder extends React.Component {
                             {'Muestra las dependencias y el número de particulares sancionados que tienen'}
                         </Typography>
                         }
-
+                        {type==='sanciones' &&
+                        <Typography variant={"subheading"} className={classes.font}>{
+                            '¿Cuáles son las instituciones con mayor número de sanciones en procesos de contratación?'}
+                        </Typography>
+                        }
+                        {type==='monto' &&
+                        <Typography variant={"subheading"} className={classes.font}>{
+                            '¿Cuáles son las instituciones con mayor monto impuesto como sanción en procesos de contratación?'}
+                        </Typography>
+                        }
                     </Grid>
                     <Grid item xs={12}>
                         <ControlSelect onChangeGraphic={this.onTypeChanged} onChangeGroup={this.onGroupChanged}
@@ -135,11 +145,7 @@ class BubbleHolder extends React.Component {
                     </Grid>
                     <Grid item xs={12} className={classes.center}>
                         <BubbleChart width={width} height={height}>
-                            <Bubbles_SPS data={data} forceStrength={0.3} center={center} type={type}
-                                         group={this.state.group} yearCenters={yearCenters} selectBubble={this.selectBubble}/>
-                            {this.state.group &&
-                                <GroupTitle widh={width} yearCenters={yearCenters}/>
-                            }
+                            <Bubbles_SPS data={data} forceStrength={0.3} center={center} type={type} selectBubble={this.selectBubble}/>
                         </BubbleChart>
                     </Grid>
                     <Grid item xs={12} id={'tablaDetalle'}>
