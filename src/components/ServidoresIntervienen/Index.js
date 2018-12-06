@@ -128,20 +128,20 @@ class Index extends React.Component {
                         <Grid item xs={12} className={classes.section}>
                             <Grid container spacing={24}>
                                 <Grid item xs={6}>
-                                    <Typography variant={"h4"} className={classes.titleLight}>Servidores que intervienen
+                                    <Typography variant={"h2"} className={classes.titleLight}>Servidores que intervienen
                                         en procesos de contratación</Typography>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <Typography variant="subtitle1" className={classes.titleSub}>
-                                        En este Sistema puedes consultar, visualizar y descargar datos de:
+                                    <Typography variant="h6" className={classes.titleSub}>
+                                        Aquí puedes consultar, visualizar y descargar datos de:
                                     </Typography>
                                     <br/>
-                                    <Typography variant="subtitle1" className={classes.titleSub}>
-                                        •    Los nombres, institución, cargo actividades y adscripción de los servidores públicos que intervienen en contrataciones públicas y otros actos de autoridad, y
+                                    <Typography variant="h6" className={classes.titleSub}>
+                                        Los nombres, institución, cargo actividades y adscripción de los servidores públicos que intervienen en contrataciones públicas y otros actos de autoridad, y
                                     </Typography>
                                     <br/>
-                                    <Typography variant="subtitle1" className={classes.titleSub}>
-                                        •    La relación de personas físicas y morales que se encuentran inhabilitados para celebrar contratos con instituciones públicas, por qué fueron inhabilitados, por cuánto tiempo y con qué monto
+                                    <Typography variant="h6" className={classes.titleSub}>
+                                        La relación de personas físicas y morales que se encuentran inhabilitados para celebrar contratos con instituciones públicas, por qué fueron inhabilitados, por cuánto tiempo y con qué monto
                                     </Typography>
 
                                 </Grid>

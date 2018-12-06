@@ -127,23 +127,23 @@ class Index extends React.Component {
                         <Grid item xs={12} className={classes.section}>
                             <Grid container spacing={24}>
                                 <Grid item xs={6}>
-                                    <Typography variant="h3" className={classes.titleLight}>
-                                        Servidores públicos y particulares sancionados
+                                    <Typography variant="h2" className={classes.titleLight}>
+                                        Servidores públicos <br/>y particulares sancionados
                                     </Typography>
 
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <Typography variant="subtitle1" className={classes.titleSub}>
-                                        En este Sistema puedes consultar, visualizar y descargar datos de:
+                                    <Typography variant="h6" className={classes.titleSub}>
+                                        Aquí puedes consultar, visualizar y descargar datos de:
                                     </Typography><br/>
-                                    <Typography variant="subtitle1" className={classes.titleSub}>
-                                        •    Las sanciones o inhabilitación firmes en contra de servidores públicos por actos vinculados con faltas administrativas graves,
+                                    <Typography variant="h6" className={classes.titleSub}>
+                                        Las sanciones o inhabilitación firmes en contra de servidores públicos por actos vinculados con faltas administrativas graves,
                                     </Typography><br/>
-                                    <Typography variant="subtitle1" className={classes.titleSub}>
-                                        •    Los particulares que están inhabilitados o cuentan con impedimentos para ser contratados como servidores públicos, y
+                                    <Typography variant="h6" className={classes.titleSub}>
+                                        Los particulares que están inhabilitados o cuentan con impedimentos para ser contratados como servidores públicos, y
                                     </Typography><br/>
-                                    <Typography variant="subtitle1" className={classes.titleSub}>
-                                        •    Las persona físicas que están inhabilitadas o cuentan con impedimentos para ser contratistas o prestadores de servicios en el gobierno por faltas administrativas graves.
+                                    <Typography variant="h6" className={classes.titleSub}>
+                                        Las persona físicas que están inhabilitadas o cuentan con impedimentos para ser contratistas o prestadores de servicios en el gobierno por faltas administrativas graves.
                                     </Typography>
                                 </Grid>
                             </Grid>

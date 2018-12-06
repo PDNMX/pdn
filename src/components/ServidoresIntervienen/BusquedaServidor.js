@@ -89,7 +89,7 @@ function Control(props) {
         <TextField
             fullWidth
             label="INSTITUCIÓN"
-            placeholder={'Selecciona una'}
+            placeholder={'Selecciona'}
             InputProps={{
                 inputComponent,
                 inputProps: {
@@ -128,7 +128,7 @@ function Option(props) {
 
 function SingleValue(props) {
     return (
-        <div className={props.selectProps.classes.singleValue}>{!props.data.value?'Selecciona una':''} {props.children} </div>
+        <div className={props.selectProps.classes.singleValue}>{!props.data.value?'Selecciona':''} {props.children} </div>
     );
 }
 
@@ -223,7 +223,7 @@ class BusquedaServidor extends React.Component {
 
                         >
                             <MenuItem value={0}>
-                                <em>Selecciona una</em>
+                                <em>Selecciona</em>
                             </MenuItem>
                             <MenuItem value={1}>CONTRATACIONES PÚBLICAS</MenuItem>
                             <MenuItem value={2}>CONCESIONES, LICENCIAS, PERMISOS, AUTORIZACIONES Y PRÓRROGAS</MenuItem>

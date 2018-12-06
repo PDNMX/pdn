@@ -14,7 +14,7 @@ const styles = theme => ({
         paddingBottom: 150
     },
     star: {
-        maxWidth: 250
+        maxWidth: 300
     },
     button: {
         marginTop: theme.spacing.unit,
@@ -32,20 +32,21 @@ class QueEsLaPDN extends React.Component{
             <div className={classes.root}>
                 <Grid container spacing={24} justify='center' className={classes.container}>
                     <Grid item xs={12}>
-                        <Typography variant="headline">
+                        <Typography variant="h4">
                             ¿Qué es la Plataforma Digital Nacional?
                         </Typography>
                     </Grid>
 
+                    <br/>
                     <Grid item md={4} xs={12} align="center">
                         <img src={Star} alt="PDN" className={classes.star}/>
                     </Grid>
                     <Grid item md={8} xs={12}>
-                        <Typography>
+                        <Typography variant="h5">
                             La <b>Plataforma Digital Nacional</b> es una fuente de inteligencia para construir integridad y combatir la corrupción, que creará valor para el gobierno y la sociedad, a partir de grandes cantidades de datos.
                         </Typography>
                         <br/>
-                        <Typography>
+                        <Typography variant="h5">
                             La Plataforma es un <b>medio para el intercambio de datos anticorrupción</b> del Gobierno, que busca quitar barreras y romper silos de información para que los datos sean comparables, accesibles y utilizables, empezando con <b>seis sistemas de datos prioritarios</b>.
                         </Typography>
 

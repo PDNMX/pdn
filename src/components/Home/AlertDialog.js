@@ -46,13 +46,16 @@ class AlertDialog extends React.Component {
                         <DialogContentText id="alert-dialog-description">
                             <Typography>
                                 Esta es una versión Alpha cuyo objetivo es probar las funcionalidades, interfaz y experiencia de usuario para la página de inicio, y los primeros dos sistemas de la Plataforma.
-                                Esta versión NO debe ser vista como final, NI contiene los datos reales.
                             </Typography>
 
                             <br/>
+                            <Typography>
+                            Esta versión NO debe ser vista como final, NI contiene los datos reales.
+                            </Typography>
+                            <br/>
 
                             <Typography>
-                                Por favor, ingresa al siguiente formulario para dejar tus comentarios. Estos serán utilizados como insumo para la primera versión que será lanzada en 2019.
+                                Te invitamos a dejar tus comentarios de esta versión accediendo al botón "COMENTA"
 
                             </Typography>
                         </DialogContentText>

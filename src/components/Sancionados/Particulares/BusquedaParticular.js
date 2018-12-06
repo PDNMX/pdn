@@ -87,7 +87,7 @@ function Control(props) {
     return (
         <TextField
             fullWidth
-            label="INSTITUCIÓN"
+            label="INSTITUCIÓN SANCIONADORA"
             placeholder={'Selecciona una'}
             InputProps={{
                 inputComponent,
@@ -215,7 +215,7 @@ class BusquedaParticular extends React.Component {
                     <FormControl className={classes.formControl}>
                         <TextField
                             id="search"
-                            label="NOMBRE DEL PARTICULAR"
+                            label="NOMBRE DEL PARTICULAR SANCIONADO"
                             type="search"
                             onChange={(e) => handleChangeCampo('nombreParticular',e)}
                             value={nombreParticular}

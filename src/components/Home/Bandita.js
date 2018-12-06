@@ -14,10 +14,10 @@ const styles = theme => ({
         bottom: '0',
         zIndex: 1,
         //opacity: 0.7,
-        width: '95%',
+        width: '100%',
         paddingTop: theme.spacing.unit * 2,
-        paddingBottom: theme.spacing.unit * 2.5,
-        paddingRight: theme.spacing.unit * 2,
+        paddingBottom: theme.spacing.unit ,
+        paddingRight: theme.spacing.unit,
         textAlign: 'right'
     },
     item: {

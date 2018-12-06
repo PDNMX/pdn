@@ -56,7 +56,7 @@ class Banner extends React.Component {
 
                 <div className={classes.contents}>
                     <Typography variant="h2" className={classes.text}>
-                        Inteligencia <span className={classes.boldText}>anticorrupción</span> con datos
+                        Inteligencia <span className={classes.boldText}>anticorrupción</span> con datos.
                     </Typography>
                 </div>
             </div>

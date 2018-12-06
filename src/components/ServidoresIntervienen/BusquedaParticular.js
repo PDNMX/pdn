@@ -88,8 +88,8 @@ function Control(props) {
     return (
         <TextField
                        fullWidth
-                       label="INSTITUCIÓN"
-                       placeholder={'Selecciona una'}
+                       label="INSTITUCIÓN SANCIONADORA"
+                       placeholder={'Selecciona'}
                        InputProps={{
                            inputComponent,
                            inputProps: {
@@ -128,7 +128,7 @@ function Option(props) {
 
 function SingleValue(props) {
     return (
-        <div className={props.selectProps.classes.singleValue} > {!props.data.value?'Selecciona una':''}{props.children} </div>
+        <div className={props.selectProps.classes.singleValue} > {!props.data.value?'Selecciona':''}{props.children} </div>
     );
 }
 
@@ -216,7 +216,7 @@ class BusquedaParticular extends React.Component {
                     <FormControl className={classes.formControl}>
                         <TextField
                             id="search"
-                            label="NOMBRE DEL PARTICULAR"
+                            label="PARTICULARES INHABILITADOS"
                             type="search"
                             onChange={(e) => handleChangeCampo('nombreParticular',e)}
                             value={nombreParticular}

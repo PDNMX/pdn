@@ -14,10 +14,10 @@ const styles = theme => ({
     },
     parteGris: {
         background: '#666666',
-        minHeight: 300,
+        minHeight: 140,
 
-        paddingTop: 80,
-        paddingBottom: 60
+        paddingTop: 30,
+        paddingBottom: 30
     },
     parteBlanca:{
         paddingTop: 20,
@@ -41,8 +41,9 @@ const styles = theme => ({
     blueText: {
         color: '#34b3eb'
     },
-    logoPDN:{
-        maxWidth: 75
+    logoSESNA:{
+        paddingTop: 10,
+        maxWidth: 150
     }
 });
 
@@ -57,6 +58,8 @@ class Footer extends React.Component{
 
                         <Grid container spacing={24}>
                             <Grid item xs={12} md={6}>
+                                <img alt="SESNA" src={LogoSesna} className={classes.logoSESNA}/>
+                                {/*
                                 <img alt="PDN" src={LogoPDN} className={classes.logoPDN}/>
 
                                 <Typography className={classes.grayText}><b>Plataforma Digital Nacional</b></Typography>
@@ -64,13 +67,12 @@ class Footer extends React.Component{
                                 <br/>
                                 <img alt="Libre Uso MX " src ={LibreUso} className={classes.libreUso}/>
                                 <br/>
-                                <img alt="Open Knowledge" src={OK}/>
+                                <img alt="Open Knowledge" src={OK}/>*/}
                             </Grid>
                             <Grid item xs={6} md={3}>
                                 <Typography className={classes.blueText}><b>Sistemas</b></Typography>
-                                {/*
+
                                 <Typography className={classes.grayText}>Declaraciones </Typography>
-                                */}
                                 <Typography className={classes.grayText} component={Link} to="/servidores">Servidores en contrataciones</Typography>
                                 <Typography className={classes.grayText} component={Link} to="/sancionados">Sancionados</Typography>
                                 {/*
@@ -98,11 +100,13 @@ class Footer extends React.Component{
                     </Grid>
                 </Grid>
 
+                {/*
                 <Grid container spacing={0} justify='center' className={classes.parteBlanca}>
                     <Grid item xs={12} align='center'>
                         <img alt="SESNA" src={LogoSesna} className={classes.logo}/>
                     </Grid>
                 </Grid>
+                */}
             </div>
         )
     }
