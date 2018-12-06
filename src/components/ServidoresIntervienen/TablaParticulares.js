@@ -14,6 +14,7 @@ import BusquedaParticular from "./BusquedaParticular";
 import DetalleParticular from "./DetalleParticular";
 import Grid from "@material-ui/core/Grid/Grid";
 import EnhancedTableHead from '../Tablas/EnhancedTableHead';
+import Typography from "@material-ui/core/Typography/Typography";
 
 let counter = 0;
 
@@ -368,6 +369,7 @@ class EnhancedTable extends React.Component {
                         }
                         <Grid container justify={'center'} spacing={0} className={classes.gridTable}>
                             <Grid item xs={12} className={classes.section}>
+                                <Typography variant={"subtitle1"}>Pulsa sobre el registro para ver su detalle<br/></Typography>
                                 <Table className={classes.table} aria-describedby="spinnerLoading"
                                        aria-busy={this.state.loading} aria-labelledby="tableTitle">
                                     <EnhancedTableHead
