@@ -128,7 +128,7 @@ function Option(props) {
 
 function SingleValue(props) {
     return (
-        <div className={props.selectProps.classes.singleValue} > {!props.data.value?'Selecciona':''}{props.children} </div>
+        <div className={props.selectProps.classes.singleValue} > {!props.data.value?'Selecciona una':''}{props.children} </div>
     );
 }
 

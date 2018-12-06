@@ -258,6 +258,8 @@ class EnhancedTable extends React.Component {
                                     Detalle</Typography>
                             </Grid>
                             <Grid item xs={12} className={classes.section}>
+                                <Typography variant={"subtitle1"}>Pulsa sobre el registro para ver su detalle<br/></Typography>
+
                                 <Table aria-describedby="spinnerLoading" id={'tableServidores'}
                                        aria-busy={this.state.loading} aria-labelledby="tableTitle"
                                        className={classes.table}>

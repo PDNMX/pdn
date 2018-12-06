@@ -70,7 +70,7 @@ const styles = theme => ({
         float:'right'
     },
     title:{
-        color : theme.palette.black.color,
+        color : theme.palette.primary.main,
 
     },
     paperGlosario: {

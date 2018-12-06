@@ -14,6 +14,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import BajarCSV from "../../Tablas/BajarCSV";
 import Grid from "@material-ui/core/Grid/Grid";
 import EnhancedTableHead from '../../Tablas/EnhancedTableHead';
+import Typography from "@material-ui/core/Typography/Typography";
 
 let counter = 0;
 
@@ -330,6 +331,8 @@ class EnhancedTable extends React.Component {
 
                     <Grid container justify={'center'} spacing={0} className={classes.gridTable}>
                         <Grid item xs={12} >
+                            <Typography variant={"subtitle1"}>Pulsa sobre el registro para ver su detalle<br/></Typography>
+
                             <Table aria-describedby="spinnerLoading" id={'tableServidores'}
                                    aria-busy={this.state.loading} aria-labelledby="tableTitle"
                                    className={classes.table}>
