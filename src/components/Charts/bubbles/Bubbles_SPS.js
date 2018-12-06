@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as d3 from 'd3';
-import { fillColor } from '../../Sancionados/Visualizaciones/utils';
+import {fillColor} from '../../Sancionados/Visualizaciones/utils';
 import tooltip from './Tooltip';
 
 export default class Bubbles_SPS extends React.Component {
     constructor(props) {
         super(props);
-        const { forceStrength, center } = props;
+        const {forceStrength, center} = props;
         this.simulation = d3.forceSimulation()
             .velocityDecay(0.2)
             .force('x', d3.forceX().strength(forceStrength).x(center.x))
@@ -28,7 +28,7 @@ export default class Bubbles_SPS extends React.Component {
     }
 
     onRef = (ref) => {
-        this.setState({ g: d3.select(ref) }, () => this.renderBubbles(this.props.data))
+        this.setState({g: d3.select(ref)}, () => this.renderBubbles(this.props.data))
     };
 
     ticked() {
@@ -42,59 +42,56 @@ export default class Bubbles_SPS extends React.Component {
     }
 
     renderBubbles(data) {
-       let bubbles =null;
-       bubbles = this.state.g.selectAll('.bubble').data(data, d => d.id);
+        let bubbles = this.state.g.selectAll('.bubble').data(data, d => d.id);
         // bubbles = this.state.g.selectAll('circle');
         // Exit
         bubbles.exit().remove();
-        let bubblesE =
-            bubbles.enter().append('circle')
-            .classed('bubble', true)
-            .attr('r', 0)
-            .attr('cx', d => d.x)
-            .attr('cy', d => d.y)
-            .attr('id',d=>d.id)
-            .attr('fill', d => fillColor(d.group))
-            .attr('stroke', d => d3.rgb(fillColor(d.group)).darker())
-            .attr('stroke-width', 2)
-            .attr('opacity',0.8)
-            .on('mouseover', showDetail)  // eslint-disable-line
-            .on('click',this.props.selectBubble)
-            .on('mouseout', hideDetail); // eslint-disable-line
-
-        let bubblesA=
-        bubbles.enter().append('circle')
-            .classed('bubble', true)
-            .attr('r', 0)
-            .attr('cx', d => d.x)
-            .attr('cy', d => d.y)
-            .attr('id',d=>d.id)
-            .attr('fill', d=>fillColor(d.group))
-            .attr('stroke', d => d3.rgb(fillColor(d.group)).darker())
-            .attr('stroke-width', 2)
-            .attr('opacity',0.8)
-            .on('mouseover', showDetailSanciones)  // eslint-disable-line
-            .on('click',this.props.selectBubble)
-            .on('mouseout', hideDetail); // eslint-disable-line
-
-
-        if(this.props.type===1 || this.props.type===2)
+        if (this.props.type === 1 || this.props.type === 2) {
+            let bubblesE =
+                bubbles.enter().append('circle')
+                    .classed('bubble', true)
+                    .attr('r', 0)
+                    .attr('cx', d => d.x)
+                    .attr('cy', d => d.y)
+                    .attr('id', d => d.id)
+                    .attr('fill', d => fillColor(d.group))
+                    .attr('stroke', d => d3.rgb(fillColor(d.group)).darker())
+                    .attr('stroke-width', 2)
+                    .attr('opacity', 0.8)
+                    .on('mouseover', showDetail)  // eslint-disable-line
+                    .on('click', this.props.selectBubble)
+                    .on('mouseout', hideDetail); // eslint-disable-line
             bubblesE.transition().duration(2000).attr('r', d => d.radius).on('end', () => {
                 this.simulation.nodes(data)
                     .alpha(1)
                     .restart()
             });
-         else
+        } else {
+            let bubblesA =
+                bubbles.enter().append('circle')
+                    .classed('bubble', true)
+                    .attr('r', 0)
+                    .attr('cx', d => d.x)
+                    .attr('cy', d => d.y)
+                    .attr('id', d => d.id)
+                    .attr('fill', d => fillColor(d.group))
+                    .attr('stroke', d => d3.rgb(fillColor(d.group)).darker())
+                    .attr('stroke-width', 2)
+                    .attr('opacity', 0.8)
+                    .on('mouseover', showDetailSanciones)  // eslint-disable-line
+                    .on('click', this.props.selectBubble)
+                    .on('mouseout', hideDetail); // eslint-disable-line
             bubblesA.transition().duration(2000).attr('r', d => d.radius).on('end', () => {
                 this.simulation.nodes(data)
                     .alpha(1)
                     .restart()
             });
+        }
     }
 
     render() {
         return (
-            <g ref={this.onRef} className="bubbles" />
+            <g ref={this.onRef} className="bubbles"/>
         )
     }
 }
@@ -140,6 +137,7 @@ export function showDetail(d) {
 
     this.group ? tooltip.showTooltip(contentGroup, d3.event) : tooltip.showTooltip(content, d3.event);
 }
+
 export function showDetailSanciones(d) {
     // change outline to indicate hover state.
     d3.select(this).attr('stroke', 'black');
@@ -149,7 +147,7 @@ export function showDetailSanciones(d) {
             d.dependencia
             }</span><br/>` +
         `<span class="name">Monto total: </span><span class="value">${
-            formatCurrency(d.montoTotal,'$')
+            formatCurrency(d.montoTotal, '$')
             }</span><br/>` +
         `<span class="name">Sanciones total: </span><span class="value">${
             d.sancionesTotal
