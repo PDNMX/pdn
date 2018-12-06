@@ -15,6 +15,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 //import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuIcon from '@material-ui/icons/Menu';
+import Grid from '@material-ui/core/Grid';
 
 
 const styles = theme => ({
@@ -30,6 +31,9 @@ const styles = theme => ({
     },
     buttons: {
         color: '#666666'
+    },
+    item: {
+        maxWidth: 1200
     }
 });
 
@@ -99,17 +103,20 @@ class VideoAppBar extends React.Component {
                     border: 0,
                     boxShadow: 'none'
                 }}>
-                    <Toolbar>
 
-                        <IconButton color="inherit" aria-label="Menu" component={Link} to="/home">
-                            <img src={imgHeader} alt="PDN" style={{width: '40px'}}/>
-                        </IconButton>
+                    <Grid container spacing={0} justify="center">
+                        <Grid item xs={12} className={classes.item}>
+                            <Toolbar>
 
-                        <Typography variant="h6" color="inherit" className={classes.grow}>
+                                <IconButton color="inherit" aria-label="Menu" component={Link} to="/home">
+                                    <img src={imgHeader} alt="PDN" style={{width: '40px'}}/>
+                                </IconButton>
 
-                        </Typography>
+                                <Typography variant="h6" color="inherit" className={classes.grow}>
 
-                        {/*
+                                </Typography>
+
+                                {/*
                         <Button color="inherit" href="https://www.plataformadigitalnacional.org/blog"
                                 className={classes.buttons}>Blog</Button>
 
@@ -120,39 +127,43 @@ class VideoAppBar extends React.Component {
 
                         */}
 
-                        {
-                            this.props.sesion.authenticated && (
-                            <div>
-                                <IconButton
-                                    aria-owns={open ? 'menu-appbar' : undefined}
-                                    aria-haspopup="true"
-                                    onClick={this.handleMenu}
-                                    color="inherit"
-                                >
-                                    <MenuIcon/>
-                                </IconButton>
-                                <Menu
-                                    id="menu-appbar"
-                                    anchorEl={anchorEl}
-                                    anchorOrigin={{
-                                        vertical: 'top',
-                                        horizontal: 'right',
-                                    }}
-                                    transformOrigin={{
-                                        vertical: 'top',
-                                        horizontal: 'right',
-                                    }}
-                                    open={open}
-                                    onClose={this.handleClose}
-                                >
-                                    {/*<MenuItem onClick={this.handleClose}>Blog</MenuItem>*/}
-                                    <MenuItem onClick={this.handleSignOut}>Salir</MenuItem>
-                                </Menu>
-                            </div>
-                            )
-                        }
+                                {
+                                    this.props.sesion.authenticated && (
+                                        <div>
+                                            <IconButton
+                                                aria-owns={open ? 'menu-appbar' : undefined}
+                                                aria-haspopup="true"
+                                                onClick={this.handleMenu}
+                                                color="inherit"
+                                            >
+                                                <MenuIcon/>
+                                            </IconButton>
+                                            <Menu
+                                                id="menu-appbar"
+                                                anchorEl={anchorEl}
+                                                anchorOrigin={{
+                                                    vertical: 'top',
+                                                    horizontal: 'right',
+                                                }}
+                                                transformOrigin={{
+                                                    vertical: 'top',
+                                                    horizontal: 'right',
+                                                }}
+                                                open={open}
+                                                onClose={this.handleClose}
+                                            >
+                                                <MenuItem onClick={this.handleClose}>¿Qué es la PDN?</MenuItem>
+                                                <MenuItem onClick={this.handleClose}>Términos de uso</MenuItem>
+                                                <MenuItem onClick={this.handleClose}>Blog</MenuItem>
+                                                <MenuItem onClick={this.handleSignOut}>Cerrar sesión</MenuItem>
+                                            </Menu>
+                                        </div>
+                                    )
+                                }
 
-                    </Toolbar>
+                            </Toolbar>
+                        </Grid>
+                    </Grid>
                 </AppBar>
             </div>
         );
