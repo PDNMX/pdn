@@ -2,10 +2,10 @@ import React from 'react';
 import {withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import LogoSesna from '../../assets/SESNA.png';
-import LibreUso from '../../assets/libre-uso.png';
+//import LibreUso from '../../assets/libre-uso.png';
 import Typography from "@material-ui/core/Typography";
-import LogoPDN from '../../assets/PDN-sintexto-blue.png';
-import OK from '../../assets/ok_80x15_blue.png';
+//import LogoPDN from '../../assets/PDN-sintexto-blue.png';
+//import OK from '../../assets/ok_80x15_blue.png';
 import {Link} from 'react-router-dom';
 
 const styles = theme => ({
@@ -14,7 +14,7 @@ const styles = theme => ({
     },
     parteGris: {
         background: '#666666',
-        minHeight: 140,
+        minHeight: 150,
 
         paddingTop: 30,
         paddingBottom: 30
@@ -42,7 +42,7 @@ const styles = theme => ({
         color: '#34b3eb'
     },
     logoSESNA:{
-        paddingTop: 10,
+        paddingTop: 15,
         maxWidth: 150
     }
 });
@@ -58,7 +58,9 @@ class Footer extends React.Component{
 
                         <Grid container spacing={24}>
                             <Grid item xs={12} md={6}>
-                                <img alt="SESNA" src={LogoSesna} className={classes.logoSESNA}/>
+                                <a href="https://www.gob.mx/sesna">
+                                    <img alt="SESNA" src={LogoSesna} className={classes.logoSESNA}/>
+                                </a>
                                 {/*
                                 <img alt="PDN" src={LogoPDN} className={classes.logoPDN}/>
 
@@ -89,7 +91,7 @@ class Footer extends React.Component{
                                 <Typography>
                                     <a href="https://www.plataformadigitalnacional.org/blog" className={classes.grayText}>Blog</a>
                                 </Typography>
-                                {/*<Typography className={classes.grayText}>Preguntas frecuentes</Typography>*/}
+                                <Typography className={classes.grayText} component={Link} to="/faq">Preguntas frecuentes</Typography>
                                 <Typography>
                                     <a href="https://www.plataformadigitalnacional.org/terminos" className={classes.grayText}>Términos de uso</a>
                                 </Typography>
