@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import mp4 from '../../assets/videos/pdn_intro.mp4';
 import './VideoBanner.css';
 import VideoAppBar from "./VideoAppBar";
+import VersionAlpha from '../../assets/version_alfa.png';
 
 const styles = theme => ({
 
@@ -34,8 +35,12 @@ const styles = theme => ({
     },
     appBar: {
         position: 'absolute',
-        zIndex: 4,
+        zIndex: 5,
         width: '100%'
+    },
+    alpha: {
+        position: 'absolute',
+        zIndex: 4
     }
 });
 
@@ -49,6 +54,9 @@ class Banner extends React.Component {
                     Tu navegador no soporta este tag
                 </video>
 
+                <div className={classes.alpha}>
+                    <img alt="alpha" src={VersionAlpha}/>
+                </div>
 
                 <div className={classes.appBar}>
                     <VideoAppBar/>
