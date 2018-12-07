@@ -56,7 +56,7 @@ class Bandita extends React.Component{
                        open={this.state.open}
                        onClose={this.handleClose}
                 >
-                    <Participa onClose={this.handleClose}/>
+                        <Participa onClose={this.handleClose}/>
                 </Modal>
             </div>
         );

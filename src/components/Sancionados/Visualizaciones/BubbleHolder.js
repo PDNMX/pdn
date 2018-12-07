@@ -115,7 +115,7 @@ class BubbleHolder extends React.Component {
                 <Grid container spacing={0}>
                     <Grid item xs={12}>
                         <Typography variant={"display1"} className={classes.title}>
-                            {this.state.type === 1 ? 'SERVIDORES PÚBLICOS SANCIONADOS' : this.state.type===2?'PARTICULARES SANCIONADOS':this.state.type==='sanciones'?'TOTAL DE SANCIONES POR INSTITUCIÓN':'TOTAL DE MONTO POR INSTITUCIÓN'}
+                            {this.state.type === 1 ? 'SERVIDORES PÚBLICOS SANCIONADOS' : this.state.type===2?'PARTICULARES SANCIONADOS':this.state.type==='sanciones'?'PARTICULARES INHABILITADOS':'MONTOS DE INHABILITACIONES POR INSTITUCIÓN'}
                         </Typography>
                         <br/>
                         {this.state.type === 1 &&
@@ -130,12 +130,12 @@ class BubbleHolder extends React.Component {
                         }
                         {type==='sanciones' &&
                         <Typography variant={"subheading"} className={classes.font}>{
-                            '¿Cuáles son las instituciones con mayor número de sanciones en procesos de contratación?'}
+                            '¿Cuáles son las instituciones con mayor número de particulares inhabilitados?'}
                         </Typography>
                         }
                         {type==='monto' &&
                         <Typography variant={"subheading"} className={classes.font}>{
-                            '¿Cuáles son las instituciones con mayor monto impuesto como sanción en procesos de contratación?'}
+                            '¿Cuáles son las instituciones con mayor monto impuesto como sanción de inhabilitación'}
                         </Typography>
                         }
                     </Grid>

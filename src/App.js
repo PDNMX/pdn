@@ -28,7 +28,8 @@ const theme = createMuiTheme({
             color: "#c5c5c5"
         },
         titleBanner: {
-            color: '#666666'
+           color: '#666666'
+
         },
         graphGreen: {
             color: "#00cc99"

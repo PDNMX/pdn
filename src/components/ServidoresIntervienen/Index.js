@@ -33,6 +33,7 @@ const styles = theme => ({
     },
     titleSub: {
         color: theme.palette.titleBanner.color,
+        paddingTop : '10px',
     },
     textDark: {
         color: theme.palette.textNormal,
@@ -133,17 +134,11 @@ class Index extends React.Component {
                                 </Grid>
                                 <Grid item xs={6}>
                                     <Typography variant="h6" className={classes.titleSub}>
-                                        Aquí puedes consultar, visualizar y descargar datos de:
-                                    </Typography>
-                                    <br/>
-                                    <Typography variant="h6" className={classes.titleSub}>
-                                        Los nombres, institución, cargo actividades y adscripción de los servidores públicos que intervienen en contrataciones públicas y otros actos de autoridad, y
-                                    </Typography>
-                                    <br/>
-                                    <Typography variant="h6" className={classes.titleSub}>
+                                        Aquí puedes consultar, visualizar y descargar datos de:<br/>
+                                        Los nombres, institución, cargo actividades y adscripción de los servidores públicos que intervienen en contrataciones públicas y otros actos de autoridad, y<br/>
                                         La relación de personas físicas y morales que se encuentran inhabilitados para celebrar contratos con instituciones públicas, por qué fueron inhabilitados, por cuánto tiempo y con qué monto
                                     </Typography>
-
+                                    <br/>
                                 </Grid>
                             </Grid>
                         </Grid>

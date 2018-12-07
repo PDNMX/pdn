@@ -20,7 +20,7 @@ export function createNodes(rawData, type) {
 
     let pivote = (maxAmount-minAmount)/10;
 
-    let max =  type===1 || type===2 ? 85: type==='sanciones'? 100 : 200;
+    let max =  type===1 ?85: type===2 ? 130: type==='sanciones'? 120 : 260;
     // Sizes bubbles based on area.
     // @v4: new flattened scale names.
     const radiusScale = d3.scalePow()
@@ -46,7 +46,7 @@ export function createNodes(rawData, type) {
     id = 1;
     const myNodesSanciones = rawData.map(d => (
         {
-            id: (id + 1).toString(),
+            id: '2',
             radius: radiusScale(d.sanciones_total),
             dependencia: d.dependencia,
             group: d.sanciones_total <= pivote ? 'n1' : d.sanciones_total <= pivote * 2 ? 'n2' : d.sanciones_total <= pivote * 3 ? 'n3' : d.sanciones_total <= pivote * 4 ? 'n4' : d.sanciones_total <= pivote * 5 ? 'n5' : d.sanciones_total <= pivote * 6 ? 'n6' : d.sanciones_total <= pivote * 7 ? 'n7' : d.sanciones_total <= pivote * 8 ? 'n8' : d.sanciones_total <= pivote * 9 ? 'n9' : 'n10',

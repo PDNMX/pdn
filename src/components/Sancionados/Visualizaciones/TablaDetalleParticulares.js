@@ -376,6 +376,9 @@ class EnhancedTable extends React.Component {
                                     }}
                                 />
                             </Grid>
+                            <Grid item xs={12}>
+                                <Typography variant={"caption"} style={{fontStyle:'italic'}}>Fuente: https://datos.gob.mx/busca/dataset/proveedores-y-contratistas-sancionados</Typography>
+                            </Grid>
                         </Grid>
 
 
