@@ -21,7 +21,7 @@ const styles = theme => ({
         position: 'absolute'
     },
     contents: {
-        paddingTop: 300,
+        paddingTop: 270,
         position: 'absolute',
         zIndex: 3,
         textAlign: 'center',
