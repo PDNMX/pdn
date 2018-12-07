@@ -152,6 +152,9 @@ const styles = theme => ({
     },
     gridTable: {
         marginBottom: '27px'
+    },
+    desc:{
+        color : theme.palette.primary.dark,
     }
 
 });
@@ -369,7 +372,7 @@ class EnhancedTable extends React.Component {
                         }
                         <Grid container justify={'center'} spacing={0} className={classes.gridTable}>
                             <Grid item xs={12} className={classes.section}>
-                                <Typography variant={"subtitle1"}>Pulsa sobre el registro para ver su detalle<br/></Typography>
+                                <Typography variant={"h6"} className={classes.desc}>Pulsa sobre el registro para ver su detalle<br/></Typography>
                                 <Table className={classes.table} aria-describedby="spinnerLoading"
                                        aria-busy={this.state.loading} aria-labelledby="tableTitle">
                                     <EnhancedTableHead

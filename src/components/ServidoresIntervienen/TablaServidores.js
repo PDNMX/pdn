@@ -125,6 +125,9 @@ const styles = theme => ({
     },
     gridTable:{
         marginBottom : '27px'
+    },
+    desc:{
+        color : theme.palette.primary.dark,
     }
 
 });
@@ -165,6 +168,7 @@ const toolbarStyles = theme => ({
     flex: {
         flexGrow: 1,
     },
+
 });
 
 
@@ -348,7 +352,7 @@ class EnhancedTable extends React.Component {
                                 this.state.loading &&
                                 <CircularProgress className={classes.progress} id="spinnerLoading" size={100}/>
                             }
-                            <Typography variant={"subtitle1"}>Pulsa sobre el registro para ver su detalle<br/></Typography>
+                            <Typography variant={"h6"} className={classes.desc}>Pulsa sobre el registro para ver su detalle<br/></Typography>
 
                             <Table aria-describedby="spinnerLoading" id={'tableServidores'}
                                    aria-busy={this.state.loading} aria-labelledby="tableTitle"
