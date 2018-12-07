@@ -20,12 +20,14 @@ const styles = theme => ({
       paddingBottom: 100
     },
     link: {
-        textDecoration: "none",
-        color: '#000',
+        textDecoration: "none"
     },
     disabled: {
         opacity: 0.3,
         maxWidth: 200
+    },
+    text: {
+        color: theme.palette.titleBanner.color
     }
 });
 
@@ -41,7 +43,7 @@ class Sistemas extends React.Component{
                         <Link to="/home" className={ classes.link }>
                             <img src={s1} alt="Sistema 1" className="iconos-sistemas"/>
                             <br/>
-                            <Typography variant="headline">
+                            <Typography variant="headline" className={classes.text}>
                                 Declaraciones
                             </Typography>
                         </Link>
@@ -50,7 +52,7 @@ class Sistemas extends React.Component{
                         <Link to="/servidores" className={ classes.link }>
                             <img src={s2} alt="Sistema 2" className="iconos-sistemas"/>
                             <br/>
-                            <Typography variant="headline">
+                            <Typography variant="h5" className={classes.text}>
                                 Servidores públicos en contrataciones públicas
                             </Typography>
                         </Link>
@@ -59,7 +61,7 @@ class Sistemas extends React.Component{
                         <Link to="/sancionados" className ={ classes.link }>
                             <img src={s3} alt="Sistema 3" className="iconos-sistemas"/>
                             <br/>
-                            <Typography variant="headline">
+                            <Typography variant="h5" className={classes.text}>
                                 Sancionados
                             </Typography>
                         </Link>
@@ -68,7 +70,7 @@ class Sistemas extends React.Component{
                         {/*<Link to="/home" className={classes.link }>*/}
                             <img src={s4} alt="Sistema 4" className={classes.disabled}/>
                             <br/>
-                            <Typography variant="headline">
+                            <Typography variant="h5" className={classes.text }>
                                 Fiscalización
                             </Typography>
                         {/*</Link>*/}
@@ -77,14 +79,14 @@ class Sistemas extends React.Component{
                         {/*<Link to="/home" className={classes.link }>*/}
                             <img src={s5} alt="Sistema 5" className={classes.disabled}/>
                             <br/>
-                            <Typography variant="headline">Denuncias</Typography>
+                            <Typography variant="h5" className={classes.text}>Denuncias</Typography>
                         {/*</Link>*/}
                     </Grid>
                     <Grid item xl={4} lg={4} md={6} xs={12} align="center">
                         {/*<Link to="/home" className={classes.link}>*/}
                             <img src={s6} alt="Sistema 6" className={classes.disabled}/>
                             <br/>
-                            <Typography variant="headline">Contrataciones</Typography>
+                            <Typography variant="h5" className={classes.text}>Contrataciones</Typography>
                         {/*</Link>*/}
 
                     </Grid>

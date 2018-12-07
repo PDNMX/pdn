@@ -15,6 +15,9 @@ const styles = theme => ({
     },
     button:{
         background: '#ffe01b'
+    },
+    titulos: {
+        color: theme.palette.titleBanner.color
     }
 
 });
@@ -28,13 +31,13 @@ class Explora extends React.Component{
             <div className={classes.root}>
                 <Grid container spacing={0} justify='center' className={classes.container}>
                     <Grid item xs={12} align="center">
-                        <Typography variant="h2">
+                        <Typography variant="h2" className={classes.titulos}>
                             Plataforma Digital Nacional
 
                         </Typography>
                         <br/>
 
-                        <Typography variant="h2">
+                        <Typography variant="h2" className={classes.titulos}>
                             explora los 6 sistemas
                         </Typography>
                         <br/>

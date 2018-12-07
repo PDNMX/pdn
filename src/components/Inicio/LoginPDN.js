@@ -6,6 +6,7 @@ import CardContent from "@material-ui/core/CardContent";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import LogoPDN from '../../assets/PDN.png';
 
 const styles = theme => ({
     item: {
@@ -75,9 +76,12 @@ class LoginPDN extends Component {
                                 <Grid item xs={12}>
                                     <br/>
                                     <img
-                                        src="./logo_pdn.png"
+                                        src={LogoPDN}
                                         className="img-fluid"
                                         alt="PDN"
+                                        style={{
+                                            maxWidth: 150
+                                        }}
                                     />
                                 </Grid>
                                 <Grid item xs={12} style={{marginTop: "10px"}}>
