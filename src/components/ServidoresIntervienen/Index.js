@@ -24,15 +24,15 @@ const styles = theme => ({
         paddingBottom: '56px'
     },
     titleImg: {
-        color: theme.palette.black.color,
-        minHeight: '48px'
+        color: theme.palette.titleBanner.color,
+        minHeight: '100px'
     },
     titleLight: {
-        color: theme.palette.white.color,
+        color: theme.palette.titleBanner.color,
        // paddingTop : '10%'
     },
     titleSub: {
-        color: theme.palette.white.color,
+        color: theme.palette.titleBanner.color,
     },
     textDark: {
         color: theme.palette.textNormal,
@@ -159,7 +159,7 @@ class Index extends React.Component {
                                         <img src={img1} alt="Servidores que intervinen en procesos de contratacion"
                                              className={classes.image}
                                              onClick={() => this.changeContent(1)}/>
-                                        <Typography variant={this.state.idContent === 1 ? "subtitle1" : "body2"}
+                                        <Typography variant={this.state.idContent === 1 ? "h5" : "h6"}
                                                     className={classes.titleImg}>
                                             Servidores que intervienen en procesos de contratación
                                         </Typography>
@@ -170,7 +170,7 @@ class Index extends React.Component {
                                         className={this.state.idContent !== 2 ? classes.card : classes.cardSeleccionada}>
                                         <img src={img2} alt="Particulares inhabilitados" className={classes.image}
                                              onClick={() => this.changeContent(2)}/>
-                                        <Typography variant={this.state.idContent === 2 ? "subtitle1" : "body2"}
+                                        <Typography variant={this.state.idContent === 2 ? "h5" : "h6"}
                                                     className={classes.titleImg}>
                                             Particulares inhabilitados
                                         </Typography>
@@ -181,7 +181,7 @@ class Index extends React.Component {
                                         className={this.state.idContent !== 3 ? classes.card : classes.cardSeleccionada}>
                                         <img src={img3} alt="Visualizaciones" className={classes.image}
                                              onClick={() => this.changeContent(3)}/>
-                                        <Typography variant={this.state.idContent === 3 ? "subtitle1" : "body2"}
+                                        <Typography variant={this.state.idContent === 3 ? "h5" : "h6"}
                                                     className={classes.titleImg}>
                                             Visualizaciones
                                         </Typography>

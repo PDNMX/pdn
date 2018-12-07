@@ -26,8 +26,8 @@ const theme = createMuiTheme({
         grey: {
             color: "#c5c5c5"
         },
-        greyTitle: {
-            color: 'rgb(55, 70, 79)'
+        titleBanner: {
+            color: '#666666'
         },
         graphGreen: {
             color: "#00cc99"

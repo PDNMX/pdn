@@ -23,15 +23,15 @@ const styles = theme => ({
         paddingBottom: '56px'
     },
     titleImg: {
-        color: theme.palette.black.color,
-        minHeight: '48px'
+        color: theme.palette.titleBanner.color,
+        minHeight: '100px'
     },
     titleLight: {
-        color: theme.palette.white.color,
+        color: theme.palette.titleBanner.color,
      //   paddingTop : '11%'
     },
     titleSub: {
-        color: theme.palette.white.color,
+        color: theme.palette.titleBanner.color,
     },
     textDark: {
         color: theme.palette.textNormal,
@@ -162,7 +162,7 @@ class Index extends React.Component {
                                         <img src={img1} alt="Servidores públicos sancionados"
                                              className={classes.image}
                                              onClick={() => this.changeContent(1)}/>
-                                        <Typography variant={this.state.idContent === 1 ? "subtitle1" : "body2"}
+                                        <Typography variant={this.state.idContent === 1 ? "h5" : "h6"}
                                                     className={classes.titleImg}>
                                             Servidores públicos sancionados
                                         </Typography>
@@ -174,7 +174,7 @@ class Index extends React.Component {
                                         <img src={img2} alt="Particulares sancionados"
                                              className={classes.image}
                                              onClick={() => this.changeContent(2)}/>
-                                        <Typography variant={this.state.idContent === 2 ? "subtitle1" : "body2"}
+                                        <Typography variant={this.state.idContent === 2 ? "h5" : "h6"}
                                                     className={classes.titleImg}>
                                             Particulares sancionados
                                         </Typography>
@@ -188,7 +188,7 @@ class Index extends React.Component {
                                         <img src={img3} alt="Visualizaciones"
                                              className={classes.image}
                                              onClick={() => this.changeContent(3)}/>
-                                        <Typography variant={this.state.idContent === 3 ? "subtitle1" : "body2"}
+                                        <Typography variant={this.state.idContent === 3 ? "h5" : "h6"}
                                                     className={classes.titleImg}>
                                             Visualizaciones
                                         </Typography>
