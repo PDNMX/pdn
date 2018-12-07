@@ -16,6 +16,8 @@ import Button from "@material-ui/core/Button/Button";
 import DialogActions from "@material-ui/core/DialogActions/DialogActions";
 import glosario from "../../Utils/glosario.json";
 import DownloadIcon from "@material-ui/icons/CloudDownload";
+import * as jsPDF from "jspdf";
+import logotipoSESNA from "../../../assets/img/Logo-SESNA.9b04be52.png";
 
 function getGlosarioItem(id){
     return glosario.servidoresSancionados[id];
@@ -116,7 +118,59 @@ class DetalleServidorSancionado extends React.Component {
     controlGlosario = (id) => {
         this.setState({id : id});
     };
+    getX(doc, texto){
+        let fontSize = doc.internal.getFontSize();
+        let pageWidth = doc.internal.pageSize.getWidth();
+        let aux = '';
+        for(var i = 0; i < texto.length ; i++){
+            aux += 'a';
+        }
+        let txtWidth =  doc.getStringUnitWidth(aux) * fontSize / doc.internal.scaleFactor;
+        let  x = (pageWidth - txtWidth) / 2;
+        return x;
+    }
 
+    printPDF(){
+        let doc = new jsPDF({
+            format : 'letter',
+            unit : 'pt'
+        });
+        let d = this.props.denuncia;
+        doc.setFontSize(12);
+        doc.setFontType('bold');
+        doc.addImage(logotipoSESNA,'PNG',30,20,150,70);
+        doc.text('SECRETARÍA EJECUTIVA DEL SISTEMA NACIONAL ANTICORRUPCIÓN',350,60,{maxWidth:250, align : 'justify'});
+        doc.text('DOCUMENTO DE PRUEBA',doc.internal.pageSize.getWidth()/2,150,null,null,'center');
+
+
+        doc.setFontType('normal');
+        //doc.text('En la versión oficial podrás consultar las constancias de inhabilitación de servidores públicos y particulares sancionados ' ,30,255);
+        let y = 255;
+        let text = 'En la versión oficial podrás consultar las constancias de inhabilitación de servidores públicos y particulares sancionados.';
+        let lengthOfPage = 440;
+
+        let splitHecho = doc.splitTextToSize(text,lengthOfPage);
+        for(var c = 0, stlength = splitHecho.length ; c <stlength; c++){
+            doc.text(splitHecho[c], 30,y);
+            y+=15;
+        }
+
+        y = 400;
+        text = 'Saludos del equipo de Plataforma Digital Nacional.';
+        splitHecho = doc.splitTextToSize(text,lengthOfPage);
+        for(var c = 0, stlength = splitHecho.length ; c <stlength; c++){
+            doc.text(splitHecho[c], 30,y);
+            y+=15;
+        }
+
+
+        doc.setFontSize(8);
+        let t = 'Avenida Coyoacán No. 1501, Col del Valle Centro, Del. Benito Juárez, C.P.03300, Ciudad de México.';
+        doc.text(t,this.getX(doc, t),730);
+        t = 'Teléfono: 5200-1500, ext. 00000';
+        doc.text(t,this.getX(doc, t),740);
+        doc.save('test.pdf');
+    }
     render() {
         const {classes, handleClose, servidor, control} = this.props;
         const {open,id} = this.state;
@@ -345,7 +399,7 @@ class DetalleServidorSancionado extends React.Component {
                                 />
                             </Grid>
                             <Grid item md={6} xs={12} className={classes.centrado}>
-                                <Button color="primary" variant="text" size="small">
+                                <Button color="primary" variant="text" size="small" onClick={()=>this.printPDF()}>
                                     <DownloadIcon />
                                     {'Descargar constancia'}
                                 </Button>
