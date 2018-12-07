@@ -86,12 +86,13 @@ class Footer extends React.Component{
                             <Grid item xs={6} md={3}>
                                 <Typography className={classes.blueText}><b>PDN</b></Typography>
                                 <Typography>
-                                    <a href="https://www.plataformadigitalnacional.org/" className={classes.grayText}> ¿Qué es la PDN?</a>
-                                </Typography>
-                                <Typography>
                                     <a href="https://www.plataformadigitalnacional.org/blog" className={classes.grayText}>Blog</a>
                                 </Typography>
                                 <Typography className={classes.grayText} component={Link} to="/faq">Preguntas frecuentes</Typography>
+                                <Typography>
+                                    <a href="https://www.plataformadigitalnacional.org/" className={classes.grayText}> ¿Qué es la PDN?</a>
+                                </Typography>
+
                                 <Typography>
                                     <a href="https://www.plataformadigitalnacional.org/terminos" className={classes.grayText}>Términos de uso</a>
                                 </Typography>

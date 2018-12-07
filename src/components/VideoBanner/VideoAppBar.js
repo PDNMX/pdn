@@ -34,6 +34,10 @@ const styles = theme => ({
     },
     item: {
         maxWidth: 1200
+    },
+    href: {
+        textDecoration: 'none',
+        color: 'inherit'
     }
 });
 
@@ -152,9 +156,18 @@ class VideoAppBar extends React.Component {
                                                 open={open}
                                                 onClose={this.handleClose}
                                             >
-                                                <MenuItem onClick={this.handleClose}>¿Qué es la PDN?</MenuItem>
-                                                <MenuItem onClick={this.handleClose}>Términos de uso</MenuItem>
-                                                <MenuItem onClick={this.handleClose}>Blog</MenuItem>
+
+                                                <a href="https://www.plataformadigitalnacional.org/blog" className={classes.href}>
+                                                    <MenuItem>Blog</MenuItem>
+                                                </a>
+
+                                                <MenuItem component={Link} to="/faq">Preguntas frecuentes</MenuItem>
+                                                <a href="https://www.plataformadigitalnacional.org/" className={classes.href}>
+                                                    <MenuItem>¿Qué es la PDN?</MenuItem>
+                                                </a>
+                                                <a href="https://www.plataformadigitalnacional.org/terminos" className={classes.href}>
+                                                    <MenuItem>Términos de uso</MenuItem>
+                                                </a>
                                                 <MenuItem onClick={this.handleSignOut}>Cerrar sesión</MenuItem>
                                             </Menu>
                                         </div>
