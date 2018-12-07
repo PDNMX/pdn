@@ -16,7 +16,7 @@ const styles = theme => ({
         flexGrow: 1
     },
     container: {
-      paddingTop: 100,
+      paddingTop: 110,
       paddingBottom: 100
     },
     link: {
@@ -27,7 +27,8 @@ const styles = theme => ({
         maxWidth: 200
     },
     text: {
-        color: theme.palette.titleBanner.color
+        color: theme.palette.titleBanner.color,
+        paddingBottom: 60
     }
 });
 
