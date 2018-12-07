@@ -157,17 +157,10 @@ class VideoAppBar extends React.Component {
                                                 onClose={this.handleClose}
                                             >
 
-                                                <a href="https://www.plataformadigitalnacional.org/blog" className={classes.href}>
-                                                    <MenuItem>Blog</MenuItem>
-                                                </a>
-
+                                                <MenuItem onClick={() => { window.location.href= "https://www.plataformadigitalnacional.org/blog"}}>Blog</MenuItem>
                                                 <MenuItem component={Link} to="/faq">Preguntas frecuentes</MenuItem>
-                                                <a href="https://www.plataformadigitalnacional.org/" className={classes.href}>
-                                                    <MenuItem>¿Qué es la PDN?</MenuItem>
-                                                </a>
-                                                <a href="https://www.plataformadigitalnacional.org/terminos" className={classes.href}>
-                                                    <MenuItem>Términos de uso</MenuItem>
-                                                </a>
+                                                <MenuItem onClick={() => { window.location.href= "https://www.plataformadigitalnacional.org/"}}>¿Qué es la PDN?</MenuItem>
+                                                <MenuItem onClick={() => { window.location.href= "https://www.plataformadigitalnacional.org/terminos"}}>Términos de uso</MenuItem>
                                                 <MenuItem onClick={this.handleSignOut}>Cerrar sesión</MenuItem>
                                             </Menu>
                                         </div>
