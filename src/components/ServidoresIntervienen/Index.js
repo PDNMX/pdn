@@ -29,7 +29,7 @@ const styles = theme => ({
     },
     titleLight: {
         color: theme.palette.white.color,
-        paddingTop : '10%'
+       // paddingTop : '10%'
     },
     titleSub: {
         color: theme.palette.white.color,

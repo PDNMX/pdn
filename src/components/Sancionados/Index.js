@@ -28,7 +28,7 @@ const styles = theme => ({
     },
     titleLight: {
         color: theme.palette.white.color,
-        paddingTop : '11%'
+     //   paddingTop : '11%'
     },
     titleSub: {
         color: theme.palette.white.color,
