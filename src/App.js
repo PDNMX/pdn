@@ -7,6 +7,7 @@ import PrivateRoute from "./PrivateRoute";
 import app from "./config/firebase";
 import LoginPDN from "./components/Inicio/LoginPDN";
 import {connect} from 'react-redux';
+import ScrollToTop from './ScrollToTop';
 
 const theme = createMuiTheme({
     palette: {
@@ -146,6 +147,7 @@ class App extends React.Component {
         return (
             <MuiThemeProvider theme={theme}>
                 <Router basename={process.env.PUBLIC_URL}>
+                    <ScrollToTop>
                     <Switch>
                         <Route exact path={'/'}
                                render={(props) => <LoginPDN handleSignIn={this.handleSignIn} propiedades={props}
@@ -158,6 +160,7 @@ class App extends React.Component {
                         }
                         <Route render={p404}/>
                     </Switch>
+                    </ScrollToTop>
                 </Router>
             </MuiThemeProvider>
         );
