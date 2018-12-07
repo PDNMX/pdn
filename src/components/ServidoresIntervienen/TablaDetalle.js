@@ -154,6 +154,9 @@ const styles = theme => ({
     },
     titleTable: {
         marginBottom: '61px'
+    },
+    desc:{
+        color : theme.palette.primary.dark,
     }
 });
 
@@ -314,7 +317,7 @@ class EnhancedTable extends React.Component {
                                     Detalle</Typography>
                             </Grid>
                             <Grid item xs={12} className={classes.section}>
-                                <Typography variant={"subtitle1"}>Pulsa sobre el registro para ver su detalle<br/></Typography>
+                                <Typography variant={"h6"} className={classes.desc}>Pulsa sobre el registro para ver su detalle<br/></Typography>
 
                                 <Table className={classes.table} aria-describedby="spinnerLoading"
                                        aria-busy={this.state.loading} aria-labelledby="tableTitle">
