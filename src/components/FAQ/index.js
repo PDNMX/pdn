@@ -1,38 +1,23 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import Header from "../PDNAppBar/PDNAppBar";
-import PDNLinks from "../PDNLinks/PDNLinks";
-import Footer from "../Footer/Footer";
+import Header from "../VideoBanner/VideoBanner";
+import Footer from "../Home/Footer";
 
 const styles = theme => ({
     root:{
-        flexGrow: 1,
-        display: 'flex',
-        flexDirection: 'column',
-        height: '100vh'
+        flexGrow: 1
     },
-    contents: {
-        flexGrow: 1,
-        paddingTop: theme.spacing.unit * 5,
-        paddingBottom: theme.spacing.unit * 5,
-        [theme.breakpoints.up('sm')]:{
-            marginLeft: '100px',
-            marginRight: '100px'
-        },
-        [theme.breakpoints.down('sm')]:{
-            marginLeft: theme.spacing.unit,
-            marginRight: theme.spacing.unit
-        }
+    item: {
+        maxWidth:1200,
+        paddingTop: 100,
+        paddingBottom: 100
     },
-    paper: {
-        padding: theme.spacing.unit * 2,
-        //textAlign: 'center',
-        color: theme.palette.text.secondary,
-    },
+    li: {
+        paddingTop: 10
+    }
 });
 
 class Faq extends React.Component{
@@ -41,21 +26,72 @@ class Faq extends React.Component{
         return (
             <div className={classes.root}>
                 <Header/>
-                <div className={classes.contents}>
-                    <Grid container spacing={24}>
-                        <Grid item xs={12}>
-                            <Paper className={classes.paper}>
-                                <Typography variant="title">
-                                    Preguntas frecuentes
-                                </Typography>
+                <Grid container spacing={0} justify='center'>
+                    <Grid item xs={12} className={classes.item}>
+
+                        <Typography variant="h4">
+                            Preguntas frecuentes
+                        </Typography>
+
+                        <ul>
+                            <li>
                                 <Typography>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    <b>¿La Plataforma Digital Nacional (PDN) va a generar información?</b><br/>
+                                    No. El objetivo de la Plataforma es generar interoperabilidad entre los datos que ya generan actualmente los entes obligados, a través del uso de estándares comunes.
                                 </Typography>
-                            </Paper>
-                        </Grid>
+                            </li>
+                            <li className={classes.li}>
+                                <Typography>
+                                    <b>¿La PDN va a operar sistemas como CompraNet o Declaranet?</b><br/>
+                                    No. Las Plataforma será una herramienta de interoperabilidad que a través de las estandarización de la información será capaz de consultar los datos que contienen sistemas como CompraNet o Declaranet.
+                                    <br/>
+                                    La generación de los datos desde sistemas como CompraNet o Declaranet seguirá siendo responsabilidad de los entes que tienen la atribución actualmente.
+                                </Typography>
+                            </li>
+                            <li className={classes.li}>
+                                <Typography>
+                                    <b>¿La PDN se van a quedar con los datos generados por las instituciones?</b><br/>
+                                    No. Las Instituciones son las responsables de los datos que generan, y a partir de la publicación de los lineamientos de cada Sistema, deberán estandarizarlos de acuerdo a lo solicitado por la SESNA a través del Comité Coordinador del SNA.
+                                </Typography>
+                            </li>
+                            <li className={classes.li}>
+                                <Typography>
+                                    <b>¿Se van a compartir los datos reservados o personales?</b><br/>
+                                    No. Los estándares de datos que serán publicados por la SESNA permiten el control institucional para la consulta de datos reservados o personales.
+                                    <br/>
+                                    De acuerdo a lo mandatado por la Ley del SNA, el Comité Coordinador del SNA, tendrá la responsabilidad de aprobar el catálogo de perfiles de funcionarios que tendrán acceso a los datos reservados.
+                                </Typography>
+                            </li>
+                            <li className={classes.li}>
+                                <Typography>
+                                    <b>¿Cómo se va a trabajar en la seguridad e integridad de los datos?</b><br/>
+                                    Se utilizarán  herramientas de autentificación que contemplarán los roles y permisos, por ejemplo: SSL, Firebase, OAuth, eFirma; estas herramientas permitirán mantener la trazabilidad de las consultas de datos que se hagan dentro de las plataformas, garantizando su máxima seguridad.
+                                </Typography>
+                            </li>
+                            <li className={classes.li}>
+                                <Typography>
+                                    <b>¿Quién va a poder acceder a la PDN?</b><br/>
+                                    El componente público de la PDN será para consulta de cualquier ciudadano, y dará acceso a los datos que tienen carácter público, de acuerdo a la Ley General de Transparencia y Acceso a la Información.
+                                    <br/>
+                                    El componente privado tendrá un acceso restringido que será determinado por el Comité Coordinador del SNA, quien tendrá la responsabilidad de aprobar el catálogo de perfiles y funcionarios que tendrán acceso a los datos reservados.
+                                </Typography>
+                            </li>
+                            <li className={classes.li}>
+                                <Typography>
+                                    <b>¿Qué es interoperabilidad?</b><br/>
+                                    Interoperabilidad se refiere a la posibilidad que tiene un sistema de obtener o transferir información con otros sistemas. Para lograr la interoperabilidad de los datos, es necesario estandarizarlos y ponerlos en un formato común.
+                                </Typography>
+                            </li>
+                            <li className={classes.li}>
+                                <Typography>
+                                    <b>¿Qué es un estándar de datos?</b>
+                                    <br/>
+                                    Un estándar se refiere a las reglas y características con las que debe de contar un dato, como: tipo de dato, longitud, número de veces que aparece, precisión, etc.
+                                </Typography>
+                            </li>
+                        </ul>
                     </Grid>
-                </div>
-                <PDNLinks/>
+                </Grid>
                 <Footer/>
             </div>
         );
