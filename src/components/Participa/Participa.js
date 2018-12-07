@@ -9,7 +9,6 @@ import connect from "react-redux/es/connect/connect";
 
 const styles = theme => ({
     paper: {
-
         backgroundColor: theme.palette.background.paper,
         position: 'fixed',
         maxWidth: '1200px',
@@ -25,6 +24,9 @@ const styles = theme => ({
     contenedor:{
         height: '634px',
         //overflowY : 'scroll'
+    },
+    close:{
+
     }
 });
 
@@ -77,8 +79,15 @@ class Participa extends React.Component {
         const {classes} = this.props;
         return (
             <div className={classes.paper}>
-
-
+                <Grid container justify={"center"}>
+                    <Grid item xs={11}/>
+                    <Grid item xs={1}>
+                        <Button variant="flat" color="primary" className={classes.close}
+                                onClick={() => this.props.onClose()}>
+                            X
+                        </Button>
+                    </Grid>
+                </Grid>
                 <Grid container spacing={32} className={classes.contenedor}>
                     <Grid item xs={12}>
                         <iframe

@@ -32,6 +32,7 @@ const styles = theme => ({
     },
     titleSub: {
         color: theme.palette.titleBanner.color,
+        paddingTop : '10px'
     },
     textDark: {
         color: theme.palette.textNormal,
@@ -134,17 +135,12 @@ class Index extends React.Component {
                                 </Grid>
                                 <Grid item xs={6}>
                                     <Typography variant="h6" className={classes.titleSub}>
-                                        Aquí puedes consultar, visualizar y descargar datos de:
-                                    </Typography><br/>
-                                    <Typography variant="h6" className={classes.titleSub}>
-                                        Las sanciones o inhabilitación firmes en contra de servidores públicos por actos vinculados con faltas administrativas graves,
-                                    </Typography><br/>
-                                    <Typography variant="h6" className={classes.titleSub}>
-                                        Los particulares que están inhabilitados o cuentan con impedimentos para ser contratados como servidores públicos, y
-                                    </Typography><br/>
-                                    <Typography variant="h6" className={classes.titleSub}>
+                                        Aquí puedes consultar, visualizar y descargar datos de:<br/>
+                                        Las sanciones o inhabilitación firmes en contra de servidores públicos por actos vinculados con faltas administrativas graves,<br/>
+                                        Los particulares que están inhabilitados o cuentan con impedimentos para ser contratados como servidores públicos, y<br/>
                                         Las persona físicas que están inhabilitadas o cuentan con impedimentos para ser contratistas o prestadores de servicios en el gobierno por faltas administrativas graves.
-                                    </Typography>
+                                    </Typography><br/>
+
                                 </Grid>
                             </Grid>
                         </Grid>

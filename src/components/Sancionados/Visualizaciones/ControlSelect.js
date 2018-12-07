@@ -37,10 +37,10 @@ class ControlSelect extends React.Component {
                         <Button variant={'text'} color={"primary"} onClick={()=>this.onChangeG(2)}>{'Particulares sancionados'}</Button>
                     </Grid>
                     <Grid item xs={3} className={classes.centrado}>
-                        <Button variant={'text'} color={"primary"} onClick={()=>this.onChangeG("sanciones")}>{'Total sanciones'}</Button>
+                        <Button variant={'text'} color={"primary"} onClick={()=>this.onChangeG("sanciones")}>{'Inhabilitaciones'}</Button>
                     </Grid>
                     <Grid item xs={3} className={classes.centrado}>
-                        <Button variant={'text'} color={"primary"} onClick={()=>this.onChangeG("monto")}>{'Monto'}</Button>
+                        <Button variant={'text'} color={"primary"} onClick={()=>this.onChangeG("monto")}>{'Monto inhabilitaciones'}</Button>
                     </Grid>
 
                 </Grid>
