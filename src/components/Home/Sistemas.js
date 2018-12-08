@@ -41,13 +41,13 @@ class Sistemas extends React.Component{
             <div className={classes.root}>
                 <Grid container spacing={24} justify='center' className={classes.container}>
                     <Grid item xl={4} lg={4} md={6} xs={12} align="center">
-                        <Link to="/home" className={ classes.link }>
+                        <a href="http://declaraciones.gobiernofacil.com/" className={ classes.link }>
                             <img src={s1} alt="Sistema 1" className="iconos-sistemas"/>
                             <br/>
                             <Typography variant="headline" className={classes.text}>
                                 Declaraciones
                             </Typography>
-                        </Link>
+                        </a>
                     </Grid>
                     <Grid item xl={4} lg={4} md={6} xs={12} align="center">
                         <Link to="/servidores" className={ classes.link }>
