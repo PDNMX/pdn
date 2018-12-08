@@ -17,6 +17,7 @@ import '../Utils/selectReact.css';
 import Typography from "@material-ui/core/Typography/Typography";
 import IconReplay from "@material-ui/icons/Replay";
 import Tooltip from "@material-ui/core/Tooltip/Tooltip";
+import KeyboardArrowDown from "@material-ui/icons/KeyboardArrowDown";
 
 const styles = theme => ({
     container: {
@@ -31,6 +32,7 @@ const styles = theme => ({
     },
     fontLight: {
         color: theme.palette.black.color,
+        display : 'inline-flex',
     },
     '&$focus': {
         color: theme.palette.black.color,
@@ -77,6 +79,12 @@ const styles = theme => ({
         display: 'flex',
        justifyContent: 'center',
        alignItems: 'center'
+    },
+    flecha:{
+        color:'hsl(0,0%,80%)',
+        float:'right',
+
+
     }
 });
 
@@ -192,6 +200,8 @@ class BusquedaServidor extends React.Component {
                 fontWeight: 400
             })
         };
+        let IconComponent= <i class='baseline-keyboard_arrow_down icon-image-preview'/>;
+
         return (
             <Grid container spacing={8}>
                 <Grid item xs={12} md={3}>
@@ -207,6 +217,11 @@ class BusquedaServidor extends React.Component {
                                 id: 'procedimiento',
                                 className: classes.fontLight
                             }}
+                            IconComponent = {props => (
+                                <i {...props} className={`material-icons ${classes.flecha}`}>
+                                    keyboard_arrow_down
+                                </i>
+                            )}
 
                         >
                             <MenuItem value={0}>
@@ -217,6 +232,7 @@ class BusquedaServidor extends React.Component {
                             <MenuItem value={3}>ENAJENACIÓN DE BIENES MUEBLES</MenuItem>
                             <MenuItem value={4}>ASIGNACION Y EMISIÓN DE DICTÁMENES DE AVALÚOS NACIONALES</MenuItem>
                         </Select>
+
                     </FormControl>
                 </Grid>
                 <Grid item xs={12} md={4}>
