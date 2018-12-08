@@ -12,6 +12,10 @@ import Grid from '@material-ui/core/Grid';
 import app from "../../config/firebase";
 import {connect} from "react-redux";
 import {withRouter } from 'react-router-dom';
+import MenuIcon from "@material-ui/icons/Menu";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+//import AccountCircle from '@material-ui/icons/AccountCircle';
 
 const styles = theme => ({
     root: {
@@ -51,16 +55,19 @@ class PDNAppBar extends React.Component {
         open: false,
         currentUser: null,
         loading: false,
-        authenticated: false
+        authenticated: false,
+
+        anchorEl: null
     };
 
+    /*
     handleClickOpen = () => {
         this.setState({open: true});
     };
 
     handleClose = () => {
         this.setState({open: false});
-    };
+    };*/
 
     handleSignOut = () => {
         app.auth().signOut().then(() => {
@@ -73,9 +80,29 @@ class PDNAppBar extends React.Component {
         })
     };
 
+
+
+    //menu
+
+    handleChange = event => {
+        this.setState({ auth: event.target.checked });
+    };
+
+    handleMenu = event => {
+        this.setState({ anchorEl: event.currentTarget });
+    };
+
+    handleClose = () => {
+        this.setState({ anchorEl: null });
+    };
+
     render() {
 
         const {classes} = this.props;
+        const { anchorEl } = this.state;
+        const open = Boolean(anchorEl);
+
+
         return (
             <div>
                 <div className={classes.root}>
@@ -92,19 +119,57 @@ class PDNAppBar extends React.Component {
 
                                     </Typography>
 
-                                    <Button color="inherit" href="https://www.plataformadigitalnacional.org/blog">
+                                    {/*<Button color="inherit" href="https://www.plataformadigitalnacional.org/blog">
                                         Blog
                                     </Button>
-                                    {/*<Button color="inherit" component={Link} to="/about">
+                                    <Button color="inherit" component={Link} to="/about">
                                         Acerca
                                     </Button>
                                     <Button color="inherit" component={Link} to="/faq">
                                         FAQ
-                                    </Button>*/}
+                                    </Button>
 
                                     {
                                         this.props.sesion.authenticated &&
                                         <Button color="inherit" onClick={this.handleSignOut}>Salir</Button>
+                                    }
+                                   */}
+
+
+                                    {
+                                        this.props.sesion.authenticated && (
+                                            <div>
+                                                <IconButton
+                                                    aria-owns={open ? 'menu-appbar' : undefined}
+                                                    aria-haspopup="true"
+                                                    onClick={this.handleMenu}
+                                                    color="inherit"
+                                                >
+                                                    <MenuIcon/>
+                                                </IconButton>
+                                                <Menu
+                                                    id="menu-appbar"
+                                                    anchorEl={anchorEl}
+                                                    anchorOrigin={{
+                                                        vertical: 'top',
+                                                        horizontal: 'right',
+                                                    }}
+                                                    transformOrigin={{
+                                                        vertical: 'top',
+                                                        horizontal: 'right',
+                                                    }}
+                                                    open={open}
+                                                    onClose={this.handleClose}
+                                                >
+
+                                                    <MenuItem onClick={() => { window.location.href= "https://www.plataformadigitalnacional.org/blog"}}>Blog</MenuItem>
+                                                    <MenuItem component={Link} to="/faq">Preguntas frecuentes</MenuItem>
+                                                    <MenuItem onClick={() => { window.location.href= "https://www.plataformadigitalnacional.org/"}}>¿Qué es la PDN?</MenuItem>
+                                                    <MenuItem onClick={() => { window.location.href= "https://www.plataformadigitalnacional.org/terminos"}}>Términos de uso</MenuItem>
+                                                    <MenuItem onClick={this.handleSignOut}>Cerrar sesión</MenuItem>
+                                                </Menu>
+                                            </div>
+                                        )
                                     }
 
                                 </Toolbar>

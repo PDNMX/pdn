@@ -97,6 +97,7 @@ class VideoAppBar extends React.Component {
 
     render(){
         const {classes} = this.props;
+
         const { anchorEl } = this.state;
         const open = Boolean(anchorEl);
 
