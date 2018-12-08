@@ -54,7 +54,7 @@ class QueEsLaPDN extends React.Component{
                         </Typography>
 
                         <br/>
-                        <Button variant="contained" className={classes.button}>Más información sobre la PDN</Button>
+                        <Button variant="contained" className={classes.button} href="https://www.plataformadigitalnacional.org/">Más información sobre la PDN</Button>
                     </Grid>
                 </Grid>
             </div>
