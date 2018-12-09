@@ -60,7 +60,7 @@ const styles = theme => ({
         width: '100%',
         position: 'relative',
         zIndex: 1,
-        paddingTop: '163px',
+        //paddingTop: '163px',
         paddingBottom: '192px',
     },
     container: {
@@ -122,10 +122,10 @@ class Index extends React.Component {
         const {classes} = this.props;
         return (
             <div className={classes.root}>
-                <Header/>
                 <div id={'imgBanner'} className={classes.bgImg}>
+                    <Header/>
                     <Grid container justify={"center"} spacing={0}>
-                        <Grid item xs={12} className={classes.section}>
+                        <Grid item xs={12} className={classes.section} style={{paddingTop: 150}}>
                             <Grid container spacing={24}>
                                 <Grid item xs={6}>
                                     <Typography variant="h2" className={classes.titleLight}>
