@@ -128,7 +128,7 @@ const styles = theme => ({
         flexWrap: 'wrap',
     },
     progress: {
-        position: 'absolute',
+        position: 'fixed',
         margin: 'auto',
         left: 0,
         right: 0,
@@ -368,7 +368,7 @@ class EnhancedTable extends React.Component {
                                            control={this.state.open}/>
                         {
                             this.state.loading &&
-                            <CircularProgress className={classes.progress} id="spinnerLoading" size={100}/>
+                            <CircularProgress className={classes.progress} id="spinnerLoading" size={200}/>
                         }
                         <Grid container justify={'center'} spacing={0} className={classes.gridTable}>
                             <Grid item xs={12} className={classes.section}>

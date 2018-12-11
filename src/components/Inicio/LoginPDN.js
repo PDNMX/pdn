@@ -7,6 +7,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import LogoPDN from '../../assets/PDN.png';
+import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
 
 const styles = theme => ({
     item: {
@@ -51,6 +52,7 @@ class LoginPDN extends Component {
             email: "",
             pass: "",
             mensaje: "",
+            loading:false
         };
     }
 
@@ -61,7 +63,10 @@ class LoginPDN extends Component {
     };
 
     handleClick = () => {
-        this.props.handleSignIn(this.state.email, this.state.pass, this.props.propiedades.history);
+        this.setState({loading:true},()=>{
+            this.props.handleSignIn(this.state.email, this.state.pass, this.props.propiedades.history);
+        });
+        this.setState({loading:false})
     };
 
     render() {
@@ -84,10 +89,11 @@ class LoginPDN extends Component {
                                         }}
                                     />
                                 </Grid>
-                                <Grid item xs={12} style={{marginTop: "10px"}}>
-                                    {this.state.mensaje.mensaje && (<label>lasldfasdfa</label>
-                                        /* <Mensaje mensaje={this.state.mensaje} />*/
-                                    )}
+                                <Grid item xs={12}>
+                                    {
+                                        this.state.loading &&
+                                        <CircularProgress className={classes.progress} id="spinnerLoading" size={200}/>
+                                    }
                                 </Grid>
                                 <Grid item xs={12}>
                                     <TextField
