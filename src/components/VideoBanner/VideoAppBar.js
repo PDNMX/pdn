@@ -114,7 +114,7 @@ class VideoAppBar extends React.Component {
                             <Toolbar>
 
                                 <IconButton color="inherit" aria-label="Menu" component={Link} to="/home">
-                                    <img src={imgHeader} alt="PDN" style={{width: '40px'}}/>
+                                    <img src={imgHeader} alt="PDN" style={{width: '55px'}}/>
                                 </IconButton>
 
                                 <Typography variant="h6" color="inherit" className={classes.grow}>
