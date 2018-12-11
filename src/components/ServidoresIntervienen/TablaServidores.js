@@ -101,7 +101,7 @@ const styles = theme => ({
         flexWrap: 'wrap',
     },
     progress: {
-        position: 'absolute',
+        position: 'fixed',
         margin: 'auto',
         left: 0,
         right: 0,
@@ -278,47 +278,50 @@ class EnhancedTable extends React.Component {
         });
     };
     handleSearchAPI = (typeSearch) => {
-        this.setState({loading: true});
-        let {procedimiento, institucion, nombreServidor} = this.state;
-        const URI = 'https://plataformadigitalnacional.org/api/reniresp?';
+        this.setState({loading: true},()=>{
+            console.log("cargando...");
+            let {procedimiento, institucion, nombreServidor} = this.state;
+            const URI = 'https://plataformadigitalnacional.org/api/reniresp?';
 
-        let params = {};
+            let params = {};
 
-        if(typeSearch!=='ALL'){
-            (procedimiento&&procedimiento) >0 ? params.id_procedimiento= 'eq.'+procedimiento : null;
-            institucion ? params.institucion = 'eq.'+institucion : null;
-            nombreServidor ? params.nombre = 'like.*'+nombreServidor.toUpperCase()+'*' : null;
-            (typeSearch==='FIELD_FILTER'||typeSearch==='CHANGE_PAGE')? params.limit = this.state.rowsPerPage:null;
-            (typeSearch==='CHANGE_PAGE')? params.offset = (this.state.rowsPerPage * this.state.page) : null;
-            (typeSearch === 'FIELD_FILTER') ? this.getTotalRows(params) : null;
-        }
+            if(typeSearch!=='ALL'){
+                (procedimiento&&procedimiento) >0 ? params.id_procedimiento= 'eq.'+procedimiento : null;
+                institucion ? params.institucion = 'eq.'+institucion : null;
+                nombreServidor ? params.nombre = 'like.*'+nombreServidor.toUpperCase()+'*' : null;
+                (typeSearch==='FIELD_FILTER'||typeSearch==='CHANGE_PAGE')? params.limit = this.state.rowsPerPage:null;
+                (typeSearch==='CHANGE_PAGE')? params.offset = (this.state.rowsPerPage * this.state.page) : null;
+                (typeSearch === 'FIELD_FILTER') ? this.getTotalRows(params) : null;
+            }
 
-        let options = {
-            uri: URI,
-            json: true,
-            qs:params
-        };
+            let options = {
+                uri: URI,
+                json: true,
+                qs:params
+            };
 
-        rp(options)
-            .then(data => {
-                let dataAux = data.map(item => {
-                    return createData(item);
-                });
-                typeSearch === 'ALL' ? this.setState({data: dataAux, loading: false}, () => {
-                    this.btnDownloadAll.triggerDown();
-                }) : (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.setState({
-                        filterData: dataAux,
-                        loading: false
-                    }) :
-                    this.setState({filterDataAll: dataAux, loading: false}, () => {
-                        this.child.triggerDown();
+            rp(options)
+                .then(data => {
+                    let dataAux = data.map(item => {
+                        return createData(item);
                     });
-                return true;
-            }).catch(err => {
-            this.setState({loading: false});
-            alert("_No se pudó obtener la información");
-            console.log(err);
+                    typeSearch === 'ALL' ? this.setState({data: dataAux, loading: false}, () => {
+                        this.btnDownloadAll.triggerDown();
+                    }) : (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.setState({
+                            filterData: dataAux,
+                            loading: false
+                        }) :
+                        this.setState({filterDataAll: dataAux, loading: false}, () => {
+                            this.child.triggerDown();
+                        });
+                    return true;
+                }).catch(err => {
+                this.setState({loading: false});
+                alert("_No se pudó obtener la información");
+                console.log(err);
+            });
         });
+
 
     };
 
@@ -350,7 +353,7 @@ class EnhancedTable extends React.Component {
                         <Grid item xs={12} >
                             {
                                 this.state.loading &&
-                                <CircularProgress className={classes.progress} id="spinnerLoading" size={100}/>
+                                <CircularProgress className={classes.progress} id="spinnerLoading" size={200}/>
                             }
                             <Typography variant={"h6"} className={classes.desc}>Pulsa sobre el registro para ver su detalle<br/></Typography>
 
