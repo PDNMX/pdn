@@ -15,6 +15,7 @@ import Grid from "@material-ui/core/Grid/Grid";
 import EnhancedTableHead from '../Tablas/EnhancedTableHead';
 import Typography from "@material-ui/core/Typography/Typography";
 import DetalleServidor from "./DetalleServidor";
+import Modal from "@material-ui/core/Modal/Modal";
 
 let counter = 0;
 
@@ -127,7 +128,7 @@ const styles = theme => ({
         flexWrap: 'wrap',
     },
     progress: {
-        position: 'absolute',
+        position: 'fixed',
         margin: 'auto',
         left: 0,
         right: 0,
@@ -309,7 +310,12 @@ class EnhancedTable extends React.Component {
                                          control={this.state.open}/>
                         {
                             this.state.loading &&
-                            <CircularProgress className={classes.progress} id="spinnerLoading" size={100}/>
+                            <Modal
+                                open={this.state.loading}
+                                disableAutoFocus={true}
+                            >
+                                <CircularProgress className={classes.progress} id="spinnerLoading" size={200}/>
+                            </Modal>
                         }
                         <Grid container justify={'center'} spacing={0} className={classes.gridTable}>
                             <Grid item xs={12} className={classes.titleTable}>

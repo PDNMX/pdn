@@ -15,6 +15,7 @@ import BajarCSV from "../Tablas/BajarCSV";
 import Grid from "@material-ui/core/Grid/Grid";
 import EnhancedTableHead from '../Tablas/EnhancedTableHead';
 import Typography from "@material-ui/core/Typography/Typography";
+import Modal from "@material-ui/core/Modal/Modal";
 let counter = 0;
 
 let createData = (item) => {
@@ -106,7 +107,8 @@ const styles = theme => ({
         left: 0,
         right: 0,
         top: 0,
-        bottom: 0
+        bottom: 0,
+        lineHeight: 0
     },
     container: {
         marginTop: '30px',
@@ -353,7 +355,13 @@ class EnhancedTable extends React.Component {
                         <Grid item xs={12} >
                             {
                                 this.state.loading &&
-                                <CircularProgress className={classes.progress} id="spinnerLoading" size={200}/>
+                                <Modal
+                                    open={this.state.loading}
+                                    disableAutoFocus={true}
+                                >
+                                    <CircularProgress className={classes.progress} id="spinnerLoading" size={200}/>
+                                </Modal>
+
                             }
                             <Typography variant={"h6"} className={classes.desc}>Pulsa sobre el registro para ver su detalle<br/></Typography>
 

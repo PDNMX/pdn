@@ -15,6 +15,7 @@ import DetalleParticular from "./DetalleParticular";
 import Grid from "@material-ui/core/Grid/Grid";
 import EnhancedTableHead from '../../Tablas/EnhancedTableHead';
 import Typography from "@material-ui/core/Typography/Typography";
+import Modal from "@material-ui/core/Modal/Modal";
 
 let counter = 0;
 
@@ -367,10 +368,16 @@ class EnhancedTable extends React.Component {
                                           institucion={this.state.institucion} />
                         <DetalleParticular handleClose={this.handleClose} particular={this.state.elementoSeleccionado}
                                            control={this.state.open}/>
-                        {
-                            this.state.loading &&
+                    {
+                        this.state.loading &&
+                        <Modal
+                            open={this.state.loading}
+                            disableAutoFocus={true}
+                        >
                             <CircularProgress className={classes.progress} id="spinnerLoading" size={200}/>
-                        }
+                        </Modal>
+
+                    }
                         <Grid container justify={'center'} spacing={0} className={classes.gridTable}>
                             <Grid item xs={12} >
                                 <Typography variant={"h6"} className={classes.desc}>Pulsa sobre el registro para ver su detalle<br/></Typography>

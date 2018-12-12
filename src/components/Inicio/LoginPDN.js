@@ -8,6 +8,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import LogoPDN from '../../assets/PDN.png';
 import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
+import Modal from "@material-ui/core/Modal/Modal";
 
 const styles = theme => ({
     item: {
@@ -92,7 +93,12 @@ class LoginPDN extends Component {
                                 <Grid item xs={12}>
                                     {
                                         this.state.loading &&
-                                        <CircularProgress className={classes.progress} id="spinnerLoading" size={200}/>
+                                        <Modal
+                                            open={this.state.loading}
+                                            disableAutoFocus={true}
+                                        >
+                                            <CircularProgress className={classes.progress} id="spinnerLoading" size={200}/>
+                                        </Modal>
                                     }
                                 </Grid>
                                 <Grid item xs={12}>
