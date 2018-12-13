@@ -9,6 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import LogoPDN from '../../assets/PDN.png';
 import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
 import Modal from "@material-ui/core/Modal/Modal";
+import Divider from '@material-ui/core/Divider';
 
 const styles = theme => ({
     item: {
@@ -46,6 +47,10 @@ const styles = theme => ({
     btnReestablecer:{
         fontSize: 'x-small',
         color : theme.palette.primary.dark
+    },
+    divider :{
+        marginTop: 50,
+        marginBottom: 20
     }
 });
 
@@ -141,13 +146,14 @@ class LoginPDN extends Component {
                                         Ingresar
                                     </Button>
                                 </div>
+                                <Divider className={classes.divider}/>
                                 <div>
                                     <Button
                                         onClick={() => this.handleRecoverPass()}
                                         disabled={!this.state.email}
                                         className={classes.btnReestablecer}
                                     >
-                                        Establecer contraseña
+                                        Restablecer contraseña
                                     </Button>
                                 </div>
                             </Grid>
