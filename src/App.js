@@ -138,6 +138,20 @@ class App extends React.Component {
         }
     };
 
+    handleRecovery =(email)=>{
+        app.auth().sendPasswordResetEmail(email).then(()=>{
+            this.setState({
+                mensaje : 'Se ha enviado un correo a su cuenta. Por favor siga los pasos indicados'
+            });
+        }).catch(error => {
+            console.log("Error con sendPasswordResetEmail ", error);
+            this.setState({
+                mensaje: error.code === 'auth/invalid-email' ? 'El correo electrónico no es válido' : error.code === 'auth/user-disabled' ? 'El usuario ha sido deshabilitado' : error.code === 'auth/user-not-found' ?
+                    'El correo electrónico no esta dado de alta' : 'La contraseña es invalida o la cuenta no tiene una contraseña'
+            })
+        });
+    }
+
     render() {
         const {sesion, loading} = this.state;
         if (loading) {
@@ -150,8 +164,9 @@ class App extends React.Component {
                     <ScrollToTop>
                     <Switch>
                         <Route exact path={'/'}
-                               render={(props) => <LoginPDN handleSignIn={this.handleSignIn} propiedades={props}
-                                                            mensaje={this.state.mensaje}/>}/>
+                               render={(props) => <LoginPDN handleSignIn={this.handleSignIn} handleRecovery={this.handleRecovery}
+                                                            propiedades={props}
+                                                            mensaje={this.state.mensaje}/>} />
                         {pndRoutes.map((prop, key) => {
                                 return <PrivateRoute exact path={prop.path} component={prop.component} key={key}
                                                      sesion={sesion}/>;

@@ -42,6 +42,10 @@ const styles = theme => ({
     },
     boton: {
         background: '#ffe01b',
+    },
+    btnReestablecer:{
+        fontSize: 'x-small',
+        color : theme.palette.primary.dark
     }
 });
 
@@ -70,6 +74,9 @@ class LoginPDN extends Component {
         this.setState({loading:false})
     };
 
+    handleRecoverPass = () =>{
+        this.props.handleRecovery(this.state.email)
+    }
     render() {
         const {classes} = this.props;
         return (
@@ -124,7 +131,6 @@ class LoginPDN extends Component {
                                 </Grid>
                             </form>
                             <Grid item xs={12}>
-                                <br/>
                                 <div>
                                     <Button
                                         variant="raised"
@@ -133,6 +139,15 @@ class LoginPDN extends Component {
                                         className={classes.boton}
                                     >
                                         Ingresar
+                                    </Button>
+                                </div>
+                                <div>
+                                    <Button
+                                        onClick={() => this.handleRecoverPass()}
+                                        disabled={!this.state.email}
+                                        className={classes.btnReestablecer}
+                                    >
+                                        Establecer contraseña
                                     </Button>
                                 </div>
                             </Grid>
