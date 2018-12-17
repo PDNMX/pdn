@@ -128,11 +128,11 @@ class Index extends React.Component {
                     <Grid container justify={"center"} spacing={0}>
                         <Grid item xs={12} className={classes.section} style={{paddingTop: 150}}>
                             <Grid container spacing={24}>
-                                <Grid item xs={6}>
+                                <Grid item xs={12} sm={6}>
                                     <Typography variant={"h2"} className={classes.titleLight}>Servidores que intervienen
                                         en procesos de contratación</Typography>
                                 </Grid>
-                                <Grid item xs={6}>
+                                <Grid item xs={12} sm={6}>
                                     <Typography variant="h6" className={classes.titleSub}>
                                         Aquí puedes consultar, visualizar y descargar datos de:<br/>
                                         Los nombres, institución, cargo actividades y adscripción de los servidores públicos que intervienen en contrataciones públicas y otros actos de autoridad, y<br/>

@@ -26,7 +26,7 @@ class VideoDialog extends React.Component {
 
         return (
             <div>
-                <Button onClick={this.handleClickOpen} variant="raised" style={{
+                <Button onClick={this.handleClickOpen} variant="contained" style={{
                     background: '#ffe01b'
                 }}>Conoce más</Button>
                 <Dialog

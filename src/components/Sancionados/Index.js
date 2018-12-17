@@ -127,13 +127,13 @@ class Index extends React.Component {
                     <Grid container justify={"center"} spacing={0}>
                         <Grid item xs={12} className={classes.section} style={{paddingTop: 150}}>
                             <Grid container spacing={24}>
-                                <Grid item xs={6}>
+                                <Grid item xs={12} sm={6}>
                                     <Typography variant="h2" className={classes.titleLight}>
                                         Servidores públicos <br/>y particulares sancionados
                                     </Typography>
 
                                 </Grid>
-                                <Grid item xs={6}>
+                                <Grid item xs={12} sm={6}>
                                     <Typography variant="h6" className={classes.titleSub}>
                                         Aquí puedes consultar, visualizar y descargar datos de:<br/>
                                         Las sanciones o inhabilitación firmes en contra de servidores públicos por actos vinculados con faltas administrativas graves,<br/>

@@ -8,6 +8,8 @@ import app from "./config/firebase";
 import LoginPDN from "./components/Inicio/LoginPDN";
 import {connect} from 'react-redux';
 import ScrollToTop from './ScrollToTop';
+import ReactGA from 'react-ga';
+
 
 const theme = createMuiTheme({
     palette: {
@@ -28,7 +30,7 @@ const theme = createMuiTheme({
             color: "#c5c5c5"
         },
         titleBanner: {
-           color: '#666666'
+            color: '#666666'
 
         },
         graphGreen: {
@@ -55,10 +57,10 @@ const theme = createMuiTheme({
         grisTenue: {
             color: '#f5f5f5'
         },
-        azul:{
-            color : '#89d4f2'
+        azul: {
+            color: '#89d4f2'
         },
-        black:{
+        black: {
             black: "#000"
         }
 
@@ -90,7 +92,7 @@ class App extends React.Component {
             loading: false
         });
         this.props.newSesion(aux);
-
+        this.initializeReactGA();
     };
 
     handleSignIn = (email, pass, history) => {
@@ -132,16 +134,16 @@ class App extends React.Component {
             });
 
         } catch (e) {
-           this.setState({
-               mensaje: e
-           })
+            this.setState({
+                mensaje: e
+            })
         }
     };
 
-    handleRecovery =(email)=>{
-        app.auth().sendPasswordResetEmail(email).then(()=>{
+    handleRecovery = (email) => {
+        app.auth().sendPasswordResetEmail(email).then(() => {
             this.setState({
-                mensaje : 'Se ha enviado un correo a su cuenta. Por favor siga los pasos indicados'
+                mensaje: 'Se ha enviado un correo a su cuenta. Por favor siga los pasos indicados'
             });
         }).catch(error => {
             console.log("Error con sendPasswordResetEmail ", error);
@@ -150,7 +152,14 @@ class App extends React.Component {
                     'El correo electrónico no esta dado de alta' : 'La contraseña es invalida o la cuenta no tiene una contraseña'
             })
         });
-    }
+    };
+
+    initializeReactGA = () => {
+        ReactGA.initialize('UA-131031213-1');
+        ReactGA.pageview('/home');
+        ReactGA.pageview('/sancionados');
+        ReactGA.pageview('/servidores');
+    };
 
     render() {
         const {sesion, loading} = this.state;
@@ -162,19 +171,20 @@ class App extends React.Component {
             <MuiThemeProvider theme={theme}>
                 <Router basename={process.env.PUBLIC_URL}>
                     <ScrollToTop>
-                    <Switch>
-                        <Route exact path={'/'}
-                               render={(props) => <LoginPDN handleSignIn={this.handleSignIn} handleRecovery={this.handleRecovery}
-                                                            propiedades={props}
-                                                            mensaje={this.state.mensaje}/>} />
-                        {pndRoutes.map((prop, key) => {
-                                return <PrivateRoute exact path={prop.path} component={prop.component} key={key}
-                                                     sesion={sesion}/>;
+                        <Switch>
+                            <Route exact path={'/'}
+                                   render={(props) => <LoginPDN handleSignIn={this.handleSignIn}
+                                                                handleRecovery={this.handleRecovery}
+                                                                propiedades={props}
+                                                                mensaje={this.state.mensaje}/>}/>
+                            {pndRoutes.map((prop, key) => {
+                                    return <PrivateRoute exact path={prop.path} component={prop.component} key={key}
+                                                         sesion={sesion}/>;
+                                }
+                            )
                             }
-                        )
-                        }
-                        <Route render={p404}/>
-                    </Switch>
+                            <Route render={p404}/>
+                        </Switch>
                     </ScrollToTop>
                 </Router>
             </MuiThemeProvider>
