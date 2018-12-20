@@ -131,6 +131,7 @@ class HorizontalNonLinearStepper extends React.Component {
     };
 
      saveDenuncia = () =>{
+         console.log("fasdfas");
          let denuncia = this.props.denuncia;
          denuncia.hora_hecho = null;
          denuncia.folio = uuidv1();
@@ -149,14 +150,12 @@ class HorizontalNonLinearStepper extends React.Component {
 
          rp(options)
              .then(parseBody => {
-                 console.log("ok: ",parseBody);
                  this.printPDF();
              })
              .catch(err => {
                  alert("_No se pudo completar la operación");
                  console.log(err);
              });
-
 
     };
 

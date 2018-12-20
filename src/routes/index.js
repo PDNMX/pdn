@@ -10,6 +10,7 @@ import Denuncias from '../components/Denuncias/Index';
 import FormularioDenuncias from '../components/Denuncias/FormularioDenuncia/FormularioDenuncia';
 import FormularioConsula from '../components/Denuncias/ConsultaDenuncia/FormularioConsulta';
 import DemoDeclaraciones from '../components/DemoDeclaraciones/demo';
+import Conexion from '../components/Conexion/Conexion';
 //import LoginPDN from "../components/Inicio/LoginPDN";
 
 const pdnRoutes = [
@@ -61,6 +62,10 @@ const pdnRoutes = [
     {
         path : "/demodeclaraciones",
         component: DemoDeclaraciones
+    },
+    {
+        path: "/conexion",
+        component : Conexion
     }
 ];
 

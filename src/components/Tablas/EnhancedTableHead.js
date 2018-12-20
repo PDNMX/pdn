@@ -21,11 +21,12 @@ class EnhancedTableHead extends React.Component {
     };
 
     render() {
-        const {order, orderBy, classes,columnData} = this.props;
+        const {order, orderBy, classes,columnData,acciones} = this.props;
         return (
             <TableHead style={{backgroundColor:'#f5f5f5'}}>
                 <TableRow>
-                    {columnData.map(column => {
+                    {
+                        columnData.map(column => {
                         if (column.mostrar) {
                             return (
                                 <TableCell
@@ -52,7 +53,20 @@ class EnhancedTableHead extends React.Component {
                                 </TableCell>
                             );
                         }
-                    }, this)}
+                    }, this)
+                    }
+                    {
+                        this.props.acciones &&
+                        <TableCell>
+                            {
+                                <Typography className={classes.tableHead} variant={"body2"}>
+                                    Acciones
+                                </Typography>
+                            }
+                        </TableCell>
+                    }
+
+
                 </TableRow>
             </TableHead>
         );

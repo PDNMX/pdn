@@ -169,7 +169,6 @@ class EnhancedTable extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log("NextProps: ", nextProps);
         if (nextProps.institucion !== this.props.institucion) {
             this.handleSearchAPI('FIELD_FILTER', nextProps.institucion);
         }
