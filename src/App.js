@@ -9,7 +9,7 @@ import LoginPDN from "./components/Inicio/LoginPDN";
 import {connect} from 'react-redux';
 import ScrollToTop from './ScrollToTop';
 import ReactGA from 'react-ga';
-
+import Conexion from "./components/Conexion/Conexion";
 
 const theme = createMuiTheme({
     palette: {
@@ -177,6 +177,7 @@ class App extends React.Component {
                                                                 handleRecovery={this.handleRecovery}
                                                                 propiedades={props}
                                                                 mensaje={this.state.mensaje}/>}/>
+
                             {pndRoutes.map((prop, key) => {
                                     return <PrivateRoute exact path={prop.path} component={prop.component} key={key}
                                                          sesion={sesion}/>;
