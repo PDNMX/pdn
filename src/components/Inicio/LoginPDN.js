@@ -68,7 +68,8 @@ class LoginPDN extends Component {
 
     componentWillMount(){
         let aux = JSON.parse(localStorage.getItem("sesion"));
-        aux.authenticated ? this.props.propiedades.history.push('/pdn/home') : null ;
+        if(typeof aux !== 'undefined')
+            aux.authenticated ? this.props.propiedades.history.push('/pdn/home') : null ;
     };
 
     handleChange = name => event => {
