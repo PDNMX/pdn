@@ -66,6 +66,11 @@ class LoginPDN extends Component {
         };
     }
 
+    componentWillMount(){
+        let aux = JSON.parse(localStorage.getItem("sesion"));
+        aux.authenticated ? this.props.propiedades.history.push('/pdn/home') : null ;
+    };
+
     handleChange = name => event => {
         this.setState({
             [name]: event.target.value
@@ -81,12 +86,11 @@ class LoginPDN extends Component {
 
     handleRecoverPass = () =>{
         this.props.handleRecovery(this.state.email)
-    }
+    };
     render() {
         const {classes} = this.props;
         return (
             <Grid container spacing={24} justify='center'>
-
                 <Grid item xs={12} className={classes.item}>
                     <Card className={classes.card}>
                         <CardContent style={{textAlign: "center"}}>

@@ -281,7 +281,6 @@ class EnhancedTable extends React.Component {
     };
     handleSearchAPI = (typeSearch) => {
         this.setState({loading: true},()=>{
-            console.log("cargando...");
             let {procedimiento, institucion, nombreServidor} = this.state;
             const URI = 'https://plataformadigitalnacional.org/api/reniresp?';
 

@@ -73,7 +73,7 @@ class PDNAppBar extends React.Component {
         app.auth().signOut().then(() => {
             let aux = {};
             localStorage.setItem("sesion",JSON.stringify(aux));
-            this.props.history.push("/");
+            this.props.history.push("/pdn");
             this.props.removeSesion();
         }).catch(e => {
             alert(e);
