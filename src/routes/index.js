@@ -1,5 +1,6 @@
 import Home from '../components/Home/Home';
-import About from '../components/About';
+import About from '../components/About/About';
+import Terminos from '../components/About/Terminos';
 import Faq from '../components/FAQ/index';
 import Datos from '../components/CatalogoDatos/Datos';
 import Sancionados from '../components/Sancionados/Index';
@@ -16,56 +17,73 @@ import Conexion from '../components/Conexion/Conexion';
 const pdnRoutes = [
 
     {
-        path: "/home",
-       component: Home
+        path: "/pdn/home",
+        component: Home,
+        private: true
     },
     {
-        path: "/about",
-        component: About
+        path: "/", // "/about"
+        component: About,
+        private: false
     },
     {
-        path: "/faq",
-        component: Faq
+        path: "/terminos",
+        component: Terminos,
+        private: false
     },
     {
-        path: "/CatalogoDatos",
-        component: Datos
+        path: "/pdn/faq",
+        component: Faq,
+        private: true
     },
     {
-        path: "/sancionados",
-        component: Sancionados
+        path: "/pdn/CatalogoDatos",
+        component: Datos,
+        private: true
     },
     {
-        path: "/servidores",
-        component: Servidores
+        path: "/pdn/sancionados",
+        component: Sancionados,
+        private: true
     },
     {
-        path: "/indicadores",
-        component: Indicadores
+        path: "/pdn/servidores",
+        component: Servidores,
+        private: true
     },
     {
-        path: "/contrataciones",
-        component: Contrataciones
+        path: "/pdn/indicadores",
+        component: Indicadores,
+        private: true
     },
     {
-        path: "/denuncias",
+        path: "/pdn/contrataciones",
+        component: Contrataciones,
+        private: true
+    },
+    {
+        path: "/pdn/denuncias",
         component: Denuncias
     },
     {
-        path:"/formDenuncia",
-        component: FormularioDenuncias
+        path:"/pdn/formDenuncia",
+        component: FormularioDenuncias,
+        private: true
     },
     {
-        path:"/formConsultaDenuncia",
-        component: FormularioConsula
+        path:"/pdn/formConsultaDenuncia",
+        component: FormularioConsula,
+        private: true
     },
     {
-        path : "/demodeclaraciones",
-        component: DemoDeclaraciones
+        path : "/pdn/demodeclaraciones",
+        component: DemoDeclaraciones,
+        private: true
     },
     {
-        path: "/conexion",
-        component : Conexion
+        path: "/pdn/conexion",
+        component : Conexion,
+        private: true
     }
 ];
 
