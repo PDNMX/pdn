@@ -76,8 +76,8 @@ class Footer extends React.Component{
 
                                 <Typography className={classes.grayText}>
                                     <a href="http://declaraciones.gobiernofacil.com/" className={classes.grayText}> Declaraciones</a> </Typography>
-                                <Typography className={classes.grayText} component={Link} to="/servidores">Servidores en contrataciones</Typography>
-                                <Typography className={classes.grayText} component={Link} to="/sancionados">Sancionados</Typography>
+                                <Typography className={classes.grayText} component={Link} to="/pdn/servidores">Servidores en contrataciones</Typography>
+                                <Typography className={classes.grayText} component={Link} to="/pdn/sancionados">Sancionados</Typography>
                                 {/*
                                 <Typography className={classes.grayText}>Fiscalización</Typography>
                                 <Typography className={classes.grayText}>Denuncias</Typography>
