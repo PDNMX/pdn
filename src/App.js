@@ -9,7 +9,6 @@ import LoginPDN from "./components/Inicio/LoginPDN";
 import {connect} from 'react-redux';
 import ScrollToTop from './ScrollToTop';
 import ReactGA from 'react-ga';
-import Conexion from "./components/Conexion/Conexion";
 
 const theme = createMuiTheme({
     palette: {

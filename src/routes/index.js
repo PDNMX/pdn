@@ -83,7 +83,7 @@ const pdnRoutes = [
     {
         path: "/pdn/conexion",
         component : Conexion,
-        private: true
+        private: false
     }
 ];
 
