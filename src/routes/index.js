@@ -17,12 +17,12 @@ import Conexion from '../components/Conexion/Conexion';
 const pdnRoutes = [
 
     {
-        path: "/home",
+        path: "/pdn/home",
         component: Home,
         private: true
     },
     {
-        path: "/about",
+        path: "/", // "/about"
         component: About,
         private: false
     },
@@ -32,56 +32,56 @@ const pdnRoutes = [
         private: false
     },
     {
-        path: "/faq",
+        path: "/pdn/faq",
         component: Faq,
         private: true
     },
     {
-        path: "/CatalogoDatos",
+        path: "/pdn/CatalogoDatos",
         component: Datos,
         private: true
     },
     {
-        path: "/sancionados",
+        path: "/pdn/sancionados",
         component: Sancionados,
         private: true
     },
     {
-        path: "/servidores",
+        path: "/pdn/servidores",
         component: Servidores,
         private: true
     },
     {
-        path: "/indicadores",
+        path: "/pdn/indicadores",
         component: Indicadores,
         private: true
     },
     {
-        path: "/contrataciones",
+        path: "/pdn/contrataciones",
         component: Contrataciones,
         private: true
     },
     {
-        path: "/denuncias",
+        path: "/pdn/denuncias",
         component: Denuncias
     },
     {
-        path:"/formDenuncia",
+        path:"/pdn/formDenuncia",
         component: FormularioDenuncias,
         private: true
     },
     {
-        path:"/formConsultaDenuncia",
+        path:"/pdn/formConsultaDenuncia",
         component: FormularioConsula,
         private: true
     },
     {
-        path : "/demodeclaraciones",
+        path : "/pdn/demodeclaraciones",
         component: DemoDeclaraciones,
         private: true
     },
     {
-        path: "/conexion",
+        path: "/pdn/conexion",
         component : Conexion,
         private: true
     }

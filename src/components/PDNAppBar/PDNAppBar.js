@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from 'react-router-dom';
 import AppBar from "@material-ui/core/AppBar/AppBar";
-import Button from '@material-ui/core/Button';
+//import Button from '@material-ui/core/Button';
 import imgHeader from "../../assets/PDN.png";
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
@@ -111,7 +111,7 @@ class PDNAppBar extends React.Component {
                         <Grid container spacing={0} justify='center'>
                             <Grid item xs={12} className={classes.gridItem}>
                                 <Toolbar>
-                                    <IconButton color="inherit" aria-label="Menu" component={Link} to="/home">
+                                    <IconButton color="inherit" aria-label="Menu" component={Link} to="/pdn/home">
                                         <img src={imgHeader} alt="logoPDN" style={{width: '55px'}}/>
 
                                     </IconButton>

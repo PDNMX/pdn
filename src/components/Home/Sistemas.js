@@ -50,7 +50,7 @@ class Sistemas extends React.Component{
                         </a>
                     </Grid>
                     <Grid item xl={4} lg={4} md={6} xs={12} align="center">
-                        <Link to="/servidores" className={ classes.link }>
+                        <Link to="/pdn/servidores" className={ classes.link }>
                             <img src={s2} alt="Sistema 2" className="iconos-sistemas"/>
                             <br/>
                             <Typography variant="h5" className={classes.text}>
@@ -59,7 +59,7 @@ class Sistemas extends React.Component{
                         </Link>
                     </Grid>
                     <Grid item xl={4} lg={4} md={6} xs={12} align="center">
-                        <Link to="/sancionados" className ={ classes.link }>
+                        <Link to="/pdn/sancionados" className ={ classes.link }>
                             <img src={s3} alt="Sistema 3" className="iconos-sistemas"/>
                             <br/>
                             <Typography variant="h5" className={classes.text}>
@@ -68,7 +68,7 @@ class Sistemas extends React.Component{
                         </Link>
                     </Grid>
                     <Grid item xl={4} lg={4} md={6} xs={12} align="center">
-                        {/*<Link to="/home" className={classes.link }>*/}
+                        {/*<Link to="/pdn/home" className={classes.link }>*/}
                             <img src={s4} alt="Sistema 4" className={classes.disabled}/>
                             <br/>
                             <Typography variant="h5" className={classes.text }>
@@ -77,14 +77,14 @@ class Sistemas extends React.Component{
                         {/*</Link>*/}
                     </Grid>
                     <Grid item xl={4} lg={4} md={6} xs={12} align="center">
-                        {/*<Link to="/home" className={classes.link }>*/}
+                        {/*<Link to="/pdn/home" className={classes.link }>*/}
                             <img src={s5} alt="Sistema 5" className={classes.disabled}/>
                             <br/>
                             <Typography variant="h5" className={classes.text}>Denuncias</Typography>
                         {/*</Link>*/}
                     </Grid>
                     <Grid item xl={4} lg={4} md={6} xs={12} align="center">
-                        {/*<Link to="/home" className={classes.link}>*/}
+                        {/*<Link to="/pdn/home" className={classes.link}>*/}
                             <img src={s6} alt="Sistema 6" className={classes.disabled}/>
                             <br/>
                             <Typography variant="h5" className={classes.text}>Contrataciones</Typography>
