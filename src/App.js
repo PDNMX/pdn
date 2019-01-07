@@ -178,8 +178,8 @@ class App extends React.Component {
                                                                 propiedades={props}
                                                                 mensaje={this.state.mensaje}/>}/>
                             {pndRoutes.map((prop, key) => {
-                                    return <PrivateRoute exact path={prop.path} component={prop.component} key={key}
-                                                         sesion={sesion}/>;
+                                    return prop.private?<PrivateRoute exact path={prop.path} component={prop.component} key={key}
+                                                         sesion={sesion}/> : <Route exact path={prop.path} component={prop.component} key={key}/>;
                                 }
                             )
                             }

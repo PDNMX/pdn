@@ -1,5 +1,6 @@
 import Home from '../components/Home/Home';
-import About from '../components/About';
+import About from '../components/About/About';
+import Terminos from '../components/About/Terminos';
 import Faq from '../components/FAQ/index';
 import Datos from '../components/CatalogoDatos/Datos';
 import Sancionados from '../components/Sancionados/Index';
@@ -17,35 +18,48 @@ const pdnRoutes = [
 
     {
         path: "/home",
-       component: Home
+        component: Home,
+        private: true
     },
     {
         path: "/about",
-        component: About
+        component: About,
+        private: false
+    },
+    {
+        path: "/terminos",
+        component: Terminos,
+        private: false
     },
     {
         path: "/faq",
-        component: Faq
+        component: Faq,
+        private: true
     },
     {
         path: "/CatalogoDatos",
-        component: Datos
+        component: Datos,
+        private: true
     },
     {
         path: "/sancionados",
-        component: Sancionados
+        component: Sancionados,
+        private: true
     },
     {
         path: "/servidores",
-        component: Servidores
+        component: Servidores,
+        private: true
     },
     {
         path: "/indicadores",
-        component: Indicadores
+        component: Indicadores,
+        private: true
     },
     {
         path: "/contrataciones",
-        component: Contrataciones
+        component: Contrataciones,
+        private: true
     },
     {
         path: "/denuncias",
@@ -53,19 +67,23 @@ const pdnRoutes = [
     },
     {
         path:"/formDenuncia",
-        component: FormularioDenuncias
+        component: FormularioDenuncias,
+        private: true
     },
     {
         path:"/formConsultaDenuncia",
-        component: FormularioConsula
+        component: FormularioConsula,
+        private: true
     },
     {
         path : "/demodeclaraciones",
-        component: DemoDeclaraciones
+        component: DemoDeclaraciones,
+        private: true
     },
     {
         path: "/conexion",
-        component : Conexion
+        component : Conexion,
+        private: true
     }
 ];
 
