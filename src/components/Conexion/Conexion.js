@@ -20,7 +20,7 @@ const styles = theme => ({
         padding: theme.spacing.unit * 5,
     },
     bgImg: {
-        background: 'url(FOTO_BANNER_3.JPG)',
+        background: 'url(/FOTO_BANNER_3.JPG)',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: 'center',

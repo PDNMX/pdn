@@ -54,7 +54,7 @@ const styles = theme => ({
         maxWidth: '1200px'
     },
     bgImg: {
-        background: 'url(FOTO_BANNER_1.JPG)',
+        background: 'url(/FOTO_BANNER_1.jpg)',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
