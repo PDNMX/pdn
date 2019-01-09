@@ -12,6 +12,7 @@ import FormularioDenuncias from '../components/Denuncias/FormularioDenuncia/Form
 import FormularioConsula from '../components/Denuncias/ConsultaDenuncia/FormularioConsulta';
 import DemoDeclaraciones from '../components/DemoDeclaraciones/demo';
 import Conexion from '../components/Conexion/Conexion';
+import DeclaracionesEspecificaciones from '../components/Declaraciones/Especificaciones/Especificaciones';
 //import LoginPDN from "../components/Inicio/LoginPDN";
 
 const pdnRoutes = [
@@ -83,6 +84,11 @@ const pdnRoutes = [
     {
         path: "/pdn/conexion",
         component : Conexion,
+        private: false
+    },
+    {
+        path: "/declaraciones/especificaciones",
+        component: DeclaracionesEspecificaciones,
         private: false
     }
 ];
