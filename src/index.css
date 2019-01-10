@@ -13,3 +13,7 @@ body {
   background: rgba(243, 243, 243, 0.85);
   z-index: -1;
 }
+.g-recaptcha{
+  display: inline-block;
+  margin: 20px;
+}

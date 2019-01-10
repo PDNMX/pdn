@@ -247,7 +247,6 @@ class BusquedaServidor extends React.Component {
                             id="campoSelectInstitucion"
                             placeholder = {'TODAS'}
                         />
-
                     </FormControl>
                 </Grid>
                 <Grid item xs={12} md={4}>

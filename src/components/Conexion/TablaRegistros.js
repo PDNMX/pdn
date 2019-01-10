@@ -180,6 +180,7 @@ class TablaRegistros extends  React.Component{
     render(){
         const {registros, classes} = this.props;
         const {order, orderBy, selected, rowsPerPage, page, filterData, totalRows, filterDataAll} = this.state;
+        let index=0;
         return(
             <div>
                 <Typography variant={"h6"} className={classes.text}>Servidores a registrar</Typography>
@@ -196,15 +197,15 @@ class TablaRegistros extends  React.Component{
                         acciones = {true}
                     />
                     <TableBody>
-                        {registros
+                        {
+                            registros
                                 .sort(getSorting(order,orderBy))
                                 .map(n => {
-                                    const isSelected = this.isSelected(n.id);
                                     return(
                                         <TableRow
                                             hover
                                             tabIndex={-1}
-                                            key = {n.index}
+                                            key = {index++}
                                         >
                                             <TableCell>{n.nombre}</TableCell>
                                             <TableCell>{n.apellido1}</TableCell>

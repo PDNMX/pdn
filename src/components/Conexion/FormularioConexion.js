@@ -2,14 +2,16 @@ import React from 'react';
 import {withStyles} from '@material-ui/core/styles';
 import Grid from "@material-ui/core/Grid/Grid";
 import TextField from "@material-ui/core/TextField/TextField";
-import Select from "@material-ui/core/Select/Select";
-import InputLabel from "@material-ui/core/InputLabel/InputLabel";
 import FormControl from "@material-ui/core/FormControl/FormControl";
 import MenuItem from "@material-ui/core/MenuItem/MenuItem";
 import Fab from "@material-ui/core/Fab/Fab";
 import AddIcon from '@material-ui/icons/Add';
 import Typography from "@material-ui/core/Typography/Typography";
 import Tooltip from "@material-ui/core/Tooltip/Tooltip";
+import rp from "request-promise";
+import Select from "@material-ui/core/Select/Select";
+import InputLabel from "@material-ui/core/InputLabel/InputLabel";
+
 
 const styles = theme => ({
     fab: {
@@ -40,19 +42,42 @@ const nuevo = {
     otra_dependencia : ''
 };
 
+let loadDependencias = (_this)=>{
+    let sug = [];
+    let index = 0;
+    let options = {
+        uri : 'https://demospdn.host/demo1/captura/api/catDependencias',
+        json : true
+    };
+    rp(options)
+        .then(data => {
+            data.map(item => {
+                sug.push({id:index,value: item.valor, label: item.valor});
+                index+=1;
+            });
+            _this.setState({dependencias: sug});
+        }).catch(err => {
+        alert("_No se puedó obtener la información");
+        console.log(err);
+    });
+};
+
+
 const expCorreo = '^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)+(.[a-z]{2,4})$';
 class FormularioConexion extends React.Component {
-
     state = {
         registro: nuevo,
-        mensaje : ''
+        mensaje : '',
+        dependencias : []
     };
-
+    componentDidMount() {
+        loadDependencias(this);
+    }
     handleChange = name => event => {
         this.setState({
             registro: {
                 ...this.state.registro,
-                [name]: event.target.value
+                [name]: event ? (event.target ? event.target.value : event.value) : ''
             }
         })
     };
@@ -77,6 +102,7 @@ class FormularioConexion extends React.Component {
 
     render() {
         const {classes} = this.props;
+
         return (
             <div>
                 <Grid container spacing={32}>
@@ -93,7 +119,7 @@ class FormularioConexion extends React.Component {
                         />
                     </Grid>
                     <Grid item xs={12} md={3}>
-                        <FormControl required className={classes.formControl}>
+                        <FormControl className={classes.formControl}>
                             <InputLabel htmlFor="age-simple">Dependencia</InputLabel>
                             <Select
                                 value={this.state.registro.dependencia}
@@ -105,12 +131,15 @@ class FormularioConexion extends React.Component {
                                 }}
 
                             >
-                                <MenuItem value= 'OTRA' >
+                                <MenuItem value= 'OTRA' key={-1}>
                                     <em>OTRA</em>
                                 </MenuItem>
-                                <MenuItem value={'SESNA'}>SESNA</MenuItem>
-                                <MenuItem value={'SFP'}>SFP</MenuItem>
-                                <MenuItem value={'INEGI'}>INEGI</MenuItem>
+                                {
+                                    this.state.dependencias.map(item=>{
+                                        return(<MenuItem value={item.value} key={item.id}>{item.label}</MenuItem>)
+                                    })
+                                }
+
                             </Select>
                         </FormControl>
                     </Grid>

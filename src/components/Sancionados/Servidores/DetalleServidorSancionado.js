@@ -135,7 +135,6 @@ class DetalleServidorSancionado extends React.Component {
             format : 'letter',
             unit : 'pt'
         });
-        let d = this.props.denuncia;
         doc.setFontSize(12);
         doc.setFontType('bold');
         doc.addImage(logotipoSESNA,'PNG',30,20,150,70);
@@ -150,7 +149,7 @@ class DetalleServidorSancionado extends React.Component {
         let lengthOfPage = 440;
 
         let splitHecho = doc.splitTextToSize(text,lengthOfPage);
-        for(var c = 0, stlength = splitHecho.length ; c <stlength; c++){
+        for(let c = 0, stlength = splitHecho.length ; c <stlength; c++){
             doc.text(splitHecho[c], 30,y);
             y+=15;
         }

@@ -7,7 +7,6 @@ import Bubbles from '../Charts/bubbles/Bubbles';
 import {createNodes} from './utils';
 import rp from "request-promise";
 import { width, height, center } from './bubbles_constants'
-import TypePicker from "../Charts/bubbles/TypePicker";
 import TablaDetalle from "./TablaDetalle";
 
 // Styles

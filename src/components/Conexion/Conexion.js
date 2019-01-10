@@ -8,6 +8,9 @@ import Typography from "@material-ui/core/Typography/Typography";
 import "../../index.css";
 import Button from "@material-ui/core/Button/Button";
 import rp from 'request-promise';
+import { ReCaptcha, loadReCaptcha  } from 'react-recaptcha-google';
+import Modal from "@material-ui/core/Modal/Modal";
+import "../../index.css";
 
 const styles = theme => ({
     root: {
@@ -43,18 +46,80 @@ const styles = theme => ({
     },
     button: {
         margin: theme.spacing.unit,
-        float : 'right'
+        float: 'right'
     },
-    text :{
-        color : theme.palette.primary.dark,
+    text: {
+        color: theme.palette.primary.dark,
+    },
+    paperCaptcha: {
+        position: 'absolute',
+        backgroundColor: theme.palette.background.paper,
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing.unit * 4,
+        [theme.breakpoints.up('sm')]: {
+            width: theme.spacing.unit * 50,
+        },
+        [theme.breakpoints.down('sm')]: {
+            width: '80%',
+            height: '80%',
+            overflowY: 'scroll',
+        },
+        [theme.breakpoints.up('xl')]: {
+            width: theme.spacing.unit * 70,
+        },
+    },
+    textCenter:{
+        textAlign: 'center',
+        color : theme.palette.primary.dark
+    },
+    gRecaptcha : {
+        margin : 'auto',
+        width: '300px',
+        display:'inline-block !important'
     }
 });
 
-class Conexion extends React.Component {
-    state = {
-        registros: [],
-    };
+function getModalStyle() {
+    const top = 50 ;
+    const left = 50 ;
+    return {
+        top: `${top}%`,
+        left: `${left}%`,
+        transform: `translate(-${top}%, -${left}%)`,
 
+    };
+}
+
+class Conexion extends React.Component {
+     state = {
+        registros: [],
+         flag_send : false,
+         dependencias:[],
+         flag_msj : false
+    };
+    recaptcha = React.createRef();
+    constructor(props, context) {
+        super(props, context);
+        this.onLoadRecaptcha = this.onLoadRecaptcha.bind(this);
+        this.verifyCallback = this.verifyCallback.bind(this);
+    }
+    componentDidMount() {
+        loadReCaptcha();
+    }
+    onLoadRecaptcha() {
+        console.log("LoadCaptcha");
+    }
+    verifyCallback(recaptchaToken) {
+        if(recaptchaToken){
+            this.saveRegistros();
+        }
+    }
+
+    verifyCaptcha = ()=>{
+        this.setState({
+            flag_send : true
+        });
+    };
     addRegistro = (item) => {
         this.setState({
             registros: [
@@ -63,7 +128,7 @@ class Conexion extends React.Component {
                     nombre: item.nombre,
                     apellido1: item.apellido1,
                     apellido2: item.apellido2,
-                    dependencia: item.dependencia!=='OTRA'? item.dependencia : item.otra_dependencia,
+                    dependencia: item.dependencia !== 'OTRA' ? item.dependencia : item.otra_dependencia,
                     cargo: item.cargo,
                     correo: item.correo,
                     telefono_personal: item.telefono_personal,
@@ -88,32 +153,43 @@ class Conexion extends React.Component {
 
     saveRegistros = () => {
         let registros = this.state.registros;
-        for(let i= 0; i< registros.length; i++){
+        for (let i = 0; i < registros.length; i++) {
             registros[i].fecha_solicitud = new Date();
             registros[i].estatus = 'PENDIENTE';
         }
-        let options = {
-          method : 'POST',
-          uri: 'https://plataformadigitalnacional.org/api/solicitudes',
-          headers : {
-              'Prefer' : 'return = representation',
-              'Content-Type' : 'application/json'
-          },
-            body: registros,
-            json : true
-        };
 
-        rp(options)
-            .then(parseBody =>{
-                alert("Registro exitoso");
-                this.setState({
-                    registros : []
-                });
-            })
-            .catch(err =>{
-                alert("No se pudo completar la operación");
-                console.log(err);
-            })
+        if (registros.length > 0) {
+            let options = {
+                method: 'POST',
+                uri: 'https://plataformadigitalnacional.org/api/solicitudes',
+                headers: {
+                    'Prefer': 'return = representation',
+                    'Content-Type': 'application/json'
+                },
+                body: registros,
+                json: true
+            };
+
+            rp(options)
+                .then(parseBody => {
+                    this.setState({
+                        flag_msj: true,
+                        registros: [],
+                        flag_send : false
+                    });
+                })
+                .catch(err => {
+                    alert("No se pudo completar la operación");
+                    console.log(err);
+                })
+           }
+
+    };
+    handleClose = () => {
+        this.setState({flag_send: false});
+    };
+    handleCloseMsj = () => {
+        this.setState({flag_msj: false});
     };
     render() {
         const {classes} = this.props;
@@ -148,13 +224,60 @@ class Conexion extends React.Component {
                         </Grid>
                     </Grid>
                 </div>
+                <div>
+                    <Modal
+                        open={this.state.flag_send}
+                        aria-labelledby="simple-modal-title"
+                        aria-describedby="simple-modal-description"
+                        onClose={this.handleClose}
+                    >
+                        <div style={getModalStyle()} className={classes.paperCaptcha}>
+                            <Grid container justify={"center"}>
+                                <Grid item xs={12}>
+                                    <Typography variant={"h6"} className={classes.textCenter}>Verificación de seguridad</Typography>
+                                </Grid>
+                                <Grid item xs={12} style={{textAlign:'center'}}>
+                                    <ReCaptcha
+                                        ref={this.recaptcha}
+                                        size="normal"
+                                        sitekey="6Lfs8YcUAAAAAGVQL-BpW_w__FSJeWq-xAUoPbf9"
+                                        onloadCallback={this.onLoadRecaptcha}
+                                        verifyCallback={this.verifyCallback}
+                                        style={{id:'Isela',display:'inline-block'}}
+                                        badge={"inline"}
+                                    />
+                                </Grid>
+                                <Grid item xs ={12}  className={classes.textCenter}>
+                                    <Typography variant={"h6"}>{this.state.mensajeRegistro}</Typography>
+                                </Grid>
+                            </Grid>
+                        </div>
+                    </Modal>
+                    <Modal
+                        open={this.state.flag_msj}
+                        aria-labelledby="simple-modal-title"
+                        aria-describedby="simple-modal-description"
+                        onClose={this.handleCloseMsj}
+                    >
+                        <div style={getModalStyle()} className={classes.paperCaptcha}>
+                            <Grid container justify={"center"}>
+                                <Grid item xs ={12}  >
+                                    <Typography variant={"h5"} className={classes.textCenter}>Solicitud enviada</Typography>
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <Typography variant={"subtitle1"}>Los permisos de conexión a la PDN serán otorgados o denegados por la SESNA posteriormente a una evaluación de aspectos técnicos de interconexión. En caso de que los sujetos obligados no cumplan con los requerimientos de interconexión a la PDN establecidos por la SESNA, se denegará el permiso de conexión a la PDN.</Typography>
+                                </Grid>
+                            </Grid>
+                        </div>
+                    </Modal>
+                </div>
                 <div className={classes.bgContainer}>
                     <Grid container justify={'center'} spacing={0}>
                         <Grid item xs={12} className={classes.section}>
                             <Paper className={classes.contenedor}>
                                 <Grid container>
                                     <Grid item xs={12}>
-                                        <FormularioConexion addRegistro={this.addRegistro}/>
+                                        <FormularioConexion addRegistro={this.addRegistro} dependencias={this.state.dependencias}/>
                                         <TablaRegistros registros={this.state.registros} remove={this.removeRegistro}/>
                                     </Grid>
                                     <Grid item xs={12}>
@@ -162,9 +285,20 @@ class Conexion extends React.Component {
                                         <input type="file"/>
                                     </Grid>
                                     <Grid item xs={12}>
-                                        <Button variant="contained" color="primary" className={classes.button} onClick = {()=>this.saveRegistros()}>
+                                        <Button variant="contained" color="primary" className={classes.button} disabled={this.state.registros.length<=0}
+                                                onClick={() => this.verifyCaptcha()}>
                                             Enviar
                                         </Button>
+
+                                    </Grid>
+                                    {
+                                        /*
+                                        6Led7YcUAAAAANnOSK80RNv4h_o45NAWXFC9Jn8o key pdn serv
+                                        6Lfs8YcUAAAAAGVQL-BpW_w__FSJeWq-xAUoPbf9 localhost
+                                        */
+                                    }
+                                    <Grid item xs={12}>
+
                                     </Grid>
                                 </Grid>
                             </Paper>
