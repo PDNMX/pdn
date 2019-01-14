@@ -4,7 +4,6 @@ import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Header from "../../PDNAppBar/PDNAppBar";
-import PDNLinks from "../../PDNLinks/PDNLinks";
 import Footer from "../../Footer/Footer";
 //import Card from "../Card";
 //import img1 from "../../../assets/img/hands.jpg";

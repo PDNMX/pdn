@@ -4,8 +4,7 @@ import Typography  from '@material-ui/core/Typography';
 import {withStyles} from '@material-ui/core/styles';
 import Header from './PDNAppBar/PDNAppBar';
 import Button from '@material-ui/core/Button';
-import PDNLinks from './PDNLinks/PDNLinks';
-import Footer from './Footer/Footer';
+import Footer from './Home/Footer';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 
@@ -16,7 +15,7 @@ const styles = theme => ({
     },
     gridItem:{
         maxWidth: '1024px',
-        minHeight: '600px',
+        minHeight: '800px',
         marginTop: theme.spacing.unit * 5 ,
         paddingBottom: theme.spacing.unit *2
     },
@@ -46,17 +45,10 @@ class P404 extends React.Component {
                         <Paper className={classes.paper}>
                             <Typography variant="display1">404 </Typography>
                             <Typography variant="subheading">No encontramos lo que buscas </Typography>
-                            <Button className={classes.button} component={Link} variant="contained" color="primary" to="/home">Regresar</Button>
+                            <Button className={classes.button} component={Link} variant="contained" color="primary" to="/">Regresar</Button>
                         </Paper>
                     </Grid>
                 </Grid>
-                <div className={classes.links}>
-                    <Grid container spacing={0} justify='center'>
-                        <Grid item xs={12} className={classes.section}>
-                            <PDNLinks/>
-                        </Grid>
-                    </Grid>
-                </div>
                 <Footer/>
             </div>
         )
