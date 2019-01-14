@@ -104,22 +104,21 @@ class PDNAppBar extends React.Component {
 
 
         return (
-            <div>
-                <div className={classes.root}>
-                    <AppBar color="default" position="static">
+            <div className={classes.root}>
+                <AppBar color="default" position="static">
 
-                        <Grid container spacing={0} justify='center'>
-                            <Grid item xs={12} className={classes.gridItem}>
-                                <Toolbar>
-                                    <IconButton color="inherit" aria-label="Menu" component={Link} to="/pdn/home">
-                                        <img src={imgHeader} alt="logoPDN" style={{width: '55px'}}/>
+                    <Grid container spacing={0} justify='center'>
+                        <Grid item xs={12} className={classes.gridItem}>
+                            <Toolbar>
+                                <IconButton color="inherit" aria-label="Menu" component={Link} to="/pdn/home">
+                                    <img src={imgHeader} alt="logoPDN" style={{width: '55px'}}/>
 
-                                    </IconButton>
-                                    <Typography variant="title" color="inherit" className={classes.flex}>
+                                </IconButton>
+                                <Typography variant="title" color="inherit" className={classes.flex}>
 
-                                    </Typography>
+                                </Typography>
 
-                                    {/*<Button color="inherit" href="https://www.plataformadigitalnacional.org/blog">
+                                {/*<Button color="inherit" href="https://www.plataformadigitalnacional.org/blog">
                                         Blog
                                     </Button>
                                     <Button color="inherit" component={Link} to="/about">
@@ -136,61 +135,47 @@ class PDNAppBar extends React.Component {
                                    */}
 
 
-                                    {
-                                        this.props.sesion.authenticated && (
-                                            <div>
-                                                <IconButton
-                                                    aria-owns={open ? 'menu-appbar' : undefined}
-                                                    aria-haspopup="true"
-                                                    onClick={this.handleMenu}
-                                                    color="inherit"
-                                                >
-                                                    <MenuIcon/>
-                                                </IconButton>
-                                                <Menu
-                                                    id="menu-appbar"
-                                                    anchorEl={anchorEl}
-                                                    anchorOrigin={{
-                                                        vertical: 'top',
-                                                        horizontal: 'right',
-                                                    }}
-                                                    transformOrigin={{
-                                                        vertical: 'top',
-                                                        horizontal: 'right',
-                                                    }}
-                                                    open={open}
-                                                    onClose={this.handleClose}
-                                                >
+                                {
+                                    this.props.sesion.authenticated && (
+                                        <div>
+                                            <IconButton
+                                                aria-owns={open ? 'menu-appbar' : undefined}
+                                                aria-haspopup="true"
+                                                onClick={this.handleMenu}
+                                                color="inherit"
+                                            >
+                                                <MenuIcon/>
+                                            </IconButton>
+                                            <Menu
+                                                id="menu-appbar"
+                                                anchorEl={anchorEl}
+                                                anchorOrigin={{
+                                                    vertical: 'top',
+                                                    horizontal: 'right',
+                                                }}
+                                                transformOrigin={{
+                                                    vertical: 'top',
+                                                    horizontal: 'right',
+                                                }}
+                                                open={open}
+                                                onClose={this.handleClose}
+                                            >
 
-                                                    <MenuItem onClick={() => { window.location.href= "https://www.plataformadigitalnacional.org/blog"}}>Blog</MenuItem>
-                                                    <MenuItem component={Link} to="/faq">Preguntas frecuentes</MenuItem>
-                                                    <MenuItem onClick={() => { window.location.href= "https://www.plataformadigitalnacional.org/"}}>¿Qué es la PDN?</MenuItem>
-                                                    <MenuItem onClick={() => { window.location.href= "https://www.plataformadigitalnacional.org/terminos"}}>Términos de uso</MenuItem>
-                                                    <MenuItem onClick={this.handleSignOut}>Cerrar sesión</MenuItem>
-                                                </Menu>
-                                            </div>
-                                        )
-                                    }
+                                                <MenuItem onClick={() => { window.location.href= "https://www.plataformadigitalnacional.org/blog"}}>Blog</MenuItem>
+                                                <MenuItem component={Link} to="/faq">Preguntas frecuentes</MenuItem>
+                                                <MenuItem onClick={() => { window.location.href= "https://www.plataformadigitalnacional.org/"}}>¿Qué es la PDN?</MenuItem>
+                                                <MenuItem onClick={() => { window.location.href= "https://www.plataformadigitalnacional.org/terminos"}}>Términos de uso</MenuItem>
+                                                <MenuItem onClick={this.handleSignOut}>Cerrar sesión</MenuItem>
+                                            </Menu>
+                                        </div>
+                                    )
+                                }
 
-                                </Toolbar>
+                            </Toolbar>
 
-                            </Grid>
                         </Grid>
-                    </AppBar>
-                </div>
-                {
-                    /*
-                     <Grid container className={classes.barDemo}justify={"center"} >
-                    <Grid item xs={12} style={{textAlign: 'center'}}>
-                        <Typography variant={"title"} className={classes.textoDemo}>
-                            DEMO
-                        </Typography>
                     </Grid>
-
-                </Grid>
-                   */
-                }
-
+                </AppBar>
             </div>
         );
     }
