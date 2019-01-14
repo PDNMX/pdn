@@ -48,8 +48,8 @@ const styles = theme => ({
 class ClippedDrawer extends React.Component {
 
     state = {
-        oas: {},
-        example: {}
+        oas: null,
+        example: null
     };
 
     componentDidMount() {
@@ -61,13 +61,15 @@ class ClippedDrawer extends React.Component {
             json: true
         }));
 
-        promises.push({
+        promises.push(rp({
             url: 'https://raw.githubusercontent.com/PDNMX/api_docs/master/S1/example.json',
             method: 'GET',
             json: true
-        });
+        }));
 
         Promise.all(promises).then(data => {
+
+            console.log(data[1].results[0]);
             this.setState({
                 oas: data[0],
                 example: data[1]
@@ -154,14 +156,41 @@ class ClippedDrawer extends React.Component {
                 <main className={classes.content}>
                     <div className={classes.toolbar}/>
                     <Typography variant="h4">
-                        Sistema 1 - Estandar de datos
+                        Sistema 1
+                    </Typography>
+                    <Typography variant="h4">
+                        Información personal
                     </Typography>
                     <Typography paragraph>
-                        Especificaciones técnicas
+                        Lorem ipsum
                     </Typography>
                     <code>
-                        {JSON.stringify(this.state.oas)}
+                        {this.state.example === null?"":JSON.stringify(this.state.example.results[0].informacion_personal)}
                     </code>
+
+                    <Typography variant="h4">
+                        Intereses
+                    </Typography>
+
+                    <code>{this.state.example === null?"":JSON.stringify(this.state.example.results[0].intereses)}</code>
+
+                    <Typography variant="h4">
+                        Ingresos
+                    </Typography>
+                    <code>{this.state.example === null?"":JSON.stringify(this.state.example.results[0].ingresos)}</code>
+
+                    <Typography variant="h4">
+                        Activos
+                    </Typography>
+                    <code>{this.state.example === null?"":JSON.stringify(this.state.example.results[0].activos)}</code>
+
+                    <Typography variant="h4">
+                        Pasivos
+                    </Typography>
+
+                    <code>{this.state.example === null?"":JSON.stringify(this.state.example.results[0].pasivos)}</code>
+
+
 
                 </main>
             </div>
