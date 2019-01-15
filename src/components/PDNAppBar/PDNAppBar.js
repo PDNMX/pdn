@@ -26,7 +26,7 @@ const styles = theme => ({
         flexGrow: 1,
     },
     gridItem: {
-        maxWidth: '1024px'
+        maxWidth: '1200px'
     },
     barDemo: {
         width: '100%',
@@ -38,12 +38,12 @@ const styles = theme => ({
         color : 'white'
     },
     modalParticipa: {
-    position: 'fixed',
-    width: '100%',
-    height: '100%',
-    top: 0,
-    left: 0,
-}
+        position: 'fixed',
+        width: '100%',
+        height: '100%',
+        top: 0,
+        left: 0,
+    }
 
 });
 
@@ -104,16 +104,14 @@ class PDNAppBar extends React.Component {
 
 
         return (
+            <div className={classes.root}>
+                <AppBar color="default" position="static">
 
-            <div>
-                <div className={classes.root}>
-                    <AppBar color="default" position="static">
-                        <Grid container spacing={0} justify='center'>
-                            <Grid item xs={12} className={classes.gridItem}>
-                                <Toolbar>
-                                    <IconButton color="inherit" aria-label="Menu" component={Link} to="/pdn/home">
-                                        <img src={imgHeader} alt="logoPDN" style={{width: '55px'}}/>
-
+                    <Grid container spacing={0} justify='center'>
+                        <Grid item xs={12} className={classes.gridItem}>
+                            <Toolbar>
+                                <IconButton color="inherit" aria-label="Menu" component={Link} to="/pdn/home">
+                                    <img src={imgHeader} alt="logoPDN" style={{width: '55px'}}/>
 
                                 </IconButton>
                                 <Typography variant="title" color="inherit" className={classes.flex}>
