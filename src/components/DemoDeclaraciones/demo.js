@@ -29,7 +29,8 @@ const styles = theme => ({
             marginLeft: theme.spacing.unit,
             marginRight: theme.spacing.unit,
 
-        }
+        },
+
     },
     title: {
         color: theme.palette.textPrincipal.color,
@@ -46,7 +47,7 @@ const styles = theme => ({
     },
     bgImg: {
         height: '300px',
-        backgroundImage: 'url(test2.jpg)',
+        backgroundImage: 'url(/test2.jpg)',
         backgroundPosition: 'bottom',
         backgroundRepeat: 'no-repeat',
         textAlign: 'left',
@@ -76,10 +77,13 @@ const styles = theme => ({
         }
     },
     button: {
-        margin: theme.spacing.unit,
-    },
-    avatar: {
-        margin: 10
+        [theme.breakpoints.up('sm')]: {
+            margin: theme.spacing.unit,
+        },
+        [theme.breakpoints.down('sm')]: {
+            margin: '0',
+        }
+
     },
     progress: {
         position: 'absolute',
@@ -88,6 +92,9 @@ const styles = theme => ({
         right: 0,
         top: 0,
         bottom: 0
+    },
+    gridItem: {
+        maxWidth: '1024px'
     },
 });
 
@@ -98,7 +105,7 @@ class DemoDeclaraciones extends React.Component {
         apellidoUno: '',
         apellidoDos: '',
         bandera: 0,
-        srcAvatar: 'avatarUno.png',
+        srcAvatar: '/avatarUno.png',
         registros: [],
         showTable: false,
         loading: false,
@@ -123,7 +130,9 @@ class DemoDeclaraciones extends React.Component {
                 bandera: 0,
                 registros: [],
                 showTable: false,
-                srcAvatar: event.target.value === 'Auditor Superior de la Federación' ? 'avatarUno.png' : event.target.value === 'Secretario de la Función Pública' ? 'avatarDos.png' : 'avatarTres.png'
+                srcAvatar: event.target.value === 'profile_4' ? '/avatarUno.png' : event.target.value === 'profile_2' ? '/avatarDos.png' : event.target.value==='profile_3'? '/avatarTres.png' : '/avatarCuatro.png'
+            },()=>{
+                console.log("Avatar: ",this.state.srcAvatar);
             });
     };
 
@@ -168,16 +177,16 @@ class DemoDeclaraciones extends React.Component {
     search = () => {
         const API_URL = process.env.API_URL || 'https://demospdn.host/demo1/api/s1/declaraciones';
         this.setState({loading: true});
+        let qs = {};
+        this.state.nombre?qs.nombres=this.state.nombre:null;
+        this.state.apellidoUno?qs.primer_apellido=this.state.apellidoUno:null;
+        this.state.apellidoDos?qs.segundo_apellido=this.state.apellidoDos:null;
+        qs.skip = this.state.page * this.state.rowsPerPage;
+        qs.limit = this.state.rowsPerPage;
 
         let options = {
             uri: API_URL,
-            qs: {
-                nombres: this.state.nombre,
-                primer_apellido: this.state.apellidoUno,
-                segundo_apellido: this.state.apellidoDos,
-                skip: this.state.page * this.state.rowsPerPage,
-                limit: this.state.rowsPerPage
-            },
+            qs: qs,
             json: true,
             insecure: true
 
@@ -252,86 +261,85 @@ class DemoDeclaraciones extends React.Component {
                         }
                         <Grid container justify={'center'} spacing={0} aria-describedby={'spinnerLoading'}
                               aria-busy={this.state.loading}>
-                            <Grid item xs={12} className={classes.section}>
+                            <Grid item xs={12} className={classes.gridItem}>
                                 <Grid container spacing={16}>
-                                    <Grid item xs={12}>
+                                    <Grid item xs={12} >
                                         <Typography variant={'title'} className={classes.title}>Consulta</Typography>
                                     </Grid>
-
-                                    <Grid item xs={3}>
+                                    <Grid item xs={4}>
                                         <TextField
                                             id="standard-name"
                                             label="Nombre(s)"
-                                            className={classes.textField}
                                             value={this.state.nombre}
                                             onChange={this.handleChange('nombre')}
                                             margin="normal"
-
+                                            fullWidth={true}
                                         />
                                     </Grid>
                                     <Grid item xs={3}>
                                         <TextField
                                             id="standard-name"
                                             label="Apellido uno"
-                                            className={classes.textField}
                                             value={this.state.apellidoUno}
                                             onChange={this.handleChange('apellidoUno')}
                                             margin="normal"
+                                            fullWidth={true}
                                         />
                                     </Grid>
                                     <Grid item xs={3}>
                                         <TextField
                                             id="standard-name"
                                             label="Apellido dos"
-                                            className={classes.textField}
                                             value={this.state.apellidoDos}
                                             onChange={this.handleChange('apellidoDos')}
                                             margin="normal"
+                                            fullWidth={true}
                                         />
                                     </Grid>
                                     <Grid item xs={1}>
                                         <Tooltip title={'Buscar'}>
-                                            <IconButton color="primary" className={classes.button}
-                                                        aria-label="Add to shopping cart" onClick={this.search}>
+                                            <IconButton color="primary"  onClick={this.search}>
                                                 <SearchIcon/>
                                             </IconButton>
                                         </Tooltip>
-
                                     </Grid>
                                     <Grid item xs={1}>
                                         <Tooltip title={'Limpiar'}>
-                                            <IconButton color="primary" className={classes.button}
-                                                        aria-label="Add to shopping cart" onClick={this.clean}>
+                                            <IconButton color="primary"  onClick={this.clean}>
                                                 <ClearIcon/>
                                             </IconButton>
                                         </Tooltip>
                                     </Grid>
-                                    <Grid item xs={12}>
-                                        {this.state.showTable &&
-                                        <Typography variant={'title'} className={classes.title}> Resultados
-                                            previos</Typography>
-                                        }
-                                    </Grid>
-                                    <Grid item xs={12}>
-                                        {this.state.showTable &&
-                                        <TablaPre registros={this.state.registros} getRegistro={this.getRegistro}
-                                                  totalRows={this.state.totalRows} rowsPerPage={this.state.rowsPerPage}
-                                                  page={this.state.page}
-                                                  handleChangePage={this.handleChangePage}
-                                                  handleChangeRowsPerPage={this.handleChangeRowsPerPage}/>
-                                        }
-                                    </Grid>
 
-                                    <Grid item xs={12}>
-                                        {
-                                            this.state.bandera === 1 &&
-                                            <Mensaje mensaje={'El usuario no cuenta con los permisos suficientes'}/>
-                                        }
-                                        {
-                                            // this.state.bandera === 2 && <Registro declaracion={this.state.declaracion}/>
-                                            this.state.bandera === 2 && <Tabs declaracion={this.state.declaracion}/>
-                                        }
-                                    </Grid>
+                                </Grid>
+                            </Grid>
+                            <Grid item xs = {12} className={classes.gridItem}>
+
+                                <Grid item xs={12}>
+                                    {this.state.showTable &&
+                                    <Typography variant={'title'} className={classes.title}> Resultados
+                                        previos</Typography>
+                                    }
+                                </Grid>
+                                <Grid item xs={12}>
+                                    {this.state.showTable &&
+                                    <TablaPre registros={this.state.registros} getRegistro={this.getRegistro}
+                                              totalRows={this.state.totalRows} rowsPerPage={this.state.rowsPerPage}
+                                              page={this.state.page}
+                                              handleChangePage={this.handleChangePage}
+                                              handleChangeRowsPerPage={this.handleChangeRowsPerPage}/>
+                                    }
+                                </Grid>
+
+                                <Grid item xs={12}>
+                                    {
+                                        this.state.bandera === 1 &&
+                                        <Mensaje mensaje={'El usuario no cuenta con los permisos suficientes'}/>
+                                    }
+                                    {
+                                        // this.state.bandera === 2 && <Registro declaracion={this.state.declaracion}/>
+                                        this.state.bandera === 2 && <Tabs declaracion={this.state.declaracion}/>
+                                    }
                                 </Grid>
                             </Grid>
                         </Grid>

@@ -79,7 +79,7 @@ const pdnRoutes = [
     {
         path : "/pdn/demodeclaraciones",
         component: DemoDeclaraciones,
-        private: true
+        private: false
     },
     {
         path: "/conexion",

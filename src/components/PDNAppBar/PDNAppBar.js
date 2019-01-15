@@ -26,7 +26,7 @@ const styles = theme => ({
         flexGrow: 1,
     },
     gridItem: {
-        maxWidth: '1200px'
+        maxWidth: '1024px'
     },
     barDemo: {
         width: '100%',
@@ -107,7 +107,6 @@ class PDNAppBar extends React.Component {
             <div>
                 <div className={classes.root}>
                     <AppBar color="default" position="static">
-
                         <Grid container spacing={0} justify='center'>
                             <Grid item xs={12} className={classes.gridItem}>
                                 <Toolbar>

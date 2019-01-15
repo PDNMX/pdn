@@ -28,7 +28,7 @@ class TabsDemo extends React.Component{
         const { value } = this.state;
         return (
             <div>
-                <Tabs value = {value} onChange={this.handleChange}>
+                <Tabs value = {value} onChange={this.handleChange} variant={'scrollable'} scrollable={true}>
                     <Tab value={'IP'} label="Información personal"/>
                     <Tab value={'INT'} label="Intereses" />
                     <Tab value={'ING'} label="Ingresos" />
