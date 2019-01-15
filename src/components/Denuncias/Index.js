@@ -4,7 +4,6 @@ import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Header from "../PDNAppBar/PDNAppBar";
-import PDNLinks from "../PDNLinks/PDNLinks";
 import Footer from "../Footer/Footer";
 import img1 from "../../assets/img/hands.jpg";
 import img2 from "../../assets/img/caseFile.jpg";
@@ -147,13 +146,7 @@ class Index extends React.Component {
                     </div>
                 </div>
 
-                <div className={classes.links}>
-                    <Grid container spacing={0} justify='center'>
-                        <Grid item xs={12} className={classes.section}>
-                            <PDNLinks/>
-                        </Grid>
-                    </Grid>
-                </div>
+
                 <Footer/>
             </div>
         );
