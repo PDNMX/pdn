@@ -120,7 +120,7 @@ class ClippedDrawer extends React.Component {
                         </IconButton>
 
                         <Typography variant="h6" color="inherit" noWrap className={classes.flex}>
-                            
+
                         </Typography>
                     </Toolbar>
                 </AppBar>
