@@ -11,31 +11,10 @@ import TableCell from "@material-ui/core/TableCell/TableCell";
 import TableBody from "@material-ui/core/TableBody/TableBody";
 
 const styles = theme => ({
-    title: {
-        color: theme.palette.textPrincipal.color,
-        textAlign: 'center',
-        marginTop: theme.spacing.unit * 2,
-    },
-    section: {
-        maxWidth: '1024px'
-    },
-    center: {
-        textAlign: 'center'
-    },
-    container: {
-        [theme.breakpoints.up('sm')]: {
-            marginLeft: '100px',
-            marginRight: '100px'
-        },
-        [theme.breakpoints.down('sm')]: {
-            marginLeft: theme.spacing.unit,
-            marginRight: theme.spacing.unit
-        }
-    },
     table: {
         minWidth: 700,
     },
-    tableContainer :{
+    tableContainer: {
         width: '100%',
         marginTop: theme.spacing.unit * 3,
         overflowX: 'auto',
@@ -53,67 +32,47 @@ class DatosCurriculares extends React.Component {
     render() {
         const {classes, datos_curriculares} = this.props;
         return (
-            <div>
-                <div className={classes.bgPanelLight}>
-                    <Grid container justify={'center'} spacing={0}>
-                        <Grid item xs={12} className={classes.section}>
-                            <Grid container spacing={24}>
-                                <Grid item xs={12}>
-                                    <TextField disabled
-                                        id="gradoMaximoEscolaridad"
-                                        label="Grado máximo escolaridad: "
-                                        className={classes.textField}
-                                        value={datos_curriculares.grado_maximo_escolaridad}
-                                        margin="normal" fullWidth
-                                    />
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <Typography variant={'subheading'}
-                                                className={classes.title}>{'Grados académicos'}</Typography>
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <div className={classes.tableContainer}>
-                                        <Table className={classes.table}>
-                                            <TableHead>
-                                                <TableRow>
-                                                    <TableCell>Grado</TableCell>
-                                                    <TableCell>Carrera</TableCell>
-                                                    <TableCell>Institución educativa</TableCell>
-                                                    <TableCell>Estatus</TableCell>
-                                                    <TableCell>Año conclusión</TableCell>
-                                                    <TableCell>Documento obtenido</TableCell>
-                                                    <TableCell>Cédula profesional</TableCell>
+            <div className={classes.tableContainer}>
+                <TextField disabled
+                           id="gradoMaximoEscolaridad"
+                           label="Grado máximo escolaridad: "
+                           className={classes.textField}
+                           value={datos_curriculares.grado_maximo_escolaridad}
+                           margin="normal" fullWidth
+                />
+                <Typography variant={'subheading'}
+                            className={classes.title}>{'Grados académicos'}</Typography>
+                <Table className={classes.table}>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Grado</TableCell>
+                            <TableCell>Carrera</TableCell>
+                            <TableCell>Institución educativa</TableCell>
+                            <TableCell>Estatus</TableCell>
+                            <TableCell>Año conclusión</TableCell>
+                            <TableCell>Documento obtenido</TableCell>
+                            <TableCell>Cédula profesional</TableCell>
 
-                                                </TableRow>
-                                            </TableHead>
-                                            <TableBody>
-                                                { datos_curriculares.grados_academicos.map((row,index=0 )=> {
-                                                    return(
-                                                        <TableRow key={index++}>
-                                                            <TableCell>{row.grado_obtenido}</TableCell>
-                                                            <TableCell>{row.carrera}</TableCell>
-                                                            <TableCell>{row.institucion_educativa}</TableCell>
-                                                            <TableCell>{row.estatus.valor}</TableCell>
-                                                            <TableCell>{row.ano_conclusion}</TableCell>
-                                                            <TableCell>{row.documento_obtenido.valor}</TableCell>
-                                                            <TableCell>{row.cedula_profesional}</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {datos_curriculares.grados_academicos.map((row, index = 0) => {
+                            return (
+                                <TableRow key={index++}>
+                                    <TableCell>{row.grado_obtenido}</TableCell>
+                                    <TableCell>{row.carrera}</TableCell>
+                                    <TableCell>{row.institucion_educativa}</TableCell>
+                                    <TableCell>{row.estatus.valor}</TableCell>
+                                    <TableCell>{row.ano_conclusion}</TableCell>
+                                    <TableCell>{row.documento_obtenido.valor}</TableCell>
+                                    <TableCell>{row.cedula_profesional}</TableCell>
 
-                                                        </TableRow>
-                                                    )
-                                                })
-                                                }
-                                            </TableBody>
-                                        </Table>
-                                    </div>
-
-                                </Grid>
-
-                            </Grid>
-                        </Grid>
-                    </Grid>
-
-                </div>
-
+                                </TableRow>
+                            )
+                        })
+                        }
+                    </TableBody>
+                </Table>
             </div>
         );
     }

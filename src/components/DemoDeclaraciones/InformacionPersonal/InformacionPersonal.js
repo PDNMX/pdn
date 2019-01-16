@@ -28,7 +28,7 @@ class InformacionPersonal extends React.Component {
                     <Grid container justify={'center'} spacing={0}>
                         <Grid item xs={12} className={classes.section}>
                             <Grid container spacing={24}>
-                                <Grid item xs={3}>
+                                <Grid item xs={6} md={3}>
                                     <TextField
                                         disabled
                                         id="nombre"
@@ -38,7 +38,7 @@ class InformacionPersonal extends React.Component {
                                         margin="normal" fullWidth
                                     />
                                 </Grid>
-                                <Grid item xs={3}>
+                                <Grid item xs = {6} md={3}>
                                     <TextField
                                         disabled
                                         id="apellidoUno"
@@ -48,7 +48,7 @@ class InformacionPersonal extends React.Component {
                                         margin="normal" fullWidth
                                     />
                                 </Grid>
-                                <Grid item xs={3}>
+                                <Grid item xs={6} md={3}>
                                     <TextField disabled
                                         id="apellidoDos"
                                         label="Apellido dos: "
@@ -57,7 +57,7 @@ class InformacionPersonal extends React.Component {
                                         margin="normal" fullWidth
                                     />
                                 </Grid>
-                                <Grid item xs={3}>
+                                <Grid item xs={6} md={3}>
                                     <TextField disabled
                                         id="fechaDeclaracion"
                                         label="Fecha declaración: "
@@ -66,7 +66,7 @@ class InformacionPersonal extends React.Component {
                                         margin="normal" fullWidth
                                     />
                                 </Grid>
-                                <Grid item xs={3}>
+                                <Grid item xs={6} md={3}>
                                     <TextField disabled
                                         id="curp"
                                         label="CURP: "
@@ -75,7 +75,7 @@ class InformacionPersonal extends React.Component {
                                         margin="normal" fullWidth
                                     />
                                 </Grid>
-                                <Grid item xs={3}>
+                                <Grid item xs={6} md={3}>
                                     <TextField disabled
                                         id="rfc"
                                         label="RFC: "
@@ -84,7 +84,7 @@ class InformacionPersonal extends React.Component {
                                         margin="normal" fullWidth
                                     />
                                 </Grid>
-                                <Grid item xs={3}>
+                                <Grid item xs={6} md={3}>
                                     <TextField disabled
                                         id="nacionalidad"
                                         label="Nacionalidades: "
@@ -93,7 +93,7 @@ class InformacionPersonal extends React.Component {
                                         margin="normal" fullWidth
                                     />
                                 </Grid>
-                                <Grid item xs={3}>
+                                <Grid item md={3} xs={6}>
                                     <TextField disabled
                                         id="paisNacimiento"
                                         label="País nacimiento: "
@@ -104,7 +104,7 @@ class InformacionPersonal extends React.Component {
                                 </Grid>
 
 
-                                <Grid item xs={3}>
+                                <Grid item xs={6} md={3}>
                                     <TextField disabled
                                         id="entidadFederativaNacimiento"
                                         label="Entidad federativa nacimiento: "
@@ -113,7 +113,7 @@ class InformacionPersonal extends React.Component {
                                         margin="normal" fullWidth
                                     />
                                 </Grid>
-                                <Grid item xs={3}>
+                                <Grid item xs={6} md={3}>
                                     <TextField disabled
                                         id="fechaNacimiento"
                                         label="Fecha nacimiento: "
@@ -123,7 +123,7 @@ class InformacionPersonal extends React.Component {
                                     />
                                 </Grid>
 
-                                <Grid item xs={3}>
+                                <Grid item xs={6} md={3}>
                                     <TextField disabled
                                         id="numeroIdentificacion"
                                         label="Numero identificacion oficial: "
@@ -132,7 +132,7 @@ class InformacionPersonal extends React.Component {
                                         margin="normal" fullWidth
                                     />
                                 </Grid>
-                                <Grid item xs={3}>
+                                <Grid item xs={6} md={3}>
                                     <TextField disabled
                                         id="correoLaboral"
                                         label="Correo electrónico laboral: "
@@ -141,7 +141,7 @@ class InformacionPersonal extends React.Component {
                                         margin="normal" fullWidth
                                     />
                                 </Grid>
-                                <Grid item xs={3}>
+                                <Grid item xs={6} md={3}>
                                     <TextField disabled
                                         id="correoPersonal"
                                         label="Correo electrónico personal: "
@@ -150,7 +150,7 @@ class InformacionPersonal extends React.Component {
                                         margin="normal" fullWidth
                                     />
                                 </Grid>
-                                <Grid item xs={3}>
+                                <Grid item xs={6} md={3}>
                                     <TextField disabled
                                         id="telefonoPersonal"
                                         label="Teléfono personal: "
@@ -159,7 +159,7 @@ class InformacionPersonal extends React.Component {
                                         margin="normal" fullWidth
                                     />
                                 </Grid>
-                                <Grid item xs={3}>
+                                <Grid item xs={6} md={3}>
                                     <TextField disabled
                                         id="celular"
                                         label="Teléfono celular: "
@@ -168,7 +168,7 @@ class InformacionPersonal extends React.Component {
                                         margin="normal" fullWidth
                                     />
                                 </Grid>
-                                <Grid item xs={3}>
+                                <Grid item xs={6} md={3}>
                                     <TextField disabled
                                         id="estadoCivil"
                                         label="Estado civil: "
@@ -177,7 +177,7 @@ class InformacionPersonal extends React.Component {
                                         margin="normal" fullWidth
                                     />
                                 </Grid>
-                                <Grid item xs={3}>
+                                <Grid item xs={6} md={3}>
                                     <TextField disabled
                                         id="regimenMatrimonial"
                                         label="Régimen matrimonial: "
@@ -186,11 +186,11 @@ class InformacionPersonal extends React.Component {
                                         margin="normal" fullWidth
                                     />
                                 </Grid>
-                                <Grid item xs={12}>
+                                <Grid item  xs={12}>
                                     <Typography variant={'subheading'}
                                                 className={classes.title}>{'Domicilio'}</Typography>
                                 </Grid>
-                                <Grid item xs={3}>
+                                <Grid item md={3} xs={6}>
                                     <TextField disabled
                                         id="domicilioPais"
                                         label="País: "
@@ -199,7 +199,7 @@ class InformacionPersonal extends React.Component {
                                         margin="normal" fullWidth
                                     />
                                 </Grid>
-                                <Grid item xs={3}>
+                                <Grid item md={3} xs={6}>
                                     <TextField disabled
                                         id="domicilioEntidad"
                                         label="Entidad federavia: "
@@ -208,7 +208,7 @@ class InformacionPersonal extends React.Component {
                                         margin="normal" fullWidth
                                     />
                                 </Grid>
-                                <Grid item xs={3}>
+                                <Grid item md={3} xs={6}>
                                     <TextField disabled
                                         id="domicilioMunicipio"
                                         label="Municipio: "
@@ -217,7 +217,7 @@ class InformacionPersonal extends React.Component {
                                         margin="normal" fullWidth
                                     />
                                 </Grid>
-                                <Grid item xs={3}>
+                                <Grid item md={3} xs={6}>
                                     <TextField disabled
                                         id="domicilioCP"
                                         label="Código postal: "
@@ -226,7 +226,7 @@ class InformacionPersonal extends React.Component {
                                         margin="normal" fullWidth
                                     />
                                 </Grid>
-                                <Grid item xs={3}>
+                                <Grid item md={3} xs={6}>
                                     <TextField disabled
                                         id="domicilioColonia"
                                         label="Colonia: "
@@ -235,7 +235,7 @@ class InformacionPersonal extends React.Component {
                                         margin="normal" fullWidth
                                     />
                                 </Grid>
-                                <Grid item xs={3}>
+                                <Grid item md={3} xs={6}>
                                     <TextField disabled
                                         id="domicilioTipoVia"
                                         label="Tipo de vía: "
@@ -244,7 +244,7 @@ class InformacionPersonal extends React.Component {
                                         margin="normal" fullWidth
                                     />
                                 </Grid>
-                                <Grid item xs={3}>
+                                <Grid item md={3} xs={6}>
                                     <TextField disabled
                                         id="domicilioNombreVia"
                                         label="Nombre de la vía: "
@@ -253,7 +253,7 @@ class InformacionPersonal extends React.Component {
                                         margin="normal" fullWidth
                                     />
                                 </Grid>
-                                <Grid item xs={3}>
+                                <Grid item md={3} xs={6}>
                                     <TextField disabled
                                         id="domicilionoExterior"
                                         label="Número exterior: "
@@ -262,7 +262,7 @@ class InformacionPersonal extends React.Component {
                                         margin="normal" fullWidth
                                     />
                                 </Grid>
-                                <Grid item xs={3}>
+                                <Grid item md={3} xs={6}>
                                     <TextField disabled
                                         id="domicilioInterior"
                                         label="Número interior: "

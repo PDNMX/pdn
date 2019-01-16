@@ -12,14 +12,16 @@ import ExperienciaLaboral from "./ExperienciaLaboral";
 import DependientesEconomicos from "./DependientesEconomicos";
 
 const styles = theme => ({
-
+    container:{
+        maxWidth:'1024px'
+    }
 });
 
 class Registro extends  React.Component{
     render() {
         const {declaracion,classes} = this.props;
         return (
-            <div>
+            <div >
                 <ExpansionPanel>
                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
                         <Typography className={classes.heading}>Información

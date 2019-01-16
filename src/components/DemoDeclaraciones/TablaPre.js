@@ -31,7 +31,7 @@ class TablaPre extends React.Component {
         const {registros, classes, getRegistro,totalRows,rowsPerPage,page,handleChangePage,handleChangeRowsPerPage} = this.props;
         return (
             <div className={classes.tableContainer}>
-                <Table className={classes.table}>
+                <Table >
                     <TableHead>
                         <TableRow>
                             <TableCell>Nombre completo</TableCell>
