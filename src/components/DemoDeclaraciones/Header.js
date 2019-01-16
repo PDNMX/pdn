@@ -8,24 +8,31 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
-import Avatar from "@material-ui/core/Avatar/Avatar";
-import MenuItem from "@material-ui/core/MenuItem/MenuItem";
-import Select from "@material-ui/core/Select/Select";
+import Avatar from "@material-ui/core/Avatar";
+import MenuItem from "@material-ui/core/MenuItem";
+import Select from "@material-ui/core/Select";
 import FormControl from "@material-ui/core/FormControl/FormControl";
 import Input from "@material-ui/core/Input/Input";
+import InputLabel from "@material-ui/core/InputLabel/InputLabel";
 
 
 const styles = theme => ({
     root: {
         flexGrow: 1,
-        marginBottom: theme.spacing.unit * 1
     },
     flex: {
         flexGrow: 1,
     },
     gridItem: {
-        maxWidth: '1200px'
+        maxWidth: '1024px'
     },
+    avatar:{
+        display:'inline-block'
+    },
+    inputCss:{
+        overflow : 'hidden',
+        textOverflow : 'ellipsis'
+    }
 });
 
 class PDNAppBar extends React.Component {
@@ -55,7 +62,6 @@ class PDNAppBar extends React.Component {
             backgroundColor: 'blue'
         };
         return (
-            <div>
                 <div className={classes.root}>
                     <AppBar color="default" position="static">
                         <Grid container spacing={0} justify='center'>
@@ -67,40 +73,31 @@ class PDNAppBar extends React.Component {
                                     <Typography variant="title" color="inherit" className={classes.flex}>
 
                                     </Typography>
-                                    <IconButton
-                                        aria-owns={this.state.open ? 'menu-appbar' : null}
-                                        aria-haspopup="true"
-                                        onClick={this.handleMenu}
-                                        color="inherit"
-                                    >
-                                        <Avatar src={srcAvatar} className={classes.avatar}/>
-                                    </IconButton>
-                                    <Select
-                                        id="menu-appbar"
-                                        open={this.state.open}
-                                        onClose={this.handleClose}
-                                        value={user}
-                                        onChange={handleChangeUser}
-                                        onOpen={this.handleOpen}
-                                        MenuProps={{
-
-                                        }}
-                                    >
-                                        <MenuItem value={'profile_4'} onClick={this.handleClose}>Auditor Superior de
-                                            la Federación</MenuItem>
-                                        <MenuItem value={'profile_2'} onClick={this.handleClose}>Secretario de la
-                                            Función Pública</MenuItem>
-                                        <MenuItem value={'profile_1'} onClick={this.handleClose}>Ministerio
-                                            público</MenuItem>
-                                        <MenuItem value={'profile_3'} onClick={this.handleClose}>Público</MenuItem>
-                                    </Select>
-
+                                    <Avatar src={srcAvatar} />
+                                    <div>
+                                        <Select
+                                            value={user}
+                                            onChange={handleChangeUser}
+                                            name={'selectProfile'}
+                                            SelectDisplayProps={{
+                                                id:'testIsela',
+                                                className:classes.inputCss
+                                            }}
+                                        >
+                                            <MenuItem value={'profile_4'}>Auditor Superior de
+                                                la Federación</MenuItem>
+                                            <MenuItem value={'profile_2'}>Secretario de la
+                                                Función Pública</MenuItem>
+                                            <MenuItem value={'profile_1'} >Ministerio
+                                                público</MenuItem>
+                                            <MenuItem value={'profile_3'}>Público</MenuItem>
+                                        </Select>
+                                    </div>
                                 </Toolbar>
                             </Grid>
                         </Grid>
                     </AppBar>
                 </div>
-            </div>
 
         );
     }

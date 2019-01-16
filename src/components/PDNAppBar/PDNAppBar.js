@@ -106,7 +106,6 @@ class PDNAppBar extends React.Component {
         return (
             <div className={classes.root}>
                 <AppBar color="default" position="static">
-
                     <Grid container spacing={0} justify='center'>
                         <Grid item xs={12} className={classes.gridItem}>
                             <Toolbar>

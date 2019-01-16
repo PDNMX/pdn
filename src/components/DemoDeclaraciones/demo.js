@@ -40,7 +40,7 @@ const styles = theme => ({
     bgPanelLight: {
         backgroundColor: theme.palette.white.color,
         minHeight: '550px',
-        paddingBottom: '50px',
+        paddingBottom: '50px'
     },
     section: {
         maxWidth: '1024px'
@@ -94,8 +94,19 @@ const styles = theme => ({
         bottom: 0
     },
     gridItem: {
-        maxWidth: '1024px'
+        [theme.breakpoints.up('sm')]: {
+           maxWidth: '1024px'
+        },
     },
+    botonera:{
+        textAlign : 'center'
+    },
+    tabsRoot:{
+        flex : '1 1 100%',
+        minHeight: 0,
+        display: 'flex',
+        flexDirection: 'column'
+    }
 });
 
 class DemoDeclaraciones extends React.Component {
@@ -130,9 +141,7 @@ class DemoDeclaraciones extends React.Component {
                 bandera: 0,
                 registros: [],
                 showTable: false,
-                srcAvatar: event.target.value === 'profile_4' ? '/avatarUno.png' : event.target.value === 'profile_2' ? '/avatarDos.png' : event.target.value==='profile_3'? '/avatarTres.png' : '/avatarCuatro.png'
-            },()=>{
-                console.log("Avatar: ",this.state.srcAvatar);
+                srcAvatar: event.target.value === 'profile_4' ? '/avatarUno.png' : event.target.value === 'profile_2' ? '/avatarDos.png' : event.target.value === 'profile_3' ? '/avatarTres.png' : '/avatarCuatro.png'
             });
     };
 
@@ -178,9 +187,9 @@ class DemoDeclaraciones extends React.Component {
         const API_URL = process.env.API_URL || 'https://demospdn.host/demo1/api/s1/declaraciones';
         this.setState({loading: true});
         let qs = {};
-        this.state.nombre?qs.nombres=this.state.nombre:null;
-        this.state.apellidoUno?qs.primer_apellido=this.state.apellidoUno:null;
-        this.state.apellidoDos?qs.segundo_apellido=this.state.apellidoDos:null;
+        this.state.nombre ? qs.nombres = this.state.nombre : null;
+        this.state.apellidoUno ? qs.primer_apellido = this.state.apellidoUno : null;
+        this.state.apellidoDos ? qs.segundo_apellido = this.state.apellidoDos : null;
         qs.skip = this.state.page * this.state.rowsPerPage;
         qs.limit = this.state.rowsPerPage;
 
@@ -226,7 +235,6 @@ class DemoDeclaraciones extends React.Component {
     };
     clean = () => {
         this.setState({
-            user: 'profile_1',
             nombre: '',
             apellidoUno: '',
             apellidoDos: '',
@@ -236,12 +244,14 @@ class DemoDeclaraciones extends React.Component {
         });
     };
 
+
     render() {
         const {classes} = this.props;
         return (
             <div>
                 <Header user={this.state.user} srcAvatar={this.state.srcAvatar}
                         handleChangeUser={this.handleChangeUser}/>
+
                 <div className={classes.bgImg}>
                     <div className={classes.container}>
                         <Grid container spacing={24}>
@@ -254,19 +264,19 @@ class DemoDeclaraciones extends React.Component {
                     </div>
                 </div>
                 <div className={classes.bgPanelLight}>
-                    <div className={classes.root}>
+                    <div className={classes.root} id={'root1'}>
                         {
                             this.state.loading &&
                             <CircularProgress className={classes.progress} id="spinnerLoading" size={100}/>
                         }
                         <Grid container justify={'center'} spacing={0} aria-describedby={'spinnerLoading'}
-                              aria-busy={this.state.loading}>
-                            <Grid item xs={12} className={classes.gridItem}>
-                                <Grid container spacing={16}>
-                                    <Grid item xs={12} >
+                              aria-busy={this.state.loading} id={'container1'}>
+                            <Grid item xs={12}  id={'item1C1'} className={classes.gridItem}>
+                                <Grid container spacing={8} id={'container2'}>
+                                    <Grid item xs={12} id={'item1C2'}>
                                         <Typography variant={'title'} className={classes.title}>Consulta</Typography>
                                     </Grid>
-                                    <Grid item xs={4}>
+                                    <Grid item xs={12} md={3}>
                                         <TextField
                                             id="standard-name"
                                             label="Nombre(s)"
@@ -276,7 +286,7 @@ class DemoDeclaraciones extends React.Component {
                                             fullWidth={true}
                                         />
                                     </Grid>
-                                    <Grid item xs={3}>
+                                    <Grid item xs={12} md={3}>
                                         <TextField
                                             id="standard-name"
                                             label="Apellido uno"
@@ -286,7 +296,7 @@ class DemoDeclaraciones extends React.Component {
                                             fullWidth={true}
                                         />
                                     </Grid>
-                                    <Grid item xs={3}>
+                                    <Grid item xs={12} md={3}>
                                         <TextField
                                             id="standard-name"
                                             label="Apellido dos"
@@ -296,52 +306,47 @@ class DemoDeclaraciones extends React.Component {
                                             fullWidth={true}
                                         />
                                     </Grid>
-                                    <Grid item xs={1}>
-                                        <Tooltip title={'Buscar'}>
-                                            <IconButton color="primary"  onClick={this.search}>
+                                    <Grid item xs={12} md={3} className={classes.botonera}>
+                                        <Tooltip title={'Buscar'} >
+                                            <IconButton color="primary" onClick={this.search}>
                                                 <SearchIcon/>
                                             </IconButton>
                                         </Tooltip>
-                                    </Grid>
-                                    <Grid item xs={1}>
                                         <Tooltip title={'Limpiar'}>
-                                            <IconButton color="primary"  onClick={this.clean}>
+                                            <IconButton color="primary" onClick={this.clean}>
                                                 <ClearIcon/>
                                             </IconButton>
                                         </Tooltip>
                                     </Grid>
 
+                                    <Grid item xs={12}>
+                                        {this.state.showTable &&
+                                        <Typography variant={'title'} className={classes.title}> Resultados
+                                            previos</Typography>
+                                        }
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        {this.state.showTable &&
+                                        <TablaPre registros={this.state.registros} getRegistro={this.getRegistro}
+                                                  totalRows={this.state.totalRows} rowsPerPage={this.state.rowsPerPage}
+                                                  page={this.state.page}
+                                                  handleChangePage={this.handleChangePage}
+                                                  handleChangeRowsPerPage={this.handleChangeRowsPerPage}/>
+                                        }
+                                    </Grid>
+                                    <Grid item xs={12} id={'itemTabs'}>
+                                        {
+                                            this.state.bandera === 1 &&
+                                            <Mensaje mensaje={'El usuario no cuenta con los permisos suficientes'}/>
+                                        }
+                                        {
+                                            // this.state.bandera === 2 && <Registro declaracion={this.state.declaracion}/>
+                                            this.state.bandera === 2 && <Tabs declaracion={this.state.declaracion}/>
+                                        }
+                                    </Grid>
                                 </Grid>
                             </Grid>
-                            <Grid item xs = {12} className={classes.gridItem}>
 
-                                <Grid item xs={12}>
-                                    {this.state.showTable &&
-                                    <Typography variant={'title'} className={classes.title}> Resultados
-                                        previos</Typography>
-                                    }
-                                </Grid>
-                                <Grid item xs={12}>
-                                    {this.state.showTable &&
-                                    <TablaPre registros={this.state.registros} getRegistro={this.getRegistro}
-                                              totalRows={this.state.totalRows} rowsPerPage={this.state.rowsPerPage}
-                                              page={this.state.page}
-                                              handleChangePage={this.handleChangePage}
-                                              handleChangeRowsPerPage={this.handleChangeRowsPerPage}/>
-                                    }
-                                </Grid>
-
-                                <Grid item xs={12}>
-                                    {
-                                        this.state.bandera === 1 &&
-                                        <Mensaje mensaje={'El usuario no cuenta con los permisos suficientes'}/>
-                                    }
-                                    {
-                                        // this.state.bandera === 2 && <Registro declaracion={this.state.declaracion}/>
-                                        this.state.bandera === 2 && <Tabs declaracion={this.state.declaracion}/>
-                                    }
-                                </Grid>
-                            </Grid>
                         </Grid>
 
                     </div>
