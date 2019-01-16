@@ -20,6 +20,11 @@ import LocalAtm from '@material-ui/icons/LocalAtm';
 import Business from '@material-ui/icons/Business';
 import StoreMallDirectory from '@material-ui/icons/StoreMallDirectory'
 import CreditCard from '@material-ui/icons/CreditCard';
+import Widgets from '@material-ui/icons/Widgets';
+import JSONTree from 'react-json-tree';
+import IconButton from "@material-ui/core/IconButton";
+import {Link} from "react-router-dom";
+import PDNLogo from "../../../assets/PDN.png";
 
 const drawerWidth = 240;
 
@@ -43,7 +48,31 @@ const styles = theme => ({
         padding: theme.spacing.unit * 3,
     },
     toolbar: theme.mixins.toolbar,
+    flex: {
+        flexGrow: 1
+    }
 });
+
+const theme = {
+    scheme: 'monokai',
+    author: 'wimer hazenberg (http://www.monokai.nl)',
+    base00: '#272822',
+    base01: '#383830',
+    base02: '#49483e',
+    base03: '#75715e',
+    base04: '#a59f85',
+    base05: '#f8f8f2',
+    base06: '#f5f4f1',
+    base07: '#f9f8f5',
+    base08: '#f92672',
+    base09: '#fd971f',
+    base0A: '#f4bf75',
+    base0B: '#a6e22e',
+    base0C: '#a1efe4',
+    base0D: '#66d9ef',
+    base0E: '#ae81ff',
+    base0F: '#cc6633'
+};
 
 class ClippedDrawer extends React.Component {
 
@@ -86,8 +115,12 @@ class ClippedDrawer extends React.Component {
                 <CssBaseline/>
                 <AppBar position="fixed" color="default" className={classes.appBar}>
                     <Toolbar>
-                        <Typography variant="h6" color="inherit" noWrap>
-                            Especificaciones
+                        <IconButton color="inherit" aria-label="Menu" component={Link} to="/pdn/home">
+                            <img src={PDNLogo} alt="logoPDN" style={{width: '55px'}}/>
+                        </IconButton>
+
+                        <Typography variant="h6" color="inherit" noWrap className={classes.flex}>
+                            
                         </Typography>
                     </Toolbar>
                 </AppBar>
@@ -106,29 +139,11 @@ class ClippedDrawer extends React.Component {
                     <List>
 
                         <ListItem button>
-                            <ListItemIcon><AccountBox/></ListItemIcon>
-                            <ListItemText primary="Información personal"/>
-                        </ListItem>
-                        <ListItem button>
-                            <ListItemIcon><Business/></ListItemIcon>
-                            <ListItemText primary="Intereses"/>
-                        </ListItem>
-                        <ListItem button>
-                            <ListItemIcon><LocalAtm/></ListItemIcon>
-                            <ListItemText primary="Ingresos"/>
-                        </ListItem>
-                        <ListItem button>
-                            <ListItemIcon><StoreMallDirectory/></ListItemIcon>
-                            <ListItemText primary="Activos"/>
-                        </ListItem>
-                        <ListItem button>
-                            <ListItemIcon><CreditCard/></ListItemIcon>
-                            <ListItemText primary="Pasivos"/>
+                            <ListItemIcon><Widgets/></ListItemIcon>
+                            <ListItemText primary="Estándar técnico"/>
                         </ListItem>
 
-                    </List>
-                    <Divider/>
-                    <List>
+                        <Divider/>
 
                         <ListItem button>
                             <ListItemIcon><AccountBox/></ListItemIcon>
@@ -152,6 +167,7 @@ class ClippedDrawer extends React.Component {
                         </ListItem>
 
                     </List>
+
                 </Drawer>
                 <main className={classes.content}>
                     <div className={classes.toolbar}/>
@@ -159,11 +175,18 @@ class ClippedDrawer extends React.Component {
                         Sistema 1
                     </Typography>
                     <Typography variant="h4">
-                        Información personal
+                        Estandar técnico
                     </Typography>
                     <Typography paragraph>
-                        Lorem ipsum
+                        Especificaciones
                     </Typography>
+                    <div>
+                        <JSONTree data={this.state.oas} theme={theme} invertTheme={false}/>
+                    </div>
+
+                    <div>
+                        <JSONTree data={this.state.example} theme={theme} invertTheme={false}/>
+                    </div>
                     <code>
                         {this.state.example === null?"":JSON.stringify(this.state.example.results[0].informacion_personal)}
                     </code>
