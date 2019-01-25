@@ -212,7 +212,7 @@ class ClippedDrawer extends React.Component {
                             <ListItemIcon><Build/></ListItemIcon>
                             <ListItemText primary="Herramientas"/>
                         </ListItem>
-                <Divider/>
+                        <Divider/>
                     </List>
 
                 </Drawer>
@@ -223,12 +223,12 @@ class ClippedDrawer extends React.Component {
 
 
 
-                    <Typography variant="h4">Estándar para la interoperabilidad de datos de declaraciones</Typography>
+                    <Typography variant="h4" id="estandar">Estándar para la interoperabilidad de datos de declaraciones</Typography>
                     <Typography>
                         El presente documento tiene como finalidad la descripción del estándar para la interoperabilidad de datos de declaraciones, desarrollado por la Secretaría Ejecutiva del Sistema Nacional Anticorrupción (SESNA). El presente documento introduce el modelo de interoperabilidad para los diversos sistemas de declaraciones que proveerán información a la Plataforma Digital Nacional (PDN) y se proporcionará una guía para la implementación del estándar por parte de las Instituciones.
                     </Typography>
 
-                    <Typography variant="h5">Antecedentes</Typography>
+                    <Typography variant="h5" id="antecedentes">Antecedentes</Typography>
                     <ul>
                         <li>
                             <Typography>
@@ -245,7 +245,7 @@ class ClippedDrawer extends React.Component {
                             </Typography></li>
                     </ul>
 
-                    <Typography variant="h5">
+                    <Typography variant="h5" id="introduccion">
                         Introducción
                     </Typography>
                     <Typography>
@@ -260,21 +260,21 @@ class ClippedDrawer extends React.Component {
                     <Typography>
                         Entrando en detalles más técnicos, las tecnología de APIs REST es ampliamente usada por en la industria de Internet y en la actualidad se cuenta con diversas herramientas de código abierto que permiten su implementación de manera rápida y a un bajo costo. Así también,  dichas APIs pueden ser descritas de manera precisa a través de frameworks como el Open API Specification Format; permitiendo su implementación por diversas instituciones con independencia tecnológica (pueden ser desarrolladas usando distintos lenguajes de programación, bases de datos y herramientas) sin afectar sus objetivos.
                     </Typography>
-                    <Typography variant="h5">
-                    Open API Specification
+                    <Typography variant="h5" id="oas">
+                        Open API Specification
                     </Typography>
                     <Typography>
-                    El estándar está basado en el Open API Specification, el cual permitirá describir los recursos, las operaciones, los parámetros disponibles y/o necesarios (con sus valores permitidos) y el formato de la respuesta a la petición.
+                        El estándar está basado en el Open API Specification, el cual permitirá describir los recursos, las operaciones, los parámetros disponibles y/o necesarios (con sus valores permitidos) y el formato de la respuesta a la petición.
                     </Typography>
-                    <Typography variant="h5">
-                    OAuth 2.0
+                    <Typography variant="h5" id="oauth">
+                        OAuth 2.0
                     </Typography>
                     <Typography>
                         Para proteger la seguridad en la comunicación de la PDN con las APIs de las instituciones, se usará el protocolo OAuth 2.0 es un framework de autorización que permitirá a la PDN obtener acceso necesario a las API’s de las instituciones, delegando la autenticación a las mismas.
                     </Typography>
-                    <Typography variant="h4">Implementación del estándar</Typography>
+                    <Typography variant="h4" id="implementacion">Implementación del estándar</Typography>
                     <Typography>
-                    La implementación del estándar de declaraciones representará esfuerzos de diferente magnitud dependiendo del nivel de adopción tecnológica de cada Institución. Suponiendo que una cierta Institución ya cuenta con un sistema de captura de declaraciones, el proceso de implementación del API de declaraciones puede ser dividido en los siguientes pasos:
+                        La implementación del estándar de declaraciones representará esfuerzos de diferente magnitud dependiendo del nivel de adopción tecnológica de cada Institución. Suponiendo que una cierta Institución ya cuenta con un sistema de captura de declaraciones, el proceso de implementación del API de declaraciones puede ser dividido en los siguientes pasos:
                     </Typography>
 
                     <ul>
@@ -295,20 +295,20 @@ class ClippedDrawer extends React.Component {
                         </Typography>
                         </li>
                     </ul>
-                    <Typography variant="h4">
+                    <Typography variant="h4" id="api">
                         Especificación del API de declaraciones
                     </Typography>
-                    <Typography variant="h5">
+                    <Typography variant="h5" id="comunicacion">
                         Modelo de comunicación
                     </Typography>
                     <Typography>
                         A través de la de la PDN, los usuarios serán capaces de realizar consultas a las APIs de las Instituciones, dichas consultas se configurarán usando parámetros (Ver la sección Parámetros de consulta). La Figura 1 muestra un diagrama en el cual se ejemplifica la comunicación entre el API de declaraciones de una Institución y la PDN. El API tendrá la tarea de recibir la consulta y aplicar la lógica de negocio al interior de la institución para generar la respuesta correspondiente. Dicha respuesta deberá estar apegada al estándar de declaraciones proporcionado que se proporciona en la siguiente sección.
                     </Typography>
                     ...
-                    <Typography variant="h4">
+                    <Typography variant="h4" id="parametros">
                         Parámetros de consulta
                     </Typography>
-                    <Typography variant="h4">
+                    <Typography variant="h4" id="especificaciones">
                         Especificaciones
                     </Typography>
 
@@ -318,7 +318,7 @@ class ClippedDrawer extends React.Component {
                     </div>
 
 
-                    <Typography variant="h4">
+                    <Typography variant="h4" id="ejemplos">
                         Ejemplos de respuesta
                     </Typography>
 
@@ -326,7 +326,7 @@ class ClippedDrawer extends React.Component {
                         <JSONTree data={this.state.example} theme={theme} invertTheme={false} shouldExpandNode={()=> true}/>
                     </div>
 
-                    <Typography variant="h4">Herramientas para desarrollo web</Typography>
+                    <Typography variant="h4" id="herramientas">Herramientas para desarrollo web</Typography>
 
                     <Typography>
                         La interconexión entre los sistemas de información de las Instituciones y la PDN se establecerá a través de Internet, usando servicios web o APIs con arquitectura REST (REpresentational State Transfer); REST es un modelo ampliamente usado para el desarrollo de sistemas Web. En la actualidad, existe gran variedad de herramientas de código abierto que permiten el desarrollo de APIs REST usando diferentes lenguajes de programación y tecnologías de bases de datos; entre las más destacados se encuentran:
