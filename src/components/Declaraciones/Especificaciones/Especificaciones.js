@@ -15,17 +15,22 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import Extension from '@material-ui/icons/Extension';
+import Code from '@material-ui/icons/Code';
 import AccountBox from '@material-ui/icons/AccountBox';
 import LocalAtm from '@material-ui/icons/LocalAtm';
 import Business from '@material-ui/icons/Business';
 import StoreMallDirectory from '@material-ui/icons/StoreMallDirectory'
 import CreditCard from '@material-ui/icons/CreditCard';
+import DoneAll from '@material-ui/icons/DoneAll';
+import Assignment from '@material-ui/icons/Assignment';
 import Widgets from '@material-ui/icons/Widgets';
 import JSONTree from 'react-json-tree';
 import IconButton from "@material-ui/core/IconButton";
 import {Link} from "react-router-dom";
 import PDNLogo from "../../../assets/PDN.png";
 import Build from '@material-ui/icons/Build';
+import ListSubheader from '@material-ui/core/ListSubheader';
 
 const drawerWidth = 240;
 
@@ -53,7 +58,7 @@ const styles = theme => ({
         flexGrow: 1
     },
     nested: {
-        paddingLeft: theme.spacing.unit * 4
+        paddingLeft: theme.spacing.unit * 9
     }
 });
 
@@ -140,70 +145,75 @@ class ClippedDrawer extends React.Component {
                     }}
                 >
                     <div className={classes.toolbar}/>
-                    <List>
+                    <List component="nav"
+                          subheader={<ListSubheader component="div">Declaraciones</ListSubheader>}
+                    >
                         <ListItem button>
-                            <ListItemIcon><Widgets/></ListItemIcon>
+                            <ListItemIcon><Assignment/></ListItemIcon>
                             <ListItemText primary="Antecedentes"/>
                         </ListItem>
 
+                        <Divider/>
                         <ListItem button>
-                            <ListItemIcon><Widgets/></ListItemIcon>
+                            <ListItemIcon><Extension/></ListItemIcon>
                             <ListItemText primary="Estándar"/>
                         </ListItem>
                         <List component="div" disablePadding>
                             <ListItem button className={classes.nested}>
-                                <ListItemIcon><Widgets/></ListItemIcon>
+                                {/*<ListItemIcon><Widgets/></ListItemIcon>*/}
                                 <ListItemText primary="Introducción"/>
                             </ListItem>
 
                             <ListItem button className={classes.nested}>
-                                <ListItemIcon><Widgets/></ListItemIcon>
+                                {/*<ListItemIcon><Widgets/></ListItemIcon>*/}
                                 <ListItemText primary="OAS"/>
                             </ListItem>
 
                             <ListItem button className={classes.nested}>
-                                <ListItemIcon><Widgets/></ListItemIcon>
+                                {/*<ListItemIcon><Widgets/></ListItemIcon>*/}
                                 <ListItemText primary="OAuth 2"/>
                             </ListItem>
                         </List>
 
                         <ListItem button>
-                            <ListItemIcon><Build/></ListItemIcon>
+                            <ListItemIcon><Code/></ListItemIcon>
                             <ListItemText primary="Implementación"/>
                         </ListItem>
 
+                        <Divider/>
                         <ListItem button>
-                            <ListItemIcon><Widgets/></ListItemIcon>
-                            <ListItemText primary="Especificaciones"/>
+                            <ListItemIcon><DoneAll/></ListItemIcon>
+                            <ListItemText primary="REST API"/>
                         </ListItem>
 
                         <List component="div" disablePadding>
                             <ListItem button className={classes.nested}>
-                                <ListItemIcon><Widgets/></ListItemIcon>
+                                {/*<ListItemIcon><Widgets/></ListItemIcon>*/}
                                 <ListItemText primary="Comunicación"/>
                             </ListItem>
 
                             <ListItem button className={classes.nested}>
-                                <ListItemIcon><Widgets/></ListItemIcon>
+                                {/*<ListItemIcon><Widgets/></ListItemIcon>*/}
                                 <ListItemText primary="Parámentros"/>
                             </ListItem>
 
                             <ListItem button className={classes.nested}>
-                                <ListItemIcon><Widgets/></ListItemIcon>
-                                <ListItemText primary="Especificación del API"/>
+                                {/*<ListItemIcon><Widgets/></ListItemIcon>*/}
+                                <ListItemText primary="Especificaciones"/>
                             </ListItem>
 
                             <ListItem button className={classes.nested}>
-                                <ListItemIcon><Widgets/></ListItemIcon>
+                                {/*<ListItemIcon><Widgets/></ListItemIcon>*/}
                                 <ListItemText primary="Ejemplos"/>
                             </ListItem>
 
 
                         </List>
+                        <Divider/>
 
 
                         <ListItem button>
-                            <ListItemIcon><Widgets/></ListItemIcon>
+                            <ListItemIcon><Build/></ListItemIcon>
                             <ListItemText primary="Herramientas"/>
                         </ListItem>
 
