@@ -17,8 +17,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Extension from '@material-ui/icons/Extension';
 import Code from '@material-ui/icons/Code';
-import DoneAll from '@material-ui/icons/DoneAll';
-import Assignment from '@material-ui/icons/Assignment';
+import Widgets from '@material-ui/icons/Widgets';
 import JSONTree from 'react-json-tree';
 import IconButton from "@material-ui/core/IconButton";
 import {Link} from "react-router-dom";
@@ -180,7 +179,7 @@ class ClippedDrawer extends React.Component {
                         </ListItem>
 
                         <ListItem button>
-                            <ListItemIcon><DoneAll/></ListItemIcon>
+                            <ListItemIcon><Widgets/></ListItemIcon>
                             <ListItemText primary="REST API"/>
                         </ListItem>
 
@@ -259,7 +258,7 @@ class ClippedDrawer extends React.Component {
                         Entrando en detalles más técnicos, las tecnología de APIs REST es ampliamente usada por en la industria de Internet y en la actualidad se cuenta con diversas herramientas de código abierto que permiten su implementación de manera rápida y a un bajo costo. Así también,  dichas APIs pueden ser descritas de manera precisa a través de frameworks como el Open API Specification Format; permitiendo su implementación por diversas instituciones con independencia tecnológica (pueden ser desarrolladas usando distintos lenguajes de programación, bases de datos y herramientas) sin afectar sus objetivos.
                     </Typography>
                     <Typography variant="h5">
-                    2.1 Open API Specification
+                    Open API Specification
                     </Typography>
                     <Typography>
                     El estándar está basado en el Open API Specification, el cual permitirá describir los recursos, las operaciones, los parámetros disponibles y/o necesarios (con sus valores permitidos) y el formato de la respuesta a la petición.
@@ -271,63 +270,60 @@ class ClippedDrawer extends React.Component {
                         Para proteger la seguridad en la comunicación de la PDN con las APIs de las instituciones, se usará el protocolo OAuth 2.0 es un framework de autorización que permitirá a la PDN obtener acceso necesario a las API’s de las instituciones, delegando la autenticación a las mismas.
                     </Typography>
                     <Typography variant="h4">Implementación del estándar</Typography>
+                    <Typography>
                     La implementación del estándar de declaraciones representará esfuerzos de diferente magnitud dependiendo del nivel de adopción tecnológica de cada Institución. Suponiendo que una cierta Institución ya cuenta con un sistema de captura de declaraciones, el proceso de implementación del API de declaraciones puede ser dividido en los siguientes pasos:
+                    </Typography>
 
-                    Diagnóstico: Revisar y comparar los datos contenidos en su base de datos con los especificados en la publicación del Formato de declaraciones en el Diario Oficial de la Federación, es importante contar con todos los datos solicitados en el nuevo formato, sin embargo, esto no imposibilita a las Instituciones para realizar pruebas de adopción del estándar usando los datos con los que se cuenta.
-
-                    Diseño de arquitectura: Se deberá evaluar las capacidades del sistema de información o base de datos de declaraciones, a fin de diagnosticar su capacidad para soportar la carga de trabajo actual y al mismo tiempo la tarea de resolver las consultas que serán realizadas por la PDN a través del API.
-
-                    En el caso de contar con gran cantidad de usuarios y como medida de seguridad, se recomienda implementar alguna solución de replicación de la información en el sistema de base de datos; de tal manera que se divida la carga de trabajo en dos o más bases de datos.
-
-                    Desarrollo: El desarrollo del API de declaraciones podrá realizarse en el lenguaje de programación que se considere más apropiado con apego a las especificaciones que se proporcionan en las siguientes secciones del presente documento. Dichas especificaciones son agnósticas a la tecnología, es decir, el resultado de la comunicación deberá ser el mismo, siempre que se respeten las reglas, formatos de datos y la sintaxis de los mensajes.
-                    4. Especificación del API de declaraciones
-                    4.1 Modelo de comunicación
-                    A través de la de la PDN, los usuarios serán capaces de realizar consultas a las APIs de las Instituciones, dichas consultas se configurarán usando parámetros (Ver la sección Parámetros de consulta). La Figura 1 muestra un diagrama en el cual se ejemplifica la comunicación entre el API de declaraciones de una Institución y la PDN. El API tendrá la tarea de recibir la consulta y aplicar la lógica de negocio al interior de la institución para generar la respuesta correspondiente. Dicha respuesta deberá estar apegada al estándar de declaraciones proporcionado que se proporciona en la siguiente sección.
-
-
-
+                    <ul>
+                        <li>
+                            <Typography>
+                                <b>Diagnóstico:</b> Revisar y comparar los datos contenidos en su base de datos con los especificados en la publicación del Formato de declaraciones en el Diario Oficial de la Federación, es importante contar con todos los datos solicitados en el nuevo formato, sin embargo, esto no imposibilita a las Instituciones para realizar pruebas de adopción del estándar usando los datos con los que se cuenta.
+                            </Typography>
+                        </li>
+                        <li>
+                            <Typography>
+                                <b>Diseño de arquitectura:</b> Se deberá evaluar las capacidades del sistema de información o base de datos de declaraciones, a fin de diagnosticar su capacidad para soportar la carga de trabajo actual y al mismo tiempo la tarea de resolver las consultas que serán realizadas por la PDN a través del API.
+                                <br/>
+                                En el caso de contar con gran cantidad de usuarios y como medida de seguridad, se recomienda implementar alguna solución de replicación de la información en el sistema de base de datos; de tal manera que se divida la carga de trabajo en dos o más bases de datos.
+                            </Typography>
+                        </li>
+                        <li><Typography>
+                            <b>Desarrollo:</b> El desarrollo del API de declaraciones podrá realizarse en el lenguaje de programación que se considere más apropiado con apego a las especificaciones que se proporcionan en las siguientes secciones del presente documento. Dichas especificaciones son agnósticas a la tecnología, es decir, el resultado de la comunicación deberá ser el mismo, siempre que se respeten las reglas, formatos de datos y la sintaxis de los mensajes.
+                        </Typography>
+                        </li>
+                    </ul>
                     <Typography variant="h4">
-                        Sistema 1
+                        Especificación del API de declaraciones
+                    </Typography>
+                    <Typography variant="h5">
+                        Modelo de comunicación
+                    </Typography>
+                    <Typography>
+                        A través de la de la PDN, los usuarios serán capaces de realizar consultas a las APIs de las Instituciones, dichas consultas se configurarán usando parámetros (Ver la sección Parámetros de consulta). La Figura 1 muestra un diagrama en el cual se ejemplifica la comunicación entre el API de declaraciones de una Institución y la PDN. El API tendrá la tarea de recibir la consulta y aplicar la lógica de negocio al interior de la institución para generar la respuesta correspondiente. Dicha respuesta deberá estar apegada al estándar de declaraciones proporcionado que se proporciona en la siguiente sección.
+                    </Typography>
+                    ...
+                    <Typography variant="h4">
+                        Parámetros de consulta
                     </Typography>
                     <Typography variant="h4">
-                        Estandar técnico
-                    </Typography>
-                    <Typography paragraph>
                         Especificaciones
                     </Typography>
+
+
                     <div>
                         <JSONTree data={this.state.oas} theme={theme} invertTheme={false}/>
                     </div>
 
+
+                    <Typography variant="h4">
+                        Ejemplos de respuesta
+                    </Typography>
+
                     <div>
                         <JSONTree data={this.state.example} theme={theme} invertTheme={false}/>
                     </div>
-                    <code>
-                        {this.state.example === null?"":JSON.stringify(this.state.example.results[0].informacion_personal)}
-                    </code>
 
-                    <Typography variant="h4">
-                        Intereses
-                    </Typography>
-
-                    <code>{this.state.example === null?"":JSON.stringify(this.state.example.results[0].intereses)}</code>
-
-                    <Typography variant="h4">
-                        Ingresos
-                    </Typography>
-                    <code>{this.state.example === null?"":JSON.stringify(this.state.example.results[0].ingresos)}</code>
-
-                    <Typography variant="h4">
-                        Activos
-                    </Typography>
-                    <code>{this.state.example === null?"":JSON.stringify(this.state.example.results[0].activos)}</code>
-
-                    <Typography variant="h4">
-                        Pasivos
-                    </Typography>
-
-                    <code>{this.state.example === null?"":JSON.stringify(this.state.example.results[0].pasivos)}</code>
-
+                    <Typography variant="h4">Herramientas</Typography>
                 </main>
             </div>
         );
