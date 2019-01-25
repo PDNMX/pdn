@@ -25,6 +25,7 @@ import JSONTree from 'react-json-tree';
 import IconButton from "@material-ui/core/IconButton";
 import {Link} from "react-router-dom";
 import PDNLogo from "../../../assets/PDN.png";
+import Build from '@material-ui/icons/Build';
 
 const drawerWidth = 240;
 
@@ -50,6 +51,9 @@ const styles = theme => ({
     toolbar: theme.mixins.toolbar,
     flex: {
         flexGrow: 1
+    },
+    nested: {
+        paddingLeft: theme.spacing.unit * 4
     }
 });
 
@@ -137,12 +141,73 @@ class ClippedDrawer extends React.Component {
                 >
                     <div className={classes.toolbar}/>
                     <List>
+                        <ListItem button>
+                            <ListItemIcon><Widgets/></ListItemIcon>
+                            <ListItemText primary="Antecedentes"/>
+                        </ListItem>
 
                         <ListItem button>
                             <ListItemIcon><Widgets/></ListItemIcon>
-                            <ListItemText primary="Estándar técnico"/>
+                            <ListItemText primary="Estándar"/>
+                        </ListItem>
+                        <List component="div" disablePadding>
+                            <ListItem button className={classes.nested}>
+                                <ListItemIcon><Widgets/></ListItemIcon>
+                                <ListItemText primary="Introducción"/>
+                            </ListItem>
+
+                            <ListItem button className={classes.nested}>
+                                <ListItemIcon><Widgets/></ListItemIcon>
+                                <ListItemText primary="OAS"/>
+                            </ListItem>
+
+                            <ListItem button className={classes.nested}>
+                                <ListItemIcon><Widgets/></ListItemIcon>
+                                <ListItemText primary="OAuth 2"/>
+                            </ListItem>
+                        </List>
+
+                        <ListItem button>
+                            <ListItemIcon><Build/></ListItemIcon>
+                            <ListItemText primary="Implementación"/>
                         </ListItem>
 
+                        <ListItem button>
+                            <ListItemIcon><Widgets/></ListItemIcon>
+                            <ListItemText primary="Especificaciones"/>
+                        </ListItem>
+
+                        <List component="div" disablePadding>
+                            <ListItem button className={classes.nested}>
+                                <ListItemIcon><Widgets/></ListItemIcon>
+                                <ListItemText primary="Comunicación"/>
+                            </ListItem>
+
+                            <ListItem button className={classes.nested}>
+                                <ListItemIcon><Widgets/></ListItemIcon>
+                                <ListItemText primary="Parámentros"/>
+                            </ListItem>
+
+                            <ListItem button className={classes.nested}>
+                                <ListItemIcon><Widgets/></ListItemIcon>
+                                <ListItemText primary="Especificación del API"/>
+                            </ListItem>
+
+                            <ListItem button className={classes.nested}>
+                                <ListItemIcon><Widgets/></ListItemIcon>
+                                <ListItemText primary="Ejemplos"/>
+                            </ListItem>
+
+
+                        </List>
+
+
+                        <ListItem button>
+                            <ListItemIcon><Widgets/></ListItemIcon>
+                            <ListItemText primary="Herramientas"/>
+                        </ListItem>
+
+                        {/*
                         <Divider/>
 
                         <ListItem button>
@@ -164,12 +229,15 @@ class ClippedDrawer extends React.Component {
                         <ListItem button>
                             <ListItemIcon><CreditCard/></ListItemIcon>
                             <ListItemText primary="Pasivos"/>
-                        </ListItem>
+                        </ListItem>*/}
 
                     </List>
 
                 </Drawer>
                 <main className={classes.content}>
+
+
+
                     <div className={classes.toolbar}/>
                     <Typography variant="h4">
                         Sistema 1
