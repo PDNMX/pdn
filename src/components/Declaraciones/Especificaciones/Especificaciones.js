@@ -22,6 +22,7 @@ import Widgets from '@material-ui/icons/Widgets';
 import JSONTree from 'react-json-tree';
 import IconButton from "@material-ui/core/IconButton";
 import {Link} from "react-router-dom";
+import LinkM from "@material-ui/core/Link";
 import PDNLogo from "../../../assets/PDN.png";
 import Build from '@material-ui/icons/Build';
 import ListSubheader from '@material-ui/core/ListSubheader';
@@ -101,14 +102,17 @@ class ClippedDrawer extends React.Component {
             json: true
         }));
 
+        /*
         Promise.all(promises).then(data => {
 
-            console.log(data[1].results[0]);
+            //console.log(data[1].results[0]);
             this.setState({
                 oas: data[0],
                 example: data[1]
             })
-        });
+        });*/
+
+        this.setState({oas: {}, example: {}})
     }
 
     render() {
@@ -147,68 +151,68 @@ class ClippedDrawer extends React.Component {
 
 
                         <Divider/>
-                        <ListItem button>
+                        <ListItem  component={LinkM} href="#estandar" button>
                             <ListItemIcon><Extension/></ListItemIcon>
                             <ListItemText primary="Estándar"/>
                         </ListItem>
 
                         <List component="div" disablePadding>
 
-                            <ListItem button className={classes.nested}>
+                            <ListItem component={LinkM} className={classes.nested} href="#antecedentes" button>
                                 {/*<ListItemIcon><Assignment/></ListItemIcon>*/}
                                 <ListItemText primary="Antecedentes"/>
                             </ListItem>
 
-                            <ListItem button className={classes.nested}>
+                            <ListItem component={LinkM} href="#introduccion" button className={classes.nested}>
                                 {/*<ListItemIcon><Widgets/></ListItemIcon>*/}
                                 <ListItemText primary="Introducción"/>
                             </ListItem>
 
-                            <ListItem button className={classes.nested}>
+                            <ListItem component={LinkM} href="#oas" button className={classes.nested}>
                                 {/*<ListItemIcon><Widgets/></ListItemIcon>*/}
                                 <ListItemText primary="OAS"/>
                             </ListItem>
 
-                            <ListItem button className={classes.nested}>
+                            <ListItem component={LinkM} href="#oauth" button className={classes.nested}>
                                 {/*<ListItemIcon><Widgets/></ListItemIcon>*/}
                                 <ListItemText primary="OAuth 2"/>
                             </ListItem>
                         </List>
                         <Divider/>
 
-                        <ListItem button>
+                        <ListItem component={LinkM} href="#implementacion" button>
                             <ListItemIcon><Code/></ListItemIcon>
                             <ListItemText primary="Implementación"/>
                         </ListItem>
 
-                        <ListItem button>
+                        <ListItem component={LinkM} href="#api" button>
                             <ListItemIcon><Widgets/></ListItemIcon>
                             <ListItemText primary="REST API"/>
                         </ListItem>
 
                         <List component="div" disablePadding>
-                            <ListItem button className={classes.nested}>
+                            <ListItem component={LinkM} href="#comunicacion" button className={classes.nested}>
                                 {/*<ListItemIcon><Widgets/></ListItemIcon>*/}
                                 <ListItemText primary="Comunicación"/>
                             </ListItem>
 
-                            <ListItem button className={classes.nested}>
+                            <ListItem button component={LinkM} href="#parametros" className={classes.nested}>
                                 {/*<ListItemIcon><Widgets/></ListItemIcon>*/}
                                 <ListItemText primary="Parámentros"/>
                             </ListItem>
 
-                            <ListItem button className={classes.nested}>
+                            <ListItem button component={LinkM} href="#especificaciones" className={classes.nested}>
                                 {/*<ListItemIcon><Widgets/></ListItemIcon>*/}
                                 <ListItemText primary="Especificaciones"/>
                             </ListItem>
 
-                            <ListItem button className={classes.nested}>
+                            <ListItem button component={LinkM} href="#ejemplos" className={classes.nested}>
                                 {/*<ListItemIcon><Widgets/></ListItemIcon>*/}
                                 <ListItemText primary="Ejemplos"/>
                             </ListItem>
 
                         </List>
-                        <ListItem button>
+                        <ListItem component={LinkM} href="#herramientas" button>
                             <ListItemIcon><Build/></ListItemIcon>
                             <ListItemText primary="Herramientas"/>
                         </ListItem>
@@ -345,7 +349,7 @@ class ClippedDrawer extends React.Component {
                             <Typography>Lenguaje de programación: Python</Typography>
 
                             <IconButton href="https://www.djangoproject.com/">
-
+                                <LinkIcon/>
                             </IconButton>
                         </li>
                         <li>
