@@ -26,6 +26,7 @@ import LinkM from "@material-ui/core/Link";
 import PDNLogo from "../../../assets/PDN.png";
 import Build from '@material-ui/icons/Build';
 import ListSubheader from '@material-ui/core/ListSubheader';
+import TablaParametros from "./TablaParametros";
 
 const drawerWidth = 240;
 
@@ -312,6 +313,11 @@ class ClippedDrawer extends React.Component {
                     <Typography variant="h4" id="parametros">
                         Parámetros de consulta
                     </Typography>
+
+
+                    <TablaParametros/>
+
+
                     <Typography variant="h4" id="especificaciones">
                         Especificaciones
                     </Typography>
@@ -355,7 +361,7 @@ class ClippedDrawer extends React.Component {
                         <li>
                             <Typography><b>Flask</b></Typography>
                             <Typography>Lenguaje de programación: Python</Typography>
-                            <IconButton href="URL: https://flask-restful.readthedocs.io/en/latest/quickstart.html">
+                            <IconButton href="https://flask-restful.readthedocs.io/en/latest/quickstart.html">
                                 <LinkIcon/>
                             </IconButton>
                         </li>
