@@ -323,13 +323,14 @@ class ClippedDrawer extends React.Component {
 
                     <ReactJson src={this.state.oas}/>
 
-
+                    <br/>
                     <Typography variant="h4" id="ejemplos">
                         Ejemplos de respuesta
                     </Typography>
 
 
                     <ReactJson src={this.state.example}/>
+                    <br/>
 
                     <Typography variant="h4" id="herramientas">Herramientas para desarrollo web</Typography>
 
