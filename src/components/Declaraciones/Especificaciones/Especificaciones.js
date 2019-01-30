@@ -27,6 +27,7 @@ import PDNLogo from "../../../assets/PDN.png";
 import Build from '@material-ui/icons/Build';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import TablaParametros from "./TablaParametros";
+import Button from '@material-ui/core/Button';
 
 const drawerWidth = 240;
 
@@ -55,7 +56,13 @@ const styles = theme => ({
     },
     nested: {
         paddingLeft: theme.spacing.unit * 9
-    }
+    },
+    button: {
+        marginTop: theme.spacing.unit,
+        marginRight: theme.spacing.unit,
+        marginBottom: theme.spacing.unit *2,
+        background: '#ffe01b',//'#fecb6e'
+    },
 });
 
 const theme = {
@@ -252,29 +259,60 @@ class ClippedDrawer extends React.Component {
                         Introducción
                     </Typography>
                     <Typography paragraph>
-                        En la actualidad, la información de declaraciones de los servidores públicos de los diferentes niveles de gobierno se encuentra contenida en diversos formatos, bases de datos y sistemas de información; cada uno de ellos con particularidades tecnológicas y reglas de negocio distintas, dificultando la integración y la interoperabilidad de los datos.
+                        En la actualidad, la información de declaraciones de los servidores públicos de los diferentes niveles de gobierno se encuentra contenida en diversos formatos,
+                        bases de datos y sistemas de información; cada uno de ellos con particularidades tecnológicas y reglas de negocio distintas, dificultando la integración y la
+                        interoperabilidad de los datos. El Estándar para la Interoperabilidad de Datos de Declaraciones surge a partir de la necesidad de distribuir, comparar, analizar y distribuir la información
+                        de las declaraciones de situación patrimonial y de intereses de una manera uniforme e interoperable.
+                    </Typography>
+
+                    <Typography paragraph>
+                        La PDN está conceptualizada como una herramienta que permitirá la consulta
+                        de información de las diferentes instituciones de los tres niveles de gobierno en un solo punto,
+                        sin tener el objetivo de concentrar o resguardar la información de las instituciones.
+                        En ese sentido, resulta necesario que la PDN cuente con mecanismos le que permitan interconectarse con los diversos sistemas de gobierno
+                        sin importar la tecnología que utilizen (e.g., lenguajes de programación o bases de datos) para consultar la información
+                        que resulte necesaria.
+
                     </Typography>
                     <Typography paragraph>
-                        Por otra parte, la PDN está conceptualizada como una plataforma de interoperabilidad, lo que implica que no tiene el objetivo de ser un repositorio de información, es decir, no concentrará ni será responsable de resguardar la información de las instituciones. En ese sentido, la PDN deberá interconectarse con los diversos sistemas de gobierno para consultar la información que sea necesaria. Conforme a lo anterior, la SESNA ha planeado el desarrollo de la PDN con base en el uso APIs (Application Programming Interface) de tipo REST (REpresentational State Transfer), mismas que son un mecanismo de comunicación ampliamente usado para el desarrollo de aplicaciones web a gran escala. El uso de APIs permitirá a las instituciones conservar el control de sus datos, gestionando el acceso a los mismos mediante perfiles de usuario.
+
+                        La SESNA ha planeado el desarrollo de la PDN mediante el uso APIs Web (Application Programming Interface) de arquitectura REST (REpresentational State Transfer),
+                        que son un mecanismo de comunicación ampliamente usado para el desarrollo de aplicaciones web a gran escala. El uso de APIs permitirá que las instituciones
+                        conserven el control de sus datos, gestionando el acceso a los mismos mediante reglas y perfiles de usuario.
+
+                        Entrando en detalles más técnicos, las tecnología REST es ampliamente usada por en la industria del software para el desarrollo de aplicaciones web,
+                        y en la actualidad, existe grán diversidad de herramientas de código abierto que permiten la implementación de
+                        sistemas basados en APIs REST de manera rápida y a un bajo costo.
+
                     </Typography>
-                    <Typography paragraph>
-                        Conforme a lo anterior, el estándar para la interoperabilidad de datos de declaraciones surge a partir de la necesidad de distribuir, comparar, analizar y distribuir la información de las declaraciones de situación patrimonial y de intereses de una manera uniforme e interoperable.
-                    </Typography>
-                    <Typography paragraph>
-                        Entrando en detalles más técnicos, las tecnología de APIs REST es ampliamente usada por en la industria de Internet y en la actualidad se cuenta con diversas herramientas de código abierto que permiten su implementación de manera rápida y a un bajo costo. Así también,  dichas APIs pueden ser descritas de manera precisa a través de frameworks como el Open API Specification Format; permitiendo su implementación por diversas instituciones con independencia tecnológica (pueden ser desarrolladas usando distintos lenguajes de programación, bases de datos y herramientas) sin afectar sus objetivos.
-                    </Typography>
+
                     <Typography variant="h5" id="oas" paragraph>
                         Open API Specification
                     </Typography>
                     <Typography paragraph>
-                        El estándar está basado en el Open API Specification, el cual permitirá describir los recursos, las operaciones, los parámetros disponibles y/o necesarios (con sus valores permitidos) y el formato de la respuesta a la petición.
+                        El Estándar para la Interoperabilidad de Datos de Declaraciones está basado en el formato conocido como Open API Specification (OAS),
+                        el cual es un formato de especificación que permite describir de manera precisa las características con las que deberan
+                        contar las APIs que integrarán a la PDN.
+                        El OAS cuenta con capacidades para describir los recursos, operaciones, parámetros y estructuras de datos
+                        con las que deberán contar las APIs, permitiendo su implementación con independencia tecnológica, es decir,
+                        las instituciones podrán
+                        emplear las herramientas tecnológicas de su elección (e.g., lenguajes de programación, bases de datos, etc.)
+                        siempre que se sigan las especificaciones de manera correcta.
                     </Typography>
+
+                    <Button variant="contained" className={classes.button} href="https://github.com/OAI/OpenAPI-Specification">Más información</Button>
+                    <br/>
                     <Typography variant="h5" id="oauth" paragraph>
                         OAuth 2.0
                     </Typography>
                     <Typography paragraph>
-                        Para proteger la seguridad en la comunicación de la PDN con las APIs de las instituciones, se usará el protocolo OAuth 2.0 es un framework de autorización que permitirá a la PDN obtener acceso necesario a las API’s de las instituciones, delegando la autenticación a las mismas.
+                        El acceso a las APIs que se integrarán a la PDN se gestionará a través del protocolo de autorización OAuth 2.0,
+                        el cual es un estandar ampliamente usado por la industria de Internet. El estándar OAuth 2.0
+                        que permitirá a la PDN obtener acceso necesario a las APIs de las instituciones
+                        a través del uso de tokens de autorización.
                     </Typography>
+                    <Button variant="contained" className={classes.button} href="https://oauth.net/2/"> Más información </Button>
+
                     <Typography variant="h4" id="implementacion" paragraph>Implementación del estándar</Typography>
                     <Typography paragraph>
                         La implementación del estándar de declaraciones representará esfuerzos de diferente magnitud dependiendo del nivel de adopción tecnológica de cada Institución. Suponiendo que una cierta Institución ya cuenta con un sistema de captura de declaraciones, el proceso de implementación del API de declaraciones puede ser dividido en los siguientes pasos:
@@ -292,12 +330,12 @@ class ClippedDrawer extends React.Component {
                                 <br/>
                                 En el caso de contar con gran cantidad de usuarios y como medida de seguridad, se recomienda implementar alguna solución de replicación de la información en el sistema de base de datos; de tal manera que se divida la carga de trabajo en dos o más bases de datos.
                             </Typography>
-                        </li>
-                        <li><Typography paragraph>
-                            <b>Desarrollo:</b> El desarrollo del API de declaraciones podrá realizarse en el lenguaje de programación que se considere más apropiado con apego a las especificaciones que se proporcionan en las siguientes secciones del presente documento. Dichas especificaciones son agnósticas a la tecnología, es decir, el resultado de la comunicación deberá ser el mismo, siempre que se respeten las reglas, formatos de datos y la sintaxis de los mensajes.
-                        </Typography>
-                        </li>
-                    </ul>
+                            </li>
+                            <li><Typography paragraph>
+                                <b>Desarrollo:</b> El desarrollo del API de declaraciones podrá realizarse en el lenguaje de programación que se considere más apropiado con apego a las especificaciones que se proporcionan en las siguientes secciones del presente documento. Dichas especificaciones son agnósticas a la tecnología, es decir, el resultado de la comunicación deberá ser el mismo, siempre que se respeten las reglas, formatos de datos y la sintaxis de los mensajes.
+                            </Typography>
+                            </li>
+                        </ul>
                     <Typography variant="h4" id="api" paragraph>
                         Especificación del API de declaraciones
                     </Typography>
