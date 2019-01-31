@@ -4,8 +4,9 @@ import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import {Link} from 'react-router-dom';
 
-import SESNA from '../../assets/sesna-gris.jpg';
+import SESNA from '../../assets/Logo-SESNA.png';
 
 const styles  = theme => ({
     root: {
@@ -49,9 +50,10 @@ class Footer extends React.Component{
                     </Grid>
                     <Grid item md={6} xs={12} className={classes.terminos}>
                         <Typography variant="subheading">
-                            <a href="/terminos" className={classes.links}>
+                            <br/>
+                            <Link to="/terminos" className={classes.links}>
                             Términos de uso
-                            </a>
+                            </Link>
                         </Typography>
                     </Grid>
                 </Grid>
