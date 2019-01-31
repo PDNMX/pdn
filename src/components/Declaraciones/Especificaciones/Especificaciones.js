@@ -323,7 +323,7 @@ class ClippedDrawer extends React.Component {
                         A través de la de la PDN, los usuarios serán capaces de realizar consultas a las APIs de las Instituciones, dichas consultas se configurarán usando parámetros (Ver la sección Parámetros de consulta). La Figura 1 muestra un diagrama en el cual se ejemplifica la comunicación entre el API de declaraciones de una Institución y la PDN. El API tendrá la tarea de recibir la consulta y aplicar la lógica de negocio al interior de la institución para generar la respuesta correspondiente. Dicha respuesta deberá estar apegada al estándar de declaraciones proporcionado que se proporciona en la siguiente sección.
                     </Typography>
 
-                    <Typography variant="h4" id="parametros" paragraph>
+                    <Typography variant="h5" id="parametros" paragraph>
                         Parámetros de consulta
                     </Typography>
 
@@ -333,7 +333,7 @@ class ClippedDrawer extends React.Component {
                     <br/>
 
 
-                    <Typography variant="h4" id="especificaciones" paragraph>
+                    <Typography variant="h5" id="especificaciones" paragraph>
                         Especificaciones
                     </Typography>
 
@@ -344,7 +344,7 @@ class ClippedDrawer extends React.Component {
                     <ReactJson src={this.state.oas}/>
 
                     <br/>
-                    <Typography variant="h4" id="ejemplos" paragraph>
+                    <Typography variant="h5" id="ejemplos" paragraph>
                         Ejemplos de respuesta
                     </Typography>
 
