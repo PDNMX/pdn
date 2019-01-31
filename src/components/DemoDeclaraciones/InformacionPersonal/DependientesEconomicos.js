@@ -48,7 +48,6 @@ class DependientesEconomicos extends React.Component {
                     <TableBody>
                         {
                             dependientes.map((row,index=0) => {
-                                console.log("ROW: ",row);
                                 return(
                                     <TableRow key={index++}>
                                         <TableCell>{row.tipo_relacion.valor}</TableCell>

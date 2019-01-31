@@ -61,6 +61,9 @@ const theme = createMuiTheme({
         },
         black: {
             black: "#000"
+        },
+        red : {
+            color : '#B00020'
         }
 
     },

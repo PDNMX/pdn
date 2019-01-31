@@ -5,12 +5,13 @@ import Grid from "@material-ui/core/Grid/Grid";
 import Paper from "@material-ui/core/Paper/Paper";
 import TablaRegistros from "./TablaRegistros";
 import Typography from "@material-ui/core/Typography/Typography";
-import "../../index.css";
 import Button from "@material-ui/core/Button/Button";
 import rp from 'request-promise';
-import { ReCaptcha, loadReCaptcha  } from 'react-recaptcha-google';
+import {ReCaptcha, loadReCaptcha} from 'react-recaptcha-google';
 import Modal from "@material-ui/core/Modal/Modal";
 import "../../index.css";
+import axios from 'axios';
+
 
 const styles = theme => ({
     root: {
@@ -68,56 +69,75 @@ const styles = theme => ({
             width: theme.spacing.unit * 70,
         },
     },
-    textCenter:{
+    textCenter: {
         textAlign: 'center',
-        color : theme.palette.primary.dark
+        color: theme.palette.primary.dark
     },
-    gRecaptcha : {
-        margin : 'auto',
+    titleError: {
+        textAlign: 'center',
+        color: theme.palette.red.color
+    },
+    gRecaptcha: {
+        margin: 'auto',
         width: '300px',
-        display:'inline-block !important'
+        display: 'inline-block !important'
     }
 });
 
 function getModalStyle() {
-    const top = 50 ;
-    const left = 50 ;
+    const top = 50;
+    const left = 50;
     return {
         top: `${top}%`,
         left: `${left}%`,
         transform: `translate(-${top}%, -${left}%)`,
-
     };
 }
 
 class Conexion extends React.Component {
-     state = {
+    state = {
         registros: [],
-         flag_send : false,
-         dependencias:[],
-         flag_msj : false
+        flag_send: false,
+        dependencias: [],
+        flag_msj: false,
+        flag_error : false,
+        oficio: null
     };
-    recaptcha = React.createRef();
+
+
     constructor(props, context) {
         super(props, context);
         this.onLoadRecaptcha = this.onLoadRecaptcha.bind(this);
         this.verifyCallback = this.verifyCallback.bind(this);
     }
+
     componentDidMount() {
         loadReCaptcha();
-    }
-    onLoadRecaptcha() {
-        console.log("LoadCaptcha");
-    }
-    verifyCallback(recaptchaToken) {
-        if(recaptchaToken){
-            this.saveRegistros();
+        if(this.recaptcha){
+            console.log("started, just a second...")
+            this.recaptcha.reset();
         }
     }
 
-    verifyCaptcha = ()=>{
+    onLoadRecaptcha() {
+        if (this.recaptcha) {
+            this.recaptcha.reset();
+        }
+    }
+    verifyCallback(recaptchaToken) {
+        if (recaptchaToken) {
+            this.recaptcha.reset();
+            this.setState({
+                flag_send: false
+            }, () => {
+                this.saveOficio();
+            })
+        }
+    }
+
+    verifyCaptcha = () => {
         this.setState({
-            flag_send : true
+            flag_send: true
         });
     };
     addRegistro = (item) => {
@@ -135,7 +155,6 @@ class Conexion extends React.Component {
                     telefono_oficina: item.telefono_oficina,
                     extension: item.extension
                 }
-
             ],
             mensaje: ''
         })
@@ -151,13 +170,51 @@ class Conexion extends React.Component {
         });
     };
 
+    saveOficio = () => {
+        if (this.state.registros.length > 0 && this.state.oficio) {
+            let fd = new FormData();
+            fd.append('file', this.state.oficio, this.state.oficio.name);
+            axios
+                .post('https://demospdn.host/pdn/uploadOficio', fd)
+                .then(res => {
+                    if (res && res.status===200) {
+                        this.setState({
+                            idDocument: res.data.idDocument
+                        }, () => {
+                            this.saveRegistros();
+                        })
+                    }
+                })
+                .catch(err => {
+                    console.log("err");
+                    this.setState({
+                        flag_error:true,
+                        mensajeError: 'Error'
+                    })
+                })
+        }
+    };
+
+    deleteOficio = ()=>{
+        let fd = new FormData();
+        fd.append('idDocument', this.state.idDocument+'.pdf');
+        axios
+            .post('https://demospdn.host/pdn/deleteOficio', fd)
+            .then(res => {
+                return true;
+            })
+            .catch(err => {
+                return false;
+            })
+    };
+
     saveRegistros = () => {
         let registros = this.state.registros;
         for (let i = 0; i < registros.length; i++) {
             registros[i].fecha_solicitud = new Date();
             registros[i].estatus = 'PENDIENTE';
+            registros[i].id_oficio = this.state.idDocument;
         }
-
         if (registros.length > 0) {
             let options = {
                 method: 'POST',
@@ -175,15 +232,27 @@ class Conexion extends React.Component {
                     this.setState({
                         flag_msj: true,
                         registros: [],
-                        flag_send : false
+                        flag_send: false,
+                        oficio: null,
+                        idDocument:null
                     });
+                    this.fileInput.value= "";
                 })
                 .catch(err => {
-                    alert("No se pudo completar la operación");
-                    console.log(err);
+                    let mensaje ='';
+                    switch (err.error.code) {
+                        case '23505':
+                            mensaje = 'Correo electrónico ya registrado: '+err.error.details;
+                            break;
+                        default : mensaje = 'Error al insertar registro'; break;
+                    }
+                    this.deleteOficio();
+                    this.setState({
+                        flag_error:true,
+                        mensajeError: mensaje
+                    })
                 })
-           }
-
+        }
     };
     handleClose = () => {
         this.setState({flag_send: false});
@@ -191,6 +260,16 @@ class Conexion extends React.Component {
     handleCloseMsj = () => {
         this.setState({flag_msj: false});
     };
+    handleCloseError = () => {
+        this.setState({flag_error: false});
+    };
+    handleFile = (e) => {
+        let file = e.target.files[0];
+        this.setState({
+            oficio: file
+        });
+    };
+
     render() {
         const {classes} = this.props;
         return (
@@ -234,20 +313,21 @@ class Conexion extends React.Component {
                         <div style={getModalStyle()} className={classes.paperCaptcha}>
                             <Grid container justify={"center"}>
                                 <Grid item xs={12}>
-                                    <Typography variant={"h6"} className={classes.textCenter}>Verificación de seguridad</Typography>
+                                    <Typography variant={"h6"} className={classes.textCenter}>Verificación de
+                                        seguridad</Typography>
                                 </Grid>
-                                <Grid item xs={12} style={{textAlign:'center'}}>
+                                <Grid item xs={12} style={{textAlign: 'center'}}>
                                     <ReCaptcha
-                                        ref={this.recaptcha}
+                                        ref={(el) => {this.recaptcha=el}}
                                         size="normal"
                                         sitekey="6Lfs8YcUAAAAAGVQL-BpW_w__FSJeWq-xAUoPbf9"
-                                        onloadCallback={this.onLoadRecaptcha}
                                         verifyCallback={this.verifyCallback}
-                                        style={{id:'Isela',display:'inline-block'}}
+                                        onloadCallback={this.onLoadRecaptcha}
+                                        style={{display: 'inline-block'}}
                                         badge={"inline"}
                                     />
                                 </Grid>
-                                <Grid item xs ={12}  className={classes.textCenter}>
+                                <Grid item xs={12} className={classes.textCenter}>
                                     <Typography variant={"h6"}>{this.state.mensajeRegistro}</Typography>
                                 </Grid>
                             </Grid>
@@ -261,11 +341,33 @@ class Conexion extends React.Component {
                     >
                         <div style={getModalStyle()} className={classes.paperCaptcha}>
                             <Grid container justify={"center"}>
-                                <Grid item xs ={12}  >
-                                    <Typography variant={"h5"} className={classes.textCenter}>Solicitud enviada</Typography>
+                                <Grid item xs={12}>
+                                    <Typography variant={"h5"} className={classes.textCenter}>Solicitud
+                                        enviada</Typography>
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <Typography variant={"subtitle1"}>Los permisos de conexión a la PDN serán otorgados o denegados por la SESNA posteriormente a una evaluación de aspectos técnicos de interconexión. En caso de que los sujetos obligados no cumplan con los requerimientos de interconexión a la PDN establecidos por la SESNA, se denegará el permiso de conexión a la PDN.</Typography>
+                                    <Typography variant={"subtitle1"}>Los permisos de conexión a la PDN serán otorgados
+                                        o denegados por la SESNA posteriormente a una evaluación de aspectos técnicos de
+                                        interconexión. En caso de que los sujetos obligados no cumplan con los
+                                        requerimientos de interconexión a la PDN establecidos por la SESNA, se denegará
+                                        el permiso de conexión a la PDN.</Typography>
+                                </Grid>
+                            </Grid>
+                        </div>
+                    </Modal>
+                    <Modal
+                        open={this.state.flag_error}
+                        aria-labelledby="simple-modal-title"
+                        aria-describedby="simple-modal-description"
+                        onClose={this.handleCloseError}
+                    >
+                        <div style={getModalStyle()} className={classes.paperCaptcha}>
+                            <Grid container justify={"center"}>
+                                <Grid item xs={12}>
+                                    <Typography variant={"h5"} className={classes.titleError}>Error</Typography>
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <Typography variant={"subtitle1"}>{this.state.mensajeError}</Typography>
                                 </Grid>
                             </Grid>
                         </div>
@@ -277,15 +379,16 @@ class Conexion extends React.Component {
                             <Paper className={classes.contenedor}>
                                 <Grid container>
                                     <Grid item xs={12}>
-                                        <FormularioConexion addRegistro={this.addRegistro} dependencias={this.state.dependencias}/>
+                                        <FormularioConexion addRegistro={this.addRegistro}
+                                                            dependencias={this.state.dependencias}/>
                                         <TablaRegistros registros={this.state.registros} remove={this.removeRegistro}/>
                                     </Grid>
                                     <Grid item xs={12}>
                                         <Typography variant={"h6"} className={classes.text}>Oficio</Typography>
-                                        <input type="file"/>
+                                        <input type="file" onChange={this.handleFile} name={'nombreOficio'} ref={ref => this.fileInput = ref}/>
                                     </Grid>
                                     <Grid item xs={12}>
-                                        <Button variant="contained" color="primary" className={classes.button} disabled={this.state.registros.length<=0}
+                                        <Button variant="contained" color="primary" className={classes.button} disabled={!this.state.oficio || this.state.registros.length<=0}
                                                 onClick={() => this.verifyCaptcha()}>
                                             Enviar
                                         </Button>

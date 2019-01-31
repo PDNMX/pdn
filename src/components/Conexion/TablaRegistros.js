@@ -12,7 +12,6 @@ import Tooltip from "@material-ui/core/Tooltip/Tooltip";
 const columnData = [
     {
         id:'nombre',
-        numeric : false,
         label: 'Nombre',
         position: 2,
         mostrar: true,
@@ -20,7 +19,6 @@ const columnData = [
     },
     {
         id:'apellido1',
-        numeric : false,
         label: 'Apellido Uno',
         position: 3,
         mostrar: true,
@@ -28,7 +26,6 @@ const columnData = [
     },
     {
         id:'apellido2',
-        numeric : false,
         label: 'Apellido Dos',
         position: 4,
         mostrar: true,
@@ -36,7 +33,6 @@ const columnData = [
     },
     {
         id:'cargo',
-        numeric : false,
         label: 'Cargo',
         position: 5,
         mostrar: true,
@@ -44,7 +40,6 @@ const columnData = [
     },
     {
         id:'dependencia',
-        numeric : false,
         label: 'Dependencia',
         position: 6,
         mostrar: true,
@@ -52,7 +47,6 @@ const columnData = [
     },
     {
         id:'correo',
-        numeric : false,
         label: 'Correo electrónico',
         position: 7,
         mostrar: true,
@@ -60,7 +54,6 @@ const columnData = [
     },
     {
         id:'telefonoPersonal',
-        numeric : false,
         label: 'Teléfono personal',
         position: 8,
         mostrar: true,
@@ -69,7 +62,6 @@ const columnData = [
 
     {
         id:'telefonoOficina',
-        numeric : false,
         label: 'Teléfono oficina',
         position: 9,
         mostrar: true,
@@ -78,7 +70,6 @@ const columnData = [
 
     {
         id:'extension',
-        numeric : false,
         label: 'Extensión',
         position: 10,
         mostrar: true,

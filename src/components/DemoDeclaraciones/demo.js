@@ -94,7 +94,7 @@ const styles = theme => ({
         bottom: 0
     },
     gridItem: {
-        [theme.breakpoints.up('sm')]: {
+        [theme.breakpoints.up('md')]: {
            maxWidth: '1024px'
         },
     },
