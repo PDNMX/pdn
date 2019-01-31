@@ -228,7 +228,7 @@ class ClippedDrawer extends React.Component {
                         <li>
                             <Typography paragraph>
                                 El 11 de noviembre de 2018 se publicó en el DOF el Acuerdo por el que el Comité Coordinador del Sistema Nacional Anticorrupción emite el formato de declaraciones: de situación patrimonial y de intereses; y expide las normas e instructivo para su llenado y presentación.
-                                Este formato será utilizado por los Servidores Públicos de manera obligatoria para presentar sus declaraciones de situación patrimonial y de intereses cuando se encuentre operable, esto es, una vez que sea técnicamente posible la interoperabilidad de los sistemas de evolución patrimonial y de declaración de intereses, a que hace referencia la fracción I del artículo 49 de la Ley General del Sistema Nacional Anticorrupción, con la Plataforma Digital Nacional del Sistema Nacional Anticorrupción, lo que no podrá exceder del 30 de abril del año 2019.
+                                Dicho formato será utilizado por los Servidores Públicos de manera obligatoria para presentar sus declaraciones de situación patrimonial y de intereses cuando se encuentre operable, esto es, una vez que sea técnicamente posible la interoperabilidad de los sistemas de evolución patrimonial y de declaración de intereses, a que hace referencia la fracción I del artículo 49 de la Ley General del Sistema Nacional Anticorrupción, con la Plataforma Digital Nacional del Sistema Nacional Anticorrupción, lo que no podrá exceder del 30 de abril del año 2019.
                             </Typography></li>
                     </ul>
 
@@ -284,7 +284,7 @@ class ClippedDrawer extends React.Component {
                     </Typography>
                     <Typography paragraph>
                         El acceso a las APIs que se integrarán a la PDN se gestionará a través del protocolo de autorización OAuth 2.0,
-                        el cual es un estandar ampliamente usado por la industria de Internet. El estándar OAuth 2.0
+                        el cual es un estándar ampliamente usado por la industria de Internet. El estándar OAuth 2.0
                         que permitirá a la PDN obtener acceso necesario a las APIs de las instituciones
                         a través del uso de tokens de autorización.
                     </Typography>
@@ -338,6 +338,9 @@ class ClippedDrawer extends React.Component {
                     </Typography>
 
 
+                    <Typography paragraph>
+                        Esta sección contiene la especificación completa del API de declaraciones en el formato OAS. La especificación puede ser interpretada usando las herramientas compatibles con el OAS o <LinkM href="https://swagger.io/tools/">Swagger</LinkM>.
+                    </Typography>
                     <ReactJson src={this.state.oas}/>
 
                     <br/>
