@@ -18,12 +18,12 @@ import DeclaracionesEspecificaciones from '../components/Declaraciones/Especific
 const pdnRoutes = [
 
     {
-        path: "/pdn/home",
+        path: "/home",
         component: Home,
         private: true
     },
     {
-        path: "/", // "/about"
+        path: "/about",// "/"
         component: About,
         private: false
     },
@@ -33,51 +33,51 @@ const pdnRoutes = [
         private: false
     },
     {
-        path: "/pdn/faq",
+        path: "/faq",
         component: Faq,
         private: true
     },
     {
-        path: "/pdn/CatalogoDatos",
+        path: "/CatalogoDatos",
         component: Datos,
         private: true
     },
     {
-        path: "/pdn/sancionados",
+        path: "/sancionados",
         component: Sancionados,
         private: true
     },
     {
-        path: "/pdn/servidores",
+        path: "/servidores",
         component: Servidores,
         private: true
     },
     {
-        path: "/pdn/indicadores",
+        path: "/indicadores",
         component: Indicadores,
         private: true
     },
     {
-        path: "/pdn/contrataciones",
+        path: "/contrataciones",
         component: Contrataciones,
         private: true
     },
     {
-        path: "/pdn/denuncias",
+        path: "/denuncias",
         component: Denuncias
     },
     {
-        path:"/pdn/formDenuncia",
+        path:"/formDenuncia",
         component: FormularioDenuncias,
         private: true
     },
     {
-        path:"/pdn/formConsultaDenuncia",
+        path:"/formConsultaDenuncia",
         component: FormularioConsula,
         private: true
     },
     {
-        path : "/pdn/demodeclaraciones",
+        path : "/demodeclaraciones",
         component: DemoDeclaraciones,
         private: false
     },

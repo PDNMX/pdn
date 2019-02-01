@@ -121,7 +121,7 @@ class App extends React.Component {
                             }, () => {
                                 this.props.newSesion(this.state.sesion);
                                 localStorage.setItem("sesion", JSON.stringify(this.state.sesion));
-                                history.push('/pdn/home');
+                                history.push('/home');
                             })
                         });
                     });
@@ -174,7 +174,7 @@ class App extends React.Component {
                 <Router basename={process.env.PUBLIC_URL}>
                     <ScrollToTop>
                         <Switch>
-                            <Route exact path={'/pdn'}
+                            <Route exact path={'/'}
                                    render={(props) => <LoginPDN handleSignIn={this.handleSignIn}
                                                                 handleRecovery={this.handleRecovery}
                                                                 propiedades={props}

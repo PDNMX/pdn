@@ -113,7 +113,7 @@ class VideoAppBar extends React.Component {
                         <Grid item xs={12} className={classes.item}>
                             <Toolbar>
 
-                                <IconButton color="inherit" aria-label="Menu" component={Link} to="/pdn/home">
+                                <IconButton color="inherit" aria-label="Menu" component={Link} to="/home">
                                     <img src={imgHeader} alt="PDN" style={{width: '55px'}}/>
                                 </IconButton>
 
@@ -159,8 +159,8 @@ class VideoAppBar extends React.Component {
                                             >
 
                                                 <MenuItem onClick={() => { window.location.href= "https://www.plataformadigitalnacional.org/blog"}}>Blog</MenuItem>
-                                                <MenuItem component={Link} to="/pdn/faq">Preguntas frecuentes</MenuItem>
-                                                <MenuItem component={Link} to="/">¿Qué es la PDN?</MenuItem>
+                                                <MenuItem component={Link} to="/faq">Preguntas frecuentes</MenuItem>
+                                                <MenuItem component={Link} to="/about">¿Qué es la PDN?</MenuItem>
                                                 <MenuItem component={Link} to="/terminos">Términos de uso</MenuItem>
                                                 <MenuItem onClick={this.handleSignOut}>Cerrar sesión</MenuItem>
                                             </Menu>

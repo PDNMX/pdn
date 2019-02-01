@@ -66,7 +66,7 @@ const styles = theme => ({
         background: '#ffe01b',//'#fecb6e'
     },
     diagrama: {
-        maxWidth: 800
+        maxWidth: 900
     },
     paper : {
         paddingTop: theme.spacing.unit,
@@ -117,7 +117,7 @@ class ClippedDrawer extends React.Component {
                 <CssBaseline/>
                 <AppBar position="fixed" color="default" className={classes.appBar}>
                     <Toolbar>
-                        <IconButton color="inherit" aria-label="Menu" component={Link} to="/pdn/home">
+                        <IconButton color="inherit" aria-label="Menu" component={Link} to="/home">
                             <img src={PDNLogo} alt="logoPDN" style={{width: '55px'}}/>
                         </IconButton>
 
@@ -338,7 +338,7 @@ class ClippedDrawer extends React.Component {
                         <b>Figura 1. </b>  Esquema conceptual del flujo de comunicación entre Instituciones y la Plataforma Digital Nacional. De derecha a izquierda se observan usuarios con diferentes perfiles accediendo a la PDN y solicitando información de acuerdo a sus atribuciones.
                     </Typography>
                     {/*</Paper>*/}
-                    
+
                     <Typography variant="h5" id="parametros" paragraph>
                         Parámetros de consulta
                     </Typography>

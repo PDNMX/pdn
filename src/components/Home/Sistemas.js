@@ -50,7 +50,7 @@ class Sistemas extends React.Component{
                         </a>
                     </Grid>
                     <Grid item xl={4} lg={4} md={6} xs={12} align="center">
-                        <Link to="/pdn/servidores" className={ classes.link }>
+                        <Link to="/servidores" className={ classes.link }>
                             <img src={s2} alt="Sistema 2" className="iconos-sistemas"/>
                             <br/>
                             <Typography variant="h5" className={classes.text}>
@@ -59,7 +59,7 @@ class Sistemas extends React.Component{
                         </Link>
                     </Grid>
                     <Grid item xl={4} lg={4} md={6} xs={12} align="center">
-                        <Link to="/pdn/sancionados" className ={ classes.link }>
+                        <Link to="/sancionados" className ={ classes.link }>
                             <img src={s3} alt="Sistema 3" className="iconos-sistemas"/>
                             <br/>
                             <Typography variant="h5" className={classes.text}>
