@@ -28,6 +28,8 @@ import Build from '@material-ui/icons/Build';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import TablaParametros from "./TablaParametros";
 import Button from '@material-ui/core/Button';
+import Diagrama from '../../../assets/Diagrama_de_comunicacion_API.svg';
+//import Paper from '@material-ui/core/Paper';
 
 const drawerWidth = 240;
 
@@ -63,6 +65,13 @@ const styles = theme => ({
         marginBottom: theme.spacing.unit *2,
         background: '#ffe01b',//'#fecb6e'
     },
+    diagrama: {
+        maxWidth: 800
+    },
+    paper : {
+        paddingTop: theme.spacing.unit,
+        paddingBottom: theme.spacing.unit
+    }
 });
 
 class ClippedDrawer extends React.Component {
@@ -323,6 +332,13 @@ class ClippedDrawer extends React.Component {
                         A través de la de la PDN, los usuarios serán capaces de realizar consultas a las APIs de las Instituciones, dichas consultas se configurarán usando parámetros (Ver la sección Parámetros de consulta). La Figura 1 muestra un diagrama en el cual se ejemplifica la comunicación entre el API de declaraciones de una Institución y la PDN. El API tendrá la tarea de recibir la consulta y aplicar la lógica de negocio al interior de la institución para generar la respuesta correspondiente. Dicha respuesta deberá estar apegada al estándar de declaraciones proporcionado que se proporciona en la siguiente sección.
                     </Typography>
 
+                    {/*<Paper>*/}
+                    <img src={Diagrama} alt="Comunicación" className={classes.diagrama}/>
+                    <Typography paragraph>
+                        <b>Figura 1. </b>  Esquema conceptual del flujo de comunicación entre Instituciones y la Plataforma Digital Nacional. De derecha a izquierda se observan usuarios con diferentes perfiles accediendo a la PDN y solicitando información de acuerdo a sus atribuciones.
+                    </Typography>
+                    {/*</Paper>*/}
+                    
                     <Typography variant="h5" id="parametros" paragraph>
                         Parámetros de consulta
                     </Typography>
