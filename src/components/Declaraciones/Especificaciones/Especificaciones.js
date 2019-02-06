@@ -28,6 +28,8 @@ import Build from '@material-ui/icons/Build';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import TablaParametros from "./TablaParametros";
 import Button from '@material-ui/core/Button';
+import Diagrama from '../../../assets/Diagrama_de_comunicacion_API.svg';
+//import Paper from '@material-ui/core/Paper';
 
 const drawerWidth = 240;
 
@@ -63,6 +65,13 @@ const styles = theme => ({
         marginBottom: theme.spacing.unit *2,
         background: '#ffe01b',//'#fecb6e'
     },
+    diagrama: {
+        maxWidth: 900
+    },
+    paper : {
+        paddingTop: theme.spacing.unit,
+        paddingBottom: theme.spacing.unit
+    }
 });
 
 class ClippedDrawer extends React.Component {
@@ -108,7 +117,7 @@ class ClippedDrawer extends React.Component {
                 <CssBaseline/>
                 <AppBar position="fixed" color="default" className={classes.appBar}>
                     <Toolbar>
-                        <IconButton color="inherit" aria-label="Menu" component={Link} to="/pdn/home">
+                        <IconButton color="inherit" aria-label="Menu" component={Link} to="/home">
                             <img src={PDNLogo} alt="logoPDN" style={{width: '55px'}}/>
                         </IconButton>
 
@@ -210,8 +219,10 @@ class ClippedDrawer extends React.Component {
 
                     <Typography variant="h4" id="estandar" paragraph>Estándar para la Interoperabilidad de Datos de Declaraciones</Typography>
                     <Typography paragraph>
-                        Esta guía tiene como finalidad la descripción del Estándar para la Interoperabilidad de Datos de Declaraciones, desarrollado por la Secretaría Ejecutiva del Sistema Nacional Anticorrupción (SESNA).
-                        Se presenta el modelo de interoperabilidad que deberán adoptar los diversos sistemas de declaraciones que proveerán información a la Plataforma Digital Nacional (PDN) y
+                        Esta guía tiene como finalidad la descripción del Estándar para la Interoperabilidad de Datos de Declaraciones,
+                        desarrollado por la Secretaría Ejecutiva del Sistema Nacional Anticorrupción (SESNA).
+                        Se presenta el modelo de interoperabilidad que deberán adoptar los diversos sistemas de declaraciones que proveerán
+                        información a la Plataforma Digital Nacional (PDN) y
                         se proporciona una serie de recomendaciones para la implementación del estándar por parte de las Instituciones.
                     </Typography>
 
@@ -236,31 +247,42 @@ class ClippedDrawer extends React.Component {
                         Introducción
                     </Typography>
                     <Typography paragraph>
-                        En la actualidad, la información de declaraciones de los servidores públicos de los diferentes niveles de gobierno se encuentra contenida en diversos formatos,
-                        bases de datos y sistemas de información; cada uno de ellos con particularidades tecnológicas y reglas de negocio distintas, dificultando la integración y la
-                        interoperabilidad de los datos. El Estándar para la Interoperabilidad de Datos de Declaraciones surge a partir de la necesidad de distribuir, comparar, analizar y distribuir la información
+                        En la actualidad, la información de declaraciones de los servidores públicos de los diferentes
+                        niveles de gobierno se encuentra contenida en diversos formatos,
+                        bases de datos y sistemas de información; cada uno de ellos con particularidades tecnológicas y
+                        reglas de negocio distintas, dificultando la integración y la
+                        interoperabilidad de los datos. El Estándar para la Interoperabilidad de Datos de Declaraciones surge
+                        a partir de la necesidad de distribuir, comparar, analizar y
+                        distribuir la información
                         de las declaraciones de situación patrimonial y de intereses de una manera uniforme e interoperable.
                     </Typography>
 
                     <Typography paragraph>
-                        La PDN está conceptualizada como una herramienta que permitirá la consulta
-                        de información de las diferentes instituciones de los tres niveles de gobierno en un solo punto,
-                        sin tener el objetivo de concentrar o resguardar la información de las instituciones.
-                        En ese sentido, resulta necesario que la PDN cuente con mecanismos le que permitan interconectarse con los diversos sistemas de gobierno
-                        sin importar la tecnología que utilizen (e.g., lenguajes de programación o bases de datos) para consultar la información
-                        que resulte necesaria.
-
+                        Conforme a lo anterior, la SESNA ha conceptualizado a la Plataforma Digital Nacional como una
+                        herramienta que permitirá la consulta de información de las diferentes instituciones de los tres
+                        niveles de gobierno en un solo punto, sin tener el objetivo de concentrar o resguardar su información.
+                        En ese sentido, resulta necesario dotar a la PDN de mecanismos le que permitan interconectarse
+                        con los diversos sistemas de gobierno para consultar la información que resulte necesaria,
+                        sin importar la tecnología con la que dichos sistemas fueron desarrollados (i.e., lenguajes de programación, bases de datos, etc.).
                     </Typography>
                     <Typography paragraph>
 
-                        La SESNA ha planeado el desarrollo de la PDN mediante el uso APIs Web (Application Programming Interface) de arquitectura REST (REpresentational State Transfer),
-                        que son un mecanismo de comunicación ampliamente usado para el desarrollo de aplicaciones web a gran escala. El uso de APIs permitirá que las instituciones
-                        conserven el control de sus datos, gestionando el acceso a los mismos mediante reglas y perfiles de usuario.
+                        La PDN logrará la interoperabilidad técnica con los diversos sistemas que la integrarán a través
+                        de la creación de estándares de datos y mediante el uso de Interfaces de Programación de Aplicaciones
+                        o APIs (por sus siglas en Inglés). Los estándares de datos permitirán homologar la manera en que la
+                        información se debe representar para su entrega a la PDN, mientras que las APIs serán el mecanismo
+                        que permitirá la comunicación entre sistemas a través de Internet.
+                        Las APIs son ampliamente usadas para el desarrollo de aplicaciones a gran escala.
+                        El uso de APIs permitirá que las instituciones conserven el control de sus datos, gestionando el
+                        acceso a los mismos mediante reglas y perfiles de usuario.
 
-                        Entrando en detalles más técnicos, las tecnología REST es ampliamente usada por en la industria del software para el desarrollo de aplicaciones web,
+                    </Typography>
+                    <Typography paragraph>
+                        La SESNA ha planeado el desarrollo de la PDN mediante el uso APIs Web
+                        con arquitectura REST (REpresentational State Transfer).
+                        Dicha tecnología es ampliamente usada por en la industria del software para el desarrollo de aplicaciones web,
                         y en la actualidad, existe grán diversidad de herramientas de código abierto que permiten la implementación de
                         sistemas basados en APIs REST de manera rápida y a un bajo costo.
-
                     </Typography>
 
                     <Typography variant="h5" id="oas" paragraph>
@@ -322,6 +344,13 @@ class ClippedDrawer extends React.Component {
                     <Typography paragraph>
                         A través de la de la PDN, los usuarios serán capaces de realizar consultas a las APIs de las Instituciones, dichas consultas se configurarán usando parámetros (Ver la sección Parámetros de consulta). La Figura 1 muestra un diagrama en el cual se ejemplifica la comunicación entre el API de declaraciones de una Institución y la PDN. El API tendrá la tarea de recibir la consulta y aplicar la lógica de negocio al interior de la institución para generar la respuesta correspondiente. Dicha respuesta deberá estar apegada al estándar de declaraciones proporcionado que se proporciona en la siguiente sección.
                     </Typography>
+
+                    {/*<Paper>*/}
+                    <img src={Diagrama} alt="Comunicación" className={classes.diagrama}/>
+                    <Typography paragraph>
+                        <b>Figura 1. </b>  Esquema conceptual del flujo de comunicación entre Instituciones y la Plataforma Digital Nacional. De derecha a izquierda se observan usuarios con diferentes perfiles accediendo a la PDN y solicitando información de acuerdo a sus atribuciones.
+                    </Typography>
+                    {/*</Paper>*/}
 
                     <Typography variant="h5" id="parametros" paragraph>
                         Parámetros de consulta

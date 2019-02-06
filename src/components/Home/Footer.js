@@ -75,9 +75,9 @@ class Footer extends React.Component{
                                 <Typography className={classes.blueText}><b>Sistemas</b></Typography>
 
                                 <Typography className={classes.grayText}>
-                                    <a href="http://declaraciones.gobiernofacil.com/" className={classes.grayText}> Declaraciones</a> </Typography>
-                                <Typography className={classes.grayText} component={Link} to="/pdn/servidores">Servidores en contrataciones</Typography>
-                                <Typography className={classes.grayText} component={Link} to="/pdn/sancionados">Sancionados</Typography>
+                                    <a href="https://demospdn.host/declaraciones/" className={classes.grayText}> Declaraciones</a> </Typography>
+                                <Typography className={classes.grayText} component={Link} to="/servidores">Servidores en contrataciones</Typography>
+                                <Typography className={classes.grayText} component={Link} to="/sancionados">Sancionados</Typography>
                                 {/*
                                 <Typography className={classes.grayText}>Fiscalización</Typography>
                                 <Typography className={classes.grayText}>Denuncias</Typography>
@@ -89,8 +89,8 @@ class Footer extends React.Component{
                                 <Typography>
                                     <a href="https://www.plataformadigitalnacional.org/blog" className={classes.grayText}>Blog</a>
                                 </Typography>
-                                <Typography className={classes.grayText} component={Link} to="/pdn/faq">Preguntas frecuentes</Typography>
-                                <Typography component={Link} to="/" className={classes.grayText}> ¿Qué es la PDN?</Typography>
+                                <Typography className={classes.grayText} component={Link} to="/faq">Preguntas frecuentes</Typography>
+                                <Typography component={Link} to="/about" className={classes.grayText}> ¿Qué es la PDN?</Typography>
                                 <Typography component={Link} to="/terminos" className={classes.grayText}>Términos de uso </Typography>
                                 {/*<Typography className={classes.grayText}>Contacto</Typography>*/}
                             </Grid>
