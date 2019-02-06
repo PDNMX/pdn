@@ -12,11 +12,7 @@ import Modal from "@material-ui/core/Modal/Modal";
 import "../../index.css";
 import axios from 'axios';
 
-
 const styles = theme => ({
-    root: {
-        flexGrow: 1
-    },
     section: {
         maxWidth: '1200px'
     },

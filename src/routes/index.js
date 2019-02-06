@@ -14,6 +14,7 @@ import DemoDeclaraciones from '../components/DemoDeclaraciones/demo';
 import Conexion from '../components/Conexion/Conexion';
 import DeclaracionesEspecificaciones from '../components/Declaraciones/Especificaciones/Especificaciones';
 //import LoginPDN from "../components/Inicio/LoginPDN";
+import Consulta from '../components/Conexion/Consulta';
 
 const pdnRoutes = [
 
@@ -90,7 +91,12 @@ const pdnRoutes = [
         path: "/declaraciones/especificaciones",
         component: DeclaracionesEspecificaciones,
         private: false
-    }
+    },
+    {
+        path: "/consultasolicitudes",
+        component : Consulta,
+        private: false
+    },
 ];
 
 export default pdnRoutes;
