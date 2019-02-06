@@ -219,8 +219,10 @@ class ClippedDrawer extends React.Component {
 
                     <Typography variant="h4" id="estandar" paragraph>Estándar para la Interoperabilidad de Datos de Declaraciones</Typography>
                     <Typography paragraph>
-                        Esta guía tiene como finalidad la descripción del Estándar para la Interoperabilidad de Datos de Declaraciones, desarrollado por la Secretaría Ejecutiva del Sistema Nacional Anticorrupción (SESNA).
-                        Se presenta el modelo de interoperabilidad que deberán adoptar los diversos sistemas de declaraciones que proveerán información a la Plataforma Digital Nacional (PDN) y
+                        Esta guía tiene como finalidad la descripción del Estándar para la Interoperabilidad de Datos de Declaraciones,
+                        desarrollado por la Secretaría Ejecutiva del Sistema Nacional Anticorrupción (SESNA).
+                        Se presenta el modelo de interoperabilidad que deberán adoptar los diversos sistemas de declaraciones que proveerán
+                        información a la Plataforma Digital Nacional (PDN) y
                         se proporciona una serie de recomendaciones para la implementación del estándar por parte de las Instituciones.
                     </Typography>
 
@@ -245,31 +247,42 @@ class ClippedDrawer extends React.Component {
                         Introducción
                     </Typography>
                     <Typography paragraph>
-                        En la actualidad, la información de declaraciones de los servidores públicos de los diferentes niveles de gobierno se encuentra contenida en diversos formatos,
-                        bases de datos y sistemas de información; cada uno de ellos con particularidades tecnológicas y reglas de negocio distintas, dificultando la integración y la
-                        interoperabilidad de los datos. El Estándar para la Interoperabilidad de Datos de Declaraciones surge a partir de la necesidad de distribuir, comparar, analizar y distribuir la información
+                        En la actualidad, la información de declaraciones de los servidores públicos de los diferentes
+                        niveles de gobierno se encuentra contenida en diversos formatos,
+                        bases de datos y sistemas de información; cada uno de ellos con particularidades tecnológicas y
+                        reglas de negocio distintas, dificultando la integración y la
+                        interoperabilidad de los datos. El Estándar para la Interoperabilidad de Datos de Declaraciones surge
+                        a partir de la necesidad de distribuir, comparar, analizar y
+                        distribuir la información
                         de las declaraciones de situación patrimonial y de intereses de una manera uniforme e interoperable.
                     </Typography>
 
                     <Typography paragraph>
-                        La PDN está conceptualizada como una herramienta que permitirá la consulta
-                        de información de las diferentes instituciones de los tres niveles de gobierno en un solo punto,
-                        sin tener el objetivo de concentrar o resguardar la información de las instituciones.
-                        En ese sentido, resulta necesario que la PDN cuente con mecanismos le que permitan interconectarse con los diversos sistemas de gobierno
-                        sin importar la tecnología que utilizen (e.g., lenguajes de programación o bases de datos) para consultar la información
-                        que resulte necesaria.
-
+                        Conforme a lo anterior, la SESNA ha conceptualizado a la Plataforma Digital Nacional como una
+                        herramienta que permitirá la consulta de información de las diferentes instituciones de los tres
+                        niveles de gobierno en un solo punto, sin tener el objetivo de concentrar o resguardar su información.
+                        En ese sentido, resulta necesario dotar a la PDN de mecanismos le que permitan interconectarse
+                        con los diversos sistemas de gobierno para consultar la información que resulte necesaria,
+                        sin importar la tecnología con la que dichos sistemas fueron desarrollados (i.e., lenguajes de programación, bases de datos, etc.).
                     </Typography>
                     <Typography paragraph>
 
-                        La SESNA ha planeado el desarrollo de la PDN mediante el uso APIs Web (Application Programming Interface) de arquitectura REST (REpresentational State Transfer),
-                        que son un mecanismo de comunicación ampliamente usado para el desarrollo de aplicaciones web a gran escala. El uso de APIs permitirá que las instituciones
-                        conserven el control de sus datos, gestionando el acceso a los mismos mediante reglas y perfiles de usuario.
+                        La PDN logrará la interoperabilidad técnica con los diversos sistemas que la integrarán a través
+                        de la creación de estándares de datos y mediante el uso de Interfaces de Programación de Aplicaciones
+                        o APIs (por sus siglas en Inglés). Los estándares de datos permitirán homologar la manera en que la
+                        información se debe representar para su entrega a la PDN, mientras que las APIs serán el mecanismo
+                        que permitirá la comunicación entre sistemas a través de Internet.
+                        Las APIs son ampliamente usadas para el desarrollo de aplicaciones a gran escala.
+                        El uso de APIs permitirá que las instituciones conserven el control de sus datos, gestionando el
+                        acceso a los mismos mediante reglas y perfiles de usuario.
 
-                        Entrando en detalles más técnicos, las tecnología REST es ampliamente usada por en la industria del software para el desarrollo de aplicaciones web,
+                    </Typography>
+                    <Typography paragraph>
+                        La SESNA ha planeado el desarrollo de la PDN mediante el uso APIs Web
+                        con arquitectura REST (REpresentational State Transfer).
+                        Dicha tecnología es ampliamente usada por en la industria del software para el desarrollo de aplicaciones web,
                         y en la actualidad, existe grán diversidad de herramientas de código abierto que permiten la implementación de
                         sistemas basados en APIs REST de manera rápida y a un bajo costo.
-
                     </Typography>
 
                     <Typography variant="h5" id="oas" paragraph>
