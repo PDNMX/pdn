@@ -13,7 +13,7 @@ function getModalStyle() {
         top: `${top}%`,
         left: `${left}%`,
         transform: `translate(-${top}%, -${left}%)`,
-    };
+        };
 }
 
 const styles = theme => ({
@@ -56,7 +56,7 @@ class Mensaje extends React.Component {
                     open={open}
                     onClose={()=>this.props.handleClose()}
                 >
-                    <div style={getModalStyle()} className={classes.papperModal}>
+                    <div className={classes.paperModal}  style={getModalStyle()} >
                         <Grid container spacing={8} justify={"flex-start"}>
                             <Grid item xs={12}>
                                 <Typography variant={"h5"} className={classes.textCenter}>{titulo}</Typography>
@@ -67,7 +67,6 @@ class Mensaje extends React.Component {
                         </Grid>
                     </div>
                 </Modal>
-
             </div>
         );
     }

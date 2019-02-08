@@ -12,8 +12,8 @@ import rp from "request-promise";
 import AcceptIcon from '@material-ui/icons/AssignmentTurnedIn';
 import DetalleSolicitud from './DetalleSolicitud';
 import axios from "axios";
-import Grid from "@material-ui/core/Grid/Grid";
-import Modal from "@material-ui/core/Modal/Modal";
+import TablePagination from "@material-ui/core/TablePagination/TablePagination";
+import Mensaje from "../Mensajes/Mensaje";
 
 let counter = 0;
 let createData = (item) => {
@@ -168,42 +168,13 @@ const styles = theme => ({
     },
     title: {
         color: theme.palette.primary.main,
-        textAlign:'center'
+        textAlign: 'center'
     },
     text: {
         color: theme.palette.primary.dark,
-    },
-    mensaje:{
-        marginTop : theme.spacing.unit *2
-    },
-    paperCaptcha: {
-        position: 'absolute',
-        backgroundColor: theme.palette.background.paper,
-        boxShadow: theme.shadows[5],
-        padding: theme.spacing.unit * 4,
-        [theme.breakpoints.up('sm')]: {
-            width: theme.spacing.unit * 50,
-        },
-        [theme.breakpoints.down('sm')]: {
-            width: '80%',
-            height: '80%',
-            overflowY: 'scroll',
-        },
-        [theme.breakpoints.up('xl')]: {
-            width: theme.spacing.unit * 70,
-        },
     }
 });
 
-function getModalStyle() {
-    const top = 50;
-    const left = 50;
-    return {
-        top: `${top}%`,
-        left: `${left}%`,
-        transform: `translate(-${top}%, -${left}%)`,
-    };
-}
 
 class TablaSolicitudes extends React.Component {
     constructor(props) {
@@ -229,11 +200,17 @@ class TablaSolicitudes extends React.Component {
     };
 
     componentDidMount() {
-        this.getSolicitudes();
+        this.getSolicitudes('FIELD_FILTER');
     }
 
-    getSolicitudes = () => {
+    getSolicitudes = (typeSearch) => {
         let params = {};
+
+        (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? params.limit = this.state.rowsPerPage : null;
+        (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? params.offset = (this.state.rowsPerPage * this.state.page) : null;
+        (typeSearch === 'FIELD_FILTER') ? this.getTotalRows(params) : null;
+
+
         let options = {
             uri: 'https://plataformadigitalnacional.org/api/solicitudes',
             json: true,
@@ -244,16 +221,11 @@ class TablaSolicitudes extends React.Component {
                 let dataAux = data.map(item => {
                     return createData(item);
                 });
-                let typeSearch = 'FIELD_FILTER';
-                typeSearch === 'ALL' ? this.setState({data: dataAux, loading: false}, () => {
-                    this.btnDownloadAll.triggerDown();
-                }) : (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.setState({
-                        filterData: dataAux,
-                        loading: false
-                    }) :
-                    this.setState({filterDataAll: dataAux, loading: false}, () => {
-                        this.child.triggerDown();
-                    });
+
+                this.setState({
+                    filterData: dataAux,
+                    loading: false
+                });
                 return true;
             })
             .catch(err => {
@@ -261,6 +233,35 @@ class TablaSolicitudes extends React.Component {
                 alert("_No se pudó obtener la información");
                 console.log(err);
             });
+
+    };
+
+    getTotalRows = (params) => {
+        let options = {
+            uri: 'https://plataformadigitalnacional.org/api/solicitudes?select=count=eq.exact',
+            json: true,
+            qs: params
+        };
+        rp(options)
+            .then(data => {
+                this.setState({totalRows: data[0].count, loading: false});
+            }).catch(err => {
+            this.setState({loading: false});
+            alert("_No se pudó obtener la información");
+            console.log(err);
+        });
+    };
+
+    handleChangeRowsPerPage = event => {
+        this.setState({rowsPerPage: event.target.value, page: 0}, () => {
+            this.getSolicitudes('FIELD_FILTER');
+        });
+    };
+
+    handleChangePage = (event, page) => {
+        this.setState({page}, () => {
+            this.getSolicitudes('CHANGE_PAGE');
+        });
 
     };
     handleRequestSort = (event, property) => {
@@ -292,7 +293,6 @@ class TablaSolicitudes extends React.Component {
         axios
             .post('https://demospdn.host/pdn/getOficio', fd, {responseType: 'arraybuffer'})
             .then(res => {
-                console.log("res: ", res);
                 if (res && res.status === 200) {
                     let fileName = 'Oficio.pdf';
                     const a = document.createElement('a');
@@ -332,6 +332,8 @@ class TablaSolicitudes extends React.Component {
                 .then(data => {
                     this.setState({
                         flag_msj: true
+                    }, () => {
+                        this.getSolicitudes('FIELD_FILTER');
                     })
                 })
                 .catch(err => {
@@ -347,24 +349,8 @@ class TablaSolicitudes extends React.Component {
         let index = 0;
         return (
             <div>
-                <Modal
-                    open={this.state.flag_msj}
-                    aria-labelledby="simple-modal-title"
-                    aria-describedby="simple-modal-description"
-                    onClose={this.handleCloseMsj}
-                >
-                    <div style={getModalStyle()} className={classes.paperCaptcha}>
-                        <Grid container justify={"center"}>
-                            <Grid item xs={12}>
-                                <Typography variant={"h5"} className={classes.title}>Solicitud
-                                    aprobada</Typography>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <Typography variant={"subtitle1"} className={classes.mensaje}>La solicitud ha sido aceptada</Typography>
-                            </Grid>
-                        </Grid>
-                    </div>
-                </Modal>
+                <Mensaje mensaje={'La solicitud ha sido aceptada'} titulo={'Solicitud aceptada'}
+                         open={this.state.flag_msj} handleClose={this.handleCloseMsj}/>
                 <DetalleSolicitud handleClose={this.handleClose} solicitud={this.state.elementoSeleccionado}
                                   control={this.state.open}/>
                 <Typography variant={"h6"} className={classes.text}>Solicitudes</Typography>
@@ -421,6 +407,25 @@ class TablaSolicitudes extends React.Component {
                         }
                     </TableBody>
                 </Table>
+                <TablePagination
+                    className={classes.tablePagination}
+                    component="div"
+                    count={totalRows}
+                    rowsPerPage={rowsPerPage}
+                    page={page}
+                    backIconButtonProps={{
+                        'aria-label': 'Previous Page',
+                    }}
+                    nextIconButtonProps={{
+                        'aria-label': 'Next Page',
+                    }}
+                    onChangePage={this.handleChangePage}
+                    onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                    labelRowsPerPage='Registros por página'
+                    labelDisplayedRows={({from, to, count}) => {
+                        return `${from}-${to} de ${count}`;
+                    }}
+                />
             </div>
         );
     }
