@@ -20,11 +20,11 @@ const styles = theme => ({
     formControl: {
         width: '100%'
     },
-    mensajeError:{
-        color : 'red'
+    mensajeError: {
+        color: 'red'
     },
-    text : {
-        color : theme.palette.primary.dark,
+    text: {
+        color: theme.palette.primary.dark,
 
     }
 });
@@ -39,21 +39,21 @@ const nuevo = {
     telefono_personal: '',
     telefono_oficina: '',
     extension: '',
-    otra_dependencia : ''
+    otra_dependencia: ''
 };
 
-let loadDependencias = (_this)=>{
+let loadDependencias = (_this) => {
     let sug = [];
     let index = 0;
     let options = {
-        uri : 'https://demospdn.host/demo1/captura/api/catDependencias',
-        json : true
+        uri: 'https://demospdn.host/demo1/captura/api/catDependencias',
+        json: true
     };
     rp(options)
         .then(data => {
             data.map(item => {
-                sug.push({id:index,value: item.valor, label: item.valor});
-                index+=1;
+                sug.push({id: index, value: item.valor, label: item.valor});
+                index += 1;
             });
             _this.setState({dependencias: sug});
         }).catch(err => {
@@ -64,15 +64,18 @@ let loadDependencias = (_this)=>{
 
 
 const expCorreo = '^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)+(.[a-z]{2,4})$';
+
 class FormularioConexion extends React.Component {
     state = {
         registro: nuevo,
-        mensaje : '',
-        dependencias : []
+        mensaje: '',
+        dependencias: []
     };
+
     componentDidMount() {
         loadDependencias(this);
     }
+
     handleChange = name => event => {
         this.setState({
             registro: {
@@ -82,19 +85,19 @@ class FormularioConexion extends React.Component {
         })
     };
 
-    handleClick = ()=>{
+    handleClick = () => {
         let item = this.state.registro;
-        let okDependencia = item.dependencia && item.dependencia!=='OTRA'? true : (item.dependencia==='OTRA' && item.otra_dependencia)?true:false;
+        let okDependencia = item.dependencia && item.dependencia !== 'OTRA' ? true : (item.dependencia === 'OTRA' && item.otra_dependencia) ? true : false;
         if (item.cargo && okDependencia && item.nombre && item.apellido1 && item.correo &&
-            item.correo.match(expCorreo)!==null) {
+            item.correo.match(expCorreo) !== null) {
             this.props.addRegistro(this.state.registro);
             this.setState({
-                registro:nuevo,
-                mensaje : ''
+                registro: nuevo,
+                mensaje: ''
             })
-        }else{
+        } else {
             this.setState({
-                mensaje : '*Llena los campos requeridos'
+                mensaje: '*Llena los campos requeridos'
             })
         }
 
@@ -107,15 +110,15 @@ class FormularioConexion extends React.Component {
             <div>
                 <Grid container spacing={32}>
                     <Grid item xs={12}>
-                       <Typography variant={"h6"} className={classes.text}>
-                           Datos del Servidor Público
-                       </Typography>
+                        <Typography variant={"h6"} className={classes.text}>
+                            Datos del Servidor Público
+                        </Typography>
                     </Grid>
                     <Grid item xs={12} md={3}>
                         <TextField className={classes.formControl} required={true}
-                            id={'cargo'}
-                            label={'Cargo'} value={this.state.registro.cargo}
-                            onChange={this.handleChange('cargo')}
+                                   id={'cargo'}
+                                   label={'Cargo'} value={this.state.registro.cargo}
+                                   onChange={this.handleChange('cargo')}
                         />
                     </Grid>
                     <Grid item xs={12} md={3}>
@@ -127,16 +130,16 @@ class FormularioConexion extends React.Component {
                                 inputProps={{
                                     name: 'dependencia',
                                     id: 'dependencia-simple',
-                                    required : true
+                                    required: true
                                 }}
 
                             >
-                                <MenuItem value= 'OTRA' key={-1}>
+                                <MenuItem value='OTRA' key={-1}>
                                     <em>OTRA</em>
                                 </MenuItem>
                                 {
-                                    this.state.dependencias.map(item=>{
-                                        return(<MenuItem value={item.value} key={item.id}>{item.label}</MenuItem>)
+                                    this.state.dependencias.map(item => {
+                                        return (<MenuItem value={item.value} key={item.id}>{item.label}</MenuItem>)
                                     })
                                 }
 
@@ -144,40 +147,40 @@ class FormularioConexion extends React.Component {
                         </FormControl>
                     </Grid>
                     {
-                        this.state.registro.dependencia==='OTRA' &&
+                        this.state.registro.dependencia === 'OTRA' &&
                         <Grid item xs={12} md={6}>
-                            <TextField  className={classes.formControl}
-                                        id={'dependencia'}
-                                        label={'Dependencia'} value={this.state.registro.otra_dependencia}
-                                        onChange={this.handleChange('otra_dependencia')}
+                            <TextField className={classes.formControl}
+                                       id={'dependencia'}
+                                       label={'Dependencia'} value={this.state.registro.otra_dependencia}
+                                       onChange={this.handleChange('otra_dependencia')}
                             />
                         </Grid>
                     }
                     {
-                        this.state.registro.dependencia!=='OTRA' &&
+                        this.state.registro.dependencia !== 'OTRA' &&
                         <Grid item xs={12} md={6}/>
 
                     }
 
                     <Grid item xs={12} md={3}>
                         <TextField className={classes.formControl} required={true}
-                            id={'nombre'}
-                            label={'Nombre'} value={this.state.registro.nombre}
-                            onChange={this.handleChange('nombre')}
+                                   id={'nombre'}
+                                   label={'Nombre'} value={this.state.registro.nombre}
+                                   onChange={this.handleChange('nombre')}
                         />
                     </Grid>
                     <Grid item xs={12} md={3}>
                         <TextField className={classes.formControl} required={true}
-                            id={'apellido1'}
-                            label={'Apellido Uno'} value={this.state.registro.apellido1}
-                            onChange={this.handleChange('apellido1')}
+                                   id={'apellido1'}
+                                   label={'Apellido Uno'} value={this.state.registro.apellido1}
+                                   onChange={this.handleChange('apellido1')}
                         />
                     </Grid>
                     <Grid item xs={12} md={3}>
                         <TextField className={classes.formControl}
-                            id={'apellido2'}
-                            label={'Apellido Dos'} value={this.state.registro.apellido2}
-                            onChange={this.handleChange('apellido2')}
+                                   id={'apellido2'}
+                                   label={'Apellido Dos'} value={this.state.registro.apellido2}
+                                   onChange={this.handleChange('apellido2')}
                         />
                     </Grid>
                     <Grid item xs={12} md={3}>
@@ -185,31 +188,32 @@ class FormularioConexion extends React.Component {
                     </Grid>
 
                     <Grid item xs={12} md={3}>
-                        <TextField className={classes.formControl} required={true} type={'email'} error={this.state.registro.correo!=='' &&this.state.registro.correo.match(expCorreo)===null }
-                            id={'correo'}
-                            label={'Correo electrónico'} value={this.state.registro.correo}
-                            onChange={this.handleChange('correo')}
+                        <TextField className={classes.formControl} required={true} type={'email'}
+                                   error={this.state.registro.correo !== '' && this.state.registro.correo.match(expCorreo) === null}
+                                   id={'correo'}
+                                   label={'Correo electrónico'} value={this.state.registro.correo}
+                                   onChange={this.handleChange('correo')}
                         />
                     </Grid>
                     <Grid item xs={12} md={3}>
                         <TextField className={classes.formControl}
-                            id={'telefonoPersonal'}
-                            label={'Telefono Personal'} value={this.state.registro.telefono_personal}
-                            onChange={this.handleChange('telefono_personal')}
+                                   id={'telefonoPersonal'}
+                                   label={'Telefono Personal'} value={this.state.registro.telefono_personal}
+                                   onChange={this.handleChange('telefono_personal')}
                         />
                     </Grid>
                     <Grid item xs={12} md={3}>
                         <TextField className={classes.formControl}
-                            id={'telefonoOficina'}
-                            label={'Telefono Oficina'} value={this.state.registro.telefono_oficina}
-                            onChange={this.handleChange('telefono_oficina')}
+                                   id={'telefonoOficina'}
+                                   label={'Telefono Oficina'} value={this.state.registro.telefono_oficina}
+                                   onChange={this.handleChange('telefono_oficina')}
                         />
                     </Grid>
                     <Grid item xs={12} md={3}>
                         <TextField className={classes.formControl}
-                            id={'extension'}
-                            label={'Extensión'} value={this.state.registro.extension}
-                            onChange={this.handleChange('extension')}
+                                   id={'extension'}
+                                   label={'Extensión'} value={this.state.registro.extension}
+                                   onChange={this.handleChange('extension')}
                         />
                     </Grid>
                     <Grid item xs={12}>
@@ -218,8 +222,9 @@ class FormularioConexion extends React.Component {
                     <Grid item xs={11}/>
                     <Grid item xs={1}>
                         <Tooltip title={'Agregar'}>
-                            <Fab color="primary" aria-label="Add" className={classes.fab} onClick={()=>this.handleClick()}>
-                                <AddIcon />
+                            <Fab color="primary" aria-label="Add" className={classes.fab}
+                                 onClick={() => this.handleClick()}>
+                                <AddIcon/>
                             </Fab>
                         </Tooltip>
                     </Grid>

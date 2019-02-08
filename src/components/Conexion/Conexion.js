@@ -11,7 +11,14 @@ import {ReCaptcha, loadReCaptcha} from 'react-recaptcha-google';
 import Modal from "@material-ui/core/Modal/Modal";
 import "../../index.css";
 import axios from 'axios';
+import Mensaje from '../Mensajes/Mensaje';
+import MensajeError from '../Mensajes/MensajeError';
 
+const mensajeSolicitudEnviada = 'Los permisos de conexión a la PDN serán otorgados\n' +
+    '                                        o denegados por la SESNA posteriormente a una evaluación de aspectos técnicos de\n' +
+    '                                        interconexión. En caso de que los sujetos obligados no cumplan con los\n' +
+    '                                        requerimientos de interconexión a la PDN establecidos por la SESNA, se denegará\n' +
+    '                                        el permiso de conexión a la PDN.';
 const styles = theme => ({
     section: {
         maxWidth: '1200px'
@@ -69,10 +76,6 @@ const styles = theme => ({
         textAlign: 'center',
         color: theme.palette.primary.dark
     },
-    titleError: {
-        textAlign: 'center',
-        color: theme.palette.red.color
-    },
     gRecaptcha: {
         margin: 'auto',
         width: '300px',
@@ -96,7 +99,7 @@ class Conexion extends React.Component {
         flag_send: false,
         dependencias: [],
         flag_msj: false,
-        flag_error : false,
+        flag_error: false,
         oficio: null
     };
 
@@ -109,7 +112,7 @@ class Conexion extends React.Component {
 
     componentDidMount() {
         loadReCaptcha();
-        if(this.recaptcha){
+        if (this.recaptcha) {
             console.log("started, just a second...")
             this.recaptcha.reset();
         }
@@ -120,6 +123,7 @@ class Conexion extends React.Component {
             this.recaptcha.reset();
         }
     }
+
     verifyCallback(recaptchaToken) {
         if (recaptchaToken) {
             this.recaptcha.reset();
@@ -173,7 +177,7 @@ class Conexion extends React.Component {
             axios
                 .post('https://demospdn.host/pdn/uploadOficio', fd)
                 .then(res => {
-                    if (res && res.status===200) {
+                    if (res && res.status === 200) {
                         this.setState({
                             idDocument: res.data.idDocument
                         }, () => {
@@ -184,16 +188,16 @@ class Conexion extends React.Component {
                 .catch(err => {
                     console.log("err");
                     this.setState({
-                        flag_error:true,
+                        flag_error: true,
                         mensajeError: 'Error'
                     })
                 })
         }
     };
 
-    deleteOficio = ()=>{
+    deleteOficio = () => {
         let fd = new FormData();
-        fd.append('idDocument', this.state.idDocument+'.pdf');
+        fd.append('idDocument', this.state.idDocument + '.pdf');
         axios
             .post('https://demospdn.host/pdn/deleteOficio', fd)
             .then(res => {
@@ -230,21 +234,23 @@ class Conexion extends React.Component {
                         registros: [],
                         flag_send: false,
                         oficio: null,
-                        idDocument:null
+                        idDocument: null
                     });
-                    this.fileInput.value= "";
+                    this.fileInput.value = "";
                 })
                 .catch(err => {
-                    let mensaje ='';
+                    let mensaje = '';
                     switch (err.error.code) {
                         case '23505':
-                            mensaje = 'Correo electrónico ya registrado: '+err.error.details;
+                            mensaje = 'Correo electrónico ya registrado: ' + err.error.details;
                             break;
-                        default : mensaje = 'Error al insertar registro'; break;
+                        default :
+                            mensaje = 'Error al insertar registro';
+                            break;
                     }
                     this.deleteOficio();
                     this.setState({
-                        flag_error:true,
+                        flag_error: true,
                         mensajeError: mensaje
                     })
                 })
@@ -314,7 +320,9 @@ class Conexion extends React.Component {
                                 </Grid>
                                 <Grid item xs={12} style={{textAlign: 'center'}}>
                                     <ReCaptcha
-                                        ref={(el) => {this.recaptcha=el}}
+                                        ref={(el) => {
+                                            this.recaptcha = el
+                                        }}
                                         size="normal"
                                         sitekey="6Lfs8YcUAAAAAGVQL-BpW_w__FSJeWq-xAUoPbf9"
                                         verifyCallback={this.verifyCallback}
@@ -329,45 +337,12 @@ class Conexion extends React.Component {
                             </Grid>
                         </div>
                     </Modal>
-                    <Modal
-                        open={this.state.flag_msj}
-                        aria-labelledby="simple-modal-title"
-                        aria-describedby="simple-modal-description"
-                        onClose={this.handleCloseMsj}
-                    >
-                        <div style={getModalStyle()} className={classes.paperCaptcha}>
-                            <Grid container justify={"center"}>
-                                <Grid item xs={12}>
-                                    <Typography variant={"h5"} className={classes.textCenter}>Solicitud
-                                        enviada</Typography>
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <Typography variant={"subtitle1"}>Los permisos de conexión a la PDN serán otorgados
-                                        o denegados por la SESNA posteriormente a una evaluación de aspectos técnicos de
-                                        interconexión. En caso de que los sujetos obligados no cumplan con los
-                                        requerimientos de interconexión a la PDN establecidos por la SESNA, se denegará
-                                        el permiso de conexión a la PDN.</Typography>
-                                </Grid>
-                            </Grid>
-                        </div>
-                    </Modal>
-                    <Modal
-                        open={this.state.flag_error}
-                        aria-labelledby="simple-modal-title"
-                        aria-describedby="simple-modal-description"
-                        onClose={this.handleCloseError}
-                    >
-                        <div style={getModalStyle()} className={classes.paperCaptcha}>
-                            <Grid container justify={"center"}>
-                                <Grid item xs={12}>
-                                    <Typography variant={"h5"} className={classes.titleError}>Error</Typography>
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <Typography variant={"subtitle1"}>{this.state.mensajeError}</Typography>
-                                </Grid>
-                            </Grid>
-                        </div>
-                    </Modal>
+                    <Mensaje titulo={'Solicitud enviada'} mensaje={mensajeSolicitudEnviada}
+                             open={this.state.flag_msj} handleClose={this.handleCloseMsj}
+                    />
+                    <MensajeError mensaje={this.state.mensajeError}
+                                  open={this.state.flag_error} handleClose={this.handleCloseError}
+                    />
                 </div>
                 <div className={classes.bgContainer}>
                     <Grid container justify={'center'} spacing={0}>
@@ -381,10 +356,12 @@ class Conexion extends React.Component {
                                     </Grid>
                                     <Grid item xs={12}>
                                         <Typography variant={"h6"} className={classes.text}>Oficio</Typography>
-                                        <input type="file" onChange={this.handleFile} name={'nombreOficio'} ref={ref => this.fileInput = ref}/>
+                                        <input type="file" onChange={this.handleFile} name={'nombreOficio'}
+                                               ref={ref => this.fileInput = ref}/>
                                     </Grid>
                                     <Grid item xs={12}>
-                                        <Button variant="contained" color="primary" className={classes.button} disabled={!this.state.oficio || this.state.registros.length<=0}
+                                        <Button variant="contained" color="primary" className={classes.button}
+                                                disabled={!this.state.oficio || this.state.registros.length <= 0}
                                                 onClick={() => this.verifyCaptcha()}>
                                             Enviar
                                         </Button>

@@ -4,7 +4,6 @@ import Grid from "@material-ui/core/Grid/Grid";
 import Paper from "@material-ui/core/Paper/Paper";
 import TablaSolicitudes from "./TablaSolicitudes";
 import Typography from "@material-ui/core/Typography/Typography";
-import Modal from "@material-ui/core/Modal/Modal";
 import "../../index.css";
 
 const styles = theme => ({
@@ -36,36 +35,16 @@ const styles = theme => ({
         paddingTop: '102px',
         marginBottom: '266px'
     },
-    titleError: {
-        textAlign: 'center',
-        color: theme.palette.red.color
-    },
 });
-
-function getModalStyle() {
-    const top = 50;
-    const left = 50;
-    return {
-        top: `${top}%`,
-        left: `${left}%`,
-        transform: `translate(-${top}%, -${left}%)`,
-    };
-}
 
 class Conexion extends React.Component {
     state = {
-        flag_error : false,
         oficio: null
     };
 
     constructor(props, context) {
         super(props, context);
     }
-
-    handleCloseError = () => {
-        this.setState({flag_error: false});
-    };
-
 
     render() {
         const {classes} = this.props;
@@ -87,25 +66,6 @@ class Conexion extends React.Component {
                             </Grid>
                         </Grid>
                     </Grid>
-                </div>
-                <div>
-                    <Modal
-                        open={this.state.flag_error}
-                        aria-labelledby="simple-modal-title"
-                        aria-describedby="simple-modal-description"
-                        onClose={this.handleCloseError}
-                    >
-                        <div style={getModalStyle()} className={classes.paperCaptcha}>
-                            <Grid container justify={"center"}>
-                                <Grid item xs={12}>
-                                    <Typography variant={"h5"} className={classes.titleError}>Error</Typography>
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <Typography variant={"subtitle1"}>{this.state.mensajeError}</Typography>
-                                </Grid>
-                            </Grid>
-                        </div>
-                    </Modal>
                 </div>
                 <div className={classes.bgContainer}>
                     <Grid container justify={'center'} spacing={0}>

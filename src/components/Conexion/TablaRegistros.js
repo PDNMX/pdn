@@ -11,49 +11,49 @@ import Tooltip from "@material-ui/core/Tooltip/Tooltip";
 
 const columnData = [
     {
-        id:'nombre',
+        id: 'nombre',
         label: 'Nombre',
         position: 2,
         mostrar: true,
         key: 'nombre'
     },
     {
-        id:'apellido1',
+        id: 'apellido1',
         label: 'Apellido Uno',
         position: 3,
         mostrar: true,
         key: 'apellido1'
     },
     {
-        id:'apellido2',
+        id: 'apellido2',
         label: 'Apellido Dos',
         position: 4,
         mostrar: true,
         key: 'apellido2'
     },
     {
-        id:'cargo',
+        id: 'cargo',
         label: 'Cargo',
         position: 5,
         mostrar: true,
         key: 'cargo'
     },
     {
-        id:'dependencia',
+        id: 'dependencia',
         label: 'Dependencia',
         position: 6,
         mostrar: true,
         key: 'dependencia'
     },
     {
-        id:'correo',
+        id: 'correo',
         label: 'Correo electrónico',
         position: 7,
         mostrar: true,
         key: 'correo'
     },
     {
-        id:'telefonoPersonal',
+        id: 'telefonoPersonal',
         label: 'Teléfono personal',
         position: 8,
         mostrar: true,
@@ -61,7 +61,7 @@ const columnData = [
     },
 
     {
-        id:'telefonoOficina',
+        id: 'telefonoOficina',
         label: 'Teléfono oficina',
         position: 9,
         mostrar: true,
@@ -69,7 +69,7 @@ const columnData = [
     },
 
     {
-        id:'extension',
+        id: 'extension',
         label: 'Extensión',
         position: 10,
         mostrar: true,
@@ -114,8 +114,8 @@ const styles = theme => ({
     },
     table: {
         tableLayout: 'fixed',
-        marginTop : theme.spacing.unit *3,
-        marginBottom : theme.spacing.unit *3,
+        marginTop: theme.spacing.unit * 3,
+        marginBottom: theme.spacing.unit * 3,
     },
     tablePagination: {
         overflowX: 'auto',
@@ -127,15 +127,16 @@ const styles = theme => ({
     titleTable: {
         marginBottom: '61px'
     },
-    desc:{
-        color : theme.palette.primary.dark,
+    desc: {
+        color: theme.palette.primary.dark,
     },
-    text : {
-        color : theme.palette.primary.dark,
+    text: {
+        color: theme.palette.primary.dark,
 
     }
 });
-class TablaRegistros extends  React.Component{
+
+class TablaRegistros extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -168,11 +169,11 @@ class TablaRegistros extends  React.Component{
 
     isSelected = id => this.state.selected.indexOf(id) !== -1;
 
-    render(){
+    render() {
         const {registros, classes} = this.props;
         const {order, orderBy, selected, rowsPerPage, page, filterData, totalRows, filterDataAll} = this.state;
-        let index=0;
-        return(
+        let index = 0;
+        return (
             <div>
                 <Typography variant={"h6"} className={classes.text}>Servidores a registrar</Typography>
                 <Table className={classes.table} aria-describedby="spinnerLoading"
@@ -185,18 +186,18 @@ class TablaRegistros extends  React.Component{
                         onRequestSort={this.handleRequestSort}
                         rowCount={registros.length}
                         columnData={columnData}
-                        acciones = {true}
+                        acciones={true}
                     />
                     <TableBody>
                         {
                             registros
-                                .sort(getSorting(order,orderBy))
+                                .sort(getSorting(order, orderBy))
                                 .map(n => {
-                                    return(
+                                    return (
                                         <TableRow
                                             hover
                                             tabIndex={-1}
-                                            key = {index++}
+                                            key={index++}
                                         >
                                             <TableCell>{n.nombre}</TableCell>
                                             <TableCell>{n.apellido1}</TableCell>
@@ -209,7 +210,7 @@ class TablaRegistros extends  React.Component{
                                             <TableCell>{n.extension}</TableCell>
                                             <TableCell>
                                                 <Tooltip title={"Eliminar"}>
-                                                    <DeleteIcon onClick={()=>this.props.remove(n)}/>
+                                                    <DeleteIcon onClick={() => this.props.remove(n)}/>
                                                 </Tooltip>
                                             </TableCell>
                                         </TableRow>
@@ -223,4 +224,4 @@ class TablaRegistros extends  React.Component{
     }
 }
 
-export default withStyles(styles) (TablaRegistros)
+export default withStyles(styles)(TablaRegistros)
