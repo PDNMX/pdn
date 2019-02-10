@@ -37,6 +37,9 @@ const styles = theme => ({
         [theme.breakpoints.up('sm')]: {
             //marginRight: '80px'
         }
+    },
+    blog: {
+        textTransform: "none"
     }
 });
 
@@ -110,7 +113,9 @@ class PDNAppBar extends React.Component {
                                         open={open}
                                         onClose={this.handleClose}
                                     >
-                                        <MenuItem onClick={this.handleClose} component={LinkMui} href = "https://www.plataformadigitalnacional.org/blog/">Blog</MenuItem>
+                                        <MenuItem onClick={this.handleClose} component={LinkMui}
+                                                  href = "https://www.plataformadigitalnacional.org/blog/" className={classes.blog}>
+                                            Blog</MenuItem>
                                         <MenuItem onClick={this.handleClose} component={Link} to="/about">¿Qué es la PDN?</MenuItem>
                                         <MenuItem onClick={this.handleClose} component={Link} to="/terminos">Términos de uso</MenuItem>
                                     </Menu>
