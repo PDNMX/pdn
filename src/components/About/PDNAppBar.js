@@ -13,6 +13,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import {Link} from 'react-router-dom';
+import LinkMui from '@material-ui/core/Button';
 
 
 const styles = theme => ({
@@ -109,8 +110,8 @@ class PDNAppBar extends React.Component {
                                         open={open}
                                         onClose={this.handleClose}
                                     >
-                                        <MenuItem onClick={this.handleClose} component={Link} to="/about">Acerca de</MenuItem>
-                                        <MenuItem onClick={this.handleClose} onClick={() => { window.location.href = "https://www.plataformadigitalnacional.org/blog/"}}>Blog</MenuItem>
+                                        <MenuItem onClick={this.handleClose} component={LinkMui} href = "https://www.plataformadigitalnacional.org/blog/">Blog</MenuItem>
+                                        <MenuItem onClick={this.handleClose} component={Link} to="/about">¿Qué es la PDN?</MenuItem>
                                         <MenuItem onClick={this.handleClose} component={Link} to="/terminos">Términos de uso</MenuItem>
                                     </Menu>
                                 </div>
