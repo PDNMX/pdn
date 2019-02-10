@@ -10,6 +10,7 @@ import LogoPDN from '../../assets/PDN.png';
 import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
 import Modal from "@material-ui/core/Modal/Modal";
 import Divider from '@material-ui/core/Divider';
+import PDNAppBar from '../About/PDNAppBar';
 
 const styles = theme => ({
     item: {
@@ -41,7 +42,7 @@ const styles = theme => ({
     mensaje:{
         color : 'red'
     },
-    boton: {
+    button: {
         background: '#ffe01b',
     },
     btnReestablecer:{
@@ -91,6 +92,8 @@ class LoginPDN extends Component {
     render() {
         const {classes} = this.props;
         return (
+            <div>
+                <PDNAppBar/>
             <Grid container spacing={24} justify='center'>
                 <Grid item xs={12} className={classes.item}>
                     <Card className={classes.card}>
@@ -146,7 +149,7 @@ class LoginPDN extends Component {
                                         variant="contained"
                                         onClick={() => this.handleClick()}
                                         disabled={!this.state.email || !this.state.pass }
-                                        className={classes.boton}
+                                        className={classes.button}
                                     >
                                         Ingresar
                                     </Button>
@@ -173,6 +176,7 @@ class LoginPDN extends Component {
                     </Card>
                 </Grid>
             </Grid>
+            </div>
         );
     }
 }

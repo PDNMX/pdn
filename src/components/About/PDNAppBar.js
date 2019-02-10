@@ -1,6 +1,6 @@
 import React from "react";
 import AppBar from "@material-ui/core/AppBar/AppBar";
-import Button from '@material-ui/core/Button';
+//import Button from '@material-ui/core/Button';
 import imgHeader from "../../assets/about/logo-PDN-mini.svg";
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
@@ -109,6 +109,7 @@ class PDNAppBar extends React.Component {
                                         open={open}
                                         onClose={this.handleClose}
                                     >
+                                        <MenuItem onClick={this.handleClose} component={Link} to="/about">Acerca de</MenuItem>
                                         <MenuItem onClick={this.handleClose} onClick={() => { window.location.href = "https://www.plataformadigitalnacional.org/blog/"}}>Blog</MenuItem>
                                         <MenuItem onClick={this.handleClose} component={Link} to="/terminos">Términos de uso</MenuItem>
                                     </Menu>
