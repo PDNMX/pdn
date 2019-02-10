@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-//import Button from '@material-ui/core/Button';
+import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import {Link, withRouter} from "react-router-dom";
 import imgHeader from "../../assets/PDN-sintexto-blue.png";
@@ -38,6 +38,9 @@ const styles = theme => ({
     href: {
         textDecoration: 'none',
         color: 'inherit'
+    },
+    blog: {
+        textTransform: "none"
     }
 });
 
@@ -158,7 +161,10 @@ class VideoAppBar extends React.Component {
                                                 onClose={this.handleClose}
                                             >
 
-                                                <MenuItem onClick={() => { window.location.href= "https://www.plataformadigitalnacional.org/blog"}}>Blog</MenuItem>
+                                                <MenuItem component={Button}
+                                                          href= "https://www.plataformadigitalnacional.org/blog"
+                                                          className={classes.blog}
+                                                >Blog</MenuItem>
                                                 <MenuItem component={Link} to="/faq">Preguntas frecuentes</MenuItem>
                                                 <MenuItem component={Link} to="/about">¿Qué es la PDN?</MenuItem>
                                                 <MenuItem component={Link} to="/terminos">Términos de uso</MenuItem>
