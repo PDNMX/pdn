@@ -4,6 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Star from '../../assets/grafica.png';
 import Button from '@material-ui/core/Button';
+import {Link} from 'react-router-dom';
 
 const styles = theme => ({
     root: {
@@ -54,7 +55,7 @@ class QueEsLaPDN extends React.Component{
                         </Typography>
 
                         <br/>
-                        <Button variant="contained" className={classes.button} href="https://www.plataformadigitalnacional.org/">Más información sobre la PDN</Button>
+                        <Button variant="contained" className={classes.button} component={Link} to="/about">Más información sobre la PDN</Button>
                     </Grid>
                 </Grid>
             </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from 'react-router-dom';
 import AppBar from "@material-ui/core/AppBar/AppBar";
-//import Button from '@material-ui/core/Button';
+import Button from '@material-ui/core/Button';
 import imgHeader from "../../assets/PDN.png";
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
@@ -43,6 +43,9 @@ const styles = theme => ({
         height: '100%',
         top: 0,
         left: 0,
+    },
+    blog:{
+        textTransform: "none"
     }
 
 });
@@ -116,24 +119,6 @@ class PDNAppBar extends React.Component {
                                 <Typography variant="title" color="inherit" className={classes.flex}>
 
                                 </Typography>
-
-                                {/*<Button color="inherit" href="https://www.plataformadigitalnacional.org/blog">
-                                        Blog
-                                    </Button>
-                                    <Button color="inherit" component={Link} to="/about">
-                                        Acerca
-                                    </Button>
-                                    <Button color="inherit" component={Link} to="/faq">
-                                        FAQ
-                                    </Button>
-
-                                    {
-                                        this.props.sesion.authenticated &&
-                                        <Button color="inherit" onClick={this.handleSignOut}>Salir</Button>
-                                    }
-                                   */}
-
-
                                 {
                                     this.props.sesion.authenticated && (
                                         <div>
@@ -160,10 +145,13 @@ class PDNAppBar extends React.Component {
                                                 onClose={this.handleClose}
                                             >
 
-                                                <MenuItem onClick={() => { window.location.href= "https://www.plataformadigitalnacional.org/blog"}}>Blog</MenuItem>
+                                                <MenuItem component={Button}
+                                                          href="https://www.plataformadigitalnacional.org/blog"
+                                                          className={classes.blog}
+                                                >Blog</MenuItem>
                                                 <MenuItem component={Link} to="/faq">Preguntas frecuentes</MenuItem>
-                                                <MenuItem onClick={() => { window.location.href= "https://www.plataformadigitalnacional.org/"}}>¿Qué es la PDN?</MenuItem>
-                                                <MenuItem onClick={() => { window.location.href= "https://www.plataformadigitalnacional.org/terminos"}}>Términos de uso</MenuItem>
+                                                <MenuItem component={Link} to="/about">¿Qué es la PDN?</MenuItem>
+                                                <MenuItem component={Link} to="/terminos">Términos de uso</MenuItem>
                                                 <MenuItem onClick={this.handleSignOut}>Cerrar sesión</MenuItem>
                                             </Menu>
                                         </div>
