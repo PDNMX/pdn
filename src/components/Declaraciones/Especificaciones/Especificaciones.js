@@ -31,6 +31,10 @@ import TablaParametros from "./TablaParametros";
 import Button from '@material-ui/core/Button';
 import Diagrama from '../../../assets/Diagrama_de_comunicacion_API.svg';
 import Footer from "../../../components/Home/Footer";
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import MenuIcon from "@material-ui/icons/Menu";
+import app from "../../../config/firebase";
 
 const drawerWidth = 240;
 
@@ -79,8 +83,45 @@ class ClippedDrawer extends React.Component {
 
     state = {
         oas: ["cargando"],
-        example: ["cargando"]
+        example: ["cargando"],
+
+        open: false,
+        currentUser: null,
+        loading: false,
+        authenticated: false,
+
+        anchorEl: null
     };
+
+
+
+    handleSignOut = () => {
+        app.auth().signOut().then(() => {
+            let aux = {};
+            localStorage.setItem("sesion",JSON.stringify(aux));
+            this.props.history.push("/pdn");
+            this.props.removeSesion();
+        }).catch(e => {
+            alert(e);
+        })
+    };
+
+
+    //menu
+
+    handleChange = event => {
+        this.setState({ auth: event.target.checked });
+    };
+
+    handleMenu = event => {
+        this.setState({ anchorEl: event.currentTarget });
+    };
+
+    handleClose = () => {
+        this.setState({ anchorEl: null });
+    };
+
+
 
     componentDidMount() {
 
@@ -112,6 +153,8 @@ class ClippedDrawer extends React.Component {
     render() {
 
         const {classes} = this.props;
+        const { anchorEl } = this.state;
+        const open = Boolean(anchorEl);
 
         return (
             <div className={classes.root}>
@@ -125,6 +168,48 @@ class ClippedDrawer extends React.Component {
                         <Typography variant="h6" color="inherit" noWrap className={classes.flex}>
 
                         </Typography>
+
+
+
+                        <div>
+                            <IconButton
+                                aria-owns={open ? 'menu-appbar' : undefined}
+                                aria-haspopup="true"
+                                onClick={this.handleMenu}
+                                color="inherit"
+                            >
+                                <MenuIcon/>
+                            </IconButton>
+                            <Menu
+                                id="menu-appbar"
+                                anchorEl={anchorEl}
+                                anchorOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'right',
+                                }}
+                                transformOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'right',
+                                }}
+                                open={open}
+                                onClose={this.handleClose}
+                            >
+
+                                <MenuItem component={Button}
+                                          href="https://www.plataformadigitalnacional.org/blog"
+                                          className={classes.blog}
+                                >Blog</MenuItem>
+                                <MenuItem component={Link} to="/faq">Preguntas frecuentes</MenuItem>
+                                <MenuItem component={Link} to="/about">¿Qué es la PDN?</MenuItem>
+                                <MenuItem component={Link} to="/terminos">Términos de uso</MenuItem>
+
+                                {/* this.props.sesion.authenticated &
+                                <MenuItem onClick={this.handleSignOut}>Cerrar sesión</MenuItem>
+                                */}
+                            </Menu>
+                        </div>
+
+
                     </Toolbar>
                 </AppBar>
                 {/*<div className={classes.appBar}>
