@@ -18,6 +18,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import LinkIcon from '@material-ui/icons/Link'
 import Extension from '@material-ui/icons/Extension';
 import Code from '@material-ui/icons/Code';
+import AssigmentIcon from '@material-ui/icons/Assignment';
 import Widgets from '@material-ui/icons/Widgets';
 import ReactJson from 'react-json-view';
 import IconButton from "@material-ui/core/IconButton";
@@ -142,7 +143,6 @@ class ClippedDrawer extends React.Component {
                           subheader={<ListSubheader component="div">Declaraciones</ListSubheader>}
                     >
 
-
                         <Divider/>
                         <ListItem  component={LinkM} href="#estandar" button>
                             <ListItemIcon><Extension/></ListItemIcon>
@@ -171,6 +171,11 @@ class ClippedDrawer extends React.Component {
                                 <ListItemText primary="OAuth 2"/>
                             </ListItem>
                         </List>
+
+                        <ListItem component={LinkM} href="#licencia" button>
+                            <ListItemIcon><AssigmentIcon/></ListItemIcon>
+                            <ListItemText primary="Licencia"/>
+                        </ListItem>
                         <Divider/>
 
                         <ListItem component={LinkM} href="#implementacion" button>
@@ -299,8 +304,9 @@ class ClippedDrawer extends React.Component {
                         siempre que se sigan las especificaciones de manera correcta.
                     </Typography>
 
+                    <p>
                     <Button variant="contained" className={classes.button} href="https://github.com/OAI/OpenAPI-Specification">Más información</Button>
-                    <br/>
+                    </p>
                     <Typography variant="h5" id="oauth" paragraph>
                         OAuth 2.0
                     </Typography>
@@ -310,7 +316,52 @@ class ClippedDrawer extends React.Component {
                         que permitirá a la PDN obtener acceso necesario a las APIs de las instituciones
                         a través del uso de tokens de autorización.
                     </Typography>
+                    <p>
                     <Button variant="contained" className={classes.button} href="https://oauth.net/2/"> Más información </Button>
+                    </p>
+
+                    <Divider/>
+                    <br/>
+                    <Typography variant="h4" paragraph id="licencia">Licencia</Typography>
+
+                    <Typography paragraph variant="h6">
+                        Usted es libre de:
+                    </Typography>
+
+                    <ul>
+                        <li><Typography paragraph><b>Compartir</b> &mdash; copiar y redistribuir el material en cualquier medio o formato </Typography></li>
+                        <li><Typography paragraph><b>Adaptar</b> &mdash; remezclar, transformar y construir a partir del material </Typography> </li>
+                    </ul>
+
+
+                    <Typography paragraph>
+                        La licenciante no puede revocar estas libertades en tanto usted siga los términos de la licencia.
+                    </Typography>
+
+                    <Typography paragraph variant="h6">
+                        Bajo los siguientes términos:
+                    </Typography>
+
+                    <ul>
+                        <li><Typography paragraph><b>Atribución</b> &mdash; Usted debe dar crédito de manera adecuada, brindar un enlace a la licencia, e indicar si se han realizado cambios. Puede hacerlo en cualquier forma razonable, pero no de forma tal que sugiera que usted o su uso tienen el apoyo de la licenciante.</Typography></li>
+                        <li><Typography paragraph><b>No comercial</b> &mdash; Usted no puede hacer uso del material con propósitos comerciales.</Typography></li>
+                        <li><Typography paragraph><b>Compartir igual</b> &mdash; Si remezcla, transforma o crea a partir del material, debe distribuir su contribución bajo la misma licencia del original. </Typography></li>
+                        <li><Typography paragraph><b>No hay reestricciones adicionales</b> &mdash; No puede aplicar términos legales ni medidas tecnológicas que restrinjan legalmente a otras a hacer cualquier uso permitido por la licencia.</Typography></li>
+                    </ul>
+
+
+                    <Typography paragraph variant="h6">
+                        Avisos:
+                    </Typography>
+                    <Typography paragraph>
+                        No tiene que cumplir con la licencia para elementos del materiale en el dominio público o cuando su uso esté permitido por una excepción o limitación aplicable.
+                    </Typography>
+                    <Typography paragraph>
+                        No se dan garantías. La licencia podría no darle todos los permisos que necesita para el uso que tenga previsto. Por ejemplo, otros derechos como publicidad, privacidad, o derechos morales pueden limitar la forma en que utilice el material.
+                    </Typography>
+
+                    <Divider/>
+                    <br/>
 
                     <Typography variant="h4" id="implementacion" paragraph>Implementación del estándar</Typography>
                     <Typography paragraph>
@@ -335,6 +386,8 @@ class ClippedDrawer extends React.Component {
                             </Typography>
                             </li>
                         </ul>
+                    <Divider/>
+                    <br/>
                     <Typography variant="h4" id="api" paragraph>
                         Especificación del API de declaraciones
                     </Typography>
@@ -386,6 +439,8 @@ class ClippedDrawer extends React.Component {
                     </p>
 
                     <ReactJson src={this.state.example}/>
+                    <br/>
+                    <Divider/>
                     <br/>
 
                     <Typography variant="h4" id="herramientas" paragraph>Herramientas para desarrollo web</Typography>
