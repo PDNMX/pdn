@@ -3,18 +3,20 @@ import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import {withStyles} from '@material-ui/core/styles';
-import PDNAppBar from './PDNAppBar';
+import PDNAppBar from '../PDNAppBar/PDNAppBar';
 import by from '../../assets/about/by.svg';
+import Footer from '../Home/Footer';
 
 const styles = theme => ({
     root: {
         flexGrow:1
     },
     section: {
-        maxWidth: '1024px',
+        maxWidth: '1200px',
         paddingRight: theme.spacing.unit * 2,
         paddingLeft: theme.spacing.unit * 2,
-        paddingBottom: theme.spacing.unit * 4
+        paddingBottom: theme.spacing.unit * 4,
+        paddingTop: theme.spacing.unit* 4
     }
 });
 
@@ -178,6 +180,7 @@ class Terminos extends React.Component{
                         </Typography>
                     </Grid>
                 </Grid>
+                <Footer/>
             </div>
         )
     }

@@ -30,7 +30,7 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import TablaParametros from "./TablaParametros";
 import Button from '@material-ui/core/Button';
 import Diagrama from '../../../assets/Diagrama_de_comunicacion_API.svg';
-//import Paper from '@material-ui/core/Paper';
+//import Footer from "../../../Home/Footer";
 
 const drawerWidth = 240;
 
@@ -496,6 +496,9 @@ class ClippedDrawer extends React.Component {
                             </IconButton>
                         </li>
                     </ul>
+
+
+
                 </main>
             </div>
         );
