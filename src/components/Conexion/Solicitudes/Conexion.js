@@ -11,10 +11,10 @@ import {ReCaptcha, loadReCaptcha} from 'react-recaptcha-google';
 import Modal from "@material-ui/core/Modal/Modal";
 import "../../../index.css";
 import axios from 'axios';
-import Mensaje from '../Mensajes/Mensaje';
-import MensajeError from '../Mensajes/MensajeError';
-import PDNAppBar from "../About/PDNAppBar";
-import Footer from "../Home/Footer";
+import Mensaje from '../../Mensajes/Mensaje';
+import MensajeError from '../../Mensajes/MensajeError';
+import PDNAppBar from "../../About/PDNAppBar";
+import Footer from "../../Home/Footer";
 
 const mensajeSolicitudEnviada = 'Los permisos de conexión a la PDN serán otorgados\n' +
     '                                        o denegados por la SESNA posteriormente a una evaluación de aspectos técnicos de\n' +

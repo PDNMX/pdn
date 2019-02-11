@@ -5,6 +5,8 @@ import Paper from "@material-ui/core/Paper/Paper";
 import TablaSolicitudes from "./TablaSolicitudes";
 import Typography from "@material-ui/core/Typography/Typography";
 import "../../../index.css";
+import PDNAppBar from "../../About/PDNAppBar";
+import Footer from "../../Home/Footer";
 
 const styles = theme => ({
    section: {
@@ -50,6 +52,7 @@ class Conexion extends React.Component {
         const {classes} = this.props;
         return (
             <div>
+                <PDNAppBar/>
                 <div id={"imgBanner"} className={classes.bgImg}>
                     <Grid container justify={"center"} spacing={0}>
                         <Grid item xs={12} className={classes.section} style={{paddingTop: 150}}>
@@ -80,6 +83,7 @@ class Conexion extends React.Component {
                         </Grid>
                     </Grid>
                 </div>
+                <Footer/>
             </div>
         );
     }
