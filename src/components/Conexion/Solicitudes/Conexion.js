@@ -13,7 +13,7 @@ import "../../../index.css";
 import axios from 'axios';
 import Mensaje from '../../Mensajes/Mensaje';
 import MensajeError from '../../Mensajes/MensajeError';
-import PDNAppBar from "../../About/PDNAppBar";
+import PDNAppBar from "../../PDNAppBar/PDNAppBar";
 import Footer from "../../Home/Footer";
 
 const mensajeSolicitudEnviada = 'Los permisos de conexión a la PDN serán otorgados\n' +
