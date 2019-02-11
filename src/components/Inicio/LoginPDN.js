@@ -34,7 +34,8 @@ const styles = theme => ({
         width: 200
     },
     card: {
-        minWidth: 275
+        minWidth: 275,
+        background: '#f5f5f5'
     },
     title: {
         fontSize: 14
