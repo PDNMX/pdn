@@ -13,6 +13,7 @@ import "../../index.css";
 import axios from 'axios';
 import Mensaje from '../Mensajes/Mensaje';
 import MensajeError from '../Mensajes/MensajeError';
+import PDNAppBar from "../About/PDNAppBar";
 
 const mensajeSolicitudEnviada = 'Los permisos de conexión a la PDN serán otorgados\n' +
     '                                        o denegados por la SESNA posteriormente a una evaluación de aspectos técnicos de\n' +
@@ -278,6 +279,7 @@ class Conexion extends React.Component {
         const {classes} = this.props;
         return (
             <div>
+                <PDNAppBar/>
                 <div id={"imgBanner"} className={classes.bgImg}>
                     <Grid container justify={"center"} spacing={0}>
                         <Grid item xs={12} className={classes.section} style={{paddingTop: 150}}>
