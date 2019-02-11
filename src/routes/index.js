@@ -11,10 +11,10 @@ import Denuncias from '../components/Denuncias/Index';
 import FormularioDenuncias from '../components/Denuncias/FormularioDenuncia/FormularioDenuncia';
 import FormularioConsula from '../components/Denuncias/ConsultaDenuncia/FormularioConsulta';
 import DemoDeclaraciones from '../components/DemoDeclaraciones/demo';
-import Conexion from '../components/Conexion/Conexion';
+import Conexion from '../components/Conexion/Solicitudes/Conexion';
 import DeclaracionesEspecificaciones from '../components/Declaraciones/Especificaciones/Especificaciones';
 //import LoginPDN from "../components/Inicio/LoginPDN";
-import Consulta from '../components/Conexion/Consulta';
+import Consulta from '../components/Conexion/Solicitudes/Consulta';
 
 const pdnRoutes = [
 

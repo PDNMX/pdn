@@ -4,7 +4,9 @@ import Grid from "@material-ui/core/Grid/Grid";
 import Paper from "@material-ui/core/Paper/Paper";
 import TablaSolicitudes from "./TablaSolicitudes";
 import Typography from "@material-ui/core/Typography/Typography";
-import "../../index.css";
+import "../../../index.css";
+import PDNAppBar from "../../About/PDNAppBar";
+import Footer from "../../Home/Footer";
 
 const styles = theme => ({
    section: {
@@ -14,7 +16,7 @@ const styles = theme => ({
         padding: theme.spacing.unit * 5,
     },
     bgImg: {
-        background: 'url(/FOTO_BANNER_3.JPG)',
+        background: 'url(/FOTO_BANNER_3.jpg)',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -50,6 +52,7 @@ class Conexion extends React.Component {
         const {classes} = this.props;
         return (
             <div>
+                <PDNAppBar/>
                 <div id={"imgBanner"} className={classes.bgImg}>
                     <Grid container justify={"center"} spacing={0}>
                         <Grid item xs={12} className={classes.section} style={{paddingTop: 150}}>
@@ -80,6 +83,7 @@ class Conexion extends React.Component {
                         </Grid>
                     </Grid>
                 </div>
+                <Footer/>
             </div>
         );
     }

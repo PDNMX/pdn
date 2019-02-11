@@ -1,6 +1,6 @@
 import React from 'react';
 import Table from "@material-ui/core/Table/Table";
-import EnhancedTableHead from "../Tablas/EnhancedTableHead";
+import EnhancedTableHead from "../../Tablas/EnhancedTableHead";
 import TableBody from "@material-ui/core/TableBody/TableBody";
 import TableRow from "@material-ui/core/TableRow/TableRow";
 import TableCell from "@material-ui/core/TableCell/TableCell";
@@ -13,7 +13,7 @@ import AcceptIcon from '@material-ui/icons/AssignmentTurnedIn';
 import DetalleSolicitud from './DetalleSolicitud';
 import axios from "axios";
 import TablePagination from "@material-ui/core/TablePagination/TablePagination";
-import Mensaje from "../Mensajes/Mensaje";
+import Mensaje from "../../Mensajes/Mensaje";
 
 let counter = 0;
 let createData = (item) => {
