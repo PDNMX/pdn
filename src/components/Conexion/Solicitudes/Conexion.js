@@ -9,7 +9,7 @@ import Button from "@material-ui/core/Button/Button";
 import rp from 'request-promise';
 import {ReCaptcha, loadReCaptcha} from 'react-recaptcha-google';
 import Modal from "@material-ui/core/Modal/Modal";
-import "../../index.css";
+import "../../../index.css";
 import axios from 'axios';
 import Mensaje from '../Mensajes/Mensaje';
 import MensajeError from '../Mensajes/MensajeError';

@@ -4,7 +4,7 @@ import Grid from "@material-ui/core/Grid/Grid";
 import Paper from "@material-ui/core/Paper/Paper";
 import TablaSolicitudes from "./TablaSolicitudes";
 import Typography from "@material-ui/core/Typography/Typography";
-import "../../index.css";
+import "../../../index.css";
 
 const styles = theme => ({
    section: {
@@ -14,7 +14,7 @@ const styles = theme => ({
         padding: theme.spacing.unit * 5,
     },
     bgImg: {
-        background: 'url(/FOTO_BANNER_3.JPG)',
+        background: 'url(/FOTO_BANNER_3.jpg)',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: 'center',

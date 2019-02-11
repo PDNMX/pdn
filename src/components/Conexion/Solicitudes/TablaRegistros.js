@@ -1,6 +1,6 @@
 import React from 'react';
 import Table from "@material-ui/core/Table/Table";
-import EnhancedTableHead from "../Tablas/EnhancedTableHead";
+import EnhancedTableHead from "../../Tablas/EnhancedTableHead";
 import TableBody from "@material-ui/core/TableBody/TableBody";
 import TableRow from "@material-ui/core/TableRow/TableRow";
 import TableCell from "@material-ui/core/TableCell/TableCell";
