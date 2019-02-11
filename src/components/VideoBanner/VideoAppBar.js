@@ -116,7 +116,7 @@ class VideoAppBar extends React.Component {
                         <Grid item xs={12} className={classes.item}>
                             <Toolbar>
 
-                                <IconButton color="inherit" aria-label="Menu" component={Link} to="/home">
+                                <IconButton color="inherit" aria-label="Menu" component={Link} to="/">
                                     <img src={imgHeader} alt="PDN" style={{width: '55px'}}/>
                                 </IconButton>
 
@@ -124,16 +124,6 @@ class VideoAppBar extends React.Component {
 
                                 </Typography>
 
-                                {/*
-                        <Button color="inherit" href="https://www.plataformadigitalnacional.org/blog"
-                                className={classes.buttons}>Blog</Button>
-
-                        {
-                            this.props.sesion.authenticated &&
-                            <Button color="inherit" className={classes.buttons} onClick={this.handleSignOut}>Salir</Button>
-                        }
-
-                        */}
 
 
                                 <div>
