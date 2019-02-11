@@ -29,10 +29,9 @@ class Terminos extends React.Component{
                         <Typography variant='title'>
                             Aceptación de términos de uso de plataformadigitalnacional.org
                         </Typography>
-                        <Typography>
+                        <Typography paragraph>
                             El uso del plataformadigitalnacional.org o de cualquiera de sus componentes, implica la aceptación expresa de los presentes “Términos y Condiciones”.
                         </Typography>
-                        <br/>
 
                         <Typography variant='title'>
                             Sobre el uso de plataformadigitalnacional.org
@@ -136,14 +135,14 @@ class Terminos extends React.Component{
                             Actualización de los términos y condiciones
                         </Typography>
 
-                        <Typography>
+                        <Typography paragraph>
                             En cualquier momento estos términos y condiciones pueden cambiar, por lo que te pedimos revises constantemente nuestro portal.
                         </Typography>
                         <br/>
                         <Typography variant='title'>
                             Glosario
                         </Typography>
-                        <Typography>
+                        <Typography paragraph>
 
                             <b>plataformadigitalnacional.org:</b> El sitio de internet que habilita la operación de la Plataforma Digital Nacional establecida en el Artículo 9 de la Ley General del Sistema Nacional Anticorrupción.
                             <br/>
@@ -162,6 +161,20 @@ class Terminos extends React.Component{
                             de los sistemas de la Plataforma, y/o para ejercer derechos o acceder a la
                             información, conforme a la normativa aplicable.
 
+                        </Typography>
+
+                        <Typography variant="title">
+                            Propiedad intelectual
+                        </Typography>
+
+                        <Typography paragraph>
+                            La información del portal plataformadigitalnacional.org es pública a menos que se indique lo contrario,
+                            en cuyo caso antes de reproducirla, deberás observar si tiene derechos reservados y respetarlos en términos
+                            de las normas relativas a derechos de autor y propiedad industrial. Adicionalmente el usuario que reproduzca o
+                            procese información contenida en gob.mx deberá referir la localización electrónica y fecha en que se realizó la
+                            consulta de la información. El usuario se compromete a respetar y dejar a salvo los derechos de terceros sobre los
+                            contenidos que se contengan en el portal gob.mx, en términos de la Ley aplicable, por lo que para su uso, usted
+                            deberá de obtener las autorizaciones correspondientes directamente de los titulares de los derechos.
                         </Typography>
                     </Grid>
                 </Grid>
