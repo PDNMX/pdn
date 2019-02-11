@@ -354,7 +354,7 @@ class ClippedDrawer extends React.Component {
                         Avisos:
                     </Typography>
                     <Typography paragraph>
-                        No tiene que cumplir con la licencia para elementos del materiale en el dominio público o cuando su uso esté permitido por una excepción o limitación aplicable.
+                        No tiene que cumplir con la licencia para elementos del material en el dominio público o cuando su uso esté permitido por una excepción o limitación aplicable.
                     </Typography>
                     <Typography paragraph>
                         No se dan garantías. La licencia podría no darle todos los permisos que necesita para el uso que tenga previsto. Por ejemplo, otros derechos como publicidad, privacidad, o derechos morales pueden limitar la forma en que utilice el material.
