@@ -19,12 +19,12 @@ import Consulta from '../components/Conexion/Consulta';
 const pdnRoutes = [
 
     {
-        path: "/home",
+        path: "/", // /"home",
         component: Home,
-        private: true
+        private: false
     },
     {
-        path: "/about",// "/"
+        path: "/about",
         component: About,
         private: false
     },
@@ -36,32 +36,32 @@ const pdnRoutes = [
     {
         path: "/faq",
         component: Faq,
-        private: true
+        private: false
     },
     {
         path: "/CatalogoDatos",
         component: Datos,
-        private: true
+        private: false
     },
     {
         path: "/sancionados",
         component: Sancionados,
-        private: true
+        private: false
     },
     {
         path: "/servidores",
         component: Servidores,
-        private: true
+        private: false
     },
     {
         path: "/indicadores",
         component: Indicadores,
-        private: true
+        private: false
     },
     {
         path: "/contrataciones",
         component: Contrataciones,
-        private: true
+        private: false
     },
     {
         path: "/denuncias",
@@ -70,12 +70,12 @@ const pdnRoutes = [
     {
         path:"/formDenuncia",
         component: FormularioDenuncias,
-        private: true
+        private: false
     },
     {
         path:"/formConsultaDenuncia",
         component: FormularioConsula,
-        private: true
+        private: false
     },
     {
         path : "/demodeclaraciones",

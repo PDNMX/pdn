@@ -135,44 +135,46 @@ class VideoAppBar extends React.Component {
 
                         */}
 
-                                {
-                                    this.props.sesion.authenticated && (
-                                        <div>
-                                            <IconButton
-                                                aria-owns={open ? 'menu-appbar' : undefined}
-                                                aria-haspopup="true"
-                                                onClick={this.handleMenu}
-                                                color="inherit"
-                                            >
-                                                <MenuIcon/>
-                                            </IconButton>
-                                            <Menu
-                                                id="menu-appbar"
-                                                anchorEl={anchorEl}
-                                                anchorOrigin={{
-                                                    vertical: 'top',
-                                                    horizontal: 'right',
-                                                }}
-                                                transformOrigin={{
-                                                    vertical: 'top',
-                                                    horizontal: 'right',
-                                                }}
-                                                open={open}
-                                                onClose={this.handleClose}
-                                            >
 
-                                                <MenuItem component={Button}
-                                                          href= "https://www.plataformadigitalnacional.org/blog"
-                                                          className={classes.blog}
-                                                >Blog</MenuItem>
-                                                <MenuItem component={Link} to="/faq">Preguntas frecuentes</MenuItem>
-                                                <MenuItem component={Link} to="/about">¿Qué es la PDN?</MenuItem>
-                                                <MenuItem component={Link} to="/terminos">Términos de uso</MenuItem>
-                                                <MenuItem onClick={this.handleSignOut}>Cerrar sesión</MenuItem>
-                                            </Menu>
-                                        </div>
-                                    )
-                                }
+                                <div>
+                                    <IconButton
+                                        aria-owns={open ? 'menu-appbar' : undefined}
+                                        aria-haspopup="true"
+                                        onClick={this.handleMenu}
+                                        color="inherit"
+                                    >
+                                        <MenuIcon/>
+                                    </IconButton>
+                                    <Menu
+                                        id="menu-appbar"
+                                        anchorEl={anchorEl}
+                                        anchorOrigin={{
+                                            vertical: 'top',
+                                            horizontal: 'right',
+                                        }}
+                                        transformOrigin={{
+                                            vertical: 'top',
+                                            horizontal: 'right',
+                                        }}
+                                        open={open}
+                                        onClose={this.handleClose}
+                                    >
+
+                                        <MenuItem component={Button}
+                                                  href= "https://www.plataformadigitalnacional.org/blog"
+                                                  className={classes.blog}
+                                        >Blog</MenuItem>
+                                        <MenuItem component={Link} to="/faq">Preguntas frecuentes</MenuItem>
+                                        <MenuItem component={Link} to="/about">¿Qué es la PDN?</MenuItem>
+                                        <MenuItem component={Link} to="/terminos">Términos de uso</MenuItem>
+                                        {
+                                            this.props.sesion.authenticated &&
+                                            <MenuItem onClick={this.handleSignOut}>Cerrar sesión</MenuItem>
+                                        }
+
+                                    </Menu>
+                                </div>
+
 
                             </Toolbar>
                         </Grid>

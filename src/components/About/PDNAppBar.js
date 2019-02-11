@@ -118,6 +118,7 @@ class PDNAppBar extends React.Component {
                                         >
                                             Blog
                                         </MenuItem>
+                                        <MenuItem onClick={this.handleClose} component={Link} to="/faq">Preguntas frecuentes</MenuItem>
                                         <MenuItem onClick={this.handleClose} component={Link} to="/about">¿Qué es la PDN?</MenuItem>
                                         <MenuItem onClick={this.handleClose} component={Link} to="/terminos">Términos de uso</MenuItem>
                                     </Menu>
