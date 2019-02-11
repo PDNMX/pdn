@@ -118,7 +118,7 @@ class ClippedDrawer extends React.Component {
                 <CssBaseline/>
                 <AppBar position="fixed" color="default" className={classes.appBar}>
                     <Toolbar>
-                        <IconButton color="inherit" aria-label="Menu" component={Link} to="/home">
+                        <IconButton color="inherit" aria-label="Menu" component={Link} to="/">
                             <img src={PDNLogo} alt="logoPDN" style={{width: '55px'}}/>
                         </IconButton>
 
