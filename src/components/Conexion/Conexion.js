@@ -267,6 +267,8 @@ class Conexion extends React.Component {
     };
     handleFile = (e) => {
         let file = e.target.files[0];
+        console.log("File: ",file);
+
         this.setState({
             oficio: file
         });
@@ -355,13 +357,13 @@ class Conexion extends React.Component {
                                         <TablaRegistros registros={this.state.registros} remove={this.removeRegistro}/>
                                     </Grid>
                                     <Grid item xs={12}>
-                                        <Typography variant={"h6"} className={classes.text}>Oficio</Typography>
+                                        <Typography variant={"h6"} className={classes.text}>Oficio(.pdf)</Typography>
                                         <input type="file" onChange={this.handleFile} name={'nombreOficio'}
-                                               ref={ref => this.fileInput = ref}/>
+                                               ref={ref => this.fileInput = ref} accept={'.pdf'}/>
                                     </Grid>
                                     <Grid item xs={12}>
                                         <Button variant="contained" color="primary" className={classes.button}
-                                                disabled={!this.state.oficio || this.state.registros.length <= 0}
+                                                disabled={!this.state.oficio || this.state.registros.length <= 0 || this.state.oficio.type!=="application/pdf"}
                                                 onClick={() => this.verifyCaptcha()}>
                                             Enviar
                                         </Button>
