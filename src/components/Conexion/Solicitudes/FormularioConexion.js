@@ -25,7 +25,6 @@ const styles = theme => ({
     },
     text: {
         color: theme.palette.primary.dark,
-
     }
 });
 
@@ -100,7 +99,6 @@ class FormularioConexion extends React.Component {
                 mensaje: '*Llena los campos requeridos'
             })
         }
-
     };
 
     render() {

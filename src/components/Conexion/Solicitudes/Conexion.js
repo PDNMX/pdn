@@ -389,7 +389,6 @@ class Conexion extends React.Component {
                             </Paper>
                         </Grid>
                     </Grid>
-
                 </div>
                 < Footer/>
             </div>

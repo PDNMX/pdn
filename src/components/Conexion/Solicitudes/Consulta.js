@@ -32,7 +32,6 @@ const styles = theme => ({
         paddingTop: '102px',
         marginBottom: '266px'
     },
-
     banner: {
         height: '600px',
         zIndex: '1',
