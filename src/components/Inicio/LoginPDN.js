@@ -10,7 +10,7 @@ import LogoPDN from '../../assets/PDN.png';
 import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
 import Modal from "@material-ui/core/Modal/Modal";
 import Divider from '@material-ui/core/Divider';
-import PDNAppBar from '../About/PDNAppBar';
+import PDNAppBar from '../PDNAppBar/PDNAppBar';
 
 const styles = theme => ({
     item: {
@@ -34,7 +34,8 @@ const styles = theme => ({
         width: 200
     },
     card: {
-        minWidth: 275
+        minWidth: 275,
+        background: '#f5f5f5'
     },
     title: {
         fontSize: 14
