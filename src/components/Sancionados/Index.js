@@ -11,7 +11,7 @@ import img3 from "../../assets/img/servidores_visualizaciones.svg";
 import TablaServidoresSancionados from './Servidores/TablaServidoresSancionados';
 import TablaParticularaesSancionados from './Particulares/TablaParticularesSancionados';
 import BubbleHolder from './Visualizaciones/BubbleHolder';
-import "../../index.css";
+import imgBanner from '../../assets/banners/FOTO_BANNER_2.jpg';
 
 const styles = theme => ({
     root: {
@@ -28,11 +28,11 @@ const styles = theme => ({
     },
     titleLight: {
         color: theme.palette.titleBanner.color,
-     //   paddingTop : '11%'
+        //   paddingTop : '11%'
     },
     titleSub: {
         color: theme.palette.titleBanner.color,
-        paddingTop : '10px'
+        paddingTop: '10px'
     },
     textDark: {
         color: theme.palette.textNormal,
@@ -53,15 +53,10 @@ const styles = theme => ({
         maxWidth: '1200px'
     },
     bgImg: {
-        background: 'url(/FOTO_BANNER_2.jpg)',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
         width: '100%',
-        position: 'relative',
-        zIndex: 1,
-        //paddingTop: '163px',
-        paddingBottom: '192px',
+        position: 'absolute',
+        zIndex: 2,
+        opacity: 0.2
     },
     container: {
         [theme.breakpoints.up('sm')]: {
@@ -107,6 +102,12 @@ const styles = theme => ({
         maxWidth: '230px',
         margin: 0,
         display: 'inline-block'
+    },
+    banner: {
+        height: '600px',
+        zIndex: '1',
+        position: 'relative',
+        overflow: 'hidden',
     }
 });
 
@@ -122,8 +123,9 @@ class Index extends React.Component {
         const {classes} = this.props;
         return (
             <div className={classes.root}>
-                <div id={'imgBanner'} className={classes.bgImg}>
-                    <Header/>
+                <Header/>
+                <div className={classes.banner}>
+                    <img className={classes.bgImg} src={imgBanner}/>
                     <Grid container justify={"center"} spacing={0}>
                         <Grid item xs={12} className={classes.section} style={{paddingTop: 150}}>
                             <Grid container spacing={24}>
@@ -131,23 +133,24 @@ class Index extends React.Component {
                                     <Typography variant="h2" className={classes.titleLight}>
                                         Servidores públicos <br/>y particulares sancionados
                                     </Typography>
-
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
                                     <Typography variant="h6" className={classes.titleSub}>
                                         Aquí puedes consultar, visualizar y descargar datos de:<br/>
-                                        Las sanciones o inhabilitación firmes en contra de servidores públicos por actos vinculados con faltas administrativas graves,<br/>
-                                        Los particulares que están inhabilitados o cuentan con impedimentos para ser contratados como servidores públicos, y<br/>
-                                        Las persona físicas que están inhabilitadas o cuentan con impedimentos para ser contratistas o prestadores de servicios en el gobierno por faltas administrativas graves.
+                                        Las sanciones o inhabilitación firmes en contra de servidores públicos por actos
+                                        vinculados con faltas administrativas graves,<br/>
+                                        Los particulares que están inhabilitados o cuentan con impedimentos para ser
+                                        contratados como servidores públicos, y<br/>
+                                        Las persona físicas que están inhabilitadas o cuentan con impedimentos para ser
+                                        contratistas o prestadores de servicios en el gobierno por faltas
+                                        administrativas graves.
                                     </Typography><br/>
-
                                 </Grid>
                             </Grid>
                         </Grid>
-
                     </Grid>
-
                 </div>
+
                 <div id={"menu"} className={classes.bgContainer}>
                     <Grid container spacing={0} justify="center">
                         <Grid item xs={12} className={classes.section}>

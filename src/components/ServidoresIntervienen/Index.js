@@ -10,8 +10,8 @@ import Grid from "@material-ui/core/Grid/Grid";
 import img1 from "../../assets/img/servidores_intervienen_contratacion.svg";
 import img2 from "../../assets/img/servidores_particulares_inhabilitados.svg";
 import img3 from "../../assets/img/servidores_visualizaciones.svg";
-import "../../index.css";
 import BubbleHolder_Servidores_Contrataciones from "./BubbleHolder_Servidores_Contrataciones";
+import imgBanner from '../../assets/banners/FOTO_BANNER_1.jpg';
 
 const styles = theme => ({
     root: {
@@ -28,11 +28,11 @@ const styles = theme => ({
     },
     titleLight: {
         color: theme.palette.titleBanner.color,
-       // paddingTop : '10%'
+        // paddingTop : '10%'
     },
     titleSub: {
         color: theme.palette.titleBanner.color,
-        paddingTop : '10px',
+        paddingTop: '10px',
     },
     textDark: {
         color: theme.palette.textNormal,
@@ -47,21 +47,16 @@ const styles = theme => ({
     },
     bgPanelTable: {
         backgroundColor: theme.palette.white.color,
-        marginBottom : '266px'
+        marginBottom: '266px'
     },
     section: {
         maxWidth: '1200px'
     },
     bgImg: {
-        background: 'url(/FOTO_BANNER_1.jpg)',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
         width: '100%',
-        position: 'relative',
-        zIndex: 1,
-        paddingTop: 0,//'163px',
-        paddingBottom: '192px',
+        position: 'absolute',
+        zIndex: 2,
+        opacity: 0.2
     },
     container: {
         [theme.breakpoints.up('sm')]: {
@@ -107,6 +102,12 @@ const styles = theme => ({
         maxWidth: '230px',
         margin: 0,
         display: 'inline-block'
+    },
+    banner: {
+        height: '600px',
+        zIndex: '1',
+        position: 'relative',
+        overflow: 'hidden',
     }
 });
 
@@ -122,8 +123,9 @@ class Index extends React.Component {
         const {classes} = this.props;
         return (
             <div className={classes.root}>
-                <div id={"imgBanner"} className={classes.bgImg}>
-                    <Header/>
+                <Header/>
+                <div className={classes.banner}>
+                    <img className={classes.bgImg} src={imgBanner}/>
                     <Grid container justify={"center"} spacing={0}>
                         <Grid item xs={12} className={classes.section} style={{paddingTop: 150}}>
                             <Grid container spacing={24}>
@@ -134,8 +136,12 @@ class Index extends React.Component {
                                 <Grid item xs={12} sm={6}>
                                     <Typography variant="h6" className={classes.titleSub}>
                                         Aquí puedes consultar, visualizar y descargar datos de:<br/>
-                                        Los nombres, institución, cargo actividades y adscripción de los servidores públicos que intervienen en contrataciones públicas y otros actos de autoridad, y<br/>
-                                        La relación de personas físicas y morales que se encuentran inhabilitados para celebrar contratos con instituciones públicas, por qué fueron inhabilitados, por cuánto tiempo y con qué monto
+                                        Los nombres, institución, cargo actividades y adscripción de los servidores
+                                        públicos que intervienen en contrataciones públicas y otros actos de autoridad,
+                                        y<br/>
+                                        La relación de personas físicas y morales que se encuentran inhabilitados para
+                                        celebrar contratos con instituciones públicas, por qué fueron inhabilitados, por
+                                        cuánto tiempo y con qué monto
                                     </Typography>
                                     <br/>
                                 </Grid>
@@ -143,6 +149,7 @@ class Index extends React.Component {
                         </Grid>
                     </Grid>
                 </div>
+
                 <div id={"menu"} className={classes.bgContainer}>
                     <Grid container spacing={0} justify="center">
                         <Grid item xs={12} className={classes.section}>

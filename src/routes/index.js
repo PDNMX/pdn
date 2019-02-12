@@ -15,6 +15,7 @@ import Conexion from '../components/Conexion/Solicitudes/Conexion';
 import DeclaracionesEspecificaciones from '../components/Declaraciones/Especificaciones/Especificaciones';
 //import LoginPDN from "../components/Inicio/LoginPDN";
 import Consulta from '../components/Conexion/Solicitudes/Consulta';
+import ConsolaAdministracionSO from '../components/Conexion/Administracion/ConsolaAdministracionSO';
 
 const pdnRoutes = [
 
@@ -97,6 +98,11 @@ const pdnRoutes = [
         component : Consulta,
         private: false
     },
+    {
+        path: "/consolaAdmonSO",
+        component: ConsolaAdministracionSO,
+        private: false
+    }
 ];
 
 export default pdnRoutes;

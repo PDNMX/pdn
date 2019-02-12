@@ -13,8 +13,9 @@ import "../../../index.css";
 import axios from 'axios';
 import Mensaje from '../../Mensajes/Mensaje';
 import MensajeError from '../../Mensajes/MensajeError';
-import PDNAppBar from "../../About/PDNAppBar";
 import Footer from "../../Home/Footer";
+import imgBanner from '../../../assets/banners/FOTO_BANNER_3.jpg';
+import Header from "../../PDNAppBar/PDNAppBar";
 
 const mensajeSolicitudEnviada = 'Los permisos de conexión a la PDN serán otorgados\n' +
     '                                        o denegados por la SESNA posteriormente a una evaluación de aspectos técnicos de\n' +
@@ -29,15 +30,10 @@ const styles = theme => ({
         padding: theme.spacing.unit * 5,
     },
     bgImg: {
-        background: 'url(/FOTO_BANNER_3.jpg)',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
         width: '100%',
-        position: 'relative',
-        zIndex: 1,
-        paddingTop: 0,//'163px',
-        paddingBottom: '140px',
+        position: 'absolute',
+        zIndex: 2,
+        opacity : 0.2,
     },
     titleLight: {
         color: theme.palette.titleBanner.color,
@@ -82,6 +78,12 @@ const styles = theme => ({
         margin: 'auto',
         width: '300px',
         display: 'inline-block !important'
+    },
+    banner: {
+        height: '600px',
+        zIndex: '1',
+        position: 'relative',
+        overflow: 'hidden',
     }
 });
 
@@ -280,8 +282,9 @@ class Conexion extends React.Component {
         const {classes} = this.props;
         return (
             <div>
-                <PDNAppBar/>
-                <div id={"imgBanner"} className={classes.bgImg}>
+                <Header/>
+                <div className={classes.banner}>
+                    <img className={classes.bgImg} src={imgBanner}/>
                     <Grid container justify={"center"} spacing={0}>
                         <Grid item xs={12} className={classes.section} style={{paddingTop: 150}}>
                             <Grid container spacing={24}>
@@ -310,6 +313,7 @@ class Conexion extends React.Component {
                         </Grid>
                     </Grid>
                 </div>
+
                 <div>
                     <Modal
                         open={this.state.flag_send}
