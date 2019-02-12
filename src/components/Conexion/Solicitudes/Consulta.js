@@ -4,27 +4,22 @@ import Grid from "@material-ui/core/Grid/Grid";
 import Paper from "@material-ui/core/Paper/Paper";
 import TablaSolicitudes from "./TablaSolicitudes";
 import Typography from "@material-ui/core/Typography/Typography";
-import "../../../index.css";
-import PDNAppBar from "../../About/PDNAppBar";
 import Footer from "../../Home/Footer";
+import imgBanner from '../../../assets/banners/FOTO_BANNER_3.jpg';
+import Header from "../../PDNAppBar/PDNAppBar";
 
 const styles = theme => ({
-   section: {
+    section: {
         maxWidth: '1200px'
     },
     contenedor: {
         padding: theme.spacing.unit * 5,
     },
     bgImg: {
-        background: 'url(/FOTO_BANNER_3.jpg)',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
         width: '100%',
-        position: 'relative',
-        zIndex: 1,
-        paddingTop: 0,//'163px',
-        paddingBottom: '140px',
+        position: 'absolute',
+        zIndex: 2,
+        opacity: 0.2,
     },
     titleLight: {
         color: theme.palette.titleBanner.color,
@@ -37,6 +32,13 @@ const styles = theme => ({
         paddingTop: '102px',
         marginBottom: '266px'
     },
+
+    banner: {
+        height: '600px',
+        zIndex: '1',
+        position: 'relative',
+        overflow: 'hidden',
+    }
 });
 
 class Conexion extends React.Component {
@@ -52,17 +54,20 @@ class Conexion extends React.Component {
         const {classes} = this.props;
         return (
             <div>
-                <PDNAppBar/>
-                <div id={"imgBanner"} className={classes.bgImg}>
+                <Header/>
+                <div className={classes.banner}>
+                    <img className={classes.bgImg} src={imgBanner}/>
                     <Grid container justify={"center"} spacing={0}>
                         <Grid item xs={12} className={classes.section} style={{paddingTop: 150}}>
                             <Grid container spacing={24}>
                                 <Grid item xs={12} sm={6}>
-                                    <Typography variant={"h2"} className={classes.titleLight}>Consulta solicitudes</Typography>
+                                    <Typography variant={"h2"} className={classes.titleLight}>Consulta
+                                        solicitudes</Typography>
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
                                     <Typography variant="h6" className={classes.titleSub}>
-                                        Aquí puedes consultar las solicitudes de conexión a la PDN, visualizar y descargar los oficios de solicitud y permitir o denegar las conexiones
+                                        Aquí puedes consultar las solicitudes de conexión a la PDN, visualizar y
+                                        descargar los oficios de solicitud y permitir o denegar las conexiones
                                     </Typography>
                                     <br/>
                                 </Grid>
@@ -87,7 +92,6 @@ class Conexion extends React.Component {
             </div>
         );
     }
-
 }
 
 export default withStyles(styles)(Conexion);
