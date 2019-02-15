@@ -175,7 +175,7 @@ class TablaRegistros extends React.Component {
         let index = 0;
         return (
             <div>
-                <Typography variant={"h6"} className={classes.text}>Servidores a registrar</Typography>
+                <Typography variant={"h6"} className={classes.text}>Encargado a registrar</Typography>
                 <Table className={classes.table} aria-describedby="spinnerLoading"
                        aria-busy={this.state.loading} aria-labelledby="tableTitle">
                     <EnhancedTableHead

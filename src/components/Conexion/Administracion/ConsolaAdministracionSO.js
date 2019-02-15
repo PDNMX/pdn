@@ -1,7 +1,6 @@
 import React from 'react';
 import {withStyles} from '@material-ui/core/styles';
 import Grid from "@material-ui/core/Grid/Grid";
-import Paper from "@material-ui/core/Paper/Paper";
 import Typography from "@material-ui/core/Typography/Typography";
 import "../../../index.css";
 import Footer from "../../Home/Footer";
@@ -9,10 +8,18 @@ import imgBanner from '../../../assets/banners/FOTO_BANNER_3.jpg';
 import Header from "../../PDNAppBar/PDNAppBar";
 import Endpoints from "./Endpoints";
 import FormularioEndpoint from './FormularioEndpoint';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Button from "@material-ui/core/Button/Button";
+import FormularioContacto from "./FormularioContacto";
+import TablaContactos from "../Administracion/TablaContactos";
 
 const styles = theme => ({
     section: {
-        maxWidth: '1200px'
+        maxWidth: '1200px',
+        marginBottom: theme.spacing.unit * 5,
     },
     contenedor: {
         padding: theme.spacing.unit * 5,
@@ -39,17 +46,39 @@ const styles = theme => ({
         zIndex: '1',
         position: 'relative',
         overflow: 'hidden',
-    }
+    },
+    tituloPanel: {
+        color: theme.palette.primary.dark,
+    },
+    text: {
+        color: theme.palette.textGrey.color,
+        marginBottom: theme.spacing.unit * 2,
+        marginTop: theme.spacing.unit * 2,
+    },
+    button: {
+        margin: theme.spacing.unit,
+        float: 'right'
+    },
 });
 
 class ConsolaAdministracionSO extends React.Component {
     state = {
-        oficio: null
+        oficio: null,
+        registros: []
     };
 
     constructor(props, context) {
         super(props, context);
-    }
+    };
+
+    handleFile = (e) => {
+        let file = e.target.files[0];
+        console.log("File: ", file);
+
+        this.setState({
+            oficio: file
+        });
+    };
 
     render() {
         const {classes} = this.props;
@@ -79,16 +108,69 @@ class ConsolaAdministracionSO extends React.Component {
                 <div className={classes.bgContainer}>
                     <Grid container justify={'center'} spacing={0}>
                         <Grid item xs={12} className={classes.section}>
-                            <Paper className={classes.contenedor}>
-                                <Grid container>
-                                    <Grid item xs={12}>
-                                        <FormularioEndpoint/>
+                            <ExpansionPanel defaultExpanded={true}>
+                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
+                                    <Typography className={classes.tituloPanel} variant={"h5"}>Oficio</Typography>
+                                </ExpansionPanelSummary>
+                                <ExpansionPanelDetails>
+                                    <Grid container>
+                                        <Grid item xs={12}>
+                                            <Typography variant={"subtitle2"} className={classes.text}>
+                                                Para completar tu registro, selecciona el oficio de solicitud de
+                                                conexión en formato
+                                                PDF(.pdf) y da clic en enviar.
+                                            </Typography>
+                                            <input type="file" onChange={this.handleFile} name={'nombreOficio'}
+                                                   ref={ref => this.fileInput = ref} accept={'.pdf'}/>
+                                        </Grid>
+                                        <Grid item xs={12}>
+                                            <Button variant="contained" color="primary" className={classes.button}
+                                                    disabled={!this.state.oficio || this.state.oficio.type !== "application/pdf"}
+                                                    onClick={() => this.verifyCaptcha()}>
+                                                Enviar
+                                            </Button>
+                                        </Grid>
                                     </Grid>
-                                    <Grid item xs={12}>
-                                        <Endpoints/>
-                                    </Grid>
-                                </Grid>
-                            </Paper>
+                                </ExpansionPanelDetails>
+                            </ExpansionPanel>
+                        </Grid>
+                        <Grid item xs={12} className={classes.section}>
+                            <ExpansionPanel>
+                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
+                                    <Typography className={classes.tituloPanel} variant={"h5"}>Administrar
+                                        contactos</Typography>
+                                </ExpansionPanelSummary>
+                                <ExpansionPanelDetails>
+                                        <Grid container>
+                                            <Grid item xs={12}>
+                                                <FormularioContacto addRegistro={this.addRegistro}
+                                                                    dependencias={this.state.dependencias}/>
+                                            </Grid>
+                                            <Grid item xs={12}>
+                                                <TablaContactos registros={this.state.registros} remove={this.removeRegistro}/>
+                                            </Grid>
+                                        </Grid>
+
+                                </ExpansionPanelDetails>
+                            </ExpansionPanel>
+                        </Grid>
+                        <Grid item xs={12} className={classes.section}>
+                            <ExpansionPanel>
+                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
+                                    <Typography className={classes.tituloPanel} variant={"h5"}>Administrar
+                                        API's</Typography>
+                                </ExpansionPanelSummary>
+                                <ExpansionPanelDetails>
+                                        <Grid container>
+                                            <Grid item xs={12}>
+                                                <FormularioEndpoint/>
+                                            </Grid>
+                                            <Grid item xs={12}>
+                                                <Endpoints/>
+                                            </Grid>
+                                        </Grid>
+                                </ExpansionPanelDetails>
+                            </ExpansionPanel>
                         </Grid>
                     </Grid>
                 </div>

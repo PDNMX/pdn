@@ -17,7 +17,7 @@ const styles = theme => ({
         marginTop: theme.spacing.unit * 3,
     },
     text: {
-        color: theme.palette.primary.dark,
+        color: theme.palette.secondary.dark,
     },
     formControl: {
         width: '100%'

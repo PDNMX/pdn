@@ -17,11 +17,8 @@ import Footer from "../../Home/Footer";
 import imgBanner from '../../../assets/banners/FOTO_BANNER_3.jpg';
 import Header from "../../PDNAppBar/PDNAppBar";
 
-const mensajeSolicitudEnviada = 'Los permisos de conexión a la PDN serán otorgados\n' +
-    '                                        o denegados por la SESNA posteriormente a una evaluación de aspectos técnicos de\n' +
-    '                                        interconexión. En caso de que los sujetos obligados no cumplan con los\n' +
-    '                                        requerimientos de interconexión a la PDN establecidos por la SESNA, se denegará\n' +
-    '                                        el permiso de conexión a la PDN.';
+const expCorreo = '^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)+(.[a-z]{2,4})$';
+
 const styles = theme => ({
     section: {
         maxWidth: '1200px'
@@ -33,7 +30,7 @@ const styles = theme => ({
         width: '100%',
         position: 'absolute',
         zIndex: 2,
-        opacity : 0.2,
+        opacity: 0.2,
     },
     titleLight: {
         color: theme.palette.titleBanner.color,
@@ -53,23 +50,6 @@ const styles = theme => ({
     text: {
         color: theme.palette.primary.dark,
     },
-    paperCaptcha: {
-        position: 'absolute',
-        backgroundColor: theme.palette.background.paper,
-        boxShadow: theme.shadows[5],
-        padding: theme.spacing.unit * 4,
-        [theme.breakpoints.up('sm')]: {
-            width: theme.spacing.unit * 50,
-        },
-        [theme.breakpoints.down('sm')]: {
-            width: '80%',
-            height: '80%',
-            overflowY: 'scroll',
-        },
-        [theme.breakpoints.up('xl')]: {
-            width: theme.spacing.unit * 70,
-        },
-    },
     textCenter: {
         textAlign: 'center',
         color: theme.palette.primary.dark
@@ -87,21 +67,11 @@ const styles = theme => ({
     }
 });
 
-function getModalStyle() {
-    const top = 50;
-    const left = 50;
-    return {
-        top: `${top}%`,
-        left: `${left}%`,
-        transform: `translate(-${top}%, -${left}%)`,
-    };
-}
 
 class Conexion extends React.Component {
     state = {
         registros: [],
         flag_send: false,
-        dependencias: [],
         flag_msj: false,
         flag_error: false,
         oficio: null
@@ -117,7 +87,6 @@ class Conexion extends React.Component {
     componentDidMount() {
         loadReCaptcha();
         if (this.recaptcha) {
-            console.log("started, just a second...")
             this.recaptcha.reset();
         }
     }
@@ -139,6 +108,18 @@ class Conexion extends React.Component {
         }
     }
 
+    handleClick = () => {
+        let item = this.state.registro;
+        let okDependencia = item.dependencia && item.dependencia !== 'OTRA' ? true : (item.dependencia === 'OTRA' && item.otra_dependencia) ? true : false;
+        if (item.cargo && okDependencia && item.nombre && item.apellido1 && item.correo &&
+            item.correo.match(expCorreo) !== null) {
+            this.verifyCaptcha();
+        } else {
+            this.setState({
+                mensaje: '*Llena los campos requeridos'
+            })
+        }
+    };
     verifyCaptcha = () => {
         this.setState({
             flag_send: true
@@ -260,19 +241,9 @@ class Conexion extends React.Component {
                 })
         }
     };
-    handleClose = () => {
-        this.setState({flag_send: false});
-    };
-    handleCloseMsj = () => {
-        this.setState({flag_msj: false});
-    };
-    handleCloseError = () => {
-        this.setState({flag_error: false});
-    };
+
     handleFile = (e) => {
         let file = e.target.files[0];
-        console.log("File: ",file);
-
         this.setState({
             oficio: file
         });
@@ -314,77 +285,22 @@ class Conexion extends React.Component {
                     </Grid>
                 </div>
 
-                <div>
-                    <Modal
-                        open={this.state.flag_send}
-                        aria-labelledby="simple-modal-title"
-                        aria-describedby="simple-modal-description"
-                        onClose={this.handleClose}
-                    >
-                        <div style={getModalStyle()} className={classes.paperCaptcha}>
-                            <Grid container justify={"center"}>
-                                <Grid item xs={12}>
-                                    <Typography variant={"h6"} className={classes.textCenter}>Verificación de
-                                        seguridad</Typography>
-                                </Grid>
-                                <Grid item xs={12} style={{textAlign: 'center'}}>
-                                    <ReCaptcha
-                                        ref={(el) => {
-                                            this.recaptcha = el
-                                        }}
-                                        size="normal"
-                                        sitekey="6Lfs8YcUAAAAAGVQL-BpW_w__FSJeWq-xAUoPbf9"
-                                        verifyCallback={this.verifyCallback}
-                                        onloadCallback={this.onLoadRecaptcha}
-                                        style={{display: 'inline-block'}}
-                                        badge={"inline"}
-                                    />
-                                </Grid>
-                                <Grid item xs={12} className={classes.textCenter}>
-                                    <Typography variant={"h6"}>{this.state.mensajeRegistro}</Typography>
-                                </Grid>
-                            </Grid>
-                        </div>
-                    </Modal>
-                    <Mensaje titulo={'Solicitud enviada'} mensaje={mensajeSolicitudEnviada}
-                             open={this.state.flag_msj} handleClose={this.handleCloseMsj}
-                    />
-                    <MensajeError mensaje={this.state.mensajeError}
-                                  open={this.state.flag_error} handleClose={this.handleCloseError}
-                    />
-                </div>
+
                 <div className={classes.bgContainer}>
                     <Grid container justify={'center'} spacing={0}>
                         <Grid item xs={12} className={classes.section}>
                             <Paper className={classes.contenedor}>
                                 <Grid container>
                                     <Grid item xs={12}>
-                                        <FormularioConexion addRegistro={this.addRegistro}
-                                                            dependencias={this.state.dependencias}/>
-                                        <TablaRegistros registros={this.state.registros} remove={this.removeRegistro}/>
+                                        <FormularioConexion/>
                                     </Grid>
-                                    <Grid item xs={12}>
-                                        <Typography variant={"h6"} className={classes.text}>Oficio(.pdf)</Typography>
-                                        <input type="file" onChange={this.handleFile} name={'nombreOficio'}
-                                               ref={ref => this.fileInput = ref} accept={'.pdf'}/>
-                                    </Grid>
-                                    <Grid item xs={12}>
-                                        <Button variant="contained" color="primary" className={classes.button}
-                                                disabled={!this.state.oficio || this.state.registros.length <= 0 || this.state.oficio.type!=="application/pdf"}
-                                                onClick={() => this.verifyCaptcha()}>
-                                            Enviar
-                                        </Button>
 
-                                    </Grid>
                                     {
                                         /*
                                         6Led7YcUAAAAANnOSK80RNv4h_o45NAWXFC9Jn8o key pdn serv
                                         6Lfs8YcUAAAAAGVQL-BpW_w__FSJeWq-xAUoPbf9 localhost
                                         */
                                     }
-                                    <Grid item xs={12}>
-
-                                    </Grid>
                                 </Grid>
                             </Paper>
                         </Grid>

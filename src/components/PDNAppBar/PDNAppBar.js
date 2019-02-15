@@ -58,7 +58,6 @@ class PDNAppBar extends React.Component {
         currentUser: null,
         loading: false,
         authenticated: false,
-
         anchorEl: null
     };
 
@@ -104,7 +103,6 @@ class PDNAppBar extends React.Component {
         const { anchorEl } = this.state;
         const open = Boolean(anchorEl);
 
-
         return (
             <div className={classes.root}>
                 <AppBar color="default" position="static">
@@ -149,6 +147,10 @@ class PDNAppBar extends React.Component {
                                         <MenuItem component={Link} to="/faq">Preguntas frecuentes</MenuItem>
                                         <MenuItem component={Link} to="/about">¿Qué es la PDN?</MenuItem>
                                         <MenuItem component={Link} to="/terminos">Términos de uso</MenuItem>
+                                        {
+                                            this.props.sesion && this.props.sesion.currentUser && this.props.sesion.currentUser.rol ==='SUJETO_OBLIGADO' &&
+                                            <MenuItem component={Link} to={"/consolaAdmonSO"}>Administrar conexión</MenuItem>
+                                        }
                                         {
                                             this.props.sesion && this.props.sesion.authenticated &&
                                         <MenuItem onClick={this.handleSignOut}>Cerrar sesión</MenuItem>

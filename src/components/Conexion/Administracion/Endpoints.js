@@ -38,6 +38,13 @@ const columnData = [
         mostrar: true,
         key: 'descripcion'
     },
+    {
+        id: 'estatus',
+        label: 'Estatus',
+        position: 6,
+        mostrar: true,
+        key: 'estatus'
+    },
 ];
 
 function getSorting(order, orderBy) {
@@ -94,7 +101,7 @@ const styles = theme => ({
         color: theme.palette.primary.dark,
     },
     text: {
-        color: theme.palette.primary.dark,
+        color: theme.palette.secondary.dark,
 
     }
 });
@@ -139,7 +146,7 @@ class Endpoints extends React.Component {
         let index = 0;
         return (
             <div>
-                <Typography variant={"h6"} className={classes.text}>Administración de conexiones</Typography>
+                <Typography variant={"h6"} className={classes.text}>API's registradas</Typography>
                 <Table className={classes.table} aria-describedby="spinnerLoading"
                        aria-busy={this.state.loading} aria-labelledby="tableTitle">
                     <EnhancedTableHead

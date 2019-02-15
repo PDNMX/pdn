@@ -158,6 +158,10 @@ class VideoAppBar extends React.Component {
                                         <MenuItem component={Link} to="/about">¿Qué es la PDN?</MenuItem>
                                         <MenuItem component={Link} to="/terminos">Términos de uso</MenuItem>
                                         {
+                                            this.props.sesion && this.props.sesion.currentUser && this.props.sesion.currentUser.rol ==='SUJETO_OBLIGADO' &&
+                                            <MenuItem component={Link} to={"/consolaAdmonSO"}>Administrar conexión</MenuItem>
+                                        }
+                                        {
                                             this.props.sesion &&  this.props.sesion.authenticated &&
                                             <MenuItem onClick={this.handleSignOut}>Cerrar sesión</MenuItem>
                                         }

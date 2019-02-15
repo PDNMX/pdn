@@ -9,6 +9,7 @@ import LoginPDN from "./components/Inicio/LoginPDN";
 import {connect} from 'react-redux';
 import ScrollToTop from './ScrollToTop';
 import ReactGA from 'react-ga';
+import MensajeError from './components/Mensajes/MensajeError';
 
 const theme = createMuiTheme({
     palette: {
@@ -30,7 +31,6 @@ const theme = createMuiTheme({
         },
         titleBanner: {
             color: '#666666'
-
         },
         graphGreen: {
             color: "#00cc99"
@@ -62,9 +62,12 @@ const theme = createMuiTheme({
         black: {
             black: "#000"
         },
-        red : {
-            color : '#B00020'
-        }
+        red: {
+            color: '#B00020'
+        },
+        textGrey: {
+            color: '#666666'
+        },
 
     },
     /*   overrides:{
@@ -100,7 +103,48 @@ class App extends React.Component {
     handleSignIn = (email, pass, history) => {
         try {
             app.auth().signInWithEmailAndPassword(email, pass).then((resp) => {
-                if (resp.user.uid) {
+                if (!resp.user.emailVerified) {
+                    this.setState(
+                        {
+                            mensaje: 'El correo electrónico no ha sido validado. Revisa tu bandeja de entrada y sigue las instrucciones.'
+                        }, () => {
+                            let user = app.auth().currentUser;
+                            user.sendEmailVerification().then(function () {
+                            }).catch(function (err) {
+                                console.log("Error: ", err);
+                            })
+                        })
+                }
+                else {
+                    let db = app.firestore();
+                    const settings = {timestampsInSnapshots: true};
+                    db.settings(settings);
+                    db.collection('/users_pdn').where("uid", "==", resp.user.uid).get().then((querySnapshot) => {
+                        querySnapshot.forEach(doc => {
+                            this.setState({
+                                sesion: {
+                                    currentUser: {
+                                        nombre: doc.data().nombre,
+                                        apellidoPaterno: doc.data().apellidoPaterno,
+                                        apellidoMaterno: doc.data().apellidoMaterno,
+                                        rol: doc.data().rol,
+                                        email: doc.data().correo,
+                                        uid : doc.data().uid,
+                                        dependencia : doc.data().dependencia,
+                                    },
+                                    authenticated: true,
+                                },
+                                loading: false
+                            }, () => {
+                                this.props.newSesion(this.state.sesion);
+                                localStorage.setItem("sesion", JSON.stringify(this.state.sesion));
+                                history.push('/');
+                            })
+                        });
+                    });
+
+                }
+                /*if (resp.user.uid) {
                     let db = app.firestore();
                     const settings = {timestampsInSnapshots: true};
                     db.settings(settings);
@@ -126,7 +170,7 @@ class App extends React.Component {
                         });
                     });
 
-                }
+                }*/
             }).catch(error => {
                 console.log("Error con signInWithEmailAndPassword ", error);
                 this.setState({
@@ -181,8 +225,10 @@ class App extends React.Component {
                                                                 mensaje={this.state.mensaje}/>}/>
 
                             {pndRoutes.map((prop, key) => {
-                                    return prop.private?<PrivateRoute exact path={prop.path} component={prop.component} key={key}
-                                                         sesion={sesion}/> : <Route exact path={prop.path} component={prop.component} key={key}/>;
+                                    return prop.private ?
+                                        <PrivateRoute exact path={prop.path} component={prop.component} key={key}
+                                                      sesion={sesion}/> :
+                                        <Route exact path={prop.path} component={prop.component} key={key}/>;
                                 }
                             )
                             }
