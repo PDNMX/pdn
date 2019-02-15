@@ -1,8 +1,9 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-let Ajv = require('ajv');
-let localize = require('ajv-i18n');
-let SwaggerParser = require('swagger-parser');
+import Ajv from 'ajv';
+import localize from 'ajv-i18n';
+//let SwaggerParser = require('swagger-parser');
+import Parser from 'swagger-parser';
 
 class UploadForm extends React.Component {
     state = {
@@ -88,7 +89,7 @@ class UploadForm extends React.Component {
             .then(res => res.json())
             .then(results => {
                 // console.log(results)
-                SwaggerParser.validate(results)
+                Parser.validate(results)
                     .then((esquema) => {
                         // this.props.onResults(api)
                         let ajv = new Ajv({ allErrors: true });
