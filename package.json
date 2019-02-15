@@ -5,6 +5,8 @@
   "dependencies": {
     "@material-ui/core": "^3.9.0",
     "@material-ui/icons": "^2.0.0",
+    "ajv": "^6.9.1",
+    "ajv-i18n": "^3.4.0",
     "axios": "^0.18.0",
     "chartist": "^0.11.0",
     "cors": "^2.8.5",
@@ -32,6 +34,7 @@
     "redux": "^4.0.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.2",
+    "swagger-parser": "^6.0.5",
     "uuid": "^3.3.2"
   },
   "scripts": {
