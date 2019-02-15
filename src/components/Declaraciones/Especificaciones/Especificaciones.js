@@ -342,8 +342,8 @@ class ClippedDrawer extends React.Component {
                         bases de datos y sistemas de información; cada uno de ellos con particularidades tecnológicas y
                         reglas de negocio distintas, dificultando la integración y la
                         interoperabilidad de los datos. El Estándar para la Interoperabilidad de Datos de Declaraciones surge
-                        a partir de la necesidad de distribuir, comparar, analizar y
-                        distribuir la información
+                        a partir de la necesidad de distribuir, comparar y analizar
+                        la información
                         de las declaraciones de situación patrimonial y de intereses de una manera uniforme e interoperable.
                     </Typography>
 
