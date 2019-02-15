@@ -4,6 +4,20 @@ import Ajv from 'ajv';
 import localize from 'ajv-i18n';
 //let SwaggerParser = require('swagger-parser');
 import Parser from 'swagger-parser';
+import {withStyles} from "@material-ui/core/styles";
+import PropTypes from 'prop-types';
+
+const styles = theme => ({
+    root: {
+        flexGrow: 1
+    },
+    button: {
+        marginTop: theme.spacing.unit,
+        marginRight: theme.spacing.unit,
+        marginBottom: theme.spacing.unit *2,
+        background: '#ffe01b',//'#fecb6e'
+    }
+});
 
 class UploadForm extends React.Component {
     state = {
@@ -112,9 +126,12 @@ class UploadForm extends React.Component {
     };
 
     render() {
+
+        const {classes} = this.props;
+
         return (
-            <div>
-                <Button variant="contained" component="label" disabled={this.state.disabled} size='large'>
+            <div className={classes.root}>
+                <Button variant="contained" component="label" disabled={this.state.disabled} size='large' className={classes.button}>
                     {this.state.label}
                     <input onChange={this.handleFile} accept="application/json" type="file" style={{ display: "none" }}
                     />
@@ -124,5 +141,8 @@ class UploadForm extends React.Component {
     }
 }
 
+UploadForm.propTypes= {
+    classes: PropTypes.object.isRequired
+};
 
-export default UploadForm;
+export default withStyles(styles)(UploadForm);

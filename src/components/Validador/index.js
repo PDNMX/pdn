@@ -18,8 +18,11 @@ const styles = theme => ({
     },
     gridItem: {
         maxWidth: '1200px',
-        paddingTop: theme.spacing.unit * 4
-    }
+        paddingTop: theme.spacing.unit * 4,
+        paddingLeft: theme.spacing.unit * 2,
+        paddingRight: theme.spacing.unit * 2,
+    },
+
 });
 
 
@@ -65,7 +68,7 @@ class Validador extends Component {
 
     _renderFirst= () => {
         return this.state.results === true
-            ? <Typography paragraph> El archivo cargado se ha comprobado satisfactoriamente </Typography>
+            ? <Typography paragraph> El archivo ha sido comprobado con éxito </Typography>
             : this._renderListErrors()
     };
 
@@ -78,8 +81,10 @@ class Validador extends Component {
                 <PDNAppBar/>
                 <Grid container spacing={0} justify="center">
                     <Grid item xs={12} className={classes.gridItem}>
-                        <Typography variant='h5' paragraph>
-                            En está página puedes validar un archivo JSON respecto al esquema de datos del estándar de Declaraciones
+
+                        <Typography variant="h5">Validador de estándares de datos</Typography>
+                        <Typography paragraph>
+                            En está página puedes validar archivos en formato JSON contra los estándares de datos de la Plataforma Digital Nacional.
                         </Typography>
                         <UploadForm onResults={this._handleResults}/>
                         <br/>
