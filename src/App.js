@@ -13,7 +13,7 @@ import MensajeError from './components/Mensajes/MensajeError';
 
 const theme = createMuiTheme({
     typography:{
-        fontFamily: "Noto Sans SC"
+        fontFamily: ["Noto Sans SC", "sans-serif"].join(',')
     },
     palette: {
         primary: {
