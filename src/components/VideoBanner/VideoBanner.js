@@ -21,14 +21,14 @@ const styles = theme => ({
         position: 'absolute'
     },
     contents: {
-        paddingTop: 270,
+        paddingTop: 300,
         position: 'absolute',
         zIndex: 3,
         textAlign: 'center',
         width: '100%'
     },
     text: {
-        color: "#666666"
+        color: "#ffffff"
     },
     boldText: {
         fontWeight: 500
