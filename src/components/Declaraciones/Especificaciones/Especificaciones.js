@@ -350,7 +350,7 @@ class ClippedDrawer extends React.Component {
                     <Typography paragraph>
                         Conforme a lo anterior, la SESNA ha conceptualizado a la Plataforma Digital Nacional como una
                         herramienta que permitirá la consulta de información de las diferentes instituciones de los tres
-                        niveles de gobierno en un solo punto, sin tener el objetivo de concentrar o resguardar su información.
+                        niveles de gobierno en un solo punto, sin tener el objetivo de concentrarla o resguardarla.
                         En ese sentido, resulta necesario dotar a la PDN de mecanismos le que permitan interconectarse
                         con los diversos sistemas de gobierno para consultar la información que resulte necesaria,
                         sin importar la tecnología con la que dichos sistemas fueron desarrollados (i.e., lenguajes de programación, bases de datos, etc.).
