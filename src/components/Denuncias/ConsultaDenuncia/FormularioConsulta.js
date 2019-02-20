@@ -4,7 +4,6 @@ import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Header from "../../PDNAppBar/PDNAppBar";
-import Footer from "../../Footer/Footer";
 //import Card from "../Card";
 //import img1 from "../../../assets/img/hands.jpg";
 //import img2 from "../../../assets/img/caseFile.jpg";
@@ -166,8 +165,7 @@ class FormularioConsulta extends React.Component {
                         </Paper>
                     </Grid>
                 </Grid>
-                <br/>
-                <Footer/>
+
 
             </div>
         );

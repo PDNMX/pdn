@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Tabla from './Tabla';
-import Footer from "../Footer/Footer";
 import Header from '../PDNAppBar/PDNAppBar';
 const styles = theme => ({
     root: {
@@ -53,7 +52,7 @@ class Datos extends React.Component {
                         </Grid>
 
                     </div>
-                    <Footer/>
+
                 </div>
         )
     }

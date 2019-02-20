@@ -1,6 +1,5 @@
 import React from 'react';
 import Header from '../PDNAppBar/PDNAppBar';
-import Footer from "../Footer/Footer";
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
@@ -57,7 +56,7 @@ class Indicadores extends React.Component {
                             scrolling="no"
                             style={{overflow: "hidden", width: "100%", minHeight: "800px"}}/>
                 </div>
-                <Footer/>
+
             </div>
         );
     }

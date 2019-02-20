@@ -4,7 +4,6 @@ import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Header from "../../PDNAppBar/PDNAppBar";
-import Footer from "../../Footer/Footer";
 import Paper from "@material-ui/core/Paper/Paper";
 import HorizontalNonLinearStepper from "./HorizontalNonLinearStepper";
 
@@ -56,9 +55,7 @@ class FormularioDenuncia extends React.Component {
                     </Grid>
                 </Grid>
 
-                <br/>
 
-                <Footer/>
             </div>
         );
     }
