@@ -12,7 +12,9 @@ const styles = theme => ({
     },
     container: {
         paddingTop: 100,
-        paddingBottom: 150
+        paddingBottom: 150,
+        paddingRight: theme.spacing.unit,
+        paddingLeft: theme.spacing.unit
     },
     star: {
         maxWidth: 300
@@ -34,7 +36,7 @@ class QueEsLaPDN extends React.Component{
 
         return(
             <div className={classes.root}>
-                <Grid container spacing={24} justify='center' className={classes.container}>
+                <Grid container spacing={0} justify='center' className={classes.container}>
                     <Grid item xs={12} style={{paddingBottom: 60}}>
                         <Typography variant="h4" className={classes.text}>
                             ¿Qué es la Plataforma Digital Nacional?

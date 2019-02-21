@@ -11,7 +11,7 @@ import Banner from "../VideoBanner/VideoBanner";
 import AlertDialog from "./AlertDialog";
 const styles = theme => ({
     root: {
-        flexGrow :1
+        flexGrow :1,
     },
     item: {
         maxWidth: 1200

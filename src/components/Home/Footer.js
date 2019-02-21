@@ -17,7 +17,9 @@ const styles = theme => ({
         minHeight: 150,
 
         paddingTop: '94px',
-        paddingBottom: '64px'
+        paddingBottom: '64px',
+        paddingLeft: theme.spacing.unit,
+        paddingRight: theme.spacing.unit
     },
     logo: {
         width: 115,
@@ -58,7 +60,7 @@ class Footer extends React.Component{
                 <Grid container spacing={0} className={classes.parteGris} justify='center'>
                     <Grid item xs={12} className={classes.item}>
 
-                        <Grid container spacing={24}>
+                        <Grid container spacing={0}>
                             <Grid item xs={12} md={6}>
                                 {/*<a href="https://www.gob.mx/sesna">
                                     <img alt="SESNA" src={LogoSesna} className={classes.logoSESNA}/>
