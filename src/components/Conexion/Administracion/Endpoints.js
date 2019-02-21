@@ -6,9 +6,27 @@ import TableRow from "@material-ui/core/TableRow/TableRow";
 import TableCell from "@material-ui/core/TableCell/TableCell";
 import {withStyles} from '@material-ui/core/styles';
 import Typography from "@material-ui/core/Typography/Typography";
-import DeleteIcon from '@material-ui/icons/Delete';
 import Tooltip from "@material-ui/core/Tooltip/Tooltip";
+import Create from '@material-ui/icons/Create';
+import rp from "request-promise";
+import Mensaje from "../../Mensajes/Mensaje";
+import EditarEndpoint from "./EditarEndpoint";
+import TablePagination from "@material-ui/core/TablePagination/TablePagination";
 
+let counter = 0;
+let createData = (item) => {
+    counter += 1;
+    let leyenda = "SIN DATO";
+    return {
+        id: counter,
+        url: item.url ? item.url : leyenda,
+        metodo: item.metodo ? item.metodo : leyenda,
+        sistema: item.sistema ? item.sistema : leyenda,
+        descripcion: item.descripcion ? item.descripcion : leyenda,
+        estatus: item.estatus ? item.estatus : leyenda,
+        fecha_registro: item.fecha_registro ? item.fecha_registro : leyenda,
+    };
+};
 const columnData = [
     {
         id: 'URL',
@@ -118,10 +136,94 @@ class Endpoints extends React.Component {
             open: false,
             elementoSeleccionado: {},
             totalRows: 0,
-            registros:[],
+            data: [],
+            filterData: [],
+            flag_msj: false,
+            controlDetalle: false,
+            mensaje: '',
+            tituloMensaje: '',
         };
     };
 
+    componentDidMount() {
+        let aux = JSON.parse(localStorage.getItem("sesion"));
+        this.setState({
+            currentUser: aux.currentUser,
+        }, () => {
+            this.getEndpoints('FIELD_FILTER');
+        });
+        return null;
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.update !== prevProps.update) {
+            return this.getEndpoints('FIELD_FILTER');
+        }
+        return true;
+    }
+
+    getEndpoints = (typeSearch) => {
+        let params = {};
+        (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? params.limit = this.state.rowsPerPage : null;
+        (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? params.offset = (this.state.rowsPerPage * this.state.page) : null;
+        params.dependencia = 'eq.' + this.state.currentUser.dependencia;
+        (typeSearch === 'FIELD_FILTER') ? this.getTotalRows(params) : null;
+
+        let options = {
+            uri: 'https://plataformadigitalnacional.org/api/apis_conexion',
+            json: true,
+            qs: params
+        };
+        rp(options)
+            .then(data => {
+                let dataAux = data.map(item => {
+                    return createData(item);
+                });
+                this.setState({
+                    filterData: dataAux,
+                    loading: false
+                });
+                return true;
+            })
+            .catch(err => {
+                this.setState({loading: false});
+                alert("_No se pudó obtener la información");
+                console.log(err);
+                return true;
+            });
+    };
+
+    getTotalRows = (params) => {
+        let options = {
+            uri: 'https://plataformadigitalnacional.org/api/apis_conexion?select=count=eq.exact',
+            json: true,
+            qs: params
+        };
+        rp(options)
+            .then(data => {
+                this.setState({totalRows: data[0].count, loading: false});
+                return true;
+            }).catch(err => {
+            this.setState({loading: false});
+            alert("_No se pudó obtener la información");
+            console.log(err);
+            return true;
+        });
+    };
+
+    handleChangeRowsPerPage = event => {
+        this.setState({rowsPerPage: event.target.value, page: 0}, () => {
+            this.getEndpoints('FIELD_FILTER');
+        });
+        return null;
+    };
+
+    handleChangePage = (event, page) => {
+        this.setState({page}, () => {
+            this.getEndpoints('CHANGE_PAGE');
+        });
+        return null;
+    };
     handleRequestSort = (event, property) => {
         const orderBy = property;
         let order = 'desc';
@@ -140,12 +242,62 @@ class Endpoints extends React.Component {
 
     isSelected = id => this.state.selected.indexOf(id) !== -1;
 
+    handleClick = (event, elemento) => {
+        this.setState({elementoSeleccionado: elemento});
+        this.setState({open: true});
+    };
+
+    handleCloseMsj = () => {
+        this.setState({flag_msj: false});
+    };
+
+    handleClose = () => {
+        this.setState({open: false});
+        if (this.props.updateView) this.props.updateView();
+    };
+
+    changeEstatus = (n) => {
+        let params = {};
+        params.correo = 'eq.' + n.correo;
+
+        let options = {
+            method: 'PATCH',
+            uri: 'https://plataformadigitalnacional.org/api/apis_conexion',
+            qs: params,
+            headers: {
+                'Prefer': 'return = representation',
+                'Content-Type': 'application/json'
+            },
+            body: {'estatus': n.estatus === 'ACTIVO' ? 'INACTIVO' : 'ACTIVO'},
+            json: true
+        };
+        rp(options)
+            .then(data => {
+                this.setState({
+                    tituloMensaje: 'Cambio realizado correctamente',
+                    mensaje: 'El estatus ha cambiado',
+                    flag_msj: true
+                }, () => {
+                    this.getContactos('FIELD_FILTER');
+                });
+                return true;
+            })
+            .catch(err => {
+                alert("_No se pudó completar la operación");
+                console.log(err);
+            });
+    };
+
     render() {
         const {classes} = this.props;
-        const {order, orderBy, selected, rowsPerPage, page, filterData, totalRows, filterDataAll,registros} = this.state;
+        const {order, orderBy, selected, rowsPerPage, page, filterData, totalRows, filterDataAll, registros} = this.state;
         let index = 0;
         return (
             <div>
+                <Mensaje mensaje={this.state.mensaje} titulo={this.state.tituloMensaje}
+                         open={this.state.flag_msj} handleClose={this.handleCloseMsj}/>
+                <EditarEndpoint control={this.state.open} endpoint={this.state.elementoSeleccionado}
+                                handleClose={this.handleClose}/>
                 <Typography variant={"h6"} className={classes.text}>API's registradas</Typography>
                 <Table className={classes.table} aria-describedby="spinnerLoading"
                        aria-busy={this.state.loading} aria-labelledby="tableTitle">
@@ -155,13 +307,13 @@ class Endpoints extends React.Component {
                         orderBy={orderBy}
                         onSelectAllClick={this.handleSelectAllClick}
                         onRequestSort={this.handleRequestSort}
-                        rowCount={registros.length}
+                        rowCount={filterData.length}
                         columnData={columnData}
                         acciones={true}
                     />
                     <TableBody>
                         {
-                            registros
+                            filterData
                                 .sort(getSorting(order, orderBy))
                                 .map(n => {
                                     return (
@@ -170,19 +322,20 @@ class Endpoints extends React.Component {
                                             tabIndex={-1}
                                             key={index++}
                                         >
-                                            <TableCell>{n.nombre}</TableCell>
-                                            <TableCell>{n.apellido1}</TableCell>
-                                            <TableCell>{n.apellido2}</TableCell>
-                                            <TableCell>{n.cargo}</TableCell>
-                                            <TableCell>{n.dependencia}</TableCell>
-                                            <TableCell>{n.correo}</TableCell>
-                                            <TableCell>{n.telefono_personal}</TableCell>
-                                            <TableCell>{n.telefono_oficina}</TableCell>
-                                            <TableCell>{n.extension}</TableCell>
+                                            <TableCell>{n.url}</TableCell>
+                                            <TableCell>{n.metodo}</TableCell>
+                                            <TableCell>{n.sistema}</TableCell>
+                                            <TableCell>{n.descripcion}</TableCell>
+                                            <TableCell>{n.estatus}</TableCell>
                                             <TableCell>
-                                                <Tooltip title={"Eliminar"}>
-                                                    <DeleteIcon onClick={() => this.props.remove(n)}/>
-                                                </Tooltip>
+                                                {
+                                                    n.estatus === 'EN REVISIÓN' &&
+                                                    <Tooltip title={'EDITAR'}>
+                                                        <Create color={"secondary"}
+                                                                onClick={(event) => this.handleClick(event, n)}/>
+                                                    </Tooltip>
+                                                }
+
                                             </TableCell>
                                         </TableRow>
                                     );
@@ -190,6 +343,25 @@ class Endpoints extends React.Component {
                         }
                     </TableBody>
                 </Table>
+                <TablePagination
+                    className={classes.tablePagination}
+                    component="div"
+                    count={totalRows}
+                    rowsPerPage={rowsPerPage}
+                    page={page}
+                    backIconButtonProps={{
+                        'aria-label': 'Previous Page',
+                    }}
+                    nextIconButtonProps={{
+                        'aria-label': 'Next Page',
+                    }}
+                    onChangePage={this.handleChangePage}
+                    onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                    labelRowsPerPage='Registros por página'
+                    labelDisplayedRows={({from, to, count}) => {
+                        return `${from}-${to} de ${count}`;
+                    }}
+                />
             </div>
         );
     }
