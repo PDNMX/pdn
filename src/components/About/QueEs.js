@@ -28,7 +28,7 @@ class QueEs extends React.Component{
                 <br/>
                 <br/>
 
-                <Grid container spacing={24}>
+                <Grid container spacing={0}>
                     <Grid item xs={12} md={6}>
                         <img src={mapita} alt="Mapita" className={classes.mapita}/>
                     </Grid>

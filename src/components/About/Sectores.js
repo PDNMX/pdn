@@ -46,7 +46,7 @@ class Sectores extends React.Component {
 
         return (
             <div className={classes.root}>
-                <Grid container spacing={24}>
+                <Grid container spacing={0}>
                     <Grid item xs={12}>
                         <Typography variant='display2' style={{color: '#96cb99'}}>
                             {/*<Chip label={6} className={classes.chip}/>*/} Sistemas de la PDN

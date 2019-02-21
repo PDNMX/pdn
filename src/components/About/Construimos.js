@@ -65,7 +65,7 @@ class Construimos extends React.Component{
 
                 <br/>
                 <br/>
-                <Grid container spacing={24}>
+                <Grid container spacing={0}>
                     <Grid item xs={12} md={6}>
                         <Typography variant="title" className={classes.titles }>Principios</Typography>
                         <ul className={classes.ul}>

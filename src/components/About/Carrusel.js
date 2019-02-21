@@ -32,11 +32,10 @@ class Carrusel extends React.Component{
         const {classes} = this.props;
         return (
             <div className={classes.root}>
-                <Typography variant={'display2'} className={classes.title}>Conoce más</Typography>
-                <br/>
+                <Typography variant={'display2'} className={classes.title} paragraph>Conoce más</Typography>
                 <br/>
 
-                <Grid container spacing={24}>
+                <Grid container spacing={0}>
                     <Grid item xs={12} md={4}>
                         <Tarjeta img={C1} title="Proximamente" text="Datatón Anticorrupción" url='https://www.plataformadigitalnacional.org/blog/por-una-plataforma-digital-nacional-incluyente/'/>
                     </Grid>
