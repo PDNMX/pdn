@@ -66,25 +66,34 @@ class Footer extends React.Component{
 
                                 <img alt="PDN" src={LogoPDN} className={classes.logoPDN}/>
 
-                                <Typography className={classes.grayText} paragraph>Plataforma Digital Nacional</Typography>
-                                <p className={classes.grayText}  style={{
+                                <Typography className={classes.grayText} paragraph>
+                                    <b>Plataforma Digital Nacional</b>
+                                </Typography>
+                                <br/>
+                                <br/>
+                                <Typography className={classes.grayText}  style={{
                                     fontSize: '12px',
                                     fontStyle: 'normal',
                                     fontWeight: '400',
                                     fontFamily: 'Noto Sans SC'
-                                }} paragraph>Inteligencia de Datos Anticorrupción</p>
+                                }} paragraph>Inteligencia de Datos Anticorrupción</Typography>
                                 <br/>
                                 <img alt="Libre Uso MX " src ={LibreUso} className={classes.libreUso}/>
                                 <br/>
                                 <img alt="Open Knowledge" src={OK}/>
                             </Grid>
                             <Grid item xs={6} md={3}>
-                                <Typography className={classes.blueText}><b>Sistemas</b></Typography>
-
-                                <Typography className={classes.grayText}>
+                                <Typography className={classes.blueText} paragraph>
+                                    <b>Sistemas</b>
+                                </Typography>
+                                <Typography className={classes.grayText} paragraph>
                                     <a href="https://demospdn.host/declaraciones/" className={classes.grayText}> Declaraciones</a> </Typography>
-                                <Typography className={classes.grayText} component={Link} to="/servidores">Servidores en contrataciones</Typography>
-                                <Typography className={classes.grayText} component={Link} to="/sancionados">Sancionados</Typography>
+                                <Typography className={classes.grayText} component={Link} to="/servidores" paragraph>
+                                    Servidores en contrataciones
+                                </Typography>
+                                <Typography className={classes.grayText} component={Link} to="/sancionados" paragraph>
+                                    Sancionados
+                                </Typography>
                                 {/*
                                 <Typography className={classes.grayText}>Fiscalización</Typography>
                                 <Typography className={classes.grayText}>Denuncias</Typography>
@@ -92,13 +101,21 @@ class Footer extends React.Component{
                                 */}
                             </Grid>
                             <Grid item xs={6} md={3}>
-                                <Typography className={classes.blueText}><b>PDN</b></Typography>
-                                <Typography>
+                                <Typography className={classes.blueText} paragraph>
+                                    <b>PDN</b>
+                                </Typography>
+                                <Typography paragraph>
                                     <a href="https://www.plataformadigitalnacional.org/blog" className={classes.grayText}>Blog</a>
                                 </Typography>
-                                <Typography className={classes.grayText} component={Link} to="/faq">Preguntas frecuentes</Typography>
-                                <Typography component={Link} to="/about" className={classes.grayText}> ¿Qué es la PDN?</Typography>
-                                <Typography component={Link} to="/terminos" className={classes.grayText}>Términos de uso </Typography>
+                                <Typography className={classes.grayText} component={Link} to="/faq" paragraph>
+                                    Preguntas frecuentes
+                                </Typography>
+                                <Typography component={Link} to="/about" className={classes.grayText} paragraph>
+                                    ¿Qué es la PDN?
+                                </Typography>
+                                <Typography component={Link} to="/terminos" className={classes.grayText}>
+                                    Términos de uso
+                                </Typography>
                                 {/*<Typography className={classes.grayText}>Contacto</Typography>*/}
                             </Grid>
                         </Grid>
