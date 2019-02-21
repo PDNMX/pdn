@@ -17,6 +17,10 @@ const styles = theme => ({
     },
     li: {
         paddingTop: 10
+    },
+    container: {
+        paddingRight: theme.spacing.unit,
+        paddingLeft: theme.spacing.unit
     }
 });
 
@@ -26,7 +30,7 @@ class Faq extends React.Component{
         return (
             <div className={classes.root}>
                 <Header/>
-                <Grid container spacing={0} justify='center'>
+                <Grid container spacing={0} justify='center' className={classes.container}>
                     <Grid item xs={12} className={classes.item}>
 
                         <Typography variant="h4">

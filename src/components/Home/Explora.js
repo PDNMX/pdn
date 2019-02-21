@@ -3,7 +3,7 @@ import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
+//import Button from '@material-ui/core/Button';
 import VideoDialog from './VideoDialog';
 
 const styles = theme => ({
@@ -12,7 +12,8 @@ const styles = theme => ({
     },
     container: {
         paddingTop: 100,
-        paddingBottom: 90
+        paddingBottom: 90,
+        //paddingRight
     },
     button:{
         background: '#ffe01b'
