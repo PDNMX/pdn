@@ -40,7 +40,7 @@ class P404 extends React.Component {
         return (
             <div className={classes.root}>
                 <Header/>
-                <Grid container spacing={24} justify='center'>
+                <Grid container spacing={0} justify='center'>
                     <Grid item xs={12} className={classes.gridItem}>
                         <Paper className={classes.paper}>
                             <Typography variant="display1">404 </Typography>
