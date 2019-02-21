@@ -72,6 +72,16 @@ const styles = theme => ({
         paddingBottom: theme.spacing.unit * 5,
         textAlign: 'center',
     },
+    containerBanner : {
+        [theme.breakpoints.up('sm')]: {
+            paddingTop: theme.spacing.unit * 15,
+            maxWidth: '1200px'
+        },
+        [theme.breakpoints.down('sm')]: {
+            paddingTop: theme.spacing.unit * 8,
+        },
+
+    }
 });
 
 class ConsolaAdministracionSO extends React.Component {
@@ -203,7 +213,7 @@ class ConsolaAdministracionSO extends React.Component {
                 <div className={classes.banner}>
                     <img className={classes.bgImg} src={imgBanner}/>
                     <Grid container justify={"center"} spacing={0}>
-                        <Grid item xs={12} className={classes.section} style={{paddingTop: 150}}>
+                        <Grid item xs={12} className={classes.containerBanner}>
                             <Grid container spacing={24}>
                                 <Grid item xs={12} sm={6}>
                                     <Typography variant={"h2"} className={classes.titleLight}>Consola de
