@@ -10,6 +10,10 @@ import MenuItem from "@material-ui/core/MenuItem/MenuItem";
 import Tooltip from "@material-ui/core/Tooltip/Tooltip";
 import Fab from "@material-ui/core/Fab/Fab";
 import AddIcon from '@material-ui/icons/Add';
+import rp from "request-promise";
+import Mensaje from "../../Mensajes/Mensaje";
+import MensajeError from "../../Mensajes/MensajeError";
+import Save from '@material-ui/icons/Save';
 
 const styles = theme => ({
     root: {
@@ -27,15 +31,40 @@ const styles = theme => ({
     },
 });
 
+ let nuevo = {
+     url : '',
+     metodo : '',
+     sistema : '',
+     descripcion : ''
+ };
+
 class FormularioEndpoint extends React.Component {
     state = {
-        endpoint: {
-            url: '',
-            metodo: '',
-            sistema: '',
-            descripcion: ''
-        },
-        mensajeError: ''
+        endpoint: nuevo,
+        mensajeError: '',
+        mensaje: '',
+        tituloMensaje: '',
+        mensaje_modal: '',
+        flag_msj: false,
+        flag_msj_error: false,
+    };
+
+    componentDidMount(){
+        if(!this.props.endpoint){
+            let aux = JSON.parse(localStorage.getItem("sesion"));
+            console.log("aux: ",aux);
+            this.setState({
+                currentUser : aux.currentUser
+            },()=>{
+                nuevo.dependencia = this.state.currentUser.dependencia
+            })
+        }
+        else{
+            this.setState({
+                endpoint : this.props.endpoint,
+                urlOriginal : this.props.endpoint.url
+            })
+        }
     };
 
     handleChange = name => event => {
@@ -48,12 +77,9 @@ class FormularioEndpoint extends React.Component {
     };
     handleClick = () => {
         let item = this.state.endpoint;
-        if (item.URL && item.metodo && item.sistema && item.descripcion ){
-            this.props.addRegistro(this.state.registro);
-            this.setState({
-                endpoint: {},
-                mensaje: ''
-            })
+        console.log("Item: ",item);
+        if (item.url && item.metodo && item.sistema && item.descripcion ){
+            return this.saveRegistro();
         } else {
             this.setState({
                 mensaje: '*Llena los campos requeridos'
@@ -61,11 +87,118 @@ class FormularioEndpoint extends React.Component {
         }
     };
 
+    saveRegistro = () => {
+        this.state.endpoint.fecha_registro = new Date();
+        this.state.endpoint.estatus = 'EN REVISIÓN';
+
+        let options = {
+            method: 'POST',
+            uri: 'https://plataformadigitalnacional.org/api/apis_conexion',
+            headers: {
+                'Prefer': 'return = representation',
+                'Content-Type': 'application/json'
+            },
+            body: this.state.endpoint,
+            json: true
+        };
+
+        rp(options)
+            .then(parseBody => {
+                this.setState({
+                    registro: nuevo,
+                    flag_msj: true,
+                    tituloMensaje: 'Aviso',
+                    mensaje_modal: 'El endpoint se ha registrado correctamente',
+                    flag_send: false,
+                }, () => {
+                    if (this.props.updateView) this.props.updateView();
+                });
+                return true;
+            })
+            .catch(err => {
+                let mensaje = '';
+                switch (err.error.code) {
+                    case '23505':'Endpoint ya registrado en la institución';
+                        break;
+                    default :
+                        mensaje = 'Error al insertar registro';
+                        break;
+                }
+                this.setState({
+                    flag_msj_error: true,
+                    mensaje_error_modal: mensaje
+                })
+            });
+        return null;
+    };
+
+    saveChanges = () => {
+        let params = {};
+        let registro = this.state.endpoint;
+        params.url = 'eq.' + this.state.urlOriginal;
+
+        let options = {
+            method: 'PATCH',
+            uri: 'https://plataformadigitalnacional.org/api/apis_conexion',
+            qs: params,
+            headers: {
+                'Prefer': 'return = representation',
+                'Content-Type': 'application/json'
+            },
+            body: {
+                'url': registro.url,
+                'metodo': registro.metodo,
+                'sistema': registro.sistema,
+                'descripcion': registro.descripcion,
+            },
+            json: true
+        };
+        rp(options)
+            .then(data => {
+                this.setState({
+                    tituloMensaje: 'Aviso',
+                    mensaje_modal: 'Los cambios se han realizado correctamente',
+                    flag_msj: true
+                });
+                return true;
+            })
+            .catch(err => {
+                console.log("Error:", err);
+                let mensaje = '';
+                switch (err.error.code) {
+                    case '23505':
+                        mensaje = 'Endpoint ya registrado en la institución';
+                        break;
+                    default :
+                        mensaje = 'Error al actualizar registro';
+                        break;
+                }
+                this.setState({
+                    flag_msj_error: true,
+                    mensaje_error_modal: mensaje
+                });
+                return true;
+            });
+    };
+
+
+    handleCloseMsj = () => {
+        this.setState({flag_msj: false}, () => {
+            if(this.props.closeContainer) this.props.closeContainer();
+        });
+    };
+    handleCloseMsjError = () => {
+        this.setState({flag_msj_error: false});
+    };
 
     render() {
         const {classes} = this.props;
         return (
             <div>
+                <Mensaje mensaje={this.state.mensaje_modal} titulo={this.state.tituloMensaje}
+                         open={this.state.flag_msj} handleClose={this.handleCloseMsj}/>
+                <MensajeError mensaje={this.state.mensaje_error_modal} titulo={'Error'}
+                              open={this.state.flag_msj_error} handleClose={this.handleCloseMsjError}/>
                 <Grid container spacing={32}>
                     <Grid item xs={12}>
                         <Typography variant={"h6"} className={classes.text}>
@@ -119,18 +252,29 @@ class FormularioEndpoint extends React.Component {
                     </Grid>
                     <Grid item xs={11}/>
                     <Grid item xs={1}>
-                        <Tooltip title={'Agregar'}>
+                        {
+                            !this.props.endpoint &&
+                            <Tooltip title={'Agregar'}>
+                                <Fab color="primary" aria-label="Add" className={classes.fab}
+                                     onClick={() => this.handleClick()}>
+                                    <AddIcon/>
+                                </Fab>
+                            </Tooltip>
+                        }
+                        {this.props.endpoint &&
+                        <Tooltip title={'Guardar cambios'}>
                             <Fab color="primary" aria-label="Add" className={classes.fab}
-                                 onClick={() => this.handleClick()}>
-                                <AddIcon/>
+                                 onClick={() => this.saveChanges()}>
+                                <Save/>
                             </Fab>
                         </Tooltip>
+                        }
+
                     </Grid>
                 </Grid>
             </div>
         );
     }
-
 }
 
 export default withStyles(styles)(FormularioEndpoint);

@@ -2,16 +2,14 @@ import React from 'react';
 import {withStyles} from '@material-ui/core/styles';
 import Grid from "@material-ui/core/Grid/Grid";
 import TextField from "@material-ui/core/TextField/TextField";
-import FormControl from "@material-ui/core/FormControl/FormControl";
-import MenuItem from "@material-ui/core/MenuItem/MenuItem";
 import Fab from "@material-ui/core/Fab/Fab";
+import Save from '@material-ui/icons/Save';
 import AddIcon from '@material-ui/icons/Add';
 import Typography from "@material-ui/core/Typography/Typography";
 import Tooltip from "@material-ui/core/Tooltip/Tooltip";
 import rp from "request-promise";
-import Select from "@material-ui/core/Select/Select";
-import InputLabel from "@material-ui/core/InputLabel/InputLabel";
-
+import Mensaje from "../../Mensajes/Mensaje";
+import MensajeError from "../../Mensajes/MensajeError";
 
 const styles = theme => ({
     fab: {
@@ -26,12 +24,14 @@ const styles = theme => ({
     title: {
         color: theme.palette.secondary.dark,
     },
-    text : {
+    text: {
         color: theme.palette.textGrey.color
     }
 });
 
-const nuevo = {
+
+const expCorreo = '^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)+(.[a-z]{2,4})$';
+let nuevo = {
     nombre: '',
     apellido1: '',
     apellido2: '',
@@ -40,42 +40,34 @@ const nuevo = {
     correo: '',
     telefono_personal: '',
     telefono_oficina: '',
-    extension: '',
-    otra_dependencia: ''
+    extension: ''
 };
-
-let loadDependencias = (_this) => {
-    let sug = [];
-    let index = 0;
-    let options = {
-        uri: 'https://demospdn.host/demo1/captura/api/catDependencias',
-        json: true
-    };
-    rp(options)
-        .then(data => {
-            data.map(item => {
-                sug.push({id: index, value: item.valor, label: item.valor});
-                index += 1;
-            });
-            _this.setState({dependencias: sug});
-        }).catch(err => {
-        alert("_No se puedó obtener la información");
-        console.log(err);
-    });
-};
-
-
-const expCorreo = '^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)+(.[a-z]{2,4})$';
 
 class FormularioContacto extends React.Component {
     state = {
         registro: nuevo,
         mensaje: '',
-        dependencias: []
+        tituloMensaje: '',
+        mensaje_modal: '',
+        flag_msj: false,
+        flag_msj_error: false,
     };
 
     componentDidMount() {
-        loadDependencias(this);
+        if (!this.props.contacto) {
+            let aux = JSON.parse(localStorage.getItem("sesion"));
+            this.setState({
+                currentUser: aux.currentUser,
+            }, () => {
+                nuevo.dependencia = this.state.currentUser.dependencia
+            });
+        }
+        else {
+            this.setState({
+                registro: this.props.contacto,
+                correoOriginal: this.props.contacto.correo,
+            })
+        }
     }
 
     handleChange = name => event => {
@@ -89,19 +81,121 @@ class FormularioContacto extends React.Component {
 
     handleClick = () => {
         let item = this.state.registro;
-        let okDependencia = item.dependencia && item.dependencia !== 'OTRA' ? true : (item.dependencia === 'OTRA' && item.otra_dependencia) ? true : false;
-        if (item.cargo && okDependencia && item.nombre && item.apellido1 && item.correo &&
+        if (item.cargo && item.nombre && item.apellido1 && item.correo &&
             item.correo.match(expCorreo) !== null) {
-            this.props.addRegistro(this.state.registro);
-            this.setState({
-                registro: nuevo,
-                mensaje: ''
-            })
+            return this.saveRegistro();
         } else {
             this.setState({
                 mensaje: '*Llena los campos requeridos'
-            })
+            });
         }
+    };
+    saveRegistro = () => {
+        this.state.registro.fecha_alta = new Date();
+        this.state.registro.estatus = 'ACTIVO';
+
+        let options = {
+            method: 'POST',
+            uri: 'https://plataformadigitalnacional.org/api/contactos_conexion',
+            headers: {
+                'Prefer': 'return = representation',
+                'Content-Type': 'application/json'
+            },
+            body: this.state.registro,
+            json: true
+        };
+
+        rp(options)
+            .then(parseBody => {
+                this.setState({
+                    registro: nuevo,
+                    flag_msj: true,
+                    tituloMensaje: 'Aviso',
+                    mensaje_modal: 'El contacto se ha registrado correctamente',
+                    flag_send: false,
+                }, () => {
+                    if (this.props.updateView) this.props.updateView();
+                });
+                return true;
+            })
+            .catch(err => {
+                let mensaje = '';
+                switch (err.error.code) {
+                    case '23505':
+                        mensaje = 'Correo electrónico ya registrado en la institución';
+                        break;
+                    default :
+                        mensaje = 'Error al insertar registro';
+                        break;
+                }
+                this.setState({
+                    flag_msj_error: true,
+                    mensaje_error_modal: mensaje
+                })
+            });
+        return null;
+    };
+
+    saveChanges = () => {
+        let params = {};
+        let registro = this.state.registro;
+        params.correo = 'eq.' + this.state.correoOriginal;
+
+        let options = {
+            method: 'PATCH',
+            uri: 'https://plataformadigitalnacional.org/api/contactos_conexion',
+            qs: params,
+            headers: {
+                'Prefer': 'return = representation',
+                'Content-Type': 'application/json'
+            },
+            body: {
+                'nombre': registro.nombre,
+                'apellido1': registro.apellido1,
+                'apellido2': registro.apellido2,
+                'cargo': registro.cargo,
+                'correo': registro.correo,
+                'telefono_personal': registro.telefono_personal,
+                'telefono_oficina': registro.telefono_oficina,
+                'extension': registro.extension
+            },
+            json: true
+        };
+        rp(options)
+            .then(data => {
+                this.setState({
+                    tituloMensaje: 'Aviso',
+                    mensaje_modal: 'Los cambios se han realizado correctamente',
+                    flag_msj: true
+                });
+                return true;
+            })
+            .catch(err => {
+                console.log("Error:", err);
+                let mensaje = '';
+                switch (err.error.code) {
+                    case '23505':
+                        mensaje = 'Correo electrónico ya registrado en la institución';
+                        break;
+                    default :
+                        mensaje = 'Error al actualizar registro';
+                        break;
+                }
+                this.setState({
+                    flag_msj_error: true,
+                    mensaje_error_modal: mensaje
+                });
+                return true;
+            });
+    };
+
+    handleCloseMsj = () => {
+        this.setState({flag_msj: false}, () => {
+            if(this.props.closeContainer) this.props.closeContainer();
+        });
+    };
+    handleCloseMsjError = () => {
+        this.setState({flag_msj_error: false});
     };
 
     render() {
@@ -109,6 +203,10 @@ class FormularioContacto extends React.Component {
 
         return (
             <div>
+                <Mensaje mensaje={this.state.mensaje_modal} titulo={this.state.tituloMensaje}
+                         open={this.state.flag_msj} handleClose={this.handleCloseMsj}/>
+                <MensajeError mensaje={this.state.mensaje_error_modal} titulo={'Error'}
+                              open={this.state.flag_msj_error} handleClose={this.handleCloseMsjError}/>
                 <Grid container spacing={32}>
                     <Grid item xs={12}>
                         <Typography variant={"h6"} className={classes.title}>
@@ -117,8 +215,10 @@ class FormularioContacto extends React.Component {
                     </Grid>
                     <Grid item xs={12}>
                         <Typography className={classes.text} variant={"subtitle2"}>
-                            Los contactos proporcionados serán de ayuda y soporte técnico para mantener la conexión con la PDN.<br/>
-                            Para registrar un nuevo contacto llena los campos solicitados y da clic en el botón "Agregar"
+                            Los contactos proporcionados serán de ayuda y soporte técnico para mantener la conexión con
+                            la PDN.<br/>
+                            Para registrar un nuevo contacto llena los campos solicitados y da clic en el botón
+                            "Agregar"
                         </Typography>
                     </Grid>
                     <Grid item xs={12} md={3}>
@@ -128,47 +228,14 @@ class FormularioContacto extends React.Component {
                                    onChange={this.handleChange('cargo')}
                         />
                     </Grid>
-                    <Grid item xs={12} md={3}>
-                        <FormControl className={classes.formControl}>
-                            <InputLabel htmlFor="age-simple">Dependencia</InputLabel>
-                            <Select
-                                value={this.state.registro.dependencia}
-                                onChange={this.handleChange('dependencia')}
-                                inputProps={{
-                                    name: 'dependencia',
-                                    id: 'dependencia-simple',
-                                    required: true
-                                }}
-
-                            >
-                                <MenuItem value='OTRA' key={-1}>
-                                    <em>OTRA</em>
-                                </MenuItem>
-                                {
-                                    this.state.dependencias.map(item => {
-                                        return (<MenuItem value={item.value} key={item.id}>{item.label}</MenuItem>)
-                                    })
-                                }
-
-                            </Select>
-                        </FormControl>
+                    <Grid item xs={12} md={6}>
+                        <TextField className={classes.formControl} required={true}
+                                   id={'dependencia'}
+                                   label={'Institución'} value={this.state.registro.dependencia}
+                                   disabled={true}
+                        />
                     </Grid>
-                    {
-                        this.state.registro.dependencia === 'OTRA' &&
-                        <Grid item xs={12} md={6}>
-                            <TextField className={classes.formControl}
-                                       id={'dependencia'}
-                                       label={'Dependencia'} value={this.state.registro.otra_dependencia}
-                                       onChange={this.handleChange('otra_dependencia')}
-                            />
-                        </Grid>
-                    }
-                    {
-                        this.state.registro.dependencia !== 'OTRA' &&
-                        <Grid item xs={12} md={6}/>
-
-                    }
-
+                    <Grid item md={3}></Grid>
                     <Grid item xs={12} md={3}>
                         <TextField className={classes.formControl} required={true}
                                    id={'nombre'}
@@ -228,12 +295,22 @@ class FormularioContacto extends React.Component {
                     </Grid>
                     <Grid item xs={11}/>
                     <Grid item xs={1}>
+                        {!this.props.contacto &&
                         <Tooltip title={'Agregar'}>
                             <Fab color="primary" aria-label="Add" className={classes.fab}
                                  onClick={() => this.handleClick()}>
                                 <AddIcon/>
                             </Fab>
                         </Tooltip>
+                        }
+                        {this.props.contacto &&
+                        <Tooltip title={'Guardar cambios'}>
+                            <Fab color="primary" aria-label="Add" className={classes.fab}
+                                 onClick={() => this.saveChanges()}>
+                                <Save/>
+                            </Fab>
+                        </Tooltip>
+                        }
                     </Grid>
                 </Grid>
 

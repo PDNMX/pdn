@@ -6,14 +6,15 @@ import TableRow from "@material-ui/core/TableRow/TableRow";
 import TableCell from "@material-ui/core/TableCell/TableCell";
 import {withStyles} from '@material-ui/core/styles';
 import Typography from "@material-ui/core/Typography/Typography";
-import ArchiveIcon from '@material-ui/icons/Archive';
 import Tooltip from "@material-ui/core/Tooltip/Tooltip";
 import rp from "request-promise";
-import AcceptIcon from '@material-ui/icons/AssignmentTurnedIn';
-/*import DetalleSolicitud from './DetalleSolicitud';*/
+import HowToReg from '@material-ui/icons/HowToReg';
+import ReportOff from '@material-ui/icons/ReportOff';
+import Create from '@material-ui/icons/Create';
 import axios from "axios";
 import TablePagination from "@material-ui/core/TablePagination/TablePagination";
 import Mensaje from "../../Mensajes/Mensaje";
+import EditarContacto from './EditarContacto';
 
 let counter = 0;
 let createData = (item) => {
@@ -30,7 +31,7 @@ let createData = (item) => {
         telefono_personal: item.telefono_personal ? item.telefono_personal : leyenda,
         telefono_oficina: item.telefono_oficina ? item.telefono_oficina : leyenda,
         extension: item.extension ? item.extension : leyenda,
-        fecha_solicitud: item.fecha_solicitud ? item.fecha_solicitud.substring(0, 10) : leyenda,
+        fecha_alta: item.fecha_alta ? item.fecha_alta.substring(0, 10) : leyenda,
         estatus: item.estatus ? item.estatus : leyenda,
         id_oficio: item.id_oficio ? item.id_oficio : leyenda
     };
@@ -176,29 +177,45 @@ class TablaContactos extends React.Component {
             totalRows: 0,
             data: [],
             filterData: [],
-            oficio: null,
             flag_msj: false,
+            controlDetalle: false,
+            mensaje: '',
+            tituloMensaje: '',
         };
     };
+
+    componentDidMount() {
+        let aux = JSON.parse(localStorage.getItem("sesion"));
+        this.setState({
+            currentUser: aux.currentUser,
+        }, () => {
+            this.getContactos('FIELD_FILTER');
+        });
+        return null;
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.update !== prevProps.update) {
+            return this.getContactos('FIELD_FILTER');
+        }
+        return true;
+    }
 
     handleClose = () => {
         this.setState({open: false});
     };
 
-    componentDidMount() {
-        this.getSolicitudes('FIELD_FILTER');
-    }
-
-    getSolicitudes = (typeSearch) => {
+    getContactos = (typeSearch) => {
         let params = {};
-
         (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? params.limit = this.state.rowsPerPage : null;
         (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? params.offset = (this.state.rowsPerPage * this.state.page) : null;
+        params.dependencia = 'eq.' + this.state.currentUser.dependencia;
         (typeSearch === 'FIELD_FILTER') ? this.getTotalRows(params) : null;
 
 
+
         let options = {
-            uri: 'https://plataformadigitalnacional.org/api/solicitudes_conexion',
+            uri: 'https://plataformadigitalnacional.org/api/contactos_conexion',
             json: true,
             qs: params
         };
@@ -207,7 +224,6 @@ class TablaContactos extends React.Component {
                 let dataAux = data.map(item => {
                     return createData(item);
                 });
-
                 this.setState({
                     filterData: dataAux,
                     loading: false
@@ -218,38 +234,42 @@ class TablaContactos extends React.Component {
                 this.setState({loading: false});
                 alert("_No se pudó obtener la información");
                 console.log(err);
+                return true;
             });
-
     };
 
     getTotalRows = (params) => {
         let options = {
-            uri: 'https://plataformadigitalnacional.org/api/solicitudes_conexion?select=count=eq.exact',
+            uri: 'https://plataformadigitalnacional.org/api/contactos_conexion?select=count=eq.exact',
             json: true,
             qs: params
         };
         rp(options)
             .then(data => {
                 this.setState({totalRows: data[0].count, loading: false});
+                return true;
             }).catch(err => {
             this.setState({loading: false});
             alert("_No se pudó obtener la información");
             console.log(err);
+            return true;
         });
     };
 
     handleChangeRowsPerPage = event => {
         this.setState({rowsPerPage: event.target.value, page: 0}, () => {
-            this.getSolicitudes('FIELD_FILTER');
+            this.getContactos('FIELD_FILTER');
         });
+        return null;
     };
 
     handleChangePage = (event, page) => {
         this.setState({page}, () => {
-            this.getSolicitudes('CHANGE_PAGE');
+            this.getContactos('CHANGE_PAGE');
         });
-
+        return null;
     };
+
     handleRequestSort = (event, property) => {
         const orderBy = property;
         let order = 'desc';
@@ -257,13 +277,16 @@ class TablaContactos extends React.Component {
             order = 'asc';
         }
         this.setState({order, orderBy});
+        return null;
     };
+
     handleSelectAllClick = (event, checked) => {
         if (checked) {
             this.setState(state => ({selected: state.data.map(n => n.id)}));
             return;
         }
         this.setState({selected: []});
+        return null;
     };
 
     isSelected = id => this.state.selected.indexOf(id) !== -1;
@@ -294,39 +317,46 @@ class TablaContactos extends React.Component {
                 console.log("err:", err);
             })
     };
+
     handleCloseMsj = () => {
         this.setState({flag_msj: false});
     };
 
-    acceptSolicitud = (n) => {
-        if (n.estatus !== 'ALTA') {
-            let params = {};
-            params.correo = 'eq.' + n.correo;
+    handleClose = () => {
+        this.setState({open: false});
+        if (this.props.updateView) this.props.updateView();
+    };
 
-            let options = {
-                method: 'PATCH',
-                uri: 'https://plataformadigitalnacional.org/api/solicitudes',
-                qs: params,
-                headers: {
-                    'Prefer': 'return = representation',
-                    'Content-Type': 'application/json'
-                },
-                body: {'estatus': 'ALTA'},
-                json: true
-            };
-            rp(options)
-                .then(data => {
-                    this.setState({
-                        flag_msj: true
-                    }, () => {
-                        this.getSolicitudes('FIELD_FILTER');
-                    })
-                })
-                .catch(err => {
-                    alert("_No se pudó completar la operación");
-                    console.log(err);
+    changeEstatus = (n) => {
+        let params = {};
+        params.correo = 'eq.' + n.correo;
+
+        let options = {
+            method: 'PATCH',
+            uri: 'https://plataformadigitalnacional.org/api/contactos_conexion',
+            qs: params,
+            headers: {
+                'Prefer': 'return = representation',
+                'Content-Type': 'application/json'
+            },
+            body: {'estatus': n.estatus === 'ACTIVO' ? 'INACTIVO' : 'ACTIVO'},
+            json: true
+        };
+        rp(options)
+            .then(data => {
+                this.setState({
+                    tituloMensaje: 'Cambio realizado correctamente',
+                    mensaje: 'El estatus ha cambiado',
+                    flag_msj: true
+                }, () => {
+                    this.getContactos('FIELD_FILTER');
                 });
-        }
+                return true;
+            })
+            .catch(err => {
+                alert("_No se pudó completar la operación");
+                console.log(err);
+            });
     };
 
     render() {
@@ -335,9 +365,10 @@ class TablaContactos extends React.Component {
         let index = 0;
         return (
             <div>
-                <Mensaje mensaje={'La solicitud ha sido aceptada'} titulo={'Solicitud aceptada'}
+                <Mensaje mensaje={this.state.mensaje} titulo={this.state.tituloMensaje}
                          open={this.state.flag_msj} handleClose={this.handleCloseMsj}/>
-
+                <EditarContacto control={this.state.open} contacto={this.state.elementoSeleccionado}
+                                handleClose={this.handleClose}/>
                 <Typography variant={"h6"} className={classes.text}>Contactos registrados</Typography>
                 <Table className={classes.table} aria-describedby="spinnerLoading"
                        aria-busy={this.state.loading} aria-labelledby="tableTitle">
@@ -362,26 +393,35 @@ class TablaContactos extends React.Component {
                                             tabIndex={-1}
                                             key={index++}
                                         >
-                                            <TableCell
-                                                onClick={(event) => this.handleClick(event, n)}>{n.nombre}</TableCell>
-                                            <TableCell
-                                                onClick={(event) => this.handleClick(event, n)}>{n.apellido1}</TableCell>
-                                            <TableCell
-                                                onClick={(event) => this.handleClick(event, n)}>{n.apellido2}</TableCell>
-                                            <TableCell
-                                                onClick={(event) => this.handleClick(event, n)}>{n.cargo}</TableCell>
-                                            <TableCell
-                                                onClick={(event) => this.handleClick(event, n)}>{n.dependencia}</TableCell>
-                                            <TableCell
-                                                onClick={(event) => this.handleClick(event, n)}>{n.fecha_solicitud}</TableCell>
-                                            <TableCell
-                                                onClick={(event) => this.handleClick(event, n)}>{n.estatus}</TableCell>
+                                            <TableCell>{n.nombre}</TableCell>
+                                            <TableCell>{n.apellido1}</TableCell>
+                                            <TableCell>{n.apellido2}</TableCell>
+                                            <TableCell>{n.cargo}</TableCell>
+                                            <TableCell>{n.correo}</TableCell>
+                                            <TableCell>{n.telefono_personal}</TableCell>
+                                            <TableCell>{n.telefono_oficina}</TableCell>
+                                            <TableCell>{n.extension}</TableCell>
+                                            <TableCell>{n.fecha_alta}</TableCell>
+                                            <TableCell>{n.estatus}</TableCell>
                                             <TableCell>
-                                                <Tooltip title={"Aceptar solicitud"}>
-                                                    <AcceptIcon onClick={() => this.acceptSolicitud(n)}
-                                                                color={n.estatus === 'ALTA' ? 'disabled' : 'primary'}/>
+                                                {
+                                                    n.estatus === 'ACTIVO' &&
+                                                    <Tooltip title={'Desactivar'}>
+                                                        <ReportOff color={"error"}
+                                                                   onClick={() => this.changeEstatus(n)}/>
+                                                    </Tooltip>
+                                                }
+                                                {
+                                                    n.estatus === 'INACTIVO' &&
+                                                    <Tooltip title={'ACTIVAR'}>
+                                                        <HowToReg color={"primary"}
+                                                                  onClick={() => this.changeEstatus(n)}/>
+                                                    </Tooltip>
+                                                }
+                                                <Tooltip title={'EDITAR'}>
+                                                    <Create color={"secondary"}
+                                                            onClick={(event) => this.handleClick(event, n)}/>
                                                 </Tooltip>
-
                                             </TableCell>
                                         </TableRow>
                                     );
