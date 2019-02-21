@@ -114,7 +114,7 @@ class Terminos extends React.Component{
                                 <ul>
                                     <li>
                                         <Typography>
-                                            Nombre del conjunto de datos”, [Siglas de la institución publicante]; Liga de internet de los datos descargados, y la fecha de la de consulta en formato numérico [AAAA-MM-DD], puestos a disposición de tal manera que sean fácilmente accesibles para los usuarios, y en la forma que mejor se adecue al funcionamiento del bien o servicio;
+                                            “Nombre del conjunto de datos”, [Siglas de la institución publicante]; Liga de internet de los datos descargados, y la fecha de la de consulta en formato numérico [AAAA-MM-DD], puestos a disposición de tal manera que sean fácilmente accesibles para los usuarios, y en la forma que mejor se adecue al funcionamiento del bien o servicio;
                                         </Typography>
                                     </li>
                                 </ul>
