@@ -13,7 +13,7 @@ import ReactGA from 'react-ga';
 
 const theme = createMuiTheme({
     typography:{
-        fontFamily: ["Noto Sans SC", "sans-serif"].join(',')
+        fontFamily: ["Noto Sans SC", '"Helvetica"', '"Arial"', '"sans-serif"'].join(',')
     },
     palette: {
         primary: {

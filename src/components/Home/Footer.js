@@ -2,10 +2,10 @@ import React from 'react';
 import {withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import LogoSesna from '../../assets/Logo-SESNA.png';
-//import LibreUso from '../../assets/libre-uso.png';
+import LibreUso from '../../assets/libre-uso.png';
 import Typography from "@material-ui/core/Typography";
-//import LogoPDN from '../../assets/PDN-sintexto-blue.png';
-//import OK from '../../assets/ok_80x15_blue.png';
+import LogoPDN from '../../assets/PDN-sintexto-blue.png';
+import OK from '../../assets/ok_80x15_blue.png';
 import {Link} from 'react-router-dom';
 
 const styles = theme => ({
@@ -16,18 +16,16 @@ const styles = theme => ({
         background: '#666666',
         minHeight: 150,
 
-        paddingTop: 30,
-        paddingBottom: 30
-    },
-    parteBlanca:{
-        paddingTop: 20,
-        paddingBottom: 10
+        paddingTop: '94px',
+        paddingBottom: '64px'
     },
     logo: {
-        maxWidth: 100
+        width: 115,
+        paddingTop: 50,
+        paddingBottom: 45
     },
     libreUso: {
-        maxWidth: 200,
+        maxWidth: 140,
         paddingTop: 40,
         paddingBottom: 20
     },
@@ -44,6 +42,10 @@ const styles = theme => ({
     logoSESNA:{
         paddingTop: 15,
         maxWidth: 150
+    },
+    logoPDN:{
+        paddingTop: 15,
+        maxWidth: 85
     }
 });
 
@@ -58,18 +60,23 @@ class Footer extends React.Component{
 
                         <Grid container spacing={24}>
                             <Grid item xs={12} md={6}>
-                                <a href="https://www.gob.mx/sesna">
+                                {/*<a href="https://www.gob.mx/sesna">
                                     <img alt="SESNA" src={LogoSesna} className={classes.logoSESNA}/>
-                                </a>
-                                {/*
+                                </a>*/}
+
                                 <img alt="PDN" src={LogoPDN} className={classes.logoPDN}/>
 
-                                <Typography className={classes.grayText}><b>Plataforma Digital Nacional</b></Typography>
-                                <Typography className={classes.grayText}>Inteligencia de Datos Anticorrupción</Typography>
+                                <Typography className={classes.grayText} paragraph>Plataforma Digital Nacional</Typography>
+                                <p className={classes.grayText}  style={{
+                                    fontSize: '12px',
+                                    fontStyle: 'normal',
+                                    fontWeight: '400',
+                                    fontFamily: 'Noto Sans SC'
+                                }} paragraph>Inteligencia de Datos Anticorrupción</p>
                                 <br/>
                                 <img alt="Libre Uso MX " src ={LibreUso} className={classes.libreUso}/>
                                 <br/>
-                                <img alt="Open Knowledge" src={OK}/>*/}
+                                <img alt="Open Knowledge" src={OK}/>
                             </Grid>
                             <Grid item xs={6} md={3}>
                                 <Typography className={classes.blueText}><b>Sistemas</b></Typography>
@@ -99,13 +106,13 @@ class Footer extends React.Component{
                     </Grid>
                 </Grid>
 
-                {/*
-                <Grid container spacing={0} justify='center' className={classes.parteBlanca}>
+
+                <Grid container spacing={0} justify='center'>
                     <Grid item xs={12} align='center'>
                         <img alt="SESNA" src={LogoSesna} className={classes.logo}/>
                     </Grid>
                 </Grid>
-                */}
+
             </div>
         )
     }
