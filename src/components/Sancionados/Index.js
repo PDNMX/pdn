@@ -125,7 +125,7 @@ class Index extends React.Component {
             <div className={classes.root}>
                 <Header/>
                 <div className={classes.banner}>
-                    <img className={classes.bgImg} src={imgBanner}/>
+                    <img alt="PDN" className={classes.bgImg} src={imgBanner}/>
                     <Grid container justify={"center"} spacing={0}>
                         <Grid item xs={12} className={classes.section} style={{paddingTop: 150}}>
                             <Grid container spacing={24}>

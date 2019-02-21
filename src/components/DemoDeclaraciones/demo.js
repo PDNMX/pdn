@@ -2,7 +2,6 @@ import React from 'react';
 import {withStyles} from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
-import Footer from '../Footer/Footer';
 import Header from "./Header";
 import Grid from "@material-ui/core/Grid/Grid";
 import TextField from "@material-ui/core/TextField/TextField";
@@ -351,7 +350,6 @@ class DemoDeclaraciones extends React.Component {
 
                     </div>
                 </div>
-                <Footer/>
             </div>
         );
     }

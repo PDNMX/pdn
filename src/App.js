@@ -9,9 +9,12 @@ import LoginPDN from "./components/Inicio/LoginPDN";
 import {connect} from 'react-redux';
 import ScrollToTop from './ScrollToTop';
 import ReactGA from 'react-ga';
-import MensajeError from './components/Mensajes/MensajeError';
+//import MensajeError from './components/Mensajes/MensajeError';
 
 const theme = createMuiTheme({
+    typography:{
+        fontFamily: ["Noto Sans SC", '"Helvetica"', '"Arial"', '"sans-serif"'].join(',')
+    },
     palette: {
         primary: {
             main: '#89d4f2',
