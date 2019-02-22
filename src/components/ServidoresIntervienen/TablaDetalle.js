@@ -4,13 +4,14 @@ import {withStyles} from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
+import TableFooter from '@material-ui/core/TableFooter';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+//import Paper from '@material-ui/core/Paper';
 import rp from "request-promise";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import BajarCSV from "../Tablas/BajarCSV";
-import DetalleParticular from "./DetalleParticular";
+//import DetalleParticular from "./DetalleParticular";
 import Grid from "@material-ui/core/Grid/Grid";
 import EnhancedTableHead from '../Tablas/EnhancedTableHead';
 import Typography from "@material-ui/core/Typography/Typography";
@@ -145,10 +146,6 @@ const styles = theme => ({
     },
     table: {
         tableLayout: 'fixed',
-    },
-    tablePagination: {
-        overflowX: 'auto',
-        fontSize: '0.75rem'
     },
     gridTable: {
         marginBottom: '27px'
@@ -361,6 +358,31 @@ class EnhancedTable extends React.Component {
 
                                     </TableBody>
 
+                                    <TableFooter>
+                                        <TableRow>
+
+                                            <TablePagination
+                                                colSpan={4}
+                                                count={totalRows}
+                                                rowsPerPage={rowsPerPage}
+                                                page={page}
+                                                backIconButtonProps={{
+                                                    'aria-label': 'Previous Page',
+                                                }}
+                                                nextIconButtonProps={{
+                                                    'aria-label': 'Next Page',
+                                                }}
+                                                onChangePage={this.handleChangePage}
+                                                onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                                                labelRowsPerPage='Registros por página'
+                                                labelDisplayedRows={({from, to, count}) => {
+                                                    return `${from}-${to} de ${count}`;
+                                                }}
+                                            />
+
+                                        </TableRow>
+                                    </TableFooter>
+
                                 </Table>
                             </Grid>
                         </Grid>
@@ -371,27 +393,7 @@ class EnhancedTable extends React.Component {
                                           fileName={'Detalle'}/>
                             </Grid>
                             <Grid item md={3} xs={12}/>
-                            <Grid item md={6} xs={12}>
-                                <TablePagination
-                                    className={classes.tablePagination}
-                                    component="div"
-                                    count={totalRows}
-                                    rowsPerPage={rowsPerPage}
-                                    page={page}
-                                    backIconButtonProps={{
-                                        'aria-label': 'Previous Page',
-                                    }}
-                                    nextIconButtonProps={{
-                                        'aria-label': 'Next Page',
-                                    }}
-                                    onChangePage={this.handleChangePage}
-                                    onChangeRowsPerPage={this.handleChangeRowsPerPage}
-                                    labelRowsPerPage='Registros por página'
-                                    labelDisplayedRows={({from, to, count}) => {
-                                        return `${from}-${to} de ${count}`;
-                                    }}
-                                />
-                            </Grid>
+                            <Grid item md={6} xs={12}/>
                             <Grid item xs={12}>
                                 <Typography variant={"caption"} style={{fontStyle:'italic'}}>Fuente: https://reniresp.funcionpublica.gob.mx/ppcapf/consulta/informacion.jsf</Typography>
                             </Grid>

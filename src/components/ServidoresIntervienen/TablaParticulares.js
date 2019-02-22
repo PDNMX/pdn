@@ -4,6 +4,7 @@ import {withStyles} from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
+import TableFooter from '@material-ui/core/TableFooter';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -421,6 +422,31 @@ class EnhancedTable extends React.Component {
                                         )}
                                     </TableBody>
 
+                                    <TableFooter>
+                                        <TableRow>
+
+                                            <TablePagination
+                                                colSpan={4}
+                                                count={totalRows}
+                                                rowsPerPage={rowsPerPage}
+                                                page={page}
+                                                backIconButtonProps={{
+                                                    'aria-label': 'Previous Page',
+                                                }}
+                                                nextIconButtonProps={{
+                                                    'aria-label': 'Next Page',
+                                                }}
+                                                onChangePage={this.handleChangePage}
+                                                onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                                                labelRowsPerPage='Registros por página'
+                                                labelDisplayedRows={({from, to, count}) => {
+                                                    return `${from}-${to} de ${count}`;
+                                                }}
+                                            />
+
+                                        </TableRow>
+                                    </TableFooter>
+
                                 </Table>
                             </Grid>
                         </Grid>
@@ -436,27 +462,7 @@ class EnhancedTable extends React.Component {
                                           columnas={columnData} fnSearch={this.handleSearchAPI}
                                           fileName={'Particulares inhabilitados'}/>
                             </Grid>
-                            <Grid item md={6} xs={12}>
-                                <TablePagination
-                                    className={classes.tablePagination}
-                                    component="div"
-                                    count={totalRows}
-                                    rowsPerPage={rowsPerPage}
-                                    page={page}
-                                    backIconButtonProps={{
-                                        'aria-label': 'Previous Page',
-                                    }}
-                                    nextIconButtonProps={{
-                                        'aria-label': 'Next Page',
-                                    }}
-                                    onChangePage={this.handleChangePage}
-                                    onChangeRowsPerPage={this.handleChangeRowsPerPage}
-                                    labelRowsPerPage='Registros por página'
-                                    labelDisplayedRows={({from, to, count}) => {
-                                        return `${from}-${to} de ${count}`;
-                                    }}
-                                />
-                            </Grid>
+
                             <Grid item xs={12}>
                                 <Typography variant={"caption"} style={{fontStyle:'italic'}}>Fuente: https://datos.gob.mx/busca/dataset/proveedores-y-contratistas-sancionados</Typography>
                             </Grid>

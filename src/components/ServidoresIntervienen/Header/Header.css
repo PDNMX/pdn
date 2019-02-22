@@ -1,0 +1,22 @@
+.breadcrumb {
+    background: #f2f2f2;
+    padding: 15px 0 18px; }
+.breadcrumb ul {
+    line-height: 12px;
+    margin: 0; }
+.breadcrumb li {
+    font-size: 12px;
+    display: inline-block;
+    list-style: none;
+    margin-right: 5px; }
+.breadcrumb li:after {
+    content: ">";
+    margin-left: 5px; }
+.breadcrumb li:last-child {
+    color: #999999; }
+.breadcrumb li:last-child:after {
+    content: ""; }
+.breadcrumb li a {
+    color: #666666;
+    border-bottom: 1px dotted #34b3eb;
+}

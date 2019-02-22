@@ -203,7 +203,31 @@ class BusquedaServidor extends React.Component {
         let IconComponent= <i class='baseline-keyboard_arrow_down icon-image-preview'/>;
 
         return (
-            <Grid container spacing={8}>
+            <Grid container spacing={0}>
+
+
+                <Grid item xs={12} md={4}>
+                    <FormControl className={classes.formControl}>
+                        <TextField
+                            id="search"
+                            label="NOMBRE DEL SERVIDOR"
+                            type="search"
+                            onChange={(e) => handleChangeCampo('nombreServidor', e)}
+                            value={nombreServidor}
+                            InputProps={{
+                                className: classes.fontLight,
+
+
+                            }}
+                            InputLabelProps = {{
+                                className: classes.fontLight,
+                                shrink : true
+                            }}
+                        />
+
+                    </FormControl>
+                </Grid>
+
                 <Grid item xs={12} md={3}>
                     <FormControl className={classes.formControl}>
                         <InputLabel shrink htmlFor="campoSelectProcedimiento"
@@ -249,32 +273,8 @@ class BusquedaServidor extends React.Component {
                         />
                     </FormControl>
                 </Grid>
-                <Grid item xs={12} md={4}>
-                    <FormControl className={classes.formControl}>
-                        <TextField
-                            id="search"
-                            label="NOMBRE DEL SERVIDOR"
-                            type="search"
-                            onChange={(e) => handleChangeCampo('nombreServidor', e)}
-                            value={nombreServidor}
-                            InputProps={{
-                                className: classes.fontLight,
-                                endAdornment:
-                                    <InputAdornment position="end">
-                                        <IconButton className={classes.fontLight}>
-                                            <Visibility/>
-                                        </IconButton>
-                                    </InputAdornment>
 
-                            }}
-                            InputLabelProps = {{
-                                className: classes.fontLight,
-                                shrink : true
-                            }}
-                        />
 
-                    </FormControl>
-                </Grid>
                 <Grid item xs={12} md={1} className={classes.centrado}>
                     <Tooltip title={'Limpiar'}>
                         <IconReplay className={classes.fontLight} onClick={this.limpiarBusqueda}/>

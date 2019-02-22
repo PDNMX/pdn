@@ -1,6 +1,6 @@
 import Home from '../components/Home/Home';
 import About from '../components/About/About';
-import Terminos from '../components/About/Terminos';
+import Terminos from '../components/Terminos/Terminos';
 import Faq from '../components/FAQ/index';
 import Datos from '../components/CatalogoDatos/Datos';
 import Sancionados from '../components/Sancionados/Index';

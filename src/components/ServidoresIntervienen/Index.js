@@ -3,7 +3,7 @@ import {withStyles} from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
 import Footer from '../Home/Footer';
-import Header from "../PDNAppBar/PDNAppBar";
+//import PDNAppBar from "../PDNAppBar/PDNAppBar";
 import TablaServidores from "./TablaServidores";
 import TablaParticulares from "./TablaParticulares";
 import Grid from "@material-ui/core/Grid/Grid";
@@ -11,7 +11,8 @@ import img1 from "../../assets/img/servidores_intervienen_contratacion.svg";
 import img2 from "../../assets/img/servidores_particulares_inhabilitados.svg";
 import img3 from "../../assets/img/servidores_visualizaciones.svg";
 import BubbleHolder_Servidores_Contrataciones from "./BubbleHolder_Servidores_Contrataciones";
-import imgBanner from '../../assets/banners/FOTO_BANNER_1.jpg';
+//import imgBanner from '../../assets/banners/FOTO_BANNER_1.jpg';
+import Header from './Header/Header';
 
 const styles = theme => ({
     root: {
@@ -58,16 +59,6 @@ const styles = theme => ({
         zIndex: 2,
         opacity: 0.2
     },
-    container: {
-        [theme.breakpoints.up('sm')]: {
-            marginLeft: '100px',
-            marginRight: '100px'
-        },
-        [theme.breakpoints.down('sm')]: {
-            marginLeft: theme.spacing.unit,
-            marginRight: theme.spacing.unit
-        }
-    },
     image: {
         paddingBottom: '24px',
         paddingTop: '28px',
@@ -103,12 +94,14 @@ const styles = theme => ({
         margin: 0,
         display: 'inline-block'
     },
+    /*
     banner: {
         height: '600px',
         zIndex: '1',
         position: 'relative',
         overflow: 'hidden',
     }
+    */
 });
 
 class Index extends React.Component {
@@ -123,12 +116,17 @@ class Index extends React.Component {
         const {classes} = this.props;
         return (
             <div className={classes.root}>
+
                 <Header/>
+
+                {/*
+                <PDNAppBar/>
+
                 <div className={classes.banner}>
                     <img className={classes.bgImg} src={imgBanner}/>
                     <Grid container justify={"center"} spacing={0}>
                         <Grid item xs={12} className={classes.section} style={{paddingTop: 150}}>
-                            <Grid container spacing={24}>
+                            <Grid container spacing={0}>
                                 <Grid item xs={12} sm={6}>
                                     <Typography variant={"h2"} className={classes.titleLight}>Servidores que intervienen
                                         en procesos de contratación</Typography>
@@ -149,6 +147,9 @@ class Index extends React.Component {
                         </Grid>
                     </Grid>
                 </div>
+                */}
+
+
 
                 <div id={"menu"} className={classes.bgContainer}>
                     <Grid container spacing={0} justify="center">
@@ -194,97 +195,33 @@ class Index extends React.Component {
                     </Grid>
 
                 </div>
-                {/*
-                 <div className={classes.bgPanelLight}>
-                    <Grid container justify={'center'} spacing={0}>
-                        <Grid item xs={12} className={classes.section}>
-                            <Grid container spacing={32} justify={'center'} className={classes.section}>
-                                <Grid item xs={12}>
-                                    {this.state.idContent === 1 &&
-                                    <Typography variant={'h6'} className={classes.title}>
-                                        Servidores que intervienen en procesos de contratación</Typography>
-                                    }
-                                    {this.state.idContent === 2 &&
-                                    <Typography variant={'h6'} className={classes.title}>Particulares
-                                        inhabilitados</Typography>
-                                    }
-                                    {this.state.idContent === 3 &&
-                                    <Typography variant={'h6'} className={classes.title}>
-                                        Visualizaciones</Typography>
-                                    }
-                                </Grid>
-                                <Grid item xs={6} style={{paddingBottom: '105px'}}>
-                                    {this.state.idContent === 1 &&
-                                    <Typography variant={"subheading"} className={classes.textPrimary}>
-                                        Consulta los nombres, institución, cargo y actividades de y adscripción
-                                        de los servidores públicos que intervengan en contrataciones y otros
-                                        actos de autoridad.
-                                    </Typography>
-                                    }
-                                    {this.state.idContent === 2 &&
-                                    <Typography variant={"subheading"} className={classes.textPrimary}>
-                                        Consulta la relación de particulares, personas físicas y morales, que se
-                                        encuentren inhabilitados para celebrar contratos con los entes públicos,
-                                        por
-                                        qué fueron inhabilitados, por cuánto tiempo y con qué monto.
-                                    </Typography>
-                                    }
-                                    {this.state.idContent === 3 &&
-                                    <Typography variant={"subheading"} className={classes.textPrimary}>
-                                        Consulta cuáles son las instituciones con el mayor número de sanciones a
-                                        particulares, y mayor monto.
-                                    </Typography>
-                                    }
-                                </Grid>
-                                <Grid item xs={6} style={{paddingBottom: '105px'}}>
-                                    {this.state.idContent === 1 &&
-                                    <Typography variant={"subheading"} align={"justify"}>
-                                        Además podrás consultar:<br/><br/>
-                                        ¿Cuáles son las dependencias con más servidores públicos facultados para
-                                        intervenir en procesos de contratación?<br/><br/>
-                                        ¿Cuál es el puesto de los funcionarios que intervienen en estos
-                                        procesos?
-                                    </Typography>
-                                    }
-                                </Grid>
-                            </Grid>
-                        </Grid>
+
+
+
+                <Grid container justify='center' spacing={0} className={classes.bgPanelTable}>
+                    <Grid item xs={12} className={classes.section}>
+                        {this.state.idContent === 1 &&
+                        <div>
+                            <TablaServidores/>
+                        </div>
+                        }
+                        {this.state.idContent === 2 &&
+                        <div>
+                            <TablaParticulares/>
+                        </div>
+                        }
+                        {this.state.idContent === 3 &&
+                        <div>
+                            <BubbleHolder_Servidores_Contrataciones/>
+                        </div>
+                        }
                     </Grid>
+                </Grid>
 
-                </div>
-                */}
-
-                <div className={classes.bgPanelTable}>
-                    <Grid container justify={'center'} spacing={0}>
-                        <Grid item xs={12} className={classes.section}>
-                            <Grid container spacing={32} justify={'center'} className={classes.section}>
-                                <Grid item xs={12}>
-                                    {this.state.idContent === 1 &&
-                                    <div>
-                                        <TablaServidores/>
-                                    </div>
-                                    }
-                                    {this.state.idContent === 2 &&
-                                    <div>
-                                        <TablaParticulares/>
-                                    </div>
-                                    }
-                                    {this.state.idContent === 3 &&
-                                    <div>
-                                        <BubbleHolder_Servidores_Contrataciones/>
-                                    </div>
-                                    }
-                                </Grid>
-                            </Grid>
-                        </Grid>
-                    </Grid>
-
-                </div>
                 <Footer/>
             </div>
         );
     }
-
 }
 
 Index.propTypes = {

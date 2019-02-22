@@ -16,6 +16,7 @@ import Grid from "@material-ui/core/Grid/Grid";
 import EnhancedTableHead from '../Tablas/EnhancedTableHead';
 import Typography from "@material-ui/core/Typography/Typography";
 import Modal from "@material-ui/core/Modal/Modal";
+import TableFooter from "@material-ui/core/TableFooter";
 let counter = 0;
 
 let createData = (item) => {
@@ -113,17 +114,10 @@ const styles = theme => ({
     container: {
         marginTop: '30px',
         marginBottom: '30px',
-    },
-    section: {
-        maxWidth: '1024px',
-        overflowX: 'auto'
+        width: '90%'
     },
     table: {
         tableLayout: 'fixed',
-    },
-    tablePagination:{
-        overflowX : 'auto',
-        fontSize :'0.75rem'
     },
     gridTable:{
         marginBottom : '27px'
@@ -342,110 +336,117 @@ class EnhancedTable extends React.Component {
 
         return (
             <div className={classes.container}>
-                <div>
-                    <EnhancedTableToolbar categoria={this.state.categoria} handleChangeCampo={this.handleChangeCampo}
-                                          nombreServidor={this.state.nombreServidor}
-                                          procedimiento={this.state.procedimiento} data={filterData}
-                                          columnas={columnData} institucion={this.state.institucion}/>
+                <EnhancedTableToolbar categoria={this.state.categoria} handleChangeCampo={this.handleChangeCampo}
+                                      nombreServidor={this.state.nombreServidor}
+                                      procedimiento={this.state.procedimiento} data={filterData}
+                                      columnas={columnData} institucion={this.state.institucion}/>
 
-                    <DetalleServidor handleClose={this.handleClose} servidor={this.state.elementoSeleccionado}
-                                     control={this.state.open}/>
-                    <Grid container justify={'center'} spacing={0} className={classes.gridTable}>
-                        <Grid item xs={12} >
-                            {
-                                this.state.loading &&
-                                <Modal
-                                    open={this.state.loading}
-                                    disableAutoFocus={true}
-                                >
-                                    <CircularProgress className={classes.progress} id="spinnerLoading" size={200}/>
-                                </Modal>
-
-                            }
-                            <Typography variant={"h6"} className={classes.desc}>Pulsa sobre el registro para ver su detalle<br/></Typography>
-
-                            <Table aria-describedby="spinnerLoading" id={'tableServidores'}
-                                   aria-busy={this.state.loading} aria-labelledby="tableTitle"
-                                   className={classes.table}>
-                                <EnhancedTableHead
-                                    numSelected={selected.length}
-                                    order={order}
-                                    orderBy={orderBy}
-                                    onSelectAllClick={this.handleSelectAllClick}
-                                    onRequestSort={this.handleRequestSort}
-                                    rowCount={data.length}
-                                    columnData={columnData}
-                                />
-                                <TableBody>
-                                    {filterData
-                                        .sort(getSorting(order, orderBy))
-                                        .map(n => {
-                                            const isSelected = this.isSelected(n.id);
-                                            return (
-                                                <TableRow
-                                                    hover
-                                                    onClick={event => this.handleClick(event, n)}
-                                                    role="checkbox"
-                                                    aria-checked={isSelected}
-                                                    tabIndex={-1}
-                                                    key={n.id}
-                                                    selected={isSelected}
-                                                >
-                                                    <TableCell component="th" scope="row"
-                                                               padding="default">{n.servidor}</TableCell>
-                                                    <TableCell>{n.institucion}</TableCell>
-                                                    <TableCell>{n.puesto}</TableCell>
-                                                    <TableCell>{n.tipoArea}</TableCell>
-                                                </TableRow>
-                                            );
-                                        })}
-                                    {emptyRows > 0 && (
-                                        <TableRow style={{height: 49 * emptyRows}}>
-                                            <TableCell colSpan={4}/>
-                                        </TableRow>
-                                    )}
-
-                                </TableBody>
-                            </Table>
-                        </Grid>
-                    </Grid>
+                <DetalleServidor handleClose={this.handleClose} servidor={this.state.elementoSeleccionado}
+                                 control={this.state.open}/>
 
 
-                    <Grid container>
-                        <Grid item md={3} xs={12}>
-                            <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data} filtrado={false}
-                                      columnas={columnData} fnSearch={this.handleSearchAPI} fileName={'ServidoresAll'}/>
-                        </Grid>
-                        <Grid item md={3} xs={12}>
-                            <BajarCSV innerRef={comp => this.child = comp} data={filterDataAll} filtrado={true}
-                                      columnas={columnData} fnSearch={this.handleSearchAPI} fileName={'ServidoresFilter'}/>
-                        </Grid>
-                        <Grid item md={6} xs={12}>
-                            <TablePagination
-                                className={classes.tablePagination}
-                                component="div"
-                                count={totalRows}
-                                rowsPerPage={rowsPerPage}
-                                page={page}
-                                backIconButtonProps={{
-                                    'aria-label': 'Previous Page',
-                                }}
-                                nextIconButtonProps={{
-                                    'aria-label': 'Next Page',
-                                }}
-                                onChangePage={this.handleChangePage}
-                                onChangeRowsPerPage={this.handleChangeRowsPerPage}
-                                labelRowsPerPage='Registros por página'
-                                labelDisplayedRows={({from, to, count}) => {
-                                    return `${from}-${to} de ${count}`;
-                                }}
+                <Grid container justify='center' spacing={0} className={classes.gridTable}>
+                    <Grid item xs={12} >
+
+                        {
+                            this.state.loading &&
+                            <Modal
+                                open={this.state.loading}
+                                disableAutoFocus={true}
+                            >
+                                <CircularProgress className={classes.progress} id="spinnerLoading" size={200}/>
+                            </Modal>
+
+                        }
+                        <Typography variant={"h6"} className={classes.desc}>Pulsa sobre el registro para ver su detalle<br/></Typography>
+
+                        <Table aria-describedby="spinnerLoading" id={'tableServidores'}
+                               aria-busy={this.state.loading} aria-labelledby="tableTitle"
+                               className={classes.table}>
+                            <EnhancedTableHead
+                                numSelected={selected.length}
+                                order={order}
+                                orderBy={orderBy}
+                                onSelectAllClick={this.handleSelectAllClick}
+                                onRequestSort={this.handleRequestSort}
+                                rowCount={data.length}
+                                columnData={columnData}
                             />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <Typography variant={"caption"} style={{fontStyle:'italic'}}>Fuente: https://reniresp.funcionpublica.gob.mx/ppcapf/consulta/informacion.jsf</Typography>
-                        </Grid>
+                            <TableBody>
+                                {filterData
+                                    .sort(getSorting(order, orderBy))
+                                    .map(n => {
+                                        const isSelected = this.isSelected(n.id);
+                                        return (
+                                            <TableRow
+                                                hover
+                                                onClick={event => this.handleClick(event, n)}
+                                                role="checkbox"
+                                                aria-checked={isSelected}
+                                                tabIndex={-1}
+                                                key={n.id}
+                                                selected={isSelected}
+                                            >
+                                                <TableCell component="th" scope="row"
+                                                           padding="default">{n.servidor}</TableCell>
+                                                <TableCell>{n.institucion}</TableCell>
+                                                <TableCell>{n.puesto}</TableCell>
+                                                <TableCell>{n.tipoArea}</TableCell>
+                                            </TableRow>
+                                        );
+                                    })}
+                                {emptyRows > 0 && (
+                                    <TableRow style={{height: 49 * emptyRows}}>
+                                        <TableCell colSpan={4}/>
+                                    </TableRow>
+                                )}
+
+                            </TableBody>
+
+                            <TableFooter>
+                                <TableRow>
+                                    <TablePagination
+                                        colSpan={4}
+                                        count={totalRows}
+                                        rowsPerPage={rowsPerPage}
+                                        page={page}
+                                        backIconButtonProps={{
+                                            'aria-label': 'Previous Page',
+                                        }}
+                                        nextIconButtonProps={{
+                                            'aria-label': 'Next Page',
+                                        }}
+                                        onChangePage={this.handleChangePage}
+                                        onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                                        labelRowsPerPage='Registros por página'
+                                        labelDisplayedRows={({from, to, count}) => {
+                                            return `${from}-${to} de ${count}`;
+                                        }}
+                                    />
+                                </TableRow>
+                            </TableFooter>
+                        </Table>
                     </Grid>
-                </div>
+                </Grid>
+
+
+                <Grid container spacing={0}>
+                    <Grid item md={6} xs={12}>
+                        <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data} filtrado={false}
+                                  columnas={columnData} fnSearch={this.handleSearchAPI} fileName={'ServidoresAll'}/>
+                    </Grid>
+                    <Grid item md={6} xs={12}>
+                        <BajarCSV innerRef={comp => this.child = comp} data={filterDataAll} filtrado={true}
+                                  columnas={columnData} fnSearch={this.handleSearchAPI} fileName={'ServidoresFilter'}/>
+                    </Grid>
+                    <Grid item md={6} xs={12}>
+
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Typography variant={"caption"} style={{fontStyle:'italic'}}>Fuente: https://reniresp.funcionpublica.gob.mx/ppcapf/consulta/informacion.jsf</Typography>
+                    </Grid>
+                </Grid>
+
             </div>
         );
     }
