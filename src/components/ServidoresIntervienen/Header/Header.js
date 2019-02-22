@@ -21,7 +21,7 @@ const style = theme => ({
             paddingBottom: '75px',
             paddingLeft: theme.spacing.unit,
             paddingRight: theme.spacing.unit,
-            zIndex: 5
+            //zIndex: 5
         },
         link: {
             textDecoration: 'none',
@@ -29,8 +29,10 @@ const style = theme => ({
         },
         item1:{
             paddingRight: theme.spacing.unit * 2,
+            paddingLeft: theme.spacing.unit * 2,
         },
         item2:{
+            paddingRight: theme.spacing.unit * 2,
             paddingLeft: theme.spacing.unit * 2
         },
         item3:{

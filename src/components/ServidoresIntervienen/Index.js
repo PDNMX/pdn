@@ -196,8 +196,7 @@ class Index extends React.Component {
 
                 </div>
 
-
-
+                
                 <Grid container justify='center' spacing={0} className={classes.bgPanelTable}>
                     <Grid item xs={12} className={classes.section}>
                         {this.state.idContent === 1 &&
@@ -217,6 +216,7 @@ class Index extends React.Component {
                         }
                     </Grid>
                 </Grid>
+
 
                 <Footer/>
             </div>
