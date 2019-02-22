@@ -1,7 +1,7 @@
 import React from 'react';
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import DownloadIcon from "../../assets/descargar.svg";
+import DownloadIcon from '@material-ui/icons/SaveAlt';
 import Button from "@material-ui/core/Button/Button";
 import classNames from 'classnames';
 import PropDataUpdatedCSVLink from '../PropDataUpdatedCSVLink';
@@ -44,7 +44,7 @@ class BajarCSV extends React.Component {
     render() {
         let {classes, data, columnas, filtrado, fnSearch, fileName} = this.props;
         let nombreArchivo = filtrado ? (fileName + " filtrados.csv") : fileName + ".csv";
-        let labelButton = filtrado ? "Descargar mi búsqueda" : "Descargar todo";
+        let labelButton = filtrado ? "Descargar mi búsqueda " : "Descargar todo ";
         let headers = columnas.map((item) => {
             return {
                 label: item.label,
@@ -60,12 +60,11 @@ class BajarCSV extends React.Component {
                             filtrado ? fnSearch('FILTER') : fnSearch('ALL');
                         }}>
                     {labelButton}
-                    <img src={DownloadIcon} alt="Visualizaciones" className={classNames(classes.rightIcon, classes.iconSmall)}
-                         />
+                    <DownloadIcon className={classNames(classes.rightIcon, classes.iconSmall)}/>
 
                 </Button>
                 <PropDataUpdatedCSVLink ref={this.cvsLink} data={data} filename={nombreArchivo} target={"_blank"}
-                         headers={headers} className={classes.linkTransparent}
+                                        headers={headers} className={classes.linkTransparent}
                 />
 
 
