@@ -15,6 +15,7 @@ import axios from "axios";
 import TablePagination from "@material-ui/core/TablePagination/TablePagination";
 import Mensaje from "../../Mensajes/Mensaje";
 import EditarContacto from './EditarContacto';
+import Grid from "@material-ui/core/Grid/Grid";
 
 let counter = 0;
 let createData = (item) => {
@@ -136,19 +137,17 @@ const styles = theme => ({
     },
     section: {
         maxWidth: '1200px',
-        overflowX: 'auto'
+        overflowX: 'scroll'
     },
     table: {
         tableLayout: 'fixed',
-        marginTop: theme.spacing.unit * 3,
-        marginBottom: theme.spacing.unit * 3,
     },
     tablePagination: {
         overflowX: 'auto',
         fontSize: '0.75rem'
     },
     gridTable: {
-        marginBottom: '27px'
+        marginBottom: theme.spacing.unit * 3,
     },
     titleTable: {
         marginBottom: '61px'
@@ -159,6 +158,9 @@ const styles = theme => ({
     },
     text: {
         color: theme.palette.secondary.dark,
+    },
+    tableContainer:{
+
     }
 });
 
@@ -370,65 +372,70 @@ class TablaContactos extends React.Component {
                 <EditarContacto control={this.state.open} contacto={this.state.elementoSeleccionado}
                                 handleClose={this.handleClose}/>
                 <Typography variant={"h6"} className={classes.text}>Contactos registrados</Typography>
-                <Table className={classes.table} aria-describedby="spinnerLoading"
-                       aria-busy={this.state.loading} aria-labelledby="tableTitle">
-                    <EnhancedTableHead
-                        numSelected={selected.length}
-                        order={order}
-                        orderBy={orderBy}
-                        onSelectAllClick={this.handleSelectAllClick}
-                        onRequestSort={this.handleRequestSort}
-                        rowCount={filterData.length}
-                        columnData={columnData}
-                        acciones={true}
-                    />
-                    <TableBody>
-                        {
-                            filterData
-                                .sort(getSorting(order, orderBy))
-                                .map(n => {
-                                    return (
-                                        <TableRow
-                                            hover
-                                            tabIndex={-1}
-                                            key={index++}
-                                        >
-                                            <TableCell>{n.nombre}</TableCell>
-                                            <TableCell>{n.apellido1}</TableCell>
-                                            <TableCell>{n.apellido2}</TableCell>
-                                            <TableCell>{n.cargo}</TableCell>
-                                            <TableCell>{n.correo}</TableCell>
-                                            <TableCell>{n.telefono_personal}</TableCell>
-                                            <TableCell>{n.telefono_oficina}</TableCell>
-                                            <TableCell>{n.extension}</TableCell>
-                                            <TableCell>{n.fecha_alta}</TableCell>
-                                            <TableCell>{n.estatus}</TableCell>
-                                            <TableCell>
-                                                {
-                                                    n.estatus === 'ACTIVO' &&
-                                                    <Tooltip title={'Desactivar'}>
-                                                        <ReportOff color={"error"}
-                                                                   onClick={() => this.changeEstatus(n)}/>
-                                                    </Tooltip>
-                                                }
-                                                {
-                                                    n.estatus === 'INACTIVO' &&
-                                                    <Tooltip title={'ACTIVAR'}>
-                                                        <HowToReg color={"primary"}
-                                                                  onClick={() => this.changeEstatus(n)}/>
-                                                    </Tooltip>
-                                                }
-                                                <Tooltip title={'EDITAR'}>
-                                                    <Create color={"secondary"}
-                                                            onClick={(event) => this.handleClick(event, n)}/>
-                                                </Tooltip>
-                                            </TableCell>
-                                        </TableRow>
-                                    );
-                                })
-                        }
-                    </TableBody>
-                </Table>
+                <Grid container justify={'center'} spacing={0} className={classes.gridTable}>
+                    <Grid item xs={12} className={classes.section}>
+                            <Table className={classes.table} aria-describedby="spinnerLoading"
+                                   aria-busy={this.state.loading} aria-labelledby="tableTitle">
+                                <EnhancedTableHead
+                                    numSelected={selected.length}
+                                    order={order}
+                                    orderBy={orderBy}
+                                    onSelectAllClick={this.handleSelectAllClick}
+                                    onRequestSort={this.handleRequestSort}
+                                    rowCount={filterData.length}
+                                    columnData={columnData}
+                                    acciones={true}
+                                />
+                                <TableBody>
+                                    {
+                                        filterData
+                                            .sort(getSorting(order, orderBy))
+                                            .map(n => {
+                                                return (
+                                                    <TableRow
+                                                        hover
+                                                        tabIndex={-1}
+                                                        key={index++}
+                                                    >
+                                                        <TableCell>{n.nombre}</TableCell>
+                                                        <TableCell>{n.apellido1}</TableCell>
+                                                        <TableCell>{n.apellido2}</TableCell>
+                                                        <TableCell>{n.cargo}</TableCell>
+                                                        <TableCell>{n.correo}</TableCell>
+                                                        <TableCell>{n.telefono_personal}</TableCell>
+                                                        <TableCell>{n.telefono_oficina}</TableCell>
+                                                        <TableCell>{n.extension}</TableCell>
+                                                        <TableCell>{n.fecha_alta}</TableCell>
+                                                        <TableCell>{n.estatus}</TableCell>
+                                                        <TableCell>
+                                                            {
+                                                                n.estatus === 'ACTIVO' &&
+                                                                <Tooltip title={'Desactivar'}>
+                                                                    <ReportOff color={"error"}
+                                                                               onClick={() => this.changeEstatus(n)}/>
+                                                                </Tooltip>
+                                                            }
+                                                            {
+                                                                n.estatus === 'INACTIVO' &&
+                                                                <Tooltip title={'ACTIVAR'}>
+                                                                    <HowToReg color={"primary"}
+                                                                              onClick={() => this.changeEstatus(n)}/>
+                                                                </Tooltip>
+                                                            }
+                                                            <Tooltip title={'EDITAR'}>
+                                                                <Create color={"secondary"}
+                                                                        onClick={(event) => this.handleClick(event, n)}/>
+                                                            </Tooltip>
+                                                        </TableCell>
+                                                    </TableRow>
+                                                );
+                                            })
+                                    }
+                                </TableBody>
+                            </Table>
+                    </Grid>
+                </Grid>
+
                 <TablePagination
                     className={classes.tablePagination}
                     component="div"

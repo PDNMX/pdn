@@ -25,7 +25,12 @@ const styles = theme => ({
         marginBottom: theme.spacing.unit * 5,
     },
     contenedor: {
-        padding: theme.spacing.unit * 5,
+        [theme.breakpoints.up('sm')]: {
+            padding: theme.spacing.unit * 5,
+        },
+        [theme.breakpoints.down('sm')]: {
+            padding: theme.spacing.unit * 1,
+        },
     },
     bgImg: {
         width: '100%',
@@ -41,11 +46,18 @@ const styles = theme => ({
         paddingTop: '10px',
     },
     bgContainer: {
-        paddingTop: '102px',
-        marginBottom: '266px'
+        [theme.breakpoints.up('sm')]: {
+            paddingTop: '102px',
+            marginBottom: '266px'
+        },
+        [theme.breakpoints.down('sm')]: {
+            margin : theme.spacing.unit *2,
+        },
     },
     banner: {
-        height: '600px',
+        [theme.breakpoints.up('sm')]: {
+            height: '600px',
+        },
         zIndex: '1',
         position: 'relative',
         overflow: 'hidden',
@@ -221,10 +233,7 @@ class ConsolaAdministracionSO extends React.Component {
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
                                     <Typography variant="h6" className={classes.titleSub}>
-                                        Como Sujeto Obligado, aquí podrás administrar a los contactos, servidores públicos que serán de
-                                        ayuda y soporte técnico para mantener la conexión con la PDN <br/>
-                                        De igual manera podrás administrar las URL's de las API's mediante las cuales tu institución se
-                                        conectará a la PDN.
+                                       Administra contactos y conexiones.
                                 </Typography>
                                     <br/>
                                 </Grid>
@@ -237,6 +246,15 @@ class ConsolaAdministracionSO extends React.Component {
                     <Grid container justify={'center'} spacing={0}>
                         <Grid item xs={12} className={classes.section}>
                             <Typography variant={"title"} className={classes.text}>Bienvenido</Typography>
+                        </Grid>
+                        <Grid item xs={12} className={classes.section}>
+                            <Typography variant="h6" className={classes.titleSub}>
+                                Como Sujeto Obligado, aquí podrás administrar a los contactos, servidores públicos que serán de
+                                ayuda y soporte técnico para mantener la conexión con la PDN <br/>
+                                De igual manera podrás administrar las URL's de las API's mediante las cuales tu institución se
+                                conectará a la PDN.
+                            </Typography>
+                            <br/>
                         </Grid>
                         <Grid item xs={12} className={classes.section}>
                             {(this.state.estatus === 'ENVIADA' || this.state.estatus === 'RECHAZADA') &&
