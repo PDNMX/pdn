@@ -10,6 +10,7 @@ import {connect} from 'react-redux';
 import ScrollToTop from './ScrollToTop';
 import ReactGA from 'react-ga';
 //import MensajeError from './components/Mensajes/MensajeError';
+import './components/Utils/Header.css';
 
 const theme = createMuiTheme({
     typography:{

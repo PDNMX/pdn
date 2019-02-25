@@ -9,7 +9,7 @@ import S2 from '../../../assets/iconos_azul/2_icono.svg'
 //import PDNAppBar from "../../PDNAppBar/PDNAppBar";
 import Typography from "@material-ui/core/Typography";
 import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
-import './Header.css';
+//import '../../Utils/Header.css';
 
 const style = theme => ({
         root: {

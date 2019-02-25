@@ -278,7 +278,7 @@ class FormularioConexion extends React.Component {
                 //result.user.uid
             })
             .catch(function (err) {
-                this.setState({
+                _this.setState({
                     flag_error: true,
                     mensajeError: 'Error al crear la cuenta de usuario'
                 })

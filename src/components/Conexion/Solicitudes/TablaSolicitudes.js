@@ -10,6 +10,7 @@ import ArchiveIcon from '@material-ui/icons/Archive';
 import Tooltip from "@material-ui/core/Tooltip/Tooltip";
 import rp from "request-promise";
 import AcceptIcon from '@material-ui/icons/AssignmentTurnedIn';
+import RejectIcon from '@material-ui/icons/NotInterested';
 import DetalleSolicitud from './DetalleSolicitud';
 import axios from "axios";
 import TablePagination from "@material-ui/core/TablePagination/TablePagination";
@@ -212,7 +213,7 @@ class TablaSolicitudes extends React.Component {
 
 
         let options = {
-            uri: 'https://plataformadigitalnacional.org/api/solicitudes',
+            uri: 'https://plataformadigitalnacional.org/api/solicitudes_conexion',
             json: true,
             qs: params
         };
@@ -238,7 +239,7 @@ class TablaSolicitudes extends React.Component {
 
     getTotalRows = (params) => {
         let options = {
-            uri: 'https://plataformadigitalnacional.org/api/solicitudes?select=count=eq.exact',
+            uri: 'https://plataformadigitalnacional.org/api/solicitudes_conexion?select=count=eq.exact',
             json: true,
             qs: params
         };
@@ -312,20 +313,18 @@ class TablaSolicitudes extends React.Component {
         this.setState({flag_msj: false});
     };
 
-    acceptSolicitud = (n) => {
-        if (n.estatus !== 'ALTA') {
+    changeEstatus = (n,newStatus) => {
             let params = {};
             params.correo = 'eq.' + n.correo;
-
             let options = {
                 method: 'PATCH',
-                uri: 'https://plataformadigitalnacional.org/api/solicitudes',
+                uri: 'https://plataformadigitalnacional.org/api/solicitudes_conexion',
                 qs: params,
                 headers: {
                     'Prefer': 'return = representation',
                     'Content-Type': 'application/json'
                 },
-                body: {'estatus': 'ALTA'},
+                body: {'estatus': newStatus===0?'APROBADA':newStatus===1?'RECHAZADA':'REVOCADA'},
                 json: true
             };
             rp(options)
@@ -340,7 +339,6 @@ class TablaSolicitudes extends React.Component {
                     alert("_No se pudó completar la operación");
                     console.log(err);
                 });
-        }
     };
 
     render() {
@@ -349,7 +347,7 @@ class TablaSolicitudes extends React.Component {
         let index = 0;
         return (
             <div>
-                <Mensaje mensaje={'La solicitud ha sido aceptada'} titulo={'Solicitud aceptada'}
+                <Mensaje mensaje={'El estatus de la solicitud ha sido modificado'} titulo={'Cambio de estatus'}
                          open={this.state.flag_msj} handleClose={this.handleCloseMsj}/>
                 <DetalleSolicitud handleClose={this.handleClose} solicitud={this.state.elementoSeleccionado}
                                   control={this.state.open}/>
@@ -394,12 +392,30 @@ class TablaSolicitudes extends React.Component {
                                             <TableCell>
                                                 <Tooltip title={"Descargar oficio"}>
                                                     <ArchiveIcon onClick={() => this.viewOficio(n)}
-                                                                 color={"secondary"}/>
+                                                                 color={n.id_oficio?"secondary":'disabled'}/>
                                                 </Tooltip>
-                                                <Tooltip title={"Aceptar solicitud"}>
-                                                    <AcceptIcon onClick={() => this.acceptSolicitud(n)}
-                                                                color={n.estatus === 'ALTA' ? 'disabled' : 'primary'}/>
-                                                </Tooltip>
+                                                {
+                                                    (n.estatus==='ENVIADA' || n.estatus==='REVOCADA') &&
+                                                    <Tooltip title={"Aprobar solicitud"}>
+                                                        <AcceptIcon onClick={() => this.changeEstatus(n,0)}
+                                                                    color={'primary'}/>
+                                                    </Tooltip>
+                                                }
+                                                {
+                                                    n.estatus==='ENVIADA' &&
+                                                    <Tooltip title={"Rechazar solicitud"}>
+                                                        <RejectIcon onClick={() => this.changeEstatus(n,1)}
+                                                                    color={'error'}/>
+                                                    </Tooltip>
+                                                }
+                                                {
+                                                    (n.estatus==='APROBADA') &&
+                                                    <Tooltip title={"Revocar solicitud"}>
+                                                        <RejectIcon onClick={() => this.changeEstatus(n,2)}
+                                                                    color={'error'}/>
+                                                    </Tooltip>
+                                                }
+
                                             </TableCell>
                                         </TableRow>
                                     );

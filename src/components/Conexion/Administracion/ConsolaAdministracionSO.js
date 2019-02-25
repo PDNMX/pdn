@@ -4,8 +4,6 @@ import Grid from "@material-ui/core/Grid/Grid";
 import Typography from "@material-ui/core/Typography/Typography";
 import "../../../index.css";
 import Footer from "../../Home/Footer";
-import imgBanner from '../../../assets/banners/FOTO_BANNER_3.jpg';
-import Header from "../../PDNAppBar/PDNAppBar";
 import Endpoints from "./Endpoints";
 import FormularioEndpoint from './FormularioEndpoint';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
@@ -18,37 +16,22 @@ import TablaContactos from "../Administracion/TablaContactos";
 import rp from "request-promise";
 import Paper from '@material-ui/core/Paper';
 import axios from "axios";
+import Logo from "../../../assets/blueprint.svg";
+import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
+import {Link} from "react-router-dom";
+import PDNLogo from "../../../assets/PDN.png";
 
 const styles = theme => ({
+    root: {
+        flexGrow: 1
+    },
     section: {
         maxWidth: '1200px',
         marginBottom: theme.spacing.unit * 5,
     },
-    contenedor: {
-        padding: theme.spacing.unit * 5,
-    },
-    bgImg: {
-        width: '100%',
-        position: 'absolute',
-        zIndex: 2,
-        opacity: 0.2,
-    },
-    titleLight: {
-        color: theme.palette.titleBanner.color,
-    },
     titleSub: {
         color: theme.palette.titleBanner.color,
         paddingTop: '10px',
-    },
-    bgContainer: {
-        paddingTop: '102px',
-        marginBottom: '266px'
-    },
-    banner: {
-        height: '600px',
-        zIndex: '1',
-        position: 'relative',
-        overflow: 'hidden',
     },
     tituloPanel: {
         color: theme.palette.primary.dark,
@@ -72,16 +55,41 @@ const styles = theme => ({
         paddingBottom: theme.spacing.unit * 5,
         textAlign: 'center',
     },
-    containerBanner : {
-        [theme.breakpoints.up('sm')]: {
-            paddingTop: theme.spacing.unit * 15,
-            maxWidth: '1200px'
-        },
-        [theme.breakpoints.down('sm')]: {
-            paddingTop: theme.spacing.unit * 8,
-        },
-
-    }
+    item3: {
+        maxWidth: 1200
+    },
+    s2: {
+        maxWidth: '150px'
+    },
+    whiteText: {
+        color: '#fff'
+    },
+    pdnLogo: {
+        maxWidth: 110,
+        paddingLeft: "40px",
+        paddingTop: "40px",
+        paddingBottom: "40px"
+    },
+    container1: {
+        background: 'grey',
+        paddingTop: '75px',
+        paddingBottom: '75px',
+        paddingLeft: theme.spacing.unit,
+        paddingRight: theme.spacing.unit,
+        //zIndex: 5
+    },
+    link: {
+        textDecoration: 'none',
+        color: 'inherit'
+    },
+    item1: {
+        paddingRight: theme.spacing.unit * 2,
+        paddingLeft: theme.spacing.unit * 2,
+    },
+    item2: {
+        paddingRight: theme.spacing.unit * 2,
+        paddingLeft: theme.spacing.unit * 2
+    },
 });
 
 class ConsolaAdministracionSO extends React.Component {
@@ -123,6 +131,7 @@ class ConsolaAdministracionSO extends React.Component {
         };
         rp(options)
             .then(data => {
+                console.log(data[0].estatus);
                 this.setState({estatus: data[0].estatus});
                 return true;
             })
@@ -195,7 +204,7 @@ class ConsolaAdministracionSO extends React.Component {
         rp(options)
             .then(data => {
                 this.setState({
-                    flag_msj: true
+                    estatus: 'ENVIADA'
                 })
             })
             .catch(err => {
@@ -208,49 +217,74 @@ class ConsolaAdministracionSO extends React.Component {
     render() {
         const {classes} = this.props;
         return (
-            <div>
-                <Header/>
-                <div className={classes.banner}>
-                    <img className={classes.bgImg} src={imgBanner}/>
-                    <Grid container justify={"center"} spacing={0}>
-                        <Grid item xs={12} className={classes.containerBanner}>
-                            <Grid container spacing={24}>
-                                <Grid item xs={12} sm={6}>
-                                    <Typography variant={"h2"} className={classes.titleLight}>Consola de
-                                        administración</Typography>
-                                </Grid>
-                                <Grid item xs={12} sm={6}>
-                                    <Typography variant="h6" className={classes.titleSub}>
-                                        Como Sujeto Obligado, aquí podrás administrar a los contactos, servidores públicos que serán de
-                                        ayuda y soporte técnico para mantener la conexión con la PDN <br/>
-                                        De igual manera podrás administrar las URL's de las API's mediante las cuales tu institución se
-                                        conectará a la PDN.
-                                </Typography>
-                                    <br/>
-                                </Grid>
-                            </Grid>
-                        </Grid>
+            <div className={classes.root}>
+                <Grid container spacing={0} justify="center">
+                    <Grid item xs={12} className={classes.item3}>
+                        <Link to="/" className={classes.link}>
+                            <img src={PDNLogo} alt="PDN" className={classes.pdnLogo}/>
+                        </Link>
                     </Grid>
-                </div>
+                </Grid>
+                <Grid container spacing={0} className="breadcrumb" justify='center'>
+                    <Grid item xs={12} className={classes.item3}>
+                        <ul>
+                            <li>
+                                <Link className={classes.link} to='/'>Plataforma Digital Nacional</Link>
+                            </li>
+                            <li>
+                                Consola de administración
+                            </li>
+                        </ul>
+                    </Grid>
+                </Grid>
+                <Grid container spacing={0} className={classes.container1} justify='center'>
+                    <Grid item xs={12} md={4} align={isWidthUp('md', this.props.width) ? 'right' : 'center'}
+                          className={classes.item1}>
+                        <img src={Logo} alt="Sistema 2" className={classes.s2}/>
+                    </Grid>
+                    <Grid item xs={12} md={6} className={classes.item2}
+                          align={isWidthUp('md', this.props.width) ? 'left' : 'center'}>
+                        <Typography variant="h4" paragraph className={classes.whiteText}>
+                            Consola de administración
+                        </Typography>
+                        <Typography className={classes.whiteText}>
+                            Administra contactos
+                        </Typography>
+                        <Typography className={classes.whiteText}>
+                            y conexiones
+                        </Typography>
+                    </Grid>
+                </Grid>
                 <div className={classes.bgContainer}>
-
                     <Grid container justify={'center'} spacing={0}>
                         <Grid item xs={12} className={classes.section}>
                             <Typography variant={"title"} className={classes.text}>Bienvenido</Typography>
                         </Grid>
                         <Grid item xs={12} className={classes.section}>
-                            {(this.state.estatus === 'ENVIADA' || this.state.estatus === 'RECHAZADA') &&
+                            <Typography variant="h6" className={classes.titleSub}>
+                                Como Sujeto Obligado, aquí podrás administrar a los contactos, servidores públicos que
+                                serán de
+                                ayuda y soporte técnico para mantener la conexión con la PDN <br/>
+                                De igual manera podrás administrar las URL's de las API's mediante las cuales tu
+                                institución se
+                                conectará a la PDN.
+                            </Typography>
+                            <br/>
+                        </Grid>
+                        <Grid item xs={12} className={classes.section}>
+                            {(this.state.estatus !== 'APROBADA') &&
                             <Paper>
                                 <Typography variant={"h5"} className={classes.aviso}>AVISO</Typography>
                                 <Typography variant={"h6"} className={classes.textAviso}>
                                     {this.state.estatus === 'ENVIADA' && 'Tu solicitud esta en proceso de validación'}
-                                    {this.state.estatus === 'RECHAZADA' && 'Tu solicitud ha sido rechazada, puedes subir un nuevo oficio con lo que se creará una nueva solicitud de conexión'}
+                                    {this.state.estatus === 'RECHAZADA' && 'Tu solicitud ha sido rechazada, puedes subir un nuevo oficio con lo que se enviará a validación'}
+                                    {this.state.estatus === 'REVOCADA' && 'Tu conexión ha sido revocada, puedes subir un nuevo oficio con lo que se enviará a validación'}
                                 </Typography>
                             </Paper>
                             }
                         </Grid>
                         <Grid item xs={12} className={classes.section}>
-                            {(this.state.estatus === 'PENDIENTE' || this.state.estatus === 'RECHAZADA') &&
+                            {(this.state.estatus !== 'APROBADA') &&
                             <ExpansionPanel defaultExpanded={true}>
                                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
                                     <Typography className={classes.tituloPanel} variant={"h5"}>Oficio</Typography>
@@ -314,8 +348,8 @@ class ConsolaAdministracionSO extends React.Component {
                                             <FormularioEndpoint updateView={this.updateView}/>
                                         </Grid>
                                         <Grid item xs={12}>
-                                            <Endpoints  update={this.state.updateTable}
-                                                        updateView={this.updateView}/>
+                                            <Endpoints update={this.state.updateTable}
+                                                       updateView={this.updateView}/>
                                         </Grid>
                                     </Grid>
                                 </ExpansionPanelDetails>
@@ -332,4 +366,4 @@ class ConsolaAdministracionSO extends React.Component {
 
 }
 
-export default withStyles(styles)(ConsolaAdministracionSO);
+export default withWidth()(withStyles(styles)(ConsolaAdministracionSO));
