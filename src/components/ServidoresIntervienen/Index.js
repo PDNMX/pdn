@@ -13,6 +13,8 @@ import img3 from "../../assets/img/servidores_visualizaciones.svg";
 import BubbleHolder_Servidores_Contrataciones from "./BubbleHolder_Servidores_Contrataciones";
 //import imgBanner from '../../assets/banners/FOTO_BANNER_1.jpg';
 import Header from './Header/Header';
+import './s1.css';
+import classNames from 'classnames';
 
 const styles = theme => ({
     root: {
@@ -86,7 +88,7 @@ class Index extends React.Component {
                         <Grid container spacing={0}>
                             <Grid item md={4} xs={12}
                                   onClick={() => this.changeContent(1)}
-                                  className={this.state.idContent !== 1 ? classes.card : classes.cardSeleccionada}>
+                                  className={classNames(this.state.idContent !== 1 ? classes.card : classes.cardSeleccionada, 'tab')}>
 
                                 <figure className={classes.figure}>
                                     <img src={img1} alt="Servidores que intervinen en procesos de contratacion"
@@ -102,7 +104,7 @@ class Index extends React.Component {
 
                             <Grid item md={4} xs={12}
                                   onClick={() => this.changeContent(2)}
-                                  className={this.state.idContent !== 2 ? classes.card : classes.cardSeleccionada}>
+                                  className={ classNames(this.state.idContent !== 2 ? classes.card : classes.cardSeleccionada, 'tab')}>
 
                                 <figure className={classes.figure}>
                                 <img src={img2} alt="Particulares inhabilitados" className={classes.image}/>
@@ -117,7 +119,7 @@ class Index extends React.Component {
 
                             <Grid item md={4} xs={12}
                                   onClick={() => this.changeContent(3)}
-                                  className={this.state.idContent !== 3 ? classes.card : classes.cardSeleccionada}>
+                                  className= {classNames (this.state.idContent !== 3 ? classes.card : classes.cardSeleccionada, 'tab')}>
 
                                 <figure className={classes.figure}>
                                     <img src={img3} alt="Visualizaciones" className={classes.image}/>
