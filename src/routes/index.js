@@ -14,7 +14,6 @@ import DemoDeclaraciones from '../components/DemoDeclaraciones/demo';
 import Conexion from '../components/Conexion/Solicitudes/Conexion';
 import DeclaracionesEspecificaciones from '../components/Declaraciones/Especificaciones/Especificaciones';
 import Validador from '../components/Validador/index';
-//import LoginPDN from "../components/Inicio/LoginPDN";
 import Consulta from '../components/Conexion/Solicitudes/Consulta';
 import ConsolaAdministracionSO from '../components/Conexion/Administracion/ConsolaAdministracionSO';
 

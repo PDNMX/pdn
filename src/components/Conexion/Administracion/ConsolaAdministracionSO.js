@@ -16,7 +16,7 @@ import TablaContactos from "../Administracion/TablaContactos";
 import rp from "request-promise";
 import Paper from '@material-ui/core/Paper';
 import axios from "axios";
-import Logo from "../../../assets/blueprint.svg";
+import Logo from "../../../assets/icono-administracion.svg";
 import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
 import {Link} from "react-router-dom";
 import PDNLogo from "../../../assets/PDN.png";
