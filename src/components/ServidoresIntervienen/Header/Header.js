@@ -3,25 +3,25 @@ import {withStyles} from "@material-ui/core/styles";
 import Grid from '@material-ui/core/Grid';
 import {Link} from 'react-router-dom';
 //import Typography from "@material-ui/core/Typography";
-//import BG from '../../../assets/img/fenito.jpg';
+import BG from '../../../assets/img/fenito.jpg';
 import PDNLogo from '../../../assets/PDN.png';
 import S2 from '../../../assets/iconos_azul/2_icono.svg'
 //import PDNAppBar from "../../PDNAppBar/PDNAppBar";
 import Typography from "@material-ui/core/Typography";
 import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
-//import '../../Utils/Header.css';
+import './Header.css';
+import classNames from 'classnames';
 
 const style = theme => ({
         root: {
             flexGrow:1
         },
         container1: {
-            background: 'grey',
+            //background: 'grey',
             paddingTop: '75px',
             paddingBottom: '75px',
             paddingLeft: theme.spacing.unit,
             paddingRight: theme.spacing.unit,
-            //zIndex: 5
         },
         link: {
             textDecoration: 'none',
@@ -36,7 +36,7 @@ const style = theme => ({
             paddingLeft: theme.spacing.unit * 2
         },
         item3:{
-            maxWidth: 1200
+            maxWidth: 1200,
         },
         s2: {
             maxWidth: '150px'
@@ -60,23 +60,18 @@ class Header extends React.Component{
 
         return(
             <div className={classes.root}>
-
-
-
-                {/*<figure>
-                    <img src={BG} alt="Sistema 2" style={{zIndex: -1, position: 'absolute', width: '100%', right: 0,top:0, bottom: 0}}/>
-                </figure>*/}
-
                 {/*<PDNAppBar/>*/}
+                <img src={BG} alt="Sistema 2" className="fenito"/>
 
 
-                <Grid container spacing={0} justify="center">
+                <Grid container spacing={0} justify="center" style={{background: '#fff'}}>
                     <Grid item xs={12} className={classes.item3}>
                         <Link to="/" className={classes.link}>
                             <img src={PDNLogo} alt="PDN" className={classes.pdnLogo}/>
                         </Link>
                     </Grid>
                 </Grid>
+
                 <Grid container spacing={0} className="breadcrumb" justify='center'>
                     <Grid item xs={12} className={classes.item3}>
                         <ul>
@@ -90,11 +85,11 @@ class Header extends React.Component{
                     </Grid>
                 </Grid>
 
-                <Grid container spacing={0} className={classes.container1} justify='center'>
-
+                <Grid container spacing={0} className={classNames(classes.container1, 'servidores')} justify='center'>
                     <Grid item xs={12} md={4} align={isWidthUp('md', this.props.width)? 'right':'center'} className={classes.item1}>
                         <img src={S2} alt="Sistema 2" className={classes.s2}/>
                     </Grid>
+
                     <Grid item xs={12} md={6} className={classes.item2} align={isWidthUp('md', this.props.width)? 'left':'center'} >
                         <Typography variant="h4" paragraph className={classes.whiteText} style={{fontWeight: 300}}>
                             Servidores que intervienen en
