@@ -9,8 +9,8 @@ import Footer from "../../Home/Footer";
 import {Link} from "react-router-dom";
 import PDNLogo from "../../../assets/PDN.png";
 import Logo from "../../../assets/plan.svg";
-import '../../Utils/Header.css';
 import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
+
 const styles = theme => ({
     root: {
         flexGrow: 1
@@ -26,15 +26,6 @@ const styles = theme => ({
             padding: theme.spacing.unit * 1,
         },
     },
-    bgImg: {
-        width: '100%',
-        position: 'absolute',
-        zIndex: 2,
-        opacity: 0.2,
-    },
-    titleLight: {
-        color: theme.palette.titleBanner.color,
-    },
     titleSub: {
         color: theme.palette.titleBanner.color,
         paddingTop: '10px',
@@ -45,7 +36,7 @@ const styles = theme => ({
             marginBottom: '266px'
         },
         [theme.breakpoints.down('sm')]: {
-            margin : theme.spacing.unit *2,
+            margin: theme.spacing.unit * 2,
         },
     },
     button: {
@@ -59,24 +50,7 @@ const styles = theme => ({
         textAlign: 'center',
         color: theme.palette.primary.dark
     },
-    banner: {
-        [theme.breakpoints.up('sm')]: {
-            height: '600px',
-        },
-        zIndex: '1',
-        position: 'relative',
-        overflow: 'hidden',
-    },
-    containerTextBanner:{
-        [theme.breakpoints.up('sm')]: {
-            paddingTop: theme.spacing.unit * 25,
-        },
-        [theme.breakpoints.down('sm')]: {
-            paddingTop: theme.spacing.unit * 2,
-        },
-        maxWidth: '1200px'
-    },
-    item3:{
+    item3: {
         maxWidth: 1200
     },
     s2: {
@@ -103,11 +77,11 @@ const styles = theme => ({
         textDecoration: 'none',
         color: 'inherit'
     },
-    item1:{
+    item1: {
         paddingRight: theme.spacing.unit * 2,
         paddingLeft: theme.spacing.unit * 2,
     },
-    item2:{
+    item2: {
         paddingRight: theme.spacing.unit * 2,
         paddingLeft: theme.spacing.unit * 2
     },
@@ -127,7 +101,6 @@ class Conexion extends React.Component {
     constructor(props, context) {
         super(props, context);
     }
-
 
 
     render() {
@@ -156,15 +129,17 @@ class Conexion extends React.Component {
 
                 <Grid container spacing={0} className={classes.container1} justify='center'>
 
-                    <Grid item xs={12} md={4} align={isWidthUp('md', this.props.width)? 'right':'center'} className={classes.item1}>
+                    <Grid item xs={12} md={4} align={isWidthUp('md', this.props.width) ? 'right' : 'center'}
+                          className={classes.item1}>
                         <img src={Logo} alt="Sistema 2" className={classes.s2}/>
                     </Grid>
-                    <Grid item xs={12} md={6} className={classes.item2} align={isWidthUp('md', this.props.width)? 'left':'center'} >
+                    <Grid item xs={12} md={6} className={classes.item2}
+                          align={isWidthUp('md', this.props.width) ? 'left' : 'center'}>
                         <Typography variant="h4" paragraph className={classes.whiteText}>
                             Solicitud de conexón
                         </Typography>
                         <Typography className={classes.whiteText}>
-                           Envía una solicitud
+                            Envía una solicitud
                         </Typography>
                         <Typography className={classes.whiteText}>
                             para conectarte a la PDN
