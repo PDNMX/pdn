@@ -131,6 +131,7 @@ class ConsolaAdministracionSO extends React.Component {
         };
         rp(options)
             .then(data => {
+                console.log(data[0].estatus);
                 this.setState({estatus: data[0].estatus});
                 return true;
             })
@@ -203,7 +204,7 @@ class ConsolaAdministracionSO extends React.Component {
         rp(options)
             .then(data => {
                 this.setState({
-                    flag_msj: true
+                    estatus: 'ENVIADA'
                 })
             })
             .catch(err => {
@@ -271,18 +272,19 @@ class ConsolaAdministracionSO extends React.Component {
                             <br/>
                         </Grid>
                         <Grid item xs={12} className={classes.section}>
-                            {(this.state.estatus === 'ENVIADA' || this.state.estatus === 'RECHAZADA') &&
+                            {(this.state.estatus !== 'APROBADA') &&
                             <Paper>
                                 <Typography variant={"h5"} className={classes.aviso}>AVISO</Typography>
                                 <Typography variant={"h6"} className={classes.textAviso}>
                                     {this.state.estatus === 'ENVIADA' && 'Tu solicitud esta en proceso de validación'}
-                                    {this.state.estatus === 'RECHAZADA' && 'Tu solicitud ha sido rechazada, puedes subir un nuevo oficio con lo que se creará una nueva solicitud de conexión'}
+                                    {this.state.estatus === 'RECHAZADA' && 'Tu solicitud ha sido rechazada, puedes subir un nuevo oficio con lo que se enviará a validación'}
+                                    {this.state.estatus === 'REVOCADA' && 'Tu conexión ha sido revocada, puedes subir un nuevo oficio con lo que se enviará a validación'}
                                 </Typography>
                             </Paper>
                             }
                         </Grid>
                         <Grid item xs={12} className={classes.section}>
-                            {(this.state.estatus === 'PENDIENTE' || this.state.estatus === 'RECHAZADA') &&
+                            {(this.state.estatus !== 'APROBADA') &&
                             <ExpansionPanel defaultExpanded={true}>
                                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
                                     <Typography className={classes.tituloPanel} variant={"h5"}>Oficio</Typography>
