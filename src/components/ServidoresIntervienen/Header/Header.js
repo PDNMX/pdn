@@ -96,17 +96,16 @@ class Header extends React.Component{
                         <img src={S2} alt="Sistema 2" className={classes.s2}/>
                     </Grid>
                     <Grid item xs={12} md={6} className={classes.item2} align={isWidthUp('md', this.props.width)? 'left':'center'} >
-                        <Typography variant="h4" paragraph className={classes.whiteText}>
+                        <Typography variant="h4" paragraph className={classes.whiteText} style={{fontWeight: 300}}>
                             Servidores que intervienen en
                         </Typography>
-                        <Typography variant="h4" paragraph className={classes.whiteText}>
-                            Procesos de contratación
+                        <Typography variant="h4" paragraph className={classes.whiteText} style={{  fontWeight: 600}}>
+                            procesos de contratación
                         </Typography>
-                        <Typography className={classes.whiteText}>
+                        <Typography  className={classes.whiteText} style={{fontSize: '18px',fontWeight: 500}}>
                             Conoce a los servidores públicos responsables de llevar
-                        </Typography>
-                        <Typography className={classes.whiteText}>
-                            correctamiente las compras del gobierno.
+                            <br/>
+                            correctamente las compras del gobierno.
                         </Typography>
                     </Grid>
                 </Grid>

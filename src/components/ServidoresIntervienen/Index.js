@@ -18,33 +18,8 @@ const styles = theme => ({
     root: {
         flexGrow: 1
     },
-    title: {
-        color: theme.palette.black.color,
-        maxHeight: '20px',
-        paddingBottom: '56px'
-    },
-    titleImg: {
-        color: theme.palette.titleBanner.color,
-        minHeight: '100px'
-    },
-    titleLight: {
-        color: theme.palette.titleBanner.color,
-        // paddingTop : '10%'
-    },
-    titleSub: {
-        color: theme.palette.titleBanner.color,
-        paddingTop: '10px',
-    },
-    textDark: {
-        color: theme.palette.textNormal,
-        textAlign: 'justify'
-    },
-    bgPanelDark: {
-        backgroundColor: theme.palette.backDark.color,
-    },
-    bgPanelLight: {
-        backgroundColor: theme.palette.grisTenue.color,
-        paddingTop: '84px'
+    whiteText: {
+        color: '#fff', //theme.palette.titleBanner.color,
     },
     bgPanelTable: {
         backgroundColor: theme.palette.white.color,
@@ -53,55 +28,41 @@ const styles = theme => ({
     section: {
         maxWidth: '1200px'
     },
-    bgImg: {
-        width: '100%',
-        position: 'absolute',
-        zIndex: 2,
-        opacity: 0.2
-    },
     image: {
-        paddingBottom: '24px',
-        paddingTop: '28px',
-        minWidth: '230px'
+        width: '60px',
+        padding: 0,
+        margin: 0,
+        border: 0
     },
     bgContainer: {
-        backgroundColor: theme.palette.azul.color,
-        paddingTop: '102px',
-    },
-    center: {
-        textAlign: 'center'
+        backgroundColor: '#34b3eb',//theme.palette.azul.color,
     },
     links: {
         backgroundColor: theme.palette.grisTenue.color
     },
     card: {
-        backgroundColor: theme.palette.azul.color,
-        borderRadius: '5px 5px 0px 0px',
-        paddingBottom: '90px',
-        paddingRight: '40px',
-        paddingLeft: '40px',
-        maxWidth: '230px',
+        backgroundColor: '#34b3eb', //theme.palette.azul.color,
+        paddingLeft: theme.spacing.unit,
+        paddingRight: theme.spacing.unit,
+        paddingTop: theme.spacing.unit * 2,
+        paddingBottom: theme.spacing.unit * 2,
         margin: 0,
-        display: 'inline-block'
     },
     cardSeleccionada: {
-        backgroundColor: theme.palette.white.color,
-        borderRadius: '5px 5px 0px 0px',
-        paddingBottom: '90px',
-        paddingRight: '40px',
-        paddingLeft: '40px',
-        maxWidth: '230px',
+        backgroundColor: 'grey',//theme.palette.white.color,
+        paddingLeft: theme.spacing.unit,
+        paddingRight: theme.spacing.unit,
+        paddingTop: theme.spacing.unit * 2,
+        paddingBottom: theme.spacing.unit * 2,
         margin: 0,
-        display: 'inline-block'
     },
-    /*
-    banner: {
-        height: '600px',
-        zIndex: '1',
-        position: 'relative',
-        overflow: 'hidden',
+    figure: {
+        display: 'inline-block',
+        float: 'left',
+        margin: 0,
+        padding: 0,
+        paddingRight: '8px'
     }
-    */
 });
 
 class Index extends React.Component {
@@ -119,84 +80,62 @@ class Index extends React.Component {
 
                 <Header/>
 
-                {/*
-                <PDNAppBar/>
+                {/* TABS */}
+                <Grid container spacing={0} justify="center" className={classes.bgContainer}>
+                    <Grid item xs={12} className={classes.section}>
+                        <Grid container spacing={0}>
+                            <Grid item md={4} xs={12}
+                                  onClick={() => this.changeContent(1)}
+                                  className={this.state.idContent !== 1 ? classes.card : classes.cardSeleccionada}>
 
-                <div className={classes.banner}>
-                    <img className={classes.bgImg} src={imgBanner}/>
-                    <Grid container justify={"center"} spacing={0}>
-                        <Grid item xs={12} className={classes.section} style={{paddingTop: 150}}>
-                            <Grid container spacing={0}>
-                                <Grid item xs={12} sm={6}>
-                                    <Typography variant={"h2"} className={classes.titleLight}>Servidores que intervienen
-                                        en procesos de contratación</Typography>
-                                </Grid>
-                                <Grid item xs={12} sm={6}>
-                                    <Typography variant="h6" className={classes.titleSub}>
-                                        Aquí puedes consultar, visualizar y descargar datos de:<br/>
-                                        Los nombres, institución, cargo actividades y adscripción de los servidores
-                                        públicos que intervienen en contrataciones públicas y otros actos de autoridad,
-                                        y<br/>
-                                        La relación de personas físicas y morales que se encuentran inhabilitados para
-                                        celebrar contratos con instituciones públicas, por qué fueron inhabilitados, por
-                                        cuánto tiempo y con qué monto
-                                    </Typography>
-                                    <br/>
-                                </Grid>
+                                <figure className={classes.figure}>
+                                    <img src={img1} alt="Servidores que intervinen en procesos de contratacion"
+                                         className={classes.image} />
+                                </figure>
+                                <Typography variant="subtitle1" className={classes.whiteText}
+                                            style={{fontWeight: this.state.idContent === 1 ? 500: 300}}
+                                >
+                                    Servidores que intervienen en procesos de contratación
+                                </Typography>
+
                             </Grid>
-                        </Grid>
-                    </Grid>
-                </div>
-                */}
 
+                            <Grid item md={4} xs={12}
+                                  onClick={() => this.changeContent(2)}
+                                  className={this.state.idContent !== 2 ? classes.card : classes.cardSeleccionada}>
 
+                                <figure className={classes.figure}>
+                                <img src={img2} alt="Particulares inhabilitados" className={classes.image}/>
+                                </figure>
+                                <Typography variant="subtitle1" style={{fontWeight: this.state.idContent === 2 ? 500: 300}}
+                                            className={classes.whiteText}>
 
-                <div id={"menu"} className={classes.bgContainer}>
-                    <Grid container spacing={0} justify="center">
-                        <Grid item xs={12} className={classes.section}>
-                            <Grid container spacing={0}>
-                                <Grid item md={4} xs={12} className={classes.center}>
-                                    <div
-                                        className={this.state.idContent !== 1 ? classes.card : classes.cardSeleccionada}>
-                                        <img src={img1} alt="Servidores que intervinen en procesos de contratacion"
-                                             className={classes.image}
-                                             onClick={() => this.changeContent(1)}/>
-                                        <Typography variant={this.state.idContent === 1 ? "h5" : "h6"}
-                                                    className={classes.titleImg}>
-                                            Servidores que intervienen en procesos de contratación
-                                        </Typography>
-                                    </div>
-                                </Grid>
-                                <Grid item md={4} xs={12} className={classes.center}>
-                                    <div
-                                        className={this.state.idContent !== 2 ? classes.card : classes.cardSeleccionada}>
-                                        <img src={img2} alt="Particulares inhabilitados" className={classes.image}
-                                             onClick={() => this.changeContent(2)}/>
-                                        <Typography variant={this.state.idContent === 2 ? "h5" : "h6"}
-                                                    className={classes.titleImg}>
-                                            Particulares inhabilitados
-                                        </Typography>
-                                    </div>
-                                </Grid>
-                                <Grid item md={4} xs={12} className={classes.center}>
-                                    <div
-                                        className={this.state.idContent !== 3 ? classes.card : classes.cardSeleccionada}>
-                                        <img src={img3} alt="Visualizaciones" className={classes.image}
-                                             onClick={() => this.changeContent(3)}/>
-                                        <Typography variant={this.state.idContent === 3 ? "h5" : "h6"}
-                                                    className={classes.titleImg}>
-                                            Visualizaciones
-                                        </Typography>
-                                    </div>
-                                </Grid>
+                                    Particulares inhabilitados
+                                </Typography>
+
                             </Grid>
+
+                            <Grid item md={4} xs={12}
+                                  onClick={() => this.changeContent(3)}
+                                  className={this.state.idContent !== 3 ? classes.card : classes.cardSeleccionada}>
+
+                                <figure className={classes.figure}>
+                                    <img src={img3} alt="Visualizaciones" className={classes.image}/>
+                                </figure>
+                                <Typography variant= "subtitle1"
+                                            style={{fontWeight: this.state.idContent === 3? 500: 300}}
+                                            className={classes.whiteText}>
+                                    Visualizaciones
+                                </Typography>
+
+                            </Grid>
+
 
                         </Grid>
                     </Grid>
 
-                </div>
+                </Grid>
 
-                
                 <Grid container justify='center' spacing={0} className={classes.bgPanelTable}>
                     <Grid item xs={12} className={classes.section}>
                         {this.state.idContent === 1 &&
@@ -216,7 +155,6 @@ class Index extends React.Component {
                         }
                     </Grid>
                 </Grid>
-
 
                 <Footer/>
             </div>

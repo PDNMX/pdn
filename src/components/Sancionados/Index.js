@@ -22,7 +22,7 @@ const styles = theme => ({
         maxHeight: '20px',
         paddingBottom: '56px'
     },
-    titleImg: {
+    whiteText: {
         color: theme.palette.titleBanner.color,
         minHeight: '100px'
     },
@@ -162,7 +162,7 @@ class Index extends React.Component {
                                              className={classes.image}
                                              onClick={() => this.changeContent(1)}/>
                                         <Typography variant={this.state.idContent === 1 ? "h5" : "h6"}
-                                                    className={classes.titleImg}>
+                                                    className={classes.whiteText}>
                                             Servidores públicos sancionados
                                         </Typography>
                                     </div>
@@ -174,7 +174,7 @@ class Index extends React.Component {
                                              className={classes.image}
                                              onClick={() => this.changeContent(2)}/>
                                         <Typography variant={this.state.idContent === 2 ? "h5" : "h6"}
-                                                    className={classes.titleImg}>
+                                                    className={classes.whiteText}>
                                             Particulares sancionados
                                         </Typography>
                                     </div>
@@ -188,7 +188,7 @@ class Index extends React.Component {
                                              className={classes.image}
                                              onClick={() => this.changeContent(3)}/>
                                         <Typography variant={this.state.idContent === 3 ? "h5" : "h6"}
-                                                    className={classes.titleImg}>
+                                                    className={classes.whiteText}>
                                             Visualizaciones
                                         </Typography>
                                     </div>
