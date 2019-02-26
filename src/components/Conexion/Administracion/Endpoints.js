@@ -12,6 +12,7 @@ import rp from "request-promise";
 import Mensaje from "../../Mensajes/Mensaje";
 import EditarEndpoint from "./EditarEndpoint";
 import TablePagination from "@material-ui/core/TablePagination/TablePagination";
+import Grid from "@material-ui/core/Grid/Grid";
 
 let counter = 0;
 let createData = (item) => {
@@ -110,7 +111,7 @@ const styles = theme => ({
         fontSize: '0.75rem'
     },
     gridTable: {
-        marginBottom: '27px'
+        marginBottom: theme.spacing.unit * 3,
     },
     titleTable: {
         marginBottom: '61px'
@@ -120,7 +121,9 @@ const styles = theme => ({
     },
     text: {
         color: theme.palette.secondary.dark,
-
+    },
+    containerTable: {
+        overflowX: 'scroll'
     }
 });
 
@@ -293,75 +296,85 @@ class Endpoints extends React.Component {
         const {order, orderBy, selected, rowsPerPage, page, filterData, totalRows, filterDataAll, registros} = this.state;
         let index = 0;
         return (
-            <div>
-                <Mensaje mensaje={this.state.mensaje} titulo={this.state.tituloMensaje}
-                         open={this.state.flag_msj} handleClose={this.handleCloseMsj}/>
-                <EditarEndpoint control={this.state.open} endpoint={this.state.elementoSeleccionado}
-                                handleClose={this.handleClose}/>
-                <Typography variant={"h6"} className={classes.text}>API's registradas</Typography>
-                <Table className={classes.table} aria-describedby="spinnerLoading"
-                       aria-busy={this.state.loading} aria-labelledby="tableTitle">
-                    <EnhancedTableHead
-                        numSelected={selected.length}
-                        order={order}
-                        orderBy={orderBy}
-                        onSelectAllClick={this.handleSelectAllClick}
-                        onRequestSort={this.handleRequestSort}
-                        rowCount={filterData.length}
-                        columnData={columnData}
-                        acciones={true}
-                    />
-                    <TableBody>
-                        {
-                            filterData
-                                .sort(getSorting(order, orderBy))
-                                .map(n => {
-                                    return (
-                                        <TableRow
-                                            hover
-                                            tabIndex={-1}
-                                            key={index++}
-                                        >
-                                            <TableCell>{n.url}</TableCell>
-                                            <TableCell>{n.metodo}</TableCell>
-                                            <TableCell>{n.sistema}</TableCell>
-                                            <TableCell>{n.descripcion}</TableCell>
-                                            <TableCell>{n.estatus}</TableCell>
-                                            <TableCell>
-                                                {
-                                                    n.estatus === 'EN REVISIÓN' &&
-                                                    <Tooltip title={'EDITAR'}>
-                                                        <Create color={"secondary"}
-                                                                onClick={(event) => this.handleClick(event, n)}/>
-                                                    </Tooltip>
-                                                }
+            <div className={classes.containerTable}>
+                <Grid container justify={'center'} className={classes.gridTable}>
+                    <Grid item xs={12}>
+                        <Mensaje mensaje={this.state.mensaje} titulo={this.state.tituloMensaje}
+                                 open={this.state.flag_msj} handleClose={this.handleCloseMsj}/>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <EditarEndpoint control={this.state.open} endpoint={this.state.elementoSeleccionado}
+                                        handleClose={this.handleClose}/>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Typography variant={"h6"} className={classes.text}>API's registradas</Typography>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Table aria-describedby="spinnerLoading"
+                               aria-busy={this.state.loading} aria-labelledby="tableTitle">
+                            <EnhancedTableHead
+                                numSelected={selected.length}
+                                order={order}
+                                orderBy={orderBy}
+                                onSelectAllClick={this.handleSelectAllClick}
+                                onRequestSort={this.handleRequestSort}
+                                rowCount={filterData.length}
+                                columnData={columnData}
+                                acciones={true}
+                            />
+                            <TableBody>
+                                {
+                                    filterData
+                                        .sort(getSorting(order, orderBy))
+                                        .map(n => {
+                                            return (
+                                                <TableRow
+                                                    hover
+                                                    tabIndex={-1}
+                                                    key={index++}
+                                                >
+                                                    <TableCell>{n.url}</TableCell>
+                                                    <TableCell>{n.metodo}</TableCell>
+                                                    <TableCell>{n.sistema}</TableCell>
+                                                    <TableCell>{n.descripcion}</TableCell>
+                                                    <TableCell>{n.estatus}</TableCell>
+                                                    <TableCell>
+                                                        {
+                                                            n.estatus === 'EN REVISIÓN' &&
+                                                            <Tooltip title={'EDITAR'}>
+                                                                <Create color={"secondary"}
+                                                                        onClick={(event) => this.handleClick(event, n)}/>
+                                                            </Tooltip>
+                                                        }
 
-                                            </TableCell>
-                                        </TableRow>
-                                    );
-                                })
-                        }
-                    </TableBody>
-                </Table>
-                <TablePagination
-                    className={classes.tablePagination}
-                    component="div"
-                    count={totalRows}
-                    rowsPerPage={rowsPerPage}
-                    page={page}
-                    backIconButtonProps={{
-                        'aria-label': 'Previous Page',
-                    }}
-                    nextIconButtonProps={{
-                        'aria-label': 'Next Page',
-                    }}
-                    onChangePage={this.handleChangePage}
-                    onChangeRowsPerPage={this.handleChangeRowsPerPage}
-                    labelRowsPerPage='Registros por página'
-                    labelDisplayedRows={({from, to, count}) => {
-                        return `${from}-${to} de ${count}`;
-                    }}
-                />
+                                                    </TableCell>
+                                                </TableRow>
+                                            );
+                                        })
+                                }
+                            </TableBody>
+                        </Table>
+                        <TablePagination
+                            className={classes.tablePagination}
+                            component="div"
+                            count={totalRows}
+                            rowsPerPage={rowsPerPage}
+                            page={page}
+                            backIconButtonProps={{
+                                'aria-label': 'Previous Page',
+                            }}
+                            nextIconButtonProps={{
+                                'aria-label': 'Next Page',
+                            }}
+                            onChangePage={this.handleChangePage}
+                            onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                            labelRowsPerPage='Registros por página'
+                            labelDisplayedRows={({from, to, count}) => {
+                                return `${from}-${to} de ${count}`;
+                            }}
+                        />
+                    </Grid>
+                </Grid>
             </div>
         );
     }

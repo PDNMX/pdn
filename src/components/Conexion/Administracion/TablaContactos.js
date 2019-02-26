@@ -137,10 +137,9 @@ const styles = theme => ({
     },
     section: {
         maxWidth: '1200px',
-        overflowX: 'scroll'
     },
     table: {
-        tableLayout: 'fixed',
+        width: '100%',
     },
     tablePagination: {
         overflowX: 'auto',
@@ -159,8 +158,14 @@ const styles = theme => ({
     text: {
         color: theme.palette.secondary.dark,
     },
-    tableContainer:{
-
+    tableContainer: {},
+    rootT: {
+        width: '100%',
+        marginTop: theme.spacing.unit * 3,
+        overflowX: 'auto',
+    },
+    containerTable: {
+        overflowX: 'scroll'
     }
 });
 
@@ -213,7 +218,6 @@ class TablaContactos extends React.Component {
         (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? params.offset = (this.state.rowsPerPage * this.state.page) : null;
         params.dependencia = 'eq.' + this.state.currentUser.dependencia;
         (typeSearch === 'FIELD_FILTER') ? this.getTotalRows(params) : null;
-
 
 
         let options = {
@@ -366,95 +370,103 @@ class TablaContactos extends React.Component {
         const {order, orderBy, selected, rowsPerPage, page, filterData, totalRows, filterDataAll} = this.state;
         let index = 0;
         return (
-            <div>
-                <Mensaje mensaje={this.state.mensaje} titulo={this.state.tituloMensaje}
-                         open={this.state.flag_msj} handleClose={this.handleCloseMsj}/>
-                <EditarContacto control={this.state.open} contacto={this.state.elementoSeleccionado}
-                                handleClose={this.handleClose}/>
-                <Typography variant={"h6"} className={classes.text}>Contactos registrados</Typography>
+            <div className={classes.containerTable}>
                 <Grid container justify={'center'} spacing={0} className={classes.gridTable}>
-                    <Grid item xs={12} className={classes.section}>
-                            <Table className={classes.table} aria-describedby="spinnerLoading"
-                                   aria-busy={this.state.loading} aria-labelledby="tableTitle">
-                                <EnhancedTableHead
-                                    numSelected={selected.length}
-                                    order={order}
-                                    orderBy={orderBy}
-                                    onSelectAllClick={this.handleSelectAllClick}
-                                    onRequestSort={this.handleRequestSort}
-                                    rowCount={filterData.length}
-                                    columnData={columnData}
-                                    acciones={true}
-                                />
-                                <TableBody>
-                                    {
-                                        filterData
-                                            .sort(getSorting(order, orderBy))
-                                            .map(n => {
-                                                return (
-                                                    <TableRow
-                                                        hover
-                                                        tabIndex={-1}
-                                                        key={index++}
-                                                    >
-                                                        <TableCell>{n.nombre}</TableCell>
-                                                        <TableCell>{n.apellido1}</TableCell>
-                                                        <TableCell>{n.apellido2}</TableCell>
-                                                        <TableCell>{n.cargo}</TableCell>
-                                                        <TableCell>{n.correo}</TableCell>
-                                                        <TableCell>{n.telefono_personal}</TableCell>
-                                                        <TableCell>{n.telefono_oficina}</TableCell>
-                                                        <TableCell>{n.extension}</TableCell>
-                                                        <TableCell>{n.fecha_alta}</TableCell>
-                                                        <TableCell>{n.estatus}</TableCell>
-                                                        <TableCell>
-                                                            {
-                                                                n.estatus === 'ACTIVO' &&
-                                                                <Tooltip title={'Desactivar'}>
-                                                                    <ReportOff color={"error"}
-                                                                               onClick={() => this.changeEstatus(n)}/>
-                                                                </Tooltip>
-                                                            }
-                                                            {
-                                                                n.estatus === 'INACTIVO' &&
-                                                                <Tooltip title={'ACTIVAR'}>
-                                                                    <HowToReg color={"primary"}
-                                                                              onClick={() => this.changeEstatus(n)}/>
-                                                                </Tooltip>
-                                                            }
-                                                            <Tooltip title={'EDITAR'}>
-                                                                <Create color={"secondary"}
-                                                                        onClick={(event) => this.handleClick(event, n)}/>
+                    <Grid item xs={12}>
+                        <Mensaje mensaje={this.state.mensaje} titulo={this.state.tituloMensaje}
+                                 open={this.state.flag_msj} handleClose={this.handleCloseMsj}/>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <EditarContacto control={this.state.open} contacto={this.state.elementoSeleccionado}
+                                        handleClose={this.handleClose}/>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Typography variant={"h6"} className={classes.text}>Contactos registrados</Typography>
+                    </Grid>
+
+                    <Grid item xs={12}>
+                        <Table aria-describedby="spinnerLoading"
+                               aria-busy={this.state.loading} aria-labelledby="tableTitle">
+                            <EnhancedTableHead
+                                numSelected={selected.length}
+                                order={order}
+                                orderBy={orderBy}
+                                onSelectAllClick={this.handleSelectAllClick}
+                                onRequestSort={this.handleRequestSort}
+                                rowCount={filterData.length}
+                                columnData={columnData}
+                                acciones={true}
+                            />
+                            <TableBody>
+                                {
+                                    filterData
+                                        .sort(getSorting(order, orderBy))
+                                        .map(n => {
+                                            return (
+                                                <TableRow
+                                                    hover
+                                                    tabIndex={-1}
+                                                    key={index++}
+                                                >
+                                                    <TableCell>{n.nombre}</TableCell>
+                                                    <TableCell>{n.apellido1}</TableCell>
+                                                    <TableCell>{n.apellido2}</TableCell>
+                                                    <TableCell>{n.cargo}</TableCell>
+                                                    <TableCell>{n.correo}</TableCell>
+                                                    <TableCell>{n.telefono_personal}</TableCell>
+                                                    <TableCell>{n.telefono_oficina}</TableCell>
+                                                    <TableCell>{n.extension}</TableCell>
+                                                    <TableCell>{n.fecha_alta}</TableCell>
+                                                    <TableCell>{n.estatus}</TableCell>
+                                                    <TableCell>
+                                                        {
+                                                            n.estatus === 'ACTIVO' &&
+                                                            <Tooltip title={'Desactivar'}>
+                                                                <ReportOff color={"error"}
+                                                                           onClick={() => this.changeEstatus(n)}/>
                                                             </Tooltip>
-                                                        </TableCell>
-                                                    </TableRow>
-                                                );
-                                            })
-                                    }
-                                </TableBody>
-                            </Table>
+                                                        }
+                                                        {
+                                                            n.estatus === 'INACTIVO' &&
+                                                            <Tooltip title={'ACTIVAR'}>
+                                                                <HowToReg color={"primary"}
+                                                                          onClick={() => this.changeEstatus(n)}/>
+                                                            </Tooltip>
+                                                        }
+                                                        <Tooltip title={'EDITAR'}>
+                                                            <Create color={"secondary"}
+                                                                    onClick={(event) => this.handleClick(event, n)}/>
+                                                        </Tooltip>
+                                                    </TableCell>
+                                                </TableRow>
+                                            );
+                                        })
+                                }
+                            </TableBody>
+                        </Table>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <TablePagination
+                            className={classes.tablePagination}
+                            component="div"
+                            count={totalRows}
+                            rowsPerPage={rowsPerPage}
+                            page={page}
+                            backIconButtonProps={{
+                                'aria-label': 'Previous Page',
+                            }}
+                            nextIconButtonProps={{
+                                'aria-label': 'Next Page',
+                            }}
+                            onChangePage={this.handleChangePage}
+                            onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                            labelRowsPerPage='Registros por página'
+                            labelDisplayedRows={({from, to, count}) => {
+                                return `${from}-${to} de ${count}`;
+                            }}
+                        />
                     </Grid>
                 </Grid>
-
-                <TablePagination
-                    className={classes.tablePagination}
-                    component="div"
-                    count={totalRows}
-                    rowsPerPage={rowsPerPage}
-                    page={page}
-                    backIconButtonProps={{
-                        'aria-label': 'Previous Page',
-                    }}
-                    nextIconButtonProps={{
-                        'aria-label': 'Next Page',
-                    }}
-                    onChangePage={this.handleChangePage}
-                    onChangeRowsPerPage={this.handleChangeRowsPerPage}
-                    labelRowsPerPage='Registros por página'
-                    labelDisplayedRows={({from, to, count}) => {
-                        return `${from}-${to} de ${count}`;
-                    }}
-                />
             </div>
         );
     }
