@@ -91,10 +91,9 @@ class BubbleHolder_Servidores_Contrataciones extends React.Component{
             <div className={classes.root}>
                 <Grid container spacing={0}>
                     <Grid item xs  = {12}>
-                        <Typography variant={"display1"} className={classes.title}>
+                        <Typography variant={"display1"} className={classes.title} paragraph>
                             Total de {this.state.type} por institución
                         </Typography>
-                        <br/>
                         {type==='servidores' &&
                         <Typography variant={"subheading"} className={classes.font}>{
                             '¿Cuáles son las instituciones con más servidores públicos facultados para intervenir en procesos de contratación?'}
@@ -115,8 +114,8 @@ class BubbleHolder_Servidores_Contrataciones extends React.Component{
                     </Grid>
                 </Grid>
 
-                <Grid container spacing={24} justify={"center"}>
-                    <Grid item xs={12} className={classes.center}>
+                <Grid container spacing={0} justify={"center"}>
+                    <Grid item xs={12} align="center">
                         <BubbleChart width={width} height={height}>
                             <Bubbles data={data} forceStrength={0.3} center={center} type={type} selectBubble={this.selectBubble}/>
                         </BubbleChart>
