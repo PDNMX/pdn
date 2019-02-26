@@ -13,19 +13,35 @@ import MensajeError from "../../Mensajes/MensajeError";
 
 const styles = theme => ({
     fab: {
-        margin: theme.spacing.unit,
+        [theme.breakpoints.up('sm')]: {
+            width: theme.spacing.unit *5,
+            height: theme.spacing.unit *5,
+        },
+        [theme.breakpoints.down('sm')]: {
+            width: theme.spacing.unit *4,
+            height: theme.spacing.unit *4,
+        },
+
     },
     formControl: {
         width: '100%'
     },
     mensajeError: {
-        color: 'red'
+        color: 'red',
+        display : 'inline',
+        marginRight : theme.spacing.unit * 2,
+
     },
     title: {
         color: theme.palette.secondary.dark,
     },
     text: {
         color: theme.palette.textGrey.color
+    },
+    container:{
+        [theme.breakpoints.down('sm')]: {
+            marginBottom : theme.spacing.unit *2,
+        },
     }
 });
 
@@ -203,11 +219,13 @@ class FormularioContacto extends React.Component {
 
         return (
             <div>
-                <Mensaje mensaje={this.state.mensaje_modal} titulo={this.state.tituloMensaje}
-                         open={this.state.flag_msj} handleClose={this.handleCloseMsj}/>
-                <MensajeError mensaje={this.state.mensaje_error_modal} titulo={'Error'}
-                              open={this.state.flag_msj_error} handleClose={this.handleCloseMsjError}/>
-                <Grid container spacing={32}>
+                <Grid container spacing={32} className={classes.container}>
+                    <Grid item xs={12}>
+                        <Mensaje mensaje={this.state.mensaje_modal} titulo={this.state.tituloMensaje}
+                                 open={this.state.flag_msj} handleClose={this.handleCloseMsj}/>
+                        <MensajeError mensaje={this.state.mensaje_error_modal} titulo={'Error'}
+                                      open={this.state.flag_msj_error} handleClose={this.handleCloseMsjError}/>
+                    </Grid>
                     <Grid item xs={12}>
                         <Typography variant={"h6"} className={classes.title}>
                             Datos del contacto de soporte
@@ -228,14 +246,13 @@ class FormularioContacto extends React.Component {
                                    onChange={this.handleChange('cargo')}
                         />
                     </Grid>
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12} md={9}>
                         <TextField className={classes.formControl} required={true}
                                    id={'dependencia'}
                                    label={'Institución'} value={this.state.registro.dependencia}
                                    disabled={true}
                         />
                     </Grid>
-                    <Grid item md={3}></Grid>
                     <Grid item xs={12} md={3}>
                         <TextField className={classes.formControl} required={true}
                                    id={'nombre'}
@@ -257,10 +274,6 @@ class FormularioContacto extends React.Component {
                                    onChange={this.handleChange('apellido2')}
                         />
                     </Grid>
-                    <Grid item xs={12} md={3}>
-
-                    </Grid>
-
                     <Grid item xs={12} md={3}>
                         <TextField className={classes.formControl} required={true} type={'email'}
                                    error={this.state.registro.correo !== '' && this.state.registro.correo.match(expCorreo) === null}
@@ -290,11 +303,8 @@ class FormularioContacto extends React.Component {
                                    onChange={this.handleChange('extension')}
                         />
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} style={{textAlign:'right'}} >
                         <Typography variant={"body1"} className={classes.mensajeError}>{this.state.mensaje}</Typography>
-                    </Grid>
-                    <Grid item xs={11}/>
-                    <Grid item xs={1}>
                         {!this.props.contacto &&
                         <Tooltip title={'Agregar'}>
                             <Fab color="primary" aria-label="Add" className={classes.fab}
