@@ -27,8 +27,20 @@ const styles = theme => ({
         width: '100%'
     },
     mensajeError: {
-        color: 'red'
+        color: 'red',
+        display : 'inline',
+        marginRight : theme.spacing.unit *2,
     },
+    fab: {
+        [theme.breakpoints.up('sm')]: {
+            width: theme.spacing.unit * 5,
+            height: theme.spacing.unit * 5,
+        },
+        [theme.breakpoints.down('sm')]: {
+            width: theme.spacing.unit * 4,
+            height: theme.spacing.unit * 4,
+        }
+    }
 });
 
  let nuevo = {
@@ -195,24 +207,26 @@ class FormularioEndpoint extends React.Component {
         const {classes} = this.props;
         return (
             <div>
-                <Mensaje mensaje={this.state.mensaje_modal} titulo={this.state.tituloMensaje}
-                         open={this.state.flag_msj} handleClose={this.handleCloseMsj}/>
-                <MensajeError mensaje={this.state.mensaje_error_modal} titulo={'Error'}
-                              open={this.state.flag_msj_error} handleClose={this.handleCloseMsjError}/>
                 <Grid container spacing={32}>
+                    <Grid item xs={12}>
+                        <Mensaje mensaje={this.state.mensaje_modal} titulo={this.state.tituloMensaje}
+                                 open={this.state.flag_msj} handleClose={this.handleCloseMsj}/>
+                        <MensajeError mensaje={this.state.mensaje_error_modal} titulo={'Error'}
+                                      open={this.state.flag_msj_error} handleClose={this.handleCloseMsjError}/>
+                    </Grid>
                     <Grid item xs={12}>
                         <Typography variant={"h6"} className={classes.text}>
                             Datos endpoint
                         </Typography>
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={12} md={6}>
                         <TextField className={classes.formControl} required={true}
                                    id={'url'}
                                    label={'URL'} value={this.state.endpoint.url}
                                    onChange={this.handleChange('url')}
                         />
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid xs={12} md={6}>
                         <FormControl className={classes.formControl}>
                             <InputLabel htmlFor="age-simple">Método</InputLabel>
                             <Select
@@ -224,7 +238,7 @@ class FormularioEndpoint extends React.Component {
                             </Select>
                         </FormControl>
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={12} md={6}>
                         <FormControl className={classes.formControl}>
                             <InputLabel htmlFor="age-simple">Sistema</InputLabel>
                             <Select
@@ -240,18 +254,15 @@ class FormularioEndpoint extends React.Component {
                             </Select>
                         </FormControl>
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={12} md={6}>
                         <TextField className={classes.formControl} required={true}
                                    id={'descripcion'}
                                    label={'Descripcion'} value={this.state.endpoint.descripcion}
                                    onChange={this.handleChange('descripcion')}
                         />
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} style={{textAlign:'right'}}>
                         <Typography variant={"body1"} className={classes.mensajeError}>{this.state.mensaje}</Typography>
-                    </Grid>
-                    <Grid item xs={11}/>
-                    <Grid item xs={1}>
                         {
                             !this.props.endpoint &&
                             <Tooltip title={'Agregar'}>
@@ -269,6 +280,8 @@ class FormularioEndpoint extends React.Component {
                             </Fab>
                         </Tooltip>
                         }
+                    </Grid>
+                    <Grid item xs={12}>
 
                     </Grid>
                 </Grid>
