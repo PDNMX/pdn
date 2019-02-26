@@ -5,9 +5,7 @@ import Paper from "@material-ui/core/Paper/Paper";
 import TablaSolicitudes from "./TablaSolicitudes";
 import Typography from "@material-ui/core/Typography/Typography";
 import Footer from "../../Home/Footer";
-import imgBanner from '../../../assets/banners/FOTO_BANNER_3.jpg';
-import Header from "../../PDNAppBar/PDNAppBar";
-import Logo from "../../../assets/blueprint.svg";
+import Logo from "../../../assets/icono-administracion.svg";
 import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
 import {Link} from "react-router-dom";
 import PDNLogo from "../../../assets/PDN.png";
@@ -152,4 +150,4 @@ class Conexion extends React.Component {
     }
 }
 
-export default withStyles(styles)(Conexion);
+export default withWidth()(withStyles(styles)(Conexion));

@@ -8,7 +8,7 @@ import "../../../index.css";
 import Footer from "../../Home/Footer";
 import {Link} from "react-router-dom";
 import PDNLogo from "../../../assets/PDN.png";
-import Logo from "../../../assets/plan.svg";
+import Logo from "../../../assets/icono-conexion.svg";
 import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
 
 const styles = theme => ({
