@@ -17,7 +17,7 @@ const styles = theme => ({
         maxWidth: 1200
     },
     sistemas: {
-        background: '#89d4f2'
+        background: '#34b3eb'
     }
 });
 
