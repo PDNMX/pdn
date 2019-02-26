@@ -3,7 +3,7 @@ import {withStyles} from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
 import Footer from '../Home/Footer';
-import Header from "../PDNAppBar/PDNAppBar";
+//import Header from "../PDNAppBar/PDNAppBar";
 import Grid from "@material-ui/core/Grid/Grid";
 import img1 from "../../assets/img/servidores_publicos_sancionados.svg";
 import img2 from "../../assets/img/particulares_sancionados.svg";
@@ -11,7 +11,8 @@ import img3 from "../../assets/img/servidores_visualizaciones.svg";
 import TablaServidoresSancionados from './Servidores/TablaServidoresSancionados';
 import TablaParticularaesSancionados from './Particulares/TablaParticularesSancionados';
 import BubbleHolder from './Visualizaciones/BubbleHolder';
-import imgBanner from '../../assets/banners/FOTO_BANNER_2.jpg';
+//import imgBanner from '../../assets/banners/FOTO_BANNER_2.jpg';
+import Header from './Header/Header';
 
 const styles = theme => ({
     root: {
@@ -124,6 +125,8 @@ class Index extends React.Component {
         return (
             <div className={classes.root}>
                 <Header/>
+
+                {/*
                 <div className={classes.banner}>
                     <img alt="PDN" className={classes.bgImg} src={imgBanner}/>
                     <Grid container justify={"center"} spacing={0}>
@@ -150,6 +153,7 @@ class Index extends React.Component {
                         </Grid>
                     </Grid>
                 </div>
+                */}
 
                 <div id={"menu"} className={classes.bgContainer}>
                     <Grid container spacing={0} justify="center">
@@ -199,75 +203,7 @@ class Index extends React.Component {
                     </Grid>
 
                 </div>
-                {/*
-                <div className={classes.bgPanelLight}>
-                    <Grid container justify={'center'} spacing={0}>
-                        <Grid item xs={12} className={classes.section}>
-                            <Grid container spacing={24}>
-                                <Grid item xs={12}>
-                                    {this.state.idContent === 1 &&
-                                    <Typography variant={'h6'} className={classes.title}>
-                                        Servidores públicos sancionados</Typography>
-                                    }
-                                    {this.state.idContent === 2 &&
-                                    <Typography variant={'h6'} className={classes.title}>
-                                        Particulares sancionados</Typography>
-                                    }
-                                    {this.state.idContent === 3 &&
-                                    <Typography variant={'h6'} className={classes.title}>
-                                        Visualizaciones</Typography>
-                                    }
-                                </Grid>
-                                <Grid item xs={6} style={{paddingBottom: '105px'}}>
-                                    {this.state.idContent === 1 &&
-                                    <Typography variant={'subheading'} className={classes.textPrimary}>
-                                        Consulta los datos de las sanciones o inhabilitación firmes en contra de
-                                        servidores públicos por actos vinculados con faltas administrativas
-                                        graves, la anotación de aquellas abstenciones que hayan realizado las
-                                        autoridades investigadoras o el Tribunal Federal de Justicia
-                                        Administrativa en términos de los artículos 77 y 80 de la Ley de
-                                        Responsabilidades.
-                                    </Typography>
-                                    }
-                                    {this.state.idContent === 2 &&
-                                    <Typography variant={'subheading'} className={classes.textPrimary}>
-                                        Consulta los datos de la relación de particulares que cuentan con algún
-                                        impedimento o están inhabilitadas para ser contratadas como servidores
-                                        públicos, y de persona físicas y morales que de igual forma cuentan con
-                                        un impedimento o están inhabilitadas como prestadoras de servicio o
-                                        contratista derivado de una sanción grave por una falta
-                                        administrativa.</Typography>
-                                    }
-                                    {this.state.idContent === 3 &&
-                                    <Typography variant={'subheading'} className={classes.textPrimary}>
-                                        Consulta cuáles son las instituciones con mayor número de servidores
-                                        públicos sancionados, y las que han sancionado al mayor número de
-                                        particulares.</Typography>
-                                    }
-                                </Grid>
-                                <Grid item xs={6} style={{paddingBottom: '105px'}}>
-                                    {this.state.idContent === 1 &&
-                                    <Typography variant={'subheading'} className={classes.textPrimary}>
 
-                                    </Typography>
-                                    }
-                                    {this.state.idContent === 2 &&
-                                    <Typography variant={'subheading'} className={classes.textPrimary}>
-                                    </Typography>
-                                    }
-                                    {this.state.idContent === 3 &&
-                                    <Typography variant={'subheading'} className={classes.textPrimary}>
-                                    </Typography>
-                                    }
-                                </Grid>
-                            </Grid>
-                        </Grid>
-                    </Grid>
-
-
-                </div>
-                */
-                }
 
                 <div className={classes.bgPanelTable}>
                     <Grid container justify={'center'} spacing={0}>
