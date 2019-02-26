@@ -300,7 +300,7 @@ class EnhancedTable extends React.Component {
         const emptyRows = rowsPerPage - filterData.length;
         return (
             <div className={classes.container}>
-                <div>
+
                     <div className={classes.tableWrapper}>
                         <DetalleServidor handleClose={this.handleClose} servidor={this.state.elementoSeleccionado}
                                          control={this.state.open}/>
@@ -401,7 +401,6 @@ class EnhancedTable extends React.Component {
 
 
                     </div>
-                </div>
             </div>
         );
     }

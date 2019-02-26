@@ -140,6 +140,8 @@ class Index extends React.Component {
 
                 <Grid container justify='center' spacing={0} className={classes.bgPanelTable}>
                     <Grid item xs={12} className={classes.section}>
+
+
                         {this.state.idContent === 1 &&
                         <div>
                             <TablaServidores/>
@@ -155,6 +157,7 @@ class Index extends React.Component {
                             <BubbleHolder_Servidores_Contrataciones/>
                         </div>
                         }
+
                     </Grid>
                 </Grid>
 

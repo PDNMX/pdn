@@ -96,7 +96,7 @@ const styles = theme => ({
         marginTop: theme.spacing.unit * 3,
     },
     tableWrapper: {
-        overflowX: 'auto',
+        //overflowX: 'auto',
     },
     tableFooter: {
         display: 'flow-root',
@@ -114,7 +114,7 @@ const styles = theme => ({
     container: {
         marginTop: '30px',
         marginBottom: '30px',
-        width: '90%'
+        //width: '90%'
     },
     table: {
         tableLayout: 'fixed',
@@ -126,7 +126,8 @@ const styles = theme => ({
         color : theme.palette.primary.dark,
     },
     item: {
-        padding: theme.spacing.unit
+        padding: theme.spacing.unit,
+        maxWidth: 1200
     }
 
 });
@@ -348,6 +349,7 @@ class EnhancedTable extends React.Component {
                                  control={this.state.open}/>
 
 
+
                 <Grid container justify='center' spacing={0} className={classes.gridTable}>
                     <Grid item xs={12} >
 
@@ -361,7 +363,8 @@ class EnhancedTable extends React.Component {
                             </Modal>
 
                         }
-                        <Typography variant={"h6"} className={classes.desc}>Pulsa sobre el registro para ver su detalle<br/></Typography>
+                        <Typography variant="h6" className={classes.desc} paragraph>Pulsa sobre el registro para ver su detalle</Typography>
+
 
                         <Table aria-describedby="spinnerLoading" id={'tableServidores'}
                                aria-busy={this.state.loading} aria-labelledby="tableTitle"
@@ -433,18 +436,23 @@ class EnhancedTable extends React.Component {
                 </Grid>
 
 
-                <Grid container spacing={0} className={classes.item}>
-                    <Grid item md={6} xs={12}>
+
+                <Grid container spacing={0}>
+                    <Grid item md={3} xs={12} className={classes.item}>
                         <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data} filtrado={false}
                                   columnas={columnData} fnSearch={this.handleSearchAPI} fileName={'ServidoresAll'}/>
                     </Grid>
-                    <Grid item md={6} xs={12} className={classes.item}>
+
+                    <Grid item md={3} xs={12} className={classes.item}>
                         <BajarCSV innerRef={comp => this.child = comp} data={filterDataAll} filtrado={true}
                                   columnas={columnData} fnSearch={this.handleSearchAPI} fileName={'ServidoresFilter'}/>
                     </Grid>
+
                     <Grid item xs={12} className={classes.item}>
-                        <Typography variant={"caption"} style={{fontStyle:'italic'}}>Fuente: https://reniresp.funcionpublica.gob.mx/ppcapf/consulta/informacion.jsf</Typography>
+                        <Typography variant="caption" style={{wordBreak: 'break-all' }}>Fuente: https://reniresp.funcionpublica.gob.mx/ppcapf/consulta/informacion.jsf </Typography>
                     </Grid>
+                    
+
                 </Grid>
 
             </div>
