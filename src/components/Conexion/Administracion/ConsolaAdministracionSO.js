@@ -188,7 +188,6 @@ class ConsolaAdministracionSO extends React.Component {
     updateSolicitud = () => {
         let params = {
             uid_firebase: 'eq.' + this.state.uid,
-            estatus: 'eq.PENDIENTE'
         };
         let options = {
             method: 'PATCH',
@@ -284,7 +283,7 @@ class ConsolaAdministracionSO extends React.Component {
                             }
                         </Grid>
                         <Grid item xs={12} className={classes.section}>
-                            {(this.state.estatus !== 'APROBADA') &&
+                            {(this.state.estatus !== 'APROBADA' && this.state.estatus!== 'ENVIADA') &&
                             <ExpansionPanel defaultExpanded={true}>
                                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
                                     <Typography className={classes.tituloPanel} variant={"h5"}>Oficio</Typography>
