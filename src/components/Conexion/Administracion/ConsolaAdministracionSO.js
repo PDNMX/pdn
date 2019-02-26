@@ -90,6 +90,11 @@ const styles = theme => ({
         paddingRight: theme.spacing.unit * 2,
         paddingLeft: theme.spacing.unit * 2
     },
+    containerTable: {
+        overflowX: 'auto',
+        marginBottom: theme.spacing.unit * 5,
+        maxWidth: '1200px'
+    }
 });
 
 class ConsolaAdministracionSO extends React.Component {
@@ -247,10 +252,7 @@ class ConsolaAdministracionSO extends React.Component {
                             Consola de administración
                         </Typography>
                         <Typography className={classes.whiteText}>
-                            Administra contactos
-                        </Typography>
-                        <Typography className={classes.whiteText}>
-                            y conexiones
+                            Administra contactos y conexiones
                         </Typography>
                     </Grid>
                 </Grid>
@@ -283,7 +285,7 @@ class ConsolaAdministracionSO extends React.Component {
                             }
                         </Grid>
                         <Grid item xs={12} className={classes.section}>
-                            {(this.state.estatus !== 'APROBADA' && this.state.estatus!== 'ENVIADA') &&
+                            {(this.state.estatus !== 'APROBADA' && this.state.estatus !== 'ENVIADA') &&
                             <ExpansionPanel defaultExpanded={true}>
                                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
                                     <Typography className={classes.tituloPanel} variant={"h5"}>Oficio</Typography>
@@ -312,7 +314,7 @@ class ConsolaAdministracionSO extends React.Component {
                             }
 
                         </Grid>
-                        <Grid item xs={12} className={classes.section}>
+                        <Grid item xs={12} className={classes.containerTable}>
                             {this.state.estatus === 'APROBADA' &&
                             <ExpansionPanel>
                                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
@@ -332,9 +334,8 @@ class ConsolaAdministracionSO extends React.Component {
                                 </ExpansionPanelDetails>
                             </ExpansionPanel>
                             }
-
                         </Grid>
-                        <Grid item xs={12} className={classes.section}>
+                        <Grid item xs={12} className={classes.containerTable}>
                             {this.state.estatus === 'APROBADA' &&
                             <ExpansionPanel>
                                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>

@@ -332,8 +332,9 @@ class TablaSolicitudes extends React.Component {
                     this.setState({
                         flag_msj: true
                     }, () => {
-                        this.getSolicitudes('FIELD_FILTER');
-                    })
+                         this.getSolicitudes('FIELD_FILTER');
+                    });
+                    return true;
                 })
                 .catch(err => {
                     alert("_No se pudó completar la operación");
