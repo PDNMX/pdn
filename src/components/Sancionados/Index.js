@@ -3,7 +3,6 @@ import {withStyles} from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
 import Footer from '../Home/Footer';
-//import Header from "../PDNAppBar/PDNAppBar";
 import Grid from "@material-ui/core/Grid/Grid";
 import img1 from "../../assets/img/servidores_publicos_sancionados.svg";
 import img2 from "../../assets/img/particulares_sancionados.svg";
@@ -11,7 +10,7 @@ import img3 from "../../assets/img/servidores_visualizaciones.svg";
 import TablaServidoresSancionados from './Servidores/TablaServidoresSancionados';
 import TablaParticularaesSancionados from './Particulares/TablaParticularesSancionados';
 import BubbleHolder from './Visualizaciones/BubbleHolder';
-//import imgBanner from '../../assets/banners/FOTO_BANNER_2.jpg';
+import './s3.css';
 import Header from './Header/Header';
 
 const styles = theme => ({
@@ -27,24 +26,9 @@ const styles = theme => ({
         color: theme.palette.titleBanner.color,
         minHeight: '100px'
     },
-    titleLight: {
-        color: theme.palette.titleBanner.color,
-        //   paddingTop : '11%'
-    },
-    titleSub: {
-        color: theme.palette.titleBanner.color,
-        paddingTop: '10px'
-    },
     textDark: {
         color: theme.palette.textNormal,
         textAlign: 'justify'
-    },
-    bgPanelDark: {
-        backgroundColor: theme.palette.backDark.color,
-    },
-    bgPanelLight: {
-        backgroundColor: theme.palette.grisTenue.color,
-        paddingTop: '84px'
     },
     bgPanelTable: {
         backgroundColor: theme.palette.white.color,
@@ -52,22 +36,6 @@ const styles = theme => ({
     },
     section: {
         maxWidth: '1200px'
-    },
-    bgImg: {
-        width: '100%',
-        position: 'absolute',
-        zIndex: 2,
-        opacity: 0.2
-    },
-    container: {
-        [theme.breakpoints.up('sm')]: {
-            marginLeft: '100px',
-            marginRight: '100px'
-        },
-        [theme.breakpoints.down('sm')]: {
-            marginLeft: theme.spacing.unit,
-            marginRight: theme.spacing.unit
-        }
     },
     image: {
         paddingBottom: '24px',
@@ -103,12 +71,6 @@ const styles = theme => ({
         maxWidth: '230px',
         margin: 0,
         display: 'inline-block'
-    },
-    banner: {
-        height: '600px',
-        zIndex: '1',
-        position: 'relative',
-        overflow: 'hidden',
     }
 });
 
@@ -155,7 +117,7 @@ class Index extends React.Component {
                 </div>
                 */}
 
-                <div id={"menu"} className={classes.bgContainer}>
+                <div id="menu" className={classes.bgContainer}>
                     <Grid container spacing={0} justify="center">
                         <Grid item xs={12} className={classes.section}>
                             <Grid container spacing={0}>

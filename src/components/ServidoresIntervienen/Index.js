@@ -13,7 +13,7 @@ import img3 from "../../assets/img/servidores_visualizaciones.svg";
 import BubbleHolder_Servidores_Contrataciones from "./BubbleHolder_Servidores_Contrataciones";
 //import imgBanner from '../../assets/banners/FOTO_BANNER_1.jpg';
 import Header from './Header/Header';
-import './s1.css';
+import './s2.css';
 import classNames from 'classnames';
 
 const styles = theme => ({
