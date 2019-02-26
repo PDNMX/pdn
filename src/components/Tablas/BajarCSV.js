@@ -5,7 +5,6 @@ import DownloadIcon from '@material-ui/icons/SaveAlt';
 import Button from "@material-ui/core/Button/Button";
 import classNames from 'classnames';
 import PropDataUpdatedCSVLink from '../PropDataUpdatedCSVLink';
-import img3 from "../../assets/img/servidores_visualizaciones.svg";
 
 const styles = theme => ({
     button: {
@@ -20,7 +19,7 @@ const styles = theme => ({
     iconSmall: {
         width : '25px'
     },
-    flex: {
+    root: {
         flexGrow: 1,
     },
     linkTransparent: {
@@ -54,8 +53,8 @@ class BajarCSV extends React.Component {
 
 
         return (
-            <div>
-                <Button variant="contained" size="small" className={classNames(classes.button)}
+            <div className={classes.root}>
+                <Button variant="contained" className={classNames(classes.button)}
                         onClick={() => {
                             filtrado ? fnSearch('FILTER') : fnSearch('ALL');
                         }}>
@@ -66,8 +65,6 @@ class BajarCSV extends React.Component {
                 <PropDataUpdatedCSVLink ref={this.cvsLink} data={data} filename={nombreArchivo} target={"_blank"}
                                         headers={headers} className={classes.linkTransparent}
                 />
-
-
             </div>
         );
     }

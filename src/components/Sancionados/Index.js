@@ -8,7 +8,7 @@ import img1 from "../../assets/img/servidores_publicos_sancionados.svg";
 import img2 from "../../assets/img/particulares_sancionados.svg";
 import img3 from "../../assets/img/servidores_visualizaciones.svg";
 import TablaServidoresSancionados from './Servidores/TablaServidoresSancionados';
-import TablaParticularaesSancionados from './Particulares/TablaParticularesSancionados';
+import TablaParticularesSancionados from './Particulares/TablaParticularesSancionados';
 import BubbleHolder from './Visualizaciones/BubbleHolder';
 import './s3.css';
 import Header from './Header/Header';
@@ -134,27 +134,23 @@ class Index extends React.Component {
 
 
                 <div className={classes.bgPanelTable}>
-                    <Grid container justify={'center'} spacing={0}>
+                    <Grid container justify='center' spacing={0}>
                         <Grid item xs={12} className={classes.section}>
-                            <Grid container spacing={32} justify={'center'} className={classes.section}>
-                                <Grid item xs={12}>
-                                    {this.state.idContent === 1 &&
-                                    <div>
-                                        <TablaServidoresSancionados/>
-                                    </div>
-                                    }
-                                    {this.state.idContent === 2 &&
-                                    <div>
-                                        <TablaParticularaesSancionados/>
-                                    </div>
-                                    }
-                                    {this.state.idContent === 3 &&
-                                    <div>
-                                        <BubbleHolder/>
-                                    </div>
-                                    }
-                                </Grid>
-                            </Grid>
+                                {this.state.idContent === 1 &&
+                                <div>
+                                    <TablaServidoresSancionados/>
+                                </div>
+                                }
+                                {this.state.idContent === 2 &&
+                                <div>
+                                    <TablaParticularesSancionados/>
+                                </div>
+                                }
+                                {this.state.idContent === 3 &&
+                                <div>
+                                    <BubbleHolder/>
+                                </div>
+                                }
                         </Grid>
                     </Grid>
                 </div>

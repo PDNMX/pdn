@@ -157,8 +157,10 @@ const styles = theme => ({
     },
     desc:{
         color : theme.palette.primary.dark,
+    },
+    item:{
+        padding: theme.spacing.unit
     }
-
 });
 
 
@@ -452,18 +454,18 @@ class EnhancedTable extends React.Component {
                         </Grid>
 
                         <Grid container>
-                            <Grid item md={3} xs={12}>
+                            <Grid item md={3} xs={12} className={classes.item}>
                                 <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data} filtrado={false}
                                           columnas={columnData} fnSearch={this.handleSearchAPI}
                                           fileName={'Particulares inhabilitados'}/>
                             </Grid>
-                            <Grid item md={3} xs={12}>
+                            <Grid item md={3} xs={12} className={classes.item}>
                                 <BajarCSV innerRef={comp => this.child = comp} data={filterDataAll} filtrado={true}
                                           columnas={columnData} fnSearch={this.handleSearchAPI}
                                           fileName={'Particulares inhabilitados'}/>
                             </Grid>
 
-                            <Grid item xs={12}>
+                            <Grid item xs={12} className={classes.item}>
                                 <Typography variant={"caption"} style={{fontStyle:'italic'}}>Fuente: https://datos.gob.mx/busca/dataset/proveedores-y-contratistas-sancionados</Typography>
                             </Grid>
                         </Grid>

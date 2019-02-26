@@ -94,10 +94,11 @@ const styles = theme => ({
         smallIcon: {
         color: theme.palette.primary.main
     },
-    centrado:{
-        display: 'flex',
-        justifyContent : 'center',
-        alignItems: 'center'
+    downloadIcon: {
+        paddingRight: theme.spacing.unit
+    },
+    downloadButton: {
+        background : '#FFE01B'
     }
 
 });
@@ -397,9 +398,11 @@ class DetalleServidorSancionado extends React.Component {
                                     }}
                                 />
                             </Grid>
-                            <Grid item md={6} xs={12} className={classes.centrado}>
-                                <Button color="primary" variant="text" size="small" onClick={()=>this.printPDF()}>
-                                    <DownloadIcon />
+                            <Grid item md={6} xs={12} align="center">
+                                <Button variant="contained"
+                                        className={classes.downloadButton}
+                                        onClick={()=>this.printPDF()}>
+                                    <DownloadIcon className={classes.downloadIcon}/>
                                     {'Descargar constancia'}
                                 </Button>
                             </Grid>

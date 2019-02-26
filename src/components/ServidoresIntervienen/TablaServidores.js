@@ -124,6 +124,9 @@ const styles = theme => ({
     },
     desc:{
         color : theme.palette.primary.dark,
+    },
+    item: {
+        padding: theme.spacing.unit
     }
 
 });
@@ -430,19 +433,16 @@ class EnhancedTable extends React.Component {
                 </Grid>
 
 
-                <Grid container spacing={0}>
+                <Grid container spacing={0} className={classes.item}>
                     <Grid item md={6} xs={12}>
                         <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data} filtrado={false}
                                   columnas={columnData} fnSearch={this.handleSearchAPI} fileName={'ServidoresAll'}/>
                     </Grid>
-                    <Grid item md={6} xs={12}>
+                    <Grid item md={6} xs={12} className={classes.item}>
                         <BajarCSV innerRef={comp => this.child = comp} data={filterDataAll} filtrado={true}
                                   columnas={columnData} fnSearch={this.handleSearchAPI} fileName={'ServidoresFilter'}/>
                     </Grid>
-                    <Grid item md={6} xs={12}>
-
-                    </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} className={classes.item}>
                         <Typography variant={"caption"} style={{fontStyle:'italic'}}>Fuente: https://reniresp.funcionpublica.gob.mx/ppcapf/consulta/informacion.jsf</Typography>
                     </Grid>
                 </Grid>

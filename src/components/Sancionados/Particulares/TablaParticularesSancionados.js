@@ -6,6 +6,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
+import TableFooter from '@material-ui/core/TableFooter';
 import Toolbar from '@material-ui/core/Toolbar';
 import rp from "request-promise";
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -118,8 +119,8 @@ const columnData = [
 
 const styles = theme => ({
     root: {
-        width: '100%',
-        marginTop: theme.spacing.unit * 3,
+        marginTop: '30px',
+        marginBottom: '30px',
     },
     tableWrapper: {
         overflowX: 'auto',
@@ -136,13 +137,9 @@ const styles = theme => ({
         top: 0,
         bottom: 0
     },
-    container: {
-        marginTop: '30px',
-        marginBottom: '30px',
-    },
+
     section: {
-        maxWidth: '1024px',
-        overflowX: 'auto'
+        maxWidth: '1200px',
     },
     table: {
         tableLayout: 'fixed',
@@ -156,6 +153,9 @@ const styles = theme => ({
     },
     desc:{
         color : theme.palette.primary.dark,
+    },
+    item: {
+        padding: theme.spacing.unit
     }
 });
 
@@ -361,109 +361,115 @@ class EnhancedTable extends React.Component {
         const {data, order, orderBy, selected, rowsPerPage, page, filterData, totalRows, filterDataAll} = this.state;
         const emptyRows = rowsPerPage - filterData.length;
         return (
-            <div className={classes.container}>
-                <div>
-                    <EnhancedTableToolbar handleChangeCampo={this.handleChangeCampo}
-                                          nombreParticular={this.state.nombreParticular}
-                                          institucion={this.state.institucion} />
-                        <DetalleParticular handleClose={this.handleClose} particular={this.state.elementoSeleccionado}
-                                           control={this.state.open}/>
-                    {
-                        this.state.loading &&
-                        <Modal
-                            open={this.state.loading}
-                            disableAutoFocus={true}
-                        >
-                            <CircularProgress className={classes.progress} id="spinnerLoading" size={200}/>
-                        </Modal>
+            <div className={classes.root}>
 
-                    }
-                        <Grid container justify={'center'} spacing={0} className={classes.gridTable}>
-                            <Grid item xs={12} >
-                                <Typography variant={"h6"} className={classes.desc}>Pulsa sobre el registro para ver su detalle<br/></Typography>
-                                <Table className={classes.table} aria-describedby="spinnerLoading"
-                                       aria-busy={this.state.loading} aria-labelledby="tableTitle">
-                                    <EnhancedTableHead
-                                        numSelected={selected.length}
-                                        order={order}
-                                        orderBy={orderBy}
-                                        onSelectAllClick={this.handleSelectAllClick}
-                                        onRequestSort={this.handleRequestSort}
-                                        rowCount={data.length}
-                                        columnData = {columnData}
-                                    />
-                                    <TableBody id="tableParticulares">
-                                        {filterData
-                                            .sort(getSorting(order, orderBy))
-                                            .map(n => {
-                                                const isSelected = this.isSelected(n.id);
-                                                return (
-                                                    <TableRow
-                                                        hover
-                                                        onClick={event => this.handleClick(event, n)}
-                                                        role="checkbox"
-                                                        aria-checked={isSelected}
-                                                        tabIndex={-1}
-                                                        key={n.id}
-                                                        selected={isSelected}
-                                                    >
-                                                        <TableCell component="th" scope="row"
-                                                                   padding="default">{n.proveedor}</TableCell>
-                                                        <TableCell>{n.dependencia}</TableCell>
-                                                        <TableCell>{n.expediente}</TableCell>
-                                                        <TableCell>{n.sentidoResolucion}</TableCell>
-                                                    </TableRow>
-                                                );
-                                            })}
-                                        {emptyRows > 0 && (
-                                            <TableRow style={{height: 49 * emptyRows}}>
-                                                <TableCell colSpan={4}/>
+                <EnhancedTableToolbar handleChangeCampo={this.handleChangeCampo}
+                                      nombreParticular={this.state.nombreParticular}
+                                      institucion={this.state.institucion} />
+                <DetalleParticular handleClose={this.handleClose} particular={this.state.elementoSeleccionado}
+                                   control={this.state.open}/>
+                {
+                    this.state.loading &&
+                    <Modal
+                        open={this.state.loading}
+                        disableAutoFocus={true}
+                    >
+                        <CircularProgress className={classes.progress} id="spinnerLoading" size={200}/>
+                    </Modal>
+
+                }
+                <Grid container justify='center' spacing={0} className={classes.gridTable}>
+                    <Grid item xs={12} className={classes.section}>
+                        <Typography variant="h6" className={classes.desc}>Pulsa sobre el registro para ver su detalle<br/></Typography>
+
+
+                        <Table className={classes.table} aria-describedby="spinnerLoading"
+                               aria-busy={this.state.loading} aria-labelledby="tableTitle">
+                            <EnhancedTableHead
+                                numSelected={selected.length}
+                                order={order}
+                                orderBy={orderBy}
+                                onSelectAllClick={this.handleSelectAllClick}
+                                onRequestSort={this.handleRequestSort}
+                                rowCount={data.length}
+                                columnData = {columnData}
+                            />
+                            <TableBody id="tableParticulares">
+                                {filterData
+                                    .sort(getSorting(order, orderBy))
+                                    .map(n => {
+                                        const isSelected = this.isSelected(n.id);
+                                        return (
+                                            <TableRow
+                                                hover
+                                                onClick={event => this.handleClick(event, n)}
+                                                role="checkbox"
+                                                aria-checked={isSelected}
+                                                tabIndex={-1}
+                                                key={n.id}
+                                                selected={isSelected}
+                                            >
+                                                <TableCell component="th" scope="row"
+                                                           padding="default">{n.proveedor}</TableCell>
+                                                <TableCell>{n.dependencia}</TableCell>
+                                                <TableCell>{n.expediente}</TableCell>
+                                                <TableCell>{n.sentidoResolucion}</TableCell>
                                             </TableRow>
-                                        )}
-                                    </TableBody>
+                                        );
+                                    })}
+                                {emptyRows > 0 && (
+                                    <TableRow style={{height: 49 * emptyRows}}>
+                                        <TableCell colSpan={4}/>
+                                    </TableRow>
+                                )}
+                            </TableBody>
 
-                                </Table>
-                            </Grid>
-                        </Grid>
+                            <TableFooter>
+                                <TableRow>
 
-                        <Grid container>
-                            <Grid item md={3} xs={12}>
-                                <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data} filtrado={false}
-                                          columnas={columnData} fnSearch={this.handleSearchAPI}
-                                          fileName={'Particulares sancionados'}/>
-                            </Grid>
-                            <Grid item md={3} xs={12}>
-                                <BajarCSV innerRef={comp => this.child = comp} data={filterDataAll} filtrado={true}
-                                          columnas={columnData} fnSearch={this.handleSearchAPI}
-                                          fileName={'Particulares sancionados'}/>
-                            </Grid>
-                            <Grid item md={6} xs={12}>
-                                <TablePagination
-                                    className={classes.tablePagination}
-                                    component="div"
-                                    count={totalRows}
-                                    rowsPerPage={rowsPerPage}
-                                    page={page}
-                                    backIconButtonProps={{
-                                        'aria-label': 'Previous Page',
-                                    }}
-                                    nextIconButtonProps={{
-                                        'aria-label': 'Next Page',
-                                    }}
-                                    onChangePage={this.handleChangePage}
-                                    onChangeRowsPerPage={this.handleChangeRowsPerPage}
-                                    labelRowsPerPage='Registros por página'
-                                    labelDisplayedRows={({from, to, count}) => {
-                                        return `${from}-${to} de ${count}`;
-                                    }}
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <Typography variant={"caption"} style={{fontStyle:'italic'}}>Fuente: https://datos.gob.mx/busca/dataset/proveedores-y-contratistas-sancionados</Typography>
-                            </Grid>
-                        </Grid>
+                                    <TablePagination
+                                        className={classes.tablePagination}
+                                        colSpan={4}
+                                        count={totalRows}
+                                        rowsPerPage={rowsPerPage}
+                                        page={page}
+                                        backIconButtonProps={{
+                                            'aria-label': 'Previous Page',
+                                        }}
+                                        nextIconButtonProps={{
+                                            'aria-label': 'Next Page',
+                                        }}
+                                        onChangePage={this.handleChangePage}
+                                        onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                                        labelRowsPerPage='Registros por página'
+                                        labelDisplayedRows={({from, to, count}) => {
+                                            return `${from}-${to} de ${count}`;
+                                        }}
+                                    />
 
-                </div>
+                                </TableRow>
+                            </TableFooter>
+                        </Table>
+
+                    </Grid>
+                </Grid>
+
+                <Grid container spacing={0}>
+                    <Grid item md={3} xs={12} className={classes.item}>
+                        <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data} filtrado={false}
+                                  columnas={columnData} fnSearch={this.handleSearchAPI}
+                                  fileName={'Particulares sancionados'}/>
+                    </Grid>
+                    <Grid item md={3} xs={12} className={classes.item}>
+                        <BajarCSV innerRef={comp => this.child = comp} data={filterDataAll} filtrado={true}
+                                  columnas={columnData} fnSearch={this.handleSearchAPI}
+                                  fileName={'Particulares sancionados'}/>
+                    </Grid>
+                    <Grid item xs={12} className={classes.item }>
+                        <Typography variant={"caption"} style={{fontStyle:'italic'}}>Fuente: https://datos.gob.mx/busca/dataset/proveedores-y-contratistas-sancionados</Typography>
+                    </Grid>
+                </Grid>
+
             </div>
         );
     }
