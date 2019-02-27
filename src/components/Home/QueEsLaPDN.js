@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import Star from '../../assets/grafica.png';
 import Button from '@material-ui/core/Button';
 import {Link} from 'react-router-dom';
+//import classNames from 'classnames';
 
 const styles = theme => ({
     root: {
@@ -25,8 +26,15 @@ const styles = theme => ({
         marginBottom: theme.spacing.unit,
         background: '#ffe01b',//'#fecb6e'
     },
+    headingText: {
+        color : theme.palette.titleBanner.color,
+        fontSize: '48px',
+        fontWeight: 500
+    },
     text: {
-        color : theme.palette.titleBanner.color
+        fontSize: '18px',
+        fontWeight: 500,
+        color: theme.palette.titleBanner.color
     }
 });
 class QueEsLaPDN extends React.Component{
@@ -38,7 +46,7 @@ class QueEsLaPDN extends React.Component{
             <div className={classes.root}>
                 <Grid container spacing={0} justify='center' className={classes.container}>
                     <Grid item xs={12} style={{paddingBottom: 60}}>
-                        <Typography variant="h4" className={classes.text}>
+                        <Typography className={classes.headingText}>
                             ¿Qué es la Plataforma Digital Nacional?
                         </Typography>
                     </Grid>
@@ -48,15 +56,14 @@ class QueEsLaPDN extends React.Component{
                         <img src={Star} alt="PDN" className={classes.star}/>
                     </Grid>
                     <Grid item md={8} xs={12}>
-                        <Typography variant="h5" className={classes.text}>
+                        <Typography className={classes.text} paragraph>
                             La <b>Plataforma Digital Nacional</b> es una fuente de inteligencia para construir integridad y combatir la corrupción, que creará valor para el gobierno y la sociedad, a partir de grandes cantidades de datos.
                         </Typography>
-                        <br/>
-                        <Typography variant="h5" className={classes.text}>
+
+                        <Typography className={classes.text} paragraph>
                             La Plataforma es un <b>medio para el intercambio de datos anticorrupción</b> del Gobierno, que busca quitar barreras y romper silos de información para que los datos sean comparables, accesibles y utilizables, empezando con <b>seis sistemas de datos prioritarios</b>.
                         </Typography>
 
-                        <br/>
                         <Button variant="contained" className={classes.button} component={Link} to="/about">Más información sobre la PDN</Button>
                     </Grid>
                 </Grid>

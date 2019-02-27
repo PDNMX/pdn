@@ -18,8 +18,15 @@ const styles = theme => ({
     button:{
         background: '#ffe01b'
     },
-    titulos: {
-        color: theme.palette.titleBanner.color
+    headingText: {
+        color: theme.palette.titleBanner.color,
+        fontWeight: 700,
+        fontSize: '48px'
+    },
+    text: {
+        color: theme.palette.titleBanner.color,
+        fontWeight: 500,
+        fontSize: '48px'
     }
 
 });
@@ -33,23 +40,17 @@ class Explora extends React.Component{
             <div className={classes.root}>
                 <Grid container spacing={0} justify='center' className={classes.container}>
                     <Grid item xs={12} align="center">
-                        <Typography variant="h2" className={classes.titulos}>
+                        <Typography className={classes.headingText} paragraph>
                             Plataforma Digital Nacional
 
                         </Typography>
-                        <br/>
 
-                        <Typography variant="h2" className={classes.titulos}>
+
+                        <Typography className={classes.text} paragraph>
                             explora los 6 sistemas
                         </Typography>
-                        <br/>
-                        <br/>
+                        
                         <VideoDialog/>
-                        {/*<Button variant='raised' className={classes.button}>Conoce más</Button>
-                        <br/>
-                        <Typography>
-                            Consulta, visualiza y descarga la información pública de cada uno <br/>de los sistemas de la <b>Plataforma Digital Nacional</b>.
-                        </Typography>*/}
                     </Grid>
                 </Grid>
             </div>
