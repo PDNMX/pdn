@@ -203,7 +203,7 @@ class BusquedaServidor extends React.Component {
         let IconComponent= <i class='baseline-keyboard_arrow_down icon-image-preview'/>;
 
         return (
-            <Grid container spacing={0}>
+            <Grid container spacing={32}>
 
 
                 <Grid item xs={12} md={4}>

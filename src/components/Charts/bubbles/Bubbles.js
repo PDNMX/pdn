@@ -38,7 +38,6 @@ export default class Bubbles extends React.Component {
     };
 
     onRef = (ref) => {
-        console.log("OnRef");
         this.setState({ g: d3.select(ref) }, () => this.renderBubbles(this.props.data))
     };
 

@@ -23,7 +23,6 @@ function floatingTooltip(tooltipId, width) {
     }
 */
     tt.style('height','fit-content');
-    tt.style('width','fit-content');
     // Initially it is hidden.
     hideTooltip()
 

@@ -25,10 +25,20 @@ const styles = theme => ({
     },
     bgPanelTable: {
         backgroundColor: theme.palette.white.color,
-        marginBottom: '266px'
+        [theme.breakpoints.up('sm')]: {
+            marginBottom: theme.spacing.unit * 30,
+        },
+        [theme.breakpoints.down('sm')]: {
+            marginBottom: theme.spacing.unit * 10,
+        },
+
     },
     section: {
-        maxWidth: '1200px'
+        maxWidth: '1200px',
+    },
+    sectionT: {
+        maxWidth: '1200px',
+        overflowX : 'auto'
     },
     image: {
         width: '60px',
@@ -139,28 +149,18 @@ class Index extends React.Component {
                 </Grid>
 
                 <Grid container justify='center' spacing={0} className={classes.bgPanelTable}>
-                    <Grid item xs={12} className={classes.section}>
-
-
+                    <Grid item xs={12} className={classes.sectionT}>
                         {this.state.idContent === 1 &&
-                        <div>
                             <TablaServidores/>
-                        </div>
                         }
                         {this.state.idContent === 2 &&
-                        <div>
                             <TablaParticulares/>
-                        </div>
                         }
                         {this.state.idContent === 3 &&
-                        <div>
                             <BubbleHolder_Servidores_Contrataciones/>
-                        </div>
                         }
-
                     </Grid>
                 </Grid>
-
                 <Footer/>
             </div>
         );

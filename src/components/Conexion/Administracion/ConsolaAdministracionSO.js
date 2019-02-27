@@ -316,23 +316,23 @@ class ConsolaAdministracionSO extends React.Component {
                         </Grid>
                         <Grid item xs={12} className={classes.containerTable}>
                             {this.state.estatus === 'APROBADA' &&
-                            <ExpansionPanel>
-                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
-                                    <Typography className={classes.tituloPanel} variant={"h5"}>Administrar
-                                        contactos</Typography>
-                                </ExpansionPanelSummary>
-                                <ExpansionPanelDetails>
-                                    <Grid container>
-                                        <Grid item xs={12}>
-                                            <FormularioContacto updateView={this.updateView}/>
+                                <ExpansionPanel>
+                                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
+                                        <Typography className={classes.tituloPanel} variant={"h5"}>Administrar
+                                            contactos</Typography>
+                                    </ExpansionPanelSummary>
+                                    <ExpansionPanelDetails>
+                                        <Grid container>
+                                            <Grid item xs={12}>
+                                                <FormularioContacto updateView={this.updateView}/>
+                                            </Grid>
+                                            <Grid item xs={12}>
+                                                <TablaContactos update={this.state.updateTable}
+                                                                updateView={this.updateView}/>
+                                            </Grid>
                                         </Grid>
-                                        <Grid item xs={12}>
-                                            <TablaContactos update={this.state.updateTable}
-                                                            updateView={this.updateView}/>
-                                        </Grid>
-                                    </Grid>
-                                </ExpansionPanelDetails>
-                            </ExpansionPanel>
+                                    </ExpansionPanelDetails>
+                                </ExpansionPanel>
                             }
                         </Grid>
                         <Grid item xs={12} className={classes.containerTable}>

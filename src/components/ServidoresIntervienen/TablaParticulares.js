@@ -125,6 +125,7 @@ const styles = theme => ({
     container: {
         marginTop: '30px',
         marginBottom: '30px',
+        overflowX : 'auto'
     },
     tableWrapper: {
         //overflowX: 'auto',
@@ -360,27 +361,34 @@ class EnhancedTable extends React.Component {
         const {data, order, orderBy, selected, rowsPerPage, page, filterData, totalRows, filterDataAll} = this.state;
         const emptyRows = rowsPerPage - filterData.length;
         return (
-            <div className={classes.container}>
-
-                <EnhancedTableToolbar handleChangeCampo={this.handleChangeCampo}
-                                      nombreParticular={this.state.nombreParticular}
-                                      institucion={this.state.institucion}/>
-                <DetalleParticular handleClose={this.handleClose} particular={this.state.elementoSeleccionado}
-                                   control={this.state.open}/>
-                {
-                    this.state.loading &&
-                    <Modal
-                        open={this.state.loading}
-                        disableAutoFocus={true}
-                    >
-                        <CircularProgress className={classes.progress} id="spinnerLoading" size={200}/>
-                    </Modal>
-
-                }
+            <div>
                 <Grid container justify='center' spacing={0} className={classes.gridTable}>
-                    <Grid item xs={12} className={classes.section}>
+                    <Grid item xs={12}>
+                        <EnhancedTableToolbar handleChangeCampo={this.handleChangeCampo}
+                                              nombreParticular={this.state.nombreParticular}
+                                              institucion={this.state.institucion}/>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <DetalleParticular handleClose={this.handleClose} particular={this.state.elementoSeleccionado}
+                                           control={this.state.open}/>
+                    </Grid>
+                    <Grid item xs={12}>
+                        {
+                            this.state.loading &&
+                            <Modal
+                                open={this.state.loading}
+                                disableAutoFocus={true}
+                            >
+                                <CircularProgress className={classes.progress} id="spinnerLoading" size={200}/>
+                            </Modal>
+                        }
+                    </Grid>
+                    <Grid item xs={12}>
                         <Typography variant={"h6"} className={classes.desc}>Pulsa sobre el registro para ver su detalle<br/></Typography>
-                        <Table className={classes.table} aria-describedby="spinnerLoading"
+                    </Grid>
+                    <Grid item xs={12} >
+                        <div className={classes.container}>
+                        <Table  aria-describedby="spinnerLoading"
                                aria-busy={this.state.loading} aria-labelledby="tableTitle">
                             <EnhancedTableHead
                                 numSelected={selected.length}
@@ -447,10 +455,10 @@ class EnhancedTable extends React.Component {
                             </TableFooter>
 
                         </Table>
+                        </div>
                     </Grid>
                 </Grid>
-
-                <Grid container spacing={0}>
+                <Grid container>
                     <Grid item md={3} xs={12} className={classes.item}>
                         <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data} filtrado={false}
                                   columnas={columnData} fnSearch={this.handleSearchAPI}

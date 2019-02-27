@@ -15,6 +15,7 @@ import DetalleSolicitud from './DetalleSolicitud';
 import axios from "axios";
 import TablePagination from "@material-ui/core/TablePagination/TablePagination";
 import Mensaje from "../../Mensajes/Mensaje";
+import Grid from "@material-ui/core/Grid/Grid";
 
 let counter = 0;
 let createData = (item) => {
@@ -173,6 +174,9 @@ const styles = theme => ({
     },
     text: {
         color: theme.palette.primary.dark,
+    },
+    containerTable: {
+        overflowX: 'scroll'
     }
 });
 
@@ -313,33 +317,33 @@ class TablaSolicitudes extends React.Component {
         this.setState({flag_msj: false});
     };
 
-    changeEstatus = (n,newStatus) => {
-            let params = {};
-            params.correo = 'eq.' + n.correo;
-            let options = {
-                method: 'PATCH',
-                uri: 'https://plataformadigitalnacional.org/api/solicitudes_conexion',
-                qs: params,
-                headers: {
-                    'Prefer': 'return = representation',
-                    'Content-Type': 'application/json'
-                },
-                body: {'estatus': newStatus===0?'APROBADA':newStatus===1?'RECHAZADA':'REVOCADA'},
-                json: true
-            };
-            rp(options)
-                .then(data => {
-                    this.setState({
-                        flag_msj: true
-                    }, () => {
-                         this.getSolicitudes('FIELD_FILTER');
-                    });
-                    return true;
-                })
-                .catch(err => {
-                    alert("_No se pudó completar la operación");
-                    console.log(err);
+    changeEstatus = (n, newStatus) => {
+        let params = {};
+        params.correo = 'eq.' + n.correo;
+        let options = {
+            method: 'PATCH',
+            uri: 'https://plataformadigitalnacional.org/api/solicitudes_conexion',
+            qs: params,
+            headers: {
+                'Prefer': 'return = representation',
+                'Content-Type': 'application/json'
+            },
+            body: {'estatus': newStatus === 0 ? 'APROBADA' : newStatus === 1 ? 'RECHAZADA' : 'REVOCADA'},
+            json: true
+        };
+        rp(options)
+            .then(data => {
+                this.setState({
+                    flag_msj: true
+                }, () => {
+                    this.getSolicitudes('FIELD_FILTER');
                 });
+                return true;
+            })
+            .catch(err => {
+                alert("_No se pudó completar la operación");
+                console.log(err);
+            });
     };
 
     render() {
@@ -347,102 +351,114 @@ class TablaSolicitudes extends React.Component {
         const {order, orderBy, selected, rowsPerPage, page, filterData, totalRows, filterDataAll} = this.state;
         let index = 0;
         return (
-            <div>
-                <Mensaje mensaje={'El estatus de la solicitud ha sido modificado'} titulo={'Cambio de estatus'}
-                         open={this.state.flag_msj} handleClose={this.handleCloseMsj}/>
-                <DetalleSolicitud handleClose={this.handleClose} solicitud={this.state.elementoSeleccionado}
-                                  control={this.state.open}/>
-                <Typography variant={"h6"} className={classes.text}>Solicitudes</Typography>
-                <Table className={classes.table} aria-describedby="spinnerLoading"
-                       aria-busy={this.state.loading} aria-labelledby="tableTitle">
-                    <EnhancedTableHead
-                        numSelected={selected.length}
-                        order={order}
-                        orderBy={orderBy}
-                        onSelectAllClick={this.handleSelectAllClick}
-                        onRequestSort={this.handleRequestSort}
-                        rowCount={filterData.length}
-                        columnData={columnData}
-                        acciones={true}
-                    />
-                    <TableBody>
-                        {
-                            filterData
-                                .sort(getSorting(order, orderBy))
-                                .map(n => {
-                                    return (
-                                        <TableRow
-                                            hover
-                                            tabIndex={-1}
-                                            key={index++}
-                                        >
-                                            <TableCell
-                                                onClick={(event) => this.handleClick(event, n)}>{n.nombre}</TableCell>
-                                            <TableCell
-                                                onClick={(event) => this.handleClick(event, n)}>{n.apellido1}</TableCell>
-                                            <TableCell
-                                                onClick={(event) => this.handleClick(event, n)}>{n.apellido2}</TableCell>
-                                            <TableCell
-                                                onClick={(event) => this.handleClick(event, n)}>{n.cargo}</TableCell>
-                                            <TableCell
-                                                onClick={(event) => this.handleClick(event, n)}>{n.dependencia}</TableCell>
-                                            <TableCell
-                                                onClick={(event) => this.handleClick(event, n)}>{n.fecha_solicitud}</TableCell>
-                                            <TableCell
-                                                onClick={(event) => this.handleClick(event, n)}>{n.estatus}</TableCell>
-                                            <TableCell>
-                                                <Tooltip title={"Descargar oficio"}>
-                                                    <ArchiveIcon onClick={() => this.viewOficio(n)}
-                                                                 color={n.id_oficio?"secondary":'disabled'}/>
-                                                </Tooltip>
-                                                {
-                                                    (n.estatus==='ENVIADA' || n.estatus==='REVOCADA') &&
-                                                    <Tooltip title={"Aprobar solicitud"}>
-                                                        <AcceptIcon onClick={() => this.changeEstatus(n,0)}
-                                                                    color={'primary'}/>
-                                                    </Tooltip>
-                                                }
-                                                {
-                                                    n.estatus==='ENVIADA' &&
-                                                    <Tooltip title={"Rechazar solicitud"}>
-                                                        <RejectIcon onClick={() => this.changeEstatus(n,1)}
-                                                                    color={'error'}/>
-                                                    </Tooltip>
-                                                }
-                                                {
-                                                    (n.estatus==='APROBADA') &&
-                                                    <Tooltip title={"Revocar solicitud"}>
-                                                        <RejectIcon onClick={() => this.changeEstatus(n,2)}
-                                                                    color={'error'}/>
-                                                    </Tooltip>
-                                                }
+            <div className={classes.containerTable}>
+                <Grid container>
+                    <Grid item xs={12}>
+                        <Mensaje mensaje={'El estatus de la solicitud ha sido modificado'} titulo={'Cambio de estatus'}
+                                 open={this.state.flag_msj} handleClose={this.handleCloseMsj}/>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <DetalleSolicitud handleClose={this.handleClose} solicitud={this.state.elementoSeleccionado}
+                                          control={this.state.open}/>
 
-                                            </TableCell>
-                                        </TableRow>
-                                    );
-                                })
-                        }
-                    </TableBody>
-                </Table>
-                <TablePagination
-                    className={classes.tablePagination}
-                    component="div"
-                    count={totalRows}
-                    rowsPerPage={rowsPerPage}
-                    page={page}
-                    backIconButtonProps={{
-                        'aria-label': 'Previous Page',
-                    }}
-                    nextIconButtonProps={{
-                        'aria-label': 'Next Page',
-                    }}
-                    onChangePage={this.handleChangePage}
-                    onChangeRowsPerPage={this.handleChangeRowsPerPage}
-                    labelRowsPerPage='Registros por página'
-                    labelDisplayedRows={({from, to, count}) => {
-                        return `${from}-${to} de ${count}`;
-                    }}
-                />
+                    </Grid>
+                    <Grid item xs={12}><Typography variant={"h6"}
+                                                   className={classes.text}>Solicitudes</Typography></Grid>
+                    <Grid item xs={12}>
+                        <Table aria-describedby="spinnerLoading"
+                               aria-busy={this.state.loading} aria-labelledby="tableTitle">
+                            <EnhancedTableHead
+                                numSelected={selected.length}
+                                order={order}
+                                orderBy={orderBy}
+                                onSelectAllClick={this.handleSelectAllClick}
+                                onRequestSort={this.handleRequestSort}
+                                rowCount={filterData.length}
+                                columnData={columnData}
+                                acciones={true}
+                            />
+                            <TableBody>
+                                {
+                                    filterData
+                                        .sort(getSorting(order, orderBy))
+                                        .map(n => {
+                                            return (
+                                                <TableRow
+                                                    hover
+                                                    tabIndex={-1}
+                                                    key={index++}
+                                                >
+                                                    <TableCell
+                                                        onClick={(event) => this.handleClick(event, n)}>{n.nombre}</TableCell>
+                                                    <TableCell
+                                                        onClick={(event) => this.handleClick(event, n)}>{n.apellido1}</TableCell>
+                                                    <TableCell
+                                                        onClick={(event) => this.handleClick(event, n)}>{n.apellido2}</TableCell>
+                                                    <TableCell
+                                                        onClick={(event) => this.handleClick(event, n)}>{n.cargo}</TableCell>
+                                                    <TableCell
+                                                        onClick={(event) => this.handleClick(event, n)}>{n.dependencia}</TableCell>
+                                                    <TableCell
+                                                        onClick={(event) => this.handleClick(event, n)}>{n.fecha_solicitud}</TableCell>
+                                                    <TableCell
+                                                        onClick={(event) => this.handleClick(event, n)}>{n.estatus}</TableCell>
+                                                    <TableCell>
+                                                        <Tooltip title={"Descargar oficio"}>
+                                                            <ArchiveIcon onClick={() => this.viewOficio(n)}
+                                                                         color={n.id_oficio ? "secondary" : 'disabled'}/>
+                                                        </Tooltip>
+                                                        {
+                                                            (n.estatus === 'ENVIADA' || n.estatus === 'REVOCADA') &&
+                                                            <Tooltip title={"Aprobar solicitud"}>
+                                                                <AcceptIcon onClick={() => this.changeEstatus(n, 0)}
+                                                                            color={'primary'}/>
+                                                            </Tooltip>
+                                                        }
+                                                        {
+                                                            n.estatus === 'ENVIADA' &&
+                                                            <Tooltip title={"Rechazar solicitud"}>
+                                                                <RejectIcon onClick={() => this.changeEstatus(n, 1)}
+                                                                            color={'error'}/>
+                                                            </Tooltip>
+                                                        }
+                                                        {
+                                                            (n.estatus === 'APROBADA') &&
+                                                            <Tooltip title={"Revocar solicitud"}>
+                                                                <RejectIcon onClick={() => this.changeEstatus(n, 2)}
+                                                                            color={'error'}/>
+                                                            </Tooltip>
+                                                        }
+
+                                                    </TableCell>
+                                                </TableRow>
+                                            );
+                                        })
+                                }
+                            </TableBody>
+                        </Table>
+                        <TablePagination
+                            className={classes.tablePagination}
+                            component="div"
+                            count={totalRows}
+                            rowsPerPage={rowsPerPage}
+                            page={page}
+                            backIconButtonProps={{
+                                'aria-label': 'Previous Page',
+                            }}
+                            nextIconButtonProps={{
+                                'aria-label': 'Next Page',
+                            }}
+                            onChangePage={this.handleChangePage}
+                            onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                            labelRowsPerPage='Registros por página'
+                            labelDisplayedRows={({from, to, count}) => {
+                                return `${from}-${to} de ${count}`;
+                            }}
+                        />
+                    </Grid>
+                </Grid>
+
+
             </div>
         );
     }

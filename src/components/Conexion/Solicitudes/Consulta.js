@@ -19,6 +19,8 @@ const styles = theme => ({
     },
     contenedor: {
         padding: theme.spacing.unit * 5,
+        overflowX: 'auto',
+        maxWidth : '1200px',
     },
     bgImg: {
         width: '100%',
@@ -34,8 +36,15 @@ const styles = theme => ({
         paddingTop: '10px',
     },
     bgContainer: {
-        paddingTop: '102px',
-        marginBottom: '266px'
+        [theme.breakpoints.up('sm')]: {
+            paddingTop: '102px',
+            marginBottom: '266px'
+        },
+        [theme.breakpoints.down('sm')]: {
+            paddingTop: theme.spacing.unit * 5,
+            marginBottom: theme.spacing.unit * 5,
+        },
+
     },
     banner: {
         height: '600px',
@@ -132,14 +141,10 @@ class Conexion extends React.Component {
                     </Grid>
                 </Grid>
                 <div className={classes.bgContainer}>
-                    <Grid container justify={'center'} spacing={0}>
-                        <Grid item xs={12} className={classes.section}>
-                            <Paper className={classes.contenedor}>
-                                <Grid container>
-                                    <Grid item xs={12}>
-                                        <TablaSolicitudes/>
-                                    </Grid>
-                                </Grid>
+                    <Grid container justify={'center'}>
+                        <Grid item xs={12} className={classes.contenedor}>
+                            <Paper >
+                                <TablaSolicitudes/>
                             </Paper>
                         </Grid>
                     </Grid>

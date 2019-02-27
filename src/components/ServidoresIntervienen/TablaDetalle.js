@@ -122,7 +122,7 @@ const styles = theme => ({
         marginTop: theme.spacing.unit * 3,
     },
     tableWrapper: {
-        overflowX: 'auto',
+        overflowX: 'scroll',
     },
     tableFooter: {
         display: 'flow-root',
@@ -139,6 +139,7 @@ const styles = theme => ({
     container: {
         marginTop: '30px',
         marginBottom: '30px',
+        overflowX : 'auto'
     },
     section: {
         maxWidth: '1200px',
@@ -300,28 +301,32 @@ class EnhancedTable extends React.Component {
         const emptyRows = rowsPerPage - filterData.length;
         return (
             <div className={classes.container}>
-
                     <div className={classes.tableWrapper}>
-                        <DetalleServidor handleClose={this.handleClose} servidor={this.state.elementoSeleccionado}
-                                         control={this.state.open}/>
-                        {
-                            this.state.loading &&
-                            <Modal
-                                open={this.state.loading}
-                                disableAutoFocus={true}
-                            >
-                                <CircularProgress className={classes.progress} id="spinnerLoading" size={200}/>
-                            </Modal>
-                        }
                         <Grid container justify={'center'} spacing={0} className={classes.gridTable}>
+                            <Grid item xs={12}>
+                                <DetalleServidor handleClose={this.handleClose} servidor={this.state.elementoSeleccionado}
+                                                 control={this.state.open}/>
+                            </Grid>
+                            <Grid item xs={12}>
+                                {
+                                    this.state.loading &&
+                                    <Modal
+                                        open={this.state.loading}
+                                        disableAutoFocus={true}
+                                    >
+                                        <CircularProgress className={classes.progress} id="spinnerLoading" size={200}/>
+                                    </Modal>
+                                }
+                            </Grid>
                             <Grid item xs={12} className={classes.titleTable}>
                                 <Typography variant={'title'} className={classes.title}>
                                     Detalle</Typography>
                             </Grid>
                             <Grid item xs={12} className={classes.section}>
                                 <Typography variant={"h6"} className={classes.desc}>Pulsa sobre el registro para ver su detalle<br/></Typography>
-
-                                <Table className={classes.table} aria-describedby="spinnerLoading"
+                            </Grid>
+                            <Grid item xs={12}>
+                                <Table aria-describedby="spinnerLoading"
                                        aria-busy={this.state.loading} aria-labelledby="tableTitle">
                                     <EnhancedTableHead
                                         numSelected={selected.length}
@@ -398,8 +403,6 @@ class EnhancedTable extends React.Component {
                                 <Typography variant={"caption"} style={{fontStyle:'italic'}}>Fuente: https://reniresp.funcionpublica.gob.mx/ppcapf/consulta/informacion.jsf</Typography>
                             </Grid>
                         </Grid>
-
-
                     </div>
             </div>
         );

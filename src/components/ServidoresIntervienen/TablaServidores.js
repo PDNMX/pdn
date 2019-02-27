@@ -17,6 +17,7 @@ import EnhancedTableHead from '../Tablas/EnhancedTableHead';
 import Typography from "@material-ui/core/Typography/Typography";
 import Modal from "@material-ui/core/Modal/Modal";
 import TableFooter from "@material-ui/core/TableFooter";
+
 let counter = 0;
 
 let createData = (item) => {
@@ -48,10 +49,34 @@ function getSorting(order, orderBy) {
 }
 
 const columnData = [
-    {id: 'servidor', numeric: false, disablePadding: false, label: 'Servidor público', position: 2, mostrar: true,key:'servidor'},
-    {id: 'institucion', numeric: false, disablePadding: false, label: 'Institución', position: 3, mostrar: true,key:'institucion'},
-    {id: 'puesto', numeric: false, disablePadding: false, label: 'Puesto', position: 4, mostrar: true,key:'puesto'},
-    {id: 'tipoArea', numeric: false, disablePadding: false, label: 'Tipo de área', position: 5, mostrar: true,key:'tipoArea'},
+    {
+        id: 'servidor',
+        numeric: false,
+        disablePadding: false,
+        label: 'Servidor público',
+        position: 2,
+        mostrar: true,
+        key: 'servidor'
+    },
+    {
+        id: 'institucion',
+        numeric: false,
+        disablePadding: false,
+        label: 'Institución',
+        position: 3,
+        mostrar: true,
+        key: 'institucion'
+    },
+    {id: 'puesto', numeric: false, disablePadding: false, label: 'Puesto', position: 4, mostrar: true, key: 'puesto'},
+    {
+        id: 'tipoArea',
+        numeric: false,
+        disablePadding: false,
+        label: 'Tipo de área',
+        position: 5,
+        mostrar: true,
+        key: 'tipoArea'
+    },
     {
         id: 'contrataciones',
         numeric: false,
@@ -59,7 +84,7 @@ const columnData = [
         label: 'Contrataciones públicas',
         position: 6,
         mostrar: false,
-        key:'contrataciones'
+        key: 'contrataciones'
     },
     {
         id: 'concesionesLicencias',
@@ -68,7 +93,7 @@ const columnData = [
         label: 'Concesiones, licencias, permisos, autorizaciones y prórrogas',
         position: 7,
         mostrar: false,
-        key:'concesionesLicencias'
+        key: 'concesionesLicencias'
     },
     {
         id: 'enajenacion',
@@ -77,7 +102,7 @@ const columnData = [
         label: 'Enajenación de bienes muebles',
         position: 8,
         mostrar: false,
-        key:'enajenacion'
+        key: 'enajenacion'
     },
     {
         id: 'dictamenes',
@@ -86,7 +111,7 @@ const columnData = [
         label: 'Asignación y emisión de dictámenes de avalúos nacionales',
         position: 9,
         mostrar: false,
-        key:'dictamenes'
+        key: 'dictamenes'
     },
 ];
 
@@ -114,16 +139,17 @@ const styles = theme => ({
     container: {
         marginTop: '30px',
         marginBottom: '30px',
+        overflowX:'auto',
         //width: '90%'
     },
     table: {
         tableLayout: 'fixed',
     },
-    gridTable:{
-        marginBottom : '27px'
+    gridTable: {
+        marginBottom: '27px'
     },
-    desc:{
-        color : theme.palette.primary.dark,
+    desc: {
+        color: theme.palette.primary.dark,
     },
     item: {
         padding: theme.spacing.unit,
@@ -144,11 +170,11 @@ const toolbarStyles = theme => ({
         margin: '0 15px',
         zIndex: 3,
         paddingTop: '53px',
-        paddingBottom:'61px',
+        paddingBottom: '61px',
     },
     toolBarFloat: {
         paddingTop: '53px',
-        paddingBottom:'61px',
+        paddingBottom: '61px',
         marginTop: '-30px',
         borderRadius: '3px',
         background: '#fff',
@@ -193,7 +219,7 @@ EnhancedTableToolbar = withStyles(toolbarStyles)(EnhancedTableToolbar);
 class EnhancedTable extends React.Component {
 
     componentDidMount() {
-        this.handleSearchAPI('FIELD_FILTER');
+       //this.handleSearchAPI('FIELD_FILTER');
     }
 
     constructor(props) {
@@ -213,7 +239,7 @@ class EnhancedTable extends React.Component {
             open: false,
             elementoSeleccionado: {},
             institucion: null,
-            loading: true,
+            loading: false,
             totalRows: 0,
             filterDataAll: [],
 
@@ -278,25 +304,25 @@ class EnhancedTable extends React.Component {
         });
     };
     handleSearchAPI = (typeSearch) => {
-        this.setState({loading: true},()=>{
+        this.setState({loading: true}, () => {
             let {procedimiento, institucion, nombreServidor} = this.state;
             const URI = 'https://plataformadigitalnacional.org/api/reniresp?';
 
             let params = {};
 
-            if(typeSearch!=='ALL'){
-                (procedimiento&&procedimiento) >0 ? params.id_procedimiento= 'eq.'+procedimiento : null;
-                institucion ? params.institucion = 'eq.'+institucion : null;
-                nombreServidor ? params.nombre = 'like.*'+nombreServidor.toUpperCase()+'*' : null;
-                (typeSearch==='FIELD_FILTER'||typeSearch==='CHANGE_PAGE')? params.limit = this.state.rowsPerPage:null;
-                (typeSearch==='CHANGE_PAGE')? params.offset = (this.state.rowsPerPage * this.state.page) : null;
+            if (typeSearch !== 'ALL') {
+                (procedimiento && procedimiento) > 0 ? params.id_procedimiento = 'eq.' + procedimiento : null;
+                institucion ? params.institucion = 'eq.' + institucion : null;
+                nombreServidor ? params.nombre = 'like.*' + nombreServidor.toUpperCase() + '*' : null;
+                (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? params.limit = this.state.rowsPerPage : null;
+                (typeSearch === 'CHANGE_PAGE') ? params.offset = (this.state.rowsPerPage * this.state.page) : null;
                 (typeSearch === 'FIELD_FILTER') ? this.getTotalRows(params) : null;
             }
 
             let options = {
                 uri: URI,
                 json: true,
-                qs:params
+                qs: params
             };
 
             rp(options)
@@ -339,20 +365,20 @@ class EnhancedTable extends React.Component {
         const emptyRows = rowsPerPage - filterData.length;
 
         return (
-            <div className={classes.container}>
-                <EnhancedTableToolbar categoria={this.state.categoria} handleChangeCampo={this.handleChangeCampo}
-                                      nombreServidor={this.state.nombreServidor}
-                                      procedimiento={this.state.procedimiento} data={filterData}
-                                      columnas={columnData} institucion={this.state.institucion}/>
-
-                <DetalleServidor handleClose={this.handleClose} servidor={this.state.elementoSeleccionado}
-                                 control={this.state.open}/>
-
-
-
+            <div >
                 <Grid container justify='center' spacing={0} className={classes.gridTable}>
-                    <Grid item xs={12} >
-
+                    <Grid item xs={12}>
+                        <EnhancedTableToolbar categoria={this.state.categoria}
+                                              handleChangeCampo={this.handleChangeCampo}
+                                              nombreServidor={this.state.nombreServidor}
+                                              procedimiento={this.state.procedimiento} data={filterData}
+                                              columnas={columnData} institucion={this.state.institucion}/>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <DetalleServidor handleClose={this.handleClose} servidor={this.state.elementoSeleccionado}
+                                         control={this.state.open}/>
+                    </Grid>
+                    <Grid item xs={12}>
                         {
                             this.state.loading &&
                             <Modal
@@ -363,80 +389,84 @@ class EnhancedTable extends React.Component {
                             </Modal>
 
                         }
-                        <Typography variant="h6" className={classes.desc} paragraph>Pulsa sobre el registro para ver su detalle</Typography>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Typography variant="h6" className={classes.desc} paragraph>Pulsa sobre el registro para ver su
+                            detalle</Typography>
 
+                    </Grid>
+                    <Grid item xs={12} >
+                        <div className={classes.container}>
+                            <Table aria-describedby="spinnerLoading" id={'tableServidores'}
+                                   aria-busy={this.state.loading} aria-labelledby="tableTitle"
+                                   >
+                                <EnhancedTableHead
+                                    numSelected={selected.length}
+                                    order={order}
+                                    orderBy={orderBy}
+                                    onSelectAllClick={this.handleSelectAllClick}
+                                    onRequestSort={this.handleRequestSort}
+                                    rowCount={data.length}
+                                    columnData={columnData}
+                                />
+                                <TableBody>
+                                    {filterData
+                                        .sort(getSorting(order, orderBy))
+                                        .map(n => {
+                                            const isSelected = this.isSelected(n.id);
+                                            return (
+                                                <TableRow
+                                                    hover
+                                                    onClick={event => this.handleClick(event, n)}
+                                                    role="checkbox"
+                                                    aria-checked={isSelected}
+                                                    tabIndex={-1}
+                                                    key={n.id}
+                                                    selected={isSelected}
+                                                >
+                                                    <TableCell component="th" scope="row"
+                                                               padding="default">{n.servidor}</TableCell>
+                                                    <TableCell>{n.institucion}</TableCell>
+                                                    <TableCell>{n.puesto}</TableCell>
+                                                    <TableCell>{n.tipoArea}</TableCell>
+                                                </TableRow>
+                                            );
+                                        })}
+                                    {emptyRows > 0 && (
+                                        <TableRow style={{height: 49 * emptyRows}}>
+                                            <TableCell colSpan={4}/>
+                                        </TableRow>
+                                    )}
 
-                        <Table aria-describedby="spinnerLoading" id={'tableServidores'}
-                               aria-busy={this.state.loading} aria-labelledby="tableTitle"
-                               className={classes.table}>
-                            <EnhancedTableHead
-                                numSelected={selected.length}
-                                order={order}
-                                orderBy={orderBy}
-                                onSelectAllClick={this.handleSelectAllClick}
-                                onRequestSort={this.handleRequestSort}
-                                rowCount={data.length}
-                                columnData={columnData}
-                            />
-                            <TableBody>
-                                {filterData
-                                    .sort(getSorting(order, orderBy))
-                                    .map(n => {
-                                        const isSelected = this.isSelected(n.id);
-                                        return (
-                                            <TableRow
-                                                hover
-                                                onClick={event => this.handleClick(event, n)}
-                                                role="checkbox"
-                                                aria-checked={isSelected}
-                                                tabIndex={-1}
-                                                key={n.id}
-                                                selected={isSelected}
-                                            >
-                                                <TableCell component="th" scope="row"
-                                                           padding="default">{n.servidor}</TableCell>
-                                                <TableCell>{n.institucion}</TableCell>
-                                                <TableCell>{n.puesto}</TableCell>
-                                                <TableCell>{n.tipoArea}</TableCell>
-                                            </TableRow>
-                                        );
-                                    })}
-                                {emptyRows > 0 && (
-                                    <TableRow style={{height: 49 * emptyRows}}>
-                                        <TableCell colSpan={4}/>
+                                </TableBody>
+
+                                <TableFooter>
+                                    <TableRow>
+                                        <TablePagination
+                                            colSpan={4}
+                                            count={totalRows}
+                                            rowsPerPage={rowsPerPage}
+                                            page={page}
+                                            backIconButtonProps={{
+                                                'aria-label': 'Previous Page',
+                                            }}
+                                            nextIconButtonProps={{
+                                                'aria-label': 'Next Page',
+                                            }}
+                                            onChangePage={this.handleChangePage}
+                                            onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                                            labelRowsPerPage='Registros por página'
+                                            labelDisplayedRows={({from, to, count}) => {
+                                                return `${from}-${to} de ${count}`;
+                                            }}
+                                        />
                                     </TableRow>
-                                )}
+                                </TableFooter>
+                            </Table>
+                        </div>
 
-                            </TableBody>
-
-                            <TableFooter>
-                                <TableRow>
-                                    <TablePagination
-                                        colSpan={4}
-                                        count={totalRows}
-                                        rowsPerPage={rowsPerPage}
-                                        page={page}
-                                        backIconButtonProps={{
-                                            'aria-label': 'Previous Page',
-                                        }}
-                                        nextIconButtonProps={{
-                                            'aria-label': 'Next Page',
-                                        }}
-                                        onChangePage={this.handleChangePage}
-                                        onChangeRowsPerPage={this.handleChangeRowsPerPage}
-                                        labelRowsPerPage='Registros por página'
-                                        labelDisplayedRows={({from, to, count}) => {
-                                            return `${from}-${to} de ${count}`;
-                                        }}
-                                    />
-                                </TableRow>
-                            </TableFooter>
-                        </Table>
                     </Grid>
                 </Grid>
-
-
-
                 <Grid container spacing={0}>
                     <Grid item md={3} xs={12} className={classes.item}>
                         <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data} filtrado={false}
@@ -449,7 +479,8 @@ class EnhancedTable extends React.Component {
                     </Grid>
 
                     <Grid item xs={12} className={classes.item}>
-                        <Typography variant="caption" style={{wordBreak: 'break-all' }}>Fuente: https://reniresp.funcionpublica.gob.mx/ppcapf/consulta/informacion.jsf </Typography>
+                        <Typography variant="caption" style={{wordBreak: 'break-all'}}>Fuente:
+                            https://reniresp.funcionpublica.gob.mx/ppcapf/consulta/informacion.jsf </Typography>
                     </Grid>
 
 
