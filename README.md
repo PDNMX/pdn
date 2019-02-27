@@ -1,8 +1,8 @@
-# Sitio web de la PDN con log-in
+# Front End de la PDN
 
 ## ¿Qué es y para qué sirve?
 
-Proporciona una interfaz de log-in para control de usuarios de la [PDN](https://www.plataformadigitalnacional.org/)
+Interfaz web de la [Plataforma Digital Nacional](https://www.plataformadigitalnacional.org/)
 
 
 
