@@ -49,7 +49,7 @@ class Explora extends React.Component{
                         <Typography className={classes.text} paragraph>
                             explora los 6 sistemas
                         </Typography>
-                        
+
                         <VideoDialog/>
                     </Grid>
                 </Grid>
