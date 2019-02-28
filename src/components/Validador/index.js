@@ -21,10 +21,8 @@ const styles = theme => ({
         paddingTop: theme.spacing.unit * 4,
         paddingLeft: theme.spacing.unit * 2,
         paddingRight: theme.spacing.unit * 2,
-    },
-
-});
-
+    }
+  });
 
 class Validador extends Component {
     state = {
@@ -32,17 +30,17 @@ class Validador extends Component {
         results: true
     };
 
-    _handleResults = (results) => {
+    _handleResults = (results, errorParse) => {
         this.setState({ results, usedForm: true })
         // console.log(results)
     };
 
     _renderListErrors () {
         const { results } = this.state;
-        // return results.map((swaggerError, i) => {
-        //   return <p key={i}>{swaggerError.message}</p>
-        // })
-        return (
+        if (results instanceof SyntaxError && !Array.isArray(results)) {
+          return (<p>Error: {results.message}</p>);
+        } else {
+          return (
             <Paper>
                 <Table>
                     <TableHead>
@@ -56,14 +54,15 @@ class Validador extends Component {
                         {results.map((row, i) => (
                             <TableRow key={i}>
                                 <TableCell>{row.dataPath}</TableCell>
-                                <TableCell className='txtError'>{row.message}</TableCell>
+                                <TableCell>{row.message}</TableCell>
                                 <TableCell>{row.keyword}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
                 </Table>
             </Paper>
-        );
+          );
+        }
     }
 
     _renderFirst= () => {
