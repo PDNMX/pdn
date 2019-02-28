@@ -26,10 +26,19 @@ const styles = theme => ({
     },
     bgPanelTable: {
         backgroundColor: theme.palette.white.color,
-        marginBottom: '266px'
+        [theme.breakpoints.up('sm')]: {
+            marginBottom: theme.spacing.unit * 30,
+        },
+        [theme.breakpoints.down('sm')]: {
+            marginBottom: theme.spacing.unit * 10,
+        },
     },
     section: {
-        maxWidth: '1200px'
+        maxWidth: '1200px',
+    },
+    sectionT: {
+        maxWidth: '1200px',
+        overflowX : 'auto'
     },
     image: {
         width: '60px'
@@ -81,46 +90,45 @@ class Index extends React.Component {
         return (
             <div className={classes.root}>
                 <Header/>
-
-                <Grid container spacing={0} justify="center" className={classes.bgContainer}>
+                <Grid container justify="center" className={classes.bgContainer}>
                     <Grid item xs={12} className={classes.section}>
-                        <Grid container spacing={0}>
-
-                            <Grid item md={4} xs={12} className={this.state.idContent !== 1 ? classes.card : classes.cardSeleccionada} onClick={() => this.changeContent(1)}>
+                        <Grid container>
+                            <Grid item md={4} xs={12} className={this.state.idContent !== 1 ? classes.card : classes.cardSeleccionada}
+                                  onClick={() => this.changeContent(1)}>
                                 <figure className={classes.figure}>
                                     <img src={img1} alt="Servidores públicos sancionados"
                                          className={classes.image}/>
                                 </figure>
-                                <Typography variant= "subtitle1"
-                                            style={{fontWeight: this.state.idContent === 1? 500: 300}}
+                                <Typography variant="subtitle1" style={{fontWeight: this.state.idContent === 1 ? 500 : 300}}
                                             className={classes.whiteText}>
                                     Servidores públicos sancionados
                                 </Typography>
                             </Grid>
-
-                            <Grid item md={4} xs={12} className={this.state.idContent !== 2 ? classes.card : classes.cardSeleccionada} onClick={() => this.changeContent(2)}>
-
+                            <Grid item md={4} xs={12}
+                                  className={this.state.idContent !== 2 ? classes.card : classes.cardSeleccionada}
+                                  onClick={() => this.changeContent(2)}>
                                 <figure className={classes.figure}>
-                                <img src={img2} alt="Particulares sancionados"
-                                     className={classes.image}/>
+                                    <img src={img2} alt="Particulares sancionados"
+                                         className={classes.image}/>
                                 </figure>
-
-                                <Typography variant= "subtitle1"
-                                            style={{fontWeight: this.state.idContent === 2? 500: 300}}
+                                <Typography variant="subtitle1"
+                                            style={{fontWeight: this.state.idContent === 2 ? 500 : 300}}
                                             className={classes.whiteText}>
                                     Particulares sancionados
                                 </Typography>
 
                             </Grid>
-                            <Grid item md={4} xs={12} className={this.state.idContent !== 3 ? classes.card : classes.cardSeleccionada}  onClick={() => this.changeContent(3)}>
+                            <Grid item md={4} xs={12}
+                                  className={this.state.idContent !== 3 ? classes.card : classes.cardSeleccionada}
+                                  onClick={() => this.changeContent(3)}>
 
                                 <figure className={classes.figure}>
-                                <img src={img3} alt="Visualizaciones"
-                                     className={classes.image}/>
+                                    <img src={img3} alt="Visualizaciones"
+                                         className={classes.image}/>
                                 </figure>
 
-                                <Typography variant= "subtitle1"
-                                            style={{fontWeight: this.state.idContent === 3? 500: 300}}
+                                <Typography variant="subtitle1"
+                                            style={{fontWeight: this.state.idContent === 3 ? 500 : 300}}
                                             className={classes.whiteText}>
                                     Visualizaciones
                                 </Typography>
@@ -129,31 +137,21 @@ class Index extends React.Component {
 
                     </Grid>
                 </Grid>
-
-
-
-
-                <div className={classes.bgPanelTable}>
-                    <Grid container justify='center' spacing={0}>
-                        <Grid item xs={12} className={classes.section}>
-                                {this.state.idContent === 1 &&
-                                <div>
-                                    <TablaServidoresSancionados/>
-                                </div>
-                                }
-                                {this.state.idContent === 2 &&
-                                <div>
-                                    <TablaParticularesSancionados/>
-                                </div>
-                                }
-                                {this.state.idContent === 3 &&
-                                <div>
-                                    <BubbleHolder/>
-                                </div>
-                                }
-                        </Grid>
+                <Grid container justify='center' className={classes.bgPanelTable}>
+                    <Grid item xs={12} className={classes.sectionT}>
+                        {this.state.idContent === 1 &&
+                        <TablaServidoresSancionados/>
+                        }
+                        {this.state.idContent === 2 &&
+                        <TablaParticularesSancionados/>
+                        }
                     </Grid>
-                </div>
+                    <Grid item xs={12} className={classes.sectionT}>
+                        {this.state.idContent === 3 &&
+                        <BubbleHolder/>
+                        }
+                    </Grid>
+                </Grid>
                 < Footer/>
             </div>
         );

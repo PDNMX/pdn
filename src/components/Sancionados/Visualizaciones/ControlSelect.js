@@ -29,17 +29,17 @@ class ControlSelect extends React.Component {
         const {classes} = this.props;
         return (
             <div>
-                <Grid container spacing={40} justify={"center"} >
-                    <Grid item xs={3} className={classes.centrado}>
+                <Grid container justify={"center"} >
+                    <Grid item md={3} xs={12} className={classes.centrado}>
                         <Button variant={'text'} color={"primary"}  onClick={()=>this.onChangeG(1)}>{'Servidores públicos sancionados'}</Button>
                     </Grid>
-                    <Grid item xs={3} className={classes.centrado}>
+                    <Grid item md={3} xs={12}className={classes.centrado}>
                         <Button variant={'text'} color={"primary"} onClick={()=>this.onChangeG(2)}>{'Particulares sancionados'}</Button>
                     </Grid>
-                    <Grid item xs={3} className={classes.centrado}>
+                    <Grid item md={3} xs={12} className={classes.centrado}>
                         <Button variant={'text'} color={"primary"} onClick={()=>this.onChangeG("sanciones")}>{'Inhabilitaciones'}</Button>
                     </Grid>
-                    <Grid item xs={3} className={classes.centrado}>
+                    <Grid item md={3} xs={12} className={classes.centrado}>
                         <Button variant={'text'} color={"primary"} onClick={()=>this.onChangeG("monto")}>{'Monto inhabilitaciones'}</Button>
                     </Grid>
 

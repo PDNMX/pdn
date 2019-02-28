@@ -34,6 +34,7 @@ let createData = (item) => {
         causa: item.causa ? item.causa : leyenda
     };
 };
+
 function getSorting(order, orderBy) {
     return order === 'desc'
         ? (a, b) => (b[orderBy] < a[orderBy] ? -1 : 1)
@@ -74,7 +75,7 @@ const styles = theme => ({
         marginTop: theme.spacing.unit * 3,
     },
     tableWrapper: {
-        overflowX: 'auto',
+        overflowX: 'scroll',
     },
     tableFooter: {
         display: 'flow-root',
@@ -91,6 +92,7 @@ const styles = theme => ({
     container: {
         marginTop: '30px',
         marginBottom: '30px',
+        overflowX: 'auto',
     },
     section: {
         maxWidth: '1200px',
@@ -99,18 +101,18 @@ const styles = theme => ({
     table: {
         tableLayout: 'fixed',
     },
-    tablePagination:{
-        overflowX : 'auto',
-        fontSize :'0.75rem'
+    tablePagination: {
+        overflowX: 'auto',
+        fontSize: '0.75rem'
     },
-    gridTable:{
-        marginBottom : '27px'
+    gridTable: {
+        marginBottom: '27px'
     },
-    titleTable:{
-        marginBottom:'61px'
+    titleTable: {
+        marginBottom: '61px'
     },
-    desc:{
-        color : theme.palette.primary.dark,
+    desc: {
+        color: theme.palette.primary.dark,
     }
 
 });
@@ -122,9 +124,9 @@ class EnhancedTable extends React.Component {
         this.handleSearchAPI('FIELD_FILTER', this.props.institucion);
     }
 
-    componentWillReceiveProps(nextProps){
-        if(nextProps.institucion !== this.props.institucion){
-            this.handleSearchAPI('FIELD_FILTER',nextProps.institucion);
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.institucion !== this.props.institucion) {
+            this.handleSearchAPI('FIELD_FILTER', nextProps.institucion);
         }
     }
 
@@ -172,18 +174,18 @@ class EnhancedTable extends React.Component {
     };
 
     handleClick = (event, elemento) => {
-        this.setState({elementoSeleccionado: elemento, open:true});
+        this.setState({elementoSeleccionado: elemento, open: true});
     };
 
     handleChangePage = (event, page) => {
         this.setState({page}, () => {
-            this.handleSearchAPI('CHANGE_PAGE',this.props.institucion);
+            this.handleSearchAPI('CHANGE_PAGE', this.props.institucion);
         });
     };
 
     handleChangeRowsPerPage = event => {
         this.setState({rowsPerPage: event.target.value}, () => {
-            this.handleSearchAPI('FIELD_FILTER',null);
+            this.handleSearchAPI('FIELD_FILTER', null);
         });
     };
 
@@ -193,7 +195,7 @@ class EnhancedTable extends React.Component {
         let options = {
             uri: 'https://plataformadigitalnacional.org/api/rsps?select=count=eq.exact',
             json: true,
-            qs : params
+            qs: params
         };
         rp(options)
             .then(data => {
@@ -204,33 +206,33 @@ class EnhancedTable extends React.Component {
             console.log(err);
         });
     };
-    handleSearchAPI = (type,inst) => {
+    handleSearchAPI = (type, inst) => {
         this.setState({loading: true});
         let URI = 'https://plataformadigitalnacional.org/api/rsps?';
 
         let params = {};
         inst ? params.dependencia = 'eq.' + inst : null;
-        type==='ALL' && !inst ? params.dependencia = 'eq.' + this.state.institucion : null;
-        type !== "ALL" ? params.limit = this.state.rowsPerPage : null ;
-        type === "CHANGE_PAGE" ? params.offset = (this.state.rowsPerPage * this.state.page): null;
-        (type !== 'ALL' && type !=="CHANGE_PAGE") ? this.getTotalRows(params) : null;
+        type === 'ALL' && !inst ? params.dependencia = 'eq.' + this.state.institucion : null;
+        type !== "ALL" ? params.limit = this.state.rowsPerPage : null;
+        type === "CHANGE_PAGE" ? params.offset = (this.state.rowsPerPage * this.state.page) : null;
+        (type !== 'ALL' && type !== "CHANGE_PAGE") ? this.getTotalRows(params) : null;
 
         let options = {
             uri: URI,
             json: true,
-            qs : params
+            qs: params
         };
         rp(options)
             .then(data => {
                 let dataAux = data.map(item => {
                     return createData(item);
                 });
-                type === 'ALL'? this.setState({data : dataAux,loading : false},()=>{
+                type === 'ALL' ? this.setState({data: dataAux, loading: false}, () => {
                     this.btnDownloadAll.triggerDown();
                 }) : (type === 'FIELD_FILTER' || type === 'CHANGE_PAGE') ? this.setState({
-                    filterData : dataAux,
+                    filterData: dataAux,
                     loading: false,
-                    institucion : inst
+                    institucion: inst
                 }) : null;
                 return true;
             })
@@ -243,15 +245,18 @@ class EnhancedTable extends React.Component {
     };
 
     render() {
-        const {classes,institucion} = this.props;
+        const {classes, institucion} = this.props;
         const {data, order, orderBy, selected, rowsPerPage, page, filterData, totalRows, filterDataAll} = this.state;
         const emptyRows = rowsPerPage - filterData.length;
         return (
             <div className={classes.container}>
-                <div>
-                    <div className={classes.tableWrapper}>
+                <div className={classes.tableWrapper}>
+                <Grid container justify={'center'} spacing={0} className={classes.gridTable}>
+                    <Grid item xs={12}>
                         <DetalleServidorSancionado handleClose={this.handleClose} servidor={this.state.elementoSeleccionado}
                                                    control={this.state.open}/>
+                    </Grid>
+                    <Grid item xs={12}>
                         {
                             this.state.loading &&
                             <Modal
@@ -261,90 +266,88 @@ class EnhancedTable extends React.Component {
                                 <CircularProgress className={classes.progress} id="spinnerLoading" size={200}/>
                             </Modal>
                         }
-                        <Grid container justify={'center'} spacing={0} className={classes.gridTable}>
-                            <Grid item xs={12} className={classes.titleTable}>
-                                <Typography variant={'title'} className={classes.title}>
-                                    Detalle</Typography>
-                            </Grid>
-                            <Grid item xs={12} className={classes.section}>
-                                <Typography variant={"h6"} className={classes.desc}>Pulsa sobre el registro para ver su detalle<br/></Typography>
-
-                                <Table aria-describedby="spinnerLoading" id={'tableServidores'}
-                                       aria-busy={this.state.loading} aria-labelledby="tableTitle"
-                                       className={classes.table}>
-                                    <EnhancedTableHead
-                                        numSelected={selected.length}
-                                        order={order}
-                                        orderBy={orderBy}
-                                        onSelectAllClick={this.handleSelectAllClick}
-                                        onRequestSort={this.handleRequestSort}
-                                        rowCount={data.length}
-                                        columnData={columnData}
-                                    />
-                                    <TableBody>
-                                        {filterData
-                                            .sort(getSorting(order, orderBy))
-                                            .map(n => {
-                                                const isSelected = this.isSelected(n.id);
-                                                return (
-                                                    <TableRow
-                                                        hover
-                                                        onClick={event => this.handleClick(event, n)}
-                                                        role="checkbox"
-                                                        aria-checked={isSelected}
-                                                        tabIndex={-1}
-                                                        key={n.id}
-                                                        selected={isSelected}
-                                                    >
-                                                        <TableCell component="th" scope="row"
-                                                                   padding="default">{n.servidor}</TableCell>
-                                                        <TableCell>{n.institucion}</TableCell>
-                                                        <TableCell>{n.autoridad}</TableCell>
-                                                        <TableCell>{n.expediente}</TableCell>
-
-                                                    </TableRow>
-                                                );
-                                            })}
-                                    </TableBody>
-                                </Table>
-                            </Grid>
-                        </Grid>
-                        <Grid container>
-                            <Grid item md={3} xs={12}>
-                                <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data} filtrado={false}
-                                          columnas={columnData} fnSearch = {this.handleSearchAPI}
-                                          fileName={'Detalle'}/>
-                            </Grid>
-                            <Grid item md={3} xs={12}/>
-                            <Grid item md={6} xs={12}>
-                                <TablePagination
-                                    className={classes.tablePagination}
-                                    component="div"
-                                    count={totalRows}
-                                    rowsPerPage={rowsPerPage}
-                                    page={page}
-                                    backIconButtonProps={{
-                                        'aria-label': 'Previous Page',
-                                    }}
-                                    nextIconButtonProps={{
-                                        'aria-label': 'Next Page',
-                                    }}
-                                    onChangePage={this.handleChangePage}
-                                    onChangeRowsPerPage={this.handleChangeRowsPerPage}
-                                    labelRowsPerPage='Registros por página'
-                                    labelDisplayedRows={({from, to, count}) => {
-                                        return `${from}-${to} de ${count}`;
-                                    }}
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <Typography variant={"caption"} style={{fontStyle:'italic'}}>Fuente: https://datos.gob.mx/busca/dataset/servidores-publicos-sancionados</Typography>
-                            </Grid>
-                        </Grid>
-
-
-                    </div>
-                </div>
+                    </Grid>
+                    <Grid item xs={12} className={classes.titleTable}>
+                        <Typography variant={'title'} className={classes.title}>
+                            Detalle</Typography>
+                    </Grid>
+                    <Grid item xs={12} className={classes.section}>
+                        <Typography variant={"h6"} className={classes.desc}>Pulsa sobre el registro para ver su
+                            detalle<br/></Typography>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Table aria-describedby="spinnerLoading" id={'tableServidores'}
+                               aria-busy={this.state.loading} aria-labelledby="tableTitle">
+                            <EnhancedTableHead
+                                numSelected={selected.length}
+                                order={order}
+                                orderBy={orderBy}
+                                onSelectAllClick={this.handleSelectAllClick}
+                                onRequestSort={this.handleRequestSort}
+                                rowCount={data.length}
+                                columnData={columnData}
+                            />
+                            <TableBody>
+                                {filterData
+                                    .sort(getSorting(order, orderBy))
+                                    .map(n => {
+                                        const isSelected = this.isSelected(n.id);
+                                        return (
+                                            <TableRow
+                                                hover
+                                                onClick={event => this.handleClick(event, n)}
+                                                role="checkbox"
+                                                aria-checked={isSelected}
+                                                tabIndex={-1}
+                                                key={n.id}
+                                                selected={isSelected}
+                                            >
+                                                <TableCell component="th" scope="row"
+                                                           padding="default">{n.servidor}</TableCell>
+                                                <TableCell>{n.institucion}</TableCell>
+                                                <TableCell>{n.autoridad}</TableCell>
+                                                <TableCell>{n.expediente}</TableCell>
+                                            </TableRow>
+                                        );
+                                    })}
+                            </TableBody>
+                        </Table>
+                    </Grid>
+                </Grid>
+                <Grid container>
+                    <Grid item md={3} xs={12}>
+                        <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data} filtrado={false}
+                                  columnas={columnData} fnSearch={this.handleSearchAPI}
+                                  fileName={'Detalle'}/>
+                    </Grid>
+                    <Grid item md={3} xs={12}/>
+                    <Grid item md={6} xs={12}>
+                        <TablePagination
+                            className={classes.tablePagination}
+                            component="div"
+                            count={totalRows}
+                            rowsPerPage={rowsPerPage}
+                            page={page}
+                            backIconButtonProps={{
+                                'aria-label': 'Previous Page',
+                            }}
+                            nextIconButtonProps={{
+                                'aria-label': 'Next Page',
+                            }}
+                            onChangePage={this.handleChangePage}
+                            onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                            labelRowsPerPage='Registros por página'
+                            labelDisplayedRows={({from, to, count}) => {
+                                return `${from}-${to} de ${count}`;
+                            }}
+                        />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Typography variant={"caption"} style={{fontStyle: 'italic'}}>Fuente:
+                            https://datos.gob.mx/busca/dataset/servidores-publicos-sancionados</Typography>
+                    </Grid>
+                </Grid>
+            </div>
             </div>
         );
     }

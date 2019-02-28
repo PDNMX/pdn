@@ -198,7 +198,7 @@ class BusquedaParticular extends React.Component {
         };
 
         return (
-            <Grid container spacing={0}>
+            <Grid container spacing={32}>
                 <Grid item md={6} xs={12}>
                     <FormControl className={classes.formControl}>
                         <Select

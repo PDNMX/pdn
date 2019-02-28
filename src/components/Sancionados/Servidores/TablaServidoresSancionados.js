@@ -95,6 +95,7 @@ const styles = theme => ({
     container: {
         marginTop: '30px',
         marginBottom: '30px',
+        overflowX : 'auto',
     },
     section: {
         maxWidth: '1024px',
@@ -322,98 +323,104 @@ class EnhancedTable extends React.Component {
         const emptyRows = rowsPerPage - filterData.length;
 
         return (
-            <div className={classes.container}>
-
-                <EnhancedTableToolbar categoria={this.state.categoria} handleChangeCampo={this.handleChangeCampo}
-                                      nombreServidor={this.state.nombreServidor}
-                                      data={filterData}
-                                      columnas={columnData} institucion={this.state.institucion}/>
-
-                <DetalleServidorSancionado handleClose={this.handleClose} servidor={this.state.elementoSeleccionado}
-                                           control={this.state.open}/>
-                {
-                    this.state.loading &&
-                    <Modal
-                        open={this.state.loading}
-                        disableAutoFocus={true}
-                    >
-                        <CircularProgress className={classes.progress} id="spinnerLoading" size={200}/>
-                    </Modal>
-
-                }
+            <div>
                 <Grid container justify={'center'} spacing={0} className={classes.gridTable}>
+                    <Grid item xs={12}>
+                        <EnhancedTableToolbar categoria={this.state.categoria} handleChangeCampo={this.handleChangeCampo}
+                                              nombreServidor={this.state.nombreServidor}
+                                              data={filterData}
+                                              columnas={columnData} institucion={this.state.institucion}/>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <DetalleServidorSancionado handleClose={this.handleClose} servidor={this.state.elementoSeleccionado}
+                                                   control={this.state.open}/>
+                    </Grid>
+                    <Grid item xs={12}>
+                        {
+                            this.state.loading &&
+                            <Modal
+                                open={this.state.loading}
+                                disableAutoFocus={true}
+                            >
+                                <CircularProgress className={classes.progress} id="spinnerLoading" size={200}/>
+                            </Modal>
+
+                        }
+                    </Grid>
                     <Grid item xs={12} >
                         <Typography variant={"h6"} className={classes.desc}>Pulsa sobre el registro para ver su detalle<br/></Typography>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <div className={classes.container}>
+                            <Table aria-describedby="spinnerLoading" id={'tableServidores'}
+                                   aria-busy={this.state.loading} aria-labelledby="tableTitle">
+                                <EnhancedTableHead
+                                    numSelected={selected.length}
+                                    order={order}
+                                    orderBy={orderBy}
+                                    onSelectAllClick={this.handleSelectAllClick}
+                                    onRequestSort={this.handleRequestSort}
+                                    rowCount={data.length}
+                                    columnData={columnData}
+                                />
+                                <TableBody>
+                                    {filterData
+                                        .sort(getSorting(order, orderBy))
+                                        .map(n => {
+                                            const isSelected = this.isSelected(n.id);
+                                            return (
+                                                <TableRow
+                                                    hover
+                                                    onClick={event => this.handleClick(event, n)}
+                                                    role="checkbox"
+                                                    aria-checked={isSelected}
+                                                    tabIndex={-1}
+                                                    key={n.id}
+                                                    selected={isSelected}
+                                                >
+                                                    <TableCell component="th" scope="row"
+                                                               padding="default">{n.servidor}</TableCell>
+                                                    <TableCell>{n.institucion}</TableCell>
+                                                    <TableCell>{n.autoridad}</TableCell>
+                                                    <TableCell>{n.expediente}</TableCell>
 
-                        <Table aria-describedby="spinnerLoading" id={'tableServidores'}
-                               aria-busy={this.state.loading} aria-labelledby="tableTitle"
-                               className={classes.table}>
-                            <EnhancedTableHead
-                                numSelected={selected.length}
-                                order={order}
-                                orderBy={orderBy}
-                                onSelectAllClick={this.handleSelectAllClick}
-                                onRequestSort={this.handleRequestSort}
-                                rowCount={data.length}
-                                columnData={columnData}
-                            />
-                            <TableBody>
-                                {filterData
-                                    .sort(getSorting(order, orderBy))
-                                    .map(n => {
-                                        const isSelected = this.isSelected(n.id);
-                                        return (
-                                            <TableRow
-                                                hover
-                                                onClick={event => this.handleClick(event, n)}
-                                                role="checkbox"
-                                                aria-checked={isSelected}
-                                                tabIndex={-1}
-                                                key={n.id}
-                                                selected={isSelected}
-                                            >
-                                                <TableCell component="th" scope="row"
-                                                           padding="default">{n.servidor}</TableCell>
-                                                <TableCell>{n.institucion}</TableCell>
-                                                <TableCell>{n.autoridad}</TableCell>
-                                                <TableCell>{n.expediente}</TableCell>
+                                                </TableRow>
+                                            );
+                                        })}
+                                    {emptyRows > 0 && (
+                                        <TableRow style={{height: 49 * emptyRows}}>
 
-                                            </TableRow>
-                                        );
-                                    })}
-                                {emptyRows > 0 && (
-                                    <TableRow style={{height: 49 * emptyRows}}>
+                                            <TableCell colSpan={4}/>
 
-                                        <TableCell colSpan={4}/>
+                                        </TableRow>
+                                    )}
 
+                                </TableBody>
+                                <TableFooter>
+                                    <TableRow>
+                                        <TablePagination
+                                            className={classes.tablePagination}
+                                            colSpan={4}
+                                            count={totalRows}
+                                            rowsPerPage={rowsPerPage}
+                                            page={page}
+                                            backIconButtonProps={{
+                                                'aria-label': 'Previous Page',
+                                            }}
+                                            nextIconButtonProps={{
+                                                'aria-label': 'Next Page',
+                                            }}
+                                            onChangePage={this.handleChangePage}
+                                            onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                                            labelRowsPerPage='Registros por página'
+                                            labelDisplayedRows={({from, to, count}) => {
+                                                return `${from}-${to} de ${count}`;
+                                            }}
+                                        />
                                     </TableRow>
-                                )}
-
-                            </TableBody>
-                            <TableFooter>
-                                <TableRow>
-                                    <TablePagination
-                                        className={classes.tablePagination}
-                                        colSpan={4}
-                                        count={totalRows}
-                                        rowsPerPage={rowsPerPage}
-                                        page={page}
-                                        backIconButtonProps={{
-                                            'aria-label': 'Previous Page',
-                                        }}
-                                        nextIconButtonProps={{
-                                            'aria-label': 'Next Page',
-                                        }}
-                                        onChangePage={this.handleChangePage}
-                                        onChangeRowsPerPage={this.handleChangeRowsPerPage}
-                                        labelRowsPerPage='Registros por página'
-                                        labelDisplayedRows={({from, to, count}) => {
-                                            return `${from}-${to} de ${count}`;
-                                        }}
-                                    />
-                                </TableRow>
-                            </TableFooter>
-                        </Table>
+                                </TableFooter>
+                            </Table>
+                        </div>
                     </Grid>
                 </Grid>
 

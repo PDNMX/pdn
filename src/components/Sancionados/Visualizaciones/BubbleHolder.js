@@ -5,7 +5,7 @@ import Grid from "@material-ui/core/Grid/Grid";
 import Bubbles_SPS from '../../Charts/bubbles/Bubbles_SPS';
 import {createNodes, createNodesGroup} from './utils';
 import rp from "request-promise";
-import {width, height, center,yearCenters} from './bubbles_constants';
+import {width, height, center, yearCenters} from './bubbles_constants';
 import ControlSelect from "./ControlSelect";
 import BubbleChart from "../../Charts/bubbles/BubbleChart";
 import GroupTitle from './GroupTitle';
@@ -17,10 +17,10 @@ import TablaDetalle from "./TablaDetalle";
 const styles = theme => ({
     root: {
         flexGrow: 1,
-        marginTop:'53px'
+        marginTop: '53px'
     },
     item: {
-        maxWidth: '1024px'
+        maxWidth: '1200px'
     },
     title: {
         color: theme.palette.textPrincipal.color,
@@ -32,8 +32,8 @@ const styles = theme => ({
     font: {
         color: theme.palette.textPrincipal.color
     },
-    center:{
-        textAlign  : 'center'
+    center: {
+        textAlign: 'center'
     }
 
 });
@@ -50,7 +50,7 @@ class BubbleHolder extends React.Component {
 
     getData = () => {
         let options = {
-            uri: this.state.type === 1 ? 'https://plataformadigitalnacional.org/api/v_sps' : this.state.type===2? 'https://plataformadigitalnacional.org/api/v_particulares_sancionados':'https://plataformadigitalnacional.org/api/provinha_dependencia',
+            uri: this.state.type === 1 ? 'https://plataformadigitalnacional.org/api/v_sps' : this.state.type === 2 ? 'https://plataformadigitalnacional.org/api/v_particulares_sancionados' : 'https://plataformadigitalnacional.org/api/provinha_dependencia',
             json: true
         };
 
@@ -59,20 +59,26 @@ class BubbleHolder extends React.Component {
                 let aux = [], auxGroup = [];
                 let existe = -1, existeGroup = -1;
                 data = JSON.parse(JSON.stringify(data));
-                if(this.state.type===1 || this.state.type===2)
-                data.forEach((item) => {
-                    existe = aux.findIndex(element => {
-                        return element.dependencia === item.dependencia;
-                    });
-                    existe > -1 ? aux[existe].total_sanciones += item.sanciones_total : aux.push({'dependencia': item.dependencia,'total_sanciones': item.sanciones_total});
+                if (this.state.type === 1 || this.state.type === 2)
+                    data.forEach((item) => {
+                        existe = aux.findIndex(element => {
+                            return element.dependencia === item.dependencia;
+                        });
+                        existe > -1 ? aux[existe].total_sanciones += item.sanciones_total : aux.push({
+                            'dependencia': item.dependencia,
+                            'total_sanciones': item.sanciones_total
+                        });
 
-                    existeGroup = auxGroup.findIndex(element => {
-                        return element.causa === item.causa;
+                        existeGroup = auxGroup.findIndex(element => {
+                            return element.causa === item.causa;
+                        });
+                        existeGroup > -1 ? auxGroup[existeGroup].total_sanciones += 1 : auxGroup.push({
+                            'causa': item.causa,
+                            'total_sanciones': 1
+                        });
                     });
-                    existeGroup > -1 ? auxGroup[existeGroup].total_sanciones += 1 : auxGroup.push({'causa': item.causa,'total_sanciones': 1});
-                });
                 this.setState({
-                    data: this.state.type===1 || this.state.type===2 ? createNodes(aux, this.state.type): createNodes(data,this.state.type),
+                    data: this.state.type === 1 || this.state.type === 2 ? createNodes(aux, this.state.type) : createNodes(data, this.state.type),
                     originalData: data,
                     dataGroup: auxGroup
                 });
@@ -94,11 +100,11 @@ class BubbleHolder extends React.Component {
     };
 
     onGroupChanged = (newType) => {
-        let data = newType === true ? createNodesGroup(this.state.originalData) : createNodes(this.state.data,this.state.type);
+        let data = newType === true ? createNodesGroup(this.state.originalData) : createNodes(this.state.data, this.state.type);
         this.setState({
-            data : data
-        },()=>{
-            this.setState({group : newType})
+            data: data
+        }, () => {
+            this.setState({group: newType})
         });
     };
 
@@ -111,11 +117,11 @@ class BubbleHolder extends React.Component {
         const {classes} = this.props;
         const {data, type} = this.state;
         return (
-            <div className={classes.root}>
-                <Grid container spacing={0}>
-                    <Grid item xs={12}>
+            <div className={classes.root} id={'rootBubble'}>
+                <Grid container>
+                    <Grid item xs={12} className={classes.item}>
                         <Typography variant={"display1"} className={classes.title}>
-                            {this.state.type === 1 ? 'SERVIDORES PÚBLICOS SANCIONADOS' : this.state.type===2?'PARTICULARES SANCIONADOS':this.state.type==='sanciones'?'PARTICULARES INHABILITADOS':'MONTOS DE INHABILITACIONES POR INSTITUCIÓN'}
+                            {this.state.type === 1 ? 'SERVIDORES PÚBLICOS SANCIONADOS' : this.state.type === 2 ? 'PARTICULARES SANCIONADOS' : this.state.type === 'sanciones' ? 'PARTICULARES INHABILITADOS' : 'MONTOS DE INHABILITACIONES POR INSTITUCIÓN'}
                         </Typography>
                         <br/>
                         {this.state.type === 1 &&
@@ -128,37 +134,41 @@ class BubbleHolder extends React.Component {
                             {'Muestra las dependencias y el número de particulares sancionados que tienen'}
                         </Typography>
                         }
-                        {type==='sanciones' &&
+                        {type === 'sanciones' &&
                         <Typography variant={"subheading"} className={classes.font}>{
                             '¿Cuáles son las instituciones con mayor número de particulares inhabilitados?'}
                         </Typography>
                         }
-                        {type==='monto' &&
+                        {type === 'monto' &&
                         <Typography variant={"subheading"} className={classes.font}>{
                             '¿Cuáles son las instituciones con mayor monto impuesto como sanción de inhabilitación'}
                         </Typography>
                         }
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} className={classes.item}>
                         <ControlSelect onChangeGraphic={this.onTypeChanged} onChangeGroup={this.onGroupChanged}
-                                        active={type}/>
+                                       active={type}/>
                     </Grid>
-                    <Grid item xs={12} className={classes.center}>
-                        <BubbleChart width={width} height={height}>
-                            <Bubbles_SPS data={data} forceStrength={0.3} center={center} type={type} selectBubble={this.selectBubble}/>
+                    <Grid item xs={12} className={classes.item} style={{overflowX: 'auto', textAlign:'center'}}>
+                        <BubbleChart width={width} height={height} id={'bc'} style={{overflowX: 'scroll'}}>
+                            <Bubbles_SPS data={data} forceStrength={0.3} center={center} type={type}
+                                         selectBubble={this.selectBubble}/>
+
                         </BubbleChart>
                     </Grid>
+
                     <Grid item xs={12} id={'tablaDetalle'}>
-                        {this.state.institucion && this.state.type=== 1 &&
+                        {this.state.institucion && this.state.type === 1 &&
                         <TablaDetalleServidores institucion={this.state.institucion}/>
                         }
-                        {this.state.institucion && this.state.type=== 2 &&
+                        {this.state.institucion && this.state.type === 2 &&
                         <TablaDetalleParticulares institucion={this.state.institucion}/>
                         }
-                        {this.state.institucion && (this.state.type==='monto' || this.state.type ==='sanciones') &&
-                        <TablaDetalle  institucion={this.state.institucion}/>
+                        {this.state.institucion && (this.state.type === 'monto' || this.state.type === 'sanciones') &&
+                        <TablaDetalle institucion={this.state.institucion}/>
                         }
                     </Grid>
+
                 </Grid>
             </div>
         );

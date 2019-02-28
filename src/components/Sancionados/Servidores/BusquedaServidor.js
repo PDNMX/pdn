@@ -204,7 +204,7 @@ class BusquedaServidor extends React.Component {
             })
         };
         return (
-            <Grid container spacing={8}>
+            <Grid container spacing={32}>
                 <Grid item xs={12} md={6}>
                     <FormControl className={classes.formControl}>
                         <SelectReact

@@ -92,7 +92,7 @@ class BubbleHolder_Servidores_Contrataciones extends React.Component {
         const {data, type} = this.state;
         return (
             <div className={classes.root}>
-                <Grid container spacing={0}>
+                <Grid container>
                     <Grid item xs={12}>
                         <Typography variant={"display1"} className={classes.title} paragraph>
                             Total de {this.state.type} por institución

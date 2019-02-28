@@ -55,7 +55,7 @@ function floatingTooltip(tooltipId, width) {
         const xOffset = 20
         const yOffset = 10
 
-        const ttw = tt.style('width')
+        const ttw = parseInt(tt.style('width').slice(0,-2));
         const tth = tt.style('height')
 
         const wscrY = window.scrollY
@@ -63,10 +63,11 @@ function floatingTooltip(tooltipId, width) {
 
         const curX = (document.all) ? event.clientX + wscrX : event.pageX
         const curY = (document.all) ? event.clientY + wscrY : event.pageY
-        let ttleft = ((curX - wscrX + xOffset * 2 + ttw) > window.innerWidth) ?
-            curX - ttw - xOffset * 2 : curX + xOffset
 
-        if (ttleft < wscrX + xOffset) {
+        let ttleft = ((curX - wscrX + xOffset * 2 + ttw ) > window.innerWidth) ?
+            window.innerWidth - (ttw+xOffset)  :curX + xOffset
+
+       if (ttleft < wscrX + xOffset) {
             ttleft = wscrX + xOffset
         }
 
@@ -76,6 +77,8 @@ function floatingTooltip(tooltipId, width) {
         if (tttop < wscrY + yOffset) {
             tttop = curY + yOffset
         }
+
+        //window.innerWidth - curX
 
         tt
             .style('top', `${tttop}px`)
