@@ -51,7 +51,6 @@ function getSorting(order, orderBy) {
 const columnData = [
     {
         id: 'servidor',
-        numeric: false,
         disablePadding: false,
         label: 'Servidor público',
         position: 2,
@@ -60,17 +59,15 @@ const columnData = [
     },
     {
         id: 'institucion',
-        numeric: false,
         disablePadding: false,
         label: 'Institución',
         position: 3,
         mostrar: true,
         key: 'institucion'
     },
-    {id: 'puesto', numeric: false, disablePadding: false, label: 'Puesto', position: 4, mostrar: true, key: 'puesto'},
+    {id: 'puesto', disablePadding: false, label: 'Puesto', position: 4, mostrar: true, key: 'puesto'},
     {
         id: 'tipoArea',
-        numeric: false,
         disablePadding: false,
         label: 'Tipo de área',
         position: 5,
@@ -79,7 +76,6 @@ const columnData = [
     },
     {
         id: 'contrataciones',
-        numeric: false,
         disablePadding: false,
         label: 'Contrataciones públicas',
         position: 6,
@@ -88,7 +84,6 @@ const columnData = [
     },
     {
         id: 'concesionesLicencias',
-        numeric: false,
         disablePadding: false,
         label: 'Concesiones, licencias, permisos, autorizaciones y prórrogas',
         position: 7,
@@ -97,7 +92,6 @@ const columnData = [
     },
     {
         id: 'enajenacion',
-        numeric: false,
         disablePadding: false,
         label: 'Enajenación de bienes muebles',
         position: 8,
@@ -106,7 +100,6 @@ const columnData = [
     },
     {
         id: 'dictamenes',
-        numeric: false,
         disablePadding: false,
         label: 'Asignación y emisión de dictámenes de avalúos nacionales',
         position: 9,
@@ -156,6 +149,9 @@ const styles = theme => ({
     },
     desc:{
         color : theme.palette.primary.dark,
+    },
+    textGrey :{
+        color : theme.palette.textGrey.color,
     }
 });
 
@@ -319,7 +315,7 @@ class EnhancedTable extends React.Component {
                                 }
                             </Grid>
                             <Grid item xs={12} className={classes.titleTable}>
-                                <Typography variant={'title'} className={classes.title}>
+                                <Typography variant={'h6'} className={classes.textGrey}>
                                     Detalle</Typography>
                             </Grid>
                             <Grid item xs={12} className={classes.section}>

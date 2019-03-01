@@ -136,7 +136,6 @@ class ConsolaAdministracionSO extends React.Component {
         };
         rp(options)
             .then(data => {
-                console.log(data[0].estatus);
                 this.setState({estatus: data[0].estatus});
                 return true;
             })

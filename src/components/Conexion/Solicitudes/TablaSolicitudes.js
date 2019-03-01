@@ -176,8 +176,12 @@ const styles = theme => ({
         color: theme.palette.primary.dark,
     },
     containerTable: {
-        overflowX: 'scroll'
-    }
+        overflowX: 'scroll',
+        padding : theme.spacing.unit * 2,
+    },
+    textGrey: {
+        color : theme.palette.textGrey.color
+}
 });
 
 
@@ -351,7 +355,7 @@ class TablaSolicitudes extends React.Component {
         const {order, orderBy, selected, rowsPerPage, page, filterData, totalRows, filterDataAll} = this.state;
         let index = 0;
         return (
-            <div className={classes.containerTable}>
+            <div >
                 <Grid container>
                     <Grid item xs={12}>
                         <Mensaje mensaje={'El estatus de la solicitud ha sido modificado'} titulo={'Cambio de estatus'}
@@ -363,8 +367,12 @@ class TablaSolicitudes extends React.Component {
 
                     </Grid>
                     <Grid item xs={12}><Typography variant={"h6"}
-                                                   className={classes.text}>Solicitudes</Typography></Grid>
+                                                   className={classes.text}>Solicitudes<br/></Typography></Grid>
                     <Grid item xs={12}>
+                        <Typography variant={"subtitle2"} className={classes.textGrey}>
+                            Pulsa sobre el registro para ver el detalle <br/><br/>
+                    </Typography></Grid>
+                    <Grid item xs={12} className={classes.containerTable}>
                         <Table aria-describedby="spinnerLoading"
                                aria-busy={this.state.loading} aria-labelledby="tableTitle">
                             <EnhancedTableHead

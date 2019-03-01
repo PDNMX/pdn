@@ -42,13 +42,12 @@ function getSorting(order, orderBy) {
 }
 
 const columnData = [
-    {id: 'servidor', numeric: false, disablePadding: false, label: 'Servidor público', position: 1, mostrar: true},
-    {id: 'institucion', numeric: false, disablePadding: false, label: 'Institución', position: 2, mostrar: true},
-    {id: 'autoridad', numeric: false, disablePadding: false, label: 'Autoridad', position: 3, mostrar: true},
-    {id: 'expediente', numeric: false, disablePadding: false, label: 'Expediente', position: 4, mostrar: true},
+    {id: 'servidor',disablePadding: false, label: 'Servidor público', position: 1, mostrar: true},
+    {id: 'institucion',  disablePadding: false, label: 'Institución', position: 2, mostrar: true},
+    {id: 'autoridad', disablePadding: false, label: 'Autoridad', position: 3, mostrar: true},
+    {id: 'expediente', disablePadding: false, label: 'Expediente', position: 4, mostrar: true},
     {
         id: 'fecha_resolucion',
-        numeric: false,
         disablePadding: false,
         label: 'Fecha resolución',
         position: 5,
@@ -56,17 +55,16 @@ const columnData = [
     },
     {
         id: 'sancion_impuesta',
-        numeric: false,
         disablePadding: false,
         label: 'Sanción impuesta',
         position: 6,
         mostrar: false
     },
-    {id: 'fecha_inicio', numeric: false, disablePadding: false, label: 'Fecha inicio', position: 7, mostrar: false},
-    {id: 'fecha_fin', numeric: false, disablePadding: false, label: 'Fecha fin', position: 8, mostrar: false},
-    {id: 'monto', numeric: true, disablePadding: false, label: 'Monto', position: 9, mostrar: false},
-    {id: 'causa', numeric: false, disablePadding: false, label: 'Causa', position: 10, mostrar: false},
-    {id: 'constancia', numeric: false, disablePadding: true, label: 'Constancia', position: 11, mostrar: false}
+    {id: 'fecha_inicio', disablePadding: false, label: 'Fecha inicio', position: 7, mostrar: false},
+    {id: 'fecha_fin',  disablePadding: false, label: 'Fecha fin', position: 8, mostrar: false},
+    {id: 'monto', disablePadding: false, label: 'Monto', position: 9, mostrar: false},
+    {id: 'causa',  disablePadding: false, label: 'Causa', position: 10, mostrar: false},
+    {id: 'constancia',  disablePadding: true, label: 'Constancia', position: 11, mostrar: false}
 ];
 
 const styles = theme => ({

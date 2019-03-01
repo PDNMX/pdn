@@ -60,8 +60,6 @@ class BubbleHolder_Servidores_Contrataciones extends React.Component {
                 this.setState({
                     data: createNodes(aux, this.state.type),
                     originalData: data,
-                }, () => {
-                    console.log("dataCreado: ", this.state.data);
                 });
             })
             .catch(err => {

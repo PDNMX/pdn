@@ -296,7 +296,7 @@ class Endpoints extends React.Component {
         const {order, orderBy, selected, rowsPerPage, page, filterData, totalRows, filterDataAll, registros} = this.state;
         let index = 0;
         return (
-            <div className={classes.containerTable}>
+            <div>
                 <Grid container justify={'center'} className={classes.gridTable}>
                     <Grid item xs={12}>
                         <Mensaje mensaje={this.state.mensaje} titulo={this.state.tituloMensaje}
@@ -309,7 +309,7 @@ class Endpoints extends React.Component {
                     <Grid item xs={12}>
                         <Typography variant={"h6"} className={classes.text}>API's registradas</Typography>
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} className={classes.containerTable}>
                         <Table aria-describedby="spinnerLoading"
                                aria-busy={this.state.loading} aria-labelledby="tableTitle">
                             <EnhancedTableHead

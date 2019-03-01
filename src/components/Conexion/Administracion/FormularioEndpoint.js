@@ -64,7 +64,6 @@ class FormularioEndpoint extends React.Component {
     componentDidMount(){
         if(!this.props.endpoint){
             let aux = JSON.parse(localStorage.getItem("sesion"));
-            console.log("aux: ",aux);
             this.setState({
                 currentUser : aux.currentUser
             },()=>{
@@ -226,7 +225,7 @@ class FormularioEndpoint extends React.Component {
                                    onChange={this.handleChange('url')}
                         />
                     </Grid>
-                    <Grid xs={12} md={6}>
+                    <Grid item xs={12} md={6}>
                         <FormControl className={classes.formControl}>
                             <InputLabel htmlFor="age-simple">Método</InputLabel>
                             <Select

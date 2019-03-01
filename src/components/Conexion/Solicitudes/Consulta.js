@@ -20,7 +20,7 @@ const styles = theme => ({
     contenedor: {
         padding: theme.spacing.unit * 5,
         overflowX: 'auto',
-        maxWidth : '1200px',
+        maxWidth: '1200px',
     },
     bgImg: {
         width: '100%',
@@ -143,9 +143,9 @@ class Conexion extends React.Component {
                 <div className={classes.bgContainer}>
                     <Grid container justify={'center'}>
                         <Grid item xs={12} className={classes.contenedor}>
-                            <Paper >
-                                <TablaSolicitudes/>
-                            </Paper>
+
+                            <TablaSolicitudes/>
+
                         </Grid>
                     </Grid>
                 </div>

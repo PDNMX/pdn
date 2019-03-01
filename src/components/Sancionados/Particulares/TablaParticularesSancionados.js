@@ -49,16 +49,14 @@ function getSorting(order, orderBy) {
 const columnData = [
     {
         id: 'proveedor',
-        numeric: false,
         disablePadding: false,
         label: 'Proveedor o contratista',
         position: 1,
         mostrar: true
     },
-    {id: 'institucion', numeric: false, disablePadding: false, label: 'Institución', position: 2, mostrar: true},
+    {id: 'institucion', disablePadding: false, label: 'Institución', position: 2, mostrar: true},
     {
         id: 'expediente',
-        numeric: false,
         disablePadding: false,
         label: 'Número de expediente',
         position: 3,
@@ -66,16 +64,14 @@ const columnData = [
     },
     {
         id: 'hechos',
-        numeric: false,
         disablePadding: false,
         label: 'Hechos de la irregularidad',
         position: 4,
         mostrar: false
     },
-    {id: 'objetoSocial', numeric: false, disablePadding: false, label: 'Objeto social', position: 5, mostrar: false},
+    {id: 'objetoSocial', disablePadding: false, label: 'Objeto social', position: 5, mostrar: false},
     {
         id: 'sentidoResolucion',
-        numeric: false,
         disablePadding: false,
         label: 'Sentido de la resolución',
         position: 6,
@@ -83,7 +79,6 @@ const columnData = [
     },
     {
         id: 'fechaNotificacion',
-        numeric: false,
         disablePadding: false,
         label: 'Fecha notificación',
         position: 7,
@@ -91,17 +86,15 @@ const columnData = [
     },
     {
         id: 'fechaResolucion',
-        numeric: false,
         disablePadding: false,
         label: 'Fecha resolución',
         position: 8,
         mostrar: false
     },
-    {id: 'plazo', numeric: false, disablePadding: false, label: 'Plazo', position: 9, mostrar: false},
-    {id: 'monto', numeric: false, disablePadding: false, label: 'Monto', position: 10, mostrar: false},
+    {id: 'plazo',disablePadding: false, label: 'Plazo', position: 9, mostrar: false},
+    {id: 'monto', disablePadding: false, label: 'Monto', position: 10, mostrar: false},
     {
         id: 'responsableInformacion',
-        numeric: false,
         disablePadding: false,
         label: 'Responsable de información',
         position: 11,
@@ -109,7 +102,6 @@ const columnData = [
     },
     {
         id: 'fechaActualizacion',
-        numeric: false,
         disablePadding: false,
         label: 'Fecha actualización',
         position: 12,

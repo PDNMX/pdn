@@ -13,8 +13,6 @@ import * as d3 from 'd3'
    * array for each element in the rawData input.
    */
 export function createNodes(rawData, type) {
-    console.log("type:  ",type);
-   console.log("rawData: ",rawData);
     // Use the max total_amount in the data as the max in the scale's domain
     // note we have to ensure the total_amount is a number.
     const maxAmount = type === 'sanciones' ? d3.max(rawData, d => +d.sanciones_total) : type === 'monto' ? d3.max(rawData, d => +d.monto_total): d3.max(rawData, d => d.numero_servidores);
