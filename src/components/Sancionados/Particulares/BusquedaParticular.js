@@ -3,9 +3,6 @@ import TextField from '@material-ui/core/TextField';
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import FormControl from "@material-ui/core/FormControl";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import IconButton from "@material-ui/core/IconButton";
-import Visibility from "@material-ui/icons/Search";
 import Select from "react-select";
 import MenuItem from "@material-ui/core/MenuItem";
 import rp from "request-promise";
@@ -13,7 +10,8 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid/Grid";
 import IconReplay from "@material-ui/icons/Replay";
 import Tooltip from "@material-ui/core/Tooltip/Tooltip";
-
+import IconSearch from "@material-ui/icons/Search";
+import Typography from "@material-ui/core/Typography/Typography";
 
 const styles = theme => ({
     container: {
@@ -179,11 +177,12 @@ class BusquedaParticular extends React.Component {
     }
 
     limpiarBusqueda = ()=>{
-        this.props.handleChangeCampo('nombreParticular');
-        this.props.handleChangeCampo('institucion');
-
+        this.props.handleCleanAll();
     };
 
+    buscar = () => {
+        this.props.handleSearch('FIELD_FILTER');
+    };
     render() {
         let {classes, handleChangeCampo, nombreParticular, institucion, theme} = this.props;
 
@@ -197,7 +196,10 @@ class BusquedaParticular extends React.Component {
         };
 
         return (
-            <Grid container spacing={0}>
+            <Grid container spacing={32}>
+                <Grid item xs={12}>
+                    <Typography variant="h6"  paragraph>Busca un particular sancionado</Typography>
+                </Grid>
                 <Grid item md={6} xs={12}>
                     <FormControl className={classes.formControl}>
                         <Select
@@ -219,15 +221,6 @@ class BusquedaParticular extends React.Component {
                             type="search"
                             onChange={(e) => handleChangeCampo('nombreParticular',e)}
                             value={nombreParticular}
-                            InputProps={{
-                                className: classes.fontLight,
-                                endAdornment:
-                                    <InputAdornment position="end">
-                                        <IconButton className={classes.fontLight}>
-                                            <Visibility/>
-                                        </IconButton>
-                                    </InputAdornment>
-                            }}
                             InputLabelProps = {{
                                 className: classes.fontLight,
                                 shrink : true
@@ -236,6 +229,12 @@ class BusquedaParticular extends React.Component {
                     </FormControl>
                 </Grid>
                 <Grid item xs={12} md={1} className={classes.centrado}>
+                    <Tooltip title={'Buscar'}>
+                        <IconSearch className={classes.fontLight} onClick={this.buscar}/>
+                    </Tooltip>
+                </Grid>
+                <Grid item xs={11}/>
+                <Grid item xs={12} md={1}  className={classes.centrado}>
                     <Tooltip title={'Limpiar'}>
                         <IconReplay className={classes.fontLight} onClick={this.limpiarBusqueda}/>
                     </Tooltip>

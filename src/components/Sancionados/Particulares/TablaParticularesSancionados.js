@@ -17,6 +17,7 @@ import Grid from "@material-ui/core/Grid/Grid";
 import EnhancedTableHead from '../../Tablas/EnhancedTableHead';
 import Typography from "@material-ui/core/Typography/Typography";
 import Modal from "@material-ui/core/Modal/Modal";
+import BusquedaServidor from "../../ServidoresIntervienen/BusquedaServidor";
 
 let counter = 0;
 
@@ -165,8 +166,6 @@ const toolbarStyles = theme => ({
     toolBarStyle: {
         backgroundColor: 'transparent',
         position: 'relative',
-        padding: 0,
-        margin: '0 15px',
         zIndex: 3,
         paddingTop: '53px',
         paddingBottom: '61px',
@@ -197,10 +196,11 @@ const toolbarStyles = theme => ({
 
 
 let EnhancedTableToolbar = props => {
-    const {classes, handleChangeCampo, nombreParticular, institucion} = props;
+    const {classes, handleChangeCampo, nombreParticular, institucion,handleCleanAll,handleSearch} = props;
     return (
         <Toolbar className={classes.toolBarStyle}>
-            <BusquedaParticular handleChangeCampo={handleChangeCampo} nombreParticular={nombreParticular}
+            <BusquedaParticular handleCleanAll={handleCleanAll} handleSearch={handleSearch}
+                                handleChangeCampo={handleChangeCampo} nombreParticular={nombreParticular}
                                 institucion={institucion}/>
 
         </Toolbar>
@@ -215,10 +215,6 @@ EnhancedTableToolbar = withStyles(toolbarStyles)(EnhancedTableToolbar);
 
 
 class EnhancedTable extends React.Component {
-
-    componentDidMount() {
-        this.handleSearchAPI('FIELD_FILTER');
-    }
 
     constructor(props) {
         super(props);
@@ -236,7 +232,7 @@ class EnhancedTable extends React.Component {
             open: false,
             elementoSeleccionado: {},
             institucion: '',
-            loading: true,
+            loading: false,
             totalRows: 0,
             filterDataAll: []
         };
@@ -345,11 +341,17 @@ class EnhancedTable extends React.Component {
 
     handleChangeCampo = (varState, event) => {
         this.setState({
-            loading: true,
             [varState]: event ? (event.target ? event.target.value : event.value) : ''
-        }, () => {
-            this.handleSearchAPI('FIELD_FILTER');
         });
+    };
+    handleCleanAll = () => {
+        this.setState(
+            {
+                filterData: []
+            }, () => {
+                this.handleChangeCampo('nombreParticular');
+                this.handleChangeCampo('institucion');
+            })
     };
 
 
@@ -362,6 +364,8 @@ class EnhancedTable extends React.Component {
                 <Grid container justify='center' spacing={0} className={classes.gridTable}>
                     <Grid item xs={12}>
                         <EnhancedTableToolbar handleChangeCampo={this.handleChangeCampo}
+                                              handleCleanAll={this.handleCleanAll}
+                                              handleSearch={this.handleSearchAPI}
                                               nombreParticular={this.state.nombreParticular}
                                               institucion={this.state.institucion}/>
                     </Grid>
@@ -382,10 +386,13 @@ class EnhancedTable extends React.Component {
                         }
                     </Grid>
                     <Grid item xs={12}>
+                        {filterData.length>0&&
                         <Typography variant="h6" className={classes.desc}>Pulsa sobre el registro para ver su
                             detalle<br/></Typography>
+                        }
                     </Grid>
                     <Grid item xs={12} >
+                        {filterData.length>0&&
                         <div className={classes.container}>
                             <Table aria-describedby="spinnerLoading"
                                    aria-busy={this.state.loading} aria-labelledby="tableTitle">
@@ -463,16 +470,17 @@ class EnhancedTable extends React.Component {
                                 </TableFooter>
                             </Table>
                         </div>
-                    </Grid>
-                </Grid>
+                        }
 
-                <Grid container spacing={0}>
+                    </Grid>
                     <Grid item xs={12} className={classes.item}>
+                        {filterData.length>0&&
                         <Typography variant={"caption"} style={{fontStyle: 'italic'}}>Fuente:
                             https://datos.gob.mx/busca/dataset/proveedores-y-contratistas-sancionados</Typography>
+                        }
+
                     </Grid>
                 </Grid>
-
             </div>
         );
     }
