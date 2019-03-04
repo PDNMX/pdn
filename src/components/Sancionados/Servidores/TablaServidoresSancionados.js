@@ -380,8 +380,7 @@ class EnhancedTable extends React.Component {
                                                                padding="default">{n.servidor}</TableCell>
                                                     <TableCell>{n.institucion}</TableCell>
                                                     <TableCell style={{width:'25%'}}>{n.autoridad}</TableCell>
-                                                    <TableCell>{n.expediente}</TableCell>
-
+                                                    <TableCell>{n.expediente}</TableCell>¿
                                                 </TableRow>
                                             );
                                         })}
