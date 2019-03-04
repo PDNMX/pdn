@@ -161,8 +161,6 @@ const toolbarStyles = theme => ({
     toolBarStyle: {
         backgroundColor: 'transparent',
         position: 'relative',
-        padding: 0,
-        margin: '0 15px',
         zIndex: 3,
         paddingTop: '53px',
         paddingBottom: '61px',
@@ -193,11 +191,12 @@ const toolbarStyles = theme => ({
 
 
 let EnhancedTableToolbar = props => {
-    const {classes, handleChangeCampo, nombreParticular, institucion} = props;
+    const {classes, handleChangeCampo, nombreParticular, institucion,handleSearch,handleCleanAll} = props;
     return (
         <Toolbar className={classes.toolBarStyle}>
-
-            <BusquedaParticular handleChangeCampo={handleChangeCampo} nombreParticular={nombreParticular}
+            <BusquedaParticular handleCleanAll={handleCleanAll} handleSearch={handleSearch}
+                                handleChangeCampo={handleChangeCampo}
+                                nombreParticular={nombreParticular}
                                 institucion={institucion}/>
         </Toolbar>
     );
@@ -211,12 +210,7 @@ EnhancedTableToolbar = withStyles(toolbarStyles)(EnhancedTableToolbar);
 
 
 class EnhancedTable extends React.Component {
-
-    componentDidMount() {
-        this.handleSearchAPI('FIELD_FILTER');
-    }
-
-    constructor(props) {
+constructor(props) {
         super(props);
         this.child = React.createRef();
         this.btnDownloadAll = React.createRef();
@@ -232,7 +226,7 @@ class EnhancedTable extends React.Component {
             open: false,
             elementoSeleccionado: {},
             institucion: '',
-            loading: true,
+            loading: false,
             totalRows: 0,
             filterDataAll: []
         };
@@ -340,13 +334,18 @@ class EnhancedTable extends React.Component {
 
     handleChangeCampo = (varState, event) => {
         this.setState({
-            loading: true,
             [varState]: event ? (event.target ? event.target.value : event.value) : ''
-        }, () => {
-            this.handleSearchAPI('FIELD_FILTER');
         });
     };
-
+    handleCleanAll = () => {
+        this.setState(
+            {
+                filterData: []
+            }, () => {
+                this.handleChangeCampo('nombreParticular');
+                this.handleChangeCampo('institucion');
+            })
+    };
 
     render() {
         const {classes} = this.props;
@@ -358,7 +357,10 @@ class EnhancedTable extends React.Component {
                     <Grid item xs={12}>
                         <EnhancedTableToolbar handleChangeCampo={this.handleChangeCampo}
                                               nombreParticular={this.state.nombreParticular}
-                                              institucion={this.state.institucion}/>
+                                              institucion={this.state.institucion}
+                                              handleCleanAll={this.handleCleanAll}
+                                              handleSearch={this.handleSearchAPI}
+                        />
                     </Grid>
                     <Grid item xs={12}>
                         <DetalleParticular handleClose={this.handleClose} particular={this.state.elementoSeleccionado}
@@ -376,95 +378,103 @@ class EnhancedTable extends React.Component {
                         }
                     </Grid>
                     <Grid item xs={12}>
-                        <Typography variant={"h6"} className={classes.desc}>Pulsa sobre el registro para ver su detalle<br/></Typography>
+                        {filterData.length > 0 &&
+                        <Typography variant={"h6"} className={classes.desc}>Pulsa sobre el registro para ver su
+                            detalle<br/></Typography>
+                        }
                     </Grid>
                     <Grid item xs={12} >
+                        {filterData.length > 0 &&
                         <div className={classes.container}>
-                        <Table  aria-describedby="spinnerLoading"
-                               aria-busy={this.state.loading} aria-labelledby="tableTitle">
-                            <EnhancedTableHead
-                                numSelected={selected.length}
-                                order={order}
-                                orderBy={orderBy}
-                                onSelectAllClick={this.handleSelectAllClick}
-                                onRequestSort={this.handleRequestSort}
-                                rowCount={data.length}
-                                columnData={columnData}
-                            />
-                            <TableBody id="tableParticulares">
-                                {filterData
-                                    .sort(getSorting(order, orderBy))
-                                    .map(n => {
-                                        const isSelected = this.isSelected(n.id);
-                                        return (
-                                            <TableRow
-                                                hover
-                                                onClick={event => this.handleClick(event, n)}
-                                                role="checkbox"
-                                                aria-checked={isSelected}
-                                                tabIndex={-1}
-                                                key={n.id}
-                                                selected={isSelected}
-                                            >
-                                                <TableCell component="th" scope="row"
-                                                           padding="default">{n.proveedor}</TableCell>
-                                                <TableCell>{n.dependencia}</TableCell>
-                                                <TableCell>{n.expediente}</TableCell>
-                                                <TableCell>{n.sentidoResolucion}</TableCell>
-                                            </TableRow>
-                                        );
-                                    })}
-                                {emptyRows > 0 && (
-                                    <TableRow style={{height: 49 * emptyRows}}>
-                                        <TableCell colSpan={4}/>
+                            <Table aria-describedby="spinnerLoading"
+                                   aria-busy={this.state.loading} aria-labelledby="tableTitle">
+                                <EnhancedTableHead
+                                    numSelected={selected.length}
+                                    order={order}
+                                    orderBy={orderBy}
+                                    onSelectAllClick={this.handleSelectAllClick}
+                                    onRequestSort={this.handleRequestSort}
+                                    rowCount={data.length}
+                                    columnData={columnData}
+                                />
+                                <TableBody id="tableParticulares">
+                                    {filterData
+                                        .sort(getSorting(order, orderBy))
+                                        .map(n => {
+                                            const isSelected = this.isSelected(n.id);
+                                            return (
+                                                <TableRow
+                                                    hover
+                                                    onClick={event => this.handleClick(event, n)}
+                                                    role="checkbox"
+                                                    aria-checked={isSelected}
+                                                    tabIndex={-1}
+                                                    key={n.id}
+                                                    selected={isSelected}
+                                                >
+                                                    <TableCell component="th" scope="row"
+                                                               padding="default">{n.proveedor}</TableCell>
+                                                    <TableCell>{n.dependencia}</TableCell>
+                                                    <TableCell>{n.expediente}</TableCell>
+                                                    <TableCell>{n.sentidoResolucion}</TableCell>
+                                                </TableRow>
+                                            );
+                                        })}
+                                    {emptyRows > 0 && (
+                                        <TableRow style={{height: 49 * emptyRows}}>
+                                            <TableCell colSpan={4}/>
+                                        </TableRow>
+                                    )}
+                                </TableBody>
+
+                                <TableFooter>
+                                    <TableRow>
+                                        <TableCell>
+                                            <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data}
+                                                      filtrado={false}
+                                                      columnas={columnData} fnSearch={this.handleSearchAPI}
+                                                      fileName={'Particulares inhabilitados'}/>
+                                        </TableCell>
+                                        <TableCell>
+                                            <BajarCSV innerRef={comp => this.child = comp} data={filterDataAll}
+                                                      filtrado={true}
+                                                      columnas={columnData} fnSearch={this.handleSearchAPI}
+                                                      fileName={'Particulares inhabilitados'}/>
+                                        </TableCell>
+                                        <TablePagination
+                                            colSpan={2}
+                                            count={totalRows}
+                                            rowsPerPage={rowsPerPage}
+                                            page={page}
+                                            backIconButtonProps={{
+                                                'aria-label': 'Previous Page',
+                                            }}
+                                            nextIconButtonProps={{
+                                                'aria-label': 'Next Page',
+                                            }}
+                                            onChangePage={this.handleChangePage}
+                                            onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                                            labelRowsPerPage='Registros por página'
+                                            labelDisplayedRows={({from, to, count}) => {
+                                                return `${from}-${to} de ${count}`;
+                                            }}
+                                        />
+
                                     </TableRow>
-                                )}
-                            </TableBody>
+                                </TableFooter>
 
-                            <TableFooter>
-                                <TableRow>
-                                    <TableCell>
-                                        <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data} filtrado={false}
-                                                  columnas={columnData} fnSearch={this.handleSearchAPI}
-                                                  fileName={'Particulares inhabilitados'}/>
-                                    </TableCell>
-                                    <TableCell>
-                                        <BajarCSV innerRef={comp => this.child = comp} data={filterDataAll} filtrado={true}
-                                                  columnas={columnData} fnSearch={this.handleSearchAPI}
-                                                  fileName={'Particulares inhabilitados'}/>
-                                    </TableCell>
-                                    <TablePagination
-                                        colSpan={2}
-                                        count={totalRows}
-                                        rowsPerPage={rowsPerPage}
-                                        page={page}
-                                        backIconButtonProps={{
-                                            'aria-label': 'Previous Page',
-                                        }}
-                                        nextIconButtonProps={{
-                                            'aria-label': 'Next Page',
-                                        }}
-                                        onChangePage={this.handleChangePage}
-                                        onChangeRowsPerPage={this.handleChangeRowsPerPage}
-                                        labelRowsPerPage='Registros por página'
-                                        labelDisplayedRows={({from, to, count}) => {
-                                            return `${from}-${to} de ${count}`;
-                                        }}
-                                    />
-
-                                </TableRow>
-                            </TableFooter>
-
-                        </Table>
+                            </Table>
                         </div>
+                        }
                     </Grid>
-                </Grid>
-                <Grid container>
                     <Grid item xs={12} className={classes.item}>
-                        <Typography variant={"caption"} style={{fontStyle:'italic'}}>Fuente: https://datos.gob.mx/busca/dataset/proveedores-y-contratistas-sancionados</Typography>
+                        {filterData.length > 0 &&
+                        <Typography variant={"caption"} style={{fontStyle: 'italic'}}>Fuente:
+                            https://datos.gob.mx/busca/dataset/proveedores-y-contratistas-sancionados</Typography>
+                        }
                     </Grid>
-                </Grid>
 
+                </Grid>
             </div>
         );
     }

@@ -3,9 +3,6 @@ import TextField from '@material-ui/core/TextField';
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import FormControl from "@material-ui/core/FormControl/FormControl";
-//import InputAdornment from "@material-ui/core/InputAdornment/InputAdornment";
-//import IconButton from "@material-ui/core/IconButton/IconButton";
-//import Visibility from "@material-ui/icons/Search";
 import InputLabel from "@material-ui/core/InputLabel/InputLabel";
 import Select from "@material-ui/core/Select/Select";
 import MenuItem from "@material-ui/core/MenuItem/MenuItem";
@@ -14,12 +11,10 @@ import Grid from "@material-ui/core/Grid/Grid";
 import Paper from "@material-ui/core/Paper/Paper";
 import SelectReact from "react-select";
 import '../Utils/selectReact.css';
-//import Typography from "@material-ui/core/Typography/Typography";
 import IconReplay from "@material-ui/icons/Replay";
 import IconSearch from "@material-ui/icons/Search";
 import Tooltip from "@material-ui/core/Tooltip/Tooltip";
 import Typography from "@material-ui/core/Typography/Typography";
-//import KeyboardArrowDown from "@material-ui/icons/KeyboardArrowDown";
 
 const styles = theme => ({
     container: {
