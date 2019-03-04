@@ -16,7 +16,9 @@ import SelectReact from "react-select";
 import '../Utils/selectReact.css';
 //import Typography from "@material-ui/core/Typography/Typography";
 import IconReplay from "@material-ui/icons/Replay";
+import IconSearch from "@material-ui/icons/Search";
 import Tooltip from "@material-ui/core/Tooltip/Tooltip";
+import Typography from "@material-ui/core/Typography/Typography";
 //import KeyboardArrowDown from "@material-ui/icons/KeyboardArrowDown";
 
 const styles = theme => ({
@@ -179,10 +181,13 @@ class BusquedaServidor extends React.Component {
     }
 
     limpiarBusqueda = ()=>{
-        this.props.handleChangeCampo('nombreServidor');
-        this.props.handleChangeCampo('procedimiento');
-        this.props.handleChangeCampo('institucion');
+        this.props.handleCleanAll();
     };
+
+    buscar = () => {
+        this.props.handleSearch('FIELD_FILTER');
+    };
+
 
     render() {
         const {classes, handleChangeCampo, nombreServidor, procedimiento, institucion, theme} = this.props;
@@ -204,8 +209,9 @@ class BusquedaServidor extends React.Component {
 
         return (
             <Grid container spacing={32}>
-
-
+                <Grid item xs={12}>
+                    <Typography variant="h6"  paragraph>Busca un servidor público</Typography>
+                </Grid>
                 <Grid item xs={12} md={4}>
                     <FormControl className={classes.formControl}>
                         <TextField
@@ -274,8 +280,13 @@ class BusquedaServidor extends React.Component {
                     </FormControl>
                 </Grid>
 
-
                 <Grid item xs={12} md={1} className={classes.centrado}>
+                    <Tooltip title={'Buscar'}>
+                        <IconSearch className={classes.fontLight} onClick={this.buscar}/>
+                    </Tooltip>
+                </Grid>
+                <Grid item xs={11}/>
+                <Grid item xs={12} md={1}  className={classes.centrado}>
                     <Tooltip title={'Limpiar'}>
                         <IconReplay className={classes.fontLight} onClick={this.limpiarBusqueda}/>
                     </Tooltip>

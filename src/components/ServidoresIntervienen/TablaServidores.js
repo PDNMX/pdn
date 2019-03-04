@@ -132,7 +132,7 @@ const styles = theme => ({
     container: {
         marginTop: '30px',
         marginBottom: '30px',
-        overflowX:'auto',
+        overflowX: 'auto',
         //width: '90%'
     },
     table: {
@@ -159,8 +159,6 @@ const toolbarStyles = theme => ({
     toolBarStyle: {
         backgroundColor: 'transparent',
         position: 'relative',
-        padding: 0,
-        margin: '0 15px',
         zIndex: 3,
         paddingTop: '53px',
         paddingBottom: '61px',
@@ -192,10 +190,11 @@ const toolbarStyles = theme => ({
 
 
 let EnhancedTableToolbar = props => {
-    const {classes, handleChangeCampo, nombreServidor, procedimiento, institucion} = props;
+    const {classes, handleChangeCampo, handleCleanAll, nombreServidor, procedimiento, institucion, handleSearch} = props;
     return (
         <Toolbar className={classes.toolBarStyle}>
-            <BusquedaServidor handleChangeCampo={handleChangeCampo}
+            <BusquedaServidor handleCleanAll={handleCleanAll} handleSearch={handleSearch}
+                              handleChangeCampo={handleChangeCampo}
                               nombreServidor={nombreServidor} procedimiento={procedimiento}
                               institucion={institucion}/>
         </Toolbar>
@@ -212,7 +211,7 @@ EnhancedTableToolbar = withStyles(toolbarStyles)(EnhancedTableToolbar);
 class EnhancedTable extends React.Component {
 
     componentDidMount() {
-       //this.handleSearchAPI('FIELD_FILTER');
+        //this.handleSearchAPI('FIELD_FILTER');
     }
 
     constructor(props) {
@@ -345,12 +344,21 @@ class EnhancedTable extends React.Component {
 
     handleChangeCampo = (varState, event) => {
         this.setState({
-            loading: true,
             [varState]: event ? (event.target ? event.target.value : event.value) : ''
-        }, () => {
-            this.handleSearchAPI('FIELD_FILTER');
         });
     };
+
+    handleCleanAll = () => {
+        this.setState(
+            {
+                filterData: []
+            }, () => {
+                this.handleChangeCampo('nombreServidor');
+                this.handleChangeCampo('procedimiento');
+                this.handleChangeCampo('institucion');
+            })
+    };
+
 
     render() {
         const {classes} = this.props;
@@ -358,11 +366,13 @@ class EnhancedTable extends React.Component {
         const emptyRows = rowsPerPage - filterData.length;
 
         return (
-            <div >
-                <Grid container justify='center' spacing={0} className={classes.gridTable}>
+            <div>
+                <Grid container justify='center'className={classes.gridTable}>
                     <Grid item xs={12}>
                         <EnhancedTableToolbar categoria={this.state.categoria}
                                               handleChangeCampo={this.handleChangeCampo}
+                                              handleCleanAll={this.handleCleanAll}
+                                              handleSearch={this.handleSearchAPI}
                                               nombreServidor={this.state.nombreServidor}
                                               procedimiento={this.state.procedimiento} data={filterData}
                                               columnas={columnData} institucion={this.state.institucion}/>
@@ -384,15 +394,17 @@ class EnhancedTable extends React.Component {
                         }
                     </Grid>
                     <Grid item xs={12}>
+                        {filterData.length > 0 &&
                         <Typography variant="h6" className={classes.desc} paragraph>Pulsa sobre el registro para ver su
                             detalle</Typography>
-
+                        }
                     </Grid>
-                    <Grid item xs={12} >
+                    <Grid item xs={12}>
+                        {filterData.length > 0 &&
                         <div className={classes.container}>
                             <Table aria-describedby="spinnerLoading" id={'tableServidores'}
                                    aria-busy={this.state.loading} aria-labelledby="tableTitle"
-                                   >
+                            >
                                 <EnhancedTableHead
                                     numSelected={selected.length}
                                     order={order}
@@ -435,46 +447,47 @@ class EnhancedTable extends React.Component {
 
                                 <TableFooter>
                                     <TableRow>
-                                        <TableCell> <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data} filtrado={false}
-                                                              columnas={columnData} fnSearch={this.handleSearchAPI} fileName={'ServidoresAll'}/></TableCell>
+                                        <TableCell> <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data}
+                                                              filtrado={false}
+                                                              columnas={columnData} fnSearch={this.handleSearchAPI}
+                                                              fileName={'ServidoresAll'}/></TableCell>
                                         <TableCell>
-                                            <BajarCSV innerRef={comp => this.child = comp} data={filterDataAll} filtrado={true}
-                                                      columnas={columnData} fnSearch={this.handleSearchAPI} fileName={'ServidoresFilter'}/>
+                                            <BajarCSV innerRef={comp => this.child = comp} data={filterDataAll}
+                                                      filtrado={true}
+                                                      columnas={columnData} fnSearch={this.handleSearchAPI}
+                                                      fileName={'ServidoresFilter'}/>
                                         </TableCell>
-                                            <TablePagination
-                                                colSpan={2}
-                                                count={totalRows}
-                                                rowsPerPage={rowsPerPage}
-                                                page={page}
-                                                backIconButtonProps={{
-                                                    'aria-label': 'Previous Page',
-                                                }}
-                                                nextIconButtonProps={{
-                                                    'aria-label': 'Next Page',
-                                                }}
-                                                onChangePage={this.handleChangePage}
-                                                onChangeRowsPerPage={this.handleChangeRowsPerPage}
-                                                labelRowsPerPage='Registros por página'
-                                                labelDisplayedRows={({from, to, count}) => {
-                                                    return `${from}-${to} de ${count}`;
-                                                }}
-                                            />
+                                        <TablePagination
+                                            colSpan={2}
+                                            count={totalRows}
+                                            rowsPerPage={rowsPerPage}
+                                            page={page}
+                                            backIconButtonProps={{
+                                                'aria-label': 'Previous Page',
+                                            }}
+                                            nextIconButtonProps={{
+                                                'aria-label': 'Next Page',
+                                            }}
+                                            onChangePage={this.handleChangePage}
+                                            onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                                            labelRowsPerPage='Registros por página'
+                                            labelDisplayedRows={({from, to, count}) => {
+                                                return `${from}-${to} de ${count}`;
+                                            }}
+                                        />
                                     </TableRow>
                                 </TableFooter>
                             </Table>
                         </div>
-
+                        }
                     </Grid>
-                </Grid>
-                <Grid container spacing={0}>
                     <Grid item xs={12} className={classes.item}>
+                        {filterData.length > 0 &&
                         <Typography variant="caption" style={{wordBreak: 'break-all'}}>Fuente:
                             https://reniresp.funcionpublica.gob.mx/ppcapf/consulta/informacion.jsf </Typography>
+                        }
                     </Grid>
-
-
                 </Grid>
-
             </div>
         );
     }
