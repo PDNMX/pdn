@@ -145,13 +145,17 @@ const styles = theme => ({
         marginBottom: '27px'
     },
     titleTable: {
-        marginBottom: '61px'
+        marginBottom: theme.spacing.unit *3,
+
     },
     desc:{
-        color : theme.palette.primary.dark,
+        color : theme.palette.textGrey.color
     },
     textGrey :{
         color : theme.palette.textGrey.color,
+    },
+    textTitle : {
+        color : theme.palette.primary.dark,
     }
 });
 
@@ -315,11 +319,11 @@ class EnhancedTable extends React.Component {
                                 }
                             </Grid>
                             <Grid item xs={12} className={classes.titleTable}>
-                                <Typography variant={'h6'} className={classes.textGrey}>
+                                <Typography variant={'h5'} className={classes.textTitle}>
                                     Detalle</Typography>
                             </Grid>
                             <Grid item xs={12} className={classes.section}>
-                                <Typography variant={"h6"} className={classes.desc}>Pulsa sobre el registro para ver su detalle<br/></Typography>
+                                <Typography variant={"subtitle1"} className={classes.desc}>Pulsa sobre el registro para ver su detalle<br/></Typography>
                             </Grid>
                             <Grid item xs={12}>
                                 <Table aria-describedby="spinnerLoading"
@@ -361,9 +365,13 @@ class EnhancedTable extends React.Component {
 
                                     <TableFooter>
                                         <TableRow>
-
+                                            <TableCell>
+                                                <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data} filtrado={false}
+                                                          columnas={columnData} fnSearch={this.handleSearchAPI}
+                                                          fileName={'Detalle'}/>
+                                            </TableCell>
                                             <TablePagination
-                                                colSpan={4}
+                                                colSpan={3}
                                                 count={totalRows}
                                                 rowsPerPage={rowsPerPage}
                                                 page={page}
@@ -388,13 +396,6 @@ class EnhancedTable extends React.Component {
                             </Grid>
                         </Grid>
                         <Grid container>
-                            <Grid item md={3} xs={12}>
-                                <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data} filtrado={false}
-                                          columnas={columnData} fnSearch={this.handleSearchAPI}
-                                          fileName={'Detalle'}/>
-                            </Grid>
-                            <Grid item md={3} xs={12}/>
-                            <Grid item md={6} xs={12}/>
                             <Grid item xs={12}>
                                 <Typography variant={"caption"} style={{fontStyle:'italic'}}>Fuente: https://reniresp.funcionpublica.gob.mx/ppcapf/consulta/informacion.jsf</Typography>
                             </Grid>

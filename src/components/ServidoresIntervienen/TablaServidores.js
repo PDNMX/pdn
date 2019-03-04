@@ -435,24 +435,30 @@ class EnhancedTable extends React.Component {
 
                                 <TableFooter>
                                     <TableRow>
-                                        <TablePagination
-                                            colSpan={4}
-                                            count={totalRows}
-                                            rowsPerPage={rowsPerPage}
-                                            page={page}
-                                            backIconButtonProps={{
-                                                'aria-label': 'Previous Page',
-                                            }}
-                                            nextIconButtonProps={{
-                                                'aria-label': 'Next Page',
-                                            }}
-                                            onChangePage={this.handleChangePage}
-                                            onChangeRowsPerPage={this.handleChangeRowsPerPage}
-                                            labelRowsPerPage='Registros por página'
-                                            labelDisplayedRows={({from, to, count}) => {
-                                                return `${from}-${to} de ${count}`;
-                                            }}
-                                        />
+                                        <TableCell> <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data} filtrado={false}
+                                                              columnas={columnData} fnSearch={this.handleSearchAPI} fileName={'ServidoresAll'}/></TableCell>
+                                        <TableCell>
+                                            <BajarCSV innerRef={comp => this.child = comp} data={filterDataAll} filtrado={true}
+                                                      columnas={columnData} fnSearch={this.handleSearchAPI} fileName={'ServidoresFilter'}/>
+                                        </TableCell>
+                                            <TablePagination
+                                                colSpan={2}
+                                                count={totalRows}
+                                                rowsPerPage={rowsPerPage}
+                                                page={page}
+                                                backIconButtonProps={{
+                                                    'aria-label': 'Previous Page',
+                                                }}
+                                                nextIconButtonProps={{
+                                                    'aria-label': 'Next Page',
+                                                }}
+                                                onChangePage={this.handleChangePage}
+                                                onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                                                labelRowsPerPage='Registros por página'
+                                                labelDisplayedRows={({from, to, count}) => {
+                                                    return `${from}-${to} de ${count}`;
+                                                }}
+                                            />
                                     </TableRow>
                                 </TableFooter>
                             </Table>
@@ -461,16 +467,6 @@ class EnhancedTable extends React.Component {
                     </Grid>
                 </Grid>
                 <Grid container spacing={0}>
-                    <Grid item md={3} xs={12} className={classes.item}>
-                        <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data} filtrado={false}
-                                  columnas={columnData} fnSearch={this.handleSearchAPI} fileName={'ServidoresAll'}/>
-                    </Grid>
-
-                    <Grid item md={3} xs={12} className={classes.item}>
-                        <BajarCSV innerRef={comp => this.child = comp} data={filterDataAll} filtrado={true}
-                                  columnas={columnData} fnSearch={this.handleSearchAPI} fileName={'ServidoresFilter'}/>
-                    </Grid>
-
                     <Grid item xs={12} className={classes.item}>
                         <Typography variant="caption" style={{wordBreak: 'break-all'}}>Fuente:
                             https://reniresp.funcionpublica.gob.mx/ppcapf/consulta/informacion.jsf </Typography>

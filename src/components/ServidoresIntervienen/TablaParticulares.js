@@ -423,9 +423,18 @@ class EnhancedTable extends React.Component {
 
                             <TableFooter>
                                 <TableRow>
-
+                                    <TableCell>
+                                        <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data} filtrado={false}
+                                                  columnas={columnData} fnSearch={this.handleSearchAPI}
+                                                  fileName={'Particulares inhabilitados'}/>
+                                    </TableCell>
+                                    <TableCell>
+                                        <BajarCSV innerRef={comp => this.child = comp} data={filterDataAll} filtrado={true}
+                                                  columnas={columnData} fnSearch={this.handleSearchAPI}
+                                                  fileName={'Particulares inhabilitados'}/>
+                                    </TableCell>
                                     <TablePagination
-                                        colSpan={4}
+                                        colSpan={2}
                                         count={totalRows}
                                         rowsPerPage={rowsPerPage}
                                         page={page}
@@ -451,17 +460,6 @@ class EnhancedTable extends React.Component {
                     </Grid>
                 </Grid>
                 <Grid container>
-                    <Grid item md={3} xs={12} className={classes.item}>
-                        <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data} filtrado={false}
-                                  columnas={columnData} fnSearch={this.handleSearchAPI}
-                                  fileName={'Particulares inhabilitados'}/>
-                    </Grid>
-                    <Grid item md={3} xs={12} className={classes.item}>
-                        <BajarCSV innerRef={comp => this.child = comp} data={filterDataAll} filtrado={true}
-                                  columnas={columnData} fnSearch={this.handleSearchAPI}
-                                  fileName={'Particulares inhabilitados'}/>
-                    </Grid>
-
                     <Grid item xs={12} className={classes.item}>
                         <Typography variant={"caption"} style={{fontStyle:'italic'}}>Fuente: https://datos.gob.mx/busca/dataset/proveedores-y-contratistas-sancionados</Typography>
                     </Grid>

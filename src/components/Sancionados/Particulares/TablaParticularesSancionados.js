@@ -430,10 +430,19 @@ class EnhancedTable extends React.Component {
 
                                 <TableFooter>
                                     <TableRow>
-
+                                        <TableCell>
+                                            <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data} filtrado={false}
+                                                      columnas={columnData} fnSearch={this.handleSearchAPI}
+                                                      fileName={'Particulares sancionados'}/>
+                                        </TableCell>
+                                        <TableCell>
+                                            <BajarCSV innerRef={comp => this.child = comp} data={filterDataAll} filtrado={true}
+                                                      columnas={columnData} fnSearch={this.handleSearchAPI}
+                                                      fileName={'Particulares sancionados'}/>
+                                        </TableCell>
                                         <TablePagination
                                             className={classes.tablePagination}
-                                            colSpan={4}
+                                            colSpan={2}
                                             count={totalRows}
                                             rowsPerPage={rowsPerPage}
                                             page={page}
@@ -458,16 +467,6 @@ class EnhancedTable extends React.Component {
                 </Grid>
 
                 <Grid container spacing={0}>
-                    <Grid item md={3} xs={12} className={classes.item}>
-                        <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data} filtrado={false}
-                                  columnas={columnData} fnSearch={this.handleSearchAPI}
-                                  fileName={'Particulares sancionados'}/>
-                    </Grid>
-                    <Grid item md={3} xs={12} className={classes.item}>
-                        <BajarCSV innerRef={comp => this.child = comp} data={filterDataAll} filtrado={true}
-                                  columnas={columnData} fnSearch={this.handleSearchAPI}
-                                  fileName={'Particulares sancionados'}/>
-                    </Grid>
                     <Grid item xs={12} className={classes.item}>
                         <Typography variant={"caption"} style={{fontStyle: 'italic'}}>Fuente:
                             https://datos.gob.mx/busca/dataset/proveedores-y-contratistas-sancionados</Typography>

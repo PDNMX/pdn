@@ -8,7 +8,10 @@ import PropDataUpdatedCSVLink from '../PropDataUpdatedCSVLink';
 
 const styles = theme => ({
     button: {
-        backgroundColor : "#FFE01B"
+        backgroundColor : "#FFE01B",
+        fontSize : '0.7rem',
+        color : theme.palette.textGrey.color,
+        textTransform : 'none'
     },
     leftIcon: {
         marginRight: theme.spacing.unit,
