@@ -46,8 +46,8 @@ function getSorting(order, orderBy) {
 
 const columnData = [
     {id: 'servidor', disablePadding: false, label: 'Servidor público', position: 1, mostrar: true},
-    {id: 'institucion',disablePadding: false, label: 'Institución', position: 2, mostrar: true},
-    {id: 'autoridad',  disablePadding: false, label: 'Autoridad', position: 3, mostrar: true},
+    {id: 'institucion', disablePadding: false, label: 'Institución', position: 2, mostrar: true},
+    {id: 'autoridad', disablePadding: false, label: 'Autoridad', position: 3, mostrar: true},
     {id: 'expediente', disablePadding: false, label: 'Expediente', position: 4, mostrar: true},
     {
         id: 'fecha_resolucion',
@@ -63,7 +63,7 @@ const columnData = [
         position: 6,
         mostrar: false
     },
-    {id: 'fecha_inicio',disablePadding: false, label: 'Fecha inicio', position: 7, mostrar: false},
+    {id: 'fecha_inicio', disablePadding: false, label: 'Fecha inicio', position: 7, mostrar: false},
     {id: 'fecha_fin', disablePadding: false, label: 'Fecha fin', position: 8, mostrar: false},
     {id: 'monto', disablePadding: false, label: 'Monto', position: 9, mostrar: false},
     {id: 'causa', disablePadding: false, label: 'Causa', position: 10, mostrar: false},
@@ -93,7 +93,7 @@ const styles = theme => ({
     container: {
         marginTop: '30px',
         marginBottom: '30px',
-        overflowX : 'auto',
+        overflowX: 'auto',
     },
     section: {
         maxWidth: '1024px',
@@ -102,17 +102,17 @@ const styles = theme => ({
     table: {
         tableLayout: 'fixed',
     },
-    tablePagination:{
-        overflowX : 'auto',
-        fontSize :'0.75rem'
+    tablePagination: {
+        overflowX: 'auto',
+        fontSize: '0.75rem'
     },
-    gridTable:{
-        marginBottom : '27px'
+    gridTable: {
+        marginBottom: '27px'
     },
-    desc:{
-        color : theme.palette.primary.dark,
+    desc: {
+        color: theme.palette.primary.dark,
     },
-    item:{
+    item: {
         padding: theme.spacing.unit
     }
 
@@ -126,15 +126,13 @@ const toolbarStyles = theme => ({
     toolBarStyle: {
         backgroundColor: 'transparent',
         position: 'relative',
-        padding: 0,
-        margin: '0 15px',
         zIndex: 3,
         paddingTop: '53px',
-        paddingBottom:'61px',
+        paddingBottom: '61px',
     },
     toolBarFloat: {
         paddingTop: '53px',
-        paddingBottom:'61px',
+        paddingBottom: '61px',
         marginTop: '-30px',
         borderRadius: '3px',
         background: '#fff',
@@ -158,10 +156,11 @@ const toolbarStyles = theme => ({
 
 
 let EnhancedTableToolbar = props => {
-    const {classes, handleChangeCampo, nombreServidor, institucion} = props;
+    const {classes, handleChangeCampo, nombreServidor, institucion, handleSearch, handleCleanAll} = props;
     return (
         <Toolbar className={classes.toolBarStyle}>
-            <BusquedaServidor handleChangeCampo={handleChangeCampo}
+            <BusquedaServidor handleCleanAll={handleCleanAll} handleSearch={handleSearch}
+                              handleChangeCampo={handleChangeCampo}
                               nombreServidor={nombreServidor}
                               institucion={institucion}/>
         </Toolbar>
@@ -176,11 +175,6 @@ EnhancedTableToolbar = withStyles(toolbarStyles)(EnhancedTableToolbar);
 
 
 class EnhancedTable extends React.Component {
-
-    componentDidMount() {
-        this.handleSearchAPI('FIELD_FILTER');
-    }
-
     constructor(props) {
         super(props);
         this.child = React.createRef();
@@ -198,7 +192,7 @@ class EnhancedTable extends React.Component {
             open: false,
             elementoSeleccionado: {},
             institucion: null,
-            loading: true,
+            loading: false,
             totalRows: 0,
             filterDataAll: [],
 
@@ -251,7 +245,7 @@ class EnhancedTable extends React.Component {
         let options = {
             uri: 'https://plataformadigitalnacional.org/api/rsps?select=count=eq.exact',
             json: true,
-            qs : params
+            qs: params
         };
         rp(options)
             .then(data => {
@@ -267,20 +261,20 @@ class EnhancedTable extends React.Component {
         let {institucion, nombreServidor} = this.state;
         const URI = 'https://plataformadigitalnacional.org/api/rsps?';
 
-        let params ={};
+        let params = {};
 
-        if(typeSearch!=='ALL'){
+        if (typeSearch !== 'ALL') {
             (institucion) ? params.dependencia = 'eq.' + institucion : null;
             (nombreServidor) ? params.servidor_publico = 'like.*' + nombreServidor.toUpperCase() + '*' : null;
-            (typeSearch==='FIELD_FILTER'||typeSearch==='CHANGE_PAGE')? params.limit = this.state.rowsPerPage:null;
-            (typeSearch==='CHANGE_PAGE')? params.offset = (this.state.rowsPerPage * this.state.page) : null;
+            (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? params.limit = this.state.rowsPerPage : null;
+            (typeSearch === 'CHANGE_PAGE') ? params.offset = (this.state.rowsPerPage * this.state.page) : null;
             (typeSearch === 'FIELD_FILTER') ? this.getTotalRows(params) : null;
         }
 
         let options = {
             uri: URI,
             json: true,
-            qs : params
+            qs: params
         };
 
         rp(options)
@@ -308,11 +302,18 @@ class EnhancedTable extends React.Component {
 
     handleChangeCampo = (varState, event) => {
         this.setState({
-            loading: true,
             [varState]: event ? (event.target ? event.target.value : event.value) : ''
-        }, () => {
-            this.handleSearchAPI('FIELD_FILTER');
         });
+    };
+    handleCleanAll = () => {
+        this.setState(
+            {
+                filterData: []
+            }, () => {
+                this.handleChangeCampo('nombreServidor');
+                this.handleChangeCampo('procedimiento');
+                this.handleChangeCampo('institucion');
+            })
     };
 
     render() {
@@ -324,13 +325,17 @@ class EnhancedTable extends React.Component {
             <div>
                 <Grid container justify={'center'} spacing={0} className={classes.gridTable}>
                     <Grid item xs={12}>
-                        <EnhancedTableToolbar categoria={this.state.categoria} handleChangeCampo={this.handleChangeCampo}
+                        <EnhancedTableToolbar categoria={this.state.categoria}
+                                              handleChangeCampo={this.handleChangeCampo}
+                                              handleCleanAll={this.handleCleanAll}
+                                              handleSearch={this.handleSearchAPI}
                                               nombreServidor={this.state.nombreServidor}
                                               data={filterData}
                                               columnas={columnData} institucion={this.state.institucion}/>
                     </Grid>
                     <Grid item xs={12}>
-                        <DetalleServidorSancionado handleClose={this.handleClose} servidor={this.state.elementoSeleccionado}
+                        <DetalleServidorSancionado handleClose={this.handleClose}
+                                                   servidor={this.state.elementoSeleccionado}
                                                    control={this.state.open}/>
                     </Grid>
                     <Grid item xs={12}>
@@ -345,10 +350,15 @@ class EnhancedTable extends React.Component {
 
                         }
                     </Grid>
-                    <Grid item xs={12} >
-                        <Typography variant={"h6"} className={classes.desc}>Pulsa sobre el registro para ver su detalle<br/></Typography>
+                    <Grid item xs={12}>
+                        {filterData.length > 0 &&
+                        <Typography variant={"h6"} className={classes.desc}>Pulsa sobre el registro para ver su
+                            detalle<br/></Typography>
+                        }
+
                     </Grid>
                     <Grid item xs={12}>
+                        {filterData.length > 0 &&
                         <div className={classes.container}>
                             <Table aria-describedby="spinnerLoading" id={'tableServidores'}
                                    aria-busy={this.state.loading} aria-labelledby="tableTitle">
@@ -379,8 +389,8 @@ class EnhancedTable extends React.Component {
                                                     <TableCell component="th" scope="row"
                                                                padding="default">{n.servidor}</TableCell>
                                                     <TableCell>{n.institucion}</TableCell>
-                                                    <TableCell style={{width:'25%'}}>{n.autoridad}</TableCell>
-                                                    <TableCell>{n.expediente}</TableCell>¿
+                                                    <TableCell style={{width: '25%'}}>{n.autoridad}</TableCell>
+                                                    <TableCell>{n.expediente}</TableCell>
                                                 </TableRow>
                                             );
                                         })}
@@ -396,12 +406,16 @@ class EnhancedTable extends React.Component {
                                 <TableFooter>
                                     <TableRow>
                                         <TableCell>
-                                            <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data} filtrado={false}
-                                                      columnas={columnData} fnSearch={this.handleSearchAPI} fileName={'Servidores sancionados'}/>
+                                            <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data}
+                                                      filtrado={false}
+                                                      columnas={columnData} fnSearch={this.handleSearchAPI}
+                                                      fileName={'Servidores sancionados'}/>
                                         </TableCell>
                                         <TableCell>
-                                            <BajarCSV innerRef={comp => this.child = comp} data={filterDataAll} filtrado={true}
-                                                      columnas={columnData} fnSearch={this.handleSearchAPI} fileName={'Servidores sancionados'}/>
+                                            <BajarCSV innerRef={comp => this.child = comp} data={filterDataAll}
+                                                      filtrado={true}
+                                                      columnas={columnData} fnSearch={this.handleSearchAPI}
+                                                      fileName={'Servidores sancionados'}/>
                                         </TableCell>
                                         <TablePagination
                                             className={classes.tablePagination}
@@ -426,13 +440,15 @@ class EnhancedTable extends React.Component {
                                 </TableFooter>
                             </Table>
                         </div>
+                        }
+
                     </Grid>
-                </Grid>
-                <Grid container spacing={0}>
                     <Grid item xs={12} className={classes.item}>
-                        <Typography variant="caption" style={{fontStyle:'italic'}} paragraph>
+                        {filterData.length > 0 &&
+                        <Typography variant="caption" style={{fontStyle: 'italic'}} paragraph>
                             Fuente: https://datos.gob.mx/busca/dataset/servidores-publicos-sancionados
                         </Typography>
+                        }
                     </Grid>
                 </Grid>
             </div>

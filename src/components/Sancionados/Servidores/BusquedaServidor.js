@@ -3,9 +3,6 @@ import TextField from '@material-ui/core/TextField';
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import FormControl from "@material-ui/core/FormControl/FormControl";
-import InputAdornment from "@material-ui/core/InputAdornment/InputAdornment";
-import IconButton from "@material-ui/core/IconButton/IconButton";
-import Visibility from "@material-ui/icons/Search";
 import MenuItem from "@material-ui/core/MenuItem/MenuItem";
 import rp from "request-promise";
 import Grid from "@material-ui/core/Grid/Grid";
@@ -15,6 +12,7 @@ import '../../Utils/selectReact.css';
 import Typography from "@material-ui/core/Typography/Typography";
 import IconReplay from "@material-ui/icons/Replay";
 import Tooltip from "@material-ui/core/Tooltip/Tooltip";
+import IconSearch from "@material-ui/icons/Search";
 
 const styles = theme => ({
     container: {
@@ -182,11 +180,11 @@ class BusquedaServidor extends React.Component {
     }
 
     limpiarBusqueda = ()=>{
-        this.props.handleChangeCampo('nombreServidor');
-        this.props.handleChangeCampo('procedimiento');
-        this.props.handleChangeCampo('institucion');
+        this.props.handleCleanAll();
     };
-
+    buscar = () => {
+        this.props.handleSearch('FIELD_FILTER');
+    };
     render() {
         const {classes, handleChangeCampo, nombreServidor, institucion, theme} = this.props;
         const selectStyles = {
@@ -228,16 +226,6 @@ class BusquedaServidor extends React.Component {
                             type="search"
                             onChange={(e) => handleChangeCampo('nombreServidor', e)}
                             value={nombreServidor}
-                            InputProps={{
-                                className: classes.fontLight,
-                                endAdornment:
-                                    <InputAdornment position="end">
-                                        <IconButton className={classes.fontLight}>
-                                            <Visibility/>
-                                        </IconButton>
-                                    </InputAdornment>
-
-                            }}
                             InputLabelProps = {{
                                 className: classes.fontLight,
                                 shrink : true
@@ -247,6 +235,12 @@ class BusquedaServidor extends React.Component {
                     </FormControl>
                 </Grid>
                 <Grid item xs={12} md={1} className={classes.centrado}>
+                    <Tooltip title={'Buscar'}>
+                        <IconSearch className={classes.fontLight} onClick={this.buscar}/>
+                    </Tooltip>
+                </Grid>
+                <Grid item xs={11}/>
+                <Grid item xs={12} md={1}  className={classes.centrado}>
                     <Tooltip title={'Limpiar'}>
                         <IconReplay className={classes.fontLight} onClick={this.limpiarBusqueda}/>
                     </Tooltip>
