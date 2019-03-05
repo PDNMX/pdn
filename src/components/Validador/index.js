@@ -7,10 +7,12 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import UploadForm from './UploadForm';
-import PDNAppBar from '../PDNAppBar/PDNAppBar';
+//import PDNAppBar from '../PDNAppBar/PDNAppBar';
 import Typography from '@material-ui/core/Typography';
 import {withStyles} from "@material-ui/core/styles";
 import PropTypes from 'prop-types';
+import Footer from "../Home/Footer";
+import Header from "./Header/Header";
 
 const styles = theme => ({
     root: {
@@ -18,9 +20,13 @@ const styles = theme => ({
     },
     gridItem: {
         maxWidth: '1200px',
-        paddingTop: theme.spacing.unit * 4,
+        paddingTop: theme.spacing.unit * 8,
+        paddingBottom: theme.spacing.unit * 4,
         paddingLeft: theme.spacing.unit * 2,
         paddingRight: theme.spacing.unit * 2,
+    },
+    contents: {
+        background: '#fff',
     }
   });
 
@@ -77,14 +83,11 @@ class Validador extends Component {
 
         return (
             <div className={ classes.root }>
-                <PDNAppBar/>
-                <Grid container spacing={0} justify="center">
-                    <Grid item xs={12} className={classes.gridItem}>
+                {/*<PDNAppBar/>*/}
+                <Header/>
+                <Grid container spacing={0} justify="center" className={classes.contents}>
+                    <Grid item xs={12} className={classes.gridItem} align="center">
 
-                        <Typography variant="h5">Validador de estándares de datos</Typography>
-                        <Typography paragraph>
-                            En está página puedes validar archivos en formato JSON contra los estándares de datos de la Plataforma Digital Nacional.
-                        </Typography>
                         <UploadForm onResults={this._handleResults}/>
                         <br/>
                         {this.state.usedForm
@@ -93,7 +96,7 @@ class Validador extends Component {
                         }
                     </Grid>
                 </Grid>
-                <br/>
+                <Footer/>
             </div>
         );
     }
