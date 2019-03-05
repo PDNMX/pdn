@@ -429,7 +429,7 @@ class EnhancedTable extends React.Component {
                                                     key={n.id}
                                                     selected={isSelected}
                                                 >
-                                                    <TableCell component="th" scope="row"
+                                                    <TableCell component="th" scope="row" style={{width:'25%'}}
                                                                padding="default">{n.servidor}</TableCell>
                                                     <TableCell>{n.institucion}</TableCell>
                                                     <TableCell>{n.puesto}</TableCell>
