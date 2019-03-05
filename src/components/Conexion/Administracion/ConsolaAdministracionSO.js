@@ -272,7 +272,7 @@ class ConsolaAdministracionSO extends React.Component {
                             <br/>
                         </Grid>
                         <Grid item xs={12} className={classes.section}>
-                            {(this.state.estatus !== 'APROBADA') &&
+                            {(this.state.estatus !== 'APROBADA' && this.state.estatus !== 'PENDIENTE') &&
                             <Paper>
                                 <Typography variant={"h5"} className={classes.aviso}>AVISO</Typography>
                                 <Typography variant={"h6"} className={classes.textAviso}>
