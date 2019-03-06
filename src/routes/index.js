@@ -16,6 +16,7 @@ import DeclaracionesEspecificaciones from '../components/Declaraciones/Especific
 import Validador from '../components/Validador/index';
 import Consulta from '../components/Conexion/Solicitudes/Consulta';
 import ConsolaAdministracionSO from '../components/Conexion/Administracion/ConsolaAdministracionSO';
+import ConsolaAdministracionPDN from '../components/Administracion/Index';
 
 const pdnRoutes = [
 
@@ -106,6 +107,11 @@ const pdnRoutes = [
     {
         path: "/consolaAdmonSO",
         component: ConsolaAdministracionSO,
+        private: false
+    },
+    {
+        path: "/administracionPDN",
+        component: ConsolaAdministracionPDN,
         private: false
     }
 ];
