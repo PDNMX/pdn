@@ -14,9 +14,12 @@ import DemoDeclaraciones from '../components/DemoDeclaraciones/demo';
 import Conexion from '../components/Conexion/Solicitudes/Conexion';
 import DeclaracionesEspecificaciones from '../components/Declaraciones/Especificaciones/Especificaciones';
 import Validador from '../components/Validador/index';
-import Consulta from '../components/Conexion/Solicitudes/Consulta';
 import ConsolaAdministracionSO from '../components/Conexion/Administracion/ConsolaAdministracionSO';
 import ConsolaAdministracionPDN from '../components/Administracion/Index';
+import ConsultaUsuarios from '../components/Administracion/Usuarios/ConsultaUsuarios';
+import Consulta from '../components/Administracion/Conexiones/ConsultaSolicitudes';
+import ConsultaConexiones from '../components/Administracion/Conexiones/ConsultaConexiones';
+
 
 const pdnRoutes = [
 
@@ -100,7 +103,7 @@ const pdnRoutes = [
         private: false
     },
     {
-        path: "/consultasolicitudes",
+        path: "/administracionPDN/consultasolicitudes",
         component : Consulta,
         private: false
     },
@@ -113,7 +116,18 @@ const pdnRoutes = [
         path: "/administracionPDN",
         component: ConsolaAdministracionPDN,
         private: false
-    }
+    },
+    {
+        path: "/administracionPDN/usuarios",
+        component : ConsultaUsuarios,
+        private: false
+    },
+    {
+        path: "/administracionPDN/consultaconexiones",
+        component : ConsultaConexiones,
+        private: false
+    },
+
 ];
 
 export default pdnRoutes;

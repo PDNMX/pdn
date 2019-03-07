@@ -1,16 +1,13 @@
 import React from 'react';
 import {withStyles} from '@material-ui/core/styles';
 import Grid from "@material-ui/core/Grid/Grid";
+import TablaSolicitudes from "./TablaSolicitudes";
 import Typography from "@material-ui/core/Typography/Typography";
-import Footer from "../Home/Footer";
-import Logo from "../../assets/icono-administracion.svg";
+import Footer from "../../Home/Footer";
 import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
 import {Link} from "react-router-dom";
-import PDNLogo from "../../assets/PDN.png";
-import CardUsuarios from "./Cards/CardUsuarios";
-import CardConexiones from "./Cards/CardConexiones";
-import CardSolicitudesConexion from "./Cards/CardSolicitudesConexion";
-
+import PDNLogo from "../../../assets/PDN.png";
+import IconoConexiones from '../../../assets/Cards/icono-conexion.svg';
 
 const styles = theme => ({
     root: {
@@ -40,11 +37,11 @@ const styles = theme => ({
     bgContainer: {
         [theme.breakpoints.up('sm')]: {
             paddingTop: theme.spacing.unit * 5,
-            paddingBottom: theme.spacing.unit * 5,
+            marginBottom: theme.spacing.unit * 5,
         },
         [theme.breakpoints.down('sm')]: {
             paddingTop: theme.spacing.unit * 1,
-            paddingBottom: theme.spacing.unit * 1
+            marginBottom: theme.spacing.unit * 1,
         },
     },
     banner: {
@@ -74,6 +71,7 @@ const styles = theme => ({
         paddingBottom: '75px',
         paddingLeft: theme.spacing.unit,
         paddingRight: theme.spacing.unit,
+        //zIndex: 5
     },
     link: {
         textDecoration: 'none',
@@ -86,12 +84,12 @@ const styles = theme => ({
     item2: {
         paddingRight: theme.spacing.unit * 2,
         paddingLeft: theme.spacing.unit * 2
-    }
+    },
 });
 
-class Index extends React.Component {
+class Conexion extends React.Component {
     state = {
-        oficio: null,
+        oficio: null
     };
 
     constructor(props, context) {
@@ -116,7 +114,10 @@ class Index extends React.Component {
                                 <Link className={classes.link} to='/'>Plataforma Digital Nacional</Link>
                             </li>
                             <li>
-                                Consola de administración de la PDN
+                                <Link className={classes.link} to='/administracionPDN'>Consola de administración de la PDN</Link>
+                            </li>
+                            <li>
+                                Solicitudes de conexión
                             </li>
                         </ul>
                     </Grid>
@@ -124,32 +125,25 @@ class Index extends React.Component {
                 <Grid container spacing={0} className={classes.container1} justify='center'>
                     <Grid item xs={12} md={4} align={isWidthUp('md', this.props.width) ? 'right' : 'center'}
                           className={classes.item1}>
-                        <img src={Logo} alt="Sistema 2" className={classes.s2}/>
+                        <img src={IconoConexiones} alt="Solicitude de conexión" className={classes.s2}/>
                     </Grid>
                     <Grid item xs={12} md={6} className={classes.item2}
                           align={isWidthUp('md', this.props.width) ? 'left' : 'center'}>
                         <Typography variant="h4" paragraph className={classes.whiteText}>
-                            Consola de administración de la PDN
+                            Solicitudes de conexión
                         </Typography>
                         <Typography className={classes.whiteText}>
-                            Administra solicitudes de conexión, Usuarios y Conexiones
+                            Aquí puedes consultar las solicitudes de conexión a la PDN, visualizar y
+                        </Typography>
+                        <Typography className={classes.whiteText}>
+                            descargar los oficios de solicitud y permitir o denegar las conexiones
                         </Typography>
                     </Grid>
                 </Grid>
                 <div className={classes.bgContainer}>
                     <Grid container justify={'center'}>
                         <Grid item xs={12} className={classes.contenedor}>
-                            <Grid container spacing={8} justify={"center"} alignItems={"center"}>
-                                <Grid item xs={12} md={4}>
-                                    <CardUsuarios/>
-                                </Grid>
-                                <Grid item xs={12} md={4}>
-                                    <CardConexiones/>
-                                </Grid>
-                                <Grid item xs={12} md={4}>
-                                    <CardSolicitudesConexion/>
-                                </Grid>
-                            </Grid>
+                            <TablaSolicitudes/>
                         </Grid>
                     </Grid>
                 </div>
@@ -159,4 +153,4 @@ class Index extends React.Component {
     }
 }
 
-export default withWidth()(withStyles(styles)(Index));
+export default withWidth()(withStyles(styles)(Conexion));
