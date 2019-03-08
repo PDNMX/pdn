@@ -126,14 +126,29 @@ class ClippedDrawer extends React.Component {
     componentDidMount() {
 
         let promises = [];
+
+        //Particulares
         promises.push(rp({
-            url: 'https://raw.githubusercontent.com/PDNMX/api_docs/master/S1/oas/declaraciones.json',
+            url: 'https://raw.githubusercontent.com/PDNMX/api_docs/master/S3/oas/OAS_API_Particulares_Sancionados.json',
             method: 'GET',
             json: true
         }));
 
         promises.push(rp({
-            url: 'https://raw.githubusercontent.com/PDNMX/api_docs/master/S1/example.json',
+            url: 'https://raw.githubusercontent.com/PDNMX/api_docs/master/S3/Resp_API_Particulares_Sancionados.json',
+            method: 'GET',
+            json: true
+        }));
+
+        //Servidores públicos
+        promises.push(rp({
+            url: 'https://raw.githubusercontent.com/PDNMX/api_docs/master/S3/oas/OAS_API_Servidores_Sancionados.json',
+            method: 'GET',
+            json: true
+        }));
+
+        promises.push(rp({
+            url: 'https://raw.githubusercontent.com/PDNMX/api_docs/master/S3/Resp_API_Servidores_Sancionados.json',
             method: 'GET',
             json: true
         }));
