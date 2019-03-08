@@ -157,8 +157,10 @@ class ClippedDrawer extends React.Component {
 
             //console.log(data[1].results[0]);
             this.setState({
-                oas: data[0],
-                example: data[1]
+                oas_particulares: data[0],
+                example_particulares: data[1],
+                oas_servidores: data[2],
+                example_servidores: data[3]
             })
         });
 
@@ -240,7 +242,7 @@ class ClippedDrawer extends React.Component {
                 >
                     <div className={classes.toolbar}/>
                     <List component="nav"
-                          subheader={<ListSubheader component="div">Declaraciones</ListSubheader>}
+                          subheader={<ListSubheader component="div">Sancionados</ListSubheader>}
                     >
 
                         <Divider/>
@@ -523,7 +525,8 @@ class ClippedDrawer extends React.Component {
                     <Typography paragraph>
                         Esta sección contiene la especificación completa del API de declaraciones en el formato OAS. La especificación puede ser interpretada usando las herramientas compatibles con el OAS o <LinkM href="https://swagger.io/tools/">Swagger</LinkM>.
                     </Typography>
-                    <ReactJson src={this.state.oas}/>
+                    <ReactJson src={this.state.oas_servidores}/>
+                    <ReactJson src={this.state.oas_particulares}/>
 
                     <br/>
                     <Typography variant="h5" id="ejemplos" paragraph>
@@ -538,7 +541,8 @@ class ClippedDrawer extends React.Component {
                         </code>
                     </p>
 
-                    <ReactJson src={this.state.example}/>
+                    <ReactJson src={this.state.example_servidores}/>
+                    <ReactJson src={this.state.example_particulares}/>
                     <br/>
                     <Divider/>
                     <br/>

@@ -226,7 +226,7 @@ class ClippedDrawer extends React.Component {
                 >
                     <div className={classes.toolbar}/>
                     <List component="nav"
-                          subheader={<ListSubheader component="div">Declaraciones</ListSubheader>}
+                          subheader={<ListSubheader component="div">Servidores públicos</ListSubheader>}
                     >
 
                         <Divider/>
