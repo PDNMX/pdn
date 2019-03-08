@@ -12,11 +12,14 @@ import FormularioDenuncias from '../components/Denuncias/FormularioDenuncia/Form
 import FormularioConsula from '../components/Denuncias/ConsultaDenuncia/FormularioConsulta';
 import DemoDeclaraciones from '../components/DemoDeclaraciones/demo';
 import Conexion from '../components/Conexion/Solicitudes/Conexion';
-import DeclaracionesEspecificaciones from '../components/Declaraciones/Especificaciones/Especificaciones';
 import Validador from '../components/Validador/index';
 import Consulta from '../components/Conexion/Solicitudes/Consulta';
 import ConsolaAdministracionSO from '../components/Conexion/Administracion/ConsolaAdministracionSO';
 import ConsolaAdministracionPDN from '../components/Administracion/Index';
+
+import DeclaracionesEspecificaciones from '../components/Especificaciones/Declaraciones/Especificaciones';
+import EspecificacionesSancionados from "../components/Especificaciones/Sancionados/Especificaciones";
+import EspecificacionesServidoresIntervienen from "../components/Especificaciones/ServidoresIntervienen/Especificaciones";
 
 const pdnRoutes = [
 
@@ -92,6 +95,16 @@ const pdnRoutes = [
     {
         path: "/declaraciones/especificaciones",
         component: DeclaracionesEspecificaciones,
+        private: false
+    },
+    {
+        path: "/sancionados/especificaciones",
+        component: EspecificacionesSancionados,
+        private: false
+    },
+    {
+        path: "/intervienen/especificaciones",
+        component: EspecificacionesServidoresIntervienen,
         private: false
     },
     {

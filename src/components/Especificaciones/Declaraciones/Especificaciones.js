@@ -30,7 +30,7 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import TablaParametros from "./TablaParametros";
 import Button from '@material-ui/core/Button';
 import Diagrama from '../../../assets/Diagrama_de_comunicacion_API.svg';
-import Footer from "../../../components/Home/Footer";
+import Footer from "../../Home/Footer";
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuIcon from "@material-ui/icons/Menu";
