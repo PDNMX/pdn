@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import IconoConexiones from '../../../assets/Cards/icono-conexion.svg';
 import Grid from "@material-ui/core/Grid/Grid";
 import rp from "request-promise";
+import {Link} from "react-router-dom";
 
 const styles = {
     card: {
@@ -30,6 +31,7 @@ const styles = {
         margin : '0 auto'
     }
 };
+const MyLink = props => <Link to="/administracionPDN/consultasolicitudes"  {...props}/>;
 
 class CardSolicitudesConexion extends React.Component  {
     state={
@@ -59,8 +61,7 @@ class CardSolicitudesConexion extends React.Component  {
         const {classes} = this.props;
         return (
             <Card className={classes.card}>
-                <CardActionArea>
-
+                <CardActionArea component={MyLink}>
                     <CardContent>
                         <Grid container spacing={8}>
                             <Grid item xs={12} md={6}>
@@ -85,7 +86,7 @@ class CardSolicitudesConexion extends React.Component  {
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
-                    <Button size="small" color="secondary" className={classes.actions}>
+                    <Button size="small" color="secondary" className={classes.actions} component={MyLink}>
                         Ver
                     </Button>
                 </CardActions>

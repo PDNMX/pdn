@@ -67,7 +67,7 @@ const styles = theme => ({
     }
 });
 
-class DetalleSolicitud extends React.Component {
+class DetalleUsuario extends React.Component {
     render() {
         const {classes, handleClose, solicitud, control} = this.props;
         return (
@@ -82,14 +82,23 @@ class DetalleSolicitud extends React.Component {
                         <form>
                             <Grid container spacing={8} justify="flex-start">
                                 <Grid item xs={11}>
-                                    <Typography variant="title" className={classes.title}>Ficha de la
-                                        solicitud</Typography>
+                                    <Typography variant="title" className={classes.title}>Ficha del usuario</Typography>
                                 </Grid>
                                 <Grid item xs={1}>
                                     <IconButton color="primary" className={classes.button} component="span"
                                                 onClick={handleClose}>
                                         <CloseButton/>
                                     </IconButton>
+                                </Grid>
+                                <Grid item xs={12} md={6}>
+                                    <TextField
+                                        id="read-only-input"
+                                        label="Cargo"
+                                        defaultValue={solicitud.cargo}
+                                        className={classes.textField}
+                                        margin="normal"
+                                        multiline
+                                    />
                                 </Grid>
                                 <Grid item xs={12} md={6}>
                                     <TextField
@@ -138,11 +147,11 @@ class DetalleSolicitud extends React.Component {
     }
 }
 
-DetalleSolicitud.propTypes = {
+DetalleUsuario.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
 // We need an intermediary variable for handling the recursive nesting.
 //const SimpleModalWrapped = withStyles(styles)(SimpleModal);
 
-export default withStyles(styles)(DetalleSolicitud);
+export default withStyles(styles)(DetalleUsuario);

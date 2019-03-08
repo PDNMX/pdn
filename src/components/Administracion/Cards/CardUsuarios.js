@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import IconoUsuarios from '../../../assets/Cards/group.svg';
 import Grid from "@material-ui/core/Grid/Grid";
 import app from "../../../config/firebase";
+import {Link} from "react-router-dom";
 
 const styles = {
     card: {
@@ -30,11 +31,12 @@ const styles = {
     }
 };
 
-
+const MyLink = props => <Link to="/administracionPDN/usuarios"  {...props}/>;
 class CardUsuarios extends React.Component {
     state={
         numeroUsuarios : 0,
     };
+
     componentDidMount() {
         this.getEstadisticas();
     };
@@ -54,7 +56,7 @@ class CardUsuarios extends React.Component {
         const {classes} = this.props;
         return (
             <Card className={classes.card}>
-                <CardActionArea>
+                <CardActionArea component={MyLink}>
                     <CardContent>
                         <Grid container>
                             <Grid item xs={12} md={6}>
@@ -79,9 +81,10 @@ class CardUsuarios extends React.Component {
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
-                    <Button size="small" color="secondary" className={classes.actions}>
-                        Ver
-                    </Button>
+                        <Button size="small" color="secondary" className={classes.actions} component={MyLink}>
+                            Ver
+                        </Button>
+
                 </CardActions>
             </Card>
         )

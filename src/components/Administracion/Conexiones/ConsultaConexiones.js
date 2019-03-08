@@ -1,14 +1,13 @@
 import React from 'react';
 import {withStyles} from '@material-ui/core/styles';
 import Grid from "@material-ui/core/Grid/Grid";
-import Paper from "@material-ui/core/Paper/Paper";
-import TablaSolicitudes from "./TablaSolicitudes";
+import TablaConexiones from "./TablaConexiones";
 import Typography from "@material-ui/core/Typography/Typography";
 import Footer from "../../Home/Footer";
-import Logo from "../../../assets/icono-administracion.svg";
 import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
 import {Link} from "react-router-dom";
 import PDNLogo from "../../../assets/PDN.png";
+import IconoConexiones from '../../../assets/Cards/icono-conexion.svg';
 
 const styles = theme => ({
     root: {
@@ -37,14 +36,13 @@ const styles = theme => ({
     },
     bgContainer: {
         [theme.breakpoints.up('sm')]: {
-            paddingTop: '102px',
-            marginBottom: '266px'
-        },
-        [theme.breakpoints.down('sm')]: {
             paddingTop: theme.spacing.unit * 5,
             marginBottom: theme.spacing.unit * 5,
         },
-
+        [theme.breakpoints.down('sm')]: {
+            paddingTop: theme.spacing.unit * 1,
+            marginBottom: theme.spacing.unit * 1,
+        },
     },
     banner: {
         height: '600px',
@@ -52,7 +50,6 @@ const styles = theme => ({
         position: 'relative',
         overflow: 'hidden',
     },
-
     item3: {
         maxWidth: 1200
     },
@@ -117,7 +114,10 @@ class Conexion extends React.Component {
                                 <Link className={classes.link} to='/'>Plataforma Digital Nacional</Link>
                             </li>
                             <li>
-                                Consulta solicitudes
+                                <Link className={classes.link} to='/administracionPDN'>Consola de administración de la PDN</Link>
+                            </li>
+                            <li>
+                                Conexiones
                             </li>
                         </ul>
                     </Grid>
@@ -125,27 +125,22 @@ class Conexion extends React.Component {
                 <Grid container spacing={0} className={classes.container1} justify='center'>
                     <Grid item xs={12} md={4} align={isWidthUp('md', this.props.width) ? 'right' : 'center'}
                           className={classes.item1}>
-                        <img src={Logo} alt="Sistema 2" className={classes.s2}/>
+                        <img src={IconoConexiones} alt="Solicitude de conexión" className={classes.s2}/>
                     </Grid>
                     <Grid item xs={12} md={6} className={classes.item2}
                           align={isWidthUp('md', this.props.width) ? 'left' : 'center'}>
                         <Typography variant="h4" paragraph className={classes.whiteText}>
-                            Consulta solicitudes de conexión
+                            Conexiones
                         </Typography>
                         <Typography className={classes.whiteText}>
-                            Aquí puedes consultar las solicitudes de conexión a la PDN, visualizar y
-                        </Typography>
-                        <Typography className={classes.whiteText}>
-                            descargar los oficios de solicitud y permitir o denegar las conexiones
+                            Aquí puedes administrar las conexiones establecidas con la PDN
                         </Typography>
                     </Grid>
                 </Grid>
                 <div className={classes.bgContainer}>
                     <Grid container justify={'center'}>
                         <Grid item xs={12} className={classes.contenedor}>
-
-                            <TablaSolicitudes/>
-
+                            <TablaConexiones/>
                         </Grid>
                     </Grid>
                 </div>
