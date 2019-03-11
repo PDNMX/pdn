@@ -533,13 +533,6 @@ class ClippedDrawer extends React.Component {
                         Ejemplos de respuesta
                     </Typography>
 
-                    <p>
-                        <code>
-                            https://dominio_institucion/declaraciones?api_key=ACXXXXXXXXXXXXXXXXXX&sort=asc&page=1&page_size=10&nombres=Carlos&
-                            apellido1=Pérez&apellido2=López&curp=BEML920313HMCLNS09&rfc=GOAP780710RH7&id=a1b2c3d4&actualizacion=2017-07-21&
-                            rfc_solicitante=GOAP780710RH7
-                        </code>
-                    </p>
 
                     <ReactJson src={this.state.example_servidores}/>
                     <ReactJson src={this.state.example_particulares}/>
