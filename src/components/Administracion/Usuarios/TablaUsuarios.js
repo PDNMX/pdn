@@ -32,8 +32,8 @@ let createData = (item) => {
         telefono_personal: item.telefono_personal ? item.telefono_personal : leyenda,
         telefono_oficina: item.telefono_oficina ? item.telefono_oficina : leyenda,
         extension: item.extension ? item.extension : leyenda,
-        fecha_solicitud: item.fecha_solicitud ? new Date(item.fecha_solicitud.seconds * 1000).toLocaleString(): leyenda,
-        rol : item.rol ? item.rol : leyenda
+        fecha_solicitud: item.fecha_solicitud ? new Date(item.fecha_solicitud.seconds * 1000).toLocaleString() : leyenda,
+        rol: item.rol ? item.rol : leyenda
     };
 };
 const columnData = [
@@ -171,7 +171,7 @@ const styles = theme => ({
         overflowX: 'scroll',
     },
     textGrey: {
-        color : theme.palette.textGrey.color
+        color: theme.palette.textGrey.color
     }
 });
 
@@ -192,6 +192,7 @@ class TablaUsuarios extends React.Component {
             filterData: [],
             oficio: null,
             flag_msj: false,
+            previousPage: 0,
         };
     };
 
@@ -200,42 +201,85 @@ class TablaUsuarios extends React.Component {
     };
 
     componentDidMount() {
+        this.getTotalUsuarios();
         this.getUsuarios();
     }
 
-    getUsuarios = ()=>{
+    getUsuarios = (paginar) => {
+        let db = app.firestore();
+        const settings = {timestampsInSnapshots: true};
+        db.settings(settings);
+
+        let after = "";
+
+        if (this.state.previousPage <= this.state.page) {
+            let indice = this.state.previousPage >= this.state.page ? 0 : this.state.rowsPerPage - 1;
+            if (paginar)
+                after = this.state.filterData[indice] ? this.state.filterData[indice].correo : "";
+            db.collection('/users_pdn').orderBy('correo').startAfter(after).limit(this.state.rowsPerPage).get().then((querySnapshot) => {
+                let dataAux = [];
+                let count = 0;
+                querySnapshot.forEach(doc => {
+                    dataAux[count++] = createData(doc.data());
+                });
+
+                this.setState({
+                    filterData: dataAux,
+                });
+            });
+        } else {
+            let indice = this.state.previousPage >= this.state.page ? 0 : this.state.rowsPerPage - 1;
+            if (paginar)
+                after = this.state.filterData[indice] ? this.state.filterData[indice].correo : "";
+
+            db.collection('/users_pdn').orderBy('correo').endAt(after).limit(this.state.rowsPerPage).get().then((querySnapshot) => {
+                let dataAux = [];
+                let count = 0;
+                querySnapshot.forEach(doc => {
+                    dataAux[count++] = createData(doc.data());
+                });
+
+                this.setState({
+                    filterData: dataAux,
+                });
+            });
+
+        }
+
+
+    };
+
+    getTotalUsuarios = () => {
         let db = app.firestore();
         const settings = {timestampsInSnapshots: true};
         db.settings(settings);
 
         db.collection('/users_pdn').get().then((querySnapshot) => {
-            let dataAux = [];
-            let count = 0;
-            querySnapshot.forEach(doc => {
-                console.log("doc: ",doc.data());
-                console.log("doT: ",createData(doc.data()));
-               dataAux[count++]=createData(doc.data());
-            });
-
             this.setState({
-                filterData : dataAux,
-                totalRows : dataAux.length,
+                totalRows: querySnapshot.size,
             });
         });
     };
 
     handleChangeRowsPerPage = event => {
-        this.setState({rowsPerPage: event.target.value, page: 0}, () => {
-            this.getUsuarios();
-        });
+        this.setState(
+            {
+                rowsPerPage: event.target.value,
+                page: 0,
+            }, () => {
+                this.getUsuarios();
+            });
     };
 
     handleChangePage = (event, page) => {
-        this.setState({page}, () => {
-            this.getUsuarios();
+        this.setState({
+            previousPage: this.state.page,
+            page: page
+        }, () => {
+            this.getUsuarios(true);
         });
-
     };
+
     handleRequestSort = (event, property) => {
         const orderBy = property;
         let order = 'desc';
@@ -269,14 +313,14 @@ class TablaUsuarios extends React.Component {
         const {order, orderBy, selected, rowsPerPage, page, filterData, totalRows, filterDataAll} = this.state;
         let index = 0;
         return (
-            <div >
+            <div>
                 <Grid container>
                     <Grid item xs={12}>
                         <Mensaje mensaje={'El estatus de la solicitud ha sido modificado'} titulo={'Cambio de estatus'}
                                  open={this.state.flag_msj} handleClose={this.handleCloseMsj}/>
                     </Grid>
                     <Grid item xs={12}>
-                            <DetalleUsuario handleClose={this.handleClose} solicitud={this.state.elementoSeleccionado}
+                        <DetalleUsuario handleClose={this.handleClose} solicitud={this.state.elementoSeleccionado}
                                         control={this.state.open}/>
                     </Grid>
                     <Grid item xs={12}><Typography variant={"h6"}

@@ -11,9 +11,6 @@ import Grid from '@material-ui/core/Grid';
 import Avatar from "@material-ui/core/Avatar";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
-import FormControl from "@material-ui/core/FormControl/FormControl";
-import Input from "@material-ui/core/Input/Input";
-import InputLabel from "@material-ui/core/InputLabel/InputLabel";
 
 
 const styles = theme => ({
