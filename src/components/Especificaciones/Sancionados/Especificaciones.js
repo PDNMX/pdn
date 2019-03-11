@@ -15,7 +15,7 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import LinkIcon from '@material-ui/icons/Link'
+//import LinkIcon from '@material-ui/icons/Link'
 import Extension from '@material-ui/icons/Extension';
 import Code from '@material-ui/icons/Code';
 import AssigmentIcon from '@material-ui/icons/Assignment';
@@ -35,6 +35,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuIcon from "@material-ui/icons/Menu";
 import app from "../../../config/firebase";
+import Herramientas from '../Herramientas';
 
 const drawerWidth = 240;
 
@@ -324,7 +325,7 @@ class ClippedDrawer extends React.Component {
 
                     <div className={classes.toolbar}/>
 
-                    <Typography variant="h4" id="estandar" paragraph>Estándar para la Interoperabilidad de Datos de Declaraciones</Typography>
+                    <Typography variant="h4" id="estandar" paragraph>Servidores públicos y particulares sancionados</Typography>
                     <Typography paragraph>
                         Esta guía tiene como finalidad la descripción del Estándar para la Interoperabilidad de Datos de Declaraciones,
                         desarrollado por la Secretaría Ejecutiva del Sistema Nacional Anticorrupción (SESNA).
@@ -525,7 +526,14 @@ class ClippedDrawer extends React.Component {
                     <Typography paragraph>
                         Esta sección contiene la especificación completa del API de declaraciones en el formato OAS. La especificación puede ser interpretada usando las herramientas compatibles con el OAS o <LinkM href="https://swagger.io/tools/">Swagger</LinkM>.
                     </Typography>
+
+                    <Typography variant='h6' paragraph>
+                        Servidores públicos sancionados
+                    </Typography>
                     <ReactJson src={this.state.oas_servidores}/>
+                    <Typography variant="h6" paragraph>
+                        Particulares sancionados
+                    </Typography>
                     <ReactJson src={this.state.oas_particulares}/>
 
                     <br/>
@@ -533,66 +541,19 @@ class ClippedDrawer extends React.Component {
                         Ejemplos de respuesta
                     </Typography>
 
-
+                    <Typography variant="h6">
+                        Servidores públicos sancionados
+                    </Typography>
                     <ReactJson src={this.state.example_servidores}/>
+
+                    <Typography variant="h6" paragraph>
+                        Particulares sancionados
+                    </Typography>
                     <ReactJson src={this.state.example_particulares}/>
                     <br/>
                     <Divider/>
-                    <br/>
 
-                    <Typography variant="h4" id="herramientas" paragraph>Herramientas para desarrollo web</Typography>
-
-                    <Typography paragraph>
-                        La interconexión entre los sistemas de información de las Instituciones y la PDN se establecerá a través de Internet, usando servicios web o APIs con arquitectura REST (REpresentational State Transfer); REST es un modelo ampliamente usado para el desarrollo de sistemas Web. En la actualidad, existe gran variedad de herramientas de código abierto que permiten el desarrollo de APIs REST usando diferentes lenguajes de programación y tecnologías de bases de datos; entre las más destacados se encuentran:
-                    </Typography>
-
-                    <ul>
-                        <li>
-                            <Typography><b>Express JS</b></Typography>
-                            <Typography>Lenguaje de programación: JavaScript</Typography>
-                            <IconButton href="https://expressjs.com/">
-                                <LinkIcon/>
-                            </IconButton>
-                        </li>
-                        <li>
-                            <Typography><b>Django</b></Typography>
-                            <Typography>Lenguaje de programación: Python</Typography>
-
-                            <IconButton href="https://www.djangoproject.com/">
-                                <LinkIcon/>
-                            </IconButton>
-                        </li>
-                        <li>
-                            <Typography><b>Flask</b></Typography>
-                            <Typography>Lenguaje de programación: Python</Typography>
-                            <IconButton href="https://flask-restful.readthedocs.io/en/latest/quickstart.html">
-                                <LinkIcon/>
-                            </IconButton>
-                        </li>
-                        <li>
-                            <Typography><b>Spring</b></Typography>
-                            <Typography>Lenguaje de programación: Java</Typography>
-                            <IconButton href="https://spring.io/guides/gs/rest-service/" size="small">
-                                <LinkIcon/>
-                            </IconButton>
-                        </li>
-                        <li>
-                            <Typography><b>.NET Core</b></Typography>
-                            <Typography>Lenguajes de programación: C#, Visual Basic, F# </Typography>
-                            <IconButton href = "https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial">
-                                <LinkIcon/>
-                            </IconButton>
-                        </li>
-                        <li>
-                            <Typography><b>Apigility</b></Typography>
-                            <Typography>
-                                Lenguaje de programación: PHP
-                            </Typography>
-                            <IconButton href="https://apigility.org/">
-                                <LinkIcon/>
-                            </IconButton>
-                        </li>
-                    </ul>
+                    <Herramientas/>
 
 
                 <Footer/>
