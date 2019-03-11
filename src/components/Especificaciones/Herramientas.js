@@ -3,6 +3,7 @@ import Typography from '@material-ui/core/Typography';
 import {withStyles} from "@material-ui/core/styles";
 import LinkIcon from '@material-ui/icons/Link';
 import IconButton from '@material-ui/core/IconButton';
+import PropTypes from 'prop-types';
 
 const styles = theme => ({
     root: {
@@ -16,7 +17,7 @@ class Herramientas extends React.Component {
         const {classes} = this.props;
         return (
             <div className={classes.root}>
-                <Typography variant="h4" id="herramientas" paragraph>Herramientas para desarrollo web</Typography>
+                <Typography variant="h4" paragraph>Herramientas para desarrollo web</Typography>
 
                 <Typography paragraph>
                     La interconexión entre los sistemas de información de las Instituciones y la PDN se establecerá a través de Internet, usando servicios web o APIs con arquitectura REST (REpresentational State Transfer); REST es un modelo ampliamente usado para el desarrollo de sistemas Web. En la actualidad, existe gran variedad de herramientas de código abierto que permiten el desarrollo de APIs REST usando diferentes lenguajes de programación y tecnologías de bases de datos; entre las más destacados se encuentran:
@@ -73,5 +74,9 @@ class Herramientas extends React.Component {
         );
     }
 }
+
+Herramientas.propTypes = {
+    classes: PropTypes.object.isRequired
+};
 
 export default withStyles (styles) (Herramientas);

@@ -15,7 +15,6 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import LinkIcon from '@material-ui/icons/Link'
 import Extension from '@material-ui/icons/Extension';
 import Code from '@material-ui/icons/Code';
 import AssigmentIcon from '@material-ui/icons/Assignment';
@@ -29,13 +28,14 @@ import Build from '@material-ui/icons/Build';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import TablaParametros from "./TablaParametros";
 import Button from '@material-ui/core/Button';
-import Diagrama from '../../../assets/Diagrama_de_comunicacion_API.svg';
 import Footer from "../../Home/Footer";
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuIcon from "@material-ui/icons/Menu";
 import app from "../../../config/firebase";
 import Herramientas from '../Herramientas';
+import Licencia from '../Licencia';
+import Implementacion from "../Implementacion";
 
 const drawerWidth = 240;
 
@@ -70,13 +70,6 @@ const styles = theme => ({
         marginRight: theme.spacing.unit,
         marginBottom: theme.spacing.unit *2,
         background: '#ffe01b',//'#fecb6e'
-    },
-    diagrama: {
-        maxWidth: 900
-    },
-    paper : {
-        paddingTop: theme.spacing.unit,
-        paddingBottom: theme.spacing.unit
     }
 });
 
@@ -276,14 +269,10 @@ class ClippedDrawer extends React.Component {
                         </ListItem>
 
                         <List component="div" disablePadding>
-                            <ListItem component={LinkM} href="#comunicacion" button className={classes.nested}>
-                                {/*<ListItemIcon><Widgets/></ListItemIcon>*/}
-                                <ListItemText primary="Comunicación"/>
-                            </ListItem>
 
                             <ListItem button component={LinkM} href="#parametros" className={classes.nested}>
                                 {/*<ListItemIcon><Widgets/></ListItemIcon>*/}
-                                <ListItemText primary="Parámentros"/>
+                                <ListItemText primary="Parámetros"/>
                             </ListItem>
 
                             <ListItem button component={LinkM} href="#especificaciones" className={classes.nested}>
@@ -411,93 +400,27 @@ class ClippedDrawer extends React.Component {
 
                     <Divider/>
                     <br/>
-                    <Typography variant="h4" paragraph id="licencia">Licencia</Typography>
 
-                    <Typography paragraph variant="h6">
-                        Usted es libre de:
-                    </Typography>
-
-                    <ul>
-                        <li><Typography paragraph><b>Compartir</b> &mdash; copiar y redistribuir el material en cualquier medio o formato </Typography></li>
-                        <li><Typography paragraph><b>Adaptar</b> &mdash; remezclar, transformar y construir a partir del material </Typography> </li>
-                    </ul>
-
-
-                    <Typography paragraph>
-                        La licenciante no puede revocar estas libertades en tanto usted siga los términos de la licencia.
-                    </Typography>
-
-                    <Typography paragraph variant="h6">
-                        Bajo los siguientes términos:
-                    </Typography>
-
-                    <ul>
-                        <li><Typography paragraph><b>Atribución</b> &mdash; Usted debe dar crédito de manera adecuada, brindar un enlace a la licencia, e indicar si se han realizado cambios. Puede hacerlo en cualquier forma razonable, pero no de forma tal que sugiera que usted o su uso tienen el apoyo de la licenciante.</Typography></li>
-                        <li><Typography paragraph><b>No comercial</b> &mdash; Usted no puede hacer uso del material con propósitos comerciales.</Typography></li>
-                        <li><Typography paragraph><b>Compartir igual</b> &mdash; Si remezcla, transforma o crea a partir del material, debe distribuir su contribución bajo la misma licencia del original. </Typography></li>
-                        <li><Typography paragraph><b>No hay reestricciones adicionales</b> &mdash; No puede aplicar términos legales ni medidas tecnológicas que restrinjan legalmente a otras a hacer cualquier uso permitido por la licencia.</Typography></li>
-                    </ul>
-
-
-                    <Typography paragraph variant="h6">
-                        Avisos:
-                    </Typography>
-                    <Typography paragraph>
-                        No tiene que cumplir con la licencia para elementos del material en el dominio público o cuando su uso esté permitido por una excepción o limitación aplicable.
-                    </Typography>
-                    <Typography paragraph>
-                        No se dan garantías. La licencia podría no darle todos los permisos que necesita para el uso que tenga previsto. Por ejemplo, otros derechos como publicidad, privacidad, o derechos morales pueden limitar la forma en que utilice el material.
-                    </Typography>
+                    <div id="licencia">
+                        <Licencia/>
+                    </div>
 
                     <Divider/>
                     <br/>
 
-                    <Typography variant="h4" id="implementacion" paragraph>Implementación del estándar</Typography>
-                    <Typography paragraph>
-                        La implementación del estándar de declaraciones representará esfuerzos de diferente magnitud dependiendo del nivel de adopción tecnológica de cada Institución. Suponiendo que una cierta Institución ya cuenta con un sistema de captura de declaraciones, el proceso de implementación del API de declaraciones puede ser dividido en los siguientes pasos:
-                    </Typography>
+                    <div id="implementacion">
+                        <Implementacion/>
+                    </div>
 
-                    <ul>
-                        <li>
-                            <Typography paragraph>
-                                <b>Diagnóstico:</b> Revisar y comparar los datos contenidos en su base de datos con los especificados en la publicación del Formato de declaraciones en el Diario Oficial de la Federación, es importante contar con todos los datos solicitados en el nuevo formato, sin embargo, esto no imposibilita a las Instituciones para realizar pruebas de adopción del estándar usando los datos con los que se cuenta.
-                            </Typography>
-                        </li>
-                        <li>
-                            <Typography paragraph>
-                                <b>Diseño de arquitectura:</b> Se deberá evaluar las capacidades del sistema de información o base de datos de declaraciones, a fin de diagnosticar su capacidad para soportar la carga de trabajo actual y al mismo tiempo la tarea de resolver las consultas que serán realizadas por la PDN a través del API.
-                                <br/>
-                                En el caso de contar con gran cantidad de usuarios y como medida de seguridad, se recomienda implementar alguna solución de replicación de la información en el sistema de base de datos; de tal manera que se divida la carga de trabajo en dos o más bases de datos.
-                            </Typography>
-                            </li>
-                            <li><Typography paragraph>
-                                <b>Desarrollo:</b> El desarrollo del API de declaraciones podrá realizarse en el lenguaje de programación que se considere más apropiado con apego a las especificaciones que se proporcionan en las siguientes secciones de la presente guía. Dichas especificaciones son agnósticas a la tecnología, es decir, el resultado de la comunicación deberá ser el mismo, siempre que se respeten las reglas, formatos de datos y la sintaxis de los mensajes.
-                            </Typography>
-                            </li>
-                        </ul>
                     <Divider/>
                     <br/>
                     <Typography variant="h4" id="api" paragraph>
                         Especificación del API de declaraciones
                     </Typography>
-                    <Typography variant="h5" id="comunicacion" paragraph>
-                        Modelo de comunicación
-                    </Typography>
-                    <Typography paragraph>
-                        A través de la de la PDN, los usuarios serán capaces de realizar consultas a las APIs de las Instituciones, dichas consultas se configurarán usando parámetros (Ver la sección Parámetros de consulta). La Figura 1 muestra un diagrama en el cual se ejemplifica la comunicación entre el API de declaraciones de una Institución y la PDN. El API tendrá la tarea de recibir la consulta y aplicar la lógica de negocio al interior de la institución para generar la respuesta correspondiente. Dicha respuesta deberá estar apegada al estándar de declaraciones proporcionado que se proporciona en la siguiente sección.
-                    </Typography>
-
-                    {/*<Paper>*/}
-                    <img src={Diagrama} alt="Comunicación" className={classes.diagrama}/>
-                    <Typography paragraph>
-                        <b>Figura 1. </b>  Esquema conceptual del flujo de comunicación entre Instituciones y la Plataforma Digital Nacional. De derecha a izquierda se observan usuarios con diferentes perfiles accediendo a la PDN y solicitando información de acuerdo a sus atribuciones.
-                    </Typography>
-                    {/*</Paper>*/}
 
                     <Typography variant="h5" id="parametros" paragraph>
                         Parámetros de consulta
                     </Typography>
-
 
                     <TablaParametros/>
 
@@ -525,9 +448,9 @@ class ClippedDrawer extends React.Component {
                     <Divider/>
                     <br/>
 
-                    <Herramientas/>
-
-
+                    <div id="herramientas">
+                        <Herramientas/>
+                    </div>
 
                 <Footer/>
                 </main>
