@@ -166,7 +166,7 @@ class BusquedaServidor extends React.Component {
         rp(options)
             .then(data => {
                 data.map(item => {
-                    sug.push({value: item.institucion, label: item.institucion});
+                    return sug.push({value: item.institucion, label: item.institucion});
                 });
                 this.setState({suggestions: sug});
             }).catch(err => {
@@ -200,7 +200,6 @@ class BusquedaServidor extends React.Component {
                 fontWeight: 400
             })
         };
-        let IconComponent= <i class='baseline-keyboard_arrow_down icon-image-preview'/>;
 
         return (
             <Grid container spacing={32}>

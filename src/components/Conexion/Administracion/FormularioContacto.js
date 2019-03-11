@@ -107,8 +107,13 @@ class FormularioContacto extends React.Component {
         }
     };
     saveRegistro = () => {
-        this.state.registro.fecha_alta = new Date();
-        this.state.registro.estatus = 'ACTIVO';
+        this.setState({
+            registro :{
+                ...this.state.registro,
+                fecha_alta : new Date(),
+                estatus : 'ACTIVO'
+            }
+        });
 
         let options = {
             method: 'POST',

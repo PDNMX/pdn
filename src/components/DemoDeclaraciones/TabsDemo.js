@@ -8,7 +8,6 @@ import Ingresos from "./Ingresos/Ingresos";
 import Activos from "./Activos/Activos";
 import Pasivos from "./Pasivos/Pasivos";
 import Grid from "@material-ui/core/Grid/Grid";
-import AppBar from "@material-ui/core/AppBar/AppBar";
 
 const styles = theme => ({
     root: {

@@ -105,10 +105,6 @@ class ConsolaAdministracionSO extends React.Component {
         updateTable: false,
     };
 
-    constructor(props, context) {
-        super(props, context);
-    };
-
     updateView = () => {
         this.setState({
             updateTable: !this.state.updateTable,

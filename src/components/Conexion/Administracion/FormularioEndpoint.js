@@ -99,8 +99,13 @@ class FormularioEndpoint extends React.Component {
     };
 
     saveRegistro = () => {
-        this.state.endpoint.fecha_registro = new Date();
-        this.state.endpoint.estatus = 'EN REVISIÓN';
+        this.setState({
+            endpoint : {
+                ...this.state.endpoint,
+                fecha_registro : new Date(),
+                estatus : 'EN REVISIÓN',
+            }
+        });
 
         let options = {
             method: 'POST',
@@ -129,7 +134,8 @@ class FormularioEndpoint extends React.Component {
             .catch(err => {
                 let mensaje = '';
                 switch (err.error.code) {
-                    case '23505':'Endpoint ya registrado en la institución';
+                    case '23505':
+                        mensaje = 'Endpoint ya registrado en la institución';
                         break;
                     default :
                         mensaje = 'Error al insertar registro';
