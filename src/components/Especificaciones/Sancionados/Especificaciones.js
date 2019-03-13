@@ -79,28 +79,30 @@ class Especificaciones extends React.Component {
                 <Typography variant='h6' paragraph>
                     Servidores públicos sancionados
                 </Typography>
-                <ReactJson src={this.state.oas_servidores}/>
-
-
-                <Typography variant="h6" paragraph>
-                    Particulares sancionados
-                </Typography>
-                <ReactJson src={this.state.oas_particulares}/>
+                <ReactJson src={this.state.oas_servidores} collapsed={4}/>
 
                 <br/>
-                <Typography variant="h5" id="ejemplos" paragraph>
-                    Ejemplo de respuesta
+
+                <Typography variant="h6" id="ejemplos" paragraph>
+                    Ejemplo de respuesta - Servidores públicos sancionados
                 </Typography>
 
-                <Typography variant="h6">
-                    Servidores públicos sancionados
-                </Typography>
-                <ReactJson src={this.state.example_servidores}/>
+                <ReactJson src={this.state.example_servidores} />
+
+                <br/>
 
                 <Typography variant="h6" paragraph>
                     Particulares sancionados
                 </Typography>
-                <ReactJson src={this.state.example_particulares}/>
+                <ReactJson src={this.state.oas_particulares} collapsed={4}/>
+
+                <br/>
+
+
+                <Typography variant="h6" paragraph>
+                   Ejemplo de respuesta - Particulares sancionados
+                </Typography>
+                <ReactJson src={this.state.example_particulares} />
             </div>
         );
     }

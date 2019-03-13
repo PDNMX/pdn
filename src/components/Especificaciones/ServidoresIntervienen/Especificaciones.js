@@ -58,7 +58,7 @@ class Especificaciones extends React.Component {
                     Esta sección contiene la especificación completa del API de declaraciones en el formato OAS. La especificación puede ser interpretada usando las herramientas compatibles con el OAS o <Link href="https://swagger.io/tools/">Swagger</Link>.
                 </Typography>
 
-                <ReactJson src={this.state.oas}/>
+                <ReactJson src={this.state.oas} collapsed={4}/>
 
                 <br/>
                 <Typography variant="h5" id="ejemplos" paragraph>
@@ -66,7 +66,7 @@ class Especificaciones extends React.Component {
                 </Typography>
 
 
-                <ReactJson src={this.state.example}/>
+                <ReactJson src={this.state.example} />
 
 
             </div>
