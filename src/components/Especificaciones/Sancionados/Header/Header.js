@@ -80,7 +80,7 @@ class Header extends React.Component{
                                 <Link className={classes.link} to='/especificaciones'>Especificaciones</Link>
                             </li>
                             <li>
-                                Servidores públicos y particulares sancionados
+                                Sistema 3
                             </li>
                         </ul>
                     </Grid>
