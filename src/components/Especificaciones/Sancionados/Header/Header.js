@@ -96,7 +96,7 @@ class Header extends React.Component{
                             particulares sancionados
                         </Typography>
                         <Typography  className={classes.whiteText} style={{fontSize: '18px',fontWeight: 500}}>
-                            Especificaciones
+                            Especificaciones técnicas
                         </Typography>
                     </Grid>
                 </Grid>
