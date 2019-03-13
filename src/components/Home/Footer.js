@@ -32,7 +32,7 @@ const styles = theme => ({
         paddingBottom: 20
     },
     item: {
-        maxWidth: 1200
+        maxWidth: "1100px"
     },
     grayText: {
         color: '#ffffff',
@@ -127,7 +127,7 @@ class Footer extends React.Component{
 
 
                 <Grid container spacing={0} justify='center'>
-                    <Grid item xs={12} align='center'>
+                    <Grid item xs={12} align="center">
                         <img alt="SESNA" src={LogoSesna} className={classes.logo}/>
                     </Grid>
                 </Grid>

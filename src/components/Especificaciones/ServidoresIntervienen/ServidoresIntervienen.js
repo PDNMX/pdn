@@ -101,7 +101,7 @@ class TemporaryDrawer extends React.Component {
                 <Header/>
 
 
-                <Grid container spacing={0} justify='center'>
+                <Grid container spacing={0} justify='center' style={{background: "#fff"}}>
                     <Grid item xs={12} className={classes.item}>
 
                         <p>
@@ -148,8 +148,7 @@ class TemporaryDrawer extends React.Component {
 
                         <Especificaciones/>
 
-
-i
+                        
                         <Divider/>
 
                         <Herramientas/>
