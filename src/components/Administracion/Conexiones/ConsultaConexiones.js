@@ -9,6 +9,7 @@ import {Link} from "react-router-dom";
 import PDNLogo from "../../../assets/PDN.png";
 import IconoConexiones from '../../../assets/Cards/icono-conexion.svg';
 import TablaEndpoints from './TablaEndpoints';
+import TablaContactos from './TablaContactos';
 
 const styles = theme => ({
     root: {
@@ -155,6 +156,9 @@ class Conexion extends React.Component {
                             <Grid container justify={'center'}>
                                 <Grid item  xs ={12} className={classes.contenedor}>
                                    <TablaEndpoints conexion ={this.state.conexion}/>
+                                </Grid>
+                                <Grid item  xs ={12} className={classes.contenedor}>
+                                    <TablaContactos conexion ={this.state.conexion}/>
                                 </Grid>
                             </Grid>
                         </div>

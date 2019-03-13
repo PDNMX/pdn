@@ -14,7 +14,7 @@ import Create from '@material-ui/icons/Create';
 import axios from "axios";
 import TablePagination from "@material-ui/core/TablePagination/TablePagination";
 import Mensaje from "../../Mensajes/Mensaje";
-import EditarContacto from './EditarContacto';
+//import EditarContacto from './EditarContacto';
 import Grid from "@material-ui/core/Grid/Grid";
 
 let counter = 0;
@@ -97,7 +97,7 @@ const columnData = [
     },
     {
         id: 'fecha_solicitud',
-        label: 'Fecha alta',
+        label: 'Fecha registro',
         position: 11,
         mostrar: true,
         key: 'fecha_solicitud'
@@ -192,9 +192,8 @@ class TablaContactos extends React.Component {
     };
 
     componentDidMount() {
-        let aux = JSON.parse(localStorage.getItem("sesion"));
         this.setState({
-            currentUser: aux.currentUser,
+            conexion: this.props.conexion,
         }, () => {
             this.getContactos('FIELD_FILTER');
         });
@@ -202,8 +201,12 @@ class TablaContactos extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.update !== prevProps.update) {
-            return this.getContactos('FIELD_FILTER');
+        if (this.props.conexion !== prevProps.conexion) {
+            this.setState({
+                conexion : this.props.conexion
+            }, ()=>{
+               this.getContactos('FIELD_FILTER') ;
+            });
         }
         return true;
     }
@@ -216,7 +219,7 @@ class TablaContactos extends React.Component {
         let params = {};
         (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? params.limit = this.state.rowsPerPage : null;
         (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? params.offset = (this.state.rowsPerPage * this.state.page) : null;
-        params.dependencia = 'eq.' + this.state.currentUser.dependencia;
+        params.dependencia = 'eq.' + this.state.conexion.dependencia;
         (typeSearch === 'FIELD_FILTER') ? this.getTotalRows(params) : null;
 
 
@@ -355,14 +358,9 @@ class TablaContactos extends React.Component {
                                  open={this.state.flag_msj} handleClose={this.handleCloseMsj}/>
                     </Grid>
                     <Grid item xs={12}>
-                        <EditarContacto control={this.state.open} contacto={this.state.elementoSeleccionado}
-                                        handleClose={this.handleClose}/>
-                    </Grid>
-                    <Grid item xs={12}>
                         <Typography variant={"h6"} className={classes.text}>Contactos registrados</Typography>
                     </Grid>
-
-                    <Grid item xs={12}  className={classes.containerTable}>
+                    <Grid item xs={12} className={classes.containerTable}>
                         <Table aria-describedby="spinnerLoading"
                                aria-busy={this.state.loading} aria-labelledby="tableTitle">
                             <EnhancedTableHead
@@ -411,10 +409,6 @@ class TablaContactos extends React.Component {
                                                                           onClick={() => this.changeEstatus(n)}/>
                                                             </Tooltip>
                                                         }
-                                                        <Tooltip title={'EDITAR'}>
-                                                            <Create color={"secondary"}
-                                                                    onClick={(event) => this.handleClick(event, n)}/>
-                                                        </Tooltip>
                                                     </TableCell>
                                                 </TableRow>
                                             );
