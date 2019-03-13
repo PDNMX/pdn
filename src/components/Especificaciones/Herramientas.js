@@ -20,7 +20,11 @@ class Herramientas extends React.Component {
                 <Typography variant="h4" paragraph>Herramientas para desarrollo web</Typography>
 
                 <Typography paragraph>
-                    La interconexión entre los sistemas de información de las Instituciones y la PDN se establecerá a través de Internet, usando servicios web o APIs con arquitectura REST (REpresentational State Transfer); REST es un modelo ampliamente usado para el desarrollo de sistemas Web. En la actualidad, existe gran variedad de herramientas de código abierto que permiten el desarrollo de APIs REST usando diferentes lenguajes de programación y tecnologías de bases de datos; entre las más destacados se encuentran:
+                    La interconexión entre los sistemas de información de las Instituciones y la PDN se establecerá a
+                    través de Internet, usando servicios web o APIs con arquitectura REST (REpresentational State Transfer).
+                    REST es un modelo ampliamente usado para el desarrollo de sistemas Web.
+                    En la actualidad, existe gran variedad de herramientas de código abierto que permiten el
+                    desarrollo de APIs REST usando diferentes lenguajes de programación y tecnologías de bases de datos; entre las más destacados se encuentran:
                 </Typography>
 
                 <ul>

@@ -21,8 +21,8 @@ import ConsultaConexiones from '../components/Administracion/Conexiones/Consulta
 
 
 import DeclaracionesEspecificaciones from '../components/Especificaciones/Declaraciones/Especificaciones';
-import EspecificacionesSancionados from "../components/Especificaciones/Sancionados/Especificaciones";
-import EspecificacionesServidoresIntervienen from "../components/Especificaciones/ServidoresIntervienen/Especificaciones";
+import EspecificacionesSancionados from "../components/Especificaciones/Sancionados/Sancionados";
+import EspecificacionesServidoresIntervienen from "../components/Especificaciones/ServidoresIntervienen/ServidoresIntervienen";
 
 const pdnRoutes = [
 
