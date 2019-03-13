@@ -8,6 +8,7 @@ import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
 import {Link} from "react-router-dom";
 import PDNLogo from "../../../assets/PDN.png";
 import IconoConexiones from '../../../assets/Cards/icono-conexion.svg';
+import TablaEndpoints from './TablaEndpoints';
 
 const styles = theme => ({
     root: {
@@ -89,12 +90,16 @@ const styles = theme => ({
 
 class Conexion extends React.Component {
     state = {
-        oficio: null
+        oficio: null,
+        conexion : null,
     };
 
     constructor(props, context) {
         super(props, context);
     }
+    selectConexion = (conexionSeleccionada)=>{
+        this.setState({conexion : conexionSeleccionada});
+    };
 
     render() {
         const {classes} = this.props;
@@ -140,10 +145,20 @@ class Conexion extends React.Component {
                 <div className={classes.bgContainer}>
                     <Grid container justify={'center'}>
                         <Grid item xs={12} className={classes.contenedor}>
-                            <TablaConexiones/>
+                            <TablaConexiones selectConexion={this.selectConexion}/>
                         </Grid>
                     </Grid>
                 </div>
+                {
+                    this.state.conexion &&
+                        <div className={classes.bgContainer}>
+                            <Grid container justify={'center'}>
+                                <Grid item  xs ={12} className={classes.contenedor}>
+                                   <TablaEndpoints conexion ={this.state.conexion}/>
+                                </Grid>
+                            </Grid>
+                        </div>
+                }
                 <Footer/>
             </div>
         );

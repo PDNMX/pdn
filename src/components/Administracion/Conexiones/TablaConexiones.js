@@ -11,6 +11,7 @@ import Tooltip from "@material-ui/core/Tooltip/Tooltip";
 import rp from "request-promise";
 import AcceptIcon from '@material-ui/icons/AssignmentTurnedIn';
 import RejectIcon from '@material-ui/icons/NotInterested';
+import SelectIcon from '@material-ui/icons/ArrowForwardIos';
 import DetalleSolicitud from './DetalleSolicitud';
 import axios from "axios";
 import TablePagination from "@material-ui/core/TablePagination/TablePagination";
@@ -349,6 +350,10 @@ class TablaSolicitudes extends React.Component {
             });
     };
 
+    viewConexion =()=>{
+
+    };
+
     render() {
         const {classes} = this.props;
         const {order, orderBy, selected, rowsPerPage, page, filterData, totalRows, filterDataAll} = this.state;
@@ -434,6 +439,11 @@ class TablaSolicitudes extends React.Component {
                                                             <Tooltip title={"Revocar solicitud"}>
                                                                 <RejectIcon onClick={() => this.changeEstatus(n, 2)}
                                                                             color={'error'}/>
+                                                            </Tooltip>
+                                                        }
+                                                        {
+                                                            <Tooltip title={'Ver'}>
+                                                                <SelectIcon onClick={()=> this.props.selectConexion(n)} color={"primary"}/>
                                                             </Tooltip>
                                                         }
 
