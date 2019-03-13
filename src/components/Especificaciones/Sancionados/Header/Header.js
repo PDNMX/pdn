@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import {Link} from 'react-router-dom';
 import BG from '../../../../assets/img/fenito.jpg';
 import PDNLogo from '../../../../assets/PDN.png';
-import S2 from '../../../../assets/iconos_azul/2_icono.svg'
+import S3 from '../../../../assets/iconos_azul/3_icono.svg'
 import Typography from "@material-ui/core/Typography";
 import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
 import './Header.css';
@@ -88,7 +88,7 @@ class Header extends React.Component{
 
                 <Grid container spacing={0} className={classNames(classes.container1, 'servidores')} justify='center'>
                     <Grid item xs={12} md={4} align={isWidthUp('md', this.props.width)? 'right':'center'} className={classes.item1}>
-                        <img src={S2} alt="Sistema 2" className={classes.s2}/>
+                        <img src={S3} alt="Sistema 2" className={classes.s2}/>
                     </Grid>
 
                     <Grid item xs={12} md={6} className={classes.item2} align={isWidthUp('md', this.props.width)? 'left':'center'} >
