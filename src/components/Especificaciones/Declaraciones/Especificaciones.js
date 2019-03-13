@@ -147,6 +147,11 @@ class ClippedDrawer extends React.Component {
                 oas: data[0],
                 example: data[1]
             })
+        }).catch(error => {
+            this.setState({
+                oas: ['error'],
+                example: ['error']
+            })
         });
 
         //this.setState({oas:  { "test": 123, "others": [ { "abc": 1 }, { "xyz": 999 } ] }, example: {}})

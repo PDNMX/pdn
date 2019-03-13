@@ -41,6 +41,11 @@ class Especificaciones extends React.Component {
                 oas: data[0],
                 example: data[1]
             })
+        }).catch(error => {
+            this.setState({
+                oas: ['error'],
+                example: ['error']
+            })
         });
     }
 

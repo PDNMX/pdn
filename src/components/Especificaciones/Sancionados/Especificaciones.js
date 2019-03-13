@@ -58,7 +58,14 @@ class Especificaciones extends React.Component {
                 example_particulares: data[1],
                 oas_servidores: data[2],
                 example_servidores: data[3]
-            })
+            }).catch( error => {
+               this.setState({
+                   oas_particulares: ["error"],
+                   example_particulares: ["error"],
+                   oas_servidores: ["error"],
+                   example_servidores: ["error"]
+               });
+            });
         });
     }
 
