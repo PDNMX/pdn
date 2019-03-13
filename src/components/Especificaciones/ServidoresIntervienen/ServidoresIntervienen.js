@@ -10,7 +10,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-import PDNAppBar from "../../PDNAppBar/PDNAppBar";
+import Header from './Header/Header';
 import Footer from "../../Home/Footer";
 import Grid from '@material-ui/core/Grid';
 import Estandar from "./Estandar";
@@ -98,7 +98,7 @@ class TemporaryDrawer extends React.Component {
 
         return (
             <div>
-                <PDNAppBar/>
+                <Header/>
 
 
                 <Grid container spacing={0} justify='center'>

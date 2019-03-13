@@ -10,7 +10,6 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-import PDNAppBar from "../../PDNAppBar/PDNAppBar";
 import Footer from "../../Home/Footer";
 import Grid from '@material-ui/core/Grid';
 import Estandar from "./Estandar";
@@ -20,6 +19,7 @@ import TablaParametros from "./TablaParametros";
 import Typography from '@material-ui/core/Typography';
 import Herramientas from "../Herramientas";
 import Especificaciones from "./Especificaciones";
+import Header from './Header/Header';
 
 const styles = theme => ({
     list: {
@@ -98,10 +98,11 @@ class TemporaryDrawer extends React.Component {
 
         return (
             <div>
-                <PDNAppBar/>
+
+                <Header/>
 
 
-                <Grid container spacing={0} justify='center'>
+                <Grid container spacing={0} justify='center' style={{background: '#fff'}}>
                     <Grid item xs={12} className={classes.item}>
 
                         <p>
@@ -148,7 +149,7 @@ class TemporaryDrawer extends React.Component {
 
                         <Especificaciones/>
 
-                        
+
                         <Divider/>
 
                         <Herramientas/>
