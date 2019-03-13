@@ -148,8 +148,7 @@ class TemporaryDrawer extends React.Component {
 
                         <Especificaciones/>
 
-
-i
+                        
                         <Divider/>
 
                         <Herramientas/>
