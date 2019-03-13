@@ -77,7 +77,7 @@ class Header extends React.Component{
                                 <Link className={classes.link} to='/'>Plataforma Digital Nacional</Link>
                             </li>
                             <li>
-                                Servidores que intervienen en procesos de contratación
+                                Especificaciones
                             </li>
                         </ul>
                     </Grid>
