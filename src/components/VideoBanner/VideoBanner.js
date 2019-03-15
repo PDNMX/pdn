@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import mp4 from '../../assets/videos/pdn_intro.mp4';
 import './VideoBanner.css';
 import VideoAppBar from "./VideoAppBar";
-import VersionAlpha from '../../assets/version_alfa.png';
+import VersionAlpha from '../../assets/alfa.png';
 
 const styles = theme => ({
 
@@ -55,7 +55,7 @@ class Banner extends React.Component {
                 </video>
 
                 <div className={classes.alpha}>
-                    <img alt="alpha" src={VersionAlpha}/>
+                    <img alt="alpha" src={VersionAlpha} width="142px;"/>
                 </div>
 
                 <div className={classes.appBar}>
