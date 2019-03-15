@@ -123,27 +123,32 @@ const pdnRoutes = [
     {
         path: "/administracionPDN/consultasolicitudes",
         component : Consulta,
-        private: false
+        private: true,
+        perfom:'admon-pdn-consultaSolicitudes:visit'
     },
     {
         path: "/consolaAdmonSO",
         component: ConsolaAdministracionSO,
-        private: false
+        private: true,
+        perfom: "admon-conexion-so:visit"
     },
     {
         path: "/administracionPDN",
         component: ConsolaAdministracionPDN,
-        private: false
+        private: true,
+        perfom: "admon-pdn-page:visit"
     },
     {
         path: "/administracionPDN/usuarios",
         component : ConsultaUsuarios,
-        private: false
+        private: true,
+        perfom : "admon-pdn-usuarios:visit"
     },
     {
         path: "/administracionPDN/consultaconexiones",
         component : ConsultaConexiones,
-        private: false
+        private: true,
+        perfom : "admon-pdn-consultaConexiones:visit"
     },
 
 ];

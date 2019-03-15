@@ -232,7 +232,7 @@ class App extends React.Component {
                             {pndRoutes.map((prop, key) => {
                                     return prop.private ?
                                         <PrivateRoute exact path={prop.path} component={prop.component} key={key}
-                                                      sesion={sesion}/> :
+                                                      sesion={sesion} perfom={prop.perfom}/> :
                                         <Route exact path={prop.path} component={prop.component} key={key}/>;
                                 }
                             )

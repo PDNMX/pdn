@@ -215,6 +215,7 @@ class ConsolaAdministracionSO extends React.Component {
 
     render() {
         const {classes} = this.props;
+
         return (
             <div className={classes.root}>
                 <Grid container spacing={0} justify="center">
