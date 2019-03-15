@@ -162,6 +162,10 @@ class VideoAppBar extends React.Component {
                                             <MenuItem component={Link} to={"/consolaAdmonSO"}>Administrar conexión</MenuItem>
                                         }
                                         {
+                                            this.props.sesion && this.props.sesion.currentUser && this.props.sesion.currentUser.rol ==='ADMIN_PDN' &&
+                                            <MenuItem component={Link} to={"/administracionPDN"}>Administrar PDN</MenuItem>
+                                        }
+                                        {
                                             this.props.sesion &&  this.props.sesion.authenticated &&
                                             <MenuItem onClick={this.handleSignOut}>Cerrar sesión</MenuItem>
                                         }

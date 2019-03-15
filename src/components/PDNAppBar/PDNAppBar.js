@@ -103,6 +103,7 @@ class PDNAppBar extends React.Component {
         const { anchorEl } = this.state;
         const open = Boolean(anchorEl);
 
+        console.log("Log: ",this.props.sesion);
         return (
             <div className={classes.root}>
                 <AppBar color="default" position="static">
@@ -150,6 +151,10 @@ class PDNAppBar extends React.Component {
                                         {
                                             this.props.sesion && this.props.sesion.currentUser && this.props.sesion.currentUser.rol ==='SUJETO_OBLIGADO' &&
                                             <MenuItem component={Link} to={"/consolaAdmonSO"}>Administrar conexión</MenuItem>
+                                        }
+                                        {
+                                            this.props.sesion && this.props.sesion.currentUser && this.props.sesion.currentUser.rol ==='ADMIN_PDN' &&
+                                            <MenuItem component={Link} to={"/administracionPDN"}>Administrar PDN</MenuItem>
                                         }
                                         {
                                             this.props.sesion && this.props.sesion.authenticated &&

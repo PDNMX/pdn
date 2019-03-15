@@ -140,6 +140,7 @@ class App extends React.Component {
                                 },
                                 loading: false
                             }, () => {
+                                console.log("Sesion:",this.state.sesion);
                                 this.props.newSesion(this.state.sesion);
                                 localStorage.setItem("sesion", JSON.stringify(this.state.sesion));
                                 history.push('/');
