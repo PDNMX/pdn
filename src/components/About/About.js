@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './Header';
+import Header from './Header/Header';
 import Footer from './Footer';
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
