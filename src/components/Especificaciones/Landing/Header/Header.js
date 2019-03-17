@@ -2,9 +2,9 @@ import React from 'react';
 import {withStyles} from "@material-ui/core/styles";
 import Grid from '@material-ui/core/Grid';
 import {Link} from 'react-router-dom';
-import BG from '../../../assets/img/fenito.jpg';
-import PDNLogo from '../../../assets/PDN.png';
-import C from '../../../assets/icono-conexion.svg'
+import BG from '../../../../assets/img/fenito.jpg';
+import PDNLogo from '../../../../assets/PDN.png';
+import C from '../../../../assets/icono-conexion.svg'
 import Typography from "@material-ui/core/Typography";
 import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
 import './Header.css';

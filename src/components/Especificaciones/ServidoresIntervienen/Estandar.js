@@ -2,7 +2,6 @@ import Typography from "@material-ui/core/Typography";
 import React from "react";
 import {withStyles} from "@material-ui/core/styles";
 import Button from '@material-ui/core/Button';
-import Antecedentes from '../Antecedentes';
 
 const styles = theme => ({
     root: {

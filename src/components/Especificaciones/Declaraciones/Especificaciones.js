@@ -36,7 +36,7 @@ import app from "../../../config/firebase";
 import Herramientas from '../Herramientas';
 import Licencia from '../Licencia';
 import Implementacion from './Implementacion';
-import Antecedentes from "../Antecedentes";
+import Antecedentes from "./Antecedentes";
 
 const drawerWidth = 240;
 
