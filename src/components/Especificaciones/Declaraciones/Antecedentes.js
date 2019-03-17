@@ -24,7 +24,8 @@ class Antecedentes extends React.Component{
                             Patrimonial y de Intereses propuesto por el Comité de Participación Ciudadana (CPC),
                             el nuevo formato tendrá impacto a nivel nacional y es de presentación obligatoria para todas
                             las personas que desempeñen un empleo, cargo o comisión en los entes públicos, conforme a lo
-                            dispuesto por el artículo 108 de la Constitución Política de los Estados Unidos Mexicanos y entrará en vigor, a más tardar el 30 de abril de 2019.
+                            dispuesto por el artículo 108 de la Constitución Política de los Estados Unidos Mexicanos
+                            y entrará en vigor, a más tardar el 30 de abril de 2019.
                         </Typography></li>
                     <li>
                         <Typography paragraph>
