@@ -111,8 +111,10 @@ class TemporaryDrawer extends React.Component {
                             <Button onClick={this.toggleDrawer('bottom', true)}>Open Bottom</Button>
                         </p>
 
-                        <Estandar/>
 
+                        <div id="estandar">
+                            <Estandar/>
+                        </div>
 
                         <Divider/>
                         <br/>
@@ -130,10 +132,10 @@ class TemporaryDrawer extends React.Component {
 
                         <Divider/>
                         <br/>
+
                         <Typography variant="h4" id="api" paragraph>
                             Especificación del API de Servidores públicos que intervienen en contrataciones
                         </Typography>
-
 
 
                         <Typography variant="h5" id="parametros" paragraph>
@@ -150,9 +152,9 @@ class TemporaryDrawer extends React.Component {
 
                         
                         <Divider/>
+                        <br/>
 
                         <Herramientas/>
-
 
 
                         <Drawer open={this.state.left} onClose={this.toggleDrawer('left', false)}>

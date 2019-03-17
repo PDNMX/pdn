@@ -27,13 +27,19 @@ class Implementacion extends React.Component{
                     <Grid item xs={12}>
                         <Typography variant="h4" paragraph>Implementación del estándar</Typography>
                         <Typography paragraph>
-                            La implementación del estándar de declaraciones representará esfuerzos de diferente magnitud dependiendo del nivel de adopción tecnológica de cada Institución. Suponiendo que una cierta Institución ya cuenta con un sistema de captura de declaraciones, el proceso de implementación del API de declaraciones puede ser dividido en los siguientes pasos:
+                            La implementación del estándar de declaraciones representará esfuerzos de diferente magnitud
+                            dependiendo del nivel de adopción tecnológica de cada Institución. Suponiendo que una cierta
+                            Institución ya cuenta con un sistema de captura de declaraciones, el proceso de implementación
+                            del API de declaraciones puede ser dividido en los siguientes pasos:
                         </Typography>
 
                         <ul>
                             <li>
                                 <Typography paragraph>
-                                    <b>Diagnóstico:</b> Revisar y comparar los datos contenidos en su base de datos con los especificados en la publicación del Formato de declaraciones en el Diario Oficial de la Federación, es importante contar con todos los datos solicitados en el nuevo formato, sin embargo, esto no imposibilita a las Instituciones para realizar pruebas de adopción del estándar usando los datos con los que se cuenta.
+                                    <b>Diagnóstico:</b> Revisar y comparar los datos contenidos en su base de datos con
+                                    los especificados en la publicación del Formato de declaraciones en el
+                                    Diario Oficial de la Federación, es importante contar con todos los datos solicitados
+                                    en el nuevo formato, sin embargo, esto no imposibilita a las Instituciones para realizar pruebas de adopción del estándar usando los datos con los que se cuenta.
                                 </Typography>
                             </li>
                             <li>

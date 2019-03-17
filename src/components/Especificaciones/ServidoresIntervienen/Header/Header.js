@@ -93,10 +93,10 @@ class Header extends React.Component{
 
                     <Grid item xs={12} md={6} className={classes.item2} align={isWidthUp('md', this.props.width)? 'left':'center'} >
                         <Typography variant="h4" paragraph className={classes.whiteText} style={{fontWeight: 300}}>
-                            Servidores públicos y
+                            Servidores públicos que
                         </Typography>
                         <Typography variant="h4" paragraph className={classes.whiteText} style={{  fontWeight: 600}}>
-                            particulares sancionados
+                            intervienen en procesos de contratación
                         </Typography>
                         <Typography  className={classes.whiteText} style={{fontSize: '18px',fontWeight: 500}}>
                             Especificaciones técnicas
