@@ -11,7 +11,9 @@ const styles = theme => ({
         flexGrow: 1
     },
     item: {
-        maxWidth: 1200
+        maxWidth: 1200,
+        paddingTop: "50px",
+        paddingBottom: "50px"
     },
     button: {
         margin: theme.spacing.unit,

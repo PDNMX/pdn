@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import {Link} from 'react-router-dom';
 import BG from '../../../assets/img/fenito.jpg';
 import PDNLogo from '../../../assets/PDN.png';
-import S2 from '../../../assets/iconos_azul/2_icono.svg'
+import C from '../../../assets/icono-conexion.svg'
 import Typography from "@material-ui/core/Typography";
 import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
 import './Header.css';
@@ -36,7 +36,7 @@ const style = theme => ({
         item3:{
             maxWidth: 1200,
         },
-        s2: {
+        logo: {
             maxWidth: '150px'
         },
         whiteText: {
@@ -85,18 +85,18 @@ class Header extends React.Component{
 
                 <Grid container spacing={0} className={classNames(classes.container1, 'servidores')} justify='center'>
                     <Grid item xs={12} md={4} align={isWidthUp('md', this.props.width)? 'right':'center'} className={classes.item1}>
-                        <img src={S2} alt="Sistema 2" className={classes.s2}/>
+                        <img src={C} alt="Especificaciones" className={classes.logo}/>
                     </Grid>
 
                     <Grid item xs={12} md={6} className={classes.item2} align={isWidthUp('md', this.props.width)? 'left':'center'} >
                         <Typography variant="h4" paragraph className={classes.whiteText} style={{fontWeight: 300}}>
-                            Servidores públicos y
+                            Especificaciones técnicas y
                         </Typography>
                         <Typography variant="h4" paragraph className={classes.whiteText} style={{  fontWeight: 600}}>
-                            particulares sancionados
+                            estandares de datos
                         </Typography>
                         <Typography  className={classes.whiteText} style={{fontSize: '18px',fontWeight: 500}}>
-                            Especificaciones técnicas
+                            Plataforma Digital Nacional
                         </Typography>
                     </Grid>
                 </Grid>
