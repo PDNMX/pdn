@@ -3,7 +3,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import Header from "../VideoBanner/VideoBanner";
+import Header from "./Header/Header.js";
 import Footer from "../Home/Footer";
 
 const styles = theme => ({
@@ -15,8 +15,18 @@ const styles = theme => ({
         paddingTop: 100,
         paddingBottom: 100
     },
+    bullet: {
+        backgroundColor: '#5fb1e6',
+        height: '10px',
+        width: '10px',
+        borderRadius: '50%',
+        display: 'inline-block',
+        marginLeft: '-20px',
+        //marginTop: '-10px'
+    },
     li: {
-        paddingTop: 10
+        paddingTop: 10,
+        marginBottom: 20
     },
     container: {
         paddingRight: theme.spacing.unit,
@@ -33,12 +43,10 @@ class Faq extends React.Component{
                 <Grid container spacing={0} justify='center' className={classes.container}>
                     <Grid item xs={12} className={classes.item}>
 
-                        <Typography variant="h4">
-                            Preguntas frecuentes
-                        </Typography>
+
 
                         <ul>
-                            <li>
+                          <li className={classes.li}>
                                 <Typography>
                                     <b>¿La Plataforma Digital Nacional (PDN) va a generar información?</b><br/>
                                     No. El objetivo de la Plataforma es generar interoperabilidad entre los datos que ya generan actualmente los entes obligados, a través del uso de estándares comunes.
