@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import {Link} from 'react-router-dom';
 //import Typography from "@material-ui/core/Typography";
 import BG from '../../../assets/img/fenito.jpg';
-import PDNLogo from '../../../assets/PDN.png';
+import PDNLogo from '../../../assets/logo_PDN_2.svg';
 import S3 from '../../../assets/iconos_azul/3_icono.svg'
 //import PDNAppBar from "../../PDNAppBar/PDNAppBar";
 import Typography from "@material-ui/core/Typography";

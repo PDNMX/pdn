@@ -1,10 +1,10 @@
 import React from 'react';
-import Header from './Header';
-import Footer from './Footer';
+import Header from './Header/Header';
+import Footer from "../Home/Footer";
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import QueEs from './QueEs';
-import Sectores from './Sectores';
+//import QueEs from './QueEs';
+//import Sectores from './Sectores';
 import Objetivos from './Objetivos';
 import Carrusel from './Carrusel';
 import Uso from './Uso';
@@ -57,19 +57,7 @@ class About extends React.Component {
                 <Header/>
 
                 <Grid container spacing={0} justify="center">
-                    <Grid item xs={12} className={classes.gridItem}>
-                        <QueEs/>
-                    </Grid>
-                </Grid>
-
-                <Grid container spacing={0} justify="center" style={{background: "#f9f9f9"}}>
-                    <Grid item xs={12} className={classes.gridItem}>
-                        <Sectores/>
-                    </Grid>
-                </Grid>
-
-                <Grid container spacing={0} justify="center" style={{background: '#e6e6e6'}}>
-                    <Grid item xs={12} className={classes.gridItem}>
+                    <Grid item xs={12} className={classes.gridItem} style={{marginTop: '110px', marginBottom: '110px'}}>
                         <Objetivos/>
                     </Grid>
                 </Grid>
@@ -82,14 +70,14 @@ class About extends React.Component {
                     </Grid>
                     */}
 
-                <Grid container spacing={0} justify='center' style={{background: '#37464f'}}>
-                    <Grid item xs={12} className ={classes.gridItem}>
+                <Grid container spacing={0} justify='center' style={{background: '#f2f2f2', padding: '90px 0 120px'}}>
+                    <Grid item xs={12} className ={classes.gridItem} >
                         <Interoperabilidad/>
                     </Grid>
                 </Grid>
 
 
-                <Grid container spacing={0} justify='center'>
+                <Grid container spacing={0} justify='center' style={{marginTop: '110px', marginBottom: '110px'}}>
                     <Grid item xs={12} className={classes.gridItem}>
                         <Construimos/>
                     </Grid>
@@ -102,23 +90,21 @@ class About extends React.Component {
                     </div>*/}
 
 
-                <Grid container justify="center" spacing={0}>
+                <Grid container justify="center" spacing={0} style={{background: '#f2f2f2', padding: '90px 0 120px'}}>
                     <Grid item xs={12} className={classes.gridItem}>
                         <Carrusel/>
                     </Grid>
                 </Grid>
 
 
-                <Grid container justify="center" spacing={0} style={{background: '#f9f9f9'}}>
+                <Grid container justify="center" spacing={0} style={{marginTop: '110px', marginBottom: '110px'}}>
                     <Grid item xs={12} className={classes.gridItem}>
                         <Uso/>
                     </Grid>
                 </Grid>
 
                 <Grid container justify="center" spacing={0} style={{background:  "#fff"}}>
-                    <Grid item xs={12} className={classes.gridItem}>
                         <Footer/>
-                    </Grid>
                 </Grid>
             </div>);
     }

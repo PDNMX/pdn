@@ -116,8 +116,8 @@ class VideoAppBar extends React.Component {
                         <Grid item xs={12} className={classes.item}>
                             <Toolbar>
 
-                                <IconButton color="inherit" aria-label="Menu" component={Link} to="/">
-                                    <img src={imgHeader} alt="PDN" style={{width: '55px'}}/>
+                                <IconButton color="inherit" aria-label="Menu" component={Link} to="/" style={{ marginTop: '28px'}}>
+                                    <img src={imgHeader} alt="PDN" style={{height: '40px'}}/>
                                 </IconButton>
 
                                 <Typography variant="h6" color="inherit" className={classes.grow}>
@@ -133,7 +133,7 @@ class VideoAppBar extends React.Component {
                                         onClick={this.handleMenu}
                                         color="inherit"
                                     >
-                                        <MenuIcon/>
+                                        <MenuIcon style={{ fill: 'white', fontSize: '36px'}}/>
                                     </IconButton>
                                     <Menu
                                         id="menu-appbar"
