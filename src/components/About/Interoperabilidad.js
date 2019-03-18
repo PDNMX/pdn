@@ -3,7 +3,7 @@ import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
-import Gi from '../../assets/about/grafico-interoperabilidad.svg';
+import Gi from '../../assets/about/interoperabilidad.png';
 
 const styles = theme => ({
     root : {
@@ -12,10 +12,10 @@ const styles = theme => ({
         paddingBottom: theme.spacing.unit*4,
     },
     links: {
-        color: '#96cb99'
+        color: '#606060'
     },
     whiteText: {
-        color: '#e6e6e6'
+        color: '#606060'
     },
 
     interopera: {
@@ -30,7 +30,7 @@ class Interoperabilidad extends React.Component{
         return (
             <div className={classes.root}>
                 <Typography variant='display2' className={classes.links}>
-                    Plataforma de Interoperabilidad
+                    Plataforma de <b>Interoperabilidad</b>
                 </Typography>
 
                 <br/>

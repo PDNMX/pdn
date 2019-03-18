@@ -4,7 +4,7 @@ import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 
-import Ejes from '../../assets/about/grafico-ejes.svg';
+import Ejes from '../../assets/about/construye.svg';
 
 
 const styles = theme => ({
@@ -14,19 +14,17 @@ const styles = theme => ({
         paddingBottom: theme.spacing.unit*4,
     },
     links: {
-        color: '#96cb99'
+        color: '#606060'
     },
     whiteText: {
-        color: '#e6e6e6'
+        color: '#606060'
     },
     titles: {
-        background: '#96cb99',
-        color: '#ffffff',
-        textAlign: 'center',
-        padding: theme.spacing.unit
+        color: '#606060',
+        padding: theme.spacing.unit,
     },
     bullet: {
-        backgroundColor: '#96cb99',
+        backgroundColor: '#5fb1e6',
         height: '10px',
         width: '10px',
         borderRadius: '50%',
@@ -40,14 +38,16 @@ const styles = theme => ({
         paddingLeft: '0px'
     },
     li: {
-        paddingBottom: theme.spacing.unit *2
+        paddingBottom: theme.spacing.unit *4,
+        fontSize: '18px'
     },
     ejes: {
-        paddingTop: '20px',
-        maxWidth: '350px'
+        padding: '20px',
+        maxWidth: '100%'
     },
     numbering: {
-        color : '#96cb99'
+        color : '#5fb1e6',
+        fontSize: '26px'
     },
     items: {
         paddingRight: theme.spacing.unit,
@@ -64,13 +64,13 @@ class Construimos extends React.Component{
             <div className={classes.root}>
 
                 <Typography variant="display2" className={classes.links}>
-                    ¿Cómo se construye la PDN?
+                    ¿Cómo se <b>construye</b> la <b>PDN</b>?
                 </Typography>
 
                 <br/>
                 <br/>
                 <Grid container spacing={0}>
-                    <Grid item xs={12} md={6} className={classes.items}>
+                    <Grid item xs={12} md={6} className={classes.items} style={{background: '#f2f2f2', padding: '20px 15px'}}>
                         <Typography variant="title" className={classes.titles }>Principios</Typography>
                         <ul className={classes.ul}>
                             <li className={classes.li}><Typography variant="subheading"> <b className={classes.numbering}>1.</b>{/*<span className={classes.bullet}/>*/} Diseño centrado en las usuarias-os y sus necesidades</Typography></li>

@@ -14,9 +14,6 @@ const styles = theme => ({
         paddingTop: theme.spacing.unit*4,
         paddingBottom: theme.spacing.unit*4,
     },
-    title: {
-        color: '#96cb99'
-    },
     items: {
         paddingLeft: theme.spacing.unit,
         paddingRight: theme.spacing.unit
@@ -35,8 +32,7 @@ class Carrusel extends React.Component{
         const {classes} = this.props;
         return (
             <div className={classes.root}>
-                <Typography variant={'display2'} className={classes.title} paragraph>Conoce más</Typography>
-                <br/>
+                <Typography variant={'display2'} paragraph><b>Conoce</b> más</Typography>
 
                 <Grid container spacing={0}>
                     <Grid item xs={12} md={4} className={classes.items}>
