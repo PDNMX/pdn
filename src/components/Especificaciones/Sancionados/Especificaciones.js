@@ -4,6 +4,7 @@ import ReactJson from 'react-json-view';
 import rp from "request-promise";
 import {withStyles} from "@material-ui/core/styles";
 import Link from '@material-ui/core/Link';
+import ArrowDropDown from "../ServidoresIntervienen/Especificaciones";
 
 const styles = theme => ({
     root : {
@@ -74,7 +75,7 @@ class Especificaciones extends React.Component {
 
         return (
             <div className={classes.root}>
-                <Typography variant="h5" id="especificaciones" paragraph>
+                <Typography variant="h5" paragraph>
                     Especificaciones
                 </Typography>
 
@@ -85,12 +86,18 @@ class Especificaciones extends React.Component {
                 <Typography variant='h6' paragraph>
                     Servidores públicos sancionados
                 </Typography>
+                <Typography paragraph>
+                    Da click sobre el símbolo <ArrowDropDown/> para ver más detalles.
+                </Typography>
                 <ReactJson src={this.state.oas_servidores} collapsed={4}/>
 
                 <br/>
 
                 <Typography variant="h6" id="ejemplos" paragraph>
                     Ejemplo de respuesta - Servidores públicos sancionados
+                </Typography>
+                <Typography paragraph>
+                    Da click sobre el símbolo <ArrowDropDown/> para ver más detalles.
                 </Typography>
 
                 <ReactJson src={this.state.example_servidores} />
@@ -100,13 +107,18 @@ class Especificaciones extends React.Component {
                 <Typography variant="h6" paragraph>
                     Particulares sancionados
                 </Typography>
+                <Typography paragraph>
+                    Da click sobre el símbolo <ArrowDropDown/> para ver más detalles.
+                </Typography>
                 <ReactJson src={this.state.oas_particulares} collapsed={4}/>
 
                 <br/>
 
-
                 <Typography variant="h6" paragraph>
                    Ejemplo de respuesta - Particulares sancionados
+                </Typography>
+                <Typography paragraph>
+                    Da click sobre el símbolo <ArrowDropDown/> para ver más detalles.
                 </Typography>
                 <ReactJson src={this.state.example_particulares} />
             </div>

@@ -146,9 +146,9 @@ class TemporaryDrawer extends React.Component {
 
                         <br/>
 
-
-                        <Especificaciones/>
-
+                        <div id="especificaciones">
+                            <Especificaciones/>
+                        </div>
 
                         <Divider/>
 
