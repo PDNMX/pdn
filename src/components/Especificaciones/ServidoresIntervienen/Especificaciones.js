@@ -62,12 +62,12 @@ class Especificaciones extends React.Component {
 
                 <Typography paragraph>
                     Esta sección contiene la especificación completa del API de Servidores Públicos que Intervienen en Contrataciones en el formato OAS.
-                    La especificación puede ser interpretada usando las herramientas compatibles con el OAS o
-                    <Link href="https://swagger.io/tools/">Swagger</Link>.
+                    La especificación puede ser interpretada usando las herramientas compatibles con el OAS o <Link href="https://swagger.io/tools/">Swagger</Link>.
                 </Typography>
 
                 <Typography paragraph>
-                    Da click sobre el símbolo <ArrowDropDown/> para ver más detalles.
+                    Da click sobre el símbolo <ArrowDropDown/> para ver más detalles. Puedes consultar el archivo JSON completo en la siguiente
+                    <a href="https://github.com/PDNMX/api_docs/blob/master/S2/oas/OAS_API_servidores_intervienen_contrataciones.json">URL</a>.
                 </Typography>
                 <ReactJson src={this.state.oas} collapsed={4}/>
 
@@ -78,6 +78,8 @@ class Especificaciones extends React.Component {
 
                 <Typography paragraph>
                     Da click sobre el símbolo <ArrowDropDown/> para ver más detalles.
+                    Puedes consultar el archivo JSON completo en la siguiente
+                    <a href="https://github.com/PDNMX/api_docs/blob/master/S2/Resp_API_servidores_intervienen_contrataciones.json">URL</a>.
                 </Typography>
 
 
