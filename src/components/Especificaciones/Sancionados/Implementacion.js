@@ -27,9 +27,11 @@ class Implementacion extends React.Component{
                     <Grid item xs={12}>
                         <Typography variant="h4" paragraph>Implementación del estándar</Typography>
                         <Typography paragraph>
-                            La implementación del Estándar para la Interoperabilidad de Datos de Servidores Públicos y
-                            Particulares Sancionados representará esfuerzo toda vez que la Secretaría de la Función Pública ya cuenta
-                            con un Sistema de registro de servidores públicos sancionados. El proceso de implementación del API de Servidores Públicos y Particulares Sancionados puede ser dividido en los siguientes pasos:
+                            La implementación del Estándar para la Interoperabilidad de datos de Servidores Públicos y
+                            Particulares Sancionados representará esfuerzos de diferente maginitud dependiendo del nivel de
+                            adopción tecnológica de cada Institución. Suponiendo que una cierta Institución ya cuenta con un
+                            Sistema de registro de servidores públicos sancionados, el proceso de implementación del API de
+                            Servidores Públicos y Particulares Sancionados puede ser dividido en los siguientes pasos:
                         </Typography>
 
                         <ul>
@@ -57,11 +59,12 @@ class Implementacion extends React.Component{
                             Modelo de comunicación
                         </Typography>
                         <Typography paragraph>
-                            A través de la de la PDN, los usuarios serán capaces de realizar consultas al APIs de la SFP, dichas consultas se configurarán usando parámetros (Ver la sección Parámetros de consulta). La Figura 1 muestra un diagrama en el cual se ejemplifica la comunicación entre el API de Servidores Públicos y Particulares Sancionados de la SFP y la PDN. El API tendrá la tarea de recibir la consulta y aplicar la lógica de negocio al interior de la SFP para generar la respuesta correspondiente. Dicha respuesta deberá estar apegada al estándar de Servidores Públicos y Particulares Sancionados que se proporciona en la siguiente sección.
+                            A través de la de la PDN, los usuarios serán capaces de realizar consultas a las APIs de las Instituciones,
+                            dichas consultas se configurarán usando parámetros (Ver la sección Parámetros de consulta). La Figura 1 muestra un diagrama en el cual se ejemplifica la comunicación entre el API de Servidores Públicos y Particulares Sancionados y la PDN. El API tendrá la tarea de recibir la consulta y aplicar la lógica de negocio al interior de la institución para generar la respuesta correspondiente. Dicha respuesta deberá estar apegada al estándar de Servidores Públicos y Particulares Sancionados que se proporciona en la siguiente sección.
                         </Typography>
                         <img src={Diagrama} alt="Comunicación" className={classes.diagrama}/>
                         <Typography paragraph>
-                            <b>Figura 1. </b>  Esquema conceptual del flujo de comunicación entre la SFP y la Plataforma Digital Nacional. De derecha a izquierda se observan usuarios con diferentes perfiles accediendo a la PDN y solicitando información de acuerdo a sus atribuciones.
+                            <b>Figura 1. </b>  Esquema conceptual del flujo de comunicación entre Instituciones y la Plataforma Digital Nacional. De derecha a izquierda se observan usuarios con diferentes perfiles accediendo a la PDN y solicitando información de acuerdo a sus atribuciones.
                         </Typography>
                     </Grid>
                 </Grid>

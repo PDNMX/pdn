@@ -27,7 +27,7 @@ class Estandar extends React.Component {
                 <Typography paragraph>
                     Esta guía tiene como finalidad la descripción del Estándar para la Interoperabilidad de Datos de Servidores Públicos y Particulares Sancionados,
                     desarrollado por la Secretaría Ejecutiva del Sistema Nacional Anticorrupción (SESNA).
-                    Se presenta el modelo de interoperabilidad que deberán adoptar los diversos sistemas de declaraciones que proveerán
+                    Se presenta el modelo de interoperabilidad que deberán adoptar los diversos sistemas de registro de Servidores Públicos y Particulares Sancionados que proveerán
                     información a la Plataforma Digital Nacional (PDN) y
                     se proporciona una serie de recomendaciones para la implementación del estándar por parte de las Instituciones.
                 </Typography>
