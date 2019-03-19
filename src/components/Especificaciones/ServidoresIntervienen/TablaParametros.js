@@ -57,10 +57,10 @@ const rows = [
     createData('id', "Id del registro devuelto, de libre elección para las instituciones, no puede existir repetidos.",
         "N/A",
         "N/A"),
-    createData('actualizacion', "Fecha de actualización de la declaración, devuelve los registros que cumplen a partir de la fecha enviada.",
+    createData('actualizacion', "Fecha de actualización del registro, devuelve los registros que cumplen a partir de la fecha enviada.",
         "YYYY-MM-DD \nEjemplo: 2017-07-21",
         "N/A"),
-    createData('rfc_solicitante', "RFC de la persona que solicita la búsqueda, si se omite solo deberá devolver los campos de la declaración que son públicos.",
+    createData('rfc_solicitante', "RFC de la persona que solicita la búsqueda, si se omite solo deberá devolver los campos del servidor que son públicos.",
         "N/A",
         "N/A"),
 ];
