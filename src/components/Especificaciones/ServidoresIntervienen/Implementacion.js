@@ -27,30 +27,33 @@ class Implementacion extends React.Component{
                     <Grid item xs={12}>
                         <Typography variant="h4" paragraph>Implementación del estándar</Typography>
                         <Typography paragraph>
-                            La implementación del estándar de declaraciones representará esfuerzos de diferente magnitud
+                            La implementación del estándar de Datos de Servidores
+                            Públicos que Intervienen en Contrataciones representará esfuerzos de diferente magnitud
                             dependiendo del nivel de adopción tecnológica de cada Institución. Suponiendo que una cierta
-                            Institución ya cuenta con un sistema de captura de declaraciones, el proceso de implementación
-                            del API de declaraciones puede ser dividido en los siguientes pasos:
+                            Institución ya cuenta con un sistema de captura de Servidores
+                            Públicos que Intervienen en Contrataciones, el proceso de implementación
+                            del API de  de Servidores Públicos que Intervienen en Contrataciones puede ser dividido en los siguientes pasos:
                         </Typography>
 
                         <ul>
                             <li>
                                 <Typography paragraph>
                                     <b>Diagnóstico:</b> Revisar y comparar los datos contenidos en su base de datos con
-                                    los especificados en la publicación del Formato de declaraciones en el
+                                    los especificados en la publicación del Formato de Datos de Servidores Públicos que Intervienen en Contrataciones en el
                                     Diario Oficial de la Federación, es importante contar con todos los datos solicitados
                                     en el nuevo formato, sin embargo, esto no imposibilita a las Instituciones para realizar pruebas de adopción del estándar usando los datos con los que se cuenta.
                                 </Typography>
                             </li>
                             <li>
                                 <Typography paragraph>
-                                    <b>Diseño de arquitectura:</b> Se deberá evaluar las capacidades del sistema de información o base de datos de declaraciones, a fin de diagnosticar su capacidad para soportar la carga de trabajo actual y al mismo tiempo la tarea de resolver las consultas que serán realizadas por la PDN a través del API.
+                                    <b>Diseño de arquitectura:</b> Se deberá evaluar las capacidades del sistema de información o base de datos de Servidores
+                                    Públicos que Intervienen en Contrataciones, a fin de diagnosticar su capacidad para soportar la carga de trabajo actual y al mismo tiempo la tarea de resolver las consultas que serán realizadas por la PDN a través del API.
                                     <br/>
                                     En el caso de contar con gran cantidad de usuarios y como medida de seguridad, se recomienda implementar alguna solución de replicación de la información en el sistema de base de datos; de tal manera que se divida la carga de trabajo en dos o más bases de datos.
                                 </Typography>
                             </li>
                             <li><Typography paragraph>
-                                <b>Desarrollo:</b> El desarrollo del API de declaraciones podrá realizarse en el lenguaje de programación que se considere más apropiado con apego a las especificaciones que se proporcionan en las siguientes secciones de la presente guía. Dichas especificaciones son agnósticas a la tecnología, es decir, el resultado de la comunicación deberá ser el mismo, siempre que se respeten las reglas, formatos de datos y la sintaxis de los mensajes.
+                                <b>Desarrollo:</b> El desarrollo del API de Servidores Públicos que Intervienen en Contrataciones podrá realizarse en el lenguaje de programación que se considere más apropiado con apego a las especificaciones que se proporcionan en las siguientes secciones de la presente guía. Dichas especificaciones son agnósticas a la tecnología, es decir, el resultado de la comunicación deberá ser el mismo, siempre que se respeten las reglas, formatos de datos y la sintaxis de los mensajes.
                             </Typography>
                             </li>
                         </ul>
@@ -61,7 +64,9 @@ class Implementacion extends React.Component{
                             Modelo de comunicación
                         </Typography>
                         <Typography paragraph>
-                            A través de la de la PDN, los usuarios serán capaces de realizar consultas a las APIs de las Instituciones, dichas consultas se configurarán usando parámetros (Ver la sección Parámetros de consulta). La Figura 1 muestra un diagrama en el cual se ejemplifica la comunicación entre el API de declaraciones de una Institución y la PDN. El API tendrá la tarea de recibir la consulta y aplicar la lógica de negocio al interior de la institución para generar la respuesta correspondiente. Dicha respuesta deberá estar apegada al estándar de declaraciones proporcionado que se proporciona en la siguiente sección.
+                            A través de la de la PDN, los usuarios serán capaces de realizar consultas a las APIs de las Instituciones, dichas consultas se configurarán usando parámetros (Ver la sección Parámetros de consulta). La Figura 1 muestra un diagrama en el cual se ejemplifica la comunicación entre el API de Servidores
+                            Públicos que Intervienen en Contrataciones de una Institución y la PDN. El API tendrá la tarea de recibir la consulta y aplicar la lógica de negocio al interior de la institución para generar la respuesta correspondiente. Dicha respuesta deberá estar apegada al estándar de Datos de Servidores
+                            Públicos que Intervienen en Contrataciones que se proporciona en la siguiente sección.
                         </Typography>
                         <img src={Diagrama} alt="Comunicación" className={classes.diagrama}/>
                         <Typography paragraph>
