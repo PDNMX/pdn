@@ -104,12 +104,13 @@ class TemporaryDrawer extends React.Component {
                 <Grid container spacing={0} justify='center' style={{background: "#fff"}}>
                     <Grid item xs={12} className={classes.item}>
 
+                        {/*
                         <p>
                             <Button onClick={this.toggleDrawer('left', true)}>Open Left</Button>
                             <Button onClick={this.toggleDrawer('right', true)}>Open Right</Button>
                             <Button onClick={this.toggleDrawer('top', true)}>Open Top</Button>
                             <Button onClick={this.toggleDrawer('bottom', true)}>Open Bottom</Button>
-                        </p>
+                        </p>*/}
 
 
                         <div id="estandar">
@@ -159,6 +160,7 @@ class TemporaryDrawer extends React.Component {
                         <Herramientas/>
 
 
+                        {/*
                         <Drawer open={this.state.left} onClose={this.toggleDrawer('left', false)}>
                             <div
                                 tabIndex={0}
@@ -202,7 +204,7 @@ class TemporaryDrawer extends React.Component {
                             >
                                 {sideList}
                             </div>
-                        </Drawer>
+                        </Drawer>*/}
 
                     </Grid>
                 </Grid>
