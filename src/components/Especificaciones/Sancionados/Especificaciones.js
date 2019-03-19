@@ -79,7 +79,7 @@ class Especificaciones extends React.Component {
                 </Typography>
 
                 <Typography paragraph>
-                    Esta sección contiene la especificación completa del API de declaraciones en el formato OAS. La especificación puede ser interpretada usando las herramientas compatibles con el OAS o <Link href="https://swagger.io/tools/">Swagger</Link>.
+                    Esta sección contiene la especificación completa del API de Servidores Públicos y Particulares Sancionados en el formato OAS. La especificación puede ser interpretada usando las herramientas compatibles con el OAS o <Link href="https://swagger.io/tools/">Swagger</Link>.
                 </Typography>
 
                 <Typography variant='h6' paragraph>

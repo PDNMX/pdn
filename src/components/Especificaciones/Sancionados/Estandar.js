@@ -25,7 +25,7 @@ class Estandar extends React.Component {
             <div className={classes.root}>
                 <Typography variant="h4" paragraph>Servidores públicos y particulares sancionados</Typography>
                 <Typography paragraph>
-                    Esta guía tiene como finalidad la descripción del Estándar para la Interoperabilidad de Datos de Declaraciones,
+                    Esta guía tiene como finalidad la descripción del Estándar para la Interoperabilidad de Datos de Servidores Públicos y Particulares Sancionados,
                     desarrollado por la Secretaría Ejecutiva del Sistema Nacional Anticorrupción (SESNA).
                     Se presenta el modelo de interoperabilidad que deberán adoptar los diversos sistemas de declaraciones que proveerán
                     información a la Plataforma Digital Nacional (PDN) y
@@ -71,14 +71,13 @@ class Estandar extends React.Component {
                 </Typography>
 
                 <Typography paragraph>
-                    En la actualidad, la información de declaraciones de los servidores públicos de los diferentes
+                    En la actualidad, la información de los servidores públicos y particulares sancionados de los diferentes
                     niveles de gobierno se encuentra contenida en diversos formatos,
                     bases de datos y sistemas de información; cada uno de ellos con particularidades tecnológicas y
                     reglas de negocio distintas, dificultando la integración y la
-                    interoperabilidad de los datos. El Estándar para la Interoperabilidad de Datos de Declaraciones surge
+                    interoperabilidad de los datos. El Estándar para la Interoperabilidad de Datos de Servidores Públicos y Particulares Sancionados surge
                     a partir de la necesidad de distribuir, comparar y analizar
-                    la información
-                    de las declaraciones de situación patrimonial y de intereses de una manera uniforme e interoperable.
+                    la información de una manera uniforme e interoperable.
                 </Typography>
 
                 <Typography paragraph>
@@ -113,7 +112,7 @@ class Estandar extends React.Component {
                     Open API Specification
                 </Typography>
                 <Typography paragraph>
-                    El Estándar para la Interoperabilidad de Datos de Declaraciones está basado en el formato conocido como Open API Specification (OAS),
+                    El Estándar para la Interoperabilidad de Datos de Servidores Públicos y Particulares Sancionados está basado en el formato conocido como Open API Specification (OAS),
                     el cual es un formato de especificación que permite describir de manera precisa las características con las que deberan
                     contar las APIs que integrarán a la PDN.
                     El OAS cuenta con capacidades para describir los recursos, operaciones, parámetros y estructuras de datos
