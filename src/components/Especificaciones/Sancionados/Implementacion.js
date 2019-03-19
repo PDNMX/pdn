@@ -37,7 +37,7 @@ class Implementacion extends React.Component{
                         <ul>
                             <li>
                                 <Typography paragraph>
-                                    <b>Diagnóstico:</b> Revisar y comparar los datos contenidos en su base de datos con los especificados en la publicación del Formato de datos de Servidores Públicos y Particulares Sancionados en el Diario Oficial de la Federación, es importante contar con todos los datos solicitados en el nuevo formato, sin embargo, esto no imposibilita realizar pruebas de adopción del estándar usando los datos con los que se cuenta.
+                                    <b>Diagnóstico:</b> Revisar y comparar los datos contenidos en su base de datos con los especificados en la publicación del Formato de datos de Servidores Públicos y Particulares Sancionados realizada por la SESNA, es importante contar con todos los datos solicitados en el nuevo formato, sin embargo, esto no imposibilita realizar pruebas de adopción del estándar usando los datos con los que se cuenta.
                                 </Typography>
                             </li>
                             <li>

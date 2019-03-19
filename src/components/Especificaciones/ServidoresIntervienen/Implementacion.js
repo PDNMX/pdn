@@ -39,8 +39,7 @@ class Implementacion extends React.Component{
                             <li>
                                 <Typography paragraph>
                                     <b>Diagnóstico:</b> Revisar y comparar los datos contenidos en su base de datos con
-                                    los especificados en la publicación del Formato de Datos de Servidores Públicos que Intervienen en Contrataciones en el
-                                    Diario Oficial de la Federación, es importante contar con todos los datos solicitados
+                                    los especificados en la publicación del Formato de Datos de Servidores Públicos que Intervienen en Contrataciones realizada por la SESNA, es importante contar con todos los datos solicitados
                                     en el nuevo formato, sin embargo, esto no imposibilita a las Instituciones para realizar pruebas de adopción del estándar usando los datos con los que se cuenta.
                                 </Typography>
                             </li>
