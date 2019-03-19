@@ -3,6 +3,7 @@ import React from "react";
 import ReactJson from 'react-json-view';
 import rp from "request-promise";
 import {withStyles} from "@material-ui/core/styles";
+import ArrowDropDown from "@material-ui/icons/ArrowDropDown";
 import Link from '@material-ui/core/Link';
 
 const styles = theme => ({
@@ -55,7 +56,7 @@ class Especificaciones extends React.Component {
 
         return (
             <div className={classes.root}>
-                <Typography variant="h5" id="especificaciones" paragraph>
+                <Typography variant="h5" paragraph>
                     Especificaciones
                 </Typography>
 
@@ -65,11 +66,18 @@ class Especificaciones extends React.Component {
                     <Link href="https://swagger.io/tools/">Swagger</Link>.
                 </Typography>
 
+                <Typography paragraph>
+                    Da click sobre el símbolo <ArrowDropDown/> para ver más detalles.
+                </Typography>
                 <ReactJson src={this.state.oas} collapsed={4}/>
 
                 <br/>
-                <Typography variant="h5" id="ejemplos" paragraph>
-                    Ejemplos de respuesta
+                <Typography variant="h5" paragraph>
+                    Ejemplo de respuesta
+                </Typography>
+
+                <Typography paragraph>
+                    Da click sobre el símbolo <ArrowDropDown/> para ver más detalles.
                 </Typography>
 
 

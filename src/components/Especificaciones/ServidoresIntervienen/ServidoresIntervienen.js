@@ -143,13 +143,15 @@ class TemporaryDrawer extends React.Component {
                         </Typography>
 
 
+
                         <TablaParametros/>
+
 
                         <br/>
 
-
-                        <Especificaciones/>
-
+                        <div id="especificaciones">
+                            <Especificaciones/>
+                        </div>
                         
                         <Divider/>
                         <br/>
