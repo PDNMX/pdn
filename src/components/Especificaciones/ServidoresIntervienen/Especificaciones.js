@@ -66,8 +66,8 @@ class Especificaciones extends React.Component {
                 </Typography>
 
                 <Typography paragraph>
-                    Da click sobre el símbolo <ArrowDropDown/> para ver más detalles. Puedes consultar el archivo JSON completo en la siguiente
-                    <a href="https://github.com/PDNMX/api_docs/blob/master/S2/oas/OAS_API_servidores_intervienen_contrataciones.json">URL</a>.
+                    Da click sobre el símbolo <ArrowDropDown/> para ver más detalles. Puedes consultar el archivo JSON completo en la
+                    siguiente <Link href="https://github.com/PDNMX/api_docs/blob/master/S2/oas/OAS_API_servidores_intervienen_contrataciones.json">URL</Link>.
                 </Typography>
                 <ReactJson src={this.state.oas} collapsed={4}/>
 
@@ -78,8 +78,7 @@ class Especificaciones extends React.Component {
 
                 <Typography paragraph>
                     Da click sobre el símbolo <ArrowDropDown/> para ver más detalles.
-                    Puedes consultar el archivo JSON completo en la siguiente
-                    <a href="https://github.com/PDNMX/api_docs/blob/master/S2/Resp_API_servidores_intervienen_contrataciones.json">URL</a>.
+                    Puedes consultar el archivo JSON completo en la siguiente <Link href="https://github.com/PDNMX/api_docs/blob/master/S2/Resp_API_servidores_intervienen_contrataciones.json">URL</Link>.
                 </Typography>
 
 

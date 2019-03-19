@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import Typography from "@material-ui/core/Typography";
 import Diagrama from "../../../assets/Diagrama_de_comunicacion_API.svg";
 import Grid from '@material-ui/core/Grid';
+
+
 const styles = theme =>({
     root: {
         flexGrow: 1
@@ -36,7 +38,9 @@ class Implementacion extends React.Component{
                         <ul>
                             <li>
                                 <Typography paragraph>
+
                                     <b>Diagnóstico:</b> Revisar y comparar los datos contenidos en su base de datos con los especificados en el <a target={'_blank'} href={'https://docs.google.com/spreadsheets/d/1wVaVFEJQloanwasIAASFiKGC8mbNEmeijK0F58PxgCA/edit?usp=sharing'}>Diccionario de Datos del Formato de Datos de Servidores Públicos y Particulares Sancionados</a>, es importante contar con todos los datos solicitados en el nuevo formato, sin embargo, esto no imposibilita realizar pruebas de adopción del estándar usando los datos con los que se cuenta.
+
                                 </Typography>
                             </li>
                             <li>
