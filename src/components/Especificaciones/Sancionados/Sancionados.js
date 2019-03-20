@@ -32,6 +32,10 @@ const styles = theme => ({
         maxWidth: 1200,
         paddingRight: theme.spacing.unit * 2,
         paddingLeft: theme.spacing.unit * 2
+    }, container:{
+        background: "#fff",
+        paddingTop: theme.spacing.unit * 4,
+        paddingBottom: theme.spacing.unit * 4
     }
 });
 
@@ -102,7 +106,7 @@ class TemporaryDrawer extends React.Component {
                 <Header/>
 
 
-                <Grid container spacing={0} justify='center' style={{background: '#fff'}}>
+                <Grid container spacing={0} justify='center' className={classes.container}>
                     <Grid item xs={12} className={classes.item}>
 
                         {/*<p>

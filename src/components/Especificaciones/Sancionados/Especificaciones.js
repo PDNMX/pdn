@@ -88,6 +88,8 @@ class Especificaciones extends React.Component {
                 </Typography>
                 <Typography paragraph>
                     Da click sobre el símbolo <ArrowDropDown/> para ver más detalles.
+                    Puedes consultar el archivo JSON completo en la
+                    siguiente <Link href="https://github.com/PDNMX/api_docs/blob/master/S3/oas/OAS_API_Servidores_Sancionados.json">URL</Link>.
                 </Typography>
                 <ReactJson src={this.state.oas_servidores} collapsed={4}/>
 
@@ -98,6 +100,8 @@ class Especificaciones extends React.Component {
                 </Typography>
                 <Typography paragraph>
                     Da click sobre el símbolo <ArrowDropDown/> para ver más detalles.
+                    Puedes consultar el archivo JSON completo en la
+                    siguiente <Link href="https://github.com/PDNMX/api_docs/blob/master/S3/Resp_API_Servidores_Sancionados.json">URL</Link>.
                 </Typography>
 
                 <ReactJson src={this.state.example_servidores} />
@@ -109,6 +113,8 @@ class Especificaciones extends React.Component {
                 </Typography>
                 <Typography paragraph>
                     Da click sobre el símbolo <ArrowDropDown/> para ver más detalles.
+                    Puedes consultar el archivo JSON completo en la
+                    siguiente <Link href="https://github.com/PDNMX/api_docs/blob/master/S3/oas/OAS_API_Particulares_Sancionados.json">URL</Link>.
                 </Typography>
                 <ReactJson src={this.state.oas_particulares} collapsed={4}/>
 
@@ -119,6 +125,9 @@ class Especificaciones extends React.Component {
                 </Typography>
                 <Typography paragraph>
                     Da click sobre el símbolo <ArrowDropDown/> para ver más detalles.
+                    Puedes consultar el archivo JSON completo en la
+                    siguiente <Link href="https://github.com/PDNMX/api_docs/blob/master/S3/Resp_API_Particulares_Sancionados.json">URL</Link>.
+
                 </Typography>
                 <ReactJson src={this.state.example_particulares} />
             </div>
