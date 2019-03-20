@@ -4,7 +4,7 @@ import ReactJson from 'react-json-view';
 import rp from "request-promise";
 import {withStyles} from "@material-ui/core/styles";
 import Link from '@material-ui/core/Link';
-import ArrowDropDown from "@material-ui/icons/ArrowDropDown";
+import ArrowDropDown from "@material-ui/icons/ArrowRight";
 
 const styles = theme => ({
     root : {
