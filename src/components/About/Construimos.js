@@ -4,7 +4,7 @@ import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 
-import Ejes from '../../assets/about/construye.svg';
+import Ejes from '../../assets/about/ejes.svg';
 
 
 const styles = theme => ({

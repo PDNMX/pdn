@@ -80,7 +80,7 @@ class Header extends React.Component{
 
 
                     <Grid item xs={12} md={7} className={classes.item2} align={isWidthUp('md', this.props.width)? 'left':'center'} >
-                        <Typography variant="h3" paragraph className={classes.whiteText} style={{fontSize: '36px', fontWeight: 300}}>
+                        <Typography variant="h2" paragraph className={classes.whiteText} style={{fontSize: '42px', fontWeight: 300, marginBottom: '30px'}}>
                             ¿Qué es la Plataforma Digital Nacional?
                         </Typography>
                         <Typography className={classes.whiteText} style={{fontSize: '16px',fontWeight: 500, marginBottom: '1.5em'}}>

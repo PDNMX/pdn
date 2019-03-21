@@ -3,7 +3,7 @@ import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
-import Gi from '../../assets/about/interoperabilidad.png';
+import Gi from '../../assets/about/datos_estanadarizados_interporables.svg';
 
 const styles = theme => ({
     root : {
