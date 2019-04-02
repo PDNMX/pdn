@@ -1,38 +1,82 @@
-import rules from "./rbac-rules";
+import * as React from "react";
+import app from "../../config/firebase";
+import BeatLoader from 'react-spinners/BeatLoader';
+import Grid from "@material-ui/core/Grid/Grid";
+import {withStyles} from "@material-ui/core";
 
-const check = (rules, role, action, data) => {
-    const permissions = rules[role];
-    if (!permissions) { //role is not present in the rules
-        return false;
+const styles = theme => ({
+    root: {
+        flexGrow: 1
+    },
+    padre: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh'
     }
+});
 
-    const staticPermissions = permissions.static;
+class Can extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+    };
 
-    if (staticPermissions && staticPermissions.includes(action)) {
-        return true;
-    }
+    componentDidMount() {
+        this.getPermissions();
+    };
 
-    const dynamicPermissions = permissions.dynamic;
-
-    if (dynamicPermissions) {
-        const permissionCondition = dynamicPermissions[action];
-        if (!permissionCondition) {
-            return false;
+    getPermissions() {
+        let uid = app.auth().currentUser ? app.auth().currentUser.uid : null;
+        if (!uid) {
+            this.setState({
+                opc: this.props.no
+            });
+            return true;
         }
-        return permissionCondition(data);
+        let action = this.props.perfom;
+        let db = app.firestore();
+        const settings = {timestampsInSnapshots: true};
+        db.settings(settings);
+        db.collection('/users_pdn').where("uid", "==", uid).get().then((querySnapshot) => {
+            let role = querySnapshot.docs[0].data().rol;
+            db.collection('/roles_rbacrules').where("rol", "==", role).get().then((querySnapshot) => {
+                let permisos = [];
+                querySnapshot.forEach(doc => {
+                    if (doc.data().estatus)
+                        permisos.push(doc.data().permission);
+                });
+                this.setState({
+                    opc: permisos.includes(action) ? this.props.yes : this.props.no
+                });
+            });
+        })
+    };
 
+
+    render() {
+        const {classes} = this.props;
+        return this.state.opc ? this.state.opc() : (
+            <div className={classes.root}>
+                <Grid container>
+                    <Grid item xs={12}>
+                        <div className={classes.padre}>
+                            <BeatLoader
+                                color="#2EB2E7"
+                                loading={true}
+                                size={50}
+                            />
+                        </div>
+                    </Grid>
+                </Grid>
+            </div>
+        )
     }
-    return false;
-};
-
-const Can = props =>
-    check(rules, props.role, props.perfom, props.data)
-        ? props.yes()
-        : props.no();
+}
 
 Can.defaultProps = {
     yes: () => null,
     no: () => null
 };
 
-export default Can;
+export default withStyles(styles)(Can);

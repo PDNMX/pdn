@@ -124,7 +124,8 @@ class App extends React.Component {
                     const settings = {timestampsInSnapshots: true};
                     db.settings(settings);
                     db.collection('/users_pdn').where("uid", "==", resp.user.uid).get().then((querySnapshot) => {
-                        querySnapshot.forEach(doc => {
+                        history.push('/');
+                       /* querySnapshot.forEach(doc => {
                             this.setState({
                                 sesion: {
                                     currentUser: {
@@ -140,12 +141,13 @@ class App extends React.Component {
                                 },
                                 loading: false
                             }, () => {
-                                console.log("Sesion:",this.state.sesion);
                                 this.props.newSesion(this.state.sesion);
                                 localStorage.setItem("sesion", JSON.stringify(this.state.sesion));
+                                sessionStorage.setItem("key",this.state.sesion.currentUser.uid);
                                 history.push('/');
                             })
                         });
+                        */
                     });
 
                 }
@@ -232,7 +234,7 @@ class App extends React.Component {
                             {pndRoutes.map((prop, key) => {
                                     return prop.private ?
                                         <PrivateRoute exact path={prop.path} component={prop.component} key={key}
-                                                      sesion={sesion} perfom={prop.perfom}/> :
+                                                       perfom={prop.perfom}/> :
                                         <Route exact path={prop.path} component={prop.component} key={key}/>;
                                 }
                             )

@@ -163,7 +163,7 @@ class BusquedaParticular extends React.Component {
         };
         rp(options)
             .then(data => {
-                data.map(item => {
+                data.forEach(item=>{
                     aux.push({id: id++, nombre: item.institucion});
                     sug.push({value: item.institucion, label: item.institucion});
                 });

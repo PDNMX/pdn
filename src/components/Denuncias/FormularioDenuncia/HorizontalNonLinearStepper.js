@@ -15,7 +15,6 @@ import rp from 'request-promise';
 import {connect} from 'react-redux';
 import uuidv1 from 'uuid/v1';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import Table from "@material-ui/core/Table/Table";
 
 let datosSolicitante = <DatosSolicitante/>;
 let datosDenuncia = <DatosDenuncia/>;

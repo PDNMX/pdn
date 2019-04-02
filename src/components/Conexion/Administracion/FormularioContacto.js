@@ -10,6 +10,7 @@ import Tooltip from "@material-ui/core/Tooltip/Tooltip";
 import rp from "request-promise";
 import Mensaje from "../../Mensajes/Mensaje";
 import MensajeError from "../../Mensajes/MensajeError";
+import {getCurrentUser} from "../../Seguridad/seguridad";
 
 const styles = theme => ({
     fab: {
@@ -70,20 +71,24 @@ class FormularioContacto extends React.Component {
     };
 
     componentDidMount() {
-        if (!this.props.contacto) {
-            let aux = JSON.parse(localStorage.getItem("sesion"));
-            this.setState({
-                currentUser: aux.currentUser,
-            }, () => {
-                nuevo.dependencia = this.state.currentUser.dependencia
+        let _this = this;
+        getCurrentUser().then((user)=>{
+            _this.setState({
+                currentUser : user,
+            },()=>{
+                if (!this.props.contacto) {
+                    nuevo.dependencia = this.state.currentUser.dependencia
+                }
+                else {
+                    this.setState({
+                        registro: this.props.contacto,
+                        correoOriginal: this.props.contacto.correo,
+                    })
+                }
             });
-        }
-        else {
-            this.setState({
-                registro: this.props.contacto,
-                correoOriginal: this.props.contacto.correo,
-            })
-        }
+        });
+
+
     }
 
     handleChange = name => event => {

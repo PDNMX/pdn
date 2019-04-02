@@ -22,7 +22,7 @@ const styles = theme => ({
         marginRight: theme.spacing.unit,
     },
     formControl: {
-        width : '100%'
+        width: '100%'
     },
     fontLight: {
         color: theme.palette.black.color,
@@ -34,7 +34,7 @@ const styles = theme => ({
     input: {
         color: theme.palette.black.color,
 
-        display : 'contents',
+        display: 'contents',
     },
     '&$focus': {
         color: theme.palette.fontLight.color,
@@ -50,9 +50,9 @@ const styles = theme => ({
     },
     singleValue: {
         color: theme.palette.black.color,
-        width : 'auto',
-        overflow : 'hidden',
-        textOverflow : 'ellipsis'
+        width: 'auto',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis'
     },
     placeholder: {
         fontSize: 16,
@@ -69,13 +69,12 @@ const styles = theme => ({
     labelCustom: {
         color: theme.palette.black.color,
     },
-    centrado:{
+    centrado: {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center'
     }
 });
-
 
 
 function inputComponent({inputRef, ...props}) {
@@ -85,25 +84,25 @@ function inputComponent({inputRef, ...props}) {
 function Control(props) {
     return (
         <TextField
-                       fullWidth
-                       label="INSTITUCIÓN SANCIONADORA"
-                       placeholder={'Selecciona'}
-                       InputProps={{
-                           inputComponent,
-                           inputProps: {
-                               className: props.selectProps.classes.input,
-                               inputRef: props.innerRef,
-                               children: props.children,
-                               ...props.innerProps,
-                               id : 'inputComponentParticular'
-                           },
-                       }}
-                       InputLabelProps={{
-                           className: props.selectProps.classes.labelCustom,
-                           shrink: true,
-                       }}
-                       {...props.selectProps.textFieldProps}
-            />
+            fullWidth
+            label="INSTITUCIÓN SANCIONADORA"
+            placeholder={'Selecciona'}
+            InputProps={{
+                inputComponent,
+                inputProps: {
+                    className: props.selectProps.classes.input,
+                    inputRef: props.innerRef,
+                    children: props.children,
+                    ...props.innerProps,
+                    id: 'inputComponentParticular'
+                },
+            }}
+            InputLabelProps={{
+                className: props.selectProps.classes.labelCustom,
+                shrink: true,
+            }}
+            {...props.selectProps.textFieldProps}
+        />
     );
 }
 
@@ -126,7 +125,8 @@ function Option(props) {
 
 function SingleValue(props) {
     return (
-        <div className={props.selectProps.classes.singleValue} > {!props.data.value?'Selecciona una':''}{props.children} </div>
+        <div
+            className={props.selectProps.classes.singleValue}> {!props.data.value ? 'Selecciona una' : ''}{props.children} </div>
     );
 }
 
@@ -140,10 +140,10 @@ function Menu(props) {
 
 
 const components = {
-    'Control':Control,
-    'Menu':Menu,
-    'Option':Option,
-    'SingleValue':SingleValue
+    'Control': Control,
+    'Menu': Menu,
+    'Option': Option,
+    'SingleValue': SingleValue
 };
 
 
@@ -164,7 +164,7 @@ class BusquedaParticular extends React.Component {
         };
         rp(options)
             .then(data => {
-                data.map(item => {
+                data.forEach(item=>{
                     aux.push({id: id++, nombre: item.institucion});
                     sug.push({value: item.institucion, label: item.institucion});
                 });
@@ -173,16 +173,15 @@ class BusquedaParticular extends React.Component {
             alert("_No se pudo obtener la información");
             console.log(err);
         });
-
-
     }
 
-    limpiarBusqueda = ()=>{
+    limpiarBusqueda = () => {
         this.props.handleCleanAll();
     };
     buscar = () => {
         this.props.handleSearch('FIELD_FILTER');
     };
+
     render() {
         let {classes, handleChangeCampo, nombreParticular, institucion, theme} = this.props;
 
@@ -198,7 +197,7 @@ class BusquedaParticular extends React.Component {
         return (
             <Grid container spacing={32}>
                 <Grid item xs={12}>
-                    <Typography variant="h6"  paragraph>Busca un particular inhabilitado</Typography>
+                    <Typography variant="h6" paragraph>Busca un particular inhabilitado</Typography>
                 </Grid>
                 <Grid item md={6} xs={12}>
                     <FormControl className={classes.formControl}>
@@ -208,7 +207,7 @@ class BusquedaParticular extends React.Component {
                             options={this.state.suggestions}
                             components={components}
                             value={{value: institucion, label: institucion}}
-                            onChange={(e) => handleChangeCampo('institucion',e)}
+                            onChange={(e) => handleChangeCampo('institucion', e)}
                             id="campoSelectInstitucion"
                         />
                     </FormControl>
@@ -219,11 +218,11 @@ class BusquedaParticular extends React.Component {
                             id="search"
                             label="PARTICULARES INHABILITADOS"
                             type="search"
-                            onChange={(e) => handleChangeCampo('nombreParticular',e)}
+                            onChange={(e) => handleChangeCampo('nombreParticular', e)}
                             value={nombreParticular}
-                            InputLabelProps = {{
+                            InputLabelProps={{
                                 className: classes.fontLight,
-                                shrink : true
+                                shrink: true
                             }}
                         />
                     </FormControl>
@@ -234,7 +233,7 @@ class BusquedaParticular extends React.Component {
                     </Tooltip>
                 </Grid>
                 <Grid item xs={11}/>
-                <Grid item xs={12} md={1}  className={classes.centrado}>
+                <Grid item xs={12} md={1} className={classes.centrado}>
                     <Tooltip title={'Limpiar'}>
                         <IconReplay className={classes.fontLight} onClick={this.limpiarBusqueda}/>
                     </Tooltip>

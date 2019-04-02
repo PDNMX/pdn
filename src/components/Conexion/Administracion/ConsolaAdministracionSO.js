@@ -20,6 +20,7 @@ import Logo from "../../../assets/icono-administracion.svg";
 import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
 import {Link} from "react-router-dom";
 import PDNLogo from "../../../assets/PDN.png";
+import {getCurrentUser} from '../../Seguridad/seguridad';
 
 const styles = theme => ({
     root: {
@@ -113,12 +114,24 @@ class ConsolaAdministracionSO extends React.Component {
 
     componentDidMount() {
         //Validar si la conexión esta APROBADA, SI ESTA PENDIENTE SÓLO PODRÁ SUBIR EL OFICIO
+        let _this = this;
+        getCurrentUser().then((user)=>{
+            _this.setState({
+                uid : user.uid,
+            },()=>{
+                this.getEstatusSolicitud(user.uid);
+            });
+        });
+
+
+        /*
         let aux = JSON.parse(localStorage.getItem("sesion"));
         this.setState({
             uid: aux.currentUser.uid,
         }, () => {
             this.getEstatusSolicitud(aux.currentUser.uid);
         });
+        */
     };
 
     getEstatusSolicitud = (uid) => {

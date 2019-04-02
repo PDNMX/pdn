@@ -11,11 +11,11 @@ import rp from "request-promise";
 import HowToReg from '@material-ui/icons/HowToReg';
 import ReportOff from '@material-ui/icons/ReportOff';
 import Create from '@material-ui/icons/Create';
-import axios from "axios";
 import TablePagination from "@material-ui/core/TablePagination/TablePagination";
 import Mensaje from "../../Mensajes/Mensaje";
 import EditarContacto from './EditarContacto';
 import Grid from "@material-ui/core/Grid/Grid";
+import {getCurrentUser} from "../../Seguridad/seguridad";
 
 let counter = 0;
 let createData = (item) => {
@@ -192,13 +192,14 @@ class TablaContactos extends React.Component {
     };
 
     componentDidMount() {
-        let aux = JSON.parse(localStorage.getItem("sesion"));
-        this.setState({
-            currentUser: aux.currentUser,
-        }, () => {
-            this.getContactos('FIELD_FILTER');
+        let _this = this;
+        getCurrentUser().then((user)=>{
+            _this.setState({
+                currentUser : user,
+            },()=>{
+                this.getContactos('FIELD_FILTER');
+            });
         });
-        return null;
     }
 
     componentDidUpdate(prevProps) {
@@ -345,7 +346,7 @@ class TablaContactos extends React.Component {
 
     render() {
         const {classes} = this.props;
-        const {order, orderBy, selected, rowsPerPage, page, filterData, totalRows, filterDataAll} = this.state;
+        const {order, orderBy, selected, rowsPerPage, page, filterData, totalRows} = this.state;
         let index = 0;
         return (
             <div>

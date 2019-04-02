@@ -169,7 +169,7 @@ class BusquedaServidor extends React.Component {
         };
         rp(options)
             .then(data => {
-                data.map(item => {
+                data.forEach(item =>{
                     sug.push({value: item.dependencia, label: item.dependencia});
                 });
                 this.setState({suggestions: sug});

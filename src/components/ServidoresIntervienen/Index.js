@@ -3,7 +3,6 @@ import {withStyles} from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
 import Footer from '../Home/Footer';
-//import PDNAppBar from "../PDNAppBar/PDNAppBar";
 import TablaServidores from "./TablaServidores";
 import TablaParticulares from "./TablaParticulares";
 import Grid from "@material-ui/core/Grid/Grid";
@@ -11,7 +10,6 @@ import img1 from "../../assets/img/servidores_intervienen_contratacion.svg";
 import img2 from "../../assets/img/servidores_particulares_inhabilitados.svg";
 import img3 from "../../assets/img/servidores_visualizaciones.svg";
 import BubbleHolder_Servidores_Contrataciones from "./BubbleHolder_Servidores_Contrataciones";
-//import imgBanner from '../../assets/banners/FOTO_BANNER_1.jpg';
 import Header from './Header/Header';
 import './s2.css';
 import classNames from 'classnames';

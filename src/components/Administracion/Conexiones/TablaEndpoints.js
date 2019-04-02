@@ -12,8 +12,6 @@ import rp from "request-promise";
 import Mensaje from "../../Mensajes/Mensaje";
 import TablePagination from "@material-ui/core/TablePagination/TablePagination";
 import Grid from "@material-ui/core/Grid/Grid";
-import Modal from "@material-ui/core/Modal/Modal";
-import EditarEndpoint from "../../Conexion/Administracion/EditarEndpoint";
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputLabel from "@material-ui/core/InputLabel/InputLabel";
@@ -21,16 +19,6 @@ import Button from "@material-ui/core/Button/Button";
 import Dialog from "@material-ui/core/Dialog/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent/DialogContent";
-
-function getModalStyle() {
-    const top = 50;
-    const left = 50;
-    return {
-        top: `${top}%`,
-        left: `${left}%`,
-        transform: `translate(-${top}%, -${left}%)`,
-    };
-};
 
 let counter = 0;
 let createData = (item) => {

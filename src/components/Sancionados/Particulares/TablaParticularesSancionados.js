@@ -17,7 +17,6 @@ import Grid from "@material-ui/core/Grid/Grid";
 import EnhancedTableHead from '../../Tablas/EnhancedTableHead';
 import Typography from "@material-ui/core/Typography/Typography";
 import Modal from "@material-ui/core/Modal/Modal";
-import BusquedaServidor from "../../ServidoresIntervienen/BusquedaServidor";
 
 let counter = 0;
 

@@ -13,10 +13,9 @@ import app from "../../config/firebase";
 
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-//import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuIcon from '@material-ui/icons/Menu';
 import Grid from '@material-ui/core/Grid';
-
+import {getPermisos, haySesion} from '../Seguridad/seguridad';
 
 const styles = theme => ({
     root: {
@@ -44,22 +43,33 @@ const styles = theme => ({
     }
 });
 
+
 class VideoAppBar extends React.Component {
-
-    state = {
-        //open: false,
-        currentUser: null,
-        loading: false,
-        authenticated: false,
-
-        //auth: true,
-        anchorEl: null
-    };
-
     constructor(props){
         super(props);
+        this.state = {
+            currentUser: null,
+            loading: false,
+            authenticated: false,
+            anchorEl: null,
+            permisos:[],
+            haySesion : false,
+        };
     };
 
+
+    componentDidMount(){
+        let _this = this;
+        let x = getPermisos();
+        haySesion().then((value)=>{
+            _this.setState({
+                haySesion: value
+            })
+        });
+        this.setState({
+            permisos :x,
+        });
+    };
     /*
     handleClickOpen = () => {
         this.setState({open: true});
@@ -71,19 +81,13 @@ class VideoAppBar extends React.Component {
     */
 
     handleSignOut = () => {
+        let _this = this;
         app.auth().signOut().then(() => {
-            let aux = {};
-            localStorage.setItem("sesion",JSON.stringify(aux));
-            this.props.history.push("/");
-            this.props.removeSesion();
+            this.props.history.push("/login");
         }).catch(e => {
             alert(e);
         })
     };
-
-
-
-    //menu
 
     handleChange = event => {
         this.setState({ auth: event.target.checked });
@@ -103,7 +107,6 @@ class VideoAppBar extends React.Component {
 
         const { anchorEl } = this.state;
         const open = Boolean(anchorEl);
-
         return (
             <div className={classes.root}>
                 <AppBar position="static" style={{
@@ -158,16 +161,21 @@ class VideoAppBar extends React.Component {
                                         <MenuItem component={Link} to="/about">¿Qué es la PDN?</MenuItem>
                                         <MenuItem component={Link} to="/terminos">Términos de uso</MenuItem>
                                         {
-                                            this.props.sesion && this.props.sesion.currentUser && this.props.sesion.currentUser.rol ==='SUJETO_OBLIGADO' &&
+
+                                            this.state.permisos.includes('admon-conexion-so:visit') &&
                                             <MenuItem component={Link} to={"/consolaAdmonSO"}>Administrar conexión</MenuItem>
                                         }
                                         {
-                                            this.props.sesion && this.props.sesion.currentUser && this.props.sesion.currentUser.rol ==='ADMIN_PDN' &&
+                                            this.state.permisos.includes('admon-pdn-page:visit') &&
                                             <MenuItem component={Link} to={"/administracionPDN"}>Administrar PDN</MenuItem>
                                         }
                                         {
-                                            this.props.sesion &&  this.props.sesion.authenticated &&
+                                            this.state.haySesion===true &&
                                             <MenuItem onClick={this.handleSignOut}>Cerrar sesión</MenuItem>
+                                        }
+                                        {
+                                            this.state.haySesion===false &&
+                                            <MenuItem component={Link} to={"/login"}>Iniciar sesión</MenuItem>
                                         }
 
                                     </Menu>

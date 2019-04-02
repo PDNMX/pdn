@@ -14,6 +14,7 @@ import rp from "request-promise";
 import Mensaje from "../../Mensajes/Mensaje";
 import MensajeError from "../../Mensajes/MensajeError";
 import Save from '@material-ui/icons/Save';
+import {getCurrentUser} from "../../Seguridad/seguridad";
 
 const styles = theme => ({
     root: {
@@ -28,8 +29,8 @@ const styles = theme => ({
     },
     mensajeError: {
         color: 'red',
-        display : 'inline',
-        marginRight : theme.spacing.unit *2,
+        display: 'inline',
+        marginRight: theme.spacing.unit * 2,
     },
     fab: {
         [theme.breakpoints.up('sm')]: {
@@ -43,12 +44,12 @@ const styles = theme => ({
     }
 });
 
- let nuevo = {
-     url : '',
-     metodo : '',
-     sistema : '',
-     descripcion : ''
- };
+let nuevo = {
+    url: '',
+    metodo: '',
+    sistema: '',
+    descripcion: ''
+};
 
 class FormularioEndpoint extends React.Component {
     state = {
@@ -61,21 +62,24 @@ class FormularioEndpoint extends React.Component {
         flag_msj_error: false,
     };
 
-    componentDidMount(){
-        if(!this.props.endpoint){
-            let aux = JSON.parse(localStorage.getItem("sesion"));
-            this.setState({
-                currentUser : aux.currentUser
-            },()=>{
-                nuevo.dependencia = this.state.currentUser.dependencia
-            })
-        }
-        else{
-            this.setState({
-                endpoint : this.props.endpoint,
-                urlOriginal : this.props.endpoint.url
-            })
-        }
+    componentDidMount() {
+        let _this = this;
+        getCurrentUser().then((user) => {
+            _this.setState({
+                currentUser: user,
+            }, () => {
+                if (!this.props.endpoint) {
+                    nuevo.dependencia = this.state.currentUser.dependencia
+                }
+                else {
+                    this.setState({
+                        endpoint: this.props.endpoint,
+                        urlOriginal: this.props.endpoint.url
+                    })
+                }
+            });
+        });
+
     };
 
     handleChange = name => event => {
@@ -88,8 +92,8 @@ class FormularioEndpoint extends React.Component {
     };
     handleClick = () => {
         let item = this.state.endpoint;
-        console.log("Item: ",item);
-        if (item.url && item.metodo && item.sistema && item.descripcion ){
+        console.log("Item: ", item);
+        if (item.url && item.metodo && item.sistema && item.descripcion) {
             return this.saveRegistro();
         } else {
             this.setState({
@@ -100,10 +104,10 @@ class FormularioEndpoint extends React.Component {
 
     saveRegistro = () => {
         this.setState({
-            endpoint : {
+            endpoint: {
                 ...this.state.endpoint,
-                fecha_registro : new Date(),
-                estatus : 'EN REVISIÓN',
+                fecha_registro: new Date(),
+                estatus: 'EN REVISIÓN',
             }
         });
 
@@ -201,7 +205,7 @@ class FormularioEndpoint extends React.Component {
 
     handleCloseMsj = () => {
         this.setState({flag_msj: false}, () => {
-            if(this.props.closeContainer) this.props.closeContainer();
+            if (this.props.closeContainer) this.props.closeContainer();
         });
     };
     handleCloseMsjError = () => {
@@ -266,7 +270,7 @@ class FormularioEndpoint extends React.Component {
                                    onChange={this.handleChange('descripcion')}
                         />
                     </Grid>
-                    <Grid item xs={12} style={{textAlign:'right'}}>
+                    <Grid item xs={12} style={{textAlign: 'right'}}>
                         <Typography variant={"body1"} className={classes.mensajeError}>{this.state.mensaje}</Typography>
                         {
                             !this.props.endpoint &&

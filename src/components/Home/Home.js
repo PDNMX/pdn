@@ -28,7 +28,7 @@ class Home extends React.Component{
         return(
             <div className={classes.root}>
                 {/*<Header currentUser={this.props.currentUser}/>*/}
-                <Banner currentUser={this.props.currentUser}/>
+                <Banner/>
                 <Grid container spacing={0} justify="center">
                     <Grid item xs={12} className={classes.item}>
                         <Explora/>

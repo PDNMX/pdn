@@ -103,7 +103,6 @@ class PDNAppBar extends React.Component {
         const { anchorEl } = this.state;
         const open = Boolean(anchorEl);
 
-        console.log("Log: ",this.props.sesion);
         return (
             <div className={classes.root}>
                 <AppBar color="default" position="static">
@@ -160,6 +159,7 @@ class PDNAppBar extends React.Component {
                                             this.props.sesion && this.props.sesion.authenticated &&
                                         <MenuItem onClick={this.handleSignOut}>Cerrar sesión</MenuItem>
                                         }
+
                                     </Menu>
                                 </div>
 

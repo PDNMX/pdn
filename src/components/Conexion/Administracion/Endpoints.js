@@ -13,6 +13,7 @@ import Mensaje from "../../Mensajes/Mensaje";
 import EditarEndpoint from "./EditarEndpoint";
 import TablePagination from "@material-ui/core/TablePagination/TablePagination";
 import Grid from "@material-ui/core/Grid/Grid";
+import {getCurrentUser} from "../../Seguridad/seguridad";
 
 let counter = 0;
 let createData = (item) => {
@@ -149,11 +150,13 @@ class Endpoints extends React.Component {
     };
 
     componentDidMount() {
-        let aux = JSON.parse(localStorage.getItem("sesion"));
-        this.setState({
-            currentUser: aux.currentUser,
-        }, () => {
-            this.getEndpoints('FIELD_FILTER');
+        let _this = this;
+        getCurrentUser().then((user)=>{
+            _this.setState({
+                currentUser : user,
+            },()=>{
+                this.getEndpoints('FIELD_FILTER');
+            });
         });
         return null;
     }
@@ -170,7 +173,7 @@ class Endpoints extends React.Component {
         (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? params.limit = this.state.rowsPerPage : null;
         (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? params.offset = (this.state.rowsPerPage * this.state.page) : null;
         params.dependencia = 'eq.' + this.state.currentUser.dependencia;
-        (typeSearch === 'FIELD_FILTER') ? this.getTotalRows(params) : null;
+        if(typeSearch === 'FIELD_FILTER') this.getTotalRows(params);
 
         let options = {
             uri: 'https://plataformadigitalnacional.org/api/apis_conexion',
@@ -293,7 +296,7 @@ class Endpoints extends React.Component {
 
     render() {
         const {classes} = this.props;
-        const {order, orderBy, selected, rowsPerPage, page, filterData, totalRows, filterDataAll, registros} = this.state;
+        const {order, orderBy, selected, rowsPerPage, page, filterData, totalRows} = this.state;
         let index = 0;
         return (
             <div>
