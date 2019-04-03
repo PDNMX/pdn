@@ -11,6 +11,9 @@ import CircularProgress from "@material-ui/core/CircularProgress/CircularProgres
 import Modal from "@material-ui/core/Modal/Modal";
 import Divider from '@material-ui/core/Divider';
 import PDNAppBar from '../PDNAppBar/PDNAppBar';
+import app from "../../config/firebase";
+import {withRouter} from "react-router-dom";
+import {haySesion} from "../Seguridad/seguridad";
 
 const styles = theme => ({
     item: {
@@ -69,9 +72,42 @@ class LoginPDN extends Component {
     }
 
     componentWillMount(){
-        let aux = JSON.parse(localStorage.getItem("sesion"));
-        if(aux)
-            aux.authenticated ? this.props.history.push('/') : null ;
+         haySesion().then(result=>{
+            if(result) this.props.history.push('/')
+         })
+    };
+
+    handleSignIn = (email, pass) => {
+        try {
+            app.auth().signInWithEmailAndPassword(email, pass).then((resp) => {
+                if (!resp.user.emailVerified) {
+                    this.setState(
+                        {
+                            mensaje: 'El correo electrónico no ha sido validado. Revisa tu bandeja de entrada y sigue las instrucciones.'
+                        }, () => {
+                            let user = app.auth().currentUser;
+                            user.sendEmailVerification().then(function () {
+                            }).catch(function (err) {
+                                console.log("Error: ", err);
+                            })
+                        })
+                }
+                else {
+                    this.props.history.push('/');
+                }
+            }).catch(error => {
+                console.log("Error con signInWithEmailAndPassword ", error);
+                this.setState({
+                    mensaje: error.code === 'auth/invalid-email' ? 'El correo electrónico no es válido' : error.code === 'auth/user-disabled' ? 'El usuario ha sido deshabilitado' : error.code === 'auth/user-not-found' ?
+                        'El correo electrónico no esta dado de alta' : 'La contraseña es invalida o la cuenta no tiene una contraseña'
+                })
+            });
+
+        } catch (e) {
+            this.setState({
+                mensaje: e
+            })
+        }
     };
 
     handleChange = name => event => {
@@ -82,7 +118,7 @@ class LoginPDN extends Component {
 
     handleClick = () => {
         this.setState({loading:true},()=>{
-            this.props.handleSignIn(this.state.email, this.state.pass, this.props.history);
+            this.handleSignIn(this.state.email, this.state.pass, this.props.history);
         });
         this.setState({loading:false})
     };
@@ -168,8 +204,8 @@ class LoginPDN extends Component {
                             </Grid>
                             <Grid item xs={12}>
                                 <br/>
-                                {this.props.mensaje &&
-                                <Typography variant={"body1"} className={classes.mensaje}>{'*'+this.props.mensaje}</Typography>
+                                {this.state.mensaje &&
+                                <Typography variant={"body1"} className={classes.mensaje}>{'*'+this.state.mensaje}</Typography>
                                 }
                             </Grid>
                             <Grid item xs={12}/>
@@ -181,4 +217,5 @@ class LoginPDN extends Component {
         );
     }
 }
-export default withStyles(styles)(LoginPDN);
+let previo = withRouter(LoginPDN);
+export default withStyles(styles)(previo);

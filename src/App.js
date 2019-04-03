@@ -98,38 +98,7 @@ class App extends React.Component {
     };
 
 
-    handleSignIn = (email, pass, history) => {
-        try {
-            app.auth().signInWithEmailAndPassword(email, pass).then((resp) => {
-                if (!resp.user.emailVerified) {
-                    this.setState(
-                        {
-                            mensaje: 'El correo electrónico no ha sido validado. Revisa tu bandeja de entrada y sigue las instrucciones.'
-                        }, () => {
-                            let user = app.auth().currentUser;
-                            user.sendEmailVerification().then(function () {
-                            }).catch(function (err) {
-                                console.log("Error: ", err);
-                            })
-                        })
-                }
-                else {
-                    history.push('/');
-                }
-            }).catch(error => {
-                console.log("Error con signInWithEmailAndPassword ", error);
-                this.setState({
-                    mensaje: error.code === 'auth/invalid-email' ? 'El correo electrónico no es válido' : error.code === 'auth/user-disabled' ? 'El usuario ha sido deshabilitado' : error.code === 'auth/user-not-found' ?
-                        'El correo electrónico no esta dado de alta' : 'La contraseña es invalida o la cuenta no tiene una contraseña'
-                })
-            });
 
-        } catch (e) {
-            this.setState({
-                mensaje: e
-            })
-        }
-    };
 
     handleRecovery = (email) => {
         app.auth().sendPasswordResetEmail(email).then(() => {
@@ -159,10 +128,7 @@ class App extends React.Component {
                     <ScrollToTop>
                         <Switch>
                             <Route exact path={'/login'}
-                                   render={(props) => <LoginPDN handleSignIn={this.handleSignIn}
-                                                                handleRecovery={this.handleRecovery}
-                                                                {...props}
-                                                                mensaje={this.state.mensaje}/>}/>
+                                   render={(props) => <LoginPDN />}/>
 
                             {pndRoutes.map((prop, key) => {
                                     return prop.private ?
