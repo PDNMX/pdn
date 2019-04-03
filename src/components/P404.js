@@ -8,6 +8,7 @@ import Footer from './Home/Footer';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 
+
 const styles = theme => ({
     root :{
         flexGrow: 1,
@@ -35,7 +36,6 @@ const styles = theme => ({
 
 class P404 extends React.Component {
     render() {
-
         const { classes } = this.props;
         return (
             <div className={classes.root}>

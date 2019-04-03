@@ -6,14 +6,12 @@ import {createMuiTheme, MuiThemeProvider} from "@material-ui/core/styles";
 import PrivateRoute from "./PrivateRoute";
 import app from "./config/firebase";
 import LoginPDN from "./components/Inicio/LoginPDN";
-import {connect} from 'react-redux';
 import ScrollToTop from './ScrollToTop';
 import ReactGA from 'react-ga';
-//import MensajeError from './components/Mensajes/MensajeError';
 import './components/Utils/Header.css';
 
 const theme = createMuiTheme({
-    typography:{
+    typography: {
         fontFamily: ["Noto Sans SC", '"Helvetica"', '"Arial"', '"sans-serif"'].join(',')
     },
     palette: {
@@ -92,17 +90,13 @@ const p404 = () => {
 class App extends React.Component {
     constructor(props) {
         super(props);
+        this.state={}
     };
 
     componentWillMount() {
-        let aux = JSON.parse(localStorage.getItem("sesion"));
-        this.setState({
-            sesion: aux,
-            loading: false
-        });
-        this.props.newSesion(aux);
         this.initializeReactGA();
     };
+
 
     handleSignIn = (email, pass, history) => {
         try {
@@ -120,64 +114,8 @@ class App extends React.Component {
                         })
                 }
                 else {
-                    let db = app.firestore();
-                    const settings = {timestampsInSnapshots: true};
-                    db.settings(settings);
-                    db.collection('/users_pdn').where("uid", "==", resp.user.uid).get().then((querySnapshot) => {
-                        history.push('/');
-                       /* querySnapshot.forEach(doc => {
-                            this.setState({
-                                sesion: {
-                                    currentUser: {
-                                        nombre: doc.data().nombre,
-                                        apellidoPaterno: doc.data().apellidoPaterno,
-                                        apellidoMaterno: doc.data().apellidoMaterno,
-                                        rol: doc.data().rol,
-                                        email: doc.data().correo,
-                                        uid : doc.data().uid,
-                                        dependencia : doc.data().dependencia,
-                                    },
-                                    authenticated: true,
-                                },
-                                loading: false
-                            }, () => {
-                                this.props.newSesion(this.state.sesion);
-                                localStorage.setItem("sesion", JSON.stringify(this.state.sesion));
-                                sessionStorage.setItem("key",this.state.sesion.currentUser.uid);
-                                history.push('/');
-                            })
-                        });
-                        */
-                    });
-
+                    history.push('/');
                 }
-                /*if (resp.user.uid) {
-                    let db = app.firestore();
-                    const settings = {timestampsInSnapshots: true};
-                    db.settings(settings);
-                    db.collection('/users_demodeclaraciones').where("UID", "==", resp.user.uid).get().then((querySnapshot) => {
-                        querySnapshot.forEach(doc => {
-                            this.setState({
-                                sesion: {
-                                    currentUser: {
-                                        nombre: doc.data().nombre,
-                                        apellidoPaterno: doc.data().apellidoPaterno,
-                                        apellidoMaterno: doc.data().apellidoMaterno,
-                                        profile: doc.data().profile,
-                                        email: resp.user.email,
-                                    },
-                                    authenticated: true,
-                                },
-                                loading: false
-                            }, () => {
-                                this.props.newSesion(this.state.sesion);
-                                localStorage.setItem("sesion", JSON.stringify(this.state.sesion));
-                                history.push('/');
-                            })
-                        });
-                    });
-
-                }*/
             }).catch(error => {
                 console.log("Error con signInWithEmailAndPassword ", error);
                 this.setState({
@@ -215,11 +153,6 @@ class App extends React.Component {
     };
 
     render() {
-        const {sesion, loading} = this.state;
-        if (loading) {
-            return <p>Cargando...</p>;
-        }
-
         return (
             <MuiThemeProvider theme={theme}>
                 <Router basename={process.env.PUBLIC_URL}>
@@ -228,18 +161,18 @@ class App extends React.Component {
                             <Route exact path={'/login'}
                                    render={(props) => <LoginPDN handleSignIn={this.handleSignIn}
                                                                 handleRecovery={this.handleRecovery}
-                                                                propiedades={props}
+                                                                {...props}
                                                                 mensaje={this.state.mensaje}/>}/>
 
                             {pndRoutes.map((prop, key) => {
                                     return prop.private ?
                                         <PrivateRoute exact path={prop.path} component={prop.component} key={key}
-                                                       perfom={prop.perfom}/> :
+                                                      perfom={prop.perfom}/> :
                                         <Route exact path={prop.path} component={prop.component} key={key}/>;
                                 }
                             )
                             }
-                            <Route render={p404}/>
+                            <Route component={p404}/>
                         </Switch>
                     </ScrollToTop>
                 </Router>
@@ -248,20 +181,4 @@ class App extends React.Component {
     }
 }
 
-const mapStateToProps = (state, ownProps) => {
-    let newState = {
-        sesion: state.sesionReducer.sesion
-    };
-    return newState;
-};
-const mapDispatchToProps = (dispatch, ownProps) => ({
-    newSesion: (sesion) => dispatch({type: 'SET_SESION', sesion}),
-});
-
-let previo = App;
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(previo)
-
-//export default App;
+export default App;

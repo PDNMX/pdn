@@ -10,12 +10,11 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
 import app from "../../config/firebase";
-import {connect} from "react-redux";
-import {withRouter } from 'react-router-dom';
 import MenuIcon from "@material-ui/icons/Menu";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
-//import AccountCircle from '@material-ui/icons/AccountCircle';
+import {getPermisos, haySesion} from "../Seguridad/seguridad";
+import { withRouter } from 'react-router-dom';
 
 const styles = theme => ({
     root: {
@@ -52,13 +51,27 @@ const styles = theme => ({
 class PDNAppBar extends React.Component {
     constructor(props){
         super(props);
+        this.state = {
+            currentUser: null,
+            loading: false,
+            authenticated: false,
+            anchorEl: null,
+            permisos:[],
+            haySesion : false,
+        };
     };
-    state = {
-        open: false,
-        currentUser: null,
-        loading: false,
-        authenticated: false,
-        anchorEl: null
+
+    componentDidMount(){
+        let _this = this;
+        let x = getPermisos();
+        haySesion().then((value)=>{
+            _this.setState({
+                haySesion: value
+            })
+        });
+        this.setState({
+            permisos :x,
+        });
     };
 
     /*
@@ -71,19 +84,13 @@ class PDNAppBar extends React.Component {
     };*/
 
     handleSignOut = () => {
+        let _this = this;
         app.auth().signOut().then(() => {
-            let aux = {};
-            localStorage.setItem("sesion",JSON.stringify(aux));
-            this.props.history.push("/");
-            this.props.removeSesion();
+            _this.props.history.push("/login");
         }).catch(e => {
             alert(e);
         })
     };
-
-
-
-    //menu
 
     handleChange = event => {
         this.setState({ auth: event.target.checked });
@@ -98,7 +105,6 @@ class PDNAppBar extends React.Component {
     };
 
     render() {
-
         const {classes} = this.props;
         const { anchorEl } = this.state;
         const open = Boolean(anchorEl);
@@ -148,18 +154,21 @@ class PDNAppBar extends React.Component {
                                         <MenuItem component={Link} to="/about">¿Qué es la PDN?</MenuItem>
                                         <MenuItem component={Link} to="/terminos">Términos de uso</MenuItem>
                                         {
-                                            this.props.sesion && this.props.sesion.currentUser && this.props.sesion.currentUser.rol ==='SUJETO_OBLIGADO' &&
+                                            this.state.permisos.includes('admon-conexion-so:visit') &&
                                             <MenuItem component={Link} to={"/consolaAdmonSO"}>Administrar conexión</MenuItem>
                                         }
                                         {
-                                            this.props.sesion && this.props.sesion.currentUser && this.props.sesion.currentUser.rol ==='ADMIN_PDN' &&
+                                            this.state.permisos.includes('admon-pdn-page:visit') &&
                                             <MenuItem component={Link} to={"/administracionPDN"}>Administrar PDN</MenuItem>
                                         }
                                         {
-                                            this.props.sesion && this.props.sesion.authenticated &&
-                                        <MenuItem onClick={this.handleSignOut}>Cerrar sesión</MenuItem>
+                                            this.state.haySesion===true &&
+                                            <MenuItem onClick={this.handleSignOut}>Cerrar sesión</MenuItem>
                                         }
-
+                                        {
+                                            this.state.haySesion===false &&
+                                            <MenuItem component={Link} to={"/login"}>Iniciar sesión</MenuItem>
+                                        }
                                     </Menu>
                                 </div>
 
@@ -176,22 +185,5 @@ class PDNAppBar extends React.Component {
 PDNAppBar.propTypes = {
     classes: PropTypes.object.isRequired
 };
-
-
-
-const mapStateToProps = (state, ownProps) => {
-    let newState = {
-        sesion: state.sesionReducer.sesion
-    };
-    return newState;
-};
-const mapDispatchToProps = (dispatch, ownProps) => ({
-    newSesion: (sesion) => dispatch({type: 'SET_SESION', sesion}),
-    removeSesion : () => dispatch({type : 'REMOVE_SESION'}),
-});
-
-let previo =  withStyles(styles)(PDNAppBar);
-export default withRouter(connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(previo));
+let previo = withRouter(PDNAppBar);
+export default withStyles(styles)(previo);

@@ -71,7 +71,7 @@ class LoginPDN extends Component {
     componentWillMount(){
         let aux = JSON.parse(localStorage.getItem("sesion"));
         if(aux)
-            aux.authenticated ? this.props.propiedades.history.push('/') : null ;
+            aux.authenticated ? this.props.history.push('/') : null ;
     };
 
     handleChange = name => event => {
@@ -82,7 +82,7 @@ class LoginPDN extends Component {
 
     handleClick = () => {
         this.setState({loading:true},()=>{
-            this.props.handleSignIn(this.state.email, this.state.pass, this.props.propiedades.history);
+            this.props.handleSignIn(this.state.email, this.state.pass, this.props.history);
         });
         this.setState({loading:false})
     };
@@ -181,5 +181,4 @@ class LoginPDN extends Component {
         );
     }
 }
-
 export default withStyles(styles)(LoginPDN);

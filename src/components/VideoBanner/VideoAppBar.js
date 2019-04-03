@@ -6,16 +6,15 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-import {Link, withRouter} from "react-router-dom";
+import {Link} from "react-router-dom";
 import imgHeader from "../../assets/PDN-sintexto-blue.png";
-import {connect} from 'react-redux';
 import app from "../../config/firebase";
-
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import Grid from '@material-ui/core/Grid';
 import {getPermisos, haySesion} from '../Seguridad/seguridad';
+import {withRouter} from 'react-router-dom';
 
 const styles = theme => ({
     root: {
@@ -81,7 +80,6 @@ class VideoAppBar extends React.Component {
     */
 
     handleSignOut = () => {
-        let _this = this;
         app.auth().signOut().then(() => {
             this.props.history.push("/login");
         }).catch(e => {
@@ -118,18 +116,12 @@ class VideoAppBar extends React.Component {
                     <Grid container spacing={0} justify="center">
                         <Grid item xs={12} className={classes.item}>
                             <Toolbar>
-
                                 <IconButton color="inherit" aria-label="Menu" component={Link} to="/" style={{ marginTop: '28px'}}>
                                     <img src={imgHeader} alt="PDN" style={{height: '40px'}}/>
                                 </IconButton>
-
                                 <Typography variant="h6" color="inherit" className={classes.grow}>
-
                                 </Typography>
-
-
-
-                                <div>
+                                 <div>
                                     <IconButton
                                         aria-owns={open ? 'menu-appbar' : undefined}
                                         aria-haspopup="true"
@@ -152,7 +144,6 @@ class VideoAppBar extends React.Component {
                                         open={open}
                                         onClose={this.handleClose}
                                     >
-
                                         <MenuItem component={Button}
                                                   href= "https://www.plataformadigitalnacional.org/blog"
                                                   className={classes.blog}
@@ -161,7 +152,6 @@ class VideoAppBar extends React.Component {
                                         <MenuItem component={Link} to="/about">¿Qué es la PDN?</MenuItem>
                                         <MenuItem component={Link} to="/terminos">Términos de uso</MenuItem>
                                         {
-
                                             this.state.permisos.includes('admon-conexion-so:visit') &&
                                             <MenuItem component={Link} to={"/consolaAdmonSO"}>Administrar conexión</MenuItem>
                                         }
@@ -177,11 +167,8 @@ class VideoAppBar extends React.Component {
                                             this.state.haySesion===false &&
                                             <MenuItem component={Link} to={"/login"}>Iniciar sesión</MenuItem>
                                         }
-
                                     </Menu>
                                 </div>
-
-
                             </Toolbar>
                         </Grid>
                     </Grid>
@@ -195,20 +182,5 @@ VideoAppBar.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state, ownProps) => {
-    return {
-        sesion: state.sesionReducer.sesion
-    };
-};
-
-const mapDispatchToProps = (dispatch, ownProps) => ({
-    newSesion: (sesion) => dispatch({type: 'SET_SESION', sesion}),
-    removeSesion : () => dispatch({type : 'REMOVE_SESION'}),
-});
-
-let previo =  withStyles(styles)(VideoAppBar);
-
-export default withRouter(connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(previo));
+let previo = withRouter(VideoAppBar);
+export default  withStyles(styles)(previo);
