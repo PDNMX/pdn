@@ -97,9 +97,6 @@ class App extends React.Component {
         this.initializeReactGA();
     };
 
-
-
-
     handleRecovery = (email) => {
         app.auth().sendPasswordResetEmail(email).then(() => {
             this.setState({

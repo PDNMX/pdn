@@ -49,7 +49,7 @@ class Participa extends React.Component {
         if (!this.state.comentario) return;
         let comentario = {
             nombre: this.state.nombre,
-            correo: this.props.sesion.currentUser.email,
+            correo:  'test',//this.props.sesion.currentUser.email,
             fecha: new Date(),
             telefono: this.state.telefono,
             comentario: this.state.comentario,
@@ -82,7 +82,7 @@ class Participa extends React.Component {
                 <Grid container justify={"center"}>
                     <Grid item xs={11}/>
                     <Grid item xs={1}>
-                        <Button variant="flat" color="primary" className={classes.close}
+                        <Button variant="text" color="primary" className={classes.close}
                                 onClick={() => this.props.onClose()}>
                             X
                         </Button>
@@ -115,19 +115,6 @@ class Participa extends React.Component {
     }
 }
 
-const mapStateToProps = (state, ownProps) => {
-    let sessionR = {
-        sesion: state.sesionReducer.sesion
-    };
-    return sessionR;
-};
-const mapDispatchToProps = (dispatch, ownProps) => ({
-    newSesion: (sesion) => dispatch({type: 'SET_SESION', sesion}),
-});
 
-let previo = withStyles(styles)(Participa);
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(previo)
+export default withStyles(styles)(Participa)
 

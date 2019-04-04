@@ -122,16 +122,6 @@ class ConsolaAdministracionSO extends React.Component {
                 this.getEstatusSolicitud(user.uid);
             });
         });
-
-
-        /*
-        let aux = JSON.parse(localStorage.getItem("sesion"));
-        this.setState({
-            uid: aux.currentUser.uid,
-        }, () => {
-            this.getEstatusSolicitud(aux.currentUser.uid);
-        });
-        */
     };
 
     getEstatusSolicitud = (uid) => {
