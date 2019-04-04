@@ -151,6 +151,7 @@ class VideoAppBar extends React.Component {
                                         <MenuItem component={Link} to="/faq">Preguntas frecuentes</MenuItem>
                                         <MenuItem component={Link} to="/about">¿Qué es la PDN?</MenuItem>
                                         <MenuItem component={Link} to="/terminos">Términos de uso</MenuItem>
+                                        <MenuItem component={Link} to="/especificaciones">Especificaciones</MenuItem>
                                         {
                                             this.state.permisos.includes('admon-conexion-so:visit') &&
                                             <MenuItem component={Link} to={"/consolaAdmonSO"}>Administrar conexión</MenuItem>

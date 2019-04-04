@@ -20,7 +20,7 @@ import Consulta from '../components/Administracion/Conexiones/ConsultaSolicitude
 import ConsultaConexiones from '../components/Administracion/Conexiones/ConsultaConexiones';
 
 import Especificaciones from '../components/Especificaciones/Landing/Especificaciones';
-import DeclaracionesEspecificaciones from '../components/Especificaciones/Declaraciones/Especificaciones';
+import DeclaracionesEspecificaciones from '../components/Especificaciones/Declaraciones/Declaraciones';
 import EspecificacionesSancionados from "../components/Especificaciones/Sancionados/Sancionados";
 import EspecificacionesServidoresIntervienen from "../components/Especificaciones/ServidoresIntervienen/ServidoresIntervienen";
 
