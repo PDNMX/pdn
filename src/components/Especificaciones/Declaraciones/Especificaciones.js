@@ -5,7 +5,8 @@ import rp from 'request-promise';
 import {withStyles} from '@material-ui/core/styles';
 import ReactJson from 'react-json-view';
 import LinkM from "@material-ui/core/Link";
-import app from "../../../config/firebase";
+import ArrowDropDown from "@material-ui/icons/ArrowRight";
+import Link from "@material-ui/core/Link/Link";
 
 const drawerWidth = 240;
 
@@ -26,7 +27,7 @@ const styles = theme => ({
     },
     content: {
         flexGrow: 1,
-        padding: theme.spacing.unit * 3,
+        // padding: theme.spacing.unit * 3,
     },
     toolbar: theme.mixins.toolbar,
     flex: {
@@ -110,11 +111,7 @@ class ClippedDrawer extends React.Component {
     }
 
     render() {
-
         const {classes} = this.props;
-        const {anchorEl} = this.state;
-        const open = Boolean(anchorEl);
-
         return (
             <div className={classes.root}>
 
@@ -123,7 +120,6 @@ class ClippedDrawer extends React.Component {
             </div>*/}
 
                 <main className={classes.content}>
-
                     <Typography variant="h5" id="especificaciones" paragraph>
                         Especificaciones
                     </Typography>
@@ -133,11 +129,23 @@ class ClippedDrawer extends React.Component {
                         especificación puede ser interpretada usando las herramientas compatibles con el OAS o <LinkM
                         href="https://swagger.io/tools/">Swagger</LinkM>.
                     </Typography>
+                    <Typography paragraph>
+                        Da click sobre el símbolo <ArrowDropDown/> para ver más detalles.
+                        Puedes consultar el archivo JSON completo en la
+                        siguiente <Link
+                        href="https://github.com/PDNMX/api_docs/blob/master/S1/oas/declaraciones.json">URL</Link>.
+                    </Typography>
                     <ReactJson src={this.state.oas} collapsed={4}/>
 
                     <br/>
                     <Typography variant="h5" id="ejemplos" paragraph>
                         Ejemplos de respuesta
+                    </Typography>
+                    <Typography paragraph>
+                        Da click sobre el símbolo <ArrowDropDown/> para ver más detalles.
+                        Puedes consultar el archivo JSON completo en la
+                        siguiente <Link
+                        href="https://github.com/PDNMX/api_docs/blob/master/S1/example.json">URL</Link>.
                     </Typography>
 
                     <p>
