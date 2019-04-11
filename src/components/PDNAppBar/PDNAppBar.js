@@ -15,6 +15,11 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import {getPermisos, haySesion} from "../Seguridad/seguridad";
 import { withRouter } from 'react-router-dom';
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
+import Collapse from "@material-ui/core/Collapse/Collapse";
+import List from "@material-ui/core/List/List";
+import ListItem from "@material-ui/core/ListItem/ListItem";
 
 const styles = theme => ({
     root: {
@@ -58,6 +63,7 @@ class PDNAppBar extends React.Component {
             anchorEl: null,
             permisos:[],
             haySesion : false,
+            open2: false
         };
     };
 
@@ -101,7 +107,13 @@ class PDNAppBar extends React.Component {
     };
 
     handleClose = () => {
-        this.setState({ anchorEl: null });
+        this.setState({ anchorEl: null, open2 : false });
+    };
+
+    handleToggle = () => {
+        this.setState({
+            open2: !this.state.open2,
+        })
     };
 
     render() {
@@ -153,7 +165,24 @@ class PDNAppBar extends React.Component {
                                         <MenuItem component={Link} to="/faq">Preguntas frecuentes</MenuItem>
                                         <MenuItem component={Link} to="/about">¿Qué es la PDN?</MenuItem>
                                         <MenuItem component={Link} to="/terminos">Términos de uso</MenuItem>
-                                        <MenuItem component={Link} to="/especificaciones">Especificaciones</MenuItem>
+                                        {/*<MenuItem component={Link} to="/especificaciones">Especificaciones</MenuItem>*/}
+                                        <MenuItem
+                                            onClick={this.handleToggle}> Especificaciones {this.state.open2 != null ? this.state.open2 ?
+                                            <ExpandLess/> : <ExpandMore/> : null}
+                                        </MenuItem>
+                                        <Collapse in={this.state.open2} timeout="auto" unmountOnExit>
+                                            <List component={"div"}>
+
+                                                <ListItem button component={Link}
+                                                          to={"/declaraciones/especificaciones"}>Sistema 1</ListItem>
+                                                <ListItem button component={Link} to={"/intervienen/especificaciones"}>Sistema
+                                                    2</ListItem>
+                                                <ListItem button component={Link} to={"/sancionados/especificaciones"}>Sistema
+                                                    3</ListItem>
+
+                                            </List>
+
+                                        </Collapse>
                                         {
                                             this.state.permisos.includes('admon-conexion-so:visit') &&
                                             <MenuItem component={Link} to={"/consolaAdmonSO"}>Administrar conexión</MenuItem>
@@ -172,9 +201,7 @@ class PDNAppBar extends React.Component {
                                         }
                                     </Menu>
                                 </div>
-
                             </Toolbar>
-
                         </Grid>
                     </Grid>
                 </AppBar>

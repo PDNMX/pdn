@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -15,6 +15,11 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Grid from '@material-ui/core/Grid';
 import {getPermisos, haySesion} from '../Seguridad/seguridad';
 import {withRouter} from 'react-router-dom';
+import Collapse from "@material-ui/core/Collapse/Collapse";
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
+import List from "@material-ui/core/List/List";
+import ListItem from "@material-ui/core/ListItem/ListItem";
 
 const styles = theme => ({
     root: {
@@ -44,31 +49,33 @@ const styles = theme => ({
 
 
 class VideoAppBar extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             currentUser: null,
             loading: false,
             authenticated: false,
             anchorEl: null,
-            permisos:[],
-            haySesion : false,
+            permisos: [],
+            haySesion: false,
+            open2: false,
         };
     };
 
 
-    componentDidMount(){
+    componentDidMount() {
         let _this = this;
         let x = getPermisos();
-        haySesion().then((value)=>{
+        haySesion().then((value) => {
             _this.setState({
                 haySesion: value
             })
         });
         this.setState({
-            permisos :x,
+            permisos: x,
         });
     };
+
     /*
     handleClickOpen = () => {
         this.setState({open: true});
@@ -88,22 +95,27 @@ class VideoAppBar extends React.Component {
     };
 
     handleChange = event => {
-        this.setState({ auth: event.target.checked });
+        this.setState({auth: event.target.checked});
     };
 
     handleMenu = event => {
-        this.setState({ anchorEl: event.currentTarget });
+        this.setState({anchorEl: event.currentTarget});
     };
 
     handleClose = () => {
-        this.setState({ anchorEl: null });
+        this.setState({anchorEl: null, open2: false});
+    };
+    handleToggle = () => {
+        this.setState({
+            open2: !this.state.open2,
+        })
     };
 
 
-    render(){
+    render() {
         const {classes} = this.props;
 
-        const { anchorEl } = this.state;
+        const {anchorEl, open2} = this.state;
         const open = Boolean(anchorEl);
         return (
             <div className={classes.root}>
@@ -116,19 +128,20 @@ class VideoAppBar extends React.Component {
                     <Grid container spacing={0} justify="center">
                         <Grid item xs={12} className={classes.item}>
                             <Toolbar>
-                                <IconButton color="inherit" aria-label="Menu" component={Link} to="/" style={{ marginTop: '28px'}}>
+                                <IconButton color="inherit" aria-label="Menu" component={Link} to="/"
+                                            style={{marginTop: '28px'}}>
                                     <img src={imgHeader} alt="PDN" style={{height: '40px'}}/>
                                 </IconButton>
                                 <Typography variant="h6" color="inherit" className={classes.grow}>
                                 </Typography>
-                                 <div>
+                                <div>
                                     <IconButton
                                         aria-owns={open ? 'menu-appbar' : undefined}
                                         aria-haspopup="true"
                                         onClick={this.handleMenu}
                                         color="inherit"
                                     >
-                                        <MenuIcon style={{ fill: 'white', fontSize: '36px'}}/>
+                                        <MenuIcon style={{fill: 'white', fontSize: '36px'}}/>
                                     </IconButton>
                                     <Menu
                                         id="menu-appbar"
@@ -145,27 +158,46 @@ class VideoAppBar extends React.Component {
                                         onClose={this.handleClose}
                                     >
                                         <MenuItem component={Button}
-                                                  href= "https://www.plataformadigitalnacional.org/blog"
+                                                  href="https://www.plataformadigitalnacional.org/blog"
                                                   className={classes.blog}
                                         >Blog</MenuItem>
                                         <MenuItem component={Link} to="/faq">Preguntas frecuentes</MenuItem>
                                         <MenuItem component={Link} to="/about">¿Qué es la PDN?</MenuItem>
                                         <MenuItem component={Link} to="/terminos">Términos de uso</MenuItem>
-                                        <MenuItem component={Link} to="/especificaciones">Especificaciones</MenuItem>
+                                        {/*<MenuItem component={Link} to="/especificaciones">Especificaciones</MenuItem>*/}
+                                        <MenuItem
+                                            onClick={this.handleToggle}> Especificaciones {this.state.open2 != null ? this.state.open2 ?
+                                            <ExpandLess/> : <ExpandMore/> : null}
+                                        </MenuItem>
+                                        <Collapse in={this.state.open2} timeout="auto" unmountOnExit>
+                                            <List component={"div"}>
+
+                                                <ListItem button component={Link}
+                                                          to={"/declaraciones/especificaciones"}>Sistema 1</ListItem>
+                                                <ListItem button component={Link} to={"/intervienen/especificaciones"}>Sistema
+                                                    2</ListItem>
+                                                <ListItem button component={Link} to={"/sancionados/especificaciones"}>Sistema
+                                                    3</ListItem>
+
+                                            </List>
+
+                                        </Collapse>
                                         {
                                             this.state.permisos.includes('admon-conexion-so:visit') &&
-                                            <MenuItem component={Link} to={"/consolaAdmonSO"}>Administrar conexión</MenuItem>
+                                            <MenuItem component={Link} to={"/consolaAdmonSO"}>Administrar
+                                                conexión</MenuItem>
                                         }
                                         {
                                             this.state.permisos.includes('admon-pdn-page:visit') &&
-                                            <MenuItem component={Link} to={"/administracionPDN"}>Administrar PDN</MenuItem>
+                                            <MenuItem component={Link} to={"/administracionPDN"}>Administrar
+                                                PDN</MenuItem>
                                         }
                                         {
-                                            this.state.haySesion===true &&
+                                            this.state.haySesion === true &&
                                             <MenuItem onClick={this.handleSignOut}>Cerrar sesión</MenuItem>
                                         }
                                         {
-                                            this.state.haySesion===false &&
+                                            this.state.haySesion === false &&
                                             <MenuItem component={Link} to={"/login"}>Iniciar sesión</MenuItem>
                                         }
                                     </Menu>
@@ -184,4 +216,4 @@ VideoAppBar.propTypes = {
 };
 
 let previo = withRouter(VideoAppBar);
-export default  withStyles(styles)(previo);
+export default withStyles(styles)(previo);
