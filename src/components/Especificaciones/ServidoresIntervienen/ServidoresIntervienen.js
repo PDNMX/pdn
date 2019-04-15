@@ -32,7 +32,7 @@ const styles = theme => ({
     }
 });
 
-class TemporaryDrawer extends React.Component {
+class ServidoresIntervienen extends React.Component {
 
     render() {
         const { classes } = this.props;
@@ -44,8 +44,6 @@ class TemporaryDrawer extends React.Component {
 
                 <Grid container spacing={0} justify='center' className={classes.container}>
                     <Grid item xs={12} className={classes.item}>
-
-
 
                         <div id="estandar">
                             <Estandar/>
@@ -98,8 +96,8 @@ class TemporaryDrawer extends React.Component {
     }
 }
 
-TemporaryDrawer.propTypes = {
+ServidoresIntervienen.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(TemporaryDrawer);
+export default withStyles(styles)(ServidoresIntervienen);

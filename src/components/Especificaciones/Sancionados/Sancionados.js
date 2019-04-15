@@ -31,7 +31,7 @@ const styles = theme => ({
     }
 });
 
-class TemporaryDrawer extends React.Component {
+class Sancionados extends React.Component {
 
     render() {
         const { classes } = this.props;
@@ -68,7 +68,6 @@ class TemporaryDrawer extends React.Component {
                             Parámetros de consulta
                         </Typography>
 
-
                         <TablaParametros/>
 
                         <br/>
@@ -81,7 +80,6 @@ class TemporaryDrawer extends React.Component {
 
                         <Herramientas/>
 
-
                     </Grid>
                 </Grid>
 
@@ -92,8 +90,8 @@ class TemporaryDrawer extends React.Component {
     }
 }
 
-TemporaryDrawer.propTypes = {
+Sancionados.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(TemporaryDrawer);
+export default withStyles(styles)(Sancionados);

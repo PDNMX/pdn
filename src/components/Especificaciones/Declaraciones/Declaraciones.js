@@ -31,7 +31,7 @@ const styles = theme => ({
     }
 });
 
-class TemporaryDrawer extends React.Component {
+class Declaraciones extends React.Component {
     state = {
         top: false,
         left: false,
@@ -105,8 +105,8 @@ class TemporaryDrawer extends React.Component {
     }
 }
 
-TemporaryDrawer.propTypes = {
+Declaraciones.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(TemporaryDrawer);
+export default withStyles(styles)(Declaraciones);
