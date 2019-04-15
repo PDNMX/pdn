@@ -110,11 +110,12 @@ class Estandar extends React.Component {
                     sistemas basados en APIs REST de manera rápida y a un bajo costo.
                 </Typography>
 
-                <Typography variant="h5" id="oas" paragraph>
+                <Typography variant="h5" paragraph>
                     Open API Specification
                 </Typography>
                 <Typography paragraph>
-                    El Estándar para la Interoperabilidad de Datos de Servidores Públicos y Particulares Sancionados está basado en el formato conocido como Open API Specification (OAS),
+                    El Estándar para la Interoperabilidad de Datos de Declaraciones está basado en el formato
+                    conocido como Open API Specification (OAS),
                     el cual es un formato de especificación que permite describir de manera precisa las características con las que deberan
                     contar las APIs que integrarán a la PDN.
                     El OAS cuenta con capacidades para describir los recursos, operaciones, parámetros y estructuras de datos
@@ -128,7 +129,7 @@ class Estandar extends React.Component {
                     <Button variant="contained" className={classes.button} href="https://github.com/OAI/OpenAPI-Specification">Más información</Button>
                 </p>
 
-                <Typography variant="h5" id="oauth" paragraph>
+                <Typography variant="h5"vparagraph>
                     OAuth 2.0
                 </Typography>
                 <Typography paragraph>
