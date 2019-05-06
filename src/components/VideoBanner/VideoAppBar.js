@@ -76,16 +76,6 @@ class VideoAppBar extends React.Component {
         });
     };
 
-    /*
-    handleClickOpen = () => {
-        this.setState({open: true});
-    };
-
-    handleClose = () => {
-        this.setState({open: false});
-    };
-    */
-
     handleSignOut = () => {
         app.auth().signOut().then(() => {
             this.props.history.push("/login");
@@ -105,6 +95,7 @@ class VideoAppBar extends React.Component {
     handleClose = () => {
         this.setState({anchorEl: null, open2: false});
     };
+
     handleToggle = () => {
         this.setState({
             open2: !this.state.open2,
@@ -166,7 +157,7 @@ class VideoAppBar extends React.Component {
                                         <MenuItem component={Link} to="/terminos">Términos de uso</MenuItem>
                                         {/*<MenuItem component={Link} to="/especificaciones">Especificaciones</MenuItem>*/}
                                         <MenuItem
-                                            onClick={this.handleToggle}> Especificaciones {this.state.open2 != null ? this.state.open2 ?
+                                            onClick={this.handleToggle}> Especificaciones {open2 != null ? open2 ?
                                             <ExpandLess/> : <ExpandMore/> : null}
                                         </MenuItem>
                                         <Collapse in={this.state.open2} timeout="auto" unmountOnExit>

@@ -10,7 +10,6 @@ import Contrataciones from '../components/Contrataciones/index';
 import Denuncias from '../components/Denuncias/Index';
 import FormularioDenuncias from '../components/Denuncias/FormularioDenuncia/FormularioDenuncia';
 import FormularioConsula from '../components/Denuncias/ConsultaDenuncia/FormularioConsulta';
-//import DemoDeclaraciones from '../components/DemoDeclaraciones/demo';
 import Conexion from '../components/Conexion/Solicitudes/Conexion';
 import Validador from '../components/Validador/index';
 import ConsolaAdministracionSO from '../components/Conexion/Administracion/ConsolaAdministracionSO';
@@ -85,11 +84,6 @@ const pdnRoutes = [
         component: FormularioConsula,
         private: false
     },
-    /*{
-        path : "/demodeclaraciones",
-        component: DemoDeclaraciones,
-        private: false
-    },*/
     {
         path: "/conexion",
         component : Conexion,

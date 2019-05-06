@@ -6,8 +6,7 @@ import {Link} from 'react-router-dom';
 import PDNLogo from '../../../assets/logo_PDN_2.svg';
 //import PDNAppBar from "../../PDNAppBar/PDNAppBar";
 import Typography from "@material-ui/core/Typography";
-import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
-import classNames from 'classnames';
+import withWidth from '@material-ui/core/withWidth';
 
 const style = theme => ({
         root: {
