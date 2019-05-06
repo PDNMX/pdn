@@ -2,13 +2,12 @@ import React from "react";
 import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from "@material-ui/core/Grid/Grid";
-import Bubbles_SPS from '../../Charts/bubbles/Bubbles_SPS';
+import BubblesSPS from '../../Charts/bubbles/Bubbles_SPS';
 import {createNodes, createNodesGroup} from './utils';
 import rp from "request-promise";
-import {width, height, center, yearCenters} from './bubbles_constants';
+import {width, height, center} from './bubbles_constants';
 import ControlSelect from "./ControlSelect";
 import BubbleChart from "../../Charts/bubbles/BubbleChart";
-import GroupTitle from './GroupTitle';
 import TablaDetalleServidores from "./TablaDetalleServidores";
 import TablaDetalleParticulares from "./TablaDetalleParticulares";
 import TablaDetalle from "./TablaDetalle";
@@ -151,7 +150,7 @@ class BubbleHolder extends React.Component {
                     </Grid>
                     <Grid item xs={12} className={classes.item} style={{overflowX: 'auto', textAlign:'center'}}>
                         <BubbleChart width={width} height={height} id={'bc'} style={{overflowX: 'scroll'}}>
-                            <Bubbles_SPS data={data} forceStrength={0.3} center={center} type={type}
+                            <BubblesSPS data={data} forceStrength={0.3} center={center} type={type}
                                          selectBubble={this.selectBubble}/>
 
                         </BubbleChart>

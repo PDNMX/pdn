@@ -1,11 +1,8 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid/Grid";
-import Typography from "@material-ui/core/Typography";
 import {withStyles} from '@material-ui/core/styles';
-import TextField from "@material-ui/core/TextField/TextField";
 import Button from "@material-ui/core/Button/Button";
 import rp from 'request-promise';
-import connect from "react-redux/es/connect/connect";
 
 const styles = theme => ({
     paper: {
@@ -90,7 +87,7 @@ class Participa extends React.Component {
                 </Grid>
                 <Grid container spacing={32} className={classes.contenedor}>
                     <Grid item xs={12}>
-                        <iframe
+                        <iframe title={'Participa'}
                             src="https://docs.google.com/forms/d/e/1FAIpQLSc14vP4mdWiNLx0TAXMZ_Cizd43CGdhpHruWddyb6fPCJq0zg/viewform?embedded=true"
                             width="700" height="600" frameBorder="0" marginHeight="0" marginWidth="0">Loading...
                         </iframe>

@@ -85,6 +85,7 @@ let loadDependencias = (_this) => {
             data.map(item => {
                 sug.push({id: index, value: item.valor, label: item.valor});
                 index += 1;
+                return true
             });
             _this.setState({dependencias: sug});
         }).catch(err => {
@@ -157,7 +158,7 @@ class FormularioConexion extends React.Component {
     validaR1 = () => {
         let params = {};
         params.correo = 'eq.' + this.state.registro.correo;
-        params.estatus = 'in.' + '("PENDIENTE","APROBADA")';
+        params.estatus = 'in.("PENDIENTE","APROBADA")';
         params.dependencia = 'neq.' + this.state.registro.dependencia;
         let options = {
             uri: 'https://plataformadigitalnacional.org/api/solicitudes_conexion',
@@ -569,9 +570,4 @@ class FormularioConexion extends React.Component {
     }
 }
 
-export default withStyles(styles)
-
-(
-    FormularioConexion
-)
-;
+export default withStyles(styles)(FormularioConexion);

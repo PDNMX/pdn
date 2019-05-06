@@ -4,7 +4,7 @@ import * as d3 from 'd3';
 import {fillColor} from '../../Sancionados/Visualizaciones/utils';
 import tooltip from './Tooltip';
 
-export default class Bubbles_SPS extends React.Component {
+export default class BubblesSPS extends React.Component {
     constructor(props) {
         super(props);
         const {forceStrength, center} = props;
@@ -96,7 +96,7 @@ export default class Bubbles_SPS extends React.Component {
     }
 }
 
-Bubbles_SPS.propTypes = {
+BubblesSPS.propTypes = {
     center: PropTypes.shape({
         x: PropTypes.number.isRequired,
         y: PropTypes.number.isRequired,

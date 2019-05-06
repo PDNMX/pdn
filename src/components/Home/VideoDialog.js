@@ -44,7 +44,7 @@ class VideoDialog extends React.Component {
                         </DialogContentText>
                         */}
 
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/e9zZE5i8Vt4" frameBorder="0"
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/e9zZE5i8Vt4" frameBorder="0" title={'Video'}
                                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullScreen/>
 

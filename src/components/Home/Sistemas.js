@@ -44,7 +44,7 @@ class Sistemas extends React.Component{
                         <a href="https://demospdn.host/declaraciones/" className={ classes.link }>
                             <img src={s1} alt="Sistema 1" className="iconos-sistemas"/>
                             <br/>
-                            <Typography variant="headline" className={classes.text}>
+                            <Typography variant="h5" className={classes.text}>
                                 Declaraciones
                             </Typography>
                         </a>

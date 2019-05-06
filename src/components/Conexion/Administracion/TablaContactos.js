@@ -215,10 +215,10 @@ class TablaContactos extends React.Component {
 
     getContactos = (typeSearch) => {
         let params = {};
-        (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? params.limit = this.state.rowsPerPage : null;
-        (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? params.offset = (this.state.rowsPerPage * this.state.page) : null;
+        if(typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE')  params.limit = this.state.rowsPerPage;
+        if(typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE')  params.offset = (this.state.rowsPerPage * this.state.page);
         params.dependencia = 'eq.' + this.state.currentUser.dependencia;
-        (typeSearch === 'FIELD_FILTER') ? this.getTotalRows(params) : null;
+        if(typeSearch === 'FIELD_FILTER')  this.getTotalRows(params);
 
 
         let options = {

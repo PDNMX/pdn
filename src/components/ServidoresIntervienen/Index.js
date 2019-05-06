@@ -9,7 +9,7 @@ import Grid from "@material-ui/core/Grid/Grid";
 import img1 from "../../assets/img/servidores_intervienen_contratacion.svg";
 import img2 from "../../assets/img/servidores_particulares_inhabilitados.svg";
 import img3 from "../../assets/img/servidores_visualizaciones.svg";
-import BubbleHolder_Servidores_Contrataciones from "./BubbleHolder_Servidores_Contrataciones";
+import BubbleHolderServidoresContrataciones from "./BubbleHolder_Servidores_Contrataciones";
 import Header from './Header/Header';
 import './s2.css';
 import classNames from 'classnames';
@@ -155,7 +155,7 @@ class Index extends React.Component {
                             <TablaParticulares/>
                         }
                         {this.state.idContent === 3 &&
-                            <BubbleHolder_Servidores_Contrataciones/>
+                            <BubbleHolderServidoresContrataciones/>
                         }
                     </Grid>
                 </Grid>

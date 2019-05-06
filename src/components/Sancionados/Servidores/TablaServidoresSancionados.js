@@ -264,11 +264,11 @@ class EnhancedTable extends React.Component {
         let params = {};
 
         if (typeSearch !== 'ALL') {
-            (institucion) ? params.dependencia = 'eq.' + institucion : null;
-            (nombreServidor) ? params.servidor_publico = 'like.*' + nombreServidor.toUpperCase() + '*' : null;
-            (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? params.limit = this.state.rowsPerPage : null;
-            (typeSearch === 'CHANGE_PAGE') ? params.offset = (this.state.rowsPerPage * this.state.page) : null;
-            (typeSearch === 'FIELD_FILTER') ? this.getTotalRows(params) : null;
+            if(institucion)  params.dependencia = 'eq.' + institucion ;
+            if(nombreServidor)  params.servidor_publico = 'like.*' + nombreServidor.toUpperCase() + '*';
+            if(typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE')  params.limit = this.state.rowsPerPage;
+            if(typeSearch === 'CHANGE_PAGE')  params.offset = (this.state.rowsPerPage * this.state.page);
+            if(typeSearch === 'FIELD_FILTER') this.getTotalRows(params);
         }
 
         let options = {

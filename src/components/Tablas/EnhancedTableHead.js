@@ -21,13 +21,13 @@ class EnhancedTableHead extends React.Component {
     };
 
     render() {
-        const {order, orderBy, classes,columnData,acciones} = this.props;
+        const {order, orderBy, classes,columnData} = this.props;
         return (
             <TableHead style={{backgroundColor:'#f5f5f5'}}>
                 <TableRow>
                     {
                         columnData.map(column => {
-                        if (column.mostrar) {
+                         if (column.mostrar) {
                             return (
                                 <TableCell
                                     key={column.id}
@@ -53,6 +53,7 @@ class EnhancedTableHead extends React.Component {
                                 </TableCell>
                             );
                         }
+                        return true;
                     }, this)
                     }
                     {

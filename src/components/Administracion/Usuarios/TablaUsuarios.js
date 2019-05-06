@@ -310,7 +310,7 @@ class TablaUsuarios extends React.Component {
 
     render() {
         const {classes} = this.props;
-        const {order, orderBy, selected, rowsPerPage, page, filterData, totalRows, filterDataAll} = this.state;
+        const {order, orderBy, selected, rowsPerPage, page, filterData, totalRows} = this.state;
         let index = 0;
         return (
             <div>

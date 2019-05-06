@@ -95,9 +95,6 @@ class Conexion extends React.Component {
         conexion : null,
     };
 
-    constructor(props, context) {
-        super(props, context);
-    }
     selectConexion = (conexionSeleccionada)=>{
         this.setState({conexion : conexionSeleccionada});
     };

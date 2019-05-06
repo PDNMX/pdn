@@ -36,7 +36,7 @@ const styles = theme => ({
     }
 });
 
-class BubbleHolder_Servidores_Contrataciones extends React.Component {
+class BubbleHolderServidoresContrataciones extends React.Component {
     state = {
         data: [],
         type: 'servidores',
@@ -92,22 +92,22 @@ class BubbleHolder_Servidores_Contrataciones extends React.Component {
             <div className={classes.root}>
                 <Grid container>
                     <Grid item xs={12}>
-                        <Typography variant={"display1"} className={classes.title} paragraph>
+                        <Typography variant={"h4"} className={classes.title} paragraph>
                             Total de {this.state.type} por institución
                         </Typography>
                         {type === 'servidores' &&
-                        <Typography variant={"subheading"} className={classes.font}>{
+                        <Typography variant={"subtitle1"} className={classes.font}>{
                             '¿Cuáles son las instituciones con más servidores públicos facultados para intervenir en procesos de contratación?'}
                         </Typography>
                         }
 
                         {type === 'sanciones' &&
-                        <Typography variant={"subheading"} className={classes.font}>{
+                        <Typography variant={"subtitle1"} className={classes.font}>{
                             '¿Cuáles son las instituciones con mayor número de sanciones en procesos de contratación?'}
                         </Typography>
                         }
                         {type === 'monto' &&
-                        <Typography variant={"subheading"} className={classes.font}>{
+                        <Typography variant={"subtitle1"} className={classes.font}>{
                             '¿Cuáles son las instituciones con mayor monto impuesto como sanción en procesos de contratación?'}
                         </Typography>
                         }
@@ -132,4 +132,4 @@ class BubbleHolder_Servidores_Contrataciones extends React.Component {
     }
 }
 
-export default withStyles(styles)(BubbleHolder_Servidores_Contrataciones);
+export default withStyles(styles)(BubbleHolderServidoresContrataciones);

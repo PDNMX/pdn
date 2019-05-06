@@ -94,10 +94,6 @@ class Index extends React.Component {
         oficio: null,
     };
 
-    constructor(props, context) {
-        super(props, context);
-    }
-
     render() {
         const {classes} = this.props;
         return (

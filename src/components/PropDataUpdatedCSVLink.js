@@ -2,9 +2,6 @@ import {CSVLink} from "react-csv";
 
 
 class PropDataUpdatedCSVLink extends CSVLink {
-    constructor(props) {
-        super(props);
-    }
 
     componentWillReceiveProps(nextProps) {
         const {data, headers, separator, uFEFF} = nextProps;

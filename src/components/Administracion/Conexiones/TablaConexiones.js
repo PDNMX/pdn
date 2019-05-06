@@ -216,9 +216,9 @@ class TablaSolicitudes extends React.Component {
         let params = {};
         params.estatus = 'in.("APROBADA","REVOCADA","RECHAZADA)';
 
-        (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? params.limit = this.state.rowsPerPage : null;
-        (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? params.offset = (this.state.rowsPerPage * this.state.page) : null;
-        (typeSearch === 'FIELD_FILTER') ? this.getTotalRows(params) : null;
+        if(typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') params.limit = this.state.rowsPerPage;
+        if(typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') params.offset = (this.state.rowsPerPage * this.state.page);
+        if(typeSearch === 'FIELD_FILTER') this.getTotalRows(params);
 
         let options = {
             uri: 'https://plataformadigitalnacional.org/api/solicitudes_conexion',
@@ -356,7 +356,7 @@ class TablaSolicitudes extends React.Component {
 
     render() {
         const {classes} = this.props;
-        const {order, orderBy, selected, rowsPerPage, page, filterData, totalRows, filterDataAll} = this.state;
+        const {order, orderBy, selected, rowsPerPage, page, filterData, totalRows} = this.state;
         let index = 0;
         return (
             <div >

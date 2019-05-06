@@ -4,11 +4,6 @@ import * as d3 from 'd3';
 import dataFile from '../../data/resumenAmount'
 
 class Grafica2 extends React.Component {
-
-    constructor(props) {
-        super(props);
-    }
-
     componentDidMount() {
         this.drawChart();
     }

@@ -96,7 +96,6 @@ class LoginPDN extends Component {
                     this.props.history.push('/');
                 }
             }).catch(error => {
-                console.log("Error con signInWithEmailAndPassword ", error);
                 this.setState({
                     mensaje: error.code === 'auth/invalid-email' ? 'El correo electrónico no es válido' : error.code === 'auth/user-disabled' ? 'El usuario ha sido deshabilitado' : error.code === 'auth/user-not-found' ?
                         'El correo electrónico no esta dado de alta' : 'La contraseña es invalida o la cuenta no tiene una contraseña'
@@ -177,6 +176,7 @@ class LoginPDN extends Component {
                                         value={this.state.pass}
                                         onChange={this.handleChange("pass")}
                                         margin="normal"
+                                        autoComplete={"new-password"}
                                     />
                                 </Grid>
                             </form>

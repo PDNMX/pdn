@@ -209,11 +209,12 @@ class EnhancedTable extends React.Component {
         let URI = 'https://plataformadigitalnacional.org/api/rsps?';
 
         let params = {};
-        inst ? params.dependencia = 'eq.' + inst : null;
-        type === 'ALL' && !inst ? params.dependencia = 'eq.' + this.state.institucion : null;
-        type !== "ALL" ? params.limit = this.state.rowsPerPage : null;
-        type === "CHANGE_PAGE" ? params.offset = (this.state.rowsPerPage * this.state.page) : null;
-        (type !== 'ALL' && type !== "CHANGE_PAGE") ? this.getTotalRows(params) : null;
+        if(inst)  params.dependencia = 'eq.' + inst;
+        if(type === 'ALL' && !inst) params.dependencia = 'eq.' + this.state.institucion;
+        if(type !== "ALL") params.limit = this.state.rowsPerPage;
+        if(type === "CHANGE_PAGE") params.offset = (this.state.rowsPerPage * this.state.page);
+        if(type !== 'ALL' && type !== "CHANGE_PAGE") this.getTotalRows(params);
+
 
         let options = {
             uri: URI,
@@ -225,13 +226,18 @@ class EnhancedTable extends React.Component {
                 let dataAux = data.map(item => {
                     return createData(item);
                 });
-                type === 'ALL' ? this.setState({data: dataAux, loading: false}, () => {
-                    this.btnDownloadAll.triggerDown();
-                }) : (type === 'FIELD_FILTER' || type === 'CHANGE_PAGE') ? this.setState({
-                    filterData: dataAux,
-                    loading: false,
-                    institucion: inst
-                }) : null;
+                if( type === 'ALL' ){
+                    this.setState({data: dataAux, loading: false}, () => {
+                        this.btnDownloadAll.triggerDown();
+                    })
+                }
+                else if(type === 'FIELD_FILTER' || type === 'CHANGE_PAGE'){
+                    this.setState({
+                        filterData: dataAux,
+                        loading: false,
+                        institucion: inst
+                    })
+                }
                 return true;
             })
             .catch(err => {
@@ -243,9 +249,9 @@ class EnhancedTable extends React.Component {
     };
 
     render() {
-        const {classes, institucion} = this.props;
-        const {data, order, orderBy, selected, rowsPerPage, page, filterData, totalRows, filterDataAll} = this.state;
-        const emptyRows = rowsPerPage - filterData.length;
+        const {classes} = this.props;
+        const {data, order, orderBy, selected, rowsPerPage, page, filterData, totalRows} = this.state;
+
         return (
             <div className={classes.container}>
                 <div className={classes.tableWrapper}>

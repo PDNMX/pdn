@@ -258,12 +258,12 @@ class EnhancedTable extends React.Component {
         let {procedimiento, nombreServidor} = this.state;
         let params = {};
 
-        (procedimiento && procedimiento) > 0 ? params.id_procedimiento = 'eq.' + procedimiento : null;
-        inst ? params.institucion = 'eq.' + inst : null;
-        nombreServidor ? params.nombre = 'like.*' + nombreServidor.toUpperCase() + '*' : null;
-        (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? params.limit = this.state.rowsPerPage : null;
-        (typeSearch === 'CHANGE_PAGE') ? params.offset = (this.state.rowsPerPage * this.state.page) : null;
-        (typeSearch === 'FIELD_FILTER') ? this.getTotalRows(params) : null;
+        if(procedimiento && procedimiento > 0)  params.id_procedimiento = 'eq.' + procedimiento;
+        if(inst) params.institucion = 'eq.' + inst;
+        if(nombreServidor) params.nombre = 'like.*' + nombreServidor.toUpperCase() + '*';
+        if(typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE')  params.limit = this.state.rowsPerPage;
+        if(typeSearch === 'CHANGE_PAGE')  params.offset = (this.state.rowsPerPage * this.state.page);
+        if(typeSearch === 'FIELD_FILTER')  this.getTotalRows(params);
 
 
         let options = {
@@ -296,9 +296,9 @@ class EnhancedTable extends React.Component {
     };
 
     render() {
-        const {classes, institucion} = this.props;
-        const {data, order, orderBy, selected, rowsPerPage, page, filterData, totalRows, filterDataAll} = this.state;
-        const emptyRows = rowsPerPage - filterData.length;
+        const {classes} = this.props;
+        const {data, order, orderBy, selected, rowsPerPage, page, filterData, totalRows} = this.state;
+        
         return (
             <div className={classes.container}>
                     <div className={classes.tableWrapper}>

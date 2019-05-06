@@ -51,7 +51,7 @@ class Indicadores extends React.Component {
             <div className={classes.root}>
                 <Header/>
                 <div className={classes.homeBody}>
-                    <iframe src="https://datos.gob.mx/visualizaciones/composicion/presupuestos.html?muestra=td"
+                    <iframe src="https://datos.gob.mx/visualizaciones/composicion/presupuestos.html?muestra=td" title={"Indicadores"}
                             frameBorder="0"
                             scrolling="no"
                             style={{overflow: "hidden", width: "100%", minHeight: "800px"}}/>

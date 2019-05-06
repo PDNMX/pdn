@@ -131,7 +131,7 @@ class PDNAppBar extends React.Component {
                                     <img src={imgHeader} alt="logoPDN" style={{width: '55px'}}/>
 
                                 </IconButton>
-                                <Typography variant="title" color="inherit" className={classes.flex}>
+                                <Typography variant="h6" color="inherit" className={classes.flex}>
 
                                 </Typography>
                                 <div>

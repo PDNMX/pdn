@@ -17,7 +17,6 @@ export function createNodes(rawData, type) {
     // note we have to ensure the total_amount is a number.
     const maxAmount = type === 'sanciones' ? d3.max(rawData, d => +d.sanciones_total) : type === 'monto' ? d3.max(rawData, d => +d.monto_total): d3.max(rawData, d => d.numero_servidores);
     const minAmount = type === 'sanciones' ? d3.min(rawData, d => d.sanciones_total) : type === 'monto' ?  d3.min(rawData, d => d.monto_total): d3.min(rawData, d => d.numero_servidores);
-    const promAmount = type === 'sanciones' ? d3.median(rawData, d => d.sanciones_total) : type === 'monto' ? d3.median(rawData, d => d.monto_total): d3.median(rawData, d=> d.numero_servidores);
 
     let pivote = (maxAmount - minAmount) / 10;
     // Sizes bubbles based on area.

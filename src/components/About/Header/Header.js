@@ -2,14 +2,11 @@ import React from 'react';
 import {withStyles} from "@material-ui/core/styles";
 import Grid from '@material-ui/core/Grid';
 import {Link} from 'react-router-dom';
-//import Typography from "@material-ui/core/Typography";
 import PDNLogo from '../../../assets/logo_PDN_2.svg';
-import S3 from '../../../assets/iconos_azul/3_icono.svg'
-//import PDNAppBar from "../../PDNAppBar/PDNAppBar";
+
 import Typography from "@material-ui/core/Typography";
 import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
 import './Header.css';
-import classNames from 'classnames';
 
 const style = theme => ({
         root: {
