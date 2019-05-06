@@ -7,7 +7,7 @@ import PrivateRoute from "./PrivateRoute";
 import app from "./config/firebase";
 import LoginPDN from "./components/Inicio/LoginPDN";
 import ScrollToTop from './ScrollToTop';
-import ReactGA from 'react-ga';
+//import ReactGA from 'react-ga';
 import './components/Utils/Header.css';
 
 const theme = createMuiTheme({
@@ -95,7 +95,7 @@ class App extends React.Component {
     };
 
     componentWillMount() {
-        this.initializeReactGA();
+        //this.initializeReactGA();
     };
 
     handleRecovery = (email) => {
@@ -112,12 +112,13 @@ class App extends React.Component {
         });
     };
 
+    /*
     initializeReactGA = () => {
         ReactGA.initialize('UA-131031213-1');
         ReactGA.pageview('/');
         ReactGA.pageview('/sancionados');
         ReactGA.pageview('/servidores');
-    };
+    };*/
 
     render() {
         return (

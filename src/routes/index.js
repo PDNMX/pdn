@@ -22,6 +22,7 @@ import Especificaciones from '../components/Especificaciones/Landing/Especificac
 import DeclaracionesEspecificaciones from '../components/Especificaciones/Declaraciones/Declaraciones';
 import EspecificacionesSancionados from "../components/Especificaciones/Sancionados/Sancionados";
 import EspecificacionesServidoresIntervienen from "../components/Especificaciones/ServidoresIntervienen/ServidoresIntervienen";
+import DashboardSancionados from "../components/Sancionados/dashboard/Dashboard";
 
 const pdnRoutes = [
 
@@ -54,6 +55,11 @@ const pdnRoutes = [
         path: "/sancionados",
         component: Sancionados,
         private: false
+    },
+    {
+      path: "/sancionados/dashboard",
+      component: DashboardSancionados,
+      private: false
     },
     {
         path: "/servidores",
