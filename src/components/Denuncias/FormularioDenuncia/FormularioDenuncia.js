@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Header from "../../PDNAppBar/PDNAppBar";
 import Paper from "@material-ui/core/Paper/Paper";
-import HorizontalNonLinearStepper from "./HorizontalNonLinearStepper";
+//import HorizontalNonLinearStepper from "./HorizontalNonLinearStepper";
 
 const styles = theme => ({
     root: {
@@ -50,7 +50,7 @@ class FormularioDenuncia extends React.Component {
                     </Grid>
                     <Grid item xs={12} className={classes.section}>
                         <Paper  className={classes.containerUp} >
-                            <HorizontalNonLinearStepper/>
+                            {/*<HorizontalNonLinearStepper/>*/}
                         </Paper>
                     </Grid>
                 </Grid>
