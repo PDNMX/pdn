@@ -311,7 +311,7 @@ class EnhancedTable extends React.Component {
                             }
                         </Grid>
                         <Grid item xs={12} className={classes.titleTable}>
-                            <Typography variant={'title'} className={classes.title}>
+                            <Typography variant={'h6'} className={classes.title}>
                                 Detalle</Typography>
                         </Grid>
                         <Grid item xs={12} className={classes.section}>

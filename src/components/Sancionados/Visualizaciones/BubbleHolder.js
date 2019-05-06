@@ -119,27 +119,27 @@ class BubbleHolder extends React.Component {
             <div className={classes.root} id={'rootBubble'}>
                 <Grid container>
                     <Grid item xs={12} className={classes.item}>
-                        <Typography variant={"display1"} className={classes.title}>
+                        <Typography variant={"h4"} className={classes.title}>
                             {this.state.type === 1 ? 'SERVIDORES PÚBLICOS SANCIONADOS' : this.state.type === 2 ? 'PARTICULARES SANCIONADOS' : this.state.type === 'sanciones' ? 'PARTICULARES INHABILITADOS' : 'MONTOS DE INHABILITACIONES POR INSTITUCIÓN'}
                         </Typography>
                         <br/>
                         {this.state.type === 1 &&
-                        <Typography variant={"subheading"} className={classes.font}>
+                        <Typography variant={"subtitle1"} className={classes.font}>
                             {'Muestra las dependencias y el número de servidores públicos sancionados que tienen'}
                         </Typography>
                         }
                         {this.state.type === 2 &&
-                        <Typography variant={"subheading"} className={classes.font}>
+                        <Typography variant={"subtitle1"} className={classes.font}>
                             {'Muestra las dependencias y el número de particulares sancionados que tienen'}
                         </Typography>
                         }
                         {type === 'sanciones' &&
-                        <Typography variant={"subheading"} className={classes.font}>{
+                        <Typography variant={"subtitle1"} className={classes.font}>{
                             '¿Cuáles son las instituciones con mayor número de particulares inhabilitados?'}
                         </Typography>
                         }
                         {type === 'monto' &&
-                        <Typography variant={"subheading"} className={classes.font}>{
+                        <Typography variant={"subtitle1"} className={classes.font}>{
                             '¿Cuáles son las instituciones con mayor monto impuesto como sanción de inhabilitación'}
                         </Typography>
                         }

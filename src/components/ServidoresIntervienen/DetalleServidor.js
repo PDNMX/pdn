@@ -143,7 +143,7 @@ class DetalleServidor extends React.Component {
 
                         <Grid container spacing={8} justify="flex-start">
                             <Grid item xs={11}>
-                                <Typography variant="title" className={classes.title}>Ficha del servidor público </Typography>
+                                <Typography variant="h6" className={classes.title}>Ficha del servidor público </Typography>
                             </Grid>
                             <Grid item xs={1}>
                                 <IconButton color="primary" className={classes.button} component="span" onClick={handleClose}>
