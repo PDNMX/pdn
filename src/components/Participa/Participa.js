@@ -1,11 +1,11 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid/Grid";
-import Typography from "@material-ui/core/Typography";
+//import Typography from "@material-ui/core/Typography";
 import {withStyles} from '@material-ui/core/styles';
-import TextField from "@material-ui/core/TextField/TextField";
+//import TextField from "@material-ui/core/TextField/TextField";
 import Button from "@material-ui/core/Button/Button";
 import rp from 'request-promise';
-import connect from "react-redux/es/connect/connect";
+//import connect from "react-redux/es/connect/connect";
 
 const styles = theme => ({
     paper: {
