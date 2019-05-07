@@ -86,7 +86,7 @@ class BubbleHolder extends React.Component{
                             Total de {this.state.type} por institución
                         </Typography>
                         <br/>
-                        <Typography variant={"subheading"} className={classes.font}>{'Muestra las instituciones organizadas por el total de sanciones a particulares o bien por el monto total que han acumulado por las sanciones impuestas'}</Typography>
+                        <Typography variant={"subtitle1"} className={classes.font}>{'Muestra las instituciones organizadas por el total de sanciones a particulares o bien por el monto total que han acumulado por las sanciones impuestas'}</Typography>
                     </Grid>
                 </Grid>
 

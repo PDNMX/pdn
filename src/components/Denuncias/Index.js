@@ -91,7 +91,7 @@ class Index extends React.Component {
                     <Grid container>
                         <Grid item lg={8} md={8} sm={12} className={classes.bgImg}/>
                         <Grid item lg={4} md={4} sm={12} className={classes.container}>
-                            <Typography variant="display1" className={classes.title}>
+                            <Typography variant="h4" className={classes.title}>
                                 Denuncias
                             </Typography>
                             <Typography variant="body1" className={classes.textLight}>
@@ -111,7 +111,7 @@ class Index extends React.Component {
                               <Grid container spacing={32}>
                                     <Grid item md={4} xs={12}>
                                         <CardMedia image={img1} className={classes.image} to="/formDenuncia" component={Link}/>
-                                        <Typography variant="title" className={classes.title}>
+                                        <Typography variant="h6" className={classes.title}>
                                             Presenta tu denuncia
                                         </Typography>
                                         <Typography  className={classes.textPrimary}>
@@ -121,7 +121,7 @@ class Index extends React.Component {
                                     </Grid>
                                     <Grid item md={4} xs={12}>
                                         <CardMedia image={img2} className={classes.image} to="/formConsultaDenuncia" component={Link}/>
-                                        <Typography variant="title" className={classes.title}>
+                                        <Typography variant="h6" className={classes.title}>
                                             Consulta tu folio
                                         </Typography>
                                         <Typography  className={classes.textPrimary} >
@@ -131,7 +131,7 @@ class Index extends React.Component {
                                     </Grid>
                                     <Grid item md={4} xs={12}>
                                         <CardMedia image={img3} className={classes.image} to="/informesDenuncias" component={Link}/>
-                                        <Typography variant="title" className={classes.title}>
+                                        <Typography variant="h6" className={classes.title}>
                                             Informes
                                         </Typography>
                                         <Typography  className={classes.textPrimary}>

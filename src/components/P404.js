@@ -43,8 +43,8 @@ class P404 extends React.Component {
                 <Grid container spacing={0} justify='center'>
                     <Grid item xs={12} className={classes.gridItem}>
                         <Paper className={classes.paper}>
-                            <Typography variant="display1">404 </Typography>
-                            <Typography variant="subheading">No encontramos lo que buscas </Typography>
+                            <Typography variant="h4">404 </Typography>
+                            <Typography variant="subtitle1">No encontramos lo que buscas </Typography>
                             <Button className={classes.button} component={Link} variant="contained" color="primary" to="/">Regresar</Button>
                         </Paper>
                     </Grid>

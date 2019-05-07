@@ -40,7 +40,7 @@ class Datos extends React.Component {
                     <div className={classes.root}>
                         <Grid container spacing={24}>
                             <Grid item xs={12}>
-                                <Typography variant='title'>
+                                <Typography variant='h6'>
                                     Catálogo de datos anticorrupción
                                 </Typography>
 

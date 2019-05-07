@@ -48,7 +48,7 @@ class QueHacemos extends React.Component{
             <div>
 
 
-                <Typography variant="title" className={classes.links}>
+                <Typography variant="h6" className={classes.links}>
                     Conoce lo que estamos haciendo para construir la plataforma
                 </Typography>
 

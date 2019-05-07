@@ -143,7 +143,7 @@ class Terminos extends React.Component{
 
                         </Typography>
 
-                        <Typography variant="title" className="pdn_term_title">
+                        <Typography variant="h6" className="pdn_term_title">
                             Propiedad intelectual
                         </Typography>
 

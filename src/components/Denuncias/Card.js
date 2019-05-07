@@ -66,7 +66,7 @@ function SimpleCard(props) {
                               component={Link}
                               to ={to}
                    />
-                   <Typography  component="p" variant="title" className={classes.textoCentrado}>
+                   <Typography  component="p" variant="h6" className={classes.textoCentrado}>
                        {title}
                    </Typography>
                    <Typography component="p" variant="body1" className={classes.textoCentrado}>

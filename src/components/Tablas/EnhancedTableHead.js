@@ -45,7 +45,7 @@ class EnhancedTableHead extends React.Component {
                                             direction={order}
                                             onClick={this.createSortHandler(column.id)}
                                         >
-                                            <Typography className={classes.tableHead} variant={"body2"}>
+                                            <Typography className={classes.tableHead} variant={"body1"}>
                                                 {column.label}
                                             </Typography>
                                         </TableSortLabel>
@@ -60,7 +60,7 @@ class EnhancedTableHead extends React.Component {
                         this.props.acciones &&
                         <TableCell>
                             {
-                                <Typography className={classes.tableHead} variant={"body2"}>
+                                <Typography className={classes.tableHead} variant={"body1"}>
                                     Acciones
                                 </Typography>
                             }

@@ -17,7 +17,7 @@ class Mensaje extends React.Component{
         return (
             <div>
                 <Paper>
-                    <Typography variant={"title"} className={classes.mensaje}>
+                    <Typography variant={"h6"} className={classes.mensaje}>
                         {mensaje}
                     </Typography>
                 </Paper>

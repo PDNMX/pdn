@@ -17,7 +17,7 @@ class AvisoPrivacidad extends React.Component {
         return(
             <div>
                 <div className={classes.paperSecondary}>
-                    <Typography variant={"title"}>
+                    <Typography variant={"h6"}>
                         Estimado(a) quejoso(a) o denunciante:
                     </Typography>
                     <Typography variant={"body1"}>

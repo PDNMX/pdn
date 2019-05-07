@@ -126,7 +126,7 @@ class FormularioConsulta extends React.Component {
                         <Paper className={classes.seccion}>
                             <Grid container spacing={24}>
                                 <Grid item lg={3} md={3} sm={12}>
-                                    <Typography variant="headline" className={classes.titleBox}>
+                                    <Typography variant="h5" className={classes.titleBox}>
                                         Servicios
                                     </Typography>
                                     <List component="nav">

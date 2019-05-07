@@ -67,7 +67,7 @@ class PDNAppBar extends React.Component {
                                     <IconButton color="inherit" aria-label="Menu" component={Link} to="/">
                                         <img src={imgHeader} alt="logoPDN" style={{width: '110px'}}/>
                                     </IconButton>
-                                    <Typography variant="title" color="inherit" className={classes.flex}>
+                                    <Typography variant="h6" color="inherit" className={classes.flex}>
 
                                     </Typography>
                                     <Avatar src={srcAvatar} />

@@ -63,7 +63,7 @@ class Construimos extends React.Component{
         return (
             <div className={classes.root}>
 
-                <Typography variant="display2" className={classes.links}>
+                <Typography variant="h3" className={classes.links}>
                     ¿Cómo se <b>construye</b> la <b>PDN</b>?
                 </Typography>
 
@@ -71,17 +71,17 @@ class Construimos extends React.Component{
                 <br/>
                 <Grid container spacing={0}>
                     <Grid item xs={12} md={6} className={classes.items} style={{background: '#f2f2f2', padding: '20px 15px'}}>
-                        <Typography variant="title" className={classes.titles }>Principios</Typography>
+                        <Typography variant="h6" className={classes.titles }>Principios</Typography>
                         <ul className={classes.ul}>
-                            <li className={classes.li}><Typography variant="subheading"> <b className={classes.numbering}>1.</b>{/*<span className={classes.bullet}/>*/} Diseño centrado en las usuarias-os y sus necesidades</Typography></li>
-                            <li className={classes.li}><Typography variant="subheading"> <b className={classes.numbering}>2.</b>{/*<span className={classes.bullet}/>*/} Construcción gradual, modular, escalable, ágil y flexible</Typography></li>
-                            <li className={classes.li}><Typography variant="subheading"> <b className={classes.numbering}>3.</b>{/*<span className={classes.bullet}/>*/} Datos interoperables y abiertos</Typography></li>
-                            <li className={classes.li}><Typography variant="subheading"> <b className={classes.numbering}>4.</b>{/*<span className={classes.bullet}/>*/} Seguridad de la información y protección de datos personales</Typography></li>
-                            <li className={classes.li}><Typography variant="subheading"> <b className={classes.numbering}>5.</b>{/*<span className={classes.bullet}/>*/} Creación de impacto y entrega de valor público en el centro</Typography></li>
+                            <li className={classes.li}><Typography variant="subtitle1"> <b className={classes.numbering}>1.</b>{/*<span className={classes.bullet}/>*/} Diseño centrado en las usuarias-os y sus necesidades</Typography></li>
+                            <li className={classes.li}><Typography variant="subtitle1"> <b className={classes.numbering}>2.</b>{/*<span className={classes.bullet}/>*/} Construcción gradual, modular, escalable, ágil y flexible</Typography></li>
+                            <li className={classes.li}><Typography variant="subtitle1"> <b className={classes.numbering}>3.</b>{/*<span className={classes.bullet}/>*/} Datos interoperables y abiertos</Typography></li>
+                            <li className={classes.li}><Typography variant="subtitle1"> <b className={classes.numbering}>4.</b>{/*<span className={classes.bullet}/>*/} Seguridad de la información y protección de datos personales</Typography></li>
+                            <li className={classes.li}><Typography variant="subtitle1"> <b className={classes.numbering}>5.</b>{/*<span className={classes.bullet}/>*/} Creación de impacto y entrega de valor público en el centro</Typography></li>
                         </ul>
                     </Grid>
                     <Grid item xs={12} md={6} style={{textAlign: 'center'}} className={classes.items}>
-                        <Typography variant="title" className={classes.titles}>Ejes de trabajo</Typography>
+                        <Typography variant="h6" className={classes.titles}>Ejes de trabajo</Typography>
 
                         <img className={classes.ejes} src={Ejes} alt="Ejes"/>
                     </Grid>

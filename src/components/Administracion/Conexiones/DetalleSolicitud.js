@@ -82,7 +82,7 @@ class DetalleSolicitud extends React.Component {
                         <form>
                             <Grid container spacing={8} justify="flex-start">
                                 <Grid item xs={11}>
-                                    <Typography variant="title" className={classes.title}>Ficha de la
+                                    <Typography variant="h6" className={classes.title}>Ficha de la
                                         solicitud</Typography>
                                 </Grid>
                                 <Grid item xs={1}>
