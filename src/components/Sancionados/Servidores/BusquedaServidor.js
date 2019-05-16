@@ -10,9 +10,7 @@ import Paper from "@material-ui/core/Paper/Paper";
 import SelectReact from "react-select";
 import '../../Utils/selectReact.css';
 import Typography from "@material-ui/core/Typography/Typography";
-import IconReplay from "@material-ui/icons/Replay";
-import Tooltip from "@material-ui/core/Tooltip/Tooltip";
-import IconSearch from "@material-ui/icons/Search";
+import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
     container: {
@@ -37,7 +35,8 @@ const styles = theme => ({
     },
     input: {
         color: theme.palette.black.color,
-        display: 'contents'
+        display: 'contents',
+        id:'test'
     },
     valueContainer: {
         display: 'flex',
@@ -52,7 +51,8 @@ const styles = theme => ({
         color: theme.palette.black.color,
         width : 'auto',
         overflow : 'hidden',
-        textOverflow : 'ellipsis'
+        textOverflow : 'ellipsis',
+        whiteSpace : 'nowrap'
     },
     placeholder: {
         fontSize : 16,
@@ -186,7 +186,7 @@ class BusquedaServidor extends React.Component {
         this.props.handleSearch('FIELD_FILTER');
     };
     render() {
-        const {classes, handleChangeCampo, nombreServidor, institucion, theme} = this.props;
+        const {classes, handleChangeCampo, nombreServidor, apellidoUno, apellidoDos, institucion, theme} = this.props;
         const selectStyles = {
             input: base => ({
                 ...base,
@@ -206,22 +206,8 @@ class BusquedaServidor extends React.Component {
                 <Grid item xs={12}>
                     <Typography variant="h6"  paragraph>Busca un servidor público sancionado</Typography>
                 </Grid>
-                <Grid item xs={12} md={6}>
-                    <FormControl className={classes.formControl}>
-                        <SelectReact
-                            classes={classes}
-                            styles={selectStyles}
-                            options={this.state.suggestions}
-                            components={components}
-                            value={{value: institucion, label: institucion}}
-                            onChange={(e) => handleChangeCampo('institucion', e)}
-                            id="campoSelectInstitucion"
-                            placeholder = {'TODAS'}
-                        />
 
-                    </FormControl>
-                </Grid>
-                <Grid item xs={12} md={5}>
+                <Grid item xs={12} md={4}>
                     <FormControl className={classes.formControl}>
                         <TextField
                             id="search"
@@ -237,16 +223,65 @@ class BusquedaServidor extends React.Component {
 
                     </FormControl>
                 </Grid>
-                <Grid item xs={12} md={1} className={classes.centrado}>
-                    <Tooltip title={'Buscar'}>
-                        <IconSearch className={classes.fontLight} onClick={this.buscar}/>
-                    </Tooltip>
+                <Grid item xs={12} md={4}>
+                    <FormControl className={classes.formControl}>
+                        <TextField
+                            id="search"
+                            label="APELLIDO UNO"
+                            type="search"
+                            onChange={(e) => handleChangeCampo('apellidoUno', e)}
+                            value={apellidoUno}
+                            InputLabelProps = {{
+                                className: classes.fontLight,
+                                shrink : true
+                            }}
+                        />
+
+                    </FormControl>
                 </Grid>
-                <Grid item xs={11}/>
-                <Grid item xs={12} md={1}  className={classes.centrado}>
-                    <Tooltip title={'Limpiar'}>
-                        <IconReplay className={classes.fontLight} onClick={this.limpiarBusqueda}/>
-                    </Tooltip>
+                <Grid item xs={12} md={4}>
+                    <FormControl className={classes.formControl}>
+                        <TextField
+                            id="search"
+                            label="APELLIDO DOS"
+                            type="search"
+                            onChange={(e) => handleChangeCampo('apellidoDos', e)}
+                            value={apellidoDos}
+                            value={apellidoDos}
+                            InputLabelProps = {{
+                                className: classes.fontLight,
+                                shrink : true
+                            }}
+                        />
+
+                    </FormControl>
+                </Grid>
+
+                <Grid item xs={12} md={8}>
+                    <FormControl className={classes.formControl}>
+                        <SelectReact
+                            classes={classes}
+                            styles={selectStyles}
+                            options={this.state.suggestions}
+                            components={components}
+                            value={{value: institucion, label: institucion}}
+                            onChange={(e) => handleChangeCampo('institucion', e)}
+                            id="campoSelectInstitucion"
+                            placeholder = {'TODAS'}
+                        />
+
+                    </FormControl>
+                </Grid>
+                <Grid item md={2}/>
+                <Grid item xs={12} md={1} className={classes.centrado}>
+                    <Button variant="contained" color="secondary" className={classes.button} onClick={this.buscar}>
+                        Buscar
+                    </Button>
+                </Grid>
+                <Grid item xs={12} md={1} className={classes.centrado}>
+                    <Button variant="contained" color="secondary" className={classes.button} onClick={this.limpiarBusqueda}>
+                        Limpiar
+                    </Button>
                 </Grid>
             </Grid>
 

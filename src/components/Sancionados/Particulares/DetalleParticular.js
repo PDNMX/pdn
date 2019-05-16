@@ -159,7 +159,7 @@ class DetalleParticular extends React.Component {
                                     <TextField
                                         id="read-only-input"
                                         label="Hechos"
-                                        defaultValue={particular.hechos}
+                                        defaultValue={particular.causa_motivo_hechos}
                                         className={classes.textField}
                                         margin="normal"
                                         multiline
@@ -197,7 +197,7 @@ class DetalleParticular extends React.Component {
                                     <TextField
                                         id="read-only-input"
                                         label="Fecha notificación"
-                                        defaultValue={particular.fechaNotificacion}
+                                        defaultValue={particular.fecha_notificacion}
                                         className={classes.textField}
                                         margin="normal"
                                         InputProps={{
@@ -253,7 +253,7 @@ class DetalleParticular extends React.Component {
                                     <TextField
                                         id="read-only-input"
                                         label="Monto"
-                                        defaultValue={particular.monto}
+                                        defaultValue={particular.multa ? particular.multa.monto + particular.multa.moneda : particular.multa}
                                         className={classes.textField}
                                         margin="normal"
                                         InputProps={{
@@ -271,7 +271,7 @@ class DetalleParticular extends React.Component {
                                     <TextField
                                         id="read-only-input"
                                         label="Responsable de la información"
-                                        defaultValue={particular.responsableInformacion}
+                                        defaultValue={particular.responsable}
                                         className={classes.textField}
                                         margin="normal"
                                         InputProps={{
@@ -289,7 +289,7 @@ class DetalleParticular extends React.Component {
                                     <TextField
                                         id="read-only-input"
                                         label="Fecha de última actualización"
-                                        defaultValue={particular.fechaActualizacion}
+                                        defaultValue={particular.fecha_captura}
                                         className={classes.textField}
                                         margin="normal"
                                         InputProps={{

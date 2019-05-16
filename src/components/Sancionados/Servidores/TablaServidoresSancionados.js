@@ -10,33 +10,15 @@ import TableFooter from '@material-ui/core/TableFooter';
 import Toolbar from '@material-ui/core/Toolbar';
 import BusquedaServidor from "./BusquedaServidor";
 import DetalleServidorSancionado from "./DetalleServidorSancionado";
-import rp from "request-promise";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import BajarCSV from "../../Tablas/BajarCSV";
 import Grid from "@material-ui/core/Grid/Grid";
 import EnhancedTableHead from '../../Tablas/EnhancedTableHead';
 import Typography from "@material-ui/core/Typography/Typography";
 import Modal from "@material-ui/core/Modal/Modal";
+import rp from "request-promise";
 
-let counter = 0;
 
-let createData = (item) => {
-    let leyenda = "NO EXISTE DATO EN LA BASE DE DATOS RSPS";
-    counter += 1;
-    return {
-        id: counter,
-        servidor: item.servidor_publico ? item.servidor_publico : leyenda,
-        institucion: item.dependencia ? item.dependencia : leyenda,
-        autoridad: item.autoridad ? item.autoridad : leyenda,
-        expediente: item.expediente ? item.expediente : leyenda,
-        fecha_resolucion: item.fecha_resolucion ? item.fecha_resolucion : leyenda,
-        sancion_impuesta: item.sancion_impuesta ? item.sancion_impuesta : leyenda,
-        fecha_inicio: item.inicio ? item.inicio : leyenda,
-        fecha_fin: item.fin ? item.fin : leyenda,
-        monto: item.monto ? item.monto : leyenda,
-        causa: item.causa ? item.causa : leyenda
-    };
-};
 
 function getSorting(order, orderBy) {
     return order === 'desc'
@@ -45,29 +27,31 @@ function getSorting(order, orderBy) {
 }
 
 const columnData = [
-    {id: 'servidor', disablePadding: false, label: 'Servidor público', position: 1, mostrar: true},
-    {id: 'institucion', disablePadding: false, label: 'Institución', position: 2, mostrar: true},
-    {id: 'autoridad', disablePadding: false, label: 'Autoridad', position: 3, mostrar: true},
-    {id: 'expediente', disablePadding: false, label: 'Expediente', position: 4, mostrar: true},
+    {id: 'expediente', disablePadding: false, label: 'Expediente', position: 1, mostrar: true},
+    {id: 'nombre', disablePadding: false, label: 'Nombre', position: 2, mostrar: true},
+    {id: 'apellidoUno', disablePadding: false, label: 'Apellido Uno', position: 3, mostrar: true},
+    {id: 'apellidoDos', disablePadding: false, label: 'Apellido Dos', position: 4, mostrar: true},
+    {id: 'institucion', disablePadding: false, label: 'Institución', position: 5, mostrar: true},
+    {id: 'autoridad', disablePadding: false, label: 'Autoridad', position: 6, mostrar: true},
     {
         id: 'fecha_resolucion',
         disablePadding: false,
         label: 'Fecha resolución',
-        position: 5,
+        position: 7,
         mostrar: false
     },
     {
         id: 'sancion_impuesta',
         disablePadding: false,
         label: 'Sanción impuesta',
-        position: 6,
+        position: 8,
         mostrar: false
     },
-    {id: 'fecha_inicio', disablePadding: false, label: 'Fecha inicio', position: 7, mostrar: false},
-    {id: 'fecha_fin', disablePadding: false, label: 'Fecha fin', position: 8, mostrar: false},
-    {id: 'monto', disablePadding: false, label: 'Monto', position: 9, mostrar: false},
-    {id: 'causa', disablePadding: false, label: 'Causa', position: 10, mostrar: false},
-    {id: 'constancia', disablePadding: true, label: 'Constancia', position: 11, mostrar: false}
+    {id: 'fecha_inicio', disablePadding: false, label: 'Fecha inicio', position: 9, mostrar: false},
+    {id: 'fecha_fin', disablePadding: false, label: 'Fecha fin', position: 10, mostrar: false},
+    {id: 'monto', disablePadding: false, label: 'Monto', position: 11, mostrar: false},
+    {id: 'causa', disablePadding: false, label: 'Causa', position: 12, mostrar: false},
+    {id: 'constancia', disablePadding: true, label: 'Constancia', position: 13, mostrar: false}
 ];
 
 const styles = theme => ({
@@ -156,12 +140,12 @@ const toolbarStyles = theme => ({
 
 
 let EnhancedTableToolbar = props => {
-    const {classes, handleChangeCampo, nombreServidor, institucion, handleSearch, handleCleanAll} = props;
+    const {classes, handleChangeCampo, nombreServidor, apellidoUno, apellidoDos, institucion, handleSearch, handleCleanAll} = props;
     return (
         <Toolbar className={classes.toolBarStyle}>
             <BusquedaServidor handleCleanAll={handleCleanAll} handleSearch={handleSearch}
                               handleChangeCampo={handleChangeCampo}
-                              nombreServidor={nombreServidor}
+                              nombreServidor={nombreServidor} apellidoUno={apellidoUno} apellidoDos={apellidoDos}
                               institucion={institucion}/>
         </Toolbar>
     );
@@ -184,6 +168,8 @@ class EnhancedTable extends React.Component {
             orderBy: 'servidor',
             selected: [],
             nombreServidor: '',
+            apellidoUno: '',
+            apellidoDos: '',
             data: [],
             filterData: [],
             page: 0,
@@ -241,63 +227,49 @@ class EnhancedTable extends React.Component {
 
     isSelected = id => this.state.selected.indexOf(id) !== -1;
 
-    getTotalRows = (params) => {
-        let options = {
-            uri: 'https://plataformadigitalnacional.org/api/rsps?select=count=eq.exact',
-            json: true,
-            qs: params
-        };
-        rp(options)
-            .then(data => {
-                this.setState({totalRows: data[0].count, loading: false});
-            }).catch(err => {
-            this.setState({loading: false});
-            alert("_No se pudó obtener la información");
-            console.log(err);
-        });
-    };
     handleSearchAPI = (typeSearch) => {
+        let {institucion, nombreServidor, apellidoUno, apellidoDos} = this.state;
         this.setState({loading: true});
-        let {institucion, nombreServidor} = this.state;
-        const URI = 'https://plataformadigitalnacional.org/api/rsps?';
-
-        let params = {};
-
+        let filtros = {};
+        let offset = 0;
         if (typeSearch !== 'ALL') {
-            if(institucion)  params.dependencia = 'eq.' + institucion ;
-            if(nombreServidor)  params.servidor_publico = 'like.*' + nombreServidor.toUpperCase() + '*';
-            if(typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE')  params.limit = this.state.rowsPerPage;
-            if(typeSearch === 'CHANGE_PAGE')  params.offset = (this.state.rowsPerPage * this.state.page);
-            if(typeSearch === 'FIELD_FILTER') this.getTotalRows(params);
+            if (nombreServidor) filtros.nombres = '%' + nombreServidor + '%';
+            if (apellidoUno) filtros.primer_apellido = '%' + apellidoUno + '%';
+            if (apellidoDos) filtros.segundo_apellido = '%' + apellidoDos + '%';
+
         }
+        if(typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE')  offset = (this.state.rowsPerPage * this.state.page) ;
+        let limit = (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.state.rowsPerPage : null;
 
         let options = {
-            uri: URI,
+            method : 'POST',
+            uri: 'https://demospdn.host/pdn/getServidoresSancionados',
             json: true,
-            qs: params
+            body:{
+                "filtros": filtros,
+                 "limit" : limit,
+                "offset" : offset
+            }
         };
-
         rp(options)
-            .then(data => {
-                let dataAux = data.map(item => {
-                    return createData(item);
-                });
+            .then(res => {
+                let dataAux = res.data;
+                let total = res.totalRows;
                 typeSearch === 'ALL' ? this.setState({data: dataAux, loading: false}, () => {
                     this.btnDownloadAll.triggerDown();
                 }) : (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.setState({
                         filterData: dataAux,
-                        loading: false
+                        loading: false,
+                        totalRows : total
                     }) :
-                    this.setState({filterDataAll: dataAux, loading: false}, () => {
+                    this.setState({filterDataAll: dataAux, loading: false, totalRows : total}, () => {
                         this.child.triggerDown();
                     });
-                return true;
             }).catch(err => {
             this.setState({loading: false});
-            alert("_No se pudó obtener la información");
+            alert("_No se puedó obtener la información");
             console.log(err);
         });
-
     };
 
     handleChangeCampo = (varState, event) => {
@@ -313,6 +285,8 @@ class EnhancedTable extends React.Component {
                 this.handleChangeCampo('nombreServidor');
                 this.handleChangeCampo('procedimiento');
                 this.handleChangeCampo('institucion');
+                this.handleChangeCampo('apellidoUno');
+                this.handleChangeCampo('apellidoDos');
             })
     };
 
@@ -331,7 +305,9 @@ class EnhancedTable extends React.Component {
                                               handleSearch={this.handleSearchAPI}
                                               nombreServidor={this.state.nombreServidor}
                                               data={filterData}
-                                              columnas={columnData} institucion={this.state.institucion}/>
+                                              columnas={columnData} institucion={this.state.institucion}
+                                              apellidoUno={this.state.apellidoUno}
+                                              apellidoDos={this.state.apellidoDos}/>
                     </Grid>
                     <Grid item xs={12}>
                         <DetalleServidorSancionado handleClose={this.handleClose}
@@ -386,21 +362,25 @@ class EnhancedTable extends React.Component {
                                                     key={n.id}
                                                     selected={isSelected}
                                                 >
-                                                    <TableCell component="th" scope="row" style={{width:'25%'}}
-                                                               padding="default">{n.servidor}</TableCell>
-                                                    <TableCell>{n.institucion}</TableCell>
-                                                    <TableCell style={{width: '25%'}}>{n.autoridad}</TableCell>
-                                                    <TableCell>{n.expediente}</TableCell>
+                                                    <TableCell component="th" scope="row" padding="default">{n.expediente}</TableCell>
+                                                    <TableCell>{n.nombre}</TableCell>
+                                                    <TableCell>{n.apellidoUno}</TableCell>
+                                                    <TableCell>{n.apellidoDos}</TableCell>
+                                                    <TableCell>{n.institucion.nombre}</TableCell>
+                                                    <TableCell style={{width: '25%'}}>{n.autoridad_sancionadora}</TableCell>
+
                                                 </TableRow>
                                             );
                                         })}
-                                    {emptyRows > 0 && (
+                                    {/*
+                                        emptyRows > 0 && (
                                         <TableRow style={{height: 49 * emptyRows}}>
 
-                                            <TableCell colSpan={4}/>
+                                            <TableCell colSpan={6}/>
 
                                         </TableRow>
-                                    )}
+                                    )
+                                    */}
 
                                 </TableBody>
                                 <TableFooter>
@@ -411,7 +391,7 @@ class EnhancedTable extends React.Component {
                                                       columnas={columnData} fnSearch={this.handleSearchAPI}
                                                       fileName={'Servidores sancionados'}/>
                                         </TableCell>
-                                        <TableCell>
+                                        <TableCell colSpan={2}>
                                             <BajarCSV innerRef={comp => this.child = comp} data={filterDataAll}
                                                       filtrado={true}
                                                       columnas={columnData} fnSearch={this.handleSearchAPI}
@@ -419,7 +399,7 @@ class EnhancedTable extends React.Component {
                                         </TableCell>
                                         <TablePagination
                                             className={classes.tablePagination}
-                                            colSpan={2}
+                                            colSpan={3}
                                             count={totalRows}
                                             rowsPerPage={rowsPerPage}
                                             page={page}

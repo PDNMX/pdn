@@ -217,7 +217,7 @@ class DetalleServidorSancionado extends React.Component {
                                 <TextField
                                     id="read-only-input"
                                     label="Institución"
-                                    defaultValue={servidor.institucion}
+                                    defaultValue={servidor.institucion? servidor.institucion.nombre : servidor.institucion}
                                     className={classes.textField}
                                     margin="normal"
                                     multiline={true}
@@ -237,7 +237,7 @@ class DetalleServidorSancionado extends React.Component {
                                 <TextField
                                     id="read-only-input"
                                     label="Servidor público"
-                                    defaultValue={servidor.servidor}
+                                    defaultValue={servidor.nombre+' '+servidor.apellidoUno+' '+servidor.apellidoDos}
                                     className={classes.textField}
                                     margin="normal"
                                     InputProps={{
@@ -256,8 +256,8 @@ class DetalleServidorSancionado extends React.Component {
                             <Grid item md={6} xs={12}>
                                 <TextField
                                     id="read-only-input"
-                                    label="Autoridad"
-                                    defaultValue={servidor.autoridad}
+                                    label="Autoridad sancionadora"
+                                    defaultValue={servidor.autoridad_sancionadora}
                                     className={classes.textField}
                                     margin="normal"
                                     InputProps={{
@@ -293,7 +293,7 @@ class DetalleServidorSancionado extends React.Component {
                                 <TextField
                                     id="read-only-input"
                                     label="Fecha resolución"
-                                    defaultValue={servidor.fecha_resolucion}
+                                    defaultValue={servidor.resolucion? servidor.resolucion.fecha_notificacion : servidor.resolucion}
                                     className={classes.textField}
                                     margin="normal"
                                     InputProps={{
@@ -311,7 +311,7 @@ class DetalleServidorSancionado extends React.Component {
                                 <TextField
                                     id="read-only-input"
                                     label="Sanción impuesta"
-                                    defaultValue={servidor.sancion_impuesta}
+                                    defaultValue={servidor.tipo_sancion}
                                     className={classes.textField}
                                     margin="normal"
                                     InputProps={{
@@ -330,7 +330,7 @@ class DetalleServidorSancionado extends React.Component {
                                 <TextField
                                     id="read-only-input"
                                     label="Fecha inicio"
-                                    defaultValue={servidor.fecha_inicio}
+                                    defaultValue={servidor.inhabilitacion ? servidor.inhabilitacion.fecha_inicial : servidor.inhabilitacion}
                                     className={classes.textField}
                                     margin="normal"
                                     InputProps={{
@@ -348,7 +348,7 @@ class DetalleServidorSancionado extends React.Component {
                                 <TextField
                                     id="read-only-input"
                                     label="Fecha fin"
-                                    defaultValue={servidor.fecha_fin}
+                                    defaultValue={servidor.inhabilitacion ? servidor.inhabilitacion.fecha_final : servidor.inhabilitacion}
                                     className={classes.textField}
                                     margin="normal"
                                     InputProps={{
@@ -366,7 +366,7 @@ class DetalleServidorSancionado extends React.Component {
                                 <TextField
                                     id="read-only-input"
                                     label="Monto"
-                                    defaultValue={servidor.monto}
+                                    defaultValue={servidor.multa ? servidor.multa.monto : servidor.multa}
                                     className={classes.textField}
                                     margin="normal"
                                     InputProps={{

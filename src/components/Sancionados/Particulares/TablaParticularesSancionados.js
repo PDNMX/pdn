@@ -8,7 +8,6 @@ import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import TableFooter from '@material-ui/core/TableFooter';
 import Toolbar from '@material-ui/core/Toolbar';
-import rp from "request-promise";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import BajarCSV from "../../Tablas/BajarCSV";
 import BusquedaParticular from "./BusquedaParticular";
@@ -17,28 +16,10 @@ import Grid from "@material-ui/core/Grid/Grid";
 import EnhancedTableHead from '../../Tablas/EnhancedTableHead';
 import Typography from "@material-ui/core/Typography/Typography";
 import Modal from "@material-ui/core/Modal/Modal";
-
-let counter = 0;
-
-let createData = (item) => {
-    counter += 1;
-    let leyenda = "NO EXISTE DATO EN LA BASE DE DATOS SFP";
-    return {
-        id: counter,
-        proveedor: item.proveedor_o_contratista ? item.proveedor_o_contratista : leyenda,
-        dependencia: item.dependencia ? item.dependencia : leyenda,
-        expediente: item.numero_de_expediente ? item.numero_de_expediente : leyenda,
-        hechos: item.hechos_de_la_irregularidad ? item.hechos_de_la_irregularidad : leyenda,
-        objetoSocial: item.objeto_social ? item.objeto_social : leyenda,
-        sentidoResolucion: item.sentido_de_resolucion ? item.sentido_de_resolucion : leyenda,
-        fechaNotificacion: item.fecha_de_notificacion ? item.fecha_de_notificacion : leyenda,
-        fechaResolucion: item.fecha_de_resolucion ? item.fecha_de_resolucion : leyenda,
-        plazo: item.plazo ? item.plazo : leyenda,
-        monto: item.monto ? item.monto : leyenda,
-        responsableInformacion: item.nombre_del_responsable_de_la_informacion ? item.nombre_del_responsable_de_la_informacion : leyenda,
-        fechaActualizacion: item.fecha_de_actualizacion ? item.fecha_de_actualizacion : leyenda
-    };
-};
+import ApolloClient from "apollo-boost";
+import {gql} from "apollo-boost";
+import {InMemoryCache} from "apollo-cache-inmemory";
+import rp from "request-promise";
 
 function getSorting(order, orderBy) {
     return order === 'desc'
@@ -91,7 +72,7 @@ const columnData = [
         position: 8,
         mostrar: false
     },
-    {id: 'plazo',disablePadding: false, label: 'Plazo', position: 9, mostrar: false},
+    {id: 'plazo', disablePadding: false, label: 'Plazo', position: 9, mostrar: false},
     {id: 'monto', disablePadding: false, label: 'Monto', position: 10, mostrar: false},
     {
         id: 'responsableInformacion',
@@ -195,11 +176,12 @@ const toolbarStyles = theme => ({
 
 
 let EnhancedTableToolbar = props => {
-    const {classes, handleChangeCampo, nombreParticular, institucion,handleCleanAll,handleSearch} = props;
+    const {classes, handleChangeCampo, nombreParticular, numeroExpediente, institucion, handleCleanAll, handleSearch} = props;
     return (
         <Toolbar className={classes.toolBarStyle}>
             <BusquedaParticular handleCleanAll={handleCleanAll} handleSearch={handleSearch}
                                 handleChangeCampo={handleChangeCampo} nombreParticular={nombreParticular}
+                                numeroExpediente={numeroExpediente}
                                 institucion={institucion}/>
 
         </Toolbar>
@@ -224,6 +206,7 @@ class EnhancedTable extends React.Component {
             orderBy: 'proveedor',
             selected: [],
             nombreParticular: '',
+            numeroExpediente: '',
             data: [],
             filterData: [],
             page: 0,
@@ -278,63 +261,51 @@ class EnhancedTable extends React.Component {
 
     isSelected = id => this.state.selected.indexOf(id) !== -1;
 
-    getTotalRows = (params) => {
-        let options = {
-            uri: 'https://plataformadigitalnacional.org/api/proveedores_sancionados?select=count=eq.exact',
-            json: true,
-            qs: params
-        };
-        rp(options)
-            .then(data => {
-                this.setState({totalRows: data[0].count, loading: false});
-            }).catch(err => {
-            this.setState({loading: false});
-            alert("_No se pudó obtener la información");
-            console.log(err);
-        });
-    };
     handleSearchAPI = (typeSearch) => {
+        let {institucion, nombreParticular, numeroExpediente} = this.state;
         this.setState({loading: true});
-        let {institucion, nombreParticular} = this.state;
-        const URI = 'https://plataformadigitalnacional.org/api/proveedores_sancionados?';
-
-        let params = {};
-
+        let filtros = {};
+        let offset = 0;
         if (typeSearch !== 'ALL') {
-            if(typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE')  params.limit = this.state.rowsPerPage;
-            if(typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE')  params.offset = (this.state.rowsPerPage * this.state.page) ;
-            if(institucion)  params.dependencia = 'eq.' + institucion;
-            if(nombreParticular)  params.proveedor_o_contratista = 'like.*' + nombreParticular.toUpperCase() + '*';
-            if(typeSearch === 'FIELD_FILTER')  this.getTotalRows(params);
+            if (nombreParticular) filtros.nombre_razon_social = '%' + nombreParticular + '%';
+            if (numeroExpediente) filtros.numero_expediente = '%' + numeroExpediente + '%';
+            // if (institucion) filtros.institucion = '%' + institucion + '%';
+
         }
 
+        if (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') offset = (this.state.rowsPerPage * this.state.page);
+        let limit = (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.state.rowsPerPage : null;
+
         let options = {
-            uri: URI,
+            method : 'POST',
+            uri: 'https://demospdn.host/pdn/getParticularesSancionados',
             json: true,
-            qs: params
+            body:{
+                "filtros": filtros,
+                "limit" : limit,
+                "offset" : offset
+            }
         };
         rp(options)
-            .then(data => {
-                let dataAux = data.map(item => {
-                    return createData(item);
-                });
+            .then(res => {
+                let dataAux = res.data;
+                console.log("dataaux: ",dataAux);
+                let total = res.totalRows;
                 typeSearch === 'ALL' ? this.setState({data: dataAux, loading: false}, () => {
                     this.btnDownloadAll.triggerDown();
                 }) : (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.setState({
                         filterData: dataAux,
-                        loading: false
+                        loading: false,
+                        totalRows : total
                     }) :
-                    this.setState({filterDataAll: dataAux, loading: false}, () => {
+                    this.setState({filterDataAll: dataAux, loading: false, totalRows : total}, () => {
                         this.child.triggerDown();
                     });
-                return true;
-            })
-            .catch(err => {
-                this.setState({loading: false});
-                alert("_No se pudó obtener la información");
-                console.log(err);
-            });
-
+            }).catch(err => {
+            this.setState({loading: false});
+            alert("_No se puedó obtener la información");
+            console.log(err);
+        });
     };
 
     handleChangeCampo = (varState, event) => {
@@ -365,6 +336,7 @@ class EnhancedTable extends React.Component {
                                               handleCleanAll={this.handleCleanAll}
                                               handleSearch={this.handleSearchAPI}
                                               nombreParticular={this.state.nombreParticular}
+                                              numeroExpediente={this.state.numeroExpediente}
                                               institucion={this.state.institucion}/>
                     </Grid>
                     <Grid item xs={12}>
@@ -384,13 +356,13 @@ class EnhancedTable extends React.Component {
                         }
                     </Grid>
                     <Grid item xs={12}>
-                        {filterData.length>0&&
+                        {filterData.length > 0 &&
                         <Typography variant="h6" className={classes.desc}>Pulsa sobre el registro para ver su
                             detalle<br/></Typography>
                         }
                     </Grid>
-                    <Grid item xs={12} >
-                        {filterData.length>0&&
+                    <Grid item xs={12}>
+                        {filterData.length > 0 &&
                         <div className={classes.container}>
                             <Table aria-describedby="spinnerLoading"
                                    aria-busy={this.state.loading} aria-labelledby="tableTitle">
@@ -418,11 +390,11 @@ class EnhancedTable extends React.Component {
                                                     key={n.id}
                                                     selected={isSelected}
                                                 >
-                                                    <TableCell component="th" scope="row" style={{width:'25%'}}
-                                                               padding="default">{n.proveedor}</TableCell>
-                                                    <TableCell>{n.dependencia}</TableCell>
-                                                    <TableCell>{n.expediente}</TableCell>
-                                                    <TableCell>{n.sentidoResolucion}</TableCell>
+                                                    <TableCell component="th" scope="row" style={{width: '25%'}}
+                                                               padding="default">{n.nombre_razon_social}</TableCell>
+                                                    <TableCell>{n.institucion_dependencia.nombre}</TableCell>
+                                                    <TableCell>{n.numero_expediente}</TableCell>
+                                                    <TableCell>{n.resolucion.sentido}</TableCell>
                                                 </TableRow>
                                             );
                                         })}
@@ -436,12 +408,14 @@ class EnhancedTable extends React.Component {
                                 <TableFooter>
                                     <TableRow>
                                         <TableCell>
-                                            <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data} filtrado={false}
+                                            <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data}
+                                                      filtrado={false}
                                                       columnas={columnData} fnSearch={this.handleSearchAPI}
                                                       fileName={'Particulares sancionados'}/>
                                         </TableCell>
                                         <TableCell>
-                                            <BajarCSV innerRef={comp => this.child = comp} data={filterDataAll} filtrado={true}
+                                            <BajarCSV innerRef={comp => this.child = comp} data={filterDataAll}
+                                                      filtrado={true}
                                                       columnas={columnData} fnSearch={this.handleSearchAPI}
                                                       fileName={'Particulares sancionados'}/>
                                         </TableCell>
@@ -472,7 +446,7 @@ class EnhancedTable extends React.Component {
 
                     </Grid>
                     <Grid item xs={12} className={classes.item}>
-                        {filterData.length>0&&
+                        {filterData.length > 0 &&
                         <Typography variant={"caption"} style={{fontStyle: 'italic'}}>Fuente:
                             https://datos.gob.mx/busca/dataset/proveedores-y-contratistas-sancionados</Typography>
                         }

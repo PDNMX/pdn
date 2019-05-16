@@ -50,7 +50,7 @@ class AlertDialog extends React.Component {
 
                             <br/>
                             <Typography component={"span"}>
-                            Esta versión NO debe ser vista como final, NI contiene los datos reales.
+                                <b>Esta versión NO debe ser vista como final, NI contiene los datos reales.</b>
                             </Typography>
                             <br/>
                             <Typography component={"span"}>

@@ -8,10 +8,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 import rp from "request-promise";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid/Grid";
-import IconReplay from "@material-ui/icons/Replay";
-import Tooltip from "@material-ui/core/Tooltip/Tooltip";
-import IconSearch from "@material-ui/icons/Search";
 import Typography from "@material-ui/core/Typography/Typography";
+import Button from "@material-ui/core/Button/Button";
 
 const styles = theme => ({
     container: {
@@ -184,7 +182,7 @@ class BusquedaParticular extends React.Component {
         this.props.handleSearch('FIELD_FILTER');
     };
     render() {
-        let {classes, handleChangeCampo, nombreParticular, institucion, theme} = this.props;
+        let {classes, handleChangeCampo, nombreParticular, numeroExpediente, institucion, theme} = this.props;
 
         const selectStyles = {
             input: base => ({
@@ -200,7 +198,40 @@ class BusquedaParticular extends React.Component {
                 <Grid item xs={12}>
                     <Typography variant="h6"  paragraph>Busca un particular sancionado</Typography>
                 </Grid>
-                <Grid item md={6} xs={12}>
+
+                <Grid item md={8} xs={12}>
+                    <FormControl className={classes.formControl}>
+                        <TextField
+                            id="search"
+                            label="NOMBRE/RAZÓN SOCIAL PARTICULAR SANCIONADO"
+                            type="search"
+                            onChange={(e) => handleChangeCampo('nombreParticular',e)}
+                            value={nombreParticular}
+                            InputLabelProps = {{
+                                className: classes.fontLight,
+                                shrink : true
+                            }}
+                        />
+                    </FormControl>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <FormControl className={classes.formControl}>
+                        <TextField
+                            id="search"
+                            label="NUMERO EXPEDIENTE"
+                            type="search"
+                            onChange={(e) => handleChangeCampo('numeroExpediente', e)}
+                            value={numeroExpediente}
+                            InputLabelProps = {{
+                                className: classes.fontLight,
+                                shrink : true
+                            }}
+                        />
+
+                    </FormControl>
+                </Grid>
+
+                <Grid item md={8} xs={12}>
                     <FormControl className={classes.formControl}>
                         <Select
                             classes={classes}
@@ -213,31 +244,16 @@ class BusquedaParticular extends React.Component {
                         />
                     </FormControl>
                 </Grid>
-                <Grid item md={5} xs={12}>
-                    <FormControl className={classes.formControl}>
-                        <TextField
-                            id="search"
-                            label="NOMBRE DEL PARTICULAR SANCIONADO"
-                            type="search"
-                            onChange={(e) => handleChangeCampo('nombreParticular',e)}
-                            value={nombreParticular}
-                            InputLabelProps = {{
-                                className: classes.fontLight,
-                                shrink : true
-                            }}
-                        />
-                    </FormControl>
+                <Grid item md={2}/>
+                <Grid item xs={12} md={1} className={classes.centrado}>
+                    <Button variant="contained" color="secondary" className={classes.button} onClick={this.buscar}>
+                        Buscar
+                    </Button>
                 </Grid>
                 <Grid item xs={12} md={1} className={classes.centrado}>
-                    <Tooltip title={'Buscar'}>
-                        <IconSearch className={classes.fontLight} onClick={this.buscar}/>
-                    </Tooltip>
-                </Grid>
-                <Grid item xs={11}/>
-                <Grid item xs={12} md={1}  className={classes.centrado}>
-                    <Tooltip title={'Limpiar'}>
-                        <IconReplay className={classes.fontLight} onClick={this.limpiarBusqueda}/>
-                    </Tooltip>
+                    <Button variant="contained" color="secondary" className={classes.button} onClick={this.limpiarBusqueda}>
+                        Limpiar
+                    </Button>
                 </Grid>
             </Grid>
 
