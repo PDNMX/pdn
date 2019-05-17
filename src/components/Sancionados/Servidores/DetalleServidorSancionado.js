@@ -213,22 +213,20 @@ class DetalleServidorSancionado extends React.Component {
                                     <CloseButton/>
                                 </IconButton>
                             </Grid>
-                            <Grid item xs={12}>
+                            <Grid item md={6} xs={12}>
                                 <TextField
                                     id="read-only-input"
-                                    label="Institución"
-                                    defaultValue={servidor.institucion? servidor.institucion.nombre : servidor.institucion}
+                                    label="Expediente"
+                                    defaultValue={servidor.expediente}
                                     className={classes.textField}
                                     margin="normal"
-                                    multiline={true}
                                     InputProps={{
                                         readOnly: true,
                                         className: classes.fontSmall,
                                         endAdornment: (
-                                            <InputAdornment position={'end'} onClick={()=>{this.openPoper(); this.controlGlosario(0)}}>
+                                            <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(3)}}>
                                                 <IconHelp/>
                                             </InputAdornment>
-
                                         )
                                     }}
                                 />
@@ -251,7 +249,45 @@ class DetalleServidorSancionado extends React.Component {
                                     }}
                                 />
                             </Grid>
+                            <Grid item  md = {6} xs={12}>
+                                <TextField
+                                    id="read-only-input"
+                                    label="Institución"
+                                    defaultValue={servidor.institucion? servidor.institucion.nombre + ' ('+servidor.institucion.siglas + ')': servidor.institucion}
+                                    className={classes.textField}
+                                    margin="normal"
+                                    multiline={true}
+                                    InputProps={{
+                                        readOnly: true,
+                                        className: classes.fontSmall,
+                                        endAdornment: (
+                                            <InputAdornment position={'end'} onClick={()=>{this.openPoper(); this.controlGlosario(0)}}>
+                                                <IconHelp/>
+                                            </InputAdornment>
 
+                                        )
+                                    }}
+                                />
+                            </Grid>
+
+                            <Grid item md={6} xs={12}>
+                                <TextField
+                                    id="read-only-input"
+                                    label="Puesto"
+                                    defaultValue={servidor.puesto}
+                                    className={classes.textField}
+                                    margin="normal"
+                                    InputProps={{
+                                        readOnly: true,
+                                        className: classes.fontSmall,
+                                        endAdornment: (
+                                            <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(2)}}>
+                                                <IconHelp/>
+                                            </InputAdornment>
+                                        )
+                                    }}
+                                />
+                            </Grid>
 
                             <Grid item md={6} xs={12}>
                                 <TextField
@@ -271,24 +307,27 @@ class DetalleServidorSancionado extends React.Component {
                                     }}
                                 />
                             </Grid>
+
+
                             <Grid item md={6} xs={12}>
                                 <TextField
                                     id="read-only-input"
-                                    label="Expediente"
-                                    defaultValue={servidor.expediente}
+                                    label="Tipo de falta"
+                                    defaultValue={servidor.tipo_falta}
                                     className={classes.textField}
                                     margin="normal"
                                     InputProps={{
                                         readOnly: true,
                                         className: classes.fontSmall,
                                         endAdornment: (
-                                            <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(3)}}>
+                                            <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(5)}}>
                                                 <IconHelp/>
                                             </InputAdornment>
                                         )
                                     }}
                                 />
                             </Grid>
+
                             <Grid item md={6} xs={12}>
                                 <TextField
                                     id="read-only-input"
@@ -301,6 +340,24 @@ class DetalleServidorSancionado extends React.Component {
                                         className: classes.fontSmall,
                                         endAdornment: (
                                             <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(4)}}>
+                                                <IconHelp/>
+                                            </InputAdornment>
+                                        )
+                                    }}
+                                />
+                            </Grid>
+                            <Grid item md={6} xs={12}>
+                                <TextField
+                                    id="read-only-input"
+                                    label="Fecha notificación"
+                                    defaultValue={servidor.resolucion ? servidor.resolucion.fecha_notificacion : servidor.resolucion}
+                                    className={classes.textField}
+                                    margin="normal"
+                                    InputProps={{
+                                        readOnly: true,
+                                        className: classes.fontSmall,
+                                        endAdornment: (
+                                            <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(6)}}>
                                                 <IconHelp/>
                                             </InputAdornment>
                                         )
@@ -325,7 +382,24 @@ class DetalleServidorSancionado extends React.Component {
                                     }}
                                 />
                             </Grid>
-
+                            <Grid item md={6} xs={12}>
+                                <TextField
+                                    id="read-only-input"
+                                    label="Causa"
+                                    defaultValue={servidor.causa}
+                                    className={classes.textField}
+                                    margin="normal"
+                                    InputProps={{
+                                        readOnly: true,
+                                        className: classes.fontSmall,
+                                        endAdornment: (
+                                            <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(9)}}>
+                                                <IconHelp/>
+                                            </InputAdornment>
+                                        )
+                                    }}
+                                />
+                            </Grid>
                             <Grid item md={6} xs={12}>
                                 <TextField
                                     id="read-only-input"
@@ -383,8 +457,8 @@ class DetalleServidorSancionado extends React.Component {
                             <Grid item md={6} xs={12}>
                                 <TextField
                                     id="read-only-input"
-                                    label="Causa"
-                                    defaultValue={servidor.causa}
+                                    label="Observaciones"
+                                    defaultValue={servidor.inhabilitacion? servidor.inhabilitacion.observaciones : servidor.inhabilitacion}
                                     className={classes.textField}
                                     margin="normal"
                                     InputProps={{
@@ -398,6 +472,7 @@ class DetalleServidorSancionado extends React.Component {
                                     }}
                                 />
                             </Grid>
+<Grid item xs={6}/>
                             <Grid item md={6} xs={12} align="center">
                                 <Button variant="contained"
                                         className={classes.downloadButton}

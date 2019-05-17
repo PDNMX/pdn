@@ -155,19 +155,36 @@ class DetalleParticular extends React.Component {
                                         <CloseButton />
                                     </IconButton>
                                 </Grid>
-                                <Grid item xs={12}>
+                                <Grid item md = {6} xs = {12}>
                                     <TextField
                                         id="read-only-input"
-                                        label="Hechos"
-                                        defaultValue={particular.causa_motivo_hechos}
+                                        label="Expediente"
+                                        defaultValue={particular.numero_expediente}
                                         className={classes.textField}
                                         margin="normal"
-                                        multiline
                                         InputProps={{
                                             readOnly: true,
                                             className:classes.fontSmall,
                                             endAdornment: (
-                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(0)}}>
+                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(2)}}>
+                                                    <IconHelp/>
+                                                </InputAdornment>
+                                            )
+                                        }}
+                                    />
+                                </Grid>
+                                <Grid item md = {6} xs = {12}>
+                                    <TextField
+                                        id="read-only-input"
+                                        label="Nombre/Razón social"
+                                        defaultValue={particular.nombre_razon_social}
+                                        className={classes.textField}
+                                        margin="normal"
+                                        InputProps={{
+                                            readOnly: true,
+                                            className:classes.fontSmall,
+                                            endAdornment: (
+                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(2)}}>
                                                     <IconHelp/>
                                                 </InputAdornment>
                                             )
@@ -196,8 +213,8 @@ class DetalleParticular extends React.Component {
                                 <Grid item md = {6} xs = {12}>
                                     <TextField
                                         id="read-only-input"
-                                        label="Fecha notificación"
-                                        defaultValue={particular.fecha_notificacion}
+                                        label="Institución"
+                                        defaultValue={particular.institucion_dependencia ? particular.institucion_dependencia.nombre + '('+particular.institucion_dependencia.siglas+')' : particular.institucion_dependencia}
                                         className={classes.textField}
                                         margin="normal"
                                         InputProps={{
@@ -214,8 +231,102 @@ class DetalleParticular extends React.Component {
                                 <Grid item md = {6} xs = {12}>
                                     <TextField
                                         id="read-only-input"
-                                        label="Fecha resolución"
-                                        defaultValue={particular.fechaResolucion}
+                                        label="Autoridad sancionadora"
+                                        defaultValue={particular.autoridad_sancionadora}
+                                        className={classes.textField}
+                                        margin="normal"
+                                        InputProps={{
+                                            readOnly: true,
+                                            className:classes.fontSmall,
+                                            endAdornment: (
+                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(2)}}>
+                                                    <IconHelp/>
+                                                </InputAdornment>
+                                            )
+                                        }}
+                                    />
+                                </Grid>
+                                <Grid item md={6} xs={12}>
+                                    <TextField
+                                        id="read-only-input"
+                                        label="Responsable de la información"
+                                        defaultValue={particular.responsable}
+                                        className={classes.textField}
+                                        margin="normal"
+                                        InputProps={{
+                                            readOnly: true,
+                                            className:classes.fontSmall,
+                                            endAdornment: (
+                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(6)}}>
+                                                    <IconHelp/>
+                                                </InputAdornment>
+                                            )
+                                        }}
+                                    />
+                                </Grid>
+
+                                <Grid item xs={12} md={6}>
+                                    <TextField
+                                        id="read-only-input"
+                                        label="Hechos"
+                                        defaultValue={particular.causa_motivo_hechos}
+                                        className={classes.textField}
+                                        margin="normal"
+                                        multiline
+                                        InputProps={{
+                                            readOnly: true,
+                                            className:classes.fontSmall,
+                                            endAdornment: (
+                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(0)}}>
+                                                    <IconHelp/>
+                                                </InputAdornment>
+                                            )
+                                        }}
+                                    />
+                                </Grid>
+                                <Grid item xs={12} md={6}>
+                                    <TextField
+                                        id="read-only-input"
+                                        label="Tipo falta"
+                                        defaultValue={particular.tipo_falta}
+                                        className={classes.textField}
+                                        margin="normal"
+                                        multiline
+                                        InputProps={{
+                                            readOnly: true,
+                                            className:classes.fontSmall,
+                                            endAdornment: (
+                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(0)}}>
+                                                    <IconHelp/>
+                                                </InputAdornment>
+                                            )
+                                        }}
+                                    />
+                                </Grid>
+                                <Grid item xs={12} md={6}>
+                                    <TextField
+                                        id="read-only-input"
+                                        label="Tipo sanción"
+                                        defaultValue={particular.tipo_sancion}
+                                        className={classes.textField}
+                                        margin="normal"
+                                        multiline
+                                        InputProps={{
+                                            readOnly: true,
+                                            className:classes.fontSmall,
+                                            endAdornment: (
+                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(0)}}>
+                                                    <IconHelp/>
+                                                </InputAdornment>
+                                            )
+                                        }}
+                                    />
+                                </Grid>
+                                <Grid item md = {6} xs = {12}>
+                                    <TextField
+                                        id="read-only-input"
+                                        label="Sentido resolución"
+                                        defaultValue={particular.resolucion ? particular.resolucion.sentido : particular.resolucion}
                                         className={classes.textField}
                                         margin="normal"
                                         InputProps={{
@@ -223,6 +334,25 @@ class DetalleParticular extends React.Component {
                                             className:classes.fontSmall,
                                             endAdornment: (
                                                 <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(3)}}>
+                                                    <IconHelp/>
+                                                </InputAdornment>
+                                            )
+                                        }}
+                                    />
+                                </Grid>
+
+                                <Grid item md = {6} xs = {12}>
+                                    <TextField
+                                        id="read-only-input"
+                                        label="Fecha notificación"
+                                        defaultValue={particular.fecha_notificacion}
+                                        className={classes.textField}
+                                        margin="normal"
+                                        InputProps={{
+                                            readOnly: true,
+                                            className:classes.fontSmall,
+                                            endAdornment: (
+                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(2)}}>
                                                     <IconHelp/>
                                                 </InputAdornment>
                                             )
@@ -253,7 +383,7 @@ class DetalleParticular extends React.Component {
                                     <TextField
                                         id="read-only-input"
                                         label="Monto"
-                                        defaultValue={particular.multa ? particular.multa.monto + particular.multa.moneda : particular.multa}
+                                        defaultValue={particular.multa ? particular.multa.monto + ' '+particular.multa.moneda : particular.multa}
                                         className={classes.textField}
                                         margin="normal"
                                         InputProps={{
@@ -270,15 +400,15 @@ class DetalleParticular extends React.Component {
                                 <Grid item md={6} xs={12}>
                                     <TextField
                                         id="read-only-input"
-                                        label="Responsable de la información"
-                                        defaultValue={particular.responsable}
+                                        label="Observaciones"
+                                        defaultValue={particular.observaciones}
                                         className={classes.textField}
                                         margin="normal"
                                         InputProps={{
                                             readOnly: true,
                                             className:classes.fontSmall,
                                             endAdornment: (
-                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(6)}}>
+                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(7)}}>
                                                     <IconHelp/>
                                                 </InputAdornment>
                                             )
@@ -303,6 +433,7 @@ class DetalleParticular extends React.Component {
                                         }}
                                     />
                                 </Grid>
+
                                 <Grid item md={6} xs={12} className={classes.centrado}></Grid>
                                 <Grid item md={6} xs={12} className={classes.centrado}>
                                     <Button color="primary" variant="text" size="small">

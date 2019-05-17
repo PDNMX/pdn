@@ -32,7 +32,7 @@ const columnData = [
     {id: 'apellidoUno', disablePadding: false, label: 'Apellido Uno', position: 3, mostrar: true},
     {id: 'apellidoDos', disablePadding: false, label: 'Apellido Dos', position: 4, mostrar: true},
     {id: 'institucion', disablePadding: false, label: 'Institución', position: 5, mostrar: true},
-    {id: 'autoridad', disablePadding: false, label: 'Autoridad', position: 6, mostrar: true},
+    {id: 'autoridad', disablePadding: false, label: 'Autoridad Sancionadora', position: 6, mostrar: true},
     {
         id: 'fecha_resolucion',
         disablePadding: false,
@@ -140,13 +140,13 @@ const toolbarStyles = theme => ({
 
 
 let EnhancedTableToolbar = props => {
-    const {classes, handleChangeCampo, nombreServidor, apellidoUno, apellidoDos, institucion, handleSearch, handleCleanAll} = props;
+    const {classes, handleChangeCampo, nombreServidor, apellidoUno, apellidoDos, institucion,rfc,curp ,handleSearch, handleCleanAll} = props;
     return (
         <Toolbar className={classes.toolBarStyle}>
             <BusquedaServidor handleCleanAll={handleCleanAll} handleSearch={handleSearch}
                               handleChangeCampo={handleChangeCampo}
                               nombreServidor={nombreServidor} apellidoUno={apellidoUno} apellidoDos={apellidoDos}
-                              institucion={institucion}/>
+                              institucion={institucion} rfc={rfc} curp={curp}/>
         </Toolbar>
     );
 };
@@ -170,6 +170,8 @@ class EnhancedTable extends React.Component {
             nombreServidor: '',
             apellidoUno: '',
             apellidoDos: '',
+            rfc : '',
+            curp : '',
             data: [],
             filterData: [],
             page: 0,
@@ -228,7 +230,7 @@ class EnhancedTable extends React.Component {
     isSelected = id => this.state.selected.indexOf(id) !== -1;
 
     handleSearchAPI = (typeSearch) => {
-        let {institucion, nombreServidor, apellidoUno, apellidoDos} = this.state;
+        let {institucion, nombreServidor, apellidoUno, apellidoDos,rfc,curp} = this.state;
         this.setState({loading: true});
         let filtros = {};
         let offset = 0;
@@ -236,7 +238,8 @@ class EnhancedTable extends React.Component {
             if (nombreServidor) filtros.nombres = '%' + nombreServidor + '%';
             if (apellidoUno) filtros.primer_apellido = '%' + apellidoUno + '%';
             if (apellidoDos) filtros.segundo_apellido = '%' + apellidoDos + '%';
-
+            if(rfc) filtros.rfc = '%' + rfc + '%';
+            if(curp) filtros.curp = '%' + curp + '%';
         }
         if(typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE')  offset = (this.state.rowsPerPage * this.state.page) ;
         let limit = (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.state.rowsPerPage : null;

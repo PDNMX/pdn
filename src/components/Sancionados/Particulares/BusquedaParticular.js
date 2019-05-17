@@ -198,8 +198,20 @@ class BusquedaParticular extends React.Component {
                 <Grid item xs={12}>
                     <Typography variant="h6"  paragraph>Busca un particular sancionado</Typography>
                 </Grid>
-
-                <Grid item md={8} xs={12}>
+                <Grid item md={6} xs={12}>
+                    <FormControl className={classes.formControl}>
+                        <Select
+                            classes={classes}
+                            styles={selectStyles}
+                            options={this.state.suggestions}
+                            components={components}
+                            value={{value: institucion, label: institucion}}
+                            onChange={(e) => handleChangeCampo('institucion',e)}
+                            id="campoSelectInstitucion"
+                        />
+                    </FormControl>
+                </Grid>
+                <Grid item md={3} xs={12}>
                     <FormControl className={classes.formControl}>
                         <TextField
                             id="search"
@@ -214,7 +226,7 @@ class BusquedaParticular extends React.Component {
                         />
                     </FormControl>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid item xs={12} md={3}>
                     <FormControl className={classes.formControl}>
                         <TextField
                             id="search"
@@ -231,20 +243,7 @@ class BusquedaParticular extends React.Component {
                     </FormControl>
                 </Grid>
 
-                <Grid item md={8} xs={12}>
-                    <FormControl className={classes.formControl}>
-                        <Select
-                            classes={classes}
-                            styles={selectStyles}
-                            options={this.state.suggestions}
-                            components={components}
-                            value={{value: institucion, label: institucion}}
-                            onChange={(e) => handleChangeCampo('institucion',e)}
-                            id="campoSelectInstitucion"
-                        />
-                    </FormControl>
-                </Grid>
-                <Grid item md={2}/>
+                <Grid item md={10}/>
                 <Grid item xs={12} md={1} className={classes.centrado}>
                     <Button variant="contained" color="secondary" className={classes.button} onClick={this.buscar}>
                         Buscar
