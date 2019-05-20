@@ -16,9 +16,6 @@ import Grid from "@material-ui/core/Grid/Grid";
 import EnhancedTableHead from '../../Tablas/EnhancedTableHead';
 import Typography from "@material-ui/core/Typography/Typography";
 import Modal from "@material-ui/core/Modal/Modal";
-import ApolloClient from "apollo-boost";
-import {gql} from "apollo-boost";
-import {InMemoryCache} from "apollo-cache-inmemory";
 import rp from "request-promise";
 
 function getSorting(order, orderBy) {
@@ -289,7 +286,6 @@ class EnhancedTable extends React.Component {
         rp(options)
             .then(res => {
                 let dataAux = res.data;
-                console.log("dataaux: ",dataAux);
                 let total = res.totalRows;
                 typeSearch === 'ALL' ? this.setState({data: dataAux, loading: false}, () => {
                     this.btnDownloadAll.triggerDown();

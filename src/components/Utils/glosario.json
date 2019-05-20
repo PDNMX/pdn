@@ -80,7 +80,47 @@
     {
       "id": 7,
       "title": "Fecha de última actualización",
-      "description": "Fecha de la consulta"
+      "description": "La fecha y hora en la que se agrega o modifica el registro"
+    },
+    {
+      "id" : 8,
+      "title" :  "Expediente",
+      "description" : "Número de expediente"
+    },
+    {
+      "id" : 9,
+      "title" : "Nombre/Razón social",
+      "description" : "Nombre o razón social del contratista"
+    },
+    {
+      "id" : 10,
+      "title" : "Institución",
+      "description" : "Institución o dependencia"
+    },
+    {
+      "id" : 11,
+      "title" : "Autoridad sancionadora",
+      "description" : "OIC o Unidad responsable de la sanción"
+    },
+    {
+      "id" : 12,
+      "title" : "Tipo falta",
+      "description" : "Ej.,soborno, participación ilícita, tráfico de influencias, uso información falsa,colusión, obstrucción de facultades, contratación indebida, uso indebido de recusos públicos."
+    },
+    {
+      "id" : 13,
+      "title" : "Tipo sanción",
+      "description" : " I= Inhabilitado, M = Multado, S = Suspensión de actividades, D = Disolución de la sociedad. e.g., ['I', 'M'] significa que el contratista fue inhabilitado y multado"
+    },
+    {
+      "id" : 14,
+      "title" : "Sentido resolución",
+      "description" : "Sentido de la resolución. Por ejemplo, Sancionatoria con multa"
+    },
+    {
+      "id" : 15,
+      "title" : "Observaciones",
+      "description" : "Cualquier observación pertinente"
     }
   ],
   "servidoresSancionados": [
@@ -96,13 +136,13 @@
     },
     {
       "id": 2,
-      "title": "Autoridad",
+      "title": "Autoridad sancionadora",
       "description": "Nombre de la Autoridad que impone la sanción"
     },
     {
       "id": 3,
       "title": "Expediente",
-      "description": "Número de Expediente del Procedimiento Administrativo de Responsabilidades"
+      "description": "Número de Expediente."
     },
     {
       "id": 4,
@@ -112,7 +152,7 @@
     {
       "id": 5,
       "title": "Sanción impuesta",
-      "description": "Tipo de sanción impuesta: INHABILITACIÓN"
+      "description": "Tipo de sanción impuesta: I = Inhabilitado, M = Multado, S = Suspensión de actividades, D = Disolución de la sociedad. e.g., ['I', 'M'] significa que el contratista fue inhabilitado y multado"
     },
     {
       "id": 6,
@@ -133,8 +173,31 @@
       "id": 9,
       "title": "Causa",
       "description": "Causa por la cual se impuso la sanción: \n NEGLIGENCIA ADMINISTRATIVA \n VIOLACIÓN PROCEDIMIENTOS DE CONTRATACIÓN \n VIOLACIÓN LEYES Y NORMATIVIDAD PRESUPUESTAL \n ABUSO DE AUTORIDAD \n COHECHO O EXTORSIÓ \n INCUMPLIMIENTO EN DECLARACIÓN DE SITUACIÓN PATRIMONIAL \n DELITO COMETIDO POR SERVIDORES PÚBLICOS \n EJJERCICIO INDEBIDO DE SUS FUNCIONES EN MATERIA MIGRATORIA \n VIOLACIÓN A LOS DERECHOS HUMANOS \n OTRA"
-
-
+    },
+    {
+      "id": 10,
+      "title": "Puesto",
+      "description": "Puesto del Servidor Público sancionado"
+    },
+    {
+      "id": 11,
+      "title": "Tipo falta",
+      "description": "Ej.,soborno, participación ilícita, tráfico de influencias, uso información falsa,colusión, obstrucción de facultades, contratación indebida, uso indebido de recusos públicos"
+    },
+    {
+      "id": 12,
+      "title": "Puesto",
+      "description": "Puesto del Servidor Pùblico sancionado"
+    },
+    {
+      "id": 13,
+      "title": "Fecha notificación",
+      "description": "Fecha de notificación de la resolución"
+    },
+    {
+      "id" : 14,
+      "title" : "Observaciones",
+      "description" : "Cualquier observación pertinente"
     }
   ]
 }

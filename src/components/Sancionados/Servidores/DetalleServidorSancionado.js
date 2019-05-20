@@ -17,7 +17,10 @@ import DialogActions from "@material-ui/core/DialogActions/DialogActions";
 import glosario from "../../Utils/glosario.json";
 import DownloadIcon from "@material-ui/icons/CloudDownload";
 import * as jsPDF from "jspdf";
-import logotipoSESNA from "../../../assets/img/Logo-SESNA.9b04be52.png";
+
+
+let aux = new Image();
+aux.src = "/LogoSesna.png";
 
 function getGlosarioItem(id){
     return glosario.servidoresSancionados[id];
@@ -138,7 +141,7 @@ class DetalleServidorSancionado extends React.Component {
         });
         doc.setFontSize(12);
         doc.setFontType('bold');
-        doc.addImage(logotipoSESNA,'PNG',30,20,150,70);
+        doc.addImage(aux,'PNG',30,20,150,70);
         doc.text('SECRETARÍA EJECUTIVA DEL SISTEMA NACIONAL ANTICORRUPCIÓN',350,60,{maxWidth:250, align : 'justify'});
         doc.text('DOCUMENTO DE PRUEBA',doc.internal.pageSize.getWidth()/2,150,null,null,'center');
 
@@ -183,8 +186,8 @@ class DetalleServidorSancionado extends React.Component {
                     <div style={getModalStyle()} className={classes.paperGlosario}>
                         <DialogTitle>{getGlosarioItem(id).title}</DialogTitle>
                         <DialogContent>
-                            <DialogContentText component={'span'}>
-                                <pre><Typography variant={"body1"}>{getGlosarioItem(id).description}</Typography></pre>
+                            <DialogContentText>
+                                {getGlosarioItem(id).description}
                             </DialogContentText>
                         </DialogContent>
                         <DialogActions>
@@ -281,7 +284,7 @@ class DetalleServidorSancionado extends React.Component {
                                         readOnly: true,
                                         className: classes.fontSmall,
                                         endAdornment: (
-                                            <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(2)}}>
+                                            <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(10)}}>
                                                 <IconHelp/>
                                             </InputAdornment>
                                         )
@@ -320,7 +323,7 @@ class DetalleServidorSancionado extends React.Component {
                                         readOnly: true,
                                         className: classes.fontSmall,
                                         endAdornment: (
-                                            <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(5)}}>
+                                            <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(11)}}>
                                                 <IconHelp/>
                                             </InputAdornment>
                                         )
@@ -357,7 +360,7 @@ class DetalleServidorSancionado extends React.Component {
                                         readOnly: true,
                                         className: classes.fontSmall,
                                         endAdornment: (
-                                            <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(6)}}>
+                                            <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(13)}}>
                                                 <IconHelp/>
                                             </InputAdornment>
                                         )
