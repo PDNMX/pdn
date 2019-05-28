@@ -3,12 +3,12 @@ import {withStyles} from "@material-ui/core/styles";
 import Header from "./Header/Header";
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import PropTypes from 'prop-types';
 
 const styles = theme => ({
     root :{
         flexGrow: 1
     },
-
     item: {
         maxWidth:1000,
         paddingTop: 100,
@@ -84,6 +84,42 @@ class Metodologia extends React.Component{
                     <Typography paragraph>
                     Evaluar la calidad de los conjuntos de datos nos servirá tanto a usuarios como al gobierno a:
                     </Typography>
+                    
+                    <div style={{background: '#f2f2f2', padding: '10px'}}>
+                    <ul className={classes.ul}>
+                        <li className={classes.li}>
+                            <Typography className={classes.sublist}>
+                                <span className={classes.bullet}/>  Identificar las áreas de oportunidad en la calidad de los datos;
+                            </Typography>
+                        </li>
+                        <li className={classes.li}>
+                            <Typography className={classes.sublist}>
+                                <span className={classes.bullet}/>  Que las entidades generadoras de datos entiendan cómo mejorar la calidad calidad de los datos que generan;
+                            </Typography>
+                        </li>
+                        <li className={classes.li}>
+                            <Typography className={classes.sublist}>
+                                <span className={classes.bullet}/>  Mejorar la calidad de los datos;
+                            </Typography>
+                        </li>
+                        <li className={classes.li}>
+                            <Typography className={classes.sublist}>
+                                <span className={classes.bullet}/>  Mejorar las prácticas en general de generación de los datos de gobierno;
+                            </Typography>
+                        </li>
+                        <li className={classes.li}>
+                            <Typography className={classes.sublist}>
+                                <span className={classes.bullet}/>  Que los usuarios de los datos identifiquen fácilmente los datos que tienen mayor calidad, e
+                            </Typography>
+                        </li>
+                        <li className={classes.li}>
+                            <Typography className={classes.sublist}>
+                                <span className={classes.bullet}/>  Incrementar la confianza para construir productos de datos con los datos del gobierno.
+                            </Typography>
+                        </li>
+                    </ul>
+                    </div>
+
 
                 </Grid>
 
@@ -93,5 +129,9 @@ class Metodologia extends React.Component{
     }
 
 }
+
+Metodologia.propTypes = {
+    classes: PropTypes.object.isRequired
+};
 
 export default withStyles(styles)(Metodologia);
