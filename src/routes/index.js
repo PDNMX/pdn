@@ -24,6 +24,8 @@ import EspecificacionesSancionados from "../components/Especificaciones/Sanciona
 import EspecificacionesServidoresIntervienen from "../components/Especificaciones/ServidoresIntervienen/ServidoresIntervienen";
 import DashboardSancionados from "../components/Sancionados/dashboard/Dashboard";
 
+import Metodologia from "../components/GAA/Calidad/Metodologia";
+
 const pdnRoutes = [
 
     {
@@ -150,6 +152,11 @@ const pdnRoutes = [
         private: true,
         perfom : "admon-pdn-consultaConexiones:visit"
     },
+    {
+        path: "/gaa/calidad",
+        component: Metodologia,
+        private: false
+    }
 
 ];
 
