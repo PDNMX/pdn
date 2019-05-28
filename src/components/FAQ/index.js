@@ -38,8 +38,8 @@ const styles = theme => ({
         paddingLeft: theme.spacing.unit
     },
     sublist: {
-      color: '#606060',
-      fontSize: '0.975rem',
+        color: '#606060',
+        fontSize: '0.975rem',
     }
 });
 
