@@ -79,52 +79,56 @@ class Metodologia extends React.Component{
 
 
                     <Typography paragraph>
-                    La evaluación de la calidad de los datos (DQA, por sus siglas en inglés) es el evaluar metódica y estadísticamente los datos para determinar si cumplen con la calidad requerida por la aplicación de negocio. Esto implica, entre otras cosas, ver si los datos son del tipo y la cantidad adecuada para que puedan servir a un fin.
+                        La evaluación de la calidad de los datos (DQA, por sus siglas en inglés) es el evaluar metódica y estadísticamente los datos para determinar si cumplen con la calidad requerida por la aplicación de negocio. Esto implica, entre otras cosas, ver si los datos son del tipo y la cantidad adecuada para que puedan servir a un fin.
                     </Typography>
                     <Typography paragraph>
-                    Evaluar la calidad de los conjuntos de datos nos servirá tanto a usuarios como al gobierno a:
+                        Evaluar la calidad de los conjuntos de datos nos servirá tanto a usuarios como al gobierno a:
                     </Typography>
-                    
-                    <div style={{background: '#f2f2f2', padding: '10px'}}>
-                    <ul className={classes.ul}>
-                        <li className={classes.li}>
-                            <Typography className={classes.sublist}>
-                                <span className={classes.bullet}/>  Identificar las áreas de oportunidad en la calidad de los datos;
-                            </Typography>
-                        </li>
-                        <li className={classes.li}>
-                            <Typography className={classes.sublist}>
-                                <span className={classes.bullet}/>  Que las entidades generadoras de datos entiendan cómo mejorar la calidad calidad de los datos que generan;
-                            </Typography>
-                        </li>
-                        <li className={classes.li}>
-                            <Typography className={classes.sublist}>
-                                <span className={classes.bullet}/>  Mejorar la calidad de los datos;
-                            </Typography>
-                        </li>
-                        <li className={classes.li}>
-                            <Typography className={classes.sublist}>
-                                <span className={classes.bullet}/>  Mejorar las prácticas en general de generación de los datos de gobierno;
-                            </Typography>
-                        </li>
-                        <li className={classes.li}>
-                            <Typography className={classes.sublist}>
-                                <span className={classes.bullet}/>  Que los usuarios de los datos identifiquen fácilmente los datos que tienen mayor calidad, e
-                            </Typography>
-                        </li>
-                        <li className={classes.li}>
-                            <Typography className={classes.sublist}>
-                                <span className={classes.bullet}/>  Incrementar la confianza para construir productos de datos con los datos del gobierno.
-                            </Typography>
-                        </li>
-                    </ul>
+
+                    <div style={{background: '#f2f2f2', padding: '10px', marginBottom: '25px'}}>
+                        <ul className={classes.ul}>
+                            <li className={classes.li}>
+                                <Typography className={classes.sublist}>
+                                    <span className={classes.bullet}/>  <b>Identificar</b> las áreas de oportunidad en la calidad de los datos;
+                                </Typography>
+                            </li>
+                            <li className={classes.li}>
+                                <Typography className={classes.sublist}>
+                                    <span className={classes.bullet}/>  Que las entidades generadoras de datos <b>entiendan cómo mejorar</b> la calidad calidad de los datos que generan;
+                                </Typography>
+                            </li>
+                            <li className={classes.li}>
+                                <Typography className={classes.sublist}>
+                                    <span className={classes.bullet}/>  <b>Mejorar</b> la calidad de los datos;
+                                </Typography>
+                            </li>
+                            <li className={classes.li}>
+                                <Typography className={classes.sublist}>
+                                    <span className={classes.bullet}/>  <b>Mejorar las prácticas</b> en general de generación de los datos de gobierno;
+                                </Typography>
+                            </li>
+                            <li className={classes.li}>
+                                <Typography className={classes.sublist}>
+                                    <span className={classes.bullet}/>  Que los usuarios de los datos <b>identifiquen</b> fácilmente los datos que tienen mayor calidad, e
+                                </Typography>
+                            </li>
+                            <li className={classes.li}>
+                                <Typography className={classes.sublist}>
+                                    <span className={classes.bullet}/>  <b>Incrementar la confianza</b> para construir productos de datos con los datos del gobierno.
+                                </Typography>
+                            </li>
+                        </ul>
                     </div>
 
 
+                    <Typography paragraph>
+                        <b>Pasos para la evaluación de calidad de los datos Guía de Apertura Anticorrupción</b>
+                    </Typography>
+
+
+
                 </Grid>
-
             </Grid>
-
         </div>
     }
 
