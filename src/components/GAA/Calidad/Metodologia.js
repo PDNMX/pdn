@@ -62,7 +62,7 @@ class Metodologia extends React.Component{
 
                 <Grid item xs={12} className={classes.item}>
 
-                    <Typography variant="h5">Motivación</Typography>
+                    <Typography variant="h5" paragraph>Motivación</Typography>
 
 
                     <Typography paragraph>
@@ -83,7 +83,7 @@ class Metodologia extends React.Component{
                     </Typography>
 
 
-                    <Typography variant="h5">¿Qué es la evaluación de la calidad de los datos ?</Typography>
+                    <Typography variant="h5" paragraph>¿Qué es la evaluación de la calidad de los datos?</Typography>
 
 
                     <Typography paragraph>
@@ -136,7 +136,7 @@ class Metodologia extends React.Component{
                     <img src={Pasos} alt="Pasos" className={classes.pasos}/>
 
 
-                    <Typography variant="h5">Propuesta de métricas de calidad</Typography>
+                    <Typography variant="h5" paragraph>Propuesta de métricas de calidad</Typography>
                     <Typography paragraph>
                         Las métricas de calidad de los datos toman en consideración:
                     </Typography>
@@ -228,18 +228,18 @@ class Metodologia extends React.Component{
                     </ul>
 
 
-                    <Typography variant="h5"> Evaluación </Typography>
+                    <Typography variant="h5" paragraph> Evaluación </Typography>
                     <Typography paragraph>
                         La calidad de cada conjunto de datos fue evaluada usando los rubros anteriormente mencionados. La evaluación detallada de los conjuntos de datos de la Guía puede encontrarse aquí.
                     </Typography>
 
-                    <Typography variant="h5"> Hallazgos y recomendaciones</Typography>
+                    <Typography variant="h5" paragraph> Hallazgos y recomendaciones</Typography>
 
                     <Typography paragraph>
                         Estaremos publicando próximamente el análisis realizado y los siguientes pasos. Actualmente nos encontramos notificando a las instituciones el estatus de sus datos.
                     </Typography>
 
-                    <Typography variant="h5"> Fuentes:</Typography>
+                    <Typography variant="h5" paragraph> Fuentes:</Typography>
 
                     <ul className={classes.ul}>
                         <li><Typography>1. Maydanchik, Arkady. Data quality assessment. Technics publications, 2007.</Typography></li>
