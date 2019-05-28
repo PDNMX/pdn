@@ -4,16 +4,23 @@ import PropTypes from 'prop-types';
 import Grid from "@material-ui/core/Grid/Grid";
 import "./index.css";
 import Typography from "@material-ui/core/Typography";
-import {LinePlot} from "d3plus-react";
+import {LinePlot, Pie} from "d3plus-react";
 import rp from "request-promise";
 
 const styles = theme => ({
-    frameChart : {
-        marginTop : "15px",
-        marginBottom : "15px"
+    frameChart: {
+        marginTop: "15px",
+        marginBottom: "15px"
     },
-    desc:{
-        textAlign : "center"
+    titulo: {
+        textAlign: "center",
+        marginBottom: "30px",
+    },
+    descripcion: {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: "15px"
     }
 });
 
@@ -36,36 +43,35 @@ function aux() {
 
 
 class AnioResolucionSanciones extends React.Component {
-    state= {
-
-    };
-
+    state = {};
     componentDidMount() {
         aux().then(result => {
+            let total = 0;
             let aux = result.data.map(item => {
-                return  {
-                    anio : item.anio_resolucion.toString(),
+                total += parseInt(item.count);
+                return {
+                    anio: item.anio_resolucion.toString(),
                     x: item.anio_resolucion,
-                    y : parseInt(item.count)
+                    y: parseInt(item.count)
                 }
             });
-
+console.log("Total: ",total);
             this.setState({
                     methods: {
                         data: aux,
                         xConfig: {
-                            title : "Año de la sanción",
-                            gridConfig:  {stroke: "black"},
+                            title: "Año de la sanción",
+                            gridConfig: {stroke: "black"},
                         },
-                        yConfig : {
-                            title : "Número de sanciones",
+                        yConfig: {
+                            title: "Número de sanciones",
 
                         },
                         legend: false,
                         height: 400,
-                        shapeConfig:{
+                        shapeConfig: {
                             Line: {
-                                strokeWidth : 2,
+                                strokeWidth: 2,
                                 stroke: "blue",
                             }
                         },
@@ -74,11 +80,29 @@ class AnioResolucionSanciones extends React.Component {
                                 return "Datos";
                             },
                             tbody: [
-                                ["Año de la sanción: ",function (d) {
+                                ["Año de la sanción: ", function (d) {
                                     return d["anio"]
                                 }
                                 ],
-                                ["Número de sanciones: ",function (d) {
+                                ["Número de sanciones: ", function (d) {
+                                    return d["y"]
+                                }
+                                ]
+                            ]
+                        }
+                    },
+                    configPie: {
+                        data: aux,
+                        groupBy: "anio",
+                        value: function (d) {
+                            return d["y"]
+                        },
+                        height: 300,
+                        label:function(d){return d["anio"]+"\n"+"("+((d["y"]*100) / total).toFixed(2)+"%)"},
+                        legend :false,
+                        tooltipConfig: {
+                            tbody: [
+                                ["Número de sanciones: ", function (d) {
                                     return d["y"]
                                 }
                                 ]
@@ -96,18 +120,33 @@ class AnioResolucionSanciones extends React.Component {
         return (
             <div>
                 <Grid container spacing={0} justify='center' className={classes.frameChart}>
-                    <Grid item xs={12}>
-                        <Typography variant={"h6"} className={classes.desc}>
-                            {"Año de las sanciones"}
+                    <Grid item xs={12} md={12}>
+                        <Typography variant={"h6"} className={classes.titulo}>
+                            {"Número de sanciones por año"}
                         </Typography>
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} md={8}>
                         {
                             this.state.methods && this.state.methods.data &&
                             <LinePlot config={this.state.methods}/>
                         }
-
                     </Grid>
+                    <Grid item xs={12} md={4}>
+                        {
+                            this.state.methods && this.state.methods.data &&
+                            <Pie config={this.state.configPie}/>
+                        }
+                    </Grid>
+                    <Grid item xs={12} className={classes.descripcion}>
+                        <Typography>
+                            Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem
+                            Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un
+                            impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de
+                            textos y los mezcló de tal manera que logró hacer un libro de textos especimen.
+                        </Typography>
+                    </Grid>
+
+
                 </Grid>
 
             </div>

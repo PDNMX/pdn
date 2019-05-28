@@ -8,19 +8,30 @@ import {Treemap} from "d3plus-react";
 import rp from "request-promise";
 
 const styles = theme => ({
-    frameChart : {
-        marginTop : "15px",
-        marginBottom : "15px"
+    frameChart: {
+        marginTop: "15px",
+        marginBottom: "15px"
     },
-    desc:{
-        textAlign : "center"
+    desc: {
+        textAlign: "center"
+    },
+    titulo: {
+        textAlign: "center",
+        marginBottom: "30px",
+    },
+    descripcion: {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: "15px"
     }
 });
+
 
 function aux() {
     return new Promise((resolve, reject) => {
         let options = {
-            uri: 'http://localhost:3100/viz/getDependenciaCausa',
+            uri: 'http://localhost:3100/viz/getDependenciaMayor',
             json: true,
             method: "GET"
         };
@@ -36,28 +47,44 @@ function aux() {
 
 
 class DependenciasSanciones extends React.Component {
-    state= {
-
-    };
+    state = {};
 
     componentDidMount() {
         aux().then(result => {
             let aux = result.data.map(item => {
-                return  {
-                     id : item.dependencia,
-                    group : item.causa,
-                    value : parseInt(item.total)
+                return {
+                    "value": parseInt(item.total_sanciones),
+                    "group": item.dependencia
                 }
             });
 
             this.setState({
                     methods: {
                         data: aux,
-                        legend: true,
                         height: 400,
-                        id : ["group"],
-                        size:"value"
-                        }
+                        groupBy: ["group"],
+                        sum: "value",
+                        tooltipConfig: {
+                            tbody: [
+                                ["Número de sanciones: ", function (d) {
+                                    return d["value"]
+                                }
+                                ]
+                            ]
+                        },
+                        legend :false,
+                        shapeConfig:{
+                            label: function (d) {
+                                return d["group"]+"\n"+d["value"]+" sanciones"
+                            },
+                            labelConfig:{
+                                fontMax : 18,
+                                fontMin : 10
+                            }
+
+                        },
+
+                    }
                 }
             )
         });
@@ -69,7 +96,7 @@ class DependenciasSanciones extends React.Component {
             <div>
                 <Grid container spacing={0} justify='center' className={classes.frameChart}>
                     <Grid item xs={12}>
-                        <Typography variant={"h6"} className={classes.desc}>
+                        <Typography variant={"h6"} className={classes.titulo}>
                             {"Dependencias con mayor número de sanciones"}
                         </Typography>
                     </Grid>
@@ -80,6 +107,19 @@ class DependenciasSanciones extends React.Component {
                         }
 
                     </Grid>
+                    <Grid item xs={12} className={classes.descripcion}>
+                        <Typography>
+                            Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem
+                            Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un
+                            impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de
+                            textos y los mezcló de tal manera que logró hacer un libro de textos especimen.
+                            Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem
+                            Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un
+                            impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de
+                            textos y los mezcló de tal manera que logró hacer un libro de textos especimen.
+                        </Typography>
+                    </Grid>
+
                 </Grid>
 
             </div>

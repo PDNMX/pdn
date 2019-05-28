@@ -1,0 +1,399 @@
+
+{
+  "header": {
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20190528.165455.22089.0.001.json",
+    "dumpEventTime": "2019-05-28T16:54:55Z",
+    "dumpEventTimeStamp": "1559080495428",
+    "processId": 22089,
+    "cwd": "/home/rmorquecho/Documentos/SESNA_PROYECTOS/pdn",
+    "commandLine": [
+      "/usr/bin/node",
+      "/home/rmorquecho/Documentos/SESNA_PROYECTOS/pdn/node_modules/react-scripts/scripts/start.js"
+    ],
+    "nodejsVersion": "v11.15.0",
+    "glibcVersionRuntime": "2.29",
+    "glibcVersionCompiler": "2.29",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "linux",
+    "componentVersions": {
+      "node": "11.15.0",
+      "v8": "7.0.276.38-node.19",
+      "uv": "1.28.0",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "67",
+      "nghttp2": "1.36.0",
+      "napi": "4",
+      "llhttp": "1.1.1",
+      "http_parser": "2.8.0",
+      "openssl": "1.1.1b",
+      "cldr": "35.1",
+      "icu": "64.2",
+      "tz": "2019a",
+      "unicode": "12.1"
+    },
+    "release": {
+      "name": "node",
+      "headersUrl": "https://nodejs.org/download/release/v11.15.0/node-v11.15.0-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v11.15.0/node-v11.15.0.tar.gz"
+    },
+    "osName": "Linux",
+    "osRelease": "4.19.42-1-MANJARO",
+    "osVersion": "#1 SMP PREEMPT Fri May 10 20:52:43 UTC 2019",
+    "osMachine": "x86_64",
+    "host": "rmorquecho"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x0000556559870a91",
+      "symbol": "report::TriggerNodeReport(v8::Isolate*, node::Environment*, char const*, char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, v8::Local<v8::String>) [/usr/bin/node]"
+    },
+    {
+      "pc": "0x000055655976129f",
+      "symbol": "node::OnFatalError(char const*, char const*) [/usr/bin/node]"
+    },
+    {
+      "pc": "0x0000556559907002",
+      "symbol": "v8::Utils::ReportOOMFailure(v8::internal::Isolate*, char const*, bool) [/usr/bin/node]"
+    },
+    {
+      "pc": "0x000055655990725b",
+      "symbol": "v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, bool) [/usr/bin/node]"
+    },
+    {
+      "pc": "0x0000556559c9e573",
+      "symbol": " [/usr/bin/node]"
+    },
+    {
+      "pc": "0x0000556559c9e6b4",
+      "symbol": " [/usr/bin/node]"
+    },
+    {
+      "pc": "0x0000556559cae656",
+      "symbol": "v8::internal::Heap::PerformGarbageCollection(v8::internal::GarbageCollector, v8::GCCallbackFlags) [/usr/bin/node]"
+    },
+    {
+      "pc": "0x0000556559caeffe",
+      "symbol": "v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags) [/usr/bin/node]"
+    },
+    {
+      "pc": "0x0000556559cb1a1d",
+      "symbol": "v8::internal::Heap::AllocateRawWithLightRetry(int, v8::internal::AllocationSpace, v8::internal::AllocationAlignment) [/usr/bin/node]"
+    },
+    {
+      "pc": "0x0000556559cb1a72",
+      "symbol": "v8::internal::Heap::AllocateRawWithRetryOrFail(int, v8::internal::AllocationSpace, v8::internal::AllocationAlignment) [/usr/bin/node]"
+    },
+    {
+      "pc": "0x0000556559c7f685",
+      "symbol": "v8::internal::Factory::NewFillerObject(int, bool, v8::internal::AllocationSpace) [/usr/bin/node]"
+    },
+    {
+      "pc": "0x0000556559eeedef",
+      "symbol": "v8::internal::Runtime_AllocateInNewSpace(int, v8::internal::Object**, v8::internal::Isolate*) [/usr/bin/node]"
+    },
+    {
+      "pc": "0x000034f23cdcfc5d",
+      "symbol": ""
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 1480159232,
+    "totalCommittedMemory": 1477517776,
+    "usedMemory": 1461241088,
+    "availableMemory": 49545480,
+    "memoryLimit": 1526909922,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 524288,
+        "committedMemory": 42224,
+        "capacity": 515584,
+        "used": 33520,
+        "available": 482064
+      },
+      "new_space": {
+        "memorySize": 2097152,
+        "committedMemory": 1366696,
+        "capacity": 1031168,
+        "used": 300752,
+        "available": 730416
+      },
+      "old_space": {
+        "memorySize": 323686400,
+        "committedMemory": 323095192,
+        "capacity": 315346648,
+        "used": 313572368,
+        "available": 1774280
+      },
+      "code_space": {
+        "memorySize": 5242880,
+        "committedMemory": 4675360,
+        "capacity": 3777664,
+        "used": 3777664,
+        "available": 0
+      },
+      "map_space": {
+        "memorySize": 5779456,
+        "committedMemory": 5509248,
+        "capacity": 3010880,
+        "used": 3010880,
+        "available": 0
+      },
+      "large_object_space": {
+        "memorySize": 1142829056,
+        "committedMemory": 1142829056,
+        "capacity": 1187104624,
+        "used": 1140545904,
+        "available": 46558720
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 0,
+        "used": 0,
+        "available": 0
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 1549,
+    "kernelCpuSeconds": 51.9838,
+    "cpuConsumptionPercent": 1.84002,
+    "maxRss": 1758240768,
+    "pageFaults": {
+      "IORequired": 15,
+      "IONotRequired": 20079967
+    },
+    "fsActivity": {
+      "reads": 3984,
+      "writes": 3792
+    }
+  },
+  "uvthreadResourceUsage": {
+    "userCpuSeconds": 734.522,
+    "kernelCpuSeconds": 29.0976,
+    "cpuConsumptionPercent": 0.877633,
+    "fsActivity": {
+      "reads": 3360,
+      "writes": 0
+    }
+  },
+  "libuv": [
+  ],
+  "environmentVariables": {
+    "SHELL": "/bin/bash",
+    "SESSION_MANAGER": "local/rmorquecho:@/tmp/.ICE-unix/1121,unix/rmorquecho:/tmp/.ICE-unix/1121",
+    "COLORTERM": "truecolor",
+    "XDG_MENU_PREFIX": "gnome-",
+    "npm_package_dependencies_ajv": "^6.9.1",
+    "npm_package_dependencies_react_scripts": "1.1.4",
+    "NODE": "/usr/bin/node",
+    "npm_config_ignore_scripts": "",
+    "npm_package_dependencies_moment": "^2.22.2",
+    "LC_ADDRESS": "es_MX.UTF-8",
+    "npm_package_dependencies_request": "^2.88.0",
+    "LC_NAME": "es_MX.UTF-8",
+    "SSH_AUTH_SOCK": "/run/user/1000/keyring/ssh",
+    "npm_package_private": "true",
+    "npm_config_argv": "{\"remain\":[],\"cooked\":[\"run\",\"start\"],\"original\":[\"start\"]}",
+    "npm_config_bin_links": "true",
+    "DESKTOP_SESSION": "gnome",
+    "LC_MONETARY": "es_MX.UTF-8",
+    "EDITOR": "/usr/bin/nano",
+    "npm_package_dependencies_axios": "^0.18.0",
+    "XDG_SEAT": "seat0",
+    "PWD": "/home/rmorquecho/Documentos/SESNA_PROYECTOS/pdn",
+    "npm_config_save_prefix": "^",
+    "LOGNAME": "rmorquecho",
+    "XDG_SESSION_DESKTOP": "gnome",
+    "QT_QPA_PLATFORMTHEME": "qt5ct",
+    "XDG_SESSION_TYPE": "x11",
+    "npm_package_dependencies_cors": "^2.8.5",
+    "npm_package_readmeFilename": "README.md",
+    "npm_package_dependencies_react": "^16.4.1",
+    "npm_package_scripts_build": "react-scripts build",
+    "_": "/home/rmorquecho/Documentos/SESNA_PROYECTOS/pdn/node_modules/.bin/react-scripts",
+    "XAUTHORITY": "/run/user/1000/gdm/Xauthority",
+    "GJS_DEBUG_TOPICS": "JS ERROR;JS LOG",
+    "WINDOWPATH": "2",
+    "GDM_LANG": "es_MX.UTF-8",
+    "npm_package_dependencies_react_redux": "^5.0.7",
+    "HOME": "/home/rmorquecho",
+    "USERNAME": "rmorquecho",
+    "npm_config_version_git_tag": "true",
+    "LC_PAPER": "es_MX.UTF-8",
+    "LANG": "es_MX.UTF-8",
+    "npm_package_dependencies_react_swipeable_views": "^0.12.15",
+    "npm_package_dependencies_swagger_parser": "^6.0.5",
+    "LS_COLORS": "rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.pdf=00;32:*.ps=00;32:*.txt=00;32:*.patch=00;32:*.diff=00;32:*.log=00;32:*.tex=00;32:*.doc=00;32:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:",
+    "XDG_CURRENT_DESKTOP": "GNOME",
+    "npm_package_dependencies_react_json_view": "^1.19.1",
+    "npm_config_init_license": "MIT",
+    "npm_package_dependencies_uuid": "^3.3.2",
+    "npm_package_version": "0.1.0",
+    "npm_package_dependencies__material_ui_core": "^3.9.0",
+    "VTE_VERSION": "5603",
+    "npm_config_version_commit_hooks": "true",
+    "npm_package_dependencies_react_ga": "^2.5.6",
+    "npm_package_dependencies_date_fns": "^2.0.0-alpha.16",
+    "GNOME_TERMINAL_SCREEN": "/org/gnome/Terminal/screen/cd9dcf74_2ae9_412d_9ee4_102e7642f37f",
+    "npm_package_dependencies_react_apollo": "^2.5.5",
+    "npm_package_dependencies__material_ui_icons": "^2.0.0",
+    "YAOURT_COLORS": "nb=1:pkg=1:ver=1;32:lver=1;45:installed=1;42:grp=1;34:od=1;41;5:votes=1;44:dsc=0:other=1;35",
+    "npm_package_dependencies_d3plus": "^1.9.8",
+    "npm_package_dependencies_d3": "^5.9.2",
+    "npm_package_dependencies_react_spinners": "^0.5.3",
+    "INIT_CWD": "/home/rmorquecho/Documentos/SESNA_PROYECTOS/pdn",
+    "npm_package_dependencies_chartist": "^0.11.0",
+    "npm_lifecycle_script": "react-scripts start",
+    "npm_package_dependencies_react_select": "^2.0.0",
+    "npm_package_description": "## ¿Qué es y para qué sirve?",
+    "GJS_DEBUG_OUTPUT": "stderr",
+    "npm_package_dependencies_react_chartist": "^0.13.1",
+    "npm_config_version_tag_prefix": "v",
+    "YARN_WRAP_OUTPUT": "false",
+    "npm_package_dependencies_promise": "^8.0.1",
+    "XDG_SESSION_CLASS": "user",
+    "npm_package_dependencies_ajv_i18n": "^3.4.0",
+    "TERM": "xterm-256color",
+    "LC_IDENTIFICATION": "es_MX.UTF-8",
+    "npm_package_name": "pdn",
+    "npm_package_scripts_eject": "react-scripts eject",
+    "USER": "rmorquecho",
+    "GNOME_TERMINAL_SERVICE": ":1.60",
+    "npm_package_dependencies_react_dom": "^16.4.1",
+    "npm_package_dependencies_redux": "^4.0.0",
+    "DISPLAY": ":1",
+    "npm_lifecycle_event": "start",
+    "SHLVL": "2",
+    "npm_config_version_git_sign": "",
+    "npm_package_dependencies_react_router_dom": "^4.3.1",
+    "npm_config_version_git_message": "v%s",
+    "npm_package_dependencies_material_ui_pickers": "^1.0.0-rc.14",
+    "npm_package_dependencies_react_recaptcha_google": "^1.1.1",
+    "npm_package_dependencies_fs": "^0.0.1-security",
+    "LC_TELEPHONE": "es_MX.UTF-8",
+    "npm_package_dependencies_firebase": "^5.5.9",
+    "npm_package_dependencies_apollo_boost": "^0.3.1",
+    "LC_MEASUREMENT": "es_MX.UTF-8",
+    "XDG_VTNR": "2",
+    "XDG_SESSION_ID": "2",
+    "npm_config_user_agent": "yarn/1.16.0 npm/? node/v11.15.0 linux x64",
+    "npm_package_dependencies_jspdf": "^1.4.1",
+    "npm_package_dependencies_d3plus_react": "^0.5.3",
+    "npm_execpath": "/usr/lib/node_modules/yarn/bin/yarn.js",
+    "MOZ_PLUGIN_PATH": "/usr/lib/mozilla/plugins",
+    "npm_package_scripts_test": "react-scripts test --env=jsdom",
+    "XDG_RUNTIME_DIR": "/run/user/1000",
+    "npm_config_strict_ssl": "true",
+    "npm_package_dependencies_graphql": "^14.3.0",
+    "LC_TIME": "es_MX.UTF-8",
+    "XDG_DATA_DIRS": "/home/rmorquecho/.local/share/flatpak/exports/share/:/var/lib/flatpak/exports/share/:/usr/local/share/:/usr/share/",
+    "npm_package_scripts_start": "react-scripts start",
+    "PATH": "/tmp/yarn--1558654869995-0.23337795787911175:/home/rmorquecho/Documentos/SESNA_PROYECTOS/pdn/node_modules/.bin:/home/rmorquecho/.config/yarn/link/node_modules/.bin:/home/rmorquecho/.yarn/bin:/usr/libexec/lib/node_modules/npm/bin/node-gyp-bin:/usr/lib/node_modules/npm/bin/node-gyp-bin:/usr/bin/node_modules/npm/bin/node-gyp-bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl",
+    "npm_package_dependencies_react_csv": "^1.0.14",
+    "GDMSESSION": "gnome",
+    "DBUS_SESSION_BUS_ADDRESS": "unix:path=/run/user/1000/bus",
+    "npm_package_dependencies_apollo_cache_inmemory": "^1.5.1",
+    "MAIL": "/var/spool/mail/rmorquecho",
+    "npm_config_registry": "https://registry.yarnpkg.com",
+    "npm_config_ignore_optional": "",
+    "npm_package_dependencies_luxon": "^1.3.3",
+    "npm_package_dependencies_request_promise": "^4.2.2",
+    "npm_node_execpath": "/usr/bin/node",
+    "LC_NUMERIC": "es_MX.UTF-8",
+    "OLDPWD": "/home/rmorquecho/Documentos/SESNA_PROYECTOS",
+    "npm_config_init_version": "1.0.0",
+    "BABEL_ENV": "development",
+    "NODE_ENV": "development",
+    "REACT_APP_FIREBASE_API_KEY": "AIzaSyBg-TRP0W8yJDDi9OIQgg9JCgq5Wccww0U",
+    "REACT_APP_FIREBASE_AUTH_DOMAIN": "pdnmx-48676.firebaseapp.com",
+    "REACT_APP_FIREBASE_DATABASE_URL": "https://pdnmx-48676.firebaseio.com",
+    "REACT_APP_FIREBASE_PROJECT_ID": "pdnmx-48676",
+    "REACT_APP_FIREBASE_STORAGE_BUCKET": "pdnmx-48676.appspot.com",
+    "REACT_APP_FIREBASE_MESSAGING_SENDER_ID": "81621159902",
+    "NODE_PATH": ""
+  },
+  "userLimits": {
+    "core_file_size_blocks": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "data_seg_size_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "file_size_blocks": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_locked_memory_bytes": {
+      "soft": 65536,
+      "hard": 65536
+    },
+    "max_memory_size_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "open_files": {
+      "soft": 1048576,
+      "hard": 1048576
+    },
+    "stack_size_bytes": {
+      "soft": 8388608,
+      "hard": "unlimited"
+    },
+    "cpu_time_seconds": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_user_processes": {
+      "soft": 128032,
+      "hard": 128032
+    },
+    "virtual_memory_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    }
+  },
+  "sharedObjects": [
+    "linux-vdso.so.1",
+    "/usr/lib/libz.so.1",
+    "/usr/lib/libuv.so.1",
+    "/usr/lib/libcares.so.2",
+    "/usr/lib/libnghttp2.so.14",
+    "/usr/lib/libcrypto.so.1.1",
+    "/usr/lib/libssl.so.1.1",
+    "/usr/lib/libicui18n.so.64",
+    "/usr/lib/libicuuc.so.64",
+    "/usr/lib/libdl.so.2",
+    "/usr/lib/librt.so.1",
+    "/usr/lib/libstdc++.so.6",
+    "/usr/lib/libm.so.6",
+    "/usr/lib/libgcc_s.so.1",
+    "/usr/lib/libpthread.so.0",
+    "/usr/lib/libc.so.6",
+    "/usr/lib/libnsl.so.2",
+    "/usr/lib/libicudata.so.64",
+    "/lib64/ld-linux-x86-64.so.2",
+    "/usr/lib/libtirpc.so.3",
+    "/usr/lib/libgssapi_krb5.so.2",
+    "/usr/lib/libkrb5.so.3",
+    "/usr/lib/libk5crypto.so.3",
+    "/usr/lib/libcom_err.so.2",
+    "/usr/lib/libkrb5support.so.0",
+    "/usr/lib/libkeyutils.so.1",
+    "/usr/lib/libresolv.so.2",
+    "/usr/lib/libnss_files.so.2"
+  ]
+}
