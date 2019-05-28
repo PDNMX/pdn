@@ -12,8 +12,20 @@ const styles = theme => ({
         marginTop : "15px",
         marginBottom : "15px"
     },
-    desc:{
-        textAlign : "center"
+    descripcion: {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: "15px",
+        paddingLeft : "10px",
+        paddingRight : "10px"
+    },
+    titulo: {
+        textAlign: "center",
+        marginBottom: "30px",
+    },
+    graph:{
+        marginBottom : "30px"
     }
 });
 
@@ -93,16 +105,37 @@ class CausasSanciones extends React.Component {
             <div>
                 <Grid container spacing={0} justify='center' className={classes.frameChart}>
                     <Grid item xs={12}>
-                        <Typography variant={"h6"} className={classes.desc}>
-                            {"Causa de las sanciones"}
+                        <Typography variant={"h6"} className={classes.titulo}>
+                            Causa de las sanciones de 2013 a la fecha
                         </Typography>
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} md={8} className={classes.graph}>
                         {
                             this.state.methods && this.state.methods.data &&
                             <BarChart config={this.state.methods}/>
                         }
-
+                    </Grid>
+                    <Grid item xs={12} md={4} className={classes.descripcion}>
+                        <Typography variant={"body1"}>
+                            Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem
+                            Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un
+                            impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de
+                            textos y los mezcló de tal manera que logró hacer un libro de textos especimen.
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={12} md={4} className={classes.descripcion}>
+                        <Typography variant={"body1"}>
+                            Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem
+                            Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un
+                            impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de
+                            textos y los mezcló de tal manera que logró hacer un libro de textos especimen.
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={12} md={8}>
+                        {
+                            this.state.methods && this.state.methods.data &&
+                            <BarChart config={this.state.methods}/>
+                        }
                     </Grid>
                 </Grid>
 

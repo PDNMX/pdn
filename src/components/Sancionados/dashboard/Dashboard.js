@@ -8,6 +8,7 @@ import TiemposSanciones from "./TiemposSanciones";
 import CausaSanciones from "./CausaSanciones";
 import AnioResolucionSanciones from "./AnioResolucionSanciones";
 import DependenciasSanciones from "./DependenciasSanciones";
+import Typography from "@material-ui/core/Typography";
 
 const styles = theme => ({
     root: {
@@ -24,7 +25,9 @@ const styles = theme => ({
     },
     sectionT: {
         maxWidth: '1200px',
-        overflowX : 'auto'
+        overflowX : 'auto',
+        marginBottom : "25px",
+        marginTop : "25px"
     },
 });
 
@@ -36,16 +39,21 @@ class Dashboard extends React.Component {
                 <Header/>
                 <Grid container spacing={0} justify='center' className={classes.bgPanelTable}>
                     <Grid item xs={12} className={classes.sectionT}>
-                        <TiemposSanciones/>
-                    </Grid>
-                    <Grid item xs={12} className={classes.sectionT}>
-                        <CausaSanciones/>
+                        <Typography variant={"body1"} className={classes.titulo}>
+                            {"Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas \"Letraset\", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum."}
+                        </Typography>
                     </Grid>
                     <Grid item xs={12} className={classes.sectionT}>
                         <AnioResolucionSanciones/>
                     </Grid>
                     <Grid item xs={12} className={classes.sectionT}>
+                        <CausaSanciones/>
+                    </Grid>
+                    <Grid item xs={12} className={classes.sectionT}>
                         <DependenciasSanciones/>
+                    </Grid>
+                    <Grid item xs={12} className={classes.sectionT}>
+                        <TiemposSanciones/>
                     </Grid>
                 </Grid>
                 <Footer/>
