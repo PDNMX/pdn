@@ -1,5 +1,6 @@
 import React from 'react';
 import {withStyles} from "@material-ui/core/styles";
+import Header from "./Header/Header";
 
 
 const styles = theme => ({
@@ -14,6 +15,7 @@ class Metodologia extends React.Component{
 
         const {classes} = this.props;
         return <div className={classes.root}>
+            <Header/>
             Metodología
 
         </div>
