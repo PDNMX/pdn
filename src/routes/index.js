@@ -25,6 +25,7 @@ import EspecificacionesServidoresIntervienen from "../components/Especificacione
 import DashboardSancionados from "../components/Sancionados/dashboard/Dashboard";
 
 import Metodologia from "../components/GAA/Calidad/Metodologia";
+import HelpDesk from "../components/HelpDesk/HelpDesk";
 
 const pdnRoutes = [
 
@@ -155,6 +156,11 @@ const pdnRoutes = [
     {
         path: "/gaa/calidad",
         component: Metodologia,
+        private: false
+    },
+    {
+        path: "/mesa-de-ayuda",
+        component: HelpDesk,
         private: false
     }
 
