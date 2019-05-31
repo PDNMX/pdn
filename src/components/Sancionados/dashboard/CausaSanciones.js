@@ -8,24 +8,25 @@ import {BarChart} from "d3plus-react";
 import rp from "request-promise";
 
 const styles = theme => ({
-    frameChart : {
-        marginTop : "15px",
-        marginBottom : "15px"
+    frameChart: {
+        marginTop: "15px",
+        marginBottom: "15px"
     },
     descripcion: {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         marginTop: "15px",
-        paddingLeft : "10px",
-        paddingRight : "10px"
+        paddingLeft: "10px",
+        paddingRight: "10px",
+        marginBottom: "30px"
     },
     titulo: {
         textAlign: "center",
         marginBottom: "30px",
     },
-    graph:{
-        marginBottom : "30px"
+    graph: {
+        marginBottom: "30px"
     }
 });
 
@@ -47,55 +48,107 @@ function aux() {
 }
 
 
-class CausasSanciones extends React.Component {
-    state= {
+function loadData2() {
+    return new Promise((resolve, reject) => {
+        let options = {
+            uri: 'http://localhost:3100/viz/getCausasAnio',
+            json: true,
+            method: "GET"
+        };
+        rp(options)
+            .then(data => {
+                resolve(data);
+            }).catch(err => {
+            alert("_No se pudo obtener la información");
+            console.log(err);
+        });
+    });
+}
 
-    };
+class CausasSanciones extends React.Component {
+    state = {};
 
     componentDidMount() {
         aux().then(result => {
             let aux = result.data.map(item => {
-                return  {
-                    "causa" : item.causa,
-                    "total" : parseInt(item.total)
+                return {
+                    "causa": item.causa,
+                    "total": parseInt(item.total)
                 }
             })
-            this.setState({
-                    methods: {
-                        data: aux,
-                        groupBy: "causa",
-                        x: "causa",
-                        y: "total",
-                        xConfig: {
-                            title : "Causa de la sanción",
-                            //domain : [-1,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
-                            //labels : ["","<1año",1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
-
-                        },
-                        yConfig : {
-                            title : "Número de sanciones"
-                        },
-                        tooltipConfig: {
-                            title: function (d) {
-                                return "Datos";
-                            },
-                            tbody: [
-                                ["Causa de la sanción: ",function (d) {
-                                    return d["causa"]
-                                }
-                                ],
-                                ["Número de sanciones: ",function (d) {
-                                    return d["total"]
-                                }
-                                ]
-                            ]
-                        },
-                        legend: false,
-                        height: 400,
-                        shapeConfig:{label : false}
+            loadData2().then(temp2 => {
+                let aux2 = temp2.data.map(item => {
+                    return {
+                        id: item.causa,
+                        y: parseInt(item.total),
+                        x: item.anio
                     }
-                }
-            )
+                });
+                this.setState({
+                        methods: {
+                            data: aux,
+                            groupBy: "causa",
+                            x: "causa",
+                            y: "total",
+                            xConfig: {
+                                title: "Año de resolución de la sanción",
+                            },
+                            yConfig: {
+                                title: "Número de sanciones"
+                            },
+                            tooltipConfig: {
+                                title: function (d) {
+                                    return "Datos";
+                                },
+                                tbody: [
+                                    ["Causa de la sanción: ", function (d) {
+                                        return d["causa"]
+                                    }
+                                    ],
+                                    ["Número de sanciones: ", function (d) {
+                                        return d["total"]
+                                    }
+                                    ]
+                                ]
+                            },
+                            legend: false,
+                            height: 400,
+                            shapeConfig: {label: false}
+                        },
+                        config2: {
+                            data: aux2,
+                            xConfig: {
+                                title: "Causa de la sanción",
+                            },
+                            yConfig: {
+                                title: "Número de sanciones"
+                            },
+                            tooltipConfig: {
+                                title: function (d) {
+                                    return "Datos";
+                                },
+                                tbody: [
+                                    ["Causa de la sanción: ", function (d) {
+                                        return d["id"]
+                                    }
+                                    ],
+                                    ["Número de sanciones: ", function (d) {
+                                        return d["y"]
+                                    }
+                                    ]
+                                ]
+                            },
+                            legend: true,
+                            height: 400,
+                            shapeConfig: {label: false},
+                            stacked: true
+                        },
+
+                    }
+                )
+            });
+
+
         });
     }
 
@@ -123,7 +176,7 @@ class CausasSanciones extends React.Component {
                             textos y los mezcló de tal manera que logró hacer un libro de textos especimen.
                         </Typography>
                     </Grid>
-                    <Grid item xs={12} md={4} className={classes.descripcion}>
+                    <Grid item xs={12} className={classes.descripcion}>
                         <Typography variant={"body1"}>
                             Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem
                             Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un
@@ -131,10 +184,10 @@ class CausasSanciones extends React.Component {
                             textos y los mezcló de tal manera que logró hacer un libro de textos especimen.
                         </Typography>
                     </Grid>
-                    <Grid item xs={12} md={8}>
+                    <Grid item xs={12} md={12}>
                         {
                             this.state.methods && this.state.methods.data &&
-                            <BarChart config={this.state.methods}/>
+                            <BarChart config={this.state.config2}/>
                         }
                     </Grid>
                 </Grid>

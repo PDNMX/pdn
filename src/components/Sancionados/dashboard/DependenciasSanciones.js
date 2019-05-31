@@ -46,23 +46,73 @@ function aux() {
 }
 
 
+function loadData2() {
+    return new Promise((resolve, reject) => {
+        let options = {
+            uri: 'http://localhost:3100/viz/getSancionesAnualesDependencia',
+            json: true,
+            method: "GET"
+        };
+        rp(options)
+            .then(data => {
+                resolve(data);
+            }).catch(err => {
+            alert("_No se pudo obtener la información");
+            console.log(err);
+        });
+    });
+}
+
 class DependenciasSanciones extends React.Component {
     state = {};
 
     componentDidMount() {
         aux().then(result => {
-            let aux = result.data.map(item => {
-                return {
-                    "value": parseInt(item.total_sanciones),
-                    "group": item.dependencia
-                }
-            });
+            loadData2().then(result2=>{
+                let aux = result.data.map(item => {
+                    return {
+                        "value": parseInt(item.total_sanciones),
+                        "group": item.dependencia
+                    }
+                });
+                let aux2 = result2.data.map(item => {
+                    return {
+                        "value": parseInt(item.total),
+                        "group": item.dependencia,
+                        "parent": item.anio
+                    }
+                });
 
-            this.setState({
-                    methods: {
-                        data: aux,
+
+                this.setState({
+                        methods: {
+                            data: aux,
+                            height: 400,
+                            groupBy: ["group"],
+                            sum: "value",
+                            tooltipConfig: {
+                                tbody: [
+                                    ["Número de sanciones: ", function (d) {
+                                        return d["value"]
+                                    }
+                                    ]
+                                ]
+                            },
+                            legend :false,
+                            shapeConfig:{
+                                label: function (d) {
+                                    return d["group"]+"\n"+d["value"]+" sanciones"
+                                },
+                                labelConfig:{
+                                    fontMax : 18,
+                                    fontMin : 10
+                                }
+                            },
+                        },
+                    config2: {
+                        data: aux2,
                         height: 400,
-                        groupBy: ["group"],
+                        groupBy: ["parent","group"],
                         sum: "value",
                         tooltipConfig: {
                             tbody: [
@@ -72,7 +122,7 @@ class DependenciasSanciones extends React.Component {
                                 ]
                             ]
                         },
-                        legend :false,
+                        legend :true,
                         shapeConfig:{
                             label: function (d) {
                                 return d["group"]+"\n"+d["value"]+" sanciones"
@@ -81,13 +131,13 @@ class DependenciasSanciones extends React.Component {
                                 fontMax : 18,
                                 fontMin : 10
                             }
-
                         },
-
                     }
-                }
-            )
-        });
+                    }
+                )
+            });
+            });
+
     }
 
     render() {
@@ -104,6 +154,25 @@ class DependenciasSanciones extends React.Component {
                         {
                             this.state.methods && this.state.methods.data &&
                             <Treemap config={this.state.methods}/>
+                        }
+
+                    </Grid>
+                    <Grid item xs={12} className={classes.descripcion}>
+                        <Typography>
+                            Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem
+                            Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un
+                            impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de
+                            textos y los mezcló de tal manera que logró hacer un libro de textos especimen.
+                            Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem
+                            Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un
+                            impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de
+                            textos y los mezcló de tal manera que logró hacer un libro de textos especimen.
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={12}>
+                        {
+                            this.state.config2 && this.state.config2.data &&
+                            <Treemap config={this.state.config2}/>
                         }
 
                     </Grid>
