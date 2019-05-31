@@ -23,7 +23,8 @@ const styles = theme => ({
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        marginTop: "15px"
+        marginTop: "15px",
+        marginBottom : "15px"
     }
 });
 
@@ -107,7 +108,7 @@ class DependenciasSanciones extends React.Component {
                                     fontMax : 18,
                                     fontMin : 10
                                 }
-                            },
+                            }
                         },
                     config2: {
                         data: aux2,
@@ -150,6 +151,14 @@ class DependenciasSanciones extends React.Component {
                             {"Dependencias con mayor número de sanciones"}
                         </Typography>
                     </Grid>
+                    <Grid item xs={12} className={classes.descripcion}>
+                        <Typography>
+                            Con respecto a las dependencias con más sanciones, la Policía Federal, la Secretaría de Educación Pública, el Instituto Mexicano del Seguro Social y la Comisión Federal de Electricidad representan juntas casi el 40% del total de funcionarios sancionados.
+
+                            Dado que en estas instituciones además laboran un número muy alto de funcionarios públicos, sería relevante también tomar en cuenta el volumen de la institución para obtener la tasa de sanción por dependencia. De esta manera podríamos comparar la tasa de sanción entre distintas dependencias.
+                        </Typography>
+                    </Grid>
+
                     <Grid item xs={12}>
                         {
                             this.state.methods && this.state.methods.data &&
@@ -159,14 +168,11 @@ class DependenciasSanciones extends React.Component {
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>
                         <Typography>
-                            Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem
-                            Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un
-                            impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de
-                            textos y los mezcló de tal manera que logró hacer un libro de textos especimen.
-                            Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem
-                            Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un
-                            impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de
-                            textos y los mezcló de tal manera que logró hacer un libro de textos especimen.
+                            Si ahora consideramos el año con más sanciones desde 2013, es decir, el 2017, podemos observar que el Fideicomiso Fondo Nacional de Habitaciones Populares, el Instituto Mexicano del Seguro Social y el Instituto de son las tres instituciones con más sanciones en este año.
+
+                            En 2018 las instituciones más sancionadas fueron la Procuraduría Federal del Consumidor y el Instituto Mexicano del Seguro Social.
+
+                            Dado que en estas instituciones además laboran un número muy alto de funcionarios públicos, sería relevante también tomar en cuenta el volumen de la institución para obtener la tasa de sanción por dependencia. De esta manera podríamos comparar la tasa de sanción entre distintas dependencias.
                         </Typography>
                     </Grid>
                     <Grid item xs={12}>
@@ -176,19 +182,6 @@ class DependenciasSanciones extends React.Component {
                         }
 
                     </Grid>
-                    <Grid item xs={12} className={classes.descripcion}>
-                        <Typography>
-                            Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem
-                            Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un
-                            impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de
-                            textos y los mezcló de tal manera que logró hacer un libro de textos especimen.
-                            Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem
-                            Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un
-                            impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de
-                            textos y los mezcló de tal manera que logró hacer un libro de textos especimen.
-                        </Typography>
-                    </Grid>
-
                 </Grid>
 
             </div>

@@ -20,7 +20,8 @@ const styles = theme => ({
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        marginTop: "15px"
+        marginTop: "15px",
+        marginBottom : "15px"
     }
 });
 
@@ -89,7 +90,8 @@ console.log("Total: ",total);
                                 }
                                 ]
                             ]
-                        }
+                        },
+                        title:"Número de sanciones por año"
                     },
                     configPie: {
                         data: aux,
@@ -122,7 +124,13 @@ console.log("Total: ",total);
                 <Grid container spacing={0} justify='center' className={classes.frameChart}>
                     <Grid item xs={12} md={12}>
                         <Typography variant={"h6"} className={classes.titulo}>
-                            {"Número de sanciones por año"}
+                            {"Cantidad de sanciones"}
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={12} className={classes.descripcion}>
+                        <Typography variant={"body1"}>
+                            Como se puede apreciar en las gráficas, el número de funcionarios sancionados de 2013 - 2015 se mantuvo sin grandes cambios, sancionando cada año aproximandamente a 300 funcionarios. En 2016 hubo un incremento de 16% con respecto a 2015. Sin embargo, para 2017 este número se incrementó en casi 100%, llegando a 700 sancionados. Para 2018 disminuyó pero sólo en 7%.
+                            En términos totales, si consideramos los 6 años que van de 2013-2018, se tuvieron poco más de 2,500 funcionarios sancionados. Más del 50% de este total, se registró entre 2017 y 2018.
                         </Typography>
                     </Grid>
                     <Grid item xs={12} md={8}>
@@ -137,14 +145,7 @@ console.log("Total: ",total);
                             <Pie config={this.state.configPie}/>
                         }
                     </Grid>
-                    <Grid item xs={12} className={classes.descripcion}>
-                        <Typography>
-                            Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem
-                            Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un
-                            impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de
-                            textos y los mezcló de tal manera que logró hacer un libro de textos especimen.
-                        </Typography>
-                    </Grid>
+
 
 
                 </Grid>
