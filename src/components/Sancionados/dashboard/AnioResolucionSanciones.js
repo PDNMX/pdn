@@ -91,7 +91,8 @@ console.log("Total: ",total);
                                 ]
                             ]
                         },
-                        title:"Número de sanciones por año"
+                        title:"Número de sanciones por año",
+
                     },
                     configPie: {
                         data: aux,

@@ -2,8 +2,8 @@ import React from 'react';
 
 import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import CandlestickExample from "../candlestick/candlestick-example";
-import "../candlestick/styles/examples.scss";
+//import CandlestickExample from "../candlestick/candlestick-example";
+//import "../candlestick/styles/examples.scss";
 
 const styles = theme => ({
     root: {
@@ -21,7 +21,7 @@ class GAA extends React.Component{
                 Guía de Apertura Anticorrupción
             </Typography>
 
-            <CandlestickExample/>
+
 
 
         </div>

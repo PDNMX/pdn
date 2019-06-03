@@ -39,7 +39,6 @@
     "react-select": "^2.0.0",
     "react-spinners": "^0.5.3",
     "react-swipeable-views": "^0.12.15",
-    "react-vis": "^1.11.7",
     "redux": "^4.0.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.2",
