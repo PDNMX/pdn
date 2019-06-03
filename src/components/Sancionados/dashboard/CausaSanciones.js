@@ -33,7 +33,7 @@ const styles = theme => ({
 function aux() {
     return new Promise((resolve, reject) => {
         let options = {
-            uri: 'http://localhost:3100/viz/getCausasSanciones',
+            uri: process.env.REACT_APP_HOST_VIZ+'/getCausasSanciones',
             json: true,
             method: "GET"
         };
@@ -51,7 +51,7 @@ function aux() {
 function loadData2() {
     return new Promise((resolve, reject) => {
         let options = {
-            uri: 'http://localhost:3100/viz/getCausasAnio',
+            uri: process.env.REACT_APP_HOST_VIZ+'/getCausasAnio',
             json: true,
             method: "GET"
         };
