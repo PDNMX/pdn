@@ -71,7 +71,7 @@ class TiemposSanciones extends React.Component {
                         xConfig: {
                             title : "Duración en años de la sanción",
                             domain : [-1,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
-                            labels : ["","<1año",1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
+                            labels : [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
 
                         },
                         yConfig : {
@@ -100,8 +100,8 @@ class TiemposSanciones extends React.Component {
                         legend:false,
                         axes :{
                             fill : "#666672"
-                        }
-
+                        },
+title : "Duración de las sanciones en años"
 
                     }
                 }
@@ -123,6 +123,12 @@ class TiemposSanciones extends React.Component {
                             {"Duración de las sanciones"}
                         </Typography>
                     </Grid>
+                    <Grid item xs={12} className={classes.descripcion}>
+                        <Typography>
+                            Si tomamos en cuenta el tiempo que duró la sanción a los funcionarios, podemos obserbar que más del 50% de las sanciones totales fueron de 10 años, aprox. 1363.
+                            9% de las sanciones duraron menos de 1 año y 40% menos de 10 años y muy pocas sanciones duraron más de 10 años.
+                        </Typography>
+                    </Grid>
                     <Grid item xs={12} className={classes.btnDownload} >
                         {
                             this.state.methods && this.state.methods.data &&
@@ -136,14 +142,7 @@ class TiemposSanciones extends React.Component {
                         }
 
                     </Grid>
-                    <Grid item xs={12} className={classes.descripcion}>
-                        <Typography>
-                            Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem
-                            Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un
-                            impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de
-                            textos y los mezcló de tal manera que logró hacer un libro de textos especimen.
-                        </Typography>
-                    </Grid>
+
 
                 </Grid>
 
