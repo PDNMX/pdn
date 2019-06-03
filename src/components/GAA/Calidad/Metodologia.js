@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
 import Pipeline from '../../../assets/DQ_pipeline_analy.png';
 import Pasos from '../../../assets/pasos_evaluación.png';
+import CandlestickExample from "../../candlestick/candlestick-example";
 
 const styles = theme => ({
     root :{
@@ -249,6 +250,10 @@ class Metodologia extends React.Component{
                         <li><Typography>5. https://www.usaid.gov/sites/default/files/documents/1861/DQA_Training_and_Preparation_11-17-14.ppt</Typography></li>
                         <li><Typography>6. https://www.usaid.gov/sites/default/files/documents/1868/597sad.pdf</Typography></li>
                     </ul>
+
+
+
+
                 </Grid>
             </Grid>
         </div>

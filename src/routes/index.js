@@ -26,6 +26,7 @@ import DashboardSancionados from "../components/Sancionados/dashboard/Dashboard"
 
 import Metodologia from "../components/GAA/Calidad/Metodologia";
 import HelpDesk from "../components/HelpDesk/HelpDesk";
+import GAA from "../components/GAA/GAA";
 
 const pdnRoutes = [
 
@@ -152,6 +153,11 @@ const pdnRoutes = [
         component : ConsultaConexiones,
         private: true,
         perfom : "admon-pdn-consultaConexiones:visit"
+    },
+    {
+        path: "/gaa",
+        component: GAA,
+        private: false
     },
     {
         path: "/gaa/calidad",
