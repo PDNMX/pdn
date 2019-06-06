@@ -252,7 +252,7 @@ class EnhancedTable extends React.Component {
             };
         let options = {
             method : 'POST',
-            uri: process.env.REACT_APP_HOST_APIS+'/getServidoresSancionados',
+            uri: process.env.REACT_APP_HOST_PDNBACK+'/apis/getServidoresSancionados',
             json: true,
             body: typeSearch==='ALL'?{}: body
         };

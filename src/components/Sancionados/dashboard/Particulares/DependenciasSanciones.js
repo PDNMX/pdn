@@ -31,7 +31,7 @@ const styles = theme => ({
 function aux() {
     return new Promise((resolve, reject) => {
         let options = {
-            uri: process.env.REACT_APP_HOST_VIZ+'/particulares/getDependenciaMayor',
+            uri: process.env.REACT_APP_HOST_PDNBACK+'/viz/particulares/getDependenciaMayor',
             json: true,
             method: "GET"
         };
@@ -49,7 +49,7 @@ function aux() {
 function loadData2() {
     return new Promise((resolve, reject) => {
         let options = {
-            uri: process.env.REACT_APP_HOST_VIZ+'/particulares/getResolucionesAnualesDependencia',
+            uri: process.env.REACT_APP_HOST_PDNBACK+'/viz/particulares/getResolucionesAnualesDependencia',
             json: true,
             method: "GET"
         };

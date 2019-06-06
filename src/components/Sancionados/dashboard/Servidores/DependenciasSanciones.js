@@ -32,7 +32,7 @@ const styles = theme => ({
 function aux() {
     return new Promise((resolve, reject) => {
         let options = {
-            uri: process.env.REACT_APP_HOST_VIZ+'/servidores/getDependenciaMayor',
+            uri: process.env.REACT_APP_HOST_PDNBACK+'/viz/servidores/getDependenciaMayor',
             json: true,
             method: "GET"
         };
@@ -50,7 +50,7 @@ function aux() {
 function loadData2() {
     return new Promise((resolve, reject) => {
         let options = {
-            uri: process.env.REACT_APP_HOST_VIZ+'/servidores/getSancionesAnualesDependencia',
+            uri: process.env.REACT_APP_HOST_PDNBACK+'/viz/servidores/getSancionesAnualesDependencia',
             json: true,
             method: "GET"
         };

@@ -28,7 +28,7 @@ const styles = theme => ({
 function aux() {
     return new Promise((resolve, reject) => {
         let options = {
-            uri: process.env.REACT_APP_HOST_VIZ+'/servidores/getAnioSancion',
+            uri: process.env.REACT_APP_HOST_PDNBACK+'/viz/servidores/getAnioSancion',
             json: true,
             method: "GET"
         };
