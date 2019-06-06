@@ -244,20 +244,23 @@ class EnhancedTable extends React.Component {
         if(typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE')  offset = (this.state.rowsPerPage * this.state.page) ;
         let limit = (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.state.rowsPerPage : null;
 
+        let body =
+            {
+                "filtros": filtros,
+                "limit" : limit,
+                "offset" : offset
+            };
         let options = {
             method : 'POST',
-            uri: 'https://demospdn.host/pdn/getServidoresSancionados',
+            uri: process.env.REACT_APP_HOST_APIS+'/getServidoresSancionados',
             json: true,
-            body:{
-                "filtros": filtros,
-                 "limit" : limit,
-                "offset" : offset
-            }
+            body: typeSearch==='ALL'?{}: body
         };
+
         rp(options)
             .then(res => {
                 let dataAux = res.data;
-                let total = res.totalRows;
+                let total = res.total;
                 typeSearch === 'ALL' ? this.setState({data: dataAux, loading: false}, () => {
                     this.btnDownloadAll.triggerDown();
                 }) : (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.setState({

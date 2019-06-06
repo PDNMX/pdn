@@ -273,15 +273,16 @@ class EnhancedTable extends React.Component {
         if (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') offset = (this.state.rowsPerPage * this.state.page);
         let limit = (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.state.rowsPerPage : null;
 
+        let body = {
+            "filtros": filtros,
+            "limit" : limit,
+            "offset" : offset
+        };
         let options = {
             method : 'POST',
-            uri: 'https://demospdn.host/pdn/getParticularesSancionados',
+            uri: process.env.REACT_APP_HOST_APIS+'/getParticularesSancionados',
             json: true,
-            body:{
-                "filtros": filtros,
-                "limit" : limit,
-                "offset" : offset
-            }
+            body: typeSearch==='ALL'?{}:body
         };
         rp(options)
             .then(res => {
