@@ -51,7 +51,7 @@ function aux() {
 function loadData2() {
     return new Promise((resolve, reject) => {
         let options = {
-            uri: process.env.REACT_APP_HOST_VIZ+'/viz/servidores/getCausasAnio',
+            uri: process.env.REACT_APP_HOST_PDNBACK+'/viz/servidores/getCausasAnio',
             json: true,
             method: "GET"
         };
