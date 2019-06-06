@@ -9,7 +9,6 @@ import LoginPDN from "./components/Inicio/LoginPDN";
 import ScrollToTop from './ScrollToTop';
 //import ReactGA from 'react-ga';
 import './components/Utils/Header.css';
-
 const theme = createMuiTheme({
     typography: {
         useNextVariants: true,

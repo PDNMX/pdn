@@ -22,7 +22,10 @@ import Especificaciones from '../components/Especificaciones/Landing/Especificac
 import DeclaracionesEspecificaciones from '../components/Especificaciones/Declaraciones/Declaraciones';
 import EspecificacionesSancionados from "../components/Especificaciones/Sancionados/Sancionados";
 import EspecificacionesServidoresIntervienen from "../components/Especificaciones/ServidoresIntervienen/ServidoresIntervienen";
-import DashboardSancionados from "../components/Sancionados/dashboard/Dashboard";
+import DashboardSancionados from "../components/Sancionados/dashboard/Servidores/Dashboard";
+import DashboardParticularesSancionados from "../components/Sancionados/dashboard/Particulares/Dashboard";
+
+
 
 import Metodologia from "../components/GAA/Calidad/Metodologia";
 import HelpDesk from "../components/HelpDesk/HelpDesk";
@@ -64,6 +67,11 @@ const pdnRoutes = [
       path: "/sancionados/dashboard",
       component: DashboardSancionados,
       private: false
+    },
+    {
+        path: "/sancionados/dashboardParticulares",
+        component: DashboardParticularesSancionados,
+        private: false
     },
     {
         path: "/servidores",

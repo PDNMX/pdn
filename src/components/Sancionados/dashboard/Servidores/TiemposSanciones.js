@@ -34,7 +34,7 @@ const styles = theme => ({
 function aux() {
     return new Promise((resolve, reject) => {
         let options = {
-            uri: process.env.REACT_APP_HOST_VIZ+'/getTemporalidadSanciones',
+            uri: process.env.REACT_APP_HOST_VIZ+'/servidores/getTemporalidadSanciones',
             json: true,
             method: "GET"
         };

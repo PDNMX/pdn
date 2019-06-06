@@ -4,10 +4,15 @@ import PropTypes from 'prop-types';
 import Grid from "@material-ui/core/Grid/Grid";
 import "./index.css";
 import Typography from "@material-ui/core/Typography";
-import {BarChart} from "d3plus-react";
 import rp from "request-promise";
 import Button from "@material-ui/core/Button";
 import * as d3plus from "d3plus-export";
+import WhiskerSeries from "react-vis/es/plot/series/whisker-series";
+import YAxis from "react-vis/es/plot/axis/y-axis";
+import XAxis from "react-vis/es/plot/axis/x-axis";
+import HorizontalGridLines from "react-vis/es/plot/horizontal-grid-lines";
+import VerticalGridLines from "react-vis/es/plot/vertical-grid-lines";
+import XYPlot from "react-vis/es/plot/xy-plot";
 
 
 
@@ -37,7 +42,7 @@ const styles = theme => ({
 function aux() {
     return new Promise((resolve, reject) => {
         let options = {
-            uri: process.env.REACT_APP_HOST_VIZ+'/getTemporalidadSanciones',
+            uri: process.env.REACT_APP_HOST_VIZ+'/servidores/getTemporalidadSanciones',
             json: true,
             method: "GET"
         };
@@ -120,10 +125,22 @@ class BoxPlotTest extends React.Component {
                         }
                     </Grid>
                     <Grid item xs={12} id={"viz"}>
-                        {
-                           // this.state.methods && this.state.methods.data
-
-                        }
+                        <XYPlot width={300} height={400}>
+                            <VerticalGridLines />
+                            <HorizontalGridLines />
+                            <XAxis />
+                            <YAxis />
+                            <WhiskerSeries
+                                className="whisker-series-example"
+                                data={[
+                                    {x: 2013, y: 10, xVariance: 0.2, yVariance: 4},
+                                    {x: 2014, y: 12, xVariance: 0.3, yVariance: 7},
+                                    {x: 2015, y: 5, xVariance: 0.1, yVariance: 3},
+                                    {x: 2016, y: 15, xVariance: 0.4, yVariance: 10},
+                                    {x: 2017, y: 7, xVariance: 0.3, yVariance: 4}
+                                ]}
+                            />
+                        </XYPlot>
 
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>

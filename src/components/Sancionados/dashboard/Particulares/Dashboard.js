@@ -1,15 +1,13 @@
 import React from 'react';
 import {withStyles} from "@material-ui/core/styles";
 import PropTypes from 'prop-types';
-import Header from "./Header";
+import Header from "../Servidores/Header";
 import Grid from "@material-ui/core/Grid/Grid";
-import Footer from "../../Home/Footer";
-import TiemposSanciones from "./TiemposSanciones";
-import CausaSanciones from "./CausaSanciones";
-import AnioResolucionSanciones from "./AnioResolucionSanciones";
-import DependenciasSanciones from "./DependenciasSanciones";
+import Footer from "../../../Home/Footer";
 import Typography from "@material-ui/core/Typography";
-import BoxPlotTest from "./BoxPlotTest";
+import AnioResolucionSanciones from "./AnioResolucionSanciones";
+import SentidoResoluciones from "./SentidoResoluciones";
+import DependenciasSanciones from "./DependenciasSanciones";
 
 const styles = theme => ({
     root: {
@@ -26,17 +24,17 @@ const styles = theme => ({
     },
     sectionT: {
         maxWidth: '1200px',
-        overflowX : 'auto',
-        marginBottom : "25px",
-        marginTop : "25px"
+        overflowX: 'auto',
+        marginBottom: "25px",
+        marginTop: "25px"
     },
-    desc:{
-        marginBottom : "15px"
+    desc: {
+        marginBottom: "15px"
     }
 });
 
 class Dashboard extends React.Component {
-    render(){
+    render() {
         const {classes} = this.props;
         return (
             <div className={classes.root}>
@@ -47,36 +45,36 @@ class Dashboard extends React.Component {
                             {"¿Qué información es?"}
                         </Typography>
                         <Typography variant={"body1"} className={classes.desc}>
-                            {"La información que se presenta a continuación corresponde a  los servidores públicos sancionados reportados en el Registro de Servidores Públicos Sancionados (RSPS) a partir de 2013 y hasta 2018. La sanción recibida reportada en los datos es la de inhabilitación para desempeñarse como servidor público"}
+                            {"La información presentada corresponde a los proveedores y contratistas sancionados. Cuenta con información del 2004 a la fecha. "}
                         </Typography>
-                        <Typography variant={"h6"} >
+                        <Typography variant={"h6"}>
                             {"¿Cómo se obtiene la información?"}
                         </Typography>
                         <Typography variant={"body1"} className={classes.desc}>
-                            {"Obtención semanal de las sanciones de tipo Inhabilitación vigentes resueltas a partir del año 2013. La fuente de datos es el Registro de Servidores Públicos Sancionados reportada por Función Pública en datos.gob.mx (Fuente: https://datos.gob.mx/busca/dataset/servidores-publicos-sancionados)."}
+                            {"La fuente de datos es del Registro de Proveedores y Contratistas Sancionados reportada por la Secretaria de la Función Pública en datos.gob.mx (Fuente: https://datos.gob.mx/busca/dataset/servidores-publicos-sancionados)"}
                         </Typography>
                         <Typography variant={"h6"}>
                             {"¿Cómo usar este dashboard?"}
                         </Typography>
                         <Typography variant={"body1"} className={classes.desc}>
-                            Este dashboard está dividido en 4 partes principales:  <br/>
-                            1. Cantidad de funcionarios sancionados. Permite conocer desde 2013 a la fecha el número de funcionarios sancionados.<br/>
-                            2. Causa de las sanciones. Muestra cuáles fueron las causas de la sanción desde 2013. Es posible ver cuáles son las más y las menos comunes.<br/>
-                            3. Dependencias con más sancionados. Muestra cuáles son las dependencias con más funcionarios sancionados. Es posible descargar el detalle de los sancionados (nombre, autoridad sancionadora, dependencia, inicio y fin de la sanción y causa)<br/>
-                            4. Duración de las sanciones. Muestra cómo varía la duración de las sanciones por año, por tipo de sanción y por dependencia.
+                            El dashboard está dividido en 4 secciones:<br/>
+                            1.-Cantidad de proveedores y contratistas sancionados. Comprende la información entre el 2004 a la fecha.<br/>
+                            2.-Sentido de las resoluciones: Muestra cuál fue el sentido de la resolución para las sanciones a lo largo del tiempo y de manera general.<br/>
+                            3.-Dependencias con mayor número de sanciones: Muestra cuáles son las dependencias con mayor número de proveedores y contratistas sacionados de manera global y por año.<br/>
+                            4.-Duración de las sanciones. Muestra cómo varía la duración de las sanciones por año, por tipo de resolución y por dependencia.
                         </Typography>
                     </Grid>
                     <Grid item xs={12} className={classes.sectionT}>
                         <AnioResolucionSanciones/>
                     </Grid>
                     <Grid item xs={12} className={classes.sectionT}>
-                        <CausaSanciones/>
+                        <SentidoResoluciones/>
                     </Grid>
                     <Grid item xs={12} className={classes.sectionT}>
                         <DependenciasSanciones/>
                     </Grid>
                     <Grid item xs={12} className={classes.sectionT}>
-                        <TiemposSanciones/>
+
                     </Grid>
                     {
                         /*
@@ -85,6 +83,7 @@ class Dashboard extends React.Component {
                     </Grid>
                          */
                     }
+
 
                 </Grid>
                 <Footer/>

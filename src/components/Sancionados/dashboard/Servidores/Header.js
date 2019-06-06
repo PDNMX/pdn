@@ -2,7 +2,7 @@ import React from 'react';
 import {withStyles} from "@material-ui/core/styles";
 import Grid from '@material-ui/core/Grid';
 import {Link} from 'react-router-dom';
-import PDNLogo from '../../../assets/logo_PDN_2.svg';
+import PDNLogo from '../../../../assets/logo_PDN_2.svg';
 import Typography from "@material-ui/core/Typography";
 import withWidth from '@material-ui/core/withWidth';
 
