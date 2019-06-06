@@ -44,6 +44,9 @@ const styles = theme => ({
     },
     blog: {
         textTransform: "none"
+    },
+    nested: {
+        paddingLeft: theme.spacing.unit * 4,
     }
 });
 
@@ -164,11 +167,16 @@ class VideoAppBar extends React.Component {
                                             <List component={"div"}>
 
                                                 <ListItem button component={Link}
-                                                          to={"/declaraciones/especificaciones"}>Sistema 1</ListItem>
-                                                <ListItem button component={Link} to={"/intervienen/especificaciones"}>Sistema
-                                                    2</ListItem>
-                                                <ListItem button component={Link} to={"/sancionados/especificaciones"}>Sistema
-                                                    3</ListItem>
+                                                          to="/declaraciones/especificaciones" className={classes.nested}>
+                                                    <Typography> Sistema 1</Typography>
+                                                </ListItem>
+                                                <ListItem button component={Link} to="/intervienen/especificaciones" className={classes.nested}>
+                                                    <Typography>Sistema 2</Typography>
+
+                                                </ListItem>
+                                                <ListItem button component={Link} to="/sancionados/especificaciones" className={classes.nested}>
+                                                    <Typography>Sistema 3</Typography>
+                                                </ListItem>
 
                                             </List>
 
