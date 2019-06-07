@@ -21,14 +21,14 @@ const styles = theme => ({
         justifyContent: "center",
         alignItems: "center",
         marginTop: "15px",
-        marginBottom : "15px"
+        marginBottom: "15px"
     }
 });
 
 function aux() {
     return new Promise((resolve, reject) => {
         let options = {
-            uri: process.env.REACT_APP_HOST_PDNBACK+'/viz/servidores/getAnioSancion',
+            uri: process.env.REACT_APP_HOST_PDNBACK + '/viz/servidores/getAnioSancion',
             json: true,
             method: "GET"
         };
@@ -43,8 +43,17 @@ function aux() {
 }
 
 
+let color = ["#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
+    "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
+    "#8BC34A", "#CDDC39", "#FFEB3B", "#FFC107", "#FF9800",
+    "#FF5722", "#795548", "#9E9E9E", "#607D8B", "#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
+    "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
+    "#8BC34A", "#CDDC39", "#FFEB3B", "#FFC107", "#FF9800",
+    "#FF5722", "#795548", "#9E9E9E", "#607D8B"];
+
 class AnioResolucionSanciones extends React.Component {
     state = {};
+
     componentDidMount() {
         aux().then(result => {
             let total = 0;
@@ -90,7 +99,7 @@ class AnioResolucionSanciones extends React.Component {
                                 ]
                             ]
                         },
-                        title:"Número de sanciones por año",
+                        title: "Número de sanciones por año",
 
                     },
                     configPie: {
@@ -100,8 +109,10 @@ class AnioResolucionSanciones extends React.Component {
                             return d["y"]
                         },
                         height: 300,
-                        label:function(d){return d["anio"]+"\n"+"("+((d["y"]*100) / total).toFixed(2)+"%)"},
-                        legend :false,
+                        label: function (d) {
+                            return d["anio"] + "\n" + "(" + ((d["y"] * 100) / total).toFixed(2) + "%)"
+                        },
+                        legend: false,
                         tooltipConfig: {
                             tbody: [
                                 ["Número de sanciones: ", function (d) {
@@ -109,8 +120,12 @@ class AnioResolucionSanciones extends React.Component {
                                 }
                                 ]
                             ]
+                        },
+                        shapeConfig: {
+                            fill: (d, i) => {
+                                return color[i]
+                            }
                         }
-
                     }
                 }
             )
@@ -129,8 +144,12 @@ class AnioResolucionSanciones extends React.Component {
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>
                         <Typography variant={"body1"}>
-                            Como se puede apreciar en las gráficas, el número de funcionarios sancionados de 2013 - 2015 se mantuvo sin grandes cambios, sancionando cada año aproximandamente a 300 funcionarios. En 2016 hubo un incremento de 16% con respecto a 2015. Sin embargo, para 2017 este número se incrementó en casi 100%, llegando a 700 sancionados. Para 2018 disminuyó pero sólo en 7%.
-                            En términos totales, si consideramos los 6 años que van de 2013-2018, se tuvieron poco más de 2,500 funcionarios sancionados. Más del 50% de este total, se registró entre 2017 y 2018.
+                            Como se puede apreciar en las gráficas, el número de funcionarios sancionados de 2013 - 2015
+                            se mantuvo sin grandes cambios, sancionando cada año aproximandamente a 300 funcionarios. En
+                            2016 hubo un incremento de 16% con respecto a 2015. Sin embargo, para 2017 este número se
+                            incrementó en casi 100%, llegando a 700 sancionados. Para 2018 disminuyó pero sólo en 7%.
+                            En términos totales, si consideramos los 6 años que van de 2013-2018, se tuvieron poco más
+                            de 2,500 funcionarios sancionados. Más del 50% de este total, se registró entre 2017 y 2018.
                         </Typography>
                     </Grid>
                     <Grid item xs={12} md={8}>
@@ -145,7 +164,6 @@ class AnioResolucionSanciones extends React.Component {
                             <Pie config={this.state.configPie}/>
                         }
                     </Grid>
-
 
 
                 </Grid>

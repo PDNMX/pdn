@@ -81,7 +81,7 @@ const styles = theme => ({
 
 class Index extends React.Component {
     state = {
-        idContent: 4
+        idContent: 3
     };
     changeContent = id => {
         this.setState({idContent: id});

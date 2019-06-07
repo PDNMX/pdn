@@ -6,6 +6,7 @@ import "./index.css";
 import Typography from "@material-ui/core/Typography";
 import {BarChart} from "d3plus-react";
 import rp from "request-promise";
+import * as d3 from "d3";
 
 const styles = theme => ({
     frameChart: {
@@ -65,6 +66,18 @@ function loadData2() {
     });
 }
 
+
+let color= ["#F44336","#E91E63","#9C27B0","#673AB7","#3F51B5",
+    "#2196F3","#03A9F4","#00BCD4","#009688","#4CAF50",
+    "#8BC34A","#CDDC39","#FFEB3B","#FFC107","#FF9800",
+    "#FF5722","#795548","#9E9E9E","#607D8B",];
+let z = d3.scaleOrdinal()
+    .range(["#F44336","#E91E63","#9C27B0","#673AB7","#3F51B5",
+        "#2196F3","#03A9F4","#00BCD4","#009688","#4CAF50",
+        "#8BC34A","#CDDC39","#FFEB3B","#FFC107","#FF9800",
+        "#FF5722","#795548","#9E9E9E","#607D8B"]);
+z.domain(["NEGLIGENCIA ADMINISTRATIVA","ABUSO DE AUTORIDAD","VIOLACION LEYES Y NORMATIVIDAD PRESUPUESTAL","COHECHO O EXTORSION","INCUMPLIMIENTO EN DECLARACION DE SITUACION PATRIMONIAL","VIOLACION PROCEDIMIENTOS DE CONTRATACION","VIOLACIÓN A LOS DERECHOS HUMANOS","EJERCICIO INDEBIDO DE SUS FUNCIONES EN MATERIA MIGRATORIA"])
+
 class CausasSanciones extends React.Component {
     state = {};
 
@@ -113,7 +126,12 @@ class CausasSanciones extends React.Component {
                             },
                             legend: false,
                             height: 400,
-                            shapeConfig: {label: false},
+                            shapeConfig: {
+                                label: false,
+                                fill: (d, i) => {
+                                    return color[i]
+                                }
+                            },
                             title : "Historico"
                         },
                         config2: {
@@ -141,7 +159,12 @@ class CausasSanciones extends React.Component {
                             },
                             legend: true,
                             height: 400,
-                            shapeConfig: {label: false},
+                            shapeConfig: {
+                                label: false,
+                                fill : (d)=>{
+                                    return z(d.id)}
+
+                            },
                             stacked: true,
                             title : "Por año"
                         },
