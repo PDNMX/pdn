@@ -5,6 +5,7 @@ import Grid from "@material-ui/core/Grid/Grid";
 import Typography from "@material-ui/core/Typography";
 import {Treemap} from "d3plus-react";
 import rp from "request-promise";
+import * as d3 from "d3";
 
 const styles = theme => ({
     frameChart: {
@@ -63,6 +64,13 @@ function loadData2() {
     });
 }
 
+let z = d3.scaleOrdinal()
+    .range(["#F44336","#E91E63","#9C27B0","#673AB7","#3F51B5",
+            "#2196F3","#03A9F4","#00BCD4","#009688","#4CAF50",
+            "#8BC34A","#CDDC39","#FFEB3B","#FFC107","#FF9800",
+            "#FF5722","#795548","#9E9E9E","#607D8B"]);
+
+
 class DependenciasSanciones extends React.Component {
     state = {};
 
@@ -106,8 +114,12 @@ class DependenciasSanciones extends React.Component {
                                 labelConfig:{
                                     fontMax : 18,
                                     fontMin : 10
+                                },
+                                fill : (d)=>{
+                                    return z(d.group)
                                 }
-                            }
+                            },
+
                         },
                         config2: {
                             data: aux2,
@@ -130,6 +142,9 @@ class DependenciasSanciones extends React.Component {
                                 labelConfig:{
                                     fontMax : 18,
                                     fontMin : 10
+                                },
+                                fill : (d)=>{
+                                    return z(d.parent)
                                 }
                             },
                         }

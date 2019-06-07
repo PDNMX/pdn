@@ -68,10 +68,10 @@ function loadData2() {
     });
 }
 
-let color= ["#2979FF","#1565C0","#0277BD","#00838F","#90caf9","#e3f2fd"];
+let color= ["#2196F3","#9C27B0","#009688","#FF9800","#E91E63","#FF5722"];
 let z = d3.scaleOrdinal()
-    .range(["#bd0026","#f03b20","#fd8d3c","#fecc5c","#ffffb2"]);
-
+    .range(["#2196F3","#9C27B0","#009688","#FF9800","#E91E63","#FF5722"]);
+z.domain(["SANCIONATORIA CON MULTA E INHABILITACIÓN","SANCIONATORIA CON MULTA","SANCIONATORIA","ABSOLUTORIA","NO ESPECIFICA","ABSOLUTORIA"])
 class SentidoResoluciones extends React.Component {
     state = {};
 
@@ -79,7 +79,7 @@ class SentidoResoluciones extends React.Component {
         aux().then(result => {
             let aux = result.data.map(item => {
                 return {
-                    "x": item.sentido_de_resolucion ? item.sentido_de_resolucion : "No especifíca",
+                    "x": item.sentido_de_resolucion ? item.sentido_de_resolucion : "NO ESPECIFICA",
                     "y": parseInt(item.total)
                 }
             })
@@ -157,11 +157,8 @@ class SentidoResoluciones extends React.Component {
                             height: 400,
                             shapeConfig: {
                                 label: false,
-                              /*  fill : (d)=>{
-                                    console.log("D: ",d);
-                                    return z(d.x)}
-
-                               */
+                              fill : (d)=>{
+                                    return z(d.id)}
                                     },
                             stacked: true,
                             title: "Por año",
@@ -175,10 +172,8 @@ class SentidoResoluciones extends React.Component {
         });
     }
 
-//["#2196F3", "#00BCD4", "#009688","#4CAF50","#CDDC39","#FFC107"]
     render() {
         const {classes} = this.props;
-        const BarSeries = VerticalBarSeries;
         return (
             <div>
                 <Grid container spacing={0} justify='center' className={classes.frameChart}>
