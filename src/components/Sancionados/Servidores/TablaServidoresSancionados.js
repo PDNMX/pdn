@@ -240,6 +240,7 @@ class EnhancedTable extends React.Component {
             if (apellidoDos) filtros.segundo_apellido = '%' + apellidoDos + '%';
             if(rfc) filtros.rfc = '%' + rfc + '%';
             if(curp) filtros.curp = '%' + curp + '%';
+            if(institucion) filtros.nombre = '%'+institucion+'%';
         }
         if(typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE')  offset = (this.state.rowsPerPage * this.state.page) ;
         let limit = (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.state.rowsPerPage : null;

@@ -164,13 +164,14 @@ class BusquedaServidor extends React.Component {
     componentDidMount() {
         let sug = [ {value : '' ,label:'TODAS'}];
         let options = {
-            uri: 'https://plataformadigitalnacional.org/api/instituciones_rsps?order=dependencia.asc',
-            json: true
+            uri: process.env.REACT_APP_HOST_PDNBACK+'/apis/getDependenciasServidores',
+            json: true,
+            method: "GET"
         };
         rp(options)
             .then(data => {
-                data.forEach(item =>{
-                    sug.push({value: item.dependencia, label: item.dependencia});
+                data.data.forEach(item =>{
+                    sug.push({value: item, label: item});
                 });
                 this.setState({suggestions: sug});
             }).catch(err => {

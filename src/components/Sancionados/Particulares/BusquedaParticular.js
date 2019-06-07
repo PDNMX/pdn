@@ -156,14 +156,15 @@ class BusquedaParticular extends React.Component {
         let id = 0;
 
         let options = {
-            uri: 'https://plataformadigitalnacional.org/api/instituciones?order=institucion.asc',
-            json: true
+            uri: process.env.REACT_APP_HOST_PDNBACK+'/apis/getDependenciasParticulares',
+            json: true,
+            method : "get"
         };
         rp(options)
             .then(data => {
-                data.forEach(item=>{
-                    aux.push({id: id++, nombre: item.institucion});
-                    sug.push({value: item.institucion, label: item.institucion});
+                data.data.forEach(item=>{
+                    aux.push({id: id++, nombre: item});
+                    sug.push({value: item, label: item});
                 });
                 this.setState({dependencias: aux, suggestions: sug});
             }).catch(err => {
