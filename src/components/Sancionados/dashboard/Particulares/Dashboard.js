@@ -1,9 +1,7 @@
 import React from 'react';
 import {withStyles} from "@material-ui/core/styles";
 import PropTypes from 'prop-types';
-import Header from "../Servidores/Header";
 import Grid from "@material-ui/core/Grid/Grid";
-import Footer from "../../../Home/Footer";
 import Typography from "@material-ui/core/Typography";
 import AnioResolucionSanciones from "./AnioResolucionSanciones";
 import SentidoResoluciones from "./SentidoResoluciones";
@@ -26,7 +24,7 @@ const styles = theme => ({
         maxWidth: '1200px',
         overflowX: 'auto',
         marginBottom: "25px",
-        marginTop: "25px"
+        marginTop: "53px"
     },
     desc: {
         marginBottom: "15px"
@@ -38,7 +36,7 @@ class Dashboard extends React.Component {
         const {classes} = this.props;
         return (
             <div className={classes.root}>
-                <Header/>
+
                 <Grid container spacing={0} justify='center' className={classes.bgPanelTable}>
                     <Grid item xs={12} className={classes.sectionT}>
                         <Typography variant={"h6"}>
@@ -86,7 +84,7 @@ class Dashboard extends React.Component {
 
 
                 </Grid>
-                <Footer/>
+
             </div>
         )
     }

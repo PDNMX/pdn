@@ -12,6 +12,8 @@ import TablaParticularesSancionados from './Particulares/TablaParticularesSancio
 import BubbleHolder from './Visualizaciones/BubbleHolder';
 import './s3.css';
 import Header from './Header/Header';
+import Dashboard from "./dashboard/Servidores/Dashboard";
+import Dashboard2 from "./dashboard/Particulares/Dashboard";
 
 const styles = theme => ({
     root: {
@@ -79,7 +81,7 @@ const styles = theme => ({
 
 class Index extends React.Component {
     state = {
-        idContent: 1
+        idContent: 3
     };
     changeContent = id => {
         this.setState({idContent: id});
@@ -93,7 +95,37 @@ class Index extends React.Component {
                 <Grid container justify="center" className={classes.bgContainer}>
                     <Grid item xs={12} className={classes.section}>
                         <Grid container>
-                            <Grid item md={4} xs={12} className={this.state.idContent !== 1 ? classes.card : classes.cardSeleccionada}
+                            <Grid item md={3} xs={12}
+                                  className={this.state.idContent !== 3 ? classes.card : classes.cardSeleccionada}
+                                  onClick={() => this.changeContent(3)}>
+
+                                <figure className={classes.figure}>
+                                    <img src={img3} alt="Dashboard servidores"
+                                         className={classes.image}/>
+                                </figure>
+
+                                <Typography variant="subtitle1"
+                                            style={{fontWeight: this.state.idContent === 3 ? 500 : 300}}
+                                            className={classes.whiteText}>
+                                    Dashboard servidores
+                                </Typography>
+                            </Grid>
+                            <Grid item md={3} xs={12}
+                                  className={this.state.idContent !== 4 ? classes.card : classes.cardSeleccionada}
+                                  onClick={() => this.changeContent(4)}>
+
+                                <figure className={classes.figure}>
+                                    <img src={img3} alt="Dashboard particulares"
+                                         className={classes.image}/>
+                                </figure>
+
+                                <Typography variant="subtitle1"
+                                            style={{fontWeight: this.state.idContent === 4 ? 500 : 300}}
+                                            className={classes.whiteText}>
+                                    Dashboard particulares
+                                </Typography>
+                            </Grid>
+                            <Grid item md={3} xs={12} className={this.state.idContent !== 1 ? classes.card : classes.cardSeleccionada}
                                   onClick={() => this.changeContent(1)}>
                                 <figure className={classes.figure}>
                                     <img src={img1} alt="Servidores públicos sancionados"
@@ -104,7 +136,7 @@ class Index extends React.Component {
                                     Servidores públicos sancionados
                                 </Typography>
                             </Grid>
-                            <Grid item md={4} xs={12}
+                            <Grid item md={3} xs={12}
                                   className={this.state.idContent !== 2 ? classes.card : classes.cardSeleccionada}
                                   onClick={() => this.changeContent(2)}>
                                 <figure className={classes.figure}>
@@ -118,21 +150,7 @@ class Index extends React.Component {
                                 </Typography>
 
                             </Grid>
-                            <Grid item md={4} xs={12}
-                                  className={this.state.idContent !== 3 ? classes.card : classes.cardSeleccionada}
-                                  onClick={() => this.changeContent(3)}>
 
-                                <figure className={classes.figure}>
-                                    <img src={img3} alt="Visualizaciones"
-                                         className={classes.image}/>
-                                </figure>
-
-                                <Typography variant="subtitle1"
-                                            style={{fontWeight: this.state.idContent === 3 ? 500 : 300}}
-                                            className={classes.whiteText}>
-                                    Visualizaciones
-                                </Typography>
-                            </Grid>
                         </Grid>
 
                     </Grid>
@@ -145,10 +163,11 @@ class Index extends React.Component {
                         {this.state.idContent === 2 &&
                         <TablaParticularesSancionados/>
                         }
-                    </Grid>
-                    <Grid item xs={12} className={classes.sectionT}>
                         {this.state.idContent === 3 &&
-                        <BubbleHolder/>
+                        <Dashboard/>
+                        }
+                        {this.state.idContent === 4 &&
+                        <Dashboard2/>
                         }
                     </Grid>
                 </Grid>

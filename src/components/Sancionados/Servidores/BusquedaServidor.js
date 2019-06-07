@@ -205,7 +205,7 @@ class BusquedaServidor extends React.Component {
         return (
             <Grid container spacing={32}>
                 <Grid item xs={12}>
-                    <Typography variant="h6"  paragraph>Busca un servidor público sancionado</Typography>
+                    <Typography variant="h6">Busca un servidor público sancionado</Typography>
                 </Grid>
                 <Grid item xs={12} md={3}>
                     <FormControl className={classes.formControl}>
