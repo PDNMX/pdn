@@ -11,6 +11,8 @@ import SelectReact from "react-select";
 import '../../Utils/selectReact.css';
 import Typography from "@material-ui/core/Typography/Typography";
 import Button from '@material-ui/core/Button';
+import InputLabel from "@material-ui/core/es/InputLabel";
+import Select from "@material-ui/core/Select";
 
 const styles = theme => ({
     container: {
@@ -162,7 +164,7 @@ class BusquedaServidor extends React.Component {
     };
 
     componentDidMount() {
-        let sug = [ {value : '' ,label:'TODAS'}];
+        let sug = [ {value : 'TODAS' ,label:'TODAS'}];
         let options = {
             uri: process.env.REACT_APP_HOST_PDNBACK+'/apis/getDependenciasServidores',
             json: true,
@@ -241,7 +243,23 @@ class BusquedaServidor extends React.Component {
                 </Grid>
                 <Grid item xs={12} md={6}>
                     <FormControl className={classes.formControl}>
-                        <SelectReact
+                        <InputLabel htmlFor={'campoSelectInstitucion'}>Institución</InputLabel>
+                        <Select style={{marginTop:'0px'}}value={institucion} onChange={(e) => handleChangeCampo('institucion', e)} inputProps={{
+                            name: 'campoSelectInstitucion',
+                            id: 'campoSelectInstitucion',
+                        }}
+                        >
+                            {
+                                this.state.suggestions.map((item => {
+                                    return <MenuItem value={item.value}>
+                                        {item.label}
+                                    </MenuItem>
+                                }))
+                            }
+                        </Select>
+                        {
+                            /*
+                            <SelectReact
                             classes={classes}
                             styles={selectStyles}
                             options={this.state.suggestions}
@@ -251,6 +269,9 @@ class BusquedaServidor extends React.Component {
                             id="campoSelectInstitucion"
                             placeholder = {'TODAS'}
                         />
+                            */
+                        }
+
 
                     </FormControl>
                 </Grid>

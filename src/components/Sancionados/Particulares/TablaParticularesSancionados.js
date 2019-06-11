@@ -266,7 +266,7 @@ class EnhancedTable extends React.Component {
         if (typeSearch !== 'ALL') {
             if (nombreParticular) filtros.nombre_razon_social = '%' + nombreParticular + '%';
             if (numeroExpediente) filtros.numero_expediente = '%' + numeroExpediente + '%';
-            // if (institucion) filtros.institucion = '%' + institucion + '%';
+            if (institucion && institucion!== 'TODAS') filtros.nombre = '%' + institucion + '%';
 
         }
 

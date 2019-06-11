@@ -3,13 +3,15 @@ import TextField from '@material-ui/core/TextField';
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import FormControl from "@material-ui/core/FormControl";
-import Select from "react-select";
+//import Select from "react-select";
+import Select from '@material-ui/core/Select';
 import MenuItem from "@material-ui/core/MenuItem";
 import rp from "request-promise";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid/Grid";
 import Typography from "@material-ui/core/Typography/Typography";
 import Button from "@material-ui/core/Button/Button";
+import InputLabel from "@material-ui/core/es/InputLabel/InputLabel";
 
 const styles = theme => ({
     container: {
@@ -47,12 +49,12 @@ const styles = theme => ({
     },
     singleValue: {
         color: theme.palette.black.color,
-        width : 'auto',
-        overflow : 'hidden',
-        textOverflow : 'ellipsis'
+        width: 'auto',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis'
     },
     placeholder: {
-        fontSize : 16,
+        fontSize: 16,
         color: theme.palette.black.color
     },
     paper: {
@@ -66,13 +68,12 @@ const styles = theme => ({
     labelCustom: {
         color: theme.palette.black.color,
     },
-    centrado:{
+    centrado: {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center'
     }
 });
-
 
 
 function inputComponent({inputRef, ...props}) {
@@ -92,7 +93,7 @@ function Control(props) {
                     inputRef: props.innerRef,
                     children: props.children,
                     ...props.innerProps,
-                    id : 'inputComponentParticular'
+                    id: 'inputComponentParticular'
                 },
             }}
             InputLabelProps={{
@@ -123,7 +124,8 @@ function Option(props) {
 
 function SingleValue(props) {
     return (
-        <div className={props.selectProps.classes.singleValue} >{!props.data.value?'Selecciona una':''} {props.children} </div>
+        <div
+            className={props.selectProps.classes.singleValue}>{!props.data.value ? 'Selecciona una' : ''} {props.children} </div>
     );
 }
 
@@ -137,10 +139,10 @@ function Menu(props) {
 
 
 const components = {
-    'Control':Control,
-    'Menu':Menu,
-    'Option':Option,
-    'SingleValue':SingleValue
+    'Control': Control,
+    'Menu': Menu,
+    'Option': Option,
+    'SingleValue': SingleValue
 };
 
 
@@ -152,17 +154,17 @@ class BusquedaParticular extends React.Component {
 
     componentDidMount() {
         let aux = [];
-        let sug = [];
+        let sug = [ {value : 'TODAS' ,label:'TODAS'}];
         let id = 0;
 
         let options = {
-            uri: process.env.REACT_APP_HOST_PDNBACK+'/apis/getDependenciasParticulares',
+            uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/getDependenciasParticulares',
             json: true,
-            method : "get"
+            method: "get"
         };
         rp(options)
             .then(data => {
-                data.data.forEach(item=>{
+                data.data.forEach(item => {
                     aux.push({id: id++, nombre: item});
                     sug.push({value: item, label: item});
                 });
@@ -175,13 +177,14 @@ class BusquedaParticular extends React.Component {
 
     }
 
-    limpiarBusqueda = ()=>{
+    limpiarBusqueda = () => {
         this.props.handleCleanAll();
     };
 
     buscar = () => {
         this.props.handleSearch('FIELD_FILTER');
     };
+
     render() {
         let {classes, handleChangeCampo, nombreParticular, numeroExpediente, institucion, theme} = this.props;
 
@@ -197,11 +200,27 @@ class BusquedaParticular extends React.Component {
         return (
             <Grid container spacing={32}>
                 <Grid item xs={12}>
-                    <Typography variant="h6"  paragraph>Busca un particular sancionado</Typography>
+                    <Typography variant="h6" paragraph>Busca un particular sancionado</Typography>
                 </Grid>
                 <Grid item md={6} xs={12}>
                     <FormControl className={classes.formControl}>
-                        <Select
+                        <InputLabel htmlFor={'campoSelectInstitucion'}>Institución</InputLabel>
+                        <Select style={{marginTop:'0px'}}value={institucion} onChange={(e) => handleChangeCampo('institucion', e)} inputProps={{
+                            name: 'campoSelectInstitucion',
+                            id: 'campoSelectInstitucion',
+                        }}
+                        >
+                            {
+                                this.state.suggestions.map((item => {
+                                    return <MenuItem value={item.value}>
+                                        {item.label}
+                                    </MenuItem>
+                                }))
+                            }
+                        </Select>
+                        {
+                            /*
+                             <Select
                             classes={classes}
                             styles={selectStyles}
                             options={this.state.suggestions}
@@ -210,6 +229,9 @@ class BusquedaParticular extends React.Component {
                             onChange={(e) => handleChangeCampo('institucion',e)}
                             id="campoSelectInstitucion"
                         />
+                             */
+                        }
+
                     </FormControl>
                 </Grid>
                 <Grid item md={3} xs={12}>
@@ -218,11 +240,11 @@ class BusquedaParticular extends React.Component {
                             id="search"
                             label="NOMBRE/RAZÓN SOCIAL PARTICULAR SANCIONADO"
                             type="search"
-                            onChange={(e) => handleChangeCampo('nombreParticular',e)}
+                            onChange={(e) => handleChangeCampo('nombreParticular', e)}
                             value={nombreParticular}
-                            InputLabelProps = {{
+                            InputLabelProps={{
                                 className: classes.fontLight,
-                                shrink : true
+                                shrink: true
                             }}
                         />
                     </FormControl>
@@ -235,9 +257,9 @@ class BusquedaParticular extends React.Component {
                             type="search"
                             onChange={(e) => handleChangeCampo('numeroExpediente', e)}
                             value={numeroExpediente}
-                            InputLabelProps = {{
+                            InputLabelProps={{
                                 className: classes.fontLight,
-                                shrink : true
+                                shrink: true
                             }}
                         />
 
@@ -251,7 +273,8 @@ class BusquedaParticular extends React.Component {
                     </Button>
                 </Grid>
                 <Grid item xs={12} md={1} className={classes.centrado}>
-                    <Button variant="contained" color="secondary" className={classes.button} onClick={this.limpiarBusqueda}>
+                    <Button variant="contained" color="secondary" className={classes.button}
+                            onClick={this.limpiarBusqueda}>
                         Limpiar
                     </Button>
                 </Grid>
