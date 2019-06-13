@@ -1,7 +1,7 @@
 import React from 'react';
 import {withStyles} from '@material-ui/core/styles';
 import Grid from "@material-ui/core/Grid/Grid";
-import Typography from "@material-ui/core/Typography/Typography";
+import {Typography} from "@material-ui/core"
 import Footer from "../Home/Footer";
 import Logo from "../../assets/icono-administracion.svg";
 import withWidth, {isWidthUp} from '@material-ui/core/withWidth';

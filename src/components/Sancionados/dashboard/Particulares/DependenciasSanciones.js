@@ -2,7 +2,7 @@ import React from 'react';
 import {withStyles} from "@material-ui/core/styles";
 import PropTypes from 'prop-types';
 import Grid from "@material-ui/core/Grid/Grid";
-import Typography from "@material-ui/core/Typography";
+import {Typography} from "@material-ui/core"
 import {Treemap} from "d3plus-react";
 import rp from "request-promise";
 import * as d3 from "d3";

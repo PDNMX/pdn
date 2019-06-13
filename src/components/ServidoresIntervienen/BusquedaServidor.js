@@ -14,7 +14,7 @@ import '../Utils/selectReact.css';
 import IconReplay from "@material-ui/icons/Replay";
 import IconSearch from "@material-ui/icons/Search";
 import Tooltip from "@material-ui/core/Tooltip/Tooltip";
-import Typography from "@material-ui/core/Typography/Typography";
+import {Typography} from "@material-ui/core"
 
 const styles = theme => ({
     container: {

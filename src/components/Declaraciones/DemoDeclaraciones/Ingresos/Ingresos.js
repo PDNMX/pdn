@@ -3,7 +3,7 @@ import {withStyles} from '@material-ui/core/styles/index';
 import ExpansionPanel from "@material-ui/core/ExpansionPanel/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary/ExpansionPanelSummary";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import Typography from "@material-ui/core/Typography/Typography";
+import {Typography} from "@material-ui/core"
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails/ExpansionPanelDetails";
 import SueldosSalariosPublicos from "./SueldosSalariosPublicos";
 import SueldosSalariosOtros from "./SueldosSalariosOtros";

@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import Modal from "@material-ui/core/Modal/Modal";
 import Participa from "../Participa/Participa";
 
+
 const styles = theme => ({
     root: {
         //background: '#f5986f',
@@ -46,17 +47,20 @@ class Bandita extends React.Component{
 
         const {classes} = this.props;
         return (
-            <div className={classes.root}>
-                <Button variant='contained' className={classes.comenta} onClick={this.handleClickOpen} >Comenta</Button>
-                <Modal className={classes.modalParticipa}
-                       aria-labelledby="simple-modal-title"
-                       aria-describedby="simple-modal-description"
-                       open={this.state.open}
-                       onClose={this.handleClose}
-                >
+
+                <div className={classes.root}>
+                    <Button variant='contained' className={classes.comenta} onClick={this.handleClickOpen} >Comenta</Button>
+                    <Modal className={classes.modalParticipa}
+                           aria-labelledby="simple-modal-title"
+                           aria-describedby="simple-modal-description"
+                           open={this.state.open}
+                           onClose={this.handleClose}
+                    >
                         <Participa onClose={this.handleClose}/>
-                </Modal>
-            </div>
+                    </Modal>
+                </div>
+
+
         );
     }
 }

@@ -5,7 +5,7 @@ import TableRow from "@material-ui/core/TableRow/TableRow";
 import TableCell from "@material-ui/core/TableCell/TableCell";
 import Tooltip from "@material-ui/core/Tooltip/Tooltip";
 import TableSortLabel from "@material-ui/core/TableSortLabel/TableSortLabel";
-import Typography from "@material-ui/core/Typography/Typography";
+import {Typography} from "@material-ui/core"
 import {withStyles} from "@material-ui/core";
 
 

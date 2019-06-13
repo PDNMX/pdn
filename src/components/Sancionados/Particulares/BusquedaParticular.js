@@ -9,7 +9,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import rp from "request-promise";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid/Grid";
-import Typography from "@material-ui/core/Typography/Typography";
+import {Typography} from "@material-ui/core"
 import Button from "@material-ui/core/Button/Button";
 import InputLabel from "@material-ui/core/es/InputLabel/InputLabel";
 

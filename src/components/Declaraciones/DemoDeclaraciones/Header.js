@@ -5,7 +5,7 @@ import imgHeader from "../../../assets/img/Demo.PNG";
 import {withStyles} from '@material-ui/core/styles/index';
 import PropTypes from 'prop-types';
 import Toolbar from '@material-ui/core/Toolbar/index';
-import Typography from '@material-ui/core/Typography/index';
+import {Typography} from "@material-ui/core"
 import IconButton from '@material-ui/core/IconButton/index';
 import Grid from '@material-ui/core/Grid/index';
 import Avatar from "@material-ui/core/Avatar/index";

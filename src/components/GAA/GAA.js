@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {withStyles} from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+import {Typography} from "@material-ui/core"
 import CandlestickExample from "../candlestick/candlestick-example";
 import "../candlestick/styles/examples.scss";
 

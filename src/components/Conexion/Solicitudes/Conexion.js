@@ -3,7 +3,7 @@ import {withStyles} from '@material-ui/core/styles';
 import FormularioConexion from './FormularioConexion';
 import Grid from "@material-ui/core/Grid/Grid";
 import Paper from "@material-ui/core/Paper/Paper";
-import Typography from "@material-ui/core/Typography/Typography";
+import {Typography} from "@material-ui/core"
 import "../../../index.css";
 import Footer from "../../Home/Footer";
 import {Link} from "react-router-dom";

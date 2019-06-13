@@ -3,7 +3,7 @@ import {withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import LogoSesna from '../../assets/Logo-SESNA.png';
 import LibreUso from '../../assets/libre-uso.png';
-import Typography from "@material-ui/core/Typography";
+import {Typography} from "@material-ui/core"
 import LogoPDN from '../../assets/PDN-sintexto-blue.png';
 import OK from '../../assets/ok_80x15_blue.png';
 import {Link} from 'react-router-dom';

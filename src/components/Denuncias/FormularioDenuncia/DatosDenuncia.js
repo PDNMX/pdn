@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper/Paper";
-import Typography from "@material-ui/core/Typography/Typography";
+import {Typography} from "@material-ui/core"
 import TextField from "@material-ui/core/TextField/TextField";
 import FormControl from "@material-ui/core/FormControl/FormControl";
 import NativeSelect from "@material-ui/core/NativeSelect/NativeSelect";

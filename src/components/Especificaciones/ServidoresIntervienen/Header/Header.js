@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 import BG from '../../../../assets/img/fenito.jpg';
 import PDNLogo from '../../../../assets/PDN.png';
 import S2 from '../../../../assets/iconos_azul/2_icono.svg'
-import Typography from "@material-ui/core/Typography";
+import {Typography} from "@material-ui/core"
 import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
 import './Header.css';
 import classNames from 'classnames';

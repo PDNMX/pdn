@@ -5,7 +5,7 @@ import TextField from "@material-ui/core/TextField/TextField";
 import Fab from "@material-ui/core/Fab/Fab";
 import Save from '@material-ui/icons/Save';
 import AddIcon from '@material-ui/icons/Add';
-import Typography from "@material-ui/core/Typography/Typography";
+import {Typography} from "@material-ui/core"
 import Tooltip from "@material-ui/core/Tooltip/Tooltip";
 import rp from "request-promise";
 import Mensaje from "../../Mensajes/Mensaje";

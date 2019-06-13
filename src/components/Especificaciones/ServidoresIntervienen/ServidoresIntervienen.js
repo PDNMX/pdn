@@ -9,7 +9,7 @@ import Estandar from "./Estandar";
 import Licencia from "../Licencia";
 import Implementacion from "./Implementacion";
 import TablaParametros from "./TablaParametros";
-import Typography from '@material-ui/core/Typography';
+import {Typography} from "@material-ui/core"
 import Herramientas from "../Herramientas";
 import Especificaciones from "./Especificaciones";
 

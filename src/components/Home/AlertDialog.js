@@ -5,7 +5,6 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import Typography from '@material-ui/core/Typography';
 import {withStyles}from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
@@ -33,38 +32,40 @@ class AlertDialog extends React.Component {
     render() {
         const {classes} = this.props;
         return (
-            <div>
-                {/*<Button onClick={this.handleClickOpen}>Open alert dialog</Button>*/}
-                <Dialog
-                    open={this.state.open}
-                    onClose={this.handleClose}
-                    aria-labelledby="alert-dialog-title"
-                    aria-describedby="alert-dialog-description"
-                >
-                    <DialogTitle id="alert-dialog-title">{"Plataforma Digital Nacional"}</DialogTitle>
-                    <DialogContent>
-                        <DialogContentText id="alert-dialog-description">
-                            Esta es una versión Alpha cuyo objetivo es probar las funcionalidades, interfaz y experiencia de usuario para la página de inicio, y los primeros dos sistemas de la Plataforma.
-                        </DialogContentText>
 
-                        <DialogContentText>
-                            <b>
-                                Esta versión NO debe ser vista como final, NI contiene los datos reales.
-                            </b>
-                        </DialogContentText>
+                <div>
+                    {/*<Button onClick={this.handleClickOpen}>Open alert dialog</Button>*/}
+                    <Dialog
+                        open={this.state.open}
+                        onClose={this.handleClose}
+                        aria-labelledby="alert-dialog-title"
+                        aria-describedby="alert-dialog-description"
+                    >
+                        <DialogTitle id="alert-dialog-title">{"Plataforma Digital Nacional"}</DialogTitle>
+                        <DialogContent>
+                            <DialogContentText id="alert-dialog-description">
+                                Esta es una versión Alpha cuyo objetivo es probar las funcionalidades, interfaz y experiencia de usuario para la página de inicio, y los primeros dos sistemas de la Plataforma.
+                            </DialogContentText>
 
-                        <DialogContentText>
-                            Te invitamos a dejar tus comentarios de esta versión accediendo al botón "COMENTA"
-                        </DialogContentText>
+                            <DialogContentText>
+                                <b>
+                                    Esta versión NO debe ser vista como final, NI contiene los datos reales.
+                                </b>
+                            </DialogContentText>
 
-                    </DialogContent>
-                    <DialogActions>
-                        <Button variant="contained" onClick={this.handleClose} className={classes.boton}>
-                            Aceptar
-                        </Button>
-                    </DialogActions>
-                </Dialog>
-            </div>
+                            <DialogContentText>
+                                Te invitamos a dejar tus comentarios de esta versión accediendo al botón "COMENTA"
+                            </DialogContentText>
+
+                        </DialogContent>
+                        <DialogActions>
+                            <Button variant="contained" onClick={this.handleClose} className={classes.boton}>
+                                Aceptar
+                            </Button>
+                        </DialogActions>
+                    </Dialog>
+                </div>
+
         );
     }
 }

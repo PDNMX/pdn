@@ -2,7 +2,7 @@ import React from 'react';
 import {withStyles} from "@material-ui/core/styles";
 import PropTypes from 'prop-types';
 import Grid from "@material-ui/core/Grid/Grid";
-import Typography from "@material-ui/core/Typography";
+import {Typography} from "@material-ui/core"
 import AnioResolucionSanciones from "./AnioResolucionSanciones";
 import SentidoResoluciones from "./SentidoResoluciones";
 import DependenciasSanciones from "./DependenciasSanciones";

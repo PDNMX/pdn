@@ -5,7 +5,7 @@ import Card from '@material-ui/core/Card';
 import CardMedia from "@material-ui/core/CardMedia/CardMedia";
 import {Link} from 'react-router-dom';
 import CardContent from "@material-ui/core/CardContent/CardContent";
-import Typography from "@material-ui/core/Typography";
+import {Typography} from "@material-ui/core"
 const styles = theme => ({
     card: {
         [theme.breakpoints.up('sm')]:{

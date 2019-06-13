@@ -1,6 +1,6 @@
 import React from "react";
 import {withStyles} from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography/Typography";
+import {Typography} from "@material-ui/core"
 import PropTypes from "prop-types";
 import mp4 from '../../assets/videos/pdn_intro.mp4';
 import './VideoBanner.css';
@@ -48,26 +48,26 @@ class Banner extends React.Component {
     render(){
         const { classes } = this.props;
         return (
-            <div className="video-bg">
-                <video autoPlay loop muted className={classes.video}>
-                    <source src={mp4} type="video/mp4"/>
-                    Tu navegador no soporta este tag
-                </video>
+                <div className="video-bg">
+                    <video autoPlay loop muted className={classes.video}>
+                        <source src={mp4} type="video/mp4"/>
+                        Tu navegador no soporta este tag
+                    </video>
 
-                <div className={classes.alpha}>
-                    <img alt="alpha" src={VersionAlpha} width="142px;"/>
-                </div>
+                    <div className={classes.alpha}>
+                        <img alt="alpha" src={VersionAlpha} width="142px;"/>
+                    </div>
 
-                <div className={classes.appBar}>
-                    <VideoAppBar/>
-                </div>
+                    <div className={classes.appBar}>
+                        <VideoAppBar/>
+                    </div>
 
-                <div className={classes.contents}>
-                    <Typography variant="h2" className={classes.text}>
-                        Inteligencia <span className={classes.boldText}>anticorrupción</span> con datos.
-                    </Typography>
+                    <div className={classes.contents}>
+                     <Typography className={classes.text} variant={"h2"}>
+                            Inteligencia <span className={classes.boldText}>anticorrupción</span> con datos.
+                        </Typography>
+                    </div>
                 </div>
-            </div>
         );
     }
 }

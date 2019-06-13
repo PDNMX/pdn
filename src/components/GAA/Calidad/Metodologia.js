@@ -2,7 +2,7 @@ import React from 'react';
 import {withStyles} from "@material-ui/core/styles";
 import Header from "./Header/Header";
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
+import {Typography} from "@material-ui/core"
 import PropTypes from 'prop-types';
 import Pipeline from '../../../assets/DQ_pipeline_analy.png';
 import Pasos from '../../../assets/pasos_evaluación.png';

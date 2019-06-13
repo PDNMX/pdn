@@ -6,7 +6,7 @@ import TiemposSanciones from "./TiemposSanciones";
 import CausaSanciones from "./CausaSanciones";
 import AnioResolucionSanciones from "./AnioResolucionSanciones";
 import DependenciasSanciones from "./DependenciasSanciones";
-import Typography from "@material-ui/core/Typography";
+import {Typography} from "@material-ui/core"
 
 const styles = theme => ({
     root: {

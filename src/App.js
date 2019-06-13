@@ -9,6 +9,7 @@ import LoginPDN from "./components/Inicio/LoginPDN";
 import ScrollToTop from './ScrollToTop';
 //import ReactGA from 'react-ga';
 import './components/Utils/Header.css';
+
 const theme = createMuiTheme({
     typography: {
         useNextVariants: true,
@@ -121,7 +122,9 @@ class App extends React.Component {
 
     render() {
         return (
+
             <MuiThemeProvider theme={theme}>
+
                 <Router basename={process.env.PUBLIC_URL}>
                     <ScrollToTop>
                         <Switch>
@@ -140,7 +143,9 @@ class App extends React.Component {
                         </Switch>
                     </ScrollToTop>
                 </Router>
+
             </MuiThemeProvider>
+
         );
     }
 }

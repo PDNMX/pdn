@@ -6,7 +6,7 @@ import imgHeader from "../../assets/PDN.png";
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import {Typography} from "@material-ui/core"
 import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
 import app from "../../config/firebase";

@@ -1,6 +1,6 @@
 import React from 'react';
 import {withStyles} from '@material-ui/core/styles/index'
-import Typography from '@material-ui/core/Typography/index';
+import {Typography} from "@material-ui/core"
 import PropTypes from 'prop-types';
 import Header from "./Header";
 import Grid from "@material-ui/core/Grid/Grid";

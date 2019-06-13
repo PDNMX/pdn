@@ -11,7 +11,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import BajarCSV from "../../Tablas/BajarCSV";
 import Grid from "@material-ui/core/Grid/Grid";
 import EnhancedTableHead from '../../Tablas/EnhancedTableHead';
-import Typography from "@material-ui/core/Typography/Typography";
+import {Typography} from "@material-ui/core"
 import DetalleServidorSancionado from "../Servidores/DetalleServidorSancionado";
 import Modal from "@material-ui/core/Modal/Modal";
 

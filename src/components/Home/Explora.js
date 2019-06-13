@@ -1,12 +1,9 @@
 import React from 'react';
 import {withStyles} from '@material-ui/styles';
 import PropTypes from 'prop-types';
-//import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-//import Button from '@material-ui/core/Button';
 import VideoDialog from './VideoDialog';
-//import clsx from 'clsx';
-
+import {Typography} from "@material-ui/core";
 const styles = theme => ({
     root: {
         flexGrow: 1
@@ -40,23 +37,24 @@ class Explora extends React.Component{
         const {classes}  = this.props;
 
         return (
-            <div className={classes.root}>
-                <Grid container spacing={0} justify='center' className={classes.container}>
-                    <Grid item xs={12} align="center">
-                        <p className={classes.headingText} >
-                            Plataforma Digital Nacional
+                <div className={classes.root}>
+                    <Grid container spacing={0} justify='center' className={classes.container}>
+                        <Grid item xs={12} align="center">
+                            <Typography className={classes.headingText} >
+                                Plataforma Digital Nacional
+                            </Typography>
 
-                        </p>
 
+                            <p className={classes.text}>
+                                explora los 6 sistemas
+                            </p>
 
-                        <p className={classes.text}>
-                            explora los 6 sistemas
-                        </p>
-
-                        <VideoDialog/>
+                            <VideoDialog/>
+                        </Grid>
                     </Grid>
-                </Grid>
-            </div>
+                </div>
+
+
         )
     }
 }

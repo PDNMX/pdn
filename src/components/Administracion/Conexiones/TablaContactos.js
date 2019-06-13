@@ -5,7 +5,7 @@ import TableBody from "@material-ui/core/TableBody/TableBody";
 import TableRow from "@material-ui/core/TableRow/TableRow";
 import TableCell from "@material-ui/core/TableCell/TableCell";
 import {withStyles} from '@material-ui/core/styles';
-import Typography from "@material-ui/core/Typography/Typography";
+import {Typography} from "@material-ui/core"
 import Tooltip from "@material-ui/core/Tooltip/Tooltip";
 import rp from "request-promise";
 import HowToReg from '@material-ui/icons/HowToReg';

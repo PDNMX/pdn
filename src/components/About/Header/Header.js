@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import {Link} from 'react-router-dom';
 import PDNLogo from '../../../assets/logo_PDN_2.svg';
 
-import Typography from "@material-ui/core/Typography";
+import {Typography} from "@material-ui/core"
 import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
 import './Header.css';
 

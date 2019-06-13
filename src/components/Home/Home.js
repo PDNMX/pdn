@@ -26,31 +26,32 @@ class Home extends React.Component{
     render(){
         const { classes } = this.props;
         return(
-            <div className={classes.root}>
-                {/*<Header currentUser={this.props.currentUser}/>*/}
-                <Banner/>
-                <Grid container spacing={0} justify="center">
-                    <Grid item xs={12} className={classes.item}>
-                        <Explora/>
+                <div className={classes.root}>
+                    {/*<Header currentUser={this.props.currentUser}/>*/}
+                    <Banner/>
+                    <Grid container spacing={0} justify="center">
+                        <Grid item xs={12} className={classes.item}>
+                            <Explora/>
+                        </Grid>
                     </Grid>
-                </Grid>
 
-                <Grid container spacing={0} justify="center" className={classes.sistemas}>
-                    <Grid item xs={12} className={classes.item}>
-                        <Sistemas/>
+                    <Grid container spacing={0} justify="center" className={classes.sistemas}>
+                        <Grid item xs={12} className={classes.item}>
+                            <Sistemas/>
+                        </Grid>
                     </Grid>
-                </Grid>
 
-                <Grid container spacing={0} justify="center">
-                    <Grid item xs={12} className={classes.item}>
-                        <QueEsLaPDN/>
+                    <Grid container spacing={0} justify="center">
+                        <Grid item xs={12} className={classes.item}>
+                           <QueEsLaPDN/>
+                        </Grid>
                     </Grid>
-                </Grid>
 
-                <Footer/>
-                <Bandita/>
-                <AlertDialog/>
-            </div>
+                    <Footer/>
+                    <Bandita/>
+                    <AlertDialog/>
+                </div>
+
         );
     }
 }

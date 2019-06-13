@@ -4,7 +4,7 @@ import Grid from "@material-ui/core/Grid/Grid";
 import TextField from "@material-ui/core/TextField/TextField";
 import FormControl from "@material-ui/core/FormControl/FormControl";
 import MenuItem from "@material-ui/core/MenuItem/MenuItem";
-import Typography from "@material-ui/core/Typography/Typography";
+import {Typography} from "@material-ui/core"
 import rp from "request-promise";
 import Select from "@material-ui/core/Select/Select";
 import InputLabel from "@material-ui/core/InputLabel/InputLabel";

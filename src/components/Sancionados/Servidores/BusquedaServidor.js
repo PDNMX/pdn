@@ -9,7 +9,7 @@ import Grid from "@material-ui/core/Grid/Grid";
 import Paper from "@material-ui/core/Paper/Paper";
 import SelectReact from "react-select";
 import '../../Utils/selectReact.css';
-import Typography from "@material-ui/core/Typography/Typography";
+import {Typography} from "@material-ui/core"
 import Button from '@material-ui/core/Button';
 import InputLabel from "@material-ui/core/es/InputLabel";
 import Select from "@material-ui/core/Select";
