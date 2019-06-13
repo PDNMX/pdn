@@ -44,20 +44,19 @@ class AlertDialog extends React.Component {
                     <DialogTitle id="alert-dialog-title">{"Plataforma Digital Nacional"}</DialogTitle>
                     <DialogContent>
                         <DialogContentText id="alert-dialog-description">
-                            <Typography component={"span"}>
-                                Esta es una versión Alpha cuyo objetivo es probar las funcionalidades, interfaz y experiencia de usuario para la página de inicio, y los primeros dos sistemas de la Plataforma.
-                            </Typography>
-
-                            <br/>
-                            <Typography component={"span"}>
-                                <b>Esta versión NO debe ser vista como final, NI contiene los datos reales.</b>
-                            </Typography>
-                            <br/>
-                            <Typography component={"span"}>
-                                Te invitamos a dejar tus comentarios de esta versión accediendo al botón "COMENTA"
-
-                            </Typography>
+                            Esta es una versión Alpha cuyo objetivo es probar las funcionalidades, interfaz y experiencia de usuario para la página de inicio, y los primeros dos sistemas de la Plataforma.
                         </DialogContentText>
+
+                        <DialogContentText>
+                            <b>
+                                Esta versión NO debe ser vista como final, NI contiene los datos reales.
+                            </b>
+                        </DialogContentText>
+
+                        <DialogContentText>
+                            Te invitamos a dejar tus comentarios de esta versión accediendo al botón "COMENTA"
+                        </DialogContentText>
+
                     </DialogContent>
                     <DialogActions>
                         <Button variant="contained" onClick={this.handleClose} className={classes.boton}>
