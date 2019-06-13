@@ -1,5 +1,5 @@
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -7,7 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import VideoDialog from './VideoDialog';
 //import clsx from 'clsx';
 
-const styles = theme => ({
+const styles = makeStyles(theme => ({
     root: {
         flexGrow: 1
     },
@@ -30,12 +30,12 @@ const styles = theme => ({
         fontSize: '48px'
     }
 
-});
+}));
 
 class Explora extends React.Component{
 
     render(){
-        const { classes } = this.props;
+        const classes  = styles();
 
         return (
             <div className={classes.root}>
@@ -63,4 +63,4 @@ Explora.propTypes = {
     classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Explora);
+export default Explora;
