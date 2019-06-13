@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 //import Button from '@material-ui/core/Button';
 import VideoDialog from './VideoDialog';
-import clsx from 'clsx';
+//import clsx from 'clsx';
 
 const styles = theme => ({
     root: {
