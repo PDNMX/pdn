@@ -1,5 +1,5 @@
 import React from 'react';
-import {makeStyles} from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/styles';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -7,7 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import VideoDialog from './VideoDialog';
 //import clsx from 'clsx';
 
-const styles = makeStyles(theme => ({
+const styles = theme => ({
     root: {
         flexGrow: 1
     },
@@ -20,36 +20,38 @@ const styles = makeStyles(theme => ({
         background: '#ffe01b'
     },
     headingText: {
+        ...theme.typography.body1,
         color: theme.palette.titleBanner.color,
         fontWeight: "700",
-        fontSize: '48px'
+        fontSize: '48px',
     },
     text: {
+        ...theme.typography.body1,
         color: theme.palette.titleBanner.color,
         fontWeight: 500,
         fontSize: '48px'
     }
 
-}));
+});
 
 class Explora extends React.Component{
 
     render(){
-        const classes  = styles();
+        const {classes}  = this.props;
 
         return (
             <div className={classes.root}>
                 <Grid container spacing={0} justify='center' className={classes.container}>
                     <Grid item xs={12} align="center">
-                        <Typography className={classes.headingText} paragraph>
+                        <p className={classes.headingText} >
                             Plataforma Digital Nacional
 
-                        </Typography>
+                        </p>
 
 
-                        <Typography className={classes.text} paragraph>
+                        <p className={classes.text}>
                             explora los 6 sistemas
-                        </Typography>
+                        </p>
 
                         <VideoDialog/>
                     </Grid>
@@ -63,4 +65,4 @@ Explora.propTypes = {
     classes: PropTypes.object.isRequired
 };
 
-export default Explora;
+export default withStyles(styles)(Explora);
