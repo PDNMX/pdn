@@ -21,8 +21,8 @@ const styles = theme => ({
     },
     headingText: {
         color: theme.palette.titleBanner.color,
-        fontWeight: "700 !important",
-        fontSize: '48px !important'
+        fontWeight: "700",
+        fontSize: '48px'
     },
     text: {
         color: theme.palette.titleBanner.color,
