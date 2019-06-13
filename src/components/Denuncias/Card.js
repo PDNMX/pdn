@@ -9,16 +9,16 @@ import Typography from "@material-ui/core/Typography";
 const styles = theme => ({
     card: {
         [theme.breakpoints.up('sm')]:{
-            height: 35* theme.spacing.unit,
+            height: theme.spacing(35),
             width: '100%'
 
         },
         [theme.breakpoints.down('sm')]:{
-            height: 28* theme.spacing.unit,
+            height: theme.spacing(28),
             width: 250
         },
         [theme.breakpoints.up('xl')]:{
-           height: 60* theme.spacing.unit,
+           height: theme.spacing(60),
             width: '100%',
         },
       //  backgroundColor : theme.palette.primary.light
@@ -46,7 +46,7 @@ const styles = theme => ({
         textAlign:"center"
     },
     containerCard:{
-        //marginRight: theme.spacing.unit * 5
+        //marginRight: theme.spacing(5)
     }
 });
 

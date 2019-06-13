@@ -23,16 +23,16 @@ const styles = theme => ({
         width: '100%',
     },
     formControl: {
-        margin: theme.spacing.unit,
+        margin: theme.spacing(1),
         width: "100%",
     },
     textField: {
-        marginLeft: theme.spacing.unit,
-        marginRight: theme.spacing.unit,
+        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(1),
         width: "100%",
     },
     form: {
-        padding: theme.spacing.unit * 2
+        padding: theme.spacing(2)
     },
 });
 
@@ -50,7 +50,7 @@ class DatosSolicitante extends React.Component {
         return (
             <div>
                 <Paper className={classes.form}>
-                <Grid container spacing={24}>
+                <Grid container spacing={3}>
                     <Grid item xs={12}>
                         <Typography variant={"body1"}>
                             Sus datos personales se encuentran protegidos en términos de lo señalado por las leyes y

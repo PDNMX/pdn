@@ -27,27 +27,27 @@ const styles = theme => ({
     },
     content: {
         flexGrow: 1,
-        // padding: theme.spacing.unit * 3,
+        // padding: theme.spacing(3),
     },
     toolbar: theme.mixins.toolbar,
     flex: {
         flexGrow: 1
     },
     nested: {
-        paddingLeft: theme.spacing.unit * 9
+        paddingLeft: theme.spacing(9)
     },
     button: {
-        marginTop: theme.spacing.unit,
-        marginRight: theme.spacing.unit,
-        marginBottom: theme.spacing.unit * 2,
+        marginTop: theme.spacing(1),
+        marginRight: theme.spacing(1),
+        marginBottom: theme.spacing(2),
         background: '#ffe01b',//'#fecb6e'
     },
     diagrama: {
         maxWidth: 900
     },
     paper: {
-        paddingTop: theme.spacing.unit,
-        paddingBottom: theme.spacing.unit
+        paddingTop: theme.spacing(1),
+        paddingBottom: theme.spacing(1)
     }
 });
 

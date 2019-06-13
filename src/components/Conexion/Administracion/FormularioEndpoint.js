@@ -19,7 +19,7 @@ import {getCurrentUser} from "../../Seguridad/seguridad";
 const styles = theme => ({
     root: {
         width: '100%',
-        marginTop: theme.spacing.unit * 3,
+        marginTop: theme.spacing(3),
     },
     text: {
         color: theme.palette.secondary.dark,
@@ -30,16 +30,16 @@ const styles = theme => ({
     mensajeError: {
         color: 'red',
         display: 'inline',
-        marginRight: theme.spacing.unit * 2,
+        marginRight: theme.spacing(2),
     },
     fab: {
         [theme.breakpoints.up('sm')]: {
-            width: theme.spacing.unit * 5,
-            height: theme.spacing.unit * 5,
+            width: theme.spacing(5),
+            height: theme.spacing(5),
         },
         [theme.breakpoints.down('sm')]: {
-            width: theme.spacing.unit * 4,
-            height: theme.spacing.unit * 4,
+            width: theme.spacing(4),
+            height: theme.spacing(4),
         }
     }
 });
@@ -216,7 +216,7 @@ class FormularioEndpoint extends React.Component {
         const {classes} = this.props;
         return (
             <div>
-                <Grid container spacing={32}>
+                <Grid container spacing={4}>
                     <Grid item xs={12}>
                         <Mensaje mensaje={this.state.mensaje_modal} titulo={this.state.tituloMensaje}
                                  open={this.state.flag_msj} handleClose={this.handleCloseMsj}/>

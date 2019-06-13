@@ -8,16 +8,16 @@ import Typography from "@material-ui/core/Typography/Typography";
 const styles = theme => ({
     card: {
         [theme.breakpoints.up('sm')]:{
-            height: 63* theme.spacing.unit,
+            height: theme.spacing(63),
             width: '100%'
 
         },
         [theme.breakpoints.down('sm')]:{
-            height: 28* theme.spacing.unit,
+            height: theme.spacing(28),
             width: "100%"
         },
         [theme.breakpoints.up('xl')]:{
-            height: 53* theme.spacing.unit,
+            height: theme.spacing(53),
             width: '100%'
 
         },

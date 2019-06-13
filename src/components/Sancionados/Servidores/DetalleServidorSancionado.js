@@ -42,9 +42,9 @@ const styles = theme => ({
         position: 'absolute',
         backgroundColor: theme.palette.background.paper,
         boxShadow: theme.shadows[5],
-        padding: theme.spacing.unit * 4,
+        padding: theme.spacing(4),
         [theme.breakpoints.up('sm')]: {
-            width: theme.spacing.unit * 110,
+            width: theme.spacing(110),
         },
         [theme.breakpoints.down('sm')]: {
             width: '80%',
@@ -52,7 +52,7 @@ const styles = theme => ({
             overflowY: 'scroll',
         },
         [theme.breakpoints.up('xl')]: {
-            width: theme.spacing.unit * 130,
+            width: theme.spacing(130),
         },
     },
     container: {
@@ -60,8 +60,8 @@ const styles = theme => ({
         flexWrap: 'wrap',
     },
     textField: {
-        marginLeft: theme.spacing.unit,
-        marginRight: theme.spacing.unit,
+        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(1),
         width: '100%',
 
     },
@@ -81,9 +81,9 @@ const styles = theme => ({
         position: 'absolute',
         backgroundColor: theme.palette.background.paper,
         boxShadow: theme.shadows[5],
-        padding: theme.spacing.unit * 4,
+        padding: theme.spacing(4),
         [theme.breakpoints.up('sm')]: {
-            width: theme.spacing.unit * 80,
+            width: theme.spacing(80),
         },
         [theme.breakpoints.down('sm')]: {
             width: '80%',
@@ -91,14 +91,14 @@ const styles = theme => ({
             overflowY: 'scroll',
         },
         [theme.breakpoints.up('xl')]: {
-            width: theme.spacing.unit * 130,
+            width: theme.spacing(130),
         },
     },
         smallIcon: {
         color: theme.palette.primary.main
     },
     downloadIcon: {
-        paddingRight: theme.spacing.unit
+        paddingRight: theme.spacing(1)
     },
     downloadButton: {
         background : '#FFE01B'
@@ -207,7 +207,7 @@ class DetalleServidorSancionado extends React.Component {
                 >
                     <div style={getModalStyle()} className={classes.paper}>
 
-                        <Grid container spacing={8} justify="flex-start">
+                        <Grid container spacing={1} justify="flex-start">
                             <Grid item xs={11}>
                                 <Typography variant="h6" className={classes.title}>Ficha del servidor público sancionado</Typography>
                             </Grid>

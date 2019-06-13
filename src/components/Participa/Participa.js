@@ -13,7 +13,7 @@ const styles = theme => ({
         top: '50%',
         left: '50%',
         transform: 'translate(-50%,-50%)',
-        padding: theme.spacing.unit * 2,
+        padding: theme.spacing(2),
     },
     title: {
         color: theme.palette.primary.dark
@@ -85,7 +85,7 @@ class Participa extends React.Component {
                         </Button>
                     </Grid>
                 </Grid>
-                <Grid container spacing={32} className={classes.contenedor}>
+                <Grid container spacing={4} className={classes.contenedor}>
                     <Grid item xs={12}>
                         <iframe title={'Participa'}
                             src="https://docs.google.com/forms/d/e/1FAIpQLSc14vP4mdWiNLx0TAXMZ_Cizd43CGdhpHruWddyb6fPCJq0zg/viewform?embedded=true"

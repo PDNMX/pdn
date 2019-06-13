@@ -24,10 +24,10 @@ const styles = theme => ({
     bgPanelTable: {
         backgroundColor: theme.palette.white.color,
         [theme.breakpoints.up('sm')]: {
-            marginBottom: theme.spacing.unit * 30,
+            marginBottom: theme.spacing(30),
         },
         [theme.breakpoints.down('sm')]: {
-            marginBottom: theme.spacing.unit * 10,
+            marginBottom: theme.spacing(10),
         },
 
     },
@@ -52,18 +52,18 @@ const styles = theme => ({
     },
     card: {
         backgroundColor: '#34b3eb', //theme.palette.azul.color,
-        paddingLeft: theme.spacing.unit,
-        paddingRight: theme.spacing.unit,
-        paddingTop: theme.spacing.unit * 2,
-        paddingBottom: theme.spacing.unit * 2,
+        paddingLeft: theme.spacing(1),
+        paddingRight: theme.spacing(1),
+        paddingTop: theme.spacing(2),
+        paddingBottom: theme.spacing(2),
         margin: 0,
     },
     cardSeleccionada: {
         backgroundColor: 'grey',//theme.palette.white.color,
-        paddingLeft: theme.spacing.unit,
-        paddingRight: theme.spacing.unit,
-        paddingTop: theme.spacing.unit * 2,
-        paddingBottom: theme.spacing.unit * 2,
+        paddingLeft: theme.spacing(1),
+        paddingRight: theme.spacing(1),
+        paddingTop: theme.spacing(2),
+        paddingBottom: theme.spacing(2),
         margin: 0,
     },
     figure: {

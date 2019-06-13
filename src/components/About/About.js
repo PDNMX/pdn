@@ -21,29 +21,29 @@ const styles = theme => ({
     },
     contents: {
         flexGrow: 1,
-        paddingTop: theme.spacing.unit * 5,
-        paddingBottom: theme.spacing.unit * 5,
+        paddingTop: theme.spacing(5),
+        paddingBottom: theme.spacing(5),
         [theme.breakpoints.up('sm')]:{
             //maxWidth: 1024
-            marginLeft: theme.spacing.unit * 25,
-            marginRight: theme.spacing.unit * 25
+            marginLeft: theme.spacing(25),
+            marginRight: theme.spacing(25)
         },
         [theme.breakpoints.down('sm')]:{
-            marginLeft: theme.spacing.unit,
-            marginRight: theme.spacing.unit
+            marginLeft: theme.spacing(1),
+            marginRight: theme.spacing(1)
         }
     },
     paper: {
-        padding: theme.spacing.unit * 2,
+        padding: theme.spacing(2),
         //textAlign: 'center',
         color: theme.palette.text.secondary,
     },
     gridItem:{
         maxWidth: '1024px',
-        marginTop: theme.spacing.unit * 3,
-        marginBottom: theme.spacing.unit * 3,
-        marginLeft: theme.spacing.unit,
-        marginRight: theme.spacing.unit
+        marginTop: theme.spacing(3),
+        marginBottom: theme.spacing(3),
+        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(1)
     }
 });
 
@@ -63,7 +63,7 @@ class About extends React.Component {
                 </Grid>
 
                 {/*
-                    <Grid container spacing={24} justify="center" style={{background: '#37464f'}}>
+                    <Grid container spacing={3} justify="center" style={{background: '#37464f'}}>
                         <Grid item xs={12} className={classes.gridItem}>
                             <QueHacemos/>
                         </Grid>

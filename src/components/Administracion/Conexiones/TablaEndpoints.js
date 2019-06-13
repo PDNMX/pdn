@@ -90,7 +90,7 @@ function getSorting(order, orderBy) {
 const styles = theme => ({
     root: {
         width: '100%',
-        marginTop: theme.spacing.unit * 3,
+        marginTop: theme.spacing(3),
     },
     tableWrapper: {
         overflowX: 'auto',
@@ -117,15 +117,15 @@ const styles = theme => ({
     },
     table: {
         tableLayout: 'fixed',
-        marginTop: theme.spacing.unit * 3,
-        marginBottom: theme.spacing.unit * 3,
+        marginTop: theme.spacing(3),
+        marginBottom: theme.spacing(3),
     },
     tablePagination: {
         overflowX: 'auto',
         fontSize: '0.75rem'
     },
     gridTable: {
-        marginBottom: theme.spacing.unit * 3,
+        marginBottom: theme.spacing(3),
     },
     titleTable: {
         marginBottom: '61px'
@@ -147,9 +147,9 @@ const styles = theme => ({
         position: 'absolute',
         backgroundColor: theme.palette.background.paper,
         boxShadow: theme.shadows[5],
-        padding: theme.spacing.unit * 4,
+        padding: theme.spacing(4),
         [theme.breakpoints.up('sm')]: {
-            width: theme.spacing.unit * 110,
+            width: theme.spacing(110),
         },
         [theme.breakpoints.down('sm')]: {
             width: '80%',
@@ -158,7 +158,7 @@ const styles = theme => ({
 
         },
         [theme.breakpoints.up('xl')]: {
-            width: theme.spacing.unit * 130,
+            width: theme.spacing(130),
         },
     },
     center:{
@@ -371,7 +371,7 @@ class TablaEndpoints extends React.Component {
                                 <Typography  className={classes.textCenter}>Selecciona el estatus</Typography>
                             </DialogTitle>
                             <DialogContent>
-                                <Grid container spacing={16}>
+                                <Grid container spacing={2}>
                                     <Grid item xs={12} className={classes.center}>
                                         <FormControl className={classes.formControl}>
                                             <InputLabel htmlFor="age-native-simple">Estatus</InputLabel>

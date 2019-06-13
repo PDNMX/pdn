@@ -5,8 +5,8 @@ import mapita from '../../assets/about/mapa.svg';
 import Grid from '@material-ui/core/Grid';
 const styles = theme => ({
     root : {
-        paddingTop: theme.spacing.unit*4,
-        paddingBottom: theme.spacing.unit*4,
+        paddingTop: theme.spacing(4),
+        paddingBottom: theme.spacing(4),
     },
     mapita: {
         maxWidth: "70%"

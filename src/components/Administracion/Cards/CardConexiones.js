@@ -62,7 +62,7 @@ class CardConexiones extends React.Component  {
             <Card className={classes.card}>
                 <CardActionArea component={MyLink}>
                     <CardContent>
-                        <Grid container spacing={8}>
+                        <Grid container spacing={1}>
                             <Grid item xs={12} md={6}>
                                 <CardMedia
                                     component="img"

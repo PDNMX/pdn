@@ -11,12 +11,12 @@ import C3 from '../../assets/about/banner3.png';
 const styles = theme => ({
     root: {
         flexGrow:1,
-        paddingTop: theme.spacing.unit*4,
-        paddingBottom: theme.spacing.unit*4,
+        paddingTop: theme.spacing(4),
+        paddingBottom: theme.spacing(4),
     },
     items: {
-        paddingLeft: theme.spacing.unit,
-        paddingRight: theme.spacing.unit
+        paddingLeft: theme.spacing(1),
+        paddingRight: theme.spacing(1)
     }
 });
 class Carrusel extends React.Component{

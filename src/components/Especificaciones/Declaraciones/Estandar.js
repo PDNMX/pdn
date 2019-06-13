@@ -8,9 +8,9 @@ const styles = theme => ({
         flexGrow:1
     },
     button: {
-        marginTop: theme.spacing.unit,
-        marginRight: theme.spacing.unit,
-        marginBottom: theme.spacing.unit *2,
+        marginTop: theme.spacing(1),
+        marginRight: theme.spacing(1),
+        marginBottom: theme.spacing(2),
         background: '#ffe01b',//'#fecb6e'
     }
 });

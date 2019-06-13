@@ -14,8 +14,8 @@ const styles = theme => ({
     },
     section: {
         maxWidth: '1000px',
-        paddingRight: theme.spacing.unit * 2,
-        paddingLeft: theme.spacing.unit * 2,
+        paddingRight: theme.spacing(2),
+        paddingLeft: theme.spacing(2),
         paddingBottom: 100,
         paddingTop: 100
     }

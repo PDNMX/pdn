@@ -6,11 +6,11 @@ import Grid from '@material-ui/core/Grid';
 
 const styles = theme => ({
     root: {
-        paddingTop: theme.spacing.unit*4,
-        paddingBottom: theme.spacing.unit*4,
+        paddingTop: theme.spacing(4),
+        paddingBottom: theme.spacing(4),
     },
     box : {
-        padding: theme.spacing.unit * 2,
+        padding: theme.spacing(2),
         marginTop: '20px',
         borderRadius: 0,
         borderColor: '#96cb99',
@@ -32,7 +32,7 @@ const styles = theme => ({
         paddingLeft: '15px'
     },
     li: {
-        paddingBottom: theme.spacing.unit //*2
+        paddingBottom: theme.spacing(1) //*2
     },
     links: {
         color: '#5fb1e6'

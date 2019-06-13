@@ -14,8 +14,8 @@ import s6 from '../../assets/about/icono6.svg';
 
 const styles = theme => ({
     root: {
-        paddingTop: theme.spacing.unit*4,
-        paddingBottom: theme.spacing.unit*4,
+        paddingTop: theme.spacing(4),
+        paddingBottom: theme.spacing(4),
 
     },
 

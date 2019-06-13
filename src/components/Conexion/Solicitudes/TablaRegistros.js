@@ -87,7 +87,7 @@ function getSorting(order, orderBy) {
 const styles = theme => ({
     root: {
         width: '100%',
-        marginTop: theme.spacing.unit * 3,
+        marginTop: theme.spacing(3),
     },
     tableWrapper: {
         overflowX: 'auto',
@@ -114,8 +114,8 @@ const styles = theme => ({
     },
     table: {
         tableLayout: 'fixed',
-        marginTop: theme.spacing.unit * 3,
-        marginBottom: theme.spacing.unit * 3,
+        marginTop: theme.spacing(3),
+        marginBottom: theme.spacing(3),
     },
     tablePagination: {
         overflowX: 'auto',

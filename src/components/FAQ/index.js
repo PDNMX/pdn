@@ -34,8 +34,8 @@ const styles = theme => ({
         marginBottom: 20
     },
     container: {
-        paddingRight: theme.spacing.unit,
-        paddingLeft: theme.spacing.unit
+        paddingRight: theme.spacing(1),
+        paddingLeft: theme.spacing(1)
     },
     sublist: {
         color: '#606060',

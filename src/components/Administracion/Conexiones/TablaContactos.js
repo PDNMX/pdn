@@ -143,7 +143,7 @@ const styles = theme => ({
         fontSize: '0.75rem'
     },
     gridTable: {
-        marginBottom: theme.spacing.unit * 3,
+        marginBottom: theme.spacing(3),
     },
     titleTable: {
         marginBottom: '61px'
@@ -158,7 +158,7 @@ const styles = theme => ({
     tableContainer: {},
     rootT: {
         width: '100%',
-        marginTop: theme.spacing.unit * 3,
+        marginTop: theme.spacing(3),
         overflowX: 'auto',
     },
     containerTable: {

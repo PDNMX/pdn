@@ -10,8 +10,8 @@ import Ejes from '../../assets/about/ejes.svg';
 const styles = theme => ({
     root: {
         flexGrow: 1,
-        paddingTop: theme.spacing.unit*4,
-        paddingBottom: theme.spacing.unit*4,
+        paddingTop: theme.spacing(4),
+        paddingBottom: theme.spacing(4),
     },
     links: {
         color: '#606060'
@@ -21,7 +21,7 @@ const styles = theme => ({
     },
     titles: {
         color: '#606060',
-        padding: theme.spacing.unit,
+        padding: theme.spacing(1),
     },
     bullet: {
         backgroundColor: '#5fb1e6',
@@ -38,7 +38,7 @@ const styles = theme => ({
         paddingLeft: '0px'
     },
     li: {
-        paddingBottom: theme.spacing.unit *4,
+        paddingBottom: theme.spacing(4),
         fontSize: '18px'
     },
     ejes: {
@@ -50,8 +50,8 @@ const styles = theme => ({
         fontSize: '26px'
     },
     items: {
-        paddingRight: theme.spacing.unit,
-        paddingLeft: theme.spacing.unit,
+        paddingRight: theme.spacing(1),
+        paddingLeft: theme.spacing(1),
     }
 });
 

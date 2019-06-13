@@ -16,12 +16,12 @@ const style = theme => ({
             color: 'inherit'
         },
         item1:{
-            paddingRight: theme.spacing.unit * 2,
-            paddingLeft: theme.spacing.unit * 2,
+            paddingRight: theme.spacing(2),
+            paddingLeft: theme.spacing(2),
         },
         item2:{
-            paddingRight: theme.spacing.unit * 2,
-            paddingLeft: theme.spacing.unit * 2
+            paddingRight: theme.spacing(2),
+            paddingLeft: theme.spacing(2)
         },
         item3:{
             maxWidth: 1200,

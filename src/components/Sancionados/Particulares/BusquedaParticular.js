@@ -19,7 +19,7 @@ const styles = theme => ({
         flexWrap: 'wrap',
     },
     textField: {
-        marginRight: theme.spacing.unit,
+        marginRight: theme.spacing(1),
     },
     formControl: {
         width: '100%'
@@ -45,7 +45,7 @@ const styles = theme => ({
         alignItems: 'center',
     },
     noOptionsMessage: {
-        padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`,
+        padding: `${theme.spacing(1)}px ${theme.spacing(2)}px`,
     },
     singleValue: {
         color: theme.palette.black.color,
@@ -63,7 +63,7 @@ const styles = theme => ({
 
     },
     divider: {
-        height: theme.spacing.unit * 2,
+        height: theme.spacing(2),
     },
     labelCustom: {
         color: theme.palette.black.color,
@@ -198,7 +198,7 @@ class BusquedaParticular extends React.Component {
         };
 
         return (
-            <Grid container spacing={32}>
+            <Grid container spacing={4}>
                 <Grid item xs={12}>
                     <Typography variant="h6" paragraph>Busca un particular sancionado</Typography>
                 </Grid>

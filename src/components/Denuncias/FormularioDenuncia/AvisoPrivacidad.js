@@ -6,7 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = theme => ({
     paperSecondary:{
         backgroundColor: theme.palette.secondary.light,
-        padding: theme.spacing.unit*5,
+        padding: theme.spacing(5),
 
     }
 });

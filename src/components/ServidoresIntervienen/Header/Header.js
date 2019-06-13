@@ -20,20 +20,20 @@ const style = theme => ({
             //background: 'grey',
             paddingTop: '75px',
             paddingBottom: '75px',
-            paddingLeft: theme.spacing.unit,
-            paddingRight: theme.spacing.unit,
+            paddingLeft: theme.spacing(1),
+            paddingRight: theme.spacing(1),
         },
         link: {
             textDecoration: 'none',
             color: 'inherit'
         },
         item1:{
-            paddingRight: theme.spacing.unit * 2,
-            paddingLeft: theme.spacing.unit * 2,
+            paddingRight: theme.spacing(2),
+            paddingLeft: theme.spacing(2),
         },
         item2:{
-            paddingRight: theme.spacing.unit * 2,
-            paddingLeft: theme.spacing.unit * 2
+            paddingRight: theme.spacing(2),
+            paddingLeft: theme.spacing(2)
         },
         item3:{
             maxWidth: 1200,

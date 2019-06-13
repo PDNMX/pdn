@@ -20,10 +20,10 @@ const styles = theme => ({
     },
     contenedor: {
         [theme.breakpoints.up('sm')]: {
-            padding: theme.spacing.unit * 5,
+            padding: theme.spacing(5),
         },
         [theme.breakpoints.down('sm')]: {
-            padding: theme.spacing.unit * 1,
+            padding: theme.spacing(1),
         },
     },
     titleSub: {
@@ -36,11 +36,11 @@ const styles = theme => ({
             marginBottom: '266px'
         },
         [theme.breakpoints.down('sm')]: {
-            margin: theme.spacing.unit * 2,
+            margin: theme.spacing(2),
         },
     },
     button: {
-        margin: theme.spacing.unit,
+        margin: theme.spacing(1),
         float: 'right'
     },
     text: {
@@ -69,8 +69,8 @@ const styles = theme => ({
         background: 'grey',
         paddingTop: '75px',
         paddingBottom: '75px',
-        paddingLeft: theme.spacing.unit,
-        paddingRight: theme.spacing.unit,
+        paddingLeft: theme.spacing(1),
+        paddingRight: theme.spacing(1),
         //zIndex: 5
     },
     link: {
@@ -78,12 +78,12 @@ const styles = theme => ({
         color: 'inherit'
     },
     item1: {
-        paddingRight: theme.spacing.unit * 2,
-        paddingLeft: theme.spacing.unit * 2,
+        paddingRight: theme.spacing(2),
+        paddingLeft: theme.spacing(2),
     },
     item2: {
-        paddingRight: theme.spacing.unit * 2,
-        paddingLeft: theme.spacing.unit * 2
+        paddingRight: theme.spacing(2),
+        paddingLeft: theme.spacing(2)
     },
 });
 

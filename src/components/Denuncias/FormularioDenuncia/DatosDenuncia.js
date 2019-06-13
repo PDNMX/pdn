@@ -29,16 +29,16 @@ const styles = theme => ({
         width: '100%',
     },
     formControl: {
-        margin: theme.spacing.unit,
+        margin: theme.spacing(1),
         minWidth: "100%",
     },
     textField: {
-        marginLeft: theme.spacing.unit,
-        marginRight: theme.spacing.unit,
+        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(1),
         width: "100%",
     },
     form: {
-        padding: theme.spacing.unit * 2
+        padding: theme.spacing(2)
     },
 });
 
@@ -115,7 +115,7 @@ class DatosDenuncia extends React.Component {
         return (
             <div>
                 <Paper className={classes.form}>
-                    <Grid container spacing={24}>
+                    <Grid container spacing={3}>
                         <Grid item xs={12}>
                             <Typography variant={"body1"}>
                                 Capture la información solicitada sobre la denuncia a presentar.
@@ -247,7 +247,7 @@ class DatosDenuncia extends React.Component {
                                 Si desea denunciar a un servidor público o a un particular, especifique:
                             </Typography>
                         </Grid>
-                        <Grid container spacing={24}>
+                        <Grid container spacing={3}>
                             <Grid item lg={6} md={6} sm={12}>
                                 <TextField
                                     id="nombre"

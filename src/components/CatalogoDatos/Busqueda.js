@@ -19,7 +19,7 @@ const styles = theme => ({
 
     },
     textField: {
-        marginRight: theme.spacing.unit,
+        marginRight: theme.spacing(1),
     },
     menu: {
         width: 200,

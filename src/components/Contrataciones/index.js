@@ -17,14 +17,14 @@ const styles = theme => ({
         [theme.breakpoints.up('sm')]: {
             marginLeft: '100px',
             marginRight: '100px',
-            paddingTop: theme.spacing.unit,
-            paddingBottom: theme.spacing.unit * 3
+            paddingTop: theme.spacing(1),
+            paddingBottom: theme.spacing(3)
         },
         [theme.breakpoints.down('sm')]: {
-            marginLeft: theme.spacing.unit,
-            marginRight: theme.spacing.unit,
-            paddingTop: theme.spacing.unit,
-            paddingBottom: theme.spacing.unit,
+            marginLeft: theme.spacing(1),
+            marginRight: theme.spacing(1),
+            paddingTop: theme.spacing(1),
+            paddingBottom: theme.spacing(1),
         }
     },
     subroot: {
@@ -98,7 +98,7 @@ class Index extends React.Component {
             <div>
                 <Header/>
                 <div className={classes.root}>
-                    <Grid container spacing={24}>
+                    <Grid container spacing={3}>
                         <Grid item xs={12}>
                             <Typography variant="headline">
                                 Contrataciones públicas

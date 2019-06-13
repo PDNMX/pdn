@@ -90,7 +90,7 @@ class BubbleHolder extends React.Component{
                     </Grid>
                 </Grid>
 
-                <Grid container spacing={24}>
+                <Grid container spacing={3}>
                     <Grid item xs={12}>
                         <TypePicker onChanged={this.onTypeChanged} active={type}/>
                         <BubbleChart width={width} height={height}>

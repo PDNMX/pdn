@@ -17,14 +17,14 @@ const styles = theme => ({
     gridItem:{
         maxWidth: '1024px',
         minHeight: '800px',
-        marginTop: theme.spacing.unit * 5 ,
-        paddingBottom: theme.spacing.unit *2
+        marginTop: theme.spacing(5) ,
+        paddingBottom: theme.spacing(2)
     },
     paper:{
-        padding: theme.spacing.unit * 2
+        padding: theme.spacing(2)
     },
     button: {
-        marginTop: theme.spacing.unit
+        marginTop: theme.spacing(1)
     },
     links: {
         backgroundColor: theme.palette.grisTenue.color

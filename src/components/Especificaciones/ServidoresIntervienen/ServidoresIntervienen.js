@@ -22,13 +22,13 @@ const styles = theme => ({
     },
     item:{
         maxWidth: 1200,
-        paddingRight: theme.spacing.unit * 2,
-        paddingLeft: theme.spacing.unit * 2
+        paddingRight: theme.spacing(2),
+        paddingLeft: theme.spacing(2)
     },
     container:{
         background: "#fff",
-        paddingTop: theme.spacing.unit * 4,
-        paddingBottom: theme.spacing.unit * 4
+        paddingTop: theme.spacing(4),
+        paddingBottom: theme.spacing(4)
     }
 });
 

@@ -13,9 +13,9 @@ const styles = theme => ({
         right: '0',
         zIndex: 1,
         //opacity: 0.7,
-        paddingTop: theme.spacing.unit * 2,
-        paddingBottom: theme.spacing.unit ,
-        paddingRight: theme.spacing.unit,
+        paddingTop: theme.spacing(2),
+        paddingBottom: theme.spacing(1) ,
+        paddingRight: theme.spacing(1),
         textAlign: 'right',
         align: "right"
     },

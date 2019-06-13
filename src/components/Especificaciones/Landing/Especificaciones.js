@@ -16,7 +16,7 @@ const styles = theme => ({
         paddingBottom: "50px"
     },
     button: {
-        margin: theme.spacing.unit,
+        margin: theme.spacing(1),
         background: '#ffe01b'
     },
     ul: {

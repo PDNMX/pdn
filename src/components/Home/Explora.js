@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 //import Button from '@material-ui/core/Button';
 import VideoDialog from './VideoDialog';
+import clsx from 'clsx';
 
 const styles = theme => ({
     root: {
@@ -20,8 +21,8 @@ const styles = theme => ({
     },
     headingText: {
         color: theme.palette.titleBanner.color,
-        fontWeight: 700,
-        fontSize: '48px'
+        fontWeight: "700 !important",
+        fontSize: '48px !important'
     },
     text: {
         color: theme.palette.titleBanner.color,

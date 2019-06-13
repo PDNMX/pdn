@@ -35,7 +35,7 @@ const styles = theme => ({
         width: '100%',
         backgroundColor: '#671e1e',
         boxShadow: theme.shadows[5],
-        padding: theme.spacing.unit * 3,
+        padding: theme.spacing(3),
     },
     textoDemo:{
         color : 'white'

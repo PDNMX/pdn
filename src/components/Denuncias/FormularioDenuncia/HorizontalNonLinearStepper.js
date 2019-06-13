@@ -27,14 +27,14 @@ const styles = theme => ({
         width: '300%',
     },
     button: {
-        margin: theme.spacing.unit,
+        margin: theme.spacing(1),
     },
     completed: {
         display: 'inline-block',
     },
     instructions: {
-        marginTop: theme.spacing.unit,
-        marginBottom: theme.spacing.unit,
+        marginTop: theme.spacing(1),
+        marginBottom: theme.spacing(1),
     },
     progress: {
         position: 'absolute',

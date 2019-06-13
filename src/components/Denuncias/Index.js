@@ -17,14 +17,14 @@ const styles = theme => ({
         [theme.breakpoints.up('sm')]: {
             marginLeft: '150px',
             marginRight: '150px',
-            paddingTop: theme.spacing.unit,
-            paddingBottom: theme.spacing.unit * 3
+            paddingTop: theme.spacing(1),
+            paddingBottom: theme.spacing(3)
         },
         [theme.breakpoints.down('sm')]: {
-            marginLeft: theme.spacing.unit,
-            marginRight: theme.spacing.unit,
-            paddingTop: theme.spacing.unit,
-            paddingBottom: theme.spacing.unit,
+            marginLeft: theme.spacing(1),
+            marginRight: theme.spacing(1),
+            paddingTop: theme.spacing(1),
+            paddingBottom: theme.spacing(1),
         }
     },
     bgImg: {
@@ -45,7 +45,7 @@ const styles = theme => ({
         textAlign: "center"
     },
     container: {
-        padding: theme.spacing.unit * 2
+        padding: theme.spacing(2)
     },
     seccion: {
         backgroundColor :  theme.palette.backDark.color
@@ -68,7 +68,7 @@ const styles = theme => ({
     },
     bgContainer : {
         backgroundColor: theme.palette.backLight.color,
-        paddingTop : theme.spacing.unit * 5
+        paddingTop : theme.spacing(5)
     },
     section: {
         maxWidth: '1024px'
@@ -108,7 +108,7 @@ class Index extends React.Component {
                     <div className={classes.root}>
                         <Grid container spacing={0} justify="center">
                             <Grid item xs={12} className={classes.section}>
-                              <Grid container spacing={32}>
+                              <Grid container spacing={4}>
                                     <Grid item md={4} xs={12}>
                                         <CardMedia image={img1} className={classes.image} to="/formDenuncia" component={Link}/>
                                         <Typography variant="h6" className={classes.title}>

@@ -111,7 +111,7 @@ const columnData = [
 const styles = theme => ({
     root: {
         width: '100%',
-        marginTop: theme.spacing.unit * 3,
+        marginTop: theme.spacing(3),
     },
     tableWrapper: {
         //overflowX: 'auto',
@@ -145,7 +145,7 @@ const styles = theme => ({
         color: theme.palette.primary.dark,
     },
     item: {
-        padding: theme.spacing.unit,
+        padding: theme.spacing(1),
         maxWidth: 1200
     }
 
@@ -154,7 +154,7 @@ const styles = theme => ({
 const toolbarStyles = theme => ({
     root: {
         width: '100%',
-        padding: theme.spacing.unit,
+        padding: theme.spacing(1),
     },
     toolBarStyle: {
         backgroundColor: 'transparent',

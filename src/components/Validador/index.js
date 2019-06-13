@@ -20,10 +20,10 @@ const styles = theme => ({
     },
     gridItem: {
         maxWidth: '1200px',
-        paddingTop: theme.spacing.unit * 8,
-        paddingBottom: theme.spacing.unit * 4,
-        paddingLeft: theme.spacing.unit * 2,
-        paddingRight: theme.spacing.unit * 2,
+        paddingTop: theme.spacing(8),
+        paddingBottom: theme.spacing(4),
+        paddingLeft: theme.spacing(2),
+        paddingRight: theme.spacing(2),
     },
     contents: {
         background: '#fff',

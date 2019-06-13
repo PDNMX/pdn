@@ -15,10 +15,10 @@ const styles = theme => ({
     bgPanelTable: {
         backgroundColor: theme.palette.white.color,
         [theme.breakpoints.up('sm')]: {
-            marginBottom: theme.spacing.unit * 30,
+            marginBottom: theme.spacing(30),
         },
         [theme.breakpoints.down('sm')]: {
-            marginBottom: theme.spacing.unit * 10,
+            marginBottom: theme.spacing(10),
         },
     },
     sectionT: {

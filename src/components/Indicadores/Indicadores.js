@@ -13,34 +13,34 @@ const styles = theme => ({
         [theme.breakpoints.up('sm')]:{
             marginLeft: '100px',
             marginRight: '100px',
-            marginTop: theme.spacing.unit * 2,
-            marginBottom: theme.spacing.unit * 2,
+            marginTop: theme.spacing(2),
+            marginBottom: theme.spacing(2),
 
 
         },
         [theme.breakpoints.down('sm')]:{
-            marginLeft: theme.spacing.unit,
-            marginRight: theme.spacing.unit,
-            marginTop: theme.spacing.unit,
-            marginBottom: theme.spacing.unit,
+            marginLeft: theme.spacing(1),
+            marginRight: theme.spacing(1),
+            marginTop: theme.spacing(1),
+            marginBottom: theme.spacing(1),
             padding:20
         }
     },
     paper: {
-        padding: theme.spacing.unit * 2,
-        //marginRight: theme.spacing.unit * 4,
-        //marginLeft: theme.spacing.unit * 4,
+        padding: theme.spacing(2),
+        //marginRight: theme.spacing(4),
+        //marginLeft: theme.spacing(4),
         textAlign: 'center',
         color: theme.palette.text.secondary,
     },
     appBar: {
-        marginBottom: theme.spacing.unit * 5
+        marginBottom: theme.spacing(5)
     },
     p: {
-        marginBottom: theme.spacing.unit * 2
+        marginBottom: theme.spacing(2)
     },
     gridItem: {
-        marginBottom: theme.spacing.unit * 2
+        marginBottom: theme.spacing(2)
     }
 });
 

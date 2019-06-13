@@ -7,34 +7,35 @@ import Button from '@material-ui/core/Button';
 import {Link} from 'react-router-dom';
 //import classNames from 'classnames';
 
-const styles = theme => ({
+
+const styles = theme=> ({
     root: {
         flexGrow:1
     },
     container: {
         paddingTop: 100,
         paddingBottom: 150,
-        paddingRight: theme.spacing.unit,
-        paddingLeft: theme.spacing.unit
+        paddingRight: theme.spacing(1),
+        paddingLeft: theme.spacing(1)
     },
     star: {
         maxWidth: 300
     },
     button: {
-        marginTop: theme.spacing.unit,
-        marginRight: theme.spacing.unit,
-        marginBottom: theme.spacing.unit,
+        marginTop: theme.spacing(1),
+        marginRight: theme.spacing(1),
+        marginBottom: theme.spacing(1),
         background: '#ffe01b',//'#fecb6e'
     },
     headingText: {
-        color : theme.palette.titleBanner.color,
+      //  color : theme.palette.titleBanner.color,
         fontSize: '48px',
         fontWeight: 500
     },
     text: {
         fontSize: '18px',
         fontWeight: 500,
-        color: theme.palette.titleBanner.color
+       // color: theme.palette.titleBanner.color
     }
 });
 class QueEsLaPDN extends React.Component{

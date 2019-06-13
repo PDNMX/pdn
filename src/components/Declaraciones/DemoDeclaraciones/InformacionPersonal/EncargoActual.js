@@ -11,13 +11,13 @@ const styles = theme => ({
     title: {
         color: theme.palette.textPrincipal.color,
         textAlign: 'center',
-        marginTop: theme.spacing.unit * 2,
+        marginTop: theme.spacing(2),
     },
     section: {
         maxWidth: '1024px'
     },
     formControl: {
-        margin: theme.spacing.unit,
+        margin: theme.spacing(1),
     }
 });
 
@@ -35,7 +35,7 @@ class EncargoActual extends React.Component {
             <div>
                 <Grid container justify={'center'} spacing={0}>
                     <Grid item xs={12} className={classes.section}>
-                        <Grid container spacing={24}>
+                        <Grid container spacing={3}>
                             <Grid item md={6} xs={12}>
                                 <TextField disabled
                                            id="ente"

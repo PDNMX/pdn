@@ -20,7 +20,7 @@ const styles = theme => ({
         maxWidth: '1200px'
     },
     contenedor: {
-        padding: theme.spacing.unit * 5,
+        padding: theme.spacing(5),
         overflowX: 'auto',
         maxWidth: '1200px',
     },
@@ -39,12 +39,12 @@ const styles = theme => ({
     },
     bgContainer: {
         [theme.breakpoints.up('sm')]: {
-            paddingTop: theme.spacing.unit * 5,
-            paddingBottom: theme.spacing.unit * 5,
+            paddingTop: theme.spacing(5),
+            paddingBottom: theme.spacing(5),
         },
         [theme.breakpoints.down('sm')]: {
-            paddingTop: theme.spacing.unit * 1,
-            paddingBottom: theme.spacing.unit * 1
+            paddingTop: theme.spacing(1),
+            paddingBottom: theme.spacing(1)
         },
     },
     banner: {
@@ -72,20 +72,20 @@ const styles = theme => ({
         background: 'grey',
         paddingTop: '75px',
         paddingBottom: '75px',
-        paddingLeft: theme.spacing.unit,
-        paddingRight: theme.spacing.unit,
+        paddingLeft: theme.spacing(1),
+        paddingRight: theme.spacing(1),
     },
     link: {
         textDecoration: 'none',
         color: 'inherit'
     },
     item1: {
-        paddingRight: theme.spacing.unit * 2,
-        paddingLeft: theme.spacing.unit * 2,
+        paddingRight: theme.spacing(2),
+        paddingLeft: theme.spacing(2),
     },
     item2: {
-        paddingRight: theme.spacing.unit * 2,
-        paddingLeft: theme.spacing.unit * 2
+        paddingRight: theme.spacing(2),
+        paddingLeft: theme.spacing(2)
     }
 });
 
@@ -135,7 +135,7 @@ class Index extends React.Component {
                 <div className={classes.bgContainer}>
                     <Grid container justify={'center'}>
                         <Grid item xs={12} className={classes.contenedor}>
-                            <Grid container spacing={8} justify={"center"} alignItems={"center"}>
+                            <Grid container spacing={1} justify={"center"} alignItems={"center"}>
                                 <Grid item xs={12} md={4}>
                                     <CardUsuarios/>
                                 </Grid>

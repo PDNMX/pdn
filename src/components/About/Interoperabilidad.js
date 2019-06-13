@@ -8,8 +8,8 @@ import Gi from '../../assets/about/datos_estanadarizados_interporables.svg';
 const styles = theme => ({
     root : {
         flexGrow: 1,
-        paddingTop: theme.spacing.unit*4,
-        paddingBottom: theme.spacing.unit*4,
+        paddingTop: theme.spacing(4),
+        paddingBottom: theme.spacing(4),
     },
     links: {
         color: '#606060'

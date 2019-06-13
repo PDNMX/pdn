@@ -25,8 +25,8 @@ const styles = theme => ({
         flexWrap: "wrap"
     },
     textField: {
-        marginLeft: theme.spacing.unit,
-        marginRight: theme.spacing.unit,
+        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(1),
         // width: 200,
         width: "100%"
     },
@@ -130,7 +130,7 @@ class LoginPDN extends Component {
         return (
             <div>
                 <PDNAppBar/>
-            <Grid container spacing={24} justify='center'>
+            <Grid container spacing={3} justify='center'>
                 <Grid item xs={12} className={classes.item}>
                     <Card className={classes.card}>
                         <CardContent style={{textAlign: "center"}}>

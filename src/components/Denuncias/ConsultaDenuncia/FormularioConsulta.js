@@ -28,21 +28,21 @@ const styles = theme => ({
         [theme.breakpoints.up('sm')]: {
             marginLeft: '100px',
             marginRight: '100px',
-            marginTop: theme.spacing.unit * 2,
-            marginBottom: theme.spacing.unit * 2,
+            marginTop: theme.spacing(2),
+            marginBottom: theme.spacing(2),
 
 
         },
         [theme.breakpoints.down('sm')]: {
-            marginLeft: theme.spacing.unit,
-            marginRight: theme.spacing.unit,
-            marginTop: theme.spacing.unit,
-            marginBottom: theme.spacing.unit,
+            marginLeft: theme.spacing(1),
+            marginRight: theme.spacing(1),
+            marginTop: theme.spacing(1),
+            marginBottom: theme.spacing(1),
             padding: 20
         }
     },
     gridItem: {
-        marginBottom: theme.spacing.unit * 2
+        marginBottom: theme.spacing(2)
     },
 
     paperIzquierdo: {
@@ -84,8 +84,8 @@ const styles = theme => ({
 
     },
     textField: {
-        marginLeft: theme.spacing.unit,
-        marginRight: theme.spacing.unit,
+        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(1),
         width: "100%",
     },
     section: {
@@ -124,7 +124,7 @@ class FormularioConsulta extends React.Component {
                 <Grid container spacing={0} justify="center">
                     <Grid item xs={12} className={classes.section}>
                         <Paper className={classes.seccion}>
-                            <Grid container spacing={24}>
+                            <Grid container spacing={3}>
                                 <Grid item lg={3} md={3} sm={12}>
                                     <Typography variant="h5" className={classes.titleBox}>
                                         Servicios
@@ -144,7 +144,7 @@ class FormularioConsulta extends React.Component {
                                         </ListItem>
                                     </List>
                                 </Grid>
-                                <Grid item xs={9} container direction="column" spacing={24}>
+                                <Grid item xs={9} container direction="column" spacing={3}>
                                     <Grid item>
                                         <TextField
                                             id="folio"

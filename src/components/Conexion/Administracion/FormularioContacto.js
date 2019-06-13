@@ -15,12 +15,12 @@ import {getCurrentUser} from "../../Seguridad/seguridad";
 const styles = theme => ({
     fab: {
         [theme.breakpoints.up('sm')]: {
-            width: theme.spacing.unit *5,
-            height: theme.spacing.unit *5,
+            width: theme.spacing(5),
+            height: theme.spacing(5),
         },
         [theme.breakpoints.down('sm')]: {
-            width: theme.spacing.unit *4,
-            height: theme.spacing.unit *4,
+            width: theme.spacing(4),
+            height: theme.spacing(4),
         },
 
     },
@@ -30,7 +30,7 @@ const styles = theme => ({
     mensajeError: {
         color: 'red',
         display : 'inline',
-        marginRight : theme.spacing.unit * 2,
+        marginRight : theme.spacing(2),
 
     },
     title: {
@@ -41,7 +41,7 @@ const styles = theme => ({
     },
     container:{
         [theme.breakpoints.down('sm')]: {
-            marginBottom : theme.spacing.unit *2,
+            marginBottom : theme.spacing(2),
         },
     }
 });
@@ -229,7 +229,7 @@ class FormularioContacto extends React.Component {
 
         return (
             <div>
-                <Grid container spacing={32} className={classes.container}>
+                <Grid container spacing={4} className={classes.container}>
                     <Grid item xs={12}>
                         <Mensaje mensaje={this.state.mensaje_modal} titulo={this.state.tituloMensaje}
                                  open={this.state.flag_msj} handleClose={this.handleCloseMsj}/>

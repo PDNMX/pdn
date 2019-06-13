@@ -125,7 +125,7 @@ const styles = theme => ({
         color: theme.palette.primary.dark,
     },
     item: {
-        padding: theme.spacing.unit
+        padding: theme.spacing(1)
     },
     container: {
         marginTop: '30px',
@@ -138,7 +138,7 @@ const styles = theme => ({
 const toolbarStyles = theme => ({
     root: {
         width: '100%',
-        padding: theme.spacing.unit,
+        padding: theme.spacing(1),
     },
     toolBarStyle: {
         backgroundColor: 'transparent',

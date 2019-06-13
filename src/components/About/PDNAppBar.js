@@ -18,7 +18,7 @@ import Button from '@material-ui/core/Button';
 const styles = theme => ({
     root: {
         flexGrow: 1,
-        marginBottom: theme.spacing.unit * 1.7
+        marginBottom: theme.spacing(1.7)
     },
     flex: {
         flexGrow: 1,
@@ -28,7 +28,7 @@ const styles = theme => ({
             //marginLeft: '80px'
         },
         [theme.breakpoints.down('sm')]:{
-            //marginLeft: theme.spacing.unit
+            //marginLeft: theme.spacing(1)
         },
         //marginRight: 20,
     },

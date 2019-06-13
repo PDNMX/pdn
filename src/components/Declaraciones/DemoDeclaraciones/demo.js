@@ -25,8 +25,8 @@ const styles = theme => ({
 
         },
         [theme.breakpoints.down('sm')]: {
-            marginLeft: theme.spacing.unit,
-            marginRight: theme.spacing.unit,
+            marginLeft: theme.spacing(1),
+            marginRight: theme.spacing(1),
 
         },
 
@@ -34,7 +34,7 @@ const styles = theme => ({
     title: {
         color: theme.palette.textPrincipal.color,
         textAlign: 'center',
-        marginTop: theme.spacing.unit * 2,
+        marginTop: theme.spacing(2),
     },
     bgPanelLight: {
         backgroundColor: theme.palette.white.color,
@@ -62,8 +62,8 @@ const styles = theme => ({
             marginRight: '100px'
         },
         [theme.breakpoints.down('sm')]: {
-            marginLeft: theme.spacing.unit,
-            marginRight: theme.spacing.unit
+            marginLeft: theme.spacing(1),
+            marginRight: theme.spacing(1)
         }
     },
     pdn: {
@@ -77,7 +77,7 @@ const styles = theme => ({
     },
     button: {
         [theme.breakpoints.up('sm')]: {
-            margin: theme.spacing.unit,
+            margin: theme.spacing(1),
         },
         [theme.breakpoints.down('sm')]: {
             margin: '0',
@@ -253,7 +253,7 @@ class DemoDeclaraciones extends React.Component {
 
                 <div className={classes.bgImg}>
                     <div className={classes.container}>
-                        <Grid container spacing={24}>
+                        <Grid container spacing={3}>
                             <Grid item xs={12} align="center">
                                 <Typography className={classes.pdn} variant="display2" style={{color: '#fff'}}>
                                     Sistema de declaración patrimonial y de intereses
@@ -271,7 +271,7 @@ class DemoDeclaraciones extends React.Component {
                         <Grid container justify={'center'} spacing={0} aria-describedby={'spinnerLoading'}
                               aria-busy={this.state.loading} id={'container1'}>
                             <Grid item xs={12}  id={'item1C1'} className={classes.gridItem}>
-                                <Grid container spacing={8} id={'container2'}>
+                                <Grid container spacing={1} id={'container2'}>
                                     <Grid item xs={12} id={'item1C2'}>
                                         <Typography variant={'title'} className={classes.title}>Consulta</Typography>
                                     </Grid>

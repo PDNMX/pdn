@@ -28,7 +28,7 @@ const styles = theme => ({
     },
     section: {
         maxWidth: '1200px',
-        marginBottom: theme.spacing.unit * 5,
+        marginBottom: theme.spacing(5),
     },
     titleSub: {
         color: theme.palette.titleBanner.color,
@@ -43,17 +43,17 @@ const styles = theme => ({
     },
     text: {
         color: theme.palette.textGrey.color,
-        marginBottom: theme.spacing.unit * 2,
-        marginTop: theme.spacing.unit * 2,
+        marginBottom: theme.spacing(2),
+        marginTop: theme.spacing(2),
     },
     button: {
-        margin: theme.spacing.unit,
+        margin: theme.spacing(1),
         float: 'right'
     },
     textAviso: {
         color: theme.palette.textGrey.color,
-        paddingTop: theme.spacing.unit * 5,
-        paddingBottom: theme.spacing.unit * 5,
+        paddingTop: theme.spacing(5),
+        paddingBottom: theme.spacing(5),
         textAlign: 'center',
     },
     item3: {
@@ -75,8 +75,8 @@ const styles = theme => ({
         background: 'grey',
         paddingTop: '75px',
         paddingBottom: '75px',
-        paddingLeft: theme.spacing.unit,
-        paddingRight: theme.spacing.unit,
+        paddingLeft: theme.spacing(1),
+        paddingRight: theme.spacing(1),
         //zIndex: 5
     },
     link: {
@@ -84,16 +84,16 @@ const styles = theme => ({
         color: 'inherit'
     },
     item1: {
-        paddingRight: theme.spacing.unit * 2,
-        paddingLeft: theme.spacing.unit * 2,
+        paddingRight: theme.spacing(2),
+        paddingLeft: theme.spacing(2),
     },
     item2: {
-        paddingRight: theme.spacing.unit * 2,
-        paddingLeft: theme.spacing.unit * 2
+        paddingRight: theme.spacing(2),
+        paddingLeft: theme.spacing(2)
     },
     containerTable: {
         overflowX: 'auto',
-        marginBottom: theme.spacing.unit * 5,
+        marginBottom: theme.spacing(5),
         maxWidth: '1200px'
     }
 });

@@ -24,9 +24,9 @@ const styles = theme => ({
         position: 'absolute',
         backgroundColor: theme.palette.background.paper,
         boxShadow: theme.shadows[5],
-        padding: theme.spacing.unit * 4,
+        padding: theme.spacing(4),
         [theme.breakpoints.up('sm')]: {
-            width: theme.spacing.unit * 50,
+            width: theme.spacing(50),
         },
         [theme.breakpoints.down('sm')]: {
             width: '80%',
@@ -34,7 +34,7 @@ const styles = theme => ({
             overflowY: 'scroll',
         },
         [theme.breakpoints.up('xl')]: {
-            width: theme.spacing.unit * 70,
+            width: theme.spacing(70),
         },
     },
     textCenter: {
@@ -57,7 +57,7 @@ class Mensaje extends React.Component {
                     onClose={()=>this.props.handleClose()}
                 >
                     <div className={classes.paperModal}  style={getModalStyle()} >
-                        <Grid container spacing={8} justify={"flex-start"}>
+                        <Grid container spacing={1} justify={"flex-start"}>
                             <Grid item xs={12}>
                                 <Typography variant={"h5"} className={classes.textCenter}>{titulo}</Typography>
                             </Grid>

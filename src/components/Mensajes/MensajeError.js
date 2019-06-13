@@ -13,9 +13,9 @@ const styles = theme => ({
         position: 'absolute',
         backgroundColor: theme.palette.background.paper,
         boxShadow: theme.shadows[5],
-        padding: theme.spacing.unit * 4,
+        padding: theme.spacing(4),
         [theme.breakpoints.up('sm')]: {
-            width: theme.spacing.unit * 50,
+            width: theme.spacing(50),
         },
         [theme.breakpoints.down('sm')]: {
             width: '80%',
@@ -23,7 +23,7 @@ const styles = theme => ({
             overflowY: 'scroll',
         },
         [theme.breakpoints.up('xl')]: {
-            width: theme.spacing.unit * 70,
+            width: theme.spacing(70),
         },
     },
     textCenter: {

@@ -14,10 +14,10 @@ const styles = theme => ({
         textTransform : 'none'
     },
     leftIcon: {
-        marginRight: theme.spacing.unit,
+        marginRight: theme.spacing(1),
     },
     rightIcon: {
-        marginLeft: theme.spacing.unit,
+        marginLeft: theme.spacing(1),
     },
     iconSmall: {
         width : '25px'

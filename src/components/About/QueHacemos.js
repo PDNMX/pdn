@@ -37,7 +37,7 @@ const styles = theme => ({
         paddingLeft: '15px'
     },
     li: {
-        paddingBottom: theme.spacing.unit *2
+        paddingBottom: theme.spacing(2)
     }
 });
 

@@ -14,7 +14,7 @@ export default class TypePicker extends React.Component {
         return (
             <div className="GroupingPicker">
 
-                <Grid container spacing={40} justify={"center"}>
+                <Grid container spacing={5} justify={"center"}>
                     <Grid item xs={4} style={{textAlign:'center'}}>
                         <Button variant={'text'} color={"primary"}
                                 onClick={() => this.onBtnClick("servidores")}>{'Servidores'}</Button>
