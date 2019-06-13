@@ -48,6 +48,9 @@ const styles = theme => ({
     logoPDN:{
         paddingTop: 15,
         maxWidth: 85
+    },
+    link: {
+        textDecoration: "none"
     }
 });
 
@@ -89,13 +92,18 @@ class Footer extends React.Component{
                                     <b>Sistemas</b>
                                 </Typography>
                                 <Typography className={classes.grayText} paragraph>
-                                    <a href="https://demospdn.host/declaraciones/" className={classes.grayText}> Declaraciones</a> </Typography>
-                                <Typography className={classes.grayText} component={Link} to="/servidores" paragraph>
-                                    Servidores en contrataciones
+                                    <a href="https://demospdn.host/declaraciones/" className={classes.grayText}> Declaraciones</a>
                                 </Typography>
-                                <Typography className={classes.grayText} component={Link} to="/sancionados" paragraph>
-                                    Sancionados
-                                </Typography>
+                                <Link to="/servidores" className={classes.link}>
+                                    <Typography className={classes.grayText} paragraph>
+                                        Servidores en contrataciones
+                                    </Typography>
+                                </Link>
+                                <Link to="/sancionados" className={classes.link}>
+                                    <Typography className={classes.grayText} paragraph>
+                                        Sancionados
+                                    </Typography>
+                                </Link>
                                 {/*
                                 <Typography className={classes.grayText}>Fiscalización</Typography>
                                 <Typography className={classes.grayText}>Denuncias</Typography>
@@ -109,15 +117,26 @@ class Footer extends React.Component{
                                 <Typography paragraph>
                                     <a href="https://www.plataformadigitalnacional.org/blog" className={classes.grayText}>Blog</a>
                                 </Typography>
-                                <Typography className={classes.grayText} component={Link} to="/faq" paragraph>
-                                    Preguntas frecuentes
-                                </Typography>
-                                <Typography component={Link} to="/about" className={classes.grayText} paragraph>
-                                    ¿Qué es la PDN?
-                                </Typography>
-                                <Typography component={Link} to="/terminos" className={classes.grayText}>
-                                    Términos de uso
-                                </Typography>
+
+                                <Link to="/faq" className={classes.link}>
+                                    <Typography className={classes.grayText} paragraph>
+
+                                        Preguntas frecuentes
+
+                                    </Typography>
+                                </Link>
+
+                                <Link to="/about" className={classes.link}>
+                                    <Typography className={classes.grayText} paragraph>
+                                        ¿Qué es la PDN?
+                                    </Typography>
+                                </Link>
+
+                                <Link to="/terminos" className={classes.link}>
+                                    <Typography className={classes.grayText} paragraph>
+                                        Términos de uso
+                                    </Typography>
+                                </Link>
                                 {/*<Typography className={classes.grayText}>Contacto</Typography>*/}
                             </Grid>
                         </Grid>
