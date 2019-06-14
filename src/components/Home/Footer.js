@@ -36,10 +36,12 @@ const styles = theme => ({
     },
     grayText: {
         color: '#ffffff',
-        textDecoration: 'none'
+        textDecoration: 'none',
+        fontSize: 14
     },
     blueText: {
-        color: '#34b3eb'
+        color: '#34b3eb',
+        fontSize: 14
     },
     logoSESNA:{
         paddingTop: 15,
