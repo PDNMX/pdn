@@ -17,13 +17,11 @@ const styles = theme => ({
         background: '#ffe01b'
     },
     headingText: {
-        ...theme.typography.body1,
         color: theme.palette.titleBanner.color,
         fontWeight: "700",
         fontSize: '48px',
     },
     text: {
-        ...theme.typography.body1,
         color: theme.palette.titleBanner.color,
         fontWeight: 500,
         fontSize: '48px'
@@ -44,10 +42,9 @@ class Explora extends React.Component{
                                 Plataforma Digital Nacional
                             </Typography>
 
-
-                            <p className={classes.text}>
+                            <Typography className={classes.text}>
                                 explora los 6 sistemas
-                            </p>
+                            </Typography>
 
                             <VideoDialog/>
                         </Grid>
