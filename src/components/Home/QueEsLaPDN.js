@@ -28,14 +28,14 @@ const styles = theme=> ({
         background: '#ffe01b',//'#fecb6e'
     },
     headingText: {
-      //  color : theme.palette.titleBanner.color,
+        color : theme.palette.titleBanner.color,
         fontSize: '48px',
         fontWeight: 500
     },
     text: {
         fontSize: '18px',
         fontWeight: 500,
-       // color: theme.palette.titleBanner.color
+        color: theme.palette.titleBanner.color
     }
 });
 class QueEsLaPDN extends React.Component{
