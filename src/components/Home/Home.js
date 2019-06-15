@@ -9,6 +9,7 @@ import Footer from './Footer';
 import Bandita from "./Bandita";
 import Banner from "../VideoBanner/VideoBanner";
 import AlertDialog from "./AlertDialog";
+import BarraFea from "./BarraFea";
 const styles = theme => ({
     root: {
         flexGrow :1,
@@ -29,6 +30,7 @@ class Home extends React.Component{
                 <div className={classes.root}>
                     {/*<Header currentUser={this.props.currentUser}/>*/}
                     <Banner/>
+                    <BarraFea/>
                     <Grid container spacing={0} justify="center">
                         <Grid item xs={12} className={classes.item}>
                             <Explora/>
