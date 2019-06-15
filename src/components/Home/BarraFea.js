@@ -20,8 +20,8 @@ const styles = theme => ({
         maxWidth: 60,
         paddingTop: 30,
         paddingBottom: 30,
-        paddingRight: 40,
-        paddingLeft: 40,
+        paddingRight: 50,
+        paddingLeft: 50,
         '&:hover': {
             backgroundColor: '#c5c5c5'
         }
