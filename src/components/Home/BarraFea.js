@@ -73,7 +73,7 @@ class BarraFea extends React.Component{
                     <Grid item xs={4} md={2} className={classes.item}>
                         <Link to="/especificaciones" className={classes.link}>
                             <img src={Espe} className={classes.icon} alt="Especificaciones técnicas"/>
-                            <Typography>Especificaciones técnicas</Typography>
+                            <Typography>Especificaciones</Typography>
                         </Link>
                     </Grid>
 
