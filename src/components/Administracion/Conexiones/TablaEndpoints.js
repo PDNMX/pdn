@@ -14,7 +14,7 @@ import TablePagination from "@material-ui/core/TablePagination/TablePagination";
 import Grid from "@material-ui/core/Grid/Grid";
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import InputLabel from "@material-ui/core/InputLabel/InputLabel";
+import InputLabel from '@material-ui/core/InputLabel';
 import Button from "@material-ui/core/Button/Button";
 import Dialog from "@material-ui/core/Dialog/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle/DialogTitle";

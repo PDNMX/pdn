@@ -3,7 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import FormControl from "@material-ui/core/FormControl/FormControl";
-import InputLabel from "@material-ui/core/es/InputLabel";
+import InputLabel from '@material-ui/core/InputLabel';
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem/MenuItem";
 import rp from "request-promise";

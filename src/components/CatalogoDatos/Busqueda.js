@@ -4,7 +4,7 @@ import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import MenuItem from "@material-ui/core/MenuItem/MenuItem";
 import Select from "@material-ui/core/Select/Select";
-import InputLabel from "@material-ui/core/InputLabel/InputLabel";
+import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from "@material-ui/core/FormControl/FormControl";
 import Input from "@material-ui/core/Input/Input";
 import InputAdornment from "@material-ui/core/InputAdornment/InputAdornment";

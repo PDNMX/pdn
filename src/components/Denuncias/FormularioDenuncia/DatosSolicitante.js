@@ -13,7 +13,7 @@ import FormLabel from "@material-ui/core/FormLabel/FormLabel";
 import RadioGroup from "@material-ui/core/RadioGroup/RadioGroup";
 import Radio from "@material-ui/core/Radio/Radio";
 import NativeSelect from "@material-ui/core/NativeSelect/NativeSelect";
-import InputLabel from "@material-ui/core/InputLabel/InputLabel";
+import InputLabel from '@material-ui/core/InputLabel';
 import Input from "@material-ui/core/Input/Input";
 import {connect} from 'react-redux';
 

@@ -14,7 +14,7 @@ import IconSearch from "@material-ui/icons/Search";
 import {Typography} from "@material-ui/core"
 import Button from "@material-ui/core/Button";
 import Select from "@material-ui/core/Select";
-import InputLabel from "@material-ui/core/es/InputLabel";
+import InputLabel from '@material-ui/core/InputLabel';
 
 const styles = theme => ({
     container: {

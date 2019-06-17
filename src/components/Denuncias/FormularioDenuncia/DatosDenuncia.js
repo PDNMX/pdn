@@ -7,7 +7,7 @@ import {Typography} from "@material-ui/core"
 import TextField from "@material-ui/core/TextField/TextField";
 import FormControl from "@material-ui/core/FormControl/FormControl";
 import NativeSelect from "@material-ui/core/NativeSelect/NativeSelect";
-import InputLabel from "@material-ui/core/InputLabel/InputLabel";
+import InputLabel from '@material-ui/core/InputLabel';
 import Input from "@material-ui/core/Input/Input";
 import PlusIcon from "@material-ui/icons/Add";
 import IconButton from "@material-ui/core/IconButton/IconButton";

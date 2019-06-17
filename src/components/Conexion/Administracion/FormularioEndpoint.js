@@ -4,7 +4,7 @@ import {Typography} from "@material-ui/core"
 import Grid from "@material-ui/core/Grid/Grid";
 import TextField from "@material-ui/core/TextField/TextField";
 import Select from "@material-ui/core/Select/Select";
-import InputLabel from "@material-ui/core/InputLabel/InputLabel";
+import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from "@material-ui/core/FormControl/FormControl";
 import MenuItem from "@material-ui/core/MenuItem/MenuItem";
 import Tooltip from "@material-ui/core/Tooltip/Tooltip";

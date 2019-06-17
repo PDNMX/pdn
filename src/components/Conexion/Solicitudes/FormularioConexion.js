@@ -7,7 +7,7 @@ import MenuItem from "@material-ui/core/MenuItem/MenuItem";
 import {Typography} from "@material-ui/core"
 import rp from "request-promise";
 import Select from "@material-ui/core/Select/Select";
-import InputLabel from "@material-ui/core/InputLabel/InputLabel";
+import InputLabel from '@material-ui/core/InputLabel';
 import Button from "@material-ui/core/Button/Button";
 import {ReCaptcha, loadReCaptcha} from 'react-recaptcha-google';
 import Modal from "@material-ui/core/Modal/Modal";
