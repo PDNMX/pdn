@@ -9,11 +9,11 @@ import MenuItem from "@material-ui/core/MenuItem/MenuItem";
 import rp from "request-promise";
 import Grid from "@material-ui/core/Grid/Grid";
 import Paper from "@material-ui/core/Paper/Paper";
-import SelectReact from "react-select";
+//import SelectReact from "react-select";
 import '../Utils/selectReact.css';
-import IconReplay from "@material-ui/icons/Replay";
-import IconSearch from "@material-ui/icons/Search";
-import Tooltip from "@material-ui/core/Tooltip/Tooltip";
+//import IconReplay from "@material-ui/icons/Replay";
+//import IconSearch from "@material-ui/icons/Search";
+//import Tooltip from "@material-ui/core/Tooltip/Tooltip";
 import {Typography} from "@material-ui/core"
 import Button from "@material-ui/core/Button";
 
@@ -80,8 +80,9 @@ const styles = theme => ({
     flecha:{
         color:'hsl(0,0%,80%)',
         float:'right',
-
-
+    },
+    inputShrink:{
+        transform : `scale(1)`
     }
 });
 
@@ -215,7 +216,7 @@ class BusquedaServidor extends React.Component {
                             onChange={(e) => handleChangeCampo('nombreServidor', e)}
                             value={nombreServidor}
                             InputLabelProps = {{
-                                className: classes.fontLight,
+                                className: classes.inputShrink,
                                 shrink : true
                             }}
                         />
@@ -225,7 +226,7 @@ class BusquedaServidor extends React.Component {
 
                 <Grid item xs={12} md={4}>
                     <FormControl className={classes.formControl}>
-                        <InputLabel  htmlFor="campoSelectProcedimiento">Categorías</InputLabel>
+                        <InputLabel htmlFor="campoSelectProcedimiento">Categorías</InputLabel>
                         <Select style={{marginTop:'0px'}}
                             value={procedimiento}
                             onChange={(e) => handleChangeCampo('procedimiento', e)}

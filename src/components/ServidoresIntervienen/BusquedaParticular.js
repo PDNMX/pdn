@@ -2,15 +2,15 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import FormControl from "@material-ui/core/FormControl";
+import FormControl from "@material-ui/core/FormControl/FormControl";
 //import Select from "react-select";
 import MenuItem from "@material-ui/core/MenuItem";
 import rp from "request-promise";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid/Grid";
-import IconReplay from "@material-ui/icons/Replay";
-import Tooltip from "@material-ui/core/Tooltip/Tooltip";
-import IconSearch from "@material-ui/icons/Search";
+//import IconReplay from "@material-ui/icons/Replay";
+//import Tooltip from "@material-ui/core/Tooltip/Tooltip";
+//import IconSearch from "@material-ui/icons/Search";
 import {Typography} from "@material-ui/core"
 import Button from "@material-ui/core/Button";
 import Select from "@material-ui/core/Select";
@@ -76,6 +76,9 @@ const styles = theme => ({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    inputShrink:{
+        transform : `scale(1)`
     }
 });
 
@@ -205,7 +208,9 @@ class BusquedaParticular extends React.Component {
                 <Grid item md={6} xs={12}>
                     <FormControl className={classes.formControl}>
                         <InputLabel htmlFor={'campoSelectInstitucion'}>Institución</InputLabel>
-                        <Select style={{marginTop:'0px'}} value={institucion} onChange={(e) => handleChangeCampo('institucion', e)}
+                        <Select style={{marginTop:'0px'}}
+                                value={institucion}
+                                onChange={(e) => handleChangeCampo('institucion', e)}
                                 inputProps={{
                                     name: 'campoSelectInstitucion',
                                     id: 'campoSelectInstitucion',
@@ -230,7 +235,7 @@ class BusquedaParticular extends React.Component {
                             onChange={(e) => handleChangeCampo('nombreParticular', e)}
                             value={nombreParticular}
                             InputLabelProps={{
-                                className: classes.fontLight,
+                                className: classes.inputShrink,
                                 shrink: true
                             }}
                         />

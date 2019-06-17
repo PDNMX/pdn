@@ -2,7 +2,7 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import FormControl from "@material-ui/core/FormControl";
+import FormControl from "@material-ui/core/FormControl/FormControl";
 //import Select from "react-select";
 import Select from '@material-ui/core/Select';
 import MenuItem from "@material-ui/core/MenuItem";
@@ -72,6 +72,9 @@ const styles = theme => ({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    inputShrink:{
+        transform : `scale(1)`
     }
 });
 
@@ -238,12 +241,12 @@ class BusquedaParticular extends React.Component {
                     <FormControl className={classes.formControl}>
                         <TextField
                             id="search"
-                            label="NOMBRE/RAZÓN SOCIAL PARTICULAR SANCIONADO"
+                            label="Nombre/Razón social particular sancionado"
                             type="search"
                             onChange={(e) => handleChangeCampo('nombreParticular', e)}
                             value={nombreParticular}
                             InputLabelProps={{
-                                className: classes.fontLight,
+                                className: classes.inputShrink,
                                 shrink: true
                             }}
                         />
@@ -253,12 +256,12 @@ class BusquedaParticular extends React.Component {
                     <FormControl className={classes.formControl}>
                         <TextField
                             id="search"
-                            label="NUMERO EXPEDIENTE"
+                            label="Número expediente"
                             type="search"
                             onChange={(e) => handleChangeCampo('numeroExpediente', e)}
                             value={numeroExpediente}
                             InputLabelProps={{
-                                className: classes.fontLight,
+                                className: classes.inputShrink,
                                 shrink: true
                             }}
                         />

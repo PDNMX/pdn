@@ -7,7 +7,7 @@ import MenuItem from "@material-ui/core/MenuItem/MenuItem";
 import rp from "request-promise";
 import Grid from "@material-ui/core/Grid/Grid";
 import Paper from "@material-ui/core/Paper/Paper";
-import SelectReact from "react-select";
+//import SelectReact from "react-select";
 import '../../Utils/selectReact.css';
 import {Typography} from "@material-ui/core"
 import Button from '@material-ui/core/Button';
@@ -74,6 +74,9 @@ const styles = theme => ({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    inputShrink:{
+        transform : `scale(1)`
     }
 });
 
@@ -217,7 +220,7 @@ class BusquedaServidor extends React.Component {
                             onChange={(e) => handleChangeCampo('rfc', e)}
                             value={rfc}
                             InputLabelProps = {{
-                                className: classes.fontLight,
+                                className: classes.inputShrink,
                                 shrink : true
                             }}
                         />
@@ -233,7 +236,7 @@ class BusquedaServidor extends React.Component {
                             onChange={(e) => handleChangeCampo('curp', e)}
                             value={curp}
                             InputLabelProps = {{
-                                className: classes.fontLight,
+                                className: classes.inputShrink,
                                 shrink : true
                             }}
                         />
@@ -279,12 +282,12 @@ class BusquedaServidor extends React.Component {
                     <FormControl className={classes.formControl}>
                         <TextField
                             id="search"
-                            label="NOMBRE DEL SERVIDOR SANCIONADO"
+                            label="Nombre del servidor sancionado"
                             type="search"
                             onChange={(e) => handleChangeCampo('nombreServidor', e)}
                             value={nombreServidor}
                             InputLabelProps = {{
-                                className: classes.fontLight,
+                                className: classes.inputShrink,
                                 shrink : true
                             }}
                         />
@@ -295,12 +298,12 @@ class BusquedaServidor extends React.Component {
                     <FormControl className={classes.formControl}>
                         <TextField
                             id="search"
-                            label="APELLIDO UNO"
+                            label="Apellido Uno"
                             type="search"
                             onChange={(e) => handleChangeCampo('apellidoUno', e)}
                             value={apellidoUno}
                             InputLabelProps = {{
-                                className: classes.fontLight,
+                                className: classes.inputShrink,
                                 shrink : true
                             }}
                         />
@@ -311,13 +314,13 @@ class BusquedaServidor extends React.Component {
                     <FormControl className={classes.formControl}>
                         <TextField
                             id="search"
-                            label="APELLIDO DOS"
+                            label="Apellido Dos"
                             type="search"
                             onChange={(e) => handleChangeCampo('apellidoDos', e)}
                             value={apellidoDos}
                             value={apellidoDos}
                             InputLabelProps = {{
-                                className: classes.fontLight,
+                                className: classes.inputShrink,
                                 shrink : true
                             }}
                         />
