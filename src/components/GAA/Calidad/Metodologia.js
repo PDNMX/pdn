@@ -6,6 +6,7 @@ import {Typography} from "@material-ui/core"
 import PropTypes from 'prop-types';
 import Pipeline from '../../../assets/DQ_pipeline_analy.png';
 import Pasos from '../../../assets/pasos_evaluación.png';
+import Footer from "../../Home/Footer";
 //import CandlestickExample from "../../candlestick/candlestick-example";
 
 const styles = theme => ({
@@ -251,11 +252,9 @@ class Metodologia extends React.Component{
                         <li><Typography>6. https://www.usaid.gov/sites/default/files/documents/1868/597sad.pdf</Typography></li>
                     </ul>
 
-
-
-
                 </Grid>
             </Grid>
+            <Footer/>
         </div>
     }
 
