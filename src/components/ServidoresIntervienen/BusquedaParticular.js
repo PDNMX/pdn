@@ -3,7 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import FormControl from "@material-ui/core/FormControl";
-import Select from "react-select";
+//import Select from "react-select";
 import MenuItem from "@material-ui/core/MenuItem";
 import rp from "request-promise";
 import Paper from "@material-ui/core/Paper";
@@ -12,6 +12,9 @@ import IconReplay from "@material-ui/icons/Replay";
 import Tooltip from "@material-ui/core/Tooltip/Tooltip";
 import IconSearch from "@material-ui/icons/Search";
 import {Typography} from "@material-ui/core"
+import Button from "@material-ui/core/Button";
+import Select from "@material-ui/core/Select";
+import InputLabel from "@material-ui/core/es/InputLabel";
 
 const styles = theme => ({
     container: {
@@ -201,22 +204,28 @@ class BusquedaParticular extends React.Component {
                 </Grid>
                 <Grid item md={6} xs={12}>
                     <FormControl className={classes.formControl}>
-                        <Select
-                            classes={classes}
-                            styles={selectStyles}
-                            options={this.state.suggestions}
-                            components={components}
-                            value={{value: institucion, label: institucion}}
-                            onChange={(e) => handleChangeCampo('institucion', e)}
-                            id="campoSelectInstitucion"
-                        />
+                        <InputLabel htmlFor={'campoSelectInstitucion'}>Institución</InputLabel>
+                        <Select style={{marginTop:'0px'}} value={institucion} onChange={(e) => handleChangeCampo('institucion', e)}
+                                inputProps={{
+                                    name: 'campoSelectInstitucion',
+                                    id: 'campoSelectInstitucion',
+                                }}
+                        >
+                            {
+                                this.state.suggestions.map((item => {
+                                    return <MenuItem value={item.value}>
+                                        {item.label}
+                                    </MenuItem>
+                                }))
+                            }
+                        </Select>
                     </FormControl>
                 </Grid>
-                <Grid item md={5} xs={12}>
+                <Grid item md={6} xs={12}>
                     <FormControl className={classes.formControl}>
                         <TextField
                             id="search"
-                            label="PARTICULARES INHABILITADOS"
+                            label="Particulares Inhabilitados"
                             type="search"
                             onChange={(e) => handleChangeCampo('nombreParticular', e)}
                             value={nombreParticular}
@@ -227,16 +236,17 @@ class BusquedaParticular extends React.Component {
                         />
                     </FormControl>
                 </Grid>
+                <Grid item xs={10}/>
                 <Grid item xs={12} md={1} className={classes.centrado}>
-                    <Tooltip title={'Buscar'}>
-                        <IconSearch className={classes.fontLight} onClick={this.buscar}/>
-                    </Tooltip>
+                    <Button variant="contained" color="secondary" className={classes.button} onClick={this.buscar}>
+                        Buscar
+                    </Button>
                 </Grid>
-                <Grid item xs={11}/>
+
                 <Grid item xs={12} md={1} className={classes.centrado}>
-                    <Tooltip title={'Limpiar'}>
-                        <IconReplay className={classes.fontLight} onClick={this.limpiarBusqueda}/>
-                    </Tooltip>
+                    <Button variant="contained" color="secondary" className={classes.button} onClick={this.limpiarBusqueda}>
+                        Limpiar
+                    </Button>
                 </Grid>
             </Grid>
 

@@ -9,6 +9,7 @@ import Footer from './Footer';
 import Bandita from "./Bandita";
 import Banner from "../VideoBanner/VideoBanner";
 import AlertDialog from "./AlertDialog";
+
 const styles = theme => ({
     root: {
         flexGrow :1,

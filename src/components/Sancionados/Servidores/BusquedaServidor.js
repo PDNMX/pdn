@@ -37,8 +37,7 @@ const styles = theme => ({
     },
     input: {
         color: theme.palette.black.color,
-        display: 'contents',
-        id:'test'
+        display: 'contents'
     },
     valueContainer: {
         display: 'flex',
@@ -244,7 +243,8 @@ class BusquedaServidor extends React.Component {
                 <Grid item xs={12} md={6}>
                     <FormControl className={classes.formControl}>
                         <InputLabel htmlFor={'campoSelectInstitucion'}>Institución</InputLabel>
-                        <Select style={{marginTop:'0px'}}value={institucion} onChange={(e) => handleChangeCampo('institucion', e)} inputProps={{
+                        <Select style={{marginTop:'0px'}} value={institucion} onChange={(e) => handleChangeCampo('institucion', e)}
+                                inputProps={{
                             name: 'campoSelectInstitucion',
                             id: 'campoSelectInstitucion',
                         }}

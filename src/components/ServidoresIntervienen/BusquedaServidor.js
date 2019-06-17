@@ -3,8 +3,8 @@ import TextField from '@material-ui/core/TextField';
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import FormControl from "@material-ui/core/FormControl/FormControl";
-import InputLabel from "@material-ui/core/InputLabel/InputLabel";
-import Select from "@material-ui/core/Select/Select";
+import InputLabel from "@material-ui/core/es/InputLabel";
+import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem/MenuItem";
 import rp from "request-promise";
 import Grid from "@material-ui/core/Grid/Grid";
@@ -15,6 +15,7 @@ import IconReplay from "@material-ui/icons/Replay";
 import IconSearch from "@material-ui/icons/Search";
 import Tooltip from "@material-ui/core/Tooltip/Tooltip";
 import {Typography} from "@material-ui/core"
+import Button from "@material-ui/core/Button";
 
 const styles = theme => ({
     container: {
@@ -29,7 +30,6 @@ const styles = theme => ({
     },
     fontLight: {
         color: theme.palette.black.color,
-        display : 'inline-flex',
     },
     '&$focus': {
         color: theme.palette.black.color,
@@ -204,21 +204,16 @@ class BusquedaServidor extends React.Component {
         return (
             <Grid container spacing={4}>
                 <Grid item xs={12}>
-                    <Typography variant="h6"  paragraph>Busca un servidor público</Typography>
+                    <Typography variant="h6">Busca un servidor público</Typography>
                 </Grid>
                 <Grid item xs={12} md={4}>
                     <FormControl className={classes.formControl}>
                         <TextField
                             id="search"
-                            label="NOMBRE DEL SERVIDOR"
+                            label="Nombre del servidor"
                             type="search"
                             onChange={(e) => handleChangeCampo('nombreServidor', e)}
                             value={nombreServidor}
-                            InputProps={{
-                                className: classes.fontLight,
-
-
-                            }}
                             InputLabelProps = {{
                                 className: classes.fontLight,
                                 shrink : true
@@ -228,25 +223,16 @@ class BusquedaServidor extends React.Component {
                     </FormControl>
                 </Grid>
 
-                <Grid item xs={12} md={3}>
+                <Grid item xs={12} md={4}>
                     <FormControl className={classes.formControl}>
-                        <InputLabel shrink htmlFor="campoSelectProcedimiento"
-                                    className={classes.fontLight}>CATEGORÍAS</InputLabel>
-                        <Select
+                        <InputLabel  htmlFor="campoSelectProcedimiento">Categorías</InputLabel>
+                        <Select style={{marginTop:'0px'}}
                             value={procedimiento}
                             onChange={(e) => handleChangeCampo('procedimiento', e)}
-                            name="campoSelectProcedimiento"
                             inputProps={{
-                                name: 'procedimiento',
-                                id: 'procedimiento',
-                                className: classes.fontLight
+                                name: 'campoSelectProcedimiento',
+                                id: 'campoSelectProcedimiento',
                             }}
-                            IconComponent = {props => (
-                                <i {...props} className={`material-icons ${classes.flecha}`}>
-                                    keyboard_arrow_down
-                                </i>
-                            )}
-
                         >
                             <MenuItem value={0}>
                                 Selecciona una
@@ -261,29 +247,36 @@ class BusquedaServidor extends React.Component {
                 </Grid>
                 <Grid item xs={12} md={4}>
                     <FormControl className={classes.formControl}>
-                        <SelectReact
-                            classes={classes}
-                            styles={selectStyles}
-                            options={this.state.suggestions}
-                            components={components}
-                            value={{value: institucion, label: institucion}}
+                        <InputLabel htmlFor={'campoSelectInstitucion'}>Institución</InputLabel>
+                        <Select style={{marginTop:'0px'}} value={institucion}
                             onChange={(e) => handleChangeCampo('institucion', e)}
-                            id="campoSelectInstitucion"
-                            placeholder = {'TODAS'}
-                        />
+                                inputProps={{
+                                    name: 'campoSelectInstitucion',
+                                    id: 'campoSelectInstitucion',
+                                }}
+
+                        >
+                            {
+                                this.state.suggestions.map((item => {
+                                    return <MenuItem value={item.value}>
+                                        {item.label}
+                                    </MenuItem>
+                                }))
+                            }
+                        </Select>
                     </FormControl>
                 </Grid>
-
+                <Grid item xs={10}/>
                 <Grid item xs={12} md={1} className={classes.centrado}>
-                    <Tooltip title={'Buscar'}>
-                        <IconSearch className={classes.fontLight} onClick={this.buscar}/>
-                    </Tooltip>
+                    <Button variant="contained" color="secondary" className={classes.button} onClick={this.buscar}>
+                        Buscar
+                    </Button>
                 </Grid>
-                <Grid item xs={11}/>
+
                 <Grid item xs={12} md={1}  className={classes.centrado}>
-                    <Tooltip title={'Limpiar'}>
-                        <IconReplay className={classes.fontLight} onClick={this.limpiarBusqueda}/>
-                    </Tooltip>
+                    <Button variant="contained" color="secondary" className={classes.button} onClick={this.limpiarBusqueda}>
+                        Limpiar
+                    </Button>
                 </Grid>
             </Grid>
 
