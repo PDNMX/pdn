@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography"
 import MuiLink from "@material-ui/core/Link";
 import {Link} from "react-router-dom";
 import Footer from "../Home/Footer";
+import TablaTecnologias from './TablaTecnologias';
 
 const styles = theme => ({
     root: {
@@ -18,6 +19,10 @@ const styles = theme => ({
     title: {
         color: theme.palette.primary.dark
     },
+    link: {
+        textDecoration: "none",
+        color: theme.palette.primary.dark
+    }
 });
 
 class HelpDesk extends React.Component{
@@ -122,7 +127,7 @@ class HelpDesk extends React.Component{
                         <li>93, y</li>
                     </ul>
 
-                    <MuiLink className={classes.lastLink} href="https://www.dof.gob.mx/nota_detalle.php?codigo=5541802&fecha=23/10/2018">
+                    <MuiLink href="https://www.dof.gob.mx/nota_detalle.php?codigo=5541802&fecha=23/10/2018">
                         Bases para el Funcionamiento de la Plataforma Digital Nacional.
                     </MuiLink>
                     <br/>
@@ -192,8 +197,53 @@ class HelpDesk extends React.Component{
                     </Typography>
 
                     <Typography paragraph>
-                        Asimismo, se les recomienda comenzar por <b><u>revisar de manera detallada</u></b> las especificaciones técnicas y los diccionarios de datos que ya fueron publicados en la siguiente página: <Link to="/especificaciones">https://plataformadigitalnacional.org/especificaciones</Link>. Es importante comenzar con los Sistemas 2 y 3, ya que los formatos necesarios para el Sistema 1 se encuentran en <MuiLink href="https://www.dof.gob.mx/nota_detalle.php?codigo=5557896&fecha=16%2F04%2F2019">proceso de revisión por parte del Comité Coordinador</MuiLink>.
+                        Asimismo, se les recomienda comenzar por <b><u>revisar de manera detallada</u></b> las especificaciones técnicas y los diccionarios de datos que ya fueron publicados en la siguiente página: <Link to="/especificaciones" className={classes.link}>https://plataformadigitalnacional.org/especificaciones</Link>. Es importante comenzar con los Sistemas 2 y 3, ya que los formatos necesarios para el Sistema 1 se encuentran en <MuiLink href="https://www.dof.gob.mx/nota_detalle.php?codigo=5557896&fecha=16%2F04%2F2019">proceso de revisión por parte del Comité Coordinador</MuiLink>.
                     </Typography>
+
+                    <Typography className={classes.title} variant="h5" paragraph>
+                        Preguntas técnicas frecuentes
+                    </Typography>
+
+                    <Typography variant="h5" paragraph>
+                        ¿Cómo funciona la PDN?
+                    </Typography>
+
+
+                    <Typography paragraph>
+                        ...
+                    </Typography>
+
+                    <Typography variant="h5" paragraph>¿Cómo se está construyendo la PDN?</Typography>
+
+                    <Typography paragraph>
+                        El equipo de la PDN cuenta con desarrolladores web, que hacen uso intensivo de las tecnologías de software más
+                        modernas y de código abierto.
+                    </Typography>
+
+                    <Typography paragraph>
+                        Existen tres componentes técnicos clave que permiten el desarrollo de la PDN
+                    </Typography>
+
+                    <ol>
+                        <li>Uso de web APIs que permitan la consulta de los datos desde la PDN a la entidad. Actualmente existen herramientas de código abierto para implementar las APIs rápidamente y de bajo costo.</li>
+                        <li>Estándares técnicos de datos que permiten compartir, para cada uno de los seis sistemas clave, información entre las dependencias y la PDN en una manera unificada y estandarizada. Actualmente hemos desarrollado tres estándares:</li>
+                        <ul>
+                            <li><Link to="/declaraciones/especificaciones" className={classes.link}>Declaraciones</Link></li>
+                            <li><Link to="/intervienen/especificaciones" className={classes.link}>Servidores públicos que intevienen en contrataciones</Link></li>
+                            <li><Link to="/sancionados/especificaciones" className={classes.link}>Servidores públicos y particulares sancionados</Link></li>
+                        </ul>
+                        <li>Tecnologías y servicios de software modernos y de código abierto. El código de la PDN puede consultarse <MuiLink href="https://github.com/PDNMX"> aquí</MuiLink>. Las tecnologías que usamos son las siguientes:</li>
+                    </ol>
+
+
+
+                    <TablaTecnologias/>
+
+
+
+
+
+
 
 
 
