@@ -8,6 +8,7 @@ import {Link} from "react-router-dom";
 import Footer from "../Home/Footer";
 import TablaTecnologias from './TablaTecnologias';
 import Icon from '@material-ui/core/Icon';
+import Diagrama from '../../assets/Diagrama_de_comunicacion_API.svg';
 
 const styles = theme => ({
     root: {
@@ -23,6 +24,10 @@ const styles = theme => ({
     link: {
         textDecoration: "none",
         color: theme.palette.primary.dark
+    },
+    diagrama: {
+        maxWidth: 900,
+        padding: theme.spacing(2)
     }
 });
 
@@ -211,8 +216,19 @@ class HelpDesk extends React.Component{
 
 
                     <Typography paragraph>
-                        ...
+
+                        El siguiente Diagrama 1 muestra un diseño de alto nivel de la arquitectura y las funcionalidades de la PDN. El flujo es el siguiente:
                     </Typography>
+
+                    <ol>
+                        <li><Typography>Un usuario entra a la PDN y hace una petición de cierta información.</Typography></li>
+                        <li><Typography>La PDN envía la petición de información del usuario usando parámetros de consulta al API de la dependencia.</Typography></li>
+                        <li><Typography>El API solicita a sus Bases de Datos la información.</Typography></li>
+                        <li><Typography>En este punto de comunicación también hay controles de autenticación de permisos, así como encriptación de datos que protegen el envío de la respuesta con la información solicitada desde la dependencia  hasta  la PDN.</Typography></li>
+                    </ol>
+
+
+                    <img src={Diagrama} className={classes.diagrama}/>
 
                     <Typography variant="h5" paragraph>¿Cómo se está construyendo la PDN?</Typography>
 
@@ -397,13 +413,6 @@ class HelpDesk extends React.Component{
                     <Typography>
                         pdn<Icon style={{fontSize:12}}>alternate_email</Icon>sesna.gob.mx
                     </Typography>
-
-
-
-
-
-
-
 
 
 
