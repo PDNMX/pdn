@@ -172,7 +172,8 @@ let EnhancedTableToolbar = props => {
         <Toolbar className={classes.toolBarStyle}>
             <BusquedaServidor handleCleanAll={handleCleanAll} handleSearch={handleSearch}
                               handleChangeCampo={handleChangeCampo}
-                              nombreServidor={nombreServidor} apellidoUno={apellidoUno} apellidoDos={apellidoDos} procedimiento={procedimiento}
+                              nombreServidor={nombreServidor} apellidoUno={apellidoUno} apellidoDos={apellidoDos}
+                              procedimiento={procedimiento}
                               institucion={institucion}/>
         </Toolbar>
     );
@@ -200,8 +201,8 @@ class EnhancedTable extends React.Component {
             orderBy: 'servidor',
             selected: [],
             nombreServidor: '',
-            apellidoUno:'',
-            apellidoDos : '',
+            apellidoUno: '',
+            apellidoDos: '',
             data: [],
             filterData: [],
             page: 0,
@@ -259,21 +260,7 @@ class EnhancedTable extends React.Component {
 
     isSelected = id => this.state.selected.indexOf(id) !== -1;
 
-    getTotalRows = (params) => {
-        let options = {
-            uri: 'https://plataformadigitalnacional.org/api/reniresp?select=count=eq.exact&',
-            json: true,
-            qs: params
-        };
-        rp(options)
-            .then(data => {
-                this.setState({totalRows: data[0].count, loading: false});
-            }).catch(err => {
-            this.setState({loading: false});
-            alert("_No se pudó obtener la información");
-            console.log(err);
-        });
-    };
+
     handleSearchAPI = (typeSearch) => {
         this.setState({loading: true}, () => {
             let {procedimiento, institucion, nombreServidor, apellidoUno, apellidoDos} = this.state;
@@ -283,7 +270,7 @@ class EnhancedTable extends React.Component {
 
             if (typeSearch !== 'ALL') {
                 //if(procedimiento && procedimiento > 0 ) params.id_procedimiento = 'eq.' + procedimiento;
-                if (institucion) filtros.institucion = institucion;
+                if (institucion && institucion!== 'TODAS') filtros.institucion = '%' + institucion + '%';
                 if (nombreServidor) filtros.nombres = '%' + nombreServidor.toUpperCase() + '%';
                 if (apellidoUno) filtros.primer_apellido = '%' + apellidoUno.toUpperCase() + '%';
                 if (apellidoDos) filtros.segundo_apellido = '%' + apellidoDos.toUpperCase() + '%';
@@ -299,7 +286,6 @@ class EnhancedTable extends React.Component {
                 "offset": offset
             }
 
-            //if(typeSearch === 'FIELD_FILTER')  this.getTotalRows(params);
 
             let options = {
                 method: 'POST',
@@ -310,9 +296,6 @@ class EnhancedTable extends React.Component {
 
             rp(options)
                 .then(res => {
-                    console.log("Res: ",res);
-
-                    console.log("Res.DATA: ",res.data);
                     let dataAux = res.data;
                     let total = res.totalRows;
 
@@ -428,7 +411,9 @@ class EnhancedTable extends React.Component {
                                                                padding="default">{n.nombre}</TableCell>
                                                     <TableCell>{n.institucion.nombre}</TableCell>
                                                     <TableCell>{n.puesto.nombre}</TableCell>
-                                                    <TableCell>{n.tipoArea.map(item=>{return item+" "})}</TableCell>
+                                                    <TableCell>{n.tipoArea.map(item => {
+                                                        return item + " "
+                                                    })}</TableCell>
                                                 </TableRow>
                                             );
                                         })}
