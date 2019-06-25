@@ -8,12 +8,7 @@ import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem/MenuItem";
 import rp from "request-promise";
 import Grid from "@material-ui/core/Grid/Grid";
-import Paper from "@material-ui/core/Paper/Paper";
-//import SelectReact from "react-select";
 import '../Utils/selectReact.css';
-//import IconReplay from "@material-ui/icons/Replay";
-//import IconSearch from "@material-ui/icons/Search";
-//import Tooltip from "@material-ui/core/Tooltip/Tooltip";
 import {Typography} from "@material-ui/core"
 import Button from "@material-ui/core/Button";
 
@@ -85,73 +80,6 @@ const styles = theme => ({
         transform : `scale(1)`
     }
 });
-
-function inputComponent({inputRef, ...props}) {
-    return <div ref={inputRef} {...props}/>;
-}
-
-function Control(props) {
-    return (
-        <TextField
-            fullWidth
-            label="INSTITUCIÓN"
-            placeholder={'Selecciona'}
-            InputProps={{
-                inputComponent,
-                inputProps: {
-                    className: props.selectProps.classes.input,
-                    inputRef: props.innerRef,
-                    children: props.children,
-                    ...props.innerProps,
-                    id:'inputComponentServidor'
-                },
-            }}
-            InputLabelProps={{
-                className: props.selectProps.classes.labelCustom,
-                shrink: true,
-            }}
-            {...props.selectProps.textFieldProps}
-        />
-    );
-}
-
-function Option(props) {
-    return (
-        <MenuItem
-            buttonRef={props.innerRef}
-            selected={props.isFocused}
-            component="div"
-            style={{
-                fontWeight: props.isSelected ? 400 : 300,
-            }}
-            {...props.innerProps}
-        >
-            {props.children}
-        </MenuItem>
-    );
-}
-
-
-function SingleValue(props) {
-    return (
-        <div className={props.selectProps.classes.singleValue}>{!props.data.value?'Selecciona una':''} {props.children} </div>
-    );
-}
-
-function Menu(props) {
-    return (
-        <Paper square className={props.selectProps.classes.paper} {...props.innerProps}>
-            {props.children}
-        </Paper>
-    );
-}
-
-const components = {
-    'Control' : Control,
-    'Menu' : Menu,
-    'Option' : Option,
-    'SingleValue' : SingleValue,
-};
 
 class BusquedaServidor extends React.Component {
     state = {

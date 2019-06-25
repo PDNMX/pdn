@@ -16,7 +16,7 @@ import Button from "@material-ui/core/Button/Button";
 import DialogActions from "@material-ui/core/DialogActions/DialogActions";
 import glosario from "../Utils/glosario.json";
 
-function getGlosarioItem(id){
+function getGlosarioItem(id) {
     return glosario.servidores[id];
 }
 
@@ -94,7 +94,7 @@ const styles = theme => ({
 class DetalleServidor extends React.Component {
     state = {
         open: false,
-        id : 0,
+        id: 0,
 
     };
 
@@ -105,12 +105,13 @@ class DetalleServidor extends React.Component {
     };
 
     controlGlosario = (id) => {
-        this.setState({id : id});
+        this.setState({id: id});
     };
 
     render() {
         const {classes, handleClose, servidor, control} = this.props;
-        const {open,id} = this.state;
+        const {open, id} = this.state;
+
         return (
             <div>
                 <Modal
@@ -118,17 +119,17 @@ class DetalleServidor extends React.Component {
                     aria-describedby="simple-modal-description"
                     open={open}>
                     <div style={getModalStyle()} className={classes.paperGlosario}>
-                            <DialogTitle>{getGlosarioItem(id).title}</DialogTitle>
-                            <DialogContent>
-                                <DialogContentText>
-                                    {getGlosarioItem(id).description}
-                                </DialogContentText>
-                            </DialogContent>
-                            <DialogActions>
-                                <Button onClick={this.openPoper} color="primary">
-                                    Cerrar
-                                </Button>
-                            </DialogActions>
+                        <DialogTitle>{getGlosarioItem(id).title}</DialogTitle>
+                        <DialogContent>
+                            <DialogContentText>
+                                {getGlosarioItem(id).description}
+                            </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={this.openPoper} color="primary">
+                                Cerrar
+                            </Button>
+                        </DialogActions>
 
                     </div>
 
@@ -143,45 +144,31 @@ class DetalleServidor extends React.Component {
 
                         <Grid container spacing={1} justify="flex-start">
                             <Grid item xs={11}>
-                                <Typography variant="h6" className={classes.title}>Ficha del servidor público </Typography>
+                                <Typography variant="h6" className={classes.title}>Ficha del servidor
+                                    público </Typography>
                             </Grid>
                             <Grid item xs={1}>
-                                <IconButton color="primary" className={classes.button} component="span" onClick={handleClose}>
+                                <IconButton color="primary" className={classes.button} component="span"
+                                            onClick={handleClose}>
                                     <CloseButton/>
                                 </IconButton>
                             </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    id="read-only-input"
-                                    label="Institución"
-                                    defaultValue={servidor.institucion}
-                                    className={classes.textField}
-                                    margin="normal"
-                                    multiline={true}
-                                    InputProps={{
-                                        readOnly: true,
-                                        className: classes.fontSmall,
-                                        endAdornment: (
-                                            <InputAdornment position={'end'} onClick={()=>{this.openPoper(); this.controlGlosario(0)}}>
-                                                <IconHelp/>
-                                            </InputAdornment>
 
-                                        )
-                                    }}
-                                />
-                            </Grid>
                             <Grid item md={6} xs={12}>
                                 <TextField
                                     id="read-only-input"
                                     label="Servidor público"
-                                    defaultValue={servidor.servidor}
+                                    defaultValue={servidor.nombre + ' ' + servidor.apellidoUno + ' ' + servidor.apellidoDos}
                                     className={classes.textField}
                                     margin="normal"
                                     InputProps={{
                                         readOnly: true,
                                         className: classes.fontSmall,
                                         endAdornment: (
-                                            <InputAdornment position="start" onClick={()=>{this.openPoper(); this.controlGlosario(1)}}>
+                                            <InputAdornment position="start" onClick={() => {
+                                                this.openPoper();
+                                                this.controlGlosario(1)
+                                            }}>
                                                 <IconHelp/>
                                             </InputAdornment>
                                         )
@@ -193,14 +180,17 @@ class DetalleServidor extends React.Component {
                                 <TextField
                                     id="read-only-input"
                                     label="Puesto"
-                                    defaultValue={servidor.puesto}
+                                    defaultValue={servidor.puesto ? servidor.puesto.nombre : servidor.puesto}
                                     className={classes.textField}
                                     margin="normal"
                                     InputProps={{
                                         readOnly: true,
                                         className: classes.fontSmall,
                                         endAdornment: (
-                                            <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(2)}}>
+                                            <InputAdornment position="end" onClick={() => {
+                                                this.openPoper();
+                                                this.controlGlosario(2)
+                                            }}>
                                                 <IconHelp/>
                                             </InputAdornment>
                                         )
@@ -210,15 +200,89 @@ class DetalleServidor extends React.Component {
                             <Grid item md={6} xs={12}>
                                 <TextField
                                     id="read-only-input"
+                                    label="Institución"
+                                    defaultValue={servidor.institucion ? servidor.institucion.nombre + " (" + servidor.institucion.siglas + ")" : servidor.institucion}
+                                    className={classes.textField}
+                                    margin="normal"
+                                    multiline={true}
+                                    InputProps={{
+                                        readOnly: true,
+                                        className: classes.fontSmall,
+                                        endAdornment: (
+                                            <InputAdornment position={'end'} onClick={() => {
+                                                this.openPoper();
+                                                this.controlGlosario(0)
+                                            }}>
+                                                <IconHelp/>
+                                            </InputAdornment>
+
+                                        )
+                                    }}
+                                />
+                            </Grid>
+                            <Grid item md={6} xs={12}>
+                                <TextField
+                                    id="read-only-input"
+                                    label="Ramo"
+                                    defaultValue={servidor.ramo ? servidor.ramo.ramo : servidor.ramo}
+                                    className={classes.textField}
+                                    margin="normal"
+                                    multiline={true}
+                                    InputProps={{
+                                        readOnly: true,
+                                        className: classes.fontSmall,
+                                        endAdornment: (
+                                            <InputAdornment position={'end'} onClick={() => {
+                                                this.openPoper();
+                                                this.controlGlosario(0)
+                                            }}>
+                                                <IconHelp/>
+                                            </InputAdornment>
+
+                                        )
+                                    }}
+                                />
+                            </Grid>
+                            <Grid item md={6} xs={12}>
+                                <TextField
+                                    id="read-only-input"
+                                    label="Periodo ejercicio"
+                                    defaultValue={servidor.periodo_ejercicio ? servidor.periodo_ejercicio.fecha_inicial + " - " + servidor.periodo_ejercicio.fecha_final : servidor.periodo_ejercicio}
+                                    className={classes.textField}
+                                    margin="normal"
+                                    multiline={true}
+                                    InputProps={{
+                                        readOnly: true,
+                                        className: classes.fontSmall,
+                                        endAdornment: (
+                                            <InputAdornment position={'end'} onClick={() => {
+                                                this.openPoper();
+                                                this.controlGlosario(0)
+                                            }}>
+                                                <IconHelp/>
+                                            </InputAdornment>
+
+                                        )
+                                    }}
+                                />
+                            </Grid>
+                            <Grid item md={6} xs={12}>
+                                <TextField
+                                    id="read-only-input"
                                     label="Tipo de área"
-                                    defaultValue={servidor.tipoArea}
+                                    defaultValue={servidor.tipoArea ? servidor.tipoArea.map(item => {
+                                        return item + " "
+                                    }) : servidor.tipoArea}
                                     className={classes.textField}
                                     margin="normal"
                                     InputProps={{
                                         readOnly: true,
                                         className: classes.fontSmall,
                                         endAdornment: (
-                                            <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(3)}}>
+                                            <InputAdornment position="end" onClick={() => {
+                                                this.openPoper();
+                                                this.controlGlosario(3)
+                                            }}>
                                                 <IconHelp/>
                                             </InputAdornment>
                                         )
@@ -236,7 +300,10 @@ class DetalleServidor extends React.Component {
                                         readOnly: true,
                                         className: classes.fontSmall,
                                         endAdornment: (
-                                            <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(4)}}>
+                                            <InputAdornment position="end" onClick={() => {
+                                                this.openPoper();
+                                                this.controlGlosario(4)
+                                            }}>
                                                 <IconHelp/>
                                             </InputAdornment>
                                         )
@@ -254,7 +321,10 @@ class DetalleServidor extends React.Component {
                                         readOnly: true,
                                         className: classes.fontSmall,
                                         endAdornment: (
-                                            <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(5)}}>
+                                            <InputAdornment position="end" onClick={() => {
+                                                this.openPoper();
+                                                this.controlGlosario(5)
+                                            }}>
                                                 <IconHelp/>
                                             </InputAdornment>
                                         )
@@ -272,7 +342,10 @@ class DetalleServidor extends React.Component {
                                         readOnly: true,
                                         className: classes.fontSmall,
                                         endAdornment: (
-                                            <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(6)}}>
+                                            <InputAdornment position="end" onClick={() => {
+                                                this.openPoper();
+                                                this.controlGlosario(6)
+                                            }}>
                                                 <IconHelp/>
                                             </InputAdornment>
                                         )
@@ -291,7 +364,10 @@ class DetalleServidor extends React.Component {
                                         readOnly: true,
                                         className: classes.fontSmall,
                                         endAdornment: (
-                                            <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(7)}}>
+                                            <InputAdornment position="end" onClick={() => {
+                                                this.openPoper();
+                                                this.controlGlosario(7)
+                                            }}>
                                                 <IconHelp/>
                                             </InputAdornment>
                                         )

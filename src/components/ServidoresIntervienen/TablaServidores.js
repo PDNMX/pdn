@@ -48,7 +48,7 @@ const columnData = [
         disablePadding: false,
         label: 'Tipo de área',
         position: 5,
-        mostrar: true,
+        mostrar: false,
         key: 'tipoArea'
     },
     {
@@ -83,6 +83,14 @@ const columnData = [
         mostrar: false,
         key: 'dictamenes'
     },
+    {
+        id: 'tipoProcedimiento',
+        disablePadding: false,
+        label: 'Tipo procedimiento',
+        position: 10,
+        mostrar: true,
+        key: 'tipoProcedimiento'
+    }
 ];
 
 const styles = theme => ({
@@ -187,10 +195,6 @@ EnhancedTableToolbar = withStyles(toolbarStyles)(EnhancedTableToolbar);
 
 
 class EnhancedTable extends React.Component {
-
-    componentDidMount() {
-        //this.handleSearchAPI('FIELD_FILTER');
-    }
 
     constructor(props) {
         super(props);
@@ -408,12 +412,10 @@ class EnhancedTable extends React.Component {
                                                     selected={isSelected}
                                                 >
                                                     <TableCell component="th" scope="row" style={{width: '25%'}}
-                                                               padding="default">{n.nombre}</TableCell>
+                                                               padding="default">{n.nombre +  " "+ n.apellidoUno+ " "+ n.apellidoDos}</TableCell>
                                                     <TableCell>{n.institucion.nombre}</TableCell>
                                                     <TableCell>{n.puesto.nombre}</TableCell>
-                                                    <TableCell>{n.tipoArea.map(item => {
-                                                        return item + " "
-                                                    })}</TableCell>
+                                                    <TableCell>{n.tipo_actos}</TableCell>
                                                 </TableRow>
                                             );
                                         })}
