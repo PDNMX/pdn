@@ -54,19 +54,19 @@ class Especificaciones extends React.Component {
 
 
                         <Grid container spacing={0} justify="center">
-                            <Grid item xs={6} md={4} align="center">
+                            <Grid item xs={12} md={6} lg={4} xl={4} align="center">
                                 <Link to="/declaraciones/especificaciones" className={classes.link}>
                                     <img src={S1} alt="" className={classes.sistemas}/>
                                     <Typography variant="h5" className={classes.text}>Declaraciones</Typography>
                                 </Link>
                             </Grid>
-                            <Grid item xs={6} md={4} align="center">
+                            <Grid item xs={12} md={6} lg={4} xl={4}  align="center">
                                 <Link to="/intervienen/especificaciones" className={classes.link}>
                                     <img src={S2} alt="" className={classes.sistemas}/>
                                     <Typography variant="h5" className={classes.text}>Servidores públicos en contrataciones</Typography>
                                 </Link>
                             </Grid>
-                            <Grid item xs={6} md={4} align="center">
+                            <Grid item xs={12} md={6} lg={4} xl={4} align="center">
                                 <Link to="/sancionados/especificaciones" className={classes.link}>
                                     <img src={S3} alt="" className={classes.sistemas}/>
                                     <Typography variant="h5" className={classes.text}>Sancionados</Typography>
