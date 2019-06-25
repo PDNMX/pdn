@@ -49,35 +49,35 @@ class BarraFea extends React.Component{
 
             <Grid container spacing={0} justify="center" className={classes.container}>
                 <Grid container spacing={0} justify="center" className={classes.innerContainer}>
-                    <Grid item xs={4} md={2} className={classes.item}>
+                    <Grid item xs={6} md={2} className={classes.item}>
                         <Link to="/mesa-de-ayuda" className={classes.link}>
                             <img src={Mesa} className={classes.icon} alt="Mesa de ayuda"/>
                             <Typography>Mesa de ayuda</Typography>
                         </Link>
 
                     </Grid>
-                    <Grid item xs={4} md={2} className={classes.item}>
+                    <Grid item xs={6} md={2} className={classes.item}>
                         <a href="https://www.plataformadigitalnacional.org/blog" className={classes.link}>
                             <img src={Blog} className={classes.icon} alt="Blog"/>
                             <Typography>Blog</Typography>
                         </a>
                     </Grid>
 
-                    <Grid item xs={4} md={2} className={classes.item}>
+                    <Grid item xs={6} md={2} className={classes.item}>
                         <Link to="/gaa/calidad" className={classes.link}>
                             <img src={Calidad} className={classes.icon} alt="Calidad de datos"/>
                             <Typography>Calidad de datos</Typography>
                         </Link>
 
                     </Grid>
-                    <Grid item xs={4} md={2} className={classes.item}>
+                    <Grid item xs={6} md={2} className={classes.item}>
                         <Link to="/especificaciones" className={classes.link}>
                             <img src={Espe} className={classes.icon} alt="Especificaciones técnicas"/>
                             <Typography>Especificaciones</Typography>
                         </Link>
                     </Grid>
 
-                    <Grid item xs={4} md={2} className={classes.item}>
+                    <Grid item xs={6} md={2} className={classes.item}>
                         <a href="#" className={classes.link}>
                             <img src={Plat} className={classes.icon} alt="Plataformas y sistemas"/>
                             <Typography>Plataformas y sistemas</Typography>
