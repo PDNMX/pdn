@@ -17,7 +17,10 @@ const styles = theme => ({
     item: {
         maxWidth: 1200,
         paddingTop: "50px",
-        paddingBottom: "50px"
+        paddingBottom: "50px",
+        paddingLeft: theme.spacing(1),
+        paddingRight: theme.spacing(1)
+
     },
     button: {
         margin: theme.spacing(1),
