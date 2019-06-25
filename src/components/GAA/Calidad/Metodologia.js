@@ -244,13 +244,14 @@ class Metodologia extends React.Component{
                     <Typography variant="h5" paragraph> Fuentes:</Typography>
 
                     <ul className={classes.ul}>
-                        <li><Typography>1. Maydanchik, Arkady. Data quality assessment. Technics publications, 2007.</Typography></li>
-                        <li><Typography>2. https://www.techopedia.com/definition/30610/data-quality-assessment-dqauot</Typography></li>
-                        <li><Typography>3. http://web.mit.edu/tdqm/www/tdqmpub/PipinoLeeWangCACMApr02.pdf</Typography></li>
-                        <li><Typography>4. https://ckan.org/2011/01/20/data-quality-what-is-it/</Typography></li>
-                        <li><Typography>5. https://www.usaid.gov/sites/default/files/documents/1861/DQA_Training_and_Preparation_11-17-14.ppt</Typography></li>
-                        <li><Typography>6. https://www.usaid.gov/sites/default/files/documents/1868/597sad.pdf</Typography></li>
+                        <li><Typography style={{wordBreak: "break-all"}}>1. Maydanchik, Arkady. Data quality assessment. Technics publications, 2007.</Typography></li>
+                        <li><Typography style={{wordBreak: "break-all"}}>2. https://www.techopedia.com/definition/30610/data-quality-assessment-dqauot</Typography></li>
+                        <li><Typography style={{wordBreak: "break-all"}}>3. http://web.mit.edu/tdqm/www/tdqmpub/PipinoLeeWangCACMApr02.pdf</Typography></li>
+                        <li><Typography style={{wordBreak: "break-all"}}>4. https://ckan.org/2011/01/20/data-quality-what-is-it/</Typography></li>
+                        <li><Typography style={{wordBreak: "break-all"}}>5. https://www.usaid.gov/sites/default/files/documents/1861/DQA_Training_and_Preparation_11-17-14.ppt</Typography></li>
+                        <li><Typography style={{wordBreak: "break-all"}}>6. https://www.usaid.gov/sites/default/files/documents/1868/597sad.pdf</Typography></li>
                     </ul>
+
 
                 </Grid>
             </Grid>

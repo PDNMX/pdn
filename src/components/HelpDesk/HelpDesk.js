@@ -46,6 +46,7 @@ class HelpDesk extends React.Component{
                         ¿Qué es la PDN?
                     </Typography>
 
+
                     <Typography paragraph>
                         Una fuente de inteligencia para construir integridad y combatir la corrupción que creará valor para el gobierno y la sociedad a partir de grandes cantidades de datos.
                     </Typography>
@@ -177,16 +178,16 @@ class HelpDesk extends React.Component{
 
                     <Typography paragraph>
                         <b>Bases para el funcionamiento de la PDN: </b>
-                    La Secretaría Ejecutiva se coordinará con las Secretarías Ejecutivas de los Sistemas Locales Anticorrupción (SLA), a efecto de determinar su participación en la construcción de los sistemas de la Plataforma y la forma de interconexión que tendrán con cada uno de los sistemas a nivel local (Art 23).
+                        La Secretaría Ejecutiva se coordinará con las Secretarías Ejecutivas de los Sistemas Locales Anticorrupción (SLA), a efecto de determinar su participación en la construcción de los sistemas de la Plataforma y la forma de interconexión que tendrán con cada uno de los sistemas a nivel local (Art 23).
                     </Typography>
 
                     <Typography paragraph>
-                    Las Secretarías Ejecutivas de los Sistemas Locales Anticorrupción deberán coordinar los trabajos de implementación de las Bases, previo acuerdo con sus Comités Coordinadores, conforme a lo establecido por la Secretaría Ejecutiva (Art. 24).
+                        Las Secretarías Ejecutivas de los Sistemas Locales Anticorrupción deberán coordinar los trabajos de implementación de las Bases, previo acuerdo con sus Comités Coordinadores, conforme a lo establecido por la Secretaría Ejecutiva (Art. 24).
                     </Typography>
 
                     <Typography paragraph>
                         <b>LGSNA: </b>
-                    Los SLA promoverán la publicación de la información contenida en la plataforma en formato de datos abiertos, conforme a la Ley General de Transparencia y Acceso a la Información Pública y la demás normatividad aplicable como las Bases para el funcionamiento de la PDN y otros lineamientos que emita la SESNA (Art. 50).
+                        Los SLA promoverán la publicación de la información contenida en la plataforma en formato de datos abiertos, conforme a la Ley General de Transparencia y Acceso a la Información Pública y la demás normatividad aplicable como las Bases para el funcionamiento de la PDN y otros lineamientos que emita la SESNA (Art. 50).
                     </Typography>
 
 
@@ -266,28 +267,28 @@ class HelpDesk extends React.Component{
                     </Typography>
 
                     <Typography paragraph variant="h5">
-                    ¿Qué es un estándar de datos?
+                        ¿Qué es un estándar de datos?
                     </Typography>
                     <Typography paragraph>
-                    Un estándar se refiere a las reglas y características con las que debe de contar un conjunto de datos, como: tipo de dato (i.e., numérico, entero, caracter, cadena), longitud, número de veces que aparece, precisión, etc.
+                        Un estándar se refiere a las reglas y características con las que debe de contar un conjunto de datos, como: tipo de dato (i.e., numérico, entero, caracter, cadena), longitud, número de veces que aparece, precisión, etc.
                     </Typography>
 
                     <Typography variant="h5">
-                    ¿Qué es un API?
+                        ¿Qué es un API?
                     </Typography>
                     <Typography paragraph>
                         Un API (<i>‘Application Programming Interface’</i> en inglés) es un conjunto de reglas que las aplicaciones deben seguir para comunicarse entre ellas, sirviendo de interfaz de comunicación entre componentes de software. En el contexto de la presente guía, el uso de APIs tiene el objetivo de permitir la comunicación entre la Plataforma Digital Nacional (Sistema de la SESNA) y los diversos sistemas de información de las instituciones obligadas a proveer datos anticorrupción.
                     </Typography>
                     <Typography variant="h5" paragraph>
-                    ¿La Secretaría Ejecutiva del Sistema Nacional Anticorrupción establecerá cómo desarrollar las Plataformas Estatales?
+                        ¿La Secretaría Ejecutiva del Sistema Nacional Anticorrupción establecerá cómo desarrollar las Plataformas Estatales?
                     </Typography>
 
                     <Typography paragraph>
-                    La facultad de diseñar y desarrollar las Plataformas estatales es de cada entidad, siempre y cuando se cumpla con la normatividad que está establecida en las Bases para el funcionamiento de la Plataforma Digital Nacional y los lineamientos que serán publicados para la estandarización y distribución de datos para cada Sistema.
+                        La facultad de diseñar y desarrollar las Plataformas estatales es de cada entidad, siempre y cuando se cumpla con la normatividad que está establecida en las Bases para el funcionamiento de la Plataforma Digital Nacional y los lineamientos que serán publicados para la estandarización y distribución de datos para cada Sistema.
                     </Typography>
 
                     <Typography paragraph>
-                    Las Bases fueron aprobadas por el Comité Coordinador del Sistema Nacional Anticorrupción, y estipulan que la Secretaría Ejecutiva emitirá los protocolos, estándares, reglamentos, especificaciones técnicas y cualquier normativa necesaria para la colaboración, provisión de datos y acciones para cumplir con las Bases.
+                        Las Bases fueron aprobadas por el Comité Coordinador del Sistema Nacional Anticorrupción, y estipulan que la Secretaría Ejecutiva emitirá los protocolos, estándares, reglamentos, especificaciones técnicas y cualquier normativa necesaria para la colaboración, provisión de datos y acciones para cumplir con las Bases.
                     </Typography>
 
 
@@ -313,21 +314,21 @@ class HelpDesk extends React.Component{
                         </li>
                     </ul>
                     <Typography variant="h5" paragraph>
-                    ¿Las Plataformas Digitales van a operar ahora sistemas como CompraNet o Declaranet?
+                        ¿Las Plataformas Digitales van a operar ahora sistemas como CompraNet o Declaranet?
                     </Typography>
                     <Typography paragraph>
-                    No. Las Plataformas serán una herramienta de interoperabilidad que a través de las estandarización de la información serán capaces de consultar los datos que contienen sistemas como CompraNet o Declaranet.
+                        No. Las Plataformas serán una herramienta de interoperabilidad que a través de las estandarización de la información serán capaces de consultar los datos que contienen sistemas como CompraNet o Declaranet.
                     </Typography>
 
                     <Typography paragraph>
-                    La generación de los datos desde sistemas como CompraNet o Declaranet  seguirá siendo responsabilidad de los entes que tienen la atribución actualmente.
+                        La generación de los datos desde sistemas como CompraNet o Declaranet  seguirá siendo responsabilidad de los entes que tienen la atribución actualmente.
                     </Typography>
 
                     <Typography paragraph variant="h5">
-                    ¿Qué papel juegan las entidades federativas?
+                        ¿Qué papel juegan las entidades federativas?
                     </Typography>
                     <Typography>
-                    Cada una de las 32 entidades federativas debe contar con su propio Sistema Local Anticorrupción y su propia ley que motive la conexión de sus datos con la PDN. Es necesario que las secretarías ejecutivas establezcan canales de comunicación con las secretarías o instancias encargadas del control interno y con las autoridades locales competentes en el combate a la corrupción para desarrollar sistemas de información o plataformas estatales de interoperabilidad.
+                        Cada una de las 32 entidades federativas debe contar con su propio Sistema Local Anticorrupción y su propia ley que motive la conexión de sus datos con la PDN. Es necesario que las secretarías ejecutivas establezcan canales de comunicación con las secretarías o instancias encargadas del control interno y con las autoridades locales competentes en el combate a la corrupción para desarrollar sistemas de información o plataformas estatales de interoperabilidad.
                     </Typography>
 
 
@@ -373,17 +374,17 @@ class HelpDesk extends React.Component{
                         No. El objetivo de la Plataforma es generar interoperabilidad entre los datos que ya generan actualmente los entes obligados, a través del uso de estándares comunes.
                     </Typography>
                     <Typography variant="h5" paragraph>
-                    ¿La PDN se va a quedar con los datos generados por las instituciones?
+                        ¿La PDN se va a quedar con los datos generados por las instituciones?
                     </Typography>
                     <Typography paragraph>
                         No. Las Instituciones son las responsables de los datos que generan, y a partir de la publicación de los lineamientos de cada Sistema, deberán estandarizarlos de acuerdo a lo solicitado por la SESNA a través del Comité Coordinador del SNA.
                     </Typography>
                     <Typography variant="h5" paragraph>
-                    ¿Se van a compartir los datos reservados o personales?
+                        ¿Se van a compartir los datos reservados o personales?
                     </Typography>
                     <Typography paragraph>
-                    No.
-                    Los integrantes del Sistema Nacional y de los Sistemas Locales promoverán la publicación de la información contenida en la plataforma en formato de datos abiertos, conforme a la Ley General de Transparencia y Acceso a la Información Pública y la demás normatividad aplicable (Artículo 50 LGSNA).
+                        No.
+                        Los integrantes del Sistema Nacional y de los Sistemas Locales promoverán la publicación de la información contenida en la plataforma en formato de datos abiertos, conforme a la Ley General de Transparencia y Acceso a la Información Pública y la demás normatividad aplicable (Artículo 50 LGSNA).
                     </Typography>
 
                     <Typography paragraph variant="h5">
