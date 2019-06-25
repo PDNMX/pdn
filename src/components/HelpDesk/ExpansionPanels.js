@@ -57,7 +57,8 @@ const ExpansionPanelDetails = withStyles(theme => ({
 const useStyles = makeStyles( theme => ({
     link: {
         textDecoration: "none",
-        color: theme.palette.primary.dark
+        color: theme.palette.primary.dark,
+        wordBreak: "break-all"
     }
 }));
 
@@ -78,6 +79,7 @@ export default function CustomizedExpansionPanels() {
                     <Typography>¿Qué es la PDN?</Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
+
 
                     <div>
 
@@ -121,6 +123,7 @@ export default function CustomizedExpansionPanels() {
 
                 </ExpansionPanelDetails>
             </ExpansionPanel>
+
             <ExpansionPanel square expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
                 <ExpansionPanelSummary aria-controls="panel2d-content" id="panel2d-header">
                     <Typography>Objetivos de la PDN</Typography>
@@ -143,6 +146,7 @@ export default function CustomizedExpansionPanels() {
                     </div>
                 </ExpansionPanelDetails>
             </ExpansionPanel>
+
             <ExpansionPanel square expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
                 <ExpansionPanelSummary aria-controls="panel3d-content" id="panel3d-header">
                     <Typography>Marco normativo</Typography>
@@ -275,7 +279,6 @@ export default function CustomizedExpansionPanels() {
             </ExpansionPanel>
 
 
-
             <ExpansionPanel square expanded={expanded === 'panel6'} onChange={handleChange('panel6')}>
                 <ExpansionPanelSummary aria-controls="panel6d-content" id="panel6d-header">
                     <Typography>Preguntas técnicas frecuentes </Typography>
@@ -301,6 +304,7 @@ export default function CustomizedExpansionPanels() {
                             <li><Typography>El API solicita a sus Bases de Datos la información.</Typography></li>
                             <li><Typography>En este punto de comunicación también hay controles de autenticación de permisos, así como encriptación de datos que protegen el envío de la respuesta con la información solicitada desde la dependencia  hasta  la PDN.</Typography></li>
                         </ol>
+
 
 
                         <img src={Diagrama} className={classes.diagrama}/>
@@ -330,7 +334,9 @@ export default function CustomizedExpansionPanels() {
 
 
 
-                        <TablaTecnologias/>
+                                <TablaTecnologias/>
+
+
 
 
                         <Typography paragraph variant="h5">
