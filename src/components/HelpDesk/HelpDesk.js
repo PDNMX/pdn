@@ -2,13 +2,16 @@ import React  from 'react';
 import {withStyles} from "@material-ui/core/styles";
 import Header from './Header/Header';
 import Grid from '@material-ui/core/Grid';
+import Footer from "../Home/Footer";
+/*
 import Typography from "@material-ui/core/Typography"
 import MuiLink from "@material-ui/core/Link";
 import {Link} from "react-router-dom";
-import Footer from "../Home/Footer";
 import TablaTecnologias from './TablaTecnologias';
 import Icon from '@material-ui/core/Icon';
 import Diagrama from '../../assets/Diagrama_de_comunicacion_API.svg';
+ */
+import ExpansionPanels from './ExpansionPanels';
 
 const styles = theme => ({
     root: {
@@ -42,6 +45,11 @@ class HelpDesk extends React.Component{
 
             <Grid container spacing={0} justify="center">
                 <Grid item xs={12} className={classes.item}>
+
+
+                    <ExpansionPanels/>
+
+                    {/*
                     <Typography  variant="h5" paragraph className={classes.title}>
                         ¿Qué es la PDN?
                     </Typography>
@@ -80,6 +88,9 @@ class HelpDesk extends React.Component{
                         Es importante señalar que la PDN no es un repositorio ni generadora de los datos de cada sistema, sino que es una plataforma de interoperabilidad.
                     </Typography>
 
+*/}
+
+                    {/*
                     <Typography variant="h5" className={classes.title} paragraph>
                         Objetivos de la PDN
                     </Typography>
@@ -96,7 +107,10 @@ class HelpDesk extends React.Component{
                         <li><Typography>Incorporar información sobre indicadores para evaluar la Política Nacional Anticorrupción;</Typography></li>
                         <li><Typography>Dar evidencia para generar recomendaciones de política pública a las autoridades;</Typography></li>
                     </ul>
+                    */}
 
+
+                    {/*
                     <Typography variant="h5" paragraph className={classes.title}>
                         Marco normativo
                     </Typography>
@@ -140,6 +154,9 @@ class HelpDesk extends React.Component{
                     <br/>
                     <br/>
 
+                    */}
+                    {/*
+
                     <Typography variant="h5" className={classes.title} paragraph>
                         ¿Qué hace la SESNA y la USTPDN?
                     </Typography>
@@ -164,7 +181,9 @@ class HelpDesk extends React.Component{
                         Para ello la SESNA emitirá los protocolos, estándares, reglamentos, especificaciones técnicas y cualquier normativa necesaria para la colaboración, provisión de datos y acciones para cumplir con las Bases, los cuales serán obligatorios para todos los proveedores, concentradores y encargados a nivel federal, estatal y municipal, enmarcado en el artículo 6 de las Bases de la PDN (Artículo 6, BFPDN).
                     </Typography>
 
+                    */}
 
+                    {/*
                     <Typography variant="h5" className={classes.title}>
                         <u>Sistemas Estatales Anticorrupción</u>
                     </Typography>
@@ -207,6 +226,10 @@ class HelpDesk extends React.Component{
                         Asimismo, se les recomienda comenzar por <b><u>revisar de manera detallada</u></b> las especificaciones técnicas y los diccionarios de datos que ya fueron publicados en la siguiente página: <Link to="/especificaciones" className={classes.link}>https://plataformadigitalnacional.org/especificaciones</Link>. Es importante comenzar con los Sistemas 2 y 3, ya que los formatos necesarios para el Sistema 1 se encuentran en <MuiLink href="https://www.dof.gob.mx/nota_detalle.php?codigo=5557896&fecha=16%2F04%2F2019">proceso de revisión por parte del Comité Coordinador</MuiLink>.
                     </Typography>
 
+*/}
+
+
+{/*
                     <Typography className={classes.title} variant="h5" paragraph>
                         Preguntas técnicas frecuentes
                     </Typography>
@@ -252,6 +275,7 @@ class HelpDesk extends React.Component{
                         </ul>
                         <li><Typography>Tecnologías y servicios de software modernos y de código abierto. El código de la PDN puede consultarse <MuiLink href="https://github.com/PDNMX"> aquí</MuiLink>. Las tecnologías que usamos son las siguientes:</Typography></li>
                     </ol>
+
 
 
 
@@ -357,6 +381,11 @@ class HelpDesk extends React.Component{
                         Se utilizarán herramientas de autentificación que contemplarán los roles y permisos, por ejemplo: SSL, OAuth, eFirma; estas herramientas permitirán mantener la trazabilidad de las consultas de datos que se hagan dentro de las plataformas, garantizando el acceso seguro a los datos.
                     </Typography>
 
+
+                    */}
+
+                    {/*
+
                     <Typography className={classes.title} variant="h5" paragraph>
                         Preguntas Frecuentes -  Datos
                     </Typography>
@@ -414,6 +443,8 @@ class HelpDesk extends React.Component{
                     <Typography>
                         pdn<Icon style={{fontSize:12}}>alternate_email</Icon>sesna.gob.mx
                     </Typography>
+
+                    */}
 
 
 
