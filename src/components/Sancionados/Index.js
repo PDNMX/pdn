@@ -9,7 +9,6 @@ import img2 from "../../assets/img/particulares_sancionados.svg";
 import img3 from "../../assets/img/servidores_visualizaciones.svg";
 import TablaServidoresSancionados from './Servidores/TablaServidoresSancionados';
 import TablaParticularesSancionados from './Particulares/TablaParticularesSancionados';
-import BubbleHolder from './Visualizaciones/BubbleHolder';
 import './s3.css';
 import Header from './Header/Header';
 import Dashboard from "./dashboard/Servidores/Dashboard";
@@ -40,7 +39,8 @@ const styles = theme => ({
     },
     sectionT: {
         maxWidth: '1200px',
-        overflowX : 'auto'
+        overflowX : 'auto',
+        color: theme.palette.textGrey.color
     },
     image: {
         width: '60px'
@@ -107,7 +107,7 @@ class Index extends React.Component {
                                 <Typography variant="subtitle1"
                                             style={{fontWeight: this.state.idContent === 3 ? 500 : 300}}
                                             className={classes.whiteText}>
-                                    Dashboard servidores
+                                    Visualizaciones de datos (Servidores públicos sancionados)
                                 </Typography>
                             </Grid>
                             <Grid item md={3} xs={12}
@@ -122,7 +122,7 @@ class Index extends React.Component {
                                 <Typography variant="subtitle1"
                                             style={{fontWeight: this.state.idContent === 4 ? 500 : 300}}
                                             className={classes.whiteText}>
-                                    Dashboard particulares
+                                    Visualizaciones de datos (Particulares sancionados)
                                 </Typography>
                             </Grid>
                             <Grid item md={3} xs={12} className={this.state.idContent !== 1 ? classes.card : classes.cardSeleccionada}
@@ -133,7 +133,7 @@ class Index extends React.Component {
                                 </figure>
                                 <Typography variant="subtitle1" style={{fontWeight: this.state.idContent === 1 ? 500 : 300}}
                                             className={classes.whiteText}>
-                                    Servidores públicos sancionados
+                                    Buscador de Servidores públicos sancionados
                                 </Typography>
                             </Grid>
                             <Grid item md={3} xs={12}
@@ -146,7 +146,7 @@ class Index extends React.Component {
                                 <Typography variant="subtitle1"
                                             style={{fontWeight: this.state.idContent === 2 ? 500 : 300}}
                                             className={classes.whiteText}>
-                                    Particulares sancionados
+                                    Buscador de Particulares sancionados
                                 </Typography>
 
                             </Grid>

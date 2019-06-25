@@ -41,38 +41,38 @@ class Dashboard extends React.Component {
                 <Grid container spacing={0} justify='center' className={classes.bgPanelTable}>
                     <Grid item xs={12} className={classes.sectionT}>
                         <Typography variant={"h6"}>
-                            {"¿Qué información es?"}
+                            <b>¿Qué información es?</b>
                         </Typography>
                         <Typography variant={"body1"} className={classes.desc}>
                             {"La información que se presenta a continuación corresponde a  los servidores públicos sancionados reportados en el Registro de Servidores Públicos Sancionados (RSPS) a partir de 2013 y hasta 2018. La sanción recibida reportada en los datos es la de inhabilitación para desempeñarse como servidor público"}
                         </Typography>
                         <Typography variant={"h6"} >
-                            {"¿Cómo se obtiene la información?"}
+                            <b>¿Cómo se obtiene la información?</b>
                         </Typography>
                         <Typography variant={"body1"} className={classes.desc}>
                             {"Obtención semanal de las sanciones de tipo Inhabilitación vigentes resueltas a partir del año 2013. La fuente de datos es el Registro de Servidores Públicos Sancionados reportada por Función Pública en datos.gob.mx (Fuente: https://datos.gob.mx/busca/dataset/servidores-publicos-sancionados)."}
                         </Typography>
                         <Typography variant={"h6"}>
-                            {"¿Cómo usar este dashboard?"}
+                            <b>¿Qué puedo encontrar?</b>
                         </Typography>
                         <Typography variant={"body1"} className={classes.desc}>
-                            Este dashboard está dividido en 4 partes principales:  <br/>
-                            1. Cantidad de funcionarios sancionados. Permite conocer desde 2013 a la fecha el número de funcionarios sancionados.<br/>
-                            2. Causa de las sanciones. Muestra cuáles fueron las causas de la sanción desde 2013. Es posible ver cuáles son las más y las menos comunes.<br/>
-                            3. Dependencias con más sancionados. Muestra cuáles son las dependencias con más funcionarios sancionados. Es posible descargar el detalle de los sancionados (nombre, autoridad sancionadora, dependencia, inicio y fin de la sanción y causa)<br/>
-                            4. Duración de las sanciones. Muestra cómo varía la duración de las sanciones por año, por tipo de sanción y por dependencia.
+                            Las visualizaciones presentan 4 puntos principales:  <br/>
+                            1. Cantidad de funcionarios sancionados. Permite conocer desde 2013 a la fecha el número de funcionarios sancionados. <a href="#g1">Ver</a><br/>
+                            2. Causa de las sanciones. Muestra cuáles fueron las causas de la sanción desde 2013. Es posible ver cuáles son las más y las menos comunes.<a href="#g2">Ver</a><br/>
+                            3. Dependencias con más sancionados. Muestra cuáles son las dependencias con más funcionarios sancionados. Es posible descargar el detalle de los sancionados (nombre, autoridad sancionadora, dependencia, inicio y fin de la sanción y causa). <a href="#g3">Ver</a><br/>
+                            4. Duración de las sanciones. Muestra cómo varía la duración de las sanciones por año, por tipo de sanción y por dependencia. <a href="#g4">Ver</a>
                         </Typography>
                     </Grid>
-                    <Grid item xs={12} className={classes.sectionT}>
+                    <Grid item xs={12} className={classes.sectionT} id={"g1"}>
                         <AnioResolucionSanciones/>
                     </Grid>
-                    <Grid item xs={12} className={classes.sectionT}>
+                    <Grid item xs={12} className={classes.sectionT} id={"g2"}>
                         <CausaSanciones/>
                     </Grid>
-                    <Grid item xs={12} className={classes.sectionT}>
+                    <Grid item xs={12} className={classes.sectionT} id={"g3"}>
                         <DependenciasSanciones/>
                     </Grid>
-                    <Grid item xs={12} className={classes.sectionT}>
+                    <Grid item xs={12} className={classes.sectionT} id={"g4"}>
                         <TiemposSanciones/>
                     </Grid>
                     {

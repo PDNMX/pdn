@@ -13,7 +13,7 @@ import './components/Utils/Header.css';
 const theme = createMuiTheme({
     typography: {
         useNextVariants: true,
-        fontFamily: ["Noto Sans SC", '"Helvetica"', '"Arial"', '"sans-serif"'].join(',')
+        fontFamily: ["Noto Sans SC", '"Helvetica"', '"Arial"', '"sans-serif"'].join(','),
     },
     palette: {
         primary: {
