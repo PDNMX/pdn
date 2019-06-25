@@ -6,7 +6,6 @@ import "./index.css";
 import {Typography} from "@material-ui/core"
 import {BarChart} from "d3plus-react";
 import rp from "request-promise";
-import Button from "@material-ui/core/Button";
 import * as d3plus from "d3plus-export";
 
 const styles = theme => ({
@@ -22,7 +21,10 @@ const styles = theme => ({
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        marginTop: "15px"
+        marginTop: "15px",
+        paddingLeft: "10px",
+        paddingRight: "10px",
+        marginBottom: "30px"
     },
     btnDownload: {
         textAlign: "right"
@@ -128,7 +130,7 @@ class TiemposSanciones extends React.Component {
                 <Grid container spacing={0} justify='center' className={classes.frameChart}>
                     <Grid item xs={12}>
                         <Typography variant={"h6"} className={classes.titulo}>
-                            {"Duración de las sanciones"}
+                            <b>{"Duración de las sanciones"}</b>
                         </Typography>
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>
@@ -139,12 +141,7 @@ class TiemposSanciones extends React.Component {
                             duraron más de 10 años.
                         </Typography>
                     </Grid>
-                    <Grid item xs={12} className={classes.btnDownload}>
-                        {
-                            this.state.methods && this.state.methods.data &&
-                            <Button color={"primary"} variant={"outlined"} onClick={this.test}>Guardar</Button>
-                        }
-                    </Grid>
+
                     <Grid item xs={12} id={"graf"}>
                         {
                             this.state.methods && this.state.methods.data &&

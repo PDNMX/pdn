@@ -7,7 +7,8 @@ import {Typography} from "@material-ui/core"
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import {Link} from "react-router-dom";
-import imgHeader from "../../assets/PDN-sintexto-blue.png";
+// import imgHeader from "../../assets/PDN-sintexto-blue.png";
+import imgHeader from "../../assets/PDN.png";
 import app from "../../config/firebase";
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';

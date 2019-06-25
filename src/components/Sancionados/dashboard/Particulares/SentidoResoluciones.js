@@ -179,7 +179,7 @@ class SentidoResoluciones extends React.Component {
                 <Grid container spacing={0} justify='center' className={classes.frameChart}>
                     <Grid item xs={12}>
                         <Typography variant={"h6"} className={classes.titulo}>
-                            Sentido de las resoluciones
+                            <b> Sentido de las resoluciones</b>
                         </Typography>
                     </Grid>
                     <Grid item xs={12} md={8} className={classes.graph}>

@@ -162,7 +162,7 @@ class DependenciasSanciones extends React.Component {
                 <Grid container spacing={0} justify='center' className={classes.frameChart}>
                     <Grid item xs={12}>
                         <Typography variant={"h6"} className={classes.titulo}>
-                            {"Dependencias con mayor número de sanciones"}
+                            <b>{"Dependencias con mayor número de sanciones"}</b>
                         </Typography>
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>

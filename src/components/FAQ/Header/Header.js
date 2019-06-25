@@ -3,7 +3,8 @@ import {withStyles} from "@material-ui/core/styles";
 import Grid from '@material-ui/core/Grid';
 import {Link} from 'react-router-dom';
 //import {Typography} from "@material-ui/core"
-import PDNLogo from '../../../assets/logo_PDN_2.svg';
+// import PDNLogo from '../../../assets/logo_PDN_2.svg';
+import PDNLogo from '../../../assets/PDN.png';
 //import PDNAppBar from "../../PDNAppBar/PDNAppBar";
 import {Typography} from "@material-ui/core"
 import withWidth from '@material-ui/core/withWidth';

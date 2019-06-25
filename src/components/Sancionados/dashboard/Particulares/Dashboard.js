@@ -40,35 +40,35 @@ class Dashboard extends React.Component {
                 <Grid container spacing={0} justify='center' className={classes.bgPanelTable}>
                     <Grid item xs={12} className={classes.sectionT}>
                         <Typography variant={"h6"}>
-                            {"¿Qué información es?"}
+                            <b>{"¿Qué información es?"}</b>
                         </Typography>
                         <Typography variant={"body1"} className={classes.desc}>
                             {"La información presentada corresponde a los proveedores y contratistas sancionados. Cuenta con información del 2004 a la fecha. "}
                         </Typography>
                         <Typography variant={"h6"}>
-                            {"¿Cómo se obtiene la información?"}
+                            <b>{"¿Cómo se obtiene la información?"}</b>
                         </Typography>
                         <Typography variant={"body1"} className={classes.desc}>
                             {"La fuente de datos es del Registro de Proveedores y Contratistas Sancionados reportada por la Secretaria de la Función Pública en datos.gob.mx (Fuente: https://datos.gob.mx/busca/dataset/servidores-publicos-sancionados)"}
                         </Typography>
                         <Typography variant={"h6"}>
-                            {"¿Cómo usar este dashboard?"}
+                            <b>{"¿Qué puedo encontrar?"}</b>
                         </Typography>
                         <Typography variant={"body1"} className={classes.desc}>
-                            El dashboard está dividido en 4 secciones:<br/>
-                            1.-Cantidad de proveedores y contratistas sancionados. Comprende la información entre el 2004 a la fecha.<br/>
-                            2.-Sentido de las resoluciones: Muestra cuál fue el sentido de la resolución para las sanciones a lo largo del tiempo y de manera general.<br/>
-                            3.-Dependencias con mayor número de sanciones: Muestra cuáles son las dependencias con mayor número de proveedores y contratistas sacionados de manera global y por año.<br/>
-                            4.-Duración de las sanciones. Muestra cómo varía la duración de las sanciones por año, por tipo de resolución y por dependencia.
+                            A continuación encontrará 4 secciones:<br/>
+                            1.-Cantidad de proveedores y contratistas sancionados. Comprende la información entre el 2004 a la fecha. <a href="#g1">Ver</a><br/>
+                            2.-Sentido de las resoluciones: Muestra cuál fue el sentido de la resolución para las sanciones a lo largo del tiempo y de manera general. <a href="#g2">Ver</a><br/>
+                            3.-Dependencias con mayor número de sanciones: Muestra cuáles son las dependencias con mayor número de proveedores y contratistas sacionados de manera global y por año. <a href="#g3">Ver</a><br/>
+                            4.-Duración de las sanciones. Muestra cómo varía la duración de las sanciones por año, por tipo de resolución y por dependencia. <a href="#g4">Ver</a>
                         </Typography>
                     </Grid>
-                    <Grid item xs={12} className={classes.sectionT}>
+                    <Grid item xs={12} className={classes.sectionT} id={"g1"}>
                         <AnioResolucionSanciones/>
                     </Grid>
-                    <Grid item xs={12} className={classes.sectionT}>
+                    <Grid item xs={12} className={classes.sectionT} id={"g2"}>
                         <SentidoResoluciones/>
                     </Grid>
-                    <Grid item xs={12} className={classes.sectionT}>
+                    <Grid item xs={12} className={classes.sectionT} id={"g3"}>
                         <DependenciasSanciones/>
                     </Grid>
                     <Grid item xs={12} className={classes.sectionT}>
