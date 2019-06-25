@@ -105,7 +105,7 @@ class Index extends React.Component {
                                 <Typography variant="subtitle1" className={classes.whiteText}
                                             style={{fontWeight: this.state.idContent === 1 ? 500: 300}}
                                 >
-                                    Servidores que intervienen en procesos de contratación
+                                    Buscador de Servidores que intervienen en procesos de contratación
                                 </Typography>
 
                             </Grid>
@@ -120,7 +120,7 @@ class Index extends React.Component {
                                 <Typography variant="subtitle1" style={{fontWeight: this.state.idContent === 2 ? 500: 300}}
                                             className={classes.whiteText}>
 
-                                    Particulares inhabilitados
+                                    Buscador de Particulares inhabilitados
                                 </Typography>
 
                             </Grid>
@@ -135,7 +135,7 @@ class Index extends React.Component {
                                 <Typography variant= "subtitle1"
                                             style={{fontWeight: this.state.idContent === 3? 500: 300}}
                                             className={classes.whiteText}>
-                                    Visualizaciones
+                                    Visualizaciones de datos
                                 </Typography>
 
                             </Grid>

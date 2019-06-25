@@ -128,7 +128,7 @@ class TiemposSanciones extends React.Component {
                 <Grid container spacing={0} justify='center' className={classes.frameChart}>
                     <Grid item xs={12}>
                         <Typography variant={"h6"} className={classes.titulo}>
-                            {"Duración de las sanciones"}
+                            <b>{"Duración de las sanciones"}</b>
                         </Typography>
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>
