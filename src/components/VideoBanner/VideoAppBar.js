@@ -151,36 +151,11 @@ class VideoAppBar extends React.Component {
                                         open={open}
                                         onClose={this.handleClose}
                                     >
-                                        <MenuItem component={Button}
-                                                  href="https://www.plataformadigitalnacional.org/blog"
-                                                  className={classes.blog}
-                                        >Blog</MenuItem>
+
                                         <MenuItem component={Link} to="/faq">Preguntas frecuentes</MenuItem>
                                         <MenuItem component={Link} to="/about">¿Qué es la PDN?</MenuItem>
                                         <MenuItem component={Link} to="/terminos">Términos de uso</MenuItem>
-                                        {/*<MenuItem component={Link} to="/especificaciones">Especificaciones</MenuItem>*/}
-                                        <MenuItem
-                                            onClick={this.handleToggle}> Especificaciones {open2 != null ? open2 ?
-                                            <ExpandLess/> : <ExpandMore/> : null}
-                                        </MenuItem>
-                                        <Collapse in={this.state.open2} timeout="auto" unmountOnExit>
-                                            <List component={"div"}>
 
-                                                <ListItem button component={Link}
-                                                          to="/declaraciones/especificaciones" className={classes.nested}>
-                                                    <Typography> Sistema 1</Typography>
-                                                </ListItem>
-                                                <ListItem button component={Link} to="/intervienen/especificaciones" className={classes.nested}>
-                                                    <Typography>Sistema 2</Typography>
-
-                                                </ListItem>
-                                                <ListItem button component={Link} to="/sancionados/especificaciones" className={classes.nested}>
-                                                    <Typography>Sistema 3</Typography>
-                                                </ListItem>
-
-                                            </List>
-
-                                        </Collapse>
                                         {
                                             this.state.permisos.includes('admon-conexion-so:visit') &&
                                             <MenuItem component={Link} to={"/consolaAdmonSO"}>Administrar
