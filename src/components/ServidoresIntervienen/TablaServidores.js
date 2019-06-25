@@ -18,29 +18,6 @@ import {Typography} from "@material-ui/core"
 import Modal from "@material-ui/core/Modal/Modal";
 import TableFooter from "@material-ui/core/TableFooter";
 
-let counter = 0;
-
-let createData = (item) => {
-    let leyenda = "NO EXISTE DATO EN LA BASE DE DATOS RENIRESP";
-    let tipoArea = item.area_requirente === 1 ? "REQUIRENTE" : "" +
-    item.area_contratante === 1 ? "CONTRATANTE" : "" +
-    item.area_recnica === 1 ? "TÉCNICA" : "" +
-    item.area_responsable === 1 ? "RESPONSABLE" : "" +
-    item.area_otra === 1 ? "OTRA" : "";
-    let nivel = item.id_nivel === 1 ? "ATENCIÓN O TRAMITACIÓN" : item.id_nivel === 2 ? "RESOLUCIÓN" : "ATENCIÓN O TRAMITACIÓN Y RESOLUCIÓN";
-    counter += 1;
-    return {
-        id: counter,
-        servidor: item.nombre ? item.nombre : leyenda,
-        institucion: item.institucion ? item.institucion : leyenda,
-        puesto: item.puesto ? item.puesto : leyenda,
-        tipoArea: tipoArea ? tipoArea : leyenda,
-        contrataciones: item.id_procedimiento === 1 ? nivel : "NO APLICA",
-        concesionesLicencias: item.id_procedimiento === 2 ? nivel : "NO APLICA",
-        enajenacion: item.id_procedimiento === 3 ? nivel : "NO APLICA",
-        dictamenes: item.id_procedimiento === 4 ? nivel : "NO APLICA"
-    };
-};
 
 function getSorting(order, orderBy) {
     return order === 'desc'
@@ -190,12 +167,13 @@ const toolbarStyles = theme => ({
 
 
 let EnhancedTableToolbar = props => {
-    const {classes, handleChangeCampo, handleCleanAll, nombreServidor, procedimiento, institucion, handleSearch} = props;
+    const {classes, handleChangeCampo, handleCleanAll, nombreServidor, apellidoUno, apellidoDos, procedimiento, institucion, handleSearch} = props;
     return (
         <Toolbar className={classes.toolBarStyle}>
             <BusquedaServidor handleCleanAll={handleCleanAll} handleSearch={handleSearch}
                               handleChangeCampo={handleChangeCampo}
-                              nombreServidor={nombreServidor} procedimiento={procedimiento}
+                              nombreServidor={nombreServidor} apellidoUno={apellidoUno} apellidoDos={apellidoDos}
+                              procedimiento={procedimiento}
                               institucion={institucion}/>
         </Toolbar>
     );
@@ -223,6 +201,8 @@ class EnhancedTable extends React.Component {
             orderBy: 'servidor',
             selected: [],
             nombreServidor: '',
+            apellidoUno: '',
+            apellidoDos: '',
             data: [],
             filterData: [],
             page: 0,
@@ -280,55 +260,53 @@ class EnhancedTable extends React.Component {
 
     isSelected = id => this.state.selected.indexOf(id) !== -1;
 
-    getTotalRows = (params) => {
-        let options = {
-            uri: 'https://plataformadigitalnacional.org/api/reniresp?select=count=eq.exact&',
-            json: true,
-            qs: params
-        };
-        rp(options)
-            .then(data => {
-                this.setState({totalRows: data[0].count, loading: false});
-            }).catch(err => {
-            this.setState({loading: false});
-            alert("_No se pudó obtener la información");
-            console.log(err);
-        });
-    };
+
     handleSearchAPI = (typeSearch) => {
         this.setState({loading: true}, () => {
-            let {procedimiento, institucion, nombreServidor} = this.state;
-            const URI = 'https://plataformadigitalnacional.org/api/reniresp?';
+            let {procedimiento, institucion, nombreServidor, apellidoUno, apellidoDos} = this.state;
 
-            let params = {};
+            let filtros = {};
+            let offset = 1;
 
             if (typeSearch !== 'ALL') {
-               if(procedimiento && procedimiento > 0 ) params.id_procedimiento = 'eq.' + procedimiento;
-                if(institucion)  params.institucion = 'eq.' + institucion;
-                if(nombreServidor)  params.nombre = 'like.*' + nombreServidor.toUpperCase() + '*';
-                if(typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE')  params.limit = this.state.rowsPerPage;
-                if(typeSearch === 'CHANGE_PAGE')  params.offset = (this.state.rowsPerPage * this.state.page);
-                if(typeSearch === 'FIELD_FILTER')  this.getTotalRows(params);
+                //if(procedimiento && procedimiento > 0 ) params.id_procedimiento = 'eq.' + procedimiento;
+                if (institucion && institucion!== 'TODAS') filtros.institucion = '%' + institucion + '%';
+                if (nombreServidor) filtros.nombres = '%' + nombreServidor.toUpperCase() + '%';
+                if (apellidoUno) filtros.primer_apellido = '%' + apellidoUno.toUpperCase() + '%';
+                if (apellidoDos) filtros.segundo_apellido = '%' + apellidoDos.toUpperCase() + '%';
+
             }
 
+            let limit = (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.state.rowsPerPage : null;
+            if (typeSearch === 'CHANGE_PAGE') offset = (this.state.rowsPerPage * this.state.page);
+
+            let body = {
+                "filtros": filtros,
+                "limit": limit,
+                "offset": offset
+            }
+
+
             let options = {
-                uri: URI,
+                method: 'POST',
+                uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/s2/getSPC',
                 json: true,
-                qs: params
+                body: typeSearch === 'ALL' ? {} : body
             };
 
             rp(options)
-                .then(data => {
-                    let dataAux = data.map(item => {
-                        return createData(item);
-                    });
+                .then(res => {
+                    let dataAux = res.data;
+                    let total = res.totalRows;
+
                     typeSearch === 'ALL' ? this.setState({data: dataAux, loading: false}, () => {
                         this.btnDownloadAll.triggerDown();
                     }) : (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.setState({
                             filterData: dataAux,
-                            loading: false
+                            loading: false,
+                            totalRows: total
                         }) :
-                        this.setState({filterDataAll: dataAux, loading: false}, () => {
+                        this.setState({filterDataAll: dataAux, loading: false, totalRows: total}, () => {
                             this.child.triggerDown();
                         });
                     return true;
@@ -367,7 +345,7 @@ class EnhancedTable extends React.Component {
 
         return (
             <div>
-                <Grid container justify='center'className={classes.gridTable}>
+                <Grid container justify='center' className={classes.gridTable}>
                     <Grid item xs={12}>
                         <EnhancedTableToolbar categoria={this.state.categoria}
                                               handleChangeCampo={this.handleChangeCampo}
@@ -429,11 +407,13 @@ class EnhancedTable extends React.Component {
                                                     key={n.id}
                                                     selected={isSelected}
                                                 >
-                                                    <TableCell component="th" scope="row" style={{width:'25%'}}
-                                                               padding="default">{n.servidor}</TableCell>
-                                                    <TableCell>{n.institucion}</TableCell>
-                                                    <TableCell>{n.puesto}</TableCell>
-                                                    <TableCell>{n.tipoArea}</TableCell>
+                                                    <TableCell component="th" scope="row" style={{width: '25%'}}
+                                                               padding="default">{n.nombre}</TableCell>
+                                                    <TableCell>{n.institucion.nombre}</TableCell>
+                                                    <TableCell>{n.puesto.nombre}</TableCell>
+                                                    <TableCell>{n.tipoArea.map(item => {
+                                                        return item + " "
+                                                    })}</TableCell>
                                                 </TableRow>
                                             );
                                         })}

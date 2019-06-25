@@ -155,21 +155,27 @@ const components = {
 
 class BusquedaServidor extends React.Component {
     state = {
+        dependencias: [],
         suggestions: []
     };
 
     componentDidMount() {
-        let sug = [ {value : '' ,label:'TODAS'}];
+        let aux = [];
+        let sug = [ {value : 'TODAS' ,label:'TODAS'}];
+        let id = 0;
+
         let options = {
-            uri: 'https://plataformadigitalnacional.org/api/instituciones?order=institucion.asc',
-            json: true
+            uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/getDependenciasRENIRESP',
+            json: true,
+            method : "get"
         };
         rp(options)
             .then(data => {
-                data.map(item => {
-                    return sug.push({value: item.institucion, label: item.institucion});
+                data.data.forEach(item => {
+                    aux.push({id: id++, nombre: item})
+                    sug.push({value: item, label: item});
                 });
-                this.setState({suggestions: sug});
+                this.setState({dependencias:aux, suggestions: sug});
             }).catch(err => {
             alert("_No se puedó obtener la información");
             console.log(err);
@@ -186,7 +192,7 @@ class BusquedaServidor extends React.Component {
 
 
     render() {
-        const {classes, handleChangeCampo, nombreServidor, procedimiento, institucion, theme} = this.props;
+        const {classes, handleChangeCampo, nombreServidor, apellidoUno, apellidoDos, procedimiento, institucion, theme} = this.props;
         const selectStyles = {
             input: base => ({
                 ...base,
@@ -223,6 +229,38 @@ class BusquedaServidor extends React.Component {
 
                     </FormControl>
                 </Grid>
+                <Grid item xs={12} md={4}>
+                    <FormControl className={classes.formControl}>
+                        <TextField
+                            id="search"
+                            label="Apellido Uno"
+                            type="search"
+                            onChange={(e) => handleChangeCampo('apellidoUno', e)}
+                            value={apellidoUno}
+                            InputLabelProps = {{
+                                className: classes.inputShrink,
+                                shrink : true
+                            }}
+                        />
+
+                    </FormControl>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <FormControl className={classes.formControl}>
+                        <TextField
+                            id="search"
+                            label="Apellido Dos"
+                            type="search"
+                            onChange={(e) => handleChangeCampo('apellidoDos', e)}
+                            value={apellidoDos}
+                            InputLabelProps = {{
+                                className: classes.inputShrink,
+                                shrink : true
+                            }}
+                        />
+
+                    </FormControl>
+                </Grid>
 
                 <Grid item xs={12} md={4}>
                     <FormControl className={classes.formControl}>
@@ -238,10 +276,9 @@ class BusquedaServidor extends React.Component {
                             <MenuItem value={0}>
                                 Selecciona una
                             </MenuItem>
-                            <MenuItem value={1}>CONTRATACIONES PÚBLICAS</MenuItem>
-                            <MenuItem value={2}>CONCESIONES, LICENCIAS, PERMISOS, AUTORIZACIONES Y PRÓRROGAS</MenuItem>
-                            <MenuItem value={3}>ENAJENACIÓN DE BIENES MUEBLES</MenuItem>
-                            <MenuItem value={4}>ASIGNACION Y EMISIÓN DE DICTÁMENES DE AVALÚOS NACIONALES</MenuItem>
+                            <MenuItem value={'CONTRATACIONES'}>CONTRATACIONES</MenuItem>
+                            <MenuItem value={'CONCESIONES'}>CONCESIONES</MenuItem>
+                            <MenuItem value={'ENAJENACIONES'}>ENAJENACIONES</MenuItem>
                         </Select>
 
                     </FormControl>
@@ -267,7 +304,7 @@ class BusquedaServidor extends React.Component {
                         </Select>
                     </FormControl>
                 </Grid>
-                <Grid item xs={10}/>
+                <Grid item xs={1}/>
                 <Grid item xs={12} md={1} className={classes.centrado}>
                     <Button variant="contained" color="secondary" className={classes.button} onClick={this.buscar}>
                         Buscar
