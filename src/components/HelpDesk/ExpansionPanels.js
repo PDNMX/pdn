@@ -10,6 +10,7 @@ import {Link} from "react-router-dom";
 import TablaTecnologias from "./TablaTecnologias";
 import Diagrama from "../../assets/Diagrama_de_comunicacion_API.svg";
 import Icon from '@material-ui/core/Icon';
+import Box from '@material-ui/core/Box';
 
 const ExpansionPanel = withStyles({
     root: {
@@ -294,7 +295,6 @@ export default function CustomizedExpansionPanels() {
 
 
                         <Typography paragraph>
-
                             El siguiente Diagrama 1 muestra un diseño de alto nivel de la arquitectura y las funcionalidades de la PDN. El flujo es el siguiente:
                         </Typography>
 
@@ -331,12 +331,90 @@ export default function CustomizedExpansionPanels() {
                             <li><Typography>Tecnologías y servicios de software modernos y de código abierto. El código de la PDN puede consultarse <MuiLink href="https://github.com/PDNMX"> aquí</MuiLink>. Las tecnologías que usamos son las siguientes:</Typography></li>
                         </ol>
 
+                        {/*
+                        <TablaTecnologias/>
+                        */}
 
 
-
-                                <TablaTecnologias/>
-
-
+                        <ul>
+                            <li>
+                                <Typography paragraph>
+                                    <b>Contenedores</b> <br/>
+                                    Uso: Puesta en marcha y distribución de actualizaciones <br/>
+                                    Tecnología: Docker, Kubernetes
+                                </Typography>
+                            </li>
+                            <li>
+                                <Typography paragraph>
+                                    <b>Analíticos</b><br/>
+                                    Uso: Inteligencia de datos<br/>
+                                    Tecnología: Python
+                                </Typography>
+                            </li>
+                            <li>
+                                <Typography paragraph>
+                                    <b>Backend</b><br/>
+                                    Uso: Lógica de negocio de la PDN<br/>
+                                    Tecnología: Python, Node.js, express.js  y Graphql
+                                </Typography>
+                            </li>
+                            <li>
+                                <Typography paragraph>
+                                    <b>Base de Datos</b><br/>
+                                    Uso: Tecnología de almacenamiento <br/>
+                                    Tecnología: PostgreSQL y MongoDB
+                                </Typography>
+                            </li>
+                            <li>
+                                <Typography paragraph>
+                                    <b>FrontEnd</b><br/>
+                                    Uso: Desarrollo de interfaz de usuario<br/>
+                                    Tecnología: React.js Material UI
+                                </Typography>
+                            </li>
+                            <li>
+                                <Typography paragraph>
+                                    <b>Seguridad</b><br/>
+                                    Uso: Autorización<br/>
+                                    Tecnología: OAuth 2.0
+                                </Typography>
+                            </li>
+                            <li>
+                                <Typography paragraph>
+                                    <b>Testing</b><br/>
+                                    Uso: Pruebas de software<br/>
+                                    Tecnología: Jestjs
+                                </Typography>
+                            </li>
+                            <li>
+                                <Typography paragraph>
+                                    <b>Continous integration</b><br/>
+                                    Uso: Integración continua<br/>
+                                    Tecnología: TravisCI
+                                </Typography>
+                            </li>
+                            <li>
+                                <Typography paragraph>
+                                    <b>Servicios web</b><br/>
+                                    Uso: Comunicación con instituciones<br/>
+                                    Tecnología: Web APIs (REST y GrapQL)
+                                </Typography>
+                            </li>
+                            <li>
+                                <Typography paragraph>
+                                    <b>Estándares de datos</b><br/>
+                                    Uso: Estandarización de información<br/>
+                                    Tecnología: Open API Specification y GraphQL
+                                </Typography>
+                            </li>
+                            <li>
+                                <Typography paragraph>
+                                    <b>Control de versiones</b><br/>
+                                    Uso: Repositorios de código y control de versiones<br/>
+                                    Tecnología: Git
+                                </Typography>
+                            </li>
+                        </ul>
 
 
                         <Typography paragraph variant="h5">
