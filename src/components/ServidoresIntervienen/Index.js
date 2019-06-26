@@ -101,12 +101,12 @@ class Index extends React.Component {
                                   className= {classNames (this.state.idContent !== 3 ? classes.card : classes.cardSeleccionada, 'tab')}>
 
                                 <figure className={classes.figure}>
-                                    <img src={img3} alt="Visualizaciones" className={classes.image}/>
+                                    <img src={img3} alt="Visor de datos" className={classes.image}/>
                                 </figure>
                                 <Typography variant= "subtitle1"
                                             style={{fontWeight: this.state.idContent === 3? 500: 300}}
                                             className={classes.whiteText}>
-                                    Visualizaciones de datos
+                                    Visor de datos
                                 </Typography>
 
                             </Grid>

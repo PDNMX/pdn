@@ -100,14 +100,14 @@ class Index extends React.Component {
                                   onClick={() => this.changeContent(3)}>
 
                                 <figure className={classes.figure}>
-                                    <img src={img3} alt="Dashboard servidores"
+                                    <img src={img3} alt="Visor de datos (Servidores públicos sancionados)"
                                          className={classes.image}/>
                                 </figure>
 
                                 <Typography variant="subtitle1"
                                             style={{fontWeight: this.state.idContent === 3 ? 500 : 300}}
                                             className={classes.whiteText}>
-                                    Visualizaciones de datos (Servidores públicos sancionados)
+                                    Visor de datos (Servidores públicos sancionados)
                                 </Typography>
                             </Grid>
                             <Grid item md={3} xs={12}
@@ -115,14 +115,14 @@ class Index extends React.Component {
                                   onClick={() => this.changeContent(4)}>
 
                                 <figure className={classes.figure}>
-                                    <img src={img3} alt="Dashboard particulares"
+                                    <img src={img3} alt="Visor de datos (Particulares sancionados)"
                                          className={classes.image}/>
                                 </figure>
 
                                 <Typography variant="subtitle1"
                                             style={{fontWeight: this.state.idContent === 4 ? 500 : 300}}
                                             className={classes.whiteText}>
-                                    Visualizaciones de datos (Particulares sancionados)
+                                    Visor de datos (Particulares sancionados)
                                 </Typography>
                             </Grid>
                             <Grid item md={3} xs={12} className={this.state.idContent !== 1 ? classes.card : classes.cardSeleccionada}
