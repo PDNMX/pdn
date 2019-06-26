@@ -128,7 +128,7 @@ class BusquedaParticular extends React.Component {
         return (
             <Grid container spacing={4}>
                 <Grid item xs={12}>
-                    <Typography variant="h6" paragraph>Busca un particular inhabilitado</Typography>
+                    <Typography variant="h6" paragraph><b>Busca un particular inhabilitado</b></Typography>
                 </Grid>
                 <Grid item md={6} xs={12}>
                     <FormControl className={classes.formControl}>

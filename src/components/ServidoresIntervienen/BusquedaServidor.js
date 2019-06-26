@@ -139,7 +139,7 @@ class BusquedaServidor extends React.Component {
         return (
             <Grid container spacing={4}>
                 <Grid item xs={12}>
-                    <Typography variant="h6">Busca un servidor público</Typography>
+                    <Typography variant="h6"><b>Busca un servidor público</b></Typography>
                 </Grid>
                 <Grid item xs={12} md={4}>
                     <FormControl className={classes.formControl}>

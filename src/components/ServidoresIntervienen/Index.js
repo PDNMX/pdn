@@ -13,6 +13,7 @@ import BubbleHolderServidoresContrataciones from "./BubbleHolder_Servidores_Cont
 import Header from './Header/Header';
 import './s2.css';
 import classNames from 'classnames';
+import Dashboard from "./Dashboard/Dashboard";
 
 const styles = theme => ({
     root: {
@@ -36,7 +37,8 @@ const styles = theme => ({
     },
     sectionT: {
         maxWidth: '1200px',
-        overflowX : 'auto'
+        overflowX : 'auto',
+        color: theme.palette.textGrey.color
     },
     image: {
         width: '60px',
@@ -77,7 +79,7 @@ const styles = theme => ({
 
 class Index extends React.Component {
     state = {
-        idContent: 1
+        idContent: 3
     };
     changeContent = id => {
         this.setState({idContent: id});
@@ -94,6 +96,20 @@ class Index extends React.Component {
                 <Grid container spacing={0} justify="center" className={classes.bgContainer}>
                     <Grid item xs={12} className={classes.section}>
                         <Grid container spacing={0}>
+                            <Grid item md={4} xs={12}
+                                  onClick={() => this.changeContent(3)}
+                                  className= {classNames (this.state.idContent !== 3 ? classes.card : classes.cardSeleccionada, 'tab')}>
+
+                                <figure className={classes.figure}>
+                                    <img src={img3} alt="Visualizaciones" className={classes.image}/>
+                                </figure>
+                                <Typography variant= "subtitle1"
+                                            style={{fontWeight: this.state.idContent === 3? 500: 300}}
+                                            className={classes.whiteText}>
+                                    Visualizaciones de datos
+                                </Typography>
+
+                            </Grid>
                             <Grid item md={4} xs={12}
                                   onClick={() => this.changeContent(1)}
                                   className={classNames(this.state.idContent !== 1 ? classes.card : classes.cardSeleccionada, 'tab')}>
@@ -125,20 +141,7 @@ class Index extends React.Component {
 
                             </Grid>
 
-                            <Grid item md={4} xs={12}
-                                  onClick={() => this.changeContent(3)}
-                                  className= {classNames (this.state.idContent !== 3 ? classes.card : classes.cardSeleccionada, 'tab')}>
 
-                                <figure className={classes.figure}>
-                                    <img src={img3} alt="Visualizaciones" className={classes.image}/>
-                                </figure>
-                                <Typography variant= "subtitle1"
-                                            style={{fontWeight: this.state.idContent === 3? 500: 300}}
-                                            className={classes.whiteText}>
-                                    Visualizaciones de datos
-                                </Typography>
-
-                            </Grid>
 
 
                         </Grid>
@@ -155,7 +158,7 @@ class Index extends React.Component {
                             <TablaParticulares/>
                         }
                         {this.state.idContent === 3 &&
-                            <BubbleHolderServidoresContrataciones/>
+                            <Dashboard/>
                         }
                     </Grid>
                 </Grid>

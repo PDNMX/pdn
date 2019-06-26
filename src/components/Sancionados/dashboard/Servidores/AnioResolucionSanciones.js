@@ -139,7 +139,7 @@ class AnioResolucionSanciones extends React.Component {
                 <Grid container spacing={0} justify='center' className={classes.frameChart}>
                     <Grid item xs={12} md={12}>
                         <Typography variant={"h6"} className={classes.titulo}>
-                            <b>Cantidad de sanciones"</b>
+                            <b>Cantidad de sanciones</b>
                         </Typography>
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>
