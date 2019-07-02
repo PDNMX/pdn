@@ -64,9 +64,9 @@ const pdnRoutes = [
         private: false
     },
     {
-      path: "/sancionados/dashboard",
-      component: DashboardSancionados,
-      private: false
+        path: "/sancionados/dashboard",
+        component: DashboardSancionados,
+        private: false
     },
     {
         path: "/sancionados/dashboardParticulares",

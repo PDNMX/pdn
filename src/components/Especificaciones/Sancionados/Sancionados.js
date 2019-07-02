@@ -12,6 +12,7 @@ import {Typography} from "@material-ui/core"
 import Herramientas from "../Herramientas";
 import Especificaciones from "./Especificaciones";
 import Header from './Header/Header';
+import ScrollToTopButton from "../../Navigation/ScrollToTopButton";
 
 const styles = theme => ({
     list: {
@@ -84,7 +85,7 @@ class Sancionados extends React.Component {
                 </Grid>
 
                 <Footer/>
-
+                <ScrollToTopButton/>
             </div>
         );
     }
