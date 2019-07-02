@@ -2,7 +2,7 @@ import React from 'react';
 
 import {withStyles} from '@material-ui/core/styles';
 import Fab from '@material-ui/core/Fab';
-import ArrowUpward from '@material-ui/icons/ArrowUpward';
+import ArrowUpward from '@material-ui/icons/KeyboardArrowUp';
 
 const styles = theme => ({
    root :{
