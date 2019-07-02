@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Grid from "@material-ui/core/Grid/Grid";
 import {Typography} from "@material-ui/core"
 import Ejercicio from "./Ejericicio";
+import Agrupaciones from "./Agrupaciones";
 
 const styles = theme => ({
     root: {
@@ -70,8 +71,8 @@ class Dashboard extends React.Component {
                     <Grid item xs={12} className={classes.sectionT} id={"g1"}>
                         <Ejercicio/>
                     </Grid>
-                    <Grid item xs={12} className={classes.sectionT} id={"g2"}>
-
+                    <Grid item xs={12}  id={"g2"}>
+                        <Agrupaciones/>
                     </Grid>
                     <Grid item xs={12} className={classes.sectionT} id={"g3"}>
 
