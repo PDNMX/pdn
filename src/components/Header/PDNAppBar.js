@@ -41,6 +41,13 @@ const styles = theme => ({
   }
 });
 
+const menu = [
+  {
+    enlace: "",
+    nombre: ""
+  }
+];
+
 class PDNAppBar extends React.Component {
   state = {
     achorEl: null
@@ -115,6 +122,19 @@ class PDNAppBar extends React.Component {
                     open={open}
                     onClose={this.handleClose}
                   >
+                    {menu.map(opcion => {
+                      return (
+                        <MenuItem
+                          onClick={this.handleClose}
+                          component={Button}
+                          //   href="https://www.plataformadigitalnacional.org/blog/"
+                          href={`${process.env.PUBLIC_URL}/about`}
+                          className={classes.blog}
+                        >
+                          {opcion.nombre}
+                        </MenuItem>
+                      );
+                    })}
                     <MenuItem
                       onClick={this.handleClose}
                       component={Button}
@@ -127,13 +147,12 @@ class PDNAppBar extends React.Component {
                     <MenuItem
                       onClick={this.handleClose}
                       component={Button}
-                    //   href="https://www.plataformadigitalnacional.org/blog/"
+                      //   href="https://www.plataformadigitalnacional.org/blog/"
                       href={`${process.env.PUBLIC_URL}/about`}
                       className={classes.blog}
                     >
                       Blog 222
                     </MenuItem>
-
 
                     <MenuItem
                       onClick={this.handleClose}
