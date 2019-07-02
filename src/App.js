@@ -135,7 +135,7 @@ class App extends React.Component {
                                     return prop.private ?
                                         <PrivateRoute exact path={prop.path} component={prop.component} key={key}
                                                       perfom={prop.perfom}/> :
-                                        <Route exact path={prop.path} component={prop.component} key={key}/>;
+                                        <Route exact path={prop.path} component={ prop.component} key={key}/>;
                                 }
                             )
                             }

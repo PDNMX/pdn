@@ -92,7 +92,7 @@ class Header extends React.Component{
                             Especificaciones técnicas y
                         </Typography>
                         <Typography variant="h4" paragraph className={classes.whiteText} style={{  fontWeight: 600}}>
-                            estandares de datos
+                            Contrataciones
                         </Typography>
                         <Typography  className={classes.whiteText} style={{fontSize: '18px',fontWeight: 500}}>
                             Plataforma Digital Nacional

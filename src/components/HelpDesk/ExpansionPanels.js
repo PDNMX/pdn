@@ -7,10 +7,8 @@ import Typography from '@material-ui/core/Typography';
 import Grid from "@material-ui/core/Grid";
 import MuiLink from "@material-ui/core/Link";
 import {Link} from "react-router-dom";
-import TablaTecnologias from "./TablaTecnologias";
 import Diagrama from "../../assets/Diagrama_de_comunicacion_API.svg";
 import Icon from '@material-ui/core/Icon';
-import Box from '@material-ui/core/Box';
 
 const ExpansionPanel = withStyles({
     root: {

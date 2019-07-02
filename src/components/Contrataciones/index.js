@@ -33,7 +33,7 @@ class Index extends React.Component {
                     <Grid item xs={12} className={classes.item}>
 
                     <Typography> Contrataciones </Typography>
-                        
+
                     </Grid>
                 </Grid>
 
