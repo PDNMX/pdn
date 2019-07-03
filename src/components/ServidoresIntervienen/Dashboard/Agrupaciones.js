@@ -1,6 +1,5 @@
 import React from 'react';
 import {withStyles} from "@material-ui/core/styles";
-import PropTypes from 'prop-types';
 import Grid from "@material-ui/core/Grid/Grid";
 import {Typography} from "@material-ui/core";
 import rp from "request-promise";
@@ -39,14 +38,6 @@ const styles = theme => ({
     },
 });
 
-
-let color = ["#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
-    "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
-    "#8BC34A", "#CDDC39", "#FFEB3B", "#FFC107", "#FF9800",
-    "#FF5722", "#795548", "#9E9E9E", "#607D8B", "#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
-    "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
-    "#8BC34A", "#CDDC39", "#FFEB3B", "#FFC107", "#FF9800",
-    "#FF5722", "#795548", "#9E9E9E", "#607D8B"];
 
 let z = d3.scaleOrdinal()
     .range(["#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
@@ -121,12 +112,16 @@ class Agrupaciones extends React.Component {
     };
 
     loadInstituciones = () => {
+        let filtros = [];
+        if (this.state.ejercicio) filtros.push("ejercicio='" + this.state.ejercicio + "'");
+        if (this.state.ramo) filtros.push("ramo='" + this.state.ramo + "'");
+
         let options = {
             uri: process.env.REACT_APP_HOST_PDNBACK + '/viz/servidoresIntervienen/getInstituciones',
             json: true,
             method: "post",
             body: {
-                filtros: this.state.ramo ? ("ramo='" + this.state.ramo + "'") : null
+                filtros: filtros.length>0 ? filtros : null
             }
         };
 
@@ -161,6 +156,23 @@ class Agrupaciones extends React.Component {
                     grupos: grupos
                 }
             };
+
+
+
+            let v = "";
+            if(this.state.ejercicio && !this.state.ramo && !this.state.institucion)
+                v="group";
+            else if(this.state.ejercicio && this.state.ramo && !this.state.institucion)
+                v="subgroup"
+            else if((this.state.ejercicio && this.state.ramo && this.state.institucion)
+            || (this.state.ejercicio && !this.state.ramo && this.state.institucion))
+                v="subgroup";
+            else if((!this.state.ejercicio && this.state.ramo && !this.state.institucion)
+                ||(!this.state.ejercicio && !this.state.ramo && this.state.institucion)
+                ||(!this.state.ejercicio && this.state.ramo && this.state.institucion))
+                v="parent";
+
+
             rp(options)
                 .then(data => {
                     let aux2 = data.data.map(item => {
@@ -176,27 +188,31 @@ class Agrupaciones extends React.Component {
                         config: {
                             data: aux2,
                             height: 400,
-                            groupBy: this.state.ramo?["parent", "group","subgroup"]:["parent", "group"],
+                            groupBy : v,
                             sum: "value",
-                            zoom: {
-                                click: true
-                            },
                             tooltipConfig: {
                                 tbody: [
-                                    ["Número de sanciones: ", function (d) {
+                                    ["Ejercicio: ", function (d) {
+                                        return d["parent"]
+                                    }
+                                    ],
+                                    ["Número de registros: ", function (d) {
                                         return d["value"]
                                     }
                                     ]
                                 ]
                             },
-                            legend: true,
+                            legend: false,
                             shapeConfig: {
+                                label: function (d) {
+                                    return d[v]
+                                },
                                 labelConfig: {
                                     fontMax: 18,
                                     fontMin: 10
                                 },
                                 fill: (d) => {
-                                    return this.state.ramo? z(d.subgroup): z(d.group)
+                                    return z(d[v])
                                 }
                             },
                         }
@@ -232,7 +248,7 @@ class Agrupaciones extends React.Component {
                     <Grid container spacing={4}>
                         <Grid item xs={12}>
                             <Typography variant={"h6"} className={classes.titulo}>
-                                <b>{"Agrupaciones"}</b>
+                                <b>{"Ejercicios, Ramos e Instituciones"}</b>
                             </Typography>
                         </Grid>
                         <Grid item xs={12} className={classes.descripcion}>
@@ -240,7 +256,7 @@ class Agrupaciones extends React.Component {
                                 En esta sección podrás interactuar con diferentes variables como : Ejericio fiscal,
                                 Ramo,
                                 Institución.<br/>
-
+Selecciona algún filtro y da clic en el botón <b>Buscar</b>
                             </Typography>
                         </Grid>
                         <Grid item xs={4}>
@@ -312,7 +328,7 @@ class Agrupaciones extends React.Component {
                         <Grid item xs={10}/>
                         <Grid item xs={1}>
                             <Button variant="contained" color="secondary" className={classes.button}
-                                    onClick={this.loadData}>
+                                    onClick={this.loadData}  disabled={!this.state.ejercicio && !this.state.ramo && !this.state. institucion}>
                                 Buscar
                             </Button>
                         </Grid>

@@ -58,11 +58,13 @@ class Dashboard extends React.Component {
                             Las visualizaciones presentan diversas variables interesantes: <br/>
                             1. <b>Ejercicio fiscal.</b> Permite conocer el comportamiento de los datos a través de los
                             ejercicios fiscales, se cuenta con información del año 2016 a la fecha <a href="#g1">Ver</a><br/>
-                            2. <b>Puesto.</b> En la APF se encuentra una gran variedad de procesos de contratación, aquí
+                            2. <b>Ejercicios, Ramos e Instituciones.</b> Permite conocer el comportamiento de los registros analizando
+                            diferentes variables como el Ejercicio Fiscal, el Ramo y/o la Institución<a href="#g2">Ver</a><br/>
+                            3. <b>Puesto.</b> En la APF se encuentra una gran variedad de procesos de contratación, aquí
                             se puede encontrar información de los puestos que más intervienen en procesos de
                             contratación. Debido a que se encontraron 13,088 puestos diferentes, se muestra la
-                            información de los 10 más comunes.<a href="#g2">Ver</a><br/>
-                            3. <b>Ramo, Institución, Unidad Responsable y Puesto.</b> En está sección se podrán
+                            información de los 10 más comunes.<a href="#g3">Ver</a><br/>
+                            4. <b>Ramo, Institución, Unidad Responsable y Puesto.</b> En está sección se podrán
                             encontrar diferentes visualizaciones que muestran el comportamiento y la relación entre
                             estás variables <a href="#g3">Ver</a><br/>
 
