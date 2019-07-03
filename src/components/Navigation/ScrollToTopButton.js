@@ -54,7 +54,7 @@ class ScrollToTopButton extends React.Component {
         return (
             <div className={classes.root}>
                 {this.state.visible?
-                <Fab onClick={this.scrollToTop} className={classes.fab}>
+                <Fab onClick={this.scrollToTop} className={classes.fab} href="#">
                     <ArrowUpward/>
                 </Fab>
                     :<div/>}
