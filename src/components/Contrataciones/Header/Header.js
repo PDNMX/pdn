@@ -89,13 +89,13 @@ class Header extends React.Component{
 
                     <Grid item xs={12} md={6} className={classes.item2} align={isWidthUp('md', this.props.width)? 'left':'center'} >
                         <Typography variant="h4" paragraph className={classes.whiteText} style={{fontWeight: 300}}>
-                            Especificaciones técnicas y
+                            Plataforma Digital Nacional
                         </Typography>
                         <Typography variant="h4" paragraph className={classes.whiteText} style={{  fontWeight: 600}}>
-                            Contrataciones
+                            Contrataciones públicas
                         </Typography>
                         <Typography  className={classes.whiteText} style={{fontSize: '18px',fontWeight: 500}}>
-                            Plataforma Digital Nacional
+                            Conoce como compra tu gobierno
                         </Typography>
                     </Grid>
                 </Grid>
