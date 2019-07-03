@@ -21,18 +21,43 @@ const styles = theme => ({
 
 class ScrollToTopButton extends React.Component {
 
+    state = {
+        visible: false
+    };
+
     scrollToTop = () => {
         window.scroll(0,0 );
     };
+
+    handleScroll = ()=> {
+        //console.log(window.scrollY)
+        if (window.scrollY > 200){
+            this.setState({visible: true})
+        } else {
+            this.setState({visible: false})
+        }
+
+    };
+
+    componentDidMount() {
+        window.addEventListener('scroll', this.handleScroll)
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.handleScroll)
+    }
+
 
     render(){
         const {classes} = this.props;
 
         return (
             <div className={classes.root}>
-                <Fab onClick={this.scrollToTop} className={classes.fab}>
+                {this.state.visible?
+                <Fab onClick={this.scrollToTop} className={classes.fab} href="#">
                     <ArrowUpward/>
                 </Fab>
+                    :<div/>}
             </div>
         );
     }

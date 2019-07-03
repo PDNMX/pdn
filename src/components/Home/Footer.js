@@ -108,9 +108,10 @@ class Footer extends React.Component{
                                 </Link>
                                 {/*
                                 <Typography className={classes.grayText}>Fiscalización</Typography>
-                                <Typography className={classes.grayText}>Denuncias</Typography>
-                                <Typography className={classes.grayText}>Contrataciones</Typography>
-                                */}
+                                <Typography className={classes.grayText}>Denuncias</Typography>*/}
+                                <Link to="/contrataciones" className={classes.link}>
+                                    <Typography className={classes.grayText}>Contrataciones</Typography>
+                                </Link>
                             </Grid>
                             <Grid item xs={6} md={3}>
                                 <Typography className={classes.blueText} paragraph>

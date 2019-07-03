@@ -13,7 +13,10 @@ const styles = theme => ({
     },
     item:{
         maxWidth: 1200,
-        padding: theme.spacing(1)
+        paddingRight: theme.spacing(1),
+        paddingLeft: theme.spacing(1),
+        paddingBottom: theme.spacing(8),
+        paddingTop: theme.spacing(8)
     },
     container: {
         backgroundColor: '#fff'
