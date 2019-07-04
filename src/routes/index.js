@@ -1,35 +1,44 @@
 import Home from '../components/Home/Home';
+
 import About from '../components/About/About';
 import Terminos from '../components/Terminos/Terminos';
 import Faq from '../components/FAQ/index';
 import Datos from '../components/CatalogoDatos/Datos';
-import Sancionados from '../components/Sancionados/Index';
-import Servidores from '../components/ServidoresIntervienen/Index';
 import Indicadores from '../components/Indicadores/Indicadores';
-import Contrataciones from '../components/Contrataciones/index';
 import Denuncias from '../components/Denuncias/Index';
+
+
 import FormularioDenuncias from '../components/Denuncias/FormularioDenuncia/FormularioDenuncia';
 import FormularioConsula from '../components/Denuncias/ConsultaDenuncia/FormularioConsulta';
 import Conexion from '../components/Conexion/Solicitudes/Conexion';
-import Validador from '../components/Validador/index';
 import ConsolaAdministracionSO from '../components/Conexion/Administracion/ConsolaAdministracionSO';
 import ConsolaAdministracionPDN from '../components/Administracion/Index';
 import ConsultaUsuarios from '../components/Administracion/Usuarios/ConsultaUsuarios';
 import Consulta from '../components/Administracion/Conexiones/ConsultaSolicitudes';
 import ConsultaConexiones from '../components/Administracion/Conexiones/ConsultaConexiones';
+import Sancionados from '../components/Sancionados/Index';
 
+//import Servidores from '../components/ServidoresIntervienen/Index';
+
+import DashboardSancionados from "../components/Sancionados/dashboard/Servidores/Dashboard";
+import DashboardParticularesSancionados from "../components/Sancionados/dashboard/Particulares/Dashboard";
+import Contrataciones from '../components/Contrataciones/index';
+import Validador from '../components/Validador/index';
 import Especificaciones from '../components/Especificaciones/Landing/Especificaciones';
 import DeclaracionesEspecificaciones from '../components/Especificaciones/Declaraciones/Declaraciones';
 import EspecificacionesSancionados from "../components/Especificaciones/Sancionados/Sancionados";
 import EspecificacionesServidoresIntervienen from "../components/Especificaciones/ServidoresIntervienen/ServidoresIntervienen";
-import DashboardSancionados from "../components/Sancionados/dashboard/Servidores/Dashboard";
-import DashboardParticularesSancionados from "../components/Sancionados/dashboard/Particulares/Dashboard";
-
-
-
 import Metodologia from "../components/GAA/Calidad/Metodologia";
 import HelpDesk from "../components/HelpDesk/HelpDesk";
 import GAA from "../components/GAA/GAA";
+
+/*
+     {
+        path: "/servidores",
+        component: Servidores,
+        private: false
+    },
+    * */
 
 const pdnRoutes = [
 
@@ -71,11 +80,6 @@ const pdnRoutes = [
     {
         path: "/sancionados/dashboardParticulares",
         component: DashboardParticularesSancionados,
-        private: false
-    },
-    {
-        path: "/servidores",
-        component: Servidores,
         private: false
     },
     {
@@ -177,7 +181,6 @@ const pdnRoutes = [
         component: HelpDesk,
         private: false
     }
-
 ];
 
 export default pdnRoutes;
