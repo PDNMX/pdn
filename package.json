@@ -11,7 +11,8 @@
     "apollo-boost": "^0.3.1",
     "apollo-cache-inmemory": "^1.5.1",
     "axios": "^0.18.0",
-    "chartist": "^0.11.0",
+    "chartist": "^0.11.2",
+    "chartist-plugin-tooltips-updated": "^0.0.21",
     "cors": "^2.8.5",
     "d3": "^5.9.2",
     "d3plus": "^1.9.8",
@@ -45,6 +46,7 @@
     "request": "^2.88.0",
     "request-promise": "^4.2.2",
     "swagger-parser": "^6.0.5",
+    "uniqid": "^5.0.3",
     "uuid": "^3.3.2"
   },
   "scripts": {
