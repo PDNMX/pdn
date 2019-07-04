@@ -10,7 +10,6 @@ import img1 from "../../assets/img/servidores_intervienen_contratacion.svg";
 import img2 from "../../assets/img/servidores_particulares_inhabilitados.svg";
 import img3 from "../../assets/img/servidores_visualizaciones.svg";
 import Header from './Header/Header';
-import './s2.css';
 import classNames from 'classnames';
 import Dashboard from "./Dashboard/Dashboard";
 
