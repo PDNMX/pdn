@@ -8,6 +8,7 @@ import Pipeline from '../../../assets/DQ_pipeline_analy.png';
 import Pasos from '../../../assets/pasos_evaluación.png';
 import Footer from "../../Home/Footer";
 //import CandlestickExample from "../../candlestick/candlestick-example";
+import ScrollToTopButton from '../../Navigation/ScrollToTopButton';
 
 const styles = theme => ({
     root :{
@@ -131,6 +132,7 @@ class Metodologia extends React.Component{
                     </div>
 
 
+
                     <Typography paragraph>
                         <b>Pasos para la evaluación de calidad de los datos Guía de Apertura Anticorrupción</b>
                     </Typography>
@@ -160,6 +162,7 @@ class Metodologia extends React.Component{
                         <li><Typography>4. Procesabilidad, y</Typography></li>
                         <li><Typography>5. Relevancia Analítica.</Typography></li>
                     </ul>
+
 
                     <img src={Pipeline} alt="Evaluación" className={classes.pipeline}/>
 
@@ -256,6 +259,7 @@ class Metodologia extends React.Component{
                 </Grid>
             </Grid>
             <Footer/>
+            <ScrollToTopButton/>
         </div>
     }
 

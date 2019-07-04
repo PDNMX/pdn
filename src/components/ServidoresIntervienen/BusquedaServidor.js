@@ -81,6 +81,7 @@ const styles = theme => ({
     }
 });
 
+
 class BusquedaServidor extends React.Component {
     state = {
         dependencias: [],
@@ -105,7 +106,7 @@ class BusquedaServidor extends React.Component {
                 });
                 this.setState({dependencias:aux, suggestions: sug});
             }).catch(err => {
-            alert("_No se puedó obtener la información");
+            alert("_No se pudó obtener la información");
             console.log(err);
         });
     }

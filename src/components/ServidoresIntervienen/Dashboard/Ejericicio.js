@@ -5,7 +5,7 @@ import Grid from "@material-ui/core/Grid/Grid";
 import {Typography} from "@material-ui/core"
 import {BarChart} from "d3plus-react";
 import rp from "request-promise";
-import * as d3plus from "d3plus-export";
+
 
 const styles = theme => ({
     frameChart: {
@@ -129,9 +129,9 @@ class Ejercicio extends React.Component {
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>
                         <Typography>
-                            En esté primer acercamiento, se muestra la información con que se cuenta, correspondiente a periodos fiscales entre los años 2016 a la fecha.<br/>
+                            En esté primer acercamiento, se muestra la información con que se cuenta, correspondiente a periodos fiscales entre los años 2015 a la fecha.<br/>
                             Como se aprecía en la gráfica, hay un ligero crecimiento en el número de registros de Servidores Públicos que intervienen en procesos de contratación año con año.<br/>
-                            En particular el año 2019, ya cuenta con 22,781 registros al mes de Junio del mismo. En secciones posteriores, se podrá analizar la información de cada año correspondiente.
+                            En particular el año 2019, ya cuenta con un número mayor al registrado de anualmente en el 2016. En secciones posteriores, se podrá analizar la información de cada año correspondiente.
                         </Typography>
                     </Grid>
 

@@ -21,7 +21,7 @@ const styles = theme => ({
     },
     sistemas: {
         background: '#34b3eb'
-    }
+    },
 });
 
 class Home extends React.Component{
@@ -30,7 +30,6 @@ class Home extends React.Component{
         const { classes } = this.props;
         return(
                 <div className={classes.root}>
-                    {/*<Header currentUser={this.props.currentUser}/>*/}
                     <Banner/>
                     <BarraFea/>
                     <Grid container spacing={0} justify="center">
