@@ -46,13 +46,13 @@ class Sistemas extends React.Component{
             <div className={classes.root}>
                 <Grid container spacing={0} justify='center' className={classes.container}>
                     <Grid item xl={4} lg={4} md={6} xs={12} align="center">
-                        <a href="/declaraciones/" className={ classes.link }>
+                        <Link to="/declaraciones" className={ classes.link }>
                             <img src={s1} alt="Sistema 1" className={classes.iconosSistemas}/>
                             <br/>
                             <Typography variant="h5" className={classes.text}>
                                 Declaraciones
                             </Typography>
-                        </a>
+                        </Link>
                     </Grid>
                     <Grid item xl={4} lg={4} md={6} xs={12} align="center">
                         <Link to="/servidores" className={ classes.link }>
