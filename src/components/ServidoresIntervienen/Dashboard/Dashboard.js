@@ -42,8 +42,8 @@ class Dashboard extends React.Component {
                             <b>¿Qué información es?</b>
                         </Typography>
                         <Typography variant={"body1"} className={classes.desc}>
-                            {"La información que se presenta a continuación corresponde a  los servidores públicos que intervienen en procesos de contratación" +
-                            "reportados en el Registro de Servidores Públicos de la Administración Pública Federal (RENIRESP) a partir de 2016 y hasta 2018."}
+                            {"La información que se presenta a continuación corresponde a  los servidores públicos que intervienen en procesos de contratación " +
+                            "reportados en el Registro de Servidores Públicos de la Administración Pública Federal (RENIRESP)."}
                         </Typography>
                         <Typography variant={"h6"}>
                             <b>¿Cómo se obtiene la información?</b>
@@ -55,15 +55,19 @@ class Dashboard extends React.Component {
                             <b>¿Qué puedo encontrar?</b>
                         </Typography>
                         <Typography variant={"body1"} className={classes.desc}>
-                            Las visualizaciones presentan diversas variables interesantes: <br/>
-                            1. <b>Ejercicio fiscal.</b> Permite conocer el comportamiento de los datos a través de los
-                            ejercicios fiscales, se cuenta con información del año 2016 a la fecha <a href="#g1">Ver</a><br/>
-                            2. <b>Ejercicios, Ramos e Instituciones.</b> Permite conocer el comportamiento de los registros analizando
-                            diferentes variables como el Ejercicio Fiscal, el Ramo y/o la Institución<a href="#g2">Ver</a><br/>
+                            Las visualizaciones permiten realizar un análisis del comportamiento del número de funcionarios ante diversas variables interesantes: <br/><br/>
+
+                            1. <b>Ejercicio fiscal.</b> Permite conocer el comportamiento del número de funcionarios que intervienen en procesos de contratación a través de los
+                            ejercicios fiscales, se cuenta con información del año 2015 a la fecha <a href="#g1">Ver</a><br/><br/>
+
+                            2. <b>Ejercicios, Ramos e Instituciones.</b> Permite conocer más a fondo el comportamiento de los funcionarios que intervienen en procesos de
+                            contatación a través de la configuración de variables como el Ejercicio Fiscal, el Ramo y/o la Institución<a href="#g2">Ver</a><br/><br/>
+
                             3. <b>Puesto.</b> En la APF se encuentra una gran variedad de procesos de contratación, aquí
                             se puede encontrar información de los puestos que más intervienen en procesos de
                             contratación. Debido a que se encontraron 13,088 puestos diferentes, se muestra la
-                            información de los 10 más comunes.<a href="#g3">Ver</a><br/>
+                            información de los 10 más comunes.<a href="#g3">Ver</a><br/><br/>
+
                             4. <b>Ramo, Institución, Unidad Responsable y Puesto.</b> En está sección se podrán
                             encontrar diferentes visualizaciones que muestran el comportamiento y la relación entre
                             estás variables <a href="#g3">Ver</a><br/>
