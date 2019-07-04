@@ -18,7 +18,7 @@ import Consulta from '../components/Administracion/Conexiones/ConsultaSolicitude
 import ConsultaConexiones from '../components/Administracion/Conexiones/ConsultaConexiones';
 import Sancionados from '../components/Sancionados/Index';
 
-//import Servidores from '../components/ServidoresIntervienen/Index';
+import Servidores from '../components/ServidoresIntervienen/Index';
 
 import DashboardSancionados from "../components/Sancionados/dashboard/Servidores/Dashboard";
 import DashboardParticularesSancionados from "../components/Sancionados/dashboard/Particulares/Dashboard";
@@ -32,13 +32,6 @@ import Metodologia from "../components/GAA/Calidad/Metodologia";
 import HelpDesk from "../components/HelpDesk/HelpDesk";
 import GAA from "../components/GAA/GAA";
 
-/*
-     {
-        path: "/servidores",
-        component: Servidores,
-        private: false
-    },
-    * */
 
 const pdnRoutes = [
 
@@ -80,6 +73,11 @@ const pdnRoutes = [
     {
         path: "/sancionados/dashboardParticulares",
         component: DashboardParticularesSancionados,
+        private: false
+    },
+    {
+        path: "/servidores",
+        component: Servidores,
         private: false
     },
     {

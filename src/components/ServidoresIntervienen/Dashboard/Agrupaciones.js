@@ -36,6 +36,9 @@ const styles = theme => ({
     formControl: {
         width: '100%'
     },
+    buttonContainer:{
+        textAlign : "center"
+    }
 });
 
 
@@ -326,14 +329,14 @@ class Agrupaciones extends React.Component {
                             </FormControl>
                         </Grid>
                         <Grid item xs={10}/>
-                        <Grid item xs={1}>
+                        <Grid item md={1}xs={12} className={classes.buttonContainer}>
                             <Button variant="contained" color="secondary" className={classes.button}
                                     onClick={this.loadData}
                                     disabled={!this.state.ejercicio && !this.state.ramo && !this.state.institucion}>
                                 Buscar
                             </Button>
                         </Grid>
-                        <Grid item xs={12} md={1} className={classes.centrado}>
+                        <Grid item xs={12} md={1} className={classes.buttonContainer}>
                             <Button variant="contained" color="secondary" className={classes.button}
                                     onClick={this.limpiarBusqueda}>
                                 Limpiar
