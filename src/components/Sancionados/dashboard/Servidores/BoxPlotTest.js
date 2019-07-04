@@ -2,7 +2,6 @@ import React from 'react';
 import {withStyles} from "@material-ui/core/styles";
 import PropTypes from 'prop-types';
 import Grid from "@material-ui/core/Grid/Grid";
-import "./index.css";
 import {Typography} from "@material-ui/core"
 import rp from "request-promise";
 import Button from "@material-ui/core/Button";
