@@ -10,7 +10,7 @@
     "ajv-i18n": "^3.4.0",
     "apollo-boost": "^0.3.1",
     "apollo-cache-inmemory": "^1.5.1",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "chartist": "^0.11.2",
     "chartist-plugin-tooltips-updated": "^0.0.21",
     "cors": "^2.8.5",
