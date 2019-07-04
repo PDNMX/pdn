@@ -6,6 +6,11 @@ import Header from './Header/Header';
 import Grid from '@material-ui/core/Grid';
 import Footer from "../Home/Footer";
 
+import LabeledHeatmap from './Charts/LabeledHeatmap';
+import Treemap from './Charts/Treemap';
+import SimpleRadialChart from "./Charts/SimpleRadialChart";
+import ScatterPlot from "./Charts/ScatterPlot";
+
 
 const styles = theme => ({
     root: {
@@ -34,9 +39,22 @@ class Index extends React.Component {
 
                 <Grid container spacing={0} justify="center" className={classes.container}>
                     <Grid item xs={12} className={classes.item}>
+                        <Typography paragraph>Donut chart</Typography>
+                        <SimpleRadialChart/>
+                    </Grid>
 
-                    <Typography> Contrataciones </Typography>
+                    <Grid item xs={12} className={classes.item}>
+                        <ScatterPlot/>
+                    </Grid>
 
+                    <Grid item xs={12} className={classes.item}>
+                        <Typography paragraph> Heatmap </Typography>
+                        <LabeledHeatmap/>
+                    </Grid>
+
+                    <Grid item xs={12} className={classes.item}>
+                        <Typography paragraph> Treemap </Typography>
+                        <Treemap/>
                     </Grid>
                 </Grid>
 
