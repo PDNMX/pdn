@@ -10,7 +10,8 @@ import Stats from "./Stats";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Grid } from "@material-ui/core";
 
-import "./style.css";
+// import "./style.css";
+import "./newStyle.css";
 
 // MATERIAL UI THEME STUFF
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
