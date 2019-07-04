@@ -4,7 +4,7 @@ import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Tarjeta from './Tarjeta';
 import Grid from '@material-ui/core/Grid';
-import C1 from '../../assets/about/banner4.png';//'../assets/banner1.png';
+import C1 from '../../assets/about/banner4.png';
 import C2 from '../../assets/about/banner2.png';
 import C3 from '../../assets/about/banner3.png';
 
