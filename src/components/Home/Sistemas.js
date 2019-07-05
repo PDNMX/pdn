@@ -34,7 +34,14 @@ const styles = theme => ({
         '&:hover':{
             opacity: 0.5
         }
+    },
+    textExplora: {
+        color: theme.palette.titleBanner.color,
+        fontWeight: 500,
+        fontSize: '48px',
+        paddingBottom: theme.spacing(6)
     }
+
 });
 
 class Sistemas extends React.Component{
@@ -45,6 +52,13 @@ class Sistemas extends React.Component{
         return (
             <div className={classes.root}>
                 <Grid container spacing={0} justify='center' className={classes.container}>
+
+                    <Grid item xs={12} align="center">
+                        <Typography className={classes.textExplora} paragraph>
+                        Explora los 6 sistemas
+                        </Typography>
+                    </Grid>
+
                     <Grid item xl={4} lg={4} md={6} xs={12} align="center">
                         <Link to="/declaraciones" className={ classes.link }>
                             <img src={s1} alt="Sistema 1" className={classes.iconosSistemas}/>
