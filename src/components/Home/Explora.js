@@ -30,6 +30,9 @@ const styles = theme => ({
         color: theme.palette.titleBanner.color,
         paddingBottom: theme.spacing(3)
     },
+    videoDiv:{
+        maxWidth: 800
+    }
 });
 
 class Explora extends React.Component{
@@ -49,10 +52,12 @@ class Explora extends React.Component{
                                 Una fuente de inteligencia para construir integridad y combatir la corrupción
                             </Typography>
 
-                            <iframe maxWidth="560" height="315" src="https://www.youtube.com/embed/e9zZE5i8Vt4" frameBorder="0" title={'Video'}
-                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                    allowFullScreen/>
+                            <div className={classes.videoDiv}>
+                                <iframe width="100%" height="315" src="https://www.youtube.com/embed/e9zZE5i8Vt4" frameBorder="0" title={'Video'}
+                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                        allowFullScreen/>
 
+                            </div>
 
                             <div>
                                 <Button variant="contained" className={classes.button} component={Link} to="/about">Conoce más</Button>
