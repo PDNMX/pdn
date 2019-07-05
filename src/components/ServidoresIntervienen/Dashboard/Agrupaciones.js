@@ -11,6 +11,7 @@ import Button from "@material-ui/core/Button";
 import Toolbar from '@material-ui/core/Toolbar';
 import {Treemap} from "d3plus-react";
 import * as d3 from "d3";
+import MensajeErrorDatos from "../../Tablas/MensajeErrorDatos";
 
 const styles = theme => ({
     frameChart: {
@@ -55,7 +56,8 @@ class Agrupaciones extends React.Component {
         ramo: null,
         ramos: [],
         institucion: null,
-        instituciones: []
+        instituciones: [],
+        error : false
     };
 
     componentDidMount() {
@@ -88,7 +90,8 @@ class Agrupaciones extends React.Component {
             });
             this.setState({ejercicios: ejercicios});
         }).catch(err => {
-            alert("_No se pudó obtener la información");
+            console.log(err);
+            this.setState({error:true})
         })
     };
 
@@ -110,7 +113,8 @@ class Agrupaciones extends React.Component {
             });
             this.setState({ramos: ramos, ramo: null, institucion: null});
         }).catch(err => {
-            alert("_No se pudó obtener la información");
+            console.log(err);
+            this.setState({error:true})
         })
     };
 
@@ -136,7 +140,8 @@ class Agrupaciones extends React.Component {
             });
             this.setState({instituciones: instituciones, institucion: null});
         }).catch(err => {
-            alert("_No se pudó obtener la información");
+            console.log(err);
+            this.setState({error:true})
         })
     };
 
@@ -212,8 +217,9 @@ class Agrupaciones extends React.Component {
                     })
                     resolve(data);
                 }).catch(err => {
-                alert("_No se pudo obtener la información");
+
                 console.log(err);
+                this.setState({error : true})
             });
         });
     }
@@ -223,7 +229,8 @@ class Agrupaciones extends React.Component {
         this.setState({
             ejercicio: null,
             ramo: null,
-            institucion: null
+            institucion: null,
+            error : false
         })
     };
 
@@ -349,7 +356,10 @@ class Agrupaciones extends React.Component {
                                 this.state.config && this.state.config.data &&
                                 <Treemap config={this.state.config}/>
                             }
-
+                            {
+                                this.state.error &&
+                                    <MensajeErrorDatos/>
+                            }
                         </Grid>
                     </Grid>
                 </Toolbar>

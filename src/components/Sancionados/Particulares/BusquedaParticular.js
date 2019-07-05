@@ -6,7 +6,6 @@ import FormControl from "@material-ui/core/FormControl/FormControl";
 import Select from '@material-ui/core/Select';
 import MenuItem from "@material-ui/core/MenuItem";
 import rp from "request-promise";
-import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid/Grid";
 import {Typography} from "@material-ui/core"
 import Button from "@material-ui/core/Button/Button";
@@ -78,75 +77,6 @@ const styles = theme => ({
 });
 
 
-function inputComponent({inputRef, ...props}) {
-    return <div ref={inputRef} {...props}/>;
-}
-
-function Control(props) {
-    return (
-        <TextField
-            fullWidth
-            label="INSTITUCIÓN SANCIONADORA"
-            placeholder={'Selecciona una'}
-            InputProps={{
-                inputComponent,
-                inputProps: {
-                    className: props.selectProps.classes.input,
-                    inputRef: props.innerRef,
-                    children: props.children,
-                    ...props.innerProps,
-                    id: 'inputComponentParticular'
-                },
-            }}
-            InputLabelProps={{
-                className: props.selectProps.classes.labelCustom,
-                shrink: true,
-            }}
-            {...props.selectProps.textFieldProps}
-        />
-    );
-}
-
-function Option(props) {
-    return (
-        <MenuItem
-            buttonRef={props.innerRef}
-            selected={props.isFocused}
-            component="div"
-            style={{
-                fontWeight: props.isSelected ? 400 : 300,
-            }}
-            {...props.innerProps}
-        >
-            {props.children}
-        </MenuItem>
-    );
-}
-
-
-function SingleValue(props) {
-    return (
-        <div
-            className={props.selectProps.classes.singleValue}>{!props.data.value ? 'Selecciona una' : ''} {props.children} </div>
-    );
-}
-
-function Menu(props) {
-    return (
-        <Paper square className={props.selectProps.classes.paper} {...props.innerProps}>
-            {props.children}
-        </Paper>
-    );
-}
-
-
-const components = {
-    'Control': Control,
-    'Menu': Menu,
-    'Option': Option,
-    'SingleValue': SingleValue
-};
-
 
 class BusquedaParticular extends React.Component {
     state = {
@@ -162,7 +92,7 @@ class BusquedaParticular extends React.Component {
         let options = {
             uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/getDependenciasParticulares',
             json: true,
-            method: "get"
+            method: "post"
         };
         rp(options)
             .then(data => {
@@ -190,15 +120,6 @@ class BusquedaParticular extends React.Component {
     render() {
         let {classes, handleChangeCampo, nombreParticular, numeroExpediente, institucion, theme} = this.props;
 
-        const selectStyles = {
-            input: base => ({
-                '& input': {
-                    font: 'inherit',
-                    color: theme.palette.fontLight.color,
-                },
-            })
-        };
-
         return (
             <Grid container spacing={4}>
                 <Grid item xs={12}>
@@ -220,20 +141,6 @@ class BusquedaParticular extends React.Component {
                                 }))
                             }
                         </Select>
-                        {
-                            /*
-                             <Select
-                            classes={classes}
-                            styles={selectStyles}
-                            options={this.state.suggestions}
-                            components={components}
-                            value={{value: institucion, label: institucion}}
-                            onChange={(e) => handleChangeCampo('institucion',e)}
-                            id="campoSelectInstitucion"
-                        />
-                             */
-                        }
-
                     </FormControl>
                 </Grid>
                 <Grid item md={3} xs={12}>
