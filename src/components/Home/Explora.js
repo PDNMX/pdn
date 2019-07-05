@@ -53,7 +53,7 @@ class Explora extends React.Component{
                             </Typography>
 
                             <div className={classes.videoDiv}>
-                                <iframe width="100%" height="315" src="https://www.youtube.com/embed/e9zZE5i8Vt4" frameBorder="0" title={'Video'}
+                                <iframe width="100%" height="400" src="https://www.youtube.com/embed/e9zZE5i8Vt4" frameBorder="0" title={'Video'}
                                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                         allowFullScreen/>
 
