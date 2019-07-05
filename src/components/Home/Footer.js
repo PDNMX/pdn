@@ -32,7 +32,7 @@ const styles = theme => ({
         paddingBottom: 20
     },
     item: {
-        maxWidth: "1100px"
+        maxWidth: "1100px!important"
     },
     grayText: {
         color: '#ffffff',

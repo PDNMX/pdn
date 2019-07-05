@@ -2,7 +2,6 @@ import React from 'react';
 import {withStyles} from "@material-ui/core/styles";
 import PropTypes from 'prop-types';
 import Grid from "@material-ui/core/Grid/Grid";
-import "./index.css";
 import {Typography} from "@material-ui/core"
 import {LinePlot, Pie} from "d3plus-react";
 import rp from "request-promise";

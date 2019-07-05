@@ -295,6 +295,7 @@ class Agrupaciones extends React.Component {
                                             id: 'campoSelectRamo',
                                         }}
                                 >
+                                    <MenuItem value={null} > TODOS</MenuItem>
                                     {
                                         this.state.ramos.map(item => {
                                             return <MenuItem value={item.ramo}>
@@ -317,6 +318,7 @@ class Agrupaciones extends React.Component {
                                             id: 'campoSelectInstitucion',
                                         }}
                                 >
+                                    <MenuItem value={null} > TODAS</MenuItem>
                                     {
                                         this.state.instituciones.map(item => {
                                             return <MenuItem value={item.institucion}>
