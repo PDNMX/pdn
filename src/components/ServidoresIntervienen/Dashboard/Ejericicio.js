@@ -5,6 +5,7 @@ import Grid from "@material-ui/core/Grid/Grid";
 import {Typography} from "@material-ui/core"
 import {BarChart} from "d3plus-react";
 import rp from "request-promise";
+import MensajeErrorDatos from "../../Tablas/MensajeErrorDatos";
 
 
 const styles = theme => ({
@@ -42,8 +43,8 @@ function aux() {
             .then(data => {
                 resolve(data);
             }).catch(err => {
-            alert("_No se pudo obtener la información");
             console.log(err);
+            reject(err)
         });
     });
 }
@@ -52,13 +53,15 @@ function aux() {
 let color = ["#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
     "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
     "#8BC34A", "#CDDC39", "#FFEB3B", "#FFC107", "#FF9800",
-    "#FF5722", "#795548", "#9E9E9E", "#607D8B","#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
+    "#FF5722", "#795548", "#9E9E9E", "#607D8B", "#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
     "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
     "#8BC34A", "#CDDC39", "#FFEB3B", "#FFC107", "#FF9800",
     "#FF5722", "#795548", "#9E9E9E", "#607D8B"];
 
 class Ejercicio extends React.Component {
-    state = {};
+    state = {
+        error: false,
+    };
 
     componentDidMount() {
         aux().then(result => {
@@ -112,9 +115,12 @@ class Ejercicio extends React.Component {
                     }
                 }
             )
-        });
+        }).catch(error => {
+            this.setState({
+                error: true
+            })
+        })
     }
-
 
 
     render() {
@@ -129,9 +135,13 @@ class Ejercicio extends React.Component {
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>
                         <Typography>
-                            En esté primer acercamiento, se muestra la información con que se cuenta, correspondiente a periodos fiscales entre los años 2015 a la fecha.<br/>
-                            Como se aprecía en la gráfica, hay un ligero crecimiento en el número de registros de Servidores Públicos que intervienen en procesos de contratación año con año.<br/>
-                            En particular el año 2019, ya cuenta con un número mayor al registrado de anualmente en el 2016. En secciones posteriores, se podrá analizar la información de cada año correspondiente.
+                            En esté primer acercamiento, se muestra la información con que se cuenta, correspondiente a
+                            periodos fiscales entre los años 2015 a la fecha.<br/>
+                            Como se aprecía en la gráfica, hay un ligero crecimiento en el número de registros de
+                            Servidores Públicos que intervienen en procesos de contratación año con año.<br/>
+                            En particular el año 2019, ya cuenta con un número mayor al registrado de anualmente en el
+                            2016. En secciones posteriores, se podrá analizar la información de cada año
+                            correspondiente.
                         </Typography>
                     </Grid>
 
@@ -140,7 +150,10 @@ class Ejercicio extends React.Component {
                             this.state.methods && this.state.methods.data &&
                             <BarChart config={this.state.methods}/>
                         }
-
+                        {
+                            this.state.error &&
+                            <MensajeErrorDatos/>
+                        }
                     </Grid>
 
 

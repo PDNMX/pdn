@@ -395,11 +395,11 @@ class EnhancedTable extends React.Component {
                                                 </TableRow>
                                             );
                                         })}
-                                    {emptyRows > 0 && (
+                                    {/*emptyRows > 0 && (
                                         <TableRow style={{height: 49 * emptyRows}}>
                                             <TableCell colSpan={4}/>
                                         </TableRow>
-                                    )}
+                                    )*/}
                                 </TableBody>
 
                                 <TableFooter>

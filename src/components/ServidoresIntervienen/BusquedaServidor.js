@@ -106,8 +106,9 @@ class BusquedaServidor extends React.Component {
                 });
                 this.setState({dependencias:aux, suggestions: sug});
             }).catch(err => {
-            alert("_No se pudó obtener la información");
+                this.props.handleError(true);
             console.log(err);
+
         });
     }
 
@@ -118,7 +119,6 @@ class BusquedaServidor extends React.Component {
     buscar = () => {
         this.props.handleSearch('FIELD_FILTER');
     };
-
 
     render() {
         const {classes, handleChangeCampo, nombreServidor, apellidoUno, apellidoDos, procedimiento, institucion, theme} = this.props;

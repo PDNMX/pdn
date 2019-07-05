@@ -3,12 +3,12 @@ import TextField from '@material-ui/core/TextField';
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import FormControl from "@material-ui/core/FormControl/FormControl";
+import Select from '@material-ui/core/Select';
 import MenuItem from "@material-ui/core/MenuItem";
 import rp from "request-promise";
 import Grid from "@material-ui/core/Grid/Grid";
 import {Typography} from "@material-ui/core"
-import Button from "@material-ui/core/Button";
-import Select from "@material-ui/core/Select";
+import Button from "@material-ui/core/Button/Button";
 import InputLabel from '@material-ui/core/InputLabel';
 
 const styles = theme => ({
@@ -25,17 +25,16 @@ const styles = theme => ({
     fontLight: {
         color: theme.palette.black.color,
     },
+    '&$focus': {
+        color: theme.palette.black.color,
+    },
     root: {
         flexGrow: 1,
         height: 250,
     },
     input: {
         color: theme.palette.black.color,
-
-        display: 'contents',
-    },
-    '&$focus': {
-        color: theme.palette.fontLight.color,
+        display: 'contents'
     },
     valueContainer: {
         display: 'flex',
@@ -77,6 +76,8 @@ const styles = theme => ({
     }
 });
 
+
+
 class BusquedaParticular extends React.Component {
     state = {
         dependencias: [],
@@ -85,60 +86,52 @@ class BusquedaParticular extends React.Component {
 
     componentDidMount() {
         let aux = [];
-        let sug = [];
+        let sug = [ {value : 'TODAS' ,label:'TODAS'}];
         let id = 0;
 
         let options = {
-            uri: 'https://plataformadigitalnacional.org/api/instituciones?order=institucion.asc',
-            json: true
+            uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/getDependenciasParticulares',
+            json: true,
+            method: "post"
         };
         rp(options)
             .then(data => {
-                data.forEach(item=>{
-                    aux.push({id: id++, nombre: item.institucion});
-                    sug.push({value: item.institucion, label: item.institucion});
+                data.data.forEach(item => {
+                    aux.push({id: id++, nombre: item});
+                    sug.push({value: item, label: item});
                 });
                 this.setState({dependencias: aux, suggestions: sug});
             }).catch(err => {
             alert("_No se pudo obtener la información");
             console.log(err);
         });
+
+
     }
 
     limpiarBusqueda = () => {
         this.props.handleCleanAll();
     };
+
     buscar = () => {
         this.props.handleSearch('FIELD_FILTER');
     };
 
     render() {
-        let {classes, handleChangeCampo, nombreParticular, institucion, theme} = this.props;
-
-        const selectStyles = {
-            input: base => ({
-                '& input': {
-                    font: 'inherit',
-                    color: theme.palette.fontLight.color,
-                },
-            })
-        };
+        let {classes, handleChangeCampo, nombreParticular, numeroExpediente, institucion, theme} = this.props;
 
         return (
             <Grid container spacing={4}>
                 <Grid item xs={12}>
-                    <Typography variant="h6" paragraph><b>Busca un particular inhabilitado</b></Typography>
+                    <Typography variant="h6" paragraph><b>Busca un particular sancionado</b></Typography>
                 </Grid>
                 <Grid item md={6} xs={12}>
                     <FormControl className={classes.formControl}>
                         <InputLabel htmlFor={'campoSelectInstitucion'}>Institución</InputLabel>
-                        <Select style={{marginTop:'0px'}}
-                                value={institucion}
-                                onChange={(e) => handleChangeCampo('institucion', e)}
-                                inputProps={{
-                                    name: 'campoSelectInstitucion',
-                                    id: 'campoSelectInstitucion',
-                                }}
+                        <Select style={{marginTop:'0px'}}value={institucion} onChange={(e) => handleChangeCampo('institucion', e)} inputProps={{
+                            name: 'campoSelectInstitucion',
+                            id: 'campoSelectInstitucion',
+                        }}
                         >
                             {
                                 this.state.suggestions.map((item => {
@@ -150,11 +143,11 @@ class BusquedaParticular extends React.Component {
                         </Select>
                     </FormControl>
                 </Grid>
-                <Grid item md={6} xs={12}>
+                <Grid item md={3} xs={12}>
                     <FormControl className={classes.formControl}>
                         <TextField
                             id="search"
-                            label="Particulares Inhabilitados"
+                            label="Nombre/Razón social particular sancionado"
                             type="search"
                             onChange={(e) => handleChangeCampo('nombreParticular', e)}
                             value={nombreParticular}
@@ -165,15 +158,32 @@ class BusquedaParticular extends React.Component {
                         />
                     </FormControl>
                 </Grid>
-                <Grid item xs={10}/>
+                <Grid item xs={12} md={3}>
+                    <FormControl className={classes.formControl}>
+                        <TextField
+                            id="search"
+                            label="Número expediente"
+                            type="search"
+                            onChange={(e) => handleChangeCampo('numeroExpediente', e)}
+                            value={numeroExpediente}
+                            InputLabelProps={{
+                                className: classes.inputShrink,
+                                shrink: true
+                            }}
+                        />
+
+                    </FormControl>
+                </Grid>
+
+                <Grid item md={10}/>
                 <Grid item xs={12} md={1} className={classes.centrado}>
                     <Button variant="contained" color="secondary" className={classes.button} onClick={this.buscar}>
                         Buscar
                     </Button>
                 </Grid>
-
                 <Grid item xs={12} md={1} className={classes.centrado}>
-                    <Button variant="contained" color="secondary" className={classes.button} onClick={this.limpiarBusqueda}>
+                    <Button variant="contained" color="secondary" className={classes.button}
+                            onClick={this.limpiarBusqueda}>
                         Limpiar
                     </Button>
                 </Grid>
