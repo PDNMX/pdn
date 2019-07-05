@@ -66,7 +66,7 @@ class BusquedaFromMaterialUI extends Component {
 
           <Grid item xs={12} sm={4}>
             <FormControl style={{ width: "100%" }}>
-              <InputLabel htmlFor="age-simple">Oficina</InputLabel>
+              <InputLabel htmlFor="age-simple">Institución</InputLabel>
               <Select
                 style={{ paddingTop: 15 }}
                 value={this.state.office}
@@ -156,8 +156,8 @@ class BusquedaFromMaterialUI extends Component {
             </Grid>
           </Grid>
 
-          <Grid item xs={12} sm={4}>
-            <Button type="submit" variant="contained" color="primary" fullWidth>
+          <Grid item xs={12} sm={4} style={{ marginBottom: 50 }}>
+            <Button type="submit" variant="contained" fullWidth>
               Buscar
             </Button>
           </Grid>

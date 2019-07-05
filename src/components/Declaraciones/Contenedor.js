@@ -15,9 +15,11 @@ import classNames from "classnames";
 import { Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 
-import img1 from "../../assets/img/servidores_intervienen_contratacion.svg";
-import img2 from "../../assets/img/servidores_particulares_inhabilitados.svg";
+// import img1 from "../../assets/img/servidores_intervienen_contratacion.svg";
+// import img2 from "../../assets/img/servidores_particulares_inhabilitados.svg";
 import img3 from "../../assets/img/servidores_visualizaciones.svg";
+import imgBuscar from "../../assets/declaraciones/servidores_declaraciones.svg";
+import imgEstadisticas from "../../assets/declaraciones/estadisticas.svg";
 
 // MATERIAL UI THEME STUFF
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
@@ -36,7 +38,8 @@ const styles = theme => ({
     flexGrow: 1
   },
   whiteText: {
-    color: "#fff" //theme.palette.titleBanner.color,
+    color: "#fff", //theme.palette.titleBanner.color,
+    padding: "17px"
   },
   bgPanelTable: {
     backgroundColor: theme.palette.white.color,
@@ -95,7 +98,7 @@ const styles = theme => ({
     color: "inherit"
   },
   contenedor: {
-    padding: "50px"
+    padding: "100px 50px"
   }
 });
 
@@ -132,11 +135,7 @@ class Contenedor extends React.Component {
               >
                 <Link className={classes.link} to="/declaraciones">
                   <figure className={classes.figure}>
-                    <img
-                      src={img3}
-                      alt="Visor de datos"
-                      className={classes.image}
-                    />
+                    <img src={imgBuscar} className={classes.image} />
                   </figure>
                   <Typography
                     variant="subtitle1"
@@ -163,18 +162,13 @@ class Contenedor extends React.Component {
                   to="/declaraciones/estadistica/edad"
                 >
                   <figure className={classes.figure}>
-                    <img
-                      src={`${process.env.PUBLIC_URL}/img/estadisticas.svg`}
-                      width="60px"
-                      alt="Estadísticas"
-                      className={classes.image}
-                    />
+                    <img src={imgEstadisticas} className={classes.image} />
                   </figure>
                   <Typography
                     variant="subtitle1"
                     className={classes.whiteText}
                   >
-                    Estadísticas 
+                    Estadísticas
                   </Typography>
                 </Link>
               </Grid>
@@ -199,41 +193,6 @@ class Contenedor extends React.Component {
         </Grid>
         <Footer />
       </div>
-
-      //     <section className="pdn_sis_nav">
-      //       <div className="container">
-      //         <Grid container spacing={1}>
-      //           <Grid item sm={12}>
-      //             <ul className="pdn_cont_nav">
-
-      //               <li
-      //                 className={
-      //                   this.props.location.pathname.includes("estadistica")
-      //                     ? "current"
-      //                     : ""
-      //                 }
-      //               >
-      //                 <a
-      //                   href={`${
-      //                     process.env.PUBLIC_URL
-      //                   }/declaraciones/estadistica/edad`}
-      //                 >
-
-      //
-      //                 </a>
-      //               </li>
-      //             </ul>
-      //           </Grid>
-      //         </Grid>
-      //       </div>
-      //     </section>
-      //     <section className="pdn_m">
-      //       <div className="container">
-
-      //       </div>
-      //     </section>
-      //   </MuiThemeProvider>
-      // </BrowserRouter>
     );
   }
 }
