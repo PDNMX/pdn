@@ -20,6 +20,7 @@ import {
   Typography
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
+import { grey } from "@material-ui/core/colors";
 
 const styles = theme => ({
   root: {
@@ -50,6 +51,13 @@ const styles = theme => ({
   },
   container1: {
     //background: 'grey',
+    paddingTop: "75px",
+    paddingBottom: "75px",
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1),
+    position: "relative"
+  },
+  container2: {
     paddingTop: "75px",
     paddingBottom: "75px",
     paddingLeft: theme.spacing(1),
@@ -196,12 +204,13 @@ class Header extends React.Component {
           spacing={0}
           className={classNames(classes.container1, "servidores")}
           justify="center"
+          style={{
+            backgroundImage: `linear-gradient(gray, gray),url(${background})`,
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat"
+          }}
         >
-          <img
-            src={background}
-            alt="Sistema 1"
-            style={{ zIndex:-1, maxHeight: "100px" }}
-          />
           <Grid
             item
             xs={12}
@@ -209,7 +218,7 @@ class Header extends React.Component {
             align={isWidthUp("md", this.props.width) ? "right" : "center"}
             className={classes.item1}
           >
-            <img src={logo} alt="Sistema 2" className={classes.s2} />
+            <img src={logo} alt="Sistema 1" className={classes.s2} />
           </Grid>
 
           <Grid

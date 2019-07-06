@@ -17,6 +17,8 @@ import EnhancedTableHead from '../Tablas/EnhancedTableHead';
 import {Typography} from "@material-ui/core"
 import Modal from "@material-ui/core/Modal/Modal";
 import TableFooter from "@material-ui/core/TableFooter";
+import MensajeNoRegistros from "../Tablas/MensajeNoRegistros";
+import MensajeErrorDatos from "../Tablas/MensajeErrorDatos";
 
 
 function getSorting(order, orderBy) {
@@ -175,14 +177,14 @@ const toolbarStyles = theme => ({
 
 
 let EnhancedTableToolbar = props => {
-    const {classes, handleChangeCampo, handleCleanAll, nombreServidor, apellidoUno, apellidoDos, procedimiento, institucion, handleSearch} = props;
+    const {classes, handleChangeCampo, handleCleanAll, nombreServidor, apellidoUno, apellidoDos, procedimiento, institucion, handleSearch,handleError} = props;
     return (
         <Toolbar className={classes.toolBarStyle}>
             <BusquedaServidor handleCleanAll={handleCleanAll} handleSearch={handleSearch}
                               handleChangeCampo={handleChangeCampo}
                               nombreServidor={nombreServidor} apellidoUno={apellidoUno} apellidoDos={apellidoDos}
                               procedimiento={procedimiento}
-                              institucion={institucion}/>
+                              institucion={institucion} handleError={handleError}/>
         </Toolbar>
     );
 };
@@ -208,7 +210,7 @@ class EnhancedTable extends React.Component {
             apellidoUno: '',
             apellidoDos: '',
             data: [],
-            filterData: [],
+            filterData: null,
             page: 0,
             rowsPerPage: 10,
             procedimiento: null,
@@ -218,6 +220,7 @@ class EnhancedTable extends React.Component {
             loading: false,
             totalRows: 0,
             filterDataAll: [],
+            error : false
 
         };
 
@@ -315,8 +318,8 @@ class EnhancedTable extends React.Component {
                         });
                     return true;
                 }).catch(err => {
-                this.setState({loading: false});
-                alert("_No se pudó obtener la información");
+                this.setState({loading: false, error:true});
+                //alert("_No se pudó obtener la información");
                 console.log(err);
             });
         });
@@ -333,7 +336,8 @@ class EnhancedTable extends React.Component {
     handleCleanAll = () => {
         this.setState(
             {
-                filterData: []
+                filterData: null,
+                error : false
             }, () => {
                 this.handleChangeCampo('nombreServidor');
                 this.handleChangeCampo('procedimiento');
@@ -341,11 +345,16 @@ class EnhancedTable extends React.Component {
             })
     };
 
+    handleError = (val )=>{
+        this.setState({
+            error : val
+        })
+    }
 
     render() {
         const {classes} = this.props;
         const {data, order, orderBy, selected, rowsPerPage, page, filterData, totalRows, filterDataAll} = this.state;
-        const emptyRows = rowsPerPage - filterData.length;
+        const emptyRows = rowsPerPage - (filterData?filterData.length:0);
 
         return (
             <div>
@@ -357,7 +366,8 @@ class EnhancedTable extends React.Component {
                                               handleSearch={this.handleSearchAPI}
                                               nombreServidor={this.state.nombreServidor}
                                               procedimiento={this.state.procedimiento} data={filterData}
-                                              columnas={columnData} institucion={this.state.institucion}/>
+                                              columnas={columnData} institucion={this.state.institucion}
+                                              handleError = {this.handleError}/>
                     </Grid>
                     <Grid item xs={12}>
                         <DetalleServidor handleClose={this.handleClose} servidor={this.state.elementoSeleccionado}
@@ -376,13 +386,18 @@ class EnhancedTable extends React.Component {
                         }
                     </Grid>
                     <Grid item xs={12}>
-                        {filterData.length > 0 &&
+                        {
+                            this.state.error &&
+                            <MensajeErrorDatos/>}
+                    </Grid>
+                    <Grid item xs={12}>
+                        {filterData && filterData.length > 0 &&
                         <Typography variant="h6" className={classes.desc} paragraph>Pulsa sobre el registro para ver su
                             detalle</Typography>
                         }
                     </Grid>
                     <Grid item xs={12}>
-                        {filterData.length > 0 &&
+                        {filterData && filterData.length > 0 &&
                         <div className={classes.container}>
                             <Table aria-describedby="spinnerLoading" id={'tableServidores'}
                                    aria-busy={this.state.loading} aria-labelledby="tableTitle"
@@ -419,11 +434,11 @@ class EnhancedTable extends React.Component {
                                                 </TableRow>
                                             );
                                         })}
-                                    {emptyRows > 0 && (
+                                    {/*emptyRows > 0 && (
                                         <TableRow style={{height: 49 * emptyRows}}>
                                             <TableCell colSpan={4}/>
                                         </TableRow>
-                                    )}
+                                    )*/}
 
                                 </TableBody>
 
@@ -463,8 +478,14 @@ class EnhancedTable extends React.Component {
                         </div>
                         }
                     </Grid>
+                    <Grid item xs={12}>
+                        {
+                            filterData && filterData.length==0 &&
+                            <MensajeNoRegistros/>
+                        }
+                    </Grid>
                     <Grid item xs={12} className={classes.item}>
-                        {filterData.length > 0 &&
+                        {filterData && filterData.length > 0 &&
                         <Typography variant="caption" style={{wordBreak: 'break-all'}}>Fuente:
                             https://reniresp.funcionpublica.gob.mx/ppcapf/consulta/informacion.jsf </Typography>
                         }

@@ -94,8 +94,7 @@ const styles = theme => ({
 class DetalleServidor extends React.Component {
     state = {
         open: false,
-        id: 0,
-
+        id: 0
     };
 
     openPoper = () => {

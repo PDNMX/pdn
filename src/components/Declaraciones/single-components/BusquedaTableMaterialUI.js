@@ -5,19 +5,33 @@
   //
   ////////////////////////////////////////////////////////////////////////////////
 */
-import React, {Component}  from "react";
+import React, { Component } from "react";
 // import {Typography} from '@material-ui/core';
-import { withStyles, Table, TableBody, TableCell, TableHead, TableRow, TableFooter, TablePagination } from '@material-ui/core';
+import {
+  withStyles,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  TableFooter,
+  TablePagination
+} from "@material-ui/core";
 
-let uniqid = require('uniqid');
+import { Link } from "react-router-dom";
 
+let uniqid = require("uniqid");
 
 const styles = {
-  th : {
-    background : "grey",
-    color : "white",
-    fontSize : "1em",
+  th: {
+    background: "grey",
+    color: "white",
+    fontSize: "1em",
     textTransform: "uppercase"
+  },
+  link: {
+    textDecoration: "none",
+    color: "inherit"
   }
 };
 
@@ -28,34 +42,52 @@ const styles = {
   //
   ////////////////////////////////////////////////////////////////////////////////
 */
-class BusquedaTableMaterialUI extends Component{
-
-  constructor(){
+class BusquedaTableMaterialUI extends Component {
+  constructor() {
     super();
 
     this.changePage = this.changePage.bind(this);
   }
 
-	render(){
-		return(
-			<div>
-				<Table>
+  render() {
+    let { classes } = this.props;
+    return (
+      <div>
+        <Table>
           <TableHead>
             <TableRow>
               <TableCell className={this.props.classes.th}> nombre</TableCell>
-              <TableCell className={this.props.classes.th}>oficina</TableCell>
+              <TableCell className={this.props.classes.th}>
+                insitución
+              </TableCell>
               <TableCell className={this.props.classes.th}>cargo</TableCell>
               <TableCell className={this.props.classes.th}>estado</TableCell>
               <TableCell className={this.props.classes.th}>municipio</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {this.props.results.map( compa => 
+            {this.props.results.map(compa => (
               <TableRow key={uniqid()}>
                 <TableCell>
-                  <a href={`${process.env.PUBLIC_URL}/declaraciones/perfil/${compa._id}/informacion`}>
-                    {compa.informacion_personal.informacion_general.nombres} {compa.informacion_personal.informacion_general.primer_apellido}  {compa.informacion_personal.informacion_general.segundo_apellido}
-                  </a>
+                  {/* <a
+                    href={`${process.env.PUBLIC_URL}/declaraciones/perfil/${
+                      compa._id
+                    }/informacion`}
+                  /> */}
+                  <Link
+                    to={`declaraciones/perfil/${compa._id}/informacion`}
+                    className={classes.link}
+                  >
+                    {compa.informacion_personal.informacion_general.nombres}{" "}
+                    {
+                      compa.informacion_personal.informacion_general
+                        .primer_apellido
+                    }{" "}
+                    {
+                      compa.informacion_personal.informacion_general
+                        .segundo_apellido
+                    }
+                  </Link>
                 </TableCell>
 
                 <TableCell>
@@ -63,18 +95,27 @@ class BusquedaTableMaterialUI extends Component{
                 </TableCell>
 
                 <TableCell>
-                  {compa.informacion_personal.datos_encargo_actual.empleo_cargo_comision}
+                  {
+                    compa.informacion_personal.datos_encargo_actual
+                      .empleo_cargo_comision
+                  }
                 </TableCell>
 
                 <TableCell>
-                  {compa.informacion_personal.datos_encargo_actual.direccion_encargo.entidad_federativa.nom_ent}
+                  {
+                    compa.informacion_personal.datos_encargo_actual
+                      .direccion_encargo.entidad_federativa.nom_ent
+                  }
                 </TableCell>
 
                 <TableCell>
-                  {compa.informacion_personal.datos_encargo_actual.direccion_encargo.municipio.nom_mun}
+                  {
+                    compa.informacion_personal.datos_encargo_actual
+                      .direccion_encargo.municipio.nom_mun
+                  }
                 </TableCell>
               </TableRow>
-            )}
+            ))}
           </TableBody>
           <TableFooter>
             <TableRow>
@@ -85,15 +126,15 @@ class BusquedaTableMaterialUI extends Component{
                 page={this.props.page}
                 rowsPerPageOptions={[]}
                 onChangePage={this.changePage}
-               />
+              />
             </TableRow>
           </TableFooter>
-				</Table>
-			</div>
-		);
-	}
+        </Table>
+      </div>
+    );
+  }
 
-  changePage(e, page){
+  changePage(e, page) {
     this.props.search(page);
   }
 }

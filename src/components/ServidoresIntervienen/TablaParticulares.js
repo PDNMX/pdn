@@ -4,11 +4,10 @@ import {withStyles} from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
-import TableFooter from '@material-ui/core/TableFooter';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
+import TableFooter from '@material-ui/core/TableFooter';
 import Toolbar from '@material-ui/core/Toolbar';
-import rp from "request-promise";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import BajarCSV from "../Tablas/BajarCSV";
 import BusquedaParticular from "./BusquedaParticular";
@@ -17,28 +16,9 @@ import Grid from "@material-ui/core/Grid/Grid";
 import EnhancedTableHead from '../Tablas/EnhancedTableHead';
 import {Typography} from "@material-ui/core"
 import Modal from "@material-ui/core/Modal/Modal";
-
-let counter = 0;
-
-let createData = (item) => {
-    counter += 1;
-    let leyenda = "NO EXISTE DATO EN LA BASE DE DATOS SFP";
-    return {
-        id: counter,
-        proveedor: item.proveedor_o_contratista ? item.proveedor_o_contratista : leyenda,
-        dependencia: item.dependencia ? item.dependencia : leyenda,
-        expediente: item.numero_de_expediente ? item.numero_de_expediente : leyenda,
-        hechos: item.hechos_de_la_irregularidad ? item.hechos_de_la_irregularidad : leyenda,
-        objetoSocial: item.objeto_social ? item.objeto_social : leyenda,
-        sentidoResolucion: item.sentido_de_resolucion ? item.sentido_de_resolucion : leyenda,
-        fechaNotificacion: item.fecha_de_notificacion ? item.fecha_de_notificacion : leyenda,
-        fechaResolucion: item.fecha_de_resolucion ? item.fecha_de_resolucion : leyenda,
-        plazo: item.plazo ? item.plazo : leyenda,
-        monto: item.monto ? item.monto : leyenda,
-        responsableInformacion: item.nombre_del_responsable_de_la_informacion ? item.nombre_del_responsable_de_la_informacion : leyenda,
-        fechaActualizacion: item.fecha_de_actualizacion ? item.fecha_de_actualizacion : leyenda
-    };
-};
+import rp from "request-promise";
+import MensajeNoRegistros from "../Tablas/MensajeNoRegistros";
+import MensajeErrorDatos from "../Tablas/MensajeErrorDatos";
 
 function getSorting(order, orderBy) {
     return order === 'desc'
@@ -111,16 +91,11 @@ const columnData = [
 
 const styles = theme => ({
     root: {
-        width: '100%',
-        marginTop: theme.spacing(3),
-    },
-    container: {
         marginTop: '30px',
         marginBottom: '30px',
-        overflowX : 'auto'
     },
     tableWrapper: {
-        //overflowX: 'auto',
+        overflowX: 'auto',
     },
     tableFooter: {
         display: 'flow-root',
@@ -134,22 +109,31 @@ const styles = theme => ({
         top: 0,
         bottom: 0
     },
+
     section: {
         maxWidth: '1200px',
-        //overflowX: 'auto'
     },
     table: {
         tableLayout: 'fixed',
     },
+    tablePagination: {
+        overflowX: 'auto',
+        fontSize: '0.75rem'
+    },
     gridTable: {
         marginBottom: '27px'
     },
-    desc:{
-        color : theme.palette.primary.dark,
+    desc: {
+        color: theme.palette.primary.dark,
     },
-    item:{
+    item: {
         padding: theme.spacing(1)
-    }
+    },
+    container: {
+        marginTop: '30px',
+        marginBottom: '30px',
+        overflowX: 'auto',
+    },
 });
 
 
@@ -191,13 +175,14 @@ const toolbarStyles = theme => ({
 
 
 let EnhancedTableToolbar = props => {
-    const {classes, handleChangeCampo, nombreParticular, institucion,handleSearch,handleCleanAll} = props;
+    const {classes, handleChangeCampo, nombreParticular, numeroExpediente, institucion, handleCleanAll, handleSearch} = props;
     return (
         <Toolbar className={classes.toolBarStyle}>
             <BusquedaParticular handleCleanAll={handleCleanAll} handleSearch={handleSearch}
-                                handleChangeCampo={handleChangeCampo}
-                                nombreParticular={nombreParticular}
+                                handleChangeCampo={handleChangeCampo} nombreParticular={nombreParticular}
+                                numeroExpediente={numeroExpediente}
                                 institucion={institucion}/>
+
         </Toolbar>
     );
 };
@@ -210,7 +195,8 @@ EnhancedTableToolbar = withStyles(toolbarStyles)(EnhancedTableToolbar);
 
 
 class EnhancedTable extends React.Component {
-constructor(props) {
+
+    constructor(props) {
         super(props);
         this.child = React.createRef();
         this.btnDownloadAll = React.createRef();
@@ -219,8 +205,9 @@ constructor(props) {
             orderBy: 'proveedor',
             selected: [],
             nombreParticular: '',
+            numeroExpediente: '',
             data: [],
-            filterData: [],
+            filterData: null,
             page: 0,
             rowsPerPage: 10,
             open: false,
@@ -228,7 +215,8 @@ constructor(props) {
             institucion: '',
             loading: false,
             totalRows: 0,
-            filterDataAll: []
+            filterDataAll: [],
+            error : false
         };
     }
 
@@ -273,63 +261,51 @@ constructor(props) {
 
     isSelected = id => this.state.selected.indexOf(id) !== -1;
 
-    getTotalRows = (params) => {
-        let options = {
-            uri: 'https://plataformadigitalnacional.org/api/proveedores_sancionados?sentido_de_resolucion=like.*INHABILITACI%C3%93N*&&select=count=eq.exact',
-            json: true,
-            qs: params,
-        };
-        rp(options)
-            .then(data => {
-                this.setState({totalRows: data[0].count, loading: false});
-            }).catch(err => {
-            this.setState({loading: false});
-            alert("_No se pudó obtener la información");
-            console.log(err);
-        });
-    };
     handleSearchAPI = (typeSearch) => {
+        let {institucion, nombreParticular, numeroExpediente} = this.state;
         this.setState({loading: true});
-        let {institucion, nombreParticular} = this.state;
-        const URI = 'https://plataformadigitalnacional.org/api/proveedores_sancionados?sentido_de_resolucion=like.*INHABILITACIÓN*&&';
-
-        let params = {};
-
+        let filtros = {};
+        let offset = 0;
         if (typeSearch !== 'ALL') {
-            if(institucion)params.dependencia = 'eq.' + institucion;
-            if(nombreParticular) params.proveedor_o_contratista = 'like.*' + nombreParticular.toUpperCase() + '*';
-            if(typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') params.limit = this.state.rowsPerPage;
-            if(typeSearch === 'CHANGE_PAGE')  params.offset = (this.state.rowsPerPage * this.state.page);
-            if(typeSearch === 'FIELD_FILTER')  this.getTotalRows(params);
+            if (nombreParticular) filtros.nombre_razon_social = '%' + nombreParticular + '%';
+            if (numeroExpediente) filtros.numero_expediente = '%' + numeroExpediente + '%';
+            if (institucion && institucion!== 'TODAS') filtros.nombre = '%' + institucion + '%';
+            filtros.cve_tipo_sancion =["I"];
         }
 
+        if (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') offset = (this.state.rowsPerPage * this.state.page);
+        let limit = (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.state.rowsPerPage : null;
+
+        let body = {
+            "filtros": filtros,
+            "limit" : limit,
+            "offset" : offset
+        };
         let options = {
-            uri: URI,
+            method : 'POST',
+            uri: process.env.REACT_APP_HOST_PDNBACK+'/apis/getParticularesSancionados',
             json: true,
-            qs: params,
+            body: typeSearch==='ALL'?{}:body
         };
         rp(options)
-            .then(data => {
-                let dataAux = data.map(item => {
-                    return createData(item);
-                });
+            .then(res => {
+                let dataAux = res.data;
+                let total = res.totalRows;
                 typeSearch === 'ALL' ? this.setState({data: dataAux, loading: false}, () => {
                     this.btnDownloadAll.triggerDown();
                 }) : (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.setState({
                         filterData: dataAux,
-                        loading: false
+                        loading: false,
+                        totalRows : total
                     }) :
-                    this.setState({filterDataAll: dataAux, loading: false}, () => {
+                    this.setState({filterDataAll: dataAux, loading: false, totalRows : total}, () => {
                         this.child.triggerDown();
                     });
-                return true;
-            })
-            .catch(err => {
-                this.setState({loading: false});
-                alert("_No se pudó obtener la información");
-                console.log(err);
-            });
-
+            }).catch(err => {
+            this.setState({loading: false});
+            alert("_No se puedó obtener la información");
+            console.log(err);
+        });
     };
 
     handleChangeCampo = (varState, event) => {
@@ -347,20 +323,26 @@ constructor(props) {
             })
     };
 
+
     render() {
         const {classes} = this.props;
         const {data, order, orderBy, selected, rowsPerPage, page, filterData, totalRows, filterDataAll} = this.state;
-        const emptyRows = rowsPerPage - filterData.length;
+        const emptyRows = rowsPerPage - (filterData?filterData.length:0);
         return (
             <div>
                 <Grid container justify='center' spacing={0} className={classes.gridTable}>
                     <Grid item xs={12}>
                         <EnhancedTableToolbar handleChangeCampo={this.handleChangeCampo}
-                                              nombreParticular={this.state.nombreParticular}
-                                              institucion={this.state.institucion}
                                               handleCleanAll={this.handleCleanAll}
                                               handleSearch={this.handleSearchAPI}
-                        />
+                                              nombreParticular={this.state.nombreParticular}
+                                              numeroExpediente={this.state.numeroExpediente}
+                                              institucion={this.state.institucion}/>
+                    </Grid>
+                    <Grid item xs={12}>
+                        {this.state.error &&
+                            <MensajeErrorDatos/>
+                        }
                     </Grid>
                     <Grid item xs={12}>
                         <DetalleParticular handleClose={this.handleClose} particular={this.state.elementoSeleccionado}
@@ -375,16 +357,17 @@ constructor(props) {
                             >
                                 <CircularProgress className={classes.progress} id="spinnerLoading" size={200}/>
                             </Modal>
+
                         }
                     </Grid>
                     <Grid item xs={12}>
-                        {filterData.length > 0 &&
-                        <Typography variant={"h6"} className={classes.desc}>Pulsa sobre el registro para ver su
+                        {filterData && filterData.length > 0 &&
+                        <Typography variant="h6" className={classes.desc}>Pulsa sobre el registro para ver su
                             detalle<br/></Typography>
                         }
                     </Grid>
-                    <Grid item xs={12} >
-                        {filterData.length > 0 &&
+                    <Grid item xs={12}>
+                        {filterData && filterData.length > 0 &&
                         <div className={classes.container}>
                             <Table aria-describedby="spinnerLoading"
                                    aria-busy={this.state.loading} aria-labelledby="tableTitle">
@@ -412,19 +395,23 @@ constructor(props) {
                                                     key={n.id}
                                                     selected={isSelected}
                                                 >
-                                                    <TableCell component="th" scope="row" style={{width:'25%'}}
-                                                               padding="default">{n.proveedor}</TableCell>
-                                                    <TableCell>{n.dependencia}</TableCell>
-                                                    <TableCell>{n.expediente}</TableCell>
-                                                    <TableCell>{n.sentidoResolucion}</TableCell>
+                                                    <TableCell component="th" scope="row" style={{width: '25%'}}
+                                                               padding="default">{n.nombre_razon_social}</TableCell>
+                                                    <TableCell>{n.institucion_dependencia.nombre}</TableCell>
+                                                    <TableCell>{n.numero_expediente}</TableCell>
+                                                    <TableCell>{n.resolucion.sentido}</TableCell>
                                                 </TableRow>
                                             );
                                         })}
-                                    {emptyRows > 0 && (
+                                    {
+                                        /*
+                                        emptyRows > 0 && (
                                         <TableRow style={{height: 49 * emptyRows}}>
                                             <TableCell colSpan={4}/>
                                         </TableRow>
-                                    )}
+                                    )
+                                    */
+                                    }
                                 </TableBody>
 
                                 <TableFooter>
@@ -433,15 +420,16 @@ constructor(props) {
                                             <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data}
                                                       filtrado={false}
                                                       columnas={columnData} fnSearch={this.handleSearchAPI}
-                                                      fileName={'Particulares inhabilitados'}/>
+                                                      fileName={'Particulares sancionados'}/>
                                         </TableCell>
                                         <TableCell>
                                             <BajarCSV innerRef={comp => this.child = comp} data={filterDataAll}
                                                       filtrado={true}
                                                       columnas={columnData} fnSearch={this.handleSearchAPI}
-                                                      fileName={'Particulares inhabilitados'}/>
+                                                      fileName={'Particulares sancionados'}/>
                                         </TableCell>
                                         <TablePagination
+                                            className={classes.tablePagination}
                                             colSpan={2}
                                             count={totalRows}
                                             rowsPerPage={rowsPerPage}
@@ -459,21 +447,26 @@ constructor(props) {
                                                 return `${from}-${to} de ${count}`;
                                             }}
                                         />
-
                                     </TableRow>
                                 </TableFooter>
-
                             </Table>
                         </div>
                         }
+
+                    </Grid>
+                    <Grid item xs={12}>
+                        {
+                            filterData && filterData.length==0 &&
+                                <MensajeNoRegistros/>
+                        }
                     </Grid>
                     <Grid item xs={12} className={classes.item}>
-                        {filterData.length > 0 &&
+                        {filterData && filterData.length > 0 &&
                         <Typography variant={"caption"} style={{fontStyle: 'italic'}}>Fuente:
                             https://datos.gob.mx/busca/dataset/proveedores-y-contratistas-sancionados</Typography>
                         }
-                    </Grid>
 
+                    </Grid>
                 </Grid>
             </div>
         );
