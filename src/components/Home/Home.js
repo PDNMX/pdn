@@ -11,6 +11,7 @@ import Banner from "../VideoBanner/VideoBanner";
 import AlertDialog from "./AlertDialog";
 
 import BarraFea from "./BarraFea";
+import BlogPosts from "./BlogPosts/BlogPosts";
 
 const styles = theme => ({
     root: {
@@ -44,6 +45,11 @@ class Home extends React.Component{
                         </Grid>
                     </Grid>
 
+                    <Grid container spacing={0} justify="center">
+                        <Grid item xs={12} className={classes.item}>
+                            <BlogPosts/>
+                        </Grid>
+                    </Grid>
                     <Grid container spacing={0} justify="center">
                         <Grid item xs={12} className={classes.item}>
                            <QueEsLaPDN/>
