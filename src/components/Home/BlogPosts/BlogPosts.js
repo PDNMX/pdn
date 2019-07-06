@@ -66,7 +66,7 @@ class BlogPosts extends React.Component{
                         this.state.posts.length === 0?
                             <Typography>Blog no disponible :(</Typography>:
                             this.state.posts.map((p,i) => (
-                                <Grid item xs={12} sm={12} md={6} lg={6} xl={4} key={i}>
+                                <Grid item xs={12} sm={12} md={6} lg={6} xl={4} key={i} align="center">
                                     <ImgMediaCard post={p}/>
                                 </Grid>
                             ))
