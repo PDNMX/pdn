@@ -4,7 +4,6 @@ import Grid from '@material-ui/core/Grid';
 import {withStyles} from '@material-ui/core/styles';
 import Explora from './Explora';
 import Sistemas from './Sistemas';
-import QueEsLaPDN from './QueEsLaPDN';
 import Footer from './Footer';
 import Bandita from "./Bandita";
 import Banner from "../VideoBanner/VideoBanner";
@@ -48,11 +47,6 @@ class Home extends React.Component{
                     <Grid container spacing={0} justify="center">
                         <Grid item xs={12} className={classes.item}>
                             <BlogPosts/>
-                        </Grid>
-                    </Grid>
-                    <Grid container spacing={0} justify="center">
-                        <Grid item xs={12} className={classes.item}>
-                           <QueEsLaPDN/>
                         </Grid>
                     </Grid>
 
