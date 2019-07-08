@@ -12,6 +12,7 @@ import img3 from "../../assets/img/servidores_visualizaciones.svg";
 import Header from './Header/Header';
 import classNames from 'classnames';
 import Dashboard from "./Dashboard/Dashboard";
+import ScrollToTopButton from "../Navigation/ScrollToTopButton";
 
 const styles = theme => ({
     root: {
@@ -23,10 +24,10 @@ const styles = theme => ({
     bgPanelTable: {
         backgroundColor: theme.palette.white.color,
         [theme.breakpoints.up('sm')]: {
-            marginBottom: theme.spacing(30),
+            marginBottom: theme.spacing(7),
         },
         [theme.breakpoints.down('sm')]: {
-            marginBottom: theme.spacing(10),
+            marginBottom: theme.spacing(4),
         },
 
     },
@@ -35,7 +36,7 @@ const styles = theme => ({
     },
     sectionT: {
         maxWidth: '1200px',
-        overflowX : 'auto',
+        //overflowX: 'auto',
         color: theme.palette.textGrey.color
     },
     image: {
@@ -96,13 +97,13 @@ class Index extends React.Component {
                         <Grid container spacing={0}>
                             <Grid item md={4} xs={12}
                                   onClick={() => this.changeContent(3)}
-                                  className= {classNames (this.state.idContent !== 3 ? classes.card : classes.cardSeleccionada, 'tab')}>
+                                  className={classNames(this.state.idContent !== 3 ? classes.card : classes.cardSeleccionada, 'tab')}>
 
                                 <figure className={classes.figure}>
                                     <img src={img3} alt="Visor de datos" className={classes.image}/>
                                 </figure>
-                                <Typography variant= "subtitle1"
-                                            style={{fontWeight: this.state.idContent === 3? 500: 300}}
+                                <Typography variant="subtitle1"
+                                            style={{fontWeight: this.state.idContent === 3 ? 500 : 300}}
                                             className={classes.whiteText}>
                                     Visor de datos
                                 </Typography>
@@ -114,10 +115,10 @@ class Index extends React.Component {
 
                                 <figure className={classes.figure}>
                                     <img src={img1} alt="Servidores que intervinen en procesos de contratacion"
-                                         className={classes.image} />
+                                         className={classes.image}/>
                                 </figure>
                                 <Typography variant="subtitle1" className={classes.whiteText}
-                                            style={{fontWeight: this.state.idContent === 1 ? 500: 300}}
+                                            style={{fontWeight: this.state.idContent === 1 ? 500 : 300}}
                                 >
                                     Buscador de Servidores que intervienen en procesos de contratación
                                 </Typography>
@@ -126,22 +127,19 @@ class Index extends React.Component {
 
                             <Grid item md={4} xs={12}
                                   onClick={() => this.changeContent(2)}
-                                  className={ classNames(this.state.idContent !== 2 ? classes.card : classes.cardSeleccionada, 'tab')}>
+                                  className={classNames(this.state.idContent !== 2 ? classes.card : classes.cardSeleccionada, 'tab')}>
 
                                 <figure className={classes.figure}>
-                                <img src={img2} alt="Particulares inhabilitados" className={classes.image}/>
+                                    <img src={img2} alt="Particulares inhabilitados" className={classes.image}/>
                                 </figure>
-                                <Typography variant="subtitle1" style={{fontWeight: this.state.idContent === 2 ? 500: 300}}
+                                <Typography variant="subtitle1"
+                                            style={{fontWeight: this.state.idContent === 2 ? 500 : 300}}
                                             className={classes.whiteText}>
 
                                     Buscador de Particulares inhabilitados
                                 </Typography>
 
                             </Grid>
-
-
-
-
                         </Grid>
                     </Grid>
 
@@ -150,17 +148,18 @@ class Index extends React.Component {
                 <Grid container justify='center' spacing={0} className={classes.bgPanelTable}>
                     <Grid item xs={12} className={classes.sectionT}>
                         {this.state.idContent === 1 &&
-                            <TablaServidores/>
+                        <TablaServidores/>
                         }
                         {this.state.idContent === 2 &&
-                            <TablaParticulares/>
+                        <TablaParticulares/>
                         }
                         {this.state.idContent === 3 &&
-                            <Dashboard/>
+                        <Dashboard/>
                         }
                     </Grid>
                 </Grid>
                 <Footer/>
+                <ScrollToTopButton/>
             </div>
         );
     }

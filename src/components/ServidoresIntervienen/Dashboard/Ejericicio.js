@@ -24,11 +24,13 @@ const styles = theme => ({
         marginTop: "15px",
         paddingLeft: "10px",
         paddingRight: "10px",
-        marginBottom: "30px"
+        marginBottom: "30px",
+
     },
     btnDownload: {
         textAlign: "right"
-    }
+    },
+
 });
 
 
@@ -134,7 +136,7 @@ class Ejercicio extends React.Component {
                         </Typography>
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>
-                        <Typography>
+                        <Typography variant={"body1"}>
                             En esté primer acercamiento, se muestra la información con que se cuenta, correspondiente a
                             periodos fiscales entre los años 2015 a la fecha.<br/>
                             Como se aprecía en la gráfica, hay un ligero crecimiento en el número de registros de

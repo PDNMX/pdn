@@ -39,7 +39,8 @@ const styles = theme => ({
     },
     buttonContainer:{
         textAlign : "center"
-    }
+    },
+
 });
 
 
@@ -252,7 +253,7 @@ class Agrupaciones extends React.Component {
                             </Typography>
                         </Grid>
                         <Grid item xs={12} className={classes.descripcion}>
-                            <Typography>
+                            <Typography variant={"body1"}>
                                 En esta sección podrás interactuar con diferentes variables como : Ejericio fiscal, Ramo, Institución. De acuerdo a los filtros que selecciones,
                                 podrás obtener 5 diferentes gráficas que mostrarán lo siguiente:<br/><br/>
                                 1.- <b>Ejercicio:</b> seleccionando únicamente el Ejercicio, te mostrará los el total de funcionaros que intervinieron en procesos de contratación en cada uno de ellos<br/>

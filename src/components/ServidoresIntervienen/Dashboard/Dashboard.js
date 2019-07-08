@@ -26,7 +26,8 @@ const styles = theme => ({
         marginTop: "53px"
     },
     desc: {
-        marginBottom: "15px"
+        marginBottom: "15px",
+
     }
 });
 
@@ -36,7 +37,7 @@ class Dashboard extends React.Component {
         return (
             <div className={classes.root}>
 
-                <Grid container spacing={0} justify='center' className={classes.bgPanelTable}>
+                <Grid container spacing={0} justify='center' >
                     <Grid item xs={12} className={classes.sectionT}>
                         <Typography variant={"h6"}>
                             <b>¿Qué información es?</b>
@@ -80,12 +81,7 @@ class Dashboard extends React.Component {
                     <Grid item xs={12}  id={"g2"}>
                         <Agrupaciones/>
                     </Grid>
-                    <Grid item xs={12} className={classes.sectionT} id={"g3"}>
 
-                    </Grid>
-                    <Grid item xs={12} className={classes.sectionT} id={"g4"}>
-
-                    </Grid>
                     {
                         /*
                         <Grid item xs={12} className={classes.sectionT}>

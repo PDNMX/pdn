@@ -276,8 +276,8 @@ class EnhancedTable extends React.Component {
             let offset = 1;
 
             if (typeSearch !== 'ALL') {
-                //if(procedimiento && procedimiento > 0 ) params.id_procedimiento = 'eq.' + procedimiento;
-                if (institucion && institucion!== 'TODAS') filtros.institucion = '%' + institucion + '%';
+                if(procedimiento && procedimiento > 0 ) filtros.tipo_actos = procedimiento;
+                if (institucion) filtros.institucion = '%' + institucion + '%';
                 if (nombreServidor) filtros.nombres = '%' + nombreServidor.toUpperCase() + '%';
                 if (apellidoUno) filtros.primer_apellido = '%' + apellidoUno.toUpperCase() + '%';
                 if (apellidoDos) filtros.segundo_apellido = '%' + apellidoDos.toUpperCase() + '%';
