@@ -13,6 +13,7 @@ import Header from './Header/Header';
 import Dashboard from "./dashboard/Servidores/Dashboard";
 import Dashboard2 from "./dashboard/Particulares/Dashboard";
 import classNames from 'classnames';
+import ScrollToTopButton from "../Navigation/ScrollToTopButton";
 
 const styles = theme => ({
     root: {
@@ -172,6 +173,7 @@ class Index extends React.Component {
                         }
                     </Grid>
                 </Grid>
+                <ScrollToTopButton/>
                 < Footer/>
             </div>
         );

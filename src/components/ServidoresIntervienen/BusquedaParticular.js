@@ -71,11 +71,10 @@ const styles = theme => ({
         justifyContent: 'center',
         alignItems: 'center'
     },
-    inputShrink:{
-        transform : `scale(1)`
+    inputShrink: {
+        transform: `scale(1)`
     }
 });
-
 
 
 class BusquedaParticular extends React.Component {
@@ -84,8 +83,7 @@ class BusquedaParticular extends React.Component {
     };
 
     componentDidMount() {
-        let sug = [ {value : null ,label:'TODAS'}];
-        let id = 0;
+        let sug = [{value: null, label: 'TODAS'}];
 
         let options = {
             uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/getDependenciasParticulares',
@@ -99,8 +97,7 @@ class BusquedaParticular extends React.Component {
                 });
                 this.setState({suggestions: sug});
             }).catch(err => {
-            alert("_No se pudo obtener la información");
-            console.log(err);
+            this.props.handleError(true);
         });
 
 
@@ -125,7 +122,8 @@ class BusquedaParticular extends React.Component {
                 <Grid item md={6} xs={12}>
                     <FormControl className={classes.formControl}>
                         <InputLabel htmlFor={'campoSelectInstitucion'}>Institución</InputLabel>
-                        <Select style={{marginTop:'0px'}}value={institucion} onChange={(e) => handleChangeCampo('institucion', e)} inputProps={{
+                        <Select style={{marginTop: '0px'}} value={institucion}
+                                onChange={(e) => handleChangeCampo('institucion', e)} inputProps={{
                             name: 'campoSelectInstitucion',
                             id: 'campoSelectInstitucion',
                         }}

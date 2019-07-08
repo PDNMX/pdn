@@ -71,9 +71,6 @@ class Dashboard extends React.Component {
                     <Grid item xs={12} className={classes.sectionT} id={"g3"}>
                         <DependenciasSanciones/>
                     </Grid>
-                    <Grid item xs={12} className={classes.sectionT}>
-
-                    </Grid>
                     {
                         /*
                         <Grid item xs={12} className={classes.sectionT}>

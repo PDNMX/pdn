@@ -48,13 +48,13 @@ const styles = theme => ({
     },
     singleValue: {
         color: theme.palette.black.color,
-        width : 'auto',
-        overflow : 'hidden',
-        textOverflow : 'ellipsis',
-        whiteSpace : 'nowrap'
+        width: 'auto',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap'
     },
     placeholder: {
-        fontSize : 16,
+        fontSize: 16,
         color: theme.palette.black.color
     },
     paper: {
@@ -68,13 +68,13 @@ const styles = theme => ({
     labelCustom: {
         color: theme.palette.black.color,
     },
-    centrado:{
+    centrado: {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center'
     },
-    inputShrink:{
-        transform : `scale(1)`
+    inputShrink: {
+        transform: `scale(1)`
     }
 });
 
@@ -84,32 +84,32 @@ class BusquedaServidor extends React.Component {
     };
 
     componentDidMount() {
-        let sug = [ {value : 'TODAS' ,label:'TODAS'}];
+        let sug = [{value: null, label: 'TODAS'}];
         let options = {
-            uri: process.env.REACT_APP_HOST_PDNBACK+'/apis/getDependenciasServidores',
+            uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/getDependenciasServidores',
             json: true,
             method: "GET"
         };
         rp(options)
             .then(data => {
-                data.data.forEach(item =>{
+                data.data.forEach(item => {
                     sug.push({value: item, label: item});
                 });
                 this.setState({suggestions: sug});
             }).catch(err => {
-            alert("_No se puedó obtener la información");
-            console.log(err);
+            this.props.handleError(true);
         });
     }
 
-    limpiarBusqueda = ()=>{
+    limpiarBusqueda = () => {
         this.props.handleCleanAll();
     };
     buscar = () => {
         this.props.handleSearch('FIELD_FILTER');
     };
+
     render() {
-        const {classes, handleChangeCampo, nombreServidor, apellidoUno, apellidoDos, rfc,curp,institucion, theme} = this.props;
+        const {classes, handleChangeCampo, nombreServidor, apellidoUno, apellidoDos, rfc, curp, institucion, theme} = this.props;
         const selectStyles = {
             input: base => ({
                 ...base,
@@ -118,7 +118,7 @@ class BusquedaServidor extends React.Component {
                     color: theme.palette.fontLight.color,
                 }
             }),
-            placeholder : base => ({
+            placeholder: base => ({
                 ...base,
                 fontSize: '1em',
                 fontWeight: 400
@@ -137,9 +137,9 @@ class BusquedaServidor extends React.Component {
                             type="search"
                             onChange={(e) => handleChangeCampo('rfc', e)}
                             value={rfc}
-                            InputLabelProps = {{
+                            InputLabelProps={{
                                 className: classes.inputShrink,
-                                shrink : true
+                                shrink: true
                             }}
                         />
 
@@ -153,9 +153,9 @@ class BusquedaServidor extends React.Component {
                             type="search"
                             onChange={(e) => handleChangeCampo('curp', e)}
                             value={curp}
-                            InputLabelProps = {{
+                            InputLabelProps={{
                                 className: classes.inputShrink,
-                                shrink : true
+                                shrink: true
                             }}
                         />
 
@@ -164,11 +164,12 @@ class BusquedaServidor extends React.Component {
                 <Grid item xs={12} md={6}>
                     <FormControl className={classes.formControl}>
                         <InputLabel htmlFor={'campoSelectInstitucion'}>Institución</InputLabel>
-                        <Select style={{marginTop:'0px'}} value={institucion} onChange={(e) => handleChangeCampo('institucion', e)}
+                        <Select style={{marginTop: '0px'}} value={institucion}
+                                onChange={(e) => handleChangeCampo('institucion', e)}
                                 inputProps={{
-                            name: 'campoSelectInstitucion',
-                            id: 'campoSelectInstitucion',
-                        }}
+                                    name: 'campoSelectInstitucion',
+                                    id: 'campoSelectInstitucion',
+                                }}
                         >
                             {
                                 this.state.suggestions.map((item => {
@@ -204,9 +205,9 @@ class BusquedaServidor extends React.Component {
                             type="search"
                             onChange={(e) => handleChangeCampo('nombreServidor', e)}
                             value={nombreServidor}
-                            InputLabelProps = {{
+                            InputLabelProps={{
                                 className: classes.inputShrink,
-                                shrink : true
+                                shrink: true
                             }}
                         />
 
@@ -220,9 +221,9 @@ class BusquedaServidor extends React.Component {
                             type="search"
                             onChange={(e) => handleChangeCampo('apellidoUno', e)}
                             value={apellidoUno}
-                            InputLabelProps = {{
+                            InputLabelProps={{
                                 className: classes.inputShrink,
-                                shrink : true
+                                shrink: true
                             }}
                         />
 
@@ -237,9 +238,9 @@ class BusquedaServidor extends React.Component {
                             onChange={(e) => handleChangeCampo('apellidoDos', e)}
                             value={apellidoDos}
                             value={apellidoDos}
-                            InputLabelProps = {{
+                            InputLabelProps={{
                                 className: classes.inputShrink,
-                                shrink : true
+                                shrink: true
                             }}
                         />
 
@@ -253,7 +254,8 @@ class BusquedaServidor extends React.Component {
                     </Button>
                 </Grid>
                 <Grid item xs={12} md={1} className={classes.centrado}>
-                    <Button variant="contained" color="secondary" className={classes.button} onClick={this.limpiarBusqueda}>
+                    <Button variant="contained" color="secondary" className={classes.button}
+                            onClick={this.limpiarBusqueda}>
                         Limpiar
                     </Button>
                 </Grid>

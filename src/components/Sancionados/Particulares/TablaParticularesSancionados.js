@@ -17,6 +17,7 @@ import EnhancedTableHead from '../../Tablas/EnhancedTableHead';
 import {Typography} from "@material-ui/core"
 import Modal from "@material-ui/core/Modal/Modal";
 import rp from "request-promise";
+import MensajeNoRegistros from "../../Tablas/MensajeNoRegistros";
 
 function getSorting(order, orderBy) {
     return order === 'desc'
@@ -205,7 +206,7 @@ class EnhancedTable extends React.Component {
             nombreParticular: '',
             numeroExpediente: '',
             data: [],
-            filterData: [],
+            filterData: null,
             page: 0,
             rowsPerPage: 10,
             open: false,
@@ -313,7 +314,7 @@ class EnhancedTable extends React.Component {
     handleCleanAll = () => {
         this.setState(
             {
-                filterData: []
+                filterData: null
             }, () => {
                 this.handleChangeCampo('nombreParticular');
                 this.handleChangeCampo('institucion');
@@ -324,7 +325,7 @@ class EnhancedTable extends React.Component {
     render() {
         const {classes} = this.props;
         const {data, order, orderBy, selected, rowsPerPage, page, filterData, totalRows, filterDataAll} = this.state;
-        const emptyRows = rowsPerPage - filterData.length;
+        //const emptyRows = rowsPerPage - filterData.length;
         return (
             <div>
                 <Grid container justify='center' spacing={0} className={classes.gridTable}>
@@ -353,13 +354,13 @@ class EnhancedTable extends React.Component {
                         }
                     </Grid>
                     <Grid item xs={12}>
-                        {filterData.length > 0 &&
+                        {filterData && filterData.length > 0 &&
                         <Typography variant="h6" className={classes.desc}>Pulsa sobre el registro para ver su
                             detalle<br/></Typography>
                         }
                     </Grid>
                     <Grid item xs={12}>
-                        {filterData.length > 0 &&
+                        {filterData && filterData.length > 0 &&
                         <div className={classes.container}>
                             <Table aria-describedby="spinnerLoading"
                                    aria-busy={this.state.loading} aria-labelledby="tableTitle">
@@ -442,8 +443,14 @@ class EnhancedTable extends React.Component {
                         }
 
                     </Grid>
+                    <Grid item xs={12}>
+                        {
+                            filterData && filterData.length==0 &&
+                            <MensajeNoRegistros/>
+                        }
+                    </Grid>
                     <Grid item xs={12} className={classes.item}>
-                        {filterData.length > 0 &&
+                        {filterData && filterData.length > 0 &&
                         <Typography variant={"caption"} style={{fontStyle: 'italic'}}>Fuente:
                             https://datos.gob.mx/busca/dataset/proveedores-y-contratistas-sancionados</Typography>
                         }

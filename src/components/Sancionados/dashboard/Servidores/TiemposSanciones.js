@@ -6,6 +6,7 @@ import {Typography} from "@material-ui/core"
 import {BarChart} from "d3plus-react";
 import rp from "request-promise";
 import * as d3plus from "d3plus-export";
+import MensajeErrorDatos from "../../../Tablas/MensajeErrorDatos";
 
 const styles = theme => ({
     frameChart: {
@@ -42,8 +43,7 @@ function aux() {
             .then(data => {
                 resolve(data);
             }).catch(err => {
-            alert("_No se pudo obtener la información");
-            console.log(err);
+            reject(err);
         });
     });
 }
@@ -58,7 +58,9 @@ let color = ["#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
     "#FF5722", "#795548", "#9E9E9E", "#607D8B"];
 
 class TiemposSanciones extends React.Component {
-    state = {};
+    state = {
+        error : false
+    };
 
     componentDidMount() {
         aux().then(result => {
@@ -114,6 +116,8 @@ class TiemposSanciones extends React.Component {
                     }
                 }
             )
+        }).catch(err=>{
+            this.setState({error:true})
         });
     }
 
@@ -145,6 +149,9 @@ class TiemposSanciones extends React.Component {
                         {
                             this.state.methods && this.state.methods.data &&
                             <BarChart config={this.state.methods}/>
+                        }
+                        {
+                            this.state.error && <MensajeErrorDatos/>
                         }
 
                     </Grid>

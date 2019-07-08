@@ -12,6 +12,7 @@ import VerticalGridLines from "react-vis/es/plot/vertical-grid-lines";
 import 'react-vis/dist/style.css';
 import {FlexibleXYPlot} from "react-vis/es";
 import Hint from "react-vis/es/plot/hint";
+import MensajeErrorDatos from "../../../Tablas/MensajeErrorDatos";
 
 const styles = theme => ({
     frameChart: {
@@ -42,8 +43,7 @@ function aux() {
             .then(data => {
                 resolve(data);
             }).catch(err => {
-            alert("_No se pudo obtener la información");
-            console.log(err);
+            reject(err);
         });
     });
 }
@@ -51,12 +51,12 @@ function aux() {
 
 class AnioResolucionSanciones extends React.Component {
     state = {
-        hoveredCell: false
+        hoveredCell: false,
+        error : false,
     };
 
     componentDidMount() {
         aux().then(result => {
-            let total = 0;
             let temp = result.data.slice(1);
             let aux = temp.map(item => {
                 return {
@@ -75,6 +75,8 @@ class AnioResolucionSanciones extends React.Component {
                     }
                 }
             )
+        }).catch(err=>{
+            this.setState({error:true})
         });
     }
 
@@ -146,6 +148,9 @@ class AnioResolucionSanciones extends React.Component {
                                 ) : null}
                             </FlexibleXYPlot>
 
+                        }
+                        {
+                            this.state.error && <MensajeErrorDatos/>
                         }
                     </Grid>
 

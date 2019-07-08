@@ -5,6 +5,7 @@ import Grid from "@material-ui/core/Grid/Grid";
 import {Typography} from "@material-ui/core"
 import {LinePlot, Pie} from "d3plus-react";
 import rp from "request-promise";
+import MensajeErrorDatos from "../../../Tablas/MensajeErrorDatos";
 
 const styles = theme => ({
     frameChart: {
@@ -35,8 +36,8 @@ function aux() {
             .then(data => {
                 resolve(data);
             }).catch(err => {
-            alert("_No se pudo obtener la información");
             console.log(err);
+            reject(err);
         });
     });
 }
@@ -51,7 +52,9 @@ let color = ["#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
     "#FF5722", "#795548", "#9E9E9E", "#607D8B"];
 
 class AnioResolucionSanciones extends React.Component {
-    state = {};
+    state = {
+        error: false,
+    };
 
     componentDidMount() {
         aux().then(result => {
@@ -128,6 +131,8 @@ class AnioResolucionSanciones extends React.Component {
                     }
                 }
             )
+        }).catch(err => {
+            this.setState({error: true})
         });
     }
 
@@ -163,6 +168,13 @@ class AnioResolucionSanciones extends React.Component {
                             <Pie config={this.state.configPie}/>
                         }
                     </Grid>
+                    <Grid item xs={12} md={4}>
+                        {
+                            this.state.error &&
+                            <MensajeErrorDatos/>
+                        }
+                    </Grid>
+
 
 
                 </Grid>

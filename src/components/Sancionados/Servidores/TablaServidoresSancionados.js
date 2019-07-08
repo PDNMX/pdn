@@ -17,6 +17,8 @@ import EnhancedTableHead from '../../Tablas/EnhancedTableHead';
 import {Typography} from "@material-ui/core"
 import Modal from "@material-ui/core/Modal/Modal";
 import rp from "request-promise";
+import MensajeErrorDatos from "../../Tablas/MensajeErrorDatos";
+import MensajeNoRegistros from "../../Tablas/MensajeNoRegistros";
 
 
 
@@ -140,13 +142,13 @@ const toolbarStyles = theme => ({
 
 
 let EnhancedTableToolbar = props => {
-    const {classes, handleChangeCampo, nombreServidor, apellidoUno, apellidoDos, institucion,rfc,curp ,handleSearch, handleCleanAll} = props;
+    const {classes, handleChangeCampo, nombreServidor, apellidoUno, apellidoDos, institucion,rfc,curp ,handleSearch, handleCleanAll,handleError} = props;
     return (
         <Toolbar className={classes.toolBarStyle}>
             <BusquedaServidor handleCleanAll={handleCleanAll} handleSearch={handleSearch}
                               handleChangeCampo={handleChangeCampo}
                               nombreServidor={nombreServidor} apellidoUno={apellidoUno} apellidoDos={apellidoDos}
-                              institucion={institucion} rfc={rfc} curp={curp}/>
+                              institucion={institucion} rfc={rfc} curp={curp} handleError ={handleError} />
         </Toolbar>
     );
 };
@@ -173,7 +175,7 @@ class EnhancedTable extends React.Component {
             rfc : '',
             curp : '',
             data: [],
-            filterData: [],
+            filterData:null,
             page: 0,
             rowsPerPage: 10,
             procedimiento: 0,
@@ -183,11 +185,17 @@ class EnhancedTable extends React.Component {
             loading: false,
             totalRows: 0,
             filterDataAll: [],
+            error : false
 
         };
 
     }
 
+    handleError = (val )=>{
+        this.setState({
+            error : val
+        })
+    }
     handleRequestSort = (event, property) => {
         const orderBy = property;
         let order = 'desc';
@@ -287,7 +295,7 @@ class EnhancedTable extends React.Component {
     handleCleanAll = () => {
         this.setState(
             {
-                filterData: []
+                filterData: null
             }, () => {
                 this.handleChangeCampo('nombreServidor');
                 this.handleChangeCampo('procedimiento');
@@ -300,7 +308,7 @@ class EnhancedTable extends React.Component {
     render() {
         const {classes} = this.props;
         const {data, order, orderBy, selected, rowsPerPage, page, filterData, totalRows, filterDataAll} = this.state;
-        const emptyRows = rowsPerPage - filterData.length;
+      //  const emptyRows = rowsPerPage - filterData.length;
 
         return (
             <div>
@@ -314,7 +322,7 @@ class EnhancedTable extends React.Component {
                                               data={filterData}
                                               columnas={columnData} institucion={this.state.institucion}
                                               apellidoUno={this.state.apellidoUno}
-                                              apellidoDos={this.state.apellidoDos}/>
+                                              apellidoDos={this.state.apellidoDos} handleError = {this.handleError}/>
                     </Grid>
                     <Grid item xs={12}>
                         <DetalleServidorSancionado handleClose={this.handleClose}
@@ -332,16 +340,19 @@ class EnhancedTable extends React.Component {
                             </Modal>
 
                         }
+                        {
+                            this.state.error && <MensajeErrorDatos/>
+                        }
                     </Grid>
                     <Grid item xs={12}>
-                        {filterData.length > 0 &&
+                        {filterData && filterData.length > 0 &&
                         <Typography variant={"h6"} className={classes.desc}>Pulsa sobre el registro para ver su
                             detalle<br/></Typography>
                         }
 
                     </Grid>
                     <Grid item xs={12}>
-                        {filterData.length > 0 &&
+                        {filterData && filterData.length > 0 &&
                         <div className={classes.container}>
                             <Table aria-describedby="spinnerLoading" id={'tableServidores'}
                                    aria-busy={this.state.loading} aria-labelledby="tableTitle">
@@ -430,8 +441,14 @@ class EnhancedTable extends React.Component {
                         }
 
                     </Grid>
+                    <Grid item xs={12}>
+                        {
+                            filterData && filterData.length==0 &&
+                            <MensajeNoRegistros/>
+                        }
+                    </Grid>
                     <Grid item xs={12} className={classes.item}>
-                        {filterData.length > 0 &&
+                        {filterData && filterData.length > 0 &&
                         <Typography variant="caption" style={{fontStyle: 'italic'}} paragraph>
                             Fuente: https://datos.gob.mx/busca/dataset/servidores-publicos-sancionados
                         </Typography>
