@@ -84,13 +84,11 @@ const styles = theme => ({
 
 class BusquedaServidor extends React.Component {
     state = {
-        dependencias: [],
         suggestions: []
     };
 
     componentDidMount() {
-        let aux = [];
-        let sug = [ {value : 'TODAS' ,label:'TODAS'}];
+        let sug = [ {value : null ,label:'TODAS'}];
         let id = 0;
 
         let options = {
@@ -101,10 +99,9 @@ class BusquedaServidor extends React.Component {
         rp(options)
             .then(data => {
                 data.data.forEach(item => {
-                    aux.push({id: id++, nombre: item})
                     sug.push({value: item, label: item});
                 });
-                this.setState({dependencias:aux, suggestions: sug});
+                this.setState({suggestions: sug});
             }).catch(err => {
                 this.props.handleError(true);
             console.log(err);
@@ -193,7 +190,7 @@ class BusquedaServidor extends React.Component {
 
                 <Grid item xs={12} md={4}>
                     <FormControl className={classes.formControl}>
-                        <InputLabel htmlFor="campoSelectProcedimiento">Categorías</InputLabel>
+                        <InputLabel htmlFor="campoSelectProcedimiento">Procedimiento</InputLabel>
                         <Select style={{marginTop:'0px'}}
                             value={procedimiento}
                             onChange={(e) => handleChangeCampo('procedimiento', e)}
@@ -202,12 +199,13 @@ class BusquedaServidor extends React.Component {
                                 id: 'campoSelectProcedimiento',
                             }}
                         >
-                            <MenuItem value={0}>
-                                Selecciona una
+                            <MenuItem value={null}>
+                                TODOS
                             </MenuItem>
                             <MenuItem value={'CONTRATACIONES'}>CONTRATACIONES</MenuItem>
                             <MenuItem value={'CONCESIONES'}>CONCESIONES</MenuItem>
                             <MenuItem value={'ENAJENACIONES'}>ENAJENACIONES</MenuItem>
+                            <MenuItem value={'DICTAMENES'}>DICTAMENES</MenuItem>
                         </Select>
 
                     </FormControl>

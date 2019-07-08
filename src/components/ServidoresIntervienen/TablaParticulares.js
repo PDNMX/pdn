@@ -269,7 +269,7 @@ class EnhancedTable extends React.Component {
         if (typeSearch !== 'ALL') {
             if (nombreParticular) filtros.nombre_razon_social = '%' + nombreParticular + '%';
             if (numeroExpediente) filtros.numero_expediente = '%' + numeroExpediente + '%';
-            if (institucion && institucion!== 'TODAS') filtros.nombre = '%' + institucion + '%';
+            if (institucion) filtros.nombre = '%' + institucion + '%';
             filtros.cve_tipo_sancion =["I"];
         }
 

@@ -80,13 +80,11 @@ const styles = theme => ({
 
 class BusquedaParticular extends React.Component {
     state = {
-        dependencias: [],
         suggestions: []
     };
 
     componentDidMount() {
-        let aux = [];
-        let sug = [ {value : 'TODAS' ,label:'TODAS'}];
+        let sug = [ {value : null ,label:'TODAS'}];
         let id = 0;
 
         let options = {
@@ -97,10 +95,9 @@ class BusquedaParticular extends React.Component {
         rp(options)
             .then(data => {
                 data.data.forEach(item => {
-                    aux.push({id: id++, nombre: item});
                     sug.push({value: item, label: item});
                 });
-                this.setState({dependencias: aux, suggestions: sug});
+                this.setState({suggestions: sug});
             }).catch(err => {
             alert("_No se pudo obtener la información");
             console.log(err);

@@ -25,15 +25,13 @@ class MensajeErrorDatos extends  React.Component{
 
         return(
             <Grid container>
+                <Grid item xs={12} className={classes.iconContainer}>
+                    <IconProblem className={classes.icon}/>
+                </Grid>
                 <Grid item xs={12}>
-                    <Grid item xs={12} className={classes.iconContainer}>
-                        <IconProblem className={classes.icon}/>
-                    </Grid>
-                    <Grid item xs={12}>
-                        <Typography variant="h6" paragraph className={classes.mensaje}>
-                            <b>Servicio no disponible</b>
-                        </Typography>
-                    </Grid>
+                    <Typography variant="h6" paragraph className={classes.mensaje}>
+                        <b>Servicio no disponible</b>
+                    </Typography>
                 </Grid>
             </Grid>
         )
