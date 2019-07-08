@@ -13,6 +13,7 @@ const styles = theme => ({
     container: {
         padding: theme.spacing(1),
         paddingTop: theme.spacing(6),
+        paddingBottom: theme.spacing(10),
     },
     headingText: {
         color: theme.palette.titleBanner.color,
