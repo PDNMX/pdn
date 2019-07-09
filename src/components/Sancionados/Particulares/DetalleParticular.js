@@ -270,6 +270,25 @@ class DetalleParticular extends React.Component {
                                         }}
                                     />
                                 </Grid>
+                                <Grid item xs={12} >
+                                    <TextField
+                                        id="read-only-input"
+                                        label="Hechos"
+                                        defaultValue={particular.causa_motivo_hechos}
+                                        className={classes.textField}
+                                        margin="normal"
+                                        multiline
+                                        InputProps={{
+                                            readOnly: true,
+                                            className:classes.fontSmall,
+                                            endAdornment: (
+                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(0)}}>
+                                                    <IconHelp/>
+                                                </InputAdornment>
+                                            )
+                                        }}
+                                    />
+                                </Grid>
                                 <Grid item md = {6} xs = {12}>
                                     <TextField
                                         id="read-only-input"
@@ -457,7 +476,9 @@ class DetalleParticular extends React.Component {
                                         }}
                                     />
                                 </Grid>
-                                <Grid item md={6} xs={12}>
+                                {
+                                    /*
+                                     <Grid item md={6} xs={12}>
                                     <TextField
                                         id="read-only-input"
                                         label="Fecha de última actualización"
@@ -475,25 +496,10 @@ class DetalleParticular extends React.Component {
                                         }}
                                     />
                                 </Grid>
-                                <Grid item xs={12} >
-                                    <TextField
-                                        id="read-only-input"
-                                        label="Hechos"
-                                        defaultValue={particular.causa_motivo_hechos}
-                                        className={classes.textField}
-                                        margin="normal"
-                                        multiline
-                                        InputProps={{
-                                            readOnly: true,
-                                            className:classes.fontSmall,
-                                            endAdornment: (
-                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(0)}}>
-                                                    <IconHelp/>
-                                                </InputAdornment>
-                                            )
-                                        }}
-                                    />
-                                </Grid>
+                                     */
+                                }
+
+
 
                                 <Grid item md={6} xs={12} className={classes.centrado}></Grid>
                                 <Grid item md={6} xs={12} className={classes.centrado}>

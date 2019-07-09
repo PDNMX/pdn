@@ -226,7 +226,7 @@ class SentidoResoluciones extends React.Component {
                     </Grid>
                     <Grid item xs={12} md={12}>
                         {
-                            this.state.methods && this.state.methods.data &&
+                            this.state.config2 && this.state.config2.data &&
                             <BarChart config={this.state.config2}/>
                         }
                         {this.state.errorG2 && <MensajeErrorDatos/>}

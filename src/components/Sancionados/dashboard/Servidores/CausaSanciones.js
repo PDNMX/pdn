@@ -93,6 +93,7 @@ class CausasSanciones extends React.Component {
                 }
             });
 
+            console.log("Aux: ",aux);
             this.setState({
                 methods: {
                     data: aux,
@@ -202,7 +203,7 @@ class CausasSanciones extends React.Component {
                     </Grid>
                     <Grid item xs={12} md={8} className={classes.graph}>
                         {
-                            this.state.methods && this.state.methods.data &&
+                            this.state && this.state.methods && this.state.methods.data &&
                             <BarChart config={this.state.methods}/>
                         }
                         {this.state.errorG1 &&
@@ -232,7 +233,7 @@ class CausasSanciones extends React.Component {
                     </Grid>
                     <Grid item xs={12} md={12}>
                         {
-                            this.state.methods && this.state.methods.data &&
+                            this.state && this.state.config2 && this.state.config2.data &&
                             <BarChart config={this.state.config2}/>
                         }
                         {this.state.errorG2 &&

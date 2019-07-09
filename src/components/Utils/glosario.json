@@ -39,7 +39,18 @@
       "id": 7,
       "title": "Asignación y emisión de dictámenes de avalúos nacionales.",
       "description": "Comprende únicamente los que son competencia del Instituto de Administración y Avalúos de Bienes Nacionales (INDAABIN)."
+    },
+    {
+      "id" : 8,
+      "title" : "Ramo",
+      "description" : ""
+    },
+    {
+      "id" : 9,
+      "title" : "Periodo ejercicio",
+      "description" : "Fecha inicial y final del ejercicio"
     }
+
   ],
   "particulares": [
     {

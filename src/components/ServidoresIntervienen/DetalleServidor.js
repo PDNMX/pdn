@@ -233,7 +233,7 @@ class DetalleServidor extends React.Component {
                                         endAdornment: (
                                             <InputAdornment position={'end'} onClick={() => {
                                                 this.openPoper();
-                                                this.controlGlosario(0)
+                                                this.controlGlosario(8)
                                             }}>
                                                 <IconHelp/>
                                             </InputAdornment>
@@ -256,7 +256,7 @@ class DetalleServidor extends React.Component {
                                         endAdornment: (
                                             <InputAdornment position={'end'} onClick={() => {
                                                 this.openPoper();
-                                                this.controlGlosario(0)
+                                                this.controlGlosario(9)
                                             }}>
                                                 <IconHelp/>
                                             </InputAdornment>
