@@ -80,7 +80,7 @@ class BarraFea extends React.Component{
                     <Grid item xs={6} md={2} className={classes.item}>
                         <a href="#" className={classes.link}>
                             <img src={Plat} className={classes.icon} alt="Interconexión subnacional"/>
-                            <Typography>Plataformas y sistemas</Typography>
+                            <Typography>Interconexión subnacional</Typography>
                         </a>
                     </Grid>
 
