@@ -188,7 +188,8 @@ class Tops extends React.Component {
                     let aux = data.data.map(item => {
                         return {
                             "top": item.top,
-                            "total": parseInt(item.total)
+                            "total": parseInt(item.total),
+                            "case" : item.case ? item.case : null
                         }
                     })
                     this.setState({
@@ -199,7 +200,7 @@ class Tops extends React.Component {
                             x: "total",
                             y: "top",
                             yConfig: {
-                                title: this.state.top,
+                                title: this.state.top==="id_procedimiento"?"PROCEDIMIENTO": this.state.top,
                                 tickFormat: function(d) {
                                     return  "";
                                 },
@@ -208,7 +209,9 @@ class Tops extends React.Component {
                                 title: "Número de registros"
                             },
                             tooltipConfig: {
-                                title: function (d) {
+                                title: this.state.top==="id_procedimiento" ? function (d) {
+                                    return d["case"];
+                                }: function (d) {
                                     return d["top"];
                                 },
                                 tbody: [
@@ -221,7 +224,7 @@ class Tops extends React.Component {
                             },
                             height: 400,
                             shapeConfig: {
-                                label: function(d){return d["top"]},
+                                label: function(d){return d["case"]? d["case"] : d["top"]},
                                 fill: (d, i) => {
                                     return color[i]
                                 }
@@ -229,7 +232,7 @@ class Tops extends React.Component {
                             axes: {
                                 fill: "#666672"
                             },
-                            title: "Top 10 " + this.state.top
+                            title: "Top 10 " + (this.state.top==="id_procedimiento"?"PROCEDIMIENTO": this.state.top),
 
                         }
                     })
