@@ -319,7 +319,6 @@ class EnhancedTable extends React.Component {
                     return true;
                 }).catch(err => {
                 this.setState({loading: false, error:true});
-                //alert("_No se pudó obtener la información");
                 console.log(err);
             });
         });

@@ -302,9 +302,7 @@ class EnhancedTable extends React.Component {
                         this.child.triggerDown();
                     });
             }).catch(err => {
-            this.setState({loading: false});
-            alert("_No se puedó obtener la información");
-            console.log(err);
+            this.setState({loading: false,error:true});
         });
     };
 

@@ -5,6 +5,7 @@ import Grid from "@material-ui/core/Grid/Grid";
 import {Typography} from "@material-ui/core"
 import Ejercicio from "./Ejericicio";
 import Agrupaciones from "./Agrupaciones";
+import Tops from "./Tops";
 
 const styles = theme => ({
     root: {
@@ -64,7 +65,7 @@ class Dashboard extends React.Component {
                             2. <b>Ejercicios, Ramos e Instituciones.</b> Permite conocer más a fondo el comportamiento de los funcionarios que intervienen en procesos de
                             contatación a través de la configuración de variables como el Ejercicio Fiscal, el Ramo y/o la Institución<a href="#g2">Ver</a><br/><br/>
 
-                            3. <b>Puesto.</b> En la APF se encuentra una gran variedad de procesos de contratación, aquí
+                            3. <b>Top 10.</b> En la APF se encuentra una gran variedad de procesos de contratación, aquí
                             se puede encontrar información de los puestos que más intervienen en procesos de
                             contratación. Debido a que se encontraron 13,088 puestos diferentes, se muestra la
                             información de los 10 más comunes.<a href="#g3">Ver</a><br/><br/>
@@ -80,6 +81,9 @@ class Dashboard extends React.Component {
                     </Grid>
                     <Grid item xs={12}  id={"g2"}>
                         <Agrupaciones/>
+                    </Grid>
+                    <Grid item xs={12}  id={"g3"}>
+                        <Tops/>
                     </Grid>
 
                     {
