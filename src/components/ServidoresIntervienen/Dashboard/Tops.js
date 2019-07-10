@@ -44,7 +44,7 @@ const styles = theme => ({
 });
 
 
-let color = ["#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
+let color = ["#F44336","#9C27B0", "#673AB7", "#3F51B5",
     "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
     "#8BC34A", "#CDDC39", "#FFEB3B", "#FFC107", "#FF9800",
     "#FF5722", "#795548", "#9E9E9E", "#607D8B", "#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
@@ -157,7 +157,8 @@ class Tops extends React.Component {
             ramo: null,
             institucion: null,
             error: false,
-            top: null
+            top: null,
+            label: null,
         })
     };
 
@@ -200,13 +201,13 @@ class Tops extends React.Component {
                             x: "total",
                             y: "top",
                             yConfig: {
-                                title: this.state.top==="id_procedimiento"?"PROCEDIMIENTO": this.state.top,
+                                title: this.state.top==="id_procedimiento"?"PROCEDIMIENTO": this.state.top==="UR"?"UNIDADES RESPONSABLES": this.state.top,
                                 tickFormat: function(d) {
                                     return  "";
                                 },
                             },
                             xConfig: {
-                                title: "Número de registros"
+                                title: "NÚMERO DE REGISTROS"
                             },
                             tooltipConfig: {
                                 title: this.state.top==="id_procedimiento" ? function (d) {
@@ -216,7 +217,7 @@ class Tops extends React.Component {
                                 },
                                 tbody: [
 
-                                    ["Número de registros: ", function (d) {
+                                    ["NÚMERO DE REGISTROS: ", function (d) {
                                         return d["total"]
                                     }
                                     ]
@@ -232,7 +233,7 @@ class Tops extends React.Component {
                             axes: {
                                 fill: "#666672"
                             },
-                            title: "Top 10 " + (this.state.top==="id_procedimiento"?"PROCEDIMIENTO": this.state.top),
+                            title: "TOP 10 " + (this.state.top==="id_procedimiento"?"PROCEDIMIENTO": this.state.top==="UR"?"UNIDADES RESPONSABLES": this.state.top),
 
                         }
                     })
