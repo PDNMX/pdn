@@ -10,7 +10,6 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Button from "@material-ui/core/Button";
 import Toolbar from '@material-ui/core/Toolbar';
 import MensajeErrorDatos from "../../Tablas/MensajeErrorDatos";
-import {ResponsiveBar} from '@nivo/bar';
 import {BarChart} from "d3plus-react";
 
 
