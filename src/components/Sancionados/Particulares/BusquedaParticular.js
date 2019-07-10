@@ -71,11 +71,13 @@ const styles = theme => ({
         justifyContent: 'center',
         alignItems: 'center'
     },
-    inputShrink:{
-        transform : `scale(1)`
+    inputShrink: {
+        transform: `scale(1)`
+    },
+    nota:{
+        marginTop: theme.spacing(3)
     }
 });
-
 
 
 class BusquedaParticular extends React.Component {
@@ -86,7 +88,7 @@ class BusquedaParticular extends React.Component {
 
     componentDidMount() {
         let aux = [];
-        let sug = [ {value : 'TODAS' ,label:'TODAS'}];
+        let sug = [{value: 'TODAS', label: 'TODAS'}];
         let id = 0;
 
         let options = {
@@ -102,8 +104,7 @@ class BusquedaParticular extends React.Component {
                 });
                 this.setState({dependencias: aux, suggestions: sug});
             }).catch(err => {
-            alert("_No se pudo obtener la información");
-            console.log(err);
+            this.props.handleError(true);
         });
 
 
@@ -128,7 +129,8 @@ class BusquedaParticular extends React.Component {
                 <Grid item md={6} xs={12}>
                     <FormControl className={classes.formControl}>
                         <InputLabel htmlFor={'campoSelectInstitucion'}>Institución</InputLabel>
-                        <Select style={{marginTop:'0px'}}value={institucion} onChange={(e) => handleChangeCampo('institucion', e)} inputProps={{
+                        <Select style={{marginTop: '0px'}} value={institucion}
+                                onChange={(e) => handleChangeCampo('institucion', e)} inputProps={{
                             name: 'campoSelectInstitucion',
                             id: 'campoSelectInstitucion',
                         }}
@@ -186,6 +188,13 @@ class BusquedaParticular extends React.Component {
                             onClick={this.limpiarBusqueda}>
                         Limpiar
                     </Button>
+                </Grid>
+                <Grid item xs={12} className={classes.nota}>
+                    <Typography variant={"caption"} style={{fontStyle: 'italic'}}>Nota:
+                        Actualmente se utiliza únicamente la información
+                        proporcionada por la Secretaría de la Función Pública, por lo que se consideran únicamente Licitantes, Proveedores y Contratistas sancionados</Typography>
+
+
                 </Grid>
             </Grid>
 

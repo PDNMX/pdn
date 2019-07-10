@@ -174,13 +174,13 @@ const toolbarStyles = theme => ({
 
 
 let EnhancedTableToolbar = props => {
-    const {classes, handleChangeCampo, nombreParticular, numeroExpediente, institucion, handleCleanAll, handleSearch} = props;
+    const {classes, handleChangeCampo, nombreParticular, numeroExpediente, institucion, handleCleanAll, handleSearch,handleError} = props;
     return (
         <Toolbar className={classes.toolBarStyle}>
             <BusquedaParticular handleCleanAll={handleCleanAll} handleSearch={handleSearch}
                                 handleChangeCampo={handleChangeCampo} nombreParticular={nombreParticular}
                                 numeroExpediente={numeroExpediente}
-                                institucion={institucion}/>
+                                institucion={institucion} handleError={handleError}/>
 
         </Toolbar>
     );
@@ -318,7 +318,11 @@ class EnhancedTable extends React.Component {
                 this.handleChangeCampo('institucion');
             })
     };
-
+    handleError = (val )=>{
+        this.setState({
+            error : val
+        })
+    }
 
     render() {
         const {classes} = this.props;
@@ -333,7 +337,7 @@ class EnhancedTable extends React.Component {
                                               handleSearch={this.handleSearchAPI}
                                               nombreParticular={this.state.nombreParticular}
                                               numeroExpediente={this.state.numeroExpediente}
-                                              institucion={this.state.institucion}/>
+                                              institucion={this.state.institucion} handleError={this.handleError}/>
                     </Grid>
                     <Grid item xs={12}>
                         <DetalleParticular handleClose={this.handleClose} particular={this.state.elementoSeleccionado}
