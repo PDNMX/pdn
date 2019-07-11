@@ -44,8 +44,7 @@ const styles = theme => ({
 });
 
 
-
-let color = ["#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
+let color = ["#F44336","#9C27B0", "#673AB7", "#3F51B5",
     "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
     "#8BC34A", "#CDDC39", "#FFEB3B", "#FFC107", "#FF9800",
     "#FF5722", "#795548", "#9E9E9E", "#607D8B", "#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
@@ -158,7 +157,8 @@ class Tops extends React.Component {
             ramo: null,
             institucion: null,
             error: false,
-            top: null
+            top: null,
+            label: null,
         })
     };
 
@@ -180,7 +180,7 @@ class Tops extends React.Component {
                 method: "post",
                 body: {
                     top: this.state.top,
-                    filtros: filtros.length>0?filtros:null
+                    filtros: filtros.length > 0 ? filtros : null
                 }
             };
 
@@ -188,34 +188,36 @@ class Tops extends React.Component {
                 .then(data => {
                     let aux = data.data.map(item => {
                         return {
-                            "puesto": item.puesto,
-                            "total": parseInt(item.total)
+                            "top": item.top,
+                            "total": parseInt(item.total),
+                            "case" : item.case ? item.case : null
                         }
                     })
                     this.setState({
                         methods: {
-                            data: aux,
-                            discrete : "y",
-                            groupBy: "puesto",
+                            data: aux.reverse(),
+                            discrete: "y",
+                            groupBy: "top",
                             x: "total",
-                            y: "puesto",
-                            xConfig: {
-                                title: "Puesto",
-
-                            },
+                            y: "top",
                             yConfig: {
-                                title: "Número de registros"
+                                title: this.state.top==="id_procedimiento"?"PROCEDIMIENTO": this.state.top==="UR"?"UNIDADES RESPONSABLES": this.state.top,
+                                tickFormat: function(d) {
+                                    return  "";
+                                },
+                            },
+                            xConfig: {
+                                title: "NÚMERO DE REGISTROS"
                             },
                             tooltipConfig: {
-                                title: function (d) {
-                                    return "Datos";
+                                title: this.state.top==="id_procedimiento" ? function (d) {
+                                    return d["case"];
+                                }: function (d) {
+                                    return d["top"];
                                 },
                                 tbody: [
-                                    ["Puesto: ", function (d) {
-                                        return d["puesto"] + "puesto"
-                                    }
-                                    ],
-                                    ["Número de registros: ", function (d) {
+
+                                    ["NÚMERO DE REGISTROS: ", function (d) {
                                         return d["total"]
                                     }
                                     ]
@@ -223,16 +225,15 @@ class Tops extends React.Component {
                             },
                             height: 400,
                             shapeConfig: {
-                                label: false,
+                                label: function(d){return d["case"]? d["case"] : d["top"]},
                                 fill: (d, i) => {
                                     return color[i]
                                 }
                             },
-                            legend: false,
                             axes: {
                                 fill: "#666672"
                             },
-                            title: "Top 10" + this.state.top
+                            title: "TOP 10 " + (this.state.top==="id_procedimiento"?"PROCEDIMIENTO": this.state.top==="UR"?"UNIDADES RESPONSABLES": this.state.top),
 
                         }
                     })
@@ -240,7 +241,7 @@ class Tops extends React.Component {
                 }).catch(err => {
 
                 console.log(err);
-                this.setState({error : true})
+                this.setState({error: true})
             });
         });
     }
@@ -259,8 +260,10 @@ class Tops extends React.Component {
                         </Grid>
                         <Grid item xs={12} className={classes.descripcion}>
                             <Typography variant={"body1"}>
-
-
+                                Debido a la gran cantidad de datos presentes, en está gráfica puedes observar el Top 10 de
+                                una serie de valores representantivos como: Procedimiento, Instituciones,
+                                Unidades Responsables y Puestos.<br/>
+                                Adicionalmente, puedes profundizar los resultados seleccionando algún Ejercicio fiscal, Ramo o Institución
                                 <br/><br/>Para comenzar, selecciona un top y da clic en el botón <b>Buscar</b>
                             </Typography>
                         </Grid>
@@ -343,8 +346,8 @@ class Tops extends React.Component {
                                             id: 'selectTop',
                                         }}
                                 >
-                                    <MenuItem key={0} value={"PROCEDIMIENTO"}>PROCEDIMIENTO</MenuItem>
-                                    <MenuItem key={1} value={"INSTITUCIONES"}>INSTITUCIONES</MenuItem>
+                                    <MenuItem key={0} value={"id_procedimiento"}>PROCEDIMIENTO</MenuItem>
+                                    <MenuItem key={1} value={"INSTITUCION"}>INSTITUCIONES</MenuItem>
                                     <MenuItem key={2} value={"UR"}>UNIDADES RESPONSABLES</MenuItem>
                                     <MenuItem key={3} value={"PUESTO"}>PUESTOS</MenuItem>
                                 </Select>
