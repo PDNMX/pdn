@@ -36,7 +36,7 @@ const styles = theme => ({
     },
     sectionT: {
         maxWidth: '1200px',
-        //overflowX: 'auto',
+        overflowX: 'auto',
         color: theme.palette.textGrey.color
     },
     image: {

@@ -276,7 +276,7 @@ class EnhancedTable extends React.Component {
             let offset = 1;
 
             if (typeSearch !== 'ALL') {
-                if(procedimiento && procedimiento > 0 ) filtros.tipo_actos = procedimiento;
+                if(procedimiento) filtros.tipo_actos = procedimiento;
                 if (institucion) filtros.institucion = '%' + institucion + '%';
                 if (nombreServidor) filtros.nombres = '%' + nombreServidor.toUpperCase() + '%';
                 if (apellidoUno) filtros.primer_apellido = '%' + apellidoUno.toUpperCase() + '%';
@@ -483,12 +483,7 @@ class EnhancedTable extends React.Component {
                             <MensajeNoRegistros/>
                         }
                     </Grid>
-                    <Grid item xs={12} className={classes.item}>
-                        {filterData && filterData.length > 0 &&
-                        <Typography variant="caption" style={{wordBreak: 'break-all'}}>Fuente:
-                            https://reniresp.funcionpublica.gob.mx/ppcapf/consulta/informacion.jsf </Typography>
-                        }
-                    </Grid>
+
                 </Grid>
             </div>
         );

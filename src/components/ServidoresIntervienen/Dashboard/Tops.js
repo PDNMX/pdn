@@ -29,7 +29,8 @@ const styles = theme => ({
         marginTop: "15px",
         paddingLeft: "10px",
         paddingRight: "10px",
-        marginBottom: "30px"
+        marginBottom: "30px",
+        textAlign: "justify"
     },
     btnDownload: {
         textAlign: "right"
@@ -260,14 +261,13 @@ class Tops extends React.Component {
                         </Grid>
                         <Grid item xs={12} className={classes.descripcion}>
                             <Typography variant={"body1"}>
-                                Debido a la gran cantidad de datos presentes, en está gráfica puedes observar el Top 10 de
+                                Debido a la gran variedad de datos, en está gráfica puedes obtener el Top 10 de
                                 una serie de valores representantivos como: Procedimiento, Instituciones,
-                                Unidades Responsables y Puestos.<br/>
-                                Adicionalmente, puedes profundizar los resultados seleccionando algún Ejercicio fiscal, Ramo o Institución
+                                Unidades Responsables y Puestos. Adicionalmente, puedes profundizar los resultados seleccionando algún Ejercicio fiscal, Ramo o Institución
                                 <br/><br/>Para comenzar, selecciona un top y da clic en el botón <b>Buscar</b>
                             </Typography>
                         </Grid>
-                        <Grid item xs={3}>
+                        <Grid item md={3}xs={12}>
                             <FormControl className={classes.formControl}>
                                 <InputLabel htmlFor="campoSelectEjercicio">Ejercicio</InputLabel>
                                 <Select style={{marginTop: '0px'}}
@@ -289,7 +289,7 @@ class Tops extends React.Component {
 
                             </FormControl>
                         </Grid>
-                        <Grid item xs={3}>
+                        <Grid item md={3}xs={12}>
                             <FormControl className={classes.formControl}>
                                 <InputLabel htmlFor="campoSelectRamo">Ramo</InputLabel>
                                 <Select style={{marginTop: '0px'}}
@@ -312,7 +312,7 @@ class Tops extends React.Component {
 
                             </FormControl>
                         </Grid>
-                        <Grid item xs={3}>
+                        <Grid item md={3}xs={12}>
                             <FormControl className={classes.formControl}>
                                 <InputLabel htmlFor="campoSelectInstitucion">Institución</InputLabel>
                                 <Select style={{marginTop: '0px'}}
@@ -335,7 +335,7 @@ class Tops extends React.Component {
 
                             </FormControl>
                         </Grid>
-                        <Grid item xs={3}>
+                        <Grid item md={3}xs={12}>
                             <FormControl className={classes.formControl}>
                                 <InputLabel htmlFor="selectTop">Top</InputLabel>
                                 <Select style={{marginTop: '0px'}}

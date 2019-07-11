@@ -93,7 +93,6 @@ class CausasSanciones extends React.Component {
                 }
             });
 
-            console.log("Aux: ",aux);
             this.setState({
                 methods: {
                     data: aux,

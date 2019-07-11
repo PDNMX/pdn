@@ -2,10 +2,11 @@ import React from 'react';
 import {withStyles} from "@material-ui/core/styles";
 import PropTypes from 'prop-types';
 import Grid from "@material-ui/core/Grid/Grid";
-import {Typography} from "@material-ui/core"
-import {BarChart} from "d3plus-react";
+import {Typography} from "@material-ui/core";
 import rp from "request-promise";
 import MensajeErrorDatos from "../../Tablas/MensajeErrorDatos";
+import BarChart from "d3plus-react/es/src/BarChart";
+import * as d3 from "d3";
 
 
 const styles = theme => ({
@@ -38,7 +39,7 @@ const styles = theme => ({
 function aux() {
     return new Promise((resolve, reject) => {
         let options = {
-            uri: process.env.REACT_APP_HOST_PDNBACK + '/viz/servidoresIntervienen/getAgrupacionEjercicio',
+            uri: process.env.REACT_APP_HOST_PDNBACK + '/viz/servidoresIntervienen/getProcedimientosPeriodo',
             json: true,
             method: "GET"
         };
@@ -52,14 +53,8 @@ function aux() {
     });
 }
 
-
-let color = ["#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
-    "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
-    "#8BC34A", "#CDDC39", "#FFEB3B", "#FFC107", "#FF9800",
-    "#FF5722", "#795548", "#9E9E9E", "#607D8B", "#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
-    "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
-    "#8BC34A", "#CDDC39", "#FFEB3B", "#FFC107", "#FF9800",
-    "#FF5722", "#795548", "#9E9E9E", "#607D8B"];
+let z = d3.scaleOrdinal()
+    .range(["#2685C8","#48BF40","#7C2BCD","#FF6A00"]);
 
 class Ejercicio extends React.Component {
     state = {
@@ -71,13 +66,15 @@ class Ejercicio extends React.Component {
             let aux = result.data.map(item => {
                 return {
                     "ejercicio": item.ejercicio,
-                    "total": parseInt(item.total)
+                    "total": parseInt(item.total),
+                    "procedimiento":item.case
                 }
             })
             this.setState({
                     methods: {
                         data: aux,
-                        groupBy: "ejercicio",
+                        groupBy: "procedimiento",
+                        stacked:true,
                         x: "ejercicio",
                         y: "total",
                         xConfig: {
@@ -89,11 +86,11 @@ class Ejercicio extends React.Component {
                         },
                         tooltipConfig: {
                             title: function (d) {
-                                return "Datos";
+                                return d["procedimiento"];
                             },
                             tbody: [
                                 ["Ejercicio fiscal: ", function (d) {
-                                    return d["ejercicio"] + "ejercicio"
+                                    return d["ejercicio"]
                                 }
                                 ],
                                 ["Número de registros: ", function (d) {
@@ -104,16 +101,10 @@ class Ejercicio extends React.Component {
                         },
                         height: 400,
                         shapeConfig: {
-                            label: false,
-                            fill: (d, i) => {
-                                return color[i]
+                            fill: (d) => {
+                                return z(d.procedimiento)
                             }
                         },
-                        legend: false,
-                        axes: {
-                            fill: "#666672"
-                        },
-                        title: "Ejercicio fiscal"
 
                     }
                 }
@@ -133,16 +124,19 @@ class Ejercicio extends React.Component {
                 <Grid container spacing={0} justify='center' className={classes.frameChart}>
                     <Grid item xs={12}>
                         <Typography variant={"h6"} className={classes.titulo}>
-                            <b>{"Ejercicio fiscal"}</b>
+                            <b>{"Procedimientos"}</b>
                         </Typography>
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>
                         <Typography variant={"body1"}>
-                            En esté primer acercamiento, se muestra la información con que se cuenta, correspondiente a
-                            periodos fiscales entre los años 2015 a la fecha. Como se aprecía en la gráfica, hay un ligero crecimiento en el número de registros de
-                            Servidores Públicos que intervienen en procesos de contratación año con año.<br/>
-                            En particular el año 2019, ya cuenta con un número mayor al registrado anualmente en el 2016. En secciones posteriores, se podrá analizar la información de cada año
-                            correspondiente.
+                            Los procesos de contratación están dividos en cuatro tipos, en la siguiente gráfica podrás observar cuantos procedimientos de cada tipo han habido en cada año, como se aprecia, la contratación es el tipo más común a lo
+                            largo del tiempo, mientras que en los años 2017 y 2018 hubo un incremento de más del doble en las concesiones.<br/><br/>
+                            <b>Tipos de procesos: </b><br/>
+                            <b>Contrataciones públicas: </b>Se contemplan aquéllas sujetas a la Ley de Adquisiciones, Arrendamientos y Servicios del Sector Público (LAASSP), la Ley de Obras Públicas y Servicios Relacionados con las Mismas (LOPSRM) y la Ley de Asociaciones Público Privadas (LAPP)<br/>
+                            <b>Concesiones, licencias, permisos, autorizaciones y prórrogas: </b>Comprende los regulados por las diversas disposiciones jurídicas de carácter federal que otorgan las dependencias de la Administración Pública Federal (APF)<br/>
+                            <b>Enajenación de bienes muebles: </b>Que incluyen los actos traslativos de propiedad de los bienes muebles de la federación y de las entidades paraestatales conforme a la Ley General de Bienes Nacionales (LGBN)<br/>
+                            <b>Asignación y emisión de dictamenes de avalúos nacionales: </b>Comprende únicamente los que son competencia del Instituto de Administración y Avalúos de Bienes Nacionales (INDAABIN)
+
                         </Typography>
                     </Grid>
 
