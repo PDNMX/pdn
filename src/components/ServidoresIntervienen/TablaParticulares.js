@@ -465,9 +465,16 @@ class EnhancedTable extends React.Component {
                     </Grid>
                     <Grid item xs={12} className={classes.item}>
                         {filterData && filterData.length > 0 &&
-                        <Typography variant={"caption"} style={{fontStyle: 'italic'}}>Fuente:
-                            https://datos.gob.mx/busca/dataset/proveedores-y-contratistas-sancionados</Typography>
+                        <Typography variant={"caption"} style={{fontStyle: 'italic'}}>
+                            Fuente: https://datos.gob.mx/busca/dataset/proveedores-y-contratistas-sancionados</Typography>
                         }
+
+                    </Grid>
+                    <Grid item xs={12} className={classes.item}>
+
+                        <Typography variant={"caption"} style={{fontStyle: 'italic'}}>
+                            Nota: Actualmente se utiliza únicamente la información proporcionada por la Secretaría de la Función Pública, por lo que se consideran únicamente Licitantes, Proveedores y Contratistas sancionados<br/>
+                        </Typography>
 
                     </Grid>
                 </Grid>
