@@ -11,15 +11,6 @@ const styles = theme => ({
     root: {
         flexGrow: 1
     },
-    bgPanelTable: {
-        backgroundColor: theme.palette.white.color,
-        [theme.breakpoints.up('sm')]: {
-            marginBottom: theme.spacing(30),
-        },
-        [theme.breakpoints.down('sm')]: {
-            marginBottom: theme.spacing(10),
-        },
-    },
     sectionT: {
         maxWidth: '1200px',
         overflowX: 'auto',
@@ -37,7 +28,7 @@ class Dashboard extends React.Component {
         return (
             <div className={classes.root}>
 
-                <Grid container spacing={0} justify='center' className={classes.bgPanelTable}>
+                <Grid container spacing={0} justify='center'>
                     <Grid item xs={12} className={classes.sectionT}>
                         <Typography variant={"h6"}>
                             <b>{"¿Qué información es?"}</b>

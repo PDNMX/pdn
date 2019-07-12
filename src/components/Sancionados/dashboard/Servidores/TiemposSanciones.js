@@ -24,7 +24,8 @@ const styles = theme => ({
         marginTop: "15px",
         paddingLeft: "10px",
         paddingRight: "10px",
-        marginBottom: "30px"
+        marginBottom: "30px",
+        textAlign:"justify"
     },
     btnDownload: {
         textAlign: "right"
