@@ -5,7 +5,7 @@
   //
   ////////////////////////////////////////////////////////////////////////////////
 */
-import React, { Fragment, Component } from "react";
+import React, { Component } from "react";
 import { Grid, Paper, Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 
