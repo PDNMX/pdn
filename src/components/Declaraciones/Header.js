@@ -12,7 +12,6 @@ import "./header.css";
 import {
   Grid,
   IconButton,
-  Button,
   MenuItem,
   Menu,
   withStyles,
@@ -20,7 +19,6 @@ import {
   Typography
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-import { grey } from "@material-ui/core/colors";
 
 const styles = theme => ({
   root: {

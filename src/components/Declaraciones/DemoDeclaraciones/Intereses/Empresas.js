@@ -50,7 +50,7 @@ class Empresas extends  React.Component{
                                         <TableCell>{row.rfc}</TableCell>
                                         <TableCell>{row.domicilio.vialidad.tipo_vial+' '+row.domicilio.vialidad.nom_vial+ ' No.ext: '
                                         +row.domicilio.numExt+' No.int:'+row.domicilio.numInt+ ' '+row.domicilio.localidad.nom_loc
-                                        +', '+row.domicilio.municipio.nom_mun+', '+", "+row.domicilio.entidad_federativa.nom_ent
+                                        +', '+row.domicilio.municipio.nom_mun+', '+", "+row.domicilio.entidad_federativa.nom_agee
                                         +". "+row.domicilio.pais.valor+". C.P."+row.domicilio.cp
                                         }
                                         </TableCell>

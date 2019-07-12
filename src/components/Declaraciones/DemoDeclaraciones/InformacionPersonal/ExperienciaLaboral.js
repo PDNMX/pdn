@@ -57,7 +57,7 @@ class ExperienciaLaboral extends React.Component {
                                         <TableCell>{row.fecha_salida}</TableCell>
                                         <TableCell>{row.direccion.vialidad.tipo_vial+' '+row.direccion.vialidad.nom_vial+ ' No.ext: '
                                                 +row.direccion.numExt+' No.int:'+row.direccion.numInt+ ' '+row.direccion.localidad.nom_loc
-                                            +', '+row.direccion.municipio.nom_mun+', '+", "+row.direccion.entidad_federativa.nom_ent
+                                            +', '+row.direccion.municipio.nom_mun+', '+", "+row.direccion.entidad_federativa.nom_agee
                                         +". "+row.direccion.pais.valor+". C.P."+row.direccion.cp
                                                 }
                                     </TableCell>

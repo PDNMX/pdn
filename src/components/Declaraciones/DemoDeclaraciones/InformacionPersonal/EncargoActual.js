@@ -158,7 +158,7 @@ class EncargoActual extends React.Component {
                                            id="domicilioEntidad"
                                            label="Entidad federavia: "
                                            className={classes.textField}
-                                           value={encargo.direccion_encargo.entidad_federativa.nom_ent}
+                                           value={encargo.direccion_encargo.entidad_federativa.nom_agee}
                                            margin="normal" fullWidth
                                 />
                             </Grid>

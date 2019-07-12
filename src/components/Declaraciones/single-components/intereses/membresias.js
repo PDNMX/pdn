@@ -75,7 +75,7 @@ class InteresesMembresias extends Component{
                       <p className="pdn_label">Nombre de institución</p>
                       <h3>{interes.nombre_institucion} </h3>
                       <p className="pdn_data_p pnd_box_note pdn_gray">{interes.domicilio.vialidad.tipo_vial+' '+interes.domicilio.vialidad.nom_vial+' No.' +interes.domicilio.numExt+ ' No. Int.'+interes.domicilio.numInt }
-                      <br/>  { interes.domicilio.localidad.nom_loc+', '+interes.domicilio.municipio.nom_mun+', '+interes.domicilio.entidad_federativa.nom_ent+', '+interes.domicilio.pais.valor+' C.P. '+interes.domicilio.cp } </p>
+                      <br/>  { interes.domicilio.localidad.nom_loc+', '+interes.domicilio.municipio.nom_mun+', '+interes.domicilio.entidad_federativa.nom_agee+', '+interes.domicilio.pais.valor+' C.P. '+interes.domicilio.cp } </p>
                     </Grid>
                     {/* inicio */}
                     <Grid item xs={12} sm={3}>

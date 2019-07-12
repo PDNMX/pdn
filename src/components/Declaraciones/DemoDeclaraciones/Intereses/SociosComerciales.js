@@ -50,7 +50,7 @@ class SociosComerciales extends  React.Component{
                                         <TableCell>{row.nombre_socio}</TableCell>
                                         <TableCell>{row.curp_socio}</TableCell>
                                         <TableCell>{row.rfc_socio}</TableCell>
-                                        <TableCell>{row.lugar_nacimiento_socio.entidad.nom_ent+'. '+row.lugar_nacimiento_socio.pais.valor}</TableCell>
+                                        <TableCell>{row.lugar_nacimiento_socio.entidad.nom_agee+'. '+row.lugar_nacimiento_socio.pais.valor}</TableCell>
                                         <TableCell>{row.fecha_nacimiento_socio}</TableCell>
                                         <TableCell>{row.porcentaje_participacion}</TableCell>
                                         <TableCell>{row.sector_industria.valor}</TableCell>

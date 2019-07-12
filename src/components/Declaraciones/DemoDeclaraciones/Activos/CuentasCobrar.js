@@ -47,7 +47,7 @@ class CuentasCobrar extends  React.Component{
                                         <TableCell>{row.numero_registro}</TableCell>
                                         <TableCell>{row.domicilio_prestatarios.vialidad.tipo_vial+' '+row.domicilio_prestatarios.vialidad.nom_vial+ ' No.ext: '
                                         +row.domicilio_prestatarios.numExt+' No.int:'+row.domicilio_prestatarios.numInt+ ' '+row.domicilio_prestatarios.localidad.nom_loc
-                                        +', '+row.domicilio_prestatarios.municipio.nom_mun+', '+", "+row.domicilio_prestatarios.entidad_federativa.nom_ent
+                                        +', '+row.domicilio_prestatarios.municipio.nom_mun+', '+", "+row.domicilio_prestatarios.entidad_federativa.nom_agee
                                         +". "+row.domicilio_prestatarios.pais.valor+". C.P."+row.domicilio_prestatarios.cp
                                         }
                                         </TableCell>

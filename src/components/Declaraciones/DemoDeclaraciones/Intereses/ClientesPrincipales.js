@@ -48,7 +48,7 @@ class ClientesPrincipales extends  React.Component{
                                         <TableCell>{row.rfc_cliente}</TableCell>
                                         <TableCell>{row.domicilio_cliente.vialidad.tipo_vial+' '+row.domicilio_cliente.vialidad.nom_vial+ ' No.ext: '
                                         +row.domicilio_cliente.numExt+' No.int:'+row.domicilio_cliente.numInt+ ' '+row.domicilio_cliente.localidad.nom_loc
-                                        +', '+row.domicilio_cliente.municipio.nom_mun+', '+", "+row.domicilio_cliente.entidad_federativa.nom_ent
+                                        +', '+row.domicilio_cliente.municipio.nom_mun+', '+", "+row.domicilio_cliente.entidad_federativa.nom_agee
                                         +". "+row.domicilio_cliente.pais.valor+". C.P."+row.domicilio_cliente.cp
                                         }
                                         </TableCell>

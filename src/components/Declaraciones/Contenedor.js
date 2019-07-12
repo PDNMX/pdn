@@ -7,7 +7,7 @@ import Busqueda from "./Busqueda";
 import PerfilMaterialUI from "./PerfilMaterialUI";
 import Stats from "./Stats";
 
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import {  Route, Switch } from "react-router-dom";
 import { Grid } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
@@ -15,15 +15,8 @@ import classNames from "classnames";
 import { Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 
-// import img1 from "../../assets/img/servidores_intervienen_contratacion.svg";
-// import img2 from "../../assets/img/servidores_particulares_inhabilitados.svg";
-import img3 from "../../assets/img/servidores_visualizaciones.svg";
 import imgBuscar from "../../assets/declaraciones/servidores_declaraciones.svg";
 import imgEstadisticas from "../../assets/declaraciones/estadisticas.svg";
-
-// MATERIAL UI THEME STUFF
-import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-import { grey } from "@material-ui/core/colors";
 
 //header data
 import S3 from "../../assets/iconos_azul/1_icono.svg";
@@ -114,12 +107,7 @@ class Contenedor extends React.Component {
           copy={copy}
           background={background}
         />
-        <Grid
-          container
-          spacing={0}
-          justify="center"
-          className={classes.bgContainer}
-        >
+        <Grid container spacing={0} className={classes.bgContainer}>
           <Grid item xs={12} className={classes.section}>
             <Grid container spacing={0}>
               <Grid
@@ -135,7 +123,11 @@ class Contenedor extends React.Component {
               >
                 <Link className={classes.link} to="/declaraciones">
                   <figure className={classes.figure}>
-                    <img src={imgBuscar} className={classes.image} />
+                    <img
+                      alt="Buscar un servidor público"
+                      src={imgBuscar}
+                      className={classes.image}
+                    />
                   </figure>
                   <Typography
                     variant="subtitle1"
@@ -162,7 +154,11 @@ class Contenedor extends React.Component {
                   to="/declaraciones/estadistica/edad"
                 >
                   <figure className={classes.figure}>
-                    <img src={imgEstadisticas} className={classes.image} />
+                    <img
+                      alt="Estadísticas"
+                      src={imgEstadisticas}
+                      className={classes.image}
+                    />
                   </figure>
                   <Typography
                     variant="subtitle1"
@@ -176,7 +172,7 @@ class Contenedor extends React.Component {
           </Grid>
         </Grid>
         {/* fin menu */}
-        <Grid container spacing={0} justify="center">
+        <Grid container spacing={0}>
           <Grid item xs={12} className={classes.contenedor}>
             <Switch>
               <Route exact path="/declaraciones" component={Busqueda} />

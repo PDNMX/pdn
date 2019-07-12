@@ -61,7 +61,7 @@ class OtrasObligaciones extends  React.Component{
                                         <TableCell>{row.sector_industria.valor}</TableCell>
                                         <TableCell>{row.domicilio_acreedor.vialidad.tipo_vial+' '+row.domicilio_acreedor.vialidad.nom_vial+ ' No.ext: '
                                         +row.domicilio_acreedor.numExt+' No.int:'+row.domicilio_acreedor.numInt+ ' '+row.domicilio_acreedor.localidad.nom_loc
-                                        +', '+row.domicilio_acreedor.municipio.nom_mun+', '+", "+row.domicilio_acreedor.entidad_federativa.nom_ent
+                                        +', '+row.domicilio_acreedor.municipio.nom_mun+', '+", "+row.domicilio_acreedor.entidad_federativa.nom_agee
                                         +". "+row.domicilio_acreedor.pais.valor+". C.P."+row.domicilio_acreedor.cp
                                         }
                                         </TableCell>

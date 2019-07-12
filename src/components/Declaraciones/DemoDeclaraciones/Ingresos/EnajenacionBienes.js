@@ -51,7 +51,7 @@ class EnajenacionBienes extends  React.Component{
                                         <TableCell>{row.descripcion_bien}</TableCell>
                                         <TableCell>{row.domicilio_bien_enajenado.vialidad.tipo_vial+' '+row.domicilio_bien_enajenado.vialidad.nom_vial+ ' No.ext: '
                                         +row.domicilio_bien_enajenado.numExt+' No.int:'+row.domicilio_bien_enajenado.numInt+ ' '+row.domicilio_bien_enajenado.localidad.nom_loc
-                                        +', '+row.domicilio_bien_enajenado.municipio.nom_mun+', '+", "+row.domicilio_bien_enajenado.entidad_federativa.nom_ent
+                                        +', '+row.domicilio_bien_enajenado.municipio.nom_mun+', '+", "+row.domicilio_bien_enajenado.entidad_federativa.nom_agee
                                         +". "+row.domicilio_bien_enajenado.pais.valor+". C.P."+row.domicilio_bien_enajenado.cp
                                         }
                                         </TableCell>

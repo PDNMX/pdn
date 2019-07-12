@@ -109,7 +109,7 @@ class InformacionPersonal extends React.Component {
                                         id="entidadFederativaNacimiento"
                                         label="Entidad federativa nacimiento: "
                                         className={classes.textField}
-                                        value={informacionPersonal.entidad_federativa_nacimiento.nom_ent}
+                                        value={informacionPersonal.entidad_federativa_nacimiento.nom_agee}
                                         margin="normal" fullWidth
                                     />
                                 </Grid>
@@ -204,7 +204,7 @@ class InformacionPersonal extends React.Component {
                                         id="domicilioEntidad"
                                         label="Entidad federavia: "
                                         className={classes.textField}
-                                        value={informacionPersonal.domicilio.entidad_federativa.nom_ent}
+                                        value={informacionPersonal.domicilio.entidad_federativa.nom_agee}
                                         margin="normal" fullWidth
                                     />
                                 </Grid>

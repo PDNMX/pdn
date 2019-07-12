@@ -51,7 +51,7 @@ class ActividadProfesional extends  React.Component{
                                         <TableCell>{row.descripcion_actividad_servicio}</TableCell>
                                         <TableCell>{row.domicilio_persona_recibe_ingreso.vialidad.tipo_vial+' '+row.domicilio_persona_recibe_ingreso.vialidad.nom_vial+ ' No.ext: '
                                         +row.domicilio_persona_recibe_ingreso.numExt+' No.int:'+row.domicilio_persona_recibe_ingreso.numInt+ ' '+row.domicilio_persona_recibe_ingreso.localidad.nom_loc
-                                        +', '+row.domicilio_persona_recibe_ingreso.municipio.nom_mun+', '+", "+row.domicilio_persona_recibe_ingreso.entidad_federativa.nom_ent
+                                        +', '+row.domicilio_persona_recibe_ingreso.municipio.nom_mun+', '+", "+row.domicilio_persona_recibe_ingreso.entidad_federativa.nom_agee
                                         +". "+row.domicilio_persona_recibe_ingreso.pais.valor+". C.P."+row.domicilio_persona_recibe_ingreso.cp
                                         }
                                         </TableCell>

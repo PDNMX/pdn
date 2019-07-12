@@ -56,7 +56,7 @@ class BienesMueblesRegistrables extends  React.Component{
                                         <TableCell>{row.submarca}</TableCell>
                                         <TableCell>{row.modelo}</TableCell>
                                         <TableCell>{row.numero_serie}</TableCell>
-                                        <TableCell>{row.lugar_registro.entidad.nom_ent+' .'+row.lugar_registro.pais.valor}</TableCell>
+                                        <TableCell>{row.lugar_registro.entidad.nom_agee+' .'+row.lugar_registro.pais.valor}</TableCell>
                                         <TableCell>{row.titular_bien.valor}</TableCell>
                                         <TableCell>{row.porcentaje_propiedad}</TableCell>
                                         <TableCell>{row.nombres_copropietarios.map(n=>{return n.toString()+' ,'})}</TableCell>

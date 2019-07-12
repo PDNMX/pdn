@@ -104,7 +104,7 @@ class BusquedaTableMaterialUI extends Component {
                 <TableCell>
                   {
                     compa.informacion_personal.datos_encargo_actual
-                      .direccion_encargo.entidad_federativa.nom_ent
+                      .direccion_encargo.entidad_federativa.nom_agee
                   }
                 </TableCell>
 

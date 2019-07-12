@@ -51,7 +51,7 @@ class UsoEspeciePropiedad extends  React.Component{
                                         <TableCell>{row.fecha_inicio}</TableCell>
                                         <TableCell>{row.domicilio_persona.vialidad.tipo_vial+' '+row.domicilio_persona.vialidad.nom_vial+ ' No.ext: '
                                         +row.domicilio_persona.numExt+' No.int:'+row.domicilio_persona.numInt+ ' '+row.domicilio_persona.localidad.nom_loc
-                                        +', '+row.domicilio_persona.municipio.nom_mun+', '+", "+row.domicilio_persona.entidad_federativa.nom_ent
+                                        +', '+row.domicilio_persona.municipio.nom_mun+', '+", "+row.domicilio_persona.entidad_federativa.nom_agee
                                         +". "+row.domicilio_persona.pais.valor+". C.P."+row.domicilio_persona.cp
                                         }
                                         </TableCell>

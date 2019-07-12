@@ -51,7 +51,7 @@ class ActividadEmpresarial extends  React.Component{
                                         <TableCell>{row.descripcion_actividad_servicio}</TableCell>
                                         <TableCell>{row.domicilio_actividad_empresarial.vialidad.tipo_vial+' '+row.domicilio_actividad_empresarial.vialidad.nom_vial+ ' No.ext: '
                                         +row.domicilio_actividad_empresarial.numExt+' No.int:'+row.domicilio_actividad_empresarial.numInt+ ' '+row.domicilio_actividad_empresarial.localidad.nom_loc
-                                        +', '+row.domicilio_actividad_empresarial.municipio.nom_mun+', '+", "+row.domicilio_actividad_empresarial.entidad_federativa.nom_ent
+                                        +', '+row.domicilio_actividad_empresarial.municipio.nom_mun+', '+", "+row.domicilio_actividad_empresarial.entidad_federativa.nom_agee
                                         +". "+row.domicilio_actividad_empresarial.pais.valor+". C.P."+row.domicilio_actividad_empresarial.cp
                                         }
                                         </TableCell>

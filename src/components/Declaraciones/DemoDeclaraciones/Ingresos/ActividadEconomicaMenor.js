@@ -51,7 +51,7 @@ class ActividadEconomicaMenor extends  React.Component{
                                         <TableCell>{row.descripcion_actividad_servicio}</TableCell>
                                         <TableCell>{row.domicilio_actividad.vialidad.tipo_vial+' '+row.domicilio_actividad.vialidad.nom_vial+ ' No.ext: '
                                         +row.domicilio_actividad.numExt+' No.int:'+row.domicilio_actividad.numInt+ ' '+row.domicilio_actividad.localidad.nom_loc
-                                        +', '+row.domicilio_actividad.municipio.nom_mun+', '+", "+row.domicilio_actividad.entidad_federativa.nom_ent
+                                        +', '+row.domicilio_actividad.municipio.nom_mun+', '+", "+row.domicilio_actividad.entidad_federativa.nom_agee
                                         +". "+row.domicilio_actividad.pais.valor+". C.P."+row.domicilio_actividad.cp
                                         }
                                         </TableCell>

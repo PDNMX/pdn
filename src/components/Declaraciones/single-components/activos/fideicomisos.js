@@ -156,7 +156,7 @@ class ActivosFideicomisos extends Component{
                     <span className="pnd_box_note">{ fideicomiso.fideicomisario.domicilio.vialidad.tipo_vial }	{ fideicomiso.fideicomisario.domicilio.vialidad.nom_vial }	#{ fideicomiso.fideicomisario.domicilio.numExt }
       							<span>{ fideicomiso.fideicomisario.domicilio.numInt ? ", int. #" + fideicomiso.fideicomisario.domicilio.numInt : "" }</span><br/>
       							{ fideicomiso.fideicomisario.domicilio.localidad.nom_loc }, { fideicomiso.fideicomisario.domicilio.municipio.nom_mun }<br/>
-      							{ fideicomiso.fideicomisario.domicilio.entidad_federativa.nom_ent }. C.P. { fideicomiso.fideicomisario.domicilio.cp }
+      							{ fideicomiso.fideicomisario.domicilio.entidad_federativa.nom_agee }. C.P. { fideicomiso.fideicomisario.domicilio.cp }
       							</span>
                     </p>
                   </Grid>
@@ -187,7 +187,7 @@ class ActivosFideicomisos extends Component{
                     <span className="pnd_box_note">{ fideicomiso.fideicomitente.domicilio.vialidad.tipo_vial }	{ fideicomiso.fideicomitente.domicilio.vialidad.nom_vial }	#{ fideicomiso.fideicomitente.domicilio.numExt }
       							<span>{ fideicomiso.fideicomitente.domicilio.numInt ? ", int. #" + fideicomiso.fideicomitente.domicilio.numInt : "" }</span><br/>
       							{ fideicomiso.fideicomitente.domicilio.localidad.nom_loc }, { fideicomiso.fideicomitente.domicilio.municipio.nom_mun }<br/>
-      							{ fideicomiso.fideicomitente.domicilio.entidad_federativa.nom_ent }. C.P. { fideicomiso.fideicomitente.domicilio.cp }
+      							{ fideicomiso.fideicomitente.domicilio.entidad_federativa.nom_agee }. C.P. { fideicomiso.fideicomitente.domicilio.cp }
       							</span>
                     </p>
                   </Grid>
@@ -218,7 +218,7 @@ class ActivosFideicomisos extends Component{
                     <span className="pnd_box_note">{ fideicomiso.fiduciario.domicilio.vialidad.tipo_vial }	{ fideicomiso.fiduciario.domicilio.vialidad.nom_vial }	#{ fideicomiso.fiduciario.domicilio.numExt }
       							<span>{ fideicomiso.fiduciario.domicilio.numInt ? ", int. #" + fideicomiso.fiduciario.domicilio.numInt : "" }</span><br/>
       							{ fideicomiso.fiduciario.domicilio.localidad.nom_loc }, { fideicomiso.fiduciario.domicilio.municipio.nom_mun }<br/>
-      							{ fideicomiso.fiduciario.domicilio.entidad_federativa.nom_ent }. C.P. { fideicomiso.fiduciario.domicilio.cp }
+      							{ fideicomiso.fiduciario.domicilio.entidad_federativa.nom_agee }. C.P. { fideicomiso.fiduciario.domicilio.cp }
       							</span>
                     </p>
                   </Grid>

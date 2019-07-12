@@ -59,7 +59,7 @@ class InversionesCuentasValores extends  React.Component{
                                         <TableCell>{row.sector_industria.valor}</TableCell>
                                         <TableCell>{row.domicilio_institucion.vialidad.tipo_vial+' '+row.domicilio_institucion.vialidad.nom_vial+ ' No.ext: '
                                         +row.domicilio_institucion.numExt+' No.int:'+row.domicilio_institucion.numInt+ ' '+row.domicilio_institucion.localidad.nom_loc
-                                        +', '+row.domicilio_institucion.municipio.nom_mun+', '+", "+row.domicilio_institucion.entidad_federativa.nom_ent
+                                        +', '+row.domicilio_institucion.municipio.nom_mun+', '+", "+row.domicilio_institucion.entidad_federativa.nom_agee
                                         +". "+row.domicilio_institucion.pais.valor+". C.P."+row.domicilio_institucion.cp
                                         }
                                         </TableCell>

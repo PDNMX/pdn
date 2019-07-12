@@ -64,7 +64,7 @@ class BienesInmuebles extends  React.Component{
                                         <TableCell>{row.identificacion_bien.fecha_contrato}</TableCell>
                                         <TableCell>{row.domicilio_bien.vialidad.tipo_vial+' '+row.domicilio_bien.vialidad.nom_vial+ ' No.ext: '
                                         +row.domicilio_bien.numExt+' No.int:'+row.domicilio_bien.numInt+ ' '+row.domicilio_bien.localidad.nom_loc
-                                        +', '+row.domicilio_bien.municipio.nom_mun+', '+", "+row.domicilio_bien.entidad_federativa.nom_ent
+                                        +', '+row.domicilio_bien.municipio.nom_mun+', '+", "+row.domicilio_bien.entidad_federativa.nom_agee
                                         +". "+row.domicilio_bien.pais.valor+". C.P."+row.domicilio_bien.cp
                                         }
                                         </TableCell>

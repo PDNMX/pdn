@@ -92,7 +92,7 @@ class BusquedaTable extends Component{
             {encargo.empleo_cargo_comision}
           </td>
           <td>
-          {encargo.direccion_encargo.entidad_federativa.nom_ent}</td>
+          {encargo.direccion_encargo.entidad_federativa.nom_agee}</td>
           <td>
           {encargo.direccion_encargo.municipio.nom_mun}</td>
         </tr>
