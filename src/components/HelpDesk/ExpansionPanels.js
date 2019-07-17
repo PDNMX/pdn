@@ -577,16 +577,27 @@ export default function CustomizedExpansionPanels() {
                             La Secretaría Ejecutiva elaborará y publicará un catálogo de perfiles, en el cual se establezcan las facultades,obligaciones, y/o atribuciones que les sean aplicables a cada uno de los usuarios de manera genérica (Artículo 18, BFPDN)
                         </Typography>
 
-                        <Typography paragraph>
-                            <b>Correo:</b>
-                        </Typography>
+
+
+                    </div>
+                </ExpansionPanelDetails>
+            </ExpansionPanel>
+
+
+
+            <ExpansionPanel square expanded={expanded === 'panel8'} onChange={handleChange('panel8')}>
+                <ExpansionPanelSummary aria-controls="panel8d-content" id="panel8d-header">
+                    <Typography>Contactanos</Typography>
+                </ExpansionPanelSummary>
+                <ExpansionPanelDetails>
+                    <div>
+
                         <Typography paragraph>
                             Escribenos si tienes dudas sobre la construcción de la PDN.
                         </Typography>
                         <Typography>
                             pdn<Icon style={{fontSize:12}}>alternate_email</Icon>sesna.gob.mx
                         </Typography>
-
 
                     </div>
                 </ExpansionPanelDetails>
