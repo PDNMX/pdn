@@ -9,6 +9,7 @@ import s5 from '../../assets/iconos_azul/5_icono.svg';
 import s6 from '../../assets/iconos_azul/6_icono.svg';
 import {Link} from 'react-router-dom';
 import Typography from "@material-ui/core/Typography";
+import Tooltip from '@material-ui/core/Tooltip';
 
 const styles = theme => ({
     root: {
@@ -55,60 +56,67 @@ class Sistemas extends React.Component{
 
                     <Grid item xs={12} align="center">
                         <Typography className={classes.textExplora} paragraph>
-                        Explora los 6 sistemas
+                            Explora los 6 sistemas
                         </Typography>
                     </Grid>
 
                     <Grid item xl={4} lg={4} md={6} xs={12} align="center">
-                        <Link to="/declaraciones" className={ classes.link }>
-                            <img src={s1} alt="Sistema 1" className={classes.iconosSistemas}/>
-                            <br/>
-                            <Typography variant="h5" className={classes.text}>
-                                Declaraciones
-                            </Typography>
-                        </Link>
+                        <Tooltip title="Declaración patrimonial y de intereses" placement="top">
+                            <Link to="/declaraciones" className={ classes.link }>
+                                <img src={s1} alt="Sistema 1" className={classes.iconosSistemas}/>
+                                <br/>
+                                <Typography variant="h5" className={classes.text}>
+                                    Declaraciones
+                                </Typography>
+                            </Link>
+                        </Tooltip>
                     </Grid>
                     <Grid item xl={4} lg={4} md={6} xs={12} align="center">
-                        <Link to="/servidores" className={ classes.link }>
-                            <img src={s2} alt="Sistema 2" className={classes.iconosSistemas}/>
-                            <br/>
-                            <Typography variant="h5" className={classes.text}>
-                                Servidores públicos en contrataciones públicas
-                            </Typography>
-                        </Link>
+                        <Tooltip title="Servidores públicos que intervienen en contrataciones públicas" placement="top">
+                            <Link to="/servidores" className={ classes.link }>
+                                <img src={s2} alt="Sistema 2" className={classes.iconosSistemas}/>
+                                <br/>
+                                <Typography variant="h5" className={classes.text}>
+                                    Servidores públicos en contrataciones públicas
+                                </Typography>
+                            </Link>
+                        </Tooltip>
                     </Grid>
                     <Grid item xl={4} lg={4} md={6} xs={12} align="center">
-                        <Link to="/sancionados" className ={ classes.link }>
-                            <img src={s3} alt="Sistema 3" className={classes.iconosSistemas}/>
-                            <br/>
-                            <Typography variant="h5" className={classes.text}>
-                                Sancionados
-                            </Typography>
-                        </Link>
+                        <Tooltip title="Servidores públicos y particulares sancionados" placement="top">
+                            <Link to="/sancionados" className ={ classes.link }>
+                                <img src={s3} alt="Sistema 3" className={classes.iconosSistemas}/>
+                                <br/>
+                                <Typography variant="h5" className={classes.text}>
+                                    Sancionados
+                                </Typography>
+                            </Link>
+                        </Tooltip>
                     </Grid>
                     <Grid item xl={4} lg={4} md={6} xs={12} align="center">
                         {/*<Link to="/pdn/home" className={classes.link }>*/}
-                            <img src={s4} alt="Sistema 4" className={classes.disabled}/>
-                            <br/>
-                            <Typography variant="h5" className={classes.text }>
-                                Fiscalización
-                            </Typography>
+                        <img src={s4} alt="Sistema 4" className={classes.disabled}/>
+                        <br/>
+                        <Typography variant="h5" className={classes.text }>
+                            Fiscalización
+                        </Typography>
                         {/*</Link>*/}
                     </Grid>
                     <Grid item xl={4} lg={4} md={6} xs={12} align="center">
                         {/*<Link to="/pdn/home" className={classes.link }>*/}
-                            <img src={s5} alt="Sistema 5" className={classes.disabled}/>
-                            <br/>
-                            <Typography variant="h5" className={classes.text}>Denuncias</Typography>
+                        <img src={s5} alt="Sistema 5" className={classes.disabled}/>
+                        <br/>
+                        <Typography variant="h5" className={classes.text}>Denuncias</Typography>
                         {/*</Link>*/}
                     </Grid>
                     <Grid item xl={4} lg={4} md={6} xs={12} align="center">
-                        <Link to="/contrataciones" className={classes.link}>
-                            <img src={s6} alt="Sistema 6" className={classes.iconosSistemas}/>
-                            <br/>
-                            <Typography variant="h5" className={classes.text}>Contrataciones</Typography>
-                        </Link>
-
+                        <Tooltip title="Contrataciones públicas" placement="top">
+                            <Link to="/contrataciones" className={classes.link}>
+                                <img src={s6} alt="Sistema 6" className={classes.iconosSistemas}/>
+                                <br/>
+                                <Typography variant="h5" className={classes.text}>Contrataciones</Typography>
+                            </Link>
+                        </Tooltip>
                     </Grid>
                 </Grid>
             </div>

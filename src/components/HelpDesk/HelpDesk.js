@@ -4,6 +4,7 @@ import Header from './Header/Header';
 import Grid from '@material-ui/core/Grid';
 import Footer from "../Home/Footer";
 import ExpansionPanels from './ExpansionPanels';
+import ScrollToTopButton from "../Navigation/ScrollToTopButton";
 
 const styles = theme => ({
     root: {
@@ -11,7 +12,10 @@ const styles = theme => ({
     },
     item: {
         maxWidth: 1200,
-        padding: theme.spacing(2)
+        paddingRight: theme.spacing(2),
+        paddingLeft: theme.spacing(2),
+        paddingTop: theme.spacing(10),
+        paddingBottom: theme.spacing(10),
     },
     title: {
         color: theme.palette.primary.dark
@@ -46,6 +50,7 @@ class HelpDesk extends React.Component{
 
             </Grid>
             <Footer/>
+            <ScrollToTopButton/>
         </div>
     }
 }
