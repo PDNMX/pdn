@@ -47,7 +47,6 @@ let menu = [
 
 class Activos extends Component {
   render() {
-    let section = this.props.section;
     let { classes, path, value, change } = this.props;
 
     return (

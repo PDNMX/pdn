@@ -8,8 +8,6 @@
 import React, { Component } from "react";
 import { Grid } from "@material-ui/core";
 
-import { Switch, Route, Link } from "react-router-dom";
-
 // PASIVOS
 import PasivosResume from "./resume-pasivos";
 import PasivosDeudas from "./deudas";
@@ -42,7 +40,6 @@ class Pasivos extends Component {
    * ----------------------------------------------------------------------
    */
   render() {
-    let section = this.props.section;
     let { classes, path, value, change } = this.props;
 
     return (
