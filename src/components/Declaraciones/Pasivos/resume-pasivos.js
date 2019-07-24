@@ -8,7 +8,7 @@
 import React, {Component} from "react";
 import {Grid, Paper} from '@material-ui/core';
 
-import BaseGraph from "../BaseGraph";
+import BaseGraph from "../single-components/BaseGraph";
 
 let d3 = Object.assign({}, require("d3-format"));
 /*

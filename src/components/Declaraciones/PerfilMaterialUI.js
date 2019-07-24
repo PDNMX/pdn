@@ -9,7 +9,7 @@ import React, { Component } from "react";
 import { Grid } from "@material-ui/core";
 
 import Informacion from "./Informacion/Informacion";
-import Pasivos from "./Pasivos";
+import Pasivos from "./Pasivos/Pasivos";
 import Intereses from "./Intereses/Intereses";
 import Activos from "./Activos/Activos";
 import Ingresos from "./Ingresos/Ingresos";
@@ -74,7 +74,7 @@ class PerfilMaterialUI extends Component {
     super(props);
     this.state = {
       profile: null,
-      menu_superior: 3,
+      menu_superior: 4,
       menu_informacion: 0,
       menu_interes: 0,
       menu_ingresos: 0,
