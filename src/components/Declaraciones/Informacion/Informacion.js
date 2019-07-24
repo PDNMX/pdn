@@ -6,7 +6,6 @@
   ////////////////////////////////////////////////////////////////////////////////
 */
 import React, { Component } from "react";
-import { Switch, Route } from "react-router-dom";
 import { Grid } from "@material-ui/core";
 import InfoGeneral from "./informacion-general";
 import InfoPuesto from "./puesto-actual";
@@ -22,32 +21,16 @@ const styles = theme => ({
     marginTop: 30
   },
   sidebar: {
-    background: "#34b3eb",
-    padding: 10
+    background: "#34b3eb"
   }
 });
 
 let menu = [
-  {
-    to: "/informacion",
-    label: "Información general"
-  },
-  {
-    to: "/informacion/puesto-actual",
-    label: "Puesto actual"
-  },
-  {
-    to: "/informacion/datos-curriculares",
-    label: "Datos curriculares"
-  },
-  {
-    to: "/informacion/experiencia-laboral",
-    label: "Experiencia laboral"
-  },
-  {
-    to: "/informacion/dependientes-economicos",
-    label: "Dependientes económicos"
-  }
+  "Información general",
+  "Puesto actual",
+  "Datos curriculares",
+  "Experiencia laboral",
+  "Dependientes económicos"
 ];
 
 /*
@@ -63,7 +46,7 @@ class Informacion extends Component {
    * ----------------------------------------------------------------------
    */
   render() {
-    let { classes, path } = this.props;
+    let { classes, path, value, change } = this.props;
 
     return (
       <div className={classes.root}>
@@ -73,6 +56,8 @@ class Informacion extends Component {
               menu={menu}
               id={this.props.profile._id}
               path={path}
+              value={value}
+              change={change}
             />
           </Grid>
           <Grid
@@ -81,72 +66,48 @@ class Informacion extends Component {
             md={10}
             style={{ backgroundColor: "#f2f2f2", padding: 15 }}
           >
-            <Switch>
-              <Route
-                exact
-                path="/declaraciones/perfil/:id/informacion"
-                render={() => (
-                  <InfoGeneral
-                    profile={this.props.profile}
-                    items={
-                      this.props.profile.informacion_personal
-                        .informacion_general
-                    }
-                  />
-                )}
+            {value === 0 && (
+              <InfoGeneral
+                profile={this.props.profile}
+                items={
+                  this.props.profile.informacion_personal.informacion_general
+                }
               />
-              <Route
-                exact
-                path="/declaraciones/perfil/:id/informacion/puesto-actual"
-                render={() => (
-                  <InfoPuesto
-                    profile={this.props.profile}
-                    items={
-                      this.props.profile.informacion_personal
-                        .datos_encargo_actual
-                    }
-                  />
-                )}
+            )}
+
+            {value === 1 && (
+              <InfoPuesto
+                profile={this.props.profile}
+                items={
+                  this.props.profile.informacion_personal.datos_encargo_actual
+                }
               />
-              <Route
-                exact
-                path="/declaraciones/perfil/:id/informacion/datos-curriculares"
-                render={() => (
-                  <InfoCurriculum
-                    profile={this.props.profile}
-                    items={
-                      this.props.profile.informacion_personal.datos_curriculares
-                    }
-                  />
-                )}
+            )}
+            {value === 2 && (
+              <InfoCurriculum
+                profile={this.props.profile}
+                items={
+                  this.props.profile.informacion_personal.datos_curriculares
+                }
               />
-              <Route
-                exact
-                path="/declaraciones/perfil/:id/informacion/experiencia-laboral"
-                render={() => (
-                  <InfoExperiencia
-                    profile={this.props.profile}
-                    items={
-                      this.props.profile.informacion_personal
-                        .experiencia_laboral
-                    }
-                  />
-                )}
+            )}
+            {value === 3 && (
+              <InfoExperiencia
+                profile={this.props.profile}
+                items={
+                  this.props.profile.informacion_personal.experiencia_laboral
+                }
               />
-              <Route
-                exact
-                path="/declaraciones/perfil/:id/informacion/dependientes-economicos"
-                render={() => (
-                  <InfoDependientes
-                    profile={this.props.profile}
-                    items={
-                      this.props.profile.informacion_personal
-                        .datos_dependientes_economicos
-                    }
-                  />
-                )}
+            )}
+            {value === 4 && (
+              <InfoDependientes
+                profile={this.props.profile}
+                items={
+                  this.props.profile.informacion_personal
+                    .datos_dependientes_economicos
+                }
               />
-            </Switch>
+            )}
           </Grid>
         </Grid>
       </div>

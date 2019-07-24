@@ -1,25 +1,21 @@
 import React from "react";
 
-import { MenuList, MenuItem, Chip } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { Link } from "react-router-dom";
+import { List, ListItem, ListItemText } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    // display: "block"
-  },
-  chip: {
-    margin: 0,
+    width: "100%",
+    maxWidth: 360,
     backgroundColor: "#34b3eb",
     fontWeight: "bold",
-    color: "rgba(255, 255, 255, 0.6)",
-    padding: "15 0"
+    color: "rgba(255, 255, 255, 0.6)"
   },
-  chipSelected: {
+  selected: {
     backgroundColor: "#c3e8f4",
     fontWeight: "bold",
-    color: "#34b3eb",
-    padding: "15 0"
+    fontSize: 14,
+    color: "#FFF"
   }
 }));
 
@@ -28,26 +24,21 @@ export default function MenuListComposition(props) {
 
   return (
     <div className={classes.root}>
-      <MenuList>
+      <List component="nav">
         {props.menu.map((option, index) => {
           return (
-            <MenuItem
+            <ListItem
               key={"menuLateral-" + index}
-              component={Link}
-              to={`/declaraciones/perfil/${props.id}${option.to}`}
+              button
+              selected={props.value === index}
+              onClick={event => props.change(index)}
+              classes={classes}
             >
-              <Chip
-                label={option.label}
-                className={
-                  props.path === `/declaraciones/perfil/${props.id}${option.to}`
-                    ? classes.chipSelected
-                    : classes.chip
-                }
-              />
-            </MenuItem>
+              <ListItemText primary={option} />
+            </ListItem>
           );
         })}
-      </MenuList>
+      </List>
     </div>
   );
 }

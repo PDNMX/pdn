@@ -177,7 +177,7 @@ class Contenedor extends React.Component {
             <Switch>
               <Route exact path="/declaraciones" component={Busqueda} />
               <Route
-                path="/declaraciones/perfil/:id/:section/:subsection?"
+                path="/declaraciones/perfil/:id?"
                 component={PerfilMaterialUI}
               />
               <Route

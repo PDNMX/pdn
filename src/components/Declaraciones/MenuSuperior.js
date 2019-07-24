@@ -9,8 +9,6 @@ import Money from "@material-ui/icons/MonetizationOnOutlined";
 import Domain from "@material-ui/icons/DomainOutlined";
 import Business from "@material-ui/icons/BusinessCenterOutlined";
 
-import { Link } from "react-router-dom";
-
 const useStyles = makeStyles({
   root: {
     background: "#f2f2f2",
@@ -39,49 +37,38 @@ const useStyles = makeStyles({
 
 export default function SimpleBottomNavigation(props) {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
 
   return (
     <BottomNavigation
-      value={value}
+      value={props.menu_superior}
       onChange={(event, newValue) => {
-        setValue(newValue);
+        props.change(newValue);
       }}
       showLabels
     >
       <BottomNavigationAction
-        component={Link}
-        to={`/declaraciones/perfil/${props.id}/informacion`}
         classes={classes}
         label="Información"
         icon={<Info />}
       />
 
       <BottomNavigationAction
-        component={Link}
-        to={`/declaraciones/perfil/${props.id}/intereses`}
         classes={classes}
         label="Intereses"
         icon={<Interes />}
       />
 
       <BottomNavigationAction
-        component={Link}
-        to={`/declaraciones/perfil/${props.id}/ingresos`}
         classes={classes}
         label="Ingresos"
         icon={<Money />}
       />
       <BottomNavigationAction
-        component={Link}
-        to={`/declaraciones/perfil/${props.id}/activos`}
         classes={classes}
         label="Activos"
         icon={<Domain />}
       />
       <BottomNavigationAction
-        component={Link}
-        to={`/declaraciones/perfil/${props.id}/pasivos`}
         classes={classes}
         label="Pasivos"
         icon={<Business />}

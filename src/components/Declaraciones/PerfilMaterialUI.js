@@ -6,12 +6,11 @@
   ////////////////////////////////////////////////////////////////////////////////
 */
 import React, { Component } from "react";
-import { Switch, Route } from "react-router-dom";
 import { Grid } from "@material-ui/core";
 
 import Informacion from "./Informacion/Informacion";
 import Pasivos from "./Pasivos";
-import Intereses from "./Intereses";
+import Intereses from "./Intereses/Intereses";
 import Activos from "./Activos";
 import Ingresos from "./Ingresos";
 
@@ -27,7 +26,7 @@ import Ingresos from "./Ingresos";
 */
 
 import * as ConstClass from "./ConstValues.js";
-import { Typography } from "@material-ui/core";
+import { Typography, Paper } from "@material-ui/core";
 
 const reducer = (accumulator, currentValue) => accumulator + currentValue;
 
@@ -41,19 +40,21 @@ const styles = theme => ({
   },
   mail: {
     fontSize: 11,
-    color: "#c6c6c6",
+    fontWeight: "bold",
     paddingLeft: 21,
     marginBottom: 20
   },
   titulo: {
-    fontSize: 12,
-    color: "#c6c6c6"
+    fontSize: 12
   },
   contenido: {
     fontSize: 14,
     color: "#313233",
     fontWeight: 500,
     marginBottom: 20
+  },
+  paper: {
+    padding: theme.spacing(3, 2)
   }
 });
 
@@ -72,7 +73,13 @@ class PerfilMaterialUI extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      profile: null
+      profile: null,
+      menu_superior: 1,
+      menu_informacion: 0,
+      menu_interes: 0,
+      menu_ingresos: 0,
+      menu_activos: 0,
+      menu_pasivos: 0
     };
 
     this.getProfile = this.getProfile.bind(this);
@@ -82,6 +89,42 @@ class PerfilMaterialUI extends Component {
 
     // console.log(this.props);
   }
+
+  change_menuSuperior = valor => {
+    this.setState({
+      menu_superior: valor
+    });
+  };
+
+  change_menuInformacion = valor => {
+    this.setState({
+      menu_informacion: valor
+    });
+  };
+
+  change_menuInteres = valor => {
+    this.setState({
+      menu_interes: valor
+    });
+  };
+
+  change_menuIngresos = valor => {
+    this.setState({
+      menu_ingresos: valor
+    });
+  };
+
+  change_menuActivos = valor => {
+    this.setState({
+      menu_activos: valor
+    });
+  };
+
+  change_menuPasivos = valor => {
+    this.setState({
+      menu_pasivos: valor
+    });
+  };
 
   /*
    * R E N D E R
@@ -101,151 +144,178 @@ class PerfilMaterialUI extends Component {
     return (
       <div className={classes.root}>
         <Grid container spacing={3}>
-          <Grid item xs={6}>
-            <Grid container spacing={3}>
-              <Grid item xs={4}>
-                <img
-                  alt="avatar2"
-                  src={`${process.env.PUBLIC_URL}/img/avatar.svg`}
-                  style={{ width: "100%", margin: "0 auto" }}
-                />
+          <Grid item xs={12}>
+            <Paper className={classes.paper}>
+              <Grid container spacing={3}>
+                {/* <Grid item xs={3}>
+                  <img
+                    alt="avatar2"
+                    src={`${process.env.PUBLIC_URL}/img/avatar.svg`}
+                    style={{ width: "100%", margin: "0 auto" }}
+                  />
+                </Grid> */}
+                <Grid item xs={12} style={{ textAlign: "right" }}>
+                  <Typography>
+                    <span
+                      style={{
+                        color: "#FFF",
+                        backgroundColor: "Red",
+                        fontWeight: "bold",
+                        padding: "5px 10px"
+                      }}
+                    >
+                      Actualización:{" "}
+                      {
+                        this.state.profile.informacion_personal
+                          .informacion_general.fecha_declaracion
+                      }
+                    </span>
+                  </Typography>
+                </Grid>
+                <Grid item xs={12}>
+                  <Grid container spacing={3}>
+                    <Grid item xs={7}>
+                      <Typography className={classes.h1}>
+                        {
+                          this.state.profile.informacion_personal
+                            .informacion_general.nombres
+                        }{" "}
+                        {
+                          this.state.profile.informacion_personal
+                            .informacion_general.primer_apellido
+                        }{" "}
+                        {
+                          this.state.profile.informacion_personal
+                            .informacion_general.segundo_apellido
+                        }
+                      </Typography>
+                      <img
+                        alt="email"
+                        src={email}
+                        style={{ width: 18, float: "left" }}
+                      />
+                      <Typography className={classes.mail}>
+                        {
+                          this.state.profile.informacion_personal
+                            .informacion_general.correo_electronico.laboral
+                        }
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={5}>
+                      <Typography className={classes.titulo}>
+                        INGRESOS ANUALES NETOS:
+                      </Typography>
+                      <Typography className={classes.contenido}>
+                        <strong style={{ fontSize: 25 }}>
+                          ${this.ingresosAnualesNetos()}
+                        </strong>
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <Grid container spacing={3}>
+                        <Grid item xs={4}>
+                          <Typography className={classes.titulo}>
+                            ENCARGO ACTUAL:
+                          </Typography>
+                          <Typography className={classes.contenido}>
+                            {
+                              this.state.profile.informacion_personal
+                                .datos_encargo_actual.empleo_cargo_comision
+                            }
+                          </Typography>
+                        </Grid>
+                        <Grid item xs={4}>
+                          <Typography className={classes.titulo}>
+                            ÁREA DE ADSCRIPCIÓN:
+                          </Typography>
+                          <Typography className={classes.contenido}>
+                            {
+                              this.state.profile.informacion_personal
+                                .datos_encargo_actual.area_adscripcion
+                            }
+                          </Typography>
+                        </Grid>
+                        <Grid item xs={4}>
+                          <Typography className={classes.titulo}>
+                            DEPENDENCIA:
+                          </Typography>
+                          <Typography className={classes.contenido}>
+                            <strong>
+                              {
+                                this.state.profile.informacion_personal
+                                  .datos_encargo_actual.ente_publico
+                              }
+                            </strong>
+                          </Typography>
+                        </Grid>
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                </Grid>
               </Grid>
-              <Grid item xs={8} style={{ fontSize: 21 }}>
-                <Typography className={classes.h1}>
-                  {
-                    this.state.profile.informacion_personal.informacion_general
-                      .nombres
-                  }{" "}
-                  {
-                    this.state.profile.informacion_personal.informacion_general
-                      .primer_apellido
-                  }{" "}
-                  {
-                    this.state.profile.informacion_personal.informacion_general
-                      .segundo_apellido
-                  }
-                </Typography>
-                <img alt="email" src={email} style={{ width: 18, float: "left" }} />
-                <Typography className={classes.mail}>
-                  {
-                    this.state.profile.informacion_personal.informacion_general
-                      .correo_electronico.laboral
-                  }
-                </Typography>
-                <Typography className={classes.titulo}>
-                  ENCARGO ACTUAL
-                </Typography>
-                <Typography className={classes.contenido}>
-                  {
-                    this.state.profile.informacion_personal.datos_encargo_actual
-                      .empleo_cargo_comision
-                  }
-                </Typography>
-              </Grid>
-            </Grid>
-          </Grid>
-          <Grid item xs={3}>
-            <Typography className={classes.titulo}>
-              ÁREA DE ADSCRIPCIÓN
-            </Typography>
-            <Typography className={classes.contenido}>
-              {
-                this.state.profile.informacion_personal.datos_encargo_actual
-                  .area_adscripcion
-              }
-            </Typography>
-
-            <Typography className={classes.titulo}>DEPENDENCIA</Typography>
-            <Typography className={classes.contenido}>
-              <strong>
-                {
-                  this.state.profile.informacion_personal.datos_encargo_actual
-                    .ente_publico
-                }
-              </strong>
-            </Typography>
-          </Grid>
-          <Grid item xs={3} style={{ textAlign: "right" }}>
-            <Typography className={classes.titulo}>
-              INGRESOS ANUALES NETOS
-            </Typography>
-            <Typography className={classes.contenido}>
-              <strong style={{ fontSize: 25 }}>
-                ${this.ingresosAnualesNetos()}
-              </strong>
-            </Typography>
-            <Typography className={classes.titulo}>
-              <small>
-                Actualización:{" "}
-                {
-                  this.state.profile.informacion_personal.informacion_general
-                    .fecha_declaracion
-                }{" "}
-              </small>
-            </Typography>
+            </Paper>
           </Grid>
         </Grid>
         {/* barra de navegacion superior */}
         <Grid container spacing={3}>
           <Grid item xs={12}>
-            <MenuSuperior id={this.props.match.params.id} />
+            <MenuSuperior
+              id={this.props.match.params.id}
+              menu_superior={this.state.menu_superior}
+              change={this.change_menuSuperior}
+            />
           </Grid>
         </Grid>
         <Grid container spacing={0}>
-          <Grid item xs={12}>
-            <Switch>
-              <Route
-                path="/declaraciones/perfil/:id/informacion"
-                render={() => (
-                  <Informacion
-                    section={this.props.match.params.subsection}
-                    profile={this.state.profile}
-                    path={this.props.location.pathname}
-                  />
-                )}
+          {this.state.menu_superior === 0 && (
+            <Grid item xs={12}>
+              <Informacion
+                section={this.props.match.params.subsection}
+                profile={this.state.profile}
+                path={this.props.location.pathname}
+                value={this.state.menu_informacion}
+                change={this.change_menuInformacion}
               />
-              <Route
-                path="/declaraciones/perfil/:id/pasivos"
-                render={() => (
-                  <Pasivos
-                    section={this.props.match.params.subsection}
-                    profile={this.state.profile}
-                    path={this.props.location.pathname}
-                  />
-                )}
+            </Grid>
+          )}
+          {this.state.menu_superior === 1 && (
+            <Grid item xs={12}>
+              <Intereses
+                section={this.props.match.params.subsection}
+                profile={this.state.profile}
+                path={this.props.location.pathname}
+                value={this.state.menu_interes}
+                change={this.change_menuInteres}
               />
-              <Route
-                path="/declaraciones/perfil/:id/intereses"
-                render={() => (
-                  <Intereses
-                    section={this.props.match.params.subsection}
-                    profile={this.state.profile}
-                    path={this.props.location.pathname}
-                  />
-                )}
+            </Grid>
+          )}
+          {this.state.menu_superior === 2 && (
+            <Grid item xs={12}>
+              <Ingresos
+                section={this.props.match.params.subsection}
+                profile={this.state.profile}
+                path={this.props.location.pathname}
               />
-              <Route
-                path="/declaraciones/perfil/:id/activos"
-                render={() => (
-                  <Activos
-                    section={this.props.match.params.subsection}
-                    profile={this.state.profile}
-                    path={this.props.location.pathname}
-                  />
-                )}
+            </Grid>
+          )}
+          {this.state.menu_superior === 3 && (
+            <Grid item xs={12}>
+              <Activos
+                section={this.props.match.params.subsection}
+                profile={this.state.profile}
+                path={this.props.location.pathname}
               />
-              <Route
-                path="/declaraciones/perfil/:id/ingresos"
-                render={() => (
-                  <Ingresos
-                    section={this.props.match.params.subsection}
-                    profile={this.state.profile}
-                    path={this.props.location.pathname}
-                  />
-                )}
+            </Grid>
+          )}
+          {this.state.menu_superior === 4 && (
+            <Grid item xs={12}>
+              <Pasivos
+                section={this.props.match.params.subsection}
+                profile={this.state.profile}
+                path={this.props.location.pathname}
               />
-            </Switch>
-          </Grid>
+            </Grid>
+          )}
         </Grid>
         <Grid container spacing={3}>
           <Grid item xs={12} align="right">

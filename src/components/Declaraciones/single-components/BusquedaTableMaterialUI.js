@@ -75,7 +75,7 @@ class BusquedaTableMaterialUI extends Component {
                     }/informacion`}
                   /> */}
                   <Link
-                    to={`declaraciones/perfil/${compa._id}/informacion`}
+                    to={`declaraciones/perfil/${compa._id}`}
                     className={classes.link}
                   >
                     {compa.informacion_personal.informacion_general.nombres}{" "}
