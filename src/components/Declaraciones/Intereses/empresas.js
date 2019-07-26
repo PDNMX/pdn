@@ -5,9 +5,29 @@
   //
   ////////////////////////////////////////////////////////////////////////////////
 */
-import React, {Component} from "react";
-import {Table, TableCell, TableBody, TableHead, TableRow, Grid, Paper} from '@material-ui/core';
+import React, { Component } from "react";
+import {
+  ExpansionPanel,
+  ExpansionPanelSummary,
+  ExpansionPanelDetails
+} from "@material-ui/core";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
+import { Grid, Typography } from "@material-ui/core";
+import { withStyles, lighten } from "@material-ui/core/styles";
+import styles from "../style";
+
+import LinearProgress from "@material-ui/core/LinearProgress";
+
+const BorderLinearProgress = withStyles({
+  root: {
+    height: 19,
+    backgroundColor: lighten("#808080", 0.5)
+  },
+  bar: {
+    borderRadius: 20
+  }
+})(LinearProgress);
 
 /*
 	////////////////////////////////////////////////////////////////////////////////
@@ -16,20 +36,22 @@ import {Table, TableCell, TableBody, TableHead, TableRow, Grid, Paper} from '@ma
   //
   ////////////////////////////////////////////////////////////////////////////////
 */
-class InteresesEmpresas extends Component{
-  constructor(props){
+class InteresesEmpresas extends Component {
+  constructor(props) {
     super(props);
 
-    let elems = this.props.profile.intereses.empresas_sociedades_asociaciones.map(d => {
-                  // let item = d;
-                  d.show = true;
+    let elems = this.props.profile.intereses.empresas_sociedades_asociaciones.map(
+      d => {
+        // let item = d;
+        d.show = true;
 
-                  return d;
-                });
+        return d;
+      }
+    );
 
     this.state = {
-      items : elems
-    }
+      items: elems
+    };
 
     this.toggl = this.toggl.bind(this);
   }
@@ -38,107 +60,152 @@ class InteresesEmpresas extends Component{
    * R E N D E R
    * ----------------------------------------------------------------------
    */
-  render(){
-    return(
-      <Grid container spacing={3} direction={'row-reverse'} className="col-sm-offset-3 sidecontent">
-        <Grid item xs={12} sm={9}>
-          <h2>Empresas, sociedades o asociaciones ({this.items().length})</h2>
+  render() {
+    let { classes } = this.props;
+
+    return (
+      <Grid container spacing={3} className={classes.rootSubseccion}>
+        <Grid item xs={12}>
+          <Typography className={classes.titulo}>
+            <strong>
+              Empresas, sociedades o asociaciones ({this.items().length})
+            </strong>
+          </Typography>
           <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <Paper className="pdn_d_box">
-                <Paper className="pdn_bar_container">
-                  <Paper className="pdn_bar declarante"></Paper>
-                </Paper>
-                <p className="pdn_graph_label"> <b className={ 'pdn_graph_label_item label declarante' }></b> Declarante</p>
-              </Paper>
-            </Grid>
-          </Grid>
-
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              {/* box starts*/}
-              { this.items().map( (interes, i) =>
-              <Paper className="pdn_d_box" key={"interes-" + i}>
-                <Grid container spacing={3} className="row pdn_border">
-                  <Grid item sm={6}>
-                    <p><span className="label declarante"> Declarante</span></p>
-                  </Grid>
-                  <Grid item sm={6} className="right">
-                    {/* <a onClick={(e) => this.toggl(interes, i, e)} heref="#" className={"pdn_arrow " + (interes.show ?  "close" : "open")}></a> */}
-                  </Grid>
-                </Grid>
-                {/* row ends*/}
-                {/* div close/open */}
-                <div style={ {display : (interes.show ? "block" : "none")} }>
-                  <Grid container spacing={3} className="pdn_border">
-                    {/* empresa, sociedad o asociación */}
-                    <Grid item sm={9}>
-                      <p className="pdn_label">Nombre de la empresa, sociedad o asociación</p>
-                      <h3> { interes.nombre_empresa_sociedad_asociacion } </h3>
-                      <p className="pdn_data_p pnd_box_note pdn_gray">{interes.domicilio.vialidad.tipo_vial+' '+interes.domicilio.vialidad.nom_vial+' No.' +interes.domicilio.numExt+ ' No. Int.'+interes.domicilio.numInt}
-                       <br/> { interes.domicilio.localidad.nom_loc+', '+interes.domicilio.municipio.nom_mun+', '+interes.domicilio.entidad_federativa.nom_agee+', '+interes.domicilio.pais.valor+' C.P. '+interes.domicilio.cp } </p>
-                    </Grid>
-                    {/* constitución */}
-                    <Grid item sm={3}>
-                      <p className="pdn_label">Fecha de constitución</p>
-                      <p className="pdn_data_p">{interes.fecha_constitucion} </p>
-                    </Grid>
-                  </Grid>
-                  {/* row ends*/}
-
-                  <Grid container spacing={3} className="pdn_border">
-                    {/* país*/}
-                    <Grid item sm={4}>
-                      <p className="pdn_label">País</p>
-                      <p className="pdn_data_p">{interes.pais_registro.valor} </p>
-                    </Grid>
-                    {/* RFC*/}
-                    <Grid item sm={4}>
-                      <p className="pdn_label">R.F.C</p>
-                      <p className="pdn_data_p">{interes.rfc} </p>
-                    </Grid>
-                    {/* # registro */}
-                    <Grid item sm={4}>
-                      <p className="pdn_label">Número de registro</p>
-                      <p className="pdn_data_p">{interes.numero_registro} </p>
-                    </Grid>
-                  </Grid>
-                  {/* row ends*/}
-
-                  {/* table */}
-                  <Grid container spacing={3} className="pdn_border">
-                    <Grid item xs={12} className="pdn_mobile_table">
-                    <Table className="table">
-                      <TableHead>
-                        <TableRow>
-                          <TableCell>Rol</TableCell>
-                          <TableCell>Actividad económica</TableCell>
-                          <TableCell>Porcentaje de participación</TableCell>
-                          <TableCell>Sector o industria</TableCell>
-                        </TableRow>
-                      </TableHead>
-                      <TableBody>
-                          <TableRow>
-                            <TableCell>
+            {this.items().map((interes, i) => (
+              <Grid item xs={12} md={6} key={"interes-" + i}>
+                <ExpansionPanel>
+                  <ExpansionPanelSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                  >
+                    <Typography className={classes.tituloFondo}>
+                      Declarante
+                    </Typography>
+                  </ExpansionPanelSummary>
+                  <ExpansionPanelDetails>
+                    <Grid container spacing={3}>
+                      <Grid item xs={12}>
+                        <Grid container spacing={3}>
+                          <Grid item xs={8}>
+                            <Typography className={classes.tituloCard}>
+                              Nombre de la empresa, sociedad o asociación
+                            </Typography>
+                            <Typography className={classes.dataCard}>
+                              <strong>
+                                {interes.nombre_empresa_sociedad_asociacion}
+                              </strong>
+                              <br />
+                              {interes.domicilio.vialidad.tipo_vial +
+                                " " +
+                                interes.domicilio.vialidad.nom_vial +
+                                " No." +
+                                interes.domicilio.numExt +
+                                " No. Int." +
+                                interes.domicilio.numInt}
+                              <br />{" "}
+                              {interes.domicilio.localidad.nom_loc +
+                                ", " +
+                                interes.domicilio.municipio.nom_mun +
+                                ", " +
+                                interes.domicilio.entidad_federativa
+                                  .nom_agee +
+                                ", " +
+                                interes.domicilio.pais.valor +
+                                " C.P. " +
+                                interes.domicilio.cp}{" "}
+                            </Typography>
+                          </Grid>
+                          <Grid item xs={4}>
+                            <Typography className={classes.tituloCard}>
+                              Fecha de constitución
+                            </Typography>
+                            <Typography className={classes.dataCard}>
+                              {interes.fecha_constitucion}
+                            </Typography>
+                          </Grid>
+                        </Grid>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Grid container spacing={3}>
+                          <Grid item xs={4}>
+                            <Typography className={classes.tituloCard}>
+                              País
+                            </Typography>
+                            <Typography className={classes.dataCard}>
+                              {interes.pais_registro.valor}
+                            </Typography>
+                          </Grid>
+                          <Grid item xs={4}>
+                            <Typography className={classes.tituloCard}>
+                              R.F.C.
+                            </Typography>
+                            <Typography className={classes.dataCard}>
+                              {interes.rfc}
+                            </Typography>
+                          </Grid>
+                          <Grid item xs={4}>
+                            <Typography className={classes.tituloCard}>
+                              Número de registro
+                            </Typography>
+                            <Typography className={classes.dataCard}>
+                              {interes.numero_registro}
+                            </Typography>
+                          </Grid>
+                        </Grid>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Grid container spacing={3}>
+                          <Grid item xs={6}>
+                            <Typography className={classes.tituloCard}>
+                              Rol
+                            </Typography>
+                            <Typography className={classes.dataCard}>
                               <strong>{interes.rol}</strong>
-                            </TableCell>
-                            <TableCell><b className= { 'pdn_' + interes.actividad_economica}></b> {interes.actividad_economica ? "Sí" : "No"}</TableCell>
-                            <TableCell>{interes.porcentaje_participacion}%
-                              <div className="pdn_bar_container darken">
-                                <div className="pdn_bar participacion" style={{ width: interes.porcentaje_participacion + '%' }}></div>
-                              </div></TableCell>
-                            <TableCell>{interes.sector_industria.valor}</TableCell>
-                          </TableRow>
-                      </TableBody>
-                    </Table>
+                            </Typography>
+                          </Grid>
+                          <Grid item xs={6}>
+                            <Typography className={classes.tituloCard}>
+                              Actividad económica
+                            </Typography>
+                            <Typography className={classes.dataCard}>
+                              {interes.actividad_economica ? "Sí" : "No"}
+                            </Typography>
+                          </Grid>
+                        </Grid>
+                        <Grid item xs={12}>
+                          <Grid container spacing={3}>
+                            <Grid item xs={6}>
+                              <Typography className={classes.tituloCard}>
+                                Porcentaje de participación
+                              </Typography>
+                              <Typography className={classes.dataCard}>
+                                {interes.porcentaje_participacion}%
+                                <BorderLinearProgress
+                                  className={classes.marginProgressbar}
+                                  variant="determinate"
+                                  color="primary"
+                                  value={interes.porcentaje_participacion}
+                                />
+                              </Typography>
+                            </Grid>
+                            <Grid item xs={6}>
+                              <Typography className={classes.tituloCard}>
+                                Sector o industria
+                              </Typography>
+                              <Typography className={classes.dataCard}>
+                                {interes.sector_industria.valor}
+                              </Typography>
+                            </Grid>
+                          </Grid>
+                        </Grid>
+                      </Grid>
                     </Grid>
-                  </Grid>
-                  {/* table ends */}
-                </div>
-                {/* div close/open ends */}
-              </Paper>
-              )}
-            </Grid>
+                  </ExpansionPanelDetails>
+                </ExpansionPanel>
+              </Grid>
+            ))}
           </Grid>
         </Grid>
       </Grid>
@@ -149,22 +216,22 @@ class InteresesEmpresas extends Component{
    * M E T H O D S
    * ----------------------------------------------------------------------
    */
-  toggl(item, index, e){
+  toggl(item, index, e) {
     console.log(item, index, e);
 
-    let items    = this.state.items,
-        newItems = items.map( d => {
-          if(item === d){
-            d.show = !item.show;
-          }
+    let items = this.state.items,
+      newItems = items.map(d => {
+        if (item === d) {
+          d.show = !item.show;
+        }
 
-          return d;
-        });
+        return d;
+      });
 
-    this.setState({items : newItems});
+    this.setState({ items: newItems });
   }
 
-  items(){
+  items() {
     return this.props.profile.intereses.empresas_sociedades_asociaciones;
   }
 }
@@ -176,4 +243,4 @@ class InteresesEmpresas extends Component{
   //
   ////////////////////////////////////////////////////////////////////////////////
 */
-export default InteresesEmpresas;
+export default withStyles(styles)(InteresesEmpresas);

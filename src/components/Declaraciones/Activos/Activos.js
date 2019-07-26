@@ -22,15 +22,8 @@ import ActivosBeneficiosEnEspecie from "./beneficios-en-especie";
 
 import { withStyles } from "@material-ui/core/styles";
 import MenuInformacion from "../MenuLaterlal";
-const styles = theme => ({
-  root: {
-    flexGrow: 1,
-    marginTop: 30
-  },
-  sidebar: {
-    background: "#34b3eb"
-  }
-});
+
+import styles from "../style";
 
 let menu = [
   "Resumen",
@@ -50,7 +43,7 @@ class Activos extends Component {
     let { classes, path, value, change } = this.props;
 
     return (
-      <div className={classes.root}>
+      <div className={classes.rootSeccion}>
         <Grid container spacing={0}>
           <Grid item xs={4} md={2} className={classes.sidebar}>
             <MenuInformacion
@@ -79,8 +72,12 @@ class Activos extends Component {
                 profile={this.props.profile}
               />
             )}
-            {value === 4 && <ActivosInversiones profile={this.props.profile} />}
-            {value === 5 && <ActivosEfectivo profile={this.props.profile} />}
+            {value === 4 && (
+              <ActivosInversiones profile={this.props.profile} />
+            )}
+            {value === 5 && (
+              <ActivosEfectivo profile={this.props.profile} />
+            )}
             {value === 6 && (
               <ActivosFideicomisos profile={this.props.profile} />
             )}

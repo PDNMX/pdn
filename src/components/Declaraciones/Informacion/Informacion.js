@@ -15,15 +15,8 @@ import InfoDependientes from "./dependientes-economicos";
 
 import { withStyles } from "@material-ui/core/styles";
 import MenuInformacion from "../MenuLaterlal";
-const styles = theme => ({
-  root: {
-    flexGrow: 1,
-    marginTop: 30
-  },
-  sidebar: {
-    background: "#34b3eb"
-  }
-});
+
+import styles from "../style";
 
 let menu = [
   "Información general",
@@ -49,7 +42,7 @@ class Informacion extends Component {
     let { classes, path, value, change } = this.props;
 
     return (
-      <div className={classes.root}>
+      <div className={classes.rootSeccion}>
         <Grid container spacing={0}>
           <Grid item xs={4} md={2} className={classes.sidebar}>
             <MenuInformacion
@@ -70,7 +63,8 @@ class Informacion extends Component {
               <InfoGeneral
                 profile={this.props.profile}
                 items={
-                  this.props.profile.informacion_personal.informacion_general
+                  this.props.profile.informacion_personal
+                    .informacion_general
                 }
               />
             )}
@@ -79,7 +73,8 @@ class Informacion extends Component {
               <InfoPuesto
                 profile={this.props.profile}
                 items={
-                  this.props.profile.informacion_personal.datos_encargo_actual
+                  this.props.profile.informacion_personal
+                    .datos_encargo_actual
                 }
               />
             )}
@@ -95,7 +90,8 @@ class Informacion extends Component {
               <InfoExperiencia
                 profile={this.props.profile}
                 items={
-                  this.props.profile.informacion_personal.experiencia_laboral
+                  this.props.profile.informacion_personal
+                    .experiencia_laboral
                 }
               />
             )}

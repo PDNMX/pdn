@@ -15,15 +15,8 @@ import PasivosObligaciones from "./otras-obligaciones";
 
 import { withStyles } from "@material-ui/core/styles";
 import MenuInformacion from "../MenuLaterlal";
-const styles = theme => ({
-  root: {
-    flexGrow: 1,
-    marginTop: 30
-  },
-  sidebar: {
-    background: "#34b3eb"
-  }
-});
+
+import styles from "../style";
 
 let menu = ["Resumen", "Deudas", "Otras obligaciones"];
 
@@ -43,7 +36,7 @@ class Pasivos extends Component {
     let { classes, path, value, change } = this.props;
 
     return (
-      <div className={classes.root}>
+      <div className={classes.rootSeccion}>
         <Grid container spacing={0}>
           <Grid item xs={4} md={2} className={classes.sidebar}>
             <MenuInformacion

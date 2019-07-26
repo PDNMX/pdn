@@ -21,42 +21,11 @@ import MenuSuperior from "./MenuSuperior";
 
 import { withStyles } from "@material-ui/core/styles";
 
-/*
-import Ingresos from "./Ingresos";
-*/
-
 import * as ConstClass from "./ConstValues.js";
 import { Typography, Paper } from "@material-ui/core";
+import styles from "./style";
 
 const reducer = (accumulator, currentValue) => accumulator + currentValue;
-
-const styles = theme => ({
-  root: {
-    flexGrow: 1
-  },
-  h1: {
-    fontSize: 21,
-    fontWeight: 700
-  },
-  mail: {
-    fontSize: 11,
-    fontWeight: "bold",
-    paddingLeft: 21,
-    marginBottom: 20
-  },
-  titulo: {
-    fontSize: 12
-  },
-  contenido: {
-    fontSize: 14,
-    color: "#313233",
-    fontWeight: 500,
-    marginBottom: 20
-  },
-  paper: {
-    padding: theme.spacing(3, 2)
-  }
-});
 
 /*
 	////////////////////////////////////////////////////////////////////////////////
@@ -74,7 +43,7 @@ class PerfilMaterialUI extends Component {
     super(props);
     this.state = {
       profile: null,
-      menu_superior: 4,
+      menu_superior: 2,
       menu_informacion: 0,
       menu_interes: 0,
       menu_ingresos: 0,

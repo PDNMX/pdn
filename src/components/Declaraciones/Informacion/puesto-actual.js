@@ -9,47 +9,13 @@ import React, { Component } from "react";
 import { Grid, Paper, Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 
-const styles = theme => ({
-  root: {
-    flexGrow: 1,
-    padding: 15
-  },
-  titulo: {
-    color: "#34b3eb",
-    fontWeight: 500,
-    fontSize: 20,
-    marginBottom: 30
-  },
-  paper: {
-    padding: theme.spacing(3, 2)
-  },
-  tituloCard: {
-    fontSize: 13,
-    color: "#cccccc",
-    fontWeight: 400,
-    marginBottom: 0
-  },
-  dataCard: {
-    fontSize: 14,
-    borderBottom: "1px solid #f2f2f2",
-    paddingBottom: 10,
-    marginBottom: 10
-  },
-  tituloGeneralCard: {
-    fontWeight: 600,
-    fontSize: 16,
-    color: "#606060",
-    borderBottom: "1px solid #f2f2f2",
-    paddingBottom: 10,
-    marginBottom: 10
-  }
-});
+import styles from "../style";
 
 class InfoPuesto extends Component {
   render() {
     let { classes } = this.props;
     return (
-      <Grid container spacing={3} className={classes.root}>
+      <Grid container spacing={3} className={classes.rootSubseccion}>
         <Grid item xs={12}>
           <Typography className={classes.titulo}>
             <strong>Puesto actual</strong>

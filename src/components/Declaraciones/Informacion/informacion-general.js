@@ -10,40 +10,14 @@ import { Grid, Paper, Typography } from "@material-ui/core";
 
 import { withStyles } from "@material-ui/core/styles";
 
-const styles = theme => ({
-  root: {
-    flexGrow: 1,
-    padding: 15
-  },
-  titulo: {
-    color: "#34b3eb",
-    fontWeight: 500,
-    fontSize: 20,
-    marginBottom: 30
-  },
-  paper: {
-    padding: theme.spacing(3, 2)
-  },
-  tituloCard: {
-    fontSize: 13,
-    color: "#cccccc",
-    fontWeight: 400,
-    marginBottom: 0    
-  },
-  dataCard: {
-    fontSize: 14,
-    borderBottom: "1px solid #f2f2f2",
-    paddingBottom: 10,
-    marginBottom: 10
-  }
-});
+import styles from "../style";
 
 class InfoGeneralMaterialUI extends Component {
   render() {
 	  let { classes } = this.props;
     return (
       <div>
-        <Grid container spacing={3} className={classes.root}>
+        <Grid container spacing={3} className={classes.rootSubseccion}>
           <Grid item xs={12}>
             <Typography className={classes.titulo}>
               <strong>Información general</strong>
@@ -54,17 +28,23 @@ class InfoGeneralMaterialUI extends Component {
                   <Typography className={classes.tituloCard}>
                     Nacionalidades
                   </Typography>
-                  <Typography component={"span"} className={classes.dataCard}>
+                  <Typography
+                    component={"span"}
+                    className={classes.dataCard}
+                  >
                     <ul>
                       {this.props.items.nacionalidades.map((d, i) => (
-                        <li key={"nacionalidad-"+i}>{d.valor}</li>
+                        <li key={"nacionalidad-" + i}>{d.valor}</li>
                       ))}
                     </ul>
                   </Typography>
                   <Typography className={classes.tituloCard}>
                     Lugar de nacimiento
                   </Typography>
-                  <Typography component={"span"} className={classes.dataCard}>
+                  <Typography
+                    component={"span"}
+                    className={classes.dataCard}
+                  >
                     <ul>
                       <li>
                         {
@@ -81,7 +61,10 @@ class InfoGeneralMaterialUI extends Component {
                   <Typography className={classes.tituloCard}>
                     Estado Civil
                   </Typography>
-                  <Typography component={"span"} className={classes.dataCard}>
+                  <Typography
+                    component={"span"}
+                    className={classes.dataCard}
+                  >
                     <ul>
                       <li>{this.props.items.estado_civil.valor}</li>
                     </ul>
@@ -90,7 +73,7 @@ class InfoGeneralMaterialUI extends Component {
               </Grid>
             </Grid>
           </Grid>
-        </Grid>       
+        </Grid>
       </div>
     );
   }

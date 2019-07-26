@@ -5,10 +5,16 @@
   //
   ////////////////////////////////////////////////////////////////////////////////
 */
-import React, {Component} from "react";
-import {Grid, Paper} from '@material-ui/core';
+import React, { Component } from "react";
+import { Grid, Paper } from "@material-ui/core";
 
 import BaseGraph from "../single-components/BaseGraph";
+
+
+import { withStyles } from "@material-ui/core/styles";
+import styles from "../style";
+
+
 let d3 = Object.assign({}, require("d3-format"));
 
 /*
@@ -18,20 +24,22 @@ let d3 = Object.assign({}, require("d3-format"));
   //
   ////////////////////////////////////////////////////////////////////////////////
 */
-class InteresesResume extends Component{
-  constructor(props){
+class InteresesResume extends Component {
+  constructor(props) {
     super(props);
 
-    let elems = this.props.profile.intereses.empresas_sociedades_asociaciones.map(d => {
-                  // let item = d;
-                  d.show = true;
+    let elems = this.props.profile.intereses.empresas_sociedades_asociaciones.map(
+      d => {
+        // let item = d;
+        d.show = true;
 
-                  return d;
-                });
+        return d;
+      }
+    );
 
     this.state = {
-      items : elems
-    }
+      items: elems
+    };
 
     this.toggl = this.toggl.bind(this);
   }
@@ -40,72 +48,70 @@ class InteresesResume extends Component{
    * R E N D E R
    * ----------------------------------------------------------------------
    */
-  render(){
+  render() {
     let fakeData = [
       {
-        name : "Empresas",
-        amount : [5, 0, 0, 0, 0, 0]
+        name: "Empresas",
+        amount: [5, 0, 0, 0, 0, 0]
       },
 
       {
-        name : "Membresías",
-        amount : [1, 2, 1, 1, 0, 0]
+        name: "Membresías",
+        amount: [1, 2, 1, 1, 0, 0]
       },
 
       {
-        name : "Apoyos",
-        amount : [1, 0, 0, 0, 2, 0]
+        name: "Apoyos",
+        amount: [1, 0, 0, 0, 2, 0]
       },
 
       {
-        name : "Representación Activa",
-        amount : [1,0, 0, 0, 0, 0]
+        name: "Representación Activa",
+        amount: [1, 0, 0, 0, 0, 0]
       },
 
       {
-        name : "Representación Pasiva",
-        amount : [0,2, 0, 0, 0, 0]
+        name: "Representación Pasiva",
+        amount: [0, 2, 0, 0, 0, 0]
       },
 
       {
-        name : "Socios",
-        amount : [1, 0, 2, 0, 0, 0]
+        name: "Socios",
+        amount: [1, 0, 2, 0, 0, 0]
       },
 
       {
-        name : "Clientes",
-        amount : [1, 1, 0, 0, 0, 0]
+        name: "Clientes",
+        amount: [1, 1, 0, 0, 0, 0]
       },
 
       {
-        name : "Otras partes",
-        amount : [1, 0, 0, 0, 0, 0]
+        name: "Otras partes",
+        amount: [1, 0, 0, 0, 0, 0]
       },
 
       {
-        name : "Beneficios",
-        amount : [1, 0, 2, 0, 0, 0]
+        name: "Beneficios",
+        amount: [1, 0, 2, 0, 0, 0]
       }
     ];
 
-    return(
-      <Grid container spacing={3} direction={'row-reverse'} className="col-sm-offset-3 sidecontent">
-        <Grid item xs={12} sm={9}>
-          <Grid container spacing={16}>
-            <Grid item xs={12}>
-              <Paper className="pdn_d_box">
-              <BaseGraph data={fakeData} format={d3.format(",")} />
-                <p className="pdn_graph_label right">
-                <b className='pdn_graph_label_item label declarante'></b> Declarante
-                <b className='pdn_graph_label_item label conyuge'></b> Conyugé
-                <b className='pdn_graph_label_item label hijos'></b> Hijo/Hija
-                <b className='pdn_graph_label_item label padres'></b> Padre/Madre
-                <b className='pdn_graph_label_item label suegros'></b> Suegro/Suegra
-                <b className='pdn_graph_label_item label otro'></b> Otro
-                </p>
-              </Paper>
-            </Grid>
-          </Grid>
+    let { classes } = this.props;
+
+    return (
+      <Grid container spacing={3} className={classes.rootSubseccion}>
+        <Grid item xs={12} md={6}>
+          <Paper className={classes.paper}>
+            <BaseGraph data={fakeData} format={d3.format(",")} />
+            <span style={{ fontSize: 12 }}>
+              <span className={classes.declarante} />Declarante
+              <span className={classes.conyuge} />Conyugé
+              <span className={classes.hijos} />Hijo/Hija
+              <span className={classes.padres} />Padre/Madre
+              <span className={classes.suegros} />Suegro/Suegra
+              <span className={classes.otro} />Otro
+            </span>
+          </Paper>
         </Grid>
       </Grid>
     );
@@ -115,22 +121,22 @@ class InteresesResume extends Component{
    * M E T H O D S
    * ----------------------------------------------------------------------
    */
-  toggl(item, index, e){
+  toggl(item, index, e) {
     console.log(item, index, e);
 
-    let items    = this.state.items,
-        newItems = items.map( d => {
-          if(item === d){
-            d.show = !item.show;
-          }
+    let items = this.state.items,
+      newItems = items.map(d => {
+        if (item === d) {
+          d.show = !item.show;
+        }
 
-          return d;
-        });
+        return d;
+      });
 
-    this.setState({items : newItems});
+    this.setState({ items: newItems });
   }
 
-  items(){
+  items() {
     return this.props.profile.intereses.empresas_sociedades_asociaciones;
   }
 }
@@ -142,4 +148,4 @@ class InteresesResume extends Component{
   //
   ////////////////////////////////////////////////////////////////////////////////
 */
-export default InteresesResume;
+export default withStyles(styles)(InteresesResume);
