@@ -173,7 +173,7 @@ class VideoAppBar extends React.Component {
                                         }
                                         {
                                             this.state.haySesion === false &&
-                                            <MenuItem component={Link} to={"/login"}>Iniciar sesión</MenuItem>
+                                            <MenuItem component={Link} to={"/login"} disabled={true}>Iniciar sesión</MenuItem>
                                         }
                                     </Menu>
                                 </div>

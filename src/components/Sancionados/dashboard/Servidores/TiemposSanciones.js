@@ -112,7 +112,8 @@ class TiemposSanciones extends React.Component {
                         axes: {
                             fill: "#666672"
                         },
-                        title: "Duración de las sanciones en años"
+                        title: "Duración de las sanciones en años",
+
 
                     }
                 }
