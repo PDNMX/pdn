@@ -10,10 +10,8 @@ import { Grid, Paper } from "@material-ui/core";
 
 import BaseGraph from "../single-components/BaseGraph";
 
-
 import { withStyles } from "@material-ui/core/styles";
 import styles from "../style";
-
 
 let d3 = Object.assign({}, require("d3-format"));
 
@@ -104,12 +102,18 @@ class InteresesResume extends Component {
           <Paper className={classes.paper}>
             <BaseGraph data={fakeData} format={d3.format(",")} />
             <span style={{ fontSize: 12 }}>
-              <span className={classes.declarante} />Declarante
-              <span className={classes.conyuge} />Conyugé
-              <span className={classes.hijos} />Hijo/Hija
-              <span className={classes.padres} />Padre/Madre
-              <span className={classes.suegros} />Suegro/Suegra
-              <span className={classes.otro} />Otro
+              <span className={classes.declarante} />
+              Declarante
+              <span className={classes.conyuge} />
+              Conyugé
+              <span className={classes.hijos} />
+              Hijo/Hija
+              <span className={classes.padres} />
+              Padre/Madre
+              <span className={classes.suegros} />
+              Suegro/Suegra
+              <span className={classes.otro} />
+              Otro
             </span>
           </Paper>
         </Grid>
