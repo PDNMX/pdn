@@ -174,6 +174,7 @@ class Index extends React.Component {
                     </Grid>
                 </Grid>
                 <ScrollToTopButton/>
+
                 < Footer/>
             </div>
         );
