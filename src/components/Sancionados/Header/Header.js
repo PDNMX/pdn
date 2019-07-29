@@ -10,6 +10,7 @@ import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
 import './Header.css';
 import classNames from 'classnames';
 import Button from "@material-ui/core/Button";
+import AlertDialog from "../AlertDialolg";
 
 const style = theme => ({
         root: {
@@ -58,7 +59,10 @@ const style = theme => ({
 );
 
 class Header extends React.Component{
-
+    constructor(props) {
+        super(props);
+        this.btnVideo = React.createRef();
+    }
     render(){
         const {classes} = this.props;
 
@@ -106,9 +110,11 @@ class Header extends React.Component{
                         </Typography>
                     </Grid>
                     <Grid item xs={12} align={'center'}>
-                        <Button variant="contained" className={classes.button} component={Link} to="#">Conoce más</Button>
+                        <Button  variant="contained" className={classes.button}
+                                onClick={() => this.btnVideo.handleClickOpen()}>Conoce más</Button>
                     </Grid>
                 </Grid>
+                <AlertDialog innerRef={comp => this.btnVideo = comp} />
             </div>
         )
     }
