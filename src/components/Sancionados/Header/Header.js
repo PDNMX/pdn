@@ -9,6 +9,7 @@ import {Typography} from "@material-ui/core"
 import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
 import './Header.css';
 import classNames from 'classnames';
+import Button from "@material-ui/core/Button";
 
 const style = theme => ({
         root: {
@@ -47,7 +48,12 @@ const style = theme => ({
             paddingLeft: "40px",
             paddingTop: "40px",
             paddingBottom: "40px"
-        }
+        },
+        button:{
+            background: '#ffe01b',
+            marginTop: theme.spacing(3),
+            marginBottom: theme.spacing(2)
+        },
     }
 );
 
@@ -98,6 +104,9 @@ class Header extends React.Component{
                         <Typography  className={classes.whiteText} style={{fontSize: '18px',fontWeight: 500}}>
                             Sanciones o inhabilitaciones firmes.
                         </Typography>
+                    </Grid>
+                    <Grid item xs={12} align={'center'}>
+                        <Button variant="contained" className={classes.button} component={Link} to="#">Conoce más</Button>
                     </Grid>
                 </Grid>
             </div>
