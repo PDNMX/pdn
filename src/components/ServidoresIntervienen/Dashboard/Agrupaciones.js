@@ -30,7 +30,7 @@ const styles = theme => ({
         paddingLeft: "10px",
         paddingRight: "10px",
         marginBottom: "30px",
-        textAlign : "justify"
+        textAlign: "justify"
     },
     btnDownload: {
         textAlign: "right"
@@ -38,8 +38,8 @@ const styles = theme => ({
     formControl: {
         width: '100%'
     },
-    buttonContainer:{
-        textAlign : "center"
+    buttonContainer: {
+        textAlign: "center"
     },
 
 });
@@ -53,13 +53,13 @@ let z = d3.scaleOrdinal()
 
 class Agrupaciones extends React.Component {
     state = {
-        ejercicio: null,
+        ejercicio: '',
         ejercicios: [],
-        ramo: null,
+        ramo: '',
         ramos: [],
-        institucion: null,
+        institucion: '',
         instituciones: [],
-        error : false
+        error: false
     };
 
     componentDidMount() {
@@ -70,10 +70,17 @@ class Agrupaciones extends React.Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevState.ejercicio != this.state.ejercicio) {
-            this.loadRamos();
+            if (this.state.ejercicio)
+                this.loadRamos();
+            this.loadData();
         }
         if (prevState.ramo != this.state.ramo) {
-            this.loadInstituciones();
+            if (this.state.ramo)
+                this.loadInstituciones();
+            this.loadData();
+        }
+        if (prevState.institucion != this.state.institucion) {
+            this.loadData();
         }
     }
 
@@ -84,16 +91,21 @@ class Agrupaciones extends React.Component {
             method: "get"
         };
 
-        rp(options).then(data => {
+          rp(options).then(data => {
             let ejercicios = [];
-            let idEjercicio = 0;
+            let idEjercicio = 1;
             data.data.forEach(item => {
                 ejercicios.push({id: idEjercicio++, ejercicio: item.ejercicio});
             });
-            this.setState({ejercicios: ejercicios});
+            this.setState({
+                ejercicios: ejercicios,
+                ejercicio: ejercicios[ejercicios.length - 1].ejercicio
+            });
+              return null;
         }).catch(err => {
             console.log(err);
-            this.setState({error:true})
+            this.setState({error: true});
+              return null;
         })
     };
 
@@ -107,16 +119,18 @@ class Agrupaciones extends React.Component {
             }
         };
 
-        rp(options).then(data => {
+         rp(options).then(data => {
             let ramos = [];
             let idRamo = 0;
             data.data.forEach(item => {
                 ramos.push({id: idRamo++, ramo: item.ramo});
             });
-            this.setState({ramos: ramos, ramo: null, institucion: null});
+            this.setState({ramos: ramos, ramo: '', institucion: ''});
+            return null;
         }).catch(err => {
             console.log(err);
-            this.setState({error:true})
+            this.setState({error: true});
+            return null;
         })
     };
 
@@ -134,16 +148,18 @@ class Agrupaciones extends React.Component {
             }
         };
 
-        rp(options).then(data => {
+         rp(options).then(data => {
             let instituciones = [];
             let idInstitucion = 0;
             data.data.forEach(item => {
                 instituciones.push({id: idInstitucion++, institucion: item.institucion});
             });
-            this.setState({instituciones: instituciones, institucion: null});
+            this.setState({instituciones: instituciones, institucion: ''});
+            return null;
         }).catch(err => {
             console.log(err);
-            this.setState({error:true})
+            this.setState({error: true});
+             return null;
         })
     };
 
@@ -154,6 +170,7 @@ class Agrupaciones extends React.Component {
             if (this.state.ejercicio) filtros.push("ejercicio='" + this.state.ejercicio + "'");
             if (this.state.ramo) filtros.push("ramo='" + this.state.ramo + "'");
             if (this.state.institucion) filtros.push("institucion='" + this.state.institucion + "'");
+
 
             let options = {
                 uri: process.env.REACT_APP_HOST_PDNBACK + '/viz/servidoresIntervienen/getAgrupaciones',
@@ -221,18 +238,19 @@ class Agrupaciones extends React.Component {
                 }).catch(err => {
 
                 console.log(err);
-                this.setState({error : true})
+                this.setState({error: true})
             });
         });
     }
 
 
     limpiarBusqueda = () => {
+        let ejercicios = this.state.ejercicios;
         this.setState({
-            ejercicio: null,
-            ramo: null,
-            institucion: null,
-            error : false
+            ejercicio: ejercicios[ejercicios.length - 1].ejercicio,
+            ramo: '',
+            institucion: '',
+            error: false
         })
     };
 
@@ -255,18 +273,28 @@ class Agrupaciones extends React.Component {
                         </Grid>
                         <Grid item xs={12} className={classes.descripcion}>
                             <Typography variant={"body1"}>
-                                En las secciones anteriores se puede observar de manera general el comportamiento de los procesos de contratación, sin embargo, resulta interesante conocer cómo se distribuyen estós en
-                                diferntes variables como: Ejericio fiscal, Ramo, Institución.De acuerdo a los valores que selecciones, podrás obtener 5 diferentes combinaciones que mostrarán lo siguiente:<br/><br/>
+                                En las secciones anteriores se puede observar de manera general el comportamiento de los
+                                procesos de contratación, sin embargo, resulta interesante conocer cómo se distribuyen
+                                estós en
+                                diferntes variables como: Ejericio fiscal, Ramo, Institución.De acuerdo a los valores
+                                que selecciones, podrás obtener 5 diferentes combinaciones que mostrarán lo
+                                siguiente:<br/><br/>
 
-                                1.- <b>Ejercicio:</b> seleccionando únicamente el Ejercicio, conocerás el total de funcionaros que intervinieron en procesos de contratación en cada uno de ellos<br/>
-                                2.- <b>Ramo:</b> seleccionando únicamente el Ramo, obtendrás el número de funcionarios que intervinieron en procesos de contratación dentro de ese Ramo en cada uno
+                                1.- <b>Ejercicio:</b> seleccionando únicamente el Ejercicio, conocerás el total de
+                                funcionaros que intervinieron en procesos de contratación en cada uno de ellos<br/>
+                                2.- <b>Ramo:</b> seleccionando únicamente el Ramo, obtendrás el número de funcionarios
+                                que intervinieron en procesos de contratación dentro de ese Ramo en cada uno
                                 de los Ejercicios fiscales<br/>
-                                3.- <b>Institución:</b> selecciona únicamente una Institución o bien el Ramo y la Institución, para conocer el número de servidores que intervinieron en procesos de
+                                3.- <b>Institución:</b> selecciona únicamente una Institución o bien el Ramo y la
+                                Institución, para conocer el número de servidores que intervinieron en procesos de
                                 contatación que tuvo en cada uno de los ejercicios fiscales<br/>
-                                4.- <b>Ejercicio y Ramo: </b> Cada Ramo cuenta con una serie de Instituciones, selecciona un Ejercicio fiscal y un Ramo para conocer como se distribuyen el
+                                4.- <b>Ejercicio y Ramo: </b> Cada Ramo cuenta con una serie de Instituciones,
+                                selecciona un Ejercicio fiscal y un Ramo para conocer como se distribuyen el
                                 número de funcionarios en cada una de las Instituciones en los diferentes años<br/>
-                                5.-<b>Ejercicio, Ramo e Institución: </b> Para conocer de manera puntual el número de servidores en procesos de contatatación de determinada Institución en cierto Ejercicio,
-                                podrás seleccionar el Ejercicio, Ramo e Institución o bien el Ejercicio y la Institución deseada.<br/>
+                                5.-<b>Ejercicio, Ramo e Institución: </b> Para conocer de manera puntual el número de
+                                servidores en procesos de contatatación de determinada Institución en cierto Ejercicio,
+                                podrás seleccionar el Ejercicio, Ramo e Institución o bien el Ejercicio y la Institución
+                                deseada.<br/>
 
 
                                 <br/><br/>Para comenzar, selecciona algún filtro y da clic en el botón <b>Buscar</b>
@@ -283,9 +311,10 @@ class Agrupaciones extends React.Component {
                                             id: 'campoSelectEjercicio',
                                         }}
                                 >
+                                    <MenuItem key={''} value={''}> TODOS</MenuItem>
                                     {
                                         this.state.ejercicios.map(item => {
-                                            return <MenuItem value={item.ejercicio}>
+                                            return <MenuItem key={item.ejercicio} value={item.ejercicio}>
                                                 {item.ejercicio}
                                             </MenuItem>
                                         })
@@ -305,10 +334,10 @@ class Agrupaciones extends React.Component {
                                             id: 'campoSelectRamo',
                                         }}
                                 >
-                                    <MenuItem value={null} > TODOS</MenuItem>
+                                    <MenuItem key={''} value={''}> TODOS</MenuItem>
                                     {
                                         this.state.ramos.map(item => {
-                                            return <MenuItem value={item.ramo}>
+                                            return <MenuItem key={item.ramo} value={item.ramo}>
                                                 {item.ramo}
                                             </MenuItem>
                                         })
@@ -328,10 +357,10 @@ class Agrupaciones extends React.Component {
                                             id: 'campoSelectInstitucion',
                                         }}
                                 >
-                                    <MenuItem value={null} > TODAS</MenuItem>
+                                    <MenuItem  key={''} value={''}>TODAS</MenuItem>
                                     {
                                         this.state.instituciones.map(item => {
-                                            return <MenuItem value={item.institucion}>
+                                            return <MenuItem key={item.institucion} value={item.institucion}>
                                                 {item.institucion}
                                             </MenuItem>
                                         })
@@ -340,14 +369,17 @@ class Agrupaciones extends React.Component {
 
                             </FormControl>
                         </Grid>
-                        <Grid item xs={10}/>
-                        <Grid item md={1}xs={12} className={classes.buttonContainer}>
-                            <Button variant="contained" color="secondary" className={classes.button}
-                                    onClick={this.loadData}
-                                    disabled={!this.state.ejercicio && !this.state.ramo && !this.state.institucion}>
-                                Buscar
-                            </Button>
-                        </Grid>
+                        <Grid item xs={11}/>
+                        {
+                            /*<Grid item md={1}xs={12} className={classes.buttonContainer}>
+                             <Button variant="contained" color="secondary" className={classes.button}
+                                     onClick={this.loadData}
+                                     disabled={!this.state.ejercicio && !this.state.ramo && !this.state.institucion}>
+                                 Buscar
+                             </Button>
+                         </Grid>
+                         */}
+
                         <Grid item xs={12} md={1} className={classes.buttonContainer}>
                             <Button variant="contained" color="secondary" className={classes.button}
                                     onClick={this.limpiarBusqueda}>
@@ -361,7 +393,7 @@ class Agrupaciones extends React.Component {
                             }
                             {
                                 this.state.error &&
-                                    <MensajeErrorDatos/>
+                                <MensajeErrorDatos/>
                             }
                         </Grid>
                     </Grid>

@@ -64,6 +64,7 @@ let color = ["#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
 class Ejercicio extends React.Component {
     state = {
         error: false,
+
     };
 
     componentDidMount() {

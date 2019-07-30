@@ -109,21 +109,8 @@ class BusquedaServidor extends React.Component {
     };
 
     render() {
-        const {classes, handleChangeCampo, nombreServidor, apellidoUno, apellidoDos, rfc, curp, institucion, theme} = this.props;
-        const selectStyles = {
-            input: base => ({
-                ...base,
-                '& input': {
-                    font: 'inherit',
-                    color: theme.palette.fontLight.color,
-                }
-            }),
-            placeholder: base => ({
-                ...base,
-                fontSize: '1em',
-                fontWeight: 400
-            })
-        };
+        const {classes, handleChangeCampo, nombreServidor, apellidoUno, apellidoDos, rfc, curp, institucion} = this.props;
+
         return (
             <Grid container spacing={4}>
                 <Grid item xs={12}>
@@ -236,7 +223,6 @@ class BusquedaServidor extends React.Component {
                             label="Apellido Dos"
                             type="search"
                             onChange={(e) => handleChangeCampo('apellidoDos', e)}
-                            value={apellidoDos}
                             value={apellidoDos}
                             InputLabelProps={{
                                 className: classes.inputShrink,

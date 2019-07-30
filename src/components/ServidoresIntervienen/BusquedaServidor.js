@@ -118,21 +118,7 @@ class BusquedaServidor extends React.Component {
     };
 
     render() {
-        const {classes, handleChangeCampo, nombreServidor, apellidoUno, apellidoDos, procedimiento, institucion, theme} = this.props;
-        const selectStyles = {
-            input: base => ({
-                ...base,
-                '& input': {
-                    font: 'inherit',
-                    color: theme.palette.black.color,
-                }
-            }),
-            placeholder : base => ({
-                ...base,
-                fontSize: '1em',
-                fontWeight: 400
-            })
-        };
+        const {classes, handleChangeCampo, nombreServidor, apellidoUno, apellidoDos, procedimiento, institucion} = this.props;
 
         return (
             <Grid container spacing={4}>
@@ -199,13 +185,13 @@ class BusquedaServidor extends React.Component {
                                 id: 'campoSelectProcedimiento',
                             }}
                         >
-                            <MenuItem value={null}>
+                            <MenuItem value={''} key={''}>
                                 TODOS
                             </MenuItem>
-                            <MenuItem value={'CONTRATACIONES'}>CONTRATACIONES</MenuItem>
-                            <MenuItem value={'CONCESIONES'}>CONCESIONES</MenuItem>
-                            <MenuItem value={'ENAJENACIONES'}>ENAJENACIONES</MenuItem>
-                            <MenuItem value={'DICTAMENES'}>DICTAMENES</MenuItem>
+                            <MenuItem value={'CONTRATACIONES'} key={'CONTRATACIONES'}>CONTRATACIONES</MenuItem>
+                            <MenuItem value={'CONCESIONES'} key={'CONCESIONES'}>CONCESIONES</MenuItem>
+                            <MenuItem value={'ENAJENACIONES'} key={'ENAJENACIONES'}>ENAJENACIONES</MenuItem>
+                            <MenuItem value={'DICTAMENES'} key={'DICTAMENES'}>DICTAMENES</MenuItem>
                         </Select>
 
                     </FormControl>
@@ -223,7 +209,7 @@ class BusquedaServidor extends React.Component {
                         >
                             {
                                 this.state.suggestions.map((item => {
-                                    return <MenuItem value={item.value}>
+                                    return <MenuItem value={item.value} key={item.value}>
                                         {item.label}
                                     </MenuItem>
                                 }))
