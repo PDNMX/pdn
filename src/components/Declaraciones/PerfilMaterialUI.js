@@ -43,12 +43,12 @@ class PerfilMaterialUI extends Component {
     super(props);
     this.state = {
       profile: null,
-      menu_superior: 4,
-      menu_informacion: 0,
+      menu_superior: 0,
+      menu_informacion: 4,
       menu_interes: 0,
       menu_ingresos: 0,
       menu_activos: 0,
-      menu_pasivos: 2
+      menu_pasivos: 0
     };
 
     this.getProfile = this.getProfile.bind(this);
@@ -171,10 +171,10 @@ class PerfilMaterialUI extends Component {
                       </Typography>
                     </Grid>
                     <Grid item xs={5}>
-                      <Typography className={classes.titulo}>
+                      <Typography className={classes.tituloCard}>
                         INGRESOS ANUALES NETOS:
                       </Typography>
-                      <Typography className={classes.contenido}>
+                      <Typography className={classes.dataCard}>
                         <strong style={{ fontSize: 25 }}>
                           ${this.ingresosAnualesNetos()}
                         </strong>
@@ -183,10 +183,10 @@ class PerfilMaterialUI extends Component {
                     <Grid item xs={12}>
                       <Grid container spacing={3}>
                         <Grid item xs={4}>
-                          <Typography className={classes.titulo}>
+                          <Typography className={classes.tituloCard}>
                             ENCARGO ACTUAL:
                           </Typography>
-                          <Typography className={classes.contenido}>
+                          <Typography className={classes.dataCard}>
                             {
                               this.state.profile.informacion_personal
                                 .datos_encargo_actual.empleo_cargo_comision
@@ -194,10 +194,10 @@ class PerfilMaterialUI extends Component {
                           </Typography>
                         </Grid>
                         <Grid item xs={4}>
-                          <Typography className={classes.titulo}>
+                          <Typography className={classes.tituloCard}>
                             ÁREA DE ADSCRIPCIÓN:
                           </Typography>
-                          <Typography className={classes.contenido}>
+                          <Typography className={classes.dataCard}>
                             {
                               this.state.profile.informacion_personal
                                 .datos_encargo_actual.area_adscripcion
@@ -205,10 +205,10 @@ class PerfilMaterialUI extends Component {
                           </Typography>
                         </Grid>
                         <Grid item xs={4}>
-                          <Typography className={classes.titulo}>
+                          <Typography className={classes.tituloCard}>
                             DEPENDENCIA:
                           </Typography>
-                          <Typography className={classes.contenido}>
+                          <Typography className={classes.dataCard}>
                             <strong>
                               {
                                 this.state.profile.informacion_personal
