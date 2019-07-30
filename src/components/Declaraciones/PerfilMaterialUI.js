@@ -43,12 +43,12 @@ class PerfilMaterialUI extends Component {
     super(props);
     this.state = {
       profile: null,
-      menu_superior: 3,
+      menu_superior: 4,
       menu_informacion: 0,
       menu_interes: 0,
       menu_ingresos: 0,
       menu_activos: 0,
-      menu_pasivos: 0
+      menu_pasivos: 2
     };
 
     this.getProfile = this.getProfile.bind(this);
