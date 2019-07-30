@@ -45,7 +45,7 @@ const styles = theme => ({
 });
 
 
-let color = ["#F44336","#9C27B0", "#673AB7", "#3F51B5",
+let color = ["#F44336", "#9C27B0", "#673AB7", "#3F51B5",
     "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
     "#8BC34A", "#CDDC39", "#FFEB3B", "#FFC107", "#FF9800",
     "#FF5722", "#795548", "#9E9E9E", "#607D8B", "#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
@@ -56,13 +56,13 @@ let color = ["#F44336","#9C27B0", "#673AB7", "#3F51B5",
 
 class Tops extends React.Component {
     state = {
-        ejercicio: null,
+        ejercicio: '',
         ejercicios: [],
-        ramo: null,
+        ramo: '',
         ramos: [],
-        institucion: null,
+        institucion: '',
         instituciones: [],
-        top: null,
+        top: 'INSTITUCION',
         error: false
     };
 
@@ -70,14 +70,25 @@ class Tops extends React.Component {
         this.loadEjercicios();
         this.loadRamos();
         this.loadInstituciones();
+        this.loadData();
     };
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevState.ejercicio != this.state.ejercicio) {
-            this.loadRamos();
+            if (this.state.ejercicio)
+                this.loadRamos();
+            this.loadData();
         }
         if (prevState.ramo != this.state.ramo) {
-            this.loadInstituciones();
+            if (this.state.ramo)
+                this.loadInstituciones();
+            this.loadData();
+        }
+        if(prevState.institucion != this.state.institucion){
+            this.loadData();
+        }
+        if(prevState.top != this.state.top){
+            this.loadData();
         }
     }
 
@@ -95,9 +106,11 @@ class Tops extends React.Component {
                 ejercicios.push({id: idEjercicio++, ejercicio: item.ejercicio});
             });
             this.setState({ejercicios: ejercicios});
+            return null;
         }).catch(err => {
             console.log(err);
-            this.setState({error: true})
+            this.setState({error: true});
+            return null;
         })
     };
 
@@ -117,10 +130,12 @@ class Tops extends React.Component {
             data.data.forEach(item => {
                 ramos.push({id: idRamo++, ramo: item.ramo});
             });
-            this.setState({ramos: ramos, ramo: null, institucion: null});
+            this.setState({ramos: ramos, ramo: '', institucion: ''});
+            return null;
         }).catch(err => {
             console.log(err);
-            this.setState({error: true})
+            this.setState({error: true});
+            return null;
         })
     };
 
@@ -144,21 +159,23 @@ class Tops extends React.Component {
             data.data.forEach(item => {
                 instituciones.push({id: idInstitucion++, institucion: item.institucion});
             });
-            this.setState({instituciones: instituciones, institucion: null});
+            this.setState({instituciones: instituciones, institucion: ''});
+            return null;
         }).catch(err => {
             console.log(err);
-            this.setState({error: true})
+            this.setState({error: true});
+            return null;
         })
     };
 
 
     limpiarBusqueda = () => {
         this.setState({
-            ejercicio: null,
-            ramo: null,
-            institucion: null,
+            ejercicio: '',
+            ramo: '',
+            institucion: '',
             error: false,
-            top: null,
+            top: 'INSTITUCION',
             label: null,
         })
     };
@@ -191,7 +208,7 @@ class Tops extends React.Component {
                         return {
                             "top": item.top,
                             "total": parseInt(item.total),
-                            "case" : item.case ? item.case : null
+                            "case": item.case ? item.case : null
                         }
                     })
                     this.setState({
@@ -202,18 +219,18 @@ class Tops extends React.Component {
                             x: "total",
                             y: "top",
                             yConfig: {
-                                title: this.state.top==="id_procedimiento"?"PROCEDIMIENTO": this.state.top==="UR"?"UNIDADES RESPONSABLES": this.state.top,
-                                tickFormat: function(d) {
-                                    return  "";
+                                title: this.state.top === "id_procedimiento" ? "PROCEDIMIENTO" : this.state.top === "UR" ? "UNIDADES RESPONSABLES" : this.state.top,
+                                tickFormat: function (d) {
+                                    return "";
                                 },
                             },
                             xConfig: {
                                 title: "NÚMERO DE REGISTROS"
                             },
                             tooltipConfig: {
-                                title: this.state.top==="id_procedimiento" ? function (d) {
+                                title: this.state.top === "id_procedimiento" ? function (d) {
                                     return d["case"];
-                                }: function (d) {
+                                } : function (d) {
                                     return d["top"];
                                 },
                                 tbody: [
@@ -226,7 +243,9 @@ class Tops extends React.Component {
                             },
                             height: 400,
                             shapeConfig: {
-                                label: function(d){return d["case"]? d["case"] : d["top"]},
+                                label: function (d) {
+                                    return d["case"] ? d["case"] : d["top"]
+                                },
                                 fill: (d, i) => {
                                     return color[i]
                                 }
@@ -234,7 +253,7 @@ class Tops extends React.Component {
                             axes: {
                                 fill: "#666672"
                             },
-                            title: "TOP 10 " + (this.state.top==="id_procedimiento"?"PROCEDIMIENTO": this.state.top==="UR"?"UNIDADES RESPONSABLES": this.state.top),
+                            title: "TOP 10 " + (this.state.top === "id_procedimiento" ? "PROCEDIMIENTO" : this.state.top === "UR" ? "UNIDADES RESPONSABLES" : this.state.top),
 
                         }
                     })
@@ -263,11 +282,12 @@ class Tops extends React.Component {
                             <Typography variant={"body1"}>
                                 Debido a la gran variedad de datos, en está gráfica puedes obtener el Top 10 de
                                 una serie de valores representantivos como: Procedimiento, Instituciones,
-                                Unidades Responsables y Puestos. Adicionalmente, puedes profundizar los resultados seleccionando algún Ejercicio fiscal, Ramo o Institución
+                                Unidades Responsables y Puestos. Adicionalmente, puedes profundizar los resultados
+                                seleccionando algún Ejercicio fiscal, Ramo o Institución
                                 <br/><br/>Para comenzar, selecciona un top y da clic en el botón <b>Buscar</b>
                             </Typography>
                         </Grid>
-                        <Grid item md={3}xs={12}>
+                        <Grid item md={3} xs={12}>
                             <FormControl className={classes.formControl}>
                                 <InputLabel htmlFor="campoSelectEjercicio">Ejercicio</InputLabel>
                                 <Select style={{marginTop: '0px'}}
@@ -278,6 +298,7 @@ class Tops extends React.Component {
                                             id: 'campoSelectEjercicio',
                                         }}
                                 >
+                                    <MenuItem key={''} value={''}> TODOS</MenuItem>
                                     {
                                         this.state.ejercicios.map(item => {
                                             return <MenuItem key={item.ejercicio} value={item.ejercicio}>
@@ -289,7 +310,7 @@ class Tops extends React.Component {
 
                             </FormControl>
                         </Grid>
-                        <Grid item md={3}xs={12}>
+                        <Grid item md={3} xs={12}>
                             <FormControl className={classes.formControl}>
                                 <InputLabel htmlFor="campoSelectRamo">Ramo</InputLabel>
                                 <Select style={{marginTop: '0px'}}
@@ -300,7 +321,7 @@ class Tops extends React.Component {
                                             id: 'campoSelectRamo',
                                         }}
                                 >
-                                    <MenuItem value={null}> TODOS</MenuItem>
+                                    <MenuItem value={''}>TODOS</MenuItem>
                                     {
                                         this.state.ramos.map(item => {
                                             return <MenuItem value={item.ramo} key={item.ramo}>
@@ -312,7 +333,7 @@ class Tops extends React.Component {
 
                             </FormControl>
                         </Grid>
-                        <Grid item md={3}xs={12}>
+                        <Grid item md={3} xs={12}>
                             <FormControl className={classes.formControl}>
                                 <InputLabel htmlFor="campoSelectInstitucion">Institución</InputLabel>
                                 <Select style={{marginTop: '0px'}}
@@ -323,7 +344,7 @@ class Tops extends React.Component {
                                             id: 'campoSelectInstitucion',
                                         }}
                                 >
-                                    <MenuItem value={null} key={"all"}> TODAS</MenuItem>
+                                    <MenuItem value={''} key={"all"}>TODAS</MenuItem>
                                     {
                                         this.state.instituciones.map(item => {
                                             return <MenuItem value={item.institucion} key={item.institucion}>
@@ -335,7 +356,7 @@ class Tops extends React.Component {
 
                             </FormControl>
                         </Grid>
-                        <Grid item md={3}xs={12}>
+                        <Grid item md={3} xs={12}>
                             <FormControl className={classes.formControl}>
                                 <InputLabel htmlFor="selectTop">Top</InputLabel>
                                 <Select style={{marginTop: '0px'}}
@@ -354,14 +375,8 @@ class Tops extends React.Component {
 
                             </FormControl>
                         </Grid>
-                        <Grid item xs={10}/>
-                        <Grid item md={1} xs={12} className={classes.buttonContainer}>
-                            <Button variant="contained" color="secondary" className={classes.button}
-                                    onClick={this.loadData}
-                                    disabled={!this.state.top}>
-                                Buscar
-                            </Button>
-                        </Grid>
+                        <Grid item xs={11}/>
+
                         <Grid item xs={12} md={1} className={classes.buttonContainer}>
                             <Button variant="contained" color="secondary" className={classes.button}
                                     onClick={this.limpiarBusqueda}>

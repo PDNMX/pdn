@@ -112,7 +112,7 @@ class BusquedaParticular extends React.Component {
     };
 
     render() {
-        let {classes, handleChangeCampo, nombreParticular, numeroExpediente, institucion, theme} = this.props;
+        let {classes, handleChangeCampo, nombreParticular, numeroExpediente, institucion} = this.props;
 
         return (
             <Grid container spacing={4}>
@@ -130,7 +130,7 @@ class BusquedaParticular extends React.Component {
                         >
                             {
                                 this.state.suggestions.map((item => {
-                                    return <MenuItem value={item.value}>
+                                    return <MenuItem value={item.value} key={item.value}>
                                         {item.label}
                                     </MenuItem>
                                 }))
