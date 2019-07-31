@@ -47,11 +47,11 @@ class Dashboard extends React.Component {
                             <b>{"¿Qué puedo encontrar?"}</b>
                         </Typography>
                         <Typography variant={"body1"} className={classes.desc}>
-                            A continuación encontrará 4 secciones:<br/>
-                            1.-<b>Cantidad de licitantes, proveedores y contratistas sancionados.</b> Comprende la información entre el 2004 a la fecha. <a href="#g1">Ver</a><br/>
-                            2.-<b>Sentido de las resoluciones.</b> Muestra cuál fue el sentido de la resolución para las sanciones a lo largo del tiempo y de manera general. <a href="#g2">Ver</a><br/>
-                            3.-<b>Dependencias con mayor número de sanciones.</b> Muestra cuáles son las dependencias con mayor número de licitantes, proveedores y contratistas sacionados de manera global y por año. <a href="#g3">Ver</a><br/>
-                            4.-<b>Duración de las sanciones.</b> Muestra cómo varía la duración de las sanciones por año, por tipo de resolución y por dependencia. <a href="#g4">Ver</a>
+                            A continuación encontrará 4 secciones:<br/><br/>
+                            1.-<b>Cantidad de licitantes, proveedores y contratistas sancionados.</b> Comprende la información entre el 2004 a la fecha, respecto a la cantidad de licitantes, proveedores y contratistas sancionados. <a href="#g1">Ver</a><br/><br/>
+                            2.-<b>Sentido de las resoluciones.</b> Muestra cuál fue el sentido de la resolución para las sanciones a lo largo del tiempo y de manera general. <a href="#g2">Ver</a><br/><br/>
+                            3.-<b>Dependencias con mayor número de sanciones.</b> Muestra cuáles son las dependencias con mayor número de licitantes, proveedores y contratistas sacionados de manera global y por año. <a href="#g3">Ver</a><br/><br/>
+                            {/*4.-<b>Duración de las sanciones.</b> Muestra cómo varía la duración de las sanciones por año, por tipo de resolución y por dependencia. <a href="#g4">Ver</a>*/}
                         </Typography>
                     </Grid>
                     <Grid item xs={12} className={classes.sectionT} id={"g1"}>

@@ -140,7 +140,7 @@ class TiemposSanciones extends React.Component {
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>
                         <Typography>
-                            Si tomamos en cuenta el tiempo que duró la sanción a los funcionarios, podemos obserbar que
+                            Si tomamos en cuenta el tiempo que duró la inhabilitación a los funcionarios, podemos obserbar que
                             más del 50% de las sanciones totales fueron de 10 años, aprox. 1363.
                             9% de las sanciones duraron menos de 1 año y 40% menos de 10 años y muy pocas sanciones
                             duraron más de 10 años.

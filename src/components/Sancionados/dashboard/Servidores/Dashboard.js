@@ -48,11 +48,11 @@ class Dashboard extends React.Component {
                             <b>¿Qué puedo encontrar?</b>
                         </Typography>
                         <Typography variant={"body1"} className={classes.desc}>
-                            Considerando los campos en el conjunto de datos, las visualizaciones presentan 4 puntos principales:  <br/>
-                            1. <b>Cantidad de funcionarios sancionados.</b> Conoce el número de funcionarios sancionados del 2013 a la fecha. <a href="#g1">Ver</a><br/>
-                            2. <b>Causa de las sanciones.</b> Muestra cuáles fueron las causas de la sanciones desde 2013, es posible ver el comportamiento de manera general o particular.<a href="#g2">Ver</a><br/>
-                            3. <b>Dependencias con más sancionados.</b> Muestra cuáles son las dependencias con más funcionarios sancionados.<a href="#g3">Ver</a><br/>
-                            4. <b>Duración de las sanciones.</b> Muestra cómo varía la duración de las sanciones por año y por dependencia. <a href="#g4">Ver</a>
+                            Considerando los campos en el conjunto de datos, las visualizaciones presentan 4 puntos principales:  <br/><br/>
+                            1. <b>Cantidad de funcionarios sancionados.</b> Conoce el número de funcionarios sancionados del 2013 a la fecha. <a href="#g1">Ver</a><br/><br/>
+                            2. <b>Causa de las sanciones.</b> Muestra cuáles fueron las causas de la sanciones desde 2013, es posible ver el comportamiento de manera general o particular.<a href="#g2">Ver</a><br/><br/>
+                            3. <b>Dependencias con más sancionados.</b> Muestra cuáles son las dependencias con más funcionarios sancionados.<a href="#g3">Ver</a><br/><br/>
+                            4. <b>Duración de las sanciones.</b> Muestra cómo varía la duración de las inhabilitaciones por año. <a href="#g4">Ver</a>
                         </Typography>
                     </Grid>
                     <Grid item xs={12} className={classes.sectionT} id={"g1"}>
