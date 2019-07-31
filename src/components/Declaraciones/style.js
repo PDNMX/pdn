@@ -118,5 +118,11 @@ export default theme => ({
   //Progressbar
   marginProgressbar: {
     margin: theme.spacing(1, 0)
+  },
+  // graficas
+  listaGraficas: {
+    listStyle: "none",
+    display: "inline-block",
+    fontSize: 14
   }
 });

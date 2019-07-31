@@ -5,9 +5,9 @@ import Footer from "./Footer";
 
 import Busqueda from "./Busqueda";
 import PerfilMaterialUI from "./PerfilMaterialUI";
-import Stats from "./Stats";
+import Stats from "./Estadisticas/Stats";
 
-import {  Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { Grid } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
@@ -101,12 +101,7 @@ class Contenedor extends React.Component {
 
     return (
       <div className={classes.root}>
-        <Header
-          logo={S3}
-          titulo={titulo}
-          copy={copy}
-          background={background}
-        />
+        <Header logo={S3} titulo={titulo} copy={copy} background={background} />
         <Grid container spacing={0} className={classes.bgContainer}>
           <Grid item xs={12} className={classes.section}>
             <Grid container spacing={0}>
@@ -129,10 +124,7 @@ class Contenedor extends React.Component {
                       className={classes.image}
                     />
                   </figure>
-                  <Typography
-                    variant="subtitle1"
-                    className={classes.whiteText}
-                  >
+                  <Typography variant="subtitle1" className={classes.whiteText}>
                     Buscar un servidor público
                   </Typography>
                 </Link>
@@ -149,10 +141,7 @@ class Contenedor extends React.Component {
                   "tab"
                 )}
               >
-                <Link
-                  className={classes.link}
-                  to="/declaraciones/estadistica/edad"
-                >
+                <Link className={classes.link} to="/declaraciones/estadisticas">
                   <figure className={classes.figure}>
                     <img
                       alt="Estadísticas"
@@ -160,10 +149,7 @@ class Contenedor extends React.Component {
                       className={classes.image}
                     />
                   </figure>
-                  <Typography
-                    variant="subtitle1"
-                    className={classes.whiteText}
-                  >
+                  <Typography variant="subtitle1" className={classes.whiteText}>
                     Estadísticas
                   </Typography>
                 </Link>
@@ -180,10 +166,7 @@ class Contenedor extends React.Component {
                 path="/declaraciones/perfil/:id?"
                 component={PerfilMaterialUI}
               />
-              <Route
-                path="/declaraciones/estadistica/:section"
-                component={Stats}
-              />
+              <Route path="/declaraciones/estadisticas" component={Stats} />
             </Switch>
           </Grid>
         </Grid>

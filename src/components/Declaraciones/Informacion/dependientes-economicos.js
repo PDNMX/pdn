@@ -56,9 +56,7 @@ class InfoDependientes extends Component {
                               className={classes.dataCard}
                             >
                               <ul>
-                                <li>
-                                  {dependiente.sector_industria.valor}
-                                </li>
+                                <li>{dependiente.sector_industria.valor}</li>
                               </ul>
                             </Typography>
                           </Grid>
@@ -163,9 +161,7 @@ class InfoDependientes extends Component {
                                   className={classes.dataCard}
                                 >
                                   <ul>
-                                    <li>
-                                      {programa.institucion_otorga_apoyo}
-                                    </li>
+                                    <li>{programa.institucion_otorga_apoyo}</li>
                                   </ul>
                                 </Typography>
                               </Grid>

@@ -229,7 +229,6 @@ class PerfilMaterialUI extends Component {
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <MenuSuperior
-              id={this.props.match.params.id}
               menu_superior={this.state.menu_superior}
               change={this.change_menuSuperior}
             />
