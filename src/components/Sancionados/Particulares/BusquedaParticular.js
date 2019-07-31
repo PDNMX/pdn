@@ -137,7 +137,7 @@ class BusquedaParticular extends React.Component {
                         >
                             {
                                 this.state.suggestions.map((item => {
-                                    return <MenuItem value={item.value}>
+                                    return <MenuItem value={item.value} key={item.value}>
                                         {item.label}
                                     </MenuItem>
                                 }))

@@ -181,7 +181,7 @@ class EnhancedTable extends React.Component {
             procedimiento: 0,
             open: false,
             elementoSeleccionado: {},
-            institucion: null,
+            institucion: "",
             loading: false,
             totalRows: 0,
             filterDataAll: [],

@@ -6,6 +6,13 @@ import {Typography} from "@material-ui/core"
 import {LinePlot, Pie} from "d3plus-react";
 import rp from "request-promise";
 import MensajeErrorDatos from "../../../Tablas/MensajeErrorDatos";
+import {FlexibleXYPlot} from "react-vis/es";
+import VerticalGridLines from "react-vis/es/plot/vertical-grid-lines";
+import HorizontalGridLines from "react-vis/es/plot/horizontal-grid-lines";
+import XAxis from "react-vis/es/plot/axis/x-axis";
+import YAxis from "react-vis/es/plot/axis/y-axis";
+import LineMarkSeries from "react-vis/es/plot/series/line-mark-series";
+import Hint from "react-vis/es/plot/hint";
 
 const styles = theme => ({
     frameChart: {
@@ -55,6 +62,7 @@ let color = ["#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
 class AnioResolucionSanciones extends React.Component {
     state = {
         error: false,
+        hoveredCell: false,
     };
 
     componentDidMount() {
@@ -85,6 +93,9 @@ class AnioResolucionSanciones extends React.Component {
                             Line: {
                                 strokeWidth: 2,
                                 stroke: "blue",
+                            },
+                            Circle:{
+
                             }
                         },
                         tooltipConfig: {
@@ -139,6 +150,7 @@ class AnioResolucionSanciones extends React.Component {
 
     render() {
         const {classes} = this.props;
+        let {hoveredCell} = this.state;
         return (
             <div>
                 <Grid container spacing={0} justify='center' className={classes.frameChart}>
@@ -160,8 +172,57 @@ class AnioResolucionSanciones extends React.Component {
                     <Grid item xs={12} md={8}>
                         {
                             this.state.methods && this.state.methods.data &&
-                            <LinePlot config={this.state.methods}/>
+                            <LinePlot config={this.state.methods}/> &&
+                            <FlexibleXYPlot height={400}>
+                            <VerticalGridLines/>
+                            <HorizontalGridLines/>
+                            <XAxis title={"Año de la sanción"} tickValues={this.state.methods.data.map(item => {
+                            return item.x
+                        })} tickFormat={v => `${v}`}/>
+                            <YAxis title={"Número de sanciones"}/>
+
+                            <LineMarkSeries
+                            className="linemark-series-example"
+                            style={{
+                            strokeWidth: '3px'
+                        }}
+                            lineStyle={{stroke: '#5fb1e6'}}
+                            markStyle={{stroke: 'orange'}}
+                            data={this.state.methods.data}
+                            onValueMouseOver={(datapoint, event) =>
+                            this.setState({hoveredCell: datapoint})
                         }
+                            onValueMouseOut={(datapoint, event) => {
+                            this.setState({hoveredCell: null})
+                        }}
+                            >
+                            </LineMarkSeries>
+                        {hoveredCell ? (
+                            <Hint value={hoveredCell}>
+                            <div style={{background: 'white'}}>
+                            <table style={{border: '1px solid black', color:'black'}}>
+                            <thead style={{textAlign: 'center'}}>
+                            <tr>
+                                <th>Datos</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                            <td>Año:</td>
+                            <td>{hoveredCell.x}</td>
+                            </tr>
+                            <tr>
+                            <td>Número de sanciones:</td>
+                            <td>{hoveredCell.y}</td>
+                            </tr>
+                            </tbody>
+                            </table>
+                            </div>
+                            </Hint>
+                            ) : null}
+                            </FlexibleXYPlot>
+
+                            }
                     </Grid>
                     <Grid item xs={12} md={4}>
                         {
