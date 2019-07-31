@@ -5,8 +5,29 @@
   //
   ////////////////////////////////////////////////////////////////////////////////
 */
-import React, {Component} from "react";
-import {Grid, Paper} from '@material-ui/core';
+import React, { Component } from "react";
+import { Grid, Typography } from "@material-ui/core";
+import {
+  ExpansionPanel,
+  ExpansionPanelSummary,
+  ExpansionPanelDetails
+} from "@material-ui/core";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+
+import { withStyles, lighten } from "@material-ui/core/styles";
+import styles from "../style";
+
+import LinearProgress from "@material-ui/core/LinearProgress";
+
+const BorderLinearProgress = withStyles({
+  root: {
+    height: 19,
+    backgroundColor: lighten("#808080", 0.5)
+  },
+  bar: {
+    borderRadius: 20
+  }
+})(LinearProgress);
 /*
 	////////////////////////////////////////////////////////////////////////////////
   //
@@ -14,20 +35,20 @@ import {Grid, Paper} from '@material-ui/core';
   //
   ////////////////////////////////////////////////////////////////////////////////
 */
-class ActivosBienesInmuebles extends Component{
-  constructor(props){
+class ActivosBienesInmuebles extends Component {
+  constructor(props) {
     super(props);
 
     let elems = this.props.profile.activos.bienes_inmuebles.map(d => {
-                  // let item = d;
-                  d.show = true;
+      // let item = d;
+      d.show = true;
 
-                  return d;
-                });
+      return d;
+    });
 
     this.state = {
-      items : elems
-    }
+      items: elems
+    };
 
     this.toggl = this.toggl.bind(this);
   }
@@ -36,129 +57,155 @@ class ActivosBienesInmuebles extends Component{
    * R E N D E R
    * ----------------------------------------------------------------------
    */
-  render(){
-    return(
-      <Grid container spacing={3} direction={'row-reverse'} className="sidecontent">
-        <Grid item xs={12} sm={9}>
-        <h2>Bienes inmuebles ({this.items().length})</h2>
-        <Grid container spacing={3}>
-          <Grid item xs={12}>
-            <Paper className="pdn_d_box">
-              <Paper className="pdn_bar_container">
-                <Paper className="pdn_bar declarante"></Paper>
-              </Paper>
-              <p className="pdn_graph_label"><b className="pdn_graph_label_item label declarante"></b> Declarantes</p>
-            </Paper>
-          </Grid>
-        </Grid>
-        {/* row ends*/ }
+  render() {
+    let { classes } = this.props;
 
-        <Grid container spacing={3}>
-          <Grid item xs={12}>
-            {/* box starts*/}
-            { this.items().map( (inmueble, i) =>
-            <Paper className="pdn_d_box" key={"inmueble-" + i} id={"inmueble-" + i}>
-              {/* row starts*/}
-              <Grid container spacing={3} className="row pdn_border">
-                <Grid item xs={6}>
-                  <p><span className="label declarante"> Declarante</span></p>
-                </Grid>
-                <Grid item xs={6} className="right">
-                  {/* <a onClick={(e) => this.toggl(inmueble, i, e)} heref="#" className={"pdn_arrow " + (inmueble.show ?  "close" : "open")}></a> */}
-                </Grid>
+    return (
+      <Grid container spacing={3} className={classes.rootSubseccion}>
+        <Grid item xs={12}>
+          <Typography className={classes.titulo}>
+            <strong>Bienes inmuebles ({this.items().length})</strong>
+          </Typography>
+          <Grid container spacing={3}>
+            {this.items().map((inmueble, i) => (
+              <Grid item xs={12} md={6} key={"inmueble-" + i}>
+                <ExpansionPanel>
+                  <ExpansionPanelSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                  >
+                    <Typography className={classes.tituloFondo}>
+                      Declarante
+                    </Typography>
+                  </ExpansionPanelSummary>
+                  <ExpansionPanelDetails>
+                    <Grid container spacing={3}>
+                      <Grid item xs={12}>
+                        <Grid container spacing={3}>
+                          <Grid item xs={8}>
+                            <Typography className={classes.tituloCard}>
+                              Tipo de bien
+                            </Typography>
+                            <Typography className={classes.dataCard}>
+                              {inmueble.tipo_bien.valor}
+                            </Typography>
+                          </Grid>
+                          <Grid item xs={4}>
+                            <Typography className={classes.tituloCard}>
+                              Precio de adquisición
+                            </Typography>
+                            <Typography className={classes.dataCard}>
+                              ${inmueble.precio_adquisicion.valor}{" "}
+                              {inmueble.precio_adquisicion.moneda.codigo}
+                            </Typography>
+                          </Grid>
+                        </Grid>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Grid container spacing={3}>
+                          <Grid item xs={4}>
+                            <Typography className={classes.tituloCard}>
+                              Superficie del terreno
+                            </Typography>
+                            <Typography className={classes.dataCard}>
+                              {inmueble.superficie_terreno}
+                            </Typography>
+                          </Grid>
+                          <Grid item xs={4}>
+                            <Typography className={classes.tituloCard}>
+                              Superficie de construcción
+                            </Typography>
+                            <Typography className={classes.dataCard}>
+                              {inmueble.superficie_construccion}
+                            </Typography>
+                          </Grid>
+                          <Grid item xs={4}>
+                            <Typography className={classes.tituloCard}>
+                              Valor Catastral
+                            </Typography>
+                            <Typography className={classes.dataCard}>
+                              ${inmueble.valor_catastral}
+                            </Typography>
+                          </Grid>
+                        </Grid>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Grid container spacing={3}>
+                          <Grid item xs={4}>
+                            <Typography className={classes.tituloCard}>
+                              Fecha de adquisición
+                            </Typography>
+                            <Typography className={classes.dataCard}>
+                              {inmueble.fecha_adquisicion}
+                            </Typography>
+                          </Grid>
+                          <Grid item xs={4}>
+                            <Typography className={classes.tituloCard}>
+                              Forma de adquisición
+                            </Typography>
+                            <Typography className={classes.dataCard}>
+                              {inmueble.forma_adquisicion.valor}
+                            </Typography>
+                          </Grid>
+                          <Grid item xs={4}>
+                            <Typography className={classes.tituloCard}>
+                              Tipo de operación
+                            </Typography>
+                            <Typography className={classes.dataCard}>
+                              {inmueble.tipo_operacion.valor}
+                            </Typography>
+                          </Grid>
+                        </Grid>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Grid container spacing={3}>
+                          <Grid item xs={4}>
+                            <Typography className={classes.tituloCard}>
+                              Relación con la persona que lo adquirio
+                            </Typography>
+                            <Typography className={classes.dataCard}>
+                              {inmueble.relacion_persona_adquirio.valor}
+                            </Typography>
+                          </Grid>
+                          <Grid item xs={4}>
+                            <Typography className={classes.tituloCard}>
+                              Porcentaje de la propiedad
+                            </Typography>
+                            <Typography className={classes.dataCard}>
+                              {inmueble.porcentaje_propiedad}%
+                              <BorderLinearProgress
+                                className={classes.marginProgressbar}
+                                variant="determinate"
+                                color="primary"
+                                value={inmueble.porcentaje_propiedad}
+                              />
+                            </Typography>
+                          </Grid>
+                          <Grid item xs={4}>
+                            <Typography className={classes.tituloCard}>
+                              Sector o industria
+                            </Typography>
+                            <Typography className={classes.dataCard}>
+                              {inmueble.sector_industria.valor}
+                            </Typography>
+                          </Grid>
+                        </Grid>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Typography className={classes.tituloCard}>
+                          Observaciones
+                        </Typography>
+                        <Typography className={classes.dataCard}>
+                          {inmueble.observaciones}
+                        </Typography>
+                      </Grid>
+                    </Grid>
+                  </ExpansionPanelDetails>
+                </ExpansionPanel>
               </Grid>
-              {/* row ends*/}
-              {/* div close/open */}
-              <div style={ {display : (inmueble.show ? "block" : "none")} }>
-                <Grid container spacing={3} className="pdn_border">
-                  {/* Tipo de bien*/}
-                  <Grid item xs={12} sm={7}>
-                    <p className="pdn_label">Tipo de bien</p>
-                    <h3>{inmueble.tipo_bien.valor}</h3>
-                  </Grid>
-                  {/* Precio de adquisición*/}
-                  <Grid item xs={12} sm={5}>
-                    <p className="pdn_label right">Precio de adquisición</p>
-                    <h3 className="pdn_amount right">${inmueble.precio_adquisicion.valor} {inmueble.precio_adquisicion.moneda.codigo} <span>({inmueble.precio_adquisicion.moneda.moneda})</span> </h3>
-                  </Grid>
-                </Grid>
-                {/* row ends*/}
-
-                <Grid container spacing={3} className="pdn_border">
-                  {/* Superficie del terreno*/}
-                  <Grid item xs={12} sm={4}>
-                    <p className="pdn_label">Superficie del terreno</p>
-                    <p className="pdn_data_p">{inmueble.superficie_terreno}</p>
-                  </Grid>
-                  {/* Superficie de construcción */}
-                  <Grid item xs={12} sm={4}>
-                    <p className="pdn_label">Superficie de construcción</p>
-                    <p className="pdn_data_p">{inmueble.superficie_construccion}</p>
-                  </Grid>
-                  {/* Valor Catastral*/}
-                  <Grid item xs={12} sm={4}>
-                    <p className="pdn_label">Valor Catastral</p>
-                    <p className="pdn_data_p">${inmueble.valor_catastral}</p>
-                  </Grid>
-                </Grid>
-                {/* row ends*/}
-
-                <Grid container spacing={3} className="pdn_border">
-                  {/* Fecha de adquisición */}
-                  <Grid item xs={12} sm={4}>
-                    <p className="pdn_label">Fecha de adquisición</p>
-                    <p className="pdn_data_p">{inmueble.fecha_adquisicion}</p>
-                  </Grid>
-                  {/* Forma  de adquisición */}
-                  <Grid item xs={12} sm={4}>
-                    <p className="pdn_label">Forma  de adquisición</p>
-                    <p className="pdn_data_p">{inmueble.forma_adquisicion.valor}</p>
-                  </Grid>
-                  {/* Tipo de operación*/}
-                  <Grid item xs={12} sm={4}>
-                    <p className="pdn_label">Tipo de operación</p>
-                    <p className="pdn_data_p">{inmueble.tipo_operacion.valor}</p>
-                  </Grid>
-                </Grid>
-                {/* row ends*/}
-
-                {/* table */}
-                <Grid container spacing={3} className="pdn_mobile_table">
-                <table className="table">
-                  <thead>
-                    <tr>
-                      <th>Relación con la persona que lo adquirio </th>
-                      <th>Porcentaje de la propiedad</th>
-                      <th>Sector o industria</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>{inmueble.relacion_persona_adquirio.valor}</td>
-                      <td>{inmueble.porcentaje_propiedad}%
-                        <div className="pdn_bar_container darken">
-                          <div className="pdn_bar participacion" style={{ width: inmueble.porcentaje_propiedad + '%' }}></div>
-                        </div>
-                      </td>
-                      <td>{inmueble.sector_industria.valor}</td>
-                    </tr>
-                  </tbody>
-                </table>
-                </Grid>
-                {/* table ends */}
-
-                <Grid container spacing={3}>
-                  <Grid item xs={12}>
-                    <p className="pdn_label">Observaciones</p>
-                    <p className="pdn_data_p">{inmueble.observaciones}</p>
-                  </Grid>
-                </Grid>
-              </div>
-              {/* div close/open  ends*/}
-            </Paper>
-        )}
+            ))}
           </Grid>
-        </Grid>
         </Grid>
       </Grid>
     );
@@ -168,21 +215,21 @@ class ActivosBienesInmuebles extends Component{
    * M E T H O D S
    * ----------------------------------------------------------------------
    */
-   toggl(item, index, e){
-     console.log(item, index, e);
+  toggl(item, index, e) {
+    console.log(item, index, e);
 
-     let items    = this.state.items,
-         newItems = items.map( d => {
-           if(item === d){
-             d.show = !item.show;
-           }
+    let items = this.state.items,
+      newItems = items.map(d => {
+        if (item === d) {
+          d.show = !item.show;
+        }
 
-           return d;
-         });
+        return d;
+      });
 
-     this.setState({items : newItems});
-   }
-  items(){
+    this.setState({ items: newItems });
+  }
+  items() {
     return this.props.profile.activos.bienes_inmuebles;
   }
 }
@@ -194,4 +241,4 @@ class ActivosBienesInmuebles extends Component{
   //
   ////////////////////////////////////////////////////////////////////////////////
 */
-export default ActivosBienesInmuebles;
+export default withStyles(styles)(ActivosBienesInmuebles);

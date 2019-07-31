@@ -5,8 +5,29 @@
   //
   ////////////////////////////////////////////////////////////////////////////////
 */
-import React, {Component} from "react";
-import {Grid, Paper} from '@material-ui/core';
+import React, { Component } from "react";
+import { Grid, Typography } from "@material-ui/core";
+import {
+  ExpansionPanel,
+  ExpansionPanelSummary,
+  ExpansionPanelDetails
+} from "@material-ui/core";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+
+import { withStyles, lighten } from "@material-ui/core/styles";
+import styles from "../style";
+
+import LinearProgress from "@material-ui/core/LinearProgress";
+
+const BorderLinearProgress = withStyles({
+  root: {
+    height: 19,
+    backgroundColor: lighten("#808080", 0.5)
+  },
+  bar: {
+    borderRadius: 20
+  }
+})(LinearProgress);
 /*
 	////////////////////////////////////////////////////////////////////////////////
   //
@@ -14,20 +35,22 @@ import {Grid, Paper} from '@material-ui/core';
   //
   ////////////////////////////////////////////////////////////////////////////////
 */
-class ActivosInversiones extends Component{
-  constructor(props){
+class ActivosInversiones extends Component {
+  constructor(props) {
     super(props);
 
-    let elems = this.props.profile.activos.inversiones_cuentas_valores.map(d => {
-                  // let item = d;
-                  d.show = true;
+    let elems = this.props.profile.activos.inversiones_cuentas_valores.map(
+      d => {
+        // let item = d;
+        d.show = true;
 
-                  return d;
-                });
+        return d;
+      }
+    );
 
     this.state = {
-      items : elems
-    }
+      items: elems
+    };
 
     this.toggl = this.toggl.bind(this);
   }
@@ -35,122 +58,138 @@ class ActivosInversiones extends Component{
    * R E N D E R
    * ----------------------------------------------------------------------
    */
-  render(){
-    return(
-    <Grid container spacing={3} direction={'row-reverse'} className="col-sm-offset-3 sidecontent">
-      <Grid item xs={12} sm={9}>
-        <h2>Inversiones, cuentas y valores ({this.items().length})</h2>
-        {/* row */ }
-        <Grid container spacing={3}>
-          <Grid item xs={12}>
-            { this.items().map( (inversion, i) =>
-            <Paper className="pdn_d_box">
-              <Paper className="pdn_bar_container">
-                <Paper className={ 'pdn_bar ' + inversion.titular_bien.valor.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "")}></Paper>
-              </Paper>
-              <p className="pdn_graph_label">
-              <b className={ 'pdn_graph_label_item label ' + inversion.titular_bien.valor.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "")}></b> {inversion.titular_bien.valor}</p>
-            </Paper>
-            )}
-          </Grid>
-        </Grid>
-        {/* row ends*/ }
+  render() {
+    let { classes } = this.props;
 
-
-        <Grid container spacing={3}>
-          <Grid item xs={12}>
-            { this.items().map( (inversion, i) =>
-            <Paper className="pdn_d_box" key={"inversion-" + i} id={"inversion-" + i}>
-              {/* row starts*/}
-              <Grid container spacing={3} className="pdn_border">
-                <Grid item xs={6}>
-                  <p><span className={ 'label ' + inversion.titular_bien.valor.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "")}> {inversion.titular_bien.valor}</span></p>
-                </Grid>
-                <Grid item xs={6} className="right">
-                  {/* <a onClick={(e) => this.toggl(inversion, i, e)} heref="#" className={"pdn_arrow " + (inversion.show ?  "close" : "open")}></a> */}
-                </Grid>
+    return (
+      <Grid container spacing={3} className={classes.rootSubseccion}>
+        <Grid item xs={12}>
+          <Typography className={classes.titulo}>
+            <strong>
+              Inversiones, cuentas y valores ({this.items().length})
+            </strong>
+          </Typography>
+          <Grid container spacing={3}>
+            {this.items().map((inversion, i) => (
+              <Grid item xs={12} md={6} key={"inversion-" + i}>
+                <ExpansionPanel>
+                  <ExpansionPanelSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                  >
+                    <Typography className={classes.tituloFondo}>
+                      Declarante
+                    </Typography>
+                  </ExpansionPanelSummary>
+                  <ExpansionPanelDetails>
+                    <Grid container spacing={3}>
+                      <Grid item xs={12}>
+                        <Grid container spacing={3}>
+                          <Grid item xs={4}>
+                            <Typography className={classes.tituloCard}>
+                              Tipo de inversión
+                            </Typography>
+                            <Typography className={classes.dataCard}>
+                              {inversion.tipo_inversion.valor}
+                            </Typography>
+                          </Grid>
+                          <Grid item xs={4}>
+                            <Typography className={classes.tituloCard}>
+                              Tipo especifico de inversión
+                            </Typography>
+                            <Typography className={classes.dataCard}>
+                              {inversion.tipo_especifico_inversion.valor}
+                            </Typography>
+                          </Grid>
+                          <Grid item xs={4}>
+                            <Typography className={classes.tituloCard}>
+                              Nombre de la Institución
+                            </Typography>
+                            <Typography className={classes.dataCard}>
+                              {inversion.nombre_institucion}
+                            </Typography>
+                          </Grid>
+                        </Grid>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Grid container spacing={3}>
+                          <Grid item xs={4}>
+                            <Typography className={classes.tituloCard}>
+                              Inversión Nacional o Extranjera
+                            </Typography>
+                            <Typography className={classes.dataCard}>
+                              {inversion.nacional_extranjero.valor}
+                            </Typography>
+                          </Grid>
+                          <Grid item xs={4}>
+                            <Typography className={classes.tituloCard}>
+                              Tipo de moneda
+                            </Typography>
+                            <Typography className={classes.dataCard}>
+                              {inversion.tipo_moneda.moneda}
+                            </Typography>
+                          </Grid>
+                          <Grid item xs={4}>
+                            <Typography className={classes.tituloCard}>
+                              Tipo de operación
+                            </Typography>
+                            <Typography className={classes.dataCard}>
+                              {inversion.tipo_operacion.valor}
+                            </Typography>
+                          </Grid>
+                        </Grid>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Grid container spacing={3}>
+                          <Grid item xs={4}>
+                            <Typography className={classes.tituloCard}>
+                              Forma de adquisición
+                            </Typography>
+                            <Typography className={classes.dataCard}>
+                              {inversion.forma_adquisicion.valor}
+                            </Typography>
+                          </Grid>
+                          <Grid item xs={4}>
+                            <Typography className={classes.tituloCard}>
+                              Porcentaje de inversión del funcionario
+                            </Typography>
+                            <Typography className={classes.dataCard}>
+                              {inversion.porcentaje_inversion}%
+                              <BorderLinearProgress
+                                className={classes.marginProgressbar}
+                                variant="determinate"
+                                color="primary"
+                                value={inversion.porcentaje_inversion}
+                              />
+                            </Typography>
+                          </Grid>
+                          <Grid item xs={4}>
+                            <Typography className={classes.tituloCard}>
+                              Sector o industria
+                            </Typography>
+                            <Typography className={classes.dataCard}>
+                              {inversion.sector_industria.valor}
+                            </Typography>
+                          </Grid>
+                        </Grid>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Typography className={classes.tituloCard}>
+                          Observaciones
+                        </Typography>
+                        <Typography className={classes.dataCard}>
+                          {inversion.observaciones}
+                        </Typography>
+                      </Grid>
+                    </Grid>
+                  </ExpansionPanelDetails>
+                </ExpansionPanel>
               </Grid>
-              {/* row ends*/}
-
-              {/* div close/open */}
-              <div style={ {display : (inversion.show ? "block" : "none")} }>
-                {/* row */}
-                <Grid container spacing={3} className="pdn_border">
-                  {/*Tipo de bien*/}
-                  <Grid item xs={12} sm={4}>
-                    <p className="pdn_label">Tipo de bien</p>
-                    <h3>{inversion.tipo_inversion.valor}</h3>
-                  </Grid>
-                  {/* Tipo especifico de inversión*/}
-                  <Grid item xs={12} sm={4}>
-                    <p className="pdn_label">Tipo especifico de inversión</p>
-                    <p className="pdn_data_p">{inversion.tipo_especifico_inversion.valor}</p>
-                  </Grid>
-                  {/* Nombre de la Institución */}
-                  <Grid item xs={12} sm={4}>
-                    <p className="pdn_label">Nombre de la Institución</p>
-                    <p className="pdn_data_p">{inversion.nombre_institucion}</p>
-                  </Grid>
-                </Grid>
-                {/* row ends*/}
-
-                {/* row */}
-                <Grid container spacing={3} className="pdn_border">
-                  {/* Inversión Nacional o Extranjera */}
-                  <Grid item xs={12} sm={4}>
-                    <p className="pdn_label">Inversión Nacional o Extranjera</p>
-                    <p className="pdn_data_p">{inversion.nacional_extranjero.valor}</p>
-                  </Grid>
-
-                  {/* Tipo de moneda */}
-                  <Grid item xs={12} sm={4}>
-                    <p className="pdn_label">Tipo de moneda</p>
-                    <p className="pdn_data_p">{inversion.tipo_moneda.moneda}</p>
-                  </Grid>
-
-                  {/* Tipo de operación */}
-                  <Grid item xs={12} sm={4}>
-                    <p className="pdn_label">Tipo de operación</p>
-                    <p className="pdn_data_p">{inversion.tipo_operacion.valor}</p>
-                  </Grid>
-                </Grid>
-                {/* row ends*/}
-
-                {/* table */}
-                <Grid container spacing={3} className="pdn_mobile_table">
-                <table className="table">
-                  <thead>
-                    <tr>
-                      <th>Forma  de adquisición</th>
-                      <th>Porcentaje  de inversión del funcionario</th>
-                      <th>Sector</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>{inversion.forma_adquisicion.valor}</td>
-                      <td>{inversion.porcentaje_inversion}%
-                        <div className="pdn_bar_container darken">
-                          <div className="pdn_bar participacion" style={{ width: inversion.porcentaje_inversion + '%' }}></div>
-                        </div>
-                      </td>
-                      <td>{inversion.sector_industria.valor}</td>
-                    </tr>
-                  </tbody>
-                </table>
-                </Grid>
-                {/* table ends */}
-                <p className="pdn_label">Observaciones</p>
-                <p className="pdn_data_p">{inversion.observaciones}</p>
-              </div>
-              {/* div close/open ends */}
-            </Paper>
-            )}
-
+            ))}
           </Grid>
         </Grid>
       </Grid>
-    </Grid>
     );
   }
 
@@ -158,21 +197,21 @@ class ActivosInversiones extends Component{
    * M E T H O D S
    * ----------------------------------------------------------------------
    */
-   toggl(item, index, e){
-     console.log(item, index, e);
+  toggl(item, index, e) {
+    console.log(item, index, e);
 
-     let items    = this.state.items,
-         newItems = items.map( d => {
-           if(item === d){
-             d.show = !item.show;
-           }
+    let items = this.state.items,
+      newItems = items.map(d => {
+        if (item === d) {
+          d.show = !item.show;
+        }
 
-           return d;
-         });
+        return d;
+      });
 
-     this.setState({items : newItems});
-   }
-  items(){
+    this.setState({ items: newItems });
+  }
+  items() {
     return this.props.profile.activos.inversiones_cuentas_valores;
   }
 }
@@ -184,4 +223,4 @@ class ActivosInversiones extends Component{
   //
   ////////////////////////////////////////////////////////////////////////////////
 */
-export default ActivosInversiones;
+export default withStyles(styles)(ActivosInversiones);
