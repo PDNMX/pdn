@@ -13,6 +13,7 @@ import 'react-vis/dist/style.css';
 import {FlexibleXYPlot} from "react-vis/es";
 import Hint from "react-vis/es/plot/hint";
 import MensajeErrorDatos from "../../../Tablas/MensajeErrorDatos";
+import {Pie} from "d3plus-react";
 
 const styles = theme => ({
     frameChart: {
@@ -29,7 +30,7 @@ const styles = theme => ({
         alignItems: "center",
         marginTop: "15px",
         marginBottom: "15px",
-        textAlign : "justify"
+        textAlign: "justify"
     }
 });
 
@@ -49,18 +50,28 @@ function aux() {
     });
 }
 
+let color = ["#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
+    "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
+    "#8BC34A", "#CDDC39", "#FFEB3B", "#FFC107", "#FF9800",
+    "#FF5722", "#795548", "#9E9E9E", "#607D8B", "#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
+    "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
+    "#8BC34A", "#CDDC39", "#FFEB3B", "#FFC107", "#FF9800",
+    "#FF5722", "#795548", "#9E9E9E", "#607D8B"];
 
 class AnioResolucionSanciones extends React.Component {
     state = {
         hoveredCell: false,
-        error : false,
+        error: false,
     };
 
     componentDidMount() {
+        let total = 0;
         aux().then(result => {
             let temp = result.data.slice(1);
             let aux = temp.map(item => {
+                total += parseInt(item.count);
                 return {
+                    anio: item.anio_resolucion.toString(),
                     x: item.anio_resolucion,
                     y: parseInt(item.count)
                 }
@@ -70,14 +81,34 @@ class AnioResolucionSanciones extends React.Component {
                         data: aux,
                     },
                     configPie: {
-                        data: aux.map(item => {
-                            return {angle: item.x}
-                        })
+                        data: aux,
+                        groupBy: "anio",
+                        value: function (d) {
+                            return d["y"]
+                        },
+                        height: 300,
+                        label: function (d) {
+                            return d["anio"] + "\n" + "(" + ((d["y"] * 100) / total).toFixed(2) + "%)"
+                        },
+                        legend: false,
+                        tooltipConfig: {
+                            tbody: [
+                                ["Número de sanciones: ", function (d) {
+                                    return d["y"]
+                                }
+                                ]
+                            ]
+                        },
+                        shapeConfig: {
+                            fill: (d, i) => {
+                                return color[i]
+                            }
+                        }
                     }
                 }
             )
-        }).catch(err=>{
-            this.setState({error:true})
+        }).catch(err => {
+            this.setState({error: true})
         });
     }
 
@@ -94,12 +125,16 @@ class AnioResolucionSanciones extends React.Component {
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>
                         <Typography variant={"body1"}>
-                            Como se aprecia en la gráfica, el comportamiento de las sanciones no ha sido constante, iniciando en el año 2004 con apenas 4 sanciones registradas, pasó a 29 sanciones en 2005 y un total de 302 sanciones durante 2006-2007. <br/>
-                            Con un descenso drástico en 2008 con 43 sanciones registradas, volvió a repuntar en el año 2010 con 239 sanciones, siendo este año el año con mayor sanciones registradas.<br/>
-                            De 2011 a la fecha, el número de sanciones ha variado entre 84 y 179 sanciones, variando de un año a otro en 60 sanciones registradas máximo.
+                            Como se aprecia en la gráfica, el comportamiento de las sanciones no ha sido constante,
+                            iniciando en el año 2004 con apenas 4 sanciones registradas, pasó a 29 sanciones en 2005 y
+                            un total de 302 sanciones durante 2006-2007. <br/>
+                            Con un descenso drástico en 2008 con 43 sanciones registradas, volvió a repuntar en el año
+                            2010 con 239 sanciones, siendo este año el año con mayor sanciones registradas.<br/>
+                            De 2011 a la fecha, el número de sanciones ha variado entre 84 y 179 sanciones, variando de
+                            un año a otro en 60 sanciones registradas máximo.
                         </Typography>
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} md={8}>
                         {
                             this.state.methods && this.state.methods.data &&
                             <FlexibleXYPlot height={400}>
@@ -129,7 +164,7 @@ class AnioResolucionSanciones extends React.Component {
                                 {hoveredCell ? (
                                     <Hint value={hoveredCell}>
                                         <div style={{background: 'white'}}>
-                                            <table style={{border: '1px solid black', color:'black'}}>
+                                            <table style={{border: '1px solid black', color: 'black'}}>
                                                 <thead style={{textAlign: 'center'}}>
                                                 Datos
                                                 </thead>
@@ -150,6 +185,15 @@ class AnioResolucionSanciones extends React.Component {
                             </FlexibleXYPlot>
 
                         }
+
+                    </Grid>
+                    <Grid item xs={12} md={4}>
+                        {
+                            this.state.methods && this.state.methods.data &&
+                            <Pie config={this.state.configPie}/>
+                        }
+                    </Grid>
+                    <Grid item xs={12}>
                         {
                             this.state.error && <MensajeErrorDatos/>
                         }
