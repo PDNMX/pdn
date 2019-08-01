@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 
 import { Grid } from "@material-ui/core";
-import FuncionariosPorEntidadTotal from "../single-components/stats/state/FuncionariosPorEntidadTotal";
-import FuncionariosPorEntidadPorcentaje from "../single-components/stats/state/FuncionariosPorEntidadPorcentaje";
+import FuncionariosPorEntidadTotal from "./Entidad/FuncionariosPorEntidadTotal";
+import FuncionariosPorEntidadPorcentaje from "./Entidad/FuncionariosPorEntidadPorcentaje";
 
-import FuncionariosPorEntidadEdad from "../single-components/stats/state/FuncionariosPorEntidadEdad";
-import FuncionariosPorEntidadEdadPorcentaje from "../single-components/stats/state/FuncionariosPorEntidadEdadPorcentaje";
+import FuncionariosPorEntidadEdad from "./Entidad/FuncionariosPorEntidadEdad";
+import FuncionariosPorEntidadEdadPorcentaje from "./Entidad/FuncionariosPorEntidadEdadPorcentaje";
 
-import FuncionariosPorEntidadEducacion from "../single-components/stats/state/FuncionariosPorEntidadEducacion";
-import FuncionariosPorEntidadEducacionPorcentaje from "../single-components/stats/state/FuncionariosPorEntidadEducacionPorcentaje";
+import FuncionariosPorEntidadEducacion from "./Entidad/FuncionariosPorEntidadEducacion";
+import FuncionariosPorEntidadEducacionPorcentaje from "./Entidad/FuncionariosPorEntidadEducacionPorcentaje";
 
 import { withStyles } from "@material-ui/core/styles";
 import MenuInformacion from "../MenuLaterlal";

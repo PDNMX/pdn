@@ -18,10 +18,10 @@ class Stats extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      menu_superior: 1,
+      menu_superior: 2,
       menu_edad: 0,
-      menu_nivel: 2,
-      menu_estado: 0,
+      menu_nivel: 0,
+      menu_estado: 2,
       menu_educacion: 0,
       menu_bienes: 0,
       menu_ingresos: 0

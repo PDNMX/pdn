@@ -36,7 +36,7 @@ export default theme => ({
     padding: 15
   },
   titulo: {
-    fontSize: 12,
+    // fontSize: 12,
     color: "#34b3eb",
     fontWeight: 500,
     fontSize: 20,
