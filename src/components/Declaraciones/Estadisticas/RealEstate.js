@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Grid } from "@material-ui/core";
 import "../css/chartist.min.css";
 
-import PropiedadTotal from "../single-components/stats/real-estate/PropiedadTotal";
-import ConstruccionTotal from "../single-components/stats/real-estate/ConstruccionTotal";
+import PropiedadTotal from "./Bienes/PropiedadTotal";
+import ConstruccionTotal from "./Bienes/ConstruccionTotal";
 
 import { withStyles } from "@material-ui/core/styles";
 import MenuInformacion from "../MenuLaterlal";
