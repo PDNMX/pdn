@@ -124,5 +124,24 @@ export default theme => ({
     listStyle: "none",
     display: "inline-block",
     fontSize: 14
+  },
+  // formulario
+  textField: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    width: "100%"
+  },
+  formControl: {
+    margin: theme.spacing(3),
+    display: "flex"
+  },
+  group: {
+    margin: theme.spacing(1, 0)
+  },
+  button: {
+    margin: theme.spacing(1),
+    color: "#FFF",
+    fontWeight: "bold",
+    backgroundColor: "#34b3eb"
   }
 });

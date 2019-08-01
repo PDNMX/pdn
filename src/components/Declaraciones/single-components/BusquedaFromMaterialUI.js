@@ -8,17 +8,18 @@
 import React, { Component } from "react";
 
 import {
-  Typography,
   TextField,
   Grid,
   Radio,
   FormControlLabel,
   FormControl,
-  InputLabel,
-  Select,
   MenuItem,
-  Button
+  Button,
+  FormLabel,
+  RadioGroup
 } from "@material-ui/core";
+import { withStyles } from "@material-ui/core/styles";
+import styles from "../style";
 
 import * as ConstClass from "../ConstValues.js";
 /*
@@ -37,132 +38,112 @@ class BusquedaFromMaterialUI extends Component {
   };
 
   render() {
+    let { classes } = this.props;
+
     return (
-      <form onSubmit={this.searchUsers}>
-        <Grid container spacing={1}>
-          <Grid item xs={12} sm={4}>
-            <TextField
-              id="mui-name"
-              label="Nombres"
-              value={this.state.names}
-              name="names"
-              onChange={this.handleInputChange}
-              margin="normal"
-              fullWidth
-            />
-          </Grid>
-
-          <Grid item xs={12} sm={4}>
-            <TextField
-              id="mui-surname_a"
-              name="surname_a"
-              value={this.state.surname_a}
-              onChange={this.handleInputChange}
-              label="Primer apellido"
-              margin="normal"
-              fullWidth
-            />
-          </Grid>
-
-          <Grid item xs={12} sm={4}>
-            <FormControl style={{ width: "100%" }}>
-              <InputLabel htmlFor="age-simple">Institución</InputLabel>
-              <Select
-                style={{ paddingTop: 15 }}
+      <div className={classes.root} style={{ marginBottom: 30 }}>
+        <form onSubmit={this.searchUsers}>
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={12}>
+              <TextField
+                style={{ width: "100%" }}
+                id="standard-select-currency"
+                select
+                label="Institución"
+                className={classes.textField}
                 value={this.state.office}
                 onChange={this.handleInputChange}
-                inputProps={{
+                SelectProps={{
+                  MenuProps: {
+                    className: classes.menu
+                  },
                   name: "office",
                   id: "age-simple"
                 }}
+                margin="normal"
+                fullWidth
               >
-                <MenuItem value="">
-                  <em>Selecciona una oficina</em>
-                </MenuItem>
-                $
+                <MenuItem value="">Todos</MenuItem>
                 {ConstClass.OFICINAS.map((d, i) => (
                   <MenuItem key={"oficina-" + i} value={d}>
                     {d}
                   </MenuItem>
                 ))}
-              </Select>
-            </FormControl>
-          </Grid>
-        </Grid>
-
-        <Grid container spacing={8}>
-          <Grid item xs={12} sm={8}>
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={3}>
-                <Typography variant="body1"> Nivel de gobierno:</Typography>
-              </Grid>
-
-              <Grid item xs={12} sm={9}>
-                <Grid container spacing={2}>
-                  <Grid item xs={12} sm={3}>
-                    <FormControlLabel
-                      value=""
-                      control={
-                        <Radio
-                          checked={this.state.nivel === ""}
-                          name="nivel"
-                          onChange={this.handleInputChange}
-                        />
-                      }
-                      label="Todos"
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={3}>
-                    <FormControlLabel
-                      value="FED"
-                      control={
-                        <Radio
-                          checked={this.state.nivel === "FED"}
-                          name="nivel"
-                          onChange={this.handleInputChange}
-                        />
-                      }
-                      label="Federal"
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={3}>
-                    <FormControlLabel
-                      value="EST"
-                      control={
-                        <Radio
-                          checked={this.state.nivel === "EST"}
-                          name="nivel"
-                          onChange={this.handleInputChange}
-                        />
-                      }
-                      label="Estatal"
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={3}>
-                    <FormControlLabel
-                      value="MUN"
-                      control={
-                        <Radio
-                          checked={this.state.nivel === "MUN"}
-                          name="nivel"
-                          onChange={this.handleInputChange}
-                        />
-                      }
-                      label="Municipal"
-                    />
-                  </Grid>
-                </Grid>
-              </Grid>
+              </TextField>
+            </Grid>
+            <Grid item xs={12} md={3}>
+              <TextField
+                id="mui-name"
+                label="Nombres"
+                value={this.state.names}
+                className={classes.textField}
+                name="names"
+                onChange={this.handleInputChange}
+                margin="normal"
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12} md={3}>
+              <TextField
+                id="mui-surname_a"
+                name="surname_a"
+                value={this.state.surname_a}
+                className={classes.textField}
+                onChange={this.handleInputChange}
+                label="Primer apellido"
+                margin="normal"
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <FormControl component="fieldset" className={classes.formControl}>
+                <FormLabel component="legend">Nivel de gobierno:</FormLabel>
+                <RadioGroup
+                  aria-label="nivel"
+                  name="nivel"
+                  className={classes.group}
+                  value={this.state.nivel}
+                  onChange={this.handleInputChange}
+                  fullWidth
+                  row
+                >
+                  <FormControlLabel
+                    value=""
+                    control={<Radio color="primary" />}
+                    label="Todos"
+                  />
+                  <FormControlLabel
+                    value="FED"
+                    control={<Radio color="primary" />}
+                    label="Federal"
+                  />
+                  <FormControlLabel
+                    value="EST"
+                    control={<Radio color="primary" />}
+                    label="Estatal"
+                  />
+                  <FormControlLabel
+                    value="MUN"
+                    control={<Radio color="primary" />}
+                    label="Municipal"
+                  />
+                </RadioGroup>
+              </FormControl>
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <Button
+                className={classes.button}
+                type="submit"
+                variant="contained"
+                fullWidth
+                color="primary"
+              >
+                Buscar
+              </Button>
             </Grid>
           </Grid>
-
-          <Grid item xs={12} sm={4} style={{ marginBottom: 50 }}>
-            <Button type="submit" variant="contained" fullWidth>
-              Buscar
-            </Button>
-          </Grid>
-        </Grid>
-      </form>
+        </form>
+      </div>
     );
   }
 
@@ -207,4 +188,4 @@ class BusquedaFromMaterialUI extends Component {
   //
   ////////////////////////////////////////////////////////////////////////////////
 */
-export default BusquedaFromMaterialUI;
+export default withStyles(styles)(BusquedaFromMaterialUI);
