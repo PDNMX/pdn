@@ -103,8 +103,7 @@ class BusquedaFromMaterialUI extends Component {
                   name="nivel"
                   className={classes.group}
                   value={this.state.nivel}
-                  onChange={this.handleInputChange}
-                  fullWidth
+                  onChange={this.handleInputChange}                  
                   row
                 >
                   <FormControlLabel

@@ -77,7 +77,6 @@ class BusquedaTableMaterialUI extends Component {
 
   render() {
     let { classes } = this.props;
-    console.log("compa", this.props.results[0]);
     return (
       <div className={classes.root}>
         <Paper className={classes.root}>
