@@ -99,10 +99,6 @@ class BusquedaTableMaterialUI extends Component {
                   className={classes.link}
                   key={uniqid()}
                 >
-                  {/* <Link
-                    to={`declaraciones/perfil/${compa._id}`}
-                    className={classes.link}
-                  > */}
                   <StyledTableCell>
                     {compa.informacion_personal.informacion_general.nombres}{" "}
                     {
@@ -114,41 +110,36 @@ class BusquedaTableMaterialUI extends Component {
                         .segundo_apellido
                     }
                   </StyledTableCell>
-
                   <StyledTableCell>
                     {
                       compa.informacion_personal.datos_encargo_actual
                         .ente_publico
                     }
                   </StyledTableCell>
-
                   <StyledTableCell>
                     {
                       compa.informacion_personal.datos_encargo_actual
                         .empleo_cargo_comision
                     }
                   </StyledTableCell>
-
                   <StyledTableCell>
                     {
                       compa.informacion_personal.datos_encargo_actual
                         .direccion_encargo.entidad_federativa.nom_agee
                     }
                   </StyledTableCell>
-
                   <StyledTableCell>
                     {
                       compa.informacion_personal.datos_encargo_actual
                         .direccion_encargo.municipio.nom_agem
                     }
                   </StyledTableCell>
-                  {/* </Link> */}
                 </StyledTableRow>
               ))}
             </TableBody>
             <TableFooter>
               <TableRow>
-                <TablePagination                  
+                <TablePagination
                   colSpan={5}
                   count={this.props.total}
                   rowsPerPage={this.props.pageSize}
