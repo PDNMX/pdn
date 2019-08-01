@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import { Grid } from "@material-ui/core";
 import "../css/chartist.min.css";
 
-import EducacionTotal from "../single-components/stats/education/EducacionTotal";
-import EducacionPorcentaje from "../single-components/stats/education/EducacionPorcentaje";
+import EducacionTotal from "./Educacion/EducacionTotal";
+import EducacionPorcentaje from "./Educacion/EducacionPorcentaje";
 
-import EducacionEdad from "../single-components/stats/education/EducacionEdad";
-import EducacionEdadPorcentaje from "../single-components/stats/education/EducacionEdadPorcentaje";
+import EducacionEdad from "./Educacion/EducacionEdad";
+import EducacionEdadPorcentaje from "./Educacion/EducacionEdadPorcentaje";
 
-import EducacionNivelGobierno from "../single-components/stats/education/EducacionNivelGobierno";
-import EducacionNivelGobiernoPorcentaje from "../single-components/stats/education/EducacionNivelGobiernoPorcentaje";
+import EducacionNivelGobierno from "./Educacion/EducacionNivelGobierno";
+import EducacionNivelGobiernoPorcentaje from "./Educacion/EducacionNivelGobiernoPorcentaje";
 
 import { withStyles } from "@material-ui/core/styles";
 import MenuInformacion from "../MenuLaterlal";
