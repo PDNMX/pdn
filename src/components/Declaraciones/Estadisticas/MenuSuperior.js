@@ -3,14 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 
-import Info from "@material-ui/icons/InfoOutlined";
-import Interes from "@material-ui/icons/AssignmentOutlined";
-import Money from "@material-ui/icons/MonetizationOnOutlined";
-import Domain from "@material-ui/icons/DomainOutlined";
-import Business from "@material-ui/icons/BusinessCenterOutlined";
-
-import SvgIcon from "@material-ui/core/SvgIcon";
-
+import Icono from "./Iconos";
 
 const useStyles = makeStyles({
   root: {
@@ -21,7 +14,7 @@ const useStyles = makeStyles({
       background: "#34b3eb",
       fontWeight: 700
     },
-    height:80
+    height: 80
   },
   selected: {
     color: "white",
@@ -39,14 +32,6 @@ const useStyles = makeStyles({
   }
 });
 
-function IconCustom(props) {
-  return (
-    <SvgIcon {...props}>
-      <path d="../../../assets/declaraciones/edad.svg" />
-    </SvgIcon>
-  );
-}
-
 export default function SimpleBottomNavigation(props) {
   const classes = useStyles();
 
@@ -61,34 +46,42 @@ export default function SimpleBottomNavigation(props) {
       <BottomNavigationAction
         classes={classes}
         label="Edad"
-        icon={<Info />}
+        icon={<Icono name={props.menu_superior === 0 ? "edad2" : "edad"} />}
       />
 
       <BottomNavigationAction
         classes={classes}
         label="Nivel de gobierno"
-        icon={<Interes />}
+        icon={<Icono name={props.menu_superior === 1 ? "nivel2" : "nivel"} />}
       />
 
       <BottomNavigationAction
         classes={classes}
         label="Entidad"
-        icon={<Money />}
+        icon={
+          <Icono name={props.menu_superior === 2 ? "entidad2" : "entidad"} />
+        }
       />
       <BottomNavigationAction
         classes={classes}
         label="Educación"
-        icon={<Domain />}
+        icon={
+          <Icono
+            name={props.menu_superior === 3 ? "educacion2" : "educacion"}
+          />
+        }
       />
       <BottomNavigationAction
         classes={classes}
         label="Bienes"
-        icon={<Business />}
+        icon={<Icono name={props.menu_superior === 4 ? "bienes2" : "bienes"} />}
       />
       <BottomNavigationAction
         classes={classes}
         label="Ingresos"
-        icon={<Business />}
+        icon={
+          <Icono name={props.menu_superior === 5 ? "ingresos2" : "ingresos"} />
+        }
       />
     </BottomNavigation>
   );
