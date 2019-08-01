@@ -62,7 +62,6 @@ class NivelGobiernoTotal extends Component {
    * ----------------------------------------------------------------------
    */
   render() {
-    let colors = ConstClass.ChartColors;
     if (!this.state.data) return null;
 
     let options = {

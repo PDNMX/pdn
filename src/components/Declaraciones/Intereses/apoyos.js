@@ -15,7 +15,7 @@ import {
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
-import { withStyles, lighten } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import styles from "../style";
 
 /*

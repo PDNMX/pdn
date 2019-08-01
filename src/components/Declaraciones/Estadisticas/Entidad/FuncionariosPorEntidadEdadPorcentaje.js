@@ -12,15 +12,9 @@ import * as ConstClass from "../../ConstValues.js";
 import ChartistGraph from "react-chartist";
 import "../../css/chartist.min.css";
 
-import "../../css/chartist-plugin-tooltip.css";
-import ChartistTooltip from "chartist-plugin-tooltips-updated";
-
 import { Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "../../style";
-
-let d3 = Object.assign({}, require("d3-format"));
-let format = d3.format(",");
 
 /*
   ////////////////////////////////////////////////////////////////////////////////
@@ -127,15 +121,7 @@ class FuncionariosPorEntidadEdadPorcentaje extends Component {
    */
   render() {
     let st = this.state;
-    let _options = {
-      plugins: [
-        ChartistTooltip({
-          appendToBody: true,
-          transformTooltipTextFnc: value => format(value) + "%"
-        })
-      ]
-    };
-    let options = Object.assign(st, _options);
+
     let colors = ConstClass.ChartColors;
     let { classes } = this.props;
     return (
@@ -157,7 +143,6 @@ class FuncionariosPorEntidadEdadPorcentaje extends Component {
                   <ChartistGraph
                     data={{ series: st.fake6.series }}
                     type={"Pie"}
-                    options={st.donutOptions}
                   />
                   <Typography>{d}</Typography>
                 </Grid>

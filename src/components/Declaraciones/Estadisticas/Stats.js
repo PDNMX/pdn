@@ -71,7 +71,6 @@ class Stats extends Component {
   };
 
   render() {
-    let section = this.props.match.params.section;
     let { classes } = this.props;
     return (
       <div className={classes.root}>

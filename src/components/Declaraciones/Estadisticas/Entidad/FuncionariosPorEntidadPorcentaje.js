@@ -135,7 +135,6 @@ class FuncionariosPorEntidadPorcentaje extends Component {
               <ChartistGraph
                 data={{ series: st.fake.series[0] }}
                 type={"Pie"}
-                options={st.donutOptions}
               />
             </Grid>
             <Typography>

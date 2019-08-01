@@ -132,12 +132,7 @@ class FuncionariosPorEntidadTotal extends Component {
             </Typography>
             <ChartistGraph data={st.fake} type={"Bar"} />
           </Paper>
-        </Grid>
-        <Grid item sm={12}>
-          <Paper className="pdn_d_box">
-            <h2 />
-          </Paper>
-        </Grid>
+        </Grid>        
       </Grid>
     );
   }
