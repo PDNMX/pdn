@@ -83,7 +83,10 @@ class InteresesBeneficios extends Component {
                               Valor de beneficio
                             </Typography>
                             <Typography className={classes.dataCard}>
-                              ${interes.valor_beneficio}
+                              {new Intl.NumberFormat("es-MX", {
+                                style: "currency",
+                                currency: "MXN"
+                              }).format(interes.valor_beneficio)}
                             </Typography>
                           </Grid>
                         </Grid>

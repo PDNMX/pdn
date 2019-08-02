@@ -96,7 +96,10 @@ class PasivosObligaciones extends Component {
                               Monto original
                             </Typography>
                             <Typography className={classes.dataCard}>
-                              ${pasivo.monto_original}{" "}
+                              {new Intl.NumberFormat("es-MX", {
+                                style: "currency",
+                                currency: "MXN"
+                              }).format(pasivo.monto_original)}{" "}
                               {pasivo.tipo_moneda.codigo}
                             </Typography>
                           </Grid>
@@ -105,7 +108,10 @@ class PasivosObligaciones extends Component {
                               Saldo pendiente
                             </Typography>
                             <Typography className={classes.dataCard}>
-                              ${pasivo.saldo_pendiente}{" "}
+                              {new Intl.NumberFormat("es-MX", {
+                                style: "currency",
+                                currency: "MXN"
+                              }).format(pasivo.saldo_pendiente)}{" "}
                               {pasivo.tipo_moneda.codigo}
                             </Typography>
                           </Grid>
@@ -181,7 +187,10 @@ class PasivosObligaciones extends Component {
                             <Typography className={classes.tituloCard}>
                               Porcentaje de obligación del titular
                             </Typography>
-                            <Typography className={classes.dataCard}>
+                            <Typography
+                              component="div"
+                              className={classes.dataCard}
+                            >
                               {pasivo.porcentaje_obligacion_titular}%
                               <BorderLinearProgress
                                 className={classes.marginProgressbar}
@@ -207,8 +216,12 @@ class PasivosObligaciones extends Component {
                             </Typography>
                             <Typography className={classes.dataCard}>
                               {pasivo.montos_abonados.map((monto, j) => (
-                                <span>
-                                  ${monto} <br />
+                                <span key={"monto-" + j}>
+                                  {new Intl.NumberFormat("es-MX", {
+                                    style: "currency",
+                                    currency: "MXN"
+                                  }).format(monto)}{" "}
+                                  <br />
                                 </span>
                               ))}
                             </Typography>

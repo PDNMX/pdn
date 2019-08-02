@@ -87,7 +87,7 @@ class EdadTotalEducacion extends Component {
               type={"Bar"}
               options={options}
             />
-            <Typography>
+            <Typography component="div">
               <ul className={classes.listaGraficas}>
                 {ConstClass.NivelEducacion.map((d, i) => (
                   <li

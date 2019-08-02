@@ -15,7 +15,7 @@ import {
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
-import { withStyles, lighten } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import styles from "../style";
 
 /*
@@ -88,7 +88,10 @@ class InteresesApoyos extends Component {
                               Valor anual del apoyo
                             </Typography>
                             <Typography className={classes.dataCard}>
-                              ${interes.valor_anual_apoyo}
+                              {new Intl.NumberFormat("es-MX", {
+                                style: "currency",
+                                currency: "MXN"
+                              }).format(interes.valor_anual_apoyo)}
                             </Typography>
                           </Grid>
                         </Grid>

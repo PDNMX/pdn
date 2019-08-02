@@ -47,7 +47,6 @@ class IngresosOtros extends Component {
    */
   render() {
     let { classes } = this.props;
-    console.log("otros_premios", this.items());
     return (
       <Grid container spacing={3} className={classes.rootSubseccion}>
         <Grid item xs={12}>
@@ -84,7 +83,10 @@ class IngresosOtros extends Component {
                               Ingreso bruto anual
                             </Typography>
                             <Typography className={classes.dataCard}>
-                              ${sueldo.ingreso_bruto_anual.valor}{" "}
+                              {new Intl.NumberFormat("es-MX", {
+                                style: "currency",
+                                currency: "MXN"
+                              }).format(sueldo.ingreso_bruto_anual.valor)}{" "}
                               {sueldo.ingreso_bruto_anual.moneda.codigo}
                             </Typography>
                           </Grid>
@@ -151,7 +153,6 @@ class IngresosOtros extends Component {
    * ----------------------------------------------------------------------
    */
   toggl(item, index, e) {
-    console.log(item, index, e);
 
     let items = this.state.items,
       newItems = items.map(d => {

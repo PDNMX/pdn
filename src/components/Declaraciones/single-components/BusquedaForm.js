@@ -75,7 +75,7 @@ class BusquedaForm extends Component {
                 value={this.state.office}
                 onChange={this.handleInputChange}
               >
-                <option value="">Selecciona una oficina</option>$
+                <option value="">Selecciona una oficina</option>
                 {ConstClass.OFICINAS.map((d, i) => (
                   <option key={"oficina-" + i}>{d}</option>
                 ))}

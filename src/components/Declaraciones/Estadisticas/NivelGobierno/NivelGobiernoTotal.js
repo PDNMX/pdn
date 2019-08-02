@@ -62,7 +62,6 @@ class NivelGobiernoTotal extends Component {
    * ----------------------------------------------------------------------
    */
   render() {
-    let colors = ConstClass.ChartColors;
     if (!this.state.data) return null;
 
     let options = {
@@ -87,7 +86,7 @@ class NivelGobiernoTotal extends Component {
               type={"Bar"}
               options={options}
             />
-            {/* <Typography>
+            {/* <Typography  component="div">
               <ul className={classes.listaGraficas}>
                 {this.state.data.labels.map((d, i) => (
                   <li

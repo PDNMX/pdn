@@ -95,7 +95,12 @@ class ActivosFideicomisos extends Component {
                               Ingreso monetario obtenido
                             </Typography>
                             <Typography className={classes.dataCard}>
-                              ${fideicomiso.ingreso_monetario_obtenido}{" "}
+                              {new Intl.NumberFormat("es-MX", {
+                                style: "currency",
+                                currency: "MXN"
+                              }).format(
+                                fideicomiso.ingreso_monetario_obtenido
+                              )}{" "}
                               {fideicomiso.moneda.moneda}
                             </Typography>
                           </Grid>
@@ -163,7 +168,10 @@ class ActivosFideicomisos extends Component {
                             <Typography className={classes.tituloCard}>
                               Porcentaje de la propiedad
                             </Typography>
-                            <Typography className={classes.dataCard}>
+                            <Typography
+                              component="div"
+                              className={classes.dataCard}
+                            >
                               {
                                 fideicomiso.porcentaje_propiedad_derechos_fiduciarios
                               }

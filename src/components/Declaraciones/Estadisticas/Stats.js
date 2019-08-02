@@ -18,9 +18,9 @@ class Stats extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      menu_superior: 1,
+      menu_superior: 0,
       menu_edad: 0,
-      menu_nivel: 2,
+      menu_nivel: 0,
       menu_estado: 0,
       menu_educacion: 0,
       menu_bienes: 0,
@@ -71,7 +71,6 @@ class Stats extends Component {
   };
 
   render() {
-    let section = this.props.match.params.section;
     let { classes } = this.props;
     return (
       <div className={classes.root}>

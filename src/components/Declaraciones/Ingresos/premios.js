@@ -5,7 +5,7 @@
   //
   ////////////////////////////////////////////////////////////////////////////////
 */
-import React, {Component} from "react";
+import React, { Component } from "react";
 import { Grid, Typography } from "@material-ui/core";
 import {
   ExpansionPanel,
@@ -23,20 +23,20 @@ import styles from "../style";
   //
   ////////////////////////////////////////////////////////////////////////////////
 */
-class IngresosPremios extends Component{
-  constructor(props){
+class IngresosPremios extends Component {
+  constructor(props) {
     super(props);
 
     let elems = this.props.profile.ingresos.premios.map(d => {
-                  // let item = d;
-                  d.show = true;
+      // let item = d;
+      d.show = true;
 
-                  return d;
-                });
+      return d;
+    });
 
     this.state = {
-      items : elems
-    }
+      items: elems
+    };
 
     this.toggl = this.toggl.bind(this);
   }
@@ -82,7 +82,10 @@ class IngresosPremios extends Component{
                               Ingreso bruto anual
                             </Typography>
                             <Typography className={classes.dataCard}>
-                              ${sueldo.ingreso_bruto_anual.valor}{" "}
+                              {new Intl.NumberFormat("es-MX", {
+                                style: "currency",
+                                currency: "MXN"
+                              }).format(sueldo.ingreso_bruto_anual.valor)}{" "}
                               {sueldo.ingreso_bruto_anual.moneda.codigo}
                             </Typography>
                           </Grid>
@@ -103,14 +106,8 @@ class IngresosPremios extends Component{
                               Duración / frecuencia
                             </Typography>
                             <Typography className={classes.dataCard}>
-                              {
-                                sueldo.ingreso_bruto_anual
-                                  .duracion_frecuencia
-                              }{" "}
-                              {
-                                sueldo.ingreso_bruto_anual.unidad_temporal
-                                  .valor
-                              }
+                              {sueldo.ingreso_bruto_anual.duracion_frecuencia}{" "}
+                              {sueldo.ingreso_bruto_anual.unidad_temporal.valor}
                             </Typography>
                           </Grid>
                           <Grid item xs={4}>
@@ -146,7 +143,7 @@ class IngresosPremios extends Component{
             ))}
           </Grid>
         </Grid>
-        </Grid>
+      </Grid>
     );
   }
 
@@ -154,21 +151,21 @@ class IngresosPremios extends Component{
    * M E T H O D S
    * ----------------------------------------------------------------------
    */
-   toggl(item, index, e){
-     console.log(item, index, e);
+  toggl(item, index, e) {
+    console.log(item, index, e);
 
-     let items    = this.state.items,
-         newItems = items.map( d => {
-           if(item === d){
-             d.show = !item.show;
-           }
+    let items = this.state.items,
+      newItems = items.map(d => {
+        if (item === d) {
+          d.show = !item.show;
+        }
 
-           return d;
-         });
+        return d;
+      });
 
-     this.setState({items : newItems});
-   }
-  items(){
+    this.setState({ items: newItems });
+  }
+  items() {
     return this.props.profile.ingresos.premios;
   }
 }

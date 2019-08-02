@@ -36,7 +36,7 @@ export default theme => ({
     padding: 15
   },
   titulo: {
-    fontSize: 12,
+    // fontSize: 12,
     color: "#34b3eb",
     fontWeight: 500,
     fontSize: 20,
@@ -49,15 +49,13 @@ export default theme => ({
   },
   dataCard: {
     fontSize: 14,
-    borderBottom: "1px solid #f2f2f2",
     paddingBottom: 10,
-    marginBottom: 10
+    marginBottom: 10    
   },
   tituloGeneralCard: {
     fontWeight: 600,
     fontSize: 16,
     color: "#606060",
-    borderBottom: "1px solid #f2f2f2",
     paddingBottom: 10,
     marginBottom: 10
   },
@@ -124,5 +122,24 @@ export default theme => ({
     listStyle: "none",
     display: "inline-block",
     fontSize: 14
+  },
+  // formulario
+  textField: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    width: "100%"
+  },
+  formControl: {
+    margin: theme.spacing(3),
+    display: "flex"
+  },
+  group: {
+    margin: theme.spacing(1, 0)
+  },
+  button: {
+    margin: theme.spacing(1),
+    color: "#FFF",
+    fontWeight: "bold",
+    backgroundColor: "#34b3eb"
   }
 });

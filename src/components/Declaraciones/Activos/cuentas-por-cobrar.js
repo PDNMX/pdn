@@ -122,7 +122,10 @@ class ActivosCuentasPorCobrar extends Component {
                             <Typography className={classes.tituloCard}>
                               Porcentaje de copropiedad
                             </Typography>
-                            <Typography className={classes.dataCard}>
+                            <Typography
+                              component="div"
+                              className={classes.dataCard}
+                            >
                               {cuentas.porcentaje_copropiedad}%
                               <BorderLinearProgress
                                 className={classes.marginProgressbar}

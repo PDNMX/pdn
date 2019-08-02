@@ -40,37 +40,50 @@ class BaseGraph extends Component{
 		              scale = this.makeScale(data, barsMaxWidth),
 		             _ticks = scale.ticks(5);
 
-		return(
-			<svg id="resume-graph" viewBox={`0 0 ${width} ${height}`} width="100%" height="auto">
+		return (
+      <svg
+        id="resume-graph"
+        viewBox={`0 0 ${width} ${height}`}
+        width="100%"
+        height="100%"
+      >
+        {/* las líneas guías */}
+        {this.drawLines(
+          realWidth * conf.barsWidthPercent,
+          8,
+          conf.margin.top / 1.5,
+          realHeight,
+          barsLeftMargin
+        )}
 
-      {/* las líneas guías */}
-      {this.drawLines(realWidth * conf.barsWidthPercent,
-                      8,
-                      conf.margin.top/ 1.5,
-                      realHeight,
-                      barsLeftMargin)}
-                      
-			  {/* las etiquetas y las barras */}
-			  {data.map( (d,i) =>
+        {/* las etiquetas y las barras */}
+        {data.map((d, i) => (
+          <g key={uniqid()}>
+            <text textAnchor="end" x={labelRightMargin} y={hfunc(i)}>
+              {d.name}
+            </text>
 
-			  	<g key={uniqid()}>
-			  		<text textAnchor="end"
-			  		      x={labelRightMargin}
-			  		      y={ hfunc(i) }>{d.name}</text>
+            {this.makeBars(d.amount, barsLeftMargin, hfunc, conf, scale, i)}
+          </g>
+        ))}
 
-			  		{ this.makeBars(d.amount, barsLeftMargin, hfunc, conf, scale, i) }
-			  	</g>
-			  )}
+        {/* las guías numéricas (top) */}
+        {this.makeNumGuides(
+          _ticks,
+          barsLeftMargin,
+          conf.margin.top / 2,
+          scale
+        )}
 
-
-
-			  {/* las guías numéricas (top) */}
-			  {this.makeNumGuides(_ticks, barsLeftMargin, conf.margin.top/ 2, scale)}
-
-			{/* las guías numéricas (bottom) */}
-			  {this.makeNumGuides(_ticks, barsLeftMargin, realHeight + conf.margin.top, scale)}
-			</svg>
-		);
+        {/* las guías numéricas (bottom) */}
+        {this.makeNumGuides(
+          _ticks,
+          barsLeftMargin,
+          realHeight + conf.margin.top,
+          scale
+        )}
+      </svg>
+    );
 	}
 
 	/*

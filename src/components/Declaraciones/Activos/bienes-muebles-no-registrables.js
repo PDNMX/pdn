@@ -99,7 +99,12 @@ class ActivosBienesMueblesNoRegistrables extends Component {
                               Precio de adquisición
                             </Typography>
                             <Typography className={classes.dataCard}>
-                              ${mueble.precio_adquisicion.valor}{" "}
+                              {new Intl.NumberFormat("es-MX", {
+                                style: "currency",
+                                currency: "MXN"
+                              }).format(
+                                mueble.precio_adquisicion.valor
+                              )}{" "}
                               {mueble.precio_adquisicion.moneda.codigo}
                             </Typography>
                           </Grid>
@@ -155,13 +160,23 @@ class ActivosBienesMueblesNoRegistrables extends Component {
                             <Typography className={classes.tituloCard}>
                               Porcentaje de la propiedad
                             </Typography>
-                            <Typography className={classes.dataCard}>
-                              {mueble.porcentaje_propiedad}%
+                            <Typography
+                              component="div"
+                              className={classes.dataCard}
+                            >
+                              {mueble.porcentaje_propiedad
+                                ? mueble.porcentaje_propiedad
+                                : 0}
+                              %
                               <BorderLinearProgress
                                 className={classes.marginProgressbar}
                                 variant="determinate"
                                 color="primary"
-                                value={mueble.porcentaje_propiedad}
+                                value={
+                                  mueble.porcentaje_propiedad
+                                    ? mueble.porcentaje_propiedad
+                                    : 0
+                                }
                               />
                             </Typography>
                           </Grid>

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Grid } from "@material-ui/core";
 import "../css/chartist.min.css";
 
-import SalarioTotal from "../single-components/stats/salary/SalarioTotal";
+import SalarioTotal from "./Salarios/SalarioTotal";
 
 import { withStyles } from "@material-ui/core/styles";
 import MenuInformacion from "../MenuLaterlal";

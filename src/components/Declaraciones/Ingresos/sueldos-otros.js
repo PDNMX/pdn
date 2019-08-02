@@ -87,7 +87,10 @@ class IngresosSueldosOtros extends Component {
                               Ingreso bruto anual
                             </Typography>
                             <Typography className={classes.dataCard}>
-                              ${sueldo.ingreso_bruto_anual.valor}{" "}
+                              {new Intl.NumberFormat("es-MX", {
+                                style: "currency",
+                                currency: "MXN"
+                              }).format(sueldo.ingreso_bruto_anual.valor)}{" "}
                               {sueldo.ingreso_bruto_anual.moneda.codigo}
                             </Typography>
                           </Grid>
