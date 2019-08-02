@@ -6,7 +6,7 @@
   ////////////////////////////////////////////////////////////////////////////////
 */
 import React, { Component } from "react";
-// import {Typography} from '@material-ui/core';
+import { Box } from "@material-ui/core";
 import {
   Table,
   TableBody,
@@ -92,46 +92,66 @@ class BusquedaTableMaterialUI extends Component {
             </TableHead>
             <TableBody>
               {this.props.results.map(compa => (
-                <StyledTableRow
-                  component={Link}
-                  to={`declaraciones/perfil/${compa._id}`}
-                  className={classes.link}
-                  key={uniqid()}
-                >
+                <StyledTableRow key={uniqid()}>
                   <StyledTableCell>
-                    {compa.informacion_personal.informacion_general.nombres}{" "}
-                    {
-                      compa.informacion_personal.informacion_general
-                        .primer_apellido
-                    }{" "}
-                    {
-                      compa.informacion_personal.informacion_general
-                        .segundo_apellido
-                    }
+                    <Link
+                      className={classes.link}
+                      to={`declaraciones/perfil/${compa._id}`}
+                    >
+                      {compa.informacion_personal.informacion_general.nombres}{" "}
+                      {
+                        compa.informacion_personal.informacion_general
+                          .primer_apellido
+                      }{" "}
+                      {
+                        compa.informacion_personal.informacion_general
+                          .segundo_apellido
+                      }
+                    </Link>
                   </StyledTableCell>
                   <StyledTableCell>
-                    {
-                      compa.informacion_personal.datos_encargo_actual
-                        .ente_publico
-                    }
+                    <Link
+                      className={classes.link}
+                      to={`declaraciones/perfil/${compa._id}`}
+                    >
+                      {
+                        compa.informacion_personal.datos_encargo_actual
+                          .ente_publico
+                      }
+                    </Link>
                   </StyledTableCell>
                   <StyledTableCell>
-                    {
-                      compa.informacion_personal.datos_encargo_actual
-                        .empleo_cargo_comision
-                    }
+                    <Link
+                      className={classes.link}
+                      to={`declaraciones/perfil/${compa._id}`}
+                    >
+                      {
+                        compa.informacion_personal.datos_encargo_actual
+                          .empleo_cargo_comision
+                      }
+                    </Link>
                   </StyledTableCell>
                   <StyledTableCell>
-                    {
-                      compa.informacion_personal.datos_encargo_actual
-                        .direccion_encargo.entidad_federativa.nom_agee
-                    }
+                    <Link
+                      className={classes.link}
+                      to={`declaraciones/perfil/${compa._id}`}
+                    >
+                      {
+                        compa.informacion_personal.datos_encargo_actual
+                          .direccion_encargo.entidad_federativa.nom_agee
+                      }
+                    </Link>
                   </StyledTableCell>
                   <StyledTableCell>
-                    {
-                      compa.informacion_personal.datos_encargo_actual
-                        .direccion_encargo.municipio.nom_agem
-                    }
+                    <Link
+                      className={classes.link}
+                      to={`declaraciones/perfil/${compa._id}`}
+                    >
+                      {
+                        compa.informacion_personal.datos_encargo_actual
+                          .direccion_encargo.municipio.nom_agem
+                      }
+                    </Link>
                   </StyledTableCell>
                 </StyledTableRow>
               ))}
