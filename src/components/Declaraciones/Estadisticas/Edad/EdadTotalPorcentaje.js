@@ -93,7 +93,7 @@ class EdadTotalPorcentaje extends Component {
               type={"Pie"}
               options={options}
             />
-            <Typography>
+            <Typography component="div">
               <ul className={classes.listaGraficas}>
                 {this.state.data.labels.map((d, i) => (
                   <li key={"ngel-" + i} style={{ display: "inline-block", margin: "0px 10px" }}>

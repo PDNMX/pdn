@@ -54,7 +54,7 @@ class EducacionPorcentaje extends Component {
         series: d.map(d => (d / total) * 100)
       };
 
-      console.log("percent:", data);
+      // console.log("percent:", data);
 
       this.setState({ data: data });
     });
@@ -94,7 +94,7 @@ class EducacionPorcentaje extends Component {
               type={"Pie"}
               options={options}
             />
-            <Typography>
+            <Typography component="div">
               <ul className={classes.listaGraficas}>
                 {ConstClass.NivelEducacion.map((d, i) => (
                   <li

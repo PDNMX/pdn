@@ -56,7 +56,6 @@ export default theme => ({
     fontWeight: 600,
     fontSize: 16,
     color: "#606060",
-    borderBottom: "1px solid #f2f2f2",
     paddingBottom: 10,
     marginBottom: 10
   },

@@ -84,7 +84,8 @@ class EducacionNivelGobiernoPorcentaje extends Component {
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             <Typography className={classes.titulo}>
-              Funcionarios por nivel educativo y nivel de gobierno (porcentaje)
+              Funcionarios por nivel educativo y nivel de gobierno
+              (porcentaje)
             </Typography>
             <Grid container spacing={3}>
               {this.state.data.series.map((d, i) => (
@@ -104,7 +105,7 @@ class EducacionNivelGobiernoPorcentaje extends Component {
                 </Grid>
               ))}
             </Grid>
-            <Typography>
+            <Typography component="div">
               <ul className={classes.listaGraficas}>
                 {ConstClass.GobLevels.map((d, i) => (
                   <li

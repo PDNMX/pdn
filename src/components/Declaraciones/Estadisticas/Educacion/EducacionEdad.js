@@ -88,7 +88,7 @@ class EducacionEdad extends Component {
               type={"Bar"}
               options={options}
             />
-            <Typography>
+            <Typography component="div">
               <ul className={classes.listaGraficas}>
                 {this.state.data._labels.map((d, i) => (
                   <li

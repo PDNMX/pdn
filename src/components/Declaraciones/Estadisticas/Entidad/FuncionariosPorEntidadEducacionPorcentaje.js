@@ -111,7 +111,7 @@ class FuncionariosPorEntidadEducacionPorcentaje extends Component {
     let promises = this.makeData();
 
     Promise.all(promises.map(d => d.promise)).then(d => {
-      console.log("res:", d);
+      // console.log("res:", d);
     });
   }
 
@@ -149,7 +149,7 @@ class FuncionariosPorEntidadEducacionPorcentaje extends Component {
                 </Grid>
               ))}
             </Grid>
-            <Typography>
+            <Typography component="div">
               <ul className={classes.listaGraficas}>
                 {st.labels.__labels.map((d, i) => (
                   <li

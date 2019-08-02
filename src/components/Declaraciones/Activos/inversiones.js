@@ -154,7 +154,10 @@ class ActivosInversiones extends Component {
                             <Typography className={classes.tituloCard}>
                               Porcentaje de inversión del funcionario
                             </Typography>
-                            <Typography className={classes.dataCard}>
+                            <Typography
+                              component="div"
+                              className={classes.dataCard}
+                            >
                               {inversion.porcentaje_inversion}%
                               <BorderLinearProgress
                                 className={classes.marginProgressbar}

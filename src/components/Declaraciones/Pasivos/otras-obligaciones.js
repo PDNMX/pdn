@@ -187,7 +187,10 @@ class PasivosObligaciones extends Component {
                             <Typography className={classes.tituloCard}>
                               Porcentaje de obligación del titular
                             </Typography>
-                            <Typography className={classes.dataCard}>
+                            <Typography
+                              component="div"
+                              className={classes.dataCard}
+                            >
                               {pasivo.porcentaje_obligacion_titular}%
                               <BorderLinearProgress
                                 className={classes.marginProgressbar}
@@ -213,7 +216,7 @@ class PasivosObligaciones extends Component {
                             </Typography>
                             <Typography className={classes.dataCard}>
                               {pasivo.montos_abonados.map((monto, j) => (
-                                <span>
+                                <span key={"monto-" + j}>
                                   {new Intl.NumberFormat("es-MX", {
                                     style: "currency",
                                     currency: "MXN"

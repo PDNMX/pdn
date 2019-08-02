@@ -99,9 +99,7 @@ class ActivosBienesInmuebles extends Component {
                               {new Intl.NumberFormat("es-MX", {
                                 style: "currency",
                                 currency: "MXN"
-                              }).format(
-                                inmueble.precio_adquisicion.valor
-                              )}{" "}                             
+                              }).format(inmueble.precio_adquisicion.valor)}{" "}
                               {inmueble.precio_adquisicion.moneda.codigo}
                             </Typography>
                           </Grid>
@@ -180,7 +178,10 @@ class ActivosBienesInmuebles extends Component {
                             <Typography className={classes.tituloCard}>
                               Porcentaje de la propiedad
                             </Typography>
-                            <Typography className={classes.dataCard}>
+                            <Typography
+                              component="div"
+                              className={classes.dataCard}
+                            >
                               {inmueble.porcentaje_propiedad}%
                               <BorderLinearProgress
                                 className={classes.marginProgressbar}

@@ -182,7 +182,10 @@ class ActivosBienesIntangibles extends Component {
                             <Typography className={classes.tituloCard}>
                               Porcentaje de Propiedad en Caso de Copropiedad
                             </Typography>
-                            <Typography className={classes.dataCard}>
+                            <Typography
+                              component="div"
+                              className={classes.dataCard}
+                            >
                               {bienes.porcentaje_copropiedad}%
                               <BorderLinearProgress
                                 className={classes.marginProgressbar}

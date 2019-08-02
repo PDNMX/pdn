@@ -180,7 +180,10 @@ class InteresesEmpresas extends Component {
                               <Typography className={classes.tituloCard}>
                                 Porcentaje de participación
                               </Typography>
-                              <Typography className={classes.dataCard}>
+                              <Typography
+                                component="div"
+                                className={classes.dataCard}
+                              >
                                 {interes.porcentaje_participacion}%
                                 <BorderLinearProgress
                                   className={classes.marginProgressbar}

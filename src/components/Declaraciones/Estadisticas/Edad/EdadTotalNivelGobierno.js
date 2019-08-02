@@ -87,7 +87,7 @@ class EdadTotalNivelGobierno extends Component {
               type={"Bar"}
               options={options}
             />
-            <Typography>
+            <Typography component="div">
               <ul className={classes.listaGraficas}>
                 {ConstClass.GobLevels.map((d, i) => (
                   <li

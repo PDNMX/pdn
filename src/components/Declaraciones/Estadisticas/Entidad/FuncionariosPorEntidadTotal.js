@@ -111,7 +111,7 @@ class FuncionariosPorEntidadTotal extends Component {
     let promises = this.makeData();
 
     Promise.all(promises.map(d => d.promise)).then(d => {
-      console.log("res:", d);
+      // console.log("res:", d);
     });
   }
 

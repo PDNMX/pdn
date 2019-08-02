@@ -111,7 +111,7 @@ class FuncionariosPorEntidadEdadPorcentaje extends Component {
     let promises = this.makeData();
 
     Promise.all(promises.map(d => d.promise)).then(d => {
-      console.log("res:", d);
+      // console.log("res:", d);
     });
   }
 
@@ -129,7 +129,8 @@ class FuncionariosPorEntidadEdadPorcentaje extends Component {
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             <Typography className={classes.titulo}>
-              Funcionarios por estado seleccionado y rango de edad (porcentaje)
+              Funcionarios por estado seleccionado y rango de edad
+              (porcentaje)
             </Typography>
             <Grid container spacing={3}>
               {st.labels.___labels.map((d, i) => (
@@ -148,7 +149,7 @@ class FuncionariosPorEntidadEdadPorcentaje extends Component {
                 </Grid>
               ))}
             </Grid>
-            <Typography>
+            <Typography component="div">
               <ul className={classes.listaGraficas}>
                 {st.labels._labels.map((d, i) => (
                   <li

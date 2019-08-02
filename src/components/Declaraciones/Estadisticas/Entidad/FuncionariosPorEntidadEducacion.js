@@ -110,7 +110,7 @@ class FuncionariosPorEntidadEducacion extends Component {
     let promises = this.makeData();
 
     Promise.all(promises.map(d => d.promise)).then(d => {
-      console.log("res:", d);
+      // console.log("res:", d);
     });
   }
 
@@ -130,7 +130,7 @@ class FuncionariosPorEntidadEducacion extends Component {
               Funcionarios por estado seleccionado y nivel educativo
             </Typography>
             <ChartistGraph data={st.fake5} type={"Line"} />
-            <Typography>
+            <Typography component="div">
               <ul className={classes.listaGraficas}>
                 {st.labels.__labels.map((d, i) => (
                   <li

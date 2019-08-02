@@ -111,7 +111,7 @@ class FuncionariosPorEntidadEdad extends Component {
     let promises = this.makeData();
 
     Promise.all(promises.map(d => d.promise)).then(d => {
-      console.log("res:", d);
+      // console.log("res:", d);
     });
   }
 
@@ -131,7 +131,7 @@ class FuncionariosPorEntidadEdad extends Component {
               Funcionarios por estado seleccionado y rango de edad
             </Typography>
             <ChartistGraph data={st.fake5} type={"Line"} />
-            <Typography>
+            <Typography component="div">
               <ul className={classes.listaGraficas}>
                 {st.labels._labels.map((d, i) => (
                   <li

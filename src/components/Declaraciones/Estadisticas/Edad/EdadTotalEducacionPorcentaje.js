@@ -91,7 +91,8 @@ class EdadTotalEducacionPorcentaje extends Component {
               {this.state.data.series.map((d, i) => (
                 <Grid
                   item
-                  xs={6} md={4}
+                  xs={6}
+                  md={4}
                   key={"ngnepgxs-" + i}
                   style={{ textAlign: "center" }}
                 >
@@ -104,7 +105,7 @@ class EdadTotalEducacionPorcentaje extends Component {
                 </Grid>
               ))}
             </Grid>
-            <Typography>
+            <Typography component="div">
               <ul className={classes.listaGraficas}>
                 {ConstClass.NivelEducacion.map((d, i) => (
                   <li
