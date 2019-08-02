@@ -143,7 +143,7 @@ class PerfilMaterialUI extends Component {
                 </Grid>
                 <Grid item xs={12}>
                   <Grid container spacing={3}>
-                    <Grid item xs={7}>
+                    <Grid item xs={8}>
                       <Typography className={classes.h1}>
                         {
                           this.state.profile.informacion_personal
@@ -170,7 +170,7 @@ class PerfilMaterialUI extends Component {
                         }
                       </Typography>
                     </Grid>
-                    <Grid item xs={5}>
+                    <Grid item xs={4}>
                       <Typography className={classes.tituloCard}>
                         INGRESOS ANUALES NETOS:
                       </Typography>
