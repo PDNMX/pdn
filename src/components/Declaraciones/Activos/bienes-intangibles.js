@@ -103,7 +103,10 @@ class ActivosBienesIntangibles extends Component {
                               Precio de adquisición
                             </Typography>
                             <Typography className={classes.dataCard}>
-                              ${bienes.precio_adquisicion.valor}{" "}
+                              {new Intl.NumberFormat("es-MX", {
+                                style: "currency",
+                                currency: "MXN"
+                              }).format(bienes.precio_adquisicion.valor)}{" "}
                               {bienes.precio_adquisicion.moneda.codigo}
                             </Typography>
                           </Grid>
@@ -194,7 +197,12 @@ class ActivosBienesIntangibles extends Component {
                               Precio total de adquisición si es copropiedad
                             </Typography>
                             <Typography className={classes.dataCard}>
-                              ${bienes.precio_total_copropiedad.valor}{" "}
+                              {new Intl.NumberFormat("es-MX", {
+                                style: "currency",
+                                currency: "MXN"
+                              }).format(
+                                bienes.precio_total_copropiedad.valor
+                              )}{" "}
                               {bienes.precio_total_copropiedad.moneda.codigo}
                             </Typography>
                           </Grid>

@@ -90,7 +90,10 @@ class ActivosBeneficiosEnEspecie extends Component {
                               Valor del mercado
                             </Typography>
                             <Typography className={classes.dataCard}>
-                              ${beneficio.valor_mercado.valor}{" "}
+                              {new Intl.NumberFormat("es-MX", {
+                                style: "currency",
+                                currency: "MXN"
+                              }).format(beneficio.valor_mercado.valor)}{" "}
                               {beneficio.valor_mercado.moneda.codigo}
                             </Typography>
                           </Grid>

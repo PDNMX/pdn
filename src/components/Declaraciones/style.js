@@ -49,9 +49,8 @@ export default theme => ({
   },
   dataCard: {
     fontSize: 14,
-    borderBottom: "1px solid #f2f2f2",
     paddingBottom: 10,
-    marginBottom: 10
+    marginBottom: 10    
   },
   tituloGeneralCard: {
     fontWeight: 600,

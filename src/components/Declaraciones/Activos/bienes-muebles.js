@@ -99,7 +99,12 @@ class ActivosBienesMuebles extends Component {
                               Precio de adquisición
                             </Typography>
                             <Typography className={classes.dataCard}>
-                              ${mueble.precio_adquisicion.valor}{" "}
+                              {new Intl.NumberFormat("es-MX", {
+                                style: "currency",
+                                currency: "MXN"
+                              }).format(
+                                mueble.precio_adquisicion.valor
+                              )}{" "}
                               {mueble.precio_adquisicion.moneda.codigo}
                             </Typography>
                           </Grid>

@@ -95,7 +95,12 @@ class ActivosFideicomisos extends Component {
                               Ingreso monetario obtenido
                             </Typography>
                             <Typography className={classes.dataCard}>
-                              ${fideicomiso.ingreso_monetario_obtenido}{" "}
+                              {new Intl.NumberFormat("es-MX", {
+                                style: "currency",
+                                currency: "MXN"
+                              }).format(
+                                fideicomiso.ingreso_monetario_obtenido
+                              )}{" "}
                               {fideicomiso.moneda.moneda}
                             </Typography>
                           </Grid>
@@ -198,34 +203,36 @@ class ActivosFideicomisos extends Component {
                               {fideicomiso.fideicomisario.nombre}
                               <br />
                               {
-                                fideicomiso.fideicomisario.domicilio.vialidad
-                                  .tipo_vial
+                                fideicomiso.fideicomisario.domicilio
+                                  .vialidad.tipo_vial
                               }{" "}
                               {
-                                fideicomiso.fideicomisario.domicilio.vialidad
-                                  .nom_vial
+                                fideicomiso.fideicomisario.domicilio
+                                  .vialidad.nom_vial
                               }{" "}
                               #{fideicomiso.fideicomisario.domicilio.numExt}
                               {fideicomiso.fideicomisario.domicilio.numInt
                                 ? ", int. #" +
-                                  fideicomiso.fideicomisario.domicilio.numInt
+                                  fideicomiso.fideicomisario.domicilio
+                                    .numInt
                                 : ""}
                               <br />
                               {
-                                fideicomiso.fideicomisario.domicilio.localidad
-                                  .nom_loc
+                                fideicomiso.fideicomisario.domicilio
+                                  .localidad.nom_loc
                               }
                               ,{" "}
                               {
-                                fideicomiso.fideicomisario.domicilio.municipio
-                                  .nom_mun
+                                fideicomiso.fideicomisario.domicilio
+                                  .municipio.nom_mun
                               }
                               <br />
                               {
                                 fideicomiso.fideicomisario.domicilio
                                   .entidad_federativa.nom_agee
                               }
-                              . C.P. {fideicomiso.fideicomisario.domicilio.cp}
+                              . C.P.{" "}
+                              {fideicomiso.fideicomisario.domicilio.cp}
                             </Typography>
                           </Grid>
                           <Grid item xs={6}>
@@ -271,34 +278,36 @@ class ActivosFideicomisos extends Component {
                               {fideicomiso.fideicomitente.nombre}
                               <br />
                               {
-                                fideicomiso.fideicomitente.domicilio.vialidad
-                                  .tipo_vial
+                                fideicomiso.fideicomitente.domicilio
+                                  .vialidad.tipo_vial
                               }{" "}
                               {
-                                fideicomiso.fideicomitente.domicilio.vialidad
-                                  .nom_vial
+                                fideicomiso.fideicomitente.domicilio
+                                  .vialidad.nom_vial
                               }{" "}
                               #{fideicomiso.fideicomitente.domicilio.numExt}
                               {fideicomiso.fideicomitente.domicilio.numInt
                                 ? ", int. #" +
-                                  fideicomiso.fideicomitente.domicilio.numInt
+                                  fideicomiso.fideicomitente.domicilio
+                                    .numInt
                                 : ""}
                               <br />
                               {
-                                fideicomiso.fideicomitente.domicilio.localidad
-                                  .nom_loc
+                                fideicomiso.fideicomitente.domicilio
+                                  .localidad.nom_loc
                               }
                               ,{" "}
                               {
-                                fideicomiso.fideicomitente.domicilio.municipio
-                                  .nom_mun
+                                fideicomiso.fideicomitente.domicilio
+                                  .municipio.nom_mun
                               }
                               <br />
                               {
                                 fideicomiso.fideicomitente.domicilio
                                   .entidad_federativa.nom_agee
                               }
-                              . C.P. {fideicomiso.fideicomitente.domicilio.cp}
+                              . C.P.{" "}
+                              {fideicomiso.fideicomitente.domicilio.cp}
                             </Typography>
                           </Grid>
                           <Grid item xs={6}>
@@ -397,7 +406,10 @@ class ActivosFideicomisos extends Component {
                                   Constitución
                                 </Typography>
                                 <Typography className={classes.dataCard}>
-                                  {fideicomiso.fiduciario.fecha_constitucion}
+                                  {
+                                    fideicomiso.fiduciario
+                                      .fecha_constitucion
+                                  }
                                 </Typography>
                               </Grid>
                             </Grid>

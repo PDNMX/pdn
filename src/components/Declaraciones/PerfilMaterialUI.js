@@ -44,7 +44,7 @@ class PerfilMaterialUI extends Component {
     this.state = {
       profile: null,
       menu_superior: 0,
-      menu_informacion: 4,
+      menu_informacion: 0,
       menu_interes: 0,
       menu_ingresos: 0,
       menu_activos: 0,
@@ -176,7 +176,10 @@ class PerfilMaterialUI extends Component {
                       </Typography>
                       <Typography className={classes.dataCard}>
                         <strong style={{ fontSize: 25 }}>
-                          ${this.ingresosAnualesNetos()}
+                          {new Intl.NumberFormat("es-MX", {
+                            style: "currency",
+                            currency: "MXN"
+                          }).format(this.ingresosAnualesNetos())}
                         </strong>
                       </Typography>
                     </Grid>
@@ -348,13 +351,13 @@ class PerfilMaterialUI extends Component {
         );
       }
     }
-
     all = all.filter(d => d.moneda.codigo === "MXN").map(d => d.valor);
 
-    return all
-      .reduce(reducer)
-      .toFixed(2)
-      .replace(/\d(?=(\d{3})+\.)/g, "$&,");
+    return all.reduce(reducer);
+    // return all
+    //   .reduce(reducer)
+    //   .toFixed(2)
+    //   .replace(/\d(?=(\d{3})+\.)/g, "$&,");
   }
 }
 
