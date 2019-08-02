@@ -309,7 +309,7 @@ export default function CustomizedExpansionPanels() {
                 <ExpansionPanelDetails>
                     <div>
                         <Typography paragraph>
-                            La calidad de cada conjunto de datos fue evaluada usando los rubros anteriormente mencionados. La evaluación detallada de los conjuntos de datos de la Guía puede encontrarse aquí.
+                            La calidad de cada conjunto de datos fue evaluada usando los rubros anteriormente mencionados. La evaluación detallada de los conjuntos de datos de la Guía puede encontrarse <MuiLink href="https://docs.google.com/spreadsheets/d/1UwhIH1Q2-boZXvyLnyJInTv8lB_4uVWf_klsJpN4Qdk/edit#gid=1228884255"> aquí </MuiLink> 
                         </Typography>
 
 
@@ -326,7 +326,7 @@ export default function CustomizedExpansionPanels() {
                 <ExpansionPanelDetails>
                     <div>
                         <Typography paragraph>
-                            Estaremos publicando próximamente el análisis realizado y los siguientes pasos. Actualmente nos encontramos notificando a las instituciones el estatus de sus datos.
+                            De los 
                         </Typography>
 
                     </div>
