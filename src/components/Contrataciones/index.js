@@ -11,7 +11,7 @@ import Treemap from './Charts/Treemap';
 import ScatterPlot from "./Charts/ScatterPlot";
 
 import Buscador from "./Buscador";
-import Cifras from "./Header/Cifras";
+import Cifras from "./Cifras";
 import Perspectivas from "./Perspectivas";
 
 

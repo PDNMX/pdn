@@ -2,7 +2,7 @@ import React from 'react';
 import {withStyles} from "@material-ui/core/styles";
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import Donutchart from '../Charts/SimpleRadialChart'
+import Donutchart from './Charts/SimpleRadialChart'
 import CountUp from 'react-countup';
 //import rp from 'request-promise';
 
@@ -10,7 +10,25 @@ import CountUp from 'react-countup';
 const styles = theme => ({
     root: {
         flexGrow: 1
-    }
+    },
+    bullet: {
+        backgroundColor: '#89d4f2',
+        height: '20px',
+        width: '20px',
+        borderRadius: '50%',
+        display: 'inline-block',
+        marginLeft: '-20px',
+        marginRight: "10px",
+        marginBottom: '-3px'
+    },
+    ul: {
+        listStyle: 'none',
+        //marginLeft: 0,
+        paddingLeft: '20px'
+    },
+    li: {
+        paddingBottom: theme.spacing(2)
+    },
 });
 
 class Cifras extends React.Component{
@@ -28,6 +46,26 @@ class Cifras extends React.Component{
     render(){
 
         const {classes} = this.props;
+
+
+        const bullets = [
+            {
+                color: "#00cc99",
+                tipo: "Licitación pública"
+            },
+            {
+                color: "#ffcc00",
+                tipo: "Invitación a tres"
+            },
+            {
+                color: "#663399",
+                tipo: "Adjudicación directa"
+            },
+            {
+                color: "#ff6600",
+                tipo: "Otra"
+            }
+        ];
 
         return (
             <div className={classes.root}>
@@ -65,11 +103,15 @@ class Cifras extends React.Component{
                             </Grid>
                             <Grid item xs={6}>
 
-                                <ul>
-                                    <li><Typography variant="h6">Licitación pública</Typography></li>
-                                    <li><Typography variant="h6">Invitación a tres</Typography></li>
-                                    <li><Typography variant="h6">Adjudicación directa</Typography></li>
-                                    <li><Typography variant="h6">Otra</Typography></li>
+                                <ul className={classes.ul}>
+                                    {
+                                        bullets.map((b, i) => (<li>
+                                            <Typography variant="h6" paragraph key={i}>
+                                                <span className={classes.bullet} style={{backgroundColor: b.color}} />
+                                                {b.tipo}
+                                            </Typography>
+                                            </li>)
+                                        )}
                                 </ul>
 
                             </Grid>

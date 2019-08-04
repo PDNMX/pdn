@@ -19,7 +19,6 @@ export default class SimpleRadialChart extends Component {
                     {theta: 6},
                     {theta: 2},
                     {theta: 3},
-                    {theta: 1}
                 ]}
                 onValueMouseOver={v => this.setState({value: v})}
                 onSeriesMouseOut={v => this.setState({value: false})}
