@@ -8,13 +8,11 @@ import Footer from "../Home/Footer";
 
 import LabeledHeatmap from './Charts/LabeledHeatmap';
 import Treemap from './Charts/Treemap';
-import SimpleRadialChart from "./Charts/SimpleRadialChart";
 import ScatterPlot from "./Charts/ScatterPlot";
 
-
-import Gasto from '../../assets/iconos_s6/icono-gasto.svg';
-import Tipo from '../../assets/iconos_s6/icono-tipo-procedimiento.svg';
-import Proveedor from '../../assets/iconos_s6/icono_proveedor.svg';
+import Buscador from "./Buscador";
+import Cifras from "./Header/Cifras";
+import Perspectivas from "./Perspectivas";
 
 
 const styles = theme => ({
@@ -31,9 +29,7 @@ const styles = theme => ({
     container: {
         backgroundColor: '#fff'
     },
-    icon: {
-        maxWidth: 300
-    }
+
 });
 
 
@@ -45,12 +41,32 @@ class Index extends React.Component {
             <div className={classes.root}>
                 <Header/>
 
+
                 <Grid container spacing={0} justify="center" className={classes.container}>
                     <Grid item xs={12} className={classes.item}>
-                        <Typography paragraph>Donut chart</Typography>
-                        <SimpleRadialChart/>
+                        <Cifras/>
                     </Grid>
                 </Grid>
+
+
+
+
+
+                <Grid container spacing={0} justify="center" style={{backgroundColor: "#34b3eb"}}>
+                    <Grid item xs={12} className={classes.item}>
+
+                       <Perspectivas/>
+
+                    </Grid>
+                </Grid>
+
+
+                <Grid container spacing={0} justify="center" className={classes.container}>
+                    <Grid item xs={12} className={classes.item}>
+                        <Buscador/>
+                    </Grid>
+                </Grid>
+
 
                 <Grid container spacing={0} justify="center" className={classes.container}>
                     <Grid item xs={12} className={classes.item}>
@@ -72,25 +88,7 @@ class Index extends React.Component {
                     </Grid>
                 </Grid>
 
-                <Grid container spacing={0} justify="center" style={{backgroundColor: "#34b3eb"}}>
-                    <Grid item xs={12} className={classes.item}>
 
-                        <Grid container spacing={0}>
-
-                            <Grid item xs={4}>
-                                <img src={Gasto} className={classes.icon} alt="Gasto"/>
-                            </Grid>
-                            <Grid item xs={4}>
-                                <img src={Tipo} className={classes.icon} alt="Tipo de procedimiento"/>
-                            </Grid>
-                            <Grid item xs={4}>
-                                <img src={Proveedor} className={classes.icon} alt="Proveedores"/>
-                            </Grid>
-
-
-                        </Grid>
-                    </Grid>
-                </Grid>
 
                 <Footer/>
             </div>
