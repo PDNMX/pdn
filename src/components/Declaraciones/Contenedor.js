@@ -22,6 +22,15 @@ import imgEstadisticas from "../../assets/declaraciones/estadisticas.svg";
 import S3 from "../../assets/iconos_azul/1_icono.svg";
 import background from "../../assets/img/pdn_sis1.jpeg";
 
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
+  Button
+} from "@material-ui/core";
+
 const titulo = "Declaraciones";
 const copy =
   "Consulta, visualiza y descarga los datos de las declaraciones patrimoniales, de intereses y las constancias de la declaración fiscal de los servidores públicos.";
@@ -95,7 +104,60 @@ const styles = theme => ({
   }
 });
 
+function AlertDialog(props) {
+  return (
+    <Dialog
+      open={props.open}
+      onClose={props.handleClose}
+      aria-labelledby="alert-dialog-title"
+      aria-describedby="alert-dialog-description"
+    >
+      <DialogTitle id="alert-dialog-title">
+        {"Plataforma Digital Nacional"}
+      </DialogTitle>
+      <DialogContent>
+        <DialogContentText
+          id="alert-dialog-description"
+          style={{ textAlign: "justify" }}
+        >
+          La información contenida en esta sección fue generada de forma
+          aleatoria y sirve unicamente para poder visualizar las diferentes
+          funcionalidades propuestas para este sistema.
+        </DialogContentText>
+        <DialogContentText style={{ textAlign: "justify" }}>
+          <b>
+            El formato actual está basado en la última versión de las
+            especificaciones técnicas publicadas en este sitio, mismas que
+            fueron elaboradas bajo los últimos formatos publicados en el Diario
+            Oficial de la Federación. Estos formatos actualmente se encuentran
+            en revisión por el Comité Coordinador del Sistema Nacional
+            Anticorrupción, por lo que estos no serán los formatos finales de la
+            información.
+          </b>
+        </DialogContentText>
+      </DialogContent>
+      <DialogActions>
+        <Button
+          variant="contained"
+          onClick={props.handleClose}
+          style={{ background: "#ffe01b" }}
+        >
+          Aceptar
+        </Button>
+      </DialogActions>
+    </Dialog>
+  );
+}
+
 class Contenedor extends React.Component {
+  state = {
+    open: true
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
+
   render() {
     const { classes } = this.props;
 
@@ -171,6 +233,7 @@ class Contenedor extends React.Component {
           </Grid>
         </Grid>
         <Footer />
+        <AlertDialog open={this.state.open} handleClose={this.handleClose} />
       </div>
     );
   }
