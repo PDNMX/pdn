@@ -19,7 +19,8 @@ class Busqueda extends React.Component{
           skip: 0,
           total: 0
         },
-        results: []
+        results: [],
+        loading: true
     };
 
 
@@ -36,7 +37,8 @@ class Busqueda extends React.Component{
             console.log (data );
             this.setState({
                 pagination: data.pagination,
-                results: data.data
+                results: data.data,
+                loading: false
             })
         })
 
@@ -64,7 +66,7 @@ class Busqueda extends React.Component{
             <div className={classes.root}>
 
                 <InputBusqueda setInputText={this.setInputText}/>
-                <TablaResultados data={this.state.results} pagination={this.state.pagination}/>
+                <TablaResultados data={this.state.results} pagination={this.state.pagination} loading={this.state.loading}/>
 
             </div>
         );

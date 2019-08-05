@@ -20,6 +20,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
 import DownloadIcon from '@material-ui/icons/CloudDownload';
 import FilterListIcon from '@material-ui/icons/FilterList';
+import LinearIndeterminate from './LinearIndeterminate';
 
 /*
 function createData(name, calories, fat, carbs, protein) {
@@ -305,86 +306,89 @@ export default function EnhancedTable(props) {
 
     return (
         <div className={classes.root}>
-            <Paper className={classes.paper}>
-                <EnhancedTableToolbar numSelected={selected.length} />
-                <div className={classes.tableWrapper}>
-                    <Table
-                        className={classes.table}
-                        aria-labelledby="tableTitle"
-                        size={dense ? 'small' : 'medium'}
-                    >
-                        <EnhancedTableHead
-                            classes={classes}
-                            numSelected={selected.length}
-                            order={order}
-                            orderBy={orderBy}
-                           //onSelectAllClick={handleSelectAllClick}
-                            onRequestSort={handleRequestSort}
-                            rowCount={rows.length}
-                        />
-                        <TableBody>
-                            {stableSort(rows, getSorting(order, orderBy))
-                                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                                .map((row, index) => {
-                                    const isItemSelected = isSelected(row.col1);
-                                    const labelId = `enhanced-table-checkbox-${index}`;
+            {props.loading?<LinearIndeterminate/>:
+                <Paper className={classes.paper}>
+                    <EnhancedTableToolbar numSelected={selected.length}/>
+                    <div className={classes.tableWrapper}>
+                        <Table
+                            className={classes.table}
+                            aria-labelledby="tableTitle"
+                            size={dense ? 'small' : 'medium'}
+                        >
+                            <EnhancedTableHead
+                                classes={classes}
+                                numSelected={selected.length}
+                                order={order}
+                                orderBy={orderBy}
+                                //onSelectAllClick={handleSelectAllClick}
+                                onRequestSort={handleRequestSort}
+                                rowCount={rows.length}
+                            />
+                            <TableBody>
+                                {stableSort(rows, getSorting(order, orderBy))
+                                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                                    .map((row, index) => {
+                                        const isItemSelected = isSelected(row.col1);
+                                        const labelId = `enhanced-table-checkbox-${index}`;
 
-                                    return (
-                                        <TableRow
-                                            hover
-                                            //onClick={event => handleClick(event, row.name)}
-                                            //role="checkbox"
-                                            //aria-checked={isItemSelected}
-                                            tabIndex={-1}
-                                            key={row.col1}
-                                            //selected={isItemSelected}
-                                        >
-                                            {/*<TableCell padding="checkbox">
+                                        return (
+                                            <TableRow
+                                                hover
+                                                //onClick={event => handleClick(event, row.name)}
+                                                //role="checkbox"
+                                                //aria-checked={isItemSelected}
+                                                tabIndex={-1}
+                                                key={row.col1}
+                                                //selected={isItemSelected}
+                                            >
+                                                {/*<TableCell padding="checkbox">
                                             {
                                                 <Checkbox
                                                     checked={isItemSelected}
                                                     inputProps={{ 'aria-labelledby': labelId }}
                                                 />
                                             </TableCell>*/}
-                                            <TableCell component="th" id={labelId} scope="row" padding="default">
-                                                {row.col1}
-                                            </TableCell>
-                                            <TableCell align="left">{row.col2}</TableCell>
-                                            <TableCell align="left">{row.col3}</TableCell>
-                                            <TableCell align="left">
-                                                <IconButton>
-                                                    <DownloadIcon/>
-                                                </IconButton>
-                                            </TableCell>
-                                            {/*<TableCell align="right">{row.col5}</TableCell>*/}
-                                        </TableRow>
-                                    );
-                                })}
-                            {emptyRows > 0 && (
-                                <TableRow style={{ height: 49 * emptyRows }}>
-                                    <TableCell colSpan={6} />
-                                </TableRow>
-                            )}
-                        </TableBody>
-                    </Table>
-                </div>
-                <TablePagination
-                    rowsPerPageOptions={[5, 10, 25]}
-                    component="div"
-                    count={props.pagination.total}//{rows.length}
-                    rowsPerPage={rowsPerPage}
-                    page={page}
-                    backIconButtonProps={{
-                        'aria-label': 'previous page',
-                    }}
-                    nextIconButtonProps={{
-                        'aria-label': 'next page',
-                    }}
-                    onChangePage={handleChangePage}
-                    onChangeRowsPerPage={handleChangeRowsPerPage}
-                    labelRowsPerPage={"Registros por página:"}
-                />
-            </Paper>
+                                                <TableCell component="th" id={labelId} scope="row" padding="default">
+                                                    {row.col1}
+                                                </TableCell>
+                                                <TableCell align="left">{row.col2}</TableCell>
+                                                <TableCell align="left">{row.col3}</TableCell>
+                                                <TableCell align="left">
+                                                    <IconButton>
+                                                        <DownloadIcon/>
+                                                    </IconButton>
+                                                </TableCell>
+                                                {/*<TableCell align="right">{row.col5}</TableCell>*/}
+                                            </TableRow>
+                                        );
+                                    })}
+                                {emptyRows > 0 && (
+                                    <TableRow style={{height: 49 * emptyRows}}>
+                                        <TableCell colSpan={6}/>
+                                    </TableRow>
+                                )}
+                            </TableBody>
+                        </Table>
+                    </div>
+                    <TablePagination
+                        rowsPerPageOptions={[5, 10, 25]}
+                        component="div"
+                        count={props.pagination.total}//{rows.length}
+                        rowsPerPage={rowsPerPage}
+                        page={page}
+                        backIconButtonProps={{
+                            'aria-label': 'previous page',
+                        }}
+                        nextIconButtonProps={{
+                            'aria-label': 'next page',
+                        }}
+                        onChangePage={handleChangePage}
+                        onChangeRowsPerPage={handleChangeRowsPerPage}
+                        labelRowsPerPage={"Registros por página:"}
+                        labelDisplayedRows={({from, to, count}) => `${from}-${to} de ${count}`}
+                    />
+                </Paper>
+            }
             {/*
             <FormControlLabel
                 control={<Switch checked={dense} onChange={handleChangeDense} />}
