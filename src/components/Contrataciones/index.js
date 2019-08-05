@@ -10,7 +10,7 @@ import LabeledHeatmap from './Charts/LabeledHeatmap';
 import Treemap from './Charts/Treemap';
 import ScatterPlot from "./Charts/ScatterPlot";
 
-import Buscador from "./Buscador";
+import Busqueda from "./Busqueda";
 import Cifras from "./Cifras";
 import Perspectivas from "./Perspectivas";
 
@@ -63,11 +63,11 @@ class Index extends React.Component {
 
                 <Grid container spacing={0} justify="center" className={classes.container}>
                     <Grid item xs={12} className={classes.item}>
-                        <Buscador/>
+                        <Busqueda/>
                     </Grid>
                 </Grid>
 
-
+                {/*
                 <Grid container spacing={0} justify="center" className={classes.container}>
                     <Grid item xs={12} className={classes.item}>
                         <ScatterPlot/>
@@ -87,7 +87,7 @@ class Index extends React.Component {
                         <Treemap/>
                     </Grid>
                 </Grid>
-
+*/}
 
 
                 <Footer/>

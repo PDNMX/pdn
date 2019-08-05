@@ -31,7 +31,7 @@ const styles = theme => ({
     },
 });
 
-class Buscador extends React.Component{
+class InputBusqueda extends React.Component{
     render(){
 
         const {classes} = this.props;
@@ -59,10 +59,10 @@ class Buscador extends React.Component{
 }
 
 
-Buscador.propTypes = {
+InputBusqueda.propTypes = {
   classes : PropTypes.object.isRequired
 };
 
 
 
-export default withStyles(styles)(Buscador);
+export default withStyles(styles)(InputBusqueda);

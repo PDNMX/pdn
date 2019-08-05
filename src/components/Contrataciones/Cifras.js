@@ -70,20 +70,20 @@ class Cifras extends React.Component{
         return (
             <div className={classes.root}>
                 <Grid container spacing={0}>
-                    <Grid item xs={5}>
+                    <Grid item xs={12} md={12} lg={5} xl={5}>
                         <Typography variant="h6">
                              Procesos de contratación:
                         </Typography>
 
                         <Typography variant="h5" paragraph>
-                            <b><CountUp start={1} end={this.state.contrataciones}/></b>
+                            <b><CountUp separator="," start={1} end={this.state.contrataciones}/></b>
                         </Typography>
 
                         <Typography variant="h6">
                             Instituciones:
                         </Typography>
                         <Typography variant="h5" paragraph>
-                            <b> <CountUp start={1} end={this.state.instituciones}/></b>
+                            <b> <CountUp separator="," start={1} end={this.state.instituciones}/></b>
                         </Typography>
 
                         <Typography variant="h6">
@@ -95,22 +95,24 @@ class Cifras extends React.Component{
 
                     </Grid>
 
-                    <Grid item xs={7}>
+                    <Grid item xs={12} md={12} lg={7} xl={7}>
 
                         <Grid container spacing={0}>
-                            <Grid item xs={6}>
+                            <Grid item xs={12} md={12} lg={6} xl={6}>
                         <Donutchart/>
                             </Grid>
-                            <Grid item xs={6}>
+                            <Grid item xs={12} md={12} lg={6} xl={6}>
 
                                 <ul className={classes.ul}>
                                     {
-                                        bullets.map((b, i) => (<li>
-                                            <Typography variant="h6" paragraph key={i}>
-                                                <span className={classes.bullet} style={{backgroundColor: b.color}} />
-                                                {b.tipo}
-                                            </Typography>
-                                            </li>)
+                                        bullets.map((b, i) => (
+                                            <li key={i}>
+                                                <Typography variant="h6" paragraph>
+                                                    <span className={classes.bullet} style={{backgroundColor: b.color}} />
+                                                    {b.tipo}
+                                                </Typography>
+                                            </li>
+                                            )
                                         )}
                                 </ul>
 

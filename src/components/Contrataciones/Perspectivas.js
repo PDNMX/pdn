@@ -36,26 +36,27 @@ class Perspectivas extends React.Component{
         return (
             <div className={classes.root}>
 
-                <Grid container spacing={0}>
+                <Grid container spacing={0} alignment="center">
                     <Grid item xs={12} align="center" >
                         <Typography className={classes.visualiza} paragraph>
                         Visualiza las contrataciones púbicas
                         </Typography>
                     </Grid>
 
-                    <Grid item xs={4} align="center">
+                    <Grid item xs={12} md={6} lg={4} xl={4} align="center">
                         <img src={Gasto} className={classes.icon} alt="Gasto"/>
                         <Typography className={classes.iconText} variant="h5">
                             Gasto
                         </Typography>
                     </Grid>
-                    <Grid item xs={4} align="center">
+                    <Grid item xs={12} md={6} lg={4} xl={4} align="center">
                         <img src={Tipo} className={classes.icon} alt="Tipo de procedimiento"/>
                         <Typography className={classes.iconText} variant="h5">
                             Tipo de procedimiento
                         </Typography>
                     </Grid>
-                    <Grid item xs={4} align="center">
+
+                    <Grid item xs={12} md={6} lg={4} xl={4} align="center">
                         <img src={Proveedor} className={classes.icon} alt="Proveedores"/>
                         <Typography className={classes.iconText} variant="h5">
                             Proveedores
