@@ -45,6 +45,7 @@ class InputBusqueda extends React.Component{
                     className={classes.input}
                     placeholder="Buscar contrataciones..."
                     inputProps={{ 'aria-label': 'buscar contrataciones' }}
+                    onChange = { e => this.props.setInputText(e.target.value)}
                 />
                 <IconButton className={classes.iconButton} aria-label="search">
                     <SearchIcon />

@@ -36,6 +36,7 @@ class Cifras extends React.Component{
 
     state = {
         loading: true,
+        error: false,
         contrataciones: 300000,
         instituciones: 200,
         donutChartData: [],
@@ -48,7 +49,7 @@ class Cifras extends React.Component{
     componentWillMount() {
 
         rp({
-            uri: "http://localhost:3001/api/s6/summary",
+            uri: process.env.REACT_APP_DUMMY_API + "/api/s6/summary",
             method: "GET",
             json: true
         }).then( data => {
@@ -69,6 +70,8 @@ class Cifras extends React.Component{
 
         }).catch(error => {
             console.log(error);
+
+            this.setState({ error: true })
         });
 
     }
@@ -105,8 +108,7 @@ class Cifras extends React.Component{
                         <Grid item xs={12}>
                             <LinearIndeterminate/>
                         </Grid>
-                    </Grid>
-                    :
+                    </Grid>:
                     <Grid container spacing={0}>
                         <Grid item xs={12} md={12} lg={5} xl={5}>
                             <Typography variant="h6">
