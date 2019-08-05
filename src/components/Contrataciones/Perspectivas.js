@@ -43,20 +43,20 @@ class Perspectivas extends React.Component{
                         </Typography>
                     </Grid>
 
-                    <Grid item xs={12} md={6} lg={4} xl={4} align="center">
+                    <Grid item xs={12} md={4} lg={4} xl={4} align="center">
                         <img src={Gasto} className={classes.icon} alt="Gasto"/>
                         <Typography className={classes.iconText} variant="h5">
                             Gasto
                         </Typography>
                     </Grid>
-                    <Grid item xs={12} md={6} lg={4} xl={4} align="center">
+                    <Grid item xs={12} md={4} lg={4} xl={4} align="center">
                         <img src={Tipo} className={classes.icon} alt="Tipo de procedimiento"/>
                         <Typography className={classes.iconText} variant="h5">
                             Tipo de procedimiento
                         </Typography>
                     </Grid>
 
-                    <Grid item xs={12} md={6} lg={4} xl={4} align="center">
+                    <Grid item xs={12} md={4} lg={4} xl={4} align="center">
                         <img src={Proveedor} className={classes.icon} alt="Proveedores"/>
                         <Typography className={classes.iconText} variant="h5">
                             Proveedores

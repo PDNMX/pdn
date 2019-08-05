@@ -112,7 +112,7 @@ class Cifras extends React.Component{
                         </Grid>
                     </Grid>:
                     <Grid container spacing={0}>
-                        <Grid item xs={12} md={12} lg={4} xl={5} align="center">
+                        <Grid item xs={12} md={12} lg={4} xl={4} align="center">
                             <Typography variant="h6">
                                 Procesos de contratación
                             </Typography>
@@ -140,10 +140,10 @@ class Cifras extends React.Component{
                         <Grid item xs={12} md={12} lg={8} xl={8}>
 
                             <Grid container spacing={0}>
-                                <Grid item xs={12} md={12} lg={6} xl={6}>
+                                <Grid item xs={12} md={6} lg={6} xl={6}>
                                     <Donutchart data={this.state.donutChartData}/>
                                 </Grid>
-                                <Grid item xs={12} md={12} lg={6} xl={6}>
+                                <Grid item xs={12} md={6} lg={6} xl={6}>
 
                                     <ul className={classes.ul}>
                                         {

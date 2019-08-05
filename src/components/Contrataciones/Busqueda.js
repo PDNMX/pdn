@@ -11,12 +11,11 @@ const styles = theme => ({
 });
 class Busqueda extends React.Component{
 
-
     state = {
         inputText: "",
         pagination: {
-          limit: 0,
-          skip: 0,
+          pageSize: 10,
+          page: 0,
           total: 0
         },
         results: [],
@@ -25,24 +24,19 @@ class Busqueda extends React.Component{
 
 
     componentWillMount() {
-
         //fetch data
-
         rp({
             uri: process.env.REACT_APP_DUMMY_API + "/api/s6/search",
             method: 'POST',
-            body: {skip: 10000},
             json: true
         }).then(  data => {
-            console.log (data );
+            //console.log (data );
             this.setState({
                 pagination: data.pagination,
                 results: data.data,
                 loading: false
-            })
-        })
-
-
+            });
+        });
     }
 
 
@@ -50,11 +44,66 @@ class Busqueda extends React.Component{
         this.setState({inputText: text});
     };
 
-    //buscar
 
+    handleChangeRowsPerPage = (pageSize) => {
+        this.setState( {
+            loading: true,
+            pagination: {
+                page: 0,
+                pageSize: pageSize
+            },
+        } , () => {
+            this.search()
+        });
+    };
+
+
+    handlePageChange = (page) => {
+        this.setState( {
+            loading: true,
+            pagination: {
+                page: page,
+                pageSize: this.state.pagination.pageSize
+            }
+        } , () => {
+            this.search()
+        });
+    };
+
+    //buscar
+    search = () => {
+
+        let body = {
+            page: this.state.pagination.page,
+            pageSize: this.state.pagination.pageSize
+        };
+
+        if (this.state.inputText !== ""){
+            body.contract_title = this.state.inputText;
+        }
+
+        this.setState({loading: true}, () => {
+
+            rp({
+                uri: process.env.REACT_APP_DUMMY_API + "/api/s6/search",
+                method: 'POST',
+                body: body,
+                json: true
+            }).then (data => {
+                //console.log(data)
+                this.setState({
+                    results: data.data,
+                    pagination: data.pagination,
+                    loading: false
+                })
+            });
+        });
+    };
+
+    /*
     componentDidUpdate(prevProps, prevState, snapshot) {
         console.log(this.state);
-    }
+    }*/
 
 
     render() {
@@ -65,8 +114,14 @@ class Busqueda extends React.Component{
         return (
             <div className={classes.root}>
 
-                <InputBusqueda setInputText={this.setInputText}/>
-                <TablaResultados data={this.state.results} pagination={this.state.pagination} loading={this.state.loading}/>
+                <InputBusqueda setInputText={this.setInputText} search={this.search}/>
+                <TablaResultados
+                    data={this.state.results}
+                    pagination={this.state.pagination}
+                    handleChangeRowsPerPage = {this.handleChangeRowsPerPage}
+                    handleChangePage = {this.handlePageChange}
+                    loading={this.state.loading}
+                />
 
             </div>
         );

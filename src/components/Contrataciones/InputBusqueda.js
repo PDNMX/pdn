@@ -47,7 +47,7 @@ class InputBusqueda extends React.Component{
                     inputProps={{ 'aria-label': 'buscar contrataciones' }}
                     onChange = { e => this.props.setInputText(e.target.value)}
                 />
-                <IconButton className={classes.iconButton} aria-label="search">
+                <IconButton className={classes.iconButton} aria-label="search" onClick={e => this.props.search()}>
                     <SearchIcon />
                 </IconButton>
                 <Divider className={classes.divider} />

@@ -46,7 +46,7 @@ const rows = [
     createData('Oreo', 437, 18.0, 63, 4.0),
 ];*/
 
-
+/*
 function desc(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
         return -1;
@@ -55,8 +55,9 @@ function desc(a, b, orderBy) {
         return 1;
     }
     return 0;
-}
+}*/
 
+/*
 function stableSort(array, cmp) {
     const stabilizedThis = array.map((el, index) => [el, index]);
     stabilizedThis.sort((a, b) => {
@@ -65,11 +66,12 @@ function stableSort(array, cmp) {
         return a[1] - b[1];
     });
     return stabilizedThis.map(el => el[0]);
-}
+}*/
 
+/*
 function getSorting(order, orderBy) {
     return order === 'desc' ? (a, b) => desc(a, b, orderBy) : (a, b) => -desc(a, b, orderBy);
-}
+}*/
 
 const headRows = [
     { id: 'col1', numeric: false, disablePadding: false, label: 'OCID' },
@@ -81,9 +83,10 @@ const headRows = [
 
 function EnhancedTableHead(props) {
     const { classes, onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
-    const createSortHandler = property => event => {
+
+    /*const createSortHandler = property => event => {
         onRequestSort(event, property);
-    };
+    };*/
 
     return (
         <TableHead>
@@ -108,12 +111,12 @@ function EnhancedTableHead(props) {
                         <TableSortLabel
                             active={orderBy === row.id}
                             direction={order}
-                            onClick={createSortHandler(row.id)}
+                            //onClick={createSortHandler(row.id)}
                         >
                             {row.label}
                             {orderBy === row.id ? (
                                 <span className={classes.visuallyHidden}>
-                  {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
+                                    {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
                 </span>
                             ) : null}
                         </TableSortLabel>
@@ -127,7 +130,7 @@ function EnhancedTableHead(props) {
 EnhancedTableHead.propTypes = {
     classes: PropTypes.object.isRequired,
     numSelected: PropTypes.number.isRequired,
-    onRequestSort: PropTypes.func.isRequired,
+    //onRequestSort: PropTypes.func.isRequired,
     //onSelectAllClick: PropTypes.func.isRequired,
     order: PropTypes.oneOf(['asc', 'desc']).isRequired,
     orderBy: PropTypes.string.isRequired,
@@ -250,11 +253,12 @@ export default function EnhancedTable(props) {
     const [dense, setDense] = React.useState(false);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
+    /*
     function handleRequestSort(event, property) {
         const isDesc = orderBy === property && order === 'desc';
         setOrder(isDesc ? 'asc' : 'desc');
         setOrderBy(property);
-    }
+    }*/
 
     /*
     function handleSelectAllClick(event) {
@@ -289,12 +293,15 @@ export default function EnhancedTable(props) {
 
     function handleChangePage(event, newPage) {
         setPage(newPage);
+        props.handleChangePage(newPage);
     }
 
     function handleChangeRowsPerPage(event) {
         setRowsPerPage(+event.target.value);
         setPage(0);
+        props.handleChangeRowsPerPage(+event.target.value)
     }
+
     {/*
     function handleChangeDense(event) {
         setDense(event.target.checked);
@@ -302,7 +309,8 @@ export default function EnhancedTable(props) {
 
     const isSelected = name => selected.indexOf(name) !== -1;
 
-    const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+    //const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+    const emptyRows = props.pagination.rowsPerPage - Math.min(props.pagination.rowsPerPage, props.pagination.total - page * props.pagination.rowsPerPage);
 
     return (
         <div className={classes.root}>
@@ -321,11 +329,46 @@ export default function EnhancedTable(props) {
                                 order={order}
                                 orderBy={orderBy}
                                 //onSelectAllClick={handleSelectAllClick}
-                                onRequestSort={handleRequestSort}
+                                //onRequestSort={handleRequestSort}
                                 rowCount={rows.length}
                             />
                             <TableBody>
-                                {stableSort(rows, getSorting(order, orderBy))
+                                {rows.map((row, index) => {
+                                    const isItemSelected = isSelected(row.col1);
+                                    const labelId = `enhanced-table-checkbox-${index}`;
+
+                                    return (
+                                    <TableRow
+                                    hover
+                                    //onClick={event => handleClick(event, row.name)}
+                                    //role="checkbox"
+                                    //aria-checked={isItemSelected}
+                                    tabIndex={-1}
+                                    key={row.col1}
+                                    //selected={isItemSelected}
+                                    >
+                                    {/*<TableCell padding="checkbox">
+                                            {
+                                                <Checkbox
+                                                    checked={isItemSelected}
+                                                    inputProps={{ 'aria-labelledby': labelId }}
+                                                />
+                                            </TableCell>*/}
+                                    <TableCell component="th" id={labelId} scope="row" padding="default">
+                                    {row.col1}
+                                    </TableCell>
+                                    <TableCell align="left">{row.col2}</TableCell>
+                                    <TableCell align="left">{row.col3}</TableCell>
+                                    <TableCell align="left">
+                                    <IconButton>
+                                    <DownloadIcon/>
+                                    </IconButton>
+                                    </TableCell>
+                                    {/*<TableCell align="right">{row.col5}</TableCell>*/}
+                                    </TableRow>
+                                    );
+                                })}
+                                {/*stableSort(rows, getSorting(order, orderBy))
                                     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                     .map((row, index) => {
                                         const isItemSelected = isSelected(row.col1);
@@ -341,13 +384,13 @@ export default function EnhancedTable(props) {
                                                 key={row.col1}
                                                 //selected={isItemSelected}
                                             >
-                                                {/*<TableCell padding="checkbox">
+                                                <TableCell padding="checkbox">
                                             {
                                                 <Checkbox
                                                     checked={isItemSelected}
                                                     inputProps={{ 'aria-labelledby': labelId }}
                                                 />
-                                            </TableCell>*/}
+                                            </TableCell>*
                                                 <TableCell component="th" id={labelId} scope="row" padding="default">
                                                     {row.col1}
                                                 </TableCell>
@@ -358,10 +401,10 @@ export default function EnhancedTable(props) {
                                                         <DownloadIcon/>
                                                     </IconButton>
                                                 </TableCell>
-                                                {/*<TableCell align="right">{row.col5}</TableCell>*/}
+                                                <TableCell align="right">{row.col5}</TableCell>
                                             </TableRow>
                                         );
-                                    })}
+                                    })*/}
                                 {emptyRows > 0 && (
                                     <TableRow style={{height: 49 * emptyRows}}>
                                         <TableCell colSpan={6}/>
@@ -374,8 +417,8 @@ export default function EnhancedTable(props) {
                         rowsPerPageOptions={[5, 10, 25]}
                         component="div"
                         count={props.pagination.total}//{rows.length}
-                        rowsPerPage={rowsPerPage}
-                        page={page}
+                        rowsPerPage={props.pagination.pageSize}//{rowsPerPage}
+                        page={props.pagination.page}//{page}
                         backIconButtonProps={{
                             'aria-label': 'previous page',
                         }}
