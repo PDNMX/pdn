@@ -10,7 +10,9 @@ import LinearIndeterminate from './LinearIndeterminate';
 
 const styles = theme => ({
     root: {
-        flexGrow: 1
+        flexGrow: 1,
+        paddingTop: theme.spacing(4),
+        paddingBottom: theme.spacing(2)
     },
     bullet: {
         backgroundColor: '#89d4f2',
@@ -110,9 +112,9 @@ class Cifras extends React.Component{
                         </Grid>
                     </Grid>:
                     <Grid container spacing={0}>
-                        <Grid item xs={12} md={12} lg={5} xl={5}>
+                        <Grid item xs={12} md={12} lg={4} xl={5} align="center">
                             <Typography variant="h6">
-                                Procesos de contratación:
+                                Procesos de contratación
                             </Typography>
 
                             <Typography variant="h5" paragraph>
@@ -120,14 +122,14 @@ class Cifras extends React.Component{
                             </Typography>
 
                             <Typography variant="h6">
-                                Instituciones:
+                                Instituciones
                             </Typography>
                             <Typography variant="h5" paragraph>
                                 <b> <CountUp separator="," start={1} end={this.state.instituciones}/></b>
                             </Typography>
 
                             <Typography variant="h6">
-                                Periodo:
+                                Periodo
                             </Typography>
                             <Typography variant="h5" paragraph>
                                 <b>{this.state.periodo.start} - {this.state.periodo.end}</b>
@@ -135,7 +137,7 @@ class Cifras extends React.Component{
 
                         </Grid>
 
-                        <Grid item xs={12} md={12} lg={7} xl={7}>
+                        <Grid item xs={12} md={12} lg={8} xl={8}>
 
                             <Grid container spacing={0}>
                                 <Grid item xs={12} md={12} lg={6} xl={6}>
