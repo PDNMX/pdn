@@ -1,18 +1,19 @@
 import React from 'react';
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import Typography from "@material-ui/core/Typography";
+//import Typography from "@material-ui/core/Typography";
 import Header from './Header/Header';
 import Grid from '@material-ui/core/Grid';
 import Footer from "../Home/Footer";
 
-import LabeledHeatmap from './Charts/LabeledHeatmap';
-import Treemap from './Charts/Treemap';
-import ScatterPlot from "./Charts/ScatterPlot";
+//import LabeledHeatmap from './Charts/LabeledHeatmap';
+//import Treemap from './Charts/Treemap';
+//import ScatterPlot from "./Charts/ScatterPlot";
 
 import Busqueda from "./Busqueda";
 import Cifras from "./Cifras";
 import Perspectivas from "./Perspectivas";
+import Descarga from "./Descarga";
 
 
 const styles = theme => ({
@@ -67,6 +68,14 @@ class Index extends React.Component {
                     </Grid>
                 </Grid>
 
+
+                <Grid container spacing={0} justify="center" className={classes.container} style={{backgroundColor: '#f6f6f6'}}>
+                    <Grid item xs={12} className={classes.item}>
+                        <Descarga/>
+                    </Grid>
+                </Grid>
+
+
                 {/*
                 <Grid container spacing={0} justify="center" className={classes.container}>
                     <Grid item xs={12} className={classes.item}>
@@ -88,6 +97,9 @@ class Index extends React.Component {
                     </Grid>
                 </Grid>
 */}
+
+
+
 
 
                 <Footer/>

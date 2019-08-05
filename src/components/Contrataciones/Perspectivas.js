@@ -39,7 +39,7 @@ class Perspectivas extends React.Component{
                 <Grid container spacing={0} alignment="center">
                     <Grid item xs={12} align="center" >
                         <Typography className={classes.visualiza} paragraph>
-                        Visualiza las contrataciones púbicas
+                        Visualiza las contrataciones públicas
                         </Typography>
                     </Grid>
 
