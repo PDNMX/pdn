@@ -36,14 +36,15 @@ class InfoDependientes extends Component {
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
+                    className={classes.expansion}
                   >
-                    <Typography className={classes.tituloGeneralCard}>
-                      <span className={classes.tituloFondo}>
-                        {dependiente.tipo_relacion.valor}
-                      </span>
+                    <Typography>
+                      {dependiente.tipo_relacion.valor}
                     </Typography>
                   </ExpansionPanelSummary>
-                  <ExpansionPanelDetails>
+                  <ExpansionPanelDetails
+                    className={classes.expansionpaneldetails}
+                  >
                     <Grid container spacing={3}>
                       <Grid item xs={12}>
                         <Grid container spacing={3}>
@@ -56,7 +57,9 @@ class InfoDependientes extends Component {
                               className={classes.dataCard}
                             >
                               <ul>
-                                <li>{dependiente.sector_industria.valor}</li>
+                                <li>
+                                  {dependiente.sector_industria.valor}
+                                </li>
                               </ul>
                             </Typography>
                           </Grid>
@@ -161,7 +164,9 @@ class InfoDependientes extends Component {
                                   className={classes.dataCard}
                                 >
                                   <ul>
-                                    <li>{programa.institucion_otorga_apoyo}</li>
+                                    <li>
+                                      {programa.institucion_otorga_apoyo}
+                                    </li>
                                   </ul>
                                 </Typography>
                               </Grid>

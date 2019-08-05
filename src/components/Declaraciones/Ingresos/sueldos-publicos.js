@@ -53,8 +53,7 @@ class IngresosSueldosPublicos extends Component {
         <Grid item xs={12}>
           <Typography className={classes.titulo}>
             <strong>
-              Sueldos y Salarios por el Encargo Público (
-              {this.items().length})
+              Sueldos y Salarios por el Encargo Público ({this.items().length})
             </strong>
           </Typography>
           <Grid container spacing={3}>
@@ -65,12 +64,13 @@ class IngresosSueldosPublicos extends Component {
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
+                    className={classes.expansion}
                   >
-                    <Typography className={classes.tituloFondo}>
-                      Declarante
-                    </Typography>
+                    <Typography>Declarante</Typography>
                   </ExpansionPanelSummary>
-                  <ExpansionPanelDetails>
+                  <ExpansionPanelDetails
+                    className={classes.expansionpaneldetails}
+                  >
                     <Grid container spacing={3}>
                       <Grid item xs={12}>
                         <Grid container spacing={3}>
@@ -90,9 +90,7 @@ class IngresosSueldosPublicos extends Component {
                               {new Intl.NumberFormat("es-MX", {
                                 style: "currency",
                                 currency: "MXN"
-                              }).format(
-                                sueldo.ingreso_bruto_anual.valor
-                              )}{" "}
+                              }).format(sueldo.ingreso_bruto_anual.valor)}{" "}
                               {sueldo.ingreso_bruto_anual.moneda.codigo}
                             </Typography>
                           </Grid>
@@ -113,14 +111,8 @@ class IngresosSueldosPublicos extends Component {
                               Duración / frecuencia
                             </Typography>
                             <Typography className={classes.dataCard}>
-                              {
-                                sueldo.ingreso_bruto_anual
-                                  .duracion_frecuencia
-                              }{" "}
-                              {
-                                sueldo.ingreso_bruto_anual.unidad_temporal
-                                  .valor
-                              }
+                              {sueldo.ingreso_bruto_anual.duracion_frecuencia}{" "}
+                              {sueldo.ingreso_bruto_anual.unidad_temporal.valor}
                             </Typography>
                           </Grid>
                           <Grid item xs={4}>

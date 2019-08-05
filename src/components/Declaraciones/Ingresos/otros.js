@@ -61,12 +61,13 @@ class IngresosOtros extends Component {
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
+                    className={classes.expansion}
                   >
-                    <Typography className={classes.tituloFondo}>
-                      Declarante
-                    </Typography>
+                    <Typography>Declarante</Typography>
                   </ExpansionPanelSummary>
-                  <ExpansionPanelDetails>
+                  <ExpansionPanelDetails
+                    className={classes.expansionpaneldetails}
+                  >
                     <Grid container spacing={3}>
                       <Grid item xs={12}>
                         <Grid container spacing={3}>
@@ -153,7 +154,6 @@ class IngresosOtros extends Component {
    * ----------------------------------------------------------------------
    */
   toggl(item, index, e) {
-
     let items = this.state.items,
       newItems = items.map(d => {
         if (item === d) {
