@@ -4,7 +4,8 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Donutchart from './Charts/SimpleRadialChart'
 import CountUp from 'react-countup';
-//import rp from 'request-promise';
+import rp from 'request-promise';
+import LinearIndeterminate from './LinearIndeterminate';
 
 
 const styles = theme => ({
@@ -34,13 +35,43 @@ const styles = theme => ({
 class Cifras extends React.Component{
 
     state = {
+        loading: true,
         contrataciones: 300000,
         instituciones: 200,
+        donutChartData: [],
         periodo: {
             start: 2017,
             end: 2018
         }
     };
+
+    componentWillMount() {
+
+        rp({
+            uri: "http://localhost:3001/api/s6/summary",
+            method: "GET",
+            json: true
+        }).then( data => {
+
+            //console.log(data)
+
+            this.setState({
+                loading: false,
+                contrataciones: data.procedimientos,
+                instituciones: data.instituciones.length,
+                donutChartData: [
+                    {theta: data.open, label: 'Licitación pública', color: "#00cc99"},
+                    {theta: data.selective, label: 'Invitación a tres', color: "#ffcc00"},
+                    {theta: data.direct, label: "Adjudicación directa", color: "#663399"},
+                    {theta: data.other, label: "Otro", color: "#ff6600"}
+                    ]
+            })
+
+        }).catch(error => {
+            console.log(error);
+        });
+
+    }
 
 
     render(){
@@ -69,58 +100,66 @@ class Cifras extends React.Component{
 
         return (
             <div className={classes.root}>
-                <Grid container spacing={0}>
-                    <Grid item xs={12} md={12} lg={5} xl={5}>
-                        <Typography variant="h6">
-                             Procesos de contratación:
-                        </Typography>
-
-                        <Typography variant="h5" paragraph>
-                            <b><CountUp separator="," start={1} end={this.state.contrataciones}/></b>
-                        </Typography>
-
-                        <Typography variant="h6">
-                            Instituciones:
-                        </Typography>
-                        <Typography variant="h5" paragraph>
-                            <b> <CountUp separator="," start={1} end={this.state.instituciones}/></b>
-                        </Typography>
-
-                        <Typography variant="h6">
-                            Periodo:
-                        </Typography>
-                        <Typography variant="h5" paragraph>
-                            <b>{this.state.periodo.start} - {this.state.periodo.end}</b>
-                        </Typography>
-
+                {this.state.loading?
+                    <Grid container spacing={0}>
+                        <Grid item xs={12}>
+                            <LinearIndeterminate/>
+                        </Grid>
                     </Grid>
+                    :
+                    <Grid container spacing={0}>
+                        <Grid item xs={12} md={12} lg={5} xl={5}>
+                            <Typography variant="h6">
+                                Procesos de contratación:
+                            </Typography>
 
-                    <Grid item xs={12} md={12} lg={7} xl={7}>
+                            <Typography variant="h5" paragraph>
+                                <b><CountUp separator="," start={1} end={this.state.contrataciones}/></b>
+                            </Typography>
 
-                        <Grid container spacing={0}>
-                            <Grid item xs={12} md={12} lg={6} xl={6}>
-                        <Donutchart/>
-                            </Grid>
-                            <Grid item xs={12} md={12} lg={6} xl={6}>
+                            <Typography variant="h6">
+                                Instituciones:
+                            </Typography>
+                            <Typography variant="h5" paragraph>
+                                <b> <CountUp separator="," start={1} end={this.state.instituciones}/></b>
+                            </Typography>
 
-                                <ul className={classes.ul}>
-                                    {
-                                        bullets.map((b, i) => (
-                                            <li key={i}>
-                                                <Typography variant="h6" paragraph>
-                                                    <span className={classes.bullet} style={{backgroundColor: b.color}} />
-                                                    {b.tipo}
-                                                </Typography>
-                                            </li>
-                                            )
-                                        )}
-                                </ul>
+                            <Typography variant="h6">
+                                Periodo:
+                            </Typography>
+                            <Typography variant="h5" paragraph>
+                                <b>{this.state.periodo.start} - {this.state.periodo.end}</b>
+                            </Typography>
 
+                        </Grid>
+
+                        <Grid item xs={12} md={12} lg={7} xl={7}>
+
+                            <Grid container spacing={0}>
+                                <Grid item xs={12} md={12} lg={6} xl={6}>
+                                    <Donutchart data={this.state.donutChartData}/>
+                                </Grid>
+                                <Grid item xs={12} md={12} lg={6} xl={6}>
+
+                                    <ul className={classes.ul}>
+                                        {
+                                            bullets.map((b, i) => (
+                                                    <li key={i}>
+                                                        <Typography variant="h6" paragraph>
+                                                            <span className={classes.bullet} style={{backgroundColor: b.color}} />
+                                                            {b.tipo}
+                                                        </Typography>
+                                                    </li>
+                                                )
+                                            )}
+                                    </ul>
+
+                                </Grid>
                             </Grid>
                         </Grid>
                     </Grid>
-                </Grid>
-        </div>
+                }
+            </div>
         )
     }
 }
