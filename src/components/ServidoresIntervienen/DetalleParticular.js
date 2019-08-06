@@ -16,13 +16,13 @@ import DialogContentText from "@material-ui/core/DialogContentText/DialogContent
 import DialogActions from "@material-ui/core/DialogActions/DialogActions";
 import Button from "@material-ui/core/Button/Button";
 
-function getGlosarioItem(id){
+function getGlosarioItem(id) {
     return glosario.particulares[id];
 }
 
 function getModalStyle() {
-    const top = 50 ;
-    const left = 50 ;
+    const top = 50;
+    const left = 50;
     return {
         top: `${top}%`,
         left: `${left}%`,
@@ -37,16 +37,16 @@ const styles = theme => ({
         backgroundColor: theme.palette.background.paper,
         boxShadow: theme.shadows[5],
         padding: theme.spacing(4),
-        [theme.breakpoints.up('sm')]:{
+        [theme.breakpoints.up('sm')]: {
             width: theme.spacing(110),
         },
-        [theme.breakpoints.down('sm')]:{
+        [theme.breakpoints.down('sm')]: {
             width: '80%',
             height: '80%',
             overflowY: 'scroll',
 
         },
-        [theme.breakpoints.up('xl')]:{
+        [theme.breakpoints.up('xl')]: {
             width: theme.spacing(130),
         },
     },
@@ -60,17 +60,17 @@ const styles = theme => ({
         width: '100%',
 
     },
-    fontSmall:{
-        fontSize:'.8em',
+    fontSmall: {
+        fontSize: '.8em',
     },
     flex: {
         flexGrow: 1,
     },
-    button:{
-        float:'right'
+    button: {
+        float: 'right'
     },
-    title:{
-        color : theme.palette.primary.main,
+    title: {
+        color: theme.palette.primary.main,
 
     },
     paperGlosario: {
@@ -93,24 +93,25 @@ const styles = theme => ({
 });
 
 class DetalleParticular extends React.Component {
-    state ={
-        open : false,
-        id : 0
+    state = {
+        open: false,
+        id: 0
     };
 
     openPoper = () => {
-      this.setState(state => ({
-          open : !state.open
-      }))
+        this.setState(state => ({
+            open: !state.open
+        }))
     };
 
     controlGlosario = (id) => {
-        this.setState({id : id});
+        this.setState({id: id});
     };
 
     render() {
         const {classes, handleClose, particular, control} = this.props;
-        const {open,id} = this.state;
+
+        const {open, id} = this.state;
         return (
             <div>
                 <Modal
@@ -142,26 +143,31 @@ class DetalleParticular extends React.Component {
                         <form>
                             <Grid container spacing={1} justify="flex-start">
                                 <Grid item xs={11}>
-                                    <Typography variant= "h6" className={classes.title}>Ficha del particular inhabilitado</Typography>
+                                    <Typography variant="h6" className={classes.title}>Ficha del particular
+                                        inhabilitado</Typography>
                                 </Grid>
                                 <Grid item xs={1}>
-                                    <IconButton color="primary" className={classes.button} component="span" onClick={handleClose}>
-                                        <CloseButton />
+                                    <IconButton color="primary" className={classes.button} component="span"
+                                                onClick={handleClose}>
+                                        <CloseButton/>
                                     </IconButton>
                                 </Grid>
                                 <Grid item xs={12}>
                                     <TextField
                                         id="read-only-input"
                                         label="Hechos"
-                                        defaultValue={particular.hechos}
+                                        defaultValue={particular.causa_motivo_hechos}
                                         className={classes.textField}
                                         margin="normal"
                                         multiline
                                         InputProps={{
                                             readOnly: true,
-                                            className:classes.fontSmall,
+                                            className: classes.fontSmall,
                                             endAdornment: (
-                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(0)}}>
+                                                <InputAdornment position="end" onClick={() => {
+                                                    this.openPoper();
+                                                    this.controlGlosario(0)
+                                                }}>
                                                     <IconHelp/>
                                                 </InputAdornment>
                                             )
@@ -178,45 +184,54 @@ class DetalleParticular extends React.Component {
                                         multiline
                                         InputProps={{
                                             readOnly: true,
-                                            className:classes.fontSmall,
+                                            className: classes.fontSmall,
                                             endAdornment: (
-                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(1)}}>
+                                                <InputAdornment position="end" onClick={() => {
+                                                    this.openPoper();
+                                                    this.controlGlosario(1)
+                                                }}>
                                                     <IconHelp/>
                                                 </InputAdornment>
                                             )
                                         }}
                                     />
                                 </Grid>
-                                <Grid item md = {6} xs = {12}>
+                                <Grid item md={6} xs={12}>
                                     <TextField
                                         id="read-only-input"
                                         label="Fecha notificación"
-                                        defaultValue={particular.fechaNotificacion}
+                                        defaultValue={particular.fecha_notificacion}
                                         className={classes.textField}
                                         margin="normal"
                                         InputProps={{
                                             readOnly: true,
-                                            className:classes.fontSmall,
+                                            className: classes.fontSmall,
                                             endAdornment: (
-                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(2)}}>
+                                                <InputAdornment position="end" onClick={() => {
+                                                    this.openPoper();
+                                                    this.controlGlosario(2)
+                                                }}>
                                                     <IconHelp/>
                                                 </InputAdornment>
                                             )
                                         }}
                                     />
                                 </Grid>
-                                <Grid item md = {6} xs = {12}>
+                                <Grid item md={6} xs={12}>
                                     <TextField
                                         id="read-only-input"
-                                        label="Fecha resolución"
-                                        defaultValue={particular.fechaResolucion}
+                                        label="Fecha captura"
+                                        defaultValue={particular.fecha_captura}
                                         className={classes.textField}
                                         margin="normal"
                                         InputProps={{
                                             readOnly: true,
-                                            className:classes.fontSmall,
+                                            className: classes.fontSmall,
                                             endAdornment: (
-                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(3)}}>
+                                                <InputAdornment position="end" onClick={() => {
+                                                    this.openPoper();
+                                                    this.controlGlosario(3)
+                                                }}>
                                                     <IconHelp/>
                                                 </InputAdornment>
                                             )
@@ -234,9 +249,12 @@ class DetalleParticular extends React.Component {
                                         margin="normal"
                                         InputProps={{
                                             readOnly: true,
-                                            className:classes.fontSmall,
+                                            className: classes.fontSmall,
                                             endAdornment: (
-                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(4)}}>
+                                                <InputAdornment position="end" onClick={() => {
+                                                    this.openPoper();
+                                                    this.controlGlosario(4)
+                                                }}>
                                                     <IconHelp/>
                                                 </InputAdornment>
                                             )
@@ -247,14 +265,17 @@ class DetalleParticular extends React.Component {
                                     <TextField
                                         id="read-only-input"
                                         label="Monto"
-                                        defaultValue={particular.monto}
+                                        defaultValue={particular.multa ? (particular.multa.monto + " (" + particular.multa.moneda + ")") : particular.multa}
                                         className={classes.textField}
                                         margin="normal"
                                         InputProps={{
                                             readOnly: true,
-                                            className:classes.fontSmall,
+                                            className: classes.fontSmall,
                                             endAdornment: (
-                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(5)}}>
+                                                <InputAdornment position="end" onClick={() => {
+                                                    this.openPoper();
+                                                    this.controlGlosario(5)
+                                                }}>
                                                     <IconHelp/>
                                                 </InputAdornment>
                                             )
@@ -265,39 +286,23 @@ class DetalleParticular extends React.Component {
                                     <TextField
                                         id="read-only-input"
                                         label="Responsable de la información"
-                                        defaultValue={particular.responsableInformacion}
+                                        defaultValue={particular.responsable}
                                         className={classes.textField}
                                         margin="normal"
                                         InputProps={{
                                             readOnly: true,
-                                            className:classes.fontSmall,
+                                            className: classes.fontSmall,
                                             endAdornment: (
-                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(6)}}>
+                                                <InputAdornment position="end" onClick={() => {
+                                                    this.openPoper();
+                                                    this.controlGlosario(6)
+                                                }}>
                                                     <IconHelp/>
                                                 </InputAdornment>
                                             )
                                         }}
                                     />
                                 </Grid>
-                                <Grid item md={6} xs={12}>
-                                    <TextField
-                                        id="read-only-input"
-                                        label="Fecha de última actualización"
-                                        defaultValue={particular.fechaActualizacion}
-                                        className={classes.textField}
-                                        margin="normal"
-                                        InputProps={{
-                                            readOnly: true,
-                                            className:classes.fontSmall,
-                                            endAdornment: (
-                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(7)}}>
-                                                    <IconHelp/>
-                                                </InputAdornment>
-                                            )
-                                        }}
-                                    />
-                                </Grid>
-
                                 <Grid item md={6} xs={12}></Grid>
 
                             </Grid>

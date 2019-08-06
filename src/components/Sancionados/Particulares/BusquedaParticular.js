@@ -126,7 +126,7 @@ class BusquedaParticular extends React.Component {
                 <Grid item xs={12}>
                     <Typography variant="h6" paragraph><b>Busca un particular sancionado</b></Typography>
                 </Grid>
-                <Grid item md={6} xs={12}>
+                <Grid item md={5} xs={12}>
                     <FormControl className={classes.formControl}>
                         <InputLabel htmlFor={'campoSelectInstitucion'}>Institución</InputLabel>
                         <Select style={{marginTop: '0px'}} value={institucion}
@@ -145,11 +145,11 @@ class BusquedaParticular extends React.Component {
                         </Select>
                     </FormControl>
                 </Grid>
-                <Grid item md={3} xs={12}>
+                <Grid item md={4} xs={12}>
                     <FormControl className={classes.formControl}>
                         <TextField
                             id="search"
-                            label="Nombre/Razón social particular sancionado"
+                            label="Nombre / Razón social"
                             type="search"
                             onChange={(e) => handleChangeCampo('nombreParticular', e)}
                             value={nombreParticular}
@@ -191,8 +191,10 @@ class BusquedaParticular extends React.Component {
                 </Grid>
                 <Grid item xs={12} className={classes.nota}>
                     <Typography variant={"caption"} style={{fontStyle: 'italic'}}>Nota:
-                        Actualmente se utiliza únicamente la información
-                        proporcionada por la Secretaría de la Función Pública, por lo que se consideran únicamente Licitantes, Proveedores y Contratistas sancionados</Typography>
+                        Este buscador mostrará en su primera etapa, solamente datos de carácter público, proporcionados por la Secretaría de la Función Pública, relativos a
+                        sanciones impuestas a personas físicas o morales, por infracciones a la Ley de Adquisiciones, Arrendamientos y Servicios del Sector Público, Ley de
+                        Obras Públicas y Servicios Relacionados con las Mismas, y Ley de Asociaciones Público Privadas.
+                    </Typography>
 
 
                 </Grid>

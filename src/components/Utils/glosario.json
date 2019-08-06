@@ -70,8 +70,8 @@
     },
     {
       "id": 3,
-      "title": "Fecha resolución",
-      "description": "Fecha en que se emite la resolución sancionatoria"
+      "title": "Fecha captura",
+      "description": "Fecha en que se captura la resolución sancionatoria"
     },
     {
       "id": 4,
