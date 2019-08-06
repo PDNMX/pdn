@@ -142,7 +142,7 @@ class BusquedaParticular extends React.Component {
                     <FormControl className={classes.formControl}>
                         <TextField
                             id="search"
-                            label="Nombre/Razón social particular sancionado"
+                            label="Nombre / Razón social"
                             type="search"
                             onChange={(e) => handleChangeCampo('nombreParticular', e)}
                             value={nombreParticular}

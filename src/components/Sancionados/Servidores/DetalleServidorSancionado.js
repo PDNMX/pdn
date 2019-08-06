@@ -176,6 +176,7 @@ class DetalleServidorSancionado extends React.Component {
     }
     render() {
         const {classes, handleClose, servidor, control} = this.props;
+        console.log("Servidor:", servidor);
         const {open,id} = this.state;
         return (
             <div>

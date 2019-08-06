@@ -188,7 +188,7 @@ class BusquedaServidor extends React.Component {
                     <FormControl className={classes.formControl}>
                         <TextField
                             id="search"
-                            label="Nombre del servidor sancionado"
+                            label="Nombre(s)"
                             type="search"
                             onChange={(e) => handleChangeCampo('nombreServidor', e)}
                             value={nombreServidor}

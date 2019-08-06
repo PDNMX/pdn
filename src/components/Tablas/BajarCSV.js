@@ -59,7 +59,7 @@ class BajarCSV extends React.Component {
             <div className={classes.root}>
                 <Button variant="contained" className={classNames(classes.button)}
                         onClick={() => {
-                            filtrado ? fnSearch('FILTER') : fnSearch('ALL');
+                            filtrado ? fnSearch('DN_FILTER') : fnSearch('DN_ALL');
                         }}>
                     {labelButton}
                     <DownloadIcon className={classNames(classes.rightIcon, classes.iconSmall)}/>

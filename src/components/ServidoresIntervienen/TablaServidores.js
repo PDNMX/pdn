@@ -28,6 +28,7 @@ function getSorting(order, orderBy) {
 }
 
 const columnData = [
+
     {
         id: 'servidor',
         disablePadding: false,
@@ -37,14 +38,14 @@ const columnData = [
         key: 'servidor'
     },
     {
-        id: 'institucion',
+        id: 'institucion.nombre',
         disablePadding: false,
         label: 'Institución',
         position: 3,
         mostrar: true,
-        key: 'institucion'
+        key: 'dependencia.nombre'
     },
-    {id: 'puesto', disablePadding: false, label: 'Puesto', position: 4, mostrar: true, key: 'puesto'},
+    {id: 'puesto.nombre', disablePadding: false, label: 'Puesto', position: 4, mostrar: true, key: 'puesto.nombre'},
     {
         id: 'tipoArea',
         disablePadding: false,
@@ -86,12 +87,12 @@ const columnData = [
         key: 'dictamenes'
     },
     {
-        id: 'tipoProcedimiento',
+        id: 'tipo_actos',
         disablePadding: false,
         label: 'Tipo procedimiento',
         position: 10,
         mostrar: true,
-        key: 'tipoProcedimiento'
+        key: 'tipo_actos'
     }
 ];
 
@@ -275,7 +276,7 @@ class EnhancedTable extends React.Component {
             let filtros = {};
             let offset = 1;
 
-            if (typeSearch !== 'ALL') {
+            if (typeSearch !== 'DN_ALL') {
                 if(procedimiento) filtros.tipo_actos = procedimiento;
                 if (institucion) filtros.institucion = '%' + institucion + '%';
                 if (nombreServidor) filtros.nombres = '%' + nombreServidor.toUpperCase() + '%';
@@ -285,20 +286,24 @@ class EnhancedTable extends React.Component {
             }
 
             let limit = (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.state.rowsPerPage : null;
-            if (typeSearch === 'CHANGE_PAGE') offset = (this.state.rowsPerPage * this.state.page);
+
+            if (typeSearch === 'CHANGE_PAGE') offset = (this.state.rowsPerPage * this.state.page)
+            else this.setState({page:0})
+
 
             let body = {
                 "filtros": filtros,
                 "limit": limit,
-                "offset": offset
+                "offset": offset,
+                "iterar" : (typeSearch === 'DN_FILTER' || typeSearch==='DN_ALL') ? true:false
             }
 
 
             let options = {
                 method: 'POST',
-                uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/s2/getSPC',
+                uri: process.env.REACT_APP_HOST_PDNBACK +'/apis/s2/getSPC',
                 json: true,
-                body: typeSearch === 'ALL' ? {} : body
+                body: typeSearch === 'DN_ALL' ? {"iterar":true} : body
             };
 
             rp(options)
@@ -306,14 +311,15 @@ class EnhancedTable extends React.Component {
                     let dataAux = res.data;
                     let total = res.totalRows;
 
-                    typeSearch === 'ALL' ? this.setState({data: dataAux, loading: false}, () => {
+                    typeSearch === 'DN_ALL' ? this.setState({data: dataAux, loading: false,error:false}, () => {
                         this.btnDownloadAll.triggerDown();
                     }) : (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.setState({
                             filterData: dataAux,
                             loading: false,
-                            totalRows: total
+                            totalRows: total,
+                        error:false
                         }) :
-                        this.setState({filterDataAll: dataAux, loading: false, totalRows: total}, () => {
+                        this.setState({filterDataAll: dataAux, loading: false, totalRows: total,error:false}, () => {
                             this.child.triggerDown();
                         });
                     return true;
@@ -446,12 +452,12 @@ class EnhancedTable extends React.Component {
                                         <TableCell> <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data}
                                                               filtrado={false}
                                                               columnas={columnData} fnSearch={this.handleSearchAPI}
-                                                              fileName={'ServidoresAll'}/></TableCell>
+                                                              fileName={'Sistema2_datos'}/></TableCell>
                                         <TableCell>
                                             <BajarCSV innerRef={comp => this.child = comp} data={filterDataAll}
                                                       filtrado={true}
                                                       columnas={columnData} fnSearch={this.handleSearchAPI}
-                                                      fileName={'ServidoresFilter'}/>
+                                                      fileName={'MiBusqueda'}/>
                                         </TableCell>
                                         <TablePagination
                                             colSpan={2}

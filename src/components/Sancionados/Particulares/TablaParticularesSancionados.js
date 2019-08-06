@@ -451,13 +451,7 @@ class EnhancedTable extends React.Component {
                             <MensajeNoRegistros/>
                         }
                     </Grid>
-                    <Grid item xs={12} className={classes.item}>
-                        {filterData && filterData.length > 0 &&
-                        <Typography variant={"caption"} style={{fontStyle: 'italic'}}>Fuente:
-                            https://datos.gob.mx/busca/dataset/proveedores-y-contratistas-sancionados</Typography>
-                        }
 
-                    </Grid>
                 </Grid>
             </div>
         );
