@@ -75,12 +75,13 @@ class Deudas extends Component {
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
+                    className={classes.expansion}
                   >
-                    <Typography className={classes.tituloFondo}>
-                      Declarante
-                    </Typography>
+                    <Typography>Declarante</Typography>
                   </ExpansionPanelSummary>
-                  <ExpansionPanelDetails>
+                  <ExpansionPanelDetails
+                    className={classes.expansionpaneldetails}
+                  >
                     <Grid container spacing={3}>
                       <Grid item xs={12}>
                         <Grid container spacing={3}>
@@ -97,7 +98,10 @@ class Deudas extends Component {
                               Monto original
                             </Typography>
                             <Typography className={classes.dataCard}>
-                              ${pasivo.monto_original}{" "}
+                              {new Intl.NumberFormat("es-MX", {
+                                style: "currency",
+                                currency: "MXN"
+                              }).format(pasivo.monto_original)}{" "}
                               {pasivo.tipo_moneda.codigo}
                             </Typography>
                           </Grid>
@@ -106,7 +110,10 @@ class Deudas extends Component {
                               Saldo pendiente
                             </Typography>
                             <Typography className={classes.dataCard}>
-                              ${pasivo.saldo_pendiente}{" "}
+                              {new Intl.NumberFormat("es-MX", {
+                                style: "currency",
+                                currency: "MXN"
+                              }).format(pasivo.saldo_pendiente)}{" "}
                               {pasivo.tipo_moneda.codigo}
                             </Typography>
                           </Grid>
@@ -182,7 +189,10 @@ class Deudas extends Component {
                             <Typography className={classes.tituloCard}>
                               Porcentaje de adeudo del titular
                             </Typography>
-                            <Typography className={classes.dataCard}>
+                            <Typography
+                              component="div"
+                              className={classes.dataCard}
+                            >
                               {pasivo.porcentaje_adeudo_titular}%
                               <BorderLinearProgress
                                 className={classes.marginProgressbar}
@@ -208,8 +218,12 @@ class Deudas extends Component {
                             </Typography>
                             <Typography className={classes.dataCard}>
                               {pasivo.montos_abonados.map((monto, j) => (
-                                <span>
-                                  ${monto} <br />
+                                <span key={"monto-" + j}>
+                                  {new Intl.NumberFormat("es-MX", {
+                                    style: "currency",
+                                    currency: "MXN"
+                                  }).format(monto)}{" "}
+                                  <br />
                                 </span>
                               ))}
                             </Typography>

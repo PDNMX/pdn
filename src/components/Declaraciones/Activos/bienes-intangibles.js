@@ -73,12 +73,13 @@ class ActivosBienesIntangibles extends Component {
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
+                    className={classes.expansion}
                   >
-                    <Typography className={classes.tituloFondo}>
-                      Declarante
-                    </Typography>
+                    <Typography>Declarante</Typography>
                   </ExpansionPanelSummary>
-                  <ExpansionPanelDetails>
+                  <ExpansionPanelDetails
+                    className={classes.expansionpaneldetails}
+                  >
                     <Grid container spacing={3}>
                       <Grid item xs={12}>
                         <Grid container spacing={3}>
@@ -103,7 +104,10 @@ class ActivosBienesIntangibles extends Component {
                               Precio de adquisición
                             </Typography>
                             <Typography className={classes.dataCard}>
-                              ${bienes.precio_adquisicion.valor}{" "}
+                              {new Intl.NumberFormat("es-MX", {
+                                style: "currency",
+                                currency: "MXN"
+                              }).format(bienes.precio_adquisicion.valor)}{" "}
                               {bienes.precio_adquisicion.moneda.codigo}
                             </Typography>
                           </Grid>
@@ -179,7 +183,10 @@ class ActivosBienesIntangibles extends Component {
                             <Typography className={classes.tituloCard}>
                               Porcentaje de Propiedad en Caso de Copropiedad
                             </Typography>
-                            <Typography className={classes.dataCard}>
+                            <Typography
+                              component="div"
+                              className={classes.dataCard}
+                            >
                               {bienes.porcentaje_copropiedad}%
                               <BorderLinearProgress
                                 className={classes.marginProgressbar}
@@ -194,7 +201,12 @@ class ActivosBienesIntangibles extends Component {
                               Precio total de adquisición si es copropiedad
                             </Typography>
                             <Typography className={classes.dataCard}>
-                              ${bienes.precio_total_copropiedad.valor}{" "}
+                              {new Intl.NumberFormat("es-MX", {
+                                style: "currency",
+                                currency: "MXN"
+                              }).format(
+                                bienes.precio_total_copropiedad.valor
+                              )}{" "}
                               {bienes.precio_total_copropiedad.moneda.codigo}
                             </Typography>
                           </Grid>

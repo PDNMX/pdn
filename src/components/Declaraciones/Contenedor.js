@@ -5,9 +5,9 @@ import Footer from "./Footer";
 
 import Busqueda from "./Busqueda";
 import PerfilMaterialUI from "./PerfilMaterialUI";
-import Stats from "./Stats";
+import Stats from "./Estadisticas/Stats";
 
-import {  Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { Grid } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
@@ -21,6 +21,15 @@ import imgEstadisticas from "../../assets/declaraciones/estadisticas.svg";
 //header data
 import S3 from "../../assets/iconos_azul/1_icono.svg";
 import background from "../../assets/img/pdn_sis1.jpeg";
+
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
+  Button
+} from "@material-ui/core";
 
 const titulo = "Declaraciones";
 const copy =
@@ -95,18 +104,66 @@ const styles = theme => ({
   }
 });
 
+function AlertDialog(props) {
+  return (
+    <Dialog
+      open={props.open}
+      onClose={props.handleClose}
+      aria-labelledby="alert-dialog-title"
+      aria-describedby="alert-dialog-description"
+    >
+      <DialogTitle id="alert-dialog-title">
+        {"Plataforma Digital Nacional"}
+      </DialogTitle>
+      <DialogContent>
+        <DialogContentText
+          id="alert-dialog-description"
+          style={{ textAlign: "justify" }}
+        >
+          La información contenida en esta sección fue generada de forma
+          aleatoria y sirve unicamente para poder visualizar las diferentes
+          funcionalidades propuestas para este sistema.
+        </DialogContentText>
+        <DialogContentText style={{ textAlign: "justify" }}>
+          <b>
+            El formato actual está basado en la última versión de las
+            especificaciones técnicas publicadas en este sitio, mismas que
+            fueron elaboradas bajo los últimos formatos publicados en el Diario
+            Oficial de la Federación. Estos formatos actualmente se encuentran
+            en revisión por el Comité Coordinador del Sistema Nacional
+            Anticorrupción, por lo que estos no serán los formatos finales de la
+            información.
+          </b>
+        </DialogContentText>
+      </DialogContent>
+      <DialogActions>
+        <Button
+          variant="contained"
+          onClick={props.handleClose}
+          style={{ background: "#ffe01b" }}
+        >
+          Aceptar
+        </Button>
+      </DialogActions>
+    </Dialog>
+  );
+}
+
 class Contenedor extends React.Component {
+  state = {
+    open: true
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
+
   render() {
     const { classes } = this.props;
 
     return (
       <div className={classes.root}>
-        <Header
-          logo={S3}
-          titulo={titulo}
-          copy={copy}
-          background={background}
-        />
+        <Header logo={S3} titulo={titulo} copy={copy} background={background} />
         <Grid container spacing={0} className={classes.bgContainer}>
           <Grid item xs={12} className={classes.section}>
             <Grid container spacing={0}>
@@ -129,10 +186,7 @@ class Contenedor extends React.Component {
                       className={classes.image}
                     />
                   </figure>
-                  <Typography
-                    variant="subtitle1"
-                    className={classes.whiteText}
-                  >
+                  <Typography variant="subtitle1" className={classes.whiteText}>
                     Buscar un servidor público
                   </Typography>
                 </Link>
@@ -149,10 +203,7 @@ class Contenedor extends React.Component {
                   "tab"
                 )}
               >
-                <Link
-                  className={classes.link}
-                  to="/declaraciones/estadistica/edad"
-                >
+                <Link className={classes.link} to="/declaraciones/estadisticas">
                   <figure className={classes.figure}>
                     <img
                       alt="Estadísticas"
@@ -160,10 +211,7 @@ class Contenedor extends React.Component {
                       className={classes.image}
                     />
                   </figure>
-                  <Typography
-                    variant="subtitle1"
-                    className={classes.whiteText}
-                  >
+                  <Typography variant="subtitle1" className={classes.whiteText}>
                     Estadísticas
                   </Typography>
                 </Link>
@@ -180,14 +228,12 @@ class Contenedor extends React.Component {
                 path="/declaraciones/perfil/:id?"
                 component={PerfilMaterialUI}
               />
-              <Route
-                path="/declaraciones/estadistica/:section"
-                component={Stats}
-              />
+              <Route path="/declaraciones/estadisticas" component={Stats} />
             </Switch>
           </Grid>
         </Grid>
         <Footer />
+        <AlertDialog open={this.state.open} handleClose={this.handleClose} />
       </div>
     );
   }

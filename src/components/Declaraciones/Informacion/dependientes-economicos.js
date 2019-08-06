@@ -36,14 +36,15 @@ class InfoDependientes extends Component {
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
+                    className={classes.expansion}
                   >
-                    <Typography className={classes.tituloGeneralCard}>
-                      <span className={classes.tituloFondo}>
-                        {dependiente.tipo_relacion.valor}
-                      </span>
+                    <Typography>
+                      {dependiente.tipo_relacion.valor}
                     </Typography>
                   </ExpansionPanelSummary>
-                  <ExpansionPanelDetails>
+                  <ExpansionPanelDetails
+                    className={classes.expansionpaneldetails}
+                  >
                     <Grid container spacing={3}>
                       <Grid item xs={12}>
                         <Grid container spacing={3}>

@@ -61,12 +61,13 @@ class InteresesBeneficios extends Component {
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
+                    className={classes.expansion}
                   >
-                    <Typography className={classes.tituloFondo}>
-                      Declarante
-                    </Typography>
+                    <Typography>Declarante</Typography>
                   </ExpansionPanelSummary>
-                  <ExpansionPanelDetails>
+                  <ExpansionPanelDetails
+                    className={classes.expansionpaneldetails}
+                  >
                     <Grid container spacing={3}>
                       <Grid item xs={12}>
                         <Grid container spacing={3}>
@@ -83,7 +84,10 @@ class InteresesBeneficios extends Component {
                               Valor de beneficio
                             </Typography>
                             <Typography className={classes.dataCard}>
-                              ${interes.valor_beneficio}
+                              {new Intl.NumberFormat("es-MX", {
+                                style: "currency",
+                                currency: "MXN"
+                              }).format(interes.valor_beneficio)}
                             </Typography>
                           </Grid>
                         </Grid>

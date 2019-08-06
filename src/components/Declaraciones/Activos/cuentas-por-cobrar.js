@@ -73,12 +73,13 @@ class ActivosCuentasPorCobrar extends Component {
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
+                    className={classes.expansion}
                   >
-                    <Typography className={classes.tituloFondo}>
-                      Declarante
-                    </Typography>
+                    <Typography>Declarante</Typography>
                   </ExpansionPanelSummary>
-                  <ExpansionPanelDetails>
+                  <ExpansionPanelDetails
+                    className={classes.expansionpaneldetails}
+                  >
                     <Grid container spacing={3}>
                       <Grid item xs={12}>
                         <Grid container spacing={3}>
@@ -122,7 +123,10 @@ class ActivosCuentasPorCobrar extends Component {
                             <Typography className={classes.tituloCard}>
                               Porcentaje de copropiedad
                             </Typography>
-                            <Typography className={classes.dataCard}>
+                            <Typography
+                              component="div"
+                              className={classes.dataCard}
+                            >
                               {cuentas.porcentaje_copropiedad}%
                               <BorderLinearProgress
                                 className={classes.marginProgressbar}

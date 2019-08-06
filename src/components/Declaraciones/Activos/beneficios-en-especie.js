@@ -14,20 +14,9 @@ import {
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
-import { withStyles, lighten } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import styles from "../style";
 
-import LinearProgress from "@material-ui/core/LinearProgress";
-
-const BorderLinearProgress = withStyles({
-  root: {
-    height: 19,
-    backgroundColor: lighten("#808080", 0.5)
-  },
-  bar: {
-    borderRadius: 20
-  }
-})(LinearProgress);
 /*
 	////////////////////////////////////////////////////////////////////////////////
   //
@@ -79,12 +68,13 @@ class ActivosBeneficiosEnEspecie extends Component {
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
+                    className={classes.expansion}
                   >
-                    <Typography className={classes.tituloFondo}>
-                      Declarante
-                    </Typography>
+                    <Typography>Declarante</Typography>
                   </ExpansionPanelSummary>
-                  <ExpansionPanelDetails>
+                  <ExpansionPanelDetails
+                    className={classes.expansionpaneldetails}
+                  >
                     <Grid container spacing={3}>
                       <Grid item xs={12}>
                         <Grid container spacing={3}>
@@ -101,7 +91,10 @@ class ActivosBeneficiosEnEspecie extends Component {
                               Valor del mercado
                             </Typography>
                             <Typography className={classes.dataCard}>
-                              ${beneficio.valor_mercado.valor}{" "}
+                              {new Intl.NumberFormat("es-MX", {
+                                style: "currency",
+                                currency: "MXN"
+                              }).format(beneficio.valor_mercado.valor)}{" "}
                               {beneficio.valor_mercado.moneda.codigo}
                             </Typography>
                           </Grid>

@@ -43,8 +43,8 @@ class PerfilMaterialUI extends Component {
     super(props);
     this.state = {
       profile: null,
-      menu_superior: 0,
-      menu_informacion: 4,
+      menu_superior: 1,
+      menu_informacion: 0,
       menu_interes: 0,
       menu_ingresos: 0,
       menu_activos: 0,
@@ -143,7 +143,7 @@ class PerfilMaterialUI extends Component {
                 </Grid>
                 <Grid item xs={12}>
                   <Grid container spacing={3}>
-                    <Grid item xs={7}>
+                    <Grid item xs={8}>
                       <Typography className={classes.h1}>
                         {
                           this.state.profile.informacion_personal
@@ -170,13 +170,16 @@ class PerfilMaterialUI extends Component {
                         }
                       </Typography>
                     </Grid>
-                    <Grid item xs={5}>
+                    <Grid item xs={4}>
                       <Typography className={classes.tituloCard}>
                         INGRESOS ANUALES NETOS:
                       </Typography>
                       <Typography className={classes.dataCard}>
                         <strong style={{ fontSize: 25 }}>
-                          ${this.ingresosAnualesNetos()}
+                          {new Intl.NumberFormat("es-MX", {
+                            style: "currency",
+                            currency: "MXN"
+                          }).format(this.ingresosAnualesNetos())}
                         </strong>
                       </Typography>
                     </Grid>
@@ -229,7 +232,6 @@ class PerfilMaterialUI extends Component {
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <MenuSuperior
-              id={this.props.match.params.id}
               menu_superior={this.state.menu_superior}
               change={this.change_menuSuperior}
             />
@@ -349,13 +351,13 @@ class PerfilMaterialUI extends Component {
         );
       }
     }
-
     all = all.filter(d => d.moneda.codigo === "MXN").map(d => d.valor);
 
-    return all
-      .reduce(reducer)
-      .toFixed(2)
-      .replace(/\d(?=(\d{3})+\.)/g, "$&,");
+    return all.reduce(reducer);
+    // return all
+    //   .reduce(reducer)
+    //   .toFixed(2)
+    //   .replace(/\d(?=(\d{3})+\.)/g, "$&,");
   }
 }
 

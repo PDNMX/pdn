@@ -36,7 +36,7 @@ export default theme => ({
     padding: 15
   },
   titulo: {
-    fontSize: 12,
+    // fontSize: 12,
     color: "#34b3eb",
     fontWeight: 500,
     fontSize: 20,
@@ -49,17 +49,15 @@ export default theme => ({
   },
   dataCard: {
     fontSize: 14,
-    borderBottom: "1px solid #f2f2f2",
     paddingBottom: 10,
     marginBottom: 10
   },
   tituloGeneralCard: {
     fontWeight: 600,
-    fontSize: 16,
-    color: "#606060",
-    borderBottom: "1px solid #f2f2f2",
-    paddingBottom: 10,
-    marginBottom: 10
+    fontSize: 16
+    // color: "#606060",
+    // paddingBottom: 10,
+    // marginBottom: 10
   },
   gridCard: {
     borderBottom: "1px solid #f2f2f2",
@@ -70,14 +68,6 @@ export default theme => ({
     borderBottom: "0px solid #f2f2f2",
     paddingBottom: 10,
     marginBottom: 10
-  },
-  tituloFondo: {
-    backgroundColor: "#34b3eb",
-    color: "white",
-    padding: "5px 10px",
-    fontSize: 12,
-    marginBottom: 20,
-    fontWeight: 700
   },
   declarante: {
     display: "inline-block",
@@ -118,5 +108,42 @@ export default theme => ({
   //Progressbar
   marginProgressbar: {
     margin: theme.spacing(1, 0)
+  },
+  // graficas
+  listaGraficas: {
+    listStyle: "none",
+    display: "inline-block",
+    fontSize: 14
+  },
+  // formulario
+  textField: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    width: "100%"
+  },
+  formControl: {
+    margin: theme.spacing(3),
+    display: "flex"
+  },
+  group: {
+    margin: theme.spacing(1, 0)
+  },
+  button: {
+    margin: theme.spacing(1),
+    color: "#FFF",
+    fontWeight: "bold",
+    backgroundColor: "#34b3eb"
+  },
+  expansion: {
+    backgroundColor: "#83dfff",
+    color: "white",
+    textTransform: "uppercase",
+    // backgroundColor: "#34b3eb",
+    fontWeight: 1200,
+    fontSize: 16
+  },
+  expansionpaneldetails: {
+    paddingTop: 20,
+    paddingBottom: 20
   }
 });

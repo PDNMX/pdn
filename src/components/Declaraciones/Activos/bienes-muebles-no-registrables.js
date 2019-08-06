@@ -77,12 +77,13 @@ class ActivosBienesMueblesNoRegistrables extends Component {
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
+                    className={classes.expansion}
                   >
-                    <Typography className={classes.tituloFondo}>
-                      Declarante
-                    </Typography>
+                    <Typography>Declarante</Typography>
                   </ExpansionPanelSummary>
-                  <ExpansionPanelDetails>
+                  <ExpansionPanelDetails
+                    className={classes.expansionpaneldetails}
+                  >
                     <Grid container spacing={3}>
                       <Grid item xs={12}>
                         <Grid container spacing={3}>
@@ -99,7 +100,10 @@ class ActivosBienesMueblesNoRegistrables extends Component {
                               Precio de adquisición
                             </Typography>
                             <Typography className={classes.dataCard}>
-                              ${mueble.precio_adquisicion.valor}{" "}
+                              {new Intl.NumberFormat("es-MX", {
+                                style: "currency",
+                                currency: "MXN"
+                              }).format(mueble.precio_adquisicion.valor)}{" "}
                               {mueble.precio_adquisicion.moneda.codigo}
                             </Typography>
                           </Grid>
@@ -155,13 +159,23 @@ class ActivosBienesMueblesNoRegistrables extends Component {
                             <Typography className={classes.tituloCard}>
                               Porcentaje de la propiedad
                             </Typography>
-                            <Typography className={classes.dataCard}>
-                              {mueble.porcentaje_propiedad}%
+                            <Typography
+                              component="div"
+                              className={classes.dataCard}
+                            >
+                              {mueble.porcentaje_propiedad
+                                ? mueble.porcentaje_propiedad
+                                : 0}
+                              %
                               <BorderLinearProgress
                                 className={classes.marginProgressbar}
                                 variant="determinate"
                                 color="primary"
-                                value={mueble.porcentaje_propiedad}
+                                value={
+                                  mueble.porcentaje_propiedad
+                                    ? mueble.porcentaje_propiedad
+                                    : 0
+                                }
                               />
                             </Typography>
                           </Grid>

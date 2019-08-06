@@ -4,10 +4,10 @@ import MuiExpansionPanel from '@material-ui/core/ExpansionPanel';
 import MuiExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import MuiExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
-import Grid from "@material-ui/core/Grid";
+//import Grid from "@material-ui/core/Grid";
 import MuiLink from "@material-ui/core/Link";
-import {Link} from "react-router-dom";
-import Icon from '@material-ui/core/Icon';
+//import {Link} from "react-router-dom";
+//import Icon from '@material-ui/core/Icon';
 import Pasos from "../../../assets/pasos_evaluación.png";
 import Pipeline from "../../../assets/DQ_pipeline_analy.png";
 
@@ -309,7 +309,7 @@ export default function CustomizedExpansionPanels() {
                 <ExpansionPanelDetails>
                     <div>
                         <Typography paragraph>
-                            La calidad de cada conjunto de datos fue evaluada usando los rubros anteriormente mencionados. La evaluación detallada de los conjuntos de datos de la Guía puede encontrarse aquí.
+                            La calidad de cada conjunto de datos fue evaluada usando los rubros anteriormente mencionados. La evaluación detallada de los conjuntos de datos de la Guía puede encontrarse <MuiLink component="a" href="https://docs.google.com/spreadsheets/d/1UwhIH1Q2-boZXvyLnyJInTv8lB_4uVWf_klsJpN4Qdk/edit#gid=1228884255"> aquí </MuiLink>
                         </Typography>
 
 

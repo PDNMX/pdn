@@ -65,9 +65,7 @@ class ActivosBienesMuebles extends Component {
       <Grid container spacing={3} className={classes.rootSubseccion}>
         <Grid item xs={12}>
           <Typography className={classes.titulo}>
-            <strong>
-              Bienes muebles registrables ({this.items().length})
-            </strong>
+            <strong>Bienes muebles registrables ({this.items().length})</strong>
           </Typography>
           <Grid container spacing={3}>
             {this.items().map((mueble, i) => (
@@ -77,12 +75,13 @@ class ActivosBienesMuebles extends Component {
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
+                    className={classes.expansion}
                   >
-                    <Typography className={classes.tituloFondo}>
-                      Declarante
-                    </Typography>
+                    <Typography>Declarante</Typography>
                   </ExpansionPanelSummary>
-                  <ExpansionPanelDetails>
+                  <ExpansionPanelDetails
+                    className={classes.expansionpaneldetails}
+                  >
                     <Grid container spacing={3}>
                       <Grid item xs={12}>
                         <Grid container spacing={3}>
@@ -99,7 +98,10 @@ class ActivosBienesMuebles extends Component {
                               Precio de adquisición
                             </Typography>
                             <Typography className={classes.dataCard}>
-                              ${mueble.precio_adquisicion.valor}{" "}
+                              {new Intl.NumberFormat("es-MX", {
+                                style: "currency",
+                                currency: "MXN"
+                              }).format(mueble.precio_adquisicion.valor)}{" "}
                               {mueble.precio_adquisicion.moneda.codigo}
                             </Typography>
                           </Grid>
@@ -175,7 +177,10 @@ class ActivosBienesMuebles extends Component {
                             <Typography className={classes.tituloCard}>
                               Porcentaje de la propiedad
                             </Typography>
-                            <Typography className={classes.dataCard}>
+                            <Typography
+                              component="div"
+                              className={classes.dataCard}
+                            >
                               {mueble.porcentaje_propiedad}%
                               <BorderLinearProgress
                                 className={classes.marginProgressbar}

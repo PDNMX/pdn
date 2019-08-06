@@ -157,7 +157,7 @@ export default function CustomizedExpansionPanels() {
                             El marco normativo de la PDN está compuesto por la Ley General del Sistema Nacional Anticorrupción (LGSNA), la Ley General de Responsabilidades Administrativas (LGSNA) y las Bases para el Funcionamiento de la Plataforma Digital Nacional (publicadas el 23 de octubre del 2018 en el Diario Oficial de la Federación).
                         </Typography>
 
-                        <MuiLink href="http://www.diputados.gob.mx/LeyesBiblio/pdf/LGSNA.pdf">
+                        <MuiLink component='a' href="http://www.diputados.gob.mx/LeyesBiblio/pdf/LGSNA.pdf">
                             Ley General Del Sistema Nacional Anticorrupción
                         </MuiLink>
 
@@ -168,7 +168,7 @@ export default function CustomizedExpansionPanels() {
                             <li><Typography>35, X y XI;</Typography></li>
                             <li><Typography>Título cuarto;</Typography></li>
                         </ul>
-                        <MuiLink href="https://declaranet.gob.mx/docs/LGRA.pdf">
+                        <MuiLink component='a' href="https://declaranet.gob.mx/docs/LGRA.pdf">
                             Ley General de Responsabilidades Administrativas
                         </MuiLink>
 
@@ -186,7 +186,7 @@ export default function CustomizedExpansionPanels() {
                             <li><Typography>93, y</Typography></li>
                         </ul>
 
-                        <MuiLink href="https://www.dof.gob.mx/nota_detalle.php?codigo=5541802&fecha=23/10/2018">
+                        <MuiLink component='a' href="https://www.dof.gob.mx/nota_detalle.php?codigo=5541802&fecha=23/10/2018">
                             Bases para el Funcionamiento de la Plataforma Digital Nacional.
                         </MuiLink>
 
@@ -305,7 +305,7 @@ export default function CustomizedExpansionPanels() {
 
 
 
-                        <img src={Diagrama} className={classes.diagrama}/>
+                        <img alt="diagrama" src={Diagrama} className={classes.diagrama}/>
 
                         <Typography variant="h5" paragraph>¿Cómo se está construyendo la PDN?</Typography>
 

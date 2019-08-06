@@ -35,12 +35,15 @@ class InfoExperiencia extends Component {
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
+                    className={classes.expansion}
                   >
-                    <Typography className={classes.tituloGeneralCard}>
+                    <Typography>
                       {job.cargo_puesto}
                     </Typography>
                   </ExpansionPanelSummary>
-                  <ExpansionPanelDetails>
+                  <ExpansionPanelDetails
+                    className={classes.expansionpaneldetails}
+                  >
                     <Grid container spacing={3}>
                       <Grid item xs={12}>
                         <Typography className={classes.tituloGeneralCard}>
@@ -77,8 +80,8 @@ class InfoExperiencia extends Component {
                               {job.direccion.localidad.nom_loc},{" "}
                               {job.direccion.municipio.nom_mun}
                               <br />
-                              {job.direccion.entidad_federativa.nom_agee}.
-                              C.P. {job.direccion.cp}
+                              {job.direccion.entidad_federativa.nom_agee}. C.P.{" "}
+                              {job.direccion.cp}
                             </li>
                           </ul>
                         </Typography>
@@ -167,13 +170,9 @@ class InfoExperiencia extends Component {
                               className={classes.dataCard}
                             >
                               <ul>
-                                {job.funciones_principales.map(
-                                  (d, index) => (
-                                    <li key={"funciones-" + index}>
-                                      {d.valor}
-                                    </li>
-                                  )
-                                )}
+                                {job.funciones_principales.map((d, index) => (
+                                  <li key={"funciones-" + index}>{d.valor}</li>
+                                ))}
                               </ul>
                             </Typography>
                           </Grid>{" "}

@@ -13,6 +13,9 @@ import * as ConstClass from  './ConstValues.js';
 import BusquedaFromMaterialUI from "./single-components/BusquedaFromMaterialUI";
 import BusquedaTableMaterialUI from "./single-components/BusquedaTableMaterialUI";
 
+import { Grid, Typography } from "@material-ui/core";
+import { withStyles } from "@material-ui/core/styles";
+import styles from "./style";
 /*
   ////////////////////////////////////////////////////////////////////////////////
   //
@@ -51,16 +54,19 @@ class App extends Component {
    * ----------------------------------------------------------------------
    */
   render() {
+    let { classes } = this.props;
+
     return (
-      <div className="row">
-        <div className="col-sm-12">
-        <h2>Busca un servidor público</h2>
-        <BusquedaFromMaterialUI getUsers={this.getUsers} />
-        {/* <SearchForm getUsers={this.getUsers} /> */}
-        <div className="pdn_mobile_table">
-        {this.showTable()}
-        </div>
-      </div>
+      <div className={classes.root}>
+        <Grid container spacing={0}>
+          <Grid item xs={12}>
+            <Typography className={classes.h1}>
+              <strong>Busca un servidor público</strong>
+            </Typography>
+            <BusquedaFromMaterialUI getUsers={this.getUsers} />
+            {this.showTable()}
+          </Grid>         
+        </Grid>
       </div>
     );
   }
@@ -185,4 +191,4 @@ class App extends Component {
   //
   ////////////////////////////////////////////////////////////////////////////////
 */
-export default App;
+export default withStyles(styles)(App);

@@ -15,7 +15,7 @@ import {
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
-import { withStyles, lighten } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import styles from "../style";
 
 /*
@@ -66,12 +66,13 @@ class InteresesApoyos extends Component {
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
+                    className={classes.expansion}
                   >
-                    <Typography className={classes.tituloFondo}>
-                      Declarante
-                    </Typography>
+                    <Typography>Declarante</Typography>
                   </ExpansionPanelSummary>
-                  <ExpansionPanelDetails>
+                  <ExpansionPanelDetails
+                    className={classes.expansionpaneldetails}
+                  >
                     <Grid container spacing={3}>
                       <Grid item xs={12}>
                         <Grid container spacing={3}>
@@ -88,7 +89,10 @@ class InteresesApoyos extends Component {
                               Valor anual del apoyo
                             </Typography>
                             <Typography className={classes.dataCard}>
-                              ${interes.valor_anual_apoyo}
+                              {new Intl.NumberFormat("es-MX", {
+                                style: "currency",
+                                currency: "MXN"
+                              }).format(interes.valor_anual_apoyo)}
                             </Typography>
                           </Grid>
                         </Grid>

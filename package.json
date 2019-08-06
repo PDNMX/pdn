@@ -30,6 +30,7 @@
     "react": "^16.8.0",
     "react-apollo": "^2.5.5",
     "react-chartist": "^0.13.1",
+    "react-countup": "^4.2.1",
     "react-csv": "^1.0.14",
     "react-dom": "^16.8.0",
     "react-ga": "^2.5.6",

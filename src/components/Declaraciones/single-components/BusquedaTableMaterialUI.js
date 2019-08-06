@@ -6,34 +6,59 @@
   ////////////////////////////////////////////////////////////////////////////////
 */
 import React, { Component } from "react";
-// import {Typography} from '@material-ui/core';
 import {
-  withStyles,
   Table,
   TableBody,
   TableCell,
   TableHead,
   TableRow,
   TableFooter,
-  TablePagination
+  TablePagination,
+  Paper
 } from "@material-ui/core";
 
 import { Link } from "react-router-dom";
+import { withStyles } from "@material-ui/core/styles";
 
 let uniqid = require("uniqid");
 
-const styles = {
-  th: {
-    background: "grey",
-    color: "white",
-    fontSize: "1em",
-    textTransform: "uppercase"
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+    padding: 15
+  },
+  paper: {
+    width: "100%",
+    marginTop: theme.spacing(3),
+    overflowX: "auto"
+  },
+  table: {
+    minWidth: 700
   },
   link: {
     textDecoration: "none",
     color: "inherit"
   }
-};
+});
+
+const StyledTableCell = withStyles(theme => ({
+  head: {
+    backgroundColor: "grey",
+    color: theme.palette.common.white,
+    textTransform: "uppercase"
+  },
+  body: {
+    fontSize: 12
+  }
+}))(TableCell);
+
+const StyledTableRow = withStyles(theme => ({
+  root: {
+    "&:nth-of-type(odd)": {
+      backgroundColor: theme.palette.background.default
+    }
+  }
+}))(TableRow);
 
 /*
   ////////////////////////////////////////////////////////////////////////////////
@@ -52,84 +77,98 @@ class BusquedaTableMaterialUI extends Component {
   render() {
     let { classes } = this.props;
     return (
-      <div>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell className={this.props.classes.th}> nombre</TableCell>
-              <TableCell className={this.props.classes.th}>
-                insitución
-              </TableCell>
-              <TableCell className={this.props.classes.th}>cargo</TableCell>
-              <TableCell className={this.props.classes.th}>estado</TableCell>
-              <TableCell className={this.props.classes.th}>municipio</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {this.props.results.map(compa => (
-              <TableRow key={uniqid()}>
-                <TableCell>
-                  {/* <a
-                    href={`${process.env.PUBLIC_URL}/declaraciones/perfil/${
-                      compa._id
-                    }/informacion`}
-                  /> */}
-                  <Link
-                    to={`declaraciones/perfil/${compa._id}`}
-                    className={classes.link}
-                  >
-                    {compa.informacion_personal.informacion_general.nombres}{" "}
-                    {
-                      compa.informacion_personal.informacion_general
-                        .primer_apellido
-                    }{" "}
-                    {
-                      compa.informacion_personal.informacion_general
-                        .segundo_apellido
-                    }
-                  </Link>
-                </TableCell>
-
-                <TableCell>
-                  {compa.informacion_personal.datos_encargo_actual.ente_publico}
-                </TableCell>
-
-                <TableCell>
-                  {
-                    compa.informacion_personal.datos_encargo_actual
-                      .empleo_cargo_comision
-                  }
-                </TableCell>
-
-                <TableCell>
-                  {
-                    compa.informacion_personal.datos_encargo_actual
-                      .direccion_encargo.entidad_federativa.nom_agee
-                  }
-                </TableCell>
-
-                <TableCell>
-                  {
-                    compa.informacion_personal.datos_encargo_actual
-                      .direccion_encargo.municipio.nom_mun
-                  }
-                </TableCell>
+      <div className={classes.root}>
+        <Paper className={classes.root}>
+          <Table className={classes.table}>
+            <TableHead>
+              <TableRow>
+                <StyledTableCell>nombre</StyledTableCell>
+                <StyledTableCell>insitución</StyledTableCell>
+                <StyledTableCell>cargo</StyledTableCell>
+                <StyledTableCell>estado</StyledTableCell>
+                <StyledTableCell>municipio</StyledTableCell>
               </TableRow>
-            ))}
-          </TableBody>
-          <TableFooter>
-            <TableRow>
-              <TablePagination
-                colSpan={3}
-                count={this.props.total}
-                rowsPerPage={this.props.pageSize}
-                page={this.props.page}
-                rowsPerPageOptions={[]}
-                onChangePage={this.changePage}
-              />
-            </TableRow>
-          </TableFooter>
-        </Table>
+            </TableHead>
+            <TableBody>
+              {this.props.results.map(compa => (
+                <StyledTableRow key={uniqid()}>
+                  <StyledTableCell>
+                    <Link
+                      className={classes.link}
+                      to={`declaraciones/perfil/${compa._id}`}
+                    >
+                      {compa.informacion_personal.informacion_general.nombres}{" "}
+                      {
+                        compa.informacion_personal.informacion_general
+                          .primer_apellido
+                      }{" "}
+                      {
+                        compa.informacion_personal.informacion_general
+                          .segundo_apellido
+                      }
+                    </Link>
+                  </StyledTableCell>
+                  <StyledTableCell>
+                    <Link
+                      className={classes.link}
+                      to={`declaraciones/perfil/${compa._id}`}
+                    >
+                      {
+                        compa.informacion_personal.datos_encargo_actual
+                          .ente_publico
+                      }
+                    </Link>
+                  </StyledTableCell>
+                  <StyledTableCell>
+                    <Link
+                      className={classes.link}
+                      to={`declaraciones/perfil/${compa._id}`}
+                    >
+                      {
+                        compa.informacion_personal.datos_encargo_actual
+                          .empleo_cargo_comision
+                      }
+                    </Link>
+                  </StyledTableCell>
+                  <StyledTableCell>
+                    <Link
+                      className={classes.link}
+                      to={`declaraciones/perfil/${compa._id}`}
+                    >
+                      {
+                        compa.informacion_personal.datos_encargo_actual
+                          .direccion_encargo.entidad_federativa.nom_agee
+                      }
+                    </Link>
+                  </StyledTableCell>
+                  <StyledTableCell>
+                    <Link
+                      className={classes.link}
+                      to={`declaraciones/perfil/${compa._id}`}
+                    >
+                      {
+                        compa.informacion_personal.datos_encargo_actual
+                          .direccion_encargo.municipio.nom_agem
+                      }
+                    </Link>
+                  </StyledTableCell>
+                </StyledTableRow>
+              ))}
+            </TableBody>
+            <TableFooter>
+              <TableRow>
+                <TablePagination
+                  colSpan={5}
+                  count={this.props.total}
+                  rowsPerPage={this.props.pageSize}
+                  page={this.props.page}
+                  rowsPerPageOptions={[]}
+                  onChangePage={this.changePage}
+                />
+              </TableRow>
+            </TableFooter>
+          </Table>
+        </Paper>
       </div>
     );
   }

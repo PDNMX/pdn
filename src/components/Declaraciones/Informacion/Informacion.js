@@ -1,10 +1,3 @@
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // CARGA LAS DEPENDENCIAS
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 import React, { Component } from "react";
 import { Grid } from "@material-ui/core";
 import InfoGeneral from "./informacion-general";
@@ -26,32 +19,15 @@ let menu = [
   "Dependientes económicos"
 ];
 
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // DEFINE LA CLASE PRINCIPAL
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 class Informacion extends Component {
-  /*
-   * R E N D E R
-   * ----------------------------------------------------------------------
-   */
   render() {
-    let { classes, path, value, change } = this.props;
+    let { classes, value, change } = this.props;
 
     return (
       <div className={classes.rootSeccion}>
         <Grid container spacing={0}>
           <Grid item xs={4} md={2} className={classes.sidebar}>
-            <MenuInformacion
-              menu={menu}
-              id={this.props.profile._id}
-              path={path}
-              value={value}
-              change={change}
-            />
+            <MenuInformacion menu={menu} value={value} change={change} />
           </Grid>
           <Grid
             item
@@ -63,8 +39,7 @@ class Informacion extends Component {
               <InfoGeneral
                 profile={this.props.profile}
                 items={
-                  this.props.profile.informacion_personal
-                    .informacion_general
+                  this.props.profile.informacion_personal.informacion_general
                 }
               />
             )}
@@ -73,8 +48,7 @@ class Informacion extends Component {
               <InfoPuesto
                 profile={this.props.profile}
                 items={
-                  this.props.profile.informacion_personal
-                    .datos_encargo_actual
+                  this.props.profile.informacion_personal.datos_encargo_actual
                 }
               />
             )}
@@ -90,8 +64,7 @@ class Informacion extends Component {
               <InfoExperiencia
                 profile={this.props.profile}
                 items={
-                  this.props.profile.informacion_personal
-                    .experiencia_laboral
+                  this.props.profile.informacion_personal.experiencia_laboral
                 }
               />
             )}
@@ -111,11 +84,4 @@ class Informacion extends Component {
   }
 }
 
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // REGRESA EL COMPONENTE
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 export default withStyles(styles)(Informacion);

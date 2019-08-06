@@ -9,7 +9,7 @@ import {Typography} from "@material-ui/core"
 import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
 import './Header.css';
 import classNames from 'classnames';
-import Button from "@material-ui/core/Button";
+//import Button from "@material-ui/core/Button";
 
 const style = theme => ({
         root: {
@@ -103,10 +103,10 @@ class Header extends React.Component{
                         <Typography  className={classes.whiteText} style={{fontSize: '18px',fontWeight: 500}}>
                             Conoce como compra tu gobierno
                         </Typography>
-                    </Grid>
+                    </Grid>{/*
                     <Grid item xs={12} align={'center'}>
                         <Button variant="contained" className={classes.button} component={Link} to="#">Conoce más</Button>
-                    </Grid>
+                    </Grid>*/}
                 </Grid>
             </div>
         )

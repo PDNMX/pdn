@@ -73,12 +73,13 @@ class ActivosFideicomisos extends Component {
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
+                    className={classes.expansion}
                   >
-                    <Typography className={classes.tituloFondo}>
-                      Declarante
-                    </Typography>
+                    <Typography>Declarante</Typography>
                   </ExpansionPanelSummary>
-                  <ExpansionPanelDetails>
+                  <ExpansionPanelDetails
+                    className={classes.expansionpaneldetails}
+                  >
                     <Grid container spacing={3}>
                       <Grid item xs={12}>
                         <Grid container spacing={3}>
@@ -95,7 +96,12 @@ class ActivosFideicomisos extends Component {
                               Ingreso monetario obtenido
                             </Typography>
                             <Typography className={classes.dataCard}>
-                              ${fideicomiso.ingreso_monetario_obtenido}{" "}
+                              {new Intl.NumberFormat("es-MX", {
+                                style: "currency",
+                                currency: "MXN"
+                              }).format(
+                                fideicomiso.ingreso_monetario_obtenido
+                              )}{" "}
                               {fideicomiso.moneda.moneda}
                             </Typography>
                           </Grid>
@@ -163,7 +169,10 @@ class ActivosFideicomisos extends Component {
                             <Typography className={classes.tituloCard}>
                               Porcentaje de la propiedad
                             </Typography>
-                            <Typography className={classes.dataCard}>
+                            <Typography
+                              component="div"
+                              className={classes.dataCard}
+                            >
                               {
                                 fideicomiso.porcentaje_propiedad_derechos_fiduciarios
                               }
