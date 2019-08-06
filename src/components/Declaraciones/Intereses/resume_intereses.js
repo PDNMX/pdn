@@ -94,27 +94,19 @@ class InteresesResume extends Component {
       }
     ];
 
+    let info = {
+      title: "Intereses",
+      xConfig: "Tipo de interés",
+      yConfig: "Número de registros"
+    };
+
     let { classes } = this.props;
 
     return (
       <Grid container spacing={3} className={classes.rootSubseccion}>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={12}>
           <Paper className={classes.paper}>
-            <BaseGraph data={fakeData} format={d3.format(",")} />
-            <span style={{ fontSize: 12 }}>
-              <span className={classes.declarante} />
-              Declarante
-              <span className={classes.conyuge} />
-              Conyugé
-              <span className={classes.hijos} />
-              Hijo/Hija
-              <span className={classes.padres} />
-              Padre/Madre
-              <span className={classes.suegros} />
-              Suegro/Suegra
-              <span className={classes.otro} />
-              Otro
-            </span>
+            <BaseGraph data={fakeData} info={info} format={d3.format(",")} />
           </Paper>
         </Grid>
       </Grid>
