@@ -10,7 +10,7 @@ import withMobileDialog from '@material-ui/core/withMobileDialog';
 import ReactJson from 'react-json-view';
 
 function ResponsiveDialog(props) {
-    const { fullScreen, open, handleCloseDialog } = props;
+    const { fullScreen, open, handleCloseDialog, data } = props;
     /*
     const [open, setOpen] = React.useState(false);
 
@@ -40,7 +40,7 @@ function ResponsiveDialog(props) {
                 <DialogTitle id="responsive-dialog-title">{"Detalle de la contratación"}</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        Detalle del procedimiento
+                        <ReactJson src={data}/>
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>

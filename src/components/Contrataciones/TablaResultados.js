@@ -228,13 +228,15 @@ export default function EnhancedTable(props) {
 
     //responsive dialog
     const [open, setOpen] = React.useState(false);
+    const [dialogData, setDialogData] = React.useState(null);
 
     function handleCloseDialog(){
         setOpen(false);
     }
 
-    function handleOpenDialog(event){
+    function handleOpenDialog(data){
         setOpen(true);
+        setDialogData(data);
     }
 
     /*
@@ -321,7 +323,7 @@ export default function EnhancedTable(props) {
                                     return (
                                     <TableRow
                                     hover
-                                    onClick={event => handleOpenDialog(event)}
+                                    onClick={event => handleOpenDialog(props.data[index])}
                                     //onClick={event => handleClick(event, row.name)}
                                     //role="checkbox"
                                     //aria-checked={isItemSelected}
@@ -414,7 +416,7 @@ export default function EnhancedTable(props) {
                     />
                 </Paper>
             }
-            <ResponsiveDialog open={open} handleCloseDialog={handleCloseDialog}/>
+            <ResponsiveDialog open={open} handleCloseDialog={handleCloseDialog} data ={dialogData}/>
         </div>
     );
 }
