@@ -44,7 +44,11 @@ function ResponsiveDialog(props) {
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleCloseDialog} color="primary" autoFocus>
+                    <Button onClick={handleCloseDialog}  variant="contained" color="primary" autoFocus
+                    style={{
+                        background: '#ffe01b',
+                    }}
+                    >
                         Cerrar
                     </Button>
                 </DialogActions>
