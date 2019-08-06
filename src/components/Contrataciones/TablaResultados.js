@@ -21,7 +21,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import DownloadIcon from '@material-ui/icons/CloudDownload';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import LinearIndeterminate from './LinearIndeterminate';
-
+import ResponsiveDialog from './ResponsiveDialog';
 /*
 function desc(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -226,6 +226,17 @@ export default function EnhancedTable(props) {
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
+    //responsive dialog
+    const [open, setOpen] = React.useState(false);
+
+    function handleCloseDialog(){
+        setOpen(false);
+    }
+
+    function handleOpenDialog(event){
+        setOpen(true);
+    }
+
     /*
     function handleRequestSort(event, property) {
         const isDesc = orderBy === property && order === 'desc';
@@ -263,6 +274,7 @@ export default function EnhancedTable(props) {
 
         setSelected(newSelected);
     }*/
+
 
     function handleChangePage(event, newPage) {
         setPage(newPage);
@@ -309,6 +321,7 @@ export default function EnhancedTable(props) {
                                     return (
                                     <TableRow
                                     hover
+                                    onClick={event => handleOpenDialog(event)}
                                     //onClick={event => handleClick(event, row.name)}
                                     //role="checkbox"
                                     //aria-checked={isItemSelected}
@@ -401,6 +414,7 @@ export default function EnhancedTable(props) {
                     />
                 </Paper>
             }
+            <ResponsiveDialog open={open} handleCloseDialog={handleCloseDialog}/>
         </div>
     );
 }

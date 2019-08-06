@@ -10,7 +10,8 @@ import withMobileDialog from '@material-ui/core/withMobileDialog';
 import ReactJson from 'react-json-view';
 
 function ResponsiveDialog(props) {
-    const { fullScreen } = props;
+    const { fullScreen, open, handleCloseDialog } = props;
+    /*
     const [open, setOpen] = React.useState(false);
 
     function handleClickOpen() {
@@ -19,32 +20,32 @@ function ResponsiveDialog(props) {
 
     function handleClose() {
         setOpen(false);
+        open = false;
     }
+    */
 
     return (
         <div>
+            {/*
             <Button variant="outlined" color="primary" onClick={handleClickOpen}>
                 Open responsive dialog
             </Button>
+            */}
             <Dialog
                 fullScreen={fullScreen}
                 open={open}
-                onClose={handleClose}
+                onClose={handleCloseDialog}
                 aria-labelledby="responsive-dialog-title"
             >
-                <DialogTitle id="responsive-dialog-title">{"Use Google's location service?"}</DialogTitle>
+                <DialogTitle id="responsive-dialog-title">{"Detalle de la contratación"}</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        Let Google help apps determine location. This means sending anonymous location data to
-                        Google, even when no apps are running.
+                        Detalle del procedimiento
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose} color="primary">
-                        Disagree
-                    </Button>
-                    <Button onClick={handleClose} color="primary" autoFocus>
-                        Agree
+                    <Button onClick={handleCloseDialog} color="primary" autoFocus>
+                        Cerrar
                     </Button>
                 </DialogActions>
             </Dialog>
