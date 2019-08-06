@@ -8,6 +8,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
 import ReactJson from 'react-json-view';
+import DownloadIcon from '@material-ui/icons/CloudDownload';
 
 function ResponsiveDialog(props) {
     const { fullScreen, open, handleCloseDialog, data } = props;
@@ -24,6 +25,14 @@ function ResponsiveDialog(props) {
     }
     */
 
+    function handleDownload(){
+
+        let text = JSON.stringify(props.data, null, 4);
+        let d = new Blob([text], {type: 'text/plain'});
+
+        return window.URL.createObjectURL(d);
+    }
+
     return (
         <div>
             {/*
@@ -39,15 +48,22 @@ function ResponsiveDialog(props) {
             >
                 <DialogTitle id="responsive-dialog-title">{"Detalle de la contratación"}</DialogTitle>
                 <DialogContent>
-                    <DialogContentText>
-                        <ReactJson src={data}/>
-                    </DialogContentText>
+                    {/* <DialogContentText>
+
+                    </DialogContentText>*/}
+                    <ReactJson src={data}/>
                 </DialogContent>
                 <DialogActions>
+                    <Button href={handleDownload()} variant="contained"
+                            download={'datos.json'}
+                            style={{
+                                background: '#ffe01b',
+                            }}
+                    ><DownloadIcon/></Button>
                     <Button onClick={handleCloseDialog}  variant="contained" color="primary" autoFocus
-                    style={{
-                        background: '#ffe01b',
-                    }}
+                            style={{
+                                background: '#ffe01b',
+                            }}
                     >
                         Cerrar
                     </Button>
