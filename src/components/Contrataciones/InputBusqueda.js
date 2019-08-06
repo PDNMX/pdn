@@ -32,6 +32,13 @@ const styles = theme => ({
 });
 
 class InputBusqueda extends React.Component{
+
+    handleSearch = e => {
+        if (e.key === 'Enter'){
+            this.props.search();
+        }
+    };
+
     render(){
 
         const {classes} = this.props;
@@ -46,6 +53,7 @@ class InputBusqueda extends React.Component{
                     placeholder="Buscar contrataciones..."
                     inputProps={{ 'aria-label': 'buscar contrataciones' }}
                     onChange = { e => this.props.setInputText(e.target.value)}
+                    onKeyDown={ e => this.handleSearch(e)}
                 />
                 <IconButton className={classes.iconButton} aria-label="search" onClick={e => this.props.search()}>
                     <SearchIcon />
