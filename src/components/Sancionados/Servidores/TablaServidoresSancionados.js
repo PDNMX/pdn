@@ -33,25 +33,25 @@ const columnData = [
     {id: 'nombre', disablePadding: false, label: 'Nombre', position: 2, mostrar: true},
     {id: 'apellidoUno', disablePadding: false, label: 'Apellido Uno', position: 3, mostrar: true},
     {id: 'apellidoDos', disablePadding: false, label: 'Apellido Dos', position: 4, mostrar: true},
-    {id: 'institucion', disablePadding: false, label: 'Institución', position: 5, mostrar: true},
-    {id: 'autoridad', disablePadding: false, label: 'Autoridad Sancionadora', position: 6, mostrar: true},
+    {id: 'institucion.nombre', disablePadding: false, label: 'Institución', position: 5, mostrar: true},
+    {id: 'autoridad_sancionadora', disablePadding: false, label: 'Autoridad Sancionadora', position: 6, mostrar: true},
     {
-        id: 'fecha_resolucion',
+        id: 'resolucion.fecha_notificacion',
         disablePadding: false,
-        label: 'Fecha resolución',
+        label: 'Fecha notificación',
         position: 7,
         mostrar: false
     },
     {
-        id: 'sancion_impuesta',
+        id: 'tipo_sancion',
         disablePadding: false,
         label: 'Sanción impuesta',
         position: 8,
         mostrar: false
     },
-    {id: 'fecha_inicio', disablePadding: false, label: 'Fecha inicio', position: 9, mostrar: false},
-    {id: 'fecha_fin', disablePadding: false, label: 'Fecha fin', position: 10, mostrar: false},
-    {id: 'monto', disablePadding: false, label: 'Monto', position: 11, mostrar: false},
+    {id: 'inhabilitacion.fecha_inicial', disablePadding: false, label: 'Fecha inicio', position: 9, mostrar: false},
+    {id: 'inhabilitacion.fecha_final', disablePadding: false, label: 'Fecha fin', position: 10, mostrar: false},
+    {id: 'multa.monto', disablePadding: false, label: 'Monto', position: 11, mostrar: false},
     {id: 'causa', disablePadding: false, label: 'Causa', position: 12, mostrar: false},
     {id: 'constancia', disablePadding: true, label: 'Constancia', position: 13, mostrar: false}
 ];
@@ -238,11 +238,13 @@ class EnhancedTable extends React.Component {
     isSelected = id => this.state.selected.indexOf(id) !== -1;
 
     handleSearchAPI = (typeSearch) => {
-        let {institucion, nombreServidor, apellidoUno, apellidoDos,rfc,curp} = this.state;
         this.setState({loading: true});
+        let {institucion, nombreServidor, apellidoUno, apellidoDos,rfc,curp} = this.state;
+
         let filtros = {};
         let offset = 0;
-        if (typeSearch !== 'ALL') {
+
+        if (typeSearch !== 'DN_ALL') {
             if (nombreServidor) filtros.nombres = '%' + nombreServidor + '%';
             if (apellidoUno) filtros.primer_apellido = '%' + apellidoUno + '%';
             if (apellidoDos) filtros.segundo_apellido = '%' + apellidoDos + '%';
@@ -250,27 +252,32 @@ class EnhancedTable extends React.Component {
             if(curp) filtros.curp = '%' + curp + '%';
             if(institucion&&institucion!=='TODAS') filtros.nombre = '%'+institucion+'%';
         }
-        if(typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE')  offset = (this.state.rowsPerPage * this.state.page) ;
+
         let limit = (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.state.rowsPerPage : null;
+
+        if(typeSearch === 'CHANGE_PAGE')  offset = (this.state.rowsPerPage * this.state.page) ;
+        else this.setState({page:0})
 
         let body =
             {
                 "filtros": filtros,
                 "limit" : limit,
-                "offset" : offset
+                "offset" : offset,
+                "iterar" : (typeSearch === 'DN_FILTER' || typeSearch==='DN_ALL') ? true:false
             };
         let options = {
             method : 'POST',
             uri: process.env.REACT_APP_HOST_PDNBACK+'/apis/getServidoresSancionados',
             json: true,
-            body: typeSearch==='ALL'?{}: body
+            body: typeSearch==='DN_ALL' ? {"iterar":true}: body
         };
 
         rp(options)
             .then(res => {
                 let dataAux = res.data;
-                let total = res.total;
-                typeSearch === 'ALL' ? this.setState({data: dataAux, loading: false}, () => {
+                let total = res.totalRows;
+
+                typeSearch === 'DN_ALL' ? this.setState({data: dataAux, loading: false}, () => {
                     this.btnDownloadAll.triggerDown();
                 }) : (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.setState({
                         filterData: dataAux,
@@ -411,7 +418,7 @@ class EnhancedTable extends React.Component {
                                             <BajarCSV innerRef={comp => this.child = comp} data={filterDataAll}
                                                       filtrado={true}
                                                       columnas={columnData} fnSearch={this.handleSearchAPI}
-                                                      fileName={'Servidores sancionados'}/>
+                                                      fileName={'MiBusqueda'}/>
                                         </TableCell>
                                         <TablePagination
                                             className={classes.tablePagination}
@@ -445,13 +452,7 @@ class EnhancedTable extends React.Component {
                             <MensajeNoRegistros/>
                         }
                     </Grid>
-                    <Grid item xs={12} className={classes.item}>
-                        {filterData && filterData.length > 0 &&
-                        <Typography variant="caption" style={{fontStyle: 'italic'}} paragraph>
-                            Fuente: https://datos.gob.mx/busca/dataset/servidores-publicos-sancionados
-                        </Typography>
-                        }
-                    </Grid>
+                    
                 </Grid>
             </div>
         );
