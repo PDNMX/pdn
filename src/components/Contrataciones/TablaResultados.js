@@ -234,9 +234,9 @@ export default function EnhancedTable(props) {
         setOpen(false);
     }
 
-    function handleOpenDialog(data){
+    function handleOpenDialog(event, index){
         setOpen(true);
-        setDialogData(data);
+        setDialogData(props.data[index]);
     }
 
     /*
@@ -323,7 +323,7 @@ export default function EnhancedTable(props) {
                                     return (
                                     <TableRow
                                     hover
-                                    onClick={event => handleOpenDialog(props.data[index])}
+                                    onClick={event => handleOpenDialog(event, index)}
                                     //onClick={event => handleClick(event, row.name)}
                                     //role="checkbox"
                                     //aria-checked={isItemSelected}
@@ -345,7 +345,7 @@ export default function EnhancedTable(props) {
                                     <TableCell align="left">{row.col3}</TableCell>
                                     <TableCell align="left">
                                     <IconButton>
-                                    <DownloadIcon/>
+                                    <DownloadIcon />
                                     </IconButton>
                                     </TableCell>
                                     {/*<TableCell align="right">{row.col5}</TableCell>*/}

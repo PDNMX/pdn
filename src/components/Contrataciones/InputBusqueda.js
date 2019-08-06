@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 
 const styles = theme => ({
     root: {
-        padding: '2px 4px',
+        padding: '2px 0px',
         display: 'flex',
         alignItems: 'center',
         width: '100%',
