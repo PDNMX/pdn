@@ -452,7 +452,7 @@ class EnhancedTable extends React.Component {
                             <MensajeNoRegistros/>
                         }
                     </Grid>
-                    
+
                 </Grid>
             </div>
         );
