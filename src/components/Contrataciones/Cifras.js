@@ -40,7 +40,7 @@ class Cifras extends React.Component{
         loading: true,
         error: false,
         contrataciones: 300000,
-        instituciones: 200,
+        instituciones: 0,
         donutChartData: [],
         periodo: {
             start: 2017,
@@ -61,7 +61,7 @@ class Cifras extends React.Component{
             this.setState({
                 loading: false,
                 contrataciones: data.procedimientos,
-                instituciones: data.instituciones.length,
+                instituciones: data.instituciones,
                 donutChartData: [
                     {theta: data.open, label: 'Licitación pública', color: "#00cc99"},
                     {theta: data.selective, label: 'Invitación a tres', color: "#ffcc00"},
