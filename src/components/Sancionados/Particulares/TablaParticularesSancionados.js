@@ -18,6 +18,7 @@ import {Typography} from "@material-ui/core"
 import Modal from "@material-ui/core/Modal/Modal";
 import rp from "request-promise";
 import MensajeNoRegistros from "../../Tablas/MensajeNoRegistros";
+import MensajeErrorDatos from "../../Tablas/MensajeErrorDatos";
 
 function getSorting(order, orderBy) {
     return order === 'desc'
@@ -354,6 +355,9 @@ class EnhancedTable extends React.Component {
                             </Modal>
 
                         }
+                        {
+                            this.state.error && <MensajeErrorDatos/>
+                        }
                     </Grid>
                     <Grid item xs={12}>
                         {filterData && filterData.length > 0 &&
@@ -450,6 +454,15 @@ class EnhancedTable extends React.Component {
                             filterData && filterData.length==0 &&
                             <MensajeNoRegistros/>
                         }
+                    </Grid>
+                    <Grid item xs={12} className={classes.nota}>
+                        <Typography variant={"caption"} style={{fontStyle: 'italic'}}>Nota:
+                            Este buscador mostrará en su primera etapa, solamente datos de carácter público, proporcionados por la Secretaría de la Función Pública, relativos a
+                            sanciones impuestas a personas físicas o morales, por infracciones a la Ley de Adquisiciones, Arrendamientos y Servicios del Sector Público, Ley de
+                            Obras Públicas y Servicios Relacionados con las Mismas, y Ley de Asociaciones Público Privadas.
+                        </Typography>
+
+
                     </Grid>
 
                 </Grid>
