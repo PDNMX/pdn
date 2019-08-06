@@ -35,13 +35,16 @@ class InfoCurriculum extends Component {
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
+                    className={classes.expansion}
                   >
-                    <Typography className={classes.tituloGeneralCard}>
+                    <Typography>
                       {grado.grado_obtenido.valor} en{" "}
                       <strong>{grado.carrera}</strong>
                     </Typography>
                   </ExpansionPanelSummary>
-                  <ExpansionPanelDetails>
+                  <ExpansionPanelDetails
+                    className={classes.expansionpaneldetails}
+                  >
                     <Grid container spacing={3}>
                       <Grid item xs={12}>
                         <Typography className={classes.tituloCard}>

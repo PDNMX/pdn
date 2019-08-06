@@ -305,7 +305,7 @@ export default function CustomizedExpansionPanels() {
 
 
 
-                        <img src={Diagrama} className={classes.diagrama}/>
+                        <img alt="diagrama" src={Diagrama} className={classes.diagrama}/>
 
                         <Typography variant="h5" paragraph>¿Cómo se está construyendo la PDN?</Typography>
 

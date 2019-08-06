@@ -29,6 +29,7 @@ class InfoPuesto extends Component {
                       .datos_encargo_actual.empleo_cargo_comision
                   }
                 </Typography>
+                <br />
                 <Typography className={classes.tituloCard}>
                   Área de adscripción
                 </Typography>
@@ -152,6 +153,7 @@ class InfoPuesto extends Component {
                     ? "Sin contrato por honorarios"
                     : "Contrato por honorarios"}
                 </Typography>
+                <br />
                 <Typography className={classes.tituloCard}>
                   Nivel de encargo
                 </Typography>

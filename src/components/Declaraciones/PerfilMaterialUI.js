@@ -43,7 +43,7 @@ class PerfilMaterialUI extends Component {
     super(props);
     this.state = {
       profile: null,
-      menu_superior: 0,
+      menu_superior: 1,
       menu_informacion: 0,
       menu_interes: 0,
       menu_ingresos: 0,

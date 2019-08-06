@@ -6,7 +6,6 @@
   ////////////////////////////////////////////////////////////////////////////////
 */
 import React, { Component } from "react";
-import { Box } from "@material-ui/core";
 import {
   Table,
   TableBody,
