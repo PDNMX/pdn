@@ -45,7 +45,8 @@ class Cifras extends React.Component{
         periodo: {
             start: 2017,
             end: 2018
-        }
+        },
+        gastoTotal: 0
     };
 
     componentWillMount() {
@@ -62,6 +63,7 @@ class Cifras extends React.Component{
                 loading: false,
                 contrataciones: data.procedimientos,
                 instituciones: data.instituciones,
+                gastoTotal: data.totalAmount,
                 donutChartData: [
                     {theta: data.open, label: 'Licitación pública', color: "#00cc99"},
                     {theta: data.selective, label: 'Invitación a tres', color: "#ffcc00"},
@@ -126,6 +128,12 @@ class Cifras extends React.Component{
                             </Typography>
                             <Typography variant="h5" paragraph>
                                 <b> <CountUp separator="," start={1} end={this.state.instituciones}/></b>
+                            </Typography>
+
+                            <Typography variant="h6">Gasto total</Typography>
+
+                            <Typography variant="h5" paragraph>
+                                <b> <CountUp separator="," decimals={2} prefix={'$'} start={1} end={this.state.gastoTotal}/></b>
                             </Typography>
 
                             <Typography variant="h6">
