@@ -6,6 +6,7 @@ import Donutchart from './Charts/SimpleRadialChart'
 import CountUp from 'react-countup';
 import rp from 'request-promise';
 import LinearIndeterminate from './LinearIndeterminate';
+import CustomizedSelect from './CustomizedSelect';
 
 
 const styles = theme => ({
@@ -63,12 +64,14 @@ class Cifras extends React.Component{
                 loading: false,
                 contrataciones: data.procedimientos,
                 instituciones: data.instituciones,
-                gastoTotal: data.totalAmount,
+                counts: data.counts,
+                amounts: data.amounts,
+                gastoTotal: data.amounts.total,
                 donutChartData: [
-                    {theta: data.open, label: 'Licitación pública', color: "#00cc99"},
-                    {theta: data.selective, label: 'Invitación a tres', color: "#ffcc00"},
-                    {theta: data.direct, label: "Adjudicación directa", color: "#663399"},
-                    {theta: data.other, label: "Otro", color: "#ff6600"}
+                    {theta: data.amounts.open, label: 'Licitación pública', color: "#00cc99"},
+                    {theta: data.amounts.selective, label: 'Invitación a tres', color: "#ffcc00"},
+                    {theta: data.amounts.direct, label: "Adjudicación directa", color: "#663399"},
+                    {theta: data.amounts.other, label: "Otro", color: "#ff6600"}
                     ]
             })
 
@@ -79,6 +82,29 @@ class Cifras extends React.Component{
         });
 
     }
+
+    handleSelectDonutData= (p) => {
+        //console.log(p)
+        if (p === 'amounts'){
+            this.setState({
+                donutChartData: [
+                    {theta: this.state.amounts.open, label: 'Licitación pública', color: "#00cc99"},
+                    {theta: this.state.amounts.selective, label: 'Invitación a tres', color: "#ffcc00"},
+                    {theta: this.state.amounts.direct, label: "Adjudicación directa", color: "#663399"},
+                    {theta: this.state.amounts.other, label: "Otro", color: "#ff6600"}
+                ]
+            });
+        } else {
+            this.setState({
+                donutChartData: [
+                    {theta: this.state.counts.open, label: 'Licitación pública', color: "#00cc99"},
+                    {theta: this.state.counts.selective, label: 'Invitación a tres', color: "#ffcc00"},
+                    {theta: this.state.counts.direct, label: "Adjudicación directa", color: "#663399"},
+                    {theta: this.state.counts.other, label: "Otro", color: "#ff6600"}
+                ]
+            });
+        }
+    };
 
 
     render(){
@@ -149,6 +175,8 @@ class Cifras extends React.Component{
 
                             <Grid container spacing={0}>
                                 <Grid item xs={12} md={6} lg={6} xl={6} align="center">
+                                    <CustomizedSelect handleSelectDonutData={this.handleSelectDonutData}/>
+
                                     <Donutchart data={this.state.donutChartData}/>
                                 </Grid>
                                 <Grid item xs={12} md={6} lg={6} xl={6}>
