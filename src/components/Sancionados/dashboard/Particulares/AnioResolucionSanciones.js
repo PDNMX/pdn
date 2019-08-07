@@ -69,11 +69,11 @@ class AnioResolucionSanciones extends React.Component {
         aux().then(result => {
             let temp = result.data.slice(1);
             let aux = temp.map(item => {
-                total += parseInt(item.count);
+                total += parseInt(item.count,10);
                 return {
                     anio: item.anio_resolucion.toString(),
                     x: item.anio_resolucion,
-                    y: parseInt(item.count)
+                    y: parseInt(item.count,10)
                 }
             });
             this.setState({

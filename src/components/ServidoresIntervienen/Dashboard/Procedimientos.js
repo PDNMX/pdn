@@ -66,7 +66,7 @@ class Ejercicio extends React.Component {
             let aux = result.data.map(item => {
                 return {
                     "ejercicio": item.ejercicio,
-                    "total": parseInt(item.total),
+                    "total": parseInt(item.total,10),
                     "procedimiento":item.case
                 }
             })

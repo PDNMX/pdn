@@ -6,7 +6,7 @@ import {Typography} from "@material-ui/core"
 import {BarChart} from "d3plus-react";
 import rp from "request-promise";
 import 'react-vis/dist/style.css';
-import VerticalBarSeries from "react-vis/es/plot/series/vertical-bar-series";
+// import VerticalBarSeries from "react-vis/es/plot/series/vertical-bar-series";
 import * as d3 from "d3";
 import MensajeErrorDatos from "../../../Tablas/MensajeErrorDatos";
 
@@ -84,7 +84,7 @@ class SentidoResoluciones extends React.Component {
             let aux = result.data.map(item => {
                 return {
                     "x": item.sentido_de_resolucion ? item.sentido_de_resolucion : "NO ESPECIFICA",
-                    "y": parseInt(item.total)
+                    "y": parseInt(item.total,10)
                 }
             });
             this.setState({
@@ -137,7 +137,7 @@ class SentidoResoluciones extends React.Component {
             let aux2 = temp2.data.map(item => {
                 return {
                     id: item.sentido_de_resolucion,
-                    y: parseInt(item.total),
+                    y: parseInt(item.total,10),
                     x: item.anio,
                 }
             });

@@ -207,7 +207,7 @@ class Tops extends React.Component {
                     let aux = data.data.map(item => {
                         return {
                             "top": item.top,
-                            "total": parseInt(item.total),
+                            "total": parseInt(item.total,10),
                             "case": item.case ? item.case : null
                         }
                     })

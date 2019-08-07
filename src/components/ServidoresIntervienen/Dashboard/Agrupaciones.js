@@ -198,7 +198,7 @@ class Agrupaciones extends React.Component {
                 .then(data => {
                     let aux2 = data.data.map(item => {
                         return {
-                            "value": parseInt(item.total),
+                            "value": parseInt(item.total,10),
                             "subgroup": item.institucion,
                             "group": item.ramo,
                             "parent": item.ejercicio,
