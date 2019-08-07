@@ -58,7 +58,7 @@ class Cifras extends React.Component{
             json: true
         }).then( data => {
 
-            //console.log(data)
+            console.log(data)
 
             this.setState({
                 loading: false,
