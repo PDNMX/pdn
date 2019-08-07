@@ -90,7 +90,7 @@ class CausasSanciones extends React.Component {
             let aux = result.data.map(item => {
                 return {
                     "causa": item.causa,
-                    "total": parseInt(item.total)
+                    "total": parseInt(item.total,10)
                 }
             });
 
@@ -140,7 +140,7 @@ class CausasSanciones extends React.Component {
             let aux2 = result.data.map(item => {
                 return {
                     id: item.causa,
-                    y: parseInt(item.total),
+                    y: parseInt(item.total,10),
                     x: item.anio
                 }
             });

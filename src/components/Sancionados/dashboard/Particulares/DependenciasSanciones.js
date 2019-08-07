@@ -81,7 +81,7 @@ class DependenciasSanciones extends React.Component {
         aux().then(result => {
             let aux = result.data.map(item => {
                 return {
-                    "value": parseInt(item.total),
+                    "value": parseInt(item.total,10),
                     "group": item.dependencia
                 }
             });
@@ -123,7 +123,7 @@ class DependenciasSanciones extends React.Component {
         loadData2().then(result2 => {
             let aux2 = result2.data.map(item => {
                 return {
-                    "value": parseInt(item.total),
+                    "value": parseInt(item.total,10),
                     "group": item.dependencia,
                     "parent": item.anio
                 }
