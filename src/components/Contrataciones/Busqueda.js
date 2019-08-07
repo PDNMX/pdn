@@ -62,19 +62,19 @@ class Busqueda extends React.Component{
         this.setState( {
             loading: true,
             pagination: {
-                page: page,
+                page: page, //incrementar página
                 pageSize: this.state.pagination.pageSize
             }
         } , () => {
-            this.search()
+            this.search(true)
         });
     };
 
     //buscar
-    search = () => {
+    search = pageChange => {
 
         let body = {
-            page: this.state.pagination.page,
+            page: pageChange?this.state.pagination.page:0,
             pageSize: this.state.pagination.pageSize
         };
 
@@ -93,7 +93,7 @@ class Busqueda extends React.Component{
                 //console.log(data)
                 this.setState({
                     results: data.data,
-                    pagination: data.pagination,
+                    pagination: data.pagination, //al buscar se debe resetrar la página a 0
                     loading: false
                 })
             });
