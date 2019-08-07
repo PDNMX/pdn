@@ -69,17 +69,17 @@ class Agrupaciones extends React.Component {
     };
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if (prevState.ejercicio != this.state.ejercicio) {
+        if (prevState.ejercicio !== this.state.ejercicio) {
             if (this.state.ejercicio)
                 this.loadRamos();
             this.loadData();
         }
-        if (prevState.ramo != this.state.ramo) {
+        if (prevState.ramo !== this.state.ramo) {
             if (this.state.ramo)
                 this.loadInstituciones();
             this.loadData();
         }
-        if (prevState.institucion != this.state.institucion) {
+        if (prevState.institucion !== this.state.institucion) {
             this.loadData();
         }
     }
