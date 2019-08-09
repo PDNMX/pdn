@@ -214,13 +214,12 @@ export default function CustomizedExpansionPanels() {
                             Para la propuesta de métricas se tomaron como punto de partida las siguientes fuentes:
                         </Typography>
                         <ol>
-                            <li>El Open Data Charter y el Banco Interamericano de Desarrollo, a través de su “Open Up Guide: Using Open Data to Combat Corruption” y su ejemplo en México, “Open Up Guide: Testing how to use open data to combat corruption in Mexico”, la cual a su vez sirvió para publicar la Guía de apertura Anticorrupción.</li>
-                            <li>CKAN, la plataforma líder de datos Open Source data, a través de un estudio que hicieron sobre la calidad de los datos en su plataforma</li>
-                            <li>USAID, la Agencia de los Estados Unidos para el Desarrollo Internacional, a través de su taller de Data Quality Assessment y del checklist</li>
-                            <li>El Massachusetts Institute of Technology a través de un artículo académico sobre Data Quality</li>
+                            <li>El <MuiLink component="a" href="https://opendatacharter.net/">Open Data Charter</MuiLink> y el <MuiLink component="a" href="https://www.iadb.org/es/acerca-del-bid/quienes-somos">Banco Interamericano de Desarrollo</MuiLink>, a través de su <MuiLink component="a" href="https://open-data-charter.gitbook.io/open-up-guide-using-open-data-to-combat-corruption/">“Open Up Guide: Using Open Data to Combat Corruption”</MuiLink> y su ejemplo en México, “Open Up Guide: Testing how to use open data to combat corruption in Mexico”, la cual a su vez sirvió para publicar la <MuiLink component='a' href="https://docs.google.com/document/d/182USj4La896XgMZ-LTw7A3HYbA5i7aP0p2JLBL8a-24/edit#heading=h.9vgybo4y3gv2">Guía de apertura Anticorrupción.</MuiLink></li>
+                            <li><MuiLink component="a" href="https://ckan.org/">CKAN</MuiLink>, la plataforma líder de datos Open Source data, a través de un <MuiLink component="a" href="https://ckan.org/2011/01/20/data-quality-what-is-it/">estudio</MuiLink> que hicieron sobre la calidad de los datos en su plataforma</li>
+                            <li>USAID, la Agencia de los Estados Unidos para el Desarrollo Internacional, a través de su taller de <MuiLink component='a' href="https://www.usaid.gov/sites/default/files/documents/1861/DQA_Training_and_Preparation_11-17-14.ppt">Data Quality Assessment</MuiLink> y del <MuiLink component='a' href="https://www.usaid.gov/sites/default/files/documents/1868/597sad.pdf">checklist</MuiLink></li>
+                            <li>El Massachusetts Institute of Technology a través de un <MuiLink component='a' href="http://web.mit.edu/tdqm/www/tdqmpub/PipinoLeeWangCACMApr02.pdf">artículo académico sobre Data Quality</MuiLink></li>
                         </ol>
 
-                        {/*links */}
 
                         <Typography paragraph>
                             Las métricas de calidad de los datos toman en consideración:
