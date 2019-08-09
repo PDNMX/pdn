@@ -1,10 +1,3 @@
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // CARGA LAS DEPENDENCIAS
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 import React, { Component } from "react";
 import { Grid, Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
@@ -46,78 +39,59 @@ class InfoCurriculum extends Component {
                     className={classes.expansionpaneldetails}
                   >
                     <Grid container spacing={3}>
-                      <Grid item xs={12}>
+                      <Grid item xs={12} className={classes.lineCard}>
                         <Typography className={classes.tituloCard}>
                           Institución Educativa
                         </Typography>
-                        <Typography
-                          component={"span"}
-                          className={classes.dataCard}
-                        >
-                          <ul>
-                            <li>
-                              {grado.institucion_educativa}
-                              <br />
-                              {
-                                grado.lugar_institucion_educativa
-                                  .entidad_federativa.nom_agee
-                              }
-                              , {grado.lugar_institucion_educativa.pais.valor}
-                            </li>
-                          </ul>
+                        <Typography className={classes.dataCard}>
+                          {grado.institucion_educativa}
+                          <br />
+                          {
+                            grado.lugar_institucion_educativa.entidad_federativa
+                              .nom_agee
+                          }
+                          , {grado.lugar_institucion_educativa.pais.valor}
                         </Typography>
                       </Grid>
-                      <Grid item xs={6}>
-                        <Typography className={classes.tituloCard}>
-                          Estatus
-                        </Typography>
-                        <Typography
-                          component={"span"}
-                          className={classes.dataCard}
-                        >
-                          <ul>
-                            <li>{grado.estatus.valor}</li>
-                          </ul>
-                        </Typography>
+                      <Grid item xs={12} className={classes.lineCard}>
+                        <Grid container spacing={3}>
+                          <Grid item xs={6}>
+                            <Typography className={classes.tituloCard}>
+                              Estatus
+                            </Typography>
+                            <Typography className={classes.dataCard}>
+                              {grado.estatus.valor}
+                            </Typography>
+                          </Grid>
+                          <Grid item xs={6}>
+                            <Typography className={classes.tituloCard}>
+                              Año de conclusión
+                            </Typography>
+                            <Typography className={classes.dataCard}>
+                              {grado.ano_conclusion}
+                            </Typography>
+                          </Grid>
+                        </Grid>
                       </Grid>
-                      <Grid item xs={6}>
-                        <Typography className={classes.tituloCard}>
-                          Año de conclusión
-                        </Typography>
-                        <Typography
-                          component={"span"}
-                          className={classes.dataCard}
-                        >
-                          <ul>
-                            <li>{grado.ano_conclusion}</li>
-                          </ul>
-                        </Typography>
-                      </Grid>
-                      <Grid item xs={6}>
-                        <Typography className={classes.tituloCard}>
-                          Documento obtenido
-                        </Typography>
-                        <Typography
-                          component={"span"}
-                          className={classes.dataCard}
-                        >
-                          <ul>
-                            <li>{grado.documento_obtenido.valor}</li>
-                          </ul>
-                        </Typography>
-                      </Grid>
-                      <Grid item xs={6}>
-                        <Typography className={classes.tituloCard}>
-                          Cédula Profesional
-                        </Typography>
-                        <Typography
-                          component={"span"}
-                          className={classes.dataCard}
-                        >
-                          <ul>
-                            <li>{grado.cedula_profesional}</li>
-                          </ul>
-                        </Typography>
+                      <Grid item xs={12}>
+                        <Grid container spacing={3}>
+                          <Grid item xs={6}>
+                            <Typography className={classes.tituloCard}>
+                              Documento obtenido
+                            </Typography>
+                            <Typography className={classes.dataCard}>
+                              {grado.documento_obtenido.valor}
+                            </Typography>
+                          </Grid>
+                          <Grid item xs={6}>
+                            <Typography className={classes.tituloCard}>
+                              Cédula Profesional
+                            </Typography>
+                            <Typography className={classes.dataCard}>
+                              {grado.cedula_profesional}
+                            </Typography>
+                          </Grid>
+                        </Grid>
                       </Grid>
                     </Grid>
                   </ExpansionPanelDetails>

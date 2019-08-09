@@ -61,9 +61,13 @@ class BaseGraph extends Component {
         height: 400,
         shapeConfig: {
           label: false,
-          fill: d =>
-            ConstClass.BarChartConf.colors[relacion.indexOf(d.relacion)]
+          fill: (d, i) => ConstClass.colorsChart[i]
         },
+        // shapeConfig: {
+        //   label: false,
+        //   fill: d =>
+        //     ConstClass.BarChartConf.colors[relacion.indexOf(d.relacion)]
+        // },
         legend: true,
         axes: {
           fill: "#666672"

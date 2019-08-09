@@ -1,10 +1,3 @@
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // CARGA LAS DEPENDENCIAS
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 import React, { Component } from "react";
 import { Grid, Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
@@ -38,67 +31,44 @@ class InfoDependientes extends Component {
                     id="panel1a-header"
                     className={classes.expansion}
                   >
-                    <Typography>
-                      {dependiente.tipo_relacion.valor}
-                    </Typography>
+                    <Typography>{dependiente.tipo_relacion.valor}</Typography>
                   </ExpansionPanelSummary>
                   <ExpansionPanelDetails
                     className={classes.expansionpaneldetails}
                   >
                     <Grid container spacing={3}>
-                      <Grid item xs={12}>
+                      <Grid item xs={12} className={classes.lineCard}>
                         <Grid container spacing={3}>
                           <Grid item xs={6}>
                             <Typography className={classes.tituloCard}>
                               Sector / Industria
                             </Typography>
-                            <Typography
-                              component={"span"}
-                              className={classes.dataCard}
-                            >
-                              <ul>
-                                <li>
-                                  {dependiente.sector_industria.valor}
-                                </li>
-                              </ul>
+                            <Typography className={classes.dataCard}>
+                              {dependiente.sector_industria.valor}
                             </Typography>
                           </Grid>
                           <Grid item xs={6}>
                             <Typography className={classes.tituloCard}>
                               Proveedor o Contratista de Gobierno
                             </Typography>
-                            <Typography
-                              component={"span"}
-                              className={classes.dataCard}
-                            >
-                              <ul>
-                                <li>
-                                  {!dependiente.proveedor_contratista_gobierno
-                                    ? "No"
-                                    : "Sí"}
-                                </li>
-                              </ul>
+                            <Typography className={classes.dataCard}>
+                              {!dependiente.proveedor_contratista_gobierno
+                                ? "No"
+                                : "Sí"}
                             </Typography>
                           </Grid>
                         </Grid>
                       </Grid>
-                      <Grid item xs={12}>
+                      <Grid item xs={12} className={classes.lineCard}>
                         <Grid container spacing={3}>
                           <Grid item xs={6}>
                             <Typography className={classes.tituloCard}>
                               Intereses en el mismo Sector/Industria
                             </Typography>
-                            <Typography
-                              component={"span"}
-                              className={classes.dataCard}
-                            >
-                              <ul>
-                                <li>
-                                  {!dependiente.tiene_intereses_mismo_sector_declarante
-                                    ? "No"
-                                    : "Sí"}
-                                </li>
-                              </ul>
+                            <Typography className={classes.dataCard}>
+                              {!dependiente.tiene_intereses_mismo_sector_declarante
+                                ? "No"
+                                : "Sí"}
                             </Typography>
                           </Grid>
                           <Grid item xs={6}>
@@ -106,107 +76,77 @@ class InfoDependientes extends Component {
                               Desarrolla actividades de cabildeo en el mismo
                               Sector/Industria
                             </Typography>
-                            <Typography
-                              component={"span"}
-                              className={classes.dataCard}
-                            >
-                              <ul>
-                                <li>
-                                  {!dependiente.desarrolla_cabildeo_sector_declarante
-                                    ? "No"
-                                    : "Sí"}
-                                </li>
-                              </ul>
+                            <Typography className={classes.dataCard}>
+                              {!dependiente.desarrolla_cabildeo_sector_declarante
+                                ? "No"
+                                : "Sí"}
                             </Typography>
                           </Grid>
                         </Grid>
+                      </Grid>
+                      <Grid item xs={12} className={classes.lineCard}>
+                        <Typography className={classes.tituloCard}>
+                          Observaciones
+                        </Typography>
+                        <Typography className={classes.dataCard}>
+                          {dependiente.observaciones}
+                        </Typography>
                       </Grid>
                       <Grid item xs={12}>
-                        <Grid container spacing={3}>
-                          <Grid item xs={12} sm={12}>
-                            <Typography className={classes.tituloCard}>
-                              Observaciones
-                            </Typography>
-                            <Typography
-                              component={"span"}
-                              className={classes.dataCard}
+                        {dependiente.beneficiario_programa_publico.map(
+                          (programa, j) => (
+                            <Grid
+                              container
+                              spacing={3}
+                              key={"programa-" + i + "-" + j}
                             >
-                              <ul>
-                                <li>{dependiente.observaciones}</li>
-                              </ul>
-                            </Typography>
-                          </Grid>
-                        </Grid>
-                      </Grid>
-                      {dependiente.beneficiario_programa_publico.map(
-                        (programa, j) => (
-                          <div key={"programa-" + i + "-" + j}>
-                            <Grid container spacing={3}>
-                              <Grid item xs={12} sm={6}>
-                                <Typography className={classes.tituloCard}>
-                                  Beneficiaro de programa
-                                </Typography>
-                                <Typography
-                                  component={"span"}
-                                  className={classes.dataCard}
-                                >
-                                  <ul>
-                                    <li>{programa.nombre_programa}</li>
-                                  </ul>
-                                </Typography>
-                              </Grid>
-                              <Grid item xs={12} sm={6}>
-                                <Typography className={classes.tituloCard}>
-                                  Orden de Gobierno que otorga el apoyo
-                                </Typography>
-                                <Typography
-                                  component={"span"}
-                                  className={classes.dataCard}
-                                >
-                                  <ul>
-                                    <li>
+                              <Grid item xs={12} className={classes.lineCard}>
+                                <Grid container spacing={3}>
+                                  <Grid item xs={6}>
+                                    <Typography className={classes.tituloCard}>
+                                      Beneficiaro de programa
+                                    </Typography>
+                                    <Typography className={classes.dataCard}>
+                                      {programa.nombre_programa}
+                                    </Typography>
+                                  </Grid>
+                                  <Grid item xs={6}>
+                                    <Typography className={classes.tituloCard}>
+                                      Orden de Gobierno que otorga el apoyo
+                                    </Typography>
+                                    <Typography className={classes.dataCard}>
                                       {programa.institucion_otorga_apoyo}
-                                    </li>
-                                  </ul>
-                                </Typography>
+                                    </Typography>
+                                  </Grid>
+                                </Grid>
                               </Grid>
-                            </Grid>
-                            <Grid container spacing={3}>
-                              <Grid item xs={12} sm={6}>
-                                <Typography className={classes.tituloCard}>
-                                  Tipo de apoyo
-                                </Typography>
-                                <Typography
-                                  component={"span"}
-                                  className={classes.dataCard}
-                                >
-                                  <ul>
-                                    <li>{programa.tipo_apoyo.valor}</li>
-                                  </ul>
-                                </Typography>
-                              </Grid>
-                              <Grid item xs={12} sm={6}>
-                                <Typography className={classes.tituloCard}>
-                                  Valor del Apoyo
-                                </Typography>
-                                <Typography
-                                  component={"span"}
-                                  className={classes.dataCard}
-                                >
-                                  <ul>
-                                    <li>
+                              <Grid item xs={12}>
+                                <Grid container spacing={3}>
+                                  <Grid item xs={6}>
+                                    <Typography className={classes.tituloCard}>
+                                      Tipo de apoyo
+                                    </Typography>
+                                    <Typography className={classes.dataCard}>
+                                      {programa.tipo_apoyo.valor}
+                                    </Typography>
+                                  </Grid>
+                                  <Grid item xs={6}>
+                                    <Typography className={classes.tituloCard}>
+                                      Valor del Apoyo
+                                    </Typography>
+                                    <Typography className={classes.dataCard}>
                                       {new Intl.NumberFormat("es-MX", {
                                         style: "currency",
                                         currency: "MXN"
                                       }).format(programa.valor_apoyo)}
-                                    </li>
-                                  </ul>
-                                </Typography>
+                                    </Typography>
+                                  </Grid>
+                                </Grid>
                               </Grid>
                             </Grid>
-                          </div>
-                        )
-                      )}
+                          )
+                        )}
+                      </Grid>
                     </Grid>
                   </ExpansionPanelDetails>
                 </ExpansionPanel>
