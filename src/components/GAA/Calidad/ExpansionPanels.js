@@ -119,13 +119,13 @@ export default function CustomizedExpansionPanels() {
                         </Typography>
 
                         <Typography paragraph>
-                            En el gobierno se han  dado importantes logros en tecnología y datos. Gracias a https://datos.gob.mx/, podemos encontrar una gran cantidad de datos del gobierno en formato procesables. Esto ya es un gran paso. Sin embargo, no todos los conjuntos de datos cuentan con las variables ni el tamaño necesarios para realizar análisis interesantes. Asimismo, a veces la periodicidad de los datos o la actualización no es la más adecuada. Entonces, el panorama actual es que hemos puesto a disposición de la ciudadanía muchos datos; sin embargo, estos son inútiles para los y las analistas y científicas de datos.
+                            En el gobierno se han  dado importantes logros en tecnología y datos. Gracias a <MuiLink component="a" href=" https://datos.gob.mx/">https://datos.gob.mx/</MuiLink>, podemos encontrar una gran cantidad de datos del gobierno en formato procesables. Esto ya es un gran paso. Sin embargo, no todos los conjuntos de datos cuentan con las variables ni el tamaño necesarios para realizar análisis interesantes. Asimismo, a veces la periodicidad de los datos o la actualización no es la más adecuada. Entonces, el panorama actual es que hemos puesto a disposición de la ciudadanía muchos datos; sin embargo, estos son inútiles para los y las analistas y científicas de datos.
                         </Typography>
                         <Typography paragraph>
                             Este escenario se debe en parte a que los datos de https://datos.gob.mx/ son alimentados por diferentes proveedores de datos, tales como la Secretaría de Hacienda y Crédito Público, Secretaría de Economía, Servicio de Administración Tributaria, entre otras. Cada uno tiene sus procesos de recolección, guardado, publicación y actualización. Los datos están moviéndose y cambiando constantemente. Las bases de datos y sistemas de intercambio de información se rediseñan y se actualizan.
                         </Typography>
                         <Typography paragraph>
-                            El resultado típico de esta dinámica es que los sistemas de información se vuelven mejores con el tiempo, pero la calidad de los datos se deteriora [1]. Sin embargo, lo que determina el valor intrínseco de los datos es su calidad; la tecnología y los sistemas de información sólo son magnificadores y expositores de este valor1. Entonces, una calidad alta de los datos combinada con tecnología eficiente es un gran activo, con un potencial alto de hacer impacto, pero una calidad baja de los datos combinada con tecnología baja, no solo es un activo de poco valor, sino que se convierte en un esfuerzo poco útil. Para lograr una posibilidad alta de impacto con datos es necesario tener tecnología y sistemas de información eficientes y además alta calidad de datos.
+                            El resultado típico de esta dinámica es que los sistemas de información se vuelven mejores con el tiempo, pero la calidad de los datos se deteriora [1]. Sin embargo, lo que determina el valor intrínseco de los datos es su calidad; la tecnología y los sistemas de información sólo son magnificadores y expositores de este valor [1]. Entonces, una calidad alta de los datos combinada con tecnología eficiente es un gran activo, con un potencial alto de hacer impacto, pero una calidad baja de los datos combinada con tecnología baja, no solo es un activo de poco valor, sino que se convierte en un esfuerzo poco útil. Para lograr una posibilidad alta de impacto con datos es necesario tener tecnología y sistemas de información eficientes y además alta calidad de datos.
                         </Typography>
 
                         <img src={DataImpact} alt="Impacto" className={classes.impacto}/>
@@ -214,13 +214,12 @@ export default function CustomizedExpansionPanels() {
                             Para la propuesta de métricas se tomaron como punto de partida las siguientes fuentes:
                         </Typography>
                         <ol>
-                            <li>El Open Data Charter y el Banco Interamericano de Desarrollo, a través de su “Open Up Guide: Using Open Data to Combat Corruption” y su ejemplo en México, “Open Up Guide: Testing how to use open data to combat corruption in Mexico”, la cual a su vez sirvió para publicar la Guía de apertura Anticorrupción.</li>
-                            <li>CKAN, la plataforma líder de datos Open Source data, a través de un estudio que hicieron sobre la calidad de los datos en su plataforma</li>
-                            <li>USAID, la Agencia de los Estados Unidos para el Desarrollo Internacional, a través de su taller de Data Quality Assessment y del checklist</li>
-                            <li>El Massachusetts Institute of Technology a través de un artículo académico sobre Data Quality</li>
+                            <li>El <MuiLink component="a" href="https://opendatacharter.net/">Open Data Charter</MuiLink> y el <MuiLink component="a" href="https://www.iadb.org/es/acerca-del-bid/quienes-somos">Banco Interamericano de Desarrollo</MuiLink>, a través de su <MuiLink component="a" href="https://open-data-charter.gitbook.io/open-up-guide-using-open-data-to-combat-corruption/">“Open Up Guide: Using Open Data to Combat Corruption”</MuiLink> y su ejemplo en México, “Open Up Guide: Testing how to use open data to combat corruption in Mexico”, la cual a su vez sirvió para publicar la <MuiLink component='a' href="https://docs.google.com/document/d/182USj4La896XgMZ-LTw7A3HYbA5i7aP0p2JLBL8a-24/edit#heading=h.9vgybo4y3gv2">Guía de apertura Anticorrupción.</MuiLink></li>
+                            <li><MuiLink component="a" href="https://ckan.org/">CKAN</MuiLink>, la plataforma líder de datos Open Source data, a través de un <MuiLink component="a" href="https://ckan.org/2011/01/20/data-quality-what-is-it/">estudio</MuiLink> que hicieron sobre la calidad de los datos en su plataforma</li>
+                            <li>USAID, la Agencia de los Estados Unidos para el Desarrollo Internacional, a través de su taller de <MuiLink component='a' href="https://www.usaid.gov/sites/default/files/documents/1861/DQA_Training_and_Preparation_11-17-14.ppt">Data Quality Assessment</MuiLink> y del <MuiLink component='a' href="https://www.usaid.gov/sites/default/files/documents/1868/597sad.pdf">checklist</MuiLink></li>
+                            <li>El Massachusetts Institute of Technology a través de un <MuiLink component='a' href="http://web.mit.edu/tdqm/www/tdqmpub/PipinoLeeWangCACMApr02.pdf">artículo académico sobre Data Quality</MuiLink></li>
                         </ol>
 
-                        {/*links */}
 
                         <Typography paragraph>
                             Las métricas de calidad de los datos toman en consideración:
@@ -334,7 +333,7 @@ export default function CustomizedExpansionPanels() {
                 <ExpansionPanelDetails>
                     <div>
                         <Typography paragraph>
-                            La calidad de cada conjunto de datos fue evaluada usando los rubros anteriormente mencionados. La evaluación detallada de los conjuntos de datos de la Guía puede encontrarse <MuiLink component="a" href="https://docs.google.com/spreadsheets/d/1UwhIH1Q2-boZXvyLnyJInTv8lB_4uVWf_klsJpN4Qdk/edit#gid=1228884255"> aquí </MuiLink>
+                            La calidad de cada conjunto de datos fue evaluada usando los rubros anteriormente mencionados. La evaluación detallada de los conjuntos de datos de la Guía puede encontrarse <MuiLink component="a" href="https://docs.google.com/spreadsheets/d/1UwhIH1Q2-boZXvyLnyJInTv8lB_4uVWf_klsJpN4Qdk/edit#gid=1228884255"> aquí </MuiLink>.
                         </Typography>
 
 
