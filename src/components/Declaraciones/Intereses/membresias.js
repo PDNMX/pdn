@@ -1,10 +1,3 @@
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // CARGA LAS DEPENDENCIAS
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 import React, { Component } from "react";
 import { Grid, Typography } from "@material-ui/core";
 import {
@@ -17,13 +10,6 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "../style";
 
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // DEFINE LA CLASE PRINCIPAL
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 class InteresesMembresias extends Component {
   constructor(props) {
     super(props);
@@ -71,34 +57,33 @@ class InteresesMembresias extends Component {
                     className={classes.expansionpaneldetails}
                   >
                     <Grid container spacing={3}>
-                      <Grid item xs={12}>
+                      <Grid item xs={12} className={classes.lineCard}>
+                        <Typography className={classes.tituloCard}>
+                          Nombre de institución
+                        </Typography>
+                        <Typography className={classes.dataCard}>
+                          <strong>{interes.nombre_institucion}</strong>
+                          <br />
+                          {interes.domicilio.vialidad.tipo_vial +
+                            " " +
+                            interes.domicilio.vialidad.nom_vial +
+                            " No." +
+                            interes.domicilio.numExt +
+                            " No. Int." +
+                            interes.domicilio.numInt}{" "}
+                          {interes.domicilio.localidad.nom_loc +
+                            ", " +
+                            interes.domicilio.municipio.nom_mun +
+                            ", " +
+                            interes.domicilio.entidad_federativa.nom_agee +
+                            ", " +
+                            interes.domicilio.pais.valor +
+                            " C.P. " +
+                            interes.domicilio.cp}
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={12} className={classes.lineCard}>
                         <Grid container spacing={3}>
-                          <Grid item xs={8}>
-                            <Typography className={classes.tituloCard}>
-                              Nombre de institución
-                            </Typography>
-                            <Typography className={classes.dataCard}>
-                              <strong>{interes.nombre_institucion}</strong>
-                              <br />
-                              {interes.domicilio.vialidad.tipo_vial +
-                                " " +
-                                interes.domicilio.vialidad.nom_vial +
-                                " No." +
-                                interes.domicilio.numExt +
-                                " No. Int." +
-                                interes.domicilio.numInt}
-                              <br />{" "}
-                              {interes.domicilio.localidad.nom_loc +
-                                ", " +
-                                interes.domicilio.municipio.nom_mun +
-                                ", " +
-                                interes.domicilio.entidad_federativa.nom_agee +
-                                ", " +
-                                interes.domicilio.pais.valor +
-                                " C.P. " +
-                                interes.domicilio.cp}{" "}
-                            </Typography>
-                          </Grid>
                           <Grid item xs={4}>
                             <Typography className={classes.tituloCard}>
                               Fecha de inicio
@@ -107,11 +92,7 @@ class InteresesMembresias extends Component {
                               {interes.fecha_inicio}
                             </Typography>
                           </Grid>
-                        </Grid>
-                      </Grid>
-                      <Grid item xs={12}>
-                        <Grid container spacing={3}>
-                          <Grid item xs={6}>
+                          <Grid item xs={4}>
                             <Typography className={classes.tituloCard}>
                               Tipo de institución
                             </Typography>
@@ -119,7 +100,7 @@ class InteresesMembresias extends Component {
                               {interes.tipo_institucion.valor}
                             </Typography>
                           </Grid>
-                          <Grid item xs={6}>
+                          <Grid item xs={4}>
                             <Typography className={classes.tituloCard}>
                               Naturaleza de membresía
                             </Typography>
@@ -129,7 +110,10 @@ class InteresesMembresias extends Component {
                           </Grid>
                         </Grid>
                       </Grid>
-                      <Grid item xs={12}>
+                      {/* aaaaa */}
+      
+          
+                      <Grid item xs={12} className={classes.lineCard}>
                         <Grid container spacing={3}>
                           <Grid item xs={4}>
                             <Typography className={classes.tituloCard}>
