@@ -119,13 +119,13 @@ export default function CustomizedExpansionPanels() {
                         </Typography>
 
                         <Typography paragraph>
-                            En el gobierno se han  dado importantes logros en tecnología y datos. Gracias a https://datos.gob.mx/, podemos encontrar una gran cantidad de datos del gobierno en formato procesables. Esto ya es un gran paso. Sin embargo, no todos los conjuntos de datos cuentan con las variables ni el tamaño necesarios para realizar análisis interesantes. Asimismo, a veces la periodicidad de los datos o la actualización no es la más adecuada. Entonces, el panorama actual es que hemos puesto a disposición de la ciudadanía muchos datos; sin embargo, estos son inútiles para los y las analistas y científicas de datos.
+                            En el gobierno se han  dado importantes logros en tecnología y datos. Gracias a <MuiLink component="a" href=" https://datos.gob.mx/">https://datos.gob.mx/</MuiLink>, podemos encontrar una gran cantidad de datos del gobierno en formato procesables. Esto ya es un gran paso. Sin embargo, no todos los conjuntos de datos cuentan con las variables ni el tamaño necesarios para realizar análisis interesantes. Asimismo, a veces la periodicidad de los datos o la actualización no es la más adecuada. Entonces, el panorama actual es que hemos puesto a disposición de la ciudadanía muchos datos; sin embargo, estos son inútiles para los y las analistas y científicas de datos.
                         </Typography>
                         <Typography paragraph>
                             Este escenario se debe en parte a que los datos de https://datos.gob.mx/ son alimentados por diferentes proveedores de datos, tales como la Secretaría de Hacienda y Crédito Público, Secretaría de Economía, Servicio de Administración Tributaria, entre otras. Cada uno tiene sus procesos de recolección, guardado, publicación y actualización. Los datos están moviéndose y cambiando constantemente. Las bases de datos y sistemas de intercambio de información se rediseñan y se actualizan.
                         </Typography>
                         <Typography paragraph>
-                            El resultado típico de esta dinámica es que los sistemas de información se vuelven mejores con el tiempo, pero la calidad de los datos se deteriora [1]. Sin embargo, lo que determina el valor intrínseco de los datos es su calidad; la tecnología y los sistemas de información sólo son magnificadores y expositores de este valor1. Entonces, una calidad alta de los datos combinada con tecnología eficiente es un gran activo, con un potencial alto de hacer impacto, pero una calidad baja de los datos combinada con tecnología baja, no solo es un activo de poco valor, sino que se convierte en un esfuerzo poco útil. Para lograr una posibilidad alta de impacto con datos es necesario tener tecnología y sistemas de información eficientes y además alta calidad de datos.
+                            El resultado típico de esta dinámica es que los sistemas de información se vuelven mejores con el tiempo, pero la calidad de los datos se deteriora [1]. Sin embargo, lo que determina el valor intrínseco de los datos es su calidad; la tecnología y los sistemas de información sólo son magnificadores y expositores de este valor [1]. Entonces, una calidad alta de los datos combinada con tecnología eficiente es un gran activo, con un potencial alto de hacer impacto, pero una calidad baja de los datos combinada con tecnología baja, no solo es un activo de poco valor, sino que se convierte en un esfuerzo poco útil. Para lograr una posibilidad alta de impacto con datos es necesario tener tecnología y sistemas de información eficientes y además alta calidad de datos.
                         </Typography>
 
                         <img src={DataImpact} alt="Impacto" className={classes.impacto}/>
@@ -333,7 +333,7 @@ export default function CustomizedExpansionPanels() {
                 <ExpansionPanelDetails>
                     <div>
                         <Typography paragraph>
-                            La calidad de cada conjunto de datos fue evaluada usando los rubros anteriormente mencionados. La evaluación detallada de los conjuntos de datos de la Guía puede encontrarse <MuiLink component="a" href="https://docs.google.com/spreadsheets/d/1UwhIH1Q2-boZXvyLnyJInTv8lB_4uVWf_klsJpN4Qdk/edit#gid=1228884255"> aquí </MuiLink>
+                            La calidad de cada conjunto de datos fue evaluada usando los rubros anteriormente mencionados. La evaluación detallada de los conjuntos de datos de la Guía puede encontrarse <MuiLink component="a" href="https://docs.google.com/spreadsheets/d/1UwhIH1Q2-boZXvyLnyJInTv8lB_4uVWf_klsJpN4Qdk/edit#gid=1228884255"> aquí </MuiLink>.
                         </Typography>
 
 
