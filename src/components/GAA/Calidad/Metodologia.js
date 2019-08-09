@@ -6,6 +6,8 @@ import PropTypes from 'prop-types';
 import Footer from "../../Home/Footer";
 import ScrollToTopButton from '../../Navigation/ScrollToTopButton';
 import ExpansionPanels from "./ExpansionPanels";
+//import data  from './mora_data';
+//import Histogram from './Histogram';
 
 const styles = theme => ({
     root :{
@@ -34,6 +36,11 @@ class Metodologia extends React.Component{
                 <Grid item xs={12} className={classes.item}>
 
                     <ExpansionPanels/>
+
+
+                    {/*<Histogram data = {data}/>*/}
+
+
 
                 </Grid>
             </Grid>

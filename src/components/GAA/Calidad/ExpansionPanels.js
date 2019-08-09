@@ -10,6 +10,7 @@ import MuiLink from "@material-ui/core/Link";
 //import Icon from '@material-ui/core/Icon';
 import Pasos from "../../../assets/pasos_evaluación.png";
 import Pipeline from "../../../assets/DQ_pipeline_analy.png";
+import DataImpact from "../../../assets/data_impact.png";
 
 const ExpansionPanel = withStyles({
     root: {
@@ -66,6 +67,9 @@ const useStyles = makeStyles( theme => ({
     pasos:{
         maxWidth: '90%'
     },
+    impacto:{
+        maxWidth: '90%'
+    },
     bullet: {
         backgroundColor: '#5fb1e6',
         height: '8px',
@@ -110,24 +114,25 @@ export default function CustomizedExpansionPanels() {
                     <div>
 
 
-
                         <Typography paragraph>
                             Uno de los retos más grandes para quienes usan datos del gobierno es la diversidad formatos, tipos y tamaño. Por un lado, la búsqueda de conjuntos de datos resulta compleja. Por otro, los formatos predeterminados dificultan el procesamiento. Asimismo, existe la posibilidad de que los conjuntos de datos no hayan sido actualizados y periodos de información se hayan extraviado.
                         </Typography>
 
-
                         <Typography paragraph>
                             En el gobierno se han  dado importantes logros en tecnología y datos. Gracias a https://datos.gob.mx/, podemos encontrar una gran cantidad de datos del gobierno en formato procesables. Esto ya es un gran paso. Sin embargo, no todos los conjuntos de datos cuentan con las variables ni el tamaño necesarios para realizar análisis interesantes. Asimismo, a veces la periodicidad de los datos o la actualización no es la más adecuada. Entonces, el panorama actual es que hemos puesto a disposición de la ciudadanía muchos datos; sin embargo, estos son inútiles para los y las analistas y científicas de datos.
                         </Typography>
-
                         <Typography paragraph>
-                            Este escenario se debe en parte a que los datos de https://datos.gob.mx/ son alimentados por diferentes proveedores de datos, tales como la Secretaría de Hacienda y Crédito Público, Secretaría de Economía, Servicio de Administración Tributaria, entre otras. Cada uno tiene sus procesos de recolección, guardado, publicación y actualización. Los datos están moviéndose y cambiando constantemente.
+                            Este escenario se debe en parte a que los datos de https://datos.gob.mx/ son alimentados por diferentes proveedores de datos, tales como la Secretaría de Hacienda y Crédito Público, Secretaría de Economía, Servicio de Administración Tributaria, entre otras. Cada uno tiene sus procesos de recolección, guardado, publicación y actualización. Los datos están moviéndose y cambiando constantemente. Las bases de datos y sistemas de intercambio de información se rediseñan y se actualizan.
                         </Typography>
+                        <Typography paragraph>
+                            El resultado típico de esta dinámica es que los sistemas de información se vuelven mejores con el tiempo, pero la calidad de los datos se deteriora [1]. Sin embargo, lo que determina el valor intrínseco de los datos es su calidad; la tecnología y los sistemas de información sólo son magnificadores y expositores de este valor1. Entonces, una calidad alta de los datos combinada con tecnología eficiente es un gran activo, con un potencial alto de hacer impacto, pero una calidad baja de los datos combinada con tecnología baja, no solo es un activo de poco valor, sino que se convierte en un esfuerzo poco útil. Para lograr una posibilidad alta de impacto con datos es necesario tener tecnología y sistemas de información eficientes y además alta calidad de datos.
+                        </Typography>
+
+                        <img src={DataImpact} alt="Impacto" className={classes.impacto}/>
 
                         <Typography paragraph>
                             Recordando que uno de los objetivos más importantes en la Plataforma Digital Nacional (PDN) es lograr estandarizar y volver interoperables los datos del gobierno, evaluar las calidad de los datos se vuelve crucial construir una política pública basada en datos.
                         </Typography>
-
 
                     </div>
                 </ExpansionPanelDetails>
@@ -140,13 +145,13 @@ export default function CustomizedExpansionPanels() {
                 <ExpansionPanelDetails>
                     <div>
 
-
                         <Typography paragraph>
                             La evaluación de la calidad de los datos (DQA, por sus siglas en inglés) es el evaluar metódica y estadísticamente los datos para determinar si cumplen con la calidad requerida por la aplicación de negocio. Esto implica, entre otras cosas, ver si los datos son del tipo y la cantidad adecuada para que puedan servir a un fin.
                         </Typography>
                         <Typography paragraph>
                             Evaluar la calidad de los conjuntos de datos nos servirá tanto a usuarios como al gobierno a:
                         </Typography>
+
 
                         <div style={{background: '#f2f2f2', padding: '10px', marginBottom: '25px'}}>
                             <ul className={classes.ul}>
@@ -184,10 +189,11 @@ export default function CustomizedExpansionPanels() {
                         </div>
 
 
-
                         <Typography paragraph>
-                            <b>Pasos para la evaluación de calidad de los datos Guía de Apertura Anticorrupción</b>
+
+                            Proponemos la siguiente estrategia para evaluar la calidad de los datos de la Guía Anticorrupción:
                         </Typography>
+
 
                         <img src={Pasos} alt="Pasos" className={classes.pasos}/>
 
@@ -204,6 +210,17 @@ export default function CustomizedExpansionPanels() {
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
                     <div>
+                        <Typography>
+                            Para la propuesta de métricas se tomaron como punto de partida las siguientes fuentes:
+                        </Typography>
+                        <ol>
+                            <li>El Open Data Charter y el Banco Interamericano de Desarrollo, a través de su “Open Up Guide: Using Open Data to Combat Corruption” y su ejemplo en México, “Open Up Guide: Testing how to use open data to combat corruption in Mexico”, la cual a su vez sirvió para publicar la Guía de apertura Anticorrupción.</li>
+                            <li>CKAN, la plataforma líder de datos Open Source data, a través de un estudio que hicieron sobre la calidad de los datos en su plataforma</li>
+                            <li>USAID, la Agencia de los Estados Unidos para el Desarrollo Internacional, a través de su taller de Data Quality Assessment y del checklist</li>
+                            <li>El Massachusetts Institute of Technology a través de un artículo académico sobre Data Quality</li>
+                        </ol>
+
+                        {/*links */}
 
                         <Typography paragraph>
                             Las métricas de calidad de los datos toman en consideración:
@@ -214,6 +231,16 @@ export default function CustomizedExpansionPanels() {
                             <li><Typography>Sus formatos</Typography></li>
 
                         </ul>
+
+                        <Typography paragraph>
+                        Se adaptaron estas ideas al contexto y datos de México y se propusieron varios rubros de evaluación.
+                        </Typography>
+
+                        <Typography paragraph>
+                        Es importante mencionar que ninguna de las fuentes consultadas hace mención de la calidad analítica de los datos, es decir, qué tan útiles son los datos para poder hacer análisis estadísticos y modelos matemáticos. Este punto es clave porque aunque un conjunto de datos esté disponible para su descarga en línea en formatos abiertos y provenga de una fuente confiable, puede no ser útil para hacer análisis si no tiene variables relevantes, es muy pequeño, o se actualiza con poca frecuencia. Entonces, decidimos agregar un rubro de evaluación que se refiriera a qué tan relevante es el conjunto de datos en términos analíticos.
+                        </Typography>
+
+
 
                         <Typography paragraph>
                             El proceso para la evaluación de los datos que proponemos está alineado a la forma natural del ciclo de vida de los datos: desde su origen hasta su aprovechamiento analítico. Este  proceso está compuesto por los siguientes rubros:
@@ -263,8 +290,6 @@ export default function CustomizedExpansionPanels() {
                         <ul>
                             <li><Typography>Provenga de fuentes confiables;</Typography></li>
                             <li><Typography>Que no existan registros en blanco o errores en los registros;</Typography></li>
-                            <li><Typography>Que las personas recolectoras están calificadas y sean supervisadas;</Typography></li>
-                            <li><Typography>Que existan procedimientos para la recolección, revisión, publicación y actualización periódica de los datos y que estos sean documentados;</Typography></li>
                         </ul>
 
                         <Typography>
@@ -280,15 +305,15 @@ export default function CustomizedExpansionPanels() {
                             <b>5. Relevancia analítica:</b>
                         </Typography>
                         <ul>
-                            <li><Typography>Que haya un número considerable de observaciones;</Typography></li>
-                            <li><Typography>Que el conjunto de datos contengan variables suficientes para medir lo que se supone deben medir;</Typography></li>
-                            <li><Typography>Que el conjunto de datos esté actualizados;</Typography></li>
+                            <li><Typography>Que haya suficientes observaciones para realizar análisis y modelos;</Typography></li>
+                            <li><Typography>Que el conjunto de datos contenga variables suficientes para medir lo que se supone deben medir;</Typography></li>
+                            <li><Typography>Que el conjunto de datos esté actualizado;</Typography></li>
                         </ul>
                         <Typography>
                             <b>5.1 Consistencia:</b>
                         </Typography>
                         <ul>
-                            <li><Typography>Que las variables estén codificadas adecuadamente;</Typography></li>
+                            <li><Typography>Que las variables estén codificadas adecuadamente (que no tengan espacios, ni los nombres sean demasiado largos)</Typography></li>
                         </ul>
                         <Typography><b>5.2 Completitud:</b></Typography>
                         <ul>
