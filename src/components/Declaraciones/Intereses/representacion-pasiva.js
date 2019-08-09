@@ -1,10 +1,3 @@
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // CARGA LAS DEPENDENCIAS
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 import React, { Component } from "react";
 import { Grid, Typography } from "@material-ui/core";
 import {
@@ -16,13 +9,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import { withStyles } from "@material-ui/core/styles";
 import styles from "../style";
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // DEFINE LA CLASE PRINCIPAL
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
+
 class InteresesRepPasiva extends Component {
   constructor(props) {
     super(props);
@@ -69,7 +56,7 @@ class InteresesRepPasiva extends Component {
                     className={classes.expansionpaneldetails}
                   >
                     <Grid container spacing={3}>
-                      <Grid item xs={12}>
+                      <Grid item xs={12} className={classes.lineCard}>
                         <Grid container spacing={3}>
                           <Grid item xs={6}>
                             <Typography className={classes.tituloCard}>
@@ -89,7 +76,7 @@ class InteresesRepPasiva extends Component {
                           </Grid>
                         </Grid>
                       </Grid>
-                      <Grid item xs={12}>
+                      <Grid item xs={12} className={classes.lineCard}>
                         <Grid container spacing={3}>
                           <Grid item xs={6}>
                             <Typography className={classes.tituloCard}>
@@ -109,9 +96,9 @@ class InteresesRepPasiva extends Component {
                           </Grid>
                         </Grid>
                       </Grid>
-                      <Grid item xs={12}>
+                      <Grid item xs={12} className={classes.lineCard}>
                         <Grid container spacing={3}>
-                          <Grid item xs={4}>
+                          <Grid item xs={3}>
                             <Typography className={classes.tituloCard}>
                               Pagado
                             </Typography>
@@ -119,7 +106,7 @@ class InteresesRepPasiva extends Component {
                               {interes.pagado ? "Sí" : "No"}
                             </Typography>
                           </Grid>
-                          <Grid item xs={4}>
+                          <Grid item xs={3}>
                             <Typography className={classes.tituloCard}>
                               Tiene intereses
                             </Typography>
@@ -127,9 +114,9 @@ class InteresesRepPasiva extends Component {
                               {interes.tiene_intereses ? "Sí" : "No"}
                             </Typography>
                           </Grid>
-                          <Grid item xs={4}>
+                          <Grid item xs={6}>
                             <Typography className={classes.tituloCard}>
-                              Fecha de inicio de representación
+                              Inicio de representación
                             </Typography>
                             <Typography className={classes.dataCard}>
                               {interes.fecha_inicio_representacion}
@@ -179,11 +166,4 @@ class InteresesRepPasiva extends Component {
   }
 }
 
-/*
-  ////////////////////////////////////////////////////////////////////////////////
-  //
-  // REGRESA EL COMPONENTE
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 export default withStyles(styles)(InteresesRepPasiva);
