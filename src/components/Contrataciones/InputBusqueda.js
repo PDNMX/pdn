@@ -33,27 +33,34 @@ const styles = theme => ({
 
 class InputBusqueda extends React.Component{
 
-    handleSearch = e => {
-        if (e.key === 'Enter'){
-            this.props.search();
-        }
-    };
-
     render(){
 
         const {classes} = this.props;
 
+
+
+        const handleSearch = e => {
+            if (e.key === 'Enter'){
+                this.props.search();
+            }
+        };
+
+        const handleSetInputText = event => {
+            this.props.setInputText (event.target.value );
+        };
+
+
         return (
             <Paper className={classes.root}>
-                <IconButton className={classes.iconButton} aria-label="menu">
+                {/*<IconButton className={classes.iconButton} aria-label="menu">
                     <MenuIcon />
-                </IconButton>
+                </IconButton>*/}
                 <InputBase
                     className={classes.input}
-                    placeholder="Buscar contrataciones..."
+                    placeholder="Título de la contratación"
                     inputProps={{ 'aria-label': 'buscar contrataciones' }}
-                    onChange = { e => this.props.setInputText(e.target.value)}
-                    onKeyDown={ e => this.handleSearch(e)}
+                    onChange = { handleSetInputText }
+                    onKeyDown={ handleSearch}
                 />
                 <IconButton className={classes.iconButton} aria-label="search" onClick={e => this.props.search()}>
                     <SearchIcon />

@@ -3,7 +3,7 @@ import {withStyles} from "@material-ui/core/styles";
 import InputBusqueda from './InputBusqueda';
 import TablaResultados from './TablaResultados';
 import rp from 'request-promise';
-import SelectBuyer from "./SelectBuyer";
+import SelectBuyer from "./SearchControls";
 
 const styles = theme => ({
     root: {
@@ -23,7 +23,8 @@ class Busqueda extends React.Component{
         loading: true,
         buyers: [],
         buyer_id: 'any',
-        procurementMethod: 'any'
+        procurementMethod: 'any',
+        supplierName: ""
     };
 
 
@@ -54,11 +55,6 @@ class Busqueda extends React.Component{
     }
 
 
-    setInputText = text => {
-        this.setState({inputText: text});
-    };
-
-
     handleChangeRowsPerPage = (pageSize) => {
         this.setState( {
             loading: true,
@@ -84,6 +80,36 @@ class Busqueda extends React.Component{
         });
     };
 
+
+    setBuyer = buyer_id => {
+      this.setState({
+          buyer_id: buyer_id
+      }, () => {
+
+         this.search(false);
+      });
+    };
+
+    setProcurementMethod = pm => {
+        this.setState({
+            procurementMethod : pm
+        }, () =>{
+            this.search(false);
+        });
+    };
+
+    setSupplierName = name => {
+        this.setState({
+            supplierName: name
+        });
+    };
+
+    setInputText = text => {
+        this.setState({
+            inputText: text
+        });
+    };
+
     //buscar
     search = pageChange => {
 
@@ -98,6 +124,10 @@ class Busqueda extends React.Component{
 
         if (this.state.procurementMethod !== 'any'){
             body.procurementMethod = this.state.procurementMethod
+        }
+
+        if (this.state.supplierName !== ''){
+            body.supplierName = this.state.supplierName;
         }
 
         if (this.state.inputText !== ""){
@@ -122,29 +152,6 @@ class Busqueda extends React.Component{
         });
     };
 
-    setBuyer = buyer_id => {
-      this.setState({
-          buyer_id: buyer_id
-      }, () => {
-
-         this.search(false);
-      });
-    };
-
-    setProcurementMethod = pm => {
-        this.setState({
-            procurementMethod : pm
-        }, () =>{
-            this.search(false);
-        });
-    };
-
-    /*
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        console.log(this.state);
-    }*/
-
-
     render() {
 
 
@@ -158,6 +165,8 @@ class Busqueda extends React.Component{
                              setBuyer={this.setBuyer}
                              setProcurementMethod={this.setProcurementMethod}
                              procurementMethod={this.state.procurementMethod}
+                             setSupplierName={this.setSupplierName}
+                             supplierName={this.state.supplierName}
                 />
                 <InputBusqueda setInputText={this.setInputText} search={this.search}/>
                 <TablaResultados
