@@ -10,7 +10,8 @@ const styles = theme => ({
         flexGrow: 1
     },
     margin: {
-        margin: theme.spacing(1),
+        //margin: theme.spacing(1),
+        marginBottom: theme.spacing(3)
     },
 });
 
