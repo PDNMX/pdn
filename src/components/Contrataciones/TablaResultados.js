@@ -226,7 +226,7 @@ export default function EnhancedTable(props) {
                 return "Licitación pública";
             case "direct":
                 return "Adjudicación directa";
-            case "limited":
+            case "selective":
                 return "Invitación a tres";
             case "":
                 return "En proceso";

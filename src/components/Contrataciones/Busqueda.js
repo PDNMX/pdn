@@ -22,7 +22,8 @@ class Busqueda extends React.Component{
         results: [],
         loading: true,
         buyers: [],
-        buyer_id: 'any'
+        buyer_id: 'any',
+        procurementMethod: 'any'
     };
 
 
@@ -95,6 +96,10 @@ class Busqueda extends React.Component{
             body.buyer_id = this.state.buyer_id
         }
 
+        if (this.state.procurementMethod !== 'any'){
+            body.procurementMethod = this.state.procurementMethod
+        }
+
         if (this.state.inputText !== ""){
             body.contract_title = this.state.inputText;
         }
@@ -126,6 +131,14 @@ class Busqueda extends React.Component{
       });
     };
 
+    setProcurementMethod = pm => {
+        this.setState({
+            procurementMethod : pm
+        }, () =>{
+            this.search(false);
+        });
+    };
+
     /*
     componentDidUpdate(prevProps, prevState, snapshot) {
         console.log(this.state);
@@ -140,7 +153,12 @@ class Busqueda extends React.Component{
         return (
             <div className={classes.root}>
 
-                <SelectBuyer buyers={this.state.buyers} setBuyer={this.setBuyer}/>
+                <SelectBuyer buyers={this.state.buyers}
+                             buyer_id={this.state.buyer_id}
+                             setBuyer={this.setBuyer}
+                             setProcurementMethod={this.setProcurementMethod}
+                             procurementMethod={this.state.procurementMethod}
+                />
                 <InputBusqueda setInputText={this.setInputText} search={this.search}/>
                 <TablaResultados
                     data={this.state.results}

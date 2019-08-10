@@ -4,6 +4,8 @@ import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import NativeSelect from "@material-ui/core/NativeSelect";
 import InputBase from "@material-ui/core/InputBase";
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
 
 const styles = theme => ({
     root: {
@@ -11,8 +13,12 @@ const styles = theme => ({
     },
     margin: {
         //margin: theme.spacing(1),
-        marginBottom: theme.spacing(3)
+        marginBottom: theme.spacing(3),
+        marginRight: theme.spacing(3)
     },
+    procurementMethod: {
+        marginBottom: theme.spacing(3)
+    }
 });
 
 const BootstrapInput = withStyles(theme => ({
@@ -54,11 +60,15 @@ class SelectBuyer extends React.Component{
 
     render() {
 
-        const {classes, buyers} = this.props;
+        const {classes, buyers, buyer, procurementMethod} = this.props;
 
         //const [age, setAge] = React.useState('');
-        const handleChange = event => {
+        const handleChangeBuyer = event => {
             this.props.setBuyer(event.target.value);
+        };
+
+        const handleChangeProcurementMethod = event => {
+            this.props.setProcurementMethod(event.target.value);
         };
 
         return (
@@ -67,30 +77,16 @@ class SelectBuyer extends React.Component{
                 <InputLabel htmlFor="age-customized-input">Age</InputLabel>
                 <BootstrapInput id="age-customized-input" />
             </FormControl>
+                */}
 
-            <FormControl className={classes.margin}>
-                <InputLabel htmlFor="age-customized-select">Age</InputLabel>
-                <Select
-                    value={age}
-                    onChange={handleChange}
-                    input={<BootstrapInput name="age" id="age-customized-select" />}
-                >
-                    <MenuItem value="">
-                        <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
-                </Select>
-            </FormControl>*/}
                 <FormControl className={classes.margin}>
                     <InputLabel htmlFor="age-customized-native-simple">Institución</InputLabel>
                     <NativeSelect
-                        //value={age}
-                        onChange={handleChange}
+                        value={buyer}
+                        onChange={handleChangeBuyer}
                         input={<BootstrapInput name="buyer" id="age-customized-native-simple"/>}
                     >
-                        <option value="any">Cualquiera</option>
+                        <option value="any">Todas</option>
                         {
                             buyers.map((b,i)=>{
                                 return <option key={i} value={b.id}>{b.name}</option>
@@ -98,6 +94,22 @@ class SelectBuyer extends React.Component{
 
                         }
                     </NativeSelect>
+                </FormControl>
+
+                <FormControl className={classes.procurementMethod}>
+                    <InputLabel htmlFor="age-customized-select">Tipo</InputLabel>
+                    <Select
+                        value={procurementMethod}
+                        onChange={handleChangeProcurementMethod}
+                        input={<BootstrapInput name="age" id="age-customized-select" />}
+                    >
+                        <MenuItem value="any">
+                            <em>Cualquiera</em>
+                        </MenuItem>
+                        <MenuItem value="direct">Adjudicación directa</MenuItem>
+                        <MenuItem value="selective">Invitación a tres</MenuItem>
+                        <MenuItem value="open">Licitación pública</MenuItem>
+                    </Select>
                 </FormControl>
             </form>
         );
