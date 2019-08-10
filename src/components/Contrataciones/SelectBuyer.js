@@ -1,11 +1,18 @@
 import React from 'react';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
-//import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-//import Select from '@material-ui/core/Select';
-import NativeSelect from '@material-ui/core/NativeSelect';
-import InputBase from '@material-ui/core/InputBase';
+import {withStyles} from "@material-ui/core/styles";
+import FormControl from "@material-ui/core/FormControl";
+import InputLabel from "@material-ui/core/InputLabel";
+import NativeSelect from "@material-ui/core/NativeSelect";
+import InputBase from "@material-ui/core/InputBase";
+
+const styles = theme => ({
+    root: {
+        flexGrow: 1
+    },
+    margin: {
+        margin: theme.spacing(1),
+    },
+});
 
 const BootstrapInput = withStyles(theme => ({
     root: {
@@ -42,27 +49,20 @@ const BootstrapInput = withStyles(theme => ({
     },
 }))(InputBase);
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        //display: 'flex',
-        //flexWrap: 'wrap',
-        flexGrow: 1
-    },
-    margin: {
-        margin: theme.spacing(1),
-    },
-}));
+class SelectBuyer extends React.Component{
 
-export default function CustomizedSelect(props) {
-    const classes = useStyles();
-    const [age, setAge] = React.useState('');
-    const handleChange = event => {
-        setAge(event.target.value);
-        props.handleSelectDonutData(event.target.value);
-    };
-    return (
-        <form className={classes.root} autoComplete="off">
-            {/*<FormControl className={classes.margin}>
+    render() {
+
+        const {classes, buyers} = this.props;
+
+        //const [age, setAge] = React.useState('');
+        const handleChange = event => {
+            this.props.setBuyer(event.target.value);
+        };
+
+        return (
+            <form className={classes.root} autoComplete="off">
+                {/*<FormControl className={classes.margin}>
                 <InputLabel htmlFor="age-customized-input">Age</InputLabel>
                 <BootstrapInput id="age-customized-input" />
             </FormControl>
@@ -82,18 +82,27 @@ export default function CustomizedSelect(props) {
                     <MenuItem value={30}>Thirty</MenuItem>
                 </Select>
             </FormControl>*/}
-            <FormControl className={classes.margin}>
-                <InputLabel htmlFor="age-customized-native-simple">Contrataciones</InputLabel>
-                <NativeSelect
-                    value={age}
-                    onChange={handleChange}
-                    input={<BootstrapInput name="age" id="age-customized-native-simple" />}
-                >
-                    {/*<option value="" />*/}
-                    <option value={"amounts"}>Gasto ejercido</option>
-                    <option value={"counts"}>Número de contrataciones</option>
-                </NativeSelect>
-            </FormControl>
-        </form>
-    );
+                <FormControl className={classes.margin}>
+                    <InputLabel htmlFor="age-customized-native-simple">Institución</InputLabel>
+                    <NativeSelect
+                        //value={age}
+                        onChange={handleChange}
+                        input={<BootstrapInput name="buyer" id="age-customized-native-simple"/>}
+                    >
+                        <option value="any">Cualquiera</option>
+                        {
+                            buyers.map((b,i)=>{
+                                return <option key={i} value={b.id}>{b.name}</option>
+                            })
+
+                        }
+                    </NativeSelect>
+                </FormControl>
+            </form>
+        );
+    }
+
 }
+
+
+export default withStyles(styles)(SelectBuyer);

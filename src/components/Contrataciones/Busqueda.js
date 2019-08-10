@@ -3,6 +3,7 @@ import {withStyles} from "@material-ui/core/styles";
 import InputBusqueda from './InputBusqueda';
 import TablaResultados from './TablaResultados';
 import rp from 'request-promise';
+import SelectBuyer from "./SelectBuyer";
 
 const styles = theme => ({
     root: {
@@ -19,21 +20,33 @@ class Busqueda extends React.Component{
           total: 0
         },
         results: [],
-        loading: true
+        loading: true,
+        buyers: [],
+        buyer_id: 'any'
     };
 
 
     componentWillMount() {
         //fetch data
-        rp({
-            uri: process.env.REACT_APP_DUMMY_API + "/api/s6/search",
-            method: 'POST',
-            json: true
-        }).then(  data => {
+
+        let queries = [
+            rp({
+                uri: process.env.REACT_APP_DUMMY_API +'/api/s6/buyers',
+                method: 'GET',
+                json: true
+            }),
+            rp({
+                uri: process.env.REACT_APP_DUMMY_API + "/api/s6/search",
+                method: 'POST',
+                json: true
+            })];
+
+        Promise.all(queries).then(  data => {
             //console.log (data );
             this.setState({
-                pagination: data.pagination,
-                results: data.data,
+                buyers: data[0],
+                pagination: data[1].pagination,
+                results: data[1].data,
                 loading: false
             });
         });
@@ -75,8 +88,12 @@ class Busqueda extends React.Component{
 
         let body = {
             page: pageChange?this.state.pagination.page:0,
-            pageSize: this.state.pagination.pageSize
+            pageSize: this.state.pagination.pageSize,
         };
+
+        if (this.state.buyer_id !== 'any'){
+            body.buyer_id = this.state.buyer_id
+        }
 
         if (this.state.inputText !== ""){
             body.contract_title = this.state.inputText;
@@ -100,6 +117,15 @@ class Busqueda extends React.Component{
         });
     };
 
+    setBuyer = buyer_id => {
+      this.setState({
+          buyer_id: buyer_id
+      }, () => {
+
+         this.search(false);
+      });
+    };
+
     /*
     componentDidUpdate(prevProps, prevState, snapshot) {
         console.log(this.state);
@@ -114,6 +140,7 @@ class Busqueda extends React.Component{
         return (
             <div className={classes.root}>
 
+                <SelectBuyer buyers={this.state.buyers} setBuyer={this.setBuyer}/>
                 <InputBusqueda setInputText={this.setInputText} search={this.search}/>
                 <TablaResultados
                     data={this.state.results}
