@@ -50,6 +50,11 @@ class Cifras extends React.Component{
         gastoTotal: 0
     };
 
+    porcentaje = (amount, total) => {
+        let p = (amount * 100 / total).toFixed(3);
+        return `${p}%`
+    };
+
     componentWillMount() {
 
         rp({
@@ -67,11 +72,12 @@ class Cifras extends React.Component{
                 counts: data.counts,
                 amounts: data.amounts,
                 gastoTotal: data.amounts.total,
+                donutChartDataType : 'amounts',
                 donutChartData: [
-                    {theta: data.amounts.open, label: 'Licitación pública', color: "#00cc99"},
-                    {theta: data.amounts.selective, label: 'Invitación a tres', color: "#ffcc00"},
-                    {theta: data.amounts.direct, label: "Adjudicación directa", color: "#663399"},
-                    {theta: data.amounts.other, label: "Otro", color: "#ff6600"}
+                    {theta: data.amounts.open, label: this.porcentaje(data.amounts.open,data.amounts.total), color: "#00cc99"},
+                    {theta: data.amounts.selective, label: this.porcentaje(data.amounts.selective,data.amounts.total), color: "#ffcc00"},
+                    {theta: data.amounts.direct, label: this.porcentaje(data.amounts.direct,data.amounts.total), color: "#663399"},
+                    {theta: data.amounts.other, label: this.porcentaje(data.amounts.other,data.amounts.total), color: "#ff6600"}
                     ]
             })
 
@@ -83,24 +89,31 @@ class Cifras extends React.Component{
 
     }
 
-    handleSelectDonutData= (p) => {
+    handleSelectDonutData = (p) => {
         //console.log(p)
         if (p === 'amounts'){
+
+            const {open, direct, selective, other, total} = this.state.amounts;
             this.setState({
+                donutChartDataType: p,
                 donutChartData: [
-                    {theta: this.state.amounts.open, label: 'Licitación pública', color: "#00cc99"},
-                    {theta: this.state.amounts.selective, label: 'Invitación a tres', color: "#ffcc00"},
-                    {theta: this.state.amounts.direct, label: "Adjudicación directa", color: "#663399"},
-                    {theta: this.state.amounts.other, label: "Otro", color: "#ff6600"}
+                    {theta: open, label: this.porcentaje(open, total), color: "#00cc99"},
+                    {theta: selective, label: this.porcentaje(selective, total), color: "#ffcc00"},
+                    {theta: direct, label: this.porcentaje(direct, total), color: "#663399"},
+                    {theta: other, label: this.porcentaje(other, total), color: "#ff6600"}
                 ]
             });
         } else {
+            const {open, direct, selective, other} = this.state.counts;
+            const {contrataciones} = this.state;
+
             this.setState({
+                donutChartDataType: p,
                 donutChartData: [
-                    {theta: this.state.counts.open, label: 'Licitación pública', color: "#00cc99"},
-                    {theta: this.state.counts.selective, label: 'Invitación a tres', color: "#ffcc00"},
-                    {theta: this.state.counts.direct, label: "Adjudicación directa", color: "#663399"},
-                    {theta: this.state.counts.other, label: "Otro", color: "#ff6600"}
+                    {theta: open, label: this.porcentaje(open, contrataciones), color: "#00cc99"},
+                    {theta: selective, label: this.porcentaje(selective, contrataciones), color: "#ffcc00"},
+                    {theta: direct, label: this.porcentaje(direct, contrataciones), color: "#663399"},
+                    {theta: other, label: this.porcentaje(other, contrataciones), color: "#ff6600"}
                 ]
             });
         }
@@ -177,7 +190,7 @@ class Cifras extends React.Component{
                                 <Grid item xs={12} md={6} lg={6} xl={6} align="center">
                                     <CustomizedSelect handleSelectDonutData={this.handleSelectDonutData}/>
 
-                                    <Donutchart data={this.state.donutChartData}/>
+                                    <Donutchart data={this.state.donutChartData} dataType={this.state.donutChartDataType}/>
                                 </Grid>
                                 <Grid item xs={12} md={6} lg={6} xl={6}>
 

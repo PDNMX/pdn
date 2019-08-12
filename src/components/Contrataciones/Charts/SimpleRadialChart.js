@@ -2,17 +2,53 @@ import React, {Component} from 'react';
 
 import {RadialChart, Hint} from 'react-vis';
 
+
+const AmountTooltip  = props => {
+    return (
+        <p>
+            Monto gastado
+            <br/>
+            {props.value.theta.toFixed(2)}
+        </p>
+    );
+};
+
+
+const CountTooltip  = props => {
+    return (
+        <p>
+            Número de contrataciones
+            <br/>
+            {props.value.theta.toFixed(0)}
+        </p>
+    );
+};
+
 export default class SimpleRadialChart extends Component {
     state = {
         value: false
     };
     render() {
         const {value} = this.state;
+
+
+        const tipStyle = {
+            display: 'flex',
+            color: '#fff',
+            background: '#666666',
+            //alignItems: 'left',
+            padding: '5px',
+            fontSize: 12,
+            fontWeight: 400,
+            borderRadius: 4
+
+        };
+
         return (
             <RadialChart
                 className={'donut-chart-example'}
-                innerRadius={70}
-                radius={140}
+                innerRadius={65}
+                radius={130}
                 getAngle={d => d.theta}
                 data={this.props.data/*[
                     {theta: 2, className: 'custom-class'},
@@ -26,9 +62,21 @@ export default class SimpleRadialChart extends Component {
                 height={300}
                 padAngle={0.04}
                 colorType="literal"
-                //showLabels={true}
+                showLabels={true}
+                labelsStyle={{
+                    fontSize: 10
+                }}
             >
-                {value !== false && <Hint value={value} />}
+                {value !== false &&
+                <Hint value={value}>
+                    <div style={tipStyle}>
+
+                        {this.props.dataType === 'amounts'?
+                            <AmountTooltip value={value}/>:
+                            <CountTooltip value={value}/>
+                        }
+                    </div>
+                </Hint>}
             </RadialChart>
         );
     }
