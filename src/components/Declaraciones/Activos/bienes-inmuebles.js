@@ -27,7 +27,7 @@ class ActivosBienesInmuebles extends Component {
     super(props);
 
     let elems = this.props.profile.activos.bienes_inmuebles.map(d => {
-      // let item = d;
+      
       d.show = true;
 
       return d;

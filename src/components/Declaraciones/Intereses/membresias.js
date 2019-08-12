@@ -15,7 +15,7 @@ class InteresesMembresias extends Component {
     super(props);
 
     let elems = this.props.profile.intereses.membresias.map(d => {
-      // let item = d;
+      
       d.show = true;
 
       return d;

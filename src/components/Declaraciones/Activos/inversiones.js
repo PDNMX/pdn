@@ -28,7 +28,7 @@ class ActivosInversiones extends Component {
 
     let elems = this.props.profile.activos.inversiones_cuentas_valores.map(
       d => {
-        // let item = d;
+        
         d.show = true;
 
         return d;

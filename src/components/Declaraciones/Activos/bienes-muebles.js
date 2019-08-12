@@ -28,7 +28,7 @@ class ActivosBienesMuebles extends Component {
 
     let elems = this.props.profile.activos.bienes_muebles_registrables.map(
       d => {
-        // let item = d;
+        
         d.show = true;
 
         return d;

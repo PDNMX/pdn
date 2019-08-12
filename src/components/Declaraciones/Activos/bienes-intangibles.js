@@ -27,7 +27,7 @@ class ActivosBienesIntangibles extends Component {
     super(props);
 
     let elems = this.props.profile.activos.bienes_intangibles.map(d => {
-      // let item = d;
+      
       d.show = true;
 
       return d;

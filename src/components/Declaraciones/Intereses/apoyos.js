@@ -17,7 +17,7 @@ class InteresesApoyos extends Component {
 
     let elems = this.props.profile.intereses.apoyos_beneficios_publicos.map(
       d => {
-        // let item = d;
+        
         d.show = true;
 
         return d;

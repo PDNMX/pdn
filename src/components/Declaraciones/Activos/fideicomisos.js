@@ -27,7 +27,7 @@ class ActivosFideicomisos extends Component {
     super(props);
 
     let elems = this.props.profile.activos.fideicomisos.map(d => {
-      // let item = d;
+      
       d.show = true;
 
       return d;

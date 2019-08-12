@@ -15,7 +15,7 @@ class InteresesRepPasiva extends Component {
     super(props);
 
     let elems = this.props.profile.intereses.representacion_pasiva.map(d => {
-      // let item = d;
+      
       d.show = true;
 
       return d;

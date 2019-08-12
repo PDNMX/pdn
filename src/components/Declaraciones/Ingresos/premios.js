@@ -15,7 +15,7 @@ class IngresosPremios extends Component {
     super(props);
 
     let elems = this.props.profile.ingresos.premios.map(d => {
-      // let item = d;
+      
       d.show = true;
 
       return d;

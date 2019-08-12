@@ -15,7 +15,7 @@ class IngresosOtros extends Component {
     super(props);
 
     let elems = this.props.profile.ingresos.otros_ingresos.map(d => {
-      // let item = d;
+      
       d.show = true;
 
       return d;

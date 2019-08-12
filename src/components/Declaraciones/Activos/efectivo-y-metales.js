@@ -15,7 +15,7 @@ class ActivosEfectivo extends Component {
     super(props);
 
     let elems = this.props.profile.activos.efectivo_metales.map(d => {
-      // let item = d;
+      
       d.show = true;
 
       return d;

@@ -15,7 +15,7 @@ class IngresosArrendamiento extends Component {
     super(props);
 
     let elems = this.props.profile.ingresos.arrendamiento.map(d => {
-      // let item = d;
+      
       d.show = true;
 
       return d;

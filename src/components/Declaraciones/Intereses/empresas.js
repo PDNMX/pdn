@@ -28,7 +28,7 @@ class InteresesEmpresas extends Component {
 
     let elems = this.props.profile.intereses.empresas_sociedades_asociaciones.map(
       d => {
-        // let item = d;
+        
         d.show = true;
 
         return d;

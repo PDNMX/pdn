@@ -15,7 +15,7 @@ class InteresesBeneficios extends Component {
     super(props);
 
     let elems = this.props.profile.intereses.beneficios_gratuitos.map(d => {
-      // let item = d;
+      
       d.show = true;
 
       return d;

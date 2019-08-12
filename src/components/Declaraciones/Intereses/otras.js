@@ -15,7 +15,7 @@ class InteresesOtras extends Component {
     super(props);
 
     let elems = this.props.profile.intereses.otras_partes.map(d => {
-      // let item = d;
+      
       d.show = true;
 
       return d;

@@ -15,7 +15,7 @@ class InteresesSocios extends Component {
     super(props);
 
     let elems = this.props.profile.intereses.socios_comerciales.map(d => {
-      // let item = d;
+      
       d.show = true;
 
       return d;

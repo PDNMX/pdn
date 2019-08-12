@@ -36,7 +36,7 @@ class EducacionPorcentaje extends Component {
         series: d.map(d => (d / total) * 100)
       };
 
-      // console.log("percent:", data);
+      
 
       this.setState({ data: data });
     });
