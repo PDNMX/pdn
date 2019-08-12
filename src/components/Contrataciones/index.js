@@ -75,8 +75,8 @@ class Index extends React.Component {
                     </Grid>
                 </Grid>
 
-
                 {/*
+
                 <Grid container spacing={0} justify="center" className={classes.container}>
                     <Grid item xs={12} className={classes.item}>
                         <ScatterPlot/>
@@ -96,9 +96,7 @@ class Index extends React.Component {
                         <Treemap/>
                     </Grid>
                 </Grid>
-*/}
-
-
+                */}
 
 
 
