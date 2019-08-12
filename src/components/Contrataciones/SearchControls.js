@@ -8,6 +8,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
+import Button from "@material-ui/core/Button";
 
 const styles = theme => ({
     root: {
@@ -18,7 +19,12 @@ const styles = theme => ({
     },
     procurementMethod: {
         //marginBottom: theme.spacing(3)
-    }
+    },
+    button:{
+        background: '#ffe01b',
+        //marginTop: theme.spacing(3),
+        marginBottom: theme.spacing(2)
+    },
 });
 
 const BootstrapInput = withStyles(theme => ({
@@ -73,6 +79,16 @@ class SearchControls extends React.Component{
 
         const handleChangeSupplierName = event => {
           this.props.setSupplierName(event.target.value);
+        };
+
+        const handleChangeContractTitle = event => {
+          this.props.setInputText(event.target.value);
+        };
+
+        const handleSearch = e => {
+            if (e.key === 'Enter'){
+                this.props.search();
+            }
         };
 
         return (
@@ -137,9 +153,33 @@ class SearchControls extends React.Component{
                                 shrink: true,
                             }}
                             onChange={handleChangeSupplierName}
+                            onKeyDown={handleSearch}
                         />
                     </Grid>
+
+                    <Grid item xs={12}>
+                        <TextField
+                            id="outlined-full-width"
+                            label="Título del contrato"
+                            //style={{  margin : 8}}
+                            placeholder="Escriba el título del contrato"
+                            //helperText="Full width!"
+                            fullWidth
+                            margin="normal"
+                            variant="outlined"
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                            onChange={handleChangeContractTitle}
+                            onKeyDown={handleSearch}
+                        />
+                    </Grid>
+
+                    <Grid item xs={12}>
+                        <Button variant="contained" className={classes.button} onClick={this.props.search}>Buscar</Button>
+                    </Grid>
                 </Grid>
+
             </div>
         );
     }

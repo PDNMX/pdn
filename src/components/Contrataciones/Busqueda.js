@@ -1,14 +1,14 @@
 import React from 'react';
 import {withStyles} from "@material-ui/core/styles";
-import InputBusqueda from './InputBusqueda';
+//import InputBusqueda from './InputBusqueda';
 import TablaResultados from './TablaResultados';
 import rp from 'request-promise';
-import SelectBuyer from "./SearchControls";
+import SearchControls from "./SearchControls";
 
 const styles = theme => ({
     root: {
         flexGrow: 1
-    }
+    },
 });
 class Busqueda extends React.Component{
 
@@ -51,6 +51,8 @@ class Busqueda extends React.Component{
                 results: data[1].data,
                 loading: false
             });
+        }).catch(error => {
+            console.log(error);
         });
     }
 
@@ -101,12 +103,16 @@ class Busqueda extends React.Component{
     setSupplierName = name => {
         this.setState({
             supplierName: name
+        },()=> {
+            //this.search(false)
         });
     };
 
     setInputText = text => {
         this.setState({
             inputText: text
+        }, ()=> {
+            //this.search(false)
         });
     };
 
@@ -148,6 +154,8 @@ class Busqueda extends React.Component{
                     pagination: data.pagination, //al buscar se debe resetrar la página a 0
                     loading: false
                 })
+            }).catch(error => {
+                console.log(error)
             });
         });
     };
@@ -160,15 +168,17 @@ class Busqueda extends React.Component{
         return (
             <div className={classes.root}>
 
-                <SelectBuyer buyers={this.state.buyers}
-                             buyer_id={this.state.buyer_id}
-                             setBuyer={this.setBuyer}
-                             setProcurementMethod={this.setProcurementMethod}
-                             procurementMethod={this.state.procurementMethod}
-                             setSupplierName={this.setSupplierName}
-                             supplierName={this.state.supplierName}
+                <SearchControls buyers={this.state.buyers}
+                                buyer_id={this.state.buyer_id}
+                                setBuyer={this.setBuyer}
+                                setProcurementMethod={this.setProcurementMethod}
+                                procurementMethod={this.state.procurementMethod}
+                                setSupplierName={this.setSupplierName}
+                                supplierName={this.state.supplierName}
+                                setInputText={this.setInputText}
+                                search={this.search}
                 />
-                <InputBusqueda setInputText={this.setInputText} search={this.search}/>
+
                 <TablaResultados
                     data={this.state.results}
                     pagination={this.state.pagination}
