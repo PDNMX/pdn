@@ -1,10 +1,3 @@
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // CARGA LAS DEPENDENCIAS
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 import React, { Component } from "react";
 import { Grid, Typography } from "@material-ui/core";
 import {
@@ -17,13 +10,6 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "../style";
 
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // DEFINE LA CLASE PRINCIPAL
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 class IngresosSueldosPublicos extends Component {
   constructor(props) {
     super(props);
@@ -41,10 +27,7 @@ class IngresosSueldosPublicos extends Component {
 
     this.toggl = this.toggl.bind(this);
   }
-  /*
-   * R E N D E R
-   * ----------------------------------------------------------------------
-   */
+
   render() {
     let { classes } = this.props;
 
@@ -72,7 +55,7 @@ class IngresosSueldosPublicos extends Component {
                     className={classes.expansionpaneldetails}
                   >
                     <Grid container spacing={3}>
-                      <Grid item xs={12}>
+                      <Grid item xs={12} className={classes.lineCard}>
                         <Grid container spacing={3}>
                           <Grid item xs={8}>
                             <Typography className={classes.tituloCard}>
@@ -96,7 +79,7 @@ class IngresosSueldosPublicos extends Component {
                           </Grid>
                         </Grid>
                       </Grid>
-                      <Grid item xs={12}>
+                      <Grid item xs={12} className={classes.lineCard}>
                         <Grid container spacing={3}>
                           <Grid item xs={4}>
                             <Typography className={classes.tituloCard}>
@@ -144,10 +127,6 @@ class IngresosSueldosPublicos extends Component {
     );
   }
 
-  /*
-   * M E T H O D S
-   * ----------------------------------------------------------------------
-   */
   toggl(item, index, e) {
     console.log(item, index, e);
 
@@ -167,11 +146,4 @@ class IngresosSueldosPublicos extends Component {
   }
 }
 
-/*
-  ////////////////////////////////////////////////////////////////////////////////
-  //
-  // REGRESA EL COMPONENTE
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 export default withStyles(styles)(IngresosSueldosPublicos);

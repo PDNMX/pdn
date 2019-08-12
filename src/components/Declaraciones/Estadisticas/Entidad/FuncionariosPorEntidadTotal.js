@@ -1,10 +1,3 @@
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // CARGA LAS DEPENDENCIAS
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 import React, { Component } from "react";
 import { Grid, Paper } from "@material-ui/core";
 
@@ -16,18 +9,7 @@ import { Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "../../style";
 
-/*
-  ////////////////////////////////////////////////////////////////////////////////
-  //
-  // DEFINE LA CLASE PRINCIPAL
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 class FuncionariosPorEntidadTotal extends Component {
-  /*
-   * C O N S T R U C T O R
-   * ----------------------------------------------------------------------
-   */
   constructor() {
     super();
 
@@ -115,10 +97,6 @@ class FuncionariosPorEntidadTotal extends Component {
     });
   }
 
-  /*
-   * R E N D E R
-   * ----------------------------------------------------------------------
-   */
   render() {
     let st = this.state;
     let { classes } = this.props;
@@ -132,23 +110,11 @@ class FuncionariosPorEntidadTotal extends Component {
             </Typography>
             <ChartistGraph data={st.fake} type={"Bar"} />
           </Paper>
-        </Grid>        
+        </Grid>
       </Grid>
     );
   }
 
-  /*
-   * M E T H O D S
-   * ----------------------------------------------------------------------
-   */
-
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  /
-  /
-  /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  */
   getInfo(_from, _to) {
     let connObj = Object.assign({}, ConstClass.fetchObj);
 
@@ -161,13 +127,6 @@ class FuncionariosPorEntidadTotal extends Component {
       });
   }
 
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  /
-  /
-  /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  */
   makeData() {
     let currentYear = new Date().getFullYear(),
       _from = d => `${d}-01-01`,
@@ -190,13 +149,6 @@ class FuncionariosPorEntidadTotal extends Component {
     return res;
   }
 
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  /
-  /
-  /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  */
   makeQuery(_from, _to) {
     let str = ConstClass.PROP_NAMES.nacimiento,
       search = { query: {}, limit: 2 };
@@ -206,11 +158,4 @@ class FuncionariosPorEntidadTotal extends Component {
   }
 }
 
-/*
-  ////////////////////////////////////////////////////////////////////////////////
-  //
-  // REGRESA EL COMPONENTE
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 export default withStyles(styles)(FuncionariosPorEntidadTotal);

@@ -1,10 +1,3 @@
-/*
-	/////////////////////////////////////////////////////////////////
-  //
-  // CARGA LAS DEPENDENCIAS
-  //
-  /////////////////////////////////////////////////////////////////
-*/
 import React, { Component } from "react";
 import { Grid, Paper } from "@material-ui/core";
 import * as ConstClass from "../../ConstValues.js";
@@ -21,18 +14,7 @@ let d3 = Object.assign({}, require("d3-format"));
 let format = d3.format("$,");
 let _format = d3.format(",");
 
-/*
-  /////////////////////////////////////////////////////////////////
-  //
-  // DEFINE LA CLASE PRINCIPAL
-  //
-  /////////////////////////////////////////////////////////////////
-*/
 class SalarioTotal extends Component {
-  /*
-   * C O N S T R U C T O R
-   * ------------------------------------------------------------
-   */
   constructor() {
     super();
 
@@ -56,10 +38,6 @@ class SalarioTotal extends Component {
     });
   }
 
-  /*
-   * R E N D E R
-   * ------------------------------------------------------------
-   */
   render() {
     if (!this.state.data) return null;
 
@@ -91,18 +69,6 @@ class SalarioTotal extends Component {
     );
   }
 
-  /*
-   * M E T H O D S
-   * ------------------------------------------------------------
-   */
-
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  /
-  /
-  /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  */
   getInfo(range) {
     let connObj = Object.assign({}, ConstClass.fetchObj);
 
@@ -115,13 +81,6 @@ class SalarioTotal extends Component {
       });
   }
 
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  /
-  /
-  /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  */
   makeData() {
     let res = [],
       gl = ConstClass.SalaryChartConf,
@@ -137,13 +96,6 @@ class SalarioTotal extends Component {
     return res;
   }
 
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  /
-  /
-  /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  */
   makeLabel(range) {
     let r1 = range[0] ? format(range[0]) : 0,
       r2 = range[1] ? format(range[1]) : "o más";
@@ -151,13 +103,6 @@ class SalarioTotal extends Component {
     return `${r1} - ${r2}`;
   }
 
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  /
-  /
-  /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  */
   makeQuery(range) {
     let str = ConstClass.PROP_NAMES.ingresoAnual,
       search = { query: {}, limit: 2 };

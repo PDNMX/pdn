@@ -42,10 +42,6 @@ class InteresesEmpresas extends Component {
     this.toggl = this.toggl.bind(this);
   }
 
-  /*
-   * R E N D E R
-   * ----------------------------------------------------------------------
-   */
   render() {
     let { classes } = this.props;
 
@@ -197,10 +193,6 @@ class InteresesEmpresas extends Component {
     );
   }
 
-  /*
-   * M E T H O D S
-   * ----------------------------------------------------------------------
-   */
   toggl(item, index, e) {
     console.log(item, index, e);
 
@@ -221,11 +213,4 @@ class InteresesEmpresas extends Component {
   }
 }
 
-/*
-  ////////////////////////////////////////////////////////////////////////////////
-  //
-  // REGRESA EL COMPONENTE
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 export default withStyles(styles)(InteresesEmpresas);

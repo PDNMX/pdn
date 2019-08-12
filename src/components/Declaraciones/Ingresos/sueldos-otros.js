@@ -1,10 +1,3 @@
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // CARGA LAS DEPENDENCIAS
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 import React, { Component } from "react";
 import { Grid, Typography } from "@material-ui/core";
 import {
@@ -16,13 +9,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import { withStyles } from "@material-ui/core/styles";
 import styles from "../style";
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // DEFINE LA CLASE PRINCIPAL
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
+
 class IngresosSueldosOtros extends Component {
   constructor(props) {
     super(props);
@@ -42,10 +29,6 @@ class IngresosSueldosOtros extends Component {
     this.toggl = this.toggl.bind(this);
   }
 
-  /*
-   * R E N D E R
-   * ----------------------------------------------------------------------
-   */
   render() {
     let { classes } = this.props;
 
@@ -73,7 +56,7 @@ class IngresosSueldosOtros extends Component {
                     className={classes.expansionpaneldetails}
                   >
                     <Grid container spacing={3}>
-                      <Grid item xs={12}>
+                      <Grid item xs={12} className={classes.lineCard}>
                         <Grid container spacing={3}>
                           <Grid item xs={8}>
                             <Typography className={classes.tituloCard}>
@@ -97,7 +80,7 @@ class IngresosSueldosOtros extends Component {
                           </Grid>
                         </Grid>
                       </Grid>
-                      <Grid item xs={12}>
+                      <Grid item xs={12} className={classes.lineCard}>
                         <Grid container spacing={3}>
                           <Grid item xs={4}>
                             <Typography className={classes.tituloCard}>
@@ -126,7 +109,7 @@ class IngresosSueldosOtros extends Component {
                           </Grid>
                         </Grid>
                       </Grid>
-                      <Grid item xs={12}>
+                      <Grid item xs={12} className={classes.lineCard}>
                         <Typography className={classes.tituloCard}>
                           Descripción de actividad o servicio
                         </Typography>
@@ -153,10 +136,6 @@ class IngresosSueldosOtros extends Component {
     );
   }
 
-  /*
-   * M E T H O D S
-   * ----------------------------------------------------------------------
-   */
   toggl(item, index, e) {
     console.log(item, index, e);
 
@@ -176,11 +155,4 @@ class IngresosSueldosOtros extends Component {
   }
 }
 
-/*
-  ////////////////////////////////////////////////////////////////////////////////
-  //
-  // REGRESA EL COMPONENTE
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 export default withStyles(styles)(IngresosSueldosOtros);

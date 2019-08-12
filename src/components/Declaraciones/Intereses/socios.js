@@ -27,10 +27,7 @@ class InteresesSocios extends Component {
 
     this.toggl = this.toggl.bind(this);
   }
-  /*
-   * R E N D E R
-   * ----------------------------------------------------------------------
-   */
+
   render() {
     let { classes } = this.props;
 
@@ -123,10 +120,6 @@ class InteresesSocios extends Component {
     );
   }
 
-  /*
-   * M E T H O D S
-   * ----------------------------------------------------------------------
-   */
   toggl(item, index, e) {
     console.log(item, index, e);
 

@@ -140,7 +140,7 @@ export default theme => ({
   },
   expansion: {
     backgroundColor: "#83dfff",
-    color: "white",
+    color: "#666666",
     textTransform: "uppercase",
     // backgroundColor: "#2EB2E7",
     fontWeight: 1200,

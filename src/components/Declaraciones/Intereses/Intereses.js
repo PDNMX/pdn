@@ -53,31 +53,17 @@ class Intereses extends Component {
             md={10}
             style={{ backgroundColor: "#f2f2f2", padding: 15 }}
           >
-            {value === 0 && (
-              <InteresesResume profile={this.props.profile} />
-            )}
+            {value === 0 && <InteresesResume profile={this.props.profile} />}
 
-            {value === 1 && (
-              <InteresesEmpresas profile={this.props.profile} />
-            )}
+            {value === 1 && <InteresesEmpresas profile={this.props.profile} />}
             {value === 2 && (
               <InteresesMembresias profile={this.props.profile} />
             )}
-            {value === 3 && (
-              <InteresesApoyos profile={this.props.profile} />
-            )}
-            {value === 4 && (
-              <InteresesRepActiva profile={this.props.profile} />
-            )}
-            {value === 5 && (
-              <InteresesRepPasiva profile={this.props.profile} />
-            )}
-            {value === 6 && (
-              <InteresesSocios profile={this.props.profile} />
-            )}
-            {value === 7 && (
-              <InteresesClientes profile={this.props.profile} />
-            )}
+            {value === 3 && <InteresesApoyos profile={this.props.profile} />}
+            {value === 4 && <InteresesRepActiva profile={this.props.profile} />}
+            {value === 5 && <InteresesRepPasiva profile={this.props.profile} />}
+            {value === 6 && <InteresesSocios profile={this.props.profile} />}
+            {value === 7 && <InteresesClientes profile={this.props.profile} />}
             {value === 8 && <InteresesOtras profile={this.props.profile} />}
             {value === 9 && (
               <InteresesBeneficios profile={this.props.profile} />

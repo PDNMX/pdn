@@ -1,10 +1,3 @@
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // CARGA LAS DEPENDENCIAS
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 import React, { Component } from "react";
 import { Grid, Typography } from "@material-ui/core";
 import {
@@ -16,13 +9,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import { withStyles } from "@material-ui/core/styles";
 import styles from "../style";
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // DEFINE LA CLASE PRINCIPAL
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
+
 class IngresosPremios extends Component {
   constructor(props) {
     super(props);
@@ -40,10 +27,7 @@ class IngresosPremios extends Component {
 
     this.toggl = this.toggl.bind(this);
   }
-  /*
-   * R E N D E R
-   * ----------------------------------------------------------------------
-   */
+
   render() {
     let { classes } = this.props;
     return (
@@ -68,9 +52,9 @@ class IngresosPremios extends Component {
                     className={classes.expansionpaneldetails}
                   >
                     <Grid container spacing={3}>
-                      <Grid item xs={12}>
+                      <Grid item xs={12} className={classes.lineCard}>
                         <Grid container spacing={3}>
-                          <Grid item xs={8}>
+                          <Grid item xs={6}>
                             <Typography className={classes.tituloCard}>
                               Tipo de actividad o servicio
                             </Typography>
@@ -78,7 +62,7 @@ class IngresosPremios extends Component {
                               {sueldo.tipo_actividad_servicio.valor}
                             </Typography>
                           </Grid>
-                          <Grid item xs={4}>
+                          <Grid item xs={6}>
                             <Typography className={classes.tituloCard}>
                               Ingreso bruto anual
                             </Typography>
@@ -92,9 +76,9 @@ class IngresosPremios extends Component {
                           </Grid>
                         </Grid>
                       </Grid>
-                      <Grid item xs={12}>
+                      <Grid item xs={12} className={classes.lineCard}>
                         <Grid container spacing={3}>
-                          <Grid item xs={4}>
+                          <Grid item xs={6}>
                             <Typography className={classes.tituloCard}>
                               Sector o industria
                             </Typography>
@@ -102,7 +86,7 @@ class IngresosPremios extends Component {
                               {sueldo.sector_industria.valor}
                             </Typography>
                           </Grid>
-                          <Grid item xs={4}>
+                          <Grid item xs={3}>
                             <Typography className={classes.tituloCard}>
                               Duración / frecuencia
                             </Typography>
@@ -111,7 +95,7 @@ class IngresosPremios extends Component {
                               {sueldo.ingreso_bruto_anual.unidad_temporal.valor}
                             </Typography>
                           </Grid>
-                          <Grid item xs={4}>
+                          <Grid item xs={3}>
                             <Typography className={classes.tituloCard}>
                               Fecha de transacción
                             </Typography>
@@ -121,7 +105,7 @@ class IngresosPremios extends Component {
                           </Grid>
                         </Grid>
                       </Grid>
-                      <Grid item xs={12}>
+                      <Grid item xs={12} className={classes.lineCard}>
                         <Typography className={classes.tituloCard}>
                           Descripción del premio
                         </Typography>
@@ -148,10 +132,6 @@ class IngresosPremios extends Component {
     );
   }
 
-  /*
-   * M E T H O D S
-   * ----------------------------------------------------------------------
-   */
   toggl(item, index, e) {
     console.log(item, index, e);
 
@@ -171,11 +151,4 @@ class IngresosPremios extends Component {
   }
 }
 
-/*
-  ////////////////////////////////////////////////////////////////////////////////
-  //
-  // REGRESA EL COMPONENTE
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 export default withStyles(styles)(IngresosPremios);

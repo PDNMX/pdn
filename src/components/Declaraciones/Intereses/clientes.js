@@ -27,10 +27,7 @@ class InteresesClientes extends Component {
 
     this.toggl = this.toggl.bind(this);
   }
-  /*
-   * R E N D E R
-   * ----------------------------------------------------------------------
-   */
+
   render() {
     let { classes } = this.props;
 

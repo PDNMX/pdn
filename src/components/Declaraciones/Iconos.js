@@ -50,11 +50,7 @@ export default function Icono(props) {
 
   return (
     <Icon {...props}>
-      <img
-        alt="icono"
-        src={icono}
-        style={{ height: "100%", width: "100%" }}
-      />
+      <img alt="icono" src={icono} style={{ height: "100%", width: "100%" }} />
     </Icon>
   );
 }
