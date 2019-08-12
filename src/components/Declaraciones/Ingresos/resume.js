@@ -21,6 +21,7 @@ class IngresosSueldosPublicos extends Component {
     let total = 0;
     d.map(o => {
       total += o.ingreso_bruto_anual.valor;
+      return "";
       // console.log("o", o);
     });
     return total;

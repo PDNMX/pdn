@@ -1,10 +1,3 @@
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // CARGA LAS DEPENDENCIAS
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 import React, { Component } from "react";
 import { Grid, Paper } from "@material-ui/core";
 
@@ -21,19 +14,7 @@ import styles from "../../style";
 let d3 = Object.assign({}, require("d3-format"));
 let format = d3.format(",.2");
 
-/*
-  ////////////////////////////////////////////////////////////////////////////////
-  //
-  // DEFINE LA CLASE PRINCIPAL
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
-
 class EdadTotalPorcentaje extends Component {
-  /*
-   * C O N S T R U C T O R
-   * ----------------------------------------------------------------------
-   */
   constructor() {
     super();
 
@@ -59,10 +40,6 @@ class EdadTotalPorcentaje extends Component {
     });
   }
 
-  /*
-   * R E N D E R
-   * ----------------------------------------------------------------------
-   */
   render() {
     if (!this.state.data) return null;
 
@@ -96,7 +73,10 @@ class EdadTotalPorcentaje extends Component {
             <Typography component="div">
               <ul className={classes.listaGraficas}>
                 {this.state.data.labels.map((d, i) => (
-                  <li key={"ngel-" + i} style={{ display: "inline-block", margin: "0px 10px" }}>
+                  <li
+                    key={"ngel-" + i}
+                    style={{ display: "inline-block", margin: "0px 10px" }}
+                  >
                     <span
                       style={{
                         display: "inline-block",
@@ -116,18 +96,6 @@ class EdadTotalPorcentaje extends Component {
     );
   }
 
-  /*
-   * M E T H O D S
-   * ----------------------------------------------------------------------
-   */
-
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  /
-  /
-  /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  */
   getInfo(_from, _to) {
     let connObj = Object.assign({}, ConstClass.fetchObj);
 
@@ -140,13 +108,6 @@ class EdadTotalPorcentaje extends Component {
       });
   }
 
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  /
-  /
-  /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  */
   makeData() {
     let res = [],
       currentYear = new Date().getFullYear(),
@@ -167,13 +128,6 @@ class EdadTotalPorcentaje extends Component {
     return res;
   }
 
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  /
-  /
-  /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  */
   makeQuery(_from, _to) {
     let str = ConstClass.PROP_NAMES.nacimiento,
       search = { query: {}, limit: 2 };
@@ -183,11 +137,4 @@ class EdadTotalPorcentaje extends Component {
   }
 }
 
-/*
-  ////////////////////////////////////////////////////////////////////////////////
-  //
-  // REGRESA EL COMPONENTE
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 export default withStyles(styles)(EdadTotalPorcentaje);

@@ -1,10 +1,3 @@
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // CARGA LAS DEPENDENCIAS
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 import React, { Component } from "react";
 import { Grid, Typography } from "@material-ui/core";
 import {
@@ -28,36 +21,8 @@ const BorderLinearProgress = withStyles({
     borderRadius: 20
   }
 })(LinearProgress);
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // DEFINE LA CLASE PRINCIPAL
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
+
 class ActivosBienesMuebles extends Component {
-  constructor(props) {
-    super(props);
-
-    let elems = this.props.profile.activos.bienes_muebles_registrables.map(
-      d => {
-        // let item = d;
-        d.show = true;
-
-        return d;
-      }
-    );
-
-    this.state = {
-      items: elems
-    };
-
-    this.toggl = this.toggl.bind(this);
-  }
-  /*
-   * R E N D E R
-   * ----------------------------------------------------------------------
-   */
   render() {
     let { classes } = this.props;
 
@@ -83,9 +48,9 @@ class ActivosBienesMuebles extends Component {
                     className={classes.expansionpaneldetails}
                   >
                     <Grid container spacing={3}>
-                      <Grid item xs={12}>
+                      <Grid item xs={12} className={classes.lineCard}>
                         <Grid container spacing={3}>
-                          <Grid item xs={8}>
+                          <Grid item xs={6}>
                             <Typography className={classes.tituloCard}>
                               Tipo de bien
                             </Typography>
@@ -93,7 +58,7 @@ class ActivosBienesMuebles extends Component {
                               {mueble.tipo_bien_mueble.valor}
                             </Typography>
                           </Grid>
-                          <Grid item xs={4}>
+                          <Grid item xs={6}>
                             <Typography className={classes.tituloCard}>
                               Precio de adquisición
                             </Typography>
@@ -107,7 +72,7 @@ class ActivosBienesMuebles extends Component {
                           </Grid>
                         </Grid>
                       </Grid>
-                      <Grid item xs={12}>
+                      <Grid item xs={12} className={classes.lineCard}>
                         <Grid container spacing={3}>
                           <Grid item xs={4}>
                             <Typography className={classes.tituloCard}>
@@ -135,7 +100,7 @@ class ActivosBienesMuebles extends Component {
                           </Grid>
                         </Grid>
                       </Grid>
-                      <Grid item xs={12}>
+                      <Grid item xs={12} className={classes.lineCard}>
                         <Grid container spacing={3}>
                           <Grid item xs={4}>
                             <Typography className={classes.tituloCard}>
@@ -163,7 +128,7 @@ class ActivosBienesMuebles extends Component {
                           </Grid>
                         </Grid>
                       </Grid>
-                      <Grid item xs={12}>
+                      <Grid item xs={12} className={classes.lineCard}>
                         <Grid container spacing={3}>
                           <Grid item xs={4}>
                             <Typography className={classes.tituloCard}>
@@ -219,34 +184,9 @@ class ActivosBienesMuebles extends Component {
     );
   }
 
-  /*
-   * M E T H O D S
-   * ----------------------------------------------------------------------
-   */
-  toggl(item, index, e) {
-    console.log(item, index, e);
-
-    let items = this.state.items,
-      newItems = items.map(d => {
-        if (item === d) {
-          d.show = !item.show;
-        }
-
-        return d;
-      });
-
-    this.setState({ items: newItems });
-  }
   items() {
     return this.props.profile.activos.bienes_muebles_registrables;
   }
 }
 
-/*
-  ////////////////////////////////////////////////////////////////////////////////
-  //
-  // REGRESA EL COMPONENTE
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 export default withStyles(styles)(ActivosBienesMuebles);

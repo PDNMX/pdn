@@ -1,10 +1,3 @@
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // CARGA LAS DEPENDENCIAS
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 import React, { Component } from "react";
 import { Grid, Paper } from "@material-ui/core";
 import * as ConstClass from "../../ConstValues.js";
@@ -21,18 +14,7 @@ import styles from "../../style";
 let d3 = Object.assign({}, require("d3-format"));
 let format = d3.format(",");
 
-/*
-  ////////////////////////////////////////////////////////////////////////////////
-  //
-  // DEFINE LA CLASE PRINCIPAL
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 class EducacionTotal extends Component {
-  /*
-   * C O N S T R U C T O R
-   * ----------------------------------------------------------------------
-   */
   constructor() {
     super();
 
@@ -56,10 +38,6 @@ class EducacionTotal extends Component {
     });
   }
 
-  /*
-   * R E N D E R
-   * ----------------------------------------------------------------------
-   */
   render() {
     if (!this.state.data) return null;
 
@@ -92,18 +70,6 @@ class EducacionTotal extends Component {
     );
   }
 
-  /*
-   * M E T H O D S
-   * ----------------------------------------------------------------------
-   */
-
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  /
-  /
-  /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  */
   getInfo(lv) {
     let connObj = Object.assign({}, ConstClass.fetchObj);
 
@@ -116,13 +82,6 @@ class EducacionTotal extends Component {
       });
   }
 
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  /
-  /
-  /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  */
   makeData() {
     let res = [],
       gl = ConstClass.NivelEducacion,
@@ -138,13 +97,6 @@ class EducacionTotal extends Component {
     return res;
   }
 
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  /
-  /
-  /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  */
   makeQuery(lv) {
     let str = ConstClass.PROP_NAMES.escolaridad,
       search = { query: {}, limit: 2 };
@@ -154,11 +106,4 @@ class EducacionTotal extends Component {
   }
 }
 
-/*
-  ////////////////////////////////////////////////////////////////////////////////
-  //
-  // REGRESA EL COMPONENTE
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 export default withStyles(styles)(EducacionTotal);

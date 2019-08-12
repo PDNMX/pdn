@@ -1,10 +1,3 @@
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // CARGA LAS DEPENDENCIAS
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 import React, { Component } from "react";
 import { Grid, Paper } from "@material-ui/core";
 
@@ -16,18 +9,7 @@ import { Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "../../style";
 
-/*
-  ////////////////////////////////////////////////////////////////////////////////
-  //
-  // DEFINE LA CLASE PRINCIPAL
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 class FuncionariosPorEntidadEdadPorcentaje extends Component {
-  /*
-   * C O N S T R U C T O R
-   * ----------------------------------------------------------------------
-   */
   constructor() {
     super();
 
@@ -111,14 +93,10 @@ class FuncionariosPorEntidadEdadPorcentaje extends Component {
     let promises = this.makeData();
 
     Promise.all(promises.map(d => d.promise)).then(d => {
-      // console.log("res:", d);
+      
     });
   }
 
-  /*
-   * R E N D E R
-   * ----------------------------------------------------------------------
-   */
   render() {
     let st = this.state;
 
@@ -129,8 +107,7 @@ class FuncionariosPorEntidadEdadPorcentaje extends Component {
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             <Typography className={classes.titulo}>
-              Funcionarios por estado seleccionado y rango de edad
-              (porcentaje)
+              Funcionarios por estado seleccionado y rango de edad (porcentaje)
             </Typography>
             <Grid container spacing={3}>
               {st.labels.___labels.map((d, i) => (
@@ -175,18 +152,6 @@ class FuncionariosPorEntidadEdadPorcentaje extends Component {
     );
   }
 
-  /*
-   * M E T H O D S
-   * ----------------------------------------------------------------------
-   */
-
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  /
-  /
-  /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  */
   getInfo(_from, _to) {
     let connObj = Object.assign({}, ConstClass.fetchObj);
 
@@ -199,13 +164,6 @@ class FuncionariosPorEntidadEdadPorcentaje extends Component {
       });
   }
 
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  /
-  /
-  /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  */
   makeData() {
     let currentYear = new Date().getFullYear(),
       _from = d => `${d}-01-01`,
@@ -228,13 +186,6 @@ class FuncionariosPorEntidadEdadPorcentaje extends Component {
     return res;
   }
 
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  /
-  /
-  /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  */
   makeQuery(_from, _to) {
     let str = ConstClass.PROP_NAMES.nacimiento,
       search = { query: {}, limit: 2 };
@@ -244,11 +195,4 @@ class FuncionariosPorEntidadEdadPorcentaje extends Component {
   }
 }
 
-/*
-  ////////////////////////////////////////////////////////////////////////////////
-  //
-  // REGRESA EL COMPONENTE
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 export default withStyles(styles)(FuncionariosPorEntidadEdadPorcentaje);

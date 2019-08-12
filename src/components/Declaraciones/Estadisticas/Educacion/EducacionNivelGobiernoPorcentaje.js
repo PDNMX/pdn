@@ -1,10 +1,3 @@
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // CARGA LAS DEPENDENCIAS
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 import React, { Component } from "react";
 import { Grid, Paper } from "@material-ui/core";
 import * as ConstClass from "../../ConstValues.js";
@@ -21,18 +14,7 @@ import styles from "../../style";
 let d3 = Object.assign({}, require("d3-format"));
 let format = d3.format(".4n");
 
-/*
-  ////////////////////////////////////////////////////////////////////////////////
-  //
-  // DEFINE LA CLASE PRINCIPAL
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 class EducacionNivelGobiernoPorcentaje extends Component {
-  /*
-   * C O N S T R U C T O R
-   * ----------------------------------------------------------------------
-   */
   constructor() {
     super();
 
@@ -58,10 +40,6 @@ class EducacionNivelGobiernoPorcentaje extends Component {
     });
   }
 
-  /*
-   * R E N D E R
-   * ----------------------------------------------------------------------
-   */
   render() {
     if (!this.state.data) return null;
     let st = this.state;
@@ -84,8 +62,7 @@ class EducacionNivelGobiernoPorcentaje extends Component {
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             <Typography className={classes.titulo}>
-              Funcionarios por nivel educativo y nivel de gobierno
-              (porcentaje)
+              Funcionarios por nivel educativo y nivel de gobierno (porcentaje)
             </Typography>
             <Grid container spacing={3}>
               {this.state.data.series.map((d, i) => (
@@ -131,18 +108,6 @@ class EducacionNivelGobiernoPorcentaje extends Component {
     );
   }
 
-  /*
-   * M E T H O D S
-   * ----------------------------------------------------------------------
-   */
-
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  /
-  /
-  /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  */
   getInfo(gl, ne) {
     let connObj = Object.assign({}, ConstClass.fetchObj);
 
@@ -155,13 +120,6 @@ class EducacionNivelGobiernoPorcentaje extends Component {
       });
   }
 
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  /
-  /
-  /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  */
   buildMatrix(data) {
     let b = [...data],
       gl = ConstClass.GobLevels,
@@ -178,13 +136,6 @@ class EducacionNivelGobiernoPorcentaje extends Component {
     return res;
   }
 
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  /
-  /
-  /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  */
   makeData() {
     let res = [],
       gl = ConstClass.GobLevels,
@@ -204,13 +155,6 @@ class EducacionNivelGobiernoPorcentaje extends Component {
     return res;
   }
 
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  /
-  /
-  /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  */
   makeQuery(gl, ne) {
     let str1 = ConstClass.PROP_NAMES.nivelGobierno,
       str2 = ConstClass.PROP_NAMES.escolaridad,
@@ -223,11 +167,4 @@ class EducacionNivelGobiernoPorcentaje extends Component {
   }
 }
 
-/*
-  ////////////////////////////////////////////////////////////////////////////////
-  //
-  // REGRESA EL COMPONENTE
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 export default withStyles(styles)(EducacionNivelGobiernoPorcentaje);

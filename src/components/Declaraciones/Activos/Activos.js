@@ -1,10 +1,3 @@
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // CARGA LAS DEPENDENCIAS
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 import React, { Component } from "react";
 import { Grid } from "@material-ui/core";
 
@@ -72,12 +65,8 @@ class Activos extends Component {
                 profile={this.props.profile}
               />
             )}
-            {value === 4 && (
-              <ActivosInversiones profile={this.props.profile} />
-            )}
-            {value === 5 && (
-              <ActivosEfectivo profile={this.props.profile} />
-            )}
+            {value === 4 && <ActivosInversiones profile={this.props.profile} />}
+            {value === 5 && <ActivosEfectivo profile={this.props.profile} />}
             {value === 6 && (
               <ActivosFideicomisos profile={this.props.profile} />
             )}

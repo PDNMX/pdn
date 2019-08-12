@@ -1,10 +1,3 @@
-/*
-  ////////////////////////////////////////////////////////////////////////////////
-  //
-  // CARGA LAS DEPENDENCIAS
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 import React, { Component } from "react";
 
 import {
@@ -22,13 +15,7 @@ import { withStyles } from "@material-ui/core/styles";
 import styles from "../style";
 
 import * as ConstClass from "../ConstValues.js";
-/*
-  ////////////////////////////////////////////////////////////////////////////////
-  //
-  // DEFINE LA CLASE PRINCIPAL
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
+
 class BusquedaFromMaterialUI extends Component {
   state = {
     names: "",
@@ -103,7 +90,7 @@ class BusquedaFromMaterialUI extends Component {
                   name="nivel"
                   className={classes.group}
                   value={this.state.nivel}
-                  onChange={this.handleInputChange}                  
+                  onChange={this.handleInputChange}
                   row
                 >
                   <FormControlLabel
@@ -147,13 +134,13 @@ class BusquedaFromMaterialUI extends Component {
   }
 
   /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+  
   /
   /  pasa los argumentos de la búsqueda a una 
   /  función que llama al api de búsqueda 
   /  (definidia en Busqueda, el parent)
   /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+  
   */
   searchUsers = event => {
     event.preventDefault();
@@ -161,13 +148,13 @@ class BusquedaFromMaterialUI extends Component {
   };
 
   /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+  
   /
   /  genera una sola "source of truth" para los 
   /  valores del formulario. En vue es lo de 
   /  v-model
   /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+  
   */
   handleInputChange = event => {
     const target = event.target;
@@ -180,11 +167,4 @@ class BusquedaFromMaterialUI extends Component {
   };
 }
 
-/*
-  ////////////////////////////////////////////////////////////////////////////////
-  //
-  // REGRESA EL COMPONENTE
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 export default withStyles(styles)(BusquedaFromMaterialUI);

@@ -1,10 +1,3 @@
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // CARGA LAS DEPENDENCIAS
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 import React, { Component } from "react";
 import { Grid } from "@material-ui/core";
 
@@ -83,12 +76,8 @@ class Ingresos extends Component {
             {value === 6 && (
               <IngresosArrendamiento profile={this.props.profile} />
             )}
-            {value === 7 && (
-              <IngresosIntereses profile={this.props.profile} />
-            )}
-            {value === 8 && (
-              <IngresosPremios profile={this.props.profile} />
-            )}
+            {value === 7 && <IngresosIntereses profile={this.props.profile} />}
+            {value === 8 && <IngresosPremios profile={this.props.profile} />}
             {value === 9 && <IngresosOtros profile={this.props.profile} />}
             {value === 10 && (
               <IngresosEnajenacion profile={this.props.profile} />
