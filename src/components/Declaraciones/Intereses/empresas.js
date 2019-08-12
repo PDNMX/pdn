@@ -23,25 +23,6 @@ const BorderLinearProgress = withStyles({
 })(LinearProgress);
 
 class InteresesEmpresas extends Component {
-  constructor(props) {
-    super(props);
-
-    let elems = this.props.profile.intereses.empresas_sociedades_asociaciones.map(
-      d => {
-        
-        d.show = true;
-
-        return d;
-      }
-    );
-
-    this.state = {
-      items: elems
-    };
-
-    this.toggl = this.toggl.bind(this);
-  }
-
   render() {
     let { classes } = this.props;
 
@@ -191,21 +172,6 @@ class InteresesEmpresas extends Component {
         </Grid>
       </Grid>
     );
-  }
-
-  toggl(item, index, e) {
-    console.log(item, index, e);
-
-    let items = this.state.items,
-      newItems = items.map(d => {
-        if (item === d) {
-          d.show = !item.show;
-        }
-
-        return d;
-      });
-
-    this.setState({ items: newItems });
   }
 
   items() {

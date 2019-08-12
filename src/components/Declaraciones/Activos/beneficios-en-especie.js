@@ -11,25 +11,6 @@ import { withStyles } from "@material-ui/core/styles";
 import styles from "../style";
 
 class ActivosBeneficiosEnEspecie extends Component {
-  constructor(props) {
-    super(props);
-
-    let elems = this.props.profile.activos.uso_especie_propiedad_tercero.map(
-      d => {
-        
-        d.show = true;
-
-        return d;
-      }
-    );
-
-    this.state = {
-      items: elems
-    };
-
-    this.toggl = this.toggl.bind(this);
-  }
-
   render() {
     let { classes } = this.props;
 
@@ -129,20 +110,6 @@ class ActivosBeneficiosEnEspecie extends Component {
     );
   }
 
-  toggl(item, index, e) {
-    console.log(item, index, e);
-
-    let items = this.state.items,
-      newItems = items.map(d => {
-        if (item === d) {
-          d.show = !item.show;
-        }
-
-        return d;
-      });
-
-    this.setState({ items: newItems });
-  }
   items() {
     return this.props.profile.activos.uso_especie_propiedad_tercero;
   }

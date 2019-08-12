@@ -23,25 +23,6 @@ const BorderLinearProgress = withStyles({
 })(LinearProgress);
 
 class ActivosBienesMueblesNoRegistrables extends Component {
-  constructor(props) {
-    super(props);
-
-    let elems = this.props.profile.activos.bienes_muebles_no_registrables.map(
-      d => {
-        
-        d.show = true;
-
-        return d;
-      }
-    );
-
-    this.state = {
-      items: elems
-    };
-
-    this.toggl = this.toggl.bind(this);
-  }
-
   render() {
     let { classes } = this.props;
 
@@ -176,20 +157,6 @@ class ActivosBienesMueblesNoRegistrables extends Component {
     );
   }
 
-  toggl(item, index, e) {
-    console.log(item, index, e);
-
-    let items = this.state.items,
-      newItems = items.map(d => {
-        if (item === d) {
-          d.show = !item.show;
-        }
-
-        return d;
-      });
-
-    this.setState({ items: newItems });
-  }
   items() {
     return this.props.profile.activos.bienes_muebles_no_registrables;
   }

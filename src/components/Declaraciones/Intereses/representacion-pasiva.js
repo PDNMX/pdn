@@ -11,23 +11,6 @@ import { withStyles } from "@material-ui/core/styles";
 import styles from "../style";
 
 class InteresesRepPasiva extends Component {
-  constructor(props) {
-    super(props);
-
-    let elems = this.props.profile.intereses.representacion_pasiva.map(d => {
-      
-      d.show = true;
-
-      return d;
-    });
-
-    this.state = {
-      items: elems
-    };
-
-    this.toggl = this.toggl.bind(this);
-  }
-
   render() {
     let { classes } = this.props;
 
@@ -140,20 +123,6 @@ class InteresesRepPasiva extends Component {
     );
   }
 
-  toggl(item, index, e) {
-    console.log(item, index, e);
-
-    let items = this.state.items,
-      newItems = items.map(d => {
-        if (item === d) {
-          d.show = !item.show;
-        }
-
-        return d;
-      });
-
-    this.setState({ items: newItems });
-  }
   items() {
     return this.props.profile.intereses.representacion_pasiva;
   }

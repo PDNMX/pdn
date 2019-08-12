@@ -11,23 +11,6 @@ import { withStyles } from "@material-ui/core/styles";
 import styles from "../style";
 
 class IngresosOtros extends Component {
-  constructor(props) {
-    super(props);
-
-    let elems = this.props.profile.ingresos.otros_ingresos.map(d => {
-      
-      d.show = true;
-
-      return d;
-    });
-
-    this.state = {
-      items: elems
-    };
-
-    this.toggl = this.toggl.bind(this);
-  }
-
   render() {
     let { classes } = this.props;
     return (
