@@ -31,7 +31,7 @@ class InteresesEmpresas extends Component {
         <Grid item xs={12}>
           <Typography className={classes.titulo}>
             <strong>
-              Empresas, sociedades o asociaciones ({this.items().length})
+              Empresas, sociedades o asociaciones
             </strong>
           </Typography>
           <Grid container spacing={3}>
@@ -143,7 +143,7 @@ class InteresesEmpresas extends Component {
                             <Typography className={classes.tituloCard}>
                               Porcentaje de participación
                             </Typography>
-                            <Typography className={classes.dataCard}>
+                            <Typography component="div" className={classes.dataCard}>
                               {interes.porcentaje_participacion}%
                               <BorderLinearProgress
                                 className={classes.marginProgressbar}

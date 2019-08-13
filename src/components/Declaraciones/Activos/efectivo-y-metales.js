@@ -18,7 +18,7 @@ class ActivosEfectivo extends Component {
       <Grid container spacing={3} className={classes.rootSubseccion}>
         <Grid item xs={12}>
           <Typography className={classes.titulo}>
-            <strong>Efectivo y metales ({this.items().length})</strong>
+            <strong>Efectivo y metales</strong>
           </Typography>
           <Grid container spacing={3}>
             {this.items().map((efectivo, i) => (

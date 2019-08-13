@@ -133,6 +133,7 @@ class InfoExperiencia extends Component {
                               Funciones principales
                             </Typography>
                             <Typography
+                              component="div"
                               className={classes.dataCard}
                               style={{ fontSize: 14, paddingLeft: 0 }}
                             >

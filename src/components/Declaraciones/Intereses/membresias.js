@@ -18,7 +18,7 @@ class InteresesMembresias extends Component {
       <Grid container spacing={3} className={classes.rootSubseccion}>
         <Grid item xs={12}>
           <Typography className={classes.titulo}>
-            <strong>Membresías ({this.items().length})</strong>
+            <strong>Membresías</strong>
           </Typography>
           <Grid container spacing={3}>
             {this.items().map((interes, i) => (

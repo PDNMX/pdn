@@ -18,22 +18,55 @@ import MenuInformacion from "../MenuLaterlal";
 
 import styles from "../style";
 
-let menu = [
-  "Resumen",
-  "Empresas o asociaciones",
-  "Membresías",
-  "Apoyos",
-  "Representación activa",
-  "Representación pasiva",
-  "Socios comerciales",
-  "Clientes principales",
-  "Otras partes relacionadas",
-  "Beneficios gratuitos"
-];
-
 class Intereses extends Component {
   render() {
     let { classes, path, value, change } = this.props;
+    let {
+      apoyos_beneficios_publicos,
+      beneficios_gratuitos,
+      clientes_principales,
+      empresas_sociedades_asociaciones,
+      membresias,
+      otras_partes,
+      representacion_activa,
+      representacion_pasiva,
+      socios_comerciales
+    } = this.props.profile.intereses;
+
+
+    let menu = [
+      { name: "Resumen" },
+      {
+        name: "Empresas o asociaciones",
+        value: empresas_sociedades_asociaciones.length
+      },
+      { name: "Membresías", value: membresias.length },
+      { name: "Apoyos", value: apoyos_beneficios_publicos.length },
+      {
+        name: "Representación activa",
+        value: representacion_activa.length
+      },
+      {
+        name: "Representación pasiva",
+        value: representacion_pasiva.length
+      },
+      {
+        name: "Socios comerciales",
+        value: socios_comerciales.length
+      },
+      {
+        name: "Clientes principales",
+        value: clientes_principales.length
+      },
+      {
+        name: "Otras partes relacionadas",
+        value: otras_partes.length
+      },
+      {
+        name: "Beneficios gratuitos",
+        value: beneficios_gratuitos.length
+      }
+    ];
 
     return (
       <div className={classes.rootSeccion}>

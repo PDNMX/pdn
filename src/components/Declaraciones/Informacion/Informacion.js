@@ -11,17 +11,28 @@ import MenuInformacion from "../MenuLaterlal";
 
 import styles from "../style";
 
-let menu = [
-  "Información general",
-  "Puesto actual",
-  "Datos curriculares",
-  "Experiencia laboral",
-  "Dependientes económicos"
-];
-
 class Informacion extends Component {
   render() {
     let { classes, value, change } = this.props;
+    let {
+      dependientes_economicos,
+      experiencia_laboral,
+      datos_curriculares
+    } = this.props.profile.informacion_personal;
+
+    let menu = [
+      { name: "Información general" },
+      { name: "Puesto actual" },
+      {
+        name: "Datos curriculares",
+        value: datos_curriculares.grados_academicos.length
+      },
+      { name: "Experiencia laboral", value: experiencia_laboral.length },
+      {
+        name: "Dependientes económicos",
+        value: dependientes_economicos.length
+      }
+    ];
 
     return (
       <div className={classes.rootSeccion}>

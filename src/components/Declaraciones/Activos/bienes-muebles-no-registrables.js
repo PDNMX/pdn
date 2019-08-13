@@ -31,7 +31,7 @@ class ActivosBienesMueblesNoRegistrables extends Component {
         <Grid item xs={12}>
           <Typography className={classes.titulo}>
             <strong>
-              Bienes muebles no registrables ({this.items().length})
+              Bienes muebles no registrables
             </strong>
           </Typography>
           <Grid container spacing={3}>

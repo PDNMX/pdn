@@ -18,7 +18,7 @@ class InteresesRepPasiva extends Component {
       <Grid container spacing={3} className={classes.rootSubseccion}>
         <Grid item xs={12}>
           <Typography className={classes.titulo}>
-            <strong>Representación pasiva ({this.items().length})</strong>
+            <strong>Representación pasiva</strong>
           </Typography>
           <Grid container spacing={3}>
             {this.items().map((interes, i) => (
