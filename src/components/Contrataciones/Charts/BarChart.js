@@ -84,7 +84,7 @@ export default class Example extends React.Component {
                                onValueMouseOver={v => this.setState({value: v})}
                                onSeriesMouseOut={v => this.setState({value: false})}
                     />
-                    <XAxis tickLabelAngle={-70} />
+                    <XAxis tickLabelAngle={-45} />
                     <YAxis position="middle"/>
                     <ChartLabel
                         text="Millones de pesos"
@@ -95,6 +95,18 @@ export default class Example extends React.Component {
                         style={{
                             transform: 'rotate(-90)',
                             textAnchor: 'end',
+                        }}
+                    />
+
+                    <ChartLabel
+                        text="Unidades compradoras"
+                        className="alt-x-label"
+                        includeMargin={true}
+                        xPercent={0.5}
+                        yPercent={0.75}
+                        style={{
+                            //transform: 'rotate(-90)',
+                            textAnchor: 'center',
                         }}
                     />
 
