@@ -6,9 +6,12 @@ import {
     XAxis,
     YAxis,
     VerticalBarSeries,
-    VerticalBarSeriesCanvas
+    VerticalBarSeriesCanvas,
+    ChartLabel,
+    Hint,
 } from 'react-vis';
 
+/*
 const myDATA = [
     {id: '00036', y: 200400, x: 1504121437},
     {id: '00036', y: 200350, x: 1504121156},
@@ -35,17 +38,34 @@ const yDomain = myDATA.reduce(
         };
     },
     {max: -Infinity, min: Infinity}
-);
+);*/
+
 
 export default class Example extends React.Component {
     state = {
-        useCanvas: false
+        useCanvas: false,
+        value: false
     };
 
     render() {
 
+        const {value} = this.state;
+
+        const tipStyle = {
+            display: 'flex',
+            color: '#fff',
+            background: '#666666',
+            alignItems: 'center',
+            padding: '5px',
+            fontSize: 12,
+            fontWeight: 400,
+            borderRadius: 4,
+            maxWidth: 150
+
+        };
+
         let data = this.props.data.map((d,i) => {
-            return {x: d._id.id, y: d.total/ 1000000};
+            return {name: d._id.name , x: d._id.id, y: d.total/ 1000000, total: d.total };
         });
 
         const {useCanvas} = this.state;
@@ -54,15 +74,41 @@ export default class Example extends React.Component {
         return (
             <div>
                 <XYPlot
-                    margin={{left: 75, bottom: 100}}
+                    margin={{left: 100, bottom: 100}}
                     xType="ordinal"
                     width={500}
                     height={450}
                     yDomain={[0, 150000]}//{[yDomain.min, yDomain.max]}
                 >
-                    <BarSeries className="vertical-bar-series-example" data={data} />
-                    <XAxis tickLabelAngle={-70}/>
-                    <YAxis />
+                    <BarSeries className="vertical-bar-series-example" data={data}
+                               onValueMouseOver={v => this.setState({value: v})}
+                               onSeriesMouseOut={v => this.setState({value: false})}
+                    />
+                    <XAxis tickLabelAngle={-70} />
+                    <YAxis position="middle"/>
+                    <ChartLabel
+                        text="Millones de pesos"
+                        className="alt-y-label"
+                        includeMargin={true}
+                        xPercent={0.06}
+                        yPercent={0.06}
+                        style={{
+                            transform: 'rotate(-90)',
+                            textAnchor: 'end',
+                        }}
+                    />
+
+                    {value !== false &&
+                    <Hint value={value} style={tipStyle}>
+                        <div align="center">
+                            <p>
+                                {value.name}
+                            </p>
+                            <p>
+                                <b>{ new Intl.NumberFormat('es-MX', {style: 'currency', currency: 'MXN'}).format(value.total)}</b>
+                            </p>
+                        </div>
+                    </Hint>}
                 </XYPlot>
             </div>
         );
