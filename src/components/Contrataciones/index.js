@@ -13,7 +13,9 @@ import Footer from "../Home/Footer";
 import Busqueda from "./Busqueda";
 import Cifras from "./Cifras";
 import Perspectivas from "./Perspectivas";
+import Top from './Top';
 import Descarga from "./Descarga";
+
 
 
 const styles = theme => ({
@@ -50,8 +52,11 @@ class Index extends React.Component {
                 </Grid>
 
 
-
-
+                <Grid container spacing={0} justify="center" className={classes.container}>
+                    <Grid item xs={12} className={classes.item}>
+                        <Top/>
+                    </Grid>
+                </Grid>
 
                 <Grid container spacing={0} justify="center" style={{backgroundColor: "#34b3eb"}}>
                     <Grid item xs={12} className={classes.item}>
@@ -60,7 +65,6 @@ class Index extends React.Component {
 
                     </Grid>
                 </Grid>
-
 
                 <Grid container spacing={0} justify="center" className={classes.container}>
                     <Grid item xs={12} className={classes.item}>
