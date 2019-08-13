@@ -5,22 +5,28 @@ import {RadialChart, Hint} from 'react-vis';
 
 const AmountTooltip  = props => {
     return (
-        <p>
-            Monto gastado
-            <br/>
-            {props.value.theta.toFixed(2)}
-        </p>
+        <div>
+            <p>
+                Monto gastado:
+            </p>
+            <p>
+                <b>{new Intl.NumberFormat('es-MX', {style: 'currency', currency: 'MXN'}).format(props.value.theta)}</b>
+            </p>
+        </div>
     );
 };
 
 
 const CountTooltip  = props => {
     return (
-        <p>
-            Número de contrataciones
-            <br/>
-            {props.value.theta.toFixed(0)}
-        </p>
+        <div>
+            <p>
+                Número de contrataciones:
+            </p>
+            <p>
+                <b>{props.value.theta.toFixed(0)}</b>
+            </p>
+        </div>
     );
 };
 

@@ -12,19 +12,25 @@ import Button from "@material-ui/core/Button";
 
 const styles = theme => ({
     root: {
-        flexGrow: 1
+        flexGrow: 1,
     },
-    margin: {
-        marginRight: theme.spacing(3)
+    buyer: {
+       // marginRight: theme.spacing(3)
+        //paddingRight: theme.spacing(2)
     },
     procurementMethod: {
         //marginBottom: theme.spacing(3)
+        //paddingLeft: theme.spacing(2)
     },
     button:{
         background: '#ffe01b',
-        //marginTop: theme.spacing(3),
+        marginTop: theme.spacing(1),
         marginBottom: theme.spacing(2)
     },
+    item: {
+        paddingLeft: theme.spacing(1),
+        paddingRight: theme.spacing(1)
+    }
 });
 
 const BootstrapInput = withStyles(theme => ({
@@ -95,15 +101,20 @@ class SearchControls extends React.Component{
 
             <div className={classes.root}>
                 <Grid container spacing={0}>
-                    <Grid item xs={12}>
+                    <Grid item xs={6} className={classes.item}>
+
+
+
                         <form className={classes.root} autoComplete="off">
                             {/*<FormControl className={classes.margin}>
-                <InputLabel htmlFor="age-customized-input">Age</InputLabel>
-                <BootstrapInput id="age-customized-input" />
-            </FormControl>
-                */}
+                            <InputLabel htmlFor="age-customized-input">Age</InputLabel>
+                                    <BootstrapInput id="age-customized-input" />
+                                </FormControl>
+                                */}
 
-                            <FormControl className={classes.margin}>
+                            <FormControl className={classes.buyer}
+                            fullWidth
+                            >
                                 <InputLabel htmlFor="age-customized-native-simple">Institución</InputLabel>
                                 <NativeSelect
                                     value={buyer}
@@ -120,8 +131,16 @@ class SearchControls extends React.Component{
                                 </NativeSelect>
                             </FormControl>
 
-                            <FormControl className={classes.procurementMethod}>
-                                <InputLabel htmlFor="age-customized-select">Tipo</InputLabel>
+                        </form>
+
+                    </Grid>
+
+                    <Grid item xs={6} className={classes.item}>
+                        <form className={classes.root}>
+                            <FormControl className={classes.procurementMethod}
+                            fullWidth
+                            >
+                                <InputLabel htmlFor="age-customized-select">Tipo de contratación</InputLabel>
                                 <Select
                                     value={procurementMethod}
                                     onChange={handleChangeProcurementMethod}
@@ -135,11 +154,10 @@ class SearchControls extends React.Component{
                                     <MenuItem value="open">Licitación pública</MenuItem>
                                 </Select>
                             </FormControl>
-
                         </form>
                     </Grid>
 
-                    <Grid item xs={12}>
+                    <Grid item xs={12} className={classes.item}>
                         <TextField
                             id="outlined-full-width"
                             label="Proveedor"
@@ -157,7 +175,7 @@ class SearchControls extends React.Component{
                         />
                     </Grid>
 
-                    <Grid item xs={12}>
+                    <Grid item xs={12} className={classes.item }>
                         <TextField
                             id="outlined-full-width"
                             label="Título del contrato"
@@ -174,8 +192,29 @@ class SearchControls extends React.Component{
                             onKeyDown={handleSearch}
                         />
                     </Grid>
+                    {/*
+                    <Grid item xs={6} className={classes.item}>
+                        <form className={classes.root}>
+                            <FormControl className={classes.procurementMethod}
+                                         fullWidth
+                            >
+                                <InputLabel htmlFor="age-customized-select">Ordenar por</InputLabel>
+                                <Select
+                                    value={procurementMethod}
+                                    onChange={handleChangeProcurementMethod}
+                                    input={<BootstrapInput name="age" id="age-customized-select" />}
+                                >
+                                    <MenuItem value="any">
+                                        <em>Ninguno</em>
+                                    </MenuItem>
+                                    <MenuItem value="amount">Monto</MenuItem>
+                                    <MenuItem value="title">Título</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </form>
+                    </Grid>*/}
 
-                    <Grid item xs={12}>
+                    <Grid item xs={12} className={classes.item}>
                         <Button variant="contained" className={classes.button} onClick={this.props.search}>Buscar</Button>
                     </Grid>
                 </Grid>
