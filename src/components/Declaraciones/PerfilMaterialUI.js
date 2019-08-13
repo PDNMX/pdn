@@ -21,10 +21,6 @@ import styles from "./style";
 const reducer = (accumulator, currentValue) => accumulator + currentValue;
 
 class PerfilMaterialUI extends Component {
-  /*
-   * C O N S T R U C T O R
-   * ----------------------------------------------------------------------
-   */
   constructor(props) {
     super(props);
     this.state = {
@@ -81,11 +77,6 @@ class PerfilMaterialUI extends Component {
     });
   };
 
-  /*
-   * R E N D E R
-   * ----------------------------------------------------------------------
-   */
-
   render() {
     if (!this.state.profile) {
       // console.log("nel");
@@ -129,7 +120,7 @@ class PerfilMaterialUI extends Component {
                 </Grid>
                 <Grid item xs={12}>
                   <Grid container spacing={3}>
-                    <Grid item xs={8}>
+                    <Grid item xs={6}>
                       <Typography className={classes.h1}>
                         {
                           this.state.profile.informacion_personal
@@ -156,19 +147,20 @@ class PerfilMaterialUI extends Component {
                         }
                       </Typography>
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={6}>
                       <Typography className={classes.tituloCard}>
-                        INGRESOS ANUALES NETOS:
+                        DEPENDENCIA:
                       </Typography>
                       <Typography className={classes.dataCard}>
-                        <strong style={{ fontSize: 25 }}>
-                          {new Intl.NumberFormat("es-MX", {
-                            style: "currency",
-                            currency: "MXN"
-                          }).format(this.ingresosAnualesNetos())}
+                        <strong>
+                          {
+                            this.state.profile.informacion_personal
+                              .datos_encargo_actual.ente_publico
+                          }
                         </strong>
                       </Typography>
                     </Grid>
+
                     <Grid item xs={12}>
                       <Grid container spacing={3}>
                         <Grid item xs={4}>
@@ -195,14 +187,14 @@ class PerfilMaterialUI extends Component {
                         </Grid>
                         <Grid item xs={4}>
                           <Typography className={classes.tituloCard}>
-                            DEPENDENCIA:
+                            INGRESOS ANUALES NETOS:
                           </Typography>
                           <Typography className={classes.dataCard}>
-                            <strong>
-                              {
-                                this.state.profile.informacion_personal
-                                  .datos_encargo_actual.ente_publico
-                              }
+                            <strong style={{ fontSize: 25 }}>
+                              {new Intl.NumberFormat("es-MX", {
+                                style: "currency",
+                                currency: "MXN"
+                              }).format(this.ingresosAnualesNetos())}
                             </strong>
                           </Typography>
                         </Grid>
@@ -293,17 +285,12 @@ class PerfilMaterialUI extends Component {
   }
 
   /*
-   * M E T H O D S
-   * ----------------------------------------------------------------------
-   */
-
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+  
   /
   /  hace el llamado al api para obtener la info
   /  de un servidor público
   /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+  
   */
   getProfile(id) {
     let conf = Object.assign({}, ConstClass.fetchObj);
@@ -317,13 +304,6 @@ class PerfilMaterialUI extends Component {
       });
   }
 
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  /
-  /
-  /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  */
   ingresosAnualesNetos() {
     let i,
       all = [];
@@ -346,11 +326,4 @@ class PerfilMaterialUI extends Component {
   }
 }
 
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // REGRESA EL COMPONENTE
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 export default withStyles(styles)(PerfilMaterialUI);
