@@ -12,7 +12,7 @@ import CustomizedSelect from './CustomizedSelect';
 const styles = theme => ({
     root: {
         flexGrow: 1,
-        paddingTop: theme.spacing(4),
+        //paddingTop: theme.spacing(4),
         paddingBottom: theme.spacing(2)
     },
     bullet: {

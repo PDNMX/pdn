@@ -15,6 +15,7 @@ import Cifras from "./Cifras";
 import Perspectivas from "./Perspectivas";
 import Top from './Top';
 import Descarga from "./Descarga";
+import Disclaimer from "./Disclaimer";
 
 
 
@@ -44,6 +45,11 @@ class Index extends React.Component {
             <div className={classes.root}>
                 <Header/>
 
+                <Grid container spacing={0} justify="center" style={{ backgroundColor: '#f6f6f6'}}>
+                    <Grid item xs={12} className={classes.item}>
+                        <Disclaimer/>
+                    </Grid>
+                </Grid>
 
                 <Grid container spacing={0} justify="center" className={classes.container}>
                     <Grid item xs={12} className={classes.item}>
