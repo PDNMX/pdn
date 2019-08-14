@@ -31,7 +31,7 @@ class ActivosInversiones extends Component {
         <Grid item xs={12}>
           <Typography className={classes.titulo}>
             <strong>
-              Inversiones, cuentas y valores ({this.items().length})
+              Inversiones, cuentas y valores
             </strong>
           </Typography>
           <Grid container spacing={3}>

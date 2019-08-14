@@ -2,6 +2,8 @@ import React from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
 import { List, ListItem, ListItemText } from "@material-ui/core";
+import { Badge } from "@material-ui/core";
+import { withStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -19,6 +21,15 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+const MyBadge = withStyles(theme => ({
+  root: {
+    padding: theme.spacing(0, 2)
+  },
+  badge: {
+    marginTop: theme.spacing(2)
+  }
+}))(Badge);
+
 export default function MenuListComposition(props) {
   const classes = useStyles();
 
@@ -34,7 +45,12 @@ export default function MenuListComposition(props) {
               onClick={event => props.change(index)}
               classes={classes}
             >
-              <ListItemText primary={option} />
+              <MyBadge
+                badgeContent={option.value ? option.value : 0}
+                color="error"
+              >
+                <ListItemText primary={option.name} />
+              </MyBadge>
             </ListItem>
           );
         })}

@@ -18,7 +18,7 @@ class IngresosActividadEconomica extends Component {
       <Grid container spacing={3} className={classes.rootSubseccion}>
         <Grid item xs={12}>
           <Typography className={classes.titulo}>
-            <strong>Actividad económica menor ({this.items().length})</strong>
+            <strong>Actividad económica menor</strong>
           </Typography>
           <Grid container spacing={3}>
             {this.items().map((sueldo, i) => (

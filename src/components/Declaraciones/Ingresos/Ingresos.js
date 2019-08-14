@@ -19,23 +19,50 @@ import MenuInformacion from "../MenuLaterlal";
 
 import styles from "../style";
 
-let menu = [
-  "Resumen",
-  "Sueldos y Salarios por el Encargo Público",
-  "Sueldos y Salarios por otros empleos",
-  "Actividad profesional",
-  "Actividad empresarial",
-  "Actividad económica menor",
-  "Arrendamiento",
-  "Intereses",
-  "Premios",
-  "Otros ingresos",
-  "Enajenación de bienes"
-];
-
 class Ingresos extends Component {
   render() {
     let { classes, path, value, change } = this.props;
+    let {
+      actividad_economica_menor,
+      actividad_empresarial,
+      actividad_profesional,
+      arrendamiento,
+      enajenacion_bienes,
+      intereses,
+      otros_ingresos,
+      premios,
+      sueldos_salarios_otros_empleos,
+      sueldos_salarios_publicos
+    } = this.props.profile.ingresos;
+
+    let menu = [
+      { name: "Resumen" },
+      {
+        name: "Sueldos y Salarios por el Encargo Público",
+        value: sueldos_salarios_publicos.length
+      },
+      {
+        name: "Sueldos y Salarios por otros empleos",
+        value: sueldos_salarios_otros_empleos.length
+      },
+      {
+        name: "Actividad profesional",
+        value: actividad_profesional.length
+      },
+      {
+        name: "Actividad empresarial",
+        value: actividad_empresarial.length
+      },
+      {
+        name: "Actividad económica menor",
+        value: actividad_economica_menor.length
+      },
+      { name: "Arrendamiento", value: arrendamiento.length },
+      { name: "Intereses", value: intereses.length },
+      { name: "Premios", value: premios.length },
+      { name: "Otros ingresos", value: otros_ingresos.length },
+      { name: "Enajenación de bienes", value: enajenacion_bienes.length }
+    ];
 
     return (
       <div className={classes.rootSeccion}>

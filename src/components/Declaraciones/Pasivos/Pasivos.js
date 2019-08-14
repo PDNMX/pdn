@@ -11,11 +11,16 @@ import MenuInformacion from "../MenuLaterlal";
 
 import styles from "../style";
 
-let menu = ["Resumen", "Deudas", "Otras obligaciones"];
-
 class Pasivos extends Component {
   render() {
     let { classes, path, value, change } = this.props;
+    let { deudas, otras_obligaciones } = this.props.profile.pasivos;
+
+    let menu = [
+      { name: "Resumen" },
+      { name: "Deudas", value: deudas.length },
+      { name: "Otras obligaciones", value: otras_obligaciones.length }
+    ];
 
     return (
       <div className={classes.rootSeccion}>

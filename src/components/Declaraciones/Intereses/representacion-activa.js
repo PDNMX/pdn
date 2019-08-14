@@ -19,7 +19,7 @@ class InteresesRepActiva extends Component {
       <Grid container spacing={3} className={classes.rootSubseccion}>
         <Grid item xs={12}>
           <Typography className={classes.titulo}>
-            <strong>Representación activa ({this.items().length})</strong>
+            <strong>Representación activa</strong>
           </Typography>
           <Grid container spacing={3}>
             {this.items().map((interes, i) => (

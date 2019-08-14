@@ -30,7 +30,7 @@ class ActivosBienesInmuebles extends Component {
       <Grid container spacing={3} className={classes.rootSubseccion}>
         <Grid item xs={12}>
           <Typography className={classes.titulo}>
-            <strong>Bienes inmuebles ({this.items().length})</strong>
+            <strong>Bienes inmuebles</strong>
           </Typography>
           <Grid container spacing={3}>
             {this.items().map((inmueble, i) => (

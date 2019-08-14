@@ -18,7 +18,7 @@ class IngresosEnajenacion extends Component {
       <Grid container spacing={3} className={classes.rootSubseccion}>
         <Grid item xs={12}>
           <Typography className={classes.titulo}>
-            <strong>Enajenación de bienes ({this.items().length})</strong>
+            <strong>Enajenación de bienes</strong>
           </Typography>
           <Grid container spacing={3}>
             {this.items().map((sueldo, i) => (

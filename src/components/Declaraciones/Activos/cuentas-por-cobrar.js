@@ -30,7 +30,7 @@ class ActivosCuentasPorCobrar extends Component {
       <Grid container spacing={3} className={classes.rootSubseccion}>
         <Grid item xs={12}>
           <Typography className={classes.titulo}>
-            <strong>Cuentas por cobrar ({this.items().length})</strong>
+            <strong>Cuentas por cobrar</strong>
           </Typography>
           <Grid container spacing={3}>
             {this.items().map((cuentas, i) => (

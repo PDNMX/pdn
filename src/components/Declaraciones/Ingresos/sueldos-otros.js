@@ -19,7 +19,7 @@ class IngresosSueldosOtros extends Component {
         <Grid item xs={12}>
           <Typography className={classes.titulo}>
             <strong>
-              Sueldos y salarios por otros empleos ({this.items().length})
+              Sueldos y salarios por otros empleos
             </strong>
           </Typography>
           <Grid container spacing={3}>
