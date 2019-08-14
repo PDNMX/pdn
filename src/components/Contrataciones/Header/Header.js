@@ -101,7 +101,7 @@ class Header extends React.Component{
                             Contrataciones públicas
                         </Typography>
                         <Typography  className={classes.whiteText} style={{fontSize: '18px',fontWeight: 500}}>
-                            Conoce como compra tu gobierno
+                            Conoce como compra el gobierno, encontrarás información pública sobre cada una de las etapas de las contratacione del gobierno.
                         </Typography>
                     </Grid>{/*
                     <Grid item xs={12} align={'center'}>
