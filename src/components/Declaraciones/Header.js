@@ -238,7 +238,10 @@ class Header extends React.Component {
               className={classes.whiteText}
               style={{ fontSize: "18px", fontWeight: 500 }}
             >
-              {copy}
+              Consulta y visualiza los datos <strong>públicos</strong> de
+              las declaraciones patrimoniales, y de intereses, así como la
+              constancia de declaración anual de impuestos de las y los
+              servidores públicos.
             </Typography>
           </Grid>
         </Grid>
