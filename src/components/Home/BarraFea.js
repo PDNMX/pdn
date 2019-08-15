@@ -92,7 +92,7 @@ class BarraFea extends React.Component {
             </Grid>
 
             <Grid item xs={6} md={2} className={classes.item}>
-              <a href="" className={classes.link}>
+              <a href="https://plataformadigitalnacional.org/mapa-sla/" className={classes.link}>
                 <img
                   src={Plat}
                   className={classes.icon}

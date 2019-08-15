@@ -88,7 +88,10 @@ class PerfilMaterialUI extends Component {
     let { classes } = this.props;
 
     return (
-      <div className={classes.root}>
+      <div
+        className={classes.root}
+        style={{ maxWidth: 1200, margin: "0 auto", padding: "100px 0px" }}
+      >
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <Paper className={classes.paper}>

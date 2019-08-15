@@ -9,7 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import TableFooter from '@material-ui/core/TableFooter';
 import Toolbar from '@material-ui/core/Toolbar';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import BajarCSV from "../../Tablas/BajarCSV";
+//import BajarCSV from "../../Tablas/BajarCSV";
 import BusquedaParticular from "./BusquedaParticular";
 import DetalleParticular from "./DetalleParticular";
 import Grid from "@material-ui/core/Grid/Grid";
@@ -19,6 +19,10 @@ import Modal from "@material-ui/core/Modal/Modal";
 import rp from "request-promise";
 import MensajeNoRegistros from "../../Tablas/MensajeNoRegistros";
 import MensajeErrorDatos from "../../Tablas/MensajeErrorDatos";
+import Previos from "../../Tablas/Previos";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Switch from "@material-ui/core/Switch";
+import Collapse from "@material-ui/core/Collapse";
 
 function getSorting(order, orderBy) {
     return order === 'desc'
@@ -134,6 +138,9 @@ const styles = theme => ({
         marginBottom: '30px',
         overflowX: 'auto',
     },
+    containerPrevios: {
+        marginLeft: theme.spacing(2)
+    }
 });
 
 
@@ -175,13 +182,13 @@ const toolbarStyles = theme => ({
 
 
 let EnhancedTableToolbar = props => {
-    const {classes, handleChangeCampo, nombreParticular, numeroExpediente, institucion, handleCleanAll, handleSearch,handleError} = props;
+    const {classes, handleChangeCampo, nombreParticular, numeroExpediente, institucion, handleCleanAll, handleSearch, handleError, nivel} = props;
     return (
         <Toolbar className={classes.toolBarStyle}>
             <BusquedaParticular handleCleanAll={handleCleanAll} handleSearch={handleSearch}
                                 handleChangeCampo={handleChangeCampo} nombreParticular={nombreParticular}
                                 numeroExpediente={numeroExpediente}
-                                institucion={institucion} handleError={handleError}/>
+                                institucion={institucion} handleError={handleError} nivel={nivel}/>
 
         </Toolbar>
     );
@@ -215,10 +222,20 @@ class EnhancedTable extends React.Component {
             institucion: '',
             loading: false,
             totalRows: 0,
-            filterDataAll: []
+            filterDataAll: [],
+            nivel: 'todos',
+            previos: [],
+            panelPrevios: true,
+            api: ''
         };
     }
 
+
+    handleChange = () => {
+        this.setState({
+            panelPrevios: !this.state.panelPrevios
+        })
+    }
     handleRequestSort = (event, property) => {
         const orderBy = property;
         let order = 'desc';
@@ -260,6 +277,41 @@ class EnhancedTable extends React.Component {
 
     isSelected = id => this.state.selected.indexOf(id) !== -1;
 
+    handleSearchPrevios = () => {
+        this.handleCleanTables();
+        this.setState({loading: true});
+        let {institucion, nombreParticular, numeroExpediente} = this.state;
+        let filtros = {};
+        let offset = 0;
+
+        if (nombreParticular) filtros.nombre_razon_social = '%' + nombreParticular + '%';
+        if (numeroExpediente) filtros.numero_expediente = '%' + numeroExpediente + '%';
+        if (institucion && institucion !== 'TODAS') filtros.nombre = '%' + institucion + '%';
+
+
+        let limit = this.state.rowsPerPage;
+
+        let body = {
+            "filtros": filtros,
+            "limit": limit,
+            "offset": offset,
+            "nivel": this.state.nivel
+        };
+        let options = {
+            method: 'POST',
+            uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/getPrevioParticularesSancionados',
+            json: true,
+            body: body
+        };
+        rp(options)
+            .then(res => {
+                this.setState({previos: res, loading: false, error: false})
+            }).catch(err => {
+            this.setState({loading: false, error: true});
+        });
+    };
+
+
     handleSearchAPI = (typeSearch) => {
         let {institucion, nombreParticular, numeroExpediente} = this.state;
         this.setState({loading: true});
@@ -268,7 +320,7 @@ class EnhancedTable extends React.Component {
         if (typeSearch !== 'ALL') {
             if (nombreParticular) filtros.nombre_razon_social = '%' + nombreParticular + '%';
             if (numeroExpediente) filtros.numero_expediente = '%' + numeroExpediente + '%';
-            if (institucion && institucion!== 'TODAS') filtros.nombre = '%' + institucion + '%';
+            if (institucion && institucion !== 'TODAS') filtros.nombre = '%' + institucion + '%';
 
         }
 
@@ -277,14 +329,15 @@ class EnhancedTable extends React.Component {
 
         let body = {
             "filtros": filtros,
-            "limit" : limit,
-            "offset" : offset
+            "limit": limit,
+            "offset": offset,
+            "clave_api": this.state.api
         };
         let options = {
-            method : 'POST',
-            uri: process.env.REACT_APP_HOST_PDNBACK+'/apis/getParticularesSancionados',
+            method: 'POST',
+            uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/getParticularesSancionados',
             json: true,
-            body: typeSearch==='ALL'?{}:body
+            body: typeSearch === 'ALL' ? {} : body
         };
         rp(options)
             .then(res => {
@@ -295,13 +348,13 @@ class EnhancedTable extends React.Component {
                 }) : (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.setState({
                         filterData: dataAux,
                         loading: false,
-                        totalRows : total
+                        totalRows: total
                     }) :
-                    this.setState({filterDataAll: dataAux, loading: false, totalRows : total}, () => {
+                    this.setState({filterDataAll: dataAux, loading: false, totalRows: total}, () => {
                         this.child.triggerDown();
                     });
             }).catch(err => {
-            this.setState({loading: false,error:true});
+            this.setState({loading: false, error: true});
         });
     };
 
@@ -310,35 +363,55 @@ class EnhancedTable extends React.Component {
             [varState]: event ? (event.target ? event.target.value : event.value) : ''
         });
     };
+    handleChangeAPI = (val) => {
+        this.setState({
+            api: val
+        }, () => {
+            this.handleSearchAPI('FIELD_FILTER')
+        });
+    };
     handleCleanAll = () => {
         this.setState(
             {
-                filterData: null
+                filterData: null,
+                previos: null,
+                nivel: 'todos'
             }, () => {
                 this.handleChangeCampo('nombreParticular');
                 this.handleChangeCampo('institucion');
             })
     };
-    handleError = (val )=>{
+    handleCleanTables = () => {
+        this.setState(
+            {
+                filterData: null,
+                previos: null,
+            }
+        )
+    }
+    handleError = (val) => {
         this.setState({
-            error : val
+            error: val
         })
     }
 
+
     render() {
         const {classes} = this.props;
-        const {data, order, orderBy, selected, rowsPerPage, page, filterData, totalRows, filterDataAll} = this.state;
+        const {data, order, orderBy, selected, rowsPerPage, page, filterData, totalRows} = this.state;
         //const emptyRows = rowsPerPage - filterData.length;
+
         return (
             <div>
                 <Grid container justify='center' spacing={0} className={classes.gridTable}>
                     <Grid item xs={12}>
                         <EnhancedTableToolbar handleChangeCampo={this.handleChangeCampo}
                                               handleCleanAll={this.handleCleanAll}
-                                              handleSearch={this.handleSearchAPI}
+                                              handleSearch={this.handleSearchPrevios}
                                               nombreParticular={this.state.nombreParticular}
                                               numeroExpediente={this.state.numeroExpediente}
-                                              institucion={this.state.institucion} handleError={this.handleError}/>
+                                              institucion={this.state.institucion} handleError={this.handleError}
+                                              nivel={this.state.nivel}/>
                     </Grid>
                     <Grid item xs={12}>
                         <DetalleParticular handleClose={this.handleClose} particular={this.state.elementoSeleccionado}
@@ -358,6 +431,26 @@ class EnhancedTable extends React.Component {
                         {
                             this.state.error && <MensajeErrorDatos/>
                         }
+                    </Grid>
+                    <Grid item xs={12}>
+                        {this.state.previos && this.state.previos.length > 0 &&
+                        <div>
+                            <FormControlLabel
+                                control={<Switch className={classes.containerPrevios} checked={this.state.panelPrevios}
+                                                 onChange={() => this.handleChange()}/>}
+                                label={
+                                    <Typography variant="h6" className={classes.desc}>
+                                        {this.state.panelPrevios ? 'Ocultar resultados generales' : 'Mostrar resultados generales'}</Typography>}
+                            />
+                            <div className={classes.container}>
+                                <Collapse in={this.state.panelPrevios}>
+                                    <Previos previos={this.state.previos} handleChangeAPI={this.handleChangeAPI}/>
+                                </Collapse>
+
+                            </div>
+                        </div>
+                        }
+
                     </Grid>
                     <Grid item xs={12}>
                         {filterData && filterData.length > 0 &&
@@ -411,7 +504,7 @@ class EnhancedTable extends React.Component {
 
                                 <TableFooter>
                                     <TableRow>
-                                        <TableCell>
+                                        {/* <TableCell>
                                             <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data}
                                                       filtrado={false}
                                                       columnas={columnData} fnSearch={this.handleSearchAPI}
@@ -423,9 +516,11 @@ class EnhancedTable extends React.Component {
                                                       columnas={columnData} fnSearch={this.handleSearchAPI}
                                                       fileName={'Particulares sancionados'}/>
                                         </TableCell>
+
+                                        */}
                                         <TablePagination
                                             className={classes.tablePagination}
-                                            colSpan={2}
+                                            colSpan={4}
                                             count={totalRows}
                                             rowsPerPage={rowsPerPage}
                                             page={page}
@@ -449,18 +544,19 @@ class EnhancedTable extends React.Component {
                         }
 
                     </Grid>
-                    <Grid item xs={12}>
-                        {
-                            filterData && filterData.length===0 &&
-                            <MensajeNoRegistros/>
-                        }
-                    </Grid>
+
                     <Grid item xs={12} className={classes.nota}>
-                        <Typography variant={"caption"} style={{fontStyle: 'italic'}}>Nota:
-                            Este buscador mostrará en su primera etapa, solamente datos de carácter público, proporcionados por la Secretaría de la Función Pública, relativos a
-                            sanciones impuestas a personas físicas o morales, por infracciones a la Ley de Adquisiciones, Arrendamientos y Servicios del Sector Público, Ley de
-                            Obras Públicas y Servicios Relacionados con las Mismas, y Ley de Asociaciones Público Privadas.
-                        </Typography>
+                        {
+                            this.state.nivel !== 'estatal' &&
+                            <Typography variant={"caption"} style={{fontStyle: 'italic'}}>Nota:
+                                Este buscador mostrará en su primera etapa, solamente datos de carácter público,
+                                proporcionados por la Secretaría de la Función Pública, relativos a
+                                sanciones impuestas a personas físicas o morales, por infracciones a la Ley de
+                                Adquisiciones, Arrendamientos y Servicios del Sector Público, Ley de
+                                Obras Públicas y Servicios Relacionados con las Mismas, y Ley de Asociaciones Público
+                                Privadas.
+                            </Typography>
+                        }
 
 
                     </Grid>

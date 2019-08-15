@@ -149,5 +149,30 @@ export default theme => ({
   expansionpaneldetails: {
     paddingTop: 20,
     paddingBottom: 20
+  },
+  // informacion sobre buscar funcionario
+  bullet: {
+    backgroundColor: "#89d4f2",
+    height: "10px",
+    width: "10px",
+    borderRadius: "50%",
+    display: "inline-block",
+    marginLeft: "-20px",
+    marginRight: "10px",
+    marginBottom: "1px"
+  },
+  ul: {
+    listStyle: "none",
+    //marginLeft: 0,
+    paddingLeft: "20px"
+  },
+  li: {
+    paddingBottom: theme.spacing(2)
+  },
+  infoBusqueda: {
+    paddingRight: theme.spacing(1),
+    paddingLeft: theme.spacing(1),
+    paddingBottom: theme.spacing(8),
+    paddingTop: theme.spacing(8)
   }
 });

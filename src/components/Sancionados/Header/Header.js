@@ -106,7 +106,9 @@ class Header extends React.Component{
                             Sancionados
                         </Typography>
                         <Typography  className={classes.whiteText} style={{fontSize: '18px',fontWeight: 500}}>
-                            Sanciones o inhabilitaciones firmes.
+                            Consulta y visualiza los datos de las sanciones o inhabilitación firmes <br/>
+                            en contra de servidores públicos, así como los datos de particulares <br/>
+                            inhabilitados para celebrar contratos con el gobierno.
                         </Typography>
                     </Grid>
                     <Grid item xs={12} align={'center'}>
