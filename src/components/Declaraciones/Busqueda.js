@@ -36,6 +36,18 @@ class App extends Component {
 
     return (
       <div className={classes.root}>
+        <Grid container spacing={0} style={{ marginBottom: 20 }}>
+          <Grid item xs={12}>
+            <Typography component="div" className={classes.h1}>
+              Aquí encontrarás la siguiente información:
+              <ul>
+                <li>La evolución patrimonial de las y los funcionarios</li>
+                <li>La trayectoria laboral de las y los funcionarios</li>
+                <li>Sus declaraciones sobre posibles conflictos de interés</li>
+              </ul>
+            </Typography>
+          </Grid>
+        </Grid>
         <Grid container spacing={0}>
           <Grid item xs={12}>
             <Typography className={classes.h1}>

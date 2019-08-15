@@ -33,7 +33,7 @@ import {
 
 const titulo = "Declaraciones";
 const copy =
-  "Consulta, visualiza y descarga los datos de las declaraciones patrimoniales, de intereses y las constancias de la declaración fiscal de los servidores públicos.";
+  "Consulta y visualiza los datos <b>públicos</b> de las declaraciones patrimoniales, y de intereses, así como la constancia de declaración anual de impuestos de las y los servidores públicos.";
 
 const styles = theme => ({
   root: {
@@ -163,7 +163,12 @@ class Contenedor extends React.Component {
 
     return (
       <div className={classes.root}>
-        <Header logo={S3} titulo={titulo} copy={copy} background={background} />
+        <Header
+          logo={S3}
+          titulo={titulo}
+          copy={copy}
+          background={background}
+        />
         <Grid container spacing={0} className={classes.bgContainer}>
           <Grid item xs={12} className={classes.section}>
             <Grid container spacing={0}>
@@ -186,7 +191,10 @@ class Contenedor extends React.Component {
                       className={classes.image}
                     />
                   </figure>
-                  <Typography variant="subtitle1" className={classes.whiteText}>
+                  <Typography
+                    variant="subtitle1"
+                    className={classes.whiteText}
+                  >
                     Buscar un servidor público
                   </Typography>
                 </Link>
@@ -203,7 +211,10 @@ class Contenedor extends React.Component {
                   "tab"
                 )}
               >
-                <Link className={classes.link} to="/declaraciones/estadisticas">
+                <Link
+                  className={classes.link}
+                  to="/declaraciones/estadisticas"
+                >
                   <figure className={classes.figure}>
                     <img
                       alt="Estadísticas"
@@ -211,7 +222,10 @@ class Contenedor extends React.Component {
                       className={classes.image}
                     />
                   </figure>
-                  <Typography variant="subtitle1" className={classes.whiteText}>
+                  <Typography
+                    variant="subtitle1"
+                    className={classes.whiteText}
+                  >
                     Estadísticas
                   </Typography>
                 </Link>
@@ -233,7 +247,10 @@ class Contenedor extends React.Component {
           </Grid>
         </Grid>
         <Footer />
-        <AlertDialog open={this.state.open} handleClose={this.handleClose} />
+        <AlertDialog
+          open={this.state.open}
+          handleClose={this.handleClose}
+        />
       </div>
     );
   }
