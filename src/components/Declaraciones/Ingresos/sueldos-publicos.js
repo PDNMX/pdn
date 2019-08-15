@@ -1,10 +1,3 @@
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // CARGA LAS DEPENDENCIAS
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 import React, { Component } from "react";
 import { Grid, Typography } from "@material-ui/core";
 import {
@@ -17,34 +10,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "../style";
 
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // DEFINE LA CLASE PRINCIPAL
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 class IngresosSueldosPublicos extends Component {
-  constructor(props) {
-    super(props);
-
-    let elems = this.props.profile.ingresos.sueldos_salarios_publicos.map(d => {
-      // let item = d;
-      d.show = true;
-
-      return d;
-    });
-
-    this.state = {
-      items: elems
-    };
-
-    this.toggl = this.toggl.bind(this);
-  }
-  /*
-   * R E N D E R
-   * ----------------------------------------------------------------------
-   */
   render() {
     let { classes } = this.props;
 
@@ -53,7 +19,7 @@ class IngresosSueldosPublicos extends Component {
         <Grid item xs={12}>
           <Typography className={classes.titulo}>
             <strong>
-              Sueldos y Salarios por el Encargo Público ({this.items().length})
+              Sueldos y Salarios por el Encargo Público
             </strong>
           </Typography>
           <Grid container spacing={3}>
@@ -72,7 +38,7 @@ class IngresosSueldosPublicos extends Component {
                     className={classes.expansionpaneldetails}
                   >
                     <Grid container spacing={3}>
-                      <Grid item xs={12}>
+                      <Grid item xs={12} className={classes.lineCard}>
                         <Grid container spacing={3}>
                           <Grid item xs={8}>
                             <Typography className={classes.tituloCard}>
@@ -96,7 +62,7 @@ class IngresosSueldosPublicos extends Component {
                           </Grid>
                         </Grid>
                       </Grid>
-                      <Grid item xs={12}>
+                      <Grid item xs={12} className={classes.lineCard}>
                         <Grid container spacing={3}>
                           <Grid item xs={4}>
                             <Typography className={classes.tituloCard}>
@@ -144,34 +110,9 @@ class IngresosSueldosPublicos extends Component {
     );
   }
 
-  /*
-   * M E T H O D S
-   * ----------------------------------------------------------------------
-   */
-  toggl(item, index, e) {
-    console.log(item, index, e);
-
-    let items = this.state.items,
-      newItems = items.map(d => {
-        if (item === d) {
-          d.show = !item.show;
-        }
-
-        return d;
-      });
-
-    this.setState({ items: newItems });
-  }
   items() {
     return this.props.profile.ingresos.sueldos_salarios_publicos;
   }
 }
 
-/*
-  ////////////////////////////////////////////////////////////////////////////////
-  //
-  // REGRESA EL COMPONENTE
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 export default withStyles(styles)(IngresosSueldosPublicos);

@@ -1,10 +1,3 @@
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // CARGA LAS DEPENDENCIAS
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 import React, { Component } from "react";
 import { Grid, Paper } from "@material-ui/core";
 import * as ConstClass from "../../ConstValues.js";
@@ -21,18 +14,7 @@ import styles from "../../style";
 let d3 = Object.assign({}, require("d3-format"));
 let format = d3.format(".4n");
 
-/*
-  ////////////////////////////////////////////////////////////////////////////////
-  //
-  // DEFINE LA CLASE PRINCIPAL
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 class EducacionEdadPorcentaje extends Component {
-  /*
-   * C O N S T R U C T O R
-   * ----------------------------------------------------------------------
-   */
   constructor() {
     super();
 
@@ -59,10 +41,6 @@ class EducacionEdadPorcentaje extends Component {
     });
   }
 
-  /*
-   * R E N D E R
-   * ----------------------------------------------------------------------
-   */
   render() {
     if (!this.state.data) return null;
     let st = this.state;
@@ -85,8 +63,7 @@ class EducacionEdadPorcentaje extends Component {
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             <Typography className={classes.titulo}>
-              Funcionarios por nivel de estudios y rango de edad
-              (porcentaje)
+              Funcionarios por nivel de estudios y rango de edad (porcentaje)
             </Typography>
             <Grid container spacing={3}>
               {this.state.data.series.map((d, i) => (
@@ -131,18 +108,7 @@ class EducacionEdadPorcentaje extends Component {
       </Grid>
     );
   }
-  /*
-   * M E T H O D S
-   * ----------------------------------------------------------------------
-   */
 
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  /
-  /
-  /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  */
   getInfo(_from, _to, gl) {
     let connObj = Object.assign({}, ConstClass.fetchObj);
 
@@ -155,13 +121,6 @@ class EducacionEdadPorcentaje extends Component {
       });
   }
 
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  /
-  /
-  /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  */
   buildMatrix(data, response) {
     let b = [...data],
       gl = ConstClass.NivelEducacion,
@@ -178,13 +137,6 @@ class EducacionEdadPorcentaje extends Component {
     return res;
   }
 
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  /
-  /
-  /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  */
   makeData() {
     let res = [],
       gl = ConstClass.NivelEducacion,
@@ -215,13 +167,6 @@ class EducacionEdadPorcentaje extends Component {
     return res;
   }
 
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  /
-  /
-  /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  */
   makeQuery(_from, _to, gl) {
     let str1 = ConstClass.PROP_NAMES.nacimiento,
       str2 = ConstClass.PROP_NAMES.escolaridad,
@@ -234,11 +179,4 @@ class EducacionEdadPorcentaje extends Component {
   }
 }
 
-/*
-  ////////////////////////////////////////////////////////////////////////////////
-  //
-  // REGRESA EL COMPONENTE
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 export default withStyles(styles)(EducacionEdadPorcentaje);

@@ -68,7 +68,7 @@ class TiemposSanciones extends React.Component {
             let aux = result.data.map(item => {
                 return {
                     "anios": item.anios,
-                    "total": parseInt(item.total)
+                    "total": parseInt(item.total,10)
                 }
             })
             this.setState({

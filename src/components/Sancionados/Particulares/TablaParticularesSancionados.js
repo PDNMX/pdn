@@ -546,7 +546,11 @@ class EnhancedTable extends React.Component {
                     </Grid>
                     <Grid item xs={12}>
                         {
+<<<<<<< HEAD
                             filterData && filterData.length == 0 &&
+=======
+                            filterData && filterData.length===0 &&
+>>>>>>> 558bf5ca292f0c27db5a8c701d0976160c70e055
                             <MensajeNoRegistros/>
                         }
                     </Grid>

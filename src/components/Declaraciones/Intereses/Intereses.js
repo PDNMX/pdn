@@ -1,10 +1,3 @@
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // CARGA LAS DEPENDENCIAS
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 import React, { Component } from "react";
 import { Grid } from "@material-ui/core";
 
@@ -25,22 +18,55 @@ import MenuInformacion from "../MenuLaterlal";
 
 import styles from "../style";
 
-let menu = [
-  "Resumen",
-  "Empresas o asociaciones",
-  "Membresías",
-  "Apoyos",
-  "Representación activa",
-  "Representación pasiva",
-  "Socios comerciales",
-  "Clientes principales",
-  "Otras partes relacionadas",
-  "Beneficios gratuitos"
-];
-
 class Intereses extends Component {
   render() {
     let { classes, path, value, change } = this.props;
+    let {
+      apoyos_beneficios_publicos,
+      beneficios_gratuitos,
+      clientes_principales,
+      empresas_sociedades_asociaciones,
+      membresias,
+      otras_partes,
+      representacion_activa,
+      representacion_pasiva,
+      socios_comerciales
+    } = this.props.profile.intereses;
+
+
+    let menu = [
+      { name: "Resumen" },
+      {
+        name: "Empresas o asociaciones",
+        value: empresas_sociedades_asociaciones.length
+      },
+      { name: "Membresías", value: membresias.length },
+      { name: "Apoyos", value: apoyos_beneficios_publicos.length },
+      {
+        name: "Representación activa",
+        value: representacion_activa.length
+      },
+      {
+        name: "Representación pasiva",
+        value: representacion_pasiva.length
+      },
+      {
+        name: "Socios comerciales",
+        value: socios_comerciales.length
+      },
+      {
+        name: "Clientes principales",
+        value: clientes_principales.length
+      },
+      {
+        name: "Otras partes relacionadas",
+        value: otras_partes.length
+      },
+      {
+        name: "Beneficios gratuitos",
+        value: beneficios_gratuitos.length
+      }
+    ];
 
     return (
       <div className={classes.rootSeccion}>
@@ -60,31 +86,17 @@ class Intereses extends Component {
             md={10}
             style={{ backgroundColor: "#f2f2f2", padding: 15 }}
           >
-            {value === 0 && (
-              <InteresesResume profile={this.props.profile} />
-            )}
+            {value === 0 && <InteresesResume profile={this.props.profile} />}
 
-            {value === 1 && (
-              <InteresesEmpresas profile={this.props.profile} />
-            )}
+            {value === 1 && <InteresesEmpresas profile={this.props.profile} />}
             {value === 2 && (
               <InteresesMembresias profile={this.props.profile} />
             )}
-            {value === 3 && (
-              <InteresesApoyos profile={this.props.profile} />
-            )}
-            {value === 4 && (
-              <InteresesRepActiva profile={this.props.profile} />
-            )}
-            {value === 5 && (
-              <InteresesRepPasiva profile={this.props.profile} />
-            )}
-            {value === 6 && (
-              <InteresesSocios profile={this.props.profile} />
-            )}
-            {value === 7 && (
-              <InteresesClientes profile={this.props.profile} />
-            )}
+            {value === 3 && <InteresesApoyos profile={this.props.profile} />}
+            {value === 4 && <InteresesRepActiva profile={this.props.profile} />}
+            {value === 5 && <InteresesRepPasiva profile={this.props.profile} />}
+            {value === 6 && <InteresesSocios profile={this.props.profile} />}
+            {value === 7 && <InteresesClientes profile={this.props.profile} />}
             {value === 8 && <InteresesOtras profile={this.props.profile} />}
             {value === 9 && (
               <InteresesBeneficios profile={this.props.profile} />

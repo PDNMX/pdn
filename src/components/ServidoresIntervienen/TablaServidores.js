@@ -359,7 +359,7 @@ class EnhancedTable extends React.Component {
     render() {
         const {classes} = this.props;
         const {data, order, orderBy, selected, rowsPerPage, page, filterData, totalRows, filterDataAll} = this.state;
-        const emptyRows = rowsPerPage - (filterData?filterData.length:0);
+        // const emptyRows = rowsPerPage - (filterData?filterData.length:0);
 
         return (
             <div>
@@ -485,7 +485,7 @@ class EnhancedTable extends React.Component {
                     </Grid>
                     <Grid item xs={12}>
                         {
-                            filterData && filterData.length==0 &&
+                            filterData && filterData.length===0 &&
                             <MensajeNoRegistros/>
                         }
                     </Grid>

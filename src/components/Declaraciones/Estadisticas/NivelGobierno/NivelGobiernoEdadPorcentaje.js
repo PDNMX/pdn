@@ -1,10 +1,3 @@
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // CARGA LAS DEPENDENCIAS
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 import React, { Component } from "react";
 import { Grid, Paper } from "@material-ui/core";
 
@@ -22,18 +15,7 @@ import styles from "../../style";
 let d3 = Object.assign({}, require("d3-format"));
 let format = d3.format(".4n");
 
-/*
-  ////////////////////////////////////////////////////////////////////////////////
-  //
-  // DEFINE LA CLASE PRINCIPAL
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 class NivelGobiernoEdadPorcentaje extends Component {
-  /*
-   * C O N S T R U C T O R
-   * ----------------------------------------------------------------------
-   */
   constructor() {
     super();
 
@@ -60,10 +42,6 @@ class NivelGobiernoEdadPorcentaje extends Component {
     });
   }
 
-  /*
-   * R E N D E R
-   * ----------------------------------------------------------------------
-   */
   render() {
     if (!this.state.data) return null;
     let st = this.state;
@@ -85,8 +63,7 @@ class NivelGobiernoEdadPorcentaje extends Component {
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             <Typography className={classes.titulo}>
-              Funcionarios por nivel de gobierno y rango de edad
-              (porcentaje)
+              Funcionarios por nivel de gobierno y rango de edad (porcentaje)
             </Typography>
             <Grid container spacing={3}>
               {this.state.data.series.map((d, i) => (
@@ -131,18 +108,7 @@ class NivelGobiernoEdadPorcentaje extends Component {
       </Grid>
     );
   }
-  /*
-   * M E T H O D S
-   * ----------------------------------------------------------------------
-   */
 
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  /
-  /
-  /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  */
   getInfo(_from, _to, gl) {
     let connObj = Object.assign({}, ConstClass.fetchObj);
 
@@ -156,13 +122,6 @@ class NivelGobiernoEdadPorcentaje extends Component {
       });
   }
 
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  /
-  /
-  /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  */
   buildMatrix(data, response) {
     let b = [...data],
       gl = ConstClass.GobLevels,
@@ -179,13 +138,6 @@ class NivelGobiernoEdadPorcentaje extends Component {
     return res;
   }
 
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  /
-  /
-  /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  */
   makeData() {
     let res = [],
       gl = ConstClass.GobLevels,
@@ -216,13 +168,6 @@ class NivelGobiernoEdadPorcentaje extends Component {
     return res;
   }
 
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  /
-  /
-  /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  */
   makeQuery(_from, _to, gl) {
     let str1 = ConstClass.PROP_NAMES.nacimiento,
       str2 = ConstClass.PROP_NAMES.nivelGobierno,
@@ -235,11 +180,4 @@ class NivelGobiernoEdadPorcentaje extends Component {
   }
 }
 
-/*
-  ////////////////////////////////////////////////////////////////////////////////
-  //
-  // REGRESA EL COMPONENTE
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 export default withStyles(styles)(NivelGobiernoEdadPorcentaje);

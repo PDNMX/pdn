@@ -1,10 +1,3 @@
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // CARGA LAS DEPENDENCIAS
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 import React, { Component } from "react";
 import {
   ExpansionPanel,
@@ -29,37 +22,7 @@ const BorderLinearProgress = withStyles({
   }
 })(LinearProgress);
 
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // DEFINE LA CLASE PRINCIPAL
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 class InteresesEmpresas extends Component {
-  constructor(props) {
-    super(props);
-
-    let elems = this.props.profile.intereses.empresas_sociedades_asociaciones.map(
-      d => {
-        // let item = d;
-        d.show = true;
-
-        return d;
-      }
-    );
-
-    this.state = {
-      items: elems
-    };
-
-    this.toggl = this.toggl.bind(this);
-  }
-
-  /*
-   * R E N D E R
-   * ----------------------------------------------------------------------
-   */
   render() {
     let { classes } = this.props;
 
@@ -68,7 +31,7 @@ class InteresesEmpresas extends Component {
         <Grid item xs={12}>
           <Typography className={classes.titulo}>
             <strong>
-              Empresas, sociedades o asociaciones ({this.items().length})
+              Empresas, sociedades o asociaciones
             </strong>
           </Typography>
           <Grid container spacing={3}>
@@ -87,37 +50,36 @@ class InteresesEmpresas extends Component {
                     className={classes.expansionpaneldetails}
                   >
                     <Grid container spacing={3}>
-                      <Grid item xs={12}>
+                      <Grid item xs={12} className={classes.lineCard}>
+                        <Typography className={classes.tituloCard}>
+                          Nombre de la empresa, sociedad o asociación
+                        </Typography>
+                        <Typography className={classes.dataCard}>
+                          <strong>
+                            {interes.nombre_empresa_sociedad_asociacion}
+                          </strong>
+                          <br />
+                          {interes.domicilio.vialidad.tipo_vial +
+                            " " +
+                            interes.domicilio.vialidad.nom_vial +
+                            " No." +
+                            interes.domicilio.numExt +
+                            " No. Int." +
+                            interes.domicilio.numInt}{" "}
+                          {interes.domicilio.localidad.nom_loc +
+                            ", " +
+                            interes.domicilio.municipio.nom_mun +
+                            ", " +
+                            interes.domicilio.entidad_federativa.nom_agee +
+                            ", " +
+                            interes.domicilio.pais.valor +
+                            " C.P. " +
+                            interes.domicilio.cp}{" "}
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={12} className={classes.lineCard}>
                         <Grid container spacing={3}>
-                          <Grid item xs={8}>
-                            <Typography className={classes.tituloCard}>
-                              Nombre de la empresa, sociedad o asociación
-                            </Typography>
-                            <Typography className={classes.dataCard}>
-                              <strong>
-                                {interes.nombre_empresa_sociedad_asociacion}
-                              </strong>
-                              <br />
-                              {interes.domicilio.vialidad.tipo_vial +
-                                " " +
-                                interes.domicilio.vialidad.nom_vial +
-                                " No." +
-                                interes.domicilio.numExt +
-                                " No. Int." +
-                                interes.domicilio.numInt}
-                              <br />{" "}
-                              {interes.domicilio.localidad.nom_loc +
-                                ", " +
-                                interes.domicilio.municipio.nom_mun +
-                                ", " +
-                                interes.domicilio.entidad_federativa.nom_agee +
-                                ", " +
-                                interes.domicilio.pais.valor +
-                                " C.P. " +
-                                interes.domicilio.cp}{" "}
-                            </Typography>
-                          </Grid>
-                          <Grid item xs={4}>
+                          <Grid item xs={6}>
                             <Typography className={classes.tituloCard}>
                               Fecha de constitución
                             </Typography>
@@ -125,11 +87,7 @@ class InteresesEmpresas extends Component {
                               {interes.fecha_constitucion}
                             </Typography>
                           </Grid>
-                        </Grid>
-                      </Grid>
-                      <Grid item xs={12}>
-                        <Grid container spacing={3}>
-                          <Grid item xs={4}>
+                          <Grid item xs={6}>
                             <Typography className={classes.tituloCard}>
                               País
                             </Typography>
@@ -137,7 +95,11 @@ class InteresesEmpresas extends Component {
                               {interes.pais_registro.valor}
                             </Typography>
                           </Grid>
-                          <Grid item xs={4}>
+                        </Grid>
+                      </Grid>
+                      <Grid item xs={12} className={classes.lineCard}>
+                        <Grid container spacing={3}>
+                          <Grid item xs={6}>
                             <Typography className={classes.tituloCard}>
                               R.F.C.
                             </Typography>
@@ -145,7 +107,7 @@ class InteresesEmpresas extends Component {
                               {interes.rfc}
                             </Typography>
                           </Grid>
-                          <Grid item xs={4}>
+                          <Grid item xs={6}>
                             <Typography className={classes.tituloCard}>
                               Número de registro
                             </Typography>
@@ -155,7 +117,7 @@ class InteresesEmpresas extends Component {
                           </Grid>
                         </Grid>
                       </Grid>
-                      <Grid item xs={12}>
+                      <Grid item xs={12} className={classes.lineCard}>
                         <Grid container spacing={3}>
                           <Grid item xs={6}>
                             <Typography className={classes.tituloCard}>
@@ -174,33 +136,30 @@ class InteresesEmpresas extends Component {
                             </Typography>
                           </Grid>
                         </Grid>
-                        <Grid item xs={12}>
-                          <Grid container spacing={3}>
-                            <Grid item xs={6}>
-                              <Typography className={classes.tituloCard}>
-                                Porcentaje de participación
-                              </Typography>
-                              <Typography
-                                component="div"
-                                className={classes.dataCard}
-                              >
-                                {interes.porcentaje_participacion}%
-                                <BorderLinearProgress
-                                  className={classes.marginProgressbar}
-                                  variant="determinate"
-                                  color="primary"
-                                  value={interes.porcentaje_participacion}
-                                />
-                              </Typography>
-                            </Grid>
-                            <Grid item xs={6}>
-                              <Typography className={classes.tituloCard}>
-                                Sector o industria
-                              </Typography>
-                              <Typography className={classes.dataCard}>
-                                {interes.sector_industria.valor}
-                              </Typography>
-                            </Grid>
+                      </Grid>
+                      <Grid item xs={12} className={classes.lineCard}>
+                        <Grid container spacing={3}>
+                          <Grid item xs={6}>
+                            <Typography className={classes.tituloCard}>
+                              Porcentaje de participación
+                            </Typography>
+                            <Typography component="div" className={classes.dataCard}>
+                              {interes.porcentaje_participacion}%
+                              <BorderLinearProgress
+                                className={classes.marginProgressbar}
+                                variant="determinate"
+                                color="primary"
+                                value={interes.porcentaje_participacion}
+                              />
+                            </Typography>
+                          </Grid>
+                          <Grid item xs={6}>
+                            <Typography className={classes.tituloCard}>
+                              Sector o industria
+                            </Typography>
+                            <Typography className={classes.dataCard}>
+                              {interes.sector_industria.valor}
+                            </Typography>
                           </Grid>
                         </Grid>
                       </Grid>
@@ -215,35 +174,9 @@ class InteresesEmpresas extends Component {
     );
   }
 
-  /*
-   * M E T H O D S
-   * ----------------------------------------------------------------------
-   */
-  toggl(item, index, e) {
-    console.log(item, index, e);
-
-    let items = this.state.items,
-      newItems = items.map(d => {
-        if (item === d) {
-          d.show = !item.show;
-        }
-
-        return d;
-      });
-
-    this.setState({ items: newItems });
-  }
-
   items() {
     return this.props.profile.intereses.empresas_sociedades_asociaciones;
   }
 }
 
-/*
-  ////////////////////////////////////////////////////////////////////////////////
-  //
-  // REGRESA EL COMPONENTE
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 export default withStyles(styles)(InteresesEmpresas);

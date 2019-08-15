@@ -1,10 +1,3 @@
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // CARGA LAS DEPENDENCIAS
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 import React, { Component } from "react";
 import { Grid } from "@material-ui/core";
 
@@ -25,22 +18,42 @@ import MenuInformacion from "../MenuLaterlal";
 
 import styles from "../style";
 
-let menu = [
-  "Resumen",
-  "Bienes inmuebles",
-  "Bienes muebles registrables",
-  "Bienes muebles no registrables",
-  "Inversiones",
-  "Efectivo y metales",
-  "Fideicomisos",
-  "Bienes intangibles",
-  "Cuentas por cobrar",
-  "Uso o Beneficios en Especie Propiedad de un Tercero"
-];
-
 class Activos extends Component {
   render() {
     let { classes, path, value, change } = this.props;
+    let {
+      bienes_inmuebles,
+      bienes_intangibles,
+      bienes_muebles_no_registrables,
+      bienes_muebles_registrables,
+      cuentas_por_cobrar,
+      efectivo_metales,
+      fideicomisos,
+      inversiones_cuentas_valores,
+      uso_especie_propiedad_tercero
+    } = this.props.profile.activos;
+
+    let menu = [
+      { name: "Resumen" },
+      { name: "Bienes inmuebles", value: bienes_inmuebles.length },
+      {
+        name: "Bienes muebles registrables",
+        value: bienes_muebles_registrables.length
+      },
+      {
+        name: "Bienes muebles no registrables",
+        value: bienes_muebles_no_registrables.length
+      },
+      { name: "Inversiones", value: inversiones_cuentas_valores.length },
+      { name: "Efectivo y metales", value: efectivo_metales.length },
+      { name: "Fideicomisos", value: fideicomisos.length },
+      { name: "Bienes intangibles", value: bienes_intangibles.length },
+      { name: "Cuentas por cobrar", value: cuentas_por_cobrar.length },
+      {
+        name: "Uso o Beneficios en Especie Propiedad de un Tercero",
+        value: uso_especie_propiedad_tercero.length
+      }
+    ];
 
     return (
       <div className={classes.rootSeccion}>
@@ -72,12 +85,8 @@ class Activos extends Component {
                 profile={this.props.profile}
               />
             )}
-            {value === 4 && (
-              <ActivosInversiones profile={this.props.profile} />
-            )}
-            {value === 5 && (
-              <ActivosEfectivo profile={this.props.profile} />
-            )}
+            {value === 4 && <ActivosInversiones profile={this.props.profile} />}
+            {value === 5 && <ActivosEfectivo profile={this.props.profile} />}
             {value === 6 && (
               <ActivosFideicomisos profile={this.props.profile} />
             )}

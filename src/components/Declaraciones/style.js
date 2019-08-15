@@ -28,7 +28,7 @@ export default theme => ({
     marginTop: 30
   },
   sidebar: {
-    background: "#34b3eb"
+    background: "#2EB2E7"
   },
   //Subsecciones
   rootSubseccion: {
@@ -37,7 +37,7 @@ export default theme => ({
   },
   titulo: {
     // fontSize: 12,
-    color: "#34b3eb",
+    color: "#2EB2E7",
     fontWeight: 500,
     fontSize: 20,
     marginBottom: 30
@@ -45,12 +45,16 @@ export default theme => ({
   tituloCard: {
     fontSize: 13,
     fontWeight: "bold",
-    marginBottom: 5
+    marginBottom: 10
   },
   dataCard: {
     fontSize: 14,
     paddingBottom: 10,
-    marginBottom: 10
+    marginBottom: 10,
+    paddingLeft: 20
+  },
+  lineCard: {
+    borderBottom: "4px solid #f2f2f2"
   },
   tituloGeneralCard: {
     fontWeight: 600,
@@ -132,13 +136,13 @@ export default theme => ({
     margin: theme.spacing(1),
     color: "#FFF",
     fontWeight: "bold",
-    backgroundColor: "#34b3eb"
+    backgroundColor: "#2EB2E7"
   },
   expansion: {
     backgroundColor: "#83dfff",
-    color: "white",
+    color: "#666666",
     textTransform: "uppercase",
-    // backgroundColor: "#34b3eb",
+    // backgroundColor: "#2EB2E7",
     fontWeight: 1200,
     fontSize: 16
   },

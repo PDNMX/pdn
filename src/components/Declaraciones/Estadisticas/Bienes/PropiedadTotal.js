@@ -1,10 +1,3 @@
-/*
-	/////////////////////////////////////////////////////////////////
-  //
-  // CARGA LAS DEPENDENCIAS
-  //
-  /////////////////////////////////////////////////////////////////
-*/
 import React, { Component } from "react";
 import { Grid, Paper } from "@material-ui/core";
 import * as ConstClass from "../../ConstValues.js";
@@ -21,18 +14,7 @@ import styles from "../../style";
 let d3 = Object.assign({}, require("d3-format"));
 let format = d3.format(",");
 
-/*
-  /////////////////////////////////////////////////////////////////
-  //
-  // DEFINE LA CLASE PRINCIPAL
-  //
-  /////////////////////////////////////////////////////////////////
-*/
 class PropiedadTotal extends Component {
-  /*
-   * C O N S T R U C T O R
-   * ------------------------------------------------------------
-   */
   constructor() {
     super();
 
@@ -56,10 +38,6 @@ class PropiedadTotal extends Component {
     });
   }
 
-  /*
-   * R E N D E R
-   * ------------------------------------------------------------
-   */
   render() {
     if (!this.state.data) return null;
     let options = {
@@ -90,18 +68,6 @@ class PropiedadTotal extends Component {
     );
   }
 
-  /*
-   * M E T H O D S
-   * ------------------------------------------------------------
-   */
-
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  /
-  /
-  /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  */
   getInfo(range) {
     let connObj = Object.assign({}, ConstClass.fetchObj);
 
@@ -114,13 +80,6 @@ class PropiedadTotal extends Component {
       });
   }
 
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  /
-  /
-  /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  */
   makeData() {
     let res = [],
       gl = ConstClass.propertyChartConf,
@@ -136,13 +95,6 @@ class PropiedadTotal extends Component {
     return res;
   }
 
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  /
-  /
-  /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  */
   makeLabel(range) {
     let r1 = range[0] ? range[0] : 0,
       r2 = range[1] ? range[1] : "o más";
@@ -150,13 +102,6 @@ class PropiedadTotal extends Component {
     return `${r1} - ${r2}`;
   }
 
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  /
-  /
-  /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  */
   makeQuery(range) {
     let str = ConstClass.PROP_NAMES.superficieTerreno,
       search = { query: {}, limit: 2 };

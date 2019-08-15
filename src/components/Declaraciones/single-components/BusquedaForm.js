@@ -1,25 +1,7 @@
-/*
-  ////////////////////////////////////////////////////////////////////////////////
-  //
-  // CARGA LAS DEPENDENCIAS
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 import React, { Component } from "react";
 import * as ConstClass from "../ConstValues.js";
 
-/*
-  ////////////////////////////////////////////////////////////////////////////////
-  //
-  // DEFINE LA CLASE PRINCIPAL
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 class BusquedaForm extends Component {
-  /*
-   * C O N S T R U C T O R
-   * ----------------------------------------------------------------------
-   */
   constructor() {
     super();
 
@@ -34,10 +16,6 @@ class BusquedaForm extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  /*
-   * R E N D E R
-   * ----------------------------------------------------------------------
-   */
   render() {
     return (
       <form onSubmit={this.searchUsers}>
@@ -165,18 +143,13 @@ class BusquedaForm extends Component {
   }
 
   /*
-   * M E T H O D S
-   * ----------------------------------------------------------------------
-   */
-
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+  
   /
   /  pasa los argumentos de la búsqueda a una 
   /  función que llama al api de búsqueda 
   /  (definidia en Busqueda, el parent)
   /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+  
   */
   searchUsers(e) {
     e.preventDefault();
@@ -184,13 +157,13 @@ class BusquedaForm extends Component {
   }
 
   /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+  
   /
   /  genera una sola "source of truth" para los 
   /  valores del formulario. En vue es lo de 
   /  v-model
   /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+  
   */
   handleInputChange(event) {
     const target = event.target;
@@ -203,11 +176,4 @@ class BusquedaForm extends Component {
   }
 }
 
-/*
-  ////////////////////////////////////////////////////////////////////////////////
-  //
-  // REGRESA EL COMPONENTE
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 export default BusquedaForm;

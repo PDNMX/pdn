@@ -1,10 +1,3 @@
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // CARGA LAS DEPENDENCIAS
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 import React, { Component } from "react";
 import { Grid, Typography } from "@material-ui/core";
 import {
@@ -28,34 +21,8 @@ const BorderLinearProgress = withStyles({
     borderRadius: 20
   }
 })(LinearProgress);
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // DEFINE LA CLASE PRINCIPAL
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
+
 class ActivosFideicomisos extends Component {
-  constructor(props) {
-    super(props);
-
-    let elems = this.props.profile.activos.fideicomisos.map(d => {
-      // let item = d;
-      d.show = true;
-
-      return d;
-    });
-
-    this.state = {
-      items: elems
-    };
-
-    this.toggl = this.toggl.bind(this);
-  }
-  /*
-   * R E N D E R
-   * ----------------------------------------------------------------------
-   */
   render() {
     let { classes } = this.props;
 
@@ -63,7 +30,7 @@ class ActivosFideicomisos extends Component {
       <Grid container spacing={3} className={classes.rootSubseccion}>
         <Grid item xs={12}>
           <Typography className={classes.titulo}>
-            <strong>Fideicomisos ({this.items().length})</strong>
+            <strong>Fideicomisos</strong>
           </Typography>
           <Grid container spacing={3}>
             {this.items().map((fideicomiso, i) => (
@@ -81,9 +48,9 @@ class ActivosFideicomisos extends Component {
                     className={classes.expansionpaneldetails}
                   >
                     <Grid container spacing={3}>
-                      <Grid item xs={12}>
+                      <Grid item xs={12} className={classes.lineCard}>
                         <Grid container spacing={3}>
-                          <Grid item xs={8}>
+                          <Grid item xs={6}>
                             <Typography className={classes.tituloCard}>
                               Tipo de fideicomiso
                             </Typography>
@@ -91,7 +58,7 @@ class ActivosFideicomisos extends Component {
                               {fideicomiso.tipo_fideicomiso.valor}
                             </Typography>
                           </Grid>
-                          <Grid item xs={4}>
+                          <Grid item xs={6}>
                             <Typography className={classes.tituloCard}>
                               Ingreso monetario obtenido
                             </Typography>
@@ -107,7 +74,7 @@ class ActivosFideicomisos extends Component {
                           </Grid>
                         </Grid>
                       </Grid>
-                      <Grid item xs={12}>
+                      <Grid item xs={12} className={classes.lineCard}>
                         <Grid container spacing={3}>
                           <Grid item xs={4}>
                             <Typography className={classes.tituloCard}>
@@ -135,9 +102,9 @@ class ActivosFideicomisos extends Component {
                           </Grid>
                         </Grid>
                       </Grid>
-                      <Grid item xs={12}>
+                      <Grid item xs={12} className={classes.lineCard}>
                         <Grid container spacing={3}>
-                          <Grid item xs={8}>
+                          <Grid item xs={6}>
                             <Typography className={classes.tituloCard}>
                               Objetivo del fideicomiso
                             </Typography>
@@ -145,7 +112,7 @@ class ActivosFideicomisos extends Component {
                               {fideicomiso.objetivo}
                             </Typography>
                           </Grid>
-                          <Grid item xs={4}>
+                          <Grid item xs={6}>
                             <Typography className={classes.tituloCard}>
                               Tipo de operación
                             </Typography>
@@ -155,7 +122,7 @@ class ActivosFideicomisos extends Component {
                           </Grid>
                         </Grid>
                       </Grid>
-                      <Grid item xs={12}>
+                      <Grid item xs={12} className={classes.lineCard}>
                         <Grid container spacing={3}>
                           <Grid item xs={4}>
                             <Typography className={classes.tituloCard}>
@@ -197,7 +164,7 @@ class ActivosFideicomisos extends Component {
                           </Grid>
                         </Grid>
                       </Grid>
-                      <Grid item xs={12}>
+                      <Grid item xs={12} className={classes.lineCard}>
                         <Grid container spacing={3}>
                           <Grid item xs={6}>
                             <Typography className={classes.tituloCard}>
@@ -270,7 +237,7 @@ class ActivosFideicomisos extends Component {
                           </Grid>
                         </Grid>
                       </Grid>
-                      <Grid item xs={12}>
+                      <Grid item xs={12} className={classes.lineCard}>
                         <Grid container spacing={3}>
                           <Grid item xs={6}>
                             <Typography className={classes.tituloCard}>
@@ -343,7 +310,7 @@ class ActivosFideicomisos extends Component {
                           </Grid>
                         </Grid>
                       </Grid>
-                      <Grid item xs={12}>
+                      <Grid item xs={12} className={classes.lineCard}>
                         <Grid container spacing={3}>
                           <Grid item xs={6}>
                             <Typography className={classes.tituloCard}>
@@ -432,34 +399,9 @@ class ActivosFideicomisos extends Component {
     );
   }
 
-  /*
-   * M E T H O D S
-   * ----------------------------------------------------------------------
-   */
-  toggl(item, index, e) {
-    console.log(item, index, e);
-
-    let items = this.state.items,
-      newItems = items.map(d => {
-        if (item === d) {
-          d.show = !item.show;
-        }
-
-        return d;
-      });
-
-    this.setState({ items: newItems });
-  }
   items() {
     return this.props.profile.activos.fideicomisos;
   }
 }
 
-/*
-  ////////////////////////////////////////////////////////////////////////////////
-  //
-  // REGRESA EL COMPONENTE
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 export default withStyles(styles)(ActivosFideicomisos);

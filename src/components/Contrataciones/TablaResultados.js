@@ -18,7 +18,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 //import FormControlLabel from '@material-ui/core/FormControlLabel';
 //import Switch from '@material-ui/core/Switch';
 import DeleteIcon from '@material-ui/icons/Delete';
-import DownloadIcon from '@material-ui/icons/CloudDownload';
+//import DownloadIcon from '@material-ui/icons/CloudDownload';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import LinearIndeterminate from './LinearIndeterminate';
 import ResponsiveDialog from './ResponsiveDialog';
@@ -49,9 +49,9 @@ function getSorting(order, orderBy) {
 
 const headRows = [
     { id: 'col1', numeric: false, disablePadding: false, label: 'OCID' },
-    { id: 'col2', numeric: false, disablePadding: true, label: 'Tipo' },
+    { id: 'col2', numeric: false, disablePadding: false, label: 'Tipo' },
     { id: 'col3', numeric: false, disablePadding: false, label: 'Título' },
-    { id: 'col4', numeric: false, disablePadding: false, label: 'Datos' },
+    { id: 'col4', numeric: false, disablePadding: false, label: 'Monto' },
     //{ id: 'col5', numeric: true, disablePadding: false, label: 'Protein (g)' },
 ];
 
@@ -212,12 +212,49 @@ const useStyles = makeStyles(theme => ({
 
 export default function EnhancedTable(props) {
 
-    let rows = props.data.map( d => ({
-        col1: d.ocid,
-        col2: typeof d.tender.procurementMethod === 'undefined'? "Other": d.tender.procurementMethod,
-        col3: d.contracts[0].title
+    let getProcurementMethod = method => {
+        let m = method;
 
-    }));
+        if (typeof method === 'undefined' || method === null){
+            m = ""
+        }
+
+        m = m.toLowerCase();
+
+        switch (m) {
+            case "open":
+                return "Licitación pública";
+            case "direct":
+                return "Adjudicación directa";
+            case "selective":
+                return "Invitación a tres";
+            case "":
+                return "En proceso";
+            default:
+                return m
+        }
+    };
+
+    let rows = props.data.map( d => {
+
+        let total = 0;
+
+        for (let c of d.contracts ) {
+            try {
+                total += c.value.amount;
+            } catch (e) {
+                //ignore exception
+            }
+        }
+
+
+        return {
+            col1: d.ocid,
+            col2: getProcurementMethod(d.tender.procurementMethod),
+            col3: d.tender.title,
+            col4: total === 0?'En proceso':  new Intl.NumberFormat('es-MX', {style: 'currency', currency: 'MXN'}).format(total)
+        }
+    });
 
     const classes = useStyles();
     const [order, setOrder] = React.useState('asc');
@@ -304,7 +341,7 @@ export default function EnhancedTable(props) {
                         <Table
                             className={classes.table}
                             aria-labelledby="tableTitle"
-                            size={'small'}
+                            size={'medium'}
                         >
                             <EnhancedTableHead
                                 classes={classes}
@@ -343,11 +380,7 @@ export default function EnhancedTable(props) {
                                     </TableCell>
                                     <TableCell align="left">{row.col2}</TableCell>
                                     <TableCell align="left">{row.col3}</TableCell>
-                                    <TableCell align="left">
-                                    <IconButton>
-                                    <DownloadIcon />
-                                    </IconButton>
-                                    </TableCell>
+                                    <TableCell align="left">{row.col4}</TableCell>
                                     {/*<TableCell align="right">{row.col5}</TableCell>*/}
                                     </TableRow>
                                     );
@@ -391,7 +424,7 @@ export default function EnhancedTable(props) {
                                     })*/}
                                 {emptyRows > 0 && (
                                     <TableRow style={{height: 49 * emptyRows}}>
-                                        <TableCell colSpan={6}/>
+                                        <TableCell colSpan={4}/>
                                     </TableRow>
                                 )}
                             </TableBody>

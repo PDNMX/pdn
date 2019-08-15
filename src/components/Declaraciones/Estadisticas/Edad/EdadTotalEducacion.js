@@ -1,10 +1,3 @@
-/*
-  ////////////////////////////////////////////////////////////////////////////////
-  //
-  // CARGA LAS DEPENDENCIAS
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 import React, { Component } from "react";
 import * as ConstClass from "../../ConstValues";
 import ChartistGraph from "react-chartist";
@@ -20,18 +13,8 @@ import styles from "../../style";
 
 let d3 = Object.assign({}, require("d3-format"));
 let format = d3.format(",");
-/*
-  ////////////////////////////////////////////////////////////////////////////////
-  //
-  // DEFINE LA CLASE PRINCIPAL
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
+
 class EdadTotalEducacion extends Component {
-  /*
-   * C O N S T R U C T O R
-   * ----------------------------------------------------------------------
-   */
   constructor() {
     super();
 
@@ -57,10 +40,6 @@ class EdadTotalEducacion extends Component {
     });
   }
 
-  /*
-   * R E N D E R
-   * ----------------------------------------------------------------------
-   */
   render() {
     if (!this.state.data) return null;
     let colors = ConstClass.ChartColors;
@@ -113,18 +92,6 @@ class EdadTotalEducacion extends Component {
     );
   }
 
-  /*
-   * M E T H O D S
-   * ----------------------------------------------------------------------
-   */
-
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  /
-  /
-  /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  */
   getInfo(_from, _to, ne) {
     let connObj = Object.assign({}, ConstClass.fetchObj);
 
@@ -137,13 +104,6 @@ class EdadTotalEducacion extends Component {
       });
   }
 
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  /
-  /
-  /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  */
   buildMatrix(data, length) {
     let b = [...data],
       ne = ConstClass.NivelEducacion,
@@ -156,13 +116,6 @@ class EdadTotalEducacion extends Component {
     return res;
   }
 
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  /
-  /
-  /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  */
   makeData() {
     let res = [],
       currentYear = new Date().getFullYear(),
@@ -192,13 +145,6 @@ class EdadTotalEducacion extends Component {
     return res;
   }
 
-  /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  /
-  /
-  /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-  */
   makeQuery(_from, _to, ne) {
     let str1 = ConstClass.PROP_NAMES.nacimiento,
       str2 = ConstClass.PROP_NAMES.escolaridad,
@@ -211,11 +157,4 @@ class EdadTotalEducacion extends Component {
   }
 }
 
-/*
-  ////////////////////////////////////////////////////////////////////////////////
-  //
-  // REGRESA EL COMPONENTE
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 export default withStyles(styles)(EdadTotalEducacion);

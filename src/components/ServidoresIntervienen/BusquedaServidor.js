@@ -89,7 +89,7 @@ class BusquedaServidor extends React.Component {
 
     componentDidMount() {
         let sug = [ {value : null ,label:'TODAS'}];
-        let id = 0;
+        // let id = 0;
 
         let options = {
             uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/getDependenciasRENIRESP',

@@ -6,12 +6,13 @@ import Donutchart from './Charts/SimpleRadialChart'
 import CountUp from 'react-countup';
 import rp from 'request-promise';
 import LinearIndeterminate from './LinearIndeterminate';
+import CustomizedSelect from './CustomizedSelect';
 
 
 const styles = theme => ({
     root: {
         flexGrow: 1,
-        paddingTop: theme.spacing(4),
+        //paddingTop: theme.spacing(4),
         paddingBottom: theme.spacing(2)
     },
     bullet: {
@@ -32,6 +33,10 @@ const styles = theme => ({
     li: {
         paddingBottom: theme.spacing(2)
     },
+    item: {
+        paddingRight: theme.spacing(1),
+        paddingLeft: theme.spacing(1)
+    }
 });
 
 class Cifras extends React.Component{
@@ -45,7 +50,19 @@ class Cifras extends React.Component{
         periodo: {
             start: 2017,
             end: 2018
+        },
+        gastoTotal: 0,
+        colors: {
+            open: "#EB5468",
+            selective: "#187099",
+            direct: "#B3AD1D",
+            other: "#3CB3E6"
         }
+    };
+
+    porcentaje = (amount, total) => {
+        let p = (amount * 100 / total).toFixed(3);
+        return `${p}%`
     };
 
     componentWillMount() {
@@ -58,15 +75,22 @@ class Cifras extends React.Component{
 
             //console.log(data)
 
+            const {open, selective, direct, other, total } = data.amounts;
+            const {colors} = this.state;
+
             this.setState({
                 loading: false,
                 contrataciones: data.procedimientos,
                 instituciones: data.instituciones,
+                counts: data.counts,
+                amounts: data.amounts,
+                gastoTotal: total,
+                donutChartDataType : 'amounts',
                 donutChartData: [
-                    {theta: data.open, label: 'Licitación pública', color: "#00cc99"},
-                    {theta: data.selective, label: 'Invitación a tres', color: "#ffcc00"},
-                    {theta: data.direct, label: "Adjudicación directa", color: "#663399"},
-                    {theta: data.other, label: "Otro", color: "#ff6600"}
+                    {theta: open, label: this.porcentaje(open,total), color: colors.open, type: "Licitación pública"},
+                    {theta: selective, label: this.porcentaje(selective,total), color: colors.selective, type: "Invitación a tres"},
+                    {theta: direct, label: this.porcentaje(direct, total), color: colors.direct, type: "Adjudicación directa"},
+                    {theta: other, label: this.porcentaje(other, total), color: colors.other, type: "Otro"}
                     ]
             })
 
@@ -78,6 +102,39 @@ class Cifras extends React.Component{
 
     }
 
+    handleSelectDonutData = (p) => {
+        //console.log(p)
+        const {colors} = this.state;
+
+        if (p === 'amounts'){
+            const {open, direct, selective, other, total} = this.state.amounts;
+
+            this.setState({
+                donutChartDataType: p,
+                donutChartData: [
+                    {theta: open, label: this.porcentaje(open,total), color: colors.open, type: "Licitación pública"},
+                    {theta: selective, label: this.porcentaje(selective,total), color: colors.selective, type: "Invitación a tres"},
+                    {theta: direct, label: this.porcentaje(direct, total), color: colors.direct, type: "Adjudicación directa"},
+                    {theta: other, label: this.porcentaje(other, total), color: colors.other, type: "Otro"}
+                ]
+            });
+
+        } else {
+            const {open, direct, selective, other} = this.state.counts;
+            const total = this.state.contrataciones;
+
+            this.setState({
+                donutChartDataType: p,
+                donutChartData: [
+                    {theta: open, label: this.porcentaje(open,total), color: colors.open, type: "Licitación pública"},
+                    {theta: selective, label: this.porcentaje(selective,total), color: colors.selective, type: "Invitación a tres"},
+                    {theta: direct, label: this.porcentaje(direct, total), color: colors.direct, type: "Adjudicación directa"},
+                    {theta: other, label: this.porcentaje(other, total), color: colors.other, type: "Otro"}
+                ]
+            });
+        }
+    };
+
 
     render(){
 
@@ -86,20 +143,20 @@ class Cifras extends React.Component{
 
         const bullets = [
             {
-                color: "#00cc99",
+                color: this.state.colors.open,
                 tipo: "Licitación pública"
             },
             {
-                color: "#ffcc00",
+                color: this.state.colors.selective,
                 tipo: "Invitación a tres"
             },
             {
-                color: "#663399",
+                color: this.state.colors.direct,
                 tipo: "Adjudicación directa"
             },
             {
-                color: "#ff6600",
-                tipo: "Otra"
+                color: this.state.colors.other,
+                tipo: "Otro"
             }
         ];
 
@@ -112,7 +169,7 @@ class Cifras extends React.Component{
                         </Grid>
                     </Grid>:
                     <Grid container spacing={0}>
-                        <Grid item xs={12} md={12} lg={4} xl={4} align="center">
+                        <Grid item xs={12} md={12} lg={4} xl={4} align="center" className={classes.item}>
                             <Typography variant="h6">
                                 Procesos de contratación
                             </Typography>
@@ -128,6 +185,12 @@ class Cifras extends React.Component{
                                 <b> <CountUp separator="," start={1} end={this.state.instituciones}/></b>
                             </Typography>
 
+                            <Typography variant="h6">Gasto total</Typography>
+
+                            <Typography variant="h5" paragraph>
+                                <b> <CountUp separator="," decimals={2} prefix={'$'} start={1} end={this.state.gastoTotal}/></b>
+                            </Typography>
+
                             <Typography variant="h6">
                                 Periodo
                             </Typography>
@@ -137,14 +200,16 @@ class Cifras extends React.Component{
 
                         </Grid>
 
-                        <Grid item xs={12} md={12} lg={8} xl={8}>
-
+                        <Grid item xs={12} md={12} lg={8} xl={8} className={classes.item}>
                             <Grid container spacing={0}>
-                                <Grid item xs={12} md={6} lg={6} xl={6} align="center">
-                                    <Donutchart data={this.state.donutChartData}/>
-                                </Grid>
-                                <Grid item xs={12} md={6} lg={6} xl={6}>
 
+                                <Grid item xs={12} md={6} lg={6} xl={6} align="center" className={classes.item}>
+                                    <CustomizedSelect handleSelectDonutData={this.handleSelectDonutData} dataType={this.state.donutChartDataType}/>
+                                    <Donutchart data={this.state.donutChartData} dataType={this.state.donutChartDataType}/>
+                                </Grid>
+
+                                <Grid item xs={12} md={6} lg={6} xl={6} className={classes.item}>
+                                    <Typography variant="h6" paragraph>Tipo de contratación</Typography>
                                     <ul className={classes.ul}>
                                         {
                                             bullets.map((b, i) => (

@@ -1,10 +1,3 @@
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // CARGA LAS DEPENDENCIAS
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 import React, { Component } from "react";
 import { Grid } from "@material-ui/core";
 
@@ -18,22 +11,16 @@ import MenuInformacion from "../MenuLaterlal";
 
 import styles from "../style";
 
-let menu = ["Resumen", "Deudas", "Otras obligaciones"];
-
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // DEFINE LA CLASE PRINCIPAL
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 class Pasivos extends Component {
-  /*
-   * R E N D E R
-   * ----------------------------------------------------------------------
-   */
   render() {
     let { classes, path, value, change } = this.props;
+    let { deudas, otras_obligaciones } = this.props.profile.pasivos;
+
+    let menu = [
+      { name: "Resumen" },
+      { name: "Deudas", value: deudas.length },
+      { name: "Otras obligaciones", value: otras_obligaciones.length }
+    ];
 
     return (
       <div className={classes.rootSeccion}>
@@ -65,11 +52,4 @@ class Pasivos extends Component {
   }
 }
 
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // REGRESA EL COMPONENTE
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 export default withStyles(styles)(Pasivos);

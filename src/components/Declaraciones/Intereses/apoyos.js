@@ -1,10 +1,3 @@
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // CARGA LAS DEPENDENCIAS
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 import React, { Component } from "react";
 import { Grid, Typography } from "@material-ui/core";
 
@@ -18,37 +11,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "../style";
 
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // DEFINE LA CLASE PRINCIPAL
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 class InteresesApoyos extends Component {
-  constructor(props) {
-    super(props);
-
-    let elems = this.props.profile.intereses.apoyos_beneficios_publicos.map(
-      d => {
-        // let item = d;
-        d.show = true;
-
-        return d;
-      }
-    );
-
-    this.state = {
-      items: elems
-    };
-
-    this.toggl = this.toggl.bind(this);
-  }
-
-  /*
-   * R E N D E R
-   * ----------------------------------------------------------------------
-   */
   render() {
     let { classes } = this.props;
 
@@ -56,7 +19,7 @@ class InteresesApoyos extends Component {
       <Grid container spacing={3} className={classes.rootSubseccion}>
         <Grid item xs={12}>
           <Typography className={classes.titulo}>
-            <strong>Apoyos ({this.items().length})</strong>
+            <strong>Apoyos</strong>
           </Typography>
           <Grid container spacing={3}>
             {this.items().map((interes, i) => (
@@ -74,17 +37,25 @@ class InteresesApoyos extends Component {
                     className={classes.expansionpaneldetails}
                   >
                     <Grid container spacing={3}>
-                      <Grid item xs={12}>
+                      <Grid item xs={12} className={classes.lineCard}>
+                        <Typography className={classes.tituloCard}>
+                          Programa
+                        </Typography>
+                        <Typography className={classes.dataCard}>
+                          <strong>{interes.programa}</strong>
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={12} className={classes.lineCard}>
+                        <Typography className={classes.tituloCard}>
+                          Institución otorgante
+                        </Typography>
+                        <Typography className={classes.dataCard}>
+                          {interes.institucion_otorgante}
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={12} className={classes.lineCard}>
                         <Grid container spacing={3}>
                           <Grid item xs={8}>
-                            <Typography className={classes.tituloCard}>
-                              Programa
-                            </Typography>
-                            <Typography className={classes.dataCard}>
-                              <strong>{interes.programa}</strong>
-                            </Typography>
-                          </Grid>
-                          <Grid item xs={4}>
                             <Typography className={classes.tituloCard}>
                               Valor anual del apoyo
                             </Typography>
@@ -93,18 +64,6 @@ class InteresesApoyos extends Component {
                                 style: "currency",
                                 currency: "MXN"
                               }).format(interes.valor_anual_apoyo)}
-                            </Typography>
-                          </Grid>
-                        </Grid>
-                      </Grid>
-                      <Grid item xs={12}>
-                        <Grid container spacing={3}>
-                          <Grid item xs={8}>
-                            <Typography className={classes.tituloCard}>
-                              Institución otorgante
-                            </Typography>
-                            <Typography className={classes.dataCard}>
-                              {interes.institucion_otorgante}
                             </Typography>
                           </Grid>
                           <Grid item xs={4}>
@@ -117,7 +76,7 @@ class InteresesApoyos extends Component {
                           </Grid>
                         </Grid>
                       </Grid>
-                      <Grid item xs={12}>
+                      <Grid item xs={12} className={classes.lineCard}>
                         <Grid container spacing={3}>
                           <Grid item xs={8}>
                             <Typography className={classes.tituloCard}>
@@ -156,34 +115,9 @@ class InteresesApoyos extends Component {
     );
   }
 
-  /*
-   * M E T H O D S
-   * ----------------------------------------------------------------------
-   */
-  toggl(item, index, e) {
-    console.log(item, index, e);
-
-    let items = this.state.items,
-      newItems = items.map(d => {
-        if (item === d) {
-          d.show = !item.show;
-        }
-
-        return d;
-      });
-
-    this.setState({ items: newItems });
-  }
   items() {
     return this.props.profile.intereses.apoyos_beneficios_publicos;
   }
 }
 
-/*
-  ////////////////////////////////////////////////////////////////////////////////
-  //
-  // REGRESA EL COMPONENTE
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 export default withStyles(styles)(InteresesApoyos);

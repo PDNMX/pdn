@@ -82,13 +82,13 @@ class EdadTotal extends Component {
   }
 
   /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+  
   /
   /  prepara la información para hacer las llamadas
   /  al API necesarias, utilizando la función getInfo.
   /  regresa un array de promesas y etiquetas
   /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+  
   */
   makeData() {
     let res = [],
@@ -113,12 +113,12 @@ class EdadTotal extends Component {
   }
 
   /*
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+  
   /
   /  escribe el query de la petición al api (no la
   /  petición completa, solo el filtro)
   /
-  /  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+  
   */
   makeQuery(_from, _to) {
     let str = ConstClass.PROP_NAMES.nacimiento,

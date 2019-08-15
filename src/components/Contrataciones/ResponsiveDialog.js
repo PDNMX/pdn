@@ -51,7 +51,7 @@ function ResponsiveDialog(props) {
                     {/* <DialogContentText>
 
                     </DialogContentText>*/}
-                    <ReactJson src={data}/>
+                    <ReactJson src={data} collapsed={3}/>
                 </DialogContent>
                 <DialogActions>
                     <Button href={handleDownload()} variant="contained"

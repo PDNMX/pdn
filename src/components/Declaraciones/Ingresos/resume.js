@@ -1,10 +1,3 @@
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // CARGA LAS DEPENDENCIAS
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 import React, { Component } from "react";
 import { Paper, Grid } from "@material-ui/core";
 
@@ -15,142 +8,123 @@ import styles from "../style";
 
 let d3 = Object.assign({}, require("d3-format"));
 
-/*
-	////////////////////////////////////////////////////////////////////////////////
-  //
-  // DEFINE LA CLASE PRINCIPAL
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 class IngresosSueldosPublicos extends Component {
   constructor(props) {
     super(props);
 
-    let elems = this.props.profile.ingresos.sueldos_salarios_publicos.map(d => {
-      // let item = d;
-      d.show = true;
-
-      return d;
-    });
-
     this.state = {
-      items: elems
+      data: null
     };
-
-    this.toggl = this.toggl.bind(this);
   }
-  /*
-   * R E N D E R
-   * ----------------------------------------------------------------------
-   */
-  render() {
-    let fakeData = [
+
+  suma = d => {
+    let total = 0;
+    d.map(o => {
+      total += o.ingreso_bruto_anual.valor;
+      return "";
+      // console.log("o", o);
+    });
+    return total;
+  };
+
+  componentDidMount() {
+    let {
+      sueldos_salarios_publicos,
+      sueldos_salarios_otros_empleos,
+      actividad_profesional,
+      actividad_empresarial,
+      actividad_economica_menor,
+      arrendamiento,
+      intereses,
+      premios,
+      otros_ingresos,
+      enajenacion_bienes
+    } = this.props.profile.ingresos;
+
+    let data = [
       {
         name: "Sueldos",
-        amount: [50000, 0, 0, 0, 0, 0]
+        amount: [this.suma(sueldos_salarios_publicos)]
       },
 
       {
         name: "Otros sueldos",
-        amount: [100000, 20000, 20000, 20000, 0, 0]
+        amount: [this.suma(sueldos_salarios_otros_empleos)]
       },
 
       {
         name: "Actividad profesional",
-        amount: [150000, 0, 0, 0, 0, 0]
+        amount: [this.suma(actividad_profesional)]
       },
 
       {
         name: "Actividad empresarial",
-        amount: [250000, 0, 0, 0, 0, 0]
+        amount: [this.suma(actividad_empresarial)]
       },
 
       {
         name: "Actividad económica",
-        amount: [30000, 0, 0, 0, 0, 0]
+        amount: [this.suma(actividad_economica_menor)]
       },
 
       {
         name: "Arrendamiento",
-        amount: [33000, 0, 0, 0, 0, 0]
+        amount: [this.suma(arrendamiento)]
       },
 
       {
         name: "Intereses",
-        amount: [43000, 20000, 0, 0, 0, 0]
+        amount: [this.suma(intereses)]
       },
 
       {
         name: "Premios",
-        amount: [13000, 0, 0, 0, 0, 0]
+        amount: [this.suma(premios)]
       },
 
       {
         name: "Otros ingresos",
-        amount: [3000, 0, 20000, 0, 0, 0]
+        amount: [this.suma(otros_ingresos)]
       },
 
       {
         name: "Enajenación de bienes",
-        amount: [13000, 0, 0, 0, 0, 20000]
+        amount: [this.suma(enajenacion_bienes)]
       }
     ];
+
+    // console.log("intereses", this.props.profile.ingresos);
+    // console.log("data", data);
+
+    this.setState({
+      data: data
+    });
+  }
+
+  render() {
+    let info = {
+      title: "Ingresos",
+      xConfig: "Tipo de ingreso",
+      yConfig: "Valor del ingreso"
+    };
 
     let { classes } = this.props;
 
     return (
       <Grid container spacing={3} className={classes.rootSubseccion}>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <BaseGraph data={fakeData} format={d3.format("$,")} />
-            <span style={{ fontSize: 12 }}>
-              <span className={classes.declarante} />
-              Declarante
-              <span className={classes.conyuge} />
-              Conyugé
-              <span className={classes.hijos} />
-              Hijo/Hija
-              <span className={classes.padres} />
-              Padre/Madre
-              <span className={classes.suegros} />
-              Suegro/Suegra
-              <span className={classes.otro} />
-              Otro
-            </span>
+            {this.state.data && (
+              <BaseGraph
+                data={this.state.data}
+                info={info}
+                format={d3.format("$,")}
+              />
+            )}
           </Paper>
         </Grid>
       </Grid>
     );
   }
-
-  /*
-   * M E T H O D S
-   * ----------------------------------------------------------------------
-   */
-  toggl(item, index, e) {
-    console.log(item, index, e);
-
-    let items = this.state.items,
-      newItems = items.map(d => {
-        if (item === d) {
-          d.show = !item.show;
-        }
-
-        return d;
-      });
-
-    this.setState({ items: newItems });
-  }
-  items() {
-    return this.props.profile.ingresos.sueldos_salarios_publicos;
-  }
 }
-
-/*
-  ////////////////////////////////////////////////////////////////////////////////
-  //
-  // REGRESA EL COMPONENTE
-  //
-  ////////////////////////////////////////////////////////////////////////////////
-*/
 export default withStyles(styles)(IngresosSueldosPublicos);
