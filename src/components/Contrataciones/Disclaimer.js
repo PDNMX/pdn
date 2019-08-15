@@ -40,7 +40,7 @@ class Disclaimer extends React.Component{
                 <ul className={classes.ul}>
                     <li className={classes.li}> <Typography><span className={classes.bullet}/>Cuánto gasta el gobierno</Typography></li>
                     <li className={classes.li}><Typography><span className={classes.bullet}/>Qué tipos de procedimientos</Typography></li>
-                    <li className={classes.li}><Typography><span className={classes.bullet}/>información sobre los proveedores que participan</Typography></li>
+                    <li className={classes.li}><Typography><span className={classes.bullet}/>Información sobre los proveedores que participan</Typography></li>
                 </ul>
             </div>
         );

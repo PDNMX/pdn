@@ -2,7 +2,8 @@
 .fenito{
     z-index: -1;
     position: absolute;
-    width: 100%;
+    min-width: 100%;
+    min-height: 100%;
     right: 0;
     top: 0;
 }
