@@ -47,7 +47,13 @@ class Cifras extends React.Component{
             start: 2017,
             end: 2018
         },
-        gastoTotal: 0
+        gastoTotal: 0,
+        colors: {
+            open: "#EB5468",
+            selective: "#187099",
+            direct: "#B3AD1D",
+            other: "#3CB3E6"
+        }
     };
 
     porcentaje = (amount, total) => {
@@ -74,10 +80,10 @@ class Cifras extends React.Component{
                 gastoTotal: data.amounts.total,
                 donutChartDataType : 'amounts',
                 donutChartData: [
-                    {theta: data.amounts.open, label: this.porcentaje(data.amounts.open,data.amounts.total), color: "#00cc99"},
-                    {theta: data.amounts.selective, label: this.porcentaje(data.amounts.selective,data.amounts.total), color: "#ffcc00"},
-                    {theta: data.amounts.direct, label: this.porcentaje(data.amounts.direct,data.amounts.total), color: "#663399"},
-                    {theta: data.amounts.other, label: this.porcentaje(data.amounts.other,data.amounts.total), color: "#ff6600"}
+                    {theta: data.amounts.open, label: this.porcentaje(data.amounts.open,data.amounts.total), color: this.state.colors.open},
+                    {theta: data.amounts.selective, label: this.porcentaje(data.amounts.selective,data.amounts.total), color: this.state.colors.selective},
+                    {theta: data.amounts.direct, label: this.porcentaje(data.amounts.direct,data.amounts.total), color: this.state.colors.direct},
+                    {theta: data.amounts.other, label: this.porcentaje(data.amounts.other,data.amounts.total), color: this.state.colors.other}
                     ]
             })
 
@@ -97,10 +103,10 @@ class Cifras extends React.Component{
             this.setState({
                 donutChartDataType: p,
                 donutChartData: [
-                    {theta: open, label: this.porcentaje(open, total), color: "#00cc99"},
-                    {theta: selective, label: this.porcentaje(selective, total), color: "#ffcc00"},
-                    {theta: direct, label: this.porcentaje(direct, total), color: "#663399"},
-                    {theta: other, label: this.porcentaje(other, total), color: "#ff6600"}
+                    {theta: open, label: this.porcentaje(open, total), color: this.state.colors.open},
+                    {theta: selective, label: this.porcentaje(selective, total), color: this.state.colors.selective},
+                    {theta: direct, label: this.porcentaje(direct, total), color: this.state.colors.direct},
+                    {theta: other, label: this.porcentaje(other, total), color: this.state.colors.other}
                 ]
             });
         } else {
@@ -110,10 +116,10 @@ class Cifras extends React.Component{
             this.setState({
                 donutChartDataType: p,
                 donutChartData: [
-                    {theta: open, label: this.porcentaje(open, contrataciones), color: "#00cc99"},
-                    {theta: selective, label: this.porcentaje(selective, contrataciones), color: "#ffcc00"},
-                    {theta: direct, label: this.porcentaje(direct, contrataciones), color: "#663399"},
-                    {theta: other, label: this.porcentaje(other, contrataciones), color: "#ff6600"}
+                    {theta: open, label: this.porcentaje(open, contrataciones), color: this.state.colors.open},
+                    {theta: selective, label: this.porcentaje(selective, contrataciones), color: this.state.colors.selective},
+                    {theta: direct, label: this.porcentaje(direct, contrataciones), color: this.state.colors.direct},
+                    {theta: other, label: this.porcentaje(other, contrataciones), color: this.state.colors.other}
                 ]
             });
         }
@@ -127,19 +133,19 @@ class Cifras extends React.Component{
 
         const bullets = [
             {
-                color: "#00cc99",
+                color: this.state.colors.open,
                 tipo: "Licitación pública"
             },
             {
-                color: "#ffcc00",
+                color: this.state.colors.selective,
                 tipo: "Invitación a tres"
             },
             {
-                color: "#663399",
+                color: this.state.colors.direct,
                 tipo: "Adjudicación directa"
             },
             {
-                color: "#ff6600",
+                color: this.state.colors.other,
                 tipo: "Otra"
             }
         ];
