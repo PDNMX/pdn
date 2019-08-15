@@ -2,7 +2,7 @@ import React from 'react';
 import {withStyles} from "@material-ui/core/styles";
 import Grid from '@material-ui/core/Grid';
 import {Link} from 'react-router-dom';
-import BG from '../../../assets/img/fenito.jpg';
+import BG from '../../../assets/img/cintillo_contrataciones.jpg';
 import PDNLogo from '../../../assets/PDN.png';
 import C from '../../../assets/iconos_azul/6_icono.svg'
 import {Typography} from "@material-ui/core"
@@ -88,7 +88,7 @@ class Header extends React.Component{
                     </Grid>
                 </Grid>
 
-                <Grid container spacing={0} className={classNames(classes.container1, 'servidores')} justify='center'>
+                <Grid container spacing={0} className={classNames(classes.container1)} justify='center'>
                     <Grid item xs={12} md={4} align={isWidthUp('md', this.props.width)? 'right':'center'} className={classes.item1}>
                         <img src={C} alt="Especificaciones" className={classes.logo}/>
                     </Grid>

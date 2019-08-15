@@ -64,12 +64,32 @@ export default class Example extends React.Component {
 
         };
 
+        let colors = [
+            '#25A8E6',
+            '#3FB9F2',
+            '#3CB3E6',
+            '#359CCC',
+            '#1B7AA6',
+            '#2B7FA6',
+            '#187099',
+            '#096A99',
+            '#145E80',
+            '#1B4E66',
+            '#00344D',
+            '#0E4259'
+        ];
+
+        colors.reverse();
+
         let data = this.props.data.map((d,i) => {
-            return {name: d._id.name , x: d._id.id, y: d.total/ 1000000, total: d.total };
+            return {name: d._id.name , x: d._id.id, y: d.total/ 1000000, total: d.total, color: colors[i]};
         });
 
         const {useCanvas} = this.state;
         const BarSeries = useCanvas ? VerticalBarSeriesCanvas : VerticalBarSeries;
+
+
+
 
         return (
             <div>
@@ -83,6 +103,7 @@ export default class Example extends React.Component {
                     <BarSeries className="vertical-bar-series-example" data={data}
                                onValueMouseOver={v => this.setState({value: v})}
                                onSeriesMouseOut={v => this.setState({value: false})}
+                               colorType="literal"
                     />
                     <XAxis tickLabelAngle={-45} />
                     <YAxis position="middle"/>
