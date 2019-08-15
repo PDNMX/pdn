@@ -137,7 +137,7 @@ class Busqueda extends React.Component{
         }
 
         if (this.state.inputText !== ""){
-            body.contract_title = this.state.inputText;
+            body.tender_title = this.state.inputText;
         }
 
         this.setState({loading: true}, () => {

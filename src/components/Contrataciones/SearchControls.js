@@ -87,7 +87,7 @@ class SearchControls extends React.Component{
           this.props.setSupplierName(event.target.value);
         };
 
-        const handleChangeContractTitle = event => {
+        const handleSetInputText = event => {
           this.props.setInputText(event.target.value);
         };
 
@@ -178,9 +178,9 @@ class SearchControls extends React.Component{
                     <Grid item xs={12} className={classes.item }>
                         <TextField
                             id="outlined-full-width"
-                            label="Título del contrato"
+                            label="Frase de búsqueda"
                             //style={{  margin : 8}}
-                            placeholder="Escriba el título del contrato"
+                            placeholder="Escriba la frase de búsqueda"
                             //helperText="Full width!"
                             fullWidth
                             margin="normal"
@@ -188,7 +188,7 @@ class SearchControls extends React.Component{
                             InputLabelProps={{
                                 shrink: true,
                             }}
-                            onChange={handleChangeContractTitle}
+                            onChange={handleSetInputText}
                             onKeyDown={handleSearch}
                         />
                     </Grid>

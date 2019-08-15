@@ -251,7 +251,7 @@ export default function EnhancedTable(props) {
         return {
             col1: d.ocid,
             col2: getProcurementMethod(d.tender.procurementMethod),
-            col3: d.contracts[0].title,
+            col3: d.tender.title,
             col4: total === 0?'En proceso':  new Intl.NumberFormat('es-MX', {style: 'currency', currency: 'MXN'}).format(total)
         }
     });
