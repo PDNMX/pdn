@@ -22,7 +22,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 
 const styles = theme => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1    
   },
   grow: {
     flexGrow: 1
@@ -129,13 +129,18 @@ class Header extends React.Component {
   };
 
   render() {
-    const { classes, logo, titulo, copy, background } = this.props;
+    const { classes, logo, titulo, background } = this.props;
     let { anchorEl } = this.state;
     let open = Boolean(anchorEl);
 
     return (
       <div className={classes.root}>
-        <Grid container spacing={0} justify="center">
+        <Grid
+          container
+          spacing={0}
+          justify="center"
+          style={{ maxWidth: 1200, margin: "0 auto" }}
+        >
           <Grid
             item
             xs={12}
@@ -186,7 +191,7 @@ class Header extends React.Component {
           </Grid>
         </Grid>
         <Grid container spacing={0} className="breadcrumb" justify="center">
-          <Grid item xs={12}>
+          <Grid item xs={12} style={{ maxWidth: 1200, margin: "0 auto" }}>
             <ul>
               <li>
                 <Link className={classes.link} to="/">

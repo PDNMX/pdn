@@ -170,7 +170,12 @@ class Contenedor extends React.Component {
           background={background}
         />
         <Grid container spacing={0} className={classes.bgContainer}>
-          <Grid item xs={12} className={classes.section}>
+          <Grid
+            item
+            xs={12}
+            className={classes.section}
+            style={{ maxWidth: 1200, margin: "0 auto" }}
+          >
             <Grid container spacing={0}>
               <Grid
                 item
@@ -235,7 +240,12 @@ class Contenedor extends React.Component {
         </Grid>
         {/* fin menu */}
         <Grid container spacing={0}>
-          <Grid item xs={12} className={classes.contenedor}>
+          <Grid
+            item
+            xs={12}
+            className={classes.contenedor}
+            style={{ maxWidth: 1200, margin: "0 auto" }}
+          >
             <Switch>
               <Route exact path="/declaraciones" component={Busqueda} />
               <Route
