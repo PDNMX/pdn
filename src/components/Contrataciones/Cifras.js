@@ -33,6 +33,10 @@ const styles = theme => ({
     li: {
         paddingBottom: theme.spacing(2)
     },
+    item: {
+        paddingRight: theme.spacing(1),
+        paddingLeft: theme.spacing(1)
+    }
 });
 
 class Cifras extends React.Component{
@@ -69,7 +73,10 @@ class Cifras extends React.Component{
             json: true
         }).then( data => {
 
-            console.log(data)
+            //console.log(data)
+
+            const {open, selective, direct, other, total } = data.amounts;
+            const {colors} = this.state;
 
             this.setState({
                 loading: false,
@@ -77,13 +84,13 @@ class Cifras extends React.Component{
                 instituciones: data.instituciones,
                 counts: data.counts,
                 amounts: data.amounts,
-                gastoTotal: data.amounts.total,
+                gastoTotal: total,
                 donutChartDataType : 'amounts',
                 donutChartData: [
-                    {theta: data.amounts.open, label: this.porcentaje(data.amounts.open,data.amounts.total), color: this.state.colors.open},
-                    {theta: data.amounts.selective, label: this.porcentaje(data.amounts.selective,data.amounts.total), color: this.state.colors.selective},
-                    {theta: data.amounts.direct, label: this.porcentaje(data.amounts.direct,data.amounts.total), color: this.state.colors.direct},
-                    {theta: data.amounts.other, label: this.porcentaje(data.amounts.other,data.amounts.total), color: this.state.colors.other}
+                    {theta: open, label: this.porcentaje(open,total), color: colors.open, type: "Licitación pública"},
+                    {theta: selective, label: this.porcentaje(selective,total), color: colors.selective, type: "Invitación a tres"},
+                    {theta: direct, label: this.porcentaje(direct, total), color: colors.direct, type: "Adjudicación directa"},
+                    {theta: other, label: this.porcentaje(other, total), color: colors.other, type: "Otro"}
                     ]
             })
 
@@ -97,29 +104,32 @@ class Cifras extends React.Component{
 
     handleSelectDonutData = (p) => {
         //console.log(p)
-        if (p === 'amounts'){
+        const {colors} = this.state;
 
+        if (p === 'amounts'){
             const {open, direct, selective, other, total} = this.state.amounts;
+
             this.setState({
                 donutChartDataType: p,
                 donutChartData: [
-                    {theta: open, label: this.porcentaje(open, total), color: this.state.colors.open},
-                    {theta: selective, label: this.porcentaje(selective, total), color: this.state.colors.selective},
-                    {theta: direct, label: this.porcentaje(direct, total), color: this.state.colors.direct},
-                    {theta: other, label: this.porcentaje(other, total), color: this.state.colors.other}
+                    {theta: open, label: this.porcentaje(open,total), color: colors.open, type: "Licitación pública"},
+                    {theta: selective, label: this.porcentaje(selective,total), color: colors.selective, type: "Invitación a tres"},
+                    {theta: direct, label: this.porcentaje(direct, total), color: colors.direct, type: "Adjudicación directa"},
+                    {theta: other, label: this.porcentaje(other, total), color: colors.other, type: "Otro"}
                 ]
             });
+
         } else {
             const {open, direct, selective, other} = this.state.counts;
-            const {contrataciones} = this.state;
+            const total = this.state.contrataciones;
 
             this.setState({
                 donutChartDataType: p,
                 donutChartData: [
-                    {theta: open, label: this.porcentaje(open, contrataciones), color: this.state.colors.open},
-                    {theta: selective, label: this.porcentaje(selective, contrataciones), color: this.state.colors.selective},
-                    {theta: direct, label: this.porcentaje(direct, contrataciones), color: this.state.colors.direct},
-                    {theta: other, label: this.porcentaje(other, contrataciones), color: this.state.colors.other}
+                    {theta: open, label: this.porcentaje(open,total), color: colors.open, type: "Licitación pública"},
+                    {theta: selective, label: this.porcentaje(selective,total), color: colors.selective, type: "Invitación a tres"},
+                    {theta: direct, label: this.porcentaje(direct, total), color: colors.direct, type: "Adjudicación directa"},
+                    {theta: other, label: this.porcentaje(other, total), color: colors.other, type: "Otro"}
                 ]
             });
         }
@@ -146,7 +156,7 @@ class Cifras extends React.Component{
             },
             {
                 color: this.state.colors.other,
-                tipo: "Otra"
+                tipo: "Otro"
             }
         ];
 
@@ -159,7 +169,7 @@ class Cifras extends React.Component{
                         </Grid>
                     </Grid>:
                     <Grid container spacing={0}>
-                        <Grid item xs={12} md={12} lg={4} xl={4} align="center">
+                        <Grid item xs={12} md={12} lg={4} xl={4} align="center" className={classes.item}>
                             <Typography variant="h6">
                                 Procesos de contratación
                             </Typography>
@@ -190,16 +200,16 @@ class Cifras extends React.Component{
 
                         </Grid>
 
-                        <Grid item xs={12} md={12} lg={8} xl={8}>
-
+                        <Grid item xs={12} md={12} lg={8} xl={8} className={classes.item}>
                             <Grid container spacing={0}>
-                                <Grid item xs={12} md={6} lg={6} xl={6} align="center">
-                                    <CustomizedSelect handleSelectDonutData={this.handleSelectDonutData}/>
 
+                                <Grid item xs={12} md={6} lg={6} xl={6} align="center" className={classes.item}>
+                                    <CustomizedSelect handleSelectDonutData={this.handleSelectDonutData} dataType={this.state.donutChartDataType}/>
                                     <Donutchart data={this.state.donutChartData} dataType={this.state.donutChartDataType}/>
                                 </Grid>
-                                <Grid item xs={12} md={6} lg={6} xl={6}>
 
+                                <Grid item xs={12} md={6} lg={6} xl={6} className={classes.item}>
+                                    <Typography variant="h6" paragraph>Tipo de contratación</Typography>
                                     <ul className={classes.ul}>
                                         {
                                             bullets.map((b, i) => (

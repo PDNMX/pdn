@@ -7,9 +7,11 @@ const AmountTooltip  = props => {
     return (
         <div>
             <p>
-                Monto gastado:
+                <b>{props.value.type}</b>
             </p>
             <p>
+                Monto gastado:
+            <br/>
                 <b>{new Intl.NumberFormat('es-MX', {style: 'currency', currency: 'MXN'}).format(props.value.theta)}</b>
             </p>
         </div>
@@ -21,9 +23,11 @@ const CountTooltip  = props => {
     return (
         <div>
             <p>
-                Número de contrataciones:
+                <b>{props.value.type}</b>
             </p>
             <p>
+                Número de contrataciones:
+            <br/>
                 <b>{props.value.theta.toFixed(0)}</b>
             </p>
         </div>

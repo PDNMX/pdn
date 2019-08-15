@@ -1,10 +1,10 @@
 import React from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
-//import MenuItem from '@material-ui/core/MenuItem';
+import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
-//import Select from '@material-ui/core/Select';
-import NativeSelect from '@material-ui/core/NativeSelect';
+import Select from '@material-ui/core/Select';
+//import NativeSelect from '@material-ui/core/NativeSelect';
 import InputBase from '@material-ui/core/InputBase';
 
 const BootstrapInput = withStyles(theme => ({
@@ -46,7 +46,9 @@ const useStyles = makeStyles(theme => ({
     root: {
         //display: 'flex',
         //flexWrap: 'wrap',
-        flexGrow: 1
+        flexGrow: 1,
+        paddingRight: theme.spacing(2),
+        paddingLeft: theme.spacing(2),
     },
     margin: {
         margin: theme.spacing(1),
@@ -55,44 +57,23 @@ const useStyles = makeStyles(theme => ({
 
 export default function CustomizedSelect(props) {
     const classes = useStyles();
-    const [age, setAge] = React.useState('');
+    //const [age, setAge] = React.useState('');
     const handleChange = event => {
-        setAge(event.target.value);
+        //etAge(event.target.value);
         props.handleSelectDonutData(event.target.value);
     };
     return (
         <form className={classes.root} autoComplete="off">
-            {/*<FormControl className={classes.margin}>
-                <InputLabel htmlFor="age-customized-input">Age</InputLabel>
-                <BootstrapInput id="age-customized-input" />
-            </FormControl>
-
-            <FormControl className={classes.margin}>
-                <InputLabel htmlFor="age-customized-select">Age</InputLabel>
-                <Select
-                    value={age}
-                    onChange={handleChange}
-                    input={<BootstrapInput name="age" id="age-customized-select" />}
-                >
-                    <MenuItem value="">
-                        <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
-                </Select>
-            </FormControl>*/}
-            <FormControl className={classes.margin}>
+            <FormControl className={classes.margin} fullWidth>
                 <InputLabel htmlFor="age-customized-native-simple">Contrataciones</InputLabel>
-                <NativeSelect
-                    value={age}
+                <Select
+                    value={props.dataType}
                     onChange={handleChange}
                     input={<BootstrapInput name="age" id="age-customized-native-simple" />}
                 >
-                    {/*<option value="" />*/}
-                    <option value={"amounts"}>Gasto ejercido</option>
-                    <option value={"counts"}>Número de contrataciones</option>
-                </NativeSelect>
+                    <MenuItem value={"amounts"}>Gasto ejercido</MenuItem>
+                    <MenuItem value={"counts"}>Número de contrataciones</MenuItem>
+                </Select>
             </FormControl>
         </form>
     );
