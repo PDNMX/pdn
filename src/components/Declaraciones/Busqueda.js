@@ -74,7 +74,7 @@ class App extends Component {
           container
           spacing={0}
           className={classes.root}
-          style={{ maxWidth: 1200, margin: "0 auto", padding: "100px 0px" }}
+          style={{ maxWidth: 1200, margin: "0 auto", padding: "100px 10px" }}
         >
           <Grid item xs={12}>
             <Typography className={classes.h1}>
@@ -99,12 +99,6 @@ class App extends Component {
     if (this.state.response) {
       return (
         <Fragment>
-          {/*
-          <SearchTable results={this.state.response.results}
-                       pages={this.state.pages}
-                       page={this.state.page}
-                       search={this.updatePage} />
-          */}
           <BusquedaTableMaterialUI
             results={this.state.response.results}
             pages={this.state.pages}
