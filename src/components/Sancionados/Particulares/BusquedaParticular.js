@@ -10,6 +10,10 @@ import Grid from "@material-ui/core/Grid/Grid";
 import {Typography} from "@material-ui/core"
 import Button from "@material-ui/core/Button/Button";
 import InputLabel from '@material-ui/core/InputLabel';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormLabel from "@material-ui/core/FormLabel";
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
 
 const styles = theme => ({
     container: {
@@ -104,7 +108,7 @@ class BusquedaParticular extends React.Component {
                 });
                 this.setState({dependencias: aux, suggestions: sug});
             }).catch(err => {
-            this.props.handleError(true);
+           // this.props.handleError(true);
         });
 
 
@@ -119,14 +123,15 @@ class BusquedaParticular extends React.Component {
     };
 
     render() {
-        let {classes, handleChangeCampo, nombreParticular, numeroExpediente, institucion} = this.props;
+        let {classes, handleChangeCampo, nombreParticular, numeroExpediente, institucion,nivel} = this.props;
 
         return (
             <Grid container spacing={4}>
                 <Grid item xs={12}>
                     <Typography variant="h6" paragraph><b>Busca un particular sancionado</b></Typography>
                 </Grid>
-                <Grid item md={5} xs={12}>
+
+                <Grid item md={6} xs={12}>
                     <FormControl className={classes.formControl}>
                         <InputLabel htmlFor={'campoSelectInstitucion'}>Institución</InputLabel>
                         <Select style={{marginTop: '0px'}} value={institucion}
@@ -145,7 +150,7 @@ class BusquedaParticular extends React.Component {
                         </Select>
                     </FormControl>
                 </Grid>
-                <Grid item md={4} xs={12}>
+                <Grid item md={3} xs={12}>
                     <FormControl className={classes.formControl}>
                         <TextField
                             id="search"
@@ -176,8 +181,25 @@ class BusquedaParticular extends React.Component {
 
                     </FormControl>
                 </Grid>
+                <Grid item  md={10} xs={12}>
+                    <FormControl component="fieldset" className={classes.formControl}>
+                        <FormLabel component="legend">Nivel</FormLabel>
+                        <RadioGroup row
+                            aria-label="gender"
+                            name="gender1"
+                            className={classes.group}
+                            value={nivel}
+                            onChange={(e)=>handleChangeCampo('nivel',e)}
+                        >
+                            <FormControlLabel value="todos" control={<Radio />} label="Todos" />
+                            <FormControlLabel value="federal" control={<Radio />} label="Federal" />
+                            <FormControlLabel value="estatal" control={<Radio />} label="Estatal" />
+                        </RadioGroup>
 
-                <Grid item md={10}/>
+                    </FormControl>
+                </Grid>
+
+
                 <Grid item xs={12} md={1} className={classes.centrado}>
                     <Button variant="contained" color="secondary" className={classes.button} onClick={this.buscar}>
                         Buscar

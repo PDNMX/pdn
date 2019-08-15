@@ -59,6 +59,9 @@ let color = ["#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
     "#8BC34A", "#CDDC39", "#FFEB3B", "#FFC107", "#FF9800",
     "#FF5722", "#795548", "#9E9E9E", "#607D8B"];
 
+
+
+
 class AnioResolucionSanciones extends React.Component {
     state = {
         error: false,

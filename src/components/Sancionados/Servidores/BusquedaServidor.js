@@ -11,6 +11,10 @@ import {Typography} from "@material-ui/core"
 import Button from '@material-ui/core/Button';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from "@material-ui/core/Select";
+import FormLabel from "@material-ui/core/FormLabel";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Radio from "@material-ui/core/Radio";
 
 const styles = theme => ({
     container: {
@@ -109,7 +113,7 @@ class BusquedaServidor extends React.Component {
     };
 
     render() {
-        const {classes, handleChangeCampo, nombreServidor, apellidoUno, apellidoDos, rfc, curp, institucion} = this.props;
+        const {classes, handleChangeCampo, nombreServidor, apellidoUno, apellidoDos, rfc, curp, institucion,nivel} = this.props;
 
         return (
             <Grid container spacing={4}>
@@ -234,6 +238,25 @@ class BusquedaServidor extends React.Component {
                 </Grid>
 
                 <Grid item md={1}/>
+
+
+                <Grid item  md = {10} xs={12}>
+                    <FormControl component="fieldset" className={classes.formControl}>
+                        <FormLabel component="legend">Nivel</FormLabel>
+                        <RadioGroup row
+                                    aria-label="gender"
+                                    name="gender1"
+                                    className={classes.group}
+                                    value={nivel}
+                                    onChange={(e)=>handleChangeCampo('nivel',e)}
+                        >
+                            <FormControlLabel value="todos" control={<Radio />} label="Todos" />
+                            <FormControlLabel value="federal" control={<Radio />} label="Federal" />
+                            <FormControlLabel value="estatal" control={<Radio />} label="Estatal" />
+                        </RadioGroup>
+
+                    </FormControl>
+                </Grid>
                 <Grid item xs={12} md={1} className={classes.centrado}>
                     <Button variant="contained" color="secondary" className={classes.button} onClick={this.buscar}>
                         Buscar
@@ -245,6 +268,7 @@ class BusquedaServidor extends React.Component {
                         Limpiar
                     </Button>
                 </Grid>
+
             </Grid>
 
         );
