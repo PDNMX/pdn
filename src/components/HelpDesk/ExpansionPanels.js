@@ -8,6 +8,7 @@ import Grid from "@material-ui/core/Grid";
 import MuiLink from "@material-ui/core/Link";
 import {Link} from "react-router-dom";
 import Diagrama from "../../assets/Diagrama_de_comunicacion_API.svg";
+import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 
 const ExpansionPanel = withStyles({
@@ -58,6 +59,12 @@ const useStyles = makeStyles( theme => ({
         textDecoration: "none",
         color: theme.palette.primary.dark,
         wordBreak: "break-all"
+    },
+    button: {
+        marginTop: theme.spacing(1),
+        marginRight: theme.spacing(1),
+        marginBottom: theme.spacing(1),
+        background: '#ffe01b',//'#fecb6e'
     }
 }));
 
@@ -117,6 +124,11 @@ export default function CustomizedExpansionPanels() {
                             Es importante señalar que la PDN no es un repositorio ni generadora de los datos de cada sistema, sino que es una plataforma de interoperabilidad.
                         </Typography>
 
+
+                        <Button  target="blank" className={classes.button} variant="contained" href='https://drive.google.com/file/d/1wdy8bgX9fn1yRCAWSJMhjeTYKxEOXRQv/view'>
+                             Descarga la ficha
+                        </Button>
+
                     </div>
 
 
@@ -160,35 +172,84 @@ export default function CustomizedExpansionPanels() {
                         <MuiLink component='a' href="http://www.diputados.gob.mx/LeyesBiblio/pdf/LGSNA.pdf">
                             Ley General Del Sistema Nacional Anticorrupción
                         </MuiLink>
+                        <Typography paragraph>(Artículos 9, fracciones XII, XIII y XVI; 17; 21, VII, b); 35, X y XI; Título cuarto)</Typography>
 
-                        <ul>
-                            <li><Typography>Artículos 9, fracciones XII, XIII y XVI;</Typography></li>
-                            <li><Typography>17;</Typography></li>
-                            <li><Typography>21, VII, b);</Typography></li>
-                            <li><Typography>35, X y XI;</Typography></li>
-                            <li><Typography>Título cuarto;</Typography></li>
-                        </ul>
+                        <Typography paragraph>
+                            El Artículo 9 de la LGSNA, en sus fracciones XII y XIII, faculta el que se establezca una Plataforma Digital que integre y conecte los diversos sistemas electrónicos que poseen datos e información necesaria para establecer políticas integrales y para que las autoridades competentes tengan acceso a los sistemas a que se refiere el Título Cuarto de esta Ley ; en este título se contemplan los seis sistemas mínimos que debe tener la Plataforma:
+                        </Typography>
+
+                        <ol>
+                            <li><Typography>
+                                Sistema de evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal (S1);
+                            </Typography>
+                            </li>
+                            <li>
+                                <Typography>
+                                Sistema de los Servidores públicos que intervengan en procedimientos de contrataciones públicas (S2);
+                                </Typography>
+                            </li>
+                            <li>
+                                <Typography>
+                                Sistema Nacional de Servidores públicos y particulares sancionados (S3);
+                                </Typography>
+                            </li>
+                            <li>
+                                <Typography>
+                                Sistema de información y comunicación del Sistema Nacional y del Sistema Nacional de Fiscalización (S4);
+                                </Typography>
+                            </li>
+                            <li>
+                                <Typography>
+                                Sistema de denuncias públicas de faltas administrativas y hechos de corrupción (S5); y,
+                                </Typography>
+                            </li>
+                            <li>
+                                <Typography>
+                                Sistema de Información Pública de Contrataciones (S6).
+                                </Typography>
+                            </li>
+                        </ol>
+
                         <MuiLink component='a' href="https://declaranet.gob.mx/docs/LGRA.pdf">
                             Ley General de Responsabilidades Administrativas
                         </MuiLink>
 
-                        <ul>
-                            <li><Typography>Artículos 9, VI, c);</Typography></li>
-                            <li><Typography>26;</Typography></li>
-                            <li><Typography>27;</Typography></li>
-                            <li><Typography>30;</Typography></li>
-                            <li><Typography>31;</Typography></li>
-                            <li><Typography>34;</Typography></li>
-                            <li><Typography>43;</Typography></li>
-                            <li><Typography>44;</Typography></li>
-                            <li><Typography>46;</Typography></li>
-                            <li><Typography>59;</Typography></li>
-                            <li><Typography>93, y</Typography></li>
-                        </ul>
+                        <Typography paragraph>(Artículos 26, 27,30, 31, 34, 43, 44, 46, 59, 93)</Typography>
+
+                        <Typography paragraph>
+                            Establece la necesidad de contar con los siguientes Sistemas:
+                        </Typography>
+
+                        <ol>
+                            <li>
+                                <Typography>
+                                (S1) Sistema de evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal;
+                                </Typography>
+                            </li>
+                            <li>
+                                <Typography>
+                                (S3) Sistema de servidores públicos y particulares sancionados
+                                </Typography>
+                            </li>
+                            <li>
+                                <Typography>
+                                (S6) Servidores Públicos que intervengan en procedimientos para contrataciones públicas;
+                                </Typography>
+                            </li>
+                            <li>
+                                <Typography>
+                                (S5) Sistema de denuncias por hechos de corrupción
+                                </Typography>
+                            </li>
+                        </ol>
 
                         <MuiLink component='a' href="https://www.dof.gob.mx/nota_detalle.php?codigo=5541802&fecha=23/10/2018">
                             Bases para el Funcionamiento de la Plataforma Digital Nacional.
                         </MuiLink>
+
+                        <Typography paragraph>
+                            Las Bases establecen las directrices para el funcionamiento de la PDN  y los sistemas que la conforman, buscando garantizar la interoperabilidad, interconexión, estabilidad, uso y seguridad de la información integrada en la Plataforma; promoviendo la homologación de procesos, estandarización de datos y la simplicidad del uso para los usuarios; teniendo en cuenta en todo momento los derechos de acceso a la información y protección de datos personales en posesión de los sujetos obligados; que permitan cumplir con los procedimientos, obligaciones y disposiciones del Sistema Nacional Anticorrupción y las instituciones que lo conforman.
+                        </Typography>
 
                     </div>
                 </ExpansionPanelDetails>
