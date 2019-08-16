@@ -4,7 +4,9 @@ import {withStyles} from "@material-ui/styles";
 
 const styles = theme => ({
     root: {
-        flexGrow: 1
+        flexGrow: 1,
+        paddingBottom: 0,
+        paddingTop: 0
     },
     bullet: {
         backgroundColor: '#89d4f2',
@@ -22,7 +24,7 @@ const styles = theme => ({
         paddingLeft: '20px'
     },
     li: {
-        paddingBottom: theme.spacing(2)
+        //paddingBottom: theme.spacing(2)
     },
 });
 
@@ -32,7 +34,7 @@ class Disclaimer extends React.Component{
         const {classes} = this.props;
 
         return (
-            <div>
+            <div className={classes.root}>
                 <Typography paragraph>
                     Aquí encontrarás la siguiente información:
                 </Typography>
