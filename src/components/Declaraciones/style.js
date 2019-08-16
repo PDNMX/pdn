@@ -172,7 +172,7 @@ export default theme => ({
   infoBusqueda: {
     paddingRight: theme.spacing(1),
     paddingLeft: theme.spacing(1),
-    paddingBottom: theme.spacing(8),
-    paddingTop: theme.spacing(8)
+    paddingBottom: theme.spacing(4),
+    paddingTop: theme.spacing(4)
   }
 });
