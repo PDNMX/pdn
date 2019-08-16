@@ -52,7 +52,14 @@ class Especificaciones extends React.Component {
                     <Grid item xs={12} className={classes.item}>
 
                         <Typography paragraph>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            Estas especificaciones se refieren a los campos mínimos de datos que debe de contener cada sistema, así como los estándares que debe de seguir cada campo para ser interoperable con la Plataforma Digital Nacional. Esto es lo que permite que los sistemas de aquellos responsables de generar los datos estén ordenados y puedan ser consultados en la PDN.
+                        </Typography>
+                        <Typography paragraph>
+                            Además, en esta sección podrás consultar información acerca del Open API Specification (OAS), el cual es un formato de especificación que permite describir de manera precisa las características con las que deberán contar las APIs que integrarán a la PDN.
+                        </Typography>
+                        <Typography paragraph>
+                            Actualmente están disponibles las especificaciones para los Sistemas 1, 2 y 3
+
                         </Typography>
 
 
