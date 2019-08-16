@@ -134,9 +134,9 @@ export default theme => ({
   },
   button: {
     margin: theme.spacing(1),
-    color: "#FFF",
+    // color: "#FFF",
     fontWeight: "bold",
-    backgroundColor: "#2EB2E7"
+    // backgroundColor: "#2EB2E7"
   },
   expansion: {
     backgroundColor: "#83dfff",
