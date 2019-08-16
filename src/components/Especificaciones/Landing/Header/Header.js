@@ -96,7 +96,7 @@ class Header extends React.Component{
                             estandares de datos
                         </Typography>
                         <Typography  className={classes.whiteText} style={{fontSize: '18px',fontWeight: 500}}>
-                            Plataforma Digital Nacional
+                            Encontrarás las reglas y características con las que deben contar los datos para la interoperabilidad.
                         </Typography>
                     </Grid>
                 </Grid>

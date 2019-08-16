@@ -49,7 +49,7 @@ class Explora extends React.Component{
                             </Typography>
 
                             <Typography className={classes.text} paragraph>
-                                La Plataforma Digital Nacional (PDN) es una fuente de inteligencia para construir integridad y combatir la corrupción, que crea valor para el gobierno y la sociedad, a partir de grandes cantidades de datos.
+                                Una fuente de inteligencia para construir integridad y combatir la corrupción, que crea valor para el gobierno y la sociedad, a partir de grandes cantidades de datos.
                             </Typography>
 
                             <div className={classes.videoDiv}>

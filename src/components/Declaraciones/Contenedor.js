@@ -120,19 +120,20 @@ function AlertDialog(props) {
           id="alert-dialog-description"
           style={{ textAlign: "justify" }}
         >
-          La información contenida en esta sección fue generada de forma
-          aleatoria y sirve unicamente para poder visualizar las diferentes
-          funcionalidades propuestas para este sistema.
+          La información contenida en esta sección <span style={{ fontWeight: "bold", backgroundColor: "red", color: "#FFF", padding: "3px 10px" }}>NO ES REAL</span>,
+          fue generada de forma aleatoria y sirve unicamente para poder
+          visualizar las diferentes funcionalidades propuestas para este
+          sistema.
         </DialogContentText>
         <DialogContentText style={{ textAlign: "justify" }}>
           <b>
             El formato actual está basado en la última versión de las
             especificaciones técnicas publicadas en este sitio, mismas que
-            fueron elaboradas bajo los últimos formatos publicados en el Diario
-            Oficial de la Federación. Estos formatos actualmente se encuentran
-            en revisión por el Comité Coordinador del Sistema Nacional
-            Anticorrupción, por lo que estos no serán los formatos finales de la
-            información.
+            fueron elaboradas bajo los últimos formatos publicados en el
+            Diario Oficial de la Federación. Estos formatos actualmente se
+            encuentran en revisión por el Comité Coordinador del Sistema
+            Nacional Anticorrupción, por lo que estos no serán los formatos
+            finales de la información.
           </b>
         </DialogContentText>
       </DialogContent>
@@ -162,7 +163,7 @@ class Contenedor extends React.Component {
     const { classes } = this.props;
 
     return (
-      <div className={classes.root}>
+      <Grid container spacing={0} className={classes.root}>
         <Header
           logo={S3}
           titulo={titulo}
@@ -240,12 +241,7 @@ class Contenedor extends React.Component {
         </Grid>
         {/* fin menu */}
         <Grid container spacing={0}>
-          <Grid
-            item
-            xs={12}
-            className={classes.contenedor}
-            style={{ maxWidth: 1200, margin: "0 auto" }}
-          >
+          <Grid item xs={12}>
             <Switch>
               <Route exact path="/declaraciones" component={Busqueda} />
               <Route
@@ -261,7 +257,7 @@ class Contenedor extends React.Component {
           open={this.state.open}
           handleClose={this.handleClose}
         />
-      </div>
+      </Grid>
     );
   }
 }

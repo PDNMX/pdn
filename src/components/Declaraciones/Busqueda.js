@@ -35,20 +35,47 @@ class App extends Component {
     let { classes } = this.props;
 
     return (
-      <div className={classes.root}>
-        <Grid container spacing={0} style={{ marginBottom: 20 }}>
-          <Grid item xs={12}>
-            <Typography component="div" className={classes.h1}>
+      <div>
+        <Grid
+          container
+          spacing={0}
+          className={classes.infoBusqueda}
+          style={{ backgroundColor: "#f6f6f6" }}
+        >
+          <Grid item xs={12} style={{ maxWidth: 1200, margin: "0 auto" }}>
+            <Typography paragraph>
               Aquí encontrarás la siguiente información:
-              <ul>
-                <li>La evolución patrimonial de las y los funcionarios</li>
-                <li>La trayectoria laboral de las y los funcionarios</li>
-                <li>Sus declaraciones sobre posibles conflictos de interés</li>
+            </Typography>
+            <Typography component="div">
+              <ul className={classes.ul}>
+                <li className={classes.li}>
+                  <Typography>
+                    <span className={classes.bullet} />
+                    La evolución patrimonial de las y los funcionarios
+                  </Typography>
+                </li>
+                <li className={classes.li}>
+                  <Typography>
+                    <span className={classes.bullet} />
+                    La trayectoria laboral de las y los funcionarios
+                  </Typography>
+                </li>
+                <li className={classes.li}>
+                  <Typography>
+                    <span className={classes.bullet} />
+                    Sus declaraciones sobre posibles conflictos de interés
+                  </Typography>
+                </li>
               </ul>
             </Typography>
           </Grid>
         </Grid>
-        <Grid container spacing={0}>
+        <Grid
+          container
+          spacing={0}
+          className={classes.root}
+          style={{ maxWidth: 1200, margin: "0 auto", padding: "100px 10px" }}
+        >
           <Grid item xs={12}>
             <Typography className={classes.h1}>
               <strong>Busca un servidor público</strong>
@@ -72,12 +99,6 @@ class App extends Component {
     if (this.state.response) {
       return (
         <Fragment>
-          {/*
-          <SearchTable results={this.state.response.results}
-                       pages={this.state.pages}
-                       page={this.state.page}
-                       search={this.updatePage} />
-          */}
           <BusquedaTableMaterialUI
             results={this.state.response.results}
             pages={this.state.pages}

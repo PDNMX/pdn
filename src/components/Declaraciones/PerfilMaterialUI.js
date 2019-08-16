@@ -88,7 +88,10 @@ class PerfilMaterialUI extends Component {
     let { classes } = this.props;
 
     return (
-      <div className={classes.root}>
+      <div
+        className={classes.root}
+        style={{ maxWidth: 1200, margin: "0 auto", padding: "100px 0px" }}
+      >
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <Paper className={classes.paper}>
@@ -120,7 +123,7 @@ class PerfilMaterialUI extends Component {
                 </Grid>
                 <Grid item xs={12}>
                   <Grid container spacing={3}>
-                    <Grid item xs={6}>
+                    <Grid item xs={12} lg={6}>
                       <Typography className={classes.h1}>
                         {
                           this.state.profile.informacion_personal
@@ -147,7 +150,7 @@ class PerfilMaterialUI extends Component {
                         }
                       </Typography>
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={12} lg={6}>
                       <Typography className={classes.tituloCard}>
                         DEPENDENCIA:
                       </Typography>
@@ -163,7 +166,7 @@ class PerfilMaterialUI extends Component {
 
                     <Grid item xs={12}>
                       <Grid container spacing={3}>
-                        <Grid item xs={4}>
+                        <Grid item xs={12} lg={4}>
                           <Typography className={classes.tituloCard}>
                             ENCARGO ACTUAL:
                           </Typography>
@@ -174,7 +177,7 @@ class PerfilMaterialUI extends Component {
                             }
                           </Typography>
                         </Grid>
-                        <Grid item xs={4}>
+                        <Grid item xs={12} lg={4}>
                           <Typography className={classes.tituloCard}>
                             ÁREA DE ADSCRIPCIÓN:
                           </Typography>
@@ -185,7 +188,7 @@ class PerfilMaterialUI extends Component {
                             }
                           </Typography>
                         </Grid>
-                        <Grid item xs={4}>
+                        <Grid item xs={12} lg={4}>
                           <Typography className={classes.tituloCard}>
                             INGRESOS ANUALES NETOS:
                           </Typography>

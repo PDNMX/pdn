@@ -18,7 +18,8 @@ let uniqid = require("uniqid");
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    padding: 15
+    padding: 15,
+    overflowX: "auto"
   },
   paper: {
     width: "100%",

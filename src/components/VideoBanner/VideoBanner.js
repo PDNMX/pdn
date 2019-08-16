@@ -5,12 +5,14 @@ import PropTypes from "prop-types";
 import mp4 from '../../assets/videos/pdn_intro.mp4';
 import './VideoBanner.css';
 import VideoAppBar from "./VideoAppBar";
+
 import VersionAlpha from '../../assets/alfa.png';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFacebook} from "@fortawesome/free-brands-svg-icons/faFacebook";
 import {faTwitter} from "@fortawesome/free-brands-svg-icons/faTwitter";
 import {faYoutube} from "@fortawesome/free-brands-svg-icons/faYoutube";
 
+import Version from '../../assets/beta-v0.2.png';
 
 const styles = theme => ({
 
@@ -77,6 +79,11 @@ class Banner extends React.Component {
                 <div className={classes.appBar}>
                     <VideoAppBar/>
                 </div>
+
+                    <div className={classes.alpha}>
+                        <img alt="alpha" src={Version} width="142px;"/>
+                    </div>
+
 
                 <div className={classes.contents}>
                     <Typography className={classes.text} variant={"h2"}>

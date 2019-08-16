@@ -52,7 +52,7 @@ class ConstruccionTotal extends Component {
     let { classes } = this.props;
 
     return (
-      <Grid container spacing={3} className={classes.rootSubseccion}>
+      <Grid container spacing={0} className={classes.rootSubseccion}>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             <Typography className={classes.titulo}>

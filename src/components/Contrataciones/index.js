@@ -30,6 +30,12 @@ const styles = theme => ({
         paddingBottom: theme.spacing(8),
         paddingTop: theme.spacing(8)
     },
+    disclaimer: {
+        maxWidth: 1200,
+        paddingTop: theme.spacing(2),
+        padding: theme.spacing(1),
+    },
+
     container: {
         backgroundColor: '#fff'
     },
@@ -46,7 +52,7 @@ class Index extends React.Component {
                 <Header/>
 
                 <Grid container spacing={0} justify="center" style={{ backgroundColor: '#f6f6f6'}}>
-                    <Grid item xs={12} className={classes.item}>
+                    <Grid item xs={12} className={classes.disclaimer}>
                         <Disclaimer/>
                     </Grid>
                 </Grid>
