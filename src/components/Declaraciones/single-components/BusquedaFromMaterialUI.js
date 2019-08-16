@@ -123,7 +123,7 @@ class BusquedaFromMaterialUI extends Component {
               </RadioGroup>
             </FormControl>
           </Grid>
-          <Grid item xs={12} md={4}>
+          <Grid item xs={4}>
             <Button
               className={classes.button}
               type="submit"
