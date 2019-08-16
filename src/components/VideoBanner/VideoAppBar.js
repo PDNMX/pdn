@@ -16,6 +16,7 @@ import Grid from "@material-ui/core/Grid";
 import { getPermisos, haySesion } from "../Seguridad/seguridad";
 import { withRouter } from "react-router-dom";
 
+
 const styles = theme => ({
   root: {
     flexGrow: 1
@@ -128,6 +129,7 @@ class VideoAppBar extends React.Component {
                   color="inherit"
                   className={classes.grow}
                 />
+
                 <div>
                   <IconButton
                     aria-owns={open ? "menu-appbar" : undefined}

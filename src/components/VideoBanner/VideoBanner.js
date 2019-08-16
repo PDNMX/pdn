@@ -6,6 +6,11 @@ import mp4 from '../../assets/videos/pdn_intro.mp4';
 import './VideoBanner.css';
 import VideoAppBar from "./VideoAppBar";
 import VersionAlpha from '../../assets/alfa.png';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faFacebook} from "@fortawesome/free-brands-svg-icons/faFacebook";
+import {faTwitter} from "@fortawesome/free-brands-svg-icons/faTwitter";
+import {faYoutube} from "@fortawesome/free-brands-svg-icons/faYoutube";
+
 
 const styles = theme => ({
 
@@ -14,7 +19,7 @@ const styles = theme => ({
         right: 0,
         bottom: 0,
         width: '100%',
-        [theme.breakpoints.down('md')]:{
+        [theme.breakpoints.down('md')]: {
             width: 1280
         },
         //minWidth: '100%',
@@ -41,33 +46,53 @@ const styles = theme => ({
     alpha: {
         position: 'absolute',
         zIndex: 4
-    }
+    },
+    redSocial: {
+        marginRight: theme.spacing(5),
+        color: '#ffffff'
+    },
+    contentsSN: {
+        paddingTop: 350,
+        position: 'absolute',
+        zIndex: 3,
+        textAlign: 'center',
+        width: '100%'
+    },
 });
 
 class Banner extends React.Component {
-    render(){
-        const { classes } = this.props;
+    render() {
+        const {classes} = this.props;
         return (
-                <div className="video-bg">
-                    <video autoPlay loop muted className={classes.video}>
-                        <source src={mp4} type="video/mp4"/>
-                        Tu navegador no soporta este tag
-                    </video>
+            <div className="video-bg">
+                <video autoPlay loop muted className={classes.video}>
+                    <source src={mp4} type="video/mp4"/>
+                    Tu navegador no soporta este tag
+                </video>
 
-                    <div className={classes.alpha}>
-                        <img alt="alpha" src={VersionAlpha} width="142px;"/>
-                    </div>
-
-                    <div className={classes.appBar}>
-                        <VideoAppBar/>
-                    </div>
-
-                    <div className={classes.contents}>
-                     <Typography className={classes.text} variant={"h2"}>
-                            Inteligencia <span className={classes.boldText}>anticorrupción</span> con datos.
-                        </Typography>
-                    </div>
+                <div className={classes.alpha}>
+                    <img alt="alpha" src={VersionAlpha} width="142px;"/>
                 </div>
+
+                <div className={classes.appBar}>
+                    <VideoAppBar/>
+                </div>
+
+                <div className={classes.contents}>
+                    <Typography className={classes.text} variant={"h2"}>
+                        Inteligencia <span className={classes.boldText}>anticorrupción</span> con datos.
+                    </Typography>
+                </div>
+                <div className={classes.contentsSN}>
+                    <a href={"https://www.facebook.com/SESNAOficial/"} className={classes.redSocial}><FontAwesomeIcon
+                        icon={faFacebook} size="2x"/></a>
+                    <a href={"https://twitter.com/SESNAOficial"} className={classes.redSocial}><FontAwesomeIcon
+                        icon={faTwitter} size="2x"/></a>
+                    <a href={"https://www.youtube.com/channel/UCRUpiHth_WRkNo2sBmZIyfQ/"} className={classes.redSocial}><FontAwesomeIcon
+                        icon={faYoutube} size="2x"/></a>
+
+                </div>
+            </div>
         );
     }
 }
