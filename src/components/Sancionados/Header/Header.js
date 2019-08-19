@@ -11,10 +11,12 @@ import './Header.css';
 import classNames from 'classnames';
 import Button from "@material-ui/core/Button";
 import AlertDialog from "../AlertDialolg";
+import MenuSistemas from "../../Compartidos/MenuSistemas";
+
 
 const style = theme => ({
         root: {
-            flexGrow:1
+            flexGrow: 1
         },
         container1: {
             //background: 'grey',
@@ -27,15 +29,15 @@ const style = theme => ({
             textDecoration: 'none',
             color: 'inherit'
         },
-        item1:{
+        item1: {
             paddingRight: theme.spacing(2),
             paddingLeft: theme.spacing(2),
         },
-        item2:{
+        item2: {
             paddingRight: theme.spacing(2),
             paddingLeft: theme.spacing(2)
         },
-        item3:{
+        item3: {
             maxWidth: 1200,
         },
         s2: {
@@ -50,33 +52,36 @@ const style = theme => ({
             paddingTop: "40px",
             paddingBottom: "40px"
         },
-        button:{
+        button: {
             background: '#ffe01b',
             marginTop: theme.spacing(3),
             marginBottom: theme.spacing(2)
-        },
+        }
     }
 );
 
-class Header extends React.Component{
+class Header extends React.Component {
     constructor(props) {
         super(props);
         this.btnVideo = React.createRef();
     }
-    render(){
-        const {classes} = this.props;
 
-        return(
+    render() {
+        const {classes} = this.props;
+        return (
             <div className={classes.root}>
                 {/*<PDNAppBar/>*/}
                 <img src={BG} alt="Sistema 2" className="fenito"/>
 
 
                 <Grid container spacing={0} justify="center" style={{background: '#fff'}}>
-                    <Grid item xs={12} className={classes.item3}>
+                    <Grid item xs={11} className={classes.item3}>
                         <Link to="/" className={classes.link}>
                             <img src={PDNLogo} alt="PDN" className={classes.pdnLogo}/>
                         </Link>
+                    </Grid>
+                    <Grid item xs={1}>
+                        <MenuSistemas/>
                     </Grid>
                 </Grid>
 
@@ -94,32 +99,34 @@ class Header extends React.Component{
                 </Grid>
 
                 <Grid container spacing={0} className={classNames(classes.container1, 'servidores')} justify='center'>
-                    <Grid item xs={12} md={4} align={isWidthUp('md', this.props.width)? 'right':'center'} className={classes.item1}>
+                    <Grid item xs={12} md={4} align={isWidthUp('md', this.props.width) ? 'right' : 'center'}
+                          className={classes.item1}>
                         <img src={S3} alt="Sistema 2" className={classes.s2}/>
                     </Grid>
 
-                    <Grid item xs={12} md={6} className={classes.item2} align={isWidthUp('md', this.props.width)? 'left':'center'} >
+                    <Grid item xs={12} md={6} className={classes.item2}
+                          align={isWidthUp('md', this.props.width) ? 'left' : 'center'}>
                         <Typography variant="h4" paragraph className={classes.whiteText} style={{fontWeight: 300}}>
                             Servidores públicos y particulares
                         </Typography>
-                        <Typography variant="h4" paragraph className={classes.whiteText} style={{  fontWeight: 600}}>
+                        <Typography variant="h4" paragraph className={classes.whiteText} style={{fontWeight: 600}}>
                             Sancionados
                         </Typography>
-                        <Typography  className={classes.whiteText} style={{fontSize: '18px',fontWeight: 500}}>
+                        <Typography className={classes.whiteText} style={{fontSize: '18px', fontWeight: 500}}>
                             Consulta y visualiza los datos de las sanciones o inhabilitación firmes <br/>
                             en contra de servidores públicos, así como los datos de particulares <br/>
                             inhabilitados para celebrar contratos con el gobierno.
                         </Typography>
                     </Grid>
                     <Grid item xs={12} align={'center'}>
-                        <Button  variant="contained" className={classes.button}
+                        <Button variant="contained" className={classes.button}
                                 onClick={() => this.btnVideo.handleClickOpen()}>Conoce más</Button>
                     </Grid>
                 </Grid>
-                <AlertDialog innerRef={comp => this.btnVideo = comp} />
+                <AlertDialog innerRef={comp => this.btnVideo = comp}/>
             </div>
         )
     }
 }
 
-export default withWidth()(withStyles(style) (Header));
+export default withWidth()(withStyles(style)(Header));

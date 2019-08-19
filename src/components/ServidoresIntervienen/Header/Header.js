@@ -11,6 +11,7 @@ import './Header.css';
 import classNames from 'classnames';
 import Button from "@material-ui/core/Button";
 import AlertDialog from "../../Sancionados/AlertDialolg";
+import MenuSistemas from "../../Compartidos/MenuSistemas";
 
 const style = theme => ({
         root: {
@@ -73,10 +74,13 @@ class Header extends React.Component{
 
 
                 <Grid container spacing={0} justify="center" style={{background: '#fff'}}>
-                    <Grid item xs={12} className={classes.item3}>
+                    <Grid item xs={11} className={classes.item3}>
                         <Link to="/" className={classes.link}>
                             <img src={PDNLogo} alt="PDN" className={classes.pdnLogo}/>
                         </Link>
+                    </Grid>
+                    <Grid item xs={1}>
+                        <MenuSistemas/>
                     </Grid>
                 </Grid>
 
