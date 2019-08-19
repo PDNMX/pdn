@@ -116,6 +116,7 @@ const styles = theme => ({
 
     section: {
         maxWidth: '1200px',
+        overflowX: 'auto'
     },
     table: {
         tableLayout: 'fixed',
@@ -140,65 +141,39 @@ const styles = theme => ({
     },
     containerPrevios: {
         marginLeft: theme.spacing(2)
-    }
-});
-
-
-const toolbarStyles = theme => ({
-    root: {
-        width: '100%',
-        padding: theme.spacing(1),
+    } ,
+    // informacion sobre buscar funcionario
+    bullet: {
+        backgroundColor: "#89d4f2",
+        height: "10px",
+        width: "10px",
+        borderRadius: "50%",
+        display: "inline-block",
+        marginLeft: "-20px",
+        marginRight: "10px",
+        marginBottom: "1px"
     },
-    toolBarStyle: {
+    ul: {
+        listStyle: "none",
+        //marginLeft: 0,
+        paddingLeft: "20px"
+    },
+    infoBusqueda: {
+        paddingRight: theme.spacing(1),
+        paddingLeft: theme.spacing(1),
+        paddingBottom: theme.spacing(4),
+        paddingTop: theme.spacing(4),
+
+    }, toolBarStyle: {
         backgroundColor: 'transparent',
         position: 'relative',
         zIndex: 3,
         paddingTop: '53px',
         paddingBottom: '61px',
-    },
-    toolBarFloat: {
-        paddingTop: '53px',
-        paddingBottom: '61px',
-        marginTop: '-30px',
-        borderRadius: '3px',
-        background: '#fff',
-        boxShadow: '0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgb(41, 92, 83)',
-        width: '100%',
+        maxWidth: '1200px',
 
-    },
-    spacer: {
-        flex: '1 1 100%',
-    },
-    actions: {
-        color: theme.palette.text.secondary,
-    },
-    title: {
-        flex: '0 0 auto',
-    },
-    flex: {
-        flexGrow: 1,
     },
 });
-
-
-let EnhancedTableToolbar = props => {
-    const {classes, handleChangeCampo, nombreParticular, numeroExpediente, institucion, handleCleanAll, handleSearch, handleError, nivel} = props;
-    return (
-        <Toolbar className={classes.toolBarStyle}>
-            <BusquedaParticular handleCleanAll={handleCleanAll} handleSearch={handleSearch}
-                                handleChangeCampo={handleChangeCampo} nombreParticular={nombreParticular}
-                                numeroExpediente={numeroExpediente}
-                                institucion={institucion} handleError={handleError} nivel={nivel}/>
-
-        </Toolbar>
-    );
-};
-
-EnhancedTableToolbar.propTypes = {
-    classes: PropTypes.object.isRequired
-};
-
-EnhancedTableToolbar = withStyles(toolbarStyles)(EnhancedTableToolbar);
 
 
 class EnhancedTable extends React.Component {
@@ -403,15 +378,47 @@ class EnhancedTable extends React.Component {
 
         return (
             <div>
+                <Grid
+                    container
+                    spacing={0}
+                    className={classes.infoBusqueda}
+                    style={{backgroundColor: "#f6f6f6"}}
+                >
+                    <Grid item xs={12} style={{maxWidth: 1200, margin: "0 auto"}}>
+                        <Typography paragraph>
+                            <b>Aquí encontrarás la siguiente información:</b>
+                        </Typography>
+                        <Typography component="div">
+                            <ul className={classes.ul}>
+                                <li className={classes.li}>
+                                    <Typography>
+                                        <span className={classes.bullet}/>
+                                        Consulta los particulares sancionados a por institución donde cometieron la falta, nombre o razón social, a nivel federal y/o estatal
+                                    </Typography>
+                                </li>
+                                <li className={classes.li}>
+                                    <Typography>
+                                        <span className={classes.bullet}/>
+                                        Obtén datos del particular sancionado como nombre,  puesto, sanción y causa de la misma
+                                    </Typography>
+                                </li>
+                                <li className={classes.li}>
+                                    <Typography>
+                                        <span className={classes.bullet}/>
+                                        Obtén los datos de la sanción impuesta al particular como: expediente, hechos de la falta, tipo de falta, tipo de sanción, resolución, entre otros datos
+                                        de interes.
+                                    </Typography>
+                                </li>
+                            </ul>
+                        </Typography>
+                    </Grid>
+                </Grid>
                 <Grid container justify='center' spacing={0} className={classes.gridTable}>
-                    <Grid item xs={12}>
-                        <EnhancedTableToolbar handleChangeCampo={this.handleChangeCampo}
-                                              handleCleanAll={this.handleCleanAll}
-                                              handleSearch={this.handleSearchPrevios}
-                                              nombreParticular={this.state.nombreParticular}
-                                              numeroExpediente={this.state.numeroExpediente}
-                                              institucion={this.state.institucion} handleError={this.handleError}
-                                              nivel={this.state.nivel}/>
+                    <Grid item xs={12} className={classes.toolBarStyle}>
+                        <BusquedaParticular handleCleanAll={this.handleCleanAll} handleSearch={this.handleSearchPrevios}
+                                            handleChangeCampo={this.handleChangeCampo} nombreParticular={this.state.nombreParticular}
+                                            numeroExpediente={this.state.numeroExpediente}
+                                            institucion={this.state.institucion} handleError={this.handleError} nivel={this.state.nivel}/>
                     </Grid>
                     <Grid item xs={12}>
                         <DetalleParticular handleClose={this.handleClose} particular={this.state.elementoSeleccionado}
@@ -432,7 +439,7 @@ class EnhancedTable extends React.Component {
                             this.state.error && <MensajeErrorDatos/>
                         }
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} className={classes.section}>
                         {this.state.previos && this.state.previos.length > 0 &&
                         <div>
                             <FormControlLabel
@@ -452,13 +459,13 @@ class EnhancedTable extends React.Component {
                         }
 
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} className={classes.section}>
                         {filterData && filterData.length > 0 &&
                         <Typography variant="h6" className={classes.desc}>Pulsa sobre el registro para ver su
                             detalle<br/></Typography>
                         }
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} className={classes.section}>
                         {filterData && filterData.length > 0 &&
                         <div className={classes.container}>
                             <Table aria-describedby="spinnerLoading"
@@ -545,7 +552,7 @@ class EnhancedTable extends React.Component {
 
                     </Grid>
 
-                    <Grid item xs={12} className={classes.nota}>
+                    <Grid item xs={12} className={classes.section}>
                         {
                             this.state.nivel !== 'estatal' &&
                             <Typography variant={"caption"} style={{fontStyle: 'italic'}}>Nota:

@@ -26,9 +26,9 @@ const styles = theme => ({
         paddingRight: theme.spacing(1)
     },
     logo: {
-        width: 115,
+        width: 170,
         paddingTop: 50,
-        paddingBottom: 50
+        paddingBottom: 10
     },
     libreUso: {
         maxWidth: 140,
