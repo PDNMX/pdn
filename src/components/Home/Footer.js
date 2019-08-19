@@ -215,12 +215,12 @@ class Footer extends React.Component {
                     </Grid>
                     <Grid item xs={12} align={"center"}>
                         <div className={classes.contentsSN}>
-                            <a href={"https://www.facebook.com/SESNAOficial/"}
+                            <a href={"https://www.facebook.com/SESNAOficial/"} target={"_blank"}
                                className={classes.redSocial}><FontAwesomeIcon
                                 icon={faFacebookSquare} size="2x"/></a>
-                            <a href={"https://twitter.com/SESNAOficial"} className={classes.redSocial}><FontAwesomeIcon
+                            <a href={"https://twitter.com/SESNAOficial"} target={"_blank" }className={classes.redSocial}><FontAwesomeIcon
                                 icon={faTwitter} size="2x"/></a>
-                            <a href={"https://www.youtube.com/channel/UCRUpiHth_WRkNo2sBmZIyfQ/"}
+                            <a href={"https://www.youtube.com/channel/UCRUpiHth_WRkNo2sBmZIyfQ/"} target={"_blank" }
                                className={classes.redSocial}><FontAwesomeIcon
                                 icon={faYoutube} size="2x"/></a>
 
