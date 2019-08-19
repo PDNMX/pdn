@@ -13,9 +13,6 @@ const style = theme => ({
     menuHamburguesa: {
         fill: "#808080",
         fontSize: "36px",
-        marginTop: theme.spacing(5),
-        marginBottom: theme.spacing(5),
-        marginRight: theme.spacing(5),
     }
 
 });
@@ -48,6 +45,7 @@ class MenuSistemas extends React.Component {
                     aria-haspopup="true"
                     onClick={this.handleMenu}
                     color="inherit"
+                    style={{ marginTop: "28px" }}
                 >
                     <MenuIcon className={classes.menuHamburguesa}/>
                 </IconButton>

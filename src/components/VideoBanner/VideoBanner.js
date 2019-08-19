@@ -48,18 +48,7 @@ const styles = theme => ({
     alpha: {
         position: 'absolute',
         zIndex: 4
-    },
-    redSocial: {
-        marginRight: theme.spacing(5),
-        color: '#ffffff'
-    },
-    contentsSN: {
-        paddingTop: 370,
-        position: 'absolute',
-        zIndex: 3,
-        textAlign: 'center',
-        width: '100%'
-    },
+    }
 });
 
 class Banner extends React.Component {
@@ -90,15 +79,7 @@ class Banner extends React.Component {
                         Inteligencia <span className={classes.boldText}>anticorrupción</span> con datos.
                     </Typography>
                 </div>
-                <div className={classes.contentsSN}>
-                    <a href={"https://www.facebook.com/SESNAOficial/"} className={classes.redSocial}><FontAwesomeIcon
-                        icon={faFacebookSquare} size="2x"/></a>
-                    <a href={"https://twitter.com/SESNAOficial"} className={classes.redSocial}><FontAwesomeIcon
-                        icon={faTwitter} size="2x"/></a>
-                    <a href={"https://www.youtube.com/channel/UCRUpiHth_WRkNo2sBmZIyfQ/"} className={classes.redSocial}><FontAwesomeIcon
-                        icon={faYoutube} size="2x"/></a>
 
-                </div>
             </div>
         );
     }
