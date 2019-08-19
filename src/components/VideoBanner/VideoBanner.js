@@ -8,7 +8,7 @@ import VideoAppBar from "./VideoAppBar";
 
 import VersionAlpha from '../../assets/alfa.png';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faFacebook} from "@fortawesome/free-brands-svg-icons/faFacebook";
+import {faFacebookSquare} from "@fortawesome/free-brands-svg-icons/faFacebookSquare";
 import {faTwitter} from "@fortawesome/free-brands-svg-icons/faTwitter";
 import {faYoutube} from "@fortawesome/free-brands-svg-icons/faYoutube";
 
@@ -54,7 +54,7 @@ const styles = theme => ({
         color: '#ffffff'
     },
     contentsSN: {
-        paddingTop: 350,
+        paddingTop: 370,
         position: 'absolute',
         zIndex: 3,
         textAlign: 'center',
@@ -92,7 +92,7 @@ class Banner extends React.Component {
                 </div>
                 <div className={classes.contentsSN}>
                     <a href={"https://www.facebook.com/SESNAOficial/"} className={classes.redSocial}><FontAwesomeIcon
-                        icon={faFacebook} size="2x"/></a>
+                        icon={faFacebookSquare} size="2x"/></a>
                     <a href={"https://twitter.com/SESNAOficial"} className={classes.redSocial}><FontAwesomeIcon
                         icon={faTwitter} size="2x"/></a>
                     <a href={"https://www.youtube.com/channel/UCRUpiHth_WRkNo2sBmZIyfQ/"} className={classes.redSocial}><FontAwesomeIcon
