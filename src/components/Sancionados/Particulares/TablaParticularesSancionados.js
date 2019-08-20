@@ -393,19 +393,19 @@ class EnhancedTable extends React.Component {
                                 <li className={classes.li}>
                                     <Typography>
                                         <span className={classes.bullet}/>
-                                        Consulta los particulares sancionados a por institución donde cometieron la falta, nombre o razón social, a nivel federal y/o estatal
+                                        Consulta los particulares sancionados (inhabilitados) por institución donde cometieron la falta, nombre o razón social, a nivel federal y/o estatal
                                     </Typography>
                                 </li>
                                 <li className={classes.li}>
                                     <Typography>
                                         <span className={classes.bullet}/>
-                                        Obtén datos del particular sancionado como nombre,  puesto, sanción y causa de la misma
+                                        Obtén datos del particular sancionado como: nombre,  puesto, sanción y causa de la misma
                                     </Typography>
                                 </li>
                                 <li className={classes.li}>
                                     <Typography>
                                         <span className={classes.bullet}/>
-                                        Obtén los datos de la sanción impuesta al particular como: expediente, hechos de la falta, tipo de falta, tipo de sanción, resolución, entre otros datos
+                                        Obtén los datos de la sanción impuesta al particular como: expediente, hechos de la falta, tipo de falta, resolución, entre otros datos
                                         de interes.
                                     </Typography>
                                 </li>

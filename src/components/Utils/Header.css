@@ -20,6 +20,13 @@
     color: #666666;
     border-bottom: 1px dotted #34b3eb;
 }
+.fenito{
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    right: 0;
+    top: 0;
+}
 
 /*
 div.tooltip {

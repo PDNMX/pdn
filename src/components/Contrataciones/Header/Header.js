@@ -9,7 +9,6 @@ import {Typography} from "@material-ui/core"
 import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
 import './Header.css';
 import classNames from 'classnames';
-//import Button from "@material-ui/core/Button";
 
 const style = theme => ({
         root: {

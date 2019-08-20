@@ -387,19 +387,19 @@ class EnhancedTable extends React.Component {
                                 <li className={classes.li}>
                                     <Typography>
                                         <span className={classes.bullet}/>
-                                        Consulta los servidores sancionados a por institución, nombre, RFC o CURP, a nivel federal y/o estatal
+                                        Consulta los servidores sancionados (inhabilitados)  por institución, a nivel federal y/o estatal
                                     </Typography>
                                 </li>
                                 <li className={classes.li}>
                                     <Typography>
                                         <span className={classes.bullet}/>
-                                        Obtén datos del servidor como nombre,  puesto, sanción y causa de la misma
+                                        Obtén datos del servidor como: nombre, puesto, institución donde cometió la falta
                                     </Typography>
                                 </li>
                                 <li className={classes.li}>
                                     <Typography>
                                         <span className={classes.bullet}/>
-                                        Obtén los datos de la sanción impuesta al servidor
+                                        Obtén los datos de la sanción impuesta al servidor: plazo, tipo de falta, causa, etc.
                                     </Typography>
                                 </li>
                             </ul>
