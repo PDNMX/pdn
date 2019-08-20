@@ -2,7 +2,11 @@ import React from 'react';
 import {withStyles} from '@material-ui/core/styles';
 import Typography from "@material-ui/core/Typography";
 import BarChart from './Charts/BarChart';
+import SuppliersBarChart from './Charts/SuppliersBarChart';
+
 import rp from 'request-promise';
+import Grid from '@material-ui/core/Grid';
+
 const styles = theme => ({
     root: {
         flexGrow: 1
@@ -13,17 +17,31 @@ const styles = theme => ({
 class Top extends React.Component {
 
     state = {
-        barChartData: []
+        barChartData: [],
+        suppliers: []
     };
 
     componentWillMount() {
 
-        rp({
-            uri: process.env.REACT_APP_DUMMY_API + '/api/s6//top/10/buyers',
-            method :'GET',
-            json: true
-        }).then( data => {
-            this.setState({barChartData: data})
+        let queries = [
+            rp({
+                uri: process.env.REACT_APP_DUMMY_API + '/api/s6/top/10/buyers',
+                method :'GET',
+                json: true
+            }),
+            rp({
+                uri: process.env.REACT_APP_DUMMY_API + '/api/s6/top/10/suppliers',
+                method :'GET',
+                json: true
+            })
+        ];
+
+        Promise.all(queries).then( data => {
+            console.log(data)
+            this.setState({
+                barChartData: data[0],
+                suppliers: data[1]
+            })
         });
     }
 
@@ -32,9 +50,16 @@ class Top extends React.Component {
         const {classes} = this.props;
         return(
             <div className={classes.root}>
-                <Typography>Top 10 unidades compradoras</Typography>
-
-                <BarChart data = {this.state.barChartData}/>
+                <Grid container spacing={0}>
+                    <Grid item xs={6}>
+                        <Typography>Top 10 unidades compradoras</Typography>
+                        <BarChart data = {this.state.barChartData}/>
+                    </Grid>
+                    <Grid item xs={6}>
+                        <Typography> Top 10 proveedores</Typography>
+                        <SuppliersBarChart data={this.state.suppliers}/>
+                    </Grid>
+                </Grid>
             </div>
         );
 
