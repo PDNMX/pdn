@@ -13,6 +13,7 @@ import Header from './Header/Header';
 import classNames from 'classnames';
 import Dashboard from "./Dashboard/Dashboard";
 import ScrollToTopButton from "../Navigation/ScrollToTopButton";
+import TablaParticularesSancionados from "../Sancionados/Particulares/TablaParticularesSancionados";
 
 const styles = theme => ({
     root: {
@@ -22,6 +23,7 @@ const styles = theme => ({
         color: '#fff', //theme.palette.titleBanner.color,
     },
     bgPanelTable: {
+        color: theme.palette.textGrey.color,
         backgroundColor: theme.palette.white.color,
         [theme.breakpoints.up('sm')]: {
             marginBottom: theme.spacing(7),
@@ -146,12 +148,13 @@ class Index extends React.Component {
                 </Grid>
 
                 <Grid container justify='center' spacing={0} className={classes.bgPanelTable}>
-                    <Grid item xs={12} className={classes.sectionT}>
+                    <Grid item xs={12}>
                         {this.state.idContent === 1 &&
                         <TablaServidores/>
                         }
                         {this.state.idContent === 2 &&
-                        <TablaParticulares/>
+                        <TablaParticularesSancionados/>
+                        /*<TablaParticulares/>*/
                         }
                         {this.state.idContent === 3 &&
                         <Dashboard/>
