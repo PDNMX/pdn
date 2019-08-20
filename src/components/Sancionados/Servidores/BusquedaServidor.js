@@ -79,7 +79,9 @@ const styles = theme => ({
     },
     inputShrink: {
         transform: `scale(1)`
-    }
+    },
+
+
 });
 
 class BusquedaServidor extends React.Component {
@@ -113,164 +115,165 @@ class BusquedaServidor extends React.Component {
     };
 
     render() {
-        const {classes, handleChangeCampo, nombreServidor, apellidoUno, apellidoDos, rfc, curp, institucion,nivel} = this.props;
+        const {classes, handleChangeCampo, nombreServidor, apellidoUno, apellidoDos, rfc, curp, institucion, nivel} = this.props;
 
         return (
-            <Grid container spacing={4}>
-                <Grid item xs={12}>
-                    <Typography variant="h6"><b>Busca un servidor público sancionado</b></Typography>
-                </Grid>
-                <Grid item xs={12} md={3}>
-                    <FormControl className={classes.formControl}>
-                        <TextField
-                            id="search"
-                            label="RFC"
-                            type="search"
-                            onChange={(e) => handleChangeCampo('rfc', e)}
-                            value={rfc}
-                            InputLabelProps={{
-                                className: classes.inputShrink,
-                                shrink: true
-                            }}
-                        />
-
-                    </FormControl>
-                </Grid>
-                <Grid item xs={12} md={3}>
-                    <FormControl className={classes.formControl}>
-                        <TextField
-                            id="search"
-                            label="CURP"
-                            type="search"
-                            onChange={(e) => handleChangeCampo('curp', e)}
-                            value={curp}
-                            InputLabelProps={{
-                                className: classes.inputShrink,
-                                shrink: true
-                            }}
-                        />
-
-                    </FormControl>
-                </Grid>
-                <Grid item xs={12} md={6}>
-                    <FormControl className={classes.formControl}>
-                        <InputLabel htmlFor={'campoSelectInstitucion'}>Institución</InputLabel>
-                        <Select style={{marginTop: '0px'}} value={institucion}
-                                onChange={(e) => handleChangeCampo('institucion', e)}
-                                inputProps={{
-                                    name: 'campoSelectInstitucion',
-                                    id: 'campoSelectInstitucion',
+            <div>
+                <Grid container spacing={4}>
+                    <Grid item xs={12}>
+                        <Typography variant="h6"><b>Busca un servidor público sancionado</b></Typography>
+                    </Grid>
+                    <Grid item xs={12} md={3}>
+                        <FormControl className={classes.formControl}>
+                            <TextField
+                                id="search"
+                                label="RFC"
+                                type="search"
+                                onChange={(e) => handleChangeCampo('rfc', e)}
+                                value={rfc}
+                                InputLabelProps={{
+                                    className: classes.inputShrink,
+                                    shrink: true
                                 }}
-                        >
+                            />
+
+                        </FormControl>
+                    </Grid>
+                    <Grid item xs={12} md={3}>
+                        <FormControl className={classes.formControl}>
+                            <TextField
+                                id="search"
+                                label="CURP"
+                                type="search"
+                                onChange={(e) => handleChangeCampo('curp', e)}
+                                value={curp}
+                                InputLabelProps={{
+                                    className: classes.inputShrink,
+                                    shrink: true
+                                }}
+                            />
+
+                        </FormControl>
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor={'campoSelectInstitucion'}>Institución</InputLabel>
+                            <Select style={{marginTop: '0px'}} value={institucion}
+                                    onChange={(e) => handleChangeCampo('institucion', e)}
+                                    inputProps={{
+                                        name: 'campoSelectInstitucion',
+                                        id: 'campoSelectInstitucion',
+                                    }}
+                            >
+                                {
+                                    this.state.suggestions.map((item => {
+                                        return <MenuItem value={item.value} key={item.value}>
+                                            {item.label}
+                                        </MenuItem>
+                                    }))
+                                }
+                            </Select>
                             {
-                                this.state.suggestions.map((item => {
-                                    return <MenuItem value={item.value} key={item.value}>
-                                        {item.label}
-                                    </MenuItem>
-                                }))
+                                /*
+                                <SelectReact
+                                classes={classes}
+                                styles={selectStyles}
+                                options={this.state.suggestions}
+                                components={components}
+                                value={{value: institucion, label: institucion}}
+                                onChange={(e) => handleChangeCampo('institucion', e)}
+                                id="campoSelectInstitucion"
+                                placeholder = {'TODAS'}
+                            />
+                                */
                             }
-                        </Select>
-                        {
-                            /*
-                            <SelectReact
-                            classes={classes}
-                            styles={selectStyles}
-                            options={this.state.suggestions}
-                            components={components}
-                            value={{value: institucion, label: institucion}}
-                            onChange={(e) => handleChangeCampo('institucion', e)}
-                            id="campoSelectInstitucion"
-                            placeholder = {'TODAS'}
-                        />
-                            */
-                        }
 
 
-                    </FormControl>
+                        </FormControl>
+                    </Grid>
+                    <Grid item xs={12} md={3}>
+                        <FormControl className={classes.formControl}>
+                            <TextField
+                                id="search"
+                                label="Nombre(s)"
+                                type="search"
+                                onChange={(e) => handleChangeCampo('nombreServidor', e)}
+                                value={nombreServidor}
+                                InputLabelProps={{
+                                    className: classes.inputShrink,
+                                    shrink: true
+                                }}
+                            />
+
+                        </FormControl>
+                    </Grid>
+                    <Grid item xs={12} md={3}>
+                        <FormControl className={classes.formControl}>
+                            <TextField
+                                id="search"
+                                label="Apellido Uno"
+                                type="search"
+                                onChange={(e) => handleChangeCampo('apellidoUno', e)}
+                                value={apellidoUno}
+                                InputLabelProps={{
+                                    className: classes.inputShrink,
+                                    shrink: true
+                                }}
+                            />
+
+                        </FormControl>
+                    </Grid>
+                    <Grid item xs={12} md={3}>
+                        <FormControl className={classes.formControl}>
+                            <TextField
+                                id="search"
+                                label="Apellido Dos"
+                                type="search"
+                                onChange={(e) => handleChangeCampo('apellidoDos', e)}
+                                value={apellidoDos}
+                                InputLabelProps={{
+                                    className: classes.inputShrink,
+                                    shrink: true
+                                }}
+                            />
+
+                        </FormControl>
+                    </Grid>
+
+                    <Grid item md={1}/>
+
+
+                    <Grid item md={10} xs={12}>
+                        <FormControl component="fieldset" className={classes.formControl}>
+                            <FormLabel component="legend">Nivel</FormLabel>
+                            <RadioGroup row
+                                        aria-label="gender"
+                                        name="gender1"
+                                        className={classes.group}
+                                        value={nivel}
+                                        onChange={(e) => handleChangeCampo('nivel', e)}
+                            >
+                                <FormControlLabel value="todos" control={<Radio/>} label="Todos"/>
+                                <FormControlLabel value="federal" control={<Radio/>} label="Federal"/>
+                                <FormControlLabel value="estatal" control={<Radio/>} label="Estatal"/>
+                            </RadioGroup>
+
+                        </FormControl>
+                    </Grid>
+                    <Grid item xs={12} md={1} className={classes.centrado}>
+                        <Button variant="contained" color="secondary" className={classes.button} onClick={this.buscar}>
+                            Buscar
+                        </Button>
+                    </Grid>
+                    <Grid item xs={12} md={1} className={classes.centrado}>
+                        <Button variant="contained" color="secondary" className={classes.button}
+                                onClick={this.limpiarBusqueda}>
+                            Limpiar
+                        </Button>
+                    </Grid>
+
                 </Grid>
-                <Grid item xs={12} md={3}>
-                    <FormControl className={classes.formControl}>
-                        <TextField
-                            id="search"
-                            label="Nombre(s)"
-                            type="search"
-                            onChange={(e) => handleChangeCampo('nombreServidor', e)}
-                            value={nombreServidor}
-                            InputLabelProps={{
-                                className: classes.inputShrink,
-                                shrink: true
-                            }}
-                        />
-
-                    </FormControl>
-                </Grid>
-                <Grid item xs={12} md={3}>
-                    <FormControl className={classes.formControl}>
-                        <TextField
-                            id="search"
-                            label="Apellido Uno"
-                            type="search"
-                            onChange={(e) => handleChangeCampo('apellidoUno', e)}
-                            value={apellidoUno}
-                            InputLabelProps={{
-                                className: classes.inputShrink,
-                                shrink: true
-                            }}
-                        />
-
-                    </FormControl>
-                </Grid>
-                <Grid item xs={12} md={3}>
-                    <FormControl className={classes.formControl}>
-                        <TextField
-                            id="search"
-                            label="Apellido Dos"
-                            type="search"
-                            onChange={(e) => handleChangeCampo('apellidoDos', e)}
-                            value={apellidoDos}
-                            InputLabelProps={{
-                                className: classes.inputShrink,
-                                shrink: true
-                            }}
-                        />
-
-                    </FormControl>
-                </Grid>
-
-                <Grid item md={1}/>
-
-
-                <Grid item  md = {10} xs={12}>
-                    <FormControl component="fieldset" className={classes.formControl}>
-                        <FormLabel component="legend">Nivel</FormLabel>
-                        <RadioGroup row
-                                    aria-label="gender"
-                                    name="gender1"
-                                    className={classes.group}
-                                    value={nivel}
-                                    onChange={(e)=>handleChangeCampo('nivel',e)}
-                        >
-                            <FormControlLabel value="todos" control={<Radio />} label="Todos" />
-                            <FormControlLabel value="federal" control={<Radio />} label="Federal" />
-                            <FormControlLabel value="estatal" control={<Radio />} label="Estatal" />
-                        </RadioGroup>
-
-                    </FormControl>
-                </Grid>
-                <Grid item xs={12} md={1} className={classes.centrado}>
-                    <Button variant="contained" color="secondary" className={classes.button} onClick={this.buscar}>
-                        Buscar
-                    </Button>
-                </Grid>
-                <Grid item xs={12} md={1} className={classes.centrado}>
-                    <Button variant="contained" color="secondary" className={classes.button}
-                            onClick={this.limpiarBusqueda}>
-                        Limpiar
-                    </Button>
-                </Grid>
-
-            </Grid>
-
+            </div>
         );
     }
 }

@@ -53,10 +53,10 @@ class Previos extends React.Component {
                             <Table className={classes.table}>
                                 <TableHead style={{backgroundColor:'rgb(52, 179, 235)'}}>
                                     <TableRow>
-                                        <TableCell align="left" variant={"body1"} className={classes.tableHead}>Sujeto obligado</TableCell>
-                                        <TableCell align="center" variant={"body1"} className={classes.tableHead}>Estatus</TableCell>
-                                        <TableCell align="center" variant={"body1"} className={classes.tableHead}>Número de registros</TableCell>
-                                        <TableCell align="center" variant={"body1"} className={classes.tableHead}>Acciones</TableCell>
+                                        <TableCell align="left" variant={"head"} className={classes.tableHead}><Typography variant={"body1"}> Sujeto obligado</Typography></TableCell>
+                                        <TableCell align="center" variant={"head"} className={classes.tableHead}><Typography variant={"body1"}>Estatus</Typography></TableCell>
+                                        <TableCell align="center" variant={"head"} className={classes.tableHead}><Typography variant={"body1"}>Número de registros</Typography></TableCell>
+                                        <TableCell align="center" variant={"head"} className={classes.tableHead}><Typography variant={"body1"}>Acciones</Typography></TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody style={{backgroundColor:'#f2f2f2'}}>

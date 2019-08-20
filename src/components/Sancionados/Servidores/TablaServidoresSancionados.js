@@ -85,7 +85,7 @@ const styles = theme => ({
         overflowX: 'auto',
     },
     section: {
-        maxWidth: '1024px',
+        maxWidth: '1200px',
         overflowX: 'auto'
     },
     table: {
@@ -96,7 +96,8 @@ const styles = theme => ({
         fontSize: '0.75rem'
     },
     gridTable: {
-        marginBottom: '27px'
+        marginBottom: '27px',
+
     },
     desc: {
         color: theme.palette.primary.dark,
@@ -106,64 +107,41 @@ const styles = theme => ({
     },
     containerPrevios: {
     marginLeft: theme.spacing(2)
-}
-
-});
-
-const toolbarStyles = theme => ({
-    root: {
-        width: '100%',
-        padding: theme.spacing(1),
+},
+    // informacion sobre buscar funcionario
+    bullet: {
+        backgroundColor: "#89d4f2",
+        height: "10px",
+        width: "10px",
+        borderRadius: "50%",
+        display: "inline-block",
+        marginLeft: "-20px",
+        marginRight: "10px",
+        marginBottom: "1px"
     },
-    toolBarStyle: {
+    ul: {
+        listStyle: "none",
+        //marginLeft: 0,
+        paddingLeft: "20px"
+    },
+    infoBusqueda: {
+        paddingRight: theme.spacing(1),
+        paddingLeft: theme.spacing(1),
+        paddingBottom: theme.spacing(4),
+        paddingTop: theme.spacing(4),
+
+    }, toolBarStyle: {
         backgroundColor: 'transparent',
         position: 'relative',
         zIndex: 3,
         paddingTop: '53px',
         paddingBottom: '61px',
-    },
-    toolBarFloat: {
-        paddingTop: '53px',
-        paddingBottom: '61px',
-        marginTop: '-30px',
-        borderRadius: '3px',
-        background: '#fff',
-        boxShadow: '0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgb(41, 92, 83)',
-        width: '100%',
+        maxWidth: '1200px',
 
     },
-    spacer: {
-        flex: '1 1 100%',
-    },
-    actions: {
-        color: theme.palette.text.secondary,
-    },
-    title: {
-        flex: '0 0 auto',
-    },
-    flex: {
-        flexGrow: 1,
-    },
+
+
 });
-
-
-let EnhancedTableToolbar = props => {
-    const {classes, handleChangeCampo, nombreServidor, apellidoUno, apellidoDos, institucion, rfc, curp, handleSearch, handleCleanAll, handleError, nivel} = props;
-    return (
-        <Toolbar className={classes.toolBarStyle}>
-            <BusquedaServidor handleCleanAll={handleCleanAll} handleSearch={handleSearch}
-                              handleChangeCampo={handleChangeCampo}
-                              nombreServidor={nombreServidor} apellidoUno={apellidoUno} apellidoDos={apellidoDos}
-                              institucion={institucion} rfc={rfc} curp={curp} handleError={handleError} nivel={nivel}/>
-        </Toolbar>
-    );
-};
-
-EnhancedTableToolbar.propTypes = {
-    classes: PropTypes.object.isRequired
-};
-
-EnhancedTableToolbar = withStyles(toolbarStyles)(EnhancedTableToolbar);
 
 
 class EnhancedTable extends React.Component {
@@ -394,18 +372,46 @@ class EnhancedTable extends React.Component {
 
         return (
             <div>
+                <Grid
+                    container
+                    spacing={0}
+                    className={classes.infoBusqueda}
+                    style={{backgroundColor: "#f6f6f6"}}
+                >
+                    <Grid item xs={12} style={{maxWidth: 1200, margin: "0 auto"}}>
+                        <Typography paragraph>
+                            <b>Aquí encontrarás la siguiente información:</b>
+                        </Typography>
+                        <Typography component="div">
+                            <ul className={classes.ul}>
+                                <li className={classes.li}>
+                                    <Typography>
+                                        <span className={classes.bullet}/>
+                                        Consulta los servidores sancionados a por institución, nombre, RFC o CURP, a nivel federal y/o estatal
+                                    </Typography>
+                                </li>
+                                <li className={classes.li}>
+                                    <Typography>
+                                        <span className={classes.bullet}/>
+                                        Obtén datos del servidor como nombre,  puesto, sanción y causa de la misma
+                                    </Typography>
+                                </li>
+                                <li className={classes.li}>
+                                    <Typography>
+                                        <span className={classes.bullet}/>
+                                        Obtén los datos de la sanción impuesta al servidor
+                                    </Typography>
+                                </li>
+                            </ul>
+                        </Typography>
+                    </Grid>
+                </Grid>
                 <Grid container justify={'center'} spacing={0} className={classes.gridTable}>
-                    <Grid item xs={12}>
-                        <EnhancedTableToolbar categoria={this.state.categoria}
-                                              handleChangeCampo={this.handleChangeCampo}
-                                              handleCleanAll={this.handleCleanAll}
-                                              handleSearch={this.handleSearchPrevios}
-                                              nombreServidor={this.state.nombreServidor}
-                                              data={filterData}
-                                              columnas={columnData} institucion={this.state.institucion}
-                                              apellidoUno={this.state.apellidoUno}
-                                              apellidoDos={this.state.apellidoDos} handleError={this.handleError}
-                                              nivel={this.state.nivel}/>
+                    <Grid item xs={12} className={classes.toolBarStyle}>
+                        <BusquedaServidor handleCleanAll={this.handleCleanAll} handleSearch={this.handleSearchPrevios}
+                                          handleChangeCampo={this.handleChangeCampo}
+                                          nombreServidor={this.state.nombreServidor} apellidoUno={this.state.apellidoUno} apellidoDos={this.state.apellidoDos}
+                                          institucion={this.state.institucion} rfc={this.state.rfc} curp={this.state.curp} handleError={this.handleError} nivel={this.state.nivel}/>
                     </Grid>
                     <Grid item xs={12}>
                         <DetalleServidorSancionado handleClose={this.handleClose}
@@ -427,7 +433,7 @@ class EnhancedTable extends React.Component {
                             this.state.error && <MensajeErrorDatos/>
                         }
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} className={classes.section}>
                         {this.state.previos && this.state.previos.length > 0 &&
                         <div>
                             <FormControlLabel
@@ -447,14 +453,14 @@ class EnhancedTable extends React.Component {
                         }
 
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} className={classes.section}>
                         {filterData && filterData.length > 0 &&
                         <Typography variant={"h6"} className={classes.desc}>Pulsa sobre el registro para ver su
                             detalle<br/></Typography>
                         }
 
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} className={classes.section}>
                         {filterData && filterData.length > 0 &&
                         <div className={classes.container}>
                             <Table aria-describedby="spinnerLoading" id={'tableServidores'}
