@@ -12,6 +12,7 @@ import classNames from 'classnames';
 import Button from "@material-ui/core/Button";
 import AlertDialog from "../AlertDialolg";
 import MenuSistemas from "../../Compartidos/MenuSistemas";
+import BarraLogoMenu from "../../Compartidos/BarraLogoMenu";
 
 
 const style = theme => ({
@@ -72,19 +73,7 @@ class Header extends React.Component {
             <div className={classes.root}>
                 {/*<PDNAppBar/>*/}
                 <img src={BG} alt="Sistema 2" className="fenito"/>
-
-
-                <Grid container spacing={0} justify="center" style={{background: '#fff'}}>
-                    <Grid item xs={11} className={classes.item3}>
-                        <Link to="/" className={classes.link}>
-                            <img src={PDNLogo} alt="PDN" className={classes.pdnLogo}/>
-                        </Link>
-                    </Grid>
-                    <Grid item xs={1}>
-                        <MenuSistemas/>
-                    </Grid>
-                </Grid>
-
+                <BarraLogoMenu/>
                 <Grid container spacing={0} className="breadcrumb" justify='center'>
                     <Grid item xs={12} className={classes.item3}>
                         <ul>

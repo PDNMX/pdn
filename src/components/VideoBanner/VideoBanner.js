@@ -5,13 +5,7 @@ import PropTypes from "prop-types";
 import mp4 from '../../assets/videos/pdn_intro.mp4';
 import './VideoBanner.css';
 import VideoAppBar from "./VideoAppBar";
-
 import VersionAlpha from '../../assets/alfa.png';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faFacebookSquare} from "@fortawesome/free-brands-svg-icons/faFacebookSquare";
-import {faTwitter} from "@fortawesome/free-brands-svg-icons/faTwitter";
-import {faYoutube} from "@fortawesome/free-brands-svg-icons/faYoutube";
-
 import Version from '../../assets/beta-v0.2.png';
 
 const styles = theme => ({

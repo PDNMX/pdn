@@ -1,11 +1,7 @@
 import React from "react";
-
 import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
-
-import PDNLogo from "../../assets/PDN.png";
-
 import "./header.css";
 
 //menu
@@ -19,6 +15,7 @@ import {
   Typography
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
+import BarraLogoMenu from "../Compartidos/BarraLogoMenu";
 
 const styles = theme => ({
   root: {
@@ -135,61 +132,7 @@ class Header extends React.Component {
 
     return (
       <div className={classes.root}>
-        <Grid
-          container
-          spacing={0}
-          justify="center"
-          style={{ maxWidth: 1200, margin: "0 auto" }}
-        >
-          <Grid
-            item
-            xs={12}
-            className={classes.item3}
-            style={{ float: "left" }}
-          >
-            <Link to="/" className={classes.link}>
-              <img src={PDNLogo} alt="PDN" className={classes.pdnLogo} />
-            </Link>
-            <Toolbar style={{ float: "right" }}>
-              <div>
-                <IconButton
-                  aria-owns={open ? "menu-appbar" : undefined}
-                  aria-haspopup="true"
-                  onClick={this.handleMenu}
-                  color="inherit"
-                >
-                  <MenuIcon style={{ fill: "#999", fontSize: "36px" }} />
-                </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: "top",
-                    horizontal: "right"
-                  }}
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "right"
-                  }}
-                  open={open}
-                  onClose={this.handleClose}
-                >
-                  {menu.map(opcion => {
-                    return (
-                      <MenuItem
-                        key={opcion.enlace}
-                        component={Link}
-                        to={opcion.enlace}
-                      >
-                        {opcion.nombre}
-                      </MenuItem>
-                    );
-                  })}
-                </Menu>
-              </div>
-            </Toolbar>
-          </Grid>
-        </Grid>
+<BarraLogoMenu/>
         <Grid container spacing={0} className="breadcrumb" justify="center">
           <Grid item xs={12} style={{ maxWidth: 1200, margin: "0 auto" }}>
             <ul>

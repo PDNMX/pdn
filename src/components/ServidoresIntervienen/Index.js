@@ -4,7 +4,7 @@ import {Typography} from "@material-ui/core"
 import PropTypes from 'prop-types';
 import Footer from '../Home/Footer';
 import TablaServidores from "./TablaServidores";
-import TablaParticulares from "./TablaParticulares";
+//import TablaParticulares from "./TablaParticulares";
 import Grid from "@material-ui/core/Grid/Grid";
 import img1 from "../../assets/img/servidores_intervienen_contratacion.svg";
 import img2 from "../../assets/img/servidores_particulares_inhabilitados.svg";

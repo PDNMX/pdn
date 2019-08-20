@@ -7,11 +7,9 @@ import TableCell from '@material-ui/core/TableCell';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import TableFooter from '@material-ui/core/TableFooter';
-import Toolbar from '@material-ui/core/Toolbar';
 import BusquedaServidor from "./BusquedaServidor";
 import DetalleServidorSancionado from "./DetalleServidorSancionado";
 import CircularProgress from '@material-ui/core/CircularProgress';
-import BajarCSV from "../../Tablas/BajarCSV";
 import Grid from "@material-ui/core/Grid/Grid";
 import EnhancedTableHead from '../../Tablas/EnhancedTableHead';
 import {Typography} from "@material-ui/core"
@@ -367,7 +365,7 @@ class EnhancedTable extends React.Component {
 
     render() {
         const {classes} = this.props;
-        const {data, order, orderBy, selected, rowsPerPage, page, filterData, totalRows, filterDataAll} = this.state;
+        const {data, order, orderBy, selected, rowsPerPage, page, filterData, totalRows} = this.state;
         //  const emptyRows = rowsPerPage - filterData.length;
 
         return (
@@ -450,6 +448,12 @@ class EnhancedTable extends React.Component {
 
                             </div>
                         </div>
+                        }
+
+                    </Grid>
+                    <Grid item xs={12} className={classes.section}>
+                        {(!filterData || filterData.length <= 0) &&
+                        <MensajeNoRegistros/>
                         }
 
                     </Grid>

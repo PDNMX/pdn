@@ -3,7 +3,6 @@ import {withStyles} from "@material-ui/core/styles";
 import Grid from '@material-ui/core/Grid';
 import {Link} from 'react-router-dom';
 import BG from '../../../assets/img/cintillo_servidores.jpeg';
-import PDNLogo from '../../../assets/PDN.png';
 import S2 from '../../../assets/iconos_azul/2_icono.svg'
 import {Typography} from "@material-ui/core"
 import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
@@ -11,7 +10,7 @@ import '../../Utils/Header.css';
 import classNames from 'classnames';
 import Button from "@material-ui/core/Button";
 import AlertDialog from "../../Sancionados/AlertDialolg";
-import MenuSistemas from "../../Compartidos/MenuSistemas";
+import BarraLogoMenu from "../../Compartidos/BarraLogoMenu";
 
 const style = theme => ({
         root: {
@@ -73,16 +72,7 @@ class Header extends React.Component{
                 <img src={BG} alt="Sistema 2" className="fenito"/>
 
 
-                <Grid container spacing={0} justify="center" style={{background: '#fff'}}>
-                    <Grid item xs={11} className={classes.item3}>
-                        <Link to="/" className={classes.link}>
-                            <img src={PDNLogo} alt="PDN" className={classes.pdnLogo}/>
-                        </Link>
-                    </Grid>
-                    <Grid item xs={1}>
-                        <MenuSistemas/>
-                    </Grid>
-                </Grid>
+               <BarraLogoMenu/>
 
                 <Grid container spacing={0} className="breadcrumb" justify='center'>
                     <Grid item xs={12} className={classes.item3}>

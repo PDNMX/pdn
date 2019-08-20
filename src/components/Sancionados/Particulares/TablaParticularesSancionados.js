@@ -7,9 +7,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import TableFooter from '@material-ui/core/TableFooter';
-import Toolbar from '@material-ui/core/Toolbar';
 import CircularProgress from '@material-ui/core/CircularProgress';
-//import BajarCSV from "../../Tablas/BajarCSV";
 import BusquedaParticular from "./BusquedaParticular";
 import DetalleParticular from "./DetalleParticular";
 import Grid from "@material-ui/core/Grid/Grid";
@@ -456,6 +454,12 @@ class EnhancedTable extends React.Component {
 
                             </div>
                         </div>
+                        }
+
+                    </Grid>
+                    <Grid item xs={12} className={classes.section}>
+                        {(!filterData || filterData.length <= 0) &&
+                        <MensajeNoRegistros/>
                         }
 
                     </Grid>
