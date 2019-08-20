@@ -69,7 +69,7 @@ const styles = theme => ({
     redSocial: {
         marginRight: theme.spacing(2),
         marginLeft: theme.spacing(2),
-        color: '#666666'
+        color: '#54565a'
     }
 });
 
