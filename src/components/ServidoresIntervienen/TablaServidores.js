@@ -6,19 +6,23 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
+import TableFooter from '@material-ui/core/TableFooter';
 import Toolbar from '@material-ui/core/Toolbar';
 import BusquedaServidor from "./BusquedaServidor";
-import DetalleServidor from "./DetalleServidor";
-import rp from "request-promise";
+import DetalleServidorSancionado from "./DetalleServidor";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import BajarCSV from "../Tablas/BajarCSV";
 import Grid from "@material-ui/core/Grid/Grid";
 import EnhancedTableHead from '../Tablas/EnhancedTableHead';
 import {Typography} from "@material-ui/core"
 import Modal from "@material-ui/core/Modal/Modal";
-import TableFooter from "@material-ui/core/TableFooter";
-import MensajeNoRegistros from "../Tablas/MensajeNoRegistros";
+import rp from "request-promise";
 import MensajeErrorDatos from "../Tablas/MensajeErrorDatos";
+import MensajeNoRegistros from "../Tablas/MensajeNoRegistros";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Switch from "@material-ui/core/Switch";
+import Collapse from "@material-ui/core/Collapse";
+import Previos from "../Tablas/Previos";
 
 
 function getSorting(order, orderBy) {
@@ -96,13 +100,14 @@ const columnData = [
     }
 ];
 
+
 const styles = theme => ({
     root: {
         width: '100%',
         marginTop: theme.spacing(3),
     },
     tableWrapper: {
-        //overflowX: 'auto',
+        overflowX: 'auto',
     },
     tableFooter: {
         display: 'flow-root',
@@ -114,91 +119,74 @@ const styles = theme => ({
         left: 0,
         right: 0,
         top: 0,
-        bottom: 0,
-        lineHeight: 0
+        bottom: 0
     },
     container: {
         marginTop: '30px',
         marginBottom: '30px',
         overflowX: 'auto',
-        //width: '90%'
+    },
+    section: {
+        maxWidth: '1200px',
+        overflowX: 'auto'
     },
     table: {
         tableLayout: 'fixed',
     },
+    tablePagination: {
+        overflowX: 'auto',
+        fontSize: '0.75rem'
+    },
     gridTable: {
-        marginBottom: '27px'
+        marginBottom: '27px',
+
     },
     desc: {
         color: theme.palette.primary.dark,
     },
     item: {
-        padding: theme.spacing(1),
-        maxWidth: 1200
-    }
-
-});
-
-const toolbarStyles = theme => ({
-    root: {
-        width: '100%',
-        padding: theme.spacing(1),
+        padding: theme.spacing(1)
     },
-    toolBarStyle: {
+    containerPrevios: {
+    marginLeft: theme.spacing(2)
+},
+    // informacion sobre buscar funcionario
+    bullet: {
+        backgroundColor: "#89d4f2",
+        height: "10px",
+        width: "10px",
+        borderRadius: "50%",
+        display: "inline-block",
+        marginLeft: "-20px",
+        marginRight: "10px",
+        marginBottom: "1px"
+    },
+    ul: {
+        listStyle: "none",
+        //marginLeft: 0,
+        paddingLeft: "20px"
+    },
+    infoBusqueda: {
+        paddingRight: theme.spacing(1),
+        paddingLeft: theme.spacing(1),
+        paddingBottom: theme.spacing(4),
+        paddingTop: theme.spacing(4),
+
+    }, toolBarStyle: {
         backgroundColor: 'transparent',
         position: 'relative',
         zIndex: 3,
         paddingTop: '53px',
         paddingBottom: '61px',
-    },
-    toolBarFloat: {
-        paddingTop: '53px',
-        paddingBottom: '61px',
-        marginTop: '-30px',
-        borderRadius: '3px',
-        background: '#fff',
-        boxShadow: '0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgb(41, 92, 83)',
-        width: '100%',
+        maxWidth: '1200px',
 
     },
-    spacer: {
-        flex: '1 1 100%',
-    },
-    actions: {
-        color: theme.palette.text.secondary,
-    },
-    title: {
-        flex: '0 0 auto',
-    },
-    flex: {
-        flexGrow: 1,
-    },
+
 
 });
 
 
-let EnhancedTableToolbar = props => {
-    const {classes, handleChangeCampo, handleCleanAll, nombreServidor, apellidoUno, apellidoDos, procedimiento, institucion, handleSearch,handleError} = props;
-    return (
-        <Toolbar className={classes.toolBarStyle}>
-            <BusquedaServidor handleCleanAll={handleCleanAll} handleSearch={handleSearch}
-                              handleChangeCampo={handleChangeCampo}
-                              nombreServidor={nombreServidor} apellidoUno={apellidoUno} apellidoDos={apellidoDos}
-                              procedimiento={procedimiento}
-                              institucion={institucion} handleError={handleError}/>
-        </Toolbar>
-    );
-};
-
-EnhancedTableToolbar.propTypes = {
-    classes: PropTypes.object.isRequired
-};
-
-EnhancedTableToolbar = withStyles(toolbarStyles)(EnhancedTableToolbar);
-
-
 class EnhancedTable extends React.Component {
-
     constructor(props) {
         super(props);
         this.child = React.createRef();
@@ -210,23 +198,40 @@ class EnhancedTable extends React.Component {
             nombreServidor: '',
             apellidoUno: '',
             apellidoDos: '',
+            rfc: '',
+            curp: '',
             data: [],
             filterData: null,
             page: 0,
             rowsPerPage: 10,
-            procedimiento: '',
+            procedimiento: 0,
             open: false,
             elementoSeleccionado: {},
-            institucion: '',
+            institucion: "",
             loading: false,
             totalRows: 0,
             filterDataAll: [],
-            error : false
+            error: false,
+            nivel: 'todos',
+            previos: [],
+            panelPrevios: true,
+            api: ''
 
         };
 
     }
 
+    handleChange = () => {
+        this.setState({
+            panelPrevios: !this.state.panelPrevios
+        })
+    }
+
+    handleError = (val) => {
+        this.setState({
+            error: val
+        })
+    }
     handleRequestSort = (event, property) => {
         const orderBy = property;
         let order = 'desc';
@@ -268,68 +273,118 @@ class EnhancedTable extends React.Component {
 
     isSelected = id => this.state.selected.indexOf(id) !== -1;
 
+    handleSearchPrevios = () => {
+        this.handleCleanTables();
+        this.setState({loading: true});
 
-    handleSearchAPI = (typeSearch) => {
-        this.setState({loading: true}, () => {
-            let {procedimiento, institucion, nombreServidor, apellidoUno, apellidoDos} = this.state;
+        let {institucion, nombreServidor, apellidoUno, apellidoDos, rfc, curp} = this.state;
 
-            let filtros = {};
-            let offset = 1;
-
-            if (typeSearch !== 'DN_ALL') {
-                if(procedimiento) filtros.tipo_actos = procedimiento;
-                if (institucion) filtros.institucion = '%' + institucion + '%';
-                if (nombreServidor) filtros.nombres = '%' + nombreServidor.toUpperCase() + '%';
-                if (apellidoUno) filtros.primer_apellido = '%' + apellidoUno.toUpperCase() + '%';
-                if (apellidoDos) filtros.segundo_apellido = '%' + apellidoDos.toUpperCase() + '%';
-
-            }
-
-            let limit = (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.state.rowsPerPage : null;
-
-            if (typeSearch === 'CHANGE_PAGE') offset = (this.state.rowsPerPage * this.state.page)
-            else this.setState({page:0})
+        let filtros = {};
+        let offset = 0;
 
 
-            let body = {
+        if (nombreServidor) filtros.nombres = '%' + nombreServidor + '%';
+        if (apellidoUno) filtros.primer_apellido = '%' + apellidoUno + '%';
+        if (apellidoDos) filtros.segundo_apellido = '%' + apellidoDos + '%';
+        if (rfc) filtros.rfc = '%' + rfc + '%';
+        if (curp) filtros.curp = '%' + curp + '%';
+        if (institucion && institucion !== 'TODAS') filtros.nombre = '%' + institucion + '%';
+
+        let limit =  this.state.rowsPerPage;
+
+        let body =
+            {
                 "filtros": filtros,
                 "limit": limit,
                 "offset": offset,
-                "iterar" : (typeSearch === 'DN_FILTER' || typeSearch==='DN_ALL') ? true:false
-            }
-
-
-            let options = {
-                method: 'POST',
-                uri: process.env.REACT_APP_HOST_PDNBACK +'/apis/s2/getSPC',
-                json: true,
-                body: typeSearch === 'DN_ALL' ? {"iterar":true} : body
+                "nivel": this.state.nivel
             };
 
-            rp(options)
-                .then(res => {
-                    let dataAux = res.data;
-                    let total = res.totalRows;
+        let options = {
+            method: 'POST',
+            uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/s2/getPrevio',
+            json: true,
+            body: body
+        };
 
-                    typeSearch === 'DN_ALL' ? this.setState({data: dataAux, loading: false,error:false}, () => {
-                        this.btnDownloadAll.triggerDown();
-                    }) : (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.setState({
-                            filterData: dataAux,
-                            loading: false,
-                            totalRows: total,
-                        error:false
-                        }) :
-                        this.setState({filterDataAll: dataAux, loading: false, totalRows: total,error:false}, () => {
-                            this.child.triggerDown();
-                        });
-                    return true;
-                }).catch(err => {
-                this.setState({loading: false, error:true});
-                console.log(err);
-            });
+        rp(options)
+            .then(res => {
+                this.setState({previos: res, loading: false, error: false})
+            }).catch(err => {
+            this.setState({loading: false, error: true});
         });
+    };
 
+    handleCleanTables = () => {
+        this.setState(
+            {
+                filterData: null,
+                previos: null,
+            }
+        )
+    };
 
+    handleChangeAPI = (val) => {
+        this.setState({
+            api: val
+        }, () => {
+            this.handleSearchAPI('FIELD_FILTER')
+        });
+    };
+    handleSearchAPI = (typeSearch) => {
+        this.setState({loading: true});
+        let {institucion, nombreServidor, apellidoUno, apellidoDos, rfc, curp} = this.state;
+
+        let filtros = {};
+        let offset = 0;
+
+        if (typeSearch !== 'DN_ALL') {
+            if (nombreServidor) filtros.nombres = '%' + nombreServidor + '%';
+            if (apellidoUno) filtros.primer_apellido = '%' + apellidoUno + '%';
+            if (apellidoDos) filtros.segundo_apellido = '%' + apellidoDos + '%';
+            if (rfc) filtros.rfc = '%' + rfc + '%';
+            if (curp) filtros.curp = '%' + curp + '%';
+            if (institucion && institucion !== 'TODAS') filtros.nombre = '%' + institucion + '%';
+        }
+
+        let limit = (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.state.rowsPerPage : null;
+
+        if (typeSearch === 'CHANGE_PAGE') offset = (this.state.rowsPerPage * this.state.page);
+        else this.setState({page: 0})
+
+        let body =
+            {
+                "filtros": filtros,
+                "limit": limit,
+                "offset": offset,
+                "iterar": (typeSearch === 'DN_FILTER' || typeSearch === 'DN_ALL') ? true : false,
+                "clave_api": this.state.api
+            };
+        let options = {
+            method: 'POST',
+            uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/s2',
+            json: true,
+            body: typeSearch === 'DN_ALL' ? {"iterar": true} : body
+        };
+
+        rp(options)
+            .then(res => {
+                let dataAux = res.data;
+                let total = res.totalRows;
+
+                typeSearch === 'DN_ALL' ? this.setState({data: dataAux, loading: false}, () => {
+                    this.btnDownloadAll.triggerDown();
+                }) : (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.setState({
+                        filterData: dataAux,
+                        loading: false,
+                        totalRows: total
+                    }) :
+                    this.setState({filterDataAll: dataAux, loading: false, totalRows: total}, () => {
+                        this.child.triggerDown();
+                    });
+            }).catch(err => {
+            this.setState({loading: false, error: true});
+        });
     };
 
     handleChangeCampo = (varState, event) => {
@@ -337,46 +392,73 @@ class EnhancedTable extends React.Component {
             [varState]: event ? (event.target ? event.target.value : event.value) : ''
         });
     };
-
     handleCleanAll = () => {
         this.setState(
             {
                 filterData: null,
-                error : false
+                previos : null,
+                nivel : 'todos'
             }, () => {
                 this.handleChangeCampo('nombreServidor');
                 this.handleChangeCampo('procedimiento');
                 this.handleChangeCampo('institucion');
+                this.handleChangeCampo('apellidoUno');
+                this.handleChangeCampo('apellidoDos');
             })
     };
-
-    handleError = (val )=>{
-        this.setState({
-            error : val
-        })
-    }
 
     render() {
         const {classes} = this.props;
         const {data, order, orderBy, selected, rowsPerPage, page, filterData, totalRows, filterDataAll} = this.state;
-        // const emptyRows = rowsPerPage - (filterData?filterData.length:0);
+        //  const emptyRows = rowsPerPage - filterData.length;
 
         return (
             <div>
-                <Grid container justify='center' className={classes.gridTable}>
-                    <Grid item xs={12}>
-                        <EnhancedTableToolbar categoria={this.state.categoria}
-                                              handleChangeCampo={this.handleChangeCampo}
-                                              handleCleanAll={this.handleCleanAll}
-                                              handleSearch={this.handleSearchAPI}
-                                              nombreServidor={this.state.nombreServidor}
-                                              procedimiento={this.state.procedimiento} data={filterData}
-                                              columnas={columnData} institucion={this.state.institucion}
-                                              handleError = {this.handleError}/>
+                <Grid
+                    container
+                    spacing={0}
+                    className={classes.infoBusqueda}
+                    style={{backgroundColor: "#f6f6f6"}}
+                >
+                    <Grid item xs={12} style={{maxWidth: 1200, margin: "0 auto"}}>
+                        <Typography paragraph>
+                            <b>Aquí encontrarás la siguiente información:</b>
+                        </Typography>
+                        <Typography component="div">
+                            <ul className={classes.ul}>
+                                <li className={classes.li}>
+                                    <Typography>
+                                        <span className={classes.bullet}/>
+                                        Consulta los servidores que intervienen en procesos de contratación por institución, a nivel federal y/o estatal
+                                    </Typography>
+                                </li>
+                                <li className={classes.li}>
+                                    <Typography>
+                                        <span className={classes.bullet}/>
+                                        Obtén datos del servidor como: nombre, puesto, institución
+                                    </Typography>
+                                </li>
+                                {/* <li className={classes.li}>
+                                    <Typography>
+                                        <span className={classes.bullet}/>
+                                        Obtén los datos de la sanción impuesta al servidor: plazo, tipo de falta, causa, etc.
+                                    </Typography>
+                                </li> */}
+                            </ul>
+                        </Typography>
+                    </Grid>
+                </Grid>
+                <Grid container justify={'center'} spacing={0} className={classes.gridTable}>
+                    <Grid item xs={12} className={classes.toolBarStyle}>
+                        <BusquedaServidor handleCleanAll={this.handleCleanAll} handleSearch={this.handleSearchPrevios}
+                                          handleChangeCampo={this.handleChangeCampo}
+                                          nombreServidor={this.state.nombreServidor} apellidoUno={this.state.apellidoUno} apellidoDos={this.state.apellidoDos}
+                                          institucion={this.state.institucion} rfc={this.state.rfc} curp={this.state.curp} handleError={this.handleError} nivel={this.state.nivel}/>
                     </Grid>
                     <Grid item xs={12}>
-                        <DetalleServidor handleClose={this.handleClose} servidor={this.state.elementoSeleccionado}
-                                         control={this.state.open}/>
+                        <DetalleServidorSancionado handleClose={this.handleClose}
+                                                   servidor={this.state.elementoSeleccionado}
+                                                   control={this.state.open}/>
                     </Grid>
                     <Grid item xs={12}>
                         {
@@ -389,24 +471,42 @@ class EnhancedTable extends React.Component {
                             </Modal>
 
                         }
-                    </Grid>
-                    <Grid item xs={12}>
                         {
-                            this.state.error &&
-                            <MensajeErrorDatos/>}
-                    </Grid>
-                    <Grid item xs={12}>
-                        {filterData && filterData.length > 0 &&
-                        <Typography variant="h6" className={classes.desc} paragraph>Pulsa sobre el registro para ver su
-                            detalle</Typography>
+                            this.state.error && <MensajeErrorDatos/>
                         }
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} className={classes.section}>
+                        {this.state.previos && this.state.previos.length > 0 &&
+                        <div>
+                            <FormControlLabel
+                                control={<Switch className={classes.containerPrevios} checked={this.state.panelPrevios}
+                                                 onChange={() => this.handleChange()}/>}
+                                label={
+                                    <Typography variant="h6" className={classes.desc}>
+                                        {this.state.panelPrevios ? 'Ocultar resultados generales' : 'Mostrar resultados generales'}</Typography>}
+                            />
+                            <div className={classes.container}>
+                                <Collapse in={this.state.panelPrevios}>
+                                    <Previos previos={this.state.previos} handleChangeAPI={this.handleChangeAPI}/>
+                                </Collapse>
+
+                            </div>
+                        </div>
+                        }
+
+                    </Grid>
+                    <Grid item xs={12} className={classes.section}>
+                        {filterData && filterData.length > 0 &&
+                        <Typography variant={"h6"} className={classes.desc}>Pulsa sobre el registro para ver su
+                            detalle<br/></Typography>
+                        }
+
+                    </Grid>
+                    <Grid item xs={12} className={classes.section}>
                         {filterData && filterData.length > 0 &&
                         <div className={classes.container}>
                             <Table aria-describedby="spinnerLoading" id={'tableServidores'}
-                                   aria-busy={this.state.loading} aria-labelledby="tableTitle"
-                            >
+                                   aria-busy={this.state.loading} aria-labelledby="tableTitle">
                                 <EnhancedTableHead
                                     numSelected={selected.length}
                                     order={order}
@@ -431,36 +531,45 @@ class EnhancedTable extends React.Component {
                                                     key={n.id}
                                                     selected={isSelected}
                                                 >
+                                                    
                                                     <TableCell component="th" scope="row" style={{width: '25%'}}
                                                                padding="default">{n.nombre +  " "+ n.apellidoUno+ " "+ n.apellidoDos}</TableCell>
                                                     <TableCell>{n.institucion.nombre}</TableCell>
                                                     <TableCell>{n.puesto.nombre}</TableCell>
                                                     <TableCell>{n.tipo_actos}</TableCell>
+                                                    
+
                                                 </TableRow>
                                             );
                                         })}
-                                    {/*emptyRows > 0 && (
+                                    {/*
+                                        emptyRows > 0 && (
                                         <TableRow style={{height: 49 * emptyRows}}>
-                                            <TableCell colSpan={4}/>
+
+                                            <TableCell colSpan={6}/>
+
                                         </TableRow>
-                                    )*/}
+                                    )
+                                    */}
 
                                 </TableBody>
-
                                 <TableFooter>
                                     <TableRow>
-                                        <TableCell> <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data}
-                                                              filtrado={false}
-                                                              columnas={columnData} fnSearch={this.handleSearchAPI}
-                                                              fileName={'Sistema2_datos'}/></TableCell>
-                                        <TableCell>
+                                       {/* <TableCell>
+                                            <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data}
+                                                      filtrado={false}
+                                                      columnas={columnData} fnSearch={this.handleSearchAPI}
+                                                      fileName={'Servidores sancionados'}/>
+                                        </TableCell>
+                                        <TableCell colSpan={2}>
                                             <BajarCSV innerRef={comp => this.child = comp} data={filterDataAll}
                                                       filtrado={true}
                                                       columnas={columnData} fnSearch={this.handleSearchAPI}
                                                       fileName={'MiBusqueda'}/>
-                                        </TableCell>
+                                        </TableCell>*/}
                                         <TablePagination
-                                            colSpan={2}
+                                            className={classes.tablePagination}
+                                            colSpan={6}
                                             count={totalRows}
                                             rowsPerPage={rowsPerPage}
                                             page={page}
@@ -482,13 +591,9 @@ class EnhancedTable extends React.Component {
                             </Table>
                         </div>
                         }
+
                     </Grid>
-                    <Grid item xs={12}>
-                        {
-                            filterData && filterData.length===0 &&
-                            <MensajeNoRegistros/>
-                        }
-                    </Grid>
+
 
                 </Grid>
             </div>
