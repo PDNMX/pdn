@@ -452,7 +452,7 @@ class EnhancedTable extends React.Component {
 
                     </Grid>
                     <Grid item xs={12} className={classes.section}>
-                        {(!filterData || filterData.length <= 0) &&
+                        {(filterData && filterData.length <= 0) &&
                         <MensajeNoRegistros/>
                         }
 
