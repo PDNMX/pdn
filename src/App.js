@@ -32,7 +32,8 @@ const theme = createMuiTheme({
       color: "#f5f5f5" //"#e0e0e0"
     },
     grey: {
-      color: "#c5c5c5"
+      color: "#c5c5c5",
+
     },
     titleBanner: {
       color: "#666666"
@@ -62,7 +63,8 @@ const theme = createMuiTheme({
       color: "#f5f5f5"
     },
     azul: {
-      color: "#89d4f2"
+      color: "#89d4f2",
+      pdn: "#34b3eb"
     },
     black: {
       black: "#000"
@@ -72,6 +74,10 @@ const theme = createMuiTheme({
     },
     textGrey: {
       color: "#666666"
+    },
+    pestanas:{
+      bg: '#f2f2f2',
+      activa : "#b7ccd5"
     }
   }
   /*   overrides:{

@@ -20,7 +20,7 @@ const styles = theme => ({
         flexGrow: 1
     },
     whiteText: {
-        color: '#fff'
+        color: theme.palette.textGrey.color
     },
     textDark: {
         color: theme.palette.textNormal,
@@ -47,7 +47,7 @@ const styles = theme => ({
         width: '60px'
     },
     bgContainer: {
-        backgroundColor: '#34b3eb',//theme.palette.azul.color,
+        backgroundColor: theme.palette.pestanas.bg,
     },
     center: {
         textAlign: 'center'
@@ -56,7 +56,7 @@ const styles = theme => ({
         backgroundColor: theme.palette.grisTenue.color
     },
     card: {
-        backgroundColor: '#34b3eb', //theme.palette.azul.color,
+        backgroundColor: theme.palette.pestanas.bg,
         paddingLeft: theme.spacing(1),
         paddingRight: theme.spacing(1),
         paddingTop: theme.spacing(2),
@@ -64,7 +64,7 @@ const styles = theme => ({
         margin: 0,
     },
     cardSeleccionada: {
-        backgroundColor: 'grey',//theme.palette.white.color,
+        backgroundColor: theme.palette.pestanas.activa,
         paddingLeft: theme.spacing(1),
         paddingRight: theme.spacing(1),
         paddingTop: theme.spacing(2),

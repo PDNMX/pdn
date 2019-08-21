@@ -127,6 +127,7 @@ const styles = theme => ({
         paddingLeft: theme.spacing(1),
         paddingBottom: theme.spacing(4),
         paddingTop: theme.spacing(4),
+        backgroundColor: theme.palette.pestanas.activa
 
     }, toolBarStyle: {
         backgroundColor: 'transparent',
@@ -374,7 +375,6 @@ class EnhancedTable extends React.Component {
                     container
                     spacing={0}
                     className={classes.infoBusqueda}
-                    style={{backgroundColor: "#f6f6f6"}}
                 >
                     <Grid item xs={12} style={{maxWidth: 1200, margin: "0 auto"}}>
                         <Typography paragraph>
