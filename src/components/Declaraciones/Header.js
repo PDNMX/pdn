@@ -5,21 +5,14 @@ import classNames from "classnames";
 import "./header.css";
 
 //menu
-import {
-  Grid,
-  IconButton,
-  MenuItem,
-  Menu,
-  withStyles,
-  Toolbar,
-  Typography
-} from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
+import { Grid, withStyles, Typography } from "@material-ui/core";
 import BarraLogoMenu from "../Compartidos/BarraLogoMenu";
+
+import BG from "../../assets/declaraciones/sistema1_declaraciones.jpg";
 
 const styles = theme => ({
   root: {
-    flexGrow: 1    
+    flexGrow: 1
   },
   grow: {
     flexGrow: 1
@@ -89,25 +82,6 @@ const styles = theme => ({
   }
 });
 
-const menu = [
-  {
-    enlace: "/blog",
-    nombre: "Blog"
-  },
-  {
-    enlace: "/faq",
-    nombre: "Preguntas frecuentes"
-  },
-  {
-    enlace: "/about",
-    nombre: "¿Qué es la PDN?"
-  },
-  {
-    enlace: "/terminos",
-    nombre: "Términos de uso"
-  }
-];
-
 class Header extends React.Component {
   state = {
     achorEl: null
@@ -126,13 +100,11 @@ class Header extends React.Component {
   };
 
   render() {
-    const { classes, logo, titulo, background } = this.props;
-    let { anchorEl } = this.state;
-    let open = Boolean(anchorEl);
+    const { classes, logo, titulo } = this.props;
 
     return (
       <div className={classes.root}>
-<BarraLogoMenu/>
+        <BarraLogoMenu />
         <Grid container spacing={0} className="breadcrumb" justify="center">
           <Grid item xs={12} style={{ maxWidth: 1200, margin: "0 auto" }}>
             <ul>
@@ -151,7 +123,7 @@ class Header extends React.Component {
           className={classNames(classes.container1, "servidores")}
           justify="center"
           style={{
-            backgroundImage: `linear-gradient(gray, gray),url(${background})`,
+            backgroundImage: `url(${BG})`,
             backgroundPosition: "center",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat"
@@ -187,8 +159,8 @@ class Header extends React.Component {
               style={{ fontSize: "18px", fontWeight: 500, maxWidth: 600 }}
               align="justify"
             >
-              Consulta y visualiza los datos <strong>públicos</strong> de
-              las declaraciones patrimoniales, y de intereses, así como la
+              Consulta y visualiza los datos <strong>públicos</strong> de las
+              declaraciones patrimoniales, y de intereses, así como la
               constancia de declaración anual de impuestos de las y los
               servidores públicos.
             </Typography>

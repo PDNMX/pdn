@@ -2,7 +2,7 @@ import React from 'react';
 import {withStyles} from "@material-ui/core/styles";
 import Grid from '@material-ui/core/Grid';
 import {Link} from 'react-router-dom';
-import BG from '../../../assets/img/cintillo_sancionados.jpeg';
+import BG from '../../../assets/img/cintillo_sancionados.jpg';
 import S3 from '../../../assets/iconos_azul/3_icono.svg'
 import {Typography} from "@material-ui/core"
 import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
@@ -17,12 +17,7 @@ const style = theme => ({
         root: {
             flexGrow: 1,
 
-            height: '100%',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
-            position: 'relative',
-            backgroundImage: `url(${BG})`
+
         },
         container1: {
             //background: 'grey',
@@ -30,6 +25,13 @@ const style = theme => ({
             paddingBottom: '75px',
             paddingLeft: theme.spacing(1),
             paddingRight: theme.spacing(1),
+
+            height: '100%',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            position: 'relative',
+            backgroundImage: `url(${BG})`
         },
         link: {
             textDecoration: 'none',

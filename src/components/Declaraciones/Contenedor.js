@@ -41,16 +41,8 @@ const styles = theme => ({
   },
   whiteText: {
     color: "#fff", //theme.palette.titleBanner.color,
-    padding: "17px"
-  },
-  bgPanelTable: {
-    backgroundColor: theme.palette.white.color,
-    [theme.breakpoints.up("sm")]: {
-      marginBottom: theme.spacing(30)
-    },
-    [theme.breakpoints.down("sm")]: {
-      marginBottom: theme.spacing(10)
-    }
+    color: theme.palette.textGrey.color,
+    padding: "10px"
   },
   section: {
     // maxWidth: "1200px"
@@ -67,13 +59,15 @@ const styles = theme => ({
     border: 0
   },
   bgContainer: {
-    backgroundColor: "#34b3eb" //theme.palette.azul.color,
+    backgroundColor: "#34b3eb", //theme.palette.azul.color,
+    backgroundColor: theme.palette.pestanas.bg
   },
-  links: {
+  link: {
     backgroundColor: theme.palette.grisTenue.color
   },
   card: {
     backgroundColor: "#34b3eb", //theme.palette.azul.color,
+    backgroundColor: theme.palette.pestanas.bg,
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
     paddingTop: theme.spacing(2),
@@ -82,6 +76,7 @@ const styles = theme => ({
   },
   cardSeleccionada: {
     backgroundColor: "grey", //theme.palette.white.color,
+    backgroundColor: theme.palette.pestanas.activa,
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
     paddingTop: theme.spacing(2),
@@ -120,8 +115,18 @@ function AlertDialog(props) {
           id="alert-dialog-description"
           style={{ textAlign: "justify" }}
         >
-          La información contenida en esta sección <span style={{ fontWeight: "bold", backgroundColor: "red", color: "#FFF", padding: "3px 10px" }}>NO ES REAL</span>,
-          fue generada de forma aleatoria y sirve unicamente para poder
+          La información contenida en esta sección{" "}
+          <span
+            style={{
+              fontWeight: "bold",
+              backgroundColor: "red",
+              color: "#FFF",
+              padding: "3px 10px"
+            }}
+          >
+            NO ES REAL
+          </span>
+          , fue generada de forma aleatoria y sirve unicamente para poder
           visualizar las diferentes funcionalidades propuestas para este
           sistema.
         </DialogContentText>
@@ -129,11 +134,11 @@ function AlertDialog(props) {
           <b>
             El formato actual está basado en la última versión de las
             especificaciones técnicas publicadas en este sitio, mismas que
-            fueron elaboradas bajo los últimos formatos publicados en el
-            Diario Oficial de la Federación. Estos formatos actualmente se
-            encuentran en revisión por el Comité Coordinador del Sistema
-            Nacional Anticorrupción, por lo que estos no serán los formatos
-            finales de la información.
+            fueron elaboradas bajo los últimos formatos publicados en el Diario
+            Oficial de la Federación. Estos formatos actualmente se encuentran
+            en revisión por el Comité Coordinador del Sistema Nacional
+            Anticorrupción, por lo que estos no serán los formatos finales de la
+            información.
           </b>
         </DialogContentText>
       </DialogContent>
@@ -164,12 +169,7 @@ class Contenedor extends React.Component {
 
     return (
       <Grid container spacing={0} className={classes.root}>
-        <Header
-          logo={S3}
-          titulo={titulo}
-          copy={copy}
-          background={background}
-        />
+        <Header logo={S3} titulo={titulo} copy={copy} background={background} />
         <Grid container spacing={0} className={classes.bgContainer}>
           <Grid
             item
@@ -197,10 +197,7 @@ class Contenedor extends React.Component {
                       className={classes.image}
                     />
                   </figure>
-                  <Typography
-                    variant="subtitle1"
-                    className={classes.whiteText}
-                  >
+                  <Typography variant="subtitle1" className={classes.whiteText}>
                     Buscar un servidor público
                   </Typography>
                 </Link>
@@ -217,10 +214,7 @@ class Contenedor extends React.Component {
                   "tab"
                 )}
               >
-                <Link
-                  className={classes.link}
-                  to="/declaraciones/estadisticas"
-                >
+                <Link className={classes.link} to="/declaraciones/estadisticas">
                   <figure className={classes.figure}>
                     <img
                       alt="Estadísticas"
@@ -228,10 +222,7 @@ class Contenedor extends React.Component {
                       className={classes.image}
                     />
                   </figure>
-                  <Typography
-                    variant="subtitle1"
-                    className={classes.whiteText}
-                  >
+                  <Typography variant="subtitle1" className={classes.whiteText}>
                     Estadísticas
                   </Typography>
                 </Link>
@@ -253,10 +244,7 @@ class Contenedor extends React.Component {
           </Grid>
         </Grid>
         <Footer />
-        <AlertDialog
-          open={this.state.open}
-          handleClose={this.handleClose}
-        />
+        <AlertDialog open={this.state.open} handleClose={this.handleClose} />
       </Grid>
     );
   }
