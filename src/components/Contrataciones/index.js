@@ -78,12 +78,13 @@ class Index extends React.Component {
                     </Grid>
                 </Grid>
 
+
+
                 <Grid container spacing={0} justify="center" className={classes.container}>
                     <Grid item xs={12} className={classes.item}>
                         <Busqueda/>
                     </Grid>
                 </Grid>
-
 
                 <Grid container spacing={0} justify="center" className={classes.container} style={{backgroundColor: '#f6f6f6'}}>
                     <Grid item xs={12} className={classes.item}>

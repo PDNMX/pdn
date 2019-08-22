@@ -4,6 +4,7 @@ import {withStyles} from "@material-ui/core/styles";
 import TablaResultados from './TablaResultados';
 import rp from 'request-promise';
 import SearchControls from "./SearchControls";
+import Grid from '@material-ui/core/Grid';
 
 const styles = theme => ({
     root: {
@@ -167,27 +168,32 @@ class Busqueda extends React.Component{
 
         return (
             <div className={classes.root}>
-
-                <SearchControls buyers={this.state.buyers}
-                                buyer_id={this.state.buyer_id}
-                                setBuyer={this.setBuyer}
-                                setProcurementMethod={this.setProcurementMethod}
-                                procurementMethod={this.state.procurementMethod}
-                                setSupplierName={this.setSupplierName}
-                                supplierName={this.state.supplierName}
-                                setInputText={this.setInputText}
-                                search={this.search}
-                />
-
-                <TablaResultados
-                    data={this.state.results}
-                    pagination={this.state.pagination}
-                    handleChangeRowsPerPage = {this.handleChangeRowsPerPage}
-                    handleChangePage = {this.handlePageChange}
-                    loading={this.state.loading}
-                />
+                <Grid container spacing={0}>
+                    <SearchControls buyers={this.state.buyers}
+                                    buyer_id={this.state.buyer_id}
+                                    setBuyer={this.setBuyer}
+                                    setProcurementMethod={this.setProcurementMethod}
+                                    procurementMethod={this.state.procurementMethod}
+                                    setSupplierName={this.setSupplierName}
+                                    supplierName={this.state.supplierName}
+                                    setInputText={this.setInputText}
+                                    search={this.search}
+                    />
 
 
+                    <div>
+
+                        <TablaResultados
+                            data={this.state.results}
+                            pagination={this.state.pagination}
+                            handleChangeRowsPerPage = {this.handleChangeRowsPerPage}
+                            handleChangePage = {this.handlePageChange}
+                            loading={this.state.loading}
+                        />
+
+                    </div>
+
+                </Grid>
             </div>
         );
     }

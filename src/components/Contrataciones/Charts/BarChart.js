@@ -96,7 +96,7 @@ export default class Example extends React.Component {
                 <XYPlot
                     margin={{left: 100, bottom: 100}}
                     xType="ordinal"
-                    width={500}
+                    width={390}
                     height={450}
                     yDomain={[0, 150000]}//{[yDomain.min, yDomain.max]}
                 >
