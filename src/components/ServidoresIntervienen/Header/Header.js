@@ -14,7 +14,14 @@ import BarraLogoMenu from "../../Compartidos/BarraLogoMenu";
 
 const style = theme => ({
         root: {
-            flexGrow:1
+            flexGrow:1,
+            
+            height: '100%',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            position: 'relative',
+            backgroundImage: `url(${BG})`
         },
         container1: {
             //background: 'grey',
@@ -69,7 +76,6 @@ class Header extends React.Component{
         return(
             <div className={classes.root}>
                 {/*<PDNAppBar/>*/}
-                <img src={BG} alt="Sistema 2" className="fenito"/>
 
 
                <BarraLogoMenu/>
