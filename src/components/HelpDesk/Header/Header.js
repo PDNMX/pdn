@@ -5,10 +5,18 @@ import {Link} from 'react-router-dom';
 import PDNLogo from '../../../assets/PDN.png';
 import {Typography} from "@material-ui/core"
 import withWidth from '@material-ui/core/withWidth';
+import BG from "../../../assets/img/mesa_ayuda.jpg";
 
 const style = theme => ({
         root: {
-            flexGrow:1
+            flexGrow:1,
+
+            height: '100%',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            position: 'relative',
+            backgroundImage: `url(${BG})`
         },
 
         link: {
@@ -70,7 +78,7 @@ class Header extends React.Component{
                     </Grid>
                 </Grid>
 
-                <Grid container spacing={0} style={{background:"#5fb1e6", padding: "82px 0"}} justify='center'>
+                <Grid container spacing={0} style={{ padding: "82px 0"}} justify='center'>
                   <Grid item xs={12} md={7} className={classes.item2} align='center' >
                       <Typography variant="h1" paragraph className={classes.whiteText} style={{fontSize: '36px', fontWeight: 300}}>
                           Mesa de ayuda

@@ -6,12 +6,18 @@ import {Link} from 'react-router-dom';
 import PDNLogo from '../../../../assets/PDN.png';
 import {Typography} from "@material-ui/core"
 import withWidth from '@material-ui/core/withWidth';
-
+import BG from '../../../../assets/img/calidad_datos.jpg';
 const style = theme => ({
         root: {
-            flexGrow:1
-        },
+            flexGrow:1,
 
+            height: '100%',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            position: 'relative',
+            backgroundImage: `url(${BG})`
+        },
         link: {
             textDecoration: 'none',
             color: 'inherit'
@@ -38,6 +44,12 @@ const style = theme => ({
             paddingLeft: "40px",
             paddingTop: "40px",
             paddingBottom: "40px"
+        },
+        bg: {
+            zIndex: -1,
+            position: "absolute",
+            //minWidth: '100%',
+            minHeight: '100%'
         }
     }
 );
@@ -49,6 +61,7 @@ class Header extends React.Component{
 
         return(
             <div className={classes.root}>
+
 
                 <Grid container spacing={0} justify="center" style={{background: '#fff'}}>
                     <Grid item xs={12} className={classes.item3}>
@@ -71,11 +84,14 @@ class Header extends React.Component{
                     </Grid>
                 </Grid>
 
-                <Grid container spacing={0} style={{background:"#5fb1e6", padding: "82px 0"}} justify='center'>
+
+
+                <Grid container spacing={0} style={{ padding: "82px 0"}} justify='center'>
                   <Grid item xs={12} md={7} className={classes.item2} align='center' >
                       <Typography variant="h1" paragraph className={classes.whiteText} style={{fontSize: '36px', fontWeight: 300}}>
                           Evaluación de la calidad de los datos
                       </Typography>
+
                   </Grid>
                 </Grid>
 

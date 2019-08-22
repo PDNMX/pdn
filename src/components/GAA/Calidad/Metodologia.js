@@ -14,7 +14,7 @@ const styles = theme => ({
         flexGrow: 1
     },
     item: {
-        maxWidth:1000,
+        maxWidth: 1000,
         paddingTop: 100,
         paddingBottom: 100
     },
@@ -34,7 +34,6 @@ class Metodologia extends React.Component{
 
             <Grid container spacing={0} className={classes.container} justify="center">
                 <Grid item xs={12} className={classes.item}>
-
                     <ExpansionPanels/>
 
 

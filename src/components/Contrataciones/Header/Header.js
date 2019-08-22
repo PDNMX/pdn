@@ -6,13 +6,19 @@ import BG from '../../../assets/img/cintillo_contrataciones.jpg';
 import C from '../../../assets/iconos_azul/6_icono.svg'
 import {Typography} from "@material-ui/core"
 import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
-import './Header.css';
 import classNames from 'classnames';
 import BarraLogoMenu from "../../Compartidos/BarraLogoMenu";
 
 const style = theme => ({
         root: {
-            flexGrow:1
+            flexGrow:1,
+
+            height: '100%',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            position: 'relative',
+            backgroundImage: `url(${BG})`
         },
         container1: {
             //background: 'grey',
@@ -63,8 +69,6 @@ class Header extends React.Component{
 
         return(
             <div className={classes.root}>
-                <img src={BG} alt="Sistema 2" className="fenito"/>
-
 
                <BarraLogoMenu/>
 
