@@ -115,7 +115,7 @@ class BusquedaServidor extends React.Component {
     };
 
     render() {
-        const {classes, handleChangeCampo, nombreServidor, apellidoUno, apellidoDos, procedimiento, rfc, curp, institucion, nivel} = this.props;
+        const {classes, handleChangeCampo, nombreServidor, apellidoUno, apellidoDos, procedimiento, institucion, nivel} = this.props;
 
         return (
             <div>
