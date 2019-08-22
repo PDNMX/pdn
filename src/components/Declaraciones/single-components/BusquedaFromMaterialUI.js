@@ -91,7 +91,7 @@ class BusquedaFromMaterialUI extends Component {
               component="fieldset"
               className={classes.formControl}
             >
-              <FormLabel component="legend">Nivel de gobierno:</FormLabel>
+              <FormLabel component="legend">Nivel:</FormLabel>
               <RadioGroup
                 aria-label="nivel"
                 name="nivel"
@@ -124,7 +124,6 @@ class BusquedaFromMaterialUI extends Component {
             </FormControl>
           </Grid>
           <Grid item xs={2}>
-            <br />
             <br />
             <Button
               className={classes.button}
