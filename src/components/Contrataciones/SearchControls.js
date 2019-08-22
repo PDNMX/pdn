@@ -121,7 +121,7 @@ class SearchControls extends React.Component{
                                     onChange={handleChangeBuyer}
                                     //input={<BootstrapInput name="buyer" id="age-customized-native-simple"/>}
                                 >
-                                    <MenuItem value="any">Todas</MenuItem>
+                                    <MenuItem value="any"><em>Todas</em></MenuItem>
                                     {
                                         buyers.map((b,i)=>{
                                             return <MenuItem key={i} value={b.id}>{b.name}</MenuItem>
