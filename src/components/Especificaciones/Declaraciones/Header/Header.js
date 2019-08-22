@@ -12,6 +12,12 @@ import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
 const style = theme => ({
         root: {
             flexGrow:1,
+        },
+        container1: {
+            paddingTop: '75px',
+            paddingBottom: '75px',
+            paddingLeft: theme.spacing(1),
+            paddingRight: theme.spacing(1),
 
             height: '100%',
             backgroundPosition: 'center',
@@ -19,12 +25,7 @@ const style = theme => ({
             backgroundSize: 'cover',
             position: 'relative',
             backgroundImage: `url(${BG})`
-        },
-        container1: {
-            paddingTop: '75px',
-            paddingBottom: '75px',
-            paddingLeft: theme.spacing(1),
-            paddingRight: theme.spacing(1),
+
         },
         link: {
             textDecoration: 'none',

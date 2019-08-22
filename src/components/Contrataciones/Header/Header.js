@@ -11,14 +11,7 @@ import BarraLogoMenu from "../../Compartidos/BarraLogoMenu";
 
 const style = theme => ({
         root: {
-            flexGrow:1,
-
-            height: '100%',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
-            position: 'relative',
-            backgroundImage: `url(${BG})`
+            flexGrow:1
         },
         container1: {
             //background: 'grey',
@@ -26,6 +19,13 @@ const style = theme => ({
             paddingBottom: '75px',
             paddingLeft: theme.spacing(1),
             paddingRight: theme.spacing(1),
+
+            height: '100%',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            position: 'relative',
+            backgroundImage: `url(${BG})`
         },
         link: {
             textDecoration: 'none',

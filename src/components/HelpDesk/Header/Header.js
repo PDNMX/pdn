@@ -10,13 +10,6 @@ import BG from "../../../assets/img/mesa_ayuda.jpg";
 const style = theme => ({
         root: {
             flexGrow:1,
-
-            height: '100%',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
-            position: 'relative',
-            backgroundImage: `url(${BG})`
         },
 
         link: {
@@ -45,6 +38,14 @@ const style = theme => ({
             paddingLeft: "40px",
             paddingTop: "40px",
             paddingBottom: "40px"
+        },
+        container: {
+            height: '100%',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            position: 'relative',
+            backgroundImage: `url(${BG})`
         }
     }
 );
@@ -78,7 +79,7 @@ class Header extends React.Component{
                     </Grid>
                 </Grid>
 
-                <Grid container spacing={0} style={{ padding: "82px 0"}} justify='center'>
+                <Grid container spacing={0} style={{ padding: "82px 0"}} justify='center' className={classes.container}>
                   <Grid item xs={12} md={7} className={classes.item2} align='center' >
                       <Typography variant="h1" paragraph className={classes.whiteText} style={{fontSize: '36px', fontWeight: 300}}>
                           Mesa de ayuda
