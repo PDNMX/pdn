@@ -1,7 +1,7 @@
 import React from "react";
 
 import Header from "./Header";
-import Footer from "./Footer";
+import Footer from "../Home/Footer";
 
 import Busqueda from "./Busqueda";
 import PerfilMaterialUI from "./PerfilMaterialUI";

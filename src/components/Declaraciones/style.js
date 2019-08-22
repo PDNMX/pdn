@@ -126,7 +126,7 @@ export default theme => ({
     width: "100%"
   },
   formControl: {
-    margin: theme.spacing(3),
+    margin: theme.spacing(1),
     display: "flex"
   },
   group: {
@@ -167,7 +167,7 @@ export default theme => ({
     paddingLeft: "20px"
   },
   li: {
-    paddingBottom: theme.spacing(2)
+    // paddingBottom: theme.spacing(2)
   },
   infoBusqueda: {
     paddingRight: theme.spacing(1),
