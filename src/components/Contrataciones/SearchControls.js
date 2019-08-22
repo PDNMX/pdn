@@ -119,7 +119,7 @@ class SearchControls extends React.Component{
                                 <NativeSelect
                                     value={buyer}
                                     onChange={handleChangeBuyer}
-                                    input={<BootstrapInput name="buyer" id="age-customized-native-simple"/>}
+                                    //input={<BootstrapInput name="buyer" id="age-customized-native-simple"/>}
                                 >
                                     <option value="any">Todas</option>
                                     {
@@ -144,7 +144,7 @@ class SearchControls extends React.Component{
                                 <Select
                                     value={procurementMethod}
                                     onChange={handleChangeProcurementMethod}
-                                    input={<BootstrapInput name="age" id="age-customized-select" />}
+                                    //input={<BootstrapInput name="age" id="age-customized-select" />}
                                 >
                                     <MenuItem value="any">
                                         <em>Cualquiera</em>
@@ -166,7 +166,7 @@ class SearchControls extends React.Component{
                             //helperText="Full width!"
                             fullWidth
                             margin="normal"
-                            variant="outlined"
+                            //variant="outlined"
                             InputLabelProps={{
                                 shrink: true,
                             }}
@@ -184,7 +184,7 @@ class SearchControls extends React.Component{
                             //helperText="Full width!"
                             fullWidth
                             margin="normal"
-                            variant="outlined"
+                            //variant="outlined"
                             InputLabelProps={{
                                 shrink: true,
                             }}
