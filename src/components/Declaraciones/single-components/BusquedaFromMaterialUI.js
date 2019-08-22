@@ -86,7 +86,7 @@ class BusquedaFromMaterialUI extends Component {
               fullWidth
             />
           </Grid>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={10}>
             <FormControl
               component="fieldset"
               className={classes.formControl}
