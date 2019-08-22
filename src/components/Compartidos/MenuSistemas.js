@@ -62,7 +62,7 @@ class MenuSistemas extends React.Component {
                         horizontal: "right"
                     }}
                     open={open}
-                    onClose={() => this.handleClose}
+                    onClose={this.handleClose}
                     PaperProps={{
                         style: {
                             maxHeight: 200,
