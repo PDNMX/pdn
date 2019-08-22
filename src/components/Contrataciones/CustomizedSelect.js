@@ -69,7 +69,7 @@ export default function CustomizedSelect(props) {
                 <Select
                     value={props.dataType}
                     onChange={handleChange}
-                    input={<BootstrapInput name="age" id="age-customized-native-simple" />}
+                    //input={<BootstrapInput name="age" id="age-customized-native-simple" />}
                 >
                     <MenuItem value={"amounts"}>Gasto ejercido</MenuItem>
                     <MenuItem value={"counts"}>Número de contrataciones</MenuItem>
