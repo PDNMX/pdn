@@ -129,7 +129,7 @@ class Estandar extends React.Component {
                     <Button variant="contained" className={classes.button} href="https://github.com/OAI/OpenAPI-Specification">Más información</Button>
                 </p>
 
-                <Typography variant="h5"vparagraph>
+                <Typography variant="h5" paragraph>
                     OAuth 2.0
                 </Typography>
                 <Typography paragraph>
