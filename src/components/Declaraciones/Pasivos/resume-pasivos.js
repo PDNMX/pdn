@@ -5,7 +5,6 @@ import BaseGraph from "../single-components/BaseGraph";
 
 import { withStyles } from "@material-ui/core/styles";
 import styles from "../style";
-import { throwServerError } from "apollo-link-http-common";
 
 let d3 = Object.assign({}, require("d3-format"));
 
@@ -22,6 +21,7 @@ class Deudas extends Component {
     let total = 0;
     d.map(o => {
       total += o.monto_original;
+      return "";
     });
     return total;
   };
