@@ -15,7 +15,7 @@ import DialogTitle from "@material-ui/core/DialogTitle/DialogTitle";
 import Button from "@material-ui/core/Button/Button";
 import DialogActions from "@material-ui/core/DialogActions/DialogActions";
 import glosario from "../Utils/glosario.json";
-import DownloadIcon from "@material-ui/icons/CloudDownload";
+//import DownloadIcon from "@material-ui/icons/CloudDownload";
 import * as jsPDF from "jspdf";
 
 
