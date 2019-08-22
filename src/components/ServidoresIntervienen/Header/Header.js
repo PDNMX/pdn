@@ -15,7 +15,7 @@ import BarraLogoMenu from "../../Compartidos/BarraLogoMenu";
 const style = theme => ({
         root: {
             flexGrow:1,
-            
+
             height: '100%',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
