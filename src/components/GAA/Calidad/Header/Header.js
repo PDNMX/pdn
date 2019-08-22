@@ -45,12 +45,6 @@ const style = theme => ({
             paddingLeft: "40px",
             paddingTop: "40px",
             paddingBottom: "40px"
-        },
-        bg: {
-            zIndex: -1,
-            position: "absolute",
-            //minWidth: '100%',
-            minHeight: '100%'
         }
     }
 );
