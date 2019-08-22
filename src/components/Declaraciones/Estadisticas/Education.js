@@ -12,15 +12,15 @@ import EducacionNivelGobierno from "./Educacion/EducacionNivelGobierno";
 import EducacionNivelGobiernoPorcentaje from "./Educacion/EducacionNivelGobiernoPorcentaje";
 
 import { withStyles } from "@material-ui/core/styles";
-import MenuInformacion from "../MenuLaterlal";
+// import MenuInformacion from "../MenuLaterlal";
 
 import styles from "../style";
 
-let menu = [
-  "Funcionarios por nivel educativo",
-  "Funcionarios por nivel educativo y edad",
-  "Funcionarios por nivel educativo y nivel de gobierno"
-];
+// let menu = [
+//   "Funcionarios por nivel educativo",
+//   "Funcionarios por nivel educativo y edad",
+//   "Funcionarios por nivel educativo y nivel de gobierno"
+// ];
 
 class Education extends Component {
   render() {
@@ -29,14 +29,13 @@ class Education extends Component {
     return (
       <div className={classes.rootSeccion}>
         <Grid container spacing={0}>
-          <Grid item xs={4} md={2} className={classes.sidebar}>
+          {/* <Grid item xs={4} md={2} className={classes.sidebar}>
             <MenuInformacion menu={menu} value={value} change={change} />
-          </Grid>
+          </Grid> */}
           <Grid
             item
-            xs={8}
-            md={10}
-            style={{ backgroundColor: "#f2f2f2", padding: 15 }}
+            xs={12}
+            style={{  padding: 15 }}
           >
             {value === 0 && (
               <div>
