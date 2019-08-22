@@ -44,12 +44,7 @@ const styles = theme => ({
     color: theme.palette.textGrey.color,
     padding: "10px"
   },
-  section: {
-    // maxWidth: "1200px"
-  },
   sectionT: {
-    // maxWidth: "1200px",
-    overflowX: "auto",
     color: theme.palette.textGrey.color
   },
   image: {
@@ -61,9 +56,6 @@ const styles = theme => ({
   bgContainer: {
     backgroundColor: "#34b3eb", //theme.palette.azul.color,
     backgroundColor: theme.palette.pestanas.bg
-  },
-  link: {
-    backgroundColor: theme.palette.grisTenue.color
   },
   card: {
     backgroundColor: "#34b3eb", //theme.palette.azul.color,
@@ -171,12 +163,7 @@ class Contenedor extends React.Component {
       <Grid container spacing={0} className={classes.root}>
         <Header logo={S3} titulo={titulo} copy={copy} background={background} />
         <Grid container spacing={0} className={classes.bgContainer}>
-          <Grid
-            item
-            xs={12}
-            className={classes.section}
-            style={{ maxWidth: 1200, margin: "0 auto" }}
-          >
+          <Grid item xs={12} style={{ maxWidth: 1200, margin: "0 auto" }}>
             <Grid container spacing={0}>
               <Grid
                 item
@@ -232,7 +219,7 @@ class Contenedor extends React.Component {
         </Grid>
         {/* fin menu */}
         <Grid container spacing={0}>
-          <Grid item xs={12}>
+          <Grid item xs={12} className={classes.sectionT}>
             <Switch>
               <Route exact path="/declaraciones" component={Busqueda} />
               <Route

@@ -35,7 +35,7 @@ class BusquedaFromMaterialUI extends Component {
           className={classes.root}
           style={{ marginBottom: 30 }}
         >
-          <Grid item xs={12} sm={12}>
+          <Grid item xs={12} md={6}>
             <TextField
               style={{ width: "100%" }}
               id="standard-select-currency"
@@ -123,7 +123,9 @@ class BusquedaFromMaterialUI extends Component {
               </RadioGroup>
             </FormControl>
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={2}>
+            <br />
+            <br />
             <Button
               className={classes.button}
               type="submit"
