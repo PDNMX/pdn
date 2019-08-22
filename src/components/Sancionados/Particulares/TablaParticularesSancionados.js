@@ -258,9 +258,9 @@ class EnhancedTable extends React.Component {
         let filtros = {};
         let offset = 0;
 
-        if (nombreParticular) filtros.nombre_razon_social = '%' + nombreParticular + '%';
-        if (numeroExpediente) filtros.numero_expediente = '%' + numeroExpediente + '%';
-        if (institucion && institucion !== 'TODAS') filtros.nombre = '%' + institucion + '%';
+        if (nombreParticular) filtros.nombre_razon_social = nombreParticular ;
+        if (numeroExpediente) filtros.numero_expediente = numeroExpediente ;
+        if (institucion && institucion !== 'TODAS') filtros.nombre = institucion ;
 
 
         let limit = this.state.rowsPerPage;
@@ -292,9 +292,9 @@ class EnhancedTable extends React.Component {
         let filtros = {};
         let offset = 0;
         if (typeSearch !== 'ALL') {
-            if (nombreParticular) filtros.nombre_razon_social = '%' + nombreParticular + '%';
-            if (numeroExpediente) filtros.numero_expediente = '%' + numeroExpediente + '%';
-            if (institucion && institucion !== 'TODAS') filtros.nombre = '%' + institucion + '%';
+            if (nombreParticular) filtros.nombre_razon_social = nombreParticular;
+            if (numeroExpediente) filtros.numero_expediente = numeroExpediente;
+            if (institucion && institucion !== 'TODAS') filtros.nombre = institucion;
 
         }
 

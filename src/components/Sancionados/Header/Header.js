@@ -3,7 +3,6 @@ import {withStyles} from "@material-ui/core/styles";
 import Grid from '@material-ui/core/Grid';
 import {Link} from 'react-router-dom';
 import BG from '../../../assets/img/cintillo_sancionados.jpeg';
-//import PDNLogo from '../../../assets/PDN.png';
 import S3 from '../../../assets/iconos_azul/3_icono.svg'
 import {Typography} from "@material-ui/core"
 import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
@@ -11,7 +10,6 @@ import '../../Utils/Header.css'
 import classNames from 'classnames';
 import Button from "@material-ui/core/Button";
 import AlertDialog from "../AlertDialolg";
-import MenuSistemas from "../../Compartidos/MenuSistemas";
 import BarraLogoMenu from "../../Compartidos/BarraLogoMenu";
 
 
