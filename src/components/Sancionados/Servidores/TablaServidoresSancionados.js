@@ -127,7 +127,7 @@ const styles = theme => ({
         paddingLeft: theme.spacing(1),
         paddingBottom: theme.spacing(4),
         paddingTop: theme.spacing(4),
-        backgroundColor: theme.palette.pestanas.activa
+        backgroundColor: "white"
 
     }, toolBarStyle: {
         backgroundColor: 'transparent',
@@ -240,12 +240,12 @@ class EnhancedTable extends React.Component {
         let offset = 0;
 
 
-        if (nombreServidor) filtros.nombres = '%' + nombreServidor + '%';
-        if (apellidoUno) filtros.primer_apellido = '%' + apellidoUno + '%';
-        if (apellidoDos) filtros.segundo_apellido = '%' + apellidoDos + '%';
-        if (rfc) filtros.rfc = '%' + rfc + '%';
-        if (curp) filtros.curp = '%' + curp + '%';
-        if (institucion && institucion !== 'TODAS') filtros.nombre = '%' + institucion + '%';
+        if (nombreServidor) filtros.nombres = nombreServidor ;
+        if (apellidoUno) filtros.primer_apellido = apellidoUno ;
+        if (apellidoDos) filtros.segundo_apellido =apellidoDos ;
+        if (rfc) filtros.rfc = rfc;
+        if (curp) filtros.curp = curp;
+        if (institucion && institucion !== 'TODAS') filtros.nombre = institucion ;
 
         let limit =  this.state.rowsPerPage;
 
@@ -296,12 +296,12 @@ class EnhancedTable extends React.Component {
         let offset = 0;
 
         if (typeSearch !== 'DN_ALL') {
-            if (nombreServidor) filtros.nombres = '%' + nombreServidor + '%';
-            if (apellidoUno) filtros.primer_apellido = '%' + apellidoUno + '%';
-            if (apellidoDos) filtros.segundo_apellido = '%' + apellidoDos + '%';
-            if (rfc) filtros.rfc = '%' + rfc + '%';
-            if (curp) filtros.curp = '%' + curp + '%';
-            if (institucion && institucion !== 'TODAS') filtros.nombre = '%' + institucion + '%';
+            if (nombreServidor) filtros.nombres = nombreServidor;
+            if (apellidoUno) filtros.primer_apellido = apellidoUno ;
+            if (apellidoDos) filtros.segundo_apellido = apellidoDos;
+            if (rfc) filtros.rfc =  rfc;
+            if (curp) filtros.curp =  curp ;
+            if (institucion && institucion !== 'TODAS') filtros.nombre =  institucion;
         }
 
         let limit = (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.state.rowsPerPage : null;

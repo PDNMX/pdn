@@ -161,7 +161,7 @@ const styles = theme => ({
         paddingLeft: theme.spacing(1),
         paddingBottom: theme.spacing(4),
         paddingTop: theme.spacing(4),
-        backgroundColor: theme.palette.pestanas.activa
+        backgroundColor: "white"
 
     }, toolBarStyle: {
         backgroundColor: 'transparent',
