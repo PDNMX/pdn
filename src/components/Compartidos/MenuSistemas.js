@@ -14,6 +14,9 @@ const style = theme => ({
     menuHamburguesa: {
         fill: "#808080",
         fontSize: "36px",
+    },
+    text : {
+        whiteSpace : "initial"
     }
 
 });
@@ -63,36 +66,31 @@ class MenuSistemas extends React.Component {
                     }}
                     open={open}
                     onClose={this.handleClose}
-                    PaperProps={{
-                        style: {
-                            maxHeight: 200,
-                        },
-                    }}
                 >
                     <MenuItem component={Link} to="/declaraciones">
                         <Tooltip title={'Declaración patrimonial y de intereses'}>
-                            <Typography variant="inherit" noWrap>{"Declaraciones"}</Typography>
+                            <Typography className={classes.text} variant="inherit" noWrap>{"Declaraciones"}</Typography>
                         </Tooltip>
                     </MenuItem>
                     <MenuItem component={Link} to="/servidores">
-                        <Tooltip title={'Servidores públicos que intervienen en contrataciones públicas'}>
-                            <Typography variant="inherit" noWrap>{"Servidores públicos en contrataciones públicas"}</Typography>
+                        <Tooltip title={'Servidores públicos que intervienen en contrataciones'}>
+                            <Typography className={classes.text} variant="inherit" noWrap>{"Servidores públicos en contrataciones"}</Typography>
                         </Tooltip>
                     </MenuItem>
                     <MenuItem component={Link} to="/sancionados">
                         <Tooltip title={'Servidores públicos y particulares sancionados'}>
-                            <Typography variant="inherit" noWrap>{"Sancionados"}</Typography>
+                            <Typography className={classes.text} variant="inherit" noWrap>{"Sancionados"}</Typography>
                         </Tooltip>
                     </MenuItem>
                     <MenuItem component={Link} disabled={true} to="#">
-                        <Typography variant="inherit" noWrap>{"Fiscalización"}</Typography>
+                        <Typography className={classes.text}  variant="inherit" noWrap>{"Fiscalización"}</Typography>
                     </MenuItem>
                     <MenuItem component={Link} disabled={true} to="/#">
-                        <Typography variant="inherit" noWrap>{"Denuncias"}</Typography>
+                        <Typography className={classes.text} variant="inherit" noWrap>{"Denuncias"}</Typography>
                     </MenuItem>
                     <MenuItem component={Link} to="/contrataciones">
                         <Tooltip title={'Contrataciones públicas'}>
-                            <Typography variant="inherit" noWrap>{"Contrataciones"}</Typography>
+                            <Typography className={classes.text} variant="inherit" noWrap>{"Contrataciones"}</Typography>
                         </Tooltip>
                     </MenuItem>
 
