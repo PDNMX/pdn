@@ -115,7 +115,7 @@ class BusquedaServidor extends React.Component {
     };
 
     render() {
-        const {classes, handleChangeCampo, nombreServidor, apellidoUno, apellidoDos, procedimiento, rfc, curp, institucion, nivel} = this.props;
+        const {classes, handleChangeCampo, nombreServidor, apellidoUno, apellidoDos, procedimiento, institucion, nivel} = this.props;
 
         return (
             <div>
@@ -243,20 +243,6 @@ class BusquedaServidor extends React.Component {
                                     }))
                                 }
                             </Select>
-                            {
-                                /*
-                                <SelectReact
-                                classes={classes}
-                                styles={selectStyles}
-                                options={this.state.suggestions}
-                                components={components}
-                                value={{value: institucion, label: institucion}}
-                                onChange={(e) => handleChangeCampo('institucion', e)}
-                                id="campoSelectInstitucion"
-                                placeholder = {'TODAS'}
-                            />
-                                */
-                            }
 
 
                         </FormControl>

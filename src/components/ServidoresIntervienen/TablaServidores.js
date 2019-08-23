@@ -277,18 +277,19 @@ class EnhancedTable extends React.Component {
         this.handleCleanTables();
         this.setState({loading: true});
 
-        let {institucion, nombreServidor, apellidoUno, apellidoDos, rfc, curp} = this.state;
+        let {institucion, nombreServidor, apellidoUno, apellidoDos, procedimiento} = this.state;
 
         let filtros = {};
         let offset = 0;
 
 
-        if (nombreServidor) filtros.nombres = '%' + nombreServidor + '%';
-        if (apellidoUno) filtros.primer_apellido = '%' + apellidoUno + '%';
-        if (apellidoDos) filtros.segundo_apellido = '%' + apellidoDos + '%';
-        if (rfc) filtros.rfc = '%' + rfc + '%';
-        if (curp) filtros.curp = '%' + curp + '%';
-        if (institucion && institucion !== 'TODAS') filtros.nombre = '%' + institucion + '%';
+        if (nombreServidor) filtros.nombres = nombreServidor;
+        if (apellidoUno) filtros.primer_apellido = apellidoUno;
+        if (apellidoDos) filtros.segundo_apellido = apellidoDos;
+        if (procedimiento) filtros.procedimiento = procedimiento;
+        /* if (rfc) filtros.rfc = '%' + rfc + '%';
+        if (curp) filtros.curp = '%' + curp + '%'; */
+        if (institucion && institucion !== 'TODAS') filtros.institucion = institucion;
 
         let limit =  this.state.rowsPerPage;
 
@@ -333,18 +334,19 @@ class EnhancedTable extends React.Component {
     };
     handleSearchAPI = (typeSearch) => {
         this.setState({loading: true});
-        let {institucion, nombreServidor, apellidoUno, apellidoDos, rfc, curp} = this.state;
+        let {institucion, nombreServidor, apellidoUno, apellidoDos, procedimiento} = this.state;
 
         let filtros = {};
         let offset = 0;
 
         if (typeSearch !== 'DN_ALL') {
-            if (nombreServidor) filtros.nombres = '%' + nombreServidor + '%';
-            if (apellidoUno) filtros.primer_apellido = '%' + apellidoUno + '%';
-            if (apellidoDos) filtros.segundo_apellido = '%' + apellidoDos + '%';
-            if (rfc) filtros.rfc = '%' + rfc + '%';
-            if (curp) filtros.curp = '%' + curp + '%';
-            if (institucion && institucion !== 'TODAS') filtros.nombre = '%' + institucion + '%';
+            if (nombreServidor) filtros.nombres = nombreServidor;
+            if (apellidoUno) filtros.primer_apellido = apellidoUno;
+            if (apellidoDos) filtros.segundo_apellido = apellidoDos;
+            if (procedimiento) filtros.procedimiento = procedimiento;
+            /* if (rfc) filtros.rfc = '%' + rfc + '%';
+            if (curp) filtros.curp = '%' + curp + '%'; */
+            if (institucion && institucion !== 'TODAS') filtros.institucion = institucion;
         }
 
         let limit = (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.state.rowsPerPage : null;
