@@ -2,22 +2,22 @@ import React from 'react';
 import {withStyles} from "@material-ui/core/styles";
 import Grid from '@material-ui/core/Grid';
 import {Link} from 'react-router-dom';
-import BG from '../../../assets/img/cintillo_sancionados.jpeg';
-import PDNLogo from '../../../assets/PDN.png';
+import BG from '../../../assets/img/cintillo_sancionados.jpg';
 import S3 from '../../../assets/iconos_azul/3_icono.svg'
 import {Typography} from "@material-ui/core"
 import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
 import '../../Utils/Header.css'
 import classNames from 'classnames';
-import Button from "@material-ui/core/Button";
-import AlertDialog from "../AlertDialolg";
-import MenuSistemas from "../../Compartidos/MenuSistemas";
+//import Button from "@material-ui/core/Button";
+//import AlertDialog from "../AlertDialolg";
 import BarraLogoMenu from "../../Compartidos/BarraLogoMenu";
 
 
 const style = theme => ({
         root: {
-            flexGrow: 1
+            flexGrow: 1,
+
+
         },
         container1: {
             //background: 'grey',
@@ -25,6 +25,13 @@ const style = theme => ({
             paddingBottom: '75px',
             paddingLeft: theme.spacing(1),
             paddingRight: theme.spacing(1),
+
+            height: '100%',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            position: 'relative',
+            backgroundImage: `url(${BG})`
         },
         link: {
             textDecoration: 'none',
@@ -72,7 +79,7 @@ class Header extends React.Component {
         return (
             <div className={classes.root}>
                 {/*<PDNAppBar/>*/}
-                <img src={BG} alt="Sistema 2" className="fenito"/>
+
                 <BarraLogoMenu/>
                 <Grid container spacing={0} className="breadcrumb" justify='center'>
                     <Grid item xs={12} className={classes.item3}>
@@ -107,12 +114,12 @@ class Header extends React.Component {
                             inhabilitados para celebrar contratos con el gobierno.
                         </Typography>
                     </Grid>
-                    <Grid item xs={12} align={'center'}>
+                  {  /*<Grid item xs={12} align={'center'}>
                         <Button variant="contained" className={classes.button}
                                 onClick={() => this.btnVideo.handleClickOpen()}>Conoce más</Button>
-                    </Grid>
+                    </Grid>*/}
                 </Grid>
-                <AlertDialog innerRef={comp => this.btnVideo = comp}/>
+               {/* <AlertDialog innerRef={comp => this.btnVideo = comp}/>*/}
             </div>
         )
     }

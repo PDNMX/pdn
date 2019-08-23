@@ -5,12 +5,16 @@ import MenuSistemas from "./MenuSistemas";
 import React from "react";
 import withWidth from "@material-ui/core/withWidth/withWidth";
 import {withStyles} from "@material-ui/core";
-
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
 const style = theme => ({
-
+        root: {
+            flexGrow: 1,
+        },
         link: {
             textDecoration: 'none',
-            color: 'inherit'
+            color: 'inherit',
+            flexGrow: 1
         },
 
         item3: {
@@ -23,22 +27,38 @@ const style = theme => ({
             paddingTop: "40px",
             paddingBottom: "40px"
         },
+        appBar: {
+            backgroundColor: "white"
+        }
     }
 );
-class BarraLogoMenu extends React.Component{
+
+class BarraLogoMenu extends React.Component {
     render() {
         const {classes} = this.props;
         return (
-            <Grid container spacing={0} justify="center" style={{background: '#fff'}}>
-                <Grid item xs={11} className={classes.item3}>
-                    <Link to="/" className={classes.link}>
-                        <img src={PDNLogo} alt="PDN" className={classes.pdnLogo}/>
-                    </Link>
-                </Grid>
-                <Grid item xs={1}>
-                    <MenuSistemas/>
-                </Grid>
-            </Grid>
+            <div className={classes.root}>
+                <AppBar position="static" className={classes.appBar}>
+                    <Grid
+                        container
+                        alignItems="center"
+                        justify="center"
+
+                    >
+                        <Grid item xs={12} className={classes.item3}>
+                            <Toolbar>
+                                <Link to="/" className={classes.link}>
+                                    <img src={PDNLogo} alt="PDN" className={classes.pdnLogo}/>
+                                </Link>
+                                <MenuSistemas/>
+                            </Toolbar>
+                        </Grid>
+
+                    </Grid>
+
+
+                </AppBar>
+            </div>
         );
     }
 }

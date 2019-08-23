@@ -2,7 +2,7 @@ import React from 'react';
 import {withStyles} from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
-import NativeSelect from "@material-ui/core/NativeSelect";
+//import NativeSelect from "@material-ui/core/NativeSelect";
 import InputBase from "@material-ui/core/InputBase";
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
@@ -33,6 +33,7 @@ const styles = theme => ({
     }
 });
 
+{/*
 const BootstrapInput = withStyles(theme => ({
     root: {
         'label + &': {
@@ -67,12 +68,13 @@ const BootstrapInput = withStyles(theme => ({
         },
     },
 }))(InputBase);
+*/}
 
 class SearchControls extends React.Component{
 
     render() {
 
-        const {classes, buyers, buyer, procurementMethod} = this.props;
+        const {classes, buyers, buyer_id, procurementMethod} = this.props;
 
         //const [age, setAge] = React.useState('');
         const handleChangeBuyer = event => {
@@ -116,19 +118,19 @@ class SearchControls extends React.Component{
                             fullWidth
                             >
                                 <InputLabel htmlFor="age-customized-native-simple">Institución</InputLabel>
-                                <NativeSelect
-                                    value={buyer}
+                                <Select
+                                    value={buyer_id}
                                     onChange={handleChangeBuyer}
-                                    input={<BootstrapInput name="buyer" id="age-customized-native-simple"/>}
+                                    //input={<BootstrapInput name="buyer" id="age-customized-native-simple"/>}
                                 >
-                                    <option value="any">Todas</option>
+                                    <MenuItem value="any"><em>Todas</em></MenuItem>
                                     {
                                         buyers.map((b,i)=>{
-                                            return <option key={i} value={b.id}>{b.name}</option>
+                                            return <MenuItem key={i} value={b.id}>{b.name}</MenuItem>
                                         })
 
                                     }
-                                </NativeSelect>
+                                </Select>
                             </FormControl>
 
                         </form>
@@ -144,7 +146,7 @@ class SearchControls extends React.Component{
                                 <Select
                                     value={procurementMethod}
                                     onChange={handleChangeProcurementMethod}
-                                    input={<BootstrapInput name="age" id="age-customized-select" />}
+                                    //input={<BootstrapInput name="age" id="age-customized-select" />}
                                 >
                                     <MenuItem value="any">
                                         <em>Cualquiera</em>
@@ -166,7 +168,7 @@ class SearchControls extends React.Component{
                             //helperText="Full width!"
                             fullWidth
                             margin="normal"
-                            variant="outlined"
+                            //variant="outlined"
                             InputLabelProps={{
                                 shrink: true,
                             }}
@@ -184,7 +186,7 @@ class SearchControls extends React.Component{
                             //helperText="Full width!"
                             fullWidth
                             margin="normal"
-                            variant="outlined"
+                            //variant="outlined"
                             InputLabelProps={{
                                 shrink: true,
                             }}

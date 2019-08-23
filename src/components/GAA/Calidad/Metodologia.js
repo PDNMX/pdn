@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import Footer from "../../Home/Footer";
 import ScrollToTopButton from '../../Navigation/ScrollToTopButton';
 import ExpansionPanels from "./ExpansionPanels";
+import Disclaimer from "./Disclaimer";
 //import data  from './mora_data';
 //import Histogram from './Histogram';
 
@@ -14,13 +15,23 @@ const styles = theme => ({
         flexGrow: 1
     },
     item: {
-        maxWidth:1000,
-        paddingTop: 100,
+        maxWidth: 1200,
+        paddingTop: 40,
         paddingBottom: 100
     },
     container: {
         paddingRight: theme.spacing(1),
         paddingLeft: theme.spacing(1)
+    },
+    disclaimer: {
+        backgroundColor: '#f6f6f6',
+        //paddingTop: theme.spacing(1)
+    },
+    itemDisclaimer:{
+        maxWidth: 1200,
+        paddingTop: theme.spacing(1),
+        paddingLeft: theme.spacing(1),
+        paddingRight: theme.spacing(1)
     }
 });
 
@@ -32,8 +43,17 @@ class Metodologia extends React.Component{
         return <div className={classes.root}>
             <Header/>
 
+            <Grid container justify="center" className={classes.disclaimer}>
+                <Grid item xs={12} className={classes.itemDisclaimer}>
+                    <Disclaimer/>
+                </Grid>
+            </Grid>
+
+
             <Grid container spacing={0} className={classes.container} justify="center">
                 <Grid item xs={12} className={classes.item}>
+
+
 
                     <ExpansionPanels/>
 

@@ -7,18 +7,15 @@ import TableCell from '@material-ui/core/TableCell';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import TableFooter from '@material-ui/core/TableFooter';
-import Toolbar from '@material-ui/core/Toolbar';
 import BusquedaServidor from "./BusquedaServidor";
 import DetalleServidorSancionado from "./DetalleServidor";
 import CircularProgress from '@material-ui/core/CircularProgress';
-import BajarCSV from "../Tablas/BajarCSV";
 import Grid from "@material-ui/core/Grid/Grid";
 import EnhancedTableHead from '../Tablas/EnhancedTableHead';
 import {Typography} from "@material-ui/core"
 import Modal from "@material-ui/core/Modal/Modal";
 import rp from "request-promise";
 import MensajeErrorDatos from "../Tablas/MensajeErrorDatos";
-import MensajeNoRegistros from "../Tablas/MensajeNoRegistros";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
 import Collapse from "@material-ui/core/Collapse";
@@ -411,7 +408,7 @@ class EnhancedTable extends React.Component {
 
     render() {
         const {classes} = this.props;
-        const {data, order, orderBy, selected, rowsPerPage, page, filterData, totalRows, filterDataAll} = this.state;
+        const {data, order, orderBy, selected, rowsPerPage, page, filterData, totalRows} = this.state;
         //  const emptyRows = rowsPerPage - filterData.length;
 
         return (

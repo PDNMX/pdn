@@ -84,17 +84,33 @@ const styles = theme => ({
 
 });
 
+
+
 class BusquedaServidor extends React.Component {
     state = {
         suggestions: []
     };
 
     componentDidMount() {
+       this.loadData(this.props.nivel);
+    }
+
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.nivel !== this.props.nivel) {
+            this.loadData(this.props.nivel);
+        }
+    }
+
+     loadData =(nivel)=>{
         let sug = [{value: null, label: 'TODAS'}];
         let options = {
             uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/getDependenciasServidores',
             json: true,
-            method: "GET"
+            method: "post",
+            body:{
+                nivel:nivel
+            }
         };
         rp(options)
             .then(data => {
@@ -106,7 +122,6 @@ class BusquedaServidor extends React.Component {
             this.props.handleError(true);
         });
     }
-
     limpiarBusqueda = () => {
         this.props.handleCleanAll();
     };

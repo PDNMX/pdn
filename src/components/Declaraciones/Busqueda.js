@@ -39,8 +39,7 @@ class App extends Component {
         <Grid
           container
           spacing={0}
-          className={classes.infoBusqueda}
-          style={{ backgroundColor: "#f6f6f6" }}
+          className={classes.infoBusqueda}          
         >
           <Grid item xs={12} style={{ maxWidth: 1200, margin: "0 auto" }}>
             <Typography paragraph>
@@ -74,7 +73,7 @@ class App extends Component {
           container
           spacing={0}
           className={classes.root}
-          style={{ maxWidth: 1200, margin: "0 auto", padding: "100px 10px" }}
+          style={{ maxWidth: 1200, margin: "0 auto", padding: "10px 10px" }}
         >
           <Grid item xs={12}>
             <Typography className={classes.h1}>

@@ -1,7 +1,7 @@
 import React from "react";
 
 import Header from "./Header";
-import Footer from "./Footer";
+import Footer from "../Home/Footer";
 
 import Busqueda from "./Busqueda";
 import PerfilMaterialUI from "./PerfilMaterialUI";
@@ -41,23 +41,10 @@ const styles = theme => ({
   },
   whiteText: {
     color: "#fff", //theme.palette.titleBanner.color,
-    padding: "17px"
-  },
-  bgPanelTable: {
-    backgroundColor: theme.palette.white.color,
-    [theme.breakpoints.up("sm")]: {
-      marginBottom: theme.spacing(30)
-    },
-    [theme.breakpoints.down("sm")]: {
-      marginBottom: theme.spacing(10)
-    }
-  },
-  section: {
-    // maxWidth: "1200px"
+    color: theme.palette.textGrey.color,
+    padding: "10px"
   },
   sectionT: {
-    // maxWidth: "1200px",
-    overflowX: "auto",
     color: theme.palette.textGrey.color
   },
   image: {
@@ -67,13 +54,12 @@ const styles = theme => ({
     border: 0
   },
   bgContainer: {
-    backgroundColor: "#34b3eb" //theme.palette.azul.color,
-  },
-  links: {
-    backgroundColor: theme.palette.grisTenue.color
+    // backgroundColor: "#34b3eb", //theme.palette.azul.color,
+    backgroundColor: theme.palette.pestanas.bg
   },
   card: {
-    backgroundColor: "#34b3eb", //theme.palette.azul.color,
+    // backgroundColor: "#34b3eb", //theme.palette.azul.color,
+    backgroundColor: theme.palette.pestanas.bg,
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
     paddingTop: theme.spacing(2),
@@ -81,7 +67,8 @@ const styles = theme => ({
     margin: 0
   },
   cardSeleccionada: {
-    backgroundColor: "grey", //theme.palette.white.color,
+    // backgroundColor: "grey", //theme.palette.white.color,
+    backgroundColor: theme.palette.pestanas.activa,
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
     paddingTop: theme.spacing(2),
@@ -120,8 +107,18 @@ function AlertDialog(props) {
           id="alert-dialog-description"
           style={{ textAlign: "justify" }}
         >
-          La información contenida en esta sección <span style={{ fontWeight: "bold", backgroundColor: "red", color: "#FFF", padding: "3px 10px" }}>NO ES REAL</span>,
-          fue generada de forma aleatoria y sirve unicamente para poder
+          La información contenida en esta sección{" "}
+          <span
+            style={{
+              fontWeight: "bold",
+              backgroundColor: "red",
+              color: "#FFF",
+              padding: "3px 10px"
+            }}
+          >
+            NO ES REAL
+          </span>
+          , fue generada de forma aleatoria y sirve unicamente para poder
           visualizar las diferentes funcionalidades propuestas para este
           sistema.
         </DialogContentText>
@@ -129,11 +126,11 @@ function AlertDialog(props) {
           <b>
             El formato actual está basado en la última versión de las
             especificaciones técnicas publicadas en este sitio, mismas que
-            fueron elaboradas bajo los últimos formatos publicados en el
-            Diario Oficial de la Federación. Estos formatos actualmente se
-            encuentran en revisión por el Comité Coordinador del Sistema
-            Nacional Anticorrupción, por lo que estos no serán los formatos
-            finales de la información.
+            fueron elaboradas bajo los últimos formatos publicados en el Diario
+            Oficial de la Federación. Estos formatos actualmente se encuentran
+            en revisión por el Comité Coordinador del Sistema Nacional
+            Anticorrupción, por lo que estos no serán los formatos finales de la
+            información.
           </b>
         </DialogContentText>
       </DialogContent>
@@ -171,41 +168,8 @@ class Contenedor extends React.Component {
           background={background}
         />
         <Grid container spacing={0} className={classes.bgContainer}>
-          <Grid
-            item
-            xs={12}
-            className={classes.section}
-            style={{ maxWidth: 1200, margin: "0 auto" }}
-          >
+          <Grid item xs={12} style={{ maxWidth: 1200, margin: "0 auto" }}>
             <Grid container spacing={0}>
-              <Grid
-                item
-                md={6}
-                xs={12}
-                className={classNames(
-                  !this.props.location.pathname.includes("estadistica")
-                    ? classes.cardSeleccionada
-                    : classes.card,
-                  "tab"
-                )}
-              >
-                <Link className={classes.link} to="/declaraciones">
-                  <figure className={classes.figure}>
-                    <img
-                      alt="Buscar un servidor público"
-                      src={imgBuscar}
-                      className={classes.image}
-                    />
-                  </figure>
-                  <Typography
-                    variant="subtitle1"
-                    className={classes.whiteText}
-                  >
-                    Buscar un servidor público
-                  </Typography>
-                </Link>
-              </Grid>
-
               <Grid
                 item
                 md={6}
@@ -214,7 +178,7 @@ class Contenedor extends React.Component {
                   this.props.location.pathname.includes("estadistica")
                     ? classes.cardSeleccionada
                     : classes.card,
-                  "tab"
+                  "tabDeclaraciones"
                 )}
               >
                 <Link
@@ -236,12 +200,39 @@ class Contenedor extends React.Component {
                   </Typography>
                 </Link>
               </Grid>
+              <Grid
+                item
+                md={6}
+                xs={12}
+                className={classNames(
+                  !this.props.location.pathname.includes("estadistica")
+                    ? classes.cardSeleccionada
+                    : classes.card,
+                  "tabDeclaraciones"
+                )}
+              >
+                <Link className={classes.link} to="/declaraciones">
+                  <figure className={classes.figure}>
+                    <img
+                      alt="Buscar un servidor público"
+                      src={imgBuscar}
+                      className={classes.image}
+                    />
+                  </figure>
+                  <Typography
+                    variant="subtitle1"
+                    className={classes.whiteText}
+                  >
+                    Buscar un servidor público
+                  </Typography>
+                </Link>
+              </Grid>
             </Grid>
           </Grid>
         </Grid>
         {/* fin menu */}
         <Grid container spacing={0}>
-          <Grid item xs={12}>
+          <Grid item xs={12} className={classes.sectionT}>
             <Switch>
               <Route exact path="/declaraciones" component={Busqueda} />
               <Route

@@ -90,7 +90,7 @@ class BusquedaParticular extends React.Component {
         suggestions: []
     };
 
-    componentDidMount() {
+    loadData = (nivel) => {
         let aux = [];
         let sug = [{value: 'TODAS', label: 'TODAS'}];
         let id = 0;
@@ -98,7 +98,10 @@ class BusquedaParticular extends React.Component {
         let options = {
             uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/getDependenciasParticulares',
             json: true,
-            method: "post"
+            method: "post",
+            body:{
+                nivel : nivel
+            }
         };
         rp(options)
             .then(data => {
@@ -108,10 +111,17 @@ class BusquedaParticular extends React.Component {
                 });
                 this.setState({dependencias: aux, suggestions: sug});
             }).catch(err => {
-           // this.props.handleError(true);
+            // this.props.handleError(true);
         });
+    }
+    componentDidMount() {
+        this.loadData(this.props.nivel)
+    }
 
-
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.nivel !== this.props.nivel) {
+            this.loadData(this.props.nivel);
+        }
     }
 
     limpiarBusqueda = () => {
@@ -193,7 +203,7 @@ class BusquedaParticular extends React.Component {
                         >
                             <FormControlLabel value="todos" control={<Radio />} label="Todos" />
                             <FormControlLabel value="federal" control={<Radio />} label="Federal" />
-                            <FormControlLabel value="estatal" control={<Radio />} label="Estatal" />
+                            <FormControlLabel value="estatal" control={<Radio disabled={true}/>} label="Estatal"  />
                         </RadioGroup>
 
                     </FormControl>

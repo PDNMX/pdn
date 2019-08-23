@@ -126,7 +126,7 @@ export default theme => ({
     width: "100%"
   },
   formControl: {
-    margin: theme.spacing(3),
+    margin: theme.spacing(1),
     display: "flex"
   },
   group: {
@@ -135,7 +135,7 @@ export default theme => ({
   button: {
     margin: theme.spacing(1),
     // color: "#FFF",
-    fontWeight: "bold",
+    fontWeight: "bold"
     // backgroundColor: "#2EB2E7"
   },
   expansion: {
@@ -167,7 +167,7 @@ export default theme => ({
     paddingLeft: "20px"
   },
   li: {
-    paddingBottom: theme.spacing(2)
+    // paddingBottom: theme.spacing(2)
   },
   infoBusqueda: {
     paddingRight: theme.spacing(1),

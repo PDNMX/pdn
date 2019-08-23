@@ -7,11 +7,10 @@ import PDNLogo from '../../../../assets/PDN.png';
 import C from '../../../../assets/icono-conexion.svg'
 import {Typography} from "@material-ui/core"
 import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
-import './Header.css';
 
 const style = theme => ({
         root: {
-            flexGrow:1
+            flexGrow:1,
         },
         container1: {
             //background: 'grey',
@@ -19,6 +18,13 @@ const style = theme => ({
             paddingBottom: '75px',
             paddingLeft: theme.spacing(1),
             paddingRight: theme.spacing(1),
+
+            height: '100%',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            position: 'relative',
+            backgroundImage: `url(${BG})`
         },
         link: {
             textDecoration: 'none',
@@ -58,8 +64,6 @@ class Header extends React.Component{
         return(
             <div className={classes.root}>
                 {/*<PDNAppBar/>*/}
-                <img src={BG} alt="Sistema 2" className="fenito"/>
-
 
                 <Grid container spacing={0} justify="center" style={{background: '#fff'}}>
                     <Grid item xs={12} className={classes.item3}>

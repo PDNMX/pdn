@@ -4,11 +4,11 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import {withStyles}from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
 const styles = theme => ({
-    boton:{
+    boton: {
         background: '#ffe01b',
     }
 });
@@ -18,13 +18,13 @@ class AlertDialog extends React.Component {
         open: true,
     };
 
-    handleClickOpen(){
-        this.setState({ open: true });
+    handleClickOpen() {
+        this.setState({open: true});
     };
 
 
     handleClose = () => {
-        this.setState({ open: false });
+        this.setState({open: false});
     };
 
     render() {
@@ -38,19 +38,15 @@ class AlertDialog extends React.Component {
                     onClose={this.handleClose}
                     aria-labelledby="alert-dialog-title"
                     aria-describedby="alert-dialog-description"
+
                 >
-                    <DialogTitle id="alert-dialog-title">{"Servidores públicos y particulares sancionados"}</DialogTitle>
-                    <DialogContent>
-                        <iframe width="100%" height="450" src="https://www.youtube.com/embed/e9zZE5i8Vt4?autoplay=1" frameBorder="0" title={'Video'}
+                    { /* <DialogTitle id="alert-dialog-title">{"Servidores públicos y particulares sancionados"}</DialogTitle>*/}
+                    <div id={"Vc"}>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/e9zZE5i8Vt4?autoplay=1"
+                                frameBorder="0" title={'Video'}
                                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullScreen/>
-
-                    </DialogContent>
-                    <DialogActions>
-                        <Button variant="contained" onClick={this.handleClose} className={classes.boton}>
-                            Cerrar
-                        </Button>
-                    </DialogActions>
+                    </div>
                 </Dialog>
             </div>
 
@@ -60,7 +56,7 @@ class AlertDialog extends React.Component {
 
 
 AlertDialog.propTypes = {
-    classes : PropTypes.object.isRequired
+    classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(AlertDialog);

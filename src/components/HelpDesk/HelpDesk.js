@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Footer from "../Home/Footer";
 import ExpansionPanels from './ExpansionPanels';
 import ScrollToTopButton from "../Navigation/ScrollToTopButton";
+import Disclaimer from "./Disclaimer";
 
 const styles = theme => ({
     root: {
@@ -12,9 +13,9 @@ const styles = theme => ({
     },
     item: {
         maxWidth: 1200,
-        paddingRight: theme.spacing(2),
-        paddingLeft: theme.spacing(2),
-        paddingTop: theme.spacing(10),
+        paddingRight: theme.spacing(1),
+        paddingLeft: theme.spacing(1),
+        paddingTop: 40,
         paddingBottom: theme.spacing(10),
     },
     title: {
@@ -27,6 +28,15 @@ const styles = theme => ({
     diagrama: {
         maxWidth: 900,
         padding: theme.spacing(2)
+    },
+    disclaimer:{
+        backgroundColor: '#f6f6f6',
+    },
+    disclaimerItem: {
+        paddingTop: theme.spacing(1),
+        paddingRight: theme.spacing(1),
+        paddingLeft: theme.spacing(1),
+        maxWidth: 1200
     }
 });
 
@@ -38,6 +48,14 @@ class HelpDesk extends React.Component{
 
         return <div className={classes.root}>
             <Header/>
+
+            <Grid container spacing={0} justify="center" className={classes.disclaimer}>
+                <Grid item xs={12} className={classes.disclaimerItem}>
+                    <Disclaimer/>
+                </Grid>
+            </Grid>
+
+
 
             <Grid container spacing={0} justify="center">
                 <Grid item xs={12} className={classes.item}>
