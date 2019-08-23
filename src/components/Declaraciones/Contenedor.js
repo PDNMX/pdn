@@ -54,11 +54,11 @@ const styles = theme => ({
     border: 0
   },
   bgContainer: {
-    backgroundColor: "#34b3eb", //theme.palette.azul.color,
+    // backgroundColor: "#34b3eb", //theme.palette.azul.color,
     backgroundColor: theme.palette.pestanas.bg
   },
   card: {
-    backgroundColor: "#34b3eb", //theme.palette.azul.color,
+    // backgroundColor: "#34b3eb", //theme.palette.azul.color,
     backgroundColor: theme.palette.pestanas.bg,
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
@@ -67,7 +67,7 @@ const styles = theme => ({
     margin: 0
   },
   cardSeleccionada: {
-    backgroundColor: "grey", //theme.palette.white.color,
+    // backgroundColor: "grey", //theme.palette.white.color,
     backgroundColor: theme.palette.pestanas.activa,
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
@@ -173,7 +173,7 @@ class Contenedor extends React.Component {
                   !this.props.location.pathname.includes("estadistica")
                     ? classes.cardSeleccionada
                     : classes.card,
-                  "tab"
+                  "tabDeclaraciones"
                 )}
               >
                 <Link className={classes.link} to="/declaraciones">
@@ -198,7 +198,7 @@ class Contenedor extends React.Component {
                   this.props.location.pathname.includes("estadistica")
                     ? classes.cardSeleccionada
                     : classes.card,
-                  "tab"
+                  "tabDeclaraciones"
                 )}
               >
                 <Link className={classes.link} to="/declaraciones/estadisticas">
