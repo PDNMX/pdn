@@ -161,10 +161,45 @@ class Contenedor extends React.Component {
 
     return (
       <Grid container spacing={0} className={classes.root}>
-        <Header logo={S3} titulo={titulo} copy={copy} background={background} />
+        <Header
+          logo={S3}
+          titulo={titulo}
+          copy={copy}
+          background={background}
+        />
         <Grid container spacing={0} className={classes.bgContainer}>
           <Grid item xs={12} style={{ maxWidth: 1200, margin: "0 auto" }}>
             <Grid container spacing={0}>
+              <Grid
+                item
+                md={6}
+                xs={12}
+                className={classNames(
+                  this.props.location.pathname.includes("estadistica")
+                    ? classes.cardSeleccionada
+                    : classes.card,
+                  "tabDeclaraciones"
+                )}
+              >
+                <Link
+                  className={classes.link}
+                  to="/declaraciones/estadisticas"
+                >
+                  <figure className={classes.figure}>
+                    <img
+                      alt="Estadísticas"
+                      src={imgEstadisticas}
+                      className={classes.image}
+                    />
+                  </figure>
+                  <Typography
+                    variant="subtitle1"
+                    className={classes.whiteText}
+                  >
+                    Estadísticas
+                  </Typography>
+                </Link>
+              </Grid>
               <Grid
                 item
                 md={6}
@@ -184,33 +219,11 @@ class Contenedor extends React.Component {
                       className={classes.image}
                     />
                   </figure>
-                  <Typography variant="subtitle1" className={classes.whiteText}>
+                  <Typography
+                    variant="subtitle1"
+                    className={classes.whiteText}
+                  >
                     Buscar un servidor público
-                  </Typography>
-                </Link>
-              </Grid>
-
-              <Grid
-                item
-                md={6}
-                xs={12}
-                className={classNames(
-                  this.props.location.pathname.includes("estadistica")
-                    ? classes.cardSeleccionada
-                    : classes.card,
-                  "tabDeclaraciones"
-                )}
-              >
-                <Link className={classes.link} to="/declaraciones/estadisticas">
-                  <figure className={classes.figure}>
-                    <img
-                      alt="Estadísticas"
-                      src={imgEstadisticas}
-                      className={classes.image}
-                    />
-                  </figure>
-                  <Typography variant="subtitle1" className={classes.whiteText}>
-                    Estadísticas
                   </Typography>
                 </Link>
               </Grid>
@@ -231,7 +244,10 @@ class Contenedor extends React.Component {
           </Grid>
         </Grid>
         <Footer />
-        <AlertDialog open={this.state.open} handleClose={this.handleClose} />
+        <AlertDialog
+          open={this.state.open}
+          handleClose={this.handleClose}
+        />
       </Grid>
     );
   }
