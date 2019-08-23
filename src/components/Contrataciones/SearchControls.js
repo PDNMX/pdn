@@ -33,6 +33,7 @@ const styles = theme => ({
     }
 });
 
+{/*
 const BootstrapInput = withStyles(theme => ({
     root: {
         'label + &': {
@@ -67,6 +68,7 @@ const BootstrapInput = withStyles(theme => ({
         },
     },
 }))(InputBase);
+*/}
 
 class SearchControls extends React.Component{
 

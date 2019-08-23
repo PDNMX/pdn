@@ -16,6 +16,9 @@ import Perspectivas from "./Perspectivas";
 import Top from './Top';
 import Descarga from "./Descarga";
 import Disclaimer from "./Disclaimer";
+import img2 from "../../assets/img/particulares_sancionados.svg";
+import img3 from "../../assets/img/servidores_visualizaciones.svg";
+import {Typography} from "@material-ui/core";
 
 
 
@@ -40,6 +43,21 @@ const styles = theme => ({
         backgroundColor: '#fff'
     },
 
+    tabItem:{
+        maxWidth: 1200,
+        backgroundColor: theme.palette.pestanas.bg
+    },
+    tabIcon: {
+        maxWidth: 60,
+    },
+    figure: {
+       display: 'inline-block',
+        //float: 'left',
+        margin: 0,
+        padding: 0,
+        //paddingRight: '8px'
+    }
+
 });
 
 
@@ -50,6 +68,41 @@ class Index extends React.Component {
         return (
             <div className={classes.root}>
                 <Header/>
+
+                {/*
+                <Grid container spacing={0} justify="center">
+                    <Grid item xs={12} className={classes.tabItem}>
+
+                        <Grid container spacing={0}>
+                            <Grid item xs={12} sm={12} md={6} lg={6} xl={6} className={classes.tabItem}>
+
+                                <figure className={classes.figure}>
+                                    <img src={img3} className={classes.tabIcon}/>
+                                </figure>
+
+                                <Typography>
+                                    Lorem Ipsum
+                                </Typography>
+
+                            </Grid>
+
+                            <Grid item xs={12} sm={12} md={6} lg={6} xl={6} className={classes.tabItem}>
+
+                                <figure>
+                                    <img src={img3} className={classes.tabIcon} />
+                                </figure>
+
+                                <Typography>
+                                    Lorem Ipsum
+                                </Typography>
+
+                            </Grid>
+                        </Grid>
+
+                    </Grid>
+                </Grid>
+                */}
+
 
                 <Grid container spacing={0} justify="center" style={{ backgroundColor: '#f6f6f6'}}>
                     <Grid item xs={12} className={classes.disclaimer}>
@@ -77,6 +130,7 @@ class Index extends React.Component {
 
                     </Grid>
                 </Grid>
+
 
 
 

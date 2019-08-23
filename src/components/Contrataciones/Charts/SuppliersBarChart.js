@@ -1,8 +1,8 @@
-
+import PropTypes from 'prop-types';
 import React from 'react';
 //import ShowcaseButton from './ShowcaseButton';
 import {
-    XYPlot,
+    FlexibleWidthXYPlot,
     XAxis,
     YAxis,
     VerticalBarSeries,
@@ -41,7 +41,7 @@ const yDomain = myDATA.reduce(
 );*/
 
 
-export default class Example extends React.Component {
+class Example extends React.Component {
     state = {
         useCanvas: false,
         value: false
@@ -92,13 +92,12 @@ export default class Example extends React.Component {
 
 
 
-
         return (
             <div>
-                <XYPlot
+                <FlexibleWidthXYPlot
                     margin={{left: 100, bottom: 100}}
                     xType="ordinal"
-                    width={390}
+
                     height={450}
                     yDomain={[0, 25000]}//{[yDomain.min, yDomain.max]}
                 >
@@ -144,8 +143,11 @@ export default class Example extends React.Component {
                             </p>
                         </div>
                     </Hint>}
-                </XYPlot>
+                </FlexibleWidthXYPlot>
             </div>
         );
     }
 }
+
+
+export default Example;

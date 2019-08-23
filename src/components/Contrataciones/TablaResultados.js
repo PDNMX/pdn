@@ -145,12 +145,17 @@ export default function EnhancedTable(props) {
 
         let total = 0;
 
-        for (let c of d.contracts ) {
-            try {
-                total += c.value.amount;
-            } catch (e) {
-                //ignore exception
+        try {
+            for (let c of d.contracts) {
+                try {
+                    total += c.value.amount;
+                } catch (e) {
+                    //ignore exception
+                }
             }
+        } catch (e) {
+            console.log(e);
+            total = "No disponible"
         }
 
 
@@ -158,7 +163,7 @@ export default function EnhancedTable(props) {
             col1: d.ocid,
             col2: getProcurementMethod(d.tender.procurementMethod),
             col3: d.tender.title,
-            col4: total === 0?'En proceso':  new Intl.NumberFormat('es-MX', {style: 'currency', currency: 'MXN'}).format(total)
+            col4: total === "No disponible"? total :  new Intl.NumberFormat('es-MX', {style: 'currency', currency: 'MXN'}).format(total)
         }
     });
 

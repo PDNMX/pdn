@@ -2,13 +2,13 @@
 import React from 'react';
 //import ShowcaseButton from './ShowcaseButton';
 import {
-    XYPlot,
     XAxis,
     YAxis,
     VerticalBarSeries,
     VerticalBarSeriesCanvas,
     ChartLabel,
     Hint,
+    FlexibleWidthXYPlot
 } from 'react-vis';
 
 /*
@@ -41,7 +41,7 @@ const yDomain = myDATA.reduce(
 );*/
 
 
-export default class Example extends React.Component {
+class Example extends React.Component {
     state = {
         useCanvas: false,
         value: false
@@ -88,15 +88,12 @@ export default class Example extends React.Component {
         const {useCanvas} = this.state;
         const BarSeries = useCanvas ? VerticalBarSeriesCanvas : VerticalBarSeries;
 
-
-
-
         return (
             <div>
-                <XYPlot
+                <FlexibleWidthXYPlot
                     margin={{left: 100, bottom: 100}}
                     xType="ordinal"
-                    width={390}
+                    //width={width}
                     height={450}
                     yDomain={[0, 150000]}//{[yDomain.min, yDomain.max]}
                 >
@@ -120,7 +117,7 @@ export default class Example extends React.Component {
                     />
 
                     <ChartLabel
-                        text="Unidades compradoras"
+                        text="Unidades compradoras (ramos)"
                         className="alt-x-label"
                         includeMargin={true}
                         xPercent={0.5}
@@ -142,8 +139,11 @@ export default class Example extends React.Component {
                             </p>
                         </div>
                     </Hint>}
-                </XYPlot>
+                </FlexibleWidthXYPlot>
             </div>
         );
     }
 }
+
+
+export default Example;
