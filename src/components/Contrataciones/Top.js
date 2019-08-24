@@ -54,11 +54,11 @@ class Top extends React.Component {
             <div className={classes.root}>
                 <Grid container spacing={0}>
                     <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-                        <Typography>Top 10 unidades compradoras</Typography>
+                        <Typography variant="h6">Top 10 unidades compradoras</Typography>
                         <BarChart data = {this.state.barChartData}/>
                     </Grid>
                     <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-                        <Typography> Top 10 proveedores</Typography>
+                        <Typography variant="h6"> Top 10 proveedores</Typography>
                         <SuppliersBarChart data={this.state.suppliers}/>
                     </Grid>
                 </Grid>

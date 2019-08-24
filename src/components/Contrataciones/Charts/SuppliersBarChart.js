@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 //import ShowcaseButton from './ShowcaseButton';
 import {
@@ -84,8 +83,6 @@ class Example extends React.Component {
         let data = this.props.data.map((d,i) => {
             return {name: d.data._id[0].name , x: d.data._id[0].id, y: d.data.total/ 1000000, total: d.data.total, color: colors[i]};
         });
-
-        console.log(this.props.data)
 
         const {useCanvas} = this.state;
         const BarSeries = useCanvas ? VerticalBarSeriesCanvas : VerticalBarSeries;
