@@ -243,20 +243,6 @@ class BusquedaServidor extends React.Component {
                                     }))
                                 }
                             </Select>
-                            {
-                                /*
-                                <SelectReact
-                                classes={classes}
-                                styles={selectStyles}
-                                options={this.state.suggestions}
-                                components={components}
-                                value={{value: institucion, label: institucion}}
-                                onChange={(e) => handleChangeCampo('institucion', e)}
-                                id="campoSelectInstitucion"
-                                placeholder = {'TODAS'}
-                            />
-                                */
-                            }
 
 
                         </FormControl>
