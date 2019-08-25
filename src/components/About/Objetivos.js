@@ -17,19 +17,26 @@ const styles = theme => ({
         marginLeft: '-20px',
         //marginTop: '-10px'
     },
-    ul: {
-        listStyle: 'none',
-        //marginLeft: 0,
-        paddingLeft: '20px'
-    },
-    li: {
-      paddingBottom: theme.spacing(2)
-    },
+        ul: {
+            listStyle: 'none',
+            paddingLeft: '20px'
+        },
+        li: {
+            "&:before":{
+                content: '"•"',
+                color: '#5fb1e6',
+                fontWeight: "bold",
+                display: "inline-block",
+                width: "1em",
+                marginLeft: "-1em"
+            },
+            paddingBottom: theme.spacing(2)
+        },
     links: {
         color: '#606060'
     },
     b: {
-      color: '#606060'
+        color: '#606060'
     }
 });
 
@@ -55,31 +62,37 @@ class Objetivos extends React.Component{
                         <Grid item xs={12} style={{background: '#f2f2f2', padding: '15px 25px'}}>
                         <ul className={classes.ul}>
                             <li className={classes.li}>
-                                <Typography variant="subtitle1"><span className={classes.bullet}/> <b className={classes.b}>Analizar, predecir y alertar</b> a las autoridades sobre posibles riesgos de corrupción</Typography>
+                                <Typography variant="subtitle1" display='inline'>
+                                    <b className={classes.b}>Analizar, predecir y alertar</b> a las autoridades sobre posibles riesgos de corrupción</Typography>
                             </li>
                             <li className={classes.li}>
-                                <Typography variant="subtitle1"><span className={classes.bullet}/> <b className={classes.b}>Automatizar procesos, evitar discrecionalidad, colusión y conflicto de interés</b></Typography>
+                                <Typography variant="subtitle1" display='inline'>
+                                    <b className={classes.b}>Automatizar procesos, evitar discrecionalidad, colusión y conflicto de interés</b></Typography>
                             </li>
                             <li className={classes.li}>
-                                <Typography variant="subtitle1"><span className={classes.bullet}/> <b className={classes.b}>Promover el uso de los datos</b> para respaldar sanciones y como evidencia para combatir la impunidad</Typography>
+                                <Typography variant="subtitle1" display='inline'>
+                                    <b className={classes.b}>Promover el uso de los datos</b> para respaldar sanciones y como evidencia para combatir la impunidad</Typography>
                             </li>
                             <li className={classes.li}>
-                                <Typography variant="subtitle1"><span className={classes.bullet}/> <b className={classes.b}>Dar seguimiento, en tiempo real</b>, a los procesos y proyectos de contratación pública, asegurar el cumplimiento de sus objetivos
+                                <Typography variant="subtitle1" display='inline'>
+                                    <b className={classes.b}>Dar seguimiento, en tiempo real</b>, a los procesos y proyectos de contratación pública, asegurar el cumplimiento de sus objetivos
                                     y garantizar una mayor eficiencia en las compras públicas
                                 </Typography>
                             </li>
                             <li className={classes.li}>
-                                <Typography variant="subtitle1"><span className={classes.bullet}/> <b className={classes.b}>Apoyar la participación ciudadana</b>, poniendo al ciudadano al centro del combate a la corrupción
+                                <Typography variant="subtitle1" display='inline'>
+                                    <b className={classes.b}>Apoyar la participación ciudadana</b>, poniendo al ciudadano al centro del combate a la corrupción
                                 </Typography>
                             </li>
 
                             <li className={classes.li}>
-                                <Typography variant="subtitle1"> <span className={classes.bullet}/> <b className={classes.b}> Incorporar información sobre indicadores</b> para evaluar la Política Nacional Anticorrupción y el fenómeno en México</Typography>
+                                <Typography variant="subtitle1" display='inline'>
+                                    <b className={classes.b}> Incorporar información sobre indicadores</b> para evaluar la Política Nacional Anticorrupción y el fenómeno en México</Typography>
 
                             </li>
                             <li className={classes.li}>
-                                <Typography variant="subtitle1">
-                                    <span className={classes.bullet}/> <b className={classes.b}> Dar evidencia para generar recomendaciones de politica pública</b> a las autoridades del Sistema Nacional Anticorrupción
+                                <Typography variant="subtitle1" display='inline'>
+                                    <b className={classes.b}> Dar evidencia para generar recomendaciones de politica pública</b> a las autoridades del Sistema Nacional Anticorrupción
                                 </Typography>
                             </li>
                         </ul>
