@@ -22,7 +22,7 @@ class Estandar extends React.Component {
 
         return (
             <div className={classes.root}>
-                <Typography variant="h4" paragraph>Servidores públicos que intervienen en contrataciones</Typography>
+              
                 <Typography paragraph>
                     Esta guía tiene como finalidad la descripción del Estándar para la Interoperabilidad de Datos de Servidores
                     Públicos que Intervienen en Contrataciones,

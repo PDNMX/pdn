@@ -23,7 +23,7 @@ class Estandar extends React.Component {
 
         return (
             <div className={classes.root}>
-                <Typography variant="h4" paragraph>Estándar para la Interoperabilidad de Datos de Declaraciones</Typography>
+
                 <Typography paragraph>
                     Esta guía tiene como finalidad la descripción del Estándar para la Interoperabilidad de Datos de Declaraciones,
                     desarrollado por la Secretaría Ejecutiva del Sistema Nacional Anticorrupción (SESNA).
