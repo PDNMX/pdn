@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
+//import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
@@ -65,14 +65,14 @@ export default function CustomizedSelect(props) {
     return (
         <form className={classes.root} autoComplete="off">
             <FormControl className={classes.margin} fullWidth>
-                <InputLabel htmlFor="age-customized-native-simple">Contrataciones</InputLabel>
+                {/*<InputLabel htmlFor="age-customized-native-simple">Contrataciones</InputLabel>*/}
                 <Select
                     value={props.dataType}
                     onChange={handleChange}
                     //input={<BootstrapInput name="age" id="age-customized-native-simple" />}
                 >
-                    <MenuItem value={"amounts"}>Gasto ejercido</MenuItem>
-                    <MenuItem value={"counts"}>Número de contrataciones</MenuItem>
+                    <MenuItem value={"amounts"}>Montos por tipo de contratación</MenuItem>
+                    <MenuItem value={"counts"}>Cantidad de contrataciones por tipo</MenuItem>
                 </Select>
             </FormControl>
         </form>

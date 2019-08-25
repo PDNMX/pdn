@@ -28,7 +28,10 @@ const styles = theme => ({
     ul: {
         listStyle: 'none',
         //marginLeft: 0,
-        paddingLeft: '20px'
+        paddingLeft: '20px',
+        [theme.breakpoints.up('sm')]: {
+            paddingTop: 80
+        }
     },
     li: {
         paddingBottom: theme.spacing(2)
@@ -209,7 +212,7 @@ class Cifras extends React.Component{
                                 </Grid>
 
                                 <Grid item xs={12} md={6} lg={6} xl={6} className={classes.item}>
-                                    <Typography variant="h6" paragraph>Tipo de contratación</Typography>
+                                    {/*<Typography variant="h6" paragraph>Tipo de contratación</Typography>*/}
                                     <ul className={classes.ul}>
                                         {
                                             bullets.map((b, i) => (
