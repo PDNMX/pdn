@@ -81,14 +81,21 @@ const useStyles = makeStyles( theme => ({
     },
     ul: {
         listStyle: 'none',
-        paddingLeft: '20px'
+        //paddingLeft: '20px'
     },
     li: {
-        color: '#606060',
-        paddingTop: 10,
-        marginBottom: 20
+        "&:before":{
+            content: '"•"',
+            color: '#5fb1e6',
+            fontWeight: "bold",
+            display: "inline-block",
+            width: "1em",
+            marginLeft: "-1em"
+        },
+        //paddingBottom: theme.spacing(2)
     },
     sublist: {
+        display: 'inline',
         color: '#606060',
         fontSize: '0.975rem',
     },
@@ -157,32 +164,32 @@ export default function CustomizedExpansionPanels() {
                             <ul className={classes.ul}>
                                 <li className={classes.li}>
                                     <Typography className={classes.sublist}>
-                                        <span className={classes.bullet}/>  <b>Identificar</b> las áreas de oportunidad en la calidad de los datos;
+                                         <b>Identificar</b> las áreas de oportunidad en la calidad de los datos;
                                     </Typography>
                                 </li>
                                 <li className={classes.li}>
                                     <Typography className={classes.sublist}>
-                                        <span className={classes.bullet}/>  Que las entidades generadoras de datos <b>entiendan cómo mejorar</b> la calidad calidad de los datos que generan;
+                                       Que las entidades generadoras de datos <b>entiendan cómo mejorar</b> la calidad calidad de los datos que generan;
                                     </Typography>
                                 </li>
                                 <li className={classes.li}>
                                     <Typography className={classes.sublist}>
-                                        <span className={classes.bullet}/>  <b>Mejorar</b> la calidad de los datos;
+                                         <b>Mejorar</b> la calidad de los datos;
                                     </Typography>
                                 </li>
                                 <li className={classes.li}>
                                     <Typography className={classes.sublist}>
-                                        <span className={classes.bullet}/>  <b>Mejorar las prácticas</b> en general de generación de los datos de gobierno;
+                                        <b>Mejorar las prácticas</b> en general de generación de los datos de gobierno;
                                     </Typography>
                                 </li>
                                 <li className={classes.li}>
                                     <Typography className={classes.sublist}>
-                                        <span className={classes.bullet}/>  Que los usuarios de los datos <b>identifiquen</b> fácilmente los datos que tienen mayor calidad, e
+                                       Que los usuarios de los datos <b>identifiquen</b> fácilmente los datos que tienen mayor calidad, e
                                     </Typography>
                                 </li>
                                 <li className={classes.li}>
                                     <Typography className={classes.sublist}>
-                                        <span className={classes.bullet}/>  <b>Incrementar la confianza</b> para construir productos de datos con los datos del gobierno.
+                                       <b>Incrementar la confianza</b> para construir productos de datos con los datos del gobierno.
                                     </Typography>
                                 </li>
                             </ul>
@@ -243,11 +250,10 @@ export default function CustomizedExpansionPanels() {
                         <Typography paragraph>
                             Las métricas de calidad de los datos toman en consideración:
                         </Typography>
-                        <ul>
-                            <li><Typography>La disponibilidad de los datos;</Typography></li>
-                            <li><Typography>Sus procesos de recolección y actualización, y</Typography></li>
-                            <li><Typography>Sus formatos</Typography></li>
-
+                        <ul className={classes.ul}>
+                            <li className={classes.li}><Typography display='inline'>La disponibilidad de los datos;</Typography></li>
+                            <li className={classes.li}><Typography display='inline'>Sus procesos de recolección y actualización, y</Typography></li>
+                            <li className={classes.li}><Typography display='inline'>Sus formatos</Typography></li>
                         </ul>
 
                         <Typography paragraph>
@@ -288,55 +294,56 @@ export default function CustomizedExpansionPanels() {
                             <b>1. Disponibilidad:</b>
                         </Typography>
 
-                        <ul>
-                            <li><Typography>Pueda descargarse desde un sitio público del gobierno;</Typography></li>
-                            <li><Typography>Pueda encontrarse fácilmente;</Typography></li>
-                            <li><Typography>Cuenten con un respaldo en un sitio independiente;</Typography></li>
+                        <ul className={classes.ul}>
+                            <li className={classes.li}><Typography display='inline'>Pueda descargarse desde un sitio público del gobierno;</Typography></li>
+                            <li className={classes.li}><Typography display='inline'>Pueda encontrarse fácilmente;</Typography></li>
+                            <li className={classes.li}><Typography display='inline'>Cuenten con un respaldo en un sitio independiente;</Typography></li>
                         </ul>
 
-                        <Typography>
+                        <Typography className={classes.ul}>
                             <b>2. Integridad:</b>
                         </Typography>
-                        <ul>
-                            <li><Typography>Se encuentre guardado en un sitio seguro;</Typography></li>
-                            <li><Typography>Que existan mecanismos de seguridad para controlar los cambios de a los datos;</Typography></li>
+                        <ul className={classes.ul}>
+                            <li className={classes.li}><Typography display='inline'>Se encuentre guardado en un sitio seguro;</Typography></li>
+                            <li className={classes.li}><Typography display='inline'>Que existan mecanismos de seguridad para controlar los cambios de a los datos;</Typography></li>
                         </ul>
 
                         <Typography>
                             <b>3. Validez y confiabilidad:</b>
                         </Typography>
-                        <ul>
-                            <li><Typography>Provenga de fuentes confiables;</Typography></li>
-                            <li><Typography>Que no existan registros en blanco o errores en los registros;</Typography></li>
+                        <ul className={classes.ul}>
+                            <li className={classes.li}><Typography display='inline'>Provenga de fuentes confiables;</Typography></li>
+                            <li className={classes.li}><Typography display='inline'>Que no existan registros en blanco o errores en los registros;</Typography></li>
                         </ul>
 
                         <Typography>
                             <b>4. Procesabilidad:</b>
                         </Typography>
-                        <ul>
-                            <li><Typography>Esté en formato de datos legible por computadora (.csv, .json, etc);</Typography></li>
-                            <li><Typography>Se encuentre en formato no propietario;</Typography></li>
-                            <li><Typography>Pueda bajarse en bulk;</Typography></li>
+                        <ul className={classes.ul}>
+                            <li className={classes.li}><Typography display='inline'>Esté en formato de datos legible por computadora (.csv, .json, etc);</Typography></li>
+                            <li className={classes.li}><Typography display='inline'>Se encuentre en formato no propietario;</Typography></li>
+                            <li className={classes.li}><Typography display='inline'>Pueda bajarse en bulk;</Typography></li>
                         </ul>
 
                         <Typography>
                             <b>5. Relevancia analítica:</b>
                         </Typography>
-                        <ul>
-                            <li><Typography>Que haya suficientes observaciones para realizar análisis y modelos;</Typography></li>
-                            <li><Typography>Que el conjunto de datos contenga variables suficientes para medir lo que se supone deben medir;</Typography></li>
-                            <li><Typography>Que el conjunto de datos esté actualizado;</Typography></li>
+                        <ul className={classes.ul}>
+                            <li className={classes.li}><Typography display='inline'>Que haya suficientes observaciones para realizar análisis y modelos;</Typography></li>
+                            <li className={classes.li}><Typography display='inline'>Que el conjunto de datos contenga variables suficientes para medir lo que se supone deben medir;</Typography></li>
+                            <li className={classes.li}><Typography display='inline'>Que el conjunto de datos esté actualizado;</Typography></li>
                         </ul>
+
                         <Typography>
                             <b>5.1 Consistencia:</b>
                         </Typography>
-                        <ul>
-                            <li><Typography>Que las variables estén codificadas adecuadamente (que no tengan espacios, ni los nombres sean demasiado largos)</Typography></li>
+                        <ul className={classes.ul}>
+                            <li className={classes.li}><Typography display='inline'>Que las variables estén codificadas adecuadamente (que no tengan espacios, ni los nombres sean demasiado largos)</Typography></li>
                         </ul>
                         <Typography><b>5.2 Completitud:</b></Typography>
-                        <ul>
-                            <li><Typography>Que los datos faltantes estén marcados, y</Typography></li>
-                            <li><Typography>Calidad del diccionario de datos (0 no tiene, 5 sí tiene pero es mejorable, 10 diccionario de buena calidad)</Typography></li>
+                        <ul className={classes.ul}>
+                            <li className={classes.li}><Typography display='inline'>Que los datos faltantes estén marcados, y</Typography></li>
+                            <li className={classes.li}><Typography display='inline'>Calidad del diccionario de datos (0 no tiene, 5 sí tiene pero es mejorable, 10 diccionario de buena calidad)</Typography></li>
                         </ul>
 
                     </div>

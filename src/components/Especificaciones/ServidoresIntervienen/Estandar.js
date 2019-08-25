@@ -22,7 +22,6 @@ class Estandar extends React.Component {
 
         return (
             <div className={classes.root}>
-              
                 <Typography paragraph>
                     Esta guía tiene como finalidad la descripción del Estándar para la Interoperabilidad de Datos de Servidores
                     Públicos que Intervienen en Contrataciones,

@@ -65,6 +65,20 @@ const useStyles = makeStyles( theme => ({
         marginRight: theme.spacing(1),
         marginBottom: theme.spacing(1),
         background: '#ffe01b',//'#fecb6e'
+    },
+    ul: {
+        listStyle: 'none',
+        //paddingLeft: '20px'
+    },
+    li: {
+        "&:before":{
+            content: '"•"',
+            color: '#5fb1e6',
+            fontWeight: "bold",
+            display: "inline-block",
+            width: "1em",
+            marginLeft: "-1em"
+        }
     }
 }));
 
@@ -80,6 +94,8 @@ export default function CustomizedExpansionPanels() {
 
     return (
         <div>
+
+
             <ExpansionPanel square expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
                 <ExpansionPanelSummary aria-controls="panel1d-content" id="panel1d-header">
                     <Typography>¿Qué es la PDN?</Typography>
@@ -103,22 +119,14 @@ export default function CustomizedExpansionPanels() {
                             El desarrollo de la PDN considera seis sistemas que contienen datos estratégicos para la lucha contra la corrupción, <b>contemplados en la Ley General del Sistema Nacional Anticorrupción (LGSNA):</b>
                         </Typography>
 
-                        <Grid container spacing={0}>
-                            <Grid item xs={12} md={12} lg={6} xl={6}>
-                                <ul>
-                                    <li><Typography>Sistema 1 | Declaraciones patrimonial,  de intereses y constancia de declaración fiscal.</Typography></li>
-                                    <li><Typography>Sistema 2 | Servidores públicos que intervienen en procedimientos de contratación.</Typography></li>
-                                    <li><Typography>Sistema 3 | Servidores públicos y particulares sancionados.</Typography></li>
+                                <ul className={classes.ul}>
+                                    <li className={classes.li}><Typography display='inline'> Sistema 1 | Declaraciones patrimonial,  de intereses y constancia de declaración fiscal.</Typography></li>
+                                    <li className={classes.li}><Typography display='inline'> Sistema 2 | Servidores públicos que intervienen en procedimientos de contratación.</Typography></li>
+                                    <li className={classes.li}><Typography display='inline'> Sistema 3 | Servidores públicos y particulares sancionados.</Typography></li>
+                                    <li className={classes.li}><Typography display='inline'> Sistema 4 | Información y comunicación del Sistema Nacional Anticorrupción y el Sistema Nacional de Fiscalización.</Typography></li>
+                                    <li className={classes.li}><Typography display='inline'> Sistema 5 | Denuncias por faltas administrativas y hechos de corrupción.</Typography></li>
+                                    <li className={classes.li}><Typography display='inline'> Sistema 6 | Contrataciones Públicas.</Typography></li>
                                 </ul>
-                            </Grid>
-                            <Grid item xs={12} md={12} lg={6} xl={6}>
-                                <ul>
-                                    <li><Typography>Sistema 4 | Información y comunicación del Sistema Nacional Anticorrupción y el Sistema Nacional de Fiscalización.</Typography></li>
-                                    <li><Typography>Sistema 5 | Denuncias por faltas administrativas y hechos de corrupción.</Typography></li>
-                                    <li><Typography>Sistema 6 | Contrataciones Públicas.</Typography></li>
-                                </ul>
-                            </Grid>
-                        </Grid>
 
                         <Typography paragraph>
                             Es importante señalar que la PDN no es un repositorio ni generadora de los datos de cada sistema, sino que es una plataforma de interoperabilidad.
@@ -145,14 +153,14 @@ export default function CustomizedExpansionPanels() {
                             Usar nuevas tecnologías y metodologías de trabajo como apoyo al trabajo de las autoridades del Sistema Nacional Anticorrupción para:
                         </Typography>
 
-                        <ul>
-                            <li><Typography>Analizar y alertar a las autoridades sobre riesgos de corrupción;</Typography></li>
-                            <li><Typography>Automatizar procesos, evitar discrecionalidad y conflicto de interés;</Typography></li>
-                            <li><Typography>Promover el uso de los datos para respaldar sanciones;</Typography></li>
-                            <li><Typography>Dar seguimiento, en tiempo real, a los procesos y proyectos de contratación pública, y garantizar una mayor eficiencia en las compras públicas;</Typography></li>
-                            <li><Typography>Fortalecer la participación ciudadana en el combate a la corrupción;</Typography></li>
-                            <li><Typography>Incorporar información sobre indicadores para evaluar la Política Nacional Anticorrupción;</Typography></li>
-                            <li><Typography>Dar evidencia para generar recomendaciones de política pública a las autoridades;</Typography></li>
+                        <ul className={classes.ul}>
+                            <li className={classes.li}><Typography display='inline'> Analizar y alertar a las autoridades sobre riesgos de corrupción;</Typography></li>
+                            <li className={classes.li}><Typography display='inline'> Automatizar procesos, evitar discrecionalidad y conflicto de interés;</Typography></li>
+                            <li className={classes.li}><Typography display='inline'> Promover el uso de los datos para respaldar sanciones;</Typography></li>
+                            <li className={classes.li}><Typography display='inline'> Dar seguimiento, en tiempo real, a los procesos y proyectos de contratación pública, y garantizar una mayor eficiencia en las compras públicas;</Typography></li>
+                            <li className={classes.li}><Typography display='inline'> Fortalecer la participación ciudadana en el combate a la corrupción;</Typography></li>
+                            <li className={classes.li}><Typography display='inline'> Incorporar información sobre indicadores para evaluar la Política Nacional Anticorrupción;</Typography></li>
+                            <li className={classes.li}><Typography display='inline'> Dar evidencia para generar recomendaciones de política pública a las autoridades;</Typography></li>
                         </ul>
                     </div>
                 </ExpansionPanelDetails>
@@ -390,84 +398,82 @@ export default function CustomizedExpansionPanels() {
                             <li><Typography>Tecnologías y servicios de software modernos y de código abierto. El código de la PDN puede consultarse <MuiLink href="https://github.com/PDNMX"> aquí</MuiLink>. Las tecnologías que usamos son las siguientes:</Typography></li>
                         </ol>
 
-                        {/*
-                        <TablaTecnologias/>
-                        */}
 
 
-                        <ul>
-                            <li>
-                                <Typography paragraph>
+
+                        <ul className={classes.ul}>
+                            <li className={classes.li}>
+                                <Typography paragraph display='inline'>
                                     <b>Contenedores</b> <br/>
                                     Uso: Puesta en marcha y distribución de actualizaciones <br/>
                                     Tecnología: Docker, Kubernetes
                                 </Typography>
                             </li>
-                            <li>
-                                <Typography paragraph>
+                            <li className={classes.li}>
+                                <Typography paragraph display='inline'>
                                     <b>Analíticos</b><br/>
                                     Uso: Inteligencia de datos<br/>
                                     Tecnología: Python
                                 </Typography>
                             </li>
-                            <li>
-                                <Typography paragraph>
+                            <li className={classes.li}>
+                                <Typography paragraph display='inline'>
                                     <b>Backend</b><br/>
                                     Uso: Lógica de negocio de la PDN<br/>
                                     Tecnología: Python, Node.js, express.js  y Graphql
                                 </Typography>
                             </li>
-                            <li>
-                                <Typography paragraph>
+                            <li className={classes.li}>
+                                <Typography paragraph display='inline'>
                                     <b>Base de Datos</b><br/>
                                     Uso: Tecnología de almacenamiento <br/>
                                     Tecnología: PostgreSQL y MongoDB
                                 </Typography>
                             </li>
-                            <li>
-                                <Typography paragraph>
+                            <li className={classes.li}>
+                                <Typography paragraph display='inline'>
                                     <b>FrontEnd</b><br/>
                                     Uso: Desarrollo de interfaz de usuario<br/>
                                     Tecnología: React.js Material UI
                                 </Typography>
                             </li>
-                            <li>
-                                <Typography paragraph>
+                            <li className={classes.li} display='inline'>
+                                <Typography paragraph display='inline'>
                                     <b>Seguridad</b><br/>
                                     Uso: Autorización<br/>
                                     Tecnología: OAuth 2.0
                                 </Typography>
                             </li>
-                            <li>
-                                <Typography paragraph>
+                            <li className={classes.li}>
+                                <Typography paragraph display='inline'>
                                     <b>Testing</b><br/>
                                     Uso: Pruebas de software<br/>
                                     Tecnología: Jestjs
                                 </Typography>
                             </li>
-                            <li>
-                                <Typography paragraph>
+                            <li className={classes.li}>
+                                <Typography paragraph display='inline'>
                                     <b>Continous integration</b><br/>
                                     Uso: Integración continua<br/>
                                     Tecnología: TravisCI
                                 </Typography>
                             </li>
-                            <li>
-                                <Typography paragraph>
+                            <li className={classes.li}>
+                                <Typography paragraph display='inline'>
                                     <b>Servicios web</b><br/>
                                     Uso: Comunicación con instituciones<br/>
                                     Tecnología: Web APIs (REST y GrapQL)
                                 </Typography>
                             </li>
-                            <li>
-                                <Typography paragraph>
+                            <li className={classes.li}>
+                                <Typography paragraph display='inline'>
                                     <b>Estándares de datos</b><br/>
                                     Uso: Estandarización de información<br/>
                                     Tecnología: Open API Specification y GraphQL
                                 </Typography>
                             </li>
-                            <li>
-                                <Typography paragraph>
+                            <li className={classes.li}>
+                                <Typography paragraph display='inline'>
                                     <b>Control de versiones</b><br/>
                                     Uso: Repositorios de código y control de versiones<br/>
                                     Tecnología: Git
@@ -514,18 +520,18 @@ export default function CustomizedExpansionPanels() {
                         <Typography paragraph>
                             Revisar las especificaciones técnicas publicadas en la versión Alfa de la PDN:
                         </Typography>
-                        <ul>
-                            <li>
+                        <ul className={classes.ul}>
+                            <li className={classes.li}>
                                 <Link to="/declaraciones/especificaciones" className={classes.link}>
                                     Sistema 1
                                 </Link>
                             </li>
-                            <li>
-                                <Link to="/intervienen/especificaciones" className={classes.link}>
+                            <li className={classes.li}>
+                                 <Link to="/intervienen/especificaciones" className={classes.link}>
                                     Sistema 2
                                 </Link>
                             </li>
-                            <li>
+                            <li className={classes.li}>
                                 <Link to="/sancionados/especificaciones" className={classes.link}>
                                     Sistema 3
                                 </Link>

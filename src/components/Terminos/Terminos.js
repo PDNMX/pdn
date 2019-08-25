@@ -18,7 +18,23 @@ const styles = theme => ({
         paddingLeft: theme.spacing(2),
         paddingBottom: 100,
         paddingTop: 100
+    },
+
+    ul: {
+        listStyle: 'none',
+        //paddingLeft: '20px'
+    },
+    li: {
+        "&:before":{
+            content: '"•"',
+            color: '#5fb1e6',
+            fontWeight: "bold",
+            display: "inline-block",
+            width: "1em",
+            marginLeft: "-1em"
+        }
     }
+
 });
 
 class Terminos extends React.Component{
@@ -44,29 +60,66 @@ class Terminos extends React.Component{
                             Son obligaciones del usuario:
                         </Typography>
 
-                        <ul className="pdn_term_ul">
-                            <li>No dañar, inutilizar o deteriorar los sistemas informáticos que puedan ser incorporados en este sitio, incluido el portal plataformadigitalnacional.org.
+                        <ul className={classes.ul}>
+                            <li className={classes.li}>
+                                <Typography display='inline'>
+                                    No dañar, inutilizar o deteriorar los sistemas informáticos que puedan ser incorporados en este sitio, incluido el portal plataformadigitalnacional.org.
+                                </Typography>
                             </li>
-                            <li>No modificar de ninguna manera los sistemas informáticos que puedan ser incorporados.</li>
-                            <li>No utilizar versiones de sistemas modificados con el fin de obtener acceso no autorizado a cualquier sistema de información, contenido y/o servicios del portal.
+                            <li className={classes.li}>
+                                <Typography display="inline">
+                                    No modificar de ninguna manera los sistemas informáticos que puedan ser incorporados.
+                                </Typography>
                             </li>
-                            <li>No interferir ni interrumpir el acceso, funcionalidad y utilización del portal, servidores o redes conectados al mismo.
+                            <li className={classes.li}>
+                                <Typography display='inline'>
+                                    No utilizar versiones de sistemas modificados con el fin de obtener acceso no autorizado a cualquier sistema de información, contenido y/o servicios del portal.
+                                </Typography>
                             </li>
-                            <li>  Los enlaces que son proporcionados en el sitio son sólo con fines informativos, por lo que los contenidos o recursos de esos sitios de internet o páginas gubernamentales, será responsabilidad exclusiva de los entes públicos , por lo que la autoría y reconocimiento de la misma, es responsabilidad del propio ente público. Lo anterior sin perjuicio de lo que establece la Ley Federal del Derecho de Autor y demás normatividad aplicable.
+                            <li className={classes.li}>
+                                <Typography display='inline'>
+                                    No interferir ni interrumpir el acceso, funcionalidad y utilización del portal, servidores o redes conectados al mismo.
+                                </Typography>
                             </li>
-                            <li>Este sitio contiene medidas de seguridad para proteger la información de cualquier alteración realizada por terceros.
+                            <li className={classes.li}>
+                                <Typography display='inline'>
+                                    Los enlaces que son proporcionados en el sitio son sólo con fines informativos, por lo que los contenidos o recursos de esos sitios de internet o páginas gubernamentales, será responsabilidad exclusiva de los entes públicos , por lo que la autoría y reconocimiento de la misma, es responsabilidad del propio ente público. Lo anterior sin perjuicio de lo que establece la Ley Federal del Derecho de Autor y demás normatividad aplicable.
+                                </Typography>
                             </li>
-                            <li>La Secretaría Ejecutiva del Sistema Nacional Anticorrupción se deslinda de cualquier responsabilidad, perjuicio o daño que pueda generar el usuario por cualquier uso inadecuado del portal o la información contenida en plataformadigitalnacional.org.
+                            <li className={classes.li}>
+                                <Typography display='inline'>
+                                    Este sitio contiene medidas de seguridad para proteger la información de cualquier alteración realizada por terceros.
+                                </Typography>
                             </li>
-                            <li>El usuario se obliga a hacer buen uso del sitio, respetando la Ley General del Sistema Nacional Anticorrupción, la Ley Federal de Derechos de Autor y demás  normatividad aplicable.
+                            <li className={classes.li}>
+                                <Typography display='inline'>
+                                    La Secretaría Ejecutiva del Sistema Nacional Anticorrupción se deslinda de cualquier responsabilidad, perjuicio o daño que pueda generar el usuario por cualquier uso inadecuado del portal o la información contenida en plataformadigitalnacional.org.
+                                </Typography>
                             </li>
-                            <li>Debe contar con un equipo que cumpla con las características mínimas necesarias para navegar en el sitio, recomendando su navegación en las últimas versiones de los navegadores Google Chrome, Mozilla Firefox y Safari para obtener la mejor experiencia.
-                          </li>
-                            <li>  Exime a la Secretaría Ejecutiva del Sistema Nacional Anticorrupción de toda responsabilidad por los daños que el uso del sitio le pudieran ocasionar en forma incidental o consecuente con su equipo, información, patrimonio o persona, así como ninguna responsabilidad por la la alteración o manipulación de los datos una vez publicados en él.
+                            <li className={classes.li}>
+                                <Typography display='inline'>
+                                    El usuario se obliga a hacer buen uso del sitio, respetando la Ley General del Sistema Nacional Anticorrupción, la Ley Federal de Derechos de Autor y demás  normatividad aplicable.
+                                </Typography>
                             </li>
-                            <li>Acepta y se obliga a utilizar el sitio para fines lícitos y con apego a las disposiciones legales aplicables.
-                          </li>
-                            <li>El destino y tratamiento de los datos que se obtengan de la plataforma, son responsabilidad exclusivamente del usuario, y de manera alguna señalarán el posicionamiento de ningún ente público, salvo que expresamente se refiera.
+                            <li className={classes.li}>
+                                <Typography display='inline'>
+                                    Debe contar con un equipo que cumpla con las características mínimas necesarias para navegar en el sitio, recomendando su navegación en las últimas versiones de los navegadores Google Chrome, Mozilla Firefox y Safari para obtener la mejor experiencia.
+                                </Typography>
+                            </li>
+                            <li className={classes.li}>
+                                <Typography display='inline'>
+                                    Exime a la Secretaría Ejecutiva del Sistema Nacional Anticorrupción de toda responsabilidad por los daños que el uso del sitio le pudieran ocasionar en forma incidental o consecuente con su equipo, información, patrimonio o persona, así como ninguna responsabilidad por la la alteración o manipulación de los datos una vez publicados en él.
+                                </Typography>
+                            </li>
+                            <li className={classes.li}>
+                                <Typography display='inline'>
+                                    Acepta y se obliga a utilizar el sitio para fines lícitos y con apego a las disposiciones legales aplicables.
+                                </Typography>
+                            </li>
+                            <li className={classes.li}>
+                                <Typography display='inline'>
+                                    El destino y tratamiento de los datos que se obtengan de la plataforma, son responsabilidad exclusivamente del usuario, y de manera alguna señalarán el posicionamiento de ningún ente público, salvo que expresamente se refiera.
+                                </Typography>
                             </li>
                         </ul>
 
@@ -82,31 +135,45 @@ class Terminos extends React.Component{
                             <b>Usted puede:</b>
                         </Typography>
 
-                        <ul className="pdn_term_ul">
-                            <li>Hacer y distribuir copias del conjunto de datos y su contenido;</li>
-                            <li>Difundir y publicar el conjunto de datos y su contenido;</li>
-                            <li>Adaptar o reordenar el conjunto de datos y su contenido;</li>
-                            <li>Extraer total o parcialmente el contenido del conjunto de datos;</li>
-                            <li>Explotar comercialmente el conjunto de datos y su contenido, y;</li>
-                            <li>Crear conjuntos de datos derivados del conjunto de datos o su contenido.</li>
+                        <ul className={classes.ul}>
+                            <li className={classes.li}><Typography display='inline'>Hacer y distribuir copias del conjunto de datos y su contenido;</Typography></li>
+                            <li className={classes.li}><Typography display='inline'>Difundir y publicar el conjunto de datos y su contenido;</Typography></li>
+                            <li className={classes.li}><Typography display='inline'>Adaptar o reordenar el conjunto de datos y su contenido;</Typography></li>
+                            <li className={classes.li}><Typography display='inline'>Extraer total o parcialmente el contenido del conjunto de datos;</Typography></li>
+                            <li className={classes.li}><Typography display='inline'>Explotar comercialmente el conjunto de datos y su contenido, y;</Typography></li>
+                            <li className={classes.li}><Typography display='inline'>Crear conjuntos de datos derivados del conjunto de datos o su contenido.</Typography></li>
                         </ul>
 
 
                         <Typography className="pdn_term_content"><b>Condiciones:</b></Typography>
-                        <ul className="pdn_term_ul">
-                            <li>Citar la fuente de origen de donde obtuvo el conjunto de datos:
-                              <ul>
+                        <ul className={classes.ul}>
+                            <li className={classes.li}><Typography display='inline'>Citar la fuente de origen de donde obtuvo el conjunto de datos:</Typography>
+                                <ul>
                                     <li>
+                                        <Typography display='inline'>
                                             “Nombre del conjunto de datos”, [Siglas de la institución publicante]; Liga de internet de los datos descargados, y la fecha de la de consulta en formato numérico [AAAA-MM-DD], puestos a disposición de tal manera que sean fácilmente accesibles para los usuarios, y en la forma que mejor se adecue al funcionamiento del bien o servicio;
+                                        </Typography>
                                     </li>
                                 </ul>
                             </li>
-                            <li>No utilizar la información con objeto de engañar o confundir a la población variando el sentido original de la información y su veracidad.
+                            <li className={classes.li}>
+                                <Typography display='inline'>
+                                    No utilizar la información con objeto de engañar o confundir a la población variando el sentido original de la información y su veracidad.
+                                </Typography>
                             </li>
-                            <li>No aparentar que el uso que usted haga de los datos representa una postura.</li>
-                            <li>Estos términos de libre uso de datos no lo autorizan para utilizar el contenido de terceros como pueden ser obras en cualquier formato que se encuentren dentro de los conjuntos de datos. En caso de que requiera utilizar dicho contenido, deberá buscar la autorización directamente del titular de los derechos correspondientes de conformidad con la Ley Federal de Derechos de Autor.
+                            <li className={classes.li}>
+                                <Typography display='inline'>
+                                    No aparentar que el uso que usted haga de los datos representa una postura.
+                                </Typography>
                             </li>
-                            <li>Términos compatibles con <img src={by} alt="Creative Commons"/></li>
+                            <li className={classes.li}>
+                                <Typography display='inline'>
+                                Estos términos de libre uso de datos no lo autorizan para utilizar el contenido de terceros como pueden ser obras en cualquier formato que se encuentren dentro de los conjuntos de datos. En caso de que requiera utilizar dicho contenido, deberá buscar la autorización directamente del titular de los derechos correspondientes de conformidad con la Ley Federal de Derechos de Autor.
+                                </Typography>
+                            </li>
+                            <li className={classes.li}>
+                                <Typography display='inline'>Términos compatibles con </Typography>
+                                <img src={by} alt="Creative Commons"/></li>
                         </ul>
 
                         <br/>

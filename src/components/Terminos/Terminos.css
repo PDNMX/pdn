@@ -9,25 +9,3 @@
   color: #606060 !important;
   font-size: 0.975rem !important;
 }
-.pdn_term_ul {
-  list-style: none;
-}
-
-.pdn_term_ul li {
-  color: #606060 !important;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  font-family: Noto Sans SC,"Helvetica","Arial","sans-serif";
-}
-
-
-
-.pdn_term_ul li::before {
-  content: "\2022";
-  color: #5fb1e6;
-  font-weight: bold;
-  font-size: 18px;
-  display: inline-block;
-  width: 1em;
-  margin-left: -1em;
-}
