@@ -73,7 +73,7 @@ class Header extends React.Component{
                                 <Link className={classes.link} to='/'>Plataforma Digital Nacional</Link>
                             </li>
                             <li>
-                                Guía de Apertura Anticorrupción
+                                Calidad de datos
                             </li>
                         </ul>
                     </Grid>

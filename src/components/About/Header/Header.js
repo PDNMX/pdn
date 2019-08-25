@@ -7,7 +7,7 @@ import PDNLogo from '../../../assets/PDN.png';
 
 import {Typography} from "@material-ui/core"
 import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
-import './Header.css';
+import BG from "../../../assets/img/mesa_ayuda.jpg";
 
 const style = theme => ({
         root: {
@@ -40,6 +40,15 @@ const style = theme => ({
             paddingLeft: "40px",
             paddingTop: "40px",
             paddingBottom: "40px"
+        },
+        z5: {
+            height: '100%',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            position: 'relative',
+            backgroundImage: `url(${BG})`,
+            padding: '82px 0 82px'
         }
     }
 );
@@ -74,7 +83,7 @@ class Header extends React.Component{
                     </Grid>
                 </Grid>
 
-                <Grid container spacing={0} className='z5' justify='center'>
+                <Grid container spacing={0} className={classes.z5} justify='center'>
 
 
                     <Grid item xs={12} md={7} className={classes.item2} align={isWidthUp('md', this.props.width)? 'left':'center'} >
