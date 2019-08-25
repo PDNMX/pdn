@@ -33,7 +33,8 @@ const styles = theme => ({
     iconosSistemas: {
         maxWidth: 200,
         '&:hover':{
-            opacity: 0.5
+            opacity: 0.5,
+            cursor: "pointer"
         }
     },
     textExplora: {
