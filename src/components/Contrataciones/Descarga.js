@@ -10,7 +10,7 @@ const styles = theme =>  ({
         flexGrow:1,
     },
     descarga: {
-        color: theme.palette.titleBanner.color,
+        color: theme.palette.text.primary,
         fontWeight: 500,
         fontSize: '48px',
         paddingBottom: theme.spacing(6)

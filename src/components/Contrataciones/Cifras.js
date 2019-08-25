@@ -173,31 +173,31 @@ class Cifras extends React.Component{
                     </Grid>:
                     <Grid container spacing={0}>
                         <Grid item xs={12} md={12} lg={4} xl={4} align="center" className={classes.item}>
-                            <Typography variant="h6">
+                            <Typography variant="h6" color="textPrimary">
                                 Procesos de contratación
                             </Typography>
 
-                            <Typography variant="h5" paragraph>
+                            <Typography variant="h5" paragraph color="textPrimary">
                                 <b><CountUp separator="," start={1} end={this.state.contrataciones}/></b>
                             </Typography>
 
-                            <Typography variant="h6">
+                            <Typography variant="h6" color="textPrimary">
                                 Instituciones
                             </Typography>
-                            <Typography variant="h5" paragraph>
+                            <Typography variant="h5" paragraph color="textPrimary">
                                 <b> <CountUp separator="," start={1} end={this.state.instituciones}/></b>
                             </Typography>
 
-                            <Typography variant="h6">Gasto total</Typography>
+                            <Typography variant="h6" color="textPrimary">Gasto total</Typography>
 
-                            <Typography variant="h5" paragraph>
+                            <Typography variant="h5" paragraph color="textPrimary">
                                 <b> <CountUp separator="," decimals={2} prefix={'$'} start={1} end={this.state.gastoTotal}/></b>
                             </Typography>
 
-                            <Typography variant="h6">
+                            <Typography variant="h6" color="textPrimary">
                                 Periodo
                             </Typography>
-                            <Typography variant="h5" paragraph>
+                            <Typography variant="h5" paragraph color="textPrimary">
                                 <b>{this.state.periodo.start} - {this.state.periodo.end}</b>
                             </Typography>
 
@@ -217,7 +217,7 @@ class Cifras extends React.Component{
                                         {
                                             bullets.map((b, i) => (
                                                     <li key={i}>
-                                                        <Typography variant="h6" paragraph>
+                                                        <Typography variant="h6" paragraph color="textPrimary">
                                                             <span className={classes.bullet} style={{backgroundColor: b.color}} />
                                                             {b.tipo}
                                                         </Typography>

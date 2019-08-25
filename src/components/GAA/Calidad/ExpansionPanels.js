@@ -70,15 +70,6 @@ const useStyles = makeStyles( theme => ({
     impacto:{
         maxWidth: '90%'
     },
-    bullet: {
-        backgroundColor: '#5fb1e6',
-        height: '8px',
-        width: '8px',
-        borderRadius: '50%',
-        display: 'inline-block',
-        marginLeft: '-20px',
-        //marginTop: '-10px'
-    },
     ul: {
         listStyle: 'none',
         //paddingLeft: '20px'

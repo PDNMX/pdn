@@ -9,15 +9,19 @@ import LoginPDN from "./components/Inicio/LoginPDN";
 import ScrollToTop from "./ScrollToTop";
 //import ReactGA from 'react-ga';
 import "./components/Utils/Header.css";
+import blue from '@material-ui/core/colors/blue';
 
 const theme = createMuiTheme({
   typography: {
     useNextVariants: true,
     fontFamily: ["Noto Sans SC", '"Helvetica"', '"Arial"', '"sans-serif"'].join(
       ","
-    )
+    ),
   },
   palette: {
+    text: {
+      primary: '#666666'
+    },
     primary: {
       main: "#89d4f2",
       light: "#bdffff",

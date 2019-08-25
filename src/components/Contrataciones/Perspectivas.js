@@ -17,11 +17,11 @@ const styles = theme => ({
         }
     },
     iconText: {
-        color: theme.palette.titleBanner.color,
+        color: theme.palette.text.primary,
         paddingBottom: 60
     },
     visualiza: {
-        color: theme.palette.titleBanner.color,
+        color: theme.palette.text.primary,
         fontWeight: 500,
         fontSize: '48px',
         paddingBottom: theme.spacing(6)
