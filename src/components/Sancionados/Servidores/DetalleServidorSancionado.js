@@ -217,7 +217,7 @@ class DetalleServidorSancionado extends React.Component {
                                 </IconButton>
                             </Grid>
                             <Grid item md={6} xs={12}>
-                                <TextField
+                                <TextField multiline={true}
                                     id="read-only-input"
                                     label="Expediente"
                                     defaultValue={servidor.expediente}
@@ -235,7 +235,7 @@ class DetalleServidorSancionado extends React.Component {
                                 />
                             </Grid>
                             <Grid item md={6} xs={12}>
-                                <TextField
+                                <TextField multiline={true}
                                     id="read-only-input"
                                     label="Servidor público"
                                     defaultValue={servidor.nombre+' '+servidor.apellidoUno+' '+servidor.apellidoDos}
@@ -253,7 +253,7 @@ class DetalleServidorSancionado extends React.Component {
                                 />
                             </Grid>
                             <Grid item  md = {6} xs={12}>
-                                <TextField
+                                <TextField multiline={true}
                                     id="read-only-input"
                                     label="Institución"
                                     defaultValue={servidor.institucion? servidor.institucion.nombre + ' ('+servidor.institucion.siglas + ')': servidor.institucion}
@@ -274,7 +274,7 @@ class DetalleServidorSancionado extends React.Component {
                             </Grid>
 
                             <Grid item md={6} xs={12}>
-                                <TextField
+                                <TextField multiline={true}
                                     id="read-only-input"
                                     label="Puesto"
                                     defaultValue={servidor.puesto}
@@ -293,7 +293,7 @@ class DetalleServidorSancionado extends React.Component {
                             </Grid>
 
                             <Grid item md={6} xs={12}>
-                                <TextField
+                                <TextField multiline={true}
                                     id="read-only-input"
                                     label="Autoridad sancionadora"
                                     defaultValue={servidor.autoridad_sancionadora}
@@ -313,7 +313,7 @@ class DetalleServidorSancionado extends React.Component {
 
 
                             <Grid item md={6} xs={12}>
-                                <TextField
+                                <TextField multiline={true}
                                     id="read-only-input"
                                     label="Tipo de falta"
                                     defaultValue={servidor.tipo_falta}
@@ -332,7 +332,7 @@ class DetalleServidorSancionado extends React.Component {
                             </Grid>
 
                             <Grid item md={6} xs={12}>
-                                <TextField
+                                <TextField multiline={true}
                                     id="read-only-input"
                                     label="Fecha resolución"
                                     defaultValue={servidor.resolucion? servidor.resolucion.fecha_notificacion : servidor.resolucion}
@@ -350,7 +350,7 @@ class DetalleServidorSancionado extends React.Component {
                                 />
                             </Grid>
                             <Grid item md={6} xs={12}>
-                                <TextField
+                                <TextField multiline={true}
                                     id="read-only-input"
                                     label="Fecha notificación"
                                     defaultValue={servidor.resolucion ? servidor.resolucion.fecha_notificacion : servidor.resolucion}
@@ -368,7 +368,7 @@ class DetalleServidorSancionado extends React.Component {
                                 />
                             </Grid>
                             <Grid item md={6} xs={12}>
-                                <TextField
+                                <TextField multiline={true}
                                     id="read-only-input"
                                     label="Sanción impuesta"
                                     defaultValue={servidor.tipo_sancion}
@@ -386,7 +386,7 @@ class DetalleServidorSancionado extends React.Component {
                                 />
                             </Grid>
                             <Grid item md={6} xs={12}>
-                                <TextField
+                                <TextField multiline={true}
                                     id="read-only-input"
                                     label="Causa"
                                     defaultValue={servidor.causa}
@@ -404,10 +404,10 @@ class DetalleServidorSancionado extends React.Component {
                                 />
                             </Grid>
                             <Grid item md={6} xs={12}>
-                                <TextField
+                                <TextField multiline={true}
                                     id="read-only-input"
-                                    label="Fecha inicio"
-                                    defaultValue={servidor.inhabilitacion ? servidor.inhabilitacion.fecha_inicial : servidor.inhabilitacion}
+                                    label="Plazo"
+                                    defaultValue={(servidor.inhabilitacion) ? (servidor.inhabilitacion.fecha_inicial+" - "+servidor.inhabilitacion.fecha_final) : servidor.inhabilitacion}
                                     className={classes.textField}
                                     margin="normal"
                                     InputProps={{
@@ -421,26 +421,9 @@ class DetalleServidorSancionado extends React.Component {
                                     }}
                                 />
                             </Grid>
+
                             <Grid item md={6} xs={12}>
-                                <TextField
-                                    id="read-only-input"
-                                    label="Fecha fin"
-                                    defaultValue={servidor.inhabilitacion ? servidor.inhabilitacion.fecha_final : servidor.inhabilitacion}
-                                    className={classes.textField}
-                                    margin="normal"
-                                    InputProps={{
-                                        readOnly: true,
-                                        className: classes.fontSmall,
-                                        endAdornment: (
-                                            <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(7)}}>
-                                                <IconHelp/>
-                                            </InputAdornment>
-                                        )
-                                    }}
-                                />
-                            </Grid>
-                            <Grid item md={6} xs={12}>
-                                <TextField
+                                <TextField multiline={true}
                                     id="read-only-input"
                                     label="Monto"
                                     defaultValue={servidor.multa ? servidor.multa.monto : servidor.multa}
@@ -457,8 +440,8 @@ class DetalleServidorSancionado extends React.Component {
                                     }}
                                 />
                             </Grid>
-                            <Grid item md={6} xs={12}>
-                                <TextField
+                            <Grid item xs={12}>
+                                <TextField multiline={true}
                                     id="read-only-input"
                                     label="Observaciones"
                                     defaultValue={servidor.inhabilitacion? servidor.inhabilitacion.observaciones : servidor.inhabilitacion}
