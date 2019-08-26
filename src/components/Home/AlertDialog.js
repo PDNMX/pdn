@@ -43,18 +43,19 @@ class AlertDialog extends React.Component {
                     >
                         <DialogTitle id="alert-dialog-title">{"Plataforma Digital Nacional"}</DialogTitle>
                         <DialogContent>
+
                             <DialogContentText id="alert-dialog-description">
-                                Esta es una versión Alpha cuyo objetivo es probar las funcionalidades, interfaz y experiencia de usuario para la página de inicio, y los primeros dos sistemas de la Plataforma.
+                                Esta es una versión Beta 0.2, lo que significa que <b>NO debe ser vista como final</b>.
                             </DialogContentText>
 
                             <DialogContentText>
                                 <b>
-                                    Esta versión NO debe ser vista como final, NI contiene los datos reales.
+                                    Esta versión contiene datos reales de los Sistemas 2, 3 y 6; y tendrá un proceso de constante y permanente actualización, tanto de los datos como de sus funcionalidades.
                                 </b>
                             </DialogContentText>
 
                             <DialogContentText>
-                                Te invitamos a dejar tus comentarios de esta versión accediendo al botón "COMENTA"
+                                Te invitamos a revisar los “Términos y Condiciones de Uso”, así como a dejar tus comentarios en sobre las funcionalidades, interfaz y experiencia de usuario en la sección de “Comenta”.
                             </DialogContentText>
 
                         </DialogContent>
