@@ -43,7 +43,7 @@ const styles = theme => ({
         //paddingBottom: 60
     },
     specsContainer: {
-        backgroundColor: theme.palette.primary.main,
+        backgroundColor: '#34b3eb',
         paddingTop: 70,
         paddingBottom: 70
     }

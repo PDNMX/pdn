@@ -20,6 +20,7 @@ import img1 from "../../assets/img/servidores_publicos_sancionados.svg";
 //import img2 from "../../assets/img/particulares_sancionados.svg";
 import img3 from "../../assets/img/servidores_visualizaciones.svg";
 import {Typography} from "@material-ui/core";
+import ScrollToTopButton from "../Navigation/ScrollToTopButton";
 
 
 
@@ -213,6 +214,7 @@ class Index extends React.Component {
 
 
                 <Footer/>
+                <ScrollToTopButton/>
             </div>
         );
     }
