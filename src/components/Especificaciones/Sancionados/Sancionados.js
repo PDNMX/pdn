@@ -39,7 +39,6 @@ class Sancionados extends React.Component {
 
         return (
             <div>
-
                 <Header/>
 
                 <Grid container spacing={0} justify='center' className={classes.container}>
@@ -48,10 +47,10 @@ class Sancionados extends React.Component {
                         <Estandar/>
 
                         <Divider/>
+
                         <br/>
 
                         <Licencia/>
-
 
                         <Divider/>
 
