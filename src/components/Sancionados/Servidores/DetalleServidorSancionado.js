@@ -407,7 +407,7 @@ class DetalleServidorSancionado extends React.Component {
                                 <TextField multiline={true}
                                     id="read-only-input"
                                     label="Plazo"
-                                    defaultValue={servidor.inhabilitacion ? (servidor.inhabilitacion.fecha_inicial+" - "+servidor.inhabilitacion.fecha_final) : servidor.inhabilitacion}
+                                    defaultValue={(servidor.inhabilitacion) ? (servidor.inhabilitacion.fecha_inicial+" - "+servidor.inhabilitacion.fecha_final) : servidor.inhabilitacion}
                                     className={classes.textField}
                                     margin="normal"
                                     InputProps={{
