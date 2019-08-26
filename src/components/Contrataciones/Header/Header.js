@@ -6,7 +6,6 @@ import BG from '../../../assets/img/cintillo_contrataciones.jpg';
 import C from '../../../assets/iconos_azul/6_icono.svg'
 import {Typography} from "@material-ui/core"
 import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
-import classNames from 'classnames';
 import BarraLogoMenu from "../../Compartidos/BarraLogoMenu";
 
 const style = theme => ({
@@ -76,16 +75,18 @@ class Header extends React.Component{
                     <Grid item xs={12} className={classes.item3}>
                         <ul>
                             <li>
-                                <Link className={classes.link} to='/'>Plataforma Digital Nacional</Link>
+                                <Link component={Link} className={classes.link} to='/'>
+                                    Plataforma Digital Nacional
+                                </Link>
                             </li>
                             <li>
-                                Contrataciones
+                                    Contrataciones
                             </li>
                         </ul>
                     </Grid>
                 </Grid>
 
-                <Grid container spacing={0} className={classNames(classes.container1)} justify='center'>
+                <Grid container spacing={0} className={classes.container1} justify='center'>
                     <Grid item xs={12} md={4} align={isWidthUp('md', this.props.width)? 'right':'center'} className={classes.item1}>
                         <img src={C} alt="Especificaciones" className={classes.logo}/>
                     </Grid>

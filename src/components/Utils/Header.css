@@ -8,7 +8,9 @@
     font-size: 12px;
     display: inline-block;
     list-style: none;
-    margin-right: 5px; }
+    margin-right: 5px;
+    font-family: Noto Sans SC, "Helvetica", "Arial", "sans-serif";
+}
 .breadcrumb li:after {
     content: ">";
     margin-left: 5px; }

@@ -27,7 +27,7 @@ const styles = theme => ({
   },
   link: {
     textDecoration: "none",
-    color: "#666666"
+    color: theme.palette.text.primary
   },
   item: {
     "&:hover": {
