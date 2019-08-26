@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import S1 from '../../../assets/iconos_azul/1_icono.svg';
 import S2 from '../../../assets/iconos_azul/2_icono.svg';
 import S3 from '../../../assets/iconos_azul/3_icono.svg';
+import ScrollToTopButton from "../../Navigation/ScrollToTopButton";
 
 
 const styles = theme => ({
@@ -16,8 +17,8 @@ const styles = theme => ({
     },
     item: {
         maxWidth: 1200,
-        paddingTop: "50px",
-        paddingBottom: "50px",
+        paddingTop: 90,
+        paddingBottom: 90,
         paddingLeft: theme.spacing(1),
         paddingRight: theme.spacing(1)
 
@@ -44,8 +45,8 @@ const styles = theme => ({
     },
     specsContainer: {
         backgroundColor: '#34b3eb',
-        paddingTop: 70,
-        paddingBottom: 70
+        paddingTop: 90,
+        paddingBottom: 90
     }
 });
 
@@ -99,6 +100,7 @@ class Especificaciones extends React.Component {
                 </Grid>
 
                 <Footer/>
+                <ScrollToTopButton/>
             </div>
         );
     }
