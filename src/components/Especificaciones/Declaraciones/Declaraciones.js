@@ -37,52 +37,44 @@ class Declaraciones extends React.Component {
     render() {
         const {classes} = this.props;
 
-
-
         return (
             <div>
                 <Header/>
                 <Grid container spacing={0} justify='center' className={classes.container}>
                     <Grid item xs={12} className={classes.item}>
 
-
                         <Estandar/>
 
+                        <Divider/>
+                        <br/>
+
+                        <Licencia/>
 
                         <Divider/>
                         <br/>
 
-                        <div id="licencia">
-                            <Licencia/>
-                        </div>
+                        <Implementacion/>
 
                         <Divider/>
+
                         <br/>
 
-                        <div id="implementacion">
-                            <Implementacion/>
-                        </div>
-
-                        <Divider/>
-                        <br/>
-                        <Typography variant="h4" id="api" paragraph color="textPrimary">
+                        <Typography variant="h4" paragraph color="textPrimary">
                             Especificación del API de declaraciones
                         </Typography>
 
-
-                        <Typography variant="h5" id="parametros" paragraph color="textPrimary">
+                        <Typography variant="h5" paragraph color="textPrimary">
                             Parámetros de consulta
                         </Typography>
+
                         <TablaParametros/>
 
                         <br/>
 
-                        <div id="especificaciones">
-                            <Especificaciones/>
-                        </div>
+                        <Especificaciones/>
+
                         <Divider/>
                         <Herramientas/>
-
 
                     </Grid>
                 </Grid>

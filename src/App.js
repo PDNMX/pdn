@@ -9,7 +9,6 @@ import LoginPDN from "./components/Inicio/LoginPDN";
 import ScrollToTop from "./ScrollToTop";
 //import ReactGA from 'react-ga';
 import "./components/Utils/Header.css";
-import blue from '@material-ui/core/colors/blue';
 
 const theme = createMuiTheme({
   typography: {

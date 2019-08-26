@@ -62,7 +62,6 @@ const styles = theme => ({
     contentsSN: {
         paddingBottom: 50,
         position: 'absolute',
-        zIndex: 3,
         textAlign: 'center',
         width: '100%'
     },

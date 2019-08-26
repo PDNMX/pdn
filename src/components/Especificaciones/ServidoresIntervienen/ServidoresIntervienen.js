@@ -42,46 +42,38 @@ class ServidoresIntervienen extends React.Component {
             <div>
                 <Header/>
 
-
                 <Grid container spacing={0} justify='center' className={classes.container}>
                     <Grid item xs={12} className={classes.item}>
 
-                        <div id="estandar">
-                            <Estandar/>
-                        </div>
+                        <Estandar/>
 
                         <Divider/>
                         <br/>
 
-                        <div id="licencia">
-                            <Licencia/>
-                        </div>
+                        <Licencia/>
+
+                        <Divider/>
+
+                        <br/>
+
+                        <Implementacion/>
 
                         <Divider/>
                         <br/>
 
-                        <div id="implementacion">
-                            <Implementacion/>
-                        </div>
-
-                        <Divider/>
-                        <br/>
-
-                        <Typography variant="h4" id="api" paragraph>
+                        <Typography variant="h4" paragraph color='textPrimary'>
                             Especificación del API de Servidores públicos que intervienen en contrataciones
                         </Typography>
 
-
-                        <Typography variant="h5" id="parametros" paragraph>
+                        <Typography variant="h5" paragraph color="textPrimary">
                             Parámetros de consulta
                         </Typography>
+
                         <TablaParametros/>
                         <br/>
 
-                        <div id="especificaciones">
-                            <Especificaciones/>
-                        </div>
-                        
+                        <Especificaciones/>
+
                         <Divider/>
                         <br/>
 
