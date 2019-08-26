@@ -75,30 +75,33 @@ class Especificaciones extends React.Component {
 
         return (
             <div className={classes.root}>
-                <Typography variant="h5" paragraph>
+                <Typography variant="h5" paragraph color="textPrimary">
                     Especificaciones
                 </Typography>
 
-                <Typography paragraph>
+                <Typography paragraph color="textPrimary">
                     Esta sección contiene la especificación completa del API de Servidores Públicos y Particulares Sancionados en el formato OAS. La especificación puede ser interpretada usando las herramientas compatibles con el OAS o <Link href="https://swagger.io/tools/">Swagger</Link>.
                 </Typography>
 
-                <Typography variant='h6' paragraph>
+                <Typography variant='h6' paragraph color="textPrimary">
                     Servidores públicos sancionados
                 </Typography>
-                <Typography paragraph>
+
+                <Typography paragraph color="textPrimary">
                     Da click sobre el símbolo <ArrowDropDown/> para ver más detalles.
                     Puedes consultar el archivo JSON completo en la
                     siguiente <Link href="https://github.com/PDNMX/api_docs/blob/master/S3/oas/OAS_API_Servidores_Sancionados.json">URL</Link>.
                 </Typography>
+
                 <ReactJson src={this.state.oas_servidores} collapsed={4}/>
 
                 <br/>
 
-                <Typography variant="h6" id="ejemplos" paragraph>
+                <Typography variant="h6" id="ejemplos" paragraph color="textPrimary">
                     Ejemplo de respuesta - Servidores públicos sancionados
                 </Typography>
-                <Typography paragraph>
+
+                <Typography paragraph color="textPrimary">
                     Da click sobre el símbolo <ArrowDropDown/> para ver más detalles.
                     Puedes consultar el archivo JSON completo en la
                     siguiente <Link href="https://github.com/PDNMX/api_docs/blob/master/S3/Resp_API_Servidores_Sancionados.json">URL</Link>.
@@ -108,27 +111,30 @@ class Especificaciones extends React.Component {
 
                 <br/>
 
-                <Typography variant="h6" paragraph>
+                <Typography variant="h6" paragraph color="textPrimary">
                     Particulares sancionados
                 </Typography>
-                <Typography paragraph>
+
+                <Typography paragraph color="textPrimary">
                     Da click sobre el símbolo <ArrowDropDown/> para ver más detalles.
                     Puedes consultar el archivo JSON completo en la
                     siguiente <Link href="https://github.com/PDNMX/api_docs/blob/master/S3/oas/OAS_API_Particulares_Sancionados.json">URL</Link>.
                 </Typography>
+
                 <ReactJson src={this.state.oas_particulares} collapsed={4}/>
 
                 <br/>
 
-                <Typography variant="h6" paragraph>
+                <Typography variant="h6" paragraph color="textPrimary">
                    Ejemplo de respuesta - Particulares sancionados
                 </Typography>
-                <Typography paragraph>
+
+                <Typography paragraph color="textPrimary">
                     Da click sobre el símbolo <ArrowDropDown/> para ver más detalles.
                     Puedes consultar el archivo JSON completo en la
                     siguiente <Link href="https://github.com/PDNMX/api_docs/blob/master/S3/Resp_API_Particulares_Sancionados.json">URL</Link>.
-
                 </Typography>
+
                 <ReactJson src={this.state.example_particulares} />
             </div>
         );

@@ -49,23 +49,25 @@ class Sancionados extends React.Component {
 
                         <Divider/>
                         <br/>
-                        <div id="licencia">
-                            <Licencia/>
-                        </div>
+
+                        <Licencia/>
+
 
                         <Divider/>
+
                         <br/>
-                        <div id="implementacion">
-                            <Implementacion/>
-                        </div>
+
+                        <Implementacion/>
 
                         <Divider/>
+
                         <br/>
-                        <Typography variant="h4" id="api" paragraph>
+
+                        <Typography variant="h4" paragraph color='textPrimary'>
                             Especificación del API de Servidores públicos y Particulares sancionados
                         </Typography>
                         
-                        <Typography variant="h5" id="parametros" paragraph>
+                        <Typography variant="h5" paragraph color='textPrimary'>
                             Parámetros de consulta
                         </Typography>
 
@@ -73,9 +75,7 @@ class Sancionados extends React.Component {
 
                         <br/>
 
-                        <div id="especificaciones">
-                            <Especificaciones/>
-                        </div>
+                        <Especificaciones/>
 
                         <Divider/>
 
