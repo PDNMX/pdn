@@ -102,6 +102,9 @@ const styles = theme => ({
     },
     downloadButton: {
         background : '#FFE01B'
+    },
+    test:{
+
     }
 
 });
@@ -260,6 +263,7 @@ class DetalleServidor extends React.Component {
                                             </InputAdornment>
                                         )
                                     }}
+
                                 />
                             </Grid>
                             <Grid item md={6} xs={12}>
@@ -414,6 +418,9 @@ class DetalleServidor extends React.Component {
                                                 <IconHelp/>
                                             </InputAdornment>
                                         )
+                                    }}
+                                    InputLabelProps={{
+                                        className: classes.test
                                     }}
                                 />
                             </Grid>
