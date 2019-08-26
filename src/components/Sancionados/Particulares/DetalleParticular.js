@@ -368,6 +368,24 @@ class DetalleParticular extends React.Component {
                                 <Grid item md = {6} xs = {12}>
                                     <TextField
                                         id="read-only-input"
+                                        label="Fecha captura"
+                                        defaultValue={particular.fecha_captura}
+                                        className={classes.textField}
+                                        margin="normal"
+                                        InputProps={{
+                                            readOnly: true,
+                                            className:classes.fontSmall,
+                                            endAdornment: (
+                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(2)}}>
+                                                    <IconHelp/>
+                                                </InputAdornment>
+                                            )
+                                        }}
+                                    />
+                                </Grid>
+                                <Grid item md = {6} xs = {12}>
+                                    <TextField
+                                        id="read-only-input"
                                         label="Fecha notificación"
                                         defaultValue={particular.fecha_notificacion}
                                         className={classes.textField}

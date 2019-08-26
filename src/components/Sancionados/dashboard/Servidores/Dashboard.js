@@ -15,13 +15,15 @@ const styles = theme => ({
     sectionT: {
         maxWidth: '1200px',
         overflowX : 'auto',
-        marginBottom : "25px",
-        marginTop : "53px"
+        marginTop : theme.spacing(7)
     },
     desc:{
-        marginBottom : "15px",
-        textAlign : "justify"
-    }
+        marginBottom : theme.spacing(2),
+    },
+    sectionG: {
+        maxWidth: '1200px',
+        overflowX : 'auto',
+    },
 });
 
 class Dashboard extends React.Component {
@@ -31,27 +33,27 @@ class Dashboard extends React.Component {
             <div className={classes.root}>
 
                 <Grid container spacing={0} justify='center'>
-                    <Grid item xs={12} className={classes.sectionT}>
-                        <Typography variant={"h6"}>
+                    <Grid item xs={12} className={classes.sectionG}>
+                        <Typography >
                             <b>¿Qué información es?</b>
                         </Typography>
-                        <Typography variant={"body1"} className={classes.desc}>
-                            {"La información que se presenta a continuación corresponde a  los servidores públicos sancionados reportados en el Registro de Servidores Públicos Sancionados (RSPS) a partir de 2013 y hasta 2018. La sanción recibida reportada en los datos es la de inhabilitación para desempeñarse como servidor público"}
+                        <Typography className={classes.desc}>
+                            {"La información que se presenta a continuación corresponde a los servidores públicos sancionados reportados en el Registro de Servidores Públicos Sancionados (RSPS) de 2013 a 2018. La sanción recibida reportada en los datos es la de inhabilitación para desempeñarse como servidor público."}
                         </Typography>
-                        <Typography variant={"h6"} >
+                        <Typography  >
                             <b>¿Cómo se obtiene la información?</b>
                         </Typography>
-                        <Typography variant={"body1"} className={classes.desc}>
+                        <Typography className={classes.desc}>
                             {"Obtención semanal de las sanciones de tipo Inhabilitación vigentes resueltas a partir del año 2013. La fuente de datos es el Registro de Servidores Públicos Sancionados reportada por la Secretaria de la Función Pública en datos.gob.mx (Fuente: https://datos.gob.mx/busca/dataset/servidores-publicos-sancionados)."}
                         </Typography>
-                        <Typography variant={"h6"}>
+                        <Typography >
                             <b>¿Qué puedo encontrar?</b>
                         </Typography>
-                        <Typography variant={"body1"} className={classes.desc}>
+                        <Typography className={classes.desc}>
                             Considerando los campos en el conjunto de datos, las visualizaciones presentan 4 puntos principales:  <br/><br/>
-                            1. <b>Cantidad de funcionarios sancionados.</b> Conoce el número de funcionarios sancionados del 2013 a la fecha. <a href="#g1">Ver</a><br/><br/>
-                            2. <b>Causa de las sanciones.</b> Muestra cuáles fueron las causas de la sanciones desde 2013, es posible ver el comportamiento de manera general o particular.<a href="#g2">Ver</a><br/><br/>
-                            3. <b>Dependencias con más sancionados.</b> Muestra cuáles son las dependencias con más funcionarios sancionados.<a href="#g3">Ver</a><br/><br/>
+                            1. <b>Cantidad de funcionarios sancionados.</b> Conoce el número de funcionarios sancionados del 2013 a la fecha. <a href="#g1">Ver</a><br/>
+                            2. <b>Causa de las sanciones.</b> Muestra cuáles fueron las causas de la sanciones desde 2013, es posible ver el comportamiento de manera general o particular. <a href="#g2">Ver</a><br/>
+                            3. <b>Dependencias con más sancionados.</b> Muestra cuáles son las dependencias con más funcionarios sancionados. <a href="#g3">Ver</a><br/>
                             4. <b>Duración de las sanciones.</b> Muestra cómo varía la duración de las inhabilitaciones por año. <a href="#g4">Ver</a>
                         </Typography>
                     </Grid>

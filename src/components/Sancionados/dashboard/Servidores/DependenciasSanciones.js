@@ -18,15 +18,14 @@ const styles = theme => ({
     },
     titulo: {
         textAlign: "center",
-        marginBottom: "30px",
+        marginBottom: theme.spacing(2)
     },
     descripcion: {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        marginTop: "15px",
-        marginBottom: "15px",
-        textAlign : "justify"
+        marginTop: theme.spacing(2),
+        marginBottom: theme.spacing(2),
     }
 });
 
@@ -199,18 +198,7 @@ this.setState({errorG1: true})
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>
                         <Typography>
-                            Si ahora consideramos el año con más sanciones desde 2013, es decir, el 2017, podemos
-                            observar que el Fideicomiso Fondo Nacional de Habitaciones Populares, el Instituto Mexicano
-                            del Seguro Social y el Instituto de son las tres instituciones con más sanciones en este
-                            año.
-
-                            En 2018 las instituciones más sancionadas fueron la Procuraduría Federal del Consumidor y el
-                            Instituto Mexicano del Seguro Social.
-
-                            Dado que en estas instituciones además laboran un número muy alto de funcionarios públicos,
-                            sería relevante también tomar en cuenta el volumen de la institución para obtener la tasa de
-                            sanción por dependencia. De esta manera podríamos comparar la tasa de sanción entre
-                            distintas dependencias.
+                            Si, consideramos el año con más sanciones desde 2013, es decir, el 2017, podemos observar que el Fideicomiso Fondo Nacional de Habitaciones Populares, el Instituto Mexicano del Seguro Social y el Instituto de Seguridad y Servicios Sociales de los Trabajadores del Estado son las tres instituciones con más sanciones en este año. En 2018 las instituciones más sancionadas fueron la Procuraduría Federal del Consumidor y el Instituto Mexicano del Seguro Social. Dado que en estas instituciones además laboran un número muy alto de funcionarios públicos, sería relevante también tomar en cuenta el volumen de la institución para obtener la tasa de sanción por dependencia. De esta manera, podríamos comparar la tasa de sanción entre distintas dependencias.
                         </Typography>
                     </Grid>
                     <Grid item xs={12}>

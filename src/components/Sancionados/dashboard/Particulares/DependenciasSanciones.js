@@ -18,15 +18,14 @@ const styles = theme => ({
     },
     titulo: {
         textAlign: "center",
-        marginBottom: "30px",
+        marginBottom: theme.spacing(2)
     },
     descripcion: {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        marginTop: "15px",
-        marginBottom: "15px",
-        textAlign : "justify"
+        marginTop: theme.spacing(2),
+        marginBottom: theme.spacing(2),
     }
 });
 
@@ -211,7 +210,8 @@ class DependenciasSanciones extends React.Component {
                             El 2013 lo lidereo el Instituto de Seguridad y Servicios Sociales de los Trabajadores del
                             Estado, el 2014 a 2016 la Comisión Federal de Electricidad, para el año 2017 el Instituto
                             Mexicano del Seguro Social volvió a ocupar le primer lugar, y finalmente en el 2018 la
-                            Secretaria de la Función Pública con 35 sanciones fue la dependencia más sancionadora.
+                            El resto de las dependencias mostradas presentan un total de sanciones menor a 100.
+
                         </Typography>
                     </Grid>
                     <Grid item xs={12}>

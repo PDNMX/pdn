@@ -41,7 +41,8 @@ const styles = theme => ({
     sectionT: {
         /*maxWidth: '1200px',
         overflowX : 'auto',*/
-        color: theme.palette.textGrey.color
+        color: theme.palette.textGrey.color,
+        marginTop : theme.spacing(7)
     },
     image: {
         width: '60px'

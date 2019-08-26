@@ -104,32 +104,22 @@ const styles = theme => ({
         padding: theme.spacing(1)
     },
     containerPrevios: {
-    marginLeft: theme.spacing(2)
-},
-    // informacion sobre buscar funcionario
-    bullet: {
-        backgroundColor: "#89d4f2",
-        height: "10px",
-        width: "10px",
-        borderRadius: "50%",
-        display: "inline-block",
-        marginLeft: "-20px",
-        marginRight: "10px",
-        marginBottom: "1px"
+        marginLeft: theme.spacing(2)
     },
+
     ul: {
         listStyle: "none",
-        //marginLeft: 0,
         paddingLeft: "20px"
     },
     infoBusqueda: {
         paddingRight: theme.spacing(1),
         paddingLeft: theme.spacing(1),
-        paddingBottom: theme.spacing(4),
-        paddingTop: theme.spacing(4),
+        //paddingBottom: theme.spacing(4),
+        // paddingTop: theme.spacing(4),
         backgroundColor: "white"
 
-    }, toolBarStyle: {
+    },
+    toolBarStyle: {
         backgroundColor: 'transparent',
         position: 'relative',
         zIndex: 3,
@@ -138,7 +128,17 @@ const styles = theme => ({
         maxWidth: '1200px',
 
     },
-
+    li: {
+        "&:before": {
+            content: '"•"',
+            color: '#5fb1e6',
+            fontWeight: "bold",
+            display: "inline-block",
+            width: "1em",
+            marginLeft: "-1em"
+        },
+        //paddingBottom: theme.spacing(2)
+    },
 
 });
 
@@ -241,14 +241,14 @@ class EnhancedTable extends React.Component {
 
 
         if (nombreServidor) filtros.nombres = nombreServidor;
-        if (apellidoUno) filtros.primer_apellido = apellidoUno ;
+        if (apellidoUno) filtros.primer_apellido = apellidoUno;
         if (apellidoDos) filtros.segundo_apellido = apellidoDos;
-        if (rfc) filtros.rfc =  rfc;
-        if (curp) filtros.curp =  curp ;
-        if (institucion && institucion !== 'TODAS') filtros.nombre =  institucion;
+        if (rfc) filtros.rfc = rfc;
+        if (curp) filtros.curp = curp;
+        if (institucion && institucion !== 'TODAS') filtros.nombre = institucion;
 
 
-        let limit =  this.state.rowsPerPage;
+        let limit = this.state.rowsPerPage;
 
         let body =
             {
@@ -298,11 +298,11 @@ class EnhancedTable extends React.Component {
 
         if (typeSearch !== 'DN_ALL') {
             if (nombreServidor) filtros.nombres = nombreServidor;
-            if (apellidoUno) filtros.primer_apellido = apellidoUno ;
+            if (apellidoUno) filtros.primer_apellido = apellidoUno;
             if (apellidoDos) filtros.segundo_apellido = apellidoDos;
-            if (rfc) filtros.rfc =  rfc;
-            if (curp) filtros.curp =  curp ;
-            if (institucion && institucion !== 'TODAS') filtros.nombre =  institucion;
+            if (rfc) filtros.rfc = rfc;
+            if (curp) filtros.curp = curp;
+            if (institucion && institucion !== 'TODAS') filtros.nombre = institucion;
         }
 
         let limit = (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.state.rowsPerPage : null;
@@ -354,8 +354,8 @@ class EnhancedTable extends React.Component {
         this.setState(
             {
                 filterData: null,
-                previos : null,
-                nivel : 'todos'
+                previos: null,
+                nivel: 'todos'
             }, () => {
                 this.handleChangeCampo('nombreServidor');
                 this.handleChangeCampo('procedimiento');
@@ -381,36 +381,32 @@ class EnhancedTable extends React.Component {
                         <Typography paragraph>
                             <b>Aquí encontrarás la siguiente información:</b>
                         </Typography>
-                        <Typography component="div">
-                            <ul className={classes.ul}>
-                                <li className={classes.li}>
-                                    <Typography>
-                                        <span className={classes.bullet}/>
-                                        Consulta los servidores sancionados (inhabilitados)  por institución, a nivel federal y/o estatal
-                                    </Typography>
-                                </li>
-                                <li className={classes.li}>
-                                    <Typography>
-                                        <span className={classes.bullet}/>
-                                        Obtén datos del servidor como: nombre, puesto, institución donde cometió la falta
-                                    </Typography>
-                                </li>
-                                <li className={classes.li}>
-                                    <Typography>
-                                        <span className={classes.bullet}/>
-                                        Obtén los datos de la sanción impuesta al servidor: plazo, tipo de falta, causa, etc.
-                                    </Typography>
-                                </li>
-                            </ul>
-                        </Typography>
+                        <ul className={classes.ul}>
+                            <li className={classes.li}><Typography color="textPrimary" display='inline'>Consulta los servidores sancionados (inhabilitados) por institución, a nivel federal y/o estatal</Typography></li>
+                            <li className={classes.li}>
+                                <Typography color="textPrimary" display='inline'>
+                                    Obtén datos del servidor como: nombre, puesto, institución donde cometió la
+                                    falta
+                                </Typography>
+                            </li>
+                            <li className={classes.li}>
+                                <Typography color="textPrimary" display='inline'>
+                                    Obtén los datos de la sanción impuesta al servidor: plazo, tipo de falta, causa,
+                                    etc.
+                                </Typography>
+                            </li>
+                        </ul>
                     </Grid>
                 </Grid>
                 <Grid container justify={'center'} spacing={0} className={classes.gridTable}>
                     <Grid item xs={12} className={classes.toolBarStyle}>
                         <BusquedaServidor handleCleanAll={this.handleCleanAll} handleSearch={this.handleSearchPrevios}
                                           handleChangeCampo={this.handleChangeCampo}
-                                          nombreServidor={this.state.nombreServidor} apellidoUno={this.state.apellidoUno} apellidoDos={this.state.apellidoDos}
-                                          institucion={this.state.institucion} rfc={this.state.rfc} curp={this.state.curp} handleError={this.handleError} nivel={this.state.nivel}/>
+                                          nombreServidor={this.state.nombreServidor}
+                                          apellidoUno={this.state.apellidoUno} apellidoDos={this.state.apellidoDos}
+                                          institucion={this.state.institucion} rfc={this.state.rfc}
+                                          curp={this.state.curp} handleError={this.handleError}
+                                          nivel={this.state.nivel}/>
                     </Grid>
                     <Grid item xs={12}>
                         <DetalleServidorSancionado handleClose={this.handleClose}
@@ -519,7 +515,7 @@ class EnhancedTable extends React.Component {
                                 </TableBody>
                                 <TableFooter>
                                     <TableRow>
-                                       {/* <TableCell>
+                                        {/* <TableCell>
                                             <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data}
                                                       filtrado={false}
                                                       columnas={columnData} fnSearch={this.handleSearchAPI}

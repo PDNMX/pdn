@@ -13,22 +13,20 @@ const styles = theme => ({
         marginTop: "15px",
         marginBottom: "15px"
     },
+
+    titulo: {
+        textAlign: "center",
+        marginBottom: theme.spacing(2)
+    },
     descripcion: {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        marginTop: "15px",
-        paddingLeft: "10px",
-        paddingRight: "10px",
-        marginBottom: "30px",
-        textAlign : "justify"
-    },
-    titulo: {
-        textAlign: "center",
-        marginBottom: "30px",
+        marginTop: theme.spacing(2),
+        marginBottom: theme.spacing(2),
     },
     graph: {
-        marginBottom: "30px"
+        marginBottom: theme.spacing(4)
     }
 });
 
@@ -91,7 +89,7 @@ class CausasSanciones extends React.Component {
             let aux = result.data.map(item => {
                 return {
                     "causa": item.causa,
-                    "total": parseInt(item.total,10)
+                    "total": parseInt(item.total, 10)
                 }
             });
 
@@ -133,15 +131,15 @@ class CausasSanciones extends React.Component {
                     title: "Historico"
                 }
             })
-        }).catch(err=>{
-            this.setState({errorG1 : true})
+        }).catch(err => {
+            this.setState({errorG1: true})
         });
 
         loadData2().then(result => {
             let aux2 = result.data.map(item => {
                 return {
                     id: item.causa,
-                    y: parseInt(item.total,10),
+                    y: parseInt(item.total, 10),
                     x: item.anio
                 }
             });
@@ -184,10 +182,9 @@ class CausasSanciones extends React.Component {
                 },
 
             })
-        }).catch(err=>{
-            this.setState({errorG2 : true})
+        }).catch(err => {
+            this.setState({errorG2: true})
         });
-
 
 
     }
@@ -213,23 +210,13 @@ class CausasSanciones extends React.Component {
                     </Grid>
                     <Grid item xs={12} md={4} className={classes.descripcion}>
                         <Typography variant={"body1"}>
-                            Como se puede apreciar en las gráfica de la izquierda, de 2013-2018 la causa de la mayoría
-                            de las sanciones fue la negligencia administrativa, con aprox. 1,500 sanciones,
-                            representando casi el 60% del total. Por otro lado, la violación por procedimientos de
-                            contratación, el cohecho o extorsión, el ejercicio indebido de sus funciones en materia
-                            migratoria y la violación a los derechos humanos represetan únicamente 10% del total.
+                            Como se puede apreciar en la gráfica de la izquierda, de 2013 a 2018, la causa de la mayoría de las sanciones fue la negligencia administrativa, con aproximadamente 1,500 sanciones, representando casi el 60% del total. Por otro lado, la violación por procedimientos de contratación, el cohecho o extorsión, el ejercicio indebido de sus funciones en materia migratoria y la violación a los derechos humanos representan únicamente 10% del total.
                         </Typography>
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>
                         <Typography variant={"body1"}>
-                            De 2013-2016 la distribución entre las causas de las sanciones se mantienen similares, sin
-                            embargo en 2017 aumentan en más del doble las sanciones por negligencia administrativa. Es
-                            decir, que en gran medida el crecimiento atípico de los funcionarios sancionados en 2017, se
-                            debe a faltas de este tipo.
+                            De 2013 a 2016 la distribución entre las causas de las sanciones se mantienen similares; sin embargo, en 2017 aumentan en más del doble las sanciones por negligencia administrativa. Es decir, que en gran medida el crecimiento atípico de los funcionarios sancionados en 2017 se debe a faltas de este tipo. Para 2018 las sanciones por negligencia administrativa disminuyen considerablemente; asimismo, casi todos los otros tipos de sanción bajan a excepción de la de incumplimiento por declaración patrimonial, la cual se dispara más de 5 veces con respecto a 2017.
 
-                            Para 2018 las sanciones por negligencia administrativa disminuyen considerablemente;
-                            asimismo casi todos los otros tipos de sanción bajan a excepción de la de incumplimiento por
-                            declaración patrimonial, la cual se dispara más de 5 veces con respecto a 2017.
                         </Typography>
                     </Grid>
                     <Grid item xs={12} md={12}>

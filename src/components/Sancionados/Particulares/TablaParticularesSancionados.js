@@ -140,30 +140,19 @@ const styles = theme => ({
     containerPrevios: {
         marginLeft: theme.spacing(2)
     } ,
-    // informacion sobre buscar funcionario
-    bullet: {
-        backgroundColor: "#89d4f2",
-        height: "10px",
-        width: "10px",
-        borderRadius: "50%",
-        display: "inline-block",
-        marginLeft: "-20px",
-        marginRight: "10px",
-        marginBottom: "1px"
-    },
     ul: {
         listStyle: "none",
-        //marginLeft: 0,
         paddingLeft: "20px"
     },
     infoBusqueda: {
         paddingRight: theme.spacing(1),
         paddingLeft: theme.spacing(1),
-        paddingBottom: theme.spacing(4),
-        paddingTop: theme.spacing(4),
+        //paddingBottom: theme.spacing(4),
+      //  paddingTop: theme.spacing(4),
         backgroundColor: "white"
 
-    }, toolBarStyle: {
+    },
+    toolBarStyle: {
         backgroundColor: 'transparent',
         position: 'relative',
         zIndex: 3,
@@ -171,6 +160,17 @@ const styles = theme => ({
         paddingBottom: '61px',
         maxWidth: '1200px',
 
+    },
+    li: {
+        "&:before": {
+            content: '"•"',
+            color: '#5fb1e6',
+            fontWeight: "bold",
+            display: "inline-block",
+            width: "1em",
+            marginLeft: "-1em"
+        },
+        //paddingBottom: theme.spacing(2)
     },
 });
 
@@ -386,29 +386,24 @@ class EnhancedTable extends React.Component {
                         <Typography paragraph>
                             <b>Aquí encontrarás la siguiente información:</b>
                         </Typography>
-                        <Typography component="div">
                             <ul className={classes.ul}>
                                 <li className={classes.li}>
-                                    <Typography>
-                                        <span className={classes.bullet}/>
+                                    <Typography color="textPrimary" display='inline'>
                                         Consulta los particulares sancionados (inhabilitados) por institución donde cometieron la falta, nombre o razón social, a nivel federal y/o estatal
                                     </Typography>
                                 </li>
                                 <li className={classes.li}>
-                                    <Typography>
-                                        <span className={classes.bullet}/>
+                                    <Typography color="textPrimary" display='inline'>
                                         Obtén datos del particular sancionado como: nombre,  puesto, sanción y causa de la misma
                                     </Typography>
                                 </li>
                                 <li className={classes.li}>
-                                    <Typography>
-                                        <span className={classes.bullet}/>
+                                    <Typography color="textPrimary" display='inline'>
                                         Obtén los datos de la sanción impuesta al particular como: expediente, hechos de la falta, tipo de falta, resolución, entre otros datos
                                         de interes.
                                     </Typography>
                                 </li>
                             </ul>
-                        </Typography>
                     </Grid>
                 </Grid>
                 <Grid container justify='center' spacing={0} className={classes.gridTable}>

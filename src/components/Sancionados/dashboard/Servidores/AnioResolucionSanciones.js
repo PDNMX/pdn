@@ -21,15 +21,14 @@ const styles = theme => ({
     },
     titulo: {
         textAlign: "center",
-        marginBottom: "30px",
+        marginBottom: theme.spacing(2)
     },
     descripcion: {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        marginTop: "15px",
-        marginBottom: "15px",
-        textAlign : "justify"
+        marginTop: theme.spacing(2),
+        marginBottom: theme.spacing(2),
     }
 });
 
@@ -163,13 +162,8 @@ class AnioResolucionSanciones extends React.Component {
                         </Typography>
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>
-                        <Typography variant={"body1"}>
-                            Como se puede apreciar en las gráficas, el número de funcionarios sancionados de 2013 - 2015
-                            se mantuvo sin grandes cambios, sancionando cada año aproximandamente a 300 funcionarios. En
-                            2016 hubo un incremento de 16% con respecto a 2015. Sin embargo, para 2017 este número se
-                            incrementó en casi 100%, llegando a 700 sancionados. Para 2018 disminuyó pero sólo en 7%.
-                            En términos totales, si consideramos los 6 años que van de 2013-2018, se tuvieron poco más
-                            de 2,500 funcionarios sancionados. Más del 50% de este total, se registró entre 2017 y 2018.
+                        <Typography >
+                            Como se puede apreciar en las gráficas, el número de funcionarios sancionados de 2013 a 2015 se mantuvo sin grandes cambios, sancionando cada año aproximadamente a 300 funcionarios. En 2016, hubo un incremento de 16% con respecto a 2015. Además, para 2017 este número se incrementó en casi 100%, llegando a 700 sancionados. Para 2018 disminuyó, pero sólo en 7%. En términos totales, si consideramos los 6 años que van de 2013 a 2018, se tuvieron poco más de 2,500 funcionarios sancionados. Más del 50% de este total, se registró entre 2017 y 2018.
                         </Typography>
                     </Grid>
                     <Grid item xs={12} md={8}>
