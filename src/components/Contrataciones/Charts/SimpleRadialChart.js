@@ -10,6 +10,11 @@ const AmountTooltip  = props => {
                 <b>{props.value.type}</b>
             </p>
             <p>
+                Porcentaje:
+                <br/>
+                <b>{props.value.label}</b>
+            </p>
+            <p>
                 Monto gastado:
             <br/>
                 <b>{new Intl.NumberFormat('es-MX', {style: 'currency', currency: 'MXN'}).format(props.value.theta)}</b>
@@ -24,6 +29,11 @@ const CountTooltip  = props => {
         <div>
             <p>
                 <b>{props.value.type}</b>
+            </p>
+            <p>
+                Porcentaje:
+                <br/>
+                <b>{props.value.label}</b>
             </p>
             <p>
                 Número de contrataciones:
@@ -50,8 +60,8 @@ export default class SimpleRadialChart extends Component {
             padding: '5px',
             fontSize: 12,
             fontWeight: 400,
-            borderRadius: 4
-
+            borderRadius: 4,
+            fontFamily: 'Noto Sans SC'
         };
 
         return (
@@ -72,7 +82,7 @@ export default class SimpleRadialChart extends Component {
                 height={300}
                 padAngle={0.04}
                 colorType="literal"
-                showLabels={true}
+                showLabels={false}
                 labelsStyle={{
                     fontSize: 10
                 }}

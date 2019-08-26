@@ -59,6 +59,7 @@ class Example extends React.Component {
             padding: '5px',
             fontSize: 12,
             fontWeight: 400,
+            fontFamily: 'Noto Sans SC',
             borderRadius: 4,
             maxWidth: 150
 
@@ -113,6 +114,7 @@ class Example extends React.Component {
                         style={{
                             transform: 'rotate(-90)',
                             textAnchor: 'end',
+                            fontFamily: 'Noto Sans SC',
                         }}
                     />
 
@@ -125,6 +127,7 @@ class Example extends React.Component {
                         style={{
                             //transform: 'rotate(-90)',
                             textAnchor: 'center',
+                            fontFamily: 'Noto Sans SC',
                         }}
                     />
 

@@ -38,7 +38,7 @@ class Disclaimer extends React.Component{
                 </Typography>
 
                 <ul className={classes.ul}>
-                    <li className={classes.li}><Typography color="textPrimary" display='inline'>Cuánto gasta el gobierno</Typography></li>
+                    <li className={classes.li}><Typography color="textPrimary" display='inline'>Cuánto gasta el gobierno federal</Typography></li>
                     <li className={classes.li}><Typography color="textPrimary" display='inline'>Qué tipos de procedimientos</Typography></li>
                     <li className={classes.li}><Typography color="textPrimary" display='inline'>Información sobre los proveedores que participan</Typography></li>
                 </ul>

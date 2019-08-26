@@ -1,5 +1,4 @@
 import React from 'react';
-//import ShowcaseButton from './ShowcaseButton';
 import {
     FlexibleWidthXYPlot,
     XAxis,
@@ -9,36 +8,14 @@ import {
     ChartLabel,
     Hint,
 } from 'react-vis';
+import {withStyles} from "@material-ui/core/styles";
 
-/*
-const myDATA = [
-    {id: '00036', y: 200400, x: 1504121437},
-    {id: '00036', y: 200350, x: 1504121156},
-    {id: '00036', y: 200310, x: 1504120874},
-    {id: '00036', y: 200260, x: 1504120590},
-    {id: '00036', y: 200210, x: 1504120306},
-    {id: '00036', y: 200160, x: 1504120024},
-    {id: '00036', y: 200120, x: 1504119740},
-    {id: '00036', y: 200070, x: 1504119458},
-    {id: '00036', y: 200020, x: 1504119177},
-    {id: '00036', y: 199980, x: 1504118893},
-    {id: '00036', y: 199930, x: 1504118611},
-    {id: '00036', y: 199880, x: 1504118330},
-    {id: '00036', y: 199830, x: 1504118048},
-    {id: '00036', y: 199790, x: 1504117763},
-    {id: '00036', y: 199740, x: 1504117481}
-];
-
-const yDomain = myDATA.reduce(
-    (res, row) => {
-        return {
-            max: Math.max(res.max, row.y),
-            min: Math.min(res.min, row.y)
-        };
-    },
-    {max: -Infinity, min: Infinity}
-);*/
-
+const styles = theme => ({
+    chartLabel: {
+        color: '#3e3 !important',
+        fontSize: '24px !important'
+    }
+});
 
 class Example extends React.Component {
     state = {
@@ -50,6 +27,8 @@ class Example extends React.Component {
 
         const {value} = this.state;
 
+        const {classes} = this.props;
+
         const tipStyle = {
             display: 'flex',
             color: '#fff',
@@ -58,8 +37,9 @@ class Example extends React.Component {
             padding: '5px',
             fontSize: 12,
             fontWeight: 400,
+            fontFamily: 'Noto Sans SC',
             borderRadius: 4,
-            maxWidth: 150
+            maxWidth: 150,
 
         };
 
@@ -103,18 +83,20 @@ class Example extends React.Component {
                                onSeriesMouseOut={v => this.setState({value: false})}
                                colorType="literal"
                     />
-                    <XAxis tickLabelAngle={-45} />
+                    <XAxis tickLabelAngle={-45}/>
                     <YAxis position="middle"/>
                     <ChartLabel
                         text="Millones de pesos"
-                        className="alt-y-label"
+                        //className="alt-y-label"
                         includeMargin={true}
                         xPercent={0.06}
                         yPercent={0.06}
                         style={{
                             transform: 'rotate(-90)',
                             textAnchor: 'end',
+                            fontFamily: 'Noto Sans SC, "Helvetica", "Arial", "sans-serif"',
                         }}
+                        className={classes.chartLabel}
                     />
 
                     <ChartLabel
@@ -126,6 +108,7 @@ class Example extends React.Component {
                         style={{
                             //transform: 'rotate(-90)',
                             textAnchor: 'center',
+                            fontFamily: 'Noto Sans SC'
                         }}
                     />
 
@@ -147,4 +130,4 @@ class Example extends React.Component {
 }
 
 
-export default Example;
+export default withStyles(styles)(Example);
