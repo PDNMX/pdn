@@ -33,18 +33,6 @@ const styles = theme => ({
 });
 
 class Declaraciones extends React.Component {
-    state = {
-        top: false,
-        left: false,
-        bottom: false,
-        right: false,
-    };
-
-    toggleDrawer = (side, open) => () => {
-        this.setState({
-            [side]: open,
-        });
-    };
 
     render() {
         const {classes} = this.props;
@@ -77,12 +65,12 @@ class Declaraciones extends React.Component {
 
                         <Divider/>
                         <br/>
-                        <Typography variant="h4" id="api" paragraph>
+                        <Typography variant="h4" id="api" paragraph color="textPrimary">
                             Especificación del API de declaraciones
                         </Typography>
 
 
-                        <Typography variant="h5" id="parametros" paragraph>
+                        <Typography variant="h5" id="parametros" paragraph color="textPrimary">
                             Parámetros de consulta
                         </Typography>
                         <TablaParametros/>

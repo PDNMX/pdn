@@ -120,28 +120,31 @@ class ClippedDrawer extends React.Component {
             </div>*/}
 
                 <main className={classes.content}>
-                    <Typography variant="h5" id="especificaciones" paragraph>
+                    <Typography variant="h5" id="especificaciones" paragraph color="textPrimary">
                         Especificaciones
                     </Typography>
 
-                    <Typography paragraph>
+                    <Typography paragraph color="textPrimary">
                         Esta sección contiene la especificación completa del API de declaraciones en el formato OAS. La
                         especificación puede ser interpretada usando las herramientas compatibles con el OAS o <LinkM
                         href="https://swagger.io/tools/">Swagger</LinkM>.
                     </Typography>
-                    <Typography paragraph>
+
+                    <Typography paragraph color="textPrimary">
                         Da click sobre el símbolo <ArrowDropDown/> para ver más detalles.
                         Puedes consultar el archivo JSON completo en la
                         siguiente <Link
                         href="https://github.com/PDNMX/api_docs/blob/master/S1/oas/declaraciones.json">URL</Link>.
                     </Typography>
+
                     <ReactJson src={this.state.oas} collapsed={4}/>
 
                     <br/>
-                    <Typography variant="h5" id="ejemplos" paragraph>
+                    <Typography variant="h5" id="ejemplos" paragraph color="textPrimary">
                         Ejemplos de respuesta
                     </Typography>
-                    <Typography paragraph>
+
+                    <Typography paragraph color="textPrimary">
                         Da click sobre el símbolo <ArrowDropDown/> para ver más detalles.
                         Puedes consultar el archivo JSON completo en la
                         siguiente <Link

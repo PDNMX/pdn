@@ -9,7 +9,6 @@ const styles = theme => ({
         paddingBottom: 0,
         paddingTop: 0
     },
-
     ul: {
         listStyle: 'none',
         paddingLeft: '20px'

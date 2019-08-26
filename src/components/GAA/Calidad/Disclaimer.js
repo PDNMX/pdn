@@ -8,24 +8,6 @@ const styles = theme => ({
         paddingBottom: 0,
         paddingTop: 0
     },
-    bullet: {
-        backgroundColor: '#89d4f2',
-        height: '10px',
-        width: '10px',
-        borderRadius: '50%',
-        display: 'inline-block',
-        marginLeft: '-20px',
-        marginRight: "10px",
-        marginBottom: '1px'
-    },
-    ul: {
-        listStyle: 'none',
-        //marginLeft: 0,
-        paddingLeft: '20px'
-    },
-    li: {
-        //paddingBottom: theme.spacing(2)
-    },
 });
 
 class Disclaimer extends React.Component{

@@ -12,7 +12,23 @@ const styles = theme => ({
         marginRight: theme.spacing(1),
         marginBottom: theme.spacing(2),
         background: '#ffe01b',//'#fecb6e'
-    }
+    },
+    ul: {
+        listStyle: 'none',
+        paddingLeft: '20px',
+        color: theme.palette.text.primary
+    },
+    li: {
+        "&:before":{
+            content: '"•"',
+            color: '#5fb1e6',
+            fontWeight: "bold",
+            display: "inline-block",
+            width: "1em",
+            marginLeft: "-1em"
+        },
+        paddingBottom: theme.spacing(1)
+    },
 });
 
 class Estandar extends React.Component {
@@ -24,7 +40,7 @@ class Estandar extends React.Component {
         return (
             <div className={classes.root}>
 
-                <Typography paragraph>
+                <Typography paragraph color='textPrimary'>
                     Esta guía tiene como finalidad la descripción del Estándar para la Interoperabilidad de Datos de Declaraciones,
                     desarrollado por la Secretaría Ejecutiva del Sistema Nacional Anticorrupción (SESNA).
                     Se presenta el modelo de interoperabilidad que deberán adoptar los diversos sistemas de declaraciones que proveerán
@@ -32,10 +48,10 @@ class Estandar extends React.Component {
                     se proporciona una serie de recomendaciones para la implementación del estándar por parte de las Instituciones.
                 </Typography>
 
-                <Typography variant="h5" paragraph>Antecedentes</Typography>
-                <ul>
-                    <li>
-                        <Typography paragraph>
+                <Typography variant="h5" paragraph color='textPrimary'>Antecedentes</Typography>
+                <ul className={classes.ul}>
+                    <li className={classes.li}>
+                        <Typography paragraph display='inline'>
                             El 13 de septiembre de 2018, durante la Tercera Sesión Ordinaria 2018 del Comité Coordinador
                             del Sistema Nacional Anticorrupción (SNA), se aprobó el nuevo Formato Nacional para la Declaración
                             Patrimonial y de Intereses propuesto por el Comité de Participación Ciudadana (CPC),
@@ -44,8 +60,8 @@ class Estandar extends React.Component {
                             dispuesto por el artículo 108 de la Constitución Política de los Estados Unidos Mexicanos
                             y entrará en vigor, a más tardar el 30 de abril de 2019.
                         </Typography></li>
-                    <li>
-                        <Typography paragraph>
+                    <li className={classes.li}>
+                        <Typography paragraph display='inline'>
                             A su vez, el 23 de octubre de 2018 fueron publicadas las Bases para el funcionamiento de la
                             Plataforma Digital Nacional (PDN) en el DOF. El Art. 6 establece que para el correcto funcionamiento
                             de cada uno de los sistemas, la SESNA emitirá los protocolos, estándares, reglamentos, especificaciones
@@ -53,8 +69,8 @@ class Estandar extends React.Component {
                             cumplir con las Bases, los cuales serán obligatorios para todos los proveedores, concentradores
                             y encargados a nivel federal, estatal y municipal.
                         </Typography></li>
-                    <li>
-                        <Typography paragraph>
+                    <li className={classes.li}>
+                        <Typography paragraph display="inline">
                             El 11 de noviembre de 2018 se publicó en el DOF el Acuerdo por el que el Comité Coordinador
                             del Sistema Nacional Anticorrupción emite el formato de declaraciones: de situación patrimonial
                             y de intereses; y expide las normas e instructivo para su llenado y presentación.
@@ -67,11 +83,11 @@ class Estandar extends React.Component {
                         </Typography></li>
                 </ul>
 
-                <Typography variant="h5" paragraph>
+                <Typography variant="h5" paragraph color="textPrimary">
                     Introducción
                 </Typography>
 
-                <Typography paragraph>
+                <Typography paragraph color="textPrimary">
                     En la actualidad, la información de declaraciones de los servidores públicos de los diferentes
                     niveles de gobierno se encuentra contenida en diversos formatos,
                     bases de datos y sistemas de información; cada uno de ellos con particularidades tecnológicas y
@@ -82,7 +98,7 @@ class Estandar extends React.Component {
                     de las declaraciones de situación patrimonial y de intereses de una manera uniforme e interoperable.
                 </Typography>
 
-                <Typography paragraph>
+                <Typography paragraph color="textPrimary">
                     Conforme a lo anterior, la SESNA ha conceptualizado a la Plataforma Digital Nacional como una
                     herramienta que permitirá la consulta de información de las diferentes instituciones de los tres
                     niveles de gobierno en un solo punto, sin tener el objetivo de concentrarla o resguardarla.
@@ -90,7 +106,7 @@ class Estandar extends React.Component {
                     con los diversos sistemas de gobierno para consultar la información que resulte necesaria,
                     sin importar la tecnología con la que dichos sistemas fueron desarrollados (i.e., lenguajes de programación, bases de datos, etc.).
                 </Typography>
-                <Typography paragraph>
+                <Typography paragraph color="textPrimary">
 
                     La PDN logrará la interoperabilidad técnica con los diversos sistemas que la integrarán a través
                     de la creación de estándares de datos y mediante el uso de Interfaces de Programación de Aplicaciones
@@ -102,7 +118,7 @@ class Estandar extends React.Component {
                     acceso a los mismos mediante reglas y perfiles de usuario.
 
                 </Typography>
-                <Typography paragraph>
+                <Typography paragraph color="textPrimary">
                     La SESNA ha planeado el desarrollo de la PDN mediante el uso APIs Web
                     con arquitectura REST (REpresentational State Transfer).
                     Dicha tecnología es ampliamente usada por en la industria del software para el desarrollo de aplicaciones web,
@@ -110,10 +126,10 @@ class Estandar extends React.Component {
                     sistemas basados en APIs REST de manera rápida y a un bajo costo.
                 </Typography>
 
-                <Typography variant="h5" paragraph>
+                <Typography variant="h5" paragraph color="textPrimary">
                     Open API Specification
                 </Typography>
-                <Typography paragraph>
+                <Typography paragraph color="textPrimary">
                     El Estándar para la Interoperabilidad de Datos de Declaraciones está basado en el formato
                     conocido como Open API Specification (OAS),
                     el cual es un formato de especificación que permite describir de manera precisa las características con las que deberan
@@ -129,10 +145,10 @@ class Estandar extends React.Component {
                     <Button variant="contained" className={classes.button} href="https://github.com/OAI/OpenAPI-Specification">Más información</Button>
                 </p>
 
-                <Typography variant="h5" paragraph>
+                <Typography variant="h5" paragraph color="textPrimary">
                     OAuth 2.0
                 </Typography>
-                <Typography paragraph>
+                <Typography paragraph color="textPrimary">
                     El acceso a las APIs que se integrarán a la PDN se gestionará a través del protocolo de autorización OAuth 2.0,
                     el cual es un estándar ampliamente usado por la industria de Internet. El estándar OAuth 2.0
                     que permitirá a la PDN obtener acceso necesario a las APIs de las instituciones

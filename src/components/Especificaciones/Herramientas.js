@@ -8,7 +8,23 @@ import PropTypes from 'prop-types';
 const styles = theme => ({
     root: {
         flexGrow: 1
-    }
+    },
+    ul: {
+        listStyle: 'none',
+        paddingLeft: '20px',
+        color: theme.palette.text.primary
+    },
+    li: {
+        "&:before":{
+            content: '"•"',
+            color: '#5fb1e6',
+            fontWeight: "bold",
+            display: "inline-block",
+            width: "1em",
+            marginLeft: "-1em"
+        },
+        paddingBottom: theme.spacing(1)
+    },
 });
 
 class Herramientas extends React.Component {
@@ -17,9 +33,9 @@ class Herramientas extends React.Component {
         const {classes} = this.props;
         return (
             <div className={classes.root}>
-                <Typography variant="h4" paragraph>Herramientas para desarrollo web</Typography>
+                <Typography variant="h4" paragraph color="textPrimary">Herramientas para desarrollo web</Typography>
 
-                <Typography paragraph>
+                <Typography paragraph color="textPrimary">
                     La interconexión entre los sistemas de información de las Instituciones y la PDN se establecerá a
                     través de Internet, usando servicios web o APIs con arquitectura REST (REpresentational State Transfer).
                     REST es un modelo ampliamente usado para el desarrollo de sistemas Web.
@@ -27,49 +43,49 @@ class Herramientas extends React.Component {
                     desarrollo de APIs REST usando diferentes lenguajes de programación y tecnologías de bases de datos; entre las más destacados se encuentran:
                 </Typography>
 
-                <ul>
-                    <li>
-                        <Typography><b>Express JS</b></Typography>
+                <ul className={classes.ul}>
+                    <li className={classes.li}>
+                        <Typography display='inline'><b>Express JS</b></Typography>
                         <Typography>Lenguaje de programación: JavaScript</Typography>
-                        <IconButton href="https://expressjs.com/">
+                        <IconButton href="https://expressjs.com/" target='_blank'>
                             <LinkIcon/>
                         </IconButton>
                     </li>
-                    <li>
-                        <Typography><b>Django</b></Typography>
+                    <li className={classes.li}>
+                        <Typography display='inline'><b>Django</b></Typography>
                         <Typography>Lenguaje de programación: Python</Typography>
 
-                        <IconButton href="https://www.djangoproject.com/">
+                        <IconButton href="https://www.djangoproject.com/" target='_blank'>
                             <LinkIcon/>
                         </IconButton>
                     </li>
-                    <li>
-                        <Typography><b>Flask</b></Typography>
+                    <li className={classes.li}>
+                        <Typography display='inline'><b>Flask</b></Typography>
                         <Typography>Lenguaje de programación: Python</Typography>
-                        <IconButton href="https://flask-restful.readthedocs.io/en/latest/quickstart.html">
+                        <IconButton href="https://flask-restful.readthedocs.io/en/latest/quickstart.html" target='_blank'>
                             <LinkIcon/>
                         </IconButton>
                     </li>
-                    <li>
-                        <Typography><b>Spring</b></Typography>
+                    <li className={classes.li}>
+                        <Typography display='inline'><b>Spring</b></Typography>
                         <Typography>Lenguaje de programación: Java</Typography>
-                        <IconButton href="https://spring.io/guides/gs/rest-service/" size="small">
+                        <IconButton href="https://spring.io/guides/gs/rest-service/" target='_blank'>
                             <LinkIcon/>
                         </IconButton>
                     </li>
-                    <li>
-                        <Typography><b>.NET Core</b></Typography>
+                    <li className={classes.li}>
+                        <Typography display='inline'><b>.NET Core</b></Typography>
                         <Typography>Lenguajes de programación: C#, Visual Basic, F# </Typography>
-                        <IconButton href = "https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial">
+                        <IconButton href = "https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial" target='_blank'>
                             <LinkIcon/>
                         </IconButton>
                     </li>
-                    <li>
-                        <Typography><b>Apigility</b></Typography>
+                    <li className={classes.li}>
+                        <Typography display='inline'><b>Apigility</b></Typography>
                         <Typography>
                             Lenguaje de programación: PHP
                         </Typography>
-                        <IconButton href="https://apigility.org/">
+                        <IconButton href="https://apigility.org/" target='_blank'>
                             <LinkIcon/>
                         </IconButton>
                     </li>
