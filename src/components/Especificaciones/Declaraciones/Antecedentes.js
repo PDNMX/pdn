@@ -15,7 +15,7 @@ class Antecedentes extends React.Component{
         const {classes} = this.props;
         return (
             <div className={classes.root}>
-                <Typography variant="h5">Antecedentes</Typography>
+                <Typography variant="h5" color='textPrimary'>Antecedentes</Typography>
                 <ul>
                     <li>
                         <Typography paragraph>

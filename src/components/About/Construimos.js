@@ -14,13 +14,10 @@ const styles = theme => ({
         paddingBottom: theme.spacing(4),
     },
     links: {
-        color: '#606060'
-    },
-    whiteText: {
-        color: '#606060'
+        color: theme.palette.text.primary
     },
     titles: {
-        color: '#606060',
+        color: theme.palette.text.primary,
         padding: theme.spacing(1),
     },
     bullet: {
@@ -33,6 +30,7 @@ const styles = theme => ({
         //marginTop: '-10px'
     },
     ul: {
+        color: theme.palette.text.primary,
         listStyle: 'none',
         //marginLeft: 0,
         paddingLeft: '0px'

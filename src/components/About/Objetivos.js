@@ -8,35 +8,24 @@ const styles = theme => ({
         paddingTop: theme.spacing(4),
         paddingBottom: theme.spacing(4),
     },
-    bullet: {
-        backgroundColor: '#89d4f2',
-        height: '10px',
-        width: '10px',
-        borderRadius: '50%',
-        display: 'inline-block',
-        marginLeft: '-20px',
-        //marginTop: '-10px'
+    ul: {
+        color: theme.palette.text.primary,
+        listStyle: 'none',
+        paddingLeft: '20px'
     },
-        ul: {
-            listStyle: 'none',
-            paddingLeft: '20px'
+    li: {
+        "&:before":{
+            content: '"•"',
+            color: '#5fb1e6',
+            fontWeight: "bold",
+            display: "inline-block",
+            width: "1em",
+            marginLeft: "-1em"
         },
-        li: {
-            "&:before":{
-                content: '"•"',
-                color: '#5fb1e6',
-                fontWeight: "bold",
-                display: "inline-block",
-                width: "1em",
-                marginLeft: "-1em"
-            },
-            paddingBottom: theme.spacing(2)
-        },
-    links: {
-        color: '#606060'
+        paddingBottom: theme.spacing(2)
     },
     b: {
-        color: '#606060'
+        color: theme.palette.text.primary
     }
 });
 
@@ -49,13 +38,13 @@ class Objetivos extends React.Component{
             <div className={classes.root}>
                 <Grid container spacing={0}>
                     <Grid item xs={12}>
-                        <Typography variant="h3" className={classes.links}>
+                        <Typography variant="h3" className={classes.b}>
                             Objetivos
                         </Typography>
                         <br/>
                         <br/>
-                        <Typography variant="subtitle1">
-                            Usar <b className={classes.links}>nuevas tecnologías</b>, <b className={classes.links}>metodologías de trabajo</b>, <b className={classes.links}>ciencia de datos</b> e <b className={classes.links}>inteligencia artificial</b> como insumos y
+                        <Typography variant="subtitle1" color="textPrimary">
+                            Usar <b className={classes.b}>nuevas tecnologías</b>, <b className={classes.b}>metodologías de trabajo</b>, <b className={classes.b}>ciencia de datos</b> e <b className={classes.links}>inteligencia artificial</b> como insumos y
                             apoyo al trabajo de las autoridades del <b className={classes.b}>Sistema Nacional Anticorrupción</b> para:
                         </Typography>
                         <br/>

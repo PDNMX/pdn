@@ -1,11 +1,13 @@
 .pdn_term_title {
   margin-bottom: 10px !important;
-  color: #606060 !important;
+  color: #666666 !important;
   padding-top: 20px;
   font-weight: 700 !important;
+  font-family: Noto Sans SC, "Helvetica", "Arial", "sans-serif";
 }
 
 .pdn_term_content {
-  color: #606060 !important;
+  color: #666666 !important;
   font-size: 0.975rem !important;
+  font-family: Noto Sans SC, "Helvetica", "Arial", "sans-serif";
 }

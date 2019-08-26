@@ -35,7 +35,7 @@ class Disclaimer extends React.Component{
 
         return (
             <div className={classes.root}>
-                <Typography paragraph>
+                <Typography paragraph color='textPrimary'>
                     Consulta las dudas más frecuentes sobre el desarrollo y construcción de la PDN, además encontrarás preguntas y respuestas sobre los datos que conforman la PDN así como un correo electrónico de apoyo en caso de no haber solucionado tus dudas.
                 </Typography>
 

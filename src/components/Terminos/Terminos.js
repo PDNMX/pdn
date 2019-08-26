@@ -22,7 +22,8 @@ const styles = theme => ({
 
     ul: {
         listStyle: 'none',
-        //paddingLeft: '20px'
+        paddingLeft: '20px',
+        color: theme.palette.text.primary
     },
     li: {
         "&:before":{

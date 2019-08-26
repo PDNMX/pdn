@@ -32,7 +32,7 @@ class Carrusel extends React.Component{
         const {classes} = this.props;
         return (
             <div className={classes.root}>
-                <Typography variant={'display2'} paragraph><b>Conoce</b> más</Typography>
+                <Typography color="textPrimary" paragraph><b>Conoce</b> más</Typography>
 
                 <Grid container spacing={0}>
                     <Grid item xs={12} md={4} className={classes.items}>

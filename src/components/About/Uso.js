@@ -46,22 +46,22 @@ class Uso extends React.Component{
 
         return(
             <div className={classes.root}>
-                <Typography variant="h3" style={{ marginBottom:'50px'}}>Impacto de los <b>datos</b> para <b>combatir la corrupción</b></Typography>
+                <Typography variant="h3" style={{ marginBottom:'50px'}} color='textPrimary'>Impacto de los <b>datos</b> para <b>combatir la corrupción</b></Typography>
 
                   <Grid container spacing={0}>
                     <Grid item xs={12} sm={6} style={{ marginBottom:'20px', padding:'15px'}}>
-                        <Typography variant="subtitle1"> <a href="https://www.fuistetu.org/" className={classes.links}>Fuiste Tú</a> usa datos de auditorías para fomentar la trazabilidad en el uso de recursos públicos.</Typography>
+                        <Typography variant="subtitle1" color='textPrimary'> <a href="https://www.fuistetu.org/" className={classes.links}>Fuiste Tú</a> usa datos de auditorías para fomentar la trazabilidad en el uso de recursos públicos.</Typography>
                     </Grid>
                     <Grid item xs={12} sm={6} style={{ marginBottom:'20px', padding:'15px'}}>
-                      <Typography variant="subtitle1"> <a href="https://imco.org.mx/articulo_es/indice-riesgos-corrupcion-sistema-mexicano-contrataciones-publicas/" className={classes.links}>Imco y OPI</a> utilizaron datos de contrataciones para identificar riesgos e impulsar una cultura de prevención en contrataciones.</Typography>
+                      <Typography variant="subtitle1" color="textPrimary"> <a href="https://imco.org.mx/articulo_es/indice-riesgos-corrupcion-sistema-mexicano-contrataciones-publicas/" className={classes.links}>Imco y OPI</a> utilizaron datos de contrataciones para identificar riesgos e impulsar una cultura de prevención en contrataciones.</Typography>
                     </Grid>
                   </Grid>
                   <Grid container spacing={0}>
                     <Grid item xs={12} sm={6} style={{ padding:'15px'}}>
-                      <Typography variant="subtitle1"><a href="https://1560000.org/explora" className={classes.links}>Data Cívica</a> utilizó datos abiertos para reconstruir las declaraciones patrimoniales de servidores públicos del gobierno.</Typography>
+                      <Typography variant="subtitle1" color="textPrimary"><a href="https://1560000.org/explora" className={classes.links}>Data Cívica</a> utilizó datos abiertos para reconstruir las declaraciones patrimoniales de servidores públicos del gobierno.</Typography>
                     </Grid>
                     <Grid item xs={12} sm={6} style={{ padding:'15px'}}>
-                      <Typography variant="subtitle1"><a href="https://www.animalpolitico.com/estafa-maestra/#datos" className={classes.links}>Animal Político</a> utilizó datos de auditorías y licitaciones para detectar desvíos de recursos, algo que ha sido utilizado como insumo en el proceso para sancionar a posibles involucrados.</Typography>
+                      <Typography variant="subtitle1" color="textPrimary"><a href="https://www.animalpolitico.com/estafa-maestra/#datos" className={classes.links}>Animal Político</a> utilizó datos de auditorías y licitaciones para detectar desvíos de recursos, algo que ha sido utilizado como insumo en el proceso para sancionar a posibles involucrados.</Typography>
                     </Grid>
 
 
