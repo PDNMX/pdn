@@ -25,7 +25,7 @@ class FuncionariosPorEntidadEdadPorcentaje extends Component {
           "Guanajuato",
           "Nuevo León",
           "Zacatecas",
-          "Queretaro",
+          "Querétaro",
           "Tlaxcala"
         ],
         series: [[200, 100, 400, 123, 500, 200, 300]]
@@ -37,7 +37,7 @@ class FuncionariosPorEntidadEdadPorcentaje extends Component {
           "Guanajuato",
           "Nuevo León",
           "Zacatecas",
-          "Queretaro",
+          "Querétaro",
           "Tlaxcala"
         ],
         series: [
@@ -78,7 +78,7 @@ class FuncionariosPorEntidadEdadPorcentaje extends Component {
           "Guanajuato",
           "Nuevo León",
           "Zacatecas",
-          "Queretaro",
+          "Querétaro",
           "Tlaxcala"
         ],
         labels: ["Federal", "Estatal", "Municipal"]

@@ -672,7 +672,7 @@ export const GFStates = {
     {
       "id": 22,
       "name": "Querétaro",
-      "url": "queretaro",
+      "url": "Querétaro",
       "clave_inegi": "22000",
       "lat": 20.841526985168,
       "lng": -99.819583892822

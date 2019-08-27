@@ -31,7 +31,7 @@ class InversionesCuentasValores extends  React.Component{
                             <TableCell>Nacional/Extranjero</TableCell>
                             <TableCell>Nombre institución</TableCell>
                             <TableCell>RFC institución</TableCell>
-                            <TableCell>Sector/Industria</TableCell>
+                            <TableCell>sector/industria</TableCell>
                             <TableCell>Domicilio institución</TableCell>
                             <TableCell>Forma adquisición</TableCell>
                             <TableCell>Fecha inicio</TableCell>

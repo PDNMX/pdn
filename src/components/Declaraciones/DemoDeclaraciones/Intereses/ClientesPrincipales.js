@@ -30,7 +30,7 @@ class ClientesPrincipales extends  React.Component{
                             <TableCell>Cliente</TableCell>
                             <TableCell>RFC cliente</TableCell>
                             <TableCell>Domicilio cliente</TableCell>
-                            <TableCell>Sector/Industria</TableCell>
+                            <TableCell>sector/industria</TableCell>
                             <TableCell>Porcentaje participación</TableCell>
                             <TableCell>Observaciones</TableCell>
                         </TableRow>

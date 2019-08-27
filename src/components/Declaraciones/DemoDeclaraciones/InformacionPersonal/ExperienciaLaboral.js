@@ -31,7 +31,7 @@ class ExperienciaLaboral extends React.Component {
                             <TableCell>Poder</TableCell>
                             <TableCell>Institución</TableCell>
                             <TableCell>Unidad</TableCell>
-                            <TableCell>Sector/Industria</TableCell>
+                            <TableCell>sector/industria</TableCell>
                             <TableCell>Jerarquía</TableCell>
                             <TableCell>Cargo/Puesto</TableCell>
                             <TableCell>Fecha ingreso</TableCell>

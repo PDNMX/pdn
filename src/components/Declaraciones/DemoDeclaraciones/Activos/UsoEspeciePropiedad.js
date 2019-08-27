@@ -30,7 +30,7 @@ class UsoEspeciePropiedad extends  React.Component{
                             <TableCell>RFC tercero propietario</TableCell>
                             <TableCell>CURP tercero propietario</TableCell>
                             <TableCell>Relación persona</TableCell>
-                            <TableCell>Sector/Industria</TableCell>
+                            <TableCell>sector/industria</TableCell>
                             <TableCell>Fecha inicio</TableCell>
                             <TableCell>Domicilio persona</TableCell>
                             <TableCell>Observaciones</TableCell>

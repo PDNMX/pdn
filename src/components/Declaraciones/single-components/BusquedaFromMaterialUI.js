@@ -113,7 +113,7 @@ class BusquedaFromMaterialUI extends Component {
                 <FormControlLabel
                   value="EST"
                   control={<Radio color="secondary" />}
-                  label="Estatal"
+                  label="Entidades federativas"
                 />
                 <FormControlLabel
                   value="MUN"

@@ -85,7 +85,7 @@ class InfoCurriculum extends Component {
                           </Grid>
                           <Grid item xs={6}>
                             <Typography className={classes.tituloCard}>
-                              Cédula Profesional
+                              Cédula profesional
                             </Typography>
                             <Typography className={classes.dataCard}>
                               {grado.cedula_profesional}

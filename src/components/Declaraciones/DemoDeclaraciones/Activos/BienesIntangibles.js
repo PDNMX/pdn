@@ -30,7 +30,7 @@ class BienesIntangibles extends  React.Component{
                             <TableCell>Ente público encargado</TableCell>
                             <TableCell>Número registro</TableCell>
                             <TableCell>Fecha registro</TableCell>
-                            <TableCell>Sector/Industria</TableCell>
+                            <TableCell>sector/industria</TableCell>
                             <TableCell>Precio adquisición</TableCell>
                             <TableCell>Forma adquisición</TableCell>
                             <TableCell>Fecha vencimiento</TableCell>

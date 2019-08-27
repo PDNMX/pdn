@@ -33,7 +33,7 @@ class Empresas extends  React.Component{
                             <TableCell>Domicilio</TableCell>
                             <TableCell>Rol</TableCell>
                             <TableCell>Actividad económica</TableCell>
-                            <TableCell>Sector/Industria</TableCell>
+                            <TableCell>sector/industria</TableCell>
                             <TableCell>Porcentaje participación</TableCell>
                         </TableRow>
                     </TableHead>
