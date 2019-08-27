@@ -62,7 +62,7 @@ class Sistemas extends React.Component{
                     </Grid>
 
                     <Grid item xl={4} lg={4} md={6} xs={12} align="center">
-                        <Tooltip title="Declaración patrimonial y de intereses" placement="top">
+                        <Tooltip title="Sistema de evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal" placement="top">
                             <Link to="/declaraciones" className={ classes.link }>
                                 <img src={s1} alt="Sistema 1" className={classes.iconosSistemas}/>
                                 <br/>
@@ -73,18 +73,18 @@ class Sistemas extends React.Component{
                         </Tooltip>
                     </Grid>
                     <Grid item xl={4} lg={4} md={6} xs={12} align="center">
-                        <Tooltip title="Servidores públicos que intervienen en contrataciones públicas" placement="top">
+                        <Tooltip title="Sistema de los Servidores públicos que intervengan en procedimientos de contrataciones públicas" placement="top">
                             <Link to="/servidores" className={ classes.link }>
                                 <img src={s2} alt="Sistema 2" className={classes.iconosSistemas}/>
                                 <br/>
                                 <Typography variant="h5" className={classes.text}>
-                                    Servidores públicos en contrataciones públicas
+                                    Servidores públicos en contrataciones
                                 </Typography>
                             </Link>
                         </Tooltip>
                     </Grid>
                     <Grid item xl={4} lg={4} md={6} xs={12} align="center">
-                        <Tooltip title="Servidores públicos y particulares sancionados" placement="top">
+                        <Tooltip title="Sistema nacional de Servidores públicos y particulares sancionados" placement="top">
                             <Link to="/sancionados" className ={ classes.link }>
                                 <img src={s3} alt="Sistema 3" className={classes.iconosSistemas}/>
                                 <br/>
@@ -111,7 +111,7 @@ class Sistemas extends React.Component{
                         {/*</Link>*/}
                     </Grid>
                     <Grid item xl={4} lg={4} md={6} xs={12} align="center">
-                        <Tooltip title="Contrataciones públicas" placement="top">
+                        <Tooltip title="Sistema de Información Pública de Contrataciones" placement="top">
                             <Link to="/contrataciones" className={classes.link}>
                                 <img src={s6} alt="Sistema 6" className={classes.iconosSistemas}/>
                                 <br/>

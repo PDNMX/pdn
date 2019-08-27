@@ -100,7 +100,7 @@ class Example extends React.Component {
                     />
 
                     <ChartLabel
-                        text="Proveedores"
+                        text="Proveedores (RFC)"
                         className="alt-x-label"
                         includeMargin={true}
                         xPercent={0.5}

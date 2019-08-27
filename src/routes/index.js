@@ -4,7 +4,6 @@ import About from "../components/About/About";
 import Terminos from "../components/Terminos/Terminos";
 import Faq from "../components/FAQ/index";
 import Datos from "../components/CatalogoDatos/Datos";
-import Indicadores from "../components/Indicadores/Indicadores";
 import Denuncias from "../components/Denuncias/Index";
 
 import FormularioDenuncias from "../components/Denuncias/FormularioDenuncia/FormularioDenuncia";
@@ -86,12 +85,6 @@ const pdnRoutes = [
     {
         exact: true, path: "/servidores",
         component: Servidores,
-        private: false
-    },
-    {
-        exact: true,
-        path: "/indicadores",
-        component: Indicadores,
         private: false
     },
     {

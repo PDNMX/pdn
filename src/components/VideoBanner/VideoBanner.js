@@ -62,7 +62,7 @@ class Banner extends React.Component {
                 <div className={classes.appBar}>
                     <VideoAppBar/>
                 </div>
-                
+
                 <div className={classes.contents}>
                     <Typography className={classes.text} variant={"h2"}>
                         Inteligencia <span className={classes.boldText}>anticorrupción</span> con datos.

@@ -48,7 +48,7 @@ class Terminos extends React.Component {
                 <Grid container spacing={0} justify='center'>
                     <Grid item xs={12} className={classes.section}>
                         <Typography variant='title' className="pdn_term_title">
-                            TÉRMINOS DE USO DE LA PLATAFORMA DIGITAL NACIONAL
+                            TÉRMINOS Y CONDICIONES DE USO DE LA PLATAFORMA DIGITAL NACIONAL
                         </Typography><br/><br/>
                         <Typography paragraph className="pdn_term_content">
                             La Plataforma Digital Nacional (PDN) se desarrolla de conformidad con la normatividad
