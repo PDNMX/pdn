@@ -533,7 +533,7 @@ class EnhancedTable extends React.Component {
                                                 >
                                                     
                                                     <TableCell component="th" scope="row" style={{width: '25%'}}
-                                                               padding="default">{n.nombre +  " "+ n.apellidoUno+ " "+ n.apellidoDos}</TableCell>
+                                                               padding="default">{n.servidor}</TableCell>
                                                     <TableCell>{n.institucion.nombre}</TableCell>
                                                     <TableCell>{n.puesto.nombre}</TableCell>
                                                     <TableCell>{n.tipo_actos}</TableCell>
