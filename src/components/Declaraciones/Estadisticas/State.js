@@ -23,7 +23,7 @@ import styles from "../style";
 
 class State extends Component {
   render() {
-    let { classes, value, change } = this.props;
+    let { classes, value } = this.props;
 
     return (
       <div className={classes.rootSeccion}>

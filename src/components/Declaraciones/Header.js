@@ -157,7 +157,6 @@ class Header extends React.Component {
             <Typography
               className={classes.whiteText}
               style={{ fontSize: "18px", fontWeight: 500, maxWidth: 600 }}
-              align="justify"
             >
               Consulta y visualiza los datos <strong>públicos</strong> de las
               declaraciones patrimoniales, y de intereses, así como la

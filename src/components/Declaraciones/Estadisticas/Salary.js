@@ -12,7 +12,7 @@ import styles from "../style";
 // let menu = ["Ingresos"];
 class Salary extends Component {
   render() {
-    let { classes, value, change } = this.props;
+    let { classes, value } = this.props;
 
     return (
       <div className={classes.rootSeccion}>

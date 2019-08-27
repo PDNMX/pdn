@@ -75,11 +75,13 @@ class Stats extends Component {
     return (
       <div
         className={classes.root}
-        style={{ maxWidth: 1200, margin: "0 auto", padding: "100px 0px" }}
+        style={{ maxWidth: 1200, margin: "0 auto" }}
       >
         <Grid container spacing={3}>
           <Grid item xs={12}>
-            <Typography className={classes.h1}>Estadísticas</Typography>
+            <Typography>
+              <b>Estadísticas</b>
+            </Typography>
           </Grid>
           <Grid item xs={12}>
             <MenuSuperior
@@ -90,10 +92,7 @@ class Stats extends Component {
         </Grid>
         <Grid container spacing={0}>
           {this.state.menu_superior === 0 && (
-            <Age
-              value={this.state.menu_edad}
-              change={this.change_menuEdad}
-            />
+            <Age value={this.state.menu_edad} change={this.change_menuEdad} />
           )}
           {this.state.menu_superior === 1 && (
             <GobLevel

@@ -40,12 +40,12 @@ const styles = theme => ({
     flexGrow: 1
   },
   whiteText: {
-    color: "#fff", //theme.palette.titleBanner.color,
     color: theme.palette.textGrey.color,
     padding: "10px"
   },
   sectionT: {
-    color: theme.palette.textGrey.color
+    color: theme.palette.textGrey.color,
+    marginTop: theme.spacing(7)
   },
   image: {
     width: "60px",
@@ -161,12 +161,7 @@ class Contenedor extends React.Component {
 
     return (
       <Grid container spacing={0} className={classes.root}>
-        <Header
-          logo={S3}
-          titulo={titulo}
-          copy={copy}
-          background={background}
-        />
+        <Header logo={S3} titulo={titulo} copy={copy} background={background} />
         <Grid container spacing={0} className={classes.bgContainer}>
           <Grid item xs={12} style={{ maxWidth: 1200, margin: "0 auto" }}>
             <Grid container spacing={0}>
@@ -181,10 +176,7 @@ class Contenedor extends React.Component {
                   "tabDeclaraciones"
                 )}
               >
-                <Link
-                  className={classes.link}
-                  to="/declaraciones/estadisticas"
-                >
+                <Link className={classes.link} to="/declaraciones/estadisticas">
                   <figure className={classes.figure}>
                     <img
                       alt="Estadísticas"
@@ -194,9 +186,16 @@ class Contenedor extends React.Component {
                   </figure>
                   <Typography
                     variant="subtitle1"
+                    style={{
+                      fontWeight: this.props.location.pathname.includes(
+                        "estadistica"
+                      )
+                        ? 500
+                        : 300
+                    }}
                     className={classes.whiteText}
                   >
-                    Estadísticas
+                    Visor de datos
                   </Typography>
                 </Link>
               </Grid>
@@ -221,6 +220,13 @@ class Contenedor extends React.Component {
                   </figure>
                   <Typography
                     variant="subtitle1"
+                    style={{
+                      fontWeight: !this.props.location.pathname.includes(
+                        "estadistica"
+                      )
+                        ? 500
+                        : 300
+                    }}
                     className={classes.whiteText}
                   >
                     Buscar un servidor público
@@ -244,10 +250,7 @@ class Contenedor extends React.Component {
           </Grid>
         </Grid>
         <Footer />
-        <AlertDialog
-          open={this.state.open}
-          handleClose={this.handleClose}
-        />
+        <AlertDialog open={this.state.open} handleClose={this.handleClose} />
       </Grid>
     );
   }
