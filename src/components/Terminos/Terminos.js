@@ -58,21 +58,21 @@ class Terminos extends React.Component {
                         <ul className={classes.ul}>
                             <li className={classes.li}>
                                 <Typography display='inline'>
-                                    <a href={"http://www.diputados.gob.mx/LeyesBiblio/pdf/LGSNA.pdf"}>Ley General del
+                                    <a target={"_blank"} href={"http://www.diputados.gob.mx/LeyesBiblio/pdf/LGSNA.pdf"}>Ley General del
                                         Sistema Nacional Anticorrupción</a>, publicada en el Diario Oficial de
                                     la Federación el 18 de julio del 2016.
                                 </Typography>
                             </li>
                             <li className={classes.li}>
                                 <Typography display="inline">
-                                    <a href={"http://www.diputados.gob.mx/LeyesBiblio/pdf/LGRA_120419.pdf"}>Ley General
+                                    <a target={"_blank"} href={"http://www.diputados.gob.mx/LeyesBiblio/pdf/LGRA_120419.pdf"}>Ley General
                                         de Responsabilidades Administrativas</a>, publicada en el Diario Oficial de
                                     la Federación el 12 de abril del 2016.
                                 </Typography>
                             </li>
                             <li className={classes.li}>
                                 <Typography display='inline'>
-                                    <a href={"https://www.dof.gob.mx/nota_detalle.php?codigo=5541802&fecha=23/10/2018"}>Bases
+                                    <a target={"_blank"} href={"https://www.dof.gob.mx/nota_detalle.php?codigo=5541802&fecha=23/10/2018"}>Bases
                                         para el Funcionamiento de la Plataforma Digital Nacional</a>, publicadas en el
                                     Diario Oficial de la Federación el 23 de octubre del 2018.
                                 </Typography>
@@ -339,7 +339,7 @@ class Terminos extends React.Component {
                             Al respecto, estos Términos y Condiciones pueden cambiar, por lo que te pedimos revisar
                             constantemente nuestro portal.
                             <br/><br/>
-                            El uso del portal <a
+                            El uso del portal <a target={"_blank"}
                             href={"https://plataformadigitalnacional.org/"}>https://plataformadigitalnacional.org/</a> o
                             de cualquiera de sus componentes,
                             implica la aceptación expresa de los presentes “Términos y Condiciones”
