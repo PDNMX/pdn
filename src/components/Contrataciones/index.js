@@ -88,10 +88,10 @@ class Index extends React.Component {
     };
 
 
-    handleSelectTab = e => {
+    handleSelectTab = t => {
 
       this.setState({
-          selectedTab: +e.target.id
+          selectedTab: t
       })
     };
 
@@ -109,7 +109,7 @@ class Index extends React.Component {
 
                         <Grid container spacing={0}>
                             <Grid item xs={12} sm={12} md={6} lg={6} xl={6}
-                                  onClick={this.handleSelectTab}
+                                  onClick={ () => this.handleSelectTab(0)}
                                   id={0}
                                   className={selectedTab===0?classes.selectedTabItem:classes.tabItem}>
 
@@ -124,7 +124,7 @@ class Index extends React.Component {
                             </Grid>
 
                             <Grid item xs={12} sm={12} md={6} lg={6} xl={6}
-                                  onClick={this.handleSelectTab}
+                                  onClick={() => this.handleSelectTab(1)}
                                   id={1}
                                   className={selectedTab===1?classes.selectedTabItem:classes.tabItem}>
 
