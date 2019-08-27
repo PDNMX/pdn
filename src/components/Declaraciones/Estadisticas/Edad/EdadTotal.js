@@ -1,54 +1,68 @@
 import React, { Component } from "react";
-import * as ConstClass from "../../ConstValues";
 import { Grid, Paper } from "@material-ui/core";
-import ChartistGraph from "react-chartist";
-import "../../css/chartist.min.css";
-
-import "../../css/chartist-plugin-tooltip.css";
-import ChartistTooltip from "chartist-plugin-tooltips-updated";
-
 import { Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "../../style";
+
+import * as ConstClass from "../../ConstValues";
+import BarChart from "d3plus-react/es/src/BarChart";
 
 let d3 = Object.assign({}, require("d3-format"));
 let format = d3.format(",");
 
 class EdadTotal extends Component {
+  state = {};
+
   constructor() {
     super();
 
     this.makeData = this.makeData.bind(this);
     this.getInfo = this.getInfo.bind(this);
     this.makeQuery = this.makeQuery.bind(this);
+  }
 
-    this.state = {
-      data: null
-    };
-
+  componentDidMount() {
     let promises = this.makeData();
 
     Promise.all(promises.map(d => d.promise)).then(d => {
-      let data = {
-        labels: promises.map(d => d.label),
-        series: [d]
-      };
+      let data = d.map((value, index) => {
+        return {
+          name: promises[index].label,
+          value: value
+        };
+      });
 
-      this.setState({ data: data });
+      this.setState({
+        methods: {
+          data: data,
+          x: "name",
+          y: "value",
+          xConfig: {
+            title: "Rango de edad"
+          },
+          yConfig: {
+            title: "Número de funcionarios"
+          },
+          tooltipConfig: {
+            title: function(d) {
+              return 'Rango "' + d["name"] + '" : ' + format(d["value"]);
+            }
+          },
+          height: 400,
+          shapeConfig: {
+            label: false,
+            fill: (d, i) => ConstClass.colorsChart[i]
+          },
+          legend: true,
+          axes: {
+            fill: "#666672"
+          }
+        }
+      });
     });
   }
 
   render() {
-    if (!this.state.data) return null;
-    let options = {
-      plugins: [
-        ChartistTooltip({
-          appendToBody: true,
-          transformTooltipTextFnc: value => format(value)
-        })
-      ]
-    };
-
     let { classes } = this.props;
 
     return (
@@ -58,11 +72,7 @@ class EdadTotal extends Component {
             <Typography className={classes.titulo}>
               Funcionarios por rango de edad (total)
             </Typography>
-            <ChartistGraph
-              data={this.state.data}
-              type={"Bar"}
-              options={options}
-            />
+            {this.state.methods && <BarChart config={this.state.methods} />}
           </Paper>
         </Grid>
       </Grid>
@@ -81,15 +91,6 @@ class EdadTotal extends Component {
       });
   }
 
-  /*
-  
-  /
-  /  prepara la información para hacer las llamadas
-  /  al API necesarias, utilizando la función getInfo.
-  /  regresa un array de promesas y etiquetas
-  /
-  
-  */
   makeData() {
     let res = [],
       currentYear = new Date().getFullYear(),
@@ -108,18 +109,9 @@ class EdadTotal extends Component {
       year1 -= conf.step;
       year2 -= conf.step;
     }
-
     return res;
   }
 
-  /*
-  
-  /
-  /  escribe el query de la petición al api (no la
-  /  petición completa, solo el filtro)
-  /
-  
-  */
   makeQuery(_from, _to) {
     let str = ConstClass.PROP_NAMES.nacimiento,
       search = { query: {}, limit: 2 };

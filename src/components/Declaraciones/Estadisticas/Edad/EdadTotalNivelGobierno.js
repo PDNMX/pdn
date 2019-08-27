@@ -1,20 +1,17 @@
 import React, { Component } from "react";
-import * as ConstClass from "../../ConstValues";
-import ChartistGraph from "react-chartist";
-import "../../css/chartist.min.css";
 import { Grid, Paper } from "@material-ui/core";
-
-import "../../css/chartist-plugin-tooltip.css";
-import ChartistTooltip from "chartist-plugin-tooltips-updated";
-
 import { Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "../../style";
+
+import * as ConstClass from "../../ConstValues";
+import BarChart from "d3plus-react/es/src/BarChart";
 
 let d3 = Object.assign({}, require("d3-format"));
 let format = d3.format(",");
 
 class EdadTotalNivelGobierno extends Component {
+  state = {};
   constructor() {
     super();
 
@@ -22,36 +19,50 @@ class EdadTotalNivelGobierno extends Component {
     this.getInfo = this.getInfo.bind(this);
     this.makeQuery = this.makeQuery.bind(this);
     this.buildMatrix = this.buildMatrix.bind();
+  }
 
-    this.state = {
-      data: null
+  componentDidMount() {
+    let promises = this.makeData();
+    let Color = {
+      Estatal: ConstClass.colorsChart[1],
+      Municipal: ConstClass.colorsChart[5],
+      Federal: ConstClass.colorsChart[9]
     };
 
-    let promises = this.makeData();
-
     Promise.all(promises.map(d => d.promise)).then(d => {
-      let labels = [...new Set(promises.map(d => d.label))],
-        data = {
-          labels,
-          series: this.buildMatrix(d, labels.length)
-        };
-
-      this.setState({ data: data });
+      this.setState({
+        methods: {
+          data: d,
+          x: "label",
+          y: "total",
+          groupBy: "nivel",
+          stacked: true,
+          xConfig: {
+            title: "Rango de edad"
+          },
+          yConfig: {
+            title: "Número de funcionarios"
+          },
+          tooltipConfig: {
+            title: function(d) {
+              return 'Nivel "' + d["nivel"] + '" : ' + format(d["total"]);
+            }
+          },
+          height: 400,
+          shapeConfig: {
+            label: false,
+            fill: (d, i) => Color[d.nivel]
+          },
+          legend: true,
+          axes: {
+            fill: "#666672"
+          }
+        }
+      });
     });
   }
 
   render() {
-    if (!this.state.data) return null;
-    let colors = ConstClass.ChartColors;
-
-    let options = {
-      plugins: [
-        ChartistTooltip({
-          appendToBody: true,
-          transformTooltipTextFnc: value => format(value)
-        })
-      ]
-    };
     let { classes } = this.props;
 
     return (
@@ -61,46 +72,32 @@ class EdadTotalNivelGobierno extends Component {
             <Typography className={classes.titulo}>
               Funcionarios por rango de edad y nivel de gobierno (total)
             </Typography>
-            <ChartistGraph
-              data={this.state.data}
-              type={"Bar"}
-              options={options}
-            />
-            <Typography component="div">
-              <ul className={classes.listaGraficas}>
-                {ConstClass.GobLevels.map((d, i) => (
-                  <li
-                    key={"ngel-" + i}
-                    style={{ display: "inline-block", margin: "0px 10px" }}
-                  >
-                    <span
-                      style={{
-                        display: "inline-block",
-                        width: "1em",
-                        height: "1em",
-                        background: colors[i]
-                      }}
-                    />{" "}
-                    {d.label}
-                  </li>
-                ))}
-              </ul>
-            </Typography>
+            {this.state.methods && <BarChart config={this.state.methods} />}
           </Paper>
         </Grid>
       </Grid>
     );
   }
 
-  getInfo(_from, _to, lg) {
+  getInfo(_from, _to, lg, label) {
     let connObj = Object.assign({}, ConstClass.fetchObj);
+
+    let Nivel = {
+      EST: "Estatal",
+      MUN: "Municipal",
+      FED: "Federal"
+    };
 
     connObj.body = this.makeQuery(_from, _to, lg);
 
     return fetch(ConstClass.endpoint, connObj)
       .then(response => response.json())
       .then(d => {
-        return d.total;
+        return {
+          total: d.total,
+          nivel: Nivel[lg],
+          label: label
+        };
       });
   }
 
@@ -130,7 +127,12 @@ class EdadTotalNivelGobierno extends Component {
     for (i = 0; i < lg.length; i++) {
       while (year1 > currentYear - conf.to) {
         res.push({
-          promise: this.getInfo(_from(year2), _to(year1), lg[i].key),
+          promise: this.getInfo(
+            _from(year2),
+            _to(year1),
+            lg[i].key,
+            `${currentYear - year1} - ${currentYear - year2}`
+          ),
           label: `${currentYear - year1} - ${currentYear - year2}`
         });
 
