@@ -7,11 +7,13 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import {withStyles}from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
+import MuiLink from '@material-ui/core/Link';
 
 const styles = theme => ({
-    boton:{
+    button:{
         background: '#ffe01b',
-    }
+    },
 });
 
 class AlertDialog extends React.Component {
@@ -55,12 +57,15 @@ class AlertDialog extends React.Component {
                             </DialogContentText>
 
                             <DialogContentText>
-                                Te invitamos a revisar los “Términos y Condiciones de Uso”, así como a dejar tus comentarios en sobre las funcionalidades, interfaz y experiencia de usuario en la sección de “Comenta”.
+                                Te invitamos a revisar los <MuiLink component={Link} to='/terminos'>"Términos y Condiciones de Uso"</MuiLink>, así como a dejar tus comentarios en sobre las funcionalidades, interfaz y experiencia de usuario en la sección de "Comenta".
                             </DialogContentText>
 
                         </DialogContent>
                         <DialogActions>
-                            <Button variant="contained" onClick={this.handleClose} className={classes.boton}>
+                            <Button variant="contained" component={Link} to='/terminos' className={classes.button}>
+                                Términos
+                            </Button>
+                            <Button variant="contained" onClick={this.handleClose} className={classes.button}>
                                 Aceptar
                             </Button>
                         </DialogActions>
