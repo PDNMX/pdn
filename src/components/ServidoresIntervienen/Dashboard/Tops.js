@@ -20,26 +20,22 @@ const styles = theme => ({
     },
     titulo: {
         textAlign: "center",
-        marginBottom: "30px",
+        marginBottom: theme.spacing(2)
     },
     descripcion: {
         display: "flex",
-        /* justifyContent: "center",*/
+        justifyContent: "center",
         alignItems: "center",
-        marginTop: "15px",
-        paddingLeft: "10px",
-        paddingRight: "10px",
-        marginBottom: "30px",
-        textAlign: "justify"
-    },
-    btnDownload: {
-        textAlign: "right"
+        marginTop: theme.spacing(2),
+        marginBottom: theme.spacing(2),
     },
     formControl: {
-        width: '100%'
+        width: '90%'
     },
     buttonContainer: {
-        textAlign: "center"
+        textAlign: "center",
+        marginTop: theme.spacing(3),
+        marginBottom: theme.spacing(3)
     },
 
 });
@@ -272,7 +268,7 @@ class Tops extends React.Component {
         return (
             <div>
                 <Toolbar>
-                    <Grid container spacing={4}>
+                    <Grid container>
                         <Grid item xs={12}>
                             <Typography variant={"h6"} className={classes.titulo}>
                                 <b>{"Top 10"}</b>

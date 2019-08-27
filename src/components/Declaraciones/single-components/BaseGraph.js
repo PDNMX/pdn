@@ -48,15 +48,15 @@ class BaseGraph extends Component {
         },
         tooltipConfig: {
           title: function(d) {
-            return d["name"];
+            return d["name"] + ": " + format(d["amount"]);
           },
-          tbody: [
-            [
-              function(d) {
-                return d["relacion"] + ": " + format(d["amount"]);
-              }
-            ]
-          ]
+          // tbody: [
+          //   [
+          //     function(d) {
+          //       return d["relacion"] + ": " + format(d["amount"]);
+          //     }
+          //   ]
+          // ]
         },
         height: 400,
         shapeConfig: {

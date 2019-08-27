@@ -15,22 +15,16 @@ const styles = theme => ({
     },
     titulo: {
         textAlign: "center",
-        marginBottom: "30px",
+        marginBottom: theme.spacing(2)
     },
     descripcion: {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        marginTop: "15px",
-        paddingLeft: "10px",
-        paddingRight: "10px",
-        marginBottom: "30px",
-        textAlign:"justify"
+        marginTop: theme.spacing(2),
+        marginBottom: theme.spacing(2),
+    }
 
-    },
-    btnDownload: {
-        textAlign: "right"
-    },
 
 });
 

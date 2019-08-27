@@ -6,8 +6,7 @@ import {
   TableHead,
   TableRow,
   TableFooter,
-  TablePagination,
-  Paper
+  TablePagination
 } from "@material-ui/core";
 
 import { Link } from "react-router-dom";
@@ -37,8 +36,7 @@ const styles = theme => ({
 
 const StyledTableCell = withStyles(theme => ({
   head: {
-    backgroundColor: "grey",
-    color: theme.palette.common.white,
+    backgroundColor: "#f5f5f5",
     textTransform: "uppercase"
   },
   body: {

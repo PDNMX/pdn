@@ -22,10 +22,6 @@ const styles = theme => ({
     whiteText: {
         color: theme.palette.textGrey.color
     },
-    textDark: {
-        color: theme.palette.textNormal,
-        textAlign: 'justify'
-    },
     bgPanelTable: {
         backgroundColor: theme.palette.white.color,
         [theme.breakpoints.up('sm')]: {
@@ -39,8 +35,6 @@ const styles = theme => ({
         maxWidth: '1200px',
     },
     sectionT: {
-        /*maxWidth: '1200px',
-        overflowX : 'auto',*/
         color: theme.palette.textGrey.color,
         marginTop : theme.spacing(7)
     },
@@ -98,7 +92,7 @@ class Index extends React.Component {
                     <Grid item xs={12} className={classes.section}>
                         <Grid container>
                             <Grid item md={3} xs={12}
-                                  className={classNames(this.state.idContent !== 3 ? classes.card : classes.cardSeleccionada)}
+                                  className={classNames(this.state.idContent !== 3 ? classes.card : classes.cardSeleccionada,'tab')}
                                   onClick={() => this.changeContent(3)}>
 
                                 <figure className={classes.figure}>
@@ -113,7 +107,7 @@ class Index extends React.Component {
                                 </Typography>
                             </Grid>
                             <Grid item md={3} xs={12}
-                                  className={classNames(this.state.idContent !== 4 ? classes.card : classes.cardSeleccionada)}
+                                  className={classNames(this.state.idContent !== 4 ? classes.card : classes.cardSeleccionada,'tab')}
                                   onClick={() => this.changeContent(4)}>
 
                                 <figure className={classes.figure}>
@@ -128,7 +122,7 @@ class Index extends React.Component {
                                 </Typography>
                             </Grid>
                             <Grid item md={3} xs={12}
-                                  className={classNames(this.state.idContent !== 1 ? classes.card : classes.cardSeleccionada)}
+                                  className={classNames(this.state.idContent !== 1 ? classes.card : classes.cardSeleccionada,'tab')}
                                   onClick={() => this.changeContent(1)}>
                                 <figure className={classes.figure}>
                                     <img src={img1} alt="Servidores públicos sancionados"
@@ -140,7 +134,7 @@ class Index extends React.Component {
                                 </Typography>
                             </Grid>
                             <Grid item md={3} xs={12}
-                                  className={classNames(this.state.idContent !== 2 ? classes.card : classes.cardSeleccionada)}
+                                  className={classNames(this.state.idContent !== 2 ? classes.card : classes.cardSeleccionada,'tab')}
                                   onClick={() => this.changeContent(2)}>
                                 <figure className={classes.figure}>
                                     <img src={img2} alt="Particulares sancionados"

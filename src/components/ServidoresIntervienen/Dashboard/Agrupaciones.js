@@ -20,26 +20,22 @@ const styles = theme => ({
     },
     titulo: {
         textAlign: "center",
-        marginBottom: "30px",
+        marginBottom: theme.spacing(2)
     },
     descripcion: {
         display: "flex",
-        /* justifyContent: "center",*/
+        justifyContent: "center",
         alignItems: "center",
-        marginTop: "15px",
-        paddingLeft: "10px",
-        paddingRight: "10px",
-        marginBottom: "30px",
-        textAlign: "justify"
-    },
-    btnDownload: {
-        textAlign: "right"
+        marginTop: theme.spacing(2),
+        marginBottom: theme.spacing(2),
     },
     formControl: {
-        width: '100%'
+        width: '90%'
     },
     buttonContainer: {
-        textAlign: "center"
+        textAlign: "center",
+        marginTop: theme.spacing(3),
+        marginBottom: theme.spacing(3)
     },
 
 });
@@ -91,7 +87,7 @@ class Agrupaciones extends React.Component {
             method: "get"
         };
 
-          rp(options).then(data => {
+        rp(options).then(data => {
             let ejercicios = [];
             let idEjercicio = 1;
             data.data.forEach(item => {
@@ -101,11 +97,11 @@ class Agrupaciones extends React.Component {
                 ejercicios: ejercicios,
                 ejercicio: ejercicios[ejercicios.length - 1].ejercicio
             });
-              return null;
+            return null;
         }).catch(err => {
             console.log(err);
             this.setState({error: true});
-              return null;
+            return null;
         })
     };
 
@@ -119,7 +115,7 @@ class Agrupaciones extends React.Component {
             }
         };
 
-         rp(options).then(data => {
+        rp(options).then(data => {
             let ramos = [];
             let idRamo = 0;
             data.data.forEach(item => {
@@ -148,7 +144,7 @@ class Agrupaciones extends React.Component {
             }
         };
 
-         rp(options).then(data => {
+        rp(options).then(data => {
             let instituciones = [];
             let idInstitucion = 0;
             data.data.forEach(item => {
@@ -159,7 +155,7 @@ class Agrupaciones extends React.Component {
         }).catch(err => {
             console.log(err);
             this.setState({error: true});
-             return null;
+            return null;
         })
     };
 
@@ -198,7 +194,7 @@ class Agrupaciones extends React.Component {
                 .then(data => {
                     let aux2 = data.data.map(item => {
                         return {
-                            "value": parseInt(item.total,10),
+                            "value": parseInt(item.total, 10),
                             "subgroup": item.institucion,
                             "group": item.ramo,
                             "parent": item.ejercicio,
@@ -263,145 +259,128 @@ class Agrupaciones extends React.Component {
     render() {
         const {classes} = this.props;
         return (
-            <div>
-                <Toolbar>
-                    <Grid container spacing={4}>
-                        <Grid item xs={12}>
-                            <Typography variant={"h6"} className={classes.titulo}>
-                                <b>{"Ejercicios, Ramos e Instituciones"}</b>
-                            </Typography>
-                        </Grid>
-                        <Grid item xs={12} className={classes.descripcion}>
-                            <Typography variant={"body1"}>
-                                En las secciones anteriores se puede observar de manera general el comportamiento de los
-                                procesos de contratación, sin embargo, resulta interesante conocer cómo se distribuyen
-                                estós en
-                                diferntes variables como: Ejericio fiscal, Ramo, Institución.De acuerdo a los valores
-                                que selecciones, podrás obtener 5 diferentes combinaciones que mostrarán lo
-                                siguiente:<br/><br/>
-
-                                1.- <b>Ejercicio:</b> seleccionando únicamente el Ejercicio, conocerás el total de
-                                funcionaros que intervinieron en procesos de contratación en cada uno de ellos<br/>
-                                2.- <b>Ramo:</b> seleccionando únicamente el Ramo, obtendrás el número de funcionarios
-                                que intervinieron en procesos de contratación dentro de ese Ramo en cada uno
-                                de los Ejercicios fiscales<br/>
-                                3.- <b>Institución:</b> selecciona únicamente una Institución o bien el Ramo y la
-                                Institución, para conocer el número de servidores que intervinieron en procesos de
-                                contatación que tuvo en cada uno de los ejercicios fiscales<br/>
-                                4.- <b>Ejercicio y Ramo: </b> Cada Ramo cuenta con una serie de Instituciones,
-                                selecciona un Ejercicio fiscal y un Ramo para conocer como se distribuyen el
-                                número de funcionarios en cada una de las Instituciones en los diferentes años<br/>
-                                5.-<b>Ejercicio, Ramo e Institución: </b> Para conocer de manera puntual el número de
-                                servidores en procesos de contatatación de determinada Institución en cierto Ejercicio,
-                                podrás seleccionar el Ejercicio, Ramo e Institución o bien el Ejercicio y la Institución
-                                deseada.<br/>
-
-
-                                <br/><br/>Para comenzar, selecciona algún filtro y da clic en el botón <b>Buscar</b>
-                            </Typography>
-                        </Grid>
-                        <Grid item md={4} xs={12}>
-                            <FormControl className={classes.formControl}>
-                                <InputLabel htmlFor="campoSelectEjercicio">Ejercicio</InputLabel>
-                                <Select style={{marginTop: '0px'}}
-                                        value={this.state.ejercicio}
-                                        onChange={(e) => this.handleChangeCampo('ejercicio', e)}
-                                        inputProps={{
-                                            name: 'campoSelectEjercicio',
-                                            id: 'campoSelectEjercicio',
-                                        }}
-                                >
-                                    <MenuItem key={''} value={''}> TODOS</MenuItem>
-                                    {
-                                        this.state.ejercicios.map(item => {
-                                            return <MenuItem key={item.ejercicio} value={item.ejercicio}>
-                                                {item.ejercicio}
-                                            </MenuItem>
-                                        })
-                                    }
-                                </Select>
-
-                            </FormControl>
-                        </Grid>
-                        <Grid item md={4} xs={12}>
-                            <FormControl className={classes.formControl}>
-                                <InputLabel htmlFor="campoSelectRamo">Ramo</InputLabel>
-                                <Select style={{marginTop: '0px'}}
-                                        value={this.state.ramo}
-                                        onChange={(e) => this.handleChangeCampo('ramo', e)}
-                                        inputProps={{
-                                            name: 'campoSelectRamo',
-                                            id: 'campoSelectRamo',
-                                        }}
-                                >
-                                    <MenuItem key={''} value={''}> TODOS</MenuItem>
-                                    {
-                                        this.state.ramos.map(item => {
-                                            return <MenuItem key={item.ramo} value={item.ramo}>
-                                                {item.ramo}
-                                            </MenuItem>
-                                        })
-                                    }
-                                </Select>
-
-                            </FormControl>
-                        </Grid>
-                        <Grid item md={4} xs={12}>
-                            <FormControl className={classes.formControl}>
-                                <InputLabel htmlFor="campoSelectInstitucion">Institución</InputLabel>
-                                <Select style={{marginTop: '0px'}}
-                                        value={this.state.institucion}
-                                        onChange={(e) => this.handleChangeCampo('institucion', e)}
-                                        inputProps={{
-                                            name: 'campoSelectInstitucion',
-                                            id: 'campoSelectInstitucion',
-                                        }}
-                                >
-                                    <MenuItem  key={''} value={''}>TODAS</MenuItem>
-                                    {
-                                        this.state.instituciones.map(item => {
-                                            return <MenuItem key={item.institucion} value={item.institucion}>
-                                                {item.institucion}
-                                            </MenuItem>
-                                        })
-                                    }
-                                </Select>
-
-                            </FormControl>
-                        </Grid>
-                        <Grid item xs={11}/>
-                        {
-                            /*<Grid item md={1}xs={12} className={classes.buttonContainer}>
-                             <Button variant="contained" color="secondary" className={classes.button}
-                                     onClick={this.loadData}
-                                     disabled={!this.state.ejercicio && !this.state.ramo && !this.state.institucion}>
-                                 Buscar
-                             </Button>
-                         </Grid>
-                         */}
-
-                        <Grid item xs={12} md={1} className={classes.buttonContainer}>
-                            <Button variant="contained" color="secondary" className={classes.button}
-                                    onClick={this.limpiarBusqueda}>
-                                Limpiar
-                            </Button>
-                        </Grid>
-                        <Grid item xs={12}>
-                            {
-                                this.state.config && this.state.config.data &&
-                                <Treemap config={this.state.config}/>
-                            }
-                            {
-                                this.state.error &&
-                                <MensajeErrorDatos/>
-                            }
-                        </Grid>
+                <Grid container>
+                    <Grid item xs={12}>
+                        <Typography variant={"h6"} className={classes.titulo}>
+                            <b>{"Ejercicios, Ramos e Instituciones"}</b>
+                        </Typography>
                     </Grid>
-                </Toolbar>
+                    <Grid item xs={12} className={classes.descripcion}>
+                        <Typography>
+                            En las secciones anteriores se puede observar de manera general el comportamiento de los
+                            procesos de contratación, sin embargo, resulta interesante conocer cómo se distribuyen
+                            estós en
+                            diferntes variables como: Ejericio fiscal, Ramo, Institución.De acuerdo a los valores
+                            que selecciones, podrás obtener 5 diferentes combinaciones que mostrarán lo
+                            siguiente:<br/><br/>
 
-            </div>
+                            1.- <b>Ejercicio:</b> seleccionando únicamente el Ejercicio, conocerás el total de
+                            funcionaros que intervinieron en procesos de contratación en cada uno de ellos<br/>
+                            2.- <b>Ramo:</b> seleccionando únicamente el Ramo, obtendrás el número de funcionarios
+                            que intervinieron en procesos de contratación dentro de ese Ramo en cada uno
+                            de los Ejercicios fiscales<br/>
+                            3.- <b>Institución:</b> selecciona únicamente una Institución o bien el Ramo y la
+                            Institución, para conocer el número de servidores que intervinieron en procesos de
+                            contatación que tuvo en cada uno de los ejercicios fiscales<br/>
+                            4.- <b>Ejercicio y Ramo: </b> Cada Ramo cuenta con una serie de Instituciones,
+                            selecciona un Ejercicio fiscal y un Ramo para conocer como se distribuyen el
+                            número de funcionarios en cada una de las Instituciones en los diferentes años<br/>
+                            5.-<b>Ejercicio, Ramo e Institución: </b> Para conocer de manera puntual el número de
+                            servidores en procesos de contatatación de determinada Institución en cierto Ejercicio,
+                            podrás seleccionar el Ejercicio, Ramo e Institución o bien el Ejercicio y la Institución
+                            deseada.<br/>
 
 
+                            <br/><br/>Para comenzar, selecciona algún filtro y da clic en el botón <b>Buscar</b>
+                        </Typography>
+                    </Grid>
+                    <Grid item md={4} xs={12}>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="campoSelectEjercicio">Ejercicio</InputLabel>
+                            <Select style={{marginTop: '0px'}}
+                                    value={this.state.ejercicio}
+                                    onChange={(e) => this.handleChangeCampo('ejercicio', e)}
+                                    inputProps={{
+                                        name: 'campoSelectEjercicio',
+                                        id: 'campoSelectEjercicio',
+                                    }}
+                            >
+                                <MenuItem key={''} value={''}> TODOS</MenuItem>
+                                {
+                                    this.state.ejercicios.map(item => {
+                                        return <MenuItem key={item.ejercicio} value={item.ejercicio}>
+                                            {item.ejercicio}
+                                        </MenuItem>
+                                    })
+                                }
+                            </Select>
+
+                        </FormControl>
+                    </Grid>
+                    <Grid item md={4} xs={12}>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="campoSelectRamo">Ramo</InputLabel>
+                            <Select style={{marginTop: '0px'}}
+                                    value={this.state.ramo}
+                                    onChange={(e) => this.handleChangeCampo('ramo', e)}
+                                    inputProps={{
+                                        name: 'campoSelectRamo',
+                                        id: 'campoSelectRamo',
+                                    }}
+                            >
+                                <MenuItem key={''} value={''}> TODOS</MenuItem>
+                                {
+                                    this.state.ramos.map(item => {
+                                        return <MenuItem key={item.ramo} value={item.ramo}>
+                                            {item.ramo}
+                                        </MenuItem>
+                                    })
+                                }
+                            </Select>
+
+                        </FormControl>
+                    </Grid>
+                    <Grid item md={4} xs={12}>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="campoSelectInstitucion">Institución</InputLabel>
+                            <Select style={{marginTop: '0px'}}
+                                    value={this.state.institucion}
+                                    onChange={(e) => this.handleChangeCampo('institucion', e)}
+                                    inputProps={{
+                                        name: 'campoSelectInstitucion',
+                                        id: 'campoSelectInstitucion',
+                                    }}
+                            >
+                                <MenuItem key={''} value={''}>TODAS</MenuItem>
+                                {
+                                    this.state.instituciones.map(item => {
+                                        return <MenuItem key={item.institucion} value={item.institucion}>
+                                            {item.institucion}
+                                        </MenuItem>
+                                    })
+                                }
+                            </Select>
+
+                        </FormControl>
+                    </Grid>
+                    <Grid item xs={11}/>
+                    <Grid item xs={12} md={1} className={classes.buttonContainer}>
+                        <Button variant="contained" color="secondary" className={classes.button}
+                                onClick={this.limpiarBusqueda}>
+                            Limpiar
+                        </Button>
+                    </Grid>
+                    <Grid item xs={12}>
+                        {
+                            this.state.config && this.state.config.data &&
+                            <Treemap config={this.state.config}/>
+                        }
+                        {
+                            this.state.error &&
+                            <MensajeErrorDatos/>
+                        }
+                    </Grid>
+                </Grid>
         )
     }
 
