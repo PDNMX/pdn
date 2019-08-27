@@ -35,7 +35,6 @@ class EdadTotalEducacion extends Component {
     };
 
     Promise.all(promises.map(d => d.promise)).then(d => {
-      console.log("d", d);
       this.setState({
         methods: {
           data: d,
