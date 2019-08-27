@@ -203,7 +203,7 @@ class BusquedaServidor extends React.Component {
 
                         </FormControl>
                     </Grid>
-                    {/* <Grid item xs={12} md={6}>
+                    {<Grid item xs={12} md={6}>
                     <FormControl className={classes.formControl}>
                         <InputLabel htmlFor="campoSelectProcedimiento">Procedimiento</InputLabel>
                         <Select style={{marginTop:'0px'}}
@@ -214,7 +214,7 @@ class BusquedaServidor extends React.Component {
                                 id: 'campoSelectProcedimiento',
                             }}
                         >
-                            <MenuItem value={''} key={''}>
+                            <MenuItem value={'TODOS'} key={'TODOS'}>
                                 TODOS
                             </MenuItem>
                             <MenuItem value={'CONTRATACIONES'} key={'CONTRATACIONES'}>CONTRATACIONES</MenuItem>
@@ -224,8 +224,8 @@ class BusquedaServidor extends React.Component {
                         </Select>
 
                     </FormControl>
-                </Grid> */}
-                    <Grid item xs={12} md={12}>
+                </Grid>}
+                    <Grid item xs={12} md={6}>
                         <FormControl className={classes.formControl}>
                             <InputLabel htmlFor={'campoSelectInstitucion'}>Institución</InputLabel>
                             <Select style={{marginTop: '0px'}} value={institucion}
