@@ -4,7 +4,6 @@ import {Typography} from "@material-ui/core"
 import PropTypes from 'prop-types';
 import Footer from '../Home/Footer';
 import TablaServidores from "./TablaServidores";
-//import TablaParticulares from "./TablaParticulares";
 import Grid from "@material-ui/core/Grid/Grid";
 import img1 from "../../assets/img/servidores_intervienen_contratacion.svg";
 import img2 from "../../assets/img/servidores_particulares_inhabilitados.svg";
@@ -20,10 +19,9 @@ const styles = theme => ({
         flexGrow: 1
     },
     whiteText: {
-        color: '#fff', //theme.palette.titleBanner.color,
+        color: theme.palette.textGrey.color
     },
     bgPanelTable: {
-        color: theme.palette.textGrey.color,
         backgroundColor: theme.palette.white.color,
         [theme.breakpoints.up('sm')]: {
             marginBottom: theme.spacing(7),
@@ -31,30 +29,28 @@ const styles = theme => ({
         [theme.breakpoints.down('sm')]: {
             marginBottom: theme.spacing(4),
         },
-
     },
     section: {
         maxWidth: '1200px',
     },
     sectionT: {
-        maxWidth: '1200px',
-        overflowX: 'auto',
-        color: theme.palette.textGrey.color
+        color: theme.palette.textGrey.color,
+        marginTop : theme.spacing(7)
     },
     image: {
-        width: '60px',
-        padding: 0,
-        margin: 0,
-        border: 0
+        width: '60px'
     },
     bgContainer: {
-        backgroundColor: '#34b3eb',//theme.palette.azul.color,
+        backgroundColor: theme.palette.pestanas.bg,
+    },
+    center: {
+        textAlign: 'center'
     },
     links: {
         backgroundColor: theme.palette.grisTenue.color
     },
     card: {
-        backgroundColor: '#34b3eb', //theme.palette.azul.color,
+        backgroundColor: theme.palette.pestanas.bg,
         paddingLeft: theme.spacing(1),
         paddingRight: theme.spacing(1),
         paddingTop: theme.spacing(2),
@@ -62,7 +58,7 @@ const styles = theme => ({
         margin: 0,
     },
     cardSeleccionada: {
-        backgroundColor: 'grey',//theme.palette.white.color,
+        backgroundColor: theme.palette.pestanas.activa,
         paddingLeft: theme.spacing(1),
         paddingRight: theme.spacing(1),
         paddingTop: theme.spacing(2),
@@ -148,7 +144,7 @@ class Index extends React.Component {
                 </Grid>
 
                 <Grid container justify='center' spacing={0} className={classes.bgPanelTable}>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} className={classes.sectionT}>
                         {this.state.idContent === 1 &&
                         <TablaServidores/>
                         }
