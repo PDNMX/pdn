@@ -226,7 +226,7 @@ class DetalleServidor extends React.Component {
                                 <TextField
                                     id="read-only-input"
                                     label="Servidor público"
-                                    defaultValue={servidor.nombre + ' ' + servidor.apellidoUno + ' ' + servidor.apellidoDos}
+                                    defaultValue={servidor.servidor}
                                     className={classes.textField}
                                     margin="normal"
                                     InputProps={{
