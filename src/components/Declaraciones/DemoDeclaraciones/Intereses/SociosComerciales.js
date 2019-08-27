@@ -34,7 +34,7 @@ class SociosComerciales extends  React.Component{
                             <TableCell>Lugar nacimiento</TableCell>
                             <TableCell>Fecha nacimiento</TableCell>
                             <TableCell>Porcentaje participación</TableCell>
-                            <TableCell>Sector/Industria</TableCell>
+                            <TableCell>sector/industria</TableCell>
                             <TableCell>Observaciones</TableCell>
                         </TableRow>
                     </TableHead>

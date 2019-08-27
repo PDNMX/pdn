@@ -26,7 +26,7 @@ class BeneficiosGratuitos extends  React.Component{
                         <TableRow>
                             <TableCell>Tipo beneficio</TableCell>
                             <TableCell>Origen</TableCell>
-                            <TableCell>Sector/Industria</TableCell>
+                            <TableCell>sector/industria</TableCell>
                             <TableCell>Valor</TableCell>
                            <TableCell>Observaciones</TableCell>
                         </TableRow>

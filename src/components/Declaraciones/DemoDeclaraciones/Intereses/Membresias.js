@@ -29,7 +29,7 @@ class Membresias extends  React.Component{
                             <TableCell>Tipo institución</TableCell>
                             <TableCell>Naturaleza membresia</TableCell>
                             <TableCell>Domicilio</TableCell>
-                            <TableCell>Sector/Industria</TableCell>
+                            <TableCell>sector/industria</TableCell>
                             <TableCell>Rol</TableCell>
                             <TableCell>Fecha inicio</TableCell>
                             <TableCell>Pagado</TableCell>

@@ -19,7 +19,7 @@ class ActivosBeneficiosEnEspecie extends Component {
         <Grid item xs={12}>
           <Typography className={classes.titulo}>
             <strong>
-              Uso o Beneficios en Especie Propiedad de un Tercero (
+              Uso o beneficios en especie propiedad de un tercero (
               {this.items().length})
             </strong>
           </Typography>

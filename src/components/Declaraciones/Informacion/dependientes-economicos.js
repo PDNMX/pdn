@@ -49,7 +49,7 @@ class InfoDependientes extends Component {
                           </Grid>
                           <Grid item xs={6}>
                             <Typography className={classes.tituloCard}>
-                              Proveedor o Contratista de Gobierno
+                              Proveedor o contratista de Gobierno
                             </Typography>
                             <Typography className={classes.dataCard}>
                               {!dependiente.proveedor_contratista_gobierno
@@ -63,7 +63,7 @@ class InfoDependientes extends Component {
                         <Grid container spacing={3}>
                           <Grid item xs={6}>
                             <Typography className={classes.tituloCard}>
-                              Intereses en el mismo Sector/Industria
+                              Intereses en el mismo sector/industria
                             </Typography>
                             <Typography className={classes.dataCard}>
                               {!dependiente.tiene_intereses_mismo_sector_declarante
@@ -74,7 +74,7 @@ class InfoDependientes extends Component {
                           <Grid item xs={6}>
                             <Typography className={classes.tituloCard}>
                               Desarrolla actividades de cabildeo en el mismo
-                              Sector/Industria
+                              sector/industria
                             </Typography>
                             <Typography className={classes.dataCard}>
                               {!dependiente.desarrolla_cabildeo_sector_declarante
@@ -132,7 +132,7 @@ class InfoDependientes extends Component {
                                   </Grid>
                                   <Grid item xs={6}>
                                     <Typography className={classes.tituloCard}>
-                                      Valor del Apoyo
+                                      Valor del apoyo
                                     </Typography>
                                     <Typography className={classes.dataCard}>
                                       {new Intl.NumberFormat("es-MX", {

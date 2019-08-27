@@ -39,7 +39,7 @@ class BienesMueblesRegistrables extends  React.Component{
                             <TableCell>Nombre/Denominación adquirio</TableCell>
                             <TableCell>RFC adquirio</TableCell>
                              <TableCell>Relación</TableCell>
-                            <TableCell>Sector/Industria</TableCell>
+                            <TableCell>sector/industria</TableCell>
                             <TableCell>Fecha adquisición</TableCell>
                             <TableCell>Precio adquisición</TableCell>
                             <TableCell>Observaciones</TableCell>

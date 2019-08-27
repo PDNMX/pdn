@@ -40,7 +40,7 @@ class BienesInmuebles extends  React.Component{
                             <TableCell>RFC adquirio</TableCell>
                             <TableCell>CURP adquirio</TableCell>
                             <TableCell>Relación</TableCell>
-                            <TableCell>Sector/Industria</TableCell>
+                            <TableCell>sector/industria</TableCell>
                             <TableCell>Fecha adquisición</TableCell>
                             <TableCell>Precio adquisición</TableCell>
                             <TableCell>Valor catastral</TableCell>

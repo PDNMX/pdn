@@ -39,7 +39,9 @@ class InfoExperiencia extends Component {
                       <Grid item xs={12} className={classes.lineCard}>
                         <Grid container spacing={3}>
                           <Grid item xs={8}>
-                            <Typography className={classes.tituloGeneralCard}>
+                            <Typography
+                              className={classes.tituloGeneralCard}
+                            >
                               Del {job.fecha_ingreso} al {job.fecha_salida}
                             </Typography>
                           </Grid>
@@ -90,7 +92,7 @@ class InfoExperiencia extends Component {
                           </Grid>
                           <Grid item xs={6}>
                             <Typography className={classes.tituloCard}>
-                              Unidad Administrativa / Área
+                              Unidad administrativa / Área
                             </Typography>
                             <Typography className={classes.dataCard}>
                               {job.unidad_administrativa}
@@ -102,7 +104,7 @@ class InfoExperiencia extends Component {
                         <Grid container spacing={3}>
                           <Grid item xs={6}>
                             <Typography className={classes.tituloCard}>
-                              Sector/Industria
+                              sector/industria
                             </Typography>
                             <Typography className={classes.dataCard}>
                               {job.sector_industria.valor}
@@ -138,9 +140,13 @@ class InfoExperiencia extends Component {
                               style={{ fontSize: 14, paddingLeft: 0 }}
                             >
                               <ul>
-                                {job.funciones_principales.map((d, index) => (
-                                  <li key={"funciones-" + index}>{d.valor}</li>
-                                ))}
+                                {job.funciones_principales.map(
+                                  (d, index) => (
+                                    <li key={"funciones-" + index}>
+                                      {d.valor}
+                                    </li>
+                                  )
+                                )}
                               </ul>
                             </Typography>
                           </Grid>

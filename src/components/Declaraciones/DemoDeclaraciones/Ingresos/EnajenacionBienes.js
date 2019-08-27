@@ -27,7 +27,7 @@ class EnajenacionBienes extends  React.Component{
                             <TableCell>Nombre/Denominación</TableCell>
                             <TableCell>RFC</TableCell>
                             <TableCell>CURP</TableCell>
-                            <TableCell>Sector/Industria</TableCell>
+                            <TableCell>sector/industria</TableCell>
                             <TableCell>Tipo Actividad/Servicio</TableCell>
                             <TableCell>Descripción</TableCell>
                             <TableCell>Domicilio</TableCell>

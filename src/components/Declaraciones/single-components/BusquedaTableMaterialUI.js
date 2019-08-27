@@ -69,7 +69,7 @@ class BusquedaTableMaterialUI extends Component {
           <TableHead>
             <TableRow>
               <StyledTableCell>nombre</StyledTableCell>
-              <StyledTableCell>insitución</StyledTableCell>
+              <StyledTableCell>institución</StyledTableCell>
               <StyledTableCell>cargo</StyledTableCell>
               <StyledTableCell>estado</StyledTableCell>
               <StyledTableCell>municipio</StyledTableCell>

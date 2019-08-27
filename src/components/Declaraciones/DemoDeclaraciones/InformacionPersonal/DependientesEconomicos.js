@@ -38,7 +38,7 @@ class DependientesEconomicos extends React.Component {
                             <TableCell>Domicilio</TableCell>
                             <TableCell>Ingresos propios</TableCell>
                             <TableCell>Ocupación/Profesión</TableCell>
-                            <TableCell>Sector/Industria</TableCell>
+                            <TableCell>sector/industria</TableCell>
                             <TableCell>Proveedor/Contratista gobierno</TableCell>
                             <TableCell>¿Intereses en mismo sector?</TableCell>
                             <TableCell>¿Cabildeo?</TableCell>
