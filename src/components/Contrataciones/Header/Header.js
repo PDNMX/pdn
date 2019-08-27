@@ -1,10 +1,11 @@
 import React from 'react';
 import {withStyles} from "@material-ui/core/styles";
 import Grid from '@material-ui/core/Grid';
-import {Link} from 'react-router-dom';
+import {Link as RouterLink} from 'react-router-dom';
+import Link from '@material-ui/core/link'
 import BG from '../../../assets/img/cintillo_contrataciones.jpg';
 import C from '../../../assets/iconos_azul/6_icono.svg'
-import {Typography} from "@material-ui/core"
+import Typography from "@material-ui/core/Typography";
 import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
 import BarraLogoMenu from "../../Compartidos/BarraLogoMenu";
 
@@ -75,7 +76,7 @@ class Header extends React.Component{
                     <Grid item xs={12} className={classes.item3}>
                         <ul>
                             <li>
-                                <Link component={Link} className={classes.link} to='/'>
+                                <Link component={RouterLink} className={classes.link} to='/'>
                                     Plataforma Digital Nacional
                                 </Link>
                             </li>
@@ -101,10 +102,7 @@ class Header extends React.Component{
                         <Typography  className={classes.whiteText} style={{fontSize: '18px',fontWeight: 500}}>
                             Conoce como compra el gobierno, encontrarás información pública sobre cada una de las etapas de las contratacione del gobierno.
                         </Typography>
-                    </Grid>{/*
-                    <Grid item xs={12} align={'center'}>
-                        <Button variant="contained" className={classes.button} component={Link} to="#">Conoce más</Button>
-                    </Grid>*/}
+                    </Grid>
                 </Grid>
             </div>
         )
