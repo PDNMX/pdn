@@ -114,7 +114,7 @@ class ActivosBienesMueblesNoRegistrables extends Component {
                         <Grid container spacing={3}>
                           <Grid item xs={8}>
                             <Typography className={classes.tituloCard}>
-                              Relación con la persona que lo adquirio
+                              Relación con la persona que lo adquirió
                             </Typography>
                             <Typography className={classes.dataCard}>
                               {mueble.relacion_quien_adquirio.valor}

@@ -114,7 +114,7 @@ class InfoPuesto extends Component {
                   </Grid>
                   <Grid item xs={4}>
                     <Typography className={classes.tituloCard}>
-                      Sector/Industria
+                      sector/industria
                     </Typography>
                     <Typography className={classes.dataCard}>
                       {

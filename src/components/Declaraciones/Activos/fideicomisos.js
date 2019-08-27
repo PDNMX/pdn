@@ -126,7 +126,7 @@ class ActivosFideicomisos extends Component {
                         <Grid container spacing={3}>
                           <Grid item xs={4}>
                             <Typography className={classes.tituloCard}>
-                              Residencia (México/Extranjero)
+                              Residencia (México / extranjero)
                             </Typography>
                             <Typography className={classes.dataCard}>
                               {fideicomiso.residencia.valor}
@@ -156,7 +156,7 @@ class ActivosFideicomisos extends Component {
                           </Grid>
                           <Grid item xs={4}>
                             <Typography className={classes.tituloCard}>
-                              Institución Fiduciaria
+                              Institución fiduciaria
                             </Typography>
                             <Typography className={classes.dataCard}>
                               {fideicomiso.institucion_fiduciaria}

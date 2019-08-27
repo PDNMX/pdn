@@ -66,7 +66,7 @@ class EncargoActual extends React.Component {
                             <Grid item md={6} xs={12}>
                                 <TextField disabled
                                            id="sectorIndustria"
-                                           label="Sector/Industria: "
+                                           label="sector/industria: "
                                            className={classes.textField}
                                            value={encargo.sector_industria.valor}
                                            margin="normal" fullWidth

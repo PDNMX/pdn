@@ -70,7 +70,7 @@ class ActivosInversiones extends Component {
                           </Grid>
                           <Grid item xs={4}>
                             <Typography className={classes.tituloCard}>
-                              Nombre de la Institución
+                              Nombre de la institución
                             </Typography>
                             <Typography className={classes.dataCard}>
                               {inversion.nombre_institucion}
@@ -82,7 +82,7 @@ class ActivosInversiones extends Component {
                         <Grid container spacing={3}>
                           <Grid item xs={4}>
                             <Typography className={classes.tituloCard}>
-                              Inversión Nacional o Extranjera
+                              Inversión nacional o extranjera
                             </Typography>
                             <Typography className={classes.dataCard}>
                               {inversion.nacional_extranjero.valor}

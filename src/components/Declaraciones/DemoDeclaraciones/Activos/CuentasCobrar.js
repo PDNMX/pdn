@@ -27,7 +27,7 @@ class CuentasCobrar extends  React.Component{
                             <TableCell>Nombre prestatario</TableCell>
                             <TableCell>Numero registro</TableCell>
                             <TableCell>Domicilio prestatarios</TableCell>
-                            <TableCell>Sector/Industria</TableCell>
+                            <TableCell>sector/industria</TableCell>
                             <TableCell>Fecha prestamo</TableCell>
                             <TableCell>Monto original</TableCell>
                             <TableCell>Tasa interes</TableCell>

@@ -43,7 +43,7 @@ class InteresesResume extends Component {
         amount: [apoyos_beneficios_publicos.length]
       },
       {
-        name: "Representación Activa",
+        name: "Representación activa",
         amount: [representacion_activa.length]
       },
       {

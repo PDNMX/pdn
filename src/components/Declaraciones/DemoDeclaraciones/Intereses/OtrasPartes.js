@@ -34,7 +34,7 @@ class OtrasPartes extends  React.Component{
                             <TableCell>Fecha nacimiento</TableCell>
                             <TableCell>Ocupación</TableCell>
                             <TableCell>Tiene intereses</TableCell>
-                            <TableCell>Sector/Industria</TableCell>
+                            <TableCell>sector/industria</TableCell>
                             <TableCell>Observaciones</TableCell>
                         </TableRow>
                     </TableHead>

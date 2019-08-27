@@ -32,7 +32,7 @@ class OtrasObligaciones extends  React.Component{
                             <TableCell>Nacional/Extranjero</TableCell>
                             <TableCell>Nombre acreedor</TableCell>
                             <TableCell>RFC acreedor</TableCell>
-                            <TableCell>Sector/Industria</TableCell>
+                            <TableCell>sector/industria</TableCell>
                             <TableCell>Domicilio acreedor</TableCell>
                             <TableCell>Fecha obligación</TableCell>
                             <TableCell>Monto original</TableCell>

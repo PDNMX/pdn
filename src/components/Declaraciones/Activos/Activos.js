@@ -50,7 +50,7 @@ class Activos extends Component {
       { name: "Bienes intangibles", value: bienes_intangibles.length },
       { name: "Cuentas por cobrar", value: cuentas_por_cobrar.length },
       {
-        name: "Uso o Beneficios en Especie Propiedad de un Tercero",
+        name: "Uso o beneficios en especie propiedad de un tercero",
         value: uso_especie_propiedad_tercero.length
       }
     ];

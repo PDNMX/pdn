@@ -92,7 +92,7 @@ class ActivosBienesInmuebles extends Component {
                           </Grid>
                           <Grid item xs={4}>
                             <Typography className={classes.tituloCard}>
-                              Valor Catastral
+                              Valor catastral
                             </Typography>
                             <Typography className={classes.dataCard}>
                               {new Intl.NumberFormat("es-MX", {
@@ -135,7 +135,7 @@ class ActivosBienesInmuebles extends Component {
                         <Grid container spacing={3}>
                           <Grid item xs={4}>
                             <Typography className={classes.tituloCard}>
-                              Relación con la persona que lo adquirio
+                              Relación con la persona que lo adquirió
                             </Typography>
                             <Typography className={classes.dataCard}>
                               {inmueble.relacion_persona_adquirio.valor}

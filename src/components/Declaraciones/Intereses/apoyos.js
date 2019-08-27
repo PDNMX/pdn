@@ -80,7 +80,7 @@ class InteresesApoyos extends Component {
                         <Grid container spacing={3}>
                           <Grid item xs={8}>
                             <Typography className={classes.tituloCard}>
-                              Tipo de Apoyo
+                              Tipo de apoyo
                             </Typography>
                             <Typography className={classes.dataCard}>
                               {interes.tipo_apoyo.valor}
