@@ -36,37 +36,28 @@ class App extends Component {
 
     return (
       <div>
-        <Grid
-          container
-          spacing={0}
-          className={classes.infoBusqueda}          
-        >
+        <Grid container spacing={0} className={classes.infoBusqueda}>
           <Grid item xs={12} style={{ maxWidth: 1200, margin: "0 auto" }}>
             <Typography paragraph>
-              Aquí encontrarás la siguiente información:
+              <b>Aquí encontrarás la siguiente información:</b>
             </Typography>
-            <Typography component="div">
-              <ul className={classes.ul}>
-                <li className={classes.li}>
-                  <Typography>
-                    <span className={classes.bullet} />
-                    La evolución patrimonial de las y los funcionarios
-                  </Typography>
-                </li>
-                <li className={classes.li}>
-                  <Typography>
-                    <span className={classes.bullet} />
-                    La trayectoria laboral de las y los funcionarios
-                  </Typography>
-                </li>
-                <li className={classes.li}>
-                  <Typography>
-                    <span className={classes.bullet} />
-                    Sus declaraciones sobre posibles conflictos de interés
-                  </Typography>
-                </li>
-              </ul>
-            </Typography>
+            <ul className={classes.ul}>
+              <li className={classes.li}>
+                <Typography color="textPrimary" display="inline">
+                  La evolución patrimonial de las y los funcionarios
+                </Typography>
+              </li>
+              <li className={classes.li}>
+                <Typography color="textPrimary" display="inline">
+                  La trayectoria laboral de las y los funcionarios
+                </Typography>
+              </li>
+              <li className={classes.li}>
+                <Typography color="textPrimary" display="inline">
+                  Sus declaraciones sobre posibles conflictos de interés
+                </Typography>
+              </li>
+            </ul>
           </Grid>
         </Grid>
         <Grid
@@ -76,8 +67,8 @@ class App extends Component {
           style={{ maxWidth: 1200, margin: "0 auto", padding: "10px 10px" }}
         >
           <Grid item xs={12}>
-            <Typography className={classes.h1}>
-              <strong>Busca un servidor público</strong>
+            <Typography>
+              <b>Busca un servidor público</b>
             </Typography>
             <BusquedaFromMaterialUI getUsers={this.getUsers} />
             {this.showTable()}

@@ -45,9 +45,6 @@ class BusquedaFromMaterialUI extends Component {
               value={this.state.office}
               onChange={this.handleInputChange}
               SelectProps={{
-                MenuProps: {
-                  className: classes.menu
-                },
                 name: "office",
                 id: "age-simple"
               }}
@@ -61,6 +58,26 @@ class BusquedaFromMaterialUI extends Component {
                 </MenuItem>
               ))}
             </TextField>
+            {/* <FormControl className={classes.formControl}>
+              <InputLabel htmlFor={"office"}>Institución</InputLabel>
+              <Select
+                style={{ marginTop: "0px" }}
+                value={this.state.office}
+                onChange={this.handleInputChange}
+                inputProps={{
+                  name: "office",
+                  id: "age-simple"
+                }}
+              >
+                {ConstClass.OFICINAS.map((d, i) => {
+                  return (
+                    <MenuItem key={"oficina-" + i} value={d}>
+                      {d}
+                    </MenuItem>
+                  );
+                })}
+              </Select>
+            </FormControl> */}
           </Grid>
           <Grid item xs={12} md={3}>
             <TextField
@@ -72,6 +89,10 @@ class BusquedaFromMaterialUI extends Component {
               onChange={this.handleInputChange}
               margin="normal"
               fullWidth
+              InputLabelProps={{
+                className: classes.inputShrink,
+                shrink: true
+              }}
             />
           </Grid>
           <Grid item xs={12} md={3}>
@@ -81,16 +102,17 @@ class BusquedaFromMaterialUI extends Component {
               value={this.state.surname_a}
               className={classes.textField}
               onChange={this.handleInputChange}
-              label="Primer apellido"
+              label="Apellido uno"
               margin="normal"
               fullWidth
+              InputLabelProps={{
+                className: classes.inputShrink,
+                shrink: true
+              }}
             />
           </Grid>
           <Grid item xs={12} md={10}>
-            <FormControl
-              component="fieldset"
-              className={classes.formControl}
-            >
+            <FormControl component="fieldset" className={classes.formControl}>
               <FormLabel component="legend">Nivel:</FormLabel>
               <RadioGroup
                 aria-label="nivel"
