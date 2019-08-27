@@ -18,7 +18,7 @@ class Disclaimer extends React.Component{
         return (
             <div className={classes.root}>
                 <Typography paragraph color="textPrimary">
-                    En esta sección encontrarás la metodología para evaluar la calidad de datos abiertos.
+                    En esta sección encontrarás una metodología que proponemos para evaluar la calidad de datos abiertos.
                     Con esta metodología se evaluaron los 44 conjuntos de datos de la Guía de apertura anticorrupción.
                 </Typography>
 
