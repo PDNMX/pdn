@@ -3,7 +3,7 @@ import {withStyles} from "@material-ui/core/styles";
 import Grid from '@material-ui/core/Grid';
 import {Link} from 'react-router-dom';
 import BG from '../../../../assets/img/especificaciones.jpg';
-import C from '../../../../assets/icono-conexion.svg'
+import C from '../../../../assets/img/logoespecificaciones.svg';
 import {Typography} from "@material-ui/core"
 import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
 import BarraLogoMenu from "../../../Compartidos/BarraLogoMenu";
@@ -64,6 +64,8 @@ class Header extends React.Component{
         return(
             <div className={classes.root}>
                 <BarraLogoMenu/>
+
+
                 <Grid container spacing={0} className="breadcrumb" justify='center'>
                     <Grid item xs={12} className={classes.item3}>
                         <ul>
