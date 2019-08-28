@@ -155,7 +155,7 @@ class BusquedaServidor extends React.Component {
 
                         </FormControl>
                     </Grid> */}
-                    <Grid item xs={12} md={4}>
+                    <Grid item xs={12} md={3}>
                         <FormControl className={classes.formControl}>
                             <TextField
                                 id="search"
@@ -171,7 +171,7 @@ class BusquedaServidor extends React.Component {
 
                         </FormControl>
                     </Grid>
-                    <Grid item xs={12} md={4}>
+                    <Grid item xs={12} md={3}>
                         <FormControl className={classes.formControl}>
                             <TextField
                                 id="search"
@@ -187,7 +187,7 @@ class BusquedaServidor extends React.Component {
 
                         </FormControl>
                     </Grid>
-                    <Grid item xs={12} md={4}>
+                    <Grid item xs={12} md={3}>
                         <FormControl className={classes.formControl}>
                             <TextField
                                 id="search"
@@ -203,7 +203,7 @@ class BusquedaServidor extends React.Component {
 
                         </FormControl>
                     </Grid>
-                    {<Grid item xs={12} md={6}>
+                    {<Grid item xs={12} md={3}>
                     <FormControl className={classes.formControl}>
                         <InputLabel htmlFor="campoSelectProcedimiento">Procedimiento</InputLabel>
                         <Select style={{marginTop:'0px'}}
@@ -248,7 +248,7 @@ class BusquedaServidor extends React.Component {
                         </FormControl>
                     </Grid>
                     
-                    <Grid item md={10} xs={12}>
+                    <Grid item md={6} xs={12}>
                         <FormControl component="fieldset" className={classes.formControl}>
                             <FormLabel component="legend">Nivel</FormLabel>
                             <RadioGroup row
@@ -265,6 +265,7 @@ class BusquedaServidor extends React.Component {
 
                         </FormControl>
                     </Grid>
+                    <Grid item xs={10}/>
                     <Grid item xs={12} md={1} className={classes.centrado}>
                         <Button variant="contained" color="secondary" className={classes.button} onClick={this.buscar}>
                             Buscar

@@ -2,11 +2,12 @@ import React from 'react';
 import {withStyles} from "@material-ui/core/styles";
 import Grid from '@material-ui/core/Grid';
 import {Link} from 'react-router-dom';
-// import PDNLogo from '../../../../assets/logo_PDN_2.svg';
-import PDNLogo from '../../../../assets/PDN.png';
 import {Typography} from "@material-ui/core"
-import withWidth from '@material-ui/core/withWidth';
+import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
 import BG from '../../../../assets/img/calidad_datos.jpg';
+import BarraLogoMenu from "../../../Compartidos/BarraLogoMenu";
+import Logo from '../../../../assets/img/logocalidad_datos.svg';
+
 const style = theme => ({
         root: {
             flexGrow: 1,
@@ -45,6 +46,15 @@ const style = theme => ({
             paddingLeft: "40px",
             paddingTop: "40px",
             paddingBottom: "40px"
+        },
+        logo: {
+            width: 160
+        },
+        caption: {
+            marginTop: '50px',
+            color: "#fff",
+            fontSize: '36px',
+            fontWeight: 300
         }
     }
 );
@@ -58,14 +68,7 @@ class Header extends React.Component{
             <div className={classes.root}>
 
 
-                <Grid container spacing={0} justify="center" style={{background: '#fff'}}>
-                    <Grid item xs={12} className={classes.item3}>
-                        <Link to="/" className={classes.link}>
-                          <img src={PDNLogo} alt="PDN" className={classes.pdnLogo}/>
-                        </Link>
-                    </Grid>
-                </Grid>
-
+               <BarraLogoMenu/>
                 <Grid container spacing={0} className="breadcrumb" justify='center'>
                     <Grid item xs={12} className={classes.item3}>
                         <ul>
@@ -79,15 +82,19 @@ class Header extends React.Component{
                     </Grid>
                 </Grid>
 
-
-
                 <Grid container spacing={0} style={{ padding: "82px 0"}} justify='center' className={classes.container}>
-                  <Grid item xs={12} md={7} className={classes.item2} align='center' >
-                      <Typography variant="h1" paragraph className={classes.whiteText} style={{fontSize: '36px', fontWeight: 300}}>
-                          Evaluación de la calidad de los datos
-                      </Typography>
 
-                  </Grid>
+                    <Grid item xs={12} md={4} className={classes.item1} align={isWidthUp('md', this.props.width)? 'right':'center'}>
+
+                        <img src={Logo} alt="Calidad" className={classes.logo}/>
+
+                    </Grid>
+
+                    <Grid item xs={12} md={6} className={classes.item2} align={isWidthUp('md', this.props.width)? 'left':'center'} >
+                        <Typography variant="h1" paragraph className={classes.caption}>
+                            Evaluación de la calidad de los datos
+                        </Typography>
+                    </Grid>
                 </Grid>
 
             </div>

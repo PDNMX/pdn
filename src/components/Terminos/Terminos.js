@@ -4,7 +4,8 @@ import {Typography} from "@material-ui/core"
 import Grid from '@material-ui/core/Grid';
 import {withStyles} from '@material-ui/core/styles';
 import Header from "./Header/Header.js";
-import by from '../../assets/about/by.svg';
+//import by from '../../assets/about/by.svg';
+import Link from '@material-ui/core/Link'
 import Footer from '../Home/Footer';
 import './Terminos.css';
 import ScrollToTopButton from "../Navigation/ScrollToTopButton";
@@ -58,22 +59,22 @@ class Terminos extends React.Component {
                         <ul className={classes.ul}>
                             <li className={classes.li}>
                                 <Typography display='inline'>
-                                    <a target={"_blank"} href={"http://www.diputados.gob.mx/LeyesBiblio/pdf/LGSNA.pdf"}>Ley General del
-                                        Sistema Nacional Anticorrupción</a>, publicada en el Diario Oficial de
+                                    <Link target="_blank" href={"http://www.diputados.gob.mx/LeyesBiblio/pdf/LGSNA.pdf"}>Ley General del
+                                        Sistema Nacional Anticorrupción</Link>, publicada en el Diario Oficial de
                                     la Federación el 18 de julio del 2016.
                                 </Typography>
                             </li>
                             <li className={classes.li}>
                                 <Typography display="inline">
-                                    <a target={"_blank"} href={"http://www.diputados.gob.mx/LeyesBiblio/pdf/LGRA_120419.pdf"}>Ley General
-                                        de Responsabilidades Administrativas</a>, publicada en el Diario Oficial de
+                                    <Link target={"_blank"} href={"http://www.diputados.gob.mx/LeyesBiblio/pdf/LGRA_120419.pdf"}>Ley General
+                                        de Responsabilidades Administrativas</Link>, publicada en el Diario Oficial de
                                     la Federación el 12 de abril del 2016.
                                 </Typography>
                             </li>
                             <li className={classes.li}>
                                 <Typography display='inline'>
-                                    <a target={"_blank"} href={"https://www.dof.gob.mx/nota_detalle.php?codigo=5541802&fecha=23/10/2018"}>Bases
-                                        para el Funcionamiento de la Plataforma Digital Nacional</a>, publicadas en el
+                                    <Link target={"_blank"} href={"https://www.dof.gob.mx/nota_detalle.php?codigo=5541802&fecha=23/10/2018"}>Bases
+                                        para el Funcionamiento de la Plataforma Digital Nacional</Link>, publicadas en el
                                     Diario Oficial de la Federación el 23 de octubre del 2018.
                                 </Typography>
                             </li>
@@ -339,8 +340,8 @@ class Terminos extends React.Component {
                             Al respecto, estos Términos y Condiciones pueden cambiar, por lo que te pedimos revisar
                             constantemente nuestro portal.
                             <br/><br/>
-                            El uso del portal <a target={"_blank"}
-                            href={"https://plataformadigitalnacional.org/"}>https://plataformadigitalnacional.org/</a> o
+                            El uso del portal <Link target="_blank"
+                            href="https://plataformadigitalnacional.org/">plataformadigitalnacional.org</Link> o
                             de cualquiera de sus componentes,
                             implica la aceptación expresa de los presentes “Términos y Condiciones”
                         </Typography>
