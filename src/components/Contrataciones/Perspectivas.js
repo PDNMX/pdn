@@ -12,9 +12,10 @@ const styles = theme => ({
     },
     icon: {
         maxWidth: 200,
-        '&:hover':{
+        opacity: 0.5
+        /*'&:hover':{
             opacity: 0.5
-        }
+        }*/
     },
     iconText: {
         color: theme.palette.text.primary,

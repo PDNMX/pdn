@@ -38,7 +38,10 @@ const CountTooltip  = props => {
             <p>
                 Número de contrataciones:
             <br/>
-                <b>{props.value.theta.toFixed(0)}</b>
+                <b>{
+                    //props.value.theta.toFixed(0)
+                    new Intl.NumberFormat('es-MX').format(props.value.theta)
+                }</b>
             </p>
         </div>
     );

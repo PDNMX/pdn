@@ -276,11 +276,9 @@ class Tops extends React.Component {
                         </Grid>
                         <Grid item xs={12} className={classes.descripcion}>
                             <Typography variant={"body1"}>
-                                Debido a la gran variedad de datos, en está gráfica puedes obtener el Top 10 de
-                                una serie de valores representantivos como: Procedimiento, Instituciones,
-                                Unidades Responsables y Puestos. Adicionalmente, puedes profundizar los resultados
-                                seleccionando algún Ejercicio fiscal, Ramo o Institución
-                                <br/><br/>Para comenzar, selecciona un top y da clic en el botón <b>Buscar</b>
+                                En esta gráfica puedes conocer los procedimientos, las instituciones, unidades responsables o puestos con más registros de manera general o bien en cada ejercicio, ramo, o institución.
+
+                                <br/><br/>Selecciona una categoría y da clic en <b>Buscar</b>
                             </Typography>
                         </Grid>
                         <Grid item md={3} xs={12}>

@@ -2,11 +2,10 @@ import React from 'react';
 import {withStyles} from "@material-ui/core/styles";
 import Grid from '@material-ui/core/Grid';
 import {Link} from 'react-router-dom';
-// import PDNLogo from '../../../assets/logo_PDN_2.svg';
-import PDNLogo from '../../../assets/PDN.png';
 import {Typography} from "@material-ui/core"
 import withWidth from '@material-ui/core/withWidth';
 import BG from "../../../assets/img/mesa_ayuda.jpg";
+import BarraLogoMenu from "../../Compartidos/BarraLogoMenu";
 
 const style = theme => ({
         root: {
@@ -61,13 +60,7 @@ class Header extends React.Component{
             <div className={classes.root}>
                 {/*<PDNAppBar/>*/}
 
-                <Grid container spacing={0} justify="center" style={{background: '#fff'}}>
-                    <Grid item xs={12} className={classes.item3}>
-                        <Link to="/" className={classes.link}>
-                          <img src={PDNLogo} alt="PDN" className={classes.pdnLogo}/>
-                        </Link>
-                    </Grid>
-                </Grid>
+                <BarraLogoMenu/>
 
                 <Grid container spacing={0} className="breadcrumb" justify='center'>
                     <Grid item xs={12} className={classes.item3}>
@@ -85,7 +78,7 @@ class Header extends React.Component{
                 <Grid container spacing={0} className={classes.container} justify='center'>
                   <Grid item xs={12} md={7} className={classes.item2} align='center' >
                       <Typography variant="h1" paragraph className={classes.whiteText} style={{fontSize: '36px', fontWeight: 300}}>
-                          Términos de uso
+                          Términos y condiciones de uso
                       </Typography>
                   </Grid>
                 </Grid>
