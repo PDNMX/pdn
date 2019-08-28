@@ -97,11 +97,10 @@ const columnData = [
     }
 ];
 
-
 const styles = theme => ({
     root: {
-        width: '100%',
-        marginTop: theme.spacing(3),
+        marginTop: '30px',
+        marginBottom: '30px',
     },
     tableWrapper: {
         overflowX: 'auto',
@@ -118,11 +117,7 @@ const styles = theme => ({
         top: 0,
         bottom: 0
     },
-    container: {
-        marginTop: '30px',
-        marginBottom: '30px',
-        overflowX: 'auto',
-    },
+
     section: {
         maxWidth: '1200px',
         overflowX: 'auto'
@@ -135,8 +130,7 @@ const styles = theme => ({
         fontSize: '0.75rem'
     },
     gridTable: {
-        marginBottom: '27px',
-
+        marginBottom: '27px'
     },
     desc: {
         color: theme.palette.primary.dark,
@@ -144,32 +138,27 @@ const styles = theme => ({
     item: {
         padding: theme.spacing(1)
     },
-    containerPrevios: {
-    marginLeft: theme.spacing(2)
-},
-    // informacion sobre buscar funcionario
-    bullet: {
-        backgroundColor: "#89d4f2",
-        height: "10px",
-        width: "10px",
-        borderRadius: "50%",
-        display: "inline-block",
-        marginLeft: "-20px",
-        marginRight: "10px",
-        marginBottom: "1px"
+    container: {
+        marginTop: '30px',
+        marginBottom: '30px',
+        overflowX: 'auto',
     },
+    containerPrevios: {
+        marginLeft: theme.spacing(2)
+    } ,
     ul: {
         listStyle: "none",
-        //marginLeft: 0,
         paddingLeft: "20px"
     },
     infoBusqueda: {
         paddingRight: theme.spacing(1),
         paddingLeft: theme.spacing(1),
-        paddingBottom: theme.spacing(4),
-        paddingTop: theme.spacing(4),
+        //paddingBottom: theme.spacing(4),
+      //  paddingTop: theme.spacing(4),
+        backgroundColor: "white"
 
-    }, toolBarStyle: {
+    },
+    toolBarStyle: {
         backgroundColor: 'transparent',
         position: 'relative',
         zIndex: 3,
@@ -178,8 +167,17 @@ const styles = theme => ({
         maxWidth: '1200px',
 
     },
-
-
+    li: {
+        "&:before": {
+            content: '"•"',
+            color: '#5fb1e6',
+            fontWeight: "bold",
+            display: "inline-block",
+            width: "1em",
+            marginLeft: "-1em"
+        },
+        //paddingBottom: theme.spacing(2)
+    },
 });
 
 
@@ -417,35 +415,26 @@ class EnhancedTable extends React.Component {
                 <Grid
                     container
                     spacing={0}
-                    className={classes.infoBusqueda}
-                    style={{backgroundColor: "#f6f6f6"}}
+                    style={{backgroundColor: "#fff"}}
                 >
                     <Grid item xs={12} style={{maxWidth: 1200, margin: "0 auto"}}>
                         <Typography paragraph>
                             <b>Aquí encontrarás la siguiente información:</b>
                         </Typography>
-                        <Typography component="div">
+                        
                             <ul className={classes.ul}>
                                 <li className={classes.li}>
-                                    <Typography>
-                                        <span className={classes.bullet}/>
+                                    <Typography color="textPrimary" display='inline'>
                                         Consulta los servidores que intervienen en procesos de contratación por institución, a nivel federal y/o estatal
                                     </Typography>
                                 </li>
                                 <li className={classes.li}>
-                                    <Typography>
-                                        <span className={classes.bullet}/>
+                                    <Typography color="textPrimary" display='inline'>
                                         Obtén datos del servidor como: nombre, puesto, institución
                                     </Typography>
                                 </li>
-                                {/* <li className={classes.li}>
-                                    <Typography>
-                                        <span className={classes.bullet}/>
-                                        Obtén los datos de la sanción impuesta al servidor: plazo, tipo de falta, causa, etc.
-                                    </Typography>
-                                </li> */}
                             </ul>
-                        </Typography>
+                        
                     </Grid>
                 </Grid>
                 <Grid container justify={'center'} spacing={0} className={classes.gridTable}>
