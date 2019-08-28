@@ -88,7 +88,7 @@ class Header extends React.Component {
                                 <Link className={classes.link} to='/'>Plataforma Digital Nacional</Link>
                             </li>
                             <li>
-                                Servidores públicos y particulares sancionados
+                                Sancionados
                             </li>
                         </ul>
                     </Grid>
@@ -102,16 +102,11 @@ class Header extends React.Component {
 
                     <Grid item xs={12} md={6} className={classes.item2}
                           align={isWidthUp('md', this.props.width) ? 'left' : 'center'}>
-                        <Typography variant="h4" paragraph className={classes.whiteText} style={{fontWeight: 300}}>
-                            Servidores públicos y particulares
-                        </Typography>
                         <Typography variant="h4" paragraph className={classes.whiteText} style={{fontWeight: 600}}>
                             Sancionados
                         </Typography>
-                        <Typography className={classes.whiteText} style={{fontSize: '18px', fontWeight: 500}}>
-                            Consulta y visualiza los datos de las sanciones o inhabilitación firmes <br/>
-                            en contra de servidores públicos, así como los datos de particulares <br/>
-                            inhabilitados para celebrar contratos con el gobierno.
+                        <Typography variant="h4" paragraph className={classes.whiteText} style={{fontWeight: 300}}>
+                            Sistema nacional de Servidores públicos y particulares sancionados
                         </Typography>
                     </Grid>
                   {  /*<Grid item xs={12} align={'center'}>

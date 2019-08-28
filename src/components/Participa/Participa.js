@@ -13,7 +13,7 @@ const styles = theme => ({
         top: '50%',
         left: '50%',
         transform: 'translate(-50%,-50%)',
-        padding: theme.spacing(2),
+       // padding: theme.spacing(2),
     },
     title: {
         color: theme.palette.primary.dark
@@ -76,9 +76,9 @@ class Participa extends React.Component {
         const {classes} = this.props;
         return (
             <div className={classes.paper}>
-                <Grid container justify={"center"}>
-                    <Grid item xs={11}/>
-                    <Grid item xs={1}>
+
+            < Grid container justify={"center"}>
+                    <Grid item xs={12} style={{"textAlign":"right"}} >
                         <Button variant="text" color="primary" className={classes.close}
                                 onClick={() => this.props.onClose()}>
                             X
@@ -88,24 +88,10 @@ class Participa extends React.Component {
                 <Grid container spacing={4} className={classes.contenedor}>
                     <Grid item xs={12}>
                         <iframe title={'Participa'}
-                            src="https://docs.google.com/forms/d/e/1FAIpQLSc14vP4mdWiNLx0TAXMZ_Cizd43CGdhpHruWddyb6fPCJq0zg/viewform?embedded=true"
-                            width="700" height="600" frameBorder="0" marginHeight="0" marginWidth="0">Loading...
+                            src={process.env.REACT_APP_LINK_GOOGLEFORM}
+                            width="auto" height="100%" frameBorder="0" marginHeight="0" marginWidth="0">Loading…
                         </iframe>
                     </Grid>
-                    {
-                        /*
-                        <Grid item xs={10}>
-                    </Grid>
-                    <Grid item xs={2}>
-                        <Button variant="contained" color="primary" className={classes.button}
-                                onClick={() => this.props.onClose()}>
-                            Cerrar
-                        </Button>
-                    </Grid>
-                        * */
-                    }
-
-
                 </Grid>
             </div>
         );

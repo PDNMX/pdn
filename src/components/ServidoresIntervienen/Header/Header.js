@@ -89,7 +89,7 @@ class Header extends React.Component{
                                 <Link className={classes.link} to='/'>Plataforma Digital Nacional</Link>
                             </li>
                             <li>
-                                Servidores que intervienen en procesos de contratación
+                                Servidores públicos en contrataciones
                             </li>
                         </ul>
                     </Grid>
@@ -101,19 +101,12 @@ class Header extends React.Component{
                     </Grid>
 
                     <Grid item xs={12} md={6} className={classes.item2} align={isWidthUp('md', this.props.width)? 'left':'center'} >
-                        <Typography variant="h4" paragraph className={classes.whiteText} style={{fontWeight: 300}}>
-                            Servidores que intervienen en
-                        </Typography>
                         <Typography variant="h4" paragraph className={classes.whiteText} style={{  fontWeight: 600}}>
-                            procesos de contratación
+                            Servidores públicos en contrataciones
                         </Typography>
-                        <Typography  className={classes.whiteText} style={{fontSize: '18px',fontWeight: 500}}>
-                            Conoce a los servidores públicos responsables de llevar
-                            <br/>
-                            correctamente las compras del gobierno.
+                        <Typography variant="h4" paragraph className={classes.whiteText} style={{fontWeight: 300}}>
+                            Sistema de los Servidores públicos que intervengan en procedimientos de contrataciones públicas
                         </Typography>
-
-
                     </Grid>
                     {/*<Grid item xs={12} align={'center'}>
                         <Button  variant="contained" className={classes.button}

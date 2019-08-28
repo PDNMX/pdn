@@ -63,8 +63,8 @@ class Header extends React.Component{
 
         return(
             <div className={classes.root}>
-
                 <BarraLogoMenu/>
+
 
                 <Grid container spacing={0} className="breadcrumb" justify='center'>
                     <Grid item xs={12} className={classes.item3}>

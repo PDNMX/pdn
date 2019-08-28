@@ -8,6 +8,12 @@ import {Link} from "react-router-dom";
 import withWidth from "@material-ui/core/withWidth/withWidth";
 import Tooltip from '@material-ui/core/Tooltip';
 import {Typography} from "@material-ui/core";
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
+import Collapse from "@material-ui/core/Collapse/Collapse";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import Button from "@material-ui/core/Button";
 
 
 const style = theme => ({
@@ -15,8 +21,11 @@ const style = theme => ({
         fill: "#808080",
         fontSize: "36px",
     },
-    text : {
-        whiteSpace : "initial"
+    text: {
+        whiteSpace: "initial"
+    },
+    aux: {
+        textTransform: "none"
     }
 
 });
@@ -25,7 +34,8 @@ class MenuSistemas extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            anchorEl: null
+            anchorEl: null,
+            open2: false
         };
     }
 
@@ -36,6 +46,13 @@ class MenuSistemas extends React.Component {
     handleMenu = event => {
         this.setState({anchorEl: event.currentTarget});
     };
+
+    handleToggle = () => {
+        this.setState({
+            open2: !this.state.open2,
+        })
+    };
+
 
     render() {
         const {classes} = this.props;
@@ -67,33 +84,59 @@ class MenuSistemas extends React.Component {
                     open={open}
                     onClose={this.handleClose}
                 >
-                    <MenuItem component={Link} to="/declaraciones">
-                        <Tooltip title={'Declaración patrimonial y de intereses'}>
-                            <Typography className={classes.text} variant="inherit" noWrap>{"Declaraciones"}</Typography>
-                        </Tooltip>
+                    <MenuItem
+                        onClick={this.handleToggle}> Sistemas {this.state.open2 != null ? this.state.open2 ?
+                        <ExpandLess/> : <ExpandMore/> : null}
                     </MenuItem>
-                    <MenuItem component={Link} to="/servidores">
-                        <Tooltip title={'Servidores públicos que intervienen en contrataciones'}>
-                            <Typography className={classes.text} variant="inherit" noWrap>{"Servidores públicos en contrataciones"}</Typography>
-                        </Tooltip>
-                    </MenuItem>
-                    <MenuItem component={Link} to="/sancionados">
-                        <Tooltip title={'Servidores públicos y particulares sancionados'}>
-                            <Typography className={classes.text} variant="inherit" noWrap>{"Sancionados"}</Typography>
-                        </Tooltip>
-                    </MenuItem>
-                    <MenuItem component={Link} disabled={true} to="#">
-                        <Typography className={classes.text}  variant="inherit" noWrap>{"Fiscalización"}</Typography>
-                    </MenuItem>
-                    <MenuItem component={Link} disabled={true} to="/#">
-                        <Typography className={classes.text} variant="inherit" noWrap>{"Denuncias"}</Typography>
-                    </MenuItem>
-                    <MenuItem component={Link} to="/contrataciones">
-                        <Tooltip title={'Contrataciones públicas'}>
-                            <Typography className={classes.text} variant="inherit" noWrap>{"Contrataciones"}</Typography>
-                        </Tooltip>
-                    </MenuItem>
+                    <Collapse in={this.state.open2} timeout="auto" unmountOnExit>
+                        <List component={"div"}>
+                            <Tooltip
+                                title={"Sistema de evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal"}>
+                                <ListItem button component={Link} to={"/declaraciones"}>
+                                    Declaraciones</ListItem>
+                            </Tooltip>
 
+                            <Tooltip
+                                title={"Sistema de los Servidores públicos que intervengan en procedimientos de contrataciones públicas"}>
+                            <ListItem button component={Link} to={"/servidores"}>Servidores públicos en
+                                contrataciones</ListItem>
+                            </Tooltip>
+
+                            <Tooltip
+                                title={"Sistema nacional de Servidores públicos y particulares sancionados"}>
+                            <ListItem button component={Link} to={"/sancionados"}>Sancionados</ListItem>
+                            </Tooltip>
+
+                            <Tooltip
+                                title={"Sistema de información y comunicación del Sistema Nacional y del Sistema Nacional de Fiscalización"}>
+                            <ListItem button component={Link} to={"#"} disabled={true}>Fiscalización</ListItem>
+                            </Tooltip>
+
+                            <Tooltip
+                                title={"Sistema de denuncias públicas de faltas administrativas y hechos de corrupción"}>
+                            <ListItem button component={Link} to={"#"} disabled={true}>Denuncias</ListItem>
+                            </Tooltip>
+
+                            <Tooltip
+                                title={"Sistema de Información Pública de Contrataciones"}>
+                            <ListItem button component={Link} to={"/contrataciones"}>Contrataciones</ListItem>
+                            </Tooltip>
+                        </List>
+                    </Collapse>
+                    <MenuItem component={Link} to="/mesa-de-ayuda">
+                        <Typography className={classes.text} variant="inherit" noWrap>{"Mesa de ayuda"}</Typography>
+                    </MenuItem>
+                    <MenuItem component={Button} className={classes.aux}
+                              href="https://www.plataformadigitalnacional.org/blog">Blog</MenuItem>
+                    <MenuItem component={Link} to="/gaa/calidad">
+                        <Typography className={classes.text} variant="inherit" noWrap>{"Calidad de datos"}</Typography>
+                    </MenuItem>
+                    <MenuItem component={Link} to="/especificaciones">
+                        <Typography className={classes.text} variant="inherit" noWrap>{"Especificaciones"}</Typography>
+                    </MenuItem>
+                    <MenuItem component={Button} className={classes.aux}
+                              href="https://plataformadigitalnacional.org/mapa-sla/">Interconexión
+                        subnacional</MenuItem>
                 </Menu>
             </div>
         );

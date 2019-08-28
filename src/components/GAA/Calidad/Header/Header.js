@@ -69,7 +69,6 @@ class Header extends React.Component{
 
 
                <BarraLogoMenu/>
-
                 <Grid container spacing={0} className="breadcrumb" justify='center'>
                     <Grid item xs={12} className={classes.item3}>
                         <ul>
