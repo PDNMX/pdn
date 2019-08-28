@@ -44,7 +44,7 @@ class Previos extends React.Component {
                 <Grid container justify='center' spacing={0} className={classes.gridTable}>
                     <Grid item xs={12}>
                         {previos && previos.length > 0 &&
-                        <Typography variant="body1" >Pulsa en <IconSubdirectory className={classes.iconoVer}/> para ver el detalle<br/></Typography>
+                        <Typography variant="body1" >La siguiente tabla muestra el resultado devuelto por cada Proveedor de información a través de su API. Pulsa en <IconSubdirectory className={classes.iconoVer}/> para ver el detalle<br/></Typography>
                         }
                     </Grid>
                     <Grid item xs={12}>
@@ -53,7 +53,8 @@ class Previos extends React.Component {
                             <Table className={classes.table}>
                                 <TableHead style={{backgroundColor:'rgb(52, 179, 235)'}}>
                                     <TableRow>
-                                        <TableCell align="left" variant={"head"} className={classes.tableHead}><Typography variant={"body1"}> Sujeto obligado</Typography></TableCell>
+                                        <TableCell align="left" variant={"head"} className={classes.tableHead}><Typography variant={"body1"}>Nivel</Typography></TableCell>
+                                        <TableCell align="left" variant={"head"} className={classes.tableHead}><Typography variant={"body1"}> Proveedor de información</Typography></TableCell>
                                         <TableCell align="center" variant={"head"} className={classes.tableHead}><Typography variant={"body1"}>Estatus</Typography></TableCell>
                                         <TableCell align="center" variant={"head"} className={classes.tableHead}><Typography variant={"body1"}>Número de registros</Typography></TableCell>
                                         <TableCell align="center" variant={"head"} className={classes.tableHead}><Typography variant={"body1"}>Acciones</Typography></TableCell>
@@ -62,6 +63,7 @@ class Previos extends React.Component {
                                 <TableBody style={{backgroundColor:'#f2f2f2'}}>
                                     {previos.map(row => (
                                         <TableRow key={row.sujeto_obligado}>
+                                            <TableCell align="left">{row.nivel}</TableCell>
                                             <TableCell align="left">{row.sujeto_obligado}</TableCell>
                                             <TableCell align="center">
                                                 <Tooltip title={row.estatus?" Conectado":" No conectado"}>
