@@ -119,7 +119,7 @@ class Index extends React.Component {
                                     <img src={img3} className={classes.tabIcon}/>
                                 </figure>
 
-                                <Typography color='textPrimary' style={{fontWeight: isSelected(0)?500:300}}>
+                                <Typography color='textPrimary' style={{fontWeight: isSelected(0)?500:300, paddingTop: 20}}>
                                     Visualiza las contrataciones
                                 </Typography>
 
@@ -134,7 +134,7 @@ class Index extends React.Component {
                                     <img src={img1} className={classes.tabIcon} />
                                 </figure>
 
-                                <Typography color='textPrimary' style={{fontWeight: isSelected(1)?500:300}}>
+                                <Typography color='textPrimary' style={{fontWeight: isSelected(1)?500:300, paddingTop: 20}}>
                                     Explora las contrataciones
                                 </Typography>
 
