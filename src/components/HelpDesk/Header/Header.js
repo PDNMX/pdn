@@ -88,7 +88,7 @@ class Header extends React.Component{
                         <img src={Logo} alt="Mesa de ayuda" className={classes.logo} />
                     </Grid>
 
-                    <Grid item xs={12} md={8} align={isWidthUp('md', this.props.width)? 'left':'center'} className={classes.item2}>
+                    <Grid item xs={12} md={6} align={isWidthUp('md', this.props.width)? 'left':'center'} className={classes.item2}>
                         <Typography variant="h1" paragraph className={classes.mesa}>
                             Mesa de ayuda
                         </Typography>

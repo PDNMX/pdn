@@ -90,7 +90,7 @@ class Header extends React.Component{
 
                     </Grid>
 
-                    <Grid item xs={12} md={8} className={classes.item2} align={isWidthUp('md', this.props.width)? 'left':'center'} >
+                    <Grid item xs={12} md={6} className={classes.item2} align={isWidthUp('md', this.props.width)? 'left':'center'} >
                         <Typography variant="h1" paragraph className={classes.caption}>
                             Evaluación de la calidad de los datos
                         </Typography>

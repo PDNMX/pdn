@@ -85,15 +85,15 @@ class Header extends React.Component{
                     </Grid>
 
                     <Grid item xs={12} md={6} className={classes.item2} align={isWidthUp('md', this.props.width)? 'left':'center'} >
-                        <Typography variant="h4" paragraph className={classes.whiteText} style={{fontWeight: 300}}>
-                            Especificaciones técnicas y
-                        </Typography>
+
                         <Typography variant="h4" paragraph className={classes.whiteText} style={{  fontWeight: 600}}>
-                            estándares de datos
+                            Especificaciones técnicas y estándares de datos
                         </Typography>
-                        <Typography  className={classes.whiteText} style={{fontSize: '18px',fontWeight: 500}}>
+
+                        <Typography variant="h4" paragraph className={classes.whiteText} style={{fontWeight: 300}}>
                             Encontrarás las reglas y características con las que deben contar los datos para la interoperabilidad.
                         </Typography>
+                     
                     </Grid>
                 </Grid>
             </div>
