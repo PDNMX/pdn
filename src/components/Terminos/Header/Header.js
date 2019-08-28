@@ -85,7 +85,7 @@ class Header extends React.Component{
                 <Grid container spacing={0} className={classes.container} justify='center'>
                   <Grid item xs={12} md={7} className={classes.item2} align='center' >
                       <Typography variant="h1" paragraph className={classes.whiteText} style={{fontSize: '36px', fontWeight: 300}}>
-                          Términos de uso
+                          Términos y condiciones de uso
                       </Typography>
                   </Grid>
                 </Grid>
