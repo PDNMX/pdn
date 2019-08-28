@@ -10,49 +10,23 @@ import NivelGobiernoEdad from "./NivelGobierno/NivelGobiernoEdad";
 import NivelGobiernoEdadPorcentaje from "./NivelGobierno/NivelGobiernoEdadPorcentaje";
 
 import { withStyles } from "@material-ui/core/styles";
-// import MenuInformacion from "../MenuLaterlal";
 
 import styles from "../style";
 
-// let menu = [
-//   "Nivel de gobierno",
-//   "Nivel de gobierno y edad",
-//   "Nivel de gobierno y educación"
-// ];
-
 class GobLevel extends Component {
   render() {
-    let { classes, value } = this.props;
+    let { classes } = this.props;
 
     return (
       <div className={classes.rootSeccion}>
         <Grid container spacing={0}>
-          {/* <Grid item xs={4} md={2} className={classes.sidebar}>
-            <MenuInformacion menu={menu} value={value} change={change} />
-          </Grid> */}
-          <Grid
-            item
-            xs={12}
-            style={{  padding: 15 }}
-          >
-            {value === 0 && (
-              <div>
-                <NivelGobiernoTotal />
-                <NivelGobiernoPorcentaje />
-              </div>
-            )}
-            {value === 1 && (
-              <div>
-                <NivelGobiernoEdad />
-                <NivelGobiernoEdadPorcentaje />
-              </div>
-            )}
-            {value === 2 && (
-              <div>
-                <NivelGobiernoEducacion />
-                <NivelGobiernoEducacionPorcentaje />
-              </div>
-            )}
+          <Grid item xs={12} style={{ padding: 15 }}>
+            <NivelGobiernoTotal />
+            {/* <NivelGobiernoPorcentaje /> */}
+            <NivelGobiernoEdad />
+            {/* <NivelGobiernoEdadPorcentaje /> */}
+            <NivelGobiernoEducacion />
+            {/* <NivelGobiernoEducacionPorcentaje /> */}
           </Grid>
         </Grid>
       </div>

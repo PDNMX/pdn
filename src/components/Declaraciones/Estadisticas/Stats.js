@@ -18,55 +18,13 @@ class Stats extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      menu_superior: 0,
-      menu_edad: 0,
-      menu_nivel: 0,
-      menu_estado: 0,
-      menu_educacion: 0,
-      menu_bienes: 0,
-      menu_ingresos: 0
+      menu_superior: 2
     };
   }
 
   change_menuSuperior = valor => {
     this.setState({
       menu_superior: valor
-    });
-  };
-
-  change_menuEdad = valor => {
-    this.setState({
-      menu_edad: valor
-    });
-  };
-
-  change_menuNivel = valor => {
-    this.setState({
-      menu_nivel: valor
-    });
-  };
-
-  change_menuEstado = valor => {
-    this.setState({
-      menu_estado: valor
-    });
-  };
-
-  change_menuEducacion = valor => {
-    this.setState({
-      menu_educacion: valor
-    });
-  };
-
-  change_menuBienes = valor => {
-    this.setState({
-      menu_bienes: valor
-    });
-  };
-
-  change_menuIngresos = valor => {
-    this.setState({
-      menu_ingresos: valor
     });
   };
 
@@ -91,39 +49,12 @@ class Stats extends Component {
           </Grid>
         </Grid>
         <Grid container spacing={0}>
-          {this.state.menu_superior === 0 && (
-            <Age value={this.state.menu_edad} change={this.change_menuEdad} />
-          )}
-          {this.state.menu_superior === 1 && (
-            <GobLevel
-              value={this.state.menu_nivel}
-              change={this.change_menuNivel}
-            />
-          )}
-          {this.state.menu_superior === 2 && (
-            <State
-              value={this.state.menu_estado}
-              change={this.change_menuEstado}
-            />
-          )}
-          {this.state.menu_superior === 3 && (
-            <Education
-              value={this.state.menu_educacion}
-              change={this.change_menuEducacion}
-            />
-          )}
-          {this.state.menu_superior === 4 && (
-            <RealEstate
-              value={this.state.menu_bienes}
-              change={this.change_menuBienes}
-            />
-          )}
-          {this.state.menu_superior === 5 && (
-            <Salary
-              value={this.state.menu_ingresos}
-              change={this.change_menuIngresos}
-            />
-          )}
+          {this.state.menu_superior === 0 && <Age />}
+          {this.state.menu_superior === 1 && <GobLevel />}
+          {this.state.menu_superior === 2 && <State />}
+          {this.state.menu_superior === 3 && <Education />}
+          {this.state.menu_superior === 4 && <RealEstate />}
+          {this.state.menu_superior === 5 && <Salary />}
         </Grid>
       </div>
     );
