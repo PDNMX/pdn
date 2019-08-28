@@ -339,7 +339,8 @@ class DetalleServidor extends React.Component {
                                 <TextField
                                     id="read-only-input"
                                     label="Tipo de área"
-                                    defaultValue={servidor.tipoArea ? servidor.tipoArea.map(item => {
+                                    defaultValue={Array.isArray(servidor.tipoArea)
+                                         ? servidor.tipoArea.map(item => {
                                         return item + " "
                                     }) : servidor.tipoArea}
                                     className={classes.textField}
