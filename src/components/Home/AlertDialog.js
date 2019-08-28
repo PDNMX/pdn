@@ -87,7 +87,7 @@ class AlertDialog extends React.Component {
 
                         <Typography paragraph>
                             Te invitamos a revisar los <MuiLink component={Link} to='/terminos'>"Términos y Condiciones de Uso"</MuiLink>,
-                            así como a dejar tus comentarios en sobre las funcionalidades y experiencia de usuario en la sección de "Comenta".
+                            así como a dejar tus comentarios sobre las funcionalidades y experiencia de usuario en la sección de "Comenta".
                         </Typography>
 
                     </DialogContent>
