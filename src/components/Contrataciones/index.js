@@ -99,6 +99,8 @@ class Index extends React.Component {
         const {classes} = this.props;
         const {selectedTab} = this.state;
 
+        const isSelected = t => t === this.state.selectedTab;
+
         return (
             <div className={classes.root}>
                 <Header/>
@@ -111,13 +113,13 @@ class Index extends React.Component {
                             <Grid item xs={12} sm={12} md={6} lg={6} xl={6}
                                   onClick={ () => this.handleSelectTab(0)}
                                   id={0}
-                                  className={selectedTab===0?classes.selectedTabItem:classes.tabItem}>
+                                  className={isSelected(0)?classes.selectedTabItem:classes.tabItem}>
 
                                 <figure className={classes.figure}>
                                     <img src={img3} className={classes.tabIcon}/>
                                 </figure>
 
-                                <Typography>
+                                <Typography color='textPrimary' style={{fontWeight: isSelected(0)?500:300}}>
                                     Visualiza las contrataciones
                                 </Typography>
 
@@ -126,13 +128,13 @@ class Index extends React.Component {
                             <Grid item xs={12} sm={12} md={6} lg={6} xl={6}
                                   onClick={() => this.handleSelectTab(1)}
                                   id={1}
-                                  className={selectedTab===1?classes.selectedTabItem:classes.tabItem}>
+                                  className={isSelected(1)?classes.selectedTabItem:classes.tabItem}>
 
                                 <figure className={classes.figure}>
                                     <img src={img1} className={classes.tabIcon} />
                                 </figure>
 
-                                <Typography>
+                                <Typography color='textPrimary' style={{fontWeight: isSelected(1)?500:300}}>
                                     Explora las contrataciones
                                 </Typography>
 
