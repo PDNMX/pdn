@@ -262,36 +262,23 @@ class Agrupaciones extends React.Component {
                 <Grid container>
                     <Grid item xs={12}>
                         <Typography variant={"h6"} className={classes.titulo}>
-                            <b>{"Ejercicios, Ramos e Instituciones"}</b>
+                            <b>{"Ejercicios, ramos e instituciones"}</b>
                         </Typography>
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>
                         <Typography>
-                            En las secciones anteriores se puede observar de manera general el comportamiento de los
-                            procesos de contratación, sin embargo, resulta interesante conocer cómo se distribuyen
-                            estós en
-                            diferntes variables como: Ejericio fiscal, Ramo, Institución.De acuerdo a los valores
-                            que selecciones, podrás obtener 5 diferentes combinaciones que mostrarán lo
-                            siguiente:<br/><br/>
+                            En las secciones anteriores se puede observar de manera general el comportamiento de los procesos de contratación.
+                            Resulta interesante conocer cómo se distribuyen estos según distintas variables como ejercicio fiscal, ramo e institución.
+                            De acuerdo con los valores que selecciones, podrás obtener 5 diferentes combinaciones que mostrarán lo siguiente:<br/><br/>
 
-                            1.- <b>Ejercicio:</b> seleccionando únicamente el Ejercicio, conocerás el total de
-                            funcionaros que intervinieron en procesos de contratación en cada uno de ellos<br/>
-                            2.- <b>Ramo:</b> seleccionando únicamente el Ramo, obtendrás el número de funcionarios
-                            que intervinieron en procesos de contratación dentro de ese Ramo en cada uno
-                            de los Ejercicios fiscales<br/>
-                            3.- <b>Institución:</b> selecciona únicamente una Institución o bien el Ramo y la
-                            Institución, para conocer el número de servidores que intervinieron en procesos de
-                            contatación que tuvo en cada uno de los ejercicios fiscales<br/>
-                            4.- <b>Ejercicio y Ramo: </b> Cada Ramo cuenta con una serie de Instituciones,
-                            selecciona un Ejercicio fiscal y un Ramo para conocer como se distribuyen el
-                            número de funcionarios en cada una de las Instituciones en los diferentes años<br/>
-                            5.-<b>Ejercicio, Ramo e Institución: </b> Para conocer de manera puntual el número de
-                            servidores en procesos de contatatación de determinada Institución en cierto Ejercicio,
-                            podrás seleccionar el Ejercicio, Ramo e Institución o bien el Ejercicio y la Institución
-                            deseada.<br/>
+                            1.- <b>Ejercicio:</b> seleccionando únicamente el ejercicio, conocerás el total de funcionarios que intervinieron en procesos de contratación en cada uno de ellos.<br/>
+                            2.- <b>Ramo:</b> seleccionando únicamente el ramo, obtendrás el número de funcionarios que intervinieron en procesos de contratación dentro de ese ramo en cada uno de los ejercicios fiscales.<br/>
+                            3.- <b>Institución:</b> selecciona únicamente una institución o bien el ramo y la institución, para conocer el número de servidores que intervinieron en procesos de contratación que tuvo en cada uno de los ejercicios fiscales.<br/>
+                            4.- <b>Ejercicio y ramo: </b> Cada ramo cuenta con una serie de instituciones, selecciona un ejercicio fiscal y un ramo para conocer cómo se distribuyen el número de funcionarios en cada una de las Instituciones en los diferentes años.<br/>
+                            5.-<b>Ejercicio, ramo e institución: </b> Para conocer de manera puntual el número de servidores en procesos de contratación de determinada institución en cierto ejercicio, podrás seleccionar el ejercicio, ramo e institución o bien el ejercicio y la institución deseadas.<br/>
 
 
-                            <br/><br/>Para comenzar, selecciona algún filtro y da clic en el botón <b>Buscar</b>
+                            <br/><br/>Para comenzar, selecciona algún filtro y da clic en el botón.<b>Buscar</b>
                         </Typography>
                     </Grid>
                     <Grid item md={4} xs={12}>
