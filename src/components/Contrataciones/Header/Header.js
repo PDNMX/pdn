@@ -2,7 +2,7 @@ import React from 'react';
 import {withStyles} from "@material-ui/core/styles";
 import Grid from '@material-ui/core/Grid';
 import {Link as RouterLink} from 'react-router-dom';
-import Link from '@material-ui/core/link'
+import Link from '@material-ui/core/Link';
 import BG from '../../../assets/img/cintillo_contrataciones.jpg';
 import C from '../../../assets/iconos_azul/6_icono.svg'
 import Typography from "@material-ui/core/Typography";
