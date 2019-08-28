@@ -1,20 +1,17 @@
 import React, { Component } from "react";
-import * as ConstClass from "../../ConstValues";
-import ChartistGraph from "react-chartist";
-import "../../css/chartist.min.css";
 import { Grid, Paper } from "@material-ui/core";
-
-import "../../css/chartist-plugin-tooltip.css";
-import ChartistTooltip from "chartist-plugin-tooltips-updated";
-
 import { Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "../../style";
+
+import * as ConstClass from "../../ConstValues";
+import BarChart from "d3plus-react/es/src/BarChart";
 
 let d3 = Object.assign({}, require("d3-format"));
 let format = d3.format(",");
 
 class EdadTotalEducacion extends Component {
+  state = {};
   constructor() {
     super();
 
@@ -22,36 +19,55 @@ class EdadTotalEducacion extends Component {
     this.getInfo = this.getInfo.bind(this);
     this.makeQuery = this.makeQuery.bind(this);
     this.buildMatrix = this.buildMatrix.bind();
+  }
 
-    this.state = {
-      data: null
+  componentDidMount() {
+    let promises = this.makeData();
+    let Color = {
+      Preescolar: ConstClass.colorsChart[1],
+      Primaria: ConstClass.colorsChart[5],
+      Secundaria: ConstClass.colorsChart[2],
+      Bachillerato: ConstClass.colorsChart[6],
+      Licenciatura: ConstClass.colorsChart[3],
+      Maestría: ConstClass.colorsChart[7],
+      Doctorado: ConstClass.colorsChart[4]
+     
     };
 
-    let promises = this.makeData();
-
     Promise.all(promises.map(d => d.promise)).then(d => {
-      let labels = [...new Set(promises.map(d => d.label))],
-        data = {
-          labels,
-          series: this.buildMatrix(d, labels.length)
-        };
-
-      this.setState({ data: data });
+      this.setState({
+        methods: {
+          data: d,
+          x: "label",
+          y: "total",
+          groupBy: "nivel",
+          stacked: true,
+          xConfig: {
+            title: "Rango de edad"
+          },
+          yConfig: {
+            title: "Número de funcionarios"
+          },
+          tooltipConfig: {
+            title: function(d) {
+              return 'Nivel educativo"' + d["nivel"] + '" : ' + format(d["total"]);
+            }
+          },
+          height: 400,
+          shapeConfig: {
+            label: false,
+            fill: (d, i) => Color[d.nivel]
+          },
+          legend: true,
+          axes: {
+            fill: "#666672"
+          }
+        }
+      });
     });
   }
 
-  render() {
-    if (!this.state.data) return null;
-    let colors = ConstClass.ChartColors;
-
-    let options = {
-      plugins: [
-        ChartistTooltip({
-          appendToBody: true,
-          transformTooltipTextFnc: value => format(value)
-        })
-      ]
-    };
+  render() {    
     let { classes } = this.props;
 
     return (
@@ -61,46 +77,25 @@ class EdadTotalEducacion extends Component {
             <Typography className={classes.titulo}>
               Funcionarios por rango de edad y nivel educativo (total)
             </Typography>
-            <ChartistGraph
-              data={this.state.data}
-              type={"Bar"}
-              options={options}
-            />
-            <Typography component="div">
-              <ul className={classes.listaGraficas}>
-                {ConstClass.NivelEducacion.map((d, i) => (
-                  <li
-                    key={"ngel-" + i}
-                    style={{ display: "inline-block", margin: "0px 10px" }}
-                  >
-                    <span
-                      style={{
-                        display: "inline-block",
-                        width: "1em",
-                        height: "1em",
-                        background: colors[i]
-                      }}
-                    />{" "}
-                    {d}
-                  </li>
-                ))}
-              </ul>
-            </Typography>
+            {this.state.methods && <BarChart config={this.state.methods} />}
           </Paper>
         </Grid>
       </Grid>
     );
   }
 
-  getInfo(_from, _to, ne) {
+  getInfo(_from, _to, ne, label) {
     let connObj = Object.assign({}, ConstClass.fetchObj);
-
-    connObj.body = this.makeQuery(_from, _to, ne);
+    connObj.body = this.makeQuery(_from, _to, ne.codigo);
 
     return fetch(ConstClass.endpoint, connObj)
       .then(response => response.json())
       .then(d => {
-        return d.total;
+        return {
+          total: d.total,
+          nivel: ne.valor,
+          label: label
+        };
       });
   }
 
@@ -124,13 +119,47 @@ class EdadTotalEducacion extends Component {
       conf = ConstClass.AgeChartsConf,
       year1 = currentYear - conf.from,
       year2 = year1 - conf.step,
-      ne = ConstClass.NivelEducacion,
+      ne = [
+        {
+          codigo: "PREE",
+          valor: "Preescolar"
+        },
+        {
+          codigo: "PRIM",
+          valor: "Primaria"
+        },
+        {
+          codigo: "SECU",
+          valor: "Secundaria"
+        },
+        {
+          codigo: "BACH",
+          valor: "Bachillerato"
+        },
+        {
+          codigo: "LICE",
+          valor: "Licenciatura"
+        },
+        {
+          codigo: "MAES",
+          valor: "Maestría"
+        },
+        {
+          codigo: "DOCT",
+          valor: "Doctorado"
+        }
+      ],
       i;
 
     for (i = 0; i < ne.length; i++) {
       while (year1 > currentYear - conf.to) {
         res.push({
-          promise: this.getInfo(_from(year2), _to(year1), ne[i]),
+          promise: this.getInfo(
+            _from(year2),
+            _to(year1),
+            ne[i],
+            `${currentYear - year1} - ${currentYear - year2}`
+          ),
           label: `${currentYear - year1} - ${currentYear - year2}`
         });
 

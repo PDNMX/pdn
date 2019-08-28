@@ -195,13 +195,13 @@ class EnhancedTable extends React.Component {
             nombreServidor: '',
             apellidoUno: '',
             apellidoDos: '',
-            rfc: '',
-            curp: '',
+            /* rfc: '',
+            curp: '', */
             data: [],
             filterData: null,
             page: 0,
             rowsPerPage: 10,
-            procedimiento: 0,
+            procedimiento: '',
             open: false,
             elementoSeleccionado: {},
             institucion: "",
@@ -283,7 +283,7 @@ class EnhancedTable extends React.Component {
         if (nombreServidor) filtros.nombres = nombreServidor;
         if (apellidoUno) filtros.primer_apellido = apellidoUno;
         if (apellidoDos) filtros.segundo_apellido = apellidoDos;
-        if (procedimiento) filtros.procedimiento = procedimiento;
+        if (procedimiento && procedimiento !== 'TODOS') filtros.procedimiento = procedimiento;
         /* if (rfc) filtros.rfc = '%' + rfc + '%';
         if (curp) filtros.curp = '%' + curp + '%'; */
         if (institucion && institucion !== 'TODAS') filtros.institucion = institucion;
@@ -344,6 +344,7 @@ class EnhancedTable extends React.Component {
             /* if (rfc) filtros.rfc = '%' + rfc + '%';
             if (curp) filtros.curp = '%' + curp + '%'; */
             if (institucion && institucion !== 'TODAS') filtros.institucion = institucion;
+            if (procedimiento && procedimiento !== 'TODOS') filtros.procedimiento = procedimiento;
         }
 
         let limit = (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.state.rowsPerPage : null;
@@ -452,7 +453,7 @@ class EnhancedTable extends React.Component {
                         <BusquedaServidor handleCleanAll={this.handleCleanAll} handleSearch={this.handleSearchPrevios}
                                           handleChangeCampo={this.handleChangeCampo}
                                           nombreServidor={this.state.nombreServidor} apellidoUno={this.state.apellidoUno} apellidoDos={this.state.apellidoDos}
-                                          institucion={this.state.institucion} rfc={this.state.rfc} curp={this.state.curp} handleError={this.handleError} nivel={this.state.nivel}/>
+                                          institucion={this.state.institucion} procedimiento={this.state.procedimiento}  handleError={this.handleError} nivel={this.state.nivel}/>
                     </Grid>
                     <Grid item xs={12}>
                         <DetalleServidorSancionado handleClose={this.handleClose}
@@ -532,7 +533,7 @@ class EnhancedTable extends React.Component {
                                                 >
                                                     
                                                     <TableCell component="th" scope="row" style={{width: '25%'}}
-                                                               padding="default">{n.nombre +  " "+ n.apellidoUno+ " "+ n.apellidoDos}</TableCell>
+                                                               padding="default">{n.servidor}</TableCell>
                                                     <TableCell>{n.institucion.nombre}</TableCell>
                                                     <TableCell>{n.puesto.nombre}</TableCell>
                                                     <TableCell>{n.tipo_actos}</TableCell>

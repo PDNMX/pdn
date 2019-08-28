@@ -4,7 +4,7 @@ import MuiExpansionPanel from '@material-ui/core/ExpansionPanel';
 import MuiExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import MuiExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
-import Grid from "@material-ui/core/Grid";
+//import Grid from "@material-ui/core/Grid";
 import MuiLink from "@material-ui/core/Link";
 import {Link} from "react-router-dom";
 import Diagrama from "../../assets/Diagrama_de_comunicacion_API.svg";
@@ -84,7 +84,7 @@ const useStyles = makeStyles( theme => ({
 
 
 export default function CustomizedExpansionPanels() {
-    const [expanded, setExpanded] = React.useState('panel1');
+    const [expanded, setExpanded] = React.useState('');//'panel1');
 
     const handleChange = panel => (event, newExpanded) => {
         setExpanded(newExpanded ? panel : false);
@@ -104,8 +104,6 @@ export default function CustomizedExpansionPanels() {
 
 
                     <div>
-
-
 
                         <Typography paragraph>
                             Una fuente de inteligencia para construir integridad y combatir la corrupción que creará valor para el gobierno y la sociedad a partir de grandes cantidades de datos.
@@ -136,7 +134,6 @@ export default function CustomizedExpansionPanels() {
                         <Button  target="blank" className={classes.button} variant="contained" href='https://drive.google.com/file/d/1wdy8bgX9fn1yRCAWSJMhjeTYKxEOXRQv/view'>
                              Descarga la ficha
                         </Button>
-
                     </div>
 
 

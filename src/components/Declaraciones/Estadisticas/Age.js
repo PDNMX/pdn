@@ -32,27 +32,25 @@ class Age extends Component {
           {/* <Grid item xs={4} md={2} className={classes.sidebar}>
             <MenuInformacion menu={menu} value={value} change={change} />
           </Grid> */}
-          <Grid
-            item
-            xs={12}
-            style={{  padding: 15 }}
-          >
+          <Grid item xs={12} style={{ padding: 15 }}>
             {value === 0 && (
               <div>
                 <EdadTotal />
-                <EdadTotalPorcentaje />
+                <EdadTotalNivelGobierno />
+                <EdadTotalEducacion />
+                {/* <EdadTotalPorcentaje /> */}
               </div>
             )}
             {value === 1 && (
               <div>
                 <EdadTotalNivelGobierno />
-                <EdadTotalNivelGobiernoPorcentaje />
+                {/* <EdadTotalNivelGobiernoPorcentaje /> */}
               </div>
             )}
             {value === 2 && (
               <div>
                 <EdadTotalEducacion />
-                <EdadTotalEducacionPorcentaje />
+                {/* <EdadTotalEducacionPorcentaje /> */}
               </div>
             )}
           </Grid>
