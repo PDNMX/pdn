@@ -33,7 +33,8 @@ function getModalStyle() {
         top: `${top}%`,
         left: `${left}%`,
         transform: `translate(-${top}%, -${left}%)`,
-
+        maxHeight: `calc(100vh - 225px)`,
+        overflowY: "auto"
     };
 }
 
