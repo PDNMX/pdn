@@ -23,11 +23,11 @@ class NivelGobiernoTotal extends Component {
 
   componentDidMount() {
     let promises = this.makeData();
-    let Color = {
-      Estatal: ConstClass.colorsChart[1],
-      Municipal: ConstClass.colorsChart[5],
-      Federal: ConstClass.colorsChart[9]
-    };
+    // let Color = {
+    //   Estatal: ConstClass.colorsChart[1],
+    //   Municipal: ConstClass.colorsChart[5],
+    //   Federal: ConstClass.colorsChart[9]
+    // };
 
     Promise.all(promises.map(d => d.promise)).then(d => {
       this.setState({

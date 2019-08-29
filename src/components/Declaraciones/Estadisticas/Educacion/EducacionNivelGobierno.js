@@ -30,6 +30,7 @@ class EducacionNivelGobierno extends Component {
     let promises = this.makeData();
 
     Promise.all(promises.map(d => d.promise)).then(d => {
+      // console.log("d", d);
       let data = {
         labels: [...new Set(promises.map(d => d.label))],
         series: this.buildMatrix(d)
@@ -80,7 +81,7 @@ class EducacionNivelGobierno extends Component {
                         background: colors[i]
                       }}
                     />{" "}
-                    {d.label}
+                    {d.valor}
                   </li>
                 ))}
               </ul>
@@ -94,7 +95,7 @@ class EducacionNivelGobierno extends Component {
   getInfo(gl, ne) {
     let connObj = Object.assign({}, ConstClass.fetchObj);
 
-    connObj.body = this.makeQuery(gl, ne);
+    connObj.body = this.makeQuery(gl, ne.codigo);
 
     return fetch(ConstClass.endpoint, connObj)
       .then(response => response.json())
@@ -123,10 +124,11 @@ class EducacionNivelGobierno extends Component {
       i,
       j;
 
+
     for (i = 0; i < gl.length; i++) {
       for (j = 0; j < ne.length; j++) {
         res.push({
-          promise: this.getInfo(gl[j].key, ne[i]),
+          promise: this.getInfo(gl[i].key, ne[j]),
           label: ne[j]
         });
       }

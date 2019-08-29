@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import { Grid, Paper } from "@material-ui/core";
 import * as ConstClass from "../../ConstValues.js";
-import ChartistGraph from "react-chartist";
-import "../../css/chartist.min.css";
-import "../../css/chartist-plugin-tooltip.css";
-import ChartistTooltip from "chartist-plugin-tooltips-updated";
+import BarChart from "d3plus-react/es/src/BarChart";
 
 import { Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
@@ -15,40 +12,50 @@ let format = d3.format("$,");
 let _format = d3.format(",");
 
 class SalarioTotal extends Component {
-  constructor() {
-    super();
+  state = {};
 
-    this.makeData = this.makeData.bind(this);
-    this.getInfo = this.getInfo.bind(this);
-    this.makeQuery = this.makeQuery.bind(this);
+  componentDidMount() {
+    fetch(ConstClass.estadisticas + "/api/v1/estadisticas/ingresos")
+      .then(response => response.json())
+      .then(d => {
+        let data = d.map(value => {
+          return {
+            name: value.rango,
+            value: value.total
+          };
+        });
 
-    this.state = {
-      data: null
-    };
-
-    let promises = this.makeData();
-
-    Promise.all(promises.map(d => d.promise)).then(d => {
-      let data = {
-        labels: promises.map(d => d.label),
-        series: [d]
-      };
-
-      this.setState({ data: data });
-    });
+        this.setState({
+          methods: {
+            data: data,
+            x: "name",
+            y: "value",
+            xConfig: {
+              title: "Ingresos"
+            },
+            yConfig: {
+              title: "Número de funcionarios"
+            },
+            tooltipConfig: {
+              title: function(d) {
+                return 'Rango "' + d["name"] + '" : ' + format(d["value"]);
+              }
+            },
+            height: 400,
+            shapeConfig: {
+              label: false,
+              fill: (d, i) => ConstClass.colorsChart[i % 12]
+            },
+            legend: true,
+            axes: {
+              fill: "#666672"
+            }
+          }
+        });
+      });
   }
 
   render() {
-    if (!this.state.data) return null;
-
-    let options = {
-      plugins: [
-        ChartistTooltip({
-          appendToBody: true,
-          transformTooltipTextFnc: value => _format(value)
-        })
-      ]
-    };
     let { classes } = this.props;
 
     return (
@@ -58,61 +65,11 @@ class SalarioTotal extends Component {
             <Typography className={classes.titulo}>
               Funcionarios por ingreso bruto anual
             </Typography>
-            <ChartistGraph
-              data={this.state.data}
-              type={"Bar"}
-              options={options}
-            />
+            {this.state.methods && <BarChart config={this.state.methods} />}
           </Paper>
         </Grid>
       </Grid>
     );
-  }
-
-  getInfo(range) {
-    let connObj = Object.assign({}, ConstClass.fetchObj);
-
-    connObj.body = this.makeQuery(range);
-
-    return fetch(ConstClass.endpoint, connObj)
-      .then(response => response.json())
-      .then(d => {
-        return d.total;
-      });
-  }
-
-  makeData() {
-    let res = [],
-      gl = ConstClass.SalaryChartConf,
-      i;
-
-    for (i = 0; i < gl.length; i++) {
-      res.push({
-        promise: this.getInfo(gl[i]),
-        label: this.makeLabel(gl[i])
-      });
-    }
-
-    return res;
-  }
-
-  makeLabel(range) {
-    let r1 = range[0] ? format(range[0]) : 0,
-      r2 = range[1] ? format(range[1]) : "o más";
-
-    return `${r1} - ${r2}`;
-  }
-
-  makeQuery(range) {
-    let str = ConstClass.PROP_NAMES.ingresoAnual,
-      search = { query: {}, limit: 2 };
-
-    search.query[str] = {
-      desde: range[0] ? range[0] : 0,
-      hasta: range[1] ? range[1] : 999999999
-    };
-
-    return JSON.stringify(search);
   }
 }
 

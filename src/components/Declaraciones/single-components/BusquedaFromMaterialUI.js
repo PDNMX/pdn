@@ -163,7 +163,6 @@ class BusquedaFromMaterialUI extends Component {
   }
 
   /*
-  
   /
   /  pasa los argumentos de la búsqueda a una 
   /  función que llama al api de búsqueda 
@@ -177,7 +176,6 @@ class BusquedaFromMaterialUI extends Component {
   };
 
   /*
-  
   /
   /  genera una sola "source of truth" para los 
   /  valores del formulario. En vue es lo de 

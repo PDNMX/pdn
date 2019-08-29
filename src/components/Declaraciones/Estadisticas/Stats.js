@@ -18,7 +18,7 @@ class Stats extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      menu_superior: 2
+      menu_superior: 0
     };
   }
 
