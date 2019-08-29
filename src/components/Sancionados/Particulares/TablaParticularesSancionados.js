@@ -365,6 +365,8 @@ class EnhancedTable extends React.Component {
             }, () => {
                 this.handleChangeCampo('nombreParticular');
                 this.handleChangeCampo('institucion');
+                this.handleChangeCampo('numeroExpediente');
+
             })
     };
     handleCleanTables = () => {
