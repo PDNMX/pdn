@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { Grid } from "@material-ui/core";
 import NivelGobiernoTotal from "./NivelGobierno/NivelGobiernoTotal";
-import NivelGobiernoPorcentaje from "./NivelGobierno/NivelGobiernoPorcentaje";
+// import NivelGobiernoPorcentaje from "./NivelGobierno/NivelGobiernoPorcentaje";
 
 import NivelGobiernoEducacion from "./NivelGobierno/NivelGobiernoEducacion";
-import NivelGobiernoEducacionPorcentaje from "./NivelGobierno/NivelGobiernoEducacionPorcentaje";
+// import NivelGobiernoEducacionPorcentaje from "./NivelGobierno/NivelGobiernoEducacionPorcentaje";
 
 import NivelGobiernoEdad from "./NivelGobierno/NivelGobiernoEdad";
-import NivelGobiernoEdadPorcentaje from "./NivelGobierno/NivelGobiernoEdadPorcentaje";
+// import NivelGobiernoEdadPorcentaje from "./NivelGobierno/NivelGobiernoEdadPorcentaje";
 
 import { withStyles } from "@material-ui/core/styles";
 

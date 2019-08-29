@@ -79,7 +79,6 @@ class App extends Component {
   }
 
   /*
-  
   /
   /  determina si debe mostrar la tabla o nel
   /
@@ -104,7 +103,6 @@ class App extends Component {
   }
 
   /*
-  
   /
   /  hace el llamado al api para obtener la info
   /  de un servidor público
@@ -124,7 +122,6 @@ class App extends Component {
   }
 
   /*
-  
   /
   /  busca a los usuarios relacionados
   /
@@ -147,7 +144,6 @@ class App extends Component {
   }
 
   /*
-  
   /
   /  cambia la página a desplegar en los resultados
   /
@@ -160,7 +156,6 @@ class App extends Component {
   }
 
   /*
-  
   /
   /  genera el cuerpo del llamado al api
   /

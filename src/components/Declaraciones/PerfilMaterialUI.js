@@ -288,7 +288,6 @@ class PerfilMaterialUI extends Component {
   }
 
   /*
-  
   /
   /  hace el llamado al api para obtener la info
   /  de un servidor público

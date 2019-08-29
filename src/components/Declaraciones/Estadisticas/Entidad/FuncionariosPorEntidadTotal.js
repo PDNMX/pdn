@@ -14,7 +14,7 @@ class FuncionariosPorEntidadTotal extends Component {
   state = {};
 
   componentDidMount() {
-    fetch("https://demospdn.host/demo1/api/v1/estadisticas/estatal")
+    fetch(ConstClass.estadisticas + "/api/v1/estadisticas/estatal")
       .then(response => response.json())
       .then(d => {
         let data = d.map(ent => {

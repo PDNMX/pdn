@@ -1,9 +1,9 @@
 /*
-  
   // API DATA
-  
 */
 export const endpoint = "https://demospdn.host/demo1/api/v2/s1/declaraciones";
+// export const estadisticas = "http://localhost:5000";
+export const estadisticas = "https://demospdn.host/demo1";
 
 export const fetchObj = {
   method: "POST",
@@ -41,9 +41,7 @@ export const PROP_NAMES = {
 };
 
 /*
-  
   // DICTIONARIES
-  
 */
 export const Incomefields = [
   "actividad_economica_menor",
@@ -421,17 +419,13 @@ export const OFICINAS = [
 ];
 
 /*
-  
   // HELPERS
-  
 */
 export const reducer = (accumulator, currentValue) =>
   accumulator + currentValue;
 
 /*
-  
   // STATS CONFIG
-  
 */
 export const AgeChartsConf = {
   from: 18,
@@ -447,16 +441,20 @@ export const SalaryChartConf = [
 ];
 
 export const propertyChartConf = [
-  [null, 99],
-  [100, 200],
-  [200, 400],
-  [400, null]
+  [0, 99],
+  [100, 199],
+  [200, 299],
+  [300, 399],
+  [400, 499],
+  [500, 599],
+  [600, 699],
+  [700, 799],
+  [800, 899],
+  [900, null]
 ];
 
 /*
-  
   // CHARTIST OPTIONS
-  
 */
 
 export const StatsChartOptions = {
@@ -495,9 +493,7 @@ export const colorsChart = [
 ];
 
 /*
-  
   // SVG GRAPH OPTIONS
-  
 */
 
 export const BarChartConf = {
@@ -520,15 +516,12 @@ export const BarChartConf = {
 };
 
 /*
-  
   // estados
-  
 */
 
 export const GFStates = {
   states: [
-    /*
-    {
+    /*  {
       "id": 1,
       "name": "Aguascalientes",
       "url": "aguascalientes",
@@ -657,8 +650,7 @@ export const GFStates = {
       lat: 19.160695075989,
       lng: -101.92708206177
     }
-    /*
-    ,{
+    /*  ,{
       "id": 17,
       "name": "Morelos",
       "url": "morelos",
