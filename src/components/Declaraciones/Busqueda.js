@@ -70,8 +70,12 @@ class App extends Component {
             <Typography>
               <b>Busca un servidor público</b>
             </Typography>
-            <BusquedaFromMaterialUI getUsers={this.getUsers} />
-            {this.showTable()}
+            <Grid container spacing={0}>
+              <Grid item xs={12}>
+                <BusquedaFromMaterialUI getUsers={this.getUsers} />
+                {this.showTable()}
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
       </div>

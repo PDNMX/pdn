@@ -35,13 +35,13 @@ class Stats extends Component {
         className={classes.root}
         style={{ maxWidth: 1200, margin: "0 auto" }}
       >
-        <Grid container spacing={3}>
+        <Grid container spacing={0}>
           <Grid item xs={12}>
             <Typography>
               <b>Estadísticas</b>
             </Typography>
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={12} style={{ maxWidth: 1200 }}>
             <MenuSuperior
               menu_superior={this.state.menu_superior}
               change={this.change_menuSuperior}

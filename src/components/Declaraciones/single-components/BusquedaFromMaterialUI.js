@@ -31,13 +31,12 @@ class BusquedaFromMaterialUI extends Component {
       <form onSubmit={this.searchUsers}>
         <Grid
           container
-          spacing={3}
+          spacing={0}
           className={classes.root}
           style={{ marginBottom: 30 }}
         >
           <Grid item xs={12} md={6}>
             <TextField
-              style={{ width: "100%" }}
               id="standard-select-currency"
               select
               label="Institución"
