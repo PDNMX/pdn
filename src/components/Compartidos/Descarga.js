@@ -4,6 +4,7 @@ import {Typography} from "@material-ui/core";
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import DownloadIcon from '@material-ui/icons/CloudDownload';
+import PropTypes from "prop-types";
 
 const styles = theme =>  ({
     root: {
@@ -21,7 +22,7 @@ class Descarga extends React.Component{
 
     render() {
 
-        const {classes} = this.props;
+        const {classes,url} = this.props;
         return (
             <div className={classes.root}>
 
@@ -29,7 +30,7 @@ class Descarga extends React.Component{
                     <Grid item xs={12} align="center">
                         <Typography className={classes.descarga} variant="h5"> Descarga todos los datos</Typography>
 
-                        <IconButton href="https://datos.gob.mx/busca/organization/contrataciones-abiertas" target="_blank">
+                        <IconButton href={url} target="_blank">
                             <DownloadIcon style={{fontSize: 60}}/>
                         </IconButton>
 
@@ -42,5 +43,9 @@ class Descarga extends React.Component{
     }
 
 }
+
+Descarga.propTypes = {
+    url: PropTypes.string.isRequired
+};
 
 export default withStyles(styles)(Descarga);

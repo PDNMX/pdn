@@ -24,7 +24,16 @@ const styles = theme => ({
     sectionG: {
         maxWidth: '1200px',
         overflowX : 'auto',
+
     },
+    aux:{
+        [theme.breakpoints.up('sm')]: {
+            marginBottom: theme.spacing(7),
+        },
+        [theme.breakpoints.down('sm')]: {
+            marginBottom: theme.spacing(4),
+        }
+    }
 });
 
 class Dashboard extends React.Component {
@@ -33,7 +42,7 @@ class Dashboard extends React.Component {
         return (
             <div className={classes.root}>
 
-                <Grid container spacing={0} justify='center'>
+                <Grid container spacing={0} justify='center' className={classes.aux}>
                     <Grid item xs={12} className={classes.sectionG}>
                         <Typography>
                             <b>¿Qué información es?</b>

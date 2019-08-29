@@ -23,12 +23,12 @@ const styles = theme => ({
     },
     bgPanelTable: {
         backgroundColor: theme.palette.white.color,
-        [theme.breakpoints.up('sm')]: {
+       /* [theme.breakpoints.up('sm')]: {
             marginBottom: theme.spacing(7),
         },
         [theme.breakpoints.down('sm')]: {
             marginBottom: theme.spacing(4),
-        },
+        }*/
     },
     section: {
         maxWidth: '1200px',
