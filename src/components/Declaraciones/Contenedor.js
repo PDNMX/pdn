@@ -31,7 +31,10 @@ import {
   Button
 } from "@material-ui/core";
 
-const titulo = "Declaraciones";
+const titulo =
+  "Sistema de evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal";
+const subtitulo =
+  "Declaraciones";
 const copy =
   "Consulta y visualiza los datos <b>públicos</b> de las declaraciones patrimoniales, y de intereses, así como la constancia de declaración anual de impuestos de las y los servidores públicos.";
 
@@ -161,7 +164,13 @@ class Contenedor extends React.Component {
 
     return (
       <Grid container spacing={0} className={classes.root}>
-        <Header logo={S3} titulo={titulo} copy={copy} background={background} />
+        <Header
+          logo={S3}
+          titulo={titulo}
+          subtitulo={subtitulo}
+          copy={copy}
+          background={background}
+        />
         <Grid container spacing={0} className={classes.bgContainer}>
           <Grid item xs={12} style={{ maxWidth: 1200, margin: "0 auto" }}>
             <Grid container spacing={0}>
