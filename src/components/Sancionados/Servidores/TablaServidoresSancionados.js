@@ -32,9 +32,7 @@ function getSorting(order, orderBy) {
 
 const columnData = [
     {id: 'expediente', disablePadding: false, label: 'Expediente', position: 1, mostrar: true},
-    {id: 'nombre', disablePadding: false, label: 'Nombre', position: 2, mostrar: true},
-    {id: 'apellidoUno', disablePadding: false, label: 'Apellido Uno', position: 3, mostrar: true},
-    {id: 'apellidoDos', disablePadding: false, label: 'Apellido Dos', position: 4, mostrar: true},
+    {id: 'servidor', disablePadding: false, label: 'Servidor público', position: 2, mostrar: true},
     {id: 'institucion.nombre', disablePadding: false, label: 'Institución', position: 5, mostrar: true},
     {id: 'autoridad_sancionadora', disablePadding: false, label: 'Autoridad Sancionadora', position: 6, mostrar: true},
     {
@@ -507,9 +505,7 @@ class EnhancedTable extends React.Component {
                                                 >
                                                     <TableCell component="th" scope="row"
                                                                padding="default">{n.expediente}</TableCell>
-                                                    <TableCell>{n.nombre}</TableCell>
-                                                    <TableCell>{n.apellidoUno}</TableCell>
-                                                    <TableCell>{n.apellidoDos}</TableCell>
+                                                    <TableCell>{n.nombre +" "+n.apellidoUno+" "+ n.apellidoDos}</TableCell>
                                                     <TableCell>{n.institucion.nombre}</TableCell>
                                                     <TableCell
                                                         style={{width: '25%'}}>{n.autoridad_sancionadora}</TableCell>
