@@ -33,8 +33,6 @@ class Descarga extends React.Component{
                         <IconButton href={url} target="_blank">
                             <DownloadIcon style={{fontSize: 60}}/>
                         </IconButton>
-
-
                     </Grid>
                 </Grid>
 

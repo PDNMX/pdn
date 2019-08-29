@@ -570,7 +570,7 @@ class EnhancedTable extends React.Component {
                 </Grid>
                 <Grid container spacing={0} justify="center" className={classes.containerD} style={{backgroundColor: '#f6f6f6'}}>
                     <Grid item xs={12} className={classes.itemD}>
-                        <Descarga url={"#"}/>
+                        <Descarga url={process.env.REACT_APP_BULK_S3_SERVIDORES}/>
                     </Grid>
                 </Grid>
             </div>
