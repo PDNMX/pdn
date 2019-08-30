@@ -209,6 +209,11 @@
       "id" : 14,
       "title" : "Observaciones",
       "description" : "Cualquier observación pertinente"
+    },
+    {
+      "id": 15,
+      "title": "Plazo",
+      "description": "Plazo de la sanción (Inhabilitación)"
     }
   ]
 }

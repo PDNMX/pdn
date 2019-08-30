@@ -415,7 +415,7 @@ class DetalleServidorSancionado extends React.Component {
                                         readOnly: true,
                                         className: classes.fontSmall,
                                         endAdornment: (
-                                            <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(6)}}>
+                                            <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(15)}}>
                                                 <IconHelp/>
                                             </InputAdornment>
                                         )
