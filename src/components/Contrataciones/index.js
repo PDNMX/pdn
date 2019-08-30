@@ -22,8 +22,6 @@ import img3 from "../../assets/img/servidores_visualizaciones.svg";
 import {Typography} from "@material-ui/core";
 import ScrollToTopButton from "../Navigation/ScrollToTopButton";
 
-
-
 const styles = theme => ({
     root: {
         flexGrow: 1,
@@ -119,7 +117,7 @@ class Index extends React.Component {
                                     <img src={img3} className={classes.tabIcon}/>
                                 </figure>
 
-                                <Typography color='textPrimary' style={{fontWeight: isSelected(0)?500:300, paddingTop: 20}}>
+                                <Typography color='textPrimary' style={{fontWeight: isSelected(0)?500:300, paddingTop: 15}}>
                                     Visualiza las contrataciones
                                 </Typography>
 
@@ -134,7 +132,7 @@ class Index extends React.Component {
                                     <img src={img1} className={classes.tabIcon} />
                                 </figure>
 
-                                <Typography color='textPrimary' style={{fontWeight: isSelected(1)?500:300, paddingTop: 20}}>
+                                <Typography color='textPrimary' style={{fontWeight: isSelected(1)?500:300, paddingTop: 15}}>
                                     Explora las contrataciones
                                 </Typography>
 
@@ -190,6 +188,7 @@ class Index extends React.Component {
                     </Grid>
                 </Grid>
 
+
                 {/*
 
                 <Grid container spacing={0} justify="center" className={classes.container}>
@@ -212,8 +211,6 @@ class Index extends React.Component {
                     </Grid>
                 </Grid>
                 */}
-
-
 
                 <Footer/>
                 <ScrollToTopButton/>
