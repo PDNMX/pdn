@@ -41,7 +41,7 @@ class Stats extends Component {
               <b>Estadísticas</b>
             </Typography>
           </Grid>
-          <Grid item xs={12} style={{ maxWidth: 1200 }}>
+          <Grid item xs={12} style={{ maxWidth: 1200, marginTop: 10 }}>
             <MenuSuperior
               menu_superior={this.state.menu_superior}
               change={this.change_menuSuperior}
