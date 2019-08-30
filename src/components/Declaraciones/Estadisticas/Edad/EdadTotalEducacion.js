@@ -29,7 +29,7 @@ class EdadTotalEducacion extends Component {
       Secundaria: ConstClass.colorsChart[2],
       Bachillerato: ConstClass.colorsChart[6],
       Licenciatura: ConstClass.colorsChart[3],
-      Maestría: ConstClass.colorsChart[7],
+      Maestría: ConstClass.colorsChart[8],
       Doctorado: ConstClass.colorsChart[4]
      
     };

@@ -121,9 +121,8 @@ export default theme => ({
   },
   // formulario
   textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
-    width: "100%"
+    // paddingLeft: theme.spacing(1),
+    // paddingRight: theme.spacing(1),
   },
   formControl: {
     margin: theme.spacing(1),

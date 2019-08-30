@@ -14,7 +14,7 @@ import Busqueda from "./Busqueda";
 import Cifras from "./Cifras";
 import Perspectivas from "./Perspectivas";
 import Top from './Top';
-import Descarga from "./Descarga";
+import Descarga from "../Compartidos/Descarga";
 import Disclaimer from "./Disclaimer";
 import img1 from "../../assets/img/servidores_publicos_sancionados.svg";
 //import img2 from "../../assets/img/particulares_sancionados.svg";
@@ -184,7 +184,7 @@ class Index extends React.Component {
 
                 <Grid container spacing={0} justify="center" className={classes.container} style={{backgroundColor: '#f6f6f6'}}>
                     <Grid item xs={12} className={classes.item}>
-                        <Descarga/>
+                        <Descarga url={"https://datos.gob.mx/busca/organization/contrataciones-abiertas"}/>
                     </Grid>
                 </Grid>
 

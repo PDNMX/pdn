@@ -21,6 +21,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
 import Collapse from "@material-ui/core/Collapse";
 import Previos from "../../Tablas/Previos";
+import Descarga from "../../Compartidos/Descarga";
 
 
 function getSorting(order, orderBy) {
@@ -31,9 +32,7 @@ function getSorting(order, orderBy) {
 
 const columnData = [
     {id: 'expediente', disablePadding: false, label: 'Expediente', position: 1, mostrar: true},
-    {id: 'nombre', disablePadding: false, label: 'Nombre', position: 2, mostrar: true},
-    {id: 'apellidoUno', disablePadding: false, label: 'Apellido Uno', position: 3, mostrar: true},
-    {id: 'apellidoDos', disablePadding: false, label: 'Apellido Dos', position: 4, mostrar: true},
+    {id: 'servidor', disablePadding: false, label: 'Servidor público', position: 2, mostrar: true},
     {id: 'institucion.nombre', disablePadding: false, label: 'Institución', position: 5, mostrar: true},
     {id: 'autoridad_sancionadora', disablePadding: false, label: 'Autoridad Sancionadora', position: 6, mostrar: true},
     {
@@ -138,6 +137,17 @@ const styles = theme => ({
             marginLeft: "-1em"
         },
         //paddingBottom: theme.spacing(2)
+    },
+        itemD:{
+        maxWidth: 1200,
+        paddingRight: theme.spacing(1),
+        paddingLeft: theme.spacing(1),
+        paddingBottom: theme.spacing(8),
+        paddingTop: theme.spacing(8)
+    },
+
+    containerD: {
+        backgroundColor: '#fff'
     },
 
 });
@@ -362,6 +372,9 @@ class EnhancedTable extends React.Component {
                 this.handleChangeCampo('institucion');
                 this.handleChangeCampo('apellidoUno');
                 this.handleChangeCampo('apellidoDos');
+                this.handleChangeCampo('rfc');
+                this.handleChangeCampo('curp');
+
             })
     };
 
@@ -492,9 +505,7 @@ class EnhancedTable extends React.Component {
                                                 >
                                                     <TableCell component="th" scope="row"
                                                                padding="default">{n.expediente}</TableCell>
-                                                    <TableCell>{n.nombre}</TableCell>
-                                                    <TableCell>{n.apellidoUno}</TableCell>
-                                                    <TableCell>{n.apellidoDos}</TableCell>
+                                                    <TableCell>{n.nombre +" "+n.apellidoUno+" "+ n.apellidoDos}</TableCell>
                                                     <TableCell>{n.institucion.nombre}</TableCell>
                                                     <TableCell
                                                         style={{width: '25%'}}>{n.autoridad_sancionadora}</TableCell>
@@ -555,6 +566,11 @@ class EnhancedTable extends React.Component {
                     </Grid>
 
 
+                </Grid>
+                <Grid container spacing={0} justify="center" className={classes.containerD} style={{backgroundColor: '#f6f6f6'}}>
+                    <Grid item xs={12} className={classes.itemD}>
+                        <Descarga url={process.env.REACT_APP_BULK_S3_SERVIDORES}/>
+                    </Grid>
                 </Grid>
             </div>
         );

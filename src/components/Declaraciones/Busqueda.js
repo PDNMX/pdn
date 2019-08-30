@@ -70,8 +70,12 @@ class App extends Component {
             <Typography>
               <b>Busca un servidor público</b>
             </Typography>
-            <BusquedaFromMaterialUI getUsers={this.getUsers} />
-            {this.showTable()}
+            <Grid container spacing={0}>
+              <Grid item xs={12}>
+                <BusquedaFromMaterialUI getUsers={this.getUsers} />
+                {this.showTable()}
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
       </div>
@@ -79,7 +83,6 @@ class App extends Component {
   }
 
   /*
-  
   /
   /  determina si debe mostrar la tabla o nel
   /
@@ -104,7 +107,6 @@ class App extends Component {
   }
 
   /*
-  
   /
   /  hace el llamado al api para obtener la info
   /  de un servidor público
@@ -124,7 +126,6 @@ class App extends Component {
   }
 
   /*
-  
   /
   /  busca a los usuarios relacionados
   /
@@ -147,7 +148,6 @@ class App extends Component {
   }
 
   /*
-  
   /
   /  cambia la página a desplegar en los resultados
   /
@@ -160,7 +160,6 @@ class App extends Component {
   }
 
   /*
-  
   /
   /  genera el cuerpo del llamado al api
   /

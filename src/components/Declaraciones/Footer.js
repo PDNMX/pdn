@@ -194,8 +194,7 @@ class Footer extends React.Component {
                       Sancionados
                     </Typography>
                   </Link>
-                  {/*
-                                <Typography className={classes.grayText}>Fiscalización</Typography>
+                  {/*                              <Typography className={classes.grayText}>Fiscalización</Typography>
                                 <Typography className={classes.grayText}>Denuncias</Typography>*/}
                   <Link to="/contrataciones" className={classes.link}>
                     <Typography className={classes.grayText}>

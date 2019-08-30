@@ -32,6 +32,8 @@ function getModalStyle() {
         top: `${top}%`,
         left: `${left}%`,
         transform: `translate(-${top}%, -${left}%)`,
+        maxHeight: `calc(100vh - 225px)`,
+        overflowY: "auto"
 
     };
 }
@@ -217,6 +219,7 @@ class DetalleParticular extends React.Component {
                                 </Grid>
                                 <Grid item md = {6} xs = {12}>
                                     <TextField
+                                        multiline={true}
                                         id="read-only-input"
                                         label="Expediente"
                                         defaultValue={particular.numero_expediente}
@@ -235,6 +238,7 @@ class DetalleParticular extends React.Component {
                                 </Grid>
                                 <Grid item md = {6} xs = {12}>
                                     <TextField
+                                        multiline={true}
                                         id="read-only-input"
                                         label="Nombre/Razón social"
                                         defaultValue={particular.nombre_razon_social}
@@ -254,6 +258,7 @@ class DetalleParticular extends React.Component {
 
                                 <Grid item md = {6} xs = {12}>
                                     <TextField
+                                        multiline={true}
                                         id="read-only-input"
                                         label="Institución"
                                         defaultValue={particular.institucion_dependencia ? particular.institucion_dependencia.nombre + '('+particular.institucion_dependencia.siglas+')' : particular.institucion_dependencia}
@@ -272,6 +277,7 @@ class DetalleParticular extends React.Component {
                                 </Grid>
                                 <Grid item md = {6} xs = {12}>
                                     <TextField
+                                        multiline={true}
                                         id="read-only-input"
                                         label="Autoridad sancionadora"
                                         defaultValue={particular.autoridad_sancionadora}
@@ -290,6 +296,7 @@ class DetalleParticular extends React.Component {
                                 </Grid>
                                 <Grid item md={6} xs={12}>
                                     <TextField
+                                        multiline={true}
                                         id="read-only-input"
                                         label="Responsable de la información"
                                         defaultValue={particular.responsable}
@@ -315,7 +322,7 @@ class DetalleParticular extends React.Component {
                                         defaultValue={particular.tipo_falta}
                                         className={classes.textField}
                                         margin="normal"
-                                        multiline
+                                        multiline={true}
                                         InputProps={{
                                             readOnly: true,
                                             className:classes.fontSmall,
@@ -329,12 +336,12 @@ class DetalleParticular extends React.Component {
                                 </Grid>
                                 <Grid item xs={12} md={6}>
                                     <TextField
+                                        multiline={true}
                                         id="read-only-input"
                                         label="Tipo sanción"
                                         defaultValue={particular.tipo_sancion}
                                         className={classes.textField}
                                         margin="normal"
-                                        multiline
                                         InputProps={{
                                             readOnly: true,
                                             className:classes.fontSmall,
@@ -348,6 +355,7 @@ class DetalleParticular extends React.Component {
                                 </Grid>
                                 <Grid item md = {6} xs = {12}>
                                     <TextField
+                                        multiline={true}
                                         id="read-only-input"
                                         label="Sentido resolución"
                                         defaultValue={particular.resolucion ? particular.resolucion.sentido : particular.resolucion}
@@ -367,6 +375,7 @@ class DetalleParticular extends React.Component {
 
                                 <Grid item md = {6} xs = {12}>
                                     <TextField
+                                        multiline={true}
                                         id="read-only-input"
                                         label="Fecha captura"
                                         defaultValue={particular.fecha_captura}
@@ -385,6 +394,7 @@ class DetalleParticular extends React.Component {
                                 </Grid>
                                 <Grid item md = {6} xs = {12}>
                                     <TextField
+                                        multiline={true}
                                         id="read-only-input"
                                         label="Fecha notificación"
                                         defaultValue={particular.fecha_notificacion}
@@ -405,6 +415,7 @@ class DetalleParticular extends React.Component {
 
                                 <Grid item md={6} xs={12}>
                                     <TextField
+                                        multiline={true}
                                         id="read-only-input"
                                         label="Plazo"
                                         defaultValue={particular.plazo}
@@ -423,6 +434,7 @@ class DetalleParticular extends React.Component {
                                 </Grid>
                                 <Grid item md={6} xs={12}>
                                     <TextField
+                                        multiline={true}
                                         id="read-only-input"
                                         label="Monto"
                                         defaultValue={particular.multa ? particular.multa.monto + ' '+particular.multa.moneda : particular.multa}
@@ -446,7 +458,7 @@ class DetalleParticular extends React.Component {
                                         defaultValue={particular.objetoSocial}
                                         className={classes.textField}
                                         margin="normal"
-                                        multiline
+                                        multiline={true}
                                         InputProps={{
                                             readOnly: true,
                                             className:classes.fontSmall,
@@ -465,7 +477,7 @@ class DetalleParticular extends React.Component {
                                         defaultValue={particular.causa_motivo_hechos}
                                         className={classes.textField}
                                         margin="normal"
-                                        multiline
+                                        multiline={true}
                                         InputProps={{
                                             readOnly: true,
                                             className:classes.fontSmall,
@@ -479,6 +491,7 @@ class DetalleParticular extends React.Component {
                                 </Grid>
                                 <Grid item xs={12}>
                                     <TextField
+                                        multiline={true}
                                         id="read-only-input"
                                         label="Observaciones"
                                         defaultValue={particular.observaciones}
@@ -517,8 +530,6 @@ class DetalleParticular extends React.Component {
                                 </Grid>
                                      */
                                 }
-
-
 
                                 <Grid item md={6} xs={12} className={classes.centrado}></Grid>
                                 <Grid item md={6} xs={12} className={classes.centrado}>

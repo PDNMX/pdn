@@ -21,6 +21,7 @@ import Previos from "../../Tablas/Previos";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
 import Collapse from "@material-ui/core/Collapse";
+import Descarga from "../../Compartidos/Descarga";
 
 function getSorting(order, orderBy) {
     return order === 'desc'
@@ -171,6 +172,17 @@ const styles = theme => ({
             marginLeft: "-1em"
         },
         //paddingBottom: theme.spacing(2)
+    },
+    itemD:{
+        maxWidth: 1200,
+        paddingRight: theme.spacing(1),
+        paddingLeft: theme.spacing(1),
+        paddingBottom: theme.spacing(8),
+        paddingTop: theme.spacing(8)
+    },
+
+    containerD: {
+        backgroundColor: '#fff'
     },
 });
 
@@ -353,6 +365,8 @@ class EnhancedTable extends React.Component {
             }, () => {
                 this.handleChangeCampo('nombreParticular');
                 this.handleChangeCampo('institucion');
+                this.handleChangeCampo('numeroExpediente');
+
             })
     };
     handleCleanTables = () => {
@@ -567,6 +581,11 @@ class EnhancedTable extends React.Component {
 
                     </Grid>
 
+                </Grid>
+                <Grid container spacing={0} justify="center" className={classes.containerD} style={{backgroundColor: '#f6f6f6'}}>
+                    <Grid item xs={12} className={classes.itemD}>
+                        <Descarga url={process.env.REACT_APP_BULK_S3_PARTICULARES}/>
+                    </Grid>
                 </Grid>
             </div>
         );

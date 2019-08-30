@@ -31,13 +31,12 @@ class BusquedaFromMaterialUI extends Component {
       <form onSubmit={this.searchUsers}>
         <Grid
           container
-          spacing={3}
+          spacing={0}
           className={classes.root}
           style={{ marginBottom: 30 }}
         >
           <Grid item xs={12} md={6}>
             <TextField
-              style={{ width: "100%" }}
               id="standard-select-currency"
               select
               label="Institución"
@@ -163,7 +162,6 @@ class BusquedaFromMaterialUI extends Component {
   }
 
   /*
-  
   /
   /  pasa los argumentos de la búsqueda a una 
   /  función que llama al api de búsqueda 
@@ -177,7 +175,6 @@ class BusquedaFromMaterialUI extends Component {
   };
 
   /*
-  
   /
   /  genera una sola "source of truth" para los 
   /  valores del formulario. En vue es lo de 

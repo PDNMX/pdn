@@ -33,7 +33,8 @@ const styles = theme => ({
         backgroundColor: '#f6f6f6',
     },
     disclaimerItem: {
-        paddingTop: theme.spacing(1),
+        paddingTop: theme.spacing(4),
+        paddingBottom : theme.spacing(4),
         paddingRight: theme.spacing(1),
         paddingLeft: theme.spacing(1),
         maxWidth: 1200

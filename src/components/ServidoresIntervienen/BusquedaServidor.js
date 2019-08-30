@@ -103,7 +103,7 @@ class BusquedaServidor extends React.Component {
                 });
                 this.setState({suggestions: sug});
             }).catch(err => {
-            this.props.handleError(true);
+           // this.props.handleError(true);
         });
     }
 

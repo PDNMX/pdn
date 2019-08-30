@@ -92,7 +92,7 @@ class PerfilMaterialUI extends Component {
         className={classes.root}
         style={{ maxWidth: 1200, margin: "0 auto", padding: "100px 0px" }}
       >
-        <Grid container spacing={3}>
+        <Grid container spacing={0}>
           <Grid item xs={12}>
             <Paper className={classes.paper}>
               <Grid container spacing={3}>
@@ -210,8 +210,8 @@ class PerfilMaterialUI extends Component {
           </Grid>
         </Grid>
         {/* barra de navegacion superior */}
-        <Grid container spacing={3}>
-          <Grid item xs={12}>
+        <Grid container spacing={0}>
+          <Grid item xs={12} style={{ maxWidth: 1200 }}>
             <MenuSuperior
               menu_superior={this.state.menu_superior}
               change={this.change_menuSuperior}
@@ -275,7 +275,7 @@ class PerfilMaterialUI extends Component {
             </Grid>
           )}
         </Grid>
-        <Grid container spacing={3}>
+        <Grid container spacing={0}>
           <Grid item xs={12} align="right">
             <JSONButton
               text={"descargar perfil"}
@@ -288,7 +288,6 @@ class PerfilMaterialUI extends Component {
   }
 
   /*
-  
   /
   /  hace el llamado al api para obtener la info
   /  de un servidor público

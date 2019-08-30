@@ -27,7 +27,8 @@ const styles = theme => ({
     },
     itemDisclaimer:{
         maxWidth: 1200,
-        paddingTop: theme.spacing(1),
+        paddingTop: theme.spacing(4),
+        paddingBottom : theme.spacing(4),
         paddingLeft: theme.spacing(1),
         paddingRight: theme.spacing(1)
     }

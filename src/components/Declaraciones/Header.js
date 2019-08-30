@@ -100,7 +100,7 @@ class Header extends React.Component {
   };
 
   render() {
-    const { classes, logo, titulo } = this.props;
+    const { classes, logo, titulo, subtitulo } = this.props;
 
     return (
       <div className={classes.root}>
@@ -152,17 +152,25 @@ class Header extends React.Component {
               className={classes.whiteText}
               style={{ fontWeight: 600 }}
             >
-              {titulo}
+              {subtitulo}
             </Typography>
             <Typography
+              variant="h4"
+              paragraph
+              className={classes.whiteText}
+              style={{ fontWeight: 300 }}
+            >
+              {titulo}
+            </Typography>
+            {/* <Typography
               className={classes.whiteText}
               style={{ fontSize: "18px", fontWeight: 500, maxWidth: 600 }}
             >
-              Consulta y visualiza los datos <strong>públicos</strong> de las
-              declaraciones patrimoniales, y de intereses, así como la
+              Consulta y visualiza los datos <strong>públicos</strong> de
+              las declaraciones patrimoniales, y de intereses, así como la
               constancia de declaración anual de impuestos de las y los
               servidores públicos.
-            </Typography>
+            </Typography> */}
           </Grid>
         </Grid>
       </div>

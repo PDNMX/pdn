@@ -49,7 +49,8 @@ class Bandita extends React.Component{
         return (
 
                 <div className={classes.root}>
-                    <Button variant='contained' className={classes.comenta} onClick={this.handleClickOpen} >Comenta</Button>
+                    <Button className={classes.comenta} href={process.env.REACT_APP_LINK_GOOGLEFORM} target={"_blank"}>Comenta</Button>
+                   {/* <Button variant='contained' className={classes.comenta} onClick={this.handleClickOpen} >Comenta</Button>
                     <Modal className={classes.modalParticipa}
                            aria-labelledby="simple-modal-title"
                            aria-describedby="simple-modal-description"
@@ -57,7 +58,7 @@ class Bandita extends React.Component{
                            onClose={this.handleClose}
                     >
                         <Participa onClose={this.handleClose}/>
-                    </Modal>
+                    </Modal>*/}
                 </div>
 
 

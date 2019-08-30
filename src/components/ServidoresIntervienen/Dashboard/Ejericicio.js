@@ -133,11 +133,8 @@ class Ejercicio extends React.Component {
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>
                         <Typography variant={"body1"}>
-                            En esté primer acercamiento, se muestra la información con que se cuenta, correspondiente a
-                            periodos fiscales entre los años 2015 a la fecha. Como se aprecía en la gráfica, hay un ligero crecimiento en el número de registros de
-                            Servidores Públicos que intervienen en procesos de contratación año con año.<br/>
-                            En particular el año 2019, ya cuenta con un número mayor al registrado anualmente en el 2016. En secciones posteriores, se podrá analizar la información de cada año
-                            correspondiente.
+                            En este primer acercamiento, se muestra la información correspondiente a periodos fiscales de los años 2015 a la fecha.
+                            Como se aprecia, hay un ligero crecimiento en el número de registros de servidores públicos que intervienen en procesos de contratación cada año.
                         </Typography>
                     </Grid>
 
