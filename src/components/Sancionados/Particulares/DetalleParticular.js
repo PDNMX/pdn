@@ -385,7 +385,7 @@ class DetalleParticular extends React.Component {
                                             readOnly: true,
                                             className:classes.fontSmall,
                                             endAdornment: (
-                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(2)}}>
+                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(3)}}>
                                                     <IconHelp/>
                                                 </InputAdornment>
                                             )
