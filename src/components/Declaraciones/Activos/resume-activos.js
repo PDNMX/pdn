@@ -55,14 +55,14 @@ class ActivosBienesInmuebles extends Component {
 
   componentDidMount() {
     let {
-      bienes_inmuebles,
+      // bienes_inmuebles,
       bienes_muebles_registrables,
       bienes_muebles_no_registrables,
-      inversiones_cuentas_valores,
+      // inversiones_cuentas_valores,
       efectivo_metales,
       fideicomisos,
       bienes_intangibles,
-      cuentas_por_cobrar,
+      // cuentas_por_cobrar,  
       uso_especie_propiedad_tercero
     } = this.props.profile.activos;
 
