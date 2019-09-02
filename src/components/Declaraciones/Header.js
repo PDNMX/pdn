@@ -113,7 +113,7 @@ class Header extends React.Component {
                   Plataforma Digital Nacional
                 </Link>
               </li>
-              <li>{titulo}</li>
+              <li>Declaraciones</li>
             </ul>
           </Grid>
         </Grid>

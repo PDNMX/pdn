@@ -23,7 +23,7 @@ let aux = new Image();
 aux.src = "/LogoSesna.png";
 
 function getGlosarioItem(id){
-    return glosario.servidoresSancionados[id];
+    return glosario.servidores[id];
 }
 
 function getModalStyle() {

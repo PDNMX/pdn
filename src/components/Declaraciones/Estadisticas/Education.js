@@ -5,10 +5,10 @@ import "../css/chartist.min.css";
 import EducacionTotal from "./Educacion/EducacionTotal";
 // import EducacionPorcentaje from "./Educacion/EducacionPorcentaje";
 
-import EducacionEdad from "./Educacion/EducacionEdad";
+// import EducacionEdad from "./Educacion/EducacionEdad";
 // import EducacionEdadPorcentaje from "./Educacion/EducacionEdadPorcentaje";
 
-import EducacionNivelGobierno from "./Educacion/EducacionNivelGobierno";
+// import EducacionNivelGobierno from "./Educacion/EducacionNivelGobierno";
 // import EducacionNivelGobiernoPorcentaje from "./Educacion/EducacionNivelGobiernoPorcentaje";
 
 import { withStyles } from "@material-ui/core/styles";
@@ -17,7 +17,7 @@ import styles from "../style";
 
 class Education extends Component {
   render() {
-    let { classes, value } = this.props;
+    let { classes } = this.props;
 
     return (
       <div className={classes.rootSeccion}>

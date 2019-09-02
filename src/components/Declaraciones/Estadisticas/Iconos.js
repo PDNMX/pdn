@@ -1,5 +1,5 @@
 import React from "react";
-import Icon from "@material-ui/core/Icon";
+// import Icon from "@material-ui/core/Icon";
 
 export default function Icono(props) {
   let icono;
@@ -45,8 +45,12 @@ export default function Icono(props) {
   }
 
   return (
-    <Icon {...props}>
-      <img alt="icono" src={icono} style={{ height: "100%", width: "100%" }} />
-    </Icon>
+    // <Icon {...props} component="div">
+    <img
+      alt="icono"
+      src={icono}
+      style={{ maxWidth: 30, margin: "20px auto 0px auto" }}
+    />
+    // </Icon>
   );
 }

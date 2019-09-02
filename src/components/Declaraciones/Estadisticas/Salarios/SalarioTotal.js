@@ -9,7 +9,6 @@ import styles from "../../style";
 
 let d3 = Object.assign({}, require("d3-format"));
 let format = d3.format("$,");
-let _format = d3.format(",");
 
 class SalarioTotal extends Component {
   state = {};
