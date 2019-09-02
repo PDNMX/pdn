@@ -26,6 +26,9 @@ const style = theme => ({
     },
     aux: {
         textTransform: "none"
+    },
+    submenu:{
+        paddingLeft : theme.spacing(2)
     }
 
 });
@@ -89,37 +92,36 @@ class MenuSistemas extends React.Component {
                         <ExpandLess/> : <ExpandMore/> : null}
                     </MenuItem>
                     <Collapse in={this.state.open2} timeout="auto" unmountOnExit>
-                        <List component={"div"}>
+                        <List component={"div"} id={"isela"} className={classes.submenu}>
                             <Tooltip
                                 title={"Sistema de evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal"}>
-                                <ListItem button component={Link} to={"/declaraciones"}>
-                                    Declaraciones</ListItem>
+                                <ListItem button component={Link} to={"/declaraciones"}><Typography >Declaraciones</Typography></ListItem>
                             </Tooltip>
 
                             <Tooltip
                                 title={"Sistema de los Servidores públicos que intervengan en procedimientos de contrataciones públicas"}>
-                            <ListItem button component={Link} to={"/servidores"}>Servidores públicos en
-                                contrataciones</ListItem>
+                            <ListItem button component={Link} to={"/servidores"}><Typography >Servidores públicos en
+                                contrataciones</Typography></ListItem>
                             </Tooltip>
 
                             <Tooltip
                                 title={"Sistema nacional de Servidores públicos y particulares sancionados"}>
-                            <ListItem button component={Link} to={"/sancionados"}>Sancionados</ListItem>
+                                <ListItem button component={Link} to={"/sancionados"}><Typography >Sancionados</Typography></ListItem>
                             </Tooltip>
 
                             <Tooltip
                                 title={"Sistema de información y comunicación del Sistema Nacional y del Sistema Nacional de Fiscalización"}>
-                            <ListItem button component={Link} to={"#"} disabled={true}>Fiscalización</ListItem>
+                                <ListItem button component={Link} to={"#"} disabled={true}><Typography >Fiscalización</Typography></ListItem>
                             </Tooltip>
 
                             <Tooltip
                                 title={"Sistema de denuncias públicas de faltas administrativas y hechos de corrupción"}>
-                            <ListItem button component={Link} to={"#"} disabled={true}>Denuncias</ListItem>
+                                <ListItem button component={Link} to={"#"} disabled={true}><Typography >Denuncias</Typography></ListItem>
                             </Tooltip>
 
                             <Tooltip
                                 title={"Sistema de Información Pública de Contrataciones"}>
-                            <ListItem button component={Link} to={"/contrataciones"}>Contrataciones</ListItem>
+                                <ListItem button component={Link} to={"/contrataciones"}><Typography >Contrataciones</Typography></ListItem>
                             </Tooltip>
                         </List>
                     </Collapse>
