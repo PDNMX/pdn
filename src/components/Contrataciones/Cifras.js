@@ -52,7 +52,7 @@ class Cifras extends React.Component{
         donutChartData: [],
         periodo: {
             start: 2017,
-            end: 2018
+            end: 2019
         },
         gastoTotal: 0,
         colors: {
