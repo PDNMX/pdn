@@ -7,8 +7,12 @@ import PrivateRoute from "./PrivateRoute";
 import app from "./config/firebase";
 import LoginPDN from "./components/Inicio/LoginPDN";
 import ScrollToTop from "./ScrollToTop";
-//import ReactGA from 'react-ga';
 import "./components/Utils/Header.css";
+
+// Google Analytics 
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-126837818-1');
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 const theme = createMuiTheme({
   typography: {
