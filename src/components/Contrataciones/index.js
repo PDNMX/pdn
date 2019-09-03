@@ -31,7 +31,8 @@ const styles = theme => ({
         paddingRight: theme.spacing(1),
         paddingLeft: theme.spacing(1),
         paddingBottom: theme.spacing(8),
-        paddingTop: theme.spacing(8)
+        paddingTop: theme.spacing(8),
+       // overflow: "auto"
     },
     disclaimer: {
         maxWidth: 1200,
@@ -167,7 +168,7 @@ class Index extends React.Component {
                     </div>
                     :
                     <Grid container spacing={0} justify="center" className={classes.container}>
-                        <Grid item xs={12} className={classes.item}>
+                        <Grid item xs={12} className={classes.item} id={"test"} style={{"overflow":"auto"}}>
                             <Busqueda/>
                         </Grid>
                     </Grid>

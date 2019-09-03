@@ -181,7 +181,7 @@ class Busqueda extends React.Component{
                     />
 
 
-                    <div>
+                    <div style={{"overflow":"auto"}}>
 
                         <TablaResultados
                             data={this.state.results}
