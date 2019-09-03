@@ -167,7 +167,7 @@ export default function EnhancedTable(props) {
             console.log(e);
             date = "No disponible";
         }
-        
+
         return {
             col1: d.ocid,
             col2: date,
