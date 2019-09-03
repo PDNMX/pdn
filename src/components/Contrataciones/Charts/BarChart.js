@@ -96,7 +96,7 @@ class Example extends React.Component {
                     xType="ordinal"
                     //width={width}
                     height={450}
-                    yDomain={[0, 150000]}//{[yDomain.min, yDomain.max]}
+                    yDomain={[0, 200000]}//{[yDomain.min, yDomain.max]}
                 >
                     <BarSeries className="vertical-bar-series-example" data={data}
                                onValueMouseOver={v => this.setState({value: v})}

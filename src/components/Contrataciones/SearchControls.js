@@ -74,7 +74,7 @@ class SearchControls extends React.Component{
 
     render() {
 
-        const {classes, buyers, buyer_id, procurementMethod} = this.props;
+        const {classes, buyers, buyer_id, procurementMethod, cycle} = this.props;
 
         //const [age, setAge] = React.useState('');
         const handleChangeBuyer = event => {
@@ -86,11 +86,15 @@ class SearchControls extends React.Component{
         };
 
         const handleChangeSupplierName = event => {
-          this.props.setSupplierName(event.target.value);
+            this.props.setSupplierName(event.target.value);
         };
 
         const handleSetInputText = event => {
-          this.props.setInputText(event.target.value);
+            this.props.setInputText(event.target.value);
+        };
+
+        const handleChangeCycle = event => {
+            this.props.setCycle(event.target.value);
         };
 
         const handleSearch = e => {
@@ -103,7 +107,7 @@ class SearchControls extends React.Component{
 
             <div className={classes.root}>
                 <Grid container spacing={0}>
-                    <Grid item xs={6} className={classes.item}>
+                    <Grid item  xs={12} sm={12} md={4} lg={6} xl={6}  className={classes.item}>
 
 
 
@@ -137,7 +141,7 @@ class SearchControls extends React.Component{
 
                     </Grid>
 
-                    <Grid item xs={6} className={classes.item}>
+                    <Grid item  xs={12} sm={12} md={4} lg={3} xl={3}  className={classes.item}>
                         <form className={classes.root}>
                             <FormControl className={classes.procurementMethod}
                             fullWidth
@@ -157,6 +161,32 @@ class SearchControls extends React.Component{
                                 </Select>
                             </FormControl>
                         </form>
+                    </Grid>
+
+                    <Grid item xs={12} sm={12} md={4} lg={3} xl={3} className={classes.item}>
+
+                        <form className={classes.root}>
+                            <FormControl className={classes.procurementMethod}
+                                         fullWidth
+                            >
+                                <InputLabel htmlFor="age-customized-select">Ciclo</InputLabel>
+                                <Select
+                                    value={cycle}
+                                    onChange={handleChangeCycle}
+                                    //input={<BootstrapInput name="age" id="age-customized-select" />}
+                                >
+                                    <MenuItem value="any">
+                                        <em>Cualquiera</em>
+                                    </MenuItem>
+                                    <MenuItem value={2019}>2019</MenuItem>
+                                    <MenuItem value={2018}>2018</MenuItem>
+                                    <MenuItem value={2017}>2017</MenuItem>
+                                    <MenuItem value={2016}>2016</MenuItem>
+                                    <MenuItem value={2015}>2015</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </form>
+
                     </Grid>
 
                     <Grid item xs={12} className={classes.item}>

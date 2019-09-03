@@ -120,7 +120,9 @@ class Footer extends React.Component {
                                     className={classes.libreUso}
                                 />
                                 <br/>
+                                {/*
                                 <img alt="Open Knowledge" src={OK}/>
+                                */}
                             </Grid>
                             <Grid item xs={6} md={3}>
                                 <Typography className={classes.blueText} paragraph>

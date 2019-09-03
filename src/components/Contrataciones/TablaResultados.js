@@ -15,9 +15,10 @@ import ResponsiveDialog from './ResponsiveDialog';
 
 const headRows = [
     { id: 'col1', numeric: false, disablePadding: false, label: 'OCID' },
-    { id: 'col2', numeric: false, disablePadding: false, label: 'Tipo' },
-    { id: 'col3', numeric: false, disablePadding: false, label: 'Título' },
-    { id: 'col4', numeric: false, disablePadding: false, label: 'Monto' },
+    { id: 'col2', numeric: false, disablePadding: false, label: 'Fecha' },
+    { id: 'col3', numeric: false, disablePadding: false, label: 'Tipo' },
+    { id: 'col4', numeric: false, disablePadding: false, label: 'Título' },
+    { id: 'col5', numeric: false, disablePadding: false, label: 'Monto' },
 ];
 
 function EnhancedTableHead(props) {
@@ -158,12 +159,21 @@ export default function EnhancedTable(props) {
             total = "No disponible"
         }
 
+        let date = "No disponible";
+
+        try {
+            date = new Date(d.date).toLocaleDateString('es-MX');
+        } catch (e){
+            console.log(e);
+            date = "No disponible";
+        }
 
         return {
             col1: d.ocid,
-            col2: getProcurementMethod(d.tender.procurementMethod),
-            col3: d.tender.title,
-            col4: total === "No disponible"? total :  new Intl.NumberFormat('es-MX', {style: 'currency', currency: 'MXN'}).format(total)
+            col2: date,
+            col3: getProcurementMethod(d.tender.procurementMethod),
+            col4: d.tender.title,
+            col5: total === "No disponible"? total :  new Intl.NumberFormat('es-MX', {style: 'currency', currency: 'MXN'}).format(total)
         }
     });
 
@@ -243,7 +253,7 @@ export default function EnhancedTable(props) {
                                     <TableCell align="left">{row.col2}</TableCell>
                                     <TableCell align="left">{row.col3}</TableCell>
                                     <TableCell align="left">{row.col4}</TableCell>
-                                    {/*<TableCell align="right">{row.col5}</TableCell>*/}
+                                    <TableCell align="left">{row.col5}</TableCell>
                                     </TableRow>
                                     );
                                 })}

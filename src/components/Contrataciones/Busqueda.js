@@ -25,7 +25,8 @@ class Busqueda extends React.Component{
         buyers: [],
         buyer_id: 'any',
         procurementMethod: 'any',
-        supplierName: ""
+        supplierName: "",
+        cycle: 'any'
     };
 
 
@@ -117,6 +118,14 @@ class Busqueda extends React.Component{
         });
     };
 
+    setCycle = cycle => {
+        this.setState({
+            cycle: cycle
+        }, () => {
+           this.search(false)
+        });
+    };
+
     //buscar
     search = pageChange => {
 
@@ -139,6 +148,10 @@ class Busqueda extends React.Component{
 
         if (this.state.inputText !== ""){
             body.tender_title = this.state.inputText;
+        }
+
+        if (this.state.cycle !== 'any'){
+            body.cycle = this.state.cycle;
         }
 
         this.setState({loading: true}, () => {
@@ -178,6 +191,8 @@ class Busqueda extends React.Component{
                                     supplierName={this.state.supplierName}
                                     setInputText={this.setInputText}
                                     search={this.search}
+                                    setCycle={this.setCycle}
+                                    cycle={this.state.cycle}
                     />
 
 
