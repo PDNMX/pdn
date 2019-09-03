@@ -34,177 +34,178 @@ import DeclaracionesS1 from "../components/Declaraciones";
 
 
 const pdnRoutes = [
-    {
-        exact: true,
-        path: "/",
-        component: Home,
-        private: false
-    },
-    {
-        exact: true,
-        path: "/about",
-        component: About,
-        private: false
-    },
-    {
-        exact: true,
-        path: "/terminos",
-        component: Terminos,
-        private: false
-    },
-    {
-        exact: true,
-        path: "/faq",
-        component: Faq,
-        private: false
-    },
-    {
-        exact: true,
-        path: "/CatalogoDatos",
-        component: Datos,
-        private: false
-    },
-    {
-        exact: true,
-        path: "/sancionados",
-        component: Sancionados,
-        private: false
-    },
-    {
-        exact: true,
-        path: "/sancionados/dashboard",
-        component: DashboardSancionados,
-        private: false
-    },
-    {
-        exact: true,
-        path: "/sancionados/dashboardParticulares",
-        component: DashboardParticularesSancionados,
-        private: false
-    },
-    {
-        exact: true, path: "/servidores",
-        component: Servidores,
-        private: false
-    },
-    {
-        exact: true,
-        path: "/contrataciones",
-        component: Contrataciones,
-        private: false
-    },
-    {
-        exact: true,
-        path: "/denuncias",
-        component: Denuncias
-    },
-    {
-        exact: true,
-        path: "/formDenuncia",
-        component: FormularioDenuncias,
-        private: false
-    },
-    {
-        exact: true,
-        path: "/formConsultaDenuncia",
-        component: FormularioConsula,
-        private: false
-    },
-    {
-        exact: true,
-        path: "/conexion",
-        component: Conexion,
-        private: false
-    },
-    {
-        exact: true,
-        path: "/especificaciones",
-        component: Especificaciones,
-        private: false
-    },
-    {
-        exact: true,
-        path: "/declaraciones/especificaciones",
-        component: DeclaracionesEspecificaciones,
-        private: false
-    },
-    {
-        exact: true,
-        path: "/sancionados/especificaciones",
-        component: EspecificacionesSancionados,
-        private: false
-    },
-    {
-        exact: true,
-        path: "/intervienen/especificaciones",
-        component: EspecificacionesServidoresIntervienen,
-        private: false
-    },
-    {
-        exact: true,
-        path: "/Validador",
-        component: Validador,
-        private: false
-    },
-    {
-        exact: true,
-        path: "/administracionPDN/consultasolicitudes",
-        component: Consulta,
-        private: true,
-        perfom: "admon-pdn-consultaSolicitudes:visit"
-    },
-    {
-        exact: true,
-        path: "/consolaAdmonSO",
-        component: ConsolaAdministracionSO,
-        private: true,
-        perfom: "admon-conexion-so:visit"
-    },
-    {
-        exact: true,
-        path: "/administracionPDN",
-        component: ConsolaAdministracionPDN,
-        private: true,
-        perfom: "admon-pdn-page:visit"
-    },
-    {
-        exact: true,
-        path: "/administracionPDN/usuarios",
-        component: ConsultaUsuarios,
-        private: true,
-        perfom: "admon-pdn-usuarios:visit"
-    },
-    {
-        exact: true,
-        path: "/administracionPDN/consultaconexiones",
-        component: ConsultaConexiones,
-        private: true,
-        perfom: "admon-pdn-consultaConexiones:visit"
-    },
-    {
-        exact: true,
-        path: "/gaa",
-        component: GAA,
-        private: false
-    },
-    {
-        exact: true,
-        path: "/gaa/calidad",
-        component: Metodologia,
-        private: false
-    },
-    {
-        exact: true,
-        path: "/mesa-de-ayuda",
-        component: HelpDesk,
-        private: false
-    },
-    {
-        exact: false,
-        path: "/declaraciones",
-        component: DeclaracionesS1,
-        private: false
-    }
+  {
+    exact: true,
+    path: "/",
+    component: Home,
+    private: false
+  },
+  {
+    exact: true,
+    path: "/about",
+    component: About,
+    private: false
+  },
+  {
+    exact: true,
+    path: "/terminos",
+    component: Terminos,
+    private: false
+  },
+  {
+    exact: true,
+    path: "/faq",
+    component: Faq,
+    private: false
+  },
+  {
+    exact: true,
+    path: "/CatalogoDatos",
+    component: Datos,
+    private: false
+  },
+  {
+    exact: true,
+    path: "/sancionados",
+    component: Sancionados,
+    private: false
+  },
+  {
+    exact: true,
+    path: "/sancionados/dashboard",
+    component: DashboardSancionados,
+    private: false
+  },
+  {
+    exact: true,
+    path: "/sancionados/dashboardParticulares",
+    component: DashboardParticularesSancionados,
+    private: false
+  },
+  {
+    exact: true,
+    path: "/servidores",
+    component: Servidores,
+    private: false
+  },
+  {
+    exact: true,
+    path: "/contrataciones",
+    component: Contrataciones,
+    private: false
+  },
+  {
+    exact: true,
+    path: "/denuncias",
+    component: Denuncias
+  },
+  {
+    exact: true,
+    path: "/formDenuncia",
+    component: FormularioDenuncias,
+    private: false
+  },
+  {
+    exact: true,
+    path: "/formConsultaDenuncia",
+    component: FormularioConsula,
+    private: false
+  },
+  {
+    exact: true,
+    path: "/conexion",
+    component: Conexion,
+    private: false
+  },
+  {
+    exact: true,
+    path: "/especificaciones",
+    component: Especificaciones,
+    private: false
+  },
+  {
+    exact: true,
+    path: "/declaraciones/especificaciones",
+    component: DeclaracionesEspecificaciones,
+    private: false
+  },
+  {
+    exact: true,
+    path: "/sancionados/especificaciones",
+    component: EspecificacionesSancionados,
+    private: false
+  },
+  {
+    exact: true,
+    path: "/intervienen/especificaciones",
+    component: EspecificacionesServidoresIntervienen,
+    private: false
+  },
+  {
+    exact: true,
+    path: "/Validador",
+    component: Validador,
+    private: false
+  },
+  {
+    exact: true,
+    path: "/administracionPDN/consultasolicitudes",
+    component: Consulta,
+    private: true,
+    perfom: "admon-pdn-consultaSolicitudes:visit"
+  },
+  {
+    exact: true,
+    path: "/consolaAdmonSO",
+    component: ConsolaAdministracionSO,
+    private: true,
+    perfom: "admon-conexion-so:visit"
+  },
+  {
+    exact: true,
+    path: "/administracionPDN",
+    component: ConsolaAdministracionPDN,
+    private: true,
+    perfom: "admon-pdn-page:visit"
+  },
+  {
+    exact: true,
+    path: "/administracionPDN/usuarios",
+    component: ConsultaUsuarios,
+    private: true,
+    perfom: "admon-pdn-usuarios:visit"
+  },
+  {
+    exact: true,
+    path: "/administracionPDN/consultaconexiones",
+    component: ConsultaConexiones,
+    private: true,
+    perfom: "admon-pdn-consultaConexiones:visit"
+  },
+  {
+    exact: true,
+    path: "/gaa",
+    component: GAA,
+    private: false
+  },
+  {
+    exact: true,
+    path: "/gaa/calidad",
+    component: Metodologia,
+    private: false
+  },
+  {
+    exact: true,
+    path: "/mesa-de-ayuda",
+    component: HelpDesk,
+    private: false
+  },
+  {
+    exact: false,
+    path: "/declaraciones",
+    component: DeclaracionesS1,
+    private: false
+  }
 ];
 
 export default pdnRoutes;

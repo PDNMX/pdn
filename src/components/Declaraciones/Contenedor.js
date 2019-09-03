@@ -19,7 +19,7 @@ import imgBuscar from "../../assets/declaraciones/servidores_declaraciones.svg";
 import imgEstadisticas from "../../assets/declaraciones/estadisticas.svg";
 
 //header data
-import S3 from "../../assets/iconos_azul/1_icono.svg";
+import S3 from "../../assets/iconos_azul/demo.svg";
 import background from "../../assets/img/pdn_sis1.jpeg";
 
 import {
