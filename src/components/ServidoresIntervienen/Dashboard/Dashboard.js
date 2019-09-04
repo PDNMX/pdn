@@ -32,7 +32,8 @@ const styles = theme => ({
         },
         [theme.breakpoints.down('sm')]: {
             marginBottom: theme.spacing(4),
-        }
+        },
+        padding: theme.spacing(1)
     }
 });
 

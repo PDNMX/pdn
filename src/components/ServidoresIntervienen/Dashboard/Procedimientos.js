@@ -26,7 +26,7 @@ const styles = theme => ({
         paddingLeft: "10px",
         paddingRight: "10px",
         marginBottom: "30px",
-        textAlign:"justify"
+
 
     },
     btnDownload: {

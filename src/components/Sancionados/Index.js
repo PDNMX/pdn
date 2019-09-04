@@ -37,7 +37,8 @@ const styles = theme => ({
     },
     sectionT: {
         color: theme.palette.textGrey.color,
-        marginTop : theme.spacing(7)
+        marginTop : theme.spacing(7),
+
     },
     image: {
         width: '60px'

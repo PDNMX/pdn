@@ -83,7 +83,8 @@ const styles = theme => ({
     },
     section: {
         maxWidth: '1200px',
-        overflowX: 'auto'
+        overflowX: 'auto',
+        padding: theme.spacing(1)
     },
     table: {
         tableLayout: 'fixed',
@@ -94,7 +95,7 @@ const styles = theme => ({
     },
     gridTable: {
         marginBottom: '27px',
-
+        padding: theme.spacing(1)
     },
     desc: {
         color: theme.palette.primary.dark,

@@ -121,7 +121,8 @@ const styles = theme => ({
 
     section: {
         maxWidth: '1200px',
-        overflowX: 'auto'
+        overflowX: 'auto',
+        padding: theme.spacing(1)
     },
     table: {
         tableLayout: 'fixed',
@@ -131,7 +132,8 @@ const styles = theme => ({
         fontSize: '0.75rem'
     },
     gridTable: {
-        marginBottom: '27px'
+        marginBottom: '27px',
+        padding: theme.spacing(1)
     },
     desc: {
         color: theme.palette.primary.dark,
@@ -428,6 +430,7 @@ class EnhancedTable extends React.Component {
                     container
                     spacing={0}
                     style={{backgroundColor: "#fff"}}
+                    className={classes.infoBusqueda}
                 >
                     <Grid item xs={12} style={{maxWidth: 1200, margin: "0 auto"}}>
                         <Typography paragraph>
