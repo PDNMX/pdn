@@ -4,13 +4,11 @@ import MuiExpansionPanel from '@material-ui/core/ExpansionPanel';
 import MuiExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import MuiExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
-//import Grid from "@material-ui/core/Grid";
 import MuiLink from "@material-ui/core/Link";
-//import {Link} from "react-router-dom";
-//import Icon from '@material-ui/core/Icon';
 import Pasos from "../../../assets/pasos_evaluación.png";
 import Pipeline from "../../../assets/DQ_pipeline_analy.png";
 import DataImpact from "../../../assets/data_impact.png";
+import Button from "@material-ui/core/Button";
 
 const ExpansionPanel = withStyles({
     root: {
@@ -89,6 +87,12 @@ const useStyles = makeStyles( theme => ({
         display: 'inline',
         color: '#606060',
         fontSize: '0.975rem',
+    },
+    button: {
+        marginTop: theme.spacing(1),
+        marginRight: theme.spacing(1),
+        marginBottom: theme.spacing(1),
+        background: '#ffe01b',//'#fecb6e'
     },
 }));
 
@@ -395,6 +399,26 @@ export default function CustomizedExpansionPanels() {
                     </div>
                 </ExpansionPanelDetails>
             </ExpansionPanel>
+
+            <ExpansionPanel square expanded={expanded === 'panel7'} onChange={handleChange('panel7')}>
+                <ExpansionPanelSummary aria-controls="panel7d-content" id="panel7d-header">
+                    <Typography>Encuesta - Guía de Apertura Anticorrupción 2.0</Typography>
+                </ExpansionPanelSummary>
+                <ExpansionPanelDetails>
+                    <div>
+                        <Typography paragraph>
+                            La construcción de la integridad y la ética pública necesita de la ciudadanía. Conscientes de la exigencia por un gobierno transparente y por atender las necesidades de México en el contexto del desarrollo de la <b>Plataforma Digital Nacional</b> (PDN) del <b>Sistema Nacional Anticorrupción</b> (SNA), la <b>Secretaría Ejecutiva del Sistema Nacional Anticorrupción</b> (SESNA) lanza la Consulta: <b>Guía de Apertura Anticorrupción 2.0</b> para conocer la opinión de la ciudadanía sobre datos abiertos estratégicos para combatir la corrupción.
+                        </Typography>
+
+                        <Button target="_blank" href="https://www.participa.gob.mx/guiaaperturaanticorrupcion2" variant='contained' className={classes.button}>
+                            Responde la encuesta
+                        </Button>
+
+                    </div>
+                </ExpansionPanelDetails>
+            </ExpansionPanel>
+
+
         </div>
     );
 }

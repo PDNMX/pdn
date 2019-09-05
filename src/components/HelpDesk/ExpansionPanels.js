@@ -131,8 +131,12 @@ export default function CustomizedExpansionPanels() {
                         </Typography>
 
 
-                        <Button  target="blank" className={classes.button} variant="contained" href='https://drive.google.com/file/d/1wdy8bgX9fn1yRCAWSJMhjeTYKxEOXRQv/view'>
-                             Descarga la ficha
+                        <Button  target="_blank" className={classes.button} variant="contained" href='https://drive.google.com/file/d/1wdy8bgX9fn1yRCAWSJMhjeTYKxEOXRQv/view'>
+                             ¿Qué es la PDN?
+                        </Button>
+
+                        <Button target="_blank" className={classes.button} variant="contained" href="https://drive.google.com/drive/folders/1dt7hN2QM8GYC3Bxdj8eTGjdvUJ_VTXjr">
+                            ¿Cómo se construye?
                         </Button>
                     </div>
 
