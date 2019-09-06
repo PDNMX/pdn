@@ -135,7 +135,7 @@ export default function CustomizedExpansionPanels() {
                              ¿Qué es la PDN?
                         </Button>
 
-                        <Button target="_blank" className={classes.button} variant="contained" href="https://drive.google.com/drive/folders/1dt7hN2QM8GYC3Bxdj8eTGjdvUJ_VTXjr">
+                        <Button target="_blank" className={classes.button} variant="contained" href="https://drive.google.com/file/d/1YbkcDrRoscIUJtEiyM55GCliHsW22TkK/view">
                             ¿Cómo se construye?
                         </Button>
                     </div>
