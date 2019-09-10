@@ -26,7 +26,8 @@ class Busqueda extends React.Component{
         buyer_id: 'any',
         procurementMethod: 'any',
         supplierName: "",
-        cycle: 'any'
+        cycle: 'any',
+        cycles: []
     };
 
 
@@ -43,7 +44,13 @@ class Busqueda extends React.Component{
                 uri: process.env.REACT_APP_DUMMY_API + "/api/s6/search",
                 method: 'POST',
                 json: true
-            })];
+            }),
+            rp({
+                uri: process.env.REACT_APP_DUMMY_API + "/api/s6/cycles",
+                method: 'GET',
+                json: true
+            })
+        ];
 
         Promise.all(queries).then(  data => {
             //console.log (data );
@@ -51,6 +58,7 @@ class Busqueda extends React.Component{
                 buyers: data[0],
                 pagination: data[1].pagination,
                 results: data[1].data,
+                cycles: data[2],
                 loading: false
             });
         }).catch(error => {
@@ -192,6 +200,7 @@ class Busqueda extends React.Component{
                                     setInputText={this.setInputText}
                                     search={this.search}
                                     setCycle={this.setCycle}
+                                    cycles={this.state.cycles}
                                     cycle={this.state.cycle}
                     />
 

@@ -33,48 +33,11 @@ const styles = theme => ({
     }
 });
 
-{/*
-const BootstrapInput = withStyles(theme => ({
-    root: {
-        'label + &': {
-            marginTop: theme.spacing(3),
-        },
-    },
-    input: {
-        borderRadius: 4,
-        position: 'relative',
-        backgroundColor: theme.palette.background.paper,
-        border: '1px solid #ced4da',
-        fontSize: 16,
-        padding: '10px 26px 10px 12px',
-        transition: theme.transitions.create(['border-color', 'box-shadow']),
-        // Use the system font instead of the default Roboto font.
-        fontFamily: [
-            '-apple-system',
-            'BlinkMacSystemFont',
-            '"Segoe UI"',
-            'Roboto',
-            '"Helvetica Neue"',
-            'Arial',
-            'sans-serif',
-            '"Apple Color Emoji"',
-            '"Segoe UI Emoji"',
-            '"Segoe UI Symbol"',
-        ].join(','),
-        '&:focus': {
-            borderRadius: 4,
-            borderColor: '#80bdff',
-            boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
-        },
-    },
-}))(InputBase);
-*/}
-
 class SearchControls extends React.Component{
 
     render() {
 
-        const {classes, buyers, buyer_id, procurementMethod, cycle} = this.props;
+        const {classes, buyers, buyer_id, procurementMethod, cycle, cycles} = this.props;
 
         //const [age, setAge] = React.useState('');
         const handleChangeBuyer = event => {
@@ -178,11 +141,9 @@ class SearchControls extends React.Component{
                                     <MenuItem value="any">
                                         <em>Cualquiera</em>
                                     </MenuItem>
-                                    <MenuItem value={2019}>2019</MenuItem>
-                                    <MenuItem value={2018}>2018</MenuItem>
-                                    <MenuItem value={2017}>2017</MenuItem>
-                                    <MenuItem value={2016}>2016</MenuItem>
-                                    <MenuItem value={2015}>2015</MenuItem>
+                                    {
+                                        cycles.map((c,i) => <MenuItem value={c} key={i}>{c}</MenuItem>)
+                                    }
                                 </Select>
                             </FormControl>
                         </form>
