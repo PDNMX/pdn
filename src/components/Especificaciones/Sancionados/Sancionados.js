@@ -69,8 +69,10 @@ class Sancionados extends React.Component {
                         <Typography variant="h5" paragraph color='textPrimary'>
                             Parámetros de consulta
                         </Typography>
-
+                        {/*
                         <TablaParametros/>
+                        */}
+
 
                         <br/>
 
