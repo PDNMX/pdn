@@ -90,11 +90,23 @@ class BusquedaServidor extends React.Component {
     };
 
     componentDidMount() {
+        this.loadData(this.props.nivel)
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.nivel !== this.props.nivel) {
+            this.loadData(this.props.nivel);
+        }
+    }
+    loadData =(nivel)=>{
         let sug = [{value: null, label: 'TODAS'}];
         let options = {
             uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/s2/dependencias',
             json: true,
-            method: "GET"
+            method: "post",
+            body:{
+                nivel: nivel
+            }
         };
         rp(options)
             .then(data => {
@@ -103,7 +115,7 @@ class BusquedaServidor extends React.Component {
                 });
                 this.setState({suggestions: sug});
             }).catch(err => {
-           // this.props.handleError(true);
+            // this.props.handleError(true);
         });
     }
 
