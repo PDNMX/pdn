@@ -84,7 +84,7 @@ class ServidoresIntervienen extends React.Component {
                         <Divider className={classes.divider}/>
 
                         <Typography variant="h4" paragraph color='textPrimary'>
-                            Especificacines técnicas
+                            Especificaciones técnicas
                         </Typography>
 
                         <Typography variant='h5' paragraph color='textPrimary'>
@@ -100,7 +100,7 @@ class ServidoresIntervienen extends React.Component {
                         </Button>
 
                         <Typography variant='h5' paragraph color='textPrimary'>
-                            Catálodos de claves y valores
+                            Catálogos de claves y valores
                         </Typography>
 
                         <Button
