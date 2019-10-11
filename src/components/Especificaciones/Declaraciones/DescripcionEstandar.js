@@ -31,7 +31,7 @@ const styles = theme => ({
     },
 });
 
-class Estandar extends React.Component {
+class DescripcionEstandar extends React.Component {
 
     render() {
 
@@ -161,4 +161,4 @@ class Estandar extends React.Component {
     }
 }
 
-export default withStyles(styles) (Estandar);
+export default withStyles(styles) (DescripcionEstandar);

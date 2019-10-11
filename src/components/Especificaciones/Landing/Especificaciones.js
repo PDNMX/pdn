@@ -82,15 +82,15 @@ class Especificaciones extends React.Component {
                         <Grid item xs={12} style={{maxWidth: 1200}}>
                             <Grid container spacing={0} justify='center'>
                                 <Grid item xs={12} md={6} lg={4} xl={4} align="center">
-                                    {/*<Link to="/declaraciones/especificaciones" className={classes.link}>*/}
-                                    <Tooltip  placement="bottom" title="En proceso de actualización al nuevo formato de declaración patrimonial
+                                    <Link to="/declaraciones/especificaciones" className={classes.link}>
+                                        {/*<Tooltip  placement="bottom" title="En proceso de actualización al nuevo formato de declaración patrimonial
                                     y de intereses publicado en el Diario Oficial de la
-                                    Federación el 23 septiembre de 2019.">
-                                        <img src={S1} alt="" className={classes.disabled}/>
-                                    </Tooltip>
+                                    Federación el 23 septiembre de 2019."> */}
+                                        <img src={S1} alt="" className={classes.sistemas}/>
+                                        {/*</Tooltip>*/}
                                         <Typography variant="h5" className={classes.text}>Declaraciones</Typography>
 
-                                    {/*</Link>*/}
+                                    </Link>
                                 </Grid>
                                 <Grid item xs={12} md={6} lg={4} xl={4}  align="center">
                                     <Link to="/intervienen/especificaciones" className={classes.link}>

@@ -126,7 +126,7 @@ const pdnRoutes = [
   {
     exact: true,
     path: "/declaraciones/especificaciones",
-    component: Especificaciones,//DeclaracionesEspecificaciones,
+    component: DeclaracionesEspecificaciones,
     private: false
   },
   {

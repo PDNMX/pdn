@@ -30,7 +30,7 @@ const styles = theme =>({
     },
 });
 
-class Implementacion extends React.Component{
+class Recomendaciones extends React.Component{
 
     render() {
 
@@ -86,9 +86,9 @@ class Implementacion extends React.Component{
 }
 
 
-Implementacion.propTypes = {
+Recomendaciones.propTypes = {
   classes : PropTypes.object.isRequired
 };
 
 
-export default withStyles(styles)(Implementacion);
+export default withStyles(styles)(Recomendaciones);

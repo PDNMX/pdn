@@ -107,17 +107,12 @@ class ClippedDrawer extends React.Component {
             })
         });
 
-        //this.setState({oas:  { "test": 123, "others": [ { "abc": 1 }, { "xyz": 999 } ] }, example: {}})
     }
 
     render() {
         const {classes} = this.props;
         return (
             <div className={classes.root}>
-
-                {/*<div className={classes.appBar}>
-                <PDNAppBar position="fixed" className={classes.appBar}/>
-            </div>*/}
 
                 <main className={classes.content}>
                     <Typography variant="h5" id="especificaciones" paragraph color="textPrimary">
