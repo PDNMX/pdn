@@ -9,7 +9,7 @@ import S1 from '../../../assets/iconos_azul/1_icono.svg';
 import S2 from '../../../assets/iconos_azul/2_icono.svg';
 import S3 from '../../../assets/iconos_azul/3_icono.svg';
 import ScrollToTopButton from "../../Navigation/ScrollToTopButton";
-import Tooltip from "@material-ui/core/Tooltip";
+//import Tooltip from "@material-ui/core/Tooltip";
 
 
 const styles = theme => ({
@@ -82,15 +82,14 @@ class Especificaciones extends React.Component {
                         <Grid item xs={12} style={{maxWidth: 1200}}>
                             <Grid container spacing={0} justify='center'>
                                 <Grid item xs={12} md={6} lg={4} xl={4} align="center">
-                                    {/*<Link to="/declaraciones/especificaciones" className={classes.link}>*/}
-                                    <Tooltip  placement="bottom" title="En proceso de actualización al nuevo formato de declaración patrimonial
+                                    <Link to="/declaraciones/especificaciones" className={classes.link}>
+                                        {/*<Tooltip  placement="bottom" title="En proceso de actualización al nuevo formato de declaración patrimonial
                                     y de intereses publicado en el Diario Oficial de la
-                                    Federación el 23 septiembre de 2019.">
-                                        <img src={S1} alt="" className={classes.disabled}/>
-                                    </Tooltip>
-                                    <Typography variant="h5" className={classes.text}>Declaraciones</Typography>
-
-                                    {/*</Link>*/}
+                                    Federación el 23 septiembre de 2019.">*/}
+                                        <img src={S1} alt="" className={classes.sistemas}/>
+                                        {/*</Tooltip>*/}
+                                        <Typography variant="h5" className={classes.text}>Declaraciones</Typography>
+                                    </Link>
                                 </Grid>
                                 <Grid item xs={12} md={6} lg={4} xl={4}  align="center">
                                     <Link to="/intervienen/especificaciones" className={classes.link}>

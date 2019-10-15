@@ -7,10 +7,8 @@ import Grid from '@material-ui/core/Grid';
 import Estandar from "./DescripcionEstandar";
 import Licencia from "../Licencia";
 import Implementacion from "./Implementacion";
-//import TablaParametros from "./TablaParametros";
 import {Typography} from "@material-ui/core"
 import Herramientas from "../Herramientas";
-//import Especificaciones from "./Especificaciones";
 import Header from './Header/Header';
 import ScrollToTopButton from "../../Navigation/ScrollToTopButton";
 import Button from '@material-ui/core/Button';
@@ -133,18 +131,6 @@ class Sancionados extends React.Component {
                                 </Link>
                             </li>
                         </ul>
-
-
-                        {/*
-                         <Typography variant="h5" paragraph color='textPrimary'>
-                            Parámetros de consulta
-                        </Typography>
-                        <TablaParametros/>
-
-                        <br/>
-
-                        <Especificaciones/>
-                        */}
 
                         <Divider className={classes.divider}/>
 

@@ -123,12 +123,12 @@ const pdnRoutes = [
     component: Especificaciones,
     private: false
   },
-  /*{
+  {
     exact: true,
     path: "/declaraciones/especificaciones",
     component: DeclaracionesEspecificaciones,
     private: false
-  },*/
+  },
   {
     exact: true,
     path: "/sancionados/especificaciones",

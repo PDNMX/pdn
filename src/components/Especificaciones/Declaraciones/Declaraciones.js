@@ -7,8 +7,6 @@ import Grid from '@material-ui/core/Grid';
 import DescripcionEstandar from "./DescripcionEstandar";
 import Licencia from "../Licencia";
 import Recomendaciones from "./Recomendaciones";
-//import TablaParametros from "./TablaParametros";
-//import Especificaciones from "./Especificaciones";
 import {Typography} from "@material-ui/core"
 import Herramientas from "../Herramientas";
 import Header from './Header/Header';
@@ -96,7 +94,7 @@ class Declaraciones extends React.Component {
                         <Button
                             className={classes.button}
                             target="_blank"
-                            href="#"
+                            href="https://docs.google.com/spreadsheets/d/19Kyq46YwJk9wM7znYLQdLEKfAF8jTF4WmGJINXd9Lwg/edit?ts=5d88f08f#gid=0"
                             variant="contained"
                         >
                             Más información
@@ -141,15 +139,6 @@ class Declaraciones extends React.Component {
                                 </Link>
                             </li>
                         </ul>
-
-                        {/*
-                        <Typography variant="h5" paragraph color="textPrimary">
-                            Parámetros de consulta
-                        </Typography>
-                        <TablaParametros/>
-                        <br/>
-                        <Especificaciones/>
-                     */}
 
                         <Divider className={classes.divider}/>
 

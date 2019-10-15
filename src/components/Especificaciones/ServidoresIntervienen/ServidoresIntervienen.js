@@ -8,10 +8,8 @@ import Grid from '@material-ui/core/Grid';
 import Estandar from "./DescripcionEstandar";
 import Licencia from "../Licencia";
 import Implementacion from "./Implementacion";
-//import TablaParametros from "./old/TablaParametros";
 import {Typography} from "@material-ui/core"
 import Herramientas from "../Herramientas";
-//import Especificaciones from "./old/Especificaciones";
 import ScrollToTopButton from "../../Navigation/ScrollToTopButton";
 import Button from '@material-ui/core/Button';
 
@@ -122,17 +120,6 @@ class ServidoresIntervienen extends React.Component {
                             className={classes.button}>
                             Más información
                         </Button>
-
-                        {/*
-                        <Typography variant="h5" paragraph color="textPrimary">
-                            Parámetros de consulta
-                        </Typography>
-
-                        <TablaParametros/>
-                        <br/>
-
-                        <Especificaciones/>
-                        */}
 
                         <Divider className={classes.divider}/>
 
