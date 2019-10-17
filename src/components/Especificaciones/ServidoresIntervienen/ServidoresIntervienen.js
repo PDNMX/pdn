@@ -73,10 +73,6 @@ class ServidoresIntervienen extends React.Component {
 
                         <Divider className={classes.divider}/>
 
-                        <Licencia/>
-
-                        <Divider className={classes.divider}/>
-
                         <Implementacion/>
 
                         <Divider className={classes.divider}/>
@@ -120,6 +116,10 @@ class ServidoresIntervienen extends React.Component {
                             className={classes.button}>
                             Más información
                         </Button>
+
+                        <Divider className={classes.divider}/>
+
+                        <Licencia/>
 
                         <Divider className={classes.divider}/>
 

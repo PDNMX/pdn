@@ -75,10 +75,6 @@ class Declaraciones extends React.Component {
 
                         <Divider className={classes.divider}/>
 
-                        <Licencia/>
-
-                        <Divider className={classes.divider}/>
-
                         <Recomendaciones/>
 
                         <Divider className={classes.divider}/>
@@ -139,6 +135,10 @@ class Declaraciones extends React.Component {
                                 </Link>
                             </li>
                         </ul>
+
+                        <Divider className={classes.divider}/>
+
+                        <Licencia/>
 
                         <Divider className={classes.divider}/>
 

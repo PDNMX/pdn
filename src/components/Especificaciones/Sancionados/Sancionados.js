@@ -73,10 +73,6 @@ class Sancionados extends React.Component {
 
                         <Divider className={classes.divider}/>
 
-                        <Licencia/>
-
-                        <Divider className={classes.divider}/>
-
                         <Implementacion/>
 
                         <Divider className={classes.divider}/>
@@ -131,6 +127,10 @@ class Sancionados extends React.Component {
                                 </Link>
                             </li>
                         </ul>
+
+                        <Divider className={classes.divider}/>
+
+                        <Licencia/>
 
                         <Divider className={classes.divider}/>
 
