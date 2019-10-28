@@ -2,8 +2,8 @@ import React from 'react';
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
-import Modal from "@material-ui/core/Modal/Modal";
-import Participa from "../Participa/Participa";
+//import Modal from "@material-ui/core/Modal/Modal";
+//import Participa from "../Participa/Participa";
 
 
 const styles = theme => ({
@@ -49,7 +49,7 @@ class Bandita extends React.Component{
         return (
 
                 <div className={classes.root}>
-                    <Button className={classes.comenta} href={process.env.REACT_APP_LINK_GOOGLEFORM} target={"_blank"}>Comenta</Button>
+                    <Button variant='contained' className={classes.comenta} href={process.env.REACT_APP_LINK_GOOGLEFORM} target={"_blank"}>Comenta</Button>
                    {/* <Button variant='contained' className={classes.comenta} onClick={this.handleClickOpen} >Comenta</Button>
                     <Modal className={classes.modalParticipa}
                            aria-labelledby="simple-modal-title"

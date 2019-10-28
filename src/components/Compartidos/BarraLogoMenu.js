@@ -5,7 +5,7 @@ import MenuSistemas from "./MenuSistemas";
 import React from "react";
 import withWidth from "@material-ui/core/withWidth/withWidth";
 import {withStyles} from "@material-ui/core";
-import AppBar from '@material-ui/core/AppBar';
+//import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 const style = theme => ({
         root: {
@@ -38,7 +38,8 @@ class BarraLogoMenu extends React.Component {
         const {classes} = this.props;
         return (
             <div className={classes.root}>
-                <AppBar position="static" className={classes.appBar}>
+                {/*<AppBar position="static" className={classes.appBar}>*/}
+
                     <Grid
                         container
                         alignItems="center"
@@ -57,7 +58,7 @@ class BarraLogoMenu extends React.Component {
                     </Grid>
 
 
-                </AppBar>
+                {/*</AppBar>*/}
             </div>
         );
     }

@@ -3,6 +3,8 @@ import pndRoutes from "./routes/index";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import P404 from "./components/P404";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+//import { createMuiTheme, MuiThemeProvider} from "@material-ui/core";
+
 import PrivateRoute from "./PrivateRoute";
 import app from "./config/firebase";
 import LoginPDN from "./components/Inicio/LoginPDN";
