@@ -66,7 +66,7 @@ class DescripcionEstandar extends React.Component {
                     <li className={classes.li}>
                         <Typography paragraph display="inline">
                             La publicación en el DOF del nuevo formato de declaraciones de situación patrimonial y de intereses sucedió
-                            el 23 de septiembre del 2019. Asimismo, en el segundo transitorio del Acuerdo por el Comité Coordinador emite el formato,
+                            el 23 de septiembre del 2019. Asimismo, en el segundo transitorio del Acuerdo por el que el Comité Coordinador del Sistema Nacional Anticorrupción emite el formato,
                             se estableció que las autoridades correspondientes deberán, en los sistemas de información para presentar las declaraciones,
                             implementar el nuevo formato y garantizar la interoperabilidad con la PDN a más tardar el 31 de diciembre del 2019.
                         </Typography></li>
