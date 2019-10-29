@@ -139,7 +139,7 @@ export default function CustomizedExpansionPanels() {
                             ¿Cómo se construye?
                         </Button>
 
-                        <Button target="_blank" className={classes.button} variant="contained" href="https://drive.google.com/open?id=1Dq3Qkr9c25lSSUXNxaaxwrcAVxBz09Zg">
+                        <Button target="_blank" className={classes.button} variant="contained" href="https://drive.google.com/file/d/1xYlY50lXttiuu0brV5CVd5H8qx96vDsK/view">
                             Guía desarrollo PDE
                         </Button>
                     </div>
@@ -543,9 +543,9 @@ export default function CustomizedExpansionPanels() {
                             </li>
                         </ul>
                         <Typography paragraph>
-                            En el siguiente enlace, puedes revisar la visión compartida sobre el desarrollo ténico  de las Plataformas y Sistemas Estatales.
+                            En el siguiente enlace, puedes revisar la visión compartida sobre el desarrollo técnico  de las Plataformas y Sistemas Estatales.
                         </Typography>
-                        <Button target="_blank" className={classes.button} variant="contained" href="https://drive.google.com/open?id=1Dq3Qkr9c25lSSUXNxaaxwrcAVxBz09Zg">
+                        <Button target="_blank" className={classes.button} variant="contained" href="https://drive.google.com/file/d/1xYlY50lXttiuu0brV5CVd5H8qx96vDsK/view">
                             Guía desarrollo PDE
                         </Button>
                         <Typography variant="h5" paragraph>
