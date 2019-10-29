@@ -138,6 +138,10 @@ export default function CustomizedExpansionPanels() {
                         <Button target="_blank" className={classes.button} variant="contained" href="https://drive.google.com/file/d/1YbkcDrRoscIUJtEiyM55GCliHsW22TkK/view">
                             ¿Cómo se construye?
                         </Button>
+
+                        <Button target="_blank" className={classes.button} variant="contained" href="https://drive.google.com/open?id=1Dq3Qkr9c25lSSUXNxaaxwrcAVxBz09Zg">
+                            Guía desarrollo PDE
+                        </Button>
                     </div>
 
 
@@ -538,6 +542,12 @@ export default function CustomizedExpansionPanels() {
                                 </Link>
                             </li>
                         </ul>
+                        <Typography paragraph>
+                            En el siguiente enlace, puedes revisar la visión compartida sobre el desarrollo ténico  de las Plataformas y Sistemas Estatales.
+                        </Typography>
+                        <Button target="_blank" className={classes.button} variant="contained" href="https://drive.google.com/open?id=1Dq3Qkr9c25lSSUXNxaaxwrcAVxBz09Zg">
+                            Guía desarrollo PDE
+                        </Button>
                         <Typography variant="h5" paragraph>
                             ¿Las Plataformas Digitales van a operar ahora sistemas como CompraNet o Declaranet?
                         </Typography>
