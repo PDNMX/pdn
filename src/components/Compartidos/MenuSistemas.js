@@ -27,16 +27,12 @@ const style = theme => ({
     aux: {
         textTransform: "none"
     },
-    listItemText: {
-        marginTop: 0,
-        paddingTop: 0,
-        marginBottom: 0,
-        paddingBottom: 0
-    },
     divider:{
         marginTop: theme.spacing(1)
+    },
+    subList: {
+        paddingLeft: theme.spacing(1)
     }
-
 });
 
 class MenuSistemas extends React.Component {
@@ -111,7 +107,7 @@ class MenuSistemas extends React.Component {
                     </MenuItem>
 
                     <Divider className={classes.divider}/>
-                    <List component='div'>
+                    <List component='div' dense={true}>
                         <ListItem button onClick={this.handleToggle}>
                             <ListItemText primary='Sistemas' className={classes.listItemText}/>
                             {this.state.open2 != null ? this.state.open2 ?
@@ -119,12 +115,12 @@ class MenuSistemas extends React.Component {
                         </ListItem>
 
                         <Collapse in={this.state.open2} timeout="auto" unmountOnExit>
-                            <List dense={true} component="div">
+                            <List dense={true} component="div" className={classes.subList}>
                                 {/*<Tooltip
                                     title={"Sistema de evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal"}>
                                     */}
                                 <ListItem button component={Link} to={"/declaraciones"}>
-                                    <ListItemText dense primary='Sistema 1' secondary='Declaraciones' className={classes.listItemText}/>
+                                    <ListItemText primary='Declaraciones'/>
                                 </ListItem>
                                 {/*</Tooltip>*/}
 
@@ -132,7 +128,7 @@ class MenuSistemas extends React.Component {
                                     title={"Sistema de los Servidores públicos que intervengan en procedimientos de contrataciones públicas"}>
                                     */}
                                 <ListItem button component={Link} to={"/servidores"}>
-                                    <ListItemText dense primary='Sistema 2' secondary='S. P. En contrataciones' className={classes.listItemText}/>
+                                    <ListItemText primary='S. P. En contrataciones'/>
                                 </ListItem>
                                 {/*</Tooltip>*/}
 
@@ -140,7 +136,7 @@ class MenuSistemas extends React.Component {
                                     title={"Sistema nacional de Servidores públicos y particulares sancionados"}>
                                     */}
                                 <ListItem button component={Link} to={"/sancionados"}>
-                                    <ListItemText dense primary='Sistema 3' secondary='Sancionados' className={classes.listItemText}/>
+                                    <ListItemText primary='Sancionados'/>
                                 </ListItem>
                                 {/*</Tooltip>*/}
 
@@ -148,7 +144,7 @@ class MenuSistemas extends React.Component {
                                     title={"Sistema de información y comunicación del Sistema Nacional y del Sistema Nacional de Fiscalización"}>
                                     */}
                                 <ListItem button component={Link} to={"#"} disabled={true}>
-                                    <ListItemText primary='Sistema 4' secondary='Fiscalización' className={classes.listItemText}/>
+                                    <ListItemText primary='Fiscalización'/>
                                 </ListItem>
                                 {/*</Tooltip>*/}
 
@@ -156,14 +152,14 @@ class MenuSistemas extends React.Component {
                                     title={"Sistema de denuncias públicas de faltas administrativas y hechos de corrupción"}>
                                     */}
                                 <ListItem button component={Link} to={"#"} disabled={true}>
-                                    <ListItemText primary='Sistema 5' secondary='Denuncias' className={classes.listItemText}/>
+                                    <ListItemText primary='Denuncias'/>
                                 </ListItem>
                                 {/*</Tooltip>*/}
 
                                 {/*<Tooltip
                                     title={"Sistema de Información Pública de Contrataciones"}>*/}
                                 <ListItem button component={Link} to={"/contrataciones"}>
-                                    <ListItemText primary='Sistema 6' secondary='Contrataciones' className={classes.listItemText}/>
+                                    <ListItemText primary='Contrataciones'/>
                                 </ListItem>
                                 {/*</Tooltip>*/}
                             </List>
