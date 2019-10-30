@@ -7,7 +7,7 @@ import IconButton from "@material-ui/core/IconButton";
 import {Link} from "react-router-dom";
 import withWidth from "@material-ui/core/withWidth/withWidth";
 import Tooltip from '@material-ui/core/Tooltip';
-import {Typography} from "@material-ui/core";
+import {ListItemText, Typography} from "@material-ui/core";
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import Collapse from "@material-ui/core/Collapse/Collapse";
@@ -28,7 +28,13 @@ const style = theme => ({
         textTransform: "none"
     },
     submenu:{
-        paddingLeft : theme.spacing(2)
+        //paddingLeft : theme.spacing(2)
+    },
+    listItemText: {
+        marginTop: 0,
+        paddingTop: 0,
+        marginBottom: 0,
+        paddingBottom: 0
     }
 
 });
@@ -87,44 +93,7 @@ class MenuSistemas extends React.Component {
                     open={open}
                     onClose={this.handleClose}
                 >
-                    <MenuItem
-                        onClick={this.handleToggle}> Sistemas {this.state.open2 != null ? this.state.open2 ?
-                        <ExpandLess/> : <ExpandMore/> : null}
-                    </MenuItem>
-                    <Collapse in={this.state.open2} timeout="auto" unmountOnExit>
-                        <List component={"div"} id={"isela"} className={classes.submenu}>
-                            <Tooltip
-                                title={"Sistema de evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal"}>
-                                <ListItem button component={Link} to={"/declaraciones"}><Typography >Declaraciones</Typography></ListItem>
-                            </Tooltip>
 
-                            <Tooltip
-                                title={"Sistema de los Servidores públicos que intervengan en procedimientos de contrataciones públicas"}>
-                            <ListItem button component={Link} to={"/servidores"}><Typography >Servidores públicos en
-                                contrataciones</Typography></ListItem>
-                            </Tooltip>
-
-                            <Tooltip
-                                title={"Sistema nacional de Servidores públicos y particulares sancionados"}>
-                                <ListItem button component={Link} to={"/sancionados"}><Typography >Sancionados</Typography></ListItem>
-                            </Tooltip>
-
-                            <Tooltip
-                                title={"Sistema de información y comunicación del Sistema Nacional y del Sistema Nacional de Fiscalización"}>
-                                <ListItem button component={Link} to={"#"} disabled={true}><Typography >Fiscalización</Typography></ListItem>
-                            </Tooltip>
-
-                            <Tooltip
-                                title={"Sistema de denuncias públicas de faltas administrativas y hechos de corrupción"}>
-                                <ListItem button component={Link} to={"#"} disabled={true}><Typography >Denuncias</Typography></ListItem>
-                            </Tooltip>
-
-                            <Tooltip
-                                title={"Sistema de Información Pública de Contrataciones"}>
-                                <ListItem button component={Link} to={"/contrataciones"}><Typography >Contrataciones</Typography></ListItem>
-                            </Tooltip>
-                        </List>
-                    </Collapse>
                     <MenuItem component={Link} to="/mesa-de-ayuda">
                         <Typography className={classes.text} variant="inherit" noWrap>{"Mesa de ayuda"}</Typography>
                     </MenuItem>
@@ -137,8 +106,68 @@ class MenuSistemas extends React.Component {
                         <Typography className={classes.text} variant="inherit" noWrap>{"Especificaciones"}</Typography>
                     </MenuItem>
                     <MenuItem component={Button} className={classes.aux}
-                              href="https://plataformadigitalnacional.org/mapa-sla/">Interconexión
-                        subnacional</MenuItem>
+                              href="https://plataformadigitalnacional.org/mapa-sla/">
+                        Interconexión subnacional
+                    </MenuItem>
+
+                    <List component='div'>
+                        <ListItem button onClick={this.handleToggle}>
+                            <ListItemText primary='Sistemas' className={classes.listItemText}/>
+                            {this.state.open2 != null ? this.state.open2 ?
+                            <ExpandLess/> : <ExpandMore/> : null}
+                        </ListItem>
+
+                        <Collapse in={this.state.open2} timeout="auto" unmountOnExit>
+                            <List component="div" id="isela" className={classes.submenu}>
+                                {/*<Tooltip
+                                    title={"Sistema de evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal"}>
+                                    */}
+                                <ListItem button component={Link} to={"/declaraciones"}>
+                                    <ListItemText primary='Sistema 1' secondary='Declaraciones' className={classes.listItemText}/>
+                                </ListItem>
+                                {/*</Tooltip>*/}
+
+                                {/*<Tooltip
+                                    title={"Sistema de los Servidores públicos que intervengan en procedimientos de contrataciones públicas"}>
+                                    */}
+                                <ListItem button component={Link} to={"/servidores"}>
+                                    <ListItemText primary='Sistema 2' secondary='S. P. En contrataciones' className={classes.listItemText}/>
+                                </ListItem>
+                                {/*</Tooltip>*/}
+
+                                {/*<Tooltip
+                                    title={"Sistema nacional de Servidores públicos y particulares sancionados"}>
+                                    */}
+                                <ListItem button component={Link} to={"/sancionados"}>
+                                    <ListItemText primary='Sistema 3' secondary='Sancionados' className={classes.listItemText}/>
+                                </ListItem>
+                                {/*</Tooltip>*/}
+
+                                {/*<Tooltip
+                                    title={"Sistema de información y comunicación del Sistema Nacional y del Sistema Nacional de Fiscalización"}>
+                                    */}
+                                <ListItem button component={Link} to={"#"} disabled={true}>
+                                    <ListItemText primary='Sistema 4' secondary='Fiscalización' className={classes.listItemText}/>
+                                </ListItem>
+                                {/*</Tooltip>*/}
+
+                                {/*<Tooltip
+                                    title={"Sistema de denuncias públicas de faltas administrativas y hechos de corrupción"}>
+                                    */}
+                                <ListItem button component={Link} to={"#"} disabled={true}>
+                                    <ListItemText primary='Sistema 5' secondary='Denuncias' className={classes.listItemText}/>
+                                </ListItem>
+                                {/*</Tooltip>*/}
+
+                                {/*<Tooltip
+                                    title={"Sistema de Información Pública de Contrataciones"}>*/}
+                                <ListItem button component={Link} to={"/contrataciones"}>
+                                    <ListItemText primary='Sistema 6' secondary='Contrataciones' className={classes.listItemText}/>
+                                </ListItem>
+                                {/*</Tooltip>*/}
+                            </List>
+                        </Collapse>
+                    </List>
                 </Menu>
             </div>
         );
