@@ -6,7 +6,7 @@ import MenuIcon from "@material-ui/icons/MoreHoriz";
 import IconButton from "@material-ui/core/IconButton";
 import {Link} from "react-router-dom";
 import withWidth from "@material-ui/core/withWidth/withWidth";
-import Tooltip from '@material-ui/core/Tooltip';
+//import Tooltip from '@material-ui/core/Tooltip';
 import {ListItemText, Typography} from "@material-ui/core";
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
@@ -14,7 +14,7 @@ import Collapse from "@material-ui/core/Collapse/Collapse";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import Button from "@material-ui/core/Button";
-
+import Divider from "@material-ui/core/Divider";
 
 const style = theme => ({
     menuHamburguesa: {
@@ -27,14 +27,14 @@ const style = theme => ({
     aux: {
         textTransform: "none"
     },
-    submenu:{
-        //paddingLeft : theme.spacing(2)
-    },
     listItemText: {
         marginTop: 0,
         paddingTop: 0,
         marginBottom: 0,
         paddingBottom: 0
+    },
+    divider:{
+        marginTop: theme.spacing(1)
     }
 
 });
@@ -110,6 +110,7 @@ class MenuSistemas extends React.Component {
                         Interconexión subnacional
                     </MenuItem>
 
+                    <Divider className={classes.divider}/>
                     <List component='div'>
                         <ListItem button onClick={this.handleToggle}>
                             <ListItemText primary='Sistemas' className={classes.listItemText}/>
@@ -118,12 +119,12 @@ class MenuSistemas extends React.Component {
                         </ListItem>
 
                         <Collapse in={this.state.open2} timeout="auto" unmountOnExit>
-                            <List component="div" id="isela" className={classes.submenu}>
+                            <List dense={true} component="div">
                                 {/*<Tooltip
                                     title={"Sistema de evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal"}>
                                     */}
                                 <ListItem button component={Link} to={"/declaraciones"}>
-                                    <ListItemText primary='Sistema 1' secondary='Declaraciones' className={classes.listItemText}/>
+                                    <ListItemText dense primary='Sistema 1' secondary='Declaraciones' className={classes.listItemText}/>
                                 </ListItem>
                                 {/*</Tooltip>*/}
 
@@ -131,7 +132,7 @@ class MenuSistemas extends React.Component {
                                     title={"Sistema de los Servidores públicos que intervengan en procedimientos de contrataciones públicas"}>
                                     */}
                                 <ListItem button component={Link} to={"/servidores"}>
-                                    <ListItemText primary='Sistema 2' secondary='S. P. En contrataciones' className={classes.listItemText}/>
+                                    <ListItemText dense primary='Sistema 2' secondary='S. P. En contrataciones' className={classes.listItemText}/>
                                 </ListItem>
                                 {/*</Tooltip>*/}
 
@@ -139,7 +140,7 @@ class MenuSistemas extends React.Component {
                                     title={"Sistema nacional de Servidores públicos y particulares sancionados"}>
                                     */}
                                 <ListItem button component={Link} to={"/sancionados"}>
-                                    <ListItemText primary='Sistema 3' secondary='Sancionados' className={classes.listItemText}/>
+                                    <ListItemText dense primary='Sistema 3' secondary='Sancionados' className={classes.listItemText}/>
                                 </ListItem>
                                 {/*</Tooltip>*/}
 
