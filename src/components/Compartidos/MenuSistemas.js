@@ -30,8 +30,8 @@ const style = theme => ({
     divider:{
         marginTop: theme.spacing(1)
     },
-    subList: {
-        paddingLeft: theme.spacing(1)
+    nested: {
+        paddingLeft: theme.spacing(4)
     }
 });
 
@@ -119,7 +119,7 @@ class MenuSistemas extends React.Component {
                                 {/*<Tooltip
                                     title={"Sistema de evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal"}>
                                     */}
-                                <ListItem button component={Link} to={"/declaraciones"}>
+                                <ListItem button component={Link} to={"/declaraciones"} className={classes.nested}>
                                     <ListItemText primary='Declaraciones'/>
                                 </ListItem>
                                 {/*</Tooltip>*/}
@@ -127,7 +127,7 @@ class MenuSistemas extends React.Component {
                                 {/*<Tooltip
                                     title={"Sistema de los Servidores públicos que intervengan en procedimientos de contrataciones públicas"}>
                                     */}
-                                <ListItem button component={Link} to={"/servidores"}>
+                                <ListItem button component={Link} to={"/servidores"} className={classes.nested}>
                                     <ListItemText primary='S. P. En contrataciones'/>
                                 </ListItem>
                                 {/*</Tooltip>*/}
@@ -135,7 +135,7 @@ class MenuSistemas extends React.Component {
                                 {/*<Tooltip
                                     title={"Sistema nacional de Servidores públicos y particulares sancionados"}>
                                     */}
-                                <ListItem button component={Link} to={"/sancionados"}>
+                                <ListItem button component={Link} to={"/sancionados"} className={classes.nested}>
                                     <ListItemText primary='Sancionados'/>
                                 </ListItem>
                                 {/*</Tooltip>*/}
@@ -143,7 +143,7 @@ class MenuSistemas extends React.Component {
                                 {/*<Tooltip
                                     title={"Sistema de información y comunicación del Sistema Nacional y del Sistema Nacional de Fiscalización"}>
                                     */}
-                                <ListItem button component={Link} to={"#"} disabled={true}>
+                                <ListItem button component={Link} to={"#"} disabled={true} className={classes.nested}>
                                     <ListItemText primary='Fiscalización'/>
                                 </ListItem>
                                 {/*</Tooltip>*/}
@@ -151,14 +151,14 @@ class MenuSistemas extends React.Component {
                                 {/*<Tooltip
                                     title={"Sistema de denuncias públicas de faltas administrativas y hechos de corrupción"}>
                                     */}
-                                <ListItem button component={Link} to={"#"} disabled={true}>
+                                <ListItem button component={Link} to={"#"} disabled={true} className={classes.nested}>
                                     <ListItemText primary='Denuncias'/>
                                 </ListItem>
                                 {/*</Tooltip>*/}
 
                                 {/*<Tooltip
                                     title={"Sistema de Información Pública de Contrataciones"}>*/}
-                                <ListItem button component={Link} to={"/contrataciones"}>
+                                <ListItem button component={Link} to={"/contrataciones"} className={classes.nested}>
                                     <ListItemText primary='Contrataciones'/>
                                 </ListItem>
                                 {/*</Tooltip>*/}
