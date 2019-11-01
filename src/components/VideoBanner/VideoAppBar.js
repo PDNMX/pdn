@@ -15,6 +15,8 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Grid from "@material-ui/core/Grid";
 import { getPermisos, haySesion } from "../Seguridad/seguridad";
 import { withRouter } from "react-router-dom";
+import Button from "@material-ui/core/Button";
+import Divider from "@material-ui/core/Divider";
 
 
 const styles = theme => ({
@@ -38,11 +40,14 @@ const styles = theme => ({
     textDecoration: "none",
     color: "inherit"
   },
-  blog: {
+  textTransform: {
     textTransform: "none"
   },
   nested: {
     paddingLeft: theme.spacing(4)
+  },
+  divider: {
+    marginTop: theme.spacing(1)
   }
 });
 
@@ -153,6 +158,8 @@ class VideoAppBar extends React.Component {
                     open={open}
                     onClose={this.handleClose}
                   >
+
+                    {/*
                     <MenuItem component={Link} to="/faq">
                       Preguntas frecuentes
                     </MenuItem>
@@ -161,6 +168,24 @@ class VideoAppBar extends React.Component {
                     </MenuItem>
                     <MenuItem component={Link} to="/terminos">
                       Términos de uso
+                    </MenuItem>
+                    */}
+
+
+                    <MenuItem component={Link} to="/mesa-de-ayuda">
+                      <Typography className={classes.text} variant="inherit" noWrap>{"Mesa de ayuda"}</Typography>
+                    </MenuItem>
+                    <MenuItem component={Button} className={classes.textTransform}
+                              href="https://www.plataformadigitalnacional.org/blog">Blog</MenuItem>
+                    <MenuItem component={Link} to="/gaa/calidad">
+                      <Typography className={classes.text} variant="inherit" noWrap>{"Calidad de datos"}</Typography>
+                    </MenuItem>
+                    <MenuItem component={Link} to="/especificaciones">
+                      <Typography className={classes.text} variant="inherit" noWrap>{"Especificaciones"}</Typography>
+                    </MenuItem>
+                    <MenuItem component={Button} className={classes.textTransform}
+                              href="https://plataformadigitalnacional.org/mapa-sla/">
+                      Interconexión subnacional
                     </MenuItem>
 
                     {this.state.permisos.includes(
@@ -185,6 +210,11 @@ class VideoAppBar extends React.Component {
                         Iniciar sesión
                       </MenuItem>
                     )}
+
+                    {/*<Divider className={classes.divider}/>*/}
+
+
+
                   </Menu>
                 </div>
               </Toolbar>

@@ -5,7 +5,7 @@ import Menu from "@material-ui/core/Menu";
 import MenuIcon from "@material-ui/icons/MoreHoriz";
 import IconButton from "@material-ui/core/IconButton";
 import {Link} from "react-router-dom";
-import withWidth from "@material-ui/core/withWidth/withWidth";
+//import withWidth from "@material-ui/core/withWidth/withWidth";
 //import Tooltip from '@material-ui/core/Tooltip';
 import {ListItemText, Typography} from "@material-ui/core";
 import ExpandLess from '@material-ui/icons/ExpandLess';
@@ -17,7 +17,7 @@ import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 
 const style = theme => ({
-    menuHamburguesa: {
+    menu: {
         fill: "#808080",
         fontSize: "36px",
     },
@@ -40,13 +40,12 @@ class MenuSistemas extends React.Component {
         super(props);
         this.state = {
             anchorEl: null,
-            open2: false
+            dropDown: false
         };
     }
 
-
     handleClose = () => {
-        this.setState({anchorEl: null, open2: false});
+        this.setState({anchorEl: null, dropDown: false});
     };
     handleMenu = event => {
         this.setState({anchorEl: event.currentTarget});
@@ -54,7 +53,7 @@ class MenuSistemas extends React.Component {
 
     handleToggle = () => {
         this.setState({
-            open2: !this.state.open2,
+            dropDown: !this.state.dropDown,
         })
     };
 
@@ -63,6 +62,7 @@ class MenuSistemas extends React.Component {
         const {classes} = this.props;
         const {anchorEl} = this.state;
         const open = Boolean(anchorEl);
+        const {dropDown} = this.state;
 
         return (
             <div>
@@ -73,7 +73,7 @@ class MenuSistemas extends React.Component {
                     color="inherit"
                     style={{marginTop: "28px"}}
                 >
-                    <MenuIcon className={classes.menuHamburguesa}/>
+                    <MenuIcon className={classes.menu}/>
                 </IconButton>
                 <Menu
                     id="menu-appbar"
@@ -107,14 +107,15 @@ class MenuSistemas extends React.Component {
                     </MenuItem>
 
                     <Divider className={classes.divider}/>
+
                     <List component='div' dense={true}>
                         <ListItem button onClick={this.handleToggle}>
                             <ListItemText primary='Sistemas' className={classes.listItemText}/>
-                            {this.state.open2 != null ? this.state.open2 ?
+                            {dropDown != null ? dropDown ?
                             <ExpandLess/> : <ExpandMore/> : null}
                         </ListItem>
 
-                        <Collapse in={this.state.open2} timeout="auto" unmountOnExit>
+                        <Collapse in={dropDown} timeout="auto" unmountOnExit>
                             <List dense={true} component="div" className={classes.subList}>
                                 {/*<Tooltip
                                     title={"Sistema de evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal"}>
@@ -169,7 +170,7 @@ class MenuSistemas extends React.Component {
             </div>
         );
     }
-};
+}
 
-
-export default withWidth()(withStyles(style)(MenuSistemas));
+//export default withWidth()(withStyles(style)(MenuSistemas));
+export default withStyles(style)(MenuSistemas);
