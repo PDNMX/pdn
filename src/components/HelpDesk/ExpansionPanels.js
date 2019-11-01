@@ -543,7 +543,7 @@ export default function CustomizedExpansionPanels() {
                             </li>
                         </ul>
                         <Typography paragraph>
-                            En el siguiente enlace, puedes revisar la visión compartida sobre el desarrollo técnico  de las Plataformas y Sistemas Estatales.
+                            En el siguiente enlace, encontrarás una presentación que describe nuestra visión sobre el desarrollo tecnológico de las Plataformas y Sistemas Estatales.
                         </Typography>
                         <Button target="_blank" className={classes.button} variant="contained" href="https://drive.google.com/file/d/1xYlY50lXttiuu0brV5CVd5H8qx96vDsK/view">
                             Guía desarrollo PDE
