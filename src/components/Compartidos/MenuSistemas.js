@@ -110,13 +110,13 @@ class MenuSistemas extends React.Component {
 
                     <List component='div' dense={true}>
                         <ListItem button onClick={this.handleToggle}>
-                            <ListItemText primary='Sistemas' className={classes.listItemText}/>
+                            <ListItemText primary='Sistemas'/>
                             {dropDown != null ? dropDown ?
                             <ExpandLess/> : <ExpandMore/> : null}
                         </ListItem>
 
                         <Collapse in={dropDown} timeout="auto" unmountOnExit>
-                            <List dense={true} component="div" className={classes.subList}>
+                            <List dense={true} component="div">
                                 {/*<Tooltip
                                     title={"Sistema de evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal"}>
                                     */}

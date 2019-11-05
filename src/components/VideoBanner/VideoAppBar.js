@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import { Typography } from "@material-ui/core";
+import {ListItemText, Typography} from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import { Link } from "react-router-dom";
 // import imgHeader from "../../assets/PDN-sintexto-blue.png";
@@ -17,6 +17,11 @@ import { getPermisos, haySesion } from "../Seguridad/seguridad";
 import { withRouter } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
+import Collapse from "@material-ui/core/Collapse";
 
 
 const styles = theme => ({
@@ -61,7 +66,7 @@ class VideoAppBar extends React.Component {
       anchorEl: null,
       permisos: [],
       haySesion: false,
-      open2: false
+      dropDown: false
     };
   }
 
@@ -80,14 +85,14 @@ class VideoAppBar extends React.Component {
 
   handleSignOut = () => {
     app
-      .auth()
-      .signOut()
-      .then(() => {
-        this.props.history.push("/login");
-      })
-      .catch(e => {
-        alert(e);
-      });
+        .auth()
+        .signOut()
+        .then(() => {
+          this.props.history.push("/login");
+        })
+        .catch(e => {
+          alert(e);
+        });
   };
 
   handleChange = event => {
@@ -99,67 +104,76 @@ class VideoAppBar extends React.Component {
   };
 
   handleClose = () => {
-    this.setState({ anchorEl: null, open2: false });
+    this.setState({ anchorEl: null, dropDown: false });
   };
+
+  handleToggle = () => {
+    this.setState({
+      dropDown: !this.state.dropDown,
+    })
+  };
+
 
   render() {
     const { classes } = this.props;
 
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
+    const {dropDown} = this.state;
+
     return (
-      <div className={classes.root}>
-        <AppBar
-          position="static"
-          style={{
-            backgroundColor: "rgba(0, 0, 0, 0)",
-            border: 0,
-            boxShadow: "none"
-          }}
-        >
-          <Grid container spacing={0} justify="center">
-            <Grid item xs={12} className={classes.item}>
-              <Toolbar>
-                <IconButton
-                  color="inherit"
-                  aria-label="Menu"
-                  component={Link}
-                  to="/"
-                  style={{ marginTop: "28px" }}
-                >
-                  <img src={imgHeader} alt="PDN" style={{ height: "40px" }} />
-                </IconButton>
-                <Typography
-                  variant="h6"
-                  color="inherit"
-                  className={classes.grow}
-                />
-
-                <div>
+        <div className={classes.root}>
+          <AppBar
+              position="static"
+              style={{
+                backgroundColor: "rgba(0, 0, 0, 0)",
+                border: 0,
+                boxShadow: "none"
+              }}
+          >
+            <Grid container spacing={0} justify="center">
+              <Grid item xs={12} className={classes.item}>
+                <Toolbar>
                   <IconButton
-                    aria-owns={open ? "menu-appbar" : undefined}
-                    aria-haspopup="true"
-                    onClick={this.handleMenu}
-                    color="inherit"
+                      color="inherit"
+                      aria-label="Menu"
+                      component={Link}
+                      to="/"
+                      style={{ marginTop: "28px" }}
                   >
-                    <MenuIcon style={{ fill: "white", fontSize: "36px" }} />
+                    <img src={imgHeader} alt="PDN" style={{ height: "40px" }} />
                   </IconButton>
-                  <Menu
-                    id="menu-appbar"
-                    anchorEl={anchorEl}
-                    anchorOrigin={{
-                      vertical: "top",
-                      horizontal: "right"
-                    }}
-                    transformOrigin={{
-                      vertical: "top",
-                      horizontal: "right"
-                    }}
-                    open={open}
-                    onClose={this.handleClose}
-                  >
+                  <Typography
+                      variant="h6"
+                      color="inherit"
+                      className={classes.grow}
+                  />
 
-                    {/*
+                  <div>
+                    <IconButton
+                        aria-owns={open ? "menu-appbar" : undefined}
+                        aria-haspopup="true"
+                        onClick={this.handleMenu}
+                        color="inherit"
+                    >
+                      <MenuIcon style={{ fill: "white", fontSize: "36px" }} />
+                    </IconButton>
+                    <Menu
+                        id="menu-appbar"
+                        anchorEl={anchorEl}
+                        anchorOrigin={{
+                          vertical: "top",
+                          horizontal: "right"
+                        }}
+                        transformOrigin={{
+                          vertical: "top",
+                          horizontal: "right"
+                        }}
+                        open={open}
+                        onClose={this.handleClose}
+                    >
+
+                      {/*
                     <MenuItem component={Link} to="/faq">
                       Preguntas frecuentes
                     </MenuItem>
@@ -172,56 +186,92 @@ class VideoAppBar extends React.Component {
                     */}
 
 
-                    <MenuItem component={Link} to="/mesa-de-ayuda">
-                      <Typography className={classes.text} variant="inherit" noWrap>{"Mesa de ayuda"}</Typography>
-                    </MenuItem>
-                    <MenuItem component={Button} className={classes.textTransform}
-                              href="https://www.plataformadigitalnacional.org/blog">Blog</MenuItem>
-                    <MenuItem component={Link} to="/gaa/calidad">
-                      <Typography className={classes.text} variant="inherit" noWrap>{"Calidad de datos"}</Typography>
-                    </MenuItem>
-                    <MenuItem component={Link} to="/especificaciones">
-                      <Typography className={classes.text} variant="inherit" noWrap>{"Especificaciones"}</Typography>
-                    </MenuItem>
-                    <MenuItem component={Button} className={classes.textTransform}
-                              href="https://plataformadigitalnacional.org/mapa-sla/">
-                      Interconexión subnacional
-                    </MenuItem>
-
-                    {this.state.permisos.includes(
-                      "admon-conexion-so:visit"
-                    ) && (
-                      <MenuItem component={Link} to={"/consolaAdmonSO"}>
-                        Administrar conexión
+                      <MenuItem component={Link} to="/mesa-de-ayuda">
+                        <Typography className={classes.text} variant="inherit" noWrap>{"Mesa de ayuda"}</Typography>
                       </MenuItem>
-                    )}
-                    {this.state.permisos.includes("admon-pdn-page:visit") && (
-                      <MenuItem component={Link} to={"/administracionPDN"}>
-                        Administrar PDN
+                      <MenuItem component={Button} className={classes.textTransform}
+                                href="https://www.plataformadigitalnacional.org/blog">Blog</MenuItem>
+                      <MenuItem component={Link} to="/gaa/calidad">
+                        <Typography className={classes.text} variant="inherit" noWrap>{"Calidad de datos"}</Typography>
                       </MenuItem>
-                    )}
-                    {this.state.haySesion === true && (
-                      <MenuItem onClick={this.handleSignOut}>
-                        Cerrar sesión
+                      <MenuItem component={Link} to="/especificaciones">
+                        <Typography className={classes.text} variant="inherit" noWrap>{"Especificaciones"}</Typography>
                       </MenuItem>
-                    )}
-                    {this.state.haySesion === false && (
-                      <MenuItem component={Link} to={"/login"} disabled={true}>
-                        Iniciar sesión
+                      <MenuItem component={Button} className={classes.textTransform}
+                                href="https://plataformadigitalnacional.org/mapa-sla/">
+                        Interconexión subnacional
                       </MenuItem>
-                    )}
 
-                    {/*<Divider className={classes.divider}/>*/}
+                      {this.state.permisos.includes(
+                          "admon-conexion-so:visit"
+                      ) && (
+                          <MenuItem component={Link} to={"/consolaAdmonSO"}>
+                            Administrar conexión
+                          </MenuItem>
+                      )}
+                      {this.state.permisos.includes("admon-pdn-page:visit") && (
+                          <MenuItem component={Link} to={"/administracionPDN"}>
+                            Administrar PDN
+                          </MenuItem>
+                      )}
+                      {this.state.haySesion === true && (
+                          <MenuItem onClick={this.handleSignOut}>
+                            Cerrar sesión
+                          </MenuItem>
+                      )}
+                      {this.state.haySesion === false && (
+                          <MenuItem component={Link} to={"/login"} disabled={true}>
+                            Iniciar sesión
+                          </MenuItem>
+                      )}
+
+                      <Divider className={classes.divider}/>
+
+                      <List component='div' dense={true}>
+                        <ListItem button onClick={this.handleToggle}>
+                          <ListItemText primary='Sistemas' />
+                          {dropDown != null ? dropDown ?
+                              <ExpandLess/> : <ExpandMore/> : null}
+                        </ListItem>
+
+                        <Collapse in={dropDown} timeout="auto" unmountOnExit>
+                          <List dense={true} component="div" >
+
+                            <ListItem button component={Link} to={"/declaraciones"} className={classes.nested}>
+                              <ListItemText primary='Declaraciones'/>
+                            </ListItem>
+
+                            <ListItem button component={Link} to={"/servidores"} className={classes.nested}>
+                              <ListItemText primary='S. P. En contrataciones'/>
+                            </ListItem>
+
+                            <ListItem button component={Link} to={"/sancionados"} className={classes.nested}>
+                              <ListItemText primary='Sancionados'/>
+                            </ListItem>
+
+                            <ListItem button component={Link} to={"#"} disabled={true} className={classes.nested}>
+                              <ListItemText primary='Fiscalización'/>
+                            </ListItem>
+
+                            <ListItem button component={Link} to={"#"} disabled={true} className={classes.nested}>
+                              <ListItemText primary='Denuncias'/>
+                            </ListItem>
+
+                            <ListItem button component={Link} to={"/contrataciones"} className={classes.nested}>
+                              <ListItemText primary='Contrataciones'/>
+                            </ListItem>
+                          </List>
+                        </Collapse>
+                      </List>
 
 
-
-                  </Menu>
-                </div>
-              </Toolbar>
+                    </Menu>
+                  </div>
+                </Toolbar>
+              </Grid>
             </Grid>
-          </Grid>
-        </AppBar>
-      </div>
+          </AppBar>
+        </div>
     );
   }
 }
