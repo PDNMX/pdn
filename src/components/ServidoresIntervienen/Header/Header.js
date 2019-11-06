@@ -15,8 +15,6 @@ import BarraLogoMenu from "../../Compartidos/BarraLogoMenu";
 const style = theme => ({
         root: {
             flexGrow:1,
-
-
         },
         container1: {
             //background: 'grey',
@@ -77,10 +75,7 @@ class Header extends React.Component{
 
         return(
             <div className={classes.root}>
-                {/*<PDNAppBar/>*/}
-
-
-               <BarraLogoMenu/>
+                <BarraLogoMenu/>
 
                 <Grid container spacing={0} className="breadcrumb" justify='center'>
                     <Grid item xs={12} className={classes.item3}>
