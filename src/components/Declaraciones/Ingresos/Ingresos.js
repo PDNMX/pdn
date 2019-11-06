@@ -67,7 +67,7 @@ class Ingresos extends Component {
     return (
       <div className={classes.rootSeccion}>
         <Grid container spacing={0}>
-          <Grid item xs={4} md={2} className={classes.sidebar}>
+          <Grid item xs={4} md={3} className={classes.sidebar}>
             <MenuInformacion
               menu={menu}
               id={this.props.profile._id}
@@ -79,7 +79,7 @@ class Ingresos extends Component {
           <Grid
             item
             xs={8}
-            md={10}
+            md={9}
             style={{ backgroundColor: "#f2f2f2", padding: 15 }}
           >
             {value === 0 && (
