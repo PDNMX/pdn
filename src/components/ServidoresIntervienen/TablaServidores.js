@@ -336,7 +336,8 @@ class EnhancedTable extends React.Component {
 
     handleChangeAPI = (val) => {
         this.setState({
-            api: val
+            api: val,
+            page:0
         }, () => {
             this.handleSearchAPI('FIELD_FILTER')
         });
