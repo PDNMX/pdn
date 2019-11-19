@@ -204,7 +204,7 @@ class BusquedaParticular extends React.Component {
                         >
                             <FormControlLabel value="todos" control={<Radio />} label="Todos" />
                             <FormControlLabel value="federal" control={<Radio />} label="Federal" />
-                            <FormControlLabel value="estatal" control={<Radio disabled={true}/>} label="Estatal"  />
+                            <FormControlLabel value="estatal" control={<Radio/>} label="Estatal"  />
                         </RadioGroup>
 
                     </FormControl>

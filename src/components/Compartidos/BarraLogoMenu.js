@@ -7,6 +7,7 @@ import withWidth from "@material-ui/core/withWidth/withWidth";
 import {withStyles} from "@material-ui/core";
 //import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+
 const style = theme => ({
         root: {
             flexGrow: 1,
@@ -17,7 +18,7 @@ const style = theme => ({
             flexGrow: 1
         },
 
-        item3: {
+        cont: {
             maxWidth: 1200,
         },
 
@@ -38,27 +39,23 @@ class BarraLogoMenu extends React.Component {
         const {classes} = this.props;
         return (
             <div className={classes.root}>
-                {/*<AppBar position="static" className={classes.appBar}>*/}
+                <Grid
+                    container
+                    alignItems="center"
+                    justify="center"
 
-                    <Grid
-                        container
-                        alignItems="center"
-                        justify="center"
-
-                    >
-                        <Grid item xs={12} className={classes.item3}>
-                            <Toolbar>
-                                <Link to="/" className={classes.link}>
-                                    <img src={PDNLogo} alt="PDN" className={classes.pdnLogo}/>
-                                </Link>
-                                <MenuSistemas/>
-                            </Toolbar>
-                        </Grid>
-
+                >
+                    <Grid item  className={classes.cont}  xs={12} style={{'maxWidth':'1200px'}}>
+                        <Toolbar>
+                            <Link to="/" className={classes.link}>
+                                <img src={PDNLogo} alt="PDN" className={classes.pdnLogo}/>
+                            </Link>
+                            <MenuSistemas/>
+                        </Toolbar>
                     </Grid>
 
+                </Grid>
 
-                {/*</AppBar>*/}
             </div>
         );
     }
