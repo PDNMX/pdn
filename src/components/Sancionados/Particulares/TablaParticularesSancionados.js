@@ -37,7 +37,9 @@ const columnData = [
         position: 1,
         mostrar: true
     },
-    {id: 'institucion', disablePadding: false, label: 'Institución', position: 2, mostrar: true},
+    {
+        id: 'institucion', disablePadding: false, label: 'Institución', position: 2, mostrar: true
+    },
     {
         id: 'expediente',
         disablePadding: false,
@@ -224,6 +226,7 @@ class EnhancedTable extends React.Component {
             panelPrevios: !this.state.panelPrevios
         })
     }
+
     handleRequestSort = (event, property) => {
         const orderBy = property;
         let order = 'desc';
@@ -422,17 +425,24 @@ class EnhancedTable extends React.Component {
                             </ul>
                     </Grid>
                 </Grid>
+
+
                 <Grid container justify='center' spacing={0} className={classes.gridTable}>
+                    
                     <Grid item xs={12} className={classes.toolBarStyle}>
                         <BusquedaParticular handleCleanAll={this.handleCleanAll} handleSearch={this.handleSearchPrevios}
                                             handleChangeCampo={this.handleChangeCampo} nombreParticular={this.state.nombreParticular}
                                             numeroExpediente={this.state.numeroExpediente}
                                             institucion={this.state.institucion} handleError={this.handleError} nivel={this.state.nivel}/>
                     </Grid>
+
+
                     <Grid item xs={12}>
                         <DetalleParticular handleClose={this.handleClose} particular={this.state.elementoSeleccionado}
                                            control={this.state.open}/>
                     </Grid>
+
+
                     <Grid item xs={12}>
                         {
                             this.state.loading &&
@@ -448,6 +458,7 @@ class EnhancedTable extends React.Component {
                             this.state.error && <MensajeErrorDatos/>
                         }
                     </Grid>
+
                     <Grid item xs={12} className={classes.section}>
                         {this.state.previos && this.state.previos.length > 0 &&
                         <div>
@@ -468,6 +479,8 @@ class EnhancedTable extends React.Component {
                         }
 
                     </Grid>
+
+
                     <Grid item xs={12} className={classes.section}>
                         {(filterData && filterData.length <= 0) &&
                         <MensajeNoRegistros/>
@@ -480,6 +493,8 @@ class EnhancedTable extends React.Component {
                             detalle<br/></Typography>
                         }
                     </Grid>
+
+
                     <Grid item xs={12} className={classes.section}>
                         {filterData && filterData.length > 0 &&
                         <div className={classes.container}>
@@ -564,8 +579,8 @@ class EnhancedTable extends React.Component {
                             </Table>
                         </div>
                         }
-
                     </Grid>
+
 
                     <Grid item xs={12} className={classes.section}>
                         {
@@ -579,11 +594,10 @@ class EnhancedTable extends React.Component {
                                 Privadas.
                             </Typography>
                         }
-
-
                     </Grid>
 
                 </Grid>
+
                 <Grid container spacing={0} justify="center" className={classes.containerD} style={{backgroundColor: '#f6f6f6'}}>
                     <Grid item xs={12} className={classes.itemD}>
                         <Descarga url={process.env.REACT_APP_BULK_S3_PARTICULARES}/>

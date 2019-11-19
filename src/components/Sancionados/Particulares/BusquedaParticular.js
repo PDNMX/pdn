@@ -8,7 +8,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import rp from "request-promise";
 import Grid from "@material-ui/core/Grid/Grid";
 import {Typography} from "@material-ui/core"
-import Button from "@material-ui/core/Button/Button";
+import Button from "@material-ui/core/Button";
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from "@material-ui/core/FormLabel";
@@ -160,6 +160,7 @@ class BusquedaParticular extends React.Component {
                         </Select>
                     </FormControl>
                 </Grid>
+
                 <Grid item md={3} xs={12}>
                     <FormControl className={classes.formControl}>
                         <TextField
@@ -208,7 +209,6 @@ class BusquedaParticular extends React.Component {
 
                     </FormControl>
                 </Grid>
-
 
                 <Grid item xs={12} md={1} className={classes.centrado}>
                     <Button variant="contained" color="secondary" className={classes.button} onClick={this.buscar}>
