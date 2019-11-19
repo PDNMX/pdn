@@ -99,7 +99,7 @@ class BusquedaServidor extends React.Component {
         }
     }
     loadData =(nivel)=>{
-        let sug = [{value: null, label: 'TODAS'}];
+        let sug = [{value: null, label: 'Todas'}];
         let options = {
             uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/s2/dependencias',
             json: true,
@@ -226,13 +226,13 @@ class BusquedaServidor extends React.Component {
                                 id: 'campoSelectProcedimiento',
                             }}
                         >
-                            <MenuItem value={'TODOS'} key={'TODOS'}>
-                                TODOS
+                            <MenuItem value={'Todos'} key={'Todos'}>
+                                Todos
                             </MenuItem>
-                            <MenuItem value={'CONTRATACIONES'} key={'CONTRATACIONES'}>CONTRATACIONES</MenuItem>
-                            <MenuItem value={'CONCESIONES'} key={'CONCESIONES'}>CONCESIONES</MenuItem>
-                            <MenuItem value={'ENAJENACIONES'} key={'ENAJENACIONES'}>ENAJENACIONES</MenuItem>
-                            <MenuItem value={'DICTAMENES'} key={'DICTAMENES'}>DICTAMENES</MenuItem>
+                            <MenuItem value={'CONTRATACIONES'} key={'CONTRATACIONES'}>Contrataciones</MenuItem>
+                            <MenuItem value={'CONCESIONES'} key={'CONCESIONES'}>Concesiones</MenuItem>
+                            <MenuItem value={'ENAJENACIONES'} key={'ENAJENACIONES'}>Enajenaciones</MenuItem>
+                            <MenuItem value={'DICTAMENES'} key={'DICTAMENES'}>Dictamenes</MenuItem>
                         </Select>
 
                     </FormControl>
