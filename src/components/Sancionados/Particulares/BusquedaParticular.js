@@ -160,6 +160,7 @@ class BusquedaParticular extends React.Component {
                         </Select>
                     </FormControl>
                 </Grid>
+
                 <Grid item md={3} xs={12}>
                     <FormControl className={classes.formControl}>
                         <TextField
