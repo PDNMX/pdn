@@ -13,6 +13,7 @@ import Header from './Header/Header';
 import ScrollToTopButton from "../../Navigation/ScrollToTopButton";
 import {Link} from '@material-ui/core';
 import Button from '@material-ui/core/Button';
+import ProcoloConexion from "../ProcoloConexion";
 
 const styles = theme => ({
     root:{
@@ -135,6 +136,12 @@ class Declaraciones extends React.Component {
                                 </Link>
                             </li>
                         </ul>
+                        {
+                            /*
+                            <ProcoloConexion urlPlan = {''} apiName={'Declaraciones'}/>
+                             */
+                        }
+
 
                         <Divider className={classes.divider}/>
 

@@ -4,12 +4,13 @@ import MuiExpansionPanel from '@material-ui/core/ExpansionPanel';
 import MuiExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import MuiExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
-//import Grid from "@material-ui/core/Grid";
 import MuiLink from "@material-ui/core/Link";
 import {Link} from "react-router-dom";
 import Diagrama from "../../assets/Diagrama_de_comunicacion_API.svg";
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
+import IconButton from "@material-ui/core/IconButton";
+import GetAppIcon from "@material-ui/icons/GetApp";
 
 const ExpansionPanel = withStyles({
     root: {
@@ -661,6 +662,36 @@ export default function CustomizedExpansionPanels() {
                 </ExpansionPanelDetails>
             </ExpansionPanel>
 
+            <ExpansionPanel square expanded={expanded === 'panel8'} onChange={handleChange('panel8')}>
+                <ExpansionPanelSummary aria-controls="panel8d-content" id="panel8d-header">
+                    <Typography>Protocolo de conexión</Typography>
+                </ExpansionPanelSummary>
+                <ExpansionPanelDetails>
+                    <div>
+                        <Typography paragraph color="textPrimary">
+                            Para establecer la conexión con la Plataforma Digital Nacional es necesario requisitar el formato de <b>Solicitud de conexión</b><IconButton target={'_blank'} href={'https://drive.google.com/file/d/1ANQG3f1Q7aO4soQR9__2FvHEi_-UwvBe/view'} color="primary" aria-label="descargar"  size={'small'}><GetAppIcon/></IconButton>correctamente
+                            y enviarlo al correo electrónico: <b>pdn@sesna.gob.mx </b>
+                        </Typography>
+                        <Typography paragraph color="textPrimary">
+                            Posteriormente el equipo de la PDN llevará a cabo el procedimiento para la verificación del funcionamiento del API correspondiente, plasmado en el respectivo <b>Plan de pruebas</b> que podrás encontrar
+                            en la sección de <Link to="/especificaciones" className={classes.link}><Typography component={'span'}>Especificaciones</Typography></Link> del sistema en cuestión.
+                        </Typography>
+                        <Typography paragraph color="textPrimary">
+                            El conjunto de pruebas se divide en tres categorías:
+                               <ul>
+                                   <li>Pruebas de seguridad</li>
+                                   <li>Pruebas funcionales</li>
+                                   <li>Pruebas de estrés</li>
+                               </ul>
+                        </Typography>
+                        <Typography paragraph color="textPrimary">
+                            Cabe señalar que para la aprobación de interconexión con la Plataforma Digital Nacional, es necesario contar con todos los casos de prueba evaluados exitosamente. En caso contrario, será necesario realizar los ajustes para cumplir con todos los casos de prueba y solicitar nuevamente la validación por parte del equipo de la Plataforma Digital Nacional.
+                        </Typography>
+
+
+                    </div>
+                </ExpansionPanelDetails>
+            </ExpansionPanel>
 
 
             <ExpansionPanel square expanded={expanded === 'panel8'} onChange={handleChange('panel8')}>

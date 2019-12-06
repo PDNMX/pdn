@@ -12,7 +12,9 @@ import Herramientas from "../Herramientas";
 import Header from './Header/Header';
 import ScrollToTopButton from "../../Navigation/ScrollToTopButton";
 import Button from '@material-ui/core/Button';
-import Link from '@material-ui/core/Link';
+import {Link} from "react-router-dom";
+import IconButton from "@material-ui/core/IconButton";
+import GetAppIcon from "@material-ui/icons/GetApp";
 
 const styles = theme => ({
     list: {
@@ -127,6 +129,35 @@ class Sancionados extends React.Component {
                                 </Link>
                             </li>
                         </ul>
+                        <Typography variant='h5' paragraph color='textPrimary'>
+                            Protocolo de conexión
+                        </Typography>
+                        <Typography paragraph color="textPrimary">
+                            Para establecer la conexión con la Plataforma Digital Nacional es necesario requisitar el formato de <b>Solicitud de conexión</b><IconButton target={'_blank'} href={'https://drive.google.com/file/d/1ANQG3f1Q7aO4soQR9__2FvHEi_-UwvBe/view'} color="primary" aria-label="descargar"  size={'small'}><GetAppIcon/></IconButton>correctamente
+                            y enviarlo al correo electrónico: <b>pdn@sesna.gob.mx </b>
+                        </Typography>
+                        <Typography paragraph color="textPrimary">
+                            Posteriormente el equipo de la PDN llevará a cabo el procedimiento para la verificación del funcionamiento del API que consiste en la ejecución del siguiente <b>Plan de pruebas</b>.
+                        </Typography>
+                        <Typography paragraph color="textPrimary">
+                            Adicionalmente, ponemos a disposición un <Link to="/validador" className={classes.link}><Typography component={'span'}>Validador </Typography></Link>
+                            que sirve de apoyo para la validación del cumplimiento de los esquemas de datos de las diferentes API's.
+                        </Typography>
+                        <Button
+                            href= {'https://drive.google.com/file/d/1in6bHq8rqeTl_v48BpByDjgxeF2fIIve/view'}
+                            target='_blank'
+                            variant='contained'
+                            className={classes.button}>
+                             Servidores Sancionados
+                        </Button>
+                        <Button
+                            href= {'https://drive.google.com/file/d/15mPsTLuW6u97cRMxBaEP8YCkAZnX32v-/view'}
+                            target='_blank'
+                            variant='contained'
+                            className={classes.button}>
+                            Particulares Sancionados
+                        </Button>
+
 
                         <Divider className={classes.divider}/>
 

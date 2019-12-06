@@ -12,6 +12,7 @@ import {Typography} from "@material-ui/core"
 import Herramientas from "../Herramientas";
 import ScrollToTopButton from "../../Navigation/ScrollToTopButton";
 import Button from '@material-ui/core/Button';
+import ProcoloConexion from "../ProcoloConexion";
 
 const styles = theme => ({
     list: {
@@ -116,6 +117,10 @@ class ServidoresIntervienen extends React.Component {
                             className={classes.button}>
                             Más información
                         </Button>
+
+                        <ProcoloConexion urlPlan = {'https://drive.google.com/file/d/1ooAuvc1kNMiftE_R1yRglC6OK9bIIx8U/view'} apiName={'Servidores que intervienen en' +
+                        ' procedimientos de contratación'}/>
+
 
                         <Divider className={classes.divider}/>
 
