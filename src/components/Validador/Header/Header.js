@@ -94,7 +94,7 @@ class Header extends React.Component{
                             Validador de estandares de datos
                         </Typography>
                         <Typography  className={classes.whiteText} style={{fontSize: '18px',fontWeight: 500}}>
-                            En está página puedes validar archivos en formato JSON contra los estándares de datos de la Plataforma Digital Nacional
+                            En está página puedes validar archivos en formato JSON contra los estándares de datos <br/>de la Plataforma Digital Nacional
                         </Typography>
                     </Grid>
                 </Grid>
