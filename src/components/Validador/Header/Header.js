@@ -3,13 +3,13 @@ import {withStyles} from "@material-ui/core/styles";
 import Grid from '@material-ui/core/Grid';
 import {Link} from 'react-router-dom';
 //import {Typography} from "@material-ui/core"
-import BG from '../../../assets/img/fenito.jpg';
-import PDNLogo from '../../../assets/PDN.png';
-import S3 from '../../../assets/iconos_azul/3_icono.svg'
+import BG from '../../../assets/img/especificaciones.jpg';
+import S3 from '../../../assets/iconos_azul/validador_icono.svg'
 //import PDNAppBar from "../../PDNAppBar/PDNAppBar";
 import {Typography} from "@material-ui/core"
 import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
 import './Header.css';
+import BarraLogoMenu from "../../Compartidos/BarraLogoMenu";
 import classNames from 'classnames';
 
 const style = theme => ({
@@ -22,6 +22,12 @@ const style = theme => ({
             paddingBottom: '75px',
             paddingLeft: theme.spacing(1),
             paddingRight: theme.spacing(1),
+            height: '100%',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            position: 'relative',
+            backgroundImage: `url(${BG})`
         },
         link: {
             textDecoration: 'none',
@@ -60,17 +66,8 @@ class Header extends React.Component{
 
         return(
             <div className={classes.root}>
-                <img src={BG} alt="Sistema 2" className="fenito"/>
-
-
-                <Grid container spacing={0} justify="center" style={{background: '#fff'}}>
-                    <Grid item xs={12} className={classes.item3}>
-                        <Link to="/" className={classes.link}>
-                            <img src={PDNLogo} alt="PDN" className={classes.pdnLogo}/>
-                        </Link>
-                    </Grid>
-                </Grid>
-
+                <BarraLogoMenu/>
+                
                 <Grid container spacing={0} className="breadcrumb" justify='center'>
                     <Grid item xs={12} className={classes.item3}>
                         <ul>
