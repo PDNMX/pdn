@@ -687,7 +687,10 @@ export default function CustomizedExpansionPanels() {
                         <Typography paragraph color="textPrimary">
                             Cabe señalar que para la aprobación de interconexión con la Plataforma Digital Nacional, es necesario contar con todos los casos de prueba evaluados exitosamente. En caso contrario, será necesario realizar los ajustes para cumplir con todos los casos de prueba y solicitar nuevamente la validación por parte del equipo de la Plataforma Digital Nacional.
                         </Typography>
-
+                        <Typography paragraph color="textPrimary">
+                            Adicionalmente, ponemos a disposición un <Link to="/validador" className={classes.link}><Typography component={'span'}>Validador </Typography></Link>
+                            que sirve de apoyo para la validación del cumplimiento de los esquemas de datos de las diferentes API's.
+                        </Typography>
 
                     </div>
                 </ExpansionPanelDetails>
