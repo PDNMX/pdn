@@ -137,7 +137,7 @@ class Declaraciones extends React.Component {
                             </li>
                         </ul>
                         
-                        <ProcoloConexion urlPlan={'https://drive.google.com/open?id=10NtvfE5EVKGF8OF1Ku40LgjrjirVfsTO'} apiName={'Declaraciones'} />
+                        <ProcoloConexion urlPlan={'https://drive.google.com/open?id=1HZailvIOV77By1JwQKWXGTungYRBFmHi'} apiName={'Declaraciones'} />
                         
 
                         <Divider className={classes.divider}/>
