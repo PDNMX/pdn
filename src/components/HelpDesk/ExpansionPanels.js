@@ -662,8 +662,8 @@ export default function CustomizedExpansionPanels() {
                 </ExpansionPanelDetails>
             </ExpansionPanel>
 
-            <ExpansionPanel square expanded={expanded === 'panel8'} onChange={handleChange('panel8')}>
-                <ExpansionPanelSummary aria-controls="panel8d-content" id="panel8d-header">
+            <ExpansionPanel square expanded={expanded === 'panel9'} onChange={handleChange('panel9')}>
+                <ExpansionPanelSummary aria-controls="panel9d-content" id="panel9d-header">
                     <Typography>Protocolo de conexión</Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
