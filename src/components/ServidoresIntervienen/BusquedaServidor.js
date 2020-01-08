@@ -98,8 +98,9 @@ class BusquedaServidor extends React.Component {
             this.loadData(this.props.nivel);
         }
     }
-    loadData =(nivel)=>{
-        let sug = [{value: null, label: 'Todas'}];
+    loadData = nivel =>{
+        let sug = [];
+
         let options = {
             uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/s2/dependencias',
             json: true,
@@ -113,11 +114,13 @@ class BusquedaServidor extends React.Component {
                 data.data.forEach(item => {
                     sug.push({value: item, label: item});
                 });
-                this.setState({suggestions: sug});
+                this.setState({
+                    suggestions: sug
+                });
             }).catch(err => {
             // this.props.handleError(true);
         });
-    }
+    };
 
     limpiarBusqueda = () => {
         this.props.handleCleanAll();
@@ -127,7 +130,16 @@ class BusquedaServidor extends React.Component {
     };
 
     render() {
-        const {classes, handleChangeCampo, nombreServidor, apellidoUno, apellidoDos, procedimiento, institucion, nivel} = this.props;
+        const {
+            classes,
+            handleChangeCampo,
+            nombreServidor,
+            apellidoUno,
+            apellidoDos,
+            procedimiento,
+            institucion,
+            nivel
+        } = this.props;
 
         return (
             <div>
@@ -187,7 +199,7 @@ class BusquedaServidor extends React.Component {
                         <FormControl className={classes.formControl}>
                             <TextField
                                 id="search"
-                                label="Apellido Uno"
+                                label="Primer apellido"
                                 type="search"
                                 onChange={(e) => handleChangeCampo('apellidoUno', e)}
                                 value={apellidoUno}
@@ -203,7 +215,7 @@ class BusquedaServidor extends React.Component {
                         <FormControl className={classes.formControl}>
                             <TextField
                                 id="search"
-                                label="Apellido Dos"
+                                label="Segundo apellido"
                                 type="search"
                                 onChange={(e) => handleChangeCampo('apellidoDos', e)}
                                 value={apellidoDos}
@@ -217,7 +229,7 @@ class BusquedaServidor extends React.Component {
                     </Grid>
                     {<Grid item xs={12} md={3}>
                     <FormControl className={classes.formControl}>
-                        <InputLabel htmlFor="campoSelectProcedimiento">Procedimiento</InputLabel>
+                        <InputLabel htmlFor="campoSelectProcedimiento"> Tipo de procedimiento</InputLabel>
                         <Select style={{marginTop:'0px'}}
                             value={procedimiento}
                             onChange={(e) => handleChangeCampo('procedimiento', e)}
@@ -247,6 +259,9 @@ class BusquedaServidor extends React.Component {
                                         id: 'campoSelectInstitucion',
                                     }}
                             >
+                                <MenuItem value="ANY" key="ANY">
+                                    Cualquiera
+                                </MenuItem>
                                 {
                                     this.state.suggestions.map((item => {
                                         return <MenuItem value={item.value} key={item.value}>
@@ -270,7 +285,7 @@ class BusquedaServidor extends React.Component {
                                         value={nivel}
                                         onChange={(e) => handleChangeCampo('nivel', e)}
                             >
-                                <FormControlLabel value="todos" control={<Radio/>} label="Todos"/>
+                                <FormControlLabel value="todos" control={<Radio/>} label="Cualquiera"/>
                                 <FormControlLabel value="federal" control={<Radio/>} label="Federal"/>
                                 <FormControlLabel value="estatal" control={<Radio/>} label="Estatal"/>
                             </RadioGroup>

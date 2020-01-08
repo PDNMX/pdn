@@ -200,6 +200,7 @@ class EnhancedTable extends React.Component {
         super(props);
         this.child = React.createRef();
         this.btnDownloadAll = React.createRef();
+
         this.state = {
             order: 'asc',
             orderBy: 'servidor',
@@ -213,10 +214,10 @@ class EnhancedTable extends React.Component {
             filterData: null,
             page: 0,
             rowsPerPage: 10,
-            procedimiento: '',
+            procedimiento: 'Todos',
             open: false,
             elementoSeleccionado: {},
-            institucion: "",
+            institucion: "ANY",
             loading: false,
             totalRows: 0,
             filterDataAll: [],
@@ -224,7 +225,6 @@ class EnhancedTable extends React.Component {
             nivel: 'todos',
             previos: [],
             panelPrevios: true,
-            api: ''
 
         };
 
@@ -234,13 +234,14 @@ class EnhancedTable extends React.Component {
         this.setState({
             panelPrevios: !this.state.panelPrevios
         })
-    }
+    };
 
     handleError = (val) => {
         this.setState({
             error: val
         })
-    }
+    };
+
     handleRequestSort = (event, property) => {
         const orderBy = property;
         let order = 'desc';
@@ -298,7 +299,7 @@ class EnhancedTable extends React.Component {
         if (procedimiento && procedimiento !== 'TODOS') filtros.procedimiento = procedimiento;
         /* if (rfc) filtros.rfc = '%' + rfc + '%';
         if (curp) filtros.curp = '%' + curp + '%'; */
-        if (institucion && institucion !== 'TODAS') filtros.institucion = institucion;
+        if (institucion && institucion !== 'ANY') filtros.institucion = institucion;
 
         let limit =  this.state.rowsPerPage;
 
@@ -344,7 +345,13 @@ class EnhancedTable extends React.Component {
     };
     handleSearchAPI = (typeSearch) => {
         this.setState({loading: true});
-        let {institucion, nombreServidor, apellidoUno, apellidoDos, procedimiento} = this.state;
+        let {
+            institucion,
+            nombreServidor,
+            apellidoUno,
+            apellidoDos,
+            procedimiento
+        } = this.state;
 
         let filtros = {};
         let offset = 0;
@@ -356,7 +363,7 @@ class EnhancedTable extends React.Component {
             if (procedimiento) filtros.procedimiento = procedimiento;
             /* if (rfc) filtros.rfc = '%' + rfc + '%';
             if (curp) filtros.curp = '%' + curp + '%'; */
-            if (institucion && institucion !== 'TODAS') filtros.institucion = institucion;
+            if (institucion && institucion !== 'ANY') filtros.institucion = institucion;
             if (procedimiento && procedimiento !== 'TODOS') filtros.procedimiento = procedimiento;
         }
 
@@ -455,10 +462,16 @@ class EnhancedTable extends React.Component {
                 </Grid>
                 <Grid container justify={'center'} spacing={0} className={classes.gridTable}>
                     <Grid item xs={12} className={classes.toolBarStyle}>
-                        <BusquedaServidor handleCleanAll={this.handleCleanAll} handleSearch={this.handleSearchPrevios}
+                        <BusquedaServidor handleCleanAll={this.handleCleanAll}
+                                          handleSearch={this.handleSearchPrevios}
                                           handleChangeCampo={this.handleChangeCampo}
-                                          nombreServidor={this.state.nombreServidor} apellidoUno={this.state.apellidoUno} apellidoDos={this.state.apellidoDos}
-                                          institucion={this.state.institucion} procedimiento={this.state.procedimiento}  handleError={this.handleError} nivel={this.state.nivel}/>
+                                          nombreServidor={this.state.nombreServidor}
+                                          apellidoUno={this.state.apellidoUno}
+                                          apellidoDos={this.state.apellidoDos}
+                                          institucion={this.state.institucion}
+                                          procedimiento={this.state.procedimiento}
+                                          handleError={this.handleError}
+                                          nivel={this.state.nivel}/>
                     </Grid>
                     <Grid item xs={12}>
                         <DetalleServidorSancionado handleClose={this.handleClose}
