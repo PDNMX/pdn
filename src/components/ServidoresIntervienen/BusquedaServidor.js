@@ -80,7 +80,10 @@ const styles = theme => ({
     inputShrink: {
         transform: `scale(1)`
     },
-
+    button: {
+        margin: theme.spacing(2),
+        marginRight: theme.spacing(1),
+    }
 
 });
 
@@ -179,7 +182,7 @@ class BusquedaServidor extends React.Component {
 
                         </FormControl>
                     </Grid> */}
-                    <Grid item xs={12} md={3}>
+                    <Grid item xs={12} md={4}>
                         <FormControl className={classes.formControl}>
                             <TextField
                                 id="search"
@@ -195,7 +198,7 @@ class BusquedaServidor extends React.Component {
 
                         </FormControl>
                     </Grid>
-                    <Grid item xs={12} md={3}>
+                    <Grid item xs={12} md={4}>
                         <FormControl className={classes.formControl}>
                             <TextField
                                 id="search"
@@ -211,7 +214,7 @@ class BusquedaServidor extends React.Component {
 
                         </FormControl>
                     </Grid>
-                    <Grid item xs={12} md={3}>
+                    <Grid item xs={12} md={4}>
                         <FormControl className={classes.formControl}>
                             <TextField
                                 id="search"
@@ -227,7 +230,7 @@ class BusquedaServidor extends React.Component {
 
                         </FormControl>
                     </Grid>
-                    {<Grid item xs={12} md={3}>
+                    {<Grid item xs={12} md={4}>
                     <FormControl className={classes.formControl}>
                         <InputLabel htmlFor="campoSelectProcedimiento"> Tipo de procedimiento</InputLabel>
                         <Select style={{marginTop:'0px'}}
@@ -249,7 +252,7 @@ class BusquedaServidor extends React.Component {
 
                     </FormControl>
                 </Grid>}
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12} md={8}>
                         <FormControl className={classes.formControl}>
                             <InputLabel htmlFor={'campoSelectInstitucion'}>Institución</InputLabel>
                             <Select style={{marginTop: '0px'}} value={institucion}
@@ -277,7 +280,7 @@ class BusquedaServidor extends React.Component {
                     
                     <Grid item md={6} xs={12}>
                         <FormControl component="fieldset" className={classes.formControl}>
-                            <FormLabel component="legend">Nivel</FormLabel>
+                            <FormLabel component="legend">Nivel de gobierno</FormLabel>
                             <RadioGroup row
                                         aria-label="gender"
                                         name="gender1"
@@ -292,19 +295,19 @@ class BusquedaServidor extends React.Component {
 
                         </FormControl>
                     </Grid>
-                    <Grid item xs={10}/>
-                    <Grid item xs={12} md={1} className={classes.centrado}>
-                        <Button variant="contained" color="secondary" className={classes.button} onClick={this.buscar}>
-                            Buscar
-                        </Button>
-                    </Grid>
-                    <Grid item xs={12} md={1} className={classes.centrado}>
-                        <Button variant="contained" color="secondary" className={classes.button}
-                                onClick={this.limpiarBusqueda}>
-                            Limpiar
-                        </Button>
-                    </Grid>
 
+                    <Grid item xs={12} md={6} align="right">
+
+                                <Button variant="contained" color="secondary" className={classes.button} onClick={this.buscar}>
+                                    Buscar
+                                </Button>
+
+                                <Button variant="contained" color="secondary" className={classes.button}
+                                        onClick={this.limpiarBusqueda}>
+                                    Limpiar
+                                </Button>
+
+                    </Grid>
                 </Grid>
             </div>
         );
