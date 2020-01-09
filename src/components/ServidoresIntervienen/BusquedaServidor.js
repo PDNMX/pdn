@@ -242,7 +242,7 @@ class BusquedaServidor extends React.Component {
                             }}
                         >
                             <MenuItem value={'Todos'} key={'Todos'}>
-                                Todos
+                                Cualquiera
                             </MenuItem>
                             <MenuItem value={'CONTRATACIONES'} key={'CONTRATACIONES'}>Contrataciones</MenuItem>
                             <MenuItem value={'CONCESIONES'} key={'CONCESIONES'}>Concesiones</MenuItem>
