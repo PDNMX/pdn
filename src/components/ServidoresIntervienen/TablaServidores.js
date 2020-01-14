@@ -157,7 +157,7 @@ const styles = theme => ({
         paddingRight: theme.spacing(1),
         paddingLeft: theme.spacing(1),
         //paddingBottom: theme.spacing(4),
-      //  paddingTop: theme.spacing(4),
+        //  paddingTop: theme.spacing(4),
         backgroundColor: "white"
 
     },
@@ -445,18 +445,18 @@ class EnhancedTable extends React.Component {
                             <b>Aquí encontrarás la siguiente información:</b>
                         </Typography>
                         
-                            <ul className={classes.ul}>
-                                <li className={classes.li}>
-                                    <Typography color="textPrimary" display='inline'>
-                                        Consulta los servidores que intervienen en procesos de contratación por institución, a nivel federal y/o estatal
-                                    </Typography>
-                                </li>
-                                <li className={classes.li}>
-                                    <Typography color="textPrimary" display='inline'>
-                                        Obtén datos del servidor como: nombre, puesto, institución
-                                    </Typography>
-                                </li>
-                            </ul>
+                        <ul className={classes.ul}>
+                            <li className={classes.li}>
+                                <Typography color="textPrimary" display='inline'>
+                                    Consulta los servidores que intervienen en procesos de contratación por institución, a nivel federal y/o estatal
+                                </Typography>
+                            </li>
+                            <li className={classes.li}>
+                                <Typography color="textPrimary" display='inline'>
+                                    Obtén datos del servidor como: nombre, puesto, institución
+                                </Typography>
+                            </li>
+                        </ul>
                         
                     </Grid>
                 </Grid>
@@ -573,7 +573,7 @@ class EnhancedTable extends React.Component {
                                 </TableBody>
                                 <TableFooter>
                                     <TableRow>
-                                       {/* <TableCell>
+                                        {/* <TableCell>
                                             <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data}
                                                       filtrado={false}
                                                       columnas={columnData} fnSearch={this.handleSearchAPI}
