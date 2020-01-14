@@ -95,7 +95,7 @@ const styles = theme => ({
             width: theme.spacing(130),
         },
     },
-        smallIcon: {
+    smallIcon: {
         color: theme.palette.primary.main
     },
     downloadIcon: {
@@ -211,7 +211,7 @@ class DetalleServidor extends React.Component {
                 >
                     <div style={getModalStyle()} className={classes.paper}>
 
-                    <Grid container spacing={1} justify="flex-start">
+                        <Grid container spacing={1} justify="flex-start">
                             <Grid item xs={11}>
                                 <Typography variant="h6" className={classes.title}>Ficha del servidor
                                     público </Typography>
@@ -341,9 +341,9 @@ class DetalleServidor extends React.Component {
                                     id="read-only-input"
                                     label="Tipo de área"
                                     defaultValue={Array.isArray(servidor.tipoArea)
-                                         ? servidor.tipoArea.map(item => {
-                                        return item + " "
-                                    }) : servidor.tipoArea}
+                                        ? servidor.tipoArea.map(item => {
+                                            return item + " "
+                                        }) : servidor.tipoArea}
                                     className={classes.textField}
                                     margin="normal"
                                     InputProps={{

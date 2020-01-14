@@ -231,27 +231,27 @@ class BusquedaServidor extends React.Component {
                         </FormControl>
                     </Grid>
                     {<Grid item xs={12} md={4}>
-                    <FormControl className={classes.formControl}>
-                        <InputLabel htmlFor="campoSelectProcedimiento"> Tipo de procedimiento</InputLabel>
-                        <Select style={{marginTop:'0px'}}
-                            value={procedimiento}
-                            onChange={(e) => handleChangeCampo('procedimiento', e)}
-                            inputProps={{
-                                name: 'campoSelectProcedimiento',
-                                id: 'campoSelectProcedimiento',
-                            }}
-                        >
-                            <MenuItem value={'Todos'} key={'Todos'}>
-                                Cualquiera
-                            </MenuItem>
-                            <MenuItem value={'CONTRATACIONES'} key={'CONTRATACIONES'}>Contrataciones</MenuItem>
-                            <MenuItem value={'CONCESIONES'} key={'CONCESIONES'}>Concesiones</MenuItem>
-                            <MenuItem value={'ENAJENACIONES'} key={'ENAJENACIONES'}>Enajenaciones</MenuItem>
-                            <MenuItem value={'DICTAMENES'} key={'DICTAMENES'}>Dictamenes</MenuItem>
-                        </Select>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="campoSelectProcedimiento"> Tipo de procedimiento</InputLabel>
+                            <Select style={{marginTop:'0px'}}
+                                    value={procedimiento}
+                                    onChange={(e) => handleChangeCampo('procedimiento', e)}
+                                    inputProps={{
+                                        name: 'campoSelectProcedimiento',
+                                        id: 'campoSelectProcedimiento',
+                                    }}
+                            >
+                                <MenuItem value={'Todos'} key={'Todos'}>
+                                    Cualquiera
+                                </MenuItem>
+                                <MenuItem value={'CONTRATACIONES'} key={'CONTRATACIONES'}>Contrataciones</MenuItem>
+                                <MenuItem value={'CONCESIONES'} key={'CONCESIONES'}>Concesiones</MenuItem>
+                                <MenuItem value={'ENAJENACIONES'} key={'ENAJENACIONES'}>Enajenaciones</MenuItem>
+                                <MenuItem value={'DICTAMENES'} key={'DICTAMENES'}>Dictamenes</MenuItem>
+                            </Select>
 
-                    </FormControl>
-                </Grid>}
+                        </FormControl>
+                    </Grid>}
                     <Grid item xs={12} md={8}>
                         <FormControl className={classes.formControl}>
                             <InputLabel htmlFor={'campoSelectInstitucion'}>Institución</InputLabel>
@@ -298,14 +298,14 @@ class BusquedaServidor extends React.Component {
 
                     <Grid item xs={12} md={6} align="right">
 
-                                <Button variant="contained" color="secondary" className={classes.button} onClick={this.buscar}>
-                                    Buscar
-                                </Button>
+                        <Button variant="contained" color="secondary" className={classes.button} onClick={this.buscar}>
+                            Buscar
+                        </Button>
 
-                                <Button variant="contained" color="secondary" className={classes.button}
-                                        onClick={this.limpiarBusqueda}>
-                                    Limpiar
-                                </Button>
+                        <Button variant="contained" color="secondary" className={classes.button}
+                                onClick={this.limpiarBusqueda}>
+                            Limpiar
+                        </Button>
 
                     </Grid>
                 </Grid>

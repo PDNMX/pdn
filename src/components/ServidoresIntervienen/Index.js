@@ -23,7 +23,7 @@ const styles = theme => ({
     },
     bgPanelTable: {
         backgroundColor: theme.palette.white.color,
-       /* [theme.breakpoints.up('sm')]: {
+        /* [theme.breakpoints.up('sm')]: {
             marginBottom: theme.spacing(7),
         },
         [theme.breakpoints.down('sm')]: {
@@ -150,7 +150,7 @@ class Index extends React.Component {
                         }
                         {this.state.idContent === 2 &&
                         <TablaParticularesSancionados/>
-                        /*<TablaParticulares/>*/
+                            /*<TablaParticulares/>*/
                         }
                         {this.state.idContent === 3 &&
                         <Dashboard/>
