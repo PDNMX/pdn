@@ -17,10 +17,6 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
 
 const styles = theme => ({
-    container: {
-        display: 'flex',
-        flexWrap: 'wrap',
-    },
     textField: {
         marginRight: theme.spacing(1),
     },
@@ -36,46 +32,6 @@ const styles = theme => ({
     root: {
         flexGrow: 1,
         height: 250,
-    },
-    input: {
-        color: theme.palette.black.color,
-        display: 'contents'
-    },
-    valueContainer: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        flex: 1,
-        alignItems: 'center',
-    },
-    noOptionsMessage: {
-        padding: `${theme.spacing(1)}px ${theme.spacing(2)}px`,
-    },
-    singleValue: {
-        color: theme.palette.black.color,
-        width: 'auto',
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
-        whiteSpace: 'nowrap'
-    },
-    placeholder: {
-        fontSize: 16,
-        color: theme.palette.black.color
-    },
-    paper: {
-        position: 'absolute',
-        zIndex: 20,
-
-    },
-    divider: {
-        height: theme.spacing(2),
-    },
-    labelCustom: {
-        color: theme.palette.black.color,
-    },
-    centrado: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
     },
     inputShrink: {
         transform: `scale(1)`
@@ -241,7 +197,7 @@ class BusquedaServidor extends React.Component {
                                         id: 'campoSelectProcedimiento',
                                     }}
                             >
-                                <MenuItem value={'Todos'} key={'Todos'}>
+                                <MenuItem value={'todos'} key={'Todos'}>
                                     Cualquiera
                                 </MenuItem>
                                 <MenuItem value={'CONTRATACIONES'} key={'CONTRATACIONES'}>Contrataciones</MenuItem>

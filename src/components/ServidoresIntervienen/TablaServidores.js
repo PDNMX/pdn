@@ -21,94 +21,17 @@ import Switch from "@material-ui/core/Switch";
 import Collapse from "@material-ui/core/Collapse";
 import Previos from "../Tablas/Previos";
 import Descarga from "../Compartidos/Descarga";
-
+import columnData from './column_data';
 
 function getSorting(order, orderBy) {
     return order === 'desc'
         ? (a, b) => (b[orderBy] < a[orderBy] ? -1 : 1)
         : (a, b) => (a[orderBy] < b[orderBy] ? -1 : 1);
 }
-
-const columnData = [
-
-    {
-        id: 'servidor',
-        disablePadding: false,
-        label: 'Servidor público',
-        position: 2,
-        mostrar: true,
-        key: 'servidor'
-    },
-    {
-        id: 'institucion.nombre',
-        disablePadding: false,
-        label: 'Institución',
-        position: 3,
-        mostrar: true,
-        key: 'dependencia.nombre'
-    },
-    {id: 'puesto.nombre', disablePadding: false, label: 'Puesto', position: 4, mostrar: true, key: 'puesto.nombre'},
-    {
-        id: 'tipoArea',
-        disablePadding: false,
-        label: 'Tipo de área',
-        position: 5,
-        mostrar: false,
-        key: 'tipoArea'
-    },
-    {
-        id: 'contrataciones',
-        disablePadding: false,
-        label: 'Contrataciones públicas',
-        position: 6,
-        mostrar: false,
-        key: 'contrataciones'
-    },
-    {
-        id: 'concesionesLicencias',
-        disablePadding: false,
-        label: 'Concesiones, licencias, permisos, autorizaciones y prórrogas',
-        position: 7,
-        mostrar: false,
-        key: 'concesionesLicencias'
-    },
-    {
-        id: 'enajenacion',
-        disablePadding: false,
-        label: 'Enajenación de bienes muebles',
-        position: 8,
-        mostrar: false,
-        key: 'enajenacion'
-    },
-    {
-        id: 'dictamenes',
-        disablePadding: false,
-        label: 'Asignación y emisión de dictámenes de avalúos nacionales',
-        position: 9,
-        mostrar: false,
-        key: 'dictamenes'
-    },
-    {
-        id: 'tipo_actos',
-        disablePadding: false,
-        label: 'Tipo procedimiento',
-        position: 10,
-        mostrar: true,
-        key: 'tipo_actos'
-    }
-];
-
 const styles = theme => ({
     root: {
         marginTop: '30px',
         marginBottom: '30px',
-    },
-    tableWrapper: {
-        overflowX: 'auto',
-    },
-    tableFooter: {
-        display: 'flow-root',
-        flexWrap: 'wrap',
     },
     progress: {
         position: 'fixed',
@@ -118,14 +41,10 @@ const styles = theme => ({
         top: 0,
         bottom: 0
     },
-
     section: {
         maxWidth: '1200px',
         overflowX: 'auto',
         padding: theme.spacing(1)
-    },
-    table: {
-        tableLayout: 'fixed',
     },
     tablePagination: {
         overflowX: 'auto',
@@ -188,7 +107,6 @@ const styles = theme => ({
         paddingBottom: theme.spacing(8),
         paddingTop: theme.spacing(8)
     },
-
     containerD: {
         backgroundColor: '#fff'
     },
@@ -214,7 +132,7 @@ class EnhancedTable extends React.Component {
             filterData: null,
             page: 0,
             rowsPerPage: 10,
-            procedimiento: 'Todos',
+            procedimiento: 'todos',
             open: false,
             elementoSeleccionado: {},
             institucion: "ANY",
@@ -296,7 +214,7 @@ class EnhancedTable extends React.Component {
         if (nombreServidor) filtros.nombres = nombreServidor;
         if (apellidoUno) filtros.primer_apellido = apellidoUno;
         if (apellidoDos) filtros.segundo_apellido = apellidoDos;
-        if (procedimiento && procedimiento !== 'TODOS') filtros.procedimiento = procedimiento;
+        if (procedimiento && procedimiento !== 'todos') filtros.procedimiento = procedimiento;
         /* if (rfc) filtros.rfc = '%' + rfc + '%';
         if (curp) filtros.curp = '%' + curp + '%'; */
         if (institucion && institucion !== 'ANY') filtros.institucion = institucion;
@@ -364,7 +282,7 @@ class EnhancedTable extends React.Component {
             /* if (rfc) filtros.rfc = '%' + rfc + '%';
             if (curp) filtros.curp = '%' + curp + '%'; */
             if (institucion && institucion !== 'ANY') filtros.institucion = institucion;
-            if (procedimiento && procedimiento !== 'TODOS') filtros.procedimiento = procedimiento;
+            if (procedimiento && procedimiento !== 'todos') filtros.procedimiento = procedimiento;
         }
 
         let limit = (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.state.rowsPerPage : null;
