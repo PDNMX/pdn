@@ -21,83 +21,13 @@ import Switch from "@material-ui/core/Switch";
 import Collapse from "@material-ui/core/Collapse";
 import Previos from "../Tablas/Previos";
 import Descarga from "../Compartidos/Descarga";
-
+import columnData from './column_data';
 
 function getSorting(order, orderBy) {
     return order === 'desc'
         ? (a, b) => (b[orderBy] < a[orderBy] ? -1 : 1)
         : (a, b) => (a[orderBy] < b[orderBy] ? -1 : 1);
 }
-
-const columnData = [
-
-    {
-        id: 'servidor',
-        disablePadding: false,
-        label: 'Servidor público',
-        position: 2,
-        mostrar: true,
-        key: 'servidor'
-    },
-    {
-        id: 'institucion.nombre',
-        disablePadding: false,
-        label: 'Institución',
-        position: 3,
-        mostrar: true,
-        key: 'dependencia.nombre'
-    },
-    {id: 'puesto.nombre', disablePadding: false, label: 'Puesto', position: 4, mostrar: true, key: 'puesto.nombre'},
-    {
-        id: 'tipoArea',
-        disablePadding: false,
-        label: 'Tipo de área',
-        position: 5,
-        mostrar: false,
-        key: 'tipoArea'
-    },
-    {
-        id: 'contrataciones',
-        disablePadding: false,
-        label: 'Contrataciones públicas',
-        position: 6,
-        mostrar: false,
-        key: 'contrataciones'
-    },
-    {
-        id: 'concesionesLicencias',
-        disablePadding: false,
-        label: 'Concesiones, licencias, permisos, autorizaciones y prórrogas',
-        position: 7,
-        mostrar: false,
-        key: 'concesionesLicencias'
-    },
-    {
-        id: 'enajenacion',
-        disablePadding: false,
-        label: 'Enajenación de bienes muebles',
-        position: 8,
-        mostrar: false,
-        key: 'enajenacion'
-    },
-    {
-        id: 'dictamenes',
-        disablePadding: false,
-        label: 'Asignación y emisión de dictámenes de avalúos nacionales',
-        position: 9,
-        mostrar: false,
-        key: 'dictamenes'
-    },
-    {
-        id: 'tipo_actos',
-        disablePadding: false,
-        label: 'Tipo procedimiento',
-        position: 10,
-        mostrar: true,
-        key: 'tipo_actos'
-    }
-];
-
 const styles = theme => ({
     root: {
         marginTop: '30px',
@@ -188,7 +118,6 @@ const styles = theme => ({
         paddingBottom: theme.spacing(8),
         paddingTop: theme.spacing(8)
     },
-
     containerD: {
         backgroundColor: '#fff'
     },
