@@ -132,7 +132,7 @@ class EnhancedTable extends React.Component {
             filterData: null,
             page: 0,
             rowsPerPage: 10,
-            procedimiento: 'Todos',
+            procedimiento: 'todos',
             open: false,
             elementoSeleccionado: {},
             institucion: "ANY",
@@ -214,7 +214,7 @@ class EnhancedTable extends React.Component {
         if (nombreServidor) filtros.nombres = nombreServidor;
         if (apellidoUno) filtros.primer_apellido = apellidoUno;
         if (apellidoDos) filtros.segundo_apellido = apellidoDos;
-        if (procedimiento && procedimiento !== 'TODOS') filtros.procedimiento = procedimiento;
+        if (procedimiento && procedimiento !== 'todos') filtros.procedimiento = procedimiento;
         /* if (rfc) filtros.rfc = '%' + rfc + '%';
         if (curp) filtros.curp = '%' + curp + '%'; */
         if (institucion && institucion !== 'ANY') filtros.institucion = institucion;
@@ -282,7 +282,7 @@ class EnhancedTable extends React.Component {
             /* if (rfc) filtros.rfc = '%' + rfc + '%';
             if (curp) filtros.curp = '%' + curp + '%'; */
             if (institucion && institucion !== 'ANY') filtros.institucion = institucion;
-            if (procedimiento && procedimiento !== 'TODOS') filtros.procedimiento = procedimiento;
+            if (procedimiento && procedimiento !== 'todos') filtros.procedimiento = procedimiento;
         }
 
         let limit = (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.state.rowsPerPage : null;

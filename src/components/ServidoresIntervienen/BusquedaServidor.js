@@ -197,7 +197,7 @@ class BusquedaServidor extends React.Component {
                                         id: 'campoSelectProcedimiento',
                                     }}
                             >
-                                <MenuItem value={'Todos'} key={'Todos'}>
+                                <MenuItem value={'todos'} key={'Todos'}>
                                     Cualquiera
                                 </MenuItem>
                                 <MenuItem value={'CONTRATACIONES'} key={'CONTRATACIONES'}>Contrataciones</MenuItem>
