@@ -33,13 +33,6 @@ const styles = theme => ({
         marginTop: '30px',
         marginBottom: '30px',
     },
-    tableWrapper: {
-        overflowX: 'auto',
-    },
-    tableFooter: {
-        display: 'flow-root',
-        flexWrap: 'wrap',
-    },
     progress: {
         position: 'fixed',
         margin: 'auto',
@@ -48,14 +41,10 @@ const styles = theme => ({
         top: 0,
         bottom: 0
     },
-
     section: {
         maxWidth: '1200px',
         overflowX: 'auto',
         padding: theme.spacing(1)
-    },
-    table: {
-        tableLayout: 'fixed',
     },
     tablePagination: {
         overflowX: 'auto',
