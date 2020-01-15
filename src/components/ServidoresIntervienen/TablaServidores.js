@@ -278,7 +278,7 @@ class EnhancedTable extends React.Component {
             if (nombreServidor) filtros.nombres = nombreServidor;
             if (apellidoUno) filtros.primer_apellido = apellidoUno;
             if (apellidoDos) filtros.segundo_apellido = apellidoDos;
-            if (procedimiento) filtros.procedimiento = procedimiento;
+            //if (procedimiento) filtros.procedimiento = procedimiento;
             /* if (rfc) filtros.rfc = '%' + rfc + '%';
             if (curp) filtros.curp = '%' + curp + '%'; */
             if (institucion && institucion !== 'ANY') filtros.institucion = institucion;
