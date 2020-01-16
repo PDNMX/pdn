@@ -15,7 +15,8 @@ import FormLabel from "@material-ui/core/FormLabel";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
-
+import FormHelperText from "@material-ui/core/FormHelperText";
+import Autocomplete from '@material-ui/lab/Autocomplete';
 const styles = theme => ({
     container: {
         display: 'flex',
@@ -85,14 +86,13 @@ const styles = theme => ({
 });
 
 
-
 class BusquedaServidor extends React.Component {
     state = {
         suggestions: []
     };
 
     componentDidMount() {
-       this.loadData(this.props.nivel);
+        this.loadData(this.props.nivel);
     }
 
 
@@ -102,14 +102,14 @@ class BusquedaServidor extends React.Component {
         }
     }
 
-     loadData =(nivel)=>{
+    loadData = (nivel) => {
         let sug = [{value: null, label: 'TODAS'}];
         let options = {
             uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/getDependenciasServidores',
             json: true,
             method: "post",
-            body:{
-                nivel:nivel
+            body: {
+                nivel: nivel
             }
         };
         rp(options)
@@ -130,7 +130,7 @@ class BusquedaServidor extends React.Component {
     };
 
     render() {
-        const {classes, handleChangeCampo, nombreServidor, apellidoUno, apellidoDos, rfc, curp, institucion, nivel} = this.props;
+        const {classes, handleChangeCampo, nombreServidor, apellidoUno, apellidoDos, rfc, curp, institucion, nivel, tipoSancion} = this.props;
 
         return (
             <div>
@@ -146,10 +146,6 @@ class BusquedaServidor extends React.Component {
                                 type="search"
                                 onChange={(e) => handleChangeCampo('rfc', e)}
                                 value={rfc}
-                                InputLabelProps={{
-                                    className: classes.inputShrink,
-                                    shrink: true
-                                }}
                             />
 
                         </FormControl>
@@ -162,24 +158,24 @@ class BusquedaServidor extends React.Component {
                                 type="search"
                                 onChange={(e) => handleChangeCampo('curp', e)}
                                 value={curp}
-                                InputLabelProps={{
-                                    className: classes.inputShrink,
-                                    shrink: true
-                                }}
                             />
 
                         </FormControl>
                     </Grid>
                     <Grid item xs={12} md={6}>
                         <FormControl className={classes.formControl}>
-                            <InputLabel htmlFor={'campoSelectInstitucion'}>Institución</InputLabel>
+                            <InputLabel shrink id="demo-simple-select-placeholder-label-label">
+                                Institución
+                            </InputLabel>
                             <Select style={{marginTop: '0px'}} value={institucion}
                                     onChange={(e) => handleChangeCampo('institucion', e)}
                                     inputProps={{
                                         name: 'campoSelectInstitucion',
                                         id: 'campoSelectInstitucion',
                                     }}
+                                    displayEmpty
                             >
+                                <MenuItem value="" key={""}><em>Cualquiera</em></MenuItem>
                                 {
                                     this.state.suggestions.map((item => {
                                         return <MenuItem value={item.value} key={item.value}>
@@ -214,10 +210,6 @@ class BusquedaServidor extends React.Component {
                                 type="search"
                                 onChange={(e) => handleChangeCampo('nombreServidor', e)}
                                 value={nombreServidor}
-                                InputLabelProps={{
-                                    className: classes.inputShrink,
-                                    shrink: true
-                                }}
                             />
 
                         </FormControl>
@@ -230,10 +222,6 @@ class BusquedaServidor extends React.Component {
                                 type="search"
                                 onChange={(e) => handleChangeCampo('apellidoUno', e)}
                                 value={apellidoUno}
-                                InputLabelProps={{
-                                    className: classes.inputShrink,
-                                    shrink: true
-                                }}
                             />
 
                         </FormControl>
@@ -246,19 +234,80 @@ class BusquedaServidor extends React.Component {
                                 type="search"
                                 onChange={(e) => handleChangeCampo('apellidoDos', e)}
                                 value={apellidoDos}
-                                InputLabelProps={{
-                                    className: classes.inputShrink,
-                                    shrink: true
-                                }}
                             />
+                        </FormControl>
+                    </Grid>
+                    <Grid item md={3}/>
+                    <Grid item xs={12} md={6}>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel shrink id="demo-simple-select-placeholder-label-label"
+                                        htmlFor={'campoSelectSancion'}>
+                                Tipo Sanción
+                            </InputLabel>
+                            <Autocomplete
+                                multiple
+                                id="tags-standard"
+                                options={[
+                                    {title: 'Inhabilitado', value: 'I'},
+                                    {title: 'Multado', value: 'M'},
+                                    {title: 'Suspensión del empleo, cargo o comisión', value: 'S'},
+                                    {title: 'Destitución del empleo, cargo o comisión', value: 'D'}
+                                ]}
+                                getOptionLabel={option => option.title}
+                                renderInput={params => (
+                                    <TextField
+                                        {...params}
+                                        variant="standard"
+                                        label="Tipo Sanción"
+                                        placeholder="Selecciona las que desees"
+                                        fullWidth
+                                    />
+                                )}
+                            />
+                           {/* <Select2
+                                classes={classes}
+                                TextFieldProps={{
+                                    label: 'Tipo Sanción',
+                                    InputLabelProps: {
+                                        htmlFor: 'react-select-single',
+                                        shrink: true,
+                                    },
 
+                                }}
+                                placeholder="Puedes seleccionar más de un tipo de sanción"
+                                onChange={(e) => handleChangeCampo('tipoSancion', e)}
+                                value={tipoSancion}
+                                isMulti
+                                options={[
+                                    {label: 'Inhabilitado', value: 'I'},
+                                    {label: 'Multado', value: 'M'},
+                                    {label: 'Suspensión del empleo, cargo o comisión', value: 'S'},
+                                    {label: 'Destitución del empleo, cargo o comisión', value: 'D'}
+                                ]}
+                            />*/}
+
+                            { /*<Select style={{marginTop: '0px'}} value={tipoSancion}
+                                    onChange={(e) => handleChangeCampo('tipoSancion', e)}
+                                    displayEmpty
+                                    inputProps={{
+                                        name: 'campoSelectSancion',
+                                        id: 'campoSelectSancion',
+
+                                    }}
+                                    multiple
+                            >
+                                <MenuItem value={""} key={"T"} disabled>Cualquiera</MenuItem>
+                                <MenuItem value={"I"} key={"I"}>Inhabilitado</MenuItem>
+                                <MenuItem value={"M"} key={"M"}>Multado</MenuItem>
+                                <MenuItem value={"S"} key={"S"}>Suspensión del empleo, cargo o comisión</MenuItem>
+                                <MenuItem value={"D"} key={"D"}>Destitución del empleo, cargo o comisión</MenuItem>
+                                }
+                            </Select>*/}
                         </FormControl>
                     </Grid>
 
-                    <Grid item md={1}/>
 
-
-                    <Grid item md={10} xs={12}>
+                    <Grid item md={6} xs={12}>
                         <FormControl component="fieldset" className={classes.formControl}>
                             <FormLabel component="legend">Nivel</FormLabel>
                             <RadioGroup row

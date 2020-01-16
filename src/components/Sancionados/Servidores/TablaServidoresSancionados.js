@@ -8,7 +8,7 @@ import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import TableFooter from '@material-ui/core/TableFooter';
 import BusquedaServidor from "./BusquedaServidor";
-import DetalleServidorSancionado from "./DetalleServidorSancionado";
+import DetalleServidorSancionado2 from "./DetalleServidorSancionado2";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Grid from "@material-ui/core/Grid/Grid";
 import EnhancedTableHead from '../../Tablas/EnhancedTableHead';
@@ -22,6 +22,7 @@ import Switch from "@material-ui/core/Switch";
 import Collapse from "@material-ui/core/Collapse";
 import Previos from "../../Tablas/Previos";
 import Descarga from "../../Compartidos/Descarga";
+
 
 
 function getSorting(order, orderBy) {
@@ -139,7 +140,7 @@ const styles = theme => ({
         },
         //paddingBottom: theme.spacing(2)
     },
-        itemD:{
+    itemD: {
         maxWidth: 1200,
         paddingRight: theme.spacing(1),
         paddingLeft: theme.spacing(1),
@@ -174,7 +175,7 @@ class EnhancedTable extends React.Component {
             rowsPerPage: 10,
             procedimiento: 0,
             open: false,
-            elementoSeleccionado: {},
+            elementoSeleccionado: null,
             institucion: "",
             loading: false,
             totalRows: 0,
@@ -183,8 +184,8 @@ class EnhancedTable extends React.Component {
             nivel: 'todos',
             previos: [],
             panelPrevios: true,
-            api: ''
-
+            api: '',
+            tipoSancion:[""]
         };
 
     }
@@ -217,8 +218,8 @@ class EnhancedTable extends React.Component {
         this.setState({selected: []});
     };
 
-    handleClose = () => {
-        this.setState({open: false});
+    handleChangeDetail = () => {
+        this.setState({elementoSeleccionado: null});
     };
 
     handleClick = (event, elemento) => {
@@ -245,7 +246,7 @@ class EnhancedTable extends React.Component {
         this.handleCleanTables();
         this.setState({loading: true});
 
-        let {institucion, nombreServidor, apellidoUno, apellidoDos, rfc, curp} = this.state;
+        let {institucion, nombreServidor, apellidoUno, apellidoDos, rfc, curp,tipoSancion} = this.state;
 
         let filtros = {};
         let offset = 0;
@@ -256,8 +257,8 @@ class EnhancedTable extends React.Component {
         if (apellidoDos) filtros.segundo_apellido = apellidoDos;
         if (rfc) filtros.rfc = rfc;
         if (curp) filtros.curp = curp;
-        if (institucion && institucion !== 'TODAS') filtros.nombre = institucion;
-
+        if (institucion && institucion !== '') filtros.nombre = institucion;
+        if (tipoSancion.length>0) filtros.tipoSancion = tipoSancion;
 
         let limit = this.state.rowsPerPage;
 
@@ -296,14 +297,14 @@ class EnhancedTable extends React.Component {
     handleChangeAPI = (val) => {
         this.setState({
             api: val,
-            page:0
+            page: 0
         }, () => {
             this.handleSearchAPI('FIELD_FILTER')
         });
     };
     handleSearchAPI = (typeSearch) => {
         this.setState({loading: true});
-        let {institucion, nombreServidor, apellidoUno, apellidoDos, rfc, curp} = this.state;
+        let {institucion, nombreServidor, apellidoUno, apellidoDos, rfc, curp, tipoSancion} = this.state;
 
         let filtros = {};
         let offset = 0;
@@ -314,7 +315,8 @@ class EnhancedTable extends React.Component {
             if (apellidoDos) filtros.segundo_apellido = apellidoDos;
             if (rfc) filtros.rfc = rfc;
             if (curp) filtros.curp = curp;
-            if (institucion && institucion !== 'TODAS') filtros.nombre = institucion;
+            if (institucion && institucion !== '') filtros.nombre = institucion;
+            if (tipoSancion.length>0) filtros.tipoSancion = tipoSancion;
         }
 
         let limit = (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.state.rowsPerPage : null;
@@ -340,6 +342,7 @@ class EnhancedTable extends React.Component {
         rp(options)
             .then(res => {
                 let dataAux = res.data;
+                console.log("res:data",res.data)
                 let total = res.totalRows;
 
                 typeSearch === 'DN_ALL' ? this.setState({data: dataAux, loading: false}, () => {
@@ -360,14 +363,15 @@ class EnhancedTable extends React.Component {
     handleChangeCampo = (varState, event) => {
         this.setState({
             [varState]: event ? (event.target ? event.target.value : event.value) : ''
-        });
+        })
     };
     handleCleanAll = () => {
         this.setState(
             {
                 filterData: null,
                 previos: null,
-                nivel: 'todos'
+                nivel: 'todos',
+                tipoSancion:[""]
             }, () => {
                 this.handleChangeCampo('nombreServidor');
                 this.handleChangeCampo('procedimiento');
@@ -376,7 +380,6 @@ class EnhancedTable extends React.Component {
                 this.handleChangeCampo('apellidoDos');
                 this.handleChangeCampo('rfc');
                 this.handleChangeCampo('curp');
-
             })
     };
 
@@ -387,135 +390,139 @@ class EnhancedTable extends React.Component {
 
         return (
             <div>
-                <Grid
-                    container
-                    spacing={0}
-                    className={classes.infoBusqueda}
-                >
-                    <Grid item xs={12} style={{maxWidth: 1200, margin: "0 auto"}}>
-                        <Typography paragraph>
-                            <b>Aquí encontrarás la siguiente información:</b>
-                        </Typography>
-                        <ul className={classes.ul}>
-                            <li className={classes.li}><Typography color="textPrimary" display='inline'>Consulta los servidores sancionados (inhabilitados) por institución, a nivel federal y/o estatal</Typography></li>
-                            <li className={classes.li}>
-                                <Typography color="textPrimary" display='inline'>
-                                    Obtén datos del servidor como: nombre, puesto, institución donde cometió la
-                                    falta
+
+                {
+                    this.state.elementoSeleccionado===null&&
+                    <div>
+                        <Grid container spacing={0} className={classes.infoBusqueda}>
+                            <Grid item xs={12} style={{maxWidth: 1200, margin: "0 auto"}}>
+                                <Typography paragraph>
+                                    <b>Aquí encontrarás la siguiente información:</b>
                                 </Typography>
-                            </li>
-                            <li className={classes.li}>
-                                <Typography color="textPrimary" display='inline'>
-                                    Obtén los datos de la sanción impuesta al servidor: plazo, tipo de falta, causa,
-                                    etc.
-                                </Typography>
-                            </li>
-                        </ul>
-                    </Grid>
-                </Grid>
-                <Grid container justify={'center'} spacing={0} className={classes.gridTable}>
-                    <Grid item xs={12} className={classes.toolBarStyle}>
-                        <BusquedaServidor handleCleanAll={this.handleCleanAll} handleSearch={this.handleSearchPrevios}
-                                          handleChangeCampo={this.handleChangeCampo}
-                                          nombreServidor={this.state.nombreServidor}
-                                          apellidoUno={this.state.apellidoUno} apellidoDos={this.state.apellidoDos}
-                                          institucion={this.state.institucion} rfc={this.state.rfc}
-                                          curp={this.state.curp} handleError={this.handleError}
-                                          nivel={this.state.nivel}/>
-                    </Grid>
-                    <Grid item xs={12}>
-                        <DetalleServidorSancionado handleClose={this.handleClose}
-                                                   servidor={this.state.elementoSeleccionado}
-                                                   control={this.state.open}/>
-                    </Grid>
-                    <Grid item xs={12}>
-                        {
-                            this.state.loading &&
-                            <Modal
-                                open={this.state.loading}
-                                disableAutoFocus={true}
-                            >
-                                <CircularProgress className={classes.progress} id="spinnerLoading" size={200}/>
-                            </Modal>
+                                <ul className={classes.ul}>
+                                    <li className={classes.li}><Typography color="textPrimary" display='inline'>Consulta
+                                        los servidores sancionados (inhabilitados) por institución, a nivel federal y/o
+                                        estatal</Typography></li>
+                                    <li className={classes.li}>
+                                        <Typography color="textPrimary" display='inline'>
+                                            Obtén datos del servidor como: nombre, puesto, institución donde cometió la
+                                            falta
+                                        </Typography>
+                                    </li>
+                                    <li className={classes.li}>
+                                        <Typography color="textPrimary" display='inline'>
+                                            Obtén los datos de la sanción impuesta al servidor: plazo, tipo de falta,
+                                            causa,
+                                            etc.
+                                        </Typography>
+                                    </li>
+                                </ul>
+                            </Grid>
+                        </Grid>
+                        <Grid container justify={'center'} spacing={0} className={classes.gridTable}>
+                            <Grid item xs={12} className={classes.toolBarStyle}>
+                                <BusquedaServidor handleCleanAll={this.handleCleanAll}
+                                                  handleSearch={this.handleSearchPrevios}
+                                                  handleChangeCampo={this.handleChangeCampo}
+                                                  nombreServidor={this.state.nombreServidor}
+                                                  apellidoUno={this.state.apellidoUno}
+                                                  apellidoDos={this.state.apellidoDos}
+                                                  institucion={this.state.institucion} rfc={this.state.rfc}
+                                                  curp={this.state.curp} handleError={this.handleError}
+                                                  nivel={this.state.nivel}
+                                                  tipoSancion={this.state.tipoSancion}/>
+                            </Grid>
 
-                        }
-                        {
-                            this.state.error && <MensajeErrorDatos/>
-                        }
-                    </Grid>
-                    <Grid item xs={12} className={classes.section}>
-                        {this.state.previos && this.state.previos.length > 0 &&
-                        <div>
-                            <FormControlLabel
-                                control={<Switch className={classes.containerPrevios} checked={this.state.panelPrevios}
-                                                 onChange={() => this.handleChange()}/>}
-                                label={
-                                    <Typography variant="h6" className={classes.desc}>
-                                        {this.state.panelPrevios ? 'Ocultar resultados generales' : 'Mostrar resultados generales'}</Typography>}
-                            />
-                            <div className={classes.container}>
-                                <Collapse in={this.state.panelPrevios}>
-                                    <Previos previos={this.state.previos} handleChangeAPI={this.handleChangeAPI}/>
-                                </Collapse>
+                            <Grid item xs={12}>
+                                {
+                                    this.state.loading &&
+                                    <Modal
+                                        open={this.state.loading}
+                                        disableAutoFocus={true}
+                                    >
+                                        <CircularProgress className={classes.progress} id="spinnerLoading" size={200}/>
+                                    </Modal>
 
-                            </div>
-                        </div>
-                        }
+                                }
+                                {
+                                    this.state.error && <MensajeErrorDatos/>
+                                }
+                            </Grid>
+                            <Grid item xs={12} className={classes.section}>
+                                {this.state.previos && this.state.previos.length > 0 &&
+                                <div>
+                                    <FormControlLabel
+                                        control={<Switch className={classes.containerPrevios}
+                                                         checked={this.state.panelPrevios}
+                                                         onChange={() => this.handleChange()}/>}
+                                        label={
+                                            <Typography variant="h6" className={classes.desc}>
+                                                {this.state.panelPrevios ? 'Ocultar resultados generales' : 'Mostrar resultados generales'}</Typography>}
+                                    />
+                                    <div className={classes.container}>
+                                        <Collapse in={this.state.panelPrevios}>
+                                            <Previos previos={this.state.previos}
+                                                     handleChangeAPI={this.handleChangeAPI}/>
+                                        </Collapse>
 
-                    </Grid>
-                    <Grid item xs={12} className={classes.section}>
-                        {(filterData && filterData.length <= 0) &&
-                        <MensajeNoRegistros/>
-                        }
+                                    </div>
+                                </div>
+                                }
 
-                    </Grid>
-                    <Grid item xs={12} className={classes.section}>
-                        {filterData && filterData.length > 0 &&
-                        <Typography variant={"h6"} className={classes.desc}>Pulsa sobre el registro para ver su
-                            detalle<br/></Typography>
-                        }
+                            </Grid>
+                            <Grid item xs={12} className={classes.section}>
+                                {(filterData && filterData.length <= 0) &&
+                                <MensajeNoRegistros/>
+                                }
 
-                    </Grid>
-                    <Grid item xs={12} className={classes.section}>
-                        {filterData && filterData.length > 0 &&
-                        <div className={classes.container}>
-                            <Table aria-describedby="spinnerLoading" id={'tableServidores'}
-                                   aria-busy={this.state.loading} aria-labelledby="tableTitle">
-                                <EnhancedTableHead
-                                    numSelected={selected.length}
-                                    order={order}
-                                    orderBy={orderBy}
-                                    onSelectAllClick={this.handleSelectAllClick}
-                                    onRequestSort={this.handleRequestSort}
-                                    rowCount={data.length}
-                                    columnData={columnData}
-                                />
-                                <TableBody>
-                                    {filterData
-                                        .sort(getSorting(order, orderBy))
-                                        .map(n => {
-                                            const isSelected = this.isSelected(n.id);
-                                            return (
-                                                <TableRow
-                                                    hover
-                                                    onClick={event => this.handleClick(event, n)}
-                                                    role="checkbox"
-                                                    aria-checked={isSelected}
-                                                    tabIndex={-1}
-                                                    key={n.id}
-                                                    selected={isSelected}
-                                                >
-                                                    <TableCell component="th" scope="row"
-                                                               padding="default">{n.expediente}</TableCell>
-                                                    <TableCell>{n.nombre +" "+n.apellidoUno+" "+ n.apellidoDos}</TableCell>
-                                                    <TableCell>{n.institucion.nombre}</TableCell>
-                                                    <TableCell
-                                                        style={{width: '25%'}}>{n.autoridad_sancionadora}</TableCell>
+                            </Grid>
+                            <Grid item xs={12} className={classes.section}>
+                                {filterData && filterData.length > 0 &&
+                                <Typography variant={"h6"} className={classes.desc}>Pulsa sobre el registro para ver su
+                                    detalle<br/></Typography>
+                                }
 
-                                                </TableRow>
-                                            );
-                                        })}
-                                    {/*
+                            </Grid>
+                            <Grid item xs={12} className={classes.section}>
+                                {filterData && filterData.length > 0 &&
+                                <div className={classes.container}>
+                                    <Table aria-describedby="spinnerLoading" id={'tableServidores'}
+                                           aria-busy={this.state.loading} aria-labelledby="tableTitle">
+                                        <EnhancedTableHead
+                                            numSelected={selected.length}
+                                            order={order}
+                                            orderBy={orderBy}
+                                            onSelectAllClick={this.handleSelectAllClick}
+                                            onRequestSort={this.handleRequestSort}
+                                            rowCount={data.length}
+                                            columnData={columnData}
+                                        />
+                                        <TableBody>
+                                            {filterData
+                                                .sort(getSorting(order, orderBy))
+                                                .map(n => {
+                                                    const isSelected = this.isSelected(n.id);
+                                                    return (
+                                                        <TableRow
+                                                            hover
+                                                            onClick={event => this.handleClick(event, n)}
+                                                            role="checkbox"
+                                                            aria-checked={isSelected}
+                                                            tabIndex={-1}
+                                                            key={n.id}
+                                                            selected={isSelected}
+                                                        >
+                                                            <TableCell component="th" scope="row"
+                                                                       padding="default">{n.expediente}</TableCell>
+                                                            <TableCell>{n.servidorPublicoSancionado.nombres + " " + n.servidorPublicoSancionado.primerApellido + " " + n.servidorPublicoSancionado.segundoApellido}</TableCell>
+                                                            <TableCell>{n.institucionDependencia.nombre}</TableCell>
+                                                            <TableCell
+                                                                style={{width: '25%'}}>{n.autoridadSancionadora}</TableCell>
+
+                                                        </TableRow>
+                                                    );
+                                                })}
+                                            {/*
                                         emptyRows > 0 && (
                                         <TableRow style={{height: 49 * emptyRows}}>
 
@@ -525,10 +532,10 @@ class EnhancedTable extends React.Component {
                                     )
                                     */}
 
-                                </TableBody>
-                                <TableFooter>
-                                    <TableRow>
-                                        {/* <TableCell>
+                                        </TableBody>
+                                        <TableFooter>
+                                            <TableRow>
+                                                {/* <TableCell>
                                             <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data}
                                                       filtrado={false}
                                                       columnas={columnData} fnSearch={this.handleSearchAPI}
@@ -540,40 +547,49 @@ class EnhancedTable extends React.Component {
                                                       columnas={columnData} fnSearch={this.handleSearchAPI}
                                                       fileName={'MiBusqueda'}/>
                                         </TableCell>*/}
-                                        <TablePagination
-                                            className={classes.tablePagination}
-                                            colSpan={6}
-                                            count={totalRows}
-                                            rowsPerPage={rowsPerPage}
-                                            page={page}
-                                            backIconButtonProps={{
-                                                'aria-label': 'Previous Page',
-                                            }}
-                                            nextIconButtonProps={{
-                                                'aria-label': 'Next Page',
-                                            }}
-                                            onChangePage={this.handleChangePage}
-                                            onChangeRowsPerPage={this.handleChangeRowsPerPage}
-                                            labelRowsPerPage='Registros por página'
-                                            labelDisplayedRows={({from, to, count}) => {
-                                                return `${from}-${to} de ${count}`;
-                                            }}
-                                        />
-                                    </TableRow>
-                                </TableFooter>
-                            </Table>
-                        </div>
-                        }
+                                                <TablePagination
+                                                    className={classes.tablePagination}
+                                                    colSpan={6}
+                                                    count={totalRows}
+                                                    rowsPerPage={rowsPerPage}
+                                                    page={page}
+                                                    backIconButtonProps={{
+                                                        'aria-label': 'Previous Page',
+                                                    }}
+                                                    nextIconButtonProps={{
+                                                        'aria-label': 'Next Page',
+                                                    }}
+                                                    onChangePage={this.handleChangePage}
+                                                    onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                                                    labelRowsPerPage='Registros por página'
+                                                    labelDisplayedRows={({from, to, count}) => {
+                                                        return `${from}-${to} de ${count}`;
+                                                    }}
+                                                />
+                                            </TableRow>
+                                        </TableFooter>
+                                    </Table>
+                                </div>
+                                }
 
-                    </Grid>
+                            </Grid>
 
 
-                </Grid>
-                <Grid container spacing={0} justify="center" className={classes.containerD} style={{backgroundColor: '#f6f6f6'}}>
-                    <Grid item xs={12} className={classes.itemD}>
-                        <Descarga url={process.env.REACT_APP_BULK_S3_SERVIDORES}/>
-                    </Grid>
-                </Grid>
+                        </Grid>
+                        <Grid container spacing={0} justify="center" className={classes.containerD}
+                              style={{backgroundColor: '#f6f6f6'}}>
+                            <Grid item xs={12} className={classes.itemD}>
+                                <Descarga url={process.env.REACT_APP_BULK_S3_SERVIDORES}/>
+                            </Grid>
+                        </Grid>
+                    </div>
+                }
+                {
+                    this.state.elementoSeleccionado!==null &&
+                        <DetalleServidorSancionado2 handleChangeDetail={this.handleChangeDetail}
+                                                    servidor={this.state.elementoSeleccionado}
+                                                    control={this.state.open}/>
+                }
             </div>
         );
     }
