@@ -17,10 +17,6 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
 
 const styles = theme => ({
-    container: {
-        display: 'flex',
-        flexWrap: 'wrap',
-    },
     textField: {
         marginRight: theme.spacing(1),
     },
@@ -36,46 +32,6 @@ const styles = theme => ({
     root: {
         flexGrow: 1,
         height: 250,
-    },
-    input: {
-        color: theme.palette.black.color,
-        display: 'contents'
-    },
-    valueContainer: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        flex: 1,
-        alignItems: 'center',
-    },
-    noOptionsMessage: {
-        padding: `${theme.spacing(1)}px ${theme.spacing(2)}px`,
-    },
-    singleValue: {
-        color: theme.palette.black.color,
-        width: 'auto',
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
-        whiteSpace: 'nowrap'
-    },
-    placeholder: {
-        fontSize: 16,
-        color: theme.palette.black.color
-    },
-    paper: {
-        position: 'absolute',
-        zIndex: 20,
-
-    },
-    divider: {
-        height: theme.spacing(2),
-    },
-    labelCustom: {
-        color: theme.palette.black.color,
-    },
-    centrado: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
     },
     inputShrink: {
         transform: `scale(1)`
@@ -231,27 +187,27 @@ class BusquedaServidor extends React.Component {
                         </FormControl>
                     </Grid>
                     {<Grid item xs={12} md={4}>
-                    <FormControl className={classes.formControl}>
-                        <InputLabel htmlFor="campoSelectProcedimiento"> Tipo de procedimiento</InputLabel>
-                        <Select style={{marginTop:'0px'}}
-                            value={procedimiento}
-                            onChange={(e) => handleChangeCampo('procedimiento', e)}
-                            inputProps={{
-                                name: 'campoSelectProcedimiento',
-                                id: 'campoSelectProcedimiento',
-                            }}
-                        >
-                            <MenuItem value={'Todos'} key={'Todos'}>
-                                Cualquiera
-                            </MenuItem>
-                            <MenuItem value={'CONTRATACIONES'} key={'CONTRATACIONES'}>Contrataciones</MenuItem>
-                            <MenuItem value={'CONCESIONES'} key={'CONCESIONES'}>Concesiones</MenuItem>
-                            <MenuItem value={'ENAJENACIONES'} key={'ENAJENACIONES'}>Enajenaciones</MenuItem>
-                            <MenuItem value={'DICTAMENES'} key={'DICTAMENES'}>Dictamenes</MenuItem>
-                        </Select>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="campoSelectProcedimiento"> Tipo de procedimiento</InputLabel>
+                            <Select style={{marginTop:'0px'}}
+                                    value={procedimiento}
+                                    onChange={(e) => handleChangeCampo('procedimiento', e)}
+                                    inputProps={{
+                                        name: 'campoSelectProcedimiento',
+                                        id: 'campoSelectProcedimiento',
+                                    }}
+                            >
+                                <MenuItem value={'todos'} key={'Todos'}>
+                                    Cualquiera
+                                </MenuItem>
+                                <MenuItem value={'CONTRATACIONES'} key={'CONTRATACIONES'}>Contrataciones</MenuItem>
+                                <MenuItem value={'CONCESIONES'} key={'CONCESIONES'}>Concesiones</MenuItem>
+                                <MenuItem value={'ENAJENACIONES'} key={'ENAJENACIONES'}>Enajenaciones</MenuItem>
+                                <MenuItem value={'DICTAMENES'} key={'DICTAMENES'}>Dictamenes</MenuItem>
+                            </Select>
 
-                    </FormControl>
-                </Grid>}
+                        </FormControl>
+                    </Grid>}
                     <Grid item xs={12} md={8}>
                         <FormControl className={classes.formControl}>
                             <InputLabel htmlFor={'campoSelectInstitucion'}>Institución</InputLabel>
@@ -298,14 +254,14 @@ class BusquedaServidor extends React.Component {
 
                     <Grid item xs={12} md={6} align="right">
 
-                                <Button variant="contained" color="secondary" className={classes.button} onClick={this.buscar}>
-                                    Buscar
-                                </Button>
+                        <Button variant="contained" color="secondary" className={classes.button} onClick={this.buscar}>
+                            Buscar
+                        </Button>
 
-                                <Button variant="contained" color="secondary" className={classes.button}
-                                        onClick={this.limpiarBusqueda}>
-                                    Limpiar
-                                </Button>
+                        <Button variant="contained" color="secondary" className={classes.button}
+                                onClick={this.limpiarBusqueda}>
+                            Limpiar
+                        </Button>
 
                     </Grid>
                 </Grid>

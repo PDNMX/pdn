@@ -22,13 +22,7 @@ const styles = theme => ({
         color: theme.palette.textGrey.color
     },
     bgPanelTable: {
-        backgroundColor: theme.palette.white.color,
-       /* [theme.breakpoints.up('sm')]: {
-            marginBottom: theme.spacing(7),
-        },
-        [theme.breakpoints.down('sm')]: {
-            marginBottom: theme.spacing(4),
-        }*/
+        backgroundColor: theme.palette.white.color
     },
     section: {
         maxWidth: '1200px',
@@ -42,12 +36,6 @@ const styles = theme => ({
     },
     bgContainer: {
         backgroundColor: theme.palette.pestanas.bg,
-    },
-    center: {
-        textAlign: 'center'
-    },
-    links: {
-        backgroundColor: theme.palette.grisTenue.color
     },
     card: {
         backgroundColor: theme.palette.pestanas.bg,
@@ -150,7 +138,6 @@ class Index extends React.Component {
                         }
                         {this.state.idContent === 2 &&
                         <TablaParticularesSancionados/>
-                        /*<TablaParticulares/>*/
                         }
                         {this.state.idContent === 3 &&
                         <Dashboard/>
