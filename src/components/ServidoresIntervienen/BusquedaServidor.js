@@ -40,44 +40,40 @@ const styles = theme => ({
         margin: theme.spacing(2),
         marginRight: theme.spacing(1),
     }
-
 });
 
 class BusquedaServidor extends React.Component {
     state = {
-        suggestions: []
+        entities: []
     };
 
     componentDidMount() {
-        this.loadData(this.props.nivel)
+        this.loadEntites(this.props.nivel);
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevProps.nivel !== this.props.nivel) {
-            this.loadData(this.props.nivel);
+            this.loadEntites(this.props.nivel);
         }
     }
-    loadData = nivel =>{
-        let sug = [];
 
+    loadEntites = nivel => {
         let options = {
             uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/s2/dependencias',
             json: true,
             method: "post",
-            body:{
+            body: {
                 nivel: nivel
             }
         };
-        rp(options)
-            .then(data => {
-                data.data.forEach(item => {
-                    sug.push({value: item, label: item});
-                });
-                this.setState({
-                    suggestions: sug
-                });
-            }).catch(err => {
-            // this.props.handleError(true);
+
+        rp(options).then(data => {
+            let new_entities = data.data.map( d => ({value: d, label: d}) );
+            this.setState({
+                entities: new_entities
+            });
+        }).catch(err => {
+            console.log(err);
         });
     };
 
@@ -100,44 +96,16 @@ class BusquedaServidor extends React.Component {
             nivel
         } = this.props;
 
+        const {entities} = this.state;
+        
         return (
             <div>
                 <Grid container spacing={4}>
                     <Grid item xs={12}>
-                        <Typography variant="h6"><b>Busca un servidor público que interviene en procesos de contratación</b></Typography>
+                        <Typography variant="h6">
+                            <b>Busca un servidor público que interviene en procesos de contratación</b>
+                        </Typography>
                     </Grid>
-                    {/* <Grid item xs={12} md={3}>
-                        <FormControl className={classes.formControl}>
-                            <TextField
-                                id="search"
-                                label="RFC"
-                                type="search"
-                                onChange={(e) => handleChangeCampo('rfc', e)}
-                                value={rfc}
-                                InputLabelProps={{
-                                    className: classes.inputShrink,
-                                    shrink: true
-                                }}
-                            />
-
-                        </FormControl>
-                    </Grid>
-                    <Grid item xs={12} md={3}>
-                        <FormControl className={classes.formControl}>
-                            <TextField
-                                id="search"
-                                label="CURP"
-                                type="search"
-                                onChange={(e) => handleChangeCampo('curp', e)}
-                                value={curp}
-                                InputLabelProps={{
-                                    className: classes.inputShrink,
-                                    shrink: true
-                                }}
-                            />
-
-                        </FormControl>
-                    </Grid> */}
                     <Grid item xs={12} md={4}>
                         <FormControl className={classes.formControl}>
                             <TextField
@@ -222,14 +190,13 @@ class BusquedaServidor extends React.Component {
                                     Cualquiera
                                 </MenuItem>
                                 {
-                                    this.state.suggestions.map((item => {
+                                    entities.map((item => {
                                         return <MenuItem value={item.value} key={item.value}>
                                             {item.label}
                                         </MenuItem>
                                     }))
                                 }
                             </Select>
-
 
                         </FormControl>
                     </Grid>
@@ -253,7 +220,6 @@ class BusquedaServidor extends React.Component {
                     </Grid>
 
                     <Grid item xs={12} md={6} align="right">
-
                         <Button variant="contained" color="secondary" className={classes.button} onClick={this.buscar}>
                             Buscar
                         </Button>

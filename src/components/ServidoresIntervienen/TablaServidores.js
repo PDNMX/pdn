@@ -28,6 +28,7 @@ function getSorting(order, orderBy) {
         ? (a, b) => (b[orderBy] < a[orderBy] ? -1 : 1)
         : (a, b) => (a[orderBy] < b[orderBy] ? -1 : 1);
 }
+
 const styles = theme => ({
     root: {
         marginTop: '30px',
@@ -238,9 +239,16 @@ class EnhancedTable extends React.Component {
 
         rp(options)
             .then(res => {
-                this.setState({previos: res, loading: false, error: false})
+                this.setState({
+                    previos: res,
+                    loading: false,
+                    error: false
+                })
             }).catch(err => {
-            this.setState({loading: false, error: true});
+            this.setState({
+                loading: false,
+                error: true
+            });
         });
     };
 
@@ -278,7 +286,6 @@ class EnhancedTable extends React.Component {
             if (nombreServidor) filtros.nombres = nombreServidor;
             if (apellidoUno) filtros.primer_apellido = apellidoUno;
             if (apellidoDos) filtros.segundo_apellido = apellidoDos;
-            //if (procedimiento) filtros.procedimiento = procedimiento;
             /* if (rfc) filtros.rfc = '%' + rfc + '%';
             if (curp) filtros.curp = '%' + curp + '%'; */
             if (institucion && institucion !== 'ANY') filtros.institucion = institucion;
@@ -305,8 +312,7 @@ class EnhancedTable extends React.Component {
             body: typeSearch === 'DN_ALL' ? {"iterar": true} : body
         };
 
-        rp(options)
-            .then(res => {
+        rp(options).then(res => {
                 let dataAux = res.data;
                 let total = res.totalRows;
 
