@@ -66,6 +66,7 @@ class Index extends React.Component {
     state = {
         idContent: 3
     };
+
     changeContent = id => {
         this.setState({idContent: id});
     };

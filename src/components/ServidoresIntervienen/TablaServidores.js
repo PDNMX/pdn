@@ -127,8 +127,6 @@ class EnhancedTable extends React.Component {
             nombreServidor: '',
             apellidoUno: '',
             apellidoDos: '',
-            /* rfc: '',
-            curp: '', */
             data: [],
             filterData: null,
             page: 0,
@@ -136,7 +134,9 @@ class EnhancedTable extends React.Component {
             procedimiento: 'todos',
             open: false,
             elementoSeleccionado: {},
-            institucion: "ANY",
+            //institucion: "ANY",
+            entities: [],
+            current_entity: "ANY",
             loading: false,
             totalRows: 0,
             filterDataAll: [],
@@ -148,6 +148,41 @@ class EnhancedTable extends React.Component {
         };
 
     }
+
+    componentDidMount() {
+        this.loadEntites("ANY");
+    }
+
+    loadEntites = nivel => {
+        let options = {
+            uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/s2/dependencias',
+            json: true,
+            method: "post",
+            body: {
+                nivel: nivel
+            }
+        };
+
+        rp(options).then(data => {
+            //console.log(data);
+            let new_entities = data.data.map( d => ({value: d, label: d}) );
+            //console.log(new_entities);
+            this.setState({
+                entities: new_entities,
+                current_entity: "ANY"
+            });
+        }).catch(err => {
+            console.log(err);
+        });
+    };
+
+    changeLevel = e => {
+        let nivel = e.target.value;
+        this.setState({nivel: nivel},() => {
+            this.loadEntites(nivel);
+        });
+    };
+
 
     handleChange = () => {
         this.setState({
@@ -206,7 +241,7 @@ class EnhancedTable extends React.Component {
         this.handleCleanTables();
         this.setState({loading: true});
 
-        let {institucion, nombreServidor, apellidoUno, apellidoDos, procedimiento} = this.state;
+        let {current_entity, nombreServidor, apellidoUno, apellidoDos, procedimiento, nivel} = this.state;
 
         let filtros = {};
         let offset = 0;
@@ -218,7 +253,7 @@ class EnhancedTable extends React.Component {
         if (procedimiento && procedimiento !== 'todos') filtros.procedimiento = procedimiento;
         /* if (rfc) filtros.rfc = '%' + rfc + '%';
         if (curp) filtros.curp = '%' + curp + '%'; */
-        if (institucion && institucion !== 'ANY') filtros.institucion = institucion;
+        if (current_entity && current_entity !== 'ANY') filtros.institucion = current_entity;
 
         let limit =  this.state.rowsPerPage;
 
@@ -227,7 +262,7 @@ class EnhancedTable extends React.Component {
                 "filtros": filtros,
                 "limit": limit,
                 "offset": offset,
-                "nivel": this.state.nivel
+                "nivel": nivel
             };
 
         let options = {
@@ -272,7 +307,7 @@ class EnhancedTable extends React.Component {
     handleSearchAPI = (typeSearch) => {
         this.setState({loading: true});
         let {
-            institucion,
+            institucion, //
             nombreServidor,
             apellidoUno,
             apellidoDos,
@@ -345,7 +380,7 @@ class EnhancedTable extends React.Component {
             }, () => {
                 this.handleChangeCampo('nombreServidor');
                 this.handleChangeCampo('procedimiento');
-                this.handleChangeCampo('institucion');
+                this.handleChangeCampo('current_entity'); //cambiar
                 this.handleChangeCampo('apellidoUno');
                 this.handleChangeCampo('apellidoDos');
             })
@@ -353,7 +388,15 @@ class EnhancedTable extends React.Component {
 
     render() {
         const {classes} = this.props;
-        const {data, order, orderBy, selected, rowsPerPage, page, filterData, totalRows} = this.state;
+        const {
+            data,
+            order, orderBy,
+            selected, rowsPerPage,
+            page, filterData,
+            totalRows,
+            entities,
+            current_entity
+        } = this.state;
         //  const emptyRows = rowsPerPage - filterData.length;
 
         return (
@@ -392,10 +435,15 @@ class EnhancedTable extends React.Component {
                                           nombreServidor={this.state.nombreServidor}
                                           apellidoUno={this.state.apellidoUno}
                                           apellidoDos={this.state.apellidoDos}
-                                          institucion={this.state.institucion}
+                                          //institucion={this.state.institucion} //reemplazar por entities y current entities
+                                            entities = {entities}
+                                            current_entity= {current_entity}
+                                            changeLevel = {this.changeLevel}
+
                                           procedimiento={this.state.procedimiento}
                                           handleError={this.handleError}
-                                          nivel={this.state.nivel}/>
+                                          nivel={this.state.nivel}
+                        />
                     </Grid>
                     <Grid item xs={12}>
                         <DetalleServidorSancionado handleClose={this.handleClose}

@@ -4,7 +4,7 @@ import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import FormControl from "@material-ui/core/FormControl/FormControl";
 import MenuItem from "@material-ui/core/MenuItem/MenuItem";
-import rp from "request-promise";
+//import rp from "request-promise";
 import Grid from "@material-ui/core/Grid/Grid";
 import '../Utils/selectReact.css';
 import {Typography} from "@material-ui/core"
@@ -43,43 +43,11 @@ const styles = theme => ({
 });
 
 class BusquedaServidor extends React.Component {
-    state = {
-        entities: []
-    };
-
-    componentDidMount() {
-        this.loadEntites(this.props.nivel);
-    }
-
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if (prevProps.nivel !== this.props.nivel) {
-            this.loadEntites(this.props.nivel);
-        }
-    }
-
-    loadEntites = nivel => {
-        let options = {
-            uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/s2/dependencias',
-            json: true,
-            method: "post",
-            body: {
-                nivel: nivel
-            }
-        };
-
-        rp(options).then(data => {
-            let new_entities = data.data.map( d => ({value: d, label: d}) );
-            this.setState({
-                entities: new_entities
-            });
-        }).catch(err => {
-            console.log(err);
-        });
-    };
 
     limpiarBusqueda = () => {
         this.props.handleCleanAll();
     };
+
     buscar = () => {
         this.props.handleSearch('FIELD_FILTER');
     };
@@ -92,11 +60,11 @@ class BusquedaServidor extends React.Component {
             apellidoUno,
             apellidoDos,
             procedimiento,
-            institucion,
-            nivel
+            entities,
+            current_entity,
+            nivel,
+            changeLevel
         } = this.props;
-
-        const {entities} = this.state;
         
         return (
             <div>
@@ -179,8 +147,8 @@ class BusquedaServidor extends React.Component {
                     <Grid item xs={12} md={8}>
                         <FormControl className={classes.formControl}>
                             <InputLabel htmlFor={'campoSelectInstitucion'}>Institución</InputLabel>
-                            <Select style={{marginTop: '0px'}} value={institucion}
-                                    onChange={(e) => handleChangeCampo('institucion', e)}
+                            <Select style={{marginTop: '0px'}} value={current_entity}
+                                    onChange={(e) => handleChangeCampo('current_entity', e)}
                                     inputProps={{
                                         name: 'campoSelectInstitucion',
                                         id: 'campoSelectInstitucion',
@@ -190,8 +158,8 @@ class BusquedaServidor extends React.Component {
                                     Cualquiera
                                 </MenuItem>
                                 {
-                                    entities.map((item => {
-                                        return <MenuItem value={item.value} key={item.value}>
+                                    entities.map(((item, index) => {
+                                        return <MenuItem value={item.value} key={index}>
                                             {item.label}
                                         </MenuItem>
                                     }))
@@ -209,7 +177,7 @@ class BusquedaServidor extends React.Component {
                                         name="gender1"
                                         className={classes.group}
                                         value={nivel}
-                                        onChange={(e) => handleChangeCampo('nivel', e)}
+                                        onChange={(e) => changeLevel(e)}
                             >
                                 <FormControlLabel value="todos" control={<Radio/>} label="Cualquiera"/>
                                 <FormControlLabel value="federal" control={<Radio/>} label="Federal"/>
