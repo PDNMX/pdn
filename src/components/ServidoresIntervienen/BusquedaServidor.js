@@ -4,7 +4,6 @@ import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import FormControl from "@material-ui/core/FormControl/FormControl";
 import MenuItem from "@material-ui/core/MenuItem/MenuItem";
-//import rp from "request-promise";
 import Grid from "@material-ui/core/Grid/Grid";
 import '../Utils/selectReact.css';
 import {Typography} from "@material-ui/core"
@@ -122,7 +121,7 @@ class BusquedaServidor extends React.Component {
 
                         </FormControl>
                     </Grid>
-                    {<Grid item xs={12} md={4}>
+                    <Grid item xs={12} md={4}>
                         <FormControl className={classes.formControl}>
                             <InputLabel htmlFor="campoSelectProcedimiento"> Tipo de procedimiento</InputLabel>
                             <Select style={{marginTop:'0px'}}
@@ -143,7 +142,7 @@ class BusquedaServidor extends React.Component {
                             </Select>
 
                         </FormControl>
-                    </Grid>}
+                    </Grid>
                     <Grid item xs={12} md={8}>
                         <FormControl className={classes.formControl}>
                             <InputLabel htmlFor={'campoSelectInstitucion'}>Institución</InputLabel>

@@ -30,10 +30,7 @@ function getSorting(order, orderBy) {
 }
 
 const styles = theme => ({
-    root: {
-        marginTop: '30px',
-        marginBottom: '30px',
-    },
+    root: {},
     progress: {
         position: 'fixed',
         margin: 'auto',
@@ -99,7 +96,6 @@ const styles = theme => ({
             width: "1em",
             marginLeft: "-1em"
         },
-        //paddingBottom: theme.spacing(2)
     },
     itemD:{
         maxWidth: 1200,
@@ -117,6 +113,7 @@ const styles = theme => ({
 class EnhancedTable extends React.Component {
     constructor(props) {
         super(props);
+
         this.child = React.createRef();
         this.btnDownloadAll = React.createRef();
 
@@ -134,7 +131,6 @@ class EnhancedTable extends React.Component {
             procedimiento: 'todos',
             open: false,
             elementoSeleccionado: {},
-            //institucion: "ANY",
             entities: [],
             current_entity: "ANY",
             loading: false,
@@ -144,9 +140,7 @@ class EnhancedTable extends React.Component {
             nivel: 'todos',
             previos: [],
             panelPrevios: true,
-
         };
-
     }
 
     componentDidMount() {
@@ -164,9 +158,8 @@ class EnhancedTable extends React.Component {
         };
 
         rp(options).then(data => {
-            //console.log(data);
             let new_entities = data.data.map( d => ({value: d, label: d}) );
-            //console.log(new_entities);
+
             this.setState({
                 entities: new_entities,
                 current_entity: "ANY"
@@ -182,7 +175,6 @@ class EnhancedTable extends React.Component {
             this.loadEntites(nivel);
         });
     };
-
 
     handleChange = () => {
         this.setState({
@@ -246,19 +238,15 @@ class EnhancedTable extends React.Component {
         let filtros = {};
         let offset = 0;
 
-
         if (nombreServidor) filtros.nombres = nombreServidor;
         if (apellidoUno) filtros.primer_apellido = apellidoUno;
         if (apellidoDos) filtros.segundo_apellido = apellidoDos;
         if (procedimiento && procedimiento !== 'todos') filtros.procedimiento = procedimiento;
-        /* if (rfc) filtros.rfc = '%' + rfc + '%';
-        if (curp) filtros.curp = '%' + curp + '%'; */
         if (current_entity && current_entity !== 'ANY') filtros.institucion = current_entity;
 
         let limit =  this.state.rowsPerPage;
 
-        let body =
-            {
+        let body = {
                 "filtros": filtros,
                 "limit": limit,
                 "offset": offset,
@@ -272,8 +260,7 @@ class EnhancedTable extends React.Component {
             body: body
         };
 
-        rp(options)
-            .then(res => {
+        rp(options).then(res => {
                 this.setState({
                     previos: res,
                     loading: false,
@@ -288,12 +275,11 @@ class EnhancedTable extends React.Component {
     };
 
     handleCleanTables = () => {
-        this.setState(
-            {
+        this.setState({
                 filterData: null,
                 previos: null,
             }
-        )
+        );
     };
 
     handleChangeAPI = (val) => {
@@ -304,10 +290,11 @@ class EnhancedTable extends React.Component {
             this.handleSearchAPI('FIELD_FILTER')
         });
     };
+
     handleSearchAPI = (typeSearch) => {
         this.setState({loading: true});
         let {
-            institucion, //
+            current_entity,
             nombreServidor,
             apellidoUno,
             apellidoDos,
@@ -321,9 +308,7 @@ class EnhancedTable extends React.Component {
             if (nombreServidor) filtros.nombres = nombreServidor;
             if (apellidoUno) filtros.primer_apellido = apellidoUno;
             if (apellidoDos) filtros.segundo_apellido = apellidoDos;
-            /* if (rfc) filtros.rfc = '%' + rfc + '%';
-            if (curp) filtros.curp = '%' + curp + '%'; */
-            if (institucion && institucion !== 'ANY') filtros.institucion = institucion;
+            if (current_entity && current_entity !== 'ANY') filtros.institucion = current_entity;
             if (procedimiento && procedimiento !== 'todos') filtros.procedimiento = procedimiento;
         }
 
@@ -380,7 +365,7 @@ class EnhancedTable extends React.Component {
             }, () => {
                 this.handleChangeCampo('nombreServidor');
                 this.handleChangeCampo('procedimiento');
-                this.handleChangeCampo('current_entity'); //cambiar
+                this.handleChangeCampo('current_entity');
                 this.handleChangeCampo('apellidoUno');
                 this.handleChangeCampo('apellidoDos');
             })
@@ -390,12 +375,21 @@ class EnhancedTable extends React.Component {
         const {classes} = this.props;
         const {
             data,
-            order, orderBy,
-            selected, rowsPerPage,
-            page, filterData,
+            order,
+            orderBy,
+            selected,
+            rowsPerPage,
+            page,
+            filterData,
             totalRows,
             entities,
-            current_entity
+            current_entity,
+
+            nombreServidor,
+            apellidoUno,
+            apellidoDos,
+            procedimiento,
+            nivel
         } = this.state;
         //  const emptyRows = rowsPerPage - filterData.length;
 
@@ -432,17 +426,15 @@ class EnhancedTable extends React.Component {
                         <BusquedaServidor handleCleanAll={this.handleCleanAll}
                                           handleSearch={this.handleSearchPrevios}
                                           handleChangeCampo={this.handleChangeCampo}
-                                          nombreServidor={this.state.nombreServidor}
-                                          apellidoUno={this.state.apellidoUno}
-                                          apellidoDos={this.state.apellidoDos}
-                                          //institucion={this.state.institucion} //reemplazar por entities y current entities
-                                            entities = {entities}
-                                            current_entity= {current_entity}
-                                            changeLevel = {this.changeLevel}
-
-                                          procedimiento={this.state.procedimiento}
+                                          nombreServidor={nombreServidor}
+                                          apellidoUno={apellidoUno}
+                                          apellidoDos={apellidoDos}
+                                          entities = {entities}
+                                          current_entity= {current_entity}
+                                          changeLevel = {this.changeLevel}
+                                          procedimiento={procedimiento}
                                           handleError={this.handleError}
-                                          nivel={this.state.nivel}
+                                          nivel={nivel}
                         />
                     </Grid>
                     <Grid item xs={12}>
@@ -527,7 +519,6 @@ class EnhancedTable extends React.Component {
                                                     <TableCell>{n.institucion.nombre}</TableCell>
                                                     <TableCell>{n.puesto.nombre}</TableCell>
                                                     <TableCell>{n.tipo_actos}</TableCell>
-                                                    
 
                                                 </TableRow>
                                             );
