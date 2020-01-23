@@ -73,9 +73,7 @@ const styles = theme => ({
     infoBusqueda: {
         paddingRight: theme.spacing(1),
         paddingLeft: theme.spacing(1),
-        //paddingBottom: theme.spacing(4),
-        //  paddingTop: theme.spacing(4),
-        backgroundColor: "white"
+        backgroundColor: "#fff"
 
     },
     toolBarStyle: {
@@ -143,10 +141,6 @@ class EnhancedTable extends React.Component {
         };
     }
 
-    componentDidMount() {
-        this.loadEntites("ANY");
-    }
-
     loadEntites = nivel => {
         let options = {
             uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/s2/dependencias',
@@ -175,6 +169,10 @@ class EnhancedTable extends React.Component {
             this.loadEntites(nivel);
         });
     };
+
+    componentDidMount() {
+        this.loadEntites("ANY");
+    }
 
     handleChange = () => {
         this.setState({
@@ -246,27 +244,26 @@ class EnhancedTable extends React.Component {
 
         let limit =  this.state.rowsPerPage;
 
-        let body = {
-                "filtros": filtros,
-                "limit": limit,
-                "offset": offset,
-                "nivel": nivel
-            };
-
         let options = {
             method: 'POST',
             uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/s2/getPrevio',
             json: true,
-            body: body
+            body: {
+                filtros: filtros,
+                limit: limit,
+                offset: offset,
+                nivel: nivel
+            }
         };
 
         rp(options).then(res => {
-                this.setState({
-                    previos: res,
-                    loading: false,
-                    error: false
-                })
-            }).catch(err => {
+            this.setState({
+                previos: res,
+                loading: false,
+                error: false
+            })
+        }).catch(err => {
+            console.log(err);
             this.setState({
                 loading: false,
                 error: true
@@ -276,8 +273,8 @@ class EnhancedTable extends React.Component {
 
     handleCleanTables = () => {
         this.setState({
-                filterData: null,
-                previos: null,
+            filterData: null,
+            previos: null,
             }
         );
     };
@@ -317,14 +314,14 @@ class EnhancedTable extends React.Component {
         if (typeSearch === 'CHANGE_PAGE') offset = (this.state.rowsPerPage * this.state.page);
         else this.setState({page: 0})
 
-        let body =
-            {
-                "filtros": filtros,
-                "limit": limit,
-                "offset": offset,
-                "iterar": (typeSearch === 'DN_FILTER' || typeSearch === 'DN_ALL') ? true : false,
-                "clave_api": this.state.api
-            };
+        let body = {
+            "filtros": filtros,
+            "limit": limit,
+            "offset": offset,
+            "iterar": (typeSearch === 'DN_FILTER' || typeSearch === 'DN_ALL') ? true : false,
+            "clave_api": this.state.api
+        };
+
         let options = {
             method: 'POST',
             uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/s2',
@@ -333,20 +330,21 @@ class EnhancedTable extends React.Component {
         };
 
         rp(options).then(res => {
-                let dataAux = res.data;
-                let total = res.totalRows;
+            let dataAux = res.data;
+            let total = res.totalRows;
 
-                typeSearch === 'DN_ALL' ? this.setState({data: dataAux, loading: false}, () => {
-                    this.btnDownloadAll.triggerDown();
-                }) : (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.setState({
-                        filterData: dataAux,
-                        loading: false,
-                        totalRows: total
-                    }) :
-                    this.setState({filterDataAll: dataAux, loading: false, totalRows: total}, () => {
-                        this.child.triggerDown();
-                    });
-            }).catch(err => {
+            typeSearch === 'DN_ALL' ? this.setState({data: dataAux, loading: false}, () => {
+                this.btnDownloadAll.triggerDown();
+            }) : (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.setState({
+                    filterData: dataAux,
+                    loading: false,
+                    totalRows: total
+                }) :
+                this.setState({filterDataAll: dataAux, loading: false, totalRows: total}, () => {
+                    this.child.triggerDown();
+                });
+        }).catch(err => {
+            console.log(err);
             this.setState({loading: false, error: true});
         });
     };
@@ -356,23 +354,23 @@ class EnhancedTable extends React.Component {
             [varState]: event ? (event.target ? event.target.value : event.value) : ''
         });
     };
+
     handleCleanAll = () => {
-        this.setState(
-            {
-                filterData: null,
-                previos : null,
-                nivel : 'todos'
-            }, () => {
-                this.handleChangeCampo('nombreServidor');
-                this.handleChangeCampo('procedimiento');
-                this.handleChangeCampo('current_entity');
-                this.handleChangeCampo('apellidoUno');
-                this.handleChangeCampo('apellidoDos');
-            })
+        this.setState({
+            filterData: null,
+            previos : null,
+            nivel : 'todos',
+            nombreServidor: "",
+            procedimiento: "",
+            current_entity: "ANY",
+            apellidoUno: "",
+            apellidoDos: ""
+        });
     };
 
     render() {
         const {classes} = this.props;
+
         const {
             data,
             order,
@@ -395,12 +393,7 @@ class EnhancedTable extends React.Component {
 
         return (
             <div>
-                <Grid
-                    container
-                    spacing={0}
-                    style={{backgroundColor: "#fff"}}
-                    className={classes.infoBusqueda}
-                >
+                <Grid container spacing={0} className={classes.infoBusqueda}>
                     <Grid item xs={12} style={{maxWidth: 1200, margin: "0 auto"}}>
                         <Typography paragraph>
                             <b>Aquí encontrarás la siguiente información:</b>
