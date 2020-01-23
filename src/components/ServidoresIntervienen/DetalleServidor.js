@@ -3,21 +3,20 @@ import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import {Typography} from "@material-ui/core"
 import Modal from '@material-ui/core/Modal';
-import Grid from "@material-ui/core/Grid/Grid";
-import TextField from "@material-ui/core/TextField/TextField";
-import InputAdornment from "@material-ui/core/InputAdornment/InputAdornment";
+import Grid from "@material-ui/core/Grid";
+import TextField from "@material-ui/core/TextField";
+import InputAdornment from "@material-ui/core/InputAdornment";
 import IconHelp from '@material-ui/icons/HelpOutline';
 import CloseButton from '@material-ui/icons/Close'
-import IconButton from "@material-ui/core/IconButton/IconButton";
-import DialogContentText from "@material-ui/core/DialogContentText/DialogContentText";
-import DialogContent from "@material-ui/core/DialogContent/DialogContent";
-import DialogTitle from "@material-ui/core/DialogTitle/DialogTitle";
-import Button from "@material-ui/core/Button/Button";
-import DialogActions from "@material-ui/core/DialogActions/DialogActions";
+import IconButton from "@material-ui/core/IconButton";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import Button from "@material-ui/core/Button";
+import DialogActions from "@material-ui/core/DialogActions";
 import glosario from "../Utils/glosario.json";
 //import DownloadIcon from "@material-ui/icons/CloudDownload";
 import * as jsPDF from "jspdf";
-
 
 let aux = new Image();
 aux.src = "/LogoSesna.png";

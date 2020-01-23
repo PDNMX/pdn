@@ -10,18 +10,19 @@ import TableFooter from '@material-ui/core/TableFooter';
 import BusquedaServidor from "./BusquedaServidor";
 import DetalleServidorSancionado from "./DetalleServidor";
 import CircularProgress from '@material-ui/core/CircularProgress';
-import Grid from "@material-ui/core/Grid/Grid";
-import EnhancedTableHead from '../Tablas/EnhancedTableHead';
+import Grid from "@material-ui/core/Grid";
 import {Typography} from "@material-ui/core"
-import Modal from "@material-ui/core/Modal/Modal";
+import Modal from "@material-ui/core/Modal";
 import rp from "request-promise";
-import MensajeErrorDatos from "../Tablas/MensajeErrorDatos";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
 import Collapse from "@material-ui/core/Collapse";
+
+import EnhancedTableHead from '../Tablas/EnhancedTableHead';
 import Previos from "../Tablas/Previos";
 import Descarga from "../Compartidos/Descarga";
 import columnData from './column_data';
+import MensajeErrorDatos from "../Tablas/MensajeErrorDatos";
 
 const styles = theme => ({
     root: {},
