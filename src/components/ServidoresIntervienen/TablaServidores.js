@@ -137,7 +137,7 @@ class EnhancedTable extends React.Component {
             error: false,
             nivel: 'todos',
             previos: [],
-            panelPrevios: true,
+            mostrarPanelPrevios: true,
         };
     }
 
@@ -174,10 +174,12 @@ class EnhancedTable extends React.Component {
         this.loadEntites("ANY");
     }
 
-    handleChange = () => {
+    //toggle summary
+    toggleShowSummary = () => {
+        const {mostrarPanelPrevios} = this.state;
         this.setState({
-            panelPrevios: !this.state.panelPrevios
-        })
+            mostrarPanelPrevios: !mostrarPanelPrevios
+        });
     };
 
     handleError = (val) => {
@@ -284,13 +286,13 @@ class EnhancedTable extends React.Component {
     handleChangeAPI = (val) => {
         this.setState({
             api: val,
-            page:0
+            page: 0
         }, () => {
             this.handleSearchAPI('FIELD_FILTER')
         });
     };
 
-    handleSearchAPI = (typeSearch) => {
+    handleSearchAPI = (searchType) => {
         this.setState({loading: true});
         let {
             current_entity,
@@ -303,7 +305,7 @@ class EnhancedTable extends React.Component {
         let filtros = {};
         let offset = 0;
 
-        if (typeSearch !== 'DN_ALL') {
+        if (searchType !== 'DN_ALL') {
             if (nombreServidor) filtros.nombres = nombreServidor;
             if (apellidoUno) filtros.primer_apellido = apellidoUno;
             if (apellidoDos) filtros.segundo_apellido = apellidoDos;
@@ -311,16 +313,19 @@ class EnhancedTable extends React.Component {
             if (procedimiento && procedimiento !== 'todos') filtros.procedimiento = procedimiento;
         }
 
-        let limit = (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.state.rowsPerPage : null;
+        let limit = (searchType === 'FIELD_FILTER' || searchType === 'CHANGE_PAGE') ? this.state.rowsPerPage : null;
 
-        if (typeSearch === 'CHANGE_PAGE') offset = (this.state.rowsPerPage * this.state.page);
-        else this.setState({page: 0})
+        if (searchType === 'CHANGE_PAGE') {
+            offset = (this.state.rowsPerPage * this.state.page);
+        } else {
+            this.setState({page: 0})
+        }
 
         let body = {
             filtros: filtros,
             limit: limit,
             offset: offset,
-            iterar: (typeSearch === 'DN_FILTER' || typeSearch === 'DN_ALL') ? true : false,
+            iterar: (searchType === 'DN_FILTER' || searchType === 'DN_ALL') ? true : false,
             clave_api: this.state.api
         };
 
@@ -328,16 +333,16 @@ class EnhancedTable extends React.Component {
             method: 'POST',
             uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/s2',
             json: true,
-            body: typeSearch === 'DN_ALL' ? {"iterar": true} : body
+            body: searchType === 'DN_ALL' ? {"iterar": true} : body
         };
 
         rp(options).then(res => {
             let dataAux = res.data;
             let total = res.totalRows;
 
-            typeSearch === 'DN_ALL' ? this.setState({data: dataAux, loading: false}, () => {
+            searchType === 'DN_ALL' ? this.setState({data: dataAux, loading: false}, () => {
                 this.btnDownloadAll.triggerDown();
-            }) : (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.setState({
+            }) : (searchType === 'FIELD_FILTER' || searchType === 'CHANGE_PAGE') ? this.setState({
                     filterData: dataAux,
                     loading: false,
                     totalRows: total
@@ -395,7 +400,7 @@ class EnhancedTable extends React.Component {
             elementoSeleccionado,
             open,
             previos,
-            panelPrevios
+            mostrarPanelPrevios
         } = this.state;
         //  const emptyRows = rowsPerPage - filterData.length;
 
@@ -463,14 +468,16 @@ class EnhancedTable extends React.Component {
                         {previos && previos.length > 0 &&
                         <div>
                             <FormControlLabel
-                                control={<Switch className={classes.containerPrevios} checked={panelPrevios}
-                                                 onChange={() => this.handleChange()}/>}
+                                control={<Switch className={classes.containerPrevios} checked={mostrarPanelPrevios}
+                                                 onChange={() => this.toggleShowSummary()}/>}
                                 label={
                                     <Typography variant="h6" className={classes.desc}>
-                                        {panelPrevios ? 'Ocultar resultados generales' : 'Mostrar resultados generales'}</Typography>}
+                                        {mostrarPanelPrevios ? 'Ocultar resultados generales' : 'Mostrar resultados generales'}
+                                    </Typography>
+                                }
                             />
                             <div className={classes.container}>
-                                <Collapse in={panelPrevios}>
+                                <Collapse in={mostrarPanelPrevios}>
                                     <Previos previos={previos} handleChangeAPI={this.handleChangeAPI}/>
                                 </Collapse>
 
