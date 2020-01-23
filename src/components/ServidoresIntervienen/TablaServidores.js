@@ -23,12 +23,6 @@ import Previos from "../Tablas/Previos";
 import Descarga from "../Compartidos/Descarga";
 import columnData from './column_data';
 
-function getSorting(order, orderBy) {
-    return order === 'desc'
-        ? (a, b) => (b[orderBy] < a[orderBy] ? -1 : 1)
-        : (a, b) => (a[orderBy] < b[orderBy] ? -1 : 1);
-}
-
 const styles = theme => ({
     root: {},
     progress: {
@@ -104,9 +98,15 @@ const styles = theme => ({
     },
     containerD: {
         backgroundColor: '#fff'
+        //backgroundColor: '#f6f6f6'
     },
 });
 
+function getSorting(order, orderBy) {
+    return order === 'desc'
+        ? (a, b) => (b[orderBy] < a[orderBy] ? -1 : 1)
+        : (a, b) => (a[orderBy] < b[orderBy] ? -1 : 1);
+}
 
 class EnhancedTable extends React.Component {
     constructor(props) {
@@ -198,9 +198,10 @@ class EnhancedTable extends React.Component {
     handleSelectAllClick = (event, checked) => {
         if (checked) {
             this.setState(state => ({selected: state.data.map(n => n.id)}));
-            return;
+            //return;
+        } else {
+            this.setState({selected: []});
         }
-        this.setState({selected: []});
     };
 
     handleClose = () => {
@@ -208,8 +209,10 @@ class EnhancedTable extends React.Component {
     };
 
     handleClick = (event, elemento) => {
-        this.setState({elementoSeleccionado: elemento});
-        this.setState({open: true});
+        this.setState({
+            elementoSeleccionado: elemento,
+            open: true
+        });
     };
 
     handleChangePage = (event, page) => {
@@ -315,11 +318,11 @@ class EnhancedTable extends React.Component {
         else this.setState({page: 0})
 
         let body = {
-            "filtros": filtros,
-            "limit": limit,
-            "offset": offset,
-            "iterar": (typeSearch === 'DN_FILTER' || typeSearch === 'DN_ALL') ? true : false,
-            "clave_api": this.state.api
+            filtros: filtros,
+            limit: limit,
+            offset: offset,
+            iterar: (typeSearch === 'DN_FILTER' || typeSearch === 'DN_ALL') ? true : false,
+            clave_api: this.state.api
         };
 
         let options = {
@@ -414,6 +417,7 @@ class EnhancedTable extends React.Component {
                         
                     </Grid>
                 </Grid>
+
                 <Grid container justify={'center'} spacing={0} className={classes.gridTable}>
                     <Grid item xs={12} className={classes.toolBarStyle}>
                         <BusquedaServidor handleCleanAll={this.handleCleanAll}
@@ -424,10 +428,10 @@ class EnhancedTable extends React.Component {
                                           apellidoDos={apellidoDos}
                                           entities = {entities}
                                           current_entity= {current_entity}
+                                          nivel={nivel}
                                           changeLevel = {this.changeLevel}
                                           procedimiento={procedimiento}
                                           handleError={this.handleError}
-                                          nivel={nivel}
                         />
                     </Grid>
                     <Grid item xs={12}>
@@ -568,9 +572,8 @@ class EnhancedTable extends React.Component {
 
                     </Grid>
 
-
                 </Grid>
-                <Grid container spacing={0} justify="center" className={classes.containerD} style={{backgroundColor: '#f6f6f6'}}>
+                <Grid container spacing={0} justify="center" className={classes.containerD}>
                     <Grid item xs={12} className={classes.itemD}>
 
                         <Descarga url={process.env.REACT_APP_BULK_S2}/>
