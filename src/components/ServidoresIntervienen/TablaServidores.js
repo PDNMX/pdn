@@ -231,53 +231,52 @@ class EnhancedTable extends React.Component {
     isSelected = id => this.state.selected.indexOf(id) !== -1;
 
     handleSearchPrevios = () => {
-        this.handleCleanTables();
-        this.setState({loading: true});
 
-        let {current_entity, nombreServidor, apellidoUno, apellidoDos, procedimiento, nivel} = this.state;
-
-        let filtros = {};
-        let offset = 0;
-
-        if (nombreServidor) filtros.nombres = nombreServidor;
-        if (apellidoUno) filtros.primer_apellido = apellidoUno;
-        if (apellidoDos) filtros.segundo_apellido = apellidoDos;
-        if (procedimiento && procedimiento !== 'todos') filtros.procedimiento = procedimiento;
-        if (current_entity && current_entity !== 'ANY') filtros.institucion = current_entity;
-
-        let limit =  this.state.rowsPerPage;
-
-        let options = {
-            method: 'POST',
-            uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/s2/getPrevio',
-            json: true,
-            body: {
-                filtros: filtros,
-                limit: limit,
-                offset: offset,
-                nivel: nivel
-            }
-        };
-
-        rp(options).then(res => {
-            this.setState({
-                previos: res,
-                loading: false,
-                error: false
-            })
-        }).catch(err => {
-            console.log(err);
-            this.setState({
-                loading: false,
-                error: true
-            });
-        });
-    };
-
-    handleCleanTables = () => {
         this.setState({
             filterData: null,
             previos: null,
+            loading: true
+            }, () => {
+
+            let {current_entity, nombreServidor, apellidoUno, apellidoDos, procedimiento, nivel} = this.state;
+
+            let filtros = {};
+            let offset = 0;
+
+            if (nombreServidor) filtros.nombres = nombreServidor;
+            if (apellidoUno) filtros.primer_apellido = apellidoUno;
+            if (apellidoDos) filtros.segundo_apellido = apellidoDos;
+            if (procedimiento && procedimiento !== 'todos') filtros.procedimiento = procedimiento;
+            if (current_entity && current_entity !== 'ANY') filtros.institucion = current_entity;
+
+            let limit =  this.state.rowsPerPage;
+
+            let options = {
+                method: 'POST',
+                uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/s2/getPrevio',
+                json: true,
+                body: {
+                    filtros: filtros,
+                    limit: limit,
+                    offset: offset,
+                    nivel: nivel
+                }
+            };
+
+            rp(options).then(res => {
+                this.setState({
+                    previos: res,
+                    loading: false,
+                    error: false
+                })
+            }).catch(err => {
+                console.log(err);
+                this.setState({
+                    loading: false,
+                    error: true
+                });
+            });
+
             }
         );
     };
@@ -390,7 +389,13 @@ class EnhancedTable extends React.Component {
             apellidoUno,
             apellidoDos,
             procedimiento,
-            nivel
+            nivel,
+
+            loading,
+            elementoSeleccionado,
+            open,
+            previos,
+            panelPrevios
         } = this.state;
         //  const emptyRows = rowsPerPage - filterData.length;
 
@@ -436,14 +441,14 @@ class EnhancedTable extends React.Component {
                     </Grid>
                     <Grid item xs={12}>
                         <DetalleServidorSancionado handleClose={this.handleClose}
-                                                   servidor={this.state.elementoSeleccionado}
-                                                   control={this.state.open}/>
+                                                   servidor={elementoSeleccionado}
+                                                   control={open}/>
                     </Grid>
                     <Grid item xs={12}>
                         {
-                            this.state.loading &&
+                            loading &&
                             <Modal
-                                open={this.state.loading}
+                                open={loading}
                                 disableAutoFocus={true}
                             >
                                 <CircularProgress className={classes.progress} id="spinnerLoading" size={200}/>
@@ -455,18 +460,18 @@ class EnhancedTable extends React.Component {
                         }
                     </Grid>
                     <Grid item xs={12} className={classes.section}>
-                        {this.state.previos && this.state.previos.length > 0 &&
+                        {previos && previos.length > 0 &&
                         <div>
                             <FormControlLabel
-                                control={<Switch className={classes.containerPrevios} checked={this.state.panelPrevios}
+                                control={<Switch className={classes.containerPrevios} checked={panelPrevios}
                                                  onChange={() => this.handleChange()}/>}
                                 label={
                                     <Typography variant="h6" className={classes.desc}>
-                                        {this.state.panelPrevios ? 'Ocultar resultados generales' : 'Mostrar resultados generales'}</Typography>}
+                                        {panelPrevios ? 'Ocultar resultados generales' : 'Mostrar resultados generales'}</Typography>}
                             />
                             <div className={classes.container}>
-                                <Collapse in={this.state.panelPrevios}>
-                                    <Previos previos={this.state.previos} handleChangeAPI={this.handleChangeAPI}/>
+                                <Collapse in={panelPrevios}>
+                                    <Previos previos={previos} handleChangeAPI={this.handleChangeAPI}/>
                                 </Collapse>
 
                             </div>
@@ -475,9 +480,11 @@ class EnhancedTable extends React.Component {
 
                     </Grid>
                     <Grid item xs={12} className={classes.section}>
-                        {filterData && filterData.length > 0 &&
-                        <Typography variant={"h6"} className={classes.desc}>Pulsa sobre el registro para ver su
-                            detalle<br/></Typography>
+                        {
+                            filterData && filterData.length > 0 &&
+                            <Typography variant={"h6"} className={classes.desc} paragraph>
+                                Pulsa sobre el registro para ver su detalle
+                            </Typography>
                         }
 
                     </Grid>
