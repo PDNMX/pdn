@@ -133,8 +133,7 @@ class DetalleServidor extends React.Component {
             aux += 'a';
         }
         let txtWidth =  doc.getStringUnitWidth(aux) * fontSize / doc.internal.scaleFactor;
-        let  x = (pageWidth - txtWidth) / 2;
-        return x;
+        return (pageWidth - txtWidth) / 2;
     }
 
     printPDF(){
