@@ -6,18 +6,23 @@ import MenuSuperior from './MenuSuperior';
 import styles from './style';
 
 class Perfil extends React.Component {
+	state = {
+		opcionMenu: 0
+	};
+
 	render() {
 		let { classes, data } = this.props;
+
 		console.log(data);
 		return (
 			<div>
 				<Grid container spacing={0} className={classes.perfilRoot}>
-					<Grid item xs={0} md={8} />
+					<Grid item xs={false} md={8} />
 					<Grid item xs={12} md={4} className={classes.alertDanger}>
 						Actualización [FECHA]
 					</Grid>
 					<Grid item xs={12}>
-						<Paper style={{ width: '100%', padding: '20px 15px' }}>
+						<Paper style={{ padding: '20px 15px' }}>
 							<Grid container spacing={1}>
 								<Grid item xs={12} md={9}>
 									<Typography variant="h5" component="h3" className={classes.tituloCard}>
@@ -59,7 +64,9 @@ class Perfil extends React.Component {
 						</Paper>
 					</Grid>
 				</Grid>
-				<MenuSuperior />
+				<Grid container spacing={0} className={classes.perfilRoot}>
+					<MenuSuperior />
+				</Grid>
 			</div>
 		);
 	}
