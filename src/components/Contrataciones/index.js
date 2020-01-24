@@ -185,7 +185,7 @@ class Index extends React.Component {
 
                 <Grid container spacing={0} justify="center" className={classes.container} style={{backgroundColor: '#f6f6f6'}}>
                     <Grid item xs={12} className={classes.item}>
-                        <Descarga url={"https://datos.gob.mx/busca/organization/contrataciones-abiertas"}/>
+                        <Descarga url={"https://drive.google.com/file/d/1XOYDLVv-RqcMs8_hzkZ0fjC9FYh2psFw/view"}/>
                     </Grid>
                 </Grid>
 
