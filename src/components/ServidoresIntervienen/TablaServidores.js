@@ -7,8 +7,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import TableFooter from '@material-ui/core/TableFooter';
-import BusquedaServidor from "./BusquedaServidor";
-import DetalleServidorSancionado from "./DetalleServidor";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Grid from "@material-ui/core/Grid";
 import {Typography} from "@material-ui/core"
@@ -18,11 +16,16 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
 import Collapse from "@material-ui/core/Collapse";
 
-import EnhancedTableHead from '../Tablas/EnhancedTableHead';
-import Previos from "../Tablas/Previos";
+import BusquedaServidor from "./BusquedaServidor";
+import DetalleServidorSancionado from "./DetalleServidor";
+import TablaResumen from "./TablaResumen";
+
 import Descarga from "../Compartidos/Descarga";
-import columnData from './column_data';
+import EnhancedTableHead from '../Tablas/EnhancedTableHead';
 import MensajeErrorDatos from "../Tablas/MensajeErrorDatos";
+
+import columnData from './column_data';
+
 
 const styles = theme => ({
     root: {},
@@ -138,7 +141,7 @@ class EnhancedTable extends React.Component {
             error: false,
             nivel: 'todos',
             previos: [],
-            mostrarPanelPrevios: true,
+            mostrarPanelResumen: true,
         };
     }
 
@@ -177,9 +180,9 @@ class EnhancedTable extends React.Component {
 
     //toggle summary
     toggleShowSummary = () => {
-        const {mostrarPanelPrevios} = this.state;
+        const {mostrarPanelResumen} = this.state;
         this.setState({
-            mostrarPanelPrevios: !mostrarPanelPrevios
+            mostrarPanelResumen: !mostrarPanelResumen
         });
     };
 
@@ -401,7 +404,7 @@ class EnhancedTable extends React.Component {
             elementoSeleccionado,
             open,
             previos,
-            mostrarPanelPrevios
+            mostrarPanelResumen
         } = this.state;
         //  const emptyRows = rowsPerPage - filterData.length;
 
@@ -469,17 +472,17 @@ class EnhancedTable extends React.Component {
                         {previos && previos.length > 0 &&
                         <div>
                             <FormControlLabel
-                                control={<Switch className={classes.containerPrevios} checked={mostrarPanelPrevios}
+                                control={<Switch className={classes.containerPrevios} checked={mostrarPanelResumen}
                                                  onChange={() => this.toggleShowSummary()}/>}
                                 label={
                                     <Typography variant="h6" className={classes.desc}>
-                                        {mostrarPanelPrevios ? 'Ocultar resultados generales' : 'Mostrar resultados generales'}
+                                        {mostrarPanelResumen ? 'Ocultar resultados generales' : 'Mostrar resultados generales'}
                                     </Typography>
                                 }
                             />
                             <div className={classes.container}>
-                                <Collapse in={mostrarPanelPrevios}>
-                                    <Previos previos={previos} handleChangeAPI={this.handleChangeAPI}/>
+                                <Collapse in={mostrarPanelResumen}>
+                                    <TablaResumen previos={previos} handleChangeAPI={this.handleChangeAPI}/>
                                 </Collapse>
 
                             </div>
