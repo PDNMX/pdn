@@ -10,10 +10,9 @@ import TableFooter from '@material-ui/core/TableFooter';
 import BusquedaServidor from "./BusquedaServidor";
 import DetalleServidorSancionado2 from "./DetalleServidorSancionado2";
 import CircularProgress from '@material-ui/core/CircularProgress';
-import Grid from "@material-ui/core/Grid/Grid";
-import EnhancedTableHead from '../../Tablas/EnhancedTableHead';
+import Grid from "@material-ui/core/Grid";
 import {Typography} from "@material-ui/core"
-import Modal from "@material-ui/core/Modal/Modal";
+import Modal from "@material-ui/core/Modal";
 import rp from "request-promise";
 import MensajeErrorDatos from "../../Tablas/MensajeErrorDatos";
 import MensajeNoRegistros from "../../Tablas/MensajeNoRegistros";
@@ -22,53 +21,16 @@ import Switch from "@material-ui/core/Switch";
 import Collapse from "@material-ui/core/Collapse";
 import Previos from "../../Tablas/Previos";
 import Descarga from "../../Compartidos/Descarga";
-
-
-
-function getSorting(order, orderBy) {
-    return order === 'desc'
-        ? (a, b) => (b[orderBy] < a[orderBy] ? -1 : 1)
-        : (a, b) => (a[orderBy] < b[orderBy] ? -1 : 1);
-}
+import TableHead from "@material-ui/core/TableHead";
 
 const columnData = [
-    {id: 'expediente', disablePadding: false, label: 'Expediente', position: 1, mostrar: true},
-    {id: 'servidor', disablePadding: false, label: 'Servidor público', position: 2, mostrar: true},
-    {id: 'institucion.nombre', disablePadding: false, label: 'Institución', position: 5, mostrar: true},
-    {id: 'autoridad_sancionadora', disablePadding: false, label: 'Autoridad Sancionadora', position: 6, mostrar: true},
-    {
-        id: 'resolucion.fecha_notificacion',
-        disablePadding: false,
-        label: 'Fecha notificación',
-        position: 7,
-        mostrar: false
-    },
-    {
-        id: 'tipo_sancion',
-        disablePadding: false,
-        label: 'Sanción impuesta',
-        position: 8,
-        mostrar: false
-    },
-    {id: 'inhabilitacion.fecha_inicial', disablePadding: false, label: 'Fecha inicio', position: 9, mostrar: false},
-    {id: 'inhabilitacion.fecha_final', disablePadding: false, label: 'Fecha fin', position: 10, mostrar: false},
-    {id: 'multa.monto', disablePadding: false, label: 'Monto', position: 11, mostrar: false},
-    {id: 'causa', disablePadding: false, label: 'Causa', position: 12, mostrar: false},
-    {id: 'constancia', disablePadding: true, label: 'Constancia', position: 13, mostrar: false}
+    {id: 'expediente', label: 'Expediente'},
+    {id: 'servidorPublico.nombreCompleto', label: 'Servidor público'},
+    {id: 'institucion.nombre', label: 'Institución/Dependencia'},
+    {id: 'tipoSancion', label: 'Tipo sanción'}
 ];
 
 const styles = theme => ({
-    root: {
-        width: '100%',
-        marginTop: theme.spacing(3),
-    },
-    tableWrapper: {
-        overflowX: 'auto',
-    },
-    tableFooter: {
-        display: 'flow-root',
-        flexWrap: 'wrap',
-    },
     progress: {
         position: 'fixed',
         margin: 'auto',
@@ -87,9 +49,6 @@ const styles = theme => ({
         overflowX: 'auto',
         padding: theme.spacing(1)
     },
-    table: {
-        tableLayout: 'fixed',
-    },
     tablePagination: {
         overflowX: 'auto',
         fontSize: '0.75rem'
@@ -101,13 +60,9 @@ const styles = theme => ({
     desc: {
         color: theme.palette.primary.dark,
     },
-    item: {
-        padding: theme.spacing(1)
-    },
     containerPrevios: {
         marginLeft: theme.spacing(2)
     },
-
     ul: {
         listStyle: "none",
         paddingLeft: "20px"
@@ -115,10 +70,7 @@ const styles = theme => ({
     infoBusqueda: {
         paddingRight: theme.spacing(1),
         paddingLeft: theme.spacing(1),
-        //paddingBottom: theme.spacing(4),
-        // paddingTop: theme.spacing(4),
         backgroundColor: "white"
-
     },
     toolBarStyle: {
         backgroundColor: 'transparent',
@@ -127,7 +79,6 @@ const styles = theme => ({
         paddingTop: '53px',
         paddingBottom: '61px',
         maxWidth: '1200px',
-
     },
     li: {
         "&:before": {
@@ -138,7 +89,6 @@ const styles = theme => ({
             width: "1em",
             marginLeft: "-1em"
         },
-        //paddingBottom: theme.spacing(2)
     },
     itemD: {
         maxWidth: 1200,
@@ -147,13 +97,10 @@ const styles = theme => ({
         paddingBottom: theme.spacing(8),
         paddingTop: theme.spacing(8)
     },
-
     containerD: {
         backgroundColor: '#fff'
     },
-
 });
-
 
 class EnhancedTable extends React.Component {
     constructor(props) {
@@ -161,33 +108,36 @@ class EnhancedTable extends React.Component {
         this.child = React.createRef();
         this.btnDownloadAll = React.createRef();
         this.state = {
-            order: 'asc',
-            orderBy: 'servidor',
             selected: [],
-            nombreServidor: '',
-            apellidoUno: '',
-            apellidoDos: '',
-            rfc: '',
-            curp: '',
-            data: [],
             filterData: null,
             page: 0,
             rowsPerPage: 10,
-            procedimiento: 0,
             open: false,
             elementoSeleccionado: null,
-            institucion: "",
             loading: false,
             totalRows: 0,
-            filterDataAll: [],
             error: false,
-            nivel: 'todos',
             previos: [],
             panelPrevios: true,
             api: '',
-            tipoSancion:[""]
+            //Filtros
+            nombresServidor: '',
+            primerApellido: '',
+            segundoApellido: '',
+            tipoSancion: [],
+            rfc: '',
+            curp: '',
+            institucionDependencia: "",
+            nivel: 'todos',
+            campoOrden: "",
+            tipoOrden: '',
+            institucionesLista: []
         };
 
+    }
+
+    componentDidMount() {
+        this.loadInstituciones();
     }
 
     handleChange = () => {
@@ -201,37 +151,19 @@ class EnhancedTable extends React.Component {
             error: val
         })
     }
-    handleRequestSort = (event, property) => {
-        const orderBy = property;
-        let order = 'desc';
-        if (this.state.orderBy === property && this.state.order === 'desc') {
-            order = 'asc';
-        }
-        this.setState({order, orderBy});
-    };
-
-    handleSelectAllClick = (event, checked) => {
-        if (checked) {
-            this.setState(state => ({selected: state.data.map(n => n.id)}));
-            return;
-        }
-        this.setState({selected: []});
-    };
 
     handleChangeDetail = () => {
         this.setState({elementoSeleccionado: null});
     };
 
     handleClick = (event, elemento) => {
-        this.setState({elementoSeleccionado: elemento});
-        this.setState({open: true});
+        this.setState({elementoSeleccionado: elemento, open: true});
     };
 
     handleChangePage = (event, page) => {
         this.setState({page}, () => {
             this.handleSearchAPI('CHANGE_PAGE');
         });
-
     };
 
     handleChangeRowsPerPage = event => {
@@ -242,31 +174,30 @@ class EnhancedTable extends React.Component {
 
     isSelected = id => this.state.selected.indexOf(id) !== -1;
 
-    handleSearchPrevios = () => {
-        this.handleCleanTables();
-        this.setState({loading: true});
-
-        let {institucion, nombreServidor, apellidoUno, apellidoDos, rfc, curp,tipoSancion} = this.state;
-
+    makeFiltros = () => {
         let filtros = {};
-        let offset = 0;
-
-
-        if (nombreServidor) filtros.nombres = nombreServidor;
-        if (apellidoUno) filtros.primer_apellido = apellidoUno;
-        if (apellidoDos) filtros.segundo_apellido = apellidoDos;
+        let {institucionDependencia, nombresServidor, primerApellido, segundoApellido, rfc, curp, tipoSancion} = this.state;
+        if (nombresServidor) filtros.nombres = nombresServidor;
+        if (primerApellido) filtros.primer_apellido = primerApellido;
+        if (segundoApellido) filtros.segundo_apellido = segundoApellido;
         if (rfc) filtros.rfc = rfc;
         if (curp) filtros.curp = curp;
-        if (institucion && institucion !== '') filtros.nombre = institucion;
-        if (tipoSancion.length>0) filtros.tipoSancion = tipoSancion;
+        if (institucionDependencia && institucionDependencia !== '') filtros.nombre = institucionDependencia;
+        if (tipoSancion.length > 0) filtros.tipoSancion = tipoSancion.map(item => item.value);
+        return filtros;
+    }
 
-        let limit = this.state.rowsPerPage;
-
+    handleSearchPrevios = () => {
+        this.setState({
+            loading: true,
+            filterData: null,
+            previos: null,
+        });
         let body =
             {
-                "filtros": filtros,
-                "limit": limit,
-                "offset": offset,
+                "filtros": this.makeFiltros(),
+                "limit": 1,
+                "offset": 0,
                 "nivel": this.state.nivel
             };
 
@@ -276,7 +207,6 @@ class EnhancedTable extends React.Component {
             json: true,
             body: body
         };
-
         rp(options)
             .then(res => {
                 this.setState({previos: res, loading: false, error: false})
@@ -284,14 +214,33 @@ class EnhancedTable extends React.Component {
             this.setState({loading: false, error: true});
         });
     };
-
-    handleCleanTables = () => {
-        this.setState(
+    handleSearchAPI = (typeSearch) => {
+        this.setState({loading: true});
+        let body =
             {
-                filterData: null,
-                previos: null,
-            }
-        )
+                "filtros": this.makeFiltros(),
+                "limit": this.state.rowsPerPage,
+                "offset": (typeSearch === 'CHANGE_PAGE') ? (this.state.rowsPerPage * this.state.page) : 0,
+                "clave_api": this.state.api
+            };
+
+        let options = {
+            method: 'POST',
+            uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/getServidoresSancionados',
+            json: true,
+            body: body
+        };
+
+        rp(options)
+            .then(res => {
+                this.setState({
+                    filterData: res.data,
+                    loading: false,
+                    totalRows: res.totalRows
+                })
+            }).catch(err => {
+            this.setState({loading: false, error: true});
+        });
     };
 
     handleChangeAPI = (val) => {
@@ -302,67 +251,12 @@ class EnhancedTable extends React.Component {
             this.handleSearchAPI('FIELD_FILTER')
         });
     };
-    handleSearchAPI = (typeSearch) => {
-        this.setState({loading: true});
-        let {institucion, nombreServidor, apellidoUno, apellidoDos, rfc, curp, tipoSancion} = this.state;
-
-        let filtros = {};
-        let offset = 0;
-
-        if (typeSearch !== 'DN_ALL') {
-            if (nombreServidor) filtros.nombres = nombreServidor;
-            if (apellidoUno) filtros.primer_apellido = apellidoUno;
-            if (apellidoDos) filtros.segundo_apellido = apellidoDos;
-            if (rfc) filtros.rfc = rfc;
-            if (curp) filtros.curp = curp;
-            if (institucion && institucion !== '') filtros.nombre = institucion;
-            if (tipoSancion.length>0) filtros.tipoSancion = tipoSancion;
-        }
-
-        let limit = (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.state.rowsPerPage : null;
-
-        if (typeSearch === 'CHANGE_PAGE') offset = (this.state.rowsPerPage * this.state.page);
-        else this.setState({page: 0})
-
-        let body =
-            {
-                "filtros": filtros,
-                "limit": limit,
-                "offset": offset,
-                "iterar": (typeSearch === 'DN_FILTER' || typeSearch === 'DN_ALL') ? true : false,
-                "clave_api": this.state.api
-            };
-        let options = {
-            method: 'POST',
-            uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/getServidoresSancionados',
-            json: true,
-            body: typeSearch === 'DN_ALL' ? {"iterar": true} : body
-        };
-
-        rp(options)
-            .then(res => {
-                let dataAux = res.data;
-                console.log("res:data",res.data)
-                let total = res.totalRows;
-
-                typeSearch === 'DN_ALL' ? this.setState({data: dataAux, loading: false}, () => {
-                    this.btnDownloadAll.triggerDown();
-                }) : (typeSearch === 'FIELD_FILTER' || typeSearch === 'CHANGE_PAGE') ? this.setState({
-                        filterData: dataAux,
-                        loading: false,
-                        totalRows: total
-                    }) :
-                    this.setState({filterDataAll: dataAux, loading: false, totalRows: total}, () => {
-                        this.child.triggerDown();
-                    });
-            }).catch(err => {
-            this.setState({loading: false, error: true});
-        });
-    };
 
     handleChangeCampo = (varState, event) => {
         this.setState({
             [varState]: event ? (event.target ? event.target.value : event.value) : ''
+        }, () => {
+            if (varState === 'nivel') this.loadInstituciones();
         })
     };
     handleCleanAll = () => {
@@ -371,28 +265,48 @@ class EnhancedTable extends React.Component {
                 filterData: null,
                 previos: null,
                 nivel: 'todos',
-                tipoSancion:[""]
+                tipoSancion: [],
+                nombreServidor: '',
+                institucionDependencia: '',
+                primerApellido: '',
+                segundoApellido: '',
+                rfc: '',
+                curp: '',
+                campoOrden: '',
+                tipoOrden: ''
             }, () => {
-                this.handleChangeCampo('nombreServidor');
-                this.handleChangeCampo('procedimiento');
-                this.handleChangeCampo('institucion');
-                this.handleChangeCampo('apellidoUno');
-                this.handleChangeCampo('apellidoDos');
-                this.handleChangeCampo('rfc');
-                this.handleChangeCampo('curp');
+                this.loadInstituciones();
             })
     };
+    loadInstituciones = () => {
+        let sug = [];
+        let options = {
+            uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/getDependenciasServidores',
+            json: true,
+            method: "post",
+            body: {
+                nivel: this.state.nivel
+            }
+        };
+        rp(options)
+            .then(data => {
+                data.data.forEach((item, index) => {
+                    sug.push({value: item, label: item, key: index});
+                });
+                this.setState({institucionesLista: sug, institucionDependencia: ''});
+            }).catch(err => {
+            this.props.handleError(true);
+        });
+    }
 
     render() {
         const {classes} = this.props;
-        const {data, order, orderBy, selected, rowsPerPage, page, filterData, totalRows} = this.state;
-        //  const emptyRows = rowsPerPage - filterData.length;
+        const {rowsPerPage, page, filterData, totalRows} = this.state;
 
         return (
             <div>
-
                 {
-                    this.state.elementoSeleccionado===null&&
+                    this.state.elementoSeleccionado === null &&
                     <div>
                         <Grid container spacing={0} className={classes.infoBusqueda}>
                             <Grid item xs={12} style={{maxWidth: 1200, margin: "0 auto"}}>
@@ -424,13 +338,15 @@ class EnhancedTable extends React.Component {
                                 <BusquedaServidor handleCleanAll={this.handleCleanAll}
                                                   handleSearch={this.handleSearchPrevios}
                                                   handleChangeCampo={this.handleChangeCampo}
-                                                  nombreServidor={this.state.nombreServidor}
-                                                  apellidoUno={this.state.apellidoUno}
-                                                  apellidoDos={this.state.apellidoDos}
-                                                  institucion={this.state.institucion} rfc={this.state.rfc}
+                                                  nombreServidor={this.state.nombresServidor}
+                                                  apellidoUno={this.state.primerApellido}
+                                                  apellidoDos={this.state.segundoApellido}
+                                                  institucion={this.state.institucionDependencia} rfc={this.state.rfc}
                                                   curp={this.state.curp} handleError={this.handleError}
                                                   nivel={this.state.nivel}
-                                                  tipoSancion={this.state.tipoSancion}/>
+                                                  institucionesLista={this.state.institucionesLista}
+                                                  tipoSancion={this.state.tipoSancion}
+                                                  campoOrden={this.state.campoOrden} tipoOrden={this.state.tipoOrden}/>
                             </Grid>
 
                             <Grid item xs={12}>
@@ -488,18 +404,39 @@ class EnhancedTable extends React.Component {
                                 <div className={classes.container}>
                                     <Table aria-describedby="spinnerLoading" id={'tableServidores'}
                                            aria-busy={this.state.loading} aria-labelledby="tableTitle">
-                                        <EnhancedTableHead
-                                            numSelected={selected.length}
-                                            order={order}
-                                            orderBy={orderBy}
-                                            onSelectAllClick={this.handleSelectAllClick}
-                                            onRequestSort={this.handleRequestSort}
-                                            rowCount={data.length}
-                                            columnData={columnData}
-                                        />
+                                        <TableHead style={{backgroundColor: '#f5f5f5'}}>
+                                            <TableRow>
+                                                {
+                                                    columnData.map(column => {
+                                                        return (
+                                                            <TableCell
+                                                                key={column.id}
+                                                            >
+                                                                <Typography className={classes.tableHead}
+                                                                            variant={"body1"}>
+                                                                    {column.label}
+                                                                </Typography>
+                                                            </TableCell>
+                                                        );
+
+                                                        return true;
+                                                    }, this)
+                                                }
+                                                {
+                                                    this.props.acciones &&
+                                                    <TableCell>
+                                                        {
+                                                            <Typography className={classes.tableHead} variant={"body1"}>
+                                                                Acciones
+                                                            </Typography>
+                                                        }
+                                                    </TableCell>
+                                                }
+
+                                            </TableRow>
+                                        </TableHead>
                                         <TableBody>
                                             {filterData
-                                                .sort(getSorting(order, orderBy))
                                                 .map(n => {
                                                     const isSelected = this.isSelected(n.id);
                                                     return (
@@ -517,39 +454,17 @@ class EnhancedTable extends React.Component {
                                                             <TableCell>{n.servidorPublicoSancionado.nombres + " " + n.servidorPublicoSancionado.primerApellido + " " + n.servidorPublicoSancionado.segundoApellido}</TableCell>
                                                             <TableCell>{n.institucionDependencia.nombre}</TableCell>
                                                             <TableCell
-                                                                style={{width: '25%'}}>{n.autoridadSancionadora}</TableCell>
+                                                                style={{width: '25%'}}>{n.tipoSancion.join(', ')}</TableCell>
 
                                                         </TableRow>
                                                     );
                                                 })}
-                                            {/*
-                                        emptyRows > 0 && (
-                                        <TableRow style={{height: 49 * emptyRows}}>
-
-                                            <TableCell colSpan={6}/>
-
-                                        </TableRow>
-                                    )
-                                    */}
-
                                         </TableBody>
                                         <TableFooter>
                                             <TableRow>
-                                                {/* <TableCell>
-                                            <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data}
-                                                      filtrado={false}
-                                                      columnas={columnData} fnSearch={this.handleSearchAPI}
-                                                      fileName={'Servidores sancionados'}/>
-                                        </TableCell>
-                                        <TableCell colSpan={2}>
-                                            <BajarCSV innerRef={comp => this.child = comp} data={filterDataAll}
-                                                      filtrado={true}
-                                                      columnas={columnData} fnSearch={this.handleSearchAPI}
-                                                      fileName={'MiBusqueda'}/>
-                                        </TableCell>*/}
                                                 <TablePagination
                                                     className={classes.tablePagination}
-                                                    colSpan={6}
+                                                    colSpan={4}
                                                     count={totalRows}
                                                     rowsPerPage={rowsPerPage}
                                                     page={page}
@@ -585,10 +500,10 @@ class EnhancedTable extends React.Component {
                     </div>
                 }
                 {
-                    this.state.elementoSeleccionado!==null &&
-                        <DetalleServidorSancionado2 handleChangeDetail={this.handleChangeDetail}
-                                                    servidor={this.state.elementoSeleccionado}
-                                                    control={this.state.open}/>
+                    this.state.elementoSeleccionado !== null &&
+                    <DetalleServidorSancionado2 handleChangeDetail={this.handleChangeDetail}
+                                                servidor={this.state.elementoSeleccionado}
+                                                control={this.state.open}/>
                 }
             </div>
         );

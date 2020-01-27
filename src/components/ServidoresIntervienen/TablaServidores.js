@@ -401,6 +401,7 @@ class EnhancedTable extends React.Component {
     };
 
     handleChangeCampo = (varState, event) => {
+        console.log("event:",event)
         this.setState({
             [varState]: event ? (event.target ? event.target.value : event.value) : ''
         });

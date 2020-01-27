@@ -80,6 +80,5 @@ EnhancedTableHead.propTypes = {
     onSelectAllClick: PropTypes.func.isRequired,
     order: PropTypes.string.isRequired,
     orderBy: PropTypes.string.isRequired,
-    rowCount: PropTypes.number.isRequired,
 };
 export default withStyles(styles)(EnhancedTableHead);
