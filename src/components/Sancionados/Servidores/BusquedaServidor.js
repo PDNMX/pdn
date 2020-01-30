@@ -18,6 +18,8 @@ import Radio from "@material-ui/core/Radio";
 import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
 import Input from '@material-ui/core/Input';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 
 const styles = theme => ({
     formControl: {
@@ -46,14 +48,25 @@ const camposOrdenamiento=[
     {label: 'Nombre', value: 'nombres'},
     {label: 'Apellido Uno', value: 'primerApellido'},
     {label: 'Apellido Dos', value: 'segundoApellido'},
-    {label: 'Institución', value: 'institucionDependencia'},
+    {label: 'Institución', value: 'institucionDependencia'}
 ]
 const tiposOrdenamiento = [
     {label: 'Ascendente', value: 'ASC'},
-    {label: 'Descendente', value: 'DESC'},
+    {label: 'Descendente', value: 'DESC'}
 ]
 
 class BusquedaServidor extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state={
+            busquedaAvanzada : false
+        }
+    }
+
+    handleBusquedaAvanzada=()=>{
+        this.setState({busquedaAvanzada: !this.state.busquedaAvanzada })
+    }
+
     render() {
         const {classes, handleChangeCampo, nombreServidor, apellidoUno, apellidoDos, rfc, curp, institucion, nivel, tipoSancion,campoOrden,tipoOrden, institucionesLista} = this.props;
         return (
@@ -62,7 +75,7 @@ class BusquedaServidor extends React.Component {
                     <Grid item xs={12}>
                         <Typography><b>Busca un servidor público sancionado</b></Typography>
                     </Grid>
-                    <Grid item xs={12} md={2}>
+                    <Grid item xs={12} md={3}>
                         <FormControl className={classes.formControl}>
                             <TextField
                                 id="search"
@@ -74,7 +87,7 @@ class BusquedaServidor extends React.Component {
 
                         </FormControl>
                     </Grid>
-                    <Grid item xs={12} md={2}>
+                    <Grid item xs={12} md={3}>
                         <FormControl className={classes.formControl}>
                             <TextField
                                 id="search"
@@ -86,7 +99,7 @@ class BusquedaServidor extends React.Component {
 
                         </FormControl>
                     </Grid>
-                    <Grid item xs={12} md={2}>
+                    <Grid item xs={12} md={3}>
                         <FormControl className={classes.formControl}>
                             <TextField
                                 id="search"
@@ -97,31 +110,8 @@ class BusquedaServidor extends React.Component {
                             />
                         </FormControl>
                     </Grid>
-                    <Grid item xs={12} md={2}>
-                        <FormControl className={classes.formControl}>
-                            <TextField
-                                id="search"
-                                label="RFC"
-                                type="search"
-                                onChange={(e) => handleChangeCampo('rfc', e)}
-                                value={rfc}
-                            />
 
-                        </FormControl>
-                    </Grid>
-                    <Grid item xs={12} md={2}>
-                        <FormControl className={classes.formControl}>
-                            <TextField
-                                id="search"
-                                label="CURP"
-                                type="search"
-                                onChange={(e) => handleChangeCampo('curp', e)}
-                                value={curp}
-                            />
-
-                        </FormControl>
-                    </Grid>
-                    <Grid item xs={12} md={2}>
+                    <Grid item xs={12} md={3}>
                         <FormControl className={classes.formControl}>
                             <InputLabel shrink id="demo-mutiple-checkbox-label">Tipo sanción</InputLabel>
                             <Select displayEmpty
@@ -155,7 +145,7 @@ class BusquedaServidor extends React.Component {
                         </FormControl>
                     </Grid>
 
-                    <Grid item xs={12} md={4}>
+                    <Grid item xs={12} md={6}>
                         <FormControl className={classes.formControl}>
                             <InputLabel shrink id="demo-simple-select-placeholder-label-label">
                                 Institución
@@ -176,7 +166,54 @@ class BusquedaServidor extends React.Component {
                         </FormControl>
                     </Grid>
 
-                    <Grid item xs={12} md={2}>
+                    <Grid item md={6} xs={12}>
+                        <FormControl component="fieldset" className={classes.formControl}>
+                            <FormLabel component="legend">Nivel</FormLabel>
+                            <RadioGroup row
+                                        aria-label="gender"
+                                        name="gender1"
+                                        className={classes.group}
+                                        value={nivel}
+                                        onChange={(e) => handleChangeCampo('nivel', e)}
+                            >
+                                <FormControlLabel value="todos" control={<Radio/>} label="Todos"/>
+                                <FormControlLabel value="federal" control={<Radio/>} label="Federal"/>
+                                <FormControlLabel value="estatal" control={<Radio/>} label="Estatal"/>
+                            </RadioGroup>
+
+                        </FormControl>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Button onClick={() => this.handleBusquedaAvanzada()}
+                                startIcon={this.state.busquedaAvanzada?<ExpandLessIcon/>:<ExpandMoreIcon />}
+                        >Búsqueda avanzada</Button>
+                    </Grid>
+
+                    {this.state.busquedaAvanzada && <Grid item xs={12} md={3}>
+                        <FormControl className={classes.formControl}>
+                            <TextField
+                                id="search"
+                                label="CURP"
+                                type="search"
+                                onChange={(e) => handleChangeCampo('curp', e)}
+                                value={curp}
+                            />
+
+                        </FormControl>
+                    </Grid>}
+                    {this.state.busquedaAvanzada && <Grid item xs={12} md={3}>
+                        <FormControl className={classes.formControl}>
+                            <TextField
+                                id="search"
+                                label="RFC"
+                                type="search"
+                                onChange={(e) => handleChangeCampo('rfc', e)}
+                                value={rfc}
+                            />
+
+                        </FormControl>
+                    </Grid>}
+                    {this.state.busquedaAvanzada  && <Grid item xs={12} md={3}>
                         <FormControl className={classes.formControl}>
                             <InputLabel shrink id="demo-mutiple-checkbox-label">Ordenar por</InputLabel>
                             <Select displayEmpty
@@ -194,7 +231,7 @@ class BusquedaServidor extends React.Component {
                                     }
 
                             >
-                                <MenuItem  value={""}>
+                                <MenuItem  value={''}>
                                     <em>Ninguno</em>
                                 </MenuItem>
                                 {camposOrdenamiento.map(tipo => (
@@ -205,8 +242,8 @@ class BusquedaServidor extends React.Component {
                                 ))}
                             </Select>
                         </FormControl>
-                    </Grid>
-                    <Grid item xs={12} md={2}>
+                    </Grid>}
+                    {this.state.busquedaAvanzada && <Grid item xs={12} md={3}>
                         <FormControl className={classes.formControl}>
                             <InputLabel shrink id="demo-mutiple-checkbox-label">Tipo ordenamiento</InputLabel>
                             <Select displayEmpty
@@ -224,7 +261,7 @@ class BusquedaServidor extends React.Component {
                                     }
 
                             >
-                                <MenuItem  value={""}>
+                                <MenuItem  value={''}>
                                     <em>Ninguno</em>
                                 </MenuItem>
                                 {tiposOrdenamiento.map(tipo => (
@@ -235,25 +272,8 @@ class BusquedaServidor extends React.Component {
                                 ))}
                             </Select>
                         </FormControl>
-                    </Grid>
+                    </Grid>}
 
-                    <Grid item md={4} xs={12}>
-                        <FormControl component="fieldset" className={classes.formControl}>
-                            <FormLabel component="legend">Nivel</FormLabel>
-                            <RadioGroup row
-                                        aria-label="gender"
-                                        name="gender1"
-                                        className={classes.group}
-                                        value={nivel}
-                                        onChange={(e) => handleChangeCampo('nivel', e)}
-                            >
-                                <FormControlLabel value="todos" control={<Radio/>} label="Todos"/>
-                                <FormControlLabel value="federal" control={<Radio/>} label="Federal"/>
-                                <FormControlLabel value="estatal" control={<Radio/>} label="Estatal"/>
-                            </RadioGroup>
-
-                        </FormControl>
-                    </Grid>
                     <Grid item md={10}/>
                     <Grid item xs={12} md={1} className={classes.centrado}>
                         <Button variant="contained" color="secondary" className={classes.button} onClick={()=>this.props.handleSearch('FIELD_FILTER')}>

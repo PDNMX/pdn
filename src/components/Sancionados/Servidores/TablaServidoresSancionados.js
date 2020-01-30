@@ -129,7 +129,7 @@ class EnhancedTable extends React.Component {
             curp: '',
             institucionDependencia: "",
             nivel: 'todos',
-            campoOrden: "",
+            campoOrden: '',
             tipoOrden: '',
             institucionesLista: []
         };
@@ -162,13 +162,13 @@ class EnhancedTable extends React.Component {
 
     handleChangePage = (event, page) => {
         this.setState({page}, () => {
-            this.handleSearchAPI('CHANGE_PAGE');
+            this.handleSearchAPI();
         });
     };
 
     handleChangeRowsPerPage = event => {
-        this.setState({rowsPerPage: event.target.value}, () => {
-            this.handleSearchAPI('FIELD_FILTER');
+        this.setState({rowsPerPage: event.target.value, page: 0}, () => {
+            this.handleSearchAPI();
         });
     };
 
@@ -185,62 +185,75 @@ class EnhancedTable extends React.Component {
         if (institucionDependencia && institucionDependencia !== '') filtros.nombre = institucionDependencia;
         if (tipoSancion.length > 0) filtros.tipoSancion = tipoSancion.map(item => item.value);
         return filtros;
-    }
+    };
+
+    makeSort = () => {
+        let sort = {};
+        if (this.state.campoOrden && this.state.tipoOrden) sort[this.state.campoOrden.value] = this.state.tipoOrden.value;
+        return sort;
+    };
 
     handleSearchPrevios = () => {
         this.setState({
             loading: true,
             filterData: null,
             previos: null,
-        });
-        let body =
-            {
-                "filtros": this.makeFiltros(),
-                "limit": 1,
-                "offset": 0,
-                "nivel": this.state.nivel
-            };
+        }, () => {
+            let body =
+                {
+                    "filtros": this.makeFiltros(),
+                    "limit": 1,
+                    "offset": 0,
+                    "nivel": this.state.nivel
+                };
 
-        let options = {
-            method: 'POST',
-            uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/getPrevioServidoresSancionados',
-            json: true,
-            body: body
-        };
-        rp(options)
-            .then(res => {
-                this.setState({previos: res, loading: false, error: false})
-            }).catch(err => {
-            this.setState({loading: false, error: true});
+            let options = {
+                method: 'POST',
+                uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/getPrevioServidoresSancionados',
+                json: true,
+                body: body
+            };
+            rp(options)
+                .then(res => {
+                    this.setState({previos: res, loading: false, error: false})
+                }).catch(err => {
+                this.setState({loading: false, error: true});
+            });
         });
+
     };
-    handleSearchAPI = (typeSearch) => {
-        this.setState({loading: true});
-        let body =
-            {
-                "filtros": this.makeFiltros(),
-                "limit": this.state.rowsPerPage,
-                "offset": (typeSearch === 'CHANGE_PAGE') ? (this.state.rowsPerPage * this.state.page) : 0,
-                "clave_api": this.state.api
+
+    handleSearchAPI = () => {
+        this.setState({loading: true}, () => {
+            let body =
+                {
+                    "filtros": this.makeFiltros(),
+                    "limit": this.state.rowsPerPage,
+                    "offset": this.state.rowsPerPage * this.state.page,
+                    "clave_api": this.state.api,
+                    "sort": this.makeSort()
+                };
+
+            let options = {
+                method: 'POST',
+                uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/getServidoresSancionados',
+                json: true,
+                body: body
             };
 
-        let options = {
-            method: 'POST',
-            uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/getServidoresSancionados',
-            json: true,
-            body: body
-        };
-
-        rp(options)
-            .then(res => {
-                this.setState({
-                    filterData: res.data,
-                    loading: false,
-                    totalRows: res.totalRows
-                })
-            }).catch(err => {
-            this.setState({loading: false, error: true});
+            rp(options)
+                .then(res => {
+                    this.setState({
+                        filterData: res.data,
+                        loading: false,
+                        totalRows: res.totalRows,
+                        error: false
+                    })
+                }).catch(err => {
+                this.setState({loading: false, error: true});
+            });
         });
+
     };
 
     handleChangeAPI = (val) => {
@@ -248,7 +261,7 @@ class EnhancedTable extends React.Component {
             api: val,
             page: 0
         }, () => {
-            this.handleSearchAPI('FIELD_FILTER')
+            this.handleSearchAPI()
         });
     };
 
@@ -256,9 +269,20 @@ class EnhancedTable extends React.Component {
         this.setState({
             [varState]: event ? (event.target ? event.target.value : event.value) : ''
         }, () => {
-            if (varState === 'nivel') this.loadInstituciones();
+            switch (varState) {
+                case 'nivel':
+                    this.loadInstituciones();
+                    break;
+                case 'campoOrden':
+                    this.setState({tipoOrden: event.target.value ? {label: 'Ascendente', value: 'ASC'} : ''});
+                    break;
+                case 'tipoOrden':
+                    this.setState({campoOrden: event.target.value ? {label: 'RFC', value: 'rfc'} : ''});
+                    break;
+            }
         })
     };
+
     handleCleanAll = () => {
         this.setState(
             {
@@ -278,6 +302,7 @@ class EnhancedTable extends React.Component {
                 this.loadInstituciones();
             })
     };
+
     loadInstituciones = () => {
         let sug = [];
         let options = {
@@ -295,7 +320,7 @@ class EnhancedTable extends React.Component {
                 });
                 this.setState({institucionesLista: sug, institucionDependencia: ''});
             }).catch(err => {
-            this.props.handleError(true);
+            this.setState({error: true})
         });
     }
 
