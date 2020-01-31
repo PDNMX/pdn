@@ -26,7 +26,6 @@ import MensajeErrorDatos from "../Tablas/MensajeErrorDatos";
 
 import columnData from './column_data';
 
-
 const styles = theme => ({
     root: {},
     progress: {
@@ -116,9 +115,6 @@ class EnhancedTable extends React.Component {
     constructor(props) {
         super(props);
 
-        this.child = React.createRef();
-        this.btnDownloadAll = React.createRef();
-
         this.state = {
             order: 'asc',
             orderBy: 'servidor',
@@ -147,16 +143,20 @@ class EnhancedTable extends React.Component {
 
     loadEntites = nivel => {
         let options = {
-            uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/s2/dependencias',
+            uri: process.env.REACT_APP_S2_BACKEND + "/api/v1/entities",
+            //uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/s2/dependencias',
             json: true,
             method: "post",
-            body: {
-                nivel: nivel
-            }
+            body: {}
         };
 
+        if (nivel !== 'ANY'){
+            options.body.nivel_gobierno = nivel
+        }
+
         rp(options).then(data => {
-            let new_entities = data.data.map( d => ({value: d, label: d}) );
+            //console.log(data);
+            let new_entities = data.map( d => ({value: d.nombre, label: d.nombre, supplier_id: d.supplier_id}) );
 
             this.setState({
                 entities: new_entities,
@@ -178,7 +178,6 @@ class EnhancedTable extends React.Component {
         this.loadEntites("ANY");
     }
 
-    //toggle summary
     toggleShowSummary = () => {
         const {mostrarPanelResumen} = this.state;
         this.setState({
@@ -222,20 +221,26 @@ class EnhancedTable extends React.Component {
     };
 
     handleChangePage = (event, page) => {
-        this.setState({page}, () => {
-            this.handleSearchAPI('CHANGE_PAGE');
+        console.log(page);
+        this.setState({
+            page: page
+        }, () => {
+            this.handleSearchAPI();
         });
 
     };
 
     handleChangeRowsPerPage = event => {
-        this.setState({rowsPerPage: event.target.value}, () => {
-            this.handleSearchAPI('FIELD_FILTER');
+        this.setState({
+            rowsPerPage: event.target.value
+        }, () => {
+            this.handleSearchAPI();
         });
     };
 
     isSelected = id => this.state.selected.indexOf(id) !== -1;
 
+    //busqueda en varias URLs
     handleSearchPrevios = () => {
 
         this.setState({
@@ -244,7 +249,14 @@ class EnhancedTable extends React.Component {
             loading: true
             }, () => {
 
-            let {current_entity, nombreServidor, apellidoUno, apellidoDos, procedimiento, nivel} = this.state;
+            let {
+                current_entity,
+                nombreServidor,
+                apellidoUno,
+                apellidoDos,
+                procedimiento,
+                nivel
+            } = this.state;
 
             let filtros = {};
             let offset = 0;
@@ -287,16 +299,17 @@ class EnhancedTable extends React.Component {
         );
     };
 
+    //handleSearch
     handleChangeAPI = (val) => {
         this.setState({
             api: val,
             page: 0
         }, () => {
-            this.handleSearchAPI('FIELD_FILTER')
+            this.handleSearchAPI()
         });
     };
 
-    handleSearchAPI = (searchType) => {
+    handleSearchAPI = () => {
         this.setState({loading: true});
         let {
             current_entity,
@@ -306,57 +319,45 @@ class EnhancedTable extends React.Component {
             procedimiento
         } = this.state;
 
+        let limit =  this.state.rowsPerPage;
+
         let filtros = {};
-        let offset = 0;
+        if (nombreServidor) filtros.nombres = nombreServidor;
+        if (apellidoUno) filtros.primer_apellido = apellidoUno;
+        if (apellidoDos) filtros.segundo_apellido = apellidoDos;
+        if (current_entity && current_entity !== 'ANY') filtros.institucion = current_entity;
+        if (procedimiento && procedimiento !== 'todos') filtros.procedimiento = procedimiento;
 
-        if (searchType !== 'DN_ALL') {
-            if (nombreServidor) filtros.nombres = nombreServidor;
-            if (apellidoUno) filtros.primer_apellido = apellidoUno;
-            if (apellidoDos) filtros.segundo_apellido = apellidoDos;
-            if (current_entity && current_entity !== 'ANY') filtros.institucion = current_entity;
-            if (procedimiento && procedimiento !== 'todos') filtros.procedimiento = procedimiento;
-        }
-
-        let limit = (searchType === 'FIELD_FILTER' || searchType === 'CHANGE_PAGE') ? this.state.rowsPerPage : null;
-
-        if (searchType === 'CHANGE_PAGE') {
-            offset = (this.state.rowsPerPage * this.state.page);
-        } else {
-            this.setState({page: 0})
-        }
-
-        let body = {
-            filtros: filtros,
-            limit: limit,
-            offset: offset,
-            iterar: (searchType === 'DN_FILTER' || searchType === 'DN_ALL') ? true : false,
-            clave_api: this.state.api
-        };
+        let offset = (this.state.rowsPerPage * this.state.page);
 
         let options = {
             method: 'POST',
             uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/s2',
             json: true,
-            body: searchType === 'DN_ALL' ? {"iterar": true} : body
+            body: {
+                filtros: filtros,
+                limit: limit,
+                offset: offset,
+                clave_api: this.state.api
+            }
         };
 
         rp(options).then(res => {
-            let dataAux = res.data;
-            let total = res.totalRows;
+            const {data, totalRows} = res;
+            //console.log(data)
 
-            searchType === 'DN_ALL' ? this.setState({data: dataAux, loading: false}, () => {
-                this.btnDownloadAll.triggerDown();
-            }) : (searchType === 'FIELD_FILTER' || searchType === 'CHANGE_PAGE') ? this.setState({
-                    filterData: dataAux,
-                    loading: false,
-                    totalRows: total
-                }) :
-                this.setState({filterDataAll: dataAux, loading: false, totalRows: total}, () => {
-                    this.child.triggerDown();
-                });
+            this.setState({
+                loading: false,
+                filterData: data,
+                totalRows: totalRows
+            });
+
         }).catch(err => {
             console.log(err);
-            this.setState({loading: false, error: true});
+            this.setState({
+                loading: false,
+                error: true
+            });
         });
     };
 
@@ -551,18 +552,6 @@ class EnhancedTable extends React.Component {
                                 </TableBody>
                                 <TableFooter>
                                     <TableRow>
-                                        {/* <TableCell>
-                                            <BajarCSV innerRef={comp => this.btnDownloadAll = comp} data={data}
-                                                      filtrado={false}
-                                                      columnas={columnData} fnSearch={this.handleSearchAPI}
-                                                      fileName={'Servidores sancionados'}/>
-                                        </TableCell>
-                                        <TableCell colSpan={2}>
-                                            <BajarCSV innerRef={comp => this.child = comp} data={filterDataAll}
-                                                      filtrado={true}
-                                                      columnas={columnData} fnSearch={this.handleSearchAPI}
-                                                      fileName={'MiBusqueda'}/>
-                                        </TableCell>*/}
                                         <TablePagination
                                             className={classes.tablePagination}
                                             colSpan={6}
