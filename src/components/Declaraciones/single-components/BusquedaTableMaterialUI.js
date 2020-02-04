@@ -12,8 +12,6 @@ import {
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 
-let uniqid = require("uniqid");
-
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -74,8 +72,8 @@ class BusquedaTableMaterialUI extends Component {
             </TableRow>
           </TableHead>
           <TableBody>
-            {this.props.results.map(compa => (
-              <StyledTableRow key={uniqid()}>
+            {this.props.results.map((compa, index) => (
+              <StyledTableRow key={index}>
                 <StyledTableCell>
                   <Link
                     className={classes.link}
