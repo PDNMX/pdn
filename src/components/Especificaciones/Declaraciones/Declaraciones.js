@@ -136,6 +136,13 @@ class Declaraciones extends React.Component {
                                 </Link>
                             </li>
                         </ul>
+
+                        <Typography paragraph variant="h5" color='textPrimary'>Versionado</Typography>
+                        <Button className={classes.button} target='_blank' variant="contained"
+                                href="https://drive.google.com/file/d/1xIPoMa-xKlCi9OZs_Uc7ffvANImaKWnK/view">
+                            Más información
+                        </Button>
+
                         
                         <ProcoloConexion urlPlan={'https://drive.google.com/open?id=1HZailvIOV77By1JwQKWXGTungYRBFmHi'} apiName={'Declaraciones'} />
                         
