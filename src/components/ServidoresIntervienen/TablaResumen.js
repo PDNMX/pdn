@@ -13,7 +13,6 @@ import Tooltip from "@material-ui/core/Tooltip";
 import IconSunny from "@material-ui/icons/WbSunny";
 
 const styles = theme => ({
-
     table: {
         tableLayout: 'fixed',
     },
@@ -44,13 +43,14 @@ class TablaResumen extends React.Component {
 
     render() {
         const {
-            previos,
-            classes
+            summaryData,
+            classes,
+            handleSearchSupplier
         } = this.props;
 
         return (
             <div>
-                {previos && previos.length > 0 &&
+                {summaryData && summaryData.length > 0 &&
                 <Grid container justify='center' spacing={0} className={classes.gridTable}>
                     <Grid item xs={12}>
 
@@ -85,7 +85,7 @@ class TablaResumen extends React.Component {
                                 </TableHead>
 
                                 <TableBody className={classes.tableBody}>
-                                    {previos.map(row => (
+                                    {summaryData.map(row => (
                                         <TableRow key={row.sujeto_obligado}>
                                             <TableCell align="left">{row.nivel}</TableCell>
                                             <TableCell align="left">{row.sujeto_obligado}</TableCell>
@@ -99,7 +99,7 @@ class TablaResumen extends React.Component {
                                                 {row.estatus && row.totalRows > 0 &&
                                                 <Tooltip title={"Ver"}>
                                                     <IconSubdirectory className={classes.iconoVer} onClick={() => {
-                                                        this.props.handleChangeAPI(row.clave_api);
+                                                        handleSearchSupplier(row.clave_api);
                                                     }}/>
                                                 </Tooltip>
 

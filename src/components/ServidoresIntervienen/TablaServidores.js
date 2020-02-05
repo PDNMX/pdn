@@ -60,7 +60,7 @@ const styles = theme => ({
         marginBottom: '30px',
         overflowX: 'auto',
     },
-    containerPrevios: {
+    panelResumen: {
         marginLeft: theme.spacing(2)
     } ,
     ul: {
@@ -122,6 +122,7 @@ class EnhancedTable extends React.Component {
             nombreServidor: '',
             apellidoUno: '',
             apellidoDos: '',
+            summaryData: [],
             data: [],
             filterData: null,
             page: 0,
@@ -136,7 +137,6 @@ class EnhancedTable extends React.Component {
             filterDataAll: [],
             error: false,
             nivel: 'todos',
-            previos: [],
             mostrarPanelResumen: true,
         };
     }
@@ -241,11 +241,11 @@ class EnhancedTable extends React.Component {
     isSelected = id => this.state.selected.indexOf(id) !== -1;
 
     //busqueda en varias URLs
-    handleSearchPrevios = () => {
+    handleBroadSearch = () => {
 
         this.setState({
             filterData: null,
-            previos: null,
+            summaryData: null,
             loading: true
             }, () => {
 
@@ -283,7 +283,7 @@ class EnhancedTable extends React.Component {
 
             rp(options).then(res => {
                 this.setState({
-                    previos: res,
+                    summaryData: res,
                     loading: false,
                     error: false
                 })
@@ -299,64 +299,61 @@ class EnhancedTable extends React.Component {
         );
     };
 
-    //handleSearch
-    handleChangeAPI = (val) => {
+
+    handleSearchSupplier = (api) => {
         this.setState({
-            api: val,
-            page: 0
+            api: api,
+            page: 0,
+            loading: true
         }, () => {
-            this.handleSearchAPI()
-        });
-    };
 
-    handleSearchAPI = () => {
-        this.setState({loading: true});
-        let {
-            current_entity,
-            nombreServidor,
-            apellidoUno,
-            apellidoDos,
-            procedimiento
-        } = this.state;
+            let {
+                current_entity,
+                nombreServidor,
+                apellidoUno,
+                apellidoDos,
+                procedimiento
+            } = this.state;
 
-        let limit =  this.state.rowsPerPage;
+            let limit =  this.state.rowsPerPage;
 
-        let filtros = {};
-        if (nombreServidor) filtros.nombres = nombreServidor;
-        if (apellidoUno) filtros.primer_apellido = apellidoUno;
-        if (apellidoDos) filtros.segundo_apellido = apellidoDos;
-        if (current_entity && current_entity !== 'ANY') filtros.institucion = current_entity;
-        if (procedimiento && procedimiento !== 'todos') filtros.procedimiento = procedimiento;
+            let filtros = {};
+            if (nombreServidor) filtros.nombres = nombreServidor;
+            if (apellidoUno) filtros.primer_apellido = apellidoUno;
+            if (apellidoDos) filtros.segundo_apellido = apellidoDos;
+            if (current_entity && current_entity !== 'ANY') filtros.institucion = current_entity;
+            if (procedimiento && procedimiento !== 'todos') filtros.procedimiento = procedimiento;
 
-        let offset = (this.state.rowsPerPage * this.state.page);
+            let offset = (this.state.rowsPerPage * this.state.page);
 
-        let options = {
-            method: 'POST',
-            uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/s2',
-            json: true,
-            body: {
-                filtros: filtros,
-                limit: limit,
-                offset: offset,
-                clave_api: this.state.api
-            }
-        };
+            let options = {
+                method: 'POST',
+                uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/s2',
+                json: true,
+                body: {
+                    filtros: filtros,
+                    limit: limit,
+                    offset: offset,
+                    clave_api: this.state.api
+                }
+            };
 
-        rp(options).then(res => {
-            const {data, totalRows} = res;
-            //console.log(data)
+            rp(options).then(res => {
+                const {data, totalRows} = res;
+                //console.log(data)
 
-            this.setState({
-                loading: false,
-                filterData: data,
-                totalRows: totalRows
-            });
+                this.setState({
+                    loading: false,
+                    filterData: data,
+                    totalRows: totalRows
+                });
 
-        }).catch(err => {
-            console.log(err);
-            this.setState({
-                loading: false,
-                error: true
+            }).catch(err => {
+                console.log(err);
+                this.setState({
+                    loading: false,
+                    error: true
+                });
             });
         });
     };
@@ -370,7 +367,7 @@ class EnhancedTable extends React.Component {
     handleCleanAll = () => {
         this.setState({
             filterData: null,
-            previos : null,
+            summaryData : null,
             nivel : 'todos',
             nombreServidor: "",
             procedimiento: "",
@@ -404,7 +401,7 @@ class EnhancedTable extends React.Component {
             loading,
             elementoSeleccionado,
             open,
-            previos,
+            summaryData,
             mostrarPanelResumen
         } = this.state;
         //  const emptyRows = rowsPerPage - filterData.length;
@@ -436,7 +433,7 @@ class EnhancedTable extends React.Component {
                 <Grid container justify={'center'} spacing={0} className={classes.gridTable}>
                     <Grid item xs={12} className={classes.toolBarStyle}>
                         <BusquedaServidor handleCleanAll={this.handleCleanAll}
-                                          handleSearch={this.handleSearchPrevios}
+                                          handleSearch={this.handleBroadSearch}
                                           handleChangeCampo={this.handleChangeCampo}
                                           nombreServidor={nombreServidor}
                                           apellidoUno={apellidoUno}
@@ -470,10 +467,10 @@ class EnhancedTable extends React.Component {
                         }
                     </Grid>
                     <Grid item xs={12} className={classes.section}>
-                        {previos && previos.length > 0 &&
+                        {summaryData && summaryData.length > 0 &&
                         <div>
                             <FormControlLabel
-                                control={<Switch className={classes.containerPrevios} checked={mostrarPanelResumen}
+                                control={<Switch className={classes.panelResumen} checked={mostrarPanelResumen}
                                                  onChange={() => this.toggleShowSummary()}/>}
                                 label={
                                     <Typography variant="h6" className={classes.desc}>
@@ -483,7 +480,7 @@ class EnhancedTable extends React.Component {
                             />
                             <div className={classes.container}>
                                 <Collapse in={mostrarPanelResumen}>
-                                    <TablaResumen previos={previos} handleChangeAPI={this.handleChangeAPI}/>
+                                    <TablaResumen summaryData={summaryData} handleSearchSupplier={this.handleSearchSupplier}/>
                                 </Collapse>
 
                             </div>
