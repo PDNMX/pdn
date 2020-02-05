@@ -12,9 +12,6 @@ const styles = theme => ({
         marginBottom: '27px',
         padding: theme.spacing(1)
     },
-    desc: {
-        color: theme.palette.primary.dark,
-    },
     ul: {
         listStyle: "none",
         paddingLeft: "20px"
@@ -55,14 +52,7 @@ class EnhancedTable extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            selected: [],
-            open: false,
             elementoSeleccionado: null,
-            loading: false,
-            totalRows: 0,
-            error: false,
-            previos: [],
-            api: '',
         };
 
     }
@@ -72,7 +62,7 @@ class EnhancedTable extends React.Component {
     };
 
     verDetalle = (event, elemento) => {
-        this.setState({elementoSeleccionado: elemento, open: true});
+        this.setState({elementoSeleccionado: elemento});
     };
 
 
@@ -127,7 +117,7 @@ class EnhancedTable extends React.Component {
                     this.state.elementoSeleccionado !== null &&
                     <DetalleServidorSancionado handleChangeDetail={this.handleChangeDetail}
                                                servidor={this.state.elementoSeleccionado}
-                                               control={this.state.open}/>
+                                               />
                 }
             </div>
         );

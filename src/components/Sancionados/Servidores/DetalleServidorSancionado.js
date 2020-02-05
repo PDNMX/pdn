@@ -43,12 +43,16 @@ const styles = theme => ({
         marginBottom: 10,
         paddingLeft: 20
     },
-    divider:{
+    divider: {
         backgroundColor: theme.palette.primary.dark,
-        height:theme.spacing(1)
+        height: theme.spacing(1)
     },
-    btnBack:{
+    btnBack: {
         color: theme.palette.primary.dark,
+    },
+    container: {
+        maxWidth: '1200px',
+        margin: "0 auto"
     }
 });
 
@@ -59,7 +63,7 @@ class DetalleServidorSancionado extends React.Component {
         return (
             <div>
                 <Grid container spacing={0} className={classes.infoBusqueda}>
-                    <Grid item xs={12} style={{maxWidth: 1200, margin: "0 auto"}}>
+                    <Grid item xs={12} className={classes.container}>
                         <Paper className={classes.paper} elevation={3}>
                             <Grid container spacing={2}>
                                 <Grid item xs={12}>
@@ -185,7 +189,7 @@ class DetalleServidorSancionado extends React.Component {
                                 </Grid>
                                 <Grid item xs={12} style={{textAlign: 'right'}}>
                                     <Button className={classes.btnBack} onClick={() => handleChangeDetail()}
-                                        startIcon={<ArrowBackIosIcon/>}
+                                            startIcon={<ArrowBackIosIcon/>}
                                     >Regresar</Button>
                                 </Grid>
                             </Grid>

@@ -89,10 +89,11 @@ class BusquedaServidor extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            filterData: null,
+            filterData: [],
             page: 0,
             rowsPerPage: 10,
             totalRows: 0,
+            previos:[],
             panelPrevios: true,
             error: false,
             loading: false,
@@ -159,7 +160,7 @@ class BusquedaServidor extends React.Component {
         this.setState(
             {
                 filterData: null,
-                previos: null,
+                previos: [],
                 nivel: 'todos',
                 tipoSancion: [],
                 nombresServidor: '',
@@ -169,7 +170,8 @@ class BusquedaServidor extends React.Component {
                 rfc: '',
                 curp: '',
                 campoOrden: '',
-                tipoOrden: ''
+                tipoOrden: '',
+                institucionesLista: []
             }, () => {
                 this.loadInstituciones();
             })
@@ -178,8 +180,7 @@ class BusquedaServidor extends React.Component {
     handleSearchPrevios = () => {
         this.setState({
             loading: true,
-            filterData: null,
-            //previos: null,
+            filterData: [],
         }, () => {
             let body =
                 {
@@ -226,12 +227,6 @@ class BusquedaServidor extends React.Component {
     handleChange = () => {
         this.setState({
             panelPrevios: !this.state.panelPrevios
-        })
-    }
-
-    handleError = (val) => {
-        this.setState({
-            error: val
         })
     }
 
@@ -292,9 +287,6 @@ class BusquedaServidor extends React.Component {
             this.handleSearchAPI();
         });
     };
-    verDetalle = (event, elemento) => {
-        this.setState({elementoSeleccionado: elemento, open: true});
-    };
 
 
     render() {
@@ -310,7 +302,7 @@ class BusquedaServidor extends React.Component {
                     <Grid item xs={12} md={3}>
                         <FormControl className={classes.formControl}>
                             <TextField
-                                id="search"
+                                id="nombresServidor"
                                 label="Nombre(s)"
                                 type="search"
                                 onChange={(e) => this.handleChangeCampo('nombresServidor', e)}
@@ -322,7 +314,7 @@ class BusquedaServidor extends React.Component {
                     <Grid item xs={12} md={3}>
                         <FormControl className={classes.formControl}>
                             <TextField
-                                id="search"
+                                id="apellidoUno"
                                 label="Apellido Uno"
                                 type="search"
                                 onChange={(e) => this.handleChangeCampo('apellidoUno', e)}
@@ -334,7 +326,7 @@ class BusquedaServidor extends React.Component {
                     <Grid item xs={12} md={3}>
                         <FormControl className={classes.formControl}>
                             <TextField
-                                id="search"
+                                id="apellidoDos"
                                 label="Apellido Dos"
                                 type="search"
                                 onChange={(e) => this.handleChangeCampo('apellidoDos', e)}
@@ -345,9 +337,9 @@ class BusquedaServidor extends React.Component {
 
                     <Grid item xs={12} md={3}>
                         <FormControl className={classes.formControl}>
-                            <InputLabel shrink id="demo-mutiple-checkbox-label">Tipo sanción</InputLabel>
+                            <InputLabel shrink id="tipoSancion-label">Tipo sanción</InputLabel>
                             <Select displayEmpty
-                                    id="demo-mutiple-checkbox"
+                                    id="tipoSancion-checkbox"
                                     multiple
                                     value={tipoSancion}
                                     onChange={e => this.handleChangeCampo('tipoSancion', e)}
@@ -378,7 +370,7 @@ class BusquedaServidor extends React.Component {
 
                     <Grid item xs={12} md={6}>
                         <FormControl className={classes.formControl}>
-                            <InputLabel shrink id="demo-simple-select-placeholder-label-label">
+                            <InputLabel shrink id="institucionDependencia-label">
                                 Institución
                             </InputLabel>
                             <Select value={institucionDependencia}
@@ -423,7 +415,7 @@ class BusquedaServidor extends React.Component {
                     {this.state.busquedaAvanzada && <Grid item xs={12} md={3}>
                         <FormControl className={classes.formControl}>
                             <TextField
-                                id="search"
+                                id="curp"
                                 label="CURP"
                                 type="search"
                                 onChange={(e) => this.handleChangeCampo('curp', e)}
@@ -435,7 +427,7 @@ class BusquedaServidor extends React.Component {
                     {this.state.busquedaAvanzada && <Grid item xs={12} md={3}>
                         <FormControl className={classes.formControl}>
                             <TextField
-                                id="search"
+                                id="rfc"
                                 label="RFC"
                                 type="search"
                                 onChange={(e) => this.handleChangeCampo('rfc', e)}
@@ -446,9 +438,9 @@ class BusquedaServidor extends React.Component {
                     </Grid>}
                     {this.state.busquedaAvanzada && <Grid item xs={12} md={3}>
                         <FormControl className={classes.formControl}>
-                            <InputLabel shrink id="demo-mutiple-checkbox-label">Ordenar por</InputLabel>
+                            <InputLabel shrink id="campoOrden-label">Ordenar por</InputLabel>
                             <Select displayEmpty
-                                    id="demo-mutiple-checkbox"
+                                    id="campoOrden-checkbox"
                                     value={campoOrden}
                                     onChange={e => this.handleChangeCampo('campoOrden', e)}
                                     input={<Input/>}
@@ -476,9 +468,9 @@ class BusquedaServidor extends React.Component {
                     </Grid>}
                     {this.state.busquedaAvanzada && <Grid item xs={12} md={3}>
                         <FormControl className={classes.formControl}>
-                            <InputLabel shrink id="demo-mutiple-checkbox-label">Tipo ordenamiento</InputLabel>
+                            <InputLabel shrink id="tipoOrden-label">Tipo ordenamiento</InputLabel>
                             <Select displayEmpty
-                                    id="demo-mutiple-checkbox"
+                                    id="tipoOrden-checkbox"
                                     value={tipoOrden}
                                     onChange={e => this.handleChangeCampo('tipoOrden', e)}
                                     input={<Input/>}
@@ -559,16 +551,13 @@ class BusquedaServidor extends React.Component {
                 {/*TABLA*/}
                 {this.state.filterData && this.state.filterData.length > 0 &&
                 <Grid container>
-                    <Grid item xs={12} className={classes.section}>
-                        <div className={classes.container} id={'test'}>
+                    <Grid item xs={12} >
                             <TablaServidoresSancionados data={this.state.filterData} page={this.state.page}
                                                         rowsPerPage={this.state.rowsPerPage}
                                                         totalRows={this.state.totalRows}
                                                         handleChangePage={this.handleChangePage}
                                                         handleChangeRowsPerPage={this.handleChangeRowsPerPage}
                                                         verDetalle={this.props.verDetalle}/>
-                        </div>
-
                     </Grid>
                 </Grid>
                 }
