@@ -136,7 +136,7 @@ class EnhancedTable extends React.Component {
             filterDataAll: [],
             error: false,
             nivel: 'todos',
-            mostrarPanelResumen: true,
+            mostrarPanelResumen: true
         };
     }
 
@@ -215,7 +215,8 @@ class EnhancedTable extends React.Component {
         this.setState({
             page: page
         }, () => {
-            this.handleSearchAPI();
+            const {api} = this.state;
+            this.handleSearchSupplier(api);
         });
 
     };
@@ -224,7 +225,8 @@ class EnhancedTable extends React.Component {
         this.setState({
             rowsPerPage: event.target.value
         }, () => {
-            this.handleSearchAPI();
+            const {api} = this.state;
+            this.handleSearchSupplier(api);
         });
     };
 
@@ -291,6 +293,7 @@ class EnhancedTable extends React.Component {
 
 
     handleSearchSupplier = (api) => {
+
         this.setState({
             api: api,
             page: 0,
@@ -371,7 +374,6 @@ class EnhancedTable extends React.Component {
         const {classes} = this.props;
 
         const {
-            data,
             order,
             orderBy,
             selected,
