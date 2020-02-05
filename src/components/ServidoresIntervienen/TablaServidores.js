@@ -19,9 +19,9 @@ import Collapse from "@material-ui/core/Collapse";
 import BusquedaServidor from "./BusquedaServidor";
 import DetalleServidorSancionado from "./DetalleServidor";
 import TablaResumen from "./TablaResumen";
+import EnhancedTableHead from './EnhancedTableHead';
 
 import Descarga from "../Compartidos/Descarga";
-import EnhancedTableHead from '../Tablas/EnhancedTableHead';
 import MensajeErrorDatos from "../Tablas/MensajeErrorDatos";
 
 import columnData from './column_data';
@@ -123,7 +123,6 @@ class EnhancedTable extends React.Component {
             apellidoUno: '',
             apellidoDos: '',
             summaryData: [],
-            data: [],
             filterData: null,
             page: 0,
             rowsPerPage: 10,
@@ -198,15 +197,6 @@ class EnhancedTable extends React.Component {
             order = 'asc';
         }
         this.setState({order, orderBy});
-    };
-
-    handleSelectAllClick = (event, checked) => {
-        if (checked) {
-            this.setState(state => ({selected: state.data.map(n => n.id)}));
-            //return;
-        } else {
-            this.setState({selected: []});
-        }
     };
 
     handleClose = () => {
@@ -506,9 +496,7 @@ class EnhancedTable extends React.Component {
                                     numSelected={selected.length}
                                     order={order}
                                     orderBy={orderBy}
-                                    onSelectAllClick={this.handleSelectAllClick}
                                     onRequestSort={this.handleRequestSort}
-                                    rowCount={data.length}
                                     columnData={columnData}
                                 />
                                 <TableBody>

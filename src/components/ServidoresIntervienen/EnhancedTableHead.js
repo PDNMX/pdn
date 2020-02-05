@@ -8,7 +8,6 @@ import TableSortLabel from "@material-ui/core/TableSortLabel/TableSortLabel";
 import {Typography} from "@material-ui/core"
 import {withStyles} from "@material-ui/core";
 
-
 const styles = theme => ({
     tableHead: {
         color: theme.palette.black.color
@@ -77,9 +76,7 @@ class EnhancedTableHead extends React.Component {
 EnhancedTableHead.propTypes = {
     numSelected: PropTypes.number.isRequired,
     onRequestSort: PropTypes.func.isRequired,
-    onSelectAllClick: PropTypes.func.isRequired,
     order: PropTypes.string.isRequired,
-    orderBy: PropTypes.string.isRequired,
-    rowCount: PropTypes.number.isRequired,
+    orderBy: PropTypes.string.isRequired
 };
 export default withStyles(styles)(EnhancedTableHead);
