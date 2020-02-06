@@ -154,7 +154,6 @@ class EnhancedTable extends React.Component {
         }
 
         rp(options).then(data => {
-            //console.log(data);
             let new_entities = data.map( d => ({value: d.nombre, label: d.nombre, supplier_id: d.supplier_id}) );
 
             this.setState({
@@ -211,12 +210,11 @@ class EnhancedTable extends React.Component {
     };
 
     handleChangePage = (event, page) => {
-        console.log(page);
+        //console.log(page);
         this.setState({
             page: page
         }, () => {
-            const {api} = this.state;
-            this.handleSearchSupplier(api);
+            this.fetchData();
         });
 
     };
@@ -225,8 +223,7 @@ class EnhancedTable extends React.Component {
         this.setState({
             rowsPerPage: event.target.value
         }, () => {
-            const {api} = this.state;
-            this.handleSearchSupplier(api);
+            this.fetchData();
         });
     };
 
@@ -291,66 +288,70 @@ class EnhancedTable extends React.Component {
         );
     };
 
+    fetchData = () => {
 
-    handleSearchSupplier = (api) => {
+        const {
+            current_entity,
+            nombreServidor,
+            apellidoUno,
+            apellidoDos,
+            procedimiento,
+            rowsPerPage,
+            page,
+            api
+        } = this.state;
 
-        this.setState({
-            api: api,
-            page: 0,
-            loading: true
-        }, () => {
+        let filtros = {};
+        if (nombreServidor) filtros.nombres = nombreServidor;
+        if (apellidoUno) filtros.primer_apellido = apellidoUno;
+        if (apellidoDos) filtros.segundo_apellido = apellidoDos;
+        if (current_entity && current_entity !== 'ANY') filtros.institucion = current_entity;
+        if (procedimiento && procedimiento !== 'todos') filtros.procedimiento = procedimiento;
 
-            let {
-                current_entity,
-                nombreServidor,
-                apellidoUno,
-                apellidoDos,
-                procedimiento
-            } = this.state;
+        let offset = (rowsPerPage * page);
 
-            let limit =  this.state.rowsPerPage;
+        let options = {
+            method: 'POST',
+            uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/s2',
+            json: true,
+            body: {
+                filtros: filtros,
+                limit: rowsPerPage,
+                offset: offset,
+                clave_api: api
+            }
+        };
 
-            let filtros = {};
-            if (nombreServidor) filtros.nombres = nombreServidor;
-            if (apellidoUno) filtros.primer_apellido = apellidoUno;
-            if (apellidoDos) filtros.segundo_apellido = apellidoDos;
-            if (current_entity && current_entity !== 'ANY') filtros.institucion = current_entity;
-            if (procedimiento && procedimiento !== 'todos') filtros.procedimiento = procedimiento;
+        rp(options).then(res => {
+            const {data, totalRows} = res;
+            //console.log(data)
 
-            let offset = (this.state.rowsPerPage * this.state.page);
+            this.setState({
+                loading: false,
+                filterData: data,
+                totalRows: totalRows
+            });
 
-            let options = {
-                method: 'POST',
-                uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/s2',
-                json: true,
-                body: {
-                    filtros: filtros,
-                    limit: limit,
-                    offset: offset,
-                    clave_api: this.state.api
-                }
-            };
-
-            rp(options).then(res => {
-                const {data, totalRows} = res;
-                //console.log(data)
-
-                this.setState({
-                    loading: false,
-                    filterData: data,
-                    totalRows: totalRows
-                });
-
-            }).catch(err => {
-                console.log(err);
-                this.setState({
-                    loading: false,
-                    error: true
-                });
+        }).catch(err => {
+            console.log(err);
+            this.setState({
+                loading: false,
+                error: true
             });
         });
+
     };
 
+    handleSearchSupplier = api => {
+        this.setState({
+            page: 0,
+            loading: true,
+            api: api
+        }, () => {
+            this.fetchData()
+        });
+    };
+    
     handleChangeCampo = (varState, event) => {
         this.setState({
             [varState]: event ? (event.target ? event.target.value : event.value) : ''
