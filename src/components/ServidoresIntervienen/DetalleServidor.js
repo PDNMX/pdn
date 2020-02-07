@@ -15,11 +15,6 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Button from "@material-ui/core/Button";
 import DialogActions from "@material-ui/core/DialogActions";
 import glosario from "../Utils/glosario.json";
-//import DownloadIcon from "@material-ui/icons/CloudDownload";
-import * as jsPDF from "jspdf";
-
-let aux = new Image();
-aux.src = "/LogoSesna.png";
 
 function getGlosarioItem(id){
     return glosario.servidores[id];
@@ -96,17 +91,7 @@ const styles = theme => ({
     },
     smallIcon: {
         color: theme.palette.primary.main
-    },
-    downloadIcon: {
-        paddingRight: theme.spacing(1)
-    },
-    downloadButton: {
-        background : '#FFE01B'
-    },
-    test:{
-
     }
-
 });
 
 class DetalleServidor extends React.Component {
@@ -125,57 +110,7 @@ class DetalleServidor extends React.Component {
     controlGlosario = (id) => {
         this.setState({id : id});
     };
-    getX(doc, texto){
-        let fontSize = doc.internal.getFontSize();
-        let pageWidth = doc.internal.pageSize.getWidth();
-        let aux = '';
-        for(var i = 0; i < texto.length ; i++){
-            aux += 'a';
-        }
-        let txtWidth =  doc.getStringUnitWidth(aux) * fontSize / doc.internal.scaleFactor;
-        return (pageWidth - txtWidth) / 2;
-    }
 
-    printPDF(){
-        let doc = new jsPDF({
-            format : 'letter',
-            unit : 'pt'
-        });
-        doc.setFontSize(12);
-        doc.setFontType('bold');
-        doc.addImage(aux,'PNG',30,20,150,70);
-        doc.text('SECRETARÍA EJECUTIVA DEL SISTEMA NACIONAL ANTICORRUPCIÓN',350,60,{maxWidth:250, align : 'justify'});
-        doc.text('DOCUMENTO DE PRUEBA',doc.internal.pageSize.getWidth()/2,150,null,null,'center');
-
-
-        doc.setFontType('normal');
-        //doc.text('En la versión oficial podrás consultar las constancias de inhabilitación de servidores públicos y particulares sancionados ' ,30,255);
-        let y = 255;
-        let text = 'En la versión oficial podrás consultar las constancias de inhabilitación de servidores públicos y particulares sancionados.';
-        let lengthOfPage = 440;
-
-        let splitHecho = doc.splitTextToSize(text,lengthOfPage);
-        for(let c = 0, stlength = splitHecho.length ; c <stlength; c++){
-            doc.text(splitHecho[c], 30,y);
-            y+=15;
-        }
-
-        y = 400;
-        text = 'Saludos del equipo de Plataforma Digital Nacional.';
-        splitHecho = doc.splitTextToSize(text,lengthOfPage);
-        for(var c = 0, stlength = splitHecho.length ; c <stlength; c++){
-            doc.text(splitHecho[c], 30,y);
-            y+=15;
-        }
-
-
-        doc.setFontSize(8);
-        let t = 'Avenida Coyoacán No. 1501, Col del Valle Centro, Del. Benito Juárez, C.P.03300, Ciudad de México.';
-        doc.text(t,this.getX(doc, t),730);
-        t = 'Teléfono: 5200-1500, ext. 00000';
-        doc.text(t,this.getX(doc, t),740);
-        doc.save('test.pdf');
-    }
     render() {
         const {classes, handleClose, servidor, control} = this.props;
         const {open,id} = this.state;

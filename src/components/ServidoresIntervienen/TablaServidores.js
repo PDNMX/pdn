@@ -166,13 +166,13 @@ class EnhancedTable extends React.Component {
     };
 
     changeLevel = e => {
-        let nivel = e.target.value;
+        const nivel = e.target.value;
         this.setState({nivel: nivel},() => {
             this.loadEntites(nivel);
         });
     };
 
-    componentDidMount() {
+    componentWillMount() {
         this.loadEntites("ANY");
     }
 
@@ -351,7 +351,7 @@ class EnhancedTable extends React.Component {
             this.fetchData()
         });
     };
-    
+
     handleChangeCampo = (varState, event) => {
         this.setState({
             [varState]: event ? (event.target ? event.target.value : event.value) : ''
