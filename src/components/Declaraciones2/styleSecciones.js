@@ -1,4 +1,31 @@
 export default (theme) => ({
+	rootPrincipal: {
+		flexGrow: 1,
+		width: '100%',
+		padding: theme.spacing(2)
+	},
+	tituloSeccion: {
+		color: '#2EB2E7',
+		fontSize: 20,
+		fontWeight: 'bold'
+	},
+	paper: {
+		padding: theme.spacing(2)
+	},
+	cardTitle: {
+		fontSize: 13,
+		fontWeight: 'bold',
+		marginBottom: 10,
+		color: '#666666'
+	},
+	card: {
+		fontSize: 14,
+		paddingLeft: 20,
+		marginBottom: 10,
+		paddingBottom: 10
+	}
+
+	/******************
 	root: {
 		flexGrow: 1
 	},
@@ -244,11 +271,10 @@ export default (theme) => ({
 		color: '#666666'
 	},
 	perfilRoot: {
-		paddingBottom: theme.spacing(2),
-		paddingTop: theme.spacing(2)
+		paddingBottom: theme.spacing(4),
+		paddingTop: theme.spacing(4)
 	},
 	alertPrimary: {
-		fontWeight: 'bolder',
 		color: '#004085',
 		backgroundColor: '#cce5ff',
 		borderColor: '#b8daff',
@@ -258,7 +284,6 @@ export default (theme) => ({
 		marginBottom: '1rem'
 	},
 	alertSecondary: {
-		fontWeight: 'bolder',
 		color: '#383d41',
 		backgroundColor: '#e2e3e5',
 		borderColor: '#d6d8db',
@@ -268,7 +293,6 @@ export default (theme) => ({
 		marginBottom: '1rem'
 	},
 	alertSuccess: {
-		fontWeight: 'bolder',
 		color: '#155724',
 		backgroundColor: '#d4edda',
 		borderColor: '#c3e6cb',
@@ -278,7 +302,6 @@ export default (theme) => ({
 		marginBottom: '1rem'
 	},
 	alertDanger: {
-		fontWeight: 'bolder',
 		color: '#721c24',
 		backgroundColor: '#f8d7da',
 		borderColor: '#f5c6cb',
@@ -288,7 +311,6 @@ export default (theme) => ({
 		marginBottom: '1rem'
 	},
 	alertWarning: {
-		fontWeight: 'bolder',
 		color: '#856404',
 		backgroundColor: '#fff3cd',
 		borderColor: '#ffeeba',
@@ -298,7 +320,6 @@ export default (theme) => ({
 		marginBottom: '1rem'
 	},
 	alertInfo: {
-		fontWeight: 'bolder',
 		color: '#0c5460',
 		backgroundColor: '#d1ecf1',
 		borderColor: '#bee5eb',
@@ -308,7 +329,6 @@ export default (theme) => ({
 		marginBottom: '1rem'
 	},
 	alertLight: {
-		fontWeight: 'bolder',
 		color: '#818182',
 		backgroundColor: '#fefefe',
 		borderColor: '#fdfdfe',
@@ -318,7 +338,6 @@ export default (theme) => ({
 		marginBottom: '1rem'
 	},
 	alertDark: {
-		fontWeight: 'bolder',
 		color: '#1b1e21',
 		backgroundColor: '#d6d8d9',
 		borderColor: '#c6c8ca',
@@ -326,5 +345,6 @@ export default (theme) => ({
 		borderRadius: '.25rem',
 		padding: '.75rem 1.25rem',
 		marginBottom: '1rem'
-	}
+    }
+    ************/
 });

@@ -12,6 +12,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 
+import { inicial, modificacion, conclusion } from './data';
+
 function desc(a, b, orderBy) {
 	if (b[orderBy] < a[orderBy]) {
 		return -1;
@@ -165,7 +167,7 @@ export default function EnhancedTable(props) {
 
 	const handleClick = (event, name) => {
 		console.log(name);
-		props.handleDataSelect(name);
+		props.handleDataSelect(inicial);
 	};
 
 	const handleChangePage = (event, newPage) => {
