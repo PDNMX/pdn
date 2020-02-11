@@ -514,8 +514,7 @@ class TablaServidores extends React.Component {
                                                                padding="default">{nombrecompleto || `${nombres} ${primerApellido} ${segundoApellido}`}</TableCell>
                                                     <TableCell>{dependencia? dependencia.nombre : institucionDependencia.nombre}</TableCell>
                                                     <TableCell>{puesto.nombre}</TableCell>
-                                                    <TableCell>{/*n.tipo_actos*/}</TableCell>
-
+                                                    {/*<TableCell>{n.tipo_actos}</TableCell>*/}
                                                 </TableRow>
                                             );
                                         })

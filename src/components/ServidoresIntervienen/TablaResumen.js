@@ -8,9 +8,10 @@ import TableRow from '@material-ui/core/TableRow';
 import Grid from "@material-ui/core/Grid";
 import {Typography} from "@material-ui/core";
 import TableHead from "@material-ui/core/TableHead";
-import IconSubdirectory from "@material-ui/icons/SubdirectoryArrowRight";
+import SubdirectoryArrowRightIcon from '@material-ui/icons/SubdirectoryArrowRight';
 import Tooltip from "@material-ui/core/Tooltip";
 import IconSunny from "@material-ui/icons/WbSunny";
+import Fab from "@material-ui/core/Fab";
 
 const styles = theme => ({
     table: {
@@ -36,6 +37,10 @@ const styles = theme => ({
     },
     tableBody:{
         backgroundColor: '#f2f2f2'
+    },
+    fab: {
+        margin: theme.spacing(1),
+        backgroundColor: '#ffe01b'
     }
 });
 
@@ -56,7 +61,7 @@ class TablaResumen extends React.Component {
 
                         <Typography variant="body1" paragraph>
                             La siguiente tabla muestra un resumen de resultados por cada Proveedor de información
-                            disponible. Pulsa en <IconSubdirectory className={classes.iconoVer}/> para ver más
+                            disponible. Pulsa en <SubdirectoryArrowRightIcon/> para ver más
                         </Typography>
 
                     </Grid>
@@ -97,9 +102,11 @@ class TablaResumen extends React.Component {
                                             <TableCell align="center">{row.totalRows}</TableCell>
                                             <TableCell align="center">
                                                 <Tooltip title={"Ver"}>
-                                                    <IconSubdirectory className={classes.iconoVer} onClick={() => {
+                                                    <Fab size="small" className={classes.fab} onClick={() => {
                                                         handleSearchSupplier(row.supplier_id);
-                                                    }}/>
+                                                    }}>
+                                                        <SubdirectoryArrowRightIcon/>
+                                                    </Fab>
                                                 </Tooltip>
                                             </TableCell>
                                         </TableRow>
