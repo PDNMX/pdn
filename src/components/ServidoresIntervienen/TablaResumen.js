@@ -85,25 +85,22 @@ class TablaResumen extends React.Component {
                                 </TableHead>
 
                                 <TableBody className={classes.tableBody}>
-                                    {summaryData.map(row => (
-                                        <TableRow key={row.sujeto_obligado}>
-                                            <TableCell align="left">{row.nivel}</TableCell>
-                                            <TableCell align="left">{row.sujeto_obligado}</TableCell>
+                                    {summaryData.map((row, index) => (
+                                        <TableRow key={index}>
+                                            <TableCell align="left">{row.levels}</TableCell>
+                                            <TableCell align="left">{row.supplier_name}</TableCell>
                                             <TableCell align="center">
-                                                <Tooltip title={row.estatus ? " Conectado" : " No conectado"}>
-                                                    <IconSunny color={row.estatus ? "primary" : "disabled"}/>
+                                                <Tooltip title={row.error ? " No conectado" : " Conectado"}>
+                                                    <IconSunny color={row.error ? "disabled" : "primary"}/>
                                                 </Tooltip>
                                             </TableCell>
                                             <TableCell align="center">{row.totalRows}</TableCell>
                                             <TableCell align="center">
-                                                {row.estatus && row.totalRows > 0 &&
                                                 <Tooltip title={"Ver"}>
                                                     <IconSubdirectory className={classes.iconoVer} onClick={() => {
-                                                        handleSearchSupplier(row.clave_api);
+                                                        handleSearchSupplier(row.supplier_id);
                                                     }}/>
                                                 </Tooltip>
-
-                                                }
                                             </TableCell>
                                         </TableRow>
                                     ))}

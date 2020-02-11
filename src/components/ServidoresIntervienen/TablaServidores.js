@@ -111,7 +111,7 @@ function getSorting(order, orderBy) {
         : (a, b) => (a[orderBy] < b[orderBy] ? -1 : 1);
 }
 
-class EnhancedTable extends React.Component {
+class TablaServidores extends React.Component {
     constructor(props) {
         super(props);
 
@@ -123,7 +123,7 @@ class EnhancedTable extends React.Component {
             apellidoUno: '',
             apellidoDos: '',
             summaryData: [],
-            filterData: null,
+            results: null,
             page: 0,
             rowsPerPage: 10,
             procedimiento: 'todos',
@@ -133,7 +133,6 @@ class EnhancedTable extends React.Component {
             current_entity: "ANY",
             loading: false,
             totalRows: 0,
-            filterDataAll: [],
             error: false,
             nivel: 'todos',
             mostrarPanelResumen: true
@@ -143,13 +142,12 @@ class EnhancedTable extends React.Component {
     loadEntites = nivel => {
         let options = {
             uri: process.env.REACT_APP_S2_BACKEND + "/api/v1/entities",
-            //uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/s2/dependencias',
             json: true,
             method: "post",
             body: {}
         };
 
-        if (nivel !== 'ANY'){
+        if (nivel !== 'todos'){
             options.body.nivel_gobierno = nivel
         }
 
@@ -172,8 +170,8 @@ class EnhancedTable extends React.Component {
         });
     };
 
-    componentWillMount() {
-        this.loadEntites("ANY");
+    componentDidMount() {
+        this.loadEntites("todos");
     }
 
     toggleShowSummary = () => {
@@ -227,13 +225,11 @@ class EnhancedTable extends React.Component {
         });
     };
 
-    isSelected = id => this.state.selected.indexOf(id) !== -1;
-
     //busqueda en varias URLs
     handleBroadSearch = () => {
 
         this.setState({
-            filterData: null,
+            results: null,
             summaryData: null,
             loading: true
             }, () => {
@@ -248,7 +244,10 @@ class EnhancedTable extends React.Component {
             } = this.state;
 
             let filtros = {};
-            let offset = 0;
+
+            if(nivel && nivel !== 'todos') {
+                filtros.nivel_gobierno = nivel;
+            }
 
             if (nombreServidor) filtros.nombres = nombreServidor;
             if (apellidoUno) filtros.primer_apellido = apellidoUno;
@@ -256,18 +255,11 @@ class EnhancedTable extends React.Component {
             if (procedimiento && procedimiento !== 'todos') filtros.procedimiento = procedimiento;
             if (current_entity && current_entity !== 'ANY') filtros.institucion = current_entity;
 
-            let limit =  this.state.rowsPerPage;
-
             let options = {
                 method: 'POST',
-                uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/s2/getPrevio',
+                uri: process.env.REACT_APP_S2_BACKEND +  '/api/v1/summary',
                 json: true,
-                body: {
-                    filtros: filtros,
-                    limit: limit,
-                    offset: offset,
-                    nivel: nivel
-                }
+                body: filtros
             };
 
             rp(options).then(res => {
@@ -298,7 +290,7 @@ class EnhancedTable extends React.Component {
             procedimiento,
             rowsPerPage,
             page,
-            api
+            supplier_id
         } = this.state;
 
         let filtros = {};
@@ -308,28 +300,26 @@ class EnhancedTable extends React.Component {
         if (current_entity && current_entity !== 'ANY') filtros.institucion = current_entity;
         if (procedimiento && procedimiento !== 'todos') filtros.procedimiento = procedimiento;
 
-        let offset = (rowsPerPage * page);
-
         let options = {
             method: 'POST',
-            uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/s2',
+            uri: process.env.REACT_APP_S2_BACKEND + '/api/v1/search',
             json: true,
             body: {
                 filtros: filtros,
-                limit: rowsPerPage,
-                offset: offset,
-                clave_api: api
+                page: page,
+                pageSize: rowsPerPage,
+                supplier_id: supplier_id
             }
         };
 
         rp(options).then(res => {
-            const {data, totalRows} = res;
+            const {results, pagination} = res;
             //console.log(data)
 
             this.setState({
                 loading: false,
-                filterData: data,
-                totalRows: totalRows
+                results: results,
+                totalRows: pagination.totalRows
             });
 
         }).catch(err => {
@@ -342,17 +332,18 @@ class EnhancedTable extends React.Component {
 
     };
 
-    handleSearchSupplier = api => {
+    handleSearchSupplier = supplier_id => {
+        console.log(supplier_id);
         this.setState({
             page: 0,
             loading: true,
-            api: api
+            supplier_id: supplier_id
         }, () => {
             this.fetchData()
         });
     };
 
-    handleChangeCampo = (varState, event) => {
+    handleSetState = (varState, event) => {
         this.setState({
             [varState]: event ? (event.target ? event.target.value : event.value) : ''
         });
@@ -360,7 +351,7 @@ class EnhancedTable extends React.Component {
 
     handleCleanAll = () => {
         this.setState({
-            filterData: null,
+            results: null,
             summaryData : null,
             nivel : 'todos',
             nombreServidor: "",
@@ -380,7 +371,7 @@ class EnhancedTable extends React.Component {
             selected,
             rowsPerPage,
             page,
-            filterData,
+            results,
             totalRows,
             entities,
             current_entity,
@@ -427,7 +418,7 @@ class EnhancedTable extends React.Component {
                     <Grid item xs={12} className={classes.toolBarStyle}>
                         <BusquedaServidor handleCleanAll={this.handleCleanAll}
                                           handleSearch={this.handleBroadSearch}
-                                          handleChangeCampo={this.handleChangeCampo}
+                                          handleSetState={this.handleSetState}
                                           nombreServidor={nombreServidor}
                                           apellidoUno={apellidoUno}
                                           apellidoDos={apellidoDos}
@@ -439,11 +430,13 @@ class EnhancedTable extends React.Component {
                                           handleError={this.handleError}
                         />
                     </Grid>
+
                     <Grid item xs={12}>
                         <DetalleServidorSancionado handleClose={this.handleClose}
                                                    servidor={elementoSeleccionado}
                                                    control={open}/>
                     </Grid>
+
                     <Grid item xs={12}>
                         {
                             loading &&
@@ -459,6 +452,8 @@ class EnhancedTable extends React.Component {
                             this.state.error && <MensajeErrorDatos/>
                         }
                     </Grid>
+
+
                     <Grid item xs={12} className={classes.section}>
                         {summaryData && summaryData.length > 0 &&
                         <div>
@@ -479,19 +474,19 @@ class EnhancedTable extends React.Component {
                             </div>
                         </div>
                         }
-
                     </Grid>
-                    <Grid item xs={12} className={classes.section}>
-                        {
-                            filterData && filterData.length > 0 &&
-                            <Typography variant={"h6"} className={classes.desc} paragraph>
-                                Pulsa sobre el registro para ver su detalle
-                            </Typography>
-                        }
 
-                    </Grid>
+                </Grid>
+
+                {results && results.length > 0 &&
+                <Grid container justify={'center'} spacing={0} className={classes.gridTable}>
                     <Grid item xs={12} className={classes.section}>
-                        {filterData && filterData.length > 0 &&
+                        <Typography variant={"h6"} className={classes.desc} paragraph>
+                            Pulsa sobre el registro para ver su detalle
+                        </Typography>
+                    </Grid>
+
+                    <Grid item xs={12} className={classes.section}>
                         <div className={classes.container}>
                             <Table aria-describedby="spinnerLoading" id={'tableServidores'}
                                    aria-busy={this.state.loading} aria-labelledby="tableTitle">
@@ -503,30 +498,26 @@ class EnhancedTable extends React.Component {
                                     columnData={columnData}
                                 />
                                 <TableBody>
-                                    {filterData
+                                    {results
                                         .sort(getSorting(order, orderBy))
                                         .map(n => {
-                                            const isSelected = this.isSelected(n.id);
                                             return (
                                                 <TableRow
                                                     hover
                                                     onClick={event => this.handleClick(event, n)}
-                                                    role="checkbox"
-                                                    aria-checked={isSelected}
                                                     tabIndex={-1}
                                                     key={n.id}
-                                                    selected={isSelected}
                                                 >
-                                                    
                                                     <TableCell component="th" scope="row" style={{width: '25%'}}
-                                                               padding="default">{n.servidor}</TableCell>
-                                                    <TableCell>{n.institucion.nombre}</TableCell>
-                                                    <TableCell>{n.puesto.nombre}</TableCell>
-                                                    <TableCell>{n.tipo_actos}</TableCell>
+                                                               padding="default">{/*n.servidor*/}</TableCell>
+                                                    <TableCell>{/*n.institucion.nombre*/}</TableCell>
+                                                    <TableCell>{/*n.puesto.nombre*/}</TableCell>
+                                                    <TableCell>{/*n.tipo_actos*/}</TableCell>
 
                                                 </TableRow>
                                             );
-                                        })}
+                                        })
+                                    }
                                     {/*
                                         emptyRows > 0 && (
                                         <TableRow style={{height: 49 * emptyRows}}>
@@ -563,25 +554,23 @@ class EnhancedTable extends React.Component {
                                 </TableFooter>
                             </Table>
                         </div>
-                        }
-
                     </Grid>
-
                 </Grid>
+                }
+
                 <Grid container spacing={0} justify="center" className={classes.containerD}>
                     <Grid item xs={12} className={classes.itemD}>
-
                         <Descarga url={process.env.REACT_APP_BULK_S2}/>
-
                     </Grid>
                 </Grid>
+
             </div>
         );
     }
 }
 
-EnhancedTable.propTypes = {
+TablaServidores.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(EnhancedTable);
+export default withStyles(styles)(TablaServidores);

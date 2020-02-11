@@ -48,13 +48,13 @@ class BusquedaServidor extends React.Component {
     };
 
     buscar = () => {
-        this.props.handleSearch('FIELD_FILTER');
+        this.props.handleSearch();
     };
 
     render() {
         const {
             classes,
-            handleChangeCampo,
+            handleSetState,
             nombreServidor,
             apellidoUno,
             apellidoDos,
@@ -79,7 +79,7 @@ class BusquedaServidor extends React.Component {
                                 id="search"
                                 label="Nombre(s)"
                                 type="search"
-                                onChange={(e) => handleChangeCampo('nombreServidor', e)}
+                                onChange={(e) => handleSetState('nombreServidor', e)}
                                 value={nombreServidor}
                                 InputLabelProps={{
                                     className: classes.inputShrink,
@@ -95,7 +95,7 @@ class BusquedaServidor extends React.Component {
                                 id="search"
                                 label="Primer apellido"
                                 type="search"
-                                onChange={(e) => handleChangeCampo('apellidoUno', e)}
+                                onChange={(e) => handleSetState('apellidoUno', e)}
                                 value={apellidoUno}
                                 InputLabelProps={{
                                     className: classes.inputShrink,
@@ -111,7 +111,7 @@ class BusquedaServidor extends React.Component {
                                 id="search"
                                 label="Segundo apellido"
                                 type="search"
-                                onChange={(e) => handleChangeCampo('apellidoDos', e)}
+                                onChange={(e) => handleSetState('apellidoDos', e)}
                                 value={apellidoDos}
                                 InputLabelProps={{
                                     className: classes.inputShrink,
@@ -126,7 +126,7 @@ class BusquedaServidor extends React.Component {
                             <InputLabel htmlFor="campoSelectProcedimiento"> Tipo de procedimiento</InputLabel>
                             <Select style={{marginTop:'0px'}}
                                     value={procedimiento}
-                                    onChange={(e) => handleChangeCampo('procedimiento', e)}
+                                    onChange={(e) => handleSetState('procedimiento', e)}
                                     inputProps={{
                                         name: 'campoSelectProcedimiento',
                                         id: 'campoSelectProcedimiento',
@@ -147,7 +147,7 @@ class BusquedaServidor extends React.Component {
                         <FormControl className={classes.formControl}>
                             <InputLabel htmlFor={'campoSelectInstitucion'}>Institución</InputLabel>
                             <Select style={{marginTop: '0px'}} value={current_entity}
-                                    onChange={(e) => handleChangeCampo('current_entity', e)}
+                                    onChange={(e) => handleSetState('current_entity', e)}
                                     inputProps={{
                                         name: 'campoSelectInstitucion',
                                         id: 'campoSelectInstitucion',
@@ -187,15 +187,14 @@ class BusquedaServidor extends React.Component {
                     </Grid>
 
                     <Grid item xs={12} md={6} align="right">
-                        <Button variant="contained" color="secondary" className={classes.button} onClick={this.buscar}>
-                            Buscar
-                        </Button>
-
                         <Button variant="contained" color="secondary" className={classes.button}
                                 onClick={this.limpiarBusqueda}>
                             Limpiar
                         </Button>
 
+                        <Button variant="contained" color="secondary" className={classes.button} onClick={this.buscar}>
+                            Buscar
+                        </Button>
                     </Grid>
                 </Grid>
             </div>

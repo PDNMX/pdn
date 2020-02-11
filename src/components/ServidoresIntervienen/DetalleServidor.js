@@ -16,11 +16,9 @@ import Button from "@material-ui/core/Button";
 import DialogActions from "@material-ui/core/DialogActions";
 import glosario from "../Utils/glosario.json";
 
-function getGlosarioItem(id){
-    return glosario.servidores[id];
-}
+const getGlosarioItem = id => glosario.servidores[id];
 
-function getModalStyle() {
+const getModalStyle = () => {
     const top = 50;
     const left = 50;
     return {
@@ -30,7 +28,7 @@ function getModalStyle() {
         maxHeight: `calc(100vh - 225px)`,
         overflowY: "auto"
     };
-}
+};
 
 const styles = theme => ({
     paper: {
@@ -97,8 +95,7 @@ const styles = theme => ({
 class DetalleServidor extends React.Component {
     state = {
         open: false,
-        id : 0,
-
+        id : 0
     };
 
     openPoper = () => {
@@ -136,6 +133,7 @@ class DetalleServidor extends React.Component {
                     </div>
 
                 </Modal>
+
                 <Modal
                     aria-labelledby="simple-modal-title"
                     aria-describedby="simple-modal-description"
@@ -250,7 +248,9 @@ class DetalleServidor extends React.Component {
                                 <TextField
                                     id="read-only-input"
                                     label="Periodo ejercicio"
-                                    defaultValue={servidor.periodo_ejercicio ? servidor.periodo_ejercicio.fecha_inicial + " - " + servidor.periodo_ejercicio.fecha_final : servidor.periodo_ejercicio}
+                                    defaultValue={servidor.periodo_ejercicio ?
+                                        servidor.periodo_ejercicio.fecha_inicial + " - " + servidor.periodo_ejercicio.fecha_final
+                                        : servidor.periodo_ejercicio}
                                     className={classes.textField}
                                     margin="normal"
                                     multiline={true}
@@ -381,7 +381,6 @@ class DetalleServidor extends React.Component {
                                     }}
                                 />
                             </Grid>
-                            <Grid item md={6} xs={12}></Grid>
 
                         </Grid>
 
