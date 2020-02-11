@@ -21,15 +21,17 @@ class EnhancedTableHead extends React.Component {
 
     render() {
         const {order, orderBy, classes,columnData} = this.props;
+
+        const columnData_ = columnData.filter(c => c.mostrar === true );
+
         return (
             <TableHead style={{backgroundColor:'#f5f5f5'}}>
                 <TableRow>
                     {
-                        columnData.map(column => {
-                         if (column.mostrar) {
+                        columnData_.map((column, index) => {
                             return (
                                 <TableCell
-                                    key={column.id}
+                                    key={index}
                                     numeric={column.numeric}
                                     padding={column.disablePadding ? 'none' : 'default'}
                                     sortDirection={orderBy === column.id ? order : false}
@@ -51,22 +53,8 @@ class EnhancedTableHead extends React.Component {
                                     </Tooltip>
                                 </TableCell>
                             );
-                        }
-                        return true;
-                    }, this)
+                        })
                     }
-                    {
-                        this.props.acciones &&
-                        <TableCell>
-                            {
-                                <Typography className={classes.tableHead} variant={"body1"}>
-                                    Acciones
-                                </Typography>
-                            }
-                        </TableCell>
-                    }
-
-
                 </TableRow>
             </TableHead>
         );

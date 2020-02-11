@@ -500,18 +500,20 @@ class TablaServidores extends React.Component {
                                 <TableBody>
                                     {results
                                         .sort(getSorting(order, orderBy))
-                                        .map(n => {
+                                        .map((n, index) => {
+                                            const {nombrecompleto, nombres, primerApellido, segundoApellido, dependencia, institucionDependencia, puesto} = n;
+
                                             return (
                                                 <TableRow
                                                     hover
                                                     onClick={event => this.handleClick(event, n)}
                                                     tabIndex={-1}
-                                                    key={n.id}
+                                                    key={index}
                                                 >
                                                     <TableCell component="th" scope="row" style={{width: '25%'}}
-                                                               padding="default">{/*n.servidor*/}</TableCell>
-                                                    <TableCell>{/*n.institucion.nombre*/}</TableCell>
-                                                    <TableCell>{/*n.puesto.nombre*/}</TableCell>
+                                                               padding="default">{nombrecompleto || `${nombres} ${primerApellido} ${segundoApellido}`}</TableCell>
+                                                    <TableCell>{dependencia? dependencia.nombre : institucionDependencia.nombre}</TableCell>
+                                                    <TableCell>{puesto.nombre}</TableCell>
                                                     <TableCell>{/*n.tipo_actos*/}</TableCell>
 
                                                 </TableRow>
