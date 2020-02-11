@@ -118,7 +118,6 @@ class TablaServidores extends React.Component {
         this.state = {
             order: 'asc',
             orderBy: 'servidor',
-            selected: [],
             nombreServidor: '',
             apellidoUno: '',
             apellidoDos: '',
@@ -368,7 +367,6 @@ class TablaServidores extends React.Component {
         const {
             order,
             orderBy,
-            selected,
             rowsPerPage,
             page,
             results,
@@ -491,7 +489,6 @@ class TablaServidores extends React.Component {
                             <Table aria-describedby="spinnerLoading" id={'tableServidores'}
                                    aria-busy={this.state.loading} aria-labelledby="tableTitle">
                                 <EnhancedTableHead
-                                    numSelected={selected.length}
                                     order={order}
                                     orderBy={orderBy}
                                     onRequestSort={this.handleRequestSort}
