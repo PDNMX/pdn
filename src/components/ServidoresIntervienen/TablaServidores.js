@@ -123,7 +123,7 @@ class TablaServidores extends React.Component {
             apellidoDos: '',
             summaryData: [],
             results: null,
-            page: 0,
+            page: 0, // en el front end page inicia en 0
             rowsPerPage: 10,
             procedimiento: 'todos',
             open: false,
@@ -207,7 +207,7 @@ class TablaServidores extends React.Component {
     };
 
     handleChangePage = (event, page) => {
-        //console.log(page);
+        //log(page);
         this.setState({
             page: page
         }, () => {
@@ -249,8 +249,8 @@ class TablaServidores extends React.Component {
             }
 
             if (nombreServidor) filtros.nombres = nombreServidor;
-            if (apellidoUno) filtros.primer_apellido = apellidoUno;
-            if (apellidoDos) filtros.segundo_apellido = apellidoDos;
+            if (apellidoUno) filtros.primerApellido = apellidoUno;
+            if (apellidoDos) filtros.segundoApellido = apellidoDos;
             if (procedimiento && procedimiento !== 'todos') filtros.procedimiento = procedimiento;
             if (current_entity && current_entity !== 'ANY') filtros.institucion = current_entity;
 
@@ -294,8 +294,8 @@ class TablaServidores extends React.Component {
 
         let filtros = {};
         if (nombreServidor) filtros.nombres = nombreServidor;
-        if (apellidoUno) filtros.primer_apellido = apellidoUno;
-        if (apellidoDos) filtros.segundo_apellido = apellidoDos;
+        if (apellidoUno) filtros.primerApellido = apellidoUno;
+        if (apellidoDos) filtros.segundoApellido = apellidoDos;
         if (current_entity && current_entity !== 'ANY') filtros.institucion = current_entity;
         if (procedimiento && procedimiento !== 'todos') filtros.procedimiento = procedimiento;
 
@@ -305,7 +305,7 @@ class TablaServidores extends React.Component {
             json: true,
             body: {
                 filtros: filtros,
-                page: page,
+                page: page + 1, //en el backend page inicia en 1
                 pageSize: rowsPerPage,
                 supplier_id: supplier_id
             }
@@ -335,6 +335,7 @@ class TablaServidores extends React.Component {
         console.log(supplier_id);
         this.setState({
             page: 0,
+            rowsPerPage: 10,
             loading: true,
             supplier_id: supplier_id
         }, () => {
