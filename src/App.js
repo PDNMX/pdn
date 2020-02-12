@@ -109,10 +109,6 @@ class App extends React.Component {
     this.state = {};
   }
 
-  componentWillMount() {
-    //this.initializeReactGA();
-  }
-
   handleRecovery = email => {
     app
       .auth()
@@ -137,14 +133,6 @@ class App extends React.Component {
         });
       });
   };
-
-  /*
-    initializeReactGA = () => {
-        ReactGA.initialize('UA-131031213-1');
-        ReactGA.pageview('/');
-        ReactGA.pageview('/sancionados');
-        ReactGA.pageview('/servidores');
-    };*/
 
   render() {
     return (
