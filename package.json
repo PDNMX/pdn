@@ -38,6 +38,7 @@
     "react-dom": "^16.8.0",
     "react-ga": "^2.6.0",
     "react-json-view": "^1.19.1",
+    "react-particles-js": "^2.7.0",
     "react-recaptcha-google": "^1.1.1",
     "react-redux": "^5.0.7",
     "react-router-dom": "^5.0.1",
