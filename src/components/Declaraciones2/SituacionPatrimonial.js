@@ -54,6 +54,22 @@ function opcion(valor, data) {
 			return <DatosPareja data={data.datosPareja} />;
 		case 6:
 			return <DependientesEconomicos data={data.datosDependienteEconomico} />;
+		// case 7:
+		// 	return <DatosGenerales data={data.datosGenerales} />;
+		// case 8:
+		// 	return <DatosGenerales data={data.datosGenerales} />;
+		// case 9:
+		// 	return <DatosGenerales data={data.datosGenerales} />;
+		// case 10:
+		// 	return <DatosGenerales data={data.datosGenerales} />;
+		// case 11:
+		// 	return <DatosGenerales data={data.datosGenerales} />;
+		// case 12:
+		// 	return <DatosGenerales data={data.datosGenerales} />;
+		// case 13:
+		// 	return <DatosGenerales data={data.datosGenerales} />;
+		// case 14:
+		// 	return <DatosGenerales data={data.datosGenerales} />;		
 		default:
 			break;
 	}
