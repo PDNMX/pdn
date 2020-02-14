@@ -157,9 +157,9 @@ class BusquedaServidor extends React.Component {
                                     Cualquiera
                                 </MenuItem>
                                 {
-                                    entities.map(((item, index) => {
-                                        return <MenuItem value={item.value} key={index}>
-                                            {item.label}
+                                    entities.map(((entity, index) => {
+                                        return <MenuItem value={entity} key={index}>
+                                            {entity.nombre}
                                         </MenuItem>
                                     }))
                                 }

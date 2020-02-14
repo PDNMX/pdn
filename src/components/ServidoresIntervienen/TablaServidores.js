@@ -151,10 +151,10 @@ class TablaServidores extends React.Component {
         }
 
         rp(options).then(data => {
-            let new_entities = data.map( d => ({value: d.nombre, label: d.nombre, supplier_id: d.supplier_id}) );
+            //let new_entities = data.map( d => ({value: d.nombre, label: d.nombre, supplier_id: d.supplier_id}) );
 
             this.setState({
-                entities: new_entities,
+                entities: data, //new_entities,
                 current_entity: "ANY"
             });
         }).catch(err => {
@@ -239,7 +239,7 @@ class TablaServidores extends React.Component {
                 apellidoUno,
                 apellidoDos,
                 procedimiento,
-                nivel
+                nivel,
             } = this.state;
 
             let filtros = {};
@@ -304,7 +304,7 @@ class TablaServidores extends React.Component {
             uri: process.env.REACT_APP_S2_BACKEND + '/api/v1/search',
             json: true,
             body: {
-                filtros: filtros,
+                ...filtros,
                 page: page + 1, //en el backend page inicia en 1
                 pageSize: rowsPerPage,
                 supplier_id: supplier_id
