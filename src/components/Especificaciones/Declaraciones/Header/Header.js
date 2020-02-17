@@ -105,7 +105,7 @@ class Header extends React.Component{
                         params={{
                             "particles": {
                                 "number": {
-                                    "value": 20,
+                                    "value": 24,
                                     
                                 },
                                 "line_linked": {
@@ -121,37 +121,37 @@ class Header extends React.Component{
                                     ],
                                     "images": [
                                         {
-                                            "src": "/img/flotantes/especificaciones/1.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/especificaciones/1.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/especificaciones/2.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/especificaciones/2.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/especificaciones/3.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/especificaciones/3.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/especificaciones/4.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/especificaciones/4.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/especificaciones/5.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/especificaciones/5.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/especificaciones/6.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/especificaciones/6.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/especificaciones/7.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/especificaciones/7.svg",
                                             "height": 30,
                                             "width": 30
                                         },

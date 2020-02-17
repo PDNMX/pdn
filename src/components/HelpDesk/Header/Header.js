@@ -100,7 +100,7 @@ class Header extends React.Component{
                         params={{
                             "particles": {
                                 "number": {
-                                    "value": 20,
+                                    "value": 24,
                                     
                                 },
                                 "line_linked": {
@@ -116,72 +116,72 @@ class Header extends React.Component{
                                     ],
                                     "images": [
                                         {
-                                            "src": "/img/flotantes/mesa_ayuda/1.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/mesa_ayuda/1.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/mesa_ayuda/2.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/mesa_ayuda/2.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/mesa_ayuda/3.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/mesa_ayuda/3.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/mesa_ayuda/4.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/mesa_ayuda/4.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/mesa_ayuda/5.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/mesa_ayuda/5.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/mesa_ayuda/6.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/mesa_ayuda/6.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/mesa_ayuda/7.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/mesa_ayuda/7.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/mesa_ayuda/8.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/mesa_ayuda/8.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/mesa_ayuda/9.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/mesa_ayuda/9.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/mesa_ayuda/10.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/mesa_ayuda/10.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/mesa_ayuda/11.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/mesa_ayuda/11.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/mesa_ayuda/12.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/mesa_ayuda/12.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/mesa_ayuda/13.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/mesa_ayuda/13.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/mesa_ayuda/14.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/mesa_ayuda/14.svg",
                                             "height": 30,
                                             "width": 30
                                         },

@@ -111,7 +111,7 @@ class Header extends React.Component {
                         params={{
                             "particles": {
                                 "number": {
-                                    "value": 20,
+                                    "value": 24,
                                     
                                 },
                                 "line_linked": {
@@ -127,67 +127,67 @@ class Header extends React.Component {
                                     ],
                                     "images": [
                                         {
-                                            "src": "/img/flotantes/sancionados/1.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/sancionados/1.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/sancionados/2.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/sancionados/2.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/sancionados/3.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/sancionados/3.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/sancionados/4.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/sancionados/4.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/sancionados/5.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/sancionados/5.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/sancionados/6.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/sancionados/6.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/sancionados/7.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/sancionados/7.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/sancionados/8.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/sancionados/8.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/sancionados/9.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/sancionados/9.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/sancionados/10.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/sancionados/10.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/sancionados/11.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/sancionados/11.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/sancionados/12.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/sancionados/12.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/sancionados/13.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/sancionados/13.svg",
                                             "height": 30,
                                             "width": 30
                                         },

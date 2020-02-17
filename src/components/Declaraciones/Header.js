@@ -156,132 +156,122 @@ class Header extends React.Component {
                         ],
                         "images": [
                             {
-                                "src": "/img/flotantes/declaraciones/1.svg",
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/1.svg",
                                 "height": 30,
                                 "width": 30
                             },
                             {
-                                "src": "/img/flotantes/declaraciones/2.svg",
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/2.svg",
                                 "height": 30,
                                 "width": 30
                             },
                             {
-                                "src": "/img/flotantes/declaraciones/3.svg",
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/3.svg",
                                 "height": 30,
                                 "width": 30
                             },
                             {
-                                "src": "/img/flotantes/declaraciones/4.svg",
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/4.svg",
                                 "height": 30,
                                 "width": 30
                             },
                             {
-                                "src": "/img/flotantes/declaraciones/5.svg",
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/5.svg",
                                 "height": 30,
                                 "width": 30
                             },
                             {
-                                "src": "/img/flotantes/declaraciones/6.svg",
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/6.svg",
                                 "height": 30,
                                 "width": 30
                             },
                             {
-                                "src": "/img/flotantes/declaraciones/7.svg",
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/7.svg",
                                 "height": 30,
                                 "width": 30
                             },
                             {
-                                "src": "/img/flotantes/declaraciones/8.svg",
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/8.svg",
                                 "height": 30,
                                 "width": 30
                             },
                             {
-                                "src": "/img/flotantes/declaraciones/9.svg",
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/9.svg",
                                 "height": 30,
                                 "width": 30
                             },
                             {
-                                "src": "/img/flotantes/declaraciones/10.svg",
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/10.svg",
                                 "height": 30,
                                 "width": 30
                             },
                             {
-                                "src": "/img/flotantes/declaraciones/11.svg",
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/11.svg",
                                 "height": 30,
                                 "width": 30
                             },
                             {
-                                "src": "/img/flotantes/declaraciones/12.svg",
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/12.svg",
                                 "height": 30,
                                 "width": 30
                             },
                             {
-                                "src": "/img/flotantes/declaraciones/13.svg",
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/13.svg",
                                 "height": 30,
                                 "width": 30
                             },
                             {
-                              "src": "/img/flotantes/declaraciones/14.svg",
+                              "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/14.svg",
                               "height": 30,
                               "width": 30
                             },
                             {
-                                "src": "/img/flotantes/declaraciones/15.svg",
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/15.svg",
                                 "height": 30,
                                 "width": 30
                             },
                             {
-                                "src": "/img/flotantes/declaraciones/16.svg",
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/16.svg",
                                 "height": 30,
                                 "width": 30
                             },
                             {
-                                "src": "/img/flotantes/declaraciones/17.svg",
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/17.svg",
                                 "height": 30,
                                 "width": 30
                             },
                             {
-                                "src": "/img/flotantes/declaraciones/18.svg",
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/18.svg",
                                 "height": 30,
                                 "width": 30
                             },
                             {
-                                "src": "/img/flotantes/declaraciones/19.svg",
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/19.svg",
                                 "height": 30,
                                 "width": 30
                             },
                             {
-                                "src": "/img/flotantes/declaraciones/20.svg",
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/20.svg",
                                 "height": 30,
                                 "width": 30
                             },
                             {
-                                "src": "/img/flotantes/declaraciones/21.svg",
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/21.svg",
                                 "height": 30,
                                 "width": 30
                             },
                             {
-                                "src": "/img/flotantes/declaraciones/22.svg",
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/22.svg",
                                 "height": 30,
                                 "width": 30
                             },
                             {
-                                "src": "/img/flotantes/declaraciones/23.svg",
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/23.svg",
                                 "height": 30,
                                 "width": 30
                             },
                             {
-                                "src": "/img/flotantes/declaraciones/24.svg",
-                                "height": 30,
-                                "width": 30
-                            },
-                            {
-                                "src": "/img/flotantes/declaraciones/12.svg",
-                                "height": 30,
-                                "width": 30
-                            },
-                            {
-                                "src": "/img/flotantes/declaraciones/13.svg",
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/24.svg",
                                 "height": 30,
                                 "width": 30
                             },

@@ -106,7 +106,7 @@ class Header extends React.Component{
                         params={{
                             "particles": {
                                 "number": {
-                                    "value": 20,
+                                    "value": 24,
                                     
                                 },
                                 "line_linked": {
@@ -122,67 +122,67 @@ class Header extends React.Component{
                                     ],
                                     "images": [
                                         {
-                                            "src": "/img/flotantes/contrataciones/1.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/contrataciones/1.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/contrataciones/2.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/contrataciones/2.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/contrataciones/3.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/contrataciones/3.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/contrataciones/4.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/contrataciones/4.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/contrataciones/5.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/contrataciones/5.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/contrataciones/6.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/contrataciones/6.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/contrataciones/7.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/contrataciones/7.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/contrataciones/8.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/contrataciones/8.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/contrataciones/9.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/contrataciones/9.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/contrataciones/10.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/contrataciones/10.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/contrataciones/11.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/contrataciones/11.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/contrataciones/12.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/contrataciones/12.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/contrataciones/13.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/contrataciones/13.svg",
                                             "height": 30,
                                             "width": 30
                                         },

@@ -122,67 +122,67 @@ class Header extends React.Component{
                                     ],
                                     "images": [
                                         {
-                                            "src": "/img/flotantes/servidores/1.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/1.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/servidores/2.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/2.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/servidores/3.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/3.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/servidores/4.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/4.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/servidores/5.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/5.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/servidores/6.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/6.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/servidores/7.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/7.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/servidores/8.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/8.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/servidores/9.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/9.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/servidores/10.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/10.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/servidores/11.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/11.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/servidores/12.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/12.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/servidores/13.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/13.svg",
                                             "height": 30,
                                             "width": 30
                                         },

@@ -117,90 +117,90 @@ class Header extends React.Component{
                                     ],
                                     "images": [
                                         {
-                                            "src": "/img/flotantes/calidad_de_datos/1.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/calidad_de_datos/1.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/calidad_de_datos/2.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/calidad_de_datos/2.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/calidad_de_datos/3.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/calidad_de_datos/3.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/calidad_de_datos/4.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/calidad_de_datos/4.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/calidad_de_datos/5.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/calidad_de_datos/5.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/calidad_de_datos/6.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/calidad_de_datos/6.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/calidad_de_datos/7.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/calidad_de_datos/7.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/calidad_de_datos/8.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/calidad_de_datos/8.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/calidad_de_datos/9.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/calidad_de_datos/9.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/calidad_de_datos/10.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/calidad_de_datos/10.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/calidad_de_datos/11.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/calidad_de_datos/11.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/calidad_de_datos/12.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/calidad_de_datos/12.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/calidad_de_datos/13.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/calidad_de_datos/13.svg",
                                             "height": 30,
                                             "width": 30
                                         },{
-                                            "src": "/img/flotantes/calidad_de_datos/14.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/calidad_de_datos/14.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/calidad_de_datos/15.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/calidad_de_datos/15.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/calidad_de_datos/16.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/calidad_de_datos/16.svg",
                                             "height": 30,
                                             "width": 30
                                         },{
-                                            "src": "/img/flotantes/calidad_de_datos/17.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/calidad_de_datos/17.svg",
                                             "height": 30,
                                             "width": 30
                                         },
                                         {
-                                            "src": "/img/flotantes/calidad_de_datos/18.svg",
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/calidad_de_datos/18.svg",
                                             "height": 30,
                                             "width": 30
                                         },
