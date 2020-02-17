@@ -199,7 +199,7 @@ class Header extends React.Component{
                                     }
                                 }
                             },
-                            "retina_detect": false
+                            "retina_detect": true
                         }}
                     />
                     <Grid item xs={12} md={4} align={isWidthUp('md', this.props.width)? 'right':'center'} className={classes.item1}>

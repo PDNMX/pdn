@@ -199,7 +199,7 @@ class Header extends React.Component{
                                     }
                                 }
                             },
-                            "retina_detect": false
+                            "retina_detect": true
                         }}
                     />
 
