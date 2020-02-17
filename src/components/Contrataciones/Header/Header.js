@@ -107,7 +107,10 @@ class Header extends React.Component{
                             "particles": {
                                 "number": {
                                     "value": 24,
-                                    
+                                    "density": {
+                                        "enable": true,
+                                        "value_area": 800
+                                    }
                                 },
                                 "line_linked": {
                                     "enable": false
