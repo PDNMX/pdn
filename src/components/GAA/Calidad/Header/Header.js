@@ -7,18 +7,24 @@ import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
 import BG from '../../../../assets/img/calidad_datos.jpg';
 import BarraLogoMenu from "../../../Compartidos/BarraLogoMenu";
 import Logo from '../../../../assets/img/logocalidad_datos.svg';
-
+import Particles from 'react-particles-js';
 const style = theme => ({
         root: {
             flexGrow: 1,
         },
         container :{
-            height: '100%',
+            paddingTop: '75px',
+            paddingBottom: '75px',
+            paddingLeft: theme.spacing(1),
+            paddingRight: theme.spacing(1),
+            /* height: '100%',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
+            backgroundSize: 'cover', */
             position: 'relative',
-            backgroundImage: `url(${BG})`
+            // backgroundImage: `url(${BG})`
+            background: "rgb(6,13,21)",
+            background: "linear-gradient(0deg, rgba(6,13,21,1) 0%, rgba(64,114,129,1) 100%)",
         },
         link: {
             textDecoration: 'none',
@@ -48,14 +54,22 @@ const style = theme => ({
             paddingBottom: "40px"
         },
         logo: {
-            width: 160
+            maxWidth: 150,
         },
         caption: {
             marginTop: '50px',
             color: "#fff",
             fontSize: '36px',
             fontWeight: 300
-        }
+        },
+        particulas: {
+            width: '100%',
+            height: '100%',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            zIndex: 1,
+        },
     }
 );
 
@@ -66,7 +80,6 @@ class Header extends React.Component{
 
         return(
             <div className={classes.root}>
-
 
                <BarraLogoMenu/>
                 <Grid container spacing={0} className="breadcrumb" justify='center'>
@@ -82,8 +95,134 @@ class Header extends React.Component{
                     </Grid>
                 </Grid>
 
-                <Grid container spacing={0} style={{ padding: "82px 0"}} justify='center' className={classes.container}>
-
+                <Grid container spacing={0} /* style={{ padding: "82px 0"}} */ justify='center' className={classes.container}>
+                    <Particles 
+                        className={classes.particulas}
+                        params={{
+                            "particles": {
+                                "number": {
+                                    "value": 24,
+                                    "density": {
+                                        "enable": true,
+                                        "value_area": 800
+                                    }
+                                },
+                                "line_linked": {
+                                    "enable": false
+                                },
+                                "move": {
+                                    "speed": 1,
+                                    "out_mode": "out"
+                                },
+                                "shape": {
+                                    "type": [
+                                        "images"
+                                    ],
+                                    "images": [
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/calidad_de_datos/1.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/calidad_de_datos/2.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/calidad_de_datos/3.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/calidad_de_datos/4.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/calidad_de_datos/5.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/calidad_de_datos/6.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/calidad_de_datos/7.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/calidad_de_datos/8.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/calidad_de_datos/9.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/calidad_de_datos/10.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/calidad_de_datos/11.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/calidad_de_datos/12.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/calidad_de_datos/13.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },{
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/calidad_de_datos/14.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/calidad_de_datos/15.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/calidad_de_datos/16.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },{
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/calidad_de_datos/17.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/calidad_de_datos/18.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                    ]
+                                },
+                                "size": {
+                                    "value": 30,
+                                    "random": false,
+                                    "anim": {
+                                        "enable": true,
+                                        "speed": 4,
+                                        "size_min": 10,
+                                        "sync": false
+                                    }
+                                }
+                            },
+                            "retina_detect": true
+                        }}
+                    />
                     <Grid item xs={12} md={4} className={classes.item1} align={isWidthUp('md', this.props.width)? 'right':'center'}>
 
                         <img src={Logo} alt="Calidad" className={classes.logo}/>

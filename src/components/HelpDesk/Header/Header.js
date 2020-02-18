@@ -8,6 +8,8 @@ import BG from "../../../assets/img/mesa_ayuda.jpg";
 import Logo from '../../../assets/img/logomesa_ayuda.svg';
 import BarraLogoMenu from "../../Compartidos/BarraLogoMenu";
 
+import Particles from 'react-particles-js';
+
 const style = theme => ({
         root: {
             flexGrow:1,
@@ -28,24 +30,26 @@ const style = theme => ({
             maxWidth: 1200,
         },
         s2: {
-            maxWidth: '170px'
+            maxWidth: '150px'
         },
         whiteText: {
             color: '#fff'
         },
         pdnLogo: {
             maxWidth: 110,
-            paddingLeft: "40px",
+            /* paddingLeft: "40px",
             paddingTop: "40px",
-            paddingBottom: "40px"
+            paddingBottom: "40px" */
         },
         container: {
-            height: '100%',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
+            paddingTop: "75px",
+            paddingBottom: "75px",
+            paddingLeft: theme.spacing(1),
+            paddingRight: theme.spacing(1),
             position: 'relative',
-            backgroundImage: `url(${BG})`
+            //backgroundImage: `url(${BG})`
+            background: "rgb(6,13,21)",
+            background: "linear-gradient(0deg, rgba(6,13,21,1) 0%, rgba(64,114,129,1) 100%)",
         },
         logo: {
             width: 150
@@ -55,7 +59,15 @@ const style = theme => ({
             fontSize: '36px',
             fontWeight: 300,
             color: '#fff'
-        }
+        },
+        particulas: {
+            width: '100%',
+            height: '100%',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            zIndex: 1,
+        },
     }
 );
 
@@ -82,8 +94,116 @@ class Header extends React.Component{
                     </Grid>
                 </Grid>
 
-                <Grid container spacing={0} justify='center' style={{ padding: "82px 0"}} className={classes.container}>
-
+                <Grid container spacing={0} justify='center' /* style={{ padding: "82px 0"}} */ className={classes.container}>
+                    <Particles 
+                        className={classes.particulas}
+                        params={{
+                            "particles": {
+                                "number": {
+                                    "value": 24,
+                                    "density": {
+                                        "enable": true,
+                                        "value_area": 800
+                                    }
+                                },
+                                "line_linked": {
+                                    "enable": false
+                                },
+                                "move": {
+                                    "speed": 1,
+                                    "out_mode": "out"
+                                },
+                                "shape": {
+                                    "type": [
+                                        "images"
+                                    ],
+                                    "images": [
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/mesa_ayuda/1.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/mesa_ayuda/2.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/mesa_ayuda/3.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/mesa_ayuda/4.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/mesa_ayuda/5.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/mesa_ayuda/6.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/mesa_ayuda/7.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/mesa_ayuda/8.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/mesa_ayuda/9.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/mesa_ayuda/10.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/mesa_ayuda/11.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/mesa_ayuda/12.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/mesa_ayuda/13.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/mesa_ayuda/14.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                    ]
+                                },
+                                "size": {
+                                    "value": 30,
+                                    "random": false,
+                                    "anim": {
+                                        "enable": true,
+                                        "speed": 4,
+                                        "size_min": 10,
+                                        "sync": false
+                                    }
+                                }
+                            },
+                            "retina_detect": true
+                        }}
+                    />
                     <Grid item xs={12} md={4} align={isWidthUp('md', this.props.width)? 'right':'center'} className={classes.item1}>
                         <img src={Logo} alt="Mesa de ayuda" className={classes.logo} />
                     </Grid>
