@@ -106,7 +106,7 @@ class BusquedaServidor extends React.Component {
             rfc: '',
             curp: '',
             institucionDependencia: "",
-            nivel: 'todos',
+            nivel: '',
             campoOrden: '',
             tipoOrden: '',
             institucionesLista: []
@@ -120,20 +120,21 @@ class BusquedaServidor extends React.Component {
     loadInstituciones = () => {
         let sug = [];
         let options = {
-            uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/getDependenciasServidores',
+            uri: process.env.REACT_APP_S3S_BACK + '/api/v1/entities',
             json: true,
             method: "post",
             body: {
-                nivel: this.state.nivel
+                nivel_gobierno: this.state.nivel
             }
         };
         rp(options)
             .then(data => {
-                data.data.forEach((item, index) => {
-                    sug.push({value: item, label: item, key: index});
+                data.forEach((item, index) => {
+                    sug.push({value: item.nombre, label: item.nombre, key: index});
                 });
                 this.setState({institucionesLista: sug, institucionDependencia: ''});
             }).catch(err => {
+                console.log("--->",err)
             this.setState({error: true})
         });
     }
@@ -184,7 +185,7 @@ class BusquedaServidor extends React.Component {
         }, () => {
             let body =
                 {
-                    "filtros": this.makeFiltros(),
+                    "query": this.makeFiltros(),
                     "limit": 1,
                     "offset": 0,
                     "nivel": this.state.nivel
@@ -192,7 +193,7 @@ class BusquedaServidor extends React.Component {
 
             let options = {
                 method: 'POST',
-                uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/getPrevioServidoresSancionados',
+                uri: process.env.REACT_APP_S3S_BACK + '/api/v1/summary',
                 json: true,
                 body: body
             };
@@ -209,11 +210,11 @@ class BusquedaServidor extends React.Component {
         let filtros = {};
         let {institucionDependencia, nombresServidor, primerApellido, segundoApellido, rfc, curp, tipoSancion} = this.state;
         if (nombresServidor) filtros.nombres = nombresServidor;
-        if (primerApellido) filtros.primer_apellido = primerApellido;
-        if (segundoApellido) filtros.segundo_apellido = segundoApellido;
+        if (primerApellido) filtros.primerApellido = primerApellido;
+        if (segundoApellido) filtros.segundoApellido = segundoApellido;
         if (rfc) filtros.rfc = rfc;
         if (curp) filtros.curp = curp;
-        if (institucionDependencia && institucionDependencia !== '') filtros.nombre = institucionDependencia;
+        if (institucionDependencia && institucionDependencia !== '') filtros.institucionDependencia = institucionDependencia;
         if (tipoSancion.length > 0) filtros.tipoSancion = tipoSancion.map(item => item.value);
         return filtros;
     };
@@ -238,7 +239,7 @@ class BusquedaServidor extends React.Component {
         this.setState({loading: true}, () => {
             let body =
                 {
-                    "filtros": this.makeFiltros(),
+                    "query": this.makeFiltros(),
                     "limit": this.state.rowsPerPage,
                     "offset": this.state.rowsPerPage * this.state.page,
                     "clave_api": this.state.api,
@@ -247,7 +248,7 @@ class BusquedaServidor extends React.Component {
 
             let options = {
                 method: 'POST',
-                uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/getServidoresSancionados',
+                uri: process.env.REACT_APP_S3S_BACK + '/api/v1/search',
                 json: true,
                 body: body
             };
@@ -399,7 +400,7 @@ class BusquedaServidor extends React.Component {
                                         value={nivel}
                                         onChange={(e) => this.handleChangeCampo('nivel', e)}
                             >
-                                <FormControlLabel value="todos" control={<Radio/>} label="Todos"/>
+                                <FormControlLabel value="" control={<Radio/>} label="Todos"/>
                                 <FormControlLabel value="federal" control={<Radio/>} label="Federal"/>
                                 <FormControlLabel value="estatal" control={<Radio/>} label="Estatal"/>
                             </RadioGroup>
