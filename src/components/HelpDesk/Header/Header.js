@@ -30,22 +30,22 @@ const style = theme => ({
             maxWidth: 1200,
         },
         s2: {
-            maxWidth: '170px'
+            maxWidth: '150px'
         },
         whiteText: {
             color: '#fff'
         },
         pdnLogo: {
             maxWidth: 110,
-            paddingLeft: "40px",
+            /* paddingLeft: "40px",
             paddingTop: "40px",
-            paddingBottom: "40px"
+            paddingBottom: "40px" */
         },
         container: {
-            height: '100%',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
+            paddingTop: "75px",
+            paddingBottom: "75px",
+            paddingLeft: theme.spacing(1),
+            paddingRight: theme.spacing(1),
             position: 'relative',
             //backgroundImage: `url(${BG})`
             background: "rgb(6,13,21)",
@@ -94,7 +94,7 @@ class Header extends React.Component{
                     </Grid>
                 </Grid>
 
-                <Grid container spacing={0} justify='center' style={{ padding: "82px 0"}} className={classes.container}>
+                <Grid container spacing={0} justify='center' /* style={{ padding: "82px 0"}} */ className={classes.container}>
                     <Particles 
                         className={classes.particulas}
                         params={{
