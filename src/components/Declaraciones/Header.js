@@ -10,6 +10,8 @@ import BarraLogoMenu from "../Compartidos/BarraLogoMenu";
 
 import BG from "../../assets/declaraciones/sistema1_declaraciones.jpg";
 
+import Particles from 'react-particles-js';
+
 const styles = theme => ({
   root: {
     flexGrow: 1
@@ -43,7 +45,9 @@ const styles = theme => ({
     paddingBottom: "75px",
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
-    position: "relative"
+    position: "relative",
+    background: "rgb(6,13,21)",
+    background: "linear-gradient(0deg, rgba(6,13,21,1) 0%, rgba(64,114,129,1) 100%)",
   },
   container2: {
     paddingTop: "75px",
@@ -79,7 +83,15 @@ const styles = theme => ({
     // paddingLeft: "40px",
     // paddingTop: "40px",
     // paddingBottom: "40px"
-  }
+  },
+  particulas: {
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    zIndex: 1,
+},
 });
 
 class Header extends React.Component {
@@ -122,13 +134,166 @@ class Header extends React.Component {
           spacing={0}
           className={classNames(classes.container1, "servidores")}
           justify="center"
-          style={{
-            backgroundImage: `url(${BG})`,
-            backgroundPosition: "center",
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat"
-          }}
         >
+          <Particles 
+            className={classes.particulas}
+            params={{
+                "particles": {
+                    "number": {
+                        "value": 24,
+                        "density": {
+                          "enable": true,
+                          "value_area": 800
+                        }
+                    },
+                    "line_linked": {
+                        "enable": false
+                    },
+                    "move": {
+                        "speed": 1,
+                        "out_mode": "out"
+                    },
+                    "shape": {
+                        "type": [
+                            "images"
+                        ],
+                        "images": [
+                            {
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/1.svg",
+                                "height": 30,
+                                "width": 30
+                            },
+                            {
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/2.svg",
+                                "height": 30,
+                                "width": 30
+                            },
+                            {
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/3.svg",
+                                "height": 30,
+                                "width": 30
+                            },
+                            {
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/4.svg",
+                                "height": 30,
+                                "width": 30
+                            },
+                            {
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/5.svg",
+                                "height": 30,
+                                "width": 30
+                            },
+                            {
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/6.svg",
+                                "height": 30,
+                                "width": 30
+                            },
+                            {
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/7.svg",
+                                "height": 30,
+                                "width": 30
+                            },
+                            {
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/8.svg",
+                                "height": 30,
+                                "width": 30
+                            },
+                            {
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/9.svg",
+                                "height": 30,
+                                "width": 30
+                            },
+                            {
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/10.svg",
+                                "height": 30,
+                                "width": 30
+                            },
+                            {
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/11.svg",
+                                "height": 30,
+                                "width": 30
+                            },
+                            {
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/12.svg",
+                                "height": 30,
+                                "width": 30
+                            },
+                            {
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/13.svg",
+                                "height": 30,
+                                "width": 30
+                            },
+                            {
+                              "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/14.svg",
+                              "height": 30,
+                              "width": 30
+                            },
+                            {
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/15.svg",
+                                "height": 30,
+                                "width": 30
+                            },
+                            {
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/16.svg",
+                                "height": 30,
+                                "width": 30
+                            },
+                            {
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/17.svg",
+                                "height": 30,
+                                "width": 30
+                            },
+                            {
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/18.svg",
+                                "height": 30,
+                                "width": 30
+                            },
+                            {
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/19.svg",
+                                "height": 30,
+                                "width": 30
+                            },
+                            {
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/20.svg",
+                                "height": 30,
+                                "width": 30
+                            },
+                            {
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/21.svg",
+                                "height": 30,
+                                "width": 30
+                            },
+                            {
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/22.svg",
+                                "height": 30,
+                                "width": 30
+                            },
+                            {
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/23.svg",
+                                "height": 30,
+                                "width": 30
+                            },
+                            {
+                                "src": process.env.PUBLIC_URL + "/img/flotantes/declaraciones/24.svg",
+                                "height": 30,
+                                "width": 30
+                            },
+                        ]
+                    },
+                    "size": {
+                        "value": 30,
+                        "random": false,
+                        "anim": {
+                            "enable": true,
+                            "speed": 4,
+                            "size_min": 10,
+                            "sync": false
+                        }
+                    }
+                },
+                "retina_detect": true
+            }}
+        />
           <Grid
             item
             xs={12}

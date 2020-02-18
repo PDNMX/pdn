@@ -2,7 +2,7 @@ import React from 'react';
 import {withStyles} from "@material-ui/core/styles";
 import Grid from '@material-ui/core/Grid';
 import {Link} from 'react-router-dom';
-import BG from '../../../assets/img/cintillo_servidores.jpg';
+/* import BG from '../../../assets/img/cintillo_servidores.jpg'; */
 import S2 from '../../../assets/iconos_azul/2_icono.svg'
 import {Typography} from "@material-ui/core"
 import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
@@ -12,23 +12,25 @@ import classNames from 'classnames';
 //import AlertDialog from "../../Sancionados/AlertDialolg";
 import BarraLogoMenu from "../../Compartidos/BarraLogoMenu";
 
+import Particles from 'react-particles-js';
+
 const style = theme => ({
         root: {
             flexGrow:1,
         },
         container1: {
-            //background: 'grey',
             paddingTop: '75px',
             paddingBottom: '75px',
             paddingLeft: theme.spacing(1),
             paddingRight: theme.spacing(1),
-
             height: '100%',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
             position: 'relative',
-            backgroundImage: `url(${BG})`
+            /* backgroundImage: `url(${BG})` */
+            background: "rgb(6,13,21)",
+            background: "linear-gradient(0deg, rgba(6,13,21,1) 0%, rgba(64,114,129,1) 100%)",
         },
         link: {
             textDecoration: 'none',
@@ -62,6 +64,14 @@ const style = theme => ({
             marginTop: theme.spacing(3),
             marginBottom: theme.spacing(2)
         },
+        particulas: {
+            width: '100%',
+            height: '100%',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            zIndex: 1,
+        },
     }
 );
 
@@ -91,10 +101,114 @@ class Header extends React.Component{
                 </Grid>
 
                 <Grid container spacing={0} className={classNames(classes.container1)} justify='center'>
+                    <Particles 
+                        className={classes.particulas}
+                        params={{
+                            "particles": {
+                                "number": {
+                                    "value": 24,
+                                    "density": {
+                                        "enable": true,
+                                        "value_area": 800
+                                    }
+                                },
+                                "line_linked": {
+                                    "enable": false
+                                },
+                                "move": {
+                                    "speed": 1,
+                                    "out_mode": "out"
+                                },
+                                "shape": {
+                                    "type": [
+                                        "images"
+                                    ],
+                                    "images": [
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/1.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/2.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/3.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/4.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/5.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/6.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/7.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/8.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/9.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/10.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/11.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/12.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/13.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                    ]
+                                },
+                                "size": {
+                                    "value": 30,
+                                    "random": false,
+                                    "anim": {
+                                        "enable": true,
+                                        "speed": 4,
+                                        "size_min": 10,
+                                        "sync": false
+                                    }
+                                }
+                            },
+                            "retina_detect": true
+                        }}
+                    />
+
                     <Grid item xs={12} md={4} align={isWidthUp('md', this.props.width)? 'right':'center'} className={classes.item1}>
                         <img src={S2} alt="Sistema 2" className={classes.s2}/>
                     </Grid>
-
                     <Grid item xs={12} md={6} className={classes.item2} align={isWidthUp('md', this.props.width)? 'left':'center'} >
                         <Typography variant="h4" paragraph className={classes.whiteText} style={{  fontWeight: 600}}>
                             Servidores públicos en contrataciones
@@ -103,12 +217,7 @@ class Header extends React.Component{
                             Sistema de los Servidores públicos que intervengan en procedimientos de contrataciones públicas
                         </Typography>
                     </Grid>
-                    {/*<Grid item xs={12} align={'center'}>
-                        <Button  variant="contained" className={classes.button}
-                                 onClick={() => this.btnVideo.handleClickOpen()}>Conoce más</Button>
-                    </Grid>*/}
                 </Grid>
-               {/* <AlertDialog innerRef={comp => this.btnVideo = comp} />*/}
             </div>
         )
     }
