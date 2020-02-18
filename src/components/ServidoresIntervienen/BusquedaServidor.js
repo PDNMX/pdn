@@ -55,7 +55,7 @@ class BusquedaServidor extends React.Component {
         const {
             classes,
             handleSetState,
-            nombreServidor,
+            nombres,
             apellidoUno,
             apellidoDos,
             procedimiento,
@@ -79,8 +79,8 @@ class BusquedaServidor extends React.Component {
                                 id="search"
                                 label="Nombre(s)"
                                 type="search"
-                                onChange={(e) => handleSetState('nombreServidor', e)}
-                                value={nombreServidor}
+                                onChange={(e) => handleSetState('nombres', e)}
+                                value={nombres}
                                 InputLabelProps={{
                                     className: classes.inputShrink,
                                     shrink: true

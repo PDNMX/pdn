@@ -140,88 +140,91 @@ class DetalleServidor extends React.Component {
                     open={control}
                     onClose={handleClose}
                 >
-                    <div style={getModalStyle()} className={classes.paper}>
+                    {
+                        servidor &&
+                        <div style={getModalStyle()} className={classes.paper}>
 
-                        <Grid container spacing={1} justify="flex-start">
-                            <Grid item xs={11}>
-                                <Typography variant="h6" className={classes.title}>
-                                    Ficha del servidor público
-                                </Typography>
-                            </Grid>
-                            <Grid item xs={1}>
-                                <IconButton color="primary" className={classes.button} component="span"
-                                            onClick={handleClose}>
-                                    <CloseButton/>
-                                </IconButton>
-                            </Grid>
+                            <Grid container spacing={1} justify="flex-start">
+                                <Grid item xs={11}>
+                                    <Typography variant="h6" className={classes.title}>
+                                        Ficha del servidor público
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={1}>
+                                    <IconButton color="primary" className={classes.button} component="span"
+                                                onClick={handleClose}>
+                                        <CloseButton/>
+                                    </IconButton>
+                                </Grid>
 
-                            <Grid item md={6} xs={12}>
-                                <TextField
-                                    id="read-only-input"
-                                    label="Servidor público"
-                                    defaultValue={servidor.servidor}
-                                    className={classes.textField}
-                                    margin="normal"
-                                    InputProps={{
-                                        readOnly: true,
-                                        className: classes.fontSmall,
-                                        endAdornment: (
-                                            <InputAdornment position="start" onClick={() => {
-                                                this.openPoper();
-                                                this.controlGlosario(1)
-                                            }}>
-                                                <IconHelp/>
-                                            </InputAdornment>
-                                        )
-                                    }}
-                                />
-                            </Grid>
+                                <Grid item md={6} xs={12}>
+                                    <TextField
+                                        id="read-only-input"
+                                        label="Servidor público"
+                                        defaultValue={servidor.nombrecompleto || `${servidor.nombres} ${servidor.primerApellido} ${servidor.segundoApellido}`}
+                                        className={classes.textField}
+                                        margin="normal"
+                                        InputProps={{
+                                            readOnly: true,
+                                            className: classes.fontSmall,
+                                            endAdornment: (
+                                                <InputAdornment position="start" onClick={() => {
+                                                    this.openPoper();
+                                                    this.controlGlosario(1)
+                                                }}>
+                                                    <IconHelp/>
+                                                </InputAdornment>
+                                            )
+                                        }}
+                                    />
+                                </Grid>
 
-                            <Grid item md={6} xs={12}>
-                                <TextField
-                                    id="read-only-input"
-                                    label="Puesto"
-                                    defaultValue={servidor.puesto ? servidor.puesto.nombre : servidor.puesto}
-                                    className={classes.textField}
-                                    margin="normal"
-                                    InputProps={{
-                                        readOnly: true,
-                                        className: classes.fontSmall,
-                                        endAdornment: (
-                                            <InputAdornment position="end" onClick={() => {
-                                                this.openPoper();
-                                                this.controlGlosario(2)
-                                            }}>
-                                                <IconHelp/>
-                                            </InputAdornment>
-                                        )
-                                    }}
+                                <Grid item md={6} xs={12}>
+                                    <TextField
+                                        id="read-only-input"
+                                        label="Puesto"
+                                        defaultValue={servidor.puesto ? servidor.puesto.nombre : servidor.puesto}
+                                        className={classes.textField}
+                                        margin="normal"
+                                        InputProps={{
+                                            readOnly: true,
+                                            className: classes.fontSmall,
+                                            endAdornment: (
+                                                <InputAdornment position="end" onClick={() => {
+                                                    this.openPoper();
+                                                    this.controlGlosario(2)
+                                                }}>
+                                                    <IconHelp/>
+                                                </InputAdornment>
+                                            )
+                                        }}
 
-                                />
-                            </Grid>
-                            <Grid item md={6} xs={12}>
-                                <TextField
-                                    id="read-only-input"
-                                    label="Institución"
-                                    defaultValue={servidor.institucion ? servidor.institucion.nombre + " (" + servidor.institucion.siglas + ")" : servidor.institucion}
-                                    className={classes.textField}
-                                    margin="normal"
-                                    multiline={true}
-                                    InputProps={{
-                                        readOnly: true,
-                                        className: classes.fontSmall,
-                                        endAdornment: (
-                                            <InputAdornment position={'end'} onClick={() => {
-                                                this.openPoper();
-                                                this.controlGlosario(0)
-                                            }}>
-                                                <IconHelp/>
-                                            </InputAdornment>
+                                    />
+                                </Grid>
+                                <Grid item md={6} xs={12}>
+                                    <TextField
+                                        id="read-only-input"
+                                        label="Institución"
+                                        defaultValue={servidor.institucionDependencia.nombre}
+                                        className={classes.textField}
+                                        margin="normal"
+                                        multiline={true}
+                                        InputProps={{
+                                            readOnly: true,
+                                            className: classes.fontSmall,
+                                            endAdornment: (
+                                                <InputAdornment position={'end'} onClick={() => {
+                                                    this.openPoper();
+                                                    this.controlGlosario(0)
+                                                }}>
+                                                    <IconHelp/>
+                                                </InputAdornment>
 
-                                        )
-                                    }}
-                                />
-                            </Grid>
+                                            )
+                                        }}
+                                    />
+                                </Grid>
+                                {/*
                             <Grid item md={6} xs={12}>
                                 <TextField
                                     id="read-only-input"
@@ -381,11 +384,11 @@ class DetalleServidor extends React.Component {
                                         )
                                     }}
                                 />
+                            </Grid> */}
+
                             </Grid>
-
-                        </Grid>
-
-                    </div>
+                        </div>
+                    }
                 </Modal>
             </div>
         );

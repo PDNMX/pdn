@@ -118,7 +118,7 @@ class TablaServidores extends React.Component {
         this.state = {
             order: 'asc',
             orderBy: 'servidor',
-            nombreServidor: '',
+            nombres: '',
             apellidoUno: '',
             apellidoDos: '',
             summaryData: [],
@@ -127,7 +127,7 @@ class TablaServidores extends React.Component {
             rowsPerPage: 10,
             procedimiento: 'todos',
             open: false,
-            elementoSeleccionado: {},
+            elementoSeleccionado: null,
             entities: [],
             current_entity: "ANY",
             loading: false,
@@ -235,7 +235,7 @@ class TablaServidores extends React.Component {
 
             let {
                 current_entity,
-                nombreServidor,
+                nombres,
                 apellidoUno,
                 apellidoDos,
                 procedimiento,
@@ -248,7 +248,7 @@ class TablaServidores extends React.Component {
                 filtros.nivel_gobierno = nivel;
             }
 
-            if (nombreServidor) filtros.nombres = nombreServidor;
+            if (nombres) filtros.nombres = nombres;
             if (apellidoUno) filtros.primerApellido = apellidoUno;
             if (apellidoDos) filtros.segundoApellido = apellidoDos;
             if (procedimiento && procedimiento !== 'todos') filtros.procedimiento = procedimiento;
@@ -283,7 +283,7 @@ class TablaServidores extends React.Component {
 
         const {
             current_entity,
-            nombreServidor,
+            nombres,
             apellidoUno,
             apellidoDos,
             procedimiento,
@@ -293,7 +293,7 @@ class TablaServidores extends React.Component {
         } = this.state;
 
         let filtros = {};
-        if (nombreServidor) filtros.nombres = nombreServidor;
+        if (nombres) filtros.nombres = nombres;
         if (apellidoUno) filtros.primerApellido = apellidoUno;
         if (apellidoDos) filtros.segundoApellido = apellidoDos;
         if (current_entity && current_entity !== 'ANY') filtros.institucion = current_entity;
@@ -353,8 +353,9 @@ class TablaServidores extends React.Component {
         this.setState({
             results: null,
             summaryData : null,
+            elementoSeleccionado: null,
             nivel : 'todos',
-            nombreServidor: "",
+            nombres: "",
             procedimiento: "",
             current_entity: "ANY",
             apellidoUno: "",
@@ -375,7 +376,7 @@ class TablaServidores extends React.Component {
             entities,
             current_entity,
 
-            nombreServidor,
+            nombres,
             apellidoUno,
             apellidoDos,
             procedimiento,
@@ -418,7 +419,7 @@ class TablaServidores extends React.Component {
                         <BusquedaServidor handleCleanAll={this.handleCleanAll}
                                           handleSearch={this.handleBroadSearch}
                                           handleSetState={this.handleSetState}
-                                          nombreServidor={nombreServidor}
+                                          nombres={nombres}
                                           apellidoUno={apellidoUno}
                                           apellidoDos={apellidoDos}
                                           entities = {entities}
