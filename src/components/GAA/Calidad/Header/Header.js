@@ -17,10 +17,10 @@ const style = theme => ({
             paddingBottom: '75px',
             paddingLeft: theme.spacing(1),
             paddingRight: theme.spacing(1),
-            height: '100%',
+            /* height: '100%',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
+            backgroundSize: 'cover', */
             position: 'relative',
             // backgroundImage: `url(${BG})`
             background: "rgb(6,13,21)",
