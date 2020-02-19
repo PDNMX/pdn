@@ -159,7 +159,7 @@ class DetalleServidor extends React.Component {
 
                                 <Grid item md={6} xs={12}>
                                     <TextField
-                                        id="read-only-input"
+                                        id="read-only-input1"
                                         label="Servidor público"
                                         defaultValue={servidor.nombrecompleto || `${servidor.nombres} ${servidor.primerApellido} ${servidor.segundoApellido}`}
                                         className={classes.textField}
@@ -181,7 +181,7 @@ class DetalleServidor extends React.Component {
 
                                 <Grid item md={6} xs={12}>
                                     <TextField
-                                        id="read-only-input"
+                                        id="read-only-input2"
                                         label="Puesto"
                                         defaultValue={servidor.puesto ? servidor.puesto.nombre : servidor.puesto}
                                         className={classes.textField}
@@ -203,7 +203,7 @@ class DetalleServidor extends React.Component {
                                 </Grid>
                                 <Grid item md={6} xs={12}>
                                     <TextField
-                                        id="read-only-input"
+                                        id="read-only-input3"
                                         label="Institución"
                                         defaultValue={servidor.institucionDependencia.nombre}
                                         className={classes.textField}
