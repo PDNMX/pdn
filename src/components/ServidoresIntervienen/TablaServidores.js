@@ -125,7 +125,7 @@ class TablaServidores extends React.Component {
             results: null,
             page: 0, // en el front end page inicia en 0
             rowsPerPage: 10,
-            procedimiento: 'todos',
+            tipoProcedimiento: 0,
             open: false,
             elementoSeleccionado: null,
             entities: [],
@@ -238,7 +238,7 @@ class TablaServidores extends React.Component {
                 nombres,
                 apellidoUno,
                 apellidoDos,
-                procedimiento,
+                tipoProcedimiento,
                 nivel,
             } = this.state;
 
@@ -251,7 +251,7 @@ class TablaServidores extends React.Component {
             if (nombres) filtros.nombres = nombres;
             if (apellidoUno) filtros.primerApellido = apellidoUno;
             if (apellidoDos) filtros.segundoApellido = apellidoDos;
-            if (procedimiento && procedimiento !== 'todos') filtros.procedimiento = procedimiento;
+            if (tipoProcedimiento && tipoProcedimiento !== 0) filtros.tipoProcedimiento = [tipoProcedimiento];
             if (current_entity && current_entity !== 'ANY') filtros.institucion = current_entity;
 
             let options = {
@@ -286,7 +286,7 @@ class TablaServidores extends React.Component {
             nombres,
             apellidoUno,
             apellidoDos,
-            procedimiento,
+            tipoProcedimiento,
             rowsPerPage,
             page,
             supplier_id
@@ -297,7 +297,7 @@ class TablaServidores extends React.Component {
         if (apellidoUno) filtros.primerApellido = apellidoUno;
         if (apellidoDos) filtros.segundoApellido = apellidoDos;
         if (current_entity && current_entity !== 'ANY') filtros.institucion = current_entity;
-        if (procedimiento && procedimiento !== 'todos') filtros.procedimiento = procedimiento;
+        if (tipoProcedimiento && tipoProcedimiento !== 0) filtros.tipoProcedimiento = [tipoProcedimiento];
 
         let options = {
             method: 'POST',
@@ -356,7 +356,7 @@ class TablaServidores extends React.Component {
             elementoSeleccionado: null,
             nivel : 'todos',
             nombres: "",
-            procedimiento: "",
+            tipoProcedimiento: 0,
             current_entity: "ANY",
             apellidoUno: "",
             apellidoDos: ""
@@ -379,7 +379,7 @@ class TablaServidores extends React.Component {
             nombres,
             apellidoUno,
             apellidoDos,
-            procedimiento,
+            tipoProcedimiento,
             nivel,
 
             loading,
@@ -426,7 +426,7 @@ class TablaServidores extends React.Component {
                                           current_entity= {current_entity}
                                           nivel={nivel}
                                           changeLevel = {this.changeLevel}
-                                          procedimiento={procedimiento}
+                                          tipoProcedimiento={tipoProcedimiento}
                                           handleError={this.handleError}
                         />
                     </Grid>

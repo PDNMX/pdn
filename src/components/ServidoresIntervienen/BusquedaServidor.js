@@ -58,7 +58,7 @@ class BusquedaServidor extends React.Component {
             nombres,
             apellidoUno,
             apellidoDos,
-            procedimiento,
+            tipoProcedimiento,
             entities,
             current_entity,
             nivel,
@@ -125,20 +125,20 @@ class BusquedaServidor extends React.Component {
                         <FormControl className={classes.formControl}>
                             <InputLabel htmlFor="campoSelectProcedimiento"> Tipo de procedimiento</InputLabel>
                             <Select style={{marginTop:'0px'}}
-                                    value={procedimiento}
-                                    onChange={(e) => handleSetState('procedimiento', e)}
+                                    value={tipoProcedimiento}
+                                    onChange={(e) => handleSetState('tipoProcedimiento', e)}
                                     inputProps={{
                                         name: 'campoSelectProcedimiento',
                                         id: 'campoSelectProcedimiento',
                                     }}
                             >
-                                <MenuItem value={'todos'} key={'Todos'}>
+                                <MenuItem value={0} key={'Todos'}>
                                     Cualquiera
                                 </MenuItem>
-                                <MenuItem value={'CONTRATACIONES'} key={'CONTRATACIONES'}>Contrataciones</MenuItem>
-                                <MenuItem value={'CONCESIONES'} key={'CONCESIONES'}>Concesiones</MenuItem>
-                                <MenuItem value={'ENAJENACIONES'} key={'ENAJENACIONES'}>Enajenaciones</MenuItem>
-                                <MenuItem value={'DICTAMENES'} key={'DICTAMENES'}>Dictamenes</MenuItem>
+                                <MenuItem value={1} key={'CONTRATACIONES'}>Contrataciones</MenuItem>
+                                <MenuItem value={2} key={'CONCESIONES'}>Concesiones</MenuItem>
+                                <MenuItem value={3} key={'ENAJENACIONES'}>Enajenaciones</MenuItem>
+                                <MenuItem value={4} key={'DICTAMENES'}>Dictamenes</MenuItem>
                             </Select>
 
                         </FormControl>
