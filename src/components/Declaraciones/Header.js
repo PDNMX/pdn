@@ -3,13 +3,8 @@ import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
 import "./header.css";
-
-//menu
 import { Grid, withStyles, Typography } from "@material-ui/core";
 import BarraLogoMenu from "../Compartidos/BarraLogoMenu";
-
-import BG from "../../assets/declaraciones/sistema1_declaraciones.jpg";
-
 import Particles from 'react-particles-js';
 
 const styles = theme => ({
@@ -40,13 +35,11 @@ const styles = theme => ({
     paddingLeft: theme.spacing(4)
   },
   container1: {
-    //background: 'grey',
     paddingTop: "75px",
     paddingBottom: "75px",
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
     position: "relative",
-    background: "rgb(6,13,21)",
     background: "linear-gradient(0deg, rgba(6,13,21,1) 0%, rgba(64,114,129,1) 100%)",
   },
   container2: {
@@ -69,7 +62,6 @@ const styles = theme => ({
     paddingLeft: theme.spacing(2)
   },
   item3: {
-    // maxWidth: 1200,
     padding: "30px"
   },
   s2: {
@@ -77,12 +69,6 @@ const styles = theme => ({
   },
   whiteText: {
     color: "#fff"
-  },
-  pdnLogo: {
-    maxWidth: 110
-    // paddingLeft: "40px",
-    // paddingTop: "40px",
-    // paddingBottom: "40px"
   },
   particulas: {
     width: '100%',

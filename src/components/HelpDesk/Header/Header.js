@@ -4,7 +4,6 @@ import Grid from '@material-ui/core/Grid';
 import {Link} from 'react-router-dom';
 import {Typography} from "@material-ui/core"
 import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
-import BG from "../../../assets/img/mesa_ayuda.jpg";
 import Logo from '../../../assets/img/logomesa_ayuda.svg';
 import BarraLogoMenu from "../../Compartidos/BarraLogoMenu";
 
@@ -29,17 +28,11 @@ const style = theme => ({
         item3:{
             maxWidth: 1200,
         },
-        s2: {
+        logo: {
             maxWidth: '150px'
         },
         whiteText: {
             color: '#fff'
-        },
-        pdnLogo: {
-            maxWidth: 110,
-            /* paddingLeft: "40px",
-            paddingTop: "40px",
-            paddingBottom: "40px" */
         },
         container: {
             paddingTop: "75px",
@@ -47,12 +40,7 @@ const style = theme => ({
             paddingLeft: theme.spacing(1),
             paddingRight: theme.spacing(1),
             position: 'relative',
-            //backgroundImage: `url(${BG})`
-            background: "rgb(6,13,21)",
             background: "linear-gradient(0deg, rgba(6,13,21,1) 0%, rgba(64,114,129,1) 100%)",
-        },
-        logo: {
-            width: 150
         },
         mesa: {
             marginTop: '50px',
@@ -75,12 +63,9 @@ class Header extends React.Component{
 
     render(){
         const {classes} = this.props;
-
         return(
             <div className={classes.root}>
-
                 <BarraLogoMenu/>
-
                 <Grid container spacing={0} className="breadcrumb" justify='center'>
                     <Grid item xs={12} className={classes.item3}>
                         <ul>
@@ -94,7 +79,7 @@ class Header extends React.Component{
                     </Grid>
                 </Grid>
 
-                <Grid container spacing={0} justify='center' /* style={{ padding: "82px 0"}} */ className={classes.container}>
+                <Grid container spacing={0} justify='center' className={classes.container}>
                     <Particles 
                         className={classes.particulas}
                         params={{

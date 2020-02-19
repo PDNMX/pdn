@@ -3,7 +3,6 @@ import {withStyles} from "@material-ui/core/styles";
 import Grid from '@material-ui/core/Grid';
 import {Link as RouterLink} from 'react-router-dom';
 import Link from '@material-ui/core/Link';
-import BG from '../../../assets/img/cintillo_contrataciones.jpg';
 import C from '../../../assets/iconos_azul/6_icono.svg'
 import Typography from "@material-ui/core/Typography";
 import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
@@ -16,19 +15,15 @@ const style = theme => ({
             flexGrow:1
         },
         container1: {
-            //background: 'grey',
             paddingTop: '75px',
             paddingBottom: '75px',
             paddingLeft: theme.spacing(1),
             paddingRight: theme.spacing(1),
-
             height: '100%',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
             position: 'relative',
-            /* backgroundImage: `url(${BG})` */
-            background: "rgb(6,13,21)",
             background: "linear-gradient(0deg, rgba(6,13,21,1) 0%, rgba(64,114,129,1) 100%)",
         },
         link: {
@@ -51,12 +46,6 @@ const style = theme => ({
         },
         whiteText: {
             color: '#fff'
-        },
-        pdnLogo: {
-            maxWidth: 110,
-            paddingLeft: "40px",
-            paddingTop: "40px",
-            paddingBottom: "40px"
         },
         button:{
             background: '#ffe01b',
