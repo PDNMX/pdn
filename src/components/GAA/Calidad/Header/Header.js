@@ -4,7 +4,6 @@ import Grid from '@material-ui/core/Grid';
 import {Link} from 'react-router-dom';
 import {Typography} from "@material-ui/core"
 import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
-import BG from '../../../../assets/img/calidad_datos.jpg';
 import BarraLogoMenu from "../../../Compartidos/BarraLogoMenu";
 import Logo from '../../../../assets/img/logocalidad_datos.svg';
 import Particles from 'react-particles-js';
@@ -17,13 +16,7 @@ const style = theme => ({
             paddingBottom: '75px',
             paddingLeft: theme.spacing(1),
             paddingRight: theme.spacing(1),
-            /* height: '100%',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover', */
             position: 'relative',
-            // backgroundImage: `url(${BG})`
-            background: "rgb(6,13,21)",
             background: "linear-gradient(0deg, rgba(6,13,21,1) 0%, rgba(64,114,129,1) 100%)",
         },
         link: {
@@ -41,17 +34,8 @@ const style = theme => ({
         item3:{
             maxWidth: 1200,
         },
-        s2: {
-            maxWidth: '170px'
-        },
         whiteText: {
             color: '#fff'
-        },
-        pdnLogo: {
-            maxWidth: 110,
-            paddingLeft: "40px",
-            paddingTop: "40px",
-            paddingBottom: "40px"
         },
         logo: {
             maxWidth: 150,

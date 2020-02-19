@@ -2,14 +2,11 @@ import React from 'react';
 import {withStyles} from "@material-ui/core/styles";
 import Grid from '@material-ui/core/Grid';
 import {Link} from 'react-router-dom';
-import BG from '../../../assets/img/cintillo_sancionados.jpg';
 import S3 from '../../../assets/iconos_azul/3_icono.svg'
 import {Typography} from "@material-ui/core"
 import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
 import '../../Utils/Header.css'
 import classNames from 'classnames';
-//import Button from "@material-ui/core/Button";
-//import AlertDialog from "../AlertDialolg";
 import BarraLogoMenu from "../../Compartidos/BarraLogoMenu";
 
 import Particles from 'react-particles-js';
@@ -19,19 +16,11 @@ const style = theme => ({
             flexGrow: 1,
         },
         container1: {
-            //background: 'grey',
             paddingTop: '75px',
             paddingBottom: '75px',
             paddingLeft: theme.spacing(1),
             paddingRight: theme.spacing(1),
-
-            height: '100%',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
             position: 'relative',
-            // backgroundImage: `url(${BG})`
-            background: "rgb(6,13,21)",
             background: "linear-gradient(0deg, rgba(6,13,21,1) 0%, rgba(64,114,129,1) 100%)",
         },
         link: {
@@ -54,12 +43,6 @@ const style = theme => ({
         },
         whiteText: {
             color: '#fff'
-        },
-        pdnLogo: {
-            maxWidth: 110,
-            paddingLeft: "40px",
-            paddingTop: "40px",
-            paddingBottom: "40px"
         },
         button: {
             background: '#ffe01b',
