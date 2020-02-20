@@ -8,7 +8,26 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Typography from "@material-ui/core/Typography";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme, withStyles } from '@material-ui/core/styles';
-import glosario from "../Utils/glosario.json";
+import {servidores} from "../Utils/glosario.json";
+import Tooltip from "@material-ui/core/Tooltip";
+
+const Glosario = props => {
+    const data = servidores.find(e => e.id === props.id);
+    return <React.Fragment>
+        <Typography color="inherit">{data.title}</Typography>
+        <em>{data.description}</em>
+    </React.Fragment>;
+};
+
+const HtmlTooltip = withStyles(theme => ({
+    tooltip: {
+        backgroundColor: '#f5f5f9',
+        color: 'rgba(0, 0, 0, 0.87)',
+        maxWidth: 220,
+        fontSize: theme.typography.pxToRem(12),
+        border: '1px solid #dadde9',
+    },
+}))(Tooltip);
 
 const styles = theme => ({
     button: {
@@ -68,50 +87,61 @@ function FichaServidorPublico(props) {
             >
                 <DialogTitle id="responsive-dialog-title">{"Ficha del Servidor Público"}</DialogTitle>
                 {servidorPublico &&
-                    <DialogContent>
-                        <Typography>
+                <DialogContent>
+
+                    <Typography>
+                        <HtmlTooltip title={<Glosario id={1}/>}>
                             <b>Servidor Público:</b>
-                        </Typography>
-                        <Typography paragraph>
-                            {nombrecompleto || `${nombres} ${primerApellido} ${segundoApellido}` }
-                        </Typography>
+                        </HtmlTooltip>
+                    </Typography>
 
-                        <Typography>
+                    <Typography paragraph>
+                        {nombrecompleto || `${nombres} ${primerApellido} ${segundoApellido}` }
+                    </Typography>
+
+
+                    <Typography>
+                        <HtmlTooltip title={<Glosario id={2}/>}>
                             <b>Puesto:</b>
-                        </Typography>
-                        <Typography paragraph>
-                            {puesto.nombre}
-                        </Typography>
+                        </HtmlTooltip>
+                    </Typography>
 
-                        <Typography>
+                    <Typography paragraph>
+                        {puesto.nombre}
+                    </Typography>
+
+                    <Typography>
+                        <HtmlTooltip title={<Glosario id={0}/>}>
                             <b>Institución:</b>
-                        </Typography>
-                        <Typography paragraph>
-                            {institucionDependencia.nombre}
-                        </Typography>
+                        </HtmlTooltip>
 
-                        <Typography>
-                            <b>Nivel de responsabilidad:</b>
-                        </Typography>
-                        <ul className={classes.ul}>
-                            {servidorPublico.nivelResponsabilidad.map((r, index) => {
-                                return <li key={index} className={classes.li}>
-                                    <Typography className={classes.bulletText}>{r.valor}</Typography>
-                                </li>
-                            })}
-                        </ul>
+                    </Typography>
+                    <Typography paragraph>
+                        {institucionDependencia.nombre}
+                    </Typography>
 
-                        <Typography>
-                            <b>Operaciones:</b>
-                        </Typography>
-                        <ul className={classes.ul}>
-                            {servidorPublico.tipoProcedimiento.map((o, index) => {
-                                return <li key={index} className={classes.li}>
-                                   <Typography className={classes.bulletText}>{o.valor}</Typography>
-                                </li>
-                            })}
-                        </ul>
-                    </DialogContent>
+                    <Typography>
+                        <b>Nivel de responsabilidad:</b>
+                    </Typography>
+                    <ul className={classes.ul}>
+                        {servidorPublico.nivelResponsabilidad.map((r, index) => {
+                            return <li key={index} className={classes.li}>
+                                <Typography className={classes.bulletText}>{r.valor}</Typography>
+                            </li>
+                        })}
+                    </ul>
+
+                    <Typography>
+                        <b>Operaciones:</b>
+                    </Typography>
+                    <ul className={classes.ul}>
+                        {servidorPublico.tipoProcedimiento.map((o, index) => {
+                            return <li key={index} className={classes.li}>
+                                <Typography className={classes.bulletText}>{o.valor}</Typography>
+                            </li>
+                        })}
+                    </ul>
+                </DialogContent>
                 }
                 <DialogActions>
                     <Button onClick={handleClose} variant="contained" autoFocus className={classes.button}>
