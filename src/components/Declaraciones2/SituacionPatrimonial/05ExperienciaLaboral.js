@@ -7,10 +7,30 @@ import Typography from '@material-ui/core/Typography';
 import style from '../styleSecciones';
 import DatosNoRegistrados from '../DatosNoRegistrados';
 
+import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
 const useStyles = makeStyles(style);
+const sumary = makeStyles((theme) => ({
+	root: {
+		backgroundColor: '#83dfff',
+		textTransform: 'uppercase'
+	}
+}));
+const expansion = makeStyles((theme) => ({
+	root: {
+		width: '100%'
+	},
+	heading: {
+		fontSize: theme.typography.pxToRem(15),
+		fontWeight: theme.typography.fontWeightRegular
+	}
+}));
 
 export default function MenuSuperior(props) {
 	const classes = useStyles();
+	const exp = expansion();
+	const sum = sumary();
 	const { data } = props;
 
 	return (
@@ -20,128 +40,172 @@ export default function MenuSuperior(props) {
 					5. EXPERIENCIA LABORAL (ÚLTIMOS CINCO EMPLEOS)
 				</Typography>
 			</Grid>
-			{data.ninguno && (
-				<Grid item xs={12}>
-					<DatosNoRegistrados />
-				</Grid>
-			)}
-			{!data.ninguno &&
-				data.experiencia.map((exp, index) => {
-					return (
-						<Grid item xs={12} key={'exp-' + index}>
-							<Paper className={classes.paper}>
-								{exp.ambitoSector.clave === 'PUB' && (
-									<Grid container spacing={1}>
-										<Grid item xs={12} md={4}>
-											<Typography className={classes.cardTitle}>
-												ÁMBITO/SECTOR EN EL QUE LABORASTE:
-											</Typography>
-											<Typography className={classes.card}>{exp.ambitoSector.valor}</Typography>
+			<Grid item xs={12}>
+				{data.ninguno && <DatosNoRegistrados />}
+				{!data.ninguno &&
+					data.experiencia.map((expe, index) => {
+						return (
+							<ExpansionPanel key={'exp-' + index}>
+								<ExpansionPanelSummary
+									classes={sum}
+									expandIcon={<ExpandMoreIcon />}
+									aria-controls="panel1a-content"
+									id="panel1a-header"
+								>
+									<Typography className={exp.heading}>
+										<strong>
+											{expe.ambitoSector.clave === 'PUB' ? (
+												<span>
+													{expe.empleoCargoComision} {' EN '}
+													{expe.nombreEntePublico}
+												</span>
+											) : (
+												<span>
+													{expe.puesto} {' EN '} {expe.nombreEmpresaSociedadAsociacion}
+												</span>
+											)}
+											{' DEL ('}
+											{expe.fechaIngreso}
+											{' - '}
+											{expe.fechaEgreso}
+											{')'}
+										</strong>
+									</Typography>
+								</ExpansionPanelSummary>
+								<ExpansionPanelDetails>
+									{expe.ambitoSector.clave === 'PUB' && (
+										<Grid container spacing={1}>
+											<Grid item xs={12} md={4}>
+												<Typography className={classes.cardTitle}>
+													ÁMBITO/SECTOR EN EL QUE LABORASTE:
+												</Typography>
+												<Typography className={classes.card}>
+													{expe.ambitoSector.valor}
+												</Typography>
+											</Grid>
+											<Grid item xs={12} md={4}>
+												<Typography className={classes.cardTitle}>
+													NIVEL/ORDEN DE GOBIERNO
+												</Typography>
+												<Typography className={classes.card}>
+													{expe.nivelOrdenGobierno}
+												</Typography>
+											</Grid>
+											<Grid item xs={12} md={4}>
+												<Typography className={classes.cardTitle}>ÁMBITO PÚBLICO</Typography>
+												<Typography className={classes.card}>{expe.ambitoPublico}</Typography>
+											</Grid>
+											<Grid item xs={12} md={4}>
+												<Typography className={classes.cardTitle}>
+													NOMBRE DEL ENTE PÚBLICO/NOMBRE DE LA EMPRESA, SOCIEDAD O ASOCIACIÓN
+												</Typography>
+												<Typography className={classes.card}>
+													{expe.nombreEntePublico}
+												</Typography>
+											</Grid>
+											<Grid item xs={12} md={4}>
+												<Typography className={classes.cardTitle}>
+													ÁREA DE ADSCRIPCIÓN/ÁREA
+												</Typography>
+												<Typography className={classes.card}>{expe.areaAdscripcion}</Typography>
+											</Grid>
+											<Grid item xs={12} md={4}>
+												<Typography className={classes.cardTitle}>
+													EMPLEO, CARGO O COMISIÓN/PUESTO
+												</Typography>
+												<Typography className={classes.card}>
+													{expe.empleoCargoComision}
+												</Typography>
+											</Grid>
+											<Grid item xs={12} md={4}>
+												<Typography className={classes.cardTitle}>
+													ESPECIFIQUE FUNCIÓN PRINCIPAL
+												</Typography>
+												<Typography className={classes.card}>
+													{expe.funcionPrincipal}
+												</Typography>
+											</Grid>
+											<Grid item xs={12} md={4}>
+												<Typography className={classes.cardTitle}>FECHA DE INGRESO</Typography>
+												<Typography className={classes.card}>{expe.fechaIngreso}</Typography>
+											</Grid>
+											<Grid item xs={12} md={4}>
+												<Typography className={classes.cardTitle}>FECHA DE EGRESO</Typography>
+												<Typography className={classes.card}>{expe.fechaEgreso}</Typography>
+											</Grid>
+											<Grid item xs={12} md={4}>
+												<Typography className={classes.cardTitle}>
+													LUGAR DONDE SE UBICA
+												</Typography>
+												<Typography className={classes.card}>
+													{expe.ubicacion === 'MX' ? 'MÉXICO' : 'EXTRANJERO'}
+												</Typography>
+											</Grid>
 										</Grid>
-										<Grid item xs={12} md={4}>
-											<Typography className={classes.cardTitle}>
-												NIVEL/ORDEN DE GOBIERNO
-											</Typography>
-											<Typography className={classes.card}>{exp.nivelOrdenGobierno}</Typography>
+									)}
+									{expe.ambitoSector.clave !== 'PUB' && (
+										<Grid container spacing={1}>
+											<Grid item xs={12} md={4}>
+												<Typography className={classes.cardTitle}>
+													ÁMBITO/SECTOR EN EL QUE LABORASTE:
+												</Typography>
+												<Typography className={classes.card}>
+													{expe.ambitoSector.valor}
+												</Typography>
+											</Grid>
+											<Grid item xs={12} md={4}>
+												<Typography className={classes.cardTitle}>
+													NOMBRE DEL ENTE PÚBLICO/NOMBRE DE LA EMPRESA, SOCIEDAD O ASOCIACIÓN
+												</Typography>
+												<Typography className={classes.card}>
+													{expe.nombreEmpresaSociedadAsociacion}
+												</Typography>
+											</Grid>
+											<Grid item xs={12} md={4}>
+												<Typography className={classes.cardTitle}>RFC</Typography>
+												<Typography className={classes.card}>{expe.rfc}</Typography>
+											</Grid>
+											<Grid item xs={12} md={4}>
+												<Typography className={classes.cardTitle}>
+													ÁREA DE ADSCRIPCIÓN/ÁREA
+												</Typography>
+												<Typography className={classes.card}>{expe.area}</Typography>
+											</Grid>
+											<Grid item xs={12} md={4}>
+												<Typography className={classes.cardTitle}>
+													EMPLEO, CARGO O COMISIÓN/PUESTO
+												</Typography>
+												<Typography className={classes.card}>{expe.puesto}</Typography>
+											</Grid>
+											<Grid item xs={12} md={4}>
+												<Typography className={classes.cardTitle}>
+													SECTOR AL QUE PERTENECE
+												</Typography>
+												<Typography className={classes.card}>{expe.sector.valor}</Typography>
+											</Grid>
+											<Grid item xs={12} md={4}>
+												<Typography className={classes.cardTitle}>FECHA DE INGRESO</Typography>
+												<Typography className={classes.card}>{expe.fechaIngreso}</Typography>
+											</Grid>
+											<Grid item xs={12} md={4}>
+												<Typography className={classes.cardTitle}>FECHA DE EGRESO</Typography>
+												<Typography className={classes.card}>{expe.fechaEgreso}</Typography>
+											</Grid>
+											<Grid item xs={12} md={4}>
+												<Typography className={classes.cardTitle}>
+													LUGAR DONDE SE UBICA
+												</Typography>
+												<Typography className={classes.card}>
+													{expe.ubicacion === 'MX' ? 'MÉXICO' : 'EXTRANJERO'}
+												</Typography>
+											</Grid>
 										</Grid>
-										<Grid item xs={12} md={4}>
-											<Typography className={classes.cardTitle}>ÁMBITO PÚBLICO</Typography>
-											<Typography className={classes.card}>{exp.ambitoPublico}</Typography>
-										</Grid>
-										<Grid item xs={12} md={4}>
-											<Typography className={classes.cardTitle}>
-												NOMBRE DEL ENTE PÚBLICO/NOMBRE DE LA EMPRESA, SOCIEDAD O ASOCIACIÓN
-											</Typography>
-											<Typography className={classes.card}>{exp.nombreEntePublico}</Typography>
-										</Grid>
-										<Grid item xs={12} md={4}>
-											<Typography className={classes.cardTitle}>
-												ÁREA DE ADSCRIPCIÓN/ÁREA
-											</Typography>
-											<Typography className={classes.card}>{exp.areaAdscripcion}</Typography>
-										</Grid>
-										<Grid item xs={12} md={4}>
-											<Typography className={classes.cardTitle}>
-												EMPLEO, CARGO O COMISIÓN/PUESTO
-											</Typography>
-											<Typography className={classes.card}>{exp.empleoCargoComision}</Typography>
-										</Grid>
-										<Grid item xs={12} md={4}>
-											<Typography className={classes.cardTitle}>
-												ESPECIFIQUE FUNCIÓN PRINCIPAL
-											</Typography>
-											<Typography className={classes.card}>{exp.funcionPrincipal}</Typography>
-										</Grid>
-										<Grid item xs={12} md={4}>
-											<Typography className={classes.cardTitle}>FECHA DE INGRESO</Typography>
-											<Typography className={classes.card}>{exp.fechaIngreso}</Typography>
-										</Grid>
-										<Grid item xs={12} md={4}>
-											<Typography className={classes.cardTitle}>FECHA DE EGRESO</Typography>
-											<Typography className={classes.card}>{exp.fechaEgreso}</Typography>
-										</Grid>
-										<Grid item xs={12} md={4}>
-											<Typography className={classes.cardTitle}>LUGAR DONDE SE UBICA</Typography>
-											<Typography className={classes.card}>{exp.ubicacion}</Typography>
-										</Grid>
-									</Grid>
-								)}
-								{exp.ambitoSector.clave !== 'PUB' && (
-									<Grid container spacing={1}>
-										<Grid item xs={12} md={4}>
-											<Typography className={classes.cardTitle}>
-												ÁMBITO/SECTOR EN EL QUE LABORASTE:
-											</Typography>
-											<Typography className={classes.card}>{exp.ambitoSector.valor}</Typography>
-										</Grid>
-										<Grid item xs={12} md={4}>
-											<Typography className={classes.cardTitle}>
-												NOMBRE DEL ENTE PÚBLICO/NOMBRE DE LA EMPRESA, SOCIEDAD O ASOCIACIÓN
-											</Typography>
-											<Typography className={classes.card}>
-												{exp.nombreEmpresaSociedadAsociacion}
-											</Typography>
-										</Grid>
-										<Grid item xs={12} md={4}>
-											<Typography className={classes.cardTitle}>RFC</Typography>
-											<Typography className={classes.card}>{exp.rfc}</Typography>
-										</Grid>
-										<Grid item xs={12} md={4}>
-											<Typography className={classes.cardTitle}>
-												ÁREA DE ADSCRIPCIÓN/ÁREA
-											</Typography>
-											<Typography className={classes.card}>{exp.areaAdscripcion}</Typography>
-										</Grid>
-										<Grid item xs={12} md={4}>
-											<Typography className={classes.cardTitle}>
-												EMPLEO, CARGO O COMISIÓN/PUESTO
-											</Typography>
-											<Typography className={classes.card}>{exp.empleoCargoComision}</Typography>
-										</Grid>
-										<Grid item xs={12} md={4}>
-											<Typography className={classes.cardTitle}>
-												SECTOR AL QUE PERTENECE
-											</Typography>
-											<Typography className={classes.card}>{exp.sector.valor}</Typography>
-										</Grid>
-										<Grid item xs={12} md={4}>
-											<Typography className={classes.cardTitle}>FECHA DE INGRESO</Typography>
-											<Typography className={classes.card}>{exp.fechaIngreso}</Typography>
-										</Grid>
-										<Grid item xs={12} md={4}>
-											<Typography className={classes.cardTitle}>FECHA DE EGRESO</Typography>
-											<Typography className={classes.card}>{exp.fechaEgreso}</Typography>
-										</Grid>
-										<Grid item xs={12} md={4}>
-											<Typography className={classes.cardTitle}>LUGAR DONDE SE UBICA</Typography>
-											<Typography className={classes.card}>{exp.ubicacion}</Typography>
-										</Grid>
-									</Grid>
-								)}
-							</Paper>
-						</Grid>
-					);
-				})}
+									)}
+								</ExpansionPanelDetails>
+							</ExpansionPanel>
+						);
+					})}
+			</Grid>
 		</Grid>
 	);
 }

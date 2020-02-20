@@ -9,7 +9,7 @@ import DatosReservados from '../DatosReservados';
 
 const useStyles = makeStyles(styleSecciones);
 
-export default function MenuSuperior(props) {
+export default function MenuSuperior() {
 	const classes = useStyles();
 
 	return (

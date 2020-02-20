@@ -16,7 +16,7 @@ export default function MenuSuperior(props) {
 		<Grid container spacing={2} className={classes.rootPrincipal}>
 			<Grid item xs={12}>
 				<Typography className={classes.tituloSeccion} align="center">
-					6. DATOS DE LA PAREJA
+					13. INVERSIONES, CUENTAS BANCARIAS Y OTRO TIPO DE VALORES / ACTIVOS (SITUACIÓN ACTUAL)
 				</Typography>
 			</Grid>
 			<Grid item xs={12}>

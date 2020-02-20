@@ -9,8 +9,8 @@ import styles from './style';
 
 class Perfil extends React.Component {
 	state = {
-		menuSuperior: 1,
-		menuSituacionPatrimonial: 6,
+		menuSuperior: 0,
+		menuSituacionPatrimonial: 9,
 		menuIntereses: 0
 	};
 
@@ -38,7 +38,7 @@ class Perfil extends React.Component {
 			<div>
 				<Grid container spacing={0} className={classes.perfilRoot}>
 					<Grid item xs={false} md={8} />
-					<Grid item xs={12} md={4} className={classes.alertDanger}>
+					<Grid item xs={12} md={4} className={classes.alertInfo}>
 						Actualización: {data.metadata.actualizacion}
 					</Grid>
 					<Grid item xs={12}>
