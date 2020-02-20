@@ -17,7 +17,7 @@ import Switch from "@material-ui/core/Switch";
 import Collapse from "@material-ui/core/Collapse";
 
 import BusquedaServidor from "./BusquedaServidor";
-import DetalleServidorSancionado from "./DetalleServidor";
+//import DetalleServidorSancionado from "./DetalleServidor";
 import TablaResumen from "./TablaResumen";
 import EnhancedTableHead from './EnhancedTableHead';
 
@@ -25,6 +25,7 @@ import Descarga from "../Compartidos/Descarga";
 import MensajeErrorDatos from "../Tablas/MensajeErrorDatos";
 
 import columnData from './column_data';
+import FichaServidorPublico from "./FichaServidorPublico";
 
 const styles = theme => ({
     root: {},
@@ -195,13 +196,16 @@ class TablaServidores extends React.Component {
         this.setState({order, orderBy});
     };
 
-    handleClose = () => {
-        this.setState({open: false});
+    closeDialog = () => {
+        this.setState({
+            open: false,
+            elementoSeleccionado: null
+        });
     };
 
-    handleClick = (event, elemento) => {
+    openDialog = (element) => {
         this.setState({
-            elementoSeleccionado: elemento,
+            elementoSeleccionado: element,
             open: true
         });
     };
@@ -431,11 +435,12 @@ class TablaServidores extends React.Component {
                         />
                     </Grid>
 
+                    {/*
                     <Grid item xs={12}>
                         <DetalleServidorSancionado handleClose={this.handleClose}
                                                    servidor={elementoSeleccionado}
                                                    control={open}/>
-                    </Grid>
+                    </Grid>*/}
 
                     <Grid item xs={12}>
                         {
@@ -505,7 +510,7 @@ class TablaServidores extends React.Component {
                                             return (
                                                 <TableRow
                                                     hover
-                                                    onClick={event => this.handleClick(event, n)}
+                                                    onClick={() => this.openDialog(n)}
                                                     tabIndex={-1}
                                                     key={index}
                                                 >
@@ -513,7 +518,6 @@ class TablaServidores extends React.Component {
                                                                padding="default">{nombrecompleto || `${nombres} ${primerApellido} ${segundoApellido}`}</TableCell>
                                                     <TableCell>{dependencia? dependencia.nombre : institucionDependencia.nombre}</TableCell>
                                                     <TableCell>{puesto.nombre}</TableCell>
-                                                    {/*<TableCell>{n.tipo_actos}</TableCell>*/}
                                                 </TableRow>
                                             );
                                         })
@@ -563,6 +567,8 @@ class TablaServidores extends React.Component {
                         <Descarga url={process.env.REACT_APP_BULK_S2}/>
                     </Grid>
                 </Grid>
+
+                <FichaServidorPublico open={open} servidorPublico={elementoSeleccionado} closeDialog={this.closeDialog}/>
 
             </div>
         );
