@@ -5,7 +5,7 @@ import LogoSesna from '../../assets/Logo-SESNA.png';
 import LibreUso from '../../assets/libre-uso.png';
 import {Typography} from "@material-ui/core"
 import LogoPDN from '../../assets/PDN-sintexto-blue.png';
-import OK from '../../assets/ok_80x15_blue.png';
+//import OK from '../../assets/ok_80x15_blue.png';
 import {Link} from 'react-router-dom';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFacebookSquare} from "@fortawesome/free-brands-svg-icons/faFacebookSquare";

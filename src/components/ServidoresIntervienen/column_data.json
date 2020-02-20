@@ -68,7 +68,7 @@
     "disablePadding": false,
     "label": "Tipo procedimiento",
     "position": 10,
-    "mostrar": true,
+    "mostrar": false,
     "key": "tipo_actos"
   }
 ]

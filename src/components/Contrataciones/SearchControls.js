@@ -3,7 +3,7 @@ import {withStyles} from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 //import NativeSelect from "@material-ui/core/NativeSelect";
-import InputBase from "@material-ui/core/InputBase";
+//import InputBase from "@material-ui/core/InputBase";
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import Grid from '@material-ui/core/Grid';
@@ -13,14 +13,6 @@ import Button from "@material-ui/core/Button";
 const styles = theme => ({
     root: {
         flexGrow: 1,
-    },
-    buyer: {
-       // marginRight: theme.spacing(3)
-        //paddingRight: theme.spacing(2)
-    },
-    procurementMethod: {
-        //marginBottom: theme.spacing(3)
-        //paddingLeft: theme.spacing(2)
     },
     button:{
         background: '#ffe01b',
@@ -81,9 +73,7 @@ class SearchControls extends React.Component{
                                 </FormControl>
                                 */}
 
-                            <FormControl className={classes.buyer}
-                            fullWidth
-                            >
+                            <FormControl fullWidth>
                                 <InputLabel htmlFor="age-customized-native-simple">Institución</InputLabel>
                                 <Select
                                     value={buyer_id}
@@ -106,9 +96,7 @@ class SearchControls extends React.Component{
 
                     <Grid item  xs={12} sm={12} md={4} lg={3} xl={3}  className={classes.item}>
                         <form className={classes.root}>
-                            <FormControl className={classes.procurementMethod}
-                            fullWidth
-                            >
+                            <FormControl fullWidth>
                                 <InputLabel htmlFor="age-customized-select">Tipo de contratación</InputLabel>
                                 <Select
                                     value={procurementMethod}
@@ -129,9 +117,7 @@ class SearchControls extends React.Component{
                     <Grid item xs={12} sm={12} md={4} lg={3} xl={3} className={classes.item}>
 
                         <form className={classes.root}>
-                            <FormControl className={classes.procurementMethod}
-                                         fullWidth
-                            >
+                            <FormControl fullWidth>
                                 <InputLabel htmlFor="age-customized-select">Ciclo</InputLabel>
                                 <Select
                                     value={cycle}
@@ -152,7 +138,7 @@ class SearchControls extends React.Component{
 
                     <Grid item xs={12} className={classes.item}>
                         <TextField
-                            id="outlined-full-width"
+                            id="outlined-full-width1"
                             label="Proveedor"
                             //style={{  margin : 8}}
                             placeholder="Escriba el nombre de un proveedor"
@@ -170,7 +156,7 @@ class SearchControls extends React.Component{
 
                     <Grid item xs={12} className={classes.item }>
                         <TextField
-                            id="outlined-full-width"
+                            id="outlined-full-width2"
                             label="Frase de búsqueda"
                             //style={{  margin : 8}}
                             placeholder="Escriba la frase de búsqueda"
