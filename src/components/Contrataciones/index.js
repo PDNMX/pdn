@@ -115,7 +115,7 @@ class Index extends React.Component {
                                   className={isSelected(0)?classes.selectedTabItem:classes.tabItem}>
 
                                 <figure className={classes.figure}>
-                                    <img src={img3} className={classes.tabIcon}/>
+                                    <img src={img3} className={classes.tabIcon} alt="Visualiza"/>
                                 </figure>
 
                                 <Typography color='textPrimary' style={{fontWeight: isSelected(0)?500:300, paddingTop: 15}}>
@@ -130,7 +130,7 @@ class Index extends React.Component {
                                   className={isSelected(1)?classes.selectedTabItem:classes.tabItem}>
 
                                 <figure className={classes.figure}>
-                                    <img src={img1} className={classes.tabIcon} />
+                                    <img src={img1} className={classes.tabIcon} alt="explora"/>
                                 </figure>
 
                                 <Typography color='textPrimary' style={{fontWeight: isSelected(1)?500:300, paddingTop: 15}}>

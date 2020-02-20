@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { lighten, makeStyles } from '@material-ui/core/styles';
+import {
+    //lighten,
+    makeStyles
+} from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -22,7 +25,12 @@ const headRows = [
 ];
 
 function EnhancedTableHead(props) {
-    const { classes, onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
+    const {
+        classes,
+        //onSelectAllClick,
+        order, orderBy,
+        //numSelected, rowCount, onRequestSort
+    } = props;
 
     return (
         <TableHead>
@@ -55,14 +63,15 @@ function EnhancedTableHead(props) {
 
 EnhancedTableHead.propTypes = {
     classes: PropTypes.object.isRequired,
-    numSelected: PropTypes.number.isRequired,
+    //numSelected: PropTypes.number.isRequired,
     //onRequestSort: PropTypes.func.isRequired,
     //onSelectAllClick: PropTypes.func.isRequired,
     order: PropTypes.oneOf(['asc', 'desc']).isRequired,
     orderBy: PropTypes.string.isRequired,
-    rowCount: PropTypes.number.isRequired,
+    //rowCount: PropTypes.number.isRequired,
 };
 
+/*
 const useToolbarStyles = makeStyles(theme => ({
     root: {
         paddingLeft: theme.spacing(2),
@@ -87,7 +96,7 @@ const useToolbarStyles = makeStyles(theme => ({
     title: {
         flex: '0 0 auto',
     },
-}));
+}));*/
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -180,9 +189,9 @@ export default function EnhancedTable(props) {
     const classes = useStyles();
     const [order, setOrder] = React.useState('asc');
     const [orderBy, setOrderBy] = React.useState('calories');
-    const [selected, setSelected] = React.useState([]);
-    const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(10);
+    //const [selected, setSelected] = React.useState([]);
+    //const [page, setPage] = React.useState(0);
+    //const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
     //responsive dialog
     const [open, setOpen] = React.useState(false);
@@ -197,23 +206,22 @@ export default function EnhancedTable(props) {
         setDialogData(props.data[index]);
     }
 
-
     function handleChangePage(event, newPage) {
-        setPage(newPage);
+        //setPage(newPage);
         props.handleChangePage(newPage);
     }
 
     function handleChangeRowsPerPage(event) {
-        setRowsPerPage(+event.target.value);
-        setPage(0);
+        //setRowsPerPage(+event.target.value);
+        //setPage(0);
         props.handleChangeRowsPerPage(+event.target.value)
     }
 
 
-    const isSelected = name => selected.indexOf(name) !== -1;
-
+    //const isSelected = name => selected.indexOf(name) !== -1;
     //const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
-    const emptyRows = props.pagination.rowsPerPage - Math.min(props.pagination.rowsPerPage, props.pagination.total - page * props.pagination.rowsPerPage);
+    const {page, total, pageSize} = props.pagination;
+    const emptyRows = pageSize - Math.min(pageSize, total - page * pageSize);
 
     return (
         <div className={classes.root}>
@@ -228,7 +236,7 @@ export default function EnhancedTable(props) {
                         >
                             <EnhancedTableHead
                                 classes={classes}
-                                numSelected={selected.length}
+                                //numSelected={selected.length}
                                 order={order}
                                 orderBy={orderBy}
                                 //onSelectAllClick={handleSelectAllClick}
@@ -237,7 +245,7 @@ export default function EnhancedTable(props) {
                             />
                             <TableBody>
                                 {rows.map((row, index) => {
-                                    const isItemSelected = isSelected(row.col1);
+                                    //const isItemSelected = isSelected(row.col1);
                                     const labelId = `enhanced-table-checkbox-${index}`;
 
                                     return (
@@ -268,9 +276,9 @@ export default function EnhancedTable(props) {
                     <TablePagination
                         rowsPerPageOptions={[5, 10, 25]}
                         component="div"
-                        count={props.pagination.total}//{rows.length}
-                        rowsPerPage={props.pagination.pageSize}//{rowsPerPage}
-                        page={props.pagination.page}//{page}
+                        count={total}//{rows.length}
+                        rowsPerPage={pageSize}//{rowsPerPage}
+                        page={page}//{page}
                         backIconButtonProps={{
                             'aria-label': 'previous page',
                         }}
