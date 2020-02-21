@@ -39,26 +39,24 @@ export default function TypographyMenu(props) {
 	const classes = useStyles();
 
 	return (
-		<Paper style={{ backgroundColor: '#34b3eb' }}>
-			<MenuList>
-				{props.opciones.map((opcion, index) => {
-					return (
-						<MenuItem
-							key={'opcion-' + index}
-							selected={props.value === index}
-							onClick={(e) => props.setValue(e, index)}
-							classes={classes}
-						>
-							<MyBadge
-								badgeContent={opcion.valor ? opcion.valor : 0}
-								color="error"
-								anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
-							/>
-							{opcion.clave}
-						</MenuItem>
-					);
-				})}
-			</MenuList>
-		</Paper>
+		<MenuList>
+			{props.opciones.map((opcion, index) => {
+				return (
+					<MenuItem
+						key={'opcion-' + index}
+						selected={props.value === index}
+						onClick={(e) => props.setValue(e, index)}
+						classes={classes}
+					>
+						<MyBadge
+							badgeContent={opcion.valor ? opcion.valor : 0}
+							color="error"
+							anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
+						/>
+						{opcion.clave}
+					</MenuItem>
+				);
+			})}
+		</MenuList>
 	);
 }
