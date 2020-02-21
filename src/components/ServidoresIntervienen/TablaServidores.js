@@ -139,11 +139,11 @@ class TablaServidores extends React.Component {
         };
     }
 
-    loadEntites = nivel => {
+    loadEntities = nivel => {
         let options = {
             uri: process.env.REACT_APP_S2_BACKEND + "/api/v1/entities",
             json: true,
-            method: "post",
+            method: "POST",
             body: {}
         };
 
@@ -165,13 +165,16 @@ class TablaServidores extends React.Component {
 
     changeLevel = e => {
         const nivel = e.target.value;
-        this.setState({nivel: nivel},() => {
-            this.loadEntites(nivel);
+        this.setState({
+            nivel: nivel,
+            entities: []
+        },() => {
+            this.loadEntities(nivel);
         });
     };
 
     componentDidMount() {
-        this.loadEntites("todos");
+        this.loadEntities("todos");
     }
 
     toggleShowSummary = () => {
