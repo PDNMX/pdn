@@ -17,15 +17,13 @@ import Switch from "@material-ui/core/Switch";
 import Collapse from "@material-ui/core/Collapse";
 
 import BusquedaServidor from "./BusquedaServidor";
-//import DetalleServidorSancionado from "./DetalleServidor";
 import TablaResumen from "./TablaResumen";
 import EnhancedTableHead from './EnhancedTableHead';
-
-import Descarga from "../Compartidos/Descarga";
-import MensajeErrorDatos from "../Tablas/MensajeErrorDatos";
+import AlertaError from "./AlertaError";
+import FichaServidorPublico from "./FichaServidorPublico";
 
 import columnData from './column_data';
-import FichaServidorPublico from "./FichaServidorPublico";
+import Descarga from "../Compartidos/Descarga";
 
 const styles = theme => ({
     root: {},
@@ -152,14 +150,15 @@ class TablaServidores extends React.Component {
         }
 
         rp(options).then(data => {
-            //let new_entities = data.map( d => ({value: d.nombre, label: d.nombre, supplier_id: d.supplier_id}) );
-
             this.setState({
-                entities: data, //new_entities,
+                entities: data,
                 current_entity: "ANY"
             });
         }).catch(err => {
             console.log(err);
+            this.setState({
+                error: true
+            })
         });
     };
 
@@ -438,13 +437,6 @@ class TablaServidores extends React.Component {
                         />
                     </Grid>
 
-                    {/*
-                    <Grid item xs={12}>
-                        <DetalleServidorSancionado handleClose={this.handleClose}
-                                                   servidor={elementoSeleccionado}
-                                                   control={open}/>
-                    </Grid>*/}
-
                     <Grid item xs={12}>
                         {
                             loading &&
@@ -455,9 +447,6 @@ class TablaServidores extends React.Component {
                                 <CircularProgress className={classes.progress} id="spinnerLoading" size={200}/>
                             </Modal>
 
-                        }
-                        {
-                            this.state.error && <MensajeErrorDatos/>
                         }
                     </Grid>
 
@@ -482,8 +471,10 @@ class TablaServidores extends React.Component {
                             </div>
                         </div>
                         }
-                    </Grid>
 
+                        <AlertaError open={this.state.error} setOpen={open => {this.setState({error: open})}}/>
+
+                    </Grid>
                 </Grid>
 
                 {results && results.length > 0 &&
@@ -543,6 +534,7 @@ class TablaServidores extends React.Component {
                                             colSpan={6}
                                             count={totalRows}
                                             rowsPerPage={rowsPerPage}
+                                            rowsPerPageOptions={[10,25,50]}
                                             page={page}
                                             backIconButtonProps={{
                                                 'aria-label': 'Previous Page',

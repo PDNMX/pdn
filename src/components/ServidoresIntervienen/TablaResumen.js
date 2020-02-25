@@ -101,13 +101,15 @@ class TablaResumen extends React.Component {
                                             </TableCell>
                                             <TableCell align="center">{row.totalRows}</TableCell>
                                             <TableCell align="center">
-                                                <Tooltip title={"Ver"}>
-                                                    <Fab size="small" className={classes.fab} onClick={() => {
-                                                        handleSearchSupplier(row.supplier_id);
-                                                    }}>
-                                                        <SubdirectoryArrowRightIcon/>
-                                                    </Fab>
-                                                </Tooltip>
+                                                {row.error? "No disponible":
+                                                    <Tooltip title={"Ver"}>
+                                                        <Fab size="small" className={classes.fab} onClick={() => {
+                                                            handleSearchSupplier(row.supplier_id);
+                                                        }}>
+                                                            <SubdirectoryArrowRightIcon/>
+                                                        </Fab>
+                                                    </Tooltip>
+                                                }
                                             </TableCell>
                                         </TableRow>
                                     ))}
