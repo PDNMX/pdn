@@ -10,6 +10,8 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme, withStyles } from '@material-ui/core/styles';
 import {servidores} from "../Utils/glosario.json";
 import Tooltip from "@material-ui/core/Tooltip";
+import Grid from "@material-ui/core/Grid";
+import Divider from "@material-ui/core/Divider";
 
 const Glosario = props => {
     const data = servidores.find(e => e.id === props.id);
@@ -61,6 +63,15 @@ const styles = theme => ({
     bulletText: {
         display: 'inline',
         textTransform :'capitalize'
+    },
+    divider: {
+        height: 4,
+        //border: 4,
+        marginTop: theme.spacing(2),
+        marginBottom: theme.spacing(4)
+    },
+    sangria: {
+        paddingLeft: theme.spacing(2)
     }
 });
 
@@ -78,7 +89,7 @@ function FichaServidorPublico(props) {
     return (
         <div>
             <Dialog
-                maxWidth='sm'
+                maxWidth='md'
                 fullWidth={true}
                 fullScreen={fullScreen}
                 open={open}
@@ -87,60 +98,75 @@ function FichaServidorPublico(props) {
             >
                 <DialogTitle id="responsive-dialog-title">{"Ficha del Servidor Público"}</DialogTitle>
                 {servidorPublico &&
-                <DialogContent>
 
-                    <Typography>
-                        <HtmlTooltip title={<Glosario id={1}/>}>
-                            <b>Servidor Público:</b>
-                        </HtmlTooltip>
-                    </Typography>
+                <DialogContent >
 
-                    <Typography paragraph>
-                        {nombrecompleto || `${nombres} ${primerApellido} ${segundoApellido}` }
-                    </Typography>
+                    <Grid container spacing={0}>
+
+                        <Grid item xs={6}>
+                            <Typography component='div'>
+
+                                <HtmlTooltip title={<Glosario id={1}/>}>
+                                    <b>{nombrecompleto || `${nombres} ${primerApellido} ${segundoApellido}` }</b>
+                                </HtmlTooltip>
+
+                                <Typography component='div' className={classes.sangria}>
+                                    {/*<HtmlTooltip title={<Glosario id={2}/>}>
+                                        {puesto.nombre}<
+                                    </HtmlTooltip>*/}
+                                    {puesto.nombre}
+                                </Typography>
+                            </Typography>
+                        </Grid>
+
+                        <Grid item xs={6}>
+
+                            <Typography>
+                                <HtmlTooltip title={<Glosario id={0}/>}>
+                                    <b>Institución / Dependencia</b>
+                                </HtmlTooltip>
+                            </Typography>
+
+                            <Typography paragraph className={classes.sangria}>
+                                {institucionDependencia.nombre}
+                            </Typography>
+
+                        </Grid>
+
+                    </Grid>
 
 
-                    <Typography>
-                        <HtmlTooltip title={<Glosario id={2}/>}>
-                            <b>Puesto:</b>
-                        </HtmlTooltip>
-                    </Typography>
+                    <Divider className={classes.divider}/>
 
-                    <Typography paragraph>
-                        {puesto.nombre}
-                    </Typography>
 
-                    <Typography>
-                        <HtmlTooltip title={<Glosario id={0}/>}>
-                            <b>Institución:</b>
-                        </HtmlTooltip>
+                    <Grid container spacing={0}>
+                        <Grid item xs={6}>
+                            <Typography>
+                                <b>Nivel de responsabilidad</b>
+                            </Typography>
+                            <ul className={classes.ul}>
+                                {servidorPublico.nivelResponsabilidad.map((r, index) => {
+                                    return <li key={index} className={classes.li}>
+                                        <Typography className={classes.bulletText}>{r.valor}</Typography>
+                                    </li>
+                                })}
+                            </ul>
+                        </Grid>
 
-                    </Typography>
-                    <Typography paragraph>
-                        {institucionDependencia.nombre}
-                    </Typography>
+                        <Grid item xs={6}>
+                            <Typography>
+                                <b>Interviene en</b>
+                            </Typography>
+                            <ul className={classes.ul}>
+                                {servidorPublico.tipoProcedimiento.map((o, index) => {
+                                    return <li key={index} className={classes.li}>
+                                        <Typography className={classes.bulletText}>{o.valor}</Typography>
+                                    </li>
+                                })}
+                            </ul>
+                        </Grid>
+                    </Grid>
 
-                    <Typography>
-                        <b>Nivel de responsabilidad:</b>
-                    </Typography>
-                    <ul className={classes.ul}>
-                        {servidorPublico.nivelResponsabilidad.map((r, index) => {
-                            return <li key={index} className={classes.li}>
-                                <Typography className={classes.bulletText}>{r.valor}</Typography>
-                            </li>
-                        })}
-                    </ul>
-
-                    <Typography>
-                        <b>Operaciones:</b>
-                    </Typography>
-                    <ul className={classes.ul}>
-                        {servidorPublico.tipoProcedimiento.map((o, index) => {
-                            return <li key={index} className={classes.li}>
-                                <Typography className={classes.bulletText}>{o.valor}</Typography>
-                            </li>
-                        })}
-                    </ul>
                 </DialogContent>
                 }
                 <DialogActions>

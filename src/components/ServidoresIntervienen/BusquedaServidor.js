@@ -2,10 +2,9 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import FormControl from "@material-ui/core/FormControl/FormControl";
-import MenuItem from "@material-ui/core/MenuItem/MenuItem";
-import Grid from "@material-ui/core/Grid/Grid";
-import '../Utils/selectReact.css';
+import FormControl from "@material-ui/core/FormControl";
+import MenuItem from "@material-ui/core/MenuItem";
+import Grid from "@material-ui/core/Grid";
 import {Typography} from "@material-ui/core"
 import Button from '@material-ui/core/Button';
 import InputLabel from '@material-ui/core/InputLabel';
