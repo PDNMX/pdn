@@ -13,6 +13,7 @@ import FormLabel from "@material-ui/core/FormLabel";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
+import TipoProcedimiento from "./TipoProcedimiento";
 
 const styles = theme => ({
     textField: {
@@ -58,6 +59,7 @@ class BusquedaServidor extends React.Component {
             apellidoUno,
             apellidoDos,
             tipoProcedimiento,
+            asignarTipoProcedimiento,
             entities,
             current_entity,
             nivel,
@@ -69,7 +71,7 @@ class BusquedaServidor extends React.Component {
                 <Grid container spacing={4}>
                     <Grid item xs={12}>
                         <Typography variant="h6">
-                            <b>Busca un servidor público que interviene en procesos de contratación</b>
+                            <b>Busca servidores públicos que intervienen en contrataciones, concesiones, enajenaciones y dictámenes</b>
                         </Typography>
                     </Grid>
                     <Grid item xs={12} md={4}>
@@ -121,36 +123,24 @@ class BusquedaServidor extends React.Component {
                         </FormControl>
                     </Grid>
                     <Grid item xs={12} md={4}>
-                        <FormControl className={classes.formControl}>
-                            <InputLabel htmlFor="campoSelectProcedimiento"> Tipo de procedimiento</InputLabel>
-                            <Select style={{marginTop:'0px'}}
-                                    value={tipoProcedimiento}
-                                    onChange={(e) => handleSetState('tipoProcedimiento', e)}
-                                    inputProps={{
-                                        name: 'campoSelectProcedimiento',
-                                        id: 'campoSelectProcedimiento',
-                                    }}
-                            >
-                                <MenuItem value={0} key={'Todos'}>
-                                    Cualquiera
-                                </MenuItem>
-                                <MenuItem value={1} key={'CONTRATACIONES'}>Contrataciones</MenuItem>
-                                <MenuItem value={2} key={'CONCESIONES'}>Concesiones</MenuItem>
-                                <MenuItem value={3} key={'ENAJENACIONES'}>Enajenaciones</MenuItem>
-                                <MenuItem value={4} key={'DICTAMENES'}>Dictamenes</MenuItem>
-                            </Select>
 
-                        </FormControl>
+                        <TipoProcedimiento
+                            tipoProcedimiento={tipoProcedimiento}
+                            asignarTipoProcedimiento={asignarTipoProcedimiento}
+                        />
+
                     </Grid>
                     <Grid item xs={12} md={8}>
                         <FormControl className={classes.formControl}>
                             <InputLabel htmlFor={'campoSelectInstitucion'}>Institución</InputLabel>
-                            <Select style={{marginTop: '0px'}} value={current_entity}
-                                    onChange={(e) => handleSetState('current_entity', e)}
-                                    inputProps={{
-                                        name: 'campoSelectInstitucion',
-                                        id: 'campoSelectInstitucion',
-                                    }}
+                            <Select
+                                //style={{marginTop: '0px'}}
+                                value={current_entity}
+                                onChange={(e) => handleSetState('current_entity', e)}
+                                inputProps={{
+                                    name: 'campoSelectInstitucion',
+                                    id: 'campoSelectInstitucion',
+                                }}
                             >
                                 <MenuItem value="ANY" key="ANY">
                                     Cualquiera
