@@ -12,7 +12,7 @@ import Herramientas from "../Herramientas";
 import Header from './Header/Header';
 import ScrollToTopButton from "../../Navigation/ScrollToTopButton";
 import Button from '@material-ui/core/Button';
-import {Link} from "react-router-dom";
+import {Link} from '@material-ui/core';
 import IconButton from "@material-ui/core/IconButton";
 import GetAppIcon from "@material-ui/icons/GetApp";
 
