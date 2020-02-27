@@ -2,10 +2,9 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import FormControl from "@material-ui/core/FormControl/FormControl";
-import MenuItem from "@material-ui/core/MenuItem/MenuItem";
-import Grid from "@material-ui/core/Grid/Grid";
-import '../Utils/selectReact.css';
+import FormControl from "@material-ui/core/FormControl";
+import MenuItem from "@material-ui/core/MenuItem";
+import Grid from "@material-ui/core/Grid";
 import {Typography} from "@material-ui/core"
 import Button from '@material-ui/core/Button';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -14,6 +13,7 @@ import FormLabel from "@material-ui/core/FormLabel";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
+import TipoProcedimiento from "./TipoProcedimiento";
 
 const styles = theme => ({
     textField: {
@@ -48,17 +48,18 @@ class BusquedaServidor extends React.Component {
     };
 
     buscar = () => {
-        this.props.handleSearch('FIELD_FILTER');
+        this.props.handleSearch();
     };
 
     render() {
         const {
             classes,
-            handleChangeCampo,
-            nombreServidor,
+            handleSetState,
+            nombres,
             apellidoUno,
             apellidoDos,
-            procedimiento,
+            tipoProcedimiento,
+            asignarTipoProcedimiento,
             entities,
             current_entity,
             nivel,
@@ -70,7 +71,7 @@ class BusquedaServidor extends React.Component {
                 <Grid container spacing={4}>
                     <Grid item xs={12}>
                         <Typography variant="h6">
-                            <b>Busca un servidor público que interviene en procesos de contratación</b>
+                            <b>Busca servidores públicos que intervienen en contrataciones, concesiones, enajenaciones y dictámenes</b>
                         </Typography>
                     </Grid>
                     <Grid item xs={12} md={4}>
@@ -79,8 +80,8 @@ class BusquedaServidor extends React.Component {
                                 id="search"
                                 label="Nombre(s)"
                                 type="search"
-                                onChange={(e) => handleChangeCampo('nombreServidor', e)}
-                                value={nombreServidor}
+                                onChange={(e) => handleSetState('nombres', e)}
+                                value={nombres}
                                 InputLabelProps={{
                                     className: classes.inputShrink,
                                     shrink: true
@@ -95,7 +96,7 @@ class BusquedaServidor extends React.Component {
                                 id="search"
                                 label="Primer apellido"
                                 type="search"
-                                onChange={(e) => handleChangeCampo('apellidoUno', e)}
+                                onChange={(e) => handleSetState('apellidoUno', e)}
                                 value={apellidoUno}
                                 InputLabelProps={{
                                     className: classes.inputShrink,
@@ -111,7 +112,7 @@ class BusquedaServidor extends React.Component {
                                 id="search"
                                 label="Segundo apellido"
                                 type="search"
-                                onChange={(e) => handleChangeCampo('apellidoDos', e)}
+                                onChange={(e) => handleSetState('apellidoDos', e)}
                                 value={apellidoDos}
                                 InputLabelProps={{
                                     className: classes.inputShrink,
@@ -122,44 +123,32 @@ class BusquedaServidor extends React.Component {
                         </FormControl>
                     </Grid>
                     <Grid item xs={12} md={4}>
-                        <FormControl className={classes.formControl}>
-                            <InputLabel htmlFor="campoSelectProcedimiento"> Tipo de procedimiento</InputLabel>
-                            <Select style={{marginTop:'0px'}}
-                                    value={procedimiento}
-                                    onChange={(e) => handleChangeCampo('procedimiento', e)}
-                                    inputProps={{
-                                        name: 'campoSelectProcedimiento',
-                                        id: 'campoSelectProcedimiento',
-                                    }}
-                            >
-                                <MenuItem value={'todos'} key={'Todos'}>
-                                    Cualquiera
-                                </MenuItem>
-                                <MenuItem value={'CONTRATACIONES'} key={'CONTRATACIONES'}>Contrataciones</MenuItem>
-                                <MenuItem value={'CONCESIONES'} key={'CONCESIONES'}>Concesiones</MenuItem>
-                                <MenuItem value={'ENAJENACIONES'} key={'ENAJENACIONES'}>Enajenaciones</MenuItem>
-                                <MenuItem value={'DICTAMENES'} key={'DICTAMENES'}>Dictamenes</MenuItem>
-                            </Select>
 
-                        </FormControl>
+                        <TipoProcedimiento
+                            tipoProcedimiento={tipoProcedimiento}
+                            asignarTipoProcedimiento={asignarTipoProcedimiento}
+                        />
+
                     </Grid>
                     <Grid item xs={12} md={8}>
                         <FormControl className={classes.formControl}>
                             <InputLabel htmlFor={'campoSelectInstitucion'}>Institución</InputLabel>
-                            <Select style={{marginTop: '0px'}} value={current_entity}
-                                    onChange={(e) => handleChangeCampo('current_entity', e)}
-                                    inputProps={{
-                                        name: 'campoSelectInstitucion',
-                                        id: 'campoSelectInstitucion',
-                                    }}
+                            <Select
+                                //style={{marginTop: '0px'}}
+                                value={current_entity}
+                                onChange={(e) => handleSetState('current_entity', e)}
+                                inputProps={{
+                                    name: 'campoSelectInstitucion',
+                                    id: 'campoSelectInstitucion',
+                                }}
                             >
                                 <MenuItem value="ANY" key="ANY">
                                     Cualquiera
                                 </MenuItem>
                                 {
-                                    entities.map(((item, index) => {
-                                        return <MenuItem value={item.value} key={index}>
-                                            {item.label}
+                                    entities.map(((entity, index) => {
+                                        return <MenuItem value={entity} key={index}>
+                                            {entity.nombre}
                                         </MenuItem>
                                     }))
                                 }
@@ -187,15 +176,14 @@ class BusquedaServidor extends React.Component {
                     </Grid>
 
                     <Grid item xs={12} md={6} align="right">
-                        <Button variant="contained" color="secondary" className={classes.button} onClick={this.buscar}>
-                            Buscar
-                        </Button>
-
                         <Button variant="contained" color="secondary" className={classes.button}
                                 onClick={this.limpiarBusqueda}>
                             Limpiar
                         </Button>
 
+                        <Button variant="contained" color="secondary" className={classes.button} onClick={this.buscar}>
+                            Buscar
+                        </Button>
                     </Grid>
                 </Grid>
             </div>

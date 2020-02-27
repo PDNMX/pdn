@@ -2,12 +2,11 @@ import React from 'react';
 import {withStyles} from "@material-ui/core/styles";
 import Grid from '@material-ui/core/Grid';
 import {Link} from 'react-router-dom';
-import BG from '../../../../assets/img/especificaciones.jpg';
 import PDNLogo from '../../../../assets/PDN.png';
 import S1 from '../../../../assets/iconos_azul/1_icono.svg'
 import {Typography} from "@material-ui/core"
 import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
-//import classNames from 'classnames';
+import Particles from 'react-particles-js';
 
 const style = theme => ({
         root: {
@@ -18,14 +17,8 @@ const style = theme => ({
             paddingBottom: '75px',
             paddingLeft: theme.spacing(1),
             paddingRight: theme.spacing(1),
-
-            height: '100%',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
             position: 'relative',
-            backgroundImage: `url(${BG})`
-
+            background: "linear-gradient(0deg, rgba(6,13,21,1) 0%, rgba(64,114,129,1) 100%)",
         },
         link: {
             textDecoration: 'none',
@@ -53,7 +46,15 @@ const style = theme => ({
             paddingLeft: "40px",
             paddingTop: "40px",
             paddingBottom: "40px"
-        }
+        },
+        particulas: {
+            width: '100%',
+            height: '100%',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            zIndex: 1,
+        },
     }
 );
 
@@ -90,6 +91,80 @@ class Header extends React.Component{
                 </Grid>
 
                 <Grid container spacing={0} className={classes.container1} justify='center'>
+                    <Particles 
+                        className={classes.particulas}
+                        params={{
+                            "particles": {
+                                "number": {
+                                    "value": 24,
+                                    "density": {
+                                        "enable": true,
+                                        "value_area": 800
+                                    }
+                                },
+                                "line_linked": {
+                                    "enable": false
+                                },
+                                "move": {
+                                    "speed": 1,
+                                    "out_mode": "out"
+                                },
+                                "shape": {
+                                    "type": [
+                                        "images"
+                                    ],
+                                    "images": [
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/especificaciones/1.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/especificaciones/2.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/especificaciones/3.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/especificaciones/4.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/especificaciones/5.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/especificaciones/6.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                        {
+                                            "src": process.env.PUBLIC_URL + "/img/flotantes/especificaciones/7.svg",
+                                            "height": 30,
+                                            "width": 30
+                                        },
+                                    ]
+                                },
+                                "size": {
+                                    "value": 30,
+                                    "random": false,
+                                    "anim": {
+                                        "enable": true,
+                                        "speed": 4,
+                                        "size_min": 10,
+                                        "sync": false
+                                    }
+                                }
+                            },
+                            "retina_detect": true
+                        }}
+                    />
                     <Grid item xs={12} md={4} align={isWidthUp('md', this.props.width)? 'right':'center'} className={classes.item1}>
                         <img src={S1} alt="Sistema 2" className={classes.s2}/>
                     </Grid>

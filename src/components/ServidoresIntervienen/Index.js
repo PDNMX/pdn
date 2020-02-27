@@ -1,10 +1,10 @@
 import React from 'react';
 import {withStyles} from '@material-ui/core/styles'
-import {Typography} from "@material-ui/core"
+import Typography from "@material-ui/core/Typography"
 import PropTypes from 'prop-types';
 import Footer from '../Home/Footer';
 import TablaServidores from "./TablaServidores";
-import Grid from "@material-ui/core/Grid/Grid";
+import Grid from "@material-ui/core/Grid";
 import img1 from "../../assets/img/servidores_intervienen_contratacion.svg";
 import img2 from "../../assets/img/servidores_particulares_inhabilitados.svg";
 import img3 from "../../assets/img/servidores_visualizaciones.svg";
@@ -62,17 +62,34 @@ const styles = theme => ({
     }
 });
 
+
+const TabContents = props => {
+    const {index} = props;
+    switch (index) {
+        case 1:
+            return <TablaServidores/>;
+        case 2:
+            return <TablaParticularesSancionados/>;
+        case 3:
+            return <Dashboard/>;
+        default:
+            return <Dashboard/>;
+    }
+};
+
 class Index extends React.Component {
     state = {
-        idContent: 3
+        contentId: 3
     };
 
     changeContent = id => {
-        this.setState({idContent: id});
+        this.setState({contentId: id});
     };
+
 
     render() {
         const {classes} = this.props;
+        const {contentId} = this.state;
         return (
             <div className={classes.root}>
 
@@ -84,13 +101,13 @@ class Index extends React.Component {
                         <Grid container spacing={0}>
                             <Grid item md={4} xs={12}
                                   onClick={() => this.changeContent(3)}
-                                  className={classNames(this.state.idContent !== 3 ? classes.card : classes.cardSeleccionada, 'tab')}>
+                                  className={classNames(contentId !== 3 ? classes.card : classes.cardSeleccionada, 'tab')}>
 
                                 <figure className={classes.figure}>
                                     <img src={img3} alt="Visor de datos" className={classes.image}/>
                                 </figure>
                                 <Typography variant="subtitle1"
-                                            style={{fontWeight: this.state.idContent === 3 ? 500 : 300}}
+                                            style={{fontWeight: contentId === 3 ? 500 : 300}}
                                             className={classes.whiteText}>
                                     Visor de datos
                                 </Typography>
@@ -98,29 +115,28 @@ class Index extends React.Component {
                             </Grid>
                             <Grid item md={4} xs={12}
                                   onClick={() => this.changeContent(1)}
-                                  className={classNames(this.state.idContent !== 1 ? classes.card : classes.cardSeleccionada, 'tab')}>
+                                  className={classNames(contentId !== 1 ? classes.card : classes.cardSeleccionada, 'tab')}>
 
                                 <figure className={classes.figure}>
                                     <img src={img1} alt="Servidores que intervinen en procesos de contratacion"
                                          className={classes.image}/>
                                 </figure>
                                 <Typography variant="subtitle1" className={classes.whiteText}
-                                            style={{fontWeight: this.state.idContent === 1 ? 500 : 300}}
+                                            style={{fontWeight: contentId === 1 ? 500 : 300}}
                                 >
                                     Buscador de Servidores que intervienen en procesos de contratación
                                 </Typography>
 
                             </Grid>
 
-                            <Grid item md={4} xs={12}
-                                  onClick={() => this.changeContent(2)}
-                                  className={classNames(this.state.idContent !== 2 ? classes.card : classes.cardSeleccionada, 'tab')}>
+                            <Grid item md={4} xs={12} onClick={() => this.changeContent(2)}
+                                  className={classNames(contentId !== 2 ? classes.card : classes.cardSeleccionada, 'tab')}>
 
                                 <figure className={classes.figure}>
                                     <img src={img2} alt="Particulares inhabilitados" className={classes.image}/>
                                 </figure>
                                 <Typography variant="subtitle1"
-                                            style={{fontWeight: this.state.idContent === 2 ? 500 : 300}}
+                                            style={{fontWeight: contentId === 2 ? 500 : 300}}
                                             className={classes.whiteText}>
 
                                     Buscador de Particulares inhabilitados
@@ -134,15 +150,7 @@ class Index extends React.Component {
 
                 <Grid container justify='center' spacing={0} className={classes.bgPanelTable}>
                     <Grid item xs={12} className={classes.sectionT}>
-                        {this.state.idContent === 1 &&
-                        <TablaServidores/>
-                        }
-                        {this.state.idContent === 2 &&
-                        <TablaParticularesSancionados/>
-                        }
-                        {this.state.idContent === 3 &&
-                        <Dashboard/>
-                        }
+                        <TabContents index={contentId}/>
                     </Grid>
                 </Grid>
                 <Footer/>
