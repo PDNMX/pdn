@@ -87,7 +87,7 @@ class DetalleServidorSancionado extends React.Component {
                                         Dependencia
                                     </Typography>
                                     <Typography className={classes.dataCard}>
-                                        {servidor.institucionDependencia.nombre}({servidor.institucionDependencia.siglas})
+                                        {servidor.institucionDependencia.nombre}{servidor.institucionDependencia.siglas ? '('+servidor.institucionDependencia.siglas+')': '' }
                                     </Typography>
                                 </Grid>
                                 <Grid item xs={12}>
@@ -112,7 +112,7 @@ class DetalleServidorSancionado extends React.Component {
                                         Tipo falta
                                     </Typography>
                                     <Typography className={classes.dataCard}>
-                                        {servidor.tipoFalta}
+                                        {servidor.tipoFalta.valor}
                                     </Typography>
                                 </Grid>
                                 <Grid item xs={12} md={4}>
@@ -151,7 +151,7 @@ class DetalleServidorSancionado extends React.Component {
                                         Tipo sanción
                                     </Typography>
                                     <Typography className={classes.dataCard}>
-                                        {servidor.tipoSancion.join(', ')}
+                                        {servidor.tipoSancion.map(e=>e.valor).join(', ')}
                                     </Typography>
                                 </Grid>
                                 <Grid item xs={12} md={4}>
@@ -159,7 +159,7 @@ class DetalleServidorSancionado extends React.Component {
                                         Multa
                                     </Typography>
                                     <Typography className={classes.dataCard}>
-                                        {servidor.multa.monto} {servidor.multa.moneda}
+                                        {servidor.multa.monto} {servidor.multa.moneda.clave}
                                     </Typography>
                                 </Grid>
                                 <Grid item xs={12} md={4}>
@@ -175,7 +175,7 @@ class DetalleServidorSancionado extends React.Component {
                                         Inhabilitación periodo
                                     </Typography>
                                     <Typography className={classes.dataCard}>
-                                        {servidor.inhabilitacion.fechaInicial}- {servidor.inhabilitacion.fechaFinal}
+                                        Del {servidor.inhabilitacion.fechaInicial} al {servidor.inhabilitacion.fechaFinal}
                                     </Typography>
                                 </Grid>
 

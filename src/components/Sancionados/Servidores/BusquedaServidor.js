@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import FormControl from "@material-ui/core/FormControl";
 import MenuItem from "@material-ui/core/MenuItem";
 import Grid from "@material-ui/core/Grid";
-import '../../Utils/selectReact.css';
 import {Typography} from "@material-ui/core"
 import Button from '@material-ui/core/Button';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -26,8 +25,10 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import MensajeErrorDatos from "../../Tablas/MensajeErrorDatos";
 import Switch from "@material-ui/core/Switch";
 import Collapse from "@material-ui/core/Collapse";
-import Previos from "../../Tablas/Previos";
+import Previos from "./Previos";
 import TablaServidoresSancionados from "./TablaServidoresSancionados";
+import MensajeNoRegistros from "../../Tablas/MensajeNoRegistros";
+import DetalleServidorSancionado from "./DetalleServidorSancionado";
 
 const styles = theme => ({
     formControl: {
@@ -81,8 +82,8 @@ const camposOrdenamiento = [
 ]
 
 const tiposOrdenamiento = [
-    {label: 'Ascendente', value: 'ASC'},
-    {label: 'Descendente', value: 'DESC'}
+    {label: 'Ascendente', value: 'asc'},
+    {label: 'Descendente', value: 'desc'}
 ]
 
 class BusquedaServidor extends React.Component {
@@ -90,18 +91,18 @@ class BusquedaServidor extends React.Component {
         super(props);
         this.state = {
             filterData: [],
-            page: 0,
+            page: 1,
             rowsPerPage: 10,
             totalRows: 0,
-            previos:[],
+            previos: null,
             panelPrevios: true,
             error: false,
             loading: false,
             busquedaAvanzada: false,
             //Filtros
-            nombresServidor: '',
-            apellidoUno: '',
-            apellidoDos: '',
+            nombres: '',
+            primerApellido: '',
+            segundoApellido: '',
             tipoSancion: [],
             rfc: '',
             curp: '',
@@ -109,7 +110,8 @@ class BusquedaServidor extends React.Component {
             nivel: '',
             campoOrden: '',
             tipoOrden: '',
-            institucionesLista: []
+            institucionesLista: [],
+            elementoSeleccionado : null
         }
     }
 
@@ -120,7 +122,7 @@ class BusquedaServidor extends React.Component {
     loadInstituciones = () => {
         let sug = [];
         let options = {
-            uri: process.env.REACT_APP_S3S_BACK + '/api/v1/entities',
+            uri: process.env.REACT_APP_S3S_BACK + '/entities',
             json: true,
             method: "post",
             body: {
@@ -134,7 +136,6 @@ class BusquedaServidor extends React.Component {
                 });
                 this.setState({institucionesLista: sug, institucionDependencia: ''});
             }).catch(err => {
-                console.log("--->",err)
             this.setState({error: true})
         });
     }
@@ -148,10 +149,12 @@ class BusquedaServidor extends React.Component {
                     this.loadInstituciones();
                     break;
                 case 'campoOrden':
-                    this.setState({tipoOrden: event.target.value ? {label: 'Ascendente', value: 'ASC'} : ''});
+                    if(!this.state.tipoOrden)this.setState({tipoOrden: {label: 'Ascendente', value: 'asc'}});
+                    if(!event.target.value)this.setState({tipoOrden:''})
                     break;
                 case 'tipoOrden':
-                    this.setState({campoOrden: event.target.value ? {label: 'RFC', value: 'rfc'} : ''});
+                    if(!this.state.campoOrden && event.target.value)this.setState({campoOrden: {label: 'RFC', value: 'rfc'} });
+                    if(!event.target.value)this.setState({campoOrden:''})
                     break;
             }
         })
@@ -161,45 +164,47 @@ class BusquedaServidor extends React.Component {
         this.setState(
             {
                 filterData: null,
-                previos: [],
-                nivel: 'todos',
+                previos: null,
+                nivel: '',
                 tipoSancion: [],
-                nombresServidor: '',
+                nombres: '',
                 institucionDependencia: '',
-                apellidoUno: '',
-                apellidoDos: '',
+                primerApellido: '',
+                segundoApellido: '',
                 rfc: '',
                 curp: '',
                 campoOrden: '',
                 tipoOrden: '',
-                institucionesLista: []
+                institucionesLista: [],
+                elementoSeleccionado : null,
+                rowsPerPage: 10,
             }, () => {
                 this.loadInstituciones();
             })
     };
-
+//10,25,50
     handleSearchPrevios = () => {
         this.setState({
             loading: true,
             filterData: [],
+            elementoSeleccionado : null,
+            rowsPerPage: 10
         }, () => {
             let body =
                 {
                     "query": this.makeFiltros(),
-                    "limit": 1,
-                    "offset": 0,
-                    "nivel": this.state.nivel
+                    "nivel_gobierno": this.state.nivel
                 };
 
             let options = {
                 method: 'POST',
-                uri: process.env.REACT_APP_S3S_BACK + '/api/v1/summary',
+                uri: process.env.REACT_APP_S3S_BACK + '/summary',
                 json: true,
                 body: body
             };
             rp(options)
                 .then(res => {
-                    this.setState({previos: res, loading: false, error: false})
+                    this.setState({previos: res, loading: false, error: false, panelPrevios: true})
                 }).catch(err => {
                  this.setState({loading: false, error: true});
             });
@@ -208,8 +213,8 @@ class BusquedaServidor extends React.Component {
 
     makeFiltros = () => {
         let filtros = {};
-        let {institucionDependencia, nombresServidor, primerApellido, segundoApellido, rfc, curp, tipoSancion} = this.state;
-        if (nombresServidor) filtros.nombres = nombresServidor;
+        let {institucionDependencia, nombres, primerApellido, segundoApellido, rfc, curp, tipoSancion} = this.state;
+        if (nombres) filtros.nombres = nombres;
         if (primerApellido) filtros.primerApellido = primerApellido;
         if (segundoApellido) filtros.segundoApellido = segundoApellido;
         if (rfc) filtros.rfc = rfc;
@@ -240,15 +245,15 @@ class BusquedaServidor extends React.Component {
             let body =
                 {
                     "query": this.makeFiltros(),
-                    "limit": this.state.rowsPerPage,
-                    "offset": this.state.rowsPerPage * this.state.page,
-                    "clave_api": this.state.api,
+                    "pageSize": this.state.rowsPerPage,
+                    "page": this.state.page,
+                    "supplier_id": this.state.supplier_id,
                     "sort": this.makeSort()
                 };
 
             let options = {
                 method: 'POST',
-                uri: process.env.REACT_APP_S3S_BACK + '/api/v1/search',
+                uri: process.env.REACT_APP_S3S_BACK + '/search',
                 json: true,
                 body: body
             };
@@ -256,9 +261,9 @@ class BusquedaServidor extends React.Component {
             rp(options)
                 .then(res => {
                     this.setState({
-                        filterData: res.data,
+                        filterData: res.results,
                         loading: false,
-                        totalRows: res.totalRows,
+                        totalRows: res.pagination.totalRows,
                         error: false
                     },)
                 }).catch(err => {
@@ -270,29 +275,37 @@ class BusquedaServidor extends React.Component {
 
     handleChangeAPI = (val) => {
         this.setState({
-            api: val,
-            page: 0
+            supplier_id: val,
+            page: 1,
+            elementoSeleccionado: null
         }, () => {
             this.handleSearchAPI()
         });
     };
 
     handleChangePage = (event, page) => {
-        this.setState({page}, () => {
+        this.setState({page:page+1}, () => {
             this.handleSearchAPI();
         });
     };
 
     handleChangeRowsPerPage = event => {
-        this.setState({rowsPerPage: event.target.value, page: 0}, () => {
+        this.setState({rowsPerPage: event.target.value, page: 1}, () => {
             this.handleSearchAPI();
         });
     };
 
+    verDetalle = (event, elemento) => {
+        this.setState({elementoSeleccionado: elemento, panelPrevios : false});
+    };
+
+    handleChangeDetail = () => {
+        this.setState({elementoSeleccionado: null});
+    };
 
     render() {
         const {classes} = this.props;
-        const {nombresServidor, apellidoUno, apellidoDos, rfc, curp, institucionDependencia, nivel, tipoSancion, campoOrden, tipoOrden, institucionesLista} = this.state;
+        const {nombres, primerApellido, segundoApellido, rfc, curp, institucionDependencia, nivel, tipoSancion, campoOrden, tipoOrden, institucionesLista} = this.state;
         return (
             <div>
                 {/*Buscador*/}
@@ -303,11 +316,11 @@ class BusquedaServidor extends React.Component {
                     <Grid item xs={12} md={3}>
                         <FormControl className={classes.formControl}>
                             <TextField
-                                id="nombresServidor"
+                                id="nombres"
                                 label="Nombre(s)"
                                 type="search"
-                                onChange={(e) => this.handleChangeCampo('nombresServidor', e)}
-                                value={nombresServidor}
+                                onChange={(e) => this.handleChangeCampo('nombres', e)}
+                                value={nombres}
                             />
 
                         </FormControl>
@@ -315,11 +328,11 @@ class BusquedaServidor extends React.Component {
                     <Grid item xs={12} md={3}>
                         <FormControl className={classes.formControl}>
                             <TextField
-                                id="apellidoUno"
+                                id="primerApellido"
                                 label="Apellido Uno"
                                 type="search"
-                                onChange={(e) => this.handleChangeCampo('apellidoUno', e)}
-                                value={apellidoUno}
+                                onChange={(e) => this.handleChangeCampo('primerApellido', e)}
+                                value={primerApellido}
                             />
 
                         </FormControl>
@@ -327,11 +340,11 @@ class BusquedaServidor extends React.Component {
                     <Grid item xs={12} md={3}>
                         <FormControl className={classes.formControl}>
                             <TextField
-                                id="apellidoDos"
+                                id="segundoApellido"
                                 label="Apellido Dos"
                                 type="search"
-                                onChange={(e) => this.handleChangeCampo('apellidoDos', e)}
-                                value={apellidoDos}
+                                onChange={(e) => this.handleChangeCampo('segundoApellido', e)}
+                                value={segundoApellido}
                             />
                         </FormControl>
                     </Grid>
@@ -401,8 +414,8 @@ class BusquedaServidor extends React.Component {
                                         onChange={(e) => this.handleChangeCampo('nivel', e)}
                             >
                                 <FormControlLabel value="" control={<Radio/>} label="Todos"/>
-                                <FormControlLabel value="federal" control={<Radio/>} label="Federal"/>
-                                <FormControlLabel value="estatal" control={<Radio/>} label="Estatal"/>
+                                <FormControlLabel value="Federal" control={<Radio/>} label="Federal"/>
+                                <FormControlLabel value="Estatal" control={<Radio/>} label="Estatal"/>
                             </RadioGroup>
 
                         </FormControl>
@@ -549,8 +562,15 @@ class BusquedaServidor extends React.Component {
                     </Grid>
                 </Grid>
                 }
+                {
+                    <Grid item xs={12}>
+                        {(this.state.previos && this.state.previos.length <= 0) &&
+                        <MensajeNoRegistros/>
+                        }
+                    </Grid>
+                }
                 {/*TABLA*/}
-                {this.state.filterData && this.state.filterData.length > 0 &&
+                {this.state.filterData && this.state.filterData.length > 0 && this.state.elementoSeleccionado === null &&
                 <Grid container>
                     <Grid item xs={12} >
                             <TablaServidoresSancionados data={this.state.filterData} page={this.state.page}
@@ -558,9 +578,15 @@ class BusquedaServidor extends React.Component {
                                                         totalRows={this.state.totalRows}
                                                         handleChangePage={this.handleChangePage}
                                                         handleChangeRowsPerPage={this.handleChangeRowsPerPage}
-                                                        verDetalle={this.props.verDetalle}/>
+                                                        verDetalle={this.verDetalle}/>
                     </Grid>
                 </Grid>
+                }
+                {
+                    this.state.elementoSeleccionado !== null &&
+                    <DetalleServidorSancionado handleChangeDetail={this.handleChangeDetail}
+                                               servidor={this.state.elementoSeleccionado}
+                    />
                 }
             </div>
         );

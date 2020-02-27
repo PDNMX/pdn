@@ -14,7 +14,6 @@ import Dashboard from "./dashboard/Servidores/Dashboard";
 import Dashboard2 from "./dashboard/Particulares/Dashboard";
 import classNames from 'classnames';
 import ScrollToTopButton from "../Navigation/ScrollToTopButton";
-import Descarga from "../Compartidos/Descarga";
 
 const styles = theme => ({
     root: {
@@ -25,12 +24,6 @@ const styles = theme => ({
     },
     bgPanelTable: {
         backgroundColor: theme.palette.white.color,
-       /* [theme.breakpoints.up('sm')]: {
-            marginBottom: theme.spacing(7),
-        },
-        [theme.breakpoints.down('sm')]: {
-            marginBottom: theme.spacing(4),
-        },*/
     },
     section: {
         maxWidth: '1200px',
@@ -45,12 +38,6 @@ const styles = theme => ({
     },
     bgContainer: {
         backgroundColor: theme.palette.pestanas.bg,
-    },
-    center: {
-        textAlign: 'center'
-    },
-    links: {
-        backgroundColor: theme.palette.grisTenue.color
     },
     card: {
         backgroundColor: theme.palette.pestanas.bg,

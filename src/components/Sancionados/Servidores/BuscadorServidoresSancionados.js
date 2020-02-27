@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import BusquedaServidor from "./BusquedaServidor";
-import DetalleServidorSancionado from "./DetalleServidorSancionado";
 import Grid from "@material-ui/core/Grid";
 import {Typography} from "@material-ui/core";
 import Descarga from "../../Compartidos/Descarga";
@@ -51,74 +50,52 @@ const styles = theme => ({
 class EnhancedTable extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            elementoSeleccionado: null,
-        };
-
     }
-
-    handleChangeDetail = () => {
-        this.setState({elementoSeleccionado: null});
-    };
-
-    verDetalle = (event, elemento) => {
-        this.setState({elementoSeleccionado: elemento});
-    };
-
 
     render() {
         const {classes} = this.props;
         return (
             <div>
-                {
-                    this.state.elementoSeleccionado === null &&
-                    <div>
-                        {/*TEXTO*/}
-                        <Grid container className={classes.infoBusqueda}>
-                            <Grid item xs={12} style={{maxWidth: 1200, margin: "0 auto"}}>
-                                <Typography paragraph>
-                                    <b>Aquí encontrarás la siguiente información:</b>
-                                </Typography>
-                                <ul className={classes.ul}>
-                                    <li className={classes.li}><Typography color="textPrimary" display='inline'>Consulta
-                                        los servidores sancionados (inhabilitados) por institución, a nivel federal y/o
-                                        estatal</Typography></li>
-                                    <li className={classes.li}>
-                                        <Typography color="textPrimary" display='inline'>
-                                            Obtén datos del servidor como: nombre, puesto, institución donde cometió la
-                                            falta
-                                        </Typography>
-                                    </li>
-                                    <li className={classes.li}>
-                                        <Typography color="textPrimary" display='inline'>
-                                            Obtén los datos de la sanción impuesta al servidor: plazo, tipo de falta,
-                                            causa,
-                                            etc.
-                                        </Typography>
-                                    </li>
-                                </ul>
-                            </Grid>
+                <div>
+                    {/*TEXTO*/}
+                    <Grid container className={classes.infoBusqueda}>
+                        <Grid item xs={12} style={{maxWidth: 1200, margin: "0 auto"}}>
+                            <Typography paragraph>
+                                <b>Aquí encontrarás la siguiente información:</b>
+                            </Typography>
+                            <ul className={classes.ul}>
+                                <li className={classes.li}><Typography color="textPrimary" display='inline'>Consulta
+                                    los servidores sancionados (inhabilitados) por institución, a nivel federal y/o
+                                    estatal</Typography></li>
+                                <li className={classes.li}>
+                                    <Typography color="textPrimary" display='inline'>
+                                        Obtén datos del servidor como: nombre, puesto, institución donde cometió la
+                                        falta
+                                    </Typography>
+                                </li>
+                                <li className={classes.li}>
+                                    <Typography color="textPrimary" display='inline'>
+                                        Obtén los datos de la sanción impuesta al servidor: plazo, tipo de falta,
+                                        causa,
+                                        etc.
+                                    </Typography>
+                                </li>
+                            </ul>
                         </Grid>
-                        {/*BUSCADOR*/}
-                        <Grid container justify={'center'}  className={classes.gridTable}>
-                            <Grid item xs={12} className={classes.toolBarStyle}>
-                                <BusquedaServidor verDetalle={this.verDetalle}/>
-                            </Grid>
+                    </Grid>
+                    {/*BUSCADOR*/}
+                    <Grid container justify={'center'} className={classes.gridTable}>
+                        <Grid item xs={12} className={classes.toolBarStyle}>
+                            <BusquedaServidor verDetalle={this.verDetalle}/>
                         </Grid>
-                        {/*DESCARGA*/}
-                        <Grid container spacing={0} justify="center" className={classes.containerD}>
-                            <Grid item xs={12} className={classes.itemD}>
-                                <Descarga url={process.env.REACT_APP_BULK_S3_SERVIDORES}/>
-                            </Grid>
+                    </Grid>
+                    {/*DESCARGA*/}
+                    <Grid container spacing={0} justify="center" className={classes.containerD}>
+                        <Grid item xs={12} className={classes.itemD}>
+                            <Descarga url={process.env.REACT_APP_BULK_S3_SERVIDORES}/>
                         </Grid>
-                    </div>
-                }
-                {
-                    this.state.elementoSeleccionado !== null &&
-                    <DetalleServidorSancionado handleChangeDetail={this.handleChangeDetail}
-                                               servidor={this.state.elementoSeleccionado}
-                                               />
-                }
+                    </Grid>
+                </div>
             </div>
         );
     }

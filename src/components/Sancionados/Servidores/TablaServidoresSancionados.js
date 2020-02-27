@@ -62,7 +62,6 @@ class TablaServidoresSancionados extends React.Component {
             previos: [],
             api: '',
         };
-
     }
 
     handleClick = (event, elemento) => {
@@ -84,70 +83,53 @@ class TablaServidoresSancionados extends React.Component {
                     <Grid item xs={12}>
                         {
                             data && data.length > 0 &&
-                            <Typography variant={"h6"} className={classes.desc}>Pulsa sobre el registro para ver su
-                                detalle<br/></Typography>
+                            <Typography variant={"h6"} className={classes.desc}>Pulsa sobre el registro para ver su detalle<br/></Typography>
                         }
                     </Grid>
                     <Grid item xs={12} className={classes.container1} id={'hack1'}>
                         <div className={classes.container2} id={'hack2'}>
                             {
                                 data && data.length > 0 &&
-                                <Table id={'hijo'}>
+                                <Table>
                                     <TableHead style={{backgroundColor: '#f5f5f5'}}>
                                         <TableRow>
                                             {
                                                 columnData.map(column => {
                                                     return (
-                                                        <TableCell
-                                                            key={column.id}
-                                                        >
+                                                        <TableCell key={column.id}>
                                                             <Typography className={classes.tableHead}
                                                                         variant={"body1"}>
                                                                 {column.label}
                                                             </Typography>
                                                         </TableCell>
                                                     );
-
-                                                    return true;
-                                                }, this)
+                                                })
                                             }
-                                            {
-                                                this.props.acciones &&
-                                                <TableCell>
-                                                    {
-                                                        <Typography className={classes.tableHead} variant={"body1"}>
-                                                            Acciones
-                                                        </Typography>
-                                                    }
-                                                </TableCell>
-                                            }
-
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
-                                        {data
-                                            .map(n => {
-                                                const isSelected = this.isSelected(n.id);
-                                                return (
-                                                    <TableRow
-                                                        hover
-                                                        onClick={event => this.props.verDetalle(event, n)}
-                                                        role="checkbox"
-                                                        aria-checked={isSelected}
-                                                        tabIndex={-1}
-                                                        key={n.id}
-                                                        selected={isSelected}
-                                                    >
-                                                        <TableCell component="th" scope="row"
-                                                                   padding="default">{n.expediente}</TableCell>
-                                                        <TableCell>{n.servidorPublicoSancionado.nombres + " " + n.servidorPublicoSancionado.primerApellido + " " + n.servidorPublicoSancionado.segundoApellido}</TableCell>
-                                                        <TableCell>{n.institucionDependencia.nombre}</TableCell>
-                                                        <TableCell
-                                                            style={{width: '25%'}}>{n.tipoSancion.join(', ')}</TableCell>
+                                        {data.map(n => {
+                                            const isSelected = this.isSelected(n.id);
+                                            return (
+                                                <TableRow
+                                                    hover
+                                                    onClick={event => this.props.verDetalle(event, n)}
+                                                    role="checkbox"
+                                                    aria-checked={isSelected}
+                                                    tabIndex={-1}
+                                                    key={n.id}
+                                                    selected={isSelected}
+                                                >
+                                                    <TableCell component="th" scope="row"
+                                                               padding="default">{n.expediente}</TableCell>
+                                                    <TableCell>{n.servidorPublicoSancionado.nombres + " " + n.servidorPublicoSancionado.primerApellido + " " + n.servidorPublicoSancionado.segundoApellido}</TableCell>
+                                                    <TableCell>{n.institucionDependencia.nombre}</TableCell>
+                                                    <TableCell
+                                                        style={{width: '25%'}}>{n.tipoSancion.map(e => e.valor).join(', ')}</TableCell>
 
-                                                    </TableRow>
-                                                );
-                                            })}
+                                                </TableRow>
+                                            );
+                                        })}
                                     </TableBody>
                                     <TableFooter>
                                         <TableRow>
@@ -156,13 +138,14 @@ class TablaServidoresSancionados extends React.Component {
                                                 colSpan={4}
                                                 count={totalRows}
                                                 rowsPerPage={rowsPerPage}
-                                                page={page}
+                                                page={page - 1}
                                                 onChangePage={this.props.handleChangePage}
                                                 onChangeRowsPerPage={this.props.handleChangeRowsPerPage}
                                                 labelRowsPerPage='Registros por página'
                                                 labelDisplayedRows={({from, to, count}) => {
                                                     return `${from}-${to} de ${count}`;
                                                 }}
+                                                rowsPerPageOptions={[10,25,50]}
                                             />
                                         </TableRow>
                                     </TableFooter>

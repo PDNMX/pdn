@@ -62,23 +62,33 @@ class Previos extends React.Component {
                                 </TableHead>
                                 <TableBody style={{backgroundColor:'#f2f2f2'}}>
                                     {previos.map(row => (
-                                        <TableRow key={row.sujeto_obligado}>
-                                            <TableCell align="left">{row.nivel}</TableCell>
-                                            <TableCell align="left">{row.sujeto_obligado}</TableCell>
+                                        <TableRow key={row.supplier_id}>
+                                            <TableCell align="left">{row.levels? row.levels.join(','):''}</TableCell>
+                                            <TableCell align="left">{row.supplier_name}</TableCell>
                                             <TableCell align="center">
-                                                <Tooltip title={row.estatus?" Conectado":" No conectado"}>
-                                                    <IconSunny color={row.estatus?"primary":"disabled"}/>
+                                                <Tooltip title={!row.error ? "Disponible": "No disponible"}>
+                                                    <IconSunny color={!row.error ? "primary":"disabled"}/>
                                                 </Tooltip>
                                             </TableCell>
-                                            <TableCell align="center">{row.totalRows}</TableCell>
                                             <TableCell align="center">
-                                                {row.estatus  && row.totalRows>0 &&
+                                                {("undefined"=== typeof (row["totalRows"])) &&
+                                                "No disponible"
+                                                }
+                                                {row.totalRows}
+                                            </TableCell>
+                                            <TableCell align="center">
+                                                {row.totalRows>0 &&
                                                 <Tooltip title={"Ver"}>
                                                     <IconSubdirectory className={classes.iconoVer} onClick={()=>{
-                                                        this.props.handleChangeAPI(row.clave_api);
+                                                        this.props.handleChangeAPI(row.supplier_id);
                                                     }}/>
                                                 </Tooltip>
-
+                                                }
+                                                {("undefined"=== typeof (row["totalRows"])) &&
+                                                "No disponible"
+                                                }
+                                                {(row.totalRows===0) &&
+                                                "-"
                                                 }
                                             </TableCell>
                                         </TableRow>
