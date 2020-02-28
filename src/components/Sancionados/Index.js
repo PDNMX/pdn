@@ -7,14 +7,13 @@ import Grid from "@material-ui/core/Grid/Grid";
 import img1 from "../../assets/img/servidores_publicos_sancionados.svg";
 import img2 from "../../assets/img/particulares_sancionados.svg";
 import img3 from "../../assets/img/servidores_visualizaciones.svg";
-import TablaServidoresSancionados from './Servidores/TablaServidoresSancionados';
+import TablaServidoresSancionados from './Servidores/BuscadorServidoresSancionados';
 import TablaParticularesSancionados from './Particulares/TablaParticularesSancionados';
 import Header from './Header/Header';
 import Dashboard from "./dashboard/Servidores/Dashboard";
 import Dashboard2 from "./dashboard/Particulares/Dashboard";
 import classNames from 'classnames';
 import ScrollToTopButton from "../Navigation/ScrollToTopButton";
-import Descarga from "../Compartidos/Descarga";
 
 const styles = theme => ({
     root: {
@@ -25,12 +24,6 @@ const styles = theme => ({
     },
     bgPanelTable: {
         backgroundColor: theme.palette.white.color,
-       /* [theme.breakpoints.up('sm')]: {
-            marginBottom: theme.spacing(7),
-        },
-        [theme.breakpoints.down('sm')]: {
-            marginBottom: theme.spacing(4),
-        },*/
     },
     section: {
         maxWidth: '1200px',
@@ -45,12 +38,6 @@ const styles = theme => ({
     },
     bgContainer: {
         backgroundColor: theme.palette.pestanas.bg,
-    },
-    center: {
-        textAlign: 'center'
-    },
-    links: {
-        backgroundColor: theme.palette.grisTenue.color
     },
     card: {
         backgroundColor: theme.palette.pestanas.bg,

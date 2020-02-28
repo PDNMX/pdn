@@ -1,12 +1,11 @@
+//PANTALLA DE BUSQUEDASERVIDOR, CON SELECT PARA SORT
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import FormControl from "@material-ui/core/FormControl/FormControl";
-import MenuItem from "@material-ui/core/MenuItem/MenuItem";
-import rp from "request-promise";
-import Grid from "@material-ui/core/Grid/Grid";
-import '../../Utils/selectReact.css';
+import FormControl from "@material-ui/core/FormControl";
+import MenuItem from "@material-ui/core/MenuItem";
+import Grid from "@material-ui/core/Grid";
 import {Typography} from "@material-ui/core"
 import Button from '@material-ui/core/Button';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -15,61 +14,27 @@ import FormLabel from "@material-ui/core/FormLabel";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
+import ListItemText from '@material-ui/core/ListItemText';
+import Checkbox from '@material-ui/core/Checkbox';
+import Input from '@material-ui/core/Input';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ExpandLessIcon from '@material-ui/icons/ExpandLess';
+import rp from "request-promise";
+import Modal from "@material-ui/core/Modal";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import MensajeErrorDatos from "../../Tablas/MensajeErrorDatos";
+import Switch from "@material-ui/core/Switch";
+import Collapse from "@material-ui/core/Collapse";
+import Previos from "./Previos";
+import TablaServidoresSancionados from "./TablaServidoresSancionados";
+import MensajeNoRegistros from "../../Tablas/MensajeNoRegistros";
+import DetalleServidorSancionado from "./DetalleServidorSancionado";
 
 const styles = theme => ({
-    container: {
-        display: 'flex',
-        flexWrap: 'wrap',
-    },
-    textField: {
-        marginRight: theme.spacing(1),
-    },
     formControl: {
         width: '100%'
     },
-    fontLight: {
-        color: theme.palette.black.color,
-    },
     '&$focus': {
-        color: theme.palette.black.color,
-    },
-    root: {
-        flexGrow: 1,
-        height: 250,
-    },
-    input: {
-        color: theme.palette.black.color,
-        display: 'contents'
-    },
-    valueContainer: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        flex: 1,
-        alignItems: 'center',
-    },
-    noOptionsMessage: {
-        padding: `${theme.spacing(1)}px ${theme.spacing(2)}px`,
-    },
-    singleValue: {
-        color: theme.palette.black.color,
-        width: 'auto',
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
-        whiteSpace: 'nowrap'
-    },
-    placeholder: {
-        fontSize: 16,
-        color: theme.palette.black.color
-    },
-    paper: {
-        position: 'absolute',
-        zIndex: 20,
-
-    },
-    divider: {
-        height: theme.spacing(2),
-    },
-    labelCustom: {
         color: theme.palette.black.color,
     },
     centrado: {
@@ -77,63 +42,273 @@ const styles = theme => ({
         justifyContent: 'center',
         alignItems: 'center'
     },
-    inputShrink: {
-        transform: `scale(1)`
+    progress: {
+        position: 'fixed',
+        margin: 'auto',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0
     },
-
-
+    desc: {
+        color: theme.palette.primary.dark,
+    },
+    container: {
+        marginTop: '30px',
+        marginBottom: '30px',
+        overflowX: 'auto',
+    },
+    section: {
+        maxWidth: '1200px',
+        overflowX: 'auto',
+        padding: theme.spacing(1)
+    },
 });
 
+const tiposSancion = [
+    {label: 'Inhabilitado', value: 'I'},
+    {label: 'Multado', value: 'M'},
+    {label: 'Suspensión del empleo, cargo o comisión', value: 'S'},
+    {label: 'Destitución del empleo, cargo o comisión', value: 'D'}
+]
 
+const camposOrdenamiento = [
+    {label: 'RFC', value: 'rfc'},
+    {label: 'CURP', value: 'curp'},
+    {label: 'Nombre', value: 'nombres'},
+    {label: 'Apellido Uno', value: 'primerApellido'},
+    {label: 'Apellido Dos', value: 'segundoApellido'},
+    {label: 'Institución', value: 'institucionDependencia'}
+]
+
+const tiposOrdenamiento = [
+    {label: 'Ascendente', value: 'asc'},
+    {label: 'Descendente', value: 'desc'}
+]
 
 class BusquedaServidor extends React.Component {
-    state = {
-        suggestions: []
-    };
-
-    componentDidMount() {
-       this.loadData(this.props.nivel);
-    }
-
-
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if (prevProps.nivel !== this.props.nivel) {
-            this.loadData(this.props.nivel);
+    constructor(props) {
+        super(props);
+        this.state = {
+            filterData: [],
+            page: 1,
+            rowsPerPage: 10,
+            totalRows: 0,
+            previos: null,
+            panelPrevios: true,
+            error: false,
+            loading: false,
+            busquedaAvanzada: false,
+            //Filtros
+            nombres: '',
+            primerApellido: '',
+            segundoApellido: '',
+            tipoSancion: [],
+            rfc: '',
+            curp: '',
+            institucionDependencia: "",
+            nivel: '',
+            campoOrden: '',
+            tipoOrden: '',
+            institucionesLista: [],
+            elementoSeleccionado : null
         }
     }
 
-     loadData =(nivel)=>{
-        let sug = [{value: null, label: 'TODAS'}];
+    componentDidMount() {
+        this.loadInstituciones();
+    }
+
+    loadInstituciones = () => {
+        let sug = [];
         let options = {
-            uri: process.env.REACT_APP_HOST_PDNBACK + '/apis/getDependenciasServidores',
+            uri: process.env.REACT_APP_S3S_BACK + '/entities',
             json: true,
             method: "post",
-            body:{
-                nivel:nivel
+            body: {
+                nivel_gobierno: this.state.nivel
             }
         };
         rp(options)
             .then(data => {
-                data.data.forEach(item => {
-                    sug.push({value: item, label: item});
+                data.forEach((item, index) => {
+                    sug.push({value: item.nombre, label: item.nombre, key: index});
                 });
-                this.setState({suggestions: sug});
+                this.setState({institucionesLista: sug, institucionDependencia: ''});
             }).catch(err => {
-            this.props.handleError(true);
+            this.setState({error: true})
         });
     }
-    limpiarBusqueda = () => {
-        this.props.handleCleanAll();
+
+    handleChangeCampo = (varState, event) => {
+        this.setState({
+            [varState]: event ? (event.target ? event.target.value : event.value) : ''
+        }, () => {
+            switch (varState) {
+                case 'nivel':
+                    this.loadInstituciones();
+                    break;
+                case 'campoOrden':
+                    if(!this.state.tipoOrden)this.setState({tipoOrden: {label: 'Ascendente', value: 'asc'}});
+                    if(!event.target.value)this.setState({tipoOrden:''})
+                    break;
+                case 'tipoOrden':
+                    if(!this.state.campoOrden && event.target.value)this.setState({campoOrden: {label: 'RFC', value: 'rfc'} });
+                    if(!event.target.value)this.setState({campoOrden:''})
+                    break;
+            }
+        })
     };
-    buscar = () => {
-        this.props.handleSearch('FIELD_FILTER');
+
+    handleCleanAll = () => {
+        this.setState(
+            {
+                filterData: null,
+                previos: null,
+                nivel: '',
+                tipoSancion: [],
+                nombres: '',
+                institucionDependencia: '',
+                primerApellido: '',
+                segundoApellido: '',
+                rfc: '',
+                curp: '',
+                campoOrden: '',
+                tipoOrden: '',
+                institucionesLista: [],
+                elementoSeleccionado : null,
+                rowsPerPage: 10,
+            }, () => {
+                this.loadInstituciones();
+            })
+    };
+//10,25,50
+    handleSearchPrevios = () => {
+        this.setState({
+            loading: true,
+            filterData: [],
+            elementoSeleccionado : null,
+            rowsPerPage: 10
+        }, () => {
+            let body =
+                {
+                    "query": this.makeFiltros(),
+                    "nivel_gobierno": this.state.nivel
+                };
+
+            let options = {
+                method: 'POST',
+                uri: process.env.REACT_APP_S3S_BACK + '/summary',
+                json: true,
+                body: body
+            };
+            rp(options)
+                .then(res => {
+                    this.setState({previos: res, loading: false, error: false, panelPrevios: true})
+                }).catch(err => {
+                 this.setState({loading: false, error: true});
+            });
+        });
+    };
+
+    makeFiltros = () => {
+        let filtros = {};
+        let {institucionDependencia, nombres, primerApellido, segundoApellido, rfc, curp, tipoSancion} = this.state;
+        if (nombres) filtros.nombres = nombres;
+        if (primerApellido) filtros.primerApellido = primerApellido;
+        if (segundoApellido) filtros.segundoApellido = segundoApellido;
+        if (rfc) filtros.rfc = rfc;
+        if (curp) filtros.curp = curp;
+        if (institucionDependencia && institucionDependencia !== '') filtros.institucionDependencia = institucionDependencia;
+        if (tipoSancion.length > 0) filtros.tipoSancion = tipoSancion.map(item => item.value);
+        return filtros;
+    };
+
+    makeSort = () => {
+        let sort = {};
+        if (this.state.campoOrden && this.state.tipoOrden) sort[this.state.campoOrden.value] = this.state.tipoOrden.value;
+        return sort;
+    };
+
+    handleChange = () => {
+        this.setState({
+            panelPrevios: !this.state.panelPrevios
+        })
+    }
+
+    handleBusquedaAvanzada = () => {
+        this.setState({busquedaAvanzada: !this.state.busquedaAvanzada})
+    }
+
+    handleSearchAPI = () => {
+        this.setState({loading: true}, () => {
+            let body =
+                {
+                    "query": this.makeFiltros(),
+                    "pageSize": this.state.rowsPerPage,
+                    "page": this.state.page,
+                    "supplier_id": this.state.supplier_id,
+                    "sort": this.makeSort()
+                };
+
+            let options = {
+                method: 'POST',
+                uri: process.env.REACT_APP_S3S_BACK + '/search',
+                json: true,
+                body: body
+            };
+
+            rp(options)
+                .then(res => {
+                    this.setState({
+                        filterData: res.results,
+                        loading: false,
+                        totalRows: res.pagination.totalRows,
+                        error: false
+                    },)
+                }).catch(err => {
+                this.setState({loading: false, error: true});
+            });
+        });
+
+    };
+
+    handleChangeAPI = (val) => {
+        this.setState({
+            supplier_id: val,
+            page: 1,
+            elementoSeleccionado: null
+        }, () => {
+            this.handleSearchAPI()
+        });
+    };
+
+    handleChangePage = (event, page) => {
+        this.setState({page:page+1}, () => {
+            this.handleSearchAPI();
+        });
+    };
+
+    handleChangeRowsPerPage = event => {
+        this.setState({rowsPerPage: event.target.value, page: 1}, () => {
+            this.handleSearchAPI();
+        });
+    };
+
+    verDetalle = (event, elemento) => {
+        this.setState({elementoSeleccionado: elemento, panelPrevios : false});
+    };
+
+    handleChangeDetail = () => {
+        this.setState({elementoSeleccionado: null});
     };
 
     render() {
-        const {classes, handleChangeCampo, nombreServidor, apellidoUno, apellidoDos, rfc, curp, institucion, nivel} = this.props;
-
+        const {classes} = this.props;
+        const {nombres, primerApellido, segundoApellido, rfc, curp, institucionDependencia, nivel, tipoSancion, campoOrden, tipoOrden, institucionesLista} = this.state;
         return (
             <div>
+                {/*Buscador*/}
                 <Grid container spacing={4}>
                     <Grid item xs={12}>
                         <Typography><b>Busca un servidor público sancionado</b></Typography>
@@ -141,15 +316,11 @@ class BusquedaServidor extends React.Component {
                     <Grid item xs={12} md={3}>
                         <FormControl className={classes.formControl}>
                             <TextField
-                                id="search"
-                                label="RFC"
+                                id="nombres"
+                                label="Nombre(s)"
                                 type="search"
-                                onChange={(e) => handleChangeCampo('rfc', e)}
-                                value={rfc}
-                                InputLabelProps={{
-                                    className: classes.inputShrink,
-                                    shrink: true
-                                }}
+                                onChange={(e) => this.handleChangeCampo('nombres', e)}
+                                value={nombres}
                             />
 
                         </FormControl>
@@ -157,108 +328,82 @@ class BusquedaServidor extends React.Component {
                     <Grid item xs={12} md={3}>
                         <FormControl className={classes.formControl}>
                             <TextField
-                                id="search"
-                                label="CURP"
+                                id="primerApellido"
+                                label="Apellido Uno"
                                 type="search"
-                                onChange={(e) => handleChangeCampo('curp', e)}
-                                value={curp}
-                                InputLabelProps={{
-                                    className: classes.inputShrink,
-                                    shrink: true
-                                }}
+                                onChange={(e) => this.handleChangeCampo('primerApellido', e)}
+                                value={primerApellido}
                             />
 
                         </FormControl>
                     </Grid>
+                    <Grid item xs={12} md={3}>
+                        <FormControl className={classes.formControl}>
+                            <TextField
+                                id="segundoApellido"
+                                label="Apellido Dos"
+                                type="search"
+                                onChange={(e) => this.handleChangeCampo('segundoApellido', e)}
+                                value={segundoApellido}
+                            />
+                        </FormControl>
+                    </Grid>
+
+                    <Grid item xs={12} md={3}>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel shrink id="tipoSancion-label">Tipo sanción</InputLabel>
+                            <Select displayEmpty
+                                    id="tipoSancion-checkbox"
+                                    multiple
+                                    value={tipoSancion}
+                                    onChange={e => this.handleChangeCampo('tipoSancion', e)}
+                                    input={<Input/>}
+                                    renderValue={
+                                        selected => {
+                                            if (selected.length === 0) {
+                                                return <em>Cualquiera</em>;
+                                            }
+                                            return selected.map(element => element.label).join(', ')
+                                        }
+                                    }
+
+                            >
+                                <MenuItem disabled value={[]}>
+                                    <em>Cualquiera</em>
+                                </MenuItem>
+                                {tiposSancion.map(tipo => (
+                                    <MenuItem key={tipo.value} value={tipo}>
+                                        <Checkbox checked={tipoSancion.indexOf(tipo) > -1}/>
+                                        <ListItemText primary={tipo.label}/>
+                                    </MenuItem>
+
+                                ))}
+                            </Select>
+                        </FormControl>
+                    </Grid>
+
                     <Grid item xs={12} md={6}>
                         <FormControl className={classes.formControl}>
-                            <InputLabel htmlFor={'campoSelectInstitucion'}>Institución</InputLabel>
-                            <Select style={{marginTop: '0px'}} value={institucion}
-                                    onChange={(e) => handleChangeCampo('institucion', e)}
-                                    inputProps={{
-                                        name: 'campoSelectInstitucion',
-                                        id: 'campoSelectInstitucion',
-                                    }}
+                            <InputLabel shrink id="institucionDependencia-label">
+                                Institución
+                            </InputLabel>
+                            <Select value={institucionDependencia}
+                                    onChange={(e) => this.handleChangeCampo('institucionDependencia', e)}
+                                    displayEmpty
                             >
+                                <MenuItem value="" key={-1}><em>Cualquiera</em></MenuItem>
                                 {
-                                    this.state.suggestions.map((item => {
-                                        return <MenuItem value={item.value} key={item.value}>
+                                    institucionesLista.map((item => {
+                                        return <MenuItem value={item.value} key={item.key}>
                                             {item.label}
                                         </MenuItem>
                                     }))
                                 }
                             </Select>
-                            {
-                                /*
-                                <SelectReact
-                                classes={classes}
-                                styles={selectStyles}
-                                options={this.state.suggestions}
-                                components={components}
-                                value={{value: institucion, label: institucion}}
-                                onChange={(e) => handleChangeCampo('institucion', e)}
-                                id="campoSelectInstitucion"
-                                placeholder = {'TODAS'}
-                            />
-                                */
-                            }
-
-
-                        </FormControl>
-                    </Grid>
-                    <Grid item xs={12} md={3}>
-                        <FormControl className={classes.formControl}>
-                            <TextField
-                                id="search"
-                                label="Nombre(s)"
-                                type="search"
-                                onChange={(e) => handleChangeCampo('nombreServidor', e)}
-                                value={nombreServidor}
-                                InputLabelProps={{
-                                    className: classes.inputShrink,
-                                    shrink: true
-                                }}
-                            />
-
-                        </FormControl>
-                    </Grid>
-                    <Grid item xs={12} md={3}>
-                        <FormControl className={classes.formControl}>
-                            <TextField
-                                id="search"
-                                label="Apellido Uno"
-                                type="search"
-                                onChange={(e) => handleChangeCampo('apellidoUno', e)}
-                                value={apellidoUno}
-                                InputLabelProps={{
-                                    className: classes.inputShrink,
-                                    shrink: true
-                                }}
-                            />
-
-                        </FormControl>
-                    </Grid>
-                    <Grid item xs={12} md={3}>
-                        <FormControl className={classes.formControl}>
-                            <TextField
-                                id="search"
-                                label="Apellido Dos"
-                                type="search"
-                                onChange={(e) => handleChangeCampo('apellidoDos', e)}
-                                value={apellidoDos}
-                                InputLabelProps={{
-                                    className: classes.inputShrink,
-                                    shrink: true
-                                }}
-                            />
-
                         </FormControl>
                     </Grid>
 
-                    <Grid item md={1}/>
-
-
-                    <Grid item md={10} xs={12}>
+                    <Grid item md={6} xs={12}>
                         <FormControl component="fieldset" className={classes.formControl}>
                             <FormLabel component="legend">Nivel</FormLabel>
                             <RadioGroup row
@@ -266,28 +411,183 @@ class BusquedaServidor extends React.Component {
                                         name="gender1"
                                         className={classes.group}
                                         value={nivel}
-                                        onChange={(e) => handleChangeCampo('nivel', e)}
+                                        onChange={(e) => this.handleChangeCampo('nivel', e)}
                             >
-                                <FormControlLabel value="todos" control={<Radio/>} label="Todos"/>
-                                <FormControlLabel value="federal" control={<Radio/>} label="Federal"/>
-                                <FormControlLabel value="estatal" control={<Radio/>} label="Estatal"/>
+                                <FormControlLabel value="" control={<Radio/>} label="Todos"/>
+                                <FormControlLabel value="Federal" control={<Radio/>} label="Federal"/>
+                                <FormControlLabel value="Estatal" control={<Radio/>} label="Estatal"/>
                             </RadioGroup>
 
                         </FormControl>
                     </Grid>
+                    <Grid item xs={12}>
+                        <Button onClick={() => this.handleBusquedaAvanzada()}
+                                startIcon={this.state.busquedaAvanzada ? <ExpandLessIcon/> : <ExpandMoreIcon/>}
+                        >Búsqueda avanzada</Button>
+                    </Grid>
+
+                    {this.state.busquedaAvanzada && <Grid item xs={12} md={3}>
+                        <FormControl className={classes.formControl}>
+                            <TextField
+                                id="curp"
+                                label="CURP"
+                                type="search"
+                                onChange={(e) => this.handleChangeCampo('curp', e)}
+                                value={curp}
+                            />
+
+                        </FormControl>
+                    </Grid>}
+                    {this.state.busquedaAvanzada && <Grid item xs={12} md={3}>
+                        <FormControl className={classes.formControl}>
+                            <TextField
+                                id="rfc"
+                                label="RFC"
+                                type="search"
+                                onChange={(e) => this.handleChangeCampo('rfc', e)}
+                                value={rfc}
+                            />
+
+                        </FormControl>
+                    </Grid>}
+                    {this.state.busquedaAvanzada && <Grid item xs={12} md={3}>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel shrink id="campoOrden-label">Ordenar por</InputLabel>
+                            <Select displayEmpty
+                                    id="campoOrden-checkbox"
+                                    value={campoOrden}
+                                    onChange={e => this.handleChangeCampo('campoOrden', e)}
+                                    input={<Input/>}
+                                    renderValue={
+                                        selected => {
+                                            if (selected.length === 0) {
+                                                return <em>Ninguno</em>;
+                                            }
+                                            return selected.label
+                                        }
+                                    }
+
+                            >
+                                <MenuItem value={''}>
+                                    <em>Ninguno</em>
+                                </MenuItem>
+                                {camposOrdenamiento.map(tipo => (
+                                    <MenuItem key={tipo.value} value={tipo}>
+                                        <ListItemText primary={tipo.label}/>
+                                    </MenuItem>
+
+                                ))}
+                            </Select>
+                        </FormControl>
+                    </Grid>}
+                    {this.state.busquedaAvanzada && <Grid item xs={12} md={3}>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel shrink id="tipoOrden-label">Tipo ordenamiento</InputLabel>
+                            <Select displayEmpty
+                                    id="tipoOrden-checkbox"
+                                    value={tipoOrden}
+                                    onChange={e => this.handleChangeCampo('tipoOrden', e)}
+                                    input={<Input/>}
+                                    renderValue={
+                                        selected => {
+                                            if (selected.length === 0) {
+                                                return <em>Ninguno</em>;
+                                            }
+                                            return selected.label
+                                        }
+                                    }
+
+                            >
+                                <MenuItem value={''}>
+                                    <em>Ninguno</em>
+                                </MenuItem>
+                                {tiposOrdenamiento.map(tipo => (
+                                    <MenuItem key={tipo.value} value={tipo}>
+                                        <ListItemText primary={tipo.label}/>
+                                    </MenuItem>
+
+                                ))}
+                            </Select>
+                        </FormControl>
+                    </Grid>}
+
+                    <Grid item md={10}/>
                     <Grid item xs={12} md={1} className={classes.centrado}>
-                        <Button variant="contained" color="secondary" className={classes.button} onClick={this.buscar}>
+                        <Button variant="contained" color="secondary" className={classes.button}
+                                onClick={() => this.handleSearchPrevios()}>
                             Buscar
                         </Button>
                     </Grid>
                     <Grid item xs={12} md={1} className={classes.centrado}>
                         <Button variant="contained" color="secondary" className={classes.button}
-                                onClick={this.limpiarBusqueda}>
+                                onClick={() => this.handleCleanAll()}>
                             Limpiar
                         </Button>
                     </Grid>
+                    <Grid item xs={12}>
+                        {
+                            this.state.loading &&
+                            <Modal
+                                open={this.state.loading}
+                                disableAutoFocus={true}
+                            >
+                                <CircularProgress className={classes.progress} id="spinnerLoading" size={200}/>
+                            </Modal>
 
+                        }
+                        {
+                            this.state.error && <MensajeErrorDatos/>
+                        }
+                    </Grid>
                 </Grid>
+                {/*PREVIOS*/}
+                {this.state.previos && this.state.previos.length > 0 &&
+                <Grid container>
+                    <Grid item xs={12} className={classes.section}>
+                            <FormControlLabel
+                                control={<Switch className={classes.containerPrevios}
+                                                 checked={this.state.panelPrevios}
+                                                 onChange={() => this.handleChange()}/>}
+                                label={
+                                    <Typography variant="h6" className={classes.desc}>
+                                        {this.state.panelPrevios ? 'Ocultar resultados generales' : 'Mostrar resultados generales'}</Typography>}
+                            />
+                    </Grid>
+                    <Grid item xs={12} className={classes.section}>
+                            <div className={classes.container}>
+                                <Collapse in={this.state.panelPrevios}>
+                                    <Previos previos={this.state.previos} handleChangeAPI={this.handleChangeAPI}/>
+                                </Collapse>
+                            </div>
+                    </Grid>
+                </Grid>
+                }
+                {
+                    <Grid item xs={12}>
+                        {(this.state.previos && this.state.previos.length <= 0) &&
+                        <MensajeNoRegistros/>
+                        }
+                    </Grid>
+                }
+                {/*TABLA*/}
+                {this.state.filterData && this.state.filterData.length > 0 && this.state.elementoSeleccionado === null &&
+                <Grid container>
+                    <Grid item xs={12} >
+                            <TablaServidoresSancionados data={this.state.filterData} page={this.state.page}
+                                                        rowsPerPage={this.state.rowsPerPage}
+                                                        totalRows={this.state.totalRows}
+                                                        handleChangePage={this.handleChangePage}
+                                                        handleChangeRowsPerPage={this.handleChangeRowsPerPage}
+                                                        verDetalle={this.verDetalle}/>
+                    </Grid>
+                </Grid>
+                }
+                {
+                    this.state.elementoSeleccionado !== null &&
+                    <DetalleServidorSancionado handleChangeDetail={this.handleChangeDetail}
+                                               servidor={this.state.elementoSeleccionado}
+                    />
+                }
             </div>
         );
     }
