@@ -665,7 +665,7 @@ class Busqueda extends React.Component {
 				]
 			}
 		],
-		dataSelect: inicial
+		dataSelect: inicial,
 		// dataSelect: ''
 	};
 

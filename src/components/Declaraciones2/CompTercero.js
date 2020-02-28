@@ -16,7 +16,7 @@ export default function CompTercero(props) {
 				{tercero.tipoPersona === 'MORAL' ? (
 					<Grid container space={1}>
 						<Grid item xs={12} md={4}>
-							<Typography className={classes.cardTitle}>PERSONA:</Typography>
+							<Typography className={classes.cardTitle}>TIPO PERSONA:</Typography>
 							<Typography className={classes.card}>MORAL</Typography>
 						</Grid>
 						<Grid item xs={12} md={4}>
@@ -31,7 +31,7 @@ export default function CompTercero(props) {
 				) : (
 					<Grid container space={1}>
 						<Grid item xs={12} md={4}>
-							<Typography className={classes.cardTitle}>PERSONA:</Typography>
+							<Typography className={classes.cardTitle}>TIPO PERSONA:</Typography>
 							<Typography className={classes.card}>FÍSICA</Typography>
 						</Grid>
 						<Grid item xs={12} md={4}>

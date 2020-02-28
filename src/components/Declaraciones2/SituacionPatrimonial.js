@@ -69,13 +69,13 @@ function opcion(valor, data) {
 		case 9:
 			return <Bienesinmuebles data={data.bienesInmuebles} />;
 		case 10:
-			return <Vehiculos data={data.datosGenerales} />;
+			return <Vehiculos data={data.vehiculos} />;
 		case 11:
-			return <BienesMuebles data={data.datosGenerales} />;
+			return <BienesMuebles data={data.bienesMuebles} />;
 		case 12:
-			return <Inversiones data={data.datosGenerales} />;
+			return <Inversiones data={data.inversiones} />;
 		case 13:
-			return <Adeudos data={data.datosGenerales} />;
+			return <Adeudos data={data.adeudos} />;
 		case 14:
 			return <Prestamo data={data.datosGenerales} />;
 		default:

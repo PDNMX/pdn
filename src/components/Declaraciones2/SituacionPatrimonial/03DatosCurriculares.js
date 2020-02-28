@@ -4,26 +4,12 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
 import style from '../styleSecciones';
+import { sumary, expansion } from '../utils';
 
 import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const useStyles = makeStyles(style);
-const sumary = makeStyles((theme) => ({
-	root: {
-		backgroundColor: '#83dfff',
-		textTransform: 'uppercase'
-	}
-}));
-const expansion = makeStyles((theme) => ({
-	root: {
-		width: '100%'
-	},
-	heading: {
-		fontSize: theme.typography.pxToRem(15),
-		fontWeight: theme.typography.fontWeightRegular
-	}
-}));
 
 export default function MenuSuperior(props) {
 	const classes = useStyles();
