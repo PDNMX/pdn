@@ -20,23 +20,44 @@ import Inversiones from './SituacionPatrimonial/13Inversiones';
 import Adeudos from './SituacionPatrimonial/14Adeudos';
 import Prestamo from './SituacionPatrimonial/15Prestamo';
 
-const Inicial = [
-	{ clave: '1. DATOS GENERALES', valor: 0 },
-	{ clave: '2. DOMICILIO DEL DECLARANTE', valor: 0 },
-	{ clave: '3. DATOS CURRICULARES DEL DECLARANTE', valor: 2 },
-	{ clave: '4. DATOS DEL EMPLEO, CARGO O COMISIÓN QUE INICIA', valor: 1 },
-	{ clave: '5. EXPERIENCIA LABORAL', valor: 2 },
-	{ clave: '6. DATOS DE LA PAREJA', valor: 0 },
-	{ clave: '7. DATOS DEL DEPENDIENTE ECONÓMICO', valor: 0 },
-	{ clave: '8. INGRESOS NETOS DEL DECLARANTE, PAREJA Y/O DEPENDIENTES ECONÓMICOS', valor: 0 },
-	{ clave: '9. ¿TE COMO SERVIDOR PÚBLICO EN EL AÑO INMEDIATO ANTERIOR?', valor: 0 },
-	{ clave: '10. BIENES INMUEBLES', valor: 5 },
-	{ clave: '11. VEHÍCULOS', valor: 2 },
-	{ clave: '12. BIENES MUEBLES', valor: 'P' },
-	{ clave: '13. INVERSIONES, CUENTAS BANCARIAS Y OTRO TIPO DE VALORES / ACTIVOS', valor: 0 },
-	{ clave: '14. ADEUDOS / PASIVOS', valor: 0 },
-	{ clave: '15. PRÉSTAMO O COMODATO POR TERCEROS', valor: 0 }
-];
+const situacionPatrimonial = (data) => {
+	let {
+		datosCurricularesDeclarante,
+		experienciaLaboral,
+		bienesInmuebles,
+		vehiculos,
+		bienesMuebles,
+		inversiones,
+		adeudos,
+		prestamoOComodato
+	} = data;
+
+	let bienInmueble = bienesInmuebles.bienInmueble.filter(
+		(i) => i.titular.length === 1 && i.titular[0].clave === 'DEC'
+	);
+	let vehiculo = vehiculos.vehiculo.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
+	let bienMueble = bienesMuebles.bienMueble.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
+	let inversion = inversiones.inversion.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
+	let adeudo = adeudos.adeudo.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
+
+	return [
+		{ clave: '1. DATOS GENERALES', valor: 0 },
+		{ clave: '2. DOMICILIO DEL DECLARANTE', valor: 0 },
+		{ clave: '3. DATOS CURRICULARES DEL DECLARANTE', valor: datosCurricularesDeclarante.escolaridad.length },
+		{ clave: '4. DATOS DEL EMPLEO, CARGO O COMISIÓN QUE INICIA', valor: 0 },
+		{ clave: '5. EXPERIENCIA LABORAL', valor: experienciaLaboral.experiencia.length },
+		{ clave: '6. DATOS DE LA PAREJA', valor: 0 },
+		{ clave: '7. DATOS DEL DEPENDIENTE ECONÓMICO', valor: 0 },
+		{ clave: '8. INGRESOS NETOS DEL DECLARANTE, PAREJA Y/O DEPENDIENTES ECONÓMICOS', valor: 0 },
+		{ clave: '9. ¿TE COMO SERVIDOR PÚBLICO EN EL AÑO INMEDIATO ANTERIOR?', valor: 0 },
+		{ clave: '10. BIENES INMUEBLES', valor: bienInmueble.length },
+		{ clave: '11. VEHÍCULOS', valor: vehiculo.length },
+		{ clave: '12. BIENES MUEBLES', valor: bienMueble.length },
+		{ clave: '13. INVERSIONES, CUENTAS BANCARIAS Y OTRO TIPO DE VALORES / ACTIVOS', valor: inversion.length },
+		{ clave: '14. ADEUDOS / PASIVOS', valor: adeudo.length },
+		{ clave: '15. PRÉSTAMO O COMODATO POR TERCEROS', valor: prestamoOComodato.prestamo.length }
+	];
+};
 
 const useStyles = makeStyles({
 	root: {
@@ -77,7 +98,7 @@ function opcion(valor, data) {
 		case 13:
 			return <Adeudos data={data.adeudos} />;
 		case 14:
-			return <Prestamo data={data.datosGenerales} />;
+			return <Prestamo data={data.prestamoOComodato} />;
 		default:
 			break;
 	}
@@ -91,7 +112,7 @@ export default function MenuSuperior(props) {
 		<Paper square className={classes.root}>
 			<Grid container spacing={0}>
 				<Grid item xs={12} md={2} style={{ backgroundColor: '#34b3eb' }}>
-					<MenuLateral value={props.value} setValue={props.setValue} opciones={Inicial} />
+					<MenuLateral value={props.value} setValue={props.setValue} opciones={situacionPatrimonial(data)} />
 				</Grid>
 				<Grid item xs={12} md={10}>
 					{opcion(props.value, data)}

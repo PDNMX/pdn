@@ -54,7 +54,9 @@ export default function MenuSuperior(props) {
 										<Typography className={classes.cardTitle}>
 											CARRERA O ÁREA DE CONOCIMIENTO
 										</Typography>
-										<Typography className={classes.card}>{esc.carreraAreaConocimiento}</Typography>
+										<Typography className={classes.card}>
+											{' '}{esc.carreraAreaConocimiento}
+										</Typography>
 									</Grid>
 									<Grid item xs={12} md={4}>
 										<Typography className={classes.cardTitle}>ESTATUS</Typography>
@@ -70,7 +72,7 @@ export default function MenuSuperior(props) {
 										</Typography>
 										<Typography className={classes.card}>{esc.fechaObtencion}</Typography>
 									</Grid>
-									<Grid item xs={12}>
+									<Grid item xs={12} md={4}>
 										<Typography className={classes.cardTitle}>
 											LUGAR DONDE SE UBICA LA INSTITUCIÓN EDUCATIVA
 										</Typography>

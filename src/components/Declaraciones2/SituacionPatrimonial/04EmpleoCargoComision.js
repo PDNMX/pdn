@@ -5,17 +5,17 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
 import style from '../styleSecciones';
+import { Divider, CompDomicilio } from '../utils';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import MoneyOffIcon from '@material-ui/icons/MoneyOff';
 
-import CompDomicilio from '../CompDomicilio';
+// import CompDomicilio from '../CompDomicilio';
 
 const useStyles = makeStyles(style);
 
 export default function MenuSuperior(props) {
 	const classes = useStyles();
 	const { data } = props;
-	console.log(data);
 
 	return (
 		<Grid container spacing={2} className={classes.rootPrincipal}>
@@ -49,12 +49,8 @@ export default function MenuSuperior(props) {
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>¿ESTÁ CONTRATADO POR HONORARIOS?</Typography>
-							<Typography align="center">
-								{data.contratadoPorHonorarios ? (
-									<AttachMoneyIcon color="primary" />
-								) : (
-									<MoneyOffIcon color="error" />
-								)}
+							<Typography className={classes.card} align="center">
+								{data.contratadoPorHonorarios ? 'SÍ' : 'NO'}
 							</Typography>
 						</Grid>
 						<Grid item xs={12} md={4}>
@@ -66,12 +62,6 @@ export default function MenuSuperior(props) {
 							<Typography className={classes.card}>{data.funcionPrincipal}</Typography>
 						</Grid>
 						<Grid item xs={12} md={4}>
-							<Typography className={classes.cardTitle}>
-								FECHA DE TOMA DE POSESIÓN DEL EMPLEO, CARGO O COMISIÓN
-							</Typography>
-							<Typography className={classes.card}>{data.fechaTomaPosesion}</Typography>
-						</Grid>
-						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>TELÉFONO DE OFICINA Y EXTENSIÓN</Typography>
 							<Typography className={classes.card}>
 								{data.telefonoOficina.telefono}
@@ -79,10 +69,21 @@ export default function MenuSuperior(props) {
 								{data.telefonoOficina.extension}
 							</Typography>
 						</Grid>
+						<Grid item xs={12} md={4}>
+							<Typography className={classes.cardTitle}>
+								FECHA DE TOMA DE POSESIÓN DEL EMPLEO, CARGO O COMISIÓN
+							</Typography>
+							<Typography className={classes.card}>{data.fechaTomaPosesion}</Typography>
+						</Grid>
+
+						<Divider />
+						<CompDomicilio
+							domicilioMexico={data.domicilioMexico}
+							domicilioExtranjero={data.domicilioExtranjero}
+						/>
 					</Grid>
 				</Paper>
 			</Grid>
-			<CompDomicilio domicilioMexico={data.domicilioMexico} domicilioExtranjero={data.domicilioExtranjero} />
 		</Grid>
 	);
 }

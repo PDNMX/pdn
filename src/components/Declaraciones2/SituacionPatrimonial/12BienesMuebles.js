@@ -8,7 +8,7 @@ import styleSecciones from '../styleSecciones';
 import DatosNoRegistrados from '../DatosNoRegistrados';
 import DatosReservados from '../DatosReservados';
 import Transmisor from '../CompTransmisor';
-import { sumary, expansion } from '../utils';
+import { sumary, expansion, Divider } from '../utils';
 import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
@@ -34,13 +34,13 @@ export function BienMueble(props) {
 				</ExpansionPanelSummary>
 				<ExpansionPanelDetails>
 					<Grid container spacing={1}>
-						<Grid item xs={12} md={4}>
+						<Grid item xs={12} md={8}>
 							<Typography className={classes.cardTitle}>TIPO DEL BIEN:</Typography>
 							<Typography className={classes.card}>{obj.tipoBien.valor}</Typography>
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>TITULAR DEL BIEN:</Typography>
-							<Typography component="div" className={classes.card}>
+							<Typography  className={classes.card}>
 								{obj.titular.map((tit, idx) => {
 									return <span key={'tit-' + idx}>{tit.valor}</span>;
 								})}
@@ -80,10 +80,8 @@ export function BienMueble(props) {
 								<Typography className={classes.card}>{obj.motivoBaja.valor}</Typography>
 							</Grid>
 						)}
+						<Divider />
 
-						<Grid item xs={12} style={{ textAlign: 'center' }}>
-							<Typography className={classes.cardTitle}>TRANSMISOR(ES)</Typography>
-						</Grid>
 						{obj.transmisor && <Transmisor transmisor={obj.transmisor} />}
 					</Grid>
 				</ExpansionPanelDetails>

@@ -688,7 +688,7 @@ class Busqueda extends React.Component {
 		const value = target.value;
 		const name = target.name;
 
-		console.log('traget: ', target);
+		// console.log('traget: ', target);
 
 		this.setState((prevState) => ({
 			...prevState,

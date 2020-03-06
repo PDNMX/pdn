@@ -40,7 +40,7 @@ export default function MenuSuperior(props) {
 					<Grid container spacing={1}>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>NOMBRES(S)</Typography>
-							<Typography className={classes.card}>{data.nombres}</Typography>
+							<Typography className={classes.card}>{data.nombre}</Typography>
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>PRIMER APELLIDO</Typography>
@@ -52,15 +52,15 @@ export default function MenuSuperior(props) {
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>CURP</Typography>
-							<Typography className={classes.card}>DATO RESERVADO</Typography>
+							<Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>RFC</Typography>
-							<Typography className={classes.card}>DATO RESERVADO</Typography>
+							<Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>HOMOCLAVE</Typography>
-							<Typography className={classes.card}>DATO RESERVADO</Typography>
+							<Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>CORREO ELECTRÓNICO INSTITUCIONAL</Typography>
@@ -68,32 +68,32 @@ export default function MenuSuperior(props) {
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>CORREO ELECTRÓNICO PERSONAL/ALTERNO</Typography>
-							<Typography className={classes.card}>DATO RESERVADO</Typography>
+							<Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>NÚMERO TELEFÓNICO DE CASA</Typography>
-							<Typography className={classes.card}>DATO RESERVADO</Typography>
+							<Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
 						</Grid>
 
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>NÚMERO CELULAR PERSONAL</Typography>
-							<Typography className={classes.card}>DATO RESERVADO</Typography>
+							<Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>SITUACIÓN PERSONAL/ESTADO CIVIL</Typography>
-							<Typography className={classes.card}>DATO RESERVADO</Typography>
+							<Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>RÉGIMEN MATRIMONIAL</Typography>
-							<Typography className={classes.card}>DATO RESERVADO</Typography>
+							<Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>PAÍS DE NACIMIENTO</Typography>
-							<Typography className={classes.card}>DATO RESERVADO</Typography>
+							<Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>NACIONALIDAD</Typography>
-							<Typography className={classes.card}>DATO RESERVADO</Typography>
+							<Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
 						</Grid>
 					</Grid>
 				</Paper>

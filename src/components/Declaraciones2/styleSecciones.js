@@ -22,7 +22,101 @@ export default (theme) => ({
 		fontSize: 14,
 		paddingLeft: 20,
 		marginBottom: 10,
-		paddingBottom: 10
+		paddingBottom: 10,
+		color: '#383d41',
+		backgroundColor: '#e2e3e5',
+		borderColor: '#d6d8db',
+		border: '1px solid transparent',
+		borderRadius: '.25rem',
+		padding: '.75rem 1.25rem',
+		marginBottom: '1rem',
+		minHeight: '20px'
+	},
+	cardReserved: {
+		fontSize: 14,
+		paddingLeft: 20,
+		marginBottom: 10,
+		paddingBottom: 10,
+		color: '#155724',
+		backgroundColor: '#d4edda',
+		borderColor: '#c3e6cb',
+		border: '1px solid transparent',
+		borderRadius: '.25rem',
+		padding: '.75rem 1.25rem',
+		marginBottom: '1rem',
+		minHeight: '20px'
+	},
+	alertPrimary: {
+		color: '#004085',
+		backgroundColor: '#cce5ff',
+		borderColor: '#b8daff',
+		border: '1px solid transparent',
+		borderRadius: '.25rem',
+		padding: '.75rem 1.25rem',
+		marginBottom: '1rem'
+	},
+	alertSecondary: {
+		color: '#383d41',
+		backgroundColor: '#e2e3e5',
+		borderColor: '#d6d8db',
+		border: '1px solid transparent',
+		borderRadius: '.25rem',
+		padding: '.75rem 1.25rem',
+		marginBottom: '1rem'
+	},
+	alertSuccess: {
+		color: '#155724',
+		backgroundColor: '#d4edda',
+		borderColor: '#c3e6cb',
+		border: '1px solid transparent',
+		borderRadius: '.25rem',
+		padding: '.75rem 1.25rem',
+		marginBottom: '1rem'
+	},
+	alertDanger: {
+		color: '#721c24',
+		backgroundColor: '#f8d7da',
+		borderColor: '#f5c6cb',
+		border: '1px solid transparent',
+		borderRadius: '.25rem',
+		padding: '.75rem 1.25rem',
+		marginBottom: '1rem'
+	},
+	alertWarning: {
+		color: '#856404',
+		backgroundColor: '#fff3cd',
+		borderColor: '#ffeeba',
+		border: '1px solid transparent',
+		borderRadius: '.25rem',
+		padding: '.75rem 1.25rem',
+		marginBottom: '1rem'
+	},
+	alertInfo: {
+		color: '#0c5460',
+		backgroundColor: '#d1ecf1',
+		borderColor: '#bee5eb',
+		border: '1px solid transparent',
+		borderRadius: '.25rem',
+		padding: '.75rem 1.25rem',
+		marginBottom: '1rem'
+	},
+	alertLight: {
+		color: '#818182',
+		backgroundColor: '#fefefe',
+		borderColor: '#fdfdfe',
+		border: '1px solid transparent',
+		borderRadius: '.25rem',
+		padding: '.75rem 1.25rem',
+		marginBottom: '1rem'
+	},
+	alertDark: {
+		color: '#1b1e21',
+		backgroundColor: '#d6d8d9',
+		borderColor: '#c6c8ca',
+		border: '1px solid transparent',
+		borderRadius: '.25rem',
+		padding: '.75rem 1.25rem',
+		marginBottom: '1rem'
 	}
 
 	/******************
@@ -274,77 +368,6 @@ export default (theme) => ({
 		paddingBottom: theme.spacing(4),
 		paddingTop: theme.spacing(4)
 	},
-	alertPrimary: {
-		color: '#004085',
-		backgroundColor: '#cce5ff',
-		borderColor: '#b8daff',
-		border: '1px solid transparent',
-		borderRadius: '.25rem',
-		padding: '.75rem 1.25rem',
-		marginBottom: '1rem'
-	},
-	alertSecondary: {
-		color: '#383d41',
-		backgroundColor: '#e2e3e5',
-		borderColor: '#d6d8db',
-		border: '1px solid transparent',
-		borderRadius: '.25rem',
-		padding: '.75rem 1.25rem',
-		marginBottom: '1rem'
-	},
-	alertSuccess: {
-		color: '#155724',
-		backgroundColor: '#d4edda',
-		borderColor: '#c3e6cb',
-		border: '1px solid transparent',
-		borderRadius: '.25rem',
-		padding: '.75rem 1.25rem',
-		marginBottom: '1rem'
-	},
-	alertDanger: {
-		color: '#721c24',
-		backgroundColor: '#f8d7da',
-		borderColor: '#f5c6cb',
-		border: '1px solid transparent',
-		borderRadius: '.25rem',
-		padding: '.75rem 1.25rem',
-		marginBottom: '1rem'
-	},
-	alertWarning: {
-		color: '#856404',
-		backgroundColor: '#fff3cd',
-		borderColor: '#ffeeba',
-		border: '1px solid transparent',
-		borderRadius: '.25rem',
-		padding: '.75rem 1.25rem',
-		marginBottom: '1rem'
-	},
-	alertInfo: {
-		color: '#0c5460',
-		backgroundColor: '#d1ecf1',
-		borderColor: '#bee5eb',
-		border: '1px solid transparent',
-		borderRadius: '.25rem',
-		padding: '.75rem 1.25rem',
-		marginBottom: '1rem'
-	},
-	alertLight: {
-		color: '#818182',
-		backgroundColor: '#fefefe',
-		borderColor: '#fdfdfe',
-		border: '1px solid transparent',
-		borderRadius: '.25rem',
-		padding: '.75rem 1.25rem',
-		marginBottom: '1rem'
-	},
-	alertDark: {
-		color: '#1b1e21',
-		backgroundColor: '#d6d8d9',
-		borderColor: '#c6c8ca',
-		border: '1px solid transparent',
-		borderRadius: '.25rem',
-		padding: '.75rem 1.25rem',
-		marginBottom: '1rem'
-    }
+	
     ************/
 });

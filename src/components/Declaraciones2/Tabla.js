@@ -166,7 +166,7 @@ export default function EnhancedTable(props) {
 	};
 
 	const handleClick = (event, name) => {
-		console.log(name);
+		// console.log(name);
 		props.handleDataSelect(inicial);
 	};
 
@@ -226,7 +226,7 @@ export default function EnhancedTable(props) {
 					</Table>
 				</div>
 				<TablePagination
-					component="div"
+					
 					labelRowsPerPage="Número de registros:"
 					count={rows.length}
 					rowsPerPage={rowsPerPage}

@@ -80,7 +80,7 @@ export default function MenuSuperior(props) {
 												<Typography className={classes.cardTitle}>ÁMBITO PÚBLICO</Typography>
 												<Typography className={classes.card}>{expe.ambitoPublico}</Typography>
 											</Grid>
-											<Grid item xs={12} md={4}>
+											<Grid item xs={12} md={8}>
 												<Typography className={classes.cardTitle}>
 													NOMBRE DEL ENTE PÚBLICO/NOMBRE DE LA EMPRESA, SOCIEDAD O ASOCIACIÓN
 												</Typography>
@@ -138,7 +138,7 @@ export default function MenuSuperior(props) {
 													{expe.ambitoSector.valor}
 												</Typography>
 											</Grid>
-											<Grid item xs={12} md={4}>
+											<Grid item xs={12} md={8}>
 												<Typography className={classes.cardTitle}>
 													NOMBRE DEL ENTE PÚBLICO/NOMBRE DE LA EMPRESA, SOCIEDAD O ASOCIACIÓN
 												</Typography>

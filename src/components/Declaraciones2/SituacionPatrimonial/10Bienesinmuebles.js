@@ -9,7 +9,7 @@ import DatosNoRegistrados from '../DatosNoRegistrados';
 import DatosReservados from '../DatosReservados';
 import Transmisor from '../CompTransmisor';
 import { getUnidad } from '../utils';
-import { sumary, expansion } from '../utils';
+import { sumary, expansion, Divider } from '../utils';
 
 import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -43,20 +43,10 @@ export function BienInmuble(props) {
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>TITULAR DEL INMUEBLE:</Typography>
-							<Typography component="div" className={classes.card}>
-								<ul style={{ listStyle: 'none' }}>
-									{inm.titular.map((tit, idx) => {
-										return <li key={'tit-' + idx}>{tit.valor}</li>;
-									})}
-								</ul>
-							</Typography>
-						</Grid>
-						<Grid item xs={12} md={4}>
-							<Typography className={classes.cardTitle}>
-								PORCENTAJE DE PROPIEDAD DEL DECLARANTE CONFORME A ESCRITURACIÓN O CONTRATO:
-							</Typography>
-							<Typography component="div" className={classes.card}>
-								{inm.porcentajePropiedad}%
+							<Typography className={classes.card}>
+								{inm.titular.map((tit, idx) => {
+									return <span key={'tit-' + idx}>{tit.valor}</span>;
+								})}
 							</Typography>
 						</Grid>
 
@@ -92,12 +82,13 @@ export function BienInmuble(props) {
 							<Typography className={classes.cardTitle}>FECHA DE ADQUISICIÓN DEL INMUEBLE</Typography>
 							<Typography className={classes.card}>{inm.fechaAdquiscion}</Typography>
 						</Grid>
-						<Grid item xs={12} md={4}>
+
+						<Grid item xs={12} md={8}>
 							<Typography className={classes.cardTitle}>
 								DATOS DEL REGISTRO PÚBLICO DE LA PROPIEDAD: FOLIO REAL U OTRO DATO QUE PERMITA SU
 								IDENTIFICACIÓN
 							</Typography>
-							<Typography className={classes.card}>DATO RESERVADO</Typography>
+							<Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>
@@ -105,11 +96,19 @@ export function BienInmuble(props) {
 							</Typography>
 							<Typography className={classes.card}>{inm.valorConformeA}</Typography>
 						</Grid>
-
+						<Grid item xs={12} md={8}>
+							<Typography className={classes.cardTitle}>
+								PORCENTAJE DE PROPIEDAD DEL DECLARANTE CONFORME A ESCRITURACIÓN O CONTRATO:
+							</Typography>
+							<Typography  className={classes.card}>
+								{inm.porcentajePropiedad}%
+							</Typography>
+						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>UBICACIÓN DEL INMUEBLE</Typography>
-							<Typography className={classes.card}>DATO RESERVADO</Typography>
+							<Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
 						</Grid>
+
 						{inm.motivoBaja && (
 							<Grid item xs={12} md={4}>
 								<Typography className={classes.cardTitle}>
@@ -118,10 +117,8 @@ export function BienInmuble(props) {
 								<Typography className={classes.card}>{inm.motivoBaja.valor}</Typography>
 							</Grid>
 						)}
+						<Divider />
 
-						<Grid item xs={12} style={{ textAlign: 'center' }}>
-							<Typography className={classes.cardTitle}>TRANSMISOR(ES)</Typography>
-						</Grid>
 						{inm.transmisor && <Transmisor transmisor={inm.transmisor} />}
 					</Grid>
 				</ExpansionPanelDetails>

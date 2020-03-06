@@ -8,8 +8,6 @@ import { Divider } from '../utils';
 
 import DatosNoRegistrados from '../DatosNoRegistrados';
 import DatosReservados from '../DatosReservados';
-import Transmisor from '../CompTransmisor';
-import OtorganteCredito from '../CompOtorganteCredito';
 import { sumary, expansion } from '../utils';
 import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -42,7 +40,7 @@ export function Adeudos(props) {
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>TITULAR DEL ADEUDO:</Typography>
-							<Typography component="div" className={classes.card}>
+							<Typography className={classes.card}>
 								{obj.titular.map((tit, idx) => {
 									return <span key={'tit-' + idx}>{tit.valor}</span>;
 								})}
@@ -51,7 +49,7 @@ export function Adeudos(props) {
 
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>NÚMERO DE CUENTA O CONTRATO:</Typography>
-							<Typography className={classes.card}>DATO RESERVADO</Typography>
+							<Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>
@@ -69,7 +67,7 @@ export function Adeudos(props) {
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>SALDO INSOLUTO (SITUACIÓN ACTUAL)</Typography>
-							<Typography className={classes.card}>DATO RESERVADO</Typography>
+							<Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
 						</Grid>
 
 						<Grid item xs={12} md={4}>
@@ -129,12 +127,12 @@ export function Adeudos(props) {
 										<Typography className={classes.cardTitle}>
 											NOMBRE / INSTITUCIÓN O RAZÓN SOCIAL
 										</Typography>
-										<Typography className={classes.card}>DATO RESERVADO</Typography>
+										<Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
 									</Grid>
 
 									<Grid item xs={12} md={4}>
 										<Typography className={classes.cardTitle}>RFC </Typography>
-										<Typography className={classes.card}>DATO RESERVADO</Typography>
+										<Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
 									</Grid>
 								</Grid>
 							</Grid>
@@ -149,10 +147,8 @@ export function Adeudos(props) {
 export default function(props) {
 	const classes = useStyles();
 	const { data } = props;
-	console.log(data);
 
 	const adeudos = data.adeudo.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
-	console.log(adeudos);
 
 	return (
 		<Grid container spacing={2} className={classes.rootPrincipal}>

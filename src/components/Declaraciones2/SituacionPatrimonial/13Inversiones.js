@@ -38,32 +38,31 @@ export function Inversiones(props) {
 					<Grid container spacing={1}>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>TIPO DE INVERSIÓN / ACTIVO:</Typography>
-							<Typography className={classes.card}>{obj.tipoInversion.valor}</Typography>
+							<Typography className={classes.card}>
+								{obj.tipoInversion.valor} <strong>({obj.subTipoInversion.valor})</strong>
+							</Typography>
 						</Grid>
 						<Grid item xs={12} md={4}>
-							<Typography className={classes.cardTitle}>{obj.tipoInversion.valor}:</Typography>
-							<Typography className={classes.card}>{obj.subTipoInversion.valor}</Typography>
+							<Typography className={classes.cardTitle}>NÚMERO DE CUENTA, CONTRATO O PÓLIZA</Typography>
+							<Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
 						</Grid>
 						<Grid item xs={12} md={4}>
+							<Typography className={classes.cardTitle}>TIPO DE MONEDA</Typography>
+							<Typography className={classes.card}>{obj.saldoSituacionActual.moneda}</Typography>
+						</Grid>
+
+						<Grid item xs={12} md={6}>
 							<Typography className={classes.cardTitle}>
 								TITULAR DE LA INVERSIÓN, CUENTA BANCARIA Y OTRO TIPO DE VALORES:
 							</Typography>
-							<Typography component="div" className={classes.card}>
+							<Typography className={classes.card}>
 								{obj.titular.map((tit, idx) => {
 									return <span key={'tit-' + idx}>{tit.valor}</span>;
 								})}
 							</Typography>
 						</Grid>
 
-						<Grid item xs={12} md={4}>
-							<Typography className={classes.cardTitle}>NÚMERO DE CUENTA, CONTRATO O PÓLIZA</Typography>
-							<Typography className={classes.card}>DATO RESERVADO</Typography>
-						</Grid>
-						<Grid item xs={12} md={4}>
-							<Typography className={classes.cardTitle}>TIPO DE MONEDA</Typography>
-							<Typography className={classes.card}>{obj.saldoSituacionActual.moneda}</Typography>
-						</Grid>
-						<Grid item xs={12} md={4}>
+						<Grid item xs={12} md={6}>
 							<Typography className={classes.cardTitle}>
 								¿DÓNDE SE LOCALIZA LA INVERSIÓN, CUENTA BANCARIA Y OTRO TIPO DE VALORES / ACTIVOS ?
 							</Typography>
