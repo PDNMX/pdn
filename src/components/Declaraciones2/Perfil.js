@@ -10,7 +10,7 @@ import styles from './style';
 class Perfil extends React.Component {
 	state = {
 		menuSuperior: 0,
-		menuSituacionPatrimonial: 14,
+		menuSituacionPatrimonial: 0,
 		menuIntereses: 0
 	};
 
