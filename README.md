@@ -1,4 +1,4 @@
-# Front End de la PDN [![Build Status](https://travis-ci.org/PDNMX/pdn.svg?branch=master)](https://travis-ci.org/PDNMX/pdn)
+# Front End de la PDN 
 
 ## ¿Qué es y para qué sirve?
 
