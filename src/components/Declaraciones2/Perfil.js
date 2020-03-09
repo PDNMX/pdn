@@ -6,6 +6,7 @@ import MenuSuperior from './MenuSuperior';
 import SituacionPatrimonial from './SituacionPatrimonial';
 import Intereses from './Intereses';
 import styles from './style';
+import { getMoneda } from './utils';
 
 class Perfil extends React.Component {
 	state = {
@@ -30,6 +31,19 @@ class Perfil extends React.Component {
 		this.setState((prevSate) => {
 			return { ...prevSate, menuIntereses: newValue };
 		});
+	};
+
+	getIngresos = (data) => {
+		switch (data.metadata.tipo) {
+			case 'INICIAL':
+				return getMoneda(
+					data.declaracion.situacionPatrimonial.ingresos.ingresoMensualNetoDeclarante.valor * 12
+				);
+			case 'MODIFICACIÓN':
+				return getMoneda(data.declaracion.situacionPatrimonial.ingresos.ingresoAnualNetoDeclarante.valor);
+			case 'CONCLUSIÓN':
+				return getMoneda(data.declaracion.situacionPatrimonial.ingresos.ingresoConclusionNetoDeclarante.valor);
+		}
 	};
 
 	render() {
@@ -61,7 +75,7 @@ class Perfil extends React.Component {
 									<Typography variant="h5" component="h3" className={classes.tituloCard}>
 										INGRESOS ANUALES NETOS:
 									</Typography>
-									<Typography className={classes.dataCard}>$16,058,713.00</Typography>
+									<Typography className={classes.dataCard}>{this.getIngresos(data)}</Typography>
 								</Grid>
 								<Grid item xs={12} md={6}>
 									<Typography variant="h5" component="h3" className={classes.tituloCard}>

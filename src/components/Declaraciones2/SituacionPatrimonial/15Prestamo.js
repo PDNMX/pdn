@@ -78,7 +78,7 @@ export function Prestamo(props) {
 							</Grid>
 							<Grid item xs={12} md={4}>
 								<Typography className={classes.cardTitle}>¿DÓNDE SE ENCUENTRA REGISTRADO?:</Typography>
-								<Typography className={classes.card}>DATO RESERVADO</Typography>
+								<Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
 							</Grid>
 							<Divider />
 							<Grid item xs={12} style={{ textAlign: 'center' }}>

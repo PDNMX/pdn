@@ -7,6 +7,13 @@ import style from './styleSecciones';
 
 const useStyles = makeStyles(style);
 
+const getMoneda = (valor, moneda) => {
+	return new Intl.NumberFormat('es-MX', {
+		style: 'currency',
+		currency: 'MXN'
+	}).format(valor);
+};
+
 const getUnidad = (unidad) => {
 	switch (unidad) {
 		case 'm2':
@@ -153,4 +160,4 @@ function CompDomicilio(props) {
 	);
 }
 
-export { getUnidad, getMorales, sumary, expansion, Divider, DomicilioReservado, CompDomicilio };
+export { getMoneda, getUnidad, getMorales, sumary, expansion, Divider, DomicilioReservado, CompDomicilio };

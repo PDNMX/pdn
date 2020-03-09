@@ -8,7 +8,7 @@ import { Divider } from '../utils';
 
 import DatosNoRegistrados from '../DatosNoRegistrados';
 import DatosReservados from '../DatosReservados';
-import { sumary, expansion } from '../utils';
+import { sumary, expansion, getMoneda } from '../utils';
 import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
@@ -59,7 +59,7 @@ export function Adeudos(props) {
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>MONTO ORIGINAL DEL ADEUDO / PASIVO</Typography>
-							<Typography className={classes.card}>${obj.montoOriginal.valor}</Typography>
+							<Typography className={classes.card}>{getMoneda(obj.montoOriginal.valor)}</Typography>
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>TIPO DE MONEDA</Typography>

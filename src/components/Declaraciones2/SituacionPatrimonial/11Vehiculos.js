@@ -8,7 +8,7 @@ import styleSecciones from '../styleSecciones';
 import DatosNoRegistrados from '../DatosNoRegistrados';
 import DatosReservados from '../DatosReservados';
 import Transmisor from '../CompTransmisor';
-import { sumary, expansion, Divider } from '../utils';
+import { sumary, expansion, Divider, getMoneda } from '../utils';
 import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
@@ -40,7 +40,7 @@ export function Vehiculo(props) {
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>TITULAR DEL VEHÍCULO:</Typography>
-							<Typography  className={classes.card}>
+							<Typography className={classes.card}>
 								{obj.titular.map((tit, idx) => {
 									return <span key={'tit-' + idx}>{tit.valor}</span>;
 								})}
@@ -77,7 +77,7 @@ export function Vehiculo(props) {
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>VALOR DE ADQUISICIÓN DEL VEHÍCULO:</Typography>
-							<Typography className={classes.card}>${obj.valorAdquisicion.valor}</Typography>
+							<Typography className={classes.card}>{getMoneda(obj.valorAdquisicion.valor)}</Typography>
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>TIPO DE MONEDA:</Typography>

@@ -8,7 +8,7 @@ import styleSecciones from '../styleSecciones';
 import DatosNoRegistrados from '../DatosNoRegistrados';
 import DatosReservados from '../DatosReservados';
 import Transmisor from '../CompTransmisor';
-import { getUnidad } from '../utils';
+import { getUnidad, getMoneda } from '../utils';
 import { sumary, expansion, Divider } from '../utils';
 
 import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
@@ -72,7 +72,7 @@ export function BienInmuble(props) {
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>VALOR DE ADQUISICIÓN</Typography>
-							<Typography className={classes.card}>${inm.valorAdquisicion.valor} </Typography>
+							<Typography className={classes.card}>{getMoneda(inm.valorAdquisicion.valor)} </Typography>
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>TIPO DE MONEDA</Typography>
@@ -100,9 +100,7 @@ export function BienInmuble(props) {
 							<Typography className={classes.cardTitle}>
 								PORCENTAJE DE PROPIEDAD DEL DECLARANTE CONFORME A ESCRITURACIÓN O CONTRATO:
 							</Typography>
-							<Typography  className={classes.card}>
-								{inm.porcentajePropiedad}%
-							</Typography>
+							<Typography className={classes.card}>{inm.porcentajePropiedad}%</Typography>
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>UBICACIÓN DEL INMUEBLE</Typography>
