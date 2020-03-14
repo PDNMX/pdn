@@ -37,19 +37,19 @@ const useStyles = makeStyles({
 function opcion(valor, data) {
 	switch (valor) {
 		case 0:
-			return <Participacion data={data.datosGenerales} />;
+			return <Participacion data={data.participacion} />;
 		case 1:
-			return <TomaDecisiones data={data.datosGenerales} />;
+			return <TomaDecisiones data={data.participacionTomaDecisiones} />;
 		case 2:
-			return <ApoyosBeneficiosPublicos data={data.datosGenerales} />;
+			return <ApoyosBeneficiosPublicos data={data.apoyos} />;
 		case 3:
-			return <Representacion data={data.datosGenerales} />;
+			return <Representacion data={data.representacion} />;
 		case 4:
-			return <ClientesPrincipales data={data.datosGenerales} />;
+			return <ClientesPrincipales data={data.clientesPrincipales} />;
 		case 5:
-			return <BeneficiosPrivados data={data.datosGenerales} />;
+			return <BeneficiosPrivados data={data.beneficiosPrivados} />;
 		case 6:
-			return <Fideicomisos data={data.datosGenerales} />;
+			return <Fideicomisos data={data.fideicomisos} />;
 
 		default:
 			break;

@@ -21,7 +21,7 @@ const camposPrivados = [
 	'NACIONALIDAD'
 ];
 
-export default function MenuSuperior(props) {
+export default function(props) {
 	const classes = useStyles();
 	const { data } = props;
 

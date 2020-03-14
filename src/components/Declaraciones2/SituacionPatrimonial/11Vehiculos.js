@@ -14,7 +14,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const useStyles = makeStyles(styleSecciones);
 
-export function Vehiculo(props) {
+function Vehiculo(props) {
 	const classes = useStyles();
 	const exp = expansion();
 	const sum = sumary();

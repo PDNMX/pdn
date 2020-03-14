@@ -9,6 +9,11 @@ export default (theme) => ({
 		fontSize: 20,
 		fontWeight: 'bold'
 	},
+	tituloSubSeccion: {
+		color: '#2EB2E7',
+		fontSize: 14,
+		fontWeight: 'bold'
+	},
 	paper: {
 		padding: theme.spacing(2)
 	},

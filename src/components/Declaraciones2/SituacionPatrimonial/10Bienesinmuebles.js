@@ -16,7 +16,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const useStyles = makeStyles(styleSecciones);
 
-export function BienInmuble(props) {
+function BienInmuble(props) {
 	const classes = useStyles();
 	const exp = expansion();
 	const sum = sumary();
@@ -125,7 +125,7 @@ export function BienInmuble(props) {
 	});
 }
 
-export default function MenuSuperior(props) {
+export default function (props) {
 	const classes = useStyles();
 	const { data } = props;
 

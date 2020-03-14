@@ -14,7 +14,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const useStyles = makeStyles(styleSecciones);
 
-export function Inversiones(props) {
+function Inversiones(props) {
 	const classes = useStyles();
 	const exp = expansion();
 	const sum = sumary();

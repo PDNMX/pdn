@@ -12,7 +12,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const useStyles = makeStyles(style);
 
-export default function MenuSuperior(props) {
+export default function (props) {
 	const classes = useStyles();
 	const exp = expansion();
 	const sum = sumary();

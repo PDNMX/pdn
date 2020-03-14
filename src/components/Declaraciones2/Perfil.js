@@ -10,9 +10,9 @@ import { getMoneda } from './utils';
 
 class Perfil extends React.Component {
 	state = {
-		menuSuperior: 0,
+		menuSuperior: 1,
 		menuSituacionPatrimonial: 0,
-		menuIntereses: 0
+		menuIntereses: 5
 	};
 
 	handleChangeMenuSuperior = (event, newValue) => {

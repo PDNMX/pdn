@@ -13,7 +13,7 @@ import MoneyOffIcon from '@material-ui/icons/MoneyOff';
 
 const useStyles = makeStyles(style);
 
-export default function MenuSuperior(props) {
+export default function (props) {
 	const classes = useStyles();
 	const { data } = props;
 

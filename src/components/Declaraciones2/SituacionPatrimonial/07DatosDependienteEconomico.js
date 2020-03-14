@@ -9,7 +9,7 @@ import DatosReservados from '../DatosReservados';
 
 const useStyles = makeStyles(styleSecciones);
 
-export default function DatosDependienteEconomico(props) {
+export default function (props) {
 	const classes = useStyles();
 
 	return (

@@ -13,7 +13,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const useStyles = makeStyles(styleSecciones);
 
-export function Prestamo(props) {
+function Prestamo(props) {
 	const classes = useStyles();
 	const exp = expansion();
 	const sum = sumary();
@@ -84,7 +84,7 @@ export function Prestamo(props) {
 							<Grid item xs={12} style={{ textAlign: 'center' }}>
 								<Typography className={classes.cardTitle}>DUEÑO O TITULAR</Typography>
 							</Grid>
-							{obj.duenoTitular.tipoDuenoTitular !== 'FISICA' ? (
+							{obj.duenoTitular.tipoDuenoTitular === 'FISICA' ? (
 								<Grid item xs={12}>
 									<Grid container spacing={1}>
 										<Grid item xs={12} md={4}>

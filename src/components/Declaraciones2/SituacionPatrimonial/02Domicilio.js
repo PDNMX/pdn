@@ -8,7 +8,7 @@ import DatosReservados from '../DatosReservados';
 
 const useStyles = makeStyles(style);
 
-export default function MenuSuperior() {
+export default function () {
 	const classes = useStyles();
 
 	return (
