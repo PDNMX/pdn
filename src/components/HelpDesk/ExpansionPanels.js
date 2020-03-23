@@ -696,7 +696,6 @@ export default function CustomizedExpansionPanels() {
                 </ExpansionPanelDetails>
             </ExpansionPanel>
 
-
             <ExpansionPanel square expanded={expanded === 'panel8'} onChange={handleChange('panel8')}>
                 <ExpansionPanelSummary aria-controls="panel8d-content" id="panel8d-header">
                     <Typography>Sistema de declaración patrimonial y de intereses</Typography>
@@ -713,7 +712,7 @@ export default function CustomizedExpansionPanels() {
                         <Button variant="contained" className={classes.button} target="_blank" href="https://drive.google.com/file/d/1wHQpaFdP5An8V4Vhnjj1a4GBbYIREMHo/view?usp=sharing">
                             Más información
                         </Button>
-                        
+
                     </div>
                 </ExpansionPanelDetails>
             </ExpansionPanel>
