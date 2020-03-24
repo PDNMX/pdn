@@ -47,6 +47,16 @@ class DescripcionEstandar extends React.Component {
                     la Plataforma Digital Nacional (PDN) y se proporciona una serie de recomendaciones para la implementación del estándar por parte de las Instituciones.
                 </Typography>
 
+                <Typography paragraph color="textPrimary">
+                    También puedes hacer click en el botón que aparece a continuación, el cual <b>contienene información relevante para</b> los equipos
+                    encargados de desarrollar la <b>interconexión de su sistema de declaraciones</b> con la
+                    Plataforma Digital Nacional.
+                </Typography>
+
+                <Button variant="contained" className={classes.button} target="_blank" href="https://drive.google.com/file/d/1wHQpaFdP5An8V4Vhnjj1a4GBbYIREMHo/view?usp=sharing">
+                    Más información
+                </Button>
+
                 <Typography variant="h5" paragraph color='textPrimary'>Antecedentes</Typography>
                 <ul className={classes.ul}>
                     <li className={classes.li}>
@@ -109,7 +119,7 @@ class DescripcionEstandar extends React.Component {
                 </Typography>
 
                 <p>
-                    <Button variant="contained" className={classes.button} href="https://github.com/OAI/OpenAPI-Specification">Más información</Button>
+                    <Button variant="contained" className={classes.button} target="_blank" href="https://github.com/OAI/OpenAPI-Specification">Más información</Button>
                 </p>
 
                 <Typography variant="h5" paragraph color="textPrimary">
@@ -122,7 +132,7 @@ class DescripcionEstandar extends React.Component {
                     a través del uso de tokens de autorización.
                 </Typography>
                 <p>
-                    <Button variant="contained" className={classes.button} href="https://oauth.net/2/"> Más información </Button>
+                    <Button variant="contained" className={classes.button} target="_blank" href="https://oauth.net/2/"> Más información </Button>
                 </p>
             </div>)
     }

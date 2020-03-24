@@ -696,9 +696,29 @@ export default function CustomizedExpansionPanels() {
                 </ExpansionPanelDetails>
             </ExpansionPanel>
 
-
             <ExpansionPanel square expanded={expanded === 'panel8'} onChange={handleChange('panel8')}>
                 <ExpansionPanelSummary aria-controls="panel8d-content" id="panel8d-header">
+                    <Typography>Sistema de declaración patrimonial y de intereses</Typography>
+                </ExpansionPanelSummary>
+                <ExpansionPanelDetails>
+                    <div>
+
+                        <Typography paragraph color="textPrimary">
+                            Haz click en el botón que aparece a continuación para visualizar un documento que <b>contienene información relevante para</b> los equipos
+                            encargados de desarrollar la <b>interconexión de su sistema de declaraciones</b> con la
+                            Plataforma Digital Nacional.
+                        </Typography>
+
+                        <Button variant="contained" className={classes.button} target="_blank" href="https://drive.google.com/file/d/1wHQpaFdP5An8V4Vhnjj1a4GBbYIREMHo/view?usp=sharing">
+                            Más información
+                        </Button>
+
+                    </div>
+                </ExpansionPanelDetails>
+            </ExpansionPanel>
+
+            <ExpansionPanel square expanded={expanded === 'panel9'} onChange={handleChange('panel9')}>
+                <ExpansionPanelSummary aria-controls="panel9d-content" id="panel9d-header">
                     <Typography>Contactanos</Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
