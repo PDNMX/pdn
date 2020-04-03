@@ -119,7 +119,8 @@ export default function(props) {
 	const classes = useStyles();
 	const { data } = props;
 
-	const representacion = data.representacion.filter((i) => i.tipoRelacion === 'DECLARANTE');
+	// const representacion = data.representacion.filter((i) => i.tipoRelacion === 'DECLARANTE');
+	const representacion = data.representacion;
 
 	return (
 		<Grid container spacing={2} className={classes.rootPrincipal}>
@@ -129,8 +130,9 @@ export default function(props) {
 				</Typography>
 			</Grid>
 			<Grid item xs={12}>
-				{data.ninguno && <DatosNoRegistrados />}
-				{!data.ninguno && representacion.length ? (
+				{data.ninguno ? (
+					<DatosNoRegistrados />
+				) : representacion.length ? (
 					<Representacion representacion={representacion} />
 				) : (
 					<DatosReservados />

@@ -7,10 +7,11 @@ import styleSecciones from '../styleSecciones';
 
 import DatosNoRegistrados from '../DatosNoRegistrados';
 import DatosReservados from '../DatosReservados';
-import Transmisor from '../CompTransmisor';
 import { sumary, expansion } from '../utils';
 import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
+import { Disclaimer } from '../utils';
 
 const useStyles = makeStyles(styleSecciones);
 
@@ -110,10 +111,18 @@ export default function(props) {
 					13. INVERSIONES, CUENTAS BANCARIAS Y OTRO TIPO DE VALORES / ACTIVOS (SITUACIÓN ACTUAL)
 				</Typography>
 			</Grid>
-			<Grid item xs={12}>
-				{data.ninguno && <DatosNoRegistrados />}
-				{!data.ninguno && inversiones.length ? <Inversiones inversiones={inversiones} /> : <DatosReservados />}
-			</Grid>
+			{data ? (
+				<Grid item xs={12}>
+					{data.ninguno && <DatosNoRegistrados />}
+					{!data.ninguno && inversiones.length ? (
+						<Inversiones inversiones={inversiones} />
+					) : (
+						<DatosReservados />
+					)}
+				</Grid>
+			) : (
+				<Disclaimer />
+			)}
 		</Grid>
 	);
 }

@@ -12,6 +12,8 @@ import { sumary, expansion, Divider, getMoneda } from '../utils';
 import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
+import { Disclaimer } from '../utils';
+
 const useStyles = makeStyles(styleSecciones);
 
 function BienMueble(props) {
@@ -103,10 +105,14 @@ export default function(props) {
 					12. BIENES MUEBLES (SITUACIÓN ACTUAL)
 				</Typography>
 			</Grid>
-			<Grid item xs={12}>
-				{data.ninguno && <DatosNoRegistrados />}
-				{!data.ninguno && bienMueble.length ? <BienMueble bienMueble={bienMueble} /> : <DatosReservados />}
-			</Grid>
+			{data ? (
+				<Grid item xs={12}>
+					{data.ninguno && <DatosNoRegistrados />}
+					{!data.ninguno && bienMueble.length ? <BienMueble bienMueble={bienMueble} /> : <DatosReservados />}
+				</Grid>
+			) : (
+				<Disclaimer />
+			)}
 		</Grid>
 	);
 }

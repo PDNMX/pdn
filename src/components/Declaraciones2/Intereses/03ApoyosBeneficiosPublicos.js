@@ -84,7 +84,8 @@ export default function(props) {
 	const classes = useStyles();
 	const { data } = props;
 
-	const apoyo = data.apoyo.filter((i) => i.beneficiarioPrograma.clave === 'DEC');
+	// const apoyo = data.apoyo.filter((i) => i.beneficiarioPrograma.clave === 'DEC');
+	const apoyo = data.apoyo;
 
 	return (
 		<Grid container spacing={2} className={classes.rootPrincipal}>
@@ -94,8 +95,7 @@ export default function(props) {
 				</Typography>
 			</Grid>
 			<Grid item xs={12}>
-				{data.ninguno && <DatosNoRegistrados />}
-				{!data.ninguno && apoyo.length ? <Apoyo apoyo={apoyo} /> : <DatosReservados />}
+				{data.ninguno ? <DatosNoRegistrados /> : apoyo.length ? <Apoyo apoyo={apoyo} /> : <DatosReservados />}
 			</Grid>
 		</Grid>
 	);

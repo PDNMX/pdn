@@ -7,7 +7,7 @@ import styleSecciones from '../styleSecciones';
 
 import DatosNoRegistrados from '../DatosNoRegistrados';
 import DatosReservados from '../DatosReservados';
-import { sumary, expansion, getMoneda, Divider, Ubicacion } from '../utils';
+import { sumary, expansion, getMoneda, Divider } from '../utils';
 import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
@@ -33,36 +33,45 @@ function BeneficiosPrivados(props) {
 				</ExpansionPanelSummary>
 				<ExpansionPanelDetails>
 					<Grid container spacing={1}>
-						<Grid item xs={12} md={3}>
+						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>TIPO DE BENEFICIO:</Typography>
-							<Typography className={classes.card}>{obj.tipoRelacion}</Typography>
+							<Typography className={classes.card}>{obj.tipoBeneficio.valor}</Typography>
 						</Grid>
-						<Grid item xs={12} md={3}>
+						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>BENEFICIARIO:</Typography>
 							<Typography className={classes.card}>{obj.beneficiario[0].valor}</Typography>
 						</Grid>
 
-						<Grid item xs={12} md={3}>
+						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>FORMA DE RECEPCIÓN DEL BENEFICIO:</Typography>
 							<Typography className={classes.card}>{obj.formaRecepcion}</Typography>
 						</Grid>
-						<Grid item xs={12} md={3}>
-							<Typography className={classes.cardTitle}>ESPECIFIQUE EL BENEFICIO:</Typography>
-							<Typography className={classes.card}>{obj.especifiqueBeneficio}</Typography>
-						</Grid>
-						<Grid item xs={12} md={3}>
-							<Typography className={classes.cardTitle}>
-								MONTO MENSUAL APROXIMADO DEL BENEFICIO:
-							</Typography>
-							<Typography className={classes.card}>
-								{getMoneda(obj.montoMensualAproximado.valor)}
-							</Typography>
-						</Grid>
-						<Grid item xs={12} md={3}>
-							<Typography className={classes.cardTitle}>TIPO DE MONEDA:</Typography>
-							<Typography className={classes.card}>{obj.montoMensualAproximado.moneda}</Typography>
-						</Grid>
-						<Grid item xs={12} md={3}>
+
+						{obj.formaRecepcion === 'MONETARIO' ? (
+							<Grid item xs={8}>
+								<Grid container spacing={1}>
+									<Grid item xs={12} md={6}>
+										<Typography className={classes.cardTitle}>MONTO MENSUAL APROXIMADO:</Typography>
+										<Typography className={classes.card}>
+											{getMoneda(obj.montoMensualAproximado.valor)}
+										</Typography>
+									</Grid>
+									<Grid item xs={12} md={6}>
+										<Typography className={classes.cardTitle}>TIPO DE MONEDA:</Typography>
+										<Typography className={classes.card}>
+											{obj.montoMensualAproximado.moneda}
+										</Typography>
+									</Grid>
+								</Grid>
+							</Grid>
+						) : (
+							<Grid item xs={12} md={8}>
+								<Typography className={classes.cardTitle}>ESPECIFIQUE EL BENEFICIO:</Typography>
+								<Typography className={classes.card}>{obj.especifiqueBeneficio}</Typography>
+							</Grid>
+						)}
+
+						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>SECTOR PRODUCTIVO:</Typography>
 							<Typography className={classes.card}>{obj.sector.valor}</Typography>
 						</Grid>
@@ -70,7 +79,7 @@ function BeneficiosPrivados(props) {
 						<Grid item xs={12} style={{ textAlign: 'center' }}>
 							<Typography className={classes.tituloSubSeccion}>OTORGANTE</Typography>
 						</Grid>
-						{obj.clientePrincipal.tipoPersona === 'FISICA' ? (
+						{obj.otorgante.tipoPersona === 'FISICA' ? (
 							<Grid item xs={12}>
 								<Grid container spacing={1}>
 									<Grid item xs={12} md={3}>
@@ -111,8 +120,6 @@ function BeneficiosPrivados(props) {
 								</Grid>
 							</Grid>
 						)}
-						<Divider />
-						<Ubicacion ubicacion={obj.ubicacion} />
 					</Grid>
 				</ExpansionPanelDetails>
 			</ExpansionPanel>
@@ -124,9 +131,8 @@ export default function(props) {
 	const classes = useStyles();
 	const { data } = props;
 
-	const beneficio = data.beneficio.filter(
-		(i) => i.beneficiario.length === 1 && i.beneficiario[0].clave === 'DECLARANTE'
-	);
+	// const beneficio = data.beneficio.filter((i) => i.beneficiario.length === 1 && i.beneficiario[0].clave === 'DC');
+	const beneficio = data.beneficio;
 
 	return (
 		<Grid container spacing={2} className={classes.rootPrincipal}>
@@ -136,8 +142,13 @@ export default function(props) {
 				</Typography>
 			</Grid>
 			<Grid item xs={12}>
-				{data.ninguno && <DatosNoRegistrados />}
-				{!data.ninguno && beneficio.length ? <BeneficiosPrivados beneficio={beneficio} /> : <DatosReservados />}
+				{data.ninguno ? (
+					<DatosNoRegistrados />
+				) : beneficio.length ? (
+					<BeneficiosPrivados beneficio={beneficio} />
+				) : (
+					<DatosReservados />
+				)}
 			</Grid>
 		</Grid>
 	);

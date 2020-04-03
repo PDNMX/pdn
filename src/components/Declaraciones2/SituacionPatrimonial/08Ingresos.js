@@ -270,8 +270,6 @@ const OtrosIngresos = (props) => {
 
 export default function (props) {
 	const classes = useStyles();
-	const exp = expansion();
-	const sum = sumary();
 	const { data } = props;
 
 	return (

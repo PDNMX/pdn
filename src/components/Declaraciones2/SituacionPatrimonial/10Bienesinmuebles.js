@@ -14,6 +14,8 @@ import { sumary, expansion, Divider } from '../utils';
 import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
+import { Disclaimer } from '../utils';
+
 const useStyles = makeStyles(styleSecciones);
 
 function BienInmuble(props) {
@@ -125,7 +127,7 @@ function BienInmuble(props) {
 	});
 }
 
-export default function (props) {
+export default function(props) {
 	const classes = useStyles();
 	const { data } = props;
 
@@ -138,10 +140,14 @@ export default function (props) {
 					10. BIENES INMUEBLES (SITUACIÓN ACTUAL)
 				</Typography>
 			</Grid>
-			<Grid item xs={12}>
-				{data.ninguno && <DatosNoRegistrados />}
-				{!data.ninguno && (inmuebles.length ? <BienInmuble inmuebles={inmuebles} /> : <DatosReservados />)}
-			</Grid>
+			{data ? (
+				<Grid item xs={12}>
+					{data.ninguno && <DatosNoRegistrados />}
+					{!data.ninguno && (inmuebles.length ? <BienInmuble inmuebles={inmuebles} /> : <DatosReservados />)}
+				</Grid>
+			) : (
+				<Disclaimer />
+			)}
 		</Grid>
 	);
 }

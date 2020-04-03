@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Paper, LinearProgress } from '@material-ui/core';
+import { Grid, LinearProgress, Paper } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 
 import { makeStyles, withStyles, lighten } from '@material-ui/core/styles';
@@ -126,6 +126,52 @@ export function DomicilioReservado() {
 		<Grid item xs={12}>
 			<hr style={{ border: '4px solid #f2f2f2' }} />
 		</Grid>
+	);
+}
+
+export function Disclaimer() {
+	const sel = useStyles();
+	return (
+		<Paper className={sel.rootPrincipal}>
+			<Grid container spacing={2}>
+				<Grid item xs={12}>
+					<Typography className={sel.alertSuccess}>
+						Estimado-a ciudadano-a:
+						<br />
+						<br /> De acuerdo con la{' '}
+						<strong>
+							generalidad decimosegunda de las normas y el instructivo para el llenado y la presentación
+							del formato de declaraciones de situación patrimonial y de intereses
+						</strong>{' '}
+						(que puede consultar en la siguiente dirección: <a href="https://www.dof.gob.mx/nota_detalle.php?codigo=5573194&fecha=23/09/2019">
+							https://www.dof.gob.mx/nota_detalle.php?codigo=5573194&fecha=23/09/2019
+						</a>), aquellos{' '}
+						<strong>Servidores Públicos que tengan nivel menor a Jefe de departamento u homólogo</strong> en
+						los Entes Públicos y sus homólogos en las entidades federativas,{' '}
+						<strong>
+							presentarán declaración patrimonial y de intereses, reportando los siguientes rubros
+						</strong>:
+						<br />
+						<br />
+						Para efecto de la <strong>declaración patrimonial</strong>, se reportarán los siguientes rubros:
+						<ol style={{ fontWeight: 'bold' }}>
+							<li>Datos Generales.</li>
+							<li>Domicilio del Declarante.</li>
+							<li>Datos Curriculares.</li>
+							<li>Datos del empleo, cargo o comisión.</li>
+							<li>Experiencia laboral.</li>
+							<li>Ingresos netos del Declarante.</li>
+							<li>
+								¿Te desempeñaste como servidor público el año inmediato anterior? (solo en la
+								declaración de inicio y conclusión) [sic].
+							</li>
+						</ol>
+						Con base en lo anterior, los datos de la persona servidora pública de su interés
+						correspondientes a esta sección no están disponibles. Gracias por su comprensión.
+					</Typography>
+				</Grid>
+			</Grid>
+		</Paper>
 	);
 }
 

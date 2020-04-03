@@ -12,6 +12,8 @@ import { sumary, expansion, getMoneda } from '../utils';
 import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
+import { Disclaimer } from '../utils';
+
 const useStyles = makeStyles(styleSecciones);
 
 function Adeudos(props) {
@@ -157,10 +159,14 @@ export default function(props) {
 					14. ADEUDOS / PASIVOS (SITUACIÓN ACTUAL)
 				</Typography>
 			</Grid>
-			<Grid item xs={12}>
-				{data.ninguno && <DatosNoRegistrados />}
-				{!data.ninguno && adeudos.length ? <Adeudos adeudos={adeudos} /> : <DatosReservados />}
-			</Grid>
+			{data ? (
+				<Grid item xs={12}>
+					{data.ninguno && <DatosNoRegistrados />}
+					{!data.ninguno && adeudos.length ? <Adeudos adeudos={adeudos} /> : <DatosReservados />}
+				</Grid>
+			) : (
+				<Disclaimer />
+			)}
 		</Grid>
 	);
 }

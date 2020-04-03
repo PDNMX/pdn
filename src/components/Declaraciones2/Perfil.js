@@ -10,9 +10,9 @@ import { getMoneda } from './utils';
 
 class Perfil extends React.Component {
 	state = {
-		menuSuperior: 1,
+		menuSuperior: 0,
 		menuSituacionPatrimonial: 0,
-		menuIntereses: 5
+		menuIntereses: 0
 	};
 
 	handleChangeMenuSuperior = (event, newValue) => {
@@ -43,6 +43,8 @@ class Perfil extends React.Component {
 				return getMoneda(data.declaracion.situacionPatrimonial.ingresos.ingresoAnualNetoDeclarante.valor);
 			case 'CONCLUSIÓN':
 				return getMoneda(data.declaracion.situacionPatrimonial.ingresos.ingresoConclusionNetoDeclarante.valor);
+			default:
+				break;
 		}
 	};
 

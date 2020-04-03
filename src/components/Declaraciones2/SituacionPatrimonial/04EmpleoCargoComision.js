@@ -6,10 +6,6 @@ import Typography from '@material-ui/core/Typography';
 
 import style from '../styleSecciones';
 import { Divider, CompDomicilio } from '../utils';
-import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
-import MoneyOffIcon from '@material-ui/icons/MoneyOff';
-
-// import CompDomicilio from '../CompDomicilio';
 
 const useStyles = makeStyles(style);
 

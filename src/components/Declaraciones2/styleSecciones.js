@@ -26,7 +26,7 @@ export default (theme) => ({
 	card: {
 		fontSize: 14,
 		paddingLeft: 20,
-		marginBottom: 10,
+		// marginBottom: 10,
 		paddingBottom: 10,
 		color: '#155724',
 		backgroundColor: '#d4edda',
@@ -40,7 +40,7 @@ export default (theme) => ({
 	cardReserved: {
 		fontSize: 14,
 		paddingLeft: 20,
-		marginBottom: 10,
+		// marginBottom: 10,
 		paddingBottom: 10,
 		color: '#1b1e21',
 		backgroundColor: '#d6d8d9',

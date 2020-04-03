@@ -12,6 +12,8 @@ import { sumary, expansion, Divider, getMoneda } from '../utils';
 import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
+import { Disclaimer } from '../utils';
+
 const useStyles = makeStyles(styleSecciones);
 
 function Vehiculo(props) {
@@ -117,10 +119,14 @@ export default function(props) {
 					11. VEHÍCULOS (SITUACIÓN ACTUAL)
 				</Typography>
 			</Grid>
-			<Grid item xs={12}>
-				{data.ninguno && <DatosNoRegistrados />}
-				{!data.ninguno && vehiculos.length ? <Vehiculo vehiculos={vehiculos} /> : <DatosReservados />}
-			</Grid>
+			{data ? (
+				<Grid item xs={12}>
+					{data.ninguno && <DatosNoRegistrados />}
+					{!data.ninguno && vehiculos.length ? <Vehiculo vehiculos={vehiculos} /> : <DatosReservados />}
+				</Grid>
+			) : (
+				<Disclaimer />
+			)}
 		</Grid>
 	);
 }

@@ -11,6 +11,8 @@ import { sumary, expansion, Divider } from '../utils';
 import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
+import { Disclaimer } from '../utils';
+
 const useStyles = makeStyles(styleSecciones);
 
 function Prestamo(props) {
@@ -150,10 +152,18 @@ export default function(props) {
 					15. PRÉSTAMO O COMODATO POR TERCEROS (SITUACIÓN ACTUAL)
 				</Typography>
 			</Grid>
-			<Grid item xs={12}>
-				{data.ninguno && <DatosNoRegistrados />}
-				{!data.ninguno && data.prestamo.length ? <Prestamo prestamo={data.prestamo} /> : <DatosReservados />}
-			</Grid>
+			{data ? (
+				<Grid item xs={12}>
+					{data.ninguno && <DatosNoRegistrados />}
+					{!data.ninguno && data.prestamo.length ? (
+						<Prestamo prestamo={data.prestamo} />
+					) : (
+						<DatosReservados />
+					)}
+				</Grid>
+			) : (
+				<Disclaimer />
+			)}
 		</Grid>
 	);
 }
