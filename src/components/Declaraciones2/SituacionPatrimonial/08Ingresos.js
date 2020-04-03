@@ -142,7 +142,7 @@ const ActividadFinanciera = (props) => {
 	);
 };
 
-const ServiciosProfecionales = (props) => {
+const ServiciosProfesionales = (props) => {
 	const classes = useStyles();
 	const exp = expansion();
 	const sum = sumary();
@@ -312,7 +312,7 @@ export default function (props) {
 								actividadIndustialComercialEmpresarial={data.actividadIndustialComercialEmpresarial}
 							/>
 							<ActividadFinanciera actividadFinanciera={data.actividadFinanciera} />
-							<ServiciosProfecionales serviciosProfesionales={data.serviciosProfesionales} />
+							<ServiciosProfesionales serviciosProfesionales={data.serviciosProfesionales} />
 							<OtrosIngresos otrosIngresos={data.otrosIngresos} />
 						</Grid>
 						<Divider />

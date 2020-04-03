@@ -262,5 +262,3 @@ export function CompDomicilio(props) {
 		</Grid>
 	);
 }
-
-// export { getMoneda, getUnidad, getMorales, sumary, expansion, Divider, DomicilioReservado, CompDomicilio };

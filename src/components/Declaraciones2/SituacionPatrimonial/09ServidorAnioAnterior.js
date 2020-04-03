@@ -143,7 +143,7 @@ const ActividadFinanciera = (props) => {
 	);
 };
 
-const ServiciosProfecionales = (props) => {
+const ServiciosProfesionales = (props) => {
 	const classes = useStyles();
 	const exp = expansion();
 	const sum = sumary();
@@ -390,7 +390,7 @@ export default function(props) {
 
 									<ActividadFinanciera actividadFinanciera={data.actividadFinanciera} />
 
-									<ServiciosProfecionales serviciosProfesionales={data.serviciosProfesionales} />
+									<ServiciosProfesionales serviciosProfesionales={data.serviciosProfesionales} />
 
 									<EnajenacionBienes enajenacionBienes={data.enajenacionBienes} />
 
