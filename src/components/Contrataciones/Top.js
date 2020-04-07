@@ -25,12 +25,12 @@ class Top extends React.Component {
 
         let queries = [
             rp({
-                uri: process.env.REACT_APP_S6_BACKEND + '/api/s6/top/10/buyers',
+                uri: process.env.REACT_APP_S6_BACKEND + '/api/v1/top/10/buyers',
                 method :'GET',
                 json: true
             }),
             rp({
-                uri: process.env.REACT_APP_S6_BACKEND + '/api/s6/top/10/suppliers',
+                uri: process.env.REACT_APP_S6_BACKEND + '/api/v1/top/10/suppliers',
                 method :'GET',
                 json: true
             })
