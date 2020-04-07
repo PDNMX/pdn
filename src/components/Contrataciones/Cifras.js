@@ -71,7 +71,7 @@ class Cifras extends React.Component{
     componentWillMount() {
 
         rp({
-            uri: process.env.REACT_APP_DUMMY_API + "/api/s6/summary",
+            uri: process.env.REACT_APP_S6_BACKEND + "/api/s6/summary",
             method: "GET",
             json: true
         }).then( data => {
