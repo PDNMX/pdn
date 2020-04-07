@@ -36,17 +36,17 @@ class Busqueda extends React.Component{
 
         let queries = [
             rp({
-                uri: process.env.REACT_APP_DUMMY_API +'/api/s6/buyers',
+                uri: process.env.REACT_APP_S6_BACKEND +'/api/v1/buyers',
                 method: 'GET',
                 json: true
             }),
             rp({
-                uri: process.env.REACT_APP_DUMMY_API + "/api/s6/search",
+                uri: process.env.REACT_APP_S6_BACKEND + "/api/v1/search",
                 method: 'POST',
                 json: true
             }),
             rp({
-                uri: process.env.REACT_APP_DUMMY_API + "/api/s6/cycles",
+                uri: process.env.REACT_APP_S6_BACKEND + "/api/v1/cycles",
                 method: 'GET',
                 json: true
             })
@@ -165,7 +165,7 @@ class Busqueda extends React.Component{
         this.setState({loading: true}, () => {
 
             rp({
-                uri: process.env.REACT_APP_DUMMY_API + "/api/s6/search",
+                uri: process.env.REACT_APP_S6_BACKEND + "/api/v1/search",
                 method: 'POST',
                 body: body,
                 json: true
