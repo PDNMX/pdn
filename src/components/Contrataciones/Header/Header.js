@@ -66,7 +66,7 @@ const style = theme => ({
 class Header extends React.Component{
 
     render(){
-        const {classes} = this.props;
+        const {classes, breadcrumbItems} = this.props;
 
         return(
             <div className={classes.root}>
@@ -76,21 +76,28 @@ class Header extends React.Component{
                 <Grid container spacing={0} className="breadcrumb" justify='center'>
                     
                     <Grid item xs={12} className={classes.item3}>
-                        <ul>
-                            <li>
-                                <Link component={RouterLink} className={classes.link} to='/'>
-                                    Plataforma Digital Nacional
-                                </Link>
-                            </li>
-                            <li>
-                                    Contrataciones
-                            </li>
+                        <ul> {
+                            breadcrumbItems?
+                                breadcrumbItems.map(item =>
+                                    item.to ?
+                                        <li>
+                                            <Link component={RouterLink} className={classes.link} to={item.to}>
+                                                {item.text}
+                                            </Link>
+                                        </li>
+                                        :
+                                        <li>
+                                            {item.text}
+                                        </li>
+                                ):
+                                <li>Breadcrumb</li>
+                        }
                         </ul>
                     </Grid>
                 </Grid>
 
                 <Grid container spacing={0} className={classes.container1} justify='center'>
-                <Particles 
+                    <Particles
                         className={classes.particulas}
                         params={{
                             "particles": {

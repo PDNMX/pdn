@@ -100,9 +100,14 @@ class Index extends React.Component {
 
         const isSelected = t => t === this.state.selectedTab;
 
+        const bci = [
+            {to:'/', text: "Plataforma Digital Nacional"},
+            {text: 'Contrataciones'}
+        ]
+
         return (
             <div className={classes.root}>
-                <Header/>
+                <Header breadcrumbItems={bci}/>
 
 
                 <Grid container spacing={0} justify="center" className={classes.tabContainer}>

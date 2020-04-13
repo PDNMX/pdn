@@ -5,6 +5,7 @@ import Gasto from "../../assets/iconos_s6/icono-gasto.svg";
 import Typography from "@material-ui/core/Typography";
 import Tipo from "../../assets/iconos_s6/icono-tipo-procedimiento.svg";
 import Proveedor from "../../assets/iconos_s6/icono_proveedor.svg";
+import {Link} from "react-router-dom";
 
 const styles = theme => ({
     root: {
@@ -12,10 +13,10 @@ const styles = theme => ({
     },
     icon: {
         maxWidth: 200,
-        opacity: 0.5
-        /*'&:hover':{
+        //opacity: 0.5
+        '&:hover':{
             opacity: 0.5
-        }*/
+        }
     },
     iconText: {
         color: theme.palette.text.primary,
@@ -26,6 +27,9 @@ const styles = theme => ({
         fontWeight: 500,
         fontSize: '48px',
         paddingBottom: theme.spacing(6)
+    },
+    link: {
+        textDecoration: 'none'
     }
 });
 
@@ -45,25 +49,30 @@ class Perspectivas extends React.Component{
                     </Grid>
 
                     <Grid item xs={12} md={4} lg={4} xl={4} align="center">
-                        <img src={Gasto} className={classes.icon} alt="Gasto"/>
-                        <Typography className={classes.iconText} variant="h5">
-                            Instituciones
-                        </Typography>
+                        <Link to='/contrataciones/instituciones' className={classes.link}>
+                            <img src={Gasto} className={classes.icon} alt="Gasto"/>
+                            <Typography className={classes.iconText} variant="h5">
+                                Instituciones
+                            </Typography>
+                        </Link>
                     </Grid>
 
                     <Grid item xs={12} md={4} lg={4} xl={4} align="center">
-                        <img src={Tipo} className={classes.icon} alt="Tipo de procedimiento"/>
-                        <Typography className={classes.iconText} variant="h5">
-                            Productos y servicios
-                        </Typography>
+                        <Link to="/contrataciones/productos" className={classes.link}>
+                            <img src={Tipo} className={classes.icon} alt="Tipo de procedimiento"/>
+                            <Typography className={classes.iconText} variant="h5">
+                                Productos y servicios
+                            </Typography>
+                        </Link>
                     </Grid>
 
-
                     <Grid item xs={12} md={4} lg={4} xl={4} align="center">
-                        <img src={Proveedor} className={classes.icon} alt="Proveedores"/>
-                        <Typography className={classes.iconText} variant="h5">
-                            Proveedores
-                        </Typography>
+                        <Link to="/contrataciones/proveedores" className={classes.link}>
+                            <img src={Proveedor} className={classes.icon} alt="Proveedores"/>
+                            <Typography className={classes.iconText} variant="h5">
+                                Proveedores
+                            </Typography>
+                        </Link>
                     </Grid>
                 </Grid>
 

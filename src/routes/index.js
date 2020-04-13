@@ -20,7 +20,6 @@ import Servidores from '../components/ServidoresIntervienen/Index';
 
 import DashboardSancionados from "../components/Sancionados/dashboard/Servidores/Dashboard";
 import DashboardParticularesSancionados from "../components/Sancionados/dashboard/Particulares/Dashboard";
-import Contrataciones from "../components/Contrataciones/index";
 import Validador from "../components/Validador/index";
 import Especificaciones from "../components/Especificaciones/Landing/Especificaciones";
 import DeclaracionesEspecificaciones from "../components/Especificaciones/Declaraciones/Declaraciones";
@@ -32,6 +31,11 @@ import HelpDesk from "../components/HelpDesk/HelpDesk";
 import GAA from "../components/GAA/GAA";
 import DeclaracionesS1 from "../components/Declaraciones";
 
+// Sistema 6
+import Contrataciones from "../components/Contrataciones/index";
+import S6_instituciones from "../components/Contrataciones/Secciones/Instituciones";
+import S6_productos from "../components/Contrataciones/Secciones/Productos";
+import S6_proveedores from "../components/Contrataciones/Secciones/Proveedores";
 
 const pdnRoutes = [
   {
@@ -92,6 +96,24 @@ const pdnRoutes = [
     exact: true,
     path: "/contrataciones",
     component: Contrataciones,
+    private: false
+  },
+  {
+    exact: true,
+    path: "/contrataciones/instituciones",
+    component: S6_instituciones,
+    private: false
+  },
+  {
+    exact: true,
+    path: "/contrataciones/productos",
+    component: S6_productos,
+    private: false
+  },
+  {
+    exact: true,
+    path: "/contrataciones/proveedores",
+    component: S6_proveedores,
     private: false
   },
   {
