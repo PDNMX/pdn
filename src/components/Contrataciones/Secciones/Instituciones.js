@@ -1,11 +1,22 @@
 import React from 'react';
 import {withStyles} from "@material-ui/core";
 import Header from "../Header/Header"
+import Footer from "../../Home/Footer";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
 
 const styles = theme => ({
     root: {
         flexGrow: 1
-    }
+    },
+    item:{
+        maxWidth: 1200,
+        paddingRight: theme.spacing(1),
+        paddingLeft: theme.spacing(1),
+        paddingBottom: theme.spacing(8),
+        paddingTop: theme.spacing(8),
+        // overflow: "auto"
+    },
 });
 
 class Instituciones extends React.Component{
@@ -20,9 +31,16 @@ class Instituciones extends React.Component{
 
         return <div className={classes.root}>
             <Header breadcrumbItems={bci}/>
-            <p>
-            Instituciones
-            </p>
+
+            <Grid container spacing={0} align="center">
+                <Grid item xs={12} className={classes.item}>
+                    <Typography>
+                        Instituciones
+                    </Typography>
+                </Grid>
+            </Grid>
+
+            <Footer/>
         </div>
     }
 

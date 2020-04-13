@@ -109,7 +109,6 @@ class Index extends React.Component {
             <div className={classes.root}>
                 <Header breadcrumbItems={bci}/>
 
-
                 <Grid container spacing={0} justify="center" className={classes.tabContainer}>
                     <Grid item xs={12} style={{padding:0, maxWidth: 1200}}>
 
