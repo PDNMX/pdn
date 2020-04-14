@@ -80,7 +80,7 @@ class Agrupaciones extends React.Component {
 
     loadEjercicios = () => {
         let options = {
-            uri: process.env.REACT_APP_HOST_PDNBACK + '/viz/servidoresIntervienen/getEjercicios',
+            uri: process.env.REACT_APP_S2_BACKEND + '/api/v0/getEjercicios',
             json: true,
             method: "get"
         };
@@ -99,7 +99,7 @@ class Agrupaciones extends React.Component {
 
     loadRamos = () => {
         let options = {
-            uri: process.env.REACT_APP_HOST_PDNBACK + '/viz/servidoresIntervienen/getRamos',
+            uri: process.env.REACT_APP_S2_BACKEND + '/api/v0/getRamos',
             json: true,
             method: "post",
             body: {
@@ -122,7 +122,7 @@ class Agrupaciones extends React.Component {
         if (this.state.ramo) filtros.push("ramo='" + this.state.ramo + "'");
 
         let options = {
-            uri: process.env.REACT_APP_HOST_PDNBACK + '/viz/servidoresIntervienen/getInstituciones',
+            uri: process.env.REACT_APP_S2_BACKEND + '/api/v0/getInstituciones',
             json: true,
             method: "post",
             body: {
@@ -152,7 +152,7 @@ class Agrupaciones extends React.Component {
         if (this.state.institucion) filtros.push("institucion='" + this.state.institucion + "'");
 
         let options = {
-            uri: process.env.REACT_APP_HOST_PDNBACK + '/viz/servidoresIntervienen/getAgrupaciones',
+            uri: process.env.REACT_APP_S2_BACKEND + '/api/v0/getAgrupaciones',
             json: true,
             method: "post",
             body: {

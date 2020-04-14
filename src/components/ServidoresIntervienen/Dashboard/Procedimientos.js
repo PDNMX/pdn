@@ -33,7 +33,7 @@ const styles = theme => ({
 
 const aux = () =>  {
         let options = {
-            uri: process.env.REACT_APP_HOST_PDNBACK + '/viz/servidoresIntervienen/getProcedimientosPeriodo',
+            uri: process.env.REACT_APP_S2_BACKEND + '/api/v0/getProcedimientosPeriodo',
             json: true,
             method: "GET"
         };
@@ -50,57 +50,55 @@ class Ejercicio extends React.Component {
 
     componentDidMount() {
         aux().then(result => {
-            let aux = result.data.map(item => {
-                return {
-                    "ejercicio": item.ejercicio,
-                    "total": parseInt(item.total,10),
-                    "procedimiento":item.case
-                }
-            })
+            let aux = result.data.map(item => ({
+                "ejercicio": item.ejercicio,
+                "total": parseInt(item.total,10),
+                "procedimiento":item.case
+            }));
 
             this.setState({
-                    methods: {
-                        data: aux,
-                        groupBy: "procedimiento",
-                        stacked:true,
-                        x: "ejercicio",
-                        y: "total",
-                        xConfig: {
-                            title: "Ejercicio fiscal",
+                methods: {
+                    data: aux,
+                    groupBy: "procedimiento",
+                    stacked:true,
+                    x: "ejercicio",
+                    y: "total",
+                    xConfig: {
+                        title: "Ejercicio fiscal",
 
+                    },
+                    yConfig: {
+                        title: "Número de registros"
+                    },
+                    tooltipConfig: {
+                        title: function (d) {
+                            return d["procedimiento"];
                         },
-                        yConfig: {
-                            title: "Número de registros"
-                        },
-                        tooltipConfig: {
-                            title: function (d) {
-                                return d["procedimiento"];
-                            },
-                            tbody: [
-                                ["Ejercicio fiscal: ", function (d) {
-                                    return d["ejercicio"]
-                                }
-                                ],
-                                ["Número de registros: ", function (d) {
-                                    return d["total"]
-                                }
-                                ]
-                            ]
-                        },
-                        height: 400,
-                        shapeConfig: {
-                            fill: (d) => {
-                                return z(d.procedimiento)
+                        tbody: [
+                            ["Ejercicio fiscal: ", function (d) {
+                                return d["ejercicio"]
                             }
-                        },
+                            ],
+                            ["Número de registros: ", function (d) {
+                                return d["total"]
+                            }
+                            ]
+                        ]
+                    },
+                    height: 400,
+                    shapeConfig: {
+                        fill: (d) => {
+                            return z(d.procedimiento)
+                        }
+                    },
 
-                    }
+                }
                 }
             )
         }).catch(error => {
             this.setState({
                 error: true
-            })
+            });
         })
     }
 

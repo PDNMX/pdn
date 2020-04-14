@@ -31,7 +31,7 @@ const styles = theme => ({
 
 const aux = () => {
         let options = {
-            uri: process.env.REACT_APP_HOST_PDNBACK + '/viz/servidoresIntervienen/getAgrupacionEjercicio',
+            uri: process.env.REACT_APP_S2_BACKEND + '/api/v0/getAgrupacionEjercicio',
             json: true,
             method: "GET"
         };
@@ -55,63 +55,61 @@ class Ejercicio extends React.Component {
 
     componentDidMount() {
         aux().then(result => {
-            let aux = result.data.map(item => {
-                return {
-                    "ejercicio": item.ejercicio,
-                    "total": parseInt(item.total,10)
-                }
-            })
+            let aux = result.data.map(item => ({
+                "ejercicio": item.ejercicio,
+                "total": parseInt(item.total,10)
+            }));
+
             this.setState({
-                    methods: {
-                        data: aux,
-                        groupBy: "ejercicio",
-                        x: "ejercicio",
-                        y: "total",
-                        xConfig: {
-                            title: "Ejercicio fiscal",
+                methods: {
+                    data: aux,
+                    groupBy: "ejercicio",
+                    x: "ejercicio",
+                    y: "total",
+                    xConfig: {
+                        title: "Ejercicio fiscal",
 
+                    },
+                    yConfig: {
+                        title: "Número de registros"
+                    },
+                    tooltipConfig: {
+                        title: function (d) {
+                            return "Datos";
                         },
-                        yConfig: {
-                            title: "Número de registros"
-                        },
-                        tooltipConfig: {
-                            title: function (d) {
-                                return "Datos";
-                            },
-                            tbody: [
-                                ["Ejercicio fiscal: ", function (d) {
-                                    return d["ejercicio"] + "ejercicio"
-                                }
-                                ],
-                                ["Número de registros: ", function (d) {
-                                    return d["total"]
-                                }
-                                ]
-                            ]
-                        },
-                        height: 400,
-                        shapeConfig: {
-                            label: false,
-                            fill: (d, i) => {
-                                return color[i]
+                        tbody: [
+                            ["Ejercicio fiscal: ", function (d) {
+                                return d["ejercicio"] + "ejercicio"
                             }
-                        },
-                        legend: false,
-                        axes: {
-                            fill: "#666672"
-                        },
-                        title: "Ejercicio fiscal"
+                            ],
+                            ["Número de registros: ", function (d) {
+                                return d["total"]
+                            }
+                            ]
+                        ]
+                    },
+                    height: 400,
+                    shapeConfig: {
+                        label: false,
+                        fill: (d, i) => {
+                            return color[i]
+                        }
+                    },
+                    legend: false,
+                    axes: {
+                        fill: "#666672"
+                    },
+                    title: "Ejercicio fiscal"
 
-                    }
+                }
                 }
             )
         }).catch(error => {
             this.setState({
                 error: true
-            })
-        })
+            });
+        });
     }
-
 
     render() {
         const {classes} = this.props;
