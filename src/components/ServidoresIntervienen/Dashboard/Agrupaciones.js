@@ -151,7 +151,6 @@ class Agrupaciones extends React.Component {
         if (this.state.ramo) filtros.push("ramo='" + this.state.ramo + "'");
         if (this.state.institucion) filtros.push("institucion='" + this.state.institucion + "'");
 
-
         let options = {
             uri: process.env.REACT_APP_HOST_PDNBACK + '/viz/servidoresIntervienen/getAgrupaciones',
             json: true,
@@ -174,51 +173,50 @@ class Agrupaciones extends React.Component {
             || (!this.state.ejercicio && this.state.ramo && this.state.institucion))
             v = "parent";
 
-        return rp(options)
-            .then(data => {
-                let aux2 = data.data.map(item => {
-                    return {
-                        "value": parseInt(item.total, 10),
-                        "subgroup": item.institucion,
-                        "group": item.ramo,
-                        "parent": item.ejercicio,
+        rp(options).then(data => {
+            let aux2 = data.data.map(item => {
+                return {
+                    "value": parseInt(item.total, 10),
+                    "subgroup": item.institucion,
+                    "group": item.ramo,
+                    "parent": item.ejercicio,
 
-                    }
-                });
-
-                this.setState({
-                    config: {
-                        data: aux2,
-                        height: 400,
-                        groupBy: v,
-                        sum: "value",
-                        tooltipConfig: {
-                            tbody: [
-                                ["Número de funcionarios: ", function (d) {
-                                    return d["value"]
-                                }
-                                ]
-                            ]
-                        },
-                        legend: false,
-                        shapeConfig: {
-                            label: function (d) {
-                                return d[v] + "\n" + d["value"] + " funcionarios"
-                            },
-                            labelConfig: {
-                                fontMax: 18,
-                                fontMin: 10
-                            },
-                            fill: (d) => {
-                                return z(d[v])
-                            }
-                        },
-                    }
-                });
-            }).catch(err => {
-                console.log(err);
-                this.setState({error: true})
+                }
             });
+
+            this.setState({
+                config: {
+                    data: aux2,
+                    height: 400,
+                    groupBy: v,
+                    sum: "value",
+                    tooltipConfig: {
+                        tbody: [
+                            ["Número de funcionarios: ", function (d) {
+                                return d["value"]
+                            }
+                            ]
+                        ]
+                    },
+                    legend: false,
+                    shapeConfig: {
+                        label: function (d) {
+                            return d[v] + "\n" + d["value"] + " funcionarios"
+                        },
+                        labelConfig: {
+                            fontMax: 18,
+                            fontMin: 10
+                        },
+                        fill: (d) => {
+                            return z(d[v])
+                        }
+                    },
+                }
+            });
+        }).catch(err => {
+            console.log(err);
+            this.setState({error: true})
+        });
     }
 
 
