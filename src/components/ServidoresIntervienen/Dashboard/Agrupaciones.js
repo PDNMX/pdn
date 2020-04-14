@@ -8,7 +8,6 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl/FormControl";
 import InputLabel from '@material-ui/core/InputLabel';
 import Button from "@material-ui/core/Button";
-//import Toolbar from '@material-ui/core/Toolbar';
 import {Treemap} from "d3plus-react";
 import * as d3 from "d3";
 import MensajeErrorDatos from "../../Tablas/MensajeErrorDatos";
@@ -88,20 +87,14 @@ class Agrupaciones extends React.Component {
         };
 
         rp(options).then(data => {
-            let ejercicios = [];
-            let idEjercicio = 1;
-            data.data.forEach(item => {
-                ejercicios.push({id: idEjercicio++, ejercicio: item.ejercicio});
-            });
+            let ejercicios = data.data.map((item, index) => ({id: (index + 1), ejercicio: item.ejercicio}));
             this.setState({
                 ejercicios: ejercicios,
                 ejercicio: ejercicios[ejercicios.length - 1].ejercicio
             });
-            return null;
         }).catch(err => {
             console.log(err);
             this.setState({error: true});
-            return null;
         })
     };
 
@@ -116,18 +109,12 @@ class Agrupaciones extends React.Component {
         };
 
         rp(options).then(data => {
-            let ramos = [];
-            let idRamo = 0;
-            data.data.forEach(item => {
-                ramos.push({id: idRamo++, ramo: item.ramo});
-            });
+            let ramos = data.data.map((item, index) => ({id: index, ramo: item.ramo}));
             this.setState({ramos: ramos, ramo: '', institucion: ''});
-            return null;
         }).catch(err => {
             console.log(err);
             this.setState({error: true});
-            return null;
-        })
+        });
     };
 
     loadInstituciones = () => {
@@ -158,7 +145,6 @@ class Agrupaciones extends React.Component {
             return null;
         })
     };
-
 
     loadData = () => {
         return new Promise((resolve, reject) => {
