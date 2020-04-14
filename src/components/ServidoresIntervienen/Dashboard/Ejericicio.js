@@ -29,22 +29,14 @@ const styles = theme => ({
 });
 
 
-function aux() {
-    return new Promise((resolve, reject) => {
+const aux = () => {
         let options = {
             uri: process.env.REACT_APP_HOST_PDNBACK + '/viz/servidoresIntervienen/getAgrupacionEjercicio',
             json: true,
             method: "GET"
         };
-        rp(options)
-            .then(data => {
-                resolve(data);
-            }).catch(err => {
-            console.log(err);
-            reject(err)
-        });
-    });
-}
+        return rp(options);
+};
 
 
 let color = ["#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",

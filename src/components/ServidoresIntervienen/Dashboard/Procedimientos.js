@@ -8,7 +8,6 @@ import MensajeErrorDatos from "../../Tablas/MensajeErrorDatos";
 import BarChart from "d3plus-react/es/src/BarChart";
 import * as d3 from "d3";
 
-
 const styles = theme => ({
     frameChart: {
         marginTop: "15px",
@@ -26,32 +25,20 @@ const styles = theme => ({
         paddingLeft: "10px",
         paddingRight: "10px",
         marginBottom: "30px",
-
-
     },
     btnDownload: {
         textAlign: "right"
     },
-
 });
 
-
-function aux() {
-    return new Promise((resolve, reject) => {
+const aux = () =>  {
         let options = {
             uri: process.env.REACT_APP_HOST_PDNBACK + '/viz/servidoresIntervienen/getProcedimientosPeriodo',
             json: true,
             method: "GET"
         };
-        rp(options)
-            .then(data => {
-                resolve(data);
-            }).catch(err => {
-            console.log(err);
-            reject(err)
-        });
-    });
-}
+        return rp(options);
+};
 
 let z = d3.scaleOrdinal()
     .range(["#2685C8","#48BF40","#7C2BCD","#FF6A00"]);
@@ -70,6 +57,7 @@ class Ejercicio extends React.Component {
                     "procedimiento":item.case
                 }
             })
+
             this.setState({
                     methods: {
                         data: aux,
@@ -152,10 +140,7 @@ class Ejercicio extends React.Component {
                             <MensajeErrorDatos/>
                         }
                     </Grid>
-
-
                 </Grid>
-
             </div>
         )
     }

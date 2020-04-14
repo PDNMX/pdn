@@ -12,7 +12,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import MensajeErrorDatos from "../../Tablas/MensajeErrorDatos";
 import {BarChart} from "d3plus-react";
 
-
 const styles = theme => ({
     frameChart: {
         marginTop: "15px",
@@ -40,7 +39,6 @@ const styles = theme => ({
 
 });
 
-
 let color = [
     "#F44336", "#9C27B0", "#673AB7", "#3F51B5",
     "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
@@ -51,7 +49,6 @@ let color = [
     "#8BC34A", "#CDDC39", "#FFEB3B", "#FFC107", "#FF9800",
     "#FF5722", "#795548", "#9E9E9E", "#607D8B"
 ];
-
 
 class Tops extends React.Component {
     state = {
@@ -99,17 +96,11 @@ class Tops extends React.Component {
         };
 
         rp(options).then(data => {
-            let ejercicios = [];
-            let idEjercicio = 0;
-            data.data.forEach(item => {
-                ejercicios.push({id: idEjercicio++, ejercicio: item.ejercicio});
-            });
+            let ejercicios = data.data.map( (item, index) => ({id: index, ejercicio: item.ejercicio}));
             this.setState({ejercicios: ejercicios});
-            return null;
         }).catch(err => {
             console.log(err);
             this.setState({error: true});
-            return null;
         })
     };
 
@@ -124,17 +115,11 @@ class Tops extends React.Component {
         };
 
         rp(options).then(data => {
-            let ramos = [];
-            let idRamo = 0;
-            data.data.forEach(item => {
-                ramos.push({id: idRamo++, ramo: item.ramo});
-            });
+            let ramos = data.data.map( (item, index) => ({id: index, ramo: item.ramo}) );
             this.setState({ramos: ramos, ramo: '', institucion: ''});
-            return null;
         }).catch(err => {
             console.log(err);
             this.setState({error: true});
-            return null;
         })
     };
 
@@ -153,17 +138,11 @@ class Tops extends React.Component {
         };
 
         rp(options).then(data => {
-            let instituciones = [];
-            let idInstitucion = 0;
-            data.data.forEach(item => {
-                instituciones.push({id: idInstitucion++, institucion: item.institucion});
-            });
+            let instituciones = data.data.map( (item, index) => ({id: index, institucion: item.institucion}));
             this.setState({instituciones: instituciones, institucion: ''});
-            return null;
         }).catch(err => {
             console.log(err);
             this.setState({error: true});
-            return null;
         })
     };
 
@@ -184,6 +163,7 @@ class Tops extends React.Component {
             [varState]: event ? (event.target ? event.target.value : event.value) : ''
         });
     };
+
     loadData = () => {
         return new Promise((resolve, reject) => {
             let filtros = [];
@@ -203,13 +183,12 @@ class Tops extends React.Component {
 
             rp(options)
                 .then(data => {
-                    let aux = data.data.map(item => {
-                        return {
+                    let aux = data.data.map(item => ({
                             "top": item.top,
                             "total": parseInt(item.total,10),
                             "case": item.case ? item.case : null
-                        }
-                    })
+                        }));
+
                     this.setState({
                         methods: {
                             data: aux.reverse(),
