@@ -39,7 +39,6 @@ const styles = theme => ({
 
 });
 
-
 let z = d3.scaleOrdinal()
     .range(["#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
         "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
@@ -147,82 +146,79 @@ class Agrupaciones extends React.Component {
     };
 
     loadData = () => {
-        return new Promise((resolve, reject) => {
-            let filtros = [];
-            if (this.state.ejercicio) filtros.push("ejercicio='" + this.state.ejercicio + "'");
-            if (this.state.ramo) filtros.push("ramo='" + this.state.ramo + "'");
-            if (this.state.institucion) filtros.push("institucion='" + this.state.institucion + "'");
+        let filtros = [];
+        if (this.state.ejercicio) filtros.push("ejercicio='" + this.state.ejercicio + "'");
+        if (this.state.ramo) filtros.push("ramo='" + this.state.ramo + "'");
+        if (this.state.institucion) filtros.push("institucion='" + this.state.institucion + "'");
 
 
-            let options = {
-                uri: process.env.REACT_APP_HOST_PDNBACK + '/viz/servidoresIntervienen/getAgrupaciones',
-                json: true,
-                method: "post",
-                body: {
-                    filtros: filtros
-                }
-            };
+        let options = {
+            uri: process.env.REACT_APP_HOST_PDNBACK + '/viz/servidoresIntervienen/getAgrupaciones',
+            json: true,
+            method: "post",
+            body: {
+                filtros: filtros
+            }
+        };
 
-            let v = "";
-            if (this.state.ejercicio && !this.state.ramo && !this.state.institucion)
-                v = "group";
-            else if (this.state.ejercicio && this.state.ramo && !this.state.institucion)
-                v = "subgroup"
-            else if ((this.state.ejercicio && this.state.ramo && this.state.institucion)
-                || (this.state.ejercicio && !this.state.ramo && this.state.institucion))
-                v = "subgroup";
-            else if ((!this.state.ejercicio && this.state.ramo && !this.state.institucion)
-                || (!this.state.ejercicio && !this.state.ramo && this.state.institucion)
-                || (!this.state.ejercicio && this.state.ramo && this.state.institucion))
-                v = "parent";
+        let v = "";
+        if (this.state.ejercicio && !this.state.ramo && !this.state.institucion)
+            v = "group";
+        else if (this.state.ejercicio && this.state.ramo && !this.state.institucion)
+            v = "subgroup"
+        else if ((this.state.ejercicio && this.state.ramo && this.state.institucion)
+            || (this.state.ejercicio && !this.state.ramo && this.state.institucion))
+            v = "subgroup";
+        else if ((!this.state.ejercicio && this.state.ramo && !this.state.institucion)
+            || (!this.state.ejercicio && !this.state.ramo && this.state.institucion)
+            || (!this.state.ejercicio && this.state.ramo && this.state.institucion))
+            v = "parent";
 
-            rp(options)
-                .then(data => {
-                    let aux2 = data.data.map(item => {
-                        return {
-                            "value": parseInt(item.total, 10),
-                            "subgroup": item.institucion,
-                            "group": item.ramo,
-                            "parent": item.ejercicio,
+        return rp(options)
+            .then(data => {
+                let aux2 = data.data.map(item => {
+                    return {
+                        "value": parseInt(item.total, 10),
+                        "subgroup": item.institucion,
+                        "group": item.ramo,
+                        "parent": item.ejercicio,
 
-                        }
-                    });
-                    this.setState({
-                        config: {
-                            data: aux2,
-                            height: 400,
-                            groupBy: v,
-                            sum: "value",
-                            tooltipConfig: {
-                                tbody: [
-                                    ["Número de funcionarios: ", function (d) {
-                                        return d["value"]
-                                    }
-                                    ]
-                                ]
-                            },
-                            legend: false,
-                            shapeConfig: {
-                                label: function (d) {
-                                    return d[v] + "\n" + d["value"] + " funcionarios"
-                                },
-                                labelConfig: {
-                                    fontMax: 18,
-                                    fontMin: 10
-                                },
-                                fill: (d) => {
-                                    return z(d[v])
+                    }
+                });
+
+                this.setState({
+                    config: {
+                        data: aux2,
+                        height: 400,
+                        groupBy: v,
+                        sum: "value",
+                        tooltipConfig: {
+                            tbody: [
+                                ["Número de funcionarios: ", function (d) {
+                                    return d["value"]
                                 }
+                                ]
+                            ]
+                        },
+                        legend: false,
+                        shapeConfig: {
+                            label: function (d) {
+                                return d[v] + "\n" + d["value"] + " funcionarios"
                             },
-                        }
-                    })
-                    resolve(data);
-                }).catch(err => {
-
+                            labelConfig: {
+                                fontMax: 18,
+                                fontMin: 10
+                            },
+                            fill: (d) => {
+                                return z(d[v])
+                            }
+                        },
+                    }
+                });
+            }).catch(err => {
                 console.log(err);
                 this.setState({error: true})
             });
-        });
     }
 
 
@@ -245,118 +241,117 @@ class Agrupaciones extends React.Component {
     render() {
         const {classes} = this.props;
         return (
-                <Grid container>
-                    <Grid item xs={12}>
-                        <Typography variant={"h6"} className={classes.titulo}>
-                            <b>{"Ejercicios, ramos e instituciones"}</b>
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={12} className={classes.descripcion}>
-                        <Typography>
-                            En las secciones anteriores se puede observar de manera general el comportamiento de los procesos de contratación.
-                            Resulta interesante conocer cómo se distribuyen estos según distintas variables como ejercicio fiscal, ramo e institución.
-                            De acuerdo con los valores que selecciones, podrás obtener 5 diferentes combinaciones que mostrarán lo siguiente:<br/><br/>
-
-                            1.- <b>Ejercicio:</b> seleccionando únicamente el ejercicio, conocerás el total de funcionarios que intervinieron en procesos de contratación en cada uno de ellos.<br/>
-                            2.- <b>Ramo:</b> seleccionando únicamente el ramo, obtendrás el número de funcionarios que intervinieron en procesos de contratación dentro de ese ramo en cada uno de los ejercicios fiscales.<br/>
-                            3.- <b>Institución:</b> selecciona únicamente una institución o bien el ramo y la institución, para conocer el número de servidores que intervinieron en procesos de contratación que tuvo en cada uno de los ejercicios fiscales.<br/>
-                            4.- <b>Ejercicio y ramo: </b> Cada ramo cuenta con una serie de instituciones, selecciona un ejercicio fiscal y un ramo para conocer cómo se distribuyen el número de funcionarios en cada una de las Instituciones en los diferentes años.<br/>
-                            5.-<b>Ejercicio, ramo e institución: </b> Para conocer de manera puntual el número de servidores en procesos de contratación de determinada institución en cierto ejercicio, podrás seleccionar el ejercicio, ramo e institución o bien el ejercicio y la institución deseadas.<br/>
-
-
-                            <br/><br/>Para comenzar, selecciona algún filtro y da clic en el botón.<b>Buscar</b>
-                        </Typography>
-                    </Grid>
-                    <Grid item md={4} xs={12}>
-                        <FormControl className={classes.formControl}>
-                            <InputLabel htmlFor="campoSelectEjercicio">Ejercicio</InputLabel>
-                            <Select style={{marginTop: '0px'}}
-                                    value={this.state.ejercicio}
-                                    onChange={(e) => this.handleChangeCampo('ejercicio', e)}
-                                    inputProps={{
-                                        name: 'campoSelectEjercicio',
-                                        id: 'campoSelectEjercicio',
-                                    }}
-                            >
-                                <MenuItem key={''} value={''}> TODOS</MenuItem>
-                                {
-                                    this.state.ejercicios.map(item => {
-                                        return <MenuItem key={item.ejercicio} value={item.ejercicio}>
-                                            {item.ejercicio}
-                                        </MenuItem>
-                                    })
-                                }
-                            </Select>
-
-                        </FormControl>
-                    </Grid>
-                    <Grid item md={4} xs={12}>
-                        <FormControl className={classes.formControl}>
-                            <InputLabel htmlFor="campoSelectRamo">Ramo</InputLabel>
-                            <Select style={{marginTop: '0px'}}
-                                    value={this.state.ramo}
-                                    onChange={(e) => this.handleChangeCampo('ramo', e)}
-                                    inputProps={{
-                                        name: 'campoSelectRamo',
-                                        id: 'campoSelectRamo',
-                                    }}
-                            >
-                                <MenuItem key={''} value={''}> TODOS</MenuItem>
-                                {
-                                    this.state.ramos.map(item => {
-                                        return <MenuItem key={item.ramo} value={item.ramo}>
-                                            {item.ramo}
-                                        </MenuItem>
-                                    })
-                                }
-                            </Select>
-
-                        </FormControl>
-                    </Grid>
-                    <Grid item md={4} xs={12}>
-                        <FormControl className={classes.formControl}>
-                            <InputLabel htmlFor="campoSelectInstitucion">Institución</InputLabel>
-                            <Select style={{marginTop: '0px'}}
-                                    value={this.state.institucion}
-                                    onChange={(e) => this.handleChangeCampo('institucion', e)}
-                                    inputProps={{
-                                        name: 'campoSelectInstitucion',
-                                        id: 'campoSelectInstitucion',
-                                    }}
-                            >
-                                <MenuItem key={''} value={''}>TODAS</MenuItem>
-                                {
-                                    this.state.instituciones.map(item => {
-                                        return <MenuItem key={item.institucion} value={item.institucion}>
-                                            {item.institucion}
-                                        </MenuItem>
-                                    })
-                                }
-                            </Select>
-
-                        </FormControl>
-                    </Grid>
-                    <Grid item xs={11}/>
-                    <Grid item xs={12} md={1} className={classes.buttonContainer}>
-                        <Button variant="contained" color="secondary" className={classes.button}
-                                onClick={this.limpiarBusqueda}>
-                            Limpiar
-                        </Button>
-                    </Grid>
-                    <Grid item xs={12}>
-                        {
-                            this.state.config && this.state.config.data &&
-                            <Treemap config={this.state.config}/>
-                        }
-                        {
-                            this.state.error &&
-                            <MensajeErrorDatos/>
-                        }
-                    </Grid>
+            <Grid container>
+                <Grid item xs={12}>
+                    <Typography variant={"h6"} className={classes.titulo}>
+                        <b>{"Ejercicios, ramos e instituciones"}</b>
+                    </Typography>
                 </Grid>
+                <Grid item xs={12} className={classes.descripcion}>
+                    <Typography>
+                        En las secciones anteriores se puede observar de manera general el comportamiento de los procesos de contratación.
+                        Resulta interesante conocer cómo se distribuyen estos según distintas variables como ejercicio fiscal, ramo e institución.
+                        De acuerdo con los valores que selecciones, podrás obtener 5 diferentes combinaciones que mostrarán lo siguiente:<br/><br/>
+
+                        1.- <b>Ejercicio:</b> seleccionando únicamente el ejercicio, conocerás el total de funcionarios que intervinieron en procesos de contratación en cada uno de ellos.<br/>
+                        2.- <b>Ramo:</b> seleccionando únicamente el ramo, obtendrás el número de funcionarios que intervinieron en procesos de contratación dentro de ese ramo en cada uno de los ejercicios fiscales.<br/>
+                        3.- <b>Institución:</b> selecciona únicamente una institución o bien el ramo y la institución, para conocer el número de servidores que intervinieron en procesos de contratación que tuvo en cada uno de los ejercicios fiscales.<br/>
+                        4.- <b>Ejercicio y ramo: </b> Cada ramo cuenta con una serie de instituciones, selecciona un ejercicio fiscal y un ramo para conocer cómo se distribuyen el número de funcionarios en cada una de las Instituciones en los diferentes años.<br/>
+                        5.-<b>Ejercicio, ramo e institución: </b> Para conocer de manera puntual el número de servidores en procesos de contratación de determinada institución en cierto ejercicio, podrás seleccionar el ejercicio, ramo e institución o bien el ejercicio y la institución deseadas.<br/>
+
+
+                        <br/><br/>Para comenzar, selecciona algún filtro y da clic en el botón.<b>Buscar</b>
+                    </Typography>
+                </Grid>
+                <Grid item md={4} xs={12}>
+                    <FormControl className={classes.formControl}>
+                        <InputLabel htmlFor="campoSelectEjercicio">Ejercicio</InputLabel>
+                        <Select style={{marginTop: '0px'}}
+                                value={this.state.ejercicio}
+                                onChange={(e) => this.handleChangeCampo('ejercicio', e)}
+                                inputProps={{
+                                    name: 'campoSelectEjercicio',
+                                    id: 'campoSelectEjercicio',
+                                }}
+                        >
+                            <MenuItem key={''} value={''}> TODOS</MenuItem>
+                            {
+                                this.state.ejercicios.map(item => {
+                                    return <MenuItem key={item.ejercicio} value={item.ejercicio}>
+                                        {item.ejercicio}
+                                    </MenuItem>
+                                })
+                            }
+                        </Select>
+
+                    </FormControl>
+                </Grid>
+                <Grid item md={4} xs={12}>
+                    <FormControl className={classes.formControl}>
+                        <InputLabel htmlFor="campoSelectRamo">Ramo</InputLabel>
+                        <Select style={{marginTop: '0px'}}
+                                value={this.state.ramo}
+                                onChange={(e) => this.handleChangeCampo('ramo', e)}
+                                inputProps={{
+                                    name: 'campoSelectRamo',
+                                    id: 'campoSelectRamo',
+                                }}
+                        >
+                            <MenuItem key={''} value={''}> TODOS</MenuItem>
+                            {
+                                this.state.ramos.map(item => {
+                                    return <MenuItem key={item.ramo} value={item.ramo}>
+                                        {item.ramo}
+                                    </MenuItem>
+                                })
+                            }
+                        </Select>
+
+                    </FormControl>
+                </Grid>
+                <Grid item md={4} xs={12}>
+                    <FormControl className={classes.formControl}>
+                        <InputLabel htmlFor="campoSelectInstitucion">Institución</InputLabel>
+                        <Select style={{marginTop: '0px'}}
+                                value={this.state.institucion}
+                                onChange={(e) => this.handleChangeCampo('institucion', e)}
+                                inputProps={{
+                                    name: 'campoSelectInstitucion',
+                                    id: 'campoSelectInstitucion',
+                                }}
+                        >
+                            <MenuItem key={''} value={''}>TODAS</MenuItem>
+                            {
+                                this.state.instituciones.map(item => {
+                                    return <MenuItem key={item.institucion} value={item.institucion}>
+                                        {item.institucion}
+                                    </MenuItem>
+                                })
+                            }
+                        </Select>
+
+                    </FormControl>
+                </Grid>
+                <Grid item xs={11}/>
+                <Grid item xs={12} md={1} className={classes.buttonContainer}>
+                    <Button variant="contained" color="secondary" className={classes.button}
+                            onClick={this.limpiarBusqueda}>
+                        Limpiar
+                    </Button>
+                </Grid>
+                <Grid item xs={12}>
+                    {
+                        this.state.config && this.state.config.data &&
+                        <Treemap config={this.state.config}/>
+                    }
+                    {
+                        this.state.error &&
+                        <MensajeErrorDatos/>
+                    }
+                </Grid>
+            </Grid>
         )
     }
-
 }
 
 export default withStyles(styles)(Agrupaciones);
