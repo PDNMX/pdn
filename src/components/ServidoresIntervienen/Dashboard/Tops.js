@@ -165,85 +165,79 @@ class Tops extends React.Component {
     };
 
     loadData = () => {
-        return new Promise((resolve, reject) => {
-            let filtros = [];
-            if (this.state.ejercicio) filtros.push("ejercicio='" + this.state.ejercicio + "'");
-            if (this.state.ramo) filtros.push("ramo='" + this.state.ramo + "'");
-            if (this.state.institucion) filtros.push("institucion='" + this.state.institucion + "'");
+        let filtros = [];
+        if (this.state.ejercicio) filtros.push("ejercicio='" + this.state.ejercicio + "'");
+        if (this.state.ramo) filtros.push("ramo='" + this.state.ramo + "'");
+        if (this.state.institucion) filtros.push("institucion='" + this.state.institucion + "'");
 
-            let options = {
-                uri: process.env.REACT_APP_S2_BACKEND + '/api/v0/getTop',
-                json: true,
-                method: "post",
-                body: {
-                    top: this.state.top,
-                    filtros: filtros.length > 0 ? filtros : null
-                }
-            };
+        let options = {
+            uri: process.env.REACT_APP_S2_BACKEND + '/api/v0/getTop',
+            json: true,
+            method: "post",
+            body: {
+                top: this.state.top,
+                filtros: filtros.length > 0 ? filtros : null
+            }
+        };
 
-            rp(options)
-                .then(data => {
-                    let aux = data.data.map(item => ({
-                            "top": item.top,
-                            "total": parseInt(item.total,10),
-                            "case": item.case ? item.case : null
-                        }));
+        rp(options).then(data => {
+            let aux = data.data.map(item => ({
+                "top": item.top,
+                "total": parseInt(item.total,10),
+                "case": item.case ? item.case : null
+            }));
 
-                    this.setState({
-                        methods: {
-                            data: aux.reverse(),
-                            discrete: "y",
-                            groupBy: "top",
-                            x: "total",
-                            y: "top",
-                            yConfig: {
-                                title: this.state.top === "id_procedimiento" ? "PROCEDIMIENTO" : this.state.top === "UR" ? "UNIDADES RESPONSABLES" : this.state.top,
-                                tickFormat: function (d) {
-                                    return "";
-                                },
-                            },
-                            xConfig: {
-                                title: "NÚMERO DE REGISTROS"
-                            },
-                            tooltipConfig: {
-                                title: this.state.top === "id_procedimiento" ? function (d) {
-                                    return d["case"];
-                                } : function (d) {
-                                    return d["top"];
-                                },
-                                tbody: [
+            this.setState({
+                methods: {
+                    data: aux.reverse(),
+                    discrete: "y",
+                    groupBy: "top",
+                    x: "total",
+                    y: "top",
+                    yConfig: {
+                        title: this.state.top === "id_procedimiento" ? "PROCEDIMIENTO" : this.state.top === "UR" ? "UNIDADES RESPONSABLES" : this.state.top,
+                        tickFormat: function (d) {
+                            return "";
+                        },
+                    },
+                    xConfig: {
+                        title: "NÚMERO DE REGISTROS"
+                    },
+                    tooltipConfig: {
+                        title: this.state.top === "id_procedimiento" ? function (d) {
+                            return d["case"];
+                        } : function (d) {
+                            return d["top"];
+                        },
+                        tbody: [
 
-                                    ["NÚMERO DE REGISTROS: ", function (d) {
-                                        return d["total"]
-                                    }
-                                    ]
-                                ]
-                            },
-                            height: 400,
-                            shapeConfig: {
-                                label: function (d) {
-                                    return d["case"] ? d["case"] : d["top"]
-                                },
-                                fill: (d, i) => {
-                                    return color[i]
-                                }
-                            },
-                            axes: {
-                                fill: "#666672"
-                            },
-                            title: "TOP 10 " + (this.state.top === "id_procedimiento" ? "PROCEDIMIENTO" : this.state.top === "UR" ? "UNIDADES RESPONSABLES" : this.state.top),
-
+                            ["NÚMERO DE REGISTROS: ", function (d) {
+                                return d["total"]
+                            }
+                            ]
+                        ]
+                    },
+                    height: 400,
+                    shapeConfig: {
+                        label: function (d) {
+                            return d["case"] ? d["case"] : d["top"]
+                        },
+                        fill: (d, i) => {
+                            return color[i]
                         }
-                    })
-                    resolve(data);
-                }).catch(err => {
+                    },
+                    axes: {
+                        fill: "#666672"
+                    },
+                    title: "TOP 10 " + (this.state.top === "id_procedimiento" ? "PROCEDIMIENTO" : this.state.top === "UR" ? "UNIDADES RESPONSABLES" : this.state.top),
 
-                console.log(err);
-                this.setState({error: true})
+                }
             });
+        }).catch(err => {
+            console.log(err);
+            this.setState({error: true})
         });
     }
-
 
     render() {
         const {classes} = this.props;
@@ -375,7 +369,6 @@ class Tops extends React.Component {
             </div>
         )
     }
-
 }
 
 

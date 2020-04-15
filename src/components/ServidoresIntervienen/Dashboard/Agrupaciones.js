@@ -57,12 +57,14 @@ class Agrupaciones extends React.Component {
     };
 
     componentDidMount() {
+        //Ojo: todas estas invocan a setState y son Promises
         this.loadEjercicios();
         this.loadRamos();
         this.loadInstituciones();
     };
 
     componentDidUpdate(prevProps, prevState, snapshot) {
+        //Ojo: todas estas invocan a setState y son Promises
         if (prevState.ejercicio !== this.state.ejercicio) {
             if (this.state.ejercicio)
                 this.loadRamos();
@@ -78,6 +80,7 @@ class Agrupaciones extends React.Component {
         }
     }
 
+    //Debería retornar Promise y no hacer setState
     loadEjercicios = () => {
         let options = {
             uri: process.env.REACT_APP_S2_BACKEND + '/api/v0/getEjercicios',
@@ -97,6 +100,7 @@ class Agrupaciones extends React.Component {
         })
     };
 
+    //Debería retornar Promise y no hacer setState
     loadRamos = () => {
         let options = {
             uri: process.env.REACT_APP_S2_BACKEND + '/api/v0/getRamos',
@@ -116,6 +120,7 @@ class Agrupaciones extends React.Component {
         });
     };
 
+    //Debería retornar Promise y no hacer setState
     loadInstituciones = () => {
         let filtros = [];
         if (this.state.ejercicio) filtros.push("ejercicio='" + this.state.ejercicio + "'");
@@ -131,20 +136,17 @@ class Agrupaciones extends React.Component {
         };
 
         rp(options).then(data => {
-            let instituciones = [];
-            let idInstitucion = 0;
-            data.data.forEach(item => {
-                instituciones.push({id: idInstitucion++, institucion: item.institucion});
-            });
+            let instituciones = data.data.map((item, index) => ({id: index, institucion: item.institucion}));
             this.setState({instituciones: instituciones, institucion: ''});
-            return null;
+            //return null;
         }).catch(err => {
             console.log(err);
             this.setState({error: true});
-            return null;
+            //return null;
         })
     };
 
+    //Debería retornar Promise y no hacer setState
     loadData = () => {
         let filtros = [];
         if (this.state.ejercicio) filtros.push("ejercicio='" + this.state.ejercicio + "'");
@@ -174,15 +176,12 @@ class Agrupaciones extends React.Component {
             v = "parent";
 
         rp(options).then(data => {
-            let aux2 = data.data.map(item => {
-                return {
+            let aux2 = data.data.map(item => ({
                     "value": parseInt(item.total, 10),
                     "subgroup": item.institucion,
                     "group": item.ramo,
-                    "parent": item.ejercicio,
-
-                }
-            });
+                    "parent": item.ejercicio
+                }));
 
             this.setState({
                 config: {
@@ -218,7 +217,6 @@ class Agrupaciones extends React.Component {
             this.setState({error: true})
         });
     }
-
 
     limpiarBusqueda = () => {
         let ejercicios = this.state.ejercicios;

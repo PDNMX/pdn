@@ -7,7 +7,6 @@ import {BarChart} from "d3plus-react";
 import rp from "request-promise";
 import MensajeErrorDatos from "../../Tablas/MensajeErrorDatos";
 
-
 const styles = theme => ({
     frameChart: {
         marginTop: "15px",
@@ -24,10 +23,7 @@ const styles = theme => ({
         marginTop: theme.spacing(2),
         marginBottom: theme.spacing(2),
     }
-
-
 });
-
 
 const aux = () => {
         let options = {
@@ -50,7 +46,6 @@ let color = ["#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
 class Ejercicio extends React.Component {
     state = {
         error: false,
-
     };
 
     componentDidMount() {
@@ -138,10 +133,7 @@ class Ejercicio extends React.Component {
                             <MensajeErrorDatos/>
                         }
                     </Grid>
-
-
                 </Grid>
-
             </div>
         )
     }
