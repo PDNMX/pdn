@@ -63,12 +63,14 @@ class Tops extends React.Component {
     };
 
     componentDidMount() {
+        //OJO: todas son promises e invocan a setState por separado
         this.loadEjercicios();
         this.loadRamos();
         this.loadInstituciones();
         this.loadData();
     };
 
+    //OJO: todas son promises e invocan a setState por separado
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevState.ejercicio !== this.state.ejercicio) {
             if (this.state.ejercicio)
@@ -88,6 +90,7 @@ class Tops extends React.Component {
         }
     }
 
+    // No debería hacer setState
     loadEjercicios = () => {
         let options = {
             uri: process.env.REACT_APP_S2_BACKEND + '/api/v0/getEjercicios',
@@ -104,6 +107,7 @@ class Tops extends React.Component {
         })
     };
 
+    // No debería hacer setState
     loadRamos = () => {
         let options = {
             uri: process.env.REACT_APP_S2_BACKEND + '/api/v0/getRamos',
@@ -123,6 +127,7 @@ class Tops extends React.Component {
         })
     };
 
+    // No debería hacer setState
     loadInstituciones = () => {
         let filtros = [];
         if (this.state.ejercicio) filtros.push("ejercicio='" + this.state.ejercicio + "'");
@@ -146,24 +151,7 @@ class Tops extends React.Component {
         })
     };
 
-
-    limpiarBusqueda = () => {
-        this.setState({
-            ejercicio: '',
-            ramo: '',
-            institucion: '',
-            error: false,
-            top: 'INSTITUCION',
-            label: null,
-        })
-    };
-
-    handleChangeCampo = (varState, event) => {
-        this.setState({
-            [varState]: event ? (event.target ? event.target.value : event.value) : ''
-        });
-    };
-
+    // No debería hacer setState
     loadData = () => {
         let filtros = [];
         if (this.state.ejercicio) filtros.push("ejercicio='" + this.state.ejercicio + "'");
@@ -238,6 +226,23 @@ class Tops extends React.Component {
             this.setState({error: true})
         });
     }
+
+    limpiarBusqueda = () => {
+        this.setState({
+            ejercicio: '',
+            ramo: '',
+            institucion: '',
+            error: false,
+            top: 'INSTITUCION',
+            label: null,
+        })
+    };
+
+    handleChangeCampo = (varState, event) => {
+        this.setState({
+            [varState]: event ? (event.target ? event.target.value : event.value) : ''
+        });
+    };
 
     render() {
         const {classes} = this.props;

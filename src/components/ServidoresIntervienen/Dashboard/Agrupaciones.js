@@ -36,7 +36,6 @@ const styles = theme => ({
         marginTop: theme.spacing(3),
         marginBottom: theme.spacing(3)
     },
-
 });
 
 let z = d3.scaleOrdinal()
@@ -219,7 +218,7 @@ class Agrupaciones extends React.Component {
     }
 
     limpiarBusqueda = () => {
-        let ejercicios = this.state.ejercicios;
+        const { ejercicios } = this.state;
         this.setState({
             ejercicio: ejercicios[ejercicios.length - 1].ejercicio,
             ramo: '',
