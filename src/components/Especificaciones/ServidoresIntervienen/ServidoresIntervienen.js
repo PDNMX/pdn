@@ -111,7 +111,7 @@ class ServidoresIntervienen extends React.Component {
                         </Typography>
 
                         <Button
-                            href='https://app.swaggerhub.com/apis/pdn-mx/s2-Servidores_publicos_en_Contrataciones/1.0.0'
+                            href='https://app.swaggerhub.com/apis/pdn-mx/s2-Servidores_publicos_en_Contrataciones/'
                             target='_blank'
                             variant='contained'
                             className={classes.button}>

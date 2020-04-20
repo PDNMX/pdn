@@ -7,7 +7,6 @@ import {BarChart} from "d3plus-react";
 import rp from "request-promise";
 import MensajeErrorDatos from "../../Tablas/MensajeErrorDatos";
 
-
 const styles = theme => ({
     frameChart: {
         marginTop: "15px",
@@ -24,27 +23,16 @@ const styles = theme => ({
         marginTop: theme.spacing(2),
         marginBottom: theme.spacing(2),
     }
-
-
 });
 
-
-function aux() {
-    return new Promise((resolve, reject) => {
+const aux = () => {
         let options = {
-            uri: process.env.REACT_APP_HOST_PDNBACK + '/viz/servidoresIntervienen/getAgrupacionEjercicio',
+            uri: process.env.REACT_APP_S2_BACKEND + '/api/v0/getAgrupacionEjercicio',
             json: true,
             method: "GET"
         };
-        rp(options)
-            .then(data => {
-                resolve(data);
-            }).catch(err => {
-            console.log(err);
-            reject(err)
-        });
-    });
-}
+        return rp(options);
+};
 
 
 let color = ["#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
@@ -58,68 +46,65 @@ let color = ["#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
 class Ejercicio extends React.Component {
     state = {
         error: false,
-
     };
 
     componentDidMount() {
         aux().then(result => {
-            let aux = result.data.map(item => {
-                return {
-                    "ejercicio": item.ejercicio,
-                    "total": parseInt(item.total,10)
-                }
-            })
+            let aux = result.data.map(item => ({
+                "ejercicio": item.ejercicio,
+                "total": parseInt(item.total,10)
+            }));
+
             this.setState({
-                    methods: {
-                        data: aux,
-                        groupBy: "ejercicio",
-                        x: "ejercicio",
-                        y: "total",
-                        xConfig: {
-                            title: "Ejercicio fiscal",
+                methods: {
+                    data: aux,
+                    groupBy: "ejercicio",
+                    x: "ejercicio",
+                    y: "total",
+                    xConfig: {
+                        title: "Ejercicio fiscal",
 
+                    },
+                    yConfig: {
+                        title: "Número de registros"
+                    },
+                    tooltipConfig: {
+                        title: function (d) {
+                            return "Datos";
                         },
-                        yConfig: {
-                            title: "Número de registros"
-                        },
-                        tooltipConfig: {
-                            title: function (d) {
-                                return "Datos";
-                            },
-                            tbody: [
-                                ["Ejercicio fiscal: ", function (d) {
-                                    return d["ejercicio"] + "ejercicio"
-                                }
-                                ],
-                                ["Número de registros: ", function (d) {
-                                    return d["total"]
-                                }
-                                ]
-                            ]
-                        },
-                        height: 400,
-                        shapeConfig: {
-                            label: false,
-                            fill: (d, i) => {
-                                return color[i]
+                        tbody: [
+                            ["Ejercicio fiscal: ", function (d) {
+                                return d["ejercicio"] + "ejercicio"
                             }
-                        },
-                        legend: false,
-                        axes: {
-                            fill: "#666672"
-                        },
-                        title: "Ejercicio fiscal"
+                            ],
+                            ["Número de registros: ", function (d) {
+                                return d["total"]
+                            }
+                            ]
+                        ]
+                    },
+                    height: 400,
+                    shapeConfig: {
+                        label: false,
+                        fill: (d, i) => {
+                            return color[i]
+                        }
+                    },
+                    legend: false,
+                    axes: {
+                        fill: "#666672"
+                    },
+                    title: "Ejercicio fiscal"
 
-                    }
+                }
                 }
             )
         }).catch(error => {
             this.setState({
                 error: true
-            })
-        })
+            });
+        });
     }
-
 
     render() {
         const {classes} = this.props;
@@ -148,10 +133,7 @@ class Ejercicio extends React.Component {
                             <MensajeErrorDatos/>
                         }
                     </Grid>
-
-
                 </Grid>
-
             </div>
         )
     }
