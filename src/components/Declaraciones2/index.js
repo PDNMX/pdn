@@ -9,6 +9,7 @@ import S3 from '../../assets/iconos_azul/1_icono.svg';
 import background from '../../assets/img/pdn_sis1.jpeg';
 
 import Footer from '../Home/Footer';
+import AlertDialog from './Disclaimer';
 
 import classNames from 'classnames';
 import { Typography } from '@material-ui/core';
@@ -30,6 +31,15 @@ const copy =
 	'Consulta y visualiza los datos <b>públicos</b> de las declaraciones patrimoniales, y de intereses, así como la constancia de declaración anual de impuestos de las y los servidores públicos.';
 
 class Declaraciones extends React.Component {
+	state = {
+		open: true
+	};
+
+
+	handleClose = () => {
+		this.setState({ open: false });
+	};
+
 	render() {
 		const { classes } = this.props;
 
@@ -111,6 +121,7 @@ class Declaraciones extends React.Component {
 					</Grid>
 				</Grid>
 				<Footer />
+				<AlertDialog open={this.state.open} handleClose={this.handleClose} />
 			</div>
 		);
 	}
