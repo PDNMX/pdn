@@ -8,7 +8,6 @@ import rp from 'request-promise';
 import LinearIndeterminate from './LinearIndeterminate';
 import CustomizedSelect from './CustomizedSelect';
 
-
 const styles = theme => ({
     root: {
         flexGrow: 1,

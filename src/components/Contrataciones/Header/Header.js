@@ -78,15 +78,15 @@ class Header extends React.Component{
                     <Grid item xs={12} className={classes.item3}>
                         <ul> {
                             breadcrumbItems?
-                                breadcrumbItems.map(item =>
+                                breadcrumbItems.map((item, index) =>
                                     item.to ?
-                                        <li>
+                                        <li key={index}>
                                             <Link component={RouterLink} className={classes.link} to={item.to}>
                                                 {item.text}
                                             </Link>
                                         </li>
                                         :
-                                        <li>
+                                        <li key={index}>
                                             {item.text}
                                         </li>
                                 ):
