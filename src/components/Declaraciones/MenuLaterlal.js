@@ -46,12 +46,12 @@ export default function MenuListComposition(props) {
 							classes={classes}
 						>
 							<MyBadge
-								badgeContent={option.value ? option.value : 0}
+								badgeContent={option.valor ? option.valor : 0}
 								color="error"
 								anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
 							>
 								{/* <ListItemText primary={option.name} />                 */}
-								<Typography component="span">{option.name}</Typography>
+								<Typography component="span">{option.clave}</Typography>
 							</MyBadge>
 						</ListItem>
 					);

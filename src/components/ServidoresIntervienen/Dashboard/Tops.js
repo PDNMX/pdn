@@ -12,7 +12,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import MensajeErrorDatos from "../../Tablas/MensajeErrorDatos";
 import {BarChart} from "d3plus-react";
 
-
 const styles = theme => ({
     frameChart: {
         marginTop: "15px",
@@ -40,7 +39,6 @@ const styles = theme => ({
 
 });
 
-
 let color = [
     "#F44336", "#9C27B0", "#673AB7", "#3F51B5",
     "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
@@ -51,7 +49,6 @@ let color = [
     "#8BC34A", "#CDDC39", "#FFEB3B", "#FFC107", "#FF9800",
     "#FF5722", "#795548", "#9E9E9E", "#607D8B"
 ];
-
 
 class Tops extends React.Component {
     state = {
@@ -66,12 +63,14 @@ class Tops extends React.Component {
     };
 
     componentDidMount() {
+        //OJO: todas son promises e invocan a setState por separado
         this.loadEjercicios();
         this.loadRamos();
         this.loadInstituciones();
         this.loadData();
     };
 
+    //OJO: todas son promises e invocan a setState por separado
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevState.ejercicio !== this.state.ejercicio) {
             if (this.state.ejercicio)
@@ -91,31 +90,27 @@ class Tops extends React.Component {
         }
     }
 
+    // No debería hacer setState
     loadEjercicios = () => {
         let options = {
-            uri: process.env.REACT_APP_HOST_PDNBACK + '/viz/servidoresIntervienen/getEjercicios',
+            uri: process.env.REACT_APP_S2_BACKEND + '/api/v0/getEjercicios',
             json: true,
             method: "get"
         };
 
         rp(options).then(data => {
-            let ejercicios = [];
-            let idEjercicio = 0;
-            data.data.forEach(item => {
-                ejercicios.push({id: idEjercicio++, ejercicio: item.ejercicio});
-            });
+            let ejercicios = data.data.map( (item, index) => ({id: index, ejercicio: item.ejercicio}));
             this.setState({ejercicios: ejercicios});
-            return null;
         }).catch(err => {
             console.log(err);
             this.setState({error: true});
-            return null;
         })
     };
 
+    // No debería hacer setState
     loadRamos = () => {
         let options = {
-            uri: process.env.REACT_APP_HOST_PDNBACK + '/viz/servidoresIntervienen/getRamos',
+            uri: process.env.REACT_APP_S2_BACKEND + '/api/v0/getRamos',
             json: true,
             method: "post",
             body: {
@@ -124,27 +119,22 @@ class Tops extends React.Component {
         };
 
         rp(options).then(data => {
-            let ramos = [];
-            let idRamo = 0;
-            data.data.forEach(item => {
-                ramos.push({id: idRamo++, ramo: item.ramo});
-            });
+            let ramos = data.data.map( (item, index) => ({id: index, ramo: item.ramo}) );
             this.setState({ramos: ramos, ramo: '', institucion: ''});
-            return null;
         }).catch(err => {
             console.log(err);
             this.setState({error: true});
-            return null;
         })
     };
 
+    // No debería hacer setState
     loadInstituciones = () => {
         let filtros = [];
         if (this.state.ejercicio) filtros.push("ejercicio='" + this.state.ejercicio + "'");
         if (this.state.ramo) filtros.push("ramo='" + this.state.ramo + "'");
 
         let options = {
-            uri: process.env.REACT_APP_HOST_PDNBACK + '/viz/servidoresIntervienen/getInstituciones',
+            uri: process.env.REACT_APP_S2_BACKEND + '/api/v0/getInstituciones',
             json: true,
             method: "post",
             body: {
@@ -153,20 +143,89 @@ class Tops extends React.Component {
         };
 
         rp(options).then(data => {
-            let instituciones = [];
-            let idInstitucion = 0;
-            data.data.forEach(item => {
-                instituciones.push({id: idInstitucion++, institucion: item.institucion});
-            });
+            let instituciones = data.data.map( (item, index) => ({id: index, institucion: item.institucion}));
             this.setState({instituciones: instituciones, institucion: ''});
-            return null;
         }).catch(err => {
             console.log(err);
             this.setState({error: true});
-            return null;
         })
     };
 
+    // No debería hacer setState
+    loadData = () => {
+        let filtros = [];
+        if (this.state.ejercicio) filtros.push("ejercicio='" + this.state.ejercicio + "'");
+        if (this.state.ramo) filtros.push("ramo='" + this.state.ramo + "'");
+        if (this.state.institucion) filtros.push("institucion='" + this.state.institucion + "'");
+
+        let options = {
+            uri: process.env.REACT_APP_S2_BACKEND + '/api/v0/getTop',
+            json: true,
+            method: "post",
+            body: {
+                top: this.state.top,
+                filtros: filtros.length > 0 ? filtros : null
+            }
+        };
+
+        rp(options).then(data => {
+            let aux = data.data.map(item => ({
+                "top": item.top,
+                "total": parseInt(item.total,10),
+                "case": item.case ? item.case : null
+            }));
+
+            this.setState({
+                methods: {
+                    data: aux.reverse(),
+                    discrete: "y",
+                    groupBy: "top",
+                    x: "total",
+                    y: "top",
+                    yConfig: {
+                        title: this.state.top === "id_procedimiento" ? "PROCEDIMIENTO" : this.state.top === "UR" ? "UNIDADES RESPONSABLES" : this.state.top,
+                        tickFormat: function (d) {
+                            return "";
+                        },
+                    },
+                    xConfig: {
+                        title: "NÚMERO DE REGISTROS"
+                    },
+                    tooltipConfig: {
+                        title: this.state.top === "id_procedimiento" ? function (d) {
+                            return d["case"];
+                        } : function (d) {
+                            return d["top"];
+                        },
+                        tbody: [
+
+                            ["NÚMERO DE REGISTROS: ", function (d) {
+                                return d["total"]
+                            }
+                            ]
+                        ]
+                    },
+                    height: 400,
+                    shapeConfig: {
+                        label: function (d) {
+                            return d["case"] ? d["case"] : d["top"]
+                        },
+                        fill: (d, i) => {
+                            return color[i]
+                        }
+                    },
+                    axes: {
+                        fill: "#666672"
+                    },
+                    title: "TOP 10 " + (this.state.top === "id_procedimiento" ? "PROCEDIMIENTO" : this.state.top === "UR" ? "UNIDADES RESPONSABLES" : this.state.top),
+
+                }
+            });
+        }).catch(err => {
+            console.log(err);
+            this.setState({error: true})
+        });
+    }
 
     limpiarBusqueda = () => {
         this.setState({
@@ -184,87 +243,6 @@ class Tops extends React.Component {
             [varState]: event ? (event.target ? event.target.value : event.value) : ''
         });
     };
-    loadData = () => {
-        return new Promise((resolve, reject) => {
-            let filtros = [];
-            if (this.state.ejercicio) filtros.push("ejercicio='" + this.state.ejercicio + "'");
-            if (this.state.ramo) filtros.push("ramo='" + this.state.ramo + "'");
-            if (this.state.institucion) filtros.push("institucion='" + this.state.institucion + "'");
-
-            let options = {
-                uri: process.env.REACT_APP_HOST_PDNBACK + '/viz/servidoresIntervienen/getTop',
-                json: true,
-                method: "post",
-                body: {
-                    top: this.state.top,
-                    filtros: filtros.length > 0 ? filtros : null
-                }
-            };
-
-            rp(options)
-                .then(data => {
-                    let aux = data.data.map(item => {
-                        return {
-                            "top": item.top,
-                            "total": parseInt(item.total,10),
-                            "case": item.case ? item.case : null
-                        }
-                    })
-                    this.setState({
-                        methods: {
-                            data: aux.reverse(),
-                            discrete: "y",
-                            groupBy: "top",
-                            x: "total",
-                            y: "top",
-                            yConfig: {
-                                title: this.state.top === "id_procedimiento" ? "PROCEDIMIENTO" : this.state.top === "UR" ? "UNIDADES RESPONSABLES" : this.state.top,
-                                tickFormat: function (d) {
-                                    return "";
-                                },
-                            },
-                            xConfig: {
-                                title: "NÚMERO DE REGISTROS"
-                            },
-                            tooltipConfig: {
-                                title: this.state.top === "id_procedimiento" ? function (d) {
-                                    return d["case"];
-                                } : function (d) {
-                                    return d["top"];
-                                },
-                                tbody: [
-
-                                    ["NÚMERO DE REGISTROS: ", function (d) {
-                                        return d["total"]
-                                    }
-                                    ]
-                                ]
-                            },
-                            height: 400,
-                            shapeConfig: {
-                                label: function (d) {
-                                    return d["case"] ? d["case"] : d["top"]
-                                },
-                                fill: (d, i) => {
-                                    return color[i]
-                                }
-                            },
-                            axes: {
-                                fill: "#666672"
-                            },
-                            title: "TOP 10 " + (this.state.top === "id_procedimiento" ? "PROCEDIMIENTO" : this.state.top === "UR" ? "UNIDADES RESPONSABLES" : this.state.top),
-
-                        }
-                    })
-                    resolve(data);
-                }).catch(err => {
-
-                console.log(err);
-                this.setState({error: true})
-            });
-        });
-    }
-
 
     render() {
         const {classes} = this.props;
@@ -396,7 +374,6 @@ class Tops extends React.Component {
             </div>
         )
     }
-
 }
 
 

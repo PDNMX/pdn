@@ -8,7 +8,6 @@ import MensajeErrorDatos from "../../Tablas/MensajeErrorDatos";
 import BarChart from "d3plus-react/es/src/BarChart";
 import * as d3 from "d3";
 
-
 const styles = theme => ({
     frameChart: {
         marginTop: "15px",
@@ -26,32 +25,20 @@ const styles = theme => ({
         paddingLeft: "10px",
         paddingRight: "10px",
         marginBottom: "30px",
-
-
     },
     btnDownload: {
         textAlign: "right"
     },
-
 });
 
-
-function aux() {
-    return new Promise((resolve, reject) => {
+const aux = () =>  {
         let options = {
-            uri: process.env.REACT_APP_HOST_PDNBACK + '/viz/servidoresIntervienen/getProcedimientosPeriodo',
+            uri: process.env.REACT_APP_S2_BACKEND + '/api/v0/getProcedimientosPeriodo',
             json: true,
             method: "GET"
         };
-        rp(options)
-            .then(data => {
-                resolve(data);
-            }).catch(err => {
-            console.log(err);
-            reject(err)
-        });
-    });
-}
+        return rp(options);
+};
 
 let z = d3.scaleOrdinal()
     .range(["#2685C8","#48BF40","#7C2BCD","#FF6A00"]);
@@ -63,56 +50,55 @@ class Ejercicio extends React.Component {
 
     componentDidMount() {
         aux().then(result => {
-            let aux = result.data.map(item => {
-                return {
-                    "ejercicio": item.ejercicio,
-                    "total": parseInt(item.total,10),
-                    "procedimiento":item.case
-                }
-            })
+            let aux = result.data.map(item => ({
+                "ejercicio": item.ejercicio,
+                "total": parseInt(item.total,10),
+                "procedimiento":item.case
+            }));
+
             this.setState({
-                    methods: {
-                        data: aux,
-                        groupBy: "procedimiento",
-                        stacked:true,
-                        x: "ejercicio",
-                        y: "total",
-                        xConfig: {
-                            title: "Ejercicio fiscal",
+                methods: {
+                    data: aux,
+                    groupBy: "procedimiento",
+                    stacked:true,
+                    x: "ejercicio",
+                    y: "total",
+                    xConfig: {
+                        title: "Ejercicio fiscal",
 
+                    },
+                    yConfig: {
+                        title: "Número de registros"
+                    },
+                    tooltipConfig: {
+                        title: function (d) {
+                            return d["procedimiento"];
                         },
-                        yConfig: {
-                            title: "Número de registros"
-                        },
-                        tooltipConfig: {
-                            title: function (d) {
-                                return d["procedimiento"];
-                            },
-                            tbody: [
-                                ["Ejercicio fiscal: ", function (d) {
-                                    return d["ejercicio"]
-                                }
-                                ],
-                                ["Número de registros: ", function (d) {
-                                    return d["total"]
-                                }
-                                ]
-                            ]
-                        },
-                        height: 400,
-                        shapeConfig: {
-                            fill: (d) => {
-                                return z(d.procedimiento)
+                        tbody: [
+                            ["Ejercicio fiscal: ", function (d) {
+                                return d["ejercicio"]
                             }
-                        },
+                            ],
+                            ["Número de registros: ", function (d) {
+                                return d["total"]
+                            }
+                            ]
+                        ]
+                    },
+                    height: 400,
+                    shapeConfig: {
+                        fill: (d) => {
+                            return z(d.procedimiento)
+                        }
+                    },
 
-                    }
+                }
                 }
             )
         }).catch(error => {
             this.setState({
                 error: true
-            })
+            });
         })
     }
 
@@ -152,10 +138,7 @@ class Ejercicio extends React.Component {
                             <MensajeErrorDatos/>
                         }
                     </Grid>
-
-
                 </Grid>
-
             </div>
         )
     }
