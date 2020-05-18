@@ -269,8 +269,6 @@ export default function CustomizedExpansionPanels() {
                 </ExpansionPanelDetails>
             </ExpansionPanel>
 
-
-
             <ExpansionPanel square expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
                 <ExpansionPanelSummary aria-controls="panel4d-content" id="panel4d-header">
                     <Typography>¿Qué hace la SESNA y la USTPDN?</Typography>
@@ -300,8 +298,6 @@ export default function CustomizedExpansionPanels() {
                     </div>
                 </ExpansionPanelDetails>
             </ExpansionPanel>
-
-
 
             <ExpansionPanel square expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
                 <ExpansionPanelSummary aria-controls="panel5d-content" id="panel5d-header">
@@ -345,13 +341,12 @@ export default function CustomizedExpansionPanels() {
                         </Typography>
 
                         <Typography paragraph>
-                            Asimismo, se les recomienda comenzar por <b><u>revisar de manera detallada</u></b> las especificaciones técnicas y los diccionarios de datos que ya fueron publicados en la siguiente página: <Link to="/especificaciones" className={classes.link}>https://plataformadigitalnacional.org/especificaciones</Link>. Es importante comenzar con los Sistemas 2 y 3, ya que los formatos necesarios para el Sistema 1 se encuentran en <MuiLink href="https://www.dof.gob.mx/nota_detalle.php?codigo=5557896&fecha=16%2F04%2F2019">proceso de revisión por parte del Comité Coordinador</MuiLink>.
+                            Asimismo, se les recomienda comenzar por <b><u>revisar de manera detallada</u></b> las especificaciones técnicas y los diccionarios de datos que ya fueron publicados en la siguiente página: <Link to="/especificaciones" className={classes.link}>https://plataformadigitalnacional.org/especificaciones</Link>.
                         </Typography>
 
                     </div>
                 </ExpansionPanelDetails>
             </ExpansionPanel>
-
 
             <ExpansionPanel square expanded={expanded === 'panel6'} onChange={handleChange('panel6')}>
                 <ExpansionPanelSummary aria-controls="panel6d-content" id="panel6d-header">
@@ -603,7 +598,6 @@ export default function CustomizedExpansionPanels() {
                 </ExpansionPanelDetails>
             </ExpansionPanel>
 
-
             <ExpansionPanel square expanded={expanded === 'panel7'} onChange={handleChange('panel7')}>
                 <ExpansionPanelSummary aria-controls="panel7d-content" id="panel7d-header">
                     <Typography>Preguntas frecuentes - datos</Typography>
@@ -717,8 +711,8 @@ export default function CustomizedExpansionPanels() {
                 </ExpansionPanelDetails>
             </ExpansionPanel>
 
-            <ExpansionPanel square expanded={expanded === 'panel9'} onChange={handleChange('panel9')}>
-                <ExpansionPanelSummary aria-controls="panel9d-content" id="panel9d-header">
+            <ExpansionPanel square expanded={expanded === 'panel10'} onChange={handleChange('panel10')}>
+                <ExpansionPanelSummary aria-controls="panel10d-content" id="panel10d-header">
                     <Typography>Contactanos</Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
