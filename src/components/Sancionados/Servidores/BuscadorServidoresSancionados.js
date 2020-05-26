@@ -48,9 +48,9 @@ const styles = theme => ({
 });
 
 class EnhancedTable extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+    // constructor(props) {
+    //     super(props);
+    // }
 
     render() {
         const {classes} = this.props;

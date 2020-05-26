@@ -313,7 +313,7 @@ class EnhancedTable extends React.Component {
                                                 <TableCell>{n.registroBase}</TableCell>
                                                 <TableCell>{n.descripcion}</TableCell>
                                                 <TableCell>
-                                                    <a href={n.url} target="_blank">
+                                                    <a href={n.url} target="_blank" rel="noopener noreferrer">
                                                         <Tooltip title="Ir a sitio">
                                                             <IconButton color="primary" className={classes.button}
                                                                         component="span">
