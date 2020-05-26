@@ -29,7 +29,7 @@ import EspecificacionesServidoresIntervienen from '../components/Especificacione
 import Metodologia from '../components/GAA/Calidad/Metodologia';
 import HelpDesk from '../components/HelpDesk/HelpDesk';
 import GAA from '../components/GAA/GAA';
-import DeclaracionesS1 from '../components/Declaraciones';
+// import DeclaracionesS1 from '../components/Declaraciones';
 import DeclaracionesS1v2 from '../components/Declaraciones2';
 
 const pdnRoutes = [

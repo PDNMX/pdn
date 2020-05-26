@@ -132,7 +132,7 @@ class UploadForm extends React.Component {
               esquemaOAS = "ssancionados";
               break;
             default:
-              console.log("default");
+              console.log(tipoEsquema);
               break;
           }
 
