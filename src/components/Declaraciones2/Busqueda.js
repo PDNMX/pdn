@@ -245,7 +245,7 @@ class Busqueda extends React.Component {
   };
 
   handlerFind = () => {
-    let { institucion, providers, query } = this.state;
+    let { institucion, providers } = this.state;
 
     let prov = institucion
       ? providers.filter((p) => p.supplier_id === institucion)
