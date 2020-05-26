@@ -293,7 +293,7 @@ export default function ({
                   <Grid item xs={6}>
                     <TextField
                       id="superficieConstruccionMin"
-                      placeholder="minimo"
+                      placeholder="mínimo"
                       value={superficieConstruccionMin}
                       className={classes.textField}
                       name="superficieConstruccionMin"
@@ -309,7 +309,7 @@ export default function ({
                   <Grid item xs={6}>
                     <TextField
                       id="superficieConstruccionMax"
-                      placeholder="maximo"
+                      placeholder="máximo"
                       value={superficieConstruccionMax}
                       className={classes.textField}
                       name="superficieConstruccionMax"
@@ -333,7 +333,7 @@ export default function ({
                   <Grid item xs={6}>
                     <TextField
                       id="superficieTerrenoMin"
-                      placeholder="minimo"
+                      placeholder="mínimo"
                       value={superficieTerrenoMin}
                       className={classes.textField}
                       name="superficieTerrenoMin"
@@ -349,7 +349,7 @@ export default function ({
                   <Grid item xs={6}>
                     <TextField
                       id="superficieTerrenoMax"
-                      placeholder="maximo"
+                      placeholder="máximo"
                       value={superficieTerrenoMax}
                       className={classes.textField}
                       name="superficieTerrenoMax"
@@ -373,7 +373,7 @@ export default function ({
                   <Grid item xs={6}>
                     <TextField
                       id="valorAdquisicionMin"
-                      placeholder="minimo"
+                      placeholder="mínimo"
                       value={valorAdquisicionMin}
                       className={classes.textField}
                       name="valorAdquisicionMin"
@@ -389,7 +389,7 @@ export default function ({
                   <Grid item xs={6}>
                     <TextField
                       id="valorAdquisicionMax"
-                      placeholder="maximo"
+                      placeholder="máximo"
                       value={valorAdquisicionMax}
                       className={classes.textField}
                       name="valorAdquisicionMax"
@@ -415,7 +415,7 @@ export default function ({
                   <Grid item xs={6}>
                     <TextField
                       id="totalIngresosNetosMin"
-                      placeholder="minimo"
+                      placeholder="mínimo"
                       value={totalIngresosNetosMin}
                       className={classes.textField}
                       name="totalIngresosNetosMin"
@@ -431,7 +431,7 @@ export default function ({
                   <Grid item xs={6}>
                     <TextField
                       id="totalIngresosNetosMax"
-                      placeholder="maximo"
+                      placeholder="máximo"
                       value={totalIngresosNetosMax}
                       className={classes.textField}
                       name="totalIngresosNetosMax"
