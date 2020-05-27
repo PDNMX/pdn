@@ -25,7 +25,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import MensajeErrorDatos from "../../Tablas/MensajeErrorDatos";
 import Switch from "@material-ui/core/Switch";
 import Collapse from "@material-ui/core/Collapse";
-import Previos from "./Previos";
+import Previos from "../../Compartidos/Previos";
 import TablaServidoresSancionados from "./TablaServidoresSancionados";
 import MensajeNoRegistros from "../../Tablas/MensajeNoRegistros";
 import DetalleServidorSancionado from "./DetalleServidorSancionado";
@@ -122,7 +122,7 @@ class BusquedaServidor extends React.Component {
     loadInstituciones = () => {
         let sug = [];
         let options = {
-            uri: process.env.REACT_APP_S3S_BACK + '/entities',
+            uri: process.env.REACT_APP_S3S_BACKEND + '/entities',
             json: true,
             method: "post",
             body: {
@@ -201,7 +201,7 @@ class BusquedaServidor extends React.Component {
 
             let options = {
                 method: 'POST',
-                uri: process.env.REACT_APP_S3S_BACK + '/summary',
+                uri: process.env.REACT_APP_S3S_BACKEND + '/summary',
                 json: true,
                 body: body
             };
@@ -256,7 +256,7 @@ class BusquedaServidor extends React.Component {
 
             let options = {
                 method: 'POST',
-                uri: process.env.REACT_APP_S3S_BACK + '/search',
+                uri: process.env.REACT_APP_S3S_BACKEND + '/search',
                 json: true,
                 body: body
             };
@@ -559,7 +559,7 @@ class BusquedaServidor extends React.Component {
                     <Grid item xs={12} className={classes.section}>
                             <div className={classes.container}>
                                 <Collapse in={this.state.panelPrevios}>
-                                    <Previos previos={this.state.previos} handleChangeAPI={this.handleChangeAPI}/>
+                                    <Previos data={this.state.previos} handleChangeSujetoObligado={this.handleChangeAPI}/>
                                 </Collapse>
                             </div>
                     </Grid>
