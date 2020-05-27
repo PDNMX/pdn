@@ -1,562 +1,243 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import {withStyles} from '@material-ui/core/styles';
-import {Typography} from "@material-ui/core"
-import Modal from '@material-ui/core/Modal';
-import Grid from "@material-ui/core/Grid/Grid";
-import TextField from "@material-ui/core/TextField/TextField";
-import InputAdornment from "@material-ui/core/InputAdornment/InputAdornment";
-import IconHelp from '@material-ui/icons/HelpOutline';
-import CloseButton from '@material-ui/icons/Close'
-import IconButton from "@material-ui/core/IconButton/IconButton";
-import glosario from "../../Utils/glosario.json";
-import DialogTitle from "@material-ui/core/DialogTitle/DialogTitle";
-import DialogContent from "@material-ui/core/DialogContent/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText/DialogContentText";
-import DialogActions from "@material-ui/core/DialogActions/DialogActions";
+import React from "react";
+import PropTypes from "prop-types";
+import {withStyles} from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+import {Paper, Typography} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
-import DownloadIcon from "@material-ui/icons/CloudDownload";
-import * as jsPDF from "jspdf";
-
-let aux = new Image();
-aux.src = "/LogoSesna.png";
-
-function getGlosarioItem(id){
-    return glosario.particulares[id];
-}
-
-function getModalStyle() {
-    const top = 50 ;
-    const left = 50 ;
-    return {
-        top: `${top}%`,
-        left: `${left}%`,
-        transform: `translate(-${top}%, -${left}%)`,
-        maxHeight: `calc(100vh - 225px)`,
-        overflowY: "auto"
-
-    };
-}
+import Divider from "@material-ui/core/Divider";
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 const styles = theme => ({
+    infoBusqueda: {
+        paddingRight: theme.spacing(1),
+        paddingLeft: theme.spacing(1),
+        backgroundColor: "white",
+        marginBottom: theme.spacing(8)
+    },
     paper: {
-        position: 'absolute',
-        backgroundColor: theme.palette.background.paper,
-        boxShadow: theme.shadows[5],
-        padding: theme.spacing(4),
-        [theme.breakpoints.up('sm')]:{
-            width: theme.spacing(110),
-        },
-        [theme.breakpoints.down('sm')]:{
-            width: '80%',
-            height: '80%',
-            overflowY: 'scroll',
-
-        },
-        [theme.breakpoints.up('xl')]:{
-            width: theme.spacing(130),
-        },
+        padding: theme.spacing(3, 2),
+        margin: theme.spacing(3, 2)
+    },
+    cuadroActualizacion: {
+        color: "#FFF",
+        backgroundColor: theme.palette.primary.dark,
+        fontWeight: "bold",
+        padding: "5px 10px"
+    },
+    titulo: {
+        fontSize: 15,
+        fontWeight: "bold",
+        marginBottom: 10,
+        textDecoration: "underline",
+        textDecorationColor: theme.palette.primary.dark,
+        color: theme.palette.primary.dark,
+    },
+    tituloCard: {
+        fontSize: 13,
+        fontWeight: "bold",
+        marginBottom: 10
+    },
+    dataCard: {
+        fontSize: 14,
+        paddingBottom: 10,
+        marginBottom: 10,
+        paddingLeft: 20
+    },
+    divider: {
+        backgroundColor: theme.palette.primary.dark,
+        height: theme.spacing(1)
+    },
+    btnBack: {
+        color: theme.palette.primary.dark,
     },
     container: {
-        display: 'flex',
-        flexWrap: 'wrap',
-    },
-    textField: {
-        marginLeft: theme.spacing(1),
-        marginRight: theme.spacing(1),
-        width: '100%',
-
-    },
-    fontSmall:{
-        fontSize:'.8em',
-    },
-    flex: {
-        flexGrow: 1,
-    },
-    button:{
-        float:'right'
-    },
-    title:{
-        color : theme.palette.primary.main,
-
-    },
-    paperGlosario: {
-        position: 'absolute',
-        backgroundColor: theme.palette.background.paper,
-        boxShadow: theme.shadows[5],
-        padding: theme.spacing(4),
-        [theme.breakpoints.up('sm')]: {
-            width: theme.spacing(80),
-        },
-        [theme.breakpoints.down('sm')]: {
-            width: '80%',
-            height: '80%',
-            overflowY: 'scroll',
-        },
-        [theme.breakpoints.up('xl')]: {
-            width: theme.spacing(130),
-        },
-    },
-    centrado:{
-    display: 'flex',
-    justifyContent : 'center',
-    alignItems: 'center'
-},
-    downloadButton: {
-        background : '#FFE01B'
+        maxWidth: '1200px',
+        margin: "0 auto"
     }
 });
 
-class DetalleParticular extends React.Component {
-    state ={
-        open : false,
-        id : 0
-    };
-
-    openPoper = () => {
-        this.setState(state => ({
-            open : !state.open
-        }))
-    };
-
-    controlGlosario = (id) => {
-        this.setState({id : id});
-    };
-
-    getX(doc, texto){
-        let fontSize = doc.internal.getFontSize();
-        let pageWidth = doc.internal.pageSize.getWidth();
-        let aux = '';
-        for(var i = 0; i < texto.length ; i++){
-            aux += 'a';
-        }
-        let txtWidth =  doc.getStringUnitWidth(aux) * fontSize / doc.internal.scaleFactor;
-        let  x = (pageWidth - txtWidth) / 2;
-        return x;
-    }
-
-    printPDF(){
-        let doc = new jsPDF({
-            format : 'letter',
-            unit : 'pt'
-        });
-        doc.setFontSize(12);
-        doc.setFontType('bold');
-        doc.addImage(aux,'PNG',30,20,150,70);
-        doc.text('SECRETARÍA EJECUTIVA DEL SISTEMA NACIONAL ANTICORRUPCIÓN',350,60,{maxWidth:250, align : 'justify'});
-        doc.text('DOCUMENTO DE PRUEBA',doc.internal.pageSize.getWidth()/2,150,null,null,'center');
-
-
-        doc.setFontType('normal');
-        //doc.text('En la versión oficial podrás consultar las constancias de inhabilitación de servidores públicos y particulares sancionados ' ,30,255);
-        let y = 255;
-        let text = 'En la versión oficial podrás consultar las constancias de inhabilitación de servidores públicos y particulares sancionados.';
-        let lengthOfPage = 440;
-
-        let splitHecho = doc.splitTextToSize(text,lengthOfPage);
-        for(let c = 0, stlength = splitHecho.length ; c <stlength; c++){
-            doc.text(splitHecho[c], 30,y);
-            y+=15;
-        }
-
-        y = 400;
-        text = 'Saludos del equipo de Plataforma Digital Nacional.';
-        splitHecho = doc.splitTextToSize(text,lengthOfPage);
-        for(var c = 0, stlength = splitHecho.length ; c <stlength; c++){
-            doc.text(splitHecho[c], 30,y);
-            y+=15;
-        }
-
-
-        doc.setFontSize(8);
-        let t = 'Avenida Coyoacán No. 1501, Col del Valle Centro, Del. Benito Juárez, C.P.03300, Ciudad de México.';
-        doc.text(t,this.getX(doc, t),730);
-        t = 'Teléfono: 5200-1500, ext. 00000';
-        doc.text(t,this.getX(doc, t),740);
-        doc.save('test.pdf');
-    }
-
+class DetalleParticularSancionado extends React.Component {
     render() {
-        const {classes, handleClose, particular, control} = this.props;
-        const {open,id} = this.state;
+        const {classes, hideDetalle, particular} = this.props;
+
         return (
             <div>
-                <Modal
-                    aria-labelledby="simple-modal-title"
-                    aria-describedby="simple-modal-description"
-                    open={open}>
-                    <div style={getModalStyle()} className={classes.paperGlosario}>
-                        <DialogTitle>{getGlosarioItem(id).title}</DialogTitle>
-                        <DialogContent>
-                            <DialogContentText>
-                                {getGlosarioItem(id).description}
-                            </DialogContentText>
-                        </DialogContent>
-                        <DialogActions>
-                            <Button onClick={this.openPoper} color="primary">
-                                Cerrar
-                            </Button>
-                        </DialogActions>
-
-                    </div>
-                </Modal>
-                <Modal
-                    aria-labelledby="simple-modal-title"
-                    aria-describedby="simple-modal-description"
-                    open={control}
-                    onClose={handleClose}
-                >
-                    <div style={getModalStyle()} className={classes.paper}>
-                        <form>
-                            <Grid container spacing={1} justify="flex-start">
-                                <Grid item xs={11}>
-                                    <Typography variant= "h6" className={classes.title}>Ficha del particular sancionado</Typography>
+                <Grid container spacing={0} className={classes.infoBusqueda}>
+                    <Grid item xs={12} className={classes.container}>
+                        <Paper className={classes.paper} elevation={3}>
+                            <Grid container spacing={2}>
+                                <Grid item xs={12}>
+                                    <Typography style={{textAlign: "right"}}>
+                                <span className={classes.cuadroActualizacion}>
+                                  Actualización:{" "}{particular.fechaCaptura}
+                                </span>
+                                    </Typography>
                                 </Grid>
-                                <Grid item xs={1}>
-                                    <IconButton color="primary" className={classes.button} component="span" onClick={handleClose}>
-                                        <CloseButton />
-                                    </IconButton>
-                                </Grid>
-                                <Grid item md = {6} xs = {12}>
-                                    <TextField
-                                        multiline={true}
-                                        id="read-only-input"
-                                        label="Expediente"
-                                        defaultValue={particular.numero_expediente}
-                                        className={classes.textField}
-                                        margin="normal"
-                                        InputProps={{
-                                            readOnly: true,
-                                            className:classes.fontSmall,
-                                            endAdornment: (
-                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(8)}}>
-                                                    <IconHelp/>
-                                                </InputAdornment>
-                                            )
-                                        }}
-                                    />
-                                </Grid>
-                                <Grid item md = {6} xs = {12}>
-                                    <TextField
-                                        multiline={true}
-                                        id="read-only-input"
-                                        label="Nombre/Razón social"
-                                        defaultValue={particular.nombre_razon_social}
-                                        className={classes.textField}
-                                        margin="normal"
-                                        InputProps={{
-                                            readOnly: true,
-                                            className:classes.fontSmall,
-                                            endAdornment: (
-                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(9)}}>
-                                                    <IconHelp/>
-                                                </InputAdornment>
-                                            )
-                                        }}
-                                    />
-                                </Grid>
-
-                                <Grid item md = {6} xs = {12}>
-                                    <TextField
-                                        multiline={true}
-                                        id="read-only-input"
-                                        label="Institución"
-                                        defaultValue={particular.institucion_dependencia ? particular.institucion_dependencia.nombre + '('+particular.institucion_dependencia.siglas+')' : particular.institucion_dependencia}
-                                        className={classes.textField}
-                                        margin="normal"
-                                        InputProps={{
-                                            readOnly: true,
-                                            className:classes.fontSmall,
-                                            endAdornment: (
-                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(10)}}>
-                                                    <IconHelp/>
-                                                </InputAdornment>
-                                            )
-                                        }}
-                                    />
-                                </Grid>
-                                <Grid item md = {6} xs = {12}>
-                                    <TextField
-                                        multiline={true}
-                                        id="read-only-input"
-                                        label="Autoridad sancionadora"
-                                        defaultValue={particular.autoridad_sancionadora}
-                                        className={classes.textField}
-                                        margin="normal"
-                                        InputProps={{
-                                            readOnly: true,
-                                            className:classes.fontSmall,
-                                            endAdornment: (
-                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(11)}}>
-                                                    <IconHelp/>
-                                                </InputAdornment>
-                                            )
-                                        }}
-                                    />
-                                </Grid>
-                                <Grid item md={6} xs={12}>
-                                    <TextField
-                                        multiline={true}
-                                        id="read-only-input"
-                                        label="Responsable de la información"
-                                        defaultValue={particular.responsable}
-                                        className={classes.textField}
-                                        margin="normal"
-                                        InputProps={{
-                                            readOnly: true,
-                                            className:classes.fontSmall,
-                                            endAdornment: (
-                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(6)}}>
-                                                    <IconHelp/>
-                                                </InputAdornment>
-                                            )
-                                        }}
-                                    />
-                                </Grid>
-
 
                                 <Grid item xs={12} md={6}>
-                                    <TextField
-                                        id="read-only-input"
-                                        label="Tipo falta"
-                                        defaultValue={particular.tipo_falta}
-                                        className={classes.textField}
-                                        margin="normal"
-                                        multiline={true}
-                                        InputProps={{
-                                            readOnly: true,
-                                            className:classes.fontSmall,
-                                            endAdornment: (
-                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(12)}}>
-                                                    <IconHelp/>
-                                                </InputAdornment>
-                                            )
-                                        }}
-                                    />
+                                    <Typography variant={"h6"}>
+                                        {particular.particularSancionado.nombreRazonSocial}
+                                    </Typography>
                                 </Grid>
                                 <Grid item xs={12} md={6}>
-                                    <TextField
-                                        multiline={true}
-                                        id="read-only-input"
-                                        label="Tipo sanción"
-                                        defaultValue={particular.tipo_sancion}
-                                        className={classes.textField}
-                                        margin="normal"
-                                        InputProps={{
-                                            readOnly: true,
-                                            className:classes.fontSmall,
-                                            endAdornment: (
-                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(13)}}>
-                                                    <IconHelp/>
-                                                </InputAdornment>
-                                            )
-                                        }}
-                                    />
-                                </Grid>
-                                <Grid item md = {6} xs = {12}>
-                                    <TextField
-                                        multiline={true}
-                                        id="read-only-input"
-                                        label="Sentido resolución"
-                                        defaultValue={particular.resolucion ? particular.resolucion.sentido : particular.resolucion}
-                                        className={classes.textField}
-                                        margin="normal"
-                                        InputProps={{
-                                            readOnly: true,
-                                            className:classes.fontSmall,
-                                            endAdornment: (
-                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(14)}}>
-                                                    <IconHelp/>
-                                                </InputAdornment>
-                                            )
-                                        }}
-                                    />
-                                </Grid>
-
-                                <Grid item md = {6} xs = {12}>
-                                    <TextField
-                                        multiline={true}
-                                        id="read-only-input"
-                                        label="Fecha captura"
-                                        defaultValue={particular.fecha_captura}
-                                        className={classes.textField}
-                                        margin="normal"
-                                        InputProps={{
-                                            readOnly: true,
-                                            className:classes.fontSmall,
-                                            endAdornment: (
-                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(3)}}>
-                                                    <IconHelp/>
-                                                </InputAdornment>
-                                            )
-                                        }}
-                                    />
-                                </Grid>
-                                <Grid item md = {6} xs = {12}>
-                                    <TextField
-                                        multiline={true}
-                                        id="read-only-input"
-                                        label="Fecha notificación"
-                                        defaultValue={particular.fecha_notificacion}
-                                        className={classes.textField}
-                                        margin="normal"
-                                        InputProps={{
-                                            readOnly: true,
-                                            className:classes.fontSmall,
-                                            endAdornment: (
-                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(2)}}>
-                                                    <IconHelp/>
-                                                </InputAdornment>
-                                            )
-                                        }}
-                                    />
-                                </Grid>
-
-
-                                <Grid item md={6} xs={12}>
-                                    <TextField
-                                        multiline={true}
-                                        id="read-only-input"
-                                        label="Plazo"
-                                        defaultValue={particular.plazo}
-                                        className={classes.textField}
-                                        margin="normal"
-                                        InputProps={{
-                                            readOnly: true,
-                                            className:classes.fontSmall,
-                                            endAdornment: (
-                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(4)}}>
-                                                    <IconHelp/>
-                                                </InputAdornment>
-                                            )
-                                        }}
-                                    />
-                                </Grid>
-                                <Grid item md={6} xs={12}>
-                                    <TextField
-                                        multiline={true}
-                                        id="read-only-input"
-                                        label="Monto"
-                                        defaultValue={particular.multa ? particular.multa.monto + ' '+particular.multa.moneda : particular.multa}
-                                        className={classes.textField}
-                                        margin="normal"
-                                        InputProps={{
-                                            readOnly: true,
-                                            className:classes.fontSmall,
-                                            endAdornment: (
-                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(5)}}>
-                                                    <IconHelp/>
-                                                </InputAdornment>
-                                            )
-                                        }}
-                                    />
+                                    <Typography className={classes.tituloCard}>
+                                        Dependencia
+                                    </Typography>
+                                    <Typography className={classes.dataCard}>
+                                        {particular.institucionDependencia.nombre}{particular.institucionDependencia.siglas ? '('+particular.institucionDependencia.siglas+')': '' }
+                                    </Typography>
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <TextField
-                                        id="read-only-input"
-                                        label="Objeto social"
-                                        defaultValue={particular.objetoSocial}
-                                        className={classes.textField}
-                                        margin="normal"
-                                        multiline={true}
-                                        InputProps={{
-                                            readOnly: true,
-                                            className:classes.fontSmall,
-                                            endAdornment: (
-                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(1)}}>
-                                                    <IconHelp/>
-                                                </InputAdornment>
-                                            )
-                                        }}
-                                    />
-                                </Grid>
-                                <Grid item xs={12} >
-                                    <TextField
-                                        id="read-only-input"
-                                        label="Hechos"
-                                        defaultValue={particular.causa_motivo_hechos}
-                                        className={classes.textField}
-                                        margin="normal"
-                                        multiline={true}
-                                        InputProps={{
-                                            readOnly: true,
-                                            className:classes.fontSmall,
-                                            endAdornment: (
-                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(0)}}>
-                                                    <IconHelp/>
-                                                </InputAdornment>
-                                            )
-                                        }}
-                                    />
+                                    <Divider className={classes.divider} variant={"middle"}/>
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <TextField
-                                        multiline={true}
-                                        id="read-only-input"
-                                        label="Observaciones"
-                                        defaultValue={particular.observaciones}
-                                        className={classes.textField}
-                                        margin="normal"
-                                        InputProps={{
-                                            readOnly: true,
-                                            className:classes.fontSmall,
-                                            endAdornment: (
-                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(15)}}>
-                                                    <IconHelp/>
-                                                </InputAdornment>
-                                            )
-                                        }}
-                                    />
+                                    <Typography className={classes.titulo} align={"center"}>
+                                        Información general
+                                    </Typography>
                                 </Grid>
-                                {
-                                    /*
-                                     <Grid item md={6} xs={12}>
-                                    <TextField
-                                        id="read-only-input"
-                                        label="Fecha de última actualización"
-                                        defaultValue={particular.fecha_captura}
-                                        className={classes.textField}
-                                        margin="normal"
-                                        InputProps={{
-                                            readOnly: true,
-                                            className:classes.fontSmall,
-                                            endAdornment: (
-                                                <InputAdornment position="end" onClick={()=>{this.openPoper(); this.controlGlosario(7)}}>
-                                                    <IconHelp/>
-                                                </InputAdornment>
-                                            )
-                                        }}
-                                    />
+                                <Grid item xs={12} md={4}>
+                                    <Typography className={classes.tituloCard}>
+                                        Expediente
+                                    </Typography>
+                                    <Typography className={classes.dataCard}>
+                                        {particular.expediente}
+                                    </Typography>
                                 </Grid>
-                                     */
-                                }
+                                <Grid item xs={12} md={4}>
+                                    <Typography className={classes.tituloCard}>
+                                        Tipo persona
+                                    </Typography>
+                                    <Typography className={classes.dataCard}>
+                                        {particular.particularSancionado.tipoPersona}
+                                    </Typography>
+                                </Grid>
 
-                                <Grid item md={6} xs={12} className={classes.centrado}></Grid>
-                                <Grid item md={6} xs={12} className={classes.centrado}>
-                                    <Button variant="contained"
-                                            className={classes.downloadButton}
-                                            onClick={()=>this.printPDF()}>
-                                        <DownloadIcon className={classes.downloadIcon}/>
-                                        {'Descargar constancia'}
-                                    </Button>
+                                <Grid item xs={12} md={4}>
+                                    <Typography className={classes.tituloCard}>
+                                        Objeto contrato
+                                    </Typography>
+                                    <Typography className={classes.dataCard}>
+                                        {particular.objetoContrato}
+                                    </Typography>
+                                </Grid>
+
+
+                                <Grid item xs={12} md={4}>
+                                    <Typography className={classes.tituloCard}>
+                                        Tipo falta
+                                    </Typography>
+                                    <Typography className={classes.dataCard}>
+                                        {particular.tipoFalta}
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={12} md={4}>
+                                    <Typography className={classes.tituloCard}>
+                                       Acto
+                                    </Typography>
+                                    <Typography className={classes.dataCard}>
+                                        {particular.acto}
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={12} md={particular.particularSancionado.objetoSocial.length<86?4:12}>
+                                    <Typography className={classes.tituloCard}>
+                                        Objeto social
+                                    </Typography>
+                                    <Typography className={classes.dataCard}>
+                                        {particular.particularSancionado.objetoSocial}
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={12} md={12}>
+                                    <Typography className={classes.tituloCard}>
+                                        Causa, motivo o hechos
+                                    </Typography>
+                                    <Typography className={classes.dataCard}>
+                                        {particular.causaMotivoHechos}
+                                    </Typography>
+                                </Grid>
+
+                                <Grid item xs={12}>
+                                    <Typography className={classes.titulo} align={"center"}>
+                                        Información de la sanción
+                                    </Typography>
+                                </Grid>
+
+                                <Grid item xs={12} md={4}>
+                                    <Typography className={classes.tituloCard}>
+                                        Autoridad sancionadora
+                                    </Typography>
+                                    <Typography className={classes.dataCard}>
+                                        {particular.autoridadSancionadora}
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={12} md={4}>
+                                    <Typography className={classes.tituloCard}>
+                                        Fecha notificación
+                                    </Typography>
+                                    <Typography className={classes.dataCard}>
+                                        {particular.resolucion.fechaNotificacion}
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={12} md={4}>
+                                    <Typography className={classes.tituloCard}>
+                                        Tipo sanción
+                                    </Typography>
+                                    <Typography className={classes.dataCard}>
+                                        {particular.tipoSancion.map(e=>e.valor).join(', ')}
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={12} md={4}>
+                                    <Typography className={classes.tituloCard}>
+                                        Multa
+                                    </Typography>
+                                    <Typography className={classes.dataCard}>
+                                        {particular.multa.monto} {particular.multa.moneda.clave}
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={12} md={4}>
+                                    <Typography className={classes.tituloCard}>
+                                        Inhabilitación plazo
+                                    </Typography>
+                                    <Typography className={classes.dataCard}>
+                                        {particular.inhabilitacion.plazo}
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={12} md={3}>
+                                    <Typography className={classes.tituloCard}>
+                                        Inhabilitación periodo
+                                    </Typography>
+                                    <Typography className={classes.dataCard}>
+                                        Del {particular.inhabilitacion.fechaInicial} al {particular.inhabilitacion.fechaFinal}
+                                    </Typography>
+                                </Grid>
+
+                                <Grid item xs={12}>
+                                    <Typography className={classes.tituloCard}>
+                                        Observaciones
+                                    </Typography>
+                                    <Typography className={classes.dataCard}>
+                                        {particular.observaciones}
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={12} style={{textAlign: 'right'}}>
+                                    <Button className={classes.btnBack} onClick={() => hideDetalle()}
+                                            startIcon={<ArrowBackIosIcon/>}
+                                    >Regresar</Button>
                                 </Grid>
                             </Grid>
+                        </Paper>
+                    </Grid>
+                </Grid>
 
-                        </form>
-
-
-                    </div>
-                </Modal>
             </div>
-        );
+        )
     }
+
 }
 
-DetalleParticular.propTypes = {
+DetalleParticularSancionado.propTypes = {
     classes: PropTypes.object.isRequired,
+    hideDetalle: PropTypes.func.isRequired,
+    particular: PropTypes.object.isRequired
 };
 
-// We need an intermediary variable for handling the recursive nesting.
-//const SimpleModalWrapped = withStyles(styles)(SimpleModal);
-
-export default withStyles(styles)(DetalleParticular);
+export default withStyles(styles)(DetalleParticularSancionado);

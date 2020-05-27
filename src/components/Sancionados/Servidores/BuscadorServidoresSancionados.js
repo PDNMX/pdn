@@ -47,7 +47,7 @@ const styles = theme => ({
     },
 });
 
-class EnhancedTable extends React.Component {
+class BuscadorServidoresSancionados extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -101,8 +101,8 @@ class EnhancedTable extends React.Component {
     }
 }
 
-EnhancedTable.propTypes = {
+BuscadorServidoresSancionados.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(EnhancedTable);
+export default withStyles(styles)(BuscadorServidoresSancionados);

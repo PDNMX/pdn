@@ -38,17 +38,17 @@ class Previos extends React.Component {
 
 
     render() {
-        const {previos,classes} = this.props;
+        const {data,classes} = this.props;
         return (
             <div>
                 <Grid container justify='center' spacing={0} className={classes.gridTable}>
                     <Grid item xs={12}>
-                        {previos && previos.length > 0 &&
+                        {data && data.length > 0 &&
                         <Typography variant="body1" >La siguiente tabla muestra el resultado devuelto por cada Proveedor de información a través de su API. Pulsa en <IconSubdirectory className={classes.iconoVer}/> para ver el detalle<br/></Typography>
                         }
                     </Grid>
                     <Grid item xs={12}>
-                        {previos && previos.length > 0 &&
+                        {data && data.length > 0 &&
                         <div className={classes.container}>
                             <Table className={classes.table}>
                                 <TableHead style={{backgroundColor:'rgb(52, 179, 235)'}}>
@@ -61,7 +61,7 @@ class Previos extends React.Component {
                                     </TableRow>
                                 </TableHead>
                                 <TableBody style={{backgroundColor:'#f2f2f2'}}>
-                                    {previos.map(row => (
+                                    {data.map(row => (
                                         <TableRow key={row.supplier_id}>
                                             <TableCell align="left">{row.levels? row.levels.join(','):''}</TableCell>
                                             <TableCell align="left">{row.supplier_name}</TableCell>
@@ -80,7 +80,7 @@ class Previos extends React.Component {
                                                 {row.totalRows>0 &&
                                                 <Tooltip title={"Ver"}>
                                                     <IconSubdirectory className={classes.iconoVer} onClick={()=>{
-                                                        this.props.handleChangeAPI(row.supplier_id);
+                                                        this.props.handleChangeSujetoObligado(row.supplier_id);
                                                     }}/>
                                                 </Tooltip>
                                                 }
@@ -110,6 +110,8 @@ class Previos extends React.Component {
 
 Previos.propTypes = {
     classes: PropTypes.object.isRequired,
+    data: PropTypes.array.isRequired,
+    handleChangeSujetoObligado: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(Previos);
