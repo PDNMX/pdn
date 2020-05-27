@@ -156,6 +156,9 @@ class BusquedaServidor extends React.Component {
                     if(!this.state.campoOrden && event.target.value)this.setState({campoOrden: {label: 'RFC', value: 'rfc'} });
                     if(!event.target.value)this.setState({campoOrden:''})
                     break;
+                default:
+                    console.log(varState);
+                    break;
             }
         })
     };

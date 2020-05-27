@@ -127,6 +127,9 @@ class UploadForm extends React.Component {
                   urlTipoSistema = 'https://raw.githubusercontent.com/PDNMX/api_docs/master/S3/oas/OAS_API_Servidores_Sancionados.json';
                   esquemaOAS = 'ssancionados'
                   break;
+                default:
+                  console.log(tipoEsquema);
+                  break;
               }
 
               this.setState({disabled: !this.state.disabled, label: 'Validando...'});

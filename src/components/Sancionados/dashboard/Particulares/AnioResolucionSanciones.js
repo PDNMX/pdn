@@ -87,7 +87,7 @@ class AnioResolucionSanciones extends React.Component {
                         },
                         height: 300,
                         label: function (d) {
-                            return d["anio"] + "\n" + "(" + ((d["y"] * 100) / total).toFixed(2) + "%)"
+                            return d["anio"] + "\n (" + ((d["y"] * 100) / total).toFixed(2) + "%)"
                         },
                         legend: false,
                         tooltipConfig: {

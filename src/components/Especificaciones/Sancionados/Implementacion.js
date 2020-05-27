@@ -55,7 +55,7 @@ class Implementacion extends React.Component{
                             <li className={classes.li}>
                                 <Typography paragraph display='inline'>
 
-                                    <b>Diagnóstico:</b> Revisar y comparar los datos contenidos en su base de datos con los especificados en el <a target={'_blank'} href={'https://docs.google.com/spreadsheets/d/1wVaVFEJQloanwasIAASFiKGC8mbNEmeijK0F58PxgCA/edit?usp=sharing'}>Diccionario de Datos del Formato de Datos de Servidores Públicos y Particulares Sancionados</a>, es importante contar con todos los datos solicitados en el nuevo formato, sin embargo, esto no imposibilita realizar pruebas de adopción del estándar usando los datos con los que se cuenta.
+                                    <b>Diagnóstico:</b> Revisar y comparar los datos contenidos en su base de datos con los especificados en el <a target={'_blank'} href={'https://docs.google.com/spreadsheets/d/1wVaVFEJQloanwasIAASFiKGC8mbNEmeijK0F58PxgCA/edit?usp=sharing'} rel="noopener noreferrer">Diccionario de Datos del Formato de Datos de Servidores Públicos y Particulares Sancionados</a>, es importante contar con todos los datos solicitados en el nuevo formato, sin embargo, esto no imposibilita realizar pruebas de adopción del estándar usando los datos con los que se cuenta.
 
                                 </Typography>
                             </li>
