@@ -7,6 +7,7 @@ import rp from "request-promise";
 import MensajeErrorDatos from "../../Tablas/MensajeErrorDatos";
 import BarChart from "d3plus-react/es/src/BarChart";
 import * as d3 from "d3";
+import {List, ListItem, ListItemText} from "@material-ui/core";
 
 const styles = theme => ({
     frameChart: {
@@ -18,9 +19,6 @@ const styles = theme => ({
         marginBottom: "30px",
     },
     descripcion: {
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
         marginTop: "15px",
         paddingLeft: "10px",
         paddingRight: "10px",
@@ -114,18 +112,36 @@ class Ejercicio extends React.Component {
                         </Typography>
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>
-                        <Typography variant={"body1"}>
+                        <Typography variant={"body1"} paragraph>
                             Los procesos de contratación están divididos en cuatro tipos, en la siguiente gráfica podrás observar cuántos procedimientos de
                             cada tipo han habido en cada año. Como se aprecia, la contratación es el tipo más común a lo largo del tiempo, mientras que en
-                            los años 2017 y 2018 hubo un incremento de más del doble en las concesiones.<br/><br/>
-                            <b>Tipos de procesos: </b><br/>
-                            <b>Contrataciones públicas: </b>Se contemplan aquellas sujetas a la Ley de Adquisiciones, Arrendamientos y Servicios del Sector Público (LAASSP), la Ley de Obras Públicas y Servicios Relacionados con las Mismas (LOPSRM) y la Ley de Asociaciones Público Privadas (LAPP).<br/>
-                            <b>Concesiones, licencias, permisos, autorizaciones y prórrogas: </b>Comprende los regulados por las diversas disposiciones jurídicas de carácter federal que otorgan las dependencias de la Administración Pública Federal (APF).<br/>
-                            <b>Enajenación de bienes muebles: </b>Que incluyen los actos traslativos de propiedad de los bienes muebles de la federación y de las entidades paraestatales conforme a la Ley General de Bienes Nacionales (LGBN).<br/>
-                            <b>Asignación y emisión de dictámenes de avalúos nacionales: </b>Comprende únicamente los que son competencia del Instituto de Administración y Avalúos de Bienes Nacionales (INDAABIN).
-
-
+                            los años 2017 y 2018 hubo un incremento de más del doble en las concesiones.
                         </Typography>
+
+                        <Typography style={{fontWeight: "bold"}} paragraph>Tipos de procesos</Typography>
+
+                        <List>
+                            <ListItem>
+                                <ListItemText>
+                                    1. <b>Contrataciones públicas: </b>Se contemplan aquellas sujetas a la Ley de Adquisiciones, Arrendamientos y Servicios del Sector Público (LAASSP), la Ley de Obras Públicas y Servicios Relacionados con las Mismas (LOPSRM) y la Ley de Asociaciones Público Privadas (LAPP).
+                                </ListItemText>
+                            </ListItem>
+                            <ListItem>
+                                <ListItemText>
+                                    2. <b>Concesiones, licencias, permisos, autorizaciones y prórrogas: </b>Comprende los regulados por las diversas disposiciones jurídicas de carácter federal que otorgan las dependencias de la Administración Pública Federal (APF).
+                                </ListItemText>
+                            </ListItem>
+                            <ListItem>
+                                <ListItemText>
+                                    3. <b>Enajenación de bienes muebles: </b>Que incluyen los actos traslativos de propiedad de los bienes muebles de la federación y de las entidades paraestatales conforme a la Ley General de Bienes Nacionales (LGBN).
+                                </ListItemText>
+                            </ListItem>
+                            <ListItem>
+                                <ListItemText>
+                                    4. <b>Asignación y emisión de dictámenes de avalúos nacionales: </b>Comprende únicamente los que son competencia del Instituto de Administración y Avalúos de Bienes Nacionales (INDAABIN).
+                                </ListItemText>
+                            </ListItem>
+                        </List>
                     </Grid>
 
                     <Grid item xs={12} id={"graf"}>
