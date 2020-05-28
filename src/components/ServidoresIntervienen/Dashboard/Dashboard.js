@@ -2,7 +2,7 @@ import React from 'react';
 import {withStyles} from "@material-ui/core/styles";
 import PropTypes from 'prop-types';
 import Grid from "@material-ui/core/Grid/Grid";
-import {Typography} from "@material-ui/core"
+import {Typography, List, ListItem, ListItemText} from "@material-ui/core"
 import Ejercicio from "./Ejericicio";
 import Agrupaciones from "./Agrupaciones";
 import Tops from "./Tops";
@@ -15,8 +15,8 @@ const styles = theme => ({
     sectionT: {
         maxWidth: '1200px',
         overflowX: 'auto',
-        marginBottom: "25px",
-        marginTop: "53px"
+        marginBottom: theme.spacing(2),
+        marginTop: theme.spacing(4)
     },
     aux:{
         [theme.breakpoints.up('sm')]: {
@@ -75,25 +75,35 @@ class Dashboard extends React.Component {
                             desde diferentes perspectivas que involucran lo antes mencionado.
                         </Typography>
 
-                        <Typography>
-                            1. <b>Ejercicio fiscal.</b> Permite conocer el número de funcionarios que intervienen en
-                            procesos de contratación en cada uno de los ejercicios fiscales. <a
-                            href="#g1">Ver</a>
-                        </Typography>
-                        <Typography>
-                            2. <b>Procedimiento.</b> Conoce la cantidad de cada uno de los tipos de procedimiento que se
-                            han llevado a cabo en cada ejercicio fiscal. <a href="#g2">Ver</a>
-                        </Typography>
-                        <Typography>
-                            3. <b>Ejercicios, ramos e instituciones.</b> Observa más a fondo el comportamiento de los
-                            funcionarios que intervienen en procesos de contratación,
-                            podrás configuar variables como el Ejercicio Fiscal, el Ramo y/o la Institución para obtener
-                            información más detallada <a href="#g3">Ver</a>
-                        </Typography>
-                        <Typography paragraph>
-                            4. <b>Top 10.</b> En esta gráfica puedes conocer los procedimientos, las instituciones, unidades
-                            responsables o puestos con más registros de manera general o bien en cada ejercicio, ramo, o institución. <a href="#g4">Ver</a>
-                        </Typography>
+                        <List>
+                            <ListItem>
+                                <ListItemText>
+                                    1. <b>Ejercicio fiscal:</b> Permite conocer el número de funcionarios que intervienen en
+                                    procesos de contratación en cada uno de los ejercicios fiscales. <a
+                                    href="#g1">Ver</a>
+                                </ListItemText>
+                            </ListItem>
+                            <ListItem>
+                                <ListItemText>
+                                    2. <b>Procedimiento:</b> Conoce la cantidad de cada uno de los tipos de procedimiento que se
+                                    han llevado a cabo en cada ejercicio fiscal. <a href="#g2">Ver</a>
+                                </ListItemText>
+                            </ListItem>
+                            <ListItem>
+                                <ListItemText>
+                                    3. <b>Ejercicios, ramos e instituciones:</b> Observa más a fondo el comportamiento de los
+                                    funcionarios que intervienen en procesos de contratación,
+                                    podrás configuar variables como el Ejercicio Fiscal, el Ramo y/o la Institución para obtener
+                                    información más detallada <a href="#g3">Ver</a>
+                                </ListItemText>
+                            </ListItem>
+                            <ListItem>
+                                <Typography paragraph>
+                                    4. <b>Top 10:</b> En esta gráfica puedes conocer los procedimientos, las instituciones, unidades
+                                    responsables o puestos con más registros de manera general o bien en cada ejercicio, ramo, o institución. <a href="#g4">Ver</a>
+                                </Typography>
+                            </ListItem>
+                        </List>
                     </Grid>
 
                     <Grid item xs={12} className={classes.sectionT} id={"g1"}>
