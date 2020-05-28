@@ -10,19 +10,19 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Button from "@material-ui/core/Button";
 import {Treemap} from "d3plus-react";
 import * as d3 from "d3";
-import MensajeErrorDatos from "../../Tablas/MensajeErrorDatos";
+import Alert from "@material-ui/lab/Alert";
 
 const styles = theme => ({
     frameChart: {
-        marginTop: "15px",
-        marginBottom: "15px"
+        marginTop: theme.spacing(1),
+        marginBottom: theme.spacing(1)
     },
     titulo: {
         textAlign: "center",
         marginBottom: theme.spacing(2),
         fontWeight: "bold"
     },
-    descripcion: {
+    item: {
         marginTop: theme.spacing(2),
         marginBottom: theme.spacing(2),
     },
@@ -235,13 +235,11 @@ class Agrupaciones extends React.Component {
         const {classes} = this.props;
         return (
             <Grid container>
-                <Grid item xs={12}>
+                <Grid item xs={12} className={classes.item}>
                     <Typography variant={"h6"} className={classes.titulo}>
                         Ejercicios, ramos e instituciones
                     </Typography>
-                </Grid>
 
-                <Grid item xs={12} className={classes.descripcion}>
                     <Typography paragraph>
                         En las secciones anteriores se puede observar de manera general el comportamiento de los procesos de contratación.
                         Resulta interesante conocer cómo se distribuyen estos según distintas variables como ejercicio fiscal, ramo e institución.
@@ -365,7 +363,7 @@ class Agrupaciones extends React.Component {
                     }
                     {
                         this.state.error &&
-                        <MensajeErrorDatos/>
+                        <Alert severity="error">No disponible por el momento, intente más tarde.</Alert>
                     }
                 </Grid>
             </Grid>

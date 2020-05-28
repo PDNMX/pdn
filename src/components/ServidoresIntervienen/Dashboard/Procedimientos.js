@@ -4,25 +4,26 @@ import PropTypes from 'prop-types';
 import Grid from "@material-ui/core/Grid/Grid";
 import {Typography} from "@material-ui/core";
 import rp from "request-promise";
-import MensajeErrorDatos from "../../Tablas/MensajeErrorDatos";
+import Alert from "@material-ui/lab/Alert";
 import BarChart from "d3plus-react/es/src/BarChart";
 import * as d3 from "d3";
 import {List, ListItem, ListItemText} from "@material-ui/core";
 
 const styles = theme => ({
     frameChart: {
-        marginTop: "15px",
-        marginBottom: "15px"
+        marginTop: theme.spacing(1),
+        marginBottom: theme.spacing(1)
     },
     titulo: {
         textAlign: "center",
-        marginBottom: "30px",
+        marginBottom: theme.spacing(2),
+        fontWeight: "bold"
     },
-    descripcion: {
-        marginTop: "15px",
-        paddingLeft: "10px",
-        paddingRight: "10px",
-        marginBottom: "30px",
+    item: {
+        marginTop: theme.spacing(1),
+        paddingLeft: theme.spacing(1),
+        paddingRight: theme.spacing(1),
+        marginBottom: theme.spacing(3),
     },
     btnDownload: {
         textAlign: "right"
@@ -106,12 +107,11 @@ class Ejercicio extends React.Component {
         return (
             <div>
                 <Grid container spacing={0} justify='center' className={classes.frameChart}>
-                    <Grid item xs={12}>
-                        <Typography variant={"h6"} className={classes.titulo}>
-                            <b>{"Procedimientos"}</b>
+                    <Grid item xs={12} className={classes.item}>
+                        <Typography variant={"h6"} className={classes.titulo} paragraph>
+                            Procedimientos
                         </Typography>
-                    </Grid>
-                    <Grid item xs={12} className={classes.descripcion}>
+
                         <Typography variant={"body1"} paragraph>
                             Los procesos de contratación están divididos en cuatro tipos, en la siguiente gráfica podrás observar cuántos procedimientos de
                             cada tipo han habido en cada año. Como se aprecia, la contratación es el tipo más común a lo largo del tiempo, mientras que en
@@ -151,7 +151,7 @@ class Ejercicio extends React.Component {
                         }
                         {
                             this.state.error &&
-                            <MensajeErrorDatos/>
+                            <Alert severity="error"> No disponible por el momento, intente más tarde. </Alert>
                         }
                     </Grid>
                 </Grid>
