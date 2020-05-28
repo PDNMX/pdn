@@ -8,8 +8,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl/FormControl";
 import InputLabel from '@material-ui/core/InputLabel';
 import Button from "@material-ui/core/Button";
-import Toolbar from '@material-ui/core/Toolbar';
-import MensajeErrorDatos from "../../Tablas/MensajeErrorDatos";
+import Alert from "@material-ui/lab/Alert";
 import {BarChart} from "d3plus-react";
 
 const styles = theme => ({
@@ -19,12 +18,10 @@ const styles = theme => ({
     },
     titulo: {
         textAlign: "center",
-        marginBottom: theme.spacing(2)
+        marginBottom: theme.spacing(2),
+        fontWeight: "bold"
     },
-    descripcion: {
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
+    item: {
         marginTop: theme.spacing(2),
         marginBottom: theme.spacing(2),
     },
@@ -248,129 +245,127 @@ class Tops extends React.Component {
         const {classes} = this.props;
         return (
             <div>
-                <Toolbar>
-                    <Grid container>
-                        <Grid item xs={12}>
-                            <Typography variant={"h6"} className={classes.titulo}>
-                                <b>{"Top 10"}</b>
-                            </Typography>
-                        </Grid>
-                        <Grid item xs={12} className={classes.descripcion}>
-                            <Typography variant={"body1"}>
-                                En esta gráfica puedes conocer los procedimientos, las instituciones, unidades responsables o puestos con más registros de manera general o bien en cada ejercicio, ramo, o institución.
+                <Grid container>
+                    <Grid item xs={12} className={classes.item}>
+                        <Typography variant={"h6"} className={classes.titulo} paragraph>
+                            Top 10
+                        </Typography>
 
-                                <br/><br/>Selecciona una categoría y da clic en <b>Buscar</b>
-                            </Typography>
-                        </Grid>
-                        <Grid item md={3} xs={12}>
-                            <FormControl className={classes.formControl}>
-                                <InputLabel htmlFor="campoSelectEjercicio">Ejercicio</InputLabel>
-                                <Select style={{marginTop: '0px'}}
-                                        value={this.state.ejercicio}
-                                        onChange={(e) => this.handleChangeCampo('ejercicio', e)}
-                                        inputProps={{
-                                            name: 'campoSelectEjercicio',
-                                            id: 'campoSelectEjercicio',
-                                        }}
-                                >
-                                    <MenuItem key={''} value={''}> TODOS</MenuItem>
-                                    {
-                                        this.state.ejercicios.map(item => {
-                                            return <MenuItem key={item.ejercicio} value={item.ejercicio}>
-                                                {item.ejercicio}
-                                            </MenuItem>
-                                        })
-                                    }
-                                </Select>
+                        <Typography variant={"body1"} paragraph>
+                            En esta gráfica puedes conocer los procedimientos, las instituciones, unidades responsables o puestos con más registros de manera general o bien en cada ejercicio, ramo, o institución.
+                        </Typography>
 
-                            </FormControl>
-                        </Grid>
-                        <Grid item md={3} xs={12}>
-                            <FormControl className={classes.formControl}>
-                                <InputLabel htmlFor="campoSelectRamo">Ramo</InputLabel>
-                                <Select style={{marginTop: '0px'}}
-                                        value={this.state.ramo}
-                                        onChange={(e) => this.handleChangeCampo('ramo', e)}
-                                        inputProps={{
-                                            name: 'campoSelectRamo',
-                                            id: 'campoSelectRamo',
-                                        }}
-                                >
-                                    <MenuItem value={''}>TODOS</MenuItem>
-                                    {
-                                        this.state.ramos.map(item => {
-                                            return <MenuItem value={item.ramo} key={item.ramo}>
-                                                {item.ramo}
-                                            </MenuItem>
-                                        })
-                                    }
-                                </Select>
-
-                            </FormControl>
-                        </Grid>
-                        <Grid item md={3} xs={12}>
-                            <FormControl className={classes.formControl}>
-                                <InputLabel htmlFor="campoSelectInstitucion">Institución</InputLabel>
-                                <Select style={{marginTop: '0px'}}
-                                        value={this.state.institucion}
-                                        onChange={(e) => this.handleChangeCampo('institucion', e)}
-                                        inputProps={{
-                                            name: 'campoSelectInstitucion',
-                                            id: 'campoSelectInstitucion',
-                                        }}
-                                >
-                                    <MenuItem value={''} key={"all"}>TODAS</MenuItem>
-                                    {
-                                        this.state.instituciones.map(item => {
-                                            return <MenuItem value={item.institucion} key={item.institucion}>
-                                                {item.institucion}
-                                            </MenuItem>
-                                        })
-                                    }
-                                </Select>
-
-                            </FormControl>
-                        </Grid>
-                        <Grid item md={3} xs={12}>
-                            <FormControl className={classes.formControl}>
-                                <InputLabel htmlFor="selectTop">Top</InputLabel>
-                                <Select style={{marginTop: '0px'}}
-                                        value={this.state.top}
-                                        onChange={(e) => this.handleChangeCampo('top', e)}
-                                        inputProps={{
-                                            name: 'selectTop',
-                                            id: 'selectTop',
-                                        }}
-                                >
-                                    <MenuItem key={0} value={"id_procedimiento"}>PROCEDIMIENTO</MenuItem>
-                                    <MenuItem key={1} value={"INSTITUCION"}>INSTITUCIONES</MenuItem>
-                                    <MenuItem key={2} value={"UR"}>UNIDADES RESPONSABLES</MenuItem>
-                                    <MenuItem key={3} value={"PUESTO"}>PUESTOS</MenuItem>
-                                </Select>
-
-                            </FormControl>
-                        </Grid>
-                        <Grid item xs={11}/>
-
-                        <Grid item xs={12} md={1} className={classes.buttonContainer}>
-                            <Button variant="contained" color="secondary" className={classes.button}
-                                    onClick={this.limpiarBusqueda}>
-                                Limpiar
-                            </Button>
-                        </Grid>
-                        <Grid item xs={12} id={"grafica"}>
-                            {
-                                this.state.methods && this.state.methods.data &&
-                                <BarChart config={this.state.methods}/>
-                            }
-                            {
-                                this.state.error &&
-                                <MensajeErrorDatos/>
-                            }
-                        </Grid>
+                        <Typography>
+                            Selecciona una categoría y da clic en el botón <b>Buscar</b>
+                        </Typography>
                     </Grid>
-                </Toolbar>
+                    <Grid item md={3} xs={12}>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="campoSelectEjercicio">Ejercicio</InputLabel>
+                            <Select style={{marginTop: '0px'}}
+                                    value={this.state.ejercicio}
+                                    onChange={(e) => this.handleChangeCampo('ejercicio', e)}
+                                    inputProps={{
+                                        name: 'campoSelectEjercicio',
+                                        id: 'campoSelectEjercicio',
+                                    }}
+                            >
+                                <MenuItem key={''} value={''}> TODOS</MenuItem>
+                                {
+                                    this.state.ejercicios.map(item => {
+                                        return <MenuItem key={item.ejercicio} value={item.ejercicio}>
+                                            {item.ejercicio}
+                                        </MenuItem>
+                                    })
+                                }
+                            </Select>
 
+                        </FormControl>
+                    </Grid>
+                    <Grid item md={3} xs={12}>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="campoSelectRamo">Ramo</InputLabel>
+                            <Select style={{marginTop: '0px'}}
+                                    value={this.state.ramo}
+                                    onChange={(e) => this.handleChangeCampo('ramo', e)}
+                                    inputProps={{
+                                        name: 'campoSelectRamo',
+                                        id: 'campoSelectRamo',
+                                    }}
+                            >
+                                <MenuItem value={''}>TODOS</MenuItem>
+                                {
+                                    this.state.ramos.map(item => {
+                                        return <MenuItem value={item.ramo} key={item.ramo}>
+                                            {item.ramo}
+                                        </MenuItem>
+                                    })
+                                }
+                            </Select>
+
+                        </FormControl>
+                    </Grid>
+                    <Grid item md={3} xs={12}>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="campoSelectInstitucion">Institución</InputLabel>
+                            <Select style={{marginTop: '0px'}}
+                                    value={this.state.institucion}
+                                    onChange={(e) => this.handleChangeCampo('institucion', e)}
+                                    inputProps={{
+                                        name: 'campoSelectInstitucion',
+                                        id: 'campoSelectInstitucion',
+                                    }}
+                            >
+                                <MenuItem value={''} key={"all"}>TODAS</MenuItem>
+                                {
+                                    this.state.instituciones.map(item => {
+                                        return <MenuItem value={item.institucion} key={item.institucion}>
+                                            {item.institucion}
+                                        </MenuItem>
+                                    })
+                                }
+                            </Select>
+
+                        </FormControl>
+                    </Grid>
+                    <Grid item md={3} xs={12}>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="selectTop">Top</InputLabel>
+                            <Select style={{marginTop: '0px'}}
+                                    value={this.state.top}
+                                    onChange={(e) => this.handleChangeCampo('top', e)}
+                                    inputProps={{
+                                        name: 'selectTop',
+                                        id: 'selectTop',
+                                    }}
+                            >
+                                <MenuItem key={0} value={"id_procedimiento"}>PROCEDIMIENTO</MenuItem>
+                                <MenuItem key={1} value={"INSTITUCION"}>INSTITUCIONES</MenuItem>
+                                <MenuItem key={2} value={"UR"}>UNIDADES RESPONSABLES</MenuItem>
+                                <MenuItem key={3} value={"PUESTO"}>PUESTOS</MenuItem>
+                            </Select>
+
+                        </FormControl>
+                    </Grid>
+                    <Grid item xs={11}/>
+
+                    <Grid item xs={12} md={1} className={classes.buttonContainer}>
+                        <Button variant="contained" color="secondary" className={classes.button}
+                                onClick={this.limpiarBusqueda}>
+                            Limpiar
+                        </Button>
+                    </Grid>
+                    <Grid item xs={12} id={"grafica"}>
+                        {
+                            this.state.methods && this.state.methods.data &&
+                            <BarChart config={this.state.methods}/>
+                        }
+                        {
+                            this.state.error &&
+                            <Alert severity="error">No disponible por el momento, intente más tarde.</Alert>
+                        }
+                    </Grid>
+                </Grid>
             </div>
         )
     }

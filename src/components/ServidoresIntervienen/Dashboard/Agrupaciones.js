@@ -1,7 +1,7 @@
 import React from 'react';
 import {withStyles} from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid/Grid";
-import {Typography} from "@material-ui/core";
+import {Typography, List, ListItem, ListItemText} from "@material-ui/core";
 import rp from "request-promise";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -10,21 +10,19 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Button from "@material-ui/core/Button";
 import {Treemap} from "d3plus-react";
 import * as d3 from "d3";
-import MensajeErrorDatos from "../../Tablas/MensajeErrorDatos";
+import Alert from "@material-ui/lab/Alert";
 
 const styles = theme => ({
     frameChart: {
-        marginTop: "15px",
-        marginBottom: "15px"
+        marginTop: theme.spacing(1),
+        marginBottom: theme.spacing(1)
     },
     titulo: {
         textAlign: "center",
-        marginBottom: theme.spacing(2)
+        marginBottom: theme.spacing(2),
+        fontWeight: "bold"
     },
-    descripcion: {
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
+    item: {
         marginTop: theme.spacing(2),
         marginBottom: theme.spacing(2),
     },
@@ -237,27 +235,51 @@ class Agrupaciones extends React.Component {
         const {classes} = this.props;
         return (
             <Grid container>
-                <Grid item xs={12}>
+                <Grid item xs={12} className={classes.item}>
                     <Typography variant={"h6"} className={classes.titulo}>
-                        <b>{"Ejercicios, ramos e instituciones"}</b>
+                        Ejercicios, ramos e instituciones
                     </Typography>
-                </Grid>
-                <Grid item xs={12} className={classes.descripcion}>
-                    <Typography>
+
+                    <Typography paragraph>
                         En las secciones anteriores se puede observar de manera general el comportamiento de los procesos de contratación.
                         Resulta interesante conocer cómo se distribuyen estos según distintas variables como ejercicio fiscal, ramo e institución.
-                        De acuerdo con los valores que selecciones, podrás obtener 5 diferentes combinaciones que mostrarán lo siguiente:<br/><br/>
-
-                        1.- <b>Ejercicio:</b> seleccionando únicamente el ejercicio, conocerás el total de funcionarios que intervinieron en procesos de contratación en cada uno de ellos.<br/>
-                        2.- <b>Ramo:</b> seleccionando únicamente el ramo, obtendrás el número de funcionarios que intervinieron en procesos de contratación dentro de ese ramo en cada uno de los ejercicios fiscales.<br/>
-                        3.- <b>Institución:</b> selecciona únicamente una institución o bien el ramo y la institución, para conocer el número de servidores que intervinieron en procesos de contratación que tuvo en cada uno de los ejercicios fiscales.<br/>
-                        4.- <b>Ejercicio y ramo: </b> Cada ramo cuenta con una serie de instituciones, selecciona un ejercicio fiscal y un ramo para conocer cómo se distribuyen el número de funcionarios en cada una de las Instituciones en los diferentes años.<br/>
-                        5.-<b>Ejercicio, ramo e institución: </b> Para conocer de manera puntual el número de servidores en procesos de contratación de determinada institución en cierto ejercicio, podrás seleccionar el ejercicio, ramo e institución o bien el ejercicio y la institución deseadas.<br/>
-
-
-                        <br/><br/>Para comenzar, selecciona algún filtro y da clic en el botón.<b>Buscar</b>
+                        De acuerdo con los valores que selecciones, podrás obtener 5 diferentes combinaciones que mostrarán lo siguiente:
                     </Typography>
+
+                    <List>
+                        <ListItem>
+                            <ListItemText>
+                                1. <b>Ejercicio:</b> seleccionando únicamente el ejercicio, conocerás el total de funcionarios que intervinieron en procesos de contratación en cada uno de ellos.
+                            </ListItemText>
+                        </ListItem>
+                        <ListItem>
+                            <ListItemText>
+                                2. <b>Ramo:</b> seleccionando únicamente el ramo, obtendrás el número de funcionarios que intervinieron en procesos de contratación dentro de ese ramo en cada uno de los ejercicios fiscales.
+                            </ListItemText>
+                        </ListItem>
+                        <ListItem>
+                            <ListItemText>
+                                3. <b>Institución:</b> selecciona únicamente una institución o bien el ramo y la institución, para conocer el número de servidores que intervinieron en procesos de contratación que tuvo en cada uno de los ejercicios fiscales.
+                            </ListItemText>
+                        </ListItem>
+                        <ListItem>
+                            <ListItemText>
+                                4. <b>Ejercicio y ramo: </b> Cada ramo cuenta con una serie de instituciones, selecciona un ejercicio fiscal y un ramo para conocer cómo se distribuyen el número de funcionarios en cada una de las Instituciones en los diferentes años.
+                            </ListItemText>
+                        </ListItem>
+                        <ListItem>
+                            <ListItemText>
+                                5. <b>Ejercicio, ramo e institución: </b> Para conocer de manera puntual el número de servidores en procesos de contratación de determinada institución en cierto ejercicio, podrás seleccionar el ejercicio, ramo e institución o bien el ejercicio y la institución deseadas.
+                            </ListItemText>
+                        </ListItem>
+                    </List>
+
+                    <Typography paragraph>
+                        Para comenzar, selecciona algún filtro y da clic en el botón <b>Buscar</b>
+                    </Typography>
+
                 </Grid>
+
                 <Grid item md={4} xs={12}>
                     <FormControl className={classes.formControl}>
                         <InputLabel htmlFor="campoSelectEjercicio">Ejercicio</InputLabel>
@@ -341,7 +363,7 @@ class Agrupaciones extends React.Component {
                     }
                     {
                         this.state.error &&
-                        <MensajeErrorDatos/>
+                        <Alert severity="error">No disponible por el momento, intente más tarde.</Alert>
                     }
                 </Grid>
             </Grid>

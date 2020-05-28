@@ -5,23 +5,17 @@ import Grid from "@material-ui/core/Grid/Grid";
 import {Typography} from "@material-ui/core"
 import {BarChart} from "d3plus-react";
 import rp from "request-promise";
-import MensajeErrorDatos from "../../Tablas/MensajeErrorDatos";
+import Alert from "@material-ui/lab/Alert";
 
 const styles = theme => ({
     frameChart: {
-        marginTop: "15px",
-        marginBottom: "15px"
+        marginTop: theme.spacing(1),
+        marginBottom: theme.spacing(1)
     },
     titulo: {
         textAlign: "center",
-        marginBottom: theme.spacing(2)
-    },
-    descripcion: {
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        marginTop: theme.spacing(2),
         marginBottom: theme.spacing(2),
+        fontWeight: "bold"
     }
 });
 
@@ -112,12 +106,11 @@ class Ejercicio extends React.Component {
             <div>
                 <Grid container spacing={0} justify='center' className={classes.frameChart}>
                     <Grid item xs={12}>
-                        <Typography variant={"h6"} className={classes.titulo}>
-                            <b>{"Ejercicio fiscal"}</b>
+                        <Typography variant={"h6"} className={classes.titulo} paragraph>
+                            Ejercicio fiscal
                         </Typography>
-                    </Grid>
-                    <Grid item xs={12} className={classes.descripcion}>
-                        <Typography variant={"body1"}>
+
+                        <Typography variant={"body1"} paragraph>
                             En este primer acercamiento, se muestra la información correspondiente a periodos fiscales de los años 2015 a la fecha.
                             Como se aprecia, hay un ligero crecimiento en el número de registros de servidores públicos que intervienen en procesos de contratación cada año.
                         </Typography>
@@ -130,7 +123,7 @@ class Ejercicio extends React.Component {
                         }
                         {
                             this.state.error &&
-                            <MensajeErrorDatos/>
+                            <Alert severity="error"> No disponible por el momento, intente más tarde.</Alert>
                         }
                     </Grid>
                 </Grid>

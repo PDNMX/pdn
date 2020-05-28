@@ -41,16 +41,15 @@ const styles = theme => ({
         paddingLeft: theme.spacing(1),
         paddingBottom: theme.spacing(8),
         paddingTop: theme.spacing(8)
-    },
-    containerD: {
-        backgroundColor: '#f6f6f6'
-    },
+    }
 });
 
-class EnhancedTable extends React.Component {
-    // constructor(props) {
-    //     super(props);
-    // }
+
+class BuscadorServidoresSancionados extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
 
     render() {
         const {classes} = this.props;
@@ -90,7 +89,7 @@ class EnhancedTable extends React.Component {
                         </Grid>
                     </Grid>
                     {/*DESCARGA*/}
-                    <Grid container spacing={0} justify="center" className={classes.containerD}>
+                    <Grid container spacing={0} justify="center" >
                         <Grid item xs={12} className={classes.itemD}>
                             <Descarga url={process.env.REACT_APP_BULK_S3_SERVIDORES}/>
                         </Grid>
@@ -101,8 +100,8 @@ class EnhancedTable extends React.Component {
     }
 }
 
-EnhancedTable.propTypes = {
+BuscadorServidoresSancionados.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(EnhancedTable);
+export default withStyles(styles)(BuscadorServidoresSancionados);

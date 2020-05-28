@@ -7,8 +7,8 @@ import Grid from "@material-ui/core/Grid/Grid";
 import img1 from "../../assets/img/servidores_publicos_sancionados.svg";
 import img2 from "../../assets/img/particulares_sancionados.svg";
 import img3 from "../../assets/img/servidores_visualizaciones.svg";
-import TablaServidoresSancionados from './Servidores/BuscadorServidoresSancionados';
-import TablaParticularesSancionados from './Particulares/TablaParticularesSancionados';
+import BuscadorServidoresSancionados from './Servidores/BuscadorServidoresSancionados';
+import BuscadorParticularesSancionados from './Particulares/BuscadorParticularesSancionados';
 import Header from './Header/Header';
 import Dashboard from "./dashboard/Servidores/Dashboard";
 import Dashboard2 from "./dashboard/Particulares/Dashboard";
@@ -145,10 +145,10 @@ class Index extends React.Component {
                 <Grid container justify='center' className={classes.bgPanelTable}>
                     <Grid item xs={12} className={classes.sectionT}>
                         {this.state.idContent === 1 &&
-                        <TablaServidoresSancionados/>
+                        <BuscadorServidoresSancionados/>
                         }
                         {this.state.idContent === 2 &&
-                        <TablaParticularesSancionados/>
+                        <BuscadorParticularesSancionados/>
                         }
                         {this.state.idContent === 3 &&
                         <Dashboard/>

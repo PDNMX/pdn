@@ -4,27 +4,26 @@ import PropTypes from 'prop-types';
 import Grid from "@material-ui/core/Grid/Grid";
 import {Typography} from "@material-ui/core";
 import rp from "request-promise";
-import MensajeErrorDatos from "../../Tablas/MensajeErrorDatos";
+import Alert from "@material-ui/lab/Alert";
 import BarChart from "d3plus-react/es/src/BarChart";
 import * as d3 from "d3";
+import {List, ListItem, ListItemText} from "@material-ui/core";
 
 const styles = theme => ({
     frameChart: {
-        marginTop: "15px",
-        marginBottom: "15px"
+        marginTop: theme.spacing(1),
+        marginBottom: theme.spacing(1)
     },
     titulo: {
         textAlign: "center",
-        marginBottom: "30px",
+        marginBottom: theme.spacing(2),
+        fontWeight: "bold"
     },
-    descripcion: {
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        marginTop: "15px",
-        paddingLeft: "10px",
-        paddingRight: "10px",
-        marginBottom: "30px",
+    item: {
+        marginTop: theme.spacing(1),
+        paddingLeft: theme.spacing(1),
+        paddingRight: theme.spacing(1),
+        marginBottom: theme.spacing(3),
     },
     btnDownload: {
         textAlign: "right"
@@ -108,24 +107,41 @@ class Ejercicio extends React.Component {
         return (
             <div>
                 <Grid container spacing={0} justify='center' className={classes.frameChart}>
-                    <Grid item xs={12}>
-                        <Typography variant={"h6"} className={classes.titulo}>
-                            <b>{"Procedimientos"}</b>
+                    <Grid item xs={12} className={classes.item}>
+                        <Typography variant={"h6"} className={classes.titulo} paragraph>
+                            Procedimientos
                         </Typography>
-                    </Grid>
-                    <Grid item xs={12} className={classes.descripcion}>
-                        <Typography variant={"body1"}>
+
+                        <Typography variant={"body1"} paragraph>
                             Los procesos de contratación están divididos en cuatro tipos, en la siguiente gráfica podrás observar cuántos procedimientos de
                             cada tipo han habido en cada año. Como se aprecia, la contratación es el tipo más común a lo largo del tiempo, mientras que en
-                            los años 2017 y 2018 hubo un incremento de más del doble en las concesiones.<br/><br/>
-                            <b>Tipos de procesos: </b><br/>
-                            <b>Contrataciones públicas: </b>Se contemplan aquellas sujetas a la Ley de Adquisiciones, Arrendamientos y Servicios del Sector Público (LAASSP), la Ley de Obras Públicas y Servicios Relacionados con las Mismas (LOPSRM) y la Ley de Asociaciones Público Privadas (LAPP).<br/>
-                            <b>Concesiones, licencias, permisos, autorizaciones y prórrogas: </b>Comprende los regulados por las diversas disposiciones jurídicas de carácter federal que otorgan las dependencias de la Administración Pública Federal (APF).<br/>
-                            <b>Enajenación de bienes muebles: </b>Que incluyen los actos traslativos de propiedad de los bienes muebles de la federación y de las entidades paraestatales conforme a la Ley General de Bienes Nacionales (LGBN).<br/>
-                            <b>Asignación y emisión de dictámenes de avalúos nacionales: </b>Comprende únicamente los que son competencia del Instituto de Administración y Avalúos de Bienes Nacionales (INDAABIN).
-
-
+                            los años 2017 y 2018 hubo un incremento de más del doble en las concesiones.
                         </Typography>
+
+                        <Typography style={{fontWeight: "bold"}} paragraph>Tipos de procesos</Typography>
+
+                        <List>
+                            <ListItem>
+                                <ListItemText>
+                                    1. <b>Contrataciones públicas: </b>Se contemplan aquellas sujetas a la Ley de Adquisiciones, Arrendamientos y Servicios del Sector Público (LAASSP), la Ley de Obras Públicas y Servicios Relacionados con las Mismas (LOPSRM) y la Ley de Asociaciones Público Privadas (LAPP).
+                                </ListItemText>
+                            </ListItem>
+                            <ListItem>
+                                <ListItemText>
+                                    2. <b>Concesiones, licencias, permisos, autorizaciones y prórrogas: </b>Comprende los regulados por las diversas disposiciones jurídicas de carácter federal que otorgan las dependencias de la Administración Pública Federal (APF).
+                                </ListItemText>
+                            </ListItem>
+                            <ListItem>
+                                <ListItemText>
+                                    3. <b>Enajenación de bienes muebles: </b>Que incluyen los actos traslativos de propiedad de los bienes muebles de la federación y de las entidades paraestatales conforme a la Ley General de Bienes Nacionales (LGBN).
+                                </ListItemText>
+                            </ListItem>
+                            <ListItem>
+                                <ListItemText>
+                                    4. <b>Asignación y emisión de dictámenes de avalúos nacionales: </b>Comprende únicamente los que son competencia del Instituto de Administración y Avalúos de Bienes Nacionales (INDAABIN).
+                                </ListItemText>
+                            </ListItem>
+                        </List>
                     </Grid>
 
                     <Grid item xs={12} id={"graf"}>
@@ -135,7 +151,7 @@ class Ejercicio extends React.Component {
                         }
                         {
                             this.state.error &&
-                            <MensajeErrorDatos/>
+                            <Alert severity="error"> No disponible por el momento, intente más tarde. </Alert>
                         }
                     </Grid>
                 </Grid>
