@@ -35,10 +35,7 @@ const styles = theme => ({
         paddingLeft: theme.spacing(1),
         paddingBottom: theme.spacing(8),
         paddingTop: theme.spacing(8)
-    },
-    containerD: {
-        backgroundColor: '#f6f6f6'
-    },
+    }
 });
 
 class BuscadorParticularesSancionados extends React.Component {
@@ -81,7 +78,7 @@ class BuscadorParticularesSancionados extends React.Component {
                 </Grid>
 
                 {/*DESCARGA*/}
-                <Grid container spacing={0} justify="center" className={classes.containerD}>
+                <Grid container spacing={0} justify="center">
                     <Grid item xs={12} className={classes.itemD}>
                         <Descarga url={process.env.REACT_APP_BULK_S3_PARTICULARES}/>
                     </Grid>

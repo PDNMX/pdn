@@ -12,8 +12,7 @@ import Header from './Header/Header';
 import classNames from 'classnames';
 import Dashboard from "./Dashboard/Dashboard";
 import ScrollToTopButton from "../Navigation/ScrollToTopButton";
-import TablaParticularesSancionados from "../Sancionados/Particulares/TablaParticularesSancionados";
-
+import BuscadorParticularesSancionados from '../Sancionados/Particulares/BuscadorParticularesSancionados';
 const styles = theme => ({
     root: {
         flexGrow: 1
@@ -70,7 +69,7 @@ const TabContents = props => {
         case 1:
             return <TablaServidores/>;
         case 2:
-            return <TablaParticularesSancionados/>;
+            return <BuscadorParticularesSancionados/>;
         case 3:
             return <Dashboard/>;
         default:
