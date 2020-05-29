@@ -7,7 +7,7 @@ import styleSecciones from '../styleSecciones';
 
 import DatosNoRegistrados from '../DatosNoRegistrados';
 import DatosReservados from '../DatosReservados';
-import { sumary, expansion } from '../utils';
+import { sumary, expansion, Divider } from '../utils';
 import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
@@ -15,11 +15,10 @@ import { Disclaimer } from '../utils';
 
 const useStyles = makeStyles(styleSecciones);
 
-function Inversiones(props) {
+function Inversiones({ inversiones, tipo }) {
 	const classes = useStyles();
 	const exp = expansion();
 	const sum = sumary();
-	const { inversiones } = props;
 	return inversiones.map((obj, idx) => {
 		return (
 			<ExpansionPanel key={'veh-' + idx}>
@@ -38,7 +37,7 @@ function Inversiones(props) {
 				<ExpansionPanelDetails>
 					<Grid container spacing={1}>
 						<Grid item xs={12} md={4}>
-							<Typography className={classes.cardTitle}>TIPO DE INVERSIÓN / ACTIVO:</Typography>
+							<Typography className={classes.cardTitle}>TIPO DE INVERSIÓN/ACTIVO:</Typography>
 							<Typography className={classes.card}>
 								{obj.tipoInversion.valor} <strong>({obj.subTipoInversion.valor})</strong>
 							</Typography>
@@ -49,7 +48,9 @@ function Inversiones(props) {
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>TIPO DE MONEDA</Typography>
-							<Typography className={classes.card}>{obj.saldoSituacionActual.moneda}</Typography>
+							<Typography className={classes.card}>
+								{typeof obj.saldoSituacionActual === 'undefined' ? '' : obj.saldoSituacionActual.moneda}
+							</Typography>
 						</Grid>
 
 						<Grid item xs={12} md={6}>
@@ -65,7 +66,7 @@ function Inversiones(props) {
 
 						<Grid item xs={12} md={6}>
 							<Typography className={classes.cardTitle}>
-								¿DÓNDE SE LOCALIZA LA INVERSIÓN, CUENTA BANCARIA Y OTRO TIPO DE VALORES / ACTIVOS ?
+								¿DÓNDE SE LOCALIZA LA INVERSIÓN, CUENTA BANCARIA Y OTRO TIPO DE VALORES/ACTIVOS ?
 							</Typography>
 							<Typography className={classes.card}>
 								{obj.localizacionInversion.pais === 'MX' ? 'EN MÉXICO' : 'EN EL EXTRANJERO'}
@@ -78,17 +79,69 @@ function Inversiones(props) {
 							</Typography>
 						</Grid>
 
-						{obj.localizacionInversion.pais === 'MX' && (
+						{obj.localizacionInversion.pais === 'MX' ? (
 							<Grid item xs={12} md={4}>
 								<Typography className={classes.cardTitle}>RFC</Typography>
 								<Typography className={classes.card}>{obj.localizacionInversion.rfc}</Typography>
 							</Grid>
-						)}
-
-						{obj.localizacionInversion.pais !== 'MX' && (
+						) : (
 							<Grid item xs={12} md={4}>
 								<Typography className={classes.cardTitle}>PAÍS DÓNDE SE LOCALIZA</Typography>
 								<Typography className={classes.card}>{obj.localizacionInversion.pais}</Typography>
+							</Grid>
+						)}
+
+						{tipo !== 'INICIAL' && (
+							<Grid item xs={12} md={4}>
+								<Typography className={classes.cardTitle}>
+									PORCENTAJES DE INCREMENTO O DECREMENTO
+								</Typography>
+								<Typography className={classes.card}>{obj.porcentajeIncrementoDecremento}</Typography>
+							</Grid>
+						)}
+						<Divider />
+						<Grid item xs={12} style={{ textAlign: 'center' }}>
+							<Typography className={classes.tituloSubSeccion}>TERCERO</Typography>
+						</Grid>
+						{obj.tercero.tipoPersona !== 'MORAL' ? (
+							<Grid item xs={12}>
+								<Grid container spacing={1}>
+									<Grid item xs={12} md={3}>
+										<Typography className={classes.cardTitle}>TIPO PERSONA:</Typography>
+										<Typography className={classes.cardReserved}>FÍSICA</Typography>
+									</Grid>
+									<Grid item xs={12} md={6}>
+										<Typography className={classes.cardTitle}>
+											NOMBRE DEL TERCERO O TERCEROS:
+										</Typography>
+										<Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
+									</Grid>
+									<Grid item xs={12} md={3}>
+										<Typography className={classes.cardTitle}>RFC:</Typography>
+										<Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
+									</Grid>
+								</Grid>
+							</Grid>
+						) : (
+							<Grid item xs={12}>
+								<Grid container spacing={1}>
+									<Grid item xs={12} md={3}>
+										<Typography className={classes.cardTitle}>TIPO PERSONA:</Typography>
+										<Typography className={classes.card}>MORAL</Typography>
+									</Grid>
+									<Grid item xs={12} md={6}>
+										<Typography className={classes.cardTitle}>
+											NOMBRE DEL TERCERO O TERCEROS:
+										</Typography>
+										<Typography className={classes.card}>
+											{obj.tercero.nombreRazonSocial}
+										</Typography>
+									</Grid>
+									<Grid item xs={12} md={3}>
+										<Typography className={classes.cardTitle}>RFC:</Typography>
+										<Typography className={classes.card}>{obj.tercero.rfc}</Typography>
+									</Grid>
+								</Grid>
 							</Grid>
 						)}
 					</Grid>
@@ -98,9 +151,8 @@ function Inversiones(props) {
 	});
 }
 
-export default function(props) {
+export default function({ data, tipo }) {
 	const classes = useStyles();
-	const { data } = props;
 
 	const inversiones = data.inversion.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
 
@@ -108,14 +160,18 @@ export default function(props) {
 		<Grid container spacing={2} className={classes.rootPrincipal}>
 			<Grid item xs={12}>
 				<Typography className={classes.tituloSeccion} align="center">
-					13. INVERSIONES, CUENTAS BANCARIAS Y OTRO TIPO DE VALORES / ACTIVOS (SITUACIÓN ACTUAL)
+					{tipo === 'MODIFICACIÓN' ? (
+						'12. INVERSIONES, CUENTAS BANCARIAS Y OTRO TIPO DE VALORES / ACTIVOS (ENTRE EL 1 DE ENERO Y EL 31 DE DICIEMBRE DEL AÑO INMEDIATO ANTERIOR)'
+					) : (
+						'13. INVERSIONES, CUENTAS BANCARIAS Y OTRO TIPO DE VALORES/ACTIVOS (SITUACIÓN ACTUAL)'
+					)}
 				</Typography>
 			</Grid>
 			{data ? (
 				<Grid item xs={12}>
 					{data.ninguno && <DatosNoRegistrados />}
 					{!data.ninguno && inversiones.length ? (
-						<Inversiones inversiones={inversiones} />
+						<Inversiones inversiones={inversiones} tipo={tipo} />
 					) : (
 						<DatosReservados />
 					)}

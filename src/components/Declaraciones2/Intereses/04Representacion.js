@@ -65,7 +65,7 @@ function Representacion(props) {
 						)}
 						<Divider />
 						<Grid item xs={12} style={{ textAlign: 'center' }}>
-							<Typography className={classes.tituloSubSeccion}>REPRESENTANTE / REPRESENTADO</Typography>
+							<Typography className={classes.tituloSubSeccion}>REPRESENTANTE/REPRESENTADO</Typography>
 						</Grid>
 						{obj.tipoPersona === 'FISICA' ? (
 							<Grid item xs={12}>

@@ -20,7 +20,7 @@ export default function ActividadLaboralSectorPublico(props) {
 						<Typography className={classes.card}>{actividadLaboral}</Typography>
 					</Grid>
 					<Grid item xs={12} md={3}>
-						<Typography className={classes.cardTitle}>NIVEL / ORDEN DE GOBIERNO</Typography>
+						<Typography className={classes.cardTitle}>NIVEL/ORDEN DE GOBIERNO</Typography>
 						<Typography className={classes.card}>
 							{actividadLaboralSectorPublico.nivelOrdenGobierno}
 						</Typography>

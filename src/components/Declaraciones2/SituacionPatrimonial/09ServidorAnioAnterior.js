@@ -32,7 +32,7 @@ const ActividadIndustrial = (props) => {
 					<Grid item xs={12} md={9}>
 						<Typography className={exp.heading}>
 							<strong>
-								II.1.- POR ACTIVIDAD INDUSTRIAL, COMERCIAL Y / O EMPRESARIAL (DESPUÉS DE IMPUESTOS)
+								II.1.- POR ACTIVIDAD INDUSTRIAL, COMERCIAL Y/O EMPRESARIAL (DESPUÉS DE IMPUESTOS)
 							</strong>
 						</Typography>
 					</Grid>
@@ -162,7 +162,7 @@ const ServiciosProfesionales = (props) => {
 					<Grid item xs={12} md={9}>
 						<Typography className={exp.heading}>
 							<strong>
-								II.3.- POR SERVICIOS PROFESIONALES, CONSEJOS, CONSULTORÍAS Y / O ASESORÍAS (DESPUÉS DE
+								II.3.- POR SERVICIOS PROFESIONALES, CONSEJOS, CONSULTORÍAS Y/O ASESORÍAS (DESPUÉS DE
 								IMPUESTOS)
 							</strong>
 						</Typography>
@@ -413,7 +413,7 @@ export default function(props) {
 
 								<Grid item xs={12} md={9}>
 									<Typography className={classes.cardTitle}>
-										B.- INGRESO NETO DE LA PAREJA Y / O DEPENDIENTES ECONÓMICOS, RECIBIDO EN EL AÑO
+										B.- INGRESO NETO DE LA PAREJA Y/O DEPENDIENTES ECONÓMICOS, RECIBIDO EN EL AÑO
 										INMEDIATO ANTERIOR (DESPUÉS DE IMPUESTOS)
 									</Typography>
 								</Grid>
@@ -423,7 +423,7 @@ export default function(props) {
 
 								<Grid item xs={12} md={9}>
 									<Typography className={classes.cardTitle}>
-										C.- TOTAL DE INGRESOS NETOS PERCIBIDOS POR EL DECLARANTE, PAREJA Y / O
+										C.- TOTAL DE INGRESOS NETOS PERCIBIDOS POR EL DECLARANTE, PAREJA Y/O
 										DEPENDIENTES ECONÓMICOS, EN EL AÑO INMEDIATO ANTERIOR (SUMA DE LOS APARTADOS A Y
 										B)
 									</Typography>

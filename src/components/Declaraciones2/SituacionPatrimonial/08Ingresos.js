@@ -1,23 +1,24 @@
 import React from 'react';
-import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
+import IngresosInicial from './08IngresosInicial';
+import IngresosModificacion from './08IngresosModificacion';
+import IngresosConclusion from './08IngresosConclusion';
+
 import styleSecciones from '../styleSecciones';
-import { sumary, expansion, Divider, getMoneda } from '../utils';
+import { sumary, expansion, getMoneda } from '../utils';
 
 import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const useStyles = makeStyles(styleSecciones);
 
-const ActividadIndustrial = (props) => {
+export function ActividadIndustrial({ actividadIndustialComercialEmpresarial }) {
 	const classes = useStyles();
 	const exp = expansion();
 	const sum = sumary();
-
-	const { actividadIndustialComercialEmpresarial } = props;
 
 	return (
 		<ExpansionPanel>
@@ -31,7 +32,7 @@ const ActividadIndustrial = (props) => {
 					<Grid item xs={12} md={9}>
 						<Typography className={exp.heading}>
 							<strong>
-								II.1.- POR ACTIVIDAD INDUSTRIAL, COMERCIAL Y / O EMPRESARIAL (DESPUÉS DE IMPUESTOS)
+								II.1.- POR ACTIVIDAD INDUSTRIAL, COMERCIAL Y/O EMPRESARIAL (DESPUÉS DE IMPUESTOS)
 							</strong>
 						</Typography>
 					</Grid>
@@ -77,14 +78,12 @@ const ActividadIndustrial = (props) => {
 			</ExpansionPanelDetails>
 		</ExpansionPanel>
 	);
-};
+}
 
-const ActividadFinanciera = (props) => {
+export function ActividadFinanciera({ actividadFinanciera }) {
 	const classes = useStyles();
 	const exp = expansion();
 	const sum = sumary();
-
-	const { actividadFinanciera } = props;
 
 	return (
 		<ExpansionPanel>
@@ -140,14 +139,12 @@ const ActividadFinanciera = (props) => {
 			</ExpansionPanelDetails>
 		</ExpansionPanel>
 	);
-};
+}
 
-const ServiciosProfesionales = (props) => {
+export function ServiciosProfesionales({ serviciosProfesionales }) {
 	const classes = useStyles();
 	const exp = expansion();
 	const sum = sumary();
-
-	const { serviciosProfesionales } = props;
 
 	return (
 		<ExpansionPanel>
@@ -161,7 +158,7 @@ const ServiciosProfesionales = (props) => {
 					<Grid item xs={12} md={9}>
 						<Typography className={exp.heading}>
 							<strong>
-								II.3.- POR SERVICIOS PROFESIONALES, CONSEJOS, CONSULTORÍAS Y / O ASESORÍAS (DESPUÉS DE
+								II.3.- POR SERVICIOS PROFESIONALES, CONSEJOS, CONSULTORÍAS Y/O ASESORÍAS (DESPUÉS DE
 								IMPUESTOS)
 							</strong>
 						</Typography>
@@ -202,14 +199,69 @@ const ServiciosProfesionales = (props) => {
 			</ExpansionPanelDetails>
 		</ExpansionPanel>
 	);
-};
+}
 
-const OtrosIngresos = (props) => {
+export function EnajenacionBienes({ enajenacionBienes }) {
 	const classes = useStyles();
 	const exp = expansion();
 	const sum = sumary();
 
-	const { otrosIngresos } = props;
+	return (
+		<ExpansionPanel>
+			<ExpansionPanelSummary
+				classes={sum}
+				expandIcon={<ExpandMoreIcon />}
+				aria-controls="panel1a-content"
+				id="panel1a-header"
+			>
+				<Grid container spacing={1}>
+					<Grid item xs={12} md={9}>
+						<Typography className={exp.heading}>
+							<strong>II.4.- POR ENAJENACIÓN DE BIENES (DESPUÉS DE IMPUESTOS)</strong>
+						</Typography>
+					</Grid>
+					<Grid item xs={12} md={3}>
+						<Typography className={exp.heading}>
+							<strong>
+								{getMoneda(enajenacionBienes.remuneracionTotal.valor)}{' '}
+								{enajenacionBienes.remuneracionTotal.moneda}
+							</strong>
+						</Typography>
+					</Grid>
+				</Grid>
+			</ExpansionPanelSummary>
+			<ExpansionPanelDetails>
+				<Grid container spacing={1}>
+					<Grid item xs={12} md={9}>
+						<Typography className={classes.cardTitle}>TIPO DE BIEN ENAJENADO</Typography>
+					</Grid>
+					<Grid item xs={12} md={3}>
+						<Typography className={classes.cardTitle}>INGRESO:</Typography>
+					</Grid>
+					{enajenacionBienes.bienes.map((ing, idx) => {
+						return (
+							<Grid container spacing={1} key={'act-' + idx}>
+								<Grid item xs={12} md={9}>
+									<Typography className={classes.card}>{ing.tipoBienEnajenado}</Typography>
+								</Grid>
+								<Grid item xs={12} md={3}>
+									<Typography className={classes.card}>
+										{getMoneda(ing.remuneracion.valor)} {ing.remuneracion.moneda}
+									</Typography>
+								</Grid>
+							</Grid>
+						);
+					})}
+				</Grid>
+			</ExpansionPanelDetails>
+		</ExpansionPanel>
+	);
+}
+
+export function OtrosIngresos({ otrosIngresos }) {
+	const classes = useStyles();
+	const exp = expansion();
+	const sum = sumary();
 
 	return (
 		<ExpansionPanel>
@@ -223,7 +275,7 @@ const OtrosIngresos = (props) => {
 					<Grid item xs={12} md={9}>
 						<Typography className={exp.heading}>
 							<strong>
-								II.4.- OTROS INGRESOS NO CONSIDERADOS A LOS ANTERIORES (DESPUÉS DE IMPUESTOS)
+								II.5.- OTROS INGRESOS NO CONSIDERADOS A LOS ANTERIORES (DESPUÉS DE IMPUESTOS)
 							</strong>
 						</Typography>
 					</Grid>
@@ -266,93 +318,19 @@ const OtrosIngresos = (props) => {
 			</ExpansionPanelDetails>
 		</ExpansionPanel>
 	);
-};
+}
 
-export default function (props) {
-	const classes = useStyles();
-	const { data } = props;
+export default function({ data, tipo }) {
+	switch (tipo) {
+		case 'INICIAL':
+			return <IngresosInicial data={data} />;
+		case 'MODIFICACIÓN':
+			return <IngresosModificacion data={data} />;
 
-	return (
-		<Grid container spacing={2} className={classes.rootPrincipal}>
-			<Grid item xs={12}>
-				<Typography className={classes.tituloSeccion} align="center">
-					8. INGRESOS NETOS DEL DECLARANTE, PAREJA Y/O DEPENDIENTES ECONÓMICOS (SITUACIÓN ACTUAL)
-				</Typography>
-			</Grid>
-			<Grid item xs={12}>
-				<Paper className={classes.paper}>
-					<Grid container spacing={1}>
-						<Grid item xs={12} md={9}>
-							<Typography className={classes.cardTitle}>
-								I.- REMUNERACIÓN MENSUAL NETA DEL DECLARANTE POR SU CARGO PÚBLICO (POR CONCEPTO DE
-								SUELDOS, HONORARIOS, COMPENSACIONES, BONOS Y OTRAS PRESTACIONES) (CANTIDADES NETAS
-								DESPUÉS DE IMPUESTOS)
-							</Typography>
-						</Grid>
-						<Grid item xs={12} md={3}>
-							<Typography className={classes.card}>
-								{getMoneda(data.remuneracionMensualCargoPublico.valor)}{' '}
-								{data.remuneracionMensualCargoPublico.moneda}
-							</Typography>
-						</Grid>
-						<Divider />
-						<Grid item xs={12} md={9}>
-							<Typography className={classes.cardTitle}>
-								II.- OTROS INGRESOS MENSUALES DEL DECLARANTE (SUMA DEL II.1 AL II.4)
-							</Typography>
-						</Grid>
-						<Grid item xs={12} md={3}>
-							<Typography className={classes.card}>
-								{getMoneda(data.otrosIngresosMensualesTotal.valor)}{' '}
-								{data.otrosIngresosMensualesTotal.moneda}
-							</Typography>
-						</Grid>
-						<Grid item xs={12}>
-							<ActividadIndustrial
-								actividadIndustialComercialEmpresarial={data.actividadIndustialComercialEmpresarial}
-							/>
-							<ActividadFinanciera actividadFinanciera={data.actividadFinanciera} />
-							<ServiciosProfesionales serviciosProfesionales={data.serviciosProfesionales} />
-							<OtrosIngresos otrosIngresos={data.otrosIngresos} />
-						</Grid>
-						<Divider />
-						<Grid item xs={12} md={9}>
-							<Typography className={classes.cardTitle}>
-								A.- INGRESO MENSUAL NETO DEL DECLARANTE (SUMA DEL NUMERAL I Y II)
-							</Typography>
-						</Grid>
-						<Grid item xs={12} md={3}>
-							<Typography className={classes.card}>
-								{getMoneda(data.ingresoMensualNetoDeclarante.valor)}{' '}
-								{data.ingresoMensualNetoDeclarante.moneda}
-							</Typography>
-						</Grid>
-
-						<Grid item xs={12} md={9}>
-							<Typography className={classes.cardTitle}>
-								B.- INGRESO MENSUAL NETO DE LA PAREJA Y / O DEPENDIENTES ECONÓMICOS (DESPUÉS DE
-								IMPUESTOS)
-							</Typography>
-						</Grid>
-						<Grid item xs={12} md={3}>
-							<Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
-						</Grid>
-
-						<Grid item xs={12} md={9}>
-							<Typography className={classes.cardTitle}>
-								C.- TOTAL DE INGRESOS MENSUALES NETOS PERCIBIDOS POR EL DECLARANTE, PAREJA Y / O
-								DEPENDIENTES ECONÓMICOS (SUMA DE LOS APARTADOS A Y B)
-							</Typography>
-						</Grid>
-						<Grid item xs={12} md={3}>
-							<Typography className={classes.card}>
-								{getMoneda(data.totalIngresosMensualesNetos.valor)}{' '}
-								{data.totalIngresosMensualesNetos.moneda}
-							</Typography>
-						</Grid>
-					</Grid>
-				</Paper>
-			</Grid>
-		</Grid>
-	);
+		case 'CONCLUSIÓN':
+			return <IngresosConclusion data={data} />;
+		default:
+			console.log(tipo);
+			break;
+	}
 }

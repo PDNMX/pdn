@@ -35,7 +35,6 @@ class Declaraciones extends React.Component {
 		open: false
 	};
 
-
 	handleClose = () => {
 		this.setState({ open: false });
 	};

@@ -125,6 +125,10 @@ export default (theme) => ({
   btnBack: {
     color: theme.palette.primary.dark,
   },
+  resultadosTitulo: {
+	backgroundColor: 'rgb(52, 179, 235)',
+	color: '#f5f5f5'
+},
 
   /******************
 	root: {
@@ -363,10 +367,7 @@ export default (theme) => ({
 		fontSize: theme.typography.pxToRem(15),
 		fontWeight: theme.typography.fontWeightRegular
 	},
-	resultadosTitulo: {
-		backgroundColor: 'rgb(52, 179, 235)',
-		color: '#f5f5f5'
-	},
+	
 	resultadoContenido: {
 		backgroundColor: 'rgb(242, 242, 242)',
 		color: '#666666'

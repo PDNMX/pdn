@@ -20,7 +20,7 @@ import Inversiones from './SituacionPatrimonial/13Inversiones';
 import Adeudos from './SituacionPatrimonial/14Adeudos';
 import Prestamo from './SituacionPatrimonial/15Prestamo';
 
-const situacionPatrimonial = (data) => {
+const situacionPatrimonial = (data, tipo) => {
 	let {
 		datosCurricularesDeclarante,
 		experienciaLaboral,
@@ -40,23 +40,73 @@ const situacionPatrimonial = (data) => {
 	let inversion = inversiones.inversion.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
 	let adeudo = adeudos.adeudo.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
 
-	return [
-		{ clave: '1. DATOS GENERALES', valor: 0 },
-		{ clave: '2. DOMICILIO DEL DECLARANTE', valor: 0 },
-		{ clave: '3. DATOS CURRICULARES DEL DECLARANTE', valor: datosCurricularesDeclarante.escolaridad.length },
-		{ clave: '4. DATOS DEL EMPLEO, CARGO O COMISIÓN QUE INICIA', valor: 0 },
-		{ clave: '5. EXPERIENCIA LABORAL', valor: experienciaLaboral.experiencia.length },
-		{ clave: '6. DATOS DE LA PAREJA', valor: 0 },
-		{ clave: '7. DATOS DEL DEPENDIENTE ECONÓMICO', valor: 0 },
-		{ clave: '8. INGRESOS NETOS DEL DECLARANTE, PAREJA Y/O DEPENDIENTES ECONÓMICOS', valor: 0 },
-		{ clave: '9. ¿TE COMO SERVIDOR PÚBLICO EN EL AÑO INMEDIATO ANTERIOR?', valor: 0 },
-		{ clave: '10. BIENES INMUEBLES', valor: bienInmueble.length },
-		{ clave: '11. VEHÍCULOS', valor: vehiculo.length },
-		{ clave: '12. BIENES MUEBLES', valor: bienMueble.length },
-		{ clave: '13. INVERSIONES, CUENTAS BANCARIAS Y OTRO TIPO DE VALORES / ACTIVOS', valor: inversion.length },
-		{ clave: '14. ADEUDOS / PASIVOS', valor: adeudo.length },
-		{ clave: '15. PRÉSTAMO O COMODATO POR TERCEROS', valor: prestamoOComodato.prestamo.length }
+	const tDatosCurricurales =
+		typeof datosCurricularesDeclarante === 'undefined' ? 0 : datosCurricularesDeclarante.escolaridad.length;
+
+	const tExperienciaLaboral = typeof experienciaLaboral === 'undefined' ? 0 : experienciaLaboral.experiencia.length;
+
+	const tPrestamoOComodato = typeof prestamoOComodato === 'undefined' ? 0 : prestamoOComodato.prestamo.length;
+
+	const menu = [
+		{ clave: 'DATOS GENERALES', valor: 0 },
+		{ clave: 'DOMICILIO DEL DECLARANTE', valor: 0 },
+		{
+			clave: 'DATOS CURRICULARES DEL DECLARANTE',
+			valor: tDatosCurricurales
+		},
+		{ clave: 'DATOS DEL EMPLEO, CARGO O COMISIÓN', valor: 0 },
+		{
+			clave: 'EXPERIENCIA LABORAL',
+			valor: tExperienciaLaboral
+		},
+		{ clave: 'DATOS DE LA PAREJA', valor: 0 },
+		{ clave: 'DATOS DEL DEPENDIENTE ECONÓMICO', valor: 0 },
+		{
+			clave: 'INGRESOS NETOS DEL DECLARANTE, PAREJA Y/O DEPENDIENTES ECONÓMICOS',
+			valor: 0
+		}
 	];
+
+	const menu2 = [
+		{ clave: 'BIENES INMUEBLES', valor: bienInmueble.length },
+		{ clave: 'VEHÍCULOS', valor: vehiculo.length },
+		{ clave: 'BIENES MUEBLES', valor: bienMueble.length },
+		{
+			clave: 'INVERSIONES, CUENTAS BANCARIAS Y OTRO TIPO DE VALORES/ACTIVOS',
+			valor: inversion.length
+		},
+		{ clave: 'ADEUDOS/PASIVOS', valor: adeudo.length },
+		{
+			clave: 'PRÉSTAMO O COMODATO POR TERCEROS',
+			valor: tPrestamoOComodato
+		}
+	];
+
+	switch (tipo) {
+		case 'INICIAL':
+			return [
+				...menu,
+				{
+					clave: '¿TE DESEMPEÑASTE COMO SERVIDOR PÚBLICO EN EL AÑO INMEDIATO ANTERIOR?',
+					valor: 0
+				},
+				...menu2
+			];
+		case 'MODIFICACIÓN':
+			return [ ...menu, ...menu2 ];
+		case 'CONCLUSIÓN':
+			return [
+				...menu,
+				{
+					clave: '¿TE DESEMPEÑASTE COMO SERVIDOR PÚBLICO EN EL AÑO INMEDIATO ANTERIOR?',
+					valor: 0
+				},
+				...menu2
+			];
+		default:
+			console.log(tipo);
+			break;
+	}
 };
 
 const useStyles = makeStyles({
@@ -67,7 +117,7 @@ const useStyles = makeStyles({
 	}
 });
 
-function opcion(valor, data) {
+function OpcionInicialConclusion(valor, data, tipo) {
 	switch (valor) {
 		case 0:
 			return <DatosGenerales data={data.datosGenerales} />;
@@ -76,7 +126,7 @@ function opcion(valor, data) {
 		case 2:
 			return <DatosCurriculares data={data.datosCurricularesDeclarante} />;
 		case 3:
-			return <EmpleoCargoComision data={data.datosEmpleoCargoComision} />;
+			return <EmpleoCargoComision data={data.datosEmpleoCargoComision} tipo={tipo} />;
 		case 4:
 			return <ExperienciaLaboral data={data.experienciaLaboral} />;
 		case 5:
@@ -84,7 +134,7 @@ function opcion(valor, data) {
 		case 6:
 			return <DependientesEconomicos />;
 		case 7:
-			return <Ingresos data={data.ingresos} />;
+			return <Ingresos data={data.ingresos} tipo={tipo} />;
 		case 8:
 			return <ServidorAnioAnterior data={data.actividadAnualAnterior} />;
 		case 9:
@@ -94,9 +144,9 @@ function opcion(valor, data) {
 		case 11:
 			return <BienesMuebles data={data.bienesMuebles} />;
 		case 12:
-			return <Inversiones data={data.inversiones} />;
+			return <Inversiones data={data.inversiones} tipo={tipo} />;
 		case 13:
-			return <Adeudos data={data.adeudos} />;
+			return <Adeudos data={data.adeudos} tipo={tipo} />;
 		case 14:
 			return <Prestamo data={data.prestamoOComodato} />;
 		default:
@@ -104,18 +154,66 @@ function opcion(valor, data) {
 	}
 }
 
-export default function MenuSuperior(props) {
+function OpcionModificacion(valor, data, tipo) {
+	switch (valor) {
+		case 0:
+			return <DatosGenerales data={data.datosGenerales} />;
+		case 1:
+			return <Domicilio />;
+		case 2:
+			return <DatosCurriculares data={data.datosCurricularesDeclarante} />;
+		case 3:
+			return <EmpleoCargoComision data={data.datosEmpleoCargoComision} tipo={tipo} />;
+		case 4:
+			return <ExperienciaLaboral data={data.experienciaLaboral} />;
+		case 5:
+			return <DatosPareja />;
+		case 6:
+			return <DependientesEconomicos />;
+		case 7:
+			return <Ingresos data={data.ingresos} tipo={tipo} />;
+		case 8:
+			return <Bienesinmuebles data={data.bienesInmuebles} />;
+		case 9:
+			return <Vehiculos data={data.vehiculos} />;
+		case 10:
+			return <BienesMuebles data={data.bienesMuebles} />;
+		case 11:
+			return <Inversiones data={data.inversiones} tipo={tipo} />;
+		case 12:
+			return <Adeudos data={data.adeudos} tipo={tipo} />;
+		case 13:
+			return <Prestamo data={data.prestamoOComodato} />;
+		default:
+			break;
+	}
+}
+
+function opcion(valor, data, tipo) {
+	switch (tipo) {
+		case 'INICIAL':
+			return OpcionInicialConclusion(valor, data, tipo);
+		case 'MODIFICACIÓN':
+			return OpcionModificacion(valor, data, tipo);
+		case 'CONCLUSIÓN':
+			return OpcionInicialConclusion(valor, data, tipo);
+		default:
+			console.log(tipo);
+			break;
+	}
+}
+
+export default function MenuSuperior({ data, value, setValue, tipo }) {
 	const classes = useStyles();
-	const { data } = props;
 
 	return (
 		<Paper square className={classes.root}>
 			<Grid container spacing={0}>
 				<Grid item xs={12} md={2} style={{ backgroundColor: '#34b3eb' }}>
-					<MenuLateral value={props.value} setValue={props.setValue} opciones={situacionPatrimonial(data)} />
+					<MenuLateral value={value} setValue={setValue} opciones={situacionPatrimonial(data, tipo)} />
 				</Grid>
 				<Grid item xs={12} md={10}>
-					{opcion(props.value, data)}
+					{opcion(value, data, tipo)}
 				</Grid>
 			</Grid>
 		</Paper>

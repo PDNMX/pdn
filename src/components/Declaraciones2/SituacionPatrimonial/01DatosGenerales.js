@@ -5,21 +5,21 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
 import style from '../styleSecciones';
-import DatosCamposPrivados from '../DatosCamposPrivados';
+// import DatosCamposPrivados from '../DatosCamposPrivados';
 
 const useStyles = makeStyles(style);
-const camposPrivados = [
-	'CURP',
-	'RFC',
-	'HOMOCLAVE',
-	'CORREO ELECTRÓNICO PERSONAL/ALTERNO',
-	'NÚMERO TELEFÓNICO DE CASA',
-	'NÚMERO CELULAR PERSONAL',
-	'SITUACIÓN PERSONAL/ESTADO CIVIL',
-	'RÉGIMEN MATRIMONIAL',
-	'PAÍS DE NACIMIENTO',
-	'NACIONALIDAD'
-];
+// const camposPrivados = [
+// 	'CURP',
+// 	'RFC',
+// 	'HOMOCLAVE',
+// 	'CORREO ELECTRÓNICO PERSONAL/ALTERNO',
+// 	'NÚMERO TELEFÓNICO DE CASA',
+// 	'NÚMERO CELULAR PERSONAL',
+// 	'SITUACIÓN PERSONAL/ESTADO CIVIL',
+// 	'RÉGIMEN MATRIMONIAL',
+// 	'PAÍS DE NACIMIENTO',
+// 	'NACIONALIDAD'
+// ];
 
 export default function(props) {
 	const classes = useStyles();
@@ -32,9 +32,9 @@ export default function(props) {
 					1. DATOS GENERALES
 				</Typography>
 			</Grid>
-			<Grid item xs={12}>
+			{/* <Grid item xs={12}>
 				<DatosCamposPrivados campos={camposPrivados} />
-			</Grid>
+			</Grid> */}
 			<Grid item xs={12}>
 				<Paper className={classes.paper}>
 					<Grid container spacing={1}>
