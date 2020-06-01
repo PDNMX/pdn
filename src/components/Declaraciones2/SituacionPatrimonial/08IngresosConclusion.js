@@ -17,15 +17,14 @@ import {
 
 const useStyles = makeStyles(styleSecciones);
 
-export default function({ data }) {
+export default function({ data, titulo }) {
 	const classes = useStyles();
 
 	return (
 		<Grid container spacing={2} className={classes.rootPrincipal}>
 			<Grid item xs={12}>
 				<Typography className={classes.tituloSeccion} align="center">
-					8. INGRESOS NETOS DEL AÑO EN CURSO A LA FECHA DE CONCLUSIÓN DEL EMPLEO, CARGO O COMISIÓN DEL
-					DECLARANTE, PAREJA Y / O DEPENDIENTES ECONÓMICOS
+					{titulo}
 				</Typography>
 			</Grid>
 			<Grid item xs={12}>

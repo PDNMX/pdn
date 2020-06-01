@@ -21,15 +21,14 @@ const useStyles = makeStyles(style);
 // 	'NACIONALIDAD'
 // ];
 
-export default function(props) {
+export default function({ data, titulo }) {
 	const classes = useStyles();
-	const { data } = props;
 
 	return (
 		<Grid container spacing={2} className={classes.rootPrincipal}>
 			<Grid item xs={12}>
 				<Typography className={classes.tituloSeccion} align="center">
-					1. DATOS GENERALES
+					{titulo}
 				</Typography>
 			</Grid>
 			{/* <Grid item xs={12}>

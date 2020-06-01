@@ -11,17 +11,16 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const useStyles = makeStyles(style);
 
-export default function (props) {
+export default function ({data,titulo}) {
 	const classes = useStyles();
 	const exp = expansion();
 	const sum = sumary();
-	const { data } = props;
 
 	return (
 		<Grid container spacing={2} className={classes.rootPrincipal}>
 			<Grid item xs={12}>
 				<Typography className={classes.tituloSeccion} align="center">
-					3. DATOS CURRICULARES DEL DECLARANTE
+					{titulo}
 				</Typography>
 			</Grid>
 			<Grid item xs={12}>

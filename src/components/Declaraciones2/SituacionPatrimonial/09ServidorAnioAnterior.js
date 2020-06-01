@@ -328,15 +328,14 @@ const OtrosIngresos = (props) => {
 	);
 };
 
-export default function(props) {
+export default function({ data, titulo }) {
 	const classes = useStyles();
-	const { data } = props;
 
 	return (
 		<Grid container spacing={2} className={classes.rootPrincipal}>
 			<Grid item xs={12}>
 				<Typography className={classes.tituloSeccion} align="center">
-					9. ¿TE COMO SERVIDOR PÚBLICO EN EL AÑO INMEDIATO ANTERIOR?
+					{titulo}
 				</Typography>
 			</Grid>
 			{!data.servidorPublicoAnioAnterior && <DatosNoRegistrados />}

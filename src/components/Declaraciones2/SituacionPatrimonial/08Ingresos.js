@@ -320,15 +320,14 @@ export function OtrosIngresos({ otrosIngresos }) {
 	);
 }
 
-export default function({ data, tipo }) {
+export default function({ data, tipo, titulo }) {
 	switch (tipo) {
 		case 'INICIAL':
-			return <IngresosInicial data={data} />;
+			return <IngresosInicial data={data} titulo={titulo} />;
 		case 'MODIFICACIÓN':
-			return <IngresosModificacion data={data} />;
-
+			return <IngresosModificacion data={data} titulo={titulo} />;
 		case 'CONCLUSIÓN':
-			return <IngresosConclusion data={data} />;
+			return <IngresosConclusion data={data} titulo={titulo} />;
 		default:
 			console.log(tipo);
 			break;

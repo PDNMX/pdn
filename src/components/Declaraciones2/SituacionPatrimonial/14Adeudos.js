@@ -198,7 +198,7 @@ function Adeudos({ adeudos, tipo }) {
 	});
 }
 
-export default function({ data, tipo }) {
+export default function({ data, tipo, titulo }) {
 	const classes = useStyles();
 
 	const adeudos = data.adeudo.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
@@ -207,7 +207,7 @@ export default function({ data, tipo }) {
 		<Grid container spacing={2} className={classes.rootPrincipal}>
 			<Grid item xs={12}>
 				<Typography className={classes.tituloSeccion} align="center">
-					14. ADEUDOS/PASIVOS (SITUACIÓN ACTUAL)
+					{titulo}
 				</Typography>
 			</Grid>
 			{data ? (

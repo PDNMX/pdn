@@ -64,10 +64,11 @@ const situacionPatrimonial = (data, tipo) => {
 		{
 			clave: 'INGRESOS NETOS DEL DECLARANTE, PAREJA Y/O DEPENDIENTES ECONÓMICOS',
 			valor: 0
-		}
-	];
-
-	const menu2 = [
+		},
+		{
+			clave: '¿TE DESEMPEÑASTE COMO SERVIDOR PÚBLICO EN EL AÑO INMEDIATO ANTERIOR?',
+			valor: 0
+		},
 		{ clave: 'BIENES INMUEBLES', valor: bienInmueble.length },
 		{ clave: 'VEHÍCULOS', valor: vehiculo.length },
 		{ clave: 'BIENES MUEBLES', valor: bienMueble.length },
@@ -84,25 +85,10 @@ const situacionPatrimonial = (data, tipo) => {
 
 	switch (tipo) {
 		case 'INICIAL':
-			return [
-				...menu,
-				{
-					clave: '¿TE DESEMPEÑASTE COMO SERVIDOR PÚBLICO EN EL AÑO INMEDIATO ANTERIOR?',
-					valor: 0
-				},
-				...menu2
-			];
-		case 'MODIFICACIÓN':
-			return [ ...menu, ...menu2 ];
 		case 'CONCLUSIÓN':
-			return [
-				...menu,
-				{
-					clave: '¿TE DESEMPEÑASTE COMO SERVIDOR PÚBLICO EN EL AÑO INMEDIATO ANTERIOR?',
-					valor: 0
-				},
-				...menu2
-			];
+			return menu;
+		case 'MODIFICACIÓN':
+			return menu.filter((op, index) => index !== 8);
 		default:
 			console.log(tipo);
 			break;
@@ -117,73 +103,128 @@ const useStyles = makeStyles({
 	}
 });
 
+const titulos = {
+	INICIAL: [
+		'1. DATOS GENERALES',
+		'2. DOMICILIO DEL DECLARANTE',
+		'3. DATOS CURRICULARES DEL DECLARANTE',
+		'4. DATOS DEL EMPLEO, CARGO O COMISIÓN QUE INICIA',
+		'5. EXPERIENCIA LABORAL (ÚLTIMOS CINCO EMPLEOS)',
+		'6. DATOS DE LA PAREJA',
+		'7. DATOS DEL DEPENDIENTE ECONÓMICO',
+		'8. INGRESOS NETOS DEL DECLARANTE, PAREJA Y/O DEPENDIENTES ECONÓMICOS (SITUACIÓN ACTUAL)',
+		'9. ¿TE DESEMPEÑASTE COMO SERVIDOR PÚBLICO EN EL AÑO INMEDIATO ANTERIOR?',
+		'10. BIENES INMUEBLES (SITUACIÓN ACTUAL)',
+		'11. VEHÍCULOS (SITUACIÓN ACTUAL)',
+		'12. BIENES MUEBLES (SITUACIÓN ACTUAL)',
+		'13. INVERSIONES, CUENTAS BANCARIAS Y OTRO TIPO DE VALORES/ACTIVOS (SITUACIÓN ACTUAL)',
+		'14. ADEUDOS/PASIVOS (SITUACIÓN ACTUAL)',
+		'15. PRÉSTAMO O COMODATO POR TERCEROS (SITUACIÓN ACTUAL)'
+	],
+	MODIFICACIÓN: [
+		'1. DATOS GENERALES',
+		'2. DOMICILIO DEL DECLARANTE',
+		'3. DATOS CURRICULARES DEL DECLARANTE',
+		'4. DATOS DEL EMPLEO, CARGO O COMISIÓN ACTUAL',
+		'5. EXPERIENCIA LABORAL (ÚLTIMOS CINCO EMPLEOS)',
+		'6. DATOS DE LA PAREJA',
+		'7. DATOS DEL DEPENDIENTE ECONÓMICO',
+		'8. INGRESOS NETOS DEL DECLARANTE, PAREJA Y/O DEPENDIENTES ECONÓMICOS (ENTRE EL 1 DE ENERO Y 31 DE DICIEMBRE DEL AÑO INMEDIATO ANTERIOR)',
+		'9. BIENES INMUEBLES (ENTRE EL 1 DE ENERO Y 31 DE DICIEMBRE DEL AÑO INMEDIATO ANTERIOR)',
+		'10. VEHÍCULOS (ENTRE EL 1 DE ENERO Y 31 DE DICIEMBRE DEL AÑO INMEDIATO ANTERIOR)',
+		'11. BIENES MUEBLES (ENTRE EL 1 DE ENERO Y 31 DE DICIEMBRE DEL AÑO INMEDIATO ANTERIOR)',
+		'12. INVERSIONES, CUENTAS BANCARIAS Y OTRO TIPO DE VALORES/ACTIVOS (ENTRE EL 1 DE ENERO Y 31 DE DICIEMBRE DEL AÑO INMEDIATO ANTERIOR)',
+		'13. ADEUDOS/PASIVOS (ENTRE EL 1 DE ENERO Y 31 DE DICIEMBRE DEL AÑO INMEDIATO ANTERIOR)',
+		'14. PRÉSTAMO O COMODATO POR TERCEROS (ENTRE EL 1 DE ENERO Y 31 DE DICIEMBRE DEL AÑO INMEDIATO ANTERIOR)'
+	],
+	CONCLUSIÓN: [
+		'1. DATOS GENERALES',
+		'2. DOMICILIO DEL DECLARANTE',
+		'3. DATOS CURRICULARES DEL DECLARANTE',
+		'4. DATOS DEL EMPLEO, CARGO O COMISIÓN QUE CONCLUYE',
+		'5. EXPERIENCIA LABORAL (ÚLTIMOS CINCO EMPLEOS)',
+		'6. DATOS DE LA PAREJA',
+		'7. DATOS DEL DEPENDIENTE ECONÓMICO',
+		'8. INGRESOS NETOS DEL AÑO EN CURSO A LA FECHA DE CONCLUSIÓN DEL EMPLEO, CARGO O COMISIÓN DEL DECLARANTE, PAREJA Y/O DEPENDIENTES ECONÓMICOS',
+		'9. ¿TE DESEMPEÑASTE COMO SERVIDOR PÚBLICO EN EL AÑO INMEDIATO ANTERIOR?',
+		'10. BIENES INMUEBLES (SITUACIÓN ACTUAL)',
+		'11. VEHÍCULOS (SITUACIÓN ACTUAL)',
+		'12. BIENES MUEBLES',
+		'13. INVERSIONES, CUENTAS BANCARIAS Y OTRO TIPO DE VALORES/ACTIVOS (SITUACIÓN ACTUAL)',
+		'14. ADEUDOS/PASIVOS (SITUACIÓN ACTUAL)',
+		'15. PRÉSTAMO O COMODATO POR TERCEROS (SITUACIÓN ACTUAL)'
+	]
+};
+
 function OpcionInicialConclusion(valor, data, tipo) {
+	const titulo = titulos[tipo][valor];
 	switch (valor) {
 		case 0:
-			return <DatosGenerales data={data.datosGenerales} />;
+			return <DatosGenerales data={data.datosGenerales} titulo={titulo} />;
 		case 1:
-			return <Domicilio />;
+			return <Domicilio titulo={titulo} />;
 		case 2:
-			return <DatosCurriculares data={data.datosCurricularesDeclarante} />;
+			return <DatosCurriculares data={data.datosCurricularesDeclarante} titulo={titulo} />;
 		case 3:
-			return <EmpleoCargoComision data={data.datosEmpleoCargoComision} tipo={tipo} />;
+			return <EmpleoCargoComision data={data.datosEmpleoCargoComision} titulo={titulo} />;
 		case 4:
-			return <ExperienciaLaboral data={data.experienciaLaboral} />;
+			return <ExperienciaLaboral data={data.experienciaLaboral} titulo={titulo} />;
 		case 5:
-			return <DatosPareja />;
+			return <DatosPareja titulo={titulo} />;
 		case 6:
-			return <DependientesEconomicos />;
+			return <DependientesEconomicos titulo={titulo} />;
 		case 7:
-			return <Ingresos data={data.ingresos} tipo={tipo} />;
+			return <Ingresos data={data.ingresos} tipo={tipo} titulo={titulo} />;
 		case 8:
-			return <ServidorAnioAnterior data={data.actividadAnualAnterior} />;
+			return <ServidorAnioAnterior data={data.actividadAnualAnterior} titulo={titulo} />;
 		case 9:
-			return <Bienesinmuebles data={data.bienesInmuebles} />;
+			return <Bienesinmuebles data={data.bienesInmuebles} titulo={titulo} />;
 		case 10:
-			return <Vehiculos data={data.vehiculos} />;
+			return <Vehiculos data={data.vehiculos} titulo={titulo} />;
 		case 11:
-			return <BienesMuebles data={data.bienesMuebles} />;
+			return <BienesMuebles data={data.bienesMuebles} titulo={titulo} />;
 		case 12:
-			return <Inversiones data={data.inversiones} tipo={tipo} />;
+			return <Inversiones data={data.inversiones} tipo={tipo} titulo={titulo} />;
 		case 13:
-			return <Adeudos data={data.adeudos} tipo={tipo} />;
+			return <Adeudos data={data.adeudos} tipo={tipo} titulo={titulo} />;
 		case 14:
-			return <Prestamo data={data.prestamoOComodato} />;
+			return <Prestamo data={data.prestamoOComodato} titulo={titulo} />;
 		default:
 			break;
 	}
 }
 
 function OpcionModificacion(valor, data, tipo) {
+	const titulo = titulos[tipo][valor];
 	switch (valor) {
 		case 0:
-			return <DatosGenerales data={data.datosGenerales} />;
+			return <DatosGenerales data={data.datosGenerales} titulo={titulo} />;
 		case 1:
-			return <Domicilio />;
+			return <Domicilio titulo={titulo} />;
 		case 2:
-			return <DatosCurriculares data={data.datosCurricularesDeclarante} />;
+			return <DatosCurriculares data={data.datosCurricularesDeclarante} titulo={titulo} />;
 		case 3:
-			return <EmpleoCargoComision data={data.datosEmpleoCargoComision} tipo={tipo} />;
+			return <EmpleoCargoComision data={data.datosEmpleoCargoComision} titulo={titulo} />;
 		case 4:
-			return <ExperienciaLaboral data={data.experienciaLaboral} />;
+			return <ExperienciaLaboral data={data.experienciaLaboral} titulo={titulo} />;
 		case 5:
-			return <DatosPareja />;
+			return <DatosPareja titulo={titulo} />;
 		case 6:
-			return <DependientesEconomicos />;
+			return <DependientesEconomicos titulo={titulo} />;
 		case 7:
-			return <Ingresos data={data.ingresos} tipo={tipo} />;
+			return <Ingresos data={data.ingresos} tipo={tipo} titulo={titulo} />;
 		case 8:
-			return <Bienesinmuebles data={data.bienesInmuebles} />;
+			return <Bienesinmuebles data={data.bienesInmuebles} titulo={titulo} />;
 		case 9:
-			return <Vehiculos data={data.vehiculos} />;
+			return <Vehiculos data={data.vehiculos} titulo={titulo} />;
 		case 10:
-			return <BienesMuebles data={data.bienesMuebles} />;
+			return <BienesMuebles data={data.bienesMuebles} titulo={titulo} />;
 		case 11:
-			return <Inversiones data={data.inversiones} tipo={tipo} />;
+			return <Inversiones data={data.inversiones} tipo={tipo} titulo={titulo} />;
 		case 12:
-			return <Adeudos data={data.adeudos} tipo={tipo} />;
+			return <Adeudos data={data.adeudos} tipo={tipo} titulo={titulo} />;
 		case 13:
-			return <Prestamo data={data.prestamoOComodato} />;
+			return <Prestamo data={data.prestamoOComodato} titulo={titulo} />;
 		default:
 			break;
 	}

@@ -72,15 +72,14 @@ function Empleo({ data }) {
 	);
 }
 
-export default function(props) {
+export default function({ data, titulo }) {
 	const classes = useStyles();
-	const { data } = props;
 
 	return (
 		<Grid container spacing={2} className={classes.rootPrincipal}>
 			<Grid item xs={12}>
 				<Typography className={classes.tituloSeccion} align="center">
-					4. DATOS DEL EMPLEO, CARGO O COMISIÓN QUE INICIA
+					{titulo}
 				</Typography>
 			</Grid>
 			<Grid item xs={12}>

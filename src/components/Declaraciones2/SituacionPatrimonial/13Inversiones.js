@@ -151,7 +151,7 @@ function Inversiones({ inversiones, tipo }) {
 	});
 }
 
-export default function({ data, tipo }) {
+export default function({ data, tipo, titulo }) {
 	const classes = useStyles();
 
 	const inversiones = data.inversion.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
@@ -160,11 +160,7 @@ export default function({ data, tipo }) {
 		<Grid container spacing={2} className={classes.rootPrincipal}>
 			<Grid item xs={12}>
 				<Typography className={classes.tituloSeccion} align="center">
-					{tipo === 'MODIFICACIÓN' ? (
-						'12. INVERSIONES, CUENTAS BANCARIAS Y OTRO TIPO DE VALORES / ACTIVOS (ENTRE EL 1 DE ENERO Y EL 31 DE DICIEMBRE DEL AÑO INMEDIATO ANTERIOR)'
-					) : (
-						'13. INVERSIONES, CUENTAS BANCARIAS Y OTRO TIPO DE VALORES/ACTIVOS (SITUACIÓN ACTUAL)'
-					)}
+					{titulo}
 				</Typography>
 			</Grid>
 			{data ? (

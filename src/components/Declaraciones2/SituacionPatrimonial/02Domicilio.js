@@ -8,19 +8,19 @@ import DatosReservados from '../DatosReservados';
 
 const useStyles = makeStyles(style);
 
-export default function () {
+export default function({ titulo }) {
 	const classes = useStyles();
 
 	return (
 		<Grid container spacing={2} className={classes.rootPrincipal}>
 			<Grid item xs={12}>
 				<Typography className={classes.tituloSeccion} align="center">
-					2. DOMICILIO DEL DECLARANTE
+					{titulo}
 				</Typography>
 			</Grid>
 			<Grid item xs={12}>
 				<DatosReservados />
-			</Grid>			
+			</Grid>
 		</Grid>
 	);
 }

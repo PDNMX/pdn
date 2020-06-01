@@ -106,9 +106,8 @@ function Vehiculo(props) {
 	});
 }
 
-export default function(props) {
+export default function({ data, titulo }) {
 	const classes = useStyles();
-	const { data } = props;
 
 	const vehiculos = data.vehiculo.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
 
@@ -116,7 +115,7 @@ export default function(props) {
 		<Grid container spacing={2} className={classes.rootPrincipal}>
 			<Grid item xs={12}>
 				<Typography className={classes.tituloSeccion} align="center">
-					11. VEHÍCULOS (SITUACIÓN ACTUAL)
+					{titulo}
 				</Typography>
 			</Grid>
 			{data ? (
