@@ -13,6 +13,8 @@ import { sumary, expansion, getMoneda } from '../utils';
 import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
+import { info } from '../utils';
+
 const useStyles = makeStyles(styleSecciones);
 
 export function ActividadIndustrial({ actividadIndustialComercialEmpresarial }) {
@@ -329,7 +331,7 @@ export default function({ data, tipo, titulo }) {
 		case 'CONCLUSIÓN':
 			return <IngresosConclusion data={data} titulo={titulo} />;
 		default:
-			console.log(tipo);
+			info('Tipo declaración: ' + tipo);
 			break;
 	}
 }

@@ -90,9 +90,8 @@ function opcion(valor, data) {
 	}
 }
 
-export default function MenuSuperior(props) {
+export default function MenuSuperior({ data, value, setValue }) {
 	const classes = useStyles();
-	const { data } = props;
 
 	data.participacion.participacion = data.participacion.participacion.filter((i) => i.tipoRelacion === 'DECLARANTE');
 	data.participacionTomaDecisiones.participacion = data.participacionTomaDecisiones.participacion.filter(
@@ -112,10 +111,10 @@ export default function MenuSuperior(props) {
 		<Paper square className={classes.root}>
 			<Grid container spacing={0}>
 				<Grid item xs={12} md={2} style={{ backgroundColor: '#34b3eb' }}>
-					<MenuLateral value={props.value} setValue={props.setValue} opciones={Menu(data)} />
+					<MenuLateral value={value} setValue={setValue} opciones={Menu(data)} />
 				</Grid>
 				<Grid item xs={12} md={10}>
-					{opcion(props.value, data)}
+					{opcion(value, data)}
 				</Grid>
 			</Grid>
 		</Paper>

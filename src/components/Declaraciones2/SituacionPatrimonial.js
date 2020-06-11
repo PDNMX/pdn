@@ -20,6 +20,8 @@ import Inversiones from './SituacionPatrimonial/13Inversiones';
 import Adeudos from './SituacionPatrimonial/14Adeudos';
 import Prestamo from './SituacionPatrimonial/15Prestamo';
 
+import { info } from './utils';
+
 const situacionPatrimonial = (data, tipo) => {
 	let {
 		datosCurricularesDeclarante,
@@ -90,7 +92,7 @@ const situacionPatrimonial = (data, tipo) => {
 		case 'MODIFICACIÓN':
 			return menu.filter((op, index) => index !== 8);
 		default:
-			console.log(tipo);
+			info('Tipo declaración: ' + tipo);
 			break;
 	}
 };
@@ -239,7 +241,7 @@ function opcion(valor, data, tipo) {
 		case 'CONCLUSIÓN':
 			return OpcionInicialConclusion(valor, data, tipo);
 		default:
-			console.log(tipo);
+			info('Tipo declaración: ' + tipo);
 			break;
 	}
 }

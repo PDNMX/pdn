@@ -44,7 +44,7 @@ export default (theme) => ({
     color: theme.palette.textGrey.color,
     marginTop: theme.spacing(7),
     maxWidth: 1200,
-    margin: "0 auto",
+    // margin: "0 auto",
   },
   whiteText: {
     color: theme.palette.textGrey.color,

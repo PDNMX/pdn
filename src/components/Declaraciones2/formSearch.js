@@ -78,7 +78,7 @@ export default function({
 					</ul>
 				</Grid>
 			</Grid>
-			<Grid container spacing={0} className={classes.root}>
+			<Grid container spacing={0} className={classes.infoBusqueda}>
 				<Grid item xs={12}>
 					<Typography>
 						<b>Busca un servidor público</b>

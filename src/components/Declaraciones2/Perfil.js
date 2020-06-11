@@ -11,11 +11,21 @@ import { getMoneda } from './utils';
 import Button from '@material-ui/core/Button';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
+import scrollToComponent from 'react-scroll-to-component';
+
 class Perfil extends React.Component {
 	state = {
 		menuSuperior: 0,
 		menuSituacionPatrimonial: 0,
 		menuIntereses: 0
+	};
+
+	refPatrimonial = (section) => {
+		this.patrimonial = section;
+	};
+
+	refIntereses = (section) => {
+		this.intereses = section;
 	};
 
 	handleChangeMenuSuperior = (event, newValue) => {
@@ -25,15 +35,25 @@ class Perfil extends React.Component {
 	};
 
 	handleChangeMenuSituacionPatrimonial = (event, newValue) => {
-		this.setState((prevSate) => {
-			return { ...prevSate, menuSituacionPatrimonial: newValue };
-		});
+		this.setState(
+			(prevSate) => {
+				return { ...prevSate, menuSituacionPatrimonial: newValue };
+			},
+			() => {
+				scrollToComponent(this.top, { align: 'top' });
+			}
+		);
 	};
 
 	handleChangeMenuIntereses = (event, newValue) => {
-		this.setState((prevSate) => {
-			return { ...prevSate, menuIntereses: newValue };
-		});
+		this.setState(
+			(prevSate) => {
+				return { ...prevSate, menuIntereses: newValue };
+			},
+			() => {
+				scrollToComponent(this.top, { align: 'top' });
+			}
+		);
 	};
 
 	getIngresos = (data) => {
@@ -52,10 +72,10 @@ class Perfil extends React.Component {
 	};
 
 	render() {
-		let { classes, data, handleGoBack } = this.props;
+		let { classes, data, handleGoBack, refPerfil } = this.props;
 		return (
 			<div>
-				<Grid container spacing={0} className={classes.perfilRoot}>
+				<Grid container spacing={0} className={classes.perfilRoot} ref={refPerfil}>
 					<Grid item xs={12} md={12} style={{ textAlign: 'right', paddingBottom: '20px' }}>
 						<Button
 							className={classes.btnBack}
@@ -125,7 +145,14 @@ class Perfil extends React.Component {
 						</Paper>
 					</Grid>
 				</Grid>
-				<Grid container spacing={0} className={classes.perfilRoot}>
+				<Grid
+					container
+					spacing={0}
+					className={classes.perfilRoot}
+					ref={(section) => {
+						this.top = section;
+					}}
+				>
 					<MenuSuperior
 						menuSuperior={this.state.menuSuperior}
 						handleChangeMenuSuperior={this.handleChangeMenuSuperior}

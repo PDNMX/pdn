@@ -19,8 +19,8 @@ import imgBuscar from '../../assets/declaraciones/servidores_declaraciones.svg';
 import imgEstadisticas from '../../assets/declaraciones/estadisticas.svg';
 
 import Busqueda from './Busqueda';
-import PerfilMaterialUI from '../Declaraciones/PerfilMaterialUI';
-import Stats from '../Declaraciones/Estadisticas/Stats';
+// import PerfilMaterialUI from '../Declaraciones/PerfilMaterialUI';
+// import Stats from '../Declaraciones/Estadisticas/Stats';
 
 import styles from './style';
 
@@ -111,11 +111,11 @@ class Declaraciones extends React.Component {
 				</Grid>
 				{/* fin menu */}
 				<Grid container spacing={0}>
-					<Grid item xs={12} className={classes.sectionT}>
+					<Grid item xs={12} className={classes.sectionT} style={{ marginLeft: 'auto', marginRight: 'auto' }}>
 						<Switch>
 							<Route exact path="/declaraciones" component={Busqueda} />
-							<Route path="/declaraciones/perfil/:id?" component={PerfilMaterialUI} />
-							<Route path="/declaraciones/estadisticas" component={Stats} />
+							{/* <Route path="/declaraciones/perfil/:id?" component={PerfilMaterialUI} />
+							<Route path="/declaraciones/estadisticas" component={Stats} /> */}
 						</Switch>
 					</Grid>
 				</Grid>

@@ -13,6 +13,8 @@ import Perfil from './Perfil';
 import styles from './style';
 
 import FormSearch from './formSearch';
+import { error } from './utils';
+import scrollToComponent from 'react-scroll-to-component';
 
 import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -125,10 +127,15 @@ class Busqueda extends React.Component {
 	};
 
 	handleDataSelect = (data) => {
-		this.setState((prevState) => ({
-			...prevState,
-			dataSelect: data
-		}));
+		this.setState(
+			(prevState) => ({
+				...prevState,
+				dataSelect: data
+			}),
+			() => {
+				scrollToComponent(this.perfil, { align: 'top' });
+			}
+		);
 	};
 
 	handleGoBack = () => {
@@ -236,7 +243,7 @@ class Busqueda extends React.Component {
 				//     },
 				//   ],
 				// }));
-				console.log('providers: ', err);
+				error('find' + err);
 			});
 	};
 
@@ -245,7 +252,7 @@ class Busqueda extends React.Component {
 
 		let prov = institucion
 			? providers.filter((p) => p.supplier_id === institucion)
-			: providers.filter((p) => p.supplier_id);
+			: providers.filter((p) => typeof p.supplier_id === 'string');
 
 		prov = prov.map((p) => {
 			return {
@@ -264,11 +271,7 @@ class Busqueda extends React.Component {
 				prov: prov,
 				btnSearch: true
 			}),
-			() => {
-				for (let i = 0; i < prov.length; i++) {
-					this.find(i);
-				}
-			}
+			() => prov.forEach((p, index) => this.find(index))
 		);
 	};
 
@@ -284,10 +287,13 @@ class Busqueda extends React.Component {
 		axios
 			.get(url)
 			.then((resp) => {
-				this.setState((prevState) => ({
-					...prevState,
-					providers: [ ...defProviders, ...resp.data ]
-				}));
+				this.setState(
+					(prevState) => ({
+						...prevState,
+						providers: [ ...defProviders, ...resp.data ]
+					}),
+					() => {}
+				);
 			})
 			.catch((err) => {
 				this.setState((prevState) => ({
@@ -299,7 +305,7 @@ class Busqueda extends React.Component {
 						}
 					]
 				}));
-				console.log('providers: ', err);
+				error('getProviders' + err);
 			});
 	};
 
@@ -331,7 +337,7 @@ class Busqueda extends React.Component {
 						}
 					]
 				}));
-				console.log('getEscolaridadNivel: ', err);
+				error('getEscolaridadNivel' + err);
 			});
 	};
 
@@ -364,7 +370,8 @@ class Busqueda extends React.Component {
 						}
 					]
 				}));
-				console.log('catFormaAdquisicion: ', err);
+
+				error('catFormaAdquisicion' + err);
 			});
 	};
 
@@ -379,7 +386,9 @@ class Busqueda extends React.Component {
 		];
 
 		axios
-			.get(url)
+			.get(url, {
+				crossdomain: true
+			})
 			.then((resp) => {
 				this.setState((prevState) => ({
 					...prevState,
@@ -396,7 +405,8 @@ class Busqueda extends React.Component {
 						}
 					]
 				}));
-				console.log('catEntidadesFederativas: ', err);
+
+				error('catEntidadesFederativas' + err);
 			});
 	};
 
@@ -411,7 +421,9 @@ class Busqueda extends React.Component {
 		];
 
 		axios
-			.get(url)
+			.get(url, {
+				crossdomain: true
+			})
 			.then((resp) => {
 				this.setState((prevState) => ({
 					...prevState,
@@ -428,7 +440,8 @@ class Busqueda extends React.Component {
 						}
 					]
 				}));
-				console.log('catMunicipios: ', err);
+
+				error('catMunicipios' + err);
 			});
 	};
 
@@ -446,19 +459,21 @@ class Busqueda extends React.Component {
 			<div>
 				{!this.state.dataSelect && (
 					<div>
-						<FormSearch
-							query={this.state.query}
-							handleInputChange={this.handleInputChange}
-							catEscolaridadNivel={this.state.catEscolaridadNivel}
-							catFormaAdquisicion={this.state.catFormaAdquisicion}
-							catEntidadesFederativas={this.state.catEntidadesFederativas}
-							catMunicipios={this.state.catMunicipios}
-							btnSearch={this.state.btnSearch}
-							handlerFind={this.handlerFind}
-							cleanForm={this.cleanForm}
-						/>
-
 						<Grid container spacing={0} className={classes.root}>
+							<FormSearch
+								query={this.state.query}
+								handleInputChange={this.handleInputChange}
+								catEscolaridadNivel={this.state.catEscolaridadNivel}
+								catFormaAdquisicion={this.state.catFormaAdquisicion}
+								catEntidadesFederativas={this.state.catEntidadesFederativas}
+								catMunicipios={this.state.catMunicipios}
+								btnSearch={this.state.btnSearch}
+								handlerFind={this.handlerFind}
+								cleanForm={this.cleanForm}
+							/>
+						</Grid>
+
+						<Grid container spacing={0} className={classes.infoBusqueda}>
 							<div className={classes.resultadosRoot}>
 								{this.state.prov.map((p, i) => {
 									return (
@@ -554,7 +569,15 @@ class Busqueda extends React.Component {
 						</Grid>
 					</div>
 				)}
-				{this.state.dataSelect && <Perfil data={this.state.dataSelect} handleGoBack={this.handleGoBack} />}
+				{this.state.dataSelect && (
+					<Perfil
+						data={this.state.dataSelect}
+						handleGoBack={this.handleGoBack}
+						refPerfil={(section) => {
+							this.perfil = section;
+						}}
+					/>
+				)}
 			</div>
 		);
 	}
