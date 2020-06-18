@@ -31,6 +31,7 @@ import HelpDesk from '../components/HelpDesk/HelpDesk';
 import GAA from '../components/GAA/GAA';
 // import DeclaracionesS1 from '../components/Declaraciones';
 import DeclaracionesS1v2 from '../components/Declaraciones2';
+import SpecsS6 from '../components/Especificaciones/Contrataciones/index';
 
 const pdnRoutes = [
 	{
@@ -203,6 +204,12 @@ const pdnRoutes = [
 		exact: false,
 		path: '/declaraciones',
 		component: DeclaracionesS1v2,
+		private: false
+	},
+	{
+		exact: true,
+		path: '/contrataciones/especificaciones',
+		component: SpecsS6,
 		private: false
 	}
 ];

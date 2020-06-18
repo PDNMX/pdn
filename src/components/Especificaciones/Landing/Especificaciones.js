@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import S1 from '../../../assets/iconos_azul/1_icono.svg';
 import S2 from '../../../assets/iconos_azul/2_icono.svg';
 import S3 from '../../../assets/iconos_azul/3_icono.svg';
+import S6 from '../../../assets/iconos_azul/6_icono.svg';
 import ScrollToTopButton from "../../Navigation/ScrollToTopButton";
 //import Tooltip from "@material-ui/core/Tooltip";
 
@@ -16,7 +17,7 @@ const styles = theme => ({
     root: {
         flexGrow: 1
     },
-    item: {
+    rootItem: {
         maxWidth: 1200,
         paddingTop: 90,
         paddingBottom: 90,
@@ -50,8 +51,12 @@ const styles = theme => ({
     },
     specsContainer: {
         backgroundColor: '#34b3eb',
-        paddingTop: 90,
-        paddingBottom: 90
+        //paddingTop: 50,
+        //paddingBottom: 50
+    },
+    item: {
+        paddingTop: theme.spacing(3),
+        paddingBottom: theme.spacing(3)
     }
 });
 
@@ -63,7 +68,7 @@ class Especificaciones extends React.Component {
             <div className={classes.root}>
                 <Header/>
                 <Grid container spacing={0} justify="center" style={{background: '#fff'}}>
-                    <Grid item xs={12} className={classes.item}>
+                    <Grid item xs={12} className={classes.rootItem}>
 
                         <Typography paragraph color="textPrimary">
                             Estas especificaciones se refieren a los campos mínimos de datos que debe de contener cada sistema, así como los estándares que debe de seguir cada campo para ser interoperable con la Plataforma Digital Nacional. Esto es lo que permite que los sistemas de aquellos responsables de generar los datos estén ordenados y puedan ser consultados en la PDN.
@@ -79,30 +84,34 @@ class Especificaciones extends React.Component {
 
 
                     <Grid container spacing={0} className={classes.specsContainer} justify='center'>
-                        <Grid item xs={12} style={{maxWidth: 1200}}>
+                        <Grid item xs={12} className={classes.rootItem}>
                             <Grid container spacing={0} justify='center'>
-                                <Grid item xs={12} md={6} lg={4} xl={4} align="center">
+                                <Grid item xs={12} md={6} lg={3} xl={3} align="center" className={classes.item}>
                                     <Link to="/declaraciones/especificaciones" className={classes.link}>
-                                        {/*<Tooltip  placement="bottom" title="En proceso de actualización al nuevo formato de declaración patrimonial
-                                    y de intereses publicado en el Diario Oficial de la
-                                    Federación el 23 septiembre de 2019.">*/}
                                         <img src={S1} alt="" className={classes.sistemas}/>
-                                        {/*</Tooltip>*/}
                                         <Typography variant="h5" className={classes.text}>Declaraciones</Typography>
                                     </Link>
                                 </Grid>
-                                <Grid item xs={12} md={6} lg={4} xl={4}  align="center">
+                                <Grid item xs={12} md={6} lg={3} xl={3}  align="center" className={classes.item}>
                                     <Link to="/intervienen/especificaciones" className={classes.link}>
                                         <img src={S2} alt="" className={classes.sistemas}/>
                                         <Typography variant="h5" className={classes.text}>Servidores públicos en contrataciones</Typography>
                                     </Link>
                                 </Grid>
-                                <Grid item xs={12} md={6} lg={4} xl={4} align="center">
+                                <Grid item xs={12} md={6} lg={3} xl={3} align="center" className={classes.item}>
                                     <Link to="/sancionados/especificaciones" className={classes.link}>
                                         <img src={S3} alt="" className={classes.sistemas}/>
                                         <Typography variant="h5" className={classes.text}>Sancionados</Typography>
                                     </Link>
                                 </Grid>
+
+                                <Grid item xs={12} md={6} lg={3} xl={3} align="center" className={classes.item}>
+                                    <Link to="/contrataciones/especificaciones" className={classes.link}>
+                                        <img src={S6} alt="" className={classes.sistemas}/>
+                                        <Typography variant="h5" className={classes.text}>Contrataciones</Typography>
+                                    </Link>
+                                </Grid>
+
                             </Grid>
                         </Grid>
                     </Grid>
