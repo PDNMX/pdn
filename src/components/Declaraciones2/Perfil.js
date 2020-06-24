@@ -20,6 +20,8 @@ class Perfil extends React.Component {
 		menuIntereses: 0
 	};
 
+	
+
 	refPatrimonial = (section) => {
 		this.patrimonial = section;
 	};

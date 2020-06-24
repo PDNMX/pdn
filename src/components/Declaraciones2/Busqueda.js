@@ -27,27 +27,27 @@ class Busqueda extends React.Component {
 		}
 	];
 
-	query2 = {
-		nombres: 'Juan Pedro',
-		primerApellido: 'Tenorio',
-		segundoApellido: 'Calderón',
-		escolaridadNivel: 'DOC',
-		nivelOrdenGobierno: 'ESTATAL',
-		nombreEntePublico: 'Instituto Federal de Telecomunicaciones',
-		entidadFederativa: '01',
-		municipioAlcaldia: '001',
-		empleoCargoComision: 'Director del Sistema Nacional de Infraestructura',
-		nivelEmpleoCargoComision: 'CA0001',
-		superficieConstruccionMin: 2000,
-		superficieConstruccionMax: 4000,
-		superficieTerrenoMin: 2000,
-		superficieTerrenoMax: 4000,
-		valorAdquisicionMin: 2000,
-		valorAdquisicionMax: 4000,
-		formaAdquisicion: 'CSN',
-		totalIngresosNetosMin: 2000,
-		totalIngresosNetosMax: 4000
-	};
+	// query2 = {
+	// 	nombres: 'Juan Pedro',
+	// 	primerApellido: 'Tenorio',
+	// 	segundoApellido: 'Calderón',
+	// 	escolaridadNivel: 'DOC',
+	// 	nivelOrdenGobierno: 'ESTATAL',
+	// 	nombreEntePublico: 'Instituto Federal de Telecomunicaciones',
+	// 	entidadFederativa: '01',
+	// 	municipioAlcaldia: '001',
+	// 	empleoCargoComision: 'Director del Sistema Nacional de Infraestructura',
+	// 	nivelEmpleoCargoComision: 'CA0001',
+	// 	superficieConstruccionMin: 2000,
+	// 	superficieConstruccionMax: 4000,
+	// 	superficieTerrenoMin: 2000,
+	// 	superficieTerrenoMax: 4000,
+	// 	valorAdquisicionMin: 2000,
+	// 	valorAdquisicionMax: 4000,
+	// 	formaAdquisicion: 'CSN',
+	// 	totalIngresosNetosMin: 2000,
+	// 	totalIngresosNetosMax: 4000
+	// };
 
 	query = {
 		nombres: '',
@@ -72,6 +72,7 @@ class Busqueda extends React.Component {
 	};
 
 	state = {
+		ordenamiento: {},
 		query: { ...this.query },
 		institucion: '',
 		nivel: '',
@@ -102,6 +103,36 @@ class Busqueda extends React.Component {
 			btnSearch: false,
 			query: { ...this.query },
 			prov: []
+		}));
+	};
+
+	handleOrdenamiento = (e, property) => {
+		let ordena = this.state.ordenamiento;
+
+		if (typeof ordena[property] === 'undefined') {
+			ordena = {
+				...ordena,
+				[property]: 'asc'
+			};
+		} else {
+			switch (ordena[property]) {
+				case 'asc':
+					ordena = {
+						...ordena,
+						[property]: 'desc'
+					};
+					break;
+
+				default:
+					delete ordena[property];
+					break;
+			}
+		}
+
+		this.setState((prevState) => ({
+			...prevState,
+			btnSearch: false,
+			ordenamiento: ordena
 		}));
 	};
 
@@ -196,6 +227,7 @@ class Busqueda extends React.Component {
 			page: p.pagination.page,
 			pageSize: p.pagination.pageSize,
 			query: this.state.query,
+			sort: this.state.ordenamiento,
 			supplier_id: p.supplier_id
 		};
 
@@ -234,15 +266,29 @@ class Busqueda extends React.Component {
 				});
 			})
 			.catch((err) => {
-				// this.setState((prevState) => ({
-				//   ...prevState,
-				//   providers: [
-				//     {
-				//       clave: -1,
-				//       valor: "ERROR AL CARGAR LOS PROVEEDORES",
-				//     },
-				//   ],
-				// }));
+				let { status, statusText, data } = err.response;
+				p = {
+					...p,
+					finding: false,
+					estatus: false,
+					total: 0,
+					data: [],
+					pagination: {},
+					error: {
+						status,
+						statusText
+					}
+				};
+				this.setState((prevState) => {
+					let { prov } = prevState;
+
+					prov[id] = p;
+
+					return {
+						...prevState,
+						prov: prov
+					};
+				});
 				error('find' + err);
 			});
 	};
@@ -470,9 +516,10 @@ class Busqueda extends React.Component {
 								btnSearch={this.state.btnSearch}
 								handlerFind={this.handlerFind}
 								cleanForm={this.cleanForm}
+								handleOrdenamiento={this.handleOrdenamiento}
+								ordenamiento={this.state.ordenamiento}
 							/>
 						</Grid>
-
 						<Grid container spacing={0} className={classes.infoBusqueda}>
 							<div className={classes.resultadosRoot}>
 								{this.state.prov.map((p, i) => {

@@ -15,6 +15,7 @@ import {
 } from '@material-ui/core';
 
 import { makeStyles } from '@material-ui/core/styles';
+import Ordenamiento from './Ordenamiento';
 import style from './style';
 const useStyles = makeStyles(style);
 
@@ -27,7 +28,9 @@ export default function({
 	catMunicipios,
 	btnSearch,
 	handlerFind,
-	cleanForm
+	cleanForm,
+	handleOrdenamiento,
+	ordenamiento
 }) {
 	const classes = useStyles();
 	let {
@@ -466,6 +469,9 @@ export default function({
 									/>
 								</RadioGroup>
 							</FormControl>
+						</Grid>
+						<Grid item xs={12}>
+							<Ordenamiento handleOrdenamiento={handleOrdenamiento} ordenamiento={ordenamiento} />
 						</Grid>
 						<Grid item xs={12} style={{ textAlign: 'right' }}>
 							<Button
