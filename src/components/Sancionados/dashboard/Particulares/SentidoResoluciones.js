@@ -8,7 +8,7 @@ import rp from "request-promise";
 import 'react-vis/dist/style.css';
 // import VerticalBarSeries from "react-vis/es/plot/series/vertical-bar-series";
 import * as d3 from "d3";
-import MensajeErrorDatos from "../../../Tablas/MensajeErrorDatos";
+import MensajeErrorDatos from "../../../Mensajes/MensajeErrorDatos";
 
 
 const styles = theme => ({

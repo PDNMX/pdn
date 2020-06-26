@@ -4,7 +4,7 @@ import {withStyles} from '@material-ui/core/styles';
 import {Table,TableBody,TableCell,TablePagination,TableRow,TableFooter,TableHead} from '@material-ui/core';
 import Grid from "@material-ui/core/Grid/Grid";
 import {Typography} from "@material-ui/core";
-import MensajeNoRegistros from "../../Tablas/MensajeNoRegistros";
+import MensajeNoRegistros from "../../Mensajes/MensajeNoRegistros";
 
 
 const columnData = [

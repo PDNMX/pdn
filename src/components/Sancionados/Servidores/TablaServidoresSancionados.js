@@ -8,7 +8,7 @@ import TableRow from '@material-ui/core/TableRow';
 import TableFooter from '@material-ui/core/TableFooter';
 import Grid from "@material-ui/core/Grid";
 import {Typography} from "@material-ui/core"
-import MensajeNoRegistros from "../../Tablas/MensajeNoRegistros";
+import MensajeNoRegistros from "../../Mensajes/MensajeNoRegistros";
 import TableHead from "@material-ui/core/TableHead";
 
 
