@@ -12,7 +12,7 @@ import VerticalGridLines from "react-vis/es/plot/vertical-grid-lines";
 import 'react-vis/dist/style.css';
 import {FlexibleXYPlot} from "react-vis/es";
 import Hint from "react-vis/es/plot/hint";
-import MensajeErrorDatos from "../../../Tablas/MensajeErrorDatos";
+import MensajeErrorDatos from "../../../Mensajes/MensajeErrorDatos";
 import {Pie} from "d3plus-react";
 
 const styles = theme => ({

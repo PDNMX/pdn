@@ -117,6 +117,7 @@ class DescripcionEstandar extends React.Component {
 
                 <p>
                     <Button variant="contained" className={classes.button} href="https://oauth.net/2/"> Más información </Button>
+                    <Button variant="contained" className={classes.button} target="_blank" href="https://drive.google.com/file/d/17-npQleAV87gV19hbmtzgZipegl0qrIO/view?usp=sharing"> Guía de referencia </Button>
                 </p>
             </div>)
     }

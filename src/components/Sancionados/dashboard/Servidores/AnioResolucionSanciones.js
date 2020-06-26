@@ -5,7 +5,7 @@ import Grid from "@material-ui/core/Grid/Grid";
 import {Typography} from "@material-ui/core"
 import {LinePlot, Pie} from "d3plus-react";
 import rp from "request-promise";
-import MensajeErrorDatos from "../../../Tablas/MensajeErrorDatos";
+import MensajeErrorDatos from "../../../Mensajes/MensajeErrorDatos";
 import {FlexibleXYPlot} from "react-vis/es";
 import VerticalGridLines from "react-vis/es/plot/vertical-grid-lines";
 import HorizontalGridLines from "react-vis/es/plot/horizontal-grid-lines";

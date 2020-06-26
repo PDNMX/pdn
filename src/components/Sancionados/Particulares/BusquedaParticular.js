@@ -26,7 +26,8 @@ import TablaParticularesSancionados from "./TablaParticularesSancionados";
 import DetalleParticularSancionado from "./DetalleParticular";
 import Modal from "@material-ui/core/Modal";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import MensajeErrorDatos from "../../Tablas/MensajeErrorDatos";
+import MensajeErrorDatos from "../../Mensajes/MensajeErrorDatos";
+import MensajeNoRegistros from "../../Mensajes/MensajeNoRegistros";
 
 
 const styles = theme => ({
@@ -548,6 +549,13 @@ class BusquedaParticular extends React.Component {
                         </div>
                     </Grid>
                 </Grid>
+                }
+                {
+                    <Grid item xs={12}>
+                        {(this.state.previos && this.state.previos.length <= 0) &&
+                        <MensajeNoRegistros/>
+                        }
+                    </Grid>
                 }
                 {/*Tabla*/}
                 {this.state.filterData && this.state.filterData.length > 0 && this.state.elementoSeleccionado === null &&

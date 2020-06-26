@@ -6,7 +6,7 @@ import {Typography} from "@material-ui/core"
 import {BarChart} from "d3plus-react";
 import rp from "request-promise";
 import * as d3 from "d3";
-import MensajeErrorDatos from "../../../Tablas/MensajeErrorDatos";
+import MensajeErrorDatos from "../../../Mensajes/MensajeErrorDatos";
 
 const styles = theme => ({
     frameChart: {

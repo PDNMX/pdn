@@ -22,12 +22,12 @@ import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import rp from "request-promise";
 import Modal from "@material-ui/core/Modal";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import MensajeErrorDatos from "../../Tablas/MensajeErrorDatos";
+import MensajeErrorDatos from "../../Mensajes/MensajeErrorDatos";
 import Switch from "@material-ui/core/Switch";
 import Collapse from "@material-ui/core/Collapse";
 import Previos from "../../Compartidos/Previos";
 import TablaServidoresSancionados from "./TablaServidoresSancionados";
-import MensajeNoRegistros from "../../Tablas/MensajeNoRegistros";
+import MensajeNoRegistros from "../../Mensajes/MensajeNoRegistros";
 import DetalleServidorSancionado from "./DetalleServidorSancionado";
 
 const styles = theme => ({
