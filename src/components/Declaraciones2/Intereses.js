@@ -14,6 +14,8 @@ import BeneficiosPrivados from './Intereses/06BeneficiosPrivados';
 import Fideicomisos from './Intereses/07Fideicomisos';
 import { Disclaimer } from './utils';
 
+import ErrorBoundary from './ErrorBoundary';
+
 const Menu = (data) => {
 	let {
 		participacion,
@@ -114,7 +116,7 @@ export default function MenuSuperior({ data, value, setValue }) {
 					<MenuLateral value={value} setValue={setValue} opciones={Menu(data)} />
 				</Grid>
 				<Grid item xs={12} md={10}>
-					{opcion(value, data)}
+					<ErrorBoundary>{opcion(value, data)}</ErrorBoundary>
 				</Grid>
 			</Grid>
 		</Paper>

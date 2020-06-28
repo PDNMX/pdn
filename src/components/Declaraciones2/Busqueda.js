@@ -266,7 +266,7 @@ class Busqueda extends React.Component {
 				});
 			})
 			.catch((err) => {
-				let { status, statusText, data } = err.response;
+				let { status, statusText } = err.response;
 				p = {
 					...p,
 					finding: false,

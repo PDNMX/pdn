@@ -20,6 +20,8 @@ import Inversiones from './SituacionPatrimonial/13Inversiones';
 import Adeudos from './SituacionPatrimonial/14Adeudos';
 import Prestamo from './SituacionPatrimonial/15Prestamo';
 
+import ErrorBoundary from './ErrorBoundary';
+
 import { info } from './utils';
 
 const situacionPatrimonial = (data, tipo) => {
@@ -256,7 +258,7 @@ export default function MenuSuperior({ data, value, setValue, tipo }) {
 					<MenuLateral value={value} setValue={setValue} opciones={situacionPatrimonial(data, tipo)} />
 				</Grid>
 				<Grid item xs={12} md={10}>
-					{opcion(value, data, tipo)}
+					<ErrorBoundary>{opcion(value, data, tipo)}</ErrorBoundary>
 				</Grid>
 			</Grid>
 		</Paper>

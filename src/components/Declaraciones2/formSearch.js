@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
 
-import { SelectElement } from './utils';
+import { SelectElement, Divider } from './utils';
 
 import {
 	TextField,
@@ -13,6 +13,9 @@ import {
 	FormLabel,
 	RadioGroup
 } from '@material-ui/core';
+
+import ExpandLessIcon from '@material-ui/icons/ExpandLess';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Ordenamiento from './Ordenamiento';
@@ -55,6 +58,8 @@ export default function({
 		formaAdquisicion
 	} = query;
 
+	const [ checked, setChecked ] = React.useState(false);
+
 	return (
 		<React.Fragment>
 			<Grid container spacing={0} className={classes.infoBusqueda}>
@@ -87,6 +92,7 @@ export default function({
 						<b>Busca un servidor público</b>
 					</Typography>
 				</Grid>
+				<Divider />
 				<Grid item xs={12}>
 					<Grid container spacing={1}>
 						<Grid item xs={12} md={3}>
@@ -470,9 +476,21 @@ export default function({
 								</RadioGroup>
 							</FormControl>
 						</Grid>
+						<Divider />
 						<Grid item xs={12}>
-							<Ordenamiento handleOrdenamiento={handleOrdenamiento} ordenamiento={ordenamiento} />
+							<Button
+								onClick={() => setChecked(!checked)}
+								startIcon={checked ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+							>
+								Ordenamiento
+							</Button>
 						</Grid>
+						{checked && (
+							<Grid item xs={12}>
+								<Ordenamiento handleOrdenamiento={handleOrdenamiento} ordenamiento={ordenamiento} />
+							</Grid>
+						)}
+
 						<Grid item xs={12} style={{ textAlign: 'right' }}>
 							<Button
 								className={classes.button}
@@ -498,6 +516,7 @@ export default function({
 								Limpiar
 							</Button>
 						</Grid>
+						<Divider />
 					</Grid>
 				</Grid>
 			</Grid>
