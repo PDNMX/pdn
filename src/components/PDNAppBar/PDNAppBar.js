@@ -181,8 +181,9 @@ class PDNAppBar extends React.Component {
                                                     3</ListItem>
 
                                             </List>
-
                                         </Collapse>
+
+
                                         {
                                             this.state.permisos.includes('admon-conexion-so:visit') &&
                                             <MenuItem component={Link} to={"/consolaAdmonSO"}>Administrar conexión</MenuItem>

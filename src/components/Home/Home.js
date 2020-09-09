@@ -11,6 +11,7 @@ import AlertDialog from "./AlertDialog";
 
 import BarraFea from "./BarraFea";
 import BlogPosts from "./BlogPosts/BlogPosts";
+import AvanceInterconexion from "./AvanceInterconexion/Avance";
 
 const styles = theme => ({
     root: {
@@ -22,6 +23,9 @@ const styles = theme => ({
     sistemas: {
         background: '#34b3eb'
     },
+    avance:{
+        backgroundColor: "#f6f6f6"
+    }
 });
 
 class Home extends React.Component{
@@ -41,6 +45,12 @@ class Home extends React.Component{
                     <Grid container spacing={0} justify="center" className={classes.sistemas}>
                         <Grid item xs={12} className={classes.item}>
                             <Sistemas/>
+                        </Grid>
+                    </Grid>
+
+                    <Grid container spacing={0} justify="center" className={classes.avance}>
+                        <Grid item xs={12} className={classes.item}>
+                            <AvanceInterconexion/>
                         </Grid>
                     </Grid>
 
