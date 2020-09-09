@@ -61,7 +61,7 @@ const Avance = props => {
                 </Typography>
 
                 <Typography color="textPrimary">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam maximus nisl nibh, ac dignissim augue condimentum a. Nunc et commodo diam. Maecenas non ipsum pellentesque, egestas lectus bibendum, vulputate libero. Praesent non nibh feugiat, efficitur diam nec, lobortis metus. Morbi vulputate, purus sed cursus congue, turpis turpis laoreet ex, tincidunt ornare justo eros a turpis.
+                    Localiza una entidad federativa en el mapa e identifica qué tan similar es la normatividad de la Plataforma Digital Estatal o Sistema de información con la normatividad de la Plataforma Digital Nacional.
                 </Typography>
 
                 <Button variant="contained"
@@ -76,7 +76,7 @@ const Avance = props => {
                 </Typography>
 
                 <Typography color="textPrimary">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam maximus nisl nibh, ac dignissim augue condimentum a. Nunc et commodo diam. Maecenas non ipsum pellentesque, egestas lectus bibendum, vulputate libero. Praesent non nibh feugiat, efficitur diam nec, lobortis metus. Morbi vulputate, purus sed cursus congue, turpis turpis laoreet ex, tincidunt ornare justo eros a turpis.
+                    Identifica una entidad en el tablero y consulta los avances de las Secretarías Estatales Anticorrupción en el desarrollo y conexión de los sistemas de: Servidores Públicos que Intervienen en Procedimientos de Contratación (S2); y Servidores Públicos y Particulares Sancionados (S3), con la a Plataforma Digital Nacional.
                 </Typography>
 
                 <Button variant="contained"
