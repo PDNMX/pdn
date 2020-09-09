@@ -5,7 +5,7 @@ import Blog from "../../assets/iconos_barra/ico-blog.svg";
 import Calidad from "../../assets/iconos_barra/ico-calidad_datos.svg";
 import Espe from "../../assets/iconos_barra/ico-especificaciones.svg";
 import Mesa from "../../assets/iconos_barra/ico-mesa_ayuda.svg";
-import Plat from "../../assets/iconos_barra/ico-plataformas_sistemas.svg";
+//import Plat from "../../assets/iconos_barra/ico-plataformas_sistemas.svg";
 import { Link } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
 
