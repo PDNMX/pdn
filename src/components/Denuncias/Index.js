@@ -3,7 +3,6 @@ import {Typography} from "@material-ui/core"
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
-import Header from "../PDNAppBar/PDNAppBar";
 import img1 from "../../assets/img/hands.jpg";
 import img2 from "../../assets/img/caseFile.jpg";
 import img3 from "../../assets/img/fiscal.jpg";
@@ -86,7 +85,6 @@ class Index extends React.Component {
         const {classes} = this.props;
         return (
             <div>
-                <Header/>
                 <Paper className={classes.seccion}>
                     <Grid container>
                         <Grid item lg={8} md={8} sm={12} className={classes.bgImg}/>

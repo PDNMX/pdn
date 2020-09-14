@@ -3,7 +3,6 @@ import {Typography} from "@material-ui/core"
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
-import Header from "../../PDNAppBar/PDNAppBar";
 import Paper from "@material-ui/core/Paper/Paper";
 //import HorizontalNonLinearStepper from "./HorizontalNonLinearStepper";
 
@@ -33,7 +32,6 @@ class FormularioDenuncia extends React.Component {
 
         return (
             <div className={classes.root}>
-                <Header/>
 
                 <Grid container spacing={0} justify="center">
                     <Grid item xs={12} className={classes.section}>

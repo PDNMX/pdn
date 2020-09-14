@@ -10,7 +10,6 @@ import LogoPDN from '../../assets/PDN.png';
 import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
 import Modal from "@material-ui/core/Modal/Modal";
 import Divider from '@material-ui/core/Divider';
-import PDNAppBar from '../PDNAppBar/PDNAppBar';
 import app from "../../config/firebase";
 import {withRouter} from "react-router-dom";
 import {haySesion} from "../Seguridad/seguridad";
@@ -129,7 +128,6 @@ class LoginPDN extends Component {
         const {classes} = this.props;
         return (
             <div>
-                <PDNAppBar/>
             <Grid container spacing={3} justify='center'>
                 <Grid item xs={12} className={classes.item}>
                     <Card className={classes.card}>
