@@ -65,7 +65,7 @@ class AlertDialog extends React.Component {
                     <DialogContent>
 
                         <Typography paragraph>
-                            Esta es la versión Beta 0.6 de la Plataforma Digital Nacional (PDN), lo cual significa:
+                            Esta es la versión Beta 0.7 de la Plataforma Digital Nacional (PDN), lo cual significa:
                         </Typography>
 
                         <ul className={classes.ul}>
@@ -76,7 +76,7 @@ class AlertDialog extends React.Component {
                             </li>
                             <li className={classes.li}>
                                 <Typography color='textPrimary' display='inline'>
-                                    <b>0.6:</b> Contiene datos reales de los Sistemas 2, 3, y 6 y se logró la interconexión con algunos de los Sujetos Obligados (Sistemas 2 y 3).
+                                    <b>0.7:</b> Contiene datos reales de los Sistemas 1, 2, 3, y 6 y se logró la interconexión con algunos de los sujetos obligados.
                                 </Typography>
                             </li>
                         </ul>
