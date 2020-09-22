@@ -103,47 +103,49 @@ function Inversiones({ inversiones, tipo }) {
 						<Grid item xs={12} style={{ textAlign: 'center' }}>
 							<Typography className={classes.tituloSubSeccion}>TERCERO</Typography>
 						</Grid>
-						{obj.tercero.tipoPersona !== 'MORAL' ? (
-							<Grid item xs={12}>
-								<Grid container spacing={1}>
-									<Grid item xs={12} md={3}>
-										<Typography className={classes.cardTitle}>TIPO PERSONA:</Typography>
-										<Typography className={classes.cardReserved}>FÍSICA</Typography>
-									</Grid>
-									<Grid item xs={12} md={6}>
-										<Typography className={classes.cardTitle}>
-											NOMBRE DEL TERCERO O TERCEROS:
-										</Typography>
-										<Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
-									</Grid>
-									<Grid item xs={12} md={3}>
-										<Typography className={classes.cardTitle}>RFC:</Typography>
-										<Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
-									</Grid>
-								</Grid>
-							</Grid>
-						) : (
-							<Grid item xs={12}>
-								<Grid container spacing={1}>
-									<Grid item xs={12} md={3}>
-										<Typography className={classes.cardTitle}>TIPO PERSONA:</Typography>
-										<Typography className={classes.card}>MORAL</Typography>
-									</Grid>
-									<Grid item xs={12} md={6}>
-										<Typography className={classes.cardTitle}>
-											NOMBRE DEL TERCERO O TERCEROS:
-										</Typography>
-										<Typography className={classes.card}>
-											{obj.tercero.nombreRazonSocial}
-										</Typography>
-									</Grid>
-									<Grid item xs={12} md={3}>
-										<Typography className={classes.cardTitle}>RFC:</Typography>
-										<Typography className={classes.card}>{obj.tercero.rfc}</Typography>
+						{obj.tercero.map((tercero) => {
+							return tercero.tipoPersona !== 'MORAL' ? (
+								<Grid item xs={12}>
+									<Grid container spacing={1}>
+										<Grid item xs={12} md={3}>
+											<Typography className={classes.cardTitle}>TIPO PERSONA:</Typography>
+											<Typography className={classes.cardReserved}>FÍSICA</Typography>
+										</Grid>
+										<Grid item xs={12} md={6}>
+											<Typography className={classes.cardTitle}>
+												NOMBRE DEL TERCERO O TERCEROS:
+											</Typography>
+											<Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
+										</Grid>
+										<Grid item xs={12} md={3}>
+											<Typography className={classes.cardTitle}>RFC:</Typography>
+											<Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
+										</Grid>
 									</Grid>
 								</Grid>
-							</Grid>
-						)}
+							) : (
+								<Grid item xs={12}>
+									<Grid container spacing={1}>
+										<Grid item xs={12} md={3}>
+											<Typography className={classes.cardTitle}>TIPO PERSONA:</Typography>
+											<Typography className={classes.card}>MORAL</Typography>
+										</Grid>
+										<Grid item xs={12} md={6}>
+											<Typography className={classes.cardTitle}>
+												NOMBRE DEL TERCERO O TERCEROS:
+											</Typography>
+											<Typography className={classes.card}>
+												{tercero.nombreRazonSocial}
+											</Typography>
+										</Grid>
+										<Grid item xs={12} md={3}>
+											<Typography className={classes.cardTitle}>RFC:</Typography>
+											<Typography className={classes.card}>{tercero.rfc}</Typography>
+										</Grid>
+									</Grid>
+								</Grid>
+							);
+						})}
 					</Grid>
 				</ExpansionPanelDetails>
 			</ExpansionPanel>

@@ -36,20 +36,28 @@ const situacionPatrimonial = (data, tipo) => {
 		prestamoOComodato
 	} = data;
 
-	let bienInmueble = bienesInmuebles.bienInmueble.filter(
-		(i) => i.titular.length === 1 && i.titular[0].clave === 'DEC'
-	);
-	let vehiculo = vehiculos.vehiculo.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
-	let bienMueble = bienesMuebles.bienMueble.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
-	let inversion = inversiones.inversion.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
-	let adeudo = adeudos.adeudo.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
+	let bienInmueble = bienesInmuebles.ninguno
+		? 0
+		: bienesInmuebles.bienInmueble.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
+	let vehiculo = vehiculos.ninguno
+		? 0
+		: vehiculos.vehiculo.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
+	let bienMueble = bienesMuebles.ninguno
+		? 0
+		: bienesMuebles.bienMueble.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
+	let inversion = inversiones.ninguno
+		? 0
+		: inversiones.inversion.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
+	let adeudo = adeudos.ninguno
+		? 0
+		: adeudos.adeudo.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
 
 	const tDatosCurricurales =
 		typeof datosCurricularesDeclarante === 'undefined' ? 0 : datosCurricularesDeclarante.escolaridad.length;
 
 	const tExperienciaLaboral = typeof experienciaLaboral === 'undefined' ? 0 : experienciaLaboral.experiencia.length;
 
-	const tPrestamoOComodato = typeof prestamoOComodato === 'undefined' ? 0 : prestamoOComodato.prestamo.length;
+	const tprestamoOComodato = typeof prestamoOComodato === 'undefined' ? 0 : prestamoOComodato.prestamo.length;
 
 	const menu = [
 		{ clave: 'DATOS GENERALES', valor: 0 },
@@ -83,7 +91,7 @@ const situacionPatrimonial = (data, tipo) => {
 		{ clave: 'ADEUDOS/PASIVOS', valor: adeudo.length },
 		{
 			clave: 'PRÉSTAMO O COMODATO POR TERCEROS',
-			valor: tPrestamoOComodato
+			valor: tprestamoOComodato
 		}
 	];
 
@@ -161,6 +169,7 @@ const titulos = {
 };
 
 function OpcionInicialConclusion(valor, data, tipo) {
+
 	const titulo = titulos[tipo][valor];
 	switch (valor) {
 		case 0:
@@ -203,6 +212,11 @@ function OpcionModificacion(valor, data, tipo) {
 	switch (valor) {
 		case 0:
 			return <DatosGenerales data={data.datosGenerales} titulo={titulo} />;
+			return (
+				<ErrorBoundary seccion={'DatosGenerales'}>
+					<DatosGenerales data={data.datosGenerales1} titulo={titulo} />
+				</ErrorBoundary>
+			);
 		case 1:
 			return <Domicilio titulo={titulo} />;
 		case 2:
@@ -249,6 +263,7 @@ function opcion(valor, data, tipo) {
 }
 
 export default function MenuSuperior({ data, value, setValue, tipo }) {
+	console.log('data: ', data);
 	const classes = useStyles();
 
 	return (

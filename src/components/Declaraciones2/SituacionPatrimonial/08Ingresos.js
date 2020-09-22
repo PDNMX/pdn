@@ -144,6 +144,7 @@ export function ActividadFinanciera({ actividadFinanciera }) {
 }
 
 export function ServiciosProfesionales({ serviciosProfesionales }) {
+	console.log('serviciosProfesionales: ', serviciosProfesionales);
 	const classes = useStyles();
 	const exp = expansion();
 	const sum = sumary();

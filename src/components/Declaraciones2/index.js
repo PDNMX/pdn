@@ -48,7 +48,7 @@ class Declaraciones extends React.Component {
 				<Grid container spacing={0} className={classes.bgContainer}>
 					<Grid item xs={12} style={{ maxWidth: 1200, margin: '0 auto' }}>
 						<Grid container spacing={0}>
-							<Grid
+							{/* <Grid
 								item
 								md={6}
 								xs={12}
@@ -73,7 +73,7 @@ class Declaraciones extends React.Component {
 										Visor de datos
 									</Typography>
 								</Link>
-							</Grid>
+							</Grid> */}
 							<Grid
 								item
 								md={6}
