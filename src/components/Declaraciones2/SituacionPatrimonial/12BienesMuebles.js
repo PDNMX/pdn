@@ -95,7 +95,9 @@ function BienMueble(props) {
 export default function({ data, titulo }) {
 	const classes = useStyles();
 
-	const bienMueble = data.bienMueble.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
+	const bienMueble = data.ninguno
+		? []
+		: data.bienMueble.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
 
 	return (
 		<Grid container spacing={2} className={classes.rootPrincipal}>

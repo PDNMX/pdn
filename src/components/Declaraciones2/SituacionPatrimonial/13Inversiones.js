@@ -162,7 +162,9 @@ function Inversiones({ inversiones, tipo }) {
 export default function({ data, tipo, titulo }) {
 	const classes = useStyles();
 
-	const inversiones = data.inversion.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
+	const inversiones = data.ninguno
+		? []
+		: data.inversion.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
 
 	return (
 		<Grid container spacing={2} className={classes.rootPrincipal}>

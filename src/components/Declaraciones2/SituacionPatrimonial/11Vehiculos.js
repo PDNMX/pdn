@@ -107,9 +107,12 @@ function Vehiculo(props) {
 }
 
 export default function({ data, titulo }) {
+	console.log('data: ', data);
 	const classes = useStyles();
 
-	const vehiculos = data.vehiculo.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
+	const vehiculos = data.ninguno
+		? []
+		: data.vehiculo.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
 
 	return (
 		<Grid container spacing={2} className={classes.rootPrincipal}>
