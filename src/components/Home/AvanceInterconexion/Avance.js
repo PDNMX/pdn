@@ -4,13 +4,16 @@ import Plat from "../../../assets/iconos_barra/ico-plataformas_sistemas.svg";
 
 const styles = theme => ({
     root: {
-      paddingTop: theme.spacing(8),
+      paddingTop: theme.spacing(10),
       paddingBottom: theme.spacing(10),
     },
     headingText: {
         color: theme.palette.titleBanner.color,
         fontWeight: "700",
         fontSize: '48px',
+        [theme.breakpoints.down('sm')]:{
+            fontSize: '40px',
+        },
         textAlign: "center"
     },
     titleBox: {
@@ -20,10 +23,10 @@ const styles = theme => ({
     },
     logoBox: {
         display: "flex",
-        justifyContent: "center"
+        justifyContent: "center",
     },
     icon: {
-        width: '90%',
+       width: '90%',
         [theme.breakpoints.down('md')]:{
             maxWidth: 350
         }
@@ -47,8 +50,8 @@ const Avance = props => {
             </Typography>
         </Box>
 
-        <Grid container spacing={2} className={classes.item}>
-            <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
+        <Grid container spacing={0} className={classes.item}>
+            <Grid item xs={12} sm={12} md={4} lg={4} xl={4} justify="center" alignContent="center">
                 <Box className={classes.logoBox}>
                     <img src={Plat} alt="Interconexión subnacional" className={classes.icon}/>
                 </Box>

@@ -30,6 +30,9 @@ const styles = theme=> ({
     headingText: {
         color : theme.palette.titleBanner.color,
         fontSize: '48px',
+        [theme.breakpoints.down('sm')]:{
+            fontSize: '40px',
+        },
         fontWeight: 500
     },
     text: {

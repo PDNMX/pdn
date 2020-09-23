@@ -12,13 +12,16 @@ const styles = theme => ({
     },
     container: {
         padding: theme.spacing(1),
-        paddingTop: theme.spacing(6),
+        paddingTop: theme.spacing(10),
         paddingBottom: theme.spacing(10),
     },
     headingText: {
         color: theme.palette.titleBanner.color,
         fontWeight: "700",
         fontSize: '48px',
+        [theme.breakpoints.down('sm')]:{
+            fontSize: '40px',
+        },
     }
 });
 

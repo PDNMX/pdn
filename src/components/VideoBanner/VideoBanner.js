@@ -29,7 +29,10 @@ const styles = theme => ({
         width: '100%'
     },
     text: {
-        color: "#ffffff"
+        color: "#ffffff",
+        [theme.breakpoints.down('sm')]:{
+            fontSize: '40px',
+        },
     },
     boldText: {
         fontWeight: 500
@@ -64,7 +67,7 @@ class Banner extends React.Component {
                 </div>
 
                 <div className={classes.contents}>
-                    <Typography className={classes.text} variant={"h2"}>
+                    <Typography className={classes.text} variant="h2">
                         Inteligencia <span className={classes.boldText}>anticorrupción</span> con datos.
                     </Typography>
                 </div>
