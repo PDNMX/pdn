@@ -21,16 +21,16 @@ class ErrorBoundary extends React.Component {
 		// logErrorToMyService(error, info);
 	}
 
-	componentDidMount() {
-		let timer = setTimeout(() => {
-			window.location.reload();
-		}, 3000);
-		this.setState({ timer });
-	}
-	componentWillUnmount() {
-		let timer = this.state.timer;
-		clearTimeout(timer);
-	}
+	// componentDidMount() {
+	// 	let timer = setTimeout(() => {
+	// 		window.location.reload();
+	// 	}, 3000);
+	// 	this.setState({ timer });
+	// }
+	// componentWillUnmount() {
+	// 	let timer = this.state.timer;
+	// 	clearTimeout(timer);
+	// }
 
 	render() {
 		let { classes } = this.props;
