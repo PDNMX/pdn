@@ -107,7 +107,6 @@ function Vehiculo(props) {
 }
 
 export default function({ data, titulo }) {
-	console.log('data: ', data);
 	const classes = useStyles();
 
 	const vehiculos = data.ninguno

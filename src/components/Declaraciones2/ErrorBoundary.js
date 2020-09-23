@@ -13,7 +13,7 @@ class ErrorBoundary extends React.Component {
 	componentDidCatch(error, info) {
 		console.log('info: ', info);
 		console.log('error: ', error);
-		console.log('seccion: ', this.state.seccion);
+		// console.log('seccion: ', this.state.seccion);
 		// Display fallback UI
 		this.setState({ hasError: true });
 		// You can also log the error to an error reporting service

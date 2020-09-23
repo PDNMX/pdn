@@ -158,7 +158,7 @@ class Busqueda extends React.Component {
 	};
 
 	handleDataSelect = (data) => {
-		console.log('data: ', data);
+		// console.log('data: ', data);
 		this.setState(
 			(prevState) => ({
 				...prevState,
