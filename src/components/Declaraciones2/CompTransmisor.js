@@ -14,7 +14,7 @@ export default function CompTransmisor(props) {
 		<Grid item xs={12}>
 			<Grid container spacing={1}>
 				<Grid item xs={12} style={{ textAlign: 'center' }}>
-					<Typography className={classes.cardTitle}>TRANSMISOR(ES)</Typography>
+					<Typography className={classes.tituloSubSeccion}>TRANSMISOR(ES)</Typography>
 				</Grid>
 				<Grid item xs={12} md={2}>
 					<Typography className={classes.cardTitle}>TIPO PERSONA</Typography>

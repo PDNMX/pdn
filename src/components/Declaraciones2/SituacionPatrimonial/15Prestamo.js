@@ -21,7 +21,7 @@ function Duenio({ obj }) {
 		<React.Fragment>
 			<Divider />
 			<Grid item xs={12} style={{ textAlign: 'center' }}>
-				<Typography className={classes.cardTitle}>DUEÑO O TITULAR</Typography>
+				<Typography className={classes.tituloSubSeccion}>DUEÑO O TITULAR</Typography>
 			</Grid>
 			{obj.duenoTitular.tipoDuenoTitular === 'FISICA' ? (
 				<Grid item xs={12}>
