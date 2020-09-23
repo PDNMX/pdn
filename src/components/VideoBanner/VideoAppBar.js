@@ -66,7 +66,8 @@ class VideoAppBar extends React.Component {
       anchorEl: null,
       permisos: [],
       haySesion: false,
-      dropDown: false
+      dropDown: false,
+      dropDown2: false
     };
   }
 
@@ -113,13 +114,19 @@ class VideoAppBar extends React.Component {
     })
   };
 
+  handleToggle2nd = () => {
+    this.setState({
+      dropDown2: !this.state.dropDown2,
+    })
+  };
+
 
   render() {
     const { classes } = this.props;
 
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
-    const {dropDown} = this.state;
+    const {dropDown, dropDown2} = this.state;
 
     return (
         <div className={classes.root}>
@@ -227,7 +234,7 @@ class VideoAppBar extends React.Component {
 
                       <Divider className={classes.divider}/>
 
-                      <List component='div' dense={true}>
+                      <List component='div' dense={true} style={{paddingBottom: 0}}>
                         <ListItem button onClick={this.handleToggle}>
                           <ListItemText primary='Sistemas' />
                           {dropDown != null ? dropDown ?
@@ -260,6 +267,34 @@ class VideoAppBar extends React.Component {
                             <ListItem button component={Link} to={"/contrataciones"} className={classes.nested}>
                               <ListItemText primary='Contrataciones'/>
                             </ListItem>
+                          </List>
+                        </Collapse>
+                      </List>
+
+                      <List component='div' dense={true} style={{paddingTop: 0}}>
+                        <ListItem button onClick={this.handleToggle2nd}>
+                          <ListItemText primary='Avance de interconexión' />
+                          {dropDown2 != null ? dropDown2 ?
+                              <ExpandLess/> : <ExpandMore/> : null}
+                        </ListItem>
+
+                        <Collapse in={dropDown2} timeout="auto" unmountOnExit>
+                          <List dense={true} component="div" >
+
+                            <ListItem button component={Button}
+                                      href="https://plataformadigitalnacional.org/mapa-sla/"
+                                      style={{textTransform: "none"}}
+                                      className={classes.nested}>
+                              <ListItemText primary='Legislación'/>
+                            </ListItem>
+
+                            <ListItem button component={Button}
+                                      style={{textTransform: "none"}}
+                                      href="https://plataformadigitalnacional.org/mapa-avance/"
+                                      className={classes.nested}>
+                              <ListItemText primary='Sistemas 2 y 3'/>
+                            </ListItem>
+
                           </List>
                         </Collapse>
                       </List>

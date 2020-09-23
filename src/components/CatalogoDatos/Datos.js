@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import {Typography} from "@material-ui/core"
 import Tabla from './Tabla';
-import Header from '../PDNAppBar/PDNAppBar';
 const styles = theme => ({
     root: {
         flexGrow: 1,
@@ -36,7 +35,6 @@ class Datos extends React.Component {
         const { classes} = this.props;
         return (
                 <div>
-                    <Header/>
                     <div className={classes.root}>
                         <Grid container spacing={3}>
                             <Grid item xs={12}>

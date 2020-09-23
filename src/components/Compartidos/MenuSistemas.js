@@ -40,7 +40,8 @@ class MenuSistemas extends React.Component {
         super(props);
         this.state = {
             anchorEl: null,
-            dropDown: false
+            dropDown: false,
+            dropDown2: false
         };
     }
 
@@ -57,12 +58,18 @@ class MenuSistemas extends React.Component {
         })
     };
 
+    handleToggle2nd = () => {
+        this.setState({
+            dropDown2: !this.state.dropDown2,
+        })
+    };
+
 
     render() {
         const {classes} = this.props;
         const {anchorEl} = this.state;
         const open = Boolean(anchorEl);
-        const {dropDown} = this.state;
+        const {dropDown, dropDown2} = this.state;
 
         return (
             <div>
@@ -108,7 +115,7 @@ class MenuSistemas extends React.Component {
 
                     <Divider className={classes.divider}/>
 
-                    <List component='div' dense={true}>
+                    <List component='div' dense={true} style={{paddingBottom: 0}}>
                         <ListItem button onClick={this.handleToggle}>
                             <ListItemText primary='Sistemas'/>
                             {dropDown != null ? dropDown ?
@@ -117,55 +124,59 @@ class MenuSistemas extends React.Component {
 
                         <Collapse in={dropDown} timeout="auto" unmountOnExit>
                             <List dense={true} component="div">
-                                {/*<Tooltip
-                                    title={"Sistema de evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal"}>
-                                    */}
                                 <ListItem button component={Link} to={"/declaraciones"} className={classes.nested}>
                                     <ListItemText primary='Declaraciones'/>
                                 </ListItem>
-                                {/*</Tooltip>*/}
-
-                                {/*<Tooltip
-                                    title={"Sistema de los Servidores públicos que intervengan en procedimientos de contrataciones públicas"}>
-                                    */}
                                 <ListItem button component={Link} to={"/servidores"} className={classes.nested}>
                                     <ListItemText primary='S. P. En contrataciones'/>
                                 </ListItem>
-                                {/*</Tooltip>*/}
-
-                                {/*<Tooltip
-                                    title={"Sistema nacional de Servidores públicos y particulares sancionados"}>
-                                    */}
                                 <ListItem button component={Link} to={"/sancionados"} className={classes.nested}>
                                     <ListItemText primary='Sancionados'/>
                                 </ListItem>
-                                {/*</Tooltip>*/}
-
-                                {/*<Tooltip
-                                    title={"Sistema de información y comunicación del Sistema Nacional y del Sistema Nacional de Fiscalización"}>
-                                    */}
                                 <ListItem button component={Link} to={"#"} disabled={true} className={classes.nested}>
                                     <ListItemText primary='Fiscalización'/>
                                 </ListItem>
-                                {/*</Tooltip>*/}
-
-                                {/*<Tooltip
-                                    title={"Sistema de denuncias públicas de faltas administrativas y hechos de corrupción"}>
-                                    */}
                                 <ListItem button component={Link} to={"#"} disabled={true} className={classes.nested}>
                                     <ListItemText primary='Denuncias'/>
                                 </ListItem>
-                                {/*</Tooltip>*/}
-
-                                {/*<Tooltip
-                                    title={"Sistema de Información Pública de Contrataciones"}>*/}
                                 <ListItem button component={Link} to={"/contrataciones"} className={classes.nested}>
                                     <ListItemText primary='Contrataciones'/>
                                 </ListItem>
-                                {/*</Tooltip>*/}
                             </List>
                         </Collapse>
                     </List>
+
+
+                    <List component='div' dense={true} style={{paddingTop:0}}>
+                        <ListItem button onClick={this.handleToggle2nd}>
+                            <ListItemText primary='Avance interconexión'/>
+                            {dropDown2 != null ? dropDown2 ?
+                                <ExpandLess/> : <ExpandMore/> : null}
+                        </ListItem>
+
+                        <Collapse in={dropDown2} timeout="auto" unmountOnExit>
+                            <List dense={true} component="div">
+                                <ListItem button component={Button}
+                                          href=""
+                                          className={classes.nested}
+                                          style={{textTransform: "none"}}
+                                >
+                                    <ListItemText primary='Legislación'/>
+                                </ListItem>
+                                <ListItem button
+                                          component={Button}
+                                          href=""
+                                          className={classes.nested}
+                                          style={{textTransform: "none"}}
+                                >
+                                    <ListItemText primary='Sisemas 2 y 3'/>
+                                </ListItem>
+                            </List>
+                        </Collapse>
+                    </List>
+
+
+
                 </Menu>
             </div>
         );
