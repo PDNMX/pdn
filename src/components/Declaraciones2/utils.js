@@ -96,7 +96,10 @@ export const expansion = makeStyles((theme) => ({
 /************** Expansion *******************/
 export function Ubicacion(props) {
 	const classes = useStyles();
-	const { pais, entidadFederativa } = props.ubicacion;
+	// const { pais, entidadFederativa } = props.ubicacion;
+
+	const pais = typeof props.ubicacion === 'undefined' ? undefined : props.ubicacion.pais;
+	const entidadFederativa = typeof props.ubicacion === 'undefined' ? undefined : props.ubicacion.entidadFederativa;
 	return (
 		<Grid item xs={12}>
 			<Grid container spacing={1}>
@@ -107,7 +110,9 @@ export function Ubicacion(props) {
 				</Grid>
 				<Grid item xs={12} md={4}>
 					<Typography className={classes.cardTitle}>UBICACIÓN:</Typography>
-					<Typography className={classes.card}>{pais === 'MX' ? 'EN MÉXICO' : 'EN EL EXTRANJERO'}</Typography>
+					<Typography className={classes.card}>
+						{typeof pais === 'undefined' ? 'DESCONOCIDO' : pais === 'MX' ? 'EN MÉXICO' : 'EN EL EXTRANJERO'}
+					</Typography>
 				</Grid>
 				{pais === 'MX' ? (
 					<Grid item xs={12} md={8}>

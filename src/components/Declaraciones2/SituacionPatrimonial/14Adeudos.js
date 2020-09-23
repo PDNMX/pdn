@@ -30,7 +30,7 @@ function Adeudos({ adeudos, tipo }) {
 					id="panel1a-header"
 				>
 					<Typography className={exp.heading}>
-						<strong>{obj.tipoAdeudo.valor}</strong>
+						<strong>TIPO DE ADEUDO: {obj.tipoAdeudo.valor}</strong>
 					</Typography>
 				</ExpansionPanelSummary>
 				<ExpansionPanelDetails>

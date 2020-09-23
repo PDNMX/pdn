@@ -57,7 +57,7 @@ function Participacion(props) {
 
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>SECTOR PRODUCTIVO AL QUE PERTENECE:</Typography>
-							<Typography className={classes.card}>{obj.sector.valor}</Typography>
+							<Typography className={classes.card}>{obj.sector?.valor}</Typography>
 						</Grid>
 						<Grid item xs={12} md={8}>
 							<Typography className={classes.cardTitle}>

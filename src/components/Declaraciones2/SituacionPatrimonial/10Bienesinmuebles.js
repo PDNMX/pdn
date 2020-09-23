@@ -34,7 +34,7 @@ function BienInmuble(props) {
 					id="panel1a-header"
 				>
 					<Typography className={exp.heading}>
-						<strong>{inm.tipoInmueble.valor}</strong>
+						<strong>TIPO DE INMUEBLE: {inm.tipoInmueble.valor}</strong>
 					</Typography>
 				</ExpansionPanelSummary>
 				<ExpansionPanelDetails>
