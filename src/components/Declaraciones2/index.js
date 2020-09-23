@@ -16,7 +16,7 @@ import { Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import imgBuscar from '../../assets/declaraciones/servidores_declaraciones.svg';
-import imgEstadisticas from '../../assets/declaraciones/estadisticas.svg';
+// import imgEstadisticas from '../../assets/declaraciones/estadisticas.svg';
 
 import Busqueda from './Busqueda';
 // import PerfilMaterialUI from '../Declaraciones/PerfilMaterialUI';

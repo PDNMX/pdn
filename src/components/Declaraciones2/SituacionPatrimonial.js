@@ -212,11 +212,11 @@ function OpcionModificacion(valor, data, tipo) {
 	switch (valor) {
 		case 0:
 			return <DatosGenerales data={data.datosGenerales} titulo={titulo} />;
-			return (
-				<ErrorBoundary seccion={'DatosGenerales'}>
-					<DatosGenerales data={data.datosGenerales1} titulo={titulo} />
-				</ErrorBoundary>
-			);
+			// return (
+			// 	<ErrorBoundary seccion={'DatosGenerales'}>
+			// 		<DatosGenerales data={data.datosGenerales1} titulo={titulo} />
+			// 	</ErrorBoundary>
+			// );
 		case 1:
 			return <Domicilio titulo={titulo} />;
 		case 2:
@@ -263,7 +263,6 @@ function opcion(valor, data, tipo) {
 }
 
 export default function MenuSuperior({ data, value, setValue, tipo }) {
-	console.log('data: ', data);
 	const classes = useStyles();
 
 	return (

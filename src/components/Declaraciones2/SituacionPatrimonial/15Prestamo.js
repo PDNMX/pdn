@@ -79,7 +79,7 @@ function Prestamo({ prestamo }) {
 							id="panel1a-header"
 						>
 							<Typography className={exp.heading}>
-								<strong>{inmueble.tipoInmueble.valor}</strong>
+								<strong>INMUEBLE</strong>
 							</Typography>
 						</ExpansionPanelSummary>
 						<ExpansionPanelDetails>
@@ -106,7 +106,7 @@ function Prestamo({ prestamo }) {
 							id="panel1a-header"
 						>
 							<Typography className={exp.heading}>
-								<strong>{vehiculo.tipo.valor}</strong>
+								<strong>VEHÍCULO</strong>
 							</Typography>
 						</ExpansionPanelSummary>
 						<ExpansionPanelDetails>
@@ -159,8 +159,9 @@ export default function({ data, titulo }) {
 			</Grid>
 			{data ? (
 				<Grid item xs={12}>
-					{data.ninguno && <DatosNoRegistrados />}
-					{!data.ninguno && data.prestamo.length ? (
+					{data.ninguno ? (
+						<DatosNoRegistrados />
+					) : data.prestamo.length ? (
 						<Prestamo prestamo={data.prestamo} />
 					) : (
 						<DatosReservados />

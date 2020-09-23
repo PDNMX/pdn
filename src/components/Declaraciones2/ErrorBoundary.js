@@ -25,9 +25,9 @@ class ErrorBoundary extends React.Component {
 		let { classes } = this.props;
 		if (this.state.hasError) {
 			return (
-				<Grid item xs={12}>
-					<Typography className={classes.alertDanger} align="center">
-						Algo ha salido mal...
+				<Grid item xs={12} style={{ marginTop: 20 }}>
+					<Typography className={classes.alertWarning} align="center">
+						Algo ha salido mal... Por favor regresa al buscador.
 					</Typography>
 				</Grid>
 			);

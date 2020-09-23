@@ -37,18 +37,18 @@ const Menu = (data) => {
 
 	return [
 		{
-			clave: '1. PARTICIPACIÓN EN EMPRESAS, SOCIEDADES O ASOCIACIONES',
+			clave: 'PARTICIPACIÓN EN EMPRESAS, SOCIEDADES O ASOCIACIONES',
 			valor: participaciones
 		},
 		{
-			clave: '2. ¿PARTICIPA EN LA TOMA DE DECISIONES DE ALGUNA DE ESTAS INSTITUCIONES?',
+			clave: '¿PARTICIPA EN LA TOMA DE DECISIONES DE ALGUNA DE ESTAS INSTITUCIONES?',
 			valor: tomaDeciones
 		},
-		{ clave: '3. APOYOS O BENEFICIOS PÚBLICOS', valor: apoyo },
-		{ clave: '4. REPRESENTACIÓN', valor: representaciones },
-		{ clave: '5. CLIENTES PRINCIPALES', valor: cliente },
-		{ clave: '6. BENEFICIOS PRIVADOS', valor: beneficio },
-		{ clave: '7. FIDEICOMISOS', valor: fideicomiso }
+		{ clave: 'APOYOS O BENEFICIOS PÚBLICOS', valor: apoyo },
+		{ clave: 'REPRESENTACIÓN', valor: representaciones },
+		{ clave: 'CLIENTES PRINCIPALES', valor: cliente },
+		{ clave: 'BENEFICIOS PRIVADOS', valor: beneficio },
+		{ clave: 'FIDEICOMISOS', valor: fideicomiso }
 	];
 };
 
@@ -95,19 +95,29 @@ function opcion(valor, data) {
 export default function MenuSuperior({ data, value, setValue }) {
 	const classes = useStyles();
 
-	data.participacion.participacion = data.participacion.participacion.filter((i) => i.tipoRelacion === 'DECLARANTE');
-	data.participacionTomaDecisiones.participacion = data.participacionTomaDecisiones.participacion.filter(
-		(i) => i.tipoRelacion === 'DECLARANTE'
-	);
-	data.apoyos.apoyo = data.apoyos.apoyo.filter((i) => i.beneficiarioPrograma.clave === 'DEC');
-	data.representacion.representacion = data.representacion.representacion.filter(
-		(i) => i.tipoRelacion === 'DECLARANTE'
-	);
-	data.clientesPrincipales.cliente = data.clientesPrincipales.cliente.filter((i) => i.tipoRelacion === 'DECLARANTE');
-	data.beneficiosPrivados.beneficio = data.beneficiosPrivados.beneficio.filter(
-		(i) => i.beneficiario.length === 1 && i.beneficiario[0].clave === 'DC'
-	);
-	data.fideicomisos.fideicomiso = data.fideicomisos.fideicomiso.filter((i) => i.tipoRelacion === 'DECLARANTE');
+	data.participacion.participacion = data.participacion.ninguno
+		? 0
+		: data.participacion.participacion.filter((i) => i.tipoRelacion === 'DECLARANTE');
+	data.participacionTomaDecisiones.participacion = data.participacionTomaDecisiones.ninguno
+		? 0
+		: data.participacionTomaDecisiones.participacion.filter((i) => i.tipoRelacion === 'DECLARANTE');
+	data.apoyos.apoyo = data.apoyos.ninguno
+		? 0
+		: data.apoyos.apoyo.filter((i) => i.beneficiarioPrograma.clave === 'DEC');
+	data.representacion.representacion = data.representacion.ninguno
+		? 0
+		: data.representacion.representacion.filter((i) => i.tipoRelacion === 'DECLARANTE');
+	data.clientesPrincipales.cliente = data.clientesPrincipales.ninguno
+		? 0
+		: data.clientesPrincipales.cliente.filter((i) => i.tipoRelacion === 'DECLARANTE');
+	data.beneficiosPrivados.beneficio = data.beneficiosPrivados.ninguno
+		? 0
+		: data.beneficiosPrivados.beneficio.filter(
+				(i) => i.beneficiario.length === 1 && i.beneficiario[0].clave === 'DC'
+			);
+	data.fideicomisos.fideicomiso = data.fideicomisos.ninguno
+		? 0
+		: data.fideicomisos.fideicomiso.filter((i) => i.tipoRelacion === 'DECLARANTE');
 
 	return data ? (
 		<Paper square className={classes.root}>
