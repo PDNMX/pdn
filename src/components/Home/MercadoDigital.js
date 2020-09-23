@@ -11,8 +11,8 @@ const styles = theme => ({
         flexGrow: 1
     },
     container: {
-        paddingTop: 100,
-        paddingBottom: 90,
+        paddingTop: theme.spacing(10),
+        paddingBottom: theme.spacing(10),
         //paddingRight
     },
     button:{
@@ -40,7 +40,7 @@ const styles = theme => ({
     }
 });
 
-class Explora extends React.Component{
+class MercadoDigital extends React.Component{
 
     render(){
         const {classes}  = this.props;
@@ -50,15 +50,15 @@ class Explora extends React.Component{
                     <Grid container spacing={0} justify='center' className={classes.container}>
                         <Grid item xs={12} align="center">
                             <Typography className={classes.headingText} paragraph>
-                                Plataforma Digital Nacional
+                                Mercado Digital Anticorrupción
                             </Typography>
 
                             <Typography className={classes.text} paragraph>
-                                Una fuente de inteligencia para construir integridad y combatir la corrupción, que crea valor para el gobierno y la sociedad, a partir de grandes cantidades de datos.
+                                Conoce más acerca de este nuevo espacio que estará disponible en la PDN, en donde habrá herramientas que facilitarán la interconexión con los Sistemas 1, 2 y 3.
                             </Typography>
 
                             <div className={classes.videoDiv}>
-                                <iframe width="100%" height="450" src="https://www.youtube.com/embed/e9zZE5i8Vt4?rel=0" frameBorder="0" title={'Video'}
+                                <iframe width="100%" height="450" src="https://www.youtube.com/embed/JQNPwOOG4yw" frameBorder="0" title={'Video'}
                                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                         allowFullScreen/>
 
@@ -76,8 +76,8 @@ class Explora extends React.Component{
     }
 }
 
-Explora.propTypes = {
+MercadoDigital.propTypes = {
     classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Explora);
+export default withStyles(styles)(MercadoDigital);

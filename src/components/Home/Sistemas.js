@@ -22,16 +22,25 @@ const styles = theme => ({
     link: {
         textDecoration: "none"
     },
-    disabled: {
-        opacity: 0.3,
-        maxWidth: 200
-    },
     text: {
         color: theme.palette.titleBanner.color,
-        paddingBottom: 60
+        paddingBottom: 60,
+        [theme.breakpoints.down('sm')]:{
+            fontSize: '22px',
+        },
+    },
+    disabled: {
+        opacity: 0.3,
+        maxWidth: 200,
+        [theme.breakpoints.down('sm')]:{
+            maxWidth: 150
+        },
     },
     iconosSistemas: {
         maxWidth: 200,
+        [theme.breakpoints.down('sm')]:{
+            maxWidth: 150
+        },
         '&:hover':{
             opacity: 0.5,
             cursor: "pointer"
@@ -41,6 +50,9 @@ const styles = theme => ({
         color: theme.palette.titleBanner.color,
         fontWeight: 500,
         fontSize: '48px',
+        [theme.breakpoints.down('sm')]:{
+            fontSize: '40px',
+        },
         paddingBottom: theme.spacing(6)
     }
 
@@ -65,7 +77,7 @@ class Sistemas extends React.Component{
                 </Typography>
               </Grid>
 
-              <Grid item xl={4} lg={4} md={6} xs={12} align="center">
+              <Grid item xl={4} lg={4} md={6} sm={6} xs={12} align="center">
                 <Tooltip
                   title="Sistema de evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal"
                   placement="top"
@@ -86,7 +98,7 @@ class Sistemas extends React.Component{
                   </Link>
                 </Tooltip>
               </Grid>
-              <Grid item xl={4} lg={4} md={6} xs={12} align="center">
+              <Grid item xl={4} lg={4} md={6} sm={6} xs={12} align="center">
                 <Tooltip
                   title="Sistema de los Servidores públicos que intervengan en procedimientos de contrataciones públicas"
                   placement="top"
@@ -99,12 +111,12 @@ class Sistemas extends React.Component{
                     />
                     <br />
                     <Typography variant="h5" className={classes.text}>
-                      Servidores públicos en contrataciones
+                      Servidores públicos <br/> en contrataciones
                     </Typography>
                   </Link>
                 </Tooltip>
               </Grid>
-              <Grid item xl={4} lg={4} md={6} xs={12} align="center">
+              <Grid item xl={4} lg={4} md={6} sm={6} xs={12} align="center">
                 <Tooltip
                   title="Sistema nacional de Servidores públicos y particulares sancionados"
                   placement="top"
@@ -122,7 +134,7 @@ class Sistemas extends React.Component{
                   </Link>
                 </Tooltip>
               </Grid>
-              <Grid item xl={4} lg={4} md={6} xs={12} align="center">
+              <Grid item xl={4} lg={4} md={6} sm={6} xs={12} align="center">
                 {/*<Link to="/pdn/home" className={classes.link }>*/}
                 <img
                   src={s4}
@@ -135,7 +147,7 @@ class Sistemas extends React.Component{
                 </Typography>
                 {/*</Link>*/}
               </Grid>
-              <Grid item xl={4} lg={4} md={6} xs={12} align="center">
+              <Grid item xl={4} lg={4} md={6} sm={6} xs={12} align="center">
                 {/*<Link to="/pdn/home" className={classes.link }>*/}
                 <img
                   src={s5}
@@ -148,7 +160,7 @@ class Sistemas extends React.Component{
                 </Typography>
                 {/*</Link>*/}
               </Grid>
-              <Grid item xl={4} lg={4} md={6} xs={12} align="center">
+              <Grid item xl={4} lg={4} md={6} sm={6} xs={12} align="center">
                 <Tooltip
                   title="Sistema de Información Pública de Contrataciones"
                   placement="top"
