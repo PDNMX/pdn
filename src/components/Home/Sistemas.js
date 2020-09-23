@@ -1,7 +1,7 @@
 import React from 'react';
 import {withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import s1 from '../../assets/iconos_azul/demo.svg';
+import s1 from '../../assets/iconos_azul/1_icono.svg';
 import s2 from '../../assets/iconos_azul/2_icono.svg';
 import s3 from '../../assets/iconos_azul/3_icono.svg';
 import s4 from '../../assets/iconos_azul/4_icono.svg';
@@ -83,7 +83,7 @@ class Sistemas extends React.Component{
                   placement="top"
                 >
                   <Link
-                    to="/declaraciones/estadisticas"
+                    to="/declaraciones"
                     className={classes.link}
                   >
                     <img
