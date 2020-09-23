@@ -203,8 +203,8 @@ export default function EnhancedTable({
 									</TableCell>
 									<TableCell>{datosEmpleoCargoComision.nombreEntePublico}</TableCell>
 									<TableCell>
-										{/* {datosEmpleoCargoComision.areaAdscripcion} */}
-										{row.metadata.tipo}
+										{datosEmpleoCargoComision.areaAdscripcion}
+										{/* {row.metadata.tipo} */}
 									</TableCell>
 									<TableCell>{datosEmpleoCargoComision.empleoCargoComision}</TableCell>
 								</TableRow>
