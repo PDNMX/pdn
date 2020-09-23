@@ -173,8 +173,9 @@ export default function({ data, tipo, titulo }) {
 			</Grid>
 			{data ? (
 				<Grid item xs={12}>
-					{data.ninguno && <DatosNoRegistrados />}
-					{!data.ninguno && inversiones.length ? (
+					{data.ninguno ? (
+						<DatosNoRegistrados />
+					) : inversiones.length ? (
 						<Inversiones inversiones={inversiones} tipo={tipo} />
 					) : (
 						<DatosReservados />

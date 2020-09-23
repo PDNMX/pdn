@@ -471,7 +471,7 @@ export default function({
 									<FormControlLabel
 										value="MUNICIPAL_ALCALDIA"
 										control={<Radio color="secondary" />}
-										label="MUNICIPAL/ALCALDIA"
+										label="MUNICIPAL/ALCALDÍA"
 									/>
 								</RadioGroup>
 							</FormControl>

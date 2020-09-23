@@ -106,8 +106,13 @@ export default function({ data, titulo }) {
 			</Grid>
 			{data ? (
 				<Grid item xs={12}>
-					{data.ninguno && <DatosNoRegistrados />}
-					{!data.ninguno && bienMueble.length ? <BienMueble bienMueble={bienMueble} /> : <DatosReservados />}
+					{data.ninguno ? (
+						<DatosNoRegistrados />
+					) : bienMueble.length ? (
+						<BienMueble bienMueble={bienMueble} />
+					) : (
+						<DatosReservados />
+					)}
 				</Grid>
 			) : (
 				<Disclaimer />

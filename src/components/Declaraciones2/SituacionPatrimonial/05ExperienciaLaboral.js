@@ -12,7 +12,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const useStyles = makeStyles(style);
 
-export default function({data,titulo}) {
+export default function({ data, titulo }) {
 	const classes = useStyles();
 	const exp = expansion();
 	const sum = sumary();
@@ -25,8 +25,9 @@ export default function({data,titulo}) {
 				</Typography>
 			</Grid>
 			<Grid item xs={12}>
-				{data.ninguno && <DatosNoRegistrados />}
-				{!data.ninguno &&
+				{data.ninguno ? (
+					<DatosNoRegistrados />
+				) : (
 					data.experiencia.map((expe, index) => {
 						return (
 							<ExpansionPanel key={'exp-' + index}>
@@ -72,7 +73,11 @@ export default function({data,titulo}) {
 													NIVEL/ORDEN DE GOBIERNO
 												</Typography>
 												<Typography className={classes.card}>
-													{expe.nivelOrdenGobierno}
+													{expe.nivelOrdenGobierno === 'MUNICIPAL_ALCALDIA' ? (
+														'MUNICIPAL/ALCALDÍA'
+													) : (
+														expe.nivelOrdenGobierno
+													)}
 												</Typography>
 											</Grid>
 											<Grid item xs={12} md={4}>
@@ -188,7 +193,8 @@ export default function({data,titulo}) {
 								</ExpansionPanelDetails>
 							</ExpansionPanel>
 						);
-					})}
+					})
+				)}
 			</Grid>
 		</Grid>
 	);

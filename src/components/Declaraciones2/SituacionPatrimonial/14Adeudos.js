@@ -100,7 +100,7 @@ function Adeudos({ adeudos, tipo }) {
 									<Typography className={classes.tituloSubSeccion}>TERCERO</Typography>
 								</Grid>
 							</React.Fragment>
-						)} 
+						)}
 						{typeof obj.tercero !== 'undefined' &&
 							obj.tercero.map((tercero) => {
 								return tercero.tipoPersona !== 'MORAL' ? (
@@ -220,8 +220,13 @@ export default function({ data, tipo, titulo }) {
 			</Grid>
 			{data ? (
 				<Grid item xs={12}>
-					{data.ninguno && <DatosNoRegistrados />}
-					{!data.ninguno && adeudos.length ? <Adeudos adeudos={adeudos} tipo={tipo} /> : <DatosReservados />}
+					{data.ninguno ? (
+						<DatosNoRegistrados />
+					) : adeudos.length ? (
+						<Adeudos adeudos={adeudos} tipo={tipo} />
+					) : (
+						<DatosReservados />
+					)}
 				</Grid>
 			) : (
 				<Disclaimer />
