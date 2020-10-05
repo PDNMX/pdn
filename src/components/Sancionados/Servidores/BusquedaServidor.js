@@ -19,7 +19,6 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Input from '@material-ui/core/Input';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
-import rp from "request-promise";
 import Modal from "@material-ui/core/Modal";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import MensajeErrorDatos from "../../Mensajes/MensajeErrorDatos";
@@ -29,6 +28,7 @@ import Previos from "../../Compartidos/Previos";
 import TablaServidoresSancionados from "./TablaServidoresSancionados";
 import MensajeNoRegistros from "../../Mensajes/MensajeNoRegistros";
 import DetalleServidorSancionado from "./DetalleServidorSancionado";
+const axios = require('axios');
 
 const styles = theme => ({
     formControl: {
@@ -73,8 +73,6 @@ const tiposSancion = [
 ]
 
 const camposOrdenamiento = [
-    {label: 'RFC', value: 'rfc'},
-    {label: 'CURP', value: 'curp'},
     {label: 'Nombre', value: 'nombres'},
     {label: 'Apellido Uno', value: 'primerApellido'},
     {label: 'Apellido Dos', value: 'segundoApellido'},
@@ -104,8 +102,6 @@ class BusquedaServidor extends React.Component {
             primerApellido: '',
             segundoApellido: '',
             tipoSancion: [],
-            rfc: '',
-            curp: '',
             institucionDependencia: "",
             nivel: '',
             campoOrden: '',
@@ -122,16 +118,16 @@ class BusquedaServidor extends React.Component {
     loadInstituciones = () => {
         let sug = [];
         let options = {
-            uri: process.env.REACT_APP_S3S_BACKEND + '/entities',
+            url: process.env.REACT_APP_S3S_BACKEND + '/entities',
             json: true,
             method: "post",
-            body: {
+            data: {
                 nivel_gobierno: this.state.nivel
             }
         };
-        rp(options)
+        axios(options)
             .then(data => {
-                data.forEach((item, index) => {
+                data.data.forEach((item, index) => {
                     sug.push({value: item.nombre, label: item.nombre, key: index});
                 });
                 this.setState({institucionesLista: sug, institucionDependencia: ''});
@@ -153,7 +149,7 @@ class BusquedaServidor extends React.Component {
                     if(!event.target.value)this.setState({tipoOrden:''})
                     break;
                 case 'tipoOrden':
-                    if(!this.state.campoOrden && event.target.value)this.setState({campoOrden: {label: 'RFC', value: 'rfc'} });
+                    if(!this.state.campoOrden && event.target.value)this.setState({campoOrden: camposOrdenamiento[0] });
                     if(!event.target.value)this.setState({campoOrden:''})
                     break;
                 default:
@@ -174,8 +170,6 @@ class BusquedaServidor extends React.Component {
                 institucionDependencia: '',
                 primerApellido: '',
                 segundoApellido: '',
-                rfc: '',
-                curp: '',
                 campoOrden: '',
                 tipoOrden: '',
                 institucionesLista: [],
@@ -201,13 +195,13 @@ class BusquedaServidor extends React.Component {
 
             let options = {
                 method: 'POST',
-                uri: process.env.REACT_APP_S3S_BACKEND + '/summary',
+                url: process.env.REACT_APP_S3S_BACKEND + '/summary',
                 json: true,
-                body: body
+                data: body
             };
-            rp(options)
+            axios(options)
                 .then(res => {
-                    this.setState({previos: res, loading: false, error: false, panelPrevios: true})
+                    this.setState({previos: res.data, loading: false, error: false, panelPrevios: true})
                 }).catch(err => {
                  this.setState({loading: false, error: true});
             });
@@ -216,12 +210,10 @@ class BusquedaServidor extends React.Component {
 
     makeFiltros = () => {
         let filtros = {};
-        let {institucionDependencia, nombres, primerApellido, segundoApellido, rfc, curp, tipoSancion} = this.state;
+        let {institucionDependencia, nombres, primerApellido, segundoApellido, tipoSancion} = this.state;
         if (nombres) filtros.nombres = nombres;
         if (primerApellido) filtros.primerApellido = primerApellido;
         if (segundoApellido) filtros.segundoApellido = segundoApellido;
-        if (rfc) filtros.rfc = rfc;
-        if (curp) filtros.curp = curp;
         if (institucionDependencia && institucionDependencia !== '') filtros.institucionDependencia = institucionDependencia;
         if (tipoSancion.length > 0) filtros.tipoSancion = tipoSancion.map(item => item.value);
         return filtros;
@@ -256,17 +248,18 @@ class BusquedaServidor extends React.Component {
 
             let options = {
                 method: 'POST',
-                uri: process.env.REACT_APP_S3S_BACKEND + '/search',
+                url: process.env.REACT_APP_S3S_BACKEND + '/search',
                 json: true,
-                body: body
+                data: body
             };
 
-            rp(options)
+            axios(options)
                 .then(res => {
+                    let resultado = res.data;
                     this.setState({
-                        filterData: res.results,
+                        filterData: resultado.results,
                         loading: false,
-                        totalRows: res.pagination.totalRows,
+                        totalRows: resultado.pagination.totalRows,
                         error: false
                     },)
                 }).catch(err => {
@@ -308,7 +301,7 @@ class BusquedaServidor extends React.Component {
 
     render() {
         const {classes} = this.props;
-        const {nombres, primerApellido, segundoApellido, rfc, curp, institucionDependencia, nivel, tipoSancion, campoOrden, tipoOrden, institucionesLista} = this.state;
+        const {nombres, primerApellido, segundoApellido,institucionDependencia, nivel, tipoSancion, campoOrden, tipoOrden, institucionesLista} = this.state;
         return (
             <div>
                 {/*Buscador*/}
@@ -429,30 +422,6 @@ class BusquedaServidor extends React.Component {
                         >Búsqueda avanzada</Button>
                     </Grid>
 
-                    {this.state.busquedaAvanzada && <Grid item xs={12} md={3}>
-                        <FormControl className={classes.formControl}>
-                            <TextField
-                                id="curp"
-                                label="CURP"
-                                type="search"
-                                onChange={(e) => this.handleChangeCampo('curp', e)}
-                                value={curp}
-                            />
-
-                        </FormControl>
-                    </Grid>}
-                    {this.state.busquedaAvanzada && <Grid item xs={12} md={3}>
-                        <FormControl className={classes.formControl}>
-                            <TextField
-                                id="rfc"
-                                label="RFC"
-                                type="search"
-                                onChange={(e) => this.handleChangeCampo('rfc', e)}
-                                value={rfc}
-                            />
-
-                        </FormControl>
-                    </Grid>}
                     {this.state.busquedaAvanzada && <Grid item xs={12} md={3}>
                         <FormControl className={classes.formControl}>
                             <InputLabel shrink id="campoOrden-label">Ordenar por</InputLabel>

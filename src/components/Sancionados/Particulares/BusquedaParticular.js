@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import FormControl from "@material-ui/core/FormControl/FormControl";
 import Select from '@material-ui/core/Select';
 import MenuItem from "@material-ui/core/MenuItem";
-import rp from "request-promise";
 import Grid from "@material-ui/core/Grid/Grid";
 import {Typography} from "@material-ui/core"
 import Button from "@material-ui/core/Button";
@@ -28,7 +27,7 @@ import Modal from "@material-ui/core/Modal";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import MensajeErrorDatos from "../../Mensajes/MensajeErrorDatos";
 import MensajeNoRegistros from "../../Mensajes/MensajeNoRegistros";
-
+const axios = require('axios');
 
 const styles = theme => ({
     container: {
@@ -65,7 +64,6 @@ const tiposSancion = [
 ]
 
 const camposOrdenamiento = [
-    {label: 'RFC', value: 'rfc'},
     {label: 'Nombre o razón social', value: 'nombreRazonSocial'},
     {label: 'Institución', value: 'institucionDependencia'}
 ]
@@ -90,7 +88,6 @@ class BusquedaParticular extends React.Component {
             busquedaAvanzada: false,
             //Filtros
             nombreRazonSocial: '',
-            rfc: '',
             institucionDependencia: "",
             expediente: '',
             tipoSancion: [],
@@ -110,16 +107,16 @@ class BusquedaParticular extends React.Component {
     loadInstituciones = () => {
         let instituciconesLista = [];
         let options = {
-            uri: process.env.REACT_APP_S3P_BACKEND + '/entities',
+            url: process.env.REACT_APP_S3P_BACKEND + '/entities',
             json: true,
             method: "post",
-            body: {
+            data: {
                 nivel_gobierno: this.state.nivel
             }
         };
-        rp(options)
+        axios(options)
             .then(data => {
-                data.forEach((item, index) => {
+                data.data.forEach((item, index) => {
                     instituciconesLista.push({value: item.nombre, label: item.nombre, key: index});
                 });
                 this.setState({institucionesLista: instituciconesLista, institucionDependencia: ''});
@@ -143,10 +140,7 @@ class BusquedaParticular extends React.Component {
                     break;
                 case 'tipoOrden':
                     if (!this.state.campoOrden && event.target.value) this.setState({
-                        campoOrden: {
-                            label: 'RFC',
-                            value: 'rfc'
-                        }
+                        campoOrden: camposOrdenamiento[0]
                     });
                     if (!event.target.value) this.setState({campoOrden: ''})
                     break;
@@ -160,7 +154,6 @@ class BusquedaParticular extends React.Component {
         this.setState(
             {
                 nombreRazonSocial: "",
-                rfc: "",
                 institucionDependencia: "",
                 expediente: "",
                 tipoSancion: [],
@@ -194,13 +187,13 @@ class BusquedaParticular extends React.Component {
 
             let options = {
                 method: 'POST',
-                uri: process.env.REACT_APP_S3P_BACKEND + '/summary',
+                url: process.env.REACT_APP_S3P_BACKEND + '/summary',
                 json: true,
-                body: body
+                data: body
             };
-            rp(options)
+            axios(options)
                 .then(res => {
-                    this.setState({previos: res, loading: false, error: false, panelPrevios: true})
+                    this.setState({previos: res.data, loading: false, error: false, panelPrevios: true})
                 }).catch(err => {
                 this.setState({loading: false, error: true});
             });
@@ -209,13 +202,12 @@ class BusquedaParticular extends React.Component {
 
     makeFiltros = () => {
         let filtros = {};
-        let {rfc, nombreRazonSocial, institucionDependencia, expediente, tipoPersona, tipoSancion} = this.state;
+        let {nombreRazonSocial, institucionDependencia, expediente, tipoPersona, tipoSancion} = this.state;
         if (nombreRazonSocial) filtros.nombreRazonSocial = nombreRazonSocial;
         if (expediente) filtros.expediente = expediente;
         if (tipoPersona) filtros.tipoPersona = tipoPersona;
         if (institucionDependencia && institucionDependencia !== '') filtros.institucionDependencia = institucionDependencia;
         if (tipoSancion.length > 0) filtros.tipoSancion = tipoSancion.map(item => item.value);
-        if (rfc) filtros.rfc = rfc;
         return filtros;
     };
 
@@ -248,17 +240,17 @@ class BusquedaParticular extends React.Component {
 
             let options = {
                 method: 'POST',
-                uri: process.env.REACT_APP_S3P_BACKEND + '/search',
+                url: process.env.REACT_APP_S3P_BACKEND + '/search',
                 json: true,
-                body: body
+                data: body
             };
 
-            rp(options)
+            axios(options)
                 .then(res => {
                     this.setState({
-                        filterData: res.results,
+                        filterData: res.data.results,
                         loading: false,
-                        totalRows: res.pagination.totalRows,
+                        totalRows: res.data.pagination.totalRows,
                         error: false
                     },)
                 }).catch(err => {
@@ -300,7 +292,7 @@ class BusquedaParticular extends React.Component {
 
     render() {
         const {classes} = this.props;
-        const {nombreRazonSocial, expediente, institucionDependencia, institucionesLista, nivel, rfc, campoOrden, tipoOrden, tipoSancion, tipoPersona} = this.state;
+        const {nombreRazonSocial, expediente, institucionDependencia, institucionesLista, nivel, campoOrden, tipoOrden, tipoSancion, tipoPersona} = this.state;
 
         return (
             <div>
@@ -422,19 +414,6 @@ class BusquedaParticular extends React.Component {
                         >Búsqueda avanzada</Button>
                     </Grid>
 
-
-                    {this.state.busquedaAvanzada && <Grid item xs={12} md={3}>
-                        <FormControl className={classes.formControl}>
-                            <TextField
-                                id="rfc"
-                                label="RFC"
-                                type="search"
-                                onChange={(e) => this.handleChangeCampo('rfc', e)}
-                                value={rfc}
-                            />
-
-                        </FormControl>
-                    </Grid>}
                     {this.state.busquedaAvanzada && <Grid item xs={12} md={3}>
                         <FormControl className={classes.formControl}>
                             <InputLabel shrink id="campoOrden-label">Ordenar por</InputLabel>
