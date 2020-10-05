@@ -60,7 +60,10 @@ const tiposSancion = [
     {label: 'Multado', value: 'M'},
     {label: 'Suspensión de actividades', value: 'S'},
     {label: 'Disolución de la sociedad', value: 'D'},
-    {label: 'Amonestación', value: 'A'}
+    {label: 'Amonestación', value: 'A'},
+    {label: 'Indemnización por los daños y perjuicios ocasionados a la Hacienda Pública Federal, local o municipal, o al patrimonio de los entes públicos', value: 'IND'},
+    {label: 'Sanción económica', value: 'SE'},
+    {label: 'Otro', value: 'O'}
 ]
 
 const camposOrdenamiento = [

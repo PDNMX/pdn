@@ -69,7 +69,10 @@ const tiposSancion = [
     {label: 'Inhabilitado', value: 'I'},
     {label: 'Multado', value: 'M'},
     {label: 'Suspensión del empleo, cargo o comisión', value: 'S'},
-    {label: 'Destitución del empleo, cargo o comisión', value: 'D'}
+    {label: 'Destitución del empleo, cargo o comisión', value: 'D'},
+    {label: 'Indemnización resarcitoria', value: 'IRSC'},
+    {label: 'Sanción económica', value: 'SE'},
+    {label: 'Otro', value: 'O'}
 ]
 
 const camposOrdenamiento = [
