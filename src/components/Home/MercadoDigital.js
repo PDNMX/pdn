@@ -66,8 +66,8 @@ class MercadoDigital extends React.Component{
 
                             <div>
                                 <Button variant="contained" className={classes.button}
-                                        href="https://plataformadigitalnacional.org/blog/nueva-pdn-beta-0-7"
-                                        target="_blank"
+                                        href="https://mda.plataformadigitalnacional.org/"
+                                        //target="_blank"
                                 >
                                     Conoce más
                                 </Button>
