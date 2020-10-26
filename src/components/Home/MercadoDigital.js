@@ -54,7 +54,11 @@ class MercadoDigital extends React.Component{
                             </Typography>
 
                             <Typography className={classes.text} paragraph>
-                                Conoce más acerca de este nuevo espacio que estará disponible en la PDN, en donde habrá herramientas que facilitarán la interconexión con los Sistemas 1, 2 y 3.
+                                El Mercado Digital Anticorrupción (MDA) es un espacio donde podrás encontrar
+                                diversas herramientas que facilitarán el desarrollo y conexión de los sistemas
+                                que conforman a la Plataforma Digital Nacional.
+                                Estas herramientas podrán ser utilizadas por todas las Instituciones que las requieran,
+                                ya que son de libre uso, haz click en "Conoce más".
                             </Typography>
 
                             <div className={classes.videoDiv}>
