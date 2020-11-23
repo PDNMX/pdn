@@ -6,22 +6,19 @@ import Typography from '@material-ui/core/Typography';
 
 import Busqueda from './busqueda'
 
-const drawerWidth = 450;
 const useStyles = makeStyles((theme) => ({
     btnGlosario: {
       margin: theme.spacing(1),
       background: '#ffe01b',
     },
     drawerPaper: {
-      width: drawerWidth,
-      padding: 15
-    },
-    /* drawer: {
-      [theme.breakpoints.up('sm')]: {
-        width: 50,
+      width: '25%',
+      padding: 15,
+      [theme.breakpoints.down('md')]: {
+        width: '80%',
         flexShrink: 0,
       },
-    }, */
+    },
 }));
 
 export default function TemporaryDrawer() {
