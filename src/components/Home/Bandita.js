@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 //import Modal from "@material-ui/core/Modal/Modal";
 //import Participa from "../Participa/Participa";
-
+import Glosario from "../Glosario/";
 
 const styles = theme => ({
     root: {
@@ -13,7 +13,6 @@ const styles = theme => ({
         bottom: '0',
         right: '0',
         zIndex: 1,
-        //opacity: 0.7,
         paddingTop: theme.spacing(2),
         paddingBottom: theme.spacing(1) ,
         paddingRight: theme.spacing(1),
@@ -24,7 +23,8 @@ const styles = theme => ({
         maxWidth: 1200
     },
     comenta:{
-        background: '#ffe01b',
+        margin: theme.spacing(1),
+        background: '#ffe01b'
     }
 });
 
@@ -49,7 +49,12 @@ class Bandita extends React.Component{
         return (
 
                 <div className={classes.root}>
-                    <Button variant='contained' className={classes.comenta} href={process.env.REACT_APP_LINK_GOOGLEFORM} target={"_blank"}>Comenta</Button>
+                    <div>
+                        <Glosario />
+                    </div>
+                    <div>
+                        <Button variant='contained' className={classes.comenta} href={process.env.REACT_APP_LINK_GOOGLEFORM} target={"_blank"}>Comenta</Button>
+                    </div>
                    {/* <Button variant='contained' className={classes.comenta} onClick={this.handleClickOpen} >Comenta</Button>
                     <Modal className={classes.modalParticipa}
                            aria-labelledby="simple-modal-title"
@@ -59,9 +64,8 @@ class Bandita extends React.Component{
                     >
                         <Participa onClose={this.handleClose}/>
                     </Modal>*/}
+                    
                 </div>
-
-
         );
     }
 }
