@@ -13,7 +13,8 @@ const useStyles = makeStyles((theme) => ({
       background: '#ffe01b',
     },
     drawerPaper: {
-      width: drawerWidth
+      width: drawerWidth,
+      padding: 15
     },
     /* drawer: {
       [theme.breakpoints.up('sm')]: {

@@ -1,5 +1,25 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Divider from '@material-ui/core/Divider';
+import TextField from '@material-ui/core/TextField';
+
+import ClearIcon from "@material-ui/icons/Clear";
+import { IconButton } from "@material-ui/core";
+
+const styles = theme => ({
+  root: {
+    width: '100%',
+  },
+  heading: {
+    fontSize: theme.typography.pxToRem(15),
+    fontWeight: theme.typography.fontWeightRegular,
+  },
+});
 
 const glosarioData = process.env.REACT_APP_GLOSARIO;
 
@@ -38,17 +58,38 @@ export default function Busqueda() {
   }
   return (
     <div>
-      <input
+      <TextField
+        clearable
         type="text"
-        placeholder=""
+        value={search}
+        placeholder="Escribe la palabra a buscar"
         onChange={(e) => setSearch(e.target.value)}
+        InputProps={{
+          endAdornment: (
+            <IconButton onClick={() => {
+                setSearch('')
+                }}>
+              <ClearIcon />
+            </IconButton>
+          )
+        }}
+        InputAdornmentProps={{
+          position: "start"
+        }}
       />
-      <a href='a' onClick={(e) => {
+      
+      <br/>
+      <br/>
+      {/* <a href='a' onClick={(e) => {
           e.preventDefault();
           setSearch('abuso')}
           }>
               A
       </a>
+      <br/>
+      <br/> */}
+      <Divider />
+      <br/>
       {filteredPalabras.map((country, idx) => (
         <ResultDetail key={idx} {...country} />
       ))}
@@ -60,9 +101,21 @@ const ResultDetail = (props) => {
     const { gsx$palabra, gsx$descripción, gsx$fuente } = props;
     return (
         <>
-        <p>{gsx$palabra.$t}</p>
-        <p>{gsx$descripción.$t}</p>
-        <p>{gsx$fuente.$t}</p>
+        <ExpansionPanel>
+        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography>{gsx$palabra.$t}</Typography>
+        </ExpansionPanelSummary>
+        <ExpansionPanelDetails>
+          <Typography>
+            {gsx$descripción.$t}
+          </Typography>
+          {/* <br/>
+          <br/>
+          <Typography>
+          {gsx$fuente.$t}
+          </Typography> */}
+        </ExpansionPanelDetails>
+        </ExpansionPanel>
         </>
     );
 };
