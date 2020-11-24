@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
+
 
 import Busqueda from './busqueda'
 
@@ -35,10 +37,15 @@ export default function TemporaryDrawer() {
   return (
       <React.Fragment key='Glosario'>
         <Button variant='contained' className={classes.btnGlosario} onClick={toggleDrawer(true)}>Glosario</Button>
-        <Drawer classes={{ paper: classes.drawerPaper, }} anchor="left"variant="temporary" anchor='right' open={state} onEscapeKeyDown={toggleDrawer(false)} onBackdropClick={toggleDrawer(false)} onClose={toggleDrawer(false)}> <Typography variant="h4" gutterBottom>
-          Glosario
-          </Typography>
-          <Busqueda />
+        <Drawer classes={{ paper: classes.drawerPaper, }} anchor="left"variant="temporary" anchor='right' open={state} onEscapeKeyDown={toggleDrawer(false)} onBackdropClick={toggleDrawer(false)} onClose={toggleDrawer(false)}> 
+          <Grid container >
+            <Grid item xs={12}>
+              <Typography variant="h4" gutterBottom> Glosario </Typography>
+            </Grid>
+            <Grid style={{ height: '100%' }} item xs={12}>
+              <Busqueda />
+            </Grid>
+          </Grid>
         </Drawer>
       </React.Fragment>
   );

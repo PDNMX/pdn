@@ -10,29 +10,8 @@ import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 
-
-import { makeStyles } from '@material-ui/core/styles';
-
 import ClearIcon from "@material-ui/icons/Clear";
 import { IconButton } from "@material-ui/core";
-
-const styles = theme => ({
-  root: {
-    width: '100%',
-  },
-  heading: {
-    fontSize: theme.typography.pxToRem(15),
-    fontWeight: theme.typography.fontWeightRegular,
-  },
-});
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& > * + *': {
-      paddingRight: theme.spacing(2),
-    },
-  },
-}));
 
 const glosarioData = process.env.REACT_APP_GLOSARIO;
 
@@ -41,8 +20,6 @@ export default function Busqueda() {
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
   const [filteredPalabras, setFilteredPalabras] = useState([]);
-
-  const classes = useStyles();
 
   useEffect(() => {
     setLoading(true);
@@ -62,7 +39,7 @@ export default function Busqueda() {
       palabras.filter((country) =>
         //country.gsx$palabra.$t.toLowerCase().includes(search.toLowerCase());
         // busca al inicio del string
-        country.gsx$palabra.$t.toLowerCase().startsWith(search.toLowerCase())
+        country.gsx$palabra.$t.toLowerCase().startsWith(search.toLowerCase(''))
       )
     );
 
@@ -77,6 +54,7 @@ export default function Busqueda() {
     <div>
       <TextField
         clearable
+        style={{ width: '100%' }}
         type="text"
         value={search}
         placeholder="Escribe la letra o palabra a buscar"
@@ -99,13 +77,13 @@ export default function Busqueda() {
       <br/>
       <Typography style={{ wordWrap: "break-word" }}  >      
         {abecedario.map(palabra => {
-          return <Link style={{ marginRight: 16 }}  className={classes.root} href={palabra} onClick={(e) => { e.preventDefault(); setSearch(palabra)} }>{palabra}</Link>;
+          return <Link style={{ marginRight: 16 }}  href={palabra} onClick={(e) => { e.preventDefault(); setSearch(palabra)} }><b>{palabra}</b></Link>;
         })}
       </Typography>
       <br/>
       <Divider />
       <br/>
-      {filteredPalabras.length === 0 ? <Typography variant="subtitle2"> Sin resultados </Typography> : filteredPalabras.map((queryString, idx) => ( <ResultDetail key={idx} {...queryString} /> ))}
+      {filteredPalabras.length === 0 ? <Typography><i>Sin resultados</i></Typography> : filteredPalabras.map((queryString, idx) => ( <ResultDetail key={idx} {...queryString} /> ))}
     </div>
   );
 }
@@ -116,18 +94,18 @@ const ResultDetail = (props) => {
         <>
         <ExpansionPanel>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography variant="subtitle2">{gsx$palabra.$t}</Typography>
+          <Typography>{gsx$palabra.$t}</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <Grid container spacing={2}>
             <Grid item xs={12} >
-              <Typography variant="body2">
+              <Typography variant="body1">
                 {gsx$descripción.$t}
               </Typography>
             </Grid>
             <Grid item xs={12} >
               <Typography variant="body2">
-                <b>Fuente: </b>{gsx$fuente.$t}
+                <i><b>Fuente: </b>{gsx$fuente.$t}</i>
               </Typography>
             </Grid>
           </Grid>
