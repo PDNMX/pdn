@@ -76,7 +76,7 @@ export default function Busqueda() {
         clearable
         type="text"
         value={search}
-        placeholder="Escribe la palabra a buscar"
+        placeholder="Escribe la letra o palabra a buscar"
         onChange={(e) => setSearch(e.target.value)}
         InputProps={{
           endAdornment: (
@@ -96,15 +96,13 @@ export default function Busqueda() {
       <br/>
       <Typography style={{ wordWrap: "break-word" }}  >      
         {abecedario.map(palabra => {
-          return <Link style={{ marginRight: 16 }}  href={palabra} onClick={(e) => { e.preventDefault(); setSearch(palabra)} }>{palabra}</Link>;
+          return <Link style={{ marginRight: 16 }}  className={classes.root} href={palabra} onClick={(e) => { e.preventDefault(); setSearch(palabra)} }>{palabra}</Link>;
         })}
       </Typography>
       <br/>
       <Divider />
       <br/>
-      {filteredPalabras.map((country, idx) => (
-        <ResultDetail key={idx} {...country} />
-      ))}
+      {filteredPalabras.length === 0 ? <Typography variant="subtitle2"> Sin resultados </Typography> : filteredPalabras.map((queryString, idx) => ( <ResultDetail key={idx} {...queryString} /> ))}
     </div>
   );
 }
@@ -115,10 +113,10 @@ const ResultDetail = (props) => {
         <>
         <ExpansionPanel>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography>{gsx$palabra.$t}</Typography>
+          <Typography variant="subtitle2">{gsx$palabra.$t}</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <Typography>
+          <Typography variant="body2">
             {gsx$descripción.$t}
           </Typography>
           {/* <br/>
