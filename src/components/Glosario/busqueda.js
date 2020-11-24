@@ -8,6 +8,9 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Divider from '@material-ui/core/Divider';
 import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
+import Grid from '@material-ui/core/Grid';
+
+
 import { makeStyles } from '@material-ui/core/styles';
 
 import ClearIcon from "@material-ui/icons/Clear";
@@ -116,14 +119,20 @@ const ResultDetail = (props) => {
           <Typography variant="subtitle2">{gsx$palabra.$t}</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <Typography variant="body2">
-            {gsx$descripción.$t}
-          </Typography>
-          {/* <br/>
-          <br/>
-          <Typography>
-          {gsx$fuente.$t}
-          </Typography> */}
+          <Grid container spacing={2}>
+            <Grid item xs={12} >
+              <Typography variant="body2">
+                {gsx$descripción.$t}
+              </Typography>
+            </Grid>
+            <Grid item xs={12} >
+              <Typography variant="body2">
+                <b>Fuente: </b>{gsx$fuente.$t}
+              </Typography>
+            </Grid>
+          </Grid>
+          
+
         </ExpansionPanelDetails>
         </ExpansionPanel>
         </>
