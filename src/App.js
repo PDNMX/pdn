@@ -11,6 +11,8 @@ import LoginPDN from "./components/Inicio/LoginPDN";
 import ScrollToTop from "./ScrollToTop";
 import "./components/Utils/Header.css";
 
+import Bandita from "./components/Home/Bandita";
+
 // Google Analytics 
 import ReactGA from 'react-ga';
 ReactGA.initialize('UA-126837818-1');
@@ -138,7 +140,8 @@ class App extends React.Component {
     return (
       <MuiThemeProvider theme={theme}>
         <Router basename={process.env.PUBLIC_URL}>
-          <ScrollToTop>
+          
+            <Bandita />
             <Switch>
               <Route exact path={"/login"} render={props => <LoginPDN />} />
               {pndRoutes.map((prop, key) => {
@@ -160,9 +163,8 @@ class App extends React.Component {
                 );
               })}
               <Route component={p404} />
-              />
+              
             </Switch>
-          </ScrollToTop>
         </Router>
       </MuiThemeProvider>
     );

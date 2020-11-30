@@ -9,7 +9,6 @@ import S1 from '../../../assets/iconos_azul/1_icono.svg';
 import S2 from '../../../assets/iconos_azul/2_icono.svg';
 import S3 from '../../../assets/iconos_azul/3_icono.svg';
 import S6 from '../../../assets/iconos_azul/6_icono.svg';
-import ScrollToTopButton from "../../Navigation/ScrollToTopButton";
 //import Tooltip from "@material-ui/core/Tooltip";
 
 
@@ -118,7 +117,6 @@ class Especificaciones extends React.Component {
                 </Grid>
 
                 <Footer/>
-                <ScrollToTopButton/>
             </div>
         );
     }

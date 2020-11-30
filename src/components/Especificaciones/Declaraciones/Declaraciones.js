@@ -10,7 +10,6 @@ import Recomendaciones from "./Recomendaciones";
 import {Typography} from "@material-ui/core"
 import Herramientas from "../Herramientas";
 import Header from './Header/Header';
-import ScrollToTopButton from "../../Navigation/ScrollToTopButton";
 import {Link} from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import ProcoloConexion from "../ProcoloConexion";
@@ -159,7 +158,6 @@ class Declaraciones extends React.Component {
                 </Grid>
 
                 <Footer/>
-                <ScrollToTopButton/>
 
             </div>
         );

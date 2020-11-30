@@ -11,7 +11,6 @@ import img3 from "../../assets/img/servidores_visualizaciones.svg";
 import Header from './Header/Header';
 import classNames from 'classnames';
 import Dashboard from "./Dashboard/Dashboard";
-import ScrollToTopButton from "../Navigation/ScrollToTopButton";
 import BuscadorParticularesSancionados from '../Sancionados/Particulares/BuscadorParticularesSancionados';
 const styles = theme => ({
     root: {
@@ -154,7 +153,6 @@ class Index extends React.Component {
                     </Grid>
                 </Grid>
                 <Footer/>
-                <ScrollToTopButton/>
             </div>
         );
     }

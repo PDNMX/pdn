@@ -5,6 +5,8 @@ import Button from '@material-ui/core/Button';
 //import Modal from "@material-ui/core/Modal/Modal";
 //import Participa from "../Participa/Participa";
 import Glosario from "../Glosario/";
+import ScrollToTopButton from "../Navigation/ScrollToTopButton";
+
 
 const styles = theme => ({
     root: {
@@ -49,6 +51,7 @@ class Bandita extends React.Component{
         return (
 
                 <div className={classes.root}>
+                    <ScrollToTopButton/>
                     <div>
                         <Glosario />
                     </div>

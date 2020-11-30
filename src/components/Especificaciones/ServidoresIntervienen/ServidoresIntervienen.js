@@ -10,7 +10,6 @@ import Licencia from "../Licencia";
 import Implementacion from "./Implementacion";
 import {Typography} from "@material-ui/core"
 import Herramientas from "../Herramientas";
-import ScrollToTopButton from "../../Navigation/ScrollToTopButton";
 import Button from '@material-ui/core/Button';
 import ProcoloConexion from "../ProcoloConexion";
 
@@ -134,8 +133,6 @@ class ServidoresIntervienen extends React.Component {
                 </Grid>
 
                 <Footer/>
-                <ScrollToTopButton/>
-
             </div>
         );
     }

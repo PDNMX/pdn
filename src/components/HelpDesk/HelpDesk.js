@@ -4,7 +4,6 @@ import Header from './Header/Header';
 import Grid from '@material-ui/core/Grid';
 import Footer from "../Home/Footer";
 import ExpansionPanels from './ExpansionPanels';
-import ScrollToTopButton from "../Navigation/ScrollToTopButton";
 import Disclaimer from "./Disclaimer";
 
 const styles = theme => ({
@@ -69,7 +68,6 @@ class HelpDesk extends React.Component{
 
             </Grid>
             <Footer/>
-            <ScrollToTopButton/>
         </div>
     }
 }

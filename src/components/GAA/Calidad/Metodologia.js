@@ -4,7 +4,6 @@ import Header from "./Header/Header";
 import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
 import Footer from "../../Home/Footer";
-import ScrollToTopButton from '../../Navigation/ScrollToTopButton';
 import ExpansionPanels from "./ExpansionPanels";
 import Disclaimer from "./Disclaimer";
 
@@ -55,7 +54,6 @@ class Metodologia extends React.Component{
                 </Grid>
             </Grid>
             <Footer/>
-            <ScrollToTopButton/>
         </div>
     }
 

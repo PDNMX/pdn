@@ -10,7 +10,6 @@ import Implementacion from "./Implementacion";
 import {Typography} from "@material-ui/core"
 import Herramientas from "../Herramientas";
 import Header from './Header/Header';
-import ScrollToTopButton from "../../Navigation/ScrollToTopButton";
 import Button from '@material-ui/core/Button';
 import {Link} from '@material-ui/core';
 import IconButton from "@material-ui/core/IconButton";
@@ -171,7 +170,6 @@ class Sancionados extends React.Component {
                 </Grid>
 
                 <Footer/>
-                <ScrollToTopButton/>
             </div>
         );
     }

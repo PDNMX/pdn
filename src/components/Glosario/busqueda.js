@@ -36,10 +36,10 @@ export default function Busqueda() {
 
   useEffect(() => {
     setFilteredPalabras(
-      palabras.filter((country) =>
-        //country.gsx$palabra.$t.toLowerCase().includes(search.toLowerCase());
+      palabras.filter((text) =>
+        //text.gsx$palabra.$t.toLowerCase().includes(search.toLowerCase());
         // busca al inicio del string
-        country.gsx$palabra.$t.toLowerCase().startsWith(search.toLowerCase(''))
+        text.gsx$palabra.$t.toLowerCase().startsWith(search.toLowerCase(''))
       )
     );
 

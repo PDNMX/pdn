@@ -8,7 +8,6 @@ import Header from "./Header/Header.js";
 import Link from '@material-ui/core/Link'
 import Footer from '../Home/Footer';
 import './Terminos.css';
-import ScrollToTopButton from "../Navigation/ScrollToTopButton";
 
 const styles = theme => ({
     root: {
@@ -377,7 +376,6 @@ class Terminos extends React.Component {
                         </Typography>
                     </Grid>
                 </Grid>
-                <ScrollToTopButton/>
                 <Footer/>
             </div>
         )

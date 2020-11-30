@@ -5,7 +5,6 @@ import {withStyles} from '@material-ui/core/styles';
 import Explora from './Explora';
 import Sistemas from './Sistemas';
 import Footer from './Footer';
-import Bandita from "./Bandita";
 import Banner from "../VideoBanner/VideoBanner";
 import AlertDialog from "./AlertDialog";
 
@@ -68,7 +67,6 @@ class Home extends React.Component{
                     </Grid>
 
                     <Footer/>
-                    <Bandita/>
                     <AlertDialog/>
                 </div>
 

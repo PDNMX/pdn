@@ -5,7 +5,6 @@ import Intro from "./Intro";
 import Licencia from '../Licencia';
 import Herramientas from "../Herramientas";
 import Footer from "../../Home/Footer";
-import ScrollToTopButton from "../../Navigation/ScrollToTopButton";
 const styles = theme => ({
     root: {flexGrow: 1},
     rootItem: {
@@ -33,7 +32,6 @@ const Index = props => {
                 </Grid>
             </Grid>
             <Footer/>
-            <ScrollToTopButton/>
 
         </div>
     );
