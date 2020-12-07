@@ -198,7 +198,7 @@ class DetalleParticularSancionado extends React.Component {
                                         Inhabilitación plazo
                                     </Typography>
                                     <Typography className={classes.dataCard}>
-                                        {particular.inhabilitacion.plazo}
+                                        {particular.inhabilitacion ? particular.inhabilitacion.plazo : '-'}
                                     </Typography>
                                 </Grid>
                                 <Grid item xs={12} md={3}>
@@ -206,7 +206,7 @@ class DetalleParticularSancionado extends React.Component {
                                         Inhabilitación periodo
                                     </Typography>
                                     <Typography className={classes.dataCard}>
-                                        Del {particular.inhabilitacion.fechaInicial} al {particular.inhabilitacion.fechaFinal}
+                                        Del {particular.inhabilitacion ? particular.inhabilitacion.fechaInicial: '-'} al {particular.inhabilitacion ? particular.inhabilitacion.fechaFinal : ''}
                                     </Typography>
                                 </Grid>
 
