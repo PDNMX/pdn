@@ -19,6 +19,8 @@ import scrollToComponent from 'react-scroll-to-component';
 import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
+import Descarga from "../Compartidos/Descarga";
+
 class Busqueda extends React.Component {
 	defaultSelect = [
 		{
@@ -626,6 +628,12 @@ class Busqueda extends React.Component {
 						}}
 					/>
 				)}
+				{/*DESCARGA*/}
+				<Grid container spacing={0} justify="center">
+					<Grid item xs={12} className={classes.itemD}>
+						<Descarga url={process.env.REACT_APP_S1_BULK} />
+					</Grid>
+				</Grid>
 			</div>
 		);
 	}
