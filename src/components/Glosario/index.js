@@ -37,7 +37,7 @@ export default function TemporaryDrawer() {
   return (
       <React.Fragment key='Glosario'>
         <Button variant='contained' className={classes.btnGlosario} onClick={toggleDrawer(true)}>Glosario</Button>
-        <Drawer classes={{ paper: classes.drawerPaper, }} anchor="left"variant="temporary" anchor='right' open={state} onEscapeKeyDown={toggleDrawer(false)} onBackdropClick={toggleDrawer(false)} onClose={toggleDrawer(false)}> 
+        <Drawer classes={{ paper: classes.drawerPaper, }} anchor="left" variant="temporary" anchor='right' open={state} onEscapeKeyDown={toggleDrawer(false)} onBackdropClick={toggleDrawer(false)} onClose={toggleDrawer(false)}>
           <Grid container >
             <Grid item xs={12}>
               <Typography variant="h4" gutterBottom> Glosario </Typography>

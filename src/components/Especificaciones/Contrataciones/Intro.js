@@ -1,5 +1,5 @@
 import React from 'react';
-import {withStyles, Typography, Button, List, ListItem, ListItemAvatar, Avatar, ListItemText} from "@material-ui/core";
+import {withStyles, Typography, Divider, Button, List, ListItem, ListItemAvatar, Avatar, ListItemText} from "@material-ui/core";
 import AccountTreeIcon from '@material-ui/icons/AccountTree';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import DescriptionIcon from "@material-ui/icons/Description";
@@ -35,7 +35,11 @@ const styles = theme => ({
     },
     title: {
         fontWeight: "bold"
-    }
+    },
+    divider:{
+        marginTop: theme.spacing(4),
+        marginBottom: theme.spacing(4)
+    },
 });
 
 const etapas = [
@@ -129,6 +133,41 @@ const Intro = props => {
                 }
 
             </List>
+
+            <Divider className={classes.divider}/>
+
+            <Typography variant="h4" paragraph color="textPrimary">
+                Implementación del EDCA
+            </Typography>
+
+            <Typography className={classes.title} color="textSecondary">
+                Diccionario de datos
+            </Typography>
+
+            <Typography color="textSecondary" >
+                Contiene la traducción del Open Contracting Data Standar para México.
+            </Typography>
+
+            <Button href="https://drive.google.com/file/d/1z5uKwMozYMtVPBRcmKJfoZasI417O-p9/view?usp=sharing"
+                    target="_blank" className={classes.button} variant="contained">
+                Conoce más
+            </Button>
+
+            <Typography className={classes.title} color="textSecondary">
+                Esquema de entrega (Release Schema)
+            </Typography>
+
+            <Typography color="textPrimary">
+                El esquema de entrega proporciona la definición oficial de los campos y su estructura en Formato JSON.
+            </Typography>
+
+            <Button
+                href="https://standard.open-contracting.org/schema/1__1__5/release-schema.json"
+                target="_blank" className={classes.button} variant="contained"
+            >
+                Conoce más
+            </Button>
+
         </div>
     )
 }

@@ -8,7 +8,7 @@ import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import PrivateRoute from "./PrivateRoute";
 import app from "./config/firebase";
 import LoginPDN from "./components/Inicio/LoginPDN";
-import ScrollToTop from "./ScrollToTop";
+//import ScrollToTop from "./ScrollToTop";
 import "./components/Utils/Header.css";
 
 import Bandita from "./components/Home/Bandita";
