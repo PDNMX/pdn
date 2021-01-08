@@ -11,7 +11,7 @@ import {Typography} from "@material-ui/core"
 import Herramientas from "../Herramientas";
 import Header from './Header/Header';
 import Button from '@material-ui/core/Button';
-import {Link} from '@material-ui/core';
+import {Link} from "react-router-dom";
 import IconButton from "@material-ui/core/IconButton";
 import GetAppIcon from "@material-ui/icons/GetApp";
 
@@ -138,10 +138,6 @@ class Sancionados extends React.Component {
                         <Typography paragraph color="textPrimary">
                             Posteriormente el equipo de la PDN llevará a cabo el procedimiento para la verificación del funcionamiento del API que consiste en la ejecución del siguiente <b>Plan de pruebas</b>.
                         </Typography>
-                        <Typography paragraph color="textPrimary">
-                            Adicionalmente, ponemos a disposición un <Link to="/validador" className={classes.link}><Typography component={'span'}>Validador </Typography></Link>
-                            que sirve de apoyo para la validación del cumplimiento de los esquemas de datos de las diferentes API's.
-                        </Typography>
                         <Button
                             href= {'https://drive.google.com/file/d/1in6bHq8rqeTl_v48BpByDjgxeF2fIIve/view'}
                             target='_blank'
@@ -156,7 +152,10 @@ class Sancionados extends React.Component {
                             className={classes.button}>
                             Particulares Sancionados
                         </Button>
-
+                        <Typography paragraph color="textPrimary">
+                            Adicionalmente, ponemos a disposición un <Link to="/validador" className={classes.link}><Typography component={'span'}><b>Validador</b> </Typography></Link>
+                            que sirve de apoyo para la validación del cumplimiento de los esquemas de datos de las diferentes API's.
+                        </Typography>
 
                         <Divider className={classes.divider}/>
 
