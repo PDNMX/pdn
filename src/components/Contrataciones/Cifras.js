@@ -51,8 +51,8 @@ class Cifras extends React.Component{
         instituciones: 0,
         donutChartData: [],
         periodo: {
-            start: 2017,
-            end: 2019
+            start: 2016,
+            end: 2020
         },
         gastoTotal: 0,
         colors: {
