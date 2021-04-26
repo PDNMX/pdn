@@ -448,7 +448,9 @@ export default function({
 						</Grid>
 						<Grid item xs={12} md={12}>
 							<FormControl component="fieldset" className={classes.formControl}>
-								<FormLabel component="legend">Nivel/Orden de Gobierno:</FormLabel>
+								<FormLabel component="legend">
+									Nivel/Orden de Gobierno del Empleo, Cargo o Comisión:
+								</FormLabel>
 								<RadioGroup
 									aria-label="nivelOrdenGobierno"
 									name="nivelOrdenGobierno"

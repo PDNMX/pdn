@@ -25,7 +25,7 @@ const cellsEmpleo = [
 ];
 
 const cellsInmuebles = [
-	{ id: 'nivelOrdenGobierno', label: 'Nivel/Orden de Gobierno' },
+	{ id: 'nivelOrdenGobierno', label: 'Nivel/Orden de Gobierno del Empleo, Cargo o Comisión' },
 	{ id: 'superficieConstruccion', label: 'Superficie de Construcción' },
 	{ id: 'superficieTerreno', label: 'Superficie del Terreno' },
 	{ id: 'formaAdquisicion', label: 'Forma de Adquisición' },
