@@ -496,6 +496,17 @@ export default function({
 						<Grid item xs={12} style={{ textAlign: 'right' }}>
 							<Button
 								className={classes.button}
+								type="reset"
+								variant="contained"
+								color="secondary"
+								onClick={(e) => {
+									cleanForm();
+								}}
+							>
+								Limpiar
+							</Button>
+							<Button
+								className={classes.button}
 								type="submit"
 								variant="contained"
 								color="secondary"
@@ -505,17 +516,6 @@ export default function({
 								disabled={btnSearch}
 							>
 								Buscar
-							</Button>
-							<Button
-								className={classes.button}
-								type="reset"
-								variant="contained"
-								color="secondary"
-								onClick={(e) => {
-									cleanForm();
-								}}
-							>
-								Limpiar
 							</Button>
 						</Grid>
 						<Divider />
