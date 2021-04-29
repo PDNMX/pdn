@@ -19,7 +19,7 @@ import scrollToComponent from 'react-scroll-to-component';
 import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-import Descarga from "../Compartidos/Descarga";
+import Descarga from '../Compartidos/Descarga';
 
 class Busqueda extends React.Component {
 	defaultSelect = [
@@ -57,6 +57,7 @@ class Busqueda extends React.Component {
 		segundoApellido: '',
 		escolaridadNivel: '0',
 		nivelOrdenGobierno: '',
+		nivelGobierno: '',
 		nombreEntePublico: '',
 		entidadFederativa: '0',
 		municipioAlcaldia: '0',
@@ -297,11 +298,17 @@ class Busqueda extends React.Component {
 	};
 
 	handlerFind = () => {
-		let { institucion, providers } = this.state;
+		let { institucion, providers, query: { nivelGobierno } } = this.state;
+		console.log('nivelGobierno: ', nivelGobierno);
 
-		let prov = institucion
-			? providers.filter((p) => p.supplier_id === institucion)
+		let prov = nivelGobierno
+			? providers.filter((p) => p.levels && p.levels.includes(nivelGobierno))
 			: providers.filter((p) => typeof p.supplier_id === 'string');
+
+		console.log('providers: ', providers);
+		console.log('institucion: ', institucion);
+		console.log('prov: ', prov);
+		console.log('providers.levels: ', providers[1].levels);
 
 		prov = prov.map((p) => {
 			return {

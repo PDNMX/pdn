@@ -42,6 +42,7 @@ export default function({
 		segundoApellido,
 		escolaridadNivel,
 		nivelOrdenGobierno,
+		nivelGobierno,
 		nombreEntePublico,
 		entidadFederativa,
 		municipioAlcaldia,
@@ -475,6 +476,38 @@ export default function({
 										control={<Radio color="secondary" />}
 										label="MUNICIPAL/ALCALDÍA"
 									/>
+								</RadioGroup>
+							</FormControl>
+						</Grid>
+						<Grid item xs={12} md={12}>
+							<FormControl component="fieldset" className={classes.formControl}>
+								<FormLabel component="legend">
+									Nivel de Gobierno
+								</FormLabel>
+								<RadioGroup
+									aria-label="nivelGobierno"
+									name="nivelGobierno"
+									className={classes.group}
+									value={nivelGobierno}
+									onChange={handleInputChange}
+									row
+								>
+									<FormControlLabel value="" control={<Radio color="secondary" />} label="TODOS" />
+									<FormControlLabel
+										value="FEDERAL"
+										control={<Radio color="secondary" />}
+										label="FEDERAL"
+									/>
+									<FormControlLabel
+										value="ESTATAL"
+										control={<Radio color="secondary" />}
+										label="ESTATAL"
+									/>
+									{/* <FormControlLabel
+										value="MUNICIPAL_ALCALDIA"
+										control={<Radio color="secondary" />}
+										label="MUNICIPAL/ALCALDÍA"
+									/> */}
 								</RadioGroup>
 							</FormControl>
 						</Grid>
