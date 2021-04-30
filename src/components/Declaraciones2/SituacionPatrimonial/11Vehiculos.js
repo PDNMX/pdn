@@ -31,14 +31,16 @@ function Vehiculo(props) {
 					id="panel1a-header"
 				>
 					<Typography className={exp.heading}>
-						<strong>{obj.tipoVehiculo.valor}</strong>
+						<strong>{obj.tipoVehiculo && obj.tipoVehiculo.valor}</strong>
 					</Typography>
 				</ExpansionPanelSummary>
 				<ExpansionPanelDetails>
 					<Grid container spacing={1}>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>TIPO DE VEHÍCULO:</Typography>
-							<Typography className={classes.card}>{obj.tipoVehiculo.valor}</Typography>
+							<Typography className={classes.card}>
+								{obj.tipoVehiculo && obj.tipoVehiculo.valor}
+							</Typography>
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>TITULAR DEL VEHÍCULO:</Typography>
@@ -71,7 +73,9 @@ function Vehiculo(props) {
 
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>FORMA DE ADQUISICIÓN:</Typography>
-							<Typography className={classes.card}>{obj.formaAdquisicion.valor}</Typography>
+							<Typography className={classes.card}>
+								{obj.formaAdquisicion && obj.formaAdquisicion.valor}
+							</Typography>
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>FORMA DE PAGO:</Typography>
@@ -83,7 +87,9 @@ function Vehiculo(props) {
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>TIPO DE MONEDA:</Typography>
-							<Typography className={classes.card}>{obj.valorAdquisicion.moneda}</Typography>
+							<Typography className={classes.card}>
+								{obj.valorAdquisicion && obj.valorAdquisicion.moneda}
+							</Typography>
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>FECHA DE ADQUISICIÓN DEL VEHÍCULO:</Typography>
@@ -94,7 +100,9 @@ function Vehiculo(props) {
 								<Typography className={classes.cardTitle}>
 									EN CASO DE BAJA DEL VEHÍCULO INCLUIR MOTIVO:
 								</Typography>
-								<Typography className={classes.card}>{obj.motivoBaja.valor}</Typography>
+								<Typography className={classes.card}>
+									{obj.motivoBaja && obj.motivoBaja.valor}
+								</Typography>
 							</Grid>
 						)}
 						<Divider />
@@ -109,9 +117,19 @@ function Vehiculo(props) {
 export default function({ data, titulo }) {
 	const classes = useStyles();
 
-	const vehiculos = data.ninguno
-		? []
-		: data.vehiculo.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
+	let vehiculos;
+
+	if (data.ninguno) {
+		vehiculos = [];
+	} else {
+		vehiculos = data.vehiculo
+			? data.vehiculo.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC')
+			: [];
+	}
+
+	// const vehiculos = data.ninguno
+	// 	? []
+	// 	: data.vehiculo.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
 
 	return (
 		<Grid container spacing={2} className={classes.rootPrincipal}>

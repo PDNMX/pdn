@@ -36,28 +36,63 @@ const situacionPatrimonial = (data, tipo) => {
 		prestamoOComodato
 	} = data;
 
-	let bienInmueble = bienesInmuebles.ninguno
-		? 0
-		: bienesInmuebles.bienInmueble.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
-	let vehiculo = vehiculos.ninguno
-		? 0
-		: vehiculos.vehiculo.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
-	let bienMueble = bienesMuebles.ninguno
-		? 0
-		: bienesMuebles.bienMueble.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
-	let inversion = inversiones.ninguno
-		? 0
-		: inversiones.inversion.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
-	let adeudo = adeudos.ninguno
-		? 0
-		: adeudos.adeudo.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
+	const onlyDec = (i) => i.titular.length === 1 && i.titular[0].clave === 'DEC';
+
+	let bienInmueble, vehiculo, bienMueble, inversion, adeudo, tExperienciaLaboral, tprestamoOComodato;
+	// let bienInmueble = bienesInmuebles.ninguno ? 0 : bienesInmuebles.bienInmueble.filter(onlyDec);
+	// let vehiculo = vehiculos.ninguno ? 0 : vehiculos.vehiculo.filter(onlyDec);
+	// let bienMueble = bienesMuebles.ninguno ? 0 : bienesMuebles.bienMueble.filter(onlyDec);
+	// let inversion = inversiones.ninguno ? 0 : inversiones.inversion.filter(onlyDec);
+	// let adeudo = adeudos.ninguno ? 0 : adeudos.adeudo.filter(onlyDec);
+
+	if (bienesInmuebles.ninguno) {
+		bienInmueble = 0;
+	} else {
+		bienInmueble = bienesInmuebles.bienInmueble ? bienesInmuebles.bienInmueble.filter(onlyDec) : 0;
+	}
+
+	if (vehiculos.ninguno) {
+		vehiculo = 0;
+	} else {
+		vehiculo = vehiculos.vehiculo ? vehiculos.vehiculo.filter(onlyDec) : 0;
+	}
+
+	if (bienesMuebles.ninguno) {
+		bienMueble = 0;
+	} else {
+		bienMueble = bienesMuebles.bienMueble ? bienesMuebles.bienMueble.filter(onlyDec) : 0;
+	}
+
+	if (inversiones.ninguno) {
+		inversion = 0;
+	} else {
+		inversion = inversiones.inversion ? inversiones.inversion.filter(onlyDec) : 0;
+	}
+
+	if (adeudos.ninguno) {
+		adeudo = 0;
+	} else {
+		adeudo = adeudos.adeudo ? adeudos.adeudo.filter(onlyDec) : 0;
+	}
+
+	if (experienciaLaboral.ninguno) {
+		tExperienciaLaboral = 0;
+	} else {
+		tExperienciaLaboral = experienciaLaboral.experiencia ? experienciaLaboral.experiencia.length : 0;
+	}
+
+	if (prestamoOComodato.ninguno) {
+		tprestamoOComodato = 0;
+	} else {
+		tprestamoOComodato = prestamoOComodato.prestamo ? prestamoOComodato.prestamo.length : 0;
+	}
 
 	const tDatosCurricurales =
 		typeof datosCurricularesDeclarante === 'undefined' ? 0 : datosCurricularesDeclarante.escolaridad.length;
 
-	const tExperienciaLaboral = typeof experienciaLaboral === 'undefined' ? 0 : experienciaLaboral.experiencia.length;
+	// const tExperienciaLaboral = typeof experienciaLaboral === 'undefined' ? 0 : experienciaLaboral.experiencia.length;
 
-	const tprestamoOComodato = typeof prestamoOComodato === 'undefined' ? 0 : prestamoOComodato.prestamo.length;
+	// const tprestamoOComodato = typeof prestamoOComodato === 'undefined' ? 0 : prestamoOComodato.prestamo.length;
 
 	const menu = [
 		{ clave: 'DATOS GENERALES', valor: 0 },
@@ -81,7 +116,7 @@ const situacionPatrimonial = (data, tipo) => {
 			clave: '¿TE DESEMPEÑASTE COMO SERVIDOR PÚBLICO EN EL AÑO INMEDIATO ANTERIOR?',
 			valor: 0
 		},
-		{ clave: 'BIENES INMUEBLES', valor: bienInmueble.length },
+		{ clave: 'BIENES INMUEBLES', valor: bienInmueble.length },  
 		{ clave: 'VEHÍCULOS', valor: vehiculo.length },
 		{ clave: 'BIENES MUEBLES', valor: bienMueble.length },
 		{
@@ -169,7 +204,6 @@ const titulos = {
 };
 
 function OpcionInicialConclusion(valor, data, tipo) {
-
 	const titulo = titulos[tipo][valor];
 	switch (valor) {
 		case 0:
@@ -212,11 +246,11 @@ function OpcionModificacion(valor, data, tipo) {
 	switch (valor) {
 		case 0:
 			return <DatosGenerales data={data.datosGenerales} titulo={titulo} />;
-			// return (
-			// 	<ErrorBoundary seccion={'DatosGenerales'}>
-			// 		<DatosGenerales data={data.datosGenerales1} titulo={titulo} />
-			// 	</ErrorBoundary>
-			// );
+		// return (
+		// 	<ErrorBoundary seccion={'DatosGenerales'}>
+		// 		<DatosGenerales data={data.datosGenerales1} titulo={titulo} />
+		// 	</ErrorBoundary>
+		// );
 		case 1:
 			return <Domicilio titulo={titulo} />;
 		case 2:

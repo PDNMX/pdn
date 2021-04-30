@@ -150,6 +150,16 @@ function Prestamo({ prestamo }) {
 export default function({ data, titulo }) {
 	const classes = useStyles();
 
+	let prestamo;
+
+	if (data.ninguno) {
+		prestamo = [];
+	} else {
+		prestamo = data.prestamo
+			? data.prestamo.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC')
+			: [];
+	}
+
 	return (
 		<Grid container spacing={2} className={classes.rootPrincipal}>
 			<Grid item xs={12}>
@@ -161,8 +171,8 @@ export default function({ data, titulo }) {
 				<Grid item xs={12}>
 					{data.ninguno ? (
 						<DatosNoRegistrados />
-					) : data.prestamo.length ? (
-						<Prestamo prestamo={data.prestamo} />
+					) : prestamo.length ? (
+						<Prestamo prestamo={prestamo} />
 					) : (
 						<DatosReservados />
 					)}

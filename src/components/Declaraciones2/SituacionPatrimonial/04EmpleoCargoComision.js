@@ -54,9 +54,10 @@ function Empleo({ data }) {
 			<Grid item xs={12} md={4}>
 				<Typography className={classes.cardTitle}>TELÉFONO DE OFICINA Y EXTENSIÓN</Typography>
 				<Typography className={classes.card}>
-					{data.telefonoOficina.telefono}
-					{' Extensión '}
-					{data.telefonoOficina.extension}
+					{data.telefonoOficina && data.telefonoOficina.telefono}
+					{data.telefonoOficina &&
+						data.telefonoOficina.extension &&
+						' Extensión ' + data.telefonoOficina.extension}
 				</Typography>
 			</Grid>
 			<Grid item xs={12} md={4}>
@@ -70,7 +71,7 @@ function Empleo({ data }) {
 			<CompDomicilio domicilioMexico={data.domicilioMexico} domicilioExtranjero={data.domicilioExtranjero} />
 		</React.Fragment>
 	);
-}
+} 
 
 export default function({ data, titulo }) {
 	const classes = useStyles();
