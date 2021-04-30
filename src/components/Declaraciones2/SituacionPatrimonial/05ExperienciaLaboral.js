@@ -17,6 +17,8 @@ export default function({ data, titulo }) {
 	const exp = expansion();
 	const sum = sumary();
 
+	const experiencia = data.experiencia ? data.experiencia : [];
+
 	return (
 		<Grid container spacing={2} className={classes.rootPrincipal}>
 			<Grid item xs={12}>
@@ -28,7 +30,7 @@ export default function({ data, titulo }) {
 				{data.ninguno ? (
 					<DatosNoRegistrados />
 				) : (
-					data.experiencia.map((expe, index) => {
+					experiencia.map((expe, index) => {
 						return (
 							<ExpansionPanel key={'exp-' + index}>
 								<ExpansionPanelSummary
@@ -170,7 +172,9 @@ export default function({ data, titulo }) {
 												<Typography className={classes.cardTitle}>
 													SECTOR AL QUE PERTENECE
 												</Typography>
-												<Typography className={classes.card}>{expe.sector.valor}</Typography>
+												<Typography className={classes.card}>
+													{expe.sector && expe.sector.valor}
+												</Typography>
 											</Grid>
 											<Grid item xs={12} md={4}>
 												<Typography className={classes.cardTitle}>FECHA DE INGRESO</Typography>

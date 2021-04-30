@@ -30,7 +30,7 @@ function Inversiones({ inversiones, tipo }) {
 				>
 					<Typography className={exp.heading}>
 						<strong>
-							{obj.tipoInversion.valor} ({obj.subTipoInversion.valor})
+							{obj.tipoInversion && obj.tipoInversion.valor} ({obj.subTipoInversion && obj.subTipoInversion.valor})
 						</strong>
 					</Typography>
 				</ExpansionPanelSummary>
@@ -39,7 +39,7 @@ function Inversiones({ inversiones, tipo }) {
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>TIPO DE INVERSIÓN/ACTIVO:</Typography>
 							<Typography className={classes.card}>
-								{obj.tipoInversion.valor} <strong>({obj.subTipoInversion.valor})</strong>
+								{obj.tipoInversion && obj.tipoInversion.valor} <strong>({obj.subTipoInversion && obj.subTipoInversion.valor})</strong>
 							</Typography>
 						</Grid>
 						<Grid item xs={12} md={4}>
@@ -49,7 +49,7 @@ function Inversiones({ inversiones, tipo }) {
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>TIPO DE MONEDA</Typography>
 							<Typography className={classes.card}>
-								{typeof obj.saldoSituacionActual === 'undefined' ? '' : obj.saldoSituacionActual.moneda}
+								{obj.saldoSituacionActual && obj.saldoSituacionActual.moneda}
 							</Typography>
 						</Grid>
 
@@ -162,9 +162,19 @@ function Inversiones({ inversiones, tipo }) {
 export default function({ data, tipo, titulo }) {
 	const classes = useStyles();
 
-	const inversiones = data.ninguno
-		? []
-		: data.inversion.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
+	let inversiones;
+
+	if (data.ninguno) {
+		inversiones = [];
+	} else {
+		inversiones = data.inversion
+			? data.inversion.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC')
+			: [];
+	}
+
+	// const inversiones = data.ninguno
+	// 	? []
+	// 	: data.inversion.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
 
 	return (
 		<Grid container spacing={2} className={classes.rootPrincipal}>

@@ -130,9 +130,19 @@ function BienInmuble(props) {
 export default function({ data, titulo }) {
 	const classes = useStyles();
 
-	const inmuebles = data.ninguno
-		? []
-		: data.bienInmueble.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
+	let inmuebles;
+
+	if (data.ninguno) {
+		inmuebles = [];
+	} else {
+		inmuebles = data.bienInmueble
+			? data.bienInmueble.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC')
+			: [];
+	}
+
+	// const inmuebles = data.ninguno
+	// 	? []
+	// 	: data.bienInmueble.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
 
 	return (
 		<Grid container spacing={2} className={classes.rootPrincipal}>

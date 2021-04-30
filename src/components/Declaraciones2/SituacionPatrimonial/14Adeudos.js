@@ -150,7 +150,7 @@ function Adeudos({ adeudos, tipo }) {
 						<Grid item xs={12} style={{ textAlign: 'center' }}>
 							<Typography className={classes.tituloSubSeccion}>OTORGANTE DEL CRÉDITO</Typography>
 						</Grid>
-						{obj.otorganteCredito.tipoPersona === 'MORAL' ? (
+						{obj.otorganteCredito && obj.otorganteCredito.tipoPersona === 'MORAL' ? (
 							<Grid item xs={12}>
 								<Grid container spacing={1}>
 									<Grid item xs={12} md={4}>
@@ -180,9 +180,7 @@ function Adeudos({ adeudos, tipo }) {
 								<Grid container spacing={1}>
 									<Grid item xs={12} md={4}>
 										<Typography className={classes.cardTitle}>TIPO PERSONA:</Typography>
-										<Typography className={classes.cardReserved}>
-											{obj.otorganteCredito.tipoPersona}
-										</Typography>
+										<Typography className={classes.cardReserved}>FÍSICA</Typography>
 									</Grid>
 
 									<Grid item xs={12} md={4}>
@@ -209,9 +207,17 @@ function Adeudos({ adeudos, tipo }) {
 export default function({ data, tipo, titulo }) {
 	const classes = useStyles();
 
-	const adeudos = data.ninguno
-		? []
-		: data.adeudo.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
+	let adeudos;
+
+	if (data.ninguno) {
+		adeudos = [];
+	} else {
+		adeudos = data.adeudo ? data.adeudo.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC') : [];
+	}
+
+	// const adeudos = data.ninguno
+	// 	? []
+	// 	: data.adeudo.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
 
 	return (
 		<Grid container spacing={2} className={classes.rootPrincipal}>
