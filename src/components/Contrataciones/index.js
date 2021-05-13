@@ -103,7 +103,6 @@ class Index extends React.Component {
             <div className={classes.root}>
                 <Header/>
 
-
                 <Grid container spacing={0} justify="center" className={classes.tabContainer}>
                     <Grid item xs={12} style={{padding:0, maxWidth: 1200}}>
 
@@ -144,6 +143,12 @@ class Index extends React.Component {
 
 
                 {selectedTab === 0?
+                    <Grid container spacing={0} justify="center" className={classes.container}>
+                        <Grid item xs={12} className={classes.item} id={"test"} style={{"overflow":"auto"}}>
+                            <Busqueda/>
+                        </Grid>
+                    </Grid>
+                    :
                     <div>
                         <Grid container spacing={0} justify="center">
                             <Grid item xs={12} className={classes.disclaimer}>
@@ -165,12 +170,6 @@ class Index extends React.Component {
                         </Grid>
 
                     </div>
-                    :
-                    <Grid container spacing={0} justify="center" className={classes.container}>
-                        <Grid item xs={12} className={classes.item} id={"test"} style={{"overflow":"auto"}}>
-                            <Busqueda/>
-                        </Grid>
-                    </Grid>
                 }
 
 
