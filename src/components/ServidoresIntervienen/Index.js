@@ -78,7 +78,7 @@ const TabContents = props => {
 
 class Index extends React.Component {
     state = {
-        contentId: 3
+        contentId: 1
     };
 
     changeContent = id => {
@@ -98,20 +98,7 @@ class Index extends React.Component {
                 <Grid container spacing={0} justify="center" className={classes.bgContainer}>
                     <Grid item xs={12} className={classes.section}>
                         <Grid container spacing={0}>
-                            <Grid item md={4} xs={12}
-                                  onClick={() => this.changeContent(3)}
-                                  className={classNames(contentId !== 3 ? classes.card : classes.cardSeleccionada, 'tab')}>
 
-                                <figure className={classes.figure}>
-                                    <img src={img3} alt="Visor de datos" className={classes.image}/>
-                                </figure>
-                                <Typography variant="subtitle1"
-                                            style={{fontWeight: contentId === 3 ? 500 : 300}}
-                                            className={classes.whiteText}>
-                                    Visor de datos
-                                </Typography>
-
-                            </Grid>
                             <Grid item md={4} xs={12}
                                   onClick={() => this.changeContent(1)}
                                   className={classNames(contentId !== 1 ? classes.card : classes.cardSeleccionada, 'tab')}>
@@ -139,6 +126,20 @@ class Index extends React.Component {
                                             className={classes.whiteText}>
 
                                     Buscador de Particulares inhabilitados
+                                </Typography>
+
+                            </Grid>
+                            <Grid item md={4} xs={12}
+                                  onClick={() => this.changeContent(3)}
+                                  className={classNames(contentId !== 3 ? classes.card : classes.cardSeleccionada, 'tab')}>
+
+                                <figure className={classes.figure}>
+                                    <img src={img3} alt="Visor de datos" className={classes.image}/>
+                                </figure>
+                                <Typography variant="subtitle1"
+                                            style={{fontWeight: contentId === 3 ? 500 : 300}}
+                                            className={classes.whiteText}>
+                                    Visor de datos
                                 </Typography>
 
                             </Grid>
