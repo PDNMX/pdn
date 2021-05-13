@@ -80,6 +80,32 @@ class Index extends React.Component {
                 <Grid container justify="center" className={classes.bgContainer}>
                     <Grid item xs={12} className={classes.section}>
                         <Grid container>
+
+                            <Grid item md={3} xs={12}
+                                  className={classNames(this.state.idContent !== 1 ? classes.card : classes.cardSeleccionada,'tab')}
+                                  onClick={() => this.changeContent(1)}>
+                                <figure className={classes.figure}>
+                                    <img src={img1} alt="Servidores públicos sancionados"
+                                         className={classes.image}/>
+                                </figure>
+                                <Typography variant="subtitle1" style={{fontWeight: this.state.idContent === 1 ? 500 : 300}}
+                                            className={classes.whiteText}>
+                                    Buscador de Servidores públicos sancionados
+                                </Typography>
+                            </Grid>
+                            <Grid item md={3} xs={12}
+                                  className={classNames(this.state.idContent !== 2 ? classes.card : classes.cardSeleccionada,'tab')}
+                                  onClick={() => this.changeContent(2)}>
+                                <figure className={classes.figure}>
+                                    <img src={img2} alt="Particulares sancionados"
+                                         className={classes.image}/>
+                                </figure>
+                                <Typography variant="subtitle1"
+                                            style={{fontWeight: this.state.idContent === 2 ? 500 : 300}}
+                                            className={classes.whiteText}>
+                                    Buscador de Particulares sancionados
+                                </Typography>
+                            </Grid>
                             <Grid item md={3} xs={12}
                                   className={classNames(this.state.idContent !== 3 ? classes.card : classes.cardSeleccionada,'tab')}
                                   onClick={() => this.changeContent(3)}>
@@ -110,33 +136,6 @@ class Index extends React.Component {
                                     Visor de datos (Particulares sancionados)
                                 </Typography>
                             </Grid>
-                            <Grid item md={3} xs={12}
-                                  className={classNames(this.state.idContent !== 1 ? classes.card : classes.cardSeleccionada,'tab')}
-                                  onClick={() => this.changeContent(1)}>
-                                <figure className={classes.figure}>
-                                    <img src={img1} alt="Servidores públicos sancionados"
-                                         className={classes.image}/>
-                                </figure>
-                                <Typography variant="subtitle1" style={{fontWeight: this.state.idContent === 1 ? 500 : 300}}
-                                            className={classes.whiteText}>
-                                    Buscador de Servidores públicos sancionados
-                                </Typography>
-                            </Grid>
-                            <Grid item md={3} xs={12}
-                                  className={classNames(this.state.idContent !== 2 ? classes.card : classes.cardSeleccionada,'tab')}
-                                  onClick={() => this.changeContent(2)}>
-                                <figure className={classes.figure}>
-                                    <img src={img2} alt="Particulares sancionados"
-                                         className={classes.image}/>
-                                </figure>
-                                <Typography variant="subtitle1"
-                                            style={{fontWeight: this.state.idContent === 2 ? 500 : 300}}
-                                            className={classes.whiteText}>
-                                    Buscador de Particulares sancionados
-                                </Typography>
-
-                            </Grid>
-
                         </Grid>
 
                     </Grid>

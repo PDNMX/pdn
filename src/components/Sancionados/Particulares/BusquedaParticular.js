@@ -480,16 +480,17 @@ class BusquedaParticular extends React.Component {
 
                     <Grid item md={10}/>
 
-                    <Grid item xs={12} md={1} className={classes.centrado}>
-                        <Button variant="contained" color="secondary" className={classes.button}
-                                onClick={this.handleSearchPrevios}>
-                            Buscar
-                        </Button>
-                    </Grid>
+
                     <Grid item xs={12} md={1} className={classes.centrado}>
                         <Button variant="contained" color="secondary" className={classes.button}
                                 onClick={() => this.handleCleanAll()}>
                             Limpiar
+                        </Button>
+                    </Grid>
+                    <Grid item xs={12} md={1} className={classes.centrado}>
+                        <Button variant="contained" color="secondary" className={classes.button}
+                                onClick={this.handleSearchPrevios}>
+                            Buscar
                         </Button>
                     </Grid>
                     <Grid item xs={12}>
