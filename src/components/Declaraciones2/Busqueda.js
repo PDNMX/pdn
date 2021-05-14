@@ -532,6 +532,7 @@ class Busqueda extends React.Component {
 						</Grid>
 						<Grid container spacing={0} className={classes.infoBusqueda}>
 							<div className={classes.resultadosRoot}>
+								{!this.state.prov.length && <p>No hay dependecias con el criterio solicitado...</p>}
 								{this.state.prov.map((p, i) => {
 									return (
 										<ExpansionPanel key={'res-' + i}>
