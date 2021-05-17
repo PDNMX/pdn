@@ -112,20 +112,20 @@ class Sancionados extends React.Component {
 
                         <ul className={classes.ul}>
                             <li className={classes.li}>
-                                <Link
+                                <a
                                     href='https://app.swaggerhub.com/apis/pdn-mx/s3-Sancionados_Particulares/'
                                     target='_blank'
                                 >
                                     <b>Particulares</b>
-                                </Link>
+                                </a>
                             </li>
                             <li className={classes.li}>
-                                <Link
+                                <a
                                     href='https://app.swaggerhub.com/apis/pdn-mx/s3-Sancionados_Servidores_Publicos/'
                                     target='_blank'
                                 >
                                     <b>Servidores públicos</b>
-                                </Link>
+                                </a>
                             </li>
                         </ul>
                         <Typography variant='h5' paragraph color='textPrimary'>
