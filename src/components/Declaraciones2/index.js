@@ -32,7 +32,7 @@ const copy =
 
 class Declaraciones extends React.Component {
 	state = {
-		open: false
+		open: true
 	};
 
 	handleClose = () => {

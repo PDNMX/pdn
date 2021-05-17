@@ -48,6 +48,7 @@ const styles = theme => ({
 class BuscadorServidoresSancionados extends React.Component {
     constructor(props) {
         super(props);
+        this.something="";
     }
 
 
