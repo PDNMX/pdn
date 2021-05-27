@@ -80,7 +80,7 @@ class DependenciasSanciones extends React.Component {
         aux().then(result => {
             let aux = result.data.map(item => {
                 return {
-                    "value": parseInt(item.total_sanciones,10),
+                    "value": parseInt(item.total_sanciones, 10),
                     "group": item.dependencia
                 }
             });
@@ -116,13 +116,14 @@ class DependenciasSanciones extends React.Component {
                 }
             })
         }).catch(err => {
-this.setState({errorG1: true})
+            console.error(err);
+            this.setState({errorG1: true})
         });
 
         loadData2().then(result2 => {
             let aux2 = result2.data.map(item => {
                 return {
-                    "value": parseInt(item.total,10),
+                    "value": parseInt(item.total, 10),
                     "group": item.dependencia,
                     "parent": item.anio
                 }
@@ -158,6 +159,7 @@ this.setState({errorG1: true})
                 }
             })
         }).catch(err => {
+            console.error(err);
             this.setState({errorG2: true})
         });
 
@@ -175,14 +177,7 @@ this.setState({errorG1: true})
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>
                         <Typography>
-                            Con respecto a las dependencias con más sanciones, la Policía Federal, la Secretaría de
-                            Educación Pública, el Instituto Mexicano del Seguro Social y la Comisión Federal de
-                            Electricidad representan juntas casi el 40% del total de funcionarios sancionados.
-
-                            Dado que en estas instituciones además laboran un número muy alto de funcionarios públicos,
-                            sería relevante también tomar en cuenta el volumen de la institución para obtener la tasa de
-                            sanción por dependencia. De esta manera podríamos comparar la tasa de sanción entre
-                            distintas dependencias.
+                            {"Con respecto a las dependencias con más sanciones,  4 instituciones :la Policía Federal, la Secretaría de Educación Pública, Telecomunicaciones de México y el Instituto de Seguridad y Servicios Sociales de los Trabajadores representan juntas más del 35% del total de  personas servidoras públicas sancionadas "}
                         </Typography>
                     </Grid>
 
@@ -198,7 +193,15 @@ this.setState({errorG1: true})
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>
                         <Typography>
-                            Si, consideramos el año con más sanciones desde 2013, es decir, el 2017, podemos observar que el Fideicomiso Fondo Nacional de Habitaciones Populares, el Instituto Mexicano del Seguro Social y el Instituto de Seguridad y Servicios Sociales de los Trabajadores del Estado son las tres instituciones con más sanciones en este año. En 2018 las instituciones más sancionadas fueron la Procuraduría Federal del Consumidor y el Instituto Mexicano del Seguro Social. Dado que en estas instituciones además laboran un número muy alto de funcionarios públicos, sería relevante también tomar en cuenta el volumen de la institución para obtener la tasa de sanción por dependencia. De esta manera, podríamos comparar la tasa de sanción entre distintas dependencias.
+                            La siguiente muestra las dependencias con mayor numero de sanciones en cada año, como se
+                            aprecía, para el año 2014 fue Telecomunicaciones de México. En 2013, 2014 y 2016 fue la
+                            Policia Federal. En 2017, el Instituto
+                            de Seguridad y Servicios Sociales de los Trabajadores del estado. En 2018, la Secretaría de
+                            Educación Pública. Hasta mayo 2021, la Presidencia de la República ocupa el primer lugar.
+                            Finalmente en 2020, año con menor número de
+                            sanciones, son tres instituciones las que aparecen con igual número de sanciones, Instituto
+                            de Seguridad y Servicios Sociales de los Trabajadores del Estado, Secretaría de Medio
+                            Ambiente y Recursos Naturales y el Instituto Méxicano de Cinematografía
                         </Typography>
                     </Grid>
                     <Grid item xs={12}>

@@ -167,7 +167,7 @@ class Tops extends React.Component {
 
         rp(options).then(data => {
             let aux = data.data.map(item => ({
-                "top": item.top,
+                "top": item.top?item.top:'NO ESPECIFICADO',
                 "total": parseInt(item.total,10),
                 "case": item.case ? item.case : null
             }));
@@ -196,7 +196,7 @@ class Tops extends React.Component {
                         },
                         tbody: [
 
-                            ["NÚMERO DE REGISTROS: ", function (d) {
+                            ["Número de registros: ", function (d) {
                                 return d["total"]
                             }
                             ]
@@ -252,7 +252,8 @@ class Tops extends React.Component {
                         </Typography>
 
                         <Typography variant={"body1"} paragraph>
-                            En esta gráfica puedes conocer los procedimientos, las instituciones, unidades responsables o puestos con más registros de manera general o bien en cada ejercicio, ramo, o institución.
+                            En esta gráfica puedes conocer los procedimientos, las instituciones y unidades responsables o puestos con más personas servidoras públicas en
+                            contrataciones de manera general o bien podrás seleccionar por ejercicio, ramo, o institución.
                         </Typography>
 
                         <Typography>

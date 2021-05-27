@@ -89,7 +89,7 @@ class TiemposSanciones extends React.Component {
                             },
                             tbody: [
                                 ["Duración de la sanción: ", function (d) {
-                                    return d["anios"] + "años"
+                                    return d["anios"] + " años"
                                 }
                                 ],
                                 ["Número de sanciones: ", function (d) {
@@ -116,6 +116,7 @@ class TiemposSanciones extends React.Component {
                 }
             )
         }).catch(err=>{
+            console.error(err);
             this.setState({error:true})
         });
     }
@@ -138,7 +139,7 @@ class TiemposSanciones extends React.Component {
                     <Grid item xs={12} className={classes.descripcion}>
                         <Typography>
 
-                            Si tomamos en cuenta el tiempo que duró la inhabilitación a los funcionarios, podemos observar que más del 50% de las sanciones totales fueron de 10 años; aproximadamente 1363. 9% de las sanciones duraron menos de 1 año; 40% menos de 10 años, y muy pocas sanciones duraron más de 10 años.
+                            Tomando en cuenta el tiempo que duró la inhabilitación a las personas servidoras públicas se  observa que 84.55% de las sanciones totales fueron de 10 años; 6.31% de las sanciones tienen una duración mayor a 10 años; 5.89% tiene una duración entre 1 y 9 años, mientras que solo 0.49% es de menos de un año.
 
                         </Typography>
                     </Grid>

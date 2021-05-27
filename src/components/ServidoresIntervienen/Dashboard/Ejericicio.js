@@ -68,7 +68,7 @@ class Ejercicio extends React.Component {
                         },
                         tbody: [
                             ["Ejercicio fiscal: ", function (d) {
-                                return d["ejercicio"] + "ejercicio"
+                                return d["ejercicio"]
                             }
                             ],
                             ["Número de registros: ", function (d) {
@@ -94,6 +94,7 @@ class Ejercicio extends React.Component {
                 }
             )
         }).catch(error => {
+            console.error(error)
             this.setState({
                 error: true
             });
@@ -111,8 +112,8 @@ class Ejercicio extends React.Component {
                         </Typography>
 
                         <Typography variant={"body1"} paragraph>
-                            En este primer acercamiento, se muestra la información correspondiente a periodos fiscales de los años 2015 a la fecha.
-                            Como se aprecia, hay un ligero crecimiento en el número de registros de servidores públicos que intervienen en procesos de contratación cada año.
+                            En esta entrega se cuenta con 160,776 registros, encontrarás la información correspondiente a períodos fiscales del año 2015 a mayo 2021.
+                            Como se aprecia, el año 2018 es el que cuenta con un mayor número de personas servidoras públicas  que intervienen en procesos de contratación a nivel federal con 27,457, a partir del 2019 este número ha ido hacia la baja, teniendo 25,514 en 2019, 20,550  en 2020 y 17,756 hasta mayo 2021.
                         </Typography>
                     </Grid>
 

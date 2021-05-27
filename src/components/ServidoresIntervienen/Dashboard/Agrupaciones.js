@@ -188,7 +188,7 @@ class Agrupaciones extends React.Component {
                     sum: "value",
                     tooltipConfig: {
                         tbody: [
-                            ["Número de funcionarios: ", function (d) {
+                            ["Número de personas servidoras públicas: ", function (d) {
                                 return d["value"]
                             }
                             ]
@@ -197,7 +197,7 @@ class Agrupaciones extends React.Component {
                     legend: false,
                     shapeConfig: {
                         label: function (d) {
-                            return d[v] + "\n" + d["value"] + " funcionarios"
+                            return d[v]?d[v]:'General' + "\n" + d["value"] + " personas servidoras públicas"
                         },
                         labelConfig: {
                             fontMax: 18,

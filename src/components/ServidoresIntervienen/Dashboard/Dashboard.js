@@ -41,12 +41,14 @@ class Dashboard extends React.Component {
                         </Typography>
                         <Typography paragraph>
                             La información utilizada para generar las siguientes visualizaciones corresponde a la
-                            reportada por la Secretaría de la Función Pública del 2015 a la fecha, respecto al Registro
+                            reportada por la Secretaría de la Función Pública del 2015 a mayo 2021, respecto al Registro
                             de Servidores públicos de la Administración Pública Federal
                             que intervienen en procedimientos de contrataciones públicas, el otorgamiento de licencias,
                             permisos, concesiones y autorizaciones, así como en la enajenación
                             de bienes muebles de la administración pública federal y en la asignación y emisión de
                             dictámenes en materia de avalúos y justipreciación de rentas.
+                            <br/>
+                            En esta entrega, se cuentan con 160,776 registros.
                         </Typography>
 
                         <Typography>
@@ -56,7 +58,7 @@ class Dashboard extends React.Component {
                             Para consultar la información reportada por la Secretaría de la Función Pública visita la
                             página datos.gob.mx <br/>
                             (Fuente:
-                            https://datos.gob.mx/busca/dataset/registro-de-servidores-publicos-que-intervienen-en-contrataciones-publicas)
+                            <a href={'https://datos.gob.mx/busca/dataset/registro-de-servidores-publicos-que-intervienen-en-contrataciones-publicas'} target="_blank">https://datos.gob.mx/busca/dataset/registro-de-servidores-publicos-que-intervienen-en-contrataciones-publicas</a>)
                         </Typography>
 
                         <Typography>
@@ -72,35 +74,35 @@ class Dashboard extends React.Component {
                         </Typography>
                         <Typography paragraph>
                             Las visualizaciones te permiten observar el comportamiento de los procesos de contratación
-                            desde diferentes perspectivas que involucran lo antes mencionado.
+                            desde diferentes perspectivas:
                         </Typography>
 
                         <List>
                             <ListItem>
                                 <ListItemText>
-                                    1. <b>Ejercicio fiscal:</b> Permite conocer el número de funcionarios que intervienen en
+                                    1. <b>Ejercicio fiscal:</b> Permite conocer el número de personas servidoras públicas que intervienen en
                                     procesos de contratación en cada uno de los ejercicios fiscales. <a
-                                    href="#g1">Ver</a>
+                                    href={"#g1"}>Ver</a>
                                 </ListItemText>
                             </ListItem>
                             <ListItem>
                                 <ListItemText>
                                     2. <b>Procedimiento:</b> Conoce la cantidad de cada uno de los tipos de procedimiento que se
-                                    han llevado a cabo en cada ejercicio fiscal. <a href="#g2">Ver</a>
+                                    han llevado a cabo en cada ejercicio fiscal. <a href={"#g2"}>Ver</a>
                                 </ListItemText>
                             </ListItem>
                             <ListItem>
                                 <ListItemText>
-                                    3. <b>Ejercicios, ramos e instituciones:</b> Observa más a fondo el comportamiento de los
-                                    funcionarios que intervienen en procesos de contratación,
+                                    3. <b>Ejercicios, ramos e instituciones:</b> Observa más a fondo el comportamiento del número de personas servidoras públicas
+                                    que intervienen en procesos de contratación,
                                     podrás configuar variables como el Ejercicio Fiscal, el Ramo y/o la Institución para obtener
-                                    información más detallada <a href="#g3">Ver</a>
+                                    información más detallada <a href={"#g3"}>Ver</a>
                                 </ListItemText>
                             </ListItem>
                             <ListItem>
                                 <Typography paragraph>
                                     4. <b>Top 10:</b> En esta gráfica puedes conocer los procedimientos, las instituciones, unidades
-                                    responsables o puestos con más registros de manera general o bien en cada ejercicio, ramo, o institución. <a href="#g4">Ver</a>
+                                    responsables o puestos con más registros de manera general o bien en cada ejercicio, ramo, o institución. <a href={"#g4"}>Ver</a>
                                 </Typography>
                             </ListItem>
                         </List>

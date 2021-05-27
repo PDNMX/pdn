@@ -107,7 +107,8 @@ class AnioResolucionSanciones extends React.Component {
                 }
             )
         }).catch(err => {
-            this.setState({error: true})
+            console.error(err);
+            this.setState({error: true});
         });
     }
 
@@ -124,13 +125,7 @@ class AnioResolucionSanciones extends React.Component {
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>
                         <Typography variant={"body1"}>
-
-                            Como se aprecia en la gráfica, el comportamiento de las sanciones no ha sido constante, iniciando en el año 2004 con apenas 4 sanciones registradas, pasó a 29 sanciones en 2005 y un total de 302 sanciones de 2006 a 2007.
-                            <br/>
-                            Con un descenso drástico en 2008 con 43 sanciones registradas, volvió a repuntar en el año
-                            2010 con 239 sanciones, siendo este año el año con mayor sanciones registradas.<br/>
-                            De 2011 a la fecha, el número de sanciones ha variado entre 84 y 179 sanciones, variando de
-                            un año a otro en 60 sanciones registradas máximo.
+                            Como se aprecia en la gráfica, el comportamiento de las sanciones no ha sido constante, se aprecia el año 2010 con un mayor número de sanciones (233) representando el 11.95% del total. En contraste, el año 2004 representa únicamente el 0.21% del total con 4 sanciones.
                         </Typography>
                     </Grid>
                     <Grid item xs={12} md={8}>

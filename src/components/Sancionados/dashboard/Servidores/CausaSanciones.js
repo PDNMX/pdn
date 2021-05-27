@@ -132,6 +132,7 @@ class CausasSanciones extends React.Component {
                 }
             })
         }).catch(err => {
+            console.error(err);
             this.setState({errorG1: true})
         });
 
@@ -183,6 +184,7 @@ class CausasSanciones extends React.Component {
 
             })
         }).catch(err => {
+            console.error(err);
             this.setState({errorG2: true})
         });
 
@@ -210,12 +212,18 @@ class CausasSanciones extends React.Component {
                     </Grid>
                     <Grid item xs={12} md={4} className={classes.descripcion}>
                         <Typography variant={"body1"}>
-                            Como se puede apreciar en la gráfica de la izquierda, de 2013 a 2018, la causa de la mayoría de las sanciones fue la negligencia administrativa, con aproximadamente 1,500 sanciones, representando casi el 60% del total. Por otro lado, la violación por procedimientos de contratación, el cohecho o extorsión, el ejercicio indebido de sus funciones en materia migratoria y la violación a los derechos humanos representan únicamente 10% del total.
+                            {"Como se puede apreciar en la gráfica de la izquierda, del año 2013 a mayo 2021, la causa de la mayoría de las sanciones fue la negligencia administrativa con 743 sanciones, representando el 61.62% del total. Por otro lado, la violación a los derechos humanos y otras causas cuentan únicamente con 1 y 2 sanciones respectivamente, representando únicamente el 0.16% del total.\n"}
                         </Typography>
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>
                         <Typography variant={"body1"}>
-                            De 2013 a 2016 la distribución entre las causas de las sanciones se mantienen similares; sin embargo, en 2017 aumentan en más del doble las sanciones por negligencia administrativa. Es decir, que en gran medida el crecimiento atípico de los funcionarios sancionados en 2017 se debe a faltas de este tipo. Para 2018 las sanciones por negligencia administrativa disminuyen considerablemente; asimismo, casi todos los otros tipos de sanción bajan a excepción de la de incumplimiento por declaración patrimonial, la cual se dispara más de 5 veces con respecto a 2017.
+                            Existe una tendencia en Negligencia administrativa, siendo esta la causa más común a lo largo del tiempo, exceptuando el 2021, en donde hasta el momento, las 5 sanciones corresponden a incumplimiento en declaración de situación patrimonial.
+                            <br/>Por otro lado, se observa un aumento en el abuso de autoridad, del año 2013 con 26 sanciones al 2014 con 57 sanciones, disminuyendo en el 2018 año en que se registraron las últimas 8 sanciones de esta causa.
+                            <br/>Respecto a la Violación leyes y normatividad presupuestal, los años 2013 y 2014 registraron el máximo con 33 y 35 sanciones respectivamente, disminuyendo hasta el 2019 donde se registraron únicamente dos sanciones por esta causa.
+                            <br/>De manera similar, el cohecho o extorsión registró 27 y 20 sanciones en los años 2013 y 2014 respectivamente, disminuyendo a 12 y 5 en los años 2016 a 2017 respectivamente, siendo este el último año con sanciones por esta causa.
+                            <br/>Por incumplimiento en declaración de situación patrimonial tuvo su pico en 2016 con 11 sanciones, para mayo 2021 se tienen registradas 5 sanciones .
+                            <br/>El ejercicio indebido de sus funciones en materia migratoria tuvo su pico en 2016 con 5 sanciones, registrando en 2018 una última sanción por esta causa.
+                            <br/>Por otra parte, únicamente se cuenta con una sanción por violación  a los derechos humanos y dos por otra causa no especificada en los años 2016 y 2018 respectivamente.
 
                         </Typography>
                     </Grid>

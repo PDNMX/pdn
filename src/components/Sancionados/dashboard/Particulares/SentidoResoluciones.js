@@ -127,6 +127,7 @@ class SentidoResoluciones extends React.Component {
                 }
             )
         }).catch(err => {
+            console.error(err);
             this.setState({errorG1: true})
         });
 
@@ -177,6 +178,7 @@ class SentidoResoluciones extends React.Component {
                 }
             )
         }).catch(err => {
+            console.error(err);
             this.setState({errorG2: true})
         });
 
@@ -201,14 +203,19 @@ class SentidoResoluciones extends React.Component {
                     </Grid>
                     <Grid item xs={12} md={4} className={classes.descripcion}>
                         <Typography variant={"body1"}>
-                            Se engloba el sentido de las resoluciones en: absolutoria, sancionatoria, sancionatoria con multa y sancionatoria con multa e inhabilitación. Como muestra la gráfica de la izquierda, del 2004 a la fecha, de las 1,742 resoluciones en total, la mayoría derivó en sanción con multa e inhabilitación (1,317 en total), seguido por sanciones con multa con un total de 366, 36 sancionatorias, 1 absolutoria y 22 que no especifican el sentido de la resolución.
+                            Se engloba el sentido de las resoluciones en: Absolutoria, Sancionatoria, Sancionatoria con multa, Sancionatoria con multa e inhabilitación, y se agrega
+                            la categoría "No especifica" por aquellos registros que no incluyen dicho valor. Como muestra la gráfica de la izquierda, del 2004 a mayo 2021,
+                            de las 1,974 resoluciones en total, la mayoría derivó en sanción con multa e inhabilitación (1,516 en total), seguido por sanciones con multa con un total de 427,
+                            5 sancionatorias, 1 absolutoria y 24 que no especifican el sentido de la resolución.
                         </Typography>
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>
                         <Typography variant={"body1"}>
-                            A lo largo del tiempo, se aprecia que del total de resoluciones por año, el mayor número de sanciones termina en sancionatorias con multa e inhabilitación, las demás resoluciones tienen una presencia a lo largo de los años, siendo el año 2009 donde hubo 10 resoluciones sancionatorias y el año 2011 donde se presentó el mayor número de resoluciones sancionatorias con multa.
-                            <br/>
-                            El año 2010, que fue el que mayor número de sanciones presentó, se descompone en 187 resoluciones sancionatorias con multa e inhabilitación, 50 resoluciones sancionatorias con multa y 2 sancionatorias.
+                            A lo largo del tiempo, se aprecia que del total de resoluciones por año, el mayor número de sanciones a particulares termina en Sancionatorias con multa e inhabilitación, que ha aparecido en todos los años, teniendo el año 2010 el mayor número de registros con 186 sanciones.
+                            <br/>La Sancionatoria con multa se ha presentado del 2008 al 2021, teniendo mayor presencia en 2011 con 54 resoluciones.
+                            <br/>De la Sancionatoria únicamente aparecen registros en 2015, 2019 y 2020, siendo el 2019 el año con mayor número de resoluciones siendo igual a 3.
+                            <br/>Respecto a la Absolutoria, se tiene un único registro en 2019.
+
                         </Typography>
                     </Grid>
                     <Grid item xs={12} md={12}>
