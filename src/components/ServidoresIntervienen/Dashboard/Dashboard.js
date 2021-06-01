@@ -58,7 +58,7 @@ class Dashboard extends React.Component {
                             Para consultar la información reportada por la Secretaría de la Función Pública visita la
                             página datos.gob.mx <br/>
                             (Fuente:
-                            <a href={'https://datos.gob.mx/busca/dataset/registro-de-servidores-publicos-que-intervienen-en-contrataciones-publicas'} target="_blank">https://datos.gob.mx/busca/dataset/registro-de-servidores-publicos-que-intervienen-en-contrataciones-publicas</a>)
+                            <a href={'https://datos.gob.mx/busca/dataset/registro-de-servidores-publicos-que-intervienen-en-contrataciones-publicas'} target="_blank" rel="noopener noreferrer">https://datos.gob.mx/busca/dataset/registro-de-servidores-publicos-que-intervienen-en-contrataciones-publicas</a>)
                         </Typography>
 
                         <Typography>

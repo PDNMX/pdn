@@ -58,7 +58,7 @@ class Dashboard extends React.Component {
                             Para consultar la información reportada por la Secretaría de la Función Pública visita la
                             página datos.gob.mx <br/>
                             (Fuente:
-                            <a href={'https://www.datos.gob.mx/busca/dataset/proveedores-y-contratistas-sancionados'} target="_blank">https://www.datos.gob.mx/busca/dataset/proveedores-y-contratistas-sancionados</a>)
+                            <a href={'https://www.datos.gob.mx/busca/dataset/proveedores-y-contratistas-sancionados'} target="_blank" rel="noopener noreferrer">https://www.datos.gob.mx/busca/dataset/proveedores-y-contratistas-sancionados</a>)
                         </Typography>
                         <Typography>
                             <b>{"¿Qué puedo encontrar?"}</b>
