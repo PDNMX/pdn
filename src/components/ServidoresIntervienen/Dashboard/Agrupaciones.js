@@ -197,7 +197,7 @@ class Agrupaciones extends React.Component {
                     legend: false,
                     shapeConfig: {
                         label: function (d) {
-                            return d[v]?d[v]:'General' + "\n" + d["value"] + " personas servidoras públicas"
+                            return d[v]?d[v]:"General \n" + d["value"] + " personas servidoras públicas"
                         },
                         labelConfig: {
                             fontMax: 18,
