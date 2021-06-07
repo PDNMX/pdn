@@ -35,7 +35,7 @@ const styles = theme => ({
 function aux() {
     return new Promise((resolve, reject) => {
         let options = {
-            uri: process.env.REACT_APP_HOST_PDNBACK + '/viz/particulares/getSentidoSanciones',
+            uri: process.env.REACT_APP_S3P_BACKEND + '/charts/getSentidoSanciones',
             json: true,
             method: "GET"
         };
@@ -52,7 +52,7 @@ function aux() {
 function loadData2() {
     return new Promise((resolve, reject) => {
         let options = {
-            uri: process.env.REACT_APP_HOST_PDNBACK + '/viz/particulares/getSentidosAnio',
+            uri: process.env.REACT_APP_S3P_BACKEND + '/charts/getSentidosAnio',
             json: true,
             method: "GET"
         };

@@ -33,7 +33,7 @@ const styles = theme => ({
 function aux() {
     return new Promise((resolve, reject) => {
         let options = {
-            uri: process.env.REACT_APP_HOST_PDNBACK + '/viz/servidores/getCausasSanciones',
+            uri: process.env.REACT_APP_S3S_BACKEND + '/charts/getCausasSanciones',
             json: true,
             method: "GET"
         };
@@ -51,7 +51,7 @@ function aux() {
 function loadData2() {
     return new Promise((resolve, reject) => {
         let options = {
-            uri: process.env.REACT_APP_HOST_PDNBACK + '/viz/servidores/getCausasAnio',
+            uri: process.env.REACT_APP_S3S_BACKEND + '/charts/getCausasAnio',
             json: true,
             method: "GET"
         };

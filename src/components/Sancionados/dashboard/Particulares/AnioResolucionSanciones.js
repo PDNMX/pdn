@@ -36,7 +36,7 @@ const styles = theme => ({
 function aux() {
     return new Promise((resolve, reject) => {
         let options = {
-            uri: process.env.REACT_APP_HOST_PDNBACK + '/viz/particulares/getAnioSancion',
+            uri: process.env.REACT_APP_S3P_BACKEND + '/charts/getAnioSancion',
             json: true,
             method: "GET"
         };

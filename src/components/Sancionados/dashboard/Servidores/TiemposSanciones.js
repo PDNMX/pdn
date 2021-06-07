@@ -33,7 +33,7 @@ const styles = theme => ({
 function aux() {
     return new Promise((resolve, reject) => {
         let options = {
-            uri: process.env.REACT_APP_HOST_PDNBACK + '/viz/servidores/getTemporalidadSanciones',
+            uri: process.env.REACT_APP_S3S_BACKEND + '/charts/getTemporalidadSanciones',
             json: true,
             method: "GET"
         };

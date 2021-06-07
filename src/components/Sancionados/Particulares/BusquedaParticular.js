@@ -110,7 +110,7 @@ class BusquedaParticular extends React.Component {
     loadInstituciones = () => {
         let instituciconesLista = [];
         let options = {
-            url: process.env.REACT_APP_S3P_BACKEND + '/entities',
+            url: process.env.REACT_APP_S3P_BACKEND + '/api/v1/entities',
             json: true,
             method: "post",
             data: {
@@ -190,7 +190,7 @@ class BusquedaParticular extends React.Component {
 
             let options = {
                 method: 'POST',
-                url: process.env.REACT_APP_S3P_BACKEND + '/summary',
+                url: process.env.REACT_APP_S3P_BACKEND + '/api/v1/summary',
                 json: true,
                 data: body
             };
@@ -243,7 +243,7 @@ class BusquedaParticular extends React.Component {
 
             let options = {
                 method: 'POST',
-                url: process.env.REACT_APP_S3P_BACKEND + '/search',
+                url: process.env.REACT_APP_S3P_BACKEND + '/api/v1/search',
                 json: true,
                 data: body
             };
