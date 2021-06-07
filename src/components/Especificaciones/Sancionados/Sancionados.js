@@ -115,6 +115,7 @@ class Sancionados extends React.Component {
                                 <a
                                     href='https://app.swaggerhub.com/apis/pdn-mx/s3-Sancionados_Particulares/'
                                     target='_blank'
+                                    rel="noopener noreferrer"
                                 >
                                     <b>Particulares</b>
                                 </a>
@@ -123,6 +124,7 @@ class Sancionados extends React.Component {
                                 <a
                                     href='https://app.swaggerhub.com/apis/pdn-mx/s3-Sancionados_Servidores_Publicos/'
                                     target='_blank'
+                                    rel="noopener noreferrer"
                                 >
                                     <b>Servidores públicos</b>
                                 </a>

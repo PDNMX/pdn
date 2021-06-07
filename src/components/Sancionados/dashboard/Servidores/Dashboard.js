@@ -62,7 +62,7 @@ class Dashboard extends React.Component {
                             Para consultar la información reportada por la Secretaría de la Función Pública visita la
                             página datos.gob.mx <br/>
                             (Fuente:
-                            <a href={'https://datos.gob.mx/busca/dataset/servidores-publicos-sancionados'} target="_blank">https://datos.gob.mx/busca/dataset/servidores-publicos-sancionados</a>)
+                            <a href={'https://datos.gob.mx/busca/dataset/servidores-publicos-sancionados'} target="_blank" rel="noopener noreferrer">https://datos.gob.mx/busca/dataset/servidores-publicos-sancionados</a>)
                         </Typography>
                         <Typography >
                             <b>¿Qué puedo encontrar?</b>
