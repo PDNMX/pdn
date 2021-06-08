@@ -11,6 +11,8 @@ import TableHead from "@material-ui/core/TableHead";
 import IconSubdirectory from "@material-ui/icons/SubdirectoryArrowRight";
 import Tooltip from "@material-ui/core/Tooltip";
 import IconSunny from "@material-ui/icons/WbSunny";
+import TablePagination from '@material-ui/core/TablePagination';
+import TableFooter from "@material-ui/core/TableFooter";
 
 const styles = theme => ({
 
@@ -32,13 +34,37 @@ const styles = theme => ({
     tableHead: {
         color: theme.palette.fontLight.color
     },
+    tablePagination:{
+        color : theme.palette.textGrey.color,
+        backgroundColor : '#f2f2f2'
+    }
 });
 
 class Previos extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            page: 0,
+            rowsPerPage: 5
+        };
+    }
 
+
+    handleChangePage = (event, newPage) => {
+        this.setState({
+            page : newPage
+        });
+    };
+    handleChangeRowsPerPage = (event) => {
+        this.setState({
+            rowsPerPage : parseInt(event.target.value, 10),
+            page : 0
+        });
+    };
     render() {
-        const {data,classes} = this.props;
+        let {data,classes} = this.props;
+        let {rowsPerPage, page} = this.state;
         return (
             <div>
                 <Grid container justify='center' spacing={0} className={classes.gridTable}>
@@ -61,7 +87,8 @@ class Previos extends React.Component {
                                     </TableRow>
                                 </TableHead>
                                 <TableBody style={{backgroundColor:'#f2f2f2'}}>
-                                    {data.map(row => (
+                                    {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                                        .map(row => (
                                         <TableRow key={row.supplier_id}>
                                             <TableCell align="left">{row.levels? row.levels.join(','):''}</TableCell>
                                             <TableCell align="left">{row.supplier_name}</TableCell>
@@ -94,6 +121,24 @@ class Previos extends React.Component {
                                         </TableRow>
                                     ))}
                                 </TableBody>
+                                <TableFooter>
+                                    <TableRow >
+                                        <TablePagination
+                                            className={classes.tablePagination}
+                                            colSpan = {5}
+                                            rowsPerPageOptions={[5,10,15]}
+                                            count = {data.length}
+                                            rowsPerPage = {rowsPerPage}
+                                            page = {page}
+                                            onChangePage={this.handleChangePage}
+                                            onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                                            labelRowsPerPage='Registros por página'
+                                            labelDisplayedRows={({from, to, count}) => {
+                                                return `${from}-${to} de ${count}`;
+                                            }}
+                                        />
+                                    </TableRow>
+                                </TableFooter>
                             </Table>
                         </div>
                         }
