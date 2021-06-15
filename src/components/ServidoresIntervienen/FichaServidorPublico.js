@@ -145,7 +145,8 @@ function FichaServidorPublico(props) {
                                 <b>Nivel de responsabilidad</b>
                             </Typography>
                             <ul className={classes.ul}>
-                                {servidorPublico.nivelResponsabilidad.map((r, index) => {
+                                {servidorPublico.nivelResponsabilidad &&
+                                servidorPublico.nivelResponsabilidad.map((r, index) => {
                                     return <li key={index} className={classes.li}>
                                         <Typography className={classes.bulletText}>{r.valor}</Typography>
                                     </li>
@@ -158,7 +159,8 @@ function FichaServidorPublico(props) {
                                 <b>Interviene en</b>
                             </Typography>
                             <ul className={classes.ul}>
-                                {servidorPublico.tipoProcedimiento.map((o, index) => {
+                                {servidorPublico.tipoProcedimiento &&
+                                servidorPublico.tipoProcedimiento.map((o, index) => {
                                     return <li key={index} className={classes.li}>
                                         <Typography className={classes.bulletText}>{o.valor}</Typography>
                                     </li>
