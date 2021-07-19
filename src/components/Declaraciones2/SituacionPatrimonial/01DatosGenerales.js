@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 
 import style from '../styleSecciones';
 // import DatosCamposPrivados from '../DatosCamposPrivados';
+import basicInicial from './00_basic_incial';
 
 const useStyles = makeStyles(style);
 // const camposPrivados = [
@@ -21,8 +22,13 @@ const useStyles = makeStyles(style);
 // 	'NACIONALIDAD'
 // ];
 
-export default function({ data, titulo }) {
+export default function ({ data: info, titulo }) {
 	const classes = useStyles();
+
+	const data = {
+		...basicInicial.datosGenerales,
+		...info
+	}
 
 	return (
 		<Grid container spacing={2} className={classes.rootPrincipal}>

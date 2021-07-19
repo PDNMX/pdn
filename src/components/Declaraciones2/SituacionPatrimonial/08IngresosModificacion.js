@@ -15,10 +15,14 @@ import {
 	OtrosIngresos
 } from './08Ingresos';
 
+import basicModif from './00_basic_modif';
+
 const useStyles = makeStyles(styleSecciones);
 
-export default function({ data, titulo }) {
+export default function ({ data: info, titulo }) {
 	const classes = useStyles();
+
+	const data = { ...basicModif.ingresos, ...info };
 
 	return (
 		<Grid container spacing={2} className={classes.rootPrincipal}>

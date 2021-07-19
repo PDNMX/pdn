@@ -12,6 +12,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import { ActividadIndustrial, ActividadFinanciera, ServiciosProfesionales } from './08Ingresos';
 
+import basicInicial from './00_basic_incial';
+
 const useStyles = makeStyles(styleSecciones);
 
 const OtrosIngresos = ({ otrosIngresos }) => {
@@ -76,9 +78,12 @@ const OtrosIngresos = ({ otrosIngresos }) => {
 	);
 };
 
-export default function({ data, titulo }) {
+export default function ({ data: info, titulo }) {
 	const classes = useStyles();
-
+	const data = {
+		...basicInicial.ingresos,
+		...info
+	};
 	return (
 		<Grid container spacing={2} className={classes.rootPrincipal}>
 			<Grid item xs={12}>

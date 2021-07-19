@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
 import DatosNoRegistrados from '../DatosNoRegistrados';
+import basicInicial from './00_basic_incial';
 
 import { sumary, expansion, Divider, getMoneda } from '../utils';
 import styleSecciones from '../styleSecciones';
@@ -329,8 +330,13 @@ const OtrosIngresos = (props) => {
 	);
 };
 
-export default function({ data, titulo }) {
+export default function ({ data: info, titulo }) {
 	const classes = useStyles();
+
+	let data = {
+		...basicInicial.actividadAnualAnterior,
+		...info
+	}
 
 	return (
 		<Grid container spacing={2} className={classes.rootPrincipal}>
