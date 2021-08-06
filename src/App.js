@@ -2,7 +2,8 @@ import React from "react";
 import pndRoutes from "./routes/index";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import P404 from "./components/P404";
-import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
+import {esES} from "@material-ui/core/locale";
 //import { createMuiTheme, MuiThemeProvider} from "@material-ui/core";
 
 import PrivateRoute from "./PrivateRoute";
@@ -18,10 +19,10 @@ import ReactGA from 'react-ga';
 ReactGA.initialize('UA-126837818-1');
 ReactGA.pageview(window.location.pathname + window.location.search);
 
-const theme = createMuiTheme({
+const theme = createTheme({
   typography: {
     useNextVariants: true,
-    fontFamily: ["Noto Sans SC", '"Helvetica"', '"Arial"', '"sans-serif"'].join(
+    fontFamily: ['"Noto Sans SC"', "sans-serif"].join(
       ","
     ),
   },
@@ -99,7 +100,7 @@ const theme = createMuiTheme({
            }
        }
    */
-});
+}, esES);
 
 const p404 = () => {
   return <P404 />;
@@ -138,7 +139,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <MuiThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
         <Router basename={process.env.PUBLIC_URL}>
           
             <Bandita />
@@ -166,7 +167,7 @@ class App extends React.Component {
               
             </Switch>
         </Router>
-      </MuiThemeProvider>
+      </ThemeProvider>
     );
   }
 }

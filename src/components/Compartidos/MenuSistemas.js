@@ -157,7 +157,7 @@ class MenuSistemas extends React.Component {
                         <Collapse in={dropDown2} timeout="auto" unmountOnExit>
                             <List dense={true} component="div">
                                 <ListItem button component={Button}
-                                          href=""
+                                          href="https://plataformadigitalnacional.org/mapa-sla/"
                                           className={classes.nested}
                                           style={{textTransform: "none"}}
                                 >
@@ -165,11 +165,11 @@ class MenuSistemas extends React.Component {
                                 </ListItem>
                                 <ListItem button
                                           component={Button}
-                                          href=""
+                                          href="https://plataformadigitalnacional.org/mapa-avance/"
                                           className={classes.nested}
                                           style={{textTransform: "none"}}
                                 >
-                                    <ListItemText primary='Sisemas 2 y 3'/>
+                                    <ListItemText primary='Sistemas 2 y 3'/>
                                 </ListItem>
                             </List>
                         </Collapse>
