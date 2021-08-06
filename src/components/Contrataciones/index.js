@@ -77,7 +77,7 @@ const styles = theme => ({
 const Index = props => {
     const {classes} = props;
     const [selectedTab, setSelectedTab] = React.useState(0);
-    const [supplier, setSupplier]  = React.useState(1);
+    const [dataSupplier, setDataSupplier]  = React.useState(1);
     const handleSelectTab = t => setSelectedTab(t);
     const isSelected = t => t === selectedTab;
 
@@ -127,10 +127,10 @@ const Index = props => {
                 <Grid container spacing={0} justify="center" className={classes.container}>
                     <Grid item xs={12} className={classes.item} style={{"overflow":"auto"}}>
                         <Box paddingLeft={1} paddingRight={1} paddingBottom={3}>
-                            <SelectSupplier supplier={supplier} setSupplier={setSupplier}/>
+                            <SelectSupplier dataSupplier={dataSupplier} setDataSupplier={setDataSupplier}/>
                         </Box>
                         {/* TODO: add supplier  support*/}
-                        <Busqueda supplier={supplier}/>
+                        <Busqueda supplier={dataSupplier}/>
                     </Grid>
                 </Grid>
 
@@ -140,18 +140,18 @@ const Index = props => {
                     <Grid container spacing={0} justify="center">
                         <Grid item xs={12} className={classes.disclaimer}>
                             <Box paddingTop={1} paddingBottom={3}>
-                                <SelectSupplier supplier={supplier} setSupplier={setSupplier}/>
+                                <SelectSupplier dataSupplier={dataSupplier} setDataSupplier={setDataSupplier}/>
                             </Box>
 
                             {/* TODO: add supplier support*/}
-                            <Disclaimer supplier={supplier}/>
+                            <Disclaimer data_supplier={dataSupplier}/>
                         </Grid>
                     </Grid>
 
                     <Grid container spacing={0} justify="center" className={classes.container}>
                         <Grid item xs={12} className={classes.item}>
                             {/* TODO: add supplier support*/}
-                            <Cifras supplier={supplier}/>
+                            <Cifras data_supplier={dataSupplier}/>
                         </Grid>
                     </Grid>
 
@@ -159,7 +159,7 @@ const Index = props => {
                     <Grid container spacing={0} justify="center" className={classes.container}>
                         <Grid item xs={12} className={classes.item}>
                             {/* TODO: add supplier support*/}
-                            <Top supplier={supplier}/>
+                            <Top dataSupplier={dataSupplier}/>
                         </Grid>
                     </Grid>
 

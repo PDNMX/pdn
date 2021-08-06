@@ -12,15 +12,14 @@ const styles = theme => ({
     }
 });
 
-class Top extends React.Component {
+const Top = props =>  {
+    const {classes, dataSupplier} = props;
+    const [barChartData, setBarChartData] = React.useState([]);
+    const [suppliers, setSuppliers] = React.useState([]);
 
-    state = {
-        barChartData: [],
-        suppliers: []
-    };
-
-    componentWillMount() {
-
+    React.useEffect(() => {
+        console.log("Data supplier: ", dataSupplier);
+        //alert(dataSupplier);
         let queries = [
             rp({
                 uri: process.env.REACT_APP_S6_BACKEND + '/api/v1/top/10/buyers',
@@ -35,35 +34,32 @@ class Top extends React.Component {
         ];
 
         Promise.all(queries).then( data => {
-            console.log(data)
-            this.setState({
-                barChartData: data[0],
-                suppliers: data[1]
-            })
+            //console.log(data)
+            setBarChartData(data[0]);
+            setSuppliers(data[1]);
         }).catch(error => {
             console.log(error);
         });
-    }
+    },[dataSupplier]);
 
-
-    render() {
-        const {classes} = this.props;
-        return(
-            <div className={classes.root}>
-                <Grid container spacing={0}>
-                    <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-                        <Typography variant="h6" color="textPrimary" paragraph>Top 10 unidades compradoras</Typography>
-                        <BarChart data = {this.state.barChartData}/>
-                    </Grid>
-                    <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-                        <Typography variant="h6" color="textPrimary" paragraph> Top 10 proveedores</Typography>
-                        <SuppliersBarChart data={this.state.suppliers}/>
-                    </Grid>
+    return(
+        <div className={classes.root}>
+            <Grid container spacing={0}>
+                <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+                    <Typography variant="h6" color="textPrimary" paragraph>Top 10 unidades compradoras</Typography>
+                    {barChartData && barChartData.length > 0 &&
+                    <BarChart data={barChartData}/>
+                    }
                 </Grid>
-            </div>
-        );
-
-    }
+                <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+                    <Typography variant="h6" color="textPrimary" paragraph> Top 10 proveedores</Typography>
+                    {suppliers && suppliers.length > 0 &&
+                    <SuppliersBarChart data={suppliers}/>
+                    }
+                </Grid>
+            </Grid>
+        </div>
+    );
 }
 
 export default withStyles(styles)(Top);
