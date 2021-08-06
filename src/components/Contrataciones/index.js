@@ -1,15 +1,8 @@
 import React from 'react';
 import {withStyles} from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
-//import Typography from "@material-ui/core/Typography";
 import Header from './Header/Header';
 import Grid from '@material-ui/core/Grid';
 import Footer from "../Home/Footer";
-
-//import LabeledHeatmap from './Charts/LabeledHeatmap';
-//import Treemap from './Charts/Treemap';
-//import ScatterPlot from "./Charts/ScatterPlot";
-
 import Busqueda from "./Busqueda";
 import Cifras from "./Cifras";
 import Perspectivas from "./Perspectivas";
@@ -19,7 +12,12 @@ import Disclaimer from "./Disclaimer";
 import img1 from "../../assets/img/servidores_publicos_sancionados.svg";
 //import img2 from "../../assets/img/particulares_sancionados.svg";
 import img3 from "../../assets/img/servidores_visualizaciones.svg";
-import {Typography} from "@material-ui/core";
+import {Typography, Box} from "@material-ui/core";
+import SelectSupplier from "./SelectSupplier";
+
+//import LabeledHeatmap from './Charts/LabeledHeatmap';
+//import Treemap from './Charts/Treemap';
+//import ScatterPlot from "./Charts/ScatterPlot";
 
 const styles = theme => ({
     root: {
@@ -30,19 +28,17 @@ const styles = theme => ({
         paddingRight: theme.spacing(1),
         paddingLeft: theme.spacing(1),
         paddingBottom: theme.spacing(8),
-        paddingTop: theme.spacing(8),
-       // overflow: "auto"
+        paddingTop: theme.spacing(4),
+        // overflow: "auto"
     },
     disclaimer: {
         maxWidth: 1200,
         paddingTop: theme.spacing(2),
         padding: theme.spacing(1),
     },
-
     container: {
         backgroundColor: '#fff'
     },
-
     tabItem:{
         backgroundColor: theme.palette.pestanas.bg,
         paddingLeft: theme.spacing(1),
@@ -66,7 +62,7 @@ const styles = theme => ({
         width: 60,
     },
     figure: {
-       display: 'inline-block',
+        display: 'inline-block',
         float: 'left',
         margin: 0,
         padding: 0,
@@ -75,121 +71,114 @@ const styles = theme => ({
     tabContainer: {
         backgroundColor: theme.palette.pestanas.bg
     }
-
 });
 
 
-class Index extends React.Component {
+const Index = props => {
+    const {classes} = props;
+    const [selectedTab, setSelectedTab] = React.useState(0);
+    const [supplier, setSupplier]  = React.useState(1);
+    const handleSelectTab = t => setSelectedTab(t);
+    const isSelected = t => t === selectedTab;
 
-    state = {
-        selectedTab: 0
-    };
+    return (
+        <div className={classes.root}>
+            <Header/>
 
+            <Grid container spacing={0} justify="center" className={classes.tabContainer}>
+                <Grid item xs={12} style={{padding:0, maxWidth: 1200}}>
 
-    handleSelectTab = t => {
+                    <Grid container spacing={0}>
+                        <Grid item xs={12} sm={12} md={6} lg={6} xl={6}
+                              onClick={ () => handleSelectTab(0)}
+                              id={0}
+                              className={isSelected(0)?classes.selectedTabItem:classes.tabItem}>
 
-      this.setState({
-          selectedTab: t
-      })
-    };
+                            <figure className={classes.figure}>
+                                <img src={img3} className={classes.tabIcon} alt="Visualiza"/>
+                            </figure>
 
-    render() {
-        const {classes} = this.props;
-        const {selectedTab} = this.state;
+                            <Typography color='textPrimary' style={{fontWeight: isSelected(0)?500:300, paddingTop: 15}}>
+                                Visualiza las contrataciones
+                            </Typography>
 
-        const isSelected = t => t === this.state.selectedTab;
-
-        return (
-            <div className={classes.root}>
-                <Header/>
-
-                <Grid container spacing={0} justify="center" className={classes.tabContainer}>
-                    <Grid item xs={12} style={{padding:0, maxWidth: 1200}}>
-
-                        <Grid container spacing={0}>
-                            <Grid item xs={12} sm={12} md={6} lg={6} xl={6}
-                                  onClick={ () => this.handleSelectTab(0)}
-                                  id={0}
-                                  className={isSelected(0)?classes.selectedTabItem:classes.tabItem}>
-
-                                <figure className={classes.figure}>
-                                    <img src={img3} className={classes.tabIcon} alt="Visualiza"/>
-                                </figure>
-
-                                <Typography color='textPrimary' style={{fontWeight: isSelected(0)?500:300, paddingTop: 15}}>
-                                    Visualiza las contrataciones
-                                </Typography>
-
-                            </Grid>
-
-                            <Grid item xs={12} sm={12} md={6} lg={6} xl={6}
-                                  onClick={() => this.handleSelectTab(1)}
-                                  id={1}
-                                  className={isSelected(1)?classes.selectedTabItem:classes.tabItem}>
-
-                                <figure className={classes.figure}>
-                                    <img src={img1} className={classes.tabIcon} alt="explora"/>
-                                </figure>
-
-                                <Typography color='textPrimary' style={{fontWeight: isSelected(1)?500:300, paddingTop: 15}}>
-                                    Explora las contrataciones
-                                </Typography>
-
-                            </Grid>
                         </Grid>
 
+                        <Grid item xs={12} sm={12} md={6} lg={6} xl={6}
+                              onClick={() => handleSelectTab(1)}
+                              id={1}
+                              className={isSelected(1)?classes.selectedTabItem:classes.tabItem}>
+
+                            <figure className={classes.figure}>
+                                <img src={img1} className={classes.tabIcon} alt="explora"/>
+                            </figure>
+
+                            <Typography color='textPrimary' style={{fontWeight: isSelected(1)?500:300, paddingTop: 15}}>
+                                Explora las contrataciones
+                            </Typography>
+
+                        </Grid>
+                    </Grid>
+
+                </Grid>
+            </Grid>
+
+            {selectedTab === 0?
+                <Grid container spacing={0} justify="center" className={classes.container}>
+                    <Grid item xs={12} className={classes.item} style={{"overflow":"auto"}}>
+                        <Box paddingLeft={1} paddingRight={1} paddingBottom={3}>
+                            <SelectSupplier supplier={supplier} setSupplier={setSupplier}/>
+                        </Box>
+                        {/* TODO: add supplier  support*/}
+                        <Busqueda supplier={supplier}/>
                     </Grid>
                 </Grid>
 
+                :
 
-                {selectedTab === 0?
+                <div>
+                    <Grid container spacing={0} justify="center">
+                        <Grid item xs={12} className={classes.disclaimer}>
+                            <Box paddingTop={1} paddingBottom={3}>
+                                <SelectSupplier supplier={supplier} setSupplier={setSupplier}/>
+                            </Box>
+
+                            {/* TODO: add supplier support*/}
+                            <Disclaimer supplier={supplier}/>
+                        </Grid>
+                    </Grid>
+
                     <Grid container spacing={0} justify="center" className={classes.container}>
-                        <Grid item xs={12} className={classes.item} id={"test"} style={{"overflow":"auto"}}>
-                            <Busqueda/>
+                        <Grid item xs={12} className={classes.item}>
+                            {/* TODO: add supplier support*/}
+                            <Cifras supplier={supplier}/>
                         </Grid>
                     </Grid>
-                    :
-                    <div>
-                        <Grid container spacing={0} justify="center">
-                            <Grid item xs={12} className={classes.disclaimer}>
-                                <Disclaimer/>
-                            </Grid>
+
+
+                    <Grid container spacing={0} justify="center" className={classes.container}>
+                        <Grid item xs={12} className={classes.item}>
+                            {/* TODO: add supplier support*/}
+                            <Top supplier={supplier}/>
                         </Grid>
-
-                        <Grid container spacing={0} justify="center" className={classes.container}>
-                            <Grid item xs={12} className={classes.item}>
-                                <Cifras/>
-                            </Grid>
-                        </Grid>
-
-
-                        <Grid container spacing={0} justify="center" className={classes.container}>
-                            <Grid item xs={12} className={classes.item}>
-                                <Top/>
-                            </Grid>
-                        </Grid>
-
-                    </div>
-                }
-
-
-                <Grid container spacing={0} justify="center" style={{backgroundColor: "#34b3eb"}}>
-                    <Grid item xs={12} className={classes.item}>
-
-                        <Perspectivas/>
-
                     </Grid>
+
+                </div>
+            }
+
+            <Grid container spacing={0} justify="center" style={{backgroundColor: "#34b3eb"}}>
+                <Grid item xs={12} className={classes.item}>
+                    <Perspectivas/>
                 </Grid>
+            </Grid>
 
-                <Grid container spacing={0} justify="center" className={classes.container} style={{backgroundColor: '#f6f6f6'}}>
-                    <Grid item xs={12} className={classes.item}>
-                        <Descarga url="https://datos.gob.mx/busca/dataset/concentrado-de-contrataciones-abiertas-de-la-apf/resource/5667bf76-4172-4c11-9050-b276ebc5903e"/>
-                    </Grid>
+            <Grid container spacing={0} justify="center" className={classes.container} style={{backgroundColor: '#f6f6f6'}}>
+                <Grid item xs={12} className={classes.item}>
+                    <Descarga url="https://datos.gob.mx/busca/dataset/concentrado-de-contrataciones-abiertas-de-la-apf/resource/5667bf76-4172-4c11-9050-b276ebc5903e"/>
                 </Grid>
+            </Grid>
 
-
-                {/*
-
+            {/*
                 <Grid container spacing={0} justify="center" className={classes.container}>
                     <Grid item xs={12} className={classes.item}>
                         <ScatterPlot/>
@@ -211,14 +200,9 @@ class Index extends React.Component {
                 </Grid>
                 */}
 
-                <Footer/>
-            </div>
-        );
-    }
+            <Footer/>
+        </div>
+    );
 }
-
-Index.propTypes = {
-    classes: PropTypes.object.isRequired
-};
 
 export default withStyles(styles)(Index);

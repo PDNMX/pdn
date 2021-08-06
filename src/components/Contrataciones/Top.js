@@ -3,7 +3,6 @@ import {withStyles} from '@material-ui/core/styles';
 import Typography from "@material-ui/core/Typography";
 import BarChart from './Charts/BarChart';
 import SuppliersBarChart from './Charts/SuppliersBarChart';
-
 import rp from 'request-promise';
 import Grid from '@material-ui/core/Grid';
 
@@ -12,7 +11,6 @@ const styles = theme => ({
         flexGrow: 1
     }
 });
-
 
 class Top extends React.Component {
 
