@@ -42,7 +42,7 @@ class BarraLogoMenu extends React.Component {
                 <Grid
                     container
                     alignItems="center"
-                    justify="center"
+                    justifyContent="center"
 
                 >
                     <Grid item  className={classes.cont}  xs={12} style={{'maxWidth':'1200px'}}>

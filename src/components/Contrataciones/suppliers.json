@@ -5,12 +5,5 @@
     "value": 1,
     "disclaimer": "",
     "download_url": ""
-  },
-  {
-    "id": "BANXICO",
-    "name": "Banco de México",
-    "value": 2,
-    "disclaimer": "",
-    "download_url": ""
   }
 ]

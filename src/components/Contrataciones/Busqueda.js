@@ -85,7 +85,6 @@ class Busqueda extends React.Component{
         });
     };
 
-
     handlePageChange = (page) => {
         this.setState( {
             loading: true,
@@ -97,7 +96,6 @@ class Busqueda extends React.Component{
             this.search(true)
         });
     };
-
 
     setBuyer = buyer_id => {
       this.setState({
@@ -189,8 +187,6 @@ class Busqueda extends React.Component{
     };
 
     render() {
-
-
         const {classes} = this.props;
 
         return (

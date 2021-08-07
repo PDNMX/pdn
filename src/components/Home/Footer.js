@@ -81,7 +81,7 @@ class Footer extends React.Component {
                     container
                     spacing={0}
                     className={classes.parteGris}
-                    justify="center"
+                    justifyContent="center"
                 >
                     <Grid item xs={12} className={classes.item}>
                         <Grid container spacing={0}>
@@ -206,7 +206,7 @@ class Footer extends React.Component {
                     </Grid>
                 </Grid>
 
-                <Grid container spacing={0} justify="center">
+                <Grid container spacing={0} justifyContent="center">
                     <Grid item xs={12} align="center">
                         <img
                             alt="SESNA"

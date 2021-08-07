@@ -26,7 +26,7 @@ class Descarga extends React.Component{
         return (
             <div className={classes.root}>
 
-                <Grid container spacing={0} justify="center">
+                <Grid container spacing={0} justifyContent="center">
                     <Grid item xs={12} align="center">
                         <Typography className={classes.descarga} variant="h5"> Descarga todos los datos</Typography>
 
