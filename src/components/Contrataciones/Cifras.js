@@ -41,9 +41,10 @@ const styles = theme => ({
     }
 });
 
-class Cifras extends React.Component{
+const Cifras = props => {
+    const {classes, dataSupplier} = props;
 
-    state = {
+    const [state, setState] = React.useState({
         loading: true,
         error: false,
         contrataciones: 300000,
@@ -53,34 +54,39 @@ class Cifras extends React.Component{
             start: 2015,
             end: 2021
         },
-        gastoTotal: 0,
-        colors: {
-            open: "#EB5468",
-            selective: "#187099",
-            direct: "#B3AD1D",
-            other: "#3CB3E6"
+        gastoTotal: 0
+    });
+
+    const prMethods = {
+        open: {
+            color: "#EB5468",
+            label: "Licitación pública"
+        },
+        selective: {
+            color: "#187099",
+            label: "Invitación a tres"
+        },
+        direct: {
+            color: "#B3AD1D",
+            label: "Adjudicación directa"
+        },
+        other: {
+            color: "#3CB3E6",
+            label: "Otro"
         }
     };
 
-    porcentaje = (amount, total) => {
-        let p = (amount * 100 / total).toFixed(3);
-        return `${p}%`
-    };
-
-    componentWillMount() {
-
+    React.useEffect(() => {
         rp({
             uri: process.env.REACT_APP_S6_BACKEND + "/api/v1/summary",
             method: "GET",
             json: true
         }).then( data => {
-
             //console.log(data)
-
             const {open, selective, direct, other, total } = data.amounts;
-            const {colors} = this.state;
 
-            this.setState({
+            setState(s => ({
+                ...s,
                 loading: false,
                 contrataciones: data.procedimientos,
                 instituciones: data.instituciones,
@@ -89,151 +95,112 @@ class Cifras extends React.Component{
                 gastoTotal: total,
                 donutChartDataType : 'amounts',
                 donutChartData: [
-                    {theta: open, label: this.porcentaje(open,total), color: colors.open, type: "Licitación pública"},
-                    {theta: selective, label: this.porcentaje(selective,total), color: colors.selective, type: "Invitación a tres"},
-                    {theta: direct, label: this.porcentaje(direct, total), color: colors.direct, type: "Adjudicación directa"},
-                    {theta: other, label: this.porcentaje(other, total), color: colors.other, type: "Otro"}
-                    ]
-            })
+                    {theta: open, label: porcentaje(open,total), color: prMethods.open.color, type: prMethods.open.label},
+                    {theta: selective, label: porcentaje(selective,total), color: prMethods.selective.color, type: prMethods.selective.label},
+                    {theta: direct, label: porcentaje(direct, total), color: prMethods.direct.color, type: prMethods.direct.label},
+                    {theta: other, label: porcentaje(other, total), color: prMethods.other.color, type: prMethods.other.label}
+                ]
+            }));
 
         }).catch(error => {
             console.log(error);
-
-            this.setState({ error: true })
+            setState({ error: true })
         });
+        //eslint-disable-next-line react-hooks/exhaustive-deps
+    },[dataSupplier]);
 
-    }
-
-    handleSelectDonutData = (p) => {
-        //console.log(p)
-        const {colors} = this.state;
-
-        if (p === 'amounts'){
-            const {open, direct, selective, other, total} = this.state.amounts;
-
-            this.setState({
-                donutChartDataType: p,
-                donutChartData: [
-                    {theta: open, label: this.porcentaje(open,total), color: colors.open, type: "Licitación pública"},
-                    {theta: selective, label: this.porcentaje(selective,total), color: colors.selective, type: "Invitación a tres"},
-                    {theta: direct, label: this.porcentaje(direct, total), color: colors.direct, type: "Adjudicación directa"},
-                    {theta: other, label: this.porcentaje(other, total), color: colors.other, type: "Otro"}
-                ]
-            });
-
-        } else {
-            const {open, direct, selective, other} = this.state.counts;
-            const total = this.state.contrataciones;
-
-            this.setState({
-                donutChartDataType: p,
-                donutChartData: [
-                    {theta: open, label: this.porcentaje(open,total), color: colors.open, type: "Licitación pública"},
-                    {theta: selective, label: this.porcentaje(selective,total), color: colors.selective, type: "Invitación a tres"},
-                    {theta: direct, label: this.porcentaje(direct, total), color: colors.direct, type: "Adjudicación directa"},
-                    {theta: other, label: this.porcentaje(other, total), color: colors.other, type: "Otro"}
-                ]
-            });
-        }
+    const porcentaje = (amount, total) => {
+        let p = (amount * 100 / total).toFixed(3);
+        return `${p}%`
     };
 
+    const handleSelectDonutData = p => {
+        //console.log(p)
+        const {open, direct, selective, other} = p ==='amounts' ? state.amounts: state.counts;
+        const total = p === 'amounts' ? state.amounts.total : state.contrataciones;
 
-    render(){
+        setState(s => ({
+            ...s,
+            donutChartDataType: p,
+            donutChartData: [
+                {theta: open, label: porcentaje(open,total), color: prMethods.open.color, type: prMethods.open.label},
+                {theta: selective, label: porcentaje(selective,total), color: prMethods.selective.color, type: prMethods.selective.label},
+                {theta: direct, label: porcentaje(direct, total), color: prMethods.direct.color, type: prMethods.direct.label},
+                {theta: other, label: porcentaje(other, total), color: prMethods.other.color, type: prMethods.other.label}
+            ]
+        }));
+    };
 
-        const {classes} = this.props;
+    return (
+        <div className={classes.root}>
+            {state.loading?
+                <Grid container spacing={0}>
+                    <Grid item xs={12}>
+                        <LinearIndeterminate/>
+                    </Grid>
+                </Grid>:
+                <Grid container spacing={0}>
+                    <Grid item xs={12} md={12} lg={4} xl={4} align="center" className={classes.item}>
+                        <Typography variant="h6" color="textPrimary">
+                            Procesos de contratación
+                        </Typography>
 
+                        <Typography variant="h5" paragraph color="textPrimary">
+                            <b><CountUp separator="," start={1} end={state.contrataciones}/></b>
+                        </Typography>
 
-        const bullets = [
-            {
-                color: this.state.colors.open,
-                tipo: "Licitación pública"
-            },
-            {
-                color: this.state.colors.selective,
-                tipo: "Invitación a tres"
-            },
-            {
-                color: this.state.colors.direct,
-                tipo: "Adjudicación directa"
-            },
-            {
-                color: this.state.colors.other,
-                tipo: "Otro"
-            }
-        ];
+                        <Typography variant="h6" color="textPrimary">
+                            Instituciones
+                        </Typography>
+                        <Typography variant="h5" paragraph color="textPrimary">
+                            <b> <CountUp separator="," start={1} end={state.instituciones}/></b>
+                        </Typography>
 
-        return (
-            <div className={classes.root}>
-                {this.state.loading?
-                    <Grid container spacing={0}>
-                        <Grid item xs={12}>
-                            <LinearIndeterminate/>
-                        </Grid>
-                    </Grid>:
-                    <Grid container spacing={0}>
-                        <Grid item xs={12} md={12} lg={4} xl={4} align="center" className={classes.item}>
-                            <Typography variant="h6" color="textPrimary">
-                                Procesos de contratación
-                            </Typography>
+                        <Typography variant="h6" color="textPrimary">Gasto total</Typography>
 
-                            <Typography variant="h5" paragraph color="textPrimary">
-                                <b><CountUp separator="," start={1} end={this.state.contrataciones}/></b>
-                            </Typography>
+                        <Typography variant="h5" paragraph color="textPrimary">
+                            <b> <CountUp separator="," decimals={2} prefix={'$'} start={1} end={state.gastoTotal}/></b>
+                        </Typography>
 
-                            <Typography variant="h6" color="textPrimary">
-                                Instituciones
-                            </Typography>
-                            <Typography variant="h5" paragraph color="textPrimary">
-                                <b> <CountUp separator="," start={1} end={this.state.instituciones}/></b>
-                            </Typography>
+                        <Typography variant="h6" color="textPrimary">
+                            Periodo
+                        </Typography>
+                        <Typography variant="h5" paragraph color="textPrimary">
+                            <b>{state.periodo.start} - {state.periodo.end}</b>
+                        </Typography>
 
-                            <Typography variant="h6" color="textPrimary">Gasto total</Typography>
+                    </Grid>
 
-                            <Typography variant="h5" paragraph color="textPrimary">
-                                <b> <CountUp separator="," decimals={2} prefix={'$'} start={1} end={this.state.gastoTotal}/></b>
-                            </Typography>
+                    <Grid item xs={12} md={12} lg={8} xl={8} className={classes.item}>
+                        <Grid container spacing={0}>
 
-                            <Typography variant="h6" color="textPrimary">
-                                Periodo
-                            </Typography>
-                            <Typography variant="h5" paragraph color="textPrimary">
-                                <b>{this.state.periodo.start} - {this.state.periodo.end}</b>
-                            </Typography>
+                            <Grid item xs={12} md={6} lg={6} xl={6} align="center" className={classes.item}>
+                                <CustomizedSelect handleSelectDonutData={handleSelectDonutData} dataType={state.donutChartDataType}/>
+                                <Donutchart data={state.donutChartData} dataType={state.donutChartDataType}/>
+                            </Grid>
 
-                        </Grid>
-
-                        <Grid item xs={12} md={12} lg={8} xl={8} className={classes.item}>
-                            <Grid container spacing={0}>
-
-                                <Grid item xs={12} md={6} lg={6} xl={6} align="center" className={classes.item}>
-                                    <CustomizedSelect handleSelectDonutData={this.handleSelectDonutData} dataType={this.state.donutChartDataType}/>
-                                    <Donutchart data={this.state.donutChartData} dataType={this.state.donutChartDataType}/>
-                                </Grid>
-
-                                <Grid item xs={12} md={6} lg={6} xl={6} className={classes.item}>
-                                    {/*<Typography variant="h6" paragraph>Tipo de contratación</Typography>*/}
-                                    <ul className={classes.ul}>
-                                        {
-                                            bullets.map((b, i) => (
-                                                    <li key={i}>
-                                                        <Typography variant="h6" paragraph color="textPrimary">
-                                                            <span className={classes.bullet} style={{backgroundColor: b.color}} />
-                                                            {b.tipo}
-                                                        </Typography>
-                                                    </li>
-                                                )
-                                            )}
-                                    </ul>
-
-                                </Grid>
+                            <Grid item xs={12} md={6} lg={6} xl={6} className={classes.item}>
+                                {/*<Typography variant="h6" paragraph>Tipo de contratación</Typography>*/}
+                                <ul className={classes.ul}>
+                                    {
+                                        Object.entries(prMethods).map(([attr, method], i) => (
+                                                <li key={i}>
+                                                    <Typography variant="h6" paragraph color="textPrimary">
+                                                        <span className={classes.bullet} style={{backgroundColor: method.color}} />
+                                                        {method.label}
+                                                    </Typography>
+                                                </li>
+                                            )
+                                        )}
+                                </ul>
                             </Grid>
                         </Grid>
                     </Grid>
-                }
-            </div>
-        )
-    }
+                </Grid>
+            }
+        </div>
+    );
 }
 
 
-export default withStyles(styles) (Cifras);
+export default withStyles(styles)(Cifras);

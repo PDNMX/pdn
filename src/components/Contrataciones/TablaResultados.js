@@ -39,7 +39,7 @@ function EnhancedTableHead(props) {
                     <TableCell
                         key={row.id}
                         align={row.numeric ? 'right' : 'left'}
-                        padding={row.disablePadding ? 'none' : 'default'}
+                        padding={row.disablePadding ? 'none' : 'normal'}
                         sortDirection={orderBy === row.id ? order : false}
                     >
                         <TableSortLabel
@@ -257,7 +257,7 @@ export default function EnhancedTable(props) {
                                     tabIndex={-1}
                                     key={row.col1}
                                     >
-                                    <TableCell component="th" id={labelId} scope="row" padding="default">
+                                    <TableCell component="th" id={labelId} scope="row" padding="normal">
                                     {row.col1}
                                     </TableCell>
                                     <TableCell align="left">{row.col2}</TableCell>
@@ -287,8 +287,10 @@ export default function EnhancedTable(props) {
                         nextIconButtonProps={{
                             'aria-label': 'next page',
                         }}
-                        onChangePage={handleChangePage}
-                        onChangeRowsPerPage={handleChangeRowsPerPage}
+                        onPageChange={handleChangePage}
+                        //onChangePage={handleChangePage}
+                        onRowsPerPageChange={handleChangeRowsPerPage}
+                        //onChangeRowsPerPage={handleChangeRowsPerPage}
                         labelRowsPerPage={"Registros por página:"}
                         labelDisplayedRows={({from, to, count}) => `${from}-${to} de ${count}`}
                     />

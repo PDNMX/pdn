@@ -85,7 +85,7 @@ const Index = props => {
         <div className={classes.root}>
             <Header/>
 
-            <Grid container spacing={0} justify="center" className={classes.tabContainer}>
+            <Grid container spacing={0} justifyContent="center" className={classes.tabContainer}>
                 <Grid item xs={12} style={{padding:0, maxWidth: 1200}}>
 
                     <Grid container spacing={0}>
@@ -124,39 +124,39 @@ const Index = props => {
             </Grid>
 
             {selectedTab === 0?
-                <Grid container spacing={0} justify="center" className={classes.container}>
+                <Grid container spacing={0} justifyContent="center" className={classes.container}>
                     <Grid item xs={12} className={classes.item} style={{"overflow":"auto"}}>
                         <Box paddingLeft={1} paddingRight={1} paddingBottom={3}>
                             <SelectSupplier dataSupplier={dataSupplier} setDataSupplier={setDataSupplier}/>
                         </Box>
                         {/* TODO: add supplier  support*/}
-                        <Busqueda supplier={dataSupplier}/>
+                        <Busqueda dataSupplier={dataSupplier}/>
                     </Grid>
                 </Grid>
 
                 :
 
                 <div>
-                    <Grid container spacing={0} justify="center">
+                    <Grid container spacing={0} justifyContent="center">
                         <Grid item xs={12} className={classes.disclaimer}>
                             <Box paddingTop={1} paddingBottom={3}>
                                 <SelectSupplier dataSupplier={dataSupplier} setDataSupplier={setDataSupplier}/>
                             </Box>
 
                             {/* TODO: add supplier support*/}
-                            <Disclaimer data_supplier={dataSupplier}/>
+                            <Disclaimer dataSupplier={dataSupplier}/>
                         </Grid>
                     </Grid>
 
-                    <Grid container spacing={0} justify="center" className={classes.container}>
+                    <Grid container spacing={0} justifyContent="center" className={classes.container}>
                         <Grid item xs={12} className={classes.item}>
                             {/* TODO: add supplier support*/}
-                            <Cifras data_supplier={dataSupplier}/>
+                            <Cifras dataSupplier={dataSupplier}/>
                         </Grid>
                     </Grid>
 
 
-                    <Grid container spacing={0} justify="center" className={classes.container}>
+                    <Grid container spacing={0} justifyContent="center" className={classes.container}>
                         <Grid item xs={12} className={classes.item}>
                             {/* TODO: add supplier support*/}
                             <Top dataSupplier={dataSupplier}/>
@@ -166,13 +166,13 @@ const Index = props => {
                 </div>
             }
 
-            <Grid container spacing={0} justify="center" style={{backgroundColor: "#34b3eb"}}>
+            <Grid container spacing={0} justifyContent="center" style={{backgroundColor: "#34b3eb"}}>
                 <Grid item xs={12} className={classes.item}>
                     <Perspectivas/>
                 </Grid>
             </Grid>
 
-            <Grid container spacing={0} justify="center" className={classes.container} style={{backgroundColor: '#f6f6f6'}}>
+            <Grid container spacing={0} justifyContent="center" className={classes.container} style={{backgroundColor: '#f6f6f6'}}>
                 <Grid item xs={12} className={classes.item}>
                     <Descarga url="https://datos.gob.mx/busca/dataset/concentrado-de-contrataciones-abiertas-de-la-apf/resource/5667bf76-4172-4c11-9050-b276ebc5903e"/>
                 </Grid>

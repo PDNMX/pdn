@@ -31,9 +31,9 @@ class Busqueda extends React.Component{
     };
 
 
-    componentWillMount() {
+    componentDidMount() {
         //fetch data
-
+        //alert(this.props.dataSupplier)
         let queries = [
             rp({
                 uri: process.env.REACT_APP_S6_BACKEND +'/api/v1/buyers',
@@ -66,6 +66,12 @@ class Busqueda extends React.Component{
         });
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.dataSupplier !== prevProps.dataSupplier){
+            //alert(this.props.dataSupplier);
+            //this.search(false);
+        }
+    }
 
     handleChangeRowsPerPage = (pageSize) => {
         this.setState( {
