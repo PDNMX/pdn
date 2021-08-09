@@ -77,8 +77,12 @@ const Cifras = props => {
     };
 
     React.useEffect(() => {
+        const supplier_id = dataSupplier;
         rp({
             uri: process.env.REACT_APP_S6_BACKEND + "/api/v1/summary",
+            qs: {
+                supplier_id
+            },
             method: "GET",
             json: true
         }).then( data => {

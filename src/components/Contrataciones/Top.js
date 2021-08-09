@@ -18,16 +18,23 @@ const Top = props =>  {
     const [suppliers, setSuppliers] = React.useState([]);
 
     React.useEffect(() => {
-        console.log("Data supplier: ", dataSupplier);
+        //console.log("Data supplier: ", dataSupplier);
         //alert(dataSupplier);
+        const supplier_id = dataSupplier
         let queries = [
             rp({
                 uri: process.env.REACT_APP_S6_BACKEND + '/api/v1/top/10/buyers',
+                qs: {
+                    supplier_id
+                },
                 method :'GET',
                 json: true
             }),
             rp({
                 uri: process.env.REACT_APP_S6_BACKEND + '/api/v1/top/10/suppliers',
+                qs: {
+                    supplier_id
+                },
                 method :'GET',
                 json: true
             })

@@ -28,7 +28,7 @@ const SelectSupplier = props => {
                 <Select value={dataSupplier} onChange={handleSetDataSupplier}>
                     {
                         dataSuppliers.map((s,i)=> {
-                            return <MenuItem value={s.value} key={i}>
+                            return <MenuItem value={s.id} key={i}>
                                 {s.name}
                             </MenuItem>
                         })

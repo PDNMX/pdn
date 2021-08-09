@@ -77,7 +77,7 @@ const styles = theme => ({
 const Index = props => {
     const {classes} = props;
     const [selectedTab, setSelectedTab] = React.useState(0);
-    const [dataSupplier, setDataSupplier]  = React.useState(1);
+    const [dataSupplier, setDataSupplier]  = React.useState("SHCP");
     const handleSelectTab = t => setSelectedTab(t);
     const isSelected = t => t === selectedTab;
 

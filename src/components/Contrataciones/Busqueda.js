@@ -11,6 +11,7 @@ const styles = theme => ({
         flexGrow: 1
     },
 });
+
 class Busqueda extends React.Component{
 
     state = {
@@ -30,23 +31,32 @@ class Busqueda extends React.Component{
         cycles: []
     };
 
-
     componentDidMount() {
         //fetch data
         //alert(this.props.dataSupplier)
+        const supplier_id = this.props.dataSupplier;
         let queries = [
             rp({
                 uri: process.env.REACT_APP_S6_BACKEND +'/api/v1/buyers',
+                qs: {
+                    supplier_id
+                },
                 method: 'GET',
                 json: true
             }),
             rp({
                 uri: process.env.REACT_APP_S6_BACKEND + "/api/v1/search",
+                qs: {
+                    supplier_id
+                },
                 method: 'POST',
                 json: true
             }),
             rp({
                 uri: process.env.REACT_APP_S6_BACKEND + "/api/v1/cycles",
+                qs: {
+                    supplier_id
+                },
                 method: 'GET',
                 json: true
             })
@@ -69,7 +79,7 @@ class Busqueda extends React.Component{
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.dataSupplier !== prevProps.dataSupplier){
             //alert(this.props.dataSupplier);
-            //this.search(false);
+            this.search(false);
         }
     }
 
@@ -167,9 +177,13 @@ class Busqueda extends React.Component{
         }
 
         this.setState({loading: true}, () => {
+            const supplier_id = this.props.dataSupplier;
 
             rp({
                 uri: process.env.REACT_APP_S6_BACKEND + "/api/v1/search",
+                qs:{
+                  supplier_id
+                },
                 method: 'POST',
                 body: body,
                 json: true
