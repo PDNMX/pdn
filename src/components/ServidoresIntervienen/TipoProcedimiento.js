@@ -49,7 +49,7 @@ const procedimientos = [
     }
 ];
 
-export default function TipoProcedimiento(props) {
+const TipoProcedimiento = props => {
     const classes = useStyles();
     const {tipoProcedimiento, asignarTipoProcedimiento} = props;
 
@@ -59,7 +59,6 @@ export default function TipoProcedimiento(props) {
 
     return (
         <div>
-
             <FormControl className={classes.formControl} fullWidth>
                 <InputLabel id="demo-mutiple-checkbox-label">Procedimientos</InputLabel>
                 <Select
@@ -83,7 +82,8 @@ export default function TipoProcedimiento(props) {
                     ))}
                 </Select>
             </FormControl>
-
         </div>
     );
 }
+
+export default TipoProcedimiento;

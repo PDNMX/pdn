@@ -75,7 +75,7 @@ const styles = theme => ({
     }
 });
 
-function FichaServidorPublico(props) {
+const FichaServidorPublico = props => {
     //const [open, setOpen] = React.useState(false);
     const {open, closeDialog, servidorPublico, classes} = props;
     const {puesto, nombrecompleto, nombres, primerApellido, segundoApellido, institucionDependencia} = servidorPublico || {};
@@ -135,9 +135,7 @@ function FichaServidorPublico(props) {
 
                     </Grid>
 
-
                     <Divider className={classes.divider}/>
-
 
                     <Grid container spacing={0}>
                         <Grid item xs={6}>

@@ -1,7 +1,6 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import {withStyles} from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
 import FormControl from "@material-ui/core/FormControl";
 import MenuItem from "@material-ui/core/MenuItem";
 import Grid from "@material-ui/core/Grid";
@@ -41,158 +40,152 @@ const styles = theme => ({
     }
 });
 
-class BusquedaServidor extends React.Component {
+const BusquedaServidor = props => {
 
-    limpiarBusqueda = () => {
-        this.props.handleCleanAll();
+    const {
+        classes,
+        handleSetState,
+        nombres,
+        apellidoUno,
+        apellidoDos,
+        tipoProcedimiento,
+        asignarTipoProcedimiento,
+        entities,
+        current_entity,
+        nivel,
+        changeLevel
+    } = props;
+
+    const limpiarBusqueda = () => {
+        props.handleCleanAll();
     };
 
-    buscar = () => {
-        this.props.handleSearch();
+    const buscar = () => {
+        props.handleSearch();
     };
 
-    render() {
-        const {
-            classes,
-            handleSetState,
-            nombres,
-            apellidoUno,
-            apellidoDos,
-            tipoProcedimiento,
-            asignarTipoProcedimiento,
-            entities,
-            current_entity,
-            nivel,
-            changeLevel
-        } = this.props;
-        
-        return (
-            <div>
-                <Grid container spacing={4}>
-                    <Grid item xs={12}>
-                        <Typography variant="h6">
-                            <b>Busca servidores públicos que intervienen en contrataciones, concesiones, enajenaciones y dictámenes</b>
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={12} md={4}>
-                        <FormControl className={classes.formControl}>
-                            <TextField
-                                id="search"
-                                label="Nombre(s)"
-                                type="search"
-                                onChange={(e) => handleSetState('nombres', e)}
-                                value={nombres}
-                                InputLabelProps={{
-                                    className: classes.inputShrink,
-                                    shrink: true
-                                }}
-                            />
-
-                        </FormControl>
-                    </Grid>
-                    <Grid item xs={12} md={4}>
-                        <FormControl className={classes.formControl}>
-                            <TextField
-                                id="search"
-                                label="Primer apellido"
-                                type="search"
-                                onChange={(e) => handleSetState('apellidoUno', e)}
-                                value={apellidoUno}
-                                InputLabelProps={{
-                                    className: classes.inputShrink,
-                                    shrink: true
-                                }}
-                            />
-
-                        </FormControl>
-                    </Grid>
-                    <Grid item xs={12} md={4}>
-                        <FormControl className={classes.formControl}>
-                            <TextField
-                                id="search"
-                                label="Segundo apellido"
-                                type="search"
-                                onChange={(e) => handleSetState('apellidoDos', e)}
-                                value={apellidoDos}
-                                InputLabelProps={{
-                                    className: classes.inputShrink,
-                                    shrink: true
-                                }}
-                            />
-
-                        </FormControl>
-                    </Grid>
-                    <Grid item xs={12} md={4}>
-
-                        <TipoProcedimiento
-                            tipoProcedimiento={tipoProcedimiento}
-                            asignarTipoProcedimiento={asignarTipoProcedimiento}
+    return (
+        <div>
+            <Grid container spacing={4}>
+                <Grid item xs={12}>
+                    <Typography variant="h6">
+                        <b>Busca servidores públicos que intervienen en contrataciones, concesiones, enajenaciones y dictámenes</b>
+                    </Typography>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <FormControl className={classes.formControl}>
+                        <TextField
+                            id="search"
+                            label="Nombre(s)"
+                            type="search"
+                            onChange={(e) => handleSetState('nombres', e)}
+                            value={nombres}
+                            InputLabelProps={{
+                                className: classes.inputShrink,
+                                shrink: true
+                            }}
                         />
 
-                    </Grid>
-                    <Grid item xs={12} md={8}>
-                        <FormControl className={classes.formControl}>
-                            <InputLabel htmlFor={'campoSelectInstitucion'}>Institución</InputLabel>
-                            <Select
-                                //style={{marginTop: '0px'}}
-                                value={current_entity}
-                                onChange={(e) => handleSetState('current_entity', e)}
-                                inputProps={{
-                                    name: 'campoSelectInstitucion',
-                                    id: 'campoSelectInstitucion',
-                                }}
-                            >
-                                <MenuItem value="ANY" key="ANY">
-                                    Cualquiera
-                                </MenuItem>
-                                {
-                                    entities.map(((entity, index) => {
-                                        return <MenuItem value={entity} key={index}>
-                                            {entity.nombre}
-                                        </MenuItem>
-                                    }))
-                                }
-                            </Select>
-
-                        </FormControl>
-                    </Grid>
-                    
-                    <Grid item md={6} xs={12}>
-                        <FormControl component="fieldset" className={classes.formControl}>
-                            <FormLabel component="legend">Nivel de gobierno</FormLabel>
-                            <RadioGroup row
-                                        aria-label="gender"
-                                        name="gender1"
-                                        className={classes.group}
-                                        value={nivel}
-                                        onChange={(e) => changeLevel(e)}
-                            >
-                                <FormControlLabel value="todos" control={<Radio/>} label="Cualquiera"/>
-                                <FormControlLabel value="federal" control={<Radio/>} label="Federal"/>
-                                <FormControlLabel value="estatal" control={<Radio/>} label="Estatal"/>
-                            </RadioGroup>
-
-                        </FormControl>
-                    </Grid>
-
-                    <Grid item xs={12} md={6} align="right">
-                        <Button variant="contained" color="secondary" className={classes.button}
-                                onClick={this.limpiarBusqueda}>
-                            Limpiar
-                        </Button>
-
-                        <Button variant="contained" color="secondary" className={classes.button} onClick={this.buscar}>
-                            Buscar
-                        </Button>
-                    </Grid>
+                    </FormControl>
                 </Grid>
-            </div>
-        );
-    }
+                <Grid item xs={12} md={4}>
+                    <FormControl className={classes.formControl}>
+                        <TextField
+                            id="search"
+                            label="Primer apellido"
+                            type="search"
+                            onChange={(e) => handleSetState('apellidoUno', e)}
+                            value={apellidoUno}
+                            InputLabelProps={{
+                                className: classes.inputShrink,
+                                shrink: true
+                            }}
+                        />
+
+                    </FormControl>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <FormControl className={classes.formControl}>
+                        <TextField
+                            id="search"
+                            label="Segundo apellido"
+                            type="search"
+                            onChange={(e) => handleSetState('apellidoDos', e)}
+                            value={apellidoDos}
+                            InputLabelProps={{
+                                className: classes.inputShrink,
+                                shrink: true
+                            }}
+                        />
+
+                    </FormControl>
+                </Grid>
+                <Grid item xs={12} md={4}>
+
+                    <TipoProcedimiento
+                        tipoProcedimiento={tipoProcedimiento}
+                        asignarTipoProcedimiento={asignarTipoProcedimiento}
+                    />
+
+                </Grid>
+                <Grid item xs={12} md={8}>
+                    <FormControl className={classes.formControl}>
+                        <InputLabel htmlFor={'campoSelectInstitucion'}>Institución</InputLabel>
+                        <Select
+                            //style={{marginTop: '0px'}}
+                            value={current_entity}
+                            onChange={(e) => handleSetState('current_entity', e)}
+                            inputProps={{
+                                name: 'campoSelectInstitucion',
+                                id: 'campoSelectInstitucion',
+                            }}
+                        >
+                            <MenuItem value="ANY" key="ANY">
+                                Cualquiera
+                            </MenuItem>
+                            {
+                                entities.map(((entity, index) => {
+                                    return <MenuItem value={entity} key={index}>
+                                        {entity.nombre}
+                                    </MenuItem>
+                                }))
+                            }
+                        </Select>
+
+                    </FormControl>
+                </Grid>
+                    
+                <Grid item md={6} xs={12}>
+                    <FormControl component="fieldset" className={classes.formControl}>
+                        <FormLabel component="legend">Nivel de gobierno</FormLabel>
+                        <RadioGroup row
+                                    aria-label="gender"
+                                    name="gender1"
+                                    className={classes.group}
+                                    value={nivel}
+                                    onChange={(e) => changeLevel(e)}
+                        >
+                            <FormControlLabel value="todos" control={<Radio/>} label="Cualquiera"/>
+                            <FormControlLabel value="federal" control={<Radio/>} label="Federal"/>
+                            <FormControlLabel value="estatal" control={<Radio/>} label="Estatal"/>
+                        </RadioGroup>
+
+                    </FormControl>
+                </Grid>
+
+                <Grid item xs={12} md={6} align="right">
+                    <Button variant="contained" color="secondary" className={classes.button}
+                            onClick={() => limpiarBusqueda()}>
+                        Limpiar
+                    </Button>
+
+                    <Button variant="contained" color="secondary" className={classes.button} onClick={() => buscar()}>
+                        Buscar
+                    </Button>
+                </Grid>
+            </Grid>
+        </div>
+    );
 }
 
-BusquedaServidor.propTypes = {
-    classes: PropTypes.object.isRequired
-};
-
-export default withStyles(styles, {withTheme: true})(BusquedaServidor);
+export default withStyles(styles)(BusquedaServidor);

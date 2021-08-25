@@ -1,7 +1,6 @@
 import React from 'react';
 import {withStyles} from '@material-ui/core/styles'
 import Typography from "@material-ui/core/Typography"
-import PropTypes from 'prop-types';
 import Footer from '../Home/Footer';
 import TablaServidores from "./TablaServidores";
 import Grid from "@material-ui/core/Grid";
@@ -76,91 +75,76 @@ const TabContents = props => {
     }
 };
 
-class Index extends React.Component {
-    state = {
-        contentId: 1
-    };
+const Index = props => {
+    const {classes} = props;
+    const [contentId, setContentId] = React.useState( 1);
 
-    changeContent = id => {
-        this.setState({contentId: id});
-    };
+    return (
+        <div className={classes.root}>
+            <Header/>
 
+            {/* TABS */}
+            <Grid container spacing={0} justifyContent="center" className={classes.bgContainer}>
+                <Grid item xs={12} className={classes.section}>
+                    <Grid container spacing={0}>
 
-    render() {
-        const {classes} = this.props;
-        const {contentId} = this.state;
-        return (
-            <div className={classes.root}>
+                        <Grid item md={4} xs={12}
+                              onClick={() => setContentId(1)}
+                              className={classNames(contentId !== 1 ? classes.card : classes.cardSeleccionada, 'tab')}>
 
-                <Header/>
+                            <figure className={classes.figure}>
+                                <img src={img1} alt="Servidores que intervinen en procesos de contratacion"
+                                     className={classes.image}/>
+                            </figure>
+                            <Typography variant="subtitle1" className={classes.whiteText}
+                                        style={{fontWeight: contentId === 1 ? 500 : 300}}
+                            >
+                                Buscador de Servidores que intervienen en procesos de contratación
+                            </Typography>
 
-                {/* TABS */}
-                <Grid container spacing={0} justify="center" className={classes.bgContainer}>
-                    <Grid item xs={12} className={classes.section}>
-                        <Grid container spacing={0}>
+                        </Grid>
 
-                            <Grid item md={4} xs={12}
-                                  onClick={() => this.changeContent(1)}
-                                  className={classNames(contentId !== 1 ? classes.card : classes.cardSeleccionada, 'tab')}>
+                        <Grid item md={4} xs={12} onClick={() => setContentId(2)}
+                              className={classNames(contentId !== 2 ? classes.card : classes.cardSeleccionada, 'tab')}>
 
-                                <figure className={classes.figure}>
-                                    <img src={img1} alt="Servidores que intervinen en procesos de contratacion"
-                                         className={classes.image}/>
-                                </figure>
-                                <Typography variant="subtitle1" className={classes.whiteText}
-                                            style={{fontWeight: contentId === 1 ? 500 : 300}}
-                                >
-                                    Buscador de Servidores que intervienen en procesos de contratación
-                                </Typography>
+                            <figure className={classes.figure}>
+                                <img src={img2} alt="Particulares inhabilitados" className={classes.image}/>
+                            </figure>
+                            <Typography variant="subtitle1"
+                                        style={{fontWeight: contentId === 2 ? 500 : 300}}
+                                        className={classes.whiteText}>
 
-                            </Grid>
+                                Buscador de Particulares inhabilitados
+                            </Typography>
 
-                            <Grid item md={4} xs={12} onClick={() => this.changeContent(2)}
-                                  className={classNames(contentId !== 2 ? classes.card : classes.cardSeleccionada, 'tab')}>
+                        </Grid>
+                        <Grid item md={4} xs={12}
+                              onClick={() => setContentId(3)}
+                              className={classNames(contentId !== 3 ? classes.card : classes.cardSeleccionada, 'tab')}>
 
-                                <figure className={classes.figure}>
-                                    <img src={img2} alt="Particulares inhabilitados" className={classes.image}/>
-                                </figure>
-                                <Typography variant="subtitle1"
-                                            style={{fontWeight: contentId === 2 ? 500 : 300}}
-                                            className={classes.whiteText}>
+                            <figure className={classes.figure}>
+                                <img src={img3} alt="Visor de datos" className={classes.image}/>
+                            </figure>
+                            <Typography variant="subtitle1"
+                                        style={{fontWeight: contentId === 3 ? 500 : 300}}
+                                        className={classes.whiteText}>
+                                Visor de datos
+                            </Typography>
 
-                                    Buscador de Particulares inhabilitados
-                                </Typography>
-
-                            </Grid>
-                            <Grid item md={4} xs={12}
-                                  onClick={() => this.changeContent(3)}
-                                  className={classNames(contentId !== 3 ? classes.card : classes.cardSeleccionada, 'tab')}>
-
-                                <figure className={classes.figure}>
-                                    <img src={img3} alt="Visor de datos" className={classes.image}/>
-                                </figure>
-                                <Typography variant="subtitle1"
-                                            style={{fontWeight: contentId === 3 ? 500 : 300}}
-                                            className={classes.whiteText}>
-                                    Visor de datos
-                                </Typography>
-
-                            </Grid>
                         </Grid>
                     </Grid>
-
                 </Grid>
 
-                <Grid container justify='center' spacing={0} className={classes.bgPanelTable}>
-                    <Grid item xs={12} className={classes.sectionT}>
-                        <TabContents index={contentId}/>
-                    </Grid>
-                </Grid>
-                <Footer/>
-            </div>
-        );
-    }
-}
+            </Grid>
 
-Index.propTypes = {
-    classes: PropTypes.object.isRequired
+            <Grid container justifyContent='center' spacing={0} className={classes.bgPanelTable}>
+                <Grid item xs={12} className={classes.sectionT}>
+                    <TabContents index={contentId}/>
+                </Grid>
+            </Grid>
+            <Footer/>
+        </div>
+    );
 };
 
 export default withStyles(styles)(Index);

@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function AlertaError(props) {
+const AlertaError = props => {
     const classes = useStyles();
     const {open, setOpen} = props;
     const message = "Algo salio mal...";
@@ -45,3 +45,5 @@ export default function AlertaError(props) {
         </div>
     );
 }
+
+export default AlertaError;
