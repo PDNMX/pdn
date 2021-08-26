@@ -9,6 +9,7 @@ import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
 import BarraLogoMenu from "../../Compartidos/BarraLogoMenu";
 
 import Particles from 'react-particles-js';
+import {getParams} from './ParticleParams';
 
 const style = theme => ({
         root: {
@@ -63,156 +64,52 @@ const style = theme => ({
     }
 );
 
-class Header extends React.Component{
+const Header = props => {
+    const {classes} = props;
 
-    render(){
-        const {classes} = this.props;
+    return (
+        <div className={classes.root}>
 
-        return(
-            <div className={classes.root}>
+            <BarraLogoMenu/>
 
-               <BarraLogoMenu/>
-
-                <Grid container spacing={0} className="breadcrumb" justifyContent='center'>
-                    
-                    <Grid item xs={12} className={classes.item3}>
-                        <ul>
-                            <li>
-                                <Link component={RouterLink} className={classes.link} to='/'>
-                                    Plataforma Digital Nacional
-                                </Link>
-                            </li>
-                            <li>
-                                    Contrataciones
-                            </li>
-                        </ul>
-                    </Grid>
+            <Grid container spacing={0} className="breadcrumb" justifyContent='center'>
+                <Grid item xs={12} className={classes.item3}>
+                    <ul>
+                        <li>
+                            <Link component={RouterLink} className={classes.link} to='/'>
+                                Plataforma Digital Nacional
+                            </Link>
+                        </li>
+                        <li>
+                            Contrataciones
+                        </li>
+                    </ul>
                 </Grid>
+            </Grid>
 
-                <Grid container spacing={0} className={classes.container1} justifyContent='center'>
+            <Grid container spacing={0} className={classes.container1} justifyContent='center'>
                 <Particles 
-                        className={classes.particulas}
-                        params={{
-                            "particles": {
-                                "number": {
-                                    "value": 24,
-                                    "density": {
-                                        "enable": true,
-                                        "value_area": 800
-                                    }
-                                },
-                                "line_linked": {
-                                    "enable": false
-                                },
-                                "move": {
-                                    "speed": 1,
-                                    "out_mode": "out"
-                                },
-                                "shape": {
-                                    "type": [
-                                        "images"
-                                    ],
-                                    "images": [
-                                        {
-                                            "src": process.env.PUBLIC_URL + "/img/flotantes/contrataciones/1.svg",
-                                            "height": 30,
-                                            "width": 30
-                                        },
-                                        {
-                                            "src": process.env.PUBLIC_URL + "/img/flotantes/contrataciones/2.svg",
-                                            "height": 30,
-                                            "width": 30
-                                        },
-                                        {
-                                            "src": process.env.PUBLIC_URL + "/img/flotantes/contrataciones/3.svg",
-                                            "height": 30,
-                                            "width": 30
-                                        },
-                                        {
-                                            "src": process.env.PUBLIC_URL + "/img/flotantes/contrataciones/4.svg",
-                                            "height": 30,
-                                            "width": 30
-                                        },
-                                        {
-                                            "src": process.env.PUBLIC_URL + "/img/flotantes/contrataciones/5.svg",
-                                            "height": 30,
-                                            "width": 30
-                                        },
-                                        {
-                                            "src": process.env.PUBLIC_URL + "/img/flotantes/contrataciones/6.svg",
-                                            "height": 30,
-                                            "width": 30
-                                        },
-                                        {
-                                            "src": process.env.PUBLIC_URL + "/img/flotantes/contrataciones/7.svg",
-                                            "height": 30,
-                                            "width": 30
-                                        },
-                                        {
-                                            "src": process.env.PUBLIC_URL + "/img/flotantes/contrataciones/8.svg",
-                                            "height": 30,
-                                            "width": 30
-                                        },
-                                        {
-                                            "src": process.env.PUBLIC_URL + "/img/flotantes/contrataciones/9.svg",
-                                            "height": 30,
-                                            "width": 30
-                                        },
-                                        {
-                                            "src": process.env.PUBLIC_URL + "/img/flotantes/contrataciones/10.svg",
-                                            "height": 30,
-                                            "width": 30
-                                        },
-                                        {
-                                            "src": process.env.PUBLIC_URL + "/img/flotantes/contrataciones/11.svg",
-                                            "height": 30,
-                                            "width": 30
-                                        },
-                                        {
-                                            "src": process.env.PUBLIC_URL + "/img/flotantes/contrataciones/12.svg",
-                                            "height": 30,
-                                            "width": 30
-                                        },
-                                        {
-                                            "src": process.env.PUBLIC_URL + "/img/flotantes/contrataciones/13.svg",
-                                            "height": 30,
-                                            "width": 30
-                                        },
-                                    ]
-                                },
-                                "size": {
-                                    "value": 30,
-                                    "random": false,
-                                    "anim": {
-                                        "enable": true,
-                                        "speed": 4,
-                                        "size_min": 10,
-                                        "sync": false
-                                    }
-                                }
-                            },
-                            "retina_detect": true
-                        }}
-                    />
-                    <Grid item xs={12} md={4} align={isWidthUp('md', this.props.width)? 'right':'center'} className={classes.item1}>
-                        <img src={C} alt="Especificaciones" className={classes.logo}/>
-                    </Grid>
-
-                    <Grid item xs={12} md={6} className={classes.item2} align={isWidthUp('md', this.props.width)? 'left':'center'}>
-
-                        <Typography variant="h4" paragraph className={classes.whiteText} style={{  fontWeight: 600}}>
-                            Contrataciones públicas
-                        </Typography>
-
-                        <Typography variant="h4" paragraph className={classes.whiteText} style={{fontWeight: 300}}>
-                            Sistema de Información Pública de Contrataciones
-                        </Typography>
-
-                    </Grid>
+                    className={classes.particulas}
+                    params={getParams()}
+                />
+                <Grid item xs={12} md={4} align={isWidthUp('md', props.width)? 'right':'center'} className={classes.item1}>
+                    <img src={C} alt="Especificaciones" className={classes.logo}/>
                 </Grid>
-            </div>
-        )
-    }
+
+                <Grid item xs={12} md={6} className={classes.item2} align={isWidthUp('md', props.width)? 'left':'center'}>
+
+                    <Typography variant="h4" paragraph className={classes.whiteText} style={{  fontWeight: 600}}>
+                        Contrataciones públicas
+                    </Typography>
+
+                    <Typography variant="h4" paragraph className={classes.whiteText} style={{fontWeight: 300}}>
+                        Sistema de Información Pública de Contrataciones
+                    </Typography>
+
+                </Grid>
+            </Grid>
+        </div>
+    )
 }
 
 export default withWidth()(withStyles(style) (Header));
