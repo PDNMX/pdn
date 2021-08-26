@@ -1,7 +1,6 @@
 import React from "react";
 import {withStyles} from "@material-ui/core/styles";
 import {Typography} from "@material-ui/core"
-import PropTypes from "prop-types";
 import mp4 from '../../assets/videos/pdn_intro.mp4';
 import './VideoBanner.css';
 import VideoAppBar from "./VideoAppBar";
@@ -9,7 +8,6 @@ import VideoAppBar from "./VideoAppBar";
 import Version from '../../assets/version.png';
 
 const styles = theme => ({
-
     video: {
         zIndex: 1,
         right: 0,
@@ -48,37 +46,31 @@ const styles = theme => ({
     }
 });
 
-class Banner extends React.Component {
-    render() {
-        const {classes} = this.props;
-        return (
-            <div className="video-bg">
-                <video autoPlay loop muted className={classes.video}>
-                    <source src={mp4} type="video/mp4"/>
-                    Tu navegador no soporta este tag
-                </video>
+const Banner = props => {
+    const {classes} = props;
+    return (
+        <div className="video-bg">
+            <video autoPlay loop muted className={classes.video}>
+                <source src={mp4} type="video/mp4"/>
+                Tu navegador no soporta este tag
+            </video>
 
-                <div className={classes.alpha}>
-                    <img alt="Version" src={Version} width="142px;"/>
-                </div>
-
-                <div className={classes.appBar}>
-                    <VideoAppBar/>
-                </div>
-
-                <div className={classes.contents}>
-                    <Typography className={classes.text} variant="h2">
-                        Inteligencia <span className={classes.boldText}>anticorrupción</span> con datos.
-                    </Typography>
-                </div>
-
+            <div className={classes.alpha}>
+                <img alt="Version" src={Version} width="142px;"/>
             </div>
-        );
-    }
-}
 
-Banner.propTypes = {
-    classes: PropTypes.object.isRequired
+            <div className={classes.appBar}>
+                <VideoAppBar/>
+            </div>
+
+            <div className={classes.contents}>
+                <Typography className={classes.text} variant="h2">
+                    Inteligencia <span className={classes.boldText}>anticorrupción</span> con datos.
+                </Typography>
+            </div>
+
+        </div>
+    );
 };
 
 export default withStyles(styles)(Banner);

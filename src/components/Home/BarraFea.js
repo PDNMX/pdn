@@ -33,69 +33,67 @@ const styles = theme => ({
   }
 });
 
-class BarraFea extends React.Component {
-  render() {
-    const { classes } = this.props;
-    return (
+const BarraFea = props => {
+  const { classes } = props;
+  return (
       <div className={classes.root}>
         <Box display="flex" flexWrap="wrap" justifyContent="center">
 
-            <Box className={classes.item} flexGrow={1}>
-              <RouterLink to="/mesa-de-ayuda" className={classes.link}>
-                <img src={Mesa} className={classes.icon} alt="Mesa de ayuda" />
-                <Typography>Mesa de ayuda</Typography>
-              </RouterLink>
-            </Box>
+          <Box className={classes.item} flexGrow={1}>
+            <RouterLink to="/mesa-de-ayuda" className={classes.link}>
+              <img src={Mesa} className={classes.icon} alt="Mesa de ayuda" />
+              <Typography>Mesa de ayuda</Typography>
+            </RouterLink>
+          </Box>
 
-            <Box className={classes.item} flexGrow={1}>
-              <Link
+          <Box className={classes.item} flexGrow={1}>
+            <Link
                 href="https://www.plataformadigitalnacional.org/blog"
                 className={classes.link}
                 underline="none"
-              >
-                <img src={Blog} className={classes.icon} alt="Blog" />
-                <Typography>Blog</Typography>
-              </Link>
-            </Box>
+            >
+              <img src={Blog} className={classes.icon} alt="Blog" />
+              <Typography>Blog</Typography>
+            </Link>
+          </Box>
 
-            <Box className={classes.item} flexGrow={1}>
-              <RouterLink to="/gaa/calidad" className={classes.link}>
-                <img
+          <Box className={classes.item} flexGrow={1}>
+            <RouterLink to="/gaa/calidad" className={classes.link}>
+              <img
                   src={Calidad}
                   className={classes.icon}
                   alt="Calidad de datos"
-                />
-                <Typography>Calidad de datos</Typography>
-              </RouterLink>
-            </Box>
+              />
+              <Typography>Calidad de datos</Typography>
+            </RouterLink>
+          </Box>
 
-            <Box className={classes.item} flexGrow={1}>
-              <RouterLink to="/especificaciones" className={classes.link}>
-                <img
+          <Box className={classes.item} flexGrow={1}>
+            <RouterLink to="/especificaciones" className={classes.link}>
+              <img
                   src={Espe}
                   className={classes.icon}
                   alt="Especificaciones técnicas"
-                />
-                <Typography>Especificaciones</Typography>
-              </RouterLink>
-            </Box>
+              />
+              <Typography>Especificaciones</Typography>
+            </RouterLink>
+          </Box>
 
-            <Box className={classes.item} flexGrow={1}>
-              <Link href="https://mda.plataformadigitalnacional.org/"
-                    underline="none"
-                    className={classes.link}>
-                <img
+          <Box className={classes.item} flexGrow={1}>
+            <Link href="https://mda.plataformadigitalnacional.org/"
+                  underline="none"
+                  className={classes.link}>
+              <img
                   src={MDA}
                   className={classes.icon}
                   alt="Mercado Digital Anticorrupción"
-                />
-                <Typography>MDA</Typography>
-              </Link>
-            </Box>
+              />
+              <Typography>MDA</Typography>
+            </Link>
+          </Box>
         </Box>
       </div>
-    );
-  }
+  );
 }
 
 export default withStyles(styles)(BarraFea);

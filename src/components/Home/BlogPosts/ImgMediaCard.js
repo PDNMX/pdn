@@ -16,41 +16,36 @@ const styles = theme => ({
     }
 });
 
-class ImgMediaCard extends React.Component{
-
-    render () {
-
-        const {classes, post} = this.props;
-        return (
-            <Card className={classes.card}>
-                <CardActionArea onClick={ () => { window.location.href = post.url }}>
-                    <CardMedia
-                        component="img"
-                        alt="Blog PDN"
-                        height="140"
-                        image={post.feature_image}
-                        title={post.title}
-                        href={post.url}
-                    />
-                    <CardContent href={post.url}>
-                        {/*<Typography gutterBottom variant="h5" component="h2">
+const ImgMediaCard = props => {
+    const {classes, post} = props;
+    return (
+        <Card className={classes.card}>
+            <CardActionArea onClick={ () => { window.location.href = post.url }}>
+                <CardMedia
+                    component="img"
+                    alt="Blog PDN"
+                    height="140"
+                    image={post.feature_image}
+                    title={post.title}
+                    href={post.url}
+                />
+                <CardContent href={post.url}>
+                    {/*<Typography gutterBottom variant="h5" component="h2">
                         Blog
                     </Typography>*/}
-                        <Typography variant="body2" color="textSecondary" component="p" align="left">
-                            {post.title}
-                        </Typography>
-                    </CardContent>
-                </CardActionArea>
-                {/*<CardActions>
+                    <Typography variant="body2" color="textSecondary" component="p" align="left">
+                        {post.title}
+                    </Typography>
+                </CardContent>
+            </CardActionArea>
+            {/*<CardActions>
                     <Button size="small" color="primary" href={post.url}>
                         Conoce más
                     </Button>
 
                 </CardActions>*/}
-            </Card>
-        );
-    }
-}
-
+        </Card>
+    );
+};
 
 export default withStyles(styles)(ImgMediaCard);

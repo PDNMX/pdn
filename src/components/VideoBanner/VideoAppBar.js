@@ -138,7 +138,7 @@ class VideoAppBar extends React.Component {
                 boxShadow: "none"
               }}
           >
-            <Grid container spacing={0} justify="center">
+            <Grid container spacing={0} justifyContent="center">
               <Grid item xs={12} className={classes.item}>
                 <Toolbar>
                   <IconButton

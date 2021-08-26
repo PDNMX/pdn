@@ -4,8 +4,8 @@ import Plat from "../../../assets/iconos_barra/ico-plataformas_sistemas.svg";
 
 const styles = theme => ({
     root: {
-      paddingTop: theme.spacing(10),
-      paddingBottom: theme.spacing(10),
+        paddingTop: theme.spacing(10),
+        paddingBottom: theme.spacing(10),
     },
     headingText: {
         color: theme.palette.titleBanner.color,
@@ -26,7 +26,7 @@ const styles = theme => ({
         justifyContent: "center",
     },
     icon: {
-       width: '90%',
+        width: '90%',
         [theme.breakpoints.down('md')]:{
             maxWidth: 350
         }
@@ -51,7 +51,7 @@ const Avance = props => {
         </Box>
 
         <Grid container spacing={0} className={classes.item}>
-            <Grid item xs={12} sm={12} md={4} lg={4} xl={4} justify="center" alignContent="center">
+            <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
                 <Box className={classes.logoBox}>
                     <img src={Plat} alt="Interconexión subnacional" className={classes.icon}/>
                 </Box>
@@ -91,11 +91,7 @@ const Avance = props => {
 
             </Grid>
         </Grid>
-
-
-
     </div>
 }
-
 
 export default withStyles(styles)(Avance);

@@ -5,7 +5,6 @@ import ImgMediaCard from "./ImgMediaCard";
 import rp from 'request-promise';
 import Typography from "@material-ui/core/Typography";
 
-
 const styles = theme => ({
     root: {
         flexGrow:1
@@ -25,14 +24,11 @@ const styles = theme => ({
     }
 });
 
+const BlogPosts = props => {
+    const [posts, setPosts] = React.useState([]);
+    const {classes} = props;
 
-class BlogPosts extends React.Component{
-
-    state= {
-        posts: []
-    };
-
-    componentDidMount() {
+    React.useEffect( () => {
         const opts = {
             uri: process.env.REACT_APP_BLOG_API_URL,
             method: "GET",
@@ -45,40 +41,32 @@ class BlogPosts extends React.Component{
 
         rp(opts).then(data => {
             //console.log(data);
-            this.setState({
-                posts: data.posts
-            })
+            setPosts(data.posts);
         }).catch(error => {
             console.log(error);
         })
-    }
+    },[]);
 
-    render() {
-
-        const {classes} = this.props;
-        return (
-            <div className={classes.root}>
-                <Grid container spacing={0} justify="center" className={classes.container}>
-                    <Grid item xs={12} align="center">
-                        <Typography className={classes.headingText} paragraph>
-                            Últimas noticias
-                        </Typography>
-                    </Grid>
-
-
-                    {
-                        this.state.posts.length === 0?
-                            <Typography>Blog no disponible :(</Typography>:
-                            this.state.posts.map((p,i) => (
-                                <Grid item xs={12} sm={12} md={6} lg={6} xl={4} key={i} align="center">
-                                    <ImgMediaCard post={p}/>
-                                </Grid>
-                            ))
-                    }
+    return (
+        <div className={classes.root}>
+            <Grid container spacing={0} justifyContent="center" className={classes.container}>
+                <Grid item xs={12} align="center">
+                    <Typography className={classes.headingText} paragraph>
+                        Últimas noticias
+                    </Typography>
                 </Grid>
-            </div>
-        );
-    }
+                {
+                    posts.length === 0?
+                        <Typography>Blog no disponible :(</Typography>:
+                        posts.map((p,i) => (
+                            <Grid item xs={12} sm={12} md={6} lg={6} xl={4} key={i} align="center">
+                                <ImgMediaCard post={p}/>
+                            </Grid>
+                        ))
+                }
+            </Grid>
+        </div>
+    );
 }
 
 
