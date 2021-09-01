@@ -141,7 +141,7 @@ const BusquedaServidor = props => {
                             }}
                         >
                             <MenuItem value="ANY" key="ANY">
-                                Cualquiera
+                                Todas
                             </MenuItem>
                             {
                                 entities.map(((entity, index) => {
@@ -165,7 +165,7 @@ const BusquedaServidor = props => {
                                     value={nivel}
                                     onChange={(e) => changeLevel(e)}
                         >
-                            <FormControlLabel value="todos" control={<Radio/>} label="Cualquiera"/>
+                            <FormControlLabel value="todos" control={<Radio/>} label="Todos"/>
                             <FormControlLabel value="federal" control={<Radio/>} label="Federal"/>
                             <FormControlLabel value="estatal" control={<Radio/>} label="Estatal"/>
                         </RadioGroup>
