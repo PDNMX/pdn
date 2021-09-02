@@ -360,7 +360,7 @@ class BusquedaServidor extends React.Component {
                                     renderValue={
                                         selected => {
                                             if (selected.length === 0) {
-                                                return <em>Cualquiera</em>;
+                                                return <em>Todos</em>;
                                             }
                                             return selected.map(element => element.label).join(', ')
                                         }
@@ -368,7 +368,7 @@ class BusquedaServidor extends React.Component {
 
                             >
                                 <MenuItem disabled value={[]}>
-                                    <em>Cualquiera</em>
+                                    <em>Todos</em>
                                 </MenuItem>
                                 {tiposSancion.map(tipo => (
                                     <MenuItem key={tipo.value} value={tipo}>
@@ -390,7 +390,7 @@ class BusquedaServidor extends React.Component {
                                     onChange={(e) => this.handleChangeCampo('institucionDependencia', e)}
                                     displayEmpty
                             >
-                                <MenuItem value="" key={-1}><em>Cualquiera</em></MenuItem>
+                                <MenuItem value="" key={-1}><em>Todas</em></MenuItem>
                                 {
                                     institucionesLista.map((item => {
                                         return <MenuItem value={item.value} key={item.key}>

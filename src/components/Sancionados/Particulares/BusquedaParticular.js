@@ -341,7 +341,7 @@ class BusquedaParticular extends React.Component {
                                     renderValue={
                                         selected => {
                                             if (selected.length === 0) {
-                                                return <em>Cualquiera</em>;
+                                                return <em>Todos</em>;
                                             }
                                             return selected.map(element => element.label).join(', ')
                                         }
@@ -349,7 +349,7 @@ class BusquedaParticular extends React.Component {
 
                             >
                                 <MenuItem disabled value={[]}>
-                                    <em>Cualquiera</em>
+                                    <em>Todos</em>
                                 </MenuItem>
                                 {tiposSancion.map(tipo => (
                                     <MenuItem key={tipo.value} value={tipo}>
@@ -363,12 +363,12 @@ class BusquedaParticular extends React.Component {
                     </Grid>
                     <Grid item xs={12} md={3}>
                         <FormControl className={classes.formControl}>
-                            <InputLabel shrink id="tipoSancion-label">Tipo persona</InputLabel>
+                            <InputLabel shrink id="tipoPersona-label">Tipo persona</InputLabel>
                             <Select value={tipoPersona}
                                     onChange={(e) => this.handleChangeCampo('tipoPersona', e)}
                                     displayEmpty
                             >
-                                <MenuItem value="" key={-1}><em>Cualquiera</em></MenuItem>
+                                <MenuItem value="" key={-1}><em>Todos</em></MenuItem>
                                 <MenuItem value="F" key={"F"}>Física</MenuItem>
                                 <MenuItem value="M" key={"M"}>Moral</MenuItem>
                             </Select>
@@ -383,7 +383,7 @@ class BusquedaParticular extends React.Component {
                                     onChange={(e) => this.handleChangeCampo('institucionDependencia', e)}
                                     displayEmpty
                             >
-                                <MenuItem value="" key={-1}><em>Cualquiera</em></MenuItem>
+                                <MenuItem value="" key={-1}><em>Todas</em></MenuItem>
                                 {
                                     institucionesLista.map((item => {
                                         return <MenuItem value={item.value} key={item.key}>
