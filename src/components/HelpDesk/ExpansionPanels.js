@@ -183,7 +183,7 @@ export default function CustomizedExpansionPanels() {
                             El marco normativo de la PDN está compuesto por la Ley General del Sistema Nacional Anticorrupción (LGSNA), la Ley General de Responsabilidades Administrativas (LGSNA) y las Bases para el Funcionamiento de la Plataforma Digital Nacional (publicadas el 23 de octubre del 2018 en el Diario Oficial de la Federación).
                         </Typography>
 
-                        <MuiLink component='a' href="http://www.diputados.gob.mx/LeyesBiblio/pdf/LGSNA.pdf">
+                        <MuiLink component='a' href="http://www.diputados.gob.mx/LeyesBiblio/pdf/LGSNA_200521.pdf">
                             Ley General Del Sistema Nacional Anticorrupción
                         </MuiLink>
                         <Typography paragraph>(Artículos 9, fracciones XII, XIII y XVI; 17; 21, VII, b); 35, X y XI; Título cuarto)</Typography>
@@ -224,7 +224,7 @@ export default function CustomizedExpansionPanels() {
                             </li>
                         </ol>
 
-                        <MuiLink component='a' href="https://declaranet.gob.mx/docs/LGRA.pdf">
+                        <MuiLink component='a' href="http://www.diputados.gob.mx/LeyesBiblio/pdf/LGRA_200521.pdf">
                             Ley General de Responsabilidades Administrativas
                         </MuiLink>
 
