@@ -43,6 +43,12 @@ export default {
                 moneda: null
             },
             actividades: []
+        },actividadIndustrialComercialEmpresarial: {
+            remuneracionTotal: {
+                valor: null,
+                moneda: null
+            },
+            actividades: []
         },
         actividadFinanciera: {
             remuneracionTotal: {
@@ -91,7 +97,7 @@ export default {
             valor: null,
             moneda: null,
         },
-        actividadIndustialComercialEmpresarial: {
+        actividadIndustrialComercialEmpresarial: {
             remuneracionTotal: {
                 valor: null,
                 moneda: null,

@@ -19,7 +19,7 @@ const ActividadIndustrial = (props) => {
 	const exp = expansion();
 	const sum = sumary();
 
-	const { actividadIndustialComercialEmpresarial } = props;
+	const { actividadIndustrialComercialEmpresarial } = props;
 
 	return (
 		<ExpansionPanel>
@@ -40,8 +40,8 @@ const ActividadIndustrial = (props) => {
 					<Grid item xs={12} md={3}>
 						<Typography className={exp.heading}>
 							<strong>
-								{getMoneda(actividadIndustialComercialEmpresarial.remuneracionTotal.valor)}{' '}
-								{actividadIndustialComercialEmpresarial.remuneracionTotal.moneda}
+								{getMoneda(actividadIndustrialComercialEmpresarial.remuneracionTotal.valor)}{' '}
+								{actividadIndustrialComercialEmpresarial.remuneracionTotal.moneda}
 							</strong>
 						</Typography>
 					</Grid>
@@ -58,8 +58,8 @@ const ActividadIndustrial = (props) => {
 					<Grid item xs={12} md={3}>
 						<Typography className={classes.cardTitle}>INGRESO:</Typography>
 					</Grid>
-					{typeof actividadIndustialComercialEmpresarial.actividades !== 'undefined' &&
-						actividadIndustialComercialEmpresarial.actividades.map((act, idx) => {
+					{typeof actividadIndustrialComercialEmpresarial.actividades !== 'undefined' &&
+						actividadIndustrialComercialEmpresarial.actividades.map((act, idx) => {
 							return (
 								<Grid container spacing={1} key={'act-' + idx}>
 									<Grid item xs={12} md={5}>
@@ -389,8 +389,8 @@ export default function ({ data: info, titulo }) {
 								</Grid>
 								<Grid item xs={12}>
 									<ActividadIndustrial
-										actividadIndustialComercialEmpresarial={
-											data.actividadIndustialComercialEmpresarial
+										actividadIndustrialComercialEmpresarial={
+											data.actividadIndustialComercialEmpresarial||data.actividadIndustrialComercialEmpresarial
 										}
 									/>
 

@@ -10,8 +10,8 @@ import { sumary, expansion, Divider, getMoneda } from '../utils';
 import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-import { ActividadIndustrial, ActividadFinanciera, ServiciosProfesionales } from './08Ingresos';
-
+import {  ActividadFinanciera, ServiciosProfesionales } from './08Ingresos';
+import ActividadIndustrial from './08Ingresos/ActividadIndustrial';
 import basicInicial from './00_basic_incial';
 
 const useStyles = makeStyles(styleSecciones);
@@ -121,7 +121,7 @@ export default function ({ data: info, titulo }) {
 						</Grid>
 						<Grid item xs={12}>
 							<ActividadIndustrial
-								actividadIndustialComercialEmpresarial={data.actividadIndustialComercialEmpresarial}
+								actividadIndustrialComercialEmpresarial={data.actividadIndustialComercialEmpresarial||data.actividadIndustrialComercialEmpresarial}
 							/>
 							<ActividadFinanciera actividadFinanciera={data.actividadFinanciera} />
 							<ServiciosProfesionales serviciosProfesionales={data.serviciosProfesionales} />

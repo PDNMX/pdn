@@ -15,6 +15,13 @@ export default {
             },
             actividades: [
             ]
+        },actividadIndustrialComercialEmpresarial: {
+            remuneracionTotal: {
+                valor: null,
+                moneda: null
+            },
+            actividades: [
+            ]
         },
         actividadFinanciera: {
             remuneracionTotal: {

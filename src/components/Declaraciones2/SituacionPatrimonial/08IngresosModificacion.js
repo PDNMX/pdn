@@ -8,12 +8,12 @@ import styleSecciones from '../styleSecciones';
 import { Divider, getMoneda } from '../utils';
 
 import {
-	ActividadIndustrial,
 	ActividadFinanciera,
 	ServiciosProfesionales,
 	EnajenacionBienes,
 	OtrosIngresos
 } from './08Ingresos';
+import ActividadIndustrial from './08Ingresos/ActividadIndustrial';
 
 import basicModif from './00_basic_modif';
 
@@ -61,7 +61,7 @@ export default function ({ data: info, titulo }) {
 						</Grid>
 						<Grid item xs={12}>
 							<ActividadIndustrial
-								actividadIndustialComercialEmpresarial={data.actividadIndustialComercialEmpresarial}
+								actividadIndustrialComercialEmpresarial={data.actividadIndustialComercialEmpresarial||data.actividadIndustrialComercialEmpresarial}
 							/>
 							<ActividadFinanciera actividadFinanciera={data.actividadFinanciera} />
 							<ServiciosProfesionales serviciosProfesionales={data.serviciosProfesionales} />
