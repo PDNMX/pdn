@@ -8,21 +8,6 @@ export default {
             valor: null,
             moneda: null
         },
-        actividadIndustialComercialEmpresarial: {
-            remuneracionTotal: {
-                valor: null,
-                moneda: null
-            },
-            actividades: [
-            ]
-        },actividadIndustrialComercialEmpresarial: {
-            remuneracionTotal: {
-                valor: null,
-                moneda: null
-            },
-            actividades: [
-            ]
-        },
         actividadFinanciera: {
             remuneracionTotal: {
                 valor: null,
