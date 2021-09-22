@@ -156,8 +156,9 @@ export default function({ data, titulo }) {
 		prestamo = [];
 	} else {
 		prestamo = data.prestamo
-			? data.prestamo.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC')
+			? data.prestamo.filter((i) => i.titular && i.titular.length === 1 && i.titular[0].clave === 'DEC')
 			: [];
+		prestamo = prestamo.length!==0 ? prestamo : data.prestamo;		
 	}
 
 	return (
