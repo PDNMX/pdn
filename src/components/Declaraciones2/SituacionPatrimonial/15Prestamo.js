@@ -8,7 +8,8 @@ import styleSecciones from '../styleSecciones';
 import DatosNoRegistrados from '../DatosNoRegistrados';
 import DatosReservados from '../DatosReservados';
 import { sumary, expansion, Divider } from '../utils';
-import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
+
+import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from "../common/BoxAccordion";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import { Disclaimer } from '../utils';
@@ -71,8 +72,8 @@ function Prestamo({ prestamo }) {
 		return (
 			<React.Fragment key={'prestamo-' + idx}>
 				{inmueble && (
-					<ExpansionPanel>
-						<ExpansionPanelSummary
+					<BoxAccordion>
+						<BoxAccordionSummary
 							classes={sum}
 							expandIcon={<ExpandMoreIcon />}
 							aria-controls="panel1a-content"
@@ -81,8 +82,8 @@ function Prestamo({ prestamo }) {
 							<Typography className={exp.heading}>
 								<strong>INMUEBLE</strong>
 							</Typography>
-						</ExpansionPanelSummary>
-						<ExpansionPanelDetails>
+						</BoxAccordionSummary>
+						<BoxAccordionDetails>
 							<Grid container spacing={1}>
 								<Grid item xs={12} md={4}>
 									<Typography className={classes.cardTitle}>TIPO DE BIEN:</Typography>
@@ -94,12 +95,12 @@ function Prestamo({ prestamo }) {
 								</Grid>
 								<Duenio obj={obj} />
 							</Grid>
-						</ExpansionPanelDetails>
-					</ExpansionPanel>
+						</BoxAccordionDetails>
+					</BoxAccordion>
 				)}
 				{vehiculo && (
-					<ExpansionPanel>
-						<ExpansionPanelSummary
+					<BoxAccordion>
+						<BoxAccordionSummary
 							classes={sum}
 							expandIcon={<ExpandMoreIcon />}
 							aria-controls="panel1a-content"
@@ -108,8 +109,8 @@ function Prestamo({ prestamo }) {
 							<Typography className={exp.heading}>
 								<strong>VEHÍCULO</strong>
 							</Typography>
-						</ExpansionPanelSummary>
-						<ExpansionPanelDetails>
+						</BoxAccordionSummary>
+						<BoxAccordionDetails>
 							<Grid container spacing={1}>
 								<Grid item xs={12} md={4}>
 									<Typography className={classes.cardTitle}>TIPO DE BIEN:</Typography>
@@ -139,8 +140,8 @@ function Prestamo({ prestamo }) {
 								</Grid>
 								<Duenio obj={obj} />
 							</Grid>
-						</ExpansionPanelDetails>
-					</ExpansionPanel>
+						</BoxAccordionDetails>
+					</BoxAccordion>
 				)}
 			</React.Fragment>
 		);

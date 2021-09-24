@@ -1,7 +1,8 @@
 import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
 
-import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
+
+import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from "../common/BoxAccordion";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import { sumary, expansion } from './utils';
@@ -13,8 +14,8 @@ export default function DatosCamposPrivados(props) {
 
 	return (
 		<Grid item xs={12}>
-			<ExpansionPanel>
-				<ExpansionPanelSummary
+			<BoxAccordion>
+				<BoxAccordionSummary
 					classes={sum}
 					expandIcon={<ExpandMoreIcon />}
 					aria-controls="panel1a-content"
@@ -23,15 +24,15 @@ export default function DatosCamposPrivados(props) {
 					<Typography className={exp.heading}>
 						<strong>Esta seccion contiene los siguientes datos de carácter reservado:</strong>
 					</Typography>
-				</ExpansionPanelSummary>
-				<ExpansionPanelDetails>
+				</BoxAccordionSummary>
+				<BoxAccordionDetails>
 					<ul>
 						{campos.map((campo, index) => {
 							return <li key={'campo-' + index}>{campo}</li>;
 						})}
 					</ul>
-				</ExpansionPanelDetails>
-			</ExpansionPanel>
+				</BoxAccordionDetails>
+			</BoxAccordion>
 		</Grid>
 	);
 }

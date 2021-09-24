@@ -8,7 +8,8 @@ import styleSecciones from '../styleSecciones';
 import DatosNoRegistrados from '../DatosNoRegistrados';
 import DatosReservados from '../DatosReservados';
 import { sumary, expansion, Divider, getMoneda, Porcentaje, Ubicacion } from '../utils';
-import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
+
+import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from "../common/BoxAccordion";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const useStyles = makeStyles(styleSecciones);
@@ -20,8 +21,8 @@ function Participacion(props) {
 	const { participaciones } = props;
 	return participaciones.map((obj, idx) => {
 		return (
-			<ExpansionPanel key={'par-' + idx}>
-				<ExpansionPanelSummary
+			<BoxAccordion key={'par-' + idx}>
+				<BoxAccordionSummary
 					classes={sum}
 					expandIcon={<ExpandMoreIcon />}
 					aria-controls="panel1a-content"
@@ -32,8 +33,8 @@ function Participacion(props) {
 							{obj.tipoParticipacion.valor} DE {obj.nombreEmpresaSociedadAsociacion}
 						</strong>
 					</Typography>
-				</ExpansionPanelSummary>
-				<ExpansionPanelDetails>
+				</BoxAccordionSummary>
+				<BoxAccordionDetails>
 					<Grid container spacing={1}>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>PARTICIPA:</Typography>
@@ -80,8 +81,8 @@ function Participacion(props) {
 						<Divider />
 						<Ubicacion ubicacion={obj.ubicacion} />
 					</Grid>
-				</ExpansionPanelDetails>
-			</ExpansionPanel>
+				</BoxAccordionDetails>
+			</BoxAccordion>
 		);
 	});
 }

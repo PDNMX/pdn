@@ -11,7 +11,8 @@ import Transmisor from '../CompTransmisor';
 import { getUnidad, getMoneda } from '../utils';
 import { sumary, expansion, Divider } from '../utils';
 
-import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
+
+import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from "../common/BoxAccordion";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import { Disclaimer } from '../utils';
@@ -26,8 +27,8 @@ function BienInmuble(props) {
 
 	return inmuebles.map((inm, idx) => {
 		return (
-			<ExpansionPanel key={'inm-' + idx}>
-				<ExpansionPanelSummary
+			<BoxAccordion key={'inm-' + idx}>
+				<BoxAccordionSummary
 					classes={sum}
 					expandIcon={<ExpandMoreIcon />}
 					aria-controls="panel1a-content"
@@ -36,8 +37,8 @@ function BienInmuble(props) {
 					<Typography className={exp.heading}>
 						<strong>TIPO DE INMUEBLE: {inm.tipoInmueble.valor}</strong>
 					</Typography>
-				</ExpansionPanelSummary>
-				<ExpansionPanelDetails>
+				</BoxAccordionSummary>
+				<BoxAccordionDetails>
 					<Grid container spacing={1}>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>TIPO DE INMUEBLE:</Typography>
@@ -121,8 +122,8 @@ function BienInmuble(props) {
 
 						{inm.transmisor && <Transmisor transmisor={inm.transmisor} />}
 					</Grid>
-				</ExpansionPanelDetails>
-			</ExpansionPanel>
+				</BoxAccordionDetails>
+			</BoxAccordion>
 		);
 	});
 }

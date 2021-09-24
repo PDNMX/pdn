@@ -9,7 +9,8 @@ import basicInicial from './00_basic_incial';
 
 import { sumary, expansion, Divider, getMoneda } from '../utils';
 import styleSecciones from '../styleSecciones';
-import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
+
+import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from "../common/BoxAccordion";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const useStyles = makeStyles(styleSecciones);
@@ -22,8 +23,8 @@ const ActividadIndustrial = (props) => {
 	const { actividadIndustrialComercialEmpresarial } = props;
 
 	return (
-		<ExpansionPanel>
-			<ExpansionPanelSummary
+		<BoxAccordion>
+			<BoxAccordionSummary
 				classes={sum}
 				expandIcon={<ExpandMoreIcon />}
 				aria-controls="panel1a-content"
@@ -46,8 +47,8 @@ const ActividadIndustrial = (props) => {
 						</Typography>
 					</Grid>
 				</Grid>
-			</ExpansionPanelSummary>
-			<ExpansionPanelDetails>
+			</BoxAccordionSummary>
+			<BoxAccordionDetails>
 				<Grid container spacing={1}>
 					<Grid item xs={12} md={5}>
 						<Typography className={classes.cardTitle}>NOMBRE O RAZÓN SOCIAL:</Typography>
@@ -77,8 +78,8 @@ const ActividadIndustrial = (props) => {
 							);
 						})}
 				</Grid>
-			</ExpansionPanelDetails>
-		</ExpansionPanel>
+			</BoxAccordionDetails>
+		</BoxAccordion>
 	);
 };
 
@@ -90,8 +91,8 @@ const ActividadFinanciera = (props) => {
 	const { actividadFinanciera } = props;
 
 	return (
-		<ExpansionPanel>
-			<ExpansionPanelSummary
+		<BoxAccordion>
+			<BoxAccordionSummary
 				classes={sum}
 				expandIcon={<ExpandMoreIcon />}
 				aria-controls="panel1a-content"
@@ -114,8 +115,8 @@ const ActividadFinanciera = (props) => {
 						</Typography>
 					</Grid>
 				</Grid>
-			</ExpansionPanelSummary>
-			<ExpansionPanelDetails>
+			</BoxAccordionSummary>
+			<BoxAccordionDetails>
 				<Grid container spacing={1}>
 					<Grid item xs={12} md={9}>
 						<Typography className={classes.cardTitle}>
@@ -140,8 +141,8 @@ const ActividadFinanciera = (props) => {
 						);
 					})}
 				</Grid>
-			</ExpansionPanelDetails>
-		</ExpansionPanel>
+			</BoxAccordionDetails>
+		</BoxAccordion>
 	);
 };
 
@@ -153,8 +154,8 @@ const ServiciosProfesionales = (props) => {
 	const { serviciosProfesionales } = props;
 
 	return (
-		<ExpansionPanel>
-			<ExpansionPanelSummary
+		<BoxAccordion>
+			<BoxAccordionSummary
 				classes={sum}
 				expandIcon={<ExpandMoreIcon />}
 				aria-controls="panel1a-content"
@@ -178,8 +179,8 @@ const ServiciosProfesionales = (props) => {
 						</Typography>
 					</Grid>
 				</Grid>
-			</ExpansionPanelSummary>
-			<ExpansionPanelDetails>
+			</BoxAccordionSummary>
+			<BoxAccordionDetails>
 				<Grid container spacing={1}>
 					<Grid item xs={12} md={9}>
 						<Typography className={classes.cardTitle}>TIPO DE SERVICIO PRESTADO</Typography>
@@ -202,8 +203,8 @@ const ServiciosProfesionales = (props) => {
 						);
 					})}
 				</Grid>
-			</ExpansionPanelDetails>
-		</ExpansionPanel>
+			</BoxAccordionDetails>
+		</BoxAccordion>
 	);
 };
 
@@ -215,8 +216,8 @@ const EnajenacionBienes = (props) => {
 	const { enajenacionBienes } = props;
 
 	return (
-		<ExpansionPanel>
-			<ExpansionPanelSummary
+		<BoxAccordion>
+			<BoxAccordionSummary
 				classes={sum}
 				expandIcon={<ExpandMoreIcon />}
 				aria-controls="panel1a-content"
@@ -237,8 +238,8 @@ const EnajenacionBienes = (props) => {
 						</Typography>
 					</Grid>
 				</Grid>
-			</ExpansionPanelSummary>
-			<ExpansionPanelDetails>
+			</BoxAccordionSummary>
+			<BoxAccordionDetails>
 				<Grid container spacing={1}>
 					<Grid item xs={12} md={9}>
 						<Typography className={classes.cardTitle}>TIPO DE BIEN ENAJENADO</Typography>
@@ -261,8 +262,8 @@ const EnajenacionBienes = (props) => {
 						);
 					})}
 				</Grid>
-			</ExpansionPanelDetails>
-		</ExpansionPanel>
+			</BoxAccordionDetails>
+		</BoxAccordion>
 	);
 };
 
@@ -274,8 +275,8 @@ const OtrosIngresos = (props) => {
 	const { otrosIngresos } = props;
 
 	return (
-		<ExpansionPanel>
-			<ExpansionPanelSummary
+		<BoxAccordion>
+			<BoxAccordionSummary
 				classes={sum}
 				expandIcon={<ExpandMoreIcon />}
 				aria-controls="panel1a-content"
@@ -298,8 +299,8 @@ const OtrosIngresos = (props) => {
 						</Typography>
 					</Grid>
 				</Grid>
-			</ExpansionPanelSummary>
-			<ExpansionPanelDetails>
+			</BoxAccordionSummary>
+			<BoxAccordionDetails>
 				<Grid container spacing={1}>
 					<Grid item xs={12} md={9}>
 						<Typography className={classes.cardTitle}>
@@ -325,8 +326,8 @@ const OtrosIngresos = (props) => {
 						);
 					})}
 				</Grid>
-			</ExpansionPanelDetails>
-		</ExpansionPanel>
+			</BoxAccordionDetails>
+		</BoxAccordion>
 	);
 };
 

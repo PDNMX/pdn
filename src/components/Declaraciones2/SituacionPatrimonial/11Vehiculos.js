@@ -9,7 +9,8 @@ import DatosNoRegistrados from '../DatosNoRegistrados';
 import DatosReservados from '../DatosReservados';
 import Transmisor from '../CompTransmisor';
 import { sumary, expansion, Divider, getMoneda } from '../utils';
-import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
+
+import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from "../common/BoxAccordion";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import { Disclaimer } from '../utils';
@@ -23,8 +24,8 @@ function Vehiculo(props) {
 	const { vehiculos } = props;
 	return vehiculos.map((obj, idx) => {
 		return (
-			<ExpansionPanel key={'veh-' + idx}>
-				<ExpansionPanelSummary
+			<BoxAccordion key={'veh-' + idx}>
+				<BoxAccordionSummary
 					classes={sum}
 					expandIcon={<ExpandMoreIcon />}
 					aria-controls="panel1a-content"
@@ -33,8 +34,8 @@ function Vehiculo(props) {
 					<Typography className={exp.heading}>
 						<strong>{obj.tipoVehiculo && obj.tipoVehiculo.valor}</strong>
 					</Typography>
-				</ExpansionPanelSummary>
-				<ExpansionPanelDetails>
+				</BoxAccordionSummary>
+				<BoxAccordionDetails>
 					<Grid container spacing={1}>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>TIPO DE VEHÍCULO:</Typography>
@@ -108,8 +109,8 @@ function Vehiculo(props) {
 						<Divider />
 						{obj.transmisor && <Transmisor transmisor={obj.transmisor} />}
 					</Grid>
-				</ExpansionPanelDetails>
-			</ExpansionPanel>
+				</BoxAccordionDetails>
+			</BoxAccordion>
 		);
 	});
 }

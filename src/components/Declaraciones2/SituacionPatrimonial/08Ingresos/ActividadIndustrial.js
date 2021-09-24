@@ -2,7 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
+
+import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from "../../common/BoxAccordion";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import { sumary, expansion, getMoneda } from '../../utils';
@@ -15,8 +16,8 @@ export default function({ actividadIndustrialComercialEmpresarial }) {
 	const sum = sumary();
 
 	return (
-		<ExpansionPanel>
-			<ExpansionPanelSummary
+		<BoxAccordion>
+			<BoxAccordionSummary
 				classes={sum}
 				expandIcon={<ExpandMoreIcon />}
 				aria-controls="panel1a-content"
@@ -39,8 +40,8 @@ export default function({ actividadIndustrialComercialEmpresarial }) {
 						</Typography>
 					</Grid>
 				</Grid>
-			</ExpansionPanelSummary>
-			<ExpansionPanelDetails>
+			</BoxAccordionSummary>
+			<BoxAccordionDetails>
 				<Grid container spacing={1}>
 					<Grid item xs={12} md={5}>
 						<Typography className={classes.cardTitle}>NOMBRE O RAZÓN SOCIAL:</Typography>
@@ -69,7 +70,7 @@ export default function({ actividadIndustrialComercialEmpresarial }) {
 						);
 					})}
 				</Grid>
-			</ExpansionPanelDetails>
-		</ExpansionPanel>
+			</BoxAccordionDetails>
+		</BoxAccordion>
 	);
 }

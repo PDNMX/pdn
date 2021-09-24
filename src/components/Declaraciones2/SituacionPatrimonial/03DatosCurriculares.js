@@ -6,7 +6,8 @@ import Typography from '@material-ui/core/Typography';
 import style from '../styleSecciones';
 import { sumary, expansion } from '../utils';
 
-import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
+
+import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from "../common/BoxAccordion";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const useStyles = makeStyles(style);
@@ -26,8 +27,8 @@ export default function ({data,titulo}) {
 			<Grid item xs={12}>
 				{data.escolaridad.map((esc, index) => {
 					return (
-						<ExpansionPanel key={'esc-' + index}>
-							<ExpansionPanelSummary
+						<BoxAccordion key={'esc-' + index}>
+							<BoxAccordionSummary
 								classes={sum}
 								expandIcon={<ExpandMoreIcon />}
 								aria-controls="panel1a-content"
@@ -36,8 +37,8 @@ export default function ({data,titulo}) {
 								<Typography className={exp.heading}>
 									<strong>{esc.nivel.valor}</strong>
 								</Typography>
-							</ExpansionPanelSummary>
-							<ExpansionPanelDetails>
+							</BoxAccordionSummary>
+							<BoxAccordionDetails>
 								<Grid container spacing={1}>
 									<Grid item xs={12} md={4}>
 										<Typography className={classes.cardTitle}>NIVEL</Typography>
@@ -84,8 +85,8 @@ export default function ({data,titulo}) {
 										</Typography>
 									</Grid>
 								</Grid>
-							</ExpansionPanelDetails>
-						</ExpansionPanel>
+							</BoxAccordionDetails>
+						</BoxAccordion>
 					);
 				})}
 			</Grid>

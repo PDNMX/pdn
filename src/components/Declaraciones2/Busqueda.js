@@ -16,7 +16,8 @@ import FormSearch from './formSearch';
 import { error } from './utils';
 import scrollToComponent from 'react-scroll-to-component';
 
-import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
+
+import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from "./common/BoxAccordion";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import Descarga from "../Compartidos/Descarga";
@@ -527,8 +528,8 @@ class Busqueda extends React.Component {
 							<div className={classes.resultadosRoot}>
 								{this.state.prov.map((p, i) => {
 									return (
-										<ExpansionPanel key={'res-' + i}>
-											<ExpansionPanelSummary
+										<BoxAccordion key={'res-' + i}>
+											<BoxAccordionSummary
 												expandIcon={<ExpandMoreIcon />}
 												aria-controls="panel1a-content"
 												id="panel1a-header"
@@ -583,9 +584,9 @@ class Busqueda extends React.Component {
 														</Grid>
 													)}
 												</Grid>
-											</ExpansionPanelSummary>
+											</BoxAccordionSummary>
 											{!p.finding && (
-												<ExpansionPanelDetails className={classes.resultadoContenido}>
+												<BoxAccordionDetails className={classes.resultadoContenido}>
 													{p.data.length > 0 && (
 														<Tabla
 															rows={p.data}
@@ -610,9 +611,9 @@ class Busqueda extends React.Component {
 															</Grid>
 														</Grid>
 													)}
-												</ExpansionPanelDetails>
+												</BoxAccordionDetails>
 											)}
-										</ExpansionPanel>
+										</BoxAccordion>
 									);
 								})}
 							</div>
@@ -629,7 +630,7 @@ class Busqueda extends React.Component {
 					/>
 				)}
 				{/*DESCARGA*/}
-				<Grid container spacing={0} justify="center">
+				<Grid container spacing={0} justifyContent="center">
 					<Grid item xs={12} className={classes.itemD}>
 						<Descarga url={process.env.REACT_APP_S1_BULK} />
 					</Grid>
