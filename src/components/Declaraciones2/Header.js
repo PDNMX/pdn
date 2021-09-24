@@ -103,7 +103,7 @@ class Header extends React.Component {
     return (
       <div className={classes.root}>
         <BarraLogoMenu />
-        <Grid container spacing={0} className="breadcrumb" justify="center">
+        <Grid container spacing={0} className="breadcrumb" justifyContent="center">
           <Grid item xs={12} style={{ maxWidth: 1200, margin: "0 auto" }}>
             <ul>
               <li>
@@ -119,7 +119,7 @@ class Header extends React.Component {
           container
           spacing={0}
           className={classNames(classes.container1, "servidores")}
-          justify="center"
+          justifyContent="center"
         >
           <Particles 
             className={classes.particulas}

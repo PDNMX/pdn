@@ -62,7 +62,7 @@ function EnhancedTableHead(props) {
 					<TableCell
 						key={headCell.id}
 						align={headCell.numeric ? 'right' : 'left'}
-						padding={headCell.disablePadding ? 'none' : 'default'}
+						padding={headCell.disablePadding ? 'none' : 'normal'}
 						sortDirection={orderBy === headCell.id ? order : false}
 					>
 						<TableSortLabel
@@ -227,10 +227,10 @@ export default function EnhancedTable({
 					'aria-label': 'siguiente página'
 				}}
 				labelDisplayedRows={({ from, to, count }) => from + '-' + (to === -1 ? count : to) + ' de ' + count}
-				onChangePage={(e, page) => {
+				onPageChange={(e, page) => {
 					handleSetPage(posicion, page);
 				}}
-				onChangeRowsPerPage={(e) => {
+				onRowsPerPageChange={(e) => {
 					handleChangeRowsPerPage(e, posicion);
 				}}
 			/>
