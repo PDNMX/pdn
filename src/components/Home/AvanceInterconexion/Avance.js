@@ -69,7 +69,7 @@ const Avance = props => {
 
                 <Button variant="contained"
                         className={classes.button}
-                        href="https://plataformadigitalnacional.org/mapa-sla/"
+                        href="https://www.plataformadigitalnacional.org/mapa-sla/"
                 >
                     Conoce más
                 </Button>
@@ -84,7 +84,7 @@ const Avance = props => {
 
                 <Button variant="contained"
                         className={classes.button}
-                        href="https://plataformadigitalnacional.org/mapa-avance/"
+                        href="https://www.plataformadigitalnacional.org/mapa-avance/"
                 >
                     Conoce más
                 </Button>
