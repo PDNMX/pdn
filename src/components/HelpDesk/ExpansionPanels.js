@@ -341,7 +341,7 @@ export default function CustomizedExpansionPanels() {
                         </Typography>
 
                         <Typography paragraph>
-                            Asimismo, se les recomienda comenzar por <b><u>revisar de manera detallada</u></b> las especificaciones técnicas y los diccionarios de datos que ya fueron publicados en la siguiente página: <Link to="/especificaciones" className={classes.link}>https://plataformadigitalnacional.org/especificaciones</Link>.
+                            Asimismo, se les recomienda comenzar por <b><u>revisar de manera detallada</u></b> las especificaciones técnicas y los diccionarios de datos que ya fueron publicados en la siguiente página: <Link to="/especificaciones" className={classes.link}>https://www.plataformadigitalnacional.org/especificaciones</Link>.
                         </Typography>
 
                     </div>

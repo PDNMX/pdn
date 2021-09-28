@@ -109,7 +109,7 @@ class MenuSistemas extends React.Component {
                         <Typography className={classes.text} variant="inherit" noWrap>{"Especificaciones"}</Typography>
                     </MenuItem>
                     <MenuItem component={Button} className={classes.aux}
-                              href="https://plataformadigitalnacional.org/mapa-sla/">
+                              href="https://www.plataformadigitalnacional.org/mapa-sla/">
                         Interconexión subnacional
                     </MenuItem>
 
@@ -157,7 +157,7 @@ class MenuSistemas extends React.Component {
                         <Collapse in={dropDown2} timeout="auto" unmountOnExit>
                             <List dense={true} component="div">
                                 <ListItem button component={Button}
-                                          href="https://plataformadigitalnacional.org/mapa-sla/"
+                                          href="https://www.plataformadigitalnacional.org/mapa-sla/"
                                           className={classes.nested}
                                           style={{textTransform: "none"}}
                                 >
@@ -165,7 +165,7 @@ class MenuSistemas extends React.Component {
                                 </ListItem>
                                 <ListItem button
                                           component={Button}
-                                          href="https://plataformadigitalnacional.org/mapa-avance/"
+                                          href="https://www.plataformadigitalnacional.org/mapa-avance/"
                                           className={classes.nested}
                                           style={{textTransform: "none"}}
                                 >

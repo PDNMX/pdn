@@ -340,7 +340,7 @@ class Terminos extends React.Component {
                             constantemente nuestro portal.
                             <br/><br/>
                             El uso del portal <Link target="_blank"
-                            href="https://plataformadigitalnacional.org/">plataformadigitalnacional.org</Link> o
+                            href="https://www.plataformadigitalnacional.org/">plataformadigitalnacional.org</Link> o
                             de cualquiera de sus componentes,
                             implica la aceptación expresa de los presentes “Términos y Condiciones”
                         </Typography>

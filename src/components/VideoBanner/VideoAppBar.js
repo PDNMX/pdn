@@ -205,7 +205,7 @@ class VideoAppBar extends React.Component {
                         <Typography className={classes.text} variant="inherit" noWrap>{"Especificaciones"}</Typography>
                       </MenuItem>
                       <MenuItem component={Button} className={classes.textTransform}
-                                href="https://plataformadigitalnacional.org/mapa-sla/">
+                                href="https://www.plataformadigitalnacional.org/mapa-sla/">
                         Interconexión subnacional
                       </MenuItem>
 
@@ -282,7 +282,7 @@ class VideoAppBar extends React.Component {
                           <List dense={true} component="div" >
 
                             <ListItem button component={Button}
-                                      href="https://plataformadigitalnacional.org/mapa-sla/"
+                                      href="https://www.plataformadigitalnacional.org/mapa-sla/"
                                       style={{textTransform: "none"}}
                                       className={classes.nested}>
                               <ListItemText primary='Legislación'/>
@@ -290,7 +290,7 @@ class VideoAppBar extends React.Component {
 
                             <ListItem button component={Button}
                                       style={{textTransform: "none"}}
-                                      href="https://plataformadigitalnacional.org/mapa-avance/"
+                                      href="https://www.plataformadigitalnacional.org/mapa-avance/"
                                       className={classes.nested}>
                               <ListItemText primary='Sistemas 2 y 3'/>
                             </ListItem>
