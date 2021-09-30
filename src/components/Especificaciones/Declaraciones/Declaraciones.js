@@ -115,21 +115,21 @@ class Declaraciones extends React.Component {
                         <ul className={classes.ul}>
                             <li className={classes.li}>
                                 <Link
-                                    href='https://app.swaggerhub.com/apis/pdn-mx/s1-Declaraciones-Inicial/2.0'
+                                    href='https://www.plataformadigitalnacional.org/oas/ui/?urls.primaryName=S1%20-%20Inicial'
                                     target="_blank">
                                     <b>Formato de inicio</b>
                                 </Link>
                             </li>
                             <li className={classes.li}>
                                 <Link
-                                    href='https://app.swaggerhub.com/apis/pdn-mx/s1-Declaraciones-Modificacion/2.0'
+                                    href='https://www.plataformadigitalnacional.org/oas/ui/?urls.primaryName=S1%20-%20Modificaci%C3%B3n'
                                     target="_blank">
                                     <b>Formato de modificación</b>
                                 </Link>
                             </li>
                             <li className={classes.li}>
                                 <Link
-                                    href='https://app.swaggerhub.com/apis/pdn-mx/s1-Declaraciones-Conclusion/2.0'
+                                    href='https://www.plataformadigitalnacional.org/oas/ui/?urls.primaryName=%20S1%20-%20Conclusi%C3%B3n'
                                     target="_blank">
                                     <b>Formato de conclusión</b>
                                 </Link>
