@@ -72,12 +72,14 @@ class Index extends React.Component {
         this.setState({idContent: id});
     };
 
+
+
     render() {
         const {classes} = this.props;
         return (
             <div className={classes.root}>
                 <Header/>
-                <Grid container justify="center" className={classes.bgContainer}>
+                <Grid container justifyContent="center" className={classes.bgContainer}>
                     <Grid item xs={12} className={classes.section}>
                         <Grid container>
 
@@ -140,7 +142,7 @@ class Index extends React.Component {
 
                     </Grid>
                 </Grid>
-                <Grid container justify='center' className={classes.bgPanelTable}>
+                <Grid container justifyContent='center' className={classes.bgPanelTable}>
                     <Grid item xs={12} className={classes.sectionT}>
                         {this.state.idContent === 1 &&
                         <BuscadorServidoresSancionados/>

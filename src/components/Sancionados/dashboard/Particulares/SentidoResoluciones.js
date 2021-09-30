@@ -188,7 +188,7 @@ class SentidoResoluciones extends React.Component {
         const {classes} = this.props;
         return (
             <div>
-                <Grid container spacing={0} justify='center' className={classes.frameChart}>
+                <Grid container spacing={0} justifyContent='center' className={classes.frameChart}>
                     <Grid item xs={12}>
                         <Typography variant={"h6"} className={classes.titulo}>
                             <b> Sentido de las resoluciones</b>

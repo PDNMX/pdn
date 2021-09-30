@@ -84,13 +84,13 @@ class BuscadorServidoresSancionados extends React.Component {
                         </Grid>
                     </Grid>
                     {/*BUSCADOR*/}
-                    <Grid container justify={'center'} className={classes.gridTable}>
+                    <Grid container justifyContent={'center'} className={classes.gridTable}>
                         <Grid item xs={12} className={classes.toolBarStyle}>
                             <BusquedaServidor verDetalle={this.verDetalle}/>
                         </Grid>
                     </Grid>
                     {/*DESCARGA*/}
-                    <Grid container spacing={0} justify="center" >
+                    <Grid container spacing={0} justifyContent="center" >
                         <Grid item xs={12} className={classes.itemD}>
                             <Descarga url={process.env.REACT_APP_BULK_S3_SERVIDORES}/>
                         </Grid>

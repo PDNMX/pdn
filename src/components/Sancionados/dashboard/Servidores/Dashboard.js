@@ -47,7 +47,7 @@ class Dashboard extends React.Component {
         return (
             <div className={classes.root}>
 
-                <Grid container spacing={0} justify='center' className={classes.aux}>
+                <Grid container spacing={0} justifyContent='center' className={classes.aux}>
                     <Grid item xs={12} className={classes.sectionG}>
                         <Typography >
                             <b>{"¿Qué información es?"}</b>

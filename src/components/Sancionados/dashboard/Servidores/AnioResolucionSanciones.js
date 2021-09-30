@@ -156,7 +156,7 @@ class AnioResolucionSanciones extends React.Component {
         let {hoveredCell} = this.state;
         return (
             <div>
-                <Grid container spacing={0} justify='center' className={classes.frameChart}>
+                <Grid container spacing={0} justifyContent='center' className={classes.frameChart}>
                     <Grid item xs={12} md={12}>
                         <Typography variant={"h6"} className={classes.titulo}>
                             <b>{"Cantidad de sanciones"}</b>

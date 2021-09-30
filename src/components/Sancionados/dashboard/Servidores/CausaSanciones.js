@@ -195,7 +195,7 @@ class CausasSanciones extends React.Component {
         const {classes} = this.props;
         return (
             <div>
-                <Grid container spacing={0} justify='center' className={classes.frameChart}>
+                <Grid container spacing={0} justifyContent='center' className={classes.frameChart}>
                     <Grid item xs={12}>
                         <Typography variant={"h6"} className={classes.titulo}>
                             <b>Causa de las sanciones de 2013 a la fecha</b>

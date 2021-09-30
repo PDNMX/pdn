@@ -50,7 +50,7 @@ class Header extends React.Component {
             <div className={classes.root}>
                 {/*<PDNAppBar/>*/}
 
-                <Grid container spacing={0} justify="center" style={{background: '#fff'}}>
+                <Grid container spacing={0} justifyContent="center" style={{background: '#fff'}}>
                     <Grid item xs={12} className={classes.item3}>
                         <Link to="/" className={classes.link}>
                             <img src={PDNLogo} alt="PDN" className={classes.pdnLogo}/>
@@ -58,7 +58,7 @@ class Header extends React.Component {
                     </Grid>
                 </Grid>
 
-                <Grid container spacing={0} className="breadcrumb" justify='center'>
+                <Grid container spacing={0} className="breadcrumb" justifyContent='center'>
                     <Grid item xs={12} className={classes.item3}>
                         <ul>
                             <li>
@@ -75,7 +75,7 @@ class Header extends React.Component {
                     </Grid>
                 </Grid>
 
-                <Grid container spacing={0} style={{background: "#5fb1e6", padding: "82px 0"}} justify='center'>
+                <Grid container spacing={0} style={{background: "#5fb1e6", padding: "82px 0"}} justifyContent='center'>
                     <Grid item xs={12} md={7} className={classes.item2} align='center'>
                         <Typography variant="h2" paragraph className={classes.whiteText}>
                             Sancionados

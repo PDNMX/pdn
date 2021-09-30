@@ -73,7 +73,7 @@ class Header extends React.Component {
                 {/*<PDNAppBar/>*/}
 
                 <BarraLogoMenu/>
-                <Grid container spacing={0} className="breadcrumb" justify='center'>
+                <Grid container spacing={0} className="breadcrumb" justifyContent='center'>
                     <Grid item xs={12} className={classes.item3}>
                         <ul>
                             <li>
@@ -86,7 +86,7 @@ class Header extends React.Component {
                     </Grid>
                 </Grid>
 
-                <Grid container spacing={0} className={classNames(classes.container1)} justify='center'>
+                <Grid container spacing={0} className={classNames(classes.container1)} justifyContent='center'>
                 <Particles 
                         className={classes.particulas}
                         
