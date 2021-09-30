@@ -89,32 +89,33 @@ const Index = props => {
                 <Grid item xs={12} style={{padding:0, maxWidth: 1200}}>
 
                     <Grid container spacing={0}>
+
+
                         <Grid item xs={12} sm={12} md={6} lg={6} xl={6}
-                              onClick={ () => handleSelectTab(0)}
+                              onClick={() => handleSelectTab(0)}
                               id={0}
                               className={isSelected(0)?classes.selectedTabItem:classes.tabItem}>
-
-                            <figure className={classes.figure}>
-                                <img src={img3} className={classes.tabIcon} alt="Visualiza"/>
-                            </figure>
-
-                            <Typography color='textPrimary' style={{fontWeight: isSelected(0)?500:300, paddingTop: 15}}>
-                                Visualiza las contrataciones
-                            </Typography>
-
-                        </Grid>
-
-                        <Grid item xs={12} sm={12} md={6} lg={6} xl={6}
-                              onClick={() => handleSelectTab(1)}
-                              id={1}
-                              className={isSelected(1)?classes.selectedTabItem:classes.tabItem}>
 
                             <figure className={classes.figure}>
                                 <img src={img1} className={classes.tabIcon} alt="explora"/>
                             </figure>
 
-                            <Typography color='textPrimary' style={{fontWeight: isSelected(1)?500:300, paddingTop: 15}}>
+                            <Typography color='textPrimary' style={{fontWeight: isSelected(0)?500:300, paddingTop: 15}}>
                                 Explora las contrataciones
+                            </Typography>
+
+                        </Grid>
+                        <Grid item xs={12} sm={12} md={6} lg={6} xl={6}
+                              onClick={ () => handleSelectTab(1)}
+                              id={1}
+                              className={isSelected(1)?classes.selectedTabItem:classes.tabItem}>
+
+                            <figure className={classes.figure}>
+                                <img src={img3} className={classes.tabIcon} alt="Visualiza"/>
+                            </figure>
+
+                            <Typography color='textPrimary' style={{fontWeight: isSelected(1)?500:300, paddingTop: 15}}>
+                                Visualiza las contrataciones
                             </Typography>
 
                         </Grid>
