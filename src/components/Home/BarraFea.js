@@ -1,7 +1,6 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Blog from "../../assets/iconos_barra/ico-blog.svg";
-//import Calidad from "../../assets/iconos_barra/ico-calidad_datos.svg";
 import Espe from "../../assets/iconos_barra/ico-especificaciones.svg";
 import Mesa from "../../assets/iconos_barra/ico-mesa_ayuda.svg";
 import MDA from "../../assets/iconos_barra/mda.png";
@@ -56,17 +55,6 @@ const BarraFea = props => {
               <Typography>Blog</Typography>
             </Link>
           </Box>
-          {/*
-          <Box className={classes.item} flexGrow={1}>
-            <RouterLink to="/gaa/calidad" className={classes.link}>
-              <img
-                  src={Calidad}
-                  className={classes.icon}
-                  alt="Calidad de datos"
-              />
-              <Typography>Calidad de datos</Typography>
-            </RouterLink>
-          </Box>*/}
 
           <Box className={classes.item} flexGrow={1}>
             <RouterLink to="/especificaciones" className={classes.link}>

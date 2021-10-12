@@ -5,9 +5,9 @@ import MuiExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import MuiExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import MuiLink from "@material-ui/core/Link";
-import Pasos from "../../../assets/pasos_evaluación.png";
-import Pipeline from "../../../assets/DQ_pipeline_analy.png";
-import DataImpact from "../../../assets/data_impact.png";
+import Pasos from "../../assets/pasos_evaluación.png";
+import Pipeline from "../../assets/DQ_pipeline_analy.png";
+import DataImpact from "../../assets/data_impact.png";
 import Button from "@material-ui/core/Button";
 
 const ExpansionPanel = withStyles({

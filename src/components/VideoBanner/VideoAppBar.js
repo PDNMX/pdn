@@ -197,9 +197,8 @@ class VideoAppBar extends React.Component {
                         <Typography className={classes.text} variant="inherit" noWrap>{"Mesa de ayuda"}</Typography>
                       </MenuItem>
                       <MenuItem component={Button} className={classes.textTransform}
-                                href="https://www.plataformadigitalnacional.org/blog">Blog</MenuItem>
-                      <MenuItem component={Link} to="/gaa/calidad">
-                        <Typography className={classes.text} variant="inherit" noWrap>{"Calidad de datos"}</Typography>
+                                href="https://www.plataformadigitalnacional.org/blog">
+                        Blog
                       </MenuItem>
                       <MenuItem component={Link} to="/especificaciones">
                         <Typography className={classes.text} variant="inherit" noWrap>{"Especificaciones"}</Typography>

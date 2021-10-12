@@ -4,8 +4,8 @@ import Grid from '@material-ui/core/Grid';
 import {Link} from 'react-router-dom';
 import {Typography} from "@material-ui/core"
 import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
-import BarraLogoMenu from "../../../Compartidos/BarraLogoMenu";
-import Logo from '../../../../assets/img/logocalidad_datos.svg';
+import BarraLogoMenu from "../../Compartidos/BarraLogoMenu";
+import Logo from '../../../assets/img/logocalidad_datos.svg';
 import Particles from 'react-particles-js';
 const style = theme => ({
         root: {

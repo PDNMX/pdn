@@ -3,7 +3,7 @@ import {withStyles} from "@material-ui/core/styles";
 import Header from "./Header/Header";
 import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
-import Footer from "../../Home/Footer";
+import Footer from "../Home/Footer";
 import ExpansionPanels from "./ExpansionPanels";
 import Disclaimer from "./Disclaimer";
 
