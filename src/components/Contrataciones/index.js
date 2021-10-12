@@ -175,7 +175,7 @@ const Index = props => {
 
             <Grid container spacing={0} justifyContent="center" className={classes.container} style={{backgroundColor: '#f6f6f6'}}>
                 <Grid item xs={12} className={classes.item}>
-                    <Descarga url="https://datos.gob.mx/busca/dataset/concentrado-de-contrataciones-abiertas-de-la-apf/resource/5667bf76-4172-4c11-9050-b276ebc5903e"/>
+                    <Descarga url="https://datos.gob.mx/busca/dataset/concentrado-de-contrataciones-abiertas-de-la-apf"/>
                 </Grid>
             </Grid>
 
