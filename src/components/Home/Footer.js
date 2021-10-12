@@ -105,7 +105,7 @@ const Footer = props => {
                                     fontSize: "12px",
                                     fontStyle: "normal",
                                     fontWeight: "400",
-                                    fontFamily: "Noto Sans SC"
+                                    fontFamily: "Noto Sans"
                                 }}
                                 paragraph
                             >

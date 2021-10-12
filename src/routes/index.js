@@ -26,9 +26,9 @@ import Especificaciones from '../components/Especificaciones/Landing/Especificac
 import DeclaracionesEspecificaciones from '../components/Especificaciones/Declaraciones/Declaraciones';
 import EspecificacionesSancionados from '../components/Especificaciones/Sancionados/Sancionados';
 import EspecificacionesServidoresIntervienen from '../components/Especificaciones/ServidoresIntervienen/ServidoresIntervienen';
-import Metodologia from '../components/GAA/Calidad/Metodologia';
+//import Metodologia from '../components/GAA/Calidad/Metodologia';
 import HelpDesk from '../components/HelpDesk/HelpDesk';
-import GAA from '../components/GAA/GAA';
+//import GAA from '../components/GAA/GAA';
 // import DeclaracionesS1 from '../components/Declaraciones';
 import DeclaracionesS1v2 from '../components/Declaraciones2';
 import SpecsS6 from '../components/Especificaciones/Contrataciones/index';
@@ -182,7 +182,7 @@ const pdnRoutes = [
 		private: true,
 		perfom: 'admon-pdn-consultaConexiones:visit'
 	},
-	{
+	/*{
 		exact: true,
 		path: '/gaa',
 		component: GAA,
@@ -193,7 +193,7 @@ const pdnRoutes = [
 		path: '/gaa/calidad',
 		component: Metodologia,
 		private: false
-	},
+	},*/
 	{
 		exact: true,
 		path: '/mesa-de-ayuda',
