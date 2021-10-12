@@ -84,14 +84,11 @@ const AlertDialog = props => {
 
                     <Typography paragraph align="justify">
                         Te invitamos a revisar los <Link component={RouterLink} to='/terminos'>"Términos y Condiciones de Uso"</Link>,
-                        así como a dejar tus comentarios sobre las funcionalidades y experiencia de usuario en la sección de "Comenta".
+                        así como a dejar tus comentarios sobre las funcionalidades y experiencia de usuario en la sección de <Link href={process.env.REACT_APP_LINK_GOOGLEFORM} target={"_blank"}>"Comenta"</Link>.
                     </Typography>
 
                 </DialogContent>
                 <DialogActions>
-                    <Button variant="contained" component={RouterLink} to='/terminos' className={classes.button}>
-                        Términos
-                    </Button>
                     <Button variant="contained" onClick={handleClose} className={classes.button}>
                         Aceptar
                     </Button>
