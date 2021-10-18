@@ -10,10 +10,7 @@ import {Typography} from "@material-ui/core"
 import Button from '@material-ui/core/Button';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from "@material-ui/core/Select";
-import FormLabel from "@material-ui/core/FormLabel";
-import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Radio from "@material-ui/core/Radio";
 import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
 import Input from '@material-ui/core/Input';
@@ -54,8 +51,8 @@ const styles = theme => ({
         color: theme.palette.primary.dark,
     },
     container: {
-        marginTop: '30px',
-        marginBottom: '30px',
+        /* marginTop: '30px',
+        marginBottom: '30px',*/
         overflowX: 'auto',
     },
     section: {
@@ -90,6 +87,8 @@ const tiposOrdenamiento = [
 class BusquedaServidor extends React.Component {
     constructor(props) {
         super(props);
+        this.previosRef = React.createRef();
+        this.resultsRef = React.createRef();
         this.state = {
             filterData: [],
             page: 1,
@@ -110,12 +109,15 @@ class BusquedaServidor extends React.Component {
             campoOrden: '',
             tipoOrden: '',
             institucionesLista: [],
-            elementoSeleccionado : null
+            elementoSeleccionado : null,
+            proveedor:'',
+            proveedoresLista: []
         }
     }
 
     componentDidMount() {
         this.loadInstituciones();
+        this.loadProveedores();
     }
 
     loadInstituciones = () => {
@@ -125,7 +127,8 @@ class BusquedaServidor extends React.Component {
             json: true,
             method: "post",
             data: {
-                nivel_gobierno: this.state.nivel
+                nivel_gobierno: this.state.nivel,
+                supplier_id: this.state.proveedor
             }
         };
         axios(options)
@@ -146,6 +149,7 @@ class BusquedaServidor extends React.Component {
             switch (varState) {
                 case 'nivel':
                     this.loadInstituciones();
+                    this.loadProveedores();
                     break;
                 case 'campoOrden':
                     if(!this.state.tipoOrden)this.setState({tipoOrden: {label: 'Ascendente', value: 'asc'}});
@@ -154,6 +158,9 @@ class BusquedaServidor extends React.Component {
                 case 'tipoOrden':
                     if(!this.state.campoOrden && event.target.value)this.setState({campoOrden: camposOrdenamiento[0] });
                     if(!event.target.value)this.setState({campoOrden:''})
+                    break;
+                case 'proveedor':
+                    this.loadInstituciones();
                     break;
                 default:
                     console.log(varState);
@@ -193,7 +200,9 @@ class BusquedaServidor extends React.Component {
             let body =
                 {
                     "query": this.makeFiltros(),
-                    "nivel_gobierno": this.state.nivel
+                    "nivel_gobierno": this.state.nivel,
+                    "proveedor" : this.state.proveedor,
+                    "institucion" : this.state.institucionDependencia
                 };
 
             let options = {
@@ -204,7 +213,11 @@ class BusquedaServidor extends React.Component {
             };
             axios(options)
                 .then(res => {
-                    this.setState({previos: res.data, loading: false, error: false, panelPrevios: true})
+                    this.setState(
+                        {previos: res.data, loading: false, error: false, panelPrevios: true}
+                    ,()=>{
+                            this.executeScrollPrevios();
+                        })
                 }).catch(err => {
                  this.setState({loading: false, error: true});
             });
@@ -264,7 +277,9 @@ class BusquedaServidor extends React.Component {
                         loading: false,
                         totalRows: resultado.pagination.totalRows,
                         error: false
-                    },)
+                    },()=>{
+                        this.executeScrollResults();
+                    })
                 }).catch(err => {
                 this.setState({loading: false, error: true});
             });
@@ -276,9 +291,10 @@ class BusquedaServidor extends React.Component {
         this.setState({
             supplier_id: val,
             page: 1,
-            elementoSeleccionado: null
+            elementoSeleccionado: null,
+
         }, () => {
-            this.handleSearchAPI()
+            this.handleSearchAPI();
         });
     };
 
@@ -302,9 +318,35 @@ class BusquedaServidor extends React.Component {
         this.setState({elementoSeleccionado: null});
     };
 
+    loadProveedores = () => {
+        let sug = [];
+        let options = {
+            url: process.env.REACT_APP_S3S_BACKEND + '/api/v1/getProviders',
+            json: true,
+            method: "post",
+            data: {
+                nivel_gobierno: this.state.nivel
+            }
+        };
+        axios(options)
+            .then(data => {
+                data.data.forEach((provider) => {
+                    sug.push({value: provider.supplier_id, label: provider.supplier_name, key: provider.supplier_id});
+                });
+                this.setState({proveedoresLista: sug, proveedor: ''});
+            }).catch(err => {
+            this.setState({error: true})
+        });
+    }
+
+    executeScrollPrevios = () => this.previosRef.current.scrollIntoView();
+
+    executeScrollResults = () => this.resultsRef.current.scrollIntoView();
+
     render() {
         const {classes} = this.props;
-        const {nombres, primerApellido, segundoApellido,institucionDependencia, nivel, tipoSancion, campoOrden, tipoOrden, institucionesLista} = this.state;
+        const {nombres, primerApellido, segundoApellido,institucionDependencia, nivel, tipoSancion, campoOrden, tipoOrden, institucionesLista, proveedor, proveedoresLista} = this.state;
+
         return (
             <div>
                 {/*Buscador*/}
@@ -312,7 +354,7 @@ class BusquedaServidor extends React.Component {
                     <Grid item xs={12}>
                         <Typography><b>Busca un servidor público sancionado</b></Typography>
                     </Grid>
-                    <Grid item xs={12} md={3}>
+                    <Grid item xs={12} md={2}>
                         <FormControl className={classes.formControl}>
                             <TextField
                                 id="nombres"
@@ -324,7 +366,7 @@ class BusquedaServidor extends React.Component {
 
                         </FormControl>
                     </Grid>
-                    <Grid item xs={12} md={3}>
+                    <Grid item xs={12} md={2}>
                         <FormControl className={classes.formControl}>
                             <TextField
                                 id="primerApellido"
@@ -336,7 +378,7 @@ class BusquedaServidor extends React.Component {
 
                         </FormControl>
                     </Grid>
-                    <Grid item xs={12} md={3}>
+                    <Grid item xs={12} md={2}>
                         <FormControl className={classes.formControl}>
                             <TextField
                                 id="segundoApellido"
@@ -347,8 +389,7 @@ class BusquedaServidor extends React.Component {
                             />
                         </FormControl>
                     </Grid>
-
-                    <Grid item xs={12} md={3}>
+                    <Grid item xs={12} md={6}>
                         <FormControl className={classes.formControl}>
                             <InputLabel shrink id="tipoSancion-label">Tipo sanción</InputLabel>
                             <Select displayEmpty
@@ -380,8 +421,46 @@ class BusquedaServidor extends React.Component {
                             </Select>
                         </FormControl>
                     </Grid>
-
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12} md={2}>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel shrink id="nivel-label">
+                                Nivel
+                            </InputLabel>
+                            <Select value={nivel}
+                                    onChange={(e) => this.handleChangeCampo('nivel', e)}
+                                    displayEmpty
+                            >
+                                <MenuItem value={''} key={-1}><em>Todos</em></MenuItem>
+                                <MenuItem value={'Federal'} key={'Federal'}>
+                                    {'Federal'}
+                                </MenuItem>
+                                <MenuItem value={'Estatal'} key={'Estatal'}>
+                                    {'Estatal'}
+                                </MenuItem>
+                            </Select>
+                        </FormControl>
+                    </Grid>
+                    <Grid item md={4} xs={12}>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel shrink id="proveedor-label">
+                                Proveedor información
+                            </InputLabel>
+                            <Select value={proveedor}
+                                    onChange={(e) => this.handleChangeCampo('proveedor', e)}
+                                    displayEmpty
+                            >
+                                <MenuItem value={''} key={-1}><em>Todos</em></MenuItem>
+                                {
+                                    proveedoresLista.map((item => {
+                                        return <MenuItem value={item.value} key={item.key}>
+                                            {item.label}
+                                        </MenuItem>
+                                    }))
+                                }
+                            </Select>
+                        </FormControl>
+                    </Grid>
+                    <Grid item md={6} xs={12}>
                         <FormControl className={classes.formControl}>
                             <InputLabel shrink id="institucionDependencia-label">
                                 Institución
@@ -401,25 +480,7 @@ class BusquedaServidor extends React.Component {
                             </Select>
                         </FormControl>
                     </Grid>
-
-                    <Grid item md={6} xs={12}>
-                        <FormControl component="fieldset" className={classes.formControl}>
-                            <FormLabel component="legend">Nivel</FormLabel>
-                            <RadioGroup row
-                                        aria-label="gender"
-                                        name="gender1"
-                                        className={classes.group}
-                                        value={nivel}
-                                        onChange={(e) => this.handleChangeCampo('nivel', e)}
-                            >
-                                <FormControlLabel value="" control={<Radio/>} label="Todos"/>
-                                <FormControlLabel value="Federal" control={<Radio/>} label="Federal"/>
-                                <FormControlLabel value="Estatal" control={<Radio/>} label="Estatal"/>
-                            </RadioGroup>
-
-                        </FormControl>
-                    </Grid>
-                    <Grid item xs={12}>
+                    <Grid item  xs={12}>
                         <Button onClick={() => this.handleBusquedaAvanzada()}
                                 startIcon={this.state.busquedaAvanzada ? <ExpandLessIcon/> : <ExpandMoreIcon/>}
                         >Búsqueda avanzada</Button>
@@ -529,7 +590,7 @@ class BusquedaServidor extends React.Component {
                                         {this.state.panelPrevios ? 'Ocultar resultados generales' : 'Mostrar resultados generales'}</Typography>}
                             />
                     </Grid>
-                    <Grid item xs={12} className={classes.section}>
+                    <Grid item xs={12} className={classes.section} ref={this.previosRef}>
                             <div className={classes.container}>
                                 <Collapse in={this.state.panelPrevios}>
                                     <Previos data={this.state.previos} handleChangeSujetoObligado={this.handleChangeAPI}/>
@@ -544,10 +605,11 @@ class BusquedaServidor extends React.Component {
                         <MensajeNoRegistros/>
                         }
                     </Grid>
+
                 }
                 {/*TABLA*/}
                 {this.state.filterData && this.state.filterData.length > 0 && this.state.elementoSeleccionado === null &&
-                <Grid container>
+                <Grid container ref={this.resultsRef}>
                     <Grid item xs={12} >
                             <TablaServidoresSancionados data={this.state.filterData} page={this.state.page}
                                                         rowsPerPage={this.state.rowsPerPage}

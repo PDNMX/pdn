@@ -74,7 +74,7 @@ class TablaServidoresSancionados extends React.Component {
         const {classes, data, rowsPerPage, page, totalRows} = this.props;
         return (
             <div>
-                <Grid container justify='center' spacing={0} className={classes.gridTable} id={'containerTest'}>
+                <Grid container justifyContent='center' spacing={0} className={classes.gridTable} id={'containerTest'}>
                     <Grid item xs={12}>
                         {(data && data.length <= 0) &&
                         <MensajeNoRegistros/>
@@ -121,7 +121,7 @@ class TablaServidoresSancionados extends React.Component {
                                                     selected={isSelected}
                                                 >
                                                     <TableCell component="th" scope="row"
-                                                               padding="default">{n.expediente}</TableCell>
+                                                               padding="normal">{n.expediente}</TableCell>
                                                     <TableCell>{n.servidorPublicoSancionado.nombres + " " + n.servidorPublicoSancionado.primerApellido + " " + n.servidorPublicoSancionado.segundoApellido}</TableCell>
                                                     <TableCell>{n.institucionDependencia.nombre}</TableCell>
                                                     <TableCell
@@ -139,8 +139,8 @@ class TablaServidoresSancionados extends React.Component {
                                                 count={totalRows}
                                                 rowsPerPage={rowsPerPage}
                                                 page={page - 1}
-                                                onChangePage={this.props.handleChangePage}
-                                                onChangeRowsPerPage={this.props.handleChangeRowsPerPage}
+                                                onPageChange={this.props.handleChangePage}
+                                                onRowsPerPageChange={this.props.handleChangeRowsPerPage}
                                                 labelRowsPerPage='Registros por página'
                                                 labelDisplayedRows={({from, to, count}) => {
                                                     return `${from}-${to} de ${count}`;

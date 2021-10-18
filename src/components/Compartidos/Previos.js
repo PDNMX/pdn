@@ -67,7 +67,7 @@ class Previos extends React.Component {
         let {rowsPerPage, page} = this.state;
         return (
             <div>
-                <Grid container justify='center' spacing={0} className={classes.gridTable}>
+                <Grid container justifyContent='center' spacing={0} className={classes.gridTable}>
                     <Grid item xs={12}>
                         {data && data.length > 0 &&
                         <Typography variant="body1" >La siguiente tabla muestra el resultado devuelto por cada Proveedor de información a través de su API. Pulsa en <IconSubdirectory className={classes.iconoVer}/> para ver el detalle<br/></Typography>
@@ -130,8 +130,8 @@ class Previos extends React.Component {
                                             count = {data.length}
                                             rowsPerPage = {rowsPerPage}
                                             page = {page}
-                                            onChangePage={this.handleChangePage}
-                                            onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                                            onPageChange={this.handleChangePage}
+                                            onRowsPerPageChange={this.handleChangeRowsPerPage}
                                             labelRowsPerPage='Registros por página'
                                             labelDisplayedRows={({from, to, count}) => {
                                                 return `${from}-${to} de ${count}`;
