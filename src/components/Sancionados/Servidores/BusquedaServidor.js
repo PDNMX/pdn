@@ -185,8 +185,10 @@ class BusquedaServidor extends React.Component {
                 institucionesLista: [],
                 elementoSeleccionado : null,
                 rowsPerPage: 10,
+                proveedoresLista: []
             }, () => {
                 this.loadInstituciones();
+                this.loadProveedores();
             })
     };
 //10,25,50
