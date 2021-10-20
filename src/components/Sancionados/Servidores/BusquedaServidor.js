@@ -607,7 +607,6 @@ class BusquedaServidor extends React.Component {
                         <MensajeNoRegistros/>
                         }
                     </Grid>
-
                 }
                 {/*TABLA*/}
                 {this.state.filterData && this.state.filterData.length > 0 && this.state.elementoSeleccionado === null &&

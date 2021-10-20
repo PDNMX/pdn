@@ -8,7 +8,6 @@ import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
 import '../../Utils/Header.css'
 import classNames from 'classnames';
 import BarraLogoMenu from "../../Compartidos/BarraLogoMenu";
-
 import Particles from 'react-particles-js';
 
 const style = theme => ({
@@ -44,11 +43,6 @@ const style = theme => ({
         whiteText: {
             color: '#fff'
         },
-        button: {
-            background: '#ffe01b',
-            marginTop: theme.spacing(3),
-            marginBottom: theme.spacing(2)
-        },
         particulas: {
             width: '100%',
             height: '100%',
@@ -60,18 +54,10 @@ const style = theme => ({
     }
 );
 
-class Header extends React.Component {
-    constructor(props) {
-        super(props);
-        this.btnVideo = React.createRef();
-    }
-
-    render() {
-        const {classes} = this.props;
+function Header (props){
+    const {classes} = props;
         return (
             <div className={classes.root}>
-                {/*<PDNAppBar/>*/}
-
                 <BarraLogoMenu/>
                 <Grid container spacing={0} className="breadcrumb" justifyContent='center'>
                     <Grid item xs={12} className={classes.item3}>
@@ -85,12 +71,9 @@ class Header extends React.Component {
                         </ul>
                     </Grid>
                 </Grid>
-
                 <Grid container spacing={0} className={classNames(classes.container1)} justifyContent='center'>
-                <Particles 
+                <Particles
                         className={classes.particulas}
-                        
-
                         params={{
                             "particles": {
                                 "number": {
@@ -193,13 +176,13 @@ class Header extends React.Component {
                             "retina_detect": true
                         }}
                     />
-                    <Grid item xs={12} md={4} align={isWidthUp('md', this.props.width) ? 'right' : 'center'}
+                    <Grid item xs={12} md={4} align={isWidthUp('md', props.width) ? 'right' : 'center'}
                           className={classes.item1}>
                         <img src={S3} alt="Sistema 2" className={classes.s2}/>
                     </Grid>
 
                     <Grid item xs={12} md={6} className={classes.item2}
-                          align={isWidthUp('md', this.props.width) ? 'left' : 'center'}>
+                          align={isWidthUp('md', props.width) ? 'left' : 'center'}>
                         <Typography variant="h4" paragraph className={classes.whiteText} style={{fontWeight: 600}}>
                             Sancionados
                         </Typography>
@@ -207,15 +190,9 @@ class Header extends React.Component {
                             Sistema nacional de Servidores públicos y particulares sancionados
                         </Typography>
                     </Grid>
-                  {  /*<Grid item xs={12} align={'center'}>
-                        <Button variant="contained" className={classes.button}
-                                onClick={() => this.btnVideo.handleClickOpen()}>Conoce más</Button>
-                    </Grid>*/}
                 </Grid>
-               {/* <AlertDialog innerRef={comp => this.btnVideo = comp}/>*/}
             </div>
         )
-    }
 }
 
 export default withWidth()(withStyles(style)(Header));
