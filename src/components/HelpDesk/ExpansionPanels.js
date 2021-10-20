@@ -663,23 +663,36 @@ export default function CustomizedExpansionPanels() {
                 <ExpansionPanelDetails>
                     <div>
                         <Typography paragraph color="textPrimary">
-                            Para establecer la conexión con la Plataforma Digital Nacional es necesario requisitar el formato de <b>Solicitud de conexión</b><IconButton target={'_blank'} href={'https://drive.google.com/file/d/1ANQG3f1Q7aO4soQR9__2FvHEi_-UwvBe/view'} color="primary" aria-label="descargar"  size={'small'}><GetAppIcon/></IconButton>correctamente
-                            y enviarlo al correo electrónico: <b>pdn@sesna.gob.mx </b>
+                            La Plataforma Digital Nacional (PDN) basa su funcionamiento en el uso de APIs, por medio de las cuales, se comunica con sus proveedores de
+                            información para obtener exclusivamente los datos necesarios.
                         </Typography>
                         <Typography paragraph color="textPrimary">
-                            Posteriormente el equipo de la PDN llevará a cabo el procedimiento para la verificación del funcionamiento del API correspondiente, plasmado en el respectivo <b>Plan de pruebas</b> que podrás encontrar
-                            en la sección de <Link to="/especificaciones" className={classes.link}><Typography component={'span'}>Especificaciones</Typography></Link> del sistema en cuestión.
+                            Los proveedores de información son los responsables de formalizar y finalizar el proceso de conexión,
+                            el cual debe de garantizar un correcto funcionamiento y un adecuado nivel de servicio de las APIs.
                         </Typography>
                         <Typography paragraph color="textPrimary">
-                            El conjunto de pruebas se divide en tres categorías:
-                               <ul>
-                                   <li>Pruebas de seguridad</li>
-                                   <li>Pruebas funcionales</li>
-                                   <li>Pruebas de estrés</li>
-                               </ul>
+                            Para lograr la conexión con la PDN, se ha diseñado un protocolo de conexión, que consiste en la ejecución de conjuntos de pruebas para cada Sistema de la plataforma, mismos que se dividen en tres categorías:
+                            <ul>
+                                <li>Pruebas de seguridad;</li>
+                                <li>Pruebas funcionales; y</li>
+                                <li>Pruebas de estrés.</li>
+                            </ul>
                         </Typography>
                         <Typography paragraph color="textPrimary">
-                            Cabe señalar que para la aprobación de interconexión con la Plataforma Digital Nacional, es necesario contar con todos los casos de prueba evaluados exitosamente. En caso contrario, será necesario realizar los ajustes para cumplir con todos los casos de prueba y solicitar nuevamente la validación por parte del equipo de la Plataforma Digital Nacional.
+                            Estas pruebas se ejecutan en dos ambientes: 1) desarrollo y 2) productivo. En cada uno el equipo de la PDN verificará el funcionamiento de la API que corresponda.
+                            Para llevar a cabo la verificación, se utiliza el <b>Plan de pruebas</b> que podrás encontrar en la sección de <Link to="/especificaciones" className={classes.link}><Typography component={'span'}>Especificaciones</Typography></Link> de cada uno de los sistemas.
+                            <ol>
+                                <li><b>Ambiente de desarrollo</b>: deberán utilizar <b>datos sintéticos</b> para verificar completamente la funcionalidad, los mecanismos de seguridad y la estructura de los datos.</li>
+                                <li><b>Ambiente productivo</b>: se requiere contar con los <b>datos reales</b> que serán suministrados a la Plataforma, omitiendo en esta etapa datos de carácter reservado, ya que es la fase previa a la comunicación final con la PDN.</li>
+                            </ol>
+                        </Typography>
+
+                        <Typography paragraph color="textPrimary">
+                            Es necesario contar con la <b>aprobación</b> de las pruebas en el ambiente de desarrollo para continuar con el ambiente productivo, es decir, todos los casos de pruebas deben resultar exitosos. En caso de que las pruebas no lo sean, se le notificará al proveedor de información a través de correo
+                            electrónico para que realice los ajustes necesarios y solicite una nueva revisión al equipo de la PDN
+                        </Typography>
+                        <Typography paragraph color="textPrimary">
+                            Para iniciar el proceso o protocolo de conexión, es necesario llenar el formato de <b>Solicitud de conexión</b> correctamente y enviarlo al correo electrónico: pdn@sesna.gob.mx.
                         </Typography>
                         <Typography paragraph color="textPrimary">
                             Adicionalmente, ponemos a disposición un <Link to="/validador" className={classes.link}><Typography component={'span'}>Validador </Typography></Link>
