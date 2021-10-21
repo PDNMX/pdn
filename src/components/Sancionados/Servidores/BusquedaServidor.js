@@ -23,7 +23,6 @@ import Switch from "@material-ui/core/Switch";
 import Collapse from "@material-ui/core/Collapse";
 import Previos from "../../Compartidos/Previos";
 import TablaServidoresSancionados from "./TablaServidoresSancionados";
-import MensajeNoRegistros from "../../Mensajes/MensajeNoRegistros";
 import DetalleServidorSancionado from "./DetalleServidorSancionado";
 const axios = require('axios');
 
@@ -137,6 +136,27 @@ class BusquedaServidor extends React.Component {
                     sug.push({value: item.nombre, label: item.nombre, key: index});
                 });
                 this.setState({institucionesLista: sug, institucionDependencia: ''});
+            }).catch(err => {
+            this.setState({error: true})
+        });
+    }
+
+    loadProveedores = () => {
+        let sug = [];
+        let options = {
+            url: process.env.REACT_APP_S3S_BACKEND + '/api/v1/getProviders',
+            json: true,
+            method: "post",
+            data: {
+                nivel_gobierno: this.state.nivel
+            }
+        };
+        axios(options)
+            .then(data => {
+                data.data.forEach((provider) => {
+                    sug.push({value: provider.supplier_id, label: provider.supplier_name, key: provider.supplier_id});
+                });
+                this.setState({proveedoresLista: sug, proveedor: ''});
             }).catch(err => {
             this.setState({error: true})
         });
@@ -320,27 +340,6 @@ class BusquedaServidor extends React.Component {
         this.setState({elementoSeleccionado: null});
     };
 
-    loadProveedores = () => {
-        let sug = [];
-        let options = {
-            url: process.env.REACT_APP_S3S_BACKEND + '/api/v1/getProviders',
-            json: true,
-            method: "post",
-            data: {
-                nivel_gobierno: this.state.nivel
-            }
-        };
-        axios(options)
-            .then(data => {
-                data.data.forEach((provider) => {
-                    sug.push({value: provider.supplier_id, label: provider.supplier_name, key: provider.supplier_id});
-                });
-                this.setState({proveedoresLista: sug, proveedor: ''});
-            }).catch(err => {
-            this.setState({error: true})
-        });
-    }
-
     executeScrollPrevios = () => this.previosRef.current.scrollIntoView();
 
     executeScrollResults = () => this.resultsRef.current.scrollIntoView();
@@ -350,7 +349,7 @@ class BusquedaServidor extends React.Component {
         const {nombres, primerApellido, segundoApellido,institucionDependencia, nivel, tipoSancion, campoOrden, tipoOrden, institucionesLista, proveedor, proveedoresLista} = this.state;
 
         return (
-            <div>
+            <React.Fragment>
                 {/*Buscador*/}
                 <Grid container spacing={4}>
                     <Grid item xs={12}>
@@ -581,7 +580,7 @@ class BusquedaServidor extends React.Component {
                 </Grid>
                 {/*PREVIOS*/}
                 {this.state.previos && this.state.previos.length > 0 &&
-                <Grid container>
+                <Grid container ref={this.previosRef}>
                     <Grid item xs={12} className={classes.section}>
                             <FormControlLabel
                                 control={<Switch className={classes.containerPrevios}
@@ -592,7 +591,7 @@ class BusquedaServidor extends React.Component {
                                         {this.state.panelPrevios ? 'Ocultar resultados generales' : 'Mostrar resultados generales'}</Typography>}
                             />
                     </Grid>
-                    <Grid item xs={12} className={classes.section} ref={this.previosRef}>
+                    <Grid item xs={12} className={classes.section} >
                             <div className={classes.container}>
                                 <Collapse in={this.state.panelPrevios}>
                                     <Previos data={this.state.previos} handleChangeSujetoObligado={this.handleChangeAPI}/>
@@ -600,13 +599,6 @@ class BusquedaServidor extends React.Component {
                             </div>
                     </Grid>
                 </Grid>
-                }
-                {
-                    <Grid item xs={12}>
-                        {(this.state.previos && this.state.previos.length <= 0) &&
-                        <MensajeNoRegistros/>
-                        }
-                    </Grid>
                 }
                 {/*TABLA*/}
                 {this.state.filterData && this.state.filterData.length > 0 && this.state.elementoSeleccionado === null &&
@@ -627,7 +619,7 @@ class BusquedaServidor extends React.Component {
                                                servidor={this.state.elementoSeleccionado}
                     />
                 }
-            </div>
+            </React.Fragment>
         );
     }
 }
