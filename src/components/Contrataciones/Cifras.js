@@ -110,7 +110,6 @@ const Cifras = props => {
             console.log(error);
             setState({ error: true })
         });
-        //eslint-disable-next-line react-hooks/exhaustive-deps
     },[dataSupplier]);
 
     const porcentaje = (amount, total) => {
