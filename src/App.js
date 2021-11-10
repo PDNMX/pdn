@@ -136,7 +136,6 @@ class App extends React.Component {
                 <StyledEngineProvider injectFirst>
                     <Router basename={process.env.PUBLIC_URL}>
                         <ScrollToTop>
-                            <Bandita/>
                             <Switch>
                                 <Route exact path={"/login"} render={props => <LoginPDN/>}/>
                                 {pndRoutes.map((prop, key) => {

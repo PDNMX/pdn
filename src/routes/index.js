@@ -1,5 +1,4 @@
-import Home from '../components/Home/Home';
-
+import Home from '../components/HomeV2/Home';
 import About from '../components/About/About';
 import Terminos from '../components/Terminos/Terminos';
 import Faq from '../components/FAQ/index';
