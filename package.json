@@ -16,7 +16,7 @@
     "@mui/styles": "^5.1.0",
     "ajv": "^6.9.1",
     "ajv-i18n": "^3.4.0",
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "babel": "^6.23.0",
     "chartist": "^0.11.2",
     "chartist-plugin-tooltips-updated": "^0.0.21",
