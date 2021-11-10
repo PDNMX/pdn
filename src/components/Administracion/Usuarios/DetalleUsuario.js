@@ -1,12 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {withStyles} from '@material-ui/core/styles';
-import {Typography} from "@material-ui/core"
-import Modal from '@material-ui/core/Modal';
-import Grid from "@material-ui/core/Grid/Grid";
-import TextField from "@material-ui/core/TextField/TextField";
-import CloseButton from '@material-ui/icons/Close'
-import IconButton from "@material-ui/core/IconButton/IconButton";
+import {withStyles} from '@mui/styles';
+import {Typography, Modal, Grid, TextField, IconButton} from "@mui/material";
+import CloseButton from '@mui/icons-material/Close';
 
 function getModalStyle() {
     const top = 50;

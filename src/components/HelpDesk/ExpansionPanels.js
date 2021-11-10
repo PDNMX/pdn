@@ -1,18 +1,19 @@
 import React from 'react';
-import {makeStyles, withStyles} from '@material-ui/core/styles';
-import MuiExpansionPanel from '@material-ui/core/ExpansionPanel';
-import MuiExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import MuiExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import Typography from '@material-ui/core/Typography';
-import MuiLink from "@material-ui/core/Link";
+import makeStyles from '@mui/styles/makeStyles';
+import withStyles from '@mui/styles/withStyles';
+import MuiExpansionPanel from '@mui/material/Accordion';
+import MuiExpansionPanelSummary from '@mui/material/AccordionSummary';
+import MuiExpansionPanelDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import MuiLink from "@mui/material/Link";
 import {Link} from "react-router-dom";
 import Diagrama from "../../assets/Diagrama_de_comunicacion_API.svg";
-import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
-import IconButton from "@material-ui/core/IconButton";
-import GetAppIcon from "@material-ui/icons/GetApp";
+import Button from '@mui/material/Button';
+import Icon from '@mui/material/Icon';
+import IconButton from "@mui/material/IconButton";
+import GetAppIcon from "@mui/icons-material/GetApp";
 
-const ExpansionPanel = withStyles({
+const Accordion = withStyles({
     root: {
         border: '1px solid rgba(0, 0, 0, .125)',
         boxShadow: 'none',
@@ -29,7 +30,7 @@ const ExpansionPanel = withStyles({
     expanded: {},
 })(MuiExpansionPanel);
 
-const ExpansionPanelSummary = withStyles({
+const AccordionSummary = withStyles({
     root: {
         backgroundColor: 'rgba(0, 0, 0, .03)',
         borderBottom: '1px solid rgba(0, 0, 0, .125)',
@@ -47,7 +48,7 @@ const ExpansionPanelSummary = withStyles({
     expanded: {},
 })(MuiExpansionPanelSummary);
 
-const ExpansionPanelDetails = withStyles(theme => ({
+const AccordionDetails = withStyles(theme => ({
     root: {
         padding: theme.spacing(2),
     },
@@ -97,11 +98,11 @@ export default function CustomizedExpansionPanels() {
         <div>
 
 
-            <ExpansionPanel square expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
-                <ExpansionPanelSummary aria-controls="panel1d-content" id="panel1d-header">
+            <Accordion square expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+                <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
                     <Typography>¿Qué es la PDN?</Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
+                </AccordionSummary>
+                <AccordionDetails>
 
 
                     <div>
@@ -146,14 +147,14 @@ export default function CustomizedExpansionPanels() {
                     </div>
 
 
-                </ExpansionPanelDetails>
-            </ExpansionPanel>
+                </AccordionDetails>
+            </Accordion>
 
-            <ExpansionPanel square expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
-                <ExpansionPanelSummary aria-controls="panel2d-content" id="panel2d-header">
+            <Accordion square expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+                <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
                     <Typography>Objetivos de la PDN</Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
+                </AccordionSummary>
+                <AccordionDetails>
                     <div>
                         <Typography>
                             Usar nuevas tecnologías y metodologías de trabajo como apoyo al trabajo de las autoridades del Sistema Nacional Anticorrupción para:
@@ -169,14 +170,14 @@ export default function CustomizedExpansionPanels() {
                             <li className={classes.li}><Typography display='inline'> Dar evidencia para generar recomendaciones de política pública a las autoridades;</Typography></li>
                         </ul>
                     </div>
-                </ExpansionPanelDetails>
-            </ExpansionPanel>
+                </AccordionDetails>
+            </Accordion>
 
-            <ExpansionPanel square expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
-                <ExpansionPanelSummary aria-controls="panel3d-content" id="panel3d-header">
+            <Accordion square expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
+                <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
                     <Typography>Marco normativo</Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
+                </AccordionSummary>
+                <AccordionDetails>
                     <div>
 
                         <Typography paragraph>
@@ -266,14 +267,14 @@ export default function CustomizedExpansionPanels() {
                         </Typography>
 
                     </div>
-                </ExpansionPanelDetails>
-            </ExpansionPanel>
+                </AccordionDetails>
+            </Accordion>
 
-            <ExpansionPanel square expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
-                <ExpansionPanelSummary aria-controls="panel4d-content" id="panel4d-header">
+            <Accordion square expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
+                <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">
                     <Typography>¿Qué hace la SESNA y la USTPDN?</Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
+                </AccordionSummary>
+                <AccordionDetails>
                     <div>
                         <Typography paragraph>
                             La Secretaría Ejecutiva del Sistema Nacional Anticorrupción (SESNA) tiene como propósito brindar apoyo técnico al Comité Coordinador del Sistema Nacional Anticorrupción.
@@ -296,14 +297,14 @@ export default function CustomizedExpansionPanels() {
                         </Typography>
 
                     </div>
-                </ExpansionPanelDetails>
-            </ExpansionPanel>
+                </AccordionDetails>
+            </Accordion>
 
-            <ExpansionPanel square expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
-                <ExpansionPanelSummary aria-controls="panel5d-content" id="panel5d-header">
+            <Accordion square expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
+                <AccordionSummary aria-controls="panel5d-content" id="panel5d-header">
                     <Typography>Sistemas Estatales Anticorrupción</Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
+                </AccordionSummary>
+                <AccordionDetails>
                     <div>
 
                         <Typography variant="h6" paragraph> Normatividad:</Typography>
@@ -345,14 +346,14 @@ export default function CustomizedExpansionPanels() {
                         </Typography>
 
                     </div>
-                </ExpansionPanelDetails>
-            </ExpansionPanel>
+                </AccordionDetails>
+            </Accordion>
 
-            <ExpansionPanel square expanded={expanded === 'panel6'} onChange={handleChange('panel6')}>
-                <ExpansionPanelSummary aria-controls="panel6d-content" id="panel6d-header">
+            <Accordion square expanded={expanded === 'panel6'} onChange={handleChange('panel6')}>
+                <AccordionSummary aria-controls="panel6d-content" id="panel6d-header">
                     <Typography>Preguntas técnicas frecuentes </Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
+                </AccordionSummary>
+                <AccordionDetails>
                     <div>
 
 
@@ -595,14 +596,14 @@ export default function CustomizedExpansionPanels() {
 
 
                     </div>
-                </ExpansionPanelDetails>
-            </ExpansionPanel>
+                </AccordionDetails>
+            </Accordion>
 
-            <ExpansionPanel square expanded={expanded === 'panel7'} onChange={handleChange('panel7')}>
-                <ExpansionPanelSummary aria-controls="panel7d-content" id="panel7d-header">
+            <Accordion square expanded={expanded === 'panel7'} onChange={handleChange('panel7')}>
+                <AccordionSummary aria-controls="panel7d-content" id="panel7d-header">
                     <Typography>Preguntas frecuentes - datos</Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
+                </AccordionSummary>
+                <AccordionDetails>
                     <div>
 
 
@@ -653,14 +654,14 @@ export default function CustomizedExpansionPanels() {
 
 
                     </div>
-                </ExpansionPanelDetails>
-            </ExpansionPanel>
+                </AccordionDetails>
+            </Accordion>
 
-            <ExpansionPanel square expanded={expanded === 'panel9'} onChange={handleChange('panel9')}>
-                <ExpansionPanelSummary aria-controls="panel9d-content" id="panel9d-header">
+            <Accordion square expanded={expanded === 'panel9'} onChange={handleChange('panel9')}>
+                <AccordionSummary aria-controls="panel9d-content" id="panel9d-header">
                     <Typography>Protocolo de conexión</Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
+                </AccordionSummary>
+                <AccordionDetails>
                     <div>
                         <Typography paragraph color="textPrimary">
                             La Plataforma Digital Nacional (PDN) basa su funcionamiento en el uso de APIs, por medio de las cuales, se comunica con sus proveedores de
@@ -672,21 +673,20 @@ export default function CustomizedExpansionPanels() {
                         </Typography>
                         <Typography paragraph color="textPrimary">
                             Para lograr la conexión con la PDN, se ha diseñado un protocolo de conexión, que consiste en la ejecución de conjuntos de pruebas para cada Sistema de la plataforma, mismos que se dividen en tres categorías:
-                            <ul>
-                                <li>Pruebas de seguridad;</li>
-                                <li>Pruebas funcionales; y</li>
-                                <li>Pruebas de estrés.</li>
-                            </ul>
                         </Typography>
+                        <ul>
+                            <li>Pruebas de seguridad;</li>
+                            <li>Pruebas funcionales; y</li>
+                            <li>Pruebas de estrés.</li>
+                        </ul>
                         <Typography paragraph color="textPrimary">
                             Estas pruebas se ejecutan en dos ambientes: 1) desarrollo y 2) productivo. En cada uno el equipo de la PDN verificará el funcionamiento de la API que corresponda.
                             Para llevar a cabo la verificación, se utiliza el <b>Plan de pruebas</b> que podrás encontrar en la sección de <Link to="/especificaciones" className={classes.link}><Typography component={'span'}>Especificaciones</Typography></Link> de cada uno de los sistemas.
-                            <ol>
-                                <li><b>Ambiente de desarrollo</b>: deberán utilizar <b>datos sintéticos</b> para verificar completamente la funcionalidad, los mecanismos de seguridad y la estructura de los datos.</li>
-                                <li><b>Ambiente productivo</b>: se requiere contar con los <b>datos reales</b> que serán suministrados a la Plataforma, omitiendo en esta etapa datos de carácter reservado, ya que es la fase previa a la comunicación final con la PDN.</li>
-                            </ol>
                         </Typography>
-
+                        <ol>
+                            <li><b>Ambiente de desarrollo</b>: deberán utilizar <b>datos sintéticos</b> para verificar completamente la funcionalidad, los mecanismos de seguridad y la estructura de los datos.</li>
+                            <li><b>Ambiente productivo</b>: se requiere contar con los <b>datos reales</b> que serán suministrados a la Plataforma, omitiendo en esta etapa datos de carácter reservado, ya que es la fase previa a la comunicación final con la PDN.</li>
+                        </ol>
                         <Typography paragraph color="textPrimary">
                             Es necesario contar con la <b>aprobación</b> de las pruebas en el ambiente de desarrollo para continuar con el ambiente productivo, es decir, todos los casos de pruebas deben resultar exitosos. En caso de que las pruebas no lo sean, se le notificará al proveedor de información a través de correo
                             electrónico para que realice los ajustes necesarios y solicite una nueva revisión al equipo de la PDN
@@ -700,14 +700,14 @@ export default function CustomizedExpansionPanels() {
                         </Typography>
 
                     </div>
-                </ExpansionPanelDetails>
-            </ExpansionPanel>
+                </AccordionDetails>
+            </Accordion>
 
-            <ExpansionPanel square expanded={expanded === 'panel8'} onChange={handleChange('panel8')}>
-                <ExpansionPanelSummary aria-controls="panel8d-content" id="panel8d-header">
+            <Accordion square expanded={expanded === 'panel8'} onChange={handleChange('panel8')}>
+                <AccordionSummary aria-controls="panel8d-content" id="panel8d-header">
                     <Typography>Sistema de declaración patrimonial y de intereses</Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
+                </AccordionSummary>
+                <AccordionDetails>
                     <div>
 
                         <Typography paragraph color="textPrimary">
@@ -721,14 +721,14 @@ export default function CustomizedExpansionPanels() {
                         </Button>
 
                     </div>
-                </ExpansionPanelDetails>
-            </ExpansionPanel>
+                </AccordionDetails>
+            </Accordion>
 
-            <ExpansionPanel square expanded={expanded === 'panel10'} onChange={handleChange('panel10')}>
-                <ExpansionPanelSummary aria-controls="panel10d-content" id="panel10d-header">
+            <Accordion square expanded={expanded === 'panel10'} onChange={handleChange('panel10')}>
+                <AccordionSummary aria-controls="panel10d-content" id="panel10d-header">
                     <Typography>Contactanos</Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
+                </AccordionSummary>
+                <AccordionDetails>
                     <div>
 
                         <Typography paragraph>
@@ -739,8 +739,8 @@ export default function CustomizedExpansionPanels() {
                         </Typography>
 
                     </div>
-                </ExpansionPanelDetails>
-            </ExpansionPanel>
+                </AccordionDetails>
+            </Accordion>
 
         </div>
     );

@@ -1,17 +1,17 @@
 import React from 'react';
-import TextField from '@material-ui/core/TextField';
-import {withStyles} from '@material-ui/core/styles';
-import FormControl from "@material-ui/core/FormControl";
-import MenuItem from "@material-ui/core/MenuItem";
-import Grid from "@material-ui/core/Grid";
-import {Typography} from "@material-ui/core"
-import Button from '@material-ui/core/Button';
-import InputLabel from '@material-ui/core/InputLabel';
-import Select from "@material-ui/core/Select";
-import FormLabel from "@material-ui/core/FormLabel";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Radio from "@material-ui/core/Radio";
+import TextField from '@mui/material/TextField';
+import withStyles from '@mui/styles/withStyles';
+import FormControl from "@mui/material/FormControl";
+import MenuItem from "@mui/material/MenuItem";
+import Grid from "@mui/material/Grid";
+import {Typography} from "@mui/material"
+import Button from '@mui/material/Button';
+import InputLabel from '@mui/material/InputLabel';
+import Select from "@mui/material/Select";
+import FormLabel from "@mui/material/FormLabel";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Radio from "@mui/material/Radio";
 import TipoProcedimiento from "./TipoProcedimiento";
 
 const styles = theme => ({
@@ -80,10 +80,6 @@ const BusquedaServidor = props => {
                             type="search"
                             onChange={(e) => handleSetState('nombres', e)}
                             value={nombres}
-                            InputLabelProps={{
-                                className: classes.inputShrink,
-                                shrink: true
-                            }}
                         />
 
                     </FormControl>
@@ -96,10 +92,6 @@ const BusquedaServidor = props => {
                             type="search"
                             onChange={(e) => handleSetState('apellidoUno', e)}
                             value={apellidoUno}
-                            InputLabelProps={{
-                                className: classes.inputShrink,
-                                shrink: true
-                            }}
                         />
 
                     </FormControl>
@@ -112,10 +104,6 @@ const BusquedaServidor = props => {
                             type="search"
                             onChange={(e) => handleSetState('apellidoDos', e)}
                             value={apellidoDos}
-                            InputLabelProps={{
-                                className: classes.inputShrink,
-                                shrink: true
-                            }}
                         />
 
                     </FormControl>
@@ -130,15 +118,18 @@ const BusquedaServidor = props => {
                 </Grid>
                 <Grid item xs={12} md={8}>
                     <FormControl className={classes.formControl}>
-                        <InputLabel htmlFor={'campoSelectInstitucion'}>Institución</InputLabel>
+                        <InputLabel id={'campoSelectInstitucion'}>Institución</InputLabel>
                         <Select
                             //style={{marginTop: '0px'}}
+                            labelId = {'campoSelectInstitucion'}
+                            id = {'campoSelectInstitucion-select'}
                             value={current_entity}
                             onChange={(e) => handleSetState('current_entity', e)}
                             inputProps={{
                                 name: 'campoSelectInstitucion',
                                 id: 'campoSelectInstitucion',
                             }}
+                            label =  {'Institución'}
                         >
                             <MenuItem value="ANY" key="ANY">
                                 Todas

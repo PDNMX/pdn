@@ -1,8 +1,8 @@
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@mui/styles';
 import PropTypes from 'prop-types';
-import Grid from '@material-ui/core/Grid';
-import {Typography} from "@material-ui/core"
+import Grid from '@mui/material/Grid';
+import {Typography} from "@mui/material"
 import Tabla from './Tabla';
 const styles = theme => ({
     root: {
@@ -13,7 +13,7 @@ const styles = theme => ({
             paddingTop: theme.spacing(1),
             paddingBottom: theme.spacing(3)
         },
-        [theme.breakpoints.down('sm')]:{
+        [theme.breakpoints.down('md')]:{
             marginLeft: theme.spacing(1),
             marginRight: theme.spacing(1),
             paddingTop: theme.spacing(1),

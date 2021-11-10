@@ -1,6 +1,6 @@
 import React from "react";
-import {withStyles} from "@material-ui/core/styles";
-import {Typography} from "@material-ui/core"
+import withStyles from '@mui/styles/withStyles';
+import {Typography} from "@mui/material"
 import mp4 from '../../assets/videos/pdn_intro.mp4';
 import './VideoBanner.css';
 import VideoAppBar from "./VideoAppBar";
@@ -13,7 +13,7 @@ const styles = theme => ({
         right: 0,
         bottom: 0,
         width: '100%',
-        [theme.breakpoints.down('md')]: {
+        [theme.breakpoints.down('lg')]: {
             width: 1280
         },
         //minWidth: '100%',
@@ -28,7 +28,7 @@ const styles = theme => ({
     },
     text: {
         color: "#ffffff",
-        [theme.breakpoints.down('sm')]:{
+        [theme.breakpoints.down('md')]:{
             fontSize: '40px',
         },
     },

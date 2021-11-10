@@ -1,24 +1,10 @@
 import React from 'react';
-import Table from "@material-ui/core/Table/Table";
+import {Table, TableBody, TableRow, TableCell, Typography, TablePagination, Grid, FormControl, Select, Tooltip, InputLabel, Button, Dialog, DialogTitle, DialogContent} from "@mui/material";
 import EnhancedTableHead from "../../Tablas/EnhancedTableHead";
-import TableBody from "@material-ui/core/TableBody/TableBody";
-import TableRow from "@material-ui/core/TableRow/TableRow";
-import TableCell from "@material-ui/core/TableCell/TableCell";
-import {withStyles} from '@material-ui/core/styles';
-import {Typography} from "@material-ui/core"
-import Tooltip from "@material-ui/core/Tooltip/Tooltip";
-import AssignmentIcon from '@material-ui/icons/Assignment';
+import {withStyles} from '@mui/styles';
+import AssignmentIcon from '@mui/icons-material/Assignment';
 import rp from "request-promise";
 import Mensaje from "../../Mensajes/Mensaje";
-import TablePagination from "@material-ui/core/TablePagination/TablePagination";
-import Grid from "@material-ui/core/Grid/Grid";
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import InputLabel from '@material-ui/core/InputLabel';
-import Button from "@material-ui/core/Button/Button";
-import Dialog from "@material-ui/core/Dialog/Dialog";
-import DialogTitle from "@material-ui/core/DialogTitle/DialogTitle";
-import DialogContent from "@material-ui/core/DialogContent/DialogContent";
 
 let counter = 0;
 let createData = (item) => {

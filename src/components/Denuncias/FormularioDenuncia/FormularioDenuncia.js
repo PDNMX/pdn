@@ -1,9 +1,7 @@
 import React from 'react';
-import {Typography} from "@material-ui/core"
-import {withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@mui/styles';
 import PropTypes from 'prop-types';
-import Grid from '@material-ui/core/Grid';
-import Paper from "@material-ui/core/Paper/Paper";
+import {Grid, Paper, Typography} from "@mui/material";
 //import HorizontalNonLinearStepper from "./HorizontalNonLinearStepper";
 
 const styles = theme => ({

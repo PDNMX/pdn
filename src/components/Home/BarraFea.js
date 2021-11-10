@@ -1,11 +1,11 @@
 import React from "react";
-import { withStyles } from "@material-ui/core/styles";
+import withStyles from '@mui/styles/withStyles';
 import Blog from "../../assets/iconos_barra/ico-blog.svg";
 import Espe from "../../assets/iconos_barra/ico-especificaciones.svg";
 import Mesa from "../../assets/iconos_barra/ico-mesa_ayuda.svg";
 import MDA from "../../assets/iconos_barra/mda.png";
 import { Link as RouterLink } from "react-router-dom";
-import {Typography, Link, Box} from "@material-ui/core";
+import {Typography, Link, Box} from "@mui/material";
 
 const styles = theme => ({
   root: {

@@ -1,9 +1,9 @@
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import {Typography} from '@material-ui/core';
+import withStyles from '@mui/styles/withStyles';
+import Grid from '@mui/material/Grid';
+import {Typography} from '@mui/material';
 import Star from '../../assets/grafica.png';
-import Button from '@material-ui/core/Button';
+import Button from '@mui/material/Button';
 import {Link} from 'react-router-dom';
 
 const styles = theme => ({
@@ -28,7 +28,7 @@ const styles = theme => ({
     headingText: {
         color : theme.palette.titleBanner.color,
         fontSize: '48px',
-        [theme.breakpoints.down('sm')]:{
+        [theme.breakpoints.down('md')]:{
             fontSize: '40px',
         },
         fontWeight: 500
@@ -43,9 +43,9 @@ const styles = theme => ({
 const QueEsLaPDN = props => {
     const { classes } = props;
 
-    return(
+    return (
         <div className={classes.root}>
-            <Grid container spacing={0} justify='center' className={classes.container}>
+            <Grid container spacing={0} justifyContent='center' className={classes.container}>
                 <Grid item xs={12} style={{paddingBottom: 60}}>
                     <Typography className={classes.headingText}>
                         ¿Qué es la Plataforma Digital Nacional?

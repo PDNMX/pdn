@@ -1,13 +1,13 @@
 import React from 'react';
-import { Grid, Typography } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { Grid, Typography } from '@mui/material';
+import withStyles from '@mui/styles/withStyles';
 
 import axios from 'axios';
 
-import Tooltip from '@material-ui/core/Tooltip';
-import IconSunny from '@material-ui/icons/WbSunny';
+import Tooltip from '@mui/material/Tooltip';
+import IconSunny from '@mui/icons-material/WbSunny';
 
-import CircularProgress from '@material-ui/core/CircularProgress';
+import CircularProgress from '@mui/material/CircularProgress';
 import Tabla from './Tabla';
 import Perfil from './Perfil';
 import styles from './style';
@@ -18,7 +18,7 @@ import scrollToComponent from 'react-scroll-to-component';
 
 
 import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from "./common/BoxAccordion";
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import Descarga from "../Compartidos/Descarga";
 

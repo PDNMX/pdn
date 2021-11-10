@@ -1,12 +1,8 @@
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles';
-import Grid from "@material-ui/core/Grid/Grid";
-import TextField from "@material-ui/core/TextField/TextField";
-import Fab from "@material-ui/core/Fab/Fab";
-import Save from '@material-ui/icons/Save';
-import AddIcon from '@material-ui/icons/Add';
-import {Typography} from "@material-ui/core"
-import Tooltip from "@material-ui/core/Tooltip/Tooltip";
+import {withStyles} from '@mui/styles';
+import {Grid, Typography,TextField, Fab, Tooltip} from "@mui/material";
+import Save from '@mui/icons-material/Save';
+import AddIcon from '@mui/icons-material/Add';
 import rp from "request-promise";
 import Mensaje from "../../Mensajes/Mensaje";
 import MensajeError from "../../Mensajes/MensajeError";

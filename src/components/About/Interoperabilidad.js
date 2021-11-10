@@ -1,7 +1,7 @@
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles';
-import {Typography} from "@material-ui/core"
-import Grid from '@material-ui/core/Grid';
+import withStyles from '@mui/styles/withStyles';
+import {Typography} from "@mui/material";
+import {Grid} from '@mui/material';
 import PropTypes from 'prop-types';
 import Gi from '../../assets/about/datos_estanadarizados_interporables.svg';
 
@@ -57,7 +57,7 @@ class Interoperabilidad extends React.Component{
                 <br/>
                 <br/>
 
-                <Grid container spacing={0} justify='center'>
+                <Grid container spacing={0} justifyContent='center'>
                     <Grid item xs={12}>
                         <img src={Gi} alt="Interoperabilidad" className={classes.interopera} style={{maxWidth: '95%'}}/>
                     </Grid>

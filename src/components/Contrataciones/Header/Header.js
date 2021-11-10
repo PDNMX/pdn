@@ -1,15 +1,24 @@
 import React from 'react';
-import {withStyles} from "@material-ui/core/styles";
-import Grid from '@material-ui/core/Grid';
+import withStyles from '@mui/styles/withStyles';
+import Grid from '@mui/material/Grid';
 import {Link as RouterLink} from 'react-router-dom';
-import Link from '@material-ui/core/Link';
+import Link from '@mui/material/Link';
 import C from '../../../assets/iconos_azul/6_icono.svg'
-import Typography from "@material-ui/core/Typography";
-import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
+import Typography from "@mui/material/Typography";
 import BarraLogoMenu from "../../Compartidos/BarraLogoMenu";
 
 import Particles from 'react-particles-js';
 import {getParams} from './ParticleParams';
+import {useTheme} from "@emotion/react";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+// FIXME checkout https://mui.com/components/use-media-query/#migrating-from-withwidth
+const withWidth = () => (WrappedComponent) => (props) => <WrappedComponent {...props} width="xs" />;
+
+function useIsWidthUp(breakpoint) {
+    const theme = useTheme();
+    return useMediaQuery(theme.breakpoints.up(breakpoint));
+}
 
 const style = theme => ({
         root: {
@@ -66,6 +75,7 @@ const style = theme => ({
 
 const Header = props => {
     const {classes} = props;
+    const isMdUp = useIsWidthUp("md");
 
     return (
         <div className={classes.root}>
@@ -92,11 +102,11 @@ const Header = props => {
                     className={classes.particulas}
                     params={getParams()}
                 />
-                <Grid item xs={12} md={4} align={isWidthUp('md', props.width)? 'right':'center'} className={classes.item1}>
+                <Grid item xs={12} md={4} align={isMdUp ? 'right':'center'} className={classes.item1}>
                     <img src={C} alt="Especificaciones" className={classes.logo}/>
                 </Grid>
 
-                <Grid item xs={12} md={6} className={classes.item2} align={isWidthUp('md', props.width)? 'left':'center'}>
+                <Grid item xs={12} md={6} className={classes.item2} align={isMdUp ? 'left':'center'}>
 
                     <Typography variant="h4" paragraph className={classes.whiteText} style={{  fontWeight: 600}}>
                         Contrataciones públicas

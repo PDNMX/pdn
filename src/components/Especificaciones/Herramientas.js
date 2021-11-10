@@ -1,8 +1,8 @@
 import React from 'react';
-import {Typography} from "@material-ui/core"
-import {withStyles} from "@material-ui/core/styles";
-import LinkIcon from '@material-ui/icons/Link';
-import IconButton from '@material-ui/core/IconButton';
+import {Typography} from "@mui/material"
+import withStyles from '@mui/styles/withStyles';
+import LinkIcon from '@mui/icons-material/Link';
+import IconButton from '@mui/material/IconButton';
 import PropTypes from 'prop-types';
 
 const styles = theme => ({
@@ -47,7 +47,7 @@ class Herramientas extends React.Component {
                     <li className={classes.li}>
                         <Typography display='inline'><b>Express JS</b></Typography>
                         <Typography>Lenguaje de programación: JavaScript</Typography>
-                        <IconButton href="https://expressjs.com/" target='_blank'>
+                        <IconButton href="https://expressjs.com/" target='_blank' size="large">
                             <LinkIcon/>
                         </IconButton>
                     </li>
@@ -55,28 +55,37 @@ class Herramientas extends React.Component {
                         <Typography display='inline'><b>Django</b></Typography>
                         <Typography>Lenguaje de programación: Python</Typography>
 
-                        <IconButton href="https://www.djangoproject.com/" target='_blank'>
+                        <IconButton href="https://www.djangoproject.com/" target='_blank' size="large">
                             <LinkIcon/>
                         </IconButton>
                     </li>
                     <li className={classes.li}>
                         <Typography display='inline'><b>Flask</b></Typography>
                         <Typography>Lenguaje de programación: Python</Typography>
-                        <IconButton href="https://flask-restful.readthedocs.io/en/latest/quickstart.html" target='_blank'>
+                        <IconButton
+                            href="https://flask-restful.readthedocs.io/en/latest/quickstart.html"
+                            target='_blank'
+                            size="large">
                             <LinkIcon/>
                         </IconButton>
                     </li>
                     <li className={classes.li}>
                         <Typography display='inline'><b>Spring</b></Typography>
                         <Typography>Lenguaje de programación: Java</Typography>
-                        <IconButton href="https://spring.io/guides/gs/rest-service/" target='_blank'>
+                        <IconButton
+                            href="https://spring.io/guides/gs/rest-service/"
+                            target='_blank'
+                            size="large">
                             <LinkIcon/>
                         </IconButton>
                     </li>
                     <li className={classes.li}>
                         <Typography display='inline'><b>.NET Core</b></Typography>
                         <Typography>Lenguajes de programación: C#, Visual Basic, F# </Typography>
-                        <IconButton href = "https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial" target='_blank'>
+                        <IconButton
+                            href = "https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial"
+                            target='_blank'
+                            size="large">
                             <LinkIcon/>
                         </IconButton>
                     </li>
@@ -85,7 +94,7 @@ class Herramientas extends React.Component {
                         <Typography>
                             Lenguaje de programación: PHP
                         </Typography>
-                        <IconButton href="https://apigility.org/" target='_blank'>
+                        <IconButton href="https://apigility.org/" target='_blank' size="large">
                             <LinkIcon/>
                         </IconButton>
                     </li>

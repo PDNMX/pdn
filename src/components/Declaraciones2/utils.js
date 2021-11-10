@@ -1,10 +1,12 @@
 import React from 'react';
-import { Grid, LinearProgress, Paper } from '@material-ui/core';
-import Typography from '@material-ui/core/Typography';
+import { Grid, LinearProgress, Paper } from '@mui/material';
+import Typography from '@mui/material/Typography';
 
-import { TextField, FormControl, MenuItem } from '@material-ui/core';
+import { TextField, FormControl, MenuItem } from '@mui/material';
 
-import { makeStyles, withStyles, lighten } from '@material-ui/core/styles';
+import { lighten } from '@mui/material/styles';
+import makeStyles from '@mui/styles/makeStyles';
+import withStyles from '@mui/styles/withStyles';
 import style from './styleSecciones';
 
 import log from 'loglevel';

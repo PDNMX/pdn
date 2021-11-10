@@ -1,16 +1,16 @@
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableRow from '@material-ui/core/TableRow';
-import Grid from "@material-ui/core/Grid";
-import {Typography} from "@material-ui/core";
-import TableHead from "@material-ui/core/TableHead";
-import SubdirectoryArrowRightIcon from '@material-ui/icons/SubdirectoryArrowRight';
-import Tooltip from "@material-ui/core/Tooltip";
-import IconSunny from "@material-ui/icons/WbSunny";
-import Fab from "@material-ui/core/Fab";
+import withStyles from '@mui/styles/withStyles';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableRow from '@mui/material/TableRow';
+import Grid from "@mui/material/Grid";
+import {Typography} from "@mui/material";
+import TableHead from "@mui/material/TableHead";
+import SubdirectoryArrowRightIcon from '@mui/icons-material/SubdirectoryArrowRight';
+import Tooltip from "@mui/material/Tooltip";
+import IconSunny from "@mui/icons-material/WbSunny";
+import Fab from "@mui/material/Fab";
 
 const styles = theme => ({
     table: {

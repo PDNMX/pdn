@@ -1,18 +1,11 @@
 import React from 'react';
-import Table from "@material-ui/core/Table/Table";
+import {Table,TableBody,TableRow,TableCell,Typography,Tooltip,Grid, TablePagination} from "@mui/material";
 import EnhancedTableHead from "../../Tablas/EnhancedTableHead";
-import TableBody from "@material-ui/core/TableBody/TableBody";
-import TableRow from "@material-ui/core/TableRow/TableRow";
-import TableCell from "@material-ui/core/TableCell/TableCell";
-import {withStyles} from '@material-ui/core/styles';
-import {Typography} from "@material-ui/core"
-import Tooltip from "@material-ui/core/Tooltip/Tooltip";
-import Create from '@material-ui/icons/Create';
+import {withStyles} from '@mui/styles';
+import {Create} from '@mui/icons-material';
 import rp from "request-promise";
 import Mensaje from "../../Mensajes/Mensaje";
 import EditarEndpoint from "./EditarEndpoint";
-import TablePagination from "@material-ui/core/TablePagination/TablePagination";
-import Grid from "@material-ui/core/Grid/Grid";
 import {getCurrentUser} from "../../Seguridad/seguridad";
 
 let counter = 0;

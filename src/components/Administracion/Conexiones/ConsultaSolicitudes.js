@@ -1,13 +1,22 @@
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles';
-import Grid from "@material-ui/core/Grid/Grid";
+import {withStyles} from '@mui/styles';
+import {Grid} from "@mui/material";
 import TablaSolicitudes from "./TablaSolicitudes";
-import {Typography} from "@material-ui/core"
+import {Typography} from "@mui/material"
 import Footer from "../../Home/Footer";
-import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
 import {Link} from "react-router-dom";
 import PDNLogo from "../../../assets/PDN.png";
 import IconoConexiones from '../../../assets/Cards/icono-conexion.svg';
+import {useTheme} from "@emotion/react";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+// FIXME checkout https://mui.com/components/use-media-query/#migrating-from-withwidth
+const withWidth = () => (WrappedComponent) => (props) => <WrappedComponent {...props} width="xs" />;
+
+function useIsWidthUp(breakpoint) {
+    const theme = useTheme();
+    return useMediaQuery(theme.breakpoints.up(breakpoint));
+}
 
 const styles = theme => ({
     root: {
@@ -94,6 +103,7 @@ class Conexion extends React.Component {
 
     render() {
         const {classes} = this.props;
+        const isMdUp = useIsWidthUp("md");
         return (
             <div className={classes.root}>
                 <Grid container spacing={0} justify="center">
@@ -119,12 +129,12 @@ class Conexion extends React.Component {
                     </Grid>
                 </Grid>
                 <Grid container spacing={0} className={classes.container1} justify='center'>
-                    <Grid item xs={12} md={4} align={isWidthUp('md', this.props.width) ? 'right' : 'center'}
+                    <Grid item xs={12} md={4} align = {isMdUp  ? 'right' : 'center'}
                           className={classes.item1}>
                         <img src={IconoConexiones} alt="Solicitude de conexión" className={classes.s2}/>
                     </Grid>
                     <Grid item xs={12} md={6} className={classes.item2}
-                          align={isWidthUp('md', this.props.width) ? 'left' : 'center'}>
+                          align = {isMdUp  ? 'left' : 'center'}>
                         <Typography variant="h4" paragraph className={classes.whiteText}>
                             Solicitudes de conexión
                         </Typography>

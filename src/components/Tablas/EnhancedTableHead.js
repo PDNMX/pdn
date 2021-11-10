@@ -1,12 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import TableHead from "@material-ui/core/TableHead/TableHead";
-import TableRow from "@material-ui/core/TableRow/TableRow";
-import TableCell from "@material-ui/core/TableCell/TableCell";
-import Tooltip from "@material-ui/core/Tooltip/Tooltip";
-import TableSortLabel from "@material-ui/core/TableSortLabel/TableSortLabel";
-import {Typography} from "@material-ui/core"
-import {withStyles} from "@material-ui/core";
+import {TableHead, TableRow, TableCell, Tooltip, TableSortLabel, Typography} from "@mui/material";
+import {withStyles} from '@mui/styles';
 
 
 const styles = theme => ({

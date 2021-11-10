@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Accordion from '@material-ui/core/Accordion';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
-import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Divider from '@material-ui/core/Divider';
-import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Divider from '@mui/material/Divider';
+import TextField from '@mui/material/TextField';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
 
-import ClearIcon from "@material-ui/icons/Clear";
-import { IconButton } from "@material-ui/core";
+import ClearIcon from "@mui/icons-material/Clear";
+import { IconButton } from "@mui/material";
 
 const glosarioData = process.env.REACT_APP_GLOSARIO;
 
@@ -62,9 +62,11 @@ export default function Busqueda() {
         onChange={(e) => setSearch(e.target.value)}
         InputProps={{
           endAdornment: (
-            <IconButton onClick={() => {
-                setSearch('')
-                }}>
+            <IconButton
+              onClick={() => {
+                  setSearch('')
+                  }}
+              size="large">
               <ClearIcon />
             </IconButton>
           )

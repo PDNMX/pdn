@@ -1,8 +1,7 @@
 import React from "react";
-import Grid from "@material-ui/core/Grid/Grid";
-import {Typography} from "@material-ui/core";
-import {withStyles} from '@material-ui/core/styles';
-import IconNotificacion from "@material-ui/icons/NotificationImportant";
+import {withStyles} from '@mui/styles';
+import {Grid, Typography, Modal} from "@mui/material";
+import IconNotificacion from "@mui/icons-material/NotificationImportant";
 
 
 const styles = theme => ({

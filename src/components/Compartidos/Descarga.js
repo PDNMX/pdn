@@ -1,9 +1,9 @@
 import React from 'react';
-import {withStyles} from "@material-ui/core/styles";
-import {Typography} from "@material-ui/core";
-import Grid from '@material-ui/core/Grid';
-import IconButton from '@material-ui/core/IconButton';
-import DownloadIcon from '@material-ui/icons/CloudDownload';
+import {withStyles} from "@mui/styles";
+import {Typography} from "@mui/material";
+import Grid from '@mui/material/Grid';
+import IconButton from '@mui/material/IconButton';
+import DownloadIcon from '@mui/icons-material/CloudDownload';
 import PropTypes from "prop-types";
 
 const styles = theme =>  ({
@@ -30,14 +30,14 @@ class Descarga extends React.Component{
                     <Grid item xs={12} align="center">
                         <Typography className={classes.descarga} variant="h5"> Descarga todos los datos</Typography>
 
-                        <IconButton href={url} target="_blank">
+                        <IconButton href={url} target="_blank" size="large">
                             <DownloadIcon style={{fontSize: 60}}/>
                         </IconButton>
                     </Grid>
                 </Grid>
 
             </div>
-        )
+        );
     }
 
 }

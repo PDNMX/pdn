@@ -1,15 +1,8 @@
 import React from 'react';
-import TextField from '@material-ui/core/TextField';
-import {withStyles} from '@material-ui/core/styles';
+import {TextField, MenuItem, Select, InputLabel, FormControl, Input, InputAdornment, IconButton} from '@mui/material';
+import {withStyles} from '@mui/styles';
 import PropTypes from 'prop-types';
-import MenuItem from "@material-ui/core/MenuItem/MenuItem";
-import Select from "@material-ui/core/Select/Select";
-import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from "@material-ui/core/FormControl/FormControl";
-import Input from "@material-ui/core/Input/Input";
-import InputAdornment from "@material-ui/core/InputAdornment/InputAdornment";
-import IconButton from "@material-ui/core/IconButton/IconButton";
-import Visibility from "@material-ui/icons/Search";
+import Visibility from "@mui/icons-material/Search";
 //mport purple from "@material-ui/core/es/colors/purple";
 
 const styles = theme => ({

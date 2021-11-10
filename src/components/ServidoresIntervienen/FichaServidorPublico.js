@@ -1,17 +1,18 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-//import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import Typography from "@material-ui/core/Typography";
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme, withStyles } from '@material-ui/core/styles';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+//import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Typography from "@mui/material/Typography";
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
+import withStyles from '@mui/styles/withStyles';
 import {servidores} from "../Utils/glosario.json";
-import Tooltip from "@material-ui/core/Tooltip";
-import Grid from "@material-ui/core/Grid";
-import Divider from "@material-ui/core/Divider";
+import Tooltip from "@mui/material/Tooltip";
+import Grid from "@mui/material/Grid";
+import Divider from "@mui/material/Divider";
 
 const Glosario = props => {
     const data = servidores.find(e => e.id === props.id);
@@ -80,7 +81,7 @@ const FichaServidorPublico = props => {
     const {open, closeDialog, servidorPublico, classes} = props;
     const {puesto, nombrecompleto, nombres, primerApellido, segundoApellido, institucionDependencia} = servidorPublico || {};
     const theme = useTheme();
-    const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+    const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 
     const handleClose = () => {
         closeDialog();

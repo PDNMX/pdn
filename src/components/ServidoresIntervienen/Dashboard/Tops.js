@@ -1,14 +1,7 @@
 import React from 'react';
-import {withStyles} from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid/Grid";
-import {Typography} from "@material-ui/core";
+import {withStyles} from '@mui/styles';
+import {Grid, Select, MenuItem, FormControl, Typography, InputLabel,Button, Alert} from '@mui/material';
 import rp from "request-promise";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl/FormControl";
-import InputLabel from '@material-ui/core/InputLabel';
-import Button from "@material-ui/core/Button";
-import Alert from "@material-ui/lab/Alert";
 import {BarChart} from "d3plus-react";
 
 const styles = theme => ({
@@ -49,11 +42,11 @@ let color = [
 
 class Tops extends React.Component {
     state = {
-        ejercicio: '',
+        ejercicio: 'any',
         ejercicios: [],
-        ramo: '',
+        ramo: 'any',
         ramos: [],
-        institucion: '',
+        institucion: 'any',
         instituciones: [],
         top: 'INSTITUCION',
         error: false
@@ -111,13 +104,13 @@ class Tops extends React.Component {
             json: true,
             method: "post",
             body: {
-                filtros: this.state.ejercicio ? ("ejercicio= '" + this.state.ejercicio + "'") : null
+                filtros: this.state.ejercicio !== 'any' ? ("ejercicio= '" + this.state.ejercicio + "'") : null
             }
         };
 
         rp(options).then(data => {
             let ramos = data.data.map( (item, index) => ({id: index, ramo: item.ramo}) );
-            this.setState({ramos: ramos, ramo: '', institucion: ''});
+            this.setState({ramos: ramos, ramo: 'any', institucion: 'any'});
         }).catch(err => {
             console.log(err);
             this.setState({error: true});
@@ -141,7 +134,7 @@ class Tops extends React.Component {
 
         rp(options).then(data => {
             let instituciones = data.data.map( (item, index) => ({id: index, institucion: item.institucion}));
-            this.setState({instituciones: instituciones, institucion: ''});
+            this.setState({instituciones: instituciones, institucion: 'any'});
         }).catch(err => {
             console.log(err);
             this.setState({error: true});
@@ -151,9 +144,9 @@ class Tops extends React.Component {
     // No debería hacer setState
     loadData = () => {
         let filtros = [];
-        if (this.state.ejercicio) filtros.push("ejercicio='" + this.state.ejercicio + "'");
-        if (this.state.ramo) filtros.push("ramo='" + this.state.ramo + "'");
-        if (this.state.institucion) filtros.push("institucion='" + this.state.institucion + "'");
+        if (this.state.ejercicio !== "any") filtros.push("ejercicio='" + this.state.ejercicio + "'");
+        if (this.state.ramo !== "any") filtros.push("ramo='" + this.state.ramo + "'");
+        if (this.state.institucion !== "any") filtros.push("institucion='" + this.state.institucion + "'");
 
         let options = {
             uri: process.env.REACT_APP_S2_BACKEND + '/api/v0/getTop',
@@ -226,9 +219,9 @@ class Tops extends React.Component {
 
     limpiarBusqueda = () => {
         this.setState({
-            ejercicio: '',
-            ramo: '',
-            institucion: '',
+            ejercicio: 'any',
+            ramo: 'any',
+            institucion: 'any',
             error: false,
             top: 'INSTITUCION',
             label: null,
@@ -237,7 +230,7 @@ class Tops extends React.Component {
 
     handleChangeCampo = (varState, event) => {
         this.setState({
-            [varState]: event ? (event.target ? event.target.value : event.value) : ''
+            [varState]: event ? (event.target ? event.target.value : event.value) : 'any'
         });
     };
 
@@ -266,12 +259,9 @@ class Tops extends React.Component {
                             <Select style={{marginTop: '0px'}}
                                     value={this.state.ejercicio}
                                     onChange={(e) => this.handleChangeCampo('ejercicio', e)}
-                                    inputProps={{
-                                        name: 'campoSelectEjercicio',
-                                        id: 'campoSelectEjercicio',
-                                    }}
+                                    label = {'Ejercicio'}
                             >
-                                <MenuItem key={''} value={''}> TODOS</MenuItem>
+                                <MenuItem key={'any'} value={'any'}> TODOS</MenuItem>
                                 {
                                     this.state.ejercicios.map(item => {
                                         return <MenuItem key={item.ejercicio} value={item.ejercicio}>
@@ -289,12 +279,9 @@ class Tops extends React.Component {
                             <Select style={{marginTop: '0px'}}
                                     value={this.state.ramo}
                                     onChange={(e) => this.handleChangeCampo('ramo', e)}
-                                    inputProps={{
-                                        name: 'campoSelectRamo',
-                                        id: 'campoSelectRamo',
-                                    }}
+                                    label = {'Ramo'}
                             >
-                                <MenuItem value={''}>TODOS</MenuItem>
+                                <MenuItem value={'any'}>TODOS</MenuItem>
                                 {
                                     this.state.ramos.map(item => {
                                         return <MenuItem value={item.ramo} key={item.ramo}>
@@ -312,12 +299,9 @@ class Tops extends React.Component {
                             <Select style={{marginTop: '0px'}}
                                     value={this.state.institucion}
                                     onChange={(e) => this.handleChangeCampo('institucion', e)}
-                                    inputProps={{
-                                        name: 'campoSelectInstitucion',
-                                        id: 'campoSelectInstitucion',
-                                    }}
+                                    label = {'Institución'}
                             >
-                                <MenuItem value={''} key={"all"}>TODAS</MenuItem>
+                                <MenuItem value={'any'}>TODAS</MenuItem>
                                 {
                                     this.state.instituciones.map(item => {
                                         return <MenuItem value={item.institucion} key={item.institucion}>
@@ -335,10 +319,7 @@ class Tops extends React.Component {
                             <Select style={{marginTop: '0px'}}
                                     value={this.state.top}
                                     onChange={(e) => this.handleChangeCampo('top', e)}
-                                    inputProps={{
-                                        name: 'selectTop',
-                                        id: 'selectTop',
-                                    }}
+                                    label = {'Top'}
                             >
                                 <MenuItem key={0} value={"id_procedimiento"}>PROCEDIMIENTO</MenuItem>
                                 <MenuItem key={1} value={"INSTITUCION"}>INSTITUCIONES</MenuItem>

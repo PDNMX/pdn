@@ -1,13 +1,13 @@
 import React from 'react';
-import Table from "@material-ui/core/Table/Table";
+import Table from "@mui/material/Table/Table";
 import EnhancedTableHead from "../../Tablas/EnhancedTableHead";
-import TableBody from "@material-ui/core/TableBody/TableBody";
-import TableRow from "@material-ui/core/TableRow/TableRow";
-import TableCell from "@material-ui/core/TableCell/TableCell";
-import {withStyles} from '@material-ui/core/styles';
-import {Typography} from "@material-ui/core"
-import DeleteIcon from '@material-ui/icons/Delete';
-import Tooltip from "@material-ui/core/Tooltip/Tooltip";
+import TableBody from "@mui/material/TableBody/TableBody";
+import TableRow from "@mui/material/TableRow/TableRow";
+import TableCell from "@mui/material/TableCell/TableCell";
+import {withStyles} from '@mui/styles';
+import {Typography} from "@mui/material"
+import DeleteIcon from '@mui/icons-material/Delete';
+import Tooltip from "@mui/material/Tooltip/Tooltip";
 
 const columnData = [
     {

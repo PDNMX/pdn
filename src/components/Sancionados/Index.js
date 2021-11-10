@@ -1,9 +1,8 @@
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles'
-import {Typography} from "@material-ui/core"
+import {withStyles} from '@mui/styles';
+import {Grid, Typography} from '@mui/material';
 import PropTypes from 'prop-types';
 import Footer from '../Home/Footer';
-import Grid from "@material-ui/core/Grid/Grid";
 import img1 from "../../assets/img/servidores_publicos_sancionados.svg";
 import img2 from "../../assets/img/particulares_sancionados.svg";
 import img3 from "../../assets/img/servidores_visualizaciones.svg";

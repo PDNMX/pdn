@@ -1,16 +1,23 @@
 import React from 'react';
-import {withStyles} from "@material-ui/core/styles";
-import Grid from '@material-ui/core/Grid';
+import withStyles from '@mui/styles/withStyles';
 import {Link} from 'react-router-dom';
-//import {Typography} from "@material-ui/core"
 import BG from '../../../assets/img/especificaciones.jpg';
 import S3 from '../../../assets/iconos_azul/validador_icono.svg'
 //import PDNAppBar from "../../PDNAppBar/PDNAppBar";
-import {Typography} from "@material-ui/core"
-import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
+import {Typography, Grid} from "@mui/material"
 import './Header.css';
 import BarraLogoMenu from "../../Compartidos/BarraLogoMenu";
 import classNames from 'classnames';
+import {useTheme} from "@emotion/react";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+// FIXME checkout https://mui.com/components/use-media-query/#migrating-from-withwidth
+const withWidth = () => (WrappedComponent) => (props) => <WrappedComponent {...props} width="xs" />;
+
+function useIsWidthUp(breakpoint) {
+    const theme = useTheme();
+    return useMediaQuery(theme.breakpoints.up(breakpoint));
+}
 
 const style = theme => ({
         root: {
@@ -63,12 +70,13 @@ class Header extends React.Component{
 
     render(){
         const {classes} = this.props;
+        const isMdUp = useIsWidthUp("md");
 
-        return(
+        return (
             <div className={classes.root}>
                 <BarraLogoMenu/>
                 
-                <Grid container spacing={0} className="breadcrumb" justify='center'>
+                <Grid container spacing={0} className="breadcrumb" justifyContent='center'>
                     <Grid item xs={12} className={classes.item3}>
                         <ul>
                             <li>
@@ -81,12 +89,12 @@ class Header extends React.Component{
                     </Grid>
                 </Grid>
 
-                <Grid container spacing={0} className={classNames(classes.container1, 'servidores')} justify='center'>
-                    <Grid item xs={12} md={4} align={isWidthUp('md', this.props.width)? 'right':'center'} className={classes.item1}>
+                <Grid container spacing={0} className={classNames(classes.container1, 'servidores')} justifyContent='center'>
+                    <Grid item xs={12} md={4} align = {isMdUp ? 'right':'center'} className={classes.item1}>
                         <img src={S3} alt="Sistema 2" className={classes.s2}/>
                     </Grid>
 
-                    <Grid item xs={12} md={6} className={classes.item2} align={isWidthUp('md', this.props.width)? 'left':'center'} >
+                    <Grid item xs={12} md={6} className={classes.item2} align = {isMdUp ? 'left':'center'} >
                         <Typography variant="h4" paragraph className={classes.whiteText} style={{fontWeight: 300}}>
                             Plataforma Digital Nacional
                         </Typography>
@@ -99,7 +107,7 @@ class Header extends React.Component{
                     </Grid>
                 </Grid>
             </div>
-        )
+        );
     }
 }
 

@@ -1,5 +1,7 @@
 import React from 'react';
-import { Grid, makeStyles, Typography, Paper } from '@material-ui/core';
+import { Grid, Typography, Paper } from '@mui/material';
+
+import makeStyles from '@mui/styles/makeStyles';
 
 import style from './styleSecciones';
 const useStyles = makeStyles(style);

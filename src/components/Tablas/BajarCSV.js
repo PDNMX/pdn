@@ -1,8 +1,8 @@
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@mui/styles';
 import PropTypes from 'prop-types';
-import DownloadIcon from '@material-ui/icons/SaveAlt';
-import Button from "@material-ui/core/Button/Button";
+import DownloadIcon from '@mui/icons-material/SaveAlt';
+import {Button} from "@mui/material";
 import classNames from 'classnames';
 import PropDataUpdatedCSVLink from '../PropDataUpdatedCSVLink';
 

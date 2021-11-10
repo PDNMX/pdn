@@ -1,18 +1,12 @@
 import React from 'react';
-import Table from "@material-ui/core/Table/Table";
+import {Table, TableBody, TableRow, TableCell, Typography, TablePagination, Grid, Tooltip} from "@mui/material";
+
 import EnhancedTableHead from "../../Tablas/EnhancedTableHead";
-import TableBody from "@material-ui/core/TableBody/TableBody";
-import TableRow from "@material-ui/core/TableRow/TableRow";
-import TableCell from "@material-ui/core/TableCell/TableCell";
-import {withStyles} from '@material-ui/core/styles';
-import {Typography} from "@material-ui/core"
-import ArchiveIcon from '@material-ui/icons/Archive';
-import Tooltip from "@material-ui/core/Tooltip/Tooltip";
-import AcceptIcon from '@material-ui/icons/AssignmentTurnedIn';
-import RejectIcon from '@material-ui/icons/NotInterested';
-import TablePagination from "@material-ui/core/TablePagination/TablePagination";
+import {withStyles} from '@mui/styles';
+import ArchiveIcon from '@mui/icons-material/Archive';
+import AcceptIcon from '@mui/icons-material/AssignmentTurnedIn';
+import RejectIcon from '@mui/icons-material/NotInterested';
 import Mensaje from "../../Mensajes/Mensaje";
-import Grid from "@material-ui/core/Grid/Grid";
 import DetalleUsuario from './DetalleUsuario';
 import app from "../../../config/firebase";
 

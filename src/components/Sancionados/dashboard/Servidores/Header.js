@@ -1,10 +1,12 @@
 import React from 'react';
-import {withStyles} from "@material-ui/core/styles";
-import Grid from '@material-ui/core/Grid';
+import withStyles from '@mui/styles/withStyles';
+import Grid from '@mui/material/Grid';
 import {Link} from 'react-router-dom';
 import PDNLogo from '../../../../assets/logo_PDN_2.svg';
-import {Typography} from "@material-ui/core"
-import withWidth from '@material-ui/core/withWidth';
+import {Typography} from "@mui/material"
+
+// FIXME checkout https://mui.com/components/use-media-query/#migrating-from-withwidth
+const withWidth = () => (WrappedComponent) => (props) => <WrappedComponent {...props} width="xs" />;
 
 const style = theme => ({
         root: {

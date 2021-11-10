@@ -1,12 +1,22 @@
 import React from 'react';
-import {withStyles} from "@material-ui/core/styles";
-import Grid from '@material-ui/core/Grid';
+import withStyles from '@mui/styles/withStyles';
+import Grid from '@mui/material/Grid';
 import {Link} from 'react-router-dom';
-import {Typography} from "@material-ui/core"
-import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
+import {Typography} from "@mui/material"
 import BarraLogoMenu from "../../Compartidos/BarraLogoMenu";
 import Logo from '../../../assets/img/logocalidad_datos.svg';
 import Particles from 'react-particles-js';
+import {useTheme} from "@emotion/react";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+// FIXME checkout https://mui.com/components/use-media-query/#migrating-from-withwidth
+const withWidth = () => (WrappedComponent) => (props) => <WrappedComponent {...props} width="xs" />;
+
+function useIsWidthUp(breakpoint) {
+    const theme = useTheme();
+    return useMediaQuery(theme.breakpoints.up(breakpoint));
+}
+
 const style = theme => ({
         root: {
             flexGrow: 1,
@@ -61,12 +71,13 @@ class Header extends React.Component{
 
     render(){
         const {classes} = this.props;
+        const isMdUp = useIsWidthUp("md");
 
-        return(
+        return (
             <div className={classes.root}>
 
                <BarraLogoMenu/>
-                <Grid container spacing={0} className="breadcrumb" justify='center'>
+                <Grid container spacing={0} className="breadcrumb" justifyContent='center'>
                     <Grid item xs={12} className={classes.item3}>
                         <ul>
                             <li>
@@ -79,7 +90,7 @@ class Header extends React.Component{
                     </Grid>
                 </Grid>
 
-                <Grid container spacing={0} /* style={{ padding: "82px 0"}} */ justify='center' className={classes.container}>
+                <Grid container spacing={0} /* style={{ padding: "82px 0"}} */ justifyContent='center' className={classes.container}>
                     <Particles 
                         className={classes.particulas}
                         params={{
@@ -207,13 +218,13 @@ class Header extends React.Component{
                             "retina_detect": true
                         }}
                     />
-                    <Grid item xs={12} md={4} className={classes.item1} align={isWidthUp('md', this.props.width)? 'right':'center'}>
+                    <Grid item xs={12} md={4} className={classes.item1} align = {isMdUp ? 'right':'center'}>
 
                         <img src={Logo} alt="Calidad" className={classes.logo}/>
 
                     </Grid>
 
-                    <Grid item xs={12} md={6} className={classes.item2} align={isWidthUp('md', this.props.width)? 'left':'center'} >
+                    <Grid item xs={12} md={6} className={classes.item2} align = {isMdUp ? 'left':'center'} >
                         <Typography variant="h1" paragraph className={classes.caption}>
                             Evaluación de la calidad de los datos
                         </Typography>
@@ -221,7 +232,7 @@ class Header extends React.Component{
                 </Grid>
 
             </div>
-        )
+        );
     }
 }
 

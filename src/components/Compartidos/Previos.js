@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {withStyles} from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableRow from '@material-ui/core/TableRow';
-import Grid from "@material-ui/core/Grid";
-import {Typography} from "@material-ui/core";
-import TableHead from "@material-ui/core/TableHead";
-import IconSubdirectory from "@material-ui/icons/SubdirectoryArrowRight";
-import Tooltip from "@material-ui/core/Tooltip";
-import IconSunny from "@material-ui/icons/WbSunny";
-import TablePagination from '@material-ui/core/TablePagination';
-import TableFooter from "@material-ui/core/TableFooter";
+import {withStyles} from '@mui/styles';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableRow from '@mui/material/TableRow';
+import Grid from "@mui/material/Grid";
+import {Typography} from "@mui/material";
+import TableHead from "@mui/material/TableHead";
+import IconSubdirectory from "@mui/icons-material/SubdirectoryArrowRight";
+import Tooltip from "@mui/material/Tooltip";
+import IconSunny from "@mui/icons-material/WbSunny";
+import TablePagination from '@mui/material/TablePagination';
+import TableFooter from "@mui/material/TableFooter";
 
 const styles = theme => ({
 

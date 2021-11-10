@@ -1,11 +1,13 @@
 import React from 'react';
-import {withStyles} from "@material-ui/core/styles";
-import Grid from '@material-ui/core/Grid';
+import withStyles from '@mui/styles/withStyles';
+import Grid from '@mui/material/Grid';
 import {Link} from 'react-router-dom';
 import BG from '../../../assets/img/mesa_ayuda.jpg';
-import {Typography} from "@material-ui/core"
-import withWidth from '@material-ui/core/withWidth';
+import {Typography} from "@mui/material"
 import BarraLogoMenu from "../../Compartidos/BarraLogoMenu";
+
+// FIXME checkout https://mui.com/components/use-media-query/#migrating-from-withwidth
+const withWidth = () => (WrappedComponent) => (props) => <WrappedComponent {...props} width="xs" />;
 
 const style = theme => ({
         root: {
@@ -55,13 +57,13 @@ class Header extends React.Component{
     render(){
         const {classes} = this.props;
 
-        return(
+        return (
             <div className={classes.root}>
                 {/*<PDNAppBar/>*/}
 
                 <BarraLogoMenu/>
 
-                <Grid container spacing={0} className="breadcrumb" justify='center'>
+                <Grid container spacing={0} className="breadcrumb" justifyContent='center'>
                     <Grid item xs={12} className={classes.item3}>
                         <ul>
                             <li>
@@ -74,7 +76,7 @@ class Header extends React.Component{
                     </Grid>
                 </Grid>
 
-                <Grid container spacing={0} style={{padding: "82px 0"}} justify='center' className={classes.container}>
+                <Grid container spacing={0} style={{padding: "82px 0"}} justifyContent='center' className={classes.container}>
                   <Grid item xs={12} md={7} className={classes.item2} align='center' >
                       <Typography variant="h1" paragraph className={classes.whiteText} style={{fontSize: '36px', fontWeight: 300}}>
                           Preguntas frecuentes
@@ -83,7 +85,7 @@ class Header extends React.Component{
                 </Grid>
 
             </div>
-        )
+        );
     }
 }
 

@@ -1,8 +1,8 @@
 import React from 'react';
-import {withStyles} from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
+import {withStyles} from "@mui/styles";
+import Grid from "@mui/material/Grid";
 import Gasto from "../../assets/iconos_s6/icono-gasto.svg";
-import Typography from "@material-ui/core/Typography";
+import Typography from "@mui/material/Typography";
 import Tipo from "../../assets/iconos_s6/icono-tipo-procedimiento.svg";
 import Proveedor from "../../assets/iconos_s6/icono_proveedor.svg";
 

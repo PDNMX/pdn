@@ -1,22 +1,22 @@
 import React from 'react';
-import Table from "@material-ui/core/Table/Table";
+import Table from "@mui/material/Table/Table";
 import EnhancedTableHead from "../../Tablas/EnhancedTableHead";
-import TableBody from "@material-ui/core/TableBody/TableBody";
-import TableRow from "@material-ui/core/TableRow/TableRow";
-import TableCell from "@material-ui/core/TableCell/TableCell";
-import {withStyles} from '@material-ui/core/styles';
-import {Typography} from "@material-ui/core"
-import ArchiveIcon from '@material-ui/icons/Archive';
-import Tooltip from "@material-ui/core/Tooltip/Tooltip";
+import TableBody from "@mui/material/TableBody/TableBody";
+import TableRow from "@mui/material/TableRow/TableRow";
+import TableCell from "@mui/material/TableCell/TableCell";
+import {withStyles} from '@mui/styles';
+import {Typography} from "@mui/material"
+import ArchiveIcon from '@mui/icons-material/Archive';
+import Tooltip from "@mui/material/Tooltip/Tooltip";
 import rp from "request-promise";
-import AcceptIcon from '@material-ui/icons/AssignmentTurnedIn';
-import RejectIcon from '@material-ui/icons/NotInterested';
-import SelectIcon from '@material-ui/icons/ArrowForwardIos';
+import AcceptIcon from '@mui/icons-material/AssignmentTurnedIn';
+import RejectIcon from '@mui/icons-material/NotInterested';
+import SelectIcon from '@mui/icons-material/ArrowForwardIos';
 import DetalleSolicitud from './DetalleSolicitud';
 import axios from "axios";
-import TablePagination from "@material-ui/core/TablePagination/TablePagination";
+import TablePagination from "@mui/material/TablePagination/TablePagination";
 import Mensaje from "../../Mensajes/Mensaje";
-import Grid from "@material-ui/core/Grid/Grid";
+import Grid from "@mui/material/Grid/Grid";
 
 let counter = 0;
 let createData = (item) => {
@@ -466,8 +466,8 @@ class TablaSolicitudes extends React.Component {
                             nextIconButtonProps={{
                                 'aria-label': 'Next Page',
                             }}
-                            onChangePage={this.handleChangePage}
-                            onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                            onPageChange={this.handleChangePage}
+                            onRowsPerPageChange={this.handleChangeRowsPerPage}
                             labelRowsPerPage='Registros por página'
                             labelDisplayedRows={({from, to, count}) => {
                                 return `${from}-${to} de ${count}`;

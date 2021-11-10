@@ -1,13 +1,13 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import Typography  from '@material-ui/core/Typography';
-import {withStyles} from '@material-ui/core/styles';
+import Typography  from '@mui/material/Typography';
+import withStyles from '@mui/styles/withStyles';
 import Header from './Compartidos/BarraLogoMenu';
-import Button from '@material-ui/core/Button';
+import Button from '@mui/material/Button';
 import Footer from './Home/Footer';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Box from '@material-ui/core/Box';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
+import Box from '@mui/material/Box';
 
 const styles = theme => ({
     root :{
@@ -52,7 +52,7 @@ class P404 extends React.Component {
             <div className={classes.root}>
                 <Header/>
 
-                <Grid container spacing={0} className="breadcrumb" justify='center'>
+                <Grid container spacing={0} className="breadcrumb" justifyContent='center'>
                     <Grid item xs={12} className={classes.item3}>
                         <ul>
                             <li>
@@ -82,7 +82,7 @@ class P404 extends React.Component {
 
                 <Footer/>
             </div>
-        )
+        );
     }
 }
 

@@ -1,28 +1,17 @@
 import React from 'react';
-import TextField from '@material-ui/core/TextField';
-import {withStyles} from '@material-ui/core/styles';
+import {
+    Grid, Select, MenuItem, FormControl, Typography, InputLabel, ListItemText, TextField, Button, FormControlLabel,
+    Switch, Collapse, Input, Checkbox, Modal, CircularProgress, OutlinedInput
+} from '@mui/material';
+import {withStyles} from '@mui/styles';
 import PropTypes from 'prop-types';
-import FormControl from "@material-ui/core/FormControl/FormControl";
-import Select from '@material-ui/core/Select';
-import MenuItem from "@material-ui/core/MenuItem";
-import Grid from "@material-ui/core/Grid/Grid";
-import {Typography} from "@material-ui/core"
-import Button from "@material-ui/core/Button";
-import InputLabel from '@material-ui/core/InputLabel';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Switch from "@material-ui/core/Switch";
-import Collapse from "@material-ui/core/Collapse";
 import Previos from "../../Compartidos/Previos";
-import ExpandLessIcon from "@material-ui/icons/ExpandLess";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import Input from "@material-ui/core/Input";
-import ListItemText from "@material-ui/core/ListItemText";
-import Checkbox from "@material-ui/core/Checkbox";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import TablaParticularesSancionados from "./TablaParticularesSancionados";
 import DetalleParticularSancionado from "./DetalleParticular";
-import Modal from "@material-ui/core/Modal";
-import CircularProgress from "@material-ui/core/CircularProgress";
 import MensajeErrorDatos from "../../Mensajes/MensajeErrorDatos";
+
 const axios = require('axios');
 
 const styles = theme => ({
@@ -57,7 +46,10 @@ const tiposSancion = [
     {label: 'Suspensión de actividades', value: 'S'},
     {label: 'Disolución de la sociedad', value: 'D'},
     {label: 'Amonestación', value: 'A'},
-    {label: 'Indemnización por los daños y perjuicios ocasionados a la Hacienda Pública Federal, local o municipal, o al patrimonio de los entes públicos', value: 'IND'},
+    {
+        label: 'Indemnización por los daños y perjuicios ocasionados a la Hacienda Pública Federal, local o municipal, o al patrimonio de los entes públicos',
+        value: 'IND'
+    },
     {label: 'Sanción económica', value: 'SE'},
     {label: 'Otro', value: 'O'}
 ]
@@ -89,16 +81,16 @@ class BusquedaParticular extends React.Component {
             busquedaAvanzada: false,
             //Filtros
             nombreRazonSocial: '',
-            institucionDependencia: "",
+            institucionDependencia: 'any',
             expediente: '',
             tipoSancion: [],
-            tipoPersona: '',
-            nivel: '',
-            campoOrden: '',
-            tipoOrden: '',
+            tipoPersona: 'any',
+            nivel: 'any',
+            campoOrden: 'any',
+            tipoOrden: 'any',
             institucionesLista: [],
             elementoSeleccionado: null,
-            proveedor:'',
+            proveedor: 'any',
             proveedoresLista: []
         };
     }
@@ -115,16 +107,18 @@ class BusquedaParticular extends React.Component {
             json: true,
             method: "post",
             data: {
-                nivel_gobierno: this.state.nivel,
-                supplier_id: this.state.proveedor
+
             }
         };
+        if (this.state.nivel !== 'any') options.data.nivel_gobierno = this.state.nivel;
+        if (this.state.proveedor !== 'any') options.data.supplier_id = this.state.proveedor;
+
         axios(options)
             .then(data => {
                 data.data.forEach((item, index) => {
                     instituciconesLista.push({value: item.nombre, label: item.nombre, key: index});
                 });
-                this.setState({institucionesLista: instituciconesLista, institucionDependencia: ''});
+                this.setState({institucionesLista: instituciconesLista, institucionDependencia: 'any'});
             }).catch(err => {
             console.log(err);
             this.setState({error: true})
@@ -141,7 +135,7 @@ class BusquedaParticular extends React.Component {
                     this.loadProveedores();
                     break;
                 case 'campoOrden':
-                    if (!this.state.tipoOrden) this.setState({tipoOrden: {label: 'Ascendente', value: 'asc'}});
+                    if (!this.state.tipoOrden) this.setState({tipoOrden: tiposOrdenamiento[0]});
                     if (!event.target.value) this.setState({tipoOrden: ''})
                     break;
                 case 'tipoOrden':
@@ -163,13 +157,13 @@ class BusquedaParticular extends React.Component {
         this.setState(
             {
                 nombreRazonSocial: "",
-                institucionDependencia: "",
+                institucionDependencia: "any",
                 expediente: "",
                 tipoSancion: [],
-                tipoPersona: "",
+                tipoPersona: "any",
                 nivel: "",
-                campoOrden: "",
-                tipoOrden: "",
+                campoOrden: "any",
+                tipoOrden: "any",
                 filterData: null,
                 previos: null,
                 curp: "",
@@ -193,10 +187,10 @@ class BusquedaParticular extends React.Component {
             let body =
                 {
                     "query": this.makeFiltros(),
-                    "nivel_gobierno": this.state.nivel,
-                    "proveedor" : this.state.proveedor,
-                    "institucion" : this.state.institucionDependencia
+                    "institucion": this.state.institucionDependencia
                 };
+            if(this.state.nivel !== 'any') body.nivel_gobierno = this.state.nivel;
+            if(this.state.proveedor !== 'any') body.proveedor = this.state.proveedor;
 
             let options = {
                 method: 'POST',
@@ -206,7 +200,7 @@ class BusquedaParticular extends React.Component {
             };
             axios(options)
                 .then(res => {
-                    this.setState({previos: res.data, loading: false, error: false, panelPrevios: true}, ()=>{
+                    this.setState({previos: res.data, loading: false, error: false, panelPrevios: true}, () => {
                         this.executeScrollPrevios();
                     })
                 }).catch(err => {
@@ -220,15 +214,15 @@ class BusquedaParticular extends React.Component {
         let {nombreRazonSocial, institucionDependencia, expediente, tipoPersona, tipoSancion} = this.state;
         if (nombreRazonSocial) filtros.nombreRazonSocial = nombreRazonSocial;
         if (expediente) filtros.expediente = expediente;
-        if (tipoPersona) filtros.tipoPersona = tipoPersona;
-        if (institucionDependencia && institucionDependencia !== '') filtros.institucionDependencia = institucionDependencia;
+        if (tipoPersona !== 'any') filtros.tipoPersona = tipoPersona;
+        if (institucionDependencia && institucionDependencia !== 'any') filtros.institucionDependencia = institucionDependencia;
         if (tipoSancion.length > 0) filtros.tipoSancion = tipoSancion.map(item => item.value);
         return filtros;
     };
 
     makeSort = () => {
         let sort = {};
-        if (this.state.campoOrden && this.state.tipoOrden) sort[this.state.campoOrden.value] = this.state.tipoOrden.value;
+        if (this.state.campoOrden !== 'any' && this.state.tipoOrden !== 'any') sort[this.state.campoOrden.value] = this.state.tipoOrden.value;
         return sort;
     };
 
@@ -267,7 +261,7 @@ class BusquedaParticular extends React.Component {
                         loading: false,
                         totalRows: res.data.pagination.totalRows,
                         error: false
-                    }, ()=>{
+                    }, () => {
                         this.executeScrollResults();
                     })
                 }).catch(err => {
@@ -313,16 +307,15 @@ class BusquedaParticular extends React.Component {
             url: process.env.REACT_APP_S3P_BACKEND + '/api/v1/getProviders',
             json: true,
             method: "post",
-            data: {
-                nivel_gobierno: this.state.nivel
-            }
+            data: { }
         };
+        if(this.state.nivel !== 'any') options.data.nivel_gobierno = this.state.nivel
         axios(options)
             .then(data => {
                 data.data.forEach((provider) => {
                     sug.push({value: provider.supplier_id, label: provider.supplier_name, key: provider.supplier_id});
                 });
-                this.setState({proveedoresLista: sug, proveedor: ''});
+                this.setState({proveedoresLista: sug, proveedor: 'any'});
             }).catch(err => {
             this.setState({error: true})
         });
@@ -334,7 +327,19 @@ class BusquedaParticular extends React.Component {
 
     render() {
         const {classes} = this.props;
-        const {nombreRazonSocial, expediente, institucionDependencia, institucionesLista, nivel, campoOrden, tipoOrden, tipoSancion, tipoPersona, proveedor, proveedoresLista} = this.state;
+        const {
+            nombreRazonSocial,
+            expediente,
+            institucionDependencia,
+            institucionesLista,
+            nivel,
+            campoOrden,
+            tipoOrden,
+            tipoSancion,
+            tipoPersona,
+            proveedor,
+            proveedoresLista
+        } = this.state;
 
         return (
             <div>
@@ -370,26 +375,20 @@ class BusquedaParticular extends React.Component {
                     </Grid>
                     <Grid item xs={12} md={4}>
                         <FormControl className={classes.formControl}>
-                            <InputLabel shrink id="tipoSancion-label">Tipo sanción</InputLabel>
-                            <Select displayEmpty
+                            <InputLabel id="tipoSancion-label">Tipo sanción</InputLabel>
+                            <Select label={'Tipo sanción'}
                                     id="tipoSancion-checkbox"
                                     multiple
                                     value={tipoSancion}
                                     onChange={e => this.handleChangeCampo('tipoSancion', e)}
-                                    input={<Input/>}
+                                    input={<OutlinedInput label="Tipo sanción"/>}
                                     renderValue={
                                         selected => {
-                                            if (selected.length === 0) {
-                                                return <em>Todos</em>;
-                                            }
                                             return selected.map(element => element.label).join(', ')
                                         }
                                     }
 
                             >
-                                <MenuItem disabled value={[]}>
-                                    <em>Todos</em>
-                                </MenuItem>
                                 {tiposSancion.map(tipo => (
                                     <MenuItem key={tipo.value} value={tipo}>
                                         <Checkbox checked={tipoSancion.indexOf(tipo) > -1}/>
@@ -402,12 +401,12 @@ class BusquedaParticular extends React.Component {
                     </Grid>
                     <Grid item xs={12} md={2}>
                         <FormControl className={classes.formControl}>
-                            <InputLabel shrink id="tipoPersona-label">Tipo persona</InputLabel>
+                            <InputLabel id="tipoPersona-label">Tipo persona</InputLabel>
                             <Select value={tipoPersona}
                                     onChange={(e) => this.handleChangeCampo('tipoPersona', e)}
-                                    displayEmpty
+                                    label={'Tipo persona'}
                             >
-                                <MenuItem value="" key={-1}><em>Todos</em></MenuItem>
+                                <MenuItem value="any"><em>Todos</em></MenuItem>
                                 <MenuItem value="F" key={"F"}>Física</MenuItem>
                                 <MenuItem value="M" key={"M"}>Moral</MenuItem>
                             </Select>
@@ -415,14 +414,14 @@ class BusquedaParticular extends React.Component {
                     </Grid>
                     <Grid item md={2} xs={12}>
                         <FormControl className={classes.formControl}>
-                            <InputLabel shrink id="nivel-label">
+                            <InputLabel id="nivel-label">
                                 Nivel
                             </InputLabel>
                             <Select value={nivel}
                                     onChange={(e) => this.handleChangeCampo('nivel', e)}
-                                    displayEmpty
+                                    label={'Nivel'}
                             >
-                                <MenuItem value={''} key={-1}><em>Todos</em></MenuItem>
+                                <MenuItem value={'any'} ><em>Todos</em></MenuItem>
                                 <MenuItem value={'Federal'} key={'Federal'}>
                                     {'Federal'}
                                 </MenuItem>
@@ -434,14 +433,14 @@ class BusquedaParticular extends React.Component {
                     </Grid>
                     <Grid item md={4} xs={12}>
                         <FormControl className={classes.formControl}>
-                            <InputLabel shrink id="proveedor-label">
+                            <InputLabel id="proveedor-label">
                                 Proveedor información
                             </InputLabel>
                             <Select value={proveedor}
                                     onChange={(e) => this.handleChangeCampo('proveedor', e)}
-                                    displayEmpty
+                                    label={'Proveedor información'}
                             >
-                                <MenuItem value={''} key={-1}><em>Todos</em></MenuItem>
+                                <MenuItem value={'any'} key={-1}><em>Todos</em></MenuItem>
                                 {
                                     proveedoresLista.map((item => {
                                         return <MenuItem value={item.value} key={item.key}>
@@ -454,14 +453,14 @@ class BusquedaParticular extends React.Component {
                     </Grid>
                     <Grid item md={6} xs={12}>
                         <FormControl className={classes.formControl}>
-                            <InputLabel shrink id="institucionDependencia-label">
+                            <InputLabel id="institucionDependencia-label">
                                 Institución
                             </InputLabel>
                             <Select value={institucionDependencia}
                                     onChange={(e) => this.handleChangeCampo('institucionDependencia', e)}
-                                    displayEmpty
+                                    label={'Institución'}
                             >
-                                <MenuItem value="" key={-1}><em>Todas</em></MenuItem>
+                                <MenuItem value="any" key={-1}><em>Todas</em></MenuItem>
                                 {
                                     institucionesLista.map((item => {
                                         return <MenuItem value={item.value} key={item.key}>
@@ -481,21 +480,13 @@ class BusquedaParticular extends React.Component {
 
                     {this.state.busquedaAvanzada && <Grid item xs={12} md={3}>
                         <FormControl className={classes.formControl}>
-                            <InputLabel shrink id="campoOrden-label">Ordenar por</InputLabel>
-                            <Select displayEmpty
-                                    id="campoOrden-checkbox"
-                                    value={campoOrden}
-                                    onChange={e => this.handleChangeCampo('campoOrden', e)}
-                                    input={<Input/>}
-                                    renderValue={
-                                        selected => {
-                                            if (selected.length === 0) {
-                                                return <em>Ninguno</em>;
-                                            }
-                                            return selected.label
-                                        }
-                                    }
-
+                            <InputLabel id="campoOrden-label">Ordenar por</InputLabel>
+                            <Select
+                                id="campoOrden-checkbox"
+                                label={'Ordenar por'}
+                                labelId={'campoOrden-label-helper'}
+                                value={campoOrden}
+                                onChange={e => this.handleChangeCampo('campoOrden', e)}
                             >
                                 <MenuItem value={''}>
                                     <em>Ninguno</em>
@@ -511,21 +502,13 @@ class BusquedaParticular extends React.Component {
                     </Grid>}
                     {this.state.busquedaAvanzada && <Grid item xs={12} md={3}>
                         <FormControl className={classes.formControl}>
-                            <InputLabel shrink id="tipoOrden-label">Tipo ordenamiento</InputLabel>
-                            <Select displayEmpty
-                                    id="tipoOrden-checkbox"
-                                    value={tipoOrden}
-                                    onChange={e => this.handleChangeCampo('tipoOrden', e)}
-                                    input={<Input/>}
-                                    renderValue={
-                                        selected => {
-                                            if (selected.length === 0) {
-                                                return <em>Ninguno</em>;
-                                            }
-                                            return selected.label
-                                        }
-                                    }
-
+                            <InputLabel id="tipoOrden-label">Tipo ordenamiento</InputLabel>
+                            <Select
+                                id="tipoOrden-checkbox"
+                                label={'Tipo ordenamiento'}
+                                labelId={'tipoOrden-label-helper'}
+                                value={tipoOrden}
+                                onChange={e => this.handleChangeCampo('tipoOrden', e)}
                             >
                                 <MenuItem value={''}>
                                     <em>Ninguno</em>

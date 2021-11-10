@@ -1,5 +1,7 @@
 import React from 'react';
-import {FormControl, InputLabel, MenuItem, Paper, Select, Typography, withStyles} from "@material-ui/core";
+import { FormControl, InputLabel, MenuItem, Paper, Select, Typography } from "@mui/material";
+
+import withStyles from '@mui/styles/withStyles';
 
 const dataSuppliers = require("./suppliers.json");
 
@@ -25,7 +27,7 @@ const SelectSupplier = props => {
                 <InputLabel>
                     Selecciona el proveedor de información que deseas consultar
                 </InputLabel>
-                <Select value={dataSupplier} onChange={handleSetDataSupplier}>
+                <Select value={dataSupplier} onChange={handleSetDataSupplier} label={'Selecciona el proveedor de información que deseas consultar'}>
                     {
                         dataSuppliers.map((s,i)=> {
                             return <MenuItem value={s.id} key={i}>

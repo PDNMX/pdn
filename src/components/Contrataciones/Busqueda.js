@@ -1,10 +1,10 @@
 import React from 'react';
-import {withStyles} from "@material-ui/core/styles";
+import {withStyles} from "@mui/styles";
 //import InputBusqueda from './InputBusqueda';
 import TablaResultados from './TablaResultados';
 import rp from 'request-promise';
 import SearchControls from "./SearchControls";
-import Grid from '@material-ui/core/Grid';
+import Grid from '@mui/material/Grid';
 
 const styles = theme => ({
     root: {

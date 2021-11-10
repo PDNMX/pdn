@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {withStyles} from '@material-ui/core/styles';
-import {Table, TableBody, TableCell, TablePagination, TableRow, TableFooter, TableHead} from '@material-ui/core';
-import Grid from "@material-ui/core/Grid/Grid";
-import {Typography} from "@material-ui/core";
+import {withStyles} from '@mui/styles';
+import {Table, TableBody, TableCell, TablePagination, TableRow, TableFooter, TableHead, Grid, Typography} from '@mui/material';
 
 
 const columnData = [

@@ -1,16 +1,17 @@
 import React from 'react';
-import {makeStyles, withStyles} from '@material-ui/core/styles';
-import MuiExpansionPanel from '@material-ui/core/ExpansionPanel';
-import MuiExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import MuiExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import Typography from '@material-ui/core/Typography';
-import MuiLink from "@material-ui/core/Link";
+import makeStyles from '@mui/styles/makeStyles';
+import withStyles from '@mui/styles/withStyles';
+import MuiExpansionPanel from '@mui/material/Accordion';
+import MuiExpansionPanelSummary from '@mui/material/AccordionSummary';
+import MuiExpansionPanelDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import MuiLink from "@mui/material/Link";
 import Pasos from "../../assets/pasos_evaluación.png";
 import Pipeline from "../../assets/DQ_pipeline_analy.png";
 import DataImpact from "../../assets/data_impact.png";
-import Button from "@material-ui/core/Button";
+import Button from "@mui/material/Button";
 
-const ExpansionPanel = withStyles({
+const Accordion = withStyles({
     root: {
         border: '1px solid rgba(0, 0, 0, .125)',
         boxShadow: 'none',
@@ -27,7 +28,7 @@ const ExpansionPanel = withStyles({
     expanded: {},
 })(MuiExpansionPanel);
 
-const ExpansionPanelSummary = withStyles({
+const AccordionSummary = withStyles({
     root: {
         backgroundColor: 'rgba(0, 0, 0, .03)',
         borderBottom: '1px solid rgba(0, 0, 0, .125)',
@@ -45,7 +46,7 @@ const ExpansionPanelSummary = withStyles({
     expanded: {},
 })(MuiExpansionPanelSummary);
 
-const ExpansionPanelDetails = withStyles(theme => ({
+const AccordionDetails = withStyles(theme => ({
     root: {
         padding: theme.spacing(2),
     },
@@ -108,11 +109,11 @@ export default function CustomizedExpansionPanels() {
 
     return (
         <div>
-            <ExpansionPanel square expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
-                <ExpansionPanelSummary aria-controls="panel1d-content" id="panel1d-header">
+            <Accordion square expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+                <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
                     <Typography>Motivación</Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
+                </AccordionSummary>
+                <AccordionDetails>
                     <div>
 
 
@@ -137,14 +138,14 @@ export default function CustomizedExpansionPanels() {
                         </Typography>
 
                     </div>
-                </ExpansionPanelDetails>
-            </ExpansionPanel>
+                </AccordionDetails>
+            </Accordion>
 
-            <ExpansionPanel square expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
-                <ExpansionPanelSummary aria-controls="panel2d-content" id="panel2d-header">
+            <Accordion square expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+                <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
                     <Typography>¿Qué es la evaluación de la calidad de los datos?</Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
+                </AccordionSummary>
+                <AccordionDetails>
                     <div>
 
                         <Typography paragraph>
@@ -202,15 +203,15 @@ export default function CustomizedExpansionPanels() {
 
 
                     </div>
-                </ExpansionPanelDetails>
-            </ExpansionPanel>
+                </AccordionDetails>
+            </Accordion>
 
 
-            <ExpansionPanel square expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
-                <ExpansionPanelSummary aria-controls="panel3d-content" id="panel3d-header">
+            <Accordion square expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
+                <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
                     <Typography>Propuesta de métricas de calidad</Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
+                </AccordionSummary>
+                <AccordionDetails>
                     <div>
                         <Typography>
                             Para la propuesta de métricas se tomaron como punto de partida las siguientes fuentes:
@@ -342,16 +343,16 @@ export default function CustomizedExpansionPanels() {
                         </ul>
 
                     </div>
-                </ExpansionPanelDetails>
-            </ExpansionPanel>
+                </AccordionDetails>
+            </Accordion>
 
 
 
-            <ExpansionPanel square expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
-                <ExpansionPanelSummary aria-controls="panel4d-content" id="panel4d-header">
+            <Accordion square expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
+                <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">
                     <Typography>Evaluación</Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
+                </AccordionSummary>
+                <AccordionDetails>
                     <div>
                         <Typography paragraph>
                             La calidad de cada conjunto de datos fue evaluada usando los rubros anteriormente mencionados. La evaluación detallada de los conjuntos de datos de la Guía puede encontrarse <MuiLink component="a" href="https://docs.google.com/spreadsheets/d/1UwhIH1Q2-boZXvyLnyJInTv8lB_4uVWf_klsJpN4Qdk/edit#gid=1228884255"> aquí </MuiLink>.
@@ -359,31 +360,31 @@ export default function CustomizedExpansionPanels() {
 
 
                     </div>
-                </ExpansionPanelDetails>
-            </ExpansionPanel>
+                </AccordionDetails>
+            </Accordion>
 
 
 
-            <ExpansionPanel square expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
-                <ExpansionPanelSummary aria-controls="panel5d-content" id="panel5d-header">
+            <Accordion square expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
+                <AccordionSummary aria-controls="panel5d-content" id="panel5d-header">
                     <Typography>Hallazgos y recomendaciones</Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
+                </AccordionSummary>
+                <AccordionDetails>
                     <div>
                         <Typography paragraph>
                             Estaremos publicando próximamente el análisis realizado y los siguientes pasos. Actualmente nos encontramos notificando a las instituciones el estatus de sus datos.
                         </Typography>
 
                     </div>
-                </ExpansionPanelDetails>
-            </ExpansionPanel>
+                </AccordionDetails>
+            </Accordion>
 
 
-            <ExpansionPanel square expanded={expanded === 'panel6'} onChange={handleChange('panel6')}>
-                <ExpansionPanelSummary aria-controls="panel6d-content" id="panel6d-header">
+            <Accordion square expanded={expanded === 'panel6'} onChange={handleChange('panel6')}>
+                <AccordionSummary aria-controls="panel6d-content" id="panel6d-header">
                     <Typography>Referencias</Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
+                </AccordionSummary>
+                <AccordionDetails>
                     <div>
 
                         <ul className={classes.ul}>
@@ -397,14 +398,14 @@ export default function CustomizedExpansionPanels() {
 
 
                     </div>
-                </ExpansionPanelDetails>
-            </ExpansionPanel>
+                </AccordionDetails>
+            </Accordion>
 
-            <ExpansionPanel square expanded={expanded === 'panel7'} onChange={handleChange('panel7')}>
-                <ExpansionPanelSummary aria-controls="panel7d-content" id="panel7d-header">
+            <Accordion square expanded={expanded === 'panel7'} onChange={handleChange('panel7')}>
+                <AccordionSummary aria-controls="panel7d-content" id="panel7d-header">
                     <Typography>Encuesta - Guía de Apertura Anticorrupción 2.0</Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
+                </AccordionSummary>
+                <AccordionDetails>
                     <div>
                         <Typography paragraph>
                             La construcción de la integridad y la ética pública necesita de la ciudadanía. Conscientes de la exigencia por un gobierno transparente y por atender las necesidades de México en el contexto del desarrollo de la <b>Plataforma Digital Nacional</b> (PDN) del <b>Sistema Nacional Anticorrupción</b> (SNA), la <b>Secretaría Ejecutiva del Sistema Nacional Anticorrupción</b> (SESNA) lanza la Consulta: <b>Guía de Apertura Anticorrupción 2.0</b> para conocer la opinión de la ciudadanía sobre datos abiertos estratégicos para combatir la corrupción.
@@ -415,8 +416,8 @@ export default function CustomizedExpansionPanels() {
                         </Button>
 
                     </div>
-                </ExpansionPanelDetails>
-            </ExpansionPanel>
+                </AccordionDetails>
+            </Accordion>
 
 
         </div>

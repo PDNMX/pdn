@@ -1,12 +1,13 @@
 import React from 'react';
-import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import MuiLink from '@material-ui/core/Link';
+import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
+import MuiLink from '@mui/material/Link';
 import { Link } from 'react-router-dom';
 
 const styles = (theme) => ({
 	button: {
-		background: '#ffe01b'
+		background: '#ffe01b',
+		margin: 8
 	}
 });
 

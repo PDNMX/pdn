@@ -1,10 +1,10 @@
 import React from 'react';
-import {withStyles} from "@material-ui/core/styles";
+import withStyles from '@mui/styles/withStyles';
 import Header from "./Header/Header";
-import Grid from '@material-ui/core/Grid';
+import Grid from '@mui/material/Grid';
 import PropTypes from 'prop-types';
 import Footer from "../Home/Footer";
-import ExpansionPanels from "./ExpansionPanels";
+import Accordions from "./Accordions";
 import Disclaimer from "./Disclaimer";
 
 const styles = theme => ({
@@ -38,23 +38,25 @@ class Metodologia extends React.Component{
     render (){
 
         const {classes} = this.props;
-        return <div className={classes.root}>
-            <Header/>
+        return (
+            <div className={classes.root}>
+                <Header/>
 
-            <Grid container justify="center" className={classes.disclaimer}>
-                <Grid item xs={12} className={classes.itemDisclaimer}>
-                    <Disclaimer/>
+                <Grid container justifyContent="center" className={classes.disclaimer}>
+                    <Grid item xs={12} className={classes.itemDisclaimer}>
+                        <Disclaimer/>
+                    </Grid>
                 </Grid>
-            </Grid>
 
 
-            <Grid container spacing={0} className={classes.container} justify="center">
-                <Grid item xs={12} className={classes.item}>
-                    <ExpansionPanels/>
+                <Grid container spacing={0} className={classes.container} justifyContent="center">
+                    <Grid item xs={12} className={classes.item}>
+                        <Accordions/>
+                    </Grid>
                 </Grid>
-            </Grid>
-            <Footer/>
-        </div>
+                <Footer/>
+            </div>
+        );
     }
 
 }

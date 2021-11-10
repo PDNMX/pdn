@@ -1,8 +1,7 @@
 import React from 'react';
-import {withStyles} from "@material-ui/core/styles";
+import {withStyles} from '@mui/styles';
 import PropTypes from 'prop-types';
-import Grid from "@material-ui/core/Grid/Grid";
-import {Typography, List, ListItem, ListItemText} from "@material-ui/core"
+import {Grid, Typography, List, ListItem, ListItemText} from "@mui/material";
 import Ejercicio from "./Ejericicio";
 import Agrupaciones from "./Agrupaciones";
 import Tops from "./Tops";

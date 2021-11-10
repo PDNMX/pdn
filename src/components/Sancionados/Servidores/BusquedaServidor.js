@@ -1,29 +1,18 @@
 //PANTALLA DE BUSQUEDASERVIDOR, CON SELECT PARA SORT
 import React from 'react';
-import TextField from '@material-ui/core/TextField';
-import {withStyles} from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import PropTypes from 'prop-types';
-import FormControl from "@material-ui/core/FormControl";
-import MenuItem from "@material-ui/core/MenuItem";
-import Grid from "@material-ui/core/Grid";
-import {Typography} from "@material-ui/core"
-import Button from '@material-ui/core/Button';
-import InputLabel from '@material-ui/core/InputLabel';
-import Select from "@material-ui/core/Select";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import ListItemText from '@material-ui/core/ListItemText';
-import Checkbox from '@material-ui/core/Checkbox';
-import Input from '@material-ui/core/Input';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import ExpandLessIcon from '@material-ui/icons/ExpandLess';
-import Modal from "@material-ui/core/Modal";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import {
+    Typography, InputLabel, Select, Grid, MenuItem, Checkbox, Input, Switch, Collapse, FormControl,
+    Button, FormControlLabel, ListItemText, Modal, CircularProgress, TextField, OutlinedInput
+} from "@mui/material"
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import MensajeErrorDatos from "../../Mensajes/MensajeErrorDatos";
-import Switch from "@material-ui/core/Switch";
-import Collapse from "@material-ui/core/Collapse";
 import Previos from "../../Compartidos/Previos";
 import TablaServidoresSancionados from "./TablaServidoresSancionados";
 import DetalleServidorSancionado from "./DetalleServidorSancionado";
+
 const axios = require('axios');
 
 const styles = theme => ({
@@ -103,13 +92,13 @@ class BusquedaServidor extends React.Component {
             primerApellido: '',
             segundoApellido: '',
             tipoSancion: [],
-            institucionDependencia: "",
-            nivel: '',
-            campoOrden: '',
-            tipoOrden: '',
+            institucionDependencia: "any",
+            nivel: 'any',
+            campoOrden: 'any',
+            tipoOrden: 'any',
             institucionesLista: [],
-            elementoSeleccionado : null,
-            proveedor:'',
+            elementoSeleccionado: null,
+            proveedor: 'any',
             proveedoresLista: []
         }
     }
@@ -126,16 +115,18 @@ class BusquedaServidor extends React.Component {
             json: true,
             method: "post",
             data: {
-                nivel_gobierno: this.state.nivel,
-                supplier_id: this.state.proveedor
+
             }
         };
+        if (this.state.nivel !== 'any') options.data.nivel_gobierno = this.state.nivel;
+        if (this.state.proveedor !== 'any') options.data.supplier_id = this.state.proveedor;
+
         axios(options)
             .then(data => {
                 data.data.forEach((item, index) => {
                     sug.push({value: item.nombre, label: item.nombre, key: index});
                 });
-                this.setState({institucionesLista: sug, institucionDependencia: ''});
+                this.setState({institucionesLista: sug, institucionDependencia: 'any'});
             }).catch(err => {
             this.setState({error: true})
         });
@@ -148,15 +139,16 @@ class BusquedaServidor extends React.Component {
             json: true,
             method: "post",
             data: {
-                nivel_gobierno: this.state.nivel
+
             }
         };
+        if(this.state.nivel !== 'any') options.data.nivel_gobierno = this.state.nivel
         axios(options)
             .then(data => {
                 data.data.forEach((provider) => {
                     sug.push({value: provider.supplier_id, label: provider.supplier_name, key: provider.supplier_id});
                 });
-                this.setState({proveedoresLista: sug, proveedor: ''});
+                this.setState({proveedoresLista: sug, proveedor: 'any'});
             }).catch(err => {
             this.setState({error: true})
         });
@@ -172,12 +164,12 @@ class BusquedaServidor extends React.Component {
                     this.loadProveedores();
                     break;
                 case 'campoOrden':
-                    if(!this.state.tipoOrden)this.setState({tipoOrden: {label: 'Ascendente', value: 'asc'}});
-                    if(!event.target.value)this.setState({tipoOrden:''})
+                    if (!this.state.tipoOrden) this.setState({tipoOrden: tiposOrdenamiento[0]});
+                    if (!event.target.value) this.setState({tipoOrden: ''})
                     break;
                 case 'tipoOrden':
-                    if(!this.state.campoOrden && event.target.value)this.setState({campoOrden: camposOrdenamiento[0] });
-                    if(!event.target.value)this.setState({campoOrden:''})
+                    if (!this.state.campoOrden && event.target.value) this.setState({campoOrden: camposOrdenamiento[0]});
+                    if (!event.target.value) this.setState({campoOrden: ''})
                     break;
                 case 'proveedor':
                     this.loadInstituciones();
@@ -194,16 +186,16 @@ class BusquedaServidor extends React.Component {
             {
                 filterData: null,
                 previos: null,
-                nivel: '',
+                nivel: 'any',
                 tipoSancion: [],
                 nombres: '',
                 institucionDependencia: '',
                 primerApellido: '',
                 segundoApellido: '',
-                campoOrden: '',
-                tipoOrden: '',
+                campoOrden: 'any',
+                tipoOrden: 'any',
                 institucionesLista: [],
-                elementoSeleccionado : null,
+                elementoSeleccionado: null,
                 rowsPerPage: 10,
                 proveedoresLista: []
             }, () => {
@@ -216,17 +208,16 @@ class BusquedaServidor extends React.Component {
         this.setState({
             loading: true,
             filterData: [],
-            elementoSeleccionado : null,
+            elementoSeleccionado: null,
             rowsPerPage: 10
         }, () => {
             let body =
                 {
                     "query": this.makeFiltros(),
-                    "nivel_gobierno": this.state.nivel,
-                    "proveedor" : this.state.proveedor,
-                    "institucion" : this.state.institucionDependencia
+                    "institucion": this.state.institucionDependencia
                 };
-
+            if(this.state.nivel !== 'any') body.nivel_gobierno = this.state.nivel;
+            if(this.state.proveedor !== 'any') body.proveedor = this.state.proveedor;
             let options = {
                 method: 'POST',
                 url: process.env.REACT_APP_S3S_BACKEND + '/api/v1/summary',
@@ -237,11 +228,11 @@ class BusquedaServidor extends React.Component {
                 .then(res => {
                     this.setState(
                         {previos: res.data, loading: false, error: false, panelPrevios: true}
-                    ,()=>{
+                        , () => {
                             this.executeScrollPrevios();
                         })
                 }).catch(err => {
-                 this.setState({loading: false, error: true});
+                this.setState({loading: false, error: true});
             });
         });
     };
@@ -252,14 +243,14 @@ class BusquedaServidor extends React.Component {
         if (nombres) filtros.nombres = nombres;
         if (primerApellido) filtros.primerApellido = primerApellido;
         if (segundoApellido) filtros.segundoApellido = segundoApellido;
-        if (institucionDependencia && institucionDependencia !== '') filtros.institucionDependencia = institucionDependencia;
+        if (institucionDependencia && institucionDependencia !== 'any') filtros.institucionDependencia = institucionDependencia;
         if (tipoSancion.length > 0) filtros.tipoSancion = tipoSancion.map(item => item.value);
         return filtros;
     };
 
     makeSort = () => {
         let sort = {};
-        if (this.state.campoOrden && this.state.tipoOrden) sort[this.state.campoOrden.value] = this.state.tipoOrden.value;
+        if (this.state.campoOrden !== 'any' && this.state.tipoOrden !== 'any') sort[this.state.campoOrden.value] = this.state.tipoOrden.value;
         return sort;
     };
 
@@ -299,7 +290,7 @@ class BusquedaServidor extends React.Component {
                         loading: false,
                         totalRows: resultado.pagination.totalRows,
                         error: false
-                    },()=>{
+                    }, () => {
                         this.executeScrollResults();
                     })
                 }).catch(err => {
@@ -321,7 +312,7 @@ class BusquedaServidor extends React.Component {
     };
 
     handleChangePage = (event, page) => {
-        this.setState({page:page+1}, () => {
+        this.setState({page: page + 1}, () => {
             this.handleSearchAPI();
         });
     };
@@ -333,7 +324,7 @@ class BusquedaServidor extends React.Component {
     };
 
     verDetalle = (event, elemento) => {
-        this.setState({elementoSeleccionado: elemento, panelPrevios : false});
+        this.setState({elementoSeleccionado: elemento, panelPrevios: false});
     };
 
     handleChangeDetail = () => {
@@ -346,7 +337,19 @@ class BusquedaServidor extends React.Component {
 
     render() {
         const {classes} = this.props;
-        const {nombres, primerApellido, segundoApellido,institucionDependencia, nivel, tipoSancion, campoOrden, tipoOrden, institucionesLista, proveedor, proveedoresLista} = this.state;
+        const {
+            nombres,
+            primerApellido,
+            segundoApellido,
+            institucionDependencia,
+            nivel,
+            tipoSancion,
+            campoOrden,
+            tipoOrden,
+            institucionesLista,
+            proveedor,
+            proveedoresLista
+        } = this.state;
 
         return (
             <React.Fragment>
@@ -356,58 +359,49 @@ class BusquedaServidor extends React.Component {
                         <Typography><b>Busca un servidor público sancionado</b></Typography>
                     </Grid>
                     <Grid item xs={12} md={2}>
-                        <FormControl className={classes.formControl}>
-                            <TextField
-                                id="nombres"
-                                label="Nombre(s)"
-                                type="search"
-                                onChange={(e) => this.handleChangeCampo('nombres', e)}
-                                value={nombres}
-                            />
+                        <TextField
+                            id="nombres"
+                            label="Nombre(s)"
+                            type="search"
+                            onChange={(e) => this.handleChangeCampo('nombres', e)}
+                            value={nombres}
+                        />
 
-                        </FormControl>
                     </Grid>
                     <Grid item xs={12} md={2}>
-                        <FormControl className={classes.formControl}>
-                            <TextField
-                                id="primerApellido"
-                                label="Apellido Uno"
-                                type="search"
-                                onChange={(e) => this.handleChangeCampo('primerApellido', e)}
-                                value={primerApellido}
-                            />
-
-                        </FormControl>
+                        <TextField
+                            id="primerApellido"
+                            label="Apellido Uno"
+                            type="search"
+                            onChange={(e) => this.handleChangeCampo('primerApellido', e)}
+                            value={primerApellido}
+                        />
                     </Grid>
                     <Grid item xs={12} md={2}>
-                        <FormControl className={classes.formControl}>
-                            <TextField
-                                id="segundoApellido"
-                                label="Apellido Dos"
-                                type="search"
-                                onChange={(e) => this.handleChangeCampo('segundoApellido', e)}
-                                value={segundoApellido}
-                            />
-                        </FormControl>
+                        <TextField
+                            id="segundoApellido"
+                            label="Apellido Dos"
+                            type="search"
+                            onChange={(e) => this.handleChangeCampo('segundoApellido', e)}
+                            value={segundoApellido}
+                        />
                     </Grid>
                     <Grid item xs={12} md={6}>
                         <FormControl className={classes.formControl}>
-                            <InputLabel shrink id="tipoSancion-label">Tipo sanción</InputLabel>
-                            <Select displayEmpty
-                                    id="tipoSancion-checkbox"
-                                    multiple
-                                    value={tipoSancion}
-                                    onChange={e => this.handleChangeCampo('tipoSancion', e)}
-                                    input={<Input/>}
-                                    renderValue={
-                                        selected => {
-                                            if (selected.length === 0) {
-                                                return <em>Todos</em>;
-                                            }
-                                            return selected.map(element => element.label).join(', ')
-                                        }
+                            <InputLabel id="tipoSancion-label">Tipo sanción</InputLabel>
+                            <Select
+                                id="tipoSancion-checkbox"
+                                multiple
+                                value={tipoSancion}
+                                onChange={e => this.handleChangeCampo('tipoSancion', e)}
+                                input={<OutlinedInput label="Tipo sanción"/>}
+                                renderValue={
+                                    selected => {
+                                        return selected.map(element => element.label).join(', ')
                                     }
-
+                                }
+                                label={'Tipo sanción'}
+                                labelId={'tipoSancion-label'}
                             >
                                 <MenuItem disabled value={[]}>
                                     <em>Todos</em>
@@ -424,14 +418,17 @@ class BusquedaServidor extends React.Component {
                     </Grid>
                     <Grid item xs={12} md={2}>
                         <FormControl className={classes.formControl}>
-                            <InputLabel shrink id="nivel-label">
-                                Nivel
-                            </InputLabel>
-                            <Select value={nivel}
-                                    onChange={(e) => this.handleChangeCampo('nivel', e)}
-                                    displayEmpty
+                            <InputLabel id="nivel-label">Nivel</InputLabel>
+                            <Select
+                                labelId="nivel-label"
+                                id="nivel-label-helper"
+                                value={nivel}
+                                label="Nivel"
+                                onChange={(e) => this.handleChangeCampo('nivel', e)}
                             >
-                                <MenuItem value={''} key={-1}><em>Todos</em></MenuItem>
+                                <MenuItem value="any">
+                                    <em>Todos</em>
+                                </MenuItem>
                                 <MenuItem value={'Federal'} key={'Federal'}>
                                     {'Federal'}
                                 </MenuItem>
@@ -443,14 +440,17 @@ class BusquedaServidor extends React.Component {
                     </Grid>
                     <Grid item md={4} xs={12}>
                         <FormControl className={classes.formControl}>
-                            <InputLabel shrink id="proveedor-label">
+                            <InputLabel id="proveedor-label">
                                 Proveedor información
                             </InputLabel>
-                            <Select value={proveedor}
-                                    onChange={(e) => this.handleChangeCampo('proveedor', e)}
-                                    displayEmpty
+                            <Select
+                                labelId="proveedor-label"
+                                id="proveedor-label-helper"
+                                value={proveedor}
+                                onChange={(e) => this.handleChangeCampo('proveedor', e)}
+                                label={'Proveedor información'}
                             >
-                                <MenuItem value={''} key={-1}><em>Todos</em></MenuItem>
+                                <MenuItem value={'any'}><em>Todos</em></MenuItem>
                                 {
                                     proveedoresLista.map((item => {
                                         return <MenuItem value={item.value} key={item.key}>
@@ -463,14 +463,15 @@ class BusquedaServidor extends React.Component {
                     </Grid>
                     <Grid item md={6} xs={12}>
                         <FormControl className={classes.formControl}>
-                            <InputLabel shrink id="institucionDependencia-label">
+                            <InputLabel id="institucionDependencia-label">
                                 Institución
                             </InputLabel>
-                            <Select value={institucionDependencia}
-                                    onChange={(e) => this.handleChangeCampo('institucionDependencia', e)}
-                                    displayEmpty
+                            <Select
+                                value={institucionDependencia}
+                                label={"Institución"}
+                                onChange={(e) => this.handleChangeCampo('institucionDependencia', e)}
                             >
-                                <MenuItem value="" key={-1}><em>Todas</em></MenuItem>
+                                <MenuItem value="any" ><em>Todas</em></MenuItem>
                                 {
                                     institucionesLista.map((item => {
                                         return <MenuItem value={item.value} key={item.key}>
@@ -481,7 +482,7 @@ class BusquedaServidor extends React.Component {
                             </Select>
                         </FormControl>
                     </Grid>
-                    <Grid item  xs={12}>
+                    <Grid item xs={12}>
                         <Button onClick={() => this.handleBusquedaAvanzada()}
                                 startIcon={this.state.busquedaAvanzada ? <ExpandLessIcon/> : <ExpandMoreIcon/>}
                         >Búsqueda avanzada</Button>
@@ -489,23 +490,15 @@ class BusquedaServidor extends React.Component {
 
                     {this.state.busquedaAvanzada && <Grid item xs={12} md={3}>
                         <FormControl className={classes.formControl}>
-                            <InputLabel shrink id="campoOrden-label">Ordenar por</InputLabel>
-                            <Select displayEmpty
-                                    id="campoOrden-checkbox"
-                                    value={campoOrden}
-                                    onChange={e => this.handleChangeCampo('campoOrden', e)}
-                                    input={<Input/>}
-                                    renderValue={
-                                        selected => {
-                                            if (selected.length === 0) {
-                                                return <em>Ninguno</em>;
-                                            }
-                                            return selected.label
-                                        }
-                                    }
-
+                            <InputLabel id="campoOrden-label">Ordenar por</InputLabel>
+                            <Select
+                                id="campoOrden-checkbox"
+                                label={'Ordenar por'}
+                                labelId={'campoOrden-label-helper'}
+                                value={campoOrden}
+                                onChange={e => this.handleChangeCampo('campoOrden', e)}
                             >
-                                <MenuItem value={''}>
+                                <MenuItem value={'any'}>
                                     <em>Ninguno</em>
                                 </MenuItem>
                                 {camposOrdenamiento.map(tipo => (
@@ -519,23 +512,15 @@ class BusquedaServidor extends React.Component {
                     </Grid>}
                     {this.state.busquedaAvanzada && <Grid item xs={12} md={3}>
                         <FormControl className={classes.formControl}>
-                            <InputLabel shrink id="tipoOrden-label">Tipo ordenamiento</InputLabel>
-                            <Select displayEmpty
-                                    id="tipoOrden-checkbox"
-                                    value={tipoOrden}
-                                    onChange={e => this.handleChangeCampo('tipoOrden', e)}
-                                    input={<Input/>}
-                                    renderValue={
-                                        selected => {
-                                            if (selected.length === 0) {
-                                                return <em>Ninguno</em>;
-                                            }
-                                            return selected.label
-                                        }
-                                    }
-
+                            <InputLabel id="tipoOrden-label">Tipo ordenamiento</InputLabel>
+                            <Select
+                                id="tipoOrden-checkbox"
+                                label={'Tipo ordenamiento'}
+                                labelId={'tipoOrden-label-helper'}
+                                value={tipoOrden}
+                                onChange={e => this.handleChangeCampo('tipoOrden', e)}
                             >
-                                <MenuItem value={''}>
+                                <MenuItem value={'any'}>
                                     <em>Ninguno</em>
                                 </MenuItem>
                                 {tiposOrdenamiento.map(tipo => (
@@ -582,34 +567,34 @@ class BusquedaServidor extends React.Component {
                 {this.state.previos && this.state.previos.length > 0 &&
                 <Grid container ref={this.previosRef}>
                     <Grid item xs={12} className={classes.section}>
-                            <FormControlLabel
-                                control={<Switch className={classes.containerPrevios}
-                                                 checked={this.state.panelPrevios}
-                                                 onChange={() => this.handleChange()}/>}
-                                label={
-                                    <Typography variant="h6" className={classes.desc}>
-                                        {this.state.panelPrevios ? 'Ocultar resultados generales' : 'Mostrar resultados generales'}</Typography>}
-                            />
+                        <FormControlLabel
+                            control={<Switch className={classes.containerPrevios}
+                                             checked={this.state.panelPrevios}
+                                             onChange={() => this.handleChange()}/>}
+                            label={
+                                <Typography variant="h6" className={classes.desc}>
+                                    {this.state.panelPrevios ? 'Ocultar resultados generales' : 'Mostrar resultados generales'}</Typography>}
+                        />
                     </Grid>
-                    <Grid item xs={12} className={classes.section} >
-                            <div className={classes.container}>
-                                <Collapse in={this.state.panelPrevios}>
-                                    <Previos data={this.state.previos} handleChangeSujetoObligado={this.handleChangeAPI}/>
-                                </Collapse>
-                            </div>
+                    <Grid item xs={12} className={classes.section}>
+                        <div className={classes.container}>
+                            <Collapse in={this.state.panelPrevios}>
+                                <Previos data={this.state.previos} handleChangeSujetoObligado={this.handleChangeAPI}/>
+                            </Collapse>
+                        </div>
                     </Grid>
                 </Grid>
                 }
                 {/*TABLA*/}
                 {this.state.filterData && this.state.filterData.length > 0 && this.state.elementoSeleccionado === null &&
                 <Grid container ref={this.resultsRef}>
-                    <Grid item xs={12} >
-                            <TablaServidoresSancionados data={this.state.filterData} page={this.state.page}
-                                                        rowsPerPage={this.state.rowsPerPage}
-                                                        totalRows={this.state.totalRows}
-                                                        handleChangePage={this.handleChangePage}
-                                                        handleChangeRowsPerPage={this.handleChangeRowsPerPage}
-                                                        verDetalle={this.verDetalle}/>
+                    <Grid item xs={12}>
+                        <TablaServidoresSancionados data={this.state.filterData} page={this.state.page}
+                                                    rowsPerPage={this.state.rowsPerPage}
+                                                    totalRows={this.state.totalRows}
+                                                    handleChangePage={this.handleChangePage}
+                                                    handleChangeRowsPerPage={this.handleChangeRowsPerPage}
+                                                    verDetalle={this.verDetalle}/>
                     </Grid>
                 </Grid>
                 }
