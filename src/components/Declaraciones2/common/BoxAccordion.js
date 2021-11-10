@@ -1,5 +1,5 @@
 import React from 'react';
-import { Accordion, AccordionSummary, AccordionDetails } from '@material-ui/core';
+import { Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 
 export function BoxAccordion(props) {
   return <Accordion>{props.children}</Accordion>;

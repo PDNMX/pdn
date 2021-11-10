@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, Typography } from '@mui/material';
 
 import { SelectElement, Divider } from './utils';
 
@@ -12,12 +12,12 @@ import {
 	Button,
 	FormLabel,
 	RadioGroup
-} from '@material-ui/core';
+} from '@mui/material';
 
-import ExpandLessIcon from '@material-ui/icons/ExpandLess';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@mui/styles/makeStyles';
 import Ordenamiento from './Ordenamiento';
 import style from './style';
 const useStyles = makeStyles(style);
@@ -106,10 +106,6 @@ export default function({
 									onChange={handleInputChange}
 									margin="normal"
 									fullWidth
-									InputLabelProps={{
-										className: classes.inputShrink,
-										shrink: true
-									}}
 								/>
 							</FormControl>
 						</Grid>
@@ -124,10 +120,6 @@ export default function({
 									label="Apellido uno"
 									margin="normal"
 									fullWidth
-									InputLabelProps={{
-										className: classes.inputShrink,
-										shrink: true
-									}}
 								/>
 							</FormControl>
 						</Grid>
@@ -142,10 +134,7 @@ export default function({
 									label="Apellido dos"
 									margin="normal"
 									fullWidth
-									InputLabelProps={{
-										className: classes.inputShrink,
-										shrink: true
-									}}
+									
 								/>
 							</FormControl>
 						</Grid>
@@ -171,10 +160,7 @@ export default function({
 									onChange={handleInputChange}
 									margin="normal"
 									fullWidth
-									InputLabelProps={{
-										className: classes.inputShrink,
-										shrink: true
-									}}
+									
 								/>
 							</FormControl>
 						</Grid>
@@ -189,10 +175,7 @@ export default function({
 									onChange={handleInputChange}
 									margin="normal"
 									fullWidth
-									InputLabelProps={{
-										className: classes.inputShrink,
-										shrink: true
-									}}
+									
 								/>
 							</FormControl>
 						</Grid>
@@ -207,10 +190,7 @@ export default function({
 									onChange={handleInputChange}
 									margin="normal"
 									fullWidth
-									InputLabelProps={{
-										className: classes.inputShrink,
-										shrink: true
-									}}
+									
 								/>
 							</FormControl>
 						</Grid>

@@ -1,8 +1,9 @@
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+import {withStyles} from '@mui/styles';
+import Button from '@mui/material/Button';
 import Glosario from "../Glosario/";
 import ScrollToTopButton from "../Navigation/ScrollToTopButton";
+
 
 const styles = theme => ({
     root: {
@@ -19,24 +20,25 @@ const styles = theme => ({
     },
     comenta:{
         margin: theme.spacing(1),
-        background: '#ffe01b'
+        backgroundColor: '#ffe01b'
     }
 });
 
 const Bandita = props => {
     const {classes} = props;
     return (
-        <div className={classes.root}>
-            <ScrollToTopButton/>
-            <div>
-                <Glosario />
+            <div className={classes.root}>
+                <ScrollToTopButton/>
+                <div>
+                    <Glosario />
+                </div>
+                <div>
+                    <Button variant='contained' className={classes.comenta}
+                            href={process.env.REACT_APP_LINK_GOOGLEFORM}
+                            target={"_blank"}> Comenta </Button>
+                </div>
             </div>
-            <div>
-                <Button variant='contained' className={classes.comenta}
-                        href={process.env.REACT_APP_LINK_GOOGLEFORM}
-                        target={"_blank"}> Comenta </Button>
-            </div>
-        </div>
+
     );
 }
 

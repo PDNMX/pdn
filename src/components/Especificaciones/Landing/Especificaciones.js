@@ -1,15 +1,15 @@
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
-import {withStyles} from "@material-ui/core/styles";
+import Grid from '@mui/material/Grid';
+import withStyles from '@mui/styles/withStyles';
 import {Link} from 'react-router-dom';
 import Footer from "../../Home/Footer";
 import Header from "./Header/Header";
-import Typography from "@material-ui/core/Typography";
+import Typography from "@mui/material/Typography";
 import S1 from '../../../assets/iconos_azul/1_icono.svg';
 import S2 from '../../../assets/iconos_azul/2_icono.svg';
 import S3 from '../../../assets/iconos_azul/3_icono.svg';
 import S6 from '../../../assets/iconos_azul/6_icono.svg';
-//import Tooltip from "@material-ui/core/Tooltip";
+//import Tooltip from "@mui/material/Tooltip";
 
 
 const styles = theme => ({
@@ -66,7 +66,7 @@ class Especificaciones extends React.Component {
         return (
             <div className={classes.root}>
                 <Header/>
-                <Grid container spacing={0} justify="center" style={{background: '#fff'}}>
+                <Grid container spacing={0} justifyContent="center" style={{background: '#fff'}}>
                     <Grid item xs={12} className={classes.rootItem}>
 
                         <Typography paragraph color="textPrimary">
@@ -82,9 +82,9 @@ class Especificaciones extends React.Component {
                     </Grid>
 
 
-                    <Grid container spacing={0} className={classes.specsContainer} justify='center'>
+                    <Grid container spacing={0} className={classes.specsContainer} justifyContent='center'>
                         <Grid item xs={12} className={classes.rootItem}>
-                            <Grid container spacing={0} justify='center'>
+                            <Grid container spacing={0} justifyContent='center'>
                                 <Grid item xs={12} md={6} lg={3} xl={3} align="center" className={classes.item}>
                                     <Link to="/declaraciones/especificaciones" className={classes.link}>
                                         <img src={S1} alt="" className={classes.sistemas}/>

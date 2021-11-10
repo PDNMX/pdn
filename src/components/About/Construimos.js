@@ -1,8 +1,8 @@
 import React from 'react';
-import {Typography} from "@material-ui/core"
-import {withStyles} from '@material-ui/core/styles';
+import {Typography} from "@mui/material"
+import {withStyles} from '@mui/styles';
 import PropTypes from 'prop-types';
-import Grid from '@material-ui/core/Grid';
+import {Grid} from '@mui/material';
 
 import Ejes from '../../assets/about/ejes.svg';
 

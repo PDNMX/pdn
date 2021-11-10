@@ -1,7 +1,7 @@
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import Header from './Header/Header';
-import Grid from '@material-ui/core/Grid';
+import Grid from '@mui/material/Grid';
 import Footer from "../Home/Footer";
 import Busqueda from "./Busqueda";
 import Cifras from "./Cifras";
@@ -12,7 +12,7 @@ import Disclaimer from "./Disclaimer";
 import img1 from "../../assets/img/servidores_publicos_sancionados.svg";
 //import img2 from "../../assets/img/particulares_sancionados.svg";
 import img3 from "../../assets/img/servidores_visualizaciones.svg";
-import {Typography, Box} from "@material-ui/core";
+import {Typography, Box} from "@mui/material";
 import SelectSupplier from "./SelectSupplier";
 
 //import LabeledHeatmap from './Charts/LabeledHeatmap';

@@ -1,12 +1,11 @@
 import React from 'react';
-import {withStyles} from "@material-ui/core/styles";
+import {withStyles} from "@mui/styles";
 import PropTypes from 'prop-types';
-import Grid from "@material-ui/core/Grid/Grid";
+import {Grid, Typography} from "@mui/material";
 import TiemposSanciones from "./TiemposSanciones";
 import CausaSanciones from "./CausaSanciones";
 import AnioResolucionSanciones from "./AnioResolucionSanciones";
 import DependenciasSanciones from "./DependenciasSanciones";
-import {Typography} from "@material-ui/core"
 
 const styles = theme => ({
     root: {

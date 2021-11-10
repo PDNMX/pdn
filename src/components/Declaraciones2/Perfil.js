@@ -1,6 +1,6 @@
 import React from 'react';
-import { Grid, Typography, Paper } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { Grid, Typography, Paper } from '@mui/material';
+import withStyles from '@mui/styles/withStyles';
 
 import MenuSuperior from './MenuSuperior';
 import SituacionPatrimonial from './SituacionPatrimonial';
@@ -8,8 +8,8 @@ import Intereses from './Intereses';
 import styles from './style';
 import { getMoneda } from './utils';
 
-import Button from '@material-ui/core/Button';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import Button from '@mui/material/Button';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 import scrollToComponent from 'react-scroll-to-component';
 import basicInicial from './SituacionPatrimonial/00_basic_incial';

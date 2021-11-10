@@ -1,16 +1,16 @@
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles';
-import Grid from "@material-ui/core/Grid/Grid";
-import TextField from "@material-ui/core/TextField/TextField";
-import FormControl from "@material-ui/core/FormControl/FormControl";
-import MenuItem from "@material-ui/core/MenuItem/MenuItem";
-import {Typography} from "@material-ui/core"
+import {withStyles} from '@mui/styles';
+import Grid from "@mui/material/Grid/Grid";
+import TextField from "@mui/material/TextField/TextField";
+import FormControl from "@mui/material/FormControl/FormControl";
+import MenuItem from "@mui/material/MenuItem/MenuItem";
+import {Typography} from "@mui/material"
 import rp from "request-promise";
-import Select from "@material-ui/core/Select/Select";
-import InputLabel from '@material-ui/core/InputLabel';
-import Button from "@material-ui/core/Button/Button";
+import Select from "@mui/material/Select/Select";
+import InputLabel from '@mui/material/InputLabel';
+import Button from "@mui/material/Button/Button";
 import {ReCaptcha, loadReCaptcha} from 'react-recaptcha-google';
-import Modal from "@material-ui/core/Modal/Modal";
+import Modal from "@mui/material/Modal/Modal";
 import Mensaje from "../../Mensajes/Mensaje";
 import MensajeError from "../../Mensajes/MensajeError";
 import app from "../../../config/firebase";
@@ -41,7 +41,7 @@ const styles = theme => ({
         [theme.breakpoints.up('sm')]: {
             width: theme.spacing(50),
         },
-        [theme.breakpoints.down('sm')]: {
+        [theme.breakpoints.down('md')]: {
             width: '80%',
             height: '80%',
             overflowY: 'scroll',
@@ -534,7 +534,7 @@ class FormularioConexion extends React.Component {
                         onClose={this.handleClose}
                     >
                         <div style={getModalStyle()} className={classes.paperCaptcha}>
-                            <Grid container justify={"center"}>
+                            <Grid container justifyContent={"center"}>
                                 <Grid item xs={12}>
                                     <Typography variant={"h6"} className={classes.textCenter}>Verificación de
                                         seguridad</Typography>

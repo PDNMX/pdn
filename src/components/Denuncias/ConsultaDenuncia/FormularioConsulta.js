@@ -1,20 +1,9 @@
 import React from 'react';
-import {Typography} from "@material-ui/core"
-import {withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@mui/styles';
 import PropTypes from 'prop-types';
-import Grid from '@material-ui/core/Grid';
-//import Card from "../Card";
-//import img1 from "../../../assets/img/hands.jpg";
-//import img2 from "../../../assets/img/caseFile.jpg";
-import Paper from "@material-ui/core/Paper/Paper";
-import List from "@material-ui/core/List/List";
-import ListItem from "@material-ui/core/ListItem/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText/ListItemText";
-import DonoutIcon from '@material-ui/icons/ShowChart';
-import QuestionIcon from '@material-ui/icons/QuestionAnswer'
-import TextField from "@material-ui/core/TextField/TextField";
-import Button from "@material-ui/core/Button/Button";
+import {Grid, Paper, List, ListItem, ListItemIcon, ListItemText, TextField, Button, Typography} from '@mui/material';
+import DonoutIcon from '@mui/icons-material/ShowChart';
+import QuestionIcon from '@mui/icons-material/QuestionAnswer'
 
 
 const styles = theme => ({

@@ -1,8 +1,7 @@
 import React from 'react';
-import {withStyles} from "@material-ui/core/styles";
+import {withStyles} from "@mui/styles";
 import PropTypes from 'prop-types';
-import Grid from "@material-ui/core/Grid/Grid";
-import {Typography} from "@material-ui/core"
+import {Grid, Typography, Button} from "@mui/material";
 import rp from "request-promise";
 import LineMarkSeries from "react-vis/es/plot/series/line-mark-series";
 import YAxis from "react-vis/es/plot/axis/y-axis";

@@ -1,6 +1,6 @@
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
+import withStyles from '@mui/styles/withStyles';
+import Grid from '@mui/material/Grid';
 import s1 from '../../assets/iconos_azul/1_icono.svg';
 import s2 from '../../assets/iconos_azul/2_icono.svg';
 import s3 from '../../assets/iconos_azul/3_icono.svg';
@@ -8,8 +8,8 @@ import s4 from '../../assets/iconos_azul/4_icono.svg';
 import s5 from '../../assets/iconos_azul/5_icono.svg';
 import s6 from '../../assets/iconos_azul/6_icono.svg';
 import {Link} from 'react-router-dom';
-import Typography from "@material-ui/core/Typography";
-import Tooltip from '@material-ui/core/Tooltip';
+import Typography from "@mui/material/Typography";
+import Tooltip from '@mui/material/Tooltip';
 
 const styles = theme => ({
     root: {
@@ -25,20 +25,20 @@ const styles = theme => ({
     text: {
         color: theme.palette.titleBanner.color,
         paddingBottom: 60,
-        [theme.breakpoints.down('sm')]:{
+        [theme.breakpoints.down('md')]:{
             fontSize: '22px',
         },
     },
     disabled: {
         opacity: 0.3,
         maxWidth: 200,
-        [theme.breakpoints.down('sm')]:{
+        [theme.breakpoints.down('md')]:{
             maxWidth: 150
         },
     },
     iconosSistemas: {
         maxWidth: 200,
-        [theme.breakpoints.down('sm')]:{
+        [theme.breakpoints.down('md')]:{
             maxWidth: 150
         },
         '&:hover':{
@@ -50,7 +50,7 @@ const styles = theme => ({
         color: theme.palette.titleBanner.color,
         fontWeight: 500,
         fontSize: '48px',
-        [theme.breakpoints.down('sm')]:{
+        [theme.breakpoints.down('md')]:{
             fontSize: '40px',
         },
         paddingBottom: theme.spacing(6)

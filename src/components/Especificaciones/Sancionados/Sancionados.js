@@ -1,19 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Divider from '@material-ui/core/Divider';
+import withStyles from '@mui/styles/withStyles';
+import Divider from '@mui/material/Divider';
 import Footer from "../../Home/Footer";
-import Grid from '@material-ui/core/Grid';
+import Grid from '@mui/material/Grid';
 import Estandar from "./DescripcionEstandar";
 import Licencia from "../Licencia";
 import Implementacion from "./Implementacion";
-import {Typography} from "@material-ui/core"
+import {Typography} from "@mui/material"
 import Herramientas from "../Herramientas";
 import Header from './Header/Header';
-import Button from '@material-ui/core/Button';
+import Button from '@mui/material/Button';
 import {Link} from "react-router-dom";
-import IconButton from "@material-ui/core/IconButton";
-import GetAppIcon from "@material-ui/icons/GetApp";
+import IconButton from "@mui/material/IconButton";
+import GetAppIcon from "@mui/icons-material/GetApp";
 
 const styles = theme => ({
     list: {
@@ -67,7 +67,7 @@ class Sancionados extends React.Component {
             <div>
                 <Header/>
 
-                <Grid container spacing={0} justify='center' className={classes.container}>
+                <Grid container spacing={0} justifyContent='center' className={classes.container}>
                     <Grid item xs={12} className={classes.item}>
 
                         <Estandar/>

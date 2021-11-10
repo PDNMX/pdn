@@ -1,5 +1,6 @@
 import React from "react";
-import {Box, Typography, Button, withStyles, Grid} from "@material-ui/core";
+import { Box, Typography, Button, Grid } from "@mui/material";
+import withStyles from '@mui/styles/withStyles';
 import Plat from "../../../assets/iconos_barra/ico-plataformas_sistemas.svg";
 
 const styles = theme => ({
@@ -11,7 +12,7 @@ const styles = theme => ({
         color: theme.palette.titleBanner.color,
         fontWeight: "700",
         fontSize: '48px',
-        [theme.breakpoints.down('sm')]:{
+        [theme.breakpoints.down('md')]:{
             fontSize: '40px',
         },
         textAlign: "center"
@@ -27,7 +28,7 @@ const styles = theme => ({
     },
     icon: {
         width: '90%',
-        [theme.breakpoints.down('md')]:{
+        [theme.breakpoints.down('lg')]:{
             maxWidth: 350
         }
     },

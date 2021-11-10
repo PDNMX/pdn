@@ -1,13 +1,10 @@
 import React from 'react';
-import {Typography} from "@material-ui/core"
-import {withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@mui/styles';
 import PropTypes from 'prop-types';
-import Grid from '@material-ui/core/Grid';
+import {Grid, Paper, CardMedia, Typography} from '@mui/material';
 import img1 from "../../assets/img/hands.jpg";
 import img2 from "../../assets/img/caseFile.jpg";
 import img3 from "../../assets/img/fiscal.jpg";
-import Paper from "@material-ui/core/Paper/Paper";
-import CardMedia from "@material-ui/core/CardMedia/CardMedia";
 import {Link} from "react-router-dom";
 
 const styles = theme => ({

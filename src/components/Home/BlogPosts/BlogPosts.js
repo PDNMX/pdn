@@ -1,9 +1,9 @@
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
+import withStyles from '@mui/styles/withStyles';
+import Grid from '@mui/material/Grid';
 import ImgMediaCard from "./ImgMediaCard";
 import rp from 'request-promise';
-import Typography from "@material-ui/core/Typography";
+import Typography from "@mui/material/Typography";
 
 const styles = theme => ({
     root: {
@@ -18,7 +18,7 @@ const styles = theme => ({
         color: theme.palette.titleBanner.color,
         fontWeight: "700",
         fontSize: '48px',
-        [theme.breakpoints.down('sm')]:{
+        [theme.breakpoints.down('md')]:{
             fontSize: '40px',
         },
     }

@@ -1,14 +1,14 @@
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TablePagination from '@material-ui/core/TablePagination';
-import TableRow from '@material-ui/core/TableRow';
-import TableFooter from '@material-ui/core/TableFooter';
-import Grid from "@material-ui/core/Grid";
-import {Typography} from "@material-ui/core";
-import TableHead from "@material-ui/core/TableHead";
+import withStyles from '@mui/styles/withStyles';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TablePagination from '@mui/material/TablePagination';
+import TableRow from '@mui/material/TableRow';
+import TableFooter from '@mui/material/TableFooter';
+import Grid from "@mui/material/Grid";
+import {Typography} from "@mui/material";
+import TableHead from "@mui/material/TableHead";
 
 
 const columnData = [

@@ -1,27 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {withStyles} from '@material-ui/core/styles';
-import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper/Paper";
-import {Typography} from "@material-ui/core"
-import TextField from "@material-ui/core/TextField/TextField";
-import FormControl from "@material-ui/core/FormControl/FormControl";
-import NativeSelect from "@material-ui/core/NativeSelect/NativeSelect";
-import InputLabel from '@material-ui/core/InputLabel';
-import Input from "@material-ui/core/Input/Input";
-import PlusIcon from "@material-ui/icons/Add";
-import IconButton from "@material-ui/core/IconButton/IconButton";
+import {withStyles} from '@mui/styles';
+import {Grid,Paper, Typography, TextField, FormControl, NativeSelect, InputLabel, Input, IconButton, TableHead,TableRow, TableCell, TableBody,
+Table} from "@mui/material";
+import PlusIcon from "@mui/icons-material/Add";
 import MuiPickersUtilsProvider from "material-ui-pickers/utils/MuiPickersUtilsProvider";
 import DatePicker from "material-ui-pickers/DatePicker";
 import DateFnsUtils from 'material-ui-pickers/utils/date-fns-utils';
 import {TimePicker} from 'material-ui-pickers';
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import TableCell from "@material-ui/core/TableCell";
-import TableBody from "@material-ui/core/TableBody";
 import Acusado from "./Acusado";
-import Table from "@material-ui/core/Table";
-import ClearIcon from "@material-ui/icons/Clear";
+import ClearIcon from "@mui/icons-material/Clear";
 import {connect} from 'react-redux';
 
 const styles = theme => ({

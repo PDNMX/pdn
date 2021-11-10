@@ -1,20 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {withStyles} from '@material-ui/core/styles';
-import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper/Paper";
-import {Typography} from "@material-ui/core"
-import FormGroup from "@material-ui/core/FormGroup/FormGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox/Checkbox";
-import TextField from "@material-ui/core/TextField/TextField";
-import FormControl from "@material-ui/core/FormControl/FormControl";
-import FormLabel from "@material-ui/core/FormLabel/FormLabel";
-import RadioGroup from "@material-ui/core/RadioGroup/RadioGroup";
-import Radio from "@material-ui/core/Radio/Radio";
-import NativeSelect from "@material-ui/core/NativeSelect/NativeSelect";
-import InputLabel from '@material-ui/core/InputLabel';
-import Input from "@material-ui/core/Input/Input";
+import {withStyles} from '@mui/styles';
+import {Grid, Paper, Typography, FormGroup,FormControlLabel, Checkbox, TextField, FormControl, FormLabel, RadioGroup,
+    Radio, NativeSelect, InputLabel, Input} from "@mui/material";
+
 import {connect} from 'react-redux';
 
 

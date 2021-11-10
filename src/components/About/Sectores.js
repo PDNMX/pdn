@@ -1,9 +1,9 @@
 import React from 'react';
-import {Typography} from "@material-ui/core"
-import {withStyles} from '@material-ui/core/styles';
+import {Typography} from "@mui/material"
+import withStyles from '@mui/styles/withStyles';
 import PropTypes from 'prop-types';
-import Grid from '@material-ui/core/Grid';
-//import Chip from '@material-ui/core/Chip';
+import Grid from '@mui/material/Grid';
+//import Chip from '@mui/material/Chip';
 
 import s1 from '../../assets/about/icono1.svg';
 import s2 from '../../assets/about/icono2.svg';

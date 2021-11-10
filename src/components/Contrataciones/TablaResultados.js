@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import {
     //lighten,
     makeStyles
-} from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TablePagination from '@material-ui/core/TablePagination';
-import TableRow from '@material-ui/core/TableRow';
-import TableSortLabel from '@material-ui/core/TableSortLabel';
-import Paper from '@material-ui/core/Paper';
+} from '@mui/styles';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableHead from '@mui/material/TableHead';
+import TablePagination from '@mui/material/TablePagination';
+import TableRow from '@mui/material/TableRow';
+import TableSortLabel from '@mui/material/TableSortLabel';
+import Paper from '@mui/material/Paper';
 import LinearIndeterminate from './LinearIndeterminate';
 import ResponsiveDialog from './ResponsiveDialog';
 
@@ -78,7 +78,7 @@ const useToolbarStyles = makeStyles(theme => ({
         paddingRight: theme.spacing(1),
     },
     highlight:
-        theme.palette.type === 'light'
+        theme.palette.mode === 'light'
             ? {
                 color: theme.palette.secondary.main,
                 backgroundColor: lighten(theme.palette.secondary.light, 0.85),

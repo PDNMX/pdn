@@ -1,5 +1,6 @@
 import React from "react";
-import {withStyles, Divider, Grid} from "@material-ui/core";
+import { Divider, Grid } from "@mui/material";
+import withStyles from '@mui/styles/withStyles';
 import Header from "./Header/Header";
 import Intro from "./Intro";
 import Licencia from '../Licencia';
@@ -22,7 +23,7 @@ const Index = props => {
     return (
         <div className={classes.root}>
             <Header/>
-            <Grid container justify="center">
+            <Grid container justifyContent="center">
                 <Grid item xs={12} className={classes.rootItem}>
                     <Intro/>
                     <Divider className={classes.divider}/>

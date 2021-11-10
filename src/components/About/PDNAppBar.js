@@ -1,18 +1,11 @@
 import React from "react";
-import AppBar from "@material-ui/core/AppBar/AppBar";
+import {AppBar, Toolbar, Typography, IconButton, Grid, MenuItem, Menu, Button} from "@mui/material";
 import imgHeader from "../../assets/about/logo-PDN-mini.svg";
-import {withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@mui/styles';
 import PropTypes from 'prop-types';
-import Toolbar from '@material-ui/core/Toolbar';
-import {Typography} from "@material-ui/core"
-import IconButton from '@material-ui/core/IconButton';
-import Grid from '@material-ui/core/Grid';
-import MenuIcon from '@material-ui/icons/Menu';
+import MenuIcon from '@mui/icons-material/Menu';
 //import AccountCircle from '@material-ui/icons/AccountCircle';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
 import {Link} from 'react-router-dom';
-import Button from '@material-ui/core/Button';
 
 
 const styles = theme => ({

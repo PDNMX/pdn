@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepButton from '@material-ui/core/StepButton';
-import Button from '@material-ui/core/Button';
-import {Typography} from "@material-ui/core"
+import withStyles from '@mui/styles/withStyles';
+import Stepper from '@mui/material/Stepper';
+import Step from '@mui/material/Step';
+import StepButton from '@mui/material/StepButton';
+import Button from '@mui/material/Button';
+import {Typography} from "@mui/material"
 import DatosSolicitante from './DatosSolicitante';
 import DatosDenuncia from './DatosDenuncia';
 import AvisoPrivacidad from './AvisoPrivacidad';
@@ -14,7 +14,7 @@ import logotipoSESNA from '../../../assets/img/LogotipoSESNA-01.png';
 import rp from 'request-promise';
 import {connect} from 'react-redux';
 import uuidv1 from 'uuid/v1';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import CircularProgress from '@mui/material/CircularProgress';
 
 let datosSolicitante = <DatosSolicitante/>;
 let datosDenuncia = <DatosDenuncia/>;

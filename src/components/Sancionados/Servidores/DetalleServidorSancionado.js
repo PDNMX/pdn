@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {withStyles} from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import {Paper, Typography} from "@material-ui/core";
-import Button from "@material-ui/core/Button";
-import Divider from "@material-ui/core/Divider";
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import withStyles from '@mui/styles/withStyles';
+import Grid from "@mui/material/Grid";
+import {Paper, Typography} from "@mui/material";
+import Button from "@mui/material/Button";
+import Divider from "@mui/material/Divider";
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 const styles = theme => ({
     infoBusqueda: {

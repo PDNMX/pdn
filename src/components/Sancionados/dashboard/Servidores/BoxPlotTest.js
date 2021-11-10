@@ -1,10 +1,8 @@
 import React from 'react';
-import {withStyles} from "@material-ui/core/styles";
+import {withStyles} from "@mui/styles";
 import PropTypes from 'prop-types';
-import Grid from "@material-ui/core/Grid/Grid";
-import {Typography} from "@material-ui/core"
+import {Grid, Typography, Button} from "@mui/material";
 import rp from "request-promise";
-import Button from "@material-ui/core/Button";
 import * as d3plus from "d3plus-export";
 import WhiskerSeries from "react-vis/es/plot/series/whisker-series";
 import YAxis from "react-vis/es/plot/axis/y-axis";

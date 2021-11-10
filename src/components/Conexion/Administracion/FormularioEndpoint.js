@@ -1,19 +1,11 @@
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles';
-import {Typography} from "@material-ui/core"
-import Grid from "@material-ui/core/Grid/Grid";
-import TextField from "@material-ui/core/TextField/TextField";
-import Select from "@material-ui/core/Select/Select";
-import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from "@material-ui/core/FormControl/FormControl";
-import MenuItem from "@material-ui/core/MenuItem/MenuItem";
-import Tooltip from "@material-ui/core/Tooltip/Tooltip";
-import Fab from "@material-ui/core/Fab/Fab";
-import AddIcon from '@material-ui/icons/Add';
+import {withStyles} from '@mui/styles';
+import {Typography, Grid, TextField, Select, InputLabel, FormControl, MenuItem, Tooltip, Fab} from "@mui/material";
+import AddIcon from '@mui/icons-material/Add';
 import rp from "request-promise";
 import Mensaje from "../../Mensajes/Mensaje";
 import MensajeError from "../../Mensajes/MensajeError";
-import Save from '@material-ui/icons/Save';
+import {Save} from '@mui/icons-material';
 import {getCurrentUser} from "../../Seguridad/seguridad";
 
 const styles = theme => ({

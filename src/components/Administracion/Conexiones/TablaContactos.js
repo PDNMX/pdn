@@ -1,18 +1,12 @@
 import React from 'react';
-import Table from "@material-ui/core/Table/Table";
+import {Table, TableBody, TableRow, TableCell, Typography, TablePagination, Grid} from "@mui/material";
 import EnhancedTableHead from "../../Tablas/EnhancedTableHead";
-import TableBody from "@material-ui/core/TableBody/TableBody";
-import TableRow from "@material-ui/core/TableRow/TableRow";
-import TableCell from "@material-ui/core/TableCell/TableCell";
-import {withStyles} from '@material-ui/core/styles';
-import {Typography} from "@material-ui/core"
-import Tooltip from "@material-ui/core/Tooltip/Tooltip";
+import {withStyles} from '@mui/styles';
+import Tooltip from "@mui/material/Tooltip/Tooltip";
 import rp from "request-promise";
-import HowToReg from '@material-ui/icons/HowToReg';
-import ReportOff from '@material-ui/icons/ReportOff';
-import TablePagination from "@material-ui/core/TablePagination/TablePagination";
+import HowToReg from '@mui/icons-material/HowToReg';
+import ReportOff from '@mui/icons-material/ReportOff';
 import Mensaje from "../../Mensajes/Mensaje";
-import Grid from "@material-ui/core/Grid/Grid";
 
 let counter = 0;
 let createData = (item) => {
@@ -349,7 +343,7 @@ class TablaContactos extends React.Component {
         let index = 0;
         return (
             <div>
-                <Grid container justify={'center'} spacing={0} className={classes.gridTable}>
+                <Grid container justifyContent={'center'} spacing={0} className={classes.gridTable}>
                     <Grid item xs={12}>
                         <Mensaje mensaje={this.state.mensaje} titulo={this.state.tituloMensaje}
                                  open={this.state.flag_msj} handleClose={this.handleCloseMsj}/>
@@ -427,8 +421,8 @@ class TablaContactos extends React.Component {
                             nextIconButtonProps={{
                                 'aria-label': 'Next Page',
                             }}
-                            onChangePage={this.handleChangePage}
-                            onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                            onPageChange={this.handleChangePage}
+                            onRowsPerPageChange={this.handleChangeRowsPerPage}
                             labelRowsPerPage='Registros por página'
                             labelDisplayedRows={({from, to, count}) => {
                                 return `${from}-${to} de ${count}`;

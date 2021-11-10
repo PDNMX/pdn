@@ -1,13 +1,10 @@
 import React from 'react';
-import {withStyles} from "@material-ui/core/styles";
+import {withStyles} from '@mui/styles';
 import PropTypes from 'prop-types';
-import Grid from "@material-ui/core/Grid/Grid";
-import {Typography} from "@material-ui/core";
+import {Grid, Typography, List, ListItem, ListItemText, Alert} from "@mui/material";
 import rp from "request-promise";
-import Alert from "@material-ui/lab/Alert";
 import BarChart from "d3plus-react/es/src/BarChart";
 import * as d3 from "d3";
-import {List, ListItem, ListItemText} from "@material-ui/core";
 
 const styles = theme => ({
     frameChart: {

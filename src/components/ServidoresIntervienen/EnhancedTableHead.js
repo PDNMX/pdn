@@ -1,9 +1,6 @@
 import React from "react";
-import TableHead from "@material-ui/core/TableHead/TableHead";
-import TableRow from "@material-ui/core/TableRow/TableRow";
-import TableCell from "@material-ui/core/TableCell/TableCell";
-import {Typography} from "@material-ui/core"
-import {withStyles} from "@material-ui/core";
+import {TableHead, TableRow, TableCell, Typography} from "@mui/material";
+import {withStyles} from '@mui/styles';
 
 const styles = theme => ({
     tableHead: {

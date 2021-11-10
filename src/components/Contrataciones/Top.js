@@ -1,10 +1,10 @@
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles';
-import Typography from "@material-ui/core/Typography";
+import {withStyles} from '@mui/styles';
+import Typography from "@mui/material/Typography";
 import BarChart from './Charts/BarChart';
 import SuppliersBarChart from './Charts/SuppliersBarChart';
 import rp from 'request-promise';
-import Grid from '@material-ui/core/Grid';
+import Grid from '@mui/material/Grid';
 
 const styles = theme => ({
     root: {

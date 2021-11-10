@@ -1,26 +1,35 @@
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles';
-import Grid from "@material-ui/core/Grid/Grid";
-import {Typography} from "@material-ui/core"
+import {withStyles} from '@mui/styles';
+import Grid from "@mui/material/Grid/Grid";
+import {Typography} from "@mui/material"
 import "../../../index.css";
 import Footer from "../../Home/Footer";
 import Endpoints from "./Endpoints";
 import FormularioEndpoint from './FormularioEndpoint';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Button from "@material-ui/core/Button/Button";
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Button from "@mui/material/Button/Button";
 import FormularioContacto from "./FormularioContacto";
 import TablaContactos from "../Administracion/TablaContactos";
 import rp from "request-promise";
-import Paper from '@material-ui/core/Paper';
+import Paper from '@mui/material/Paper';
 import axios from "axios";
 import Logo from "../../../assets/icono-administracion.svg";
-import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
 import {Link} from "react-router-dom";
 import PDNLogo from "../../../assets/PDN.png";
 import {getCurrentUser} from '../../Seguridad/seguridad';
+import {useTheme} from "@emotion/react";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+// FIXME checkout https://mui.com/components/use-media-query/#migrating-from-withwidth
+const withWidth = () => (WrappedComponent) => (props) => <WrappedComponent {...props} width="xs" />;
+
+function useIsWidthUp(breakpoint) {
+    const theme = useTheme();
+    return useMediaQuery(theme.breakpoints.up(breakpoint));
+}
 
 const styles = theme => ({
     root: {
@@ -218,17 +227,18 @@ class ConsolaAdministracionSO extends React.Component {
 
     render() {
         const {classes} = this.props;
+        const isMdUp = useIsWidthUp("md");
 
         return (
             <div className={classes.root}>
-                <Grid container spacing={0} justify="center">
+                <Grid container spacing={0} justifyContent="center">
                     <Grid item xs={12} className={classes.item3}>
                         <Link to="/" className={classes.link}>
                             <img src={PDNLogo} alt="PDN" className={classes.pdnLogo}/>
                         </Link>
                     </Grid>
                 </Grid>
-                <Grid container spacing={0} className="breadcrumb" justify='center'>
+                <Grid container spacing={0} className="breadcrumb" justifyContent='center'>
                     <Grid item xs={12} className={classes.item3}>
                         <ul>
                             <li>
@@ -240,13 +250,13 @@ class ConsolaAdministracionSO extends React.Component {
                         </ul>
                     </Grid>
                 </Grid>
-                <Grid container spacing={0} className={classes.container1} justify='center'>
-                    <Grid item xs={12} md={4} align={isWidthUp('md', this.props.width) ? 'right' : 'center'}
+                <Grid container spacing={0} className={classes.container1} justifyContent='center'>
+                    <Grid item xs={12} md={4} align = {isMdUp  ? 'right' : 'center'}
                           className={classes.item1}>
                         <img src={Logo} alt="Sistema 2" className={classes.s2}/>
                     </Grid>
                     <Grid item xs={12} md={6} className={classes.item2}
-                          align={isWidthUp('md', this.props.width) ? 'left' : 'center'}>
+                          align = {isMdUp  ? 'left' : 'center'}>
                         <Typography variant="h4" paragraph className={classes.whiteText}>
                             Consola de administración
                         </Typography>
@@ -256,7 +266,7 @@ class ConsolaAdministracionSO extends React.Component {
                     </Grid>
                 </Grid>
                 <div className={classes.bgContainer}>
-                    <Grid container justify={'center'} spacing={0}>
+                    <Grid container justifyContent={'center'} spacing={0}>
                         <Grid item xs={12} className={classes.section}>
                             <Typography variant={"title"} className={classes.text}>Bienvenido</Typography>
                         </Grid>
@@ -285,11 +295,11 @@ class ConsolaAdministracionSO extends React.Component {
                         </Grid>
                         <Grid item xs={12} className={classes.section}>
                             {(this.state.estatus !== 'APROBADA' && this.state.estatus !== 'ENVIADA') &&
-                            <ExpansionPanel defaultExpanded={true}>
-                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
+                            <Accordion defaultExpanded={true}>
+                                <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
                                     <Typography className={classes.tituloPanel} variant={"h5"}>Oficio</Typography>
-                                </ExpansionPanelSummary>
-                                <ExpansionPanelDetails>
+                                </AccordionSummary>
+                                <AccordionDetails>
                                     <Grid container>
                                         <Grid item xs={12}>
                                             <Typography variant={"subtitle2"} className={classes.text}>
@@ -308,19 +318,19 @@ class ConsolaAdministracionSO extends React.Component {
                                             </Button>
                                         </Grid>
                                     </Grid>
-                                </ExpansionPanelDetails>
-                            </ExpansionPanel>
+                                </AccordionDetails>
+                            </Accordion>
                             }
 
                         </Grid>
                         <Grid item xs={12} className={classes.containerTable}>
                             {this.state.estatus === 'APROBADA' &&
-                                <ExpansionPanel>
-                                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
+                                <Accordion>
+                                    <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
                                         <Typography className={classes.tituloPanel} variant={"h5"}>Administrar
                                             contactos</Typography>
-                                    </ExpansionPanelSummary>
-                                    <ExpansionPanelDetails>
+                                    </AccordionSummary>
+                                    <AccordionDetails>
                                         <Grid container>
                                             <Grid item xs={12}>
                                                 <FormularioContacto updateView={this.updateView}/>
@@ -330,18 +340,18 @@ class ConsolaAdministracionSO extends React.Component {
                                                                 updateView={this.updateView}/>
                                             </Grid>
                                         </Grid>
-                                    </ExpansionPanelDetails>
-                                </ExpansionPanel>
+                                    </AccordionDetails>
+                                </Accordion>
                             }
                         </Grid>
                         <Grid item xs={12} className={classes.containerTable}>
                             {this.state.estatus === 'APROBADA' &&
-                            <ExpansionPanel>
-                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
+                            <Accordion>
+                                <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
                                     <Typography className={classes.tituloPanel} variant={"h5"}>Administrar
                                         API's</Typography>
-                                </ExpansionPanelSummary>
-                                <ExpansionPanelDetails>
+                                </AccordionSummary>
+                                <AccordionDetails>
                                     <Grid container>
                                         <Grid item xs={12}>
                                             <FormularioEndpoint updateView={this.updateView}/>
@@ -351,8 +361,8 @@ class ConsolaAdministracionSO extends React.Component {
                                                        updateView={this.updateView}/>
                                         </Grid>
                                     </Grid>
-                                </ExpansionPanelDetails>
-                            </ExpansionPanel>
+                                </AccordionDetails>
+                            </Accordion>
                             }
 
                         </Grid>

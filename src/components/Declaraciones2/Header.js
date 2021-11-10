@@ -1,11 +1,21 @@
-import React from "react";
-import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
 import "./header.css";
-import { Grid, withStyles, Typography } from "@material-ui/core";
+import { Grid, Typography } from "@mui/material";
+import withStyles from '@mui/styles/withStyles';
 import BarraLogoMenu from "../Compartidos/BarraLogoMenu";
 import Particles from 'react-particles-js';
+import {useTheme} from "@emotion/react";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+// FIXME checkout https://mui.com/components/use-media-query/#migrating-from-withwidth
+const withWidth = () => (WrappedComponent) => (props) => <WrappedComponent {...props} width="xs" />;
+
+function useIsWidthUp(breakpoint) {
+    const theme = useTheme();
+    return useMediaQuery(theme.breakpoints.up(breakpoint));
+}
 
 const styles = theme => ({
   root: {
@@ -80,25 +90,25 @@ const styles = theme => ({
 },
 });
 
-class Header extends React.Component {
-  state = {
-    achorEl: null
+const Header = props => {
+    const { classes, logo, titulo, subtitulo } = props;
+    const isMdUp = useIsWidthUp("md");
+    const [achorEl, setAchorEl] = useState(null);
+
+
+  const handleChange = event => {
+    setAchorEl({ auth: event.target.checked });
   };
 
-  handleChange = event => {
-    this.setState({ auth: event.target.checked });
+    const handleMenu = event => {
+        setAchorEl({ anchorEl: event.currentTarget });
   };
 
-  handleMenu = event => {
-    this.setState({ anchorEl: event.currentTarget });
+    const handleClose = () => {
+        setAchorEl({ anchorEl: null });
   };
 
-  handleClose = () => {
-    this.setState({ anchorEl: null });
-  };
 
-  render() {
-    const { classes, logo, titulo, subtitulo } = this.props;
 
     return (
       <div className={classes.root}>
@@ -284,7 +294,7 @@ class Header extends React.Component {
             item
             xs={12}
             md={4}
-            align={isWidthUp("md", this.props.width) ? "right" : "center"}
+            align={isMdUp ? "right" : "center"}
             className={classes.item1}
           >
             <img src={logo} alt="Sistema 1" className={classes.s2} />
@@ -295,7 +305,7 @@ class Header extends React.Component {
             xs={12}
             md={6}
             className={classes.item2}
-            align={isWidthUp("md", this.props.width) ? "left" : "center"}
+            align={isMdUp ? "left" : "center"}
           >
             <Typography
               variant="h4"
@@ -326,7 +336,7 @@ class Header extends React.Component {
         </Grid>
       </div>
     );
-  }
+
 }
 
 export default withWidth()(withStyles(styles)(Header));

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import {withStyles} from '@material-ui/core/styles';
-import Fab from '@material-ui/core/Fab';
-import ArrowUpward from '@material-ui/icons/KeyboardArrowUp';
+import withStyles from '@mui/styles/withStyles';
+import Fab from '@mui/material/Fab';
+import ArrowUpward from '@mui/icons-material/KeyboardArrowUp';
 
 const styles = theme => ({
    fab: {

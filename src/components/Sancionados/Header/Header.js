@@ -1,14 +1,23 @@
 import React from 'react';
-import {withStyles} from "@material-ui/core/styles";
-import Grid from '@material-ui/core/Grid';
+import withStyles from '@mui/styles/withStyles';
+import Grid from '@mui/material/Grid';
 import {Link} from 'react-router-dom';
 import S3 from '../../../assets/iconos_azul/3_icono.svg'
-import {Typography} from "@material-ui/core"
-import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
+import {Typography} from "@mui/material"
 import '../../Utils/Header.css'
 import classNames from 'classnames';
 import BarraLogoMenu from "../../Compartidos/BarraLogoMenu";
 import Particles from 'react-particles-js';
+import {useTheme} from "@emotion/react";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+// FIXME checkout https://mui.com/components/use-media-query/#migrating-from-withwidth
+const withWidth = () => (WrappedComponent) => (props) => <WrappedComponent {...props} width="xs" />;
+
+function useIsWidthUp(breakpoint) {
+    const theme = useTheme();
+    return useMediaQuery(theme.breakpoints.up(breakpoint));
+}
 
 const style = theme => ({
         root: {
@@ -56,6 +65,8 @@ const style = theme => ({
 
 function Header (props){
     const {classes} = props;
+    const isMdUp = useIsWidthUp("md");
+
         return (
             <div className={classes.root}>
                 <BarraLogoMenu/>
@@ -176,13 +187,13 @@ function Header (props){
                             "retina_detect": true
                         }}
                     />
-                    <Grid item xs={12} md={4} align={isWidthUp('md', props.width) ? 'right' : 'center'}
+                    <Grid item xs={12} md={4} align={isMdUp ? 'right' : 'center'}
                           className={classes.item1}>
                         <img src={S3} alt="Sistema 2" className={classes.s2}/>
                     </Grid>
 
                     <Grid item xs={12} md={6} className={classes.item2}
-                          align={isWidthUp('md', props.width) ? 'left' : 'center'}>
+                          align={isMdUp ? 'left' : 'center'}>
                         <Typography variant="h4" paragraph className={classes.whiteText} style={{fontWeight: 600}}>
                             Sancionados
                         </Typography>

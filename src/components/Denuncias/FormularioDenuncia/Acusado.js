@@ -1,8 +1,6 @@
 import React from 'react';
-import TableRow from "@material-ui/core/TableRow/TableRow";
-import TableCell from "@material-ui/core/TableCell/TableCell";
-import IconButton from "@material-ui/core/IconButton/IconButton";
-import ClearIcon from "@material-ui/icons/Clear";
+import {TableRow, TableCell, IconButton} from "@mui/material";
+import ClearIcon from "@mui/icons-material/Clear";
 
 const Acusado = (acusado) => (
     <TableRow key={acusado.id}>

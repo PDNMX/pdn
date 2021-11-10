@@ -1,7 +1,7 @@
 import React from 'react';
-import {Typography} from "@material-ui/core"
-import Grid from '@material-ui/core/Grid';
-import { withStyles } from '@material-ui/core/styles';
+import {Typography} from "@mui/material"
+import Grid from '@mui/material/Grid';
+import { withStyles } from '@mui/styles';
 import PropTypes from 'prop-types';
 import Header from "./Header/Header.js";
 import Footer from "../Home/Footer";
@@ -47,8 +47,8 @@ class Faq extends React.Component{
         return (
             <div className={classes.root}>
                 <Header/>
-                <Grid container spacing={0} justify='center' className={classes.container}>
-                    <Grid item xs={12} justify="center" className={classes.item}>
+                <Grid container spacing={0} justifyContent='center' className={classes.container}>
+                    <Grid item xs={12} justifyContent="center" className={classes.item}>
                         <ul className={classes.ul}>
                           <li className={classes.li}>
                                 <Typography className={classes.sublist}>
