@@ -1,10 +1,10 @@
 import React from "react";
-import {Typography} from "@material-ui/core";
-import IconButton from "@material-ui/core/IconButton";
-import GetAppIcon from "@material-ui/icons/GetApp";
-import Button from "@material-ui/core/Button";
+import {Typography} from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import GetAppIcon from "@mui/icons-material/GetApp";
+import Button from "@mui/material/Button";
 import PropTypes from 'prop-types';
-import {withStyles} from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import {Link} from "react-router-dom";
 
 

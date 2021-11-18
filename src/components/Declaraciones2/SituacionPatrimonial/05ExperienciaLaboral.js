@@ -1,14 +1,15 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
+import makeStyles from '@mui/styles/makeStyles';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 
 import style from '../styleSecciones';
 import { sumary, expansion } from '../utils';
 import DatosNoRegistrados from '../DatosNoRegistrados';
 
-import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
+import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from "../common/BoxAccordion";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const useStyles = makeStyles(style);
 
@@ -32,8 +33,8 @@ export default function({ data, titulo }) {
 				) : (
 					experiencia.map((expe, index) => {
 						return (
-							<ExpansionPanel key={'exp-' + index}>
-								<ExpansionPanelSummary
+							<BoxAccordion key={'exp-' + index}>
+								<BoxAccordionSummary
 									classes={sum}
 									expandIcon={<ExpandMoreIcon />}
 									aria-controls="panel1a-content"
@@ -58,8 +59,8 @@ export default function({ data, titulo }) {
 											{')'}
 										</strong>
 									</Typography>
-								</ExpansionPanelSummary>
-								<ExpansionPanelDetails>
+								</BoxAccordionSummary>
+								<BoxAccordionDetails>
 									{expe.ambitoSector.clave === 'PUB' && (
 										<Grid container spacing={1}>
 											<Grid item xs={12} md={4}>
@@ -194,8 +195,8 @@ export default function({ data, titulo }) {
 											</Grid>
 										</Grid>
 									)}
-								</ExpansionPanelDetails>
-							</ExpansionPanel>
+								</BoxAccordionDetails>
+							</BoxAccordion>
 						);
 					})
 				)}

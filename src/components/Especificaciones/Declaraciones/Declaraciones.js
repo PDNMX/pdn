@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {withStyles} from '@material-ui/core/styles';
-import Divider from '@material-ui/core/Divider';
+import withStyles from '@mui/styles/withStyles';
+import Divider from '@mui/material/Divider';
 import Footer from "../../Home/Footer";
-import Grid from '@material-ui/core/Grid';
+import Grid from '@mui/material/Grid';
 import DescripcionEstandar from "./DescripcionEstandar";
 import Licencia from "../Licencia";
 import Recomendaciones from "./Recomendaciones";
-import {Typography} from "@material-ui/core"
+import {Typography} from "@mui/material"
 import Herramientas from "../Herramientas";
 import Header from './Header/Header';
-import {Link} from '@material-ui/core';
-import Button from '@material-ui/core/Button';
+import {Link} from '@mui/material';
+import Button from '@mui/material/Button';
 import ProcoloConexion from "../ProcoloConexion";
 
 const styles = theme => ({
@@ -68,7 +68,7 @@ class Declaraciones extends React.Component {
         return (
             <div className={classes.root}>
                 <Header/>
-                <Grid container spacing={0} justify='center' className={classes.container}>
+                <Grid container spacing={0} justifyContent='center' className={classes.container}>
                     <Grid item xs={12} className={classes.item}>
 
                         <DescripcionEstandar/>
@@ -115,21 +115,21 @@ class Declaraciones extends React.Component {
                         <ul className={classes.ul}>
                             <li className={classes.li}>
                                 <Link
-                                    href='https://app.swaggerhub.com/apis/pdn-mx/s1-Declaraciones-Inicial/2.0'
+                                    href='https://www.plataformadigitalnacional.org/oas/ui/?urls.primaryName=S1%20-%20Inicial'
                                     target="_blank">
                                     <b>Formato de inicio</b>
                                 </Link>
                             </li>
                             <li className={classes.li}>
                                 <Link
-                                    href='https://app.swaggerhub.com/apis/pdn-mx/s1-Declaraciones-Modificacion/2.0'
+                                    href='https://www.plataformadigitalnacional.org/oas/ui/?urls.primaryName=S1%20-%20Modificaci%C3%B3n'
                                     target="_blank">
                                     <b>Formato de modificación</b>
                                 </Link>
                             </li>
                             <li className={classes.li}>
                                 <Link
-                                    href='https://app.swaggerhub.com/apis/pdn-mx/s1-Declaraciones-Conclusion/2.0'
+                                    href='https://www.plataformadigitalnacional.org/oas/ui/?urls.primaryName=%20S1%20-%20Conclusi%C3%B3n'
                                     target="_blank">
                                     <b>Formato de conclusión</b>
                                 </Link>

@@ -1,10 +1,9 @@
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
-import Grid from '@material-ui/core/Grid';
-import {Typography} from "@material-ui/core";
+import withStyles from '@mui/styles/withStyles';
+import Grid from '@mui/material/Grid';
+import {Typography} from "@mui/material";
 //import {Link} from "react-router-dom";
-import Button from "@material-ui/core/Button";
+import Button from "@mui/material/Button";
 
 const styles = theme => ({
     root: {
@@ -24,7 +23,7 @@ const styles = theme => ({
         color: theme.palette.titleBanner.color,
         fontWeight: "700",
         fontSize: '48px',
-        [theme.breakpoints.down('sm')]:{
+        [theme.breakpoints.down('md')]:{
             fontSize: '40px',
         },
     },
@@ -40,53 +39,43 @@ const styles = theme => ({
     }
 });
 
-class MercadoDigital extends React.Component{
+const MercadoDigital = props => {
+    const {classes}  = props;
 
-    render(){
-        const {classes}  = this.props;
+    return (
+        <div className={classes.root}>
+            <Grid container spacing={0} justifyContent='center' className={classes.container}>
+                <Grid item xs={12} align="center">
+                    <Typography className={classes.headingText} paragraph>
+                        Mercado Digital Anticorrupción
+                    </Typography>
 
-        return (
-                <div className={classes.root}>
-                    <Grid container spacing={0} justify='center' className={classes.container}>
-                        <Grid item xs={12} align="center">
-                            <Typography className={classes.headingText} paragraph>
-                                Mercado Digital Anticorrupción
-                            </Typography>
+                    <Typography className={classes.text} paragraph>
+                        El Mercado Digital Anticorrupción (MDA) es un espacio donde podrás encontrar
+                        diversas herramientas que facilitarán el desarrollo y conexión de los sistemas
+                        que conforman a la Plataforma Digital Nacional.
+                        Estas herramientas podrán ser utilizadas por todas las Instituciones que las requieran,
+                        ya que son de libre uso, haz click en "Conoce más".
+                    </Typography>
 
-                            <Typography className={classes.text} paragraph>
-                                El Mercado Digital Anticorrupción (MDA) es un espacio donde podrás encontrar
-                                diversas herramientas que facilitarán el desarrollo y conexión de los sistemas
-                                que conforman a la Plataforma Digital Nacional.
-                                Estas herramientas podrán ser utilizadas por todas las Instituciones que las requieran,
-                                ya que son de libre uso, haz click en "Conoce más".
-                            </Typography>
+                    <div className={classes.videoDiv}>
+                        <iframe width="100%" height="450" src="https://www.youtube.com/embed/JQNPwOOG4yw" frameBorder="0" title={'Video'}
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen/>
+                    </div>
 
-                            <div className={classes.videoDiv}>
-                                <iframe width="100%" height="450" src="https://www.youtube.com/embed/JQNPwOOG4yw" frameBorder="0" title={'Video'}
-                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                        allowFullScreen/>
-
-                            </div>
-
-                            <div>
-                                <Button variant="contained" className={classes.button}
-                                        href="https://mda.plataformadigitalnacional.org/"
-                                        //target="_blank"
-                                >
-                                    Conoce más
-                                </Button>
-                            </div>
-                        </Grid>
-                    </Grid>
-                </div>
-
-
-        )
-    }
-}
-
-MercadoDigital.propTypes = {
-    classes: PropTypes.object.isRequired
+                    <div>
+                        <Button variant="contained" className={classes.button}
+                                href="https://mda.plataformadigitalnacional.org/"
+                            //target="_blank"
+                        >
+                            Conoce más
+                        </Button>
+                    </div>
+                </Grid>
+            </Grid>
+        </div>
+    );
 };
 
 export default withStyles(styles)(MercadoDigital);

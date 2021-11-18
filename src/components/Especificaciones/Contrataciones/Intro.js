@@ -1,10 +1,20 @@
 import React from 'react';
-import {withStyles, Typography, Divider, Button, List, ListItem, ListItemAvatar, Avatar, ListItemText} from "@material-ui/core";
-import AccountTreeIcon from '@material-ui/icons/AccountTree';
-import BarChartIcon from '@material-ui/icons/BarChart';
-import DescriptionIcon from "@material-ui/icons/Description";
-import BuildIcon from '@material-ui/icons/Build';
-import ThumbUpIcon from '@material-ui/icons/ThumbUp'
+import {
+    Typography,
+    Divider,
+    Button,
+    List,
+    ListItem,
+    ListItemAvatar,
+    Avatar,
+    ListItemText,
+} from "@mui/material";
+import withStyles from '@mui/styles/withStyles';
+import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import BarChartIcon from '@mui/icons-material/BarChart';
+import DescriptionIcon from "@mui/icons-material/Description";
+import BuildIcon from '@mui/icons-material/Build';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp'
 const styles = theme => ({
     root: {
         flexGrow: 1,

@@ -1,17 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-//import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import withMobileDialog from '@material-ui/core/withMobileDialog';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+//import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 import ReactJson from 'react-json-view';
-import DownloadIcon from '@material-ui/icons/CloudDownload';
-import Typography from "@material-ui/core/Typography";
-import Divider from '@material-ui/core/Divider';
-import {withStyles} from "@material-ui/core/styles";
+import DownloadIcon from '@mui/icons-material/CloudDownload';
+import Typography from "@mui/material/Typography";
+import Divider from '@mui/material/Divider';
+import withStyles from '@mui/styles/withStyles';
+
+
+// FIXME checkout https://mui.com/components/use-media-query/#using-material-uis-breakpoint-helpers
+const withMobileDialog = () => (WrappedComponent) => (props) => <WrappedComponent {...props} width="lg" fullScreen={false} />;
 
 
 const styles = theme => ({

@@ -1,7 +1,7 @@
-import {Typography} from "@material-ui/core"
+import {Typography} from "@mui/material"
 import React from "react";
-import {withStyles} from "@material-ui/core/styles";
-import Button from '@material-ui/core/Button';
+import withStyles from '@mui/styles/withStyles';
+import Button from '@mui/material/Button';
 
 const styles = theme => ({
     root: {

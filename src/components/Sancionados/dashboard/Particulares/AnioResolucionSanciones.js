@@ -1,8 +1,7 @@
 import React from 'react';
-import {withStyles} from "@material-ui/core/styles";
+import {withStyles} from "@mui/styles";
 import PropTypes from 'prop-types';
-import Grid from "@material-ui/core/Grid/Grid";
-import {Typography} from "@material-ui/core"
+import {Grid, Typography, Button} from "@mui/material";
 import rp from "request-promise";
 import LineMarkSeries from "react-vis/es/plot/series/line-mark-series";
 import YAxis from "react-vis/es/plot/axis/y-axis";
@@ -36,7 +35,7 @@ const styles = theme => ({
 function aux() {
     return new Promise((resolve, reject) => {
         let options = {
-            uri: process.env.REACT_APP_HOST_PDNBACK + '/viz/particulares/getAnioSancion',
+            uri: process.env.REACT_APP_S3P_BACKEND + '/charts/getAnioSancion',
             json: true,
             method: "GET"
         };
@@ -107,7 +106,8 @@ class AnioResolucionSanciones extends React.Component {
                 }
             )
         }).catch(err => {
-            this.setState({error: true})
+            console.error(err);
+            this.setState({error: true});
         });
     }
 
@@ -116,7 +116,7 @@ class AnioResolucionSanciones extends React.Component {
         let {hoveredCell} = this.state;
         return (
             <div>
-                <Grid container spacing={0} justify='center' className={classes.frameChart}>
+                <Grid container spacing={0} justifyContent='center' className={classes.frameChart}>
                     <Grid item xs={12} md={12}>
                         <Typography variant={"h6"} className={classes.titulo}>
                             <b> {"Cantidad de sanciones"}</b>
@@ -124,13 +124,7 @@ class AnioResolucionSanciones extends React.Component {
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>
                         <Typography variant={"body1"}>
-
-                            Como se aprecia en la gráfica, el comportamiento de las sanciones no ha sido constante, iniciando en el año 2004 con apenas 4 sanciones registradas, pasó a 29 sanciones en 2005 y un total de 302 sanciones de 2006 a 2007.
-                            <br/>
-                            Con un descenso drástico en 2008 con 43 sanciones registradas, volvió a repuntar en el año
-                            2010 con 239 sanciones, siendo este año el año con mayor sanciones registradas.<br/>
-                            De 2011 a la fecha, el número de sanciones ha variado entre 84 y 179 sanciones, variando de
-                            un año a otro en 60 sanciones registradas máximo.
+                            Como se aprecia en la gráfica, el comportamiento de las sanciones no ha sido constante, se aprecia el año 2010 con un mayor número de sanciones (233) representando el 11.95% del total. En contraste, el año 2004 representa únicamente el 0.21% del total con 4 sanciones.
                         </Typography>
                     </Grid>
                     <Grid item xs={12} md={8}>

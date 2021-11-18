@@ -1,14 +1,14 @@
 import React from 'react';
-import {withStyles} from "@material-ui/core/styles";
-import FormControl from "@material-ui/core/FormControl";
-import InputLabel from "@material-ui/core/InputLabel";
-//import NativeSelect from "@material-ui/core/NativeSelect";
-//import InputBase from "@material-ui/core/InputBase";
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
-import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
-import Button from "@material-ui/core/Button";
+import withStyles from '@mui/styles/withStyles';
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+//import NativeSelect from "@mui/material/NativeSelect";
+//import InputBase from "@mui/material/InputBase";
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+import Grid from '@mui/material/Grid';
+import TextField from '@mui/material/TextField';
+import Button from "@mui/material/Button";
 
 const styles = theme => ({
     root: {
@@ -78,6 +78,7 @@ class SearchControls extends React.Component{
                                 <Select
                                     value={buyer_id}
                                     onChange={handleChangeBuyer}
+                                    label = {'Institución'}
                                     //input={<BootstrapInput name="buyer" id="age-customized-native-simple"/>}
                                 >
                                     <MenuItem value="any"><em>Todas</em></MenuItem>
@@ -102,6 +103,7 @@ class SearchControls extends React.Component{
                                     value={procurementMethod}
                                     onChange={handleChangeProcurementMethod}
                                     //input={<BootstrapInput name="age" id="age-customized-select" />}
+                                    label = {'Tipo de contratación'}
                                 >
                                     <MenuItem value="any">
                                         <em>Cualquiera</em>
@@ -123,6 +125,7 @@ class SearchControls extends React.Component{
                                     value={cycle}
                                     onChange={handleChangeCycle}
                                     //input={<BootstrapInput name="age" id="age-customized-select" />}
+                                    label = {'Ciclo'}
                                 >
                                     <MenuItem value="any">
                                         <em>Cualquiera</em>

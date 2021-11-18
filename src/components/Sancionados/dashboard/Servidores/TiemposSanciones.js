@@ -1,8 +1,7 @@
 import React from 'react';
-import {withStyles} from "@material-ui/core/styles";
+import {withStyles} from "@mui/styles";
 import PropTypes from 'prop-types';
-import Grid from "@material-ui/core/Grid/Grid";
-import {Typography} from "@material-ui/core"
+import {Grid, Typography} from "@mui/material";
 import {BarChart} from "d3plus-react";
 import rp from "request-promise";
 import * as d3plus from "d3plus-export";
@@ -33,7 +32,7 @@ const styles = theme => ({
 function aux() {
     return new Promise((resolve, reject) => {
         let options = {
-            uri: process.env.REACT_APP_HOST_PDNBACK + '/viz/servidores/getTemporalidadSanciones',
+            uri: process.env.REACT_APP_S3S_BACKEND + '/charts/getTemporalidadSanciones',
             json: true,
             method: "GET"
         };
@@ -89,7 +88,7 @@ class TiemposSanciones extends React.Component {
                             },
                             tbody: [
                                 ["Duración de la sanción: ", function (d) {
-                                    return d["anios"] + "años"
+                                    return d["anios"] + " años"
                                 }
                                 ],
                                 ["Número de sanciones: ", function (d) {
@@ -116,6 +115,7 @@ class TiemposSanciones extends React.Component {
                 }
             )
         }).catch(err=>{
+            console.error(err);
             this.setState({error:true})
         });
     }
@@ -129,7 +129,7 @@ class TiemposSanciones extends React.Component {
         const {classes} = this.props;
         return (
             <div>
-                <Grid container spacing={0} justify='center' className={classes.frameChart}>
+                <Grid container spacing={0} justifyContent='center' className={classes.frameChart}>
                     <Grid item xs={12}>
                         <Typography variant={"h6"} className={classes.titulo}>
                             <b>{"Duración de las sanciones"}</b>
@@ -138,7 +138,7 @@ class TiemposSanciones extends React.Component {
                     <Grid item xs={12} className={classes.descripcion}>
                         <Typography>
 
-                            Si tomamos en cuenta el tiempo que duró la inhabilitación a los funcionarios, podemos observar que más del 50% de las sanciones totales fueron de 10 años; aproximadamente 1363. 9% de las sanciones duraron menos de 1 año; 40% menos de 10 años, y muy pocas sanciones duraron más de 10 años.
+                            Tomando en cuenta el tiempo que duró la inhabilitación a las personas servidoras públicas se  observa que 84.55% de las sanciones totales fueron de 10 años; 6.31% de las sanciones tienen una duración mayor a 10 años; 5.89% tiene una duración entre 1 y 9 años, mientras que solo 0.49% es de menos de un año.
 
                         </Typography>
                     </Grid>

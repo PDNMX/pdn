@@ -1,17 +1,18 @@
 import React from "react";
-import {Box, Typography, Button, withStyles, Grid} from "@material-ui/core";
+import { Box, Typography, Button, Grid } from "@mui/material";
+import withStyles from '@mui/styles/withStyles';
 import Plat from "../../../assets/iconos_barra/ico-plataformas_sistemas.svg";
 
 const styles = theme => ({
     root: {
-      paddingTop: theme.spacing(10),
-      paddingBottom: theme.spacing(10),
+        paddingTop: theme.spacing(10),
+        paddingBottom: theme.spacing(10),
     },
     headingText: {
         color: theme.palette.titleBanner.color,
         fontWeight: "700",
         fontSize: '48px',
-        [theme.breakpoints.down('sm')]:{
+        [theme.breakpoints.down('md')]:{
             fontSize: '40px',
         },
         textAlign: "center"
@@ -26,8 +27,8 @@ const styles = theme => ({
         justifyContent: "center",
     },
     icon: {
-       width: '90%',
-        [theme.breakpoints.down('md')]:{
+        width: '90%',
+        [theme.breakpoints.down('lg')]:{
             maxWidth: 350
         }
     },
@@ -51,7 +52,7 @@ const Avance = props => {
         </Box>
 
         <Grid container spacing={0} className={classes.item}>
-            <Grid item xs={12} sm={12} md={4} lg={4} xl={4} justify="center" alignContent="center">
+            <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
                 <Box className={classes.logoBox}>
                     <img src={Plat} alt="Interconexión subnacional" className={classes.icon}/>
                 </Box>
@@ -69,7 +70,7 @@ const Avance = props => {
 
                 <Button variant="contained"
                         className={classes.button}
-                        href="https://plataformadigitalnacional.org/mapa-sla/"
+                        href="https://www.plataformadigitalnacional.org/mapa-sla/"
                 >
                     Conoce más
                 </Button>
@@ -84,18 +85,14 @@ const Avance = props => {
 
                 <Button variant="contained"
                         className={classes.button}
-                        href="https://plataformadigitalnacional.org/mapa-avance/"
+                        href="https://www.plataformadigitalnacional.org/mapa-avance/"
                 >
                     Conoce más
                 </Button>
 
             </Grid>
         </Grid>
-
-
-
     </div>
 }
-
 
 export default withStyles(styles)(Avance);

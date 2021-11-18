@@ -1,9 +1,9 @@
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@mui/styles';
 import PropTypes from 'prop-types';
-import {Typography} from "@material-ui/core"
+import {Typography} from "@mui/material"
 import Diagrama from "../../../assets/Diagrama_de_comunicacion_API.svg";
-import Grid from '@material-ui/core/Grid';
+import Grid from '@mui/material/Grid';
 
 
 const styles = theme =>({

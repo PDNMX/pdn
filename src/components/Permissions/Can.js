@@ -1,8 +1,8 @@
 import * as React from "react";
 import app from "../../config/firebase";
 import BeatLoader from 'react-spinners/BeatLoader';
-import Grid from "@material-ui/core/Grid/Grid";
-import {withStyles} from "@material-ui/core";
+import {Grid} from "@mui/material";
+import {withStyles} from "@mui/styles";
 
 const styles = theme => ({
     root: {

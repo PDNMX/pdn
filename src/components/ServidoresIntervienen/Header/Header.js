@@ -1,16 +1,23 @@
 import React from 'react';
-import {withStyles} from "@material-ui/core/styles";
-import Grid from '@material-ui/core/Grid';
+import withStyles from '@mui/styles/withStyles';
 import {Link} from 'react-router-dom';
 import S2 from '../../../assets/iconos_azul/2_icono.svg'
-import {Typography} from "@material-ui/core"
-import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
+import {Typography, Grid} from "@mui/material"
 import '../../Utils/Header.css';
 import classNames from 'classnames';
 import BarraLogoMenu from "../../Compartidos/BarraLogoMenu";
-
 import Particles from 'react-particles-js';
+import {getParams} from './ParticleParams';
+import useMediaQuery from "@mui/material/useMediaQuery";
+import {useTheme} from "@emotion/react";
 
+// FIXME checkout https://mui.com/components/use-media-query/#migrating-from-withwidth
+const withWidth = () => (WrappedComponent) => (props) => <WrappedComponent {...props} width="xs" />;
+
+function useIsWidthUp(breakpoint) {
+    const theme = useTheme();
+    return useMediaQuery(theme.breakpoints.up(breakpoint));
+}
 const style = theme => ({
         root: {
             flexGrow:1,
@@ -60,152 +67,47 @@ const style = theme => ({
     }
 );
 
-class Header extends React.Component{
-    constructor(props) {
-        super(props);
-        this.btnVideo = React.createRef();
-    }
-    render(){
-        const {classes} = this.props;
+const Header = props => {
+    const {classes} = props;
+    const isMdUp = useIsWidthUp("md");
 
-        return(
-            <div className={classes.root}>
-                <BarraLogoMenu/>
+    return(
+        <div className={classes.root}>
+            <BarraLogoMenu/>
 
-                <Grid container spacing={0} className="breadcrumb" justify='center'>
-                    <Grid item xs={12} className={classes.item3}>
-                        <ul>
-                            <li>
-                                <Link className={classes.link} to='/'>Plataforma Digital Nacional</Link>
-                            </li>
-                            <li>
-                                Servidores públicos en contrataciones
-                            </li>
-                        </ul>
-                    </Grid>
-                </Grid>
-
-                <Grid container spacing={0} className={classNames(classes.container1)} justify='center'>
-                    <Particles 
-                        className={classes.particulas}
-                        params={{
-                            "particles": {
-                                "number": {
-                                    "value": 24,
-                                    "density": {
-                                        "enable": true,
-                                        "value_area": 800
-                                    }
-                                },
-                                "line_linked": {
-                                    "enable": false
-                                },
-                                "move": {
-                                    "speed": 1,
-                                    "out_mode": "out"
-                                },
-                                "shape": {
-                                    "type": [
-                                        "images"
-                                    ],
-                                    "images": [
-                                        {
-                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/1.svg",
-                                            "height": 30,
-                                            "width": 30
-                                        },
-                                        {
-                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/2.svg",
-                                            "height": 30,
-                                            "width": 30
-                                        },
-                                        {
-                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/3.svg",
-                                            "height": 30,
-                                            "width": 30
-                                        },
-                                        {
-                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/4.svg",
-                                            "height": 30,
-                                            "width": 30
-                                        },
-                                        {
-                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/5.svg",
-                                            "height": 30,
-                                            "width": 30
-                                        },
-                                        {
-                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/6.svg",
-                                            "height": 30,
-                                            "width": 30
-                                        },
-                                        {
-                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/7.svg",
-                                            "height": 30,
-                                            "width": 30
-                                        },
-                                        {
-                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/8.svg",
-                                            "height": 30,
-                                            "width": 30
-                                        },
-                                        {
-                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/9.svg",
-                                            "height": 30,
-                                            "width": 30
-                                        },
-                                        {
-                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/10.svg",
-                                            "height": 30,
-                                            "width": 30
-                                        },
-                                        {
-                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/11.svg",
-                                            "height": 30,
-                                            "width": 30
-                                        },
-                                        {
-                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/12.svg",
-                                            "height": 30,
-                                            "width": 30
-                                        },
-                                        {
-                                            "src": process.env.PUBLIC_URL + "/img/flotantes/servidores/13.svg",
-                                            "height": 30,
-                                            "width": 30
-                                        },
-                                    ]
-                                },
-                                "size": {
-                                    "value": 30,
-                                    "random": false,
-                                    "anim": {
-                                        "enable": true,
-                                        "speed": 4,
-                                        "size_min": 10,
-                                        "sync": false
-                                    }
-                                }
-                            },
-                            "retina_detect": true
-                        }}
-                    />
-
-                    <Grid item xs={12} md={4} align={isWidthUp('md', this.props.width)? 'right':'center'} className={classes.item1}>
-                        <img src={S2} alt="Sistema 2" className={classes.s2}/>
-                    </Grid>
-                    <Grid item xs={12} md={6} className={classes.item2} align={isWidthUp('md', this.props.width)? 'left':'center'} >
-                        <Typography variant="h4" paragraph className={classes.whiteText} style={{  fontWeight: 600}}>
+            <Grid container spacing={0} className="breadcrumb" justifyContent='center'>
+                <Grid item xs={12} className={classes.item3}>
+                    <ul>
+                        <li>
+                            <Link className={classes.link} to='/'>Plataforma Digital Nacional</Link>
+                        </li>
+                        <li>
                             Servidores públicos en contrataciones
-                        </Typography>
-                        <Typography variant="h4" paragraph className={classes.whiteText} style={{fontWeight: 300}}>
-                            Sistema de los Servidores públicos que intervengan en procedimientos de contrataciones públicas
-                        </Typography>
-                    </Grid>
+                        </li>
+                    </ul>
                 </Grid>
-            </div>
-        )
-    }
+            </Grid>
+
+            <Grid container spacing={0} className={classNames(classes.container1)} justifyContent='center'>
+                <Particles
+                    className={classes.particulas}
+                    params={getParams()}
+                />
+
+                <Grid item xs={12} md={4} align = {isMdUp ? 'right' : ' center'}  className={classes.item1}>
+                    <img src={S2} alt="Sistema 2" className={classes.s2}/>
+                </Grid>
+                <Grid item xs={12} md={6} className={classes.item2} align = {isMdUp ? 'left' : ' center'}>
+                    <Typography variant="h4" paragraph className={classes.whiteText} style={{  fontWeight: 600}}>
+                        Servidores públicos en contrataciones
+                    </Typography>
+                    <Typography variant="h4" paragraph className={classes.whiteText} style={{fontWeight: 300}}>
+                        Sistema de los Servidores públicos que intervengan en procedimientos de contrataciones públicas
+                    </Typography>
+                </Grid>
+            </Grid>
+        </div>
+    );
 }
 
-export default withWidth()(withStyles(style) (Header));
+export default withWidth()(withStyles(style)(Header));

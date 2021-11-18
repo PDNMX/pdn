@@ -1,20 +1,10 @@
 import React from 'react';
-import {withStyles} from "@material-ui/core/styles";
-import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/core/Menu";
-import MenuIcon from "@material-ui/icons/MoreHoriz";
-import IconButton from "@material-ui/core/IconButton";
+import {withStyles} from '@mui/styles';
+import {MenuItem, Menu, IconButton,ListItemText, Typography,Collapse, List, ListItem, Divider, Button } from "@mui/material";
 import {Link} from "react-router-dom";
-//import withWidth from "@material-ui/core/withWidth/withWidth";
-//import Tooltip from '@material-ui/core/Tooltip';
-import {ListItemText, Typography} from "@material-ui/core";
-import ExpandLess from '@material-ui/icons/ExpandLess';
-import ExpandMore from '@material-ui/icons/ExpandMore';
-import Collapse from "@material-ui/core/Collapse/Collapse";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import Button from "@material-ui/core/Button";
-import Divider from "@material-ui/core/Divider";
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import ExpandMore from '@mui/icons-material/ExpandMore';
+import MenuIcon from '@mui/icons-material/MoreHoriz';
 
 const style = theme => ({
     menu: {
@@ -101,15 +91,14 @@ class MenuSistemas extends React.Component {
                         <Typography className={classes.text} variant="inherit" noWrap>{"Mesa de ayuda"}</Typography>
                     </MenuItem>
                     <MenuItem component={Button} className={classes.aux}
-                              href="https://www.plataformadigitalnacional.org/blog">Blog</MenuItem>
-                    <MenuItem component={Link} to="/gaa/calidad">
-                        <Typography className={classes.text} variant="inherit" noWrap>{"Calidad de datos"}</Typography>
+                              href="https://www.plataformadigitalnacional.org/blog">
+                        Blog
                     </MenuItem>
                     <MenuItem component={Link} to="/especificaciones">
                         <Typography className={classes.text} variant="inherit" noWrap>{"Especificaciones"}</Typography>
                     </MenuItem>
                     <MenuItem component={Button} className={classes.aux}
-                              href="https://plataformadigitalnacional.org/mapa-sla/">
+                              href="https://www.plataformadigitalnacional.org/mapa-sla/">
                         Interconexión subnacional
                     </MenuItem>
 
@@ -157,7 +146,7 @@ class MenuSistemas extends React.Component {
                         <Collapse in={dropDown2} timeout="auto" unmountOnExit>
                             <List dense={true} component="div">
                                 <ListItem button component={Button}
-                                          href=""
+                                          href="https://www.plataformadigitalnacional.org/mapa-sla/"
                                           className={classes.nested}
                                           style={{textTransform: "none"}}
                                 >
@@ -165,11 +154,11 @@ class MenuSistemas extends React.Component {
                                 </ListItem>
                                 <ListItem button
                                           component={Button}
-                                          href=""
+                                          href="https://www.plataformadigitalnacional.org/mapa-avance/"
                                           className={classes.nested}
                                           style={{textTransform: "none"}}
                                 >
-                                    <ListItemText primary='Sisemas 2 y 3'/>
+                                    <ListItemText primary='Sistemas 2 y 3'/>
                                 </ListItem>
                             </List>
                         </Collapse>

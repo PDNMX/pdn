@@ -1,12 +1,13 @@
-import Grid from "@material-ui/core/Grid";
+import {Grid, Toolbar} from "@mui/material";
 import {Link} from "react-router-dom";
 import PDNLogo from "../../assets/PDN.png";
 import MenuSistemas from "./MenuSistemas";
 import React from "react";
-import withWidth from "@material-ui/core/withWidth/withWidth";
-import {withStyles} from "@material-ui/core";
-//import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
+import withStyles from '@mui/styles/withStyles';
+
+// FIXME checkout https://mui.com/components/use-media-query/#migrating-from-withwidth
+const withWidth = () => (WrappedComponent) => (props) => <WrappedComponent {...props} width="xs" />;
+
 
 const style = theme => ({
         root: {
@@ -42,7 +43,7 @@ class BarraLogoMenu extends React.Component {
                 <Grid
                     container
                     alignItems="center"
-                    justify="center"
+                    justifyContent="center"
 
                 >
                     <Grid item  className={classes.cont}  xs={12} style={{'maxWidth':'1200px'}}>

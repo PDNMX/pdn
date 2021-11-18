@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Route, Switch, Link } from 'react-router-dom';
-import { Grid } from '@material-ui/core';
+import { Grid } from '@mui/material';
 
 //header data
 import Header from './Header';
@@ -12,8 +12,8 @@ import Footer from '../Home/Footer';
 import AlertDialog from './Disclaimer';
 
 import classNames from 'classnames';
-import { Typography } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { Typography } from '@mui/material';
+import withStyles from '@mui/styles/withStyles';
 
 import imgBuscar from '../../assets/declaraciones/servidores_declaraciones.svg';
 // import imgEstadisticas from '../../assets/declaraciones/estadisticas.svg';
@@ -32,7 +32,7 @@ const copy =
 
 class Declaraciones extends React.Component {
 	state = {
-		open: false
+		open: true
 	};
 
 	handleClose = () => {

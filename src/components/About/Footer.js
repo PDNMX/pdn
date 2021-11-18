@@ -1,9 +1,9 @@
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
+import withStyles from '@mui/styles/withStyles';
+import Grid from '@mui/material/Grid';
 import LogoSesna from '../../assets/Logo-SESNA.png';
 import LibreUso from '../../assets/libre-uso.png';
-import {Typography} from "@material-ui/core"
+import {Typography} from "@mui/material"
 import LogoPDN from '../../assets/PDN-sintexto-blue.png';
 import OK from '../../assets/ok_80x15_blue.png';
 import {Link} from 'react-router-dom';
@@ -57,7 +57,7 @@ class Footer extends React.Component{
         return (
             <div className={classes.root}>
 
-                <Grid container spacing={0} className={classes.parteGris} justify='center'>
+                <Grid container spacing={0} className={classes.parteGris} justifyContent='center'>
                     <Grid item xs={12} className={classes.item}>
 
                         <Grid container spacing={0}>
@@ -126,14 +126,14 @@ class Footer extends React.Component{
                 </Grid>
 
 
-                <Grid container spacing={0} justify='center'>
+                <Grid container spacing={0} justifyContent='center'>
                     <Grid item xs={12} align="center">
                         <img alt="SESNA" src={LogoSesna} className={classes.logo}/>
                     </Grid>
                 </Grid>
 
             </div>
-        )
+        );
     }
 }
 

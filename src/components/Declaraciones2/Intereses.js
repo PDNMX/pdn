@@ -1,7 +1,7 @@
 import React from 'react';
-import Paper from '@material-ui/core/Paper';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
+import Paper from '@mui/material/Paper';
+import makeStyles from '@mui/styles/makeStyles';
+import Grid from '@mui/material/Grid';
 
 import MenuLateral from './MenuLateral';
 
@@ -16,7 +16,7 @@ import { Disclaimer } from './utils';
 
 import ErrorBoundary from './ErrorBoundary';
 
-const onlyDec = (i) => i.titular.length === 1 && i.titular[0].clave === 'DEC';
+const onlyDec = (i) => i.titular && i.titular.length === 1 && i.titular[0].clave === 'DEC';
 
 const Menu = (data) => {
 	let {
@@ -43,6 +43,7 @@ const Menu = (data) => {
 		participaciones = 0;
 	} else {
 		participaciones = participacion.participacion ? participacion.participacion.filter(onlyDec) : 0;
+		participaciones = participaciones.length !== 0 ? participaciones : participacion.participacion;
 	}
 
 	if (participacionTomaDecisiones.ninguno) {

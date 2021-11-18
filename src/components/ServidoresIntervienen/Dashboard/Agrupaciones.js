@@ -1,16 +1,9 @@
 import React from 'react';
-import {withStyles} from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid/Grid";
-import {Typography, List, ListItem, ListItemText} from "@material-ui/core";
+import {withStyles} from '@mui/styles';
+import {Grid, Select, MenuItem, FormControl, Typography, InputLabel, List, ListItem, ListItemText,Button, Alert} from '@mui/material';
 import rp from "request-promise";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl/FormControl";
-import InputLabel from '@material-ui/core/InputLabel';
-import Button from "@material-ui/core/Button";
 import {Treemap} from "d3plus-react";
 import * as d3 from "d3";
-import Alert from "@material-ui/lab/Alert";
 
 const styles = theme => ({
     frameChart: {
@@ -44,11 +37,11 @@ let z = d3.scaleOrdinal()
 
 class Agrupaciones extends React.Component {
     state = {
-        ejercicio: '',
+        ejercicio: 'any',
         ejercicios: [],
-        ramo: '',
+        ramo: 'any',
         ramos: [],
-        institucion: '',
+        institucion: 'any',
         instituciones: [],
         error: false
     };
@@ -63,16 +56,16 @@ class Agrupaciones extends React.Component {
     componentDidUpdate(prevProps, prevState, snapshot) {
         //Ojo: todas estas invocan a setState y son Promises
         if (prevState.ejercicio !== this.state.ejercicio) {
-            if (this.state.ejercicio)
+            if (this.state.ejercicio !== 'any')
                 this.loadRamos();
             this.loadData();
         }
         if (prevState.ramo !== this.state.ramo) {
-            if (this.state.ramo)
+            if (this.state.ramo !== 'any')
                 this.loadInstituciones();
             this.loadData();
         }
-        if (prevState.institucion !== this.state.institucion) {
+        if (prevState.institucion !== this.state.institucion ) {
             this.loadData();
         }
     }
@@ -104,13 +97,13 @@ class Agrupaciones extends React.Component {
             json: true,
             method: "post",
             body: {
-                filtros: this.state.ejercicio ? ("ejercicio= '" + this.state.ejercicio + "'") : null
+                filtros: this.state.ejercicio !== 'any' ? ("ejercicio= '" + this.state.ejercicio + "'") : null
             }
         };
 
         rp(options).then(data => {
             let ramos = data.data.map((item, index) => ({id: index, ramo: item.ramo}));
-            this.setState({ramos: ramos, ramo: '', institucion: ''});
+            this.setState({ramos: ramos, ramo: 'any', institucion: 'any'});
         }).catch(err => {
             console.log(err);
             this.setState({error: true});
@@ -120,8 +113,8 @@ class Agrupaciones extends React.Component {
     //Debería retornar Promise y no hacer setState
     loadInstituciones = () => {
         let filtros = [];
-        if (this.state.ejercicio) filtros.push("ejercicio='" + this.state.ejercicio + "'");
-        if (this.state.ramo) filtros.push("ramo='" + this.state.ramo + "'");
+        if (this.state.ejercicio !== 'any') filtros.push("ejercicio='" + this.state.ejercicio + "'");
+        if (this.state.ramo !== 'any') filtros.push("ramo='" + this.state.ramo + "'");
 
         let options = {
             uri: process.env.REACT_APP_S2_BACKEND + '/api/v0/getInstituciones',
@@ -134,7 +127,7 @@ class Agrupaciones extends React.Component {
 
         rp(options).then(data => {
             let instituciones = data.data.map((item, index) => ({id: index, institucion: item.institucion}));
-            this.setState({instituciones: instituciones, institucion: ''});
+            this.setState({instituciones: instituciones, institucion: 'any'});
             //return null;
         }).catch(err => {
             console.log(err);
@@ -146,9 +139,9 @@ class Agrupaciones extends React.Component {
     //Debería retornar Promise y no hacer setState
     loadData = () => {
         let filtros = [];
-        if (this.state.ejercicio) filtros.push("ejercicio='" + this.state.ejercicio + "'");
-        if (this.state.ramo) filtros.push("ramo='" + this.state.ramo + "'");
-        if (this.state.institucion) filtros.push("institucion='" + this.state.institucion + "'");
+        if (this.state.ejercicio !== 'any') filtros.push("ejercicio='" + this.state.ejercicio + "'");
+        if (this.state.ramo !== 'any') filtros.push("ramo='" + this.state.ramo + "'");
+        if (this.state.institucion !== 'any') filtros.push("institucion='" + this.state.institucion + "'");
 
         let options = {
             uri: process.env.REACT_APP_S2_BACKEND + '/api/v0/getAgrupaciones',
@@ -160,16 +153,16 @@ class Agrupaciones extends React.Component {
         };
 
         let v = "";
-        if (this.state.ejercicio && !this.state.ramo && !this.state.institucion)
+        if (this.state.ejercicio !== 'any' && this.state.ramo === 'any' && this.state.institucion === 'any')
             v = "group";
-        else if (this.state.ejercicio && this.state.ramo && !this.state.institucion)
+        else if (this.state.ejercicio!== 'any' && this.state.ramo !== 'any' && this.state.institucion === 'any')
             v = "subgroup"
-        else if ((this.state.ejercicio && this.state.ramo && this.state.institucion)
-            || (this.state.ejercicio && !this.state.ramo && this.state.institucion))
+        else if ((this.state.ejercicio !== 'any' && this.state.ramo !== 'any' && this.state.institucion !== 'any')
+            || (this.state.ejercicio !== 'any' && this.state.ramo === 'any' && this.state.institucion !== 'any'))
             v = "subgroup";
-        else if ((!this.state.ejercicio && this.state.ramo && !this.state.institucion)
-            || (!this.state.ejercicio && !this.state.ramo && this.state.institucion)
-            || (!this.state.ejercicio && this.state.ramo && this.state.institucion))
+        else if ((this.state.ejercicio === 'any' && this.state.ramo !== 'any' && this.state.institucion === 'any')
+            || (this.state.ejercicio === 'any' && this.state.ramo === 'any' && this.state.institucion !== 'any')
+            || (this.state.ejercicio === 'any' && this.state.ramo !== 'any' && this.state.institucion !== 'any'))
             v = "parent";
 
         rp(options).then(data => {
@@ -188,7 +181,7 @@ class Agrupaciones extends React.Component {
                     sum: "value",
                     tooltipConfig: {
                         tbody: [
-                            ["Número de funcionarios: ", function (d) {
+                            ["Número de personas servidoras públicas: ", function (d) {
                                 return d["value"]
                             }
                             ]
@@ -197,7 +190,7 @@ class Agrupaciones extends React.Component {
                     legend: false,
                     shapeConfig: {
                         label: function (d) {
-                            return d[v] + "\n" + d["value"] + " funcionarios"
+                            return d[v]?d[v]:"General \n" + d["value"] + " personas servidoras públicas"
                         },
                         labelConfig: {
                             fontMax: 18,
@@ -219,15 +212,15 @@ class Agrupaciones extends React.Component {
         const { ejercicios } = this.state;
         this.setState({
             ejercicio: ejercicios[ejercicios.length - 1].ejercicio,
-            ramo: '',
-            institucion: '',
+            ramo: 'any',
+            institucion: 'any',
             error: false
         })
     };
 
     handleChangeCampo = (varState, event) => {
         this.setState({
-            [varState]: event ? (event.target ? event.target.value : event.value) : ''
+            [varState]: event ? (event.target ? event.target.value : event.value) : 'any'
         });
     };
 
@@ -286,12 +279,9 @@ class Agrupaciones extends React.Component {
                         <Select style={{marginTop: '0px'}}
                                 value={this.state.ejercicio}
                                 onChange={(e) => this.handleChangeCampo('ejercicio', e)}
-                                inputProps={{
-                                    name: 'campoSelectEjercicio',
-                                    id: 'campoSelectEjercicio',
-                                }}
+                                label = 'Ejercicio'
                         >
-                            <MenuItem key={''} value={''}> TODOS</MenuItem>
+                            <MenuItem key={''} value={'any'}> TODOS</MenuItem>
                             {
                                 this.state.ejercicios.map(item => {
                                     return <MenuItem key={item.ejercicio} value={item.ejercicio}>
@@ -309,12 +299,9 @@ class Agrupaciones extends React.Component {
                         <Select style={{marginTop: '0px'}}
                                 value={this.state.ramo}
                                 onChange={(e) => this.handleChangeCampo('ramo', e)}
-                                inputProps={{
-                                    name: 'campoSelectRamo',
-                                    id: 'campoSelectRamo',
-                                }}
+                                label = {'Ramo'}
                         >
-                            <MenuItem key={''} value={''}> TODOS</MenuItem>
+                            <MenuItem key={''} value={'any'}> TODOS</MenuItem>
                             {
                                 this.state.ramos.map(item => {
                                     return <MenuItem key={item.ramo} value={item.ramo}>
@@ -332,12 +319,9 @@ class Agrupaciones extends React.Component {
                         <Select style={{marginTop: '0px'}}
                                 value={this.state.institucion}
                                 onChange={(e) => this.handleChangeCampo('institucion', e)}
-                                inputProps={{
-                                    name: 'campoSelectInstitucion',
-                                    id: 'campoSelectInstitucion',
-                                }}
+                                label = {'Institución'}
                         >
-                            <MenuItem key={''} value={''}>TODAS</MenuItem>
+                            <MenuItem key={''} value={'any'}>TODAS</MenuItem>
                             {
                                 this.state.instituciones.map(item => {
                                     return <MenuItem key={item.institucion} value={item.institucion}>

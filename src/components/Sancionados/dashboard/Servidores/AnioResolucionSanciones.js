@@ -1,8 +1,7 @@
 import React from 'react';
-import {withStyles} from "@material-ui/core/styles";
+import {withStyles} from "@mui/styles";
 import PropTypes from 'prop-types';
-import Grid from "@material-ui/core/Grid/Grid";
-import {Typography} from "@material-ui/core"
+import {Grid, Typography} from "@mui/material";
 import {LinePlot, Pie} from "d3plus-react";
 import rp from "request-promise";
 import MensajeErrorDatos from "../../../Mensajes/MensajeErrorDatos";
@@ -35,7 +34,7 @@ const styles = theme => ({
 function aux() {
     return new Promise((resolve, reject) => {
         let options = {
-            uri: process.env.REACT_APP_HOST_PDNBACK + '/viz/servidores/getAnioSancion',
+            uri: process.env.REACT_APP_S3S_BACKEND + '/charts/getAnioSancion',
             json: true,
             method: "GET"
         };
@@ -146,6 +145,7 @@ class AnioResolucionSanciones extends React.Component {
                 }
             )
         }).catch(err => {
+            console.error(err);
             this.setState({error: true})
         });
     }
@@ -155,15 +155,15 @@ class AnioResolucionSanciones extends React.Component {
         let {hoveredCell} = this.state;
         return (
             <div>
-                <Grid container spacing={0} justify='center' className={classes.frameChart}>
+                <Grid container spacing={0} justifyContent='center' className={classes.frameChart}>
                     <Grid item xs={12} md={12}>
                         <Typography variant={"h6"} className={classes.titulo}>
-                            <b>Cantidad de sanciones</b>
+                            <b>{"Cantidad de sanciones"}</b>
                         </Typography>
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>
                         <Typography >
-                            Como se puede apreciar en las gráficas, el número de funcionarios sancionados de 2013 a 2015 se mantuvo sin grandes cambios, sancionando cada año aproximadamente a 300 funcionarios. En 2016, hubo un incremento de 16% con respecto a 2015. Además, para 2017 este número se incrementó en casi 100%, llegando a 700 sancionados. Para 2018 disminuyó, pero sólo en 7%. En términos totales, si consideramos los 6 años que van de 2013 a 2018, se tuvieron poco más de 2,500 funcionarios sancionados. Más del 50% de este total, se registró entre 2017 y 2018.
+                            {"De acuerdo con las siguientes gráficas, el número de personas servidoras públicas sancionadas ha ido disminuyendo, siendo el 2014 el año con mayor sanciones con 261 sanciones y disminuyendo a 40 sanciones en 2018, 8 sanciones en 2019, 3 sanciones en 2020 y 5 sanciones de enero a mayo del 2021. \n"}
                         </Typography>
                     </Grid>
                     <Grid item xs={12} md={8}>

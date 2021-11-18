@@ -1,16 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {withStyles} from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableRow from '@material-ui/core/TableRow';
-import Grid from "@material-ui/core/Grid";
-import {Typography} from "@material-ui/core";
-import TableHead from "@material-ui/core/TableHead";
-import IconSubdirectory from "@material-ui/icons/SubdirectoryArrowRight";
-import Tooltip from "@material-ui/core/Tooltip";
-import IconSunny from "@material-ui/icons/WbSunny";
+import {withStyles} from '@mui/styles';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableRow from '@mui/material/TableRow';
+import Grid from "@mui/material/Grid";
+import {Typography} from "@mui/material";
+import TableHead from "@mui/material/TableHead";
+import IconSubdirectory from "@mui/icons-material/SubdirectoryArrowRight";
+import Tooltip from "@mui/material/Tooltip";
+import IconSunny from "@mui/icons-material/WbSunny";
+import TablePagination from '@mui/material/TablePagination';
+import TableFooter from "@mui/material/TableFooter";
 
 const styles = theme => ({
 
@@ -32,16 +34,40 @@ const styles = theme => ({
     tableHead: {
         color: theme.palette.fontLight.color
     },
+    tablePagination:{
+        color : theme.palette.textGrey.color,
+        backgroundColor : '#f2f2f2'
+    }
 });
 
 class Previos extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            page: 0,
+            rowsPerPage: 5
+        };
+    }
 
+
+    handleChangePage = (event, newPage) => {
+        this.setState({
+            page : newPage
+        });
+    };
+    handleChangeRowsPerPage = (event) => {
+        this.setState({
+            rowsPerPage : parseInt(event.target.value, 10),
+            page : 0
+        });
+    };
     render() {
-        const {data,classes} = this.props;
+        let {data,classes} = this.props;
+        let {rowsPerPage, page} = this.state;
         return (
             <div>
-                <Grid container justify='center' spacing={0} className={classes.gridTable}>
+                <Grid container justifyContent='center' spacing={0} className={classes.gridTable}>
                     <Grid item xs={12}>
                         {data && data.length > 0 &&
                         <Typography variant="body1" >La siguiente tabla muestra el resultado devuelto por cada Proveedor de información a través de su API. Pulsa en <IconSubdirectory className={classes.iconoVer}/> para ver el detalle<br/></Typography>
@@ -61,7 +87,8 @@ class Previos extends React.Component {
                                     </TableRow>
                                 </TableHead>
                                 <TableBody style={{backgroundColor:'#f2f2f2'}}>
-                                    {data.map(row => (
+                                    {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                                        .map(row => (
                                         <TableRow key={row.supplier_id}>
                                             <TableCell align="left">{row.levels? row.levels.join(','):''}</TableCell>
                                             <TableCell align="left">{row.supplier_name}</TableCell>
@@ -94,6 +121,24 @@ class Previos extends React.Component {
                                         </TableRow>
                                     ))}
                                 </TableBody>
+                                <TableFooter>
+                                    <TableRow >
+                                        <TablePagination
+                                            className={classes.tablePagination}
+                                            colSpan = {5}
+                                            rowsPerPageOptions={[5,10,15]}
+                                            count = {data.length}
+                                            rowsPerPage = {rowsPerPage}
+                                            page = {page}
+                                            onPageChange={this.handleChangePage}
+                                            onRowsPerPageChange={this.handleChangeRowsPerPage}
+                                            labelRowsPerPage='Registros por página'
+                                            labelDisplayedRows={({from, to, count}) => {
+                                                return `${from}-${to} de ${count}`;
+                                            }}
+                                        />
+                                    </TableRow>
+                                </TableFooter>
                             </Table>
                         </div>
                         }

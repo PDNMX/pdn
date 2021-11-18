@@ -1,8 +1,8 @@
 import React from 'react';
-import {Typography} from "@material-ui/core"
-import {withStyles} from '@material-ui/core/styles';
+import {Typography} from "@mui/material"
+import {withStyles} from '@mui/styles';
 import mapita from '../../assets/about/mapa.svg';
-import Grid from '@material-ui/core/Grid';
+import Grid from '@mui/material/Grid';
 const styles = theme => ({
     root : {
         paddingTop: theme.spacing(4),

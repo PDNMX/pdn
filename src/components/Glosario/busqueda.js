@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Divider from '@material-ui/core/Divider';
-import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Divider from '@mui/material/Divider';
+import TextField from '@mui/material/TextField';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
 
-import ClearIcon from "@material-ui/icons/Clear";
-import { IconButton } from "@material-ui/core";
+import ClearIcon from "@mui/icons-material/Clear";
+import { IconButton } from "@mui/material";
 
 const glosarioData = process.env.REACT_APP_GLOSARIO;
 
@@ -26,7 +26,8 @@ export default function Busqueda() {
     axios
       .get(glosarioData)
       .then((res) => {
-        setPalabras(res.data.feed.entry);
+        res.data.values.shift();
+        setPalabras(res.data.values);
         setLoading(false);
       })
       .catch((err) => {
@@ -39,7 +40,7 @@ export default function Busqueda() {
       palabras.filter((text) =>
         //text.gsx$palabra.$t.toLowerCase().includes(search.toLowerCase());
         // busca al inicio del string
-        text.gsx$palabra.$t.toLowerCase().startsWith(search.toLowerCase(''))
+        text[0].toLowerCase().startsWith(search.toLowerCase(''))
       )
     );
 
@@ -53,7 +54,7 @@ export default function Busqueda() {
   return (
     <div>
       <TextField
-        clearable
+        //clearable
         style={{ width: '100%' }}
         type="text"
         value={search}
@@ -61,23 +62,25 @@ export default function Busqueda() {
         onChange={(e) => setSearch(e.target.value)}
         InputProps={{
           endAdornment: (
-            <IconButton onClick={() => {
-                setSearch('')
-                }}>
+            <IconButton
+              onClick={() => {
+                  setSearch('')
+                  }}
+              size="large">
               <ClearIcon />
             </IconButton>
           )
         }}
-        InputAdornmentProps={{
+        /* InputAdornmentProps={{
           position: "start"
-        }}
+        }} */
       />
       
       <br/>
       <br/>
       <Typography style={{ wordWrap: "break-word" }}  >      
-        {abecedario.map(palabra => {
-          return <Link style={{ marginRight: 16 }}  href={palabra} onClick={(e) => { e.preventDefault(); setSearch(palabra)} }><b>{palabra}</b></Link>;
+        {abecedario.map((palabra, index) => {
+          return <Link key={index} style={{ marginRight: 16 }}  href={palabra} onClick={(e) => { e.preventDefault(); setSearch(palabra)} }><b>{palabra}</b></Link>;
         })}
       </Typography>
       <br/>
@@ -89,30 +92,29 @@ export default function Busqueda() {
 }
 
 const ResultDetail = (props) => {
-    const { gsx$palabra, gsx$descripción, gsx$fuente } = props;
     return (
         <>
-        <ExpansionPanel>
-        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography>{gsx$palabra.$t}</Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
+        <Accordion>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography>{props[0]}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
           <Grid container spacing={2}>
             <Grid item xs={12} >
               <Typography variant="body1">
-                {gsx$descripción.$t}
+                {props[1]}
               </Typography>
             </Grid>
             <Grid item xs={12} >
               <Typography variant="body2">
-                <i><b>Fuente: </b>{gsx$fuente.$t}</i>
+                <i><b>Fuente: </b>{props[2]}</i>
               </Typography>
             </Grid>
           </Grid>
           
 
-        </ExpansionPanelDetails>
-        </ExpansionPanel>
+        </AccordionDetails>
+        </Accordion>
         </>
     );
 };

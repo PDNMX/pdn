@@ -1,15 +1,17 @@
 import React from 'react';
-import Paper from '@material-ui/core/Paper';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
+import Paper from '@mui/material/Paper';
+import makeStyles from '@mui/styles/makeStyles';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 
 import DatosNoRegistrados from '../DatosNoRegistrados';
+import basicInicial from './00_basic_incial';
 
 import { sumary, expansion, Divider, getMoneda } from '../utils';
 import styleSecciones from '../styleSecciones';
-import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
+import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from "../common/BoxAccordion";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const useStyles = makeStyles(styleSecciones);
 
@@ -18,11 +20,11 @@ const ActividadIndustrial = (props) => {
 	const exp = expansion();
 	const sum = sumary();
 
-	const { actividadIndustialComercialEmpresarial } = props;
+	const { actividadIndustrialComercialEmpresarial } = props;
 
 	return (
-		<ExpansionPanel>
-			<ExpansionPanelSummary
+		<BoxAccordion>
+			<BoxAccordionSummary
 				classes={sum}
 				expandIcon={<ExpandMoreIcon />}
 				aria-controls="panel1a-content"
@@ -39,14 +41,14 @@ const ActividadIndustrial = (props) => {
 					<Grid item xs={12} md={3}>
 						<Typography className={exp.heading}>
 							<strong>
-								{getMoneda(actividadIndustialComercialEmpresarial.remuneracionTotal.valor)}{' '}
-								{actividadIndustialComercialEmpresarial.remuneracionTotal.moneda}
+								{getMoneda(actividadIndustrialComercialEmpresarial.remuneracionTotal.valor)}{' '}
+								{actividadIndustrialComercialEmpresarial.remuneracionTotal.moneda}
 							</strong>
 						</Typography>
 					</Grid>
 				</Grid>
-			</ExpansionPanelSummary>
-			<ExpansionPanelDetails>
+			</BoxAccordionSummary>
+			<BoxAccordionDetails>
 				<Grid container spacing={1}>
 					<Grid item xs={12} md={5}>
 						<Typography className={classes.cardTitle}>NOMBRE O RAZÓN SOCIAL:</Typography>
@@ -57,8 +59,8 @@ const ActividadIndustrial = (props) => {
 					<Grid item xs={12} md={3}>
 						<Typography className={classes.cardTitle}>INGRESO:</Typography>
 					</Grid>
-					{typeof actividadIndustialComercialEmpresarial.actividades !== 'undefined' &&
-						actividadIndustialComercialEmpresarial.actividades.map((act, idx) => {
+					{typeof actividadIndustrialComercialEmpresarial.actividades !== 'undefined' &&
+						actividadIndustrialComercialEmpresarial.actividades.map((act, idx) => {
 							return (
 								<Grid container spacing={1} key={'act-' + idx}>
 									<Grid item xs={12} md={5}>
@@ -76,8 +78,8 @@ const ActividadIndustrial = (props) => {
 							);
 						})}
 				</Grid>
-			</ExpansionPanelDetails>
-		</ExpansionPanel>
+			</BoxAccordionDetails>
+		</BoxAccordion>
 	);
 };
 
@@ -89,8 +91,8 @@ const ActividadFinanciera = (props) => {
 	const { actividadFinanciera } = props;
 
 	return (
-		<ExpansionPanel>
-			<ExpansionPanelSummary
+		<BoxAccordion>
+			<BoxAccordionSummary
 				classes={sum}
 				expandIcon={<ExpandMoreIcon />}
 				aria-controls="panel1a-content"
@@ -113,8 +115,8 @@ const ActividadFinanciera = (props) => {
 						</Typography>
 					</Grid>
 				</Grid>
-			</ExpansionPanelSummary>
-			<ExpansionPanelDetails>
+			</BoxAccordionSummary>
+			<BoxAccordionDetails>
 				<Grid container spacing={1}>
 					<Grid item xs={12} md={9}>
 						<Typography className={classes.cardTitle}>
@@ -139,8 +141,8 @@ const ActividadFinanciera = (props) => {
 						);
 					})}
 				</Grid>
-			</ExpansionPanelDetails>
-		</ExpansionPanel>
+			</BoxAccordionDetails>
+		</BoxAccordion>
 	);
 };
 
@@ -152,8 +154,8 @@ const ServiciosProfesionales = (props) => {
 	const { serviciosProfesionales } = props;
 
 	return (
-		<ExpansionPanel>
-			<ExpansionPanelSummary
+		<BoxAccordion>
+			<BoxAccordionSummary
 				classes={sum}
 				expandIcon={<ExpandMoreIcon />}
 				aria-controls="panel1a-content"
@@ -177,8 +179,8 @@ const ServiciosProfesionales = (props) => {
 						</Typography>
 					</Grid>
 				</Grid>
-			</ExpansionPanelSummary>
-			<ExpansionPanelDetails>
+			</BoxAccordionSummary>
+			<BoxAccordionDetails>
 				<Grid container spacing={1}>
 					<Grid item xs={12} md={9}>
 						<Typography className={classes.cardTitle}>TIPO DE SERVICIO PRESTADO</Typography>
@@ -201,8 +203,8 @@ const ServiciosProfesionales = (props) => {
 						);
 					})}
 				</Grid>
-			</ExpansionPanelDetails>
-		</ExpansionPanel>
+			</BoxAccordionDetails>
+		</BoxAccordion>
 	);
 };
 
@@ -214,8 +216,8 @@ const EnajenacionBienes = (props) => {
 	const { enajenacionBienes } = props;
 
 	return (
-		<ExpansionPanel>
-			<ExpansionPanelSummary
+		<BoxAccordion>
+			<BoxAccordionSummary
 				classes={sum}
 				expandIcon={<ExpandMoreIcon />}
 				aria-controls="panel1a-content"
@@ -236,8 +238,8 @@ const EnajenacionBienes = (props) => {
 						</Typography>
 					</Grid>
 				</Grid>
-			</ExpansionPanelSummary>
-			<ExpansionPanelDetails>
+			</BoxAccordionSummary>
+			<BoxAccordionDetails>
 				<Grid container spacing={1}>
 					<Grid item xs={12} md={9}>
 						<Typography className={classes.cardTitle}>TIPO DE BIEN ENAJENADO</Typography>
@@ -260,8 +262,8 @@ const EnajenacionBienes = (props) => {
 						);
 					})}
 				</Grid>
-			</ExpansionPanelDetails>
-		</ExpansionPanel>
+			</BoxAccordionDetails>
+		</BoxAccordion>
 	);
 };
 
@@ -273,8 +275,8 @@ const OtrosIngresos = (props) => {
 	const { otrosIngresos } = props;
 
 	return (
-		<ExpansionPanel>
-			<ExpansionPanelSummary
+		<BoxAccordion>
+			<BoxAccordionSummary
 				classes={sum}
 				expandIcon={<ExpandMoreIcon />}
 				aria-controls="panel1a-content"
@@ -297,8 +299,8 @@ const OtrosIngresos = (props) => {
 						</Typography>
 					</Grid>
 				</Grid>
-			</ExpansionPanelSummary>
-			<ExpansionPanelDetails>
+			</BoxAccordionSummary>
+			<BoxAccordionDetails>
 				<Grid container spacing={1}>
 					<Grid item xs={12} md={9}>
 						<Typography className={classes.cardTitle}>
@@ -324,13 +326,18 @@ const OtrosIngresos = (props) => {
 						);
 					})}
 				</Grid>
-			</ExpansionPanelDetails>
-		</ExpansionPanel>
+			</BoxAccordionDetails>
+		</BoxAccordion>
 	);
 };
 
-export default function({ data, titulo }) {
+export default function ({ data: info, titulo }) {
 	const classes = useStyles();
+
+	let data = {
+		...basicInicial.actividadAnualAnterior,
+		...info
+	}
 
 	return (
 		<Grid container spacing={2} className={classes.rootPrincipal}>
@@ -383,8 +390,8 @@ export default function({ data, titulo }) {
 								</Grid>
 								<Grid item xs={12}>
 									<ActividadIndustrial
-										actividadIndustialComercialEmpresarial={
-											data.actividadIndustialComercialEmpresarial
+										actividadIndustrialComercialEmpresarial={
+											data.actividadIndustialComercialEmpresarial||data.actividadIndustrialComercialEmpresarial
 										}
 									/>
 

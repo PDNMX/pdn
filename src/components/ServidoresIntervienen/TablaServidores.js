@@ -1,20 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {withStyles} from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TablePagination from '@material-ui/core/TablePagination';
-import TableRow from '@material-ui/core/TableRow';
-import TableFooter from '@material-ui/core/TableFooter';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import Grid from "@material-ui/core/Grid";
-import {Typography} from "@material-ui/core"
-import Modal from "@material-ui/core/Modal";
+import withStyles from '@mui/styles/withStyles';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TablePagination from '@mui/material/TablePagination';
+import TableRow from '@mui/material/TableRow';
+import TableFooter from '@mui/material/TableFooter';
+import CircularProgress from '@mui/material/CircularProgress';
+import Grid from "@mui/material/Grid";
+import {Typography} from "@mui/material"
+import Modal from "@mui/material/Modal";
 import rp from "request-promise";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Switch from "@material-ui/core/Switch";
-import Collapse from "@material-ui/core/Collapse";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Switch from "@mui/material/Switch";
+import Collapse from "@mui/material/Collapse";
 
 import BusquedaServidor from "./BusquedaServidor";
 import TablaResumen from "./TablaResumen";
@@ -428,7 +428,7 @@ class TablaServidores extends React.Component {
                     </Grid>
                 </Grid>
 
-                <Grid container justify={'center'} spacing={0} className={classes.gridTable}>
+                <Grid container justifyContent={'center'} spacing={0} className={classes.gridTable}>
                     <Grid item xs={12} className={classes.toolBarStyle}>
                         <BusquedaServidor handleCleanAll={this.handleCleanAll}
                                           handleSearch={this.handleBroadSearch}
@@ -487,7 +487,7 @@ class TablaServidores extends React.Component {
                 </Grid>
 
                 {results && results.length > 0 &&
-                <Grid container justify={'center'} spacing={0} className={classes.gridTable}>
+                <Grid container justifyContent='center' spacing={0} className={classes.gridTable}>
                     <Grid item xs={12} className={classes.section}>
                         <Typography variant={"h6"} className={classes.desc} paragraph>
                             Pulsa sobre el registro para ver su detalle
@@ -518,7 +518,7 @@ class TablaServidores extends React.Component {
                                                     key={index}
                                                 >
                                                     <TableCell component="th" scope="row" style={{width: '25%'}}
-                                                               padding="default">{nombrecompleto || `${nombres} ${primerApellido} ${segundoApellido}`}</TableCell>
+                                                               padding="normal">{nombrecompleto || `${nombres} ${primerApellido} ${segundoApellido}`}</TableCell>
                                                     <TableCell>{dependencia? dependencia.nombre : institucionDependencia.nombre}</TableCell>
                                                     <TableCell>{puesto.nombre}</TableCell>
                                                 </TableRow>
@@ -551,8 +551,8 @@ class TablaServidores extends React.Component {
                                             nextIconButtonProps={{
                                                 'aria-label': 'Next Page',
                                             }}
-                                            onChangePage={this.handleChangePage}
-                                            onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                                            onPageChange={this.handleChangePage}
+                                            onRowsPerPageChange={this.handleChangeRowsPerPage}
                                             labelRowsPerPage='Registros por página'
                                             labelDisplayedRows={({from, to, count}) => {
                                                 return `${from}-${to} de ${count}`;
@@ -566,7 +566,7 @@ class TablaServidores extends React.Component {
                 </Grid>
                 }
 
-                <Grid container spacing={0} justify="center" className={classes.containerD}>
+                <Grid container spacing={0} justifyContent="center" className={classes.containerD}>
                     <Grid item xs={12} className={classes.itemD}>
                         <Descarga url={process.env.REACT_APP_BULK_S2}/>
                     </Grid>

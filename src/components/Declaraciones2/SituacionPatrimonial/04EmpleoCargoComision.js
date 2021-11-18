@@ -1,14 +1,15 @@
 import React from 'react';
-import Paper from '@material-ui/core/Paper';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
+import Paper from '@mui/material/Paper';
+import makeStyles from '@mui/styles/makeStyles';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 
 import style from '../styleSecciones';
 import { Divider, CompDomicilio } from '../utils';
 
-import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
+import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from "../common/BoxAccordion";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const useStyles = makeStyles(style);
 
@@ -90,8 +91,8 @@ export default function({ data, titulo }) {
 						{data.cuentaConOtroCargoPublico &&
 							data.otroEmpleoCargoComision.map((o, i) => {
 								return (
-									<ExpansionPanel key={'e-' + i}>
-										<ExpansionPanelSummary
+									<BoxAccordion key={'e-' + i}>
+										<BoxAccordionSummary
 											expandIcon={<ExpandMoreIcon />}
 											aria-controls="panel1a-content"
 											id="panel1a-header"
@@ -102,13 +103,13 @@ export default function({ data, titulo }) {
 													OTRO EMPLEO, CARGO O COMISIÓN EN EL SERVICIO PÚBLICO
 												</Grid>
 											</Grid>
-										</ExpansionPanelSummary>
-										<ExpansionPanelDetails className={classes.resultadoContenido}>
+										</BoxAccordionSummary>
+										<BoxAccordionDetails className={classes.resultadoContenido}>
 											<Grid container spacing={1}>
 												<Empleo data={o} />
 											</Grid>
-										</ExpansionPanelDetails>
-									</ExpansionPanel>
+										</BoxAccordionDetails>
+									</BoxAccordion>
 								);
 							})}
 					</Grid>

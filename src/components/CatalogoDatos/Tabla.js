@@ -1,19 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {withStyles} from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TablePagination from '@material-ui/core/TablePagination';
-import TableRow from '@material-ui/core/TableRow';
-import TableSortLabel from '@material-ui/core/TableSortLabel';
-import Toolbar from '@material-ui/core/Toolbar';
-import Paper from '@material-ui/core/Paper';
-import IconButton from '@material-ui/core/IconButton';
-import Tooltip from '@material-ui/core/Tooltip';
+import withStyles from '@mui/styles/withStyles';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableHead from '@mui/material/TableHead';
+import TablePagination from '@mui/material/TablePagination';
+import TableRow from '@mui/material/TableRow';
+import TableSortLabel from '@mui/material/TableSortLabel';
+import Toolbar from '@mui/material/Toolbar';
+import Paper from '@mui/material/Paper';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
 import fileJSON from '../../data/csvjson';
-import VerIcon from '@material-ui/icons/Launch';
+import VerIcon from '@mui/icons-material/Launch';
 import Busqueda from "./Busqueda";
 
 let counter = 0;
@@ -305,7 +305,7 @@ class EnhancedTable extends React.Component {
                                                 key={n.id}
                                                 selected={isSelected}
                                             >
-                                                <TableCell component="th" scope="row" padding="default">
+                                                <TableCell component="th" scope="row" padding="normal">
                                                     {n.institucion}
                                                 </TableCell>
                                                 <TableCell>{n.abreviacion}</TableCell>
@@ -315,8 +315,7 @@ class EnhancedTable extends React.Component {
                                                 <TableCell>
                                                     <a href={n.url} target="_blank" rel="noopener noreferrer">
                                                         <Tooltip title="Ir a sitio">
-                                                            <IconButton color="primary" className={classes.button}
-                                                                        component="span">
+                                                            <IconButton color="primary" className={classes.button} component="span" size="large">
                                                                 <VerIcon/>
                                                             </IconButton>
                                                         </Tooltip>
@@ -344,8 +343,8 @@ class EnhancedTable extends React.Component {
                         nextIconButtonProps={{
                             'aria-label': 'Next Page',
                         }}
-                        onChangePage={this.handleChangePage}
-                        onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                        onPageChange={this.handleChangePage}
+                        onRowsPerPageChange={this.handleChangeRowsPerPage}
                         labelRowsPerPage='Registros por página'
                         labelDisplayedRows={({from, to, count}) => {
                             return `${from}-${to} de ${count}`;

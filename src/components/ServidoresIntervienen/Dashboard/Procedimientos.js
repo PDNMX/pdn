@@ -1,13 +1,10 @@
 import React from 'react';
-import {withStyles} from "@material-ui/core/styles";
+import {withStyles} from '@mui/styles';
 import PropTypes from 'prop-types';
-import Grid from "@material-ui/core/Grid/Grid";
-import {Typography} from "@material-ui/core";
+import {Grid, Typography, List, ListItem, ListItemText, Alert} from "@mui/material";
 import rp from "request-promise";
-import Alert from "@material-ui/lab/Alert";
 import BarChart from "d3plus-react/es/src/BarChart";
 import * as d3 from "d3";
-import {List, ListItem, ListItemText} from "@material-ui/core";
 
 const styles = theme => ({
     frameChart: {
@@ -95,6 +92,7 @@ class Ejercicio extends React.Component {
                 }
             )
         }).catch(error => {
+            console.error(error)
             this.setState({
                 error: true
             });
@@ -113,9 +111,10 @@ class Ejercicio extends React.Component {
                         </Typography>
 
                         <Typography variant={"body1"} paragraph>
-                            Los procesos de contratación están divididos en cuatro tipos, en la siguiente gráfica podrás observar cuántos procedimientos de
-                            cada tipo han habido en cada año. Como se aprecia, la contratación es el tipo más común a lo largo del tiempo, mientras que en
-                            los años 2017 y 2018 hubo un incremento de más del doble en las concesiones.
+                            Los procesos de contratación están divididos en cuatro tipos, en la siguiente gráfica podrás observar cuántos procedimientos de cada tipo se
+                            ejercieron del año 2015 a mayo 2021.
+                            Como se aprecia, la contratación es el tipo más común a lo largo del tiempo, mientras que en las concesiones tuvieron incrementos a partir del
+                            año 2017 (4,978 ) y hasta el 2019. También se observa que no existen registros respecto al tipo de proceso asignación y emisión de dictámenes de avalúos nacionales.
                         </Typography>
 
                         <Typography style={{fontWeight: "bold"}} paragraph>Tipos de procesos</Typography>

@@ -1,7 +1,7 @@
 import React  from 'react';
-import {withStyles} from "@material-ui/core/styles";
+import withStyles from '@mui/styles/withStyles';
 import Header from './Header/Header';
-import Grid from '@material-ui/core/Grid';
+import Grid from '@mui/material/Grid';
 import Footer from "../Home/Footer";
 import ExpansionPanels from './ExpansionPanels';
 import Disclaimer from "./Disclaimer";
@@ -46,29 +46,31 @@ class HelpDesk extends React.Component{
 
         const {classes} = this.props;
 
-        return <div className={classes.root}>
-            <Header/>
+        return (
+            <div className={classes.root}>
+                <Header/>
 
-            <Grid container spacing={0} justify="center" className={classes.disclaimer}>
-                <Grid item xs={12} className={classes.disclaimerItem}>
-                    <Disclaimer/>
-                </Grid>
-            </Grid>
-
-
-
-            <Grid container spacing={0} justify="center">
-                <Grid item xs={12} className={classes.item}>
-
-
-                    <ExpansionPanels/>
-
-
+                <Grid container spacing={0} justifyContent="center" className={classes.disclaimer}>
+                    <Grid item xs={12} className={classes.disclaimerItem}>
+                        <Disclaimer/>
+                    </Grid>
                 </Grid>
 
-            </Grid>
-            <Footer/>
-        </div>
+
+
+                <Grid container spacing={0} justifyContent="center">
+                    <Grid item xs={12} className={classes.item}>
+
+
+                        <ExpansionPanels/>
+
+
+                    </Grid>
+
+                </Grid>
+                <Footer/>
+            </div>
+        );
     }
 }
 

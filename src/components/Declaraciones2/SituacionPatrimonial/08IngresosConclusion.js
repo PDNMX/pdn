@@ -1,19 +1,19 @@
 import React from 'react';
-import Paper from '@material-ui/core/Paper';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
+import Paper from '@mui/material/Paper';
+import makeStyles from '@mui/styles/makeStyles';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 
 import styleSecciones from '../styleSecciones';
 import { Divider, getMoneda } from '../utils';
 
 import {
-	ActividadIndustrial,
 	ActividadFinanciera,
 	ServiciosProfesionales,
 	EnajenacionBienes,
 	OtrosIngresos
 } from './08Ingresos';
+import ActividadIndustrial from './08Ingresos/ActividadIndustrial';
 
 const useStyles = makeStyles(styleSecciones);
 
@@ -57,7 +57,7 @@ export default function({ data, titulo }) {
 						</Grid>
 						<Grid item xs={12}>
 							<ActividadIndustrial
-								actividadIndustialComercialEmpresarial={data.actividadIndustialComercialEmpresarial}
+								actividadIndustrialComercialEmpresarial={data.actividadIndustialComercialEmpresarial||data.actividadIndustrialComercialEmpresarial}
 							/>
 							<ActividadFinanciera actividadFinanciera={data.actividadFinanciera} />
 							<ServiciosProfesionales serviciosProfesionales={data.serviciosProfesionales} />

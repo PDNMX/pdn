@@ -1,15 +1,16 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
+import makeStyles from '@mui/styles/makeStyles';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 
 import styleSecciones from '../styleSecciones';
 
 import DatosNoRegistrados from '../DatosNoRegistrados';
 import DatosReservados from '../DatosReservados';
 import { sumary, expansion, getMoneda, Divider, Ubicacion } from '../utils';
-import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
+import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from "../common/BoxAccordion";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const useStyles = makeStyles(styleSecciones);
 
@@ -20,8 +21,8 @@ function Representacion(props) {
 	const { representacion } = props;
 	return representacion.map((obj, idx) => {
 		return (
-			<ExpansionPanel key={'par-' + idx}>
-				<ExpansionPanelSummary
+			<BoxAccordion key={'par-' + idx}>
+				<BoxAccordionSummary
 					classes={sum}
 					expandIcon={<ExpandMoreIcon />}
 					aria-controls="panel1a-content"
@@ -32,8 +33,8 @@ function Representacion(props) {
 							{obj.tipoRepresentacion} DESDE {obj.fechaInicioRepresentacion}
 						</strong>
 					</Typography>
-				</ExpansionPanelSummary>
-				<ExpansionPanelDetails>
+				</BoxAccordionSummary>
+				<BoxAccordionDetails>
 					<Grid container spacing={1}>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>RELACIÓN:</Typography>
@@ -109,8 +110,8 @@ function Representacion(props) {
 						<Divider />
 						<Ubicacion ubicacion={obj.ubicacion} />
 					</Grid>
-				</ExpansionPanelDetails>
-			</ExpansionPanel>
+				</BoxAccordionDetails>
+			</BoxAccordion>
 		);
 	});
 }

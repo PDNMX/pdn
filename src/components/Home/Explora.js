@@ -1,10 +1,9 @@
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
-import Grid from '@material-ui/core/Grid';
-import {Typography} from "@material-ui/core";
+import withStyles from '@mui/styles/withStyles';
+import Grid from '@mui/material/Grid';
+import {Typography} from "@mui/material";
 import {Link} from "react-router-dom";
-import Button from "@material-ui/core/Button";
+import Button from "@mui/material/Button";
 
 const styles = theme => ({
     root: {
@@ -24,7 +23,7 @@ const styles = theme => ({
         color: theme.palette.titleBanner.color,
         fontWeight: "700",
         fontSize: '48px',
-        [theme.breakpoints.down('sm')]:{
+        [theme.breakpoints.down('md')]:{
             fontSize: '40px',
         },
     },
@@ -40,44 +39,34 @@ const styles = theme => ({
     }
 });
 
-class Explora extends React.Component{
+const Explora = props => {
+    const {classes}  = props;
 
-    render(){
-        const {classes}  = this.props;
+    return (
+        <div className={classes.root}>
+            <Grid container spacing={0} justifyContent='center' className={classes.container}>
+                <Grid item xs={12} align="center">
+                    <Typography className={classes.headingText} paragraph>
+                        Plataforma Digital Nacional
+                    </Typography>
 
-        return (
-                <div className={classes.root}>
-                    <Grid container spacing={0} justify='center' className={classes.container}>
-                        <Grid item xs={12} align="center">
-                            <Typography className={classes.headingText} paragraph>
-                                Plataforma Digital Nacional
-                            </Typography>
+                    <Typography className={classes.text} paragraph>
+                        Una fuente de inteligencia para construir integridad y combatir la corrupción, que crea valor para el gobierno y la sociedad, a partir de grandes cantidades de datos.
+                    </Typography>
 
-                            <Typography className={classes.text} paragraph>
-                                Una fuente de inteligencia para construir integridad y combatir la corrupción, que crea valor para el gobierno y la sociedad, a partir de grandes cantidades de datos.
-                            </Typography>
+                    <div className={classes.videoDiv}>
+                        <iframe width="100%" height="450" src="https://www.youtube.com/embed/e9zZE5i8Vt4?rel=0" frameBorder="0" title={'Video'}
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen/>
+                    </div>
 
-                            <div className={classes.videoDiv}>
-                                <iframe width="100%" height="450" src="https://www.youtube.com/embed/e9zZE5i8Vt4?rel=0" frameBorder="0" title={'Video'}
-                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                        allowFullScreen/>
-
-                            </div>
-
-                            <div>
-                                <Button variant="contained" className={classes.button} component={Link} to="/about">Conoce más</Button>
-                            </div>
-                        </Grid>
-                    </Grid>
-                </div>
-
-
-        )
-    }
-}
-
-Explora.propTypes = {
-    classes: PropTypes.object.isRequired
+                    <div>
+                        <Button variant="contained" className={classes.button} component={Link} to="/about">Conoce más</Button>
+                    </div>
+                </Grid>
+            </Grid>
+        </div>
+    );
 };
 
 export default withStyles(styles)(Explora);

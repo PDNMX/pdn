@@ -1,7 +1,7 @@
 import React from 'react';
-import Paper from '@material-ui/core/Paper';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
+import Paper from '@mui/material/Paper';
+import makeStyles from '@mui/styles/makeStyles';
+import Grid from '@mui/material/Grid';
 
 import MenuLateral from './MenuLateral';
 import DatosGenerales from './SituacionPatrimonial/01DatosGenerales';
@@ -45,23 +45,36 @@ const situacionPatrimonial = (data, tipo) => {
 	// let inversion = inversiones.ninguno ? 0 : inversiones.inversion.filter(onlyDec);
 	// let adeudo = adeudos.ninguno ? 0 : adeudos.adeudo.filter(onlyDec);
 
-	if (bienesInmuebles.ninguno) {
+	if (bienesInmuebles) {
+		if (bienesInmuebles.ninguno) {
+			bienInmueble = 0;
+		} else {
+			bienInmueble = bienesInmuebles.bienInmueble ? bienesInmuebles.bienInmueble.filter(onlyDec) : 0;
+		}	
+	} else {
 		bienInmueble = 0;
-	} else {
-		bienInmueble = bienesInmuebles.bienInmueble ? bienesInmuebles.bienInmueble.filter(onlyDec) : 0;
 	}
 
-	if (vehiculos.ninguno) {
+	if (vehiculos) {
+		if (vehiculos.ninguno) {
+			vehiculo = 0;
+		} else {
+			vehiculo = vehiculos.vehiculo ? vehiculos.vehiculo.filter(onlyDec) : 0;
+		}	
+	} else {
 		vehiculo = 0;
-	} else {
-		vehiculo = vehiculos.vehiculo ? vehiculos.vehiculo.filter(onlyDec) : 0;
 	}
-
-	if (bienesMuebles.ninguno) {
+	
+	if (bienesMuebles) {
+		if (bienesMuebles.ninguno) {
+			bienMueble = 0;
+		} else {
+			bienMueble = bienesMuebles.bienMueble ? bienesMuebles.bienMueble.filter(onlyDec) : 0;
+		}	
+	} else {
 		bienMueble = 0;
-	} else {
-		bienMueble = bienesMuebles.bienMueble ? bienesMuebles.bienMueble.filter(onlyDec) : 0;
 	}
+	
 
 	if (inversiones.ninguno) {
 		inversion = 0;
@@ -69,11 +82,16 @@ const situacionPatrimonial = (data, tipo) => {
 		inversion = inversiones.inversion ? inversiones.inversion.filter(onlyDec) : 0;
 	}
 
-	if (adeudos.ninguno) {
-		adeudo = 0;
+	if (adeudos) {
+		if (adeudos.ninguno) {
+			adeudo = 0;
+		} else {
+			adeudo = adeudos.adeudo ? adeudos.adeudo.filter(onlyDec) : 0;
+		}	
 	} else {
-		adeudo = adeudos.adeudo ? adeudos.adeudo.filter(onlyDec) : 0;
+		adeudo = 0;
 	}
+	
 
 	if (experienciaLaboral.ninguno) {
 		tExperienciaLaboral = 0;
@@ -81,11 +99,16 @@ const situacionPatrimonial = (data, tipo) => {
 		tExperienciaLaboral = experienciaLaboral.experiencia ? experienciaLaboral.experiencia.length : 0;
 	}
 
-	if (prestamoOComodato.ninguno) {
-		tprestamoOComodato = 0;
+	if (prestamoOComodato) {
+		if (prestamoOComodato.ninguno) {
+			tprestamoOComodato = 0;
+		} else {
+			tprestamoOComodato = prestamoOComodato.prestamo ? prestamoOComodato.prestamo.length : 0;
+		}
 	} else {
-		tprestamoOComodato = prestamoOComodato.prestamo ? prestamoOComodato.prestamo.length : 0;
+		tprestamoOComodato = 0;
 	}
+	
 
 	const tDatosCurricurales =
 		typeof datosCurricularesDeclarante === 'undefined' ? 0 : datosCurricularesDeclarante.escolaridad.length;

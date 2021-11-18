@@ -1,10 +1,12 @@
 import React from 'react';
-import {withStyles} from "@material-ui/core/styles";
-import Grid from '@material-ui/core/Grid';
+import withStyles from '@mui/styles/withStyles';
+import Grid from '@mui/material/Grid';
 import {Link} from 'react-router-dom';
 import PDNLogo from '../../../../assets/logo_PDN_2.svg';
-import {Typography} from "@material-ui/core"
-import withWidth from '@material-ui/core/withWidth';
+import {Typography} from "@mui/material"
+
+// FIXME checkout https://mui.com/components/use-media-query/#migrating-from-withwidth
+const withWidth = () => (WrappedComponent) => (props) => <WrappedComponent {...props} width="xs" />;
 
 const style = theme => ({
         root: {
@@ -50,7 +52,7 @@ class Header extends React.Component {
             <div className={classes.root}>
                 {/*<PDNAppBar/>*/}
 
-                <Grid container spacing={0} justify="center" style={{background: '#fff'}}>
+                <Grid container spacing={0} justifyContent="center" style={{background: '#fff'}}>
                     <Grid item xs={12} className={classes.item3}>
                         <Link to="/" className={classes.link}>
                             <img src={PDNLogo} alt="PDN" className={classes.pdnLogo}/>
@@ -58,7 +60,7 @@ class Header extends React.Component {
                     </Grid>
                 </Grid>
 
-                <Grid container spacing={0} className="breadcrumb" justify='center'>
+                <Grid container spacing={0} className="breadcrumb" justifyContent='center'>
                     <Grid item xs={12} className={classes.item3}>
                         <ul>
                             <li>
@@ -75,7 +77,7 @@ class Header extends React.Component {
                     </Grid>
                 </Grid>
 
-                <Grid container spacing={0} style={{background: "#5fb1e6", padding: "82px 0"}} justify='center'>
+                <Grid container spacing={0} style={{background: "#5fb1e6", padding: "82px 0"}} justifyContent='center'>
                     <Grid item xs={12} md={7} className={classes.item2} align='center'>
                         <Typography variant="h2" paragraph className={classes.whiteText}>
                             Sancionados

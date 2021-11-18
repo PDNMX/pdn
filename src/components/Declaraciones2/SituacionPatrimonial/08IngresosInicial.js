@@ -1,16 +1,19 @@
 import React from 'react';
-import Paper from '@material-ui/core/Paper';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
+import Paper from '@mui/material/Paper';
+import makeStyles from '@mui/styles/makeStyles';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 
 import styleSecciones from '../styleSecciones';
 import { sumary, expansion, Divider, getMoneda } from '../utils';
 
-import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-import { ActividadIndustrial, ActividadFinanciera, ServiciosProfesionales } from './08Ingresos';
+import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from "../common/BoxAccordion";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
+import {  ActividadFinanciera, ServiciosProfesionales } from './08Ingresos';
+import ActividadIndustrial from './08Ingresos/ActividadIndustrial';
+import basicInicial from './00_basic_incial';
 
 const useStyles = makeStyles(styleSecciones);
 
@@ -20,8 +23,8 @@ const OtrosIngresos = ({ otrosIngresos }) => {
 	const sum = sumary();
 
 	return (
-		<ExpansionPanel>
-			<ExpansionPanelSummary
+		<BoxAccordion>
+			<BoxAccordionSummary
 				classes={sum}
 				expandIcon={<ExpandMoreIcon />}
 				aria-controls="panel1a-content"
@@ -44,8 +47,8 @@ const OtrosIngresos = ({ otrosIngresos }) => {
 						</Typography>
 					</Grid>
 				</Grid>
-			</ExpansionPanelSummary>
-			<ExpansionPanelDetails>
+			</BoxAccordionSummary>
+			<BoxAccordionDetails>
 				<Grid container spacing={1}>
 					<Grid item xs={12} md={9}>
 						<Typography className={classes.cardTitle}>
@@ -71,14 +74,17 @@ const OtrosIngresos = ({ otrosIngresos }) => {
 						);
 					})}
 				</Grid>
-			</ExpansionPanelDetails>
-		</ExpansionPanel>
+			</BoxAccordionDetails>
+		</BoxAccordion>
 	);
 };
 
-export default function({ data, titulo }) {
+export default function ({ data: info, titulo }) {
 	const classes = useStyles();
-
+	const data = {
+		...basicInicial.ingresos,
+		...info
+	};
 	return (
 		<Grid container spacing={2} className={classes.rootPrincipal}>
 			<Grid item xs={12}>
@@ -116,7 +122,7 @@ export default function({ data, titulo }) {
 						</Grid>
 						<Grid item xs={12}>
 							<ActividadIndustrial
-								actividadIndustialComercialEmpresarial={data.actividadIndustialComercialEmpresarial}
+								actividadIndustrialComercialEmpresarial={data.actividadIndustialComercialEmpresarial||data.actividadIndustrialComercialEmpresarial}
 							/>
 							<ActividadFinanciera actividadFinanciera={data.actividadFinanciera} />
 							<ServiciosProfesionales serviciosProfesionales={data.serviciosProfesionales} />

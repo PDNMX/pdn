@@ -1,16 +1,16 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
-import InputLabel from "@material-ui/core/InputLabel";
-/* import FormHelperText from '@material-ui/core/FormHelperText'; */
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
+import Button from "@mui/material/Button";
+import InputLabel from "@mui/material/InputLabel";
+/* import FormHelperText from '@mui/material/FormHelperText'; */
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
 
 import Ajv from "ajv";
 import localize from "ajv-i18n";
 //let SwaggerParser = require('swagger-parser');
 import Parser from "swagger-parser";
-import { withStyles } from "@material-ui/core/styles";
+import withStyles from '@mui/styles/withStyles';
 import PropTypes from "prop-types";
 
 const styles = (theme) => ({

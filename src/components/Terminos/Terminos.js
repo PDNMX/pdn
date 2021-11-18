@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Typography} from "@material-ui/core"
-import Grid from '@material-ui/core/Grid';
-import {withStyles} from '@material-ui/core/styles';
+import {Typography} from "@mui/material"
+import Grid from '@mui/material/Grid';
+import withStyles from '@mui/styles/withStyles';
 import Header from "./Header/Header.js";
 //import by from '../../assets/about/by.svg';
-import Link from '@material-ui/core/Link'
+import Link from '@mui/material/Link'
 import Footer from '../Home/Footer';
 import './Terminos.css';
 
@@ -45,7 +45,7 @@ class Terminos extends React.Component {
         return (
             <div className={classes.root}>
                 <Header/>
-                <Grid container spacing={0} justify='center'>
+                <Grid container spacing={0} justifyContent='center'>
                     <Grid item xs={12} className={classes.section}>
                         <Typography variant='title' className="pdn_term_title">
                             TÉRMINOS Y CONDICIONES DE USO DE LA PLATAFORMA DIGITAL NACIONAL
@@ -340,7 +340,7 @@ class Terminos extends React.Component {
                             constantemente nuestro portal.
                             <br/><br/>
                             El uso del portal <Link target="_blank"
-                            href="https://plataformadigitalnacional.org/">plataformadigitalnacional.org</Link> o
+                            href="https://www.plataformadigitalnacional.org/">plataformadigitalnacional.org</Link> o
                             de cualquiera de sus componentes,
                             implica la aceptación expresa de los presentes “Términos y Condiciones”
                         </Typography>
@@ -378,7 +378,7 @@ class Terminos extends React.Component {
                 </Grid>
                 <Footer/>
             </div>
-        )
+        );
     }
 }
 

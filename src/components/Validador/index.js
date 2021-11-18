@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
 import UploadForm from './UploadForm';
 //import PDNAppBar from '../PDNAppBar/PDNAppBar';
-import {Typography} from "@material-ui/core"
-import {withStyles} from "@material-ui/core/styles";
+import {Typography} from "@mui/material"
+import withStyles from '@mui/styles/withStyles';
 import PropTypes from 'prop-types';
 import Footer from "../Home/Footer";
 import Header from "./Header/Header";
@@ -86,7 +86,7 @@ class Validador extends Component {
             <div className={ classes.root }>
                 {/*<PDNAppBar/>*/}
                 <Header/>
-                <Grid container spacing={0} justify="center" className={classes.contents}>
+                <Grid container spacing={0} justifyContent="center" className={classes.contents}>
                     <Grid item xs={12} className={classes.gridItem} align="center">
                         <Typography paragraph color='textPrimary' align="left">
                             Este validador te ayudará a verificar que la respuesta generada por tus API's cumplen las

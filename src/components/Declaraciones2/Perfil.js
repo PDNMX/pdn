@@ -1,6 +1,6 @@
 import React from 'react';
-import { Grid, Typography, Paper } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { Grid, Typography, Paper } from '@mui/material';
+import withStyles from '@mui/styles/withStyles';
 
 import MenuSuperior from './MenuSuperior';
 import SituacionPatrimonial from './SituacionPatrimonial';
@@ -8,10 +8,11 @@ import Intereses from './Intereses';
 import styles from './style';
 import { getMoneda } from './utils';
 
-import Button from '@material-ui/core/Button';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import Button from '@mui/material/Button';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 import scrollToComponent from 'react-scroll-to-component';
+import basicInicial from './SituacionPatrimonial/00_basic_incial';
 
 class Perfil extends React.Component {
 	state = {
@@ -73,6 +74,12 @@ class Perfil extends React.Component {
 
 	render() {
 		let { classes, data, handleGoBack, refPerfil } = this.props;
+
+		let datosGenerales = {
+			...basicInicial.datosGenerales,
+			...data.declaracion.situacionPatrimonial.datosGenerales
+		}
+
 		return (
 			<div>
 				<Grid container spacing={0} className={classes.perfilRoot} ref={refPerfil}>
@@ -94,15 +101,12 @@ class Perfil extends React.Component {
 							<Grid container spacing={1}>
 								<Grid item xs={12} md={9}>
 									<Typography variant="h5" component="h3" className={classes.tituloCard}>
-										{data.declaracion.situacionPatrimonial.datosGenerales.nombre}{' '}
-										{data.declaracion.situacionPatrimonial.datosGenerales.primerApellido}{' '}
-										{data.declaracion.situacionPatrimonial.datosGenerales.segundoApellido}
+										{datosGenerales.nombre}{' '}
+										{datosGenerales.primerApellido}{' '}
+										{datosGenerales.segundoApellido}
 									</Typography>
 									<Typography className={classes.dataCard}>
-										{
-											data.declaracion.situacionPatrimonial.datosGenerales.correoElectronico
-												.institucional
-										}
+										{datosGenerales.correoElectronico.institucional}
 									</Typography>
 								</Grid>
 								<Grid item xs={12} md={3}>

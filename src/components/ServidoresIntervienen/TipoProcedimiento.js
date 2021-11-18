@@ -1,12 +1,13 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import ListItemText from '@material-ui/core/ListItemText';
-import Select from '@material-ui/core/Select';
-import Checkbox from '@material-ui/core/Checkbox';
+import makeStyles from '@mui/styles/makeStyles';
+import Input from '@mui/material/Input';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import ListItemText from '@mui/material/ListItemText';
+import Select from '@mui/material/Select';
+import Checkbox from '@mui/material/Checkbox';
+import {OutlinedInput} from "@mui/material";
 
 const useStyles = makeStyles(theme => ({
     formControl: {
@@ -49,7 +50,7 @@ const procedimientos = [
     }
 ];
 
-export default function TipoProcedimiento(props) {
+const TipoProcedimiento = props => {
     const classes = useStyles();
     const {tipoProcedimiento, asignarTipoProcedimiento} = props;
 
@@ -59,7 +60,6 @@ export default function TipoProcedimiento(props) {
 
     return (
         <div>
-
             <FormControl className={classes.formControl} fullWidth>
                 <InputLabel id="demo-mutiple-checkbox-label">Procedimientos</InputLabel>
                 <Select
@@ -68,7 +68,7 @@ export default function TipoProcedimiento(props) {
                     multiple
                     value={tipoProcedimiento}
                     onChange={handleChange}
-                    input={<Input />}
+                    input={<OutlinedInput label="Procedimientos"/>}
                     renderValue={selected => selected.map(e => e.value).join(', ')}
                     MenuProps={MenuProps}
                     fullWidth
@@ -83,7 +83,8 @@ export default function TipoProcedimiento(props) {
                     ))}
                 </Select>
             </FormControl>
-
         </div>
     );
 }
+
+export default TipoProcedimiento;

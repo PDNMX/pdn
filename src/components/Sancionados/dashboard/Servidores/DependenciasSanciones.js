@@ -1,8 +1,7 @@
 import React from 'react';
-import {withStyles} from "@material-ui/core/styles";
+import {withStyles} from "@mui/styles";
 import PropTypes from 'prop-types';
-import Grid from "@material-ui/core/Grid/Grid";
-import {Typography} from "@material-ui/core"
+import {Grid, Typography} from "@mui/material";
 import {Treemap} from "d3plus-react";
 import rp from "request-promise";
 import * as d3 from "d3";
@@ -33,7 +32,7 @@ const styles = theme => ({
 function aux() {
     return new Promise((resolve, reject) => {
         let options = {
-            uri: process.env.REACT_APP_HOST_PDNBACK + '/viz/servidores/getDependenciaMayor',
+            uri: process.env.REACT_APP_S3S_BACKEND + '/charts/getDependenciaMayor',
             json: true,
             method: "GET"
         };
@@ -50,7 +49,7 @@ function aux() {
 function loadData2() {
     return new Promise((resolve, reject) => {
         let options = {
-            uri: process.env.REACT_APP_HOST_PDNBACK + '/viz/servidores/getSancionesAnualesDependencia',
+            uri: process.env.REACT_APP_S3S_BACKEND + '/charts/getSancionesAnualesDependencia',
             json: true,
             method: "GET"
         };
@@ -80,7 +79,7 @@ class DependenciasSanciones extends React.Component {
         aux().then(result => {
             let aux = result.data.map(item => {
                 return {
-                    "value": parseInt(item.total_sanciones,10),
+                    "value": parseInt(item.total_sanciones, 10),
                     "group": item.dependencia
                 }
             });
@@ -116,13 +115,14 @@ class DependenciasSanciones extends React.Component {
                 }
             })
         }).catch(err => {
-this.setState({errorG1: true})
+            console.error(err);
+            this.setState({errorG1: true})
         });
 
         loadData2().then(result2 => {
             let aux2 = result2.data.map(item => {
                 return {
-                    "value": parseInt(item.total,10),
+                    "value": parseInt(item.total, 10),
                     "group": item.dependencia,
                     "parent": item.anio
                 }
@@ -158,6 +158,7 @@ this.setState({errorG1: true})
                 }
             })
         }).catch(err => {
+            console.error(err);
             this.setState({errorG2: true})
         });
 
@@ -167,7 +168,7 @@ this.setState({errorG1: true})
         const {classes} = this.props;
         return (
             <div>
-                <Grid container spacing={0} justify='center' className={classes.frameChart}>
+                <Grid container spacing={0} justifyContent='center' className={classes.frameChart}>
                     <Grid item xs={12}>
                         <Typography variant={"h6"} className={classes.titulo}>
                             <b>{"Dependencias con mayor número de sanciones"}</b>
@@ -175,14 +176,7 @@ this.setState({errorG1: true})
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>
                         <Typography>
-                            Con respecto a las dependencias con más sanciones, la Policía Federal, la Secretaría de
-                            Educación Pública, el Instituto Mexicano del Seguro Social y la Comisión Federal de
-                            Electricidad representan juntas casi el 40% del total de funcionarios sancionados.
-
-                            Dado que en estas instituciones además laboran un número muy alto de funcionarios públicos,
-                            sería relevante también tomar en cuenta el volumen de la institución para obtener la tasa de
-                            sanción por dependencia. De esta manera podríamos comparar la tasa de sanción entre
-                            distintas dependencias.
+                            {"Con respecto a las dependencias con más sanciones,  4 instituciones :la Policía Federal, la Secretaría de Educación Pública, Telecomunicaciones de México y el Instituto de Seguridad y Servicios Sociales de los Trabajadores representan juntas más del 35% del total de  personas servidoras públicas sancionadas "}
                         </Typography>
                     </Grid>
 
@@ -198,7 +192,15 @@ this.setState({errorG1: true})
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>
                         <Typography>
-                            Si, consideramos el año con más sanciones desde 2013, es decir, el 2017, podemos observar que el Fideicomiso Fondo Nacional de Habitaciones Populares, el Instituto Mexicano del Seguro Social y el Instituto de Seguridad y Servicios Sociales de los Trabajadores del Estado son las tres instituciones con más sanciones en este año. En 2018 las instituciones más sancionadas fueron la Procuraduría Federal del Consumidor y el Instituto Mexicano del Seguro Social. Dado que en estas instituciones además laboran un número muy alto de funcionarios públicos, sería relevante también tomar en cuenta el volumen de la institución para obtener la tasa de sanción por dependencia. De esta manera, podríamos comparar la tasa de sanción entre distintas dependencias.
+                            La siguiente muestra las dependencias con mayor numero de sanciones en cada año, como se
+                            aprecía, para el año 2014 fue Telecomunicaciones de México. En 2013, 2014 y 2016 fue la
+                            Policia Federal. En 2017, el Instituto
+                            de Seguridad y Servicios Sociales de los Trabajadores del estado. En 2018, la Secretaría de
+                            Educación Pública. Hasta mayo 2021, la Presidencia de la República ocupa el primer lugar.
+                            Finalmente en 2020, año con menor número de
+                            sanciones, son tres instituciones las que aparecen con igual número de sanciones, Instituto
+                            de Seguridad y Servicios Sociales de los Trabajadores del Estado, Secretaría de Medio
+                            Ambiente y Recursos Naturales y el Instituto Méxicano de Cinematografía
                         </Typography>
                     </Grid>
                     <Grid item xs={12}>

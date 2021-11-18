@@ -1,10 +1,10 @@
 import React from "react";
-import MenuList from "@material-ui/core/MenuList";
-import MenuItem from "@material-ui/core/MenuItem";
-import { makeStyles } from "@material-ui/core/styles";
+import MenuList from "@mui/material/MenuList";
+import MenuItem from "@mui/material/MenuItem";
+import makeStyles from '@mui/styles/makeStyles';
 
-import { Badge } from "@material-ui/core";
-import { withStyles } from "@material-ui/core/styles";
+import { Badge } from "@mui/material";
+import withStyles from '@mui/styles/withStyles';
 
 const useStyles = makeStyles({
   root: {

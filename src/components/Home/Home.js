@@ -1,7 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import Grid from '@material-ui/core/Grid';
-import {withStyles} from '@material-ui/core/styles';
+import Grid from '@mui/material/Grid';
+import withStyles from '@mui/styles/withStyles';
 import Explora from './Explora';
 import Sistemas from './Sistemas';
 import Footer from './Footer';
@@ -28,54 +27,46 @@ const styles = theme => ({
     },
 });
 
-class Home extends React.Component{
+const Home = props => {
+    const { classes } = props;
+    return (
+        <div className={classes.root}>
+            <Banner/>
+            <BarraFea/>
+            <Grid container spacing={0} justifyContent="center">
+                <Grid item xs={12} className={classes.item}>
+                    <Explora/>
+                </Grid>
+            </Grid>
 
-    render(){
-        const { classes } = this.props;
-        return(
-                <div className={classes.root}>
-                    <Banner/>
-                    <BarraFea/>
-                    <Grid container spacing={0} justify="center">
-                        <Grid item xs={12} className={classes.item}>
-                            <Explora/>
-                        </Grid>
-                    </Grid>
+            <Grid container spacing={0} justifyContent="center" className={classes.sistemas}>
+                <Grid item xs={12} className={classes.item}>
+                    <Sistemas/>
+                </Grid>
+            </Grid>
 
-                    <Grid container spacing={0} justify="center" className={classes.sistemas}>
-                        <Grid item xs={12} className={classes.item}>
-                            <Sistemas/>
-                        </Grid>
-                    </Grid>
+            <Grid container spacing={0} justifyContent="center" >
+                <Grid item xs={12} className={classes.item}>
+                    <AvanceInterconexion/>
+                </Grid>
+            </Grid>
 
-                    <Grid container spacing={0} justify="center" >
-                        <Grid item xs={12} className={classes.item}>
-                            <AvanceInterconexion/>
-                        </Grid>
-                    </Grid>
+            <Grid container spacing={0} justifyContent="center" className={classes.mercado}>
+                <Grid item xs={12} className={classes.item}>
+                    <MercadoDigital/>
+                </Grid>
+            </Grid>
 
-                    <Grid container spacing={0} justify="center" className={classes.mercado}>
-                        <Grid item xs={12} className={classes.item}>
-                            <MercadoDigital/>
-                        </Grid>
-                    </Grid>
+            <Grid container spacing={0} justifyContent="center">
+                <Grid item xs={12} className={classes.item}>
+                    <BlogPosts/>
+                </Grid>
+            </Grid>
 
-                    <Grid container spacing={0} justify="center">
-                        <Grid item xs={12} className={classes.item}>
-                            <BlogPosts/>
-                        </Grid>
-                    </Grid>
-
-                    <Footer/>
-                    <AlertDialog/>
-                </div>
-
-        );
-    }
+            <Footer/>
+            <AlertDialog/>
+        </div>
+    );
 }
-
-Home.propTypes = {
-  classes: PropTypes.object.isRequired
-};
 
 export default withStyles(styles)(Home);

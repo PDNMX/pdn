@@ -1,7 +1,6 @@
-import {Typography} from "@material-ui/core";
-import Grid from "@material-ui/core/Grid/Grid";
+import {Grid, Typography} from "@mui/material";
 import React from "react";
-import {withStyles} from "@material-ui/core/styles";
+import {withStyles} from '@mui/styles';
 import BusquedaParticular from "./BusquedaParticular";
 import Descarga from "../../Compartidos/Descarga";
 
@@ -38,54 +37,52 @@ const styles = theme => ({
     }
 });
 
-class BuscadorParticularesSancionados extends React.Component {
-    render() {
-        const {classes} = this.props;
-        return (
-            <div>
-                {/*TEXTO*/}
-                <Grid item xs={12} style={{maxWidth: 1200, margin: "0 auto"}}>
-                    <Typography paragraph>
-                        <b>Aquí encontrarás la siguiente información:</b>
-                    </Typography>
-                    <ul className={classes.ul}>
-                        <li className={classes.li}>
-                            <Typography color="textPrimary" display='inline'>
-                                Consulta los particulares sancionados (inhabilitados) por institución donde cometieron
-                                la falta, nombre o razón social, a nivel federal y/o estatal
-                            </Typography>
-                        </li>
-                        <li className={classes.li}>
-                            <Typography color="textPrimary" display='inline'>
-                                Obtén datos del particular sancionado como: nombre, puesto, sanción y causa de la misma
-                            </Typography>
-                        </li>
-                        <li className={classes.li}>
-                            <Typography color="textPrimary" display='inline'>
-                                Obtén los datos de la sanción impuesta al particular como: expediente, hechos de la
-                                falta, tipo de falta, resolución, entre otros datos
-                                de interes.
-                            </Typography>
-                        </li>
-                    </ul>
-                </Grid>
+function BuscadorParticularesSancionados({classes}) {
+    return (
+        <div>
+            {/*TEXTO*/}
+            <Grid item xs={12} style={{maxWidth: 1200, margin: "0 auto"}}>
+                <Typography paragraph>
+                    <b>Aquí encontrarás la siguiente información:</b>
+                </Typography>
+                <ul className={classes.ul}>
+                    <li className={classes.li}>
+                        <Typography color="textPrimary" display='inline'>
+                            Consulta los particulares sancionados (inhabilitados) por institución donde cometieron
+                            la falta, nombre o razón social, a nivel federal y/o estatal
+                        </Typography>
+                    </li>
+                    <li className={classes.li}>
+                        <Typography color="textPrimary" display='inline'>
+                            Obtén datos del particular sancionado como: nombre, puesto, sanción y causa de la misma
+                        </Typography>
+                    </li>
+                    <li className={classes.li}>
+                        <Typography color="textPrimary" display='inline'>
+                            Obtén los datos de la sanción impuesta al particular como: expediente, hechos de la
+                            falta, tipo de falta, resolución, entre otros datos
+                            de interes.
+                        </Typography>
+                    </li>
+                </ul>
+            </Grid>
 
-                {/*BUSCADOR*/}
-                <Grid container justify={'center'} className={classes.gridTable}>
-                    <Grid item xs={12} className={classes.toolBarStyle}>
-                        <BusquedaParticular/>
-                    </Grid>
+            {/*BUSCADOR*/}
+            <Grid container justifyContent={'center'} className={classes.gridTable}>
+                <Grid item xs={12} className={classes.toolBarStyle}>
+                    <BusquedaParticular/>
                 </Grid>
+            </Grid>
 
-                {/*DESCARGA*/}
-                <Grid container spacing={0} justify="center">
-                    <Grid item xs={12} className={classes.itemD}>
-                        <Descarga url={process.env.REACT_APP_BULK_S3_PARTICULARES}/>
-                    </Grid>
+            {/*DESCARGA*/}
+            <Grid container spacing={0} justifyContent="center">
+                <Grid item xs={12} className={classes.itemD}>
+                    <Descarga url={process.env.REACT_APP_BULK_S3_PARTICULARES}/>
                 </Grid>
-            </div>
-        )
-    }
+            </Grid>
+        </div>
+    )
+
 }
 
 export default withStyles(styles)(BuscadorParticularesSancionados);

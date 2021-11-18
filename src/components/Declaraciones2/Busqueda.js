@@ -1,13 +1,13 @@
 import React from 'react';
-import { Grid, Typography } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { Grid, Typography } from '@mui/material';
+import withStyles from '@mui/styles/withStyles';
 
 import axios from 'axios';
 
-import Tooltip from '@material-ui/core/Tooltip';
-import IconSunny from '@material-ui/icons/WbSunny';
+import Tooltip from '@mui/material/Tooltip';
+import IconSunny from '@mui/icons-material/WbSunny';
 
-import CircularProgress from '@material-ui/core/CircularProgress';
+import CircularProgress from '@mui/material/CircularProgress';
 import Tabla from './Tabla';
 import Perfil from './Perfil';
 import styles from './style';
@@ -16,8 +16,9 @@ import FormSearch from './formSearch';
 import { error } from './utils';
 import scrollToComponent from 'react-scroll-to-component';
 
-import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
+import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from "./common/BoxAccordion";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import Descarga from '../Compartidos/Descarga';
 
@@ -59,8 +60,8 @@ class Busqueda extends React.Component {
 		nivelOrdenGobierno: '',
 		nivelGobierno: '',
 		nombreEntePublico: '',
-		entidadFederativa: '0',
-		municipioAlcaldia: '0',
+		entidadFederativa: '',
+		municipioAlcaldia: '',
 		empleoCargoComision: '',
 		nivelEmpleoCargoComision: '',
 		superficieConstruccionMin: '',
@@ -298,11 +299,14 @@ class Busqueda extends React.Component {
 	};
 
 	handlerFind = () => {
-		let { institucion, providers, query: { nivelGobierno } } = this.state;
-		console.log('nivelGobierno: ', nivelGobierno);
+		let { institucion, providers } = this.state;
+		console.log(this.state);
 
-		let prov = nivelGobierno
-			? providers.filter((p) => p.levels && p.levels.includes(nivelGobierno))
+		let prov=[];
+
+
+		prov = institucion
+			? providers.filter((p) => p.supplier_id === institucion)
 			: providers.filter((p) => typeof p.supplier_id === 'string');
 
 		console.log('providers: ', providers);
@@ -476,29 +480,31 @@ class Busqueda extends React.Component {
 			}
 		];
 
-		axios
-			.get(url, {
-				crossdomain: true
-			})
-			.then((resp) => {
-				this.setState((prevState) => ({
-					...prevState,
-					catMunicipios: [ ...defaultOps, ...resp.data.datos ]
-				}));
-			})
-			.catch((err) => {
-				this.setState((prevState) => ({
-					...prevState,
-					catMunicipios: [
-						{
-							cve_agem: -1,
-							nom_agem: 'ERROR AL CARGAR LOS MUNICIPIOS'
-						}
-					]
-				}));
+		if (cve_agee !== 0) {
+			axios
+				.get(url, {
+					crossdomain: true
+				})
+				.then((resp) => {
+					this.setState((prevState) => ({
+						...prevState,
+						catMunicipios: [ ...defaultOps, ...resp.data.datos ]
+					}));
+				})
+				.catch((err) => {
+					this.setState((prevState) => ({
+						...prevState,
+						catMunicipios: [
+							{
+								cve_agem: -1,
+								nom_agem: 'ERROR AL CARGAR LOS MUNICIPIOS'
+							}
+						]
+					}));
 
-				error('catMunicipios' + err);
-			});
+					error('catMunicipios' + err);
+				});
+		}
 	};
 
 	componentDidMount() {
@@ -518,6 +524,7 @@ class Busqueda extends React.Component {
 						<Grid container spacing={0} className={classes.root}>
 							<FormSearch
 								query={this.state.query}
+								providers={this.state.providers}
 								handleInputChange={this.handleInputChange}
 								catEscolaridadNivel={this.state.catEscolaridadNivel}
 								catFormaAdquisicion={this.state.catFormaAdquisicion}
@@ -535,8 +542,8 @@ class Busqueda extends React.Component {
 								{!this.state.prov.length && <p>No hay dependecias con el criterio solicitado...</p>}
 								{this.state.prov.map((p, i) => {
 									return (
-										<ExpansionPanel key={'res-' + i}>
-											<ExpansionPanelSummary
+										<BoxAccordion key={'res-' + i}>
+											<BoxAccordionSummary
 												expandIcon={<ExpandMoreIcon />}
 												aria-controls="panel1a-content"
 												id="panel1a-header"
@@ -591,9 +598,9 @@ class Busqueda extends React.Component {
 														</Grid>
 													)}
 												</Grid>
-											</ExpansionPanelSummary>
+											</BoxAccordionSummary>
 											{!p.finding && (
-												<ExpansionPanelDetails className={classes.resultadoContenido}>
+												<BoxAccordionDetails className={classes.resultadoContenido}>
 													{p.data.length > 0 && (
 														<Tabla
 															rows={p.data}
@@ -618,9 +625,9 @@ class Busqueda extends React.Component {
 															</Grid>
 														</Grid>
 													)}
-												</ExpansionPanelDetails>
+												</BoxAccordionDetails>
 											)}
-										</ExpansionPanel>
+										</BoxAccordion>
 									);
 								})}
 							</div>
@@ -637,7 +644,7 @@ class Busqueda extends React.Component {
 					/>
 				)}
 				{/*DESCARGA*/}
-				<Grid container spacing={0} justify="center">
+				<Grid container spacing={0} justifyContent="center">
 					<Grid item xs={12} className={classes.itemD}>
 						<Descarga url={process.env.REACT_APP_S1_BULK} />
 					</Grid>

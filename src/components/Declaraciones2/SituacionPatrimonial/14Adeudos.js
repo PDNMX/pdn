@@ -1,7 +1,7 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@mui/styles';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 
 import styleSecciones from '../styleSecciones';
 import { Divider } from '../utils';
@@ -9,8 +9,9 @@ import { Divider } from '../utils';
 import DatosNoRegistrados from '../DatosNoRegistrados';
 import DatosReservados from '../DatosReservados';
 import { sumary, expansion, getMoneda } from '../utils';
-import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
+import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from "../common/BoxAccordion";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import { Disclaimer } from '../utils';
 
@@ -22,8 +23,8 @@ function Adeudos({ adeudos, tipo }) {
 	const sum = sumary();
 	return adeudos.map((obj, idx) => {
 		return (
-			<ExpansionPanel key={'adeudo-' + idx}>
-				<ExpansionPanelSummary
+			<BoxAccordion key={'adeudo-' + idx}>
+				<BoxAccordionSummary
 					classes={sum}
 					expandIcon={<ExpandMoreIcon />}
 					aria-controls="panel1a-content"
@@ -32,8 +33,8 @@ function Adeudos({ adeudos, tipo }) {
 					<Typography className={exp.heading}>
 						<strong>TIPO DE ADEUDO: {obj.tipoAdeudo.valor}</strong>
 					</Typography>
-				</ExpansionPanelSummary>
-				<ExpansionPanelDetails>
+				</BoxAccordionSummary>
+				<BoxAccordionDetails>
 					<Grid container spacing={1}>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>TIPO DE ADEUDO:</Typography>
@@ -198,8 +199,8 @@ function Adeudos({ adeudos, tipo }) {
 							</Grid>
 						)}
 					</Grid>
-				</ExpansionPanelDetails>
-			</ExpansionPanel>
+				</BoxAccordionDetails>
+			</BoxAccordion>
 		);
 	});
 }
