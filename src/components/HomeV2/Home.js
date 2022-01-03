@@ -2,6 +2,7 @@ import React from 'react';
 import withStyles from '@mui/styles/withStyles';
 import Banner from "./Banner";
 import Version from "./Version";
+import BlogSys from "./BlogSys";
 
 const styles = theme => ({
     root: {
@@ -25,6 +26,7 @@ const Home = props => {
         <React.Fragment>
             <Banner/>
             <Version/>
+            <BlogSys/>
         </React.Fragment>
     );
 }
