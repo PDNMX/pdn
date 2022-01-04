@@ -3,7 +3,6 @@ import {Typography, Box} from "@mui/material";
 import {withStyles} from "@mui/styles";
 import BlogCard from "./BlogCard";
 import icon_blog from "../../../assets/rediseno/ico_blog.svg";
-import rp from "request-promise";
 import axios from "axios";
 
 const styles = theme => ({
@@ -45,7 +44,7 @@ const BlogComponent = props => {
         };
 
         axios(config).then(data => {
-            console.log(data);
+            //console.log(data);
             setPosts(data.data.posts);
         }).catch(error => {
             console.log(error);
