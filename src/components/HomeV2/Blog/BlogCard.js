@@ -1,12 +1,13 @@
 import React from 'react';
-import {Box, Typography} from "@mui/material";
+import {Box, Link, Typography} from "@mui/material";
 import {withStyles} from "@mui/styles";
 
 const styles = theme => ({
     root: {
         padding: theme.spacing(1),
         margin: theme.spacing(1),
-        background: "rgb(255,255,255,0.5)"
+        background: "rgb(255,255,255,0.5)",
+        textDecoration: "none"
     },
     image: {
         width: 150,
@@ -17,9 +18,9 @@ const styles = theme => ({
 const BlogCard = props => {
     const {classes, post} = props;
     return (
-        <Box className={classes.root} display="flex">
+        <Box className={classes.root} display="flex" to={post.url} component={Link} href={post.url}>
             <img src={post.feature_image} className={classes.image}/>
-            <Typography>
+            <Typography color="textPrimary">
                 {post.title}
             </Typography>
         </Box>
