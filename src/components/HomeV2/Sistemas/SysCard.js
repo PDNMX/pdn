@@ -1,5 +1,5 @@
 import React from "react";
-import {Typography, Box, Link} from "@mui/material";
+import {Typography, Box} from "@mui/material";
 import {Link as RouterLink} from "react-router-dom";
 import {withStyles} from "@mui/styles";
 
@@ -11,7 +11,6 @@ const styles = theme => ({
         margin: theme.spacing(2),
         padding: theme.spacing(2),
         width: 230,
-        //height: 160,
         borderRadius: 2,
         //display: "flex",
         //justifyContent: "center"
