@@ -5,12 +5,10 @@ import {Typography, Grid} from "@mui/material";
 const styles = theme => ({
     root:{
         backgroundColor: '#35a2d2',
-        padding: '2px',
+        padding: 2,
         color: '#3e5968',
+        paddingLeft: 30
 
-    },
-    version:{
-        maxWidth: 1200
     },
     fecha:{
         color: '#fff'
@@ -27,12 +25,10 @@ function Version(props){
 
     return(
         <React.Fragment>
-            <Grid container spacing={0} justifyContent="center" className={classes.root}>
-                <Grid item xs={12} className={classes.version}>
+            <div className={classes.root}>
                     <Typography display={'inline'}><b>Versión 1.0</b>&nbsp;&nbsp;</Typography>
                     <Typography display={'inline'} className={classes.fecha}>{`${day} ${month} ${year}`}</Typography>
-                </Grid>
-            </Grid>
+            </div>
         </React.Fragment>
     );
 }

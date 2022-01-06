@@ -1,8 +1,12 @@
 import React from 'react';
 import withStyles from '@mui/styles/withStyles';
 import Banner from "./Banner";
+import BannerMobile from "./BannerMobile";
 import Version from "./Version";
 import BlogSys from "./BlogSys";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import {useTheme} from "@emotion/react";
+
 
 const styles = theme => ({
     root: {
@@ -19,12 +23,20 @@ const styles = theme => ({
     },
 });
 
+
+function useIsWidthUp(breakpoint) {
+    const theme = useTheme();
+    return useMediaQuery(theme.breakpoints.up(breakpoint));
+}
+
 const Home = props => {
     const { classes } = props;
+    const isXsUp = useIsWidthUp("lg");
 
     return (
         <React.Fragment>
-            <Banner/>
+            {isXsUp && <Banner/>}
+            {!isXsUp && <BannerMobile/>}
             <Version/>
             <BlogSys/>
         </React.Fragment>

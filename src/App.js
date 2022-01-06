@@ -90,8 +90,27 @@ const theme = createTheme({
             pestanas: {
                 bg: '#f2f2f2',
                 activa: "#b7ccd5"
-            }
-        }
+            },
+            S1:{
+                color:"#F29888"
+            },
+            S2:{
+                color:"#B25FAC"
+            },
+            S3:{
+                color:"#9085DA"
+            },
+            S4:{
+                color:"#CED8DB"
+            },
+            S5:{
+                color:"#CED8DB"
+            },
+            S6:{
+                color:"#42A5CC"
+            },
+        },
+
     }
     , esES);
 
