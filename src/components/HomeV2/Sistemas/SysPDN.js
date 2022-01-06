@@ -19,32 +19,38 @@ const systems = [
     {
         name: "Sistema de Declaraciones",
         color: "#f29888",
-        icon: IconS1
+        icon: IconS1,
+        url: "/declaraciones"
     },
     {
         name: "Sistema de Servidores Públicos en contrataciones",
         color: "#b25fac",
-        icon: IconS2
+        icon: IconS2,
+        url: "/servidores"
     },
     {
         name: "Sistema de Sancionados",
         color: "#9085da",
-        icon: IconS3
+        icon: IconS3,
+        url: "/sancionados"
     },
     {
         name: "Sistema de Fiscalización",
         color: "#88bc69",
-        icon: IconS4
+        icon: IconS4,
+        url: "#"
     },
     {
         name: "Sistema de Denuncias",
         color: "#34c9b2",
-        icon: IconS5
+        icon: IconS5,
+        url: "#"
     },
     {
         name: "Sistema de Contrataciones",
         color: "#42a5cc",
-        icon: IconS6
+        icon: IconS6,
+        url: "/contrataciones"
     }
 ];
 
