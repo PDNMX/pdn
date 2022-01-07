@@ -10,6 +10,9 @@ import {useTheme} from "@emotion/react";
 import Footer from './Footer';
 import Cards from './Cards';
 
+import QueEsPDN from "./QueEsPDN";
+import Numeralia from "./Numeralia"
+
 const styles = theme => ({
     root: {
         flexGrow :1,
@@ -40,6 +43,8 @@ const Home = props => {
             {isXsUp && <Banner/>}
             {!isXsUp && <BannerMobile/>}
             <Version/>
+            <QueEsPDN/>
+            <Numeralia/>
             <BlogSys/>
             <Cards/>
             <Footer/>
