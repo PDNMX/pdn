@@ -7,6 +7,8 @@ import BlogSys from "./BlogSys";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import {useTheme} from "@emotion/react";
 
+import Footer from './Footer';
+import Cards from './Cards';
 
 const styles = theme => ({
     root: {
@@ -39,6 +41,8 @@ const Home = props => {
             {!isXsUp && <BannerMobile/>}
             <Version/>
             <BlogSys/>
+            <Cards/>
+            <Footer/>
         </React.Fragment>
     );
 }
