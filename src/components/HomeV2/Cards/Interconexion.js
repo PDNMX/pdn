@@ -8,8 +8,7 @@ import Typography from '@mui/material/Typography';
 import withStyles from '@mui/styles/withStyles';
 import { CardHeader } from '@mui/material';
 
-import logo from '../../../assets/cards/logo_interconexion.svg';
-
+import logo from "../../../assets/Cards/logo_interconexion.svg";
 const style = theme => ({
   root: {
     flexGrow: 1,
