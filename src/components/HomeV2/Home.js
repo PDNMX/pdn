@@ -10,6 +10,11 @@ import IconS5 from "../../assets/rediseno/ico_sistemas/ico_s5_color.svg";
 import IconS6 from "../../assets/rediseno/ico_sistemas/ico_s6_color.svg";
 import Banner from "./Banner";
 
+import Footer from './Footer';
+import Cards from './Cards';
+
+import QueEsPDN from "./QueEsPDN";
+import Numeralia from "./Numeralia"
 
 const styles = theme => ({
     root: {
@@ -80,7 +85,11 @@ const Home = props => {
         <React.Fragment>
             <Banner systems={systems}/>
             <Version/>
+            <QueEsPDN/>
+            <Numeralia/>
             <BlogSys/>
+            <Cards/>
+            <Footer/>
         </React.Fragment>
     );
 }
