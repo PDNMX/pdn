@@ -1,99 +1,73 @@
 import React from "react";
 import withStyles from '@mui/styles/withStyles';
 import {
-    AppBar, Box, Typography, Grid, IconButton, ListItemText, Menu, MenuItem,
-    Button, Divider, List, ListItem, Collapse, Toolbar, ListItemIcon, MenuList
-} from "@mui/material";
+    AppBar, Box, Typography, IconButton, Menu, MenuItem,
+    Button, List, ListItem, Collapse, Toolbar} from "@mui/material";
 import {Link} from "react-router-dom";
-import {ExpandLess, ExpandMore, MoreHoriz as MoreHorizIcon} from '@mui/icons-material';
+import { MoreHoriz as MoreHorizIcon} from '@mui/icons-material';
 import imgHeader from "../../assets/rediseno/logo_pdn.svg";
-import Espe from "../../assets/rediseno/ico_especificaciones.svg";
-import Mesa from "../../assets/rediseno/ico_mesa-ayuda.svg";
-import MDA from "../../assets/rediseno/ico_mda.svg";
-import Sistemas from "../../assets/rediseno/ico_sistemas_f.svg";
-import Interconexion from "../../assets/rediseno/ico_interconexion.svg";
+import Especificaciones_logo from "../../assets/rediseno/ico_especificaciones.svg";
+import Mesa_logo from "../../assets/rediseno/ico_mesa-ayuda.svg";
+import MDA_logo from "../../assets/rediseno/ico_mda.svg";
+import Interconexion_logo from "../../assets/rediseno/ico_interconexion.svg";
+import Sistemas_logo from "../../assets/rediseno/ico_sistemas_f.svg";
 import LoginIcon from "../../assets/rediseno/ico_login.svg";
-import SistemasMenu from "./SistemasMenu";
-import S1_logo from "../../assets/rediseno/ico_s1_color.svg";
-import S2_logo from "../../assets/rediseno/ico_s2_color.svg";
-import S3_logo from "../../assets/rediseno/ico_s3_color.svg";
-import S4_logo from "../../assets/rediseno/ico_s4_color.svg";
-import S5_logo from "../../assets/rediseno/ico_s5_color.svg";
-import S6_logo from "../../assets/rediseno/ico_s6_color.svg";
-
 
 const styles = theme => ({
     root: {
         flexGrow: 1,
         backgroundColor: '#3e5866',
-
-    },
-    item: {
-        maxWidth: 1000
-    },
-    opc: {
-        "&:hover": {
-            backgroundColor: "#64808f"
-        },
-        paddingBottom: 20,
-        textAlign: 'center'
     },
     icon: {
-        width: 20,
+        width: theme.spacing(4),
         margin: 'auto'
     },
     iconSistemas: {
-        width: 20,
-        marginRight: 10
+        width: theme.spacing(5),
+        marginRight: theme.spacing(3)
     },
     link: {
         textDecoration: "none",
-        color: "#b2bfc4"
+
     },
     text: {
         flexGrow: 1,
         color: "#b2bfc4"
     },
-    iconSesion: {
-        width: 60,
-        paddingTop: 20,
-        paddingBottom: 0
-    },
-    iconPDN: {
-        height: 60,
-        marginRight: 20,
-        marginLeft: 20
-    },
-    containerIconPDN: {
-        display: 'flex',
-        alignItems: 'center'
-    },
     nested: {
-        paddingLeft: theme.spacing(4)
+        paddingLeft: theme.spacing(3)
     },
     menu: {
         "& .MuiPaper-root": {
-            backgroundColor: "#0d3b49"
-        }
+            backgroundColor: "#0d3b49",
+            width: '100%'
+        },
     },
     menuItem: {
         backgroundColor: "#1a4653",
-        marginRight: 8,
-        marginLeft: 8,
-        marginBottom: 4,
+        marginRight: theme.spacing(1),
+        marginLeft: theme.spacing(1),
+        marginBottom: theme.spacing(1),
         textTransform: "none",
-        color: "#b2bfc4"
-    }
+        color: "#ced8db",
+        justifyContent: 'space-between'
+    },
+    iconMenu:{
+        fill: theme.palette.azul.pdn,
+        fontSize: theme.spacing(5)
+    },
+    iconSesion: {
+        width: theme.spacing(5),
+    },
 });
 
 
 const BannerMobile = props => {
     const {classes} = props;
-    const [showSistemas, setShowSistemas] = React.useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [dropDown, setDropDown] = React.useState(false);
-    const [dropDown2, setDropDown2] = React.useState(false);
     const open = Boolean(anchorEl);
+    const {systems} = props;
 
     const handleMenu = (event) => {
         setAnchorEl(event.currentTarget);
@@ -106,10 +80,6 @@ const BannerMobile = props => {
 
     const handleToggle = () => {
         setDropDown(!dropDown);
-    };
-
-    const handleToggle2nd = () => {
-        setDropDown2(!dropDown2);
     };
 
     return (
@@ -129,7 +99,7 @@ const BannerMobile = props => {
                         onClick={(event) => handleMenu(event)}
                         color="inherit"
                         size="large">
-                        <MoreHorizIcon style={{fill: "white", fontSize: "36px"}}/>
+                        <MoreHorizIcon className={classes.iconMenu}/>
                     </IconButton>
                     <Menu
                         id="menu-appbar"
@@ -145,60 +115,39 @@ const BannerMobile = props => {
                         open={open}
                         onClose={() => handleClose()}
                         className={classes.menu}
+                        PopoverClasses={classes.test}
                     >
 
                         <MenuItem className={classes.menuItem} component={Link} to="/mesa-de-ayuda">
-                            MESA DE AYUDA <img src={Mesa} alt="MESA DE AYUDA" className={classes.icon}/>
+                            <Typography style={{width:'100%'}}>MESA DE AYUDA</Typography> <img src={Mesa_logo} alt="MESA DE AYUDA" className={classes.icon}/>
                         </MenuItem>
                         <MenuItem className={classes.menuItem} component={Link} to="/especificaciones">
-                            ESPECIFICACIONES<img src={Espe} alt="ESPECIFICACIONES" className={classes.icon}/>
+                            <Typography style={{width:'100%'}}>ESPECIFICACIONES</Typography><img src={Especificaciones_logo} alt="ESPECIFICACIONES" className={classes.icon}/>
                         </MenuItem>
                         <MenuItem className={classes.menuItem} component={"a"} onClick={() => handleToggle()}>
-                            SISTEMAS<img src={Mesa} alt="SISTEMAS" className={classes.icon}/>
+                            <Typography style={{width:'100%'}}>SISTEMAS</Typography><img src={Sistemas_logo} alt="SISTEMAS" className={classes.icon}/>
                         </MenuItem>
-                            <Collapse className={classes.menuItem} in={dropDown} timeout="auto" unmountOnExit>
+                            <Collapse in={dropDown} timeout="auto" unmountOnExit>
                                 <List dense={true} component="div">
-                                    <ListItem button component={Link} to={"/declaraciones"}
-                                              className={classes.nested}>
-                                        <img src={S1_logo} alt="Declaraciones" className={classes.iconSistemas}/>
-                                        <ListItemText primary='Declaraciones'/>
-                                    </ListItem>
-                                    <ListItem button component={Link} to={"/servidores"} className={classes.nested}>
-                                        <img src={S2_logo} alt="S. P. En contrataciones"
-                                             className={classes.iconSistemas}/>
-                                        <ListItemText primary='S. P. En contrataciones'/>
-                                    </ListItem>
-                                    <ListItem button component={Link} to={"/sancionados"}
-                                              className={classes.nested}>
-                                        <img src={S3_logo} alt="Sancionados" className={classes.iconSistemas}/>
-                                        <ListItemText primary='Sancionados'/>
-                                    </ListItem>
-                                    <ListItem button component={Link} to={"#"} disabled={true}
-                                              className={classes.nested}>
-                                        <img src={S4_logo} alt="Fiscalización" className={classes.iconSistemas}/>
-                                        <ListItemText primary='Fiscalización'/>
-                                    </ListItem>
-                                    <ListItem button component={Link} to={"#"} disabled={true}
-                                              className={classes.nested}>
-                                        <img src={S5_logo} alt="Denuncias" className={classes.iconSistemas}/>
-                                        <ListItemText primary='Denuncias'/>
-                                    </ListItem>
-                                    <ListItem button component={Link} to={"/contrataciones"}
-                                              className={classes.nested}>
-                                        <img src={S6_logo} alt="Contrataciones" className={classes.iconSistemas}/>
-                                        <ListItemText primary='Contrataciones'/>
-                                    </ListItem>
+                                    {systems.map(system => {
+                                        return (
+                                        <ListItem button component={Link} to={system.url} key={system.name}
+                                                  className={classes.nested} disabled={system.disabled}>
+                                            <img src={system.icon} alt={system.name} className={classes.iconSistemas}/>
+                                            <Typography color={system.color}>{system.name}</Typography>
+                                        </ListItem>
+                                        )
+                                    })}
                                 </List>
                             </Collapse>
-
                         <MenuItem className={classes.menuItem} component={Button}
                                   href="https://www.plataformadigitalnacional.org/mapa-sla/">
-                            INTERCONEXIÓN<img src={Interconexion} alt="Interconexión subnacional"
+                            <Typography style={{width:'100%'}}>INTERCONEXIÓN</Typography><img src={Interconexion_logo} alt="Interconexión subnacional"
                                               className={classes.icon}/>
                         </MenuItem>
                         <MenuItem className={classes.menuItem} component={Button}
                                   href="https://mda.plataformadigitalnacional.org/">
-                            MDA<img src={MDA} alt="Mercado Digital Anticorrupción" className={classes.icon}/>
+                            <Typography style={{width:'100%'}}>MDA</Typography><img src={MDA_logo} alt="Mercado Digital Anticorrupción" className={classes.icon}/>
                         </MenuItem>
                     </Menu>
                     <IconButton sx={{flexGrow: 1}}
@@ -210,6 +159,11 @@ const BannerMobile = props => {
                                 size="large">
                         <img src={imgHeader} alt="PDN" style={{height: "40px"}}/>
                     </IconButton>
+                    <img
+                        src={LoginIcon}
+                        className={classes.iconSesion}
+                        alt="Iniciar sesión"
+                    />
                 </Toolbar>
             </AppBar>
         </Box>

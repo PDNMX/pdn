@@ -2,67 +2,50 @@ import React, {useEffect, useRef} from "react";
 import withStyles from '@mui/styles/withStyles';
 import {Typography, Grid} from "@mui/material";
 import {Link} from "react-router-dom";
-import S1_logo from "../../assets/rediseno/ico_s1_color.svg";
-import S2_logo from "../../assets/rediseno/ico_s2_color.svg";
-import S3_logo from "../../assets/rediseno/ico_s3_color.svg";
-import S4_logo from "../../assets/rediseno/ico_s4_color.svg";
-import S5_logo from "../../assets/rediseno/ico_s5_color.svg";
-import S6_logo from "../../assets/rediseno/ico_s6_color.svg";
+import S1_logo from "../../assets/rediseno/ico_sistemas/ico_s1_color.svg";
+import S2_logo from "../../assets/rediseno/ico_sistemas/ico_s2_color.svg";
+import S3_logo from "../../assets/rediseno/ico_sistemas/ico_s3_color.svg";
+import S4_logo from "../../assets/rediseno/ico_sistemas/ico_s4_color.svg";
+import S5_logo from "../../assets/rediseno/ico_sistemas/ico_s5_color.svg";
+import S6_logo from "../../assets/rediseno/ico_sistemas/ico_s6_color.svg";
 
 const styles = theme => ({
     root: {
         backgroundColor: '#364e56',
-        paddingTop: 20,
-        paddingBottom: 20,
+        paddingTop: theme.spacing(3),
+        paddingBottom: theme.spacing(3),
         position: 'absolute'
     },
     item: {
         "&:hover": {
-            transform: 'scale(1.1)',
-            borderWidth: 3
+            borderWidth: 3,
+            backgroundColor: "#64808f"
         },
-        padding: 10,
+        padding: theme.spacing(1),
         borderStyle: 'solid',
-        minWidth: 200,
+        minWidth: theme.spacing(25),
         transition: 'height 2s'
     },
     opc: {
-        marginBottom: 10,
-        marginTop: 10,
+        marginBottom: theme.spacing(1),
+        marginTop: theme.spacing(1),
         textAlign: 'center',
     },
     icon: {
-        maxWidth: 60,
-        paddingBottom: 10
+        maxWidth: theme.spacing(7),
+        paddingBottom: theme.spacing(1)
     },
     link: {
         textDecoration: "none",
         color: "#b2bfc4"
-    },
-    textS1: {
-        color: theme.palette.S1.color
-    },
-    textS2: {
-        color: theme.palette.S2.color
-    },
-    textS3: {
-        color: theme.palette.S3.color
-    },
-    textS4: {
-        color: theme.palette.S4.color
-    },
-    textS5: {
-        color: theme.palette.S5.color
-    },
-    textS6: {
-        color: theme.palette.S6.color
-    },
+    }
 
 });
 
 const SistemasMenu = props => {
-    const {classes} = props;
+    const {classes, systems} = props;
     const innerRef = useRef(null);
+
     useEffect(() => {
         const x = document.getElementById("sistemasMenu");
         x.addEventListener("mouseleave", toggle);
@@ -70,20 +53,30 @@ const SistemasMenu = props => {
             x.removeEventListener("mouseleave", toggle);
         };
     }, []);
+
     const toggle = (e) => {
         props.toogle();
     }
+
     return (
         <Grid id={"sistemasMenu"} ref={innerRef} container className={classes.root} justifyContent={'space-evenly'}>
-            <Grid item xs={1} className={`${classes.item} ${classes.textS1}`}>
-                <div className={`${classes.opc} `}>
-                    <Link className={classes.link} to="/declaraciones">
-                        <img src={S1_logo} alt="PDN" className={classes.icon}/>
-                        <Typography className={classes.textS1}>Sistema de Declaraciones</Typography>
-                    </Link>
-                </div>
-            </Grid>
-            <Grid item xs={1} className={`${classes.item} ${classes.textS2}`}>
+            {
+                systems.map(system => {
+                    return (
+                        <Grid item xs={1} className={`${classes.item}`} style={{"color": system.color}} key={system.name}>
+                            <div className={`${classes.opc} `}>
+                                <Link className={classes.link} to={system.url}>
+                                    <img src={system.icon} alt="PDN" className={classes.icon}/>
+                                    <Typography color={system.color} >{system.name}</Typography>
+                                </Link>
+                            </div>
+                        </Grid>
+                    );
+                })
+            }
+            {
+                /*
+                  <Grid item xs={1} className={`${classes.item} ${classes.textS2}`}>
                 <div className={`${classes.opc}`}>
                     <Link className={classes.link} to="/servidores">
                         <img src={S2_logo} alt="PDN" className={classes.icon}/>
@@ -124,6 +117,9 @@ const SistemasMenu = props => {
                     </Link>
                 </div>
             </Grid>
+                 */
+            }
+
         </Grid>
     );
 }

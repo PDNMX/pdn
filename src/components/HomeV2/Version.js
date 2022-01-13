@@ -4,14 +4,14 @@ import {Typography, Grid} from "@mui/material";
 
 const styles = theme => ({
     root:{
-        backgroundColor: '#35a2d2',
+        backgroundColor: theme.palette.azul.pdn,
         padding: 2,
         color: '#3e5968',
-        paddingLeft: 30
+        paddingLeft: theme.spacing(8)
 
     },
     fecha:{
-        color: '#fff'
+        color: '#ced8db'
     }
 });
 
