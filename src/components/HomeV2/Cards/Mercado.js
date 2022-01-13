@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import withStyles from '@mui/styles/withStyles';
 import { CardHeader } from '@mui/material';
 
-import logo from '../../../assets/Cards/logo_mda.svg';
+import logo from '../../../assets/CardsHome/logo_mda.svg';
 
 const style = theme => ({
   root: {
