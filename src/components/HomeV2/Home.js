@@ -9,6 +9,7 @@ import IconS4 from "../../assets/rediseno/ico_sistemas/ico_s4_color.svg";
 import IconS5 from "../../assets/rediseno/ico_sistemas/ico_s5_color.svg";
 import IconS6 from "../../assets/rediseno/ico_sistemas/ico_s6_color.svg";
 import Banner from "./Banner";
+import bgimg from "../../assets/rediseno/fondo_cruces.png";
 
 import Footer from './Footer';
 import Cards from './Cards';
@@ -19,6 +20,8 @@ import Numeralia from "./Numeralia"
 const styles = theme => ({
     root: {
         flexGrow :1,
+        backgroundImage: `url(${bgimg})`,
+        backgroundRepeat: "repeat"
     },
     item: {
         maxWidth: 1200
@@ -80,9 +83,8 @@ const systems = [
 const Home = props => {
     const { classes } = props;
 
-
     return (
-        <React.Fragment>
+        <div className={classes.root}>
             <Banner systems={systems}/>
             <Version/>
             <QueEsPDN/>
@@ -90,7 +92,7 @@ const Home = props => {
             <BlogSys/>
             <Cards/>
             <Footer/>
-        </React.Fragment>
+        </div>
     );
 }
 
