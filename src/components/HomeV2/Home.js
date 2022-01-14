@@ -88,7 +88,7 @@ const Home = props => {
             <Banner systems={systems}/>
             <Version/>
             <QueEsPDN/>
-            
+            <Numeralia/>
             <BlogSys/>
             <Cards/>
             <Footer/>
