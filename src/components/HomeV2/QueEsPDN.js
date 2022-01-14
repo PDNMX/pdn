@@ -1,31 +1,43 @@
-
-
 import React from "react";
 import withStyles from '@mui/styles/withStyles';
-import {Box, Typography, Grid} from "@mui/material";
+import {Paper, Typography, Grid} from "@mui/material";
 
+import bgPDN from '../../assets/bg.jpg';
 
 const styles = theme => ({
-
     container: {
-        paddingTop: 100,
-        paddingBottom: 90,
+        opacity: 0.95,
+        padding: "5% 10% 5% 10%",
         backgroundColor: '#263d49',
         
     },
+    bg: {
+        backgroundImage: `url(${bgPDN})`,
+        backgroundSize: "cover",
+        backgroundPosition: 'center'
+    },
     headingText: {
-        color: "#d0d7d9",
+        color: "#ced8db",
         fontWeight: "700",
-        fontSize: '48px',
+        fontSize: '52px',
         [theme.breakpoints.down('md')]:{
             fontSize: '40px',
         },
+        
+    },
+    subTitle:{
+        fontSize: '30px',
+        fontWeight: 500,
+        textTransform :'uppercase',
+        color: "#ced8db",
+        "& b": {
+            color: "#3bb1e6",
+        }
     },
     text:{
         fontSize: '18px',
         fontWeight: 500,
-        color: "#d0d7d9",
-        paddingBottom: theme.spacing(3)
+        color: "#ced8db",
     },
 });
 
@@ -35,30 +47,30 @@ const QueEsPDN = props => {
 
     return (
         <React.Fragment>
-            <Grid container spacing={0} justifyContent='center' className={classes.container}>
-                <Grid item xs={6} align="left">
+            <Paper className={classes.bg}>
+            <Grid container spacing={0} alignItems="center" justifyContent='center' className={classes.container}>
+                <Grid item md={6} sm={12} xs={12} align="left">
                     <Typography className={classes.headingText} paragraph>
-                        Plataforma Digital Nacional
+                        Plataforma
+                    <br />
+                        Digital Nacional
                     </Typography>
                     
-                    <Typography className={classes.text} paragraph>
-                        Una fuente de inteligencia para construir integridad y combatir la corrupción, que crea valor para el gobierno y la sociedad, a partir de grandes cantidades de datos.
+                    <Typography className={classes.subTitle} paragraph>
+                        Inteligencia <b>Anticorrupción</b>
                     </Typography>
                 </Grid>
-                <Grid item xs={6} align="left" >
-                    
+                <Grid item md={6} sm={12} xs={12} align="left" >
                     <Typography className={classes.text} paragraph>
-                    La <b>Plataforma Digital Nacional (PDN)</b> del Sistema Nacional Anticorrupción (SNA) es un <b>instrumento de inteligencia</b> que tiene como objetivo eliminar las barreras de información para que los datos públicos sean comparables, accesibles y utilizables a efecto de combatir culaquier acto de corrupción.
-                    </Typography>
-                    <Typography className={classes.text} paragraph>
+                    La <b>Plataforma Digital Nacional (PDN)</b> del Sistema Nacional Anticorrupción (SNA) es un <b>instrumento de inteligencia</b> que tiene como objetivo eliminar las barreras de información para que los datos públicos sean comparables, accesibles y utilizables a efecto de combatir cualquier acto de corrupción.
+                    <br/><br/>
                     <b>La Secretaría Ejecutiva del Sistema Nacional Anticorrupción (SESNA)</b>, organismo descentralizado no sectorizado, es responsable de administrar la <b>Plataforma Digital Nacional</b>.
-                    </Typography>
-                    <Typography className={classes.text} paragraph>
+                    <br/><br/>
                     La PDN no es un repositorio ni generadora de los datos de cada sistema, sino que es una plataforma de <b>interoperabilidad</b>.
                     </Typography>
                 </Grid>
-                
             </Grid>
+            </Paper>
         </React.Fragment>
     );
 }
