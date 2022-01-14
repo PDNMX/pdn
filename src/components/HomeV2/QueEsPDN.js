@@ -46,7 +46,7 @@ const styles = theme => ({
         backgroundColor: "#ced8db",
         '&:hover': {
             backgroundColor: "#eeeeee",
-    },
+        },
     }
 });
 
@@ -77,10 +77,13 @@ const QueEsPDN = props => {
                     <br/><br/>
                     La PDN no es un repositorio ni generadora de los datos de cada sistema, sino que es una plataforma de <b>interoperabilidad</b>.
                     </Typography>
-                    <Grid container direction="row" justifyContent="flex-end" alignItems="flex-end" md={12} sm={12} xs={12}>
-                        <Button size="small" className={classes.btnPDN}>Conoce más</Button>
+
+                    <Grid container direction="row" justifyContent="flex-end" alignItems="flex-end">
+                        <Grid item md={12} sm={12} xs={12} align="right">
+                            <Button size="small" className={classes.btnPDN}>Conoce más</Button>
+                        </Grid>
                     </Grid>
-                    
+                
                 </Grid>
             </Grid>
             </Paper>

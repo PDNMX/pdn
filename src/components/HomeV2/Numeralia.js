@@ -50,7 +50,7 @@ const Numeralia = props => {
     return (
         <React.Fragment>
             <Paper className={classes.bg}>
-            <Grid container direction="row"  alignItems="center" justifyContent='center' className={classes.container}>
+            <Grid container direction="row"  alignItems="flex-start" justifyContent='center' className={classes.container}>
                 <Grid item md={2} sm={6} xs={12} align="center">
                     <Typography className={classes.headingText} paragraph>
                         39+
