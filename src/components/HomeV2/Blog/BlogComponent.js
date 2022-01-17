@@ -1,5 +1,5 @@
 import React from "react";
-import {Typography, Box} from "@mui/material";
+import {Typography, Box, Button} from "@mui/material";
 import {withStyles} from "@mui/styles";
 import BlogCard from "./BlogCard";
 import icon_blog from "../../../assets/rediseno/ico_blog.svg";
@@ -18,6 +18,11 @@ const styles = theme => ({
     icon:{
         width: 50,
         paddingRight: 10
+    },
+    button :{
+        margin: theme.spacing(1),
+        background: "rgb(255,255,255,0.5)",
+        borderRadius: "50px"
     }
 });
 
@@ -38,7 +43,7 @@ const BlogComponent = props => {
             method: "GET",
             params: {
                 key: process.env.REACT_APP_BLOG_API_KEY,
-                limit: 6,
+                limit: 4,
             },
             json: true
         };
@@ -63,11 +68,19 @@ const BlogComponent = props => {
                     </CustomTypography>
                 </Box>
             </Box>
+
             {
                 posts.map((p, i) => {
                     return <BlogCard key={i} post={p}/>
                 })
             }
+
+            <Button variant="contained"
+                    className={classes.button}
+                    href="https://www.plataformadigitalnacional.org/blog"
+            >
+                Conoce más
+            </Button>
         </div>
     );
 }

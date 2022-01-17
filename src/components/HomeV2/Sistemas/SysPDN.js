@@ -1,6 +1,6 @@
 import React from 'react';
-import {Typography, Box} from "@mui/material";
-import {withStyles} from "@mui/styles";
+import {Typography, Box, useMediaQuery} from "@mui/material";
+import {withStyles, useTheme} from "@mui/styles";
 import SysCard from "./SysCard";
 import IconS1 from "../../../assets/rediseno/ico_sistemas/ico_s1_color.svg"
 import IconS2 from "../../../assets/rediseno/ico_sistemas/ico_s2_color.svg"
@@ -62,6 +62,10 @@ const CustomTypography = withStyles({
 
 const SysPDN = props => {
     const {classes} = props;
+    const theme = useTheme();
+
+    const justify = useMediaQuery(theme.breakpoints.down("md")) ? "center" : "left"
+
     return (
         <div>
             <CustomTypography variant="h3" fontWeight="bold" paragraph>
@@ -74,7 +78,7 @@ const SysPDN = props => {
                 la <b>Ley General del Sistema Nacional Anticorrupción (LGSNA).</b>
             </CustomTypography>
 
-            <Box display="flex" flexWrap="wrap">
+            <Box display="flex" flexWrap="wrap" justifyContent = {justify}>
             {
                 systems.map((s, i) => {
                     return <SysCard key={i} sys={s}/>
