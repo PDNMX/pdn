@@ -9,8 +9,7 @@ import bgNumeralia from '../../assets/numeralia/bg.jpg';
 const styles = theme => ({
     container: {
         opacity: 0.95,
-        paddingTop: 100,
-        paddingBottom: 100,
+        padding: "5% 3%",
         backgroundColor: '#35a2d2',
     },
     bg: {
@@ -23,7 +22,7 @@ const styles = theme => ({
         
     },
     containerFoot: {
-        backgroundColor: '#263d49',
+        backgroundColor: '#0d3b49',
     },
     headingText: {
         color: "#efd643",
@@ -51,7 +50,7 @@ const Numeralia = props => {
     return (
         <React.Fragment>
             <Paper className={classes.bg}>
-            <Grid container direction="row"  alignItems="center" justifyContent='center' className={classes.container}>
+            <Grid container direction="row"  alignItems="flex-start" justifyContent='center' className={classes.container}>
                 <Grid item md={2} sm={6} xs={12} align="center">
                     <Typography className={classes.headingText} paragraph>
                         39+

@@ -1,14 +1,14 @@
 import React from "react";
 import withStyles from '@mui/styles/withStyles';
-import {Paper, Typography, Grid} from "@mui/material";
+import {Button, Paper, Typography, Grid} from "@mui/material";
 
 import bgPDN from '../../assets/bg.jpg';
 
 const styles = theme => ({
     container: {
         opacity: 0.95,
-        padding: "5% 10% 5% 10%",
-        backgroundColor: '#263d49',
+        padding: "5% 10%",
+        backgroundColor: '#1d506d',
         
     },
     bg: {
@@ -39,6 +39,15 @@ const styles = theme => ({
         fontWeight: 500,
         color: "#ced8db",
     },
+    btnPDN:{
+        color: "#5b747f",
+        borderRadius: '50px',
+        padding: '5px 10px',
+        backgroundColor: "#ced8db",
+        '&:hover': {
+            backgroundColor: "#eeeeee",
+        },
+    }
 });
 
 const QueEsPDN = props => {
@@ -68,6 +77,13 @@ const QueEsPDN = props => {
                     <br/><br/>
                     La PDN no es un repositorio ni generadora de los datos de cada sistema, sino que es una plataforma de <b>interoperabilidad</b>.
                     </Typography>
+
+                    <Grid container direction="row" justifyContent="flex-end" alignItems="flex-end">
+                        <Grid item md={12} sm={12} xs={12} align="right">
+                            <Button size="small" className={classes.btnPDN}>Conoce más</Button>
+                        </Grid>
+                    </Grid>
+                
                 </Grid>
             </Grid>
             </Paper>
