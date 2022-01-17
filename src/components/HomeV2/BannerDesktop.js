@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import withStyles from '@mui/styles/withStyles';
 import {AppBar, Box, Typography, Grid, IconButton, Collapse} from "@mui/material";
 import {Link} from "react-router-dom";
@@ -10,6 +10,7 @@ import Sistemas from "../../assets/rediseno/ico_sistemas_f.svg";
 import Interconexion from "../../assets/rediseno/ico_interconexion.svg";
 import LoginIcon from "../../assets/rediseno/ico_login.svg";
 import SistemasMenu from "./SistemasMenu";
+import InterconexionMenu from "./InterconexionMenu";
 
 const styles = theme => ({
     root: {
@@ -25,6 +26,9 @@ const styles = theme => ({
         },
         paddingBottom: theme.spacing(2),
         textAlign: 'center'
+    },
+    selected:{
+        backgroundColor: "#64808f"
     },
     icon: {
         width: theme.spacing(7),
@@ -61,12 +65,31 @@ const styles = theme => ({
 const BannerDesktop = props => {
     const {classes, systems} = props;
     const [showSistemas, setShowSistemas] = React.useState(false);
+    const [showInterconexion, setShowInterconexion] = React.useState(false);
 
     const toggle = () => {
         setTimeout(() => {
-            setShowSistemas(!showSistemas)
+            setShowSistemas(!showSistemas);
         }, 1000)
     }
+
+    const toggleInterconexion = () => {
+        setTimeout(() => {
+            setShowInterconexion(!showInterconexion)
+        }, 1000)
+    }
+
+    useEffect(() => {
+        if(showSistemas){
+            setShowInterconexion(false);
+        }
+    },[showSistemas]);
+
+    useEffect(() => {
+        if(showInterconexion){
+            setShowSistemas(false);
+        }
+    },[showInterconexion]);
 
     return (
         <React.Fragment>
@@ -98,7 +121,7 @@ const BannerDesktop = props => {
                                     <Typography className={classes.textMenu}>ESPECIFICACIONES</Typography>
                                 </Link>
                             </Grid>
-                            <Grid item className={classes.opc} onClick={() => setShowSistemas(!showSistemas)}>
+                            <Grid item className={`${classes.opc} ${showSistemas ? classes.selected: ""} `} onClick={() => setShowSistemas(!showSistemas)}>
                                 <img
                                     src={Sistemas}
                                     className={classes.icon}
@@ -106,17 +129,13 @@ const BannerDesktop = props => {
                                 />
                                 <Typography className={classes.textMenu}>SISTEMAS</Typography>
                             </Grid>
-                            <Grid item className={classes.opc}>
-                                <Link to="https://mda.plataformadigitalnacional.org/"
-                                      underline="none"
-                                      className={classes.link}>
-                                    <img
-                                        src={Interconexion}
-                                        className={classes.icon}
-                                        alt="Mercado Digital Anticorrupción"
-                                    />
-                                    <Typography className={classes.textMenu}>INTERCONEXIÓN</Typography>
-                                </Link>
+                            <Grid item className={`${classes.opc} ${showInterconexion ? classes.selected: ""}`} onClick={() => setShowInterconexion(!showInterconexion)}>
+                                <img
+                                    src={Interconexion}
+                                    className={classes.icon}
+                                    alt="Interconexión"
+                                />
+                                <Typography className={classes.textMenu}>INTERCONEXIÓN</Typography>
                             </Grid>
                             <Grid item className={classes.opc}>
                                 <a href="https://mda.plataformadigitalnacional.org/"
@@ -145,6 +164,9 @@ const BannerDesktop = props => {
             </AppBar>
             {showSistemas &&
             <SistemasMenu toogle={() => toggle()} systems={systems}/>
+            }
+            {showInterconexion &&
+            <InterconexionMenu toogle={() => toggleInterconexion()}/>
             }
 
         </React.Fragment>

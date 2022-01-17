@@ -12,6 +12,8 @@ import MDA_logo from "../../assets/rediseno/ico_mda.svg";
 import Interconexion_logo from "../../assets/rediseno/ico_interconexion.svg";
 import Sistemas_logo from "../../assets/rediseno/ico_sistemas_f.svg";
 import LoginIcon from "../../assets/rediseno/ico_login.svg";
+import legislacion_icono from "../../assets/rediseno/ico_interconexion_legislacion.svg";
+import mapa_s2s3_icono from "../../assets/rediseno/ico_interconexion_s2-s3.svg";
 
 const styles = theme => ({
     root: {
@@ -66,6 +68,7 @@ const BannerMobile = props => {
     const {classes} = props;
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [dropDown, setDropDown] = React.useState(false);
+    const [dropDownInterconexion, setDropDownInterconexion] = React.useState(false);
     const open = Boolean(anchorEl);
     const {systems} = props;
 
@@ -80,6 +83,12 @@ const BannerMobile = props => {
 
     const handleToggle = () => {
         setDropDown(!dropDown);
+        setDropDownInterconexion(false);
+    };
+
+    const handleToggleInterconexion = () => {
+        setDropDownInterconexion(!dropDownInterconexion);
+        setDropDown(false);
     };
 
     return (
@@ -140,11 +149,23 @@ const BannerMobile = props => {
                                     })}
                                 </List>
                             </Collapse>
-                        <MenuItem className={classes.menuItem} component={Button}
-                                  href="https://www.plataformadigitalnacional.org/mapa-sla/">
-                            <Typography style={{width:'100%'}}>INTERCONEXIÓN</Typography><img src={Interconexion_logo} alt="Interconexión subnacional"
-                                              className={classes.icon}/>
+                        <MenuItem className={classes.menuItem} component={"a"} onClick={() => handleToggleInterconexion()}>
+                            <Typography style={{width:'100%'}}>INTERCONEXIÓN</Typography><img src={Interconexion_logo} alt="Interconexión subnacional" className={classes.icon}/>
                         </MenuItem>
+                        <Collapse in={dropDownInterconexion} timeout="auto" unmountOnExit>
+                            <List dense={true} component="div">
+                                <ListItem button component={Button} href={'https://www.plataformadigitalnacional.org/mapa-sla/'} key={'legislacion'}
+                                          className={classes.nested}>
+                                    <img src={legislacion_icono} alt={'Legislación'} className={classes.iconSistemas}/>
+                                    <Typography color={'#b2bfc4'}>{'Legislación'}</Typography>
+                                </ListItem>
+                                <ListItem button component={Button} href={'https://www.plataformadigitalnacional.org/mapa-avance/'} key={'mapa'}
+                                          className={classes.nested}>
+                                    <img src={mapa_s2s3_icono} alt={''} className={classes.iconSistemas}/>
+                                    <Typography color={'#b2bfc4'}>{'Sistemas 2 y 3'}</Typography>
+                                </ListItem>
+                            </List>
+                        </Collapse>
                         <MenuItem className={classes.menuItem} component={Button}
                                   href="https://mda.plataformadigitalnacional.org/">
                             <Typography style={{width:'100%'}}>MDA</Typography><img src={MDA_logo} alt="Mercado Digital Anticorrupción" className={classes.icon}/>
