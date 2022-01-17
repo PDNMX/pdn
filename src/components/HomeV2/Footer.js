@@ -2,6 +2,9 @@ import { Grid, Typography } from '@mui/material';
 import React from 'react';
 import withStyles from '@mui/styles/withStyles';
 
+import { useTheme } from '@emotion/react';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 //iconos
 import icon_youtube from '../../assets/footer/ico_youtube.svg';
 import icon_twitter from '../../assets/footer/ico_twitter.svg';
@@ -18,8 +21,9 @@ const style = theme => ({
     flexGrow: 1,
     height: '200px',
     color: '#FFF',
-    backgroundColor: '#0d3b49',
-    opacity: 0.8
+    backgroundColor: '#FFF',
+    paddingTop: '20px',
+    opacity: 0.15
   },
   emailContacto: {
     display: 'inline-block',
@@ -40,14 +44,12 @@ const style = theme => ({
     border: 0
   },
   lsesna: {
-    width: '130px',
     marginTop: '35px',
     padding: 0,
     margin: 0,
     border: 0
   },
   lpdn: {
-    width: '150px',
     marginTop: '35px',
     padding: 0,
     margin: 0,
@@ -60,12 +62,26 @@ const style = theme => ({
     with: '100%',
     height: '50px',
     marginTop: '10px'
+  },
+  linkMobile: {
+    alignContent: 'center',
+    color: '#FFF'
+  },
+  footerMobileSeccEnlaces: {
+    backgroundColor: '#FFF',
+    opacity: 0.15
   }
 });
 
+function useIsWidthUp(breakpoint) {
+  const theme = useTheme();
+  return useMediaQuery(theme.breakpoints.up(breakpoint));
+}
 const Footer = props => {
   const { classes } = props;
-  return (
+  const isXsUp = useIsWidthUp('lg');
+
+  return isXsUp ? (
     <Grid container spacing={0} className={classes.root}>
       <Grid item lg={3}>
         <Grid container style={{ marginTop: '35px' }}>
@@ -124,17 +140,32 @@ const Footer = props => {
       </Grid>
       <Grid item lg={4}>
         <Grid container>
-          <Grid item xs={6} textAlign={'center'}>
+          <Grid item lg={3} textAlign={'center'}>
             <figure>
               <img alt='Logo SESNA' src={logoSESNA} className={classes.lsesna} />
             </figure>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item lg={4}>
             <figure>
               <img alt='Logo PDN' src={logoPDN} className={classes.lpdn} />
             </figure>
           </Grid>
         </Grid>
+      </Grid>
+    </Grid>
+  ) : (
+    <Grid container spacing={0} justifyContent={'center'} className={classes.footerMobileSeccEnlaces}>
+      <Grid item xs={4}>
+        <Typography className={root.linkMobile}>Preguntas frecuentes</Typography>
+      </Grid>
+      <Grid item xs={4}>
+        <Typography className={root.linkMobile}>Boletines de prensa</Typography>
+      </Grid>
+      <Grid item xs={4}>
+        <Typography className={root.linkMobile}>Videos</Typography>
+      </Grid>
+      <Grid item xs={4}>
+        <Typography className={root.linkMobile}>Mapa de sitio</Typography>
       </Grid>
     </Grid>
   );
