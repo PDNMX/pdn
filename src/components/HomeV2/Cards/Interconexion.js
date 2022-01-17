@@ -15,9 +15,9 @@ const style = theme => ({
     flexGrow: 1,
     backgroundColor: '#3E5866',
     color: '#55575a',
-    borderRadius: '25px',
-    margin: '30px 10px',
-    width: '400px'
+    // borderRadius: '25px',
+    margin: '30px auto',
+    width: '90%'
   },
   header: {
     backgroundColor: '#3E5866',
@@ -45,11 +45,11 @@ const Interconexion = props => {
     <Card className={classes.root}>
       <CardHeader className={classes.header}></CardHeader>
       <CardContent className={classes.body}>
-        <Typography variant='body2' color='text.secondary'>
+        <Typography color='text.secondary'>
           Este tablero muestra los avances trimestrales de las Secretarias Ejecutivas de los Sistemas Locales Anticorrupción en el desarrollo de los <strong>sistemas 2 y 3</strong>
         </Typography>
         <br />
-        <Typography variant='body2' color='text.secondary'>
+        <Typography color='text.secondary'>
           A través de un cuestionario elaborado por la SESNA, es posible conocer el progreso en las siguientes categorías: <strong>Normatividad, Infraestructura, Capital humano, Mapeo y grestión de datos y Desarrollo de mecanismos de comunicación.</strong>
         </Typography>
       </CardContent>

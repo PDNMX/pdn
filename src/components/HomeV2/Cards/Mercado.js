@@ -15,9 +15,9 @@ const style = theme => ({
     flexGrow: 1,
     backgroundColor: '#3E5866',
     color: '#55575a',
-    borderRadius: '25px',
-    margin: '30px 10px',
-    width: '400px'
+    // borderRadius: '25px',
+    margin: '30px auto',
+    width: '90%'
   },
   header: {
     backgroundColor: '#3E5866',
@@ -45,13 +45,11 @@ const Cards = props => {
     <Card className={classes.root}>
       <CardHeader className={classes.header}></CardHeader>
       <CardContent className={classes.body}>
-        <Typography variant='body2' color='text.secondary'>
+        <Typography color='text.secondary'>
           El <strong>Mercado Digital Anticorrupción (MDA)</strong> es un espacio en el que se encuentran disponibles <strong>herramientas de uso libre</strong> con las que se busca facilitar el desarrollo y conexión con los sistemas que conforman la Plataforma Digital Nacional
         </Typography>
         <br />
-        <Typography variant='body2' color='text.secondary'>
-          Cuenta con herramientas que fueron desarrolladas por diversas instituciones y que cumplen los objetivos de la PDN
-        </Typography>
+        <Typography color='text.secondary'>Cuenta con herramientas que fueron desarrolladas por diversas instituciones y que cumplen los objetivos de la PDN</Typography>
       </CardContent>
       <CardActions className={classes.body}>
         <Button className={classes.boton} size='medium'>

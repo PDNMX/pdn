@@ -8,9 +8,8 @@ import Interconexion from './Cards/Interconexion';
 const style = theme => ({
   root: {
     flexGrow: 1,
-    backgroundColor: '#0d3b49',
-    color: '#FFF'
-    // opacity: 0.67
+    color: '#FFF',
+    fontSize: '16px'
   }
 });
 
@@ -18,11 +17,10 @@ const Cards = props => {
   const { classes } = props;
   return (
     <Grid container spacing={0} justifyContent={'center'} className={classes.root}>
-      <Grid item xs={0} lg={3} />
-      <Grid item xs={12} lg={3}>
+      <Grid item xs={12} md={6} lg={3}>
         <Mercado />
       </Grid>
-      <Grid item xs={12} lg={3}>
+      <Grid item xs={12} md={6} lg={3}>
         <Interconexion />
       </Grid>
     </Grid>
