@@ -13,6 +13,8 @@ import Especificaciones from '../components/Especificaciones/Landing/Especificac
 import DeclaracionesEspecificaciones from '../components/Especificaciones/Declaraciones/Declaraciones';
 import EspecificacionesSancionados from '../components/Especificaciones/Sancionados/Sancionados';
 import EspecificacionesServidoresIntervienen from '../components/Especificaciones/ServidoresIntervienen/ServidoresIntervienen';
+import Sistema4 from '../components/Sistema4';
+import Sistema5 from '../components/Sistema5';
 
 import HelpDesk from '../components/HelpDesk/HelpDesk';
 // import DeclaracionesS1 from '../components/Declaraciones';
@@ -126,6 +128,18 @@ const pdnRoutes = [
 		exact: true,
 		path: '/contrataciones/especificaciones',
 		component: SpecsS6,
+		private: false
+	},
+	{
+		exact: true,
+		path: '/fiscalizacion',
+		component: Sistema4,
+		private: false
+	},
+	{
+		exact: true,
+		path: '/denuncias',
+		component: Sistema5,
 		private: false
 	}
 ];
