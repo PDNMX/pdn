@@ -1,7 +1,6 @@
 import React from 'react';
 import withStyles from '@mui/styles/withStyles';
 import {Link} from 'react-router-dom';
-import S2 from '../../../assets/iconos_azul/2_icono.svg'
 import {Typography, Grid} from "@mui/material"
 import '../../Utils/Header.css';
 import classNames from 'classnames';
@@ -10,6 +9,7 @@ import Particles from 'react-particles-js';
 import {getParams} from './ParticleParams';
 import useMediaQuery from "@mui/material/useMediaQuery";
 import {useTheme} from "@emotion/react";
+import IconS2 from "../../../assets/rediseno/ico_sistemas/ico_s2_light.svg";
 
 // FIXME checkout https://mui.com/components/use-media-query/#migrating-from-withwidth
 const withWidth = () => (WrappedComponent) => (props) => <WrappedComponent {...props} width="xs" />;
@@ -28,7 +28,7 @@ const style = theme => ({
             paddingLeft: theme.spacing(1),
             paddingRight: theme.spacing(1),
             position: 'relative',
-            background: "linear-gradient(0deg, rgba(6,13,21,1) 0%, rgba(64,114,129,1) 100%)",
+            background: "linear-gradient(0deg, #281426 0%, #B25FAC 100%)",
         },
         link: {
             textDecoration: 'none',
@@ -95,7 +95,7 @@ const Header = props => {
                 />
 
                 <Grid item xs={12} md={4} align = {isMdUp ? 'right' : ' center'}  className={classes.item1}>
-                    <img src={S2} alt="Sistema 2" className={classes.s2}/>
+                    <img src={IconS2} alt="Sistema 2" className={classes.s2}/>
                 </Grid>
                 <Grid item xs={12} md={6} className={classes.item2} align = {isMdUp ? 'left' : ' center'}>
                     <Typography variant="h4" paragraph className={classes.whiteText} style={{  fontWeight: 600}}>

@@ -58,7 +58,7 @@ const InterconexionMenu = props => {
         <Box id={"interconexionMenu"} ref={innerRef}  className={classes.root}
             sx={{
                 display: 'flex',
-                justifyContent: 'space-evenly'
+                justifyContent: 'center'
             }}
         >
             <Box className={`${classes.item}`}  sx={{

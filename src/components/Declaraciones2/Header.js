@@ -8,6 +8,7 @@ import BarraLogoMenu from "../Compartidos/BarraLogoMenu";
 import Particles from 'react-particles-js';
 import {useTheme} from "@emotion/react";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import IconS1 from "../../assets/rediseno/ico_sistemas/ico_s1_light.svg";
 
 // FIXME checkout https://mui.com/components/use-media-query/#migrating-from-withwidth
 const withWidth = () => (WrappedComponent) => (props) => <WrappedComponent {...props} width="xs" />;
@@ -50,7 +51,7 @@ const styles = theme => ({
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
     position: "relative",
-    background: "linear-gradient(0deg, rgba(6,13,21,1) 0%, rgba(64,114,129,1) 100%)",
+    background: "linear-gradient(0deg, #3c2420 0%, #F29888 100%)",
   },
   container2: {
     paddingTop: "75px",
@@ -297,7 +298,7 @@ const Header = props => {
             align={isMdUp ? "right" : "center"}
             className={classes.item1}
           >
-            <img src={logo} alt="Sistema 1" className={classes.s2} />
+            <img src={IconS1} alt="Sistema 1" className={classes.s2} />
           </Grid>
 
           <Grid
