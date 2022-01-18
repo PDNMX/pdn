@@ -22,7 +22,9 @@ const styles = theme => ({
     button :{
         margin: theme.spacing(1),
         background: "rgb(255,255,255,0.5)",
-        borderRadius: "50px"
+        borderRadius: "50px",
+        fontWeight: "bold",
+        fontStyle: "italic"
     }
 });
 
