@@ -2,7 +2,6 @@ import React from 'react';
 import withStyles from '@mui/styles/withStyles';
 import Grid from '@mui/material/Grid';
 import {Link} from 'react-router-dom';
-import S3 from '../../../assets/iconos_azul/3_icono.svg'
 import {Typography} from "@mui/material"
 import '../../Utils/Header.css'
 import classNames from 'classnames';
@@ -10,6 +9,7 @@ import BarraLogoMenu from "../../Compartidos/BarraLogoMenu";
 import Particles from 'react-particles-js';
 import {useTheme} from "@emotion/react";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import IconS3L from "../../../assets/rediseno/ico_sistemas/ico_s3_light.svg";
 
 // FIXME checkout https://mui.com/components/use-media-query/#migrating-from-withwidth
 const withWidth = () => (WrappedComponent) => (props) => <WrappedComponent {...props} width="xs" />;
@@ -29,7 +29,7 @@ const style = theme => ({
             paddingLeft: theme.spacing(1),
             paddingRight: theme.spacing(1),
             position: 'relative',
-            background: "linear-gradient(0deg, rgba(6,13,21,1) 0%, rgba(64,114,129,1) 100%)",
+            background: "linear-gradient(0deg, #1e1b2e 0%,#9085DA   100%)",
         },
         link: {
             textDecoration: 'none',
@@ -189,7 +189,7 @@ function Header (props){
                     />
                     <Grid item xs={12} md={4} align={isMdUp ? 'right' : 'center'}
                           className={classes.item1}>
-                        <img src={S3} alt="Sistema 2" className={classes.s2}/>
+                        <img src={IconS3L} alt="Sistema 2" className={classes.s2}/>
                     </Grid>
 
                     <Grid item xs={12} md={6} className={classes.item2}

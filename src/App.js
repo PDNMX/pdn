@@ -23,8 +23,6 @@ ReactGA.pageview(window.location.pathname + window.location.search);
 const theme = createTheme({
         typography: {
             useNextVariants: true,
-            //fontFamily: ['"Noto Sans SC"', "sans-serif"].join(
-            //fontFamily: ['"Noto Sans"', "sans-serif"].join(","),
             fontFamily: ['"Roboto"', "sans-serif"].join(","),
         },
         palette: {

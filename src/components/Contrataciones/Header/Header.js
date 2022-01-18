@@ -3,9 +3,9 @@ import withStyles from '@mui/styles/withStyles';
 import Grid from '@mui/material/Grid';
 import {Link as RouterLink} from 'react-router-dom';
 import Link from '@mui/material/Link';
-import C from '../../../assets/iconos_azul/6_icono.svg'
 import Typography from "@mui/material/Typography";
 import BarraLogoMenu from "../../Compartidos/BarraLogoMenu";
+import IconS6 from "../../../assets/rediseno/ico_sistemas/ico_s6_light.svg";
 
 import Particles from 'react-particles-js';
 import {getParams} from './ParticleParams';
@@ -34,7 +34,7 @@ const style = theme => ({
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
             position: 'relative',
-            background: "linear-gradient(0deg, rgba(6,13,21,1) 0%, rgba(64,114,129,1) 100%)",
+            background: "linear-gradient(0deg, #0a1c24 0%, #42A5CC 100%)",
         },
         link: {
             textDecoration: 'none',
@@ -103,7 +103,7 @@ const Header = props => {
                     params={getParams()}
                 />
                 <Grid item xs={12} md={4} align={isMdUp ? 'right':'center'} className={classes.item1}>
-                    <img src={C} alt="Especificaciones" className={classes.logo}/>
+                    <img src={IconS6} alt="Especificaciones" className={classes.logo}/>
                 </Grid>
 
                 <Grid item xs={12} md={6} className={classes.item2} align={isMdUp ? 'left':'center'}>

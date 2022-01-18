@@ -1,7 +1,8 @@
 import React, {useEffect, useRef} from "react";
 import withStyles from '@mui/styles/withStyles';
-import {Typography, Grid} from "@mui/material";
+import {Typography} from "@mui/material";
 import {Link} from "react-router-dom";
+import Box from "@mui/material/Box";
 
 const styles = theme => ({
     root: {
@@ -9,7 +10,8 @@ const styles = theme => ({
         paddingTop: theme.spacing(3),
         paddingBottom: theme.spacing(3),
         position: 'absolute',
-        zIndex: 2
+        zIndex: 2,
+        width:'100%'
     },
     item: {
         "&:hover": {
@@ -18,7 +20,7 @@ const styles = theme => ({
         padding: theme.spacing(1),
         borderStyle: 'solid',
         borderWidth: 2,
-        minWidth: theme.spacing(25),
+        maxWidth: theme.spacing(25),
         transition: 'height 2s'
     },
     opc: {
@@ -54,22 +56,30 @@ const SistemasMenu = props => {
     }
 
     return (
-        <Grid id={"sistemasMenu"} ref={innerRef} container className={classes.root} justifyContent={'space-evenly'}>
+        <Box id={"sistemasMenu"} ref={innerRef}  className={classes.root}
+             sx={{
+                 display: 'flex',
+                 justifyContent: 'space-evenly'
+             }}>
             {
                 systems.map(system => {
                     return (
-                        <Grid item xs={1} className={`${classes.item}`} style={{"color": system.color}} key={system.name}>
+                        <Box className={`${classes.item}`} sx={{
+                            m:1,
+                            p:2,
+                            color: system.color
+                        }}>
                             <div className={`${classes.opc} `}>
                                 <Link className={classes.link} to={system.url}>
                                     <img src={system.icon} alt="PDN" className={classes.icon}/>
                                     <Typography color={system.color} >{system.name}</Typography>
                                 </Link>
                             </div>
-                        </Grid>
+                        </Box>
                     );
                 })
             }
-        </Grid>
+        </Box>
     );
 }
 export default withStyles(styles)(SistemasMenu);
