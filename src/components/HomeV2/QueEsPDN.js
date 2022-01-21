@@ -2,13 +2,13 @@ import React from "react";
 import withStyles from '@mui/styles/withStyles';
 import {Button, Paper, Typography, Grid} from "@mui/material";
 
+
 import bgPDN from '../../assets/bg.jpg';
 
 const styles = theme => ({
     container: {
-        opacity: 0.95,
         padding: "5% 10%",
-        backgroundColor: '#1d506d',
+        backgroundColor: 'rgba(29, 80, 109, 0.95)',
         
     },
     bg: {
