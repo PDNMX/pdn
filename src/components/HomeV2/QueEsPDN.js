@@ -1,7 +1,7 @@
 import React from "react";
 import withStyles from '@mui/styles/withStyles';
 import {Button, Paper, Typography, Grid} from "@mui/material";
-
+import {Link} from "react-router-dom";
 
 import bgPDN from '../../assets/bg.jpg';
 
@@ -36,14 +36,18 @@ const styles = theme => ({
     },
     text:{
         fontSize: '18px',
-        fontWeight: 500,
-        color: "#ced8db",
+        fontWeight: 100,
+        color: "#d0d7d9",
+        "& b": {
+            fontWeight: 500,
+        }
     },
     btnPDN:{
-        color: "#5b747f",
-        borderRadius: '50px',
-        padding: '5px 10px',
-        backgroundColor: "#ced8db",
+        margin: theme.spacing(1),
+        background: "rgb(255,255,255,0.5)",
+        borderRadius: "50px",
+        fontWeight: "bold",
+        fontStyle: "italic",
         '&:hover': {
             backgroundColor: "#eeeeee",
         },
@@ -80,7 +84,9 @@ const QueEsPDN = props => {
 
                     <Grid container direction="row" justifyContent="flex-end" alignItems="flex-end">
                         <Grid item md={12} sm={12} xs={12} align="right">
-                            <Button size="small" className={classes.btnPDN}>Conoce más</Button>
+                            <Link className={classes.link} to="/about">
+                                <Button variant="contained" className={classes.btnPDN}>Conoce más</Button>
+                            </Link>
                         </Grid>
                     </Grid>
                 

@@ -6,17 +6,11 @@ import CountUp from 'react-countup';
 
 const ligaDatosNumeralia = process.env.REACT_APP_NUMERALIA;
 
-import bgNumeralia from '../../assets/numeralia/bg.jpg';
-
 const styles = theme => ({
     container: {
         padding: "5% 3%",
-        backgroundColor: 'rgba(42, 116, 145, 0.85)',
-    },
-    bg: {
-        backgroundImage: `url(${bgNumeralia})`,
-        backgroundSize: "cover",
-        backgroundPosition: 'center'
+        backgroundColor: 'rgba(42, 116, 145)',
+        minHeight: '320px'
     },
     Foot: {
         backgroundColor: '#3E5866',
@@ -72,7 +66,7 @@ const Numeralia = props => {
     if (isLoading) {
       return (
         <React.Fragment>
-        <Paper className={classes.bg}>
+        <Paper>
         <Grid container direction="row"  alignItems="flex-start" justifyContent='center' className={classes.container}>
             <Grid item md={12} sm={12} xs={12} align="center">
                 <Typography className={classes.headingText} paragraph>
@@ -106,7 +100,7 @@ const Numeralia = props => {
             <Grid container direction="row"  alignItems="flex-start" justifyContent='center' className={classes.container}>
                 <Grid item md={2} sm={6} xs={12} align="center">
                     <Typography className={classes.headingText} paragraph>
-                        <CountUp end={numeralia.values[0][1]} duration={3} delay={0}>
+                        <CountUp separator="," end={numeralia.values[0][1]} duration={3} delay={0}>
                             {({ countUpRef }) => (
                                 <div> <span ref={countUpRef} /></div>
                             )}
@@ -118,7 +112,7 @@ const Numeralia = props => {
                 </Grid>
                 <Grid item md={2} sm={6} xs={12} align="center">
                     <Typography className={classes.headingText} paragraph>
-                        <CountUp end={(numeralia.values[1][1])} duration={3} delay={0}>
+                        <CountUp separator="," end={(numeralia.values[1][1])} duration={3} delay={0}>
                             {({ countUpRef }) => (
                                 <div> <span ref={countUpRef} /></div>
                             )}
@@ -130,7 +124,7 @@ const Numeralia = props => {
                 </Grid>
                 <Grid item md={2} sm={6} xs={12} align="center">
                     <Typography className={classes.headingText} paragraph>
-                        <CountUp  end={numeralia.values[2][1]} duration={3} delay={0}>
+                        <CountUp separator="," end={numeralia.values[2][1]} duration={3} delay={0}>
                             {({ countUpRef }) => (
                                 <div> <span ref={countUpRef} /></div>
                             )}
@@ -142,7 +136,7 @@ const Numeralia = props => {
                 </Grid>
                 <Grid item md={2} sm={6} xs={12} align="center">
                     <Typography className={classes.headingText} paragraph>
-                        <CountUp  end={numeralia.values[3][1]} duration={3} delay={0}>
+                        <CountUp separator="," end={numeralia.values[3][1]} duration={3} delay={0}>
                             {({ countUpRef }) => (
                                 <div> <span ref={countUpRef} /></div>
                             )}
@@ -154,7 +148,7 @@ const Numeralia = props => {
                 </Grid>
                 <Grid item md={2} sm={6} xs={12} align="center">
                     <Typography className={classes.headingText} paragraph>
-                        <CountUp end={numeralia.values[4][1]} duration={3} delay={0}>
+                        <CountUp separator="," end={numeralia.values[4][1]} duration={3} delay={0}>
                             {({ countUpRef }) => (
                                 <div> <span ref={countUpRef} /></div>
                             )}
