@@ -47,11 +47,13 @@ const styles = theme => ({
         paddingBottom: theme.spacing(2),
         margin: 0,
         '&:hover':{
-            cursor: 'pointer'
+            cursor: 'pointer',
+            backgroundColor: theme.palette.S6.shade,
+            transition: 'background 0.3s ease',
         }
     },
     selectedTabItem:{
-        backgroundColor: theme.palette.pestanas.activa,
+        backgroundColor: theme.palette.S6.shade,
         paddingLeft: theme.spacing(1),
         paddingRight: theme.spacing(1),
         paddingTop: theme.spacing(2),

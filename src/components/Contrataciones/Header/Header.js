@@ -34,7 +34,7 @@ const style = theme => ({
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
             position: 'relative',
-            background: "linear-gradient(0deg, #0a1c24 0%, #42A5CC 100%)",
+            background: "linear-gradient(0deg, #42A5CC 0%, #42A5CC 100%)",
         },
         link: {
             textDecoration: 'none',
@@ -112,7 +112,7 @@ const Header = props => {
                         Contrataciones públicas
                     </Typography>
 
-                    <Typography variant="h4" paragraph className={classes.whiteText} style={{fontWeight: 300}}>
+                    <Typography variant="h4" paragraph className={classes.whiteText} style={{fontWeight: 400}}>
                         Sistema de Información Pública de Contrataciones
                     </Typography>
 

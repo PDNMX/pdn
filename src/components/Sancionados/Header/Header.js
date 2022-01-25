@@ -29,7 +29,7 @@ const style = theme => ({
             paddingLeft: theme.spacing(1),
             paddingRight: theme.spacing(1),
             position: 'relative',
-            background: "linear-gradient(0deg, #1e1b2e 0%,#9085DA   100%)",
+            background: "linear-gradient(0deg, #9085DA 0%,#9085DA   100%)",
         },
         link: {
             textDecoration: 'none',
@@ -197,7 +197,7 @@ function Header (props){
                         <Typography variant="h4" paragraph className={classes.whiteText} style={{fontWeight: 600}}>
                             Sancionados
                         </Typography>
-                        <Typography variant="h4" paragraph className={classes.whiteText} style={{fontWeight: 300}}>
+                        <Typography variant="h4" paragraph className={classes.whiteText} style={{fontWeight: 400}}>
                             Sistema nacional de Servidores públicos y particulares sancionados
                         </Typography>
                     </Grid>

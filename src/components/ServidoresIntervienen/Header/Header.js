@@ -28,7 +28,7 @@ const style = theme => ({
             paddingLeft: theme.spacing(1),
             paddingRight: theme.spacing(1),
             position: 'relative',
-            background: "linear-gradient(0deg, #281426 0%, #B25FAC 100%)",
+            background: "linear-gradient(0deg, #B25FAC 0%, #B25FAC 100%)",
         },
         link: {
             textDecoration: 'none',
@@ -101,7 +101,7 @@ const Header = props => {
                     <Typography variant="h4" paragraph className={classes.whiteText} style={{  fontWeight: 600}}>
                         Servidores públicos en contrataciones
                     </Typography>
-                    <Typography variant="h4" paragraph className={classes.whiteText} style={{fontWeight: 300}}>
+                    <Typography variant="h4" paragraph className={classes.whiteText} style={{fontWeight: 400}}>
                         Sistema de los Servidores públicos que intervengan en procedimientos de contrataciones públicas
                     </Typography>
                 </Grid>

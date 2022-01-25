@@ -14,9 +14,14 @@ export default (theme) => ({
     paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(2),
     margin: 0,
+    "&:hover": {
+      cursor: 'pointer',
+      backgroundColor: theme.palette.S1.shade,
+      transition: 'background 0.3s ease',
+    },
   },
   cardSeleccionada: {
-    backgroundColor: theme.palette.pestanas.activa,
+    backgroundColor: theme.palette.S1.shade,
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
     paddingTop: theme.spacing(2),

@@ -51,7 +51,7 @@ const styles = theme => ({
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
     position: "relative",
-    background: "linear-gradient(0deg, #3c2420 0%, #F29888 100%)",
+    background: "linear-gradient(0deg, #F29888 0%, #F29888 100%)",
   },
   container2: {
     paddingTop: "75px",
@@ -320,7 +320,7 @@ const Header = props => {
               variant="h4"
               paragraph
               className={classes.whiteText}
-              style={{ fontWeight: 300 }}
+              style={{ fontWeight: 400 }}
             >
               {titulo}
             </Typography>

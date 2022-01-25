@@ -42,9 +42,14 @@ const styles = theme => ({
         paddingTop: theme.spacing(2),
         paddingBottom: theme.spacing(2),
         margin: 0,
+        "&:hover": {
+            cursor: 'pointer',
+            backgroundColor: theme.palette.S2.shade,
+            transition: 'background 0.3s ease',
+        },
     },
     cardSeleccionada: {
-        backgroundColor: theme.palette.pestanas.activa,
+        backgroundColor: theme.palette.S2.shade,
         paddingLeft: theme.spacing(1),
         paddingRight: theme.spacing(1),
         paddingTop: theme.spacing(2),
@@ -90,7 +95,7 @@ const Index = props => {
 
                         <Grid item md={4} xs={12}
                               onClick={() => setContentId(1)}
-                              className={classNames(contentId !== 1 ? classes.card : classes.cardSeleccionada, 'tab')}>
+                              className={classNames(contentId !== 1 ? classes.card : classes.cardSeleccionada)}>
 
                             <figure className={classes.figure}>
                                 <img src={img1} alt="Servidores que intervinen en procesos de contratacion"
@@ -105,7 +110,7 @@ const Index = props => {
                         </Grid>
 
                         <Grid item md={4} xs={12} onClick={() => setContentId(2)}
-                              className={classNames(contentId !== 2 ? classes.card : classes.cardSeleccionada, 'tab')}>
+                              className={classNames(contentId !== 2 ? classes.card : classes.cardSeleccionada)}>
 
                             <figure className={classes.figure}>
                                 <img src={img2} alt="Particulares inhabilitados" className={classes.image}/>
@@ -120,7 +125,7 @@ const Index = props => {
                         </Grid>
                         <Grid item md={4} xs={12}
                               onClick={() => setContentId(3)}
-                              className={classNames(contentId !== 3 ? classes.card : classes.cardSeleccionada, 'tab')}>
+                              className={classNames(contentId !== 3 ? classes.card : classes.cardSeleccionada)}>
 
                             <figure className={classes.figure}>
                                 <img src={img3} alt="Visor de datos" className={classes.image}/>

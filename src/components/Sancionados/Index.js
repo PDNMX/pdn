@@ -44,9 +44,14 @@ const styles = theme => ({
         paddingTop: theme.spacing(2),
         paddingBottom: theme.spacing(2),
         margin: 0,
+        "&:hover": {
+            cursor: 'pointer',
+            backgroundColor: theme.palette.S3.shade,
+            transition: 'background 0.3s ease',
+        },
     },
     cardSeleccionada: {
-        backgroundColor: theme.palette.pestanas.activa,
+        backgroundColor: theme.palette.S3.shade,
         paddingLeft: theme.spacing(1),
         paddingRight: theme.spacing(1),
         paddingTop: theme.spacing(2),
@@ -72,7 +77,7 @@ function Index({classes}){
                     <Grid item xs={12} className={classes.section}>
                         <Grid container>
                             <Grid item md={3} xs={12}
-                                  className={classNames(idContent !== 1 ? classes.card : classes.cardSeleccionada,'tab')}
+                                  className={classNames(idContent !== 1 ? classes.card : classes.cardSeleccionada)}
                                   onClick={() => setIdContent(1)}>
                                 <figure className={classes.figure}>
                                     <img src={img1} alt="Servidores públicos sancionados"
@@ -84,7 +89,7 @@ function Index({classes}){
                                 </Typography>
                             </Grid>
                             <Grid item md={3} xs={12}
-                                  className={classNames(idContent !== 2 ? classes.card : classes.cardSeleccionada,'tab')}
+                                  className={classNames(idContent !== 2 ? classes.card : classes.cardSeleccionada)}
                                   onClick={() => setIdContent(2)}>
                                 <figure className={classes.figure}>
                                     <img src={img2} alt="Particulares sancionados"
@@ -97,7 +102,7 @@ function Index({classes}){
                                 </Typography>
                             </Grid>
                             <Grid item md={3} xs={12}
-                                  className={classNames(idContent !== 3 ? classes.card : classes.cardSeleccionada,'tab')}
+                                  className={classNames(idContent !== 3 ? classes.card : classes.cardSeleccionada)}
                                   onClick={() => setIdContent(3)}>
 
                                 <figure className={classes.figure}>
@@ -112,7 +117,7 @@ function Index({classes}){
                                 </Typography>
                             </Grid>
                             <Grid item md={3} xs={12}
-                                  className={classNames(idContent !== 4 ? classes.card : classes.cardSeleccionada,'tab')}
+                                  className={classNames(idContent !== 4 ? classes.card : classes.cardSeleccionada)}
                                   onClick={() => setIdContent(4)}>
 
                                 <figure className={classes.figure}>

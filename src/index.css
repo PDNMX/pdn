@@ -21,7 +21,7 @@ body {
 }
 
 .tabDeclaraciones:hover{
-  background: #b7ccd5;
+  background: #F9CFC8;
   transition: color 0.3s ease;
   transition: background 0.3s ease;
 }

@@ -88,16 +88,19 @@ const theme = createTheme({
             },
             pestanas: {
                 bg: '#f2f2f2',
-                activa: "#b7ccd5"
+                activa: "#F9CFC8"
             },
             S1:{
-                color:"#F29888"
+                color:"#F29888",
+                shade: "#F9CFC8"
             },
             S2:{
-                color:"#B25FAC"
+                color:"#B25FAC",
+                shade: "#EBD6EA"
             },
             S3:{
-                color:"#9085DA"
+                color:"#9085DA",
+                shade:"#D5D0F1"
             },
             S4:{
                 color:"#CED8DB"
@@ -106,7 +109,8 @@ const theme = createTheme({
                 color:"#CED8DB"
             },
             S6:{
-                color:"#42A5CC"
+                color:"#42A5CC",
+                shade: "#CFE8F2"
             },
         },
 
