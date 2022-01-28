@@ -19,7 +19,8 @@ const styles = theme => ({
 
 const CustomTypography = withStyles({
     root: {
-        color: "#d0d7d9"
+        color: "#d0d7d9",
+        backgroundAttachment: "fixed"
     }
 })(Typography);
 

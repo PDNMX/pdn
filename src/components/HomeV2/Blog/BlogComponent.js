@@ -77,12 +77,15 @@ const BlogComponent = props => {
                 })
             }
 
-            <Button variant="contained"
-                    className={classes.button}
-                    href="https://www.plataformadigitalnacional.org/blog"
-            >
-                Conoce más
-            </Button>
+            <Box display='flex' flexDirection='row-reverse'>
+                <Button variant="contained"
+                        className={classes.button}
+                        href="https://www.plataformadigitalnacional.org/blog"
+                >
+                    Conoce más
+                </Button>
+            </Box>
+
         </div>
     );
 }

@@ -10,8 +10,8 @@ import IconS5 from "../../../assets/rediseno/ico_sistemas/ico_s5_color.svg"
 import IconS6 from "../../../assets/rediseno/ico_sistemas/ico_s6_color.svg"
 
 const styles = theme => ({
-    lightText: {
-        fontWeight: 100
+    root: {
+        maxWidth: 920
     }
 });
 
@@ -67,7 +67,7 @@ const SysPDN = props => {
     const justify = useMediaQuery(theme.breakpoints.down("md")) ? "center" : "left"
 
     return (
-        <div>
+        <div className={classes.root}>
             <CustomTypography variant="h3" fontWeight="bold" paragraph>
                 Sistemas de la PDN
             </CustomTypography>

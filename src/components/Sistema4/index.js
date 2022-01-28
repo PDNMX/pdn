@@ -7,7 +7,8 @@ const styles = theme => ({
     root: {
         flexGrow :1,
         backgroundImage: `url(${bgimg})`,
-        backgroundRepeat: "repeat"
+        backgroundRepeat: "repeat",
+        backgroundAttachment: "fixed"
     },
     rootItem: {
         maxWidth: 1200,
