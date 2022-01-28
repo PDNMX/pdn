@@ -1,5 +1,5 @@
 import Home from '../components/HomeV2/Home';
-import About from '../components/About/About';
+import About from '../components/AboutV2/About';
 import Terminos from '../components/Terminos/Terminos';
 import Faq from '../components/FAQ/index';
 import Datos from '../components/CatalogoDatos/Datos';

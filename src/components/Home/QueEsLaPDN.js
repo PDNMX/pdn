@@ -1,3 +1,7 @@
+/**
+ * este archivo ya no se usa
+*/
+
 import React from 'react';
 import withStyles from '@mui/styles/withStyles';
 import Grid from '@mui/material/Grid';
