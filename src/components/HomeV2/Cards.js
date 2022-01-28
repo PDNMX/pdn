@@ -1,30 +1,21 @@
-import { Grid, Typography } from '@mui/material';
 import React from 'react';
-import withStyles from '@mui/styles/withStyles';
+import { Grid } from '@mui/material';
 
 import Mercado from './Cards/Mercado';
 import Interconexion from './Cards/Interconexion';
 
-const style = theme => ({
-  root: {
-    flexGrow: 1,
-    color: '#FFF',
-    fontSize: '16px'
-  }
-});
-
-const Cards = props => {
-  const { classes } = props;
+export default function (props) {
   return (
-    <Grid container spacing={0} justifyContent={'center'} className={classes.root}>
-      <Grid item xs={12} md={6} lg={3}>
+    <Grid container direction='row' justifyContent='center' spacing={0}>
+      <Grid item xs={0} md={0} lg={2} style={{ display: 'flex' }} />
+      <Grid item xs={12} md={6} lg={3} style={{ display: 'flex' }}>
         <Mercado />
       </Grid>
-      <Grid item xs={12} md={6} lg={3}>
+      <Grid item xs={0} md={0} lg={2} style={{ display: 'flex' }} />
+      <Grid item xs={12} md={6} lg={3} style={{ display: 'flex' }}>
         <Interconexion />
       </Grid>
+      <Grid item xs={0} md={0} lg={2} style={{ display: 'flex' }} />
     </Grid>
   );
-};
-
-export default withStyles(style)(Cards);
+}
