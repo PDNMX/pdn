@@ -11,7 +11,7 @@ import IconS6 from "../../assets/rediseno/ico_sistemas/ico_s6_color.svg";
 import Banner from "./Banner";
 import bgimg from "../../assets/rediseno/fondo_cruces.png";
 
-import Footer from './Footer';
+import Footer from './Footer/';
 import Cards from './Cards';
 
 import QueEsPDN from "./QueEsPDN";
