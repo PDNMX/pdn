@@ -46,7 +46,7 @@ class Previos extends React.Component {
         super(props);
         this.state = {
             page: 0,
-            rowsPerPage: 5
+            rowsPerPage: 10
         };
     }
 
@@ -79,7 +79,7 @@ class Previos extends React.Component {
                             <Table className={classes.table}>
                                 <TableHead style={{backgroundColor:'rgb(52, 179, 235)'}}>
                                     <TableRow>
-                                        <TableCell align="left" variant={"head"} className={classes.tableHead}><Typography variant={"body1"}>Nivel</Typography></TableCell>
+                                        <TableCell align="left" variant={"head"} className={classes.tableHead}><Typography variant={"body1"}>Ámbito</Typography></TableCell>
                                         <TableCell align="left" variant={"head"} className={classes.tableHead}><Typography variant={"body1"}> Proveedor de información</Typography></TableCell>
                                         <TableCell align="center" variant={"head"} className={classes.tableHead}><Typography variant={"body1"}>Estatus</Typography></TableCell>
                                         <TableCell align="center" variant={"head"} className={classes.tableHead}><Typography variant={"body1"}>Número de registros</Typography></TableCell>

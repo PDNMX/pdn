@@ -418,22 +418,25 @@ class BusquedaServidor extends React.Component {
                     </Grid>
                     <Grid item xs={12} md={2}>
                         <FormControl className={classes.formControl}>
-                            <InputLabel id="nivel-label">Nivel</InputLabel>
+                            <InputLabel id="nivel-label">Ámbito</InputLabel>
                             <Select
                                 labelId="nivel-label"
                                 id="nivel-label-helper"
                                 value={nivel}
-                                label="Nivel"
+                                label="Ámbito"
                                 onChange={(e) => this.handleChangeCampo('nivel', e)}
                             >
                                 <MenuItem value="any">
                                     <em>Todos</em>
                                 </MenuItem>
-                                <MenuItem value={'Federal'} key={'Federal'}>
-                                    {'Federal'}
+                                <MenuItem value={'Autónomo'} key={'Autónomo'}>
+                                    {'Autónomo'}
                                 </MenuItem>
                                 <MenuItem value={'Estatal'} key={'Estatal'}>
                                     {'Estatal'}
+                                </MenuItem>
+                                <MenuItem value={'Federal'} key={'Federal'}>
+                                    {'Federal'}
                                 </MenuItem>
                             </Select>
                         </FormControl>

@@ -414,19 +414,19 @@ class BusquedaParticular extends React.Component {
                     </Grid>
                     <Grid item md={2} xs={12}>
                         <FormControl className={classes.formControl}>
-                            <InputLabel id="nivel-label">
-                                Nivel
+                            <InputLabel id="ambito-label">
+                                Ámbito
                             </InputLabel>
                             <Select value={nivel}
                                     onChange={(e) => this.handleChangeCampo('nivel', e)}
-                                    label={'Nivel'}
+                                    label={'Ámbito'}
                             >
                                 <MenuItem value={'any'} ><em>Todos</em></MenuItem>
-                                <MenuItem value={'Federal'} key={'Federal'}>
-                                    {'Federal'}
-                                </MenuItem>
                                 <MenuItem value={'Estatal'} key={'Estatal'}>
                                     {'Estatal'}
+                                </MenuItem>
+                                <MenuItem value={'Federal'} key={'Federal'}>
+                                    {'Federal'}
                                 </MenuItem>
                             </Select>
                         </FormControl>
