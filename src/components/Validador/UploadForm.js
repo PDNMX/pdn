@@ -1,14 +1,11 @@
 import React from "react";
 import Button from "@mui/material/Button";
 import InputLabel from "@mui/material/InputLabel";
-/* import FormHelperText from '@mui/material/FormHelperText'; */
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-
 import Ajv from "ajv";
 import localize from "ajv-i18n";
-//let SwaggerParser = require('swagger-parser');
 import Parser from "swagger-parser";
 import withStyles from '@mui/styles/withStyles';
 import PropTypes from "prop-types";
@@ -64,21 +61,6 @@ class UploadForm extends React.Component {
         const isUpload = name === "uploadJson"; */
     validity[name] = value.length > 0 || value instanceof File;
     fieldValidationErrors[name] = validity[name] ? "" : "Campo requerido";
-
-    /* if (validity[name]) {
-          if (isSistema) {
-            validity[name] = value.length >= 2;
-            fieldValidationErrors[name] = validity[name]
-              ? ""
-              : "Debes elegir un tipo de sistema";
-          }
-          if (isUpload) {
-            validity[name] = value instanceof File || value.length >= 3;
-            fieldValidationErrors[name] = validity[name]
-              ? ""
-              : "Debes cargar un archivo JSON";
-          }
-        } */
     this.setState({
       formErrors: fieldValidationErrors,
       formValidity: validity,
@@ -209,64 +191,68 @@ class UploadForm extends React.Component {
     const { classes } = this.props;
     const { formValues, formErrors, isSubmitting } = this.state;
     return (
-      <div className={classes.root}>
-        <form onSubmit={this.handleSubmit}>
-          <FormControl className={classes.formControl}>
-            <Button
-              variant="contained"
-              component="label"
-              disabled={this.state.disabled}
-              size="large"
-              className={classes.button2}
-            >
-              {/* <i className="material-icons">cloud_upload</i> */}
-              Cargar Archivo
-              <input
-                name="uploadJson"
+      <div className={classes.root}>        
+          <form onSubmit={this.handleSubmit}>
+            <FormControl className={classes.formControl}>
+              <Button
+                variant="contained"
+                component="label"
+                disabled={this.state.disabled}
+                size="large"
+                className={classes.button2}
+              >
+                {/* <i className="material-icons">cloud_upload</i> */}
+                Cargar Archivo
+                <input
+                  name="uploadJson"
+                  onChange={this.handleChange}
+                  accept="application/json"
+                  type="file"
+                  style={{ display: "none" }}
+                />
+              </Button>
+              <div className="invalid-feedback">{formErrors.uploadJson}</div>
+            </FormControl>
+            
+            <FormControl className={classes.formControl} >
+              <InputLabel>
+                Sistema
+              </InputLabel>
+              <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+                name="tipoSistema"
+                value={formValues.tipoSistema}
                 onChange={this.handleChange}
-                accept="application/json"
-                type="file"
-                style={{ display: "none" }}
-              />
-            </Button>
-            <div className="invalid-feedback">{formErrors.uploadJson}</div>
-          </FormControl>
-          <FormControl className={classes.formControl}>
-            <InputLabel id="demo-simple-select-required-label">
-              Sistema
-            </InputLabel>
-            <Select
-              /* labelId="demo-simple-select-required-label" */
-              id="demo-simple-select-required"
-              name="tipoSistema"
-              value={formValues.tipoSistema}
-              onChange={this.handleChange}
-              className={classes.selectEmpty}
-            >
-              <MenuItem value="">
-                <em>Ninguno</em>
-              </MenuItem>
-              <MenuItem value={"s1I"}>S1 - Inicial</MenuItem>
-              <MenuItem value={"s1M"}>S1 - Modificación</MenuItem>
-              <MenuItem value={"s1C"}>S1 - Conclusión</MenuItem>
-              <MenuItem value={"s2"}>S2</MenuItem>
-              <MenuItem value={"s3P"}>S3 - Particulares</MenuItem>
-              <MenuItem value={"s3SP"}>S3 - Servidores Públicos</MenuItem>
-            </Select>
-            <div className="invalid-feedback">{formErrors.tipoSistema}</div>
-            {/* <FormHelperText>Requerido</FormHelperText> */}
-          </FormControl>
-          <FormControl className={classes.formControl}>
-            <Button
-              variant="contained"
-              type="submit"
-              className={classes.button}
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? "Validando..." : "Validar"}
-            </Button>
-          </FormControl>
-        </form>
+                label="Sistema"
+                
+              >
+                {/* <MenuItem value="">
+                  <em>Ninguno</em>
+                </MenuItem> */}
+                <MenuItem value={"s1I"}>S1 - Inicial</MenuItem>
+                <MenuItem value={"s1M"}>S1 - Modificación</MenuItem>
+                <MenuItem value={"s1C"}>S1 - Conclusión</MenuItem>
+                <MenuItem value={"s2"}>S2</MenuItem>
+                <MenuItem value={"s3P"}>S3 - Particulares</MenuItem>
+                <MenuItem value={"s3SP"}>S3 - Servidores Públicos</MenuItem>
+              </Select>
+              <div className="invalid-feedback">{formErrors.tipoSistema}</div>
+              {/* <FormHelperText>Requerido</FormHelperText> */}
+            </FormControl>
+            
+            <FormControl className={classes.formControl}>
+              <Button
+                variant="contained"
+                type="submit"
+                className={classes.button}
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Validando..." : "Validar"}
+              </Button>
+            </FormControl>
+            
+          </form>      
       </div>
     );
   }

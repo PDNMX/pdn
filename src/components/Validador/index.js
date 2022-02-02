@@ -95,7 +95,7 @@ class Validador extends Component {
                         </Typography>
                         <Typography paragraph color='textPrimary' align="left">
                             <ul>
-                                <li>Ejecuta tu API y guarda la respuesta en un archivo de texto con extensión</li>
+                                <li>Ejecuta tu API y guarda la respuesta en un archivo de texto plano con extensión .JSON</li>
                                 <li>Da clic en el botón "Cargar archivo" y selecciona el archivo que generaste.</li>
                                 <li>Selecciona el sistema cuya respuesta deseas validar.</li>
                                 <li>Da clic en el botón "Validar".</li>

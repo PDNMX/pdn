@@ -66,49 +66,46 @@ const style = theme => ({
     }
 );
 
-class Header extends React.Component{
+const Header = props => {
+    const {classes} = props;
+    const isMdUp = useIsWidthUp("md");
 
-    render(){
-        const {classes} = this.props;
-        const isMdUp = useIsWidthUp("md");
+    return (
+        <div className={classes.root}>
+            <BarraLogoMenu/>
+            
+            <Grid container spacing={0} className="breadcrumb" justifyContent='center'>
+                <Grid item xs={12} className={classes.item3}>
+                    <ul>
+                        <li>
+                            <Link className={classes.link} to='/'>Plataforma Digital Nacional</Link>
+                        </li>
+                        <li>
+                            Validador
+                        </li>
+                    </ul>
+                </Grid>
+            </Grid>
 
-        return (
-            <div className={classes.root}>
-                <BarraLogoMenu/>
-                
-                <Grid container spacing={0} className="breadcrumb" justifyContent='center'>
-                    <Grid item xs={12} className={classes.item3}>
-                        <ul>
-                            <li>
-                                <Link className={classes.link} to='/'>Plataforma Digital Nacional</Link>
-                            </li>
-                            <li>
-                                Validador
-                            </li>
-                        </ul>
-                    </Grid>
+            <Grid container spacing={0} className={classNames(classes.container1, 'servidores')} justifyContent='center'>
+                <Grid item xs={12} md={4} align = {isMdUp ? 'right':'center'} className={classes.item1}>
+                    <img src={S3} alt="Sistema 2" className={classes.s2}/>
                 </Grid>
 
-                <Grid container spacing={0} className={classNames(classes.container1, 'servidores')} justifyContent='center'>
-                    <Grid item xs={12} md={4} align = {isMdUp ? 'right':'center'} className={classes.item1}>
-                        <img src={S3} alt="Sistema 2" className={classes.s2}/>
-                    </Grid>
-
-                    <Grid item xs={12} md={6} className={classes.item2} align = {isMdUp ? 'left':'center'} >
-                        <Typography variant="h4" paragraph className={classes.whiteText} style={{fontWeight: 300}}>
-                            Plataforma Digital Nacional
-                        </Typography>
-                        <Typography variant="h4" paragraph className={classes.whiteText} style={{  fontWeight: 600}}>
-                            Validador de estandares de datos
-                        </Typography>
-                        <Typography  className={classes.whiteText} style={{fontSize: '18px',fontWeight: 500}}>
-                            En está página puedes validar archivos en formato JSON contra los estándares de datos <br/>de la Plataforma Digital Nacional
-                        </Typography>
-                    </Grid>
+                <Grid item xs={12} md={6} className={classes.item2} align = {isMdUp ? 'left':'center'} >
+                    <Typography variant="h4" paragraph className={classes.whiteText} style={{fontWeight: 300}}>
+                        Plataforma Digital Nacional
+                    </Typography>
+                    <Typography variant="h4" paragraph className={classes.whiteText} style={{  fontWeight: 600}}>
+                        Validador de estandares de datos
+                    </Typography>
+                    <Typography  className={classes.whiteText} style={{fontSize: '18px',fontWeight: 500}}>
+                        En está página puedes validar archivos en formato JSON contra los estándares de datos <br/>de la Plataforma Digital Nacional
+                    </Typography>
                 </Grid>
-            </div>
-        );
-    }
+            </Grid>
+        </div>
+    );
 }
 
-export default withWidth()(withStyles(style) (Header));
+export default withWidth()(withStyles(style)(Header));
