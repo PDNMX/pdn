@@ -110,9 +110,9 @@ class Ejercicio extends React.Component {
                         </Typography>
 
                         <Typography variant={"body1"} paragraph>
-                            En esta entrega se cuenta con 160,776 registros, encontrarás la información correspondiente a períodos fiscales del año 2015 a mayo 2021.
-                            Como se aprecia, el año 2018 es el que cuenta con un mayor número de personas servidoras públicas  que intervienen en procesos de contratación a nivel federal con 27,457, a partir del 2019 este número ha ido hacia la baja, teniendo 25,514 en 2019, 20,550  en 2020 y 17,756 hasta mayo 2021.
+                            La siguiente gráfica muestra el número de registros de personas servidoras públicas que intervinieron en Enajenación, contrataciones o concesiones a nivel federal
                         </Typography>
+
                     </Grid>
 
                     <Grid item xs={12} id={"graf"}>
@@ -124,6 +124,14 @@ class Ejercicio extends React.Component {
                             this.state.error &&
                             <Alert severity="error"> No disponible por el momento, intente más tarde.</Alert>
                         }
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Typography variant={"body1"} paragraph>
+                            En el año 2015 participaron 20,526 personas servidoras públicas, en el año 2016 participaron 22,751, en el 2017 participaron 26,250, en el 2018 participaron 27,457, en 2019 hubo una reducción a 25,514, para el año 2020 eran 20,550 y en 2021 participaron 20,946.
+                        </Typography>
+                        <Typography>
+                            Se aprecia una disminución en el año 2019 del <b>7.07%</b>, en el año 2010 del <b>25.15%</b> y en el año 2021 del <b>23.71%</b> respecto al año 2018, en donde se registró el mayor número de personas servidoras públicas interviniendo en procesos de contratación.
+                        </Typography>
                     </Grid>
                 </Grid>
             </div>

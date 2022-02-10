@@ -27,17 +27,17 @@ const styles = theme => ({
     },
 });
 
-const aux = () =>  {
-        let options = {
-            uri: process.env.REACT_APP_S2_BACKEND + '/api/v0/getProcedimientosPeriodo',
-            json: true,
-            method: "GET"
-        };
-        return rp(options);
+const aux = () => {
+    let options = {
+        uri: process.env.REACT_APP_S2_BACKEND + '/api/v0/getProcedimientosPeriodo',
+        json: true,
+        method: "GET"
+    };
+    return rp(options);
 };
 
 let z = d3.scaleOrdinal()
-    .range(["#2685C8","#48BF40","#7C2BCD","#FF6A00"]);
+    .range(["#2685C8", "#48BF40", "#7C2BCD", "#FF6A00"]);
 
 class Ejercicio extends React.Component {
     state = {
@@ -48,47 +48,47 @@ class Ejercicio extends React.Component {
         aux().then(result => {
             let aux = result.data.map(item => ({
                 "ejercicio": item.ejercicio,
-                "total": parseInt(item.total,10),
-                "procedimiento":item.case
+                "total": parseInt(item.total, 10),
+                "procedimiento": item.case
             }));
 
             this.setState({
-                methods: {
-                    data: aux,
-                    groupBy: "procedimiento",
-                    stacked:true,
-                    x: "ejercicio",
-                    y: "total",
-                    xConfig: {
-                        title: "Ejercicio fiscal",
+                    methods: {
+                        data: aux,
+                        groupBy: "procedimiento",
+                        stacked: true,
+                        x: "ejercicio",
+                        y: "total",
+                        xConfig: {
+                            title: "Ejercicio fiscal",
 
-                    },
-                    yConfig: {
-                        title: "Número de registros"
-                    },
-                    tooltipConfig: {
-                        title: function (d) {
-                            return d["procedimiento"];
                         },
-                        tbody: [
-                            ["Ejercicio fiscal: ", function (d) {
-                                return d["ejercicio"]
-                            }
-                            ],
-                            ["Número de registros: ", function (d) {
-                                return d["total"]
-                            }
+                        yConfig: {
+                            title: "Número de registros"
+                        },
+                        tooltipConfig: {
+                            title: function (d) {
+                                return d["procedimiento"];
+                            },
+                            tbody: [
+                                ["Ejercicio fiscal: ", function (d) {
+                                    return d["ejercicio"]
+                                }
+                                ],
+                                ["Número de registros: ", function (d) {
+                                    return d["total"]
+                                }
+                                ]
                             ]
-                        ]
-                    },
-                    height: 400,
-                    shapeConfig: {
-                        fill: (d) => {
-                            return z(d.procedimiento)
-                        }
-                    },
+                        },
+                        height: 400,
+                        shapeConfig: {
+                            fill: (d) => {
+                                return z(d.procedimiento)
+                            }
+                        },
 
-                }
+                    }
                 }
             )
         }).catch(error => {
@@ -107,42 +107,44 @@ class Ejercicio extends React.Component {
                 <Grid container spacing={0} justify='center' className={classes.frameChart}>
                     <Grid item xs={12} className={classes.item}>
                         <Typography variant={"h6"} className={classes.titulo} paragraph>
-                            Procedimientos
+                            Procesos
                         </Typography>
-
-                        <Typography variant={"body1"} paragraph>
-                            Los procesos de contratación están divididos en cuatro tipos, en la siguiente gráfica podrás observar cuántos procedimientos de cada tipo se
-                            ejercieron del año 2015 a mayo 2021.
-                            Como se aprecia, la contratación es el tipo más común a lo largo del tiempo, mientras que en las concesiones tuvieron incrementos a partir del
-                            año 2017 (4,978 ) y hasta el 2019. También se observa que no existen registros respecto al tipo de proceso asignación y emisión de dictámenes de avalúos nacionales.
+                        <Typography variant={'body1'} style={{fontWeight: "bold"}} paragraph>Tipos de procesos</Typography>
+                        <Typography variant={"body1"}>
+                            Existen cuatro tipos de procesos:
                         </Typography>
-
-                        <Typography style={{fontWeight: "bold"}} paragraph>Tipos de procesos</Typography>
-
                         <List>
                             <ListItem>
                                 <ListItemText>
-                                    1. <b>Contrataciones públicas: </b>Se contemplan aquellas sujetas a la Ley de Adquisiciones, Arrendamientos y Servicios del Sector Público (LAASSP), la Ley de Obras Públicas y Servicios Relacionados con las Mismas (LOPSRM) y la Ley de Asociaciones Público Privadas (LAPP).
+                                    1. <b>Contrataciones públicas: </b>Se contemplan aquellas sujetas a la Ley de
+                                    Adquisiciones, Arrendamientos y Servicios del Sector Público (LAASSP), la Ley de
+                                    Obras Públicas y Servicios Relacionados con las Mismas (LOPSRM) y la Ley de
+                                    Asociaciones Público Privadas (LAPP).
                                 </ListItemText>
                             </ListItem>
                             <ListItem>
                                 <ListItemText>
-                                    2. <b>Concesiones, licencias, permisos, autorizaciones y prórrogas: </b>Comprende los regulados por las diversas disposiciones jurídicas de carácter federal que otorgan las dependencias de la Administración Pública Federal (APF).
+                                    2. <b>Concesiones, licencias, permisos, autorizaciones y prórrogas: </b>Comprende
+                                    los regulados por las diversas disposiciones jurídicas de carácter federal que
+                                    otorgan las dependencias de la Administración Pública Federal (APF).
                                 </ListItemText>
                             </ListItem>
                             <ListItem>
                                 <ListItemText>
-                                    3. <b>Enajenación de bienes muebles: </b>Que incluyen los actos traslativos de propiedad de los bienes muebles de la federación y de las entidades paraestatales conforme a la Ley General de Bienes Nacionales (LGBN).
+                                    3. <b>Enajenación de bienes muebles: </b>Que incluyen los actos traslativos de
+                                    propiedad de los bienes muebles de la federación y de las entidades paraestatales
+                                    conforme a la Ley General de Bienes Nacionales (LGBN).
                                 </ListItemText>
                             </ListItem>
                             <ListItem>
                                 <ListItemText>
-                                    4. <b>Asignación y emisión de dictámenes de avalúos nacionales: </b>Comprende únicamente los que son competencia del Instituto de Administración y Avalúos de Bienes Nacionales (INDAABIN).
+                                    4. <b>Asignación y emisión de dictámenes de avalúos nacionales: </b>Comprende
+                                    únicamente los que son competencia del Instituto de Administración y Avalúos de
+                                    Bienes Nacionales (INDAABIN).
                                 </ListItemText>
                             </ListItem>
                         </List>
                     </Grid>
-
                     <Grid item xs={12} id={"graf"}>
                         {
                             this.state.methods && this.state.methods.data &&
@@ -152,6 +154,16 @@ class Ejercicio extends React.Component {
                             this.state.error &&
                             <Alert severity="error"> No disponible por el momento, intente más tarde. </Alert>
                         }
+                    </Grid>
+                    <Grid>
+                        <Typography variant={"body1"} paragraph>
+                            Como se aprecia, la <b>contratación</b> es el proceso más común, alcanzando en el 2018 su número más alto,
+                            ha tenido un <b>decremento</b> del <b>6.81%</b> en el 2019, del <b>26.33%</b> en 2020 y
+                            del <b>24.74%</b> para el 2021 respectivamente.
+                            <br/><br/>
+                            También se observa, que no existen registros respecto al tipo de proceso de asignación y
+                            emisión de dictámenes de avalúos nacionales.
+                        </Typography>
                     </Grid>
                 </Grid>
             </div>

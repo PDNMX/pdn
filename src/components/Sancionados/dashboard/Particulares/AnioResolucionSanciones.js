@@ -124,7 +124,7 @@ class AnioResolucionSanciones extends React.Component {
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>
                         <Typography variant={"body1"}>
-                            Como se aprecia en la gráfica, el comportamiento de las sanciones no ha sido constante, se aprecia el año 2010 con un mayor número de sanciones (233) representando el 11.95% del total. En contraste, el año 2004 representa únicamente el 0.21% del total con 4 sanciones.
+                            Como se aprecia en la gráfica, el comportamiento de las sanciones no ha sido constante, el año 2010 cuenta con un reporte de 233 sanciones, equivalentes al  <b>11.23%</b> del total, en contraste con el  2004 que registró únicamente 4 sanciones a particulares, lo que representa el <b>0.19%</b>.
                         </Typography>
                     </Grid>
                     <Grid item xs={12} md={8}>

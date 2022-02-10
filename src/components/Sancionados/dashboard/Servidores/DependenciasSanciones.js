@@ -176,7 +176,7 @@ class DependenciasSanciones extends React.Component {
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>
                         <Typography>
-                            {"Con respecto a las dependencias con más sanciones,  4 instituciones :la Policía Federal, la Secretaría de Educación Pública, Telecomunicaciones de México y el Instituto de Seguridad y Servicios Sociales de los Trabajadores representan juntas más del 35% del total de  personas servidoras públicas sancionadas "}
+                            Cuatro instituciones públicas registran la mayor cantidad de personas servidoras públicas sancionadas con una inhabilitación a enero 2022: la Policía Federal, la Secretaría de Educación Pública, Telecomunicaciones de México y el Instituto de Seguridad y Servicios Sociales de los Trabajadores que en conjunto representan el <b>36.78%</b> del total
                         </Typography>
                     </Grid>
 
@@ -192,15 +192,9 @@ class DependenciasSanciones extends React.Component {
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>
                         <Typography>
-                            La siguiente muestra las dependencias con mayor numero de sanciones en cada año, como se
-                            aprecía, para el año 2014 fue Telecomunicaciones de México. En 2013, 2014 y 2016 fue la
-                            Policia Federal. En 2017, el Instituto
-                            de Seguridad y Servicios Sociales de los Trabajadores del estado. En 2018, la Secretaría de
-                            Educación Pública. Hasta mayo 2021, la Presidencia de la República ocupa el primer lugar.
-                            Finalmente en 2020, año con menor número de
-                            sanciones, son tres instituciones las que aparecen con igual número de sanciones, Instituto
-                            de Seguridad y Servicios Sociales de los Trabajadores del Estado, Secretaría de Medio
-                            Ambiente y Recursos Naturales y el Instituto Méxicano de Cinematografía
+                            La siguiente gráfica  muestra las dependencias con mayor número de sanciones firmes que fueron resueltas en cada año del 2013 a enero 2022.
+                            Los años 2013, 2015 y 2016 los encabeza la Policía Federal, 2014 Telecomunicaciones de México, de 2017  a 2020 el Instituto de Seguridad y Servicios Sociales de los Trabajadores del Estado, y finalmente la única sanción del 2021 corresponde a la Secretaría de Agricultura y Desarrollo Rural.
+
                         </Typography>
                     </Grid>
                     <Grid item xs={12}>

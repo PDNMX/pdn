@@ -80,7 +80,7 @@ class SentidoResoluciones extends React.Component {
             let aux = result.data.map(item => {
                 return {
                     "x": item.sentido_de_resolucion ? item.sentido_de_resolucion : "NO ESPECIFICA",
-                    "y": parseInt(item.total,10)
+                    "y": parseInt(item.total, 10)
                 }
             });
             this.setState({
@@ -134,7 +134,7 @@ class SentidoResoluciones extends React.Component {
             let aux2 = temp2.data.map(item => {
                 return {
                     id: item.sentido_de_resolucion,
-                    y: parseInt(item.total,10),
+                    y: parseInt(item.total, 10),
                     x: item.anio,
                 }
             });
@@ -202,18 +202,29 @@ class SentidoResoluciones extends React.Component {
                     </Grid>
                     <Grid item xs={12} md={4} className={classes.descripcion}>
                         <Typography variant={"body1"}>
-                            Se engloba el sentido de las resoluciones en: Absolutoria, Sancionatoria, Sancionatoria con multa, Sancionatoria con multa e inhabilitación, y se agrega
-                            la categoría "No especifica" por aquellos registros que no incluyen dicho valor. Como muestra la gráfica de la izquierda, del 2004 a mayo 2021,
-                            de las 1,974 resoluciones en total, la mayoría derivó en sanción con multa e inhabilitación (1,516 en total), seguido por sanciones con multa con un total de 427,
-                            5 sancionatorias, 1 absolutoria y 24 que no especifican el sentido de la resolución.
+                            Las resoluciones son : Absolutoria, Sancionatoria, Sancionatoria con multa, Sancionatoria
+                            con multa e inhabilitación, y se agrega la categoría "No específica" por aquellos registros
+                            que no incluyen dicho valor.
+                            Como muestra la gráfica de la izquierda, del 2004 a mayo 2021, de las <b>2,074
+                            resoluciones</b> la mayoría finalizó en <b>sanción con multa e inhabilitación</b> con un
+                            total de <b>1,516</b> en total, seguido por <b>462</b> sanciones con
+                            multa, <b>9</b> sancionatorias, <b>2</b> absolutorias y <b>24</b> no especifican el sentido
+                            de la resolución.
                         </Typography>
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>
                         <Typography variant={"body1"}>
-                            A lo largo del tiempo, se aprecia que del total de resoluciones por año, el mayor número de sanciones a particulares termina en Sancionatorias con multa e inhabilitación, que ha aparecido en todos los años, teniendo el año 2010 el mayor número de registros con 186 sanciones.
-                            <br/>La Sancionatoria con multa se ha presentado del 2008 al 2021, teniendo mayor presencia en 2011 con 54 resoluciones.
-                            <br/>De la Sancionatoria únicamente aparecen registros en 2015, 2019 y 2020, siendo el 2019 el año con mayor número de resoluciones siendo igual a 3.
-                            <br/>Respecto a la Absolutoria, se tiene un único registro en 2019.
+                            A lo largo del tiempo, se aprecia que cada año el mayor número de sanciones a particulares
+                            son <b>Sancionatorias con multa e inhabilitación</b>.
+                            Seguido de la resolución <b>Sancionatoria con multa</b> que cuenta con registros a
+                            partir del año 2008 hasta el 2021
+                            Posteriormente se tiene la resolución <b>Sancionatoria</b>, la cual aparece en el año
+                            2009, 2015 y del 2019 a 2021.
+                            Por otra parte, se tienen dos registros de resolución <b>Absolutoria</b>, las cuales
+                            fueron resueltas en 2019.
+                            <br/><br/>Cabe señalar que las 24 sanciones que no especifican el tipo de resolución, tampoco
+                            cuentan con información respecto a su fecha de resolución, por lo que, no se encuentran
+                            graficadas.
 
                         </Typography>
                     </Grid>
