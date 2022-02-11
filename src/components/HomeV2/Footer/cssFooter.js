@@ -7,9 +7,25 @@ export default theme => ({
     marginTop: theme.spacing(6)
   },
   emailContacto: {
-    display: 'inline-block',
-    float: 'right',
-    marginRight: 35
+    'display': 'inline-block',
+    'float': 'right',
+    'marginRight': 35,
+    'textDecoration': 'none',
+    'color': '#b1bcc1',
+    '&:visited': {
+      color: '#b1bcc1'
+    },
+    '&:link': {
+      color: '#b1bcc1'
+    },
+    '&:active': {
+      color: '#b1bcc1'
+    },
+    '&:hover': {
+      fontWeight: 'bolder',
+      color: '#FFF',
+      borderBottom: '2px solid #3ab0e5'
+    }
   },
   figure: {
     display: 'inline-block',
@@ -34,12 +50,42 @@ export default theme => ({
     marginTop: '10px'
   },
   linkMobile: {
-    alignContent: 'center',
-    color: '#FFF'
+    'paddingBottom': theme.spacing(1),
+    'textDecoration': 'none',
+    'color': '#b1bcc1',
+    '&:visited': {
+      color: '#b1bcc1'
+    },
+    '&:link': {
+      color: '#b1bcc1'
+    },
+    '&:active': {
+      color: '#b1bcc1'
+    }
   },
   footerMobileSeccEnlaces: {
-    backgroundColor: '#FFF',
-    opacity: 0.15
+    marginTop: theme.spacing(3),
+    padding: theme.spacing(2),
+    color: '#FFF',
+    backgroundColor: '#3e5866'
+  },
+  footerMobileSeccLogos: {
+    marginTop: theme.spacing(-1),
+    padding: theme.spacing(2),
+    color: '#FFF',
+    backgroundColor: '#4b6471'
+  },
+  mobileSESNA: {
+    width: '30vw',
+    padding: 15,
+    margin: 0,
+    border: 0
+  },
+  mobilePDN: {
+    width: '40vw',
+    padding: 15,
+    margin: 0,
+    border: 0
   },
   // Center
   centerFoot: {
@@ -52,18 +98,18 @@ export default theme => ({
     backgroundColor: 'rgba(255, 255, 255, 0.15)'
   },
   centerFoot_left: {
-    padding: '0 20px',
+    padding: '0 10px',
     paddingTop: theme.spacing(6)
   },
   centerFoot_center: {
     paddingTop: theme.spacing(4),
-    paddingLeft: 10,
+    // paddingLeft: 10,
     height: 250,
     color: '#FFF',
     backgroundColor: 'rgba(255, 255, 255, 0.15)'
   },
   centerFoot_right: {
-    padding: '0 20px',
+    padding: '0 10px',
     paddingTop: theme.spacing(6)
   },
   //Right
@@ -74,9 +120,28 @@ export default theme => ({
     border: 0
   },
   lpdn: {
-    width: 210,
+    width: 242,
     padding: 0,
     margin: 0,
     border: 0
+  },
+  enlaces: {
+    'textDecoration': 'none',
+    // 'color': '#b1bcc1',
+    'color': '#666',
+    '&:visited': {
+      color: '#b1bcc1'
+    },
+    '&:link': {
+      color: '#b1bcc1'
+    },
+    '&:active': {
+      color: '#b1bcc1'
+    },
+    '&:hover': {
+      fontWeight: 'bolder',
+      color: '#FFF',
+      borderBottom: '2px solid #3ab0e5'
+    }
   }
 });
