@@ -163,7 +163,7 @@ class AnioResolucionSanciones extends React.Component {
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>
                         <Typography >
-                            {"De acuerdo con las siguientes gráficas, el número de personas servidoras públicas sancionadas ha ido disminuyendo, siendo el 2014 el año con mayor sanciones con 261 sanciones y disminuyendo a 40 sanciones en 2018, 8 sanciones en 2019, 3 sanciones en 2020 y 5 sanciones de enero a mayo del 2021. \n"}
+                            De acuerdo con las siguientes gráficas, la mayor cantidad de inhabilitaciones vigentes (firmes) fueron resueltas en el año 2014. En contraste, el 2021 representa tan solo el <b>0.082%</b> del total de inhabilitaciones firmes a enero de 2022.
                         </Typography>
                     </Grid>
                     <Grid item xs={12} md={8}>

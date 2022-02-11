@@ -39,15 +39,13 @@ class Dashboard extends React.Component {
                             <b>¿Qué información es?</b>
                         </Typography>
                         <Typography paragraph>
-                            La información utilizada para generar las siguientes visualizaciones corresponde a la
-                            reportada por la Secretaría de la Función Pública del 2015 a mayo 2021, respecto al Registro
-                            de Servidores públicos de la Administración Pública Federal
-                            que intervienen en procedimientos de contrataciones públicas, el otorgamiento de licencias,
-                            permisos, concesiones y autorizaciones, así como en la enajenación
-                            de bienes muebles de la administración pública federal y en la asignación y emisión de
-                            dictámenes en materia de avalúos y justipreciación de rentas.
-                            <br/>
-                            En esta entrega, se cuentan con 160,776 registros.
+                            La información utilizada para generar las siguientes visualizaciones es la reportada por la Secretaría de la Función Pública del <b>2015 a
+                            enero 2022</b> del Registro de Servidores Públicos de la Administración Pública Federal, que intervienen en procedimientos de contrataciones
+                            públicas; así como en el otorgamiento de licencias, permisos, concesiones y autorizaciones; en la enajenación de bienes muebles de la
+                            administración pública federal y en la asignación y emisión de dictámenes en materia de avalúos y justipreciación de rentas.
+<br/><br/>
+                            A enero 2022, se cuentan con <b>163,994 registros</b>.
+
                         </Typography>
 
                         <Typography>

@@ -211,19 +211,19 @@ class CausasSanciones extends React.Component {
                     </Grid>
                     <Grid item xs={12} md={4} className={classes.descripcion}>
                         <Typography variant={"body1"}>
-                            {"Como se puede apreciar en la gráfica de la izquierda, del año 2013 a mayo 2021, la causa de la mayoría de las sanciones fue la negligencia administrativa con 743 sanciones, representando el 61.62% del total. Por otro lado, la violación a los derechos humanos y otras causas cuentan únicamente con 1 y 2 sanciones respectivamente, representando únicamente el 0.16% del total.\n"}
+                            Como se puede apreciar en la gráfica de la izquierda, la causa de la mayoría de las sanciones firmes a enero 2022 fue la <b>negligencia administrativa</b> con 761 registros, representando el <b>62.47%</b> del total.
                         </Typography>
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>
                         <Typography variant={"body1"}>
-                            Existe una tendencia en Negligencia administrativa, siendo esta la causa más común a lo largo del tiempo, exceptuando el 2021, en donde hasta el momento, las 5 sanciones corresponden a incumplimiento en declaración de situación patrimonial.
-                            <br/>Por otro lado, se observa un aumento en el abuso de autoridad, del año 2013 con 26 sanciones al 2014 con 57 sanciones, disminuyendo en el 2018 año en que se registraron las últimas 8 sanciones de esta causa.
-                            <br/>Respecto a la Violación leyes y normatividad presupuestal, los años 2013 y 2014 registraron el máximo con 33 y 35 sanciones respectivamente, disminuyendo hasta el 2019 donde se registraron únicamente dos sanciones por esta causa.
-                            <br/>De manera similar, el cohecho o extorsión registró 27 y 20 sanciones en los años 2013 y 2014 respectivamente, disminuyendo a 12 y 5 en los años 2016 a 2017 respectivamente, siendo este el último año con sanciones por esta causa.
-                            <br/>Por incumplimiento en declaración de situación patrimonial tuvo su pico en 2016 con 11 sanciones, para mayo 2021 se tienen registradas 5 sanciones .
-                            <br/>El ejercicio indebido de sus funciones en materia migratoria tuvo su pico en 2016 con 5 sanciones, registrando en 2018 una última sanción por esta causa.
-                            <br/>Por otra parte, únicamente se cuenta con una sanción por violación  a los derechos humanos y dos por otra causa no especificada en los años 2016 y 2018 respectivamente.
-
+                            Algunos datos que refleja la siguiente gráfica son:
+                            <ul>
+                                <li>La <b>negligencia administrativa</b> es la causa de la mayoría de las inhabilitaciones firmes a enero 2022 con 761 registros, sin embargo, existe un decremento en el número de sancionados por esta causa  tomando como muestra el año 2017 con 139 sanciones en contraste con el año 2020 con tan solo 8.</li>
+                                <li>En el caso del <b>abuso de autoridad</b> hay 181 registros, 55 de ellos corresponden al año 2014, en contraste con los 2 registros del año 2020, cabe señalar que en año 2019 y 2021 no hay registros que correspondan a esta causa.</li>
+                                <li>El <b>cohecho o extorsión</b>, cuenta con un total de 73 registros, 27 pertenecen  a inhabilitaciones resueltas en 2013, en contraste con 1 del 2019, a partir del 2019 no se tienen más sanciones firmes por esta causa, cabe señalar que no hay sanciones firmes resueltas en el 2018 que coincidan con esta causa.</li>
+                                <li>Por su parte, la <b>violación en procedimientos de contratación</b> cuenta con 58 sanciones firmes, habiendo sido resueltas en su mayoría (22) en el año 2015, a partir del año 2017 no hay más registros coincidentes.</li>
+                                <li>A causa de <b>ejercicio indebido de sus funciones en materia migratoria</b> hay 7 sanciones firmes a enero 2022, 4 resueltas en 2016, 2 en 2017 y 1 en 2018.</li>
+                            </ul>
                         </Typography>
                     </Grid>
                     <Grid item xs={12} md={12}>

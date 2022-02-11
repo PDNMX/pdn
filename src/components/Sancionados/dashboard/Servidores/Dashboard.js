@@ -52,14 +52,14 @@ class Dashboard extends React.Component {
                             <b>{"¿Qué información es?"}</b>
                         </Typography>
                         <Typography className={classes.desc}>
-                            {"La información que se presenta a continuación corresponde a las personas servidoras públicas sancionados reportadas en el Registro de Servidores Públicos Sancionados (RSPS) de 2013 a mayo 2021. La sanción recibida reportada en los datos es la de inhabilitación para desempeñarse como servidor público. En esta entrega, se cuentan con 1,206 registros."}
+                            La información presentada corresponde a las personas servidoras públicas que se encuentran inhabilitadas de acuerdo con el Registro de
+                            Servidores Públicos Sancionados (RSPS) y cuya fecha de resolución va del año 2013 a enero 2022. En esta entrega, se cuentan con <b>1,218 registros</b>.
                         </Typography>
                         <Typography  >
                             <b>{"¿Cómo se obtiene la información?"}</b>
                         </Typography>
                         <Typography className={classes.desc}>
-                            Para consultar la información reportada por la Secretaría de la Función Pública visita la
-                            página datos.gob.mx <br/>
+                            Se obtiene de la información reportada por la Secretaría de la Función Pública, visita la página datos.gob.mx<br/>
                             (Fuente:
                             <a href={'https://datos.gob.mx/busca/dataset/servidores-publicos-sancionados'} target="_blank" rel="noopener noreferrer">https://datos.gob.mx/busca/dataset/servidores-publicos-sancionados</a>)
                         </Typography>
@@ -68,10 +68,10 @@ class Dashboard extends React.Component {
                         </Typography>
                         <Typography className={classes.desc}>
                             Considerando los campos en el conjunto de datos, las visualizaciones presentan 4 puntos principales:  <br/><br/>
-                            1. <b>Cantidad de personas servidoras públicas sancionadas.</b> Conoce el número de personas servidoras públicas sancionadas del año 2013 a mayo 2021. <a href={"#g1"}>Ver</a><br/>
-                            2. <b>Causa de las sanciones.</b> Muestra cuáles fueron las causas de la sanciones desde el año 2013 a mayo 2021, es posible ver el comportamiento de manera general o particular. <a href={"#g2"}>Ver</a><br/>
-                            3. <b>Dependencias con más personas servidoras públicas sancionadas.</b> Muestra cuáles son las dependencias con más personas servidoras públicas sancionadas. <a href={"#g3"}>Ver</a><br/>
-                            4. <b>Duración de las sanciones.</b> Muestra cómo varía la duración de las inhabilitaciones por año. <a href={"#g4"}>Ver</a>
+                            1. <b>Cantidad de personas servidoras públicas sancionadas.</b> Conoce el número de personas servidoras públicas sancionadas que se encuentran sancionadas (inhabilitadas) y cuya fecha de resolución fue efectuada entre el año 2013 y enero 2022. <a href={"#g1"}>Ver</a><br/>
+                            2. <b>Causa de las sanciones.</b> Muestra cuáles fueron las causas de las inhabilitaciones que se encuentran vigentes (firmes) las cuales fueron resueltas entre el año 2013 y enero 2022. Es posible ver el comportamiento general por el tipo de causa y de manera desagregada por año. <a href={"#g2"}>Ver</a><br/>
+                            3. <b>Dependencias con más personas servidoras públicas sancionadas.</b> Presenta cuáles son las dependencias con más personas servidoras públicas sancionadas (inhabilitadas) a enero 2022. <a href={"#g3"}>Ver</a><br/>
+                            4. <b>Duración de las sanciones.</b> Conoce la duración de las inhabilitaciones vigentes. <a href={"#g4"}>Ver</a>
                         </Typography>
                     </Grid>
                     <Grid item xs={12} className={classes.sectionT} id={"g1"}>
