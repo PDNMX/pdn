@@ -2,15 +2,14 @@ import React from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { CardHeader } from '@mui/material';
+import { CardHeader, Grid } from '@mui/material';
 
 import logo from '../../../assets/CardsHome/logo_interconexion.svg';
+import MyButton from './MyButton';
 
 import { makeStyles } from '@mui/styles';
 import cssCards from './cssCards.js';
-
 const useStyles = makeStyles(cssCards);
 
 export default function (props) {
@@ -28,9 +27,9 @@ export default function (props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button className={classes.boton} size='medium'>
-          CONOCE MÁS <span className={classes.boton_span}>...</span>
-        </Button>
+        <Grid container direction={'row-reverse'}>
+          <MyButton text={'CONOCE MÁS'} href={'https://www.plataformadigitalnacional.org/mapa-sla/'} />
+        </Grid>
       </CardActions>
     </Card>
   );

@@ -2,15 +2,14 @@ import React from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { CardHeader } from '@mui/material';
+import { CardHeader, Grid } from '@mui/material';
 
 import logo from '../../../assets/CardsHome/logo_mda.svg';
+import MyButton from './MyButton';
 
 import { makeStyles } from '@mui/styles';
 import cssCards from './cssCards.js';
-
 const useStyles = makeStyles(cssCards);
 
 export default function (props) {
@@ -26,9 +25,9 @@ export default function (props) {
         <Typography>Cuenta con herramientas que fueron desarrolladas por diversas instituciones y que cumplen los objetivos de la PDN</Typography>
       </CardContent>
       <CardActions>
-        <Button className={classes.boton} size='medium'>
-          CONOCE MÁS ...
-        </Button>
+        <Grid container direction={'row-reverse'}>
+          <MyButton text={'CONOCE MÁS'} href={'https://mda.plataformadigitalnacional.org/'} />
+        </Grid>
       </CardActions>
     </Card>
   );
