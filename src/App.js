@@ -26,70 +26,24 @@ const theme = createTheme({
             fontFamily: ['"Roboto"', "sans-serif"].join(","),
         },
         palette: {
-            text: {
-                primary: '#666666'
-            },
             primary: {
-                main: "#89d4f2",
-                light: "#bdffff",
-                dark: "#56a3bf"
+                main: "#0d3b49",
+                light: "#3d6575",
+                dark: "#001621",
+                contrastText: "#ced8db"
             },
             secondary: {
-                main: "#ffe01b",
-                light: "#ffff5c",
-                dark: "#c8af00"
+                main: "#3ab0e5",
+                light: "#79e2ff",
+                dark: "#0081b3",
+                contrastText: "#0d3b49"
             },
-            fontLight: {
-                color: "#f5f5f5" //"#e0e0e0"
+            background:{
+              default: "#0d3b49"
             },
-            grey: {
-                color: "#c5c5c5",
-
-            },
-            titleBanner: {
-                color: "#666666"
-            },
-            graphGreen: {
-                color: "#00cc99"
-            },
-            textPrincipal: {
-                color: "#00322b"
-            },
-            textSecondary: {
-                color: "#e6e6e6"
-            },
-            backLight: {
-                color: "#e6e6e6"
-            },
-            backDark: {
-                color: "rgb(55, 70, 79)"
-            },
-            textNormal: {
-                color: "rgba(0, 0, 0, 0.87)"
-            },
-            white: {
-                color: "#ffff"
-            },
-            grisTenue: {
-                color: "#f5f5f5"
-            },
-            azul: {
-                color: "#89d4f2",
-                pdn: "#34b3eb"
-            },
-            black: {
-                black: "#000"
-            },
-            red: {
-                color: "#B00020"
-            },
-            textGrey: {
-                color: "#666666"
-            },
-            pestanas: {
-                bg: '#f2f2f2',
-                activa: "#F9CFC8"
-            },
+            azulPDN: "#0081b3",
+            yellow: "#ffe01b",
+            greyColor:"#666666",
             S1:{
                 color:"#F29888",
                 shade: "#F9CFC8"

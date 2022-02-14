@@ -22,10 +22,10 @@ const styles = theme => ({
         width: '100%'
     },
     fontLight: {
-        color: theme.palette.black.color,
+        // color: theme.palette.black.color,
     },
     '&$focus': {
-        color: theme.palette.black.color,
+        //color: theme.palette.black.color,
     },
     root: {
         flexGrow: 1,

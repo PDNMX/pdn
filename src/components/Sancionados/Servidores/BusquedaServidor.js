@@ -20,7 +20,7 @@ const styles = theme => ({
         width: '100%'
     },
     '&$focus': {
-        color: theme.palette.black.color,
+        //color: theme.palette.black.color,
     },
     centrado: {
         display: 'flex',

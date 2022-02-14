@@ -18,16 +18,16 @@ const styles = theme => ({
         flexGrow: 1
     },
     whiteText: {
-        color: theme.palette.textGrey.color
+        //color: theme.palette.textGrey.color
     },
     bgPanelTable: {
-        backgroundColor: theme.palette.white.color,
+        //backgroundColor: theme.palette.white.color,
     },
     section: {
         maxWidth: '1200px',
     },
     sectionT: {
-        color: theme.palette.textGrey.color,
+        //color: theme.palette.textGrey.color,
         marginTop : theme.spacing(7),
 
     },
@@ -35,10 +35,10 @@ const styles = theme => ({
         width: '60px'
     },
     bgContainer: {
-        backgroundColor: theme.palette.pestanas.bg,
+        //backgroundColor: theme.palette.pestanas.bg,
     },
     card: {
-        backgroundColor: theme.palette.pestanas.bg,
+        //backgroundColor: theme.palette.pestanas.bg,
         paddingLeft: theme.spacing(1),
         paddingRight: theme.spacing(1),
         paddingTop: theme.spacing(2),

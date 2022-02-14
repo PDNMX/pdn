@@ -45,7 +45,7 @@ const styles = theme => ({
         textDecoration: "none"
     },
     text: {
-        color: theme.palette.titleBanner.color,
+        color: theme.palette.greyColor,
         //paddingBottom: 60
     },
     specsContainer: {

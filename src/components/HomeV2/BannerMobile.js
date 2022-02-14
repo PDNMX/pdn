@@ -55,7 +55,7 @@ const styles = theme => ({
         justifyContent: 'space-between'
     },
     iconMenu:{
-        fill: theme.palette.azul.pdn,
+        fill: theme.palette.azulPDN,
         fontSize: theme.spacing(5)
     },
     iconSesion: {

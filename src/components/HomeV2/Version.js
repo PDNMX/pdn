@@ -4,7 +4,7 @@ import {Typography, Grid} from "@mui/material";
 
 const styles = theme => ({
     root:{
-        backgroundColor: theme.palette.azul.pdn,
+        backgroundColor: theme.palette.azulPDN,
         padding: 2,
         color: '#3e5968',
         paddingLeft: theme.spacing(8)

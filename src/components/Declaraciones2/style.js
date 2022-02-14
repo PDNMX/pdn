@@ -4,11 +4,11 @@ export default (theme) => ({
   },
   //principal
   bgContainer: {
-    backgroundColor: theme.palette.pestanas.bg,
+    backgroundColor: theme.palette.S1.shade,
   },
   card: {
     // backgroundColor: "#34b3eb", //theme.palette.azul.color,
-    backgroundColor: theme.palette.pestanas.bg,
+    backgroundColor: theme.palette.S1.color,
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
     paddingTop: theme.spacing(2),
@@ -46,13 +46,13 @@ export default (theme) => ({
     border: 0,
   },
   sectionT: {
-    color: theme.palette.textGrey.color,
+    /*color: theme.palette.textGrey.color,*/
     marginTop: theme.spacing(7),
     maxWidth: 1200,
     // margin: "0 auto",
   },
   whiteText: {
-    color: theme.palette.textGrey.color,
+    /*color: theme.palette.textGrey.color,*/
     padding: "10px",
   },
 
