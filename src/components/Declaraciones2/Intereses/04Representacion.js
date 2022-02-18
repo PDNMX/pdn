@@ -60,7 +60,7 @@ function Representacion(props) {
 							<Grid item xs={12} md={4}>
 								<Typography className={classes.cardTitle}>MONTO MENSUAL NETO:</Typography>
 								<Typography className={classes.card}>
-									{getMoneda(obj.montoMensual.valor)} {obj.montoMensual.moneda}
+									{obj.montoMensual && getMoneda(obj.montoMensual.valor)} {obj.montoMensual && obj.montoMensual.moneda}
 								</Typography>
 							</Grid>
 						)}
@@ -121,7 +121,7 @@ export default function(props) {
 	const { data } = props;
 
 	// const representacion = data.representacion.filter((i) => i.tipoRelacion === 'DECLARANTE');
-	const representacion = data.representacion;
+	const representacion = data && (typeof data.representacion !== 'undefined') ? data.representacion : [];
 
 	return (
 		<Grid container spacing={2} className={classes.rootPrincipal}>
@@ -131,7 +131,7 @@ export default function(props) {
 				</Typography>
 			</Grid>
 			<Grid item xs={12}>
-				{data.ninguno ? (
+				{data && data.ninguno ? (
 					<DatosNoRegistrados />
 				) : representacion.length ? (
 					<Representacion representacion={representacion} />

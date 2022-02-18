@@ -133,7 +133,7 @@ export default function(props) {
 	const { data } = props;
 
 	// const beneficio = data.beneficio.filter((i) => i.beneficiario.length === 1 && i.beneficiario[0].clave === 'DC');
-	const beneficio = data.beneficio;
+	const beneficio = data && (typeof data.beneficio !== 'undefined') ? data.beneficio : [];
 
 	return (
 		<Grid container spacing={2} className={classes.rootPrincipal}>
@@ -143,7 +143,7 @@ export default function(props) {
 				</Typography>
 			</Grid>
 			<Grid item xs={12}>
-				{data.ninguno ? (
+				{data && data.ninguno ? (
 					<DatosNoRegistrados />
 				) : beneficio.length ? (
 					<BeneficiosPrivados beneficio={beneficio} />

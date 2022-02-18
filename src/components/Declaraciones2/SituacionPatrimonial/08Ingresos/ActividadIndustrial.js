@@ -52,7 +52,7 @@ export default function({ actividadIndustrialComercialEmpresarial }) {
 					<Grid item xs={12} md={3}>
 						<Typography className={classes.cardTitle}>INGRESO:</Typography>
 					</Grid>
-					{actividadIndustrialComercialEmpresarial.actividades.map((act, idx) => {
+					{actividadIndustrialComercialEmpresarial.actividades && actividadIndustrialComercialEmpresarial.actividades.map((act, idx) => {
 						return (
 							<Grid container spacing={1} key={'act-' + idx}>
 								<Grid item xs={12} md={5}>

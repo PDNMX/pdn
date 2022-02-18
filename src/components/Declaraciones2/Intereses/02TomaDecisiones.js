@@ -90,7 +90,7 @@ export default function(props) {
 	const { data } = props;
 
 	// const participaciones = data.participacion.filter((i) => i.tipoRelacion === 'DECLARANTE');
-	const participaciones = data.participacion;
+	const participaciones = data && (typeof data.participacion !== 'undefined') ? data.participacion : [];
 
 	return (
 		<Grid container spacing={2} className={classes.rootPrincipal}>
@@ -100,7 +100,7 @@ export default function(props) {
 				</Typography>
 			</Grid>
 			<Grid item xs={12}>
-				{data.ninguno ? (
+				{data && data.ninguno ? (
 					<DatosNoRegistrados />
 				) : participaciones.length ? (
 					<Participacion participaciones={participaciones} />

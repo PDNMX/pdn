@@ -180,7 +180,7 @@ export default function(props) {
 	const { data } = props;
 
 	// const fideicomiso = data.fideicomiso.filter((i) => i.tipoRelacion === 'DECLARANTE');
-	const fideicomiso = data.fideicomiso;
+	const fideicomiso = data && (typeof data.fideicomiso !== 'undefined') ? data.fideicomiso : [];
 
 	return (
 		<Grid container spacing={2} className={classes.rootPrincipal}>
@@ -190,7 +190,7 @@ export default function(props) {
 				</Typography>
 			</Grid>
 			<Grid item xs={12}>
-				{data.ninguno ? (
+				{data && data.ninguno ? (
 					<DatosNoRegistrados />
 				) : fideicomiso.length ? (
 					<Fideicomisos fideicomiso={fideicomiso} />

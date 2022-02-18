@@ -140,8 +140,8 @@ export function Porcentaje(props) {
 		<Grid item xs={12}>
 			<Typography className={classes.cardTitle}>{titulo}:</Typography>
 			<Typography component="div" className={classes.card} align="center">
-				<strong>{porcentaje}%</strong> <br />
-				<BorderLinearProgress variant="determinate" value={porcentaje} />
+				<strong>{porcentaje?porcentaje:0}%</strong> <br />
+				<BorderLinearProgress variant="determinate" value={porcentaje?porcentaje:0} />
 			</Typography>
 		</Grid>
 	);

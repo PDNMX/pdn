@@ -65,7 +65,7 @@ function Clientes(props) {
 								MONTO APROXIMADO DEL BENEFICIO O GANANCIA MENSUAL QUE OBTIENE DEL CLIENTE PRINCIPAL:
 							</Typography>
 							<Typography className={classes.card}>
-								{getMoneda(obj.montoAproximadoGanancia.valor)} {obj.montoAproximadoGanancia.moneda}
+								{obj.montoAproximadoGanancia && getMoneda(obj.montoAproximadoGanancia.valor)} {obj.montoAproximadoGanancia && obj.montoAproximadoGanancia.moneda}
 							</Typography>
 						</Grid>
 						<Divider />
@@ -127,7 +127,7 @@ export default function(props) {
 	const { data } = props;
 
 	// const cliente = data.cliente.filter((i) => i.tipoRelacion === 'DECLARANTE');
-	const cliente = data.cliente;
+	const cliente = data && (typeof data.cliente !== 'undefined') ? data.cliente : [];
 
 	return (
 		<Grid container spacing={2} className={classes.rootPrincipal}>
@@ -137,7 +137,7 @@ export default function(props) {
 				</Typography>
 			</Grid>
 			<Grid item xs={12}>
-				{data.ninguno ? (
+				{data && data.ninguno ? (
 					<DatosNoRegistrados />
 				) : cliente.length ? (
 					<Clientes cliente={cliente} />

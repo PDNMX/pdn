@@ -59,7 +59,7 @@ export function ActividadFinanciera({ actividadFinanciera }) {
 					<Grid item xs={12} md={3}>
 						<Typography className={classes.cardTitle}>INGRESO:</Typography>
 					</Grid>
-					{actividadFinanciera.actividades.map((act, idx) => {
+					{actividadFinanciera.actividades && actividadFinanciera.actividades.map((act, idx) => {
 						return (
 							<Grid container spacing={1} key={'act-' + idx}>
 								<Grid item xs={12} md={9}>
@@ -119,7 +119,7 @@ export function ServiciosProfesionales({ serviciosProfesionales }) {
 					<Grid item xs={12} md={3}>
 						<Typography className={classes.cardTitle}>INGRESO:</Typography>
 					</Grid>
-					{serviciosProfesionales.servicios.map((serv, idx) => {
+					{serviciosProfesionales.servicios && serviciosProfesionales.servicios.map((serv, idx) => {
 						return (
 							<Grid container spacing={1} key={'act-' + idx}>
 								<Grid item xs={12} md={9}>
@@ -176,7 +176,7 @@ export function EnajenacionBienes({ enajenacionBienes }) {
 					<Grid item xs={12} md={3}>
 						<Typography className={classes.cardTitle}>INGRESO:</Typography>
 					</Grid>
-					{enajenacionBienes.bienes.map((ing, idx) => {
+					{enajenacionBienes.bienes && enajenacionBienes.bienes.map((ing, idx) => {
 						return (
 							<Grid container spacing={1} key={'act-' + idx}>
 								<Grid item xs={12} md={9}>
@@ -238,7 +238,7 @@ export function OtrosIngresos({ otrosIngresos }) {
 					<Grid item xs={12} md={3}>
 						<Typography className={classes.cardTitle}>INGRESO:</Typography>
 					</Grid>
-					{otrosIngresos.ingresos.map((ing, idx) => {
+					{otrosIngresos.ingresos && otrosIngresos.ingresos.map((ing, idx) => {
 						return (
 							<Grid container spacing={1} key={'act-' + idx}>
 								<Grid item xs={12} md={9}>

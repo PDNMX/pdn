@@ -75,11 +75,11 @@ function Adeudos({ adeudos, tipo }) {
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>¿DÓNDE SE LOCALIZA EL ADEUDO?</Typography>
 							<Typography className={classes.card}>
-								{obj.localizacionAdeudo.pais === 'MX' ? 'EN MÉXICO' : 'EN EL EXTRANJERO'}
+								{obj.localizacionAdeudo && obj.localizacionAdeudo.pais === 'MX' ? 'EN MÉXICO' : 'EN EL EXTRANJERO'}
 							</Typography>
 						</Grid>
 
-						{obj.localizacionAdeudo.pais !== 'MX' && (
+						{obj.localizacionAdeudo && obj.localizacionAdeudo.pais !== 'MX' && (
 							<Grid item xs={12} md={4}>
 								<Typography className={classes.cardTitle}>PAÍS DÓNDE SE LOCALIZA</Typography>
 								<Typography className={classes.card}>{obj.localizacionAdeudo.pais}</Typography>

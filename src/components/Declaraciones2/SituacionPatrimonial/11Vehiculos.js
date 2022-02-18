@@ -84,7 +84,7 @@ function Vehiculo(props) {
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>VALOR DE ADQUISICIÓN DEL VEHÍCULO:</Typography>
-							<Typography className={classes.card}>{getMoneda(obj.valorAdquisicion.valor)}</Typography>
+							<Typography className={classes.card}>{obj.valorAdquisicion && getMoneda(obj.valorAdquisicion.valor)}</Typography>
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>TIPO DE MONEDA:</Typography>

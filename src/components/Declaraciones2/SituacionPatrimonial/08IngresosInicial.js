@@ -59,7 +59,7 @@ const OtrosIngresos = ({ otrosIngresos }) => {
 					<Grid item xs={12} md={3}>
 						<Typography className={classes.cardTitle}>INGRESO:</Typography>
 					</Grid>
-					{otrosIngresos.ingresos.map((ing, idx) => {
+					{otrosIngresos.ingresos && otrosIngresos.ingresos.map((ing, idx) => {
 						return (
 							<Grid container spacing={1} key={'act-' + idx}>
 								<Grid item xs={12} md={9}>

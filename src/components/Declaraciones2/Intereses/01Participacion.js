@@ -30,7 +30,7 @@ function Participacion(props) {
 				>
 					<Typography className={exp.heading}>
 						<strong>
-							{obj.tipoParticipacion.valor} DE {obj.nombreEmpresaSociedadAsociacion}
+							{obj.tipoParticipacion && obj.tipoParticipacion.valor} DE {obj.nombreEmpresaSociedadAsociacion}
 						</strong>
 					</Typography>
 				</BoxAccordionSummary>
@@ -53,7 +53,7 @@ function Participacion(props) {
 
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>TIPO DE PARTICIPACIÓN:</Typography>
-							<Typography className={classes.card}>{obj.tipoParticipacion.valor}</Typography>
+							<Typography className={classes.card}>{obj.tipoParticipacion && obj.tipoParticipacion.valor}</Typography>
 						</Grid>
 
 						<Grid item xs={12} md={4}>
@@ -91,7 +91,7 @@ export default function(props) {
 	const classes = useStyles();
 	const { data } = props;
 
-	const participaciones = data.participacion;
+	const participaciones = data && (typeof data.participacion !== 'undefined' ) ? data.participacion : [];
 
 	return (
 		<Grid container spacing={2} className={classes.rootPrincipal}>
@@ -101,7 +101,7 @@ export default function(props) {
 				</Typography>
 			</Grid>
 			<Grid item xs={12}>
-				{data.ninguno ? (
+				{data && data.ninguno ? (
 					<DatosNoRegistrados />
 				) : participaciones.length ? (
 					<Participacion participaciones={participaciones} />

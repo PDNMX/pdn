@@ -36,7 +36,7 @@ function Apoyo(props) {
 					<Grid container spacing={1}>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>BENEFICIARIO:</Typography>
-							<Typography className={classes.card}>{obj.beneficiarioPrograma.valor}</Typography>
+							<Typography className={classes.card}>{obj.beneficiarioPrograma && obj.beneficiarioPrograma.valor}</Typography>
 						</Grid>
 
 						<Grid item xs={12} md={4}>
@@ -53,7 +53,7 @@ function Apoyo(props) {
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>TIPO DE APOYO:</Typography>
-							<Typography className={classes.card}>{obj.tipoApoyo.valor}</Typography>
+							<Typography className={classes.card}>{obj.tipoApoyo && obj.tipoApoyo.valor}</Typography>
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>FORMA DE RECEPCIÓN DEL APOYO:</Typography>
@@ -65,7 +65,7 @@ function Apoyo(props) {
 									MONTO APROXIMADO DEL APOYO MENSUAL:
 								</Typography>
 								<Typography className={classes.card}>
-									{getMoneda(obj.montoApoyoMensual.valor)} {obj.montoApoyoMensual.moneda}
+									{obj.montoApoyoMensual && getMoneda(obj.montoApoyoMensual.valor)} {obj.montoApoyoMensual && obj.montoApoyoMensual.moneda}
 								</Typography>
 							</Grid>
 						) : (
@@ -86,7 +86,7 @@ export default function(props) {
 	const { data } = props;
 
 	// const apoyo = data.apoyo.filter((i) => i.beneficiarioPrograma.clave === 'DEC');
-	const apoyo = data.apoyo;
+	const apoyo = data && (typeof data.apoyo !== 'undefined') ? data.apoyo : [];
 
 	return (
 		<Grid container spacing={2} className={classes.rootPrincipal}>
@@ -96,7 +96,7 @@ export default function(props) {
 				</Typography>
 			</Grid>
 			<Grid item xs={12}>
-				{data.ninguno ? <DatosNoRegistrados /> : apoyo.length ? <Apoyo apoyo={apoyo} /> : <DatosReservados />}
+				{data && data.ninguno ? <DatosNoRegistrados /> : apoyo.length ? <Apoyo apoyo={apoyo} /> : <DatosReservados />}
 			</Grid>
 		</Grid>
 	);

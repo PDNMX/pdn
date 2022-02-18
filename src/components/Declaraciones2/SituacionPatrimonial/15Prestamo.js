@@ -24,7 +24,7 @@ function Duenio({ obj }) {
 			<Grid item xs={12} style={{ textAlign: 'center' }}>
 				<Typography className={classes.tituloSubSeccion}>DUEÑO O TITULAR</Typography>
 			</Grid>
-			{obj.duenoTitular.tipoDuenoTitular === 'FISICA' ? (
+			{obj.duenoTitular && obj.duenoTitular.tipoDuenoTitular === 'FISICA' ? (
 				<Grid item xs={12}>
 					<Grid container spacing={1}>
 						<Grid item xs={12} md={4}>
@@ -46,15 +46,15 @@ function Duenio({ obj }) {
 					<Grid container spacing={1}>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>NOMBRE DEL DUEÑO O TITULAR:</Typography>
-							<Typography className={classes.card}>{obj.duenoTitular.nombreTitular}</Typography>
+							<Typography className={classes.card}>{obj.duenoTitular && obj.duenoTitular.nombreTitular}</Typography>
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>RFC:</Typography>
-							<Typography className={classes.card}>{obj.duenoTitular.rfc}</Typography>
+							<Typography className={classes.card}>{obj.duenoTitular && obj.duenoTitular.rfc}</Typography>
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>RELACIÓN CON EL DUEÑO O EL TITULAR:</Typography>
-							<Typography className={classes.card}>{obj.duenoTitular.relacionConTitular}</Typography>
+							<Typography className={classes.card}>{obj.duenoTitular && obj.duenoTitular.relacionConTitular}</Typography>
 						</Grid>
 					</Grid>
 				</Grid>
