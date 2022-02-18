@@ -8,8 +8,7 @@ import icon_youtube from '../../../assets/footer/ico_youtube.svg';
 import icon_twitter from '../../../assets/footer/ico_twitter.svg';
 import icon_facebook from '../../../assets/footer/ico_facebook.svg';
 
-import icon_libreuso from '../../../assets/footer/libre_uso.png';
-import icon_github from '../../../assets/footer/ico_github.svg';
+import icon_github from '../../../assets/footer/ico_git.svg';
 
 import logoSESNA from '../../../assets/footer/logo_sna.svg';
 import logoPDN from '../../../assets/footer/logotipo_pdn.svg';
@@ -48,21 +47,17 @@ export default props => {
       </Grid>
       <Grid container direction={'row'} justifyContent={'center'} alignContent={'center'} className={classes.footerMobileSeccLogos}>
         <Grid item>
-          {/* <figure> */}
-            <img alt='Logo SESNA' src={logoSESNA} className={classes.mobileSESNA} />
-          {/* </figure> */}
+          <img alt='Logo SESNA' src={logoSESNA} className={classes.mobileSESNA} />
         </Grid>
         <Grid item>
-          {/* <figure> */}
-            <img alt='Logo PDN' src={logoPDN} className={classes.mobilePDN} />
-          {/* </figure> */}
+          <img alt='Logo PDN' src={logoPDN} className={classes.mobilePDN} />
         </Grid>
       </Grid>
       <Grid container direction={'row'} justifyContent={'center'} alignContent={'center'} className={classes.footerMobileSeccLogos}>
         <Grid item>
           <Link href='https://github.com/orgs/PDNMX/' target='_blank'>
             <figure className={classes.figure}>
-              <img alt='GitHub' src={icon_github} className={classes.image} style={{ marginTop: '10px', width: '80px' }} />
+              <img alt='GitHub' src={icon_github} className={classes.image} />
             </figure>
           </Link>
           <Link href='https://www.facebook.com/SESNAOficial/' target='_blank'>

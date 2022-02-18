@@ -48,7 +48,7 @@ export default props => {
             </figure>
           </Grid>
           <Grid item>
-            <RouterLink to={'/about'} className={classes.enlaces} style={{ marginRight: 20, color: '#666' }}>
+            <RouterLink to={'/about'} className={classes.acercade_enlace}>
               Acerca de la PDN
             </RouterLink>
           </Grid>

@@ -22,7 +22,6 @@ export default theme => ({
       color: '#b1bcc1'
     },
     '&:hover': {
-      fontWeight: 'bolder',
       color: '#FFF',
       borderBottom: '2px solid #3ab0e5'
     }
@@ -48,6 +47,24 @@ export default theme => ({
     with: '100%',
     height: '50px',
     marginTop: '10px'
+  },
+  acercade_enlace: {
+    'marginRight': 20,
+    'textDecoration': 'none',
+    'color': '#666',
+    '&:visited': {
+      color: '#666'
+    },
+    '&:link': {
+      color: '#666'
+    },
+    '&:active': {
+      color: '#666'
+    },
+    '&:hover': {
+      color: '#FFF',
+      borderBottom: '2px solid #3ab0e5'
+    }
   },
   linkMobile: {
     'paddingBottom': theme.spacing(1),
@@ -139,7 +156,6 @@ export default theme => ({
       color: '#b1bcc1'
     },
     '&:hover': {
-      fontWeight: 'bolder',
       color: '#FFF',
       borderBottom: '2px solid #3ab0e5'
     }

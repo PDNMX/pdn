@@ -12,7 +12,7 @@ import Banner from "./Banner";
 import bgimg from "../../assets/rediseno/fondo_cruces.png";
 
 import Footer from './Footer/';
-import Cards from './Cards';
+import Cards from './Cards/';
 
 import QueEsPDN from "./QueEsPDN";
 import Numeralia from "./Numeralia"
