@@ -36,7 +36,7 @@ const styles = theme => ({
         bottom: 0
     },
     desc: {
-        color: theme.palette.primary.dark,
+        color: theme.palette.primario.dark,
     },
     container: {
         /* marginTop: '30px',
@@ -47,7 +47,7 @@ const styles = theme => ({
         maxWidth: '1200px',
         overflowX: 'auto',
         padding: theme.spacing(1)
-    },
+    }
 });
 
 const tiposSancion = [
@@ -362,7 +362,6 @@ class BusquedaServidor extends React.Component {
                         <TextField
                             id="nombres"
                             label="Nombre(s)"
-                            type="search"
                             onChange={(e) => this.handleChangeCampo('nombres', e)}
                             value={nombres}
                         />
@@ -536,13 +535,13 @@ class BusquedaServidor extends React.Component {
                     <Grid item md={10}/>
 
                     <Grid item xs={12} md={1} className={classes.centrado}>
-                        <Button variant="contained" color="secondary" className={classes.button}
+                        <Button variant="contained" color="secundario" className={classes.button}
                                 onClick={() => this.handleCleanAll()}>
                             Limpiar
                         </Button>
                     </Grid>
                     <Grid item xs={12} md={1} className={classes.centrado}>
-                        <Button variant="contained" color="secondary" className={classes.button}
+                        <Button variant="contained" color="secundario" className={classes.button}
                                 onClick={() => this.handleSearchPrevios()}>
                             Buscar
                         </Button>

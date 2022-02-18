@@ -27,22 +27,38 @@ const theme = createTheme({
         },
         palette: {
             primary: {
+                main: "#89d4f2",
+                light: "#bdffff",
+                dark: "#56a3bf",
+            },
+            secondary: {
+                main: "#ffe01b",
+                light: "#ffff5c",
+                dark: "#c8af00"
+            },
+            primario: {
                 main: "#0d3b49",
                 light: "#3d6575",
                 dark: "#001621",
                 contrastText: "#ced8db"
             },
-            secondary: {
+            secundario: {
                 main: "#3ab0e5",
                 light: "#79e2ff",
                 dark: "#0081b3",
                 contrastText: "#0d3b49"
             },
+            text:{
+                main:"#ced8db",
+                greyColor: '#666666'
+            },
             background:{
-              default: "#0d3b49"
+              default: "#0d3b49",
+              opaque:'#155065',
+              hoverBotton: '#56a3bf'
             },
             azulPDN: "#0081b3",
-            yellow: "#ffe01b",
+            yellowColor: "#ffe01b",
             greyColor:"#666666",
             S1:{
                 color:"#F29888",

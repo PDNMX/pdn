@@ -35,50 +35,6 @@ const styles = theme => ({
     },
 });
 
-const systems = [
-    {
-        name: "Sistema de Declaraciones",
-        color: "#f29888",
-        icon: IconS1,
-        url: "/declaraciones",
-        disabled: false
-    },
-    {
-        name: "Sistema de Servidores Públicos en contrataciones",
-        color: "#b25fac",
-        icon: IconS2,
-        url: "/servidores",
-        disabled: false
-    },
-    {
-        name: "Sistema de Sancionados",
-        color: "#9085da",
-        icon: IconS3,
-        url: "/sancionados",
-        disabled: false
-    },
-    {
-        name: "Sistema de Fiscalización",
-        color: "#88bc69",
-        icon: IconS4,
-        url: "#",
-        disabled: true
-    },
-    {
-        name: "Sistema de Denuncias",
-        color: "#34c9b2",
-        icon: IconS5,
-        url: "#",
-        disabled: true
-    },
-    {
-        name: "Sistema de Contrataciones",
-        color: "#42a5cc",
-        icon: IconS6,
-        url: "/contrataciones",
-        disabled: false
-    }
-];
 
 
 const Home = props => {
@@ -86,7 +42,7 @@ const Home = props => {
 
     return (
         <div className={classes.root}>
-            <Banner systems={systems}/>
+            <Banner/>
             <Version/>
             <QueEsPDN/>
             <Numeralia/>

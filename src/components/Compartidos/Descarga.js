@@ -11,10 +11,14 @@ const styles = theme =>  ({
         flexGrow:1,
     },
     descarga: {
-        color: theme.palette.text.primary,
+        color: theme.palette.primario.contrastText,
         fontWeight: 500,
         fontSize: '48px',
         paddingBottom: theme.spacing(6)
+    },
+    iconDownload:{
+        color: theme.palette.primario.contrastText,
+        fontSize: 60
     }
 });
 class Descarga extends React.Component{
@@ -31,7 +35,7 @@ class Descarga extends React.Component{
                         <Typography className={classes.descarga} variant="h5"> Descarga todos los datos</Typography>
 
                         <IconButton href={url} target="_blank" size="large">
-                            <DownloadIcon style={{fontSize: 60}}/>
+                            <DownloadIcon className={classes.iconDownload}/>
                         </IconButton>
                     </Grid>
                 </Grid>
