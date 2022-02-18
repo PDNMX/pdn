@@ -1,13 +1,10 @@
 export default theme => ({
   root: {
     flexGrow: 1,
-    display: 'flex',
-    justifyContent: 'space-between',
-    flexDirection: 'column',
+    maxWidth: 650,
     margin: theme.spacing(2),
     backgroundColor: '#FFF',
-    color: '#55575a',
-    flexBasis: ' | auto'
+    color: '#55575a'
   },
   header: {
     backgroundColor: '#3E5866',
