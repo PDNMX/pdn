@@ -99,7 +99,7 @@ class Footer extends React.Component{
                                 {/*
                                 <Typography className={classes.grayText}>Fiscalización</Typography>
                                 <Typography className={classes.grayText}>Denuncias</Typography>
-                                <Typography className={classes.grayText}>Contrataciones</Typography>
+                                <Typography className={classes.grayText}>Sistema6</Typography>
                                 */}
                             </Grid>
                             <Grid item xs={6} md={3}>

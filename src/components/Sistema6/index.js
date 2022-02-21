@@ -40,7 +40,7 @@ const styles = theme => ({
         backgroundColor: '#fff'
     },
     tabItem:{
-        backgroundColor: theme.palette.pestanas.bg,
+        //backgroundColor: theme.palette.pestanas.bg,
         paddingLeft: theme.spacing(1),
         paddingRight: theme.spacing(1),
         paddingTop: theme.spacing(2),
@@ -71,7 +71,7 @@ const styles = theme => ({
         paddingRight: '8px'
     },
     tabContainer: {
-        backgroundColor: theme.palette.pestanas.bg
+        //backgroundColor: theme.palette.pestanas.bg
     }
 });
 

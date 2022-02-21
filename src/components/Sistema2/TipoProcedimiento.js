@@ -34,7 +34,7 @@ const MenuProps = {
 const procedimientos = [
     {
         key: 1,
-        value: 'Contrataciones'
+        value: 'Sistema6'
     },
     {
         key: 2,

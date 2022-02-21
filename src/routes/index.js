@@ -4,10 +4,10 @@ import Terminos from '../components/Terminos/Terminos';
 import Faq from '../components/FAQ/index';
 import Datos from '../components/CatalogoDatos/Datos';
 import Sancionados from '../components/Sancionados/Index';
-import Servidores from '../components/ServidoresIntervienen/Index';
+import Servidores from '../components/Sistema2/Index';
 import DashboardSancionados from '../components/Sancionados/dashboard/Servidores/Dashboard';
 import DashboardParticularesSancionados from '../components/Sancionados/dashboard/Particulares/Dashboard';
-import Contrataciones from '../components/Contrataciones/index';
+import Sistema6 from '../components/Sistema6/index';
 import Validador from '../components/Validador/index';
 import Especificaciones from '../components/Especificaciones/Landing/Especificaciones';
 import DeclaracionesEspecificaciones from '../components/Especificaciones/Declaraciones/Declaraciones';
@@ -79,7 +79,7 @@ const pdnRoutes = [
 	{
 		exact: true,
 		path: '/contrataciones',
-		component: Contrataciones,
+		component: Sistema6,
 		private: false
 	},
 	{
