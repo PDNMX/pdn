@@ -60,6 +60,7 @@ const theme = createTheme({
             azulPDN: "#0081b3",
             yellowColor: "#ffe01b",
             greyColor:"#666666",
+            redColor:"#B00020",
             S1:{
                 color:"#F29888",
                 shade: "#F9CFC8"

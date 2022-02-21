@@ -30,7 +30,7 @@ const styles = theme => ({
         background: '#ffe01b',//'#fecb6e'
     },
     headingText: {
-        color : theme.palette.titleBanner.color,
+        color : theme.palette.text.greyColor,
         fontSize: '48px',
         [theme.breakpoints.down('md')]:{
             fontSize: '40px',
@@ -40,7 +40,7 @@ const styles = theme => ({
     text: {
         fontSize: '18px',
         fontWeight: 500,
-        color: theme.palette.titleBanner.color
+        color: theme.palette.text.greyColor
     }
 });
 

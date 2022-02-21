@@ -31,7 +31,7 @@ const styles = theme => ({
         marginTop: theme.spacing(1)
     },
     links: {
-        backgroundColor: theme.palette.grisTenue.color
+        backgroundColor: theme.palette.greyColor
     },
     section: {
         maxWidth: '1024px'

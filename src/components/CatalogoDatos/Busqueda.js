@@ -27,10 +27,10 @@ const styles = theme => ({
     },
 
     fontLight: {
-        color: theme.palette.fontLight.color,
+        color: theme.palette.text.main
     },
     '&$focus': {
-        color: theme.palette.fontLight.color,
+        color: theme.palette.text.main,
     }
 });
 

@@ -36,7 +36,7 @@ const styles = theme => ({
         bottom: 0
     },
     desc: {
-        color: theme.palette.primario.dark,
+        color: theme.palette.text.contrastText,
     },
     container: {
         /* marginTop: '30px',

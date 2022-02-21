@@ -23,7 +23,7 @@ const styles = theme => ({
         textDecoration: "none"
     },
     text: {
-        color: theme.palette.titleBanner.color,
+        color: theme.palette.text.greyColor,
         paddingBottom: 60,
         [theme.breakpoints.down('md')]:{
             fontSize: '22px',
@@ -47,7 +47,7 @@ const styles = theme => ({
         }
     },
     textExplora: {
-        color: theme.palette.titleBanner.color,
+        color: theme.palette.text.greyColor,
         fontWeight: 500,
         fontSize: '48px',
         [theme.breakpoints.down('md')]:{

@@ -29,7 +29,7 @@ const styles = theme => ({
         color: theme.palette.secondary.dark
     },
     tableCell: {
-        color: theme.palette.fontLight.color
+        color: theme.palette.text.main
     },
     tableHead: {
         backgroundColor: "#34B3EB"

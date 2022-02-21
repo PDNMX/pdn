@@ -6,10 +6,10 @@ import IconProblem from "@mui/icons-material/ReportProblem";
 const styles = theme => ({
     mensaje: {
         textAlign: "center",
-        //color: theme.palette.red.color
+        color: theme.palette.redColor
     },
     icon: {
-        //color: theme.palette.red.color,
+        color: theme.palette.redColor,
         fontSize: "5em"
     },
     iconContainer: {

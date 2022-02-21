@@ -20,7 +20,7 @@ const styles = theme => ({
         marginBottom: theme.spacing(2)
     },
     headingText: {
-        color: theme.palette.titleBanner.color,
+        color: theme.palette.text.greyColor,
         fontWeight: "700",
         fontSize: '48px',
         [theme.breakpoints.down('md')]:{
@@ -30,7 +30,7 @@ const styles = theme => ({
     text:{
         fontSize: '18px',
         fontWeight: 500,
-        color: theme.palette.titleBanner.color,
+        color: theme.palette.text.greyColor,
         paddingBottom: theme.spacing(3)
     },
     videoDiv:{

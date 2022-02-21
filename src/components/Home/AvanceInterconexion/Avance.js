@@ -9,7 +9,7 @@ const styles = theme => ({
         paddingBottom: theme.spacing(10),
     },
     headingText: {
-        color: theme.palette.titleBanner.color,
+        color: theme.palette.text.greyColor,
         fontWeight: "700",
         fontSize: '48px',
         [theme.breakpoints.down('md')]:{

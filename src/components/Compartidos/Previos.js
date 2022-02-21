@@ -21,7 +21,7 @@ const styles = theme => ({
     },
     gridTable: {
         marginBottom: '27px',
-        color: theme.palette.textGrey.color
+        color: theme.palette.primario.contrastText
     },
     container: {
         marginTop: '30px',
@@ -32,10 +32,10 @@ const styles = theme => ({
         color: theme.palette.secondary.dark
     },
     tableHead: {
-        color: theme.palette.fontLight.color
+        color: theme.palette.text.main
     },
     tablePagination:{
-        color : theme.palette.textGrey.color,
+        color : theme.palette.greyColor,
         backgroundColor : '#f2f2f2'
     }
 });
