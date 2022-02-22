@@ -1,6 +1,8 @@
 import React from 'react';
 import {Typography, Grid} from "@mui/material";
 import {withStyles} from "@mui/styles";
+import Header from './Header/Header';
+import Footer from '../HomeV2/Footer';
 import bgimg from "../../assets/rediseno/fondo_cruces.png";
 
 const styles = theme => ({
@@ -27,6 +29,8 @@ const CustomTypography = withStyles({
 const index = props => {
     const { classes } = props;
     return <div className={classes.root}>
+        <Header/>
+
         <Grid container justifyContent="center">
             <Grid item xs={12} className={classes.rootItem}>
                 <CustomTypography variant="h4" paragraph>
@@ -44,6 +48,7 @@ const index = props => {
                 </CustomTypography>
             </Grid>
         </Grid>
+        <Footer/>
     </div>
 }
 
