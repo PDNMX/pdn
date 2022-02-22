@@ -66,7 +66,7 @@ export default function CustomizedSelect(props) {
     return (
         <form className={classes.root} autoComplete="off">
             <FormControl className={classes.margin} fullWidth>
-                {/*<InputLabel htmlFor="age-customized-native-simple">Sistema6</InputLabel>*/}
+                {/*<InputLabel htmlFor="age-customized-native-simple">Contrataciones</InputLabel>*/}
                 <Select
                     value={props.dataType}
                     onChange={handleChange}

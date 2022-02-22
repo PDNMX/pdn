@@ -1,6 +1,6 @@
 import React from 'react';
 import makeStyles from '@mui/styles/makeStyles';
-import Input from '@mui/material/Input';
+//import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -34,7 +34,7 @@ const MenuProps = {
 const procedimientos = [
     {
         key: 1,
-        value: 'Sistema6'
+        value: 'Contrataciones'
     },
     {
         key: 2,

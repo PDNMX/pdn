@@ -44,7 +44,7 @@ const systems = [
         name: "Sistema de Denuncias",
         color: "#34c9b2",
         icon: IconS5,
-        url: "denuncias"
+        url: "/denuncias"
     },
     {
         name: "Sistema de Contrataciones",

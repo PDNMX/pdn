@@ -4,12 +4,12 @@ import {withStyles} from '@mui/styles';
 
 const styles = theme => ({
     tableHead: {
-        color: theme.palette.black.color
+       // color: theme.palette.black.color
     },
 });
 
 const EnhancedTableHead = props => {
-    const { classes,columnData} = props;
+    const { classes, columnData} = props;
     const columnData_ = columnData.filter(c => c.mostrar === true );
 
     return (

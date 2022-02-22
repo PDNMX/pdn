@@ -18,18 +18,15 @@ const styles = theme => ({
     },
     gridTable: {
         marginBottom: '27px',
-        color: theme.palette.textGrey.color
+        //color: theme.palette.textGrey.color
     },
     container: {
         marginTop: '30px',
         marginBottom: '30px',
         overflowX: 'auto',
     },
-    iconoVer:{
-        color: theme.palette.secondary.dark
-    },
     tableCell: {
-        color: theme.palette.text.main
+        //color: theme.palette.text.main
     },
     tableHead: {
         backgroundColor: "#34B3EB"

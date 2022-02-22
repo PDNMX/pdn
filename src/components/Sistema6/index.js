@@ -1,8 +1,8 @@
 import React from 'react';
 import withStyles from '@mui/styles/withStyles';
 import Header from './Header/Header';
+import Footer from "../HomeV2/Footer";
 import Grid from '@mui/material/Grid';
-import Footer from "../Home/Footer";
 import Busqueda from "./Busqueda";
 import Cifras from "./Cifras";
 import Perspectivas from "./Perspectivas";
@@ -14,6 +14,7 @@ import img1 from "../../assets/img/servidores_publicos_sancionados.svg";
 import img3 from "../../assets/img/servidores_visualizaciones.svg";
 import {Typography, Box} from "@mui/material";
 import SelectSupplier from "./SelectSupplier";
+import bgimg from "../../assets/rediseno/fondo_cruces.png";
 
 //import LabeledHeatmap from './Charts/LabeledHeatmap';
 //import Treemap from './Charts/Treemap';
@@ -22,6 +23,9 @@ import SelectSupplier from "./SelectSupplier";
 const styles = theme => ({
     root: {
         flexGrow: 1,
+        backgroundImage: `url(${bgimg})`,
+        backgroundRepeat: "repeat",
+        backgroundAttachment: "fixed"
     },
     item:{
         maxWidth: 1200,
@@ -37,10 +41,10 @@ const styles = theme => ({
         padding: theme.spacing(1),
     },
     container: {
-        backgroundColor: '#fff'
+       // backgroundColor: '#fff'
     },
     tabItem:{
-        //backgroundColor: theme.palette.pestanas.bg,
+        color: theme.palette.S6.color,
         paddingLeft: theme.spacing(1),
         paddingRight: theme.spacing(1),
         paddingTop: theme.spacing(2),
@@ -48,12 +52,13 @@ const styles = theme => ({
         margin: 0,
         '&:hover':{
             cursor: 'pointer',
-            backgroundColor: theme.palette.S6.shade,
+            backgroundColor: theme.palette.background.opaque,
             transition: 'background 0.3s ease',
         }
     },
     selectedTabItem:{
-        backgroundColor: theme.palette.S6.shade,
+        color: theme.palette.S6.color,
+        backgroundColor: theme.palette.background.opaque,
         paddingLeft: theme.spacing(1),
         paddingRight: theme.spacing(1),
         paddingTop: theme.spacing(2),
@@ -71,7 +76,8 @@ const styles = theme => ({
         paddingRight: '8px'
     },
     tabContainer: {
-        //backgroundColor: theme.palette.pestanas.bg
+        //backgroundColor: theme.palette.background.opaque,
+        paddingTop: theme.spacing(8),
     }
 });
 
@@ -91,8 +97,6 @@ const Index = props => {
                 <Grid item xs={12} style={{padding:0, maxWidth: 1200}}>
 
                     <Grid container spacing={0}>
-
-
                         <Grid item xs={12} sm={12} md={6} lg={6} xl={6}
                               onClick={() => handleSelectTab(0)}
                               id={0}
@@ -102,7 +106,7 @@ const Index = props => {
                                 <img src={img1} className={classes.tabIcon} alt="explora"/>
                             </figure>
 
-                            <Typography color='textPrimary' style={{fontWeight: isSelected(0)?500:300, paddingTop: 15}}>
+                            <Typography style={{fontWeight: isSelected(0)?500:300, paddingTop: 15}}>
                                 Explora las contrataciones
                             </Typography>
 
@@ -116,7 +120,7 @@ const Index = props => {
                                 <img src={img3} className={classes.tabIcon} alt="Visualiza"/>
                             </figure>
 
-                            <Typography color='textPrimary' style={{fontWeight: isSelected(1)?500:300, paddingTop: 15}}>
+                            <Typography style={{fontWeight: isSelected(1)?500:300, paddingTop: 15}}>
                                 Visualiza las contrataciones
                             </Typography>
 
@@ -175,7 +179,7 @@ const Index = props => {
                 </Grid>
             </Grid>
 
-            <Grid container spacing={0} justifyContent="center" className={classes.container} style={{backgroundColor: '#f6f6f6'}}>
+            <Grid container spacing={0} justifyContent="center" className={classes.container}>
                 <Grid item xs={12} className={classes.item}>
                     <Descarga url="https://datos.gob.mx/busca/dataset/concentrado-de-contrataciones-abiertas-de-la-apf"/>
                 </Grid>

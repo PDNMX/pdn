@@ -1,22 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@mui/styles/withStyles';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TablePagination from '@mui/material/TablePagination';
-import TableRow from '@mui/material/TableRow';
-import TableFooter from '@mui/material/TableFooter';
+import {Table, TableBody, TableCell,TablePagination, TableRow, TableFooter} from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
-import Grid from "@mui/material/Grid";
-import {Typography} from "@mui/material"
-import Modal from "@mui/material/Modal";
-import rp from "request-promise";
+import {Grid, Typography, Modal} from "@mui/material"
+import axios from 'axios';
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
 import Collapse from "@mui/material/Collapse";
 
-import BusquedaServidor from "./BusquedaServidor";
+import EntradasBuscador from "./EntradasBuscador";
 import TablaResumen from "./TablaResumen";
 import EnhancedTableHead from './EnhancedTableHead';
 import AlertaError from "./AlertaError";
@@ -69,8 +62,6 @@ const styles = theme => ({
     infoBusqueda: {
         paddingRight: theme.spacing(1),
         paddingLeft: theme.spacing(1),
-        backgroundColor: "#fff"
-
     },
     toolBarStyle: {
         backgroundColor: 'transparent',
@@ -97,11 +88,7 @@ const styles = theme => ({
         paddingLeft: theme.spacing(1),
         paddingBottom: theme.spacing(8),
         paddingTop: theme.spacing(8)
-    },
-    containerD: {
-        backgroundColor: '#fff'
-        //backgroundColor: '#f6f6f6'
-    },
+    }
 });
 
 function getSorting(order, orderBy) {
@@ -110,7 +97,7 @@ function getSorting(order, orderBy) {
         : (a, b) => (a[orderBy] < b[orderBy] ? -1 : 1);
 }
 
-class TablaServidores extends React.Component {
+class BuscadorS2 extends React.Component {
     constructor(props) {
         super(props);
 
@@ -139,19 +126,19 @@ class TablaServidores extends React.Component {
 
     loadEntities = nivel => {
         let options = {
-            uri: process.env.REACT_APP_S2_BACKEND + "/api/v1/entities",
+            url: process.env.REACT_APP_S2_BACKEND + "/api/v1/entities",
             json: true,
             method: "POST",
-            body: {}
+            data: {}
         };
 
         if (nivel !== 'todos'){
-            options.body.nivel_gobierno = nivel
+            options.data.nivel_gobierno = nivel
         }
 
-        rp(options).then(data => {
+        axios(options).then(res => {
             this.setState({
-                entities: data,
+                entities: res.data,
                 current_entity: "ANY"
             });
         }).catch(err => {
@@ -263,14 +250,14 @@ class TablaServidores extends React.Component {
 
             let options = {
                 method: 'POST',
-                uri: process.env.REACT_APP_S2_BACKEND +  '/api/v1/summary',
+                url: process.env.REACT_APP_S2_BACKEND +  '/api/v1/summary',
                 json: true,
-                body: filtros
+                data: filtros
             };
 
-            rp(options).then(res => {
+            axios(options).then(res => {
                 this.setState({
-                    summaryData: res,
+                    summaryData: res.data,
                     loading: false,
                     error: false
                 })
@@ -315,9 +302,9 @@ class TablaServidores extends React.Component {
 
         let options = {
             method: 'POST',
-            uri: process.env.REACT_APP_S2_BACKEND + '/api/v1/search',
+            url: process.env.REACT_APP_S2_BACKEND + '/api/v1/search',
             json: true,
-            body: {
+            data: {
                 ...filtros,
                 page: page + 1, //en el backend page inicia en 1
                 pageSize: rowsPerPage,
@@ -325,8 +312,8 @@ class TablaServidores extends React.Component {
             }
         };
 
-        rp(options).then(res => {
-            const {results, pagination} = res;
+        axios(options).then(res => {
+            const {results, pagination} = res.data;
             //console.log(data)
 
             this.setState({
@@ -406,6 +393,7 @@ class TablaServidores extends React.Component {
 
         return (
             <div>
+                {/* paper */}
                 <Grid container spacing={0} className={classes.infoBusqueda}>
                     <Grid item xs={12} style={{maxWidth: 1200, margin: "0 auto"}}>
                         <Typography paragraph>
@@ -430,7 +418,7 @@ class TablaServidores extends React.Component {
 
                 <Grid container justifyContent={'center'} spacing={0} className={classes.gridTable}>
                     <Grid item xs={12} className={classes.toolBarStyle}>
-                        <BusquedaServidor handleCleanAll={this.handleCleanAll}
+                        <EntradasBuscador handleCleanAll={this.handleCleanAll}
                                           handleSearch={this.handleBroadSearch}
                                           handleSetState={this.handleSetState}
                                           nombres={nombres}
@@ -446,16 +434,11 @@ class TablaServidores extends React.Component {
                         />
                     </Grid>
 
-                    <Grid item xs={12}>
-                        {
-                            loading &&
-                            <Modal
-                                open={loading}
-                                disableAutoFocus={true}
-                            >
+                    <Grid item xs={12}>{/*mover al final*/}
+                        {loading &&
+                            <Modal open={loading} disableAutoFocus={true}>
                                 <CircularProgress className={classes.progress} id="spinnerLoading" size={200}/>
                             </Modal>
-
                         }
                     </Grid>
 
@@ -566,7 +549,7 @@ class TablaServidores extends React.Component {
                 </Grid>
                 }
 
-                <Grid container spacing={0} justifyContent="center" className={classes.containerD}>
+                <Grid container spacing={0} justifyContent="center">
                     <Grid item xs={12} className={classes.itemD}>
                         <Descarga url={process.env.REACT_APP_BULK_S2}/>
                     </Grid>
@@ -579,8 +562,8 @@ class TablaServidores extends React.Component {
     }
 }
 
-TablaServidores.propTypes = {
+BuscadorS2.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(TablaServidores);
+export default withStyles(styles)(BuscadorS2);
