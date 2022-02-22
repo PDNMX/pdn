@@ -20,30 +20,28 @@ const AlertaError = props => {
     const {open, setOpen} = props;
     const message = "Algo salio mal...";
 
-    return (
-        <div className={classes.root}>
-            <Collapse in={open}>
-                <Alert
-                    severity="error"
-                    action={
-                        <IconButton
-                            aria-label="close"
-                            color="inherit"
-                            size="small"
-                            onClick={() => {
-                                setOpen(false);
-                            }}
-                        >
-                            <CloseIcon fontSize="inherit" />
-                        </IconButton>
-                    }
-                >
-                    <AlertTitle>Error</AlertTitle>
-                    {message}
-                </Alert>
-            </Collapse>
-        </div>
-    );
+    return (<div className={classes.root}>
+        <Collapse in={open}>
+            <Alert
+                severity="error"
+                action={
+                    <IconButton
+                        aria-label="close"
+                        color="inherit"
+                        size="small"
+                        onClick={() => {
+                            setOpen(false);
+                        }}
+                    >
+                        <CloseIcon fontSize="inherit" />
+                    </IconButton>
+                }
+            >
+                <AlertTitle>Error</AlertTitle>
+                {message}
+            </Alert>
+        </Collapse>
+    </div>);
 }
 
 export default AlertaError;

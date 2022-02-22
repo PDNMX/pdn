@@ -27,7 +27,7 @@ const styles = theme => ({
     contentsSection: {
         color: theme.palette.secondary.contrastText,
         maxWidth: '1200px',
-        marginTop : theme.spacing(7),
+        //marginTop : theme.spacing(7),
     },
     bgContainer: {
         // backgroundColor: theme.palette.pestanas.bg,
@@ -47,11 +47,12 @@ const styles = theme => ({
         },
     },
     selectedCard: {
-        backgroundColor: theme.palette.background.opaque,
+        //backgroundColor: theme.palette.background.opaque,
         color: theme.palette.S2.color,
         borderStyle: 'solid',
         borderColor: theme.palette.secundario.main,
-        borderRadius: '5px 5px 5px 5px',
+        borderRadius: '5px 5px 0px 0px',
+        borderBottomStyle: 'none',
         paddingLeft: theme.spacing(1),
         paddingRight: theme.spacing(1),
         paddingTop: theme.spacing(2),

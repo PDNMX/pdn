@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import withStyles from '@mui/styles/withStyles';
 import {Table, TableBody, TableCell,TablePagination, TableRow, TableFooter} from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
-import {Grid, Typography, Modal} from "@mui/material"
+import {Paper, Box, Typography, Modal} from "@mui/material"
 import axios from 'axios';
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
@@ -20,6 +20,11 @@ import Descarga from "../Compartidos/Descarga";
 
 const styles = theme => ({
     root: {},
+    container: {
+        marginTop: '30px',
+        marginBottom: '30px',
+        overflowX: 'auto',
+    },
     progress: {
         position: 'fixed',
         margin: 'auto',
@@ -28,49 +33,16 @@ const styles = theme => ({
         top: 0,
         bottom: 0
     },
-    section: {
-        maxWidth: '1200px',
-        overflowX: 'auto',
-        padding: theme.spacing(1)
-    },
     tablePagination: {
         overflowX: 'auto',
         fontSize: '0.75rem'
     },
-    gridTable: {
-        marginBottom: '27px',
-        padding: theme.spacing(1)
-    },
     desc: {
         color: theme.palette.primary.dark,
     },
-    item: {
-        padding: theme.spacing(1)
-    },
-    container: {
-        marginTop: '30px',
-        marginBottom: '30px',
-        overflowX: 'auto',
-    },
-    panelResumen: {
-        marginLeft: theme.spacing(2)
-    } ,
     ul: {
         listStyle: "none",
         paddingLeft: "20px"
-    },
-    infoBusqueda: {
-        paddingRight: theme.spacing(1),
-        paddingLeft: theme.spacing(1),
-    },
-    toolBarStyle: {
-        backgroundColor: 'transparent',
-        position: 'relative',
-        zIndex: 3,
-        paddingTop: '53px',
-        paddingBottom: '61px',
-        maxWidth: '1200px',
-
     },
     li: {
         "&:before": {
@@ -82,12 +54,14 @@ const styles = theme => ({
             marginLeft: "-1em"
         },
     },
-    itemD:{
-        maxWidth: 1200,
-        paddingRight: theme.spacing(1),
-        paddingLeft: theme.spacing(1),
-        paddingBottom: theme.spacing(8),
-        paddingTop: theme.spacing(8)
+    paper: {
+        backgroundColor: theme.palette.background.opaque,
+        padding: theme.spacing(2),
+        color: theme.palette.primario.contrastText,
+        borderStyle: 'solid',
+        borderWidth: 1,
+        borderColor: theme.palette.secundario.main,
+        borderRadius: '0px 10px 10px 10px'
     }
 });
 
@@ -280,7 +254,6 @@ class BuscadorS2 extends React.Component {
     };
 
     fetchData = () => {
-
         const {
             current_entity,
             nombres,
@@ -329,7 +302,6 @@ class BuscadorS2 extends React.Component {
                 error: true
             });
         });
-
     };
 
     handleSearchSupplier = supplier_id => {
@@ -368,20 +340,12 @@ class BuscadorS2 extends React.Component {
         const {classes} = this.props;
 
         const {
-            order,
-            orderBy,
-            rowsPerPage,
-            page,
-            results,
-            totalRows,
-            entities,
-            current_entity,
+            order, orderBy, rowsPerPage, page,
+            results, totalRows,
+            entities, current_entity,
 
-            nombres,
-            apellidoUno,
-            apellidoDos,
-            tipoProcedimiento,
-            nivel,
+            nombres, apellidoUno, apellidoDos,
+            tipoProcedimiento, nivel,
 
             loading,
             elementoSeleccionado,
@@ -391,93 +355,77 @@ class BuscadorS2 extends React.Component {
         } = this.state;
         //  const emptyRows = rowsPerPage - filterData.length;
 
-        return (
-            <div>
-                {/* paper */}
-                <Grid container spacing={0} className={classes.infoBusqueda}>
-                    <Grid item xs={12} style={{maxWidth: 1200, margin: "0 auto"}}>
-                        <Typography paragraph>
-                            <b>Aquí encontrarás la siguiente información:</b>
-                        </Typography>
+        return (<div>
+            <Paper className={classes.paper} elevation={15}>
+                {/* Información de la búsqueda */}
+                <Box p={1}>
+                    <Typography paragraph>
+                        <b>Aquí encontrarás la siguiente información:</b>
+                    </Typography>
                         
-                        <ul className={classes.ul}>
-                            <li className={classes.li}>
-                                <Typography color="textPrimary" display='inline'>
-                                    Consulta los servidores que intervienen en procesos de contratación por institución, a nivel federal y/o estatal
-                                </Typography>
-                            </li>
-                            <li className={classes.li}>
-                                <Typography color="textPrimary" display='inline'>
-                                    Obtén datos del servidor como: nombre, puesto, institución
-                                </Typography>
-                            </li>
-                        </ul>
-                        
-                    </Grid>
-                </Grid>
+                    <ul className={classes.ul}>
+                        <li className={classes.li}>
+                            <Typography color="textPrimary" display='inline'>
+                                Consulta los servidores que intervienen en procesos de contratación por institución, a nivel federal y/o estatal
+                            </Typography>
+                        </li>
+                        <li className={classes.li}>
+                            <Typography color="textPrimary" display='inline'>
+                                Obtén datos del servidor como: nombre, puesto, institución
+                            </Typography>
+                        </li>
+                    </ul>
+                </Box>
 
-                <Grid container justifyContent={'center'} spacing={0} className={classes.gridTable}>
-                    <Grid item xs={12} className={classes.toolBarStyle}>
-                        <EntradasBuscador handleCleanAll={this.handleCleanAll}
-                                          handleSearch={this.handleBroadSearch}
-                                          handleSetState={this.handleSetState}
-                                          nombres={nombres}
-                                          apellidoUno={apellidoUno}
-                                          apellidoDos={apellidoDos}
-                                          entities = {entities}
-                                          current_entity= {current_entity}
-                                          nivel={nivel}
-                                          changeLevel = {this.changeLevel}
-                                          tipoProcedimiento={tipoProcedimiento}
-                                          asignarTipoProcedimiento={this.asignarTipoProcedimiento}
-                                          handleError={this.handleError}
+                {/* Parámetros de búsqueda */}
+                <Box p={1}>
+                    <EntradasBuscador handleCleanAll={this.handleCleanAll}
+                                      handleSearch={this.handleBroadSearch}
+                                      handleSetState={this.handleSetState}
+                                      nombres={nombres}
+                                      apellidoUno={apellidoUno}
+                                      apellidoDos={apellidoDos}
+                                      entities = {entities}
+                                      current_entity= {current_entity}
+                                      nivel={nivel}
+                                      changeLevel = {this.changeLevel}
+                                      tipoProcedimiento={tipoProcedimiento}
+                                      asignarTipoProcedimiento={this.asignarTipoProcedimiento}
+                                      handleError={this.handleError}
+                    />
+                </Box>
+
+                {/* Resumen de resultados */}
+                {summaryData && summaryData.length > 0 &&
+                    <Box p={1}>
+                        <FormControlLabel
+                            control={<Switch className={classes.panelResumen} checked={mostrarPanelResumen}
+                                             onChange={() => this.toggleShowSummary()}/>}
+                            label={
+                                <Typography variant="h6" className={classes.desc}>
+                                    {mostrarPanelResumen ? 'Ocultar resultados generales' : 'Mostrar resultados generales'}
+                                </Typography>
+                            }
                         />
-                    </Grid>
-
-                    <Grid item xs={12}>{/*mover al final*/}
-                        {loading &&
-                            <Modal open={loading} disableAutoFocus={true}>
-                                <CircularProgress className={classes.progress} id="spinnerLoading" size={200}/>
-                            </Modal>
-                        }
-                    </Grid>
-
-
-                    <Grid item xs={12} className={classes.section}>
-                        {summaryData && summaryData.length > 0 &&
-                        <div>
-                            <FormControlLabel
-                                control={<Switch className={classes.panelResumen} checked={mostrarPanelResumen}
-                                                 onChange={() => this.toggleShowSummary()}/>}
-                                label={
-                                    <Typography variant="h6" className={classes.desc}>
-                                        {mostrarPanelResumen ? 'Ocultar resultados generales' : 'Mostrar resultados generales'}
-                                    </Typography>
-                                }
-                            />
-                            <div className={classes.container}>
-                                <Collapse in={mostrarPanelResumen}>
-                                    <TablaResumen summaryData={summaryData} handleSearchSupplier={this.handleSearchSupplier}/>
-                                </Collapse>
-
-                            </div>
+                        <div className={classes.container}>
+                            <Collapse in={mostrarPanelResumen}>
+                                <TablaResumen summaryData={summaryData} handleSearchSupplier={this.handleSearchSupplier}/>
+                            </Collapse>
                         </div>
-                        }
+                    </Box>
+                }
 
-                        <AlertaError open={this.state.error} setOpen={open => {this.setState({error: open})}}/>
+                <Box p={1}>
+                    <AlertaError open={this.state.error} setOpen={open => {this.setState({error: open})}}/>
+                </Box>
 
-                    </Grid>
-                </Grid>
-
+                {/* Desplegar resultados de la búsqueda */}
                 {results && results.length > 0 &&
-                <Grid container justifyContent='center' spacing={0} className={classes.gridTable}>
-                    <Grid item xs={12} className={classes.section}>
+                    <Box p={1}>
                         <Typography variant={"h6"} className={classes.desc} paragraph>
                             Pulsa sobre el registro para ver su detalle
                         </Typography>
-                    </Grid>
 
-                    <Grid item xs={12} className={classes.section}>
                         <div className={classes.container}>
                             <Table aria-describedby="spinnerLoading" id={'tableServidores'}
                                    aria-busy={this.state.loading} aria-labelledby="tableTitle">
@@ -508,15 +456,11 @@ class BuscadorS2 extends React.Component {
                                             );
                                         })
                                     }
-                                    {/*
-                                        emptyRows > 0 && (
+                                    {/*emptyRows > 0 && (
                                         <TableRow style={{height: 49 * emptyRows}}>
-
                                             <TableCell colSpan={6}/>
-
                                         </TableRow>
-                                    )
-                                    */}
+                                    )*/}
 
                                 </TableBody>
                                 <TableFooter>
@@ -545,20 +489,24 @@ class BuscadorS2 extends React.Component {
                                 </TableFooter>
                             </Table>
                         </div>
-                    </Grid>
-                </Grid>
+                    </Box>
                 }
 
-                <Grid container spacing={0} justifyContent="center">
-                    <Grid item xs={12} className={classes.itemD}>
-                        <Descarga url={process.env.REACT_APP_BULK_S2}/>
-                    </Grid>
-                </Grid>
+            </Paper>
 
-                <FichaServidorPublico open={open} servidorPublico={elementoSeleccionado} closeDialog={this.closeDialog}/>
+            <Box p={1}>
+                <Descarga url={process.env.REACT_APP_BULK_S2}/>
+            </Box>
 
-            </div>
-        );
+            {loading &&
+                <Modal open={loading} disableAutoFocus={true}>
+                    <CircularProgress className={classes.progress} id="spinnerLoading" size={200}/>
+                </Modal>
+            }
+
+            <FichaServidorPublico open={open} servidorPublico={elementoSeleccionado} closeDialog={this.closeDialog}/>
+
+        </div>);
     }
 }
 
