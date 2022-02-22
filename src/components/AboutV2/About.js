@@ -3,6 +3,8 @@ import {Typography, Grid, Link} from "@mui/material";
 import {Link as RouterLink} from "react-router-dom";
 import {withStyles} from "@mui/styles";
 import bgimg from "../../assets/rediseno/fondo_cruces.png";
+import Banner from "../HomeV2/Banner";
+import Footer from '../HomeV2/Footer';
 
 const styles = theme => ({
     root: {
@@ -41,6 +43,7 @@ const CustomTypography = withStyles({
 const About = props => {
     const { classes } = props;
     return <div className={classes.root}>
+        <Banner/>
         <Grid container justifyContent="center">
             <Grid item xs={12} className={classes.rootItem}>
                 <CustomTypography variant="h4" paragraph>
@@ -175,6 +178,7 @@ const About = props => {
 
             </Grid>
         </Grid>
+        <Footer/>
     </div>
 }
 

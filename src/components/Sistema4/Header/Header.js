@@ -94,7 +94,7 @@ const Header = props => {
                         Sistema de Fiscalización
                     </Typography>
                     <Typography variant="h4" paragraph className={classes.whiteText} >
-                        Sistema de los Servidores públicos que intervengan en procedimientos de contrataciones públicas
+                        Información y comunicación del Sistema Nacional Anticorrupción y el Sistema Nacional de Fiscalización
                     </Typography>
                 </Grid>
             </Grid>
