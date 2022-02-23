@@ -1,6 +1,6 @@
 import React from 'react';
 import {withStyles} from '@mui/styles';
-import {Grid, Typography, List, ListItem, ListItemText, Paper} from "@mui/material";
+import {Grid, Paper, Box, Typography, List, ListItem, ListItemText} from "@mui/material";
 import Ejercicio from "./Ejercicio";
 import Agrupaciones from "./Agrupaciones";
 import Tops from "./Tops";
@@ -10,20 +10,20 @@ const styles = theme => ({
     root: {
         flexGrow: 1
     },
-    sectionT: {
+    box: {
         maxWidth: '1200px',
         overflowX: 'auto',
         marginBottom: theme.spacing(2),
         marginTop: theme.spacing(4)
     },
-    aux:{
-        [theme.breakpoints.up('sm')]: {
-            marginBottom: theme.spacing(7),
-        },
-        [theme.breakpoints.down('sm')]: {
-            marginBottom: theme.spacing(4),
-        },
-        padding: theme.spacing(1)
+    paper: {
+        backgroundColor: theme.palette.background.opaque,
+        padding: theme.spacing(2),
+        color: theme.palette.primario.contrastText,
+        borderStyle: 'solid',
+        borderWidth: 1,
+        borderColor: theme.palette.secundario.main,
+        borderRadius: '10px 0px 10px 10px'
     }
 });
 
@@ -31,8 +31,8 @@ const Dashboard = props => {
     const {classes} = props;
     return (
         <div className={classes.root}>
-            <Grid container spacing={0} justify='center' className={classes.aux}>
-                <Grid item xs={12}>
+            <Paper className={classes.paper} elevation={15}>
+                <Box p={1}>
                     <Typography>
                         <b>¿Qué información es?</b>
                     </Typography>
@@ -106,21 +106,22 @@ const Dashboard = props => {
                             </Typography>
                         </ListItem>
                     </List>
-                </Grid>
+                </Box>
 
-                <Grid item xs={12} className={classes.sectionT} id={"g1"}>
+                <Box className={classes.box}>
                     <Ejercicio/>
-                </Grid>
-                <Grid item xs={12} className={classes.sectionT}  id={"g2"}>
+                </Box>
+                <Box className={classes.box}>
                     <Procedimientos/>
-                </Grid>
-                <Grid item xs={12} className={classes.sectionT}  id={"g3"}>
+                </Box>
+                <Box className={classes.box}>
                     <Agrupaciones/>
-                </Grid>
-                <Grid item xs={12} className={classes.sectionT} id={"g4"}>
+                </Box>
+                <Box className={classes.box}>
                     <Tops/>
-                </Grid>
-            </Grid>
+                </Box>
+
+            </Paper>
         </div>
     );
 };
