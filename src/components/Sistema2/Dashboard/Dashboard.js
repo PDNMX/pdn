@@ -1,6 +1,6 @@
 import React from 'react';
 import {withStyles} from '@mui/styles';
-import {Paper, Box, Typography, List, ListItem, ListItemText} from "@mui/material";
+import {Paper, Box, Typography, List, ListItem, ListItemText, Link} from "@mui/material";
 import Ejercicio from "./Ejercicio";
 import Agrupaciones from "./Agrupaciones";
 import Tops from "./Tops";
@@ -54,11 +54,10 @@ const Dashboard = props => {
                     <Typography paragraph>
                         Para consultar la información reportada por la Secretaría de la Función Pública visita la
                         página datos.gob.mx <br/>
-                        (Fuente:
-                        <a href={'https://datos.gob.mx/busca/dataset/registro-de-servidores-publicos-que-intervienen-en-contrataciones-publicas'}
+                        (Fuente: <Link href='https://datos.gob.mx/busca/dataset/registro-de-servidores-publicos-que-intervienen-en-contrataciones-publicas'
                            target="_blank" rel="noopener noreferrer">
-                            https://datos.gob.mx/busca/dataset/registro-de-servidores-publicos-que-intervienen-en-contrataciones-publicas
-                        </a>)
+                            datos.gob.mx
+                        </Link>)
                     </Typography>
 
                     <Typography>
@@ -81,14 +80,13 @@ const Dashboard = props => {
                         <ListItem>
                             <ListItemText>
                                 1. <b>Ejercicio fiscal:</b> Permite conocer el número de personas servidoras públicas que intervienen en
-                                procesos de contratación en cada uno de los ejercicios fiscales. <a
-                                href={"#g1"}>Ver</a>
+                                procesos de contratación en cada uno de los ejercicios fiscales. <Link href="#g1">Ver</Link>
                             </ListItemText>
                         </ListItem>
                         <ListItem>
                             <ListItemText>
                                 2. <b>Procedimiento:</b> Conoce la cantidad de cada uno de los tipos de procedimiento que se
-                                han llevado a cabo en cada ejercicio fiscal. <a href={"#g2"}>Ver</a>
+                                han llevado a cabo en cada ejercicio fiscal. <Link href="#g2">Ver</Link>
                             </ListItemText>
                         </ListItem>
                         <ListItem>
@@ -96,28 +94,28 @@ const Dashboard = props => {
                                 3. <b>Ejercicios, ramos e instituciones:</b> Observa más a fondo el comportamiento del número de personas servidoras públicas
                                 que intervienen en procesos de contratación,
                                 podrás configuar variables como el Ejercicio Fiscal, el Ramo y/o la Institución para obtener
-                                información más detallada <a href={"#g3"}>Ver</a>
+                                información más detallada <Link href="#g3">Ver</Link>
                             </ListItemText>
                         </ListItem>
                         <ListItem>
                             <Typography paragraph>
                                 4. <b>Top 10:</b> En esta gráfica puedes conocer los procedimientos, las instituciones, unidades
-                                responsables o puestos con más registros de manera general o bien en cada ejercicio, ramo, o institución. <a href={"#g4"}>Ver</a>
+                                responsables o puestos con más registros de manera general o bien en cada ejercicio, ramo, o institución. <Link href="#g4">Ver</Link>
                             </Typography>
                         </ListItem>
                     </List>
                 </Box>
 
-                <Box className={classes.box}>
+                <Box className={classes.box} id='g1'>
                     <Ejercicio/>
                 </Box>
-                <Box className={classes.box}>
+                <Box className={classes.box} id='g2'>
                     <Procedimientos/>
                 </Box>
-                <Box className={classes.box}>
+                <Box className={classes.box} id='g3'>
                     <Agrupaciones/>
                 </Box>
-                <Box className={classes.box}>
+                <Box className={classes.box} id='g4'>
                     <Tops/>
                 </Box>
 
