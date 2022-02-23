@@ -33,7 +33,7 @@ const styles = theme => ({
         // backgroundColor: theme.palette.pestanas.bg,
         paddingTop: theme.spacing(8),
     },
-    card: {
+    tab: {
         color: theme.palette.S2.color,
         paddingLeft: theme.spacing(1),
         paddingRight: theme.spacing(1),
@@ -46,7 +46,7 @@ const styles = theme => ({
             transition: 'background 0.3s ease',
         },
     },
-    selectedCard: {
+    selectedTab: {
         //backgroundColor: theme.palette.background.opaque,
         color: theme.palette.S2.color,
         borderStyle: 'solid',
@@ -99,7 +99,7 @@ const Index = props => {
                     <Grid container spacing={0}>
                         <Grid item md={4} xs={12}
                               onClick={() => setContentId(1)}
-                              className={classNames(contentId !== 1 ? classes.card : classes.selectedCard)}>
+                              className={classNames(contentId !== 1 ? classes.tab : classes.selectedTab)}>
 
                             <figure className={classes.figure}>
                                 <img src={img1} alt="Servidores que intervinen en procesos de contratacion"
@@ -113,7 +113,7 @@ const Index = props => {
                         </Grid>
 
                         <Grid item md={4} xs={12} onClick={() => setContentId(2)}
-                              className={classNames(contentId !== 2 ? classes.card : classes.selectedCard)}>
+                              className={classNames(contentId !== 2 ? classes.tab : classes.selectedTab)}>
 
                             <figure className={classes.figure}>
                                 <img src={img2} alt="Particulares inhabilitados" className={classes.logo}/>
@@ -128,7 +128,7 @@ const Index = props => {
 
                         <Grid item md={4} xs={12}
                               onClick={() => setContentId(3)}
-                              className={classNames(contentId !== 3 ? classes.card : classes.selectedCard)}>
+                              className={classNames(contentId !== 3 ? classes.tab : classes.selectedTab)}>
 
                             <figure className={classes.figure}>
                                 <img src={img3} alt="Visor de datos" className={classes.logo}/>
