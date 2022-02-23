@@ -2,7 +2,7 @@ import React from 'react';
 import {withStyles} from '@mui/styles';
 import PropTypes from 'prop-types';
 import {Grid, Typography, List, ListItem, ListItemText, Alert} from "@mui/material";
-import rp from "request-promise";
+import axios from 'axios';
 import BarChart from "d3plus-react/es/src/BarChart";
 import * as d3 from "d3";
 
@@ -29,11 +29,11 @@ const styles = theme => ({
 
 const aux = () =>  {
         let options = {
-            uri: process.env.REACT_APP_S2_BACKEND + '/api/v0/getProcedimientosPeriodo',
+            url: process.env.REACT_APP_S2_BACKEND + '/api/v0/getProcedimientosPeriodo',
             json: true,
             method: "GET"
         };
-        return rp(options);
+        return axios(options);
 };
 
 let z = d3.scaleOrdinal()
@@ -46,7 +46,7 @@ class Ejercicio extends React.Component {
 
     componentDidMount() {
         aux().then(result => {
-            let aux = result.data.map(item => ({
+            let data_ = result.data.data.map(item => ({
                 "ejercicio": item.ejercicio,
                 "total": parseInt(item.total,10),
                 "procedimiento":item.case
@@ -54,7 +54,7 @@ class Ejercicio extends React.Component {
 
             this.setState({
                 methods: {
-                    data: aux,
+                    data: data_,
                     groupBy: "procedimiento",
                     stacked:true,
                     x: "ejercicio",

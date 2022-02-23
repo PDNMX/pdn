@@ -1,7 +1,7 @@
 import React from 'react';
 import {withStyles} from '@mui/styles';
 import {Grid, Select, MenuItem, FormControl, Typography, InputLabel,Button, Alert} from '@mui/material';
-import rp from "request-promise";
+import axios from 'axios';
 import {BarChart} from "d3plus-react";
 
 const styles = theme => ({
@@ -83,13 +83,13 @@ class Tops extends React.Component {
     // No debería hacer setState
     loadEjercicios = () => {
         let options = {
-            uri: process.env.REACT_APP_S2_BACKEND + '/api/v0/getEjercicios',
+            url: process.env.REACT_APP_S2_BACKEND + '/api/v0/getEjercicios',
             json: true,
             method: "get"
         };
 
-        rp(options).then(data => {
-            let ejercicios = data.data.map( (item, index) => ({id: index, ejercicio: item.ejercicio}));
+        axios(options).then(res => {
+            let ejercicios = res.data.data.map( (item, index) => ({id: index, ejercicio: item.ejercicio}));
             this.setState({ejercicios: ejercicios});
         }).catch(err => {
             console.log(err);
@@ -100,16 +100,16 @@ class Tops extends React.Component {
     // No debería hacer setState
     loadRamos = () => {
         let options = {
-            uri: process.env.REACT_APP_S2_BACKEND + '/api/v0/getRamos',
+            url: process.env.REACT_APP_S2_BACKEND + '/api/v0/getRamos',
             json: true,
             method: "post",
-            body: {
+            data: {
                 filtros: this.state.ejercicio !== 'any' ? ("ejercicio= '" + this.state.ejercicio + "'") : null
             }
         };
 
-        rp(options).then(data => {
-            let ramos = data.data.map( (item, index) => ({id: index, ramo: item.ramo}) );
+        axios(options).then(res => {
+            let ramos = res.data.data.map( (item, index) => ({id: index, ramo: item.ramo}) );
             this.setState({ramos: ramos, ramo: 'any', institucion: 'any'});
         }).catch(err => {
             console.log(err);
@@ -124,16 +124,16 @@ class Tops extends React.Component {
         if (this.state.ramo) filtros.push("ramo='" + this.state.ramo + "'");
 
         let options = {
-            uri: process.env.REACT_APP_S2_BACKEND + '/api/v0/getInstituciones',
+            url: process.env.REACT_APP_S2_BACKEND + '/api/v0/getInstituciones',
             json: true,
             method: "post",
-            body: {
+            data: {
                 filtros: filtros.length > 0 ? filtros : null
             }
         };
 
-        rp(options).then(data => {
-            let instituciones = data.data.map( (item, index) => ({id: index, institucion: item.institucion}));
+        axios(options).then(res => {
+            let instituciones = res.data.data.map( (item, index) => ({id: index, institucion: item.institucion}));
             this.setState({instituciones: instituciones, institucion: 'any'});
         }).catch(err => {
             console.log(err);
@@ -149,17 +149,17 @@ class Tops extends React.Component {
         if (this.state.institucion !== "any") filtros.push("institucion='" + this.state.institucion + "'");
 
         let options = {
-            uri: process.env.REACT_APP_S2_BACKEND + '/api/v0/getTop',
+            url: process.env.REACT_APP_S2_BACKEND + '/api/v0/getTop',
             json: true,
             method: "post",
-            body: {
+            data: {
                 top: this.state.top,
                 filtros: filtros.length > 0 ? filtros : null
             }
         };
 
-        rp(options).then(data => {
-            let aux = data.data.map(item => ({
+        axios(options).then(res => {
+            let aux = res.data.data.map(item => ({
                 "top": item.top?item.top:'NO ESPECIFICADO',
                 "total": parseInt(item.total,10),
                 "case": item.case ? item.case : null

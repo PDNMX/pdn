@@ -3,7 +3,7 @@ import {withStyles} from '@mui/styles';
 import PropTypes from 'prop-types';
 import {Grid, Typography, Alert} from "@mui/material";
 import {BarChart} from "d3plus-react";
-import rp from "request-promise";
+import axios from 'axios';
 
 const styles = theme => ({
     frameChart: {
@@ -19,11 +19,11 @@ const styles = theme => ({
 
 const aux = () => {
         let options = {
-            uri: process.env.REACT_APP_S2_BACKEND + '/api/v0/getAgrupacionEjercicio',
+            url: process.env.REACT_APP_S2_BACKEND + '/api/v0/getAgrupacionEjercicio',
             json: true,
             method: "GET"
         };
-        return rp(options);
+        return axios(options);
 };
 
 
@@ -41,8 +41,8 @@ class Ejercicio extends React.Component {
     };
 
     componentDidMount() {
-        aux().then(result => {
-            let aux = result.data.map(item => ({
+        aux().then(res => {
+            let aux = res.data.data.map(item => ({
                 "ejercicio": item.ejercicio,
                 "total": parseInt(item.total,10)
             }));
@@ -129,7 +129,6 @@ class Ejercicio extends React.Component {
             </div>
         )
     }
-
 }
 
 Ejercicio.propTypes = {
