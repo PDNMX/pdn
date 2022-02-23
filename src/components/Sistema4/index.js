@@ -1,7 +1,7 @@
 import React from 'react';
 import {Typography, Grid} from "@mui/material";
 import {withStyles} from "@mui/styles";
-import Header from './Header/Header';
+import Header from './Header';
 import Footer from '../HomeV2/Footer';
 import bgimg from "../../assets/rediseno/fondo_cruces.png";
 

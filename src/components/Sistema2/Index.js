@@ -3,7 +3,7 @@ import withStyles from '@mui/styles/withStyles';
 import {Grid, Typography} from "@mui/material"
 import Footer from "../HomeV2/Footer";
 import BuscadorS2 from "./BuscadorS2";
-import Header from './Header/Header';
+import Header from './Header';
 import classNames from 'classnames';
 import Dashboard from "./Dashboard/Dashboard";
 import BuscadorParticularesSancionados from '../Sancionados/Particulares/BuscadorParticularesSancionados';

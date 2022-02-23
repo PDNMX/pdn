@@ -1,6 +1,6 @@
 import React from 'react';
 import withStyles from '@mui/styles/withStyles';
-import Header from './Header/Header';
+import Header from './Header';
 import Footer from "../HomeV2/Footer";
 import Busqueda from "./Busqueda";
 import Cifras from "./Cifras";

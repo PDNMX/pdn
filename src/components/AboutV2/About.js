@@ -3,7 +3,7 @@ import {Typography, Grid, Link} from "@mui/material";
 import {Link as RouterLink} from "react-router-dom";
 import {withStyles} from "@mui/styles";
 import bgimg from "../../assets/rediseno/fondo_cruces.png";
-import Banner from "../HomeV2/Banner";
+import Header from "./Header";
 import Footer from '../HomeV2/Footer';
 
 const styles = theme => ({
@@ -43,12 +43,9 @@ const CustomTypography = withStyles({
 const About = props => {
     const { classes } = props;
     return <div className={classes.root}>
-        <Banner/>
+        <Header/>
         <Grid container justifyContent="center">
             <Grid item xs={12} className={classes.rootItem}>
-                <CustomTypography variant="h4" paragraph>
-                    ¿Qué es la Plataforma Digital Nacional?
-                </CustomTypography>
 
                 <CustomTypography paragraph>
                     Usando la PDN, por primera vez,  las autoridades encargadas de la lucha anticorrupción pueden tomar decisiones basadas en evidencia a partir de grandes cantidades de datos.

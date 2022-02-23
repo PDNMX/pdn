@@ -2,10 +2,9 @@ import React from 'react';
 import withStyles from '@mui/styles/withStyles';
 import {Link as RouterLink} from 'react-router-dom';
 import {Typography, Grid, Breadcrumbs, Link, useMediaQuery} from "@mui/material"
-import classNames from 'classnames';
-import Banner from "../../HomeV2/Banner";
+import Banner from "../HomeV2/Banner";
 import {useTheme} from "@emotion/react";
-import Icon from "../../../assets/rediseno/ico_sistemas/ico_s5_color.svg";
+import Icon from "../../assets/rediseno/ico_sistemas/ico_s5_color.svg";
 import HomeIcon from '@mui/icons-material/Home';
 import GrainIcon from '@mui/icons-material/Grain';
 
@@ -84,7 +83,7 @@ const Header = props => {
                 </Grid>
             </Grid>
 
-            <Grid container spacing={0} className={classNames(classes.container1)} justifyContent='center'>
+            <Grid container spacing={0} className={classes.container1} justifyContent='center'>
 
                 <Grid item xs={12} md={4} align = {isMdUp ? 'right' : ' center'}  className={classes.item1}>
                     <img src={Icon} alt="Sistema 2" className={classes.logo}/>

@@ -2,10 +2,9 @@ import React from 'react';
 import withStyles from '@mui/styles/withStyles';
 import {Link as RouterLink} from 'react-router-dom';
 import {Typography, Grid, Breadcrumbs, Link, useMediaQuery} from "@mui/material"
-import classNames from 'classnames';
-import Banner from "../../HomeV2/Banner";
+import Banner from "../HomeV2/Banner";
 import {useTheme} from "@emotion/react";
-import IconS2 from "../../../assets/rediseno/ico_sistemas/ico_s2_color.svg";
+import Icon from "../../assets/rediseno/ico_sistemas/ico_s4_color.svg";
 import HomeIcon from '@mui/icons-material/Home';
 import GrainIcon from '@mui/icons-material/Grain';
 
@@ -42,7 +41,7 @@ const style = theme => ({
             maxWidth: '150px'
         },
         whiteText: {
-            color: theme.palette.S2.color,
+            color: theme.palette.S4.color,
             fontWeight: '100'
         },
         button:{
@@ -51,7 +50,7 @@ const style = theme => ({
             marginBottom: theme.spacing(2)
         },
         currentSection:{
-            color: theme.palette.S2.color
+            color: theme.palette.S4.color
         }
     }
 );
@@ -78,23 +77,23 @@ const Header = props => {
                         <Typography className={classes.currentSection}
                                     sx={{ display: 'flex', alignItems: 'center' }}>
                             <GrainIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-                            Servidores públicos en contrataciones
+                            Sistema de Fiscalización
                         </Typography>
                     </Breadcrumbs>
                 </Grid>
             </Grid>
 
-            <Grid container spacing={0} className={classNames(classes.container1)} justifyContent='center'>
+            <Grid container spacing={0} className={classes.container1} justifyContent='center'>
 
                 <Grid item xs={12} md={4} align = {isMdUp ? 'right' : ' center'}  className={classes.item1}>
-                    <img src={IconS2} alt="Sistema 2" className={classes.logo}/>
+                    <img src={Icon} alt="Sistema 2" className={classes.logo}/>
                 </Grid>
                 <Grid item xs={12} md={6} className={classes.item2} align = {isMdUp ? 'left' : ' center'}>
                     <Typography variant="h4" paragraph className={classes.whiteText} >
-                        Servidores públicos en contrataciones
+                        Sistema de Fiscalización
                     </Typography>
                     <Typography variant="h4" paragraph className={classes.whiteText} >
-                        Sistema de los Servidores públicos que intervengan en procedimientos de contrataciones públicas
+                        Información y comunicación del Sistema Nacional Anticorrupción y el Sistema Nacional de Fiscalización
                     </Typography>
                 </Grid>
             </Grid>
