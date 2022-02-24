@@ -40,7 +40,7 @@ const styles = theme => ({
     }
 });
 
-function Previos({data, classes}) {
+function Previos({data, classes, handleChangeSujetoObligado}) {
 
     let [page, setPage] = React.useState(0);
     let [rowsPerPage, setRowsPerPage] = React.useState(5);
@@ -102,7 +102,7 @@ function Previos({data, classes}) {
                                                 {row.totalRows > 0 &&
                                                 <Tooltip title={"Ver"}>
                                                     <IconSubdirectory className={classes.iconoVer} onClick={() => {
-                                                        this.props.handleChangeSujetoObligado(row.supplier_id);
+                                                        handleChangeSujetoObligado(row.supplier_id);
                                                     }}/>
                                                 </Tooltip>
                                                 }
