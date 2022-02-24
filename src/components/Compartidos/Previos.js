@@ -29,7 +29,8 @@ const styles = theme => ({
         overflowX: 'auto',
     },
     iconoVer:{
-        color: theme.palette.secondary.dark
+        color: theme.palette.secundario.dark,
+        cursor: 'pointer'
     },
     tableHead: {
         color: theme.palette.text.main
@@ -77,7 +78,7 @@ class Previos extends React.Component {
                         {data && data.length > 0 &&
                         <div className={classes.container}>
                             <Table className={classes.table}>
-                                <TableHead style={{backgroundColor:'rgb(52, 179, 235)'}}>
+                                <TableHead style={{backgroundColor:'#0d3b49'}}>
                                     <TableRow>
                                         <TableCell align="left" variant={"head"} className={classes.tableHead}><Typography variant={"body1"}>Nivel</Typography></TableCell>
                                         <TableCell align="left" variant={"head"} className={classes.tableHead}><Typography variant={"body1"}> Proveedor de información</Typography></TableCell>
@@ -94,7 +95,7 @@ class Previos extends React.Component {
                                             <TableCell align="left">{row.supplier_name}</TableCell>
                                             <TableCell align="center">
                                                 <Tooltip title={!row.error ? "Disponible": "No disponible"}>
-                                                    <IconSunny color={!row.error ? "primary":"disabled"}/>
+                                                    <IconSunny color={!row.error ? "primario":"disabled"}/>
                                                 </Tooltip>
                                             </TableCell>
                                             <TableCell align="center">

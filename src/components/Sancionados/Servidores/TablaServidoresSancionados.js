@@ -21,7 +21,9 @@ const columnData = [
 const styles = theme => ({
     tablePagination: {
         overflowX: 'auto',
-        fontSize: '0.75rem'
+        fontSize: '0.75rem',
+        color : theme.palette.greyColor,
+        backgroundColor : '#f2f2f2'
     },
     gridTable: {
         marginBottom: '27px',
@@ -29,7 +31,7 @@ const styles = theme => ({
         maxWidth: '1200px',
     },
     desc: {
-        color: theme.palette.primary.dark,
+        color: theme.palette.text.contrastText,
     },
     container1: {
         display: 'table',
@@ -43,6 +45,12 @@ const styles = theme => ({
         display: 'tableCell',
         overflowX: 'auto',
         width: '100%'
+    },
+    tableHead: {
+        color: theme.palette.text.main
+    },
+    row:{
+        cursor:'pointer'
     }
 });
 
@@ -71,7 +79,7 @@ function TablaServidoresSancionados({
                         {
                             data && data.length > 0 &&
                             <Table>
-                                <TableHead style={{backgroundColor: '#f5f5f5'}}>
+                                <TableHead style={{backgroundColor: '#0d3b49'}}>
                                     <TableRow>
                                         {
                                             columnData.map(column => {
@@ -87,7 +95,7 @@ function TablaServidoresSancionados({
                                         }
                                     </TableRow>
                                 </TableHead>
-                                <TableBody>
+                                <TableBody style={{backgroundColor:'#f2f2f2'}}>
                                     {data.map(n => {
                                         return (
                                             <TableRow
@@ -96,6 +104,7 @@ function TablaServidoresSancionados({
                                                 role="checkbox"
                                                 tabIndex={-1}
                                                 key={n.id}
+                                                className={classes.row}
                                             >
                                                 <TableCell component="th" scope="row"
                                                            padding="normal">{n.expediente}</TableCell>
