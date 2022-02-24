@@ -23,15 +23,12 @@ const styles = theme => ({
         overflowX: 'auto',
         fontSize: '0.75rem',
         color : theme.palette.greyColor,
-        backgroundColor : '#f2f2f2'
+        backgroundColor : theme.palette.background.tableBody
     },
     gridTable: {
-        marginBottom: '27px',
+        marginBottom: theme.spacing(3),
         padding: theme.spacing(1),
         maxWidth: '1200px',
-    },
-    desc: {
-        color: theme.palette.text.contrastText,
     },
     container1: {
         display: 'table',
@@ -47,10 +44,14 @@ const styles = theme => ({
         width: '100%'
     },
     tableHead: {
-        color: theme.palette.text.main
+        color: theme.palette.text.main,
+        backgroundColor: theme.palette.background.default
     },
     row:{
         cursor:'pointer'
+    },
+    tableBody:{
+        backgroundColor:theme.palette.background.tableBody
     }
 });
 
@@ -70,7 +71,7 @@ function TablaServidoresSancionados({
                 <Grid item xs={12}>
                     {
                         data && data.length > 0 &&
-                        <Typography variant={"h6"} className={classes.desc}>Pulsa sobre el registro para ver su
+                        <Typography variant={"h6"} color={'primario.contrastText'}>Pulsa sobre el registro para ver su
                             detalle<br/></Typography>
                     }
                 </Grid>
@@ -79,13 +80,13 @@ function TablaServidoresSancionados({
                         {
                             data && data.length > 0 &&
                             <Table>
-                                <TableHead style={{backgroundColor: '#0d3b49'}}>
+                                <TableHead className={classes.tableHead}>
                                     <TableRow>
                                         {
                                             columnData.map(column => {
                                                 return (
                                                     <TableCell key={column.id}>
-                                                        <Typography className={classes.tableHead}
+                                                        <Typography color={'primario.contrastText'}
                                                                     variant={"body1"}>
                                                             {column.label}
                                                         </Typography>
@@ -95,7 +96,7 @@ function TablaServidoresSancionados({
                                         }
                                     </TableRow>
                                 </TableHead>
-                                <TableBody style={{backgroundColor:'#f2f2f2'}}>
+                                <TableBody className={classes.tableBody}>
                                     {data.map(n => {
                                         return (
                                             <TableRow

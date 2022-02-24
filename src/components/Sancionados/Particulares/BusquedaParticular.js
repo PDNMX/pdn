@@ -13,12 +13,7 @@ import DetalleParticularSancionado from "./DetalleParticular";
 import MensajeErrorDatos from "../../Mensajes/MensajeErrorDatos";
 
 const axios = require('axios');
-
 const styles = theme => ({
-    container: {
-        display: 'flex',
-        flexWrap: 'wrap',
-    },
     formControl: {
         width: '100%'
     },
@@ -38,6 +33,19 @@ const styles = theme => ({
         top: 0,
         bottom: 0
     },
+    desc: {
+        color: theme.palette.text.contrastText,
+    },
+    container: {
+        /* marginTop: '30px',
+        marginBottom: '30px',*/
+        overflowX: 'auto',
+    },
+    section: {
+        maxWidth: '1200px',
+        overflowX: 'auto',
+        padding: theme.spacing(1)
+    }
 });
 
 const tiposSancion = [
@@ -342,12 +350,12 @@ class BusquedaParticular extends React.Component {
         } = this.state;
 
         return (
-            <div>
+            <React.Fragment>
 
                 {/*Buscador*/}
                 <Grid container spacing={4}>
                     <Grid item xs={12}>
-                        <Typography paragraph><b>Busca un particular sancionado</b></Typography>
+                        <Typography><b>Busca un particular sancionado</b></Typography>
                     </Grid>
 
                     <Grid item md={4} xs={12}>
@@ -527,13 +535,13 @@ class BusquedaParticular extends React.Component {
 
 
                     <Grid item xs={12} md={1} className={classes.centrado}>
-                        <Button variant="contained" color="secondary" className={classes.button}
+                        <Button variant="contained" color="secundario" className={classes.button}
                                 onClick={() => this.handleCleanAll()}>
                             Limpiar
                         </Button>
                     </Grid>
                     <Grid item xs={12} md={1} className={classes.centrado}>
-                        <Button variant="contained" color="secondary" className={classes.button}
+                        <Button variant="contained" color="secundario" className={classes.button}
                                 onClick={this.handleSearchPrevios}>
                             Buscar
                         </Button>
@@ -598,7 +606,7 @@ class BusquedaParticular extends React.Component {
                                                  particular={this.state.elementoSeleccionado}
                     />
                 }
-            </div>
+            </React.Fragment>
 
 
         );

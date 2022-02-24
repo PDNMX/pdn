@@ -55,7 +55,8 @@ const theme = createTheme({
             background:{
               default: "#0d3b49",
               opaque:'#155065',
-              hoverBotton: '#56a3bf'
+              hoverBotton: '#56a3bf',
+              tableBody: "#f2f2f2"
             },
             azulPDN: "#0081b3",
             yellowColor: "#ffe01b",

@@ -19,12 +19,12 @@ const styles = theme => ({
         tableLayout: 'fixed',
     },
     gridTable: {
-        marginBottom: '27px',
+        marginBottom: theme.spacing(3),
         color: theme.palette.primario.contrastText
     },
     container: {
-        marginTop: '30px',
-        marginBottom: '30px',
+        marginTop: theme.spacing(4),
+        marginBottom: theme.spacing(4),
         overflowX: 'auto',
     },
     iconoVer: {
@@ -36,7 +36,7 @@ const styles = theme => ({
     },
     tablePagination: {
         color: theme.palette.greyColor,
-        backgroundColor: '#f2f2f2'
+        backgroundColor: theme.palette.background.tableBody
     }
 });
 

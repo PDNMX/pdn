@@ -7,23 +7,22 @@ import {Typography} from "@mui/material";
 import Descarga from "../../Compartidos/Descarga";
 import Paper from '@mui/material/Paper';
 
-
 const styles = theme => ({
     gridTable: {
-        marginBottom: '27px',
+        marginBottom: theme.spacing(3),
         padding: theme.spacing(1)
     },
     ul: {
         listStyle: "none",
-        paddingLeft: "20px"
+        paddingLeft: theme.spacing(3)
     },
     container: {
         paddingRight: theme.spacing(4),
         paddingLeft: theme.spacing(4),
     },
     toolBarStyle: {
-        paddingTop: '53px',
-        paddingBottom: '61px',
+        paddingTop: theme.spacing(7),
+        paddingBottom: theme.spacing(8),
         maxWidth: '1200px',
     },
     li: {

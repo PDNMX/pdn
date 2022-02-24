@@ -13,7 +13,6 @@ import HeaderV2 from './Header/HeaderV2';
 import Dashboard from "./dashboard/Servidores/Dashboard";
 import Dashboard2 from "./dashboard/Particulares/Dashboard";
 import classNames from 'classnames';
-
 import IconS3 from "../../assets/rediseno/ico_sistemas/ico_s3_color.svg";
 import Banner from "../HomeV2/Banner";
 import Version from "../HomeV2/Version";
@@ -80,7 +79,6 @@ const system = {
         name:'Sistema nacional de Servidores públicos y particulares sancionados',
         shortName: 'S3'
     }
-
 
 
 function Index({classes}){
