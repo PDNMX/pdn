@@ -1,9 +1,11 @@
 import React from 'react';
 import {withStyles} from '@mui/styles';
 import Box from "@mui/material/Box";
-import {Typography} from "@mui/material";
+import {Breadcrumbs, Typography,Link} from "@mui/material";
 import Grid from "@mui/material/Grid";
-import {Link} from "react-router-dom";
+import {Link as RouterLink} from "react-router-dom";
+import HomeIcon from "@mui/icons-material/Home";
+import GrainIcon from "@mui/icons-material/Grain";
 
 // FIXME checkout https://mui.com/components/use-media-query/#migrating-from-withwidth
 const withWidth = () => (WrappedComponent) => (props) => <WrappedComponent {...props} width="xs"/>;
@@ -22,11 +24,10 @@ const styles = theme => ({
     },
     breadcrumItem: {
         maxWidth: 1200,
-
     },
     root: {
-        background: theme.palette.background.opaque,
-        backgroundOpacity: ".2",
+        flexGrow:1,
+        backgroundColor: theme.palette.background.opaque+'80', // 80 hex => 128 dec => 50%
     },
     containerName:{
         marginBottom: theme.spacing(4)
@@ -38,16 +39,23 @@ function HeaderV2(props) {
 
     return (
         <div className={classes.root}>
-            <Grid container spacing={0} className="breadcrumb" justifyContent='center'>
+            <Grid container spacing={0} justifyContent='center'>
                 <Grid item xs={12} className={classes.breadcrumItem}>
-                    <ul>
-                        <li>
-                            <Link className={classes.link} to='/'>Plataforma Digital Nacional</Link>
-                        </li>
-                        <li>
-                            {system.shortName}
-                        </li>
-                    </ul>
+                    <Breadcrumbs aria-label="breadcrumb" sx={{color:'#ffffff', paddingTop: '10px'}}>
+                        <Link component={RouterLink}
+                              underline="hover"
+                              sx={{ display: 'flex', alignItems: 'center' }}
+                              color='#ffffff' to="/">
+                            <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+                            Plataforma Digital Nacional
+                        </Link>
+
+                        <Typography color={system.color}
+                                    sx={{ display: 'flex', alignItems: 'center' }}>
+                            <GrainIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+                            {system.name}
+                        </Typography>
+                    </Breadcrumbs>
                 </Grid>
             </Grid>
             <Box

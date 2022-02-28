@@ -7,6 +7,7 @@ import {useTheme} from "@emotion/react";
 import IconS2 from "../../assets/rediseno/ico_sistemas/ico_s2_color.svg";
 import HomeIcon from '@mui/icons-material/Home';
 import GrainIcon from '@mui/icons-material/Grain';
+import Version from "../HomeV2/Version";
 
 // FIXME checkout https://mui.com/components/use-media-query/#migrating-from-withwidth
 const withWidth = () => (WrappedComponent) => (props) => <WrappedComponent {...props} width="xs" />;
@@ -62,7 +63,7 @@ const Header = props => {
     return(
         <div className={classes.root}>
             <Banner/>
-
+            <Version/>
             <Grid container spacing={0} justifyContent='center'>
                 <Grid item xs={12} className={classes.item3}>
                     <Breadcrumbs aria-label="breadcrumb" sx={{color:'#ffffff', paddingTop: '10px'}}>

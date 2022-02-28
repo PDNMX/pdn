@@ -5,6 +5,7 @@ import Ejercicio from "./Ejercicio";
 import Agrupaciones from "./Agrupaciones";
 import Tops from "./Tops";
 import Procedimientos from "./Procedimientos";
+import './graficas.css'
 
 const styles = theme => ({
     root: {
@@ -30,7 +31,7 @@ const styles = theme => ({
 const Dashboard = props => {
     const {classes} = props;
     return (
-        <div className={classes.root}>
+        <div className={classes.root} id={"s2sgraf"}>
             <Paper className={classes.paper} elevation={15}>
                 <Box p={1}>
                     <Typography>

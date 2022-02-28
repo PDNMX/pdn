@@ -332,7 +332,7 @@ class Tops extends React.Component {
                     <Grid item xs={11}/>
 
                     <Grid item xs={12} md={1} className={classes.buttonContainer}>
-                        <Button variant="contained" color="secondary" className={classes.button}
+                        <Button variant="contained" color="secundario" className={classes.button}
                                 onClick={this.limpiarBusqueda}>
                             Limpiar
                         </Button>
