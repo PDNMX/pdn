@@ -16,8 +16,10 @@ import {Pie} from "d3plus-react";
 
 const styles = theme => ({
     frameChart: {
-        marginTop: "15px",
-        marginBottom: "15px"
+        marginTop: theme.spacing(2),
+        marginBottom: theme.spacing(2),
+        paddingRight: theme.spacing(4),
+        paddingLeft: theme.spacing(4),
     },
     titulo: {
         textAlign: "center",

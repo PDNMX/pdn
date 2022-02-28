@@ -22,6 +22,8 @@ const styles = theme => ({
         alignItems: "center",
         marginTop: theme.spacing(2),
         marginBottom: theme.spacing(2),
+        paddingRight: theme.spacing(4),
+        paddingLeft: theme.spacing(4),
     },
     btnDownload: {
         textAlign: "right"

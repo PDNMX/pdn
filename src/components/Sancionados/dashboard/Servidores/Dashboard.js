@@ -1,11 +1,12 @@
 import React from 'react';
 import {withStyles} from "@mui/styles";
 import PropTypes from 'prop-types';
-import {Grid, Typography} from "@mui/material";
+import {Grid, Typography, Paper} from "@mui/material";
 import TiemposSanciones from "./TiemposSanciones";
 import CausaSanciones from "./CausaSanciones";
 import AnioResolucionSanciones from "./AnioResolucionSanciones";
 import DependenciasSanciones from "./DependenciasSanciones";
+import '../graficas.css';
 
 const styles = theme => ({
     root: {
@@ -20,7 +21,7 @@ const styles = theme => ({
         },
         [theme.breakpoints.down('sm')]: {
             marginBottom: theme.spacing(4),
-        },
+        }
     },
     desc:{
         marginBottom : theme.spacing(2),
@@ -28,6 +29,8 @@ const styles = theme => ({
     sectionG: {
         maxWidth: '1200px',
         overflowX : 'auto',
+        paddingRight: theme.spacing(4),
+        paddingLeft: theme.spacing(4),
     },
     aux:{
         [theme.breakpoints.up('sm')]: {
@@ -37,6 +40,17 @@ const styles = theme => ({
             marginBottom: theme.spacing(4),
         },
         padding: theme.spacing(1)
+    },
+    paper:{
+        backgroundColor: theme.palette.background.opaque,
+        maxWidth: 1200,
+        paddingTop: theme.spacing(7),
+        margin: 'auto',
+        color: theme.palette.primario.contrastText,
+        borderStyle: 'solid',
+        borderWidth: 1,
+        borderColor: theme.palette.secundario.main,
+        borderRadius: '0px 10px 10px 10px'
     }
 });
 
@@ -44,8 +58,8 @@ class Dashboard extends React.Component {
     render(){
         const {classes} = this.props;
         return (
-            <div className={classes.root}>
-
+            <div id={'s3sgraf'} className={classes.root}>
+                <Paper elevation={15} className={classes.paper}>
                 <Grid container spacing={0} justifyContent='center' className={classes.aux}>
                     <Grid item xs={12} className={classes.sectionG}>
                         <Typography >
@@ -96,6 +110,7 @@ class Dashboard extends React.Component {
 
 
                 </Grid>
+                </Paper>
             </div>
         )
     }

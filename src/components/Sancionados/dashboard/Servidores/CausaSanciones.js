@@ -7,7 +7,14 @@ import rp from "request-promise";
 import * as d3 from "d3";
 import MensajeErrorDatos from "../../../Mensajes/MensajeErrorDatos";
 
+
 const styles = theme => ({
+    test:{
+      fill:"#f2f2f2 !important",
+        '&text':{
+            fill:"#f2f2f2 !important"
+        }
+    },
     frameChart: {
         marginTop: "15px",
         marginBottom: "15px"
@@ -23,6 +30,8 @@ const styles = theme => ({
         alignItems: "center",
         marginTop: theme.spacing(2),
         marginBottom: theme.spacing(2),
+        paddingRight: theme.spacing(4),
+        paddingLeft: theme.spacing(4),
     },
     graph: {
         marginBottom: theme.spacing(4)
@@ -45,7 +54,6 @@ function aux() {
         });
     });
 }
-
 
 function loadData2() {
     return new Promise((resolve, reject) => {
@@ -99,10 +107,19 @@ class CausasSanciones extends React.Component {
                     x: "causa",
                     y: "total",
                     xConfig: {
-                        title: "Año de resolución de la sanción",
+                        title: "Causa de la sanción",
+                        titleConfig:{
+                            fontColor: "#f2f2f2"
+                        },
+                    },
+                    titleConfig:{
+                            fontColor: "#f2f2f2"
                     },
                     yConfig: {
-                        title: "Número de sanciones"
+                        title: "Número de sanciones",
+                        titleConfig:{
+                            fontColor: "#f2f2f2"
+                        },
                     },
                     tooltipConfig: {
                         title: function (d) {
@@ -119,18 +136,17 @@ class CausasSanciones extends React.Component {
                             ]
                         ]
                     },
-                    legend: false,
                     height: 400,
                     shapeConfig: {
                         label: false,
                         fill: (d, i) => {
                             return color[i]
-                        }
+                        },
                     },
-                    title: "Historico"
+                    title: "Historico",
                 }
-            })
-        }).catch(err => {
+            },)
+        },).catch(err => {
             console.error(err);
             this.setState({errorG1: true})
         });
@@ -147,11 +163,20 @@ class CausasSanciones extends React.Component {
             this.setState({
                 config2: {
                     data: aux2,
+                    titleConfig:{
+                        fontColor: "#f2f2f2"
+                    },
                     xConfig: {
                         title: "Causa de la sanción",
+                        titleConfig:{
+                            fontColor: "#f2f2f2"
+                        },
                     },
                     yConfig: {
-                        title: "Número de sanciones"
+                        title: "Número de sanciones",
+                        titleConfig:{
+                            fontColor: "#f2f2f2"
+                        },
                     },
                     tooltipConfig: {
                         title: function (d) {
@@ -186,8 +211,6 @@ class CausasSanciones extends React.Component {
             console.error(err);
             this.setState({errorG2: true})
         });
-
-
     }
 
     render() {
@@ -200,10 +223,11 @@ class CausasSanciones extends React.Component {
                             <b>Causa de las sanciones de 2013 a la fecha</b>
                         </Typography>
                     </Grid>
-                    <Grid item xs={12} md={8} className={classes.graph}>
+                    <Grid  item xs={12} md={8} className={classes.graph}>
                         {
                             this.state && this.state.methods && this.state.methods.data &&
-                            <BarChart config={this.state.methods}/>
+                            <BarChart  className={classes.test} config={this.state.methods}/>
+
                         }
                         {this.state.errorG1 &&
                         <MensajeErrorDatos/>
@@ -216,13 +240,24 @@ class CausasSanciones extends React.Component {
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>
                         <Typography variant={"body1"}>
-                            Existe una tendencia en Negligencia administrativa, siendo esta la causa más común a lo largo del tiempo, exceptuando el 2021, en donde hasta el momento, las 5 sanciones corresponden a incumplimiento en declaración de situación patrimonial.
-                            <br/>Por otro lado, se observa un aumento en el abuso de autoridad, del año 2013 con 26 sanciones al 2014 con 57 sanciones, disminuyendo en el 2018 año en que se registraron las últimas 8 sanciones de esta causa.
-                            <br/>Respecto a la Violación leyes y normatividad presupuestal, los años 2013 y 2014 registraron el máximo con 33 y 35 sanciones respectivamente, disminuyendo hasta el 2019 donde se registraron únicamente dos sanciones por esta causa.
-                            <br/>De manera similar, el cohecho o extorsión registró 27 y 20 sanciones en los años 2013 y 2014 respectivamente, disminuyendo a 12 y 5 en los años 2016 a 2017 respectivamente, siendo este el último año con sanciones por esta causa.
-                            <br/>Por incumplimiento en declaración de situación patrimonial tuvo su pico en 2016 con 11 sanciones, para mayo 2021 se tienen registradas 5 sanciones .
-                            <br/>El ejercicio indebido de sus funciones en materia migratoria tuvo su pico en 2016 con 5 sanciones, registrando en 2018 una última sanción por esta causa.
-                            <br/>Por otra parte, únicamente se cuenta con una sanción por violación  a los derechos humanos y dos por otra causa no especificada en los años 2016 y 2018 respectivamente.
+                            Existe una tendencia en Negligencia administrativa, siendo esta la causa más común a lo
+                            largo del tiempo, exceptuando el 2021, en donde hasta el momento, las 5 sanciones
+                            corresponden a incumplimiento en declaración de situación patrimonial.
+                            <br/>Por otro lado, se observa un aumento en el abuso de autoridad, del año 2013 con 26
+                            sanciones al 2014 con 57 sanciones, disminuyendo en el 2018 año en que se registraron las
+                            últimas 8 sanciones de esta causa.
+                            <br/>Respecto a la Violación leyes y normatividad presupuestal, los años 2013 y 2014
+                            registraron el máximo con 33 y 35 sanciones respectivamente, disminuyendo hasta el 2019
+                            donde se registraron únicamente dos sanciones por esta causa.
+                            <br/>De manera similar, el cohecho o extorsión registró 27 y 20 sanciones en los años 2013 y
+                            2014 respectivamente, disminuyendo a 12 y 5 en los años 2016 a 2017 respectivamente, siendo
+                            este el último año con sanciones por esta causa.
+                            <br/>Por incumplimiento en declaración de situación patrimonial tuvo su pico en 2016 con 11
+                            sanciones, para mayo 2021 se tienen registradas 5 sanciones .
+                            <br/>El ejercicio indebido de sus funciones en materia migratoria tuvo su pico en 2016 con 5
+                            sanciones, registrando en 2018 una última sanción por esta causa.
+                            <br/>Por otra parte, únicamente se cuenta con una sanción por violación a los derechos
+                            humanos y dos por otra causa no especificada en los años 2016 y 2018 respectivamente.
 
                         </Typography>
                     </Grid>
