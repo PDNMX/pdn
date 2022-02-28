@@ -62,8 +62,8 @@ function HeaderV2(props) {
                 sx={{
                     display: 'flex',
                     justifyContent: 'center',
-                    marginTop: 8,
-                    marginBottom: 10
+                    paddingTop: 9,
+                    paddingBottom: 9
                 }}
             >
                 <Box className={classes.containerName}
