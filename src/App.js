@@ -75,10 +75,10 @@ const theme = createTheme({
                 shade:"#D5D0F1"
             },
             S4:{
-                color:"#CED8DB"
+                color:"#88BC69"
             },
             S5:{
-                color:"#CED8DB"
+                color:"#34C9B2"
             },
             S6:{
                 color:"#42A5CC",
