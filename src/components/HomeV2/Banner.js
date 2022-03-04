@@ -42,14 +42,15 @@ const systems = [
         name: "Sistema de Fiscalización",
         color: "#88bc69",
         icon: IconS4,
-        url: "#",
+        url: "/fiscalizacion",
         disabled: true
     },
     {
         name: "Sistema de Denuncias",
         color: "#34c9b2",
         icon: IconS5,
-        url: "#",
+        url: "" +
+            "/denuncias",
         disabled: true
     },
     {

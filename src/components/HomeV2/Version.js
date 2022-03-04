@@ -15,6 +15,7 @@ const styles = theme => ({
     }
 });
 
+
 function Version(props){
     const { classes } = props;
     let date = new Date()
@@ -26,7 +27,7 @@ function Version(props){
     return(
         <React.Fragment>
             <div className={classes.root}>
-                    <Typography display={'inline'}><b>Versión 1.0</b>&nbsp;&nbsp;</Typography>
+                    <Typography display={'inline'}><b>{`Versión 1.1`}</b>&nbsp;&nbsp;</Typography>
                     <Typography display={'inline'} className={classes.fecha}>{`${day} ${month} ${year}`}</Typography>
             </div>
         </React.Fragment>
