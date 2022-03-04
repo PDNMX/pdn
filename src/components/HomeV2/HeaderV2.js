@@ -73,8 +73,9 @@ function HeaderV2(props) {
                         justifyContent: 'space-evenly'
                     }}
                 >
-                    <img src={section.icon} alt="PDN" className={classes.icon}/>
-                    <Typography variant="h4" paragraph color={`${section.color}`} style={{fontWeight: 300}}>
+                    {section.icon && <img src={section.icon} alt="PDN" className={classes.icon}/> }
+
+                    <Typography variant="h3" paragraph color={`${section.color}`} style={{fontWeight: 100}}>
                         {section.name}
                     </Typography>
                 </Box>

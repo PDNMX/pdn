@@ -118,7 +118,10 @@ const pdnRoutes = [
 		exact: true,
 		path: '/about',
 		component: About,
-		private: false
+		private: false,
+		name: "¿Qué es la Plataforma Digital Nacional?",
+		shortName: "¿Qué es la PDN?",
+		color: "#f2f2f2",
 	},
 	{
 		exact: true,

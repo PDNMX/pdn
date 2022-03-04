@@ -10,10 +10,12 @@ function useIsWidthUp(breakpoint) {
     const theme = useTheme();
     return useMediaQuery(theme.breakpoints.up(breakpoint));
 }
-const systems = pdnRoutes.filter(route => route.type==='system')
+
 
 const Banner = (props) => {
     const isXsUp = useIsWidthUp("lg");
+    const systems = pdnRoutes.filter(route => route.type==='system')
+
     return(
         <React.Fragment>
             {isXsUp && <BannerDesktop systems={systems}/>}
