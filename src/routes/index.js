@@ -90,20 +90,26 @@ const pdnRoutes = [
 	},
 	{
 		exact: true,
-		path: '/declaraciones/especificaciones',
+		path: '/especificaciones/s1',
 		component: DeclaracionesEspecificaciones,
 		private: false
 	},
 	{
 		exact: true,
-		path: '/sancionados/especificaciones',
+		path: '/especificaciones/s2',
+		component: EspecificacionesServidoresIntervienen,
+		private: false
+	},
+	{
+		exact: true,
+		path: '/especificaciones/s3',
 		component: EspecificacionesSancionados,
 		private: false
 	},
 	{
 		exact: true,
-		path: '/intervienen/especificaciones',
-		component: EspecificacionesServidoresIntervienen,
+		path: '/especificaciones/s6',
+		component: SpecsS6,
 		private: false
 	},
 	{
@@ -122,12 +128,6 @@ const pdnRoutes = [
 		exact: false,
 		path: '/declaraciones',
 		component: DeclaracionesS1v2,
-		private: false
-	},
-	{
-		exact: true,
-		path: '/contrataciones/especificaciones',
-		component: SpecsS6,
 		private: false
 	},
 	{
