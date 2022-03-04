@@ -1,9 +1,9 @@
 import React from 'react';
 import {Grid, Box, Paper, Typography} from "@mui/material"
 import { withStyles } from '@mui/styles';
-import Header from "./Header.js";
-import Footer from "../HomeV2/Footer";
 import bgimg from "../../assets/rediseno/fondo_cruces.png";
+import HeaderV2 from "../HomeV2/HeaderV2";
+import pdnRoutes from "../../routes";
 
 const styles = theme => ({
     root:{
@@ -65,9 +65,11 @@ const CustomTypography = withStyles({
 
 const Faq = props => {
     const { classes } = props;
+    const section = pdnRoutes.find(route => route.path==='/faq');
+
     return (
         <div className={classes.root}>
-            <Header/>
+            <HeaderV2 section = {section}/>
             <Grid container spacing={0} justifyContent='center' className={classes.container}>
                 <Grid item xs={12} justifyContent="center" className={classes.item}>
 
@@ -134,7 +136,6 @@ const Faq = props => {
                     </Paper>
                 </Grid>
             </Grid>
-            <Footer/>
         </div>
     );
 }

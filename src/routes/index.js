@@ -133,7 +133,10 @@ const pdnRoutes = [
 		exact: true,
 		path: '/faq',
 		component: Faq,
-		private: false
+		private: false,
+		name: "Preguntas frecuentes",
+		shortName: "FAQ",
+		color: "#f2f2f2",
 	},
 	{
 		exact: true,
