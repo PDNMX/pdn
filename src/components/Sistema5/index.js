@@ -10,7 +10,6 @@ const styles = theme => ({
         flexGrow :1,
         backgroundImage: `url(${bgimg})`,
         backgroundRepeat: "repeat",
-        backgroundAttachment: "fixed"
     },
     rootItem: {
         maxWidth: 1200,

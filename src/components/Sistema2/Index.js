@@ -17,7 +17,6 @@ const styles = theme => ({
         flexGrow: 1,
         backgroundImage: `url(${bgimg})`,
         backgroundRepeat: "repeat",
-        backgroundAttachment: "fixed"
     },
     tabText: {
         //color: theme.palette.secondary.contrastText
