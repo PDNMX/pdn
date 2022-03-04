@@ -16,6 +16,7 @@ import Bandita from "./components/Home/Bandita";
 import {StyledEngineProvider} from '@mui/material/styles';
 // Google Analytics 
 import ReactGA from 'react-ga';
+import Layout from "./components/HomeV2/Layout";
 
 ReactGA.initialize('UA-126837818-1');
 ReactGA.pageview(window.location.pathname + window.location.search);
@@ -130,28 +131,31 @@ class App extends React.Component {
                 <StyledEngineProvider injectFirst>
                     <Router basename={process.env.PUBLIC_URL}>
                         <ScrollToTop>
-                            <Switch>
-                                <Route exact path={"/login"} render={props => <LoginPDN/>}/>
-                                {pndRoutes.map((prop, key) => {
-                                    return prop.private ? (
-                                        <PrivateRoute
-                                            exact={prop.exact}
-                                            path={prop.path}
-                                            component={prop.component}
-                                            key={key}
-                                            perfom={prop.perfom}
-                                        />
-                                    ) : (
-                                        <Route
-                                            exact={prop.exact}
-                                            path={prop.path}
-                                            component={prop.component}
-                                            key={key}
-                                        />
-                                    );
-                                })}
-                                <Route component={p404}/>
-                            </Switch>
+                            <Layout>
+                                <Switch>
+                                    <Route exact path={"/login"} render={props => <LoginPDN/>}/>
+                                    {pndRoutes.map((prop, key) => {
+                                        return prop.private ? (
+                                            <PrivateRoute
+                                                exact={prop.exact}
+                                                path={prop.path}
+                                                component={prop.component}
+                                                key={key}
+                                                perfom={prop.perfom}
+                                            />
+                                        ) : (
+                                            <Route
+                                                exact={prop.exact}
+                                                path={prop.path}
+                                                key={key}
+                                                component={prop.component}
+                                            />
+                                        );
+                                    })}
+                                    <Route component={p404}/>
+                                </Switch>
+                            </Layout>
+
                         </ScrollToTop>
                     </Router>
                 </StyledEngineProvider>

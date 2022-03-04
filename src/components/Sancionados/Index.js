@@ -2,21 +2,17 @@ import React from 'react';
 import {withStyles} from '@mui/styles';
 import {Grid, Typography} from '@mui/material';
 import PropTypes from 'prop-types';
-import Footer from '../HomeV2/Footer';
 import img1 from "../../assets/img/servidores_publicos_sancionados.svg";
 import img2 from "../../assets/img/particulares_sancionados.svg";
 import img3 from "../../assets/img/servidores_visualizaciones.svg";
 import BuscadorServidoresSancionados from './Servidores/BuscadorServidoresSancionados';
 import BuscadorParticularesSancionados from './Particulares/BuscadorParticularesSancionados';
-import Header from './Header/Header';
-import HeaderV2 from './Header/HeaderV2';
+import HeaderV2 from '../HomeV2/HeaderV2';
 import Dashboard from "./dashboard/Servidores/Dashboard";
 import Dashboard2 from "./dashboard/Particulares/Dashboard";
 import classNames from 'classnames';
-import IconS3 from "../../assets/rediseno/ico_sistemas/ico_s3_color.svg";
-import Banner from "../HomeV2/Banner";
-import Version from "../HomeV2/Version";
 import bgimg from "../../assets/rediseno/fondo_cruces.png";
+import pdnRoutes from "../../routes/index";
 
 const styles = theme => ({
     root: {
@@ -73,21 +69,14 @@ const styles = theme => ({
     }
 
 });
-const system = {
-        icon: IconS3,
-        color:'#9085DA',
-        name:'Sistema nacional de Servidores públicos y particulares sancionados',
-        shortName: 'S3'
-    }
 
-
-function Index({classes}){
+const Index = ({classes}) => {
     const [idContent, setIdContent] = React.useState(1);
-        return (
+    const system = pdnRoutes.find(route => route.path==='/sancionados');
+
+    return (
             <div className={classes.root}>
-                <Banner/>
-                <Version/>
-                <HeaderV2 system = {system}/>
+                <HeaderV2 section = {system}/>
                 <Grid container justifyContent="center">
                     <Grid item xs={12} className={classes.section}>
                         <Grid container>
@@ -166,8 +155,6 @@ function Index({classes}){
                         }
                     </Grid>
                 </Grid>
-
-                <Footer/>
             </div>
         );
 

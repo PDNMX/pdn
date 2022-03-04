@@ -84,7 +84,7 @@ function Previos({data, classes, handleChangeSujetoObligado}) {
                             <TableBody style={{backgroundColor: '#f2f2f2'}}>
                                 {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                     .map(row => (
-                                        <TableRow key={row.supplier_id}>
+                                        <TableRow key={row.supplier_id} hover>
                                             <TableCell align="left">{row.levels ? row.levels.join(',') : ''}</TableCell>
                                             <TableCell align="left">{row.supplier_name}</TableCell>
                                             <TableCell align="center">

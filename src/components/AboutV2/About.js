@@ -4,7 +4,6 @@ import {Link as RouterLink} from "react-router-dom";
 import {withStyles} from "@mui/styles";
 import bgimg from "../../assets/rediseno/fondo_cruces.png";
 import Header from "./Header";
-import Footer from '../HomeV2/Footer';
 
 const styles = theme => ({
     root: {
@@ -176,7 +175,6 @@ const About = props => {
 
             </Grid>
         </Grid>
-        <Footer/>
     </div>
 }
 

@@ -70,9 +70,9 @@ const SistemasMenu = props => {
                             color: system.color
                         }}>
                             <div className={`${classes.opc} `}>
-                                <Link className={classes.link} to={system.url}>
+                                <Link className={classes.link} to={system.path}>
                                     <img src={system.icon} alt="PDN" className={classes.icon}/>
-                                    <Typography color={system.color} >{system.name}</Typography>
+                                    <Typography color={system.color} >{system.shortName}</Typography>
                                 </Link>
                             </div>
                         </Box>

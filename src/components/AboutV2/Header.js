@@ -3,8 +3,7 @@ import withStyles from '@mui/styles/withStyles';
 import {Link as RouterLink} from 'react-router-dom';
 import {Typography, Grid, Breadcrumbs, Link,
     //useMediaQuery
-} from "@mui/material"
-import Banner from "../HomeV2/Banner";
+} from "@mui/material";
 //import {useTheme} from "@emotion/react";
 //import Icon from "../../../assets/rediseno/ico_sistemas/ico_s4_color.svg";
 import HomeIcon from '@mui/icons-material/Home';
@@ -63,8 +62,6 @@ const Header = props => {
 
     return(
         <div className={classes.root}>
-            <Banner/>
-
             <Grid container spacing={0} justifyContent='center'>
                 <Grid item xs={12} className={classes.item3}>
                     <Breadcrumbs aria-label="breadcrumb" sx={{color:'#ffffff', paddingTop: '10px'}}>

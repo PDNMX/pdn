@@ -30,12 +30,13 @@ const styles = theme => ({
         backgroundColor: theme.palette.background.opaque+'80', // 80 hex => 128 dec => 50%
     },
     containerName:{
-        marginBottom: theme.spacing(4)
+        marginBottom: theme.spacing(4),
+        maxWidth: 1200
     }
 });
 
 function HeaderV2(props) {
-   const {classes, system} = props;
+   const {classes, section} = props;
 
     return (
         <div className={classes.root}>
@@ -50,10 +51,10 @@ function HeaderV2(props) {
                             Plataforma Digital Nacional
                         </Link>
 
-                        <Typography color={system.color}
+                        <Typography color={section.color}
                                     sx={{ display: 'flex', alignItems: 'center' }}>
                             <GrainIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-                            {system.name}
+                            {section.shortName}
                         </Typography>
                     </Breadcrumbs>
                 </Grid>
@@ -72,14 +73,13 @@ function HeaderV2(props) {
                         justifyContent: 'space-evenly'
                     }}
                 >
-                    <img src={system.icon} alt="PDN" className={classes.icon}/>
-                    <Typography variant="h4" paragraph color={`${system.color}`} style={{fontWeight: 300}}>
-                        {system.name}
+                    <img src={section.icon} alt="PDN" className={classes.icon}/>
+                    <Typography variant="h4" paragraph color={`${section.color}`} style={{fontWeight: 300}}>
+                        {section.name}
                     </Typography>
                 </Box>
             </Box>
         </div>
-
     )
         ;
 

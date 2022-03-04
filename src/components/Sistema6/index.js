@@ -1,7 +1,5 @@
 import React from 'react';
 import withStyles from '@mui/styles/withStyles';
-import Header from './Header';
-import Footer from "../HomeV2/Footer";
 import Busqueda from "./Busqueda";
 import Cifras from "./Cifras";
 import Perspectivas from "./Perspectivas";
@@ -14,6 +12,8 @@ import img3 from "../../assets/img/servidores_visualizaciones.svg";
 import {Grid, Paper, Typography, Box} from "@mui/material";
 import SelectSupplier from "./SelectSupplier";
 import bgimg from "../../assets/rediseno/fondo_cruces.png";
+import HeaderV2 from '../HomeV2/HeaderV2';
+import pdnRoutes from "../../routes";
 
 //import LabeledHeatmap from './Charts/LabeledHeatmap';
 //import Treemap from './Charts/Treemap';
@@ -97,10 +97,10 @@ const Index = props => {
     const [dataSupplier, setDataSupplier]  = React.useState("SHCP");
     const handleSelectTab = t => setSelectedTab(t);
     const isSelected = t => t === selectedTab;
+    const system = pdnRoutes.find(route => route.path==='/contrataciones');
 
     return (<div className={classes.root}>
-        <Header/>
-
+        <HeaderV2 section = {system}/>
         <Grid container spacing={0} justifyContent="center" className={classes.tabContainer}>
             <Grid item xs={12} style={{padding:0, maxWidth: 1200}}>
 
@@ -203,7 +203,6 @@ const Index = props => {
                     </Grid>
                 </Grid>*/}
 
-        <Footer/>
     </div>);
 }
 

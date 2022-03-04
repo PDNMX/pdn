@@ -2,8 +2,8 @@ import React from 'react';
 import {Typography, Grid} from "@mui/material";
 import {withStyles} from "@mui/styles";
 import bgimg from "../../assets/rediseno/fondo_cruces.png";
-import Header from './Header';
-import Footer from '../HomeV2/Footer';
+import HeaderV2 from '../HomeV2/HeaderV2';
+import pdnRoutes from "../../routes";
 
 const styles = theme => ({
     root: {
@@ -29,9 +29,10 @@ const CustomTypography = withStyles({
 
 const index = props => {
     const { classes } = props;
-    return <div className={classes.root}>
-        <Header/>
+    const system = pdnRoutes.find(route => route.path==='/denuncias');
 
+    return <div className={classes.root}>
+        <HeaderV2 section = {system}/>
         <Grid container justifyContent="center">
             <Grid item xs={12} className={classes.rootItem}>
                 <CustomTypography variant="h4" paragraph>
@@ -49,7 +50,6 @@ const index = props => {
                 </CustomTypography>
             </Grid>
         </Grid>
-        <Footer/>
     </div>
 }
 

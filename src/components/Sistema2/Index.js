@@ -1,9 +1,8 @@
 import React from 'react';
 import withStyles from '@mui/styles/withStyles';
 import {Grid, Typography} from "@mui/material"
-import Footer from "../HomeV2/Footer";
 import BuscadorS2 from "./BuscadorS2";
-import Header from './Header';
+import HeaderV2 from '../HomeV2/HeaderV2';
 import classNames from 'classnames';
 import Dashboard from "./Dashboard/Dashboard";
 import BuscadorParticularesSancionados from '../Sancionados/Particulares/BuscadorParticularesSancionados';
@@ -11,6 +10,8 @@ import img1 from "../../assets/img/servidores_intervienen_contratacion.svg";
 import img2 from "../../assets/img/servidores_particulares_inhabilitados.svg";
 import img3 from "../../assets/img/servidores_visualizaciones.svg";
 import bgimg from "../../assets/rediseno/fondo_cruces.png";
+import pdnRoutes from "../../routes/index";
+
 const styles = theme => ({
     root: {
         flexGrow: 1,
@@ -71,6 +72,7 @@ const styles = theme => ({
     }
 });
 
+
 const TabContents = props => {
     const {index} = props;
     switch (index) {
@@ -88,10 +90,11 @@ const TabContents = props => {
 const Index = props => {
     const {classes} = props;
     const [contentId, setContentId] = React.useState( 1);
+    const system = pdnRoutes.find(route => route.path==='/servidores');
 
     return (
         <div className={classes.root}>
-            <Header/>
+            <HeaderV2 section = {system}/>
 
             {/* TABS */}
             <Grid container spacing={0} justifyContent="center" className={classes.bgContainer}>
@@ -150,8 +153,6 @@ const Index = props => {
                         <TabContents index={contentId}/>
                 </Grid>
             </Grid>
-
-            <Footer/>
         </div>
     );
 };
