@@ -12,7 +12,7 @@ import LoginPDN from "./components/Inicio/LoginPDN";
 import ScrollToTop from "./ScrollToTop";
 import "./components/Utils/Header.css";
 
-import Bandita from "./components/Home/Bandita";
+//import Bandita from "./components/Home/Bandita";
 import {StyledEngineProvider} from '@mui/material/styles';
 // Google Analytics 
 import ReactGA from 'react-ga';

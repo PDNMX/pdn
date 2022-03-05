@@ -8,7 +8,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import GrainIcon from "@mui/icons-material/Grain";
 
 // FIXME checkout https://mui.com/components/use-media-query/#migrating-from-withwidth
-const withWidth = () => (WrappedComponent) => (props) => <WrappedComponent {...props} width="xs"/>;
+// const withWidth = () => (WrappedComponent) => (props) => <WrappedComponent {...props} width="xs"/>;
 
 const styles = theme => ({
     whiteText: {
@@ -86,4 +86,5 @@ function HeaderV2(props) {
 
 }
 
-export default withWidth()(withStyles(styles)(HeaderV2));
+//export default withWidth()(withStyles(styles)(HeaderV2));
+export default withStyles(styles)(HeaderV2);
