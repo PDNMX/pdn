@@ -35,7 +35,7 @@ class Busqueda extends React.Component{
         //alert(this.props.dataSupplier)
         const supplier_id = this.props.dataSupplier;
 
-        const buyers = () => axios({
+        const _buyers = () => axios({
             url: process.env.REACT_APP_S6_BACKEND +'/api/v1/buyers',
             params: {
                 supplier_id
@@ -44,7 +44,7 @@ class Busqueda extends React.Component{
             json: true
         });
 
-        const search = () => axios({
+        const _search = () => axios({
             url: process.env.REACT_APP_S6_BACKEND + "/api/v1/search",
             params: {
                 supplier_id
@@ -53,7 +53,7 @@ class Busqueda extends React.Component{
             json: true
         });
 
-        const cycles = () => axios({
+        const _cycles = () => axios({
             url: process.env.REACT_APP_S6_BACKEND + "/api/v1/cycles",
             params: {
                 supplier_id
@@ -63,7 +63,7 @@ class Busqueda extends React.Component{
         });
 
 
-        Promise.all([buyers(), search(), cycles()]).then(  res => {
+        Promise.all([_buyers(), _search(), _cycles()]).then(  res => {
             //console.log (data);
             this.setState({
                 buyers: res[0].data,

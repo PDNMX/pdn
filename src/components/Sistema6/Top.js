@@ -12,6 +12,12 @@ const styles = theme => ({
     }
 });
 
+const CustomTypography = withStyles(theme => ({
+    root: {
+        color: theme.palette.text.main
+    }
+}))(Typography);
+
 const Top = props =>  {
     const {classes, dataSupplier} = props;
     const [barChartData, setBarChartData] = React.useState([]);
@@ -22,7 +28,7 @@ const Top = props =>  {
         //alert(dataSupplier);
         const supplier_id = dataSupplier;
 
-        const buyers = () => axios({
+        const _buyers = () => axios({
             url: process.env.REACT_APP_S6_BACKEND + '/api/v1/top/10/buyers',
             params: {
                 supplier_id
@@ -31,7 +37,7 @@ const Top = props =>  {
             json: true
         });
 
-        const suppliers = () => axios({
+        const _suppliers = () => axios({
             url: process.env.REACT_APP_S6_BACKEND + '/api/v1/top/10/suppliers',
             params: {
                 supplier_id
@@ -40,8 +46,8 @@ const Top = props =>  {
             json: true
         });
 
-        Promise.all([buyers(), suppliers()]).then(res => {
-            console.log(JSON.stringify(res))
+        Promise.all([_buyers(), _suppliers()]).then(res => {
+            //console.log(JSON.stringify(res))
             setBarChartData(res[0].data);
             setSuppliers(res[1].data);
         }).catch(error => {
@@ -53,13 +59,13 @@ const Top = props =>  {
         <div className={classes.root}>
             <Grid container spacing={0}>
                 <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-                    <Typography variant="h6" color="textPrimary" paragraph>Top 10 unidades compradoras</Typography>
+                    <CustomTypography variant="h6" color="textPrimary" paragraph>Top 10 unidades compradoras</CustomTypography>
                     {barChartData && barChartData.length > 0 &&
                         <BarChart data={barChartData}/>
                     }
                 </Grid>
                 <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-                    <Typography variant="h6" color="textPrimary" paragraph> Top 10 proveedores</Typography>
+                    <CustomTypography variant="h6" color="textPrimary" paragraph> Top 10 proveedores</CustomTypography>
                     {suppliers && suppliers.length > 0 &&
                         <SuppliersBarChart data={suppliers}/>
                     }

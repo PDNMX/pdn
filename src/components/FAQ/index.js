@@ -57,9 +57,9 @@ const styles = theme => ({
     }
 });
 
-const CustomTypography = withStyles({
+const CustomTypography = withStyles(theme =>{
     root: {
-        color: "#d0d7d9"
+        color: theme.palette.text.main
     }
 })(Typography);
 

@@ -41,6 +41,12 @@ const styles = theme => ({
     }
 });
 
+const CustomTypography = withStyles(theme => ({
+    root: {
+        color: theme.palette.text.main
+    }
+}))(Typography);
+
 const Cifras = props => {
     const {classes, dataSupplier} = props;
 
@@ -144,33 +150,35 @@ const Cifras = props => {
                 </Grid>:
                 <Grid container spacing={0}>
                     <Grid item xs={12} md={12} lg={4} xl={4} align="center" className={classes.item}>
-                        <Typography variant="h6" color="textPrimary">
+                        <CustomTypography variant="h6" color="textPrimary">
                             Procesos de contratación
-                        </Typography>
+                        </CustomTypography>
 
-                        <Typography variant="h5" paragraph color="textPrimary">
+                        <CustomTypography variant="h5" paragraph color="textPrimary">
                             <b><CountUp separator="," start={1} end={state.contrataciones}/></b>
-                        </Typography>
+                        </CustomTypography>
 
-                        <Typography variant="h6" color="textPrimary">
+                        <CustomTypography variant="h6" color="textPrimary">
                             Instituciones
-                        </Typography>
-                        <Typography variant="h5" paragraph color="textPrimary">
+                        </CustomTypography>
+
+                        <CustomTypography variant="h5" paragraph color="textPrimary">
                             <b> <CountUp separator="," start={1} end={state.instituciones}/></b>
-                        </Typography>
+                        </CustomTypography>
 
-                        <Typography variant="h6" color="textPrimary">Gasto total</Typography>
+                        <CustomTypography variant="h6" color="textPrimary">Gasto total</CustomTypography>
 
-                        <Typography variant="h5" paragraph color="textPrimary">
+                        <CustomTypography variant="h5" paragraph color="textPrimary">
                             <b> <CountUp separator="," decimals={2} prefix={'$'} start={1} end={state.gastoTotal}/></b>
-                        </Typography>
+                        </CustomTypography>
 
-                        <Typography variant="h6" color="textPrimary">
+                        <CustomTypography variant="h6" color="textPrimary">
                             Periodo
-                        </Typography>
-                        <Typography variant="h5" paragraph color="textPrimary">
+                        </CustomTypography>
+
+                        <CustomTypography variant="h5" paragraph color="textPrimary">
                             <b>{state.periodo.start} - {state.periodo.end}</b>
-                        </Typography>
+                        </CustomTypography>
 
                     </Grid>
 
@@ -188,10 +196,10 @@ const Cifras = props => {
                                     {
                                         Object.entries(prMethods).map(([attr, method], i) => (
                                                 <li key={i}>
-                                                    <Typography variant="h6" paragraph color="textPrimary">
+                                                    <CustomTypography variant="h6" paragraph color="textPrimary">
                                                         <span className={classes.bullet} style={{backgroundColor: method.color}} />
                                                         {method.label}
-                                                    </Typography>
+                                                    </CustomTypography>
                                                 </li>
                                             )
                                         )}
