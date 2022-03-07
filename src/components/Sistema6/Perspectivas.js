@@ -29,47 +29,43 @@ const styles = theme => ({
     }
 });
 
-class Perspectivas extends React.Component{
-    render(){
+const Perspectivas = props => {
+    const {classes} = props;
 
-        const {classes} = this.props;
+    return (
+        <div className={classes.root}>
 
-        return (
-            <div className={classes.root}>
-
-                <Grid container spacing={0} alignment="center">
-                    <Grid item xs={12} align="center" >
-                        <Typography className={classes.visualiza} paragraph>
+            <Grid container spacing={0} alignment="center">
+                <Grid item xs={12} align="center" >
+                    <Typography className={classes.visualiza} paragraph>
                         Visualiza las contrataciones públicas
-                        </Typography>
-                    </Grid>
-
-                    <Grid item xs={12} md={4} lg={4} xl={4} align="center">
-                        <img src={Gasto} className={classes.icon} alt="Gasto"/>
-                        <Typography className={classes.iconText} variant="h5">
-                            Instituciones
-                        </Typography>
-                    </Grid>
-
-                    <Grid item xs={12} md={4} lg={4} xl={4} align="center">
-                        <img src={Tipo} className={classes.icon} alt="Tipo de procedimiento"/>
-                        <Typography className={classes.iconText} variant="h5">
-                            Productos y servicios
-                        </Typography>
-                    </Grid>
-
-
-                    <Grid item xs={12} md={4} lg={4} xl={4} align="center">
-                        <img src={Proveedor} className={classes.icon} alt="Proveedores"/>
-                        <Typography className={classes.iconText} variant="h5">
-                            Proveedores
-                        </Typography>
-                    </Grid>
+                    </Typography>
                 </Grid>
 
-            </div>
-        );
-    }
+                <Grid item xs={12} md={4} lg={4} xl={4} align="center">
+                    <img src={Gasto} className={classes.icon} alt="Gasto"/>
+                    <Typography className={classes.iconText} variant="h5">
+                        Instituciones
+                    </Typography>
+                </Grid>
+
+                <Grid item xs={12} md={4} lg={4} xl={4} align="center">
+                    <img src={Tipo} className={classes.icon} alt="Tipo de procedimiento"/>
+                    <Typography className={classes.iconText} variant="h5">
+                        Productos y servicios
+                    </Typography>
+                </Grid>
+
+
+                <Grid item xs={12} md={4} lg={4} xl={4} align="center">
+                    <img src={Proveedor} className={classes.icon} alt="Proveedores"/>
+                    <Typography className={classes.iconText} variant="h5">
+                        Proveedores
+                    </Typography>
+                </Grid>
+            </Grid>
+        </div>
+    );
 }
 
 

@@ -2,7 +2,7 @@ import React from 'react';
 import {withStyles} from "@mui/styles";
 //import InputBusqueda from './InputBusqueda';
 import TablaResultados from './TablaResultados';
-import rp from 'request-promise';
+import axios from 'axios';
 import SearchControls from "./SearchControls";
 import Grid from '@mui/material/Grid';
 
@@ -13,13 +13,12 @@ const styles = theme => ({
 });
 
 class Busqueda extends React.Component{
-
     state = {
         inputText: "",
         pagination: {
-          pageSize: 10,
-          page: 0,
-          total: 0
+            pageSize: 10,
+            page: 0,
+            total: 0
         },
         results: [],
         loading: true,
@@ -35,40 +34,42 @@ class Busqueda extends React.Component{
         //fetch data
         //alert(this.props.dataSupplier)
         const supplier_id = this.props.dataSupplier;
-        let queries = [
-            rp({
-                uri: process.env.REACT_APP_S6_BACKEND +'/api/v1/buyers',
-                qs: {
-                    supplier_id
-                },
-                method: 'GET',
-                json: true
-            }),
-            rp({
-                uri: process.env.REACT_APP_S6_BACKEND + "/api/v1/search",
-                qs: {
-                    supplier_id
-                },
-                method: 'POST',
-                json: true
-            }),
-            rp({
-                uri: process.env.REACT_APP_S6_BACKEND + "/api/v1/cycles",
-                qs: {
-                    supplier_id
-                },
-                method: 'GET',
-                json: true
-            })
-        ];
 
-        Promise.all(queries).then(  data => {
-            //console.log (data );
+        const buyers = () => axios({
+            url: process.env.REACT_APP_S6_BACKEND +'/api/v1/buyers',
+            params: {
+                supplier_id
+            },
+            method: 'GET',
+            json: true
+        });
+
+        const search = () => axios({
+            url: process.env.REACT_APP_S6_BACKEND + "/api/v1/search",
+            params: {
+                supplier_id
+            },
+            method: 'POST',
+            json: true
+        });
+
+        const cycles = () => axios({
+            url: process.env.REACT_APP_S6_BACKEND + "/api/v1/cycles",
+            params: {
+                supplier_id
+            },
+            method: 'GET',
+            json: true
+        });
+
+
+        Promise.all([buyers(), search(), cycles()]).then(  res => {
+            //console.log (data);
             this.setState({
-                buyers: data[0],
-                pagination: data[1].pagination,
-                results: data[1].data,
-                cycles: data[2],
+                buyers: res[0].data,
+                pagination: res[1].data.pagination,
+                results: res[1].data.data,
+                cycles: res[2].data,
                 loading: false
             });
         }).catch(error => {
@@ -108,12 +109,12 @@ class Busqueda extends React.Component{
     };
 
     setBuyer = buyer_id => {
-      this.setState({
-          buyer_id: buyer_id
-      }, () => {
+        this.setState({
+            buyer_id: buyer_id
+        }, () => {
 
-         this.search(false);
-      });
+            this.search(false);
+        });
     };
 
     setProcurementMethod = pm => {
@@ -144,7 +145,7 @@ class Busqueda extends React.Component{
         this.setState({
             cycle: cycle
         }, () => {
-           this.search(false)
+            this.search(false)
         });
     };
 
@@ -179,21 +180,21 @@ class Busqueda extends React.Component{
         this.setState({loading: true}, () => {
             const supplier_id = this.props.dataSupplier;
 
-            rp({
-                uri: process.env.REACT_APP_S6_BACKEND + "/api/v1/search",
-                qs:{
-                  supplier_id
+            axios({
+                url: process.env.REACT_APP_S6_BACKEND + "/api/v1/search",
+                params: {
+                    supplier_id
                 },
                 method: 'POST',
-                body: body,
+                data: body,
                 json: true
-            }).then (data => {
+            }).then(res => {
                 //console.log(data)
                 this.setState({
-                    results: data.data,
-                    pagination: data.pagination, //al buscar se debe resetrar la página a 0
+                    results: res.data.data,
+                    pagination: res.data.pagination, //al buscar se debe resetrar la página a 0
                     loading: false
-                })
+                });
             }).catch(error => {
                 console.log(error)
             });
@@ -237,7 +238,6 @@ class Busqueda extends React.Component{
             </div>
         );
     }
-
 }
 
 export default withStyles(styles)(Busqueda);

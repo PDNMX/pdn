@@ -3,7 +3,7 @@ import {withStyles} from '@mui/styles';
 import Typography from "@mui/material/Typography";
 import BarChart from './Charts/BarChart';
 import SuppliersBarChart from './Charts/SuppliersBarChart';
-import rp from 'request-promise';
+import axios from 'axios';
 import Grid from '@mui/material/Grid';
 
 const styles = theme => ({
@@ -20,30 +20,30 @@ const Top = props =>  {
     React.useEffect(() => {
         //console.log("Data supplier: ", dataSupplier);
         //alert(dataSupplier);
-        const supplier_id = dataSupplier
-        let queries = [
-            rp({
-                uri: process.env.REACT_APP_S6_BACKEND + '/api/v1/top/10/buyers',
-                qs: {
-                    supplier_id
-                },
-                method :'GET',
-                json: true
-            }),
-            rp({
-                uri: process.env.REACT_APP_S6_BACKEND + '/api/v1/top/10/suppliers',
-                qs: {
-                    supplier_id
-                },
-                method :'GET',
-                json: true
-            })
-        ];
+        const supplier_id = dataSupplier;
 
-        Promise.all(queries).then( data => {
-            //console.log(data)
-            setBarChartData(data[0]);
-            setSuppliers(data[1]);
+        const buyers = () => axios({
+            url: process.env.REACT_APP_S6_BACKEND + '/api/v1/top/10/buyers',
+            params: {
+                supplier_id
+            },
+            method :'GET',
+            json: true
+        });
+
+        const suppliers = () => axios({
+            url: process.env.REACT_APP_S6_BACKEND + '/api/v1/top/10/suppliers',
+            params: {
+                supplier_id
+            },
+            method :'GET',
+            json: true
+        });
+
+        Promise.all([buyers(), suppliers()]).then(res => {
+            console.log(JSON.stringify(res))
+            setBarChartData(res[0].data);
+            setSuppliers(res[1].data);
         }).catch(error => {
             console.log(error);
         });
@@ -55,13 +55,13 @@ const Top = props =>  {
                 <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
                     <Typography variant="h6" color="textPrimary" paragraph>Top 10 unidades compradoras</Typography>
                     {barChartData && barChartData.length > 0 &&
-                    <BarChart data={barChartData}/>
+                        <BarChart data={barChartData}/>
                     }
                 </Grid>
                 <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
                     <Typography variant="h6" color="textPrimary" paragraph> Top 10 proveedores</Typography>
                     {suppliers && suppliers.length > 0 &&
-                    <SuppliersBarChart data={suppliers}/>
+                        <SuppliersBarChart data={suppliers}/>
                     }
                 </Grid>
             </Grid>

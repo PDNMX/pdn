@@ -15,7 +15,6 @@ import Paper from '@mui/material/Paper';
 import LinearIndeterminate from './LinearIndeterminate';
 import ResponsiveDialog from './ResponsiveDialog';
 
-
 const headRows = [
     { id: 'col1', numeric: false, disablePadding: false, label: 'OCID' },
     { id: 'col2', numeric: false, disablePadding: false, label: 'Fecha' },
@@ -51,7 +50,7 @@ function EnhancedTableHead(props) {
                             {orderBy === row.id ? (
                                 <span className={classes.visuallyHidden}>
                                     {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
-                </span>
+                                </span>
                             ) : null}
                         </TableSortLabel>
                     </TableCell>
@@ -251,20 +250,20 @@ export default function EnhancedTable(props) {
                                     const labelId = `enhanced-table-checkbox-${index}`;
 
                                     return (
-                                    <TableRow
-                                    hover
-                                    onClick={event => handleOpenDialog(event, index)}
-                                    tabIndex={-1}
-                                    key={row.col1}
-                                    >
-                                    <TableCell component="th" id={labelId} scope="row" padding="normal">
-                                    {row.col1}
-                                    </TableCell>
-                                    <TableCell align="left">{row.col2}</TableCell>
-                                    <TableCell align="left">{row.col3}</TableCell>
-                                    <TableCell align="left">{row.col4}</TableCell>
-                                    <TableCell align="left">{row.col5}</TableCell>
-                                    </TableRow>
+                                        <TableRow
+                                            hover
+                                            onClick={event => handleOpenDialog(event, index)}
+                                            tabIndex={-1}
+                                            key={row.col1}
+                                        >
+                                            <TableCell component="th" id={labelId} scope="row" padding="normal">
+                                                {row.col1}
+                                            </TableCell>
+                                            <TableCell align="left">{row.col2}</TableCell>
+                                            <TableCell align="left">{row.col3}</TableCell>
+                                            <TableCell align="left">{row.col4}</TableCell>
+                                            <TableCell align="left">{row.col5}</TableCell>
+                                        </TableRow>
                                     );
                                 })}
                                 {emptyRows > 0 && (

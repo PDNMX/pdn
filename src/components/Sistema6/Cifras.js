@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Donutchart from './Charts/SimpleRadialChart'
 import CountUp from 'react-countup';
-import rp from 'request-promise';
+import axios from 'axios';
 import LinearIndeterminate from './LinearIndeterminate';
 import CustomizedSelect from './CustomizedSelect';
 
@@ -78,24 +78,24 @@ const Cifras = props => {
 
     React.useEffect(() => {
         const supplier_id = dataSupplier;
-        rp({
-            uri: process.env.REACT_APP_S6_BACKEND + "/api/v1/summary",
-            qs: {
+        axios({
+            url: process.env.REACT_APP_S6_BACKEND + "/api/v1/summary",
+            params: {
                 supplier_id
             },
             method: "GET",
             json: true
-        }).then( data => {
+        }).then( res => {
             //console.log(data)
-            const {open, selective, direct, other, total } = data.amounts;
+            const {open, selective, direct, other, total } = res.data.amounts;
 
             setState(s => ({
                 ...s,
                 loading: false,
-                contrataciones: data.procedimientos,
-                instituciones: data.instituciones,
-                counts: data.counts,
-                amounts: data.amounts,
+                contrataciones: res.data.procedimientos,
+                instituciones: res.data.instituciones,
+                counts: res.data.counts,
+                amounts: res.data.amounts,
                 gastoTotal: total,
                 donutChartDataType : 'amounts',
                 donutChartData: [
