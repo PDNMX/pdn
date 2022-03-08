@@ -1,13 +1,10 @@
 import React from 'react';
 import { withStyles } from '@mui/styles';
-import Divider from '@mui/material/Divider';
-import Grid from '@mui/material/Grid';
+import {Divider, Grid, Button, Typography, Box, Paper} from '@mui/material';
 import Estandar from "./DescripcionEstandar";
 import Licencia from "../Licencia";
 import Implementacion from "./Implementacion";
-import {Typography} from "@mui/material"
 import Herramientas from "../Herramientas";
-import Button from '@mui/material/Button';
 import ProcoloConexion from "../ProcoloConexion";
 import bgimg from "../../../assets/rediseno/fondo_cruces.png";
 
@@ -60,6 +57,20 @@ const styles = theme => ({
         marginRight: theme.spacing(1),
         marginBottom: theme.spacing(2),
         //background: '#ffe01b',//'#fecb6e'
+    },
+    paper: {
+        backgroundColor: theme.palette.background.opaque,
+        padding: theme.spacing(2),
+        color: theme.palette.primario.contrastText,
+        borderStyle: 'solid',
+        borderWidth: 1,
+        borderColor: theme.palette.secundario.main,
+        borderRadius: '10px 10px 10px 10px',
+        display: 'flex',
+        justifyContent: "center"
+    },
+    box: {
+        maxWidth: '900px', paddingTop: '50px', paddingBottom: '50px'
     }
 });
 
@@ -71,73 +82,75 @@ const ServidoresIntervienen = props => {
         <div className={classes.root}>
             <Grid container spacing={0} justifyContent='center' className={classes.container}>
                 <Grid item xs={12} className={classes.item}>
+                    <Paper className={classes.paper}>
+                        <Box className={classes.box}>
 
-                    <Estandar/>
+                            <Estandar/>
 
-                    <Divider className={classes.divider}/>
+                            <Divider className={classes.divider}/>
 
-                    <Implementacion/>
+                            <Implementacion/>
 
-                    <Divider className={classes.divider}/>
+                            <Divider className={classes.divider}/>
 
-                    <Typography variant="h4" paragraph color='textPrimary'>
-                        Especificaciones técnicas
-                    </Typography>
+                            <Typography variant="h4" paragraph>
+                                Especificaciones técnicas
+                            </Typography>
 
-                    <Typography variant='h5' paragraph color='textPrimary'>
-                        Diccionario de datos
-                    </Typography>
+                            <Typography variant='h5' paragraph>
+                                Diccionario de datos
+                            </Typography>
 
-                    <Button
-                        href='https://docs.google.com/spreadsheets/d/1fRhDfHtrBPYyR36zxpenXWind9FP1pLAQJOVS69QwUM/edit?usp=sharing'
-                        target='_blank'
-                        variant='contained'
-                        color="secundario"
-                        className={classes.button}>
-                        Más información
-                    </Button>
+                            <Button
+                                href='https://docs.google.com/spreadsheets/d/1fRhDfHtrBPYyR36zxpenXWind9FP1pLAQJOVS69QwUM/edit?usp=sharing'
+                                target='_blank'
+                                variant='contained'
+                                color="secundario"
+                                className={classes.button}>
+                                Más información
+                            </Button>
 
-                    <Typography variant='h5' paragraph color='textPrimary'>
-                        Catálogos de claves y valores
-                    </Typography>
+                            <Typography variant='h5' paragraph>
+                                Catálogos de claves y valores
+                            </Typography>
 
-                    <Button
-                        href='https://github.com/PDNMX/catalogos/tree/master/S2%20-%20Servidores%20p%C3%BAblicos%20en%20contrataciones'
-                        target='_blank'
-                        variant='contained'
-                        color="secundario"
-                        className={classes.button}>
-                        Más información
-                    </Button>
+                            <Button
+                                href='https://github.com/PDNMX/catalogos/tree/master/S2%20-%20Servidores%20p%C3%BAblicos%20en%20contrataciones'
+                                target='_blank'
+                                variant='contained'
+                                color="secundario"
+                                className={classes.button}>
+                                Más información
+                            </Button>
 
-                    <Typography variant='h5' paragraph color='textPrimary'>
-                        Especificaciones en formato Open API Specification
-                    </Typography>
+                            <Typography variant='h5' paragraph>
+                                Especificaciones en formato Open API Specification
+                            </Typography>
 
-                    <Button
-                        href='https://www.plataformadigitalnacional.org/oas/ui/?urls.primaryName=S2'
-                        target='_blank'
-                        variant='contained'
-                        color="secundario"
-                        className={classes.button}>
-                        Más información
-                    </Button>
+                            <Button
+                                href='https://www.plataformadigitalnacional.org/oas/ui/?urls.primaryName=S2'
+                                target='_blank'
+                                variant='contained'
+                                color="secundario"
+                                className={classes.button}>
+                                Más información
+                            </Button>
 
-                    <ProcoloConexion urlPlan = {'https://drive.google.com/file/d/1ooAuvc1kNMiftE_R1yRglC6OK9bIIx8U/view'} apiName={'Servidores que intervienen en' +
-                        ' procedimientos de contratación'}/>
+                            <ProcoloConexion urlPlan = {'https://drive.google.com/file/d/1ooAuvc1kNMiftE_R1yRglC6OK9bIIx8U/view'} apiName={'Servidores que intervienen en' +
+                                ' procedimientos de contratación'}/>
 
 
-                    <Divider className={classes.divider}/>
+                            <Divider className={classes.divider}/>
 
-                    <Licencia/>
+                            <Licencia/>
 
-                    <Divider className={classes.divider}/>
+                            <Divider className={classes.divider}/>
 
-                    <Herramientas/>
-
+                            <Herramientas/>
+                        </Box>
+                    </Paper>
                 </Grid>
             </Grid>
-
         </div>
     );
 }

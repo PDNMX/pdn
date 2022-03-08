@@ -23,15 +23,15 @@ const ProtocoloConexion = props => {
     const {urlPlan, apiName} = props;
     return(
         <div className={classes.root}>
-            <Typography variant='h5' paragraph color='textPrimary'>
+            <Typography variant='h5' paragraph>
                 Protocolo de conexión
             </Typography>
-            <Typography paragraph color="textPrimary">
+            <Typography paragraph>
                 El primer paso en el proceso de establecer conexión con la Plataforma Digital Nacional es requisitar correctamente el formato de <b>Solicitud de conexión</b>
                 <IconButton target={'_blank'} href={'https://drive.google.com/file/d/1ANQG3f1Q7aO4soQR9__2FvHEi_-UwvBe/view'} color="primary" aria-label="descargar"  size={'small'}><GetAppIcon/></IconButton>
                 y enviarlo al correo electrónico: <b>pdn@sesna.gob.mx</b>
             </Typography>
-            <Typography paragraph color="textPrimary">
+            <Typography paragraph>
                 Posteriormente el equipo de la PDN llevará a cabo el procedimiento para la verificación del funcionamiento del API {apiName}, que consiste en la ejecución del siguiente <b>Plan de pruebas</b>.
             </Typography>
             <Button
@@ -43,7 +43,7 @@ const ProtocoloConexion = props => {
                 Plan de pruebas
             </Button>
 
-            <Typography paragraph color="textPrimary">
+            <Typography paragraph>
                 Adicionalmente, ponemos a su disposición una herramienta de validación que permite verificar el cumplimiento de los esquemas de datos.
             </Typography>
 

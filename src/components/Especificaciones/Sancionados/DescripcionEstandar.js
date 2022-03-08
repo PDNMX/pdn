@@ -1,7 +1,6 @@
-import {Typography} from "@mui/material"
 import React from "react";
+import {Typography, Button} from "@mui/material"
 import withStyles from '@mui/styles/withStyles';
-import Button from '@mui/material/Button';
 
 const styles = theme => ({
     root: {
@@ -16,7 +15,6 @@ const styles = theme => ({
 
 const DescripcionEstandar = props => {
         const {classes} = props;
-
         return (
             <div className={classes.root}>
                 <Typography paragraph >
