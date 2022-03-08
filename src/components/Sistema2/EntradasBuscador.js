@@ -146,13 +146,13 @@ const EntradasBuscador = props => {
                 </Grid>
 
                 <Grid item xs={12} md={6} align="right">
-                    <Button variant="contained" color="secondary"
+                    <Button variant="contained" color="secundario"
                             className={classes.button}
                             onClick={() => limpiarBusqueda()}>
                         Limpiar
                     </Button>
 
-                    <Button variant="contained" color="secondary" className={classes.button} onClick={() => buscar()}>
+                    <Button variant="contained" color="secundario" className={classes.button} onClick={() => buscar()}>
                         Buscar
                     </Button>
                 </Grid>

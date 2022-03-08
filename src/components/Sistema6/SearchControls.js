@@ -4,18 +4,13 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 //import NativeSelect from "@mui/material/NativeSelect";
 //import InputBase from "@mui/material/InputBase";
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
-import Grid from '@mui/material/Grid';
-import TextField from '@mui/material/TextField';
-import Button from "@mui/material/Button";
+import {Box, Grid, Select, MenuItem, TextField, Button } from '@mui/material';
 
 const styles = theme => ({
     root: {
         flexGrow: 1,
     },
     button:{
-        background: '#ffe01b',
         marginTop: theme.spacing(1),
         marginBottom: theme.spacing(2)
     },
@@ -192,7 +187,10 @@ const SearchControls = props => {
                     </Grid>*/}
 
                 <Grid item xs={12} className={classes.item}>
-                    <Button variant="contained" className={classes.button} onClick={props.search}>Buscar</Button>
+                    <Box m={0} sx={{ display: 'flex', justifyContent: 'flex-end'}}>
+                    <Button variant="contained" color="secundario" className={classes.button} onClick={props.search}>Buscar</Button>
+                    </Box>
+
                 </Grid>
             </Grid>
         </div>

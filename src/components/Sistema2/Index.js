@@ -6,9 +6,9 @@ import HeaderV2 from '../HomeV2/HeaderV2';
 import classNames from 'classnames';
 import Dashboard from "./Dashboard/Dashboard";
 import BuscadorParticularesSancionados from '../Sancionados/Particulares/BuscadorParticularesSancionados';
-import img1 from "../../assets/img/servidores_intervienen_contratacion.svg";
-import img2 from "../../assets/img/servidores_particulares_inhabilitados.svg";
-import img3 from "../../assets/img/servidores_visualizaciones.svg";
+import img1 from "../../assets/rediseno/svg_iconos_azul/SVG/s2_01.svg";
+import img2 from "../../assets/rediseno/svg_iconos_azul/SVG/s2_02.svg";
+import img3 from "../../assets/rediseno/svg_iconos_azul/SVG/s2_03.svg";
 import bgimg from "../../assets/rediseno/fondo_cruces.png";
 import pdnRoutes from "../../routes/index";
 
