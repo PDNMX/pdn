@@ -71,6 +71,12 @@ function getSorting(order, orderBy) {
         : (a, b) => (a[orderBy] < b[orderBy] ? -1 : 1);
 }
 
+const CustomTypography = withStyles(theme => ({
+    root: {
+        color: theme.palette.text.main
+    }
+}))(Typography);
+
 class BuscadorS2 extends React.Component {
     constructor(props) {
         super(props);
@@ -359,20 +365,20 @@ class BuscadorS2 extends React.Component {
             <Paper className={classes.paper} elevation={15}>
                 {/* Información de la búsqueda */}
                 <Box p={1}>
-                    <Typography paragraph>
+                    <CustomTypography paragraph>
                         <b>Aquí encontrarás la siguiente información:</b>
-                    </Typography>
+                    </CustomTypography>
                         
                     <ul className={classes.ul}>
                         <li className={classes.li}>
-                            <Typography color="textPrimary" display='inline'>
+                            <CustomTypography color="textPrimary" display='inline'>
                                 Consulta los servidores que intervienen en procesos de contratación por institución, a nivel federal y/o estatal
-                            </Typography>
+                            </CustomTypography>
                         </li>
                         <li className={classes.li}>
-                            <Typography color="textPrimary" display='inline'>
+                            <CustomTypography color="textPrimary" display='inline'>
                                 Obtén datos del servidor como: nombre, puesto, institución
-                            </Typography>
+                            </CustomTypography>
                         </li>
                     </ul>
                 </Box>
