@@ -1,13 +1,19 @@
 import React from "react";
 import { Divider, Grid } from "@mui/material";
 import withStyles from '@mui/styles/withStyles';
-import Header from "./Header/Header";
 import Intro from "./Intro";
 import Licencia from '../Licencia';
 import Herramientas from "../Herramientas";
-import Footer from "../../Home/Footer";
+import bgimg from "../../../assets/rediseno/fondo_cruces.png";
 const styles = theme => ({
-    root: {flexGrow: 1},
+    root: {
+        flexGrow: 1,
+        backgroundColor: theme.palette.primario.main,
+        backgroundImage: `url(${bgimg})`,
+        backgroundRepeat: "repeat",
+        backgroundPosition: 'fixed',
+        color: '#f2f2f2'
+    },
     rootItem: {
         maxWidth: 1200,
         padding: theme.spacing(1)
@@ -22,7 +28,6 @@ const Index = props => {
     const {classes}= props;
     return (
         <div className={classes.root}>
-            <Header/>
             <Grid container justifyContent="center">
                 <Grid item xs={12} className={classes.rootItem}>
                     <Intro/>
@@ -32,8 +37,6 @@ const Index = props => {
                     <Herramientas/>
                 </Grid>
             </Grid>
-            <Footer/>
-
         </div>
     );
 }

@@ -25,7 +25,7 @@ const styles = theme => ({
         marginTop: theme.spacing(1),
         marginRight: theme.spacing(1),
         marginBottom: theme.spacing(2),
-        background: '#ffe01b',//'#fecb6e'
+        //background: '#ffe01b',//'#fecb6e'
     },
     ul: {
         listStyle: 'none',
@@ -95,6 +95,7 @@ const Intro = props => {
             </Typography>
 
             <Button href="https://standard.open-contracting.org/latest/es/"
+                    color="secundario"
                     className={classes.button}
                     target="_blank" variant="contained">
                 Conoce más
@@ -191,6 +192,7 @@ const Intro = props => {
             <Button
                 className={classes.button}
                 variant="contained"
+                color="secundario"
                 href="https://standard.open-contracting.org/latest/es/"
                 target="_blank">
                 Estándar OCDS
@@ -239,6 +241,7 @@ const Intro = props => {
             <Button
                 variant="contained"
                 className={classes.button}
+                color="secundario"
                 href="https://standard.open-contracting.org/latest/es/guidance/map/extensions/"
                 target="_blank"
             >
@@ -269,7 +272,7 @@ const Intro = props => {
             </Typography>
 
             <Button href="https://drive.google.com/file/d/1z5uKwMozYMtVPBRcmKJfoZasI417O-p9/view?usp=sharing"
-                    target="_blank" className={classes.button} variant="contained">
+                    target="_blank" className={classes.button} variant="contained" color="secundario">
                 Conoce más
             </Button>
 
@@ -283,7 +286,7 @@ const Intro = props => {
 
             <Button
                 href="https://standard.open-contracting.org/schema/1__1__5/release-schema.json"
-                target="_blank" className={classes.button} variant="contained"
+                target="_blank" className={classes.button} variant="contained" color="secundario"
             >
                 Conoce más
             </Button>

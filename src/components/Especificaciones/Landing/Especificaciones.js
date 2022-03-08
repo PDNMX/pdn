@@ -2,8 +2,6 @@ import React from 'react';
 import Grid from '@mui/material/Grid';
 import withStyles from '@mui/styles/withStyles';
 import {Link} from 'react-router-dom';
-import Footer from "../../Home/Footer";
-import Header from "./Header/Header";
 import Typography from "@mui/material/Typography";
 import S1 from '../../../assets/iconos_azul/1_icono.svg';
 import S2 from '../../../assets/iconos_azul/2_icono.svg';
@@ -64,7 +62,6 @@ const Especificaciones = props => {
 
     return (
         <div className={classes.root}>
-            <Header/>
             <Grid container spacing={0} justifyContent="center" style={{background: '#fff'}}>
                 <Grid item xs={12} className={classes.rootItem}>
 
@@ -115,7 +112,6 @@ const Especificaciones = props => {
                 </Grid>
             </Grid>
 
-            <Footer/>
         </div>
     );
 }
