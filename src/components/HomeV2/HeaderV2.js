@@ -1,7 +1,7 @@
 import React from 'react';
 import {withStyles} from '@mui/styles';
 import Box from "@mui/material/Box";
-import {Breadcrumbs, Typography,Link} from "@mui/material";
+import {Breadcrumbs, Typography, Link} from "@mui/material";
 import Grid from "@mui/material/Grid";
 import {Link as RouterLink} from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
@@ -26,34 +26,34 @@ const styles = theme => ({
         maxWidth: 1200,
     },
     root: {
-        flexGrow:1,
-        backgroundColor: theme.palette.background.opaque+'80', // 80 hex => 128 dec => 50%
+        flexGrow: 1,
+        backgroundColor: theme.palette.background.opaque + '80', // 80 hex => 128 dec => 50%
     },
-    containerName:{
+    containerName: {
         marginBottom: theme.spacing(4),
         maxWidth: 1200
     }
 });
 
 function HeaderV2(props) {
-   const {classes, section} = props;
+    const {classes, section} = props;
 
     return (
         <div className={classes.root}>
             <Grid container spacing={0} justifyContent='center'>
                 <Grid item xs={12} className={classes.breadcrumItem}>
-                    <Breadcrumbs aria-label="breadcrumb" sx={{color:'#ffffff', paddingTop: '10px'}}>
+                    <Breadcrumbs aria-label="breadcrumb" sx={{color: '#ffffff', paddingTop: '10px'}}>
                         <Link component={RouterLink}
                               underline="hover"
-                              sx={{ display: 'flex', alignItems: 'center' }}
+                              sx={{display: 'flex', alignItems: 'center'}}
                               color='#ffffff' to="/">
-                            <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+                            <HomeIcon sx={{mr: 0.5}} fontSize="inherit"/>
                             Plataforma Digital Nacional
                         </Link>
 
                         <Typography color={section.color}
-                                    sx={{ display: 'flex', alignItems: 'center' }}>
-                            <GrainIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+                                    sx={{display: 'flex', alignItems: 'center'}}>
+                            <GrainIcon sx={{mr: 0.5}} fontSize="inherit"/>
                             {section.shortName}
                         </Typography>
                     </Breadcrumbs>
@@ -68,16 +68,22 @@ function HeaderV2(props) {
                 }}
             >
                 <Box className={classes.containerName}
-                    sx={{
-                        display: 'flex',
-                        justifyContent: 'space-evenly'
-                    }}
+                     sx={{
+                         display: 'flex',
+                         justifyContent: 'space-evenly'
+                     }}
                 >
-                    {section.icon && <img src={section.icon} alt="PDN" className={classes.icon}/> }
+                    {section.icon && <img src={section.icon} alt="PDN" className={classes.icon}/>}
 
                     <Typography variant="h3" paragraph color={`${section.color}`} style={{fontWeight: 100}}>
-                        {section.name}
+                        <p>{section.name}</p>
+                        {section.subName && <Typography variant={"h5"}>
+                            {section.subName}
+                        </Typography>}
+
+
                     </Typography>
+
                 </Box>
             </Box>
         </div>

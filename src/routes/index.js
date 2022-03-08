@@ -179,7 +179,12 @@ const pdnRoutes = [
 		exact: true,
 		path: '/especificaciones/s3',
 		component: EspecificacionesSancionados,
-		private: false
+		private: false,
+		name: "Sistema nacional de servidores públicos y particulares sancionados",
+		subName:"Especificaciones técnicas",
+		shortName: "Especificaciones técnicas S3",
+		color: "#9085da",
+		icon: IconS3,
 	},
 	{
 		exact: true,

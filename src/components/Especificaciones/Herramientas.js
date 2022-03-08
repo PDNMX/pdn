@@ -12,7 +12,6 @@ const styles = theme => ({
     ul: {
         listStyle: 'none',
         paddingLeft: '20px',
-        color: theme.palette.text.primary
     },
     li: {
         "&:before":{
@@ -33,9 +32,9 @@ class Herramientas extends React.Component {
         const {classes} = this.props;
         return (
             <div className={classes.root}>
-                <Typography variant="h4" paragraph color="textPrimary">Herramientas para desarrollo web</Typography>
+                <Typography variant="h4" paragraph >Herramientas para desarrollo web</Typography>
 
-                <Typography paragraph color="textPrimary">
+                <Typography paragraph>
                     La interconexión entre los sistemas de información de las Instituciones y la PDN se establecerá a
                     través de Internet, usando servicios web o APIs con arquitectura REST (REpresentational State Transfer).
                     REST es un modelo ampliamente usado para el desarrollo de sistemas Web.

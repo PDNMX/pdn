@@ -10,7 +10,6 @@ const styles = theme => ({
     ul: {
         listStyle: 'none',
         paddingLeft: '20px',
-        color: theme.palette.text.primary
     },
     li: {
         "&:before":{
@@ -34,9 +33,9 @@ class Licencia extends React.Component{
         return(
             <div className={classes.root}>
 
-                <Typography variant="h4" paragraph color="textPrimary">Licencia</Typography>
+                <Typography variant="h4" paragraph >Licencia</Typography>
 
-                <Typography paragraph variant="h6" color="textPrimary">
+                <Typography paragraph variant="h6" >
                     Usted es libre de:
                 </Typography>
 
@@ -47,11 +46,11 @@ class Licencia extends React.Component{
                         <Typography paragraph display='inline'><b>Adaptar</b> &mdash; remezclar, transformar y construir a partir del material </Typography> </li>
                 </ul>
                 
-                <Typography paragraph color="textPrimary">
+                <Typography paragraph >
                     La licenciante no puede revocar estas libertades en tanto usted siga los términos de la licencia.
                 </Typography>
 
-                <Typography paragraph variant="h6" color="textPrimary">
+                <Typography paragraph variant="h6" >
                     Bajo los siguientes términos:
                 </Typography>
 
@@ -66,13 +65,13 @@ class Licencia extends React.Component{
                         <Typography paragraph display='inline'><b>No hay reestricciones adicionales</b> &mdash; No puede aplicar términos legales ni medidas tecnológicas que restrinjan legalmente a otras a hacer cualquier uso permitido por la licencia.</Typography></li>
                 </ul>
 
-                <Typography paragraph variant="h6" color="textPrimary">
+                <Typography paragraph variant="h6" >
                     Avisos:
                 </Typography>
-                <Typography paragraph color="textPrimary">
+                <Typography paragraph >
                     No tiene que cumplir con la licencia para elementos del material en el dominio público o cuando su uso esté permitido por una excepción o limitación aplicable.
                 </Typography>
-                <Typography paragraph color="textPrimary">
+                <Typography paragraph >
                     No se dan garantías. La licencia podría no darle todos los permisos que necesita para el uso que tenga previsto. Por ejemplo, otros derechos como publicidad, privacidad, o derechos morales pueden limitar la forma en que utilice el material.
                 </Typography>
             </div>
