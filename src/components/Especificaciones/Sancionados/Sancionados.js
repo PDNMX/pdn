@@ -6,8 +6,8 @@ import Licencia from "../Licencia";
 import Implementacion from "./Implementacion";
 import {Typography} from "@mui/material"
 import Herramientas from "../Herramientas";
-import {Button, Paper, Box,Grid, Divider} from '@mui/material';
-import {Link} from "react-router-dom";
+import {Button, Paper, Box,Grid, Divider, Link} from '@mui/material';
+import {Link as RouterLink} from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
 import GetAppIcon from "@mui/icons-material/GetApp";
 import pdnRoutes from "../../../routes";
@@ -81,6 +81,9 @@ const styles = theme => ({
     },
     box: {
         maxWidth: '900px', paddingTop: '50px', paddingBottom: '50px'
+    },
+    link:{
+        color: theme.palette.secundario.main
     }
 });
 
@@ -138,22 +141,22 @@ const Sancionados = props => {
 
                             <ul className={classes.ul}>
                                 <li className={classes.li}>
-                                    <a
+                                    <Link
                                         href='https://www.plataformadigitalnacional.org/oas/ui/?urls.primaryName=S3%20-%20Particulares%20Sancionados'
                                         target='_blank'
                                         rel="noopener noreferrer"
                                     >
                                         <b>Particulares</b>
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li className={classes.li}>
-                                    <a
+                                    <Link
                                         href='https://www.plataformadigitalnacional.org/oas/ui/?urls.primaryName=S3%20-%20Servidores%20Sancionados'
                                         target='_blank'
                                         rel="noopener noreferrer"
                                     >
                                         <b>Servidores públicos</b>
-                                    </a>
+                                    </Link>
                                 </li>
                             </ul>
                             <Typography variant='h5' paragraph>
@@ -188,8 +191,8 @@ const Sancionados = props => {
                                 Particulares Sancionados
                             </Button>
                             <Typography paragraph>
-                                Adicionalmente, ponemos a disposición un <Link to="/validador" className={classes.link}><Typography
-                                component={'span'}><b>Validador</b> </Typography></Link>
+                                Adicionalmente, ponemos a disposición un <RouterLink to="/validador" className={classes.link}><Typography
+                                component={'span'}><b>Validador</b> </Typography></RouterLink>
                                 que sirve de apoyo para la validación del cumplimiento de los esquemas de datos de las
                                 diferentes API's.
                             </Typography>

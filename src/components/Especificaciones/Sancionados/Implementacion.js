@@ -1,7 +1,7 @@
 import React from 'react';
 import {withStyles} from '@mui/styles';
 import PropTypes from 'prop-types';
-import {Typography} from "@mui/material"
+import {Typography, Link} from "@mui/material"
 import Diagrama from "../../../assets/Diagrama_de_comunicacion_API.svg";
 import Grid from '@mui/material/Grid';
 
@@ -52,10 +52,10 @@ const Implementacion = props => {
                             <Typography paragraph display='inline'>
 
                                 <b>Diagnóstico:</b> Revisar y comparar los datos contenidos en su base de datos con los
-                                especificados en el <a target={'_blank'}
+                                especificados en el <Link target={'_blank'}
                                                        href={'https://docs.google.com/spreadsheets/d/1wVaVFEJQloanwasIAASFiKGC8mbNEmeijK0F58PxgCA/edit?usp=sharing'}
                                                        rel="noopener noreferrer">Diccionario de Datos del Formato de
-                                Datos de Servidores Públicos y Particulares Sancionados</a>, es importante contar con
+                                Datos de Servidores Públicos y Particulares Sancionados</Link>, es importante contar con
                                 todos los datos solicitados en el nuevo formato, sin embargo, esto no imposibilita
                                 realizar pruebas de adopción del estándar usando los datos con los que se cuenta.
 
