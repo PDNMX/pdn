@@ -10,8 +10,8 @@ import {Link} from "react-router-dom";
 import Diagrama from "../../assets/Diagrama_de_comunicacion_API.svg";
 import Button from '@mui/material/Button';
 import Icon from '@mui/material/Icon';
-import IconButton from "@mui/material/IconButton";
-import GetAppIcon from "@mui/icons-material/GetApp";
+//import IconButton from "@mui/material/IconButton";
+//import GetAppIcon from "@mui/icons-material/GetApp";
 
 const Accordion = withStyles({
     root: {
@@ -692,7 +692,9 @@ export default function CustomizedExpansionPanels() {
                             electrónico para que realice los ajustes necesarios y solicite una nueva revisión al equipo de la PDN
                         </Typography>
                         <Typography paragraph color="textPrimary">
-                            Para iniciar el proceso o protocolo de conexión, es necesario llenar el formato de <b>Solicitud de conexión</b> correctamente y enviarlo al correo electrónico: pdn@sesna.gob.mx.
+                            Para iniciar el proceso o protocolo de conexión, es necesario llenar el formato de <MuiLink href='https://drive.google.com/file/d/1ANQG3f1Q7aO4soQR9__2FvHEi_-UwvBe/view' target="_blank">
+                            Solicitud de conexión
+                            </MuiLink> correctamente y enviarlo al correo electrónico: pdn@sesna.gob.mx.
                         </Typography>
                         <Typography paragraph color="textPrimary">
                             Adicionalmente, ponemos a disposición un <Link to="/validador" className={classes.link}><Typography component={'span'}>Validador </Typography></Link>
