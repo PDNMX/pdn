@@ -18,6 +18,10 @@ const styles = theme => ({
         backgroundImage: `url(${bgimg})`,
         backgroundRepeat: "repeat",
     },
+    container: {
+        paddingTop: 90,
+        paddingBottom: 90
+    },
     tabText: {
         //color: theme.palette.secondary.contrastText
     },
@@ -27,11 +31,6 @@ const styles = theme => ({
     contentsSection: {
         color: theme.palette.secondary.contrastText,
         maxWidth: '1200px',
-        //marginTop : theme.spacing(7),
-    },
-    bgContainer: {
-        // backgroundColor: theme.palette.pestanas.bg,
-        paddingTop: theme.spacing(8),
     },
     tab: {
         color: theme.palette.S2.color,
@@ -71,7 +70,6 @@ const styles = theme => ({
     }
 });
 
-
 const TabContents = props => {
     const {index} = props;
     switch (index) {
@@ -96,7 +94,7 @@ const Index = props => {
             <HeaderV2 section = {system}/>
 
             {/* TABS */}
-            <Grid container spacing={0} justifyContent="center" className={classes.bgContainer}>
+            <Grid container spacing={0} justifyContent="center" className={classes.container}>
                 <Grid item xs={12} className={classes.tabsSection}>
                     <Grid container spacing={0}>
                         <Grid item md={4} xs={12}
@@ -145,12 +143,10 @@ const Index = props => {
                     </Grid>
                 </Grid>
 
-            </Grid>
-
-            <Grid container justifyContent='center' spacing={0}>
                 <Grid item xs={12} className={classes.contentsSection}>
                         <TabContents index={contentId}/>
                 </Grid>
+
             </Grid>
         </div>
     );

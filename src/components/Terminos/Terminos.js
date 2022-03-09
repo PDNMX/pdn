@@ -20,8 +20,8 @@ const styles = theme => ({
         maxWidth: '1200px',
         paddingRight: theme.spacing(2),
         paddingLeft: theme.spacing(2),
-        paddingBottom: 100,
-        paddingTop: 100
+        paddingBottom: 90,
+        paddingTop: 90
     },
     ul: {
         listStyle: 'none',
@@ -65,7 +65,7 @@ const Terminos = props => {
             <HeaderV2 section={section}/>
             <Grid container spacing={0} justifyContent='center'>
                 <Grid item xs={12} className={classes.section}>
-                    <Paper className={classes.paper}>
+                    <Paper className={classes.paper} elevation={15}>
                         <Box className={classes.box}>
                             <Typography variant='h5' paragraph>
                                 TÉRMINOS Y CONDICIONES DE USO DE LA PLATAFORMA DIGITAL NACIONAL

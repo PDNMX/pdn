@@ -117,7 +117,10 @@ const pdnRoutes = [
 		exact: true,
 		path: '/especificaciones',
 		component: Especificaciones,
-		private: false
+		private: false,
+		name: "Especificaciones técnicas",
+		shortName: "Especificaciones",
+		color: "#f2f2f2",
 	},
 	{
 		exact: true,

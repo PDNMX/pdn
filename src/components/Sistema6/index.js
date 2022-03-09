@@ -25,8 +25,16 @@ const styles = theme => ({
         backgroundImage: `url(${bgimg})`,
         backgroundRepeat: "repeat",
     },
-    item:{
+    tabContainer: {
+        paddingTop: 90,
+        paddingBottom: 90
+    },
+    tabItem: {
         maxWidth: 1200,
+    },
+    item: {
+        maxWidth: 1200,
+        paddingTop: theme.spacing(8),
         paddingBottom: theme.spacing(8),
         // overflow: "auto"
     },
@@ -43,7 +51,7 @@ const styles = theme => ({
             transition: 'background 0.3s ease',
         }
     },
-    selectedTab:{
+    selectedTab: {
         color: theme.palette.S6.color,
         //backgroundColor: theme.palette.background.opaque,
         borderStyle: 'solid',
@@ -65,9 +73,6 @@ const styles = theme => ({
         margin: 0,
         padding: 0,
         paddingRight: '8px'
-    },
-    tabContainer: {
-        paddingTop: theme.spacing(8),
     },
     paper1: {
         backgroundColor: theme.palette.background.opaque,
@@ -102,7 +107,6 @@ const Index = props => {
         <HeaderV2 section = {system}/>
         <Grid container spacing={0} justifyContent="center" className={classes.tabContainer}>
             <Grid item xs={12} style={{padding:0, maxWidth: 1200}}>
-
                 <Grid container spacing={0}>
                     <Grid item xs={12} sm={12} md={6} lg={6} xl={6}
                           onClick={() => handleSelectTab(0)}
@@ -133,13 +137,10 @@ const Index = props => {
 
                     </Grid>
                 </Grid>
-
             </Grid>
-        </Grid>
 
-        {selectedTab === 0?
-            <Grid container spacing={0} justifyContent="center">
-                <Grid item xs={12} className={classes.item} style={{"overflow":"auto"}}>
+            {selectedTab === 0?
+                <Grid item xs={12} className={classes.tabItem} style={{"overflow":"auto"}}>
                     <Paper className={classes.paper1} elevation={15}>
                         <Box paddingLeft={1} paddingRight={1} paddingBottom={3}>
                             <SelectSupplier dataSupplier={dataSupplier} setDataSupplier={setDataSupplier}/>
@@ -148,10 +149,8 @@ const Index = props => {
                         <Busqueda dataSupplier={dataSupplier}/>
                     </Paper>
                 </Grid>
-            </Grid>
-            :
-            <Grid container spacing={0} justifyContent="center">
-                <Grid item xs={12} className={classes.item}>
+                :
+                <Grid item xs={12} className={classes.tabItem}>
                     <Paper className={classes.paper2} elevation={15}>
                         <Box paddingTop={1} paddingBottom={3}>
                             <SelectSupplier dataSupplier={dataSupplier} setDataSupplier={setDataSupplier}/>
@@ -167,8 +166,8 @@ const Index = props => {
                         <Top dataSupplier={dataSupplier}/>
                     </Paper>
                 </Grid>
-            </Grid>
-        }
+            }
+        </Grid>
 
         <Grid container spacing={0} justifyContent="center" style={{backgroundColor: "#34b3eb"}}>
             <Grid item xs={12} className={classes.item}>

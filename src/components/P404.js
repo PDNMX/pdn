@@ -1,89 +1,68 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import Typography  from '@mui/material/Typography';
+import {Typography, Grid, Box, Button, Paper}  from '@mui/material';
 import withStyles from '@mui/styles/withStyles';
-import Header from './Compartidos/BarraLogoMenu';
-import Button from '@mui/material/Button';
-import Footer from './Home/Footer';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box';
+import bgimg from "../assets/rediseno/fondo_cruces.png";
 
 const styles = theme => ({
     root :{
         flexGrow: 1,
-        //backgroundColor: '#e5e5e5'
-    },
-    box:{
-        display: "flex",
-        justifyContent: "center",
-        marginTop: theme.spacing(14) ,
-        paddingBottom: theme.spacing(14)
-    },
-    paper:{
-        //minHeight: '800px',
-        //maxWidth: '1024px',
-        padding: theme.spacing(4),
-        margin: theme.spacing(1)
+        backgroundColor: theme.palette.primario.main,
+        backgroundImage: `url(${bgimg})`,
+        backgroundRepeat: "repeat",
+        backgroundPosition: 'fixed',
+        color: '#f2f2f2'
     },
     button: {
-        background: '#ffe01b',
+        //background: '#ffe01b',
         marginTop: theme.spacing(1)
     },
-    links: {
-        backgroundColor: theme.palette.greyColor
-    },
-    section: {
-        maxWidth: '1024px'
-    },
-    item3:{
+    item: {
         maxWidth: 1200,
+        paddingTop: 90,
+        paddingBottom: 90
     },
-    link: {
-        textDecoration: "none",
-        color: "inherit"
+    paper: {
+        backgroundColor: theme.palette.background.opaque,
+        padding: theme.spacing(2),
+        color: theme.palette.primario.contrastText,
+        borderStyle: 'solid',
+        borderWidth: 1,
+        borderColor: theme.palette.secundario.main,
+        borderRadius: '10px 10px 10px 10px',
+        display: 'flex',
+        justifyContent: "center"
+    },
+    box: {
+        maxWidth: '900px', paddingTop: '50px', paddingBottom: '50px'
     }
 });
 
-class P404 extends React.Component {
-    render() {
-        const { classes } = this.props;
-        return (
-            <div className={classes.root}>
-                <Header/>
+const P404 = props => {
+    const { classes } = props;
+    return (
+        <div className={classes.root}>
 
-                <Grid container spacing={0} className="breadcrumb" justifyContent='center'>
-                    <Grid item xs={12} className={classes.item3}>
-                        <ul>
-                            <li>
-                                <Link className={classes.link} to='/'>Plataforma Digital Nacional</Link>
-                            </li>
-                            <li>
+            <Grid container spacing={0} justifyContent="center">
+                <Grid item xs={12} className={classes.item}>
+                    <Paper className={classes.paper} elevation={15}>
+                        <Box className={classes.box}>
+                            <Typography variant="h1" paragraph>
                                 404
-                            </li>
-                        </ul>
-                    </Grid>
-                </Grid>
-
-                <Box className={classes.box}>
-                    <Paper className={classes.paper} elevation={3}>
-                        <Typography variant="h1" paragraph>
-                            404
-                        </Typography>
-                        <Typography variant="h4" paragraph>
-                            No encontramos lo que buscas
-                        </Typography>
-                        <Button className={classes.button} component={Link}
-                                variant="contained" to="/">
-                            Regresar
-                        </Button>
+                            </Typography>
+                            <Typography variant="h4" paragraph>
+                                No encontramos lo que buscas
+                            </Typography>
+                            <Button className={classes.button} component={Link}
+                                    variant="contained" to="/">
+                                Regresar
+                            </Button>
+                        </Box>
                     </Paper>
-                </Box>
-
-                <Footer/>
-            </div>
-        );
-    }
+                </Grid>
+            </Grid>
+        </div>
+    );
 }
 
 export default withStyles(styles)(P404);

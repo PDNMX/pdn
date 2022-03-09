@@ -25,15 +25,12 @@ const styles = theme => ({
     fullList: {
         width: 'auto',
     },
-    item:{
+    item: {
         maxWidth: 1200,
-        paddingRight: theme.spacing(2),
-        paddingLeft: theme.spacing(2)
-    },
-    container:{
-        //background: "#fff",
-        paddingTop: theme.spacing(4),
-        paddingBottom: theme.spacing(4)
+        paddingRight: theme.spacing(1),
+        paddingLeft: theme.spacing(1),
+        paddingTop: 90,
+        paddingBottom: 90
     },
     divider:{
         marginBottom: theme.spacing(2)
@@ -83,7 +80,7 @@ const ServidoresIntervienen = props => {
     return (
         <div className={classes.root}>
             <HeaderV2 section={section}/>
-            <Grid container spacing={0} justifyContent='center' className={classes.container}>
+            <Grid container spacing={0} justifyContent='center'>
                 <Grid item xs={12} className={classes.item}>
                     <Paper className={classes.paper}>
                         <Box className={classes.box}>
