@@ -51,6 +51,16 @@ function HeaderV2(props) {
                             Plataforma Digital Nacional
                         </Link>
 
+                        {section.path.includes('/especificaciones/') &&
+                            <Link component={RouterLink}
+                                  underline="hover"
+                                  sx={{display: 'flex', alignItems: 'center'}}
+                                  color='#ffffff' to="/especificaciones">
+                                <GrainIcon sx={{mr: 0.5}} fontSize="inherit"/>
+                                Especificaciones
+                            </Link>
+                        }
+
                         <Typography color={section.color}
                                     sx={{display: 'flex', alignItems: 'center'}}>
                             <GrainIcon sx={{mr: 0.5}} fontSize="inherit"/>

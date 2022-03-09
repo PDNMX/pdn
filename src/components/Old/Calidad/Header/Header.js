@@ -3,8 +3,8 @@ import withStyles from '@mui/styles/withStyles';
 import Grid from '@mui/material/Grid';
 import {Link} from 'react-router-dom';
 import {Typography} from "@mui/material"
-import BarraLogoMenu from "../../Compartidos/BarraLogoMenu";
-import Logo from '../../../assets/img/logocalidad_datos.svg';
+import BarraLogoMenu from "../../../Compartidos/BarraLogoMenu";
+import Logo from '../../../../assets/img/logocalidad_datos.svg';
 import Particles from 'react-particles-js';
 import {useTheme} from "@emotion/react";
 import useMediaQuery from "@mui/material/useMediaQuery";

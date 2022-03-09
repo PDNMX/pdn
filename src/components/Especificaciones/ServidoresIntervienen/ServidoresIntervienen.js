@@ -7,6 +7,8 @@ import Implementacion from "./Implementacion";
 import Herramientas from "../Herramientas";
 import ProcoloConexion from "../ProcoloConexion";
 import bgimg from "../../../assets/rediseno/fondo_cruces.png";
+import pdnRoutes from "../../../routes";
+import HeaderV2 from "../../HomeV2/HeaderV2";
 
 const styles = theme => ({
     root: {
@@ -75,11 +77,12 @@ const styles = theme => ({
 });
 
 const ServidoresIntervienen = props => {
-
     const { classes } = props;
+    const section = pdnRoutes.find(route => route.path === '/especificaciones/s2');
 
     return (
         <div className={classes.root}>
+            <HeaderV2 section={section}/>
             <Grid container spacing={0} justifyContent='center' className={classes.container}>
                 <Grid item xs={12} className={classes.item}>
                     <Paper className={classes.paper}>

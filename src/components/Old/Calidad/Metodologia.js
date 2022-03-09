@@ -3,7 +3,7 @@ import withStyles from '@mui/styles/withStyles';
 import Header from "./Header/Header";
 import Grid from '@mui/material/Grid';
 import PropTypes from 'prop-types';
-import Footer from "../Home/Footer";
+import Footer from "../../Home/Footer";
 import Accordions from "./Accordions";
 import Disclaimer from "./Disclaimer";
 

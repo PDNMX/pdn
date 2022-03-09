@@ -2,24 +2,23 @@ import Home from '../components/HomeV2/Home';
 import About from '../components/AboutV2/About';
 import Terminos from '../components/Terminos/Terminos';
 import Faq from '../components/FAQ/index';
-import Datos from '../components/CatalogoDatos/Datos';
+import HelpDesk from '../components/HelpDesk/HelpDesk';
+
+import Sistema2 from '../components/Sistema2/Index';
 import Sancionados from '../components/Sancionados/Index';
-import Servidores from '../components/Sistema2/Index';
-import DashboardSancionados from '../components/Sancionados/dashboard/Servidores/Dashboard';
-import DashboardParticularesSancionados from '../components/Sancionados/dashboard/Particulares/Dashboard';
+import Sistema4 from '../components/Sistema4';
+import Sistema5 from '../components/Sistema5';
 import Sistema6 from '../components/Sistema6/index';
+
 import Validador from '../components/Validador/index';
 import Especificaciones from '../components/Especificaciones/Landing/Especificaciones';
 import DeclaracionesEspecificaciones from '../components/Especificaciones/Declaraciones/Declaraciones';
 import EspecificacionesSancionados from '../components/Especificaciones/Sancionados/Sancionados';
-import EspecificacionesServidoresIntervienen from '../components/Especificaciones/ServidoresIntervienen/ServidoresIntervienen';
-import Sistema4 from '../components/Sistema4';
-import Sistema5 from '../components/Sistema5';
+import SpecsS2 from '../components/Especificaciones/ServidoresIntervienen/ServidoresIntervienen';
+import SpecsS6 from '../components/Especificaciones/Contrataciones/index';
 
-import HelpDesk from '../components/HelpDesk/HelpDesk';
 // import DeclaracionesS1 from '../components/Declaraciones';
 import DeclaracionesS1v2 from '../components/Declaraciones2';
-import SpecsS6 from '../components/Especificaciones/Contrataciones/index';
 
 import IconS2 from "../assets/rediseno/ico_sistemas/ico_s2_color.svg";
 import IconS3 from "../assets/rediseno/ico_sistemas/ico_s3_color.svg";
@@ -57,9 +56,9 @@ const pdnRoutes = [
 	{
 		exact: true,
 		path: '/servidores',
-		component: Servidores,
+		component: Sistema2,
 		private: false,
-		name: "Sistema de los servidores públicos que intervengan en procedimientos de contrataciones pública",
+		name: "Sistema de los servidores públicos que intervengan en procedimientos de contrataciones públicas",
 		shortName: "Sistema de Servidores Públicos en contrataciones",
 		color: "#b25fac",
 		icon: IconS2,
@@ -116,49 +115,6 @@ const pdnRoutes = [
 	},
 	{
 		exact: true,
-		path: '/about',
-		component: About,
-		private: false,
-		name: "¿Qué es la Plataforma Digital Nacional?",
-		shortName: "¿Qué es la PDN?",
-		color: "#f2f2f2",
-	},
-	{
-		exact: true,
-		path: '/terminos',
-		component: Terminos,
-		private: false
-	},
-	{
-		exact: true,
-		path: '/faq',
-		component: Faq,
-		private: false,
-		name: "Preguntas frecuentes",
-		shortName: "FAQ",
-		color: "#f2f2f2",
-	},
-	{
-		exact: true,
-		path: '/CatalogoDatos',
-		component: Datos,
-		private: false
-	},
-
-	{
-		exact: true,
-		path: '/sancionados/dashboard',
-		component: DashboardSancionados,
-		private: false
-	},
-	{
-		exact: true,
-		path: '/sancionados/dashboardParticulares',
-		component: DashboardParticularesSancionados,
-		private: false
-	},
-	{
-		exact: true,
 		path: '/especificaciones',
 		component: Especificaciones,
 		private: false
@@ -172,8 +128,13 @@ const pdnRoutes = [
 	{
 		exact: true,
 		path: '/especificaciones/s2',
-		component: EspecificacionesServidoresIntervienen,
-		private: false
+		component: SpecsS2,
+		private: false,
+		name: "Sistema de los servidores públicos que intervengan en procedimientos de contrataciones públicas",
+		subName:"Especificaciones técnicas",
+		shortName: "Especificaciones técnicas S2",
+		color: "#B25FAC",
+		icon: IconS2,
 	},
 	{
 		exact: true,
@@ -190,7 +151,39 @@ const pdnRoutes = [
 		exact: true,
 		path: '/especificaciones/s6',
 		component: SpecsS6,
-		private: false
+		private: false,
+		name: "Sistema de información pública de contrataciones",
+		subName:"Especificaciones técnicas",
+		shortName: "Especificaciones técnicas S6",
+		color: "#42A5CC",
+		icon: IconS6,
+	},
+	{
+		exact: true,
+		path: '/about',
+		component: About,
+		private: false,
+		name: "¿Qué es la Plataforma Digital Nacional?",
+		shortName: "¿Qué es la PDN?",
+		color: "#f2f2f2",
+	},
+	{
+		exact: true,
+		path: '/terminos',
+		component: Terminos,
+		private: false,
+		name: "Términos de uso",
+		shortName: "Términos de uso",
+		color: "#f2f2f2",
+	},
+	{
+		exact: true,
+		path: '/faq',
+		component: Faq,
+		private: false,
+		name: "Preguntas frecuentes",
+		shortName: "FAQ",
+		color: "#f2f2f2",
 	},
 	{
 		exact: true,
@@ -202,7 +195,10 @@ const pdnRoutes = [
 		exact: true,
 		path: '/mesa-de-ayuda',
 		component: HelpDesk,
-		private: false
+		private: false,
+		name: "Mesa de ayuda",
+		shortName: "Mesa de ayuda",
+		color: "#f2f2f2",
 	},
 
 ];

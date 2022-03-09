@@ -10,8 +10,8 @@ import {Link} from "react-router-dom";
 import Diagrama from "../../assets/Diagrama_de_comunicacion_API.svg";
 import Button from '@mui/material/Button';
 import Icon from '@mui/material/Icon';
-import IconButton from "@mui/material/IconButton";
-import GetAppIcon from "@mui/icons-material/GetApp";
+//import IconButton from "@mui/material/IconButton";
+//import GetAppIcon from "@mui/icons-material/GetApp";
 
 const Accordion = withStyles({
     root: {
@@ -119,14 +119,14 @@ export default function CustomizedExpansionPanels() {
                             El desarrollo de la PDN considera seis sistemas que contienen datos estratégicos para la lucha contra la corrupción, <b>contemplados en la Ley General del Sistema Nacional Anticorrupción (LGSNA):</b>
                         </Typography>
 
-                                <ul className={classes.ul}>
-                                    <li className={classes.li}><Typography display='inline'> Sistema 1 | Declaraciones patrimonial,  de intereses y constancia de declaración fiscal.</Typography></li>
-                                    <li className={classes.li}><Typography display='inline'> Sistema 2 | Servidores públicos que intervienen en procedimientos de contratación.</Typography></li>
-                                    <li className={classes.li}><Typography display='inline'> Sistema 3 | Servidores públicos y particulares sancionados.</Typography></li>
-                                    <li className={classes.li}><Typography display='inline'> Sistema 4 | Información y comunicación del Sistema Nacional Anticorrupción y el Sistema Nacional de Fiscalización.</Typography></li>
-                                    <li className={classes.li}><Typography display='inline'> Sistema 5 | Denuncias por faltas administrativas y hechos de corrupción.</Typography></li>
-                                    <li className={classes.li}><Typography display='inline'> Sistema 6 | Contrataciones Públicas.</Typography></li>
-                                </ul>
+                        <ul className={classes.ul}>
+                            <li className={classes.li}><Typography display='inline'> Sistema 1 | Declaraciones patrimonial,  de intereses y constancia de declaración fiscal.</Typography></li>
+                            <li className={classes.li}><Typography display='inline'> Sistema 2 | Servidores públicos que intervienen en procedimientos de contratación.</Typography></li>
+                            <li className={classes.li}><Typography display='inline'> Sistema 3 | Servidores públicos y particulares sancionados.</Typography></li>
+                            <li className={classes.li}><Typography display='inline'> Sistema 4 | Información y comunicación del Sistema Nacional Anticorrupción y el Sistema Nacional de Fiscalización.</Typography></li>
+                            <li className={classes.li}><Typography display='inline'> Sistema 5 | Denuncias por faltas administrativas y hechos de corrupción.</Typography></li>
+                            <li className={classes.li}><Typography display='inline'> Sistema 6 | Contrataciones Públicas.</Typography></li>
+                        </ul>
 
                         <Typography paragraph>
                             Es importante señalar que la PDN no es un repositorio ni generadora de los datos de cada sistema, sino que es una plataforma de interoperabilidad.
@@ -134,7 +134,7 @@ export default function CustomizedExpansionPanels() {
 
 
                         <Button  target="_blank" className={classes.button} variant="contained" href='https://drive.google.com/file/d/1wdy8bgX9fn1yRCAWSJMhjeTYKxEOXRQv/view'>
-                             ¿Qué es la PDN?
+                            ¿Qué es la PDN?
                         </Button>
 
                         <Button target="_blank" className={classes.button} variant="contained" href="https://drive.google.com/file/d/1YbkcDrRoscIUJtEiyM55GCliHsW22TkK/view">
@@ -200,27 +200,27 @@ export default function CustomizedExpansionPanels() {
                             </li>
                             <li>
                                 <Typography>
-                                Sistema de los Servidores públicos que intervengan en procedimientos de contrataciones públicas (S2);
+                                    Sistema de los Servidores públicos que intervengan en procedimientos de contrataciones públicas (S2);
                                 </Typography>
                             </li>
                             <li>
                                 <Typography>
-                                Sistema Nacional de Servidores públicos y particulares sancionados (S3);
+                                    Sistema Nacional de Servidores públicos y particulares sancionados (S3);
                                 </Typography>
                             </li>
                             <li>
                                 <Typography>
-                                Sistema de información y comunicación del Sistema Nacional y del Sistema Nacional de Fiscalización (S4);
+                                    Sistema de información y comunicación del Sistema Nacional y del Sistema Nacional de Fiscalización (S4);
                                 </Typography>
                             </li>
                             <li>
                                 <Typography>
-                                Sistema de denuncias públicas de faltas administrativas y hechos de corrupción (S5); y,
+                                    Sistema de denuncias públicas de faltas administrativas y hechos de corrupción (S5); y,
                                 </Typography>
                             </li>
                             <li>
                                 <Typography>
-                                Sistema de Información Pública de Contrataciones (S6).
+                                    Sistema de Información Pública de Contrataciones (S6).
                                 </Typography>
                             </li>
                         </ol>
@@ -238,22 +238,22 @@ export default function CustomizedExpansionPanels() {
                         <ol>
                             <li>
                                 <Typography>
-                                (S1) Sistema de evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal;
+                                    (S1) Sistema de evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal;
                                 </Typography>
                             </li>
                             <li>
                                 <Typography>
-                                (S3) Sistema de servidores públicos y particulares sancionados
+                                    (S3) Sistema de servidores públicos y particulares sancionados
                                 </Typography>
                             </li>
                             <li>
                                 <Typography>
-                                (S6) Servidores Públicos que intervengan en procedimientos para contrataciones públicas;
+                                    (S6) Servidores Públicos que intervengan en procedimientos para contrataciones públicas;
                                 </Typography>
                             </li>
                             <li>
                                 <Typography>
-                                (S5) Sistema de denuncias por hechos de corrupción
+                                    (S5) Sistema de denuncias por hechos de corrupción
                                 </Typography>
                             </li>
                         </ol>
@@ -529,7 +529,7 @@ export default function CustomizedExpansionPanels() {
                                 </Link>
                             </li>
                             <li className={classes.li}>
-                                 <Link to="/intervienen/especificaciones" className={classes.link}>
+                                <Link to="/intervienen/especificaciones" className={classes.link}>
                                     Sistema 2
                                 </Link>
                             </li>

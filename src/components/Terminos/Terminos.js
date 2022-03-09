@@ -3,15 +3,22 @@ import PropTypes from 'prop-types';
 import {Typography} from "@mui/material"
 import Grid from '@mui/material/Grid';
 import withStyles from '@mui/styles/withStyles';
-import Header from "./Header/Header.js";
 //import by from '../../assets/about/by.svg';
 import Link from '@mui/material/Link'
-import Footer from '../Home/Footer';
-import './Terminos.css';
+//import Footer from '../Home/Footer';
+//import './Terminos.css';
+import HeaderV2 from "../HomeV2/HeaderV2";
+import pdnRoutes from "../../routes";
+import bgimg from "../../assets/rediseno/fondo_cruces.png";
 
 const styles = theme => ({
     root: {
-        flexGrow: 1
+        flexGrow: 1,
+        backgroundColor: theme.palette.primario.main,
+        backgroundImage: `url(${bgimg})`,
+        backgroundRepeat: "repeat",
+        backgroundPosition: 'fixed',
+        color: '#f2f2f2'
     },
     section: {
         maxWidth: '1000px',
@@ -20,7 +27,6 @@ const styles = theme => ({
         paddingBottom: 100,
         paddingTop: 100
     },
-
     ul: {
         listStyle: 'none',
         paddingLeft: '20px',
@@ -42,15 +48,16 @@ const styles = theme => ({
 class Terminos extends React.Component {
     render() {
         const {classes} = this.props;
+        const section = pdnRoutes.find(route => route.path === '/terminos');
         return (
             <div className={classes.root}>
-                <Header/>
+                <HeaderV2 section={section}/>
                 <Grid container spacing={0} justifyContent='center'>
                     <Grid item xs={12} className={classes.section}>
-                        <Typography variant='title' className="pdn_term_title">
+                        <Typography variant='title'>
                             TÉRMINOS Y CONDICIONES DE USO DE LA PLATAFORMA DIGITAL NACIONAL
                         </Typography><br/><br/>
-                        <Typography paragraph className="pdn_term_content">
+                        <Typography paragraph>
                             La Plataforma Digital Nacional (PDN) se desarrolla de conformidad con la normatividad
                             vigente:
                         </Typography>
@@ -84,7 +91,7 @@ class Terminos extends React.Component {
                                 </Typography>
                             </li>
                         </ul>
-                        <Typography paragraph className="pdn_term_content">
+                        <Typography paragraph>
                             La PDN está conceptualizada como una Plataforma de interoperabilidad, que integrará y
                             conectará los diversos sistemas<sup>1</sup> que posean datos e información para las
                             autoridades
@@ -98,7 +105,7 @@ class Terminos extends React.Component {
 
                         </Typography>
 
-                        <Typography variant='title' className="pdn_term_subtitle">
+                        <Typography variant='title'>
                             Sobre el uso de plataformadigitalnacional.org<br/>
                             I. Obligaciones del usuario:
                         </Typography>
@@ -189,7 +196,7 @@ class Terminos extends React.Component {
                                 </Typography>
                             </li>
                         </ul>
-                        <Typography variant='title' className="pdn_term_subtitle">
+                        <Typography variant='title'>
                             II. Responsabilidad de los encargados<sup>3</sup>, concentradores<sup>4</sup> y
                             proveedores<sup>5</sup><br/>
                             De acuerdo a lo establecido en las Bases para el Funcionamiento de la Plataforma Digital
@@ -238,7 +245,7 @@ class Terminos extends React.Component {
                                 </Typography>
                             </li>
                         </ul>
-                        <Typography variant='title' className="pdn_term_subtitle">
+                        <Typography variant='title'>
                             III. Es responsabilidad de la Secretaría Ejecutiva del Sistema Nacional Anticorrupción
                             De acuerdo a lo establecido en las Bases para el Funcionamiento de la Plataforma Digital
                             Nacional, es responsabilidad de la SESNA:
@@ -297,7 +304,7 @@ class Terminos extends React.Component {
                                 </Typography>
                             </li>
                         </ul>
-                        <Typography variant='title' className="pdn_term_title">
+                        <Typography variant='title'>
                             CONDICIONES DE USO DE LOS DATOS PÚBLICOS DE LA PLATAFORMA DIGITAL NACIONAL
                         </Typography>
                         <ul className={classes.ul}>
@@ -330,9 +337,9 @@ class Terminos extends React.Component {
                             y respetarlos en términos de las normas relativas a derechos de autor y propiedad
                             industrial.
                         </Typography>
-                        <Typography className="pdn_term_content"><b>Actualización de los términos y
+                        <Typography><b>Actualización de los términos y
                             condiciones:</b></Typography>
-                        <Typography paragraph className="pdn_term_content">
+                        <Typography paragraph>
                             La SESNA cuenta con la facultad de modificar los presentes Términos y Condiciones en
                             cualquier momento a efecto de mejorar tu experiencia en la utilización de la PDN.
                             <br/><br/>
@@ -346,29 +353,29 @@ class Terminos extends React.Component {
                         </Typography>
                         <br/><br/><br/>
                         <hr/>
-                        <Typography className="pdn_nota">
+                        <Typography>
                             <b><sup>1</sup>Sistemas</b>: Los establecidos, de manera enunciativa más no limitativa, de
                             conformidad con lo previsto en el artículo 49 de la Ley General del Sistema Nacional
                             Anticorrupción, los cuales se alimentan de la información de los subsistemas, conjuntos de
                             datos o proveedores, y que en su conjunto conforman la Plataforma Digital Nacional.
                         </Typography>
-                        <Typography className="pdn_nota">
+                        <Typography>
                             <b><sup>2</sup>Ente Público</b>: En términos de lo dispuesto en el artículo 3, fracción X de
                             la Ley General de Responsabilidades Administrativas,
                         </Typography>
-                        <Typography className="pdn_nota">
+                        <Typography>
                             <b><sup>3</sup>Encargados</b>: Toda persona o ente que recibe, ordena o resguarda datos e
                             información en los subsistemas para su integración a los sistemas.
                         </Typography>
-                        <Typography className="pdn_nota">
+                        <Typography>
                             <b><sup>4</sup>Concentradores</b>: Toda persona o ente que recibe, ordena o resguarda datos
                             e información en los conjuntos de datos para su integración a los sistemas.
                         </Typography>
-                        <Typography className="pdn_nota">
+                        <Typography>
                             <b><sup>5</sup>Proveedores</b>: Toda persona o ente que suministra datos o información que
                             será integrada a los sistemas.
                         </Typography>
-                        <Typography className="pdn_nota">
+                        <Typography>
                             <b><sup>6</sup>Subsistemas</b>: Conjuntos de datos e información concentrados, resguardados,
                             administrados y actualizados por los encargados que alimentan a los sistemas, y que
                             contendrán la información que establezca la SESNA para ser interconectada e integrada en los
@@ -376,7 +383,7 @@ class Terminos extends React.Component {
                         </Typography>
                     </Grid>
                 </Grid>
-                <Footer/>
+
             </div>
         );
     }

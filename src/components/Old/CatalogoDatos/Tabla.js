@@ -12,7 +12,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Paper from '@mui/material/Paper';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import fileJSON from '../../data/csvjson';
+import fileJSON from '../data/csvjson.json';
 import VerIcon from '@mui/icons-material/Launch';
 import Busqueda from "./Busqueda";
 

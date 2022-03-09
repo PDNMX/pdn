@@ -6,9 +6,9 @@ import MuiExpansionPanelSummary from '@mui/material/AccordionSummary';
 import MuiExpansionPanelDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import MuiLink from "@mui/material/Link";
-import Pasos from "../../assets/pasos_evaluación.png";
-import Pipeline from "../../assets/DQ_pipeline_analy.png";
-import DataImpact from "../../assets/data_impact.png";
+import Pasos from "../../../assets/pasos_evaluación.png";
+import Pipeline from "../../../assets/DQ_pipeline_analy.png";
+import DataImpact from "../../../assets/data_impact.png";
 import Button from "@mui/material/Button";
 
 const Accordion = withStyles({

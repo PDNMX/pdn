@@ -5,6 +5,8 @@ import Intro from "./Intro";
 import Licencia from '../Licencia';
 import Herramientas from "../Herramientas";
 import bgimg from "../../../assets/rediseno/fondo_cruces.png";
+import pdnRoutes from "../../../routes";
+import HeaderV2 from "../../HomeV2/HeaderV2";
 const styles = theme => ({
     root: {
         flexGrow: 1,
@@ -40,8 +42,10 @@ const styles = theme => ({
 
 const Index = props => {
     const {classes}= props;
+    const section = pdnRoutes.find(route => route.path === '/especificaciones/s6');
     return (
         <div className={classes.root}>
+            <HeaderV2 section={section}/>
             <Grid container justifyContent="center">
                 <Grid item xs={12} className={classes.rootItem}>
                     <Paper className={classes.paper}>
