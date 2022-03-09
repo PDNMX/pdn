@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import {Typography, Grid, Box, Button, Paper}  from '@mui/material';
 import withStyles from '@mui/styles/withStyles';
 import bgimg from "../assets/rediseno/fondo_cruces.png";
+import HeaderV2 from "./HomeV2/HeaderV2";
 
 const styles = theme => ({
     root :{
@@ -42,16 +43,22 @@ const P404 = props => {
     const { classes } = props;
     return (
         <div className={classes.root}>
+            <HeaderV2 section={{
+                path: "",
+                name: "No encontramos lo que buscas",
+                shortName: "Error 404",
+                color: "#f2f2f2",
+            }}/>
 
             <Grid container spacing={0} justifyContent="center">
                 <Grid item xs={12} className={classes.item}>
                     <Paper className={classes.paper} elevation={15}>
                         <Box className={classes.box}>
                             <Typography variant="h1" paragraph>
-                                404
+                                Error 404
                             </Typography>
                             <Typography variant="h4" paragraph>
-                                No encontramos lo que buscas
+                                La URL solicitada no existe en este servidor.
                             </Typography>
                             <Button className={classes.button} component={Link}
                                     variant="contained" to="/">
