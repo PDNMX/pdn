@@ -84,16 +84,14 @@ function HeaderV2(props) {
                      }}
                 >
                     {section.icon && <img src={section.icon} alt="PDN" className={classes.icon}/>}
-
-                    <Typography variant="h3" paragraph color={`${section.color}`} style={{fontWeight: 100}}>
-                        <p>{section.name}</p>
-                        {section.subName && <Typography variant={"h5"}>
+                    <div>
+                        <Typography variant="h3" paragraph color={`${section.color}`} style={{fontWeight: 100}}>
+                            {section.name}
+                        </Typography>
+                        {section.subName && <Typography variant={"h5"} color={`${section.color}`}>
                             {section.subName}
                         </Typography>}
-
-
-                    </Typography>
-
+                    </div>
                 </Box>
             </Box>
         </div>

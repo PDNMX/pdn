@@ -68,7 +68,7 @@ const SistemasMenu = props => {
                             m:1,
                             p:2,
                             color: system.color
-                        }}>
+                        }} key={"system.path"}>
                             <div className={`${classes.opc} `}>
                                 <Link className={classes.link} to={system.path}>
                                     <img src={system.icon} alt="PDN" className={classes.icon}/>
