@@ -3,10 +3,10 @@ import {Grid, Box, Paper} from '@mui/material';
 import withStyles from '@mui/styles/withStyles';
 import {Link} from 'react-router-dom';
 import Typography from "@mui/material/Typography";
-import S1 from '../../../assets/iconos_azul/1_icono.svg';
-import S2 from '../../../assets/iconos_azul/2_icono.svg';
-import S3 from '../../../assets/iconos_azul/3_icono.svg';
-import S6 from '../../../assets/iconos_azul/6_icono.svg';
+import S1 from '../../../assets/rediseno/sistemas_sin_fondo/ico_s1.png';
+import S2 from '../../../assets/rediseno/sistemas_sin_fondo/ico_s2.png';
+import S3 from '../../../assets/rediseno/sistemas_sin_fondo/ico_s3.png';
+import S6 from '../../../assets/rediseno/sistemas_sin_fondo/ico_s6.png';
 import bgimg from "../../../assets/rediseno/fondo_cruces.png";
 import HeaderV2 from "../../HomeV2/HeaderV2";
 import pdnRoutes from "../../../routes";
@@ -22,8 +22,8 @@ const styles = theme => ({
     },
     rootItem: {
         maxWidth: 1200,
-        paddingTop: 90,
-        paddingBottom: 90,
+        paddingTop: theme.spacing(7),
+        paddingBottom: theme.spacing(7),
         paddingLeft: theme.spacing(1),
         paddingRight: theme.spacing(1)
 
@@ -40,15 +40,6 @@ const styles = theme => ({
     text: {
         color: theme.palette.greyColor,
         //paddingBottom: 60
-    },
-    specsContainer: {
-        backgroundColor: '#34b3eb',
-        //paddingTop: 50,
-        //paddingBottom: 50
-    },
-    item: {
-        paddingTop: theme.spacing(3),
-        paddingBottom: theme.spacing(3)
     },
     paper: {
         backgroundColor: theme.palette.background.opaque,
@@ -86,42 +77,38 @@ const Especificaciones = props => {
                             <Typography paragraph>
                                 Actualmente están disponibles las especificaciones para los Sistemas 1, 2, 3 y 6
                             </Typography>
+                            <Grid container spacing={0} justifyContent='center'>
+                                <Grid item xs={12} className={classes.rootItem}>
+                                    <Grid container spacing={0} justifyContent='center'>
+                                        <Grid item xs={12} md={6} lg={3} xl={3} align="center" >
+                                            <Link to="/especificaciones/s1" className={classes.link}>
+                                                <img src={S1} alt="" className={classes.sistemas}/>
+                                            </Link>
+                                        </Grid>
+                                        <Grid item xs={12} md={6} lg={3} xl={3}  align="center" >
+                                            <Link to="/especificaciones/s2" className={classes.link}>
+                                                <img src={S2} alt="" className={classes.sistemas}/>
+                                            </Link>
+                                        </Grid>
+                                        <Grid item xs={12} md={6} lg={3} xl={3} align="center" >
+                                            <Link to="/especificaciones/s3" className={classes.link}>
+                                                <img src={S3} alt="" className={classes.sistemas}/>
+                                            </Link>
+                                        </Grid>
+
+                                        <Grid item xs={12} md={6} lg={3} xl={3} align="center" >
+                                            <Link to="/especificaciones/s6" className={classes.link}>
+                                                <img src={S6} alt="" className={classes.sistemas}/>
+                                            </Link>
+                                        </Grid>
+
+                                    </Grid>
+                                </Grid>
+                            </Grid>
                         </Box>
                     </Paper>
                 </Grid>
 
-                <Grid container spacing={0} className={classes.specsContainer} justifyContent='center'>
-                    <Grid item xs={12} className={classes.rootItem}>
-                        <Grid container spacing={0} justifyContent='center'>
-                            <Grid item xs={12} md={6} lg={3} xl={3} align="center" className={classes.item}>
-                                <Link to="/especificaciones/s1" className={classes.link}>
-                                    <img src={S1} alt="" className={classes.sistemas}/>
-                                    <Typography variant="h5" className={classes.text}>Declaraciones</Typography>
-                                </Link>
-                            </Grid>
-                            <Grid item xs={12} md={6} lg={3} xl={3}  align="center" className={classes.item}>
-                                <Link to="/especificaciones/s2" className={classes.link}>
-                                    <img src={S2} alt="" className={classes.sistemas}/>
-                                    <Typography variant="h5" className={classes.text}>Servidores públicos en contrataciones</Typography>
-                                </Link>
-                            </Grid>
-                            <Grid item xs={12} md={6} lg={3} xl={3} align="center" className={classes.item}>
-                                <Link to="/especificaciones/s3" className={classes.link}>
-                                    <img src={S3} alt="" className={classes.sistemas}/>
-                                    <Typography variant="h5" className={classes.text}>Sancionados</Typography>
-                                </Link>
-                            </Grid>
-
-                            <Grid item xs={12} md={6} lg={3} xl={3} align="center" className={classes.item}>
-                                <Link to="/especificaciones/s6" className={classes.link}>
-                                    <img src={S6} alt="" className={classes.sistemas}/>
-                                    <Typography variant="h5" className={classes.text}>Contrataciones</Typography>
-                                </Link>
-                            </Grid>
-
-                        </Grid>
-                    </Grid>
-                </Grid>
             </Grid>
 
         </div>
