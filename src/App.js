@@ -51,7 +51,9 @@ const theme = createTheme({
             },
             text:{
                 main:"#ced8db",
-                greyColor: '#666666'
+                greyColor: '#666666',
+                blueColor: '#3ab0e5'
+
             },
             background:{
               default: "#0d3b49",
