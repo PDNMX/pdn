@@ -7,66 +7,55 @@ import MuiExpansionPanelDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import MuiLink from "@mui/material/Link";
 import {Link} from "react-router-dom";
-import Diagrama from "../../assets/Diagrama_de_comunicacion_API.svg";
+import Diagrama from "../../assets/diagrama_comunicacion_v1.1.svg";
 import Button from '@mui/material/Button';
-import Icon from '@mui/material/Icon';
-//import IconButton from "@mui/material/IconButton";
-//import GetAppIcon from "@mui/icons-material/GetApp";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-const Accordion = withStyles({
+const Accordion = withStyles(theme =>({
     root: {
-        border: '1px solid rgba(0, 0, 0, .125)',
-        boxShadow: 'none',
-        '&:not(:last-child)': {
-            borderBottom: 0,
-        },
-        '&:before': {
-            display: 'none',
-        },
-        '&$expanded': {
-            margin: 'auto',
-        },
+        border: '1px solid' + theme.palette.background.opaque,
+        boxShadow: 'none'
     },
     expanded: {},
-})(MuiExpansionPanel);
+}))(MuiExpansionPanel);
 
-const AccordionSummary = withStyles({
+const AccordionSummary = withStyles(theme =>({
     root: {
-        backgroundColor: 'rgba(0, 0, 0, .03)',
-        borderBottom: '1px solid rgba(0, 0, 0, .125)',
-        marginBottom: -1,
+        backgroundColor: theme.palette.background.opaque,
+        /* borderBottom: '1px solid rgba(0, 0, 0, .125)', */
+        /* marginBottom: -1, */
         minHeight: 56,
         '&$expanded': {
             minHeight: 56,
         },
+        color: theme.palette.text.main 
     },
-    content: {
-        '&$expanded': {
-            margin: '12px 0',
-        },
+    expandIconWrapper: {
+        color: theme.palette.secundario.main,
     },
-    expanded: {},
-})(MuiExpansionPanelSummary);
+}))(MuiExpansionPanelSummary);
 
 const AccordionDetails = withStyles(theme => ({
     root: {
         padding: theme.spacing(2),
+        color: theme.palette.text.main,
+        backgroundColor: theme.palette.background.opaque,
+        border: '1px solid' + theme.palette.secundario.main,
     },
 }))(MuiExpansionPanelDetails);
-
 
 
 const useStyles = makeStyles( theme => ({
     link: {
         textDecoration: "none",
         color: theme.palette.primary.dark,
-        wordBreak: "break-all"
+        wordBreak: "break-all",
     },
     button: {
         marginTop: theme.spacing(1),
         marginRight: theme.spacing(1),
         marginBottom: theme.spacing(1),
-        background: '#ffe01b',//'#fecb6e'
+        background: theme.palette.secundario.main
     },
     ul: {
         listStyle: 'none',
@@ -84,9 +73,8 @@ const useStyles = makeStyles( theme => ({
     }
 }));
 
-
 export default function CustomizedExpansionPanels() {
-    const [expanded, setExpanded] = React.useState('');//'panel1');
+    const [expanded, setExpanded] = React.useState('panel1');//'panel1');
 
     const handleChange = panel => (event, newExpanded) => {
         setExpanded(newExpanded ? panel : false);
@@ -97,16 +85,13 @@ export default function CustomizedExpansionPanels() {
     return (
         <div>
 
-
             <Accordion square expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
-                <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-                    <Typography>¿Qué es la PDN?</Typography>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1d-content" id="panel1d-header">
+                    <Typography variant="h6">¿Qué es la PDN?</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
 
-
                     <div>
-
                         <Typography paragraph>
                             Una fuente de inteligencia para construir integridad y combatir la corrupción que creará valor para el gobierno y la sociedad a partir de grandes cantidades de datos.
                         </Typography>
@@ -151,8 +136,8 @@ export default function CustomizedExpansionPanels() {
             </Accordion>
 
             <Accordion square expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
-                <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-                    <Typography>Objetivos de la PDN</Typography>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel2d-content" id="panel2d-header">
+                    <Typography variant="h6">Objetivos de la PDN</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <div>
@@ -174,8 +159,8 @@ export default function CustomizedExpansionPanels() {
             </Accordion>
 
             <Accordion square expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
-                <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-                    <Typography>Marco normativo</Typography>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel3d-content" id="panel3d-header">
+                    <Typography variant="h6">Marco normativo</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <div>
@@ -271,8 +256,8 @@ export default function CustomizedExpansionPanels() {
             </Accordion>
 
             <Accordion square expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
-                <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">
-                    <Typography>¿Qué hace la SESNA y la USTPDN?</Typography>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel4d-content" id="panel4d-header">
+                    <Typography variant="h6">¿Qué hace la SESNA y la USTPDN?</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <div>
@@ -301,14 +286,13 @@ export default function CustomizedExpansionPanels() {
             </Accordion>
 
             <Accordion square expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
-                <AccordionSummary aria-controls="panel5d-content" id="panel5d-header">
-                    <Typography>Sistemas Estatales Anticorrupción</Typography>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel5d-content" id="panel5d-header">
+                    <Typography variant="h6">Sistemas Estatales Anticorrupción</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <div>
 
                         <Typography variant="h6" paragraph> Normatividad:</Typography>
-
 
                         <Typography paragraph>
                             <b>Concentradores estatales:</b> Son los miembros de los Sistemas Estatales Anticorrupción que resguardan la información para su integración a los sistemas de la PDN (VI, art. 3, Bases; legislaciones estatales anticorrupción).
@@ -328,9 +312,8 @@ export default function CustomizedExpansionPanels() {
                             Los SLA promoverán la publicación de la información contenida en la plataforma en formato de datos abiertos, conforme a la Ley General de Transparencia y Acceso a la Información Pública y la demás normatividad aplicable como las Bases para el funcionamiento de la PDN y otros lineamientos que emita la SESNA (Art. 50).
                         </Typography>
 
-
-                        <Typography variant="h5">
-                            Acciones
+                        <Typography variant="h6">
+                            Acciones:
                         </Typography>
 
                         <Typography paragraph>
@@ -342,26 +325,22 @@ export default function CustomizedExpansionPanels() {
                         </Typography>
 
                         <Typography paragraph>
-                            Asimismo, se les recomienda comenzar por <b><u>revisar de manera detallada</u></b> las especificaciones técnicas y los diccionarios de datos que ya fueron publicados en la siguiente página: <Link to="/especificaciones" className={classes.link}>https://www.plataformadigitalnacional.org/especificaciones</Link>.
+                            Asimismo, se les recomienda comenzar por <b><u>revisar de manera detallada</u></b> las especificaciones técnicas y los diccionarios de datos que ya fueron publicados en la siguiente página: <Link to="/especificaciones" className={classes.link}>https://www.plataformadigitalnacional.org/especificaciones</Link>
                         </Typography>
-
                     </div>
                 </AccordionDetails>
             </Accordion>
 
             <Accordion square expanded={expanded === 'panel6'} onChange={handleChange('panel6')}>
-                <AccordionSummary aria-controls="panel6d-content" id="panel6d-header">
-                    <Typography>Preguntas técnicas frecuentes </Typography>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel6d-content" id="panel6d-header">
+                    <Typography variant="h6">Preguntas técnicas frecuentes </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <div>
 
-
-
-                        <Typography variant="h5" paragraph>
+                        <Typography variant="h6" paragraph>
                             ¿Cómo funciona la PDN?
                         </Typography>
-
 
                         <Typography paragraph>
                             El siguiente Diagrama 1 muestra un diseño de alto nivel de la arquitectura y las funcionalidades de la PDN. El flujo es el siguiente:
@@ -375,10 +354,9 @@ export default function CustomizedExpansionPanels() {
                         </ol>
 
 
-
                         <img alt="diagrama" src={Diagrama} className={classes.diagrama}/>
 
-                        <Typography variant="h5" paragraph>¿Cómo se está construyendo la PDN?</Typography>
+                        <Typography variant="h6" paragraph>¿Cómo se está construyendo la PDN?</Typography>
 
                         <Typography paragraph>
                             El equipo de la PDN cuenta con desarrolladores web, que hacen uso intensivo de las tecnologías de software más
@@ -392,15 +370,19 @@ export default function CustomizedExpansionPanels() {
                         <ol>
                             <li><Typography>Uso de web APIs que permitan la consulta de los datos desde la PDN a la entidad. Actualmente existen herramientas de código abierto para implementar las APIs rápidamente y de bajo costo.</Typography></li>
                             <li><Typography>Estándares técnicos de datos que permiten compartir, para cada uno de los seis sistemas clave, información entre las dependencias y la PDN en una manera unificada y estandarizada. Actualmente hemos desarrollado tres estándares:</Typography></li>
-                            <ul>
-                                <li><Link to="/declaraciones/especificaciones" className={classes.link}><Typography>Declaraciones</Typography></Link></li>
-                                <li><Link to="/intervienen/especificaciones" className={classes.link}><Typography>Servidores públicos que intevienen en contrataciones</Typography></Link></li>
-                                <li><Link to="/sancionados/especificaciones" className={classes.link}><Typography>Servidores públicos y particulares sancionados</Typography></Link></li>
-                            </ul>
+                                <ul className={classes.ul}>
+                                    <li className={classes.li}>
+                                        <Link to="/especificaciones/s1" className={classes.link}><Typography display='inline'>Declaraciones</Typography></Link>
+                                    </li>
+                                    <li className={classes.li}>
+                                        <Link to="/especificaciones/s2" className={classes.link}><Typography display='inline'>Servidores públicos que intevienen en contrataciones</Typography></Link>
+                                    </li>
+                                    <li className={classes.li}>
+                                        <Link to="/especificaciones/s3" className={classes.link}><Typography display='inline'>Servidores públicos y particulares sancionados</Typography></Link>
+                                    </li>
+                                </ul>
                             <li><Typography>Tecnologías y servicios de software modernos y de código abierto. El código de la PDN puede consultarse <MuiLink href="https://github.com/PDNMX"> aquí</MuiLink>. Las tecnologías que usamos son las siguientes:</Typography></li>
                         </ol>
-
-
 
 
                         <ul className={classes.ul}>
@@ -483,8 +465,7 @@ export default function CustomizedExpansionPanels() {
                             </li>
                         </ul>
 
-
-                        <Typography paragraph variant="h5">
+                        <Typography paragraph variant="h6">
                             ¿Qué es la interoperabilidad?
                         </Typography>
 
@@ -492,20 +473,20 @@ export default function CustomizedExpansionPanels() {
                             Interoperabilidad se refiere a la posibilidad que tiene un sistema de obtener o transferir información con otros sistemas. Para lograr la interoperabilidad de los datos, es necesario estandarizarlos y ponerlos en un formato común.
                         </Typography>
 
-                        <Typography paragraph variant="h5">
+                        <Typography paragraph variant="h6">
                             ¿Qué es un estándar de datos?
                         </Typography>
                         <Typography paragraph>
                             Un estándar se refiere a las reglas y características con las que debe de contar un conjunto de datos, como: tipo de dato (i.e., numérico, entero, caracter, cadena), longitud, número de veces que aparece, precisión, etc.
                         </Typography>
 
-                        <Typography variant="h5">
+                        <Typography variant="h6">
                             ¿Qué es un API?
                         </Typography>
                         <Typography paragraph>
                             Un API (<i>‘Application Programming Interface’</i> en inglés) es un conjunto de reglas que las aplicaciones deben seguir para comunicarse entre ellas, sirviendo de interfaz de comunicación entre componentes de software. En el contexto de la presente guía, el uso de APIs tiene el objetivo de permitir la comunicación entre la Plataforma Digital Nacional (Sistema de la SESNA) y los diversos sistemas de información de las instituciones obligadas a proveer datos anticorrupción.
                         </Typography>
-                        <Typography variant="h5" paragraph>
+                        <Typography variant="h6" paragraph>
                             ¿La Secretaría Ejecutiva del Sistema Nacional Anticorrupción establecerá cómo desarrollar las Plataformas Estatales?
                         </Typography>
 
@@ -517,24 +498,22 @@ export default function CustomizedExpansionPanels() {
                             Las Bases fueron aprobadas por el Comité Coordinador del Sistema Nacional Anticorrupción, y estipulan que la Secretaría Ejecutiva emitirá los protocolos, estándares, reglamentos, especificaciones técnicas y cualquier normativa necesaria para la colaboración, provisión de datos y acciones para cumplir con las Bases.
                         </Typography>
 
-
-
                         <Typography paragraph>
                             Revisar las especificaciones técnicas publicadas en la versión Alfa de la PDN:
                         </Typography>
                         <ul className={classes.ul}>
                             <li className={classes.li}>
-                                <Link to="/declaraciones/especificaciones" className={classes.link}>
+                                <Link to="/especificaciones/s1" className={classes.link}>
                                     Sistema 1
                                 </Link>
                             </li>
                             <li className={classes.li}>
-                                <Link to="/intervienen/especificaciones" className={classes.link}>
+                                <Link to="/especificaciones/s2" className={classes.link}>
                                     Sistema 2
                                 </Link>
                             </li>
                             <li className={classes.li}>
-                                <Link to="/sancionados/especificaciones" className={classes.link}>
+                                <Link to="/especificaciones/s3" className={classes.link}>
                                     Sistema 3
                                 </Link>
                             </li>
@@ -545,7 +524,7 @@ export default function CustomizedExpansionPanels() {
                         <Button target="_blank" className={classes.button} variant="contained" href="https://drive.google.com/file/d/1xYlY50lXttiuu0brV5CVd5H8qx96vDsK/view">
                             Guía desarrollo PDE
                         </Button>
-                        <Typography variant="h5" paragraph>
+                        <Typography variant="h6" paragraph>
                             ¿Las Plataformas Digitales van a operar ahora sistemas como CompraNet o Declaranet?
                         </Typography>
                         <Typography paragraph>
@@ -556,7 +535,7 @@ export default function CustomizedExpansionPanels() {
                             La generación de los datos desde sistemas como CompraNet o Declaranet  seguirá siendo responsabilidad de los entes que tienen la atribución actualmente.
                         </Typography>
 
-                        <Typography paragraph variant="h5">
+                        <Typography paragraph variant="h6">
                             ¿Qué papel juegan las entidades federativas?
                         </Typography>
                         <Typography>
@@ -564,7 +543,7 @@ export default function CustomizedExpansionPanels() {
                         </Typography>
 
 
-                        <Typography paragraph variant="h5">¿Cuándo entran en vigor los nuevos formatos para las declaraciones patrimonial y de intereses?</Typography>
+                        <Typography paragraph variant="h6">¿Cuándo entran en vigor los nuevos formatos para las declaraciones patrimonial y de intereses?</Typography>
 
                         <Typography paragraph>Los formatos publicados en el Diario Oficial de la Federación (DOF) el 16 de noviembre del 2018 se encuentran en un proceso de revisión por parte de las autoridades del Comité Coordinador del SIstema Nacional Anticorrupción.  Por lo anterior, se modificó el Artículo Segundo Transitorio del <MuiLink href="https://www.dof.gob.mx/nota_detalle.php?codigo=5557896&fecha=16/04/2019">“Acuerdo por el que se modifica el artículo Segundo Transitorio del “Acuerdo por el que el Comité Coordinador del Sistema Nacional Anticorrupción emite el formato de declaraciones: de situación patrimonial y de intereses; y expide las normas e instructivo para su llenado y presentación”</MuiLink>; quedando de la siguiente manera:</Typography>
 
@@ -577,55 +556,41 @@ export default function CustomizedExpansionPanels() {
 
                         <Typography paragraph>Lo anterior se mantendrá vigente hasta en tanto el Comité Coordinador concluya el análisis correspondiente al Formato, lo cual se dará a conocer mediante el Acuerdo correspondiente.</Typography>
 
-
-
-
-
-
-                        <Typography paragraph variant="h5">
+                        <Typography paragraph variant="h6">
                             ¿Cómo se va a trabajar en la seguridad e integridad de los datos?
                         </Typography>
                         <Typography paragraph>
                             Se utilizarán herramientas de autentificación que contemplarán los roles y permisos, por ejemplo: SSL, OAuth, eFirma; estas herramientas permitirán mantener la trazabilidad de las consultas de datos que se hagan dentro de las plataformas, garantizando el acceso seguro a los datos.
                         </Typography>
-
-
-
-
-
-
-
                     </div>
                 </AccordionDetails>
             </Accordion>
 
             <Accordion square expanded={expanded === 'panel7'} onChange={handleChange('panel7')}>
-                <AccordionSummary aria-controls="panel7d-content" id="panel7d-header">
-                    <Typography>Preguntas frecuentes - datos</Typography>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel7d-content" id="panel7d-header">
+                    <Typography variant="h6">Preguntas frecuentes - datos</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <div>
-
-
-                        <Typography paragraph variant="h5">
+                        <Typography paragraph variant="h6">
                             ¿Qué hace la PDN y qué sucederá con los datos?
                         </Typography>
                         <Typography paragraph>
                             La PDN consultará a través de APIs (medios tecnológicos para comunicar diversos sistemas) los datos que las instituciones públicas ya generan y los ordenará conforme a estándares que señale la SESNA. Así, las instituciones seguirán generando, controlando y siendo responsables de sus datos, pero ahora serán interoperables y comparables para generar inteligencia anticorrupción.
                         </Typography>
-                        <Typography variant="h5" paragraph>
+                        <Typography variant="h6" paragraph>
                             ¿La Plataforma Digital Nacional (PDN) va a generar información?
                         </Typography>
                         <Typography paragraph>
                             No. El objetivo de la Plataforma es generar interoperabilidad entre los datos que ya generan actualmente los entes obligados, a través del uso de estándares comunes.
                         </Typography>
-                        <Typography variant="h5" paragraph>
+                        <Typography variant="h6" paragraph>
                             ¿La PDN se va a quedar con los datos generados por las instituciones?
                         </Typography>
                         <Typography paragraph>
                             No. Las Instituciones son las responsables de los datos que generan, y a partir de la publicación de los lineamientos de cada Sistema, deberán estandarizarlos de acuerdo a lo solicitado por la SESNA a través del Comité Coordinador del SNA.
                         </Typography>
-                        <Typography variant="h5" paragraph>
+                        <Typography variant="h6" paragraph>
                             ¿Se van a compartir los datos reservados o personales?
                         </Typography>
                         <Typography paragraph>
@@ -633,7 +598,7 @@ export default function CustomizedExpansionPanels() {
                             Los integrantes del Sistema Nacional y de los Sistemas Locales promoverán la publicación de la información contenida en la plataforma en formato de datos abiertos, conforme a la Ley General de Transparencia y Acceso a la Información Pública y la demás normatividad aplicable (Artículo 50 LGSNA).
                         </Typography>
 
-                        <Typography paragraph variant="h5">
+                        <Typography paragraph variant="h6">
                             ¿Quién va a poder acceder a la PDN?
                         </Typography>
 
@@ -651,27 +616,25 @@ export default function CustomizedExpansionPanels() {
                             La Secretaría Ejecutiva elaborará y publicará un catálogo de perfiles, en el cual se establezcan las facultades,obligaciones, y/o atribuciones que les sean aplicables a cada uno de los usuarios de manera genérica (Artículo 18, BFPDN)
                         </Typography>
 
-
-
                     </div>
                 </AccordionDetails>
             </Accordion>
 
             <Accordion square expanded={expanded === 'panel9'} onChange={handleChange('panel9')}>
-                <AccordionSummary aria-controls="panel9d-content" id="panel9d-header">
-                    <Typography>Protocolo de conexión</Typography>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel9d-content" id="panel9d-header">
+                    <Typography variant="h6">Protocolo de conexión</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <div>
-                        <Typography paragraph color="textPrimary">
+                        <Typography paragraph>
                             La Plataforma Digital Nacional (PDN) basa su funcionamiento en el uso de APIs, por medio de las cuales, se comunica con sus proveedores de
                             información para obtener exclusivamente los datos necesarios.
                         </Typography>
-                        <Typography paragraph color="textPrimary">
+                        <Typography paragraph>
                             Los proveedores de información son los responsables de formalizar y finalizar el proceso de conexión,
                             el cual debe de garantizar un correcto funcionamiento y un adecuado nivel de servicio de las APIs.
                         </Typography>
-                        <Typography paragraph color="textPrimary">
+                        <Typography paragraph>
                             Para lograr la conexión con la PDN, se ha diseñado un protocolo de conexión, que consiste en la ejecución de conjuntos de pruebas para cada Sistema de la plataforma, mismos que se dividen en tres categorías:
                         </Typography>
                         <ul>
@@ -679,7 +642,7 @@ export default function CustomizedExpansionPanels() {
                             <li>Pruebas funcionales; y</li>
                             <li>Pruebas de estrés.</li>
                         </ul>
-                        <Typography paragraph color="textPrimary">
+                        <Typography paragraph>
                             Estas pruebas se ejecutan en dos ambientes: 1) desarrollo y 2) productivo. En cada uno el equipo de la PDN verificará el funcionamiento de la API que corresponda.
                             Para llevar a cabo la verificación, se utiliza el <b>Plan de pruebas</b> que podrás encontrar en la sección de <Link to="/especificaciones" className={classes.link}><Typography component={'span'}>Especificaciones</Typography></Link> de cada uno de los sistemas.
                         </Typography>
@@ -687,30 +650,28 @@ export default function CustomizedExpansionPanels() {
                             <li><b>Ambiente de desarrollo</b>: deberán utilizar <b>datos sintéticos</b> para verificar completamente la funcionalidad, los mecanismos de seguridad y la estructura de los datos.</li>
                             <li><b>Ambiente productivo</b>: se requiere contar con los <b>datos reales</b> que serán suministrados a la Plataforma, omitiendo en esta etapa datos de carácter reservado, ya que es la fase previa a la comunicación final con la PDN.</li>
                         </ol>
-                        <Typography paragraph color="textPrimary">
+                        <Typography paragraph>
                             Es necesario contar con la <b>aprobación</b> de las pruebas en el ambiente de desarrollo para continuar con el ambiente productivo, es decir, todos los casos de pruebas deben resultar exitosos. En caso de que las pruebas no lo sean, se le notificará al proveedor de información a través de correo
                             electrónico para que realice los ajustes necesarios y solicite una nueva revisión al equipo de la PDN
                         </Typography>
-                        <Typography paragraph color="textPrimary">
+                        <Typography paragraph>
                             Para iniciar el proceso o protocolo de conexión, es necesario llenar el formato de <b>Solicitud de conexión</b> correctamente y enviarlo al correo electrónico: pdn@sesna.gob.mx.
                         </Typography>
-                        <Typography paragraph color="textPrimary">
+                        <Typography paragraph>
                             Adicionalmente, ponemos a disposición un <Link to="/validador" className={classes.link}><Typography component={'span'}>Validador </Typography></Link>
                             que sirve de apoyo para la validación del cumplimiento de los esquemas de datos de las diferentes API's.
                         </Typography>
-
                     </div>
                 </AccordionDetails>
             </Accordion>
 
             <Accordion square expanded={expanded === 'panel8'} onChange={handleChange('panel8')}>
-                <AccordionSummary aria-controls="panel8d-content" id="panel8d-header">
-                    <Typography>Sistema de declaración patrimonial y de intereses</Typography>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel8d-content" id="panel8d-header">
+                    <Typography variant="h6">Sistema de declaración patrimonial y de intereses</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <div>
-
-                        <Typography paragraph color="textPrimary">
+                        <Typography paragraph>
                             Haz click en el botón que aparece a continuación para visualizar un documento que <b>contienene información relevante para</b> los equipos
                             encargados de desarrollar la <b>interconexión de su sistema de declaraciones</b> con la
                             Plataforma Digital Nacional.
@@ -719,25 +680,24 @@ export default function CustomizedExpansionPanels() {
                         <Button variant="contained" className={classes.button} target="_blank" href="https://drive.google.com/file/d/1wHQpaFdP5An8V4Vhnjj1a4GBbYIREMHo/view?usp=sharing">
                             Más información
                         </Button>
-
                     </div>
                 </AccordionDetails>
             </Accordion>
 
             <Accordion square expanded={expanded === 'panel10'} onChange={handleChange('panel10')}>
-                <AccordionSummary aria-controls="panel10d-content" id="panel10d-header">
-                    <Typography>Contactanos</Typography>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel10d-content" id="panel10d-header">
+                    <Typography variant="h6">Contactanos</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <div>
-
                         <Typography paragraph>
                             Escribenos si tienes dudas sobre la construcción de la PDN.
                         </Typography>
                         <Typography>
-                            pdn<Icon style={{fontSize:12}}>alternate_email</Icon>sesna.gob.mx
+                            <MuiLink component='a' href="mailto:pdn@sesna.gob.mx">
+                                pdn@sesna.gob.mx
+                            </MuiLink>
                         </Typography>
-
                     </div>
                 </AccordionDetails>
             </Accordion>
