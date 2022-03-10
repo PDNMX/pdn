@@ -22,8 +22,8 @@ const styles = theme => ({
     },
     rootItem: {
         maxWidth: 1200,
-        paddingTop: theme.spacing(7),
-        paddingBottom: theme.spacing(7),
+        paddingTop: 90,
+        paddingBottom: 90,
         paddingLeft: theme.spacing(1),
         paddingRight: theme.spacing(1)
 

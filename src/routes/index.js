@@ -28,6 +28,8 @@ import IconS4 from "../assets/rediseno/ico_sistemas/ico_s4_color.svg";
 import IconS5 from "../assets/rediseno/ico_sistemas/ico_s5_color.svg";
 import IconFAQ from "../assets/rediseno/ico_faq.svg";
 import IconEspecificaciones from "../assets/rediseno/ico_especificaciones.svg";
+import IconAbout from "../assets/rediseno/ico_que-es-PDN.svg";
+import IconHelpDesk from "../assets/rediseno/ico_mesa-ayuda.svg";
 
 /*
 Para que la ruta pueda usarse con el Header genérico debe contar con:
@@ -172,6 +174,7 @@ const pdnRoutes = [
 		name: "¿Qué es la Plataforma Digital Nacional?",
 		shortName: "¿Qué es la PDN?",
 		color: "#f2f2f2",
+		icon: IconAbout
 	},
 	{
 		exact: true,
@@ -206,6 +209,7 @@ const pdnRoutes = [
 		name: "Mesa de ayuda",
 		shortName: "Mesa de ayuda",
 		color: "#f2f2f2",
+		icon: IconHelpDesk
 	},
 
 ];

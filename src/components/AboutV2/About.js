@@ -5,6 +5,12 @@ import {withStyles} from "@mui/styles";
 import bgimg from "../../assets/rediseno/fondo_cruces.png";
 import pdnRoutes from "../../routes/index";
 import HeaderV2 from '../HomeV2/HeaderV2';
+import S1 from "../../assets/rediseno/sistemas_sin_fondo/ico_s1.png";
+import S2 from "../../assets/rediseno/sistemas_sin_fondo/ico_s2.png";
+import S3 from "../../assets/rediseno/sistemas_sin_fondo/ico_s3.png";
+import S4 from "../../assets/rediseno/sistemas_sin_fondo/ico_s4.png";
+import S5 from "../../assets/rediseno/sistemas_sin_fondo/ico_s5.png";
+import S6 from "../../assets/rediseno/sistemas_sin_fondo/ico_s6.png";
 
 const styles = theme => ({
     root: {
@@ -46,7 +52,22 @@ const styles = theme => ({
     },
     box: {
         maxWidth: '900px', paddingTop: '50px', paddingBottom: '50px'
-    }
+    },
+    sistemas: {
+        maxWidth: 150,
+        "&:hover": {
+            opacity: .5
+        }
+    },
+    link: {
+        textDecoration: "none"
+    },
+    containerSistemas: {
+        maxWidth: "1200px",
+        padding: theme.spacing(1),
+        paddingTop: theme.spacing(4),
+        paddingBottom: theme.spacing(4),
+    },
 });
 
 const CustomTypography = withStyles(theme => ({
@@ -76,24 +97,60 @@ const About = props => {
                         </CustomTypography>
 
                         <CustomTypography>
-                            Sistema 1 | Evolución patrimonial, declaración de intereses y constancia de presentación de declaración fiscal (S1).
+                            <Typography color={'S1.color'} display={'inline'}>Sistema 1 | </Typography>Evolución patrimonial, declaración de intereses y constancia de presentación de declaración fiscal (S1).
                         </CustomTypography>
                         <CustomTypography>
-                            Sistema 2 | Servidores públicos que intervengan en procedimientos de contrataciones públicas (S2).
+                            <Typography color={'S2.color'} display={'inline'}>Sistema 2 | </Typography> Servidores públicos que intervengan en procedimientos de contrataciones públicas (S2).
                         </CustomTypography>
                         <CustomTypography>
-                            Sistema 3 | Servidores públicos y particulares sancionados (S3).
+                            <Typography color={'S3.color'} display={'inline'}>Sistema 3 | </Typography>Servidores públicos y particulares sancionados (S3).
                         </CustomTypography>
                         <CustomTypography>
-                            Sistema 4 | Información y comunicación del Sistema Nacional Anticorrupción y el Sistema Nacional de Fiscalización (S4).
+                            <Typography color={'S4.color'} display={'inline'}>Sistema 4 | </Typography>Información y comunicación del Sistema Nacional Anticorrupción y el Sistema Nacional de Fiscalización (S4).
                         </CustomTypography>
                         <CustomTypography>
-                            Sistema 5 | Denuncias por faltas administrativas y hechos de corrupción (S5).
+                            <Typography color={'S5.color'} display={'inline'}>Sistema 5 | </Typography> Denuncias por faltas administrativas y hechos de corrupción (S5).
                         </CustomTypography>
                         <CustomTypography paragraph>
-                            Sistema 6 | Información Pública de contrataciones (S6).
+                            <Typography color={'S6.color'} display={'inline'}>Sistema 6 | </Typography> Información Pública de contrataciones (S6).
                         </CustomTypography>
+                        <Grid container spacing={0} justifyContent='center'>
+                            <Grid item xs={12} className={classes.containerSistemas}>
+                                <Grid container spacing={0} justifyContent='center'>
+                                    <Grid item xs={12} md={6} lg={4} xl={2} align="center" >
+                                        <RouterLink to="/declaraciones" className={classes.link}>
+                                            <img src={S1} alt="" className={classes.sistemas}/>
+                                        </RouterLink>
+                                    </Grid>
+                                    <Grid item xs={12} md={6} lg={4} xl={2}  align="center" >
+                                        <RouterLink to="/servidores" className={classes.link}>
+                                            <img src={S2} alt="" className={classes.sistemas}/>
+                                        </RouterLink>
+                                    </Grid>
+                                    <Grid item xs={12} md={6} lg={4} xl={2} align="center" >
+                                        <RouterLink to="/sancionados" className={classes.link}>
+                                            <img src={S3} alt="" className={classes.sistemas}/>
+                                        </RouterLink>
+                                    </Grid>
+                                    <Grid item xs={12} md={6} lg={4} xl={2} align="center" >
+                                        <RouterLink to="/fiscalizacion" className={classes.link}>
+                                            <img src={S4} alt="" className={classes.sistemas}/>
+                                        </RouterLink>
+                                    </Grid>
+                                    <Grid item xs={12} md={6} lg={4} xl={2} align="center" >
+                                        <RouterLink to="/denuncias" className={classes.link}>
+                                            <img src={S5} alt="" className={classes.sistemas}/>
+                                        </RouterLink>
+                                    </Grid>
+                                    <Grid item xs={12} md={6} lg={4} xl={2} align="center" >
+                                        <RouterLink to="/contrataciones" className={classes.link}>
+                                            <img src={S6} alt="" className={classes.sistemas}/>
+                                        </RouterLink>
+                                    </Grid>
 
+                                </Grid>
+                            </Grid>
+                        </Grid>
                         <CustomTypography paragraph>
                             ¿Quieres saber más sobre el marco normativo de la PDN? haz click <Link component={RouterLink} to="/mesa-de-ayuda">aquí</Link>.
                         </CustomTypography>
