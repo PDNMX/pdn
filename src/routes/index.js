@@ -27,6 +27,7 @@ import IconS1 from "../assets/rediseno/ico_sistemas/ico_s1_color.svg";
 import IconS4 from "../assets/rediseno/ico_sistemas/ico_s4_color.svg";
 import IconS5 from "../assets/rediseno/ico_sistemas/ico_s5_color.svg";
 import IconFAQ from "../assets/rediseno/ico_faq.svg";
+import IconEspecificaciones from "../assets/rediseno/ico_especificaciones.svg";
 
 /*
 Para que la ruta pueda usarse con el Header genérico debe contar con:
@@ -122,6 +123,7 @@ const pdnRoutes = [
 		name: "Especificaciones técnicas",
 		shortName: "Especificaciones",
 		color: "#f2f2f2",
+		icon: IconEspecificaciones
 	},
 	{
 		exact: true,
