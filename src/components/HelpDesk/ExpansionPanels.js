@@ -169,7 +169,7 @@ export default function CustomizedExpansionPanels() {
                             El marco normativo de la PDN está compuesto por la Ley General del Sistema Nacional Anticorrupción (LGSNA), la Ley General de Responsabilidades Administrativas (LGSNA) y las Bases para el Funcionamiento de la Plataforma Digital Nacional (publicadas el 23 de octubre del 2018 en el Diario Oficial de la Federación).
                         </Typography>
 
-                        <MuiLink component='a' href="http://www.diputados.gob.mx/LeyesBiblio/pdf/LGSNA_200521.pdf">
+                        <MuiLink component='a' target="_blank" href="http://www.diputados.gob.mx/LeyesBiblio/pdf/LGSNA_200521.pdf">
                             Ley General Del Sistema Nacional Anticorrupción
                         </MuiLink>
                         <Typography paragraph>(Artículos 9, fracciones XII, XIII y XVI; 17; 21, VII, b); 35, X y XI; Título cuarto)</Typography>
@@ -210,7 +210,7 @@ export default function CustomizedExpansionPanels() {
                             </li>
                         </ol>
 
-                        <MuiLink component='a' href="http://www.diputados.gob.mx/LeyesBiblio/pdf/LGRA_200521.pdf">
+                        <MuiLink component='a' target="_blank" href="http://www.diputados.gob.mx/LeyesBiblio/pdf/LGRA_200521.pdf">
                             Ley General de Responsabilidades Administrativas
                         </MuiLink>
 
@@ -243,7 +243,7 @@ export default function CustomizedExpansionPanels() {
                             </li>
                         </ol>
 
-                        <MuiLink component='a' href="https://www.dof.gob.mx/nota_detalle.php?codigo=5541802&fecha=23/10/2018">
+                        <MuiLink component='a' target="_blank" href="https://www.dof.gob.mx/nota_detalle.php?codigo=5541802&fecha=23/10/2018">
                             Bases para el Funcionamiento de la Plataforma Digital Nacional.
                         </MuiLink>
 
@@ -381,7 +381,7 @@ export default function CustomizedExpansionPanels() {
                                         <Link to="/especificaciones/s3" className={classes.link}><Typography display='inline'>Servidores públicos y particulares sancionados</Typography></Link>
                                     </li>
                                 </ul>
-                            <li><Typography>Tecnologías y servicios de software modernos y de código abierto. El código de la PDN puede consultarse <MuiLink href="https://github.com/PDNMX"> aquí</MuiLink>. Las tecnologías que usamos son las siguientes:</Typography></li>
+                            <li><Typography>Tecnologías y servicios de software modernos y de código abierto. El código de la PDN puede consultarse <MuiLink target="_blank" href="https://github.com/PDNMX"> aquí</MuiLink>. Las tecnologías que usamos son las siguientes:</Typography></li>
                         </ol>
 
 
@@ -545,7 +545,7 @@ export default function CustomizedExpansionPanels() {
 
                         <Typography paragraph variant="h6">¿Cuándo entran en vigor los nuevos formatos para las declaraciones patrimonial y de intereses?</Typography>
 
-                        <Typography paragraph>Los formatos publicados en el Diario Oficial de la Federación (DOF) el 16 de noviembre del 2018 se encuentran en un proceso de revisión por parte de las autoridades del Comité Coordinador del SIstema Nacional Anticorrupción.  Por lo anterior, se modificó el Artículo Segundo Transitorio del <MuiLink href="https://www.dof.gob.mx/nota_detalle.php?codigo=5557896&fecha=16/04/2019">“Acuerdo por el que se modifica el artículo Segundo Transitorio del “Acuerdo por el que el Comité Coordinador del Sistema Nacional Anticorrupción emite el formato de declaraciones: de situación patrimonial y de intereses; y expide las normas e instructivo para su llenado y presentación”</MuiLink>; quedando de la siguiente manera:</Typography>
+                        <Typography paragraph>Los formatos publicados en el Diario Oficial de la Federación (DOF) el 16 de noviembre del 2018 se encuentran en un proceso de revisión por parte de las autoridades del Comité Coordinador del SIstema Nacional Anticorrupción.  Por lo anterior, se modificó el Artículo Segundo Transitorio del <MuiLink target="_blank" href="https://www.dof.gob.mx/nota_detalle.php?codigo=5557896&fecha=16/04/2019">“Acuerdo por el que se modifica el artículo Segundo Transitorio del “Acuerdo por el que el Comité Coordinador del Sistema Nacional Anticorrupción emite el formato de declaraciones: de situación patrimonial y de intereses; y expide las normas e instructivo para su llenado y presentación”</MuiLink>; quedando de la siguiente manera:</Typography>
 
                         <Typography paragraph>
                             <i>“SEGUNDO. Se determina que los formatos aprobados mediante el presente Acuerdo, serán obligatorios para los Servidores Públicos al momento de presentar sus declaraciones de situación patrimonial y de intereses, una vez que se encuentren debidamente integrados y correctamente segmentados, estén plenamente adecuados a las directrices establecidas en el marco jurídico aplicable y se garantice la interoperabilidad con el sistema de evolución patrimonial y de declaración de intereses de la Plataforma Digital Nacional, a que hace referencia la fracción I del artículo 49 de la Ley General del Sistema Nacional Anticorrupción, situación que será formalmente informada a los involucrados mediante el Acuerdo correspondiente que, para tal efecto, emita el Comité Coordinador del Sistema Nacional Anticorrupción y publique en el Diario Oficial de la Federación para su aplicación y observancia obligatoria, lo que no podrá exceder del 31 de diciembre de 2019"
