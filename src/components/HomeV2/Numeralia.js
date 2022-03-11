@@ -30,7 +30,7 @@ const styles = theme => ({
     },
     textFoot:{
         fontSize: '15px',
-        color: "#ced8db",
+        color: theme.palette.text.main,
         margin: "5px"
     },
     
@@ -102,7 +102,7 @@ const Numeralia = props => {
                     <Typography className={classes.headingText} paragraph>
                         <CountUp separator="," end={numeralia.values[0][1]} duration={3} delay={0}>
                             {({ countUpRef }) => (
-                                <div> <span ref={countUpRef} /></div>
+                            <span ref={countUpRef} />
                             )}
                         </CountUp>
                     </Typography>
@@ -114,7 +114,7 @@ const Numeralia = props => {
                     <Typography className={classes.headingText} paragraph>
                         <CountUp separator="," end={(numeralia.values[1][1])} duration={3} delay={0}>
                             {({ countUpRef }) => (
-                                <div> <span ref={countUpRef} /></div>
+                                <span ref={countUpRef} />
                             )}
                         </CountUp>
                     </Typography>
@@ -126,7 +126,7 @@ const Numeralia = props => {
                     <Typography className={classes.headingText} paragraph>
                         <CountUp separator="," end={numeralia.values[2][1]} duration={3} delay={0}>
                             {({ countUpRef }) => (
-                                <div> <span ref={countUpRef} /></div>
+                                <span ref={countUpRef} />
                             )}
                         </CountUp>
                     </Typography>
@@ -138,7 +138,7 @@ const Numeralia = props => {
                     <Typography className={classes.headingText} paragraph>
                         <CountUp separator="," end={numeralia.values[3][1]} duration={3} delay={0}>
                             {({ countUpRef }) => (
-                                <div> <span ref={countUpRef} /></div>
+                                <span ref={countUpRef} />
                             )}
                         </CountUp>
                     </Typography>
@@ -150,7 +150,7 @@ const Numeralia = props => {
                     <Typography className={classes.headingText} paragraph>
                         <CountUp separator="," end={numeralia.values[4][1]} duration={3} delay={0}>
                             {({ countUpRef }) => (
-                                <div> <span ref={countUpRef} /></div>
+                                <span ref={countUpRef} />
                             )}
                         </CountUp>
                     </Typography>
