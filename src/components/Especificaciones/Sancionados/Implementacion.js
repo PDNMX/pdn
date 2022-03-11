@@ -1,10 +1,9 @@
 import React from 'react';
 import {withStyles} from '@mui/styles';
 import PropTypes from 'prop-types';
-import {Typography, Link} from "@mui/material"
-import Diagrama from "../../../assets/Diagrama_de_comunicacion_API.svg";
+import {Typography, Link} from "@mui/material";
 import Grid from '@mui/material/Grid';
-
+import ModeloComunicacion from "../ModeloComunicacion";
 
 const styles = theme => ({
     root: {
@@ -86,31 +85,7 @@ const Implementacion = props => {
                         </li>
                     </ul>
                 </Grid>
-
-                <Grid item xs={12}>
-                    <Typography variant="h5" paragraph>
-                        Modelo de comunicación
-                    </Typography>
-
-                    <Typography paragraph>
-                        A través de la de la PDN, los usuarios serán capaces de realizar consultas a las APIs de las
-                        Instituciones,
-                        dichas consultas se configurarán usando parámetros (Ver la sección Parámetros de consulta). La
-                        Figura 1 muestra un diagrama en el cual se ejemplifica la comunicación entre el API de
-                        Servidores Públicos y Particulares Sancionados y la PDN. El API tendrá la tarea de recibir la
-                        consulta y aplicar la lógica de negocio al interior de la institución para generar la respuesta
-                        correspondiente. Dicha respuesta deberá estar apegada al estándar de Servidores Públicos y
-                        Particulares Sancionados que se proporciona en la siguiente sección.
-                    </Typography>
-
-                    <img src={Diagrama} alt="Comunicación" className={classes.diagrama}/>
-
-                    <Typography paragraph>
-                        <b>Figura 1. </b> Esquema conceptual del flujo de comunicación entre Instituciones y la
-                        Plataforma Digital Nacional. De derecha a izquierda se observan usuarios con diferentes perfiles
-                        accediendo a la PDN y solicitando información de acuerdo a sus atribuciones.
-                    </Typography>
-                </Grid>
+<ModeloComunicacion/>
             </Grid>
         </div>
     );
