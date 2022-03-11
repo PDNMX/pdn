@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
 import InputLabel from "@mui/material/InputLabel";
 /* import FormHelperText from '@mui/material/FormHelperText'; */
 import FormControl from "@mui/material/FormControl";
@@ -16,24 +17,30 @@ import PropTypes from "prop-types";
 const styles = (theme) => ({
   root: {
     flexGrow: 1,
+    color: theme.palette.text.main
   },
   button: {
-    marginTop: theme.spacing(1),
+    /* marginTop: theme.spacing(1), */
     marginRight: theme.spacing(1),
     marginBottom: theme.spacing(2),
     background: "#ffe01b",
+    padding: "14.75px",
+    
   },
   button2: {
-    marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(2),
+    /* marginTop: theme.spacing(1), */
+    marginBottom: theme.spacing(1),
+    padding: "15px",
+    
   },
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
+    color: theme.palette.text.main
   },
   selectEmpty: {
-    marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(2),
+    marginBottom: theme.spacing(1),
+    color: theme.palette.text.main
   },
 });
 
@@ -210,6 +217,7 @@ class UploadForm extends React.Component {
     const { formValues, formErrors, isSubmitting } = this.state;
     return (
       <div className={classes.root}>
+        <Grid container direction="row" justifyContent="center" >
         <form onSubmit={this.handleSubmit}>
           <FormControl className={classes.formControl}>
             <Button
@@ -232,9 +240,9 @@ class UploadForm extends React.Component {
             <div className="invalid-feedback">{formErrors.uploadJson}</div>
           </FormControl>
           <FormControl className={classes.formControl}>
-            <InputLabel id="demo-simple-select-required-label">
+            {/* <InputLabel id="demo-simple-select-required-label">
               Sistema
-            </InputLabel>
+            </InputLabel> */}
             <Select
               /* labelId="demo-simple-select-required-label" */
               id="demo-simple-select-required"
@@ -242,9 +250,12 @@ class UploadForm extends React.Component {
               value={formValues.tipoSistema}
               onChange={this.handleChange}
               className={classes.selectEmpty}
+              displayEmpty
+              disabled={this.state.disabled}
+              
             >
               <MenuItem value="">
-                <em>Ninguno</em>
+                <em>Sistema</em>
               </MenuItem>
               <MenuItem value={"s1I"}>S1 - Inicial</MenuItem>
               <MenuItem value={"s1M"}>S1 - Modificación</MenuItem>
@@ -260,6 +271,7 @@ class UploadForm extends React.Component {
             <Button
               variant="contained"
               type="submit"
+              size="large"
               className={classes.button}
               disabled={isSubmitting}
             >
@@ -267,6 +279,8 @@ class UploadForm extends React.Component {
             </Button>
           </FormControl>
         </form>
+        </Grid>
+
       </div>
     );
   }
