@@ -1,16 +1,21 @@
-import { Box, Button, Grid } from '@mui/material';
+import { Box, Button } from '@mui/material';
 
 import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles(theme => ({
   button: {
     'margin': theme.spacing(1),
-    'backgroundColor': '#9eb1b6',
     'borderRadius': '50px',
     'fontWeight': 'bold',
     'fontStyle': 'italic',
     '&:hover': {
       backgroundColor: '#56a3bf'
+    }
+  },
+  link: {
+    'textDecoration': 'none',
+    '&:hover': {
+      textDecoration: 'none'
     }
   }
 }));
@@ -18,12 +23,10 @@ const useStyles = makeStyles(theme => ({
 export default ({ text, href }) => {
   const classes = useStyles();
   return (
-    <div>
-      <Box>
-        <Button variant='contained' className={classes.button} href={href}>
-          {text}
-        </Button>
-      </Box>
-    </div>
+    <Box>
+      <Button variant='contained' className={classes.button} href={href}>
+        {text}
+      </Button>
+    </Box>
   );
 };
