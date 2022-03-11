@@ -367,7 +367,8 @@ export default theme => ({
   },
   paper_search: {
     backgroundColor: theme.palette.background.opaque,
-    padding: theme.spacing(2),
+    padding: theme.spacing(4),
+    marginBottom: theme.spacing(4),
     color: theme.palette.primario.contrastText,
     borderStyle: 'solid',
     borderWidth: 1,
