@@ -1,129 +1,68 @@
 import React from 'react';
 
-import { Route, Switch, Link } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { Grid } from '@mui/material';
+import img from '../../assets/rediseno/svg_iconos_azul/SVG/s1_01.svg';
 
-//header data
-import Header from './Header';
-import S3 from '../../assets/iconos_azul/1_icono.svg';
-import background from '../../assets/img/pdn_sis1.jpeg';
-
-import Footer from '../Home/Footer';
-import AlertDialog from './Disclaimer';
-
-import classNames from 'classnames';
 import { Typography } from '@mui/material';
 import withStyles from '@mui/styles/withStyles';
-
-import imgBuscar from '../../assets/declaraciones/servidores_declaraciones.svg';
-// import imgEstadisticas from '../../assets/declaraciones/estadisticas.svg';
 
 import Busqueda from './Busqueda';
 // import PerfilMaterialUI from '../Declaraciones/PerfilMaterialUI';
 // import Stats from '../Declaraciones/Estadisticas/Stats';
 
 import styles from './style';
+import { ThemeProvider } from '@mui/material/styles';
+import ThemeV2 from '../../ThemeV2';
+import pdnRoutes from '../../routes';
+import HeaderV2 from '../HomeV2/HeaderV2';
+// import MyPaper from './MyPaper';
 
-const titulo =
-	'Sistema de evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal';
+const titulo = 'Sistema de evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal';
 const subtitulo = 'Declaraciones';
-const copy =
-	'Consulta y visualiza los datos <b>públicos</b> de las declaraciones patrimoniales, y de intereses, así como la constancia de declaración anual de impuestos de las y los servidores públicos.';
+const copy = 'Consulta y visualiza los datos <b>públicos</b> de las declaraciones patrimoniales, y de intereses, así como la constancia de declaración anual de impuestos de las y los servidores públicos.';
 
 class Declaraciones extends React.Component {
-	state = {
-		open: true
-	};
+  state = {
+    open: true
+  };
 
-	handleClose = () => {
-		this.setState({ open: false });
-	};
+  handleClose = () => {
+    this.setState({ open: false });
+  };
 
-	render() {
-		const { classes } = this.props;
+  render() {
+    const { classes } = this.props;
+    const system = pdnRoutes.find(route => route.path === '/declaraciones');
 
-		return (
-			<div>
-				<Header logo={S3} titulo={titulo} subtitulo={subtitulo} copy={copy} background={background} />
-				<Grid container spacing={0} className={classes.bgContainer}>
-					<Grid item xs={12} style={{ maxWidth: 1200, margin: '0 auto' }}>
-						<Grid container spacing={0}>
-							{/* <Grid
-								item
-								md={6}
-								xs={12}
-								className={classNames(
-									this.props.location.pathname.includes('estadistica')
-										? classes.cardSeleccionada
-										: classes.card,
-									'tabDeclaraciones'
-								)}
-							>
-								<Link className={classes.link} to="/declaraciones/estadisticas">
-									<figure className={classes.figure}>
-										<img alt="Estadísticas" src={imgEstadisticas} className={classes.image} />
-									</figure>
-									<Typography
-										variant="subtitle1"
-										style={{
-											fontWeight: this.props.location.pathname.includes('estadistica') ? 500 : 300
-										}}
-										className={classes.whiteText}
-									>
-										Visor de datos
-									</Typography>
-								</Link>
-							</Grid> */}
-							<Grid
-								item
-								md={6}
-								xs={12}
-								className={classNames(
-									!this.props.location.pathname.includes('estadistica')
-										? classes.cardSeleccionada
-										: classes.card,
-									'tabDeclaraciones'
-								)}
-							>
-								<Link className={classes.link} to="/declaraciones">
-									<figure className={classes.figure}>
-										<img
-											alt="Buscar un servidor público"
-											src={imgBuscar}
-											className={classes.image}
-										/>
-									</figure>
-									<Typography
-										variant="subtitle1"
-										style={{
-											fontWeight: !this.props.location.pathname.includes('estadistica')
-												? 500
-												: 300
-										}}
-										className={classes.whiteText}
-									>
-										Buscar un servidor público
-									</Typography>
-								</Link>
-							</Grid>
-						</Grid>
-					</Grid>
-				</Grid>
-				{/* fin menu */}
-				<Grid container spacing={0}>
-					<Grid item xs={12} className={classes.sectionT} style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-						<Switch>
-							<Route exact path="/declaraciones" component={Busqueda} />
-							{/* <Route path="/declaraciones/perfil/:id?" component={PerfilMaterialUI} />
+    return (
+      <ThemeProvider theme={ThemeV2}>
+        <HeaderV2 section={system} />
+        <Grid container spacing={0}>
+          <Grid item xs={12} style={{ maxWidth: 1200, margin: '0 auto', marginTop: 50 }}>
+            <Grid container spacing={0}>
+              <Grid item lg={3} xs={12} className={classes.selectedTab} style={{ display: 'flex', alignItems: 'center' }}>
+                <figure className={classes.figure_search}>
+                  <img src={img} alt={titulo} className={classes.logo} />
+                </figure>
+                <Typography variant='subtitle1' style={{ fontWeight: 500 }}>
+                  Buscar un servidor público
+                </Typography>
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item xs={12} className={classes.contentsSection} style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+            <Switch>
+              <Route exact path='/declaraciones' component={Busqueda} />
+
+              {/* <Route path="/declaraciones/perfil/:id?" component={PerfilMaterialUI} />
 							<Route path="/declaraciones/estadisticas" component={Stats} /> */}
-						</Switch>
-					</Grid>
-				</Grid>
-				<Footer />
-				<AlertDialog open={this.state.open} handleClose={this.handleClose} />
-			</div>
-		);
-	}
+            </Switch>
+          </Grid>
+        </Grid>
+      </ThemeProvider>
+    );
+  }
 }
 
 export default withStyles(styles)(Declaraciones);
