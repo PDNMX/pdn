@@ -2,7 +2,7 @@ import React from 'react';
 import withStyles from '@mui/styles/withStyles';
 import Busqueda from "./Busqueda";
 import Cifras from "./Cifras";
-import Perspectivas from "./Perspectivas";
+//import Perspectivas from "./Perspectivas";
 import Top from './Top';
 import Descarga from "../Compartidos/Descarga";
 import Disclaimer from "./Disclaimer";
