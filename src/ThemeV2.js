@@ -118,12 +118,13 @@ export default createTheme(
             'color': '#ced8db',
             '&:hover': {
               color: '#F9CFC8'
+            },
+            '&.Mui-active': {
+              color: 'rgba(137, 212, 242, 1)',
+              
             }
           },
           icon: {
-            color: '#ced8db'
-          },
-          active: {
             color: '#ced8db'
           },
           iconDirectionDesc: {

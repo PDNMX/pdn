@@ -131,7 +131,12 @@ const pdnRoutes = [
 		exact: true,
 		path: '/especificaciones/s1',
 		component: DeclaracionesEspecificaciones,
-		private: false
+		private: false,							
+		name: "Sistema de evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal",
+		shortName: "Especificaciones técnicas S1",
+		subName:"Especificaciones técnicas",
+		color: "#f29888",
+		icon: IconS1		
 	},
 	{
 		exact: true,
