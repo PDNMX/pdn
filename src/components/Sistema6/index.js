@@ -2,7 +2,7 @@ import React from 'react';
 import withStyles from '@mui/styles/withStyles';
 import Busqueda from "./Busqueda";
 import Cifras from "./Cifras";
-import Perspectivas from "./Perspectivas";
+//import Perspectivas from "./Perspectivas";
 import Top from './Top';
 import Descarga from "../Compartidos/Descarga";
 import Disclaimer from "./Disclaimer";
@@ -169,11 +169,11 @@ const Index = props => {
             }
         </Grid>
 
-        <Grid container spacing={0} justifyContent="center" style={{backgroundColor: "#34b3eb"}}>
+        {/*<Grid container spacing={0} justifyContent="center" style={{backgroundColor: "#34b3eb"}}>
             <Grid item xs={12} className={classes.item}>
                 <Perspectivas/>
             </Grid>
-        </Grid>
+        </Grid>*/}
 
         <Grid container spacing={0} justifyContent="center" className={classes.container}>
             <Grid item xs={12} className={classes.item}>
