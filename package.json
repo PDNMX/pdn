@@ -52,6 +52,7 @@
     "redux": "^4.0.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.2",
+    "styled-components": "^5.3.3",
     "swagger-parser": "^6.0.5",
     "uuid": "^3.3.2"
   },
