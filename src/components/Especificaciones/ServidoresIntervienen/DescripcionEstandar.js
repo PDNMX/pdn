@@ -1,17 +1,11 @@
 import {Typography} from "@mui/material"
 import React from "react";
 import withStyles from '@mui/styles/withStyles';
-import Button from '@mui/material/Button';
+import ButtonPDN from "../../Compartidos/ButtonPDN";
 
 const styles = theme => ({
     root: {
         flexGrow:1
-    },
-    button: {
-        marginTop: theme.spacing(1),
-        marginRight: theme.spacing(1),
-        marginBottom: theme.spacing(2),
-        //background: '#ffe01b',//'#fecb6e'
     }
 });
 
@@ -101,9 +95,9 @@ const DescripcionEstandar = props => {
         </Typography>
 
         <p>
-            <Button variant="contained" color="secundario" className={classes.button} href="https://github.com/OAI/OpenAPI-Specification">
+            <ButtonPDN target={'_blank'} href="https://github.com/OAI/OpenAPI-Specification">
                 Más información
-            </Button>
+            </ButtonPDN>
         </p>
 
         <Typography variant="h5" paragraph>
@@ -118,14 +112,14 @@ const DescripcionEstandar = props => {
         </Typography>
 
         <p>
-            <Button variant="contained" color="secundario" className={classes.button} href="https://oauth.net/2/">
+            <ButtonPDN  target={'_blank'} href="https://oauth.net/2/">
                 Más información
-            </Button>
+            </ButtonPDN>
 
-            <Button variant="contained" color="secundario" className={classes.button} target="_blank"
+            <ButtonPDN  target="_blank"
                     href="https://drive.google.com/file/d/17-npQleAV87gV19hbmtzgZipegl0qrIO/view?usp=sharing">
                 Guía de referencia
-            </Button>
+            </ButtonPDN>
         </p>
     </div>);
 }

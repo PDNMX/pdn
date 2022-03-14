@@ -8,8 +8,8 @@ import Typography from '@mui/material/Typography';
 import MuiLink from "@mui/material/Link";
 import {Link} from "react-router-dom";
 import Diagrama from "../../assets/diagrama_comunicacion_v1.1.svg";
-import Button from '@mui/material/Button';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ButtonPDN from "../Compartidos/ButtonPDN";
 
 const Accordion = withStyles(theme =>({
     root: {
@@ -50,12 +50,6 @@ const useStyles = makeStyles( theme => ({
         textDecoration: "none",
         color: theme.palette.primary.dark,
         wordBreak: "break-all",
-    },
-    button: {
-        marginTop: theme.spacing(1),
-        marginRight: theme.spacing(1),
-        marginBottom: theme.spacing(1),
-        background: theme.palette.secundario.main
     },
     ul: {
         listStyle: 'none',
@@ -118,17 +112,17 @@ export default function CustomizedExpansionPanels() {
                         </Typography>
 
 
-                        <Button  target="_blank" className={classes.button} variant="contained" href='https://drive.google.com/file/d/1wdy8bgX9fn1yRCAWSJMhjeTYKxEOXRQv/view'>
+                        <ButtonPDN target={"_blank"} href='https://drive.google.com/file/d/1wdy8bgX9fn1yRCAWSJMhjeTYKxEOXRQv/view'>
                             ¿Qué es la PDN?
-                        </Button>
+                        </ButtonPDN>
 
-                        <Button target="_blank" className={classes.button} variant="contained" href="https://drive.google.com/file/d/1YbkcDrRoscIUJtEiyM55GCliHsW22TkK/view">
+                        <ButtonPDN target="_blank" href="https://drive.google.com/file/d/1YbkcDrRoscIUJtEiyM55GCliHsW22TkK/view">
                             ¿Cómo se construye?
-                        </Button>
+                        </ButtonPDN>
 
-                        <Button target="_blank" className={classes.button} variant="contained" href="https://drive.google.com/file/d/1xYlY50lXttiuu0brV5CVd5H8qx96vDsK/view">
+                        <ButtonPDN target="_blank" href="https://drive.google.com/file/d/1xYlY50lXttiuu0brV5CVd5H8qx96vDsK/view">
                             Guía desarrollo PDE
-                        </Button>
+                        </ButtonPDN>
                     </div>
 
 
@@ -521,9 +515,9 @@ export default function CustomizedExpansionPanels() {
                         <Typography paragraph>
                             En el siguiente enlace, encontrarás una presentación que describe nuestra visión sobre el desarrollo tecnológico de las Plataformas y Sistemas Estatales.
                         </Typography>
-                        <Button target="_blank" className={classes.button} variant="contained" href="https://drive.google.com/file/d/1xYlY50lXttiuu0brV5CVd5H8qx96vDsK/view">
+                        <ButtonPDN target="_blank" href="https://drive.google.com/file/d/1xYlY50lXttiuu0brV5CVd5H8qx96vDsK/view">
                             Guía desarrollo PDE
-                        </Button>
+                        </ButtonPDN>
                         <Typography variant="h6" paragraph>
                             ¿Las Plataformas Digitales van a operar ahora sistemas como CompraNet o Declaranet?
                         </Typography>
@@ -677,9 +671,9 @@ export default function CustomizedExpansionPanels() {
                             Plataforma Digital Nacional.
                         </Typography>
 
-                        <Button variant="contained" className={classes.button} target="_blank" href="https://drive.google.com/file/d/1wHQpaFdP5An8V4Vhnjj1a4GBbYIREMHo/view?usp=sharing">
+                        <ButtonPDN target="_blank" href="https://drive.google.com/file/d/1wHQpaFdP5An8V4Vhnjj1a4GBbYIREMHo/view?usp=sharing">
                             Más información
-                        </Button>
+                        </ButtonPDN>
                     </div>
                 </AccordionDetails>
             </Accordion>

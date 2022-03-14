@@ -1,6 +1,6 @@
 import React from 'react';
 import { withStyles } from '@mui/styles';
-import {Divider, Grid, Button, Typography, Box, Paper} from '@mui/material';
+import {Divider, Grid, Typography, Box, Paper} from '@mui/material';
 import Estandar from "./DescripcionEstandar";
 import Licencia from "../Licencia";
 import Implementacion from "./Implementacion";
@@ -9,6 +9,7 @@ import ProcoloConexion from "../ProcoloConexion";
 import bgimg from "../../../assets/rediseno/fondo_cruces.png";
 import pdnRoutes from "../../../routes";
 import HeaderV2 from "../../HomeV2/HeaderV2";
+import ButtonPDN from "../../Compartidos/ButtonPDN";
 
 const styles = theme => ({
     root: {
@@ -50,12 +51,6 @@ const styles = theme => ({
             marginLeft: "-1em"
         },
         paddingBottom: theme.spacing(1)
-    },
-    button: {
-        marginTop: theme.spacing(1),
-        marginRight: theme.spacing(1),
-        marginBottom: theme.spacing(2),
-        //background: '#ffe01b',//'#fecb6e'
     },
     paper: {
         backgroundColor: theme.palette.background.opaque,
@@ -101,40 +96,34 @@ const ServidoresIntervienen = props => {
                                 Diccionario de datos
                             </Typography>
 
-                            <Button
+                            <ButtonPDN
                                 href='https://docs.google.com/spreadsheets/d/1fRhDfHtrBPYyR36zxpenXWind9FP1pLAQJOVS69QwUM/edit?usp=sharing'
                                 target='_blank'
-                                variant='contained'
-                                color="secundario"
-                                className={classes.button}>
+                                >
                                 Más información
-                            </Button>
+                            </ButtonPDN>
 
                             <Typography variant='h5' paragraph>
                                 Catálogos de claves y valores
                             </Typography>
 
-                            <Button
+                            <ButtonPDN
                                 href='https://github.com/PDNMX/catalogos/tree/master/S2%20-%20Servidores%20p%C3%BAblicos%20en%20contrataciones'
                                 target='_blank'
-                                variant='contained'
-                                color="secundario"
-                                className={classes.button}>
+                                >
                                 Más información
-                            </Button>
+                            </ButtonPDN>
 
                             <Typography variant='h5' paragraph>
                                 Especificaciones en formato Open API Specification
                             </Typography>
 
-                            <Button
+                            <ButtonPDN
                                 href='https://www.plataformadigitalnacional.org/oas/ui/?urls.primaryName=S2'
                                 target='_blank'
-                                variant='contained'
-                                color="secundario"
-                                className={classes.button}>
+                                >
                                 Más información
-                            </Button>
+                            </ButtonPDN>
 
                             <ProcoloConexion urlPlan = {'https://drive.google.com/file/d/1ooAuvc1kNMiftE_R1yRglC6OK9bIIx8U/view'} apiName={'Servidores que intervienen en' +
                                 ' procedimientos de contratación'}/>

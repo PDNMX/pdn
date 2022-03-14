@@ -1,17 +1,11 @@
 import { Link, Typography } from '@mui/material';
 import React from 'react';
 import withStyles from '@mui/styles/withStyles';
-import Button from '@mui/material/Button';
+import ButtonPDN from "../../Compartidos/ButtonPDN";
 
 const styles = theme => ({
   root: {
     flexGrow: 1
-  },
-  button: {
-    marginTop: theme.spacing(1),
-    marginRight: theme.spacing(1),
-    marginBottom: theme.spacing(2),
-    background: '#ffe01b' //'#fecb6e'
   },
   ul: {
     listStyle: 'none',
@@ -29,9 +23,6 @@ const styles = theme => ({
     },
     'paddingBottom': theme.spacing(1)
   },
-  button: {
-    marginRight: theme.spacing(1)
-  }
 });
 
 class EspecificacionesTecnicas extends React.Component {
@@ -49,9 +40,9 @@ class EspecificacionesTecnicas extends React.Component {
         </Typography>
 
         <Typography paragraph>
-          <Button color={'secundario'} className={classes.button} target='_blank' href='https://docs.google.com/spreadsheets/d/19Kyq46YwJk9wM7znYLQdLEKfAF8jTF4WmGJINXd9Lwg/edit?ts=5d88f08f#gid=0' variant='contained'>
+          <ButtonPDN  target='_blank' href='https://docs.google.com/spreadsheets/d/19Kyq46YwJk9wM7znYLQdLEKfAF8jTF4WmGJINXd9Lwg/edit?ts=5d88f08f#gid=0' variant='contained'>
             Más información
-          </Button>
+          </ButtonPDN>
         </Typography>
 
         <Typography paragraph variant='h5'>
@@ -59,9 +50,9 @@ class EspecificacionesTecnicas extends React.Component {
         </Typography>
 
         <Typography paragraph>
-          <Button color={'secundario'} className={classes.button} target='_blank' variant='contained' href='https://github.com/PDNMX/catalogos/tree/master/S1%20-%20Declaraciones'>
+          <ButtonPDN  target='_blank'  href='https://github.com/PDNMX/catalogos/tree/master/S1%20-%20Declaraciones'>
             Más información
-          </Button>
+          </ButtonPDN>
         </Typography>
 
         <Typography paragraph variant='h5'>
@@ -90,9 +81,9 @@ class EspecificacionesTecnicas extends React.Component {
           Versionado
         </Typography>
         <Typography paragraph>
-          <Button color={'secundario'} className={classes.button} target='_blank' variant='contained' href='https://drive.google.com/file/d/1xIPoMa-xKlCi9OZs_Uc7ffvANImaKWnK/view'>
+          <ButtonPDN  target='_blank' href='https://drive.google.com/file/d/1xIPoMa-xKlCi9OZs_Uc7ffvANImaKWnK/view'>
             Más información
-          </Button>
+          </ButtonPDN>
         </Typography>
       </div>
     );

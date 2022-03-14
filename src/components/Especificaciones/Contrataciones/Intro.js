@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    Typography, Divider, Button, List, ListItem, ListItemAvatar, Avatar, ListItemText
+    Typography, Divider, List, ListItem, ListItemAvatar, Avatar, ListItemText
 } from "@mui/material";
 import withStyles from '@mui/styles/withStyles';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
@@ -8,17 +8,12 @@ import BarChartIcon from '@mui/icons-material/BarChart';
 import DescriptionIcon from "@mui/icons-material/Description";
 import BuildIcon from '@mui/icons-material/Build';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp'
+import ButtonPDN from "../../Compartidos/ButtonPDN";
 const styles = theme => ({
     root: {
         flexGrow: 1,
         paddingTop: theme.spacing(2),
         paddingBottom: theme.spacing(2)
-    },
-    button: {
-        marginTop: theme.spacing(1),
-        marginRight: theme.spacing(1),
-        marginBottom: theme.spacing(2),
-        //background: '#ffe01b',//'#fecb6e'
     },
     ul: {
         listStyle: 'none',
@@ -87,12 +82,10 @@ const Intro = props => {
                 a la Plataforma Digital Nacional de manera uniforme, haciendo que la información sea comparable, accesible y utilizable.
             </Typography>
 
-            <Button href="https://standard.open-contracting.org/latest/es/"
-                    color="secundario"
-                    className={classes.button}
-                    target="_blank" variant="contained">
+            <ButtonPDN href="https://standard.open-contracting.org/latest/es/"
+                    target="_blank" >
                 Conoce más
-            </Button>
+            </ButtonPDN>
 
             <Typography paragraph className={classes.title}>
                 ¿Qué distingue a una Contratación Abierta?
@@ -181,14 +174,11 @@ const Intro = props => {
             <Typography>
                 Toda la información ha sido publicada por la Open Contracting Partnership en el siguiente enlace:
             </Typography>
-            <Button
-                className={classes.button}
-                variant="contained"
-                color="secundario"
+            <ButtonPDN
                 href="https://standard.open-contracting.org/latest/es/"
                 target="_blank">
                 Estándar OCDS
-            </Button>
+            </ButtonPDN>
 
             <Typography paragraph>
                 Asimismo, para consultar la traducción, puede consultarse la especificación técnica del Sistema 6 más adelante en
@@ -230,15 +220,12 @@ const Intro = props => {
                 Para conocer más sobre las extensiones consulta el siguiente enlace:
             </Typography>
 
-            <Button
-                variant="contained"
-                className={classes.button}
-                color="secundario"
+            <ButtonPDN
                 href="https://standard.open-contracting.org/latest/es/guidance/map/extensions/"
                 target="_blank"
             >
                 Extensiones OCDS
-            </Button>
+            </ButtonPDN>
 
             <Typography paragraph className={classes.title}>
                 ¿El Sistema 6 de la PDN sustituye CompraNet?
@@ -263,10 +250,10 @@ const Intro = props => {
                 Contiene la traducción del Open Contracting Data Standar para México.
             </Typography>
 
-            <Button href="https://drive.google.com/file/d/1z5uKwMozYMtVPBRcmKJfoZasI417O-p9/view?usp=sharing"
-                    target="_blank" className={classes.button} variant="contained" color="secundario">
+            <ButtonPDN href="https://drive.google.com/file/d/1z5uKwMozYMtVPBRcmKJfoZasI417O-p9/view?usp=sharing"
+                    target="_blank" >
                 Conoce más
-            </Button>
+            </ButtonPDN>
 
             <Typography className={classes.title}>
                 Esquema de entrega (Release Schema)
@@ -276,12 +263,11 @@ const Intro = props => {
                 El esquema de entrega proporciona la definición oficial de los campos y su estructura en Formato JSON.
             </Typography>
 
-            <Button
+            <ButtonPDN
                 href="https://standard.open-contracting.org/schema/1__1__5/release-schema.json"
-                target="_blank" className={classes.button} variant="contained" color="secundario"
-            >
+                target="_blank">
                 Conoce más
-            </Button>
+            </ButtonPDN>
 
         </div>
     )

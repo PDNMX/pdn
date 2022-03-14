@@ -2,19 +2,13 @@ import React from "react";
 import {Typography} from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import GetAppIcon from "@mui/icons-material/GetApp";
-import Button from "@mui/material/Button";
 import withStyles from '@mui/styles/withStyles';
 import {Link} from "react-router-dom";
+import ButtonPDN from "../Compartidos/ButtonPDN";
 
 const styles = theme => ({
     root: {
         flexGrow: 1
-    },
-    button: {
-        marginTop: theme.spacing(1),
-        marginRight: theme.spacing(1),
-        marginBottom: theme.spacing(2),
-        //background: '#ffe01b',//'#fecb6e'
     }
 });
 
@@ -34,27 +28,23 @@ const ProtocoloConexion = props => {
             <Typography paragraph>
                 Posteriormente el equipo de la PDN llevará a cabo el procedimiento para la verificación del funcionamiento del API {apiName}, que consiste en la ejecución del siguiente <b>Plan de pruebas</b>.
             </Typography>
-            <Button
+            <ButtonPDN
                 href= {urlPlan}
                 target='_blank'
-                variant='contained'
-                color="secundario"
-                className={classes.button}>
+                >
                 Plan de pruebas
-            </Button>
+            </ButtonPDN>
 
             <Typography paragraph>
                 Adicionalmente, ponemos a su disposición una herramienta de validación que permite verificar el cumplimiento de los esquemas de datos.
             </Typography>
 
-            <Button
+            <ButtonPDN
                 to='/validador'
                 component={Link}
-                variant='contained'
-                color="secundario"
-                className={classes.button}>
+                >
                 Validador
-            </Button>
+            </ButtonPDN>
         </div>
     )
 }

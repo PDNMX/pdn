@@ -2,16 +2,11 @@ import { Typography } from '@mui/material';
 import React from 'react';
 import withStyles from '@mui/styles/withStyles';
 import Button from '@mui/material/Button';
+import ButtonPDN from "../../Compartidos/ButtonPDN";
 
 const styles = theme => ({
   root: {
     flexGrow: 1
-  },
-  button: {
-    marginTop: theme.spacing(1),
-    marginRight: theme.spacing(1),
-    marginBottom: theme.spacing(2),
-    background: '#ffe01b' //'#fecb6e'
   },
   ul: {
     listStyle: 'none',
@@ -28,9 +23,6 @@ const styles = theme => ({
       marginLeft: '-1em'
     },
     'paddingBottom': theme.spacing(1)
-  },
-  button: {
-    marginRight: theme.spacing(1)
   }
 });
 
@@ -49,9 +41,9 @@ class DescripcionEstandar extends React.Component {
           También puedes hacer click en el botón que aparece a continuación, el cual <b>contienene información relevante para</b> los equipos encargados de desarrollar la <b>interconexión de su sistema de declaraciones</b> con la Plataforma Digital Nacional.
         </Typography>
         <Typography paragraph>
-          <Button color={'secundario'} variant='contained' className={classes.button} target='_blank' href='https://drive.google.com/file/d/1wHQpaFdP5An8V4Vhnjj1a4GBbYIREMHo/view?usp=sharing'>
+          <ButtonPDN  target='_blank' href='https://drive.google.com/file/d/1wHQpaFdP5An8V4Vhnjj1a4GBbYIREMHo/view?usp=sharing'>
             Más información
-          </Button>
+          </ButtonPDN>
         </Typography>
 
         <Typography variant='h5' paragraph>
@@ -110,9 +102,9 @@ class DescripcionEstandar extends React.Component {
         </Typography>
 
         <Typography paragraph>
-          <Button color={'secundario'} variant='contained' className={classes.button} target='_blank' href='https://github.com/OAI/OpenAPI-Specification'>
+          <ButtonPDN  target='_blank' href='https://github.com/OAI/OpenAPI-Specification'>
             Más información
-          </Button>
+          </ButtonPDN>
         </Typography>
 
         <Typography variant='h5' paragraph>
@@ -121,12 +113,12 @@ class DescripcionEstandar extends React.Component {
         <Typography paragraph>El acceso a las APIs que se integrarán a la PDN se gestionará a través del protocolo de autorización OAuth 2.0, el cual es un estándar ampliamente usado por la industria de Internet. El estándar OAuth 2.0 que permitirá a la PDN obtener acceso necesario a las APIs de las instituciones a través del uso de tokens de autorización.</Typography>
 
         <Typography paragraph>
-          <Button color={'secundario'} variant='contained' className={classes.button} target='_blank' href='https://oauth.net/2/'>
+          <ButtonPDN  target='_blank' href='https://oauth.net/2/'>
             Más información
-          </Button>{' '}
-          <Button color={'secundario'} variant='contained' className={classes.button} target='_blank' href='https://drive.google.com/file/d/17-npQleAV87gV19hbmtzgZipegl0qrIO/view?usp=sharing'>
+          </ButtonPDN>{' '}
+          <ButtonPDN  target='_blank' href='https://drive.google.com/file/d/17-npQleAV87gV19hbmtzgZipegl0qrIO/view?usp=sharing'>
             Guía de referencia
-          </Button>
+          </ButtonPDN>
         </Typography>
 
         <p></p>

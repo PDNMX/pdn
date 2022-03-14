@@ -13,6 +13,7 @@ import GetAppIcon from "@mui/icons-material/GetApp";
 import pdnRoutes from "../../../routes";
 import HeaderV2 from "../../HomeV2/HeaderV2";
 import bgimg from "../../../assets/rediseno/fondo_cruces.png";
+import ButtonPDN from "../../Compartidos/ButtonPDN";
 
 const styles = theme => ({
     list: {
@@ -115,25 +116,22 @@ const Sancionados = props => {
                                 Diccionario de datos
                             </Typography>
 
-                            <Button color={'secundario'}
+                            <ButtonPDN
                                     href='https://docs.google.com/spreadsheets/d/1wVaVFEJQloanwasIAASFiKGC8mbNEmeijK0F58PxgCA/edit?usp=sharing'
                                     target='_blank'
-                                    className={classes.button} variant='contained'
                             >
                                 Más información
-                            </Button>
+                            </ButtonPDN>
 
                             <Typography paragraph variant='h5'>
                                 Catálogos de claves y valores
                             </Typography>
 
-                            <Button color={'secundario'}
+                            <ButtonPDN
                                     href="https://github.com/PDNMX/catalogos/tree/master/S3%20-%20Sancionados"
-                                    target='_blank'
-                                    className={classes.button}
-                                    variant='contained'>
+                                    target='_blank'>
                                 Más información
-                            </Button>
+                            </ButtonPDN>
 
                             <Typography variant='h5' paragraph>
                                 Especificaciones en formato Open API Specification
@@ -176,20 +174,17 @@ const Sancionados = props => {
                                 del funcionamiento del API que consiste en la ejecución del siguiente <b>Plan de
                                 pruebas</b>.
                             </Typography>
-                            <Button color={'secundario'}
+                            <ButtonPDN
                                     href={'https://drive.google.com/file/d/1in6bHq8rqeTl_v48BpByDjgxeF2fIIve/view'}
-                                    target='_blank'
-                                    variant='contained'
-                                    className={classes.button}>
+                                    target='_blank'>
                                 Servidores Sancionados
-                            </Button>
-                            <Button color={'secundario'}
+                            </ButtonPDN>
+                            <ButtonPDN
                                     href={'https://drive.google.com/file/d/15mPsTLuW6u97cRMxBaEP8YCkAZnX32v-/view'}
                                     target='_blank'
-                                    variant='contained'
-                                    className={classes.button}>
+                                    >
                                 Particulares Sancionados
-                            </Button>
+                            </ButtonPDN>
                             <Typography paragraph>
                                 Adicionalmente, ponemos a disposición un <RouterLink to="/validador" className={classes.link}><Typography
                                 component={'span'}><b>Validador</b> </Typography></RouterLink>
