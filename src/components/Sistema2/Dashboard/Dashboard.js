@@ -24,7 +24,7 @@ const styles = theme => ({
         borderStyle: 'solid',
         borderWidth: 1,
         borderColor: theme.palette.secundario.main,
-        borderRadius: '10px 0px 10px 10px'
+        borderRadius: '10px 10px 10px 10px'
     }
 });
 

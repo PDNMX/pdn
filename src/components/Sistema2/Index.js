@@ -3,7 +3,6 @@ import withStyles from '@mui/styles/withStyles';
 import {Grid, Typography} from "@mui/material"
 import BuscadorS2 from "./BuscadorS2";
 import HeaderV2 from '../HomeV2/HeaderV2';
-import classNames from 'classnames';
 import Dashboard from "./Dashboard/Dashboard";
 import BuscadorParticularesSancionados from '../Sancionados/Particulares/BuscadorParticularesSancionados';
 import img1 from "../../assets/rediseno/svg_iconos_azul/SVG/s2_01.svg";
@@ -32,41 +31,53 @@ const styles = theme => ({
         color: theme.palette.secondary.contrastText,
         maxWidth: '1200px',
     },
-    tab: {
-        color: theme.palette.S2.color,
+    image: {
+        width: '60px'
+    },
+    card: {
+        backgroundColor: theme.palette.background.opaque,
         paddingLeft: theme.spacing(1),
         paddingRight: theme.spacing(1),
-        paddingTop: theme.spacing(2),
-        paddingBottom: theme.spacing(2),
+        paddingTop: theme.spacing(1),
+        paddingBottom: theme.spacing(1),
         margin: 0,
         "&:hover": {
             cursor: 'pointer',
-            backgroundColor: theme.palette.background.opaque,
+            backgroundColor: theme.palette.S3.color,
             transition: 'background 0.3s ease',
+            borderColor: theme.palette.secundario.main,
+            opacity: .7
         },
-    },
-    selectedTab: {
-        //backgroundColor: theme.palette.background.opaque,
-        color: theme.palette.S2.color,
-        borderStyle: 'solid',
-        borderColor: theme.palette.secundario.main,
-        borderRadius: '5px 5px 0px 0px',
-        borderBottomStyle: 'none',
-        paddingLeft: theme.spacing(1),
-        paddingRight: theme.spacing(1),
-        paddingTop: theme.spacing(2),
-        paddingBottom: theme.spacing(2),
-        margin: 0,
-    },
-    logo: {
-        width: '60px'
-    },
-    figure: {
         display: 'inline-block',
         float: 'left',
-        margin: 0,
         padding: 0,
-        paddingRight: '8px'
+        borderStyle: 'solid',
+        borderColor: theme.palette.background.opaque,
+        borderBottomStyle: 'none',
+        borderRadius: '10px 10px 0px 0px',
+        marginRight:10
+
+    },
+    cardSeleccionada: {
+        backgroundColor: theme.palette.S3.color,
+        paddingLeft: theme.spacing(1),
+        paddingRight: theme.spacing(1),
+        paddingTop: theme.spacing(1),
+        paddingBottom: theme.spacing(1),
+        margin: 0,
+        borderStyle: 'solid',
+        borderColor: theme.palette.secundario.main,
+        borderBottomStyle: 'none',
+        borderRadius: '10px 10px 0px 0px',
+        display: 'inline-block',
+        float: 'left',
+        marginRight:10,
+        opacity:.7
+    },
+    labelCard:{
+        color: theme.palette.S3.color,
+        marginLeft: theme.spacing(1),
+        paddingTop: theme.spacing(1)
     }
 });
 
@@ -97,45 +108,39 @@ const Index = props => {
             <Grid container spacing={0} justifyContent="center" className={classes.container}>
                 <Grid item xs={12} className={classes.tabsSection}>
                     <Grid container spacing={0}>
-                        <Grid item md={4} xs={12}
-                              onClick={() => setContentId(1)}
-                              className={classNames(contentId !== 1 ? classes.tab : classes.selectedTab)}>
+                        <Grid item md={4} xs={12} onClick={() => setContentId(1)}>
 
-                            <figure className={classes.figure}>
+                            <figure className={contentId !== 1 ? classes.card : classes.cardSeleccionada}>
                                 <img src={img1} alt="Servidores que intervinen en procesos de contratacion"
-                                     className={classes.logo}/>
+                                     className={classes.image}/>
                             </figure>
-                            <Typography variant="subtitle1" className={classes.tabText}
-                                        style={{fontWeight: contentId === 1 ? 500 : 300}}
-                            >
-                                Buscador de Servidores que intervienen en procesos de contratación
+                            <Typography variant="subtitle1" className={classes.labelCard}
+                                        style={{fontWeight: contentId === 1 ? 500 : 300}}>
+                                Buscador de Servidores que intervienen en contrataciones
                             </Typography>
                         </Grid>
 
-                        <Grid item md={4} xs={12} onClick={() => setContentId(2)}
-                              className={classNames(contentId !== 2 ? classes.tab : classes.selectedTab)}>
+                        <Grid item md={4} xs={12} onClick={() => setContentId(2)}>
 
-                            <figure className={classes.figure}>
-                                <img src={img2} alt="Particulares inhabilitados" className={classes.logo}/>
+                            <figure className={contentId !== 2 ? classes.card : classes.cardSeleccionada}>
+                                <img src={img2} alt="Particulares inhabilitados" className={classes.image}/>
                             </figure>
                             <Typography variant="subtitle1"
                                         style={{fontWeight: contentId === 2 ? 500 : 300}}
-                                        className={classes.tabText}>
+                                        className={classes.labelCard}>
 
                                 Buscador de Particulares inhabilitados
                             </Typography>
                         </Grid>
 
-                        <Grid item md={4} xs={12}
-                              onClick={() => setContentId(3)}
-                              className={classNames(contentId !== 3 ? classes.tab : classes.selectedTab)}>
+                        <Grid item md={4} xs={12} onClick={() => setContentId(3)}>
 
-                            <figure className={classes.figure}>
-                                <img src={img3} alt="Visor de datos" className={classes.logo}/>
+                            <figure className={contentId !== 3 ? classes.card : classes.cardSeleccionada}>
+                                <img src={img3} alt="Visor de datos" className={classes.image}/>
                             </figure>
                             <Typography variant="subtitle1"
                                         style={{fontWeight: contentId === 3 ? 500 : 300}}
-                                        className={classes.tabText}>
+                                        className={classes.labelCard}>
                                 Visor de datos
                             </Typography>
 
@@ -144,7 +149,7 @@ const Index = props => {
                 </Grid>
 
                 <Grid item xs={12} className={classes.contentsSection}>
-                        <TabContents index={contentId}/>
+                    <TabContents index={contentId}/>
                 </Grid>
 
             </Grid>
