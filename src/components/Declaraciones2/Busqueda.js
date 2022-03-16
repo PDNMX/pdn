@@ -261,6 +261,7 @@ class Busqueda extends React.Component {
           let { prov } = prevState;
 
           prov[id] = p;
+          console.log('prov: ', prov);
 
           return {
             ...prevState,
@@ -524,8 +525,8 @@ class Busqueda extends React.Component {
               <div className={classes.resultadosRoot}>
                 {this.state.prov.map((p, i) => {
                   return (
-                    <BoxAccordion key={'res-' + i}>
-                      <BoxAccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header' className={classes.resultadosTitulo}>
+                    <BoxAccordion square key={'res-' + i}>
+                      <BoxAccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
                         <Grid container spacing={0}>
                           <Grid item xs={8}>
                             <Typography className={classes.resultadosHeading}>
@@ -552,7 +553,7 @@ class Busqueda extends React.Component {
                                   </Typography>
                                 </Grid>
                                 <Grid item xs={6}>
-                                  <Typography className={classes.resultadosHeading}>Total de registros: {p.total}</Typography>
+                                  <Typography className={classes.resultadosHeading}>Total de registros: {new Intl.NumberFormat().format(p.total)}</Typography>
                                 </Grid>
                               </Grid>
                             </Grid>
@@ -560,7 +561,7 @@ class Busqueda extends React.Component {
                         </Grid>
                       </BoxAccordionSummary>
                       {!p.finding && (
-                        <BoxAccordionDetails className={classes.resultadoContenido}>
+                        <BoxAccordionDetails>
                           {p.data.length > 0 && <Tabla rows={p.data} pagination={p.pagination} handleDataSelect={this.handleDataSelect} handleSetPage={this.handleSetPage} handleChangeRowsPerPage={this.handleChangeRowsPerPage} posicion={i} />}
 
                           {p.error && (

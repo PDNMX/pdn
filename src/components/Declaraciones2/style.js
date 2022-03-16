@@ -242,15 +242,25 @@ export default theme => ({
   },
   resultadosHeading: {
     fontSize: theme.typography.pxToRem(15),
-    fontWeight: theme.typography.fontWeightRegular
+    fontWeight: theme.typography.fontWeightBold
   },
   resultadosTitulo: {
-    backgroundColor: 'rgb(52, 179, 235)',
-    color: '#f5f5f5'
+    backgroundColor: theme.palette.background.opaque,
+    color: theme.palette.primario.contrastText,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: theme.palette.secundario.main
   },
   resultadoContenido: {
-    backgroundColor: 'rgb(242, 242, 242)',
-    color: '#666666'
+    // backgroundColor: theme.palette.background.opaque,
+    backgroundColor: 'rgba(42, 116, 145)',
+    color: theme.palette.primario.contrastText,
+    // borderStyle: 'solid',
+    // borderWidth: 1,
+    padding: theme.spacing(2),
+    borderLeft: `1px solid ${theme.palette.secundario.main}`,
+    borderRight: `1px solid ${theme.palette.secundario.main}`,
+    borderBottom: `1px solid ${theme.palette.secundario.main}`
   },
   perfilRoot: {
     paddingBottom: theme.spacing(2),
@@ -337,7 +347,7 @@ export default theme => ({
     marginBottom: '1rem'
   },
   btnBack: {
-    color: theme.palette.primary.dark
+    color: theme.palette.secundario.light
   },
   logo: {
     width: '60px'
@@ -374,5 +384,25 @@ export default theme => ({
     borderWidth: 1,
     borderColor: theme.palette.secundario.main,
     borderRadius: '0px 10px 10px 10px'
+  },
+  cuadroActualizacion: {
+    fontWeight: 'bolder',
+    color: '#0c5460',
+    // backgroundColor: '#d1ecf1',
+    borderColor: '#bee5eb',
+    border: '1px solid transparent',
+    borderRadius: '.25rem',
+    padding: '.75rem 1.25rem',
+    marginBottom: '1rem',
+    backgroundColor: '#D1ECF1'
+  },
+  paper_perfil: {
+    backgroundColor: 'rgba(42, 116, 145)',
+    padding: theme.spacing(4),
+    marginBottom: theme.spacing(4),
+    color: theme.palette.primario.contrastText
+  },
+  menulateral_fondo: {
+    backgroundColor: 'rgba(42, 116, 145)'
   }
 });
