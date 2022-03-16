@@ -4,14 +4,22 @@ import Version from "./Version";
 import Footer from "./Footer/";
 import ChatBotPDN from "../ChatBot/ChatBotPDN";
 
+import style from '../Declaraciones2/style';
+import { makeStyles } from '@mui/styles';
+
+const useStyles=makeStyles(style);
+
 const Layout = ({children})=>{
+    const classes = useStyles();
     return (
         <React.Fragment>
-            <Banner/>
-            <Version/>
-            {children}
-            <ChatBotPDN/>
-            <Footer/>
+            <div className={classes.backgroundCruces}>
+                <Banner/>
+                <Version/>
+                {children}
+                <ChatBotPDN/>
+                <Footer/>
+            </div>            
         </React.Fragment>
     );
 };
