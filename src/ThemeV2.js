@@ -72,16 +72,25 @@ export default createTheme(
     components: {
       MuiInputLabel: {
         styleOverrides: {
-          shrink: {
+          'shrink': {
             color: 'rgba(137, 212, 242, 1)'
           },
-          formControl: {
+          'formControl': {
             color: 'rgba(255, 255, 255, 0.67)'
+          },
+          '&.Mui-focused': {
+            borderColor: 'red'
           }
         }
       },
       MuiOutlinedInput: {
         styleOverrides: {
+          root: {
+            'borderColor': '#FFF',
+            '&:hover': {
+              borderColor: 'rgba(255, 255, 255, 0.23)'
+            }
+          },
           notchedOutline: {
             borderColor: 'rgba(255, 255, 255, 0.23)'
             // backgroundColor: '#0d3b49',
@@ -117,11 +126,10 @@ export default createTheme(
           root: {
             'color': '#ced8db',
             '&:hover': {
-              color: '#F9CFC8'
+              color: 'rgba(137, 212, 242, 1)'
             },
             '&.Mui-active': {
-              color: 'rgba(137, 212, 242, 1)',
-              
+              color: '#F9CFC8'
             }
           },
           icon: {
@@ -129,6 +137,15 @@ export default createTheme(
           },
           iconDirectionDesc: {
             color: '#ced8db'
+          }
+        }
+      },
+      MuiInputBase: {
+        styleOverrides: {
+          root: {
+            '&.MuiOutLinedInput': {
+              borderColor: 'rgba(255, 255, 255, 0.23)'
+            }
           }
         }
       }
