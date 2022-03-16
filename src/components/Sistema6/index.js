@@ -38,42 +38,6 @@ const styles = theme => ({
         paddingBottom: theme.spacing(8),
         // overflow: "auto"
     },
-    tab: {
-        color: theme.palette.S6.color,
-        paddingLeft: theme.spacing(1),
-        paddingRight: theme.spacing(1),
-        paddingTop: theme.spacing(2),
-        paddingBottom: theme.spacing(2),
-        margin: 0,
-        '&:hover':{
-            cursor: 'pointer',
-            backgroundColor: theme.palette.background.opaque,
-            transition: 'background 0.3s ease',
-        }
-    },
-    selectedTab: {
-        color: theme.palette.S6.color,
-        //backgroundColor: theme.palette.background.opaque,
-        borderStyle: 'solid',
-        borderColor: theme.palette.secundario.main,
-        borderRadius: '5px 5px 0px 0px',
-        borderBottomStyle: 'none',
-        paddingLeft: theme.spacing(1),
-        paddingRight: theme.spacing(1),
-        paddingTop: theme.spacing(2),
-        paddingBottom: theme.spacing(2),
-        margin: 0,
-    },
-    tabIcon: {
-        width: 60,
-    },
-    figure: {
-        display: 'inline-block',
-        float: 'left',
-        margin: 0,
-        padding: 0,
-        paddingRight: '8px'
-    },
     paper1: {
         backgroundColor: theme.palette.background.opaque,
         padding: theme.spacing(2),
@@ -91,8 +55,55 @@ const styles = theme => ({
         borderWidth: 1,
         borderColor: theme.palette.secundario.main,
         borderRadius: '10px 0px 10px 10px'
-    }
-});
+    },
+    image: {
+        width: '60px'
+    },
+    card: {
+        backgroundColor: theme.palette.background.opaque,
+        paddingLeft: theme.spacing(1),
+        paddingRight: theme.spacing(1),
+        paddingTop: theme.spacing(1),
+        paddingBottom: theme.spacing(1),
+        margin: 0,
+        "&:hover": {
+            cursor: 'pointer',
+            backgroundColor: theme.palette.S3.color,
+            transition: 'background 0.3s ease',
+            borderColor: theme.palette.secundario.main,
+            opacity: .7
+        },
+        display: 'inline-block',
+        float: 'left',
+        padding: 0,
+        borderStyle: 'solid',
+        borderColor: theme.palette.background.opaque,
+        borderBottomStyle: 'none',
+        borderRadius: '10px 10px 0px 0px',
+        marginRight:10
+
+    },
+    cardSeleccionada: {
+        backgroundColor: theme.palette.S3.color,
+        paddingLeft: theme.spacing(1),
+        paddingRight: theme.spacing(1),
+        paddingTop: theme.spacing(1),
+        paddingBottom: theme.spacing(1),
+        margin: 0,
+        borderStyle: 'solid',
+        borderColor: theme.palette.secundario.main,
+        borderBottomStyle: 'none',
+        borderRadius: '10px 10px 0px 0px',
+        display: 'inline-block',
+        float: 'left',
+        marginRight:10,
+        opacity:.7
+    },
+    labelCard:{
+        color: theme.palette.S3.color,
+        marginLeft: theme.spacing(1),
+        paddingTop: theme.spacing(1)
+}});
 
 
 const Index = props => {
@@ -111,13 +122,14 @@ const Index = props => {
                     <Grid item xs={12} sm={12} md={6} lg={6} xl={6}
                           onClick={() => handleSelectTab(0)}
                           id={0}
-                          className={isSelected(0)?classes.selectedTab:classes.tab}>
+                          //className={isSelected(0)?classes.selectedTab:classes.tab}
+                    >
 
-                        <figure className={classes.figure}>
-                            <img src={img1} className={classes.tabIcon} alt="explora"/>
+                        <figure className={isSelected(0)?classes.cardSeleccionada: classes.card}>
+                            <img src={img1} className={classes.image} alt="explora"/>
                         </figure>
 
-                        <Typography style={{fontWeight: isSelected(0)?500:300, paddingTop: 15}}>
+                        <Typography style={{fontWeight: isSelected(0)?500:300, paddingTop: 15}} className={classes.labelCard}>
                             Explora las contrataciones
                         </Typography>
 
@@ -125,13 +137,14 @@ const Index = props => {
                     <Grid item xs={12} sm={12} md={6} lg={6} xl={6}
                           onClick={ () => handleSelectTab(1)}
                           id={1}
-                          className={isSelected(1)?classes.selectedTab:classes.tab}>
+                          //className={isSelected(1)?classes.selectedTab:classes.tab}
+                    >
 
-                        <figure className={classes.figure}>
-                            <img src={img3} className={classes.tabIcon} alt="Visualiza"/>
+                        <figure className={isSelected(1)? classes.cardSeleccionada: classes.card}>
+                            <img src={img3} className={classes.image} alt="Visualiza"/>
                         </figure>
 
-                        <Typography style={{fontWeight: isSelected(1)?500:300, paddingTop: 15}}>
+                        <Typography style={{fontWeight: isSelected(1)?500:300, paddingTop: 15}} className={classes.labelCard}>
                             Visualiza las contrataciones
                         </Typography>
 
