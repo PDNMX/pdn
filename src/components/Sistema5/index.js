@@ -52,19 +52,21 @@ const index = props => {
             <Grid item xs={12} className={classes.item}>
                 <Paper elevation={15} className={classes.paper}>
                     <Box className={classes.box}>
-                <CustomTypography variant="h4" paragraph>
-                    Sistema 5
-                </CustomTypography>
+                        <CustomTypography variant="h4" paragraph>
+                            Sistema 5
+                        </CustomTypography>
 
-                <CustomTypography>
-                    "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
-                </CustomTypography>
-                <CustomTypography>
-                    "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
-                </CustomTypography>
-                <CustomTypography>
-                    "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
-                </CustomTypography>
+                        <CustomTypography paragraph>
+                            Sistema en construcción.
+                        </CustomTypography>
+
+                        <CustomTypography paragraph>
+                            Estamos trabajando en el desarrollo del Sistema de denuncias públicas de faltas administrativas y hechos de corrupción (S5).
+                        </CustomTypography>
+
+                        <CustomTypography paragraph>
+                            Este sistema permitirá establecer un canal único para la denuncia de faltas administrativas y hechos de corrupción y simplificará su presentación, trámite y seguimiento generando información relevante para el Sistema Nacional Anticorrupción.
+                        </CustomTypography>
                     </Box>
                 </Paper>
             </Grid>

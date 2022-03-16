@@ -55,14 +55,19 @@ const index = props => {
                         <CustomTypography variant="h4" paragraph>
                             Sistema 4
                         </CustomTypography>
-                        <CustomTypography>
-                            "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
+
+                        <CustomTypography paragraph>
+                            Sistema en construcción.
                         </CustomTypography>
-                        <CustomTypography>
-                            "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
+                        <CustomTypography paragraph>
+                            Estamos trabajando en el desarrollo del Sistema de información y comunicación del Sistema Nacional Anticorrupción y del Sistema Nacional de Fiscalización.
                         </CustomTypography>
-                        <CustomTypography>
-                            "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
+                        <CustomTypography paragraph>
+                            El objeto del sistema es permitir la centralización de la información que generan los órganos integrantes del Sistema Nacional de Fiscalización, con la finalidad de ampliar la cobertura e impacto de la fiscalización de recursos federales y locales mediante la construcción de un modelo de coordinación entre la federación, los estados y los municipios.
+                        </CustomTypography>
+
+                        <CustomTypography paragraph>
+                            Este Sistema se encuentra en proceso de consulta con el Comité Rector del Sistema Nacional de Fiscalización.
                         </CustomTypography>
                     </Box>
                 </Paper>
