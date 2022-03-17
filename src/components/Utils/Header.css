@@ -1,0 +1,26 @@
+.breadcrumb {
+    /*background: #0d3b49;*/
+    padding: 24px 0 24px; }
+.breadcrumb ul {
+    line-height: 12px;
+    margin: 0; }
+.breadcrumb li {
+    font-size: 12px;
+    display: inline-block;
+    list-style: none;
+    margin-right: 5px;
+    font-family: Noto Sans SC, "Helvetica", "Arial", "sans-serif";
+}
+.breadcrumb li:after {
+    content: ">";
+    margin-left: 5px; }
+.breadcrumb li:last-child {
+    color: #999999; }
+.breadcrumb li:last-child:after {
+    content: ""; }
+.breadcrumb li a {
+    color: whitesmoke;
+    border-bottom: 1px dotted #34b3eb;
+}
+
+

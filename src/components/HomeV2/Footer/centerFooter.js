@@ -1,0 +1,62 @@
+import { Grid } from '@mui/material';
+import { Typography } from '@mui/material';
+import { Link } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
+
+import { makeStyles } from '@mui/styles';
+import css from './cssFooter';
+
+const useStyles = makeStyles(css);
+
+export default props => {
+  const classes = useStyles();
+
+  return (
+    <Grid container className={classes.centerFoot}>
+      <Grid item xs={12} className={classes.centerFoot_padding}>
+        <Grid container direction={'row'} justifyContent={'center'} alignItems={'stretch'}>
+          <Grid item xs={4}>
+            <Grid container direction='column' justifyContent='flex-start' alignItems='flex-end' className={classes.centerFoot_left}>
+              <Grid item style={{ textAlign: 'right' }}>
+                {/* <Typography variant='subtitle1' style={{ color: '#FFF' }}>
+                  <strong>Sistemas PDN</strong>
+                </Typography> */}
+                <Typography variant='subtitle1'>
+                  <Link href='https://www.plataformadigitalnacional.org/mapa-sla/' target='_blank' underline='none' className={classes.enlaces}>
+                    Avances de Interconexión
+                  </Link>
+                </Typography>
+                <Typography variant='subtitle1'>
+                  <Link href='https://mda.plataformadigitalnacional.org/' target='_blank' underline='none' className={classes.enlaces}>
+                    Mercado Digital Anticorrupción
+                  </Link>
+                </Typography>
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item xs={1}>
+            <Grid container direction='column' justifyContent='flex-start' alignItems='flex-start' className={classes.centerFoot_center}></Grid>
+          </Grid>
+          <Grid item>
+            <Grid container direction='column' justifyContent='flex-start' alignItems='flex-start' className={classes.centerFoot_right}>
+              <Grid item>
+                <Typography variant='subtitle1'>
+                  <RouterLink to={'/faq'} className={classes.enlaces}>
+                    Preguntas frecuentes
+                  </RouterLink>
+                </Typography>
+                <Typography variant='subtitle1'>
+                  <RouterLink to={'#'} className={classes.enlaces}>Videos</RouterLink>
+                </Typography>
+                <Typography variant='subtitle1'>
+                  <RouterLink to={'#'} className={classes.enlaces}>Boletines y prensa</RouterLink>
+                </Typography>
+                {/* <Typography variant='subtitle1'>Suscribete</Typography> */}
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Grid>
+  );
+};

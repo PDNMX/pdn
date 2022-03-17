@@ -1,0 +1,18 @@
+.fenito {
+  /* z-index: -1;
+  position: absolute;  
+  width: 100%;
+  right: 0;
+  top: 0; */
+  width: "50%";
+  height: "100%";
+  overflow: "hidden";
+  align-items: "center";
+  background-color: "orange";
+  position: "relative";
+  margin: 10;
+}
+
+.servidores {
+  background: rgba(119, 119, 118, 0.87);
+}

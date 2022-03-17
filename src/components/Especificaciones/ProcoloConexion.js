@@ -1,0 +1,52 @@
+import React from "react";
+import {Typography} from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import GetAppIcon from "@mui/icons-material/GetApp";
+import withStyles from '@mui/styles/withStyles';
+import {Link} from "react-router-dom";
+import ButtonPDN from "../Compartidos/ButtonPDN";
+
+const styles = theme => ({
+    root: {
+        flexGrow: 1
+    }
+});
+
+const ProtocoloConexion = props => {
+    const {classes} = props;
+    const {urlPlan, apiName} = props;
+    return(
+        <div className={classes.root}>
+            <Typography variant='h5' paragraph>
+                Protocolo de conexión
+            </Typography>
+            <Typography paragraph>
+                El primer paso en el proceso de establecer conexión con la Plataforma Digital Nacional es requisitar correctamente el formato de <b>Solicitud de conexión</b>
+                <IconButton target={'_blank'} href={'https://drive.google.com/file/d/1ANQG3f1Q7aO4soQR9__2FvHEi_-UwvBe/view'} color="primary" aria-label="descargar"  size={'small'}><GetAppIcon/></IconButton>
+                y enviarlo al correo electrónico: <b>pdn@sesna.gob.mx</b>
+            </Typography>
+            <Typography paragraph>
+                Posteriormente el equipo de la PDN llevará a cabo el procedimiento para la verificación del funcionamiento del API {apiName}, que consiste en la ejecución del siguiente <b>Plan de pruebas</b>.
+            </Typography>
+            <ButtonPDN
+                href= {urlPlan}
+                target='_blank'
+                >
+                Plan de pruebas
+            </ButtonPDN>
+
+            <Typography paragraph>
+                Adicionalmente, ponemos a su disposición una herramienta de validación que permite verificar el cumplimiento de los esquemas de datos.
+            </Typography>
+
+            <ButtonPDN
+                to='/validador'
+                component={Link}
+                >
+                Validador
+            </ButtonPDN>
+        </div>
+    )
+}
+
+export default withStyles (styles) (ProtocoloConexion);
