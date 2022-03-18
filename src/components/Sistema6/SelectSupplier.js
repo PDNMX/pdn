@@ -1,15 +1,13 @@
 import React from 'react';
-import { FormControl, InputLabel, MenuItem, Paper, Select, Typography } from "@mui/material";
+import { FormControl, MenuItem, Select, Typography, InputLabel } from "@mui/material";
 
 import withStyles from '@mui/styles/withStyles';
 
 const dataSuppliers = require("./suppliers.json");
 
 const styles = theme => ({
-    paper: {
-        padding : theme.spacing(2),
-        paddingBottom: theme.spacing(3),
-        marginBottom: theme.spacing(2)
+    root: {
+        paddingTop : theme.spacing(4),
     }
 });
 
@@ -17,11 +15,13 @@ const SelectSupplier = props => {
     const {classes, dataSupplier, setDataSupplier} = props;
     const handleSetDataSupplier = e => setDataSupplier(e.target.value);
 
-    return <div>
-        <Paper className={classes.paper} elevation={3}>
+    return <div className={classes.root}>
+        {/*
+            <Paper className={classes.paper} elevation={3}>
             <Typography paragraph>
                 <b>Proveedor de información</b>
             </Typography>
+            */}
 
             <FormControl fullWidth>
                 <InputLabel>
@@ -38,7 +38,7 @@ const SelectSupplier = props => {
                 </Select>
             </FormControl>
 
-        </Paper>
+        {/*</Paper>*/}
     </div>
 }
 

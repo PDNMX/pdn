@@ -26,17 +26,18 @@ const styles = theme => ({
         overflowX: 'auto',
     },
     tableCell: {
-        //color: theme.palette.text.main
+        color: theme.palette.text.main
     },
     tableHead: {
-        backgroundColor: "#34B3EB"
+        backgroundColor: theme.palette.primario.main,
     },
     tableBody:{
         backgroundColor: '#f2f2f2'
     },
     fab: {
         margin: theme.spacing(1),
-        backgroundColor: '#ffe01b'
+        color: theme.palette.text.main,
+        backgroundColor: theme.palette.primario.main
     }
 });
 
@@ -91,7 +92,7 @@ const TablaResumen = props => {
                                         <TableCell align="left">{row.supplier_name}</TableCell>
                                         <TableCell align="center">
                                             <Tooltip title={row.error ? " No conectado" : " Conectado"}>
-                                                <IconSunny color={row.error ? "disabled" : "primary"}/>
+                                                <IconSunny color={row.error ? "disabled" : "primario"}/>
                                             </Tooltip>
                                         </TableCell>
                                         <TableCell align="center">{row.totalRows}</TableCell>

@@ -62,6 +62,9 @@ const styles = theme => ({
         borderWidth: 1,
         borderColor: theme.palette.secundario.main,
         borderRadius: '0px 10px 10px 10px'
+    },
+    tableBody: {
+        background: theme.palette.background.tableBody
     }
 });
 
@@ -441,7 +444,7 @@ class BuscadorS2 extends React.Component {
                                     onRequestSort={this.handleRequestSort}
                                     columnData={columnData}
                                 />
-                                <TableBody>
+                                <TableBody className={classes.tableBody}>
                                     {results
                                         .sort(getSorting(order, orderBy))
                                         .map((n, index) => {
@@ -469,7 +472,7 @@ class BuscadorS2 extends React.Component {
                                     )*/}
 
                                 </TableBody>
-                                <TableFooter>
+                                <TableFooter className={classes.tableBody}>
                                     <TableRow>
                                         <TablePagination
                                             className={classes.tablePagination}

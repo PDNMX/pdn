@@ -19,7 +19,8 @@ const withMobileDialog = () => (WrappedComponent) => (props) => <WrappedComponen
 
 const styles = theme => ({
     button: {
-        background: '#ffe01b',
+        //background: '#ffe01b',
+        marginLeft: theme.spacing(1)
     },
     divider: {
         marginBottom: theme.spacing(1)
@@ -107,11 +108,11 @@ function ResponsiveDialog(props) {
 
                 </DialogContent>
                 <DialogActions>
-                    <Button href={handleDownload()} variant="contained"
+                    <Button href={handleDownload()} variant="contained" color="secundario"
                             download={(data !== null ? data.ocid : 'datos')+'.json'}
                             className={classes.button}
                     ><DownloadIcon/></Button>
-                    <Button onClick={handleCloseDialog}  variant="contained" color="primary" autoFocus
+                    <Button onClick={handleCloseDialog}  variant="contained" color="secundario" autoFocus
                             className={classes.button}
                     >
                         Cerrar

@@ -32,7 +32,7 @@ function EnhancedTableHead(props) {
     } = props;
 
     return (
-        <TableHead>
+        <TableHead className={classes.tableHead}>
             <TableRow>
                 {headRows.map(row => (
                     <TableCell
@@ -45,6 +45,7 @@ function EnhancedTableHead(props) {
                             active={orderBy === row.id}
                             direction={order}
                             //onClick={createSortHandler(row.id)}
+                            className={classes.tsl}
                         >
                             {row.label}
                             {orderBy === row.id ? (
@@ -123,6 +124,12 @@ const useStyles = makeStyles(theme => ({
         top: 20,
         width: 1,
     },
+    tableHead: {
+        background: theme.palette.primario.main
+    },
+    tsl:{
+        color: theme.palette.text.main
+    }
 }));
 
 export default function EnhancedTable(props) {

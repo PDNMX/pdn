@@ -56,7 +56,7 @@ const BarChart = props => {
         padding: '5px',
         fontSize: 12,
         fontWeight: 400,
-        fontFamily: 'Noto Sans SC',
+        fontFamily: 'Roboto',
         borderRadius: 4,
         maxWidth: 150
 
@@ -111,7 +111,7 @@ const BarChart = props => {
                     style={{
                         transform: 'rotate(-90)',
                         textAnchor: 'end',
-                        fontFamily: 'Noto Sans SC',
+                        fontFamily: 'Roboto',
                     }}
                 />
 
@@ -122,9 +122,10 @@ const BarChart = props => {
                     xPercent={0.5}
                     yPercent={0.75}
                     style={{
+                        color: "#f2f2f2",
                         //transform: 'rotate(-90)',
                         textAnchor: 'center',
-                        fontFamily: 'Noto Sans SC',
+                        fontFamily: 'Roboto',
                     }}
                 />
 

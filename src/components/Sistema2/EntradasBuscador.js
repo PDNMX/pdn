@@ -1,6 +1,6 @@
 import React from 'react';
 import withStyles from '@mui/styles/withStyles';
-import {TextField, MenuItem, FormControl, Grid, Typography} from "@mui/material"
+import {TextField, MenuItem, FormControl, Grid, Paper, Typography} from "@mui/material"
 import Button from '@mui/material/Button';
 import InputLabel from '@mui/material/InputLabel';
 import Select from "@mui/material/Select";
@@ -51,7 +51,7 @@ const EntradasBuscador = props => {
         <div className={classes.root}>
             <Grid container spacing={4}>
                 <Grid item xs={12}>
-                    <Typography variant="h6">
+                    <Typography >
                         <b>Busca servidores públicos que intervienen en contrataciones, concesiones, enajenaciones y dictámenes</b>
                     </Typography>
                 </Grid>

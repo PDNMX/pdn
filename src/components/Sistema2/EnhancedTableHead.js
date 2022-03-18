@@ -3,9 +3,12 @@ import {TableHead, TableRow, TableCell, Typography} from "@mui/material";
 import {withStyles} from '@mui/styles';
 
 const styles = theme => ({
-    tableHead: {
-       // color: theme.palette.black.color
+    root: {
+       background: theme.palette.primario.main
     },
+    tableHead: {
+        color: theme.palette.text.main
+    }
 });
 
 const EnhancedTableHead = props => {
@@ -13,7 +16,7 @@ const EnhancedTableHead = props => {
     const columnData_ = columnData.filter(c => c.mostrar === true );
 
     return (
-        <TableHead style={{backgroundColor:'#f5f5f5'}}>
+        <TableHead className={classes.root}>
             <TableRow>
                 {
                     columnData_.map((column, index) => {

@@ -34,7 +34,7 @@ const SuppliersBarChart = props =>  {
         padding: '5px',
         fontSize: 12,
         fontWeight: 400,
-        fontFamily: 'Noto Sans SC',
+        fontFamily: 'Roboto',
         borderRadius: 4,
         maxWidth: 150,
 
@@ -91,7 +91,7 @@ const SuppliersBarChart = props =>  {
                     style={{
                         transform: 'rotate(-90)',
                         textAnchor: 'end',
-                        fontFamily: 'Noto Sans SC, "Helvetica", "Arial", "sans-serif"',
+                        fontFamily: 'Roboto, "Helvetica", "Arial", "sans-serif"',
                     }}
                     className={classes.chartLabel}
                 />
