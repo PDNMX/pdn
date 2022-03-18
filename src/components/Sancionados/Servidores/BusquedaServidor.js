@@ -12,6 +12,8 @@ import MensajeErrorDatos from "../../Mensajes/MensajeErrorDatos";
 import Previos from "../../Compartidos/Previos";
 import TablaServidoresSancionados from "./TablaServidoresSancionados";
 import DetalleServidorSancionado from "./DetalleServidorSancionado";
+import { ThemeProvider } from '@mui/material/styles';
+import ThemeV2 from "../../../ThemeV2";
 
 const axios = require('axios');
 
@@ -352,258 +354,261 @@ class BusquedaServidor extends React.Component {
         } = this.state;
 
         return (
-            <React.Fragment>
-                {/*Buscador*/}
-                <Grid container spacing={4}>
-                    <Grid item xs={12}>
-                        <Typography><b>Busca un servidor público sancionado</b></Typography>
-                    </Grid>
-                    <Grid item xs={12} md={2}>
-                        <TextField
-                            id="nombres"
-                            label="Nombre(s)"
-                            onChange={(e) => this.handleChangeCampo('nombres', e)}
-                            value={nombres}
-                        />
+            <ThemeProvider theme={ThemeV2}>
+                <React.Fragment>
+                    {/*Buscador*/}
+                    <Grid container spacing={4}>
+                        <Grid item xs={12}>
+                            <Typography><b>Busca un servidor público sancionado</b></Typography>
+                        </Grid>
+                        <Grid item xs={12} md={2}>
+                            <TextField
+                                id="nombres"
+                                label="Nombre(s)"
+                                onChange={(e) => this.handleChangeCampo('nombres', e)}
+                                value={nombres}
+                            />
 
-                    </Grid>
-                    <Grid item xs={12} md={2}>
-                        <TextField
-                            id="primerApellido"
-                            label="Apellido Uno"
-                            type="search"
-                            onChange={(e) => this.handleChangeCampo('primerApellido', e)}
-                            value={primerApellido}
-                        />
-                    </Grid>
-                    <Grid item xs={12} md={2}>
-                        <TextField
-                            id="segundoApellido"
-                            label="Apellido Dos"
-                            type="search"
-                            onChange={(e) => this.handleChangeCampo('segundoApellido', e)}
-                            value={segundoApellido}
-                        />
-                    </Grid>
-                    <Grid item xs={12} md={6}>
-                        <FormControl className={classes.formControl}>
-                            <InputLabel id="tipoSancion-label">Tipo sanción</InputLabel>
-                            <Select
-                                id="tipoSancion-checkbox"
-                                multiple
-                                value={tipoSancion}
-                                onChange={e => this.handleChangeCampo('tipoSancion', e)}
-                                input={<OutlinedInput label="Tipo sanción"/>}
-                                renderValue={
-                                    selected => {
-                                        return selected.map(element => element.label).join(', ')
+                        </Grid>
+                        <Grid item xs={12} md={2}>
+                            <TextField
+                                id="primerApellido"
+                                label="Apellido Uno"
+                                type="search"
+                                onChange={(e) => this.handleChangeCampo('primerApellido', e)}
+                                value={primerApellido}
+                            />
+                        </Grid>
+                        <Grid item xs={12} md={2}>
+                            <TextField
+                                id="segundoApellido"
+                                label="Apellido Dos"
+                                type="search"
+                                onChange={(e) => this.handleChangeCampo('segundoApellido', e)}
+                                value={segundoApellido}
+                            />
+                        </Grid>
+                        <Grid item xs={12} md={6}>
+                            <FormControl className={classes.formControl}>
+                                <InputLabel id="tipoSancion-label">Tipo sanción</InputLabel>
+                                <Select
+                                    id="tipoSancion-checkbox"
+                                    multiple
+                                    value={tipoSancion}
+                                    onChange={e => this.handleChangeCampo('tipoSancion', e)}
+                                    input={<OutlinedInput label="Tipo sanción"/>}
+                                    renderValue={
+                                        selected => {
+                                            return selected.map(element => element.label).join(', ')
+                                        }
                                     }
-                                }
-                                label={'Tipo sanción'}
-                                labelId={'tipoSancion-label'}
-                            >
-                                <MenuItem disabled value={[]}>
-                                    <em>Todos</em>
-                                </MenuItem>
-                                {tiposSancion.map(tipo => (
-                                    <MenuItem key={tipo.value} value={tipo}>
-                                        <Checkbox checked={tipoSancion.indexOf(tipo) > -1}/>
-                                        <ListItemText primary={tipo.label}/>
+                                    label={'Tipo sanción'}
+                                    labelId={'tipoSancion-label'}
+                                >
+                                    <MenuItem disabled value={[]}>
+                                        <em>Todos</em>
                                     </MenuItem>
-
-                                ))}
-                            </Select>
-                        </FormControl>
-                    </Grid>
-                    <Grid item xs={12} md={2}>
-                        <FormControl className={classes.formControl}>
-                            <InputLabel id="nivel-label">Nivel</InputLabel>
-                            <Select
-                                labelId="nivel-label"
-                                id="nivel-label-helper"
-                                value={nivel}
-                                label="Nivel"
-                                onChange={(e) => this.handleChangeCampo('nivel', e)}
-                            >
-                                <MenuItem value="any">
-                                    <em>Todos</em>
-                                </MenuItem>
-                                <MenuItem value={'Federal'} key={'Federal'}>
-                                    {'Federal'}
-                                </MenuItem>
-                                <MenuItem value={'Estatal'} key={'Estatal'}>
-                                    {'Estatal'}
-                                </MenuItem>
-                            </Select>
-                        </FormControl>
-                    </Grid>
-                    <Grid item md={4} xs={12}>
-                        <FormControl className={classes.formControl}>
-                            <InputLabel id="proveedor-label">
-                                Proveedor información
-                            </InputLabel>
-                            <Select
-                                labelId="proveedor-label"
-                                id="proveedor-label-helper"
-                                value={proveedor}
-                                onChange={(e) => this.handleChangeCampo('proveedor', e)}
-                                label={'Proveedor información'}
-                            >
-                                <MenuItem value={'any'}><em>Todos</em></MenuItem>
-                                {
-                                    proveedoresLista.map((item => {
-                                        return <MenuItem value={item.value} key={item.key}>
-                                            {item.label}
+                                    {tiposSancion.map(tipo => (
+                                        <MenuItem key={tipo.value} value={tipo}>
+                                            <Checkbox checked={tipoSancion.indexOf(tipo) > -1}/>
+                                            <ListItemText primary={tipo.label}/>
                                         </MenuItem>
-                                    }))
-                                }
-                            </Select>
-                        </FormControl>
-                    </Grid>
-                    <Grid item md={6} xs={12}>
-                        <FormControl className={classes.formControl}>
-                            <InputLabel id="institucionDependencia-label">
-                                Institución
-                            </InputLabel>
-                            <Select
-                                value={institucionDependencia}
-                                label={"Institución"}
-                                onChange={(e) => this.handleChangeCampo('institucionDependencia', e)}
-                            >
-                                <MenuItem value="any" ><em>Todas</em></MenuItem>
-                                {
-                                    institucionesLista.map((item => {
-                                        return <MenuItem value={item.value} key={item.key}>
-                                            {item.label}
+
+                                    ))}
+                                </Select>
+                            </FormControl>
+                        </Grid>
+                        <Grid item xs={12} md={2}>
+                            <FormControl className={classes.formControl}>
+                                <InputLabel id="nivel-label">Nivel</InputLabel>
+                                <Select
+                                    labelId="nivel-label"
+                                    id="nivel-label-helper"
+                                    value={nivel}
+                                    label="Nivel"
+                                    onChange={(e) => this.handleChangeCampo('nivel', e)}
+                                >
+                                    <MenuItem value="any">
+                                        <em>Todos</em>
+                                    </MenuItem>
+                                    <MenuItem value={'Federal'} key={'Federal'}>
+                                        {'Federal'}
+                                    </MenuItem>
+                                    <MenuItem value={'Estatal'} key={'Estatal'}>
+                                        {'Estatal'}
+                                    </MenuItem>
+                                </Select>
+                            </FormControl>
+                        </Grid>
+                        <Grid item md={4} xs={12}>
+                            <FormControl className={classes.formControl}>
+                                <InputLabel id="proveedor-label">
+                                    Proveedor información
+                                </InputLabel>
+                                <Select
+                                    labelId="proveedor-label"
+                                    id="proveedor-label-helper"
+                                    value={proveedor}
+                                    onChange={(e) => this.handleChangeCampo('proveedor', e)}
+                                    label={'Proveedor información'}
+                                >
+                                    <MenuItem value={'any'}><em>Todos</em></MenuItem>
+                                    {
+                                        proveedoresLista.map((item => {
+                                            return <MenuItem value={item.value} key={item.key}>
+                                                {item.label}
+                                            </MenuItem>
+                                        }))
+                                    }
+                                </Select>
+                            </FormControl>
+                        </Grid>
+                        <Grid item md={6} xs={12}>
+                            <FormControl className={classes.formControl}>
+                                <InputLabel id="institucionDependencia-label">
+                                    Institución
+                                </InputLabel>
+                                <Select
+                                    value={institucionDependencia}
+                                    label={"Institución"}
+                                    onChange={(e) => this.handleChangeCampo('institucionDependencia', e)}
+                                >
+                                    <MenuItem value="any" ><em>Todas</em></MenuItem>
+                                    {
+                                        institucionesLista.map((item => {
+                                            return <MenuItem value={item.value} key={item.key}>
+                                                {item.label}
+                                            </MenuItem>
+                                        }))
+                                    }
+                                </Select>
+                            </FormControl>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Button onClick={() => this.handleBusquedaAvanzada()} color={"text"}
+                                    startIcon={this.state.busquedaAvanzada ? <ExpandLessIcon/> : <ExpandMoreIcon/>}
+                            >Búsqueda avanzada</Button>
+                        </Grid>
+
+                        {this.state.busquedaAvanzada && <Grid item xs={12} md={3}>
+                            <FormControl className={classes.formControl}>
+                                <InputLabel id="campoOrden-label">Ordenar por</InputLabel>
+                                <Select
+                                    id="campoOrden-checkbox"
+                                    label={'Ordenar por'}
+                                    labelId={'campoOrden-label-helper'}
+                                    value={campoOrden}
+                                    onChange={e => this.handleChangeCampo('campoOrden', e)}
+                                >
+                                    <MenuItem value={'any'}>
+                                        <em>Ninguno</em>
+                                    </MenuItem>
+                                    {camposOrdenamiento.map(tipo => (
+                                        <MenuItem key={tipo.value} value={tipo}>
+                                            <ListItemText primary={tipo.label}/>
                                         </MenuItem>
-                                    }))
-                                }
-                            </Select>
-                        </FormControl>
-                    </Grid>
-                    <Grid item xs={12}>
-                        <Button onClick={() => this.handleBusquedaAvanzada()}
-                                startIcon={this.state.busquedaAvanzada ? <ExpandLessIcon/> : <ExpandMoreIcon/>}
-                        >Búsqueda avanzada</Button>
-                    </Grid>
 
-                    {this.state.busquedaAvanzada && <Grid item xs={12} md={3}>
-                        <FormControl className={classes.formControl}>
-                            <InputLabel id="campoOrden-label">Ordenar por</InputLabel>
-                            <Select
-                                id="campoOrden-checkbox"
-                                label={'Ordenar por'}
-                                labelId={'campoOrden-label-helper'}
-                                value={campoOrden}
-                                onChange={e => this.handleChangeCampo('campoOrden', e)}
-                            >
-                                <MenuItem value={'any'}>
-                                    <em>Ninguno</em>
-                                </MenuItem>
-                                {camposOrdenamiento.map(tipo => (
-                                    <MenuItem key={tipo.value} value={tipo}>
-                                        <ListItemText primary={tipo.label}/>
+                                    ))}
+                                </Select>
+                            </FormControl>
+                        </Grid>}
+                        {this.state.busquedaAvanzada && <Grid item xs={12} md={3}>
+                            <FormControl className={classes.formControl}>
+                                <InputLabel id="tipoOrden-label">Tipo ordenamiento</InputLabel>
+                                <Select
+                                    id="tipoOrden-checkbox"
+                                    label={'Tipo ordenamiento'}
+                                    labelId={'tipoOrden-label-helper'}
+                                    value={tipoOrden}
+                                    onChange={e => this.handleChangeCampo('tipoOrden', e)}
+                                >
+                                    <MenuItem value={'any'}>
+                                        <em>Ninguno</em>
                                     </MenuItem>
+                                    {tiposOrdenamiento.map(tipo => (
+                                        <MenuItem key={tipo.value} value={tipo}>
+                                            <ListItemText primary={tipo.label}/>
+                                        </MenuItem>
 
-                                ))}
-                            </Select>
-                        </FormControl>
-                    </Grid>}
-                    {this.state.busquedaAvanzada && <Grid item xs={12} md={3}>
-                        <FormControl className={classes.formControl}>
-                            <InputLabel id="tipoOrden-label">Tipo ordenamiento</InputLabel>
-                            <Select
-                                id="tipoOrden-checkbox"
-                                label={'Tipo ordenamiento'}
-                                labelId={'tipoOrden-label-helper'}
-                                value={tipoOrden}
-                                onChange={e => this.handleChangeCampo('tipoOrden', e)}
-                            >
-                                <MenuItem value={'any'}>
-                                    <em>Ninguno</em>
-                                </MenuItem>
-                                {tiposOrdenamiento.map(tipo => (
-                                    <MenuItem key={tipo.value} value={tipo}>
-                                        <ListItemText primary={tipo.label}/>
-                                    </MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>
+                        </Grid>}
 
-                                ))}
-                            </Select>
-                        </FormControl>
-                    </Grid>}
+                        <Grid item md={10}/>
 
-                    <Grid item md={10}/>
+                        <Grid item xs={12} md={1} className={classes.centrado}>
+                            <Button variant="contained" color="secundario" className={classes.button}
+                                    onClick={() => this.handleCleanAll()}>
+                                Limpiar
+                            </Button>
+                        </Grid>
+                        <Grid item xs={12} md={1} className={classes.centrado}>
+                            <Button variant="contained" color="secundario" className={classes.button}
+                                    onClick={() => this.handleSearchPrevios()}>
+                                Buscar
+                            </Button>
+                        </Grid>
+                        <Grid item xs={12}>
+                            {
+                                this.state.loading &&
+                                <Modal
+                                    open={this.state.loading}
+                                    disableAutoFocus={true}
+                                >
+                                    <CircularProgress className={classes.progress} id="spinnerLoading" size={200}/>
+                                </Modal>
 
-                    <Grid item xs={12} md={1} className={classes.centrado}>
-                        <Button variant="contained" color="secundario" className={classes.button}
-                                onClick={() => this.handleCleanAll()}>
-                            Limpiar
-                        </Button>
+                            }
+                            {
+                                this.state.error && <MensajeErrorDatos/>
+                            }
+                        </Grid>
                     </Grid>
-                    <Grid item xs={12} md={1} className={classes.centrado}>
-                        <Button variant="contained" color="secundario" className={classes.button}
-                                onClick={() => this.handleSearchPrevios()}>
-                            Buscar
-                        </Button>
+                    {/*PREVIOS*/}
+                    {this.state.previos && this.state.previos.length > 0 &&
+                    <Grid container ref={this.previosRef}>
+                        <Grid item xs={12} className={classes.section}>
+                            <FormControlLabel
+                                control={<Switch className={classes.containerPrevios}
+                                                 checked={this.state.panelPrevios}
+                                                 onChange={() => this.handleChange()}/>}
+                                label={
+                                    <Typography variant="h6" className={classes.desc}>
+                                        {this.state.panelPrevios ? 'Ocultar resultados generales' : 'Mostrar resultados generales'}</Typography>}
+                            />
+                        </Grid>
+                        <Grid item xs={12} className={classes.section}>
+                            <div className={classes.container}>
+                                <Collapse in={this.state.panelPrevios}>
+                                    <Previos data={this.state.previos} handleChangeSujetoObligado={this.handleChangeAPI}/>
+                                </Collapse>
+                            </div>
+                        </Grid>
                     </Grid>
-                    <Grid item xs={12}>
-                        {
-                            this.state.loading &&
-                            <Modal
-                                open={this.state.loading}
-                                disableAutoFocus={true}
-                            >
-                                <CircularProgress className={classes.progress} id="spinnerLoading" size={200}/>
-                            </Modal>
-
-                        }
-                        {
-                            this.state.error && <MensajeErrorDatos/>
-                        }
+                    }
+                    {/*TABLA*/}
+                    {this.state.filterData && this.state.filterData.length > 0 && this.state.elementoSeleccionado === null &&
+                    <Grid container ref={this.resultsRef}>
+                        <Grid item xs={12}>
+                            <TablaServidoresSancionados data={this.state.filterData} page={this.state.page}
+                                                        rowsPerPage={this.state.rowsPerPage}
+                                                        totalRows={this.state.totalRows}
+                                                        handleChangePage={this.handleChangePage}
+                                                        handleChangeRowsPerPage={this.handleChangeRowsPerPage}
+                                                        verDetalle={this.verDetalle}/>
+                        </Grid>
                     </Grid>
-                </Grid>
-                {/*PREVIOS*/}
-                {this.state.previos && this.state.previos.length > 0 &&
-                <Grid container ref={this.previosRef}>
-                    <Grid item xs={12} className={classes.section}>
-                        <FormControlLabel
-                            control={<Switch className={classes.containerPrevios}
-                                             checked={this.state.panelPrevios}
-                                             onChange={() => this.handleChange()}/>}
-                            label={
-                                <Typography variant="h6" className={classes.desc}>
-                                    {this.state.panelPrevios ? 'Ocultar resultados generales' : 'Mostrar resultados generales'}</Typography>}
+                    }
+                    {
+                        this.state.elementoSeleccionado !== null &&
+                        <DetalleServidorSancionado handleChangeDetail={this.handleChangeDetail}
+                                                   servidor={this.state.elementoSeleccionado}
                         />
-                    </Grid>
-                    <Grid item xs={12} className={classes.section}>
-                        <div className={classes.container}>
-                            <Collapse in={this.state.panelPrevios}>
-                                <Previos data={this.state.previos} handleChangeSujetoObligado={this.handleChangeAPI}/>
-                            </Collapse>
-                        </div>
-                    </Grid>
-                </Grid>
-                }
-                {/*TABLA*/}
-                {this.state.filterData && this.state.filterData.length > 0 && this.state.elementoSeleccionado === null &&
-                <Grid container ref={this.resultsRef}>
-                    <Grid item xs={12}>
-                        <TablaServidoresSancionados data={this.state.filterData} page={this.state.page}
-                                                    rowsPerPage={this.state.rowsPerPage}
-                                                    totalRows={this.state.totalRows}
-                                                    handleChangePage={this.handleChangePage}
-                                                    handleChangeRowsPerPage={this.handleChangeRowsPerPage}
-                                                    verDetalle={this.verDetalle}/>
-                    </Grid>
-                </Grid>
-                }
-                {
-                    this.state.elementoSeleccionado !== null &&
-                    <DetalleServidorSancionado handleChangeDetail={this.handleChangeDetail}
-                                               servidor={this.state.elementoSeleccionado}
-                    />
-                }
-            </React.Fragment>
+                    }
+                </React.Fragment>
+            </ThemeProvider>
+
         );
     }
 }
