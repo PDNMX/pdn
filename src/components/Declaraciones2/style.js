@@ -1,6 +1,6 @@
 import bgimg from '../../assets/rediseno/fondo_cruces.png';
 
-export default theme => ({
+const CssDeclaraciones = theme => ({
   root: {
     flexGrow: 1
   },
@@ -406,3 +406,4 @@ export default theme => ({
     backgroundColor: 'rgba(42, 116, 145)'
   }
 });
+export default CssDeclaraciones;

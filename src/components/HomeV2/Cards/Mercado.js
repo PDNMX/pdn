@@ -12,7 +12,7 @@ import { makeStyles } from '@mui/styles';
 import cssCards from './cssCards.js';
 const useStyles = makeStyles(cssCards);
 
-export default function (props) {
+const CardMercardo = props => {
   const classes = useStyles();
   return (
     <Card className={classes.root}>
@@ -31,4 +31,5 @@ export default function (props) {
       </CardActions>
     </Card>
   );
-}
+};
+export default CardMercardo;

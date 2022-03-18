@@ -14,7 +14,7 @@ const system = {
   shortName: 'S1'
 };
 
-export default props => {
+const BreadCrumbs = props => {
   return (
     <React.Fragment>
       <Grid container justifyContent={'center'}>
@@ -45,3 +45,4 @@ export default props => {
     </React.Fragment>
   );
 };
+export default BreadCrumbs;

@@ -20,10 +20,29 @@ const CustomTypography = withStyles(theme => ({
   }
 }))(Typography);
 
-export default function ({ query, handleInputChange, catEscolaridadNivel, catFormaAdquisicion, catEntidadesFederativas, catMunicipios, btnSearch, handlerFind, cleanForm, handleOrdenamiento, ordenamiento }) {
+const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdquisicion, catEntidadesFederativas, catMunicipios, btnSearch, handlerFind, cleanForm, handleOrdenamiento, ordenamiento }) => {
   const classes = useStyles();
-  let { nombres, primerApellido, segundoApellido, escolaridadNivel, nivelOrdenGobierno, nombreEntePublico, entidadFederativa, municipioAlcaldia, empleoCargoComision, nivelEmpleoCargoComision, superficieConstruccionMin, superficieConstruccionMax, superficieTerrenoMin, superficieTerrenoMax, valorAdquisicionMin, valorAdquisicionMax, totalIngresosNetosMin, totalIngresosNetosMax, formaAdquisicion } =
-    query;
+  let {
+    nombres,
+    primerApellido,
+    segundoApellido,
+    escolaridadNivel,
+    nivelOrdenGobierno,
+    nombreEntePublico,
+    entidadFederativa,
+    municipioAlcaldia,
+    empleoCargoComision,
+    nivelEmpleoCargoComision,
+    superficieConstruccionMin,
+    superficieConstruccionMax,
+    superficieTerrenoMin,
+    superficieTerrenoMax,
+    valorAdquisicionMin,
+    valorAdquisicionMax,
+    totalIngresosNetosMin,
+    totalIngresosNetosMax,
+    formaAdquisicion
+  } = query;
 
   const [checked, setChecked] = React.useState(false);
 
@@ -351,4 +370,5 @@ export default function ({ query, handleInputChange, catEscolaridadNivel, catFor
       </Grid>
     </React.Fragment>
   );
-}
+};
+export default FormSearch;

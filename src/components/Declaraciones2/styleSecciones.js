@@ -1,4 +1,4 @@
-export default theme => ({
+const CssSeccDeclaraciones = theme => ({
   rootPrincipal: {
     flexGrow: 1,
     width: '100%',
@@ -383,3 +383,4 @@ export default theme => ({
 	
     ************/
 });
+export default CssSeccDeclaraciones;

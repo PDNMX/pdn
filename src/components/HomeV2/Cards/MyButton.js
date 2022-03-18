@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default ({ text, href }) => {
+const MyButton = ({ text, href }) => {
   const classes = useStyles();
   return (
     <Box>
@@ -30,3 +30,5 @@ export default ({ text, href }) => {
     </Box>
   );
 };
+
+export default MyButton;
