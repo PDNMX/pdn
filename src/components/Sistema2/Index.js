@@ -43,7 +43,7 @@ const styles = theme => ({
         margin: 0,
         "&:hover": {
             cursor: 'pointer',
-            backgroundColor: theme.palette.S3.color,
+            backgroundColor: theme.palette.S2.color,
             transition: 'background 0.3s ease',
             borderColor: theme.palette.secundario.main,
             opacity: .7
@@ -59,7 +59,7 @@ const styles = theme => ({
 
     },
     cardSeleccionada: {
-        backgroundColor: theme.palette.S3.color,
+        backgroundColor: theme.palette.S2.color,
         paddingLeft: theme.spacing(1),
         paddingRight: theme.spacing(1),
         paddingTop: theme.spacing(1),
@@ -75,7 +75,7 @@ const styles = theme => ({
         opacity:.7
     },
     labelCard:{
-        color: theme.palette.S3.color,
+        color: theme.palette.S2.color,
         marginLeft: theme.spacing(1),
         paddingTop: theme.spacing(1)
     }
