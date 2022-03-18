@@ -8,7 +8,7 @@ import css from './cssFooter';
 
 const useStyles = makeStyles(css);
 
-export default props => {
+const RightFooter = props => {
   const classes = useStyles();
 
   return (
@@ -26,3 +26,5 @@ export default props => {
     </Grid>
   );
 };
+
+export default RightFooter;

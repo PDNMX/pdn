@@ -15,7 +15,7 @@ import css from './cssFooter';
 
 const useStyles = makeStyles(css);
 
-export default props => {
+const LeftFooter = props => {
   const classes = useStyles();
 
   return (
@@ -64,3 +64,5 @@ export default props => {
     </Grid>
   );
 };
+
+export default LeftFooter;

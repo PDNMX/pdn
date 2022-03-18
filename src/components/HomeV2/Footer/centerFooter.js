@@ -8,7 +8,7 @@ import css from './cssFooter';
 
 const useStyles = makeStyles(css);
 
-export default props => {
+const CenterFooter = props => {
   const classes = useStyles();
 
   return (
@@ -46,10 +46,14 @@ export default props => {
                   </RouterLink>
                 </Typography>
                 <Typography variant='subtitle1'>
-                  <RouterLink to={'#'} className={classes.enlaces}>Videos</RouterLink>
+                  <RouterLink to={'#'} className={classes.enlaces}>
+                    Videos
+                  </RouterLink>
                 </Typography>
                 <Typography variant='subtitle1'>
-                  <RouterLink to={'#'} className={classes.enlaces}>Boletines y prensa</RouterLink>
+                  <RouterLink to={'#'} className={classes.enlaces}>
+                    Boletines y prensa
+                  </RouterLink>
                 </Typography>
                 {/* <Typography variant='subtitle1'>Suscribete</Typography> */}
               </Grid>
@@ -60,3 +64,5 @@ export default props => {
     </Grid>
   );
 };
+
+export default CenterFooter;

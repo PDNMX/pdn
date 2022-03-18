@@ -12,7 +12,7 @@ import { makeStyles } from '@mui/styles';
 import cssCards from './cssCards.js';
 const useStyles = makeStyles(cssCards);
 
-export default function (props) {
+const CardInterconexion = props => {
   const classes = useStyles();
   return (
     <Card className={classes.root}>
@@ -33,4 +33,5 @@ export default function (props) {
       </CardActions>
     </Card>
   );
-}
+};
+export default CardInterconexion;

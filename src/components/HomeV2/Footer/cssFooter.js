@@ -1,4 +1,4 @@
-export default theme => ({
+const CssFooter = theme => ({
   root: {
     flexGrow: 1,
     height: 250,
@@ -161,3 +161,5 @@ export default theme => ({
     }
   }
 });
+
+export default CssFooter;

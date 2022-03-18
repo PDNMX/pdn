@@ -17,7 +17,7 @@ import { makeStyles } from '@mui/styles';
 import css from './cssFooter';
 const useStyles = makeStyles(css);
 
-export default props => {
+const MobileFooter = props => {
   const classes = useStyles();
   return (
     <React.Fragment>
@@ -31,17 +31,23 @@ export default props => {
         </Grid>
         <Grid item>
           <Typography variant='subtitle1'>
-            <RouterLink to={"#"} className={classes.linkMobile}>Boletines de prensa</RouterLink>
+            <RouterLink to={'#'} className={classes.linkMobile}>
+              Boletines de prensa
+            </RouterLink>
           </Typography>
         </Grid>
         <Grid item>
           <Typography variant='subtitle1'>
-            <RouterLink to={"#"} className={classes.linkMobile}>Videos</RouterLink>
+            <RouterLink to={'#'} className={classes.linkMobile}>
+              Videos
+            </RouterLink>
           </Typography>
         </Grid>
         <Grid item>
           <Typography variant='subtitle1'>
-            <RouterLink to={"#"} className={classes.linkMobile}>Mapa de sitio</RouterLink>
+            <RouterLink to={'#'} className={classes.linkMobile}>
+              Mapa de sitio
+            </RouterLink>
           </Typography>
         </Grid>
       </Grid>
@@ -87,3 +93,5 @@ export default props => {
     </React.Fragment>
   );
 };
+
+export default MobileFooter;

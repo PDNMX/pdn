@@ -1,4 +1,4 @@
-export default theme => ({
+const CssCards = theme => ({
   root: {
     flexGrow: 1,
     maxWidth: 650,
@@ -25,3 +25,5 @@ export default theme => ({
     backgroundColor: '#3ab0e5'
   }
 });
+
+export default CssCards;
