@@ -13,4 +13,4 @@ RUN yarn add global yarn \
 
 EXPOSE 5000
 
-CMD ["serve", "-s", "build"]
+CMD ["serve", "-s", "build", "-l", "5000"]

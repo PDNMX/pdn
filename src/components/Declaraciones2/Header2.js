@@ -1,5 +1,7 @@
 import BreadCrumbs from './BreadCrumbs';
 
-export default props => {
+const Header2 = () => {
   return <BreadCrumbs />;
 };
+
+export default Header2;

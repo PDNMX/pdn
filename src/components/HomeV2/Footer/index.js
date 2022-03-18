@@ -16,7 +16,7 @@ function useIsWidthUp(breakpoint) {
   const theme = useTheme();
   return useMediaQuery(theme.breakpoints.up(breakpoint));
 }
-export default props => {
+const Footer = props => {
   const classes = useStyles();
   const isXsUp = useIsWidthUp('lg');
 
@@ -36,3 +36,5 @@ export default props => {
     <MobileFooter />
   );
 };
+
+export default Footer;

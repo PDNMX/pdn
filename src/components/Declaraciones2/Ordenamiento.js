@@ -59,7 +59,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default ({ handleOrdenamiento, ordenamiento }) => {
+const Ordenamiento = ({ handleOrdenamiento, ordenamiento }) => {
   const classes = useStyles();
 
   return (
@@ -101,3 +101,4 @@ export default ({ handleOrdenamiento, ordenamiento }) => {
     </TableContainer>
   );
 };
+export default Ordenamiento;

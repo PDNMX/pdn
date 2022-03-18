@@ -4,7 +4,7 @@ import { Grid } from '@mui/material';
 import Mercado from './Mercado';
 import Interconexion from './Interconexion';
 
-export default function (props) {
+const Cards = props => {
   return (
     <Grid container direction={'row'} justifyContent={'space-evenly'} alignItems='stretch'>
       <Grid item>
@@ -15,4 +15,6 @@ export default function (props) {
       </Grid>
     </Grid>
   );
-}
+};
+
+export default Cards;
