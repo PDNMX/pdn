@@ -9,10 +9,12 @@ import Typography from "@mui/material/Typography";
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import withStyles from '@mui/styles/withStyles';
-import {servidores} from "../Utils/glosario.json";
+//import {servidores} from "../Utils/glosario.json";
 import Tooltip from "@mui/material/Tooltip";
 import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
+
+const servidores = require('../Utils/glosario.json')
 
 const Glosario = props => {
     const data = servidores.find(e => e.id === props.id);
