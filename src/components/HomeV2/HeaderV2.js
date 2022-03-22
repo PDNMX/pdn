@@ -1,11 +1,12 @@
 import React from 'react';
 import {withStyles} from '@mui/styles';
-import Box from "@mui/material/Box";
 import {Breadcrumbs, Typography, Link} from "@mui/material";
 import Grid from "@mui/material/Grid";
 import {Link as RouterLink} from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import GrainIcon from "@mui/icons-material/Grain";
+import {useTheme} from "@emotion/react";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 // FIXME checkout https://mui.com/components/use-media-query/#migrating-from-withwidth
 // const withWidth = () => (WrappedComponent) => (props) => <WrappedComponent {...props} width="xs"/>;
@@ -16,7 +17,13 @@ const styles = theme => ({
     },
     icon: {
         maxWidth: 150,
-        marginRight: 80
+        [theme.breakpoints.up('md')]: {
+            marginRight: 80
+        },
+        [theme.breakpoints.down('md')]: {
+            marginRight: 10,
+            marginLeft:10
+        },
     },
     link: {
         textDecoration: 'none',
@@ -31,13 +38,22 @@ const styles = theme => ({
     },
     containerName: {
         marginBottom: theme.spacing(4),
-        maxWidth: 1200
+        maxWidth: 1200,
+        margin: 'auto',
+        paddingTop: theme.spacing(9),
+        paddingBottom: theme.spacing(9)
     }
 });
 
+
+function useIsWidthUp(breakpoint) {
+    const theme = useTheme();
+    return useMediaQuery(theme.breakpoints.up(breakpoint));
+}
+
 function HeaderV2(props) {
     const {classes, section} = props;
-
+    const isXsUp = useIsWidthUp("md");
     return (
         <div className={classes.root}>
             <Grid container spacing={0} justifyContent='center'>
@@ -69,7 +85,22 @@ function HeaderV2(props) {
                     </Breadcrumbs>
                 </Grid>
             </Grid>
-            <Box
+            <Grid container={true} className={classes.containerName} justifyContent={"center"} alignItems={"center"} direction={"row"}>
+                <Grid item xs={12} md={3}  align = {isXsUp ? 'right':'center'}>
+                    {section.icon && <img src={section.icon} alt="PDN" className={classes.icon}/>}
+                </Grid>
+                <Grid item xs={12} md={9} align = {isXsUp ? 'left':'center'}  >
+                    <Typography variant="h3" paragraph color={`${section.color}`} style={{fontWeight: 100}}>
+                        {section.name}
+                    </Typography>
+                    {section.subName && <Typography variant={"h5"} color={`${section.color}`}>
+                        {section.subName}
+                    </Typography>}
+                </Grid>
+            </Grid>
+            {
+                /*
+                <Box
                 sx={{
                     display: 'flex',
                     justifyContent: 'center',
@@ -87,7 +118,7 @@ function HeaderV2(props) {
                 >
                     {section.icon && <img src={section.icon} alt="PDN" className={classes.icon}/>}
                     <div>
-                        <Typography variant="h3" paragraph color={`${section.color}`} style={{fontWeight: 100, minWidth: 900}}>
+                        <Typography variant="h3" paragraph color={`${section.color}`} style={{fontWeight: 100}}>
                             {section.name}
                         </Typography>
                         {section.subName && <Typography variant={"h5"} color={`${section.color}`}>
@@ -96,6 +127,9 @@ function HeaderV2(props) {
                     </div>
                 </Box>
             </Box>
+                 */
+            }
+
         </div>
     )
         ;
