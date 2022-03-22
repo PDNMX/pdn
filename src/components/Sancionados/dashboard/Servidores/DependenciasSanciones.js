@@ -30,7 +30,6 @@ const styles = theme => ({
     }
 });
 
-
 function aux() {
     return new Promise((resolve, reject) => {
         let options = {
@@ -46,7 +45,6 @@ function aux() {
         });
     });
 }
-
 
 function loadData2() {
     return new Promise((resolve, reject) => {
@@ -64,20 +62,20 @@ function loadData2() {
     });
 }
 
-
 let z = d3.scaleOrdinal()
     .range(["#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
         "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
         "#8BC34A", "#CDDC39", "#FFEB3B", "#FFC107", "#FF9800",
         "#FF5722", "#795548", "#9E9E9E", "#607D8B"]);
 
-class DependenciasSanciones extends React.Component {
-    state = {
-        errorG1: false,
-        errorG2: false
-    };
+const DependenciasSanciones = (props) => {
+    const [errorG1, setErrorG1] = React.useState(false);
+    const [errorG2, setErrorG2] = React.useState(false);
+    const [methods, setMethods] = React.useState({});
+    const [config2, setConfig2] = React.useState({});
+    const {classes} = props;
 
-    componentDidMount() {
+    React.useEffect(()=> {
         aux().then(result => {
             let aux = result.data.data.map(item => {
                 return {
@@ -85,10 +83,7 @@ class DependenciasSanciones extends React.Component {
                     "group": item.dependencia
                 }
             });
-
-
-            this.setState({
-                methods: {
+            setMethods({
                     data: aux,
                     height: 400,
                     groupBy: ["group"],
@@ -114,11 +109,11 @@ class DependenciasSanciones extends React.Component {
                             return z(d.group)
                         }
                     }
-                }
+
             })
         }).catch(err => {
             console.error(err);
-            this.setState({errorG1: true})
+            setErrorG1(true)
         });
 
         loadData2().then(result2 => {
@@ -130,8 +125,7 @@ class DependenciasSanciones extends React.Component {
                 }
             });
 
-            this.setState({
-                config2: {
+           setConfig2({
                     data: aux2,
                     height: 400,
                     groupBy: ["parent", "group"],
@@ -157,17 +151,15 @@ class DependenciasSanciones extends React.Component {
                             return z(d.parent)
                         }
                     },
-                }
+
             })
         }).catch(err => {
             console.error(err);
-            this.setState({errorG2: true})
+            setErrorG2(true)
         });
 
-    }
+    }, []);
 
-    render() {
-        const {classes} = this.props;
         return (
             <div>
                 <Grid container spacing={0} justifyContent='center' className={classes.frameChart}>
@@ -178,47 +170,40 @@ class DependenciasSanciones extends React.Component {
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>
                         <Typography>
-                            {"Con respecto a las dependencias con más sanciones,  4 instituciones :la Policía Federal, la Secretaría de Educación Pública, Telecomunicaciones de México y el Instituto de Seguridad y Servicios Sociales de los Trabajadores representan juntas más del 35% del total de  personas servidoras públicas sancionadas "}
+                            Cuatro instituciones públicas registran la mayor cantidad de personas servidoras públicas sancionadas con una inhabilitación a enero 2022: la Policía Federal, la Secretaría de Educación Pública, Telecomunicaciones de México y el Instituto de Seguridad y Servicios Sociales de los Trabajadores que en conjunto representan el <b>36.78%</b> del total
                         </Typography>
                     </Grid>
 
                     <Grid item xs={12}>
                         {
-                            this.state.methods && this.state.methods.data &&
-                            <Treemap config={this.state.methods}/>
+                            methods && methods.data &&
+                            <Treemap config={methods}/>
                         }
                         {
-                            this.state.errorG1 && <MensajeErrorDatos/>
+                            errorG1 && <MensajeErrorDatos/>
                         }
 
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>
                         <Typography>
-                            La siguiente muestra las dependencias con mayor numero de sanciones en cada año, como se
-                            aprecía, para el año 2014 fue Telecomunicaciones de México. En 2013, 2014 y 2016 fue la
-                            Policia Federal. En 2017, el Instituto
-                            de Seguridad y Servicios Sociales de los Trabajadores del estado. En 2018, la Secretaría de
-                            Educación Pública. Hasta mayo 2021, la Presidencia de la República ocupa el primer lugar.
-                            Finalmente en 2020, año con menor número de
-                            sanciones, son tres instituciones las que aparecen con igual número de sanciones, Instituto
-                            de Seguridad y Servicios Sociales de los Trabajadores del Estado, Secretaría de Medio
-                            Ambiente y Recursos Naturales y el Instituto Méxicano de Cinematografía
+                            La siguiente gráfica  muestra las dependencias con mayor número de sanciones firmes que fueron resueltas en cada año del 2013 a enero 2022.
+                            Los años 2013, 2015 y 2016 los encabeza la Policía Federal, 2014 Telecomunicaciones de México, de 2017  a 2020 el Instituto de Seguridad y Servicios Sociales de los Trabajadores del Estado, y finalmente la única sanción del 2021 corresponde a la Secretaría de Agricultura y Desarrollo Rural.
                         </Typography>
                     </Grid>
                     <Grid item xs={12}>
                         {
-                            this.state.config2 && this.state.config2.data &&
-                            <Treemap config={this.state.config2}/>
+                            config2 && config2.data &&
+                            <Treemap config={config2}/>
                         }
                         {
-                            this.state.errorG2 && <MensajeErrorDatos/>
+                            errorG2 && <MensajeErrorDatos/>
                         }
                     </Grid>
                 </Grid>
 
             </div>
         )
-    }
+
 
 }
 
