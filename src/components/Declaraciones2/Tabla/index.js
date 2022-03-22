@@ -1,17 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { lighten } from '@mui/material/styles';
 import makeStyles from '@mui/styles/makeStyles';
 import Table from '@mui/material/Table';
 import TableContainer from '@mui/material/TableContainer';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
-import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
+
 import Paper from '@mui/material/Paper';
+import EnhancedTableToolbar from './EnhancedTableToolbar';
+import EnhancedTableHead from './EnhancedTableHead';
 
 function desc(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -36,85 +34,6 @@ function stableSort(array, cmp) {
 function getSorting(order, orderBy) {
   return order === 'desc' ? (a, b) => desc(a, b, orderBy) : (a, b) => -desc(a, b, orderBy);
 }
-
-const headCells = [
-  { id: 'nombre', numeric: false, disablePadding: false, label: 'NOMBRE' },
-  {
-    id: 'institucion',
-    numeric: false,
-    disablePadding: false,
-    label: 'INSTITUCIÓN'
-  },
-  { id: 'area', numeric: false, disablePadding: false, label: 'ÁREA' },
-  { id: 'cargo', numeric: false, disablePadding: false, label: 'CARGO' }
-];
-
-function EnhancedTableHead(props) {
-  const { classes, order, orderBy } = props;
-  // const { classes, order, orderBy, onRequestSort } = props;
-  // const createSortHandler = property => event => {
-  //   onRequestSort(event, property);
-  // };
-
-  return (
-    <TableHead className={classes.tableHead}>
-      <TableRow>
-        {headCells.map(headCell => (
-          <TableCell key={headCell.id} align={headCell.numeric ? 'right' : 'left'} padding={headCell.disablePadding ? 'none' : 'normal'} sortDirection={orderBy === headCell.id ? order : false}>
-            {/* <TableSortLabel active={orderBy === headCell.id} direction={order} onClick={createSortHandler(headCell.id)}> */}
-            {/* {headCell.label} */}
-            {/* {orderBy === headCell.id ? <span className={classes.visuallyHidden}>{order === 'desc' ? 'sorted descending' : 'sorted ascending'}</span> : null} */}
-            {/* </TableSortLabel> */}
-            <Typography color={'primario.contrastText'} variant={'body1'}>
-              {headCell.label}
-            </Typography>
-          </TableCell>
-        ))}
-      </TableRow>
-    </TableHead>
-  );
-}
-
-EnhancedTableHead.propTypes = {
-  classes: PropTypes.object.isRequired,
-  onRequestSort: PropTypes.func.isRequired,
-  order: PropTypes.oneOf(['asc', 'desc']).isRequired,
-  orderBy: PropTypes.string.isRequired
-};
-
-const useToolbarStyles = makeStyles(theme => ({
-  root: {
-    paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(1)
-  },
-  highlight:
-    theme.palette.mode === 'light'
-      ? {
-          color: theme.palette.secondary.main,
-          backgroundColor: lighten(theme.palette.secondary.light, 0.85)
-        }
-      : {
-          color: theme.palette.text.primary,
-          backgroundColor: theme.palette.secondary.dark
-        },
-  title: {
-    flex: '1 1 100%',
-    backgroundColor: 'rgba(42, 116, 145)',
-    color: theme.palette.primario.contrastText
-  }
-}));
-
-const EnhancedTableToolbar = () => {
-  const classes = useToolbarStyles();
-
-  return (
-    <Toolbar className={classes.title}>
-      <Typography paragraph variant='h6' id='tableTitle'>
-        Pulsa sobre el registro para ver su detalle
-      </Typography>
-    </Toolbar>
-  );
-};
 
 const useStyles = makeStyles(theme => ({
   root: {
