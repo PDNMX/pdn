@@ -30,6 +30,8 @@ import IconFAQ from "../assets/rediseno/ico_faq.svg";
 import IconEspecificaciones from "../assets/rediseno/ico_especificaciones.svg";
 import IconAbout from "../assets/rediseno/ico_que-es-PDN.svg";
 import IconHelpDesk from "../assets/rediseno/ico_mesa-ayuda.svg";
+import IconValidador from "../assets/rediseno/validador.svg";
+
 
 /*
 Para que la ruta pueda usarse con el Header genérico debe contar con:
@@ -202,9 +204,13 @@ const pdnRoutes = [
 	},
 	{
 		exact: true,
-		path: '/Validador',
+		path: '/validador',
 		component: Validador,
-		private: false
+		private: false,
+		name: "Validador",
+		shortName: "Validador",
+		color: "#f2f2f2",
+		icon: IconValidador
 	},
 	{
 		exact: true,

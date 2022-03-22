@@ -7,3 +7,8 @@ npm-debug.log
 .svn
 .gitignore
 build
+.vscode
+Dockerfile*
+docker-compose*
+yarn-error.log
+package-lock.json

@@ -4,6 +4,8 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import HeaderV2 from "../HomeV2/HeaderV2";
+import pdnRoutes from "../../routes";
 
 import {Typography, Grid, Paper, Box} from "@mui/material";
 import UploadForm from './UploadForm';
@@ -47,6 +49,7 @@ const styles = theme => ({
   });
 
 class Validador extends Component {
+    
     state = {
         usedForm: false,
         results: true
@@ -95,9 +98,11 @@ class Validador extends Component {
     render() {
 
         const {classes} = this.props;
+        const section = pdnRoutes.find(route => route.path === '/validador');
 
         return (
             <div className={ classes.root }>
+                <HeaderV2 section={section}/>
                 <Grid container justifyContent="center" spacing={0}>
                 <Grid item xs={12} className={classes.rootItem}>
                     <Paper className={classes.paper} elevation={15} >
