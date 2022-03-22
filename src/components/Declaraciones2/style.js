@@ -360,16 +360,23 @@ const CssDeclaraciones = theme => ({
     paddingRight: '8px'
   },
   selectedTab: {
-    color: theme.palette.S1.color,
+    backgroundColor: theme.palette.S1.color,
     borderStyle: 'solid',
     borderColor: theme.palette.secundario.main,
-    borderRadius: '5px 5px 0px 0px',
+    borderRadius: '10px 10px 0px 0px',
     borderBottomStyle: 'none',
-    paddingLeft: theme.spacing(1),
-    paddingRight: theme.spacing(1),
-    paddingTop: theme.spacing(2),
-    paddingBottom: theme.spacing(2),
-    margin: 0
+    padding: theme.spacing(1),
+    margin: 0,
+    display: 'inline-block',
+    float: 'left',
+    marginRight: 10,
+    opacity: 0.7
+  },
+  labelCard: {
+    color: theme.palette.S1.color,
+    marginLeft: theme.spacing(1),
+    paddingTop: theme.spacing(1),
+    fontWeight: 500
   },
   contentsSection: {
     color: theme.palette.secondary.contrastText,
