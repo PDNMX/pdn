@@ -111,7 +111,6 @@ export default function CustomizedExpansionPanels() {
                             Es importante señalar que la PDN no es un repositorio ni generadora de los datos de cada sistema, sino que es una plataforma de interoperabilidad.
                         </Typography>
 
-
                         <ButtonPDN target={"_blank"} href='https://drive.google.com/file/d/1wdy8bgX9fn1yRCAWSJMhjeTYKxEOXRQv/view'>
                             ¿Qué es la PDN?
                         </ButtonPDN>
@@ -122,6 +121,10 @@ export default function CustomizedExpansionPanels() {
 
                         <ButtonPDN target="_blank" href="https://drive.google.com/file/d/1xYlY50lXttiuu0brV5CVd5H8qx96vDsK/view">
                             Guía desarrollo PDE
+                        </ButtonPDN>
+
+                        <ButtonPDN target="_blank" href="https://drive.google.com/file/d/1-IvF3KYa5rups73BmVV4W8glT9csVGY9/view">
+                            Seguridad de la información
                         </ButtonPDN>
                     </div>
 

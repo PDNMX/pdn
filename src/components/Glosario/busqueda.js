@@ -9,17 +9,36 @@ import Divider from '@mui/material/Divider';
 import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
+import makeStyles from '@mui/styles/makeStyles';
 
 import ClearIcon from "@mui/icons-material/Clear";
 import { IconButton } from "@mui/material";
 
 const glosarioData = process.env.REACT_APP_GLOSARIO;
 
+const useStyles = makeStyles((theme) => ({
+  drawerPaper: {
+    background: '#f5f8fb',
+  },
+  abecedario: {
+    wordWrap: "break-word", 
+    color: theme.palette.background.opaque
+  },
+  palabra: {
+    wordWrap: "break-word", 
+    background: '#f5f8fb',
+  },
+  text: {
+    color: '#55575a'
+  }
+}));
+
 export default function Busqueda() {
   const [palabras, setPalabras] = useState([]);
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
   const [filteredPalabras, setFilteredPalabras] = useState([]);
+  const classes = useStyles();
 
   useEffect(() => {
     setLoading(true);
@@ -78,35 +97,36 @@ export default function Busqueda() {
       
       <br/>
       <br/>
-      <Typography style={{ wordWrap: "break-word" }}  >      
+      <Typography style={{ wordWrap: "break-word"}} >      
         {abecedario.map((palabra, index) => {
-          return <Link key={index} style={{ marginRight: 16 }}  href={palabra} onClick={(e) => { e.preventDefault(); setSearch(palabra)} }><b>{palabra}</b></Link>;
+          return <Link key={index} className={classes.abecedario} style={{ marginRight: 16 }}  href={palabra} onClick={(e) => { e.preventDefault(); setSearch(palabra)} }><b>{palabra}</b></Link>;
         })}
       </Typography>
       <br/>
       <Divider />
       <br/>
-      {filteredPalabras.length === 0 ? <Typography><i>Sin resultados</i></Typography> : filteredPalabras.map((queryString, idx) => ( <ResultDetail key={idx} {...queryString} /> ))}
+      {filteredPalabras.length === 0 ? <Typography className={classes.text}><i>Sin resultados</i></Typography> : filteredPalabras.map((queryString, idx) => ( <ResultDetail className={classes.palabra} key={idx} {...queryString} /> ))}
     </div>
   );
 }
 
 const ResultDetail = (props) => {
+    const classes = useStyles();
     return (
         <>
-        <Accordion>
+        <Accordion className={classes.palabra}>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography>{props[0]}</Typography>
+          <Typography className={classes.text}>{props[0]}</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Grid container spacing={2}>
             <Grid item xs={12} >
-              <Typography variant="body1">
+              <Typography className={classes.text} variant="body1">
                 {props[1]}
               </Typography>
             </Grid>
             <Grid item xs={12} >
-              <Typography variant="body2">
+              <Typography className={classes.text} variant="body2">
                 <i><b>Fuente: </b>{props[2]}</i>
               </Typography>
             </Grid>
