@@ -80,7 +80,9 @@ function HeaderV2(props) {
                 <Box className={classes.containerName}
                      sx={{
                          display: 'flex',
-                         justifyContent: 'space-evenly'
+                         justifyContent: 'space-evenly',
+                         alignItems:"center",
+                         direction:"row"
                      }}
                 >
                     {section.icon && <img src={section.icon} alt="PDN" className={classes.icon}/>}

@@ -27,7 +27,7 @@ const ChatBotPDN = () => (
             hideUserAvatar={true}
             headerTitle={'Chat PDN'}
             hideSubmitButton={true}
-        />;
+        />
     </ThemeProvider>
 );
 

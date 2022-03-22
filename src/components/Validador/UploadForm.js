@@ -7,6 +7,7 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 
 import Ajv from "ajv";
+import addFormats from "ajv-formats"
 import localize from "ajv-i18n";
 //let SwaggerParser = require('swagger-parser');
 import Parser from "swagger-parser";
@@ -153,7 +154,9 @@ class UploadForm extends React.Component {
               Parser.validate(results)
                 .then((esquema) => {
                   let ajv = new Ajv({ allErrors: true });
-                  ajv.addFormat("float", "^[-+]?[0-9]*\\.?[0-9]+$");
+                  addFormats(ajv);
+                  //ajv.addFormat("float", "^[-+]?[0-9]*\\.?[0-9]+$");
+                  ajv.addKeyword("example");
                   /* let pathFix = 'esquema.components.schemas.' + esquemaOAS; */
                   console.log(esquema.components.schemas[esquemaOAS]);
                   let validate = ajv.compile(
