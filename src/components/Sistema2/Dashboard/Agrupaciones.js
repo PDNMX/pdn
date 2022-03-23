@@ -4,6 +4,8 @@ import {Grid, Select, MenuItem, FormControl, Typography, InputLabel, List, ListI
 import axios from 'axios';
 import {Treemap} from "d3plus-react";
 import * as d3 from "d3";
+import { ThemeProvider } from '@mui/material/styles';
+import ThemeV2 from "../../../ThemeV2";
 
 const styles = theme => ({
     frameChart: {
@@ -227,130 +229,133 @@ class Agrupaciones extends React.Component {
     render() {
         const {classes} = this.props;
         return (
-            <Grid container>
-                <Grid item xs={12} className={classes.item}>
-                    <Typography variant={"h6"} className={classes.titulo}>
-                        Ejercicios, ramos e instituciones
-                    </Typography>
+            <ThemeProvider theme={ThemeV2}>
+                <Grid container>
+                    <Grid item xs={12} className={classes.item}>
+                        <Typography variant={"h6"} className={classes.titulo}>
+                            Ejercicios, ramos e instituciones
+                        </Typography>
 
-                    <Typography paragraph>
-                        En las secciones anteriores se puede observar de manera general el comportamiento de los procesos de contratación.
-                        Resulta interesante conocer cómo se distribuyen estos según distintas variables como ejercicio fiscal, ramo e institución.
-                        De acuerdo con los valores que selecciones, podrás obtener 5 diferentes combinaciones que mostrarán lo siguiente:
-                    </Typography>
+                        <Typography paragraph>
+                            En las secciones anteriores se puede observar de manera general el comportamiento de los procesos de contratación.
+                            Resulta interesante conocer cómo se distribuyen estos según distintas variables como ejercicio fiscal, ramo e institución.
+                            De acuerdo con los valores que selecciones, podrás obtener 5 diferentes combinaciones que mostrarán lo siguiente:
+                        </Typography>
 
-                    <List>
-                        <ListItem>
-                            <ListItemText>
-                                1. <b>Ejercicio:</b> seleccionando únicamente el ejercicio, conocerás el total de funcionarios que intervinieron en procesos de contratación en cada uno de ellos.
-                            </ListItemText>
-                        </ListItem>
-                        <ListItem>
-                            <ListItemText>
-                                2. <b>Ramo:</b> seleccionando únicamente el ramo, obtendrás el número de funcionarios que intervinieron en procesos de contratación dentro de ese ramo en cada uno de los ejercicios fiscales.
-                            </ListItemText>
-                        </ListItem>
-                        <ListItem>
-                            <ListItemText>
-                                3. <b>Institución:</b> selecciona únicamente una institución o bien el ramo y la institución, para conocer el número de servidores que intervinieron en procesos de contratación que tuvo en cada uno de los ejercicios fiscales.
-                            </ListItemText>
-                        </ListItem>
-                        <ListItem>
-                            <ListItemText>
-                                4. <b>Ejercicio y ramo: </b> Cada ramo cuenta con una serie de instituciones, selecciona un ejercicio fiscal y un ramo para conocer cómo se distribuyen el número de funcionarios en cada una de las Instituciones en los diferentes años.
-                            </ListItemText>
-                        </ListItem>
-                        <ListItem>
-                            <ListItemText>
-                                5. <b>Ejercicio, ramo e institución: </b> Para conocer de manera puntual el número de servidores en procesos de contratación de determinada institución en cierto ejercicio, podrás seleccionar el ejercicio, ramo e institución o bien el ejercicio y la institución deseadas.
-                            </ListItemText>
-                        </ListItem>
-                    </List>
+                        <List>
+                            <ListItem>
+                                <ListItemText>
+                                    1. <b>Ejercicio:</b> seleccionando únicamente el ejercicio, conocerás el total de funcionarios que intervinieron en procesos de contratación en cada uno de ellos.
+                                </ListItemText>
+                            </ListItem>
+                            <ListItem>
+                                <ListItemText>
+                                    2. <b>Ramo:</b> seleccionando únicamente el ramo, obtendrás el número de funcionarios que intervinieron en procesos de contratación dentro de ese ramo en cada uno de los ejercicios fiscales.
+                                </ListItemText>
+                            </ListItem>
+                            <ListItem>
+                                <ListItemText>
+                                    3. <b>Institución:</b> selecciona únicamente una institución o bien el ramo y la institución, para conocer el número de servidores que intervinieron en procesos de contratación que tuvo en cada uno de los ejercicios fiscales.
+                                </ListItemText>
+                            </ListItem>
+                            <ListItem>
+                                <ListItemText>
+                                    4. <b>Ejercicio y ramo: </b> Cada ramo cuenta con una serie de instituciones, selecciona un ejercicio fiscal y un ramo para conocer cómo se distribuyen el número de funcionarios en cada una de las Instituciones en los diferentes años.
+                                </ListItemText>
+                            </ListItem>
+                            <ListItem>
+                                <ListItemText>
+                                    5. <b>Ejercicio, ramo e institución: </b> Para conocer de manera puntual el número de servidores en procesos de contratación de determinada institución en cierto ejercicio, podrás seleccionar el ejercicio, ramo e institución o bien el ejercicio y la institución deseadas.
+                                </ListItemText>
+                            </ListItem>
+                        </List>
 
-                    <Typography paragraph>
-                        Para comenzar, selecciona algún filtro y da clic en el botón <b>Buscar</b>
-                    </Typography>
+                        <Typography paragraph>
+                            Para comenzar, selecciona algún filtro y da clic en el botón <b>Buscar</b>
+                        </Typography>
 
+                    </Grid>
+
+                    <Grid item md={4} xs={12}>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="campoSelectEjercicio">Ejercicio</InputLabel>
+                            <Select style={{marginTop: '0px'}}
+                                    value={this.state.ejercicio}
+                                    onChange={(e) => this.handleChangeCampo('ejercicio', e)}
+                                    label = 'Ejercicio'
+                            >
+                                <MenuItem key={''} value={'any'}> TODOS</MenuItem>
+                                {
+                                    this.state.ejercicios.map(item => {
+                                        return <MenuItem key={item.ejercicio} value={item.ejercicio}>
+                                            {item.ejercicio}
+                                        </MenuItem>
+                                    })
+                                }
+                            </Select>
+
+                        </FormControl>
+                    </Grid>
+                    <Grid item md={4} xs={12}>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="campoSelectRamo">Ramo</InputLabel>
+                            <Select style={{marginTop: '0px'}}
+                                    value={this.state.ramo}
+                                    onChange={(e) => this.handleChangeCampo('ramo', e)}
+                                    label = {'Ramo'}
+                            >
+                                <MenuItem key={''} value={'any'}> TODOS</MenuItem>
+                                {
+                                    this.state.ramos.map(item => {
+                                        return <MenuItem key={item.ramo} value={item.ramo}>
+                                            {item.ramo}
+                                        </MenuItem>
+                                    })
+                                }
+                            </Select>
+
+                        </FormControl>
+                    </Grid>
+                    <Grid item md={4} xs={12}>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="campoSelectInstitucion">Institución</InputLabel>
+                            <Select style={{marginTop: '0px'}}
+                                    value={this.state.institucion}
+                                    onChange={(e) => this.handleChangeCampo('institucion', e)}
+                                    label = {'Institución'}
+                            >
+                                <MenuItem key={''} value={'any'}>TODAS</MenuItem>
+                                {
+                                    this.state.instituciones.map(item => {
+                                        return <MenuItem key={item.institucion} value={item.institucion}>
+                                            {item.institucion}
+                                        </MenuItem>
+                                    })
+                                }
+                            </Select>
+
+                        </FormControl>
+                    </Grid>
+                    <Grid item xs={11}/>
+                    <Grid item xs={12} md={1} className={classes.buttonContainer}>
+                        <Button variant="contained" color="secundario" className={classes.button}
+                                onClick={this.limpiarBusqueda}>
+                            Limpiar
+                        </Button>
+                    </Grid>
+                    <Grid item xs={12}>
+                        {
+                            this.state.config && this.state.config.data &&
+                            <Treemap config={this.state.config}/>
+                        }
+                        {
+                            this.state.error &&
+                            <Alert severity="error">No disponible por el momento, intente más tarde.</Alert>
+                        }
+                    </Grid>
                 </Grid>
+            </ThemeProvider>
 
-                <Grid item md={4} xs={12}>
-                    <FormControl className={classes.formControl}>
-                        <InputLabel htmlFor="campoSelectEjercicio">Ejercicio</InputLabel>
-                        <Select style={{marginTop: '0px'}}
-                                value={this.state.ejercicio}
-                                onChange={(e) => this.handleChangeCampo('ejercicio', e)}
-                                label = 'Ejercicio'
-                        >
-                            <MenuItem key={''} value={'any'}> TODOS</MenuItem>
-                            {
-                                this.state.ejercicios.map(item => {
-                                    return <MenuItem key={item.ejercicio} value={item.ejercicio}>
-                                        {item.ejercicio}
-                                    </MenuItem>
-                                })
-                            }
-                        </Select>
-
-                    </FormControl>
-                </Grid>
-                <Grid item md={4} xs={12}>
-                    <FormControl className={classes.formControl}>
-                        <InputLabel htmlFor="campoSelectRamo">Ramo</InputLabel>
-                        <Select style={{marginTop: '0px'}}
-                                value={this.state.ramo}
-                                onChange={(e) => this.handleChangeCampo('ramo', e)}
-                                label = {'Ramo'}
-                        >
-                            <MenuItem key={''} value={'any'}> TODOS</MenuItem>
-                            {
-                                this.state.ramos.map(item => {
-                                    return <MenuItem key={item.ramo} value={item.ramo}>
-                                        {item.ramo}
-                                    </MenuItem>
-                                })
-                            }
-                        </Select>
-
-                    </FormControl>
-                </Grid>
-                <Grid item md={4} xs={12}>
-                    <FormControl className={classes.formControl}>
-                        <InputLabel htmlFor="campoSelectInstitucion">Institución</InputLabel>
-                        <Select style={{marginTop: '0px'}}
-                                value={this.state.institucion}
-                                onChange={(e) => this.handleChangeCampo('institucion', e)}
-                                label = {'Institución'}
-                        >
-                            <MenuItem key={''} value={'any'}>TODAS</MenuItem>
-                            {
-                                this.state.instituciones.map(item => {
-                                    return <MenuItem key={item.institucion} value={item.institucion}>
-                                        {item.institucion}
-                                    </MenuItem>
-                                })
-                            }
-                        </Select>
-
-                    </FormControl>
-                </Grid>
-                <Grid item xs={11}/>
-                <Grid item xs={12} md={1} className={classes.buttonContainer}>
-                    <Button variant="contained" color="secundario" className={classes.button}
-                            onClick={this.limpiarBusqueda}>
-                        Limpiar
-                    </Button>
-                </Grid>
-                <Grid item xs={12}>
-                    {
-                        this.state.config && this.state.config.data &&
-                        <Treemap config={this.state.config}/>
-                    }
-                    {
-                        this.state.error &&
-                        <Alert severity="error">No disponible por el momento, intente más tarde.</Alert>
-                    }
-                </Grid>
-            </Grid>
         )
     }
 }

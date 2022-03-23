@@ -3,6 +3,8 @@ import {withStyles} from '@mui/styles';
 import {Grid, Select, MenuItem, FormControl, Typography, InputLabel,Button, Alert} from '@mui/material';
 import axios from 'axios';
 import {BarChart} from "d3plus-react";
+import ThemeV2 from "../../../ThemeV2";
+import { ThemeProvider } from '@mui/material/styles';
 
 const styles = theme => ({
     frameChart: {
@@ -237,7 +239,7 @@ class Tops extends React.Component {
     render() {
         const {classes} = this.props;
         return (
-            <div>
+            <ThemeProvider theme={ThemeV2}>
                 <Grid container>
                     <Grid item xs={12} className={classes.item}>
                         <Typography variant={"h6"} className={classes.titulo} paragraph>
@@ -348,7 +350,7 @@ class Tops extends React.Component {
                         }
                     </Grid>
                 </Grid>
-            </div>
+            </ThemeProvider>
         )
     }
 }
