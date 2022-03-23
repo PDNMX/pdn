@@ -16,6 +16,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import ThemeV2 from '../../ThemeV2';
 import pdnRoutes from '../../routes';
 import HeaderV2 from '../HomeV2/HeaderV2';
+import Disclaimer from './Disclaimer';
 // import MyPaper from './MyPaper';
 
 const titulo = 'Sistema de evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal';
@@ -60,6 +61,7 @@ class Declaraciones extends React.Component {
             </Switch>
           </Grid>
         </Grid>
+        <Disclaimer open={this.state.open} handleClose={this.handleClose} />
       </ThemeProvider>
     );
   }
