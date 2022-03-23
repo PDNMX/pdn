@@ -409,8 +409,29 @@ const CssDeclaraciones = theme => ({
     marginBottom: theme.spacing(4),
     color: theme.palette.primario.contrastText
   },
+  text_color: {
+    color: theme.palette.primario.contrastText
+  },
   menulateral_fondo: {
     backgroundColor: 'rgba(42, 116, 145)'
+  },
+  enlaces: {
+    'textDecoration': 'none',
+    // 'color': '#b1bcc1',
+    'color': '#666',
+    '&:visited': {
+      color: '#b1bcc1'
+    },
+    '&:link': {
+      color: '#b1bcc1'
+    },
+    '&:active': {
+      color: '#b1bcc1'
+    },
+    '&:hover': {
+      color: '#FFF',
+      borderBottom: '2px solid #3ab0e5'
+    }
   }
 });
 export default CssDeclaraciones;

@@ -6,10 +6,10 @@ import Typography from '@mui/material/Typography';
 import { CardHeader, Grid } from '@mui/material';
 
 import logo from '../../../assets/CardsHome/logo_interconexion.svg';
-import MyButton from './MyButton';
 
 import { makeStyles } from '@mui/styles';
 import cssCards from './cssCards.js';
+import ButtonPDN from '../../Compartidos/ButtonPDN';
 const useStyles = makeStyles(cssCards);
 
 const CardInterconexion = props => {
@@ -28,7 +28,9 @@ const CardInterconexion = props => {
       </CardContent>
       <CardActions>
         <Grid container direction={'row-reverse'}>
-          <MyButton text={'CONOCE MÁS'} href={'https://www.plataformadigitalnacional.org/mapa-sla/'} />
+          <ButtonPDN text={''} href={'https://www.plataformadigitalnacional.org/mapa-sla/'}>
+            CONOCE MÁS
+          </ButtonPDN>
         </Grid>
       </CardActions>
     </Card>

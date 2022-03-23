@@ -6,10 +6,10 @@ import Typography from '@mui/material/Typography';
 import { CardHeader, Grid } from '@mui/material';
 
 import logo from '../../../assets/CardsHome/logo_mda.svg';
-import MyButton from './MyButton';
 
 import { makeStyles } from '@mui/styles';
 import cssCards from './cssCards.js';
+import ButtonPDN from '../../Compartidos/ButtonPDN';
 const useStyles = makeStyles(cssCards);
 
 const CardMercardo = props => {
@@ -26,7 +26,9 @@ const CardMercardo = props => {
       </CardContent>
       <CardActions>
         <Grid container direction={'row-reverse'}>
-          <MyButton text={'CONOCE MÁS'} href={'https://mda.plataformadigitalnacional.org/'} />
+          <ButtonPDN text={''} href={'https://mda.plataformadigitalnacional.org/'}>
+            CONOCE MÁS
+          </ButtonPDN>
         </Grid>
       </CardActions>
     </Card>
