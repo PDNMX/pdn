@@ -1,8 +1,6 @@
 import React from 'react';
-import {FormControl, MenuItem, Select, InputLabel, Typography} from "@mui/material";
+import {FormControl, MenuItem, Select, InputLabel} from "@mui/material";
 import withStyles from '@mui/styles/withStyles';
-import { ThemeProvider } from '@mui/material/styles';
-import themeV2 from "../../ThemeV2";
 
 const dataSuppliers = require("./suppliers.json");
 
@@ -17,9 +15,8 @@ const SelectSupplier = props => {
     const handleSetDataSupplier = e => setDataSupplier(e.target.value);
 
     return (
-        <ThemeProvider theme={themeV2}>
         <div className={classes.root}>
-        {/*
+            {/*
             <Paper className={classes.paper} elevation={3}>
             <Typography paragraph>
                 <b>Proveedor de información</b>
@@ -41,9 +38,8 @@ const SelectSupplier = props => {
                 </Select>
             </FormControl>
 
-        {/*</Paper>*/}
-    </div>
-        </ThemeProvider>
+            {/*</Paper>*/}
+        </div>
     );
 }
 
