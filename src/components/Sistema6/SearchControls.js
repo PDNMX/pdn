@@ -5,6 +5,8 @@ import InputLabel from "@mui/material/InputLabel";
 //import NativeSelect from "@mui/material/NativeSelect";
 //import InputBase from "@mui/material/InputBase";
 import {Box, Grid, Select, MenuItem, TextField, Button } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
+import themeV2 from "../../ThemeV2";
 
 const styles = theme => ({
     root: {
@@ -52,6 +54,7 @@ const SearchControls = props => {
     };
 
     return (
+        <ThemeProvider theme={themeV2}>
         <div className={classes.root}>
             <Grid container spacing={0}>
                 <Grid item  xs={12} sm={12} md={4} lg={6} xl={6}  className={classes.item}>
@@ -194,6 +197,7 @@ const SearchControls = props => {
                 </Grid>
             </Grid>
         </div>
+        </ThemeProvider>
     );
 }
 

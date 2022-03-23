@@ -9,6 +9,8 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
 import TipoProcedimiento from "./TipoProcedimiento";
+import { ThemeProvider } from '@mui/material/styles';
+import themeV2 from "../../ThemeV2";
 
 const styles = theme => ({
     root: {
@@ -48,6 +50,7 @@ const EntradasBuscador = props => {
     };
 
     return (
+        <ThemeProvider theme={themeV2}>
         <div className={classes.root}>
             <Grid container spacing={4}>
                 <Grid item xs={12}>
@@ -158,6 +161,7 @@ const EntradasBuscador = props => {
                 </Grid>
             </Grid>
         </div>
+        </ThemeProvider>
     );
 }
 
