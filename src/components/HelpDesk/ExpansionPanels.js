@@ -652,7 +652,7 @@ export default function CustomizedExpansionPanels() {
                             electrónico para que realice los ajustes necesarios y solicite una nueva revisión al equipo de la PDN
                         </Typography>
                         <Typography paragraph>
-                            Para iniciar el proceso o protocolo de conexión, es necesario llenar el formato de <Link to="https://drive.google.com/file/d/1ANQG3f1Q7aO4soQR9__2FvHEi_-UwvBe/view" className={classes.link}><Typography component={'span'}>Solicitud de conexión </Typography></Link> correctamente y enviarlo al correo electrónico: pdn@sesna.gob.mx.
+                            Para iniciar el proceso o protocolo de conexión, es necesario llenar el formato de <MuiLink component='a' target="_blank" href="https://drive.google.com/file/d/1ANQG3f1Q7aO4soQR9__2FvHEi_-UwvBe/view">Solicitud de conexión</MuiLink> correctamente y enviarlo al correo electrónico: pdn@sesna.gob.mx.
                         </Typography>
                         <Typography paragraph>
                             Adicionalmente, ponemos a disposición un <Link to="/validador" className={classes.link}><Typography component={'span'}>Validador </Typography></Link>

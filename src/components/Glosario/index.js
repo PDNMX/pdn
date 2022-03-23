@@ -7,6 +7,7 @@ import Fab from '@mui/material/Fab';
 import MenuBookTwoToneIcon from '@mui/icons-material/MenuBookTwoTone';
 
 import Busqueda from './busqueda'
+import zIndex from '@mui/material/styles/zIndex';
 
 const useStyles = makeStyles((theme) => ({
     drawerPaper: {
@@ -25,7 +26,8 @@ const useStyles = makeStyles((theme) => ({
       bottom: 100,
       left: 'auto',
       position: 'fixed',
-      background: '#3d6575'
+      background: '#3d6575',
+      zIndex: 10,
     }
 }));
 
