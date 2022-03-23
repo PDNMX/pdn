@@ -15,6 +15,9 @@ import bgimg from "../../assets/rediseno/fondo_cruces.png";
 import HeaderV2 from '../HomeV2/HeaderV2';
 import pdnRoutes from "../../routes";
 
+import { ThemeProvider } from '@mui/material/styles';
+import ThemeV2 from '../../ThemeV2';
+
 //import LabeledHeatmap from './Charts/LabeledHeatmap';
 //import Treemap from './Charts/Treemap';
 //import ScatterPlot from "./Charts/ScatterPlot";
@@ -156,10 +159,14 @@ const Index = props => {
                 <Grid item xs={12} className={classes.tabItem} style={{"overflow":"auto"}}>
                     <Paper className={classes.paper1} elevation={15}>
                         <Box paddingLeft={1} paddingRight={1} paddingBottom={3}>
-                            <SelectSupplier dataSupplier={dataSupplier} setDataSupplier={setDataSupplier}/>
+                            <ThemeProvider theme={ThemeV2}>
+                                <SelectSupplier dataSupplier={dataSupplier} setDataSupplier={setDataSupplier}/>
+                            </ThemeProvider>
                         </Box>
                         {/* TODO: add supplier  support*/}
+                        <ThemeProvider theme={ThemeV2}>
                         <Busqueda dataSupplier={dataSupplier}/>
+                        </ThemeProvider>
                     </Paper>
                 </Grid>
                 :
