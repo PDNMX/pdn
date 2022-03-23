@@ -174,7 +174,7 @@ export default function EnhancedTable(props) {
             total = "No disponible"
         }
 
-        let date = "No disponible";
+        let date = "";
 
         try {
             date = new Date(d.date).toLocaleDateString('es-MX');
@@ -182,6 +182,8 @@ export default function EnhancedTable(props) {
             console.log(e);
             date = "No disponible";
         }
+
+        date = date.toLowerCase() === "invalid date" ? d.cycle: date;
 
         return {
             col1: d.ocid,
