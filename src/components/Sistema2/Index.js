@@ -11,6 +11,9 @@ import img3 from "../../assets/rediseno/svg_iconos_azul/SVG/s2_03.svg";
 import bgimg from "../../assets/rediseno/fondo_cruces.png";
 import pdnRoutes from "../../routes/index";
 
+import { ThemeProvider } from '@mui/material/styles';
+import ThemeV2 from '../../ThemeV2';
+
 const styles = theme => ({
     root: {
         flexGrow: 1,
@@ -149,7 +152,9 @@ const Index = props => {
                 </Grid>
 
                 <Grid item xs={12} className={classes.contentsSection}>
-                    <TabContents index={contentId}/>
+                    <ThemeProvider theme={ThemeV2}>
+                        <TabContents index={contentId}/>
+                    </ThemeProvider>
                 </Grid>
 
             </Grid>

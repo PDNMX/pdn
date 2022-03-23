@@ -154,19 +154,17 @@ const Index = props => {
                     </Grid>
                 </Grid>
             </Grid>
-
+            <ThemeProvider theme={ThemeV2}>
             {selectedTab === 0?
                 <Grid item xs={12} className={classes.tabItem} style={{"overflow":"auto"}}>
                     <Paper className={classes.paper1} elevation={15}>
                         <Box paddingLeft={1} paddingRight={1} paddingBottom={3}>
-                            <ThemeProvider theme={ThemeV2}>
+                            
                                 <SelectSupplier dataSupplier={dataSupplier} setDataSupplier={setDataSupplier}/>
-                            </ThemeProvider>
+                            
                         </Box>
                         {/* TODO: add supplier  support*/}
-                        <ThemeProvider theme={ThemeV2}>
                         <Busqueda dataSupplier={dataSupplier}/>
-                        </ThemeProvider>
                     </Paper>
                 </Grid>
                 :
@@ -187,6 +185,7 @@ const Index = props => {
                     </Paper>
                 </Grid>
             }
+            </ThemeProvider>
         </Grid>
 
         {/*<Grid container spacing={0} justifyContent="center" style={{backgroundColor: "#34b3eb"}}>
