@@ -17,6 +17,8 @@ import FichaServidorPublico from "./FichaServidorPublico";
 
 import columnData from './column_data';
 import Descarga from "../Compartidos/Descarga";
+import { ThemeProvider } from '@mui/material/styles';
+import ThemeV2 from '../../ThemeV2';
 
 const styles = theme => ({
     root: {},
@@ -365,6 +367,7 @@ class BuscadorS2 extends React.Component {
         //  const emptyRows = rowsPerPage - filterData.length;
 
         return (<div>
+            <ThemeProvider theme={ThemeV2}>
             <Paper className={classes.paper} elevation={15}>
                 {/* Información de la búsqueda */}
                 <Box p={1}>
@@ -514,7 +517,7 @@ class BuscadorS2 extends React.Component {
             }
 
             <FichaServidorPublico open={open} servidorPublico={elementoSeleccionado} closeDialog={this.closeDialog}/>
-
+            </ThemeProvider>
         </div>);
     }
 }
