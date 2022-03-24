@@ -1,6 +1,6 @@
 import React from 'react';
 import withStyles from '@mui/styles/withStyles';
-import {TextField, MenuItem, FormControl, Grid, Paper, Typography} from "@mui/material"
+import {TextField, MenuItem, FormControl, Grid, Typography} from "@mui/material"
 import Button from '@mui/material/Button';
 import InputLabel from '@mui/material/InputLabel';
 import Select from "@mui/material/Select";
@@ -140,9 +140,9 @@ const EntradasBuscador = props => {
                                     value={nivel}
                                     onChange={(e) => changeLevel(e)}
                         >
-                            <FormControlLabel value="todos" control={<Radio/>} label="Todos"/>
-                            <FormControlLabel value="federal" control={<Radio/>} label="Federal"/>
-                            <FormControlLabel value="estatal" control={<Radio/>} label="Estatal"/>
+                            <FormControlLabel value="Todos" control={<Radio/>} label="Todos"/>
+                            <FormControlLabel value="Federal" control={<Radio/>} label="Federal"/>
+                            <FormControlLabel value="Estatal" control={<Radio/>} label="Estatal"/>
                         </RadioGroup>
 
                     </FormControl>
