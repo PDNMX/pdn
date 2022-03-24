@@ -103,7 +103,7 @@ class BuscadorS2 extends React.Component {
             loading: false,
             totalRows: 0,
             error: false,
-            nivel: 'todos',
+            nivel: 'Todos',
             mostrarPanelResumen: true
         };
     }
@@ -116,7 +116,7 @@ class BuscadorS2 extends React.Component {
             data: {}
         };
 
-        if (nivel !== 'todos'){
+        if (nivel !== 'Todos'){
             options.data.nivel_gobierno = nivel
         }
 
@@ -144,7 +144,7 @@ class BuscadorS2 extends React.Component {
     };
 
     componentDidMount() {
-        this.loadEntities("todos");
+        this.loadEntities("Todos");
     }
 
     toggleShowSummary = () => {
@@ -221,7 +221,7 @@ class BuscadorS2 extends React.Component {
 
             let filtros = {};
 
-            if(nivel && nivel !== 'todos') {
+            if(nivel && nivel !== 'Todos') {
                 filtros.nivel_gobierno = nivel;
             }
 
@@ -337,7 +337,7 @@ class BuscadorS2 extends React.Component {
             results: null,
             summaryData : null,
             elementoSeleccionado: null,
-            nivel : 'todos',
+            nivel : 'Todos',
             nombres: "",
             tipoProcedimiento: [],//0,
             current_entity: "ANY",
