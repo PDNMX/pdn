@@ -342,6 +342,17 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
             <Grid item xs={12} style={{ textAlign: 'right' }}>
               <Button
                 className={classes.button}
+                type='reset'
+                variant='contained'
+                color='secondary'
+                onClick={e => {
+                  cleanForm();
+                }}
+              >
+                Limpiar
+              </Button>
+              <Button
+                className={classes.button}
                 type='submit'
                 variant='contained'
                 color='secondary'
@@ -351,17 +362,6 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                 disabled={btnSearch}
               >
                 Buscar
-              </Button>
-              <Button
-                className={classes.button}
-                type='reset'
-                variant='contained'
-                color='secondary'
-                onClick={e => {
-                  cleanForm();
-                }}
-              >
-                Limpiar
               </Button>
             </Grid>
             {/* <Divider /> */}
