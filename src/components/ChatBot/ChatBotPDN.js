@@ -1,5 +1,5 @@
 import React from 'react';
-import { ThemeProvider } from 'styled-components';
+import {ThemeProvider} from 'styled-components';
 import ChatBot from 'react-simple-chatbot';
 import IconChat from "./ico-chat.svg";
 import IconErizo from "./ico-erizo.svg";
@@ -27,6 +27,11 @@ const ChatBotPDN = () => (
             hideUserAvatar={true}
             headerTitle={'Chat PDN'}
             hideSubmitButton={true}
+            footerStyle={
+                {
+                    display: 'none'
+                }
+            }
         />
     </ThemeProvider>
 );
