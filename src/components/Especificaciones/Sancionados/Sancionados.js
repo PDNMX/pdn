@@ -84,7 +84,9 @@ const styles = theme => ({
         maxWidth: '900px', paddingTop: '50px', paddingBottom: '50px'
     },
     link:{
-        color: theme.palette.secundario.main
+        textDecoration: "none",
+        color: theme.palette.text.linkColor,
+        wordBreak: "break-all",
     }
 });
 
@@ -139,7 +141,7 @@ const Sancionados = props => {
 
                             <ul className={classes.ul}>
                                 <li className={classes.li}>
-                                    <Link
+                                    <Link className={classes.link}
                                         href='https://www.plataformadigitalnacional.org/oas/ui/?urls.primaryName=S3%20-%20Particulares%20Sancionados'
                                         target='_blank'
                                         rel="noopener noreferrer"
@@ -148,7 +150,7 @@ const Sancionados = props => {
                                     </Link>
                                 </li>
                                 <li className={classes.li}>
-                                    <Link
+                                    <Link className={classes.link}
                                         href='https://www.plataformadigitalnacional.org/oas/ui/?urls.primaryName=S3%20-%20Servidores%20Sancionados'
                                         target='_blank'
                                         rel="noopener noreferrer"

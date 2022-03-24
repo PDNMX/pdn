@@ -40,12 +40,14 @@ const theme = createTheme({
           main: "#3ab0e5",
           light: "#79e2ff",
           dark: "#0081b3",
-          contrastText: "#0d3b49"
+          contrastText: "#0d3b49",
+          linkColor: '#89d4f2'
         },
         text:{
           main:"#ced8db",
           greyColor: '#666666',
-          blueColor: '#3ab0e5'
+          blueColor: '#3ab0e5',
+          linkColor: '#89d4f2'
         },
         background:{
           default: "#0d3b49",

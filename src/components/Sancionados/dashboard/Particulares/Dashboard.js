@@ -1,7 +1,7 @@
 import React from 'react';
 import {withStyles} from "@mui/styles";
 import PropTypes from 'prop-types';
-import {Grid, Typography, Paper} from "@mui/material";
+import {Grid, Typography, Paper, Link} from "@mui/material";
 import AnioResolucionSanciones from "./AnioResolucionSanciones";
 import SentidoResoluciones from "./SentidoResoluciones";
 import DependenciasSanciones from "./DependenciasSanciones";
@@ -45,7 +45,12 @@ const styles = theme => ({
         borderWidth: 1,
         borderColor: theme.palette.secundario.main,
         borderRadius: '0px 10px 10px 10px'
-    }
+    },
+    link: {
+        textDecoration: "none",
+        color: theme.palette.text.linkColor,
+        wordBreak: "break-all",
+    },
 });
 
 class Dashboard extends React.Component {
@@ -68,16 +73,16 @@ class Dashboard extends React.Component {
                             <Typography  className={classes.desc}>
                                 Se obtiene del  Registro de Proveedores y Contratistas Sancionados disponible en datos.gob.mx <br/>
                                 (Fuente:
-                                <a href={'https://www.datos.gob.mx/busca/dataset/proveedores-y-contratistas-sancionados'} target="_blank" rel="noopener noreferrer">https://www.datos.gob.mx/busca/dataset/proveedores-y-contratistas-sancionados</a>)
+                                <Link className={classes.link} href={'https://www.datos.gob.mx/busca/dataset/proveedores-y-contratistas-sancionados'} target="_blank" rel="noopener noreferrer">https://www.datos.gob.mx/busca/dataset/proveedores-y-contratistas-sancionados</Link>)
                             </Typography>
                             <Typography>
                                 <b>{"¿Qué puedo encontrar?"}</b>
                             </Typography>
                             <Typography  className={classes.desc}>
                                 A continuación encontrará 4 secciones:<br/><br/>
-                                1.-<b>Cantidad de licitantes, proveedores y contratistas sancionados.</b> Muestra el número de licitantes, proveedores y contratistas sancionados cuya fecha de resolución va del 2004 a enero 2022. <a href={"#g1"}>Ver</a><br/>
-                                2.-<b>Sentido de las resoluciones.</b> Conoce cuál ha sido el sentido de la resolución para las sanciones a lo largo del tiempo, así como, de manera general, el número de sanciones por cada uno de ellos. <a href={"#g2"}>Ver</a><br/>
-                                3.-<b>Dependencias con mayor número de sanciones.</b> Muestra cuáles son las dependencias con mayor número de licitantes, proveedores y contratistas sancionados de manera global y por año. <a href={"#g3"}>Ver</a><br/>
+                                1.-<b>Cantidad de licitantes, proveedores y contratistas sancionados.</b> Muestra el número de licitantes, proveedores y contratistas sancionados cuya fecha de resolución va del 2004 a enero 2022. <Link className={classes.link} href={"#g1"}>Ver</Link><br/>
+                                2.-<b>Sentido de las resoluciones.</b> Conoce cuál ha sido el sentido de la resolución para las sanciones a lo largo del tiempo, así como, de manera general, el número de sanciones por cada uno de ellos. <Link className={classes.link} href={"#g2"}>Ver</Link><br/>
+                                3.-<b>Dependencias con mayor número de sanciones.</b> Muestra cuáles son las dependencias con mayor número de licitantes, proveedores y contratistas sancionados de manera global y por año. <Link className={classes.link} href={"#g3"}>Ver</Link><br/>
                                 {/*4.-<b>Duración de las sanciones.</b> Muestra cómo varía la duración de las sanciones por año, por tipo de resolución y por dependencia. <a href="#g4">Ver</a>*/}
                             </Typography>
                         </Grid>

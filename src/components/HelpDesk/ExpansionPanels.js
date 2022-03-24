@@ -48,7 +48,7 @@ const AccordionDetails = withStyles(theme => ({
 const useStyles = makeStyles( theme => ({
     link: {
         textDecoration: "none",
-        color: theme.palette.primary.dark,
+        color: theme.palette.text.linkColor,
         wordBreak: "break-all",
     },
     ul: {
@@ -378,7 +378,7 @@ export default function CustomizedExpansionPanels() {
                                         <Link to="/especificaciones/s3" className={classes.link}><Typography display='inline'>Servidores públicos y particulares sancionados</Typography></Link>
                                     </li>
                                 </ul>
-                            <li><Typography>Tecnologías y servicios de software modernos y de código abierto. El código de la PDN puede consultarse <MuiLink target="_blank" href="https://github.com/PDNMX"> aquí</MuiLink>. Las tecnologías que usamos son las siguientes:</Typography></li>
+                            <li><Typography>Tecnologías y servicios de software modernos y de código abierto. El código de la PDN puede consultarse <MuiLink className={classes.link} target="_blank" href="https://github.com/PDNMX"> aquí</MuiLink>. Las tecnologías que usamos son las siguientes:</Typography></li>
                         </ol>
 
 
@@ -652,7 +652,7 @@ export default function CustomizedExpansionPanels() {
                             electrónico para que realice los ajustes necesarios y solicite una nueva revisión al equipo de la PDN
                         </Typography>
                         <Typography paragraph>
-                            Para iniciar el proceso o protocolo de conexión, es necesario llenar el formato de <MuiLink component='a' target="_blank" href="https://drive.google.com/file/d/1ANQG3f1Q7aO4soQR9__2FvHEi_-UwvBe/view">Solicitud de conexión</MuiLink> correctamente y enviarlo al correo electrónico: pdn@sesna.gob.mx.
+                            Para iniciar el proceso o protocolo de conexión, es necesario llenar el formato de <MuiLink className={classes.link} component='a' target="_blank" href="https://drive.google.com/file/d/1ANQG3f1Q7aO4soQR9__2FvHEi_-UwvBe/view">Solicitud de conexión</MuiLink> correctamente y enviarlo al correo electrónico: pdn@sesna.gob.mx.
                         </Typography>
                         <Typography paragraph>
                             Adicionalmente, ponemos a disposición un <Link to="/validador" className={classes.link}><Typography component={'span'}>Validador </Typography></Link>
@@ -691,7 +691,7 @@ export default function CustomizedExpansionPanels() {
                             Escribenos si tienes dudas sobre la construcción de la PDN.
                         </Typography>
                         <Typography>
-                            <MuiLink component='a' href="mailto:pdn@sesna.gob.mx">
+                            <MuiLink className={classes.link} component='a' href="mailto:pdn@sesna.gob.mx">
                                 pdn@sesna.gob.mx
                             </MuiLink>
                         </Typography>

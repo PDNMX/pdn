@@ -27,6 +27,11 @@ const styles = theme => ({
         },
         paddingBottom: theme.spacing(1)
     },
+    link: {
+        textDecoration: "none",
+        color: theme.palette.text.linkColor,
+        wordBreak: "break-all",
+    },
 });
 
 const Implementacion = props => {
@@ -51,7 +56,7 @@ const Implementacion = props => {
                             <Typography paragraph display='inline'>
 
                                 <b>Diagnóstico:</b> Revisar y comparar los datos contenidos en su base de datos con los
-                                especificados en el <Link target={'_blank'}
+                                especificados en el <Link className={classes.link} target={'_blank'}
                                                        href={'https://docs.google.com/spreadsheets/d/1wVaVFEJQloanwasIAASFiKGC8mbNEmeijK0F58PxgCA/edit?usp=sharing'}
                                                        rel="noopener noreferrer">Diccionario de Datos del Formato de
                                 Datos de Servidores Públicos y Particulares Sancionados</Link>, es importante contar con
