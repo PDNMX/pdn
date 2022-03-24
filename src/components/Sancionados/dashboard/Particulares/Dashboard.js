@@ -73,7 +73,7 @@ class Dashboard extends React.Component {
                             <Typography  className={classes.desc}>
                                 Se obtiene del  Registro de Proveedores y Contratistas Sancionados disponible en datos.gob.mx <br/>
                                 (Fuente:
-                                <Link className={classes.link} href={'https://www.datos.gob.mx/busca/dataset/proveedores-y-contratistas-sancionados'} target="_blank" rel="noopener noreferrer">https://www.datos.gob.mx/busca/dataset/proveedores-y-contratistas-sancionados</Link>)
+                                <Link className={classes.link} href={'https://www.datos.gob.mx/busca/dataset/proveedores-y-contratistas-sancionados'} target="_blank" rel="noopener noreferrer">datos.gob.mx</Link>)
                             </Typography>
                             <Typography>
                                 <b>{"¿Qué puedo encontrar?"}</b>

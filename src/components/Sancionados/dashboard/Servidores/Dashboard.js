@@ -79,7 +79,7 @@ const Dashboard = (props) => {
                         <Typography className={classes.desc}>
                             Se obtiene de la información reportada por la Secretaría de la Función Pública, visita la página datos.gob.mx<br/>
                             (Fuente:
-                            <Link className={classes.link} href={'https://datos.gob.mx/busca/dataset/servidores-publicos-sancionados'} target="_blank" rel="noopener noreferrer">https://datos.gob.mx/busca/dataset/servidores-publicos-sancionados</Link>)
+                            <Link className={classes.link} href={'https://datos.gob.mx/busca/dataset/servidores-publicos-sancionados'} target="_blank" rel="noopener noreferrer">datos.gob.mx</Link>)
                         </Typography>
                         <Typography >
                             <b>¿Qué puedo encontrar?</b>
