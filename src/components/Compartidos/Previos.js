@@ -43,7 +43,7 @@ const styles = theme => ({
 function Previos({data, classes, handleChangeSujetoObligado}) {
 
     let [page, setPage] = React.useState(0);
-    let [rowsPerPage, setRowsPerPage] = React.useState(5);
+    let [rowsPerPage, setRowsPerPage] = React.useState(10);
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage)
