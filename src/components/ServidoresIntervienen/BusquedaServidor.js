@@ -156,9 +156,9 @@ const BusquedaServidor = props => {
                                     value={nivel}
                                     onChange={(e) => changeLevel(e)}
                         >
-                            <FormControlLabel value="todos" control={<Radio/>} label="Todos"/>
-                            <FormControlLabel value="federal" control={<Radio/>} label="Federal"/>
-                            <FormControlLabel value="estatal" control={<Radio/>} label="Estatal"/>
+                            <FormControlLabel value="Todos" control={<Radio/>} label="Todos"/>
+                            <FormControlLabel value="Federal" control={<Radio/>} label="Federal"/>
+                            <FormControlLabel value="Estatal" control={<Radio/>} label="Estatal"/>
                         </RadioGroup>
 
                     </FormControl>
