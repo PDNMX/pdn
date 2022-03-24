@@ -6,6 +6,7 @@ import Agrupaciones from "./Agrupaciones";
 import Tops from "./Tops";
 import Procedimientos from "./Procedimientos";
 import './graficas.css'
+import PropTypes from 'prop-types';
 
 const styles = theme => ({
     root: {
@@ -28,7 +29,7 @@ const styles = theme => ({
     },
     link: {
         textDecoration: "none",
-        color: theme.palette.text.linkColor,
+        color: '#89d4f2',//theme.palette.text.linkColor,
         wordBreak: "break-all",
     },
 });
@@ -128,6 +129,10 @@ const Dashboard = props => {
             </Paper>
         </div>
     );
+};
+
+Dashboard.propTypes = {
+    classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(Dashboard);
