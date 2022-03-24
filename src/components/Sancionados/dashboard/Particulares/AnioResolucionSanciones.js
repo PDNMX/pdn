@@ -58,147 +58,146 @@ let color = ["#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
     "#8BC34A", "#CDDC39", "#FFEB3B", "#FFC107", "#FF9800",
     "#FF5722", "#795548", "#9E9E9E", "#607D8B"];
 
-class AnioResolucionSanciones extends React.Component {
-    state = {
-        hoveredCell: false,
-        error: false,
-    };
+const AnioResolucionSanciones = (props) => {
+    const [hoveredCell, setHoveredCell] = React.useState(false);
+    const [error, setError] = React.useState(false);
+    const [methods, setMethods] = React.useState({});
+    const [configPie, setConfigPie] = React.useState({});
+    const {classes} = props;
 
-    componentDidMount() {
-        let total = 0;
-        aux().then(result => {
-            let temp = result.data.data.slice(1);
-            let aux = temp.map(item => {
-                total += parseInt(item.count,10);
-                return {
-                    anio: item.anio_resolucion.toString(),
-                    x: item.anio_resolucion,
-                    y: parseInt(item.count,10)
-                }
-            });
-            this.setState({
-                    methods: {
-                        data: aux,
+    React.useEffect(() => {
+            let total = 0;
+            aux().then(result => {
+                let temp = result.data.data.slice(1);
+                let aux = temp.map(item => {
+                    total += parseInt(item.count, 10);
+                    return {
+                        anio: item.anio_resolucion.toString(),
+                        x: item.anio_resolucion,
+                        y: parseInt(item.count, 10)
+                    }
+                });
+                setMethods({
+                    data: aux,
+                });
+                setConfigPie({
+                    data: aux,
+                    groupBy: "anio",
+                    value: function (d) {
+                        return d["y"]
                     },
-                    configPie: {
-                        data: aux,
-                        groupBy: "anio",
-                        value: function (d) {
-                            return d["y"]
-                        },
-                        height: 300,
-                        label: function (d) {
-                            return d["anio"] + "\n (" + ((d["y"] * 100) / total).toFixed(2) + "%)"
-                        },
-                        legend: false,
-                        tooltipConfig: {
-                            tbody: [
-                                ["Número de sanciones: ", function (d) {
-                                    return d["y"]
-                                }
-                                ]
-                            ]
-                        },
-                        shapeConfig: {
-                            fill: (d, i) => {
-                                return color[i]
+                    height: 300,
+                    label: function (d) {
+                        return d["anio"] + "\n (" + ((d["y"] * 100) / total).toFixed(2) + "%)"
+                    },
+                    legend: false,
+                    tooltipConfig: {
+                        tbody: [
+                            ["Número de sanciones: ", function (d) {
+                                return d["y"]
                             }
+                            ]
+                        ]
+                    },
+                    shapeConfig: {
+                        fill: (d, i) => {
+                            return color[i]
                         }
                     }
-                }
-            )
-        }).catch(err => {
-            console.error(err);
-            this.setState({error: true});
-        });
-    }
+                })
+            }).catch(err => {
+                console.error(err);
+                setError(true);
+            });
+        }, []);
 
-    render() {
-        const {classes} = this.props;
-        let {hoveredCell} = this.state;
-        return (
-            <div>
-                <Grid container spacing={0} justifyContent='center' className={classes.frameChart}>
-                    <Grid item xs={12} md={12}>
-                        <Typography variant={"h6"} className={classes.titulo}>
-                            <b> {"Cantidad de sanciones"}</b>
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={12} className={classes.descripcion}>
-                        <Typography variant={"body1"}>
-                            Como se aprecia en la gráfica, el comportamiento de las sanciones no ha sido constante, se aprecia el año 2010 con un mayor número de sanciones (233) representando el 11.95% del total. En contraste, el año 2004 representa únicamente el 0.21% del total con 4 sanciones.
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={12} md={8}>
-                        {
-                            this.state.methods && this.state.methods.data &&
-                            <FlexibleXYPlot height={400}>
-                                <VerticalGridLines/>
-                                <HorizontalGridLines/>
-                                <XAxis title={"Año de la sanción"} tickValues={this.state.methods.data.map(item => {
-                                    return item.x
-                                })} tickFormat={v => `${v}`}/>
-                                <YAxis title={"Número de sanciones"}/>
 
-                                <LineMarkSeries
-                                    className="linemark-series-example"
-                                    style={{
-                                        strokeWidth: '3px'
-                                    }}
-                                    lineStyle={{stroke: '#5fb1e6'}}
-                                    markStyle={{stroke: 'yellow'}}
-                                    data={this.state.methods.data}
-                                    onValueMouseOver={(datapoint, event) =>
-                                        this.setState({hoveredCell: datapoint})
-                                    }
-                                    onValueMouseOut={(datapoint, event) => {
-                                        this.setState({hoveredCell: null})
-                                    }}
-                                >
-                                </LineMarkSeries>
-                                {hoveredCell ? (
-                                    <Hint value={hoveredCell}>
-                                        <div style={{background: 'white'}}>
-                                            <table style={{border: '1px solid black', color: 'black'}}>
-                                                <thead style={{textAlign: 'center'}}>
-                                                Datos
-                                                </thead>
-                                                <tbody>
-                                                <tr>
-                                                    <td>Año:</td>
-                                                    <td>{hoveredCell.x}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Número de sanciones:</td>
-                                                    <td>{hoveredCell.y}</td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </Hint>
-                                ) : null}
-                            </FlexibleXYPlot>
+    return (
+        <div>
+            <Grid container spacing={0} justifyContent='center' className={classes.frameChart}>
+                <Grid item xs={12} md={12}>
+                    <Typography variant={"h6"} className={classes.titulo}>
+                        <b> {"Cantidad de sanciones"}</b>
+                    </Typography>
+                </Grid>
+                <Grid item xs={12} className={classes.descripcion}>
+                    <Typography variant={"body1"}>
+                        Como se aprecia en la gráfica, el comportamiento de las sanciones no ha sido constante, el año
+                        2010 cuenta con un reporte de 233 sanciones, equivalentes al <b>11.23%</b> del total, en
+                        contraste con el 2004 que registró únicamente 4 sanciones a particulares, lo que representa
+                        el <b>0.19%</b>.
+                    </Typography>
+                </Grid>
+                <Grid item xs={12} md={8}>
+                    {
+                        methods && methods.data &&
+                        <FlexibleXYPlot height={400}>
+                            <VerticalGridLines/>
+                            <HorizontalGridLines/>
+                            <XAxis title={"Año de la sanción"} tickValues={methods.data.map(item => {
+                                return item.x
+                            })} tickFormat={v => `${v}`}/>
+                            <YAxis title={"Número de sanciones"}/>
 
-                        }
+                            <LineMarkSeries
+                                className="linemark-series-example"
+                                style={{
+                                    strokeWidth: '3px'
+                                }}
+                                lineStyle={{stroke: '#5fb1e6'}}
+                                markStyle={{stroke: 'yellow'}}
+                                data={methods.data}
+                                onValueMouseOver={(datapoint, event) =>
+                                    setHoveredCell(datapoint)
+                                }
+                                onValueMouseOut={(datapoint, event) => {
+                                    setHoveredCell(null)
+                                }}
+                            >
+                            </LineMarkSeries>
+                            {hoveredCell ? (
+                                <Hint value={hoveredCell}>
+                                    <div style={{background: 'white'}}>
+                                        <table style={{border: '1px solid black', color: 'black'}}>
+                                            <thead style={{textAlign: 'center'}}>
+                                            Datos
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>Año:</td>
+                                                <td>{hoveredCell.x}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Número de sanciones:</td>
+                                                <td>{hoveredCell.y}</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </Hint>
+                            ) : null}
+                        </FlexibleXYPlot>
 
-                    </Grid>
-                    <Grid item xs={12} md={4}>
-                        {
-                            this.state.methods && this.state.methods.data &&
-                            <Pie config={this.state.configPie}/>
-                        }
-                    </Grid>
-                    <Grid item xs={12}>
-                        {
-                            this.state.error && <MensajeErrorDatos/>
-                        }
-                    </Grid>
+                    }
 
                 </Grid>
+                <Grid item xs={12} md={4}>
+                    {
+                        methods && methods.data &&
+                        <Pie config={configPie}/>
+                    }
+                </Grid>
+                <Grid item xs={12}>
+                    {
+                        error && <MensajeErrorDatos/>
+                    }
+                </Grid>
 
-            </div>
-        )
-    }
+            </Grid>
+
+        </div>
+    )
+
 
 }
 

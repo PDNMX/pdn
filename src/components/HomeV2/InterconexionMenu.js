@@ -21,6 +21,8 @@ const styles = theme => ({
         borderStyle: 'solid',
         borderWidth: 2,
         minWidth: theme.spacing(25),
+        transition: 'height 2s',
+        height: '70%'
     },
     opc: {
         marginBottom: theme.spacing(1),
@@ -61,30 +63,34 @@ const InterconexionMenu = props => {
                 justifyContent: 'center'
             }}
         >
+            <a className={classes.link} href={'https://www.plataformadigitalnacional.org/mapa-sla/'}>
+
             <Box className={`${classes.item}`}  sx={{
                 m:1,
                 p:2,
                 color:'#34b3eb'
             }}>
                 <div className={`${classes.opc} `}>
-                    <a className={classes.link} href={'https://www.plataformadigitalnacional.org/mapa-sla/'}>
-                        <img src={legislacion_icono} alt="Legislación" className={classes.icon}/>
+                    <img src={legislacion_icono} alt="Legislación" className={classes.icon}/>
                         <Typography color={'#b2bfc4'}>{'Legislación'}</Typography>
-                    </a>
+
                 </div>
             </Box>
+            </a>
+            <a className={classes.link} href={'https://www.plataformadigitalnacional.org/mapa-avance/'}>
             <Box className={`${classes.item}`}  sx={{
                 m:1,
                 p:2,
                 color:'#34b3eb'
             }}>
                 <div className={`${classes.opc} `}>
-                    <a className={classes.link} href={'https://www.plataformadigitalnacional.org/mapa-avance/'}>
+
                         <img src={mapa_s2s3_icono} alt="Sistemas 2 y 3" className={classes.icon}/>
                         <Typography color={'#b2bfc4'}>{'Sistemas 2 y 3'}</Typography>
-                    </a>
+
                 </div>
             </Box>
+            </a>
         </Box>
     );
 }

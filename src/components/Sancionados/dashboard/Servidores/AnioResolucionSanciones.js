@@ -193,10 +193,10 @@ const AnioResolucionSanciones = (props) => {
                                 markStyle={{stroke: 'orange'}}
                                 data={methods.data}
                                 onValueMouseOver={(datapoint, event) =>
-                                    this.setState({hoveredCell: datapoint})
+                                    setHoveredCell(datapoint)
                                 }
                                 onValueMouseOut={(datapoint, event) => {
-                                    this.setState({hoveredCell: null})
+                                    setHoveredCell(null)
                                 }}
                             >
                             </LineMarkSeries>

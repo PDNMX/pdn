@@ -60,36 +60,24 @@ class Dashboard extends React.Component {
                                 <b>{"¿Qué información es?"}</b>
                             </Typography>
                             <Typography className={classes.desc}>
-                                La información presentada corresponde a los licitantes, proveedores y contratistas
-                                sancionados, reportada en el Registro de Proveedores
-                                y Contratistas Sancionados del 2004 a mayo 2021.
-                                <br/>En esta entrega, se cuentan con 1,974 registros.
+                                La información corresponde a las personas servidoras públicas y particulares sancionados , reportada en el Registro de Proveedores y Contratistas Sancionados de la Secretaría de la Función Pública del 2004 a enero de 2022, actualmente se cuenta con <b>2,074 registros</b>.
                             </Typography>
                             <Typography>
                                 <b>{"¿Cómo se obtiene la información?"}</b>
                             </Typography>
-                            <Typography className={classes.desc}>
-                                Para consultar la información reportada por la Secretaría de la Función Pública visita
-                                la
-                                página datos.gob.mx <br/>
+                            <Typography  className={classes.desc}>
+                                Se obtiene del  Registro de Proveedores y Contratistas Sancionados disponible en datos.gob.mx <br/>
                                 (Fuente:
-                                <a href={'https://www.datos.gob.mx/busca/dataset/proveedores-y-contratistas-sancionados'}
-                                   target="_blank"
-                                   rel="noopener noreferrer">https://www.datos.gob.mx/busca/dataset/proveedores-y-contratistas-sancionados</a>)
+                                <a href={'https://www.datos.gob.mx/busca/dataset/proveedores-y-contratistas-sancionados'} target="_blank" rel="noopener noreferrer">https://www.datos.gob.mx/busca/dataset/proveedores-y-contratistas-sancionados</a>)
                             </Typography>
                             <Typography>
                                 <b>{"¿Qué puedo encontrar?"}</b>
                             </Typography>
-                            <Typography className={classes.desc}>
+                            <Typography  className={classes.desc}>
                                 A continuación encontrará 4 secciones:<br/><br/>
-                                1.-<b>Cantidad de licitantes, proveedores y contratistas sancionados.</b> Comprende la
-                                información entre el 2004 a mayo 2021, respecto a la cantidad de licitantes, proveedores
-                                y contratistas sancionados. <a href={"#g1"}>Ver</a><br/>
-                                2.-<b>Sentido de las resoluciones.</b> Muestra cuál fue el sentido de la resolución para
-                                las sanciones a lo largo del tiempo y de manera general. <a href={"#g2"}>Ver</a><br/>
-                                3.-<b>Dependencias con mayor número de sanciones.</b> Muestra cuáles son las
-                                dependencias con mayor número de licitantes, proveedores y contratistas sancionados de
-                                manera global y por año. <a href={"#g3"}>Ver</a><br/>
+                                1.-<b>Cantidad de licitantes, proveedores y contratistas sancionados.</b> Muestra el número de licitantes, proveedores y contratistas sancionados cuya fecha de resolución va del 2004 a enero 2022. <a href={"#g1"}>Ver</a><br/>
+                                2.-<b>Sentido de las resoluciones.</b> Conoce cuál ha sido el sentido de la resolución para las sanciones a lo largo del tiempo, así como, de manera general, el número de sanciones por cada uno de ellos. <a href={"#g2"}>Ver</a><br/>
+                                3.-<b>Dependencias con mayor número de sanciones.</b> Muestra cuáles son las dependencias con mayor número de licitantes, proveedores y contratistas sancionados de manera global y por año. <a href={"#g3"}>Ver</a><br/>
                                 {/*4.-<b>Duración de las sanciones.</b> Muestra cómo varía la duración de las sanciones por año, por tipo de resolución y por dependencia. <a href="#g4">Ver</a>*/}
                             </Typography>
                         </Grid>
