@@ -24,6 +24,11 @@ const styles = theme => ({
         },
         //paddingBottom: theme.spacing(2)
     },
+    link: {
+        textDecoration: "none",
+        color: '#89d4f2',//theme.palette.text.linkColor,
+        wordBreak: "break-all",
+    },
 });
 
 const CustomTypography = withStyles(theme =>({
@@ -55,7 +60,7 @@ const Disclaimer = props => {
 
             <CustomTypography paragraph color='textPrimary'>
                 Los datos utilizados en esta sección fueron tomados del portal de datos abiertos
-                del gobierno <Link href="https://datos.gob.mx/busca/organization/contrataciones-abiertas" target="_blank">datos.gob.mx</Link>.
+                del gobierno <Link className={classes.link} href="https://datos.gob.mx/busca/organization/contrataciones-abiertas" target="_blank">datos.gob.mx</Link>.
             </CustomTypography>
         </div>
     );
