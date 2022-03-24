@@ -56,12 +56,12 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
           <ul className={classes.ul}>
             <li className={classes.li}>
               <CustomTypography color='textPrimary' display='inline'>
-                La evolución patrimonial de las y los funcionarios
+                La evolución patrimonial de las personas servidoras públicas
               </CustomTypography>
             </li>
             <li className={classes.li}>
               <CustomTypography color='textPrimary' display='inline'>
-                La trayectoria laboral de las y los funcionarios
+                La trayectoria laboral de las personas servidoras públicas
               </CustomTypography>
             </li>
             <li className={classes.li}>
@@ -75,7 +75,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
       <Grid container spacing={0} className={classes.infoBusqueda}>
         <Grid item xs={12}>
           <CustomTypography variant='h6'>
-            <b>Busca un servidor público</b>
+            <b>Busca una persona servidora pública</b>
           </CustomTypography>
         </Grid>
         {/* <Divider /> */}
@@ -83,7 +83,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
           <Grid container spacing={1}>
             <Grid item xs={12} md={3}>
               <FormControl className={classes.formControl}>
-                <TextField id='mui-name' label='Nombres' value={nombres} name='nombres' onChange={handleInputChange} margin='normal' fullWidth />
+                <TextField id='mui-name' label='Nombre(s)' value={nombres} name='nombres' onChange={handleInputChange} margin='normal' fullWidth />
               </FormControl>
             </Grid>
             <Grid item xs={12} md={3}>
@@ -318,7 +318,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
             </Grid>
             <Grid item xs={12} md={12}>
               <FormControl component='fieldset' className={classes.formControl}>
-                <FormLabel component='legend'>Nivel/Orden de Gobierno:</FormLabel>
+                <FormLabel component='legend'>Ámbito:</FormLabel>
                 <RadioGroup aria-label='nivelOrdenGobierno' name='nivelOrdenGobierno' className={classes.group} value={nivelOrdenGobierno} onChange={handleInputChange} row>
                   <FormControlLabel value='' control={<Radio color='secondary' />} label='TODOS' />
                   <FormControlLabel value='FEDERAL' control={<Radio color='secondary' />} label='FEDERAL' />

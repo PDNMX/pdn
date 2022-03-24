@@ -333,7 +333,7 @@ const CssSeccDeclaraciones = theme => ({
 		paddingTop: 20,
 		paddingBottom: 20
 	},
-	// informacion sobre buscar funcionario
+	// informacion sobre buscar declaraciones
 	ul: {
 		listStyle: 'none',
 		//marginLeft: 0,
