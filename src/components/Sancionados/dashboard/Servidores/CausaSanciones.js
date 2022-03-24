@@ -219,9 +219,12 @@ const CausasSanciones = (props) => {
                         Como se puede apreciar en la gráfica de la izquierda, la causa de la mayoría de las sanciones firmes a enero 2022 fue la <b>negligencia administrativa</b> con 761 registros, representando el <b>62.47%</b> del total.
                     </Typography>
                 </Grid>
-                <Grid item xs={12} className={classes.descripcion}>
-                    <Typography variant={"body1"}>
+                <Grid item xs={12} className={classes.descripcion} justifyContent={'left'}>
+                    <Typography variant={"body1"}  >
                         Algunos datos que refleja la siguiente gráfica son:
+                    </Typography>
+                </Grid>
+                <Grid item xs={12} className={classes.descripcion}>
                         <ul>
                             <li>La <b>negligencia administrativa</b> es la causa de la mayoría de las inhabilitaciones firmes a enero 2022 con 761 registros, sin embargo, existe un decremento en el número de sancionados por esta causa  tomando como muestra el año 2017 con 139 sanciones en contraste con el año 2020 con tan solo 8.</li>
                             <li>En el caso del <b>abuso de autoridad</b> hay 181 registros, 55 de ellos corresponden al año 2014, en contraste con los 2 registros del año 2020, cabe señalar que en año 2019 y 2021 no hay registros que correspondan a esta causa.</li>
@@ -229,7 +232,6 @@ const CausasSanciones = (props) => {
                             <li>Por su parte, la <b>violación en procedimientos de contratación</b> cuenta con 58 sanciones firmes, habiendo sido resueltas en su mayoría (22) en el año 2015, a partir del año 2017 no hay más registros coincidentes.</li>
                             <li>A causa de <b>ejercicio indebido de sus funciones en materia migratoria</b> hay 7 sanciones firmes a enero 2022, 4 resueltas en 2016, 2 en 2017 y 1 en 2018.</li>
                         </ul>
-                    </Typography>
                 </Grid>
                 <Grid item xs={12} md={12}>
                     {
