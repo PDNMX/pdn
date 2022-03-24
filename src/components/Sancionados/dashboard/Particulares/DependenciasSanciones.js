@@ -178,8 +178,9 @@ class DependenciasSanciones extends React.Component {
                     </Grid>
                     <Grid item xs={12} className={classes.descripcion}>
                         <Typography variant={"body1"}>
-                            Con respecto a las dependencias que más sanciones dieron a particulares , de manera general, el Instituto Mexicano del Seguro Social es la dependencia que más sanciones dio con un total de 343 sanciones, seguida  por la Secretaría de la Función Pública con 242 sanciones, la Comisión Federal de Electricidad con 168 sanciones, Pemex exploración y producción con 100 sanciones.
-
+                            Con respecto a las dependencias que cuentan con más sanciones a particulares , el Instituto Mexicano del Seguro Social es
+                            la que cuenta con el mayor número de sanciones con un total de 343 o bien el <b>16.53%</b>, seguida  por la Secretaría de la
+                            Función Pública con 272  que representa el <b>13.11%</b>, la Comisión Federal de Electricidad con 168 equivalente al <b>8.05%</b>.
                             <br/>El resto de las dependencias en el top, presentan un total de sanciones menor a 100.
                         </Typography>
                     </Grid>
@@ -195,9 +196,8 @@ class DependenciasSanciones extends React.Component {
 
                     </Grid>
                     <Grid item xs={12} >
-                        <Typography variant={"body1"}>
-                            En la siguiente gráfica, se puede apreciar las dependencias que más sanciones dieron a particulares por año, los años a su vez, se encuentran ordenados
-                            del año en que se dio más sanciones al año en que se dio menos sanciones.
+                        <Typography variant={"body1"} paragraph>
+                            En la siguiente gráfica, se puede apreciar el detalle por año, del 2004 a enero 2022.
                         </Typography>
                     </Grid>
                     <Grid item xs={12}>
