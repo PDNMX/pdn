@@ -418,15 +418,15 @@ const CssDeclaraciones = theme => ({
   enlaces: {
     'textDecoration': 'none',
     // 'color': '#b1bcc1',
-    'color': '#666',
+    'color': theme.palette.azulPDN,
     '&:visited': {
-      color: '#b1bcc1'
+      color: theme.palette.azulPDN
     },
     '&:link': {
-      color: '#b1bcc1'
+      color: theme.palette.azulPDN
     },
     '&:active': {
-      color: '#b1bcc1'
+      color: theme.palette.azulPDN
     },
     '&:hover': {
       color: '#FFF',
