@@ -11,17 +11,17 @@ const styles = theme => ({
         paddingBottom: theme.spacing(3),
         position: 'absolute',
         zIndex: 2,
-        width:'100%'
+        width: '100%'
     },
     item: {
         "&:hover": {
             backgroundColor: "#64808f"
         },
-        padding: theme.spacing(1),
         borderStyle: 'solid',
         borderWidth: 2,
         maxWidth: theme.spacing(25),
-        transition: 'height 2s'
+        transition: 'height 2s',
+        height: '70%'
     },
     opc: {
         marginBottom: theme.spacing(1),
@@ -56,7 +56,7 @@ const SistemasMenu = props => {
     }
 
     return (
-        <Box id={"sistemasMenu"} ref={innerRef}  className={classes.root}
+        <Box id={"sistemasMenu"} ref={innerRef} className={classes.root}
              sx={{
                  display: 'flex',
                  justifyContent: 'space-evenly'
@@ -64,18 +64,20 @@ const SistemasMenu = props => {
             {
                 systems.map(system => {
                     return (
+                        <Link className={classes.link} to={system.path}>
                         <Box className={`${classes.item}`} sx={{
-                            m:1,
-                            p:2,
+                            m: 1,
+                            p: 2,
                             color: system.color
                         }} key={system.path}>
                             <div className={`${classes.opc} `}>
-                                <Link className={classes.link} to={system.path}>
+
                                     <img src={system.icon} alt="PDN" className={classes.icon}/>
-                                    <Typography color={system.color} >{system.shortName}</Typography>
-                                </Link>
+                                    <Typography color={system.color}>{system.shortName}</Typography>
+
                             </div>
                         </Box>
+                        </Link>
                     );
                 })
             }
