@@ -19,7 +19,7 @@ const CardInterconexion = props => {
       <CardHeader className={classes.header} style={{ backgroundImage: `url(${logo})` }} />
       <CardContent>
         <Typography>
-          Este tablero muestra los avances trimestrales de las Secretarias Ejecutivas de los Sistemas Locales Anticorrupción en el desarrollo de los <strong>sistemas 2 y 3</strong>
+          Este tablero muestra los avances trimestrales de las Secretarias Ejecutivas de los Sistemas Locales Anticorrupción en el desarrollo de los <strong>sistemas 2 y 3</strong>.
         </Typography>
         <br />
         <Typography>

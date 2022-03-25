@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Paper, Typography } from '@mui/material';
+import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Paper } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import { Link } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
@@ -36,7 +36,7 @@ export default function Disclaimer(props) {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <ButtonPDN component={Link} to='/terminos' style={{ color: 'rgba(0, 0, 0, 0.87)' }}>
+          <ButtonPDN component={RouterLink} to='/terminos' style={{ color: 'rgba(0, 0, 0, 0.87)' }}>
             Términos
           </ButtonPDN>
           <ButtonPDN onClick={props.handleClose} style={{ color: 'rgba(0, 0, 0, 0.87)' }}>
