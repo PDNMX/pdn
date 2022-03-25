@@ -19,10 +19,10 @@ const CardMercardo = props => {
       <CardHeader className={classes.header} style={{ backgroundImage: `url(${logo})` }} />
       <CardContent>
         <Typography>
-          El <strong>Mercado Digital Anticorrupción (MDA)</strong> es un espacio en el que se encuentran disponibles <strong>herramientas de uso libre</strong> con las que se busca facilitar el desarrollo y conexión con los sistemas que conforman la Plataforma Digital Nacional
+          El <strong>Mercado Digital Anticorrupción (MDA)</strong> es un espacio en el que se encuentran disponibles <strong>herramientas de uso libre</strong> con las que se busca facilitar el desarrollo y conexión con los sistemas que conforman la Plataforma Digital Nacional.
         </Typography>
         <br />
-        <Typography>Cuenta con herramientas que fueron desarrolladas por diversas instituciones y que cumplen los objetivos de la PDN</Typography>
+        <Typography>Cuenta con herramientas que fueron desarrolladas por diversas instituciones y que cumplen los objetivos de la PDN.</Typography>
       </CardContent>
       <CardActions>
         <Grid container direction={'row-reverse'}>
