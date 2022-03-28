@@ -344,7 +344,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                 className={classes.button}
                 type='reset'
                 variant='contained'
-                color='secondary'
+                color='secundario'
                 onClick={e => {
                   cleanForm();
                 }}
@@ -355,7 +355,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                 className={classes.button}
                 type='submit'
                 variant='contained'
-                color='secondary'
+                color='secundario'
                 onClick={e => {
                   handlerFind();
                 }}
