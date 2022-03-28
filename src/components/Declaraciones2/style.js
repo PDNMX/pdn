@@ -229,11 +229,6 @@ const CssDeclaraciones = theme => ({
     // paddingTop: theme.spacing(4),
     // backgroundColor: 'white'
   },
-  // forms
-  inputShrink: {
-    transform: `scale(1)`
-  },
-
   //resultados
   resultadosRoot: {
     width: '100%',
