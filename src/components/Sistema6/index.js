@@ -30,7 +30,7 @@ const styles = theme => ({
     },
     tabContainer: {
         paddingTop: 90,
-        paddingBottom: 90
+        //paddingBottom: 90
     },
     tabItem: {
         maxWidth: 1200,
@@ -194,7 +194,7 @@ const Index = props => {
             </Grid>
         </Grid>*/}
 
-        <Grid container spacing={0} justifyContent="center" className={classes.container}>
+        <Grid container spacing={0} justifyContent="center">
             <Grid item xs={12} className={classes.item}>
                 <Descarga url="https://datos.gob.mx/busca/dataset/concentrado-de-contrataciones-abiertas-de-la-apf"/>
             </Grid>

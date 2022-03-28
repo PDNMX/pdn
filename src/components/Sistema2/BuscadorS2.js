@@ -18,7 +18,6 @@ import FichaServidorPublico from "./FichaServidorPublico";
 import columnData from './column_data';
 import Descarga from "../Compartidos/Descarga";
 
-
 const styles = theme => ({
     root: {},
     container: {
@@ -504,7 +503,7 @@ class BuscadorS2 extends React.Component {
 
             </Paper>
 
-            <Box p={1}>
+            <Box paddingTop={8} paddingBottom={8}>
                 <Descarga url={process.env.REACT_APP_BULK_S2}/>
             </Box>
 
