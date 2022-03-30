@@ -43,9 +43,11 @@ const LeftFooter = props => {
       <Grid item className={classes.acercade}>
         <Grid container spacing={0} direction={'row'} justifyContent={'flex-end'} alignItems={'center'}>
           <Grid item>
-            <figure className={classes.figure}>
-              <img alt='Libre Uso MX' src={icon_libreuso} style={{ width: 180, marginRight: 40 }} />
-            </figure>
+            <Link href='https://datos.gob.mx/libreusomx' target='_blank'>
+              <figure className={classes.figure}>
+                <img alt='Libre Uso MX' src={icon_libreuso} style={{ width: 180, marginRight: 40 }} />
+              </figure>
+            </Link>
           </Grid>
           <Grid item>
             <RouterLink to={'/about'} className={classes.acercade_enlace}>
