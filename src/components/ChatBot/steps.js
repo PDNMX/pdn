@@ -5,7 +5,7 @@ function GoToPage(previousValue){
 const steps = [
     {
         id: 'msjInicial',
-        message: 'Hola, soy Eri-Bot, ¿En qué te puedo ayudar?',
+        message: 'Hola, soy Eri, ¿En qué te puedo ayudar?',
         trigger: 'menuPrincipal',
     },
     {
@@ -26,7 +26,7 @@ const steps = [
             { value: 's1', label: 'Declaraciones', trigger: 'menuDeclaraciones' },
             { value: '/sancionados', label:'Sancionados' , trigger: 'goTo'},
             { value: '/contrataciones', label: 'Contrataciones', trigger: 'goTo' },
-            { value: '/fiscalizacion', label: 'Sistema de Fizcalización', trigger: 'goTo' },
+            { value: '/fiscalizacion', label: 'Sistema de Fiscalización', trigger: 'goTo' },
             { value: '/denuncias', label: 'Denuncias por hechos de corrupción', trigger: 'goTo' },
             { value: '/servidores', label: 'Personas Servidoras Públicas que intervienen en contrataciones', trigger: 'goTo' },
             { value: 7, label: 'Regresar', trigger: 'menuPrincipal' },

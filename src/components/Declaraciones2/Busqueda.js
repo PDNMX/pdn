@@ -1,14 +1,9 @@
 import React from 'react';
-import { Grid, Paper, Typography } from '@mui/material';
+import { Grid, Paper } from '@mui/material';
 import withStyles from '@mui/styles/withStyles';
 
 import axios from 'axios';
 
-import Tooltip from '@mui/material/Tooltip';
-import IconSunny from '@mui/icons-material/WbSunny';
-
-import CircularProgress from '@mui/material/CircularProgress';
-import Tabla from './Tabla';
 import Perfil from './Perfil';
 import styles from './style';
 
@@ -16,10 +11,9 @@ import FormSearch from './formSearch';
 import { error } from './utils';
 import scrollToComponent from 'react-scroll-to-component';
 
-import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from './common/BoxAccordion';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
+import ActiveResultProv from './ActiveResultProv';
 import Descarga from '../Compartidos/Descarga';
+import MantenimentResultProv from './MantenimentResultProv';
 
 class Busqueda extends React.Component {
   defaultSelect = [
@@ -226,75 +220,96 @@ class Busqueda extends React.Component {
     let url = process.env.REACT_APP_S1_BACKEND + '/search';
     let p = this.state.prov[id];
 
-    let data = {
-      page: p.pagination.page,
-      pageSize: p.pagination.pageSize,
-      query: this.state.query,
-      sort: this.state.ordenamiento,
-      supplier_id: p.supplier_id
-    };
+    if (p.status === 'MANTENIMENT') {
+      // defaults
+      p.finding = false;
+      p.estatus = true;
+      p.total = 0;
+      p.data = [];
+      p.pagination = {};
 
-    axios
-      .post(url, data)
-      .then(resp => {
-        let { data } = resp;
+      this.setState(prevState => {
+        let { prov } = prevState;
 
-        // defaults
-        p.finding = false;
-        p.estatus = false;
-        p.total = 0;
-        p.data = [];
-        p.pagination = {};
+        prov[id] = p;
 
-        // no hay error
-        if (typeof data.error === 'undefined') {
-          p.finding = false;
-          p.estatus = true;
-          p.total = data.pagination.totalRows;
-          p.data = data.results;
-          p.pagination = data.pagination;
-        } else {
-          p.error = data.error;
-        }
-
-        this.setState(prevState => {
-          let { prov } = prevState;
-
-          prov[id] = p;
-          console.log('prov: ', prov);
-
-          return {
-            ...prevState,
-            prov: prov
-          };
-        });
-      })
-      .catch(err => {
-        let { status, statusText } = err.response;
-        p = {
-          ...p,
-          finding: false,
-          estatus: false,
-          total: 0,
-          data: [],
-          pagination: {},
-          error: {
-            status,
-            statusText
-          }
+        return {
+          ...prevState,
+          prov: prov
         };
-        this.setState(prevState => {
-          let { prov } = prevState;
-
-          prov[id] = p;
-
-          return {
-            ...prevState,
-            prov: prov
-          };
-        });
-        error('find' + err);
       });
+    }
+
+    if (p.status === 'ACTIVE') {
+      let data = {
+        page: p.pagination.page,
+        pageSize: p.pagination.pageSize,
+        query: this.state.query,
+        sort: this.state.ordenamiento,
+        supplier_id: p.supplier_id
+      };
+
+      axios
+        .post(url, data)
+        .then(resp => {
+          let { data } = resp;
+
+          // defaults
+          p.finding = false;
+          p.estatus = false;
+          p.total = 0;
+          p.data = [];
+          p.pagination = {};
+
+          // no hay error
+          if (typeof data.error === 'undefined') {
+            p.finding = false;
+            p.estatus = true;
+            p.total = data.pagination.totalRows;
+            p.data = data.results;
+            p.pagination = data.pagination;
+          } else {
+            p.error = data.error;
+          }
+
+          this.setState(prevState => {
+            let { prov } = prevState;
+
+            prov[id] = p;
+
+            return {
+              ...prevState,
+              prov: prov
+            };
+          });
+        })
+        .catch(err => {
+          let { status, statusText } = err.response;
+          p = {
+            ...p,
+            finding: false,
+            estatus: false,
+            total: 0,
+            data: [],
+            pagination: {},
+            error: {
+              status,
+              statusText
+            }
+          };
+          this.setState(prevState => {
+            let { prov } = prevState;
+
+            prov[id] = p;
+
+            return {
+              ...prevState,
+              prov: prov
+            };
+          });
+          error('find' + err);
+        });
+    }
   };
 
   handlerFind = () => {
@@ -523,61 +538,16 @@ class Busqueda extends React.Component {
             </Grid>
             <Grid container spacing={0} className={classes.infoBusqueda}>
               <div className={classes.resultadosRoot}>
-                {this.state.prov.map((p, i) => {
-                  return (
-                    <BoxAccordion square key={'res-' + i}>
-                      <BoxAccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
-                        <Grid container spacing={0}>
-                          <Grid item xs={8}>
-                            <Typography className={classes.resultadosHeading}>
-                              {p.supplier_name} [{p.levels.join(', ')}]
-                            </Typography>
-                          </Grid>
-                          {p.finding ? (
-                            <Grid item xs={4}>
-                              <Grid container spacing={0}>
-                                <Grid item xs={11} />
-                                <Grid item xs={1}>
-                                  <CircularProgress color='secondary' size={20} />
-                                </Grid>
-                              </Grid>
-                            </Grid>
-                          ) : (
-                            <Grid item xs={4}>
-                              <Grid container spacing={0}>
-                                <Grid item xs={6}>
-                                  <Typography className={classes.resultadosHeading}>
-                                    <Tooltip title={p.estatus ? 'Con respuesta' : 'Sin respuesta: ' + p.error.status + ' ' + p.error.statusText}>
-                                      <IconSunny color={p.estatus ? 'secondary' : 'inherit'} />
-                                    </Tooltip>
-                                  </Typography>
-                                </Grid>
-                                <Grid item xs={6}>
-                                  <Typography className={classes.resultadosHeading}>Total de registros: {new Intl.NumberFormat().format(p.total)}</Typography>
-                                </Grid>
-                              </Grid>
-                            </Grid>
-                          )}
-                        </Grid>
-                      </BoxAccordionSummary>
-                      {!p.finding && (
-                        <BoxAccordionDetails>
-                          {p.data.length > 0 && <Tabla rows={p.data} pagination={p.pagination} handleDataSelect={this.handleDataSelect} handleSetPage={this.handleSetPage} handleChangeRowsPerPage={this.handleChangeRowsPerPage} posicion={i} />}
-
-                          {p.error && (
-                            <Grid container spacing={1}>
-                              <Grid item xs={12}>
-                                <Typography className={classes.alertWarning} align='center'>
-                                  No se logro establecer la conexión con el proveedor, por favor intenta nuevamente mas tarde.
-                                </Typography>
-                              </Grid>
-                            </Grid>
-                          )}
-                        </BoxAccordionDetails>
-                      )}
-                    </BoxAccordion>
-                  );
-                })}
+                {this.state.prov
+                  .filter(p => p.status === 'ACTIVE')
+                  .map((p, i) => {
+                    return <ActiveResultProv key={'res-' + i} p={p} i={i} handleDataSelect={this.handleDataSelect} handleSetPage={this.handleSetPage} handleChangeRowsPerPage={this.handleChangeRowsPerPage} />;
+                  })}
+                {this.state.prov
+                  .filter(p => p.status === 'MANTENIMENT')
+                  .map((p, i) => {
+                    return <MantenimentResultProv key={'man-' + i} p={p} />;
+                  })}
               </div>
             </Grid>
           </Paper>

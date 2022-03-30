@@ -27,7 +27,7 @@ const styles = theme => ({
         paddingBottom: theme.spacing(2),
         textAlign: 'center'
     },
-    selected:{
+    selected: {
         backgroundColor: "#64808f"
     },
     icon: {
@@ -80,16 +80,16 @@ const BannerDesktop = props => {
     }
 
     useEffect(() => {
-        if(showSistemas){
+        if (showSistemas) {
             setShowInterconexion(false);
         }
-    },[showSistemas]);
+    }, [showSistemas]);
 
     useEffect(() => {
-        if(showInterconexion){
+        if (showInterconexion) {
             setShowSistemas(false);
         }
-    },[showInterconexion]);
+    }, [showInterconexion]);
 
     return (
         <React.Fragment>
@@ -121,7 +121,8 @@ const BannerDesktop = props => {
                                     <Typography className={classes.textMenu}>ESPECIFICACIONES</Typography>
                                 </Link>
                             </Grid>
-                            <Grid item className={`${classes.opc} ${showSistemas ? classes.selected: ""} `} onClick={() => setShowSistemas(!showSistemas)}>
+                            <Grid item className={`${classes.opc} ${showSistemas ? classes.selected : ""} `}
+                                  onClick={() => setShowSistemas(!showSistemas)}>
                                 <img
                                     src={Sistemas}
                                     className={classes.icon}
@@ -129,7 +130,8 @@ const BannerDesktop = props => {
                                 />
                                 <Typography className={classes.textMenu}>SISTEMAS</Typography>
                             </Grid>
-                            <Grid item className={`${classes.opc} ${showInterconexion ? classes.selected: ""}`} onClick={() => setShowInterconexion(!showInterconexion)}>
+                            <Grid item className={`${classes.opc} ${showInterconexion ? classes.selected : ""}`}
+                                  onClick={() => setShowInterconexion(!showInterconexion)}>
                                 <img
                                     src={Interconexion}
                                     className={classes.icon}
@@ -152,7 +154,10 @@ const BannerDesktop = props => {
                         </Grid>
 
                     </Grid>
-                    <Grid item style={{textAlign: 'center'}}>
+                    <Grid item/>
+                    {
+                        /*
+                        <Grid item style={{textAlign: 'center'}}>
                         <img
                             src={LoginIcon}
                             className={classes.iconSesion}
@@ -160,6 +165,8 @@ const BannerDesktop = props => {
                         />
                         <Typography className={classes.textMenu}>Iniciar Sesión</Typography>
                     </Grid>
+                         */
+                    }
                 </Grid>
             </AppBar>
             {showSistemas &&

@@ -47,7 +47,7 @@ class Declaraciones extends React.Component {
                   <img src={img} alt={titulo} className={classes.logo} />
                 </figure>
                 <Typography variant='subtitle1' className={classes.labelCard}>
-                  Buscar un servidor público
+                  Buscar una persona servidora pública
                 </Typography>
               </Grid>
             </Grid>
