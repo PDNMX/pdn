@@ -28,7 +28,7 @@ const CardInterconexion = props => {
       </CardContent>
       <CardActions>
         <Grid container direction={'row-reverse'}>
-          <ButtonPDN text={''} href={'https://www.plataformadigitalnacional.org/mapa-sla/'}>
+          <ButtonPDN text={''} href={'https://www.plataformadigitalnacional.org/mapa-avance/'}>
             CONOCE MÁS
           </ButtonPDN>
         </Grid>
