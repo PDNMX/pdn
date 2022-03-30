@@ -79,7 +79,7 @@ const Especificaciones = props => {
                             <Typography paragraph>
                                 Conoce las especificaciones para los Sistemas 1, 2, 3 y 6
                             </Typography>
-                            
+
                             <Grid container spacing={0} justifyContent='center'>
                                 <Grid item xs={12} className={classes.rootItem}>
                                     <Grid container spacing={0} justifyContent='center'>
