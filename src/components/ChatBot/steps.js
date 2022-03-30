@@ -5,7 +5,7 @@ function GoToPage(previousValue){
 const steps = [
     {
         id: 'msjInicial',
-        message: 'Hola, soy Eri-Bot, ¿En qué te puedo ayudar?',
+        message: 'Hola, soy Eri, ¿En qué te puedo ayudar?',
         trigger: 'menuPrincipal',
     },
     {
