@@ -79,14 +79,14 @@ const Terminos = props => {
                             <ul className={classes.ul}>
                                 <li className={classes.li}>
                                     <Typography display='inline'>
-                                        <Link target="_blank" href={"http://www.diputados.gob.mx/LeyesBiblio/pdf/LGSNA.pdf"}>Ley General del
+                                        <Link target="_blank" href={"https://www.diputados.gob.mx/LeyesBiblio/ref/lgsna.htm"}>Ley General del
                                             Sistema Nacional Anticorrupción</Link>, publicada en el Diario Oficial de
                                         la Federación el 18 de julio del 2016.
                                     </Typography>
                                 </li>
                                 <li className={classes.li}>
                                     <Typography display="inline">
-                                        <Link target={"_blank"} href={"http://www.diputados.gob.mx/LeyesBiblio/pdf/LGRA_120419.pdf"}>Ley General
+                                        <Link target={"_blank"} href={"https://www.diputados.gob.mx/LeyesBiblio/ref/lgra.htm"}>Ley General
                                             de Responsabilidades Administrativas</Link>, publicada en el Diario Oficial de
                                         la Federación el 12 de abril del 2016.
                                     </Typography>

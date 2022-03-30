@@ -4,7 +4,8 @@ import BlogSys from "./BlogSys";
 import bgimg from "../../assets/rediseno/fondo_cruces.png";
 import Cards from './Cards/';
 import QueEsPDN from "./QueEsPDN";
-import Numeralia from "./Numeralia"
+import Numeralia from "./Numeralia";
+import AlertDialog from "./Disclaimer";
 
 const styles = theme => ({
     root: {
@@ -35,6 +36,7 @@ const Home = props => {
             <Numeralia/>
             <BlogSys/>
             <Cards/>
+            <AlertDialog/>
         </div>
     );
 }

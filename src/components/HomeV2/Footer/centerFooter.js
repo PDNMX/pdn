@@ -46,14 +46,14 @@ const CenterFooter = props => {
                   </RouterLink>
                 </Typography>
                 <Typography variant='subtitle1'>
-                  <RouterLink to={'#'} className={classes.enlaces}>
+                  <Link href='https://www.youtube.com/channel/UCJ0nWmB2-ADfn95r5cjmLJA/' target='_blank' underline='none' className={classes.enlaces}>
                     Videos
-                  </RouterLink>
+                  </Link>                    
                 </Typography>
                 <Typography variant='subtitle1'>
-                  <RouterLink to={'#'} className={classes.enlaces}>
+                  <Link href='https://drive.google.com/drive/folders/1t_vGUfagr75TAZ8-E4NZfL-fU0BcsPlZ' target='_blank' underline='none' className={classes.enlaces}>
                     Boletines y prensa
-                  </RouterLink>
+                  </Link>
                 </Typography>
                 {/* <Typography variant='subtitle1'>Suscribete</Typography> */}
               </Grid>
