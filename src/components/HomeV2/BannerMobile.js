@@ -180,11 +180,14 @@ const BannerMobile = props => {
                                 size="large">
                         <img src={imgHeader} alt="PDN" style={{height: "40px"}}/>
                     </IconButton>
+                    {/*
                     <img
                         src={LoginIcon}
                         className={classes.iconSesion}
                         alt="Iniciar sesión"
                     />
+                    */
+                    }
                 </Toolbar>
             </AppBar>
         </Box>
