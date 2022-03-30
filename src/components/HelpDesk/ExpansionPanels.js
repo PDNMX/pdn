@@ -496,8 +496,8 @@ export default function CustomizedExpansionPanels() {
                 </AccordionDetails>
             </Accordion>
 
-            <Accordion square expanded={expanded === 'panel9'} onChange={handleChange('panel9')}>
-                <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel9d-content" id="panel9d-header">
+            <Accordion square expanded={expanded === 'panel7'} onChange={handleChange('panel7')}>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel7d-content" id="panel7d-header">
                     <Typography variant="h6">Protocolo de conexión</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
@@ -567,8 +567,8 @@ export default function CustomizedExpansionPanels() {
                 </AccordionDetails>
             </Accordion>
 
-            <Accordion square expanded={expanded === 'panel10'} onChange={handleChange('panel10')}>
-                <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel10d-content" id="panel10d-header">
+            <Accordion square expanded={expanded === 'panel9'} onChange={handleChange('panel9')}>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel9d-content" id="panel9d-header">
                     <Typography variant="h6">Contactanos</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
