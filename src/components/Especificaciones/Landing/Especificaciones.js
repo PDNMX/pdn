@@ -69,14 +69,17 @@ const Especificaciones = props => {
                     <Paper className={classes.paper} elevation={15}>
                         <Box className={classes.box}>
                             <Typography paragraph>
-                                Estas especificaciones se refieren a los campos mínimos de datos que debe de contener cada sistema, así como los estándares que debe de seguir cada campo para ser interoperable con la Plataforma Digital Nacional. Esto es lo que permite que los sistemas de aquellos responsables de generar los datos estén ordenados y puedan ser consultados en la PDN.
+                                Las  especificaciones son los campos mínimos de datos que debe contener cada sistema, así como los estándares que debe de seguir cada campo para ser interoperable con la PDN. Esto es lo que permite que los sistemas de las instituciones responsables de generar los datos estén ordenados y puedan ser consultados en la PDN.
                             </Typography>
+
                             <Typography paragraph>
-                                Además, en esta sección podrás consultar información acerca del Open API Specification (OAS), el cual es un formato de especificación que permite describir de manera precisa las características con las que deberán contar las APIs que integrarán a la PDN.
+                                Además, en esta sección podrás consultar información sobre  el Open API Specification (OAS), un formato que permite describir de manera precisa las características con las que deberán contar las APIs que integrarán a la PDN.
                             </Typography>
+
                             <Typography paragraph>
-                                Actualmente están disponibles las especificaciones para los Sistemas 1, 2, 3 y 6
+                                Conoce las especificaciones para los Sistemas 1, 2, 3 y 6
                             </Typography>
+                            
                             <Grid container spacing={0} justifyContent='center'>
                                 <Grid item xs={12} className={classes.rootItem}>
                                     <Grid container spacing={0} justifyContent='center'>
