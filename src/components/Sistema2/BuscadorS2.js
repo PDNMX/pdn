@@ -369,18 +369,18 @@ class BuscadorS2 extends React.Component {
                 {/* Información de la búsqueda */}
                 <Box p={1}>
                     <CustomTypography paragraph>
-                        <b>Aquí encontrarás la siguiente información:</b>
+                        <b>Aquí puedes consultar:</b>
                     </CustomTypography>
                         
                     <ul className={classes.ul}>
                         <li className={classes.li}>
                             <CustomTypography color="textPrimary" display='inline'>
-                                Consulta los servidores que intervienen en procesos de contratación por institución, a nivel federal y/o estatal
+                                Datos como: nombre, puesto e institución en la que laboran las personas servidoras públicas que intervienen en procedimientos de contratación.
                             </CustomTypography>
                         </li>
                         <li className={classes.li}>
                             <CustomTypography color="textPrimary" display='inline'>
-                                Obtén datos del servidor como: nombre, puesto, institución
+                                El nivel de responsabilidad que tienen las personas servidoras públicas que intervienen en procedimientos de contratación.
                             </CustomTypography>
                         </li>
                     </ul>
