@@ -52,36 +52,38 @@ const AlertDialog = props => {
                 <DialogContent>
 
                     <Typography paragraph align="justify">
-                        Esta es la versión 1.1 de la Plataforma Digital Nacional (PDN), lo cual significa que:
+                    Esta es la versión 1.1 de la PDN, la cual contiene:
                     </Typography>
 
                     <ul className={classes.ul}>
                         <li className={classes.li}>
                             <Typography color='textPrimary' display='inline'>
-                                Contiene datos reales de los Sistemas: 1, 2, 3, y 6.
+                                Datos reales en los Sistemas: 1, 2, 3, y 6.
                             </Typography>
                         </li>
                         <li className={classes.li}>
                             <Typography color='textPrimary' display='inline'>
-                                Contiene nuevas secciones y funcionalidades.
+                                Nuevas secciones y funcionalidades.
                             </Typography>
                         </li>
                         <li className={classes.li}>
                             <Typography color='textPrimary' display="inline">
-                            La PDN se construye de manera modular y escalable conforme a lo establecido el capítulo IX de las <Link href="https://www.dof.gob.mx/nota_detalle.php?codigo=5541802&fecha=23/10/2018" target="_blank">
-                                Bases para el Funcionamiento de la Plataforma Digital Nacional
-                            </Link>, por lo que esta versión NO debe ser vista como la última.
+                                Nueva imagen. 
+                            </Typography>
+                        </li>
+                        <li className={classes.li}>
+                            <Typography color='textPrimary' display="inline">
+                                La PDN se construye de manera modular y escalable. por lo que esta versión NO debe ser vista como la última.
                             </Typography>
                         </li>
                     </ul>
 
                     <Typography paragraph align="justify">
-                        Las y los usuarios de la PDN deberán privilegiar los intereses de las personas titulares de los datos personales contenidos en los sistemas. El tratamiento de los datos consultables en la PDN no debe utilizarse para ningún tipo de discriminación, trato injusto, arbitrario o contrario a lo establecido en la Ley General de Protección de Datos Personales en Posesión de Sujetos Obligados.
+                        Las y los usuarios de la PDN deberán privilegiar los intereses de las personas titulares de los datos personales contenidos en los sistemas. El tratamiento de los datos no debe utilizarse para ejercer algún  tipo de discriminación, trato injusto, arbitrario o contrario a lo establecido en la Ley General de Protección de Datos Personales en Posesión de Sujetos Obligados.
                     </Typography>
 
                     <Typography paragraph align="justify">
-                        Te invitamos a revisar los <Link component={RouterLink} to='/terminos'>"Términos y Condiciones de Uso"</Link>,
-                        así como a dejar tus comentarios sobre las funcionalidades y experiencia de usuario en la sección de <Link href={process.env.REACT_APP_LINK_GOOGLEFORM} target={"_blank"}>"Comenta"</Link>.
+                        Te invitamos a revisar los <Link component={RouterLink} to='/terminos'>"Términos y Condiciones de Uso"</Link>, así como a dejar tus comentarios sobre las funcionalidades y experiencia de usuario en la sección <Link href={process.env.REACT_APP_LINK_GOOGLEFORM} target={"_blank"}>"Comenta"</Link>.
                     </Typography>
 
                 </DialogContent>

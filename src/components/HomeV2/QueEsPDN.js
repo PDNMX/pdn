@@ -67,7 +67,7 @@ const QueEsPDN = props => {
     return (
         <React.Fragment>
             <Paper className={classes.bg}>
-            <Grid container spacing={0} alignItems="center" justifyContent='center' className={classes.container}>
+            <Grid container spacing={0} alignItems="flex-start" justifyContent='center' className={classes.container}>
                 <Grid item md={6} sm={12} xs={12} align="left">
                     <Typography className={classes.headingText} paragraph>
                         Plataforma
@@ -81,11 +81,9 @@ const QueEsPDN = props => {
                 </Grid>
                 <Grid item md={6} sm={12} xs={12} align="left" >
                     <Typography className={classes.text} paragraph>
-                    La <b>Plataforma Digital Nacional (PDN)</b> del Sistema Nacional Anticorrupción (SNA) es un <b>instrumento de inteligencia</b> que tiene como objetivo eliminar las barreras de información para que los datos públicos sean comparables, accesibles y utilizables a efecto de combatir cualquier acto de corrupción.
-                    <br/><br/>
-                    <b>La Secretaría Ejecutiva del Sistema Nacional Anticorrupción (SESNA)</b>, organismo descentralizado no sectorizado, es responsable de administrar la <b>Plataforma Digital Nacional</b>.
-                    <br/><br/>
-                    La PDN no es un repositorio ni generadora de los datos de cada sistema, sino que es una plataforma de <b>interoperabilidad</b>.
+                    La <b>Plataforma Digital Nacional (PDN)</b> del Sistema Nacional Anticorrupción (SNA) es un <b>instrumento de inteligencia</b> que tiene como objetivo eliminar las barreras de información para que los datos públicos sean comparables, accesibles y utilizables a efecto de combatir cualquier acto de corrupción.<br/><br/>
+                    <b>La Secretaría Ejecutiva del Sistema Nacional Anticorrupción (SESNA)</b>, organismo descentralizado no sectorizado, es responsable de administrar la <b>PDN</b>.<br/><br/>
+                    La PDN no es generadora ni un repositorio de datos, sino una plataforma de <b>interoperabilidad</b> que consulta información de diversas fuentes.<br/><br/>
                     </Typography>
 
                     <Grid container direction="row" justifyContent="flex-end" alignItems="flex-end">
