@@ -51,22 +51,22 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
       <Grid container spacing={0} className={classes.infoBusqueda}>
         <Grid item xs={12}>
           <CustomTypography paragraph>
-            <b>Aquí encontrarás la siguiente información:</b>
+            <b>Aquí puedes consultar:</b>
           </CustomTypography>
           <ul className={classes.ul}>
             <li className={classes.li}>
               <CustomTypography color='textPrimary' display='inline'>
-                La evolución patrimonial de las personas servidoras públicas
+                Las declaraciones patrimoniales de las y los servidores públicos.
               </CustomTypography>
             </li>
             <li className={classes.li}>
               <CustomTypography color='textPrimary' display='inline'>
-                La trayectoria laboral de las personas servidoras públicas
+                La trayectoria laboral de las y los servidores públicos.
               </CustomTypography>
             </li>
             <li className={classes.li}>
               <CustomTypography color='textPrimary' display='inline'>
-                Sus declaraciones sobre posibles conflictos de interés
+                Las declaraciones sobre posibles conflictos de interés de las personas servidoras públicas.
               </CustomTypography>
             </li>
           </ul>
