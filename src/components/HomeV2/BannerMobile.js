@@ -140,8 +140,8 @@ const BannerMobile = props => {
                                 <List dense={true} component="div">
                                     {systems.map(system => {
                                         return (
-                                        <ListItem button component={Link} to={system.url} key={system.name}
-                                                  className={classes.nested} disabled={system.disabled}>
+                                        <ListItem button component={Link} to={system.path} key={system.name}
+                                                  className={classes.nested} >
                                             <img src={system.icon} alt={system.name} className={classes.iconSistemas}/>
                                             <Typography color={system.color}>{system.name}</Typography>
                                         </ListItem>
