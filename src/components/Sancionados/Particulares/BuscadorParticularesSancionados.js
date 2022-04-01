@@ -60,29 +60,18 @@ function BuscadorParticularesSancionados({classes}) {
                 <Grid container className={classes.container}>
                     <Grid item xs={12} style={{maxWidth: 1200, margin: "0 auto"}}>
                         <Typography paragraph>
-                            <b>Aquí encontrarás la siguiente información:</b>
+                            <b>Aquí puedes consultar:</b>
                         </Typography>
                         <ul className={classes.ul}>
-                            <li className={classes.li}>
-                                <Typography display='inline'>
-                                    Consulta los particulares sancionados (inhabilitados) por institución donde
-                                    cometieron
-                                    la falta, nombre o razón social, a nivel federal y/o estatal
-                                </Typography>
-                            </li>
-                            <li className={classes.li}>
-                                <Typography display='inline'>
-                                    Obtén datos del particular sancionado como: nombre, puesto, sanción y causa de la
-                                    misma
-                                </Typography>
-                            </li>
-                            <li className={classes.li}>
+                            <li className={classes.li}><Typography display='inline'>Datos de la sanción firme impuesta a particulares como: número de expediente, autoridad que sanciona y resolución.</Typography></li>
+                            <li className={classes.li}><Typography display='inline'>Información del particular sancionado como: nombre, razón social, causa y tipo de sanción.</Typography></li>
+                            {/* <li className={classes.li}>
                                 <Typography display='inline'>
                                     Obtén los datos de la sanción impuesta al particular como: expediente, hechos de la
                                     falta, tipo de falta, resolución, entre otros datos
                                     de interes.
                                 </Typography>
-                            </li>
+                            </li> */}
                         </ul>
                     </Grid>
                 </Grid>

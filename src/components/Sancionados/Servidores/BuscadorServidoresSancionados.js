@@ -64,25 +64,18 @@ function BuscadorServidoresSancionados(props) {
                 <Grid container className={classes.container}>
                     <Grid item xs={12} style={{maxWidth: 1200, margin: "0 auto"}}>
                         <Typography paragraph>
-                            <b>Aquí encontrarás la siguiente información:</b>
+                            <b>Aquí puedes consultar:</b>
                         </Typography>
                         <ul className={classes.ul}>
-                            <li className={classes.li}><Typography display='inline'>Consulta
-                                los servidores sancionados (inhabilitados) por institución, a nivel federal y/o
-                                estatal</Typography></li>
-                            <li className={classes.li}>
-                                <Typography display='inline'>
-                                    Obtén datos del servidor como: nombre, puesto, institución donde cometió la
-                                    falta
-                                </Typography>
-                            </li>
-                            <li className={classes.li}>
+                            <li className={classes.li}><Typography display='inline'>Datos de la sanción firme impuesta a la persona servidora pública como: plazo, tipo de falta y la causa.</Typography></li>
+                            <li className={classes.li}><Typography display='inline'>Información de la persona servidora pública sancionada como:  nombre, puesto e institución en donde se realizó la falta o hecho de corrupción.</Typography></li>
+                            {/* <li className={classes.li}>
                                 <Typography display='inline'>
                                     Obtén los datos de la sanción impuesta al servidor: plazo, tipo de falta,
                                     causa,
                                     etc.
                                 </Typography>
-                            </li>
+                            </li> */}
                         </ul>
                     </Grid>
                 </Grid>
