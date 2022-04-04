@@ -172,17 +172,20 @@ export default function CustomizedExpansionPanels() {
 
                         <ol>
                             <li><Typography>
-                                Ley General del Sistema Nacional Anticorrupción (LGSNA) artículos 9, fracciones XII, XIII y XVI; 17; 21, fracción VII, inciso b); 35, fracciones X y XI).
+                                <MuiLink href="http://www.dof.gob.mx/nota_detalle.php?codigo=5445048&fecha=18/07/2016" target="_blank">
+                                    Ley General del Sistema Nacional Anticorrupción (LGSNA)</MuiLink> artículos 9, fracciones XII, XIII y XVI; 17; 21, fracción VII, inciso b); 35, fracciones X y XI).
                             </Typography>
                             </li>
                             <li>
                                 <Typography>
-                                    Ley General de Responsabilidades Administrativas (LGRA) artículos 26, 27, 30, 31, 34, 43, 44, 46, 59 y 93.
+                                    <MuiLink href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LGRA.pdf" target="_blank">
+                                    Ley General de Responsabilidades Administrativas (LGRA)</MuiLink> artículos 26, 27, 30, 31, 34, 43, 44, 46, 59 y 93.
                                 </Typography>
                             </li>
                             <li>
                                 <Typography>
-                                    Bases para el Funcionamiento de la Plataforma Digital Nacional, las cuales establecen las directrices para el funcionamiento de la PDN y de los sistemas que la conforman, buscando garantizar en todo momento la interoperabilidad, interconexión, estabilidad, uso y seguridad de la información.
+                                    <MuiLink href="https://www.dof.gob.mx/nota_detalle.php?codigo=5541802&fecha=23/10/2018" target="_blank">
+                                    Bases para el Funcionamiento de la Plataforma Digital Nacional</MuiLink>, las cuales establecen las directrices para el funcionamiento de la PDN y de los sistemas que la conforman, buscando garantizar en todo momento la interoperabilidad, interconexión, estabilidad, uso y seguridad de la información.
                                 </Typography>
                             </li>
                         </ol>
@@ -569,7 +572,7 @@ export default function CustomizedExpansionPanels() {
 
             <Accordion square expanded={expanded === 'panel9'} onChange={handleChange('panel9')}>
                 <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel9d-content" id="panel9d-header">
-                    <Typography variant="h6">Contactanos</Typography>
+                    <Typography variant="h6">Contáctanos</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <div>
