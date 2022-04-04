@@ -10,7 +10,7 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-import TableSortLabel from '@mui/material/TableSortLabel';
+//import TableSortLabel from '@mui/material/TableSortLabel';
 import Paper from '@mui/material/Paper';
 import LinearIndeterminate from './LinearIndeterminate';
 import ResponsiveDialog from './ResponsiveDialog';
@@ -40,20 +40,21 @@ function EnhancedTableHead(props) {
                         align={row.numeric ? 'right' : 'left'}
                         padding={row.disablePadding ? 'none' : 'normal'}
                         sortDirection={orderBy === row.id ? order : false}
+                        sx={{color: "#ced8db"}}
                     >
-                        <TableSortLabel
+                        {/*<TableSortLabel
                             active={orderBy === row.id}
                             direction={order}
                             //onClick={createSortHandler(row.id)}
                             className={classes.tsl}
-                        >
+                        >*/}
                             {row.label}
                             {orderBy === row.id ? (
                                 <span className={classes.visuallyHidden}>
                                     {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
                                 </span>
                             ) : null}
-                        </TableSortLabel>
+                        {/*</TableSortLabel>*/}
                     </TableCell>
                 ))}
             </TableRow>

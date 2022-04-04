@@ -149,6 +149,32 @@ class Busqueda extends React.Component{
         });
     };
 
+    cleanup = () => {
+
+        this.setState({
+            ...this.state,
+            inputText: "",
+            /*pagination: {
+                pageSize: 10,
+                page: 0,
+                total: 0
+            },
+            results: [],
+            loading: true,
+            buyers: [],*/
+            buyer_id: 'any',
+            procurementMethod: 'any',
+            supplierName: "",
+            cycle: 'any',
+            cycles: []
+        }, () => {
+            //ejecutar búsqueda
+            this.search(false);
+        });
+
+
+    }
+
     //buscar
     search = pageChange => {
 
@@ -215,10 +241,12 @@ class Busqueda extends React.Component{
                                     setSupplierName={this.setSupplierName}
                                     supplierName={this.state.supplierName}
                                     setInputText={this.setInputText}
+                                    inputText={this.state.inputText}
                                     search={this.search}
                                     setCycle={this.setCycle}
                                     cycles={this.state.cycles}
                                     cycle={this.state.cycle}
+                                    cleanup={this.cleanup}
                     />
 
 

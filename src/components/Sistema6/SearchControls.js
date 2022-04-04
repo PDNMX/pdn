@@ -11,6 +11,7 @@ const styles = theme => ({
         flexGrow: 1,
     },
     button:{
+        marginLeft: theme.spacing(1),
         marginTop: theme.spacing(1),
         marginBottom: theme.spacing(2)
     },
@@ -22,7 +23,7 @@ const styles = theme => ({
 
 const SearchControls = props => {
 
-    const {classes, buyers, buyer_id, procurementMethod, cycle, cycles} = props;
+    const {classes, buyers, buyer_id, procurementMethod, cycle, cycles, inputText, supplierName} = props;
 
     //const [age, setAge] = React.useState('');
     const handleChangeBuyer = event => {
@@ -144,6 +145,7 @@ const SearchControls = props => {
                         }}
                         onChange={handleChangeSupplierName}
                         onKeyDown={handleSearch}
+                        value={supplierName}
                     />
                 </Grid>
 
@@ -162,6 +164,7 @@ const SearchControls = props => {
                         }}
                         onChange={handleSetInputText}
                         onKeyDown={handleSearch}
+                        value={inputText}
                     />
                 </Grid>
                 {/*
@@ -188,7 +191,13 @@ const SearchControls = props => {
 
                 <Grid item xs={12} className={classes.item}>
                     <Box m={0} sx={{ display: 'flex', justifyContent: 'flex-end'}}>
-                    <Button variant="contained" color="secundario" className={classes.button} onClick={props.search}>Buscar</Button>
+                        <Button variant="contained" color="secundario" className={classes.button} onClick={props.cleanup}>
+                            Limpiar
+                        </Button>
+
+                        <Button variant="contained" color="secundario" className={classes.button} onClick={props.search}>
+                            Buscar
+                        </Button>
                     </Box>
 
                 </Grid>
