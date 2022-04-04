@@ -7,12 +7,11 @@ import DialogTitle from '@mui/material/DialogTitle';
 import withStyles from '@mui/styles/withStyles';
 import {Link as RouterLink} from 'react-router-dom';
 import Link from '@mui/material/Link';
+import Paper from '@mui/material/Paper';
 import {Typography} from "@mui/material";
+import ButtonPDN from '../Compartidos/ButtonPDN';
 
 const styles = theme => ({
-    button:{
-        background: '#ffe01b',
-    },
     ul: {
         listStyle: 'none',
         paddingLeft: '20px',
@@ -27,16 +26,47 @@ const styles = theme => ({
             width: "1em",
             marginLeft: "-1em"
         },
-        padding: theme.spacing(1),
-        marginTop: 0,
-    }
+        /* padding: theme.spacing(1),
+        marginTop: 0, */
+    },
+    paper: {
+        backgroundColor: theme.palette.background.opaque,
+        padding: theme.spacing(4),
+        marginBottom: theme.spacing(4),
+        color: theme.palette.primario.contrastText,
+        borderStyle: 'solid',
+        borderWidth: 1,
+        borderColor: theme.palette.secundario.main,
+        borderRadius: '0px 10px 10px 10px'
+    },
+    text_color: {
+        color: theme.palette.primario.contrastText
+    },
+    enlaces: {
+        'textDecoration': 'none',
+        // 'color': '#b1bcc1',
+        'color': theme.palette.azulPDN,
+        '&:visited': {
+          color: theme.palette.azulPDN
+        },
+        '&:link': {
+          color: theme.palette.azulPDN
+        },
+        '&:active': {
+          color: theme.palette.azulPDN
+        },
+        '&:hover': {
+          color: '#FFF',
+          borderBottom: '2px solid #3ab0e5'
+        }
+      }
 });
+/* import styles from '../Declaraciones2/style'; */
 
 const AlertDialog = props => {
     const [state, setState] = React.useState({open: true});
     const {classes} = props;
 
-    //handleClickOpen = () => { setState({ open: true }); };
     const handleClose = () => { setState({ open: false }); };
 
     return (
@@ -48,7 +78,8 @@ const AlertDialog = props => {
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
             >
-                <DialogTitle id="alert-dialog-title">{"Plataforma Digital Nacional"}</DialogTitle>
+            <Paper className={classes.paper} style={{ margin: 0, borderRadius: 0 }}>
+                <DialogTitle className={classes.text_color} id="alert-dialog-title">{"Plataforma Digital Nacional"}</DialogTitle>
                 <DialogContent>
 
                     <Typography paragraph align="justify">
@@ -57,23 +88,23 @@ const AlertDialog = props => {
 
                     <ul className={classes.ul}>
                         <li className={classes.li}>
-                            <Typography color='textPrimary' display='inline'>
+                            <Typography className={classes.text_color} display='inline'>
                                 Datos reales en los Sistemas: 1, 2, 3, y 6.
                             </Typography>
                         </li>
                         <li className={classes.li}>
-                            <Typography color='textPrimary' display='inline'>
+                            <Typography className={classes.text_color} display='inline'>
                                 Nuevas secciones y funcionalidades.
                             </Typography>
                         </li>
                         <li className={classes.li}>
-                            <Typography color='textPrimary' display="inline">
+                            <Typography className={classes.text_color} display="inline">
                                 Nueva imagen. 
                             </Typography>
                         </li>
                         <li className={classes.li}>
-                            <Typography color='textPrimary' display="inline">
-                                La PDN se construye de manera modular y escalable. por lo que esta versión NO debe ser vista como la última.
+                            <Typography className={classes.text_color} display="inline">
+                                La PDN se construye de manera modular y escalable, por lo que esta versión NO debe ser vista como la última.
                             </Typography>
                         </li>
                     </ul>
@@ -83,15 +114,17 @@ const AlertDialog = props => {
                     </Typography>
 
                     <Typography paragraph align="justify">
-                        Te invitamos a revisar los <Link component={RouterLink} to='/terminos'>"Términos y Condiciones de Uso"</Link>, así como a dejar tus comentarios sobre las funcionalidades y experiencia de usuario en la sección <Link href={process.env.REACT_APP_LINK_GOOGLEFORM} target={"_blank"}>"Comenta"</Link>.
+                        Te invitamos a revisar los <Link component={RouterLink} to='/terminos' className={classes.enlaces}>"Términos y Condiciones de Uso"</Link>, así como a dejar tus comentarios sobre las funcionalidades y experiencia de usuario en la sección <Link href={process.env.REACT_APP_LINK_GOOGLEFORM} target={"_blank"} className={classes.enlaces}>"Comenta"</Link>.
                     </Typography>
 
                 </DialogContent>
                 <DialogActions>
-                    <Button variant="contained" onClick={handleClose} className={classes.button}>
+                    <ButtonPDN onClick={handleClose} style={{ color: 'rgba(0, 0, 0, 0.87)' }}>
                         Aceptar
-                    </Button>
+                    </ButtonPDN>
                 </DialogActions>
+            </Paper>
+                
             </Dialog>
         </div>
     );
