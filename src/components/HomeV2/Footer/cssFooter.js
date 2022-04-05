@@ -46,7 +46,8 @@ const CssFooter = theme => ({
     backgroundColor: '#bae3f7',
     with: '100%',
     height: '50px',
-    marginTop: '10px'
+    marginTop: '10px',
+    paddingBottom: theme.spacing(1)
   },
   acercade_enlace: {
     'marginRight': 20,

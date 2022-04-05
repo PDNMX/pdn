@@ -43,9 +43,9 @@ const LeftFooter = props => {
       <Grid item className={classes.acercade}>
         <Grid container spacing={0} direction={'row'} justifyContent={'flex-end'} alignItems={'center'}>
           <Grid item>
-            <Link href='https://datos.gob.mx/libreusomx' target='_blank'>
+            <Link href='https://creativecommons.org/licenses/by-nc/4.0/deed.es' rel='license' target='_blank'>
               <figure className={classes.figure}>
-                <img alt='Libre Uso MX' src={icon_libreuso} style={{ width: 180, marginRight: 40 }} />
+                <img alt='Creative Commons License' style={{ borderWidth: 0, width: 110, marginRight: 40 }} src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' />
               </figure>
             </Link>
           </Grid>
