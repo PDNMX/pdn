@@ -78,6 +78,15 @@ class EspecificacionesTecnicas extends React.Component {
         </ul>
 
         <Typography paragraph variant='h5'>
+          Seguridad
+        </Typography>
+        <Typography paragraph>
+          <ButtonPDN  target='_blank'  href='https://drive.google.com/file/d/1-IvF3KYa5rups73BmVV4W8glT9csVGY9/view'>
+            Más información
+          </ButtonPDN>
+        </Typography>
+
+        <Typography paragraph variant='h5'>
           Versionado
         </Typography>
         <Typography paragraph>

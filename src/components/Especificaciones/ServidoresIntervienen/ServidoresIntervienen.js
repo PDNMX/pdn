@@ -125,6 +125,15 @@ const ServidoresIntervienen = props => {
                                 Más información
                             </ButtonPDN>
 
+                            <Typography paragraph variant='h5'>
+                              Seguridad
+                            </Typography>
+                            <Typography paragraph>
+                                <ButtonPDN  target='_blank'  href='https://drive.google.com/file/d/1-IvF3KYa5rups73BmVV4W8glT9csVGY9/view'>
+                                    Más información
+                                </ButtonPDN>
+                            </Typography>
+
                             <ProcoloConexion urlPlan = {'https://drive.google.com/file/d/1ooAuvc1kNMiftE_R1yRglC6OK9bIIx8U/view'} apiName={'Servidores que intervienen en' +
                                 ' procedimientos de contratación'}/>
 
