@@ -23,7 +23,7 @@ const CardInterconexion = props => {
         </Typography>
         <br />
         <Typography>
-          A través de un cuestionario elaborado por la SESNA, es posible conocer el progreso en las siguientes categorías: <strong>Normatividad, Infraestructura, Capital humano, Mapeo y grestión de datos y Desarrollo de mecanismos de comunicación.</strong>
+          A través de un cuestionario elaborado por la SESNA, es posible conocer el progreso en las siguientes categorías: <strong>Normatividad, Infraestructura, Capital humano, Mapeo y gestión de datos y Desarrollo de mecanismos de comunicación.</strong>
         </Typography>
       </CardContent>
       <CardActions>
