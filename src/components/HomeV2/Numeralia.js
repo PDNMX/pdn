@@ -107,7 +107,7 @@ const Numeralia = props => {
                         </CountUp>
                     </Typography>
                     <Typography className={classes.text} paragraph>
-                        Entidades conectadas y federación
+                        Entes conectados
                     </Typography>
                 </Grid>
                 <Grid item lg={2} md={4} sm={6} xs={12} align="center">
