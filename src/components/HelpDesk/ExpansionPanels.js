@@ -506,15 +506,15 @@ export default function CustomizedExpansionPanels() {
                 <AccordionDetails>
                     <div>
                         <Typography paragraph>
-                            La PDN basa su funcionamiento en el uso de API's, por medio de las cuales, se comunica con sus proveedores de información para obtener exclusivamente los datos necesarios.
+                            La Plataforma Digital Nacional (PDN) basa su funcionamiento en el uso de APIs, por medio de las cuales, se comunica con sus proveedores de información para obtener exclusivamente los datos necesarios.
                         </Typography>
 
                         <Typography paragraph>
-                            Los proveedores de información son los responsables de formalizar y finalizar el proceso de conexión, el cual debe garantizar el correcto funcionamiento y un adecuado nivel de servicio de las API´s.
+                            Las Instituciones públicas interesadas en ser proveedores de información de la PDN deben establecer sus APIs de acuerdo con las <Link to="/especificaciones" className={classes.link}>Especificaciones técnicas</Link> para cada Sistema y solicitar a la USTPDN, el inicio del proceso de conexión con la PDN a través del envío del <MuiLink href="https://drive.google.com/file/d/1ANQG3f1Q7aO4soQR9__2FvHEi_-UwvBe/view" target="_blank" className={classes.link}>Formato de solicitud de conexión</MuiLink> a través del correo pdn@sesna.gob.mx.
                         </Typography>
 
                         <Typography paragraph>
-                            Para lograr la conexión con la PDN, se diseñó un protocolo de conexión, el cual consiste en la ejecución de conjuntos de pruebas para cada Sistema de la PDN, mismos que se dividen en tres categorías:
+                            Asimismo, el proceso de conexión con la PDN contempla un protocolo para verificar el funcionamiento de las APIs, mismo que consiste en la ejecución de conjuntos de pruebas para cada Sistema de la PDN. Cada conjunto de pruebas se divide a su vez en tres categorías:
                         </Typography>
                         <ul>
                             <li>Pruebas de seguridad;</li>
@@ -523,29 +523,23 @@ export default function CustomizedExpansionPanels() {
                         </ul>
 
                         <Typography paragraph>
-                            Estas pruebas se ejecutan en dos ambientes: 1) desarrollo y 2) productivo:
+                            Estas pruebas se ejecutan en dos ambientes: 1) desarrollo y 2) productivo. En cada uno de ellos, se verifica el funcionamiento de la API, usando datos sintéticos (falsos) y reales (omitiendo datos reservados) de manera correspondiente.
                         </Typography>
 
-                        <ol>
-                            <li><b>Ambiente de desarrollo</b>: se deberán utilizar <b>datos sintéticos</b> para verificar la funcionalidad, los mecanismos de seguridad y la estructura de los datos.</li>
-                            <li><b>Ambiente productivo</b>: se requiere contar con los <b>datos reales</b> que serán suministrados a la Plataforma, omitiendo datos de carácter reservado.</li>
-                        </ol>
-
-                        <Typography paragraph>
-                            Es necesario contar con la <b>aprobación</b> de las pruebas en el ambiente de desarrollo para continuar con las del ambiente productivo.
+                        <Typography>
+                            Las pruebas para la verificación de las APIs, se encuentran descritas en documentos denominados Planes de pruebas, que podrás encontrar en la sección de Especificaciones de cada uno de los Sistemas de la PDN.
                         </Typography>
 
                         <Typography paragraph>
-                            En caso de que los resultados no sean aprobatorios, se notificará al proveedor de información para que realice los ajustes necesarios y solicite una nueva revisión.
+                            En caso de que los resultados no sean aprobatorios, se notificará a la institución para que realice los ajustes necesarios y solicite una nueva revisión.
                         </Typography>
 
                         <Typography paragraph>
-                            Para iniciar el proceso o protocolo de conexión, es necesario llenar el formato de <MuiLink className={classes.link} component='a' target="_blank" href="https://drive.google.com/file/d/1ANQG3f1Q7aO4soQR9__2FvHEi_-UwvBe/view">Solicitud de conexión</MuiLink> y enviarlo al correo electrónico: pdn@sesna.gob.mx.
+                            Como apoyo para la verificar el cumplimiento de los esquemas de datos de las diferentes API 's, ponemos a su disposición un <Link to="/validador" className={classes.link}>Validador</Link>.
                         </Typography>
 
-                        <Typography paragraph>
-                            Adicional, ponemos a disposición un <Link to="/validador" className={classes.link}><Typography component={'span'}>Validador </Typography></Link>
-                            como apoyo para la verificar el cumplimiento de los esquemas de datos de las diferentes API 's.
+                        <Typography>
+                            Asimismo, te invitamos a probar <MuiLink href="https://www.plataformadigitalnacional.org/validapi/" target="_blank" className={classes.link}>ValidAPI</MuiLink> una aplicación web que te permitirá ejecutar de manera automatizada las validaciones de seguridad y de funcionalidad incluidas en los planes de pruebas de los sistemas 1, 2 y 3; recibiendo retroalimentación de una forma rápida. Esta herramienta se encuentra en una etapa de pilotaje, por lo que el resultado obtenido  debe considerarse una prevalidación y no como un resultado final.
                         </Typography>
                     </div>
                 </AccordionDetails>
