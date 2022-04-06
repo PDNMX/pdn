@@ -114,7 +114,7 @@ const AlertDialog = props => {
                     </Typography>
 
                     <Typography paragraph align="justify">
-                        Te invitamos a revisar los <Link component={RouterLink} to='/terminos' className={classes.enlaces}>"Términos y Condiciones de Uso"</Link>, así como a dejar tus comentarios sobre las funcionalidades y experiencia de usuario en la sección <Link href={process.env.REACT_APP_LINK_GOOGLEFORM} target={"_blank"} className={classes.enlaces}>"Comenta"</Link>.
+                        Te invitamos a revisar los <Link component={RouterLink} to='/terminos' className={classes.enlaces}>"Términos y Condiciones de Uso"</Link> y el <Link href={"https://drive.google.com/file/d/18Y_bcTXFqwIX0j96efeLchUIBsUFfmZr/view"} target={"_blank"} className={classes.enlaces}>"Aviso de Privacidad"</Link>, así como a dejar tus comentarios sobre las funcionalidades y experiencia de usuario en la sección de <Link href={process.env.REACT_APP_LINK_GOOGLEFORM} target={"_blank"} className={classes.enlaces}>"Comenta"</Link>.
                     </Typography>
 
                 </DialogContent>
