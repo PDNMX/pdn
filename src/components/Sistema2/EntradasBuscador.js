@@ -2,8 +2,6 @@ import React from 'react';
 import withStyles from '@mui/styles/withStyles';
 import {TextField, MenuItem, FormControl, Grid, Typography} from "@mui/material"
 import Button from '@mui/material/Button';
-import InputLabel from '@mui/material/InputLabel';
-import Select from "@mui/material/Select";
 import FormLabel from "@mui/material/FormLabel";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -104,7 +102,19 @@ const EntradasBuscador = props => {
 
                 <Grid item xs={12} md={8}>
                     <FormControl className={classes.formControl}>
-                        <InputLabel id={'campoSelectInstitucion'}>Institución</InputLabel>
+                        <TextField id={'campoSelectInstitucion'} name={'campoSelectInstitucion-select'} margin="normal" select label={'Institución'} value={current_entity} onChange={(e) => handleSetState('current_entity', e)}>
+                            <MenuItem value="ANY" key="ANY">
+                                Todas
+                            </MenuItem>
+                            {entities.map((entity, index) => {
+                                return (
+                                    <MenuItem value={entity} key={index}>
+                                        {entity.nombre}
+                                    </MenuItem>
+                                );
+                            })}
+                        </TextField>
+                        {/* <InputLabel id={'campoSelectInstitucion'}>Institución</InputLabel>
                         <Select
                             labelId = {'campoSelectInstitucion'}
                             id = {'campoSelectInstitucion-select'}
@@ -126,7 +136,7 @@ const EntradasBuscador = props => {
                                     </MenuItem>
                                 }))
                             }
-                        </Select>
+                        </Select> */}
                     </FormControl>
                 </Grid>
                     

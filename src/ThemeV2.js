@@ -116,15 +116,6 @@ export default createTheme(
           }
         }
       }
-      // MuiSelect: {
-      //   styleOverrides: {
-      //     '& .MuiOutlinedInput-root': {
-      //       '&:hover': {
-      //         border: `1px ${AzulPDN} solid`
-      //       }
-      //     }
-      //   }
-      // }
     }
   },
   esES
