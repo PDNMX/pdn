@@ -89,7 +89,7 @@ const AlertDialog = props => {
                     <ul className={classes.ul}>
                         <li className={classes.li}>
                             <Typography className={classes.text_color} display='inline'>
-                                Datos reales en los Sistemas: 1, 2, 3, y 6.
+                                Datos en los Sistemas: 1, 2, 3, y 6.
                             </Typography>
                         </li>
                         <li className={classes.li}>
