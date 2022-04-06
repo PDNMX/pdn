@@ -1,13 +1,10 @@
 import React from 'react';
 import makeStyles from '@mui/styles/makeStyles';
-//import Input from '@mui/material/Input';
-import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import ListItemText from '@mui/material/ListItemText';
-import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
-import {OutlinedInput} from "@mui/material";
+import {TextField} from "@mui/material";
 
 const useStyles = makeStyles(theme => ({
     formControl: {
@@ -61,7 +58,31 @@ const TipoProcedimiento = props => {
     return (
         <div>
             <FormControl className={classes.formControl} fullWidth>
-                <InputLabel id="demo-mutiple-checkbox-label">Procedimientos</InputLabel>
+                <TextField id={'campoSelectInstitucion'} name={'campoSelectInstitucion-select'} margin="normal" select 
+                    label={'Procedimientos'} 
+                    SelectProps={{
+                        multiple: true,
+                        renderValue: selected => selected.map(e => e.value).join(', '),
+                        MenuProps: MenuProps,
+                        onChange: handleChange,
+                        value: tipoProcedimiento
+                      }}
+                >
+                            <MenuItem value="ANY" key="ANY">
+                                Todas
+                            </MenuItem>
+                            {procedimientos.map((p, i) => {
+                                return (
+                                    <MenuItem key={i} value={p}>
+                                        <Checkbox checked={
+                                            typeof tipoProcedimiento.find(proc => proc.key === p.key) !== 'undefined'
+                                        } />
+                                        <ListItemText primary={p.value} />
+                                    </MenuItem>
+                                );
+                            })}
+                </TextField>
+                {/* <InputLabel id="demo-mutiple-checkbox-label">Procedimientos</InputLabel>
                 <Select
                     labelId="demo-mutiple-checkbox-label"
                     id="demo-mutiple-checkbox"
@@ -81,7 +102,7 @@ const TipoProcedimiento = props => {
                             <ListItemText primary={p.value} />
                         </MenuItem>
                     ))}
-                </Select>
+                </Select> */}
             </FormControl>
         </div>
     );

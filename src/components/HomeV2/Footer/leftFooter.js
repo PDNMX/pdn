@@ -7,7 +7,6 @@ import icon_youtube from '../../../assets/footer/ico_youtube.svg';
 import icon_twitter from '../../../assets/footer/ico_twitter.svg';
 import icon_facebook from '../../../assets/footer/ico_facebook.svg';
 
-import icon_libreuso from '../../../assets/footer/libre_uso.png';
 import icon_github from '../../../assets/footer/ico_github.svg';
 
 import { makeStyles } from '@mui/styles';

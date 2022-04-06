@@ -1,7 +1,7 @@
 import React from 'react';
 import {
-    Grid, Select, MenuItem, FormControl, Typography, InputLabel, ListItemText, TextField, Button, FormControlLabel,
-    Switch, Collapse, Checkbox, Modal, CircularProgress, OutlinedInput
+    Grid, MenuItem, FormControl, Typography,  ListItemText, TextField, Button, FormControlLabel,
+    Switch, Collapse, Checkbox, Modal, CircularProgress
 } from '@mui/material';
 import {withStyles} from '@mui/styles';
 import PropTypes from 'prop-types';
@@ -48,6 +48,10 @@ const styles = theme => ({
         maxWidth: '1200px',
         overflowX: 'auto',
         padding: theme.spacing(1)
+    },
+    button: {
+        padding: theme.spacing(1),
+        fontWeight: 'bold'
     }
 });
 
@@ -369,6 +373,7 @@ class BusquedaParticular extends React.Component {
                                     type="search"
                                     onChange={(e) => this.handleChangeCampo('nombreRazonSocial', e)}
                                     value={nombreRazonSocial}
+                                    margin="normal"
                                 />
                             </FormControl>
                         </Grid>
@@ -380,13 +385,29 @@ class BusquedaParticular extends React.Component {
                                     type="search"
                                     onChange={(e) => this.handleChangeCampo('expediente', e)}
                                     value={expediente}
+                                    margin="normal"
                                 />
 
                             </FormControl>
                         </Grid>
                         <Grid item xs={12} md={4}>
                             <FormControl className={classes.formControl}>
-                                <InputLabel id="tipoSancion-label">Tipo sanción</InputLabel>
+                            <TextField id={'tipoSancion'} name={'tipoSancion-select'} margin="normal" select label={'Tipo sanción'} 
+                                SelectProps={{
+                                    multiple: true,
+                                    renderValue: selected => selected.map(element => element.label).join(', '),
+                                    onChange: e => this.handleChangeCampo('tipoSancion', e),
+                                    value: tipoSancion
+                            }}>
+                                    {tiposSancion.map(tipo => (
+                                        <MenuItem key={tipo.value} value={tipo}>
+                                            <Checkbox checked={tipoSancion.indexOf(tipo) > -1}/>
+                                            <ListItemText primary={tipo.label}/>
+                                        </MenuItem>
+
+                                    ))}
+                                </TextField>
+                                {/* <InputLabel id="tipoSancion-label">Tipo sanción</InputLabel>
                                 <Select label={'Tipo sanción'}
                                         id="tipoSancion-checkbox"
                                         multiple
@@ -407,12 +428,17 @@ class BusquedaParticular extends React.Component {
                                         </MenuItem>
 
                                     ))}
-                                </Select>
+                                </Select> */}
                             </FormControl>
                         </Grid>
                         <Grid item xs={12} md={2}>
                             <FormControl className={classes.formControl}>
-                                <InputLabel id="tipoPersona-label">Tipo persona</InputLabel>
+                                <TextField id={'tipoPersona'} name={'tipoPersona'} margin="normal" select label={'Tipo persona'} value={tipoPersona} onChange={(e) => this.handleChangeCampo('tipoPersona', e)}>
+                                    <MenuItem value="any"><em>Todos</em></MenuItem>
+                                    <MenuItem value="F" key={"F"}>Física</MenuItem>
+                                    <MenuItem value="M" key={"M"}>Moral</MenuItem>
+                                </TextField>
+                                {/* <InputLabel id="tipoPersona-label">Tipo persona</InputLabel>
                                 <Select value={tipoPersona}
                                         onChange={(e) => this.handleChangeCampo('tipoPersona', e)}
                                         label={'Tipo persona'}
@@ -420,12 +446,17 @@ class BusquedaParticular extends React.Component {
                                     <MenuItem value="any"><em>Todos</em></MenuItem>
                                     <MenuItem value="F" key={"F"}>Física</MenuItem>
                                     <MenuItem value="M" key={"M"}>Moral</MenuItem>
-                                </Select>
+                                </Select> */}
                             </FormControl>
                         </Grid>
                         <Grid item md={2} xs={12}>
                             <FormControl className={classes.formControl}>
-                                <InputLabel id="nivel-label">
+                                <TextField id={'nivel'} name={'nivel'} margin="normal" select label={'Nivel'} value={nivel} onChange={(e) => this.handleChangeCampo('nivel', e)}>
+                                    <MenuItem value={'any'} ><em>Todos</em></MenuItem>
+                                    <MenuItem value={'Federal'} key={'Federal'}>{'Federal'}</MenuItem>
+                                    <MenuItem value={'Estatal'} key={'Estatal'}>{'Estatal'}</MenuItem>
+                                </TextField>
+                                {/* <InputLabel id="nivel-label">
                                     Nivel
                                 </InputLabel>
                                 <Select value={nivel}
@@ -439,12 +470,20 @@ class BusquedaParticular extends React.Component {
                                     <MenuItem value={'Estatal'} key={'Estatal'}>
                                         {'Estatal'}
                                     </MenuItem>
-                                </Select>
+                                </Select> */}
                             </FormControl>
                         </Grid>
                         <Grid item md={4} xs={12}>
                             <FormControl className={classes.formControl}>
-                                <InputLabel id="proveedor-label">
+                                <TextField id={'proveedor'} name={'proveedor'} margin="normal" select label={'Proveedor información'} value={proveedor} onChange={(e) => this.handleChangeCampo('proveedor', e)}>
+                                    <MenuItem value={'any'} key={-1}><em>Todos</em></MenuItem>
+                                    {proveedoresLista.map((item => {
+                                        return <MenuItem value={item.value} key={item.key}>
+                                            {item.label}
+                                        </MenuItem>
+                                    }))}
+                                </TextField>
+                                {/* <InputLabel id="proveedor-label">
                                     Proveedor información
                                 </InputLabel>
                                 <Select value={proveedor}
@@ -459,12 +498,19 @@ class BusquedaParticular extends React.Component {
                                             </MenuItem>
                                         }))
                                     }
-                                </Select>
+                                </Select> */}
                             </FormControl>
                         </Grid>
                         <Grid item md={6} xs={12}>
                             <FormControl className={classes.formControl}>
-                                <InputLabel id="institucionDependencia-label">
+                                <TextField id={'institucionDependencia'} name={'institucionDependencia'} margin="normal" select label={'Institución'} value={institucionDependencia} onChange={(e) => this.handleChangeCampo('institucionDependencia', e)}>
+                                    {institucionesLista.map((item => {
+                                        return <MenuItem value={item.value} key={item.key}>
+                                            {item.label}
+                                        </MenuItem>
+                                    }))}
+                                </TextField>
+                                {/* <InputLabel id="institucionDependencia-label">
                                     Institución
                                 </InputLabel>
                                 <Select value={institucionDependencia}
@@ -479,7 +525,7 @@ class BusquedaParticular extends React.Component {
                                             </MenuItem>
                                         }))
                                     }
-                                </Select>
+                                </Select> */}
                             </FormControl>
                         </Grid>
 
@@ -491,7 +537,17 @@ class BusquedaParticular extends React.Component {
 
                         {this.state.busquedaAvanzada && <Grid item xs={12} md={3}>
                             <FormControl className={classes.formControl}>
-                                <InputLabel id="campoOrden-label">Ordenar por</InputLabel>
+                                <TextField id={'campoOrden'} name={'campoOrden'} margin="normal" select label={'Ordenar por'} value={campoOrden} onChange={e => this.handleChangeCampo('campoOrden', e)}>
+                                    <MenuItem value={''}>
+                                        <em>Ninguno</em>
+                                    </MenuItem>
+                                    {camposOrdenamiento.map(tipo => (
+                                        <MenuItem key={tipo.value} value={tipo}>
+                                            <ListItemText primary={tipo.label}/>
+                                        </MenuItem>
+                                    ))}
+                                </TextField>
+                                {/* <InputLabel id="campoOrden-label">Ordenar por</InputLabel>
                                 <Select
                                     id="campoOrden-checkbox"
                                     label={'Ordenar por'}
@@ -508,12 +564,22 @@ class BusquedaParticular extends React.Component {
                                         </MenuItem>
 
                                     ))}
-                                </Select>
+                                </Select> */}
                             </FormControl>
                         </Grid>}
                         {this.state.busquedaAvanzada && <Grid item xs={12} md={3}>
                             <FormControl className={classes.formControl}>
-                                <InputLabel id="tipoOrden-label">Tipo ordenamiento</InputLabel>
+                                <TextField id={'namtipoOrdene'} name={'tipoOrden'} margin="normal" select label={'Tipo ordenamiento'} value={tipoOrden} onChange={e => this.handleChangeCampo('tipoOrden', e)}>
+                                    <MenuItem value={''}>
+                                        <em>Ninguno</em>
+                                    </MenuItem>
+                                    {tiposOrdenamiento.map(tipo => (
+                                        <MenuItem key={tipo.value} value={tipo}>
+                                            <ListItemText primary={tipo.label}/>
+                                        </MenuItem>
+                                    ))}
+                                </TextField>
+                                {/* <InputLabel id="tipoOrden-label">Tipo ordenamiento</InputLabel>
                                 <Select
                                     id="tipoOrden-checkbox"
                                     label={'Tipo ordenamiento'}
@@ -530,20 +596,20 @@ class BusquedaParticular extends React.Component {
                                         </MenuItem>
 
                                     ))}
-                                </Select>
+                                </Select> */}
                             </FormControl>
                         </Grid>}
 
                         <Grid item md={10}/>
 
 
-                        <Grid item xs={12} md={1} className={classes.centrado}>
+                        <Grid item xs={12} md={1}>
                             <Button variant="contained" color="secundario" className={classes.button}
                                     onClick={() => this.handleCleanAll()}>
                                 Limpiar
                             </Button>
                         </Grid>
-                        <Grid item xs={12} md={1} className={classes.centrado}>
+                        <Grid item xs={12} md={1}>
                             <Button variant="contained" color="secundario" className={classes.button}
                                     onClick={this.handleSearchPrevios}>
                                 Buscar

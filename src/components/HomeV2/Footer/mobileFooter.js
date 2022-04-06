@@ -31,25 +31,25 @@ const MobileFooter = props => {
         </Grid>
         <Grid item>
           <Typography variant='subtitle1'>
-            <RouterLink to={'#'} className={classes.linkMobile}>
-              Boletines de prensa
-            </RouterLink>
+            <Link href='https://drive.google.com/drive/folders/1t_vGUfagr75TAZ8-E4NZfL-fU0BcsPlZ' target='_blank' underline='none' className={classes.linkMobile}>
+              Boletines y prensa
+            </Link>
           </Typography>
         </Grid>
         <Grid item>
           <Typography variant='subtitle1'>
-            <RouterLink to={'#'} className={classes.linkMobile}>
+            <Link href='https://www.youtube.com/channel/UCJ0nWmB2-ADfn95r5cjmLJA/' target='_blank' underline='none' className={classes.linkMobile}>
               Videos
-            </RouterLink>
+            </Link>
           </Typography>
         </Grid>
-        <Grid item>
+        {/* <Grid item>
           <Typography variant='subtitle1'>
             <RouterLink to={'#'} className={classes.linkMobile}>
               Mapa de sitio
             </RouterLink>
           </Typography>
-        </Grid>
+        </Grid> */}
       </Grid>
       <Grid container direction={'row'} justifyContent={'center'} alignContent={'center'} className={classes.footerMobileSeccLogos}>
         <Grid item>
@@ -83,9 +83,16 @@ const MobileFooter = props => {
           </Link>
         </Grid>
       </Grid>
-      <Grid container direction={'row'} justifyContent={'center'} alignContent={'center'} className={classes.footerMobileSeccLogos}>
+      <Grid container direction={'column'} justifyContent={'center'} alignContent={'center'} className={classes.footerMobileSeccLogos}>
         <Grid item>
-          <Link href='mailto:pdn@sesna.gob.mx' target='_blank' underline='none' className={classes.emailContacto} variant='subtitle1'>
+          <Link href='https://creativecommons.org/licenses/by-nc/4.0/deed.es' rel='license' target='_blank'>
+            <figure className={classes.figure} style={{ maring: 0, padding: 0 }}>
+              <img alt='Creative Commons License' style={{ marginBottom: 10, borderWidth: 0, width: 120 }} src='https://i.creativecommons.org/l/by-nc/4.0/80x15.png' />
+            </figure>
+          </Link>
+        </Grid>
+        <Grid item>
+          <Link href='mailto:pdn@sesna.gob.mx' target='_blank' underline='none' className={classes.emailContacto} variant='subtitle1' style={{ marginRight: 0 }}>
             pdn@sesna.gob.mx
           </Link>
         </Grid>
