@@ -48,7 +48,7 @@ const CenterFooter = props => {
                 <Typography variant='subtitle1'>
                   <Link href='https://www.youtube.com/channel/UCJ0nWmB2-ADfn95r5cjmLJA/' target='_blank' underline='none' className={classes.enlaces}>
                     Videos
-                  </Link>                    
+                  </Link>
                 </Typography>
                 <Typography variant='subtitle1'>
                   <Link href='https://drive.google.com/drive/folders/1t_vGUfagr75TAZ8-E4NZfL-fU0BcsPlZ' target='_blank' underline='none' className={classes.enlaces}>
