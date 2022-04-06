@@ -94,7 +94,7 @@ const Faq = props => {
                                         <b>¿La PDN va a operar sistemas como CompraNet o Declaranet?</b><br/>
                                     </Typography>
                                     <CustomTypography className={classes.sublist}>
-                                        No. Las Plataforma será una herramienta de interoperabilidad que a través de las estandarización de la información será capaz de consultar los datos que contienen sistemas como CompraNet o Declaranet.
+                                        No. La Plataforma será una herramienta de interoperabilidad que a través de la estandarización de la información será capaz de consultar los datos que contienen sistemas como CompraNet o Declaranet.
                                         <br/>
                                         La generación de los datos desde sistemas como CompraNet o Declaranet seguirá siendo responsabilidad de los entes que tienen la atribución actualmente.
                                     </CustomTypography>
