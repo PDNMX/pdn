@@ -87,7 +87,7 @@ const MobileFooter = props => {
         <Grid item>
           <Link href='https://creativecommons.org/licenses/by-nc/4.0/deed.es' rel='license' target='_blank'>
             <figure className={classes.figure} style={{ maring: 0, padding: 0 }}>
-              <img alt='Creative Commons License' style={{ maring: 0, padding: 0, borderWidth: 0, width: 120 }} src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' />
+              <img alt='Creative Commons License' style={{ marginBottom: 10, borderWidth: 0, width: 120 }} src='https://i.creativecommons.org/l/by-nc/4.0/80x15.png' />
             </figure>
           </Link>
         </Grid>
