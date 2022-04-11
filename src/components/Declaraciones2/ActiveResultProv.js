@@ -42,7 +42,7 @@ const ActiveResultProv = props => {
                   </Typography>
                 </Grid>
                 <Grid item xs={8}>
-                  <Typography className={classes.resultadosHeading}> Total de registros: {new Intl.NumberFormat().format(p.total)} </Typography>
+                  <Typography className={classes.resultadosHeading}> Total de registros: {new Intl.NumberFormat('es-MX').format(p.total)} </Typography>
                 </Grid>
               </Grid>
             </Grid>
