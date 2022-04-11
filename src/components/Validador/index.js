@@ -78,7 +78,7 @@ class Validador extends Component {
                     <TableBody>
                         {results.map((row, i) => (
                             <TableRow key={i}>
-                                <TableCell className={classes.tableCell}>{row.dataPath}</TableCell>
+                                <TableCell className={classes.tableCell}>{row.instancePath}</TableCell>
                                 <TableCell className={classes.tableCell}>{row.message}</TableCell>
                                 <TableCell className={classes.tableCell}>{row.keyword}</TableCell>
                             </TableRow>
