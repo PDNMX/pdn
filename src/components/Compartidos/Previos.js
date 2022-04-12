@@ -37,6 +37,12 @@ const styles = theme => ({
     tablePagination: {
         color: theme.palette.greyColor,
         backgroundColor: theme.palette.background.tableBody
+    },
+    conectado:{
+        color: theme.palette.azulPDN
+    },
+    noconectado:{
+        color: theme.palette.greyColor
     }
 });
 
@@ -89,7 +95,7 @@ function Previos({data, classes, handleChangeSujetoObligado}) {
                                             <TableCell align="left">{row.supplier_name}</TableCell>
                                             <TableCell align="center">
                                                 <Tooltip title={!row.error ? "Disponible" : "No disponible"}>
-                                                    <IconSunny color={!row.error ? "primario" : "disabled"}/>
+                                                    <IconSunny className={!row.error ? classes.conectado : classes.noconectado}/>
                                                 </Tooltip>
                                             </TableCell>
                                             <TableCell align="center">
