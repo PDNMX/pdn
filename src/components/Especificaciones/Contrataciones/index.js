@@ -58,7 +58,7 @@ const Index = props => {
               <Intro />
               <Divider className={classes.divider} />
               <Typography paragraph variant='h5'>
-                Seguridad
+                Seguridad informática
               </Typography>
               <Typography paragraph>
                 <ButtonPDN target='_blank' href='https://drive.google.com/file/d/1-IvF3KYa5rups73BmVV4W8glT9csVGY9/view'>

@@ -247,10 +247,10 @@ const Intro = props => {
             </Typography>
 
             <Typography>
-                Contiene la traducción del Open Contracting Data Standar para México.
+                Contiene la traducción del Open Contracting Data Standard para México.
             </Typography>
 
-            <ButtonPDN href="https://drive.google.com/file/d/1z5uKwMozYMtVPBRcmKJfoZasI417O-p9/view?usp=sharing"
+            <ButtonPDN href="https://docs.google.com/spreadsheets/d/1DDpMvPG9S1H45YMAFlHBZy9jnJu71nU1Y9CEIbxRSRQ/edit?usp=sharing"
                     target="_blank" >
                 Conoce más
             </ButtonPDN>
