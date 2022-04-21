@@ -61,6 +61,13 @@ const Index = props => {
                 Seguridad informática
               </Typography>
               <Typography paragraph>
+                El siguiente documento responde a las principales dudas en términos de seguridad
+                informática que corresponden al: desarrollo, almacenamiento, operación, hospedaje,
+                infraestructura y mecanismos de comunicación que rodean la administración de la
+                Plataforma Digital Nacional y sus datos.
+              </Typography>
+
+              <Typography paragraph>
                 <ButtonPDN target='_blank' href='https://drive.google.com/file/d/1-IvF3KYa5rups73BmVV4W8glT9csVGY9/view'>
                   Más información
                 </ButtonPDN>
