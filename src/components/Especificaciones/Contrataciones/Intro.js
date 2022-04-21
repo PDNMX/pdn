@@ -72,6 +72,10 @@ const Intro = props => {
     const {classes} = props;
     return (
         <div className={classes.root}>
+
+            <Typography variant="h4" paragraph>
+                Introducción
+            </Typography>
             <Typography paragraph>
                 El Estándar de Datos de Contrataciones Abiertas (EDCA) es un referente global para la publicación estructurada de la información de una contratación — desde la planeación hasta la implementación — en datos abiertos.
             </Typography>
