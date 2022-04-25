@@ -165,6 +165,21 @@ const Intro = props => {
                 Esquema de entrega
             </ButtonPDN>
 
+
+            <Typography className={classes.title}>
+                Herramienta de revisión de datos
+            </Typography>
+
+            <Typography>
+                La herramienta de revisión permite comprobar que los datos cumplen los requisitos del esquema.
+            </Typography>
+
+            <ButtonPDN
+                href="https://standard.open-contracting.org/review/"
+                target="_blank">
+                Herramienta de revisión
+            </ButtonPDN>
+
             <Typography className={classes.title}>
                 Open Contracting Data Standard (OCDS)
             </Typography>
