@@ -1,7 +1,7 @@
 import React from 'react';
 import withStyles from '@mui/styles/withStyles';
 import {Grid, Typography} from "@mui/material"
-import BuscadorS2 from "./BuscadorS2";
+import BuscadorS2 from "./BuscadorS2v2";
 import HeaderV2 from '../HomeV2/HeaderV2';
 import Dashboard from "./Dashboard/Dashboard";
 import BuscadorParticularesSancionados from '../Sancionados/Particulares/BuscadorParticularesSancionados';

@@ -93,6 +93,10 @@ const EntradasBuscador = props => {
                     </FormControl>
                 </Grid>
 
+                {/*<Grid item xs={12} md={4}>
+                    <Typography>Proveedor de información</Typography>
+                </Grid>*/}
+
                 <Grid item xs={12} md={4}>
                     <TipoProcedimiento
                         tipoProcedimiento={tipoProcedimiento}
