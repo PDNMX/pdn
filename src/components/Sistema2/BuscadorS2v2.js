@@ -112,10 +112,14 @@ const BuscadorS2  =  props => {
     const [error, setError] = React.useState(false);
 
     React.useEffect(() => {
-     if (state.loading){
-         console.log("Searching...")
-         broadSearch();
-     }
+        loadEntities("Todos");
+    },[]);
+
+    React.useEffect(() => {
+        if (state.loading){
+            console.log("Searching...")
+            broadSearch();
+        }
     }, [state.summaryData]);
 
     React.useEffect(() => {
@@ -136,55 +140,13 @@ const BuscadorS2  =  props => {
         }
     },[state.nivel]);
 
-    React.useEffect(() => {
-        loadEntities("Todos");
-    },[]);
-
     const changeLevel = e => {
-        // Ya usa useEffect
         const nivel = e.target.value;
         setState({
             ...state,
             loading: true,
             nivel: nivel
         });
-        //loadEntities(nivel);
-    };
-
-    const loadEntities = async () => {
-        let options = {
-            url: process.env.REACT_APP_S2_BACKEND + "/api/v1/entities",
-            json: true,
-            method: "POST",
-            data: {}
-        };
-
-        if (state.nivel !== 'Todos'){
-            options.data.nivel_gobierno = state.nivel
-        }
-
-        try {
-            const res = await axios(options);
-            const entities = JSON.parse(JSON.stringify(res.data))
-
-            // handle errors and set state
-            setState({
-                ...state, //
-                //nivel: nivel, // no es necesario por que el update del state debe solicitar la búsqueda
-                loading: false,
-                entities: entities[0].error ? [] : entities, //res.data,
-                current_entity: "ANY"
-            });
-        } catch (err) {
-            console.log(err);
-            setState({
-                ...state, //
-                //nivel: nivel, // no es necesario por que el update del state debe solicitar la búsqueda
-                loading: false,
-                entities: [],
-                current_entity: "ANY"
-            });
-        }
     };
 
     const toggleShowSummary = () => {
@@ -224,36 +186,102 @@ const BuscadorS2  =  props => {
     };
 
     const handleChangePage = (event, page) => {
-        //log(page);
-        // Ya usa useEffect
         setState({
             ...state, //
             loading: true,
             page: page
         });
-        //fetchData();
     };
 
     const handleChangeRowsPerPage = event => {
-        // Ya usa useEffect
         setState({
             ...state,
             loading: true,
             rowsPerPage: event.target.value
         });
-        //fetchData();
     };
 
     //busqueda en varias URLs
     const handleBroadSearch = () => {
-        // Ya usa useEffect
         setState({
             ...state,
             results: null,
             summaryData: null,
             loading: true
         });
-    }
+    };
+
+    const asignarTipoProcedimiento = procedimientos => {
+        setState({
+            ...state, //
+            tipoProcedimiento: procedimientos
+        });
+    };
+
+    const handleSearchSupplier = supplier_id => {
+        setState({
+            ...state,
+            page: 0,
+            rowsPerPage: 10,
+            loading: true,
+            supplier_id: supplier_id
+        });
+    };
+
+    const handleSetState = (varState, event) => {
+        setState({
+            ...state,//
+            [varState]: event ? (event.target ? event.target.value : event.value) : ''
+        });
+    };
+
+    const handleCleanAll = () => {
+        setState({
+            results: null,
+            summaryData : null,
+            elementoSeleccionado: null,
+            nivel : 'Todos',
+            nombres: "",
+            tipoProcedimiento: [],//0,
+            current_entity: "ANY",
+            apellidoUno: "",
+            apellidoDos: ""
+        });
+    };
+
+    const loadEntities = async () => {
+        let options = {
+            url: process.env.REACT_APP_S2_BACKEND + "/api/v1/entities",
+            json: true,
+            method: "POST",
+            data: {}
+        };
+
+        if (state.nivel !== 'Todos'){
+            options.data.nivel_gobierno = state.nivel
+        }
+
+        try {
+            const res = await axios(options);
+            const entities = JSON.parse(JSON.stringify(res.data))
+
+            // handle errors and set state
+            setState({
+                ...state,
+                loading: false,
+                entities: entities[0].error ? [] : entities, //res.data,
+                current_entity: "ANY"
+            });
+        } catch (err) {
+            console.log(err);
+            setState({
+                ...state,
+                loading: false,
+                entities: [],
+                current_entity: "ANY"
+            });
+        }
+    };
 
     const broadSearch = async () => {
         let {
@@ -287,15 +315,12 @@ const BuscadorS2  =  props => {
 
         try {
             const res = await axios(options);
-
             setState({
                 ...state, //
                 summaryData: res.data,
                 loading: false
             });
-
             setError(false);
-
         } catch (err){
             console.log(err);
             setState({
@@ -305,13 +330,6 @@ const BuscadorS2  =  props => {
 
             setError(true);
         }
-    };
-
-    const asignarTipoProcedimiento = procedimientos => {
-        setState({
-            ...state, //
-            tipoProcedimiento: procedimientos
-        });
     };
 
     const fetchData = async () => {
@@ -365,39 +383,6 @@ const BuscadorS2  =  props => {
 
             setError(true);
         }
-    };
-
-    const handleSearchSupplier = supplier_id => {
-        // Ya usa useEffect
-        setState({
-            ...state,
-            page: 0,
-            rowsPerPage: 10,
-            loading: true,
-            supplier_id: supplier_id
-        });
-        //fetchData();
-    };
-
-    const handleSetState = (varState, event) => {
-        setState({
-            ...state,//
-            [varState]: event ? (event.target ? event.target.value : event.value) : ''
-        });
-    };
-
-    const handleCleanAll = () => {
-        setState({
-            results: null,
-            summaryData : null,
-            elementoSeleccionado: null,
-            nivel : 'Todos',
-            nombres: "",
-            tipoProcedimiento: [],//0,
-            current_entity: "ANY",
-            apellidoUno: "",
-            apellidoDos: ""
-        });
     };
 
     //  const emptyRows = rowsPerPage - filterData.length;
