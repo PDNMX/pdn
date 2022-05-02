@@ -7,20 +7,18 @@ import Glosario from "../Glosario/";
 
 import style from '../Declaraciones2/style';
 import { makeStyles } from '@mui/styles';
-import useAnalyticsEventTracker from '../useAnalyticsEventTracker';
 
 const useStyles=makeStyles(style);
 
 const Layout = ({children})=>{
     const classes = useStyles();
-    const gaEventTracker = useAnalyticsEventTracker('inicio');
     return (
         <React.Fragment>
             <div className={classes.backgroundCruces}>
                 <Banner/>
                 <Version/>
                 {children}
-                <Glosario onClick={()=>gaEventTracker('glosario')} />
+                <Glosario/>
                 <ChatBotPDN/>
                 <Footer/>
             </div>            
