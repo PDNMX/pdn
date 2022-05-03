@@ -74,7 +74,7 @@ const SysPDN = props => {
 
             <CustomTypography fontWeight="100" paragraph>
                 El desarrollo de la <b>PDN</b> considera seis sistemas que integran datos estratégicos para la lucha
-                contra la conrrupción, contemplados en
+                contra la corrupción, contemplados en
                 la <b>Ley General del Sistema Nacional Anticorrupción (LGSNA).</b>
             </CustomTypography>
 
