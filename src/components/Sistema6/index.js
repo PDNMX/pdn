@@ -1,6 +1,6 @@
 import React from 'react';
 import withStyles from '@mui/styles/withStyles';
-import Busqueda from "./Busqueda";
+import Busqueda from "./BusquedaV2";
 import Cifras from "./Cifras";
 //import Perspectivas from "./Perspectivas";
 import Top from './Top';
@@ -106,7 +106,7 @@ const styles = theme => ({
         color: theme.palette.S6.color,
         marginLeft: theme.spacing(1),
         paddingTop: theme.spacing(1)
-}});
+    }});
 
 
 const Index = props => {
@@ -125,7 +125,7 @@ const Index = props => {
                     <Grid item xs={12} sm={12} md={6} lg={6} xl={6}
                           onClick={() => handleSelectTab(0)}
                           id={0}
-                          //className={isSelected(0)?classes.selectedTab:classes.tab}
+                        //className={isSelected(0)?classes.selectedTab:classes.tab}
                     >
 
                         <figure className={isSelected(0)?classes.cardSeleccionada: classes.card}>
@@ -140,7 +140,7 @@ const Index = props => {
                     <Grid item xs={12} sm={12} md={6} lg={6} xl={6}
                           onClick={ () => handleSelectTab(1)}
                           id={1}
-                          //className={isSelected(1)?classes.selectedTab:classes.tab}
+                        //className={isSelected(1)?classes.selectedTab:classes.tab}
                     >
 
                         <figure className={isSelected(1)? classes.cardSeleccionada: classes.card}>
@@ -155,36 +155,36 @@ const Index = props => {
                 </Grid>
             </Grid>
             <ThemeProvider theme={ThemeV2}>
-            {selectedTab === 0?
-                <Grid item xs={12} className={classes.tabItem} style={{"overflow":"auto"}}>
-                    <Paper className={classes.paper1} elevation={15}>
-                        <Box paddingLeft={1} paddingRight={1} paddingBottom={3}>
+                {selectedTab === 0?
+                    <Grid item xs={12} className={classes.tabItem} style={{"overflow":"auto"}}>
+                        <Paper className={classes.paper1} elevation={15}>
+                            <Box paddingLeft={1} paddingRight={1} paddingBottom={3}>
                             
                                 <SelectSupplier dataSupplier={dataSupplier} setDataSupplier={setDataSupplier}/>
                             
-                        </Box>
-                        {/* TODO: add supplier  support*/}
-                        <Busqueda dataSupplier={dataSupplier}/>
-                    </Paper>
-                </Grid>
-                :
-                <Grid item xs={12} className={classes.tabItem}>
-                    <Paper className={classes.paper2} elevation={15}>
-                        <Box paddingTop={1} paddingBottom={3}>
-                            <SelectSupplier dataSupplier={dataSupplier} setDataSupplier={setDataSupplier}/>
-                        </Box>
+                            </Box>
+                            {/* TODO: add supplier  support*/}
+                            <Busqueda dataSupplier={dataSupplier}/>
+                        </Paper>
+                    </Grid>
+                    :
+                    <Grid item xs={12} className={classes.tabItem}>
+                        <Paper className={classes.paper2} elevation={15}>
+                            <Box paddingTop={1} paddingBottom={3}>
+                                <SelectSupplier dataSupplier={dataSupplier} setDataSupplier={setDataSupplier}/>
+                            </Box>
 
-                        {/* TODO: add supplier support*/}
-                        <Disclaimer dataSupplier={dataSupplier}/>
+                            {/* TODO: add supplier support*/}
+                            <Disclaimer dataSupplier={dataSupplier}/>
 
-                        {/* TODO: add supplier support*/}
-                        <Cifras dataSupplier={dataSupplier}/>
+                            {/* TODO: add supplier support*/}
+                            <Cifras dataSupplier={dataSupplier}/>
 
-                        {/* TODO: add supplier support*/}
-                        <Top dataSupplier={dataSupplier}/>
-                    </Paper>
-                </Grid>
-            }
+                            {/* TODO: add supplier support*/}
+                            <Top dataSupplier={dataSupplier}/>
+                        </Paper>
+                    </Grid>
+                }
             </ThemeProvider>
         </Grid>
 

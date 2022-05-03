@@ -48,12 +48,12 @@ function EnhancedTableHead(props) {
                             //onClick={createSortHandler(row.id)}
                             className={classes.tsl}
                         >*/}
-                            {row.label}
-                            {orderBy === row.id ? (
-                                <span className={classes.visuallyHidden}>
-                                    {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
-                                </span>
-                            ) : null}
+                        {row.label}
+                        {orderBy === row.id ? (
+                            <span className={classes.visuallyHidden}>
+                                {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
+                            </span>
+                        ) : null}
                         {/*</TableSortLabel>*/}
                     </TableCell>
                 ))}
@@ -285,6 +285,11 @@ export default function EnhancedTable(props) {
                         </Table>
                     </div>
                     <TablePagination
+                        sx={{
+                            ".MuiTablePagination-select": {
+                                color: 'black'
+                            }
+                        }}
                         rowsPerPageOptions={[5, 10, 25]}
                         component="div"
                         count={total}//{rows.length}
