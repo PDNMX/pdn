@@ -82,13 +82,16 @@ const Busqueda = props => {
             search();
         }
     }, [
+        state.loading
+        /*
         state.pagination.pageSize,
         state.pagination.page,
         state.buyer_id,
         state.procurementMethod,
         state.cycle
-        //state.inputText, // la búsqueda se ejecuta hasta dar click en el boton 'BUSCAR'
-        //state.supplierName // la búsqueda se ejecuta hasta dar click en el boton 'BUSCAR'
+        state.inputText, // la búsqueda se ejecuta hasta dar click en el boton 'BUSCAR'
+        state.supplierName // la búsqueda se ejecuta hasta dar click en el boton 'BUSCAR'
+        */
     ]);
 
     /* // Pendiente para seleccionar el proveedor de datos
@@ -204,6 +207,13 @@ const Busqueda = props => {
         });
     }
 
+    const handleSearch = () => {
+        setState({
+            ...state,
+            loading: true
+        });
+    };
+
     //buscar
     const search = async () => {
 
@@ -276,7 +286,7 @@ const Busqueda = props => {
                                 supplierName={state.supplierName}
                                 setInputText={setInputText}
                                 inputText={state.inputText}
-                                search={search}
+                                search={handleSearch}
                                 setCycle={setCycle}
                                 cycles={state.cycles}
                                 cycle={state.cycle}
