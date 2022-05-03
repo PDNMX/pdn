@@ -14,6 +14,7 @@ const styles = theme => ({
 
 const Busqueda = props => {
     const [state, setState] = React.useState({
+        dataSupplier: "SHCP",
         inputText: "",
         pagination: {
             pageSize: 10,
@@ -32,7 +33,7 @@ const Busqueda = props => {
 
     React.useEffect(() => {
         //fetch data
-        const supplier_id = props.dataSupplier;
+        const supplier_id = state.dataSupplier;
 
         const _buyers = () => axios({
             url: process.env.REACT_APP_S6_BACKEND +'/api/v1/buyers',
@@ -94,13 +95,20 @@ const Busqueda = props => {
         */
     ]);
 
-    /* // Pendiente para seleccionar el proveedor de datos
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if (this.props.dataSupplier !== prevProps.dataSupplier){
-            //alert(this.props.dataSupplier);
-            this.search(false);
+    React.useEffect(() => {
+        /**
+         * Cambiar dataSupplier
+         * TODO: obtener las listas de buyers y cycles
+         * TODO: limpiar state, asignar dataSupplier y ejecutar búsqueda inicial
+        */
+
+        if (props.dataSupplier && props.dataSupplier !== state.dataSupplier){
+            console.log(`Setting data supplier to => ${props.dataSupplier}`);
+            //setState({});
         }
-    }*/
+    },[
+        props.dataSupplier
+    ]);
 
     const handleChangeRowsPerPage = (pageSize) => {
         setState( {
@@ -242,7 +250,7 @@ const Busqueda = props => {
             body.cycle = state.cycle;
         }
 
-        const supplier_id = props.dataSupplier;
+        const supplier_id = state.dataSupplier;
 
         //console.log(body);
         try {
