@@ -15,6 +15,8 @@ import LoginIcon from "../../assets/rediseno/ico_login.svg";
 import legislacion_icono from "../../assets/rediseno/ico_interconexion_legislacion.svg";
 import mapa_s2s3_icono from "../../assets/rediseno/ico_interconexion_s2-s3.svg";
 
+import ReactGA from "react-ga";
+
 const styles = theme => ({
     root: {
         flexGrow: 1,
@@ -155,19 +157,20 @@ const BannerMobile = props => {
                         <Collapse in={dropDownInterconexion} timeout="auto" unmountOnExit>
                             <List dense={true} component="div">
                                 <ListItem button component={Button} href={'https://www.plataformadigitalnacional.org/mapa-sla/'} key={'legislacion'}
-                                          className={classes.nested}>
+                                          className={classes.nested} onClick={()=>ReactGA.pageview('/mapa-sla')}>
                                     <img src={legislacion_icono} alt={'Legislación'} className={classes.iconSistemas}/>
                                     <Typography color={'#b2bfc4'}>{'Legislación'}</Typography>
                                 </ListItem>
                                 <ListItem button component={Button} href={'https://www.plataformadigitalnacional.org/mapa-avance/'} key={'mapa'}
-                                          className={classes.nested}>
+                                          className={classes.nested} onClick={()=>ReactGA.pageview('/mapa-avance')}>
                                     <img src={mapa_s2s3_icono} alt={''} className={classes.iconSistemas}/>
                                     <Typography color={'#b2bfc4'}>{'Sistemas 2 y 3'}</Typography>
                                 </ListItem>
                             </List>
                         </Collapse>
                         <MenuItem className={classes.menuItem} component={Button}
-                                  href="https://mda.plataformadigitalnacional.org/">
+                                  href="https://mda.plataformadigitalnacional.org/"
+                                  onClick={()=>ReactGA.pageview('/mda')}>
                             <Typography style={{width:'100%'}}>MDA</Typography><img src={MDA_logo} alt="Mercado Digital Anticorrupción" className={classes.icon}/>
                         </MenuItem>
                     </Menu>
