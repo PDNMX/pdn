@@ -6,11 +6,12 @@ import { Link as RouterLink } from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
 import css from './cssFooter';
 
+import ReactGA from "react-ga";
+
 const useStyles = makeStyles(css);
 
 const CenterFooter = props => {
   const classes = useStyles();
-
   return (
     <Grid container className={classes.centerFoot}>
       <Grid item xs={12} className={classes.centerFoot_padding}>
@@ -22,12 +23,12 @@ const CenterFooter = props => {
                   <strong>Sistemas PDN</strong>
                 </Typography> */}
                 <Typography variant='subtitle1'>
-                  <Link href='https://www.plataformadigitalnacional.org/mapa-sla/' target='_blank' underline='none' className={classes.enlaces}>
+                  <Link href='https://www.plataformadigitalnacional.org/mapa-sla/' target='_blank' underline='none' className={classes.enlaces} onClick={()=>ReactGA.pageview('/mapa-sla')}>
                     Avances de Interconexión
                   </Link>
                 </Typography>
                 <Typography variant='subtitle1'>
-                  <Link href='https://mda.plataformadigitalnacional.org/' target='_blank' underline='none' className={classes.enlaces}>
+                  <Link href='https://mda.plataformadigitalnacional.org/' target='_blank' underline='none' className={classes.enlaces} onClick={()=>ReactGA.pageview('/mda')}>
                     Mercado Digital Anticorrupción
                   </Link>
                 </Typography>
@@ -46,12 +47,12 @@ const CenterFooter = props => {
                   </RouterLink>
                 </Typography>
                 <Typography variant='subtitle1'>
-                  <Link href='https://www.youtube.com/channel/UCJ0nWmB2-ADfn95r5cjmLJA/' target='_blank' underline='none' className={classes.enlaces}>
+                  <Link href='https://www.youtube.com/channel/UCJ0nWmB2-ADfn95r5cjmLJA/' target='_blank' underline='none' className={classes.enlaces} onClick={()=>ReactGA.event({ category: 'youtube-pdn', action: 'click' })}>
                     Videos
                   </Link>
                 </Typography>
                 <Typography variant='subtitle1'>
-                  <Link href='https://drive.google.com/drive/folders/1t_vGUfagr75TAZ8-E4NZfL-fU0BcsPlZ' target='_blank' underline='none' className={classes.enlaces}>
+                  <Link href='https://drive.google.com/drive/folders/1t_vGUfagr75TAZ8-E4NZfL-fU0BcsPlZ' target='_blank' underline='none' className={classes.enlaces} onClick={()=>ReactGA.event({ category: 'boletines-prensa', action: 'click' })}>
                     Boletines y prensa
                   </Link>
                 </Typography>

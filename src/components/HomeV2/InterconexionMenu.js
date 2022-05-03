@@ -4,6 +4,7 @@ import {Typography} from "@mui/material";
 import legislacion_icono from "../../assets/rediseno/ico_interconexion_legislacion.svg";
 import mapa_s2s3_icono from "../../assets/rediseno/ico_interconexion_s2-s3.svg";
 import Box from "@mui/material/Box";
+import ReactGA from "react-ga";
 
 const styles = theme => ({
     root: {
@@ -63,7 +64,7 @@ const InterconexionMenu = props => {
                 justifyContent: 'center'
             }}
         >
-            <a className={classes.link} href={'https://www.plataformadigitalnacional.org/mapa-sla/'}>
+            <a className={classes.link} href={'https://www.plataformadigitalnacional.org/mapa-sla/'} onClick={()=>ReactGA.pageview('/mapa-sla')}>
 
             <Box className={`${classes.item}`}  sx={{
                 m:1,
@@ -77,7 +78,7 @@ const InterconexionMenu = props => {
                 </div>
             </Box>
             </a>
-            <a className={classes.link} href={'https://www.plataformadigitalnacional.org/mapa-avance/'}>
+            <a className={classes.link} href={'https://www.plataformadigitalnacional.org/mapa-avance/'} onClick={()=>ReactGA.pageview('/mapa-avance')}>
             <Box className={`${classes.item}`}  sx={{
                 m:1,
                 p:2,

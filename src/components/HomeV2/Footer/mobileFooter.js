@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Typography } from '@mui/material';
 import Link from '@mui/material/Link';
 import { Link as RouterLink } from 'react-router-dom';
-
+import ReactGA from "react-ga";
 // icons
 import icon_youtube from '../../../assets/footer/ico_youtube.svg';
 import icon_twitter from '../../../assets/footer/ico_twitter.svg';
@@ -16,6 +16,8 @@ import logoPDN from '../../../assets/footer/logotipo_pdn.svg';
 import { makeStyles } from '@mui/styles';
 import css from './cssFooter';
 const useStyles = makeStyles(css);
+
+
 
 const MobileFooter = props => {
   const classes = useStyles();
@@ -31,14 +33,14 @@ const MobileFooter = props => {
         </Grid>
         <Grid item>
           <Typography variant='subtitle1'>
-            <Link href='https://drive.google.com/drive/folders/1t_vGUfagr75TAZ8-E4NZfL-fU0BcsPlZ' target='_blank' underline='none' className={classes.linkMobile}>
+            <Link href='https://drive.google.com/drive/folders/1t_vGUfagr75TAZ8-E4NZfL-fU0BcsPlZ' target='_blank' underline='none' className={classes.linkMobile} onClick={()=>ReactGA.event({ category: 'boletines-prensa', action: 'click' })}>
               Boletines y prensa
             </Link>
           </Typography>
         </Grid>
         <Grid item>
           <Typography variant='subtitle1'>
-            <Link href='https://www.youtube.com/channel/UCJ0nWmB2-ADfn95r5cjmLJA/' target='_blank' underline='none' className={classes.linkMobile}>
+            <Link href='https://www.youtube.com/channel/UCJ0nWmB2-ADfn95r5cjmLJA/' target='_blank' underline='none' className={classes.linkMobile} onClick={()=>ReactGA.event({ category: 'youtube-pdn', action: 'click' })}>
               Videos
             </Link>
           </Typography>

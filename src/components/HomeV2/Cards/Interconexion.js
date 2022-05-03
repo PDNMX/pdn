@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import { CardHeader, Grid } from '@mui/material';
 
 import logo from '../../../assets/CardsHome/logo_interconexion.svg';
-
+import ReactGA from "react-ga";
 import { makeStyles } from '@mui/styles';
 import cssCards from './cssCards.js';
 import ButtonPDN from '../../Compartidos/ButtonPDN';
@@ -28,7 +28,7 @@ const CardInterconexion = props => {
       </CardContent>
       <CardActions>
         <Grid container direction={'row-reverse'}>
-          <ButtonPDN text={''} href={'https://www.plataformadigitalnacional.org/mapa-avance/'}>
+          <ButtonPDN text={''} href={'https://www.plataformadigitalnacional.org/mapa-avance/'} onClick={()=>ReactGA.pageview('/mapa-avance')}>
             CONOCE MÁS
           </ButtonPDN>
         </Grid>

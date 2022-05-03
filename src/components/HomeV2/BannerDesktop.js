@@ -8,9 +8,10 @@ import Mesa from "../../assets/rediseno/ico_mesa-ayuda.svg";
 import MDA from "../../assets/rediseno/ico_mda.svg";
 import Sistemas from "../../assets/rediseno/ico_sistemas_f.svg";
 import Interconexion from "../../assets/rediseno/ico_interconexion.svg";
-import LoginIcon from "../../assets/rediseno/ico_login.svg";
+//import LoginIcon from "../../assets/rediseno/ico_login.svg";
 import SistemasMenu from "./SistemasMenu";
 import InterconexionMenu from "./InterconexionMenu";
+import ReactGA from "react-ga";
 
 const styles = theme => ({
     root: {
@@ -142,7 +143,9 @@ const BannerDesktop = props => {
                             <Grid item className={classes.opc}>
                                 <a href="https://mda.plataformadigitalnacional.org/"
                                    underline="none"
-                                   className={classes.link}>
+                                   className={classes.link}
+                                   onClick={()=>ReactGA.pageview('/mda')}
+                                   >
                                     <img
                                         src={MDA}
                                         className={classes.icon}

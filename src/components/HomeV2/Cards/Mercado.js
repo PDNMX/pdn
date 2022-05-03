@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import { CardHeader, Grid } from '@mui/material';
 
 import logo from '../../../assets/CardsHome/logo_mda.svg';
-
+import ReactGA from "react-ga";
 import { makeStyles } from '@mui/styles';
 import cssCards from './cssCards.js';
 import ButtonPDN from '../../Compartidos/ButtonPDN';
@@ -26,7 +26,7 @@ const CardMercardo = props => {
       </CardContent>
       <CardActions>
         <Grid container direction={'row-reverse'}>
-          <ButtonPDN text={''} href={'https://mda.plataformadigitalnacional.org/'}>
+          <ButtonPDN text={''} href={'https://mda.plataformadigitalnacional.org/'} onClick={()=>ReactGA.pageview('/mda')}>
             CONOCE MÁS
           </ButtonPDN>
         </Grid>

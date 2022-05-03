@@ -7,10 +7,7 @@ import Fab from '@mui/material/Fab';
 import MenuBookTwoToneIcon from '@mui/icons-material/MenuBookTwoTone';
 
 import Busqueda from './busqueda'
-import useAnalyticsEventTracker from '../useAnalyticsEventTracker';
-
-//import zIndex from '@mui/material/styles/zIndex';
-
+import ReactGA from "react-ga";
 const useStyles = makeStyles((theme) => ({
     drawerPaper: {
       width: '25%',
@@ -37,14 +34,14 @@ export default function TemporaryDrawer() {
   const classes = useStyles();
   const [state, setState] = React.useState(false);
 
-  const gaEventTracker = useAnalyticsEventTracker('inicio');
-
   const toggleDrawer = (open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
     setState(open);
-    gaEventTracker('glosario');
+    if (open == true){
+      ReactGA.event({ category: 'glosario', action: 'click' })
+    }
   };
 
   return (

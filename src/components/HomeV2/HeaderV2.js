@@ -7,6 +7,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import GrainIcon from "@mui/icons-material/Grain";
 import {useTheme} from "@emotion/react";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import ReactGA from "react-ga";
 
 // FIXME checkout https://mui.com/components/use-media-query/#migrating-from-withwidth
 // const withWidth = () => (WrappedComponent) => (props) => <WrappedComponent {...props} width="xs"/>;

@@ -4,6 +4,7 @@ import {withStyles} from "@mui/styles";
 import BlogCard from "./BlogCard";
 import icon_blog from "../../../assets/rediseno/ico_blog.svg";
 import axios from "axios";
+import ReactGA from "react-ga";
 
 const styles = theme => ({
     root:{
@@ -73,7 +74,7 @@ const BlogComponent = props => {
 
             {
                 posts.map((p, i) => {
-                    return <BlogCard key={i} post={p}/>
+                    return <BlogCard key={i} post={p} />
                 })
             }
 
@@ -81,6 +82,7 @@ const BlogComponent = props => {
                 <Button variant="contained"
                         className={classes.button}
                         href="https://www.plataformadigitalnacional.org/blog"
+                        onClick={()=>ReactGA.pageview('/blog')}
                 >
                     Conoce más
                 </Button>
