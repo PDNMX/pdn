@@ -6,6 +6,8 @@ import IconButton from '@mui/material/IconButton';
 import DownloadIcon from '@mui/icons-material/CloudDownload';
 import PropTypes from "prop-types";
 
+import ReactGA from "react-ga";
+
 const styles = theme =>  ({
     root: {
         flexGrow:1,
@@ -30,7 +32,7 @@ class Descarga extends React.Component{
 
     render() {
 
-        const {classes,url} = this.props;
+        const {classes,url, tipoGA} = this.props;
         return (
             <div className={classes.root}>
 
@@ -38,7 +40,7 @@ class Descarga extends React.Component{
                     <Grid item xs={12} align="center">
                         <Typography className={classes.descarga} variant="h5"> Descarga todos los datos</Typography>
                         <Typography className={classes.jsonLabel} variant="h6"> {"{ JSON }"}</Typography>
-                        <IconButton href={url} target="_blank" size="large">
+                        <IconButton href={url} target="_blank" size="large" onClick={()=>ReactGA.event({ category: tipoGA, action: 'click' })}>
                             <DownloadIcon className={classes.iconDownload}/>
                         </IconButton>
                     </Grid>

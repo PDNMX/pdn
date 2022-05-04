@@ -15,6 +15,8 @@ import DetalleServidorSancionado from "./DetalleServidorSancionado";
 import { ThemeProvider } from '@mui/material/styles';
 import ThemeV2 from "../../../ThemeV2";
 
+import ReactGA from "react-ga";
+
 const axios = require('axios');
 
 const styles = theme => ({
@@ -625,7 +627,11 @@ class BusquedaServidor extends React.Component {
                         </Grid>
                         <Grid item xs={12} md={1} >
                             <Button variant="contained" color="secundario" className={classes.button}
-                                    onClick={() => this.handleSearchPrevios()}>
+                                    onClick={() => {
+                                        this.handleSearchPrevios();
+                                        ReactGA.event({ category: 'busqueda-s3SP', action: 'click' });
+                                    }}>
+                                        
                                 Buscar
                             </Button>
                         </Grid>

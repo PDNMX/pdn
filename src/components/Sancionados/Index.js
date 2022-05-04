@@ -14,6 +14,7 @@ import Dashboard2 from "./dashboard/Particulares/Dashboard";
 import classNames from 'classnames';
 import bgimg from "../../assets/rediseno/fondo_cruces.png";
 import pdnRoutes from "../../routes/index";
+import ReactGA from "react-ga";
 
 const styles = theme => ({
     root: {
@@ -117,7 +118,11 @@ const Index = ({classes}) => {
                             </Typography>
                         </Grid>
                         <Grid item md={3} xs={12}
-                              onClick={() => setIdContent(3)}>
+                              onClick={() => {
+                                setIdContent(3);
+                                ReactGA.event({ category: 'visor-s3SP', action: 'click' });
+                              }}  
+                        >
                             <figure className={classNames(idContent !== 3 ? classes.card : classes.cardSeleccionada)}>
                                 <img src={img3} alt="Visor de datos (Servidores públicos sancionados)"
                                      className={classes.image}/>
@@ -129,7 +134,12 @@ const Index = ({classes}) => {
                             </Typography>
                         </Grid>
                         <Grid item md={3} xs={12}
-                              onClick={() => setIdContent(4)}>
+                              onClick={() => {
+                                setIdContent(4);
+                                ReactGA.event({ category: 'visor-s3P', action: 'click' });
+                              }}  
+                              
+                        >
                             <figure className={classNames(idContent !== 4 ? classes.card : classes.cardSeleccionada)}>
                                 <img src={img4} alt="Visor de datos (Particulares sancionados)"
                                      className={classes.image}/>

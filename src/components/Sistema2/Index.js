@@ -14,6 +14,8 @@ import pdnRoutes from "../../routes/index";
 import { ThemeProvider } from '@mui/material/styles';
 import ThemeV2 from '../../ThemeV2';
 
+import ReactGA from "react-ga";
+
 const styles = theme => ({
     root: {
         flexGrow: 1,
@@ -136,7 +138,12 @@ const Index = props => {
                             </Typography>
                         </Grid>
 
-                        <Grid item md={4} xs={12} onClick={() => setContentId(3)}>
+                        <Grid item md={4} xs={12} 
+                            onClick={() => {
+                                setContentId(3);
+                                ReactGA.event({ category: 'visor-s2', action: 'click' });
+                              }}
+                        >
 
                             <figure className={contentId !== 3 ? classes.card : classes.cardSeleccionada}>
                                 <img src={img3} alt="Visor de datos" className={classes.image}/>
