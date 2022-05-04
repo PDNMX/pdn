@@ -9,6 +9,7 @@ import Radio from "@mui/material/Radio";
 import TipoProcedimiento from "./TipoProcedimiento";
 import { ThemeProvider } from '@mui/material/styles';
 import themeV2 from "../../ThemeV2";
+import ReactGA from "react-ga";
 
 const styles = theme => ({
     root: {
@@ -169,7 +170,12 @@ const EntradasBuscador = props => {
                         Limpiar
                     </Button>
 
-                    <Button variant="contained" color="secundario" className={classes.button} onClick={() => buscar()}>
+                    <Button variant="contained" color="secundario" className={classes.button} 
+                            onClick={() => {
+                                buscar();
+                                ReactGA.event({ category: 'busqueda-s2', action: 'click' });
+                              }}
+                    >
                         Buscar
                     </Button>
                 </Grid>

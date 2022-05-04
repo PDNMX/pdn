@@ -532,7 +532,7 @@ const BuscadorS2  =  props => {
         </Paper>
 
         <Box paddingTop={8} paddingBottom={8}>
-            <Descarga url={process.env.REACT_APP_BULK_S2}/>
+            <Descarga url={process.env.REACT_APP_BULK_S2} tipoGA={'bulk-s2'}/>
         </Box>
 
         {state.loading &&

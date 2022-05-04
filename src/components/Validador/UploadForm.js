@@ -13,6 +13,7 @@ import localize from "ajv-i18n";
 import Parser from "swagger-parser";
 import withStyles from '@mui/styles/withStyles';
 import PropTypes from "prop-types";
+import ReactGA from "react-ga";
 
 const styles = (theme) => ({
   root: {
@@ -98,6 +99,7 @@ class UploadForm extends React.Component {
     const { formValues, formValidity } = this.state;
     console.log(formValues);
     if (Object.values(formValidity).every(Boolean)) {
+      ReactGA.event({ category: 'validador1', action: 'click' });
       let file = this.state.formValues.uploadJson;
       /* console.log(file) */
       let reader = new FileReader();

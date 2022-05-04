@@ -12,6 +12,7 @@ import makeStyles from '@mui/styles/makeStyles';
 import Ordenamiento from './Ordenamiento';
 import style from './style';
 import { withStyles } from '@mui/styles';
+import ReactGA from "react-ga";
 const useStyles = makeStyles(style);
 
 const CustomTypography = withStyles(theme => ({
@@ -358,6 +359,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                 color='secundario'
                 onClick={e => {
                   handlerFind();
+                  ReactGA.event({ category: 'busqueda-s1', action: 'click' });
                 }}
                 disabled={btnSearch}
               >

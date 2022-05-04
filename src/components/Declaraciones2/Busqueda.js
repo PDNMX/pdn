@@ -14,6 +14,7 @@ import scrollToComponent from 'react-scroll-to-component';
 import ActiveResultProv from './ActiveResultProv';
 import Descarga from '../Compartidos/Descarga';
 import MantenimentResultProv from './MantenimentResultProv';
+import ReactGA from "react-ga";
 
 class Busqueda extends React.Component {
   defaultSelect = [
@@ -564,7 +565,7 @@ class Busqueda extends React.Component {
         {/*DESCARGA*/}
         <Grid container spacing={0} justifyContent='center'>
           <Grid item xs={12} className={classes.itemD}>
-            <Descarga url={process.env.REACT_APP_S1_BULK} />
+            <Descarga url={process.env.REACT_APP_S1_BULK} tipoGA={'bulk-s1'}/>
           </Grid>
         </Grid>
       </div>

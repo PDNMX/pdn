@@ -5,6 +5,7 @@ import InputLabel from "@mui/material/InputLabel";
 //import NativeSelect from "@mui/material/NativeSelect";
 //import InputBase from "@mui/material/InputBase";
 import {Box, Grid, Select, MenuItem, TextField, Button } from '@mui/material';
+import ReactGA from "react-ga";
 
 const styles = theme => ({
     root: {
@@ -195,7 +196,12 @@ const SearchControls = props => {
                             Limpiar
                         </Button>
 
-                        <Button variant="contained" color="secundario" className={classes.button} onClick={props.search}>
+                        <Button variant="contained" color="secundario" className={classes.button} 
+                                onClick={e => {
+                                    props.search(e.target.value);
+                                    ReactGA.event({ category: 'busqueda-s6', action: 'click' });
+                                  }}
+                        >
                             Buscar
                         </Button>
                     </Box>
