@@ -6,7 +6,7 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import Grid from "@mui/material/Grid";
-import {Typography} from "@mui/material";
+import { Typography} from "@mui/material";
 import TableHead from "@mui/material/TableHead";
 import IconSubdirectory from "@mui/icons-material/SubdirectoryArrowRight";
 import Tooltip from "@mui/material/Tooltip";
@@ -31,7 +31,7 @@ const styles = theme => ({
         color: theme.palette.secundario.dark,
         cursor: 'pointer'
     },
-    tableHead: {
+    tableCell: {
         color: theme.palette.text.main
     },
     tablePagination: {
@@ -43,7 +43,12 @@ const styles = theme => ({
     },
     noconectado:{
         color: theme.palette.greyColor
-    }
+    },
+    row:{
+        cursor: 'pointer'
+    },
+    tableBody: {backgroundColor: '#f2f2f2'},
+    tableHead: {backgroundColor: '#0d3b49'}
 });
 
 function Previos({data, classes, handleChangeSujetoObligado}) {
@@ -73,51 +78,41 @@ function Previos({data, classes, handleChangeSujetoObligado}) {
                     {data && data.length > 0 &&
                     <div className={classes.container}>
                         <Table className={classes.table}>
-                            <TableHead style={{backgroundColor: '#0d3b49'}}>
+                            <TableHead className={classes.tableHead}>
                                 <TableRow>
-                                    <TableCell align="left" variant={"head"} className={classes.tableHead}><Typography
+                                    <TableCell align="left" variant={"head"} className={classes.tableCell}><Typography
                                         variant={"body1"}>Nivel</Typography></TableCell>
-                                    <TableCell align="left" variant={"head"} className={classes.tableHead}><Typography
+                                    <TableCell align="left" variant={"head"} className={classes.tableCell}><Typography
                                         variant={"body1"}> Proveedor de información</Typography></TableCell>
-                                    <TableCell align="center" variant={"head"} className={classes.tableHead}><Typography
+                                    <TableCell align="center" variant={"head"} className={classes.tableCell}><Typography
                                         variant={"body1"}>Estatus</Typography></TableCell>
-                                    <TableCell align="center" variant={"head"} className={classes.tableHead}><Typography
+                                    <TableCell align="center" variant={"head"} className={classes.tableCell}><Typography
                                         variant={"body1"}>Número de registros</Typography></TableCell>
-                                    <TableCell align="center" variant={"head"} className={classes.tableHead}><Typography
-                                        variant={"body1"}>Acciones</Typography></TableCell>
                                 </TableRow>
                             </TableHead>
-                            <TableBody style={{backgroundColor: '#f2f2f2'}}>
+                            <TableBody className={classes.tableBody}>
                                 {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                     .map(row => (
-                                        <TableRow key={row.supplier_id} hover>
+                                        <TableRow key={row.supplier_id} hover
+                                                  className={ row.error || row.totalRows <= 0 ? '': classes.row}
+                                                  onClick={() => {
+                                                      if (!row.error && row.totalRows >0){
+                                                          handleChangeSujetoObligado(row.supplier_id);
+                                                      }
+                                                  }}
+                                        >
                                             <TableCell align="left">{row.levels ? row.levels.join(',') : ''}</TableCell>
                                             <TableCell align="left">{row.supplier_name}</TableCell>
                                             <TableCell align="center">
-                                                <Tooltip title={!row.error ? "Disponible" : "No disponible"}>
+                                                <Tooltip title={!row.error ? "Disponible" : "Fuera de servicio"}>
                                                     <IconSunny className={!row.error ? classes.conectado : classes.noconectado}/>
                                                 </Tooltip>
                                             </TableCell>
                                             <TableCell align="center">
                                                 {("undefined" === typeof (row["totalRows"])) &&
-                                                "No disponible"
+                                                "Fuera de servicio"
                                                 }
                                                 {row.totalRows}
-                                            </TableCell>
-                                            <TableCell align="center">
-                                                {row.totalRows > 0 &&
-                                                <Tooltip title={"Ver"}>
-                                                    <IconSubdirectory className={classes.iconoVer} onClick={() => {
-                                                        handleChangeSujetoObligado(row.supplier_id);
-                                                    }}/>
-                                                </Tooltip>
-                                                }
-                                                {("undefined" === typeof (row["totalRows"])) &&
-                                                "No disponible"
-                                                }
-                                                {(row.totalRows === 0) &&
-                                                "-"
-                                                }
                                             </TableCell>
                                         </TableRow>
                                     ))}
@@ -126,7 +121,7 @@ function Previos({data, classes, handleChangeSujetoObligado}) {
                                 <TableRow>
                                     <TablePagination
                                         className={classes.tablePagination}
-                                        colSpan={5}
+                                        colSpan={4}
                                         rowsPerPageOptions={[5, 10, 15]}
                                         count={data.length}
                                         rowsPerPage={rowsPerPage}
