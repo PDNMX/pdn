@@ -14,6 +14,7 @@ import pdnRoutes from "../../../routes";
 import HeaderV2 from "../../HomeV2/HeaderV2";
 import bgimg from "../../../assets/rediseno/fondo_cruces.png";
 import ButtonPDN from "../../Compartidos/ButtonPDN";
+import ProtocoloConexion from '../ProtocoloConexion';
 
 const styles = theme => ({
     list: {
@@ -89,6 +90,11 @@ const styles = theme => ({
         wordBreak: "break-all",
     }
 });
+
+const protocolos=[
+    {nombre:'Servidores Sancionados',url:'https://drive.google.com/file/d/1in6bHq8rqeTl_v48BpByDjgxeF2fIIve/view'},
+    {nombre:'Particulares Sancionados',url:'https://drive.google.com/file/d/15mPsTLuW6u97cRMxBaEP8YCkAZnX32v-/view'}
+    ];
 
 const Sancionados = props => {
     const {classes} = props;
@@ -169,8 +175,8 @@ const Sancionados = props => {
                                 </ButtonPDN>
                             </Typography>
 
-                            
-                            <Typography variant='h5' paragraph>
+                            <ProtocoloConexion urlPlan={protocolos} />
+                            {/* <Typography variant='h5' paragraph>
                                 Protocolo de conexión
                             </Typography>
                             <Typography paragraph>
@@ -203,7 +209,7 @@ const Sancionados = props => {
                                 component={'span'}><b>Validador</b> </Typography></RouterLink>
                                 que sirve de apoyo para la validación del cumplimiento de los esquemas de datos de las
                                 diferentes API's.
-                            </Typography>
+                            </Typography> */}
 
                             <Divider className={classes.divider}/>
 

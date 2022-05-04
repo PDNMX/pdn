@@ -5,11 +5,11 @@ import Estandar from "./DescripcionEstandar";
 import Licencia from "../Licencia";
 import Implementacion from "./Implementacion";
 import Herramientas from "../Herramientas";
-import ProcoloConexion from "../ProcoloConexion";
 import bgimg from "../../../assets/rediseno/fondo_cruces.png";
 import pdnRoutes from "../../../routes";
 import HeaderV2 from "../../HomeV2/HeaderV2";
 import ButtonPDN from "../../Compartidos/ButtonPDN";
+import ProtocoloConexion from '../ProtocoloConexion';
 
 const styles = theme => ({
     root: {
@@ -134,8 +134,7 @@ const ServidoresIntervienen = props => {
                                 </ButtonPDN>
                             </Typography>
 
-                            <ProcoloConexion urlPlan = {'https://drive.google.com/file/d/1ooAuvc1kNMiftE_R1yRglC6OK9bIIx8U/view'} apiName={'Servidores que intervienen en' +
-                                ' procedimientos de contratación'}/>
+                            <ProtocoloConexion urlPlan = {'https://drive.google.com/file/d/1ooAuvc1kNMiftE_R1yRglC6OK9bIIx8U/view'} />
 
 
                             <Divider className={classes.divider}/>
