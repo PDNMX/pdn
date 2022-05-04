@@ -23,7 +23,7 @@ const CenterFooter = props => {
                   <strong>Sistemas PDN</strong>
                 </Typography> */}
                 <Typography variant='subtitle1'>
-                  <Link href='https://www.plataformadigitalnacional.org/mapa-sla/' target='_blank' underline='none' className={classes.enlaces} onClick={()=>ReactGA.pageview('/mapa-sla')}>
+                  <Link href='https://www.plataformadigitalnacional.org/mapa-avance/' target='_blank' underline='none' className={classes.enlaces} onClick={()=>ReactGA.pageview('/mapa-avance')}>
                     Avances de Interconexión
                   </Link>
                 </Typography>
