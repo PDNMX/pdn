@@ -16,6 +16,7 @@ import FichaServidorPublico from "./FichaServidorPublico";
 
 import columnData from './column_data';
 import Descarga from "../Compartidos/Descarga";
+import Previos from "../Compartidos/Previos";
 
 const styles = theme => ({
     root: {},
@@ -441,7 +442,10 @@ const BuscadorS2  =  props => {
                     />
                     <div className={classes.container}>
                         <Collapse in={showSummaryPanel}>
-                            <TablaResumen summaryData={state.summaryData} handleSearchSupplier={handleSearchSupplier}/>
+                            <Previos data={state.summaryData} handleChangeSujetoObligado={handleSearchSupplier}/>
+                            {/*
+                             <TablaResumen summaryData={state.summaryData} handleSearchSupplier={handleSearchSupplier}/>
+                            */}
                         </Collapse>
                     </div>
                 </Box>
