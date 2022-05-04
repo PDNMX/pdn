@@ -14,7 +14,11 @@ const styles = theme =>  ({
         color: theme.palette.primario.contrastText,
         fontWeight: 500,
         fontSize: '48px',
-        paddingBottom: theme.spacing(6)
+    },
+    jsonLabel: {
+        color: theme.palette.primario.contrastText,
+        fontSize: '48px',
+        paddingBottom: theme.spacing(1)
     },
     iconDownload:{
         color: theme.palette.primario.contrastText,
@@ -33,7 +37,7 @@ class Descarga extends React.Component{
                 <Grid container spacing={0} justifyContent="center">
                     <Grid item xs={12} align="center">
                         <Typography className={classes.descarga} variant="h5"> Descarga todos los datos</Typography>
-
+                        <Typography className={classes.jsonLabel} variant="h6"> {"{ JSON }"}</Typography>
                         <IconButton href={url} target="_blank" size="large">
                             <DownloadIcon className={classes.iconDownload}/>
                         </IconButton>
