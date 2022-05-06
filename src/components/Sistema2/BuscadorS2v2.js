@@ -9,7 +9,7 @@ import Switch from "@mui/material/Switch";
 import Collapse from "@mui/material/Collapse";
 
 import EntradasBuscador from "./EntradasBuscador";
-import TablaResumen from "./TablaResumen";
+//import TablaResumen from "./TablaResumen";
 import EnhancedTableHead from './EnhancedTableHead';
 import AlertaError from "./AlertaError";
 import FichaServidorPublico from "./FichaServidorPublico";
@@ -238,6 +238,7 @@ const BuscadorS2  =  props => {
 
     const handleCleanAll = () => {
         setState({
+            ...state,
             results: null,
             summaryData : null,
             elementoSeleccionado: null,
