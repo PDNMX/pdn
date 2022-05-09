@@ -14,6 +14,7 @@ import HeaderV2 from '../../HomeV2/HeaderV2';
 import styles from '../../Declaraciones2/style';
 import EspecificacionesTecnicas from './EspecificacionesTecnicas';
 import ProtocoloConexion from '../ProtocoloConexion';
+import ServiceAgreement from '../ServiceAgreement';
 
 // const styles1 = theme => ({
 //   root: {
@@ -96,6 +97,10 @@ class Declaraciones extends React.Component {
                 <Divider className={classes.divider} />
 
                 <ProtocoloConexion urlPlan={'https://drive.google.com/open?id=1HZailvIOV77By1JwQKWXGTungYRBFmHi'} />
+
+                <Divider className={classes.divider} />
+
+                <ServiceAgreement />
 
                 <Divider className={classes.divider} />
 

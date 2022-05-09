@@ -10,6 +10,7 @@ import pdnRoutes from "../../../routes";
 import HeaderV2 from "../../HomeV2/HeaderV2";
 import ButtonPDN from "../../Compartidos/ButtonPDN";
 import ProtocoloConexion from '../ProtocoloConexion';
+import ServiceAgreement from '../ServiceAgreement';
 
 const styles = theme => ({
     root: {
@@ -136,6 +137,10 @@ const ServidoresIntervienen = props => {
 
                             <ProtocoloConexion urlPlan = {'https://drive.google.com/file/d/1ooAuvc1kNMiftE_R1yRglC6OK9bIIx8U/view'} />
 
+
+                            <Divider className={classes.divider}/>
+
+                            <ServiceAgreement />
 
                             <Divider className={classes.divider}/>
 
