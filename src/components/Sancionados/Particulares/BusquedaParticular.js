@@ -81,154 +81,148 @@ const tiposOrdenamiento = [
     {label: 'Descendente', value: 'desc'}
 ]
 
-class BusquedaParticular extends React.Component {
-    constructor(props) {
-        super(props);
-        this.previosRef = React.createRef();
-        this.resultsRef = React.createRef();
-        this.state = {
-            filterData: [],
-            page: 1,
-            rowsPerPage: 10,
-            totalRows: 0,
-            previos: null,
-            panelPrevios: true,
-            error: false,
-            loading: false,
-            busquedaAvanzada: false,
-            //Filtros
-            nombreRazonSocial: '',
-            institucionDependencia: 'any',
-            expediente: '',
-            tipoSancion: [],
-            tipoPersona: 'any',
-            nivel: 'any',
-            campoOrden: 'any',
-            tipoOrden: 'any',
-            institucionesLista: [],
-            elementoSeleccionado: null,
-            proveedor: 'any',
-            proveedoresLista: []
-        };
-    }
+const initialPagination = {
+    page: 1,
+    rowsPerPage: 10,
+    totalRows: 0,
+};
 
-    componentDidMount() {
-        this.loadInstituciones();
-        this.loadProveedores();
-    }
+const initialFilter = {
+    nombreRazonSocial: '',
+    institucionDependencia: 'any',
+    expediente: '',
+    tipoSancion: [],
+    tipoPersona: 'any',
+    nivel: 'any',
+    provider: 'any'
+}
 
-    loadInstituciones = () => {
+const initialSort = {
+    campoOrden: 'any',
+    tipoOrden: 'any',
+};
+function BusquedaParticular ({classes}){
+    const [filterData, setFilterData] = React.useState([]);
+    const [previos, setPrevios] = React.useState(null);
+    const [showPanelPrevios, setShowPanelPrevios] = React.useState(false);
+    const [error, setError] = React.useState(false);
+    const [loading, setLoading] = React.useState(false);
+    const [showAdvancedSearch, setShowAdvancedSearch] = React.useState(false);
+    const [institutionsList, setInstitutionsList] = React.useState([]);
+    const [selectedItem, setSelectedItem] = React.useState(null);
+    const [provider, setProvider] = React.useState('any');
+    const [providersList, setProvidersList] = React.useState([]);
+    const [pagination, setPagination] = React.useState(initialPagination);
+    const [filter, setFilter] = React.useState(initialFilter);
+    const [sort, setSort] = React.useState(initialSort);
+
+    React.useEffect(() => {
+        loadInstitutions();
+        loadProviders();
+    }, []);
+
+    React.useEffect(() => {
+        if (provider !== 'any') {
+            setPagination({...pagination, page: 1});
+            setSelectedItem(null);
+            handleSearch();
+        }
+    }, [provider]);
+
+    React.useEffect(() => {
+        loadInstitutions();
+    }, [filter?.provider])
+
+    const loadInstitutions = () => {
         let instituciconesLista = [];
         let options = {
             url: process.env.REACT_APP_S3P_BACKEND + '/api/v1/entities',
             json: true,
             method: "post",
-            data: {
-
-            }
+            data: {}
         };
-        if (this.state.nivel !== 'any') options.data.nivel_gobierno = this.state.nivel;
-        if (this.state.proveedor !== 'any') options.data.supplier_id = this.state.proveedor;
+        if (filter.nivel !== 'any') options.data.nivel_gobierno = filter.nivel;
+        if (filter.provider !== 'any') options.data.supplier_id = filter.provider;
 
         axios(options)
             .then(data => {
                 data.data.forEach((item, index) => {
                     instituciconesLista.push({value: item.nombre, label: item.nombre, key: index});
                 });
-                this.setState({institucionesLista: instituciconesLista, institucionDependencia: 'any'});
+                setInstitutionsList(instituciconesLista);
+                setFilter({...filter, institucionDependencia: 'any'});
             }).catch(err => {
-            console.log(err);
-            this.setState({error: true})
+            setError(true);
         });
     }
 
-    handleChangeCampo = (varState, event) => {
-        this.setState({
-            [varState]: event ? (event.target ? event.target.value : event.value) : ''
-        }, () => {
-            switch (varState) {
-                case 'nivel':
-                    this.loadInstituciones();
-                    this.loadProveedores();
-                    break;
-                case 'campoOrden':
-                    if (!this.state.tipoOrden) this.setState({tipoOrden: tiposOrdenamiento[0]});
-                    if (!event.target.value) this.setState({tipoOrden: ''})
-                    break;
-                case 'tipoOrden':
-                    if (!this.state.campoOrden && event.target.value) this.setState({
-                        campoOrden: camposOrdenamiento[0]
-                    });
-                    if (!event.target.value) this.setState({campoOrden: ''})
-                    break;
-                case 'proveedor':
-                    this.loadInstituciones();
-                    break;
-                default:
-                    break;
-            }
-        })
+    const loadProviders = () => {
+        let sug = [];
+        let options = {
+            url: process.env.REACT_APP_S3P_BACKEND + '/api/v1/getProviders',
+            json: true,
+            method: "post",
+            data: { }
+        };
+        if(filter.nivel !== 'any') options.data.nivel_gobierno = filter.nivel
+        axios(options)
+            .then(data => {
+                data.data.forEach((provider) => {
+                    sug.push({value: provider.supplier_id, label: provider.supplier_name, key: provider.supplier_id});
+                });
+                setProvidersList(sug);
+                setProvider('any');
+            }).catch(err => {
+            setError(true);
+        });
+    }
+
+    const handleCleanAll = () => {
+        setFilter(initialFilter);
+        setProvidersList([]);
+        setPagination(initialPagination);
+        setSort(initialSort);
+        setFilterData(null);
+        setPrevios([]);
+        setInstitutionsList([]);
+        setSelectedItem(null);
     };
 
-    handleCleanAll = () => {
-        this.setState(
+    const handleSearchPrevios = () => {
+        setLoading(true);
+        setFilterData([]);
+        setSelectedItem(null);
+        setPagination({...pagination, rowsPerPage: 10});
+
+        let body =
             {
-                nombreRazonSocial: "",
-                institucionDependencia: "any",
-                expediente: "",
-                tipoSancion: [],
-                tipoPersona: "any",
-                nivel: "",
-                campoOrden: "any",
-                tipoOrden: "any",
-                filterData: null,
-                previos: null,
-                curp: "",
-                institucionesLista: [],
-                elementoSeleccionado: null,
-                rowsPerPage: 10,
-                proveedoresLista: []
-            }, () => {
-                this.loadInstituciones();
-                this.loadProveedores();
-            })
-    };
-
-    handleSearchPrevios = () => {
-        this.setState({
-            loading: true,
-            filterData: [],
-            elementoSeleccionado: null,
-            rowsPerPage: 10
-        }, () => {
-            let body =
-                {
-                    "query": this.makeFiltros(),
-                    "institucion": this.state.institucionDependencia
-                };
-            if(this.state.nivel !== 'any') body.nivel_gobierno = this.state.nivel;
-            if(this.state.proveedor !== 'any') body.proveedor = this.state.proveedor;
-
-            let options = {
-                method: 'POST',
-                url: process.env.REACT_APP_S3P_BACKEND + '/api/v1/summary',
-                json: true,
-                data: body
+                "query": makeFiltros(),
+                "institucion": filter.institucionDependencia
             };
-            axios(options)
-                .then(res => {
-                    this.setState({previos: res.data, loading: false, error: false, panelPrevios: true}, () => {
-                        this.executeScrollPrevios();
-                    })
-                }).catch(err => {
-                this.setState({loading: false, error: true});
-            });
+        if(filter.nivel !== 'any') body.nivel_gobierno = filter.nivel;
+        if(filter.proveedor !== 'any') body.proveedor = filter.proveedor;
+
+        let options = {
+            method: 'POST',
+            url: process.env.REACT_APP_S3P_BACKEND + '/api/v1/summary',
+            json: true,
+            data: body
+        };
+        axios(options)
+            .then(res => {
+                setPrevios(res.data);
+                setLoading(false);
+                setError(false);
+                setShowPanelPrevios(true);
+            }).catch(err => {
+                setError(true);
+                setLoading(false);
         });
     };
 
-    makeFiltros = () => {
+    const makeFiltros = () => {
         let filtros = {};
-        let {nombreRazonSocial, institucionDependencia, expediente, tipoPersona, tipoSancion} = this.state;
+        let {nombreRazonSocial, institucionDependencia, expediente, tipoPersona, tipoSancion} = filter;
         if (nombreRazonSocial) filtros.nombreRazonSocial = nombreRazonSocial;
         if (expediente) filtros.expediente = expediente;
         if (tipoPersona !== 'any') filtros.tipoPersona = tipoPersona;
@@ -237,128 +231,63 @@ class BusquedaParticular extends React.Component {
         return filtros;
     };
 
-    makeSort = () => {
-        let sort = {};
-        if (this.state.campoOrden !== 'any' && this.state.tipoOrden !== 'any') sort[this.state.campoOrden.value] = this.state.tipoOrden.value;
-        return sort;
+    const makeSort = () => {
+        let sort_ = {};
+        if (sort.campoOrden !== 'any' && sort.tipoOrden !== 'any') sort_[sort.campoOrden.value] = sort.tipoOrden.value;
+        return sort_;
     };
 
-    handleShowPrevios = () => {
-        this.setState({
-            panelPrevios: !this.state.panelPrevios
-        })
-    }
-
-    handleBusquedaAvanzada = () => {
-        this.setState({busquedaAvanzada: !this.state.busquedaAvanzada})
-    }
-
-    handleSearch = () => {
-        this.setState({loading: true}, () => {
-            let body =
-                {
-                    "query": this.makeFiltros(),
-                    "pageSize": this.state.rowsPerPage,
-                    "page": this.state.page,
-                    "supplier_id": this.state.supplier_id,
-                    "sort": this.makeSort()
-                };
-
-            let options = {
-                method: 'POST',
-                url: process.env.REACT_APP_S3P_BACKEND + '/api/v1/search',
-                json: true,
-                data: body
+    const handleSearch = () => {
+        setLoading(true);
+        let body =
+            {
+                "query": makeFiltros(),
+                "pageSize": pagination.rowsPerPage,
+                "page": pagination.page,
+                "supplier_id": provider,
+                "sort": makeSort()
             };
 
-            axios(options)
-                .then(res => {
-                    this.setState({
-                        filterData: res.data.results,
-                        loading: false,
-                        totalRows: res.data.pagination.totalRows,
-                        error: false
-                    }, () => {
-                        this.executeScrollResults();
-                    })
-                }).catch(err => {
-                this.setState({loading: false, error: true});
-            });
-        });
-
-    };
-
-    handleChangeSujetoObligado = (val) => {
-        this.setState({
-            supplier_id: val,
-            page: 1,
-            elementoSeleccionado: null
-        }, () => {
-            this.handleSearch()
-        });
-    };
-
-    handleChangePage = (event, page) => {
-        this.setState({page: page + 1}, () => {
-            this.handleSearch();
-        });
-    };
-
-    handleChangeRowsPerPage = event => {
-        this.setState({rowsPerPage: event.target.value, page: 1}, () => {
-            this.handleSearch();
-        });
-    };
-
-    verDetalle = (event, elemento) => {
-        this.setState({elementoSeleccionado: elemento, panelPrevios: false});
-    };
-
-    hideDetalle = () => {
-        this.setState({elementoSeleccionado: null});
-    };
-
-    loadProveedores = () => {
-        let sug = [];
         let options = {
-            url: process.env.REACT_APP_S3P_BACKEND + '/api/v1/getProviders',
+            method: 'POST',
+            url: process.env.REACT_APP_S3P_BACKEND + '/api/v1/search',
             json: true,
-            method: "post",
-            data: { }
+            data: body
         };
-        if(this.state.nivel !== 'any') options.data.nivel_gobierno = this.state.nivel
+
         axios(options)
-            .then(data => {
-                data.data.forEach((provider) => {
-                    sug.push({value: provider.supplier_id, label: provider.supplier_name, key: provider.supplier_id});
-                });
-                this.setState({proveedoresLista: sug, proveedor: 'any'});
+            .then(res => {
+                setFilterData(res.data.results);
+                setLoading(false);
+                setPagination({...pagination, totalRows: res.data.pagination.totalRows});
+                setError(false);
             }).catch(err => {
-            this.setState({error: true})
+            setLoading(false);
+            setError(true);
         });
-    }
+    };
 
-    executeScrollPrevios = () => this.previosRef.current.scrollIntoView();
+    const handleChangeSujetoObligado = (val) => {
+        setProvider(val);
+    };
 
-    executeScrollResults = () => this.resultsRef.current.scrollIntoView();
+    const handleChangePage = (event, page) => {
+        setPagination({...pagination, page: page + 1});
+    };
 
-    render() {
-        const {classes} = this.props;
-        const {
-            nombreRazonSocial,
-            expediente,
-            institucionDependencia,
-            institucionesLista,
-            nivel,
-            campoOrden,
-            tipoOrden,
-            tipoSancion,
-            tipoPersona,
-            proveedor,
-            proveedoresLista
-        } = this.state;
+    const handleChangeRowsPerPage = event => {
+        setPagination({...pagination, rowsPerPage: event.target.value, page: 1});
+    };
 
-        return (
+    const verDetalle = (event, elemento) => {
+        setSelectedItem(elemento);
+        setShowPanelPrevios(false);
+    };
+
+    const hideDetalle = () => {
+        setSelectedItem(null);
+    };
+            return (
             <ThemeProvider theme={ThemeV2}>
                 <React.Fragment>
                     {/*Buscador*/}
@@ -373,8 +302,8 @@ class BusquedaParticular extends React.Component {
                                     id="search"
                                     label="Nombre / Razón social"
                                     type="search"
-                                    onChange={(e) => this.handleChangeCampo('nombreRazonSocial', e)}
-                                    value={nombreRazonSocial}
+                                    onChange={(e) => setFilter({...filter, nombreRazonSocial: e.target.value})}
+                                    value={filter.nombreRazonSocial}
                                     margin="normal"
                                 />
                             </FormControl>
@@ -385,8 +314,8 @@ class BusquedaParticular extends React.Component {
                                     id="search"
                                     label="Número expediente"
                                     type="search"
-                                    onChange={(e) => this.handleChangeCampo('expediente', e)}
-                                    value={expediente}
+                                    onChange={(e) => setFilter({...filter, expediente: e.target.value})}
+                                    value={filter.expediente}
                                     margin="normal"
                                 />
 
@@ -398,149 +327,73 @@ class BusquedaParticular extends React.Component {
                                 SelectProps={{
                                     multiple: true,
                                     renderValue: selected => selected.map(element => element.label).join(', '),
-                                    onChange: e => this.handleChangeCampo('tipoSancion', e),
-                                    value: tipoSancion
+                                    onChange: e => setFilter({...filter, tipoSancion: e.target.value}),
+                                    value: filter.tipoSancion
                             }}>
                                     {tiposSancion.map(tipo => (
                                         <MenuItem key={tipo.value} value={tipo}>
-                                            <Checkbox checked={tipoSancion.indexOf(tipo) > -1}/>
+                                            <Checkbox checked={filter.tipoSancion.indexOf(tipo) > -1}/>
                                             <ListItemText primary={tipo.label}/>
                                         </MenuItem>
-
                                     ))}
                                 </TextField>
-                                {/* <InputLabel id="tipoSancion-label">Tipo sanción</InputLabel>
-                                <Select label={'Tipo sanción'}
-                                        id="tipoSancion-checkbox"
-                                        multiple
-                                        value={tipoSancion}
-                                        onChange={e => this.handleChangeCampo('tipoSancion', e)}
-                                        input={<OutlinedInput label="Tipo sanción"/>}
-                                        renderValue={
-                                            selected => {
-                                                return selected.map(element => element.label).join(', ')
-                                            }
-                                        }
-
-                                >
-                                    {tiposSancion.map(tipo => (
-                                        <MenuItem key={tipo.value} value={tipo}>
-                                            <Checkbox checked={tipoSancion.indexOf(tipo) > -1}/>
-                                            <ListItemText primary={tipo.label}/>
-                                        </MenuItem>
-
-                                    ))}
-                                </Select> */}
                             </FormControl>
                         </Grid>
                         <Grid item xs={12} md={2}>
                             <FormControl className={classes.formControl}>
-                                <TextField id={'tipoPersona'} name={'tipoPersona'} margin="normal" select label={'Tipo persona'} value={tipoPersona} onChange={(e) => this.handleChangeCampo('tipoPersona', e)}>
+                                <TextField id={'tipoPersona'} name={'tipoPersona'} margin="normal" select label={'Tipo persona'} value={filter.tipoPersona} onChange={(e) => setFilter({...filter, tipoPersona: e.target.value})}>
                                     <MenuItem value="any"><em>Todos</em></MenuItem>
                                     <MenuItem value="F" key={"F"}>Física</MenuItem>
                                     <MenuItem value="M" key={"M"}>Moral</MenuItem>
                                 </TextField>
-                                {/* <InputLabel id="tipoPersona-label">Tipo persona</InputLabel>
-                                <Select value={tipoPersona}
-                                        onChange={(e) => this.handleChangeCampo('tipoPersona', e)}
-                                        label={'Tipo persona'}
-                                >
-                                    <MenuItem value="any"><em>Todos</em></MenuItem>
-                                    <MenuItem value="F" key={"F"}>Física</MenuItem>
-                                    <MenuItem value="M" key={"M"}>Moral</MenuItem>
-                                </Select> */}
                             </FormControl>
                         </Grid>
                         <Grid item md={2} xs={12}>
                             <FormControl className={classes.formControl}>
-                                <TextField id={'nivel'} name={'nivel'} margin="normal" select label={'Nivel'} value={nivel} onChange={(e) => this.handleChangeCampo('nivel', e)}>
+                                <TextField id={'nivel'} name={'nivel'} margin="normal" select label={'Nivel'} value={filter.nivel} onChange={(e) => setFilter({...filter, nivel: e.target.value})}>
                                     <MenuItem value={'any'} ><em>Todos</em></MenuItem>
                                     <MenuItem value={'Federal'} key={'Federal'}>{'Federal'}</MenuItem>
                                     <MenuItem value={'Estatal'} key={'Estatal'}>{'Estatal'}</MenuItem>
                                 </TextField>
-                                {/* <InputLabel id="nivel-label">
-                                    Nivel
-                                </InputLabel>
-                                <Select value={nivel}
-                                        onChange={(e) => this.handleChangeCampo('nivel', e)}
-                                        label={'Nivel'}
-                                >
-                                    <MenuItem value={'any'} ><em>Todos</em></MenuItem>
-                                    <MenuItem value={'Federal'} key={'Federal'}>
-                                        {'Federal'}
-                                    </MenuItem>
-                                    <MenuItem value={'Estatal'} key={'Estatal'}>
-                                        {'Estatal'}
-                                    </MenuItem>
-                                </Select> */}
                             </FormControl>
                         </Grid>
                         <Grid item md={4} xs={12}>
                             <FormControl className={classes.formControl}>
-                                <TextField id={'proveedor'} name={'proveedor'} margin="normal" select label={'Proveedor información'} value={proveedor} onChange={(e) => this.handleChangeCampo('proveedor', e)}>
+                                <TextField id={'proveedor'} name={'proveedor'} margin="normal" select label={'Proveedor información'} value={filter.provider} onChange={(e) => setFilter({...filter, provider: e.target.value})}>
                                     <MenuItem value={'any'} key={-1}><em>Todos</em></MenuItem>
-                                    {proveedoresLista.map((item => {
+                                    {providersList.map((item => {
                                         return <MenuItem value={item.value} key={item.key}>
                                             {item.label}
                                         </MenuItem>
                                     }))}
                                 </TextField>
-                                {/* <InputLabel id="proveedor-label">
-                                    Proveedor información
-                                </InputLabel>
-                                <Select value={proveedor}
-                                        onChange={(e) => this.handleChangeCampo('proveedor', e)}
-                                        label={'Proveedor información'}
-                                >
-                                    <MenuItem value={'any'} key={-1}><em>Todos</em></MenuItem>
-                                    {
-                                        proveedoresLista.map((item => {
-                                            return <MenuItem value={item.value} key={item.key}>
-                                                {item.label}
-                                            </MenuItem>
-                                        }))
-                                    }
-                                </Select> */}
                             </FormControl>
                         </Grid>
                         <Grid item md={6} xs={12}>
                             <FormControl className={classes.formControl}>
-                                <TextField id={'institucionDependencia'} name={'institucionDependencia'} margin="normal" select label={'Institución'} value={institucionDependencia} onChange={(e) => this.handleChangeCampo('institucionDependencia', e)}>
-                                    {institucionesLista.map((item => {
+                                <TextField id={'institucionDependencia'} name={'institucionDependencia'} margin="normal" select label={'Institución'} value={filter.institucionDependencia} onChange={(e) => setFilter({...filter, institucionDependencia: e.target.value})}>
+                                    <MenuItem value = 'any'><em>Todas</em></MenuItem>
+                                    {institutionsList.map((item => {
                                         return <MenuItem value={item.value} key={item.key}>
                                             {item.label}
                                         </MenuItem>
                                     }))}
                                 </TextField>
-                                {/* <InputLabel id="institucionDependencia-label">
-                                    Institución
-                                </InputLabel>
-                                <Select value={institucionDependencia}
-                                        onChange={(e) => this.handleChangeCampo('institucionDependencia', e)}
-                                        label={'Institución'}
-                                >
-                                    <MenuItem value="any" key={-1}><em>Todas</em></MenuItem>
-                                    {
-                                        institucionesLista.map((item => {
-                                            return <MenuItem value={item.value} key={item.key}>
-                                                {item.label}
-                                            </MenuItem>
-                                        }))
-                                    }
-                                </Select> */}
                             </FormControl>
                         </Grid>
 
                         <Grid item xs={12}>
-                            <Button onClick={() => this.handleBusquedaAvanzada()} color={"text"}
-                                    startIcon={this.state.busquedaAvanzada ? <ExpandLessIcon/> : <ExpandMoreIcon/>}
+                            <Button onClick={() => setShowAdvancedSearch(prevState => {
+                                return !prevState
+                            })} color={"text"}
+                                    startIcon={showAdvancedSearch ? <ExpandLessIcon/> : <ExpandMoreIcon/>}
                             >Búsqueda avanzada</Button>
                         </Grid>
 
-                        {this.state.busquedaAvanzada && <Grid item xs={12} md={3}>
+                        {showAdvancedSearch && <Grid item xs={12} md={3}>
                             <FormControl className={classes.formControl}>
-                                <TextField id={'campoOrden'} name={'campoOrden'} margin="normal" select label={'Ordenar por'} value={campoOrden} onChange={e => this.handleChangeCampo('campoOrden', e)}>
-                                    <MenuItem value={''}>
+                                <TextField id={'campoOrden'} name={'campoOrden'} margin="normal" select label={'Ordenar por'} value={sort.campoOrden} onChange={e => setSort({...sort, campoOrden: e.target.value})}>
+                                    <MenuItem value={'any'}>
                                         <em>Ninguno</em>
                                     </MenuItem>
                                     {camposOrdenamiento.map(tipo => (
@@ -549,30 +402,12 @@ class BusquedaParticular extends React.Component {
                                         </MenuItem>
                                     ))}
                                 </TextField>
-                                {/* <InputLabel id="campoOrden-label">Ordenar por</InputLabel>
-                                <Select
-                                    id="campoOrden-checkbox"
-                                    label={'Ordenar por'}
-                                    labelId={'campoOrden-label-helper'}
-                                    value={campoOrden}
-                                    onChange={e => this.handleChangeCampo('campoOrden', e)}
-                                >
-                                    <MenuItem value={''}>
-                                        <em>Ninguno</em>
-                                    </MenuItem>
-                                    {camposOrdenamiento.map(tipo => (
-                                        <MenuItem key={tipo.value} value={tipo}>
-                                            <ListItemText primary={tipo.label}/>
-                                        </MenuItem>
-
-                                    ))}
-                                </Select> */}
                             </FormControl>
                         </Grid>}
-                        {this.state.busquedaAvanzada && <Grid item xs={12} md={3}>
+                        {showAdvancedSearch && <Grid item xs={12} md={3}>
                             <FormControl className={classes.formControl}>
-                                <TextField id={'namtipoOrdene'} name={'tipoOrden'} margin="normal" select label={'Tipo ordenamiento'} value={tipoOrden} onChange={e => this.handleChangeCampo('tipoOrden', e)}>
-                                    <MenuItem value={''}>
+                                <TextField id={'namtipoOrdene'} name={'tipoOrden'} margin="normal" select label={'Tipo ordenamiento'} value={sort.tipoOrden} onChange={e => setSort({...sort, tipoOrden: e.target.value})}>
+                                    <MenuItem value={'any'}>
                                         <em>Ninguno</em>
                                     </MenuItem>
                                     {tiposOrdenamiento.map(tipo => (
@@ -581,40 +416,20 @@ class BusquedaParticular extends React.Component {
                                         </MenuItem>
                                     ))}
                                 </TextField>
-                                {/* <InputLabel id="tipoOrden-label">Tipo ordenamiento</InputLabel>
-                                <Select
-                                    id="tipoOrden-checkbox"
-                                    label={'Tipo ordenamiento'}
-                                    labelId={'tipoOrden-label-helper'}
-                                    value={tipoOrden}
-                                    onChange={e => this.handleChangeCampo('tipoOrden', e)}
-                                >
-                                    <MenuItem value={''}>
-                                        <em>Ninguno</em>
-                                    </MenuItem>
-                                    {tiposOrdenamiento.map(tipo => (
-                                        <MenuItem key={tipo.value} value={tipo}>
-                                            <ListItemText primary={tipo.label}/>
-                                        </MenuItem>
-
-                                    ))}
-                                </Select> */}
                             </FormControl>
                         </Grid>}
 
                         <Grid item md={10}/>
-
-
                         <Grid item xs={12} md={1}>
                             <Button variant="contained" color="secundario" className={classes.button}
-                                    onClick={() => this.handleCleanAll()}>
+                                    onClick={() => handleCleanAll()}>
                                 Limpiar
                             </Button>
                         </Grid>
                         <Grid item xs={12} md={1}>
                             <Button variant="contained" color="secundario" className={classes.button}
                                     onClick={() => {
-                                        this.handleSearchPrevios();
+                                        handleSearchPrevios();
                                         ReactGA.event({ category: 'busqueda-s3P', action: 'click' });
                                       }}
                                     >
@@ -623,9 +438,9 @@ class BusquedaParticular extends React.Component {
                         </Grid>
                         <Grid item xs={12}>
                             {
-                                this.state.loading &&
+                                loading &&
                                 <Modal id={'modalIsela'}
-                                       open={this.state.loading}
+                                       open={loading}
                                 >
                                     <div>
                                         <CircularProgress className={classes.progress} size={200}/>
@@ -634,58 +449,60 @@ class BusquedaParticular extends React.Component {
 
                             }
                             {
-                                this.state.error && <MensajeErrorDatos/>
+                                error && <MensajeErrorDatos/>
                             }
                         </Grid>
                     </Grid>
                     {/*Previos*/}
-                    {this.state.previos && this.state.previos.length > 0 &&
+                    {previos && previos.length > 0 &&
                     <Grid container>
                         <Grid item xs={12} className={classes.section}>
                             <FormControlLabel
                                 control={<Switch className={classes.containerPrevios}
-                                                 checked={this.state.panelPrevios}
-                                                 onChange={() => this.handleShowPrevios()}/>}
+                                                 checked={showPanelPrevios}
+                                                 onChange={() => setShowPanelPrevios(prevState => {
+                                                     return !prevState
+                                                 })}/>}
                                 label={
                                     <Typography variant="h6" className={classes.desc}>
-                                        {this.state.panelPrevios ? 'Ocultar resultados generales' : 'Mostrar resultados generales'}</Typography>}
+                                        {showPanelPrevios ? 'Ocultar resultados generales' : 'Mostrar resultados generales'}</Typography>}
                             />
                         </Grid>
-                        <Grid item xs={12} className={classes.section} ref={this.previosRef}>
+                        <Grid item xs={12} className={classes.section}>
                             <div className={classes.container}>
-                                <Collapse in={this.state.panelPrevios}>
-                                    <Previos data={this.state.previos}
-                                             handleChangeSujetoObligado={this.handleChangeSujetoObligado}/>
+                                <Collapse in={showPanelPrevios}>
+                                    <Previos data={previos}
+                                             handleChangeSujetoObligado={handleChangeSujetoObligado}/>
                                 </Collapse>
                             </div>
                         </Grid>
                     </Grid>
                     }
                     {/*Tabla*/}
-                    {this.state.filterData && this.state.filterData.length > 0 && this.state.elementoSeleccionado === null &&
-                    <Grid container ref={this.resultsRef}>
+                    {filterData && filterData.length > 0 && selectedItem === null &&
+                    <Grid container>
                         <Grid item xs={12}>
-                            <TablaParticularesSancionados data={this.state.filterData} page={this.state.page}
-                                                          rowsPerPage={this.state.rowsPerPage}
-                                                          totalRows={this.state.totalRows}
-                                                          handleChangePage={this.handleChangePage}
-                                                          handleChangeRowsPerPage={this.handleChangeRowsPerPage}
-                                                          verDetalle={this.verDetalle} nivel={this.state.nivel}/>
+                            <TablaParticularesSancionados data={filterData} page={pagination.page}
+                                                          rowsPerPage={pagination.rowsPerPage}
+                                                          totalRows={pagination.totalRows}
+                                                          handleChangePage={handleChangePage}
+                                                          handleChangeRowsPerPage={handleChangeRowsPerPage}
+                                                          verDetalle={verDetalle} nivel={filter.nivel}/>
                         </Grid>
                     </Grid>
                     }
                     {/*Detalle*/}
                     {
-                        this.state.elementoSeleccionado !== null &&
-                        <DetalleParticularSancionado hideDetalle={this.hideDetalle}
-                                                     particular={this.state.elementoSeleccionado}
+                        selectedItem !== null &&
+                        <DetalleParticularSancionado hideDetalle={hideDetalle}
+                                                     particular={selectedItem}
                         />
                     }
                 </React.Fragment>
             </ThemeProvider>
 
         );
-    }
+
 }
 
 BusquedaParticular.propTypes = {

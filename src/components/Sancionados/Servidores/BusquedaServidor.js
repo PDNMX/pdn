@@ -91,7 +91,7 @@ const initialFilter = {
     primerApellido: '',
     segundoApellido: '',
     tipoSancion: [],
-    institucionDependencia: "any",
+    institucionDependencia: 'any',
     nivel: 'any',
     provider: 'any'
 };
@@ -148,7 +148,6 @@ function BusquedaServidor({classes}) {
                 });
                 setInstitutionsList(sug);
                 setFilter({...filter, institucionDependencia: 'any'});
-                setInstitutionsList(sug);
             }).catch(err => {
             setError(true);
         });
@@ -444,7 +443,7 @@ function BusquedaServidor({classes}) {
                                        select
                                        label={'Institución'} value={filter.institucionDependencia}
                                        onChange={(e) => setFilter({...filter, institucionDependencia: e.target.value})}>
-                                <MenuItem value="any"><em>Todas</em></MenuItem>
+                                <MenuItem value = 'any'><em>Todas</em></MenuItem>
                                 {institutionsList.map((item) => {
                                     return (
                                         <MenuItem value={item.value} key={item.key}>
