@@ -15,6 +15,7 @@ import HeaderV2 from "../../HomeV2/HeaderV2";
 import bgimg from "../../../assets/rediseno/fondo_cruces.png";
 import ButtonPDN from "../../Compartidos/ButtonPDN";
 import ProtocoloConexion from '../ProtocoloConexion';
+import ServiceAgreement from '../ServiceAgreement';
 
 const styles = theme => ({
     list: {
@@ -175,42 +176,12 @@ const Sancionados = props => {
                                 </ButtonPDN>
                             </Typography>
 
-                            <ProtocoloConexion urlPlan={protocolos} />
-                            {/* <Typography variant='h5' paragraph>
-                                Protocolo de conexión
-                            </Typography>
-                            <Typography paragraph>
-                                Para establecer la conexión con la Plataforma Digital Nacional es necesario requisitar
-                                el formato de <b>Solicitud de conexión</b><IconButton target={'_blank'}
-                                                                                      href={'https://drive.google.com/file/d/1ANQG3f1Q7aO4soQR9__2FvHEi_-UwvBe/view'}
-                                                                                      color="primary"
-                                                                                      aria-label="descargar"
-                                                                                      size={'small'}><GetAppIcon/></IconButton>correctamente
-                                y enviarlo al correo electrónico: <b>pdn@sesna.gob.mx </b>
-                            </Typography>
-                            <Typography paragraph>
-                                Posteriormente el equipo de la PDN llevará a cabo el procedimiento para la verificación
-                                del funcionamiento del API que consiste en la ejecución del siguiente <b>Plan de
-                                pruebas</b>.
-                            </Typography>
-                            <ButtonPDN
-                                    href={'https://drive.google.com/file/d/1in6bHq8rqeTl_v48BpByDjgxeF2fIIve/view'}
-                                    target='_blank'>
-                                Servidores Sancionados
-                            </ButtonPDN>
-                            <ButtonPDN
-                                    href={'https://drive.google.com/file/d/15mPsTLuW6u97cRMxBaEP8YCkAZnX32v-/view'}
-                                    target='_blank'
-                                    >
-                                Particulares Sancionados
-                            </ButtonPDN>
-                            <Typography paragraph>
-                                Adicionalmente, ponemos a disposición un <RouterLink to="/validador" className={classes.link}><Typography
-                                component={'span'}><b>Validador</b> </Typography></RouterLink>
-                                que sirve de apoyo para la validación del cumplimiento de los esquemas de datos de las
-                                diferentes API's.
-                            </Typography> */}
+                            <ProtocoloConexion urlPlan={protocolos} />                            
 
+                            <Divider className={classes.divider}/>
+
+                            <ServiceAgreement />
+                            
                             <Divider className={classes.divider}/>
 
                             <Licencia/>
