@@ -64,7 +64,7 @@ const SistemasMenu = props => {
             {
                 systems.map(system => {
                     return (
-                        <Link className={classes.link} to={system.path}>
+                        <Link className={classes.link} to={system.path} key={system.path}>
                         <Box className={`${classes.item}`} sx={{
                             m: 1,
                             p: 2,
