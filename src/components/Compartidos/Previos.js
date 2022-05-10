@@ -124,6 +124,11 @@ function Previos({data, classes, handleChangeSujetoObligado}) {
                                             className={classes.tablePagination}
                                             colSpan={4}
                                             rowsPerPageOptions={[5, 10, 15]}
+                                            sx={{
+                                                ".MuiTablePagination-select": {
+                                                    color: '#001621'//'black'
+                                                }
+                                            }}
                                             count={data.length}
                                             rowsPerPage={rowsPerPage}
                                             page={page}
