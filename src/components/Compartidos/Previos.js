@@ -8,7 +8,7 @@ import TableRow from '@mui/material/TableRow';
 import Grid from "@mui/material/Grid";
 import { Typography} from "@mui/material";
 import TableHead from "@mui/material/TableHead";
-import IconSubdirectory from "@mui/icons-material/SubdirectoryArrowRight";
+//import IconSubdirectory from "@mui/icons-material/SubdirectoryArrowRight";
 import Tooltip from "@mui/material/Tooltip";
 import IconSunny from "@mui/icons-material/WbSunny";
 import TablePagination from '@mui/material/TablePagination';
@@ -69,83 +69,81 @@ function Previos({data, classes, handleChangeSujetoObligado}) {
             <Grid container justifyContent='center' spacing={0} className={classes.gridTable}>
                 <Grid item xs={12}>
                     {data && data.length > 0 &&
-                    <Typography variant="body1">La siguiente tabla muestra el resultado devuelto por cada Proveedor de
-                        información a través de su API. Pulsa en <IconSubdirectory className={classes.iconoVer}/> para
-                        ver el detalle<br/></Typography>
+                        <Typography variant="body1" paragraph>
+                            La siguiente tabla muestra un resumen general de los resultados obtenidos al consultar cada proveedor de información disponible.
+                            Pulsa sobre un registro para ver más.
+                        </Typography>
                     }
                 </Grid>
                 <Grid item xs={12}>
                     {data && data.length > 0 &&
-                    <div className={classes.container}>
-                        <Table className={classes.table}>
-                            <TableHead className={classes.tableHead}>
-                                <TableRow>
-                                    <TableCell align="left" variant={"head"} className={classes.tableCell}><Typography
-                                        variant={"body1"}>Nivel</Typography></TableCell>
-                                    <TableCell align="left" variant={"head"} className={classes.tableCell}><Typography
-                                        variant={"body1"}> Proveedor de información</Typography></TableCell>
-                                    <TableCell align="center" variant={"head"} className={classes.tableCell}><Typography
-                                        variant={"body1"}>Estatus</Typography></TableCell>
-                                    <TableCell align="center" variant={"head"} className={classes.tableCell}><Typography
-                                        variant={"body1"}>Número de registros</Typography></TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody className={classes.tableBody}>
-                                {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                                    .map(row => (
-                                        <TableRow key={row.supplier_id} hover
-                                                  className={ row.error || row.totalRows <= 0 ? '': classes.row}
-                                                  onClick={() => {
-                                                      if (!row.error && row.totalRows >0){
-                                                          handleChangeSujetoObligado(row.supplier_id);
-                                                      }
-                                                  }}
-                                        >
-                                            <TableCell align="left">{row.levels ? row.levels.join(',') : ''}</TableCell>
-                                            <TableCell align="left">{row.supplier_name}</TableCell>
-                                            <TableCell align="center">
-                                                <Tooltip title={!row.error ? "Disponible" : "Fuera de servicio"}>
-                                                    <IconSunny className={!row.error ? classes.conectado : classes.noconectado}/>
-                                                </Tooltip>
-                                            </TableCell>
-                                            <TableCell align="center">
-                                                {("undefined" === typeof (row["totalRows"])) &&
-                                                "Fuera de servicio"
-                                                }
-                                                {row.totalRows}
-                                            </TableCell>
-                                        </TableRow>
-                                    ))}
-                            </TableBody>
-                            <TableFooter>
-                                <TableRow>
-                                    <TablePagination
-                                        className={classes.tablePagination}
-                                        colSpan={4}
-                                        rowsPerPageOptions={[5, 10, 15]}
-                                        count={data.length}
-                                        rowsPerPage={rowsPerPage}
-                                        page={page}
-                                        onPageChange={handleChangePage}
-                                        onRowsPerPageChange={handleChangeRowsPerPage}
-                                        labelRowsPerPage='Registros por página'
-                                        labelDisplayedRows={({from, to, count}) => {
-                                            return `${from}-${to} de ${count}`;
-                                        }}
-                                    />
-                                </TableRow>
-                            </TableFooter>
-                        </Table>
-                    </div>
+                        <div className={classes.container}>
+                            <Table className={classes.table}>
+                                <TableHead className={classes.tableHead}>
+                                    <TableRow>
+                                        <TableCell align="left" variant={"head"} className={classes.tableCell}><Typography
+                                            variant={"body1"}>Nivel</Typography></TableCell>
+                                        <TableCell align="left" variant={"head"} className={classes.tableCell}><Typography
+                                            variant={"body1"}> Proveedor de información</Typography></TableCell>
+                                        <TableCell align="center" variant={"head"} className={classes.tableCell}><Typography
+                                            variant={"body1"}>Estatus</Typography></TableCell>
+                                        <TableCell align="center" variant={"head"} className={classes.tableCell}><Typography
+                                            variant={"body1"}>Número de registros</Typography></TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody className={classes.tableBody}>
+                                    {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                                        .map(row => (
+                                            <TableRow key={row.supplier_id} hover
+                                                      className={ row.error || row.totalRows <= 0 ? '': classes.row}
+                                                      onClick={() => {
+                                                          if (!row.error && row.totalRows >0){
+                                                              handleChangeSujetoObligado(row.supplier_id);
+                                                          }
+                                                      }}
+                                            >
+                                                <TableCell align="left">{row.levels ? row.levels.join(',') : ''}</TableCell>
+                                                <TableCell align="left">{row.supplier_name}</TableCell>
+                                                <TableCell align="center">
+                                                    <Tooltip title={!row.error ? "Disponible" : "Fuera de servicio"}>
+                                                        <IconSunny className={!row.error ? classes.conectado : classes.noconectado}/>
+                                                    </Tooltip>
+                                                </TableCell>
+                                                <TableCell align="center">
+                                                    {("undefined" === typeof (row["totalRows"])) &&
+                                                        "Fuera de servicio"
+                                                    }
+                                                    {row.totalRows}
+                                                </TableCell>
+                                            </TableRow>
+                                        ))}
+                                </TableBody>
+                                <TableFooter>
+                                    <TableRow>
+                                        <TablePagination
+                                            className={classes.tablePagination}
+                                            colSpan={4}
+                                            rowsPerPageOptions={[5, 10, 15]}
+                                            count={data.length}
+                                            rowsPerPage={rowsPerPage}
+                                            page={page}
+                                            onPageChange={handleChangePage}
+                                            onRowsPerPageChange={handleChangeRowsPerPage}
+                                            labelRowsPerPage='Registros por página'
+                                            labelDisplayedRows={({from, to, count}) => {
+                                                return `${from}-${to} de ${count}`;
+                                            }}
+                                        />
+                                    </TableRow>
+                                </TableFooter>
+                            </Table>
+                        </div>
                     }
                 </Grid>
             </Grid>
         </div>
     );
-
-
 }
-
 
 Previos.propTypes = {
     classes: PropTypes.object.isRequired,
