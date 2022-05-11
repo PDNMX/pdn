@@ -5,7 +5,8 @@ import Grid from "@mui/material/Grid";
 import {Paper, Typography} from "@mui/material";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import CloseIcon from '@mui/icons-material/Close';
+import DownloadItem from "../../Compartidos/DownloadItem";
 
 const styles = theme => ({
     infoBusqueda: {
@@ -58,140 +59,139 @@ const styles = theme => ({
 
 function DetalleServidorSancionado({classes, handleChangeDetail, servidor}) {
     return (
-        <Grid container spacing={0} className={classes.infoBusqueda}>
-            <Grid item xs={12} className={classes.container}>
-                <Paper className={classes.paper} elevation={3}>
-                    <Grid container spacing={2}>
-                        <Grid item xs={12}>
-                            <Typography style={{textAlign: "right"}}>
+
+        <Paper className={classes.paper} elevation={3}>
+            <Grid container spacing={2}>
+                <Grid item xs={6}>
+                    <Typography style={{textAlign: "left"}}>
                                 <span className={classes.cuadroActualizacion}>
                                   Actualización:{" "}{servidor.fechaCaptura}
                                 </span>
-                            </Typography>
-                        </Grid>
+                    </Typography>
+                </Grid>
+                <Grid item xs={6} style={{textAlign: 'right'}}>
+                    <Button variant={'text'} className={classes.btnBack} onClick={() => handleChangeDetail()}
+                            startIcon={<CloseIcon/>}
+                    />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                    <Typography variant={"h6"}>
+                        {servidor.servidorPublicoSancionado.nombres}{" "}{servidor.servidorPublicoSancionado.primerApellido}{" "}{servidor.servidorPublicoSancionado.segundoApellido}
+                    </Typography>
+                    <Typography className={classes.dataCard}>
+                        {servidor.servidorPublicoSancionado.puesto}
+                    </Typography>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                    <Typography className={classes.tituloCard}>
+                        Dependencia
+                    </Typography>
+                    <Typography className={classes.dataCard}>
+                        {servidor.institucionDependencia.nombre}{servidor.institucionDependencia.siglas ? '(' + servidor.institucionDependencia.siglas + ')' : ''}
+                    </Typography>
+                </Grid>
+                <Grid item xs={12}>
+                    <Divider className={classes.divider} variant={"middle"}/>
+                </Grid>
+                <Grid item xs={12}>
+                    <Typography className={classes.titulo} align={"center"}>
+                        Información de la falta
+                    </Typography>
+                </Grid>
 
-                        <Grid item xs={12} md={6}>
-                            <Typography variant={"h6"}>
-                                {servidor.servidorPublicoSancionado.nombres}{" "}{servidor.servidorPublicoSancionado.primerApellido}{" "}{servidor.servidorPublicoSancionado.segundoApellido}
-                            </Typography>
-                            <Typography className={classes.dataCard}>
-                                {servidor.servidorPublicoSancionado.puesto}
-                            </Typography>
-                        </Grid>
-                        <Grid item xs={12} md={6}>
-                            <Typography className={classes.tituloCard}>
-                                Dependencia
-                            </Typography>
-                            <Typography className={classes.dataCard}>
-                                {servidor.institucionDependencia.nombre}{servidor.institucionDependencia.siglas ? '(' + servidor.institucionDependencia.siglas + ')' : ''}
-                            </Typography>
-                        </Grid>
-                        <Grid item xs={12}>
-                            <Divider className={classes.divider} variant={"middle"}/>
-                        </Grid>
-                        <Grid item xs={12}>
-                            <Typography className={classes.titulo} align={"center"}>
-                                Información de la falta
-                            </Typography>
-                        </Grid>
+                <Grid item xs={12} md={4}>
+                    <Typography className={classes.tituloCard}>
+                        Expediente
+                    </Typography>
+                    <Typography className={classes.dataCard}>
+                        {servidor.expediente}
+                    </Typography>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <Typography className={classes.tituloCard}>
+                        Tipo falta
+                    </Typography>
+                    <Typography className={classes.dataCard}>
+                        {servidor.tipoFalta.valor}
+                    </Typography>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <Typography className={classes.tituloCard}>
+                        Causa, motivo o hechos
+                    </Typography>
+                    <Typography className={classes.dataCard}>
+                        {servidor.causaMotivoHechos}
+                    </Typography>
+                </Grid>
 
-                        <Grid item xs={12} md={4}>
-                            <Typography className={classes.tituloCard}>
-                                Expediente
-                            </Typography>
-                            <Typography className={classes.dataCard}>
-                                {servidor.expediente}
-                            </Typography>
-                        </Grid>
-                        <Grid item xs={12} md={4}>
-                            <Typography className={classes.tituloCard}>
-                                Tipo falta
-                            </Typography>
-                            <Typography className={classes.dataCard}>
-                                {servidor.tipoFalta.valor}
-                            </Typography>
-                        </Grid>
-                        <Grid item xs={12} md={4}>
-                            <Typography className={classes.tituloCard}>
-                                Causa, motivo o hechos
-                            </Typography>
-                            <Typography className={classes.dataCard}>
-                                {servidor.causaMotivoHechos}
-                            </Typography>
-                        </Grid>
+                <Grid item xs={12}>
+                    <Typography className={classes.titulo} align={"center"}>
+                        Información de la sanción
+                    </Typography>
+                </Grid>
 
-                        <Grid item xs={12}>
-                            <Typography className={classes.titulo} align={"center"}>
-                                Información de la sanción
-                            </Typography>
-                        </Grid>
+                <Grid item xs={12} md={4}>
+                    <Typography className={classes.tituloCard}>
+                        Autoridad sancionadora
+                    </Typography>
+                    <Typography className={classes.dataCard}>
+                        {servidor.autoridadSancionadora}
+                    </Typography>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <Typography className={classes.tituloCard}>
+                        Fecha resolución
+                    </Typography>
+                    <Typography className={classes.dataCard}>
+                        {servidor.resolucion.fechaResolucion}
+                    </Typography>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <Typography className={classes.tituloCard}>
+                        Tipo sanción
+                    </Typography>
+                    <Typography className={classes.dataCard}>
+                        {servidor.tipoSancion.map(e => e.valor).join(', ')}
+                    </Typography>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <Typography className={classes.tituloCard}>
+                        Multa
+                    </Typography>
+                    <Typography className={classes.dataCard}>
+                        {servidor.multa.monto} {servidor.multa.moneda.clave}
+                    </Typography>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <Typography className={classes.tituloCard}>
+                        Inhabilitación plazo
+                    </Typography>
+                    <Typography className={classes.dataCard}>
+                        {servidor.inhabilitacion.plazo}
+                    </Typography>
+                </Grid>
+                <Grid item xs={12} md={3}>
+                    <Typography className={classes.tituloCard}>
+                        Inhabilitación periodo
+                    </Typography>
+                    <Typography className={classes.dataCard}>
+                        Del {servidor.inhabilitacion.fechaInicial} al {servidor.inhabilitacion.fechaFinal}
+                    </Typography>
+                </Grid>
 
-                        <Grid item xs={12} md={4}>
-                            <Typography className={classes.tituloCard}>
-                                Autoridad sancionadora
-                            </Typography>
-                            <Typography className={classes.dataCard}>
-                                {servidor.autoridadSancionadora}
-                            </Typography>
-                        </Grid>
-                        <Grid item xs={12} md={4}>
-                            <Typography className={classes.tituloCard}>
-                                Fecha resolución
-                            </Typography>
-                            <Typography className={classes.dataCard}>
-                                {servidor.resolucion.fechaResolucion}
-                            </Typography>
-                        </Grid>
-                        <Grid item xs={12} md={4}>
-                            <Typography className={classes.tituloCard}>
-                                Tipo sanción
-                            </Typography>
-                            <Typography className={classes.dataCard}>
-                                {servidor.tipoSancion.map(e => e.valor).join(', ')}
-                            </Typography>
-                        </Grid>
-                        <Grid item xs={12} md={4}>
-                            <Typography className={classes.tituloCard}>
-                                Multa
-                            </Typography>
-                            <Typography className={classes.dataCard}>
-                                {servidor.multa.monto} {servidor.multa.moneda.clave}
-                            </Typography>
-                        </Grid>
-                        <Grid item xs={12} md={4}>
-                            <Typography className={classes.tituloCard}>
-                                Inhabilitación plazo
-                            </Typography>
-                            <Typography className={classes.dataCard}>
-                                {servidor.inhabilitacion.plazo}
-                            </Typography>
-                        </Grid>
-                        <Grid item xs={12} md={3}>
-                            <Typography className={classes.tituloCard}>
-                                Inhabilitación periodo
-                            </Typography>
-                            <Typography className={classes.dataCard}>
-                                Del {servidor.inhabilitacion.fechaInicial} al {servidor.inhabilitacion.fechaFinal}
-                            </Typography>
-                        </Grid>
-
-                        <Grid item xs={12}>
-                            <Typography className={classes.tituloCard}>
-                                Observaciones
-                            </Typography>
-                            <Typography className={classes.dataCard}>
-                                {servidor.observaciones}
-                            </Typography>
-                        </Grid>
-                        <Grid item xs={12} style={{textAlign: 'right'}}>
-                            <Button className={classes.btnBack} onClick={() => handleChangeDetail()}
-                                    startIcon={<ArrowBackIosIcon/>}
-                            >Regresar</Button>
-                        </Grid>
-                    </Grid>
-                </Paper>
+                <Grid item xs={12}>
+                    <Typography className={classes.tituloCard}>
+                        Observaciones
+                    </Typography>
+                    <Typography className={classes.dataCard}>
+                        {servidor.observaciones}
+                    </Typography>
+                </Grid>
+                <Grid item xs={12} textAlign={'center'}>
+                    <DownloadItem item = {servidor}></DownloadItem>
+                </Grid>
             </Grid>
-        </Grid>
+        </Paper>
     )
 }
 

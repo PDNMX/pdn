@@ -4,7 +4,7 @@ import withStyles from '@mui/styles/withStyles';
 import PropTypes from 'prop-types';
 import {
     Typography, Grid, MenuItem, Checkbox, Switch, Collapse, FormControl,
-    Button, FormControlLabel, ListItemText, Modal, CircularProgress, TextField
+    Button, FormControlLabel, ListItemText, Modal, CircularProgress, TextField, IconButton
 } from "@mui/material"
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
@@ -14,6 +14,7 @@ import TablaServidoresSancionados from "./TablaServidoresSancionados";
 import DetalleServidorSancionado from "./DetalleServidorSancionado";
 import {ThemeProvider} from '@mui/material/styles';
 import ThemeV2 from "../../../ThemeV2";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 import ReactGA from "react-ga";
 
@@ -104,7 +105,6 @@ const initialSort = {
 function BusquedaServidor({classes}) {
     const [filterData, setFilterData] = React.useState([]);
     const [previos, setPrevios] = React.useState(null);
-    const [showPanelPrevios, setShowPanelPrevios] = React.useState(false);
     const [error, setError] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
     const [showAdvancedSearch, setShowAdvancedSearch] = React.useState(false);
@@ -115,6 +115,7 @@ function BusquedaServidor({classes}) {
     const [pagination, setPagination] = React.useState(initialPagination);
     const [filter, setFilter] = React.useState(initialFilter);
     const [sort, setSort] = React.useState(initialSort);
+    const [view, setView] = React.useState(0);
 
     React.useEffect(() => {
         loadInstitutions();
@@ -128,7 +129,15 @@ function BusquedaServidor({classes}) {
 
     React.useEffect(() => {
         loadInstitutions();
-    }, [filter?.provider])
+    }, [filter?.provider]);
+
+    React.useEffect(() => {
+        if (provider !== 'any') {
+            setPagination({...pagination, page: 1});
+            setSelectedItem(null);
+            handleSearchAPI();
+        }
+    }, [provider]);
 
     const loadInstitutions = () => {
         let sug = [];
@@ -184,6 +193,7 @@ function BusquedaServidor({classes}) {
         setPrevios([]);
         setInstitutionsList([]);
         setSelectedItem(null);
+        setView(0);
     };
 //10,25,50
     const handleSearchPrevios = () => {
@@ -191,6 +201,7 @@ function BusquedaServidor({classes}) {
         setFilterData([]);
         setSelectedItem(null);
         setPagination({...pagination, rowsPerPage: 10});
+        setProvider('any')
 
         let body =
             {
@@ -211,7 +222,7 @@ function BusquedaServidor({classes}) {
                 setPrevios(res.data);
                 setLoading(false);
                 setError(false);
-                setShowPanelPrevios(true);
+                setView(1);
             }).catch(err => {
             setError(true);
             setLoading(false);
@@ -260,20 +271,13 @@ function BusquedaServidor({classes}) {
                 setLoading(false);
                 setPagination({...pagination, totalRows: resultado.pagination.totalRows})
                 setError(false);
+                setView(2)
             }).catch(err => {
             setLoading(false);
             setError(true);
         });
 
     };
-
-    React.useEffect(() => {
-        if (provider !== 'any') {
-            setPagination({...pagination, page: 1});
-            setSelectedItem(null);
-            handleSearchAPI();
-        }
-    }, [provider]);
 
     const handleChangeAPI = (val) => {
         setProvider(val)
@@ -289,12 +293,19 @@ function BusquedaServidor({classes}) {
 
     const verDetalle = (event, elemento) => {
         setSelectedItem(elemento);
-        setShowPanelPrevios(false);
+        setView(3);
+        setProvider('any')
     };
 
     const handleChangeDetail = () => {
         setSelectedItem(null);
+        setView(2);
     };
+
+    const returnToPrevios = () => {
+        setView(1);
+        setProvider('any');
+    }
 
     return (
         <ThemeProvider theme={ThemeV2}>
@@ -443,7 +454,7 @@ function BusquedaServidor({classes}) {
                                        select
                                        label={'Institución'} value={filter.institucionDependencia}
                                        onChange={(e) => setFilter({...filter, institucionDependencia: e.target.value})}>
-                                <MenuItem value = 'any'><em>Todas</em></MenuItem>
+                                <MenuItem value='any'><em>Todas</em></MenuItem>
                                 {institutionsList.map((item) => {
                                     return (
                                         <MenuItem value={item.value} key={item.key}>
@@ -534,31 +545,15 @@ function BusquedaServidor({classes}) {
                     </Grid>
                 </Grid>
                 {/*PREVIOS*/}
-                {previos && previos.length > 0 &&
+                {view === 1 && previos && previos.length > 0 &&
                 <Grid container>
                     <Grid item xs={12} className={classes.section}>
-                        <FormControlLabel
-                            control={<Switch className={classes.containerPrevios}
-                                             checked={showPanelPrevios}
-                                             onChange={() => setShowPanelPrevios(prevState => {
-                                                 return !prevState
-                                             })}/>}
-                            label={
-                                <Typography variant="h6" className={classes.desc}>
-                                    {showPanelPrevios ? 'Ocultar resultados generales' : 'Mostrar resultados generales'}</Typography>}
-                        />
-                    </Grid>
-                    <Grid item xs={12} className={classes.section}>
-                        <div className={classes.container}>
-                            <Collapse in={showPanelPrevios}>
-                                <Previos data={previos} handleChangeSujetoObligado={handleChangeAPI}/>
-                            </Collapse>
-                        </div>
+                        <Previos data={previos} handleChangeSujetoObligado={handleChangeAPI}/>
                     </Grid>
                 </Grid>
                 }
                 {/*TABLA*/}
-                {filterData && filterData.length > 0 && selectedItem === null &&
+                {view === 2 && filterData && filterData.length > 0 && selectedItem === null &&
                 <Grid container>
                     <Grid item xs={12}>
                         <TablaServidoresSancionados data={filterData} page={pagination.page}
@@ -566,12 +561,14 @@ function BusquedaServidor({classes}) {
                                                     totalRows={pagination.totalRows}
                                                     handleChangePage={handleChangePage}
                                                     handleChangeRowsPerPage={handleChangeRowsPerPage}
-                                                    verDetalle={verDetalle}/>
+                                                    verDetalle={verDetalle}
+                                                    returnToPrevios={returnToPrevios}
+                        />
                     </Grid>
                 </Grid>
                 }
                 {
-                    selectedItem !== null &&
+                    view === 3 && selectedItem !== null &&
                     <DetalleServidorSancionado handleChangeDetail={handleChangeDetail}
                                                servidor={selectedItem}
                     />

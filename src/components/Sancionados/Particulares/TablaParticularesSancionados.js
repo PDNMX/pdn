@@ -1,7 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@mui/styles';
-import {Table, TableBody, TableCell, TablePagination, TableRow, TableFooter, TableHead, Grid, Typography} from '@mui/material';
+import {
+    Table,
+    TableBody,
+    TableCell,
+    TablePagination,
+    TableRow,
+    TableFooter,
+    TableHead,
+    Grid,
+    Typography,
+    Button
+} from '@mui/material';
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 
 const columnData = [
@@ -44,6 +56,11 @@ const styles = theme => ({
     },
     tableBody:{
         backgroundColor:theme.palette.background.tableBody
+    },
+    buttonBack: {
+        padding: theme.spacing(1),
+        fontWeight: 'bold',
+        marginBottom: theme.spacing(1)
     }
 });
 
@@ -56,7 +73,8 @@ function TablaParticularesSancionados({
                                           nivel,
                                           verDetalle,
                                           handleChangeRowsPerPage,
-                                          handleChangePage
+                                          handleChangePage,
+                                          returnToPrevios
                                       }) {
     return (
         <div>
@@ -66,6 +84,12 @@ function TablaParticularesSancionados({
                     <Typography variant="h6" color={'primario.contrastText'}>Pulsa sobre el registro para ver su
                         detalle<br/></Typography>
                     }
+                </Grid>
+                <Grid item xs={12} textAlign={'right'}>
+                    <Button startIcon={<ArrowBackIcon />} onClick={()=> returnToPrevios()}
+                            color="secundario" className={classes.buttonBack}>
+                        Regresar
+                    </Button>
                 </Grid>
                 <Grid item xs={12} className={classes.container1}>
                     <div className={classes.container2}>

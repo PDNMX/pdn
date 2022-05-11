@@ -104,7 +104,6 @@ const initialSort = {
 function BusquedaParticular ({classes}){
     const [filterData, setFilterData] = React.useState([]);
     const [previos, setPrevios] = React.useState(null);
-    const [showPanelPrevios, setShowPanelPrevios] = React.useState(false);
     const [error, setError] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
     const [showAdvancedSearch, setShowAdvancedSearch] = React.useState(false);
@@ -115,6 +114,7 @@ function BusquedaParticular ({classes}){
     const [pagination, setPagination] = React.useState(initialPagination);
     const [filter, setFilter] = React.useState(initialFilter);
     const [sort, setSort] = React.useState(initialSort);
+    const [view, setView] = React.useState(0);
 
     React.useEffect(() => {
         loadInstitutions();
@@ -186,6 +186,7 @@ function BusquedaParticular ({classes}){
         setPrevios([]);
         setInstitutionsList([]);
         setSelectedItem(null);
+        setView(0);
     };
 
     const handleSearchPrevios = () => {
@@ -213,7 +214,7 @@ function BusquedaParticular ({classes}){
                 setPrevios(res.data);
                 setLoading(false);
                 setError(false);
-                setShowPanelPrevios(true);
+                setView(1);
             }).catch(err => {
                 setError(true);
                 setLoading(false);
@@ -261,6 +262,7 @@ function BusquedaParticular ({classes}){
                 setLoading(false);
                 setPagination({...pagination, totalRows: res.data.pagination.totalRows});
                 setError(false);
+                setView(2)
             }).catch(err => {
             setLoading(false);
             setError(true);
@@ -281,12 +283,18 @@ function BusquedaParticular ({classes}){
 
     const verDetalle = (event, elemento) => {
         setSelectedItem(elemento);
-        setShowPanelPrevios(false);
+        setView(3);
+        setProvider('any');
     };
 
     const hideDetalle = () => {
         setSelectedItem(null);
+        setView(2);
     };
+    const returnToPrevios = () => {
+        setView(1);
+        setProvider('any');
+    }
             return (
             <ThemeProvider theme={ThemeV2}>
                 <React.Fragment>
@@ -454,32 +462,16 @@ function BusquedaParticular ({classes}){
                         </Grid>
                     </Grid>
                     {/*Previos*/}
-                    {previos && previos.length > 0 &&
+                    {view === 1 && previos && previos.length > 0 &&
                     <Grid container>
                         <Grid item xs={12} className={classes.section}>
-                            <FormControlLabel
-                                control={<Switch className={classes.containerPrevios}
-                                                 checked={showPanelPrevios}
-                                                 onChange={() => setShowPanelPrevios(prevState => {
-                                                     return !prevState
-                                                 })}/>}
-                                label={
-                                    <Typography variant="h6" className={classes.desc}>
-                                        {showPanelPrevios ? 'Ocultar resultados generales' : 'Mostrar resultados generales'}</Typography>}
-                            />
-                        </Grid>
-                        <Grid item xs={12} className={classes.section}>
-                            <div className={classes.container}>
-                                <Collapse in={showPanelPrevios}>
                                     <Previos data={previos}
                                              handleChangeSujetoObligado={handleChangeSujetoObligado}/>
-                                </Collapse>
-                            </div>
                         </Grid>
                     </Grid>
                     }
                     {/*Tabla*/}
-                    {filterData && filterData.length > 0 && selectedItem === null &&
+                    {view ===2 && filterData && filterData.length > 0 && selectedItem === null &&
                     <Grid container>
                         <Grid item xs={12}>
                             <TablaParticularesSancionados data={filterData} page={pagination.page}
@@ -487,13 +479,15 @@ function BusquedaParticular ({classes}){
                                                           totalRows={pagination.totalRows}
                                                           handleChangePage={handleChangePage}
                                                           handleChangeRowsPerPage={handleChangeRowsPerPage}
-                                                          verDetalle={verDetalle} nivel={filter.nivel}/>
+                                                          verDetalle={verDetalle} nivel={filter.nivel}
+                                                          returnToPrevios={returnToPrevios}
+                            />
                         </Grid>
                     </Grid>
                     }
                     {/*Detalle*/}
                     {
-                        selectedItem !== null &&
+                        view === 3 && selectedItem !== null &&
                         <DetalleParticularSancionado hideDetalle={hideDetalle}
                                                      particular={selectedItem}
                         />
