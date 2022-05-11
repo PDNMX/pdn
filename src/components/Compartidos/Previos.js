@@ -81,10 +81,10 @@ function Previos({data, classes, handleChangeSujetoObligado}) {
                             <Table className={classes.table}>
                                 <TableHead className={classes.tableHead}>
                                     <TableRow>
-                                        <TableCell align="left" variant={"head"} className={classes.tableCell}><Typography
+                                        <TableCell align="left" variant={"head"} className={classes.tableCell} style={{width:'40%'}}
+                                            variant={"body1"}><Typography> Proveedor de información</Typography></TableCell>
+                                        <TableCell align="center" variant={"head"} className={classes.tableCell}><Typography
                                             variant={"body1"}>Nivel</Typography></TableCell>
-                                        <TableCell align="left" variant={"head"} className={classes.tableCell}><Typography
-                                            variant={"body1"}> Proveedor de información</Typography></TableCell>
                                         <TableCell align="center" variant={"head"} className={classes.tableCell}><Typography
                                             variant={"body1"}>Estatus</Typography></TableCell>
                                         <TableCell align="center" variant={"head"} className={classes.tableCell}><Typography
@@ -102,8 +102,8 @@ function Previos({data, classes, handleChangeSujetoObligado}) {
                                                           }
                                                       }}
                                             >
-                                                <TableCell align="left">{row.levels ? row.levels.join(',') : ''}</TableCell>
                                                 <TableCell align="left">{row.supplier_name}</TableCell>
+                                                <TableCell align="center">{row.levels ? row.levels.join(',') : ''}</TableCell>
                                                 <TableCell align="center">
                                                     <Tooltip title={!row.error ? "Disponible" : "Fuera de servicio"}>
                                                         <IconSunny className={!row.error ? classes.conectado : classes.noconectado}/>
