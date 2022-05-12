@@ -56,7 +56,7 @@ export default createTheme(
           root: {
             'color': AzulPDN,
             '&.MuiSelect-icon': {
-              color: '#ced8db'
+              color: '#E1E8EB'
             }
           }
         }
@@ -81,7 +81,7 @@ export default createTheme(
       MuiTableSortLabel: {
         styleOverrides: {
           root: {
-            'color': '#ced8db',
+            'color': '#E1E8EB',
             '&:hover': {
               color: AzulPDN
             },
@@ -90,10 +90,10 @@ export default createTheme(
             }
           },
           icon: {
-            color: '#ced8db'
+            color: '#E1E8EB'
           },
           iconDirectionDesc: {
-            color: '#ced8db'
+            color: '#E1E8EB'
           }
         }
       },

@@ -17,7 +17,7 @@ const styles = theme => ({
         backgroundPosition: 'center'
     },
     headingText: {
-        color: "#ced8db",
+        color: "#E1E8EB",
         fontWeight: "700",
         fontSize: '52px',
         [theme.breakpoints.down('md')]:{
@@ -29,7 +29,7 @@ const styles = theme => ({
         fontSize: '30px',
         fontWeight: 500,
         textTransform :'uppercase',
-        color: "#ced8db",
+        color: "#E1E8EB",
         "& b": {
             color: "#3bb1e6",
         }

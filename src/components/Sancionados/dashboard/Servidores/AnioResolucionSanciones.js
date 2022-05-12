@@ -169,18 +169,18 @@ const AnioResolucionSanciones = (props) => {
                                     return item.x
                                 })} tickFormat={v => `${v}`}
                                 style={{
-                                    line: {fill: '#ced8db'},
-                                    ticks: {fill: '#ced8db'},
-                                    text: {fill: '#ced8db', fontWeight: 600},
-                                    title: {fill: '#ced8db'},
+                                    line: {fill: '#E1E8EB'},
+                                    ticks: {fill: '#E1E8EB'},
+                                    text: {fill: '#E1E8EB', fontWeight: 600},
+                                    title: {fill: '#E1E8EB'},
                                 }}
                             />
                             <YAxis title={"Número de sanciones"}
                                    style={{
-                                       line: {fill: '#ced8db'},
-                                       ticks: {fill: '#ced8db'},
-                                       text: {fill: '#ced8db', fontWeight: 600},
-                                       title: {fill: '#ced8db'},
+                                       line: {fill: '#E1E8EB'},
+                                       ticks: {fill: '#E1E8EB'},
+                                       text: {fill: '#E1E8EB', fontWeight: 600},
+                                       title: {fill: '#E1E8EB'},
                                    }}
                             />
 

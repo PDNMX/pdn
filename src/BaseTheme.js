@@ -22,7 +22,7 @@ export default createTheme(
         main: '#0d3b49',
         light: '#3d6575',
         dark: '#001621',
-        contrastText: '#ced8db'
+        contrastText: '#E1E8EB'
       },
       secundario: {
         main: '#3ab0e5',
@@ -32,7 +32,7 @@ export default createTheme(
         linkColor: '#89d4f2'
       },
       text: {
-        main: '#ced8db',
+        main: '#E1E8EB',
         greyColor: '#666666',
         blueColor: '#3ab0e5',
         linkColor: '#89d4f2'
@@ -48,25 +48,25 @@ export default createTheme(
       greyColor: '#666666',
       redColor: '#B00020',
       S1: {
-        color: '#F29888',
-        shade: '#F9CFC8'
+        color: '#F8CAC4',
+        shade: '#FBE2DF'
       },
       S2: {
-        color: '#B25FAC',
-        shade: '#EBD6EA'
+        color: '#D8ACD8',
+        shade: '#DCC6E0'
       },
       S3: {
-        color: '#9085DA',
-        shade: '#D5D0F1'
+        color: '#C6C1EB',
+        shade: '#AEA8D3'
       },
       S4: {
-        color: '#88BC69'
+        color: '#C4DDB6'
       },
       S5: {
         color: '#34C9B2'
       },
       S6: {
-        color: '#42A5CC',
+        color: '#B2DBEB',
         shade: '#CFE8F2'
       }
     }

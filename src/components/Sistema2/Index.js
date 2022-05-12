@@ -48,9 +48,8 @@ const styles = theme => ({
         margin: 0,
         "&:hover": {
             cursor: 'pointer',
-            backgroundColor: theme.palette.S2.color,
-            transition: 'background 0.3s ease',
             borderColor: theme.palette.secundario.main,
+            transition: 'background 0.3s ease',
             opacity: .7
         },
         display: 'inline-block',
@@ -64,14 +63,13 @@ const styles = theme => ({
 
     },
     cardSeleccionada: {
-        backgroundColor: theme.palette.S2.color,
+        borderColor: theme.palette.secundario.main,
         paddingLeft: theme.spacing(1),
         paddingRight: theme.spacing(1),
         paddingTop: theme.spacing(1),
         paddingBottom: theme.spacing(1),
         margin: 0,
         borderStyle: 'solid',
-        borderColor: theme.palette.secundario.main,
         borderBottomStyle: 'none',
         borderRadius: '10px 10px 0px 0px',
         display: 'inline-block',

@@ -18,25 +18,25 @@ const styles = theme => ({
 const systems = [
     {
         name: "Sistema de Declaraciones",
-        color: "#f29888",
+        color: "#F8CAC4",
         icon: IconS1,
         url: "/declaraciones"
     },
     {
         name: "Sistema de Servidores Públicos en contrataciones",
-        color: "#b25fac",
+        color: "#D8ACD8",
         icon: IconS2,
         url: "/servidores"
     },
     {
         name: "Sistema de Sancionados",
-        color: "#9085da",
+        color: "#C6C1EB",
         icon: IconS3,
         url: "/sancionados"
     },
     {
         name: "Sistema de Fiscalización",
-        color: "#88bc69",
+        color: "#C4DDB6",
         icon: IconS4,
         url: "/fiscalizacion"
     },
@@ -48,7 +48,7 @@ const systems = [
     },
     {
         name: "Sistema de Contrataciones",
-        color: "#42a5cc",
+        color: "#B2DBEB",
         icon: IconS6,
         url: "/contrataciones"
     }

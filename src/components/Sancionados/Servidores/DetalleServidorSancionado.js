@@ -29,8 +29,6 @@ const styles = theme => ({
         fontSize: 15,
         fontWeight: "bold",
         marginBottom: 10,
-        textDecoration: "underline",
-        textDecorationColor: theme.palette.primary.dark,
         color: theme.palette.primary.dark,
     },
     tituloCard: {

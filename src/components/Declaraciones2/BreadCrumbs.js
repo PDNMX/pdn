@@ -9,7 +9,7 @@ import React from 'react';
 
 const system = {
   icon: IconS1,
-  color: '#F29888',
+  color: '#F8CAC4',
   name: 'Sistema de evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal',
   shortName: 'S1'
 };

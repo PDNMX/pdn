@@ -355,7 +355,6 @@ const CssDeclaraciones = theme => ({
     paddingRight: '8px'
   },
   selectedTab: {
-    backgroundColor: theme.palette.S1.color,
     borderStyle: 'solid',
     borderColor: theme.palette.secundario.main,
     borderRadius: '10px 10px 0px 0px',

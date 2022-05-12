@@ -54,7 +54,7 @@ const pdnRoutes = [
 		private: false,
 		name: "Sistema de evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal",
 		shortName: "Sistema de Declaraciones",
-		color: "#f29888",
+		color: "#F8CAC4",
 		icon: IconS1,
 		disabled: false,
 		type: "system"
@@ -66,7 +66,7 @@ const pdnRoutes = [
 		private: false,
 		name: "Sistema de los servidores públicos que intervengan en procedimientos de contrataciones públicas",
 		shortName: "Sistema de Servidores Públicos en contrataciones",
-		color: "#b25fac",
+		color: "#D8ACD8",
 		icon: IconS2,
 		disabled: false,
 		type: "system"
@@ -78,7 +78,7 @@ const pdnRoutes = [
 		private: false,
 		name: "Sistema nacional de servidores públicos y particulares sancionados",
 		shortName: "Sistema de Sancionados",
-		color: "#9085da",
+		color: "#C6C1EB",
 		icon: IconS3,
 		disabled: false,
 		type:'system'
@@ -90,7 +90,7 @@ const pdnRoutes = [
 		private: false,
 		name: "Sistema de información y comunicación del Sistema Nacional Anticorrupción y del Sistema Nacional de Fiscalización",
 		shortName: "Sistema de Fiscalización",
-		color: "#88bc69",
+		color: "#C4DDB6",
 		icon: IconS4,
 		disabled: true,
 		type: "system"
@@ -114,7 +114,7 @@ const pdnRoutes = [
 		private: false,
 		name: "Sistema de información pública de contrataciones",
 		shortName: "Sistema de Contrataciones",
-		color: "#42a5cc",
+		color: "#B2DBEB",
 		icon: IconS6,
 		disabled: false,
 		type: "system"
@@ -137,7 +137,7 @@ const pdnRoutes = [
 		name: "Sistema de evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal",
 		shortName: "Especificaciones técnicas S1",
 		subName:"Especificaciones técnicas",
-		color: "#f29888",
+		color: "#F8CAC4",
 		icon: IconS1		
 	},
 	{
@@ -148,7 +148,7 @@ const pdnRoutes = [
 		name: "Sistema de los servidores públicos que intervengan en procedimientos de contrataciones públicas",
 		subName:"Especificaciones técnicas",
 		shortName: "Especificaciones técnicas S2",
-		color: "#B25FAC",
+		color: "#D8ACD8",
 		icon: IconS2,
 	},
 	{
@@ -159,7 +159,7 @@ const pdnRoutes = [
 		name: "Sistema nacional de servidores públicos y particulares sancionados",
 		subName:"Especificaciones técnicas",
 		shortName: "Especificaciones técnicas S3",
-		color: "#9085da",
+		color: "#BCB9E9",
 		icon: IconS3,
 	},
 	{
@@ -170,7 +170,7 @@ const pdnRoutes = [
 		name: "Sistema de información pública de contrataciones",
 		subName:"Especificaciones técnicas",
 		shortName: "Especificaciones técnicas S6",
-		color: "#42A5CC",
+		color: "#B2DBEB",
 		icon: IconS6,
 	},
 	{

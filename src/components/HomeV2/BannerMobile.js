@@ -53,7 +53,7 @@ const styles = theme => ({
         marginLeft: theme.spacing(1),
         marginBottom: theme.spacing(1),
         textTransform: "none",
-        color: "#ced8db",
+        color: "#E1E8EB",
         justifyContent: 'space-between'
     },
     iconMenu:{

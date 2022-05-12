@@ -11,7 +11,7 @@ const styles = theme => ({
 
     },
     fecha:{
-        color: '#ced8db'
+        color: '#E1E8EB'
     }
 });
 

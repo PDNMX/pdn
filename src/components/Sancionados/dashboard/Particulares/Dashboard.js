@@ -1,7 +1,7 @@
 import React from 'react';
 import {withStyles} from "@mui/styles";
 import PropTypes from 'prop-types';
-import {Grid, Typography, Paper, Link} from "@mui/material";
+import {Grid, Link, Paper, Typography} from "@mui/material";
 import AnioResolucionSanciones from "./AnioResolucionSanciones";
 import SentidoResoluciones from "./SentidoResoluciones";
 import DependenciasSanciones from "./DependenciasSanciones";
@@ -53,63 +53,71 @@ const styles = theme => ({
     },
 });
 
-class Dashboard extends React.Component {
-    render() {
-        const {classes} = this.props;
-        return (
-            <div id={'s3pgraf'} className={classes.root}>
-                <Paper elevation={15} className={classes.paper}>
-                    <Grid container spacing={0} justifyContent='center' className={classes.aux}>
-                        <Grid item xs={12} className={classes.sectionG}>
-                            <Typography>
-                                <b>{"¿Qué información es?"}</b>
-                            </Typography>
-                            <Typography className={classes.desc}>
-                                La información corresponde a las personas servidoras públicas y particulares sancionados , reportada en el Registro de Proveedores y Contratistas Sancionados de la Secretaría de la Función Pública del 2004 a enero de 2022, actualmente se cuenta con <b>2,074 registros</b>.
-                            </Typography>
-                            <Typography>
-                                <b>{"¿Cómo se obtiene la información?"}</b>
-                            </Typography>
-                            <Typography  className={classes.desc}>
-                                Se obtiene del  Registro de Proveedores y Contratistas Sancionados disponible en datos.gob.mx <br/>
-                                (Fuente:
-                                <Link className={classes.link} href={'https://www.datos.gob.mx/busca/dataset/proveedores-y-contratistas-sancionados'} target="_blank" rel="noopener noreferrer">datos.gob.mx</Link>)
-                            </Typography>
-                            <Typography>
-                                <b>{"¿Qué puedo encontrar?"}</b>
-                            </Typography>
-                            <Typography  className={classes.desc}>
-                                A continuación encontrará 4 secciones:<br/><br/>
-                                1.-<b>Cantidad de licitantes, proveedores y contratistas sancionados.</b> Muestra el número de licitantes, proveedores y contratistas sancionados cuya fecha de resolución va del 2004 a enero 2022. <Link className={classes.link} href={"#g1"}>Ver</Link><br/>
-                                2.-<b>Sentido de las resoluciones.</b> Conoce cuál ha sido el sentido de la resolución para las sanciones a lo largo del tiempo, así como, de manera general, el número de sanciones por cada uno de ellos. <Link className={classes.link} href={"#g2"}>Ver</Link><br/>
-                                3.-<b>Dependencias con mayor número de sanciones.</b> Muestra cuáles son las dependencias con mayor número de licitantes, proveedores y contratistas sancionados de manera global y por año. <Link className={classes.link} href={"#g3"}>Ver</Link><br/>
-                                {/*4.-<b>Duración de las sanciones.</b> Muestra cómo varía la duración de las sanciones por año, por tipo de resolución y por dependencia. <a href="#g4">Ver</a>*/}
-                            </Typography>
-                        </Grid>
-                        <Grid item xs={12} className={classes.sectionT} id={"g1"}>
-                            <AnioResolucionSanciones/>
-                        </Grid>
-                        <Grid item xs={12} className={classes.sectionT} id={"g2"}>
-                            <SentidoResoluciones/>
-                        </Grid>
-                        <Grid item xs={12} className={classes.sectionT} id={"g3"}>
-                            <DependenciasSanciones/>
-                        </Grid>
-                        {
-                            /*
-                            <Grid item xs={12} className={classes.sectionT}>
-                            <BoxPlotTest/>
-                        </Grid>
-                             */
-                        }
-
-
+function Dashboard(props) {
+    const {classes} = props;
+    return (
+        <div id={'s3pgraf'} className={classes.root}>
+            <Paper elevation={15} className={classes.paper}>
+                <Grid container spacing={0} justifyContent='center' className={classes.aux}>
+                    <Grid item xs={12} className={classes.sectionG}>
+                        <Typography>
+                            <b>{"¿Qué información es?"}</b>
+                        </Typography>
+                        <Typography className={classes.desc}>
+                            La información corresponde a las personas servidoras públicas y particulares sancionados ,
+                            reportada en el Registro de Proveedores y Contratistas Sancionados de la Secretaría de la
+                            Función Pública del 2004 a enero de 2022, actualmente se cuenta con <b>2,074 registros</b>.
+                        </Typography>
+                        <Typography>
+                            <b>{"¿Cómo se obtiene la información?"}</b>
+                        </Typography>
+                        <Typography className={classes.desc}>
+                            Se obtiene del Registro de Proveedores y Contratistas Sancionados disponible en
+                            datos.gob.mx <br/>
+                            (Fuente:
+                            <Link className={classes.link}
+                                  href={'https://www.datos.gob.mx/busca/dataset/proveedores-y-contratistas-sancionados'}
+                                  target="_blank" rel="noopener noreferrer">datos.gob.mx</Link>)
+                        </Typography>
+                        <Typography>
+                            <b>{"¿Qué puedo encontrar?"}</b>
+                        </Typography>
+                        <Typography className={classes.desc}>
+                            A continuación encontrará 4 secciones:<br/><br/>
+                            1.-<b>Cantidad de licitantes, proveedores y contratistas sancionados.</b> Muestra el número
+                            de licitantes, proveedores y contratistas sancionados cuya fecha de resolución va del 2004 a
+                            enero 2022. <Link className={classes.link} href={"#g1"}>Ver</Link><br/>
+                            2.-<b>Sentido de las resoluciones.</b> Conoce cuál ha sido el sentido de la resolución para
+                            las sanciones a lo largo del tiempo, así como, de manera general, el número de sanciones por
+                            cada uno de ellos. <Link className={classes.link} href={"#g2"}>Ver</Link><br/>
+                            3.-<b>Dependencias con mayor número de sanciones.</b> Muestra cuáles son las dependencias
+                            con mayor número de licitantes, proveedores y contratistas sancionados de manera global y
+                            por año. <Link className={classes.link} href={"#g3"}>Ver</Link><br/>
+                            {/*4.-<b>Duración de las sanciones.</b> Muestra cómo varía la duración de las sanciones por año, por tipo de resolución y por dependencia. <a href="#g4">Ver</a>*/}
+                        </Typography>
                     </Grid>
-                </Paper>
-            </div>
-        )
-    }
+                    <Grid item xs={12} className={classes.sectionT} id={"g1"}>
+                        <AnioResolucionSanciones/>
+                    </Grid>
+                    <Grid item xs={12} className={classes.sectionT} id={"g2"}>
+                        <SentidoResoluciones/>
+                    </Grid>
+                    <Grid item xs={12} className={classes.sectionT} id={"g3"}>
+                        <DependenciasSanciones/>
+                    </Grid>
+                    {
+                        /*
+                        <Grid item xs={12} className={classes.sectionT}>
+                        <BoxPlotTest/>
+                    </Grid>
+                         */
+                    }
 
+
+                </Grid>
+            </Paper>
+        </div>
+    )
 }
 
 Dashboard.propTypes = {

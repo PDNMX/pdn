@@ -40,7 +40,7 @@ function EnhancedTableHead(props) {
                         align={row.numeric ? 'right' : 'left'}
                         padding={row.disablePadding ? 'none' : 'normal'}
                         sortDirection={orderBy === row.id ? order : false}
-                        sx={{color: "#ced8db"}}
+                        sx={{color: "#E1E8EB"}}
                     >
                         {/*<TableSortLabel
                             active={orderBy === row.id}
