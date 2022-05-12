@@ -32,7 +32,7 @@ const aux = () => axios({
     method: "GET"
 });
 
-const z = d3.scaleOrdinal().range(["#2685C8","#48BF40","#7C2BCD","#FF6A00"]);
+const z = d3.scaleOrdinal().range(["#3DA2F5","#00B3A1","#B286FD","#F87268"]);
 
 const Procedimiento = props => {
 

@@ -63,10 +63,13 @@ function loadData2() {
 }
 
 let z = d3.scaleOrdinal()
-    .range(["#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
-        "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
-        "#8BC34A", "#CDDC39", "#FFEB3B", "#FFC107", "#FF9800",
-        "#FF5722", "#795548", "#9E9E9E", "#607D8B"]);
+    .range( ["#F87268", "#DC6AF0", "#B286FD", "#8A97D6",
+        "#3DA2F5", "#00BCD4", "#00B3A1", "#4CAF50",
+        "#8BC34A", "#FFC107", "#FF9800", "#FF7247",
+        "#E2977E", "#FD938B", "#FF85AD", "#ED85FF",
+        "#AD94D6", "#8A9BF9", "#6DBCFD", "#1C9BFD",
+        "#1DE2FC", "#00DBC5", "#71E575", "#AFEE68",
+       "#F9AE3E", "#FF9270", "#F2B39C"]);
 
 
 const DependenciasSanciones = (props) => {

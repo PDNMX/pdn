@@ -63,9 +63,9 @@ function loadData2() {
     });
 }
 
-let color = ["#2196F3", "#9C27B0", "#009688", "#FF9800", "#E91E63", "#FF5722"];
+let color =  ["#52B1FF", "#DD70F0", "#07B6A5", "#FFB647", "#FF5C92", "#F97D58"];
 let z = d3.scaleOrdinal()
-    .range(["#2196F3", "#9C27B0", "#009688", "#FF9800", "#E91E63", "#FF5722"]);
+    .range( ["#52B1FF", "#DD70F0", "#07B6A5", "#FFB647", "#FF5C92", "#F97D58"]);
 z.domain(["SANCIONATORIA CON MULTA E INHABILITACIÓN", "SANCIONATORIA CON MULTA", "SANCIONATORIA", "ABSOLUTORIA", "NO ESPECIFICA", "ABSOLUTORIA"])
 
 const SentidoResoluciones = (props) => {
