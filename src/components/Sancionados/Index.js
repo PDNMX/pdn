@@ -12,7 +12,7 @@ import HeaderV2 from '../HomeV2/HeaderV2';
 import Dashboard from "./dashboard/Servidores/Dashboard";
 import Dashboard2 from "./dashboard/Particulares/Dashboard";
 import classNames from 'classnames';
-import bgimg from "../../assets/rediseno/fondo_cruces.png";
+import bgimg from "../../assets/rediseno/fondo_cruces_dark.png";
 import pdnRoutes from "../../routes/index";
 import ReactGA from "react-ga";
 

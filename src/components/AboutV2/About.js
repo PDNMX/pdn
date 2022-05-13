@@ -2,7 +2,7 @@ import React from 'react';
 import {Typography, Grid, Link, Paper, Box} from "@mui/material";
 import {Link as RouterLink} from "react-router-dom";
 import {withStyles} from "@mui/styles";
-import bgimg from "../../assets/rediseno/fondo_cruces.png";
+import bgimg from "../../assets/rediseno/fondo_cruces_dark.png";
 import pdnRoutes from "../../routes/index";
 import HeaderV2 from '../HomeV2/HeaderV2';
 import S1 from "../../assets/rediseno/sistemas_sin_fondo/ico_s1.png";

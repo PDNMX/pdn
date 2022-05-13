@@ -12,7 +12,7 @@ import IconButton from "@mui/material/IconButton";
 import GetAppIcon from "@mui/icons-material/GetApp";
 import pdnRoutes from "../../../routes";
 import HeaderV2 from "../../HomeV2/HeaderV2";
-import bgimg from "../../../assets/rediseno/fondo_cruces.png";
+import bgimg from "../../../assets/rediseno/fondo_cruces_dark.png";
 import ButtonPDN from "../../Compartidos/ButtonPDN";
 import ProtocoloConexion from '../ProtocoloConexion';
 import ServiceAgreement from '../ServiceAgreement';

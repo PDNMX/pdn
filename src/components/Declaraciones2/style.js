@@ -1,4 +1,4 @@
-import bgimg from '../../assets/rediseno/fondo_cruces.png';
+import bgimg from '../../assets/rediseno/fondo_cruces_dark.png';
 
 const CssDeclaraciones = theme => ({
   root: {

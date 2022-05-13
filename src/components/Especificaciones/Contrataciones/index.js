@@ -4,7 +4,7 @@ import withStyles from '@mui/styles/withStyles';
 import Intro from './Intro';
 import Licencia from '../Licencia';
 import Herramientas from '../Herramientas';
-import bgimg from '../../../assets/rediseno/fondo_cruces.png';
+import bgimg from '../../../assets/rediseno/fondo_cruces_dark.png';
 import pdnRoutes from '../../../routes';
 import HeaderV2 from '../../HomeV2/HeaderV2';
 import ButtonPDN from '../../Compartidos/ButtonPDN';

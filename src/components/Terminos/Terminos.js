@@ -5,7 +5,7 @@ import withStyles from '@mui/styles/withStyles';
 import Link from '@mui/material/Link'
 import HeaderV2 from "../HomeV2/HeaderV2";
 import pdnRoutes from "../../routes";
-import bgimg from "../../assets/rediseno/fondo_cruces.png";
+import bgimg from "../../assets/rediseno/fondo_cruces_dark.png";
 
 const styles = theme => ({
     root: {
