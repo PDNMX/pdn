@@ -1,7 +1,6 @@
 import React from 'react';
 import {
-    Grid, MenuItem, FormControl, Typography,  ListItemText, TextField, Button, FormControlLabel,
-    Switch, Collapse, Checkbox, Modal, CircularProgress
+    Grid, MenuItem, FormControl, Typography,  ListItemText, TextField, Button, Checkbox, Modal, CircularProgress
 } from '@mui/material';
 import {withStyles} from '@mui/styles';
 import PropTypes from 'prop-types';
