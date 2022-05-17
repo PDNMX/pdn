@@ -3,7 +3,7 @@ const CssFooter = theme => ({
     flexGrow: 1,
     height: 250,
     color: '#b1bcc1',
-    backgroundColor: 'rgba(255, 255, 255, 0.15)',
+    backgroundColor: theme.palette.background.opaque,
     marginTop: theme.spacing(6)
   },
   emailContacto: {

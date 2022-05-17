@@ -7,7 +7,7 @@ import S1 from '../../../assets/rediseno/sistemas_sin_fondo/ico_s1.png';
 import S2 from '../../../assets/rediseno/sistemas_sin_fondo/ico_s2.png';
 import S3 from '../../../assets/rediseno/sistemas_sin_fondo/ico_s3.png';
 import S6 from '../../../assets/rediseno/sistemas_sin_fondo/ico_s6.png';
-import bgimg from "../../../assets/rediseno/fondo_cruces.png";
+import bgimg from "../../../assets/rediseno/fondo_cruces_dark.png";
 import HeaderV2 from "../../HomeV2/HeaderV2";
 import pdnRoutes from "../../../routes";
 

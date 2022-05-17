@@ -11,7 +11,7 @@ import img1 from "../../assets/rediseno/svg_iconos_azul/SVG/s6_01.svg";
 import img3 from "../../assets/rediseno/svg_iconos_azul/SVG/s6_02.svg";
 import {Grid, Paper, Typography, Box} from "@mui/material";
 import SelectSupplier from "./SelectSupplier";
-import bgimg from "../../assets/rediseno/fondo_cruces.png";
+import bgimg from "../../assets/rediseno/fondo_cruces_dark.png";
 import HeaderV2 from '../HomeV2/HeaderV2';
 import pdnRoutes from "../../routes";
 

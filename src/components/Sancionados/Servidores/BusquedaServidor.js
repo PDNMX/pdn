@@ -3,8 +3,8 @@ import React from 'react';
 import withStyles from '@mui/styles/withStyles';
 import PropTypes from 'prop-types';
 import {
-    Typography, Grid, MenuItem, Checkbox, Switch, Collapse, FormControl,
-    Button, FormControlLabel, ListItemText, Modal, CircularProgress, TextField, IconButton
+    Typography, Grid, MenuItem, Checkbox, FormControl,
+    Button, ListItemText, Modal, CircularProgress, TextField
 } from "@mui/material"
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
@@ -14,7 +14,6 @@ import TablaServidoresSancionados from "./TablaServidoresSancionados";
 import DetalleServidorSancionado from "./DetalleServidorSancionado";
 import {ThemeProvider} from '@mui/material/styles';
 import ThemeV2 from "../../../ThemeV2";
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 import ReactGA from "react-ga";
 

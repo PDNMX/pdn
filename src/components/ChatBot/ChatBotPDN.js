@@ -23,7 +23,7 @@ const Example = () => {
   const toggleFloating = ({ opened }) => {
     setOpened(opened);
     //console.log(opened);
-    if (opened == true){
+    if (opened === true){
         ReactGA.event({ category: 'chatbot', action: 'click' });
     }
   };

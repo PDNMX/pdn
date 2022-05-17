@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {Typography, Grid, Box, Button, Paper}  from '@mui/material';
 import withStyles from '@mui/styles/withStyles';
-import bgimg from "../assets/rediseno/fondo_cruces.png";
+import bgimg from "../assets/rediseno/fondo_cruces_dark.png";
 import HeaderV2 from "./HomeV2/HeaderV2";
 
 const styles = theme => ({

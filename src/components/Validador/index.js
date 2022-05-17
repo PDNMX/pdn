@@ -12,7 +12,7 @@ import UploadForm from './UploadForm';
 
 import withStyles from '@mui/styles/withStyles';
 import PropTypes from 'prop-types';
-import bgimg from "../../assets/rediseno/fondo_cruces.png";
+import bgimg from "../../assets/rediseno/fondo_cruces_dark.png";
 
 
 const styles = theme => ({

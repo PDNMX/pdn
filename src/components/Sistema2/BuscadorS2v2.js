@@ -1,12 +1,9 @@
 import React from 'react';
 import withStyles from '@mui/styles/withStyles';
-import {Table, TableBody, TableCell,TablePagination, TableRow, TableFooter} from '@mui/material';
+import {Table, TableBody, TableCell,TablePagination, TableRow, TableFooter, Button} from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 import {Paper, Box, Typography, Modal} from "@mui/material"
 import axios from 'axios';
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Switch from "@mui/material/Switch";
-import Collapse from "@mui/material/Collapse";
 
 import EntradasBuscador from "./EntradasBuscador";
 //import TablaResumen from "./TablaResumen";
@@ -17,6 +14,7 @@ import FichaServidorPublico from "./FichaServidorPublico";
 import columnData from './column_data';
 import Descarga from "../Compartidos/Descarga";
 import Previos from "../Compartidos/Previos";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const styles = theme => ({
     root: {},
@@ -109,7 +107,7 @@ const BuscadorS2  =  props => {
     });
 
     const [showSummaryPanel, setShowSummaryPanel] = React.useState(true);
-
+    const [showResultsTable, setShowResultsTable] = React.useState(false);
     const [error, setError] = React.useState(false);
 
     React.useEffect(() => {
@@ -150,8 +148,9 @@ const BuscadorS2  =  props => {
         });
     };
 
-    const toggleShowSummary = () => {
-        setShowSummaryPanel(!showSummaryPanel);
+    const backButton = () => {
+        setShowSummaryPanel(true);
+        setShowResultsTable(false);
     };
 
     const handleError = (val) => {
@@ -225,7 +224,8 @@ const BuscadorS2  =  props => {
             page: 0,
             rowsPerPage: 10,
             loading: true,
-            supplier_id: supplier_id
+            supplier_id: supplier_id,
+            results: [] // limpiar resultados antes de volver a buscar
         });
     };
 
@@ -323,6 +323,10 @@ const BuscadorS2  =  props => {
                 loading: false
             });
             setError(false);
+
+            setShowResultsTable(false);
+            setShowSummaryPanel(true);
+
         } catch (err){
             console.log(err);
             setState({
@@ -376,6 +380,9 @@ const BuscadorS2  =  props => {
                 results: results,
                 totalRows: pagination.totalRows
             });
+
+            setShowSummaryPanel(false);
+            setShowResultsTable(true);
         } catch (err){
             console.log(err);
             setState({
@@ -430,24 +437,12 @@ const BuscadorS2  =  props => {
             </Box>
 
             {/* Resumen de resultados */}
-            {state.summaryData && state.summaryData.length > 0 &&
+            {showSummaryPanel && state.summaryData && state.summaryData.length > 0 &&
                 <Box p={1}>
-                    <FormControlLabel
-                        control={<Switch className={classes.panelResumen} checked={showSummaryPanel}
-                                         onChange={() => toggleShowSummary()}/>}
-                        label={
-                            <Typography variant="h6" className={classes.desc}>
-                                {showSummaryPanel ? 'Ocultar resultados generales' : 'Mostrar resultados generales'}
-                            </Typography>
-                        }
-                    />
                     <div className={classes.container}>
-                        <Collapse in={showSummaryPanel}>
-                            <Previos data={state.summaryData} handleChangeSujetoObligado={handleSearchSupplier}/>
-                            {/*
-                             <TablaResumen summaryData={state.summaryData} handleSearchSupplier={handleSearchSupplier}/>
-                            */}
-                        </Collapse>
+                        <Previos data={state.summaryData} handleChangeSujetoObligado={handleSearchSupplier}/>
+
+                        {/* <TablaResumen summaryData={state.summaryData} handleSearchSupplier={handleSearchSupplier}/> */}
                     </div>
                 </Box>
             }
@@ -457,11 +452,20 @@ const BuscadorS2  =  props => {
             </Box>
 
             {/* Desplegar resultados de la búsqueda */}
-            {state.results && state.results.length > 0 &&
+            {showResultsTable && state.results && state.results.length > 0 &&
                 <Box p={1}>
-                    <Typography variant={"h6"} className={classes.desc} paragraph>
-                        Pulsa sobre el registro para ver su detalle
-                    </Typography>
+
+                    <Box sx={{ display:'flex', flexDirection: 'row'}}>
+                        <Box sx={{flexGrow: 1}}>
+                            <Typography variant={"h6"} className={classes.desc}>
+                                Pulsa sobre el registro para ver su detalle
+                            </Typography>
+                        </Box>
+
+                        <Button onClick={() => backButton()} startIcon={<ArrowBackIcon/>} color='secundario' sx={{fontWeight: 'bold'}} >
+                            Regresar
+                        </Button>
+                    </Box>
 
                     <div className={classes.container}>
                         <Table aria-describedby="spinnerLoading" id={'tableServidores'}

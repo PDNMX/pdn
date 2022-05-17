@@ -8,7 +8,7 @@ import BuscadorParticularesSancionados from '../Sancionados/Particulares/Buscado
 import img1 from "../../assets/rediseno/svg_iconos_azul/SVG/s2_01.svg";
 import img2 from "../../assets/rediseno/svg_iconos_azul/SVG/s2_02.svg";
 import img3 from "../../assets/rediseno/svg_iconos_azul/SVG/s2_03.svg";
-import bgimg from "../../assets/rediseno/fondo_cruces.png";
+import bgimg from "../../assets/rediseno/fondo_cruces_dark.png";
 import pdnRoutes from "../../routes/index";
 
 import { ThemeProvider } from '@mui/material/styles';
