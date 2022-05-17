@@ -49,11 +49,11 @@ const Ad = props => {
             <img src={logo} alt='Semana PDN' className={classes.logo}/>
         </Box>
         <Box sx={{ display: 'flex', justifyContent: 'center'}}>
-            <img src={manitad} className={classes.manitad}/>
+            <img src={manitad} className={classes.manitad} alt='Manita' />
             <Button className={classes.btnPDN} href={url} target='_blank' variant='contained'>
                 ¡Inscribete ya!
             </Button>
-            <img src={manitai} className={classes.manitai}/>
+            <img src={manitai} className={classes.manitai} alt='Manita' />
         </Box>
     </div>
 }
