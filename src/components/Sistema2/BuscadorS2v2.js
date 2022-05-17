@@ -122,6 +122,8 @@ const BuscadorS2  =  props => {
     }, [state.summaryData]);
 
     React.useEffect(() => {
+        // al hacer click en el boton regresar: state.loading => true y state.results = []
+        // state.results = [] desencadena la búsqueda
         if (state.loading) {
             console.log('Fetching data...');
             fetchData();
@@ -129,7 +131,9 @@ const BuscadorS2  =  props => {
     }, [
         state.supplier_id,
         state.page,
-        state.rowsPerPage
+        state.rowsPerPage,
+        state.results
+        //state.loading
     ]);
 
     React.useEffect(() => {
