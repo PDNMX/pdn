@@ -44,15 +44,13 @@ const Dashboard = props => {
                         <b>¿Qué información es?</b>
                     </Typography>
                     <Typography paragraph>
-                        La información utilizada para generar las siguientes visualizaciones corresponde a la
-                        reportada por la Secretaría de la Función Pública del 2015 a mayo 2021, respecto al Registro
-                        de Servidores públicos de la Administración Pública Federal
-                        que intervienen en procedimientos de contrataciones públicas, el otorgamiento de licencias,
-                        permisos, concesiones y autorizaciones, así como en la enajenación
-                        de bienes muebles de la administración pública federal y en la asignación y emisión de
-                        dictámenes en materia de avalúos y justipreciación de rentas.
-                        <br/>
-                        En esta entrega, se cuentan con 160,776 registros.
+                        La información utilizada para generar las siguientes visualizaciones es la reportada por la Secretaría de la Función Pública del <b>2015 a
+                        enero 2022</b> del Registro de Servidores Públicos de la Administración Pública Federal, que intervienen en procedimientos de contrataciones
+                        públicas; así como en el otorgamiento de licencias, permisos, concesiones y autorizaciones; en la enajenación de bienes muebles de la
+                        administración pública federal y en la asignación y emisión de dictámenes en materia de avalúos y justipreciación de rentas.
+                        <br/><br/>
+                        A enero 2022, se cuentan con <b>163,994 registros</b>.
+
                     </Typography>
 
                     <Typography>
@@ -86,7 +84,7 @@ const Dashboard = props => {
                     <List>
                         <ListItem>
                             <ListItemText>
-                                1. <b>Ejercicio fiscal:</b> Permite conocer el número de personas servidoras públicas que intervienen en
+                                1.  <b>Ejercicio fiscal:</b> Permite conocer el número de personas servidoras públicas que intervienen en
                                 procesos de contratación en cada uno de los ejercicios fiscales. <Link className={classes.link} href="#g1">Ver</Link>
                             </ListItemText>
                         </ListItem>
@@ -98,7 +96,7 @@ const Dashboard = props => {
                         </ListItem>
                         <ListItem>
                             <ListItemText>
-                                3. <b>Ejercicios, ramos e instituciones:</b> Observa más a fondo el comportamiento del número de personas servidoras públicas
+                                3.<b>Ejercicios, ramos e instituciones:</b> Observa más a fondo el comportamiento del número de personas servidoras públicas
                                 que intervienen en procesos de contratación,
                                 podrás configuar variables como el Ejercicio Fiscal, el Ramo y/o la Institución para obtener
                                 información más detallada <Link className={classes.link} href="#g3">Ver</Link>
