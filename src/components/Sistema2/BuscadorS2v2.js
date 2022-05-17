@@ -207,6 +207,9 @@ const BuscadorS2  =  props => {
 
     //busqueda en varias URLs
     const handleBroadSearch = () => {
+        setShowSummaryPanel(false);
+        setShowResultsTable(false);
+
         setState({
             ...state,
             results: null,
@@ -326,8 +329,8 @@ const BuscadorS2  =  props => {
                 summaryData: res.data,
                 loading: false
             });
-            setError(false);
 
+            setError(false);
             setShowResultsTable(false);
             setShowSummaryPanel(true);
 
@@ -339,6 +342,8 @@ const BuscadorS2  =  props => {
             });
 
             setError(true);
+            setShowResultsTable(false);
+            setShowSummaryPanel(true);
         }
     };
 
@@ -394,6 +399,8 @@ const BuscadorS2  =  props => {
                 loading: false
             });
 
+            setShowSummaryPanel(false);
+            setShowResultsTable(true);
             setError(true);
         }
     };
