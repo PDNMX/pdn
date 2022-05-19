@@ -179,13 +179,13 @@ export default function CustomizedExpansionPanels() {
                             <li>
                                 <Typography>
                                     <MuiLink href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LGRA.pdf" target="_blank">
-                                    Ley General de Responsabilidades Administrativas (LGRA)</MuiLink> artículos 26, 27, 30, 31, 34, 43, 44, 46, 59 y 93.
+                                        Ley General de Responsabilidades Administrativas (LGRA)</MuiLink> artículos 26, 27, 30, 31, 34, 43, 44, 46, 59 y 93.
                                 </Typography>
                             </li>
                             <li>
                                 <Typography>
                                     <MuiLink href="https://www.dof.gob.mx/nota_detalle.php?codigo=5541802&fecha=23/10/2018" target="_blank">
-                                    Bases para el Funcionamiento de la Plataforma Digital Nacional</MuiLink>, las cuales establecen las directrices para el funcionamiento de la PDN y de los sistemas que la conforman, buscando garantizar en todo momento la interoperabilidad, interconexión, estabilidad, uso y seguridad de la información.
+                                        Bases para el Funcionamiento de la Plataforma Digital Nacional</MuiLink>, las cuales establecen las directrices para el funcionamiento de la PDN y de los sistemas que la conforman, buscando garantizar en todo momento la interoperabilidad, interconexión, estabilidad, uso y seguridad de la información.
                                 </Typography>
                             </li>
                         </ol>
@@ -278,17 +278,17 @@ export default function CustomizedExpansionPanels() {
                         <ol>
                             <li><Typography>Uso de API´s que permiten la consulta de los datos desde la PDN a la institución pública. </Typography></li>
                             <li><Typography>Estándares técnicos de datos que permiten compartir información entre las instituciones públicas y la PDN de manera unificada y estandarizada. Hemos desarrollado tres estándares:</Typography></li>
-                                <ul className={classes.ul}>
-                                    <li className={classes.li}>
-                                        <Link to="/especificaciones/s1" className={classes.link}><Typography display='inline'>Declaraciones patrimoniales y de intereses,</Typography></Link>
-                                    </li>
-                                    <li className={classes.li}>
-                                        <Link to="/especificaciones/s2" className={classes.link}><Typography display='inline'>Servidores públicos que intervienen en contrataciones públicas, y</Typography></Link>
-                                    </li>
-                                    <li className={classes.li}>
-                                        <Link to="/especificaciones/s3" className={classes.link}><Typography display='inline'>Servidores públicos y particulares sancionados</Typography></Link>
-                                    </li>
-                                </ul>
+                            <ul className={classes.ul}>
+                                <li className={classes.li}>
+                                    <Link to="/especificaciones/s1" className={classes.link}><Typography display='inline'>Declaraciones patrimoniales y de intereses,</Typography></Link>
+                                </li>
+                                <li className={classes.li}>
+                                    <Link to="/especificaciones/s2" className={classes.link}><Typography display='inline'>Servidores públicos que intervienen en contrataciones públicas, y</Typography></Link>
+                                </li>
+                                <li className={classes.li}>
+                                    <Link to="/especificaciones/s3" className={classes.link}><Typography display='inline'>Servidores públicos y particulares sancionados</Typography></Link>
+                                </li>
+                            </ul>
                             <li><Typography>Tecnologías y servicios de software modernos y de código abierto. Las tecnologías que usamos son las siguientes:</Typography></li>
                         </ol>
 
@@ -329,7 +329,7 @@ export default function CustomizedExpansionPanels() {
                                     Tecnología: React.js Material UI
                                 </Typography>
                             </li>
-                            <li className={classes.li} display='inline'>
+                            <li className={classes.li}>
                                 <Typography paragraph display='inline'>
                                     <b>Seguridad</b><br/>
                                     Uso: Autorización<br/>
@@ -564,8 +564,27 @@ export default function CustomizedExpansionPanels() {
                 </AccordionDetails>
             </Accordion>
 
+
             <Accordion square expanded={expanded === 'panel9'} onChange={handleChange('panel9')}>
                 <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel9d-content" id="panel9d-header">
+                    <Typography variant="h6">Manual de usuario</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                    <div>
+                        <Typography paragraph>
+                            Conoce a detalle las secciones y funcionalidades de la PDN a través del Manual de usuario.
+                        </Typography>
+                        <ButtonPDN
+                            href='https://drive.google.com/file/d/1Fc0bg22fMoBXXxnihUCZBpnM77Je9Wap/view?usp=sharing'
+                            target='_blank'>
+                            Manual de usuario
+                        </ButtonPDN>
+                    </div>
+                </AccordionDetails>
+            </Accordion>
+
+            <Accordion square expanded={expanded === 'panel10'} onChange={handleChange('panel10')}>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel10d-content" id="panel10d-header">
                     <Typography variant="h6">Contáctanos</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
