@@ -1,7 +1,7 @@
-import {Typography} from "@mui/material"
 import React from "react";
+import {Typography} from "@mui/material";
+import ButtonPDN from '../../Compartidos/ButtonPDN';
 import withStyles from '@mui/styles/withStyles';
-import Button from '@mui/material/Button';
 
 const styles = theme => ({
     root: {
@@ -11,19 +11,14 @@ const styles = theme => ({
         marginTop: theme.spacing(1),
         marginRight: theme.spacing(1),
         marginBottom: theme.spacing(2),
-        background: '#ffe01b',//'#fecb6e'
     }
 });
 
-class DescripcionEstandar extends React.Component {
-
-    render() {
-
-        const {classes} = this.props;
-
+const DescripcionEstandar = props => {
+        const {classes} = props;
         return (
             <div className={classes.root}>
-                <Typography paragraph color="textPrimary">
+                <Typography paragraph >
                     Esta guía tiene como finalidad la descripción del Estándar para la Interoperabilidad de Datos de Servidores Públicos y Particulares Sancionados,
                     desarrollado por la Secretaría Ejecutiva del Sistema Nacional Anticorrupción (SESNA).
                     Se presenta el modelo de interoperabilidad que deberán adoptar los diversos sistemas de registro de Servidores Públicos y Particulares Sancionados que proveerán
@@ -31,9 +26,9 @@ class DescripcionEstandar extends React.Component {
                     se proporciona una serie de recomendaciones para la implementación del estándar por parte de las Instituciones.
                 </Typography>
 
-                <Typography variant="h5" paragraph color="textPrimary">Antecedentes</Typography>
+                <Typography variant="h5" paragraph >Antecedentes</Typography>
 
-                <Typography paragraph color="textPrimary">
+                <Typography paragraph >
                     El 23 de octubre de 2018 fueron publicadas las Bases para el funcionamiento de la
                     Plataforma Digital Nacional (PDN) en el DOF. El Art. 6 establece que para el correcto funcionamiento
                     de cada uno de los sistemas, la SESNA emitirá los protocolos, estándares, reglamentos, especificaciones
@@ -42,11 +37,11 @@ class DescripcionEstandar extends React.Component {
                     y encargados a nivel federal, estatal y municipal.
                 </Typography>
 
-                <Typography variant="h5" paragraph color="textPrimary">
+                <Typography variant="h5" paragraph >
                     Introducción
                 </Typography>
 
-                <Typography paragraph color="textPrimary">
+                <Typography paragraph >
                     En la actualidad, la información de los servidores públicos y particulares sancionados de los diferentes
                     niveles de gobierno se encuentra contenida en diversos formatos,
                     bases de datos y sistemas de información; cada uno de ellos con particularidades tecnológicas y
@@ -56,7 +51,7 @@ class DescripcionEstandar extends React.Component {
                     la información de una manera uniforme e interoperable.
                 </Typography>
 
-                <Typography paragraph color="textPrimary">
+                <Typography paragraph >
                     Conforme a lo anterior, la SESNA ha conceptualizado a la Plataforma Digital Nacional como una
                     herramienta que permitirá la consulta de información de las diferentes instituciones de los tres
                     niveles de gobierno en un solo punto, sin tener el objetivo de concentrarla o resguardarla.
@@ -65,7 +60,7 @@ class DescripcionEstandar extends React.Component {
                     sin importar la tecnología con la que dichos sistemas fueron desarrollados (i.e., lenguajes de programación, bases de datos, etc.).
                 </Typography>
 
-                <Typography paragraph color="textPrimary">
+                <Typography paragraph >
                     La PDN logrará la interoperabilidad técnica con los diversos sistemas que la integrarán a través
                     de la creación de estándares de datos y mediante el uso de Interfaces de Programación de Aplicaciones
                     o APIs (por sus siglas en Inglés). Los estándares de datos permitirán homologar la manera en que la
@@ -77,7 +72,7 @@ class DescripcionEstandar extends React.Component {
 
                 </Typography>
 
-                <Typography paragraph color="textPrimary">
+                <Typography paragraph >
                     La SESNA ha planeado el desarrollo de la PDN mediante el uso APIs Web
                     con arquitectura REST (REpresentational State Transfer).
                     Dicha tecnología es ampliamente usada por en la industria del software para el desarrollo de aplicaciones web,
@@ -85,11 +80,11 @@ class DescripcionEstandar extends React.Component {
                     sistemas basados en APIs REST de manera rápida y a un bajo costo.
                 </Typography>
 
-                <Typography variant="h5" id="oas" paragraph color="textPrimary">
+                <Typography variant="h5" id="oas" paragraph >
                     Open API Specification
                 </Typography>
 
-                <Typography paragraph color="textPrimary">
+                <Typography paragraph >
                     El Estándar para la Interoperabilidad de Datos de Servidores Públicos y Particulares Sancionados está basado en el formato conocido como Open API Specification (OAS),
                     el cual es un formato de especificación que permite describir de manera precisa las características con las que deberan
                     contar las APIs que integrarán a la PDN.
@@ -101,14 +96,14 @@ class DescripcionEstandar extends React.Component {
                 </Typography>
 
                 <p>
-                    <Button variant="contained" className={classes.button} href="https://github.com/OAI/OpenAPI-Specification">Más información</Button>
+                    <ButtonPDN  target="_blank" href="https://github.com/OAI/OpenAPI-Specification">Más información</ButtonPDN>
                 </p>
 
-                <Typography variant="h5" id="oauth" paragraph color="textPrimary">
+                <Typography variant="h5" id="oauth" paragraph >
                     OAuth 2.0
                 </Typography>
 
-                <Typography paragraph color="textPrimary">
+                <Typography paragraph >
                     El acceso a las APIs que se integrarán a la PDN se gestionará a través del protocolo de autorización OAuth 2.0,
                     el cual es un estándar ampliamente usado por la industria de Internet. El estándar OAuth 2.0
                     que permitirá a la PDN obtener acceso necesario a las APIs de las instituciones
@@ -116,11 +111,11 @@ class DescripcionEstandar extends React.Component {
                 </Typography>
 
                 <p>
-                    <Button variant="contained" className={classes.button} href="https://oauth.net/2/"> Más información </Button>
-                    <Button variant="contained" className={classes.button} target="_blank" href="https://drive.google.com/file/d/17-npQleAV87gV19hbmtzgZipegl0qrIO/view?usp=sharing"> Guía de referencia </Button>
+                    <ButtonPDN  target="_blank" href="https://oauth.net/2/"> Más información </ButtonPDN>
+                    <ButtonPDN  target="_blank" href="https://drive.google.com/file/d/17-npQleAV87gV19hbmtzgZipegl0qrIO/view?usp=sharing"> Guía de referencia </ButtonPDN>
                 </p>
             </div>)
-    }
+
 }
 
 export default withStyles(styles) (DescripcionEstandar);

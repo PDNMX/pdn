@@ -1,7 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@mui/styles';
-import {Table, TableBody, TableCell, TablePagination, TableRow, TableFooter, TableHead, Grid, Typography} from '@mui/material';
+import {
+    Table,
+    TableBody,
+    TableCell,
+    TablePagination,
+    TableRow,
+    TableFooter,
+    TableHead,
+    Grid,
+    Typography,
+    Button
+} from '@mui/material';
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 
 const columnData = [
@@ -10,19 +22,17 @@ const columnData = [
     {id: 'expediente', label: 'Número de expediente'},
     {id: 'sentidoResolucion', label: 'Sentido de la resolución'}
 ];
-
 const styles = theme => ({
     tablePagination: {
         overflowX: 'auto',
-        fontSize: '0.75rem'
+        fontSize: '0.75rem',
+        color : theme.palette.greyColor,
+        backgroundColor : theme.palette.background.tableBody
     },
     gridTable: {
-        marginBottom: '27px',
+        marginBottom: theme.spacing(3),
         padding: theme.spacing(1),
         maxWidth: '1200px',
-    },
-    desc: {
-        color: theme.palette.primary.dark,
     },
     container1: {
         display: 'table',
@@ -36,6 +46,21 @@ const styles = theme => ({
         display: 'tableCell',
         overflowX: 'auto',
         width: '100%'
+    },
+    tableHead: {
+        color: theme.palette.text.main,
+        backgroundColor: theme.palette.background.default
+    },
+    row:{
+        cursor:'pointer'
+    },
+    tableBody:{
+        backgroundColor:theme.palette.background.tableBody
+    },
+    buttonBack: {
+        padding: theme.spacing(1),
+        fontWeight: 'bold',
+        marginBottom: theme.spacing(1)
     }
 });
 
@@ -48,28 +73,35 @@ function TablaParticularesSancionados({
                                           nivel,
                                           verDetalle,
                                           handleChangeRowsPerPage,
-                                          handleChangePage
+                                          handleChangePage,
+                                          returnToPrevios
                                       }) {
     return (
         <div>
             <Grid container justifyContent='center' spacing={0} className={classes.gridTable}>
                 <Grid item xs={12} className={classes.section}>
                     {data && data.length > 0 &&
-                    <Typography variant="h6" className={classes.desc}>Pulsa sobre el registro para ver su
+                    <Typography variant="h6" color={'primario.contrastText'}>Pulsa sobre el registro para ver su
                         detalle<br/></Typography>
                     }
+                </Grid>
+                <Grid item xs={12} textAlign={'right'}>
+                    <Button startIcon={<ArrowBackIcon />} onClick={()=> returnToPrevios()}
+                            color="secundario" className={classes.buttonBack}>
+                        Regresar
+                    </Button>
                 </Grid>
                 <Grid item xs={12} className={classes.container1}>
                     <div className={classes.container2}>
                         {data && data.length > 0 &&
                         <Table>
-                            <TableHead style={{backgroundColor: '#f5f5f5'}}>
+                            <TableHead className={classes.tableHead}>
                                 <TableRow>
                                     {
                                         columnData.map(column => {
                                             return (
                                                 <TableCell key={column.id}>
-                                                    <Typography className={classes.tableHead}
+                                                    <Typography color={'primario.contrastText'}
                                                                 variant={"body1"}>
                                                         {column.label}
                                                     </Typography>
@@ -79,7 +111,7 @@ function TablaParticularesSancionados({
                                     }
                                 </TableRow>
                             </TableHead>
-                            <TableBody id="tableParticulares">
+                            <TableBody className={classes.tableBody}>
                                 {data
                                     .map(n => {
                                         return (
@@ -89,6 +121,7 @@ function TablaParticularesSancionados({
                                                 role="checkbox"
                                                 tabIndex={-1}
                                                 key={n.id}
+                                                className={classes.row}
                                             >
                                                 <TableCell component="th" scope="row" style={{width: '25%'}}
                                                            padding="normal">{n.particularSancionado.nombreRazonSocial}</TableCell>

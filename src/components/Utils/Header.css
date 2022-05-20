@@ -1,6 +1,6 @@
 .breadcrumb {
-    background: #f2f2f2;
-    padding: 15px 0 18px; }
+    /*background: #0d3b49;*/
+    padding: 24px 0 24px; }
 .breadcrumb ul {
     line-height: 12px;
     margin: 0; }
@@ -19,7 +19,7 @@
 .breadcrumb li:last-child:after {
     content: ""; }
 .breadcrumb li a {
-    color: #666666;
+    color: whitesmoke;
     border-bottom: 1px dotted #34b3eb;
 }
 

@@ -1,14 +1,26 @@
 import React  from 'react';
 import withStyles from '@mui/styles/withStyles';
-import Header from './Header/Header';
-import Grid from '@mui/material/Grid';
-import Footer from "../Home/Footer";
 import ExpansionPanels from './ExpansionPanels';
 import Disclaimer from "./Disclaimer";
+import bgimg from "../../assets/rediseno/fondo_cruces_dark.png";
+import HeaderV2 from "../HomeV2/HeaderV2";
+import pdnRoutes from "../../routes";
+import {Grid, Paper, Box} from "@mui/material";
 
 const styles = theme => ({
     root: {
-        flexGrow: 1
+        flexGrow: 1,
+        backgroundColor: theme.palette.primario.main,
+        backgroundImage: `url(${bgimg})`,
+        backgroundRepeat: "repeat",
+        backgroundPosition: 'fixed',
+        /* color: '#f2f2f2' */
+    },
+    rootItem: {
+        maxWidth: "1200px",
+        padding: theme.spacing(1),
+        paddingTop: 90,
+        paddingBottom: 90,
     },
     item: {
         maxWidth: 1200,
@@ -17,61 +29,43 @@ const styles = theme => ({
         paddingTop: 40,
         paddingBottom: theme.spacing(10),
     },
-    title: {
-        color: theme.palette.primary.dark
+    paper: {
+        backgroundColor: theme.palette.background.opaque,
+        padding: theme.spacing(2),
+        color: theme.palette.primario.contrastText,
+        borderStyle: 'solid',
+        borderWidth: 1,
+        borderColor: theme.palette.secundario.main,
+        borderRadius: '10px 10px 10px 10px',
+        display: 'flex',
+        justifyContent: "center"
     },
-    link: {
-        textDecoration: "none",
-        color: theme.palette.primary.dark
-    },
-    diagrama: {
-        maxWidth: 900,
-        padding: theme.spacing(2)
-    },
-    disclaimer:{
-        backgroundColor: '#f6f6f6',
-    },
-    disclaimerItem: {
-        paddingTop: theme.spacing(4),
-        paddingBottom : theme.spacing(4),
-        paddingRight: theme.spacing(1),
-        paddingLeft: theme.spacing(1),
-        maxWidth: 1200
+    box: {
+        maxWidth: '900px', paddingTop: '50px', paddingBottom: '50px'
     }
 });
 
-class HelpDesk extends React.Component{
-
-    render() {
-
-        const {classes} = this.props;
-
-        return (
-            <div className={classes.root}>
-                <Header/>
-
-                <Grid container spacing={0} justifyContent="center" className={classes.disclaimer}>
-                    <Grid item xs={12} className={classes.disclaimerItem}>
+const HelpDesk = props => {
+    const {classes} = props;
+    const section = pdnRoutes.find(route => route.path === '/mesa-de-ayuda');
+    return (<div className={classes.root}>
+        <HeaderV2 section={section}/>
+        {/* <Grid container spacing={0} justifyContent="center">
+            <Grid item xs={12} className={classes.item}>
+                
+            </Grid>
+        </Grid> */}
+        <Grid container justifyContent="center" spacing={0}>
+            <Grid item xs={12} className={classes.rootItem}>
+                <Paper className={classes.paper} elevation={15} >
+                    <Box className={classes.box}>
                         <Disclaimer/>
-                    </Grid>
-                </Grid>
-
-
-
-                <Grid container spacing={0} justifyContent="center">
-                    <Grid item xs={12} className={classes.item}>
-
-
                         <ExpansionPanels/>
-
-
-                    </Grid>
-
-                </Grid>
-                <Footer/>
-            </div>
-        );
-    }
+                    </Box>
+                </Paper>
+            </Grid>
+        </Grid>
+    </div>);
 }
 
 

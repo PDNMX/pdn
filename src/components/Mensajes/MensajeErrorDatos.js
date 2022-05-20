@@ -1,15 +1,15 @@
 import React from "react";
 import {withStyles} from '@mui/styles';
-import {Grid, Typography, Modal} from "@mui/material";
+import {Grid, Typography} from "@mui/material";
 import IconProblem from "@mui/icons-material/ReportProblem";
 
 const styles = theme => ({
     mensaje: {
         textAlign: "center",
-        color: theme.palette.red.color
+        color: theme.palette.redColor
     },
     icon: {
-        color: theme.palette.red.color,
+        color: theme.palette.redColor,
         fontSize: "5em"
     },
     iconContainer: {

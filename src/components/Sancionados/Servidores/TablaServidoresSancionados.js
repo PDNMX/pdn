@@ -7,8 +7,9 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import TableFooter from '@mui/material/TableFooter';
 import Grid from "@mui/material/Grid";
-import {Typography} from "@mui/material";
+import {Button, Typography} from "@mui/material";
 import TableHead from "@mui/material/TableHead";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 
 const columnData = [
@@ -21,15 +22,14 @@ const columnData = [
 const styles = theme => ({
     tablePagination: {
         overflowX: 'auto',
-        fontSize: '0.75rem'
+        fontSize: '0.75rem',
+        color : theme.palette.greyColor,
+        backgroundColor : theme.palette.background.tableBody
     },
     gridTable: {
-        marginBottom: '27px',
+        marginBottom: theme.spacing(3),
         padding: theme.spacing(1),
         maxWidth: '1200px',
-    },
-    desc: {
-        color: theme.palette.primary.dark,
     },
     container1: {
         display: 'table',
@@ -43,6 +43,21 @@ const styles = theme => ({
         display: 'tableCell',
         overflowX: 'auto',
         width: '100%'
+    },
+    tableHead: {
+        color: theme.palette.text.main,
+        backgroundColor: theme.palette.background.default
+    },
+    row:{
+        cursor:'pointer'
+    },
+    tableBody:{
+        backgroundColor:theme.palette.background.tableBody
+    },
+    buttonBack: {
+        padding: theme.spacing(1),
+        fontWeight: 'bold',
+        marginBottom: theme.spacing(1)
     }
 });
 
@@ -54,7 +69,8 @@ function TablaServidoresSancionados({
                                         totalRows,
                                         verDetalle,
                                         handleChangeRowsPerPage,
-                                        handleChangePage
+                                        handleChangePage,
+                                        returnToPrevios
                                     }) {
     return (
         <div>
@@ -62,22 +78,28 @@ function TablaServidoresSancionados({
                 <Grid item xs={12}>
                     {
                         data && data.length > 0 &&
-                        <Typography variant={"h6"} className={classes.desc}>Pulsa sobre el registro para ver su
+                        <Typography variant={"h6"} color={'primario.contrastText'}>Pulsa sobre el registro para ver su
                             detalle<br/></Typography>
                     }
+                </Grid>
+                <Grid item xs={12} textAlign={'right'}>
+                    <Button startIcon={<ArrowBackIcon />} onClick={()=> returnToPrevios()}
+                            color="secundario" className={classes.buttonBack}>
+                        Regresar
+                    </Button>
                 </Grid>
                 <Grid item xs={12} className={classes.container1} id={'hack1'}>
                     <div className={classes.container2} id={'hack2'}>
                         {
                             data && data.length > 0 &&
                             <Table>
-                                <TableHead style={{backgroundColor: '#f5f5f5'}}>
+                                <TableHead className={classes.tableHead}>
                                     <TableRow>
                                         {
                                             columnData.map(column => {
                                                 return (
                                                     <TableCell key={column.id}>
-                                                        <Typography className={classes.tableHead}
+                                                        <Typography color={'primario.contrastText'}
                                                                     variant={"body1"}>
                                                             {column.label}
                                                         </Typography>
@@ -87,7 +109,7 @@ function TablaServidoresSancionados({
                                         }
                                     </TableRow>
                                 </TableHead>
-                                <TableBody>
+                                <TableBody className={classes.tableBody}>
                                     {data.map(n => {
                                         return (
                                             <TableRow
@@ -96,6 +118,7 @@ function TablaServidoresSancionados({
                                                 role="checkbox"
                                                 tabIndex={-1}
                                                 key={n.id}
+                                                className={classes.row}
                                             >
                                                 <TableCell component="th" scope="row"
                                                            padding="normal">{n.expediente}</TableCell>

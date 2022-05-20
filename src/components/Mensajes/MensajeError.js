@@ -31,7 +31,7 @@ const styles = theme => ({
     ,
     titleError: {
         textAlign: 'center',
-        color: theme.palette.red.color
+        color: theme.palette.redColor
     },
 });
 

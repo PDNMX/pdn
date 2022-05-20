@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import DownloadIcon from '@mui/icons-material/SaveAlt';
 import {Button} from "@mui/material";
 import classNames from 'classnames';
-import PropDataUpdatedCSVLink from '../PropDataUpdatedCSVLink';
+import PropDataUpdatedCSVLink from './PropDataUpdatedCSVLink';
 
 const styles = theme => ({
     button: {

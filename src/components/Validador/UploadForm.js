@@ -1,39 +1,47 @@
 import React from "react";
 import Button from "@mui/material/Button";
-import InputLabel from "@mui/material/InputLabel";
+import Grid from "@mui/material/Grid";
 /* import FormHelperText from '@mui/material/FormHelperText'; */
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 
 import Ajv from "ajv";
+import addFormats from "ajv-formats"
 import localize from "ajv-i18n";
 //let SwaggerParser = require('swagger-parser');
 import Parser from "swagger-parser";
 import withStyles from '@mui/styles/withStyles';
 import PropTypes from "prop-types";
+import ReactGA from "react-ga";
 
 const styles = (theme) => ({
   root: {
     flexGrow: 1,
+    color: theme.palette.text.main
   },
   button: {
-    marginTop: theme.spacing(1),
+    /* marginTop: theme.spacing(1), */
     marginRight: theme.spacing(1),
     marginBottom: theme.spacing(2),
     background: "#ffe01b",
+    padding: "14.75px",
+    
   },
   button2: {
-    marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(2),
+    /* marginTop: theme.spacing(1), */
+    marginBottom: theme.spacing(1),
+    padding: "15px",
+    
   },
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
+    color: theme.palette.text.main
   },
   selectEmpty: {
-    marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(2),
+    marginBottom: theme.spacing(1),
+    color: theme.palette.text.main
   },
 });
 
@@ -91,6 +99,7 @@ class UploadForm extends React.Component {
     const { formValues, formValidity } = this.state;
     console.log(formValues);
     if (Object.values(formValidity).every(Boolean)) {
+      ReactGA.event({ category: 'validador1', action: 'click' });
       let file = this.state.formValues.uploadJson;
       /* console.log(file) */
       let reader = new FileReader();
@@ -147,7 +156,9 @@ class UploadForm extends React.Component {
               Parser.validate(results)
                 .then((esquema) => {
                   let ajv = new Ajv({ allErrors: true });
-                  ajv.addFormat("float", "^[-+]?[0-9]*\\.?[0-9]+$");
+                  addFormats(ajv);
+                  //ajv.addFormat("float", "^[-+]?[0-9]*\\.?[0-9]+$");
+                  ajv.addKeyword("example");
                   /* let pathFix = 'esquema.components.schemas.' + esquemaOAS; */
                   console.log(esquema.components.schemas[esquemaOAS]);
                   let validate = ajv.compile(
@@ -210,6 +221,7 @@ class UploadForm extends React.Component {
     const { formValues, formErrors, isSubmitting } = this.state;
     return (
       <div className={classes.root}>
+        <Grid container direction="row" justifyContent="center" >
         <form onSubmit={this.handleSubmit}>
           <FormControl className={classes.formControl}>
             <Button
@@ -232,9 +244,9 @@ class UploadForm extends React.Component {
             <div className="invalid-feedback">{formErrors.uploadJson}</div>
           </FormControl>
           <FormControl className={classes.formControl}>
-            <InputLabel id="demo-simple-select-required-label">
+            {/* <InputLabel id="demo-simple-select-required-label">
               Sistema
-            </InputLabel>
+            </InputLabel> */}
             <Select
               /* labelId="demo-simple-select-required-label" */
               id="demo-simple-select-required"
@@ -242,9 +254,12 @@ class UploadForm extends React.Component {
               value={formValues.tipoSistema}
               onChange={this.handleChange}
               className={classes.selectEmpty}
+              displayEmpty
+              disabled={this.state.disabled}
+              
             >
               <MenuItem value="">
-                <em>Ninguno</em>
+                <em>Sistema</em>
               </MenuItem>
               <MenuItem value={"s1I"}>S1 - Inicial</MenuItem>
               <MenuItem value={"s1M"}>S1 - Modificación</MenuItem>
@@ -260,6 +275,7 @@ class UploadForm extends React.Component {
             <Button
               variant="contained"
               type="submit"
+              size="large"
               className={classes.button}
               disabled={isSubmitting}
             >
@@ -267,6 +283,8 @@ class UploadForm extends React.Component {
             </Button>
           </FormControl>
         </form>
+        </Grid>
+
       </div>
     );
   }

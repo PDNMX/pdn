@@ -3,8 +3,8 @@ import React from 'react';
 import withStyles from '@mui/styles/withStyles';
 import PropTypes from 'prop-types';
 import {
-    Typography, InputLabel, Select, Grid, MenuItem, Checkbox, Input, Switch, Collapse, FormControl,
-    Button, FormControlLabel, ListItemText, Modal, CircularProgress, TextField, OutlinedInput
+    Typography, Grid, MenuItem, Checkbox, FormControl,
+    Button, ListItemText, Modal, CircularProgress, TextField
 } from "@mui/material"
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
@@ -12,6 +12,10 @@ import MensajeErrorDatos from "../../Mensajes/MensajeErrorDatos";
 import Previos from "../../Compartidos/Previos";
 import TablaServidoresSancionados from "./TablaServidoresSancionados";
 import DetalleServidorSancionado from "./DetalleServidorSancionado";
+import {ThemeProvider} from '@mui/material/styles';
+import ThemeV2 from "../../../ThemeV2";
+
+import ReactGA from "react-ga";
 
 const axios = require('axios');
 
@@ -20,7 +24,7 @@ const styles = theme => ({
         width: '100%'
     },
     '&$focus': {
-        color: theme.palette.black.color,
+        //color: theme.palette.black.color,
     },
     centrado: {
         display: 'flex',
@@ -36,7 +40,7 @@ const styles = theme => ({
         bottom: 0
     },
     desc: {
-        color: theme.palette.primary.dark,
+        color: theme.palette.text.contrastText,
     },
     container: {
         /* marginTop: '30px',
@@ -48,6 +52,10 @@ const styles = theme => ({
         overflowX: 'auto',
         padding: theme.spacing(1)
     },
+    button: {
+        padding: theme.spacing(1),
+        fontWeight: 'bold'
+    }
 });
 
 const tiposSancion = [
@@ -58,300 +66,248 @@ const tiposSancion = [
     {label: 'Indemnización resarcitoria', value: 'IRSC'},
     {label: 'Sanción económica', value: 'SE'},
     {label: 'Otro', value: 'O'}
-]
+];
 
 const camposOrdenamiento = [
     {label: 'Nombre', value: 'nombres'},
     {label: 'Apellido Uno', value: 'primerApellido'},
     {label: 'Apellido Dos', value: 'segundoApellido'},
     {label: 'Institución', value: 'institucionDependencia'}
-]
+];
 
 const tiposOrdenamiento = [
     {label: 'Ascendente', value: 'asc'},
     {label: 'Descendente', value: 'desc'}
-]
+];
 
-class BusquedaServidor extends React.Component {
-    constructor(props) {
-        super(props);
-        this.previosRef = React.createRef();
-        this.resultsRef = React.createRef();
-        this.state = {
-            filterData: [],
-            page: 1,
-            rowsPerPage: 10,
-            totalRows: 0,
-            previos: null,
-            panelPrevios: true,
-            error: false,
-            loading: false,
-            busquedaAvanzada: false,
-            //Filtros
-            nombres: '',
-            primerApellido: '',
-            segundoApellido: '',
-            tipoSancion: [],
-            institucionDependencia: "any",
-            nivel: 'any',
-            campoOrden: 'any',
-            tipoOrden: 'any',
-            institucionesLista: [],
-            elementoSeleccionado: null,
-            proveedor: 'any',
-            proveedoresLista: []
+const initialPagination = {
+    page: 1,
+    rowsPerPage: 10,
+    totalRows: 0,
+};
+
+const initialFilter = {
+    nombres: '',
+    primerApellido: '',
+    segundoApellido: '',
+    tipoSancion: [],
+    institucionDependencia: 'any',
+    nivel: 'any',
+    provider: 'any'
+};
+
+const initialSort = {
+    campoOrden: 'any',
+    tipoOrden: 'any',
+};
+
+function BusquedaServidor({classes}) {
+    const [filterData, setFilterData] = React.useState([]);
+    const [previos, setPrevios] = React.useState(null);
+    const [error, setError] = React.useState(false);
+    const [loading, setLoading] = React.useState(false);
+    const [showAdvancedSearch, setShowAdvancedSearch] = React.useState(false);
+    const [institutionsList, setInstitutionsList] = React.useState([]);
+    const [selectedItem, setSelectedItem] = React.useState(null);
+    const [provider, setProvider] = React.useState('any');
+    const [providersList, setProvidersList] = React.useState([]);
+    const [pagination, setPagination] = React.useState(initialPagination);
+    const [filter, setFilter] = React.useState(initialFilter);
+    const [sort, setSort] = React.useState(initialSort);
+    const [view, setView] = React.useState(0);
+
+    React.useEffect(() => {
+        loadInstitutions();
+        loadProviders();
+    }, []);
+
+    React.useEffect(() => {
+        loadInstitutions();
+        loadProviders();
+    }, [filter?.nivel]);
+
+    React.useEffect(() => {
+        loadInstitutions();
+    }, [filter?.provider]);
+
+    React.useEffect(() => {
+        if (provider !== 'any') {
+            setPagination({...pagination, page: 1});
+            setSelectedItem(null);
+            handleSearchAPI();
         }
-    }
+    }, [provider]);
 
-    componentDidMount() {
-        this.loadInstituciones();
-        this.loadProveedores();
-    }
-
-    loadInstituciones = () => {
+    const loadInstitutions = () => {
         let sug = [];
         let options = {
             url: process.env.REACT_APP_S3S_BACKEND + '/api/v1/entities',
             json: true,
             method: "post",
-            data: {
-
-            }
+            data: {}
         };
-        if (this.state.nivel !== 'any') options.data.nivel_gobierno = this.state.nivel;
-        if (this.state.proveedor !== 'any') options.data.supplier_id = this.state.proveedor;
+        if (filter.nivel !== 'any') options.data.nivel_gobierno = filter.nivel;
+        if (filter.provider !== 'any') options.data.supplier_id = filter.provider.key;
 
         axios(options)
             .then(data => {
                 data.data.forEach((item, index) => {
                     sug.push({value: item.nombre, label: item.nombre, key: index});
                 });
-                this.setState({institucionesLista: sug, institucionDependencia: 'any'});
+                setInstitutionsList(sug);
+                setFilter({...filter, institucionDependencia: 'any'});
             }).catch(err => {
-            this.setState({error: true})
+            setError(true);
         });
     }
 
-    loadProveedores = () => {
+    const loadProviders = () => {
         let sug = [];
         let options = {
             url: process.env.REACT_APP_S3S_BACKEND + '/api/v1/getProviders',
             json: true,
             method: "post",
-            data: {
-
-            }
+            data: {}
         };
-        if(this.state.nivel !== 'any') options.data.nivel_gobierno = this.state.nivel
+        if (filter.nivel !== 'any')
+            options.data.nivel_gobierno = filter.nivel
         axios(options)
             .then(data => {
                 data.data.forEach((provider) => {
                     sug.push({value: provider.supplier_id, label: provider.supplier_name, key: provider.supplier_id});
                 });
-                this.setState({proveedoresLista: sug, proveedor: 'any'});
+                setProvidersList(sug);
+                setProvider('any');
             }).catch(err => {
-            this.setState({error: true})
+            setError(true);
         });
     }
 
-    handleChangeCampo = (varState, event) => {
-        this.setState({
-            [varState]: event ? (event.target ? event.target.value : event.value) : ''
-        }, () => {
-            switch (varState) {
-                case 'nivel':
-                    this.loadInstituciones();
-                    this.loadProveedores();
-                    break;
-                case 'campoOrden':
-                    if (!this.state.tipoOrden) this.setState({tipoOrden: tiposOrdenamiento[0]});
-                    if (!event.target.value) this.setState({tipoOrden: ''})
-                    break;
-                case 'tipoOrden':
-                    if (!this.state.campoOrden && event.target.value) this.setState({campoOrden: camposOrdenamiento[0]});
-                    if (!event.target.value) this.setState({campoOrden: ''})
-                    break;
-                case 'proveedor':
-                    this.loadInstituciones();
-                    break;
-                default:
-                    console.log(varState);
-                    break;
-            }
-        })
-    };
-
-    handleCleanAll = () => {
-        this.setState(
-            {
-                filterData: null,
-                previos: null,
-                nivel: 'any',
-                tipoSancion: [],
-                nombres: '',
-                institucionDependencia: '',
-                primerApellido: '',
-                segundoApellido: '',
-                campoOrden: 'any',
-                tipoOrden: 'any',
-                institucionesLista: [],
-                elementoSeleccionado: null,
-                rowsPerPage: 10,
-                proveedoresLista: []
-            }, () => {
-                this.loadInstituciones();
-                this.loadProveedores();
-            })
+    const handleCleanAll = () => {
+        setFilter(initialFilter);
+        setProvidersList([]);
+        setPagination(initialPagination);
+        setSort(initialSort);
+        setFilterData(null);
+        setPrevios([]);
+        setInstitutionsList([]);
+        setSelectedItem(null);
+        setView(0);
     };
 //10,25,50
-    handleSearchPrevios = () => {
-        this.setState({
-            loading: true,
-            filterData: [],
-            elementoSeleccionado: null,
-            rowsPerPage: 10
-        }, () => {
-            let body =
-                {
-                    "query": this.makeFiltros(),
-                    "institucion": this.state.institucionDependencia
-                };
-            if(this.state.nivel !== 'any') body.nivel_gobierno = this.state.nivel;
-            if(this.state.proveedor !== 'any') body.proveedor = this.state.proveedor;
-            let options = {
-                method: 'POST',
-                url: process.env.REACT_APP_S3S_BACKEND + '/api/v1/summary',
-                json: true,
-                data: body
+    const handleSearchPrevios = () => {
+        setLoading(true);
+        setFilterData([]);
+        setSelectedItem(null);
+        setPagination({...pagination, rowsPerPage: 10});
+        setProvider('any')
+
+        let body =
+            {
+                "query": makeFiltros(),
+                "institucion": filter.institucionDependencia
             };
-            axios(options)
-                .then(res => {
-                    this.setState(
-                        {previos: res.data, loading: false, error: false, panelPrevios: true}
-                        , () => {
-                            this.executeScrollPrevios();
-                        })
-                }).catch(err => {
-                this.setState({loading: false, error: true});
-            });
+
+        if (filter.nivel !== 'any') body.nivel_gobierno = filter.nivel;
+        if (filter.provider !== 'any') body.proveedor = filter.provider.key;
+        let options = {
+            method: 'POST',
+            url: process.env.REACT_APP_S3S_BACKEND + '/api/v1/summary',
+            json: true,
+            data: body
+        };
+        axios(options)
+            .then(res => {
+                setPrevios(res.data);
+                setLoading(false);
+                setError(false);
+                setView(1);
+            }).catch(err => {
+            setError(true);
+            setLoading(false);
         });
+
     };
 
-    makeFiltros = () => {
+    const makeFiltros = () => {
         let filtros = {};
-        let {institucionDependencia, nombres, primerApellido, segundoApellido, tipoSancion} = this.state;
-        if (nombres) filtros.nombres = nombres;
-        if (primerApellido) filtros.primerApellido = primerApellido;
-        if (segundoApellido) filtros.segundoApellido = segundoApellido;
-        if (institucionDependencia && institucionDependencia !== 'any') filtros.institucionDependencia = institucionDependencia;
-        if (tipoSancion.length > 0) filtros.tipoSancion = tipoSancion.map(item => item.value);
+        if (filter.nombres) filtros.nombres = filter.nombres;
+        if (filter.primerApellido) filtros.primerApellido = filter.primerApellido;
+        if (filter.segundoApellido) filtros.segundoApellido = filter.segundoApellido;
+        if (filter.institucionDependencia && filter.institucionDependencia !== 'any') filtros.institucionDependencia = filter.institucionDependencia;
+        if (filter.tipoSancion.length > 0) filtros.tipoSancion = filter.tipoSancion.map(item => item.value);
         return filtros;
     };
 
-    makeSort = () => {
-        let sort = {};
-        if (this.state.campoOrden !== 'any' && this.state.tipoOrden !== 'any') sort[this.state.campoOrden.value] = this.state.tipoOrden.value;
-        return sort;
+    const makeSort = () => {
+        let sort_ = {};
+        if (sort.campoOrden !== 'any' && sort.tipoOrden !== 'any') sort_[sort.campoOrden.value] = sort.tipoOrden.value;
+        return sort_;
     };
 
-    handleChange = () => {
-        this.setState({
-            panelPrevios: !this.state.panelPrevios
-        })
-    }
-
-    handleBusquedaAvanzada = () => {
-        this.setState({busquedaAvanzada: !this.state.busquedaAvanzada})
-    }
-
-    handleSearchAPI = () => {
-        this.setState({loading: true}, () => {
-            let body =
-                {
-                    "query": this.makeFiltros(),
-                    "pageSize": this.state.rowsPerPage,
-                    "page": this.state.page,
-                    "supplier_id": this.state.supplier_id,
-                    "sort": this.makeSort()
-                };
-
-            let options = {
-                method: 'POST',
-                url: process.env.REACT_APP_S3S_BACKEND + '/api/v1/search',
-                json: true,
-                data: body
+    const handleSearchAPI = () => {
+        setLoading(true);
+        let body =
+            {
+                "query": makeFiltros(),
+                "pageSize": pagination.rowsPerPage,
+                "page": pagination.page,
+                "supplier_id": provider,
+                "sort": makeSort()
             };
 
-            axios(options)
-                .then(res => {
-                    let resultado = res.data;
-                    this.setState({
-                        filterData: resultado.results,
-                        loading: false,
-                        totalRows: resultado.pagination.totalRows,
-                        error: false
-                    }, () => {
-                        this.executeScrollResults();
-                    })
-                }).catch(err => {
-                this.setState({loading: false, error: true});
-            });
+        let options = {
+            method: 'POST',
+            url: process.env.REACT_APP_S3S_BACKEND + '/api/v1/search',
+            json: true,
+            data: body
+        };
+
+        axios(options)
+            .then(res => {
+                let resultado = res.data;
+                setFilterData(resultado.results);
+                setLoading(false);
+                setPagination({...pagination, totalRows: resultado.pagination.totalRows})
+                setError(false);
+                setView(2)
+            }).catch(err => {
+            setLoading(false);
+            setError(true);
         });
 
     };
 
-    handleChangeAPI = (val) => {
-        this.setState({
-            supplier_id: val,
-            page: 1,
-            elementoSeleccionado: null,
-
-        }, () => {
-            this.handleSearchAPI();
-        });
+    const handleChangeAPI = (val) => {
+        setProvider(val)
     };
 
-    handleChangePage = (event, page) => {
-        this.setState({page: page + 1}, () => {
-            this.handleSearchAPI();
-        });
+    const handleChangePage = (event, page) => {
+        setPagination({...pagination, page: page + 1});
     };
 
-    handleChangeRowsPerPage = event => {
-        this.setState({rowsPerPage: event.target.value, page: 1}, () => {
-            this.handleSearchAPI();
-        });
+    const handleChangeRowsPerPage = event => {
+        setPagination({...pagination, rowsPerPage: event.target.value, page: 1});
     };
 
-    verDetalle = (event, elemento) => {
-        this.setState({elementoSeleccionado: elemento, panelPrevios: false});
+    const verDetalle = (event, elemento) => {
+        setSelectedItem(elemento);
+        setView(3);
+        setProvider('any')
     };
 
-    handleChangeDetail = () => {
-        this.setState({elementoSeleccionado: null});
+    const handleChangeDetail = () => {
+        setSelectedItem(null);
+        setView(2);
     };
 
-    executeScrollPrevios = () => this.previosRef.current.scrollIntoView();
+    const returnToPrevios = () => {
+        setView(1);
+        setProvider('any');
+    }
 
-    executeScrollResults = () => this.resultsRef.current.scrollIntoView();
-
-    render() {
-        const {classes} = this.props;
-        const {
-            nombres,
-            primerApellido,
-            segundoApellido,
-            institucionDependencia,
-            nivel,
-            tipoSancion,
-            campoOrden,
-            tipoOrden,
-            institucionesLista,
-            proveedor,
-            proveedoresLista
-        } = this.state;
-
-        return (
+    return (
+        <ThemeProvider theme={ThemeV2}>
             <React.Fragment>
                 {/*Buscador*/}
                 <Grid container spacing={4}>
@@ -362,9 +318,9 @@ class BusquedaServidor extends React.Component {
                         <TextField
                             id="nombres"
                             label="Nombre(s)"
-                            type="search"
-                            onChange={(e) => this.handleChangeCampo('nombres', e)}
-                            value={nombres}
+                            onChange={(e) => setFilter({...filter, nombres: e.target.value})}
+                            value={filter.nombres}
+                            margin='normal'
                         />
 
                     </Grid>
@@ -373,188 +329,209 @@ class BusquedaServidor extends React.Component {
                             id="primerApellido"
                             label="Apellido Uno"
                             type="search"
-                            onChange={(e) => this.handleChangeCampo('primerApellido', e)}
-                            value={primerApellido}
+                            onChange={(e) => setFilter({...filter, primerApellido: e.target.value})}
+                            value={filter.primerApellido}
+                            margin='normal'
                         />
                     </Grid>
                     <Grid item xs={12} md={2}>
-                        <TextField
-                            id="segundoApellido"
-                            label="Apellido Dos"
-                            type="search"
-                            onChange={(e) => this.handleChangeCampo('segundoApellido', e)}
-                            value={segundoApellido}
-                        />
+                        <FormControl className={classes.formControl}>
+                            <TextField
+                                id="segundoApellido"
+                                label="Apellido Dos"
+                                type="search"
+                                onChange={(e) => setFilter({...filter, segundoApellido: e.target.value})}
+                                value={filter.segundoApellido}
+                                margin='normal'
+                            />
+                        </FormControl>
                     </Grid>
                     <Grid item xs={12} md={6}>
                         <FormControl className={classes.formControl}>
-                            <InputLabel id="tipoSancion-label">Tipo sanción</InputLabel>
-                            <Select
-                                id="tipoSancion-checkbox"
-                                multiple
-                                value={tipoSancion}
-                                onChange={e => this.handleChangeCampo('tipoSancion', e)}
-                                input={<OutlinedInput label="Tipo sanción"/>}
-                                renderValue={
-                                    selected => {
-                                        return selected.map(element => element.label).join(', ')
-                                    }
-                                }
-                                label={'Tipo sanción'}
-                                labelId={'tipoSancion-label'}
-                            >
+                            <TextField id={'tipoSancion'} name={'tipoSancion'} margin="normal" select
+                                       label={'Tipo sanción'}
+                                       SelectProps={{
+                                           multiple: true,
+                                           renderValue: selected => selected.map(element => element.label).join(', '),
+                                           onChange: e => setFilter({...filter, tipoSancion: e.target.value}),
+                                           value: filter.tipoSancion
+                                       }}>
                                 <MenuItem disabled value={[]}>
                                     <em>Todos</em>
                                 </MenuItem>
                                 {tiposSancion.map(tipo => (
                                     <MenuItem key={tipo.value} value={tipo}>
-                                        <Checkbox checked={tipoSancion.indexOf(tipo) > -1}/>
+                                        <Checkbox checked={filter.tipoSancion.indexOf(tipo) > -1}/>
                                         <ListItemText primary={tipo.label}/>
                                     </MenuItem>
-
                                 ))}
-                            </Select>
+                            </TextField>
+                            {/* <InputLabel id="tipoSancion-label">Tipo sanción</InputLabel>
+                                <Select
+                                    id="tipoSancion-checkbox"
+                                    multiple
+                                    value={tipoSancion}
+                                    onChange={e => this.handleChangeCampo('tipoSancion', e)}
+                                    input={<OutlinedInput label="Tipo sanción"/>}
+                                    renderValue={
+                                        selected => {
+                                            return selected.map(element => element.label).join(', ')
+                                        }
+                                    }
+                                    label={'Tipo sanción'}
+                                    labelId={'tipoSancion-label'}
+                                >
+                                    <MenuItem disabled value={[]}>
+                                        <em>Todos</em>
+                                    </MenuItem>
+                                    {tiposSancion.map(tipo => (
+                                        <MenuItem key={tipo.value} value={tipo}>
+                                            <Checkbox checked={tipoSancion.indexOf(tipo) > -1}/>
+                                            <ListItemText primary={tipo.label}/>
+                                        </MenuItem>
+
+                                    ))}
+                                </Select> */}
                         </FormControl>
                     </Grid>
                     <Grid item xs={12} md={2}>
                         <FormControl className={classes.formControl}>
-                            <InputLabel id="nivel-label">Ámbito</InputLabel>
-                            <Select
-                                labelId="nivel-label"
-                                id="nivel-label-helper"
-                                value={nivel}
-                                label="Ámbito"
-                                onChange={(e) => this.handleChangeCampo('nivel', e)}
-                            >
+                            <TextField id={'nivel'} name={'nivel'} margin="normal" select label={'Nivel'}
+                                       value={filter.nivel}
+                                       onChange={(e) => setFilter({...filter, nivel: e.target.value})}>
                                 <MenuItem value="any">
                                     <em>Todos</em>
-                                </MenuItem>
-                                <MenuItem value={'Autónomo'} key={'Autónomo'}>
-                                    {'Autónomo'}
-                                </MenuItem>
-                                <MenuItem value={'Estatal'} key={'Estatal'}>
-                                    {'Estatal'}
                                 </MenuItem>
                                 <MenuItem value={'Federal'} key={'Federal'}>
                                     {'Federal'}
                                 </MenuItem>
-                            </Select>
+                                <MenuItem value={'Estatal'} key={'Estatal'}>
+                                    {'Estatal'}
+                                </MenuItem>
+                            </TextField>
+                            {/* <InputLabel id="nivel-label">Nivel</InputLabel>
+                                <Select
+                                    labelId="nivel-label"
+                                    id="nivel-label-helper"
+                                    value={nivel}
+                                    label="Nivel"
+                                    onChange={(e) => this.handleChangeCampo('nivel', e)}
+                                >
+                                    <MenuItem value="any">
+                                        <em>Todos</em>
+                                    </MenuItem>
+                                    <MenuItem value={'Federal'} key={'Federal'}>
+                                        {'Federal'}
+                                    </MenuItem>
+                                    <MenuItem value={'Estatal'} key={'Estatal'}>
+                                        {'Estatal'}
+                                    </MenuItem>
+                                </Select> */}
                         </FormControl>
                     </Grid>
                     <Grid item md={4} xs={12}>
                         <FormControl className={classes.formControl}>
-                            <InputLabel id="proveedor-label">
-                                Proveedor información
-                            </InputLabel>
-                            <Select
-                                labelId="proveedor-label"
-                                id="proveedor-label-helper"
-                                value={proveedor}
-                                onChange={(e) => this.handleChangeCampo('proveedor', e)}
-                                label={'Proveedor información'}
-                            >
+                            <TextField id={'proveedor'} name={'proveedor'} margin="normal" select
+                                       label={'Proveedor información'} value={filter.provider}
+                                       onChange={(e) =>
+                                           setFilter({...filter, provider: e.target.value})
+                                       }>
                                 <MenuItem value={'any'}><em>Todos</em></MenuItem>
-                                {
-                                    proveedoresLista.map((item => {
-                                        return <MenuItem value={item.value} key={item.key}>
+                                {providersList.map((item) => {
+                                    return (
+                                        <MenuItem value={item} key={item.key}>
                                             {item.label}
                                         </MenuItem>
-                                    }))
-                                }
-                            </Select>
+                                    );
+                                })}
+                            </TextField>
                         </FormControl>
                     </Grid>
                     <Grid item md={6} xs={12}>
                         <FormControl className={classes.formControl}>
-                            <InputLabel id="institucionDependencia-label">
-                                Institución
-                            </InputLabel>
-                            <Select
-                                value={institucionDependencia}
-                                label={"Institución"}
-                                onChange={(e) => this.handleChangeCampo('institucionDependencia', e)}
-                            >
-                                <MenuItem value="any" ><em>Todas</em></MenuItem>
-                                {
-                                    institucionesLista.map((item => {
-                                        return <MenuItem value={item.value} key={item.key}>
+                            <TextField id={'institucionDependencia'} name={'institucionDependencia'} margin="normal"
+                                       select
+                                       label={'Institución'} value={filter.institucionDependencia}
+                                       onChange={(e) => setFilter({...filter, institucionDependencia: e.target.value})}>
+                                <MenuItem value='any'><em>Todas</em></MenuItem>
+                                {institutionsList.map((item) => {
+                                    return (
+                                        <MenuItem value={item.value} key={item.key}>
                                             {item.label}
                                         </MenuItem>
-                                    }))
-                                }
-                            </Select>
+                                    );
+                                })}
+                            </TextField>
                         </FormControl>
                     </Grid>
                     <Grid item xs={12}>
-                        <Button onClick={() => this.handleBusquedaAvanzada()}
-                                startIcon={this.state.busquedaAvanzada ? <ExpandLessIcon/> : <ExpandMoreIcon/>}
+                        <Button onClick={() => setShowAdvancedSearch(prevState => {
+                            return !prevState
+                        })} color={"text"}
+                                startIcon={showAdvancedSearch ? <ExpandLessIcon/> : <ExpandMoreIcon/>}
                         >Búsqueda avanzada</Button>
                     </Grid>
 
-                    {this.state.busquedaAvanzada && <Grid item xs={12} md={3}>
+                    {showAdvancedSearch && <Grid item xs={12} md={3}>
                         <FormControl className={classes.formControl}>
-                            <InputLabel id="campoOrden-label">Ordenar por</InputLabel>
-                            <Select
-                                id="campoOrden-checkbox"
-                                label={'Ordenar por'}
-                                labelId={'campoOrden-label-helper'}
-                                value={campoOrden}
-                                onChange={e => this.handleChangeCampo('campoOrden', e)}
-                            >
+                            <TextField id={'campoOrden-checkbox'} name={'campoOrden-checkbox'} margin="normal" select
+                                       label={'Ordenar por'} value={sort.campoOrden}
+                                       onChange={e => setSort({...sort, campoOrden: e.target.value})}>
                                 <MenuItem value={'any'}>
                                     <em>Ninguno</em>
                                 </MenuItem>
-                                {camposOrdenamiento.map(tipo => (
-                                    <MenuItem key={tipo.value} value={tipo}>
-                                        <ListItemText primary={tipo.label}/>
-                                    </MenuItem>
-
-                                ))}
-                            </Select>
+                                {camposOrdenamiento.map((tipo) => {
+                                    return (
+                                        <MenuItem key={tipo.value} value={tipo}>
+                                            <ListItemText primary={tipo.label}/>
+                                        </MenuItem>
+                                    );
+                                })}
+                            </TextField>
                         </FormControl>
                     </Grid>}
-                    {this.state.busquedaAvanzada && <Grid item xs={12} md={3}>
+                    {showAdvancedSearch && <Grid item xs={12} md={3}>
                         <FormControl className={classes.formControl}>
-                            <InputLabel id="tipoOrden-label">Tipo ordenamiento</InputLabel>
-                            <Select
-                                id="tipoOrden-checkbox"
-                                label={'Tipo ordenamiento'}
-                                labelId={'tipoOrden-label-helper'}
-                                value={tipoOrden}
-                                onChange={e => this.handleChangeCampo('tipoOrden', e)}
-                            >
+                            <TextField id={'tipoOrden-checkbox'} name={'tipoOrden-checkbox'} margin="normal" select
+                                       label={'Tipo ordenamiento'} value={sort.tipoOrden}
+                                       onChange={e => setSort({...sort, tipoOrden: e.target.value})}>
                                 <MenuItem value={'any'}>
                                     <em>Ninguno</em>
                                 </MenuItem>
-                                {tiposOrdenamiento.map(tipo => (
-                                    <MenuItem key={tipo.value} value={tipo}>
-                                        <ListItemText primary={tipo.label}/>
-                                    </MenuItem>
-
-                                ))}
-                            </Select>
+                                {tiposOrdenamiento.map(tipo => {
+                                    return (
+                                        <MenuItem key={tipo.value} value={tipo}>
+                                            <ListItemText primary={tipo.label}/>
+                                        </MenuItem>
+                                    );
+                                })}
+                            </TextField>
                         </FormControl>
                     </Grid>}
 
                     <Grid item md={10}/>
 
-                    <Grid item xs={12} md={1} className={classes.centrado}>
-                        <Button variant="contained" color="secondary" className={classes.button}
-                                onClick={() => this.handleCleanAll()}>
+                    <Grid item xs={12} md={1}>
+                        <Button variant="contained" color="secundario" className={classes.button}
+                                onClick={() => handleCleanAll()}>
                             Limpiar
                         </Button>
                     </Grid>
-                    <Grid item xs={12} md={1} className={classes.centrado}>
-                        <Button variant="contained" color="secondary" className={classes.button}
-                                onClick={() => this.handleSearchPrevios()}>
+                    <Grid item xs={12} md={1}>
+                        <Button variant="contained" color="secundario" className={classes.button}
+                                onClick={() => {
+                                    handleSearchPrevios();
+                                    ReactGA.event({category: 'busqueda-s3SP', action: 'click'});
+                                }}>
+
                             Buscar
                         </Button>
                     </Grid>
                     <Grid item xs={12}>
                         {
-                            this.state.loading &&
+                            loading &&
                             <Modal
-                                open={this.state.loading}
+                                open={loading}
                                 disableAutoFocus={true}
                             >
                                 <CircularProgress className={classes.progress} id="spinnerLoading" size={200}/>
@@ -562,54 +539,44 @@ class BusquedaServidor extends React.Component {
 
                         }
                         {
-                            this.state.error && <MensajeErrorDatos/>
+                            error && <MensajeErrorDatos/>
                         }
                     </Grid>
                 </Grid>
                 {/*PREVIOS*/}
-                {this.state.previos && this.state.previos.length > 0 &&
-                <Grid container ref={this.previosRef}>
+                {view === 1 && previos && previos.length > 0 &&
+                <Grid container>
                     <Grid item xs={12} className={classes.section}>
-                        <FormControlLabel
-                            control={<Switch className={classes.containerPrevios}
-                                             checked={this.state.panelPrevios}
-                                             onChange={() => this.handleChange()}/>}
-                            label={
-                                <Typography variant="h6" className={classes.desc}>
-                                    {this.state.panelPrevios ? 'Ocultar resultados generales' : 'Mostrar resultados generales'}</Typography>}
-                        />
-                    </Grid>
-                    <Grid item xs={12} className={classes.section}>
-                        <div className={classes.container}>
-                            <Collapse in={this.state.panelPrevios}>
-                                <Previos data={this.state.previos} handleChangeSujetoObligado={this.handleChangeAPI}/>
-                            </Collapse>
-                        </div>
+                        <Previos data={previos} handleChangeSujetoObligado={handleChangeAPI}/>
                     </Grid>
                 </Grid>
                 }
                 {/*TABLA*/}
-                {this.state.filterData && this.state.filterData.length > 0 && this.state.elementoSeleccionado === null &&
-                <Grid container ref={this.resultsRef}>
+                {view === 2 && filterData && filterData.length > 0 && selectedItem === null &&
+                <Grid container>
                     <Grid item xs={12}>
-                        <TablaServidoresSancionados data={this.state.filterData} page={this.state.page}
-                                                    rowsPerPage={this.state.rowsPerPage}
-                                                    totalRows={this.state.totalRows}
-                                                    handleChangePage={this.handleChangePage}
-                                                    handleChangeRowsPerPage={this.handleChangeRowsPerPage}
-                                                    verDetalle={this.verDetalle}/>
+                        <TablaServidoresSancionados data={filterData} page={pagination.page}
+                                                    rowsPerPage={pagination.rowsPerPage}
+                                                    totalRows={pagination.totalRows}
+                                                    handleChangePage={handleChangePage}
+                                                    handleChangeRowsPerPage={handleChangeRowsPerPage}
+                                                    verDetalle={verDetalle}
+                                                    returnToPrevios={returnToPrevios}
+                        />
                     </Grid>
                 </Grid>
                 }
                 {
-                    this.state.elementoSeleccionado !== null &&
-                    <DetalleServidorSancionado handleChangeDetail={this.handleChangeDetail}
-                                               servidor={this.state.elementoSeleccionado}
+                    view === 3 && selectedItem !== null &&
+                    <DetalleServidorSancionado handleChangeDetail={handleChangeDetail}
+                                               servidor={selectedItem}
                     />
                 }
             </React.Fragment>
-        );
-    }
+        </ThemeProvider>
+
+    );
+
 }
 
 BusquedaServidor.propTypes = {
