@@ -41,7 +41,8 @@ export default createTheme(
         default: '#0d3b49',
         opaque: '#155065',
         hoverBotton: '#56a3bf',
-        tableBody: '#f2f2f2'
+        tableBody: '#f2f2f2',
+        paperChart: '#24768f'
       },
       azulPDN: '#0081b3',
       yellowColor: '#ffe01b',
