@@ -1,6 +1,6 @@
 import React from 'react';
 import {withStyles} from '@mui/styles';
-import {Paper, Box, Typography, List, ListItem, ListItemText, Link, Grid} from "@mui/material";
+import {Paper, Grid} from "@mui/material";
 import Ejercicio from "./Ejercicio";
 import Agrupaciones from "./Agrupaciones";
 import Tops from "./Tops";

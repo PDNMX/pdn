@@ -1,26 +1,8 @@
 import React from 'react';
-import {withStyles} from '@mui/styles';
-import {Grid, Typography, Alert, Paper} from "@mui/material";
+import {Alert} from "@mui/material";
 import {BarChart} from "d3plus-react";
 import axios from 'axios';
-
-const styles = theme => ({
-    frameChart: {
-        marginTop: theme.spacing(1),
-        marginBottom: theme.spacing(1)
-    },
-    titulo: {
-        textAlign: "center",
-        marginBottom: theme.spacing(2),
-        fontWeight: "bold"
-    },
-    paperChart: {
-        backgroundColor: theme.palette.background.paperChart,
-        padding: theme.spacing(1),
-        maxHeight: 450,
-        minHeight:450
-    }
-});
+import ContainerChart from "../../Compartidos/Dashboards/ContainerChart";
 
 const aux = () => axios({
     url: process.env.REACT_APP_S2_BACKEND + '/api/v0/getAgrupacionEjercicio',
@@ -91,27 +73,20 @@ const Ejercicio = props => {
         });
     },[]);
 
-    const {classes} = props;
     return (
         <div>
-            <Grid container spacing={0} justify='center' className={classes.frameChart}>
-
-                <Grid item xs={12} id={"graf"}>
-                    {
-                        state.methods && state.methods.data &&
-                            <Paper className={classes.paperChart}>
-                                <BarChart config={state.methods}/>
-                            </Paper>
-
-                    }
-                    {
-                        state.error &&
-                        <Alert severity="error"> No disponible por el momento, intente más tarde.</Alert>
-                    }
-                </Grid>
-            </Grid>
+            <ContainerChart>
+                {
+                    state.methods && state.methods.data &&
+                        <BarChart config={state.methods}/>
+                }
+                {
+                    state.error &&
+                    <Alert severity="error"> No disponible por el momento, intente más tarde.</Alert>
+                }
+            </ContainerChart>
         </div>
     );
 };
 
-export default withStyles(styles)(Ejercicio);
+export default (Ejercicio);
