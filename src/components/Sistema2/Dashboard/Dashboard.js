@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {withStyles} from '@mui/styles';
 import {Paper, Grid} from "@mui/material";
 import Ejercicio from "./Ejercicio";
@@ -8,6 +8,9 @@ import Procedimientos from "./Procedimientos";
 import './graficas.css'
 import PropTypes from 'prop-types';
 import GeneralData from "./GeneralData";
+import TotalRows from "./TotalRows";
+import TotalInstituciones from "./TotalInstituciones";
+import TotalRamos from "./TotalRamos";
 
 const styles = theme => ({
     root: {
@@ -37,18 +40,20 @@ const styles = theme => ({
 
 const Dashboard = props => {
     const {classes} = props;
+
+
     return (
         <div className={classes.root} id={"s2sgraf"}>
             <Paper className={classes.paper} elevation={15}>
                 <Grid container spacing={3}>
                     <Grid item xs={4}>
-                     <GeneralData digit={45654} text={'fasldkfa'}/>
+                        <TotalRows/>
                     </Grid>
                     <Grid item xs={4}>
-                        <GeneralData digit={45654} text={'fasldkfa'}/>
+                        <TotalInstituciones/>
                     </Grid>
                     <Grid item xs={4}>
-                        <GeneralData digit={45654} text={'fasldkfa'}/>
+                        <TotalRamos/>
                     </Grid>
                     <Grid item xs={6}>
                         <Ejercicio/>

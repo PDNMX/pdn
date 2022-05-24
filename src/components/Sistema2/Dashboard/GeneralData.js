@@ -23,7 +23,7 @@ const GeneralData = (props) => {
         <React.Fragment>
             <Paper elevation={24} className={classes.paperChart}>
                 <Typography variant={"h3"} className={classes.digit}>
-                    {digit}
+                    {digit ? digit.toLocaleString('en-US'): null}
                 </Typography>
                 <Typography variant={"subtitle"} className={classes.text}>
                     {text}

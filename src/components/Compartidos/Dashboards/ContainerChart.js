@@ -20,13 +20,11 @@ const ContainerChart = (props) => {
     const {handleOpen, children, classes} = props;
     return (
         <Paper elevation={24} className={classes.paperChart}>
-            {typeof handleOpen !== 'undefined' &&
             <div className={classes.infoButton}>
-                <IconButton onClick={handleOpen}>
+                <IconButton onClick={handleOpen} disabled={typeof handleOpen === 'undefined'}>
                     <HelpOutlineIcon/>
                 </IconButton>
             </div>
-            }
             {children}
         </Paper>
     );
