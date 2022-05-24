@@ -4,8 +4,8 @@ import {Typography, List, ListItem, ListItemText, Alert} from "@mui/material";
 import axios from 'axios';
 import BarChart from "d3plus-react/es/src/BarChart";
 import * as d3 from "d3";
-import ModalInfo from "../../Compartidos/Dashboards/ModalInfo";
-import ContainerChart from "../../Compartidos/Dashboards/ContainerChart";
+import ModalInfo from "@Compartidos/Dashboards/ModalInfo";
+import ContainerChart from "@Compartidos/Dashboards/ContainerChart";
 
 const styles = theme => ({
     frameChart: {

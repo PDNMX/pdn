@@ -7,7 +7,6 @@ import Tops from "./Tops";
 import Procedimientos from "./Procedimientos";
 import './graficas.css'
 import PropTypes from 'prop-types';
-import GeneralData from "./GeneralData";
 import TotalRows from "./TotalRows";
 import TotalInstituciones from "./TotalInstituciones";
 import TotalRamos from "./TotalRamos";

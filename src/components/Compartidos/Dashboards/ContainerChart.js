@@ -13,6 +13,9 @@ const styles = theme => ({
     },
     infoButton:{
         textAlign:'right'
+    },
+    spaceTop:{
+        height: 40
     }
 });
 
@@ -20,11 +23,16 @@ const ContainerChart = (props) => {
     const {handleOpen, children, classes} = props;
     return (
         <Paper elevation={24} className={classes.paperChart}>
-            <div className={classes.infoButton}>
-                <IconButton onClick={handleOpen} disabled={typeof handleOpen === 'undefined'}>
-                    <HelpOutlineIcon/>
-                </IconButton>
-            </div>
+            {
+                typeof handleOpen !== 'undefined' ?
+                <div className={classes.infoButton}>
+                    <IconButton onClick={handleOpen}>
+                        <HelpOutlineIcon/>
+                    </IconButton>
+                </div>
+                    :
+                <div className={classes.spaceTop}></div>
+            }
             {children}
         </Paper>
     );

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import GeneralData from "./GeneralData";
+import GeneralData from "../../Compartidos/Dashboards/GeneralData";
 import axios from "axios";
 
 const aux = () => axios({

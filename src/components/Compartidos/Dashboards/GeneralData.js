@@ -6,7 +6,8 @@ const styles = theme => ({
     paperChart: {
         backgroundColor: theme.palette.background.paperChart,
         padding: theme.spacing(2),
-        textAlign: 'center'
+        textAlign: 'center',
+        borderRadius: '10px 50px 10px 50px'
     },
     text:{
         textAlign:'center',
