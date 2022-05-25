@@ -14,6 +14,7 @@ import LineMarkSeries from "react-vis/es/plot/series/line-mark-series";
 import Hint from "react-vis/es/plot/hint";
 import ContainerChart from "@Compartidos/Dashboards/ContainerChart";
 import ModalInfo from "@Compartidos/Dashboards/ModalInfo";
+import TiempoSanciones from "./TiemposSanciones";
 
 const styles = theme => ({
     frameChart: {
@@ -152,8 +153,8 @@ const AnioResolucionSanciones = (props) => {
             <ModalInfo open={open} setOpen={setOpen}>
                 Conoce el número de personas servidoras públicas que se encuentran sancionadas (inhabilitadas) y cuya fecha de resolución fue efectuada a partir del año 2013
             </ModalInfo>
-            <Grid container spacing={2} justifyContent='center' className={classes.frameChart}>
-                <Grid item xs={12} md={8}>
+            <Grid container spacing={2} justifyContent='center'>
+                <Grid item xs={12} md={6}>
                     <ContainerChart handleOpen={handleOpen}>
                         <Typography variant={"h6"} className={classes.titulo}>
                             <b>{"Cantidad de sanciones"}</b>
@@ -229,16 +230,24 @@ const AnioResolucionSanciones = (props) => {
                         }
                     </ContainerChart>
                 </Grid>
-                <Grid item xs={12} md={4}>
-                    <ContainerChart>
-                        <Typography variant={"h6"} className={classes.titulo}>
+                <Grid item xs={12} md={6}>
+                    <TiempoSanciones/>
+
+                        {
+                            /*
+                            <ContainerChart>
+                             <Typography variant={"h6"} className={classes.titulo}>
                             <b>{"Cantidad de sanciones"}</b>
                         </Typography>
                         {
                             methods && methods.data &&
                             <Pie config={configPie}/>
                         }
-                    </ContainerChart>
+                        </ContainerChart>
+                             */
+                        }
+
+
                 </Grid>
                 <Grid item xs={12} md={4}>
                     {

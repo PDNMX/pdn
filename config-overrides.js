@@ -20,7 +20,8 @@ module.exports = function override(config) {
     config.resolve.alias = {
         ['@Compartidos']: path.resolve(__dirname,'src/components/Compartidos/'),
         ['@assets']: path.resolve(__dirname, 'src/assets/'),
-        ['@components']: path.resolve(__dirname, 'src/components')
+        ['@components']: path.resolve(__dirname, 'src/components'),
+        ['@Mensajes']: path.resolve(__dirname, 'src/components/Mensajes/')
     }
     return config;
 }

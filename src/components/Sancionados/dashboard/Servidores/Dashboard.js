@@ -2,7 +2,6 @@ import React from 'react';
 import {withStyles} from "@mui/styles";
 import PropTypes from 'prop-types';
 import {Grid, Paper} from "@mui/material";
-import TiemposSanciones from "./TiemposSanciones";
 import CausaSanciones from "./CausaSanciones";
 import AnioResolucionSanciones from "./AnioResolucionSanciones";
 import DependenciasSanciones from "./DependenciasSanciones";
@@ -18,12 +17,11 @@ const styles = theme => ({
     sectionT: {
         maxWidth: '1200px',
         overflowX : 'auto',
-
         [theme.breakpoints.up('sm')]: {
-            marginBottom: theme.spacing(7),
+            marginBottom: theme.spacing(2),
         },
         [theme.breakpoints.down('sm')]: {
-            marginBottom: theme.spacing(4),
+            marginBottom: theme.spacing(1),
         }
     },
     desc:{
@@ -77,17 +75,14 @@ const Dashboard = (props) => {
                     <Grid item xs={4}>
                         <TotalSancionesFin/>
                     </Grid>
-                    <Grid item xs={12} className={classes.sectionT} id={"g1"}>
+                    <Grid item xs={12}  id={"g1"}>
                         <AnioResolucionSanciones/>
                     </Grid>
-                    <Grid item xs={12} className={classes.sectionT} id={"g2"}>
+                    <Grid item xs={12}  id={"g2"}>
                         <CausaSanciones/>
                     </Grid>
-                    <Grid item xs={12} className={classes.sectionT} id={"g3"}>
+                    <Grid item xs={12}  id={"g3"}>
                         <DependenciasSanciones/>
-                    </Grid>
-                    <Grid item xs={12} className={classes.sectionT} id={"g4"}>
-                        <TiemposSanciones/>
                     </Grid>
                 </Grid>
                 </Paper>

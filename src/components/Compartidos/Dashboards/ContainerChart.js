@@ -1,6 +1,6 @@
 import React from 'react';
 import {withStyles} from "@mui/styles";
-import {IconButton, Paper} from "@mui/material";
+import {IconButton, Paper, Tooltip} from "@mui/material";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 
 const styles = theme => ({
@@ -26,9 +26,11 @@ const ContainerChart = (props) => {
             {
                 typeof handleOpen !== 'undefined' ?
                 <div className={classes.infoButton}>
-                    <IconButton onClick={handleOpen}>
-                        <HelpOutlineIcon/>
-                    </IconButton>
+                    <Tooltip title={'Ver información'}>
+                        <IconButton onClick={handleOpen} >
+                            <HelpOutlineIcon/>
+                        </IconButton>
+                    </Tooltip>
                 </div>
                     :
                 <div className={classes.spaceTop}></div>

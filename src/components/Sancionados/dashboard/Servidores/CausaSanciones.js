@@ -126,7 +126,7 @@ const CausasSanciones = (props) => {
                     ]
                 },
                 legend: false,
-                height: 500,
+                height: 400,
                 shapeConfig: {
                     fill: (d, i) => {
                         return color[i]
@@ -180,16 +180,15 @@ const CausasSanciones = (props) => {
                         ]
                     ]
                 },
-                legend: false,
-                height: 500,
+                legend: true,
+                height: 400,
                 shapeConfig: {
                     label: false,
                     fill: (d) => {
                         return z(d.id)
                     }
                 },
-                stacked: true,
-                title: "Por año"
+                stacked: true
             })
         }).catch(err => {
             console.error(err);
@@ -199,8 +198,8 @@ const CausasSanciones = (props) => {
 
     return (
         <div>
-            <Grid container spacing={0} justifyContent='center' className={classes.frameChart}>
-                <Grid item xs={12} >
+            <Grid container spacing={3} justifyContent='center' >
+                <Grid item xs={10} >
                     <ContainerChart>
                         <Typography variant={"h6"} className={classes.titulo}>
                             <b>Causa de las sanciones de 2013 a la fecha</b>
@@ -208,15 +207,17 @@ const CausasSanciones = (props) => {
                         {
                             methods && methods.data &&
                             <BarChart className={classes.test} config={methods}/>
-
                         }
                         {errorG1 &&
                         <MensajeErrorDatos/>
                         }
                     </ContainerChart>
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={10}>
                     <ContainerChart>
+                        <Typography variant={"h6"} className={classes.titulo}>
+                            <b>Causa de las sanciones por año</b>
+                        </Typography>
                         {
                             config2 && config2.data &&
                             <BarChart config={config2}/>
