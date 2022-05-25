@@ -2,7 +2,7 @@ import React from 'react';
 import {Alert} from "@mui/material";
 import {BarChart} from "d3plus-react";
 import axios from 'axios';
-import ContainerChart from "../../Compartidos/Dashboards/ContainerChart";
+import ContainerChart from "@Compartidos/Dashboards/ContainerChart";
 
 const aux = () => axios({
     url: process.env.REACT_APP_S2_BACKEND + '/api/v0/getAgrupacionEjercicio',

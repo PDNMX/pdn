@@ -18,8 +18,8 @@ import {Treemap} from "d3plus-react";
 import * as d3 from "d3";
 import {ThemeProvider} from '@mui/material/styles';
 import ThemeV2 from "../../../ThemeV2";
-import ModalInfo from "../../Compartidos/Dashboards/ModalInfo";
-import ContainerChart from "../../Compartidos/Dashboards/ContainerChart";
+import ModalInfo from "@Compartidos/Dashboards/ModalInfo";
+import ContainerChart from "@Compartidos/Dashboards/ContainerChart";
 
 const styles = theme => ({
     frameChart: {

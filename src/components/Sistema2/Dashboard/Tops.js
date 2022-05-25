@@ -5,8 +5,8 @@ import axios from 'axios';
 import {BarChart} from "d3plus-react";
 import ThemeV2 from "../../../ThemeV2";
 import {ThemeProvider} from '@mui/material/styles';
-import ContainerChart from "../../Compartidos/Dashboards/ContainerChart";
-import ModalInfo from "../../Compartidos/Dashboards/ModalInfo";
+import ContainerChart from "@Compartidos/Dashboards/ContainerChart";
+import ModalInfo from "@Compartidos/Dashboards/ModalInfo";
 
 const styles = theme => ({
     frameChart: {

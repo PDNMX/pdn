@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {withStyles} from '@mui/styles';
 import {Paper, Grid} from "@mui/material";
 import Ejercicio from "./Ejercicio";
@@ -39,7 +39,6 @@ const styles = theme => ({
 
 const Dashboard = props => {
     const {classes} = props;
-
 
     return (
         <div className={classes.root} id={"s2sgraf"}>
