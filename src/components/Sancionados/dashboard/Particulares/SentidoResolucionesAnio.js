@@ -51,7 +51,7 @@ function loadData2() {
 let color =  ["#52B1FF", "#DD70F0", "#07B6A5", "#FFB647", "#FF5C92", "#F97D58"];
 let z = d3.scaleOrdinal()
     .range( ["#52B1FF", "#DD70F0", "#07B6A5", "#FFB647", "#FF5C92", "#F97D58"]);
-z.domain(["SANCIONATORIA CON MULTA E INHABILITACIÓN", "SANCIONATORIA CON MULTA", "SANCIONATORIA", "ABSOLUTORIA", "NO ESPECIFICA", "ABSOLUTORIA"])
+z.domain(["sancionatoria con multa e inhabilitación", "sancionatoria con multa", "sancionatoria", "absolutoria", "no especificado", "absolutoria"])
 
 const SentidoResolucionesAnio = (props) => {
     const [errorG2, setErrorG2] = React.useState(false);
@@ -62,7 +62,7 @@ const SentidoResolucionesAnio = (props) => {
       loadData2().then(temp2 => {
             let aux2 = temp2.data.data.map(item => {
                 return {
-                    id: item.sentido_de_resolucion,
+                    id: item.sentido_de_resolucion.toLowerCase(),
                     y: parseInt(item.total, 10),
                     x: item.anio,
                 }

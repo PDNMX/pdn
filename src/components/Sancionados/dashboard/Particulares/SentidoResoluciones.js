@@ -1,11 +1,10 @@
 import React from 'react';
 import {withStyles} from "@mui/styles";
 import PropTypes from 'prop-types';
-import {Grid, Typography} from "@mui/material";
+import {Typography} from "@mui/material";
 import {BarChart} from "d3plus-react";
 import axios from 'axios';
 import 'react-vis/dist/style.css';
-import * as d3 from "d3";
 import MensajeErrorDatos from "@Mensajes/MensajeErrorDatos";
 import ContainerChart from "@Compartidos/Dashboards/ContainerChart";
 
@@ -48,26 +47,7 @@ function aux() {
     });
 }
 
-function loadData2() {
-    return new Promise((resolve, reject) => {
-        let options = {
-            url: process.env.REACT_APP_S3P_BACKEND + '/charts/getSentidosAnio',
-            json: true,
-            method: "GET"
-        };
-        axios(options)
-            .then(data => {
-                resolve(data);
-            }).catch(err => {
-            reject(err);
-        });
-    });
-}
-
 let color =  ["#52B1FF", "#DD70F0", "#07B6A5", "#FFB647", "#FF5C92", "#F97D58"];
-let z = d3.scaleOrdinal()
-    .range( ["#52B1FF", "#DD70F0", "#07B6A5", "#FFB647", "#FF5C92", "#F97D58"]);
-z.domain(["SANCIONATORIA CON MULTA E INHABILITACIÓN", "SANCIONATORIA CON MULTA", "SANCIONATORIA", "ABSOLUTORIA", "NO ESPECIFICA", "ABSOLUTORIA"])
 
 const SentidoResoluciones = (props) => {
     const [errorG1, setErrorG1] = React.useState(false);
@@ -78,10 +58,11 @@ const SentidoResoluciones = (props) => {
         aux().then(result => {
             let aux = result.data.data.map(item => {
                 return {
-                    "x": item.sentido_de_resolucion ? item.sentido_de_resolucion : "NO ESPECIFICA",
+                    "x": item.sentido_de_resolucion.toLowerCase(),
                     "y": parseInt(item.total, 10)
                 }
             });
+            console.log(aux)
             setMethods({
                 data: aux,
                 groupBy: "x",
