@@ -10,9 +10,10 @@ import VerticalGridLines from "react-vis/es/plot/vertical-grid-lines";
 import 'react-vis/dist/style.css';
 import {FlexibleXYPlot} from "react-vis/es";
 import Hint from "react-vis/es/plot/hint";
-import MensajeErrorDatos from "../../../Mensajes/MensajeErrorDatos";
+import MensajeErrorDatos from "@Mensajes/MensajeErrorDatos";
 import {Pie} from "d3plus-react";
 import axios from 'axios';
+import ContainerChart from "@Compartidos/Dashboards/ContainerChart";
 
 const styles = theme => ({
     frameChart: {
@@ -114,87 +115,63 @@ const AnioResolucionSanciones = (props) => {
 
     return (
         <div>
-            <Grid container spacing={0} justifyContent='center' className={classes.frameChart}>
-                <Grid item xs={12} md={12}>
-                    <Typography variant={"h6"} className={classes.titulo}>
-                        <b> {"Cantidad de sanciones"}</b>
-                    </Typography>
-                </Grid>
-                <Grid item xs={12} className={classes.descripcion}>
-                    <Typography variant={"body1"}>
-                        Como se aprecia en la gráfica, el comportamiento de las sanciones no ha sido constante, el año
-                        2010 cuenta con un reporte de 233 sanciones, equivalentes al <b>11.23%</b> del total, en
-                        contraste con el 2004 que registró únicamente 4 sanciones a particulares, lo que representa
-                        el <b>0.19%</b>.
-                    </Typography>
-                </Grid>
-                <Grid item xs={12} md={8}>
-                    {
-                        methods && methods.data &&
-                        <FlexibleXYPlot height={400}>
-                            <VerticalGridLines/>
-                            <HorizontalGridLines/>
-                            <XAxis title={"Año de la sanción"} tickValues={methods.data.map(item => {
-                                return item.x
-                            })} tickFormat={v => `${v}`}/>
-                            <YAxis title={"Número de sanciones"}/>
+            <ContainerChart>
+                <Typography variant={"h6"} className={classes.titulo}>
+                    <b> {"Cantidad de sanciones"}</b>
+                </Typography>
+                {
+                    methods && methods.data &&
+                    <FlexibleXYPlot height={400}>
+                        <VerticalGridLines/>
+                        <HorizontalGridLines/>
+                        <XAxis title={"Año de la sanción"} tickValues={methods.data.map(item => {
+                            return item.x
+                        })} tickFormat={v => `${v}`}/>
+                        <YAxis title={"Número de sanciones"}/>
 
-                            <LineMarkSeries
-                                className="linemark-series-example"
-                                style={{
-                                    strokeWidth: '3px'
-                                }}
-                                lineStyle={{stroke: '#2196F3'}}
-                                markStyle={{stroke: '#FFC107'}}
-                                data={methods.data}
-                                onValueMouseOver={(datapoint, event) =>
-                                    setHoveredCell(datapoint)
-                                }
-                                onValueMouseOut={(datapoint, event) => {
-                                    setHoveredCell(null)
-                                }}
-                            >
-                            </LineMarkSeries>
-                            {hoveredCell ? (
-                                <Hint value={hoveredCell}>
-                                    <div style={{background: 'white'}}>
-                                        <table style={{border: '1px solid black', color: 'black'}}>
-                                            <thead style={{textAlign: 'center'}}>
-                                            Datos
-                                            </thead>
-                                            <tbody>
-                                            <tr>
-                                                <td>Año:</td>
-                                                <td>{hoveredCell.x}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Número de sanciones:</td>
-                                                <td>{hoveredCell.y}</td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </Hint>
-                            ) : null}
-                        </FlexibleXYPlot>
-
-                    }
-
-                </Grid>
-                <Grid item xs={12} md={4}>
-                    {
-                        methods && methods.data &&
-                        <Pie config={configPie}/>
-                    }
-                </Grid>
-                <Grid item xs={12}>
-                    {
-                        error && <MensajeErrorDatos/>
-                    }
-                </Grid>
-
-            </Grid>
-
+                        <LineMarkSeries
+                            className="linemark-series-example"
+                            style={{
+                                strokeWidth: '3px'
+                            }}
+                            lineStyle={{stroke: '#2196F3'}}
+                            markStyle={{stroke: '#FFC107'}}
+                            data={methods.data}
+                            onValueMouseOver={(datapoint, event) =>
+                                setHoveredCell(datapoint)
+                            }
+                            onValueMouseOut={(datapoint, event) => {
+                                setHoveredCell(null)
+                            }}
+                        >
+                        </LineMarkSeries>
+                        {hoveredCell ? (
+                            <Hint value={hoveredCell}>
+                                <div style={{background: 'white'}}>
+                                    <table style={{border: '1px solid black', color: 'black'}}>
+                                        <thead style={{textAlign: 'center'}}>
+                                        Datos
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>Año:</td>
+                                            <td>{hoveredCell.x}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Número de sanciones:</td>
+                                            <td>{hoveredCell.y}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </Hint>
+                        ) : null}
+                    </FlexibleXYPlot>
+                }
+                {
+                    error && <MensajeErrorDatos/>
+                }
+            </ContainerChart>
         </div>
     )
 
