@@ -88,7 +88,7 @@ class DescripcionEstandar extends React.Component {
         </Typography>
 
         <Typography paragraph>
-          La SESNA ha planeado el desarrollo de la PDN mediante el uso APIs Web con arquitectura REST (REpresentational State Transfer). Dicha tecnología es ampliamente usada por en la industria del software para el desarrollo de aplicaciones web, y en la actualidad, existe grán diversidad de herramientas de código abierto que permiten la implementación de sistemas basados en APIs REST de manera
+          La SESNA ha planeado el desarrollo de la PDN mediante el uso APIs Web con arquitectura REST (REpresentational State Transfer). Dicha tecnología es ampliamente usada por en la industria del software para el desarrollo de aplicaciones web, y en la actualidad, existe gran diversidad de herramientas de código abierto que permiten la implementación de sistemas basados en APIs REST de manera
           rápida y a un bajo costo.
         </Typography>
 
