@@ -15,60 +15,6 @@ import styles from '../../Declaraciones2/style';
 import EspecificacionesTecnicas from './EspecificacionesTecnicas';
 import ProtocoloConexion from '../ProtocoloConexion';
 import ServiceAgreement from '../ServiceAgreement';
-
-// const styles1 = theme => ({
-//   root: {
-//     flexGrow: 1
-//   },
-//   list: {
-//     width: 250
-//   },
-//   fullList: {
-//     width: 'auto'
-//   },
-//   item: {
-//     maxWidth: 1200,
-//     paddingRight: theme.spacing(2),
-//     paddingLeft: theme.spacing(2)
-//   },
-//   container: {
-//     background: '#fff',
-//     paddingTop: theme.spacing(4),
-//     paddingBottom: theme.spacing(4)
-//   },
-//   divider: {
-//     marginBottom: theme.spacing(2)
-//   },
-//   ul: {
-//     listStyle: 'none',
-//     paddingLeft: '20px',
-//     color: theme.palette.text.primary
-//   },
-//   li: {
-//     '&:before': {
-//       content: '"•"',
-//       color: '#5fb1e6',
-//       fontWeight: 'bold',
-//       display: 'inline-block',
-//       width: '1em',
-//       marginLeft: '-1em'
-//     },
-//     'paddingBottom': theme.spacing(1)
-//   },
-//   button: {
-//     marginTop: theme.spacing(1),
-//     marginRight: theme.spacing(1),
-//     marginBottom: theme.spacing(2),
-//     background: '#ffe01b' //'#fecb6e'
-//   },
-//   rootItem: {
-//     maxWidth: 1200,
-//     padding: theme.spacing(1),
-//     paddingTop: theme.spacing(8),
-//     paddingBottom: theme.spacing(8)
-//   }
-// });
-
 class Declaraciones extends React.Component {
   render() {
     const { classes } = this.props;

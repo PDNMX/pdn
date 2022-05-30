@@ -37,7 +37,7 @@ class DescripcionEstandar extends React.Component {
         </Typography>
 
         <Typography paragraph>
-          También puedes hacer click en el botón que aparece a continuación, el cual <b>contienene información relevante para</b> los equipos encargados de desarrollar la <b>interconexión de su sistema de declaraciones</b> con la Plataforma Digital Nacional.
+          También puedes hacer clic en el botón que aparece a continuación, el cual <b>contiene información relevante para</b> los equipos encargados de desarrollar la <b>interconexión de su sistema de declaraciones</b> con la Plataforma Digital Nacional.
         </Typography>
         <Typography paragraph>
           <ButtonPDN  target='_blank' href='https://drive.google.com/file/d/1wHQpaFdP5An8V4Vhnjj1a4GBbYIREMHo/view?usp=sharing'>
@@ -96,7 +96,7 @@ class DescripcionEstandar extends React.Component {
           Open API Specification
         </Typography>
         <Typography paragraph>
-          El Estándar para la Interoperabilidad de Datos de Declaraciones está basado en el formato conocido como Open API Specification (OAS), el cual es un formato de especificación que permite describir de manera precisa las características con las que deberan contar las APIs que integrarán a la PDN. El OAS cuenta con capacidades para describir los recursos, operaciones, parámetros y
+          El Estándar para la Interoperabilidad de Datos de Declaraciones está basado en el formato conocido como Open API Specification (OAS), el cual es un formato de especificación que permite describir de manera precisa las características con las que deberán contar las APIs que integrarán a la PDN. El OAS cuenta con capacidades para describir los recursos, operaciones, parámetros y
           estructuras de datos con las que deberán contar las APIs, permitiendo su implementación con independencia tecnológica, es decir, las instituciones podrán emplear las herramientas tecnológicas de su elección (e.g., lenguajes de programación, bases de datos, etc.) siempre que se sigan las especificaciones de manera correcta.
         </Typography>
 
