@@ -2,6 +2,7 @@ import React from 'react';
 import {withStyles} from "@mui/styles";
 import {Box, Paper, Divider, Grid, Tooltip, Typography, Button} from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
+import DownloadItem from "../Compartidos/DownloadItem";
 
 const servidores = require('../Utils/glosario.json')
 
@@ -55,8 +56,8 @@ const styles = theme => ({
         textTransform :'capitalize'
     },
     divider: {
-        height: 4,
-        //border: 4,
+        backgroundColor: theme.palette.primary.dark,
+        height: theme.spacing(1),
         marginTop: theme.spacing(2),
         marginBottom: theme.spacing(4)
     },
@@ -69,7 +70,7 @@ const styles = theme => ({
 });
 
 const FichaDetalle = props => {
-    const {open, closeDialog, servidorPublico, classes} = props;
+    const {closeDialog, servidorPublico, classes} = props;
     const {puesto, nombrecompleto, nombres, primerApellido, segundoApellido, institucionDependencia} = servidorPublico || {};
 
     return (
@@ -145,6 +146,10 @@ const FichaDetalle = props => {
                     </ul>
                 </Grid>
             </Grid>
+
+            <Box sx={{display: 'flex', justifyContent: 'center', padding: 2}}>
+                <DownloadItem item={servidorPublico}/>
+            </Box>
 
         </Paper>
     );

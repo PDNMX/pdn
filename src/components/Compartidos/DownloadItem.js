@@ -6,7 +6,7 @@ import React from "react";
 function DownloadItem ({ item }){
     const download = () => {
         const a = document.createElement('a');
-        const file = new Blob([JSON.stringify(item)], {type: 'text/plain'});
+        const file = new Blob([JSON.stringify(item,null, 4)], {type: 'text/plain'});
         a.href = URL.createObjectURL(file);
         a.download = 'registro.json';
         a.click();
