@@ -6,10 +6,9 @@ import {Paper, Box, Typography, Modal} from "@mui/material"
 import axios from 'axios';
 
 import EntradasBuscador from "./EntradasBuscador";
-//import TablaResumen from "./TablaResumen";
 import EnhancedTableHead from './EnhancedTableHead';
 import AlertaError from "./AlertaError";
-import FichaServidorPublico from "./FichaServidorPublico";
+import FichaDetalle from "./FichaDetalle";
 
 import columnData from './column_data';
 import Descarga from "../Compartidos/Descarga";
@@ -162,6 +161,7 @@ const BuscadorS2  =  props => {
     };
 
     const closeDialog = () => {
+        setShowResultsTable(true);
         setDialog({
             open: false,
             elementoSeleccionado: null
@@ -169,6 +169,7 @@ const BuscadorS2  =  props => {
     };
 
     const openDialog = (element) => {
+        setShowResultsTable(false);
         setDialog({
             elementoSeleccionado: element,
             open: true
@@ -549,6 +550,11 @@ const BuscadorS2  =  props => {
                 </Box>
             }
 
+            {
+                dialog.open &&
+                <FichaDetalle servidorPublico={dialog.elementoSeleccionado} closeDialog={closeDialog}/>
+            }
+
         </Paper>
 
         <Box paddingTop={8} paddingBottom={8}>
@@ -561,7 +567,6 @@ const BuscadorS2  =  props => {
             </Modal>
         }
 
-        <FichaServidorPublico open={dialog.open} servidorPublico={dialog.elementoSeleccionado} closeDialog={closeDialog}/>
     </div>);
 }
 
