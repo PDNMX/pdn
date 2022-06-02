@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {withStyles} from "@mui/styles";
 import PropTypes from 'prop-types';
 import {Grid, Typography} from "@mui/material";
@@ -12,6 +12,9 @@ import XAxis from "react-vis/es/plot/axis/x-axis";
 import YAxis from "react-vis/es/plot/axis/y-axis";
 import LineMarkSeries from "react-vis/es/plot/series/line-mark-series";
 import Hint from "react-vis/es/plot/hint";
+import ContainerChart from "@Compartidos/Dashboards/ContainerChart";
+import ModalInfo from "@Compartidos/Dashboards/ModalInfo";
+import TiempoSanciones from "./TiemposSanciones";
 
 const styles = theme => ({
     frameChart: {
@@ -59,11 +62,12 @@ let color =["#F87268", "#DC6AF0", "#B286FD", "#8A97D6",
     "#F9AE3E", "#FF9270", "#F2B39C"];
 
 const AnioResolucionSanciones = (props) => {
-    const [error, setError] = React.useState(false);
-    const [methods, setMethods] = React.useState({});
-    const [configPie, setConfigPie] = React.useState({});
-    const [hoveredCell, setHoveredCell] = React.useState(false);
+    const [error, setError] = useState(false);
+    const [methods, setMethods] = useState({});
+    const [configPie, setConfigPie] = useState({});
+    const [hoveredCell, setHoveredCell] = useState(false);
     const {classes} = props;
+    const [open, setOpen] = useState(false);
 
     React.useEffect(() => {
         aux().then(result => {
@@ -82,7 +86,7 @@ const AnioResolucionSanciones = (props) => {
                 value: function (d) {
                     return d["y"]
                 },
-                height: 300,
+                height: 400,
                 label: function (d) {
                     return d["anio"] + "\n (" + (((d["y"] * 100) / total).toFixed(2)) + "%)"
                 },
@@ -143,95 +147,107 @@ const AnioResolucionSanciones = (props) => {
             setError(true);
         });
     }, []);
+    const handleOpen = () => setOpen(true);
     return (
         <div>
-            <Grid container spacing={0} justifyContent='center' className={classes.frameChart}>
-                <Grid item xs={12} md={12}>
-                    <Typography variant={"h6"} className={classes.titulo}>
-                        <b>{"Cantidad de sanciones"}</b>
-                    </Typography>
-                </Grid>
-                <Grid item xs={12} className={classes.descripcion}>
-                    <Typography >
-                        De acuerdo con las siguientes gráficas, la mayor cantidad de inhabilitaciones vigentes (firmes) fueron resueltas en el año 2014. En contraste, el 2021 representa tan solo el <b>0.082%</b> del total de inhabilitaciones firmes a enero de 2022.
-                    </Typography>
-                </Grid>
-                <Grid item xs={12} md={8}>
-                    {
-                        methods && methods.data &&
-                        <LinePlot config={methods}/> &&
-                        <FlexibleXYPlot height={400}>
-                            <VerticalGridLines/>
-                            <HorizontalGridLines/>
-                            <XAxis
-                                title={"Año de la sanción"}
-                                tickValues={methods.data.map(item => {
-                                    return item.x
-                                })} tickFormat={v => `${v}`}
-                                style={{
-                                    line: {fill: '#E1E8EB'},
-                                    ticks: {fill: '#E1E8EB'},
-                                    text: {fill: '#E1E8EB', fontWeight: 600},
-                                    title: {fill: '#E1E8EB'},
-                                }}
-                            />
-                            <YAxis title={"Número de sanciones"}
-                                   style={{
-                                       line: {fill: '#E1E8EB'},
-                                       ticks: {fill: '#E1E8EB'},
-                                       text: {fill: '#E1E8EB', fontWeight: 600},
-                                       title: {fill: '#E1E8EB'},
-                                   }}
-                            />
+            <ModalInfo open={open} setOpen={setOpen}>
+                Conoce el número de personas servidoras públicas que se encuentran sancionadas (inhabilitadas) y cuya fecha de resolución fue efectuada a partir del año 2013
+            </ModalInfo>
+            <Grid container spacing={2} justifyContent='center'>
+                <Grid item xs={12} md={6}>
+                    <ContainerChart handleOpen={handleOpen}>
+                        <Typography variant={"h6"} className={classes.titulo}>
+                            <b>{"Cantidad de sanciones"}</b>
+                        </Typography>
+                        {
+                            methods && methods.data &&
+                            <LinePlot config={methods}/> &&
+                            <FlexibleXYPlot height={400}>
+                                <VerticalGridLines/>
+                                <HorizontalGridLines/>
+                                <XAxis
+                                    title={"Año de la sanción"}
+                                    tickValues={methods.data.map(item => {
+                                        return item.x
+                                    })} tickFormat={v => `${v}`}
+                                    style={{
+                                        line: {fill: '#E1E8EB'},
+                                        ticks: {fill: '#E1E8EB'},
+                                        text: {fill: '#E1E8EB', fontWeight: 600},
+                                        title: {fill: '#E1E8EB'},
+                                    }}
+                                />
+                                <YAxis title={"Número de sanciones"}
+                                       style={{
+                                           line: {fill: '#E1E8EB'},
+                                           ticks: {fill: '#E1E8EB'},
+                                           text: {fill: '#E1E8EB', fontWeight: 600},
+                                           title: {fill: '#E1E8EB'},
+                                       }}
+                                />
 
-                            <LineMarkSeries
-                                className="linemark-series-example"
-                                style={{
-                                    strokeWidth: '3px'
-                                }}
-                                lineStyle={{stroke: '#2196F3'}}
-                                markStyle={{stroke: '#FFC107'}}
-                                data={methods.data}
-                                onValueMouseOver={(datapoint, event) =>
-                                    setHoveredCell(datapoint)
-                                }
-                                onValueMouseOut={(datapoint, event) => {
-                                    setHoveredCell(null)
-                                }}
-                            >
-                            </LineMarkSeries>
-                            {hoveredCell ? (
-                                <Hint value={hoveredCell}>
-                                    <div style={{background: 'white'}}>
-                                        <table style={{border: '1px solid black', color: 'black'}}>
-                                            <thead style={{textAlign: 'center'}}>
-                                            <tr>
-                                                <th>Datos</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr>
-                                                <td>Año:</td>
-                                                <td>{hoveredCell.x}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Número de sanciones:</td>
-                                                <td>{hoveredCell.y}</td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </Hint>
-                            ) : null}
-                        </FlexibleXYPlot>
+                                <LineMarkSeries
+                                    className="linemark-series-example"
+                                    style={{
+                                        strokeWidth: '3px'
+                                    }}
+                                    lineStyle={{stroke: '#2196F3'}}
+                                    markStyle={{stroke: '#FFC107'}}
+                                    data={methods.data}
+                                    onValueMouseOver={(datapoint, event) =>
+                                        setHoveredCell(datapoint)
+                                    }
+                                    onValueMouseOut={(datapoint, event) => {
+                                        setHoveredCell(null)
+                                    }}
+                                >
+                                </LineMarkSeries>
+                                {hoveredCell ? (
+                                    <Hint value={hoveredCell}>
+                                        <div style={{background: 'white'}}>
+                                            <table style={{border: '1px solid black', color: 'black'}}>
+                                                <thead style={{textAlign: 'center'}}>
+                                                <tr>
+                                                    <th>Datos</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>Año:</td>
+                                                    <td>{hoveredCell.x}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Número de sanciones:</td>
+                                                    <td>{hoveredCell.y}</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </Hint>
+                                ) : null}
+                            </FlexibleXYPlot>
 
-                    }
+                        }
+                    </ContainerChart>
                 </Grid>
-                <Grid item xs={12} md={4}>
-                    {
-                        methods && methods.data &&
-                        <Pie config={configPie}/>
-                    }
+                <Grid item xs={12} md={6}>
+                    <TiempoSanciones/>
+
+                        {
+                            /*
+                            <ContainerChart>
+                             <Typography variant={"h6"} className={classes.titulo}>
+                            <b>{"Cantidad de sanciones"}</b>
+                        </Typography>
+                        {
+                            methods && methods.data &&
+                            <Pie config={configPie}/>
+                        }
+                        </ContainerChart>
+                             */
+                        }
+
+
                 </Grid>
                 <Grid item xs={12} md={4}>
                     {

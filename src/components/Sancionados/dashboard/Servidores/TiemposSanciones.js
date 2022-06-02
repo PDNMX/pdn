@@ -1,10 +1,11 @@
 import React from 'react';
 import {withStyles} from "@mui/styles";
 import PropTypes from 'prop-types';
-import {Grid, Typography} from "@mui/material";
+import {Typography} from "@mui/material";
 import {BarChart} from "d3plus-react";
 import axios from 'axios';
-import MensajeErrorDatos from "../../../Mensajes/MensajeErrorDatos";
+import MensajeErrorDatos from "@Mensajes/MensajeErrorDatos";
+import ContainerChart from "@Compartidos/Dashboards/ContainerChart";
 
 const styles = theme => ({
     frameChart: {
@@ -103,7 +104,6 @@ const TiemposSanciones = (props) => {
                 axes: {
                     fill: "#666672"
                 },
-                title: "Duración de las sanciones en años",
             })
         }).catch(err => {
             console.error(err);
@@ -114,28 +114,18 @@ const TiemposSanciones = (props) => {
 
     return (
         <div>
-            <Grid container spacing={0} justifyContent='center' className={classes.frameChart}>
-                <Grid item xs={12}>
-                    <Typography variant={"h6"} className={classes.titulo}>
-                        <b>{"Duración de las sanciones"}</b>
-                    </Typography>
-                </Grid>
-                <Grid item xs={12} className={classes.descripcion}>
-                    <Typography>
-                        La siguiente gráfica muestra la duración de las inhabilitaciones,que van de un año hasta veinte.
-                        Observamos que un <b>86.2%</b> de las inhabilitaciones son por 10 años, <b>4.5%</b> tienen una duración menor a 10 años y <b>8.94%</b> una duración mayor a 10 años.
-                    </Typography>
-                </Grid>
-                <Grid item xs={12} id={"graf"}>
-                    {
-                        methods && methods.data &&
-                        <BarChart config={methods}/>
-                    }
-                    {
-                        error && <MensajeErrorDatos/>
-                    }
-                </Grid>
-            </Grid>
+                    <ContainerChart>
+                        <Typography variant={"h6"} className={classes.titulo}>
+                            <b>{"Duración de las sanciones en años"}</b>
+                        </Typography>
+                        {
+                            methods && methods.data &&
+                            <BarChart config={methods}/>
+                        }
+                        {
+                            error && <MensajeErrorDatos/>
+                        }
+                    </ContainerChart>
         </div>
     )
 }

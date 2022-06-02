@@ -1,12 +1,14 @@
 import React from 'react';
 import {withStyles} from "@mui/styles";
 import PropTypes from 'prop-types';
-import {Grid, Typography, Paper, Link} from "@mui/material";
-import TiemposSanciones from "./TiemposSanciones";
+import {Grid, Paper} from "@mui/material";
 import CausaSanciones from "./CausaSanciones";
 import AnioResolucionSanciones from "./AnioResolucionSanciones";
 import DependenciasSanciones from "./DependenciasSanciones";
 import '../graficas.css';
+import TotalRows from "./TotalRows"
+import TotalDependencias from "./TotalDependencias";
+import TotalSancionesFin from "./TotalSancionesFin";
 
 const styles = theme => ({
     root: {
@@ -15,12 +17,11 @@ const styles = theme => ({
     sectionT: {
         maxWidth: '1200px',
         overflowX : 'auto',
-        marginTop : theme.spacing(7),
         [theme.breakpoints.up('sm')]: {
-            marginBottom: theme.spacing(7),
+            marginBottom: theme.spacing(2),
         },
         [theme.breakpoints.down('sm')]: {
-            marginBottom: theme.spacing(4),
+            marginBottom: theme.spacing(1),
         }
     },
     desc:{
@@ -64,45 +65,24 @@ const Dashboard = (props) => {
         return (
             <div id={'s3sgraf'} className={classes.root}>
                 <Paper elevation={15} className={classes.paper}>
-                <Grid container spacing={0} justifyContent='center' className={classes.aux}>
-                    <Grid item xs={12} className={classes.sectionG}>
-                        <Typography >
-                            <b>{"¿Qué información es?"}</b>
-                        </Typography>
-                        <Typography className={classes.desc}>
-                            La información presentada corresponde a las personas servidoras públicas que se encuentran inhabilitadas de acuerdo con el Registro de
-                            Servidores Públicos Sancionados (RSPS) y cuya fecha de resolución va del año 2013 a enero 2022. En esta entrega, se cuentan con <b>1,218 registros</b>.
-                        </Typography>
-                        <Typography  >
-                            <b>{"¿Cómo se obtiene la información?"}</b>
-                        </Typography>
-                        <Typography className={classes.desc}>
-                            Se obtiene de la información reportada por la Secretaría de la Función Pública, visita la página datos.gob.mx<br/>
-                            (Fuente:
-                            <Link className={classes.link} href={'https://datos.gob.mx/busca/dataset/servidores-publicos-sancionados'} target="_blank" rel="noopener noreferrer">datos.gob.mx</Link>)
-                        </Typography>
-                        <Typography >
-                            <b>¿Qué puedo encontrar?</b>
-                        </Typography>
-                        <Typography className={classes.desc}>
-                            Considerando los campos en el conjunto de datos, las visualizaciones presentan 4 puntos principales:  <br/><br/>
-                            1. <b>Cantidad de personas servidoras públicas sancionadas.</b> Conoce el número de personas servidoras públicas sancionadas que se encuentran sancionadas (inhabilitadas) y cuya fecha de resolución fue efectuada entre el año 2013 y enero 2022. <Link className={classes.link} href={"#g1"}>Ver</Link><br/>
-                            2. <b>Causa de las sanciones.</b> Muestra cuáles fueron las causas de las inhabilitaciones que se encuentran vigentes (firmes) las cuales fueron resueltas entre el año 2013 y enero 2022. Es posible ver el comportamiento general por el tipo de causa y de manera desagregada por año. <Link className={classes.link} href={"#g2"}>Ver</Link><br/>
-                            3. <b>Dependencias con más personas servidoras públicas sancionadas.</b> Presenta cuáles son las dependencias con más personas servidoras públicas sancionadas (inhabilitadas) a enero 2022. <Link className={classes.link} href={"#g3"}>Ver</Link><br/>
-                            4. <b>Duración de las sanciones.</b> Conoce la duración de las inhabilitaciones vigentes. <Link className={classes.link} href={"#g4"}>Ver</Link>
-                        </Typography>
+                <Grid container spacing={3} justifyContent='center' className={classes.aux}>
+                    <Grid item xs={4}>
+                        <TotalRows/>
                     </Grid>
-                    <Grid item xs={12} className={classes.sectionT} id={"g1"}>
+                    <Grid item xs={4}>
+                        <TotalDependencias/>
+                    </Grid>
+                    <Grid item xs={4}>
+                        <TotalSancionesFin/>
+                    </Grid>
+                    <Grid item xs={12}  id={"g1"}>
                         <AnioResolucionSanciones/>
                     </Grid>
-                    <Grid item xs={12} className={classes.sectionT} id={"g2"}>
+                    <Grid item xs={12}  id={"g2"}>
                         <CausaSanciones/>
                     </Grid>
-                    <Grid item xs={12} className={classes.sectionT} id={"g3"}>
+                    <Grid item xs={12}  id={"g3"}>
                         <DependenciasSanciones/>
-                    </Grid>
-                    <Grid item xs={12} className={classes.sectionT} id={"g4"}>
-                        <TiemposSanciones/>
                     </Grid>
                 </Grid>
                 </Paper>

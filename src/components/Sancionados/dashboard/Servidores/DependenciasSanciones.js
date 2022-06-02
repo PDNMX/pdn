@@ -5,7 +5,8 @@ import {Grid, Typography} from "@mui/material";
 import {Treemap} from "d3plus-react";
 import axios from 'axios';
 import * as d3 from "d3";
-import MensajeErrorDatos from "../../../Mensajes/MensajeErrorDatos";
+import MensajeErrorDatos from "@Mensajes/MensajeErrorDatos";
+import ContainerChart from "@Compartidos/Dashboards/ContainerChart";
 
 const styles = theme => ({
     frameChart: {
@@ -78,7 +79,7 @@ const DependenciasSanciones = (props) => {
     const [config2, setConfig2] = React.useState({});
     const {classes} = props;
 
-    React.useEffect(()=> {
+    React.useEffect(() => {
         aux().then(result => {
             let aux = result.data.data.map(item => {
                 return {
@@ -87,31 +88,31 @@ const DependenciasSanciones = (props) => {
                 }
             });
             setMethods({
-                    data: aux,
-                    height: 400,
-                    groupBy: ["group"],
-                    sum: "value",
-                    tooltipConfig: {
-                        tbody: [
-                            ["Número de sanciones: ", function (d) {
-                                return d["value"]
-                            }
-                            ]
-                        ]
-                    },
-                    legend: false,
-                    shapeConfig: {
-                        label: function (d) {
-                            return d["group"] + "\n" + d["value"] + " sanciones"
-                        },
-                        labelConfig: {
-                            fontMax: 18,
-                            fontMin: 10
-                        },
-                        fill: (d) => {
-                            return z(d.group)
+                data: aux,
+                height: 400,
+                groupBy: ["group"],
+                sum: "value",
+                tooltipConfig: {
+                    tbody: [
+                        ["Número de sanciones: ", function (d) {
+                            return d["value"]
                         }
+                        ]
+                    ]
+                },
+                legend: false,
+                shapeConfig: {
+                    label: function (d) {
+                        return d["group"] + "\n" + d["value"] + " sanciones"
+                    },
+                    labelConfig: {
+                        fontMax: 18,
+                        fontMin: 10
+                    },
+                    fill: (d) => {
+                        return z(d.group)
                     }
+                }
 
             })
         }).catch(err => {
@@ -128,32 +129,32 @@ const DependenciasSanciones = (props) => {
                 }
             });
 
-           setConfig2({
-                    data: aux2,
-                    height: 400,
-                    groupBy: ["parent", "group"],
-                    sum: "value",
-                    tooltipConfig: {
-                        tbody: [
-                            ["Número de sanciones: ", function (d) {
-                                return d["value"]
-                            }
-                            ]
-                        ]
-                    },
-                    legend: true,
-                    shapeConfig: {
-                        label: function (d) {
-                            return d["group"] + "\n" + d["value"] + " sanciones"
-                        },
-                        labelConfig: {
-                            fontMax: 18,
-                            fontMin: 10
-                        },
-                        fill: (d) => {
-                            return z(d.parent)
+            setConfig2({
+                data: aux2,
+                height: 400,
+                groupBy: ["parent", "group"],
+                sum: "value",
+                tooltipConfig: {
+                    tbody: [
+                        ["Número de sanciones: ", function (d) {
+                            return d["value"]
                         }
+                        ]
+                    ]
+                },
+                legend: true,
+                shapeConfig: {
+                    label: function (d) {
+                        return d["group"] + "\n" + d["value"] + " sanciones"
                     },
+                    labelConfig: {
+                        fontMax: 18,
+                        fontMin: 10
+                    },
+                    fill: (d) => {
+                        return z(d.parent)
+                    }
+                },
 
             })
         }).catch(err => {
@@ -163,21 +164,14 @@ const DependenciasSanciones = (props) => {
 
     }, []);
 
-        return (
-            <div>
-                <Grid container spacing={0} justifyContent='center' className={classes.frameChart}>
-                    <Grid item xs={12}>
+    return (
+        <div>
+            <Grid container spacing={2} justifyContent='center'>
+                <Grid item xs={10}>
+                    <ContainerChart>
                         <Typography variant={"h6"} className={classes.titulo}>
                             <b>{"Dependencias con mayor número de sanciones"}</b>
                         </Typography>
-                    </Grid>
-                    <Grid item xs={12} className={classes.descripcion}>
-                        <Typography>
-                            Cuatro instituciones públicas registran la mayor cantidad de personas servidoras públicas sancionadas con una inhabilitación a enero 2022: la Policía Federal, la Secretaría de Educación Pública, Telecomunicaciones de México y el Instituto de Seguridad y Servicios Sociales de los Trabajadores que en conjunto representan el <b>36.78%</b> del total
-                        </Typography>
-                    </Grid>
-
-                    <Grid item xs={12}>
                         {
                             methods && methods.data &&
                             <Treemap config={methods}/>
@@ -185,15 +179,12 @@ const DependenciasSanciones = (props) => {
                         {
                             errorG1 && <MensajeErrorDatos/>
                         }
-
-                    </Grid>
-                    <Grid item xs={12} className={classes.descripcion}>
-                        <Typography>
-                            La siguiente gráfica  muestra las dependencias con mayor número de sanciones firmes que fueron resueltas en cada año del 2013 a enero 2022.
-                            Los años 2013, 2015 y 2016 los encabeza la Policía Federal, 2014 Telecomunicaciones de México, de 2017  a 2020 el Instituto de Seguridad y Servicios Sociales de los Trabajadores del Estado, y finalmente la única sanción del 2021 corresponde a la Secretaría de Agricultura y Desarrollo Rural.
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={12}>
+                    </ContainerChart>
+                </Grid>
+                {
+                    /*
+                  <Grid item xs={12}>
+                    <ContainerChart>
                         {
                             config2 && config2.data &&
                             <Treemap config={config2}/>
@@ -201,11 +192,14 @@ const DependenciasSanciones = (props) => {
                         {
                             errorG2 && <MensajeErrorDatos/>
                         }
-                    </Grid>
+                    </ContainerChart>
                 </Grid>
+                    * */
+                }
+            </Grid>
 
-            </div>
-        )
+        </div>
+    )
 
 
 }

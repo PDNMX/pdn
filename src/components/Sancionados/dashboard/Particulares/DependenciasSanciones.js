@@ -6,6 +6,7 @@ import {Treemap} from "d3plus-react";
 import axios from 'axios';
 import * as d3 from "d3";
 import MensajeErrorDatos from "../../../Mensajes/MensajeErrorDatos";
+import ContainerChart from "../../../Compartidos/Dashboards/ContainerChart";
 
 const styles = theme => ({
     frameChart: {
@@ -164,7 +165,21 @@ const DependenciasSanciones = (props) => {
 
     return (
         <div>
-            <Grid container spacing={0} justifyContent='center' className={classes.frameChart}>
+            <ContainerChart>
+                <Typography variant={"h6"} className={classes.titulo}>
+                    <b>{"Dependencias con mayor número de particulares sanciones"}</b>
+                </Typography>
+                {
+                    methods && methods.data &&
+                    <Treemap config={methods}/>
+                }
+                {
+                    errorG1 && <MensajeErrorDatos/>
+                }
+            </ContainerChart>
+            {
+                /*
+                <Grid container spacing={0} justifyContent='center' className={classes.frameChart}>
                 <Grid item xs={12}>
                     <Typography variant={"h6"} className={classes.titulo}>
                         <b>{"Dependencias con mayor número de sanciones"}</b>
@@ -207,6 +222,10 @@ const DependenciasSanciones = (props) => {
                     }
                 </Grid>
             </Grid>
+
+
+                 */
+            }
 
         </div>
     )

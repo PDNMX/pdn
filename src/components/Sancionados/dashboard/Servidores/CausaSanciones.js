@@ -5,7 +5,8 @@ import {Grid, Typography} from "@mui/material";
 import {BarChart} from "d3plus-react";
 import axios from 'axios';
 import * as d3 from "d3";
-import MensajeErrorDatos from "../../../Mensajes/MensajeErrorDatos";
+import MensajeErrorDatos from "@components/Mensajes/MensajeErrorDatos";
+import ContainerChart from "@Compartidos/Dashboards/ContainerChart";
 
 const styles = theme => ({
     test: {
@@ -125,7 +126,7 @@ const CausasSanciones = (props) => {
                     ]
                 },
                 legend: false,
-                height: 500,
+                height: 400,
                 shapeConfig: {
                     fill: (d, i) => {
                         return color[i]
@@ -180,15 +181,14 @@ const CausasSanciones = (props) => {
                     ]
                 },
                 legend: true,
-                height: 500,
+                height: 400,
                 shapeConfig: {
                     label: false,
                     fill: (d) => {
                         return z(d.id)
                     }
                 },
-                stacked: true,
-                title: "Por año"
+                stacked: true
             })
         }).catch(err => {
             console.error(err);
@@ -198,49 +198,34 @@ const CausasSanciones = (props) => {
 
     return (
         <div>
-            <Grid container spacing={0} justifyContent='center' className={classes.frameChart}>
-                <Grid item xs={12}>
-                    <Typography variant={"h6"} className={classes.titulo}>
-                        <b>Causa de las sanciones de 2013 a la fecha</b>
-                    </Typography>
+            <Grid container spacing={3} justifyContent='center' >
+                <Grid item xs={10} >
+                    <ContainerChart>
+                        <Typography variant={"h6"} className={classes.titulo}>
+                            <b>Causa de las sanciones de 2013 a la fecha</b>
+                        </Typography>
+                        {
+                            methods && methods.data &&
+                            <BarChart className={classes.test} config={methods}/>
+                        }
+                        {errorG1 &&
+                        <MensajeErrorDatos/>
+                        }
+                    </ContainerChart>
                 </Grid>
-                <Grid item xs={12} md={8} className={classes.graph}>
-                    {
-                        methods && methods.data &&
-                        <BarChart className={classes.test} config={methods}/>
-
-                    }
-                    {errorG1 &&
-                    <MensajeErrorDatos/>
-                    }
-                </Grid>
-                <Grid item xs={12} md={4} className={classes.descripcion}>
-                    <Typography variant={"body1"}>
-                        Como se puede apreciar en la gráfica de la izquierda, la causa de la mayoría de las sanciones firmes a enero 2022 fue la <b>negligencia administrativa</b> con 761 registros, representando el <b>62.47%</b> del total.
-                    </Typography>
-                </Grid>
-                <Grid item xs={12} className={classes.descripcion} justifyContent={'left'}>
-                    <Typography variant={"body1"}  >
-                        Algunos datos que refleja la siguiente gráfica son:
-                    </Typography>
-                </Grid>
-                <Grid item xs={12} className={classes.descripcion}>
-                        <ul>
-                            <li>La <b>negligencia administrativa</b> es la causa de la mayoría de las inhabilitaciones firmes a enero 2022 con 761 registros, sin embargo, existe un decremento en el número de sancionados por esta causa  tomando como muestra el año 2017 con 139 sanciones en contraste con el año 2020 con tan solo 8.</li>
-                            <li>En el caso del <b>abuso de autoridad</b> hay 181 registros, 55 de ellos corresponden al año 2014, en contraste con los 2 registros del año 2020, cabe señalar que en año 2019 y 2021 no hay registros que correspondan a esta causa.</li>
-                            <li>El <b>cohecho o extorsión</b>, cuenta con un total de 73 registros, 27 pertenecen  a inhabilitaciones resueltas en 2013, en contraste con 1 del 2019, a partir del 2019 no se tienen más sanciones firmes por esta causa, cabe señalar que no hay sanciones firmes resueltas en el 2018 que coincidan con esta causa.</li>
-                            <li>Por su parte, la <b>violación en procedimientos de contratación</b> cuenta con 58 sanciones firmes, habiendo sido resueltas en su mayoría (22) en el año 2015, a partir del año 2017 no hay más registros coincidentes.</li>
-                            <li>A causa de <b>ejercicio indebido de sus funciones en materia migratoria</b> hay 7 sanciones firmes a enero 2022, 4 resueltas en 2016, 2 en 2017 y 1 en 2018.</li>
-                        </ul>
-                </Grid>
-                <Grid item xs={12} md={12}>
-                    {
-                        config2 && config2.data &&
-                        <BarChart config={config2}/>
-                    }
-                    {errorG2 &&
-                    <MensajeErrorDatos/>
-                    }
+                <Grid item xs={10}>
+                    <ContainerChart>
+                        <Typography variant={"h6"} className={classes.titulo}>
+                            <b>Causa de las sanciones por año</b>
+                        </Typography>
+                        {
+                            config2 && config2.data &&
+                            <BarChart config={config2}/>
+                        }
+                        {errorG2 &&
+                        <MensajeErrorDatos/>
+                        }
+                    </ContainerChart>
                 </Grid>
             </Grid>
 
