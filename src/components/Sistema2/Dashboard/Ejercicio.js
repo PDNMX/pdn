@@ -10,14 +10,15 @@ const aux = () => axios({
     method: "GET"
 });
 
-let color = ["#F87268", "#DC6AF0", "#B286FD", "#8A97D6",
+let colores = ["#F87268", "#DC6AF0", "#B286FD", "#8A97D6",
     "#3DA2F5", "#00BCD4", "#00B3A1", "#4CAF50",
     "#8BC34A", "#FFC107", "#FF9800", "#FF7247",
     "#E2977E", "#FD938B", "#FF85AD", "#ED85FF",
     "#AD94D6", "#8A9BF9", "#6DBCFD", "#1C9BFD",
     "#1DE2FC", "#00DBC5", "#71E575", "#AFEE68",
     "#F9AE3E", "#FF9270", "#F2B39C"];
-
+let color = colores[Math.floor(Math.random()* (colores.length-1))]
+console.log(color)
 const Ejercicio = props => {
     const [state, setState] = React.useState({
         error: false
@@ -53,9 +54,7 @@ const Ejercicio = props => {
                     height: 400,
                     shapeConfig: {
                         label: false,
-                        fill: (d, i) => {
-                            return color[i]
-                        }
+                        fill:color
                     },
                     legend: false,
                     axes: {

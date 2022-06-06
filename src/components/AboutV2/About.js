@@ -5,12 +5,12 @@ import {withStyles} from "@mui/styles";
 import bgimg from "../../assets/rediseno/fondo_cruces_dark.png";
 import pdnRoutes from "../../routes/index";
 import HeaderV2 from '../HomeV2/HeaderV2';
-import S1 from "../../assets/rediseno/sistemas_sin_fondo/ico_s1.png";
-import S2 from "../../assets/rediseno/sistemas_sin_fondo/ico_s2.png";
-import S3 from "../../assets/rediseno/sistemas_sin_fondo/ico_s3.png";
-import S4 from "../../assets/rediseno/sistemas_sin_fondo/ico_s4.png";
-import S5 from "../../assets/rediseno/sistemas_sin_fondo/ico_s5.png";
-import S6 from "../../assets/rediseno/sistemas_sin_fondo/ico_s6.png";
+import S1 from "@assets/rediseno/sistemas_sin_fondo/btn-s1.svg";
+import S2 from "@assets/rediseno/sistemas_sin_fondo/btn-s2.svg";
+import S3 from "@assets/rediseno/sistemas_sin_fondo/btn-s3.svg";
+import S4 from "@assets/rediseno/sistemas_sin_fondo/btn-s4.svg";
+import S5 from "@assets/rediseno/sistemas_sin_fondo/btn-s5.svg";
+import S6 from "@assets/rediseno/sistemas_sin_fondo/btn-s6.svg";
 
 const styles = theme => ({
     root: {

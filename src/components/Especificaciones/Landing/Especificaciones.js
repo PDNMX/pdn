@@ -3,11 +3,11 @@ import {Grid, Box, Paper} from '@mui/material';
 import withStyles from '@mui/styles/withStyles';
 import {Link} from 'react-router-dom';
 import Typography from "@mui/material/Typography";
-import S1 from '../../../assets/rediseno/sistemas_sin_fondo/ico_s1.png';
-import S2 from '../../../assets/rediseno/sistemas_sin_fondo/ico_s2.png';
-import S3 from '../../../assets/rediseno/sistemas_sin_fondo/ico_s3.png';
-import S6 from '../../../assets/rediseno/sistemas_sin_fondo/ico_s6.png';
-import bgimg from "../../../assets/rediseno/fondo_cruces_dark.png";
+import S1 from '@assets/rediseno/sistemas_sin_fondo/btn-s1.svg';
+import S2 from '@assets/rediseno/sistemas_sin_fondo/btn-s2.svg';
+import S3 from '@assets/rediseno/sistemas_sin_fondo/btn-s3.svg';
+import S6 from '@assets/rediseno/sistemas_sin_fondo/btn-s6.svg';
+import bgimg from "@assets/rediseno/fondo_cruces_dark.png";
 import HeaderV2 from "../../HomeV2/HeaderV2";
 import pdnRoutes from "../../../routes";
 
