@@ -16,7 +16,7 @@ const TotalInstituciones = () => {
         aux().then(res => {
             setData({
                 digit: parseInt(res.data.data[0].count, 10),
-                text: 'instituciones'
+                text: 'Instituciones federales'
             })
         }).catch(error => {
                 console.error(error);

@@ -204,9 +204,7 @@ const Tops = (props) => {
         <ThemeProvider theme={ThemeV2}>
             <ModalInfo open={open} setOpen={setOpen}>
                 <Typography variant={"body1"} paragraph>
-                    En esta gráfica puedes conocer los procedimientos, las instituciones y unidades responsables o
-                    puestos con más personas servidoras públicas en
-                    contrataciones de manera general o bien podrás seleccionar por ejercicio, ramo, o institución.
+                    En esta gráfica puedes visualizar los procedimientos, las instituciones y unidades responsables o puestos con más personas servidoras públicas que participan en  contrataciones públicas.
                 </Typography>
             </ModalInfo>
             <ContainerChart handleOpen={handleOpen}>
@@ -220,7 +218,7 @@ const Tops = (props) => {
                     <Grid container>
                         <Grid item xs={12}>
                             <Typography paragraph>
-                                Selecciona una categoría y da clic en el botón <b>Buscar</b>
+                                Selecciona uno o varios filtros de tu interés y da clic en el botón <b>Buscar</b>
                             </Typography>
                         </Grid>
                         <Grid item md={3} xs={12}>

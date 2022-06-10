@@ -151,13 +151,13 @@ const AnioResolucionSanciones = (props) => {
     return (
         <div>
             <ModalInfo open={open} setOpen={setOpen}>
-                Conoce el número de personas servidoras públicas que se encuentran sancionadas (inhabilitadas) y cuya fecha de resolución fue efectuada a partir del año 2013
+                Conoce el número de personas servidoras públicas  sancionadas (inhabilitadas) y cuya fecha de resolución de la sanción fue efectuada a partir del año 2013.
             </ModalInfo>
             <Grid container spacing={2} justifyContent='center'>
                 <Grid item xs={12} md={6}>
                     <ContainerChart handleOpen={handleOpen}>
                         <Typography variant={"h6"} className={classes.titulo}>
-                            <b>{"Cantidad de sanciones"}</b>
+                            <b>{"Cantidad de sanciones resueltas por año"}</b>
                         </Typography>
                         {
                             methods && methods.data &&

@@ -167,7 +167,7 @@ const DependenciasSanciones = (props) => {
         <div>
             <ContainerChart>
                 <Typography variant={"h6"} className={classes.titulo}>
-                    <b>{"Dependencias con mayor número de particulares sanciones"}</b>
+                    <b>{"Sanciones a particulares por Institución"}</b>
                 </Typography>
                 {
                     methods && methods.data &&

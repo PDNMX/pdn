@@ -210,48 +210,20 @@ const Agrupaciones = (props) => {
     return (
         <ThemeProvider theme={ThemeV2}>
             <ModalInfo open={open} setOpen={setOpen}>
-                <Typography paragraph>
-                    En las secciones anteriores se puede observar de manera general el comportamiento de los
-                    procesos de contratación.
-                    Resulta interesante conocer cómo se distribuyen estos según distintas variables como ejercicio
-                    fiscal, ramo e institución.
-                    De acuerdo con los valores que selecciones, podrás obtener 5 diferentes combinaciones que
-                    mostrarán lo siguiente:
-                </Typography>
                 <List>
                     <ListItem>
                         <ListItemText>
-                            1. <b>Ejercicio:</b> seleccionando únicamente el ejercicio, conocerás el total de
-                            funcionarios que intervinieron en procesos de contratación en cada uno de ellos.
+                            1. <b>Ejercicio fiscal:</b> Permite conocer el total de personas servidoras públicas que  intervinieron en procesos de contratación en un ejercicio fiscal específico.
                         </ListItemText>
                     </ListItem>
                     <ListItem>
                         <ListItemText>
-                            2. <b>Ramo:</b> seleccionando únicamente el ramo, obtendrás el número de funcionarios
-                            que intervinieron en procesos de contratación dentro de ese ramo en cada uno de los
-                            ejercicios fiscales.
+                            2. <b>Ramo:</b> Permite conocer el número de personas servidoras públicas que intervinieron en procesos de contratación dentro de ese ramo.
                         </ListItemText>
                     </ListItem>
                     <ListItem>
                         <ListItemText>
-                            3. <b>Institución:</b> selecciona únicamente una institución o bien el ramo y la
-                            institución, para conocer el número de servidores que intervinieron en procesos de
-                            contratación que tuvo en cada uno de los ejercicios fiscales.
-                        </ListItemText>
-                    </ListItem>
-                    <ListItem>
-                        <ListItemText>
-                            4. <b>Ejercicio y ramo: </b> Cada ramo cuenta con una serie de instituciones, selecciona
-                            un ejercicio fiscal y un ramo para conocer cómo se distribuyen el número de funcionarios
-                            en cada una de las Instituciones en los diferentes años.
-                        </ListItemText>
-                    </ListItem>
-                    <ListItem>
-                        <ListItemText>
-                            5. <b>Ejercicio, ramo e institución: </b> Para conocer de manera puntual el número de
-                            servidores en procesos de contratación de determinada institución en cierto ejercicio,
-                            podrás seleccionar el ejercicio, ramo e institución o bien el ejercicio y la institución
-                            deseadas.
+                            3. <b>Institución:</b> Permite conocer los datos de las personas servidoras públicas , que participan en procedimientos de contratación en una institución determinada.
                         </ListItemText>
                     </ListItem>
                 </List>
@@ -265,16 +237,16 @@ const Agrupaciones = (props) => {
                     </Grid>
                     <Grid item xs={12} className={classes.item}>
                         <Typography variant={"body1"} paragraph>
-                            Para comenzar, selecciona algún filtro y da clic en el botón <b>Buscar</b>
+                            Selecciona un o varios filtro de interés y da clic en el botón <b>Buscar</b>
                         </Typography>
                     </Grid>
                     <Grid item md={4} xs={12}>
                         <FormControl className={classes.formControl}>
-                            <InputLabel htmlFor="campoSelectEjercicio">Ejercicio</InputLabel>
+                            <InputLabel htmlFor="campoSelectEjercicio">Ejercicio fiscal</InputLabel>
                             <Select style={{marginTop: '0px'}}
                                     value={ejercicio}
                                     onChange={(e) => setEjercicio(e.target.value)}
-                                    label='Ejercicio'
+                                    label='Ejercicio fiscal'
                             >
                                 <MenuItem key={''} value={'any'}> TODOS</MenuItem>
                                 {
@@ -294,7 +266,7 @@ const Agrupaciones = (props) => {
                             <Select style={{marginTop: '0px'}}
                                     value={ramo}
                                     onChange={(e) => setRamo(e.target.value)}
-                                    label={'Ramo'}
+                                    label={'Ramo federal'}
                             >
                                 <MenuItem key={''} value={'any'}> TODOS</MenuItem>
                                 {

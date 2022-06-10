@@ -19,12 +19,12 @@ const styles = theme => ({
     }
 })
 const GeneralData = (props) => {
-    const {classes, digit, text} = props;
+    const {classes, digit, text, currency} = props;
     return (
         <React.Fragment>
             <Paper elevation={24} className={classes.paperChart}>
                 <Typography variant={"h3"} className={classes.digit}>
-                    {digit ? digit.toLocaleString('en-US'): null}
+                    {currency ? '$':null} {digit ? digit.toLocaleString('en-US'): null}
                 </Typography>
                 <Typography variant={"subtitle"} className={classes.text}>
                     {text}

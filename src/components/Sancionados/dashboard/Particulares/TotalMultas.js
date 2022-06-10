@@ -26,7 +26,7 @@ const TotalRows = () => {
     },[]);
 
     return(
-        <GeneralData digit={data.digit} text={data.text}/>
+        <GeneralData digit={data.digit} text={data.text} currency={true}/>
     );
 }
 

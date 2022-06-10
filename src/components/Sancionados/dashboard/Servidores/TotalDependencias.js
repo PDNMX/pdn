@@ -16,7 +16,7 @@ const TotalDependencias = () => {
         aux().then(res => {
             setData({
                 digit: parseInt(res.data.data[0].count,10),
-                text: 'dependencias'
+                text: 'Instituciones'
             })
         })
             .catch(error => {

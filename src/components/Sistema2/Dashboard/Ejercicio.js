@@ -60,7 +60,7 @@ const Ejercicio = props => {
                     axes: {
                         fill: "#666672"
                     },
-                    title: "Ejercicio fiscal"
+                    title: "Personas servidoras públicas en contrataciones por año"
                 }
                 }
             )

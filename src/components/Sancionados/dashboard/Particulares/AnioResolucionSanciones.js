@@ -117,7 +117,7 @@ const AnioResolucionSanciones = (props) => {
         <div>
             <ContainerChart>
                 <Typography variant={"h6"} className={classes.titulo}>
-                    <b> {"Cantidad de sanciones"}</b>
+                    <b> {"Cantidad de sanciones resueltas por año"}</b>
                 </Typography>
                 {
                     methods && methods.data &&

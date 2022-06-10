@@ -91,40 +91,30 @@ const Procedimiento = props => {
         <div>
             <ModalInfo open={open} setOpen={setOpen}>
                 <Typography variant={"h6"} className={classes.titulo} paragraph>
-                    Procesos
+                    Tipos de procesos
                 </Typography>
-                <Typography variant={'body1'} style={{fontWeight: "bold"}} paragraph>Tipos de procesos</Typography>
                 <Typography variant={"body1"}>
                     Existen cuatro tipos de procesos:
                 </Typography>
                 <List>
                     <ListItem>
                         <ListItemText>
-                            1. <b>Contrataciones públicas: </b>Se contemplan aquellas sujetas a la Ley de
-                            Adquisiciones, Arrendamientos y Servicios del Sector Público (LAASSP), la Ley de
-                            Obras Públicas y Servicios Relacionados con las Mismas (LOPSRM) y la Ley de
-                            Asociaciones Público Privadas (LAPP).
+                            1. <b>Contrataciones públicas: </b>Licitación pública, Invitación a cuando menos tres personas y adjudicación directa con base en lo establecido en la Ley de Adquisiciones, Arrendamientos y Servicios del Sector Público.
                         </ListItemText>
                     </ListItem>
                     <ListItem>
                         <ListItemText>
-                            2. <b>Concesiones, licencias, permisos, autorizaciones y prórrogas: </b>Comprende
-                            los regulados por las diversas disposiciones jurídicas de carácter federal que
-                            otorgan las dependencias de la Administración Pública Federal (APF).
+                            2. <b>Concesiones, licencias, permisos, autorizaciones y prórrogas: </b>Comprende los regulados por las diversas disposiciones jurídicas de carácter federal que otorgan las dependencias de la Administración Pública Federal (APF).
                         </ListItemText>
                     </ListItem>
                     <ListItem>
                         <ListItemText>
-                            3. <b>Enajenación de bienes muebles: </b>Que incluyen los actos traslativos de
-                            propiedad de los bienes muebles de la federación y de las entidades paraestatales
-                            conforme a la Ley General de Bienes Nacionales (LGBN).
+                            3. <b>Enajenación de bienes muebles: </b>Incluyen los actos traslativos de propiedad de los bienes muebles de la federación y de las entidades paraestatales conforme a la Ley General de Bienes Nacionales (LGBN).
                         </ListItemText>
                     </ListItem>
                     <ListItem>
                         <ListItemText>
-                            4. <b>Asignación y emisión de dictámenes de avalúos nacionales: </b>Comprende
-                            únicamente los que son competencia del Instituto de Administración y Avalúos de
-                            Bienes Nacionales (INDAABIN).
+                            4. <b>Asignación y emisión de dictámenes de avalúos nacionales: </b>Comprende únicamente los que son competencia del Instituto de Administración y Avalúos de Bienes Nacionales (INDAABIN).
                         </ListItemText>
                     </ListItem>
                 </List>

@@ -70,7 +70,7 @@ const SentidoResolucionesAnio = (props) => {
             setConfig2({
                 data: aux2,
                 xConfig: {
-                    title: "Sentido de la resolución de la sanción",
+                    title: "Año",
                 },
                 yConfig: {
                     title: "Número de sanciones"
@@ -90,7 +90,6 @@ const SentidoResolucionesAnio = (props) => {
                         ]
                     ]
                 },
-                legend: true,
                 height: 400,
                 shapeConfig: {
                     label: false,
@@ -99,7 +98,7 @@ const SentidoResolucionesAnio = (props) => {
                     }
                 },
                 stacked: true,
-                title: "Por año",
+
             })
 
         }).catch(err => {

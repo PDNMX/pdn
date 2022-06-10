@@ -16,7 +16,7 @@ const TotalRows = () => {
         aux().then(res => {
                 setData({
                     digit: parseInt(res.data.data[0].count,10),
-                    text: 'registros'
+                    text: 'Registros de personas servidoras públicas'
                 })
             })
         .catch(error => {

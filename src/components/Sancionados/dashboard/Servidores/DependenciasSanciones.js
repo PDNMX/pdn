@@ -170,7 +170,7 @@ const DependenciasSanciones = (props) => {
                 <Grid item xs={10}>
                     <ContainerChart>
                         <Typography variant={"h6"} className={classes.titulo}>
-                            <b>{"Dependencias con mayor número de sanciones"}</b>
+                            <b>{"Sanciones a personas servidoras públicas por Institución"}</b>
                         </Typography>
                         {
                             methods && methods.data &&

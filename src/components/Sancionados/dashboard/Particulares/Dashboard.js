@@ -81,10 +81,10 @@ function Dashboard(props) {
                     <Grid item xs={4}>
                         <TotalMultas/>
                     </Grid>
-                    <Grid item xs={6}  id={"g1"}>
+                    <Grid item xs={12} md={6}  id={"g1"}>
                         <AnioResolucionSanciones/>
                     </Grid>
-                    <Grid item xs={6}  id={"g2"}>
+                    <Grid item xs={12} md={6}  id={"g2"}>
                         <SentidoResoluciones/>
                     </Grid>
                     <Grid item xs={12}  id={"g2"}>

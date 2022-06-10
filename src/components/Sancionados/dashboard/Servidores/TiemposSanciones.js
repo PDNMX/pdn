@@ -1,11 +1,12 @@
 import React from 'react';
 import {withStyles} from "@mui/styles";
 import PropTypes from 'prop-types';
-import {Typography} from "@mui/material";
+import {Typography, Table, TableContainer, TableRow, TableBody, TableHead,TableCell} from "@mui/material";
 import {BarChart} from "d3plus-react";
 import axios from 'axios';
 import MensajeErrorDatos from "@Mensajes/MensajeErrorDatos";
 import ContainerChart from "@Compartidos/Dashboards/ContainerChart";
+import * as d3 from 'd3';
 
 const styles = theme => ({
     frameChart: {
@@ -54,6 +55,10 @@ let color = ["#F87268", "#DC6AF0", "#B286FD", "#8A97D6",
     "#1DE2FC", "#00DBC5", "#71E575", "#AFEE68",
     "#F9AE3E", "#FF9270", "#F2B39C"];
 
+let yScale = d3.scaleSymlog()
+    .domain([0,1070])
+    .range([0,1070]);
+
 const TiemposSanciones = (props) => {
     const [error, setError] = React.useState(false);
     const [methods, setMethods] = React.useState({});
@@ -66,17 +71,23 @@ const TiemposSanciones = (props) => {
                     "anios": item.anios,
                     "total": parseInt(item.total, 10)
                 }
-            })
+            });
+
             setMethods({
                 data: aux,
                 groupBy: "anios",
                 x: "anios",
-                y: "total",
+                y: function (d){
+                    return yScale(d.total)
+                },
                 xConfig: {
                     title: "Duración en años de la sanción",
+                    domain: aux.map(d=>d.anios),
+                    labels: aux.map(d=>d.anios)
                 },
                 yConfig: {
-                    title: "Número de sanciones"
+                    title: "Número de sanciones",
+                    labels: [0,1070]
                 },
                 tooltipConfig: {
                     title: function (d) {
@@ -103,7 +114,7 @@ const TiemposSanciones = (props) => {
                 legend: false,
                 axes: {
                     fill: "#666672"
-                },
+                }
             })
         }).catch(err => {
             console.error(err);

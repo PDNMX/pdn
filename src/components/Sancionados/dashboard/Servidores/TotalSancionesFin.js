@@ -16,7 +16,7 @@ const TotalSancionesFin = () => {
         aux().then(res => {
             setData({
                 digit: parseInt(res.data.data[0].count,10),
-                text: 'inhabilitaciones terminan este año'
+                text: 'Inhabilitaciones terminan en el 2022'
             })
         })
             .catch(error => {

@@ -16,7 +16,7 @@ const TotalRamos = () => {
         aux().then(res => {
             setData({
                 digit: parseInt(res.data.data[0].count,10),
-                text: 'ramos'
+                text: 'Ramos federales'
             })
         })
             .catch(error => {
