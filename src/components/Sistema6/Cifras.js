@@ -172,13 +172,16 @@ const Cifras = props => {
                             <b> <CountUp separator="," decimals={2} prefix={'$'} start={1} end={state.gastoTotal}/></b>
                         </CustomTypography>
 
-                        <CustomTypography variant="h6" color="textPrimary">
-                            Periodo
-                        </CustomTypography>
+                        {dataSupplier && dataSupplier === 'SHCP' && <div>
+                            <CustomTypography variant="h6" color="textPrimary">
+                                Periodo
+                            </CustomTypography>
 
-                        <CustomTypography variant="h5" paragraph color="textPrimary">
-                            <b>{state.periodo.start} - {state.periodo.end}</b>
-                        </CustomTypography>
+                            <CustomTypography variant="h5" paragraph color="textPrimary">
+                                <b>{state.periodo.start} - {state.periodo.end}</b>
+                            </CustomTypography>
+                        </div>
+                        }
 
                     </Grid>
 

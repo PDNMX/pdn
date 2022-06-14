@@ -179,8 +179,9 @@ const Index = props => {
                             {/* TODO: add supplier support*/}
                             <Cifras dataSupplier={dataSupplier}/>
 
-                            {/* TODO: add supplier support*/}
-                            <Top dataSupplier={dataSupplier}/>
+                            { dataSupplier && dataSupplier === 'SHCP' &&
+                                <Top dataSupplier={dataSupplier}/>
+                            }
                         </Paper>
                     </Grid>
                 }

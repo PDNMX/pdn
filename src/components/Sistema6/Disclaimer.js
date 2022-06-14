@@ -38,7 +38,7 @@ const CustomTypography = withStyles(theme =>({
 }))(Typography);
 
 const Disclaimer = props => {
-    const {classes} = props;
+    const {classes, dataSupplier} = props;
 
     return (
         <div className={classes.root}>
@@ -58,10 +58,14 @@ const Disclaimer = props => {
                 </li>
             </ul>
 
-            <CustomTypography paragraph color='textPrimary'>
-                Los datos utilizados en esta sección fueron tomados del portal de datos abiertos
-                del gobierno <Link className={classes.link} href="https://datos.gob.mx/busca/organization/contrataciones-abiertas" target="_blank">datos.gob.mx</Link>.
-            </CustomTypography>
+            { dataSupplier && dataSupplier === 'SHCP' &&
+                <CustomTypography paragraph color='textPrimary'>
+                    Los datos utilizados en esta sección fueron tomados del portal de datos abiertos
+                    del gobierno <Link className={classes.link}
+                                       href="https://datos.gob.mx/busca/organization/contrataciones-abiertas"
+                                       target="_blank">datos.gob.mx</Link>.
+                </CustomTypography>
+            }
         </div>
     );
 }
