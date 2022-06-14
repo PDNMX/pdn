@@ -95,7 +95,7 @@ function ResponsiveDialog(props) {
 
                         <ul>
                             {data.parties.map((p,i) => {
-                                return <li key={i}>{p.name} ({p.roles.join(', ')})</li>
+                                return <li key={i}>{p.name} {p.roles ? `(${p.roles.join(', ')})` : ''}</li>
                             })}
                         </ul>
 

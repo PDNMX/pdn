@@ -33,7 +33,7 @@ const Busqueda = props => {
 
     React.useEffect(() => {
         //fetch data
-        const supplier_id = state.dataSupplier;
+        const supplier_id = props.dataSupplier; //state.dataSupplier;
 
         const _buyers = () => axios({
             url: process.env.REACT_APP_S6_BACKEND +'/api/v1/buyers',
@@ -66,6 +66,7 @@ const Busqueda = props => {
             //console.log (res);
             setState({
                 ...state,
+                dataSupplier: supplier_id, //
                 buyers: res[0].data,
                 pagination: res[1].data.pagination,
                 results: res[1].data.data,
@@ -98,17 +99,56 @@ const Busqueda = props => {
     React.useEffect(() => {
         /**
          * Cambiar dataSupplier
-         * TODO: obtener las listas de buyers y cycles
-         * TODO: limpiar state, asignar dataSupplier y ejecutar búsqueda inicial
+         * obtener las listas de buyers y cycles
+         * limpiar state, asignar dataSupplier y ejecutar búsqueda inicial
         */
 
         if (props.dataSupplier && props.dataSupplier !== state.dataSupplier){
             console.log(`Setting data supplier to => ${props.dataSupplier}`);
-            //setState({});
+            handleChangeDS(props.dataSupplier);
         }
     },[
         props.dataSupplier
     ]);
+
+    const handleChangeDS = async dataSupplier => {
+
+        const _buyers = await axios({
+            url: process.env.REACT_APP_S6_BACKEND +'/api/v1/buyers',
+            params: {
+                supplier_id: dataSupplier
+            },
+            method: 'GET',
+            json: true
+        });
+
+        const _cycles = await axios({
+            url: process.env.REACT_APP_S6_BACKEND + "/api/v1/cycles",
+            params: {
+                supplier_id: dataSupplier
+            },
+            method: 'GET',
+            json: true
+        });
+
+        setState({
+            ...state,
+            dataSupplier: dataSupplier,
+            buyers: _buyers.data,
+            cycles: _cycles.data,
+            pagination: {
+                pageSize: 10,
+                page: 0,
+                total: 0
+            },
+            buyer_id: 'any',
+            procurementMethod: 'any',
+            supplierName: "",
+            cycle: 'any',
+            loading: true
+        })
+    }
+
 
     const handleChangeRowsPerPage = (pageSize) => {
         setState( {
