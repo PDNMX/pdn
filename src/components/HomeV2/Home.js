@@ -6,7 +6,7 @@ import Cards from './Cards/';
 import QueEsPDN from "./QueEsPDN";
 import Numeralia from "./Numeralia";
 import AlertDialog from "./Disclaimer";
-import Ad from "./Ad";
+//import Ad from "./Ad";
 
 const styles = theme => ({
     root: {
@@ -33,7 +33,7 @@ const Home = props => {
 
     return (
         <div className={classes.root}>
-            <Ad/>
+            {/*<Ad/>*/}
             <QueEsPDN/>
             <Numeralia/>
             <BlogSys/>
