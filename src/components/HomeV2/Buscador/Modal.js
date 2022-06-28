@@ -62,7 +62,7 @@ export default function CustomizedDialogs() {
   return (
     <div>
       <Button variant="contained" size="large" endIcon={<ScreenSearchDesktopOutlinedIcon />} onClick={handleClickOpen}>
-        Busqueda asistida
+        Búsqueda asistida
       </Button>
       <BootstrapDialog
         onClose={handleClose}
@@ -72,7 +72,7 @@ export default function CustomizedDialogs() {
         maxWidth="md"
       >
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Busqueda asistida
+        Búsqueda asistida
         </BootstrapDialogTitle>
         <DialogContent dividers>
             <Buscador />

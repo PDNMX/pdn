@@ -1,5 +1,5 @@
-import React, { useState, useCallback } from "react";
-import { Typography, TextField, Button, Stepper, Step, StepLabel, Radio, RadioGroup, FormControlLabel, Select, MenuItem } from "@mui/material/";
+import React, { useState } from "react";
+import { InputLabel, FormControl, Typography, TextField, Button, Stepper, Step, StepLabel, Radio, RadioGroup, FormControlLabel, Select, MenuItem } from "@mui/material/";
 import { makeStyles } from "@mui/styles";
 import { useForm, Controller, FormProvider, useFormContext, } from "react-hook-form";
 
@@ -11,9 +11,9 @@ const useStyles = makeStyles((theme) => ({
 
 function getSteps() {
   return [
-    "Tipo de Busqueda",
-    "Filtros de Busqueda",
-    "Resultados de Busqueda"
+    "Tipo de Búsqueda",
+    "Filtros de Búsqueda",
+    "Resultados de Búsqueda"
   ];
 }
 
@@ -94,6 +94,8 @@ const PersonasServidorasPublicasSancionados = () => {
         control={control}
         name="tipoSancion"
         render={({ field }) => (
+          <FormControl fullWidth={true} margin={'normal'}>
+          <InputLabel id="labelTipoSancion">Tipo de Sanción</InputLabel>
           <Select
             labelId="tipoSancion"
             id="tipoSancion"
@@ -102,10 +104,15 @@ const PersonasServidorasPublicasSancionados = () => {
             autoWidth
             {...field}
           >
-            <MenuItem value={10}>Ejemplo1</MenuItem>
-            <MenuItem value={20}>Ejemplo2</MenuItem>
-            <MenuItem value={30}>Ejemplo3</MenuItem>
+            <MenuItem value={10}>Inhabilitado</MenuItem>
+            <MenuItem value={20}>Multado</MenuItem>
+            <MenuItem value={30}>Suspención del empleo, cargo o comisión</MenuItem>
+            <MenuItem value={40}>Destitución del empleo, cargo o comisión</MenuItem>
+            <MenuItem value={50}>Indemnización resarcitoria</MenuItem>
+            <MenuItem value={60}>Sanción económica</MenuItem>
+            <MenuItem value={70}>Otro</MenuItem>
           </Select>
+        </FormControl>
           
         )}
       />
@@ -189,18 +196,21 @@ const PersonasServidorasPublicasParticipanEnContrataciones = () => {
         control={control}
         name="tipoProcedimientoContratacion"
         render={({ field }) => (
-          <Select
-            labelId="tipoProcedimientoContratacion"
-            id="tipoProcedimientoContratacion"
-            value={'Tipo de Procedimiento de contratación'}
-            label="Tipo de Procedimiento de contratación"
-            autoWidth
-            {...field}
-          >
-            <MenuItem value={10}>Ejemplo1</MenuItem>
-            <MenuItem value={20}>Ejemplo2</MenuItem>
-            <MenuItem value={30}>Ejemplo3</MenuItem>
-          </Select>
+          <FormControl fullWidth={true} margin={'normal'}>
+            <InputLabel id="demo-simple-select-label">Tipo de Procedimiento</InputLabel>
+            <Select
+              labelId="tipoProcedimientoContratacion"
+              id="tipoProcedimientoContratacion"
+              value={'Tipo de Procedimiento de contratación'}
+              label="Tipo de Procedimiento de contratación"
+              
+              {...field}
+            >
+              <MenuItem value={10}>Adjudicación directa</MenuItem>
+              <MenuItem value={20}>Invitación a tres</MenuItem>
+              <MenuItem value={30}>Licitación pública</MenuItem>
+            </Select>
+          </FormControl>
           
         )}
       />
@@ -346,18 +356,26 @@ const EmpresasSancionadaPorCorrupcion = () => {
         control={control}
         name="tipoSancion"
         render={({ field }) => (
-          <Select
-            labelId="tipoSancion"
-            id="tipoSancion"
-            value={'Tipo Sanción'}
-            label="Tipo de Sanción"
-            autoWidth
-            {...field}
-          >
-            <MenuItem value={10}>Ejemplo1</MenuItem>
-            <MenuItem value={20}>Ejemplo2</MenuItem>
-            <MenuItem value={30}>Ejemplo3</MenuItem>
-          </Select>
+          <FormControl fullWidth={true} margin={'normal'}>
+            <InputLabel id="labelTipoSancion">Tipo de Sanción</InputLabel>
+            <Select
+              labelId="tipoSancion"
+              id="tipoSancion"
+              value={'Tipo Sanción'}
+              label="Tipo de Sanción"
+              autoWidth
+              {...field}
+            >
+              <MenuItem value={10}>Inhabilitado</MenuItem>
+              <MenuItem value={20}>Multado</MenuItem>
+              <MenuItem value={30}>Suspención de actividades</MenuItem>
+              <MenuItem value={40}>Disolución de la sociedad</MenuItem>
+              <MenuItem value={50}>Amonestación</MenuItem>
+              <MenuItem value={60}>Indemnización por los daños y perjuicios ocasionados a la Hacienda Pública Federal, local o municipal, o al patrimonio de los entes públicos</MenuItem>
+              <MenuItem value={70}>Sanción económica</MenuItem>
+              <MenuItem value={80}>Otro</MenuItem>
+            </Select>
+          </FormControl>
           
         )}
       />
@@ -457,18 +475,21 @@ const InstitucionesRealizaronContrataciones = () => {
         control={control}
         name="tipoProcedimientoContratacion"
         render={({ field }) => (
-          <Select
-            labelId="tipoProcedimientoContratacion"
-            id="tipoProcedimientoContratacion"
-            value={'Tipo de Procedimiento de contratación'}
-            label="Tipo de Procedimiento de contratación'"
-            autoWidth
-            {...field}
-          >
-            <MenuItem value={10}>Ejemplo1</MenuItem>
-            <MenuItem value={20}>Ejemplo2</MenuItem>
-            <MenuItem value={30}>Ejemplo3</MenuItem>
-          </Select>
+          <FormControl fullWidth={true} margin={'normal'}>
+            <InputLabel id="demo-simple-select-label">Tipo de Procedimiento</InputLabel>
+            <Select
+              labelId="tipoProcedimientoContratacion"
+              id="tipoProcedimientoContratacion"
+              value={'Tipo de Procedimiento de contratación'}
+              label="Tipo de Procedimiento de contratación"
+              
+              {...field}
+            >
+              <MenuItem value={10}>Adjudicación directa</MenuItem>
+              <MenuItem value={20}>Invitación a tres</MenuItem>
+              <MenuItem value={30}>Licitación pública</MenuItem>
+            </Select>
+          </FormControl>
           
         )}
       />
@@ -533,10 +554,10 @@ const LinaerStepper = () => {
 
   function TipoBusqueda() {
     const opciones = [
-    { label: "Personas Servidoras Públicas Sancionados", value: "psp-sancionados" },
+    { label: "Personas Servidoras Públicas Sancionadas", value: "psp-sancionados" },
     { label: "Personas Servidoras Públicas que participan en contrataciones", value: "psp-participan" },
     { label: "Personas Servidoras Públicas y sus declaraciones patrimoniales", value: "psp-declaraciones" },
-    { label: "Empresas sancionada por actos corrupción", value: "empresas-sancionadas"},
+    { label: "Empresas sancionadas por actos corrupción", value: "empresas-sancionadas"},
     { label: "Empresas que tiene contratos con el gobierno", value: "empresas-contratos"},
     { label: "Instituciones que realizaron contrataciones públicas", value: "instituciones-contrataciones"},
   ];
