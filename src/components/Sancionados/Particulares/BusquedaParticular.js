@@ -121,6 +121,11 @@ function BusquedaParticular ({classes}){
     }, []);
 
     React.useEffect(() => {
+        loadInstitutions();
+        loadProviders();
+    }, [filter?.nivel]);
+
+    React.useEffect(() => {
         if (provider !== 'any') {
             setPagination({...pagination, page: 1});
             setSelectedItem(null);
