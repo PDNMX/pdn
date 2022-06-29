@@ -11,6 +11,7 @@ import TotalRows from "./TotalRows";
 import TotalDependencias from "./TotalDependencias";
 import TotalParticulares from "./TotalParticulares";
 import TotalMultas from "./TotalMultas";
+import FooterPage from "@Compartidos/Dashboards/FooterPage";
 
 const styles = theme => ({
     root: {
@@ -101,7 +102,11 @@ function Dashboard(props) {
                          */
                     }
 
-
+                    <Grid item xs={12}>
+                       <FooterPage  dataSet={"Proveedores y contratistas sancionados"}
+                                    provider={"Secretaría de la Función Pública"}
+                                    referenceDate={"17/05/2022"}/>
+                    </Grid>
                 </Grid>
             </Paper>
         </div>
