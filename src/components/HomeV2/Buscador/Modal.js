@@ -72,7 +72,7 @@ export default function CustomizedDialogs() {
         maxWidth="md"
       >
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-        Búsqueda asistida3
+        Asistente de búsqueda
         </BootstrapDialogTitle>
         <DialogContent dividers>
             <Buscador />
