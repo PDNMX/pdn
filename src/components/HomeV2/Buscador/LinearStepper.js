@@ -689,12 +689,13 @@ const LinaerStepper = () => {
               <Button
                 className={classes.button}
                 disabled={activeStep === 0}
-                variant="outlined"
+                variant="contained"
+                color="primary"
                 onClick={handleBack}
               >
                 Regresar
               </Button>
-              {isStepOptional(activeStep) && (
+              {/* {isStepOptional(activeStep) && (
                 <Button
                   className={classes.button}
                   variant="contained"
@@ -703,7 +704,7 @@ const LinaerStepper = () => {
                 >
                   Omitir
                 </Button>
-              )}
+              )} */}
               {isStepOptional(activeStep) && (
                 <Button
                   className={classes.button}
