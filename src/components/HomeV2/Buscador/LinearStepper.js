@@ -7,6 +7,16 @@ const useStyles = makeStyles((theme) => ({
   button: {
     marginRight: theme.spacing(1),
   },
+  btnPDN:{
+    margin: theme.spacing(1),
+    background: "rgb(255,255,255,0.5)",
+    borderRadius: "50px",
+    fontWeight: "bold",
+    fontStyle: "italic",
+    '&:hover': {
+        backgroundColor: "#56a3bf",
+    },
+  },
 }));
 
 function getSteps() {
@@ -626,12 +636,12 @@ const LinaerStepper = () => {
     setActiveStep(0);
   };
 
-  const handleSkip = () => {
+  /* const handleSkip = () => {
     if (!isStepSkipped(activeStep)) {
       setSkippedSteps([...skippedSteps, activeStep]);
     }
     setActiveStep(activeStep + 1);
-  };
+  }; */
 
   // const onSubmit = (data) => {
   //   console.log(data);
@@ -670,10 +680,10 @@ const LinaerStepper = () => {
             Buscando... 
           </Typography>
           <Button
-            className={classes.button}
+            className={classes.btnPDN}
             disabled={activeStep === 0}
             variant="contained"
-            color="primary"
+            /* color="primary" */
             onClick={handleRestart}
           >
             Reiniciar Busqueda
@@ -687,7 +697,7 @@ const LinaerStepper = () => {
               {GetStepContent(activeStep)}
 
               <Button
-                className={classes.button}
+                className={classes.btnPDN}
                 disabled={activeStep === 0}
                 variant="contained"
                 color="primary"
@@ -697,7 +707,7 @@ const LinaerStepper = () => {
               </Button>
               {/* {isStepOptional(activeStep) && (
                 <Button
-                  className={classes.button}
+                  className={classes.btnPDN}
                   variant="contained"
                   color="primary"
                   onClick={handleSkip}
@@ -707,7 +717,7 @@ const LinaerStepper = () => {
               )} */}
               {isStepOptional(activeStep) && (
                 <Button
-                  className={classes.button}
+                  className={classes.btnPDN}
                   variant="contained"
                   color="primary"
                   /* onClick={handleSkip} */
@@ -716,7 +726,7 @@ const LinaerStepper = () => {
                 </Button>
               )}
               <Button
-                className={classes.button}
+                className={classes.btnPDN}
                 variant="contained"
                 color="primary"
                 disabled={name === ''}

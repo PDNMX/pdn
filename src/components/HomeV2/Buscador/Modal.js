@@ -1,4 +1,5 @@
 import * as React from 'react';
+import makeStyles from '@mui/styles/makeStyles';
 import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
@@ -10,6 +11,19 @@ import CloseIcon from '@mui/icons-material/Close';
 import ScreenSearchDesktopOutlinedIcon from '@mui/icons-material/ScreenSearchDesktopOutlined';
 
 import Buscador from "./Buscador";
+
+const useStyles = makeStyles((theme) => ({
+  btnPDN:{
+    margin: theme.spacing(0),
+    background: "rgb(255,255,255,0.5)",
+    borderRadius: "50px",
+    fontWeight: "bold",
+    fontStyle: "italic",
+    '&:hover': {
+        backgroundColor: "#56a3bf",
+    },
+  },
+}));
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -50,6 +64,7 @@ BootstrapDialogTitle.propTypes = {
 };
 
 export default function CustomizedDialogs() {
+  const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -61,7 +76,7 @@ export default function CustomizedDialogs() {
 
   return (
     <div>
-      <Button variant="contained" size="large" endIcon={<ScreenSearchDesktopOutlinedIcon />} onClick={handleClickOpen}>
+      <Button className={classes.btnPDN} variant="contained" size="large" endIcon={<ScreenSearchDesktopOutlinedIcon />} onClick={handleClickOpen}>
         Búsqueda asistida
       </Button>
       <BootstrapDialog
