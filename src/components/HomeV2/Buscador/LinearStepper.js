@@ -510,7 +510,8 @@ const InstitucionesRealizaronContrataciones = () => {
 
 function FiltrosBusqueda(props) {
   let tipoBusqueda = props.tipoBusqueda;
-  //console.log(props.tipoBusqueda)
+  let titulo = props.tituloBusqueda;
+  console.log(titulo);
   switch (tipoBusqueda) {
     case 'psp-sancionados':
       return <PersonasServidorasPublicasSancionados/>;
@@ -533,6 +534,7 @@ const LinaerStepper = () => {
   const classes = useStyles();
   const methods = useForm({
     defaultValues: {
+      tituloModal: "",
       tipoBusqueda: "",
       nombres: "",
       primerApellido: "",
@@ -548,7 +550,8 @@ const LinaerStepper = () => {
   });
   const [activeStep, setActiveStep] = useState(0);
   const [skippedSteps, setSkippedSteps] = useState([]);
-  const [name, setName] = useState('')
+  const [name, setName] = useState('');
+  const [tituloModal, setTituloModal] = useState('Asistente de búsqueda');
   const steps = getSteps();
 
   function GetStepContent(step) {
@@ -556,7 +559,7 @@ const LinaerStepper = () => {
       case 0:
         return <TipoBusqueda />;
       case 1:
-        return <FiltrosBusqueda tipoBusqueda={name}  />;
+        return <FiltrosBusqueda tipoBusqueda={name} tituloBusqueda={tituloModal}  />;
       default:
         return "desconocido";
     }
@@ -564,12 +567,12 @@ const LinaerStepper = () => {
 
   function TipoBusqueda() {
     const opciones = [
-    { label: "Personas Servidoras Públicas Sancionadas", value: "psp-sancionados" },
-    { label: "Personas Servidoras Públicas que participan en contrataciones", value: "psp-participan" },
-    { label: "Personas Servidoras Públicas y sus declaraciones patrimoniales", value: "psp-declaraciones" },
-    { label: "Empresas sancionadas por actos corrupción", value: "empresas-sancionadas"},
-    { label: "Empresas que tiene contratos con el gobierno", value: "empresas-contratos"},
-    { label: "Instituciones que realizaron contrataciones públicas", value: "instituciones-contrataciones"},
+    { label: "Personas Servidoras Públicas Sancionadas", value: "psp-sancionados", sistema: "s3sp", detalle: "" },
+    { label: "Personas Servidoras Públicas que participan en contrataciones", value: "psp-participan", sistema: "s2", detalle: "" },
+    { label: "Personas Servidoras Públicas y sus declaraciones patrimoniales", value: "psp-declaraciones", sistema: "s1", detalle: "" },
+    { label: "Empresas sancionadas por actos corrupción", value: "empresas-sancionadas", sistema: "s3p", detalle: ""},
+    { label: "Empresas que tiene contratos con el gobierno", value: "empresas-contratos", sistema: "s6", detalle: ""},
+    { label: "Instituciones que realizaron contrataciones públicas", value: "instituciones-contrataciones", sistema: "s6", detalle: ""},
   ];
   const { control } = useFormContext();
   return (
@@ -592,8 +595,12 @@ const LinaerStepper = () => {
                   value={opcion.value}
                   label={opcion.label}
                   checked={name === opcion.value}
-                  onChange={e => setName(e.target.value)}
+                  onChange={(e) => (                    
+                    setName(e.target.value),
+                    setTituloModal(opcion.label)
+                  )}
                 />
+                
               ))}
             </RadioGroup>
             <br/>
