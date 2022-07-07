@@ -2,7 +2,7 @@ import React from "react";
 import withStyles from '@mui/styles/withStyles';
 import {Button, Paper, Typography, Grid} from "@mui/material";
 import {Link} from "react-router-dom";
-import BuscadorModal from "./Buscador/Modal";
+import BuscadorModal from "./Buscador/BotonPrincipal";
 
 import bgPDN from '../../assets/bg.jpg';
 

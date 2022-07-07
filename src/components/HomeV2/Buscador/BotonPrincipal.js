@@ -1,7 +1,7 @@
 import * as React from 'react';
 import makeStyles from '@mui/styles/makeStyles';
 import PropTypes from 'prop-types';
-import Fab from '@mui/material/Fab';
+import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
@@ -10,19 +10,19 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import ScreenSearchDesktopOutlinedIcon from '@mui/icons-material/ScreenSearchDesktopOutlined';
 
-import Buscador from "./Buscador";
+import Buscador from "./Grid";
 
 const useStyles = makeStyles((theme) => ({
-  fab: {
-    margin: '10px',
-    top: 'auto',
-    right: 25,
-    bottom: 180,
-    left: 'auto',
-    position: 'fixed',
-    background: '#3d6575',
-    zIndex: 10,
-  }
+  btnPDN:{
+    margin: theme.spacing(0),
+    background: "rgb(255,255,255,0.5)",
+    borderRadius: "50px",
+    fontWeight: "bold",
+    fontStyle: "italic",
+    '&:hover': {
+        backgroundColor: "#56a3bf",
+    },
+  },
 }));
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -32,7 +32,6 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogActions-root': {
     padding: theme.spacing(0),
   },
-  
 }));
 
 const BootstrapDialogTitle = (props) => {
@@ -77,9 +76,9 @@ export default function CustomizedDialogs() {
 
   return (
     <div>
-        <Fab className={classes.fab} onClick={handleClickOpen} color="primary" aria-label="add" >
-          <ScreenSearchDesktopOutlinedIcon style={{ color: "#f5f8fb" }} />
-        </Fab>
+      <Button className={classes.btnPDN} variant="contained" size="large" endIcon={<ScreenSearchDesktopOutlinedIcon />} onClick={handleClickOpen}>
+        Búsqueda asistida
+      </Button>
       <BootstrapDialog
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
@@ -93,6 +92,11 @@ export default function CustomizedDialogs() {
         <DialogContent dividers>
             <Buscador />
         </DialogContent>
+        {/* <DialogActions>
+          <Button autoFocus onClick={handleClose}>
+            Save changes
+          </Button>
+        </DialogActions> */}
       </BootstrapDialog>
     </div>
   );

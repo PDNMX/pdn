@@ -19,6 +19,8 @@ import { ResultadosPersonasServidorasPublicasYSusDeclaraciones } from "./Resulta
 import { ResultadosEmpresasTienenContratosGob } from "./ResultadosBusqueda/EmpresasTienenContratosGob";
 import { ResultadosInstitucionesRealizaronContrataciones } from "./ResultadosBusqueda/InstitucionesRealizaronContrataciones"; */
 
+/* import BuscadorServidoresSancionados from '../../Sancionados/Servidores/BuscadorServidoresSancionados'; */
+
 const useStyles = makeStyles((theme) => ({
   button: {
     marginRight: theme.spacing(1),
@@ -105,6 +107,7 @@ const LinaerStepper = () => {
     const tipoBusqueda = methods.getValues().tipoBusqueda;
     return (<>
       <ResultadosPersonasServidorasPublicasSancionados data={tipoBusqueda}/>
+      {/* <BuscadorServidoresSancionados/> */}
     </>)
     /* switch (step) {
       case 0:
