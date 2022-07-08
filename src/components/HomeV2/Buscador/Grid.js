@@ -58,13 +58,15 @@ const styles = theme => ({
 
 const Buscador = props => {
     const {classes} = props;
+    const[titulo, setTitulo]= React.useState('hola andres');
+    console.log(titulo)
  
     return (
         <React.Fragment>
             <Paper className={classes.bg}>
             <Grid container spacing={0} alignItems="flex-start" justifyContent='center' className={classes.container}>
                 <Grid item md={12} sm={12} xs={12} align="center">
-                    <Stepper/>
+                    <Stepper stateChanger={setTitulo}/>
                 </Grid>
             </Grid>
             </Paper>

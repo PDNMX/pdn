@@ -67,11 +67,10 @@ function FiltrosBusqueda(props) {
   }
 }
 
-const LinaerStepper = () => {
+const LinaerStepper = ({stateChanger, ...rest}) => {
   const classes = useStyles();
   const methods = useForm({
     defaultValues: {
-      tituloModal: "",
       tipoBusqueda: "",
       nombres: "",
       primerApellido: "",
@@ -88,7 +87,7 @@ const LinaerStepper = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [skippedSteps, setSkippedSteps] = useState([]);
   const [name, setName] = useState('');
-  const [tituloModal, setTituloModal] = useState('Asistente de búsqueda');
+  /* const [tituloModal, setTituloModal] = useState('Asistente de búsqueda'); */
   const steps = getSteps();
 
   function GetStepContent(step) {
@@ -96,7 +95,7 @@ const LinaerStepper = () => {
       case 0:
         return <TipoBusqueda />;
       case 1:
-        return <FiltrosBusqueda tipoBusqueda={name} tituloBusqueda={tituloModal}  />;
+        return <FiltrosBusqueda tipoBusqueda={name} />;
       default:
         return "desconocido";
     }
@@ -151,7 +150,7 @@ const LinaerStepper = () => {
                   checked={name === opcion.value}
                   onChange={(e) =>   {
                     setName(e.target.value);
-                    setTituloModal(opcion.label);
+                    stateChanger(opcion.label);
                     }                   
                   }
                 />
