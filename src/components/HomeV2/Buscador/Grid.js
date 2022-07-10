@@ -59,7 +59,7 @@ const styles = theme => ({
 const Buscador = props => {
     const {classes} = props;
     const[titulo, setTitulo]= React.useState('hola andres');
-    console.log(titulo)
+    //console.log(titulo)
  
     return (
         <React.Fragment>

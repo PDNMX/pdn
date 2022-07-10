@@ -13,13 +13,11 @@ import { InstitucionesRealizaronContrataciones } from "./InputsBusqueda/Instituc
 
 // RESULTADOS PARA EL FORM
 import { ResultadosPersonasServidorasPublicasSancionados } from "./ResultadosBusqueda/PersonasServidorasPublicasSancionados";
-/* import { ResultadosPersonasServidorasPublicasParticipanEnContrataciones } from "./ResultadosBusqueda/PersonasServidorasPublicasParticipanEnContrataciones";
+import { ResultadosPersonasServidorasPublicasParticipanEnContrataciones } from "./ResultadosBusqueda/PersonasServidorasPublicasParticipanEnContrataciones";
 import { ResultadosEmpresasSancionadaPorCorrupcion } from "./ResultadosBusqueda/EmpresasSancionadaPorCorrupcion";
 import { ResultadosPersonasServidorasPublicasYSusDeclaraciones } from "./ResultadosBusqueda/PersonasServidorasPublicasYSusDeclaraciones";
 import { ResultadosEmpresasTienenContratosGob } from "./ResultadosBusqueda/EmpresasTienenContratosGob";
-import { ResultadosInstitucionesRealizaronContrataciones } from "./ResultadosBusqueda/InstitucionesRealizaronContrataciones"; */
-
-/* import BuscadorServidoresSancionados from '../../Sancionados/Servidores/BuscadorServidoresSancionados'; */
+import { ResultadosInstitucionesRealizaronContrataciones } from "./ResultadosBusqueda/InstitucionesRealizaronContrataciones"; 
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -47,8 +45,7 @@ function getSteps() {
 
 function FiltrosBusqueda(props) {
   let tipoBusqueda = props.tipoBusqueda;
-  let titulo = props.tituloBusqueda;
-  console.log(titulo);
+  //console.log(tipoBusqueda);
   switch (tipoBusqueda) {
     case 'psp-sancionados':
       return <PersonasServidorasPublicasSancionados/>;
@@ -87,7 +84,6 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
   const [activeStep, setActiveStep] = useState(0);
   const [skippedSteps, setSkippedSteps] = useState([]);
   const [name, setName] = useState('');
-  /* const [tituloModal, setTituloModal] = useState('Asistente de búsqueda'); */
   const steps = getSteps();
 
   function GetStepContent(step) {
@@ -102,20 +98,24 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
   }
 
   function ResultadosBusqueda() {
-    //const dataForm = JSON.stringify(methods.getValues());
-    const tipoBusqueda = methods.getValues().tipoBusqueda;
-    return (<>
-      <ResultadosPersonasServidorasPublicasSancionados data={tipoBusqueda}/>
-      {/* <BuscadorServidoresSancionados/> */}
-    </>)
-    /* switch (step) {
-      case 0:
-        return <TipoBusqueda />;
-      case 1:
-        return <FiltrosBusqueda tipoBusqueda={name} tituloBusqueda={tituloModal}  />;
+    const parametrosBusqueda = JSON.stringify(methods.getValues());
+    let tipoBusqueda = methods.getValues().tipoBusqueda;
+    switch (tipoBusqueda) {
+      case 'psp-sancionados':
+        return <ResultadosPersonasServidorasPublicasSancionados data={parametrosBusqueda}/>;
+      case 'psp-participan':
+        return <ResultadosPersonasServidorasPublicasParticipanEnContrataciones data={parametrosBusqueda}/>;
+      case 'psp-declaraciones':
+          return <ResultadosPersonasServidorasPublicasYSusDeclaraciones data={parametrosBusqueda}/>;
+      case 'empresas-sancionadas':
+        return <ResultadosEmpresasSancionadaPorCorrupcion data={parametrosBusqueda}/>;
+      case 'empresas-contratos':
+        return <ResultadosEmpresasTienenContratosGob data={parametrosBusqueda}/>
+      case 'instituciones-contrataciones':
+        return <ResultadosInstitucionesRealizaronContrataciones data={parametrosBusqueda}/>;
       default:
-        return "desconocido";
-    } */
+        return <p>Debes de seleccionar una opción de búsqueda</p>;
+    }
   }
 
   function TipoBusqueda() {
@@ -217,9 +217,9 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
 
       {activeStep >= steps.length - 1 ? (
         <div>
-          <Typography variant="h3" align="center">
+          {/* <Typography variant="h3" align="center">
             Buscando... 
-          </Typography>
+          </Typography> */}
           <ResultadosBusqueda />
           <Button
             className={classes.btnPDN}
