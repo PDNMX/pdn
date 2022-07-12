@@ -17,7 +17,15 @@ import { ResultadosPersonasServidorasPublicasParticipanEnContrataciones } from "
 import { ResultadosEmpresasSancionadaPorCorrupcion } from "./ResultadosBusqueda/EmpresasSancionadaPorCorrupcion";
 import { ResultadosPersonasServidorasPublicasYSusDeclaraciones } from "./ResultadosBusqueda/PersonasServidorasPublicasYSusDeclaraciones";
 import { ResultadosEmpresasTienenContratosGob } from "./ResultadosBusqueda/EmpresasTienenContratosGob";
-import { ResultadosInstitucionesRealizaronContrataciones } from "./ResultadosBusqueda/InstitucionesRealizaronContrataciones"; 
+import { ResultadosInstitucionesRealizaronContrataciones } from "./ResultadosBusqueda/InstitucionesRealizaronContrataciones";
+
+import PropTypes from 'prop-types'; 
+import { styled } from '@mui/material/styles';
+import StepConnector, { stepConnectorClasses } from '@mui/material/StepConnector';
+
+import PersonIcon from '@mui/icons-material/Person';
+import SettingsIcon from '@mui/icons-material/Settings';
+import MapIcon from '@mui/icons-material/Map';
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -187,9 +195,82 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
     setActiveStep(0);
   };
 
+  const ColorlibStepIconRoot = styled('div')(({ theme, ownerState }) => ({
+    backgroundColor: '#ccc',
+    zIndex: 1,
+    color: '#fff',
+    width: 50,
+    height: 50,
+    display: 'flex',
+    borderRadius: '50%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    ...(ownerState.active && {
+      backgroundImage: 'linear-gradient( 136deg, rgb(232,214,67) 0%, rgb(232,214,67) 50%, rgb(232,214,67) 100%)',
+    }),
+    ...(ownerState.completed && {
+      backgroundImage:
+      'linear-gradient( 136deg, rgb(232,214,67) 0%, rgb(232,214,67) 50%, rgb(232,214,67) 100%)',
+    }),
+  }));
+
+  function ColorlibStepIcon(props) {
+    const { active, completed, className} = props;
+  
+    const icons = {
+      1: <PersonIcon />,
+      2: <SettingsIcon />,
+      3: <MapIcon />,
+    };
+
+    return (
+      <ColorlibStepIconRoot ownerState={{ completed, active }} className={className}>
+        {icons[String(props.icon)]}
+      </ColorlibStepIconRoot>
+    );
+  }
+  
+  ColorlibStepIcon.propTypes = {
+    /**
+     * Whether this step is active.
+     */
+    active: PropTypes.bool,
+    /**
+     * Mark the step as completed. Is passed to child components.
+     */
+    completed: PropTypes.bool,
+    /**
+     * The label displayed in the step icon.
+     */
+    icon: PropTypes.node,
+  };
+  const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
+    [`&.${stepConnectorClasses.alternativeLabel}`]: {
+      top: 22,
+    },
+    [`&.${stepConnectorClasses.active}`]: {
+      [`& .${stepConnectorClasses.line}`]: {
+        backgroundImage:
+        'linear-gradient( 136deg, rgb(232,214,67) 0%, rgb(232,214,67) 50%, rgb(232,214,67) 100%)',
+      },
+    },
+    [`&.${stepConnectorClasses.completed}`]: {
+      [`& .${stepConnectorClasses.line}`]: {
+        backgroundImage:
+        'linear-gradient( 136deg, rgb(232,214,67) 0%, rgb(232,214,67) 50%, rgb(232,214,67) 100%)',
+      },
+    },
+    [`& .${stepConnectorClasses.line}`]: {
+      height: 3,
+      border: 0,
+      backgroundColor:
+        theme.palette.mode === 'dark' ? theme.palette.grey[800] : '#eaeaf0',
+      borderRadius: 1,
+    },
+  }));
   return (
     <div>
-      <Stepper alternativeLabel activeStep={activeStep}>
+      <Stepper alternativeLabel activeStep={activeStep} connector={<ColorlibConnector/>}>
         {steps.map((step, index) => {
           const labelProps = {};
           const stepProps = {};
@@ -209,7 +290,7 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
           }
           return (
             <Step {...stepProps} key={index}>
-              <StepLabel {...labelProps}>{step}</StepLabel>
+              <StepLabel StepIconComponent={ColorlibStepIcon} {...labelProps}>{step}</StepLabel>
             </Step>
           );
         })}

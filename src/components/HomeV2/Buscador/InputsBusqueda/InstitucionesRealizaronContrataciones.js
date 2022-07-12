@@ -59,7 +59,7 @@ export function InstitucionesRealizaronContrataciones() {
                 {...field}
               >
                 <MenuItem value={10}>Adjudicación directa</MenuItem>
-                <MenuItem value={20}>Invitación a tres</MenuItem>
+                <MenuItem value={20}>Invitación restringida</MenuItem>
                 <MenuItem value={30}>Licitación pública</MenuItem>
               </Select>
             </FormControl>

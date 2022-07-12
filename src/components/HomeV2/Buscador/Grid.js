@@ -6,7 +6,7 @@ import Stepper from "./LinearStepper";
 const styles = theme => ({
     container: {
         padding: "5% 10%",
-        //backgroundColor: 'rgba(29, 80, 109, 0.95)',
+        backgroundColor: 'rgba(29, 80, 109, 0.95)',
     }, 
     bg: {
         backgroundSize: "cover",

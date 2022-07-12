@@ -16,7 +16,7 @@ import Stepper from "./LinearStepper";
 const useStyles = makeStyles((theme) => ({
   container: {
     padding: "5% 10%",
-    //backgroundColor: 'rgba(29, 80, 109, 0.95)',
+    backgroundColor: 'rgba(29, 80, 109, 0.95)',
   },
   bg: {
     backgroundSize: "cover",
@@ -125,7 +125,7 @@ export default function CustomizedDialogs() {
         endIcon={<ScreenSearchDesktopOutlinedIcon />}
         onClick={handleClickOpen}
       >
-        Búsqueda asistida
+        Asistente de búsqueda
       </Button>
       <BootstrapDialog
         onClose={handleClose}
@@ -137,6 +137,7 @@ export default function CustomizedDialogs() {
         <BootstrapDialogTitle
           id="customized-dialog-title"
           onClose={handleClose}
+          className={classes.container}
         >
           {titulo}
         </BootstrapDialogTitle>

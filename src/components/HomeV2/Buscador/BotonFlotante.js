@@ -13,6 +13,10 @@ import ScreenSearchDesktopOutlinedIcon from '@mui/icons-material/ScreenSearchDes
 import Buscador from "./Grid";
 
 const useStyles = makeStyles((theme) => ({
+ container: {
+    padding: "5% 10%",
+    backgroundColor: 'rgba(29, 80, 109, 0.95)',
+  },
   fab: {
     margin: '10px',
     top: 'auto',
@@ -22,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'fixed',
     background: '#3d6575',
     zIndex: 10,
-  }
+  },
 }));
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -87,7 +91,7 @@ export default function CustomizedDialogs() {
         fullWidth={true}
         maxWidth="md"
       >
-        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
+        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose} className={classes.container} >
         Asistente de búsqueda
         </BootstrapDialogTitle>
         <DialogContent dividers>
