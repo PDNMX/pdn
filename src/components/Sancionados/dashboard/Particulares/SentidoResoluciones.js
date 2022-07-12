@@ -7,6 +7,7 @@ import axios from 'axios';
 import 'react-vis/dist/style.css';
 import MensajeErrorDatos from "@Mensajes/MensajeErrorDatos";
 import ContainerChart from "@Compartidos/Dashboards/ContainerChart";
+import * as d3 from "d3";
 
 const styles = theme => ({
     frameChart: {
@@ -49,6 +50,10 @@ function aux() {
 
 let color =  ["#52B1FF", "#DD70F0", "#07B6A5", "#FFB647", "#FF5C92", "#F97D58"];
 
+let yScale = d3.scaleSymlog()
+    .domain([0,1599])
+    .range([0,1599]);
+
 const SentidoResoluciones = (props) => {
     const [errorG1, setErrorG1] = React.useState(false);
     const [methods, setMethods] = React.useState({});
@@ -67,13 +72,15 @@ const SentidoResoluciones = (props) => {
                 data: aux,
                 groupBy: "x",
                 x: "x",
-                y: "y",
+                y: function(d){
+                    return yScale(d.y)
+                },
                 xConfig: {
                     title: "Sentido de la resolución de la sanción",
                 },
                 yConfig: {
                     title: "Número de sanciones",
-
+                    labels: [0,1599]
                 },
                 tooltipConfig: {
                     title: function (d) {

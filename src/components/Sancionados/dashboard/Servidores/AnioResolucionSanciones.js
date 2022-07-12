@@ -120,7 +120,7 @@ const AnioResolucionSanciones = (props) => {
                 shapeConfig: {
                     Line: {
                         strokeWidth: 2,
-                        stroke: "blue",
+                        stroke: "rgb(41 183 165)",
                     },
                     Circle: {}
                 },
@@ -191,8 +191,8 @@ const AnioResolucionSanciones = (props) => {
                                     style={{
                                         strokeWidth: '3px'
                                     }}
-                                    lineStyle={{stroke: '#2196F3'}}
-                                    markStyle={{stroke: '#FFC107'}}
+                                    lineStyle={{stroke: 'rgb(63 227 250)'}}
+                                    markStyle={{stroke: 'rgb(251 89 147)'}}
                                     data={methods.data}
                                     onValueMouseOver={(datapoint, event) =>
                                         setHoveredCell(datapoint)

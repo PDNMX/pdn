@@ -16,7 +16,7 @@ const TotalRows = () => {
         aux().then(res => {
             setData({
                 digit: parseInt(res.data.data[0].total,10),
-                text: 'en multas'
+                text: 'en multas del 2004 al 2022'
             })
         })
             .catch(error => {

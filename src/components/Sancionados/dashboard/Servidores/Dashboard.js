@@ -9,6 +9,7 @@ import '../graficas.css';
 import TotalRows from "./TotalRows"
 import TotalDependencias from "./TotalDependencias";
 import TotalSancionesFin from "./TotalSancionesFin";
+import FooterPage from "@Compartidos/Dashboards/FooterPage";
 
 const styles = theme => ({
     root: {
@@ -83,6 +84,11 @@ const Dashboard = (props) => {
                     </Grid>
                     <Grid item xs={12}  id={"g3"}>
                         <DependenciasSanciones/>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <FooterPage  dataSet={"Servidores públicos sancionados"}
+                                     provider={"Secretaría de la Función Pública"}
+                                     referenceDate={"17/05/2022"}/>
                     </Grid>
                 </Grid>
                 </Paper>

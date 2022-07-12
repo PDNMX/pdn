@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import TotalRows from "./TotalRows";
 import TotalInstituciones from "./TotalInstituciones";
 import TotalRamos from "./TotalRamos";
+import FooterPage from "@Compartidos/Dashboards/FooterPage";
 
 const styles = theme => ({
     root: {
@@ -64,6 +65,11 @@ const Dashboard = props => {
                     </Grid>
                     <Grid item xs={12}>
                         <Tops/>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <FooterPage  dataSet={"Registro de servidores públicos que intervienen en contrataciones públicas"}
+                                     provider={"Secretaría de la Función Pública"}
+                                     referenceDate={"17/05/2022"}/>
                     </Grid>
                 </Grid>
             </Paper>
