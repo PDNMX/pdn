@@ -271,7 +271,9 @@ const Busqueda = props => {
         };
 
         if (state.buyer_id !== 'any'){
-            body.buyer_id = state.buyer_id
+            //body.buyer_id = state.buyer_id
+            const byr = state.buyers.find(b => b.id === state.buyer_id);
+            body.buyer_name = byr.name;
         }
 
         if (state.procurementMethod !== 'any'){
