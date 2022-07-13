@@ -128,9 +128,9 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
 
   function TipoBusqueda() {
     const opciones = [
-    { label: "Personas Servidoras Públicas Sancionadas", value: "psp-sancionados", sistema: "s3sp", detalle: "" },
-    { label: "Personas Servidoras Públicas que participan en contrataciones", value: "psp-participan", sistema: "s2", detalle: "" },
-    { label: "Personas Servidoras Públicas y sus declaraciones patrimoniales", value: "psp-declaraciones", sistema: "s1", detalle: "" },
+    { label: "Personas servidoras públicas sancionadas", value: "psp-sancionados", sistema: "s3sp", detalle: "" },
+    { label: "Personas servidoras públicas que participan en contrataciones", value: "psp-participan", sistema: "s2", detalle: "" },
+    { label: "Personas servidoras públicas y sus declaraciones patrimoniales", value: "psp-declaraciones", sistema: "s1", detalle: "" },
     { label: "Empresas sancionadas por actos corrupción", value: "empresas-sancionadas", sistema: "s3p", detalle: ""},
     { label: "Empresas que tiene contratos con el gobierno", value: "empresas-contratos", sistema: "s6", detalle: ""},
     { label: "Instituciones que realizaron contrataciones públicas", value: "instituciones-contrataciones", sistema: "s6", detalle: ""},
