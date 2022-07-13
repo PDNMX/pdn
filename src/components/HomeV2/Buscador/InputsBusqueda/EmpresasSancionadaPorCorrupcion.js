@@ -58,8 +58,8 @@ export function EmpresasSancionadaPorCorrupcion () {
                 autoWidth
                 {...field}
               >
-                <MenuItem value={10}>Inhabilitado</MenuItem>
-                <MenuItem value={20}>Multado</MenuItem>
+                <MenuItem value={10}>Inhabilitación</MenuItem>
+                <MenuItem value={20}>Multa</MenuItem>
                 <MenuItem value={30}>Suspención de actividades</MenuItem>
                 <MenuItem value={40}>Disolución de la sociedad</MenuItem>
                 <MenuItem value={50}>Amonestación</MenuItem>
