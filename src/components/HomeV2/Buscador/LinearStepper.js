@@ -145,12 +145,12 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
 
   function TipoBusqueda() {
     const opciones = [
-    { label: "Personas servidoras públicas sancionadas", value: "psp-sancionados", sistema: "s3sp", detalle: "", img: "ico_Spsancionados.svg" },
-    { label: "Personas servidoras públicas que participan en contrataciones", value: "psp-participan", sistema: "s2", detalle: "", img: "ico_Spcontrataciones.svg" },
-    { label: "Personas servidoras públicas y sus declaraciones patrimoniales", value: "psp-declaraciones", sistema: "s1", detalle: "", img: "ico_Spdeclaraciones.svg" },
-    { label: "Empresas sancionadas por actos corrupción", value: "empresas-sancionadas", sistema: "s3p", detalle: "", img: "ico_empresas_sancionadas.svg"},
-    { label: "Empresas que tiene contratos con el gobierno", value: "empresas-contratos", sistema: "s6", detalle: "", img: "ico_empresas_contratos_gob.svg"},
-    { label: "Instituciones que realizaron contrataciones públicas", value: "instituciones-contrataciones", sistema: "s6", detalle: "", img: "ico_instituciones_contrataciones.svg"},
+    { label: "Personas servidoras públicas sancionadas", value: "psp-sancionados", sistema: "s3sp", detalle: "Información de personas servidoras públicas por la comisión de faltas administrativas.", img: "ico_Spsancionados.svg" },
+    { label: "Personas servidoras públicas que participan en contrataciones", value: "psp-participan", sistema: "s2", detalle: "Datos de personas servidoras públicas que intervienen en contrataciones públicas, otorgamiento de concesiones, enajenaciones de bienes y emisión de dictámenes.", img: "ico_Spcontrataciones.svg" },
+    { label: "Personas servidoras públicas y sus declaraciones patrimoniales", value: "psp-declaraciones", sistema: "s1", detalle: "Declaraciones patrimoniales de personas servidoras públicas de todo el país.", img: "ico_Spdeclaraciones.svg" },
+    { label: "Empresas sancionadas por actos corrupción", value: "empresas-sancionadas", sistema: "s3p", detalle: "Información de particulares sancionados por la comisión de faltas administrativas.", img: "ico_empresas_sancionadas.svg"},
+    { label: "Empresas que tiene contratos con el gobierno", value: "empresas-contratos", sistema: "s6", detalle: "Información de particulares que otorgan bienes, servicios u obra pública a las instituciones públicas de todo el país.", img: "ico_empresas_contratos_gob.svg"},
+    { label: "Instituciones que realizaron contrataciones públicas", value: "instituciones-contrataciones", sistema: "s6", detalle: "Información sobre los gastos que realizan las instituciones públicas de todo el país para la adquisición de bienes, servicios u obra pública. ", img: "ico_instituciones_contrataciones.svg"},
   ];
   const { control } = useFormContext();
   return (
@@ -163,14 +163,14 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
               container
               spacing={1}
               direction="row"
-              alignItems="center"
+              alignItems="strech"
               justifyContent="space-between"
               className={classes.container}
             >
               {opciones.map((opcion, index) => (
                 <Grid key={index} item md={4} className={classes.card}>
                   <Card 
-                    
+                    style={{ height: '100%' }}
                     {...field}
                   >
                     <CardActionArea
@@ -192,9 +192,7 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
                           {opcion.label}
                         </Typography>
                         <Typography variant="subtitle2" color="text.secondary">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit, sed do eiusmod tempor incididunt ut labore et
-                          dolore magna aliqua.
+                          {opcion.detalle}
                         </Typography>
                       </CardContent>
                     </CardActionArea>
@@ -304,7 +302,8 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
     },
   }));
   return (
-    <div>
+    <>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
       <Stepper alternativeLabel activeStep={activeStep} connector={<ColorlibConnector/>}>
         {steps.map((step, index) => {
           const labelProps = {};
@@ -385,7 +384,7 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
           </FormProvider>
         </>
       )}
-    </div>
+    </>
   );
 };
 

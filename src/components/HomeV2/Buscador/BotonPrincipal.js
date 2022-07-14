@@ -10,7 +10,7 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import ScreenSearchDesktopOutlinedIcon from "@mui/icons-material/ScreenSearchDesktopOutlined";
 
-import { Paper, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import Stepper from "./LinearStepper";
 
 const useStyles = makeStyles((theme) => ({

@@ -1,22 +1,19 @@
-import * as React from 'react';
-import makeStyles from '@mui/styles/makeStyles';
-import PropTypes from 'prop-types';
+import * as React from "react";
+import makeStyles from "@mui/styles/makeStyles";
+import PropTypes from "prop-types";
 import Fab from '@mui/material/Fab';
-import { styled } from '@mui/material/styles';
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
-import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
-import ScreenSearchDesktopOutlinedIcon from '@mui/icons-material/ScreenSearchDesktopOutlined';
+import { styled } from "@mui/material/styles";
+import Dialog from "@mui/material/Dialog";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogContent from "@mui/material/DialogContent";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
+import ScreenSearchDesktopOutlinedIcon from "@mui/icons-material/ScreenSearchDesktopOutlined";
 
-import Buscador from "./Grid";
+import { Grid } from "@mui/material";
+import Stepper from "./LinearStepper";
 
 const useStyles = makeStyles((theme) => ({
- container: {
-    padding: "5% 10%",
-    backgroundColor: 'rgba(29, 80, 109, 0.95)',
-  },
   fab: {
     margin: '10px',
     top: 'auto',
@@ -27,30 +24,81 @@ const useStyles = makeStyles((theme) => ({
     background: '#3d6575',
     zIndex: 10,
   },
+  container: {
+    padding: "2% 3%",
+    backgroundColor: 'rgba(29, 80, 109, 0.95)',
+  },
+  titulo: {
+    backgroundColor: 'rgba(29, 80, 109, 0.95)',
+  },
+  bg: {
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  },
+  headingText: {
+    color: "#ced8db",
+    fontWeight: "700",
+    fontSize: "52px",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "40px",
+    },
+  },
+  subTitle: {
+    fontSize: "30px",
+    fontWeight: 500,
+    textTransform: "uppercase",
+    color: "#ced8db",
+    "& b": {
+      color: "#3bb1e6",
+    },
+  },
+  text: {
+    fontSize: "18px",
+    fontWeight: 100,
+    color: "#d0d7d9",
+    "& b": {
+      fontWeight: 500,
+    },
+  },
+  link: {
+    textDecoration: "none",
+    "&:hover": {
+      textDecoration: "none",
+    },
+  },
+  btnPDN: {
+    margin: theme.spacing(0),
+    background: "rgb(255,255,255,0.5)",
+    borderRadius: "50px",
+    fontWeight: "bold",
+    fontStyle: "italic",
+    "&:hover": {
+      backgroundColor: "#56a3bf",
+    },
+  },
 }));
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
-  '& .MuiDialogContent-root': {
+  "& .MuiDialogContent-root": {
     padding: theme.spacing(0),
   },
-  '& .MuiDialogActions-root': {
+  "& .MuiDialogActions-root": {
     padding: theme.spacing(0),
   },
-  
 }));
 
 const BootstrapDialogTitle = (props) => {
   const { children, onClose, ...other } = props;
 
   return (
-    <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
+    <DialogTitle  {...other}>
       {children}
       {onClose ? (
         <IconButton
           aria-label="cerrar"
           onClick={onClose}
           sx={{
-            position: 'absolute',
+            position: "absolute",
             right: 8,
             top: 8,
             color: (theme) => theme.palette.grey[500],
@@ -71,6 +119,8 @@ BootstrapDialogTitle.propTypes = {
 export default function CustomizedDialogs() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const [titulo, setTitulo] = React.useState("Asistente de búsqueda");
+  //console.log(titulo);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -81,7 +131,7 @@ export default function CustomizedDialogs() {
 
   return (
     <div>
-        <Fab className={classes.fab} onClick={handleClickOpen} color="primary" aria-label="add" >
+      <Fab className={classes.fab} onClick={handleClickOpen} color="primary" aria-label="add" >
           <ScreenSearchDesktopOutlinedIcon style={{ color: "#f5f8fb" }} />
         </Fab>
       <BootstrapDialog
@@ -91,13 +141,24 @@ export default function CustomizedDialogs() {
         fullWidth={true}
         maxWidth="md"
       >
-        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose} className={classes.container} >
-        Asistente de búsqueda
+        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose} className={classes.titulo} >
+          {titulo}
         </BootstrapDialogTitle>
         <DialogContent dividers>
-            <Buscador />
+            <Grid
+              container
+              alignItems="flex-start"
+              justifyContent="center"
+              className={classes.container}
+              spacing={2}
+            >
+              <Grid item md={12} sm={12} xs={12} align="center">
+                <Stepper stateChanger={setTitulo} />
+              </Grid>
+            </Grid>
         </DialogContent>
       </BootstrapDialog>
     </div>
   );
 }
+
