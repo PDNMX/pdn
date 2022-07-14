@@ -5,8 +5,6 @@ import MensajeErrorDatos from "../../../Mensajes/MensajeError";
 import Previos from "../../../Compartidos/Previos";
 import TablaServidoresSancionados from "../../../Sancionados/Servidores/TablaServidoresSancionados";
 import DetalleServidorSancionado from "../../../Sancionados/Servidores//DetalleServidorSancionado";
-import { ThemeProvider } from "@mui/material/styles";
-import ThemeV2 from "../../../../ThemeV2";
 
 //import ReactGA from "react-ga";
 
@@ -51,7 +49,7 @@ const styles = (theme) => ({
   },
 });
 
-const tiposSancion = [
+/* const tiposSancion = [
   { label: "Inhabilitado", value: "I" },
   { label: "Multado", value: "M" },
   { label: "Suspensión del empleo, cargo o comisión", value: "S" },
@@ -59,35 +57,27 @@ const tiposSancion = [
   { label: "Indemnización resarcitoria", value: "IRSC" },
   { label: "Sanción económica", value: "SE" },
   { label: "Otro", value: "O" },
-];
+]; */
 
-const camposOrdenamiento = [
+/* const camposOrdenamiento = [
   { label: "Nombre", value: "nombres" },
   { label: "Apellido Uno", value: "primerApellido" },
   { label: "Apellido Dos", value: "segundoApellido" },
   { label: "Institución", value: "institucionDependencia" },
-];
+]; */
 
-const tiposOrdenamiento = [
+/* const tiposOrdenamiento = [
   { label: "Ascendente", value: "asc" },
   { label: "Descendente", value: "desc" },
 ];
-
+ */
 const initialPagination = {
   page: 1,
   rowsPerPage: 10,
   totalRows: 0,
 };
 
-const initialFilter = {
-  nombres: "",
-  primerApellido: "",
-  segundoApellido: "",
-  tipoSancion: [],
-  institucionDependencia: "any",
-  nivel: "any",
-  provider: "any",
-};
+
 
 const initialSort = {
   campoOrden: "any",
@@ -96,15 +86,36 @@ const initialSort = {
 
 export function ResultadosPersonasServidorasPublicasSancionados(props) {
   const data = JSON.parse(props.data);
-  
+  /*
+  1.- Servidores publicos sancionados
+  - Nombre
+  - AP1
+  - AP2
+  - Institución
+  - Tipo de sanción (select)
+
+  console.log(data.nombres);
+  console.log(data.primerApellido);
+  console.log(data.segundoApellido);
+  console.log(data.institucion);
+  console.log(data.tipoSancion); 
+  */
+  const initialFilter = {
+    nombres: data.nombres,
+    primerApellido: data.primerApellido,
+    segundoApellido: data.segundoApellido,
+    tipoSancion: [],
+    institucionDependencia: data.institucion,
+    nivel: "any",
+    provider: "any",
+  };
+
   const [filterData, setFilterData] = React.useState([]);
   const [previos, setPrevios] = React.useState(null);
   const [error, setError] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
-  const [institutionsList, setInstitutionsList] = React.useState([]);
   const [selectedItem, setSelectedItem] = React.useState(null);
   const [provider, setProvider] = React.useState("any");
-  const [providersList, setProvidersList] = React.useState([]);
   const [pagination, setPagination] = React.useState(initialPagination);
   const [filter, setFilter] = React.useState(initialFilter);
   const [sort, setSort] = React.useState(initialSort);
@@ -117,14 +128,14 @@ export function ResultadosPersonasServidorasPublicasSancionados(props) {
     
   }, []);
 
-  React.useEffect(() => {
+ /*  React.useEffect(() => {
     loadInstitutions();
     loadProviders();
   }, [filter?.nivel]);
 
   React.useEffect(() => {
     loadInstitutions();
-  }, [filter?.provider]);
+  }, [filter?.provider]); */
 
   React.useEffect(() => {
     if (provider !== "any") {
@@ -134,7 +145,7 @@ export function ResultadosPersonasServidorasPublicasSancionados(props) {
     }
   }, [provider]);
 
-  const loadInstitutions = () => {
+/*   const loadInstitutions = () => {
     let sug = [];
     let options = {
       url: process.env.REACT_APP_S3S_BACKEND + "/api/v1/entities",
@@ -157,9 +168,9 @@ export function ResultadosPersonasServidorasPublicasSancionados(props) {
       .catch((err) => {
         setError(true);
       });
-  };
+  }; */
 
-  const loadProviders = () => {
+/*   const loadProviders = () => {
     let sug = [];
     let options = {
       url: process.env.REACT_APP_S3S_BACKEND + "/api/v1/getProviders",
@@ -183,9 +194,9 @@ export function ResultadosPersonasServidorasPublicasSancionados(props) {
       .catch((err) => {
         setError(true);
       });
-  };
+  }; */
 
-  const handleCleanAll = () => {
+/*   const handleCleanAll = () => {
     setFilter(initialFilter);
     setProvidersList([]);
     setPagination(initialPagination);
@@ -195,8 +206,7 @@ export function ResultadosPersonasServidorasPublicasSancionados(props) {
     setInstitutionsList([]);
     setSelectedItem(null);
     setView(0);
-  };
-  //10,25,50
+  }; */
   const handleSearchPrevios = () => {
     //ReactGA.event({category: 'busqueda-s3SP', action: 'click'});
     setLoading(true);
@@ -232,6 +242,12 @@ export function ResultadosPersonasServidorasPublicasSancionados(props) {
   };
 
   const makeFiltros = () => {
+/*  - Nombre
+    - AP1
+    - AP2
+    - Institución
+    - Tipo de sanción (select) */
+
     let filtros = {};
     if (filter.nombres) filtros.nombres = filter.nombres;
     if (filter.primerApellido) filtros.primerApellido = filter.primerApellido;
@@ -244,6 +260,7 @@ export function ResultadosPersonasServidorasPublicasSancionados(props) {
       filtros.institucionDependencia = filter.institucionDependencia;
     if (filter.tipoSancion.length > 0)
       filtros.tipoSancion = filter.tipoSancion.map((item) => item.value);
+      console.log(filtros)
     return filtros;
   };
 

@@ -69,7 +69,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const tiposSancion = [
+/* const tiposSancion = [
     {label: 'Inhabilitado', value: 'I'},
     {label: 'Multado', value: 'M'},
     {label: 'Suspensión de actividades', value: 'S'},
@@ -91,7 +91,7 @@ const camposOrdenamiento = [
 const tiposOrdenamiento = [
     {label: 'Ascendente', value: 'asc'},
     {label: 'Descendente', value: 'desc'}
-]
+] */
 
 const initialPagination = {
     page: 1,
@@ -113,12 +113,33 @@ const initialSort = {
     campoOrden: 'any',
     tipoOrden: 'any',
 };
-export function ResultadosEmpresasSancionadaPorCorrupcion (){
+export function ResultadosEmpresasSancionadaPorCorrupcion(props){
+    const data = JSON.parse(props.data);
+    /*
+    4.- Empresas sancionadas por actos de corrupción
+      - Nombre / Razón social
+      - Intitución donde presto el servicio
+      - Tipo de sanción (select)
+    */
+    console.log(data.nombreRazonSocial);
+    console.log(data.tipoProcedimiento);
+    console.log(data.tipoSancion);
+
+    const initialFilter = {
+        nombreRazonSocial: data.nombres,
+        institucionDependencia: data.institucionDependencia,
+        expediente: '',
+        tipoSancion: [],
+        tipoPersona: 'any',
+        nivel: 'any',
+        provider: 'any'
+    }
+
     const [filterData, setFilterData] = React.useState([]);
     const [previos, setPrevios] = React.useState(null);
     const [error, setError] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
-    const [showAdvancedSearch, setShowAdvancedSearch] = React.useState(false);
+    //const [showAdvancedSearch, setShowAdvancedSearch] = React.useState(false);
     const [institutionsList, setInstitutionsList] = React.useState([]);
     const [selectedItem, setSelectedItem] = React.useState(null);
     const [provider, setProvider] = React.useState('any');

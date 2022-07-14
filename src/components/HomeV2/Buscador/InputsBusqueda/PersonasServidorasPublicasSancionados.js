@@ -91,7 +91,7 @@ export function PersonasServidorasPublicasSancionados() {
             >
               <MenuItem value={10}>Inhabilitación</MenuItem>
               <MenuItem value={20}>Multa</MenuItem>
-              <MenuItem value={30}>Suspención del empleo, cargo o comisión</MenuItem>
+              <MenuItem value={30}>Suspención</MenuItem>
               <MenuItem value={40}>Destitución del empleo, cargo o comisión</MenuItem>
               <MenuItem value={50}>Indemnización resarcitoria</MenuItem>
               <MenuItem value={60}>Sanción económica</MenuItem>

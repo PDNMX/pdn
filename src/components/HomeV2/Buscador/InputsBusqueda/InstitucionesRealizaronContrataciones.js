@@ -34,9 +34,9 @@ export function InstitucionesRealizaronContrataciones() {
           render={({ field }) => (
             <TextField
               id="bienServicioOtorgado"
-              label="Bien o servicio"
+              label="Bien, servicio u obra pública"
               variant="outlined"
-              placeholder="Ingresa el bien o servicio que se otorgo al gobierno"
+              placeholder="Ingresa el bien, servicio u obra pública que se otorgo al gobierno"
               fullWidth
               margin="normal"
               {...field}
@@ -53,8 +53,8 @@ export function InstitucionesRealizaronContrataciones() {
               <Select
                 labelId="tipoProcedimientoContratacion"
                 id="tipoProcedimientoContratacion"
-                value={'Tipo de Procedimiento de contratación'}
-                label="Tipo de Procedimiento de contratación"
+                value={'Procedimiento de contratación'}
+                label="Procedimiento de contratación"
                 autoWidth
                 {...field}
               >

@@ -106,27 +106,50 @@ export function ResultadosPersonasServidorasPublicasParticipanEnContrataciones(p
   }))(Typography);
   
   export function ResultadosPersonasServidorasPublicasParticipanEnContrataciones(props) {
+    const data = JSON.parse(props.data);
+    /*
+    2.- Personas servidoras pub que participan contrataciones
+      - Nombre
+      - AP1
+      - AP2
+      - Institución
+      - Tipo de procedimiento (select)
+    */
+    console.log(data.nombres);
+    console.log(data.primerApellido);
+    console.log(data.segundoApellido);
+    console.log(data.institucion);
+    console.log(data.tipoProcedimiento); 
+    /* const initialFilter = {
+        nombres: data.nombres,
+        primerApellido: data.primerApellido,
+        segundoApellido: data.segundoApellido,
+        tipoSancion: [],
+        institucionDependencia: data.institucion,
+        nivel: "any",
+        provider: "any",
+    }; */
   
     const classes = useStyles();
   
-      const [state, setState] = React.useState({
-          order: 'asc',
-          orderBy: 'servidor',
-          nombres: '',
-          apellidoUno: '',
-          apellidoDos: '',
-          summaryData: [],
-          results: null,
-          page: 0, // en el front end page inicia en 0
-          rowsPerPage: 10,
-          tipoProcedimiento: [],//0,
-          elementoSeleccionado: null,
-          entities: [],
-          current_entity: "ANY",
-          loading: false,
-          totalRows: 0,
-          nivel: 'Todos'
-      });
+    const [state, setState] = React.useState({
+        order: 'asc',
+        orderBy: 'servidor',
+        nombres: data.nombres,
+        apellidoUno: data.primerApellido,
+        apellidoDos: data.segundoApellido,
+        summaryData: [],
+        results: null,
+        page: 0, // en el front end page inicia en 0
+        rowsPerPage: 10,
+        tipoProcedimiento: [],//0,
+        elementoSeleccionado: null,
+        entities: [],
+        current_entity: "ANY",
+        loading: false,
+        totalRows: 0,
+        nivel: 'Todos'
+    });
   
       const [dialog, setDialog] = React.useState({
           selectedElement: null,

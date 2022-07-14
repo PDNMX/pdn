@@ -17,12 +17,12 @@ export function ResultadosPersonasServidorasPublicasYSusDeclaraciones(props) {
 
 import React from 'react';
 import { Grid, Paper } from '@mui/material';
-import withStyles from '@mui/styles/withStyles';
+//import withStyles from '@mui/styles/withStyles';
 
 import axios from 'axios';
 
 import Perfil from '../../../Declaraciones2/Perfil';
-import styles from '../../../Declaraciones2/style';
+//import styles from '../../../Declaraciones2/style';
 
 import FormSearch from '../../../Declaraciones2/formSearch';
 import { error } from '../../../Declaraciones2/utils';
@@ -34,6 +34,14 @@ import MantenimentResultProv from '../../../Declaraciones2/MantenimentResultProv
 
 
 export class ResultadosPersonasServidorasPublicasYSusDeclaraciones extends React.Component {
+  /*
+  3.- Personas servidoras pub y declaraciones patri
+  - Nombre
+  - AP1
+  - AP2
+  - Institución
+  - Empleo, cargo, comisión
+  */
   defaultSelect = [
     {
       clave: 0,
