@@ -27,7 +27,17 @@ import PersonIcon from '@mui/icons-material/Person';
 import SettingsIcon from '@mui/icons-material/Settings';
 import MapIcon from '@mui/icons-material/Map';
 
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import { CardActionArea } from "@mui/material";
+import Grid from "@mui/material/Grid";
+
 const useStyles = makeStyles((theme) => ({
+  container: {
+    margin: "2% 0%",
+    /* backgroundColor: 'rgba(29, 80, 109, 0.95)', */
+  },
   button: {
     marginRight: theme.spacing(1),
   },
@@ -40,6 +50,11 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
         backgroundColor: "#56a3bf",
     },
+  },
+  cardMedia: {           
+    height: 100,    
+    width: '33%',
+    margin: '5%'
   },
 }));
 
@@ -99,7 +114,7 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
       case 0:
         return <TipoBusqueda />;
       case 1:
-        return <FiltrosBusqueda tipoBusqueda={name} />;
+        return <FiltrosBusqueda tipoBusqueda={name}/>;
       default:
         return "desconocido";
     }
@@ -107,7 +122,9 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
 
   function ResultadosBusqueda() {
     const parametrosBusqueda = JSON.stringify(methods.getValues());
-    let tipoBusqueda = methods.getValues().tipoBusqueda;
+    console.log(parametrosBusqueda)
+    //let tipoBusqueda = methods.getValues().tipoBusqueda;
+    let tipoBusqueda = name;
     switch (tipoBusqueda) {
       case 'psp-sancionados':
         return <ResultadosPersonasServidorasPublicasSancionados data={parametrosBusqueda}/>;
@@ -128,47 +145,65 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
 
   function TipoBusqueda() {
     const opciones = [
-    { label: "Personas servidoras públicas sancionadas", value: "psp-sancionados", sistema: "s3sp", detalle: "" },
-    { label: "Personas servidoras públicas que participan en contrataciones", value: "psp-participan", sistema: "s2", detalle: "" },
-    { label: "Personas servidoras públicas y sus declaraciones patrimoniales", value: "psp-declaraciones", sistema: "s1", detalle: "" },
-    { label: "Empresas sancionadas por actos corrupción", value: "empresas-sancionadas", sistema: "s3p", detalle: ""},
-    { label: "Empresas que tiene contratos con el gobierno", value: "empresas-contratos", sistema: "s6", detalle: ""},
-    { label: "Instituciones que realizaron contrataciones públicas", value: "instituciones-contrataciones", sistema: "s6", detalle: ""},
+    { label: "Personas servidoras públicas sancionadas", value: "psp-sancionados", sistema: "s3sp", detalle: "", img: "ico_Spsancionados.svg" },
+    { label: "Personas servidoras públicas que participan en contrataciones", value: "psp-participan", sistema: "s2", detalle: "", img: "ico_Spcontrataciones.svg" },
+    { label: "Personas servidoras públicas y sus declaraciones patrimoniales", value: "psp-declaraciones", sistema: "s1", detalle: "", img: "ico_Spdeclaraciones.svg" },
+    { label: "Empresas sancionadas por actos corrupción", value: "empresas-sancionadas", sistema: "s3p", detalle: "", img: "ico_empresas_sancionadas.svg"},
+    { label: "Empresas que tiene contratos con el gobierno", value: "empresas-contratos", sistema: "s6", detalle: "", img: "ico_empresas_contratos_gob.svg"},
+    { label: "Instituciones que realizaron contrataciones públicas", value: "instituciones-contrataciones", sistema: "s6", detalle: "", img: "ico_instituciones_contrataciones.svg"},
   ];
   const { control } = useFormContext();
   return (
     <>
       <Controller
-        control={control}
-        name="tipoBusqueda"
-        render={({ field }) => (
-          <div><br/>
-            <RadioGroup
-              aria-labelledby="tipo-busqueda"
-              defaultValue=""
-              name="tipoBusqueda"
-              {...field}
-              >
+          control={control}
+          name="tipoBusqueda"
+          render={({ field }) => (
+            <Grid
+              container
+              spacing={1}
+              direction="row"
+              alignItems="center"
+              justifyContent="space-between"
+              className={classes.container}
+            >
               {opciones.map((opcion, index) => (
-                <FormControlLabel
-                  key={index}
-                  control={<Radio />}
-                  value={opcion.value}
-                  label={opcion.label}
-                  checked={name === opcion.value}
-                  onChange={(e) =>   {
-                    setName(e.target.value);
-                    stateChanger(opcion.label);
-                    }                   
-                  }
-                />
-                
+                <Grid key={index} item md={4} className={classes.card}>
+                  <Card 
+                    
+                    {...field}
+                  >
+                    <CardActionArea
+                      value={opcion.value}
+                      onClick={(e) => {
+                        setName(opcion.value);
+                        stateChanger(opcion.label);
+                        handleNext();
+                      }}
+                    >
+                      <CardMedia
+                        className={classes.cardMedia}
+                        component="img"
+                        image= {"./asistente_busqueda/" + opcion.img}
+                        alt="ejemplo"
+                      />
+                      <CardContent>
+                        <Typography gutterBottom variant="subtitle1">
+                          {opcion.label}
+                        </Typography>
+                        <Typography variant="subtitle2" color="text.secondary">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit, sed do eiusmod tempor incididunt ut labore et
+                          dolore magna aliqua.
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+                </Grid>
               ))}
-            </RadioGroup>
-            <br/>
-          </div>
-        )}
-      />
+            </Grid>
+          )}
+        />
     </>
   );
   };
@@ -301,7 +336,7 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
           {/* <Typography variant="h3" align="center">
             Buscando... 
           </Typography> */}
-          <ResultadosBusqueda />
+          <ResultadosBusqueda className={classes.container}/>
           <Button
             className={classes.btnPDN}
             disabled={activeStep === 0}
@@ -315,7 +350,7 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
 
       ) : (
         <>
-          <FormProvider {...methods}>
+          <FormProvider {...methods} >
             <form onSubmit={methods.handleSubmit(handleNext)}>
               {GetStepContent(activeStep)}
 

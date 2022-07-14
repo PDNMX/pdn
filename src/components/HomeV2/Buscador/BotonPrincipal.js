@@ -15,7 +15,10 @@ import Stepper from "./LinearStepper";
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    padding: "5% 10%",
+    padding: "2% 3%",
+    backgroundColor: 'rgba(29, 80, 109, 0.95)',
+  },
+  titulo: {
     backgroundColor: 'rgba(29, 80, 109, 0.95)',
   },
   bg: {
@@ -78,7 +81,7 @@ const BootstrapDialogTitle = (props) => {
   const { children, onClose, ...other } = props;
 
   return (
-    <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
+    <DialogTitle  {...other}>
       {children}
       {onClose ? (
         <IconButton
@@ -134,27 +137,21 @@ export default function CustomizedDialogs() {
         fullWidth={true}
         maxWidth="md"
       >
-        <BootstrapDialogTitle
-          id="customized-dialog-title"
-          onClose={handleClose}
-          className={classes.container}
-        >
+        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose} className={classes.titulo} >
           {titulo}
         </BootstrapDialogTitle>
         <DialogContent dividers>
-          <Paper className={classes.bg}>
             <Grid
               container
-              spacing={0}
               alignItems="flex-start"
               justifyContent="center"
               className={classes.container}
+              spacing={2}
             >
               <Grid item md={12} sm={12} xs={12} align="center">
                 <Stepper stateChanger={setTitulo} />
               </Grid>
             </Grid>
-          </Paper>
         </DialogContent>
       </BootstrapDialog>
     </div>
