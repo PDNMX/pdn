@@ -143,10 +143,10 @@ export default function CustomizedDialogs() {
         <DialogContent dividers>
             <Grid
               container
-              alignItems="flex-start"
+              alignItems="center"
               justifyContent="center"
               className={classes.container}
-              spacing={2}
+              spacing={0}
             >
               <Grid item md={12} sm={12} xs={12} align="center">
                 <Stepper stateChanger={setTitulo} />

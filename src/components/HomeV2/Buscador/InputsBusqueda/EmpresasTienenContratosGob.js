@@ -1,6 +1,8 @@
 import React from "react";
 import { TextField } from "@mui/material/";
 import { Controller, useFormContext, } from "react-hook-form";
+import {ThemeProvider} from '@mui/material/styles';
+import ThemeV2 from "../../../../ThemeV2";
 
 export function EmpresasTienenContratosGob () {
     const { control } = useFormContext();
@@ -10,7 +12,7 @@ export function EmpresasTienenContratosGob () {
       - Bien o servicio que se otorgo al gobierno (TOOLTIP con descripción o botón informativo)
     */
     return (
-      <>
+      <ThemeProvider theme={ThemeV2}>
         <Controller
           control={control}
           name="nombreRazonSocial"
@@ -42,7 +44,6 @@ export function EmpresasTienenContratosGob () {
             />
           )}
         />
-  
-      </>
+      </ThemeProvider>
     );
   };

@@ -1,6 +1,8 @@
 import React from "react";
 import { TextField } from "@mui/material/";
 import { Controller, useFormContext, } from "react-hook-form";
+import {ThemeProvider} from '@mui/material/styles';
+import ThemeV2 from "../../../../ThemeV2";
 
 export function PersonasServidorasPublicasYSusDeclaraciones () {
     const { control } = useFormContext();
@@ -13,7 +15,7 @@ export function PersonasServidorasPublicasYSusDeclaraciones () {
       - Empleo, cargo, comisión
     */
     return (
-      <>
+      <ThemeProvider theme={ThemeV2}>
         <Controller
           control={control}
           name="nombres"
@@ -90,6 +92,6 @@ export function PersonasServidorasPublicasYSusDeclaraciones () {
             />
           )}
         />
-      </>
+      </ThemeProvider>
     );
   };

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Typography, Step, Button, Stepper, StepLabel, Radio, RadioGroup, FormControlLabel } from "@mui/material/";
+import { Typography, Step, Button, Stepper, StepLabel } from "@mui/material/";
 import { makeStyles } from "@mui/styles";
 import { useForm, Controller, FormProvider, useFormContext, } from "react-hook-form";
 
@@ -33,9 +33,11 @@ import CardMedia from "@mui/material/CardMedia";
 import { CardActionArea } from "@mui/material";
 import Grid from "@mui/material/Grid";
 
+
 const useStyles = makeStyles((theme) => ({
   container: {
-    margin: "2% 0%",
+    margin: "3% 0%",
+    width: "100%"
     /* backgroundColor: 'rgba(29, 80, 109, 0.95)', */
   },
   button: {
@@ -52,9 +54,25 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   cardMedia: {           
-    height: 100,    
-    width: '33%',
-    margin: '5%'
+    height: "100%",    
+    width: '30%',
+    margin: '3% 0%',
+    objectFit: "cover",
+  },
+  card: {
+    /* background: "#fff", */
+    /* width: "24em", */
+    borderRadius: "0.6em",
+    margin: '2%',
+    overflow: "hidden",
+    /* cursor: "pointer", */
+    boxShadow: "0 13px 27px -5px hsla(240, 30.1%, 28%, 0.25), 0 8px 16px -8px hsla(0, 0%, 0%, 0.3), 0 -6px 16px -6px hsla(0, 0%, 0%, 0.03)",
+    transition: "all ease 200ms",     
+    height: '100%',    
+    '&:hover': {
+      transform: "scale(1.03)",
+      boxShadow: "0 13px 40px -5px hsla(240, 30.1%, 28%, 0.12), 0 8px 32px -8px hsla(0, 0%, 0%, 0.14), 0 -6px 32px -6px hsla(0, 0%, 0%, 0.02)",
+    },
   },
 }));
 
@@ -161,16 +179,16 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
           render={({ field }) => (
             <Grid
               container
-              spacing={1}
+              spacing={0}
               direction="row"
-              alignItems="strech"
-              justifyContent="space-between"
+              alignItems="center"
+              justifyContent="center"
               className={classes.container}
             >
               {opciones.map((opcion, index) => (
-                <Grid key={index} item md={4} className={classes.card}>
+                <Grid key={index} item md={4}>
                   <Card 
-                    style={{ height: '100%' }}
+                    className={classes.card}
                     {...field}
                   >
                     <CardActionArea
@@ -191,9 +209,9 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
                         <Typography gutterBottom variant="subtitle1">
                           {opcion.label}
                         </Typography>
-                        <Typography variant="subtitle2" color="text.secondary">
+                        {/* <Typography variant="subtitle2" color="text.secondary">
                           {opcion.detalle}
-                        </Typography>
+                        </Typography> */}
                       </CardContent>
                     </CardActionArea>
                   </Card>
@@ -373,12 +391,14 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
               )}
               <Button
                 className={classes.btnPDN}
+                disabled={activeStep === 0}
                 variant="contained"
                 color="primary"
-                disabled={name === ''}
+                /* disabled={name === ''} */
                 type="submit"
-              >
-                {activeStep >= 1 ? "Buscar" : "Siguiente"}
+              > 
+                Buscar
+                {/* {activeStep >= 1 ? "Buscar" : "Siguiente"} */}
               </Button>
             </form>
           </FormProvider>

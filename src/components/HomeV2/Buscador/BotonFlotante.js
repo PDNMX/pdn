@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 10,
   },
   container: {
-    padding: "2% 3%",
+    padding: "0",
     backgroundColor: 'rgba(29, 80, 109, 0.95)',
   },
   titulo: {

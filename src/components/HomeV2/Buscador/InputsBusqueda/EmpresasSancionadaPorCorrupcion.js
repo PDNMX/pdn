@@ -1,6 +1,8 @@
 import React from "react";
 import { InputLabel, FormControl, TextField, MenuItem, Select } from "@mui/material/";
 import { Controller, useFormContext, } from "react-hook-form";
+import {ThemeProvider} from '@mui/material/styles';
+import ThemeV2 from "../../../../ThemeV2";
 
 export function EmpresasSancionadaPorCorrupcion () {
     const { control } = useFormContext();
@@ -11,7 +13,7 @@ export function EmpresasSancionadaPorCorrupcion () {
       - Tipo de sanción (select)
     */
     return (
-      <>
+      <ThemeProvider theme={ThemeV2}>
         <Controller
           control={control}
           name="nombreRazonSocial"
@@ -71,7 +73,6 @@ export function EmpresasSancionadaPorCorrupcion () {
             
           )}
         />
-  
-      </>
+      </ThemeProvider>
     );
   };

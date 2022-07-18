@@ -1,6 +1,8 @@
 import React from "react";
 import { InputLabel, FormControl, TextField, Select, MenuItem } from "@mui/material/";
 import { Controller, useFormContext, } from "react-hook-form";
+import {ThemeProvider} from '@mui/material/styles';
+import ThemeV2 from "../../../../ThemeV2";
 
 export function PersonasServidorasPublicasParticipanEnContrataciones() {
     const { control } = useFormContext();
@@ -13,7 +15,7 @@ export function PersonasServidorasPublicasParticipanEnContrataciones() {
       - Tipo de procedimiento (select)
     */
     return (
-      <>
+      <ThemeProvider theme={ThemeV2}>
         <Controller
           control={control}
           name="nombres"
@@ -97,6 +99,6 @@ export function PersonasServidorasPublicasParticipanEnContrataciones() {
             
           )}
         />
-      </>
+      </ThemeProvider>
     );
   };
