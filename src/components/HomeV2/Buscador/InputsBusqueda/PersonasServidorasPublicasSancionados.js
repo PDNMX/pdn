@@ -1,18 +1,29 @@
 import React from "react";
-import { InputLabel, FormControl, TextField, Select, MenuItem } from "@mui/material/";
+import { TextField } from "@mui/material/";
 import { Controller, useFormContext, } from "react-hook-form";
 import {ThemeProvider} from '@mui/material/styles';
 import ThemeV2 from "../../../../ThemeV2";
 
+import Autocomplete from '@mui/material/Autocomplete';
+
 export function PersonasServidorasPublicasSancionados() {
     const { control } = useFormContext();
+    const tiposSancion = [
+      {label: 'Inhabilitado', value: 'I'},
+      {label: 'Multado', value: 'M'},
+      {label: 'Suspensión del empleo, cargo o comisión', value: 'S'},
+      {label: 'Destitución del empleo, cargo o comisión', value: 'D'},
+      {label: 'Indemnización resarcitoria', value: 'IRSC'},
+      {label: 'Sanción económica', value: 'SE'},
+      {label: 'Otro', value: 'O'}
+    ];
     /*
     1.- Servidores publicos sancionados
       - Nombre
       - AP1
       - AP2
       - Institución
-      - Tipo de sanción (select)
+      - Tipo de sanción (multi select)
     */
     return (
       <ThemeProvider theme={ThemeV2}>
@@ -78,31 +89,38 @@ export function PersonasServidorasPublicasSancionados() {
           )}
         />
         <Controller
-          control={control}
-          name="tipoSancion"
-          render={({ field }) => (
-            <FormControl fullWidth={true} margin={'normal'}>
-            <InputLabel id="labelTipoSancion">Tipo de Sanción</InputLabel>
-            <Select
-              labelId="tipoSancion"
-              id="tipoSancion"
-              value={'Tipo Sanción'}
-              label="Tipo de Sanción"
-              autoWidth
-              {...field}
-            >
-              <MenuItem value={10}>Inhabilitación</MenuItem>
-              <MenuItem value={20}>Multa</MenuItem>
-              <MenuItem value={30}>Suspención</MenuItem>
-              <MenuItem value={40}>Destitución del empleo, cargo o comisión</MenuItem>
-              <MenuItem value={50}>Indemnización resarcitoria</MenuItem>
-              <MenuItem value={60}>Sanción económica</MenuItem>
-              <MenuItem value={70}>Otro</MenuItem>
-            </Select>
-          </FormControl>
-            
-          )}
-        />
+        name="tipoSancion"
+        control={control}
+        defaultValue={[]}
+        render={({ field: { ref, ...field }, fieldState: { error } }) => (
+          <Autocomplete
+            {...field}
+            disableClearable
+            disablePortal
+            filterSelectedOptions
+            multiple
+            getOptionDisabled={(option) => option.disabled}
+            getOptionLabel={(option) => option.label}
+            id="tipoSancion-autocomplete"
+            onChange={(event, value) => field.onChange(value)}
+            options={tiposSancion}
+            /* getOptionSelected={(option, value) => option === value} */
+            isOptionEqualToValue={(option, value) => option.label === value.label}
+            renderInput={(params) => (
+              <TextField
+                error={!!error}
+                helperText={error?.message}
+                id="tipoSancion"
+                label="Tipos de Sanción"
+                name="tipoSancion"
+                type="Buscar"
+                inputRef={ref}
+                {...params}
+              />
+            )}
+          />
+        )}
+      />
       </ThemeProvider>
     );
   };

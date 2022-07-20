@@ -29,7 +29,7 @@ export function ResultadosInstitucionesRealizaronContrataciones(props) {
     loading: false,
     buyers: [],
     buyer_id: "any",
-    procurementMethod: "any",
+    procurementMethod: data.tipoContratacion,
     supplierName: "",
     cycle: "any",
     cycles: [],

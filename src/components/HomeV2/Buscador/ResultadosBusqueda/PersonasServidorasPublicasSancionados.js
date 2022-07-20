@@ -49,35 +49,11 @@ const styles = (theme) => ({
   },
 });
 
-/* const tiposSancion = [
-  { label: "Inhabilitado", value: "I" },
-  { label: "Multado", value: "M" },
-  { label: "Suspensión del empleo, cargo o comisión", value: "S" },
-  { label: "Destitución del empleo, cargo o comisión", value: "D" },
-  { label: "Indemnización resarcitoria", value: "IRSC" },
-  { label: "Sanción económica", value: "SE" },
-  { label: "Otro", value: "O" },
-]; */
-
-/* const camposOrdenamiento = [
-  { label: "Nombre", value: "nombres" },
-  { label: "Apellido Uno", value: "primerApellido" },
-  { label: "Apellido Dos", value: "segundoApellido" },
-  { label: "Institución", value: "institucionDependencia" },
-]; */
-
-/* const tiposOrdenamiento = [
-  { label: "Ascendente", value: "asc" },
-  { label: "Descendente", value: "desc" },
-];
- */
 const initialPagination = {
   page: 1,
   rowsPerPage: 10,
   totalRows: 0,
 };
-
-
 
 const initialSort = {
   campoOrden: "any",
@@ -104,7 +80,7 @@ export function ResultadosPersonasServidorasPublicasSancionados(props) {
     nombres: data.nombres,
     primerApellido: data.primerApellido,
     segundoApellido: data.segundoApellido,
-    tipoSancion: [],
+    tipoSancion: data.tipoSancion,
     institucionDependencia: data.institucion,
     nivel: "any",
     provider: "any",
@@ -260,7 +236,6 @@ export function ResultadosPersonasServidorasPublicasSancionados(props) {
       filtros.institucionDependencia = filter.institucionDependencia;
     if (filter.tipoSancion.length > 0)
       filtros.tipoSancion = filter.tipoSancion.map((item) => item.value);
-      console.log(filtros)
     return filtros;
   };
 

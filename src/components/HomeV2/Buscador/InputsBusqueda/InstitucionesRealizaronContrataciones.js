@@ -48,21 +48,24 @@ export function InstitucionesRealizaronContrataciones() {
   
         <Controller
           control={control}
-          name="tipoProcedimientoContratacion"
+          name="tipoContratacion"
           render={({ field }) => (
             <FormControl fullWidth={true} margin={'normal'}>
               <InputLabel id="demo-simple-select-label">Tipo de Procedimiento</InputLabel>
               <Select
-                labelId="tipoProcedimientoContratacion"
-                id="tipoProcedimientoContratacion"
-                value={'Procedimiento de contratación'}
-                label="Procedimiento de contratación"
+                labelId="tipoContratacion"
+                id="tipoContratacion"
+                value={'Tipo de contratación'}
+                label="Tipo de contratación"
                 autoWidth
                 {...field}
               >
-                <MenuItem value={10}>Adjudicación directa</MenuItem>
-                <MenuItem value={20}>Invitación restringida</MenuItem>
-                <MenuItem value={30}>Licitación pública</MenuItem>
+                <MenuItem value="any">
+                    <em>Cualquiera</em>
+                </MenuItem>
+                <MenuItem value="direct">Adjudicación directa</MenuItem>
+                <MenuItem value="selective">Invitación a tres</MenuItem>
+                <MenuItem value="open">Licitación pública</MenuItem>
               </Select>
             </FormControl>
             

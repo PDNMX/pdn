@@ -109,17 +109,17 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
   const classes = useStyles();
   const methods = useForm({
     defaultValues: {
-      tipoBusqueda: "",
       nombres: "",
       primerApellido: "",
       segundoApellido: "",
       institucion: "",
-      tipoSancion: "",
+      tipoSancion: [],
       empleoCargoComision: "",
       institucionContratante: "",
       nombreRazonSocial: "",
       bienServicioOtorgado: "",
-      tipoProcedimientoContratacion: ""
+      tipoProcedimientoContratacion: [],
+      tipoContratacion: ""
     },
   });
   const [activeStep, setActiveStep] = useState(0);
@@ -282,17 +282,8 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
   }
   
   ColorlibStepIcon.propTypes = {
-    /**
-     * Whether this step is active.
-     */
     active: PropTypes.bool,
-    /**
-     * Mark the step as completed. Is passed to child components.
-     */
     completed: PropTypes.bool,
-    /**
-     * The label displayed in the step icon.
-     */
     icon: PropTypes.node,
   };
   const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
@@ -368,9 +359,8 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
       ) : (
         <>
           <FormProvider {...methods} >
-            <form onSubmit={methods.handleSubmit(handleNext)}>
+            <form onSubmit={methods.handleSubmit(handleNext)} noValidate>
               {GetStepContent(activeStep)}
-
               <Button
                 className={classes.btnPDN}
                 disabled={activeStep === 0}

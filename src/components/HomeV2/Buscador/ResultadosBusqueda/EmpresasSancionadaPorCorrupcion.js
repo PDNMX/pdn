@@ -1,24 +1,8 @@
-/* import React from "react";
-import BusquedaParticular from '../../../Sancionados/Particulares/BusquedaParticular'
 
-export function ResultadosEmpresasSancionadaPorCorrupcion(props) {
-    let data = props.data;
-    return (
-      <>
-        <BusquedaParticular/>
-      </>
-    );
-  }; */
 
-  import React from 'react';
-import {
-    Grid, MenuItem, FormControl, Typography,  ListItemText, TextField, Button, Checkbox, Modal, CircularProgress
-} from '@mui/material';
-import {withStyles} from '@mui/styles';
-import PropTypes from 'prop-types';
+import React from 'react';
+import { Grid, Modal, CircularProgress } from '@mui/material';
 import Previos from "../../../Compartidos/Previos";
-import ExpandLessIcon from "@mui/icons-material/ExpandLess";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import TablaParticularesSancionados from "../../../Sancionados/Particulares/TablaParticularesSancionados";
 import DetalleParticularSancionado from "../../../Sancionados/Particulares/DetalleParticular";
 import MensajeErrorDatos from "../../../Mensajes/MensajeErrorDatos";
@@ -98,7 +82,7 @@ const initialPagination = {
     rowsPerPage: 10,
     totalRows: 0,
 };
-
+/* 
 const initialFilter = {
     nombreRazonSocial: '',
     institucionDependencia: 'any',
@@ -107,7 +91,7 @@ const initialFilter = {
     tipoPersona: 'any',
     nivel: 'any',
     provider: 'any'
-}
+} */
 
 const initialSort = {
     campoOrden: 'any',
@@ -121,15 +105,15 @@ export function ResultadosEmpresasSancionadaPorCorrupcion(props){
       - Intitución donde presto el servicio
       - Tipo de sanción (select)
     */
-    console.log(data.nombreRazonSocial);
+    /* console.log(data.nombreRazonSocial);
     console.log(data.tipoProcedimiento);
-    console.log(data.tipoSancion);
+    console.log(data.tipoSancion); */
 
     const initialFilter = {
         nombreRazonSocial: data.nombres,
         institucionDependencia: data.institucionDependencia,
         expediente: '',
-        tipoSancion: [],
+        tipoSancion: data.tipoSancion,
         tipoPersona: 'any',
         nivel: 'any',
         provider: 'any'
@@ -218,7 +202,7 @@ export function ResultadosEmpresasSancionadaPorCorrupcion(props){
         });
     }
 
-    const handleCleanAll = () => {
+    /* const handleCleanAll = () => {
         setFilter(initialFilter);
         setProvidersList([]);
         setPagination(initialPagination);
@@ -228,7 +212,7 @@ export function ResultadosEmpresasSancionadaPorCorrupcion(props){
         setInstitutionsList([]);
         setSelectedItem(null);
         setView(0);
-    };
+    }; */
 
     const handleSearchPrevios = () => {
         setLoading(true);

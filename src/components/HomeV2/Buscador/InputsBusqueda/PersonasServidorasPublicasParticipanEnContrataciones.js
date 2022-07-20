@@ -1,8 +1,9 @@
 import React from "react";
-import { InputLabel, FormControl, TextField, Select, MenuItem } from "@mui/material/";
+import { TextField } from "@mui/material/";
 import { Controller, useFormContext, } from "react-hook-form";
 import {ThemeProvider} from '@mui/material/styles';
 import ThemeV2 from "../../../../ThemeV2";
+import Autocomplete from '@mui/material/Autocomplete';
 
 export function PersonasServidorasPublicasParticipanEnContrataciones() {
     const { control } = useFormContext();
@@ -14,7 +15,7 @@ export function PersonasServidorasPublicasParticipanEnContrataciones() {
       - Institución
       - Tipo de procedimiento (select)
     */
-    return (
+      const procedimientos = [ { key: 1, value: 'Contrataciones' }, { key: 2, value: 'Concesiones' }, { key: 3, value: 'Enajenaciones' }, { key: 4, value: 'Dictámenes' } ]; return (
       <ThemeProvider theme={ThemeV2}>
         <Controller
           control={control}
@@ -78,27 +79,38 @@ export function PersonasServidorasPublicasParticipanEnContrataciones() {
           )}
         />
         <Controller
-          control={control}
-          name="tipoProcedimientoContratacion"
-          render={({ field }) => (
-            <FormControl fullWidth={true} margin={'normal'}>
-              <InputLabel id="demo-simple-select-label">Tipo de Procedimiento</InputLabel>
-              <Select
-                labelId="tipoProcedimientoContratacion"
+        name="tipoProcedimientoContratacion"
+        control={control}
+        defaultValue={[]}
+        render={({ field: { ref, ...field }, fieldState: { error } }) => (
+          <Autocomplete
+            {...field}
+            disableClearable
+            disablePortal
+            filterSelectedOptions
+            multiple
+            getOptionDisabled={(option) => option.disabled}
+            getOptionLabel={(option) => option.value}
+            id="tipoSancion-autocomplete"
+            onChange={(event, value) => field.onChange(value)}
+            options={procedimientos}
+            /* getOptionSelected={(option, value) => option === value} */
+            isOptionEqualToValue={(option, value) => option.value === value.value}
+            renderInput={(params) => (
+              <TextField
+                error={!!error}
+                helperText={error?.message}
                 id="tipoProcedimientoContratacion"
-                value={'Tipo de Procedimiento de contratación'}
-                label="Tipo de Procedimiento de contratación"
-                autoWidth
-                {...field}
-              >
-                <MenuItem value={10}>Adjudicación directa</MenuItem>
-                <MenuItem value={20}>Invitación restringida</MenuItem>
-                <MenuItem value={30}>Licitación pública</MenuItem>
-              </Select>
-            </FormControl>
-            
-          )}
-        />
+                label="Tipos de Procedimiento"
+                name="tipoProcedimientoContratacion"
+                type="Buscar"
+                inputRef={ref}
+                {...params}
+              />
+            )}
+          />
+        )}
+      />
       </ThemeProvider>
     );
   };

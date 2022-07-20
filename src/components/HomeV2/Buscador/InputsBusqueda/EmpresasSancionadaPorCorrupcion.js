@@ -1,8 +1,9 @@
 import React from "react";
-import { InputLabel, FormControl, TextField, MenuItem, Select } from "@mui/material/";
+import { TextField } from "@mui/material/";
 import { Controller, useFormContext, } from "react-hook-form";
 import {ThemeProvider} from '@mui/material/styles';
 import ThemeV2 from "../../../../ThemeV2";
+import Autocomplete from '@mui/material/Autocomplete';
 
 export function EmpresasSancionadaPorCorrupcion () {
     const { control } = useFormContext();
@@ -12,6 +13,16 @@ export function EmpresasSancionadaPorCorrupcion () {
       - Intitución donde presto el servicio
       - Tipo de sanción (select)
     */
+    const tiposSancion = [
+      {label: 'Inhabilitado', value: 'I'},
+      {label: 'Multado', value: 'M'},
+      {label: 'Suspensión de actividades', value: 'S'},
+      {label: 'Disolución de la sociedad', value: 'D'},
+      {label: 'Amonestación', value: 'A'},
+      {label: 'Indemnización por los daños y perjuicios ocasionados a la Hacienda Pública Federal, local o municipal, o al patrimonio de los entes públicos', value: 'IND' },
+      {label: 'Sanción económica', value: 'SE'},
+      {label: 'Otro', value: 'O'}
+    ]
     return (
       <ThemeProvider theme={ThemeV2}>
         <Controller
@@ -46,33 +57,39 @@ export function EmpresasSancionadaPorCorrupcion () {
           )}
         />
   
-        <Controller
-          control={control}
-          name="tipoSancion"
-          render={({ field }) => (
-            <FormControl fullWidth={true} margin={'normal'}>
-              <InputLabel id="labelTipoSancion">Tipo de Sanción</InputLabel>
-              <Select
-                labelId="tipoSancion"
+      <Controller
+        name="tipoSancion"
+        control={control}
+        defaultValue={[]}
+        render={({ field: { ref, ...field }, fieldState: { error } }) => (
+          <Autocomplete
+            {...field}
+            disableClearable
+            disablePortal
+            filterSelectedOptions
+            multiple
+            getOptionDisabled={(option) => option.disabled}
+            getOptionLabel={(option) => option.label}
+            id="tipoSancion-autocomplete"
+            onChange={(event, value) => field.onChange(value)}
+            options={tiposSancion}
+            /* getOptionSelected={(option, value) => option === value} */
+            isOptionEqualToValue={(option, value) => option.label === value.label}
+            renderInput={(params) => (
+              <TextField
+                error={!!error}
+                helperText={error?.message}
                 id="tipoSancion"
-                value={'Tipo Sanción'}
-                label="Tipo de Sanción"
-                autoWidth
-                {...field}
-              >
-                <MenuItem value={10}>Inhabilitación</MenuItem>
-                <MenuItem value={20}>Multa</MenuItem>
-                <MenuItem value={30}>Suspención de actividades</MenuItem>
-                <MenuItem value={40}>Disolución de la sociedad</MenuItem>
-                <MenuItem value={50}>Amonestación</MenuItem>
-                <MenuItem value={60}>Indemnización por los daños y perjuicios ocasionados a la Hacienda Pública Federal, local o municipal, o al patrimonio de los entes públicos</MenuItem>
-                <MenuItem value={70}>Sanción económica</MenuItem>
-                <MenuItem value={80}>Otro</MenuItem>
-              </Select>
-            </FormControl>
-            
-          )}
-        />
+                label="Tipos de Sanción"
+                name="tipoSancion"
+                type="Buscar"
+                inputRef={ref}
+                {...params}
+              />
+            )}
+          />
+        )}
+      />
       </ThemeProvider>
     );
   };
