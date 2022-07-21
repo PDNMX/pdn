@@ -250,8 +250,8 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
     backgroundColor: '#ccc',
     zIndex: 1,
     color: '#fff',
-    width: 50,
-    height: 50,
+    width: 90,
+    height: 90,
     display: 'flex',
     borderRadius: '50%',
     justifyContent: 'center',
@@ -269,9 +269,9 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
     const { active, completed, className} = props;
   
     const icons = {
-      1: <PersonIcon />,
-      2: <SettingsIcon />,
-      3: <MapIcon />,
+      1: <PersonIcon sx={{ fontSize:50 }} />,
+      2: <SettingsIcon sx={{ fontSize: 50 }} />,
+      3: <MapIcon sx={{ fontSize: 50 }} />,
     };
 
     return (
@@ -288,7 +288,7 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
   };
   const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
     [`&.${stepConnectorClasses.alternativeLabel}`]: {
-      top: 22,
+      top: 43,
     },
     [`&.${stepConnectorClasses.active}`]: {
       [`& .${stepConnectorClasses.line}`]: {
@@ -303,7 +303,7 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
       },
     },
     [`& .${stepConnectorClasses.line}`]: {
-      height: 3,
+      height: 5,
       border: 0,
       backgroundColor:
         theme.palette.mode === 'dark' ? theme.palette.grey[800] : '#eaeaf0',
