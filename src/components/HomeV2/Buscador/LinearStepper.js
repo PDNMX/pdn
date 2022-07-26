@@ -32,6 +32,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import { CardActionArea } from "@mui/material";
 import Grid from "@mui/material/Grid";
+import Tooltip from '@mui/material/Tooltip';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -50,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
     fontStyle: "italic",
     '&:hover': {
-        backgroundColor: "#56a3bf",
+      backgroundColor: "#56a3bf",
     },
   },
   cardMedia: {           
@@ -74,6 +75,12 @@ const useStyles = makeStyles((theme) => ({
       boxShadow: "0 13px 40px -5px hsla(240, 30.1%, 28%, 0.12), 0 8px 32px -8px hsla(0, 0%, 0%, 0.14), 0 -6px 32px -6px hsla(0, 0%, 0%, 0.02)",
     },
   },
+  Tooltip:{
+    maxWidth:250,
+    backgroundColor: "rgba(38, 37, 37)",
+    fontSize: 15,
+    color:"white",
+  }
 }));
 
 function getSteps() {
@@ -93,7 +100,7 @@ function FiltrosBusqueda(props) {
     case 'psp-participan':
       return <PersonasServidorasPublicasParticipanEnContrataciones/>;
     case 'psp-declaraciones':
-        return <PersonasServidorasPublicasYSusDeclaraciones/>;
+      return <PersonasServidorasPublicasYSusDeclaraciones/>;
     case 'empresas-sancionadas':
       return <EmpresasSancionadaPorCorrupcion/>;
     case 'empresas-contratos':
@@ -149,7 +156,7 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
       case 'psp-participan':
         return <ResultadosPersonasServidorasPublicasParticipanEnContrataciones data={parametrosBusqueda}/>;
       case 'psp-declaraciones':
-          return <ResultadosPersonasServidorasPublicasYSusDeclaraciones data={parametrosBusqueda}/>;
+        return <ResultadosPersonasServidorasPublicasYSusDeclaraciones data={parametrosBusqueda}/>;
       case 'empresas-sancionadas':
         return <ResultadosEmpresasSancionadaPorCorrupcion data={parametrosBusqueda}/>;
       case 'empresas-contratos':
@@ -163,65 +170,67 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
 
   function TipoBusqueda() {
     const opciones = [
-    { label: "Personas servidoras públicas sancionadas", value: "psp-sancionados", sistema: "s3sp", detalle: "Información de personas servidoras públicas por la comisión de faltas administrativas.", img: "ico_Spsancionados.svg" },
-    { label: "Personas servidoras públicas que participan en contrataciones", value: "psp-participan", sistema: "s2", detalle: "Datos de personas servidoras públicas que intervienen en contrataciones públicas, otorgamiento de concesiones, enajenaciones de bienes y emisión de dictámenes.", img: "ico_Spcontrataciones.svg" },
-    { label: "Personas servidoras públicas y sus declaraciones patrimoniales", value: "psp-declaraciones", sistema: "s1", detalle: "Declaraciones patrimoniales de personas servidoras públicas de todo el país.", img: "ico_Spdeclaraciones.svg" },
-    { label: "Empresas sancionadas por actos corrupción", value: "empresas-sancionadas", sistema: "s3p", detalle: "Información de particulares sancionados por la comisión de faltas administrativas.", img: "ico_empresas_sancionadas.svg"},
-    { label: "Empresas que tiene contratos con el gobierno", value: "empresas-contratos", sistema: "s6", detalle: "Información de particulares que otorgan bienes, servicios u obra pública a las instituciones públicas de todo el país.", img: "ico_empresas_contratos_gob.svg"},
-    { label: "Instituciones que realizaron contrataciones públicas", value: "instituciones-contrataciones", sistema: "s6", detalle: "Información sobre los gastos que realizan las instituciones públicas de todo el país para la adquisición de bienes, servicios u obra pública. ", img: "ico_instituciones_contrataciones.svg"},
-  ];
-  const { control } = useFormContext();
-  return (
-    <>
-      <Controller
-          control={control}
-          name="tipoBusqueda"
-          render={({ field }) => (
-            <Grid
-              container
-              spacing={0}
-              direction="row"
-              alignItems="center"
-              justifyContent="center"
-              className={classes.container}
-            >
-              {opciones.map((opcion, index) => (
-                <Grid key={index} item md={4}>
-                  <Card 
-                    className={classes.card}
-                    {...field}
+      { label: "Personas servidoras públicas sancionadas", value: "psp-sancionados", sistema: "s3sp", detalle: "Información de personas servidoras públicas por la comisión de faltas administrativas.", img: "ico_Spsancionados.svg" },
+      { label: "Personas servidoras públicas que participan en contrataciones", value: "psp-participan", sistema: "s2", detalle: "Datos de personas servidoras públicas que intervienen en contrataciones públicas, otorgamiento de concesiones, enajenaciones de bienes y emisión de dictámenes.", img: "ico_Spcontrataciones.svg" },
+      { label: "Personas servidoras públicas y sus declaraciones patrimoniales", value: "psp-declaraciones", sistema: "s1", detalle: "Declaraciones patrimoniales de personas servidoras públicas de todo el país.", img: "ico_Spdeclaraciones.svg" },
+      { label: "Empresas sancionadas por actos corrupción", value: "empresas-sancionadas", sistema: "s3p", detalle: "Información de particulares sancionados por la comisión de faltas administrativas.", img: "ico_empresas_sancionadas.svg"},
+      { label: "Empresas que tiene contratos con el gobierno", value: "empresas-contratos", sistema: "s6", detalle: "Información de particulares que otorgan bienes, servicios u obra pública a las instituciones públicas de todo el país.", img: "ico_empresas_contratos_gob.svg"},
+      { label: "Instituciones que realizaron contrataciones públicas", value: "instituciones-contrataciones", sistema: "s6", detalle: "Información sobre los gastos que realizan las instituciones públicas de todo el país para la adquisición de bienes, servicios u obra pública. ", img: "ico_instituciones_contrataciones.svg"},
+    ];
+    const { control } = useFormContext();
+    return (
+        <>
+          <Controller
+              control={control}
+              name="tipoBusqueda"
+              render={({ field }) => (
+                  <Grid
+                      container
+                      spacing={0}
+                      direction="row"
+                      alignItems="center"
+                      justifyContent="center"
+                      className={classes.container}
                   >
-                    <CardActionArea
-                      value={opcion.value}
-                      onClick={(e) => {
-                        setName(opcion.value);
-                        stateChanger(opcion.label);
-                        handleNext();
-                      }}
-                    >
-                      <CardMedia
-                        className={classes.cardMedia}
-                        component="img"
-                        image= {"./asistente_busqueda/" + opcion.img}
-                        alt="ejemplo"
-                      />
-                      <CardContent>
-                        <Typography gutterBottom variant="subtitle1">
-                          {opcion.label}
-                        </Typography>
-                        {/* <Typography variant="subtitle2" color="text.secondary">
+                    {opciones.map((opcion, index) => (
+                        <Grid key={index} item md={4}>
+                          <Card
+                              className={classes.card}
+                              {...field}
+                          >
+                            <Tooltip title={opcion.detalle} classes = {{tooltip: classes.Tooltip}} placement="top">
+                              <CardActionArea
+                                  value={opcion.value}
+                                  onClick={(e) => {
+                                    setName(opcion.value);
+                                    stateChanger(opcion.label);
+                                    handleNext();
+                                  }}
+                              >
+                                <CardMedia
+                                    className={classes.cardMedia}
+                                    component="img"
+                                    image= {"./asistente_busqueda/" + opcion.img}
+                                    alt="ejemplo"
+                                />
+                                <CardContent>
+                                  <Typography gutterBottom variant="subtitle1">
+                                    {opcion.label}
+                                  </Typography>
+                                  {/* <Typography variant="subtitle2" color="text.secondary">
                           {opcion.detalle}
                         </Typography> */}
-                      </CardContent>
-                    </CardActionArea>
-                  </Card>
-                </Grid>
-              ))}
-            </Grid>
-          )}
-        />
-    </>
-  );
+                                </CardContent>
+                              </CardActionArea>
+                            </Tooltip>
+                          </Card>
+                        </Grid>
+                    ))}
+                  </Grid>
+              )}
+          />
+        </>
+    );
   };
 
   const isStepOptional = (step) => {
@@ -235,7 +244,7 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
   const handleNext = () => {
     setActiveStep(activeStep + 1);
     setSkippedSteps(
-      skippedSteps.filter((skipItem) => skipItem !== activeStep)
+        skippedSteps.filter((skipItem) => skipItem !== activeStep)
     );
   };
 
@@ -261,7 +270,7 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
     }),
     ...(ownerState.completed && {
       backgroundImage:
-      'linear-gradient( 136deg, rgb(232,214,67) 0%, rgb(232,214,67) 50%, rgb(232,214,67) 100%)',
+          'linear-gradient( 136deg, rgb(232,214,67) 0%, rgb(232,214,67) 50%, rgb(232,214,67) 100%)',
     }),
   }));
 
@@ -275,9 +284,9 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
     };
 
     return (
-      <ColorlibStepIconRoot ownerState={{ completed, active }} className={className}>
-        {icons[String(props.icon)]}
-      </ColorlibStepIconRoot>
+        <ColorlibStepIconRoot ownerState={{ completed, active }} className={className}>
+          {icons[String(props.icon)]}
+        </ColorlibStepIconRoot>
     );
   }
   
@@ -293,108 +302,108 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
     [`&.${stepConnectorClasses.active}`]: {
       [`& .${stepConnectorClasses.line}`]: {
         backgroundImage:
-        'linear-gradient( 136deg, rgb(232,214,67) 0%, rgb(232,214,67) 50%, rgb(232,214,67) 100%)',
+            'linear-gradient( 136deg, rgb(232,214,67) 0%, rgb(232,214,67) 50%, rgb(232,214,67) 100%)',
       },
     },
     [`&.${stepConnectorClasses.completed}`]: {
       [`& .${stepConnectorClasses.line}`]: {
         backgroundImage:
-        'linear-gradient( 136deg, rgb(232,214,67) 0%, rgb(232,214,67) 50%, rgb(232,214,67) 100%)',
+            'linear-gradient( 136deg, rgb(232,214,67) 0%, rgb(232,214,67) 50%, rgb(232,214,67) 100%)',
       },
     },
     [`& .${stepConnectorClasses.line}`]: {
       height: 5,
       border: 0,
       backgroundColor:
-        theme.palette.mode === 'dark' ? theme.palette.grey[800] : '#eaeaf0',
+          theme.palette.mode === 'dark' ? theme.palette.grey[800] : '#eaeaf0',
       borderRadius: 1,
     },
   }));
   return (
-    <>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <Stepper alternativeLabel activeStep={activeStep} connector={<ColorlibConnector/>}>
-        {steps.map((step, index) => {
-          const labelProps = {};
-          const stepProps = {};
-          if (isStepOptional(index)) {
-            labelProps.optional = (
-              <Typography
-                variant="caption"
-                align="center"
-                style={{ display: "block" }}
-              >
-                opcional
-              </Typography>
+      <>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <Stepper alternativeLabel activeStep={activeStep} connector={<ColorlibConnector/>}>
+          {steps.map((step, index) => {
+            const labelProps = {};
+            const stepProps = {};
+            if (isStepOptional(index)) {
+              labelProps.optional = (
+                  <Typography
+                      variant="caption"
+                      align="center"
+                      style={{ display: "block" }}
+                  >
+                    opcional
+                  </Typography>
+              );
+            }
+            if (isStepSkipped(index)) {
+              stepProps.completed = false;
+            }
+            return (
+                <Step {...stepProps} key={index}>
+                  <StepLabel StepIconComponent={ColorlibStepIcon} {...labelProps}>{step}</StepLabel>
+                </Step>
             );
-          }
-          if (isStepSkipped(index)) {
-            stepProps.completed = false;
-          }
-          return (
-            <Step {...stepProps} key={index}>
-              <StepLabel StepIconComponent={ColorlibStepIcon} {...labelProps}>{step}</StepLabel>
-            </Step>
-          );
-        })}
-      </Stepper>
+          })}
+        </Stepper>
 
-      {activeStep >= steps.length - 1 ? (
-        <div>
-          {/* <Typography variant="h3" align="center">
+        {activeStep >= steps.length - 1 ? (
+            <div>
+              {/* <Typography variant="h3" align="center">
             Buscando... 
           </Typography> */}
-          <ResultadosBusqueda className={classes.container}/>
-          <Button
-            className={classes.btnPDN}
-            disabled={activeStep === 0}
-            variant="contained"
-            /* color="primary" */
-            onClick={handleRestart}
-          >
-            Reiniciar Busqueda
-          </Button>
-        </div>
-
-      ) : (
-        <>
-          <FormProvider {...methods} >
-            <form onSubmit={methods.handleSubmit(handleNext)} noValidate>
-              {GetStepContent(activeStep)}
+              <ResultadosBusqueda className={classes.container}/>
               <Button
-                className={classes.btnPDN}
-                disabled={activeStep === 0}
-                variant="contained"
-                color="primary"
-                onClick={handleBack}
-              >
-                Regresar
-              </Button>
-              {isStepOptional(activeStep) && (
-                <Button
                   className={classes.btnPDN}
+                  disabled={activeStep === 0}
                   variant="contained"
-                  color="primary"
-                >
-                  Limpiar
-                </Button>
-              )}
-              <Button
-                className={classes.btnPDN}
-                disabled={activeStep === 0}
-                variant="contained"
-                color="primary"
-                /* disabled={name === ''} */
-                type="submit"
-              > 
-                Buscar
-                {/* {activeStep >= 1 ? "Buscar" : "Siguiente"} */}
+                  /* color="primary" */
+                  onClick={handleRestart}
+              >
+                Reiniciar Busqueda
               </Button>
-            </form>
-          </FormProvider>
-        </>
-      )}
-    </>
+            </div>
+
+        ) : (
+            <>
+              <FormProvider {...methods} >
+                <form onSubmit={methods.handleSubmit(handleNext)} noValidate>
+                  {GetStepContent(activeStep)}
+                  <Button
+                      className={classes.btnPDN}
+                      disabled={activeStep === 0}
+                      variant="contained"
+                      color="primary"
+                      onClick={handleBack}
+                  >
+                    Regresar
+                  </Button>
+                  {isStepOptional(activeStep) && (
+                      <Button
+                          className={classes.btnPDN}
+                          variant="contained"
+                          color="primary"
+                      >
+                        Limpiar
+                      </Button>
+                  )}
+                  <Button
+                      className={classes.btnPDN}
+                      disabled={activeStep === 0}
+                      variant="contained"
+                      color="primary"
+                      /* disabled={name === ''} */
+                      type="submit"
+                  >
+                    Buscar
+                    {/* {activeStep >= 1 ? "Buscar" : "Siguiente"} */}
+                  </Button>
+                </form>
+              </FormProvider>
+            </>
+        )}
+      </>
   );
 };
 
