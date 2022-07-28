@@ -83,6 +83,7 @@ function getSorting(order, orderBy) {
 }
 
 export function ResultadosPersonasServidorasPublicasParticipanEnContrataciones(props) {
+
 const data = JSON.parse(props.data);
 /*
 2.- Personas servidoras pub que participan contrataciones
@@ -121,7 +122,7 @@ const [state, setState] = React.useState({
     rowsPerPage: 10,
     tipoProcedimiento: data.tipoProcedimientoContratacion,//0,
     elementoSeleccionado: null,
-    entities: [],
+    entities: data.institucion,
     current_entity: "ANY",
     loading: false,
     totalRows: 0,

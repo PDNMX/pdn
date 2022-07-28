@@ -15,7 +15,7 @@ import { InstitucionesRealizaronContrataciones } from "./InputsBusqueda/Instituc
 import { ResultadosPersonasServidorasPublicasSancionados } from "./ResultadosBusqueda/PersonasServidorasPublicasSancionados";
 import { ResultadosPersonasServidorasPublicasParticipanEnContrataciones } from "./ResultadosBusqueda/PersonasServidorasPublicasParticipanEnContrataciones";
 import { ResultadosEmpresasSancionadaPorCorrupcion } from "./ResultadosBusqueda/EmpresasSancionadaPorCorrupcion";
-import { ResultadosPersonasServidorasPublicasYSusDeclaraciones } from "./ResultadosBusqueda/PersonasServidorasPublicasYSusDeclaraciones";
+import { ResultadosPersonasServidorasPublicasYSusDeclaraciones } from "./ResultadosBusqueda/s1/PersonasServidorasPublicasYSusDeclaraciones";
 import { ResultadosEmpresasTienenContratosGob } from "./ResultadosBusqueda/EmpresasTienenContratosGob";
 import { ResultadosInstitucionesRealizaronContrataciones } from "./ResultadosBusqueda/InstitucionesRealizaronContrataciones";
 
@@ -33,7 +33,6 @@ import CardMedia from "@mui/material/CardMedia";
 import { CardActionArea } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Tooltip from '@mui/material/Tooltip';
-
 
 const useStyles = makeStyles((theme) => ({
   container: {
