@@ -14,10 +14,6 @@ export function PersonasServidorasPublicasSancionados() {
   const [options, setOptions] = React.useState([]);
   const loading = open && options.length === 0;
 
-  /* const [institutionsList, setInstitutionsList] = React.useState([]); */
-  /* const [error, setError] = React.useState(false);
-  const [filter, setFilter] = React.useState(); */
-
   React.useEffect(() => {
     let active = true;
 
@@ -26,10 +22,7 @@ export function PersonasServidorasPublicasSancionados() {
     }
 
     (async () => {
-      //await sleep(1e3); // For demo purposes.
-
       if (active) {
-        //setOptions([...topFilms]);
         let sug = [];
         let options = {
           url: process.env.REACT_APP_S3S_BACKEND + "/api/v1/entities",
@@ -44,13 +37,11 @@ export function PersonasServidorasPublicasSancionados() {
               /* console.log(index) */
               sug.push({ value: item.nombre, label: item.nombre, key: index });
             });
-            console.log(sug)
+            /* console.log(sug) */
             setOptions([...sug]);
-            /* setInstitutionsList(sug);
-                setFilter({...filter, institucionDependencia: 'any'}); */
           })
           .catch((err) => {
-            //setError(true);
+            console.log(err);
           });
       }
     })();
@@ -88,10 +79,10 @@ export function PersonasServidorasPublicasSancionados() {
     <ThemeProvider theme={ThemeV2}>
       <Controller
         control={control}
-        name="test.nombres"
+        name="psp-sancionados.nombres"
+        defaultValue=""
         render={({ field }) => (
           <TextField
-            id="test.nombres"
             label="Nombre(s)"
             variant="outlined"
             placeholder="Ingresa el nombre o nombres"
@@ -104,10 +95,10 @@ export function PersonasServidorasPublicasSancionados() {
 
       <Controller
         control={control}
-        name="primerApellido"
+        name="psp-sancionados.primerApellido"
+        defaultValue=""
         render={({ field }) => (
           <TextField
-            id="primerApellido"
             label="Primer Apellido"
             variant="outlined"
             placeholder="Ingresa el primer apellido"
@@ -119,10 +110,10 @@ export function PersonasServidorasPublicasSancionados() {
       />
       <Controller
         control={control}
-        name="segundoApellido"
+        name="psp-sancionados.segundoApellido"
+        defaultValue=""
         render={({ field }) => (
           <TextField
-            id="segundoApellido"
             label="Segundo Apellido"
             variant="outlined"
             placeholder="Ingresa el segundo apellido"
@@ -132,34 +123,24 @@ export function PersonasServidorasPublicasSancionados() {
           />
         )}
       />
-      {/* <Controller
-          control={control}
-          name="institucion"
-          render={({ field }) => (
-            <TextField
-              id="institucion"
-              label="Institución"
-              variant="outlined"
-              placeholder="Ingresa la institución"
-              fullWidth
-              margin="normal"
-              {...field}
-            />
-          )}
-        /> */}
       <Controller
-        name="institucion"
+        name="psp-sancionados.institucion"
         control={control}
-        /* defaultValue={''} */
+        defaultValue=""
         render={({ field }) => (
           <Autocomplete
             {...field}
-            id="institucion"
             open={open}
-            onOpen={() => { setOpen(true); }}
-            onClose={() => { setOpen(false); }}
+            onOpen={() => {
+              setOpen(true);
+            }}
+            onClose={() => {
+              setOpen(false);
+            }}
             value={null}
-            isOptionEqualToValue={(option, value) => option.value === value.value}
+            isOptionEqualToValue={(option, value) =>
+              option.value === value.value
+            }
             /* getOptionLabel={(option) => option.label} */
             options={options}
             loading={loading}
@@ -181,7 +162,9 @@ export function PersonasServidorasPublicasSancionados() {
                   ...params.InputProps,
                   endAdornment: (
                     <>
-                      {loading ? ( <CircularProgress color="inherit" size={20} /> ) : null}
+                      {loading ? (
+                        <CircularProgress color="inherit" size={20} />
+                      ) : null}
                       {params.InputProps.endAdornment}
                     </>
                   ),
@@ -193,7 +176,7 @@ export function PersonasServidorasPublicasSancionados() {
       />
 
       <Controller
-        name="tipoSancion"
+        name="psp-sancionados.tipoSancion"
         control={control}
         defaultValue={[]}
         render={({ field: { ref, ...field }, fieldState: { error } }) => (
@@ -205,8 +188,7 @@ export function PersonasServidorasPublicasSancionados() {
             multiple
             getOptionDisabled={(option) => option.disabled}
             getOptionLabel={(option) => option.label}
-            id="tipoSancion-autocomplete"
-            onChange={(event, value) => field.onChange(value)}
+            onChange={(e, value) => field.onChange(value)}
             options={tiposSancion}
             /* getOptionSelected={(option, value) => option === value} */
             isOptionEqualToValue={(option, value) =>
@@ -216,10 +198,9 @@ export function PersonasServidorasPublicasSancionados() {
               <TextField
                 error={!!error}
                 helperText={error?.message}
-                id="tipoSancion"
                 label="Tipos de Sanción"
                 placeholder="Ingresa el Tipo de Sanción"
-                name="tipoSancion"
+                name="psp-sancionados.tipoSancion"
                 type="Buscar"
                 inputRef={ref}
                 {...params}

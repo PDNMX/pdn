@@ -3,7 +3,8 @@ import TablaResultados from "../../../Sistema6/TablaResultados";
 import axios from "axios";
 
 export function ResultadosEmpresasTienenContratosGob(props) {
-  const data = JSON.parse(props.data);
+  const dataProps = JSON.parse(props.data);
+  const data = dataProps["empresas-contratos"]
   /*
   5.- Empresas que tienen contratos con el gobierno
   - Nombre / Razón social (parties[].roles[supplier])

@@ -9,7 +9,8 @@ import axios from "axios";
 }); */
 
 export function ResultadosInstitucionesRealizaronContrataciones(props) {
-  const data = JSON.parse(props.data);
+  const dataProps = JSON.parse(props.data);
+  const data = dataProps["instituciones-contrataciones"]
   /*
     6.- Instituciones que realizan contrataciones públicas
     - Institución contratante (buyer.name)

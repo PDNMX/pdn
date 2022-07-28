@@ -16,7 +16,8 @@ export function InstitucionesRealizaronContrataciones() {
       <ThemeProvider theme={ThemeV2}>
         <Controller
           control={control}
-          name="institucionContratante"
+          name="instituciones-contrataciones.institucionContratante"
+          defaultValue=""
           render={({ field }) => (
             <TextField
               id="institucionContratante"
@@ -32,7 +33,8 @@ export function InstitucionesRealizaronContrataciones() {
   
         <Controller
           control={control}
-          name="bienServicioOtorgado"
+          name="instituciones-contrataciones.bienServicioOtorgado"
+          defaultValue=""
           render={({ field }) => (
             <TextField
               id="bienServicioOtorgado"
@@ -48,13 +50,12 @@ export function InstitucionesRealizaronContrataciones() {
   
         <Controller
           control={control}
-          name="tipoContratacion"
+          name="instituciones-contrataciones.tipoContratacion"
+          defaultValue="any"
           render={({ field }) => (
             <FormControl fullWidth={true} margin={'normal'}>
               <InputLabel id="demo-simple-select-label">Tipo de Procedimiento</InputLabel>
               <Select
-                labelId="tipoContratacion"
-                id="tipoContratacion"
                 value={'Tipo de contratación'}
                 label="Tipo de contratación"
                 autoWidth

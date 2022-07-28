@@ -98,7 +98,8 @@ const initialSort = {
     tipoOrden: 'any',
 };
 export function ResultadosEmpresasSancionadaPorCorrupcion(props){
-    const data = JSON.parse(props.data);
+    const dataProps = JSON.parse(props.data);
+    const data = dataProps["empresas-sancionadas"]
     /*
     4.- Empresas sancionadas por actos de corrupción
       - Nombre / Razón social
@@ -110,10 +111,10 @@ export function ResultadosEmpresasSancionadaPorCorrupcion(props){
     console.log(data.tipoSancion); */
 
     const initialFilter = {
-        nombreRazonSocial: data.nombres,
-        institucionDependencia: data.institucionDependencia,
+        nombreRazonSocial: data.nombreRazonSocial.trim().toLowerCase(),
+        institucionDependencia: data.institucionDependencia.trim().toLowerCase(),
         expediente: '',
-        tipoSancion: data.tipoSancion,
+        tipoSancion: data.tipoSancion.trim().toLowerCase(),
         tipoPersona: 'any',
         nivel: 'any',
         provider: 'any'

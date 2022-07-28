@@ -75,7 +75,8 @@ export function PersonasServidorasPublicasParticipanEnContrataciones() {
     <ThemeProvider theme={ThemeV2}>
       <Controller
         control={control}
-        name="nombres"
+        name="psp-participan.nombres"
+        defaultValue="" 
         render={({ field }) => (
           <TextField
             id="nombres"
@@ -91,10 +92,10 @@ export function PersonasServidorasPublicasParticipanEnContrataciones() {
 
       <Controller
         control={control}
-        name="primerApellido"
+        name="psp-participan.primerApellido"
+        defaultValue="" 
         render={({ field }) => (
           <TextField
-            id="primerApellido"
             label="Primer Apellido"
             variant="outlined"
             placeholder="Ingresa el primer apellido"
@@ -106,10 +107,10 @@ export function PersonasServidorasPublicasParticipanEnContrataciones() {
       />
       <Controller
         control={control}
-        name="segundoApellido"
+        name="psp-participan.segundoApellido"
+        defaultValue="" 
         render={({ field }) => (
           <TextField
-            id="segundoApellido"
             label="Segundo Apellido"
             variant="outlined"
             placeholder="Ingresa el segundo apellido"
@@ -120,7 +121,7 @@ export function PersonasServidorasPublicasParticipanEnContrataciones() {
         )}
       />
       <Controller
-        name="institucion"
+        name="psp-participan.institucion"
         control={control}
         /* defaultValue={''} */
         render={({ field }) => (
@@ -173,7 +174,7 @@ export function PersonasServidorasPublicasParticipanEnContrataciones() {
       />
 
       <Controller
-        name="tipoProcedimientoContratacion"
+        name="psp-participan.tipoProcedimientoContratacion"
         control={control}
         defaultValue={[]}
         render={({ field: { ref, ...field }, fieldState: { error } }) => (
@@ -185,8 +186,7 @@ export function PersonasServidorasPublicasParticipanEnContrataciones() {
             multiple
             getOptionDisabled={(option) => option.disabled}
             getOptionLabel={(option) => option.value}
-            id="tipoSancion-autocomplete"
-            onChange={(event, value) => field.onChange(value)}
+            onChange={(e, value) => field.onChange(value)}
             options={procedimientos}
             /* getOptionSelected={(option, value) => option === value} */
             isOptionEqualToValue={(option, value) =>
@@ -196,9 +196,7 @@ export function PersonasServidorasPublicasParticipanEnContrataciones() {
               <TextField
                 error={!!error}
                 helperText={error?.message}
-                id="tipoProcedimientoContratacion"
                 label="Tipos de Procedimiento"
-                name="tipoProcedimientoContratacion"
                 type="Buscar"
                 inputRef={ref}
                 {...params}

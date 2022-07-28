@@ -23,35 +23,12 @@ export class ResultadosPersonasServidorasPublicasYSusDeclaraciones extends React
   - Institución
   - Empleo, cargo, comisión
   */
-  /* console.log(this.props.name); */
   defaultSelect = [
     {
       clave: 0,
       valor: 'Todos'
     }
   ];
-
-  // query2 = {
-  // 	nombres: 'Juan Pedro',
-  // 	primerApellido: 'Tenorio',
-  // 	segundoApellido: 'Calderón',
-  // 	escolaridadNivel: 'DOC',
-  // 	nivelOrdenGobierno: 'ESTATAL',
-  // 	nombreEntePublico: 'Instituto Federal de Telecomunicaciones',
-  // 	entidadFederativa: '01',
-  // 	municipioAlcaldia: '001',
-  // 	empleoCargoComision: 'Director del Sistema Nacional de Infraestructura',
-  // 	nivelEmpleoCargoComision: 'CA0001',
-  // 	superficieConstruccionMin: 2000,
-  // 	superficieConstruccionMax: 4000,
-  // 	superficieTerrenoMin: 2000,
-  // 	superficieTerrenoMax: 4000,
-  // 	valorAdquisicionMin: 2000,
-  // 	valorAdquisicionMax: 4000,
-  // 	formaAdquisicion: 'CSN',
-  // 	totalIngresosNetosMin: 2000,
-  // 	totalIngresosNetosMax: 4000
-  // };
 
   query = {
     nombres: '',
@@ -81,7 +58,7 @@ export class ResultadosPersonasServidorasPublicasYSusDeclaraciones extends React
     institucion: '',
     nivel: '',
     btnSearch: false,
-    providers: [{"supplier_id":"SESEA_AGUASCALIENTES","supplier_name":"Secretaría Ejecutiva del Sistema Estatal Anticorrupción de Aguascalientes","levels":["ESTATAL"],"status":"ACTIVE"},{"supplier_id":"SESEA_JALISCO","supplier_name":"Secretaría Ejecutiva del Sistema Estatal Anticorrupción de Jalisco","levels":["ESTATAL"],"status":"ACTIVE"},{"supplier_id":"GUANAJUATO","supplier_name":"Secretaría Ejecutiva del Sistema Estatal Anticorrupción de Guanajuato","levels":["ESTATAL"],"status":"ACTIVE"},{"supplier_id":"EDOMEX","supplier_name":"Secretaría Ejecutiva del Sistema Estatal Anticorrupción del Estado México","levels":["ESTATAL"],"status":"ACTIVE"},{"supplier_id":"ZACATECAS","supplier_name":"Secretaría Ejecutiva del Sistema Anticorrupción de Zacatecas","levels":["ESTATAL"],"status":"ACTIVE"},{"supplier_id":"TLAXCALA","supplier_name":"Secretaría Ejecutiva del Sistema Anticorrupción del Estado de Tlaxcala","levels":["ESTATAL"],"status":"ACTIVE"},{"supplier_id":"QUINTANAROO","supplier_name":"Secretaría Ejecutiva del Sistema Anticorrupción del Estado de Quintana Roo","levels":["ESTATAL"],"status":"ACTIVE"},{"supplier_id":"TABASCO","supplier_name":"Secretaría Ejecutiva Del Sistema Estatal Anticorrupción Tabasco","levels":["ESTATAL"],"status":"ACTIVE"},{"supplier_id":"SANLUISPOTOSI","supplier_name":"Secretaría Ejecutiva del Sistema Anticorrupción de San Luis Potosí","levels":["ESTATAL"],"status":"ACTIVE"},{"supplier_id":"BajaCaliforniaSur","supplier_name":"Secretaría Ejecutiva Sistema Estatal Anticorrupción de Baja California Sur","levels":["ESTATAL"],"status":"ACTIVE"},{"supplier_id":"Chihuahua","supplier_name":"Secretaría Ejecutiva Sistema Estatal Anticorrupción de Chihuahua","levels":["ESTATAL"],"status":"ACTIVE"},{"supplier_id":"INAI","supplier_name":"Instituto Nacional de Transparencia, Acceso a la Información y Protección de Datos Personales","levels":["AUTÓNOMO"],"status":"ACTIVE"},{"supplier_id":"Chiapas","supplier_name":"Secretaría Ejecutiva del Sistema Anticorrupción del Estado de Chiapas","levels":["ESTATAL"],"status":"ACTIVE"}],
+    providers: [],
     prov: [],
     catEscolaridadNivel: [...this.defaultSelect],
     catFormaAdquisicion: [...this.defaultSelect],
@@ -140,26 +117,7 @@ export class ResultadosPersonasServidorasPublicasYSusDeclaraciones extends React
     }));
   };
 
-  handleInputChange = event => {
-    const { name, value } = event.target;
 
-    this.setState(prevState => {
-      let { query } = prevState;
-
-      query[name] = value;
-
-      if (name === 'entidadFederativa') {
-        this.getMunicipios(value);
-        query['municipioAlcaldia'] = '0';
-      }
-
-      return {
-        ...prevState,
-        query: query,
-        btnSearch: false
-      };
-    });
-  };
 
   handleDataSelect = data => {
     // console.log('data: ', data);
@@ -363,7 +321,8 @@ export class ResultadosPersonasServidorasPublicasYSusDeclaraciones extends React
             ...prevState,
             providers: [...defProviders, ...resp.data]
           }),
-          () => {}
+          () => {this.handlerFind()}
+          
         );
       })
       .catch(err => {
@@ -380,177 +339,25 @@ export class ResultadosPersonasServidorasPublicasYSusDeclaraciones extends React
       });
   };
 
-  getEscolaridadNivel = () => {
-    let url = 'https://raw.githubusercontent.com/PDNMX/catalogos/master/S1%20-%20Declaraciones/nivel.json';
-
-    let defaultOps = [
-      {
-        clave: 0,
-        valor: 'Todos'
-      }
-    ];
-
-    axios
-      .get(url)
-      .then(resp => {
-        this.setState(prevState => ({
-          ...prevState,
-          catEscolaridadNivel: [...defaultOps, ...resp.data]
-        }));
-      })
-      .catch(err => {
-        this.setState(prevState => ({
-          ...prevState,
-          catEscolaridadNivel: [
-            {
-              clave: -1,
-              valor: 'ERROR AL CARGAR LAS ESCOLARIDADES'
-            }
-          ]
-        }));
-        error('getEscolaridadNivel' + err);
-      });
-  };
-
-  getFormaAdquisicion = () => {
-    let url = 'https://raw.githubusercontent.com/PDNMX/catalogos/master/S1%20-%20Declaraciones/formaAdquisicion.json';
-
-    let defaultOps = [
-      {
-        clave: 0,
-        valor: 'Todos'
-      }
-    ];
-
-    axios
-      .get(url)
-      .then(resp => {
-        this.setState(prevState => ({
-          ...prevState,
-          catFormaAdquisicion: [...defaultOps, ...resp.data]
-        }));
-      })
-      .catch(err => {
-        this.setState(prevState => ({
-          ...prevState,
-          catFormaAdquisicion: [
-            {
-              clave: -1,
-              valor: 'ERROR AL CARGAR LAS FORMAS DE ADQUISICIÓN'
-            }
-          ]
-        }));
-
-        error('catFormaAdquisicion' + err);
-      });
-  };
-
-  getEntidadesFederativas = () => {
-    let url = 'https://gaia.inegi.org.mx/wscatgeo/mgee/';
-
-    let defaultOps = [
-      {
-        cve_agee: 0,
-        nom_agee: 'Todos'
-      }
-    ];
-
-    axios
-      .get(url, {
-        crossdomain: true
-      })
-      .then(resp => {
-        this.setState(prevState => ({
-          ...prevState,
-          catEntidadesFederativas: [...defaultOps, ...resp.data.datos]
-        }));
-      })
-      .catch(err => {
-        this.setState(prevState => ({
-          ...prevState,
-          catEntidadesFederativas: [
-            {
-              cve_agee: -1,
-              nom_agee: 'ERROR AL CARGAR LAS ENTIDADES FEDERATIVAS'
-            }
-          ]
-        }));
-
-        error('catEntidadesFederativas' + err);
-      });
-  };
-
-  getMunicipios = cve_agee => {
-    let url = 'https://gaia.inegi.org.mx/wscatgeo/mgem/' + cve_agee;
-
-    let defaultOps = [
-      {
-        cve_agem: 0,
-        nom_agem: 'Todos'
-      }
-    ];
-
-    axios
-      .get(url, {
-        crossdomain: true
-      })
-      .then(resp => {
-        this.setState(prevState => ({
-          ...prevState,
-          catMunicipios: [...defaultOps, ...resp.data.datos]
-        }));
-      })
-      .catch(err => {
-        this.setState(prevState => ({
-          ...prevState,
-          catMunicipios: [
-            {
-              cve_agem: -1,
-              nom_agem: 'ERROR AL CARGAR LOS MUNICIPIOS'
-            }
-          ]
-        }));
-
-        error('catMunicipios' + err);
-      });
-  };
-
   componentDidMount() {
-    this.getEscolaridadNivel();
-    this.getFormaAdquisicion();
-    //this.getProviders();
-    this.getEntidadesFederativas();
-    console.log('acá los props')
-    let data = JSON.parse(this.props.data);
-    console.log(data.nombres)
-    this.handlerFind();
-  }
-
-  componentWillMount() {
-    //this.getProviders();
+    this.getProviders();
     //this.handlerFind();
-    //console.log("soy un ejemplo al cargar")
-    /* this.state.btnSearch == false; */
   }
 
   render() {
     /* let { classes } = this.props; */
-
+    const dataProps = JSON.parse(this.props.data);
+    const data= dataProps["psp-declaraciones"];
+    /* console.log(data) */
+    this.state.query.nombres = data.nombres;
+    this.state.query.primerApellido = data.primerApellido;
+    this.state.query.segundoApellido = data.segundoApellido;
+    this.state.query.empleoCargoComision = data.empleoCargoComision;
     return (
       <div>
         {!this.state.dataSelect && (
           <Paper elevation={0}>
             <Grid container spacing={0} >
-              {/* <FormSearch
-                query={this.state.query}
-                handleInputChange={this.handleInputChange}
-                catEscolaridadNivel={this.state.catEscolaridadNivel}
-                catFormaAdquisicion={this.state.catFormaAdquisicion}
-                catEntidadesFederativas={this.state.catEntidadesFederativas}
-                catMunicipios={this.state.catMunicipios}
-                handlerFind={this.handlerFind}
-
-              /> */}
             </Grid>
             <Grid container spacing={0}>
               <div>

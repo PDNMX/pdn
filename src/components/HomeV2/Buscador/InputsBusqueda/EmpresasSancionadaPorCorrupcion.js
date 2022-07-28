@@ -76,10 +76,10 @@ export function EmpresasSancionadaPorCorrupcion () {
       <ThemeProvider theme={ThemeV2}>
         <Controller
           control={control}
-          name="nombreRazonSocial"
+          defaultValue=""
+          name="empresas-sancionadas.nombreRazonSocial"
           render={({ field }) => (
             <TextField
-              id="nombreRazonSocial"
               label="Nombre o razón social"
               variant="outlined"
               placeholder="Ingresa el nombre o razón social"
@@ -90,36 +90,16 @@ export function EmpresasSancionadaPorCorrupcion () {
           )}
         />
   
-        {/* <Controller
-          control={control}
-          name="institucion"
-          render={({ field }) => (
-            <TextField
-              id="institucion"
-              label="Institución"
-              variant="outlined"
-              placeholder="Ingresa la institución donde presto el servicio"
-              fullWidth
-              margin="normal"
-              {...field}
-            />
-          )}
-        /> */}
         <Controller
-        name="institucion"
+        name="empresas-sancionadas.institucion"
         control={control}
         /* defaultValue={''} */
         render={({ field }) => (
           <Autocomplete
             {...field}
-            id="institucion"
             open={open}
-            onOpen={() => {
-              setOpen(true);
-            }}
-            onClose={() => {
-              setOpen(false);
-            }}
+            onOpen={() => { setOpen(true); }}
+            onClose={() => { setOpen(false); }}
             value={null}
             isOptionEqualToValue={(option, value) =>
               option.value === value.value
@@ -159,7 +139,7 @@ export function EmpresasSancionadaPorCorrupcion () {
       />
   
       <Controller
-        name="tipoSancion"
+        name="empresas-sancionadas.tipoSancion"
         control={control}
         defaultValue={[]}
         render={({ field: { ref, ...field }, fieldState: { error } }) => (
@@ -171,7 +151,6 @@ export function EmpresasSancionadaPorCorrupcion () {
             multiple
             getOptionDisabled={(option) => option.disabled}
             getOptionLabel={(option) => option.label}
-            id="tipoSancion-autocomplete"
             onChange={(event, value) => field.onChange(value)}
             options={tiposSancion}
             /* getOptionSelected={(option, value) => option === value} */
@@ -180,9 +159,7 @@ export function EmpresasSancionadaPorCorrupcion () {
               <TextField
                 error={!!error}
                 helperText={error?.message}
-                id="tipoSancion"
                 label="Tipos de Sanción"
-                name="tipoSancion"
                 type="Buscar"
                 inputRef={ref}
                 {...params}

@@ -33,6 +33,7 @@ import CardMedia from "@mui/material/CardMedia";
 import { CardActionArea } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Tooltip from '@mui/material/Tooltip';
+import Zoom from '@mui/material/Zoom';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -113,21 +114,7 @@ function FiltrosBusqueda(props) {
 
 const LinaerStepper = ({stateChanger, ...rest}) => {
   const classes = useStyles();
-  const methods = useForm({
-    defaultValues: {
-      nombres: "",
-      primerApellido: "",
-      segundoApellido: "",
-      institucion: "",
-      tipoSancion: [],
-      empleoCargoComision: "",
-      institucionContratante: "",
-      nombreRazonSocial: "",
-      bienServicioOtorgado: "",
-      tipoProcedimientoContratacion: [],
-      tipoContratacion: ""
-    },
-  });
+  const methods = useForm();
   const [activeStep, setActiveStep] = useState(0);
   const [skippedSteps, setSkippedSteps] = useState([]);
   const [name, setName] = useState('');
@@ -197,7 +184,7 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
                               className={classes.card}
                               {...field}
                           >
-                            <Tooltip title={opcion.detalle} classes = {{tooltip: classes.Tooltip}} placement="top">
+                            <Tooltip title={opcion.detalle} TransitionComponent={Zoom} classes = {{tooltip: classes.Tooltip}} placement="top">
                               <CardActionArea
                                   value={opcion.value}
                                   onClick={(e) => {
@@ -205,6 +192,7 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
                                     stateChanger(opcion.label);
                                     handleNext();
                                   }}
+                                  /* style={{border: "5px solid red" }} */
                               >
                                 <CardMedia
                                     className={classes.cardMedia}

@@ -84,7 +84,8 @@ function getSorting(order, orderBy) {
 
 export function ResultadosPersonasServidorasPublicasParticipanEnContrataciones(props) {
 
-const data = JSON.parse(props.data);
+const dataProps = JSON.parse(props.data);
+const data = dataProps["psp-participan"];
 /*
 2.- Personas servidoras pub que participan contrataciones
     - Nombre
@@ -93,11 +94,6 @@ const data = JSON.parse(props.data);
     - Institución
     - Tipo de procedimiento (select)
 */
-/* console.log(data.nombres);
-console.log(data.primerApellido);
-console.log(data.segundoApellido);
-console.log(data.institucion);
-console.log(data.tipoProcedimiento);  */
 /* const initialFilter = {
     nombres: data.nombres,
     primerApellido: data.primerApellido,

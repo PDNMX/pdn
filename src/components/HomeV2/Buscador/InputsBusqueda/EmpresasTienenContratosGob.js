@@ -15,10 +15,10 @@ export function EmpresasTienenContratosGob () {
       <ThemeProvider theme={ThemeV2}>
         <Controller
           control={control}
-          name="nombreRazonSocial"
+          name="empresas-contratos.nombreRazonSocial"
+          defaultValue=""
           render={({ field }) => (
             <TextField
-              id="nombreRazonSocial"
               label="Nombre o razón social"
               variant="outlined"
               placeholder="Ingresa el nombre o razón social"
@@ -31,10 +31,10 @@ export function EmpresasTienenContratosGob () {
   
         <Controller
           control={control}
-          name="bienServicioOtorgado"
+          defaultValue=""
+          name="empresas-contratos.bienServicioOtorgado"
           render={({ field }) => (
             <TextField
-              id="bienServicioOtorgado"
               label="Bien o servicio que se otorgo al gobierno"
               variant="outlined"
               placeholder="Ingresa el bien o servicio que se otorgo al gobierno"

@@ -61,7 +61,8 @@ const initialSort = {
 };
 
 export function ResultadosPersonasServidorasPublicasSancionados(props) {
-  const data = JSON.parse(props.data);
+  const dataProps = JSON.parse(props.data);
+  const data = dataProps["psp-sancionados"];
   /*
   1.- Servidores publicos sancionados
   - Nombre
@@ -70,11 +71,6 @@ export function ResultadosPersonasServidorasPublicasSancionados(props) {
   - Institución
   - Tipo de sanción (select)
 
-  console.log(data.nombres);
-  console.log(data.primerApellido);
-  console.log(data.segundoApellido);
-  console.log(data.institucion);
-  console.log(data.tipoSancion); 
   */
   const initialFilter = {
     nombres: data.nombres,
@@ -101,17 +97,7 @@ export function ResultadosPersonasServidorasPublicasSancionados(props) {
     //loadInstitutions();
     //loadProviders();
     handleSearchPrevios();
-    
   }, []);
-
- /*  React.useEffect(() => {
-    loadInstitutions();
-    loadProviders();
-  }, [filter?.nivel]);
-
-  React.useEffect(() => {
-    loadInstitutions();
-  }, [filter?.provider]); */
 
   React.useEffect(() => {
     if (provider !== "any") {
@@ -121,58 +107,7 @@ export function ResultadosPersonasServidorasPublicasSancionados(props) {
     }
   }, [provider]);
 
-/*   const loadInstitutions = () => {
-    let sug = [];
-    let options = {
-      url: process.env.REACT_APP_S3S_BACKEND + "/api/v1/entities",
-      json: true,
-      method: "post",
-      data: {},
-    };
-    if (filter.nivel !== "any") options.data.nivel_gobierno = filter.nivel;
-    if (filter.provider !== "any")
-      options.data.supplier_id = filter.provider.key;
-
-    axios(options)
-      .then((data) => {
-        data.data.forEach((item, index) => {
-          sug.push({ value: item.nombre, label: item.nombre, key: index });
-        });
-        setInstitutionsList(sug);
-        setFilter({ ...filter, institucionDependencia: "any" });
-      })
-      .catch((err) => {
-        setError(true);
-      });
-  }; */
-
-/*   const loadProviders = () => {
-    let sug = [];
-    let options = {
-      url: process.env.REACT_APP_S3S_BACKEND + "/api/v1/getProviders",
-      json: true,
-      method: "post",
-      data: {},
-    };
-    if (filter.nivel !== "any") options.data.nivel_gobierno = filter.nivel;
-    axios(options)
-      .then((data) => {
-        data.data.forEach((provider) => {
-          sug.push({
-            value: provider.supplier_id,
-            label: provider.supplier_name,
-            key: provider.supplier_id,
-          });
-        });
-        setProvidersList(sug);
-        setProvider("any");
-      })
-      .catch((err) => {
-        setError(true);
-      });
-  }; */
-
-/*   const handleCleanAll = () => {
+  /*   const handleCleanAll = () => {
     setFilter(initialFilter);
     setProvidersList([]);
     setPagination(initialPagination);
@@ -190,7 +125,7 @@ export function ResultadosPersonasServidorasPublicasSancionados(props) {
     setSelectedItem(null);
     setPagination({ ...pagination, rowsPerPage: 10 });
     setProvider("any");
-    
+
     let body = {
       query: makeFiltros(),
       institucion: filter.institucionDependencia,
@@ -218,7 +153,7 @@ export function ResultadosPersonasServidorasPublicasSancionados(props) {
   };
 
   const makeFiltros = () => {
-/*  - Nombre
+    /*  - Nombre
     - AP1
     - AP2
     - Institución
@@ -310,56 +245,56 @@ export function ResultadosPersonasServidorasPublicasSancionados(props) {
   };
 
   return (
-      <React.Fragment>
-        {/*Buscador*/}
-        <Grid container spacing={0}>
+    <React.Fragment>
+      {/*Buscador*/}
+      <Grid container spacing={0}>
+        <Grid item xs={12}>
+          {loading && (
+            <Modal open={loading} disableAutoFocus={true}>
+              <CircularProgress id="spinnerLoading" size={200} />
+            </Modal>
+          )}
+          {error && <MensajeErrorDatos />}
+        </Grid>
+      </Grid>
+      {/*PREVIOS*/}
+      {view === 1 && previos && previos.length > 0 && (
+        <Grid container>
           <Grid item xs={12}>
-            {loading && (
-              <Modal open={loading} disableAutoFocus={true}>
-                <CircularProgress id="spinnerLoading" size={200} />
-              </Modal>
-            )}
-            {error && <MensajeErrorDatos />}
+            <Previos
+              data={previos}
+              handleChangeSujetoObligado={handleChangeAPI}
+            />
           </Grid>
         </Grid>
-        {/*PREVIOS*/}
-        {view === 1 && previos && previos.length > 0 && (
+      )}
+      {/*TABLA*/}
+      {view === 2 &&
+        filterData &&
+        filterData.length > 0 &&
+        selectedItem === null && (
           <Grid container>
             <Grid item xs={12}>
-              <Previos
-                data={previos}
-                handleChangeSujetoObligado={handleChangeAPI}
+              <TablaServidoresSancionados
+                data={filterData}
+                page={pagination.page}
+                rowsPerPage={pagination.rowsPerPage}
+                totalRows={pagination.totalRows}
+                handleChangePage={handleChangePage}
+                handleChangeRowsPerPage={handleChangeRowsPerPage}
+                verDetalle={verDetalle}
+                returnToPrevios={returnToPrevios}
               />
             </Grid>
           </Grid>
         )}
-        {/*TABLA*/}
-        {view === 2 &&
-          filterData &&
-          filterData.length > 0 &&
-          selectedItem === null && (
-            <Grid container>
-              <Grid item xs={12}>
-                <TablaServidoresSancionados
-                  data={filterData}
-                  page={pagination.page}
-                  rowsPerPage={pagination.rowsPerPage}
-                  totalRows={pagination.totalRows}
-                  handleChangePage={handleChangePage}
-                  handleChangeRowsPerPage={handleChangeRowsPerPage}
-                  verDetalle={verDetalle}
-                  returnToPrevios={returnToPrevios}
-                />
-              </Grid>
-            </Grid>
-          )}
-        {view === 3 && selectedItem !== null && (
-          <DetalleServidorSancionado
-            handleChangeDetail={handleChangeDetail}
-            servidor={selectedItem}
-          />
-        )}
-      </React.Fragment>
+      {view === 3 && selectedItem !== null && (
+        <DetalleServidorSancionado
+          handleChangeDetail={handleChangeDetail}
+          servidor={selectedItem}
+        />
+      )}
+    </React.Fragment>
   );
 }
 
