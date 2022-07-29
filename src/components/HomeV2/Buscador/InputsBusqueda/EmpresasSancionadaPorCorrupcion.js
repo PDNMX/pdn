@@ -93,7 +93,7 @@ export function EmpresasSancionadaPorCorrupcion () {
         <Controller
         name="empresas-sancionadas.institucion"
         control={control}
-        /* defaultValue={''} */
+        defaultValue=""
         render={({ field }) => (
           <Autocomplete
             {...field}

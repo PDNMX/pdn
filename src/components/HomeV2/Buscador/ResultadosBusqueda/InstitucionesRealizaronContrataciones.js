@@ -18,9 +18,10 @@ export function ResultadosInstitucionesRealizaronContrataciones(props) {
     - Tipo de procedimiento de contratación (select) (tender.procurementMethod)
     mejorar coincidencias en las busquedas
     */
-  const [state, setState] = React.useState({
-    dataSupplier: "SHCP",
-    inputText: data.bienServicioOtorgado,
+    //console.log(data.supplier);
+    const [state, setState] = React.useState({
+    dataSupplier: data.supplier.trim(),
+    inputText: data.bienServicioOtorgado.trim(),
     pagination: {
       pageSize: 10,
       page: 0,
@@ -30,7 +31,7 @@ export function ResultadosInstitucionesRealizaronContrataciones(props) {
     loading: false,
     buyers: [],
     buyer_id: "any",
-    procurementMethod: data.tipoContratacion,
+    procurementMethod: data.tipoContratacion.trim(),
     supplierName: "",
     cycle: "any",
     cycles: [],
@@ -100,8 +101,8 @@ export function ResultadosInstitucionesRealizaronContrataciones(props) {
       body.cycle = state.cycle;
     }
 
-    const supplier_id = state.dataSupplier;
-    console.log(body);
+    const supplier_id = data.supplier.trim();
+    //console.log(body);
     try {
       const res = await axios({
         url: process.env.REACT_APP_S6_BACKEND + "/api/v1/search",

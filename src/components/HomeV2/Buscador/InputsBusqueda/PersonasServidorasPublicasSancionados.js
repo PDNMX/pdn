@@ -137,7 +137,7 @@ export function PersonasServidorasPublicasSancionados() {
             onClose={() => {
               setOpen(false);
             }}
-            value={null}
+            /* value={null} */
             isOptionEqualToValue={(option, value) =>
               option.value === value.value
             }

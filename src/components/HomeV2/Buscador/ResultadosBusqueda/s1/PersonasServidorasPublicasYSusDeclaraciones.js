@@ -349,10 +349,10 @@ export class ResultadosPersonasServidorasPublicasYSusDeclaraciones extends React
     const dataProps = JSON.parse(this.props.data);
     const data= dataProps["psp-declaraciones"];
     /* console.log(data) */
-    this.state.query.nombres = data.nombres;
-    this.state.query.primerApellido = data.primerApellido;
-    this.state.query.segundoApellido = data.segundoApellido;
-    this.state.query.empleoCargoComision = data.empleoCargoComision;
+    this.state.query.nombres = data.nombres.trim();
+    this.state.query.primerApellido = data.primerApellido.trim();
+    this.state.query.segundoApellido = data.segundoApellido.trim();
+    this.state.query.empleoCargoComision = data.empleoCargoComision.trim();
     return (
       <div>
         {!this.state.dataSelect && (

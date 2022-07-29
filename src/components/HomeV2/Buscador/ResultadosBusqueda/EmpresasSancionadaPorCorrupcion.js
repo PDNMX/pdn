@@ -106,15 +106,12 @@ export function ResultadosEmpresasSancionadaPorCorrupcion(props){
       - Intitución donde presto el servicio
       - Tipo de sanción (select)
     */
-    /* console.log(data.nombreRazonSocial);
-    console.log(data.tipoProcedimiento);
-    console.log(data.tipoSancion); */
 
     const initialFilter = {
-        nombreRazonSocial: data.nombreRazonSocial.trim().toLowerCase(),
-        institucionDependencia: data.institucionDependencia.trim().toLowerCase(),
+        nombreRazonSocial: data.nombreRazonSocial.trim(),
+        institucionDependencia: data.institucion.trim(),
         expediente: '',
-        tipoSancion: data.tipoSancion.trim().toLowerCase(),
+        tipoSancion: data.tipoSancion,
         tipoPersona: 'any',
         nivel: 'any',
         provider: 'any'

@@ -123,7 +123,7 @@ export function PersonasServidorasPublicasParticipanEnContrataciones() {
       <Controller
         name="psp-participan.institucion"
         control={control}
-        /* defaultValue={''} */
+        defaultValue=""
         render={({ field }) => (
           <Autocomplete
             {...field}

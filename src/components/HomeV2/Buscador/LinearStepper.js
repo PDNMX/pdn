@@ -114,7 +114,17 @@ function FiltrosBusqueda(props) {
 
 const LinaerStepper = ({stateChanger, ...rest}) => {
   const classes = useStyles();
-  const methods = useForm();
+  const methods = useForm({
+    defaultValues: {
+      "psp-sancionados": { "nombres": "", "primerApellido": "", "segundoApellido": "", "institucion": "", "tipoSancion": []},
+      "psp-participan": { "nombres": "", "primerApellido": "", "segundoApellido": "", "institucion": "", "tipoProcedimientoContratacion": [] },
+      "psp-declaraciones": { "nombres": "", "primerApellido": "", "segundoApellido": "", "institucion": "", "empleoCargoComision": "" },
+      "empresas-sancionadas": { "nombreRazonSocial": "", "institucion": "", "tipoSancion": []},
+      "empresas-contratos": { "nombreRazonSocial":"", "bienServicioOtorgado":""},
+      "instituciones-contrataciones": { "institucionContratante":"", "bienServicioOtorgado":"", "tipoContratacion":""}
+    },
+  });
+  /* const methods = useForm(); */
   const [activeStep, setActiveStep] = useState(0);
   const [skippedSteps, setSkippedSteps] = useState([]);
   const [name, setName] = useState('');
@@ -306,6 +316,8 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
       borderRadius: 1,
     },
   }));
+
+
   return (
       <>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -371,6 +383,7 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
                           className={classes.btnPDN}
                           variant="contained"
                           color="primary"
+                          onClick={() => methods.resetField(name)}
                       >
                         Limpiar
                       </Button>

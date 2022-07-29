@@ -11,8 +11,8 @@ export function ResultadosEmpresasTienenContratosGob(props) {
   - Bien o servicio que se otorgo al gobierno (tender.description) (TOOLTIP con descripción o botón informativo)
   */
   const [state, setState] = React.useState({
-    dataSupplier: "SHCP",
-    inputText: data.bienServicioOtorgado,
+    dataSupplier: data.supplier.trim(),
+    inputText: data.bienServicioOtorgado.trim(),
     pagination: {
       pageSize: 10,
       page: 0,
@@ -23,7 +23,7 @@ export function ResultadosEmpresasTienenContratosGob(props) {
     buyers: [],
     buyer_id: "any",
     procurementMethod: "any",
-    supplierName: data.nombreRazonSocial,
+    supplierName: data.nombreRazonSocial.trim(),
     cycle: "any",
     cycles: [],
   });
@@ -94,7 +94,7 @@ export function ResultadosEmpresasTienenContratosGob(props) {
       body.cycle = state.cycle;
     }
 
-    const supplier_id = state.dataSupplier;
+    const supplier_id = data.supplier.trim();
     try {
       const res = await axios({
         url: process.env.REACT_APP_S6_BACKEND + "/api/v1/search",

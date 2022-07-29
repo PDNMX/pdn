@@ -1,5 +1,5 @@
 import React from "react";
-import { TextField } from "@mui/material/";
+import { InputLabel, FormControl, TextField, MenuItem, Select, } from "@mui/material/";
 import { Controller, useFormContext, } from "react-hook-form";
 import {ThemeProvider} from '@mui/material/styles';
 import ThemeV2 from "../../../../ThemeV2";
@@ -13,6 +13,26 @@ export function EmpresasTienenContratosGob () {
     */
     return (
       <ThemeProvider theme={ThemeV2}>
+        <Controller
+          control={control}
+          name="empresas-contratos.supplier"
+          defaultValue="SHCP"
+          render={({ field }) => (
+            <FormControl fullWidth={true} margin={'normal'}>
+              <InputLabel>Proveedor de información</InputLabel>
+              <Select
+                /* value={'Tipo de contratación'} */
+                label="Selecciona el proveedor de información"
+                autoWidth
+                {...field}
+              >
+                <MenuItem default value="SHCP">Secretaría de Hacienda y Crédito Público</MenuItem>
+                <MenuItem value="SESEA_AGS">Secretaría Ejecutiva del Sistema Estatal Anticorrupción de Aguascalientes</MenuItem>
+              </Select>
+            </FormControl>
+            
+          )}
+        />
         <Controller
           control={control}
           name="empresas-contratos.nombreRazonSocial"

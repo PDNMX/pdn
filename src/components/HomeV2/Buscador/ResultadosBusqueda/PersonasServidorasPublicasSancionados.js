@@ -73,11 +73,11 @@ export function ResultadosPersonasServidorasPublicasSancionados(props) {
 
   */
   const initialFilter = {
-    nombres: data.nombres,
-    primerApellido: data.primerApellido,
-    segundoApellido: data.segundoApellido,
+    nombres: data.nombres.trim(),
+    primerApellido: data.primerApellido.trim(),
+    segundoApellido: data.segundoApellido.trim(),
     tipoSancion: data.tipoSancion,
-    institucionDependencia: data.institucion,
+    institucionDependencia: data.institucion.trim(),
     nivel: "any",
     provider: "any",
   };
