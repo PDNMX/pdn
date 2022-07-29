@@ -118,6 +118,7 @@ export function EmpresasSancionadaPorCorrupcion () {
             renderInput={(params) => (
               <TextField
                 {...params}
+                margin={"normal"}
                 label="Institución donde presto el servicio"
                 placeholder="Ingresa la institución donde presto el servicio"
                 fullWidth
@@ -157,6 +158,7 @@ export function EmpresasSancionadaPorCorrupcion () {
             isOptionEqualToValue={(option, value) => option.label === value.label}
             renderInput={(params) => (
               <TextField
+                margin={"normal"}
                 error={!!error}
                 helperText={error?.message}
                 label="Tipos de Sanción"

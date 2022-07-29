@@ -2,12 +2,12 @@
 
 import React from 'react';
 import { Grid, Modal, CircularProgress } from '@mui/material';
-import Previos from "../../../Compartidos/Previos";
-import TablaParticularesSancionados from "../../../Sancionados/Particulares/TablaParticularesSancionados";
-import DetalleParticularSancionado from "../../../Sancionados/Particulares/DetalleParticular";
-import MensajeErrorDatos from "../../../Mensajes/MensajeErrorDatos";
+import Previos from "../../../../Compartidos/Previos";
+import TablaParticularesSancionados from "../../../../Sancionados/Particulares/TablaParticularesSancionados";
+import DetalleParticularSancionado from "../../../../Sancionados/Particulares/DetalleParticular";
+import MensajeErrorDatos from "../../../../Mensajes/MensajeErrorDatos";
 import { ThemeProvider } from '@mui/material/styles';
-import ThemeV2 from "../../../../ThemeV2";
+import ThemeV2 from "../../../../../ThemeV2";
 
 import ReactGA from "react-ga";
 import { makeStyles } from "@mui/styles";
@@ -97,7 +97,7 @@ const initialSort = {
     campoOrden: 'any',
     tipoOrden: 'any',
 };
-export function ResultadosEmpresasSancionadaPorCorrupcion(props){
+export function ResultadosS3p(props){
     const dataProps = JSON.parse(props.data);
     const data = dataProps["empresas-sancionadas"]
     /*
@@ -383,6 +383,6 @@ export function ResultadosEmpresasSancionadaPorCorrupcion(props){
     classes: PropTypes.object.isRequired
 }; */
 
-export default ResultadosEmpresasSancionadaPorCorrupcion;
+export default ResultadosS3p;
 
 

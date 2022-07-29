@@ -1,10 +1,10 @@
 import React from "react";
 import withStyles from "@mui/styles/withStyles";
 import { Grid, Modal, CircularProgress } from "@mui/material";
-import MensajeErrorDatos from "../../../Mensajes/MensajeError";
-import Previos from "../../../Compartidos/Previos";
-import TablaServidoresSancionados from "../../../Sancionados/Servidores/TablaServidoresSancionados";
-import DetalleServidorSancionado from "../../../Sancionados/Servidores//DetalleServidorSancionado";
+import MensajeErrorDatos from "../../../../Mensajes/MensajeError";
+import Previos from "../../../../Compartidos/Previos";
+import TablaServidoresSancionados from "../../../../Sancionados/Servidores/TablaServidoresSancionados";
+import DetalleServidorSancionado from "../../../../Sancionados/Servidores//DetalleServidorSancionado";
 
 //import ReactGA from "react-ga";
 
@@ -60,7 +60,7 @@ const initialSort = {
   tipoOrden: "any",
 };
 
-export function ResultadosPersonasServidorasPublicasSancionados(props) {
+export function ResultadosS3s(props) {
   const dataProps = JSON.parse(props.data);
   const data = dataProps["psp-sancionados"];
   /*
@@ -299,5 +299,5 @@ export function ResultadosPersonasServidorasPublicasSancionados(props) {
 }
 
 export default withStyles(styles, { withTheme: false })(
-  ResultadosPersonasServidorasPublicasSancionados
+  ResultadosS3s
 );

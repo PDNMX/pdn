@@ -14,7 +14,7 @@ import ActiveResultProv from '../../../../Declaraciones2/ActiveResultProv';
 import MantenimentResultProv from '../../../../Declaraciones2/MantenimentResultProv';
 
 
-export class ResultadosPersonasServidorasPublicasYSusDeclaraciones extends React.Component {
+export class ResultadosS1 extends React.Component {
   /*
   3.- Personas servidoras pub y declaraciones patri
   - Nombre

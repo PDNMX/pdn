@@ -153,6 +153,7 @@ export function PersonasServidorasPublicasParticipanEnContrataciones() {
             renderInput={(params) => (
               <TextField
                 {...params}
+                margin={"normal"}
                 label="Institución"
                 placeholder="Ingresa la Institución"
                 fullWidth
@@ -194,6 +195,7 @@ export function PersonasServidorasPublicasParticipanEnContrataciones() {
             }
             renderInput={(params) => (
               <TextField
+                margin={"normal"}
                 error={!!error}
                 helperText={error?.message}
                 label="Tipos de Procedimiento"

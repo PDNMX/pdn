@@ -12,12 +12,12 @@ import { EmpresasTienenContratosGob } from "./InputsBusqueda/EmpresasTienenContr
 import { InstitucionesRealizaronContrataciones } from "./InputsBusqueda/InstitucionesRealizaronContrataciones";
 
 // RESULTADOS PARA EL FORM
-import { ResultadosPersonasServidorasPublicasSancionados } from "./ResultadosBusqueda/PersonasServidorasPublicasSancionados";
-import { ResultadosPersonasServidorasPublicasParticipanEnContrataciones } from "./ResultadosBusqueda/PersonasServidorasPublicasParticipanEnContrataciones";
-import { ResultadosEmpresasSancionadaPorCorrupcion } from "./ResultadosBusqueda/EmpresasSancionadaPorCorrupcion";
-import { ResultadosPersonasServidorasPublicasYSusDeclaraciones } from "./ResultadosBusqueda/s1/PersonasServidorasPublicasYSusDeclaraciones";
-import { ResultadosEmpresasTienenContratosGob } from "./ResultadosBusqueda/EmpresasTienenContratosGob";
-import { ResultadosInstitucionesRealizaronContrataciones } from "./ResultadosBusqueda/InstitucionesRealizaronContrataciones";
+import { ResultadosS3s } from "./ResultadosBusqueda/s3/PersonasServidorasPublicasSancionados";
+import { ResultadosS2 } from "./ResultadosBusqueda/s2/PersonasServidorasPublicasParticipanEnContrataciones";
+import { ResultadosS3p } from "./ResultadosBusqueda/s3/EmpresasSancionadaPorCorrupcion";
+import { ResultadosS1 } from "./ResultadosBusqueda/s1/PersonasServidorasPublicasYSusDeclaraciones";
+import { ResultadosS6v1 } from "./ResultadosBusqueda/s6/EmpresasTienenContratosGob";
+import { ResultadosS6v2 } from "./ResultadosBusqueda/s6/InstitucionesRealizaronContrataciones";
 
 import PropTypes from 'prop-types'; 
 import { styled } from '@mui/material/styles';
@@ -121,7 +121,7 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
       "psp-declaraciones": { "nombres": "", "primerApellido": "", "segundoApellido": "", "institucion": "", "empleoCargoComision": "" },
       "empresas-sancionadas": { "nombreRazonSocial": "", "institucion": "", "tipoSancion": []},
       "empresas-contratos": { "nombreRazonSocial":"", "bienServicioOtorgado":""},
-      "instituciones-contrataciones": { "institucionContratante":"", "bienServicioOtorgado":"", "tipoContratacion":""}
+      "instituciones-contrataciones": { "institucionContratante":"", "bienServicioOtorgado":"", "tipoContratacion":"any"}
     },
   });
   /* const methods = useForm(); */
@@ -148,17 +148,17 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
     let tipoBusqueda = name;
     switch (tipoBusqueda) {
       case 'psp-sancionados':
-        return <ResultadosPersonasServidorasPublicasSancionados data={parametrosBusqueda}/>;
+        return <ResultadosS3s data={parametrosBusqueda}/>;
       case 'psp-participan':
-        return <ResultadosPersonasServidorasPublicasParticipanEnContrataciones data={parametrosBusqueda}/>;
+        return <ResultadosS2 data={parametrosBusqueda}/>;
       case 'psp-declaraciones':
-        return <ResultadosPersonasServidorasPublicasYSusDeclaraciones data={parametrosBusqueda}/>;
+        return <ResultadosS1 data={parametrosBusqueda}/>;
       case 'empresas-sancionadas':
-        return <ResultadosEmpresasSancionadaPorCorrupcion data={parametrosBusqueda}/>;
+        return <ResultadosS3p data={parametrosBusqueda}/>;
       case 'empresas-contratos':
-        return <ResultadosEmpresasTienenContratosGob data={parametrosBusqueda}/>
+        return <ResultadosS6v1 data={parametrosBusqueda}/>
       case 'instituciones-contrataciones':
-        return <ResultadosInstitucionesRealizaronContrataciones data={parametrosBusqueda}/>;
+        return <ResultadosS6v2 data={parametrosBusqueda}/>;
       default:
         return <p>Debes de seleccionar una opción de búsqueda</p>;
     }
@@ -320,7 +320,7 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
 
   return (
       <>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p>Este buscador, tiene el objetivo de facilitar la búsqueda de datos anticorrupción en la Plataforma Digital Nacional.</p>
         <Stepper alternativeLabel activeStep={activeStep} connector={<ColorlibConnector/>}>
           {steps.map((step, index) => {
             const labelProps = {};
@@ -349,9 +349,6 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
 
         {activeStep >= steps.length - 1 ? (
             <div>
-              {/* <Typography variant="h3" align="center">
-            Buscando... 
-          </Typography> */}
               <ResultadosBusqueda className={classes.container}/>
               <Button
                   className={classes.btnPDN}

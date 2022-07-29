@@ -1,16 +1,25 @@
 import React from "react";
-import TablaResultados from "../../../Sistema6/TablaResultados";
+import TablaResultados from "../../../../Sistema6/TablaResultados";
 import axios from "axios";
 
-export function ResultadosEmpresasTienenContratosGob(props) {
+/* const styles = (theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+}); */
+
+export function ResultadosS6v2(props) {
   const dataProps = JSON.parse(props.data);
-  const data = dataProps["empresas-contratos"]
+  const data = dataProps["instituciones-contrataciones"]
   /*
-  5.- Empresas que tienen contratos con el gobierno
-  - Nombre / Razón social (parties[].roles[supplier])
-  - Bien o servicio que se otorgo al gobierno (tender.description) (TOOLTIP con descripción o botón informativo)
-  */
-  const [state, setState] = React.useState({
+    6.- Instituciones que realizan contrataciones públicas
+    - Institución contratante (buyer.name)
+    - Bien o servicio que se otorgo al gobierno (tender.description) (TOOLTIP con descripción o botón informativo) 
+    - Tipo de procedimiento de contratación (select) (tender.procurementMethod)
+    mejorar coincidencias en las busquedas
+    */
+    //console.log(data.supplier);
+    const [state, setState] = React.useState({
     dataSupplier: data.supplier.trim(),
     inputText: data.bienServicioOtorgado.trim(),
     pagination: {
@@ -22,8 +31,8 @@ export function ResultadosEmpresasTienenContratosGob(props) {
     loading: false,
     buyers: [],
     buyer_id: "any",
-    procurementMethod: "any",
-    supplierName: data.nombreRazonSocial.trim(),
+    procurementMethod: data.tipoContratacion.trim() || "any",
+    supplierName: "",
     cycle: "any",
     cycles: [],
   });
@@ -39,9 +48,7 @@ export function ResultadosEmpresasTienenContratosGob(props) {
     if (state.loading) {
       search();
     }
-  }, [
-    state.loading,
-  ]);
+  }, [state.loading]);
 
   const handleChangeRowsPerPage = (pageSize) => {
     setState({
@@ -95,6 +102,7 @@ export function ResultadosEmpresasTienenContratosGob(props) {
     }
 
     const supplier_id = data.supplier.trim();
+    //console.log(body);
     try {
       const res = await axios({
         url: process.env.REACT_APP_S6_BACKEND + "/api/v1/search",
@@ -137,4 +145,4 @@ export function ResultadosEmpresasTienenContratosGob(props) {
   );
 }
 
-export default ResultadosEmpresasTienenContratosGob;
+export default ResultadosS6v2;

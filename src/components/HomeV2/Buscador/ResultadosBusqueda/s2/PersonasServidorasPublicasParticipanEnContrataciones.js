@@ -4,12 +4,12 @@ import CircularProgress from '@mui/material/CircularProgress';
 import {Box, Typography, Modal} from "@mui/material"
 import axios from 'axios';
 
-import EnhancedTableHead from '../../../Sistema2/EnhancedTableHead';
-import AlertaError from "../../../Sistema2/AlertaError";
-import FichaDetalle from "../../../Sistema2/FichaDetalle";
+import EnhancedTableHead from '../../../../Sistema2/EnhancedTableHead';
+import AlertaError from "../../../../Sistema2/AlertaError";
+import FichaDetalle from "../../../../Sistema2/FichaDetalle";
 
-import columnData from '../../../Sistema2/column_data';
-import Previos from "../../../Compartidos/Previos";
+import columnData from '../../../../Sistema2/column_data';
+import Previos from "../../../../Compartidos/Previos";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { makeStyles } from "@mui/styles";
 
@@ -82,7 +82,7 @@ function getSorting(order, orderBy) {
         : (a, b) => (a[orderBy] < b[orderBy] ? -1 : 1);
 }
 
-export function ResultadosPersonasServidorasPublicasParticipanEnContrataciones(props) {
+export function ResultadosS2(props) {
 
 const dataProps = JSON.parse(props.data);
 const data = dataProps["psp-participan"];
@@ -553,5 +553,5 @@ const [state, setState] = React.useState({
     </>);
 }
 
-export default ResultadosPersonasServidorasPublicasParticipanEnContrataciones;
+export default ResultadosS2;
 

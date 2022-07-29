@@ -1,5 +1,11 @@
 import React from "react";
-import { InputLabel, FormControl, TextField, MenuItem, Select, } from "@mui/material/";
+import {
+  InputLabel,
+  FormControl,
+  TextField,
+  MenuItem,
+  Select,
+} from "@mui/material/";
 import { Controller, useFormContext } from "react-hook-form";
 import { ThemeProvider } from "@mui/material/styles";
 import ThemeV2 from "../../../../ThemeV2";
@@ -73,6 +79,27 @@ export function InstitucionesRealizaronContrataciones() {
         )}
       />
 
+      {/* <Controller
+        control={control}
+        name="instituciones-contrataciones.tipoContratacion"
+        defaultValue="any"
+        render={({ field }) => (
+          <FormControl fullWidth={true} margin={"normal"}>
+            <InputLabel>Tipo de Procedimiento</InputLabel>
+            <Select
+              label="Tipo de contratación"
+              fullWidth
+              {...field}
+            >
+              <MenuItem default value="any"><em>Cualquiera</em> </MenuItem>
+              <MenuItem value="direct">Adjudicación directa</MenuItem>
+              <MenuItem value="selective">Invitación a tres</MenuItem>
+              <MenuItem value="open">Licitación pública</MenuItem>
+            </Select>
+          </FormControl>
+        )}
+      /> */}
+
       <Controller
         control={control}
         name="instituciones-contrataciones.tipoContratacion"
@@ -83,10 +110,10 @@ export function InstitucionesRealizaronContrataciones() {
             <Select
               /* value={'Tipo de contratación'} */
               label="Tipo de contratación"
-              fullWidth
+              autoWidth
               {...field}
             >
-              <MenuItem value="any">
+              <MenuItem default value="any">
                 <em>Cualquiera</em>
               </MenuItem>
               <MenuItem value="direct">Adjudicación directa</MenuItem>

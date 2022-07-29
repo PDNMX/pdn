@@ -155,6 +155,7 @@ export function PersonasServidorasPublicasSancionados() {
             renderInput={(params) => (
               <TextField
                 {...params}
+                margin={"normal"}
                 label="Institución"
                 placeholder="Ingresa la Institución"
                 fullWidth
@@ -196,6 +197,7 @@ export function PersonasServidorasPublicasSancionados() {
             }
             renderInput={(params) => (
               <TextField
+                margin={"normal"}
                 error={!!error}
                 helperText={error?.message}
                 label="Tipos de Sanción"
