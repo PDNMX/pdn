@@ -247,11 +247,9 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
 
   const handleBack = () => {
     setActiveStep(activeStep - 1);
-    //activeStep == 0 ? stateChanger("Asistente de búsqueda") : stateChanger("Asistente de búsqueda");
   };
   const handleRestart = () => {
     setActiveStep(0);
-    //stateChanger("Asistente de búsqueda");
   };
 
   const ColorlibStepIconRoot = styled('div')(({ theme, ownerState }) => ({
@@ -320,7 +318,7 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
   }));
 
   useEffect(() => {
-    if (activeStep == 0) {
+    if (activeStep === 0) {
       stateChanger("Asistente de búsqueda");
     }
     //Runs on every render
@@ -357,7 +355,7 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
         </Stepper>
 
         {activeStep >= steps.length - 1 ? (
-            <div>
+            <>
               <ResultadosBusqueda className={classes.container}/>
               <Button
                   className={classes.btnPDN}
@@ -368,23 +366,24 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
               >
                 Reiniciar Busqueda
               </Button>
-            </div>
+            </>
 
         ) : (
             <>
               <FormProvider {...methods} >
                 <form onSubmit={methods.handleSubmit(handleNext)} noValidate>
                   {GetStepContent(activeStep)}
-                  <Button
-                      className={classes.btnPDN}
-                      disabled={activeStep === 0}
-                      variant="contained"
-                      color="primary"
-                      onClick={handleBack}
-                  >
-                    Regresar
-                  </Button>
                   {isStepOptional(activeStep) && (
+                    <>
+                      <Button
+                          className={classes.btnPDN}
+                          disabled={activeStep === 0}
+                          variant="contained"
+                          color="primary"
+                          onClick={handleBack}
+                      >
+                        Regresar
+                      </Button>
                       <Button
                           className={classes.btnPDN}
                           variant="contained"
@@ -393,18 +392,19 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
                       >
                         Limpiar
                       </Button>
+                      <Button
+                        className={classes.btnPDN}
+                        disabled={activeStep === 0}
+                        variant="contained"
+                        color="primary"
+                        /* disabled={name === ''} */
+                        type="submit"
+                      >
+                        Buscar
+                      {/* {activeStep >= 1 ? "Buscar" : "Siguiente"} */}
+                      </Button>
+                    </>
                   )}
-                  <Button
-                      className={classes.btnPDN}
-                      disabled={activeStep === 0}
-                      variant="contained"
-                      color="primary"
-                      /* disabled={name === ''} */
-                      type="submit"
-                  >
-                    Buscar
-                    {/* {activeStep >= 1 ? "Buscar" : "Siguiente"} */}
-                  </Button>
                 </form>
               </FormProvider>
             </>
