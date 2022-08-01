@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Typography, Step, Button, Stepper, StepLabel } from "@mui/material/";
 import { makeStyles } from "@mui/styles";
 import { useForm, Controller, FormProvider, useFormContext, } from "react-hook-form";
@@ -143,7 +143,7 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
 
   function ResultadosBusqueda() {
     const parametrosBusqueda = JSON.stringify(methods.getValues());
-    console.log(parametrosBusqueda)
+    //console.log(parametrosBusqueda)
     //let tipoBusqueda = methods.getValues().tipoBusqueda;
     let tipoBusqueda = name;
     switch (tipoBusqueda) {
@@ -247,9 +247,11 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
 
   const handleBack = () => {
     setActiveStep(activeStep - 1);
+    //activeStep == 0 ? stateChanger("Asistente de búsqueda") : stateChanger("Asistente de búsqueda");
   };
   const handleRestart = () => {
     setActiveStep(0);
+    //stateChanger("Asistente de búsqueda");
   };
 
   const ColorlibStepIconRoot = styled('div')(({ theme, ownerState }) => ({
@@ -317,6 +319,13 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
     },
   }));
 
+  useEffect(() => {
+    if (activeStep == 0) {
+      stateChanger("Asistente de búsqueda");
+    }
+    //Runs on every render
+  });
+  
 
   return (
       <>
