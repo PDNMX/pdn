@@ -1,12 +1,8 @@
 import React from "react";
-import TablaResultados from "../../../../Sistema6/TablaResultados";
+import TablaResultados from "./TablaResultados";
 import axios from "axios";
 
-/* const styles = (theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-}); */
+import Chips from '../Chips';
 
 export function ResultadosS6v2(props) {
   const dataProps = JSON.parse(props.data);
@@ -131,7 +127,9 @@ export function ResultadosS6v2(props) {
   };
 
   return (
-    <div>
+    <>
+      <h1>Criterios de búsqueda:</h1>
+      <Chips criterios={JSON.stringify(data)}/>
       <div style={{ overflow: "auto" }}>
         <TablaResultados
           data={state.results}
@@ -141,7 +139,7 @@ export function ResultadosS6v2(props) {
           loading={state.loading}
         />
       </div>
-    </div>
+    </>
   );
 }
 

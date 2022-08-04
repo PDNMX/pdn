@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Typography, Step, Button, Stepper, StepLabel } from "@mui/material/";
 import { makeStyles } from "@mui/styles";
-import { useForm, Controller, FormProvider, useFormContext, } from "react-hook-form";
+import {
+  useForm,
+  Controller,
+  FormProvider,
+  useFormContext,
+} from "react-hook-form";
 
 // INPUTS PARA EL FORM
 import { PersonasServidorasPublicasSancionados } from "./InputsBusqueda/PersonasServidorasPublicasSancionados";
@@ -19,115 +24,145 @@ import { ResultadosS1 } from "./ResultadosBusqueda/s1/PersonasServidorasPublicas
 import { ResultadosS6v1 } from "./ResultadosBusqueda/s6/EmpresasTienenContratosGob";
 import { ResultadosS6v2 } from "./ResultadosBusqueda/s6/InstitucionesRealizaronContrataciones";
 
-import PropTypes from 'prop-types'; 
-import { styled } from '@mui/material/styles';
-import StepConnector, { stepConnectorClasses } from '@mui/material/StepConnector';
+import PropTypes from "prop-types";
+import { styled } from "@mui/material/styles";
+import StepConnector, {
+  stepConnectorClasses,
+} from "@mui/material/StepConnector";
 
-import PersonIcon from '@mui/icons-material/Person';
-import SettingsIcon from '@mui/icons-material/Settings';
-import MapIcon from '@mui/icons-material/Map';
+import PersonIcon from "@mui/icons-material/Person";
+import SettingsIcon from "@mui/icons-material/Settings";
+import MapIcon from "@mui/icons-material/Map";
 
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import { CardActionArea } from "@mui/material";
 import Grid from "@mui/material/Grid";
-import Tooltip from '@mui/material/Tooltip';
-import Zoom from '@mui/material/Zoom';
+import Tooltip from "@mui/material/Tooltip";
+import Zoom from "@mui/material/Zoom";
+
+const KEY = "pdn.camposBusqueda";
 
 const useStyles = makeStyles((theme) => ({
   container: {
     margin: "3% 0%",
-    width: "100%"
+    width: "100%",
     /* backgroundColor: 'rgba(29, 80, 109, 0.95)', */
   },
   button: {
     marginRight: theme.spacing(1),
   },
-  btnPDN:{
+  btnPDN: {
     margin: theme.spacing(1),
     background: "rgb(255,255,255,0.5)",
     borderRadius: "50px",
     fontWeight: "bold",
     fontStyle: "italic",
-    '&:hover': {
+    "&:hover": {
       backgroundColor: "#56a3bf",
     },
   },
-  cardMedia: {           
-    height: "100%",    
-    width: '30%',
-    margin: '3% 0%',
+  cardMedia: {
+    height: "100%",
+    width: "30%",
+    margin: "3% 0%",
     objectFit: "cover",
   },
   card: {
     /* background: "#fff", */
     /* width: "24em", */
     borderRadius: "0.6em",
-    margin: '2%',
+    margin: "2%",
     overflow: "hidden",
     /* cursor: "pointer", */
-    boxShadow: "0 13px 27px -5px hsla(240, 30.1%, 28%, 0.25), 0 8px 16px -8px hsla(0, 0%, 0%, 0.3), 0 -6px 16px -6px hsla(0, 0%, 0%, 0.03)",
-    transition: "all ease 200ms",     
-    height: '100%',    
-    '&:hover': {
+    boxShadow:
+      "0 13px 27px -5px hsla(240, 30.1%, 28%, 0.25), 0 8px 16px -8px hsla(0, 0%, 0%, 0.3), 0 -6px 16px -6px hsla(0, 0%, 0%, 0.03)",
+    transition: "all ease 200ms",
+    height: "100%",
+    "&:hover": {
       transform: "scale(1.03)",
-      boxShadow: "0 13px 40px -5px hsla(240, 30.1%, 28%, 0.12), 0 8px 32px -8px hsla(0, 0%, 0%, 0.14), 0 -6px 32px -6px hsla(0, 0%, 0%, 0.02)",
+      boxShadow:
+        "0 13px 40px -5px hsla(240, 30.1%, 28%, 0.12), 0 8px 32px -8px hsla(0, 0%, 0%, 0.14), 0 -6px 32px -6px hsla(0, 0%, 0%, 0.02)",
     },
   },
-  Tooltip:{
-    maxWidth:250,
+  Tooltip: {
+    maxWidth: 250,
     backgroundColor: "rgba(38, 37, 37)",
     fontSize: 15,
-    color:"white",
-  }
+    color: "white",
+  },
 }));
 
 function getSteps() {
-  return [
-    "Tipo de Búsqueda",
-    "Filtros de Búsqueda",
-    "Resultados de Búsqueda"
-  ];
+  return ["Tipo de Búsqueda", "Filtros de Búsqueda", "Resultados de Búsqueda"];
 }
 
 function FiltrosBusqueda(props) {
   let tipoBusqueda = props.tipoBusqueda;
   //console.log(tipoBusqueda);
   switch (tipoBusqueda) {
-    case 'psp-sancionados':
-      return <PersonasServidorasPublicasSancionados/>;
-    case 'psp-participan':
-      return <PersonasServidorasPublicasParticipanEnContrataciones/>;
-    case 'psp-declaraciones':
-      return <PersonasServidorasPublicasYSusDeclaraciones/>;
-    case 'empresas-sancionadas':
-      return <EmpresasSancionadaPorCorrupcion/>;
-    case 'empresas-contratos':
-      return <EmpresasTienenContratosGob/>
-    case 'instituciones-contrataciones':
-      return <InstitucionesRealizaronContrataciones/>;
+    case "psp-sancionados":
+      return <PersonasServidorasPublicasSancionados />;
+    case "psp-participan":
+      return <PersonasServidorasPublicasParticipanEnContrataciones />;
+    case "psp-declaraciones":
+      return <PersonasServidorasPublicasYSusDeclaraciones />;
+    case "empresas-sancionadas":
+      return <EmpresasSancionadaPorCorrupcion />;
+    case "empresas-contratos":
+      return <EmpresasTienenContratosGob />;
+    case "instituciones-contrataciones":
+      return <InstitucionesRealizaronContrataciones />;
     default:
       return "desconocido";
   }
 }
 
-const LinaerStepper = ({stateChanger, ...rest}) => {
+const LinaerStepper = ({ stateChanger, ...rest }) => {
   const classes = useStyles();
   const methods = useForm({
     defaultValues: {
-      "psp-sancionados": { "nombres": "", "primerApellido": "", "segundoApellido": "", "institucion": "", "tipoSancion": []},
-      "psp-participan": { "nombres": "", "primerApellido": "", "segundoApellido": "", "institucion": "", "tipoProcedimientoContratacion": [] },
-      "psp-declaraciones": { "nombres": "", "primerApellido": "", "segundoApellido": "", "institucion": "", "empleoCargoComision": "" },
-      "empresas-sancionadas": { "nombreRazonSocial": "", "institucion": "", "tipoSancion": []},
-      "empresas-contratos": { "nombreRazonSocial":"", "bienServicioOtorgado":""},
-      "instituciones-contrataciones": { "institucionContratante":"", "bienServicioOtorgado":"", "tipoContratacion":"any"}
+      "psp-sancionados": {
+        nombres: "",
+        primerApellido: "",
+        segundoApellido: "",
+        institucion: "",
+        tipoSancion: [],
+      },
+      "psp-participan": {
+        nombres: "",
+        primerApellido: "",
+        segundoApellido: "",
+        institucion: "",
+        tipoProcedimientoContratacion: [],
+      },
+      "psp-declaraciones": {
+        nombres: "",
+        primerApellido: "",
+        segundoApellido: "",
+        institucion: "",
+        empleoCargoComision: "",
+      },
+      "empresas-sancionadas": {
+        nombreRazonSocial: "",
+        institucion: "",
+        tipoSancion: [],
+      },
+      "empresas-contratos": { nombreRazonSocial: "", bienServicioOtorgado: "" },
+      "instituciones-contrataciones": {
+        institucionContratante: "",
+        bienServicioOtorgado: "",
+        tipoContratacion: "any",
+      },
     },
   });
+
+  //const { getValues } = useForm();
   /* const methods = useForm(); */
   const [activeStep, setActiveStep] = useState(0);
   const [skippedSteps, setSkippedSteps] = useState([]);
-  const [name, setName] = useState('');
+  const [name, setName] = useState("");
   const steps = getSteps();
 
   function GetStepContent(step) {
@@ -135,7 +170,7 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
       case 0:
         return <TipoBusqueda />;
       case 1:
-        return <FiltrosBusqueda tipoBusqueda={name}/>;
+        return <FiltrosBusqueda tipoBusqueda={name} />;
       default:
         return "desconocido";
     }
@@ -145,20 +180,21 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
     const parametrosBusqueda = JSON.stringify(methods.getValues());
     //console.log(parametrosBusqueda)
     //let tipoBusqueda = methods.getValues().tipoBusqueda;
+    localStorage.setItem(KEY, parametrosBusqueda);
     let tipoBusqueda = name;
     switch (tipoBusqueda) {
-      case 'psp-sancionados':
-        return <ResultadosS3s data={parametrosBusqueda}/>;
-      case 'psp-participan':
-        return <ResultadosS2 data={parametrosBusqueda}/>;
-      case 'psp-declaraciones':
-        return <ResultadosS1 data={parametrosBusqueda}/>;
-      case 'empresas-sancionadas':
-        return <ResultadosS3p data={parametrosBusqueda}/>;
-      case 'empresas-contratos':
-        return <ResultadosS6v1 data={parametrosBusqueda}/>
-      case 'instituciones-contrataciones':
-        return <ResultadosS6v2 data={parametrosBusqueda}/>;
+      case "psp-sancionados":
+        return <ResultadosS3s data={parametrosBusqueda} />;
+      case "psp-participan":
+        return <ResultadosS2 data={parametrosBusqueda} />;
+      case "psp-declaraciones":
+        return <ResultadosS1 data={parametrosBusqueda} />;
+      case "empresas-sancionadas":
+        return <ResultadosS3p data={parametrosBusqueda} />;
+      case "empresas-contratos":
+        return <ResultadosS6v1 data={parametrosBusqueda} />;
+      case "instituciones-contrataciones":
+        return <ResultadosS6v2 data={parametrosBusqueda} />;
       default:
         return <p>Debes de seleccionar una opción de búsqueda</p>;
     }
@@ -166,69 +202,113 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
 
   function TipoBusqueda() {
     const opciones = [
-      { label: "Personas servidoras públicas sancionadas", value: "psp-sancionados", sistema: "s3sp", detalle: "Información de personas servidoras públicas por la comisión de faltas administrativas.", img: "ico_Spsancionados.svg" },
-      { label: "Personas servidoras públicas que participan en contrataciones", value: "psp-participan", sistema: "s2", detalle: "Datos de personas servidoras públicas que intervienen en contrataciones públicas, otorgamiento de concesiones, enajenaciones de bienes y emisión de dictámenes.", img: "ico_Spcontrataciones.svg" },
-      { label: "Personas servidoras públicas y sus declaraciones patrimoniales", value: "psp-declaraciones", sistema: "s1", detalle: "Declaraciones patrimoniales de personas servidoras públicas de todo el país.", img: "ico_Spdeclaraciones.svg" },
-      { label: "Empresas sancionadas por actos corrupción", value: "empresas-sancionadas", sistema: "s3p", detalle: "Información de particulares sancionados por la comisión de faltas administrativas.", img: "ico_empresas_sancionadas.svg"},
-      { label: "Empresas que tiene contratos con el gobierno", value: "empresas-contratos", sistema: "s6", detalle: "Información de particulares que otorgan bienes, servicios u obra pública a las instituciones públicas de todo el país.", img: "ico_empresas_contratos_gob.svg"},
-      { label: "Instituciones que realizaron contrataciones públicas", value: "instituciones-contrataciones", sistema: "s6", detalle: "Información sobre los gastos que realizan las instituciones públicas de todo el país para la adquisición de bienes, servicios u obra pública. ", img: "ico_instituciones_contrataciones.svg"},
+      {
+        label: "Personas servidoras públicas sancionadas",
+        value: "psp-sancionados",
+        sistema: "s3sp",
+        detalle:
+          "Información de personas servidoras públicas por la comisión de faltas administrativas.",
+        img: "ico_Spsancionados.svg",
+      },
+      {
+        label: "Personas servidoras públicas que participan en contrataciones",
+        value: "psp-participan",
+        sistema: "s2",
+        detalle:
+          "Datos de personas servidoras públicas que intervienen en contrataciones públicas, otorgamiento de concesiones, enajenaciones de bienes y emisión de dictámenes.",
+        img: "ico_Spcontrataciones.svg",
+      },
+      {
+        label: "Personas servidoras públicas y sus declaraciones patrimoniales",
+        value: "psp-declaraciones",
+        sistema: "s1",
+        detalle:
+          "Declaraciones patrimoniales de personas servidoras públicas de todo el país.",
+        img: "ico_Spdeclaraciones.svg",
+      },
+      {
+        label: "Empresas sancionadas por actos corrupción",
+        value: "empresas-sancionadas",
+        sistema: "s3p",
+        detalle:
+          "Información de particulares sancionados por la comisión de faltas administrativas.",
+        img: "ico_empresas_sancionadas.svg",
+      },
+      {
+        label: "Empresas que tiene contratos con el gobierno",
+        value: "empresas-contratos",
+        sistema: "s6",
+        detalle:
+          "Información de particulares que otorgan bienes, servicios u obra pública a las instituciones públicas de todo el país.",
+        img: "ico_empresas_contratos_gob.svg",
+      },
+      {
+        label: "Instituciones que realizaron contrataciones públicas",
+        value: "instituciones-contrataciones",
+        sistema: "s6",
+        detalle:
+          "Información sobre los gastos que realizan las instituciones públicas de todo el país para la adquisición de bienes, servicios u obra pública. ",
+        img: "ico_instituciones_contrataciones.svg",
+      },
     ];
     const { control } = useFormContext();
     return (
-        <>
-          <Controller
-              control={control}
-              name="tipoBusqueda"
-              render={({ field }) => (
-                  <Grid
-                      container
-                      spacing={0}
-                      direction="row"
-                      alignItems="center"
-                      justifyContent="center"
-                      className={classes.container}
-                  >
-                    {opciones.map((opcion, index) => (
-                        <Grid key={index} item md={4}>
-                          <Card
-                              className={classes.card}
-                              {...field}
-                          >
-                            <Tooltip title={opcion.detalle} TransitionComponent={Zoom} classes = {{tooltip: classes.Tooltip}} placement="top">
-                              <CardActionArea
-                                  value={opcion.value}
-                                  onClick={(e) => {
-                                    setName(opcion.value);
-                                    stateChanger(opcion.label);
-                                    handleNext();
-                                  }}
-                                  /* style={{border: "5px solid red" }} */
-                              >
-                                <CardMedia
-                                    className={classes.cardMedia}
-                                    component="img"
-                                    image= {"./asistente_busqueda/" + opcion.img}
-                                    alt="ejemplo"
-                                />
-                                <CardContent>
-                                  <Typography gutterBottom variant="subtitle1">
-                                    {opcion.label}
-                                  </Typography>
-                                  {/* <Typography variant="subtitle2" color="text.secondary">
+      <>
+        <Controller
+          control={control}
+          name="tipoBusqueda"
+          render={({ field }) => (
+            <Grid
+              container
+              spacing={0}
+              direction="row"
+              alignItems="center"
+              justifyContent="center"
+              className={classes.container}
+            >
+              {opciones.map((opcion, index) => (
+                <Grid key={index} item md={4}>
+                  <Card className={classes.card} {...field}>
+                    <Tooltip
+                      title={opcion.detalle}
+                      TransitionComponent={Zoom}
+                      classes={{ tooltip: classes.Tooltip }}
+                      placement="top"
+                    >
+                      <CardActionArea
+                        value={opcion.value}
+                        onClick={(e) => {
+                          setName(opcion.value);
+                          stateChanger(opcion.label);
+                          handleNext();
+                        }}
+                        /* style={{border: "5px solid red" }} */
+                      >
+                        <CardMedia
+                          className={classes.cardMedia}
+                          component="img"
+                          image={"./asistente_busqueda/" + opcion.img}
+                          alt="ejemplo"
+                        />
+                        <CardContent>
+                          <Typography gutterBottom variant="subtitle1">
+                            {opcion.label}
+                          </Typography>
+                          {/* <Typography variant="subtitle2" color="text.secondary">
                           {opcion.detalle}
                         </Typography> */}
-                                </CardContent>
-                              </CardActionArea>
-                            </Tooltip>
-                          </Card>
-                        </Grid>
-                    ))}
-                  </Grid>
-              )}
-          />
-        </>
+                        </CardContent>
+                      </CardActionArea>
+                    </Tooltip>
+                  </Card>
+                </Grid>
+              ))}
+            </Grid>
+          )}
+        />
+      </>
     );
-  };
+  }
 
   const isStepOptional = (step) => {
     return step === 1;
@@ -240,9 +320,7 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
-    setSkippedSteps(
-        skippedSteps.filter((skipItem) => skipItem !== activeStep)
-    );
+    setSkippedSteps(skippedSteps.filter((skipItem) => skipItem !== activeStep));
   };
 
   const handleBack = () => {
@@ -252,41 +330,45 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
     setActiveStep(0);
   };
 
-  const ColorlibStepIconRoot = styled('div')(({ theme, ownerState }) => ({
-    backgroundColor: '#ccc',
+  const ColorlibStepIconRoot = styled("div")(({ theme, ownerState }) => ({
+    backgroundColor: "#ccc",
     zIndex: 1,
-    color: '#fff',
+    color: "#fff",
     width: 90,
     height: 90,
-    display: 'flex',
-    borderRadius: '50%',
-    justifyContent: 'center',
-    alignItems: 'center',
+    display: "flex",
+    borderRadius: "50%",
+    justifyContent: "center",
+    alignItems: "center",
     ...(ownerState.active && {
-      backgroundImage: 'linear-gradient( 136deg, rgb(232,214,67) 0%, rgb(232,214,67) 50%, rgb(232,214,67) 100%)',
+      backgroundImage:
+        "linear-gradient( 136deg, rgb(232,214,67) 0%, rgb(232,214,67) 50%, rgb(232,214,67) 100%)",
     }),
     ...(ownerState.completed && {
       backgroundImage:
-          'linear-gradient( 136deg, rgb(232,214,67) 0%, rgb(232,214,67) 50%, rgb(232,214,67) 100%)',
+        "linear-gradient( 136deg, rgb(232,214,67) 0%, rgb(232,214,67) 50%, rgb(232,214,67) 100%)",
     }),
   }));
 
   function ColorlibStepIcon(props) {
-    const { active, completed, className} = props;
-  
+    const { active, completed, className } = props;
+
     const icons = {
-      1: <PersonIcon sx={{ fontSize:50 }} />,
+      1: <PersonIcon sx={{ fontSize: 50 }} />,
       2: <SettingsIcon sx={{ fontSize: 50 }} />,
       3: <MapIcon sx={{ fontSize: 50 }} />,
     };
 
     return (
-        <ColorlibStepIconRoot ownerState={{ completed, active }} className={className}>
-          {icons[String(props.icon)]}
-        </ColorlibStepIconRoot>
+      <ColorlibStepIconRoot
+        ownerState={{ completed, active }}
+        className={className}
+      >
+        {icons[String(props.icon)]}
+      </ColorlibStepIconRoot>
     );
   }
-  
+
   ColorlibStepIcon.propTypes = {
     active: PropTypes.bool,
     completed: PropTypes.bool,
@@ -299,20 +381,20 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
     [`&.${stepConnectorClasses.active}`]: {
       [`& .${stepConnectorClasses.line}`]: {
         backgroundImage:
-            'linear-gradient( 136deg, rgb(232,214,67) 0%, rgb(232,214,67) 50%, rgb(232,214,67) 100%)',
+          "linear-gradient( 136deg, rgb(232,214,67) 0%, rgb(232,214,67) 50%, rgb(232,214,67) 100%)",
       },
     },
     [`&.${stepConnectorClasses.completed}`]: {
       [`& .${stepConnectorClasses.line}`]: {
         backgroundImage:
-            'linear-gradient( 136deg, rgb(232,214,67) 0%, rgb(232,214,67) 50%, rgb(232,214,67) 100%)',
+          "linear-gradient( 136deg, rgb(232,214,67) 0%, rgb(232,214,67) 50%, rgb(232,214,67) 100%)",
       },
     },
     [`& .${stepConnectorClasses.line}`]: {
       height: 5,
       border: 0,
       backgroundColor:
-          theme.palette.mode === 'dark' ? theme.palette.grey[800] : '#eaeaf0',
+        theme.palette.mode === "dark" ? theme.palette.grey[800] : "#eaeaf0",
       borderRadius: 1,
     },
   }));
@@ -321,95 +403,123 @@ const LinaerStepper = ({stateChanger, ...rest}) => {
     if (activeStep === 0) {
       stateChanger("Asistente de búsqueda");
     }
+    //console.log(methods.getValues());
     //Runs on every render
   });
-  
+
+  /* useEffect(() => {
+    if (activeStep === 0) {
+      stateChanger("Asistente de búsqueda");
+    }
+  }, []); */
+  useEffect(() => {
+    const storedCampos = JSON.parse(localStorage.getItem(KEY));
+    //const values = methods.getValues();
+    if (storedCampos) {
+      //setTodos(storedTodos);
+      methods.setValue("psp-sancionados", storedCampos["psp-sancionados"]);
+      methods.setValue("psp-participan", storedCampos["psp-participan"]);
+      methods.setValue("psp-declaraciones", storedCampos["psp-declaraciones"]);
+      methods.setValue("empresas-sancionadas", storedCampos["empresas-sancionadas"]);
+      methods.setValue("empresas-contratos", storedCampos["empresas-contratos"]);
+      methods.setValue("instituciones-contrataciones", storedCampos["instituciones-contrataciones"]);
+      //console.log(storedCampos);
+    }
+  }, []);
 
   return (
-      <>
-        <p>Este buscador, tiene el objetivo de facilitar la búsqueda de datos anticorrupción en la Plataforma Digital Nacional.</p>
-        <Stepper alternativeLabel activeStep={activeStep} connector={<ColorlibConnector/>}>
-          {steps.map((step, index) => {
-            const labelProps = {};
-            const stepProps = {};
-            if (isStepOptional(index)) {
-              labelProps.optional = (
-                  <Typography
-                      variant="caption"
-                      align="center"
-                      style={{ display: "block" }}
-                  >
-                    opcional
-                  </Typography>
-              );
-            }
-            if (isStepSkipped(index)) {
-              stepProps.completed = false;
-            }
-            return (
-                <Step {...stepProps} key={index}>
-                  <StepLabel StepIconComponent={ColorlibStepIcon} {...labelProps}>{step}</StepLabel>
-                </Step>
-            );
-          })}
-        </Stepper>
-
-        {activeStep >= steps.length - 1 ? (
-            <>
-              <ResultadosBusqueda className={classes.container}/>
-              <Button
-                  className={classes.btnPDN}
-                  disabled={activeStep === 0}
-                  variant="contained"
-                  /* color="primary" */
-                  onClick={handleRestart}
+    <>
+      <h1>
+        Este buscador, tiene el objetivo de facilitar la búsqueda de datos
+        anticorrupción en la Plataforma Digital Nacional.
+      </h1>
+      <Stepper
+        alternativeLabel
+        activeStep={activeStep}
+        connector={<ColorlibConnector />}
+      >
+        {steps.map((step, index) => {
+          const labelProps = {};
+          const stepProps = {};
+          if (isStepOptional(index)) {
+            labelProps.optional = (
+              <Typography
+                variant="caption"
+                align="center"
+                style={{ display: "block" }}
               >
-                Reiniciar Busqueda
-              </Button>
-            </>
+                opcional
+              </Typography>
+            );
+          }
+          if (isStepSkipped(index)) {
+            stepProps.completed = false;
+          }
+          return (
+            <Step {...stepProps} key={index}>
+              <StepLabel StepIconComponent={ColorlibStepIcon} {...labelProps}>
+                {step}
+              </StepLabel>
+            </Step>
+          );
+        })}
+      </Stepper>
 
-        ) : (
-            <>
-              <FormProvider {...methods} >
-                <form onSubmit={methods.handleSubmit(handleNext)} noValidate>
-                  {GetStepContent(activeStep)}
-                  {isStepOptional(activeStep) && (
-                    <>
-                      <Button
-                          className={classes.btnPDN}
-                          disabled={activeStep === 0}
-                          variant="contained"
-                          color="primary"
-                          onClick={handleBack}
-                      >
-                        Regresar
-                      </Button>
-                      <Button
-                          className={classes.btnPDN}
-                          variant="contained"
-                          color="primary"
-                          onClick={() => methods.resetField(name)}
-                      >
-                        Limpiar
-                      </Button>
-                      <Button
-                        className={classes.btnPDN}
-                        disabled={activeStep === 0}
-                        variant="contained"
-                        color="primary"
-                        /* disabled={name === ''} */
-                        type="submit"
-                      >
-                        Buscar
-                      {/* {activeStep >= 1 ? "Buscar" : "Siguiente"} */}
-                      </Button>
-                    </>
-                  )}
-                </form>
-              </FormProvider>
-            </>
-        )}
-      </>
+      {activeStep >= steps.length - 1 ? (
+        <>
+          <ResultadosBusqueda className={classes.container} />
+          <Button
+            className={classes.btnPDN}
+            disabled={activeStep === 0}
+            variant="contained"
+            /* color="primary" */
+            onClick={handleRestart}
+          >
+            Reiniciar Busqueda
+          </Button>
+        </>
+      ) : (
+        <>
+          <FormProvider {...methods}>
+            <form onSubmit={methods.handleSubmit(handleNext)} noValidate>
+              {GetStepContent(activeStep)}
+              {isStepOptional(activeStep) && (
+                <>
+                  <Button
+                    className={classes.btnPDN}
+                    disabled={activeStep === 0}
+                    variant="contained"
+                    color="primary"
+                    onClick={handleBack}
+                  >
+                    Regresar
+                  </Button>
+                  <Button
+                    className={classes.btnPDN}
+                    variant="contained"
+                    color="primary"
+                    onClick={() => methods.resetField(name)}
+                  >
+                    Limpiar
+                  </Button>
+                  <Button
+                    className={classes.btnPDN}
+                    disabled={activeStep === 0}
+                    variant="contained"
+                    color="primary"
+                    /* disabled={name === ''} */
+                    type="submit"
+                  >
+                    Buscar
+                    {/* {activeStep >= 1 ? "Buscar" : "Siguiente"} */}
+                  </Button>
+                </>
+              )}
+            </form>
+          </FormProvider>
+        </>
+      )}
+    </>
   );
 };
 

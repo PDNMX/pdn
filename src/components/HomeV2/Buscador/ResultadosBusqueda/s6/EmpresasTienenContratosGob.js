@@ -1,6 +1,8 @@
 import React from "react";
-import TablaResultados from "../../../../Sistema6/TablaResultados";
+import TablaResultados from "./TablaResultados";
 import axios from "axios";
+
+import Chips from '../Chips';
 
 export function ResultadosS6v1(props) {
   const dataProps = JSON.parse(props.data);
@@ -27,6 +29,8 @@ export function ResultadosS6v1(props) {
     cycle: "any",
     cycles: [],
   });
+
+  let sumaResultados = 0;
 
   React.useEffect(() => {
     //fetch data
@@ -105,8 +109,8 @@ export function ResultadosS6v1(props) {
         data: body,
         json: true,
       });
-
-      //console.log(data)
+      sumaResultados = res.data.data.length;
+      console.log(sumaResultados)
       setState({
         ...state,
         loading: false,
@@ -123,7 +127,9 @@ export function ResultadosS6v1(props) {
   };
 
   return (
-    <div>
+    <>
+      <h1>Criterios de búsqueda:</h1>
+      <Chips criterios={JSON.stringify(data)}/>
       <div style={{ overflow: "auto" }}>
         <TablaResultados
           data={state.results}
@@ -133,7 +139,7 @@ export function ResultadosS6v1(props) {
           loading={state.loading}
         />
       </div>
-    </div>
+    </>
   );
 }
 

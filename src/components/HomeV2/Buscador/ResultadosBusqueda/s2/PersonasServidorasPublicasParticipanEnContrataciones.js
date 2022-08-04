@@ -9,9 +9,11 @@ import AlertaError from "../../../../Sistema2/AlertaError";
 import FichaDetalle from "../../../../Sistema2/FichaDetalle";
 
 import columnData from '../../../../Sistema2/column_data';
-import Previos from "../../../../Compartidos/Previos";
+import Previos from "../Previos";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { makeStyles } from "@mui/styles";
+
+import Chips from '../Chips';
 
 const useStyles = makeStyles((theme) => ({
 root: {},
@@ -440,6 +442,8 @@ const [state, setState] = React.useState({
         {showSummaryPanel && state.summaryData && state.summaryData.length > 0 &&
             <Box p={1}>
                 <div className={classes.container}>
+                    <h1>Criterios de búsqueda:</h1>
+                    <Chips criterios={JSON.stringify(data)}/>
                     <Previos data={state.summaryData} handleChangeSujetoObligado={handleSearchSupplier}/>
 
                     {/* <TablaResumen summaryData={state.summaryData} handleSearchSupplier={handleSearchSupplier}/> */}

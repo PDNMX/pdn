@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Grid, Modal, CircularProgress } from '@mui/material';
-import Previos from "../../../../Compartidos/Previos";
+import Previos from "../Previos";
 import TablaParticularesSancionados from "../../../../Sancionados/Particulares/TablaParticularesSancionados";
 import DetalleParticularSancionado from "../../../../Sancionados/Particulares/DetalleParticular";
 import MensajeErrorDatos from "../../../../Mensajes/MensajeErrorDatos";
@@ -11,6 +11,8 @@ import ThemeV2 from "../../../../../ThemeV2";
 
 import ReactGA from "react-ga";
 import { makeStyles } from "@mui/styles";
+
+import Chips from '../Chips';
 
 
 const axios = require('axios');
@@ -345,6 +347,8 @@ export function ResultadosS3p(props){
                     {view === 1 && previos && previos.length > 0 &&
                     <Grid container>
                         <Grid item xs={12} className={classes.section}>
+                                    <h1>Criterios de búsqueda:</h1>
+                                    <Chips criterios={JSON.stringify(data)}/>
                                     <Previos data={previos}
                                              handleChangeSujetoObligado={handleChangeSujetoObligado}/>
                         </Grid>

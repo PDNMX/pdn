@@ -2,13 +2,15 @@ import React from "react";
 import withStyles from "@mui/styles/withStyles";
 import { Grid, Modal, CircularProgress } from "@mui/material";
 import MensajeErrorDatos from "../../../../Mensajes/MensajeError";
-import Previos from "../../../../Compartidos/Previos";
+import Previos from "../Previos";
 import TablaServidoresSancionados from "../../../../Sancionados/Servidores/TablaServidoresSancionados";
 import DetalleServidorSancionado from "../../../../Sancionados/Servidores//DetalleServidorSancionado";
 
 //import ReactGA from "react-ga";
+import Chips from '../Chips';
 
 const axios = require("axios");
+
 
 const styles = (theme) => ({
   formControl: {
@@ -261,6 +263,9 @@ export function ResultadosS3s(props) {
       {view === 1 && previos && previos.length > 0 && (
         <Grid container>
           <Grid item xs={12}>
+            {/* {console.log} */}
+            <h1>Criterios de búsqueda:</h1>
+            <Chips criterios={JSON.stringify(data)}/>
             <Previos
               data={previos}
               handleChangeSujetoObligado={handleChangeAPI}

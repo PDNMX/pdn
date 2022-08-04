@@ -13,6 +13,7 @@ import ActiveResultProv from '../../../../Declaraciones2/ActiveResultProv';
 /* import Descarga from '../../../../Compartidos/Descarga'; */
 import MantenimentResultProv from '../../../../Declaraciones2/MantenimentResultProv';
 
+import Chips from '../Chips';
 
 export class ResultadosS1 extends React.Component {
   /*
@@ -355,17 +356,23 @@ export class ResultadosS1 extends React.Component {
     this.state.query.empleoCargoComision = data.empleoCargoComision.trim();
     return (
       <div>
+        <h1>Criterios de búsqueda:</h1>
+        {console.log(data)}
+        <Chips criterios={JSON.stringify(data)}/>
         {!this.state.dataSelect && (
           <Paper elevation={0}>
-            <Grid container spacing={0} >
-            </Grid>
             <Grid container spacing={0}>
               <div>
                 {this.state.prov
                   .filter(p => p.status === 'ACTIVE')
                   .map((p, i) => {
-                    return <ActiveResultProv key={'res-' + i} p={p} i={i} handleDataSelect={this.handleDataSelect} handleSetPage={this.handleSetPage} handleChangeRowsPerPage={this.handleChangeRowsPerPage} />;
-                  })}
+                    if (p.total > 0) {
+                      return <ActiveResultProv key={'res-' + i} p={p} i={i} handleDataSelect={this.handleDataSelect} handleSetPage={this.handleSetPage} handleChangeRowsPerPage={this.handleChangeRowsPerPage} />;
+                    } else {
+                      return <h1>No hay registros</h1>
+                    }
+                  })
+                }
                 {this.state.prov
                   .filter(p => p.status === 'MANTENIMENT')
                   .map((p, i) => {
