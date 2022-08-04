@@ -264,7 +264,6 @@ export function ResultadosS3s(props) {
         <Grid container>
           <Grid item xs={12}>
             {/* {console.log} */}
-            <h1>Criterios de búsqueda:</h1>
             <Chips criterios={JSON.stringify(data)}/>
             <Previos
               data={previos}

@@ -19,45 +19,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'rgba(29, 80, 109, 0.95)',
   },
   titulo: {
+    color: '#fff',
     backgroundColor: 'rgba(29, 80, 109, 0.95)',
   },
-  bg: {
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-  },
-  headingText: {
-    color: "#ced8db",
-    fontWeight: "700",
-    fontSize: "52px",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "40px",
-    },
-  },
-  subTitle: {
-    fontSize: "30px",
-    fontWeight: 500,
-    textTransform: "uppercase",
-    color: "#ced8db",
-    "& b": {
-      color: "#3bb1e6",
-    },
-  },
-  text: {
-    fontSize: "18px",
-    fontWeight: 100,
-    color: "#d0d7d9",
-    "& b": {
-      fontWeight: 500,
-    },
-  },
-  link: {
-    textDecoration: "none",
-    "&:hover": {
-      textDecoration: "none",
-    },
-  },
   btnPDN: {
-    margin: theme.spacing(0),
+    marginBottom: theme.spacing(2),
     background: "rgb(255,255,255,0.5)",
     borderRadius: "50px",
     fontWeight: "bold",
@@ -120,13 +86,14 @@ export default function CustomizedDialogs() {
   };
 
   return (
-    <div>
+    <>
       <Button
         className={classes.btnPDN}
         variant="contained"
         size="large"
         endIcon={<ScreenSearchDesktopOutlinedIcon />}
         onClick={handleClickOpen}
+        margin={"normal"}
       >
         Asistente de búsqueda
       </Button>
@@ -154,6 +121,6 @@ export default function CustomizedDialogs() {
             </Grid>
         </DialogContent>
       </BootstrapDialog>
-    </div>
+    </>
   );
 }

@@ -12,6 +12,9 @@ import HandshakeIcon from '@mui/icons-material/Handshake';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SentimentNeutralIcon from '@mui/icons-material/SentimentNeutral';
 
+import { Typography } from "@mui/material/";
+
+
 import { nanoid } from 'nanoid'
 
 const ListItem = styled("li")(({ theme }) => ({
@@ -84,6 +87,11 @@ export default function ChipsArray(props) {
   };
 
   return (
+    <>
+    <h1></h1>
+    <Typography style={{color: "#E1E8EB", fontSize: "22px", fontWeight: 500,}}>
+      Criterios de búsqueda:
+    </Typography>
     <Paper
       sx={{
         display: "flex",
@@ -122,6 +130,7 @@ export default function ChipsArray(props) {
         return (
           <ListItem key={index}>
             <Chip
+              color="info"
               icon={icon}
               label={data.label}
               onDelete={handleDelete(data)}
@@ -130,5 +139,6 @@ export default function ChipsArray(props) {
         );
       })}
     </Paper>
+    </>
   );
 }

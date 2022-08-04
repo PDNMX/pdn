@@ -128,7 +128,6 @@ export function ResultadosS6v2(props) {
 
   return (
     <>
-      <h1>Criterios de búsqueda:</h1>
       <Chips criterios={JSON.stringify(data)}/>
       <div style={{ overflow: "auto" }}>
         <TablaResultados

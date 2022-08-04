@@ -356,7 +356,7 @@ export class ResultadosS1 extends React.Component {
     this.state.query.empleoCargoComision = data.empleoCargoComision.trim();
     return (
       <div>
-        <h1>Criterios de búsqueda:</h1>
+        
         {console.log(data)}
         <Chips criterios={JSON.stringify(data)}/>
         {!this.state.dataSelect && (

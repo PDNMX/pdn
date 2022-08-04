@@ -347,7 +347,6 @@ export function ResultadosS3p(props){
                     {view === 1 && previos && previos.length > 0 &&
                     <Grid container>
                         <Grid item xs={12} className={classes.section}>
-                                    <h1>Criterios de búsqueda:</h1>
                                     <Chips criterios={JSON.stringify(data)}/>
                                     <Previos data={previos}
                                              handleChangeSujetoObligado={handleChangeSujetoObligado}/>

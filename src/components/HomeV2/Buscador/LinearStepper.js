@@ -92,6 +92,16 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 15,
     color: "white",
   },
+  subTitle:{
+    fontSize: '22px',
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(3),
+    fontWeight: 500,
+    color: "#E1E8EB",
+    "& b": {
+        color: "#3bb1e6",
+    }
+  }
 }));
 
 function getSteps() {
@@ -235,7 +245,7 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
         img: "ico_empresas_sancionadas.svg",
       },
       {
-        label: "Empresas que tiene contratos con el gobierno",
+        label: "Empresas que tienen contratos con el gobierno",
         value: "empresas-contratos",
         sistema: "s6",
         detalle:
@@ -243,7 +253,7 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
         img: "ico_empresas_contratos_gob.svg",
       },
       {
-        label: "Instituciones que realizaron contrataciones públicas",
+        label: "Instituciones públicas que contrataron bienes, obras o servicios",
         value: "instituciones-contrataciones",
         sistema: "s6",
         detalle:
@@ -346,7 +356,7 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
     }),
     ...(ownerState.completed && {
       backgroundImage:
-        "linear-gradient( 136deg, rgb(232,214,67) 0%, rgb(232,214,67) 50%, rgb(232,214,67) 100%)",
+        "linear-gradient( 136deg, rgb(200,214,67) 0%, rgb(232,214,67) 50%, rgb(232,214,67) 100%)",
     }),
   }));
 
@@ -361,8 +371,7 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
 
     return (
       <ColorlibStepIconRoot
-        ownerState={{ completed, active }}
-        className={className}
+        ownerState={{ completed, active }}  
       >
         {icons[String(props.icon)]}
       </ColorlibStepIconRoot>
@@ -429,10 +438,9 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
 
   return (
     <>
-      <h1>
-        Este buscador, tiene el objetivo de facilitar la búsqueda de datos
-        anticorrupción en la Plataforma Digital Nacional.
-      </h1>
+      <Typography className={classes.subTitle}>
+        Este <b>buscador</b>, tiene el objetivo de facilitar la búsqueda de datos anticorrupción en la Plataforma Digital Nacional.
+      </Typography>
       <Stepper
         alternativeLabel
         activeStep={activeStep}
@@ -446,7 +454,7 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
               <Typography
                 variant="caption"
                 align="center"
-                style={{ display: "block" }}
+                style={{ display: "block", color: "#fff" }}
               >
                 opcional
               </Typography>
@@ -456,14 +464,32 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
             stepProps.completed = false;
           }
           return (
-            <Step {...stepProps} key={index}>
-              <StepLabel StepIconComponent={ColorlibStepIcon} {...labelProps}>
+            <Step 
+              {...stepProps} 
+              key={index}
+              sx={{
+                '& .MuiStepLabel-label.Mui-completed.MuiStepLabel-alternativeLabel':
+                  {
+                    color: 'grey.500', // Just text label (COMPLETED)
+                  },
+                '& .MuiStepLabel-label.Mui-active.MuiStepLabel-alternativeLabel':
+                  {
+                    color: '#3bb1e6', // Just text label (ACTIVE)
+                  },
+                '& .MuiStepLabel-label.Mui-disabled.MuiStepLabel-alternativeLabel':
+                  {
+                    color: '#fff', // Just text label (ACTIVE)
+                  },
+              }}
+            >
+              <StepLabel StepIconComponent={ColorlibStepIcon} {...labelProps} >
                 {step}
               </StepLabel>
             </Step>
           );
         })}
       </Stepper>
+      
 
       {activeStep >= steps.length - 1 ? (
         <>
@@ -480,6 +506,10 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
         </>
       ) : (
         <>
+          <Typography className={classes.subTitle} paragraph>
+            {activeStep === 0 ? ("Selecciona una de las opciones siguientes:") : ("Llena los campos que consideres necesarios para realizar tu búsqueda.")}
+          </Typography>
+          
           <FormProvider {...methods}>
             <form onSubmit={methods.handleSubmit(handleNext)} noValidate>
               {GetStepContent(activeStep)}

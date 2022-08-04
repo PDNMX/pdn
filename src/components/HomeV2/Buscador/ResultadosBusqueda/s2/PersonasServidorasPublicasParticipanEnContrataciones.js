@@ -442,7 +442,6 @@ const [state, setState] = React.useState({
         {showSummaryPanel && state.summaryData && state.summaryData.length > 0 &&
             <Box p={1}>
                 <div className={classes.container}>
-                    <h1>Criterios de búsqueda:</h1>
                     <Chips criterios={JSON.stringify(data)}/>
                     <Previos data={state.summaryData} handleChangeSujetoObligado={handleSearchSupplier}/>
 
