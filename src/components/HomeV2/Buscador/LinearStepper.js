@@ -42,6 +42,8 @@ import Grid from "@mui/material/Grid";
 import Tooltip from "@mui/material/Tooltip";
 import Zoom from "@mui/material/Zoom";
 
+import Chip from '@mui/material/Chip';
+
 const KEY = "pdn.camposBusqueda";
 
 const useStyles = makeStyles((theme) => ({
@@ -81,6 +83,7 @@ const useStyles = makeStyles((theme) => ({
       boxShadow:
         "0 13px 40px -5px hsla(240, 30.1%, 28%, 0.12), 0 8px 32px -8px hsla(0, 0%, 0%, 0.14), 0 -6px 32px -6px hsla(0, 0%, 0%, 0.02)",
     },
+    
   },
   Tooltip: {
     maxWidth: 250,
@@ -97,6 +100,17 @@ const useStyles = makeStyles((theme) => ({
     "& b": {
         color: "#3bb1e6",
     }
+  },
+  labelSistema: {
+    left: 15,
+    top: 15,
+    position: 'absolute',
+    zIndex: 1,
+    fontSize: 11,
+    color: "#141414",
+    borderRadius: "0.9em",
+    cursor: "pointer",
+    fontWeight: 450,
   }
 }));
 
@@ -211,50 +225,56 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
       {
         label: "Personas servidoras públicas sancionadas",
         value: "psp-sancionados",
-        sistema: "s3sp",
+        sistema: "Sistema 3",
         detalle:
           "Información de personas servidoras públicas por la comisión de faltas administrativas.",
         img: "ico_Spsancionados.svg",
+        color: "#b8aef9"
       },
       {
         label: "Personas servidoras públicas que participan en contrataciones",
         value: "psp-participan",
-        sistema: "s2",
+        sistema: "Sistema 2",
         detalle:
           "Datos de personas servidoras públicas que intervienen en contrataciones públicas, otorgamiento de concesiones, enajenaciones de bienes y emisión de dictámenes.",
         img: "ico_Spcontrataciones.svg",
+        color: "#e7a2e3"
       },
       {
         label: "Personas servidoras públicas y sus declaraciones patrimoniales",
         value: "psp-declaraciones",
-        sistema: "s1",
+        sistema: "Sistema 1",
         detalle:
           "Declaraciones patrimoniales de personas servidoras públicas de todo el país.",
         img: "ico_Spdeclaraciones.svg",
+        color: "#f9bfb4"
       },
       {
         label: "Empresas sancionadas por actos corrupción",
         value: "empresas-sancionadas",
-        sistema: "s3p",
+        sistema: "Sistema 3",
         detalle:
           "Información de particulares sancionados por la comisión de faltas administrativas.",
         img: "ico_empresas_sancionadas.svg",
+        color: "#b8aef9"
       },
       {
         label: "Empresas que tienen contratos con el gobierno",
         value: "empresas-contratos",
-        sistema: "s6",
+        sistema: "Sistema 6",
         detalle:
           "Información de particulares que otorgan bienes, servicios u obra pública a las instituciones públicas de todo el país.",
         img: "ico_empresas_contratos_gob.svg",
+        color: "#8dd9f6"
       },
       {
         label: "Instituciones públicas que contrataron bienes, obras o servicios",
         value: "instituciones-contrataciones",
-        sistema: "s6",
+        sistema: "Sistema 6",
         detalle:
           "Información sobre los gastos que realizan las instituciones públicas de todo el país para la adquisición de bienes, servicios u obra pública. ",
         img: "ico_instituciones_contrataciones.svg",
+        color: "#8dd9f6"
       },
     ];
     const { control } = useFormContext();
@@ -274,7 +294,7 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
             >
               {opciones.map((opcion, index) => (
                 <Grid key={index} item md={4} style={{display: 'flex'}}>
-                  <Card className={classes.card} {...field} style={{display: 'flex', justifyContent: 'space-between', flexDirection: 'column'}}>
+                  <Card className={classes.card} {...field} style={{display: 'flex', justifyContent: 'space-between', flexDirection: 'column', "borderBottom": "0.3rem solid " + opcion.color}}>
                     <Tooltip
                       title={opcion.detalle}
                       TransitionComponent={Zoom}
@@ -288,20 +308,18 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
                           stateChanger(opcion.label);
                           handleNext();
                         }}
-                        /* style={{border: "5px solid red" }} */
                       >
+                      <Chip size="small" className={classes.labelSistema} label={opcion.sistema} style={{backgroundColor: opcion.color}}/>
                         <CardMedia
                           className={classes.cardMedia}
                           component="img"
                           image={"./asistente_busqueda/" + opcion.img}
                         />
                         <CardContent>
-                          <Typography gutterBottom variant="subtitle1">
+                          <Typography variant="subtitle1">
                             {opcion.label}
                           </Typography>
-                          {/* <Typography variant="subtitle2" color="text.secondary">
-                          {opcion.detalle}
-                        </Typography> */}
+
                         </CardContent>
                       </CardActionArea>
                     </Tooltip>
@@ -356,7 +374,7 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
   }));
 
   function ColorlibStepIcon(props) {
-    const { active, completed, className } = props;
+    const { active, completed } = props;
 
     const icons = {
       1: <PersonIcon sx={{ fontSize: 50 }} />,
@@ -429,7 +447,7 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
       methods.setValue("instituciones-contrataciones", storedCampos["instituciones-contrataciones"]);
       //console.log(storedCampos);
     }
-  }, []);
+  }, [methods]);
 
   return (
     <>
