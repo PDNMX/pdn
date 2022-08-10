@@ -1,7 +1,7 @@
 import React from 'react';
 import {withStyles} from "@mui/styles";
 import PropTypes from 'prop-types';
-import {Grid, Typography} from "@mui/material";
+import {Typography} from "@mui/material";
 import {Treemap} from "d3plus-react";
 import axios from 'axios';
 import * as d3 from "d3";

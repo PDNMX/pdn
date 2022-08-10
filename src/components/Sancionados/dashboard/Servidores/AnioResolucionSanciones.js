@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {withStyles} from "@mui/styles";
 import PropTypes from 'prop-types';
 import {Grid, Typography} from "@mui/material";
-import {LinePlot, Pie} from "d3plus-react";
+import {LinePlot} from "d3plus-react";
 import axios from 'axios';
 import MensajeErrorDatos from "../../../Mensajes/MensajeErrorDatos";
 import {FlexibleXYPlot} from "react-vis/es";

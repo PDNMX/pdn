@@ -1,7 +1,7 @@
 import React from 'react';
 import {withStyles} from "@mui/styles";
 import PropTypes from 'prop-types';
-import {Grid, Typography} from "@mui/material";
+import {Typography} from "@mui/material";
 import LineMarkSeries from "react-vis/es/plot/series/line-mark-series";
 import YAxis from "react-vis/es/plot/axis/y-axis";
 import XAxis from "react-vis/es/plot/axis/x-axis";
@@ -11,7 +11,7 @@ import 'react-vis/dist/style.css';
 import {FlexibleXYPlot} from "react-vis/es";
 import Hint from "react-vis/es/plot/hint";
 import MensajeErrorDatos from "@Mensajes/MensajeErrorDatos";
-import {Pie} from "d3plus-react";
+//import {Pie} from "d3plus-react";
 import axios from 'axios';
 import ContainerChart from "@Compartidos/Dashboards/ContainerChart";
 

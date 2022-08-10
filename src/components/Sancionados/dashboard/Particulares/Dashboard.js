@@ -8,7 +8,7 @@ import SentidoResolucionesAnio from "./SentidoResolucionesAnio";
 import DependenciasSanciones from "./DependenciasSanciones";
 import '../graficas.css';
 import TotalRows from "./TotalRows";
-import TotalDependencias from "./TotalDependencias";
+//import TotalDependencias from "./TotalDependencias";
 import TotalParticulares from "./TotalParticulares";
 import TotalMultas from "./TotalMultas";
 import FooterPage from "@Compartidos/Dashboards/FooterPage";
