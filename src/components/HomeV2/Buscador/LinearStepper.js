@@ -43,6 +43,7 @@ import Tooltip from "@mui/material/Tooltip";
 import Zoom from "@mui/material/Zoom";
 
 import Chip from '@mui/material/Chip';
+import Divider from '@mui/material/Divider';
 
 const KEY = "pdn.camposBusqueda";
 
@@ -91,10 +92,11 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 15,
     color: "white",
   },
-  subTitle:{
-    fontSize: '22px',
+  stepper: {
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(3),
+  },
+  subTitle:{
     fontWeight: 500,
     color: "#E1E8EB",
     "& b": {
@@ -111,6 +113,15 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "0.9em",
     cursor: "pointer",
     fontWeight: 450,
+  },
+  divider: {
+    color: "rgb(237 237 237 / 31%)",
+    "&:before": {
+      borderTop: "thin solid rgb(237 237 237 / 31%)"
+    },
+    "&:after": {
+      borderTop: "thin solid rgb(237 237 237 / 31%)"
+    }
   }
 }));
 
@@ -293,8 +304,8 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
               className={classes.container}
             >
               {opciones.map((opcion, index) => (
-                <Grid key={index} item md={4} style={{display: 'flex'}}>
-                  <Card className={classes.card} {...field} style={{display: 'flex', justifyContent: 'space-between', flexDirection: 'column', "borderBottom": "0.3rem solid " + opcion.color}}>
+                <Grid key={index} item md={4} xs={6} sm={6} style={{display: 'flex'}}>
+                  <Card className={classes.card} {...field} style={{width: "100%", display: 'flex', justifyContent: 'space-between', flexDirection: 'column', "borderBottom": "0.3rem solid " + opcion.color}}>
                     <Tooltip
                       title={opcion.detalle}
                       TransitionComponent={Zoom}
@@ -316,7 +327,7 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
                           image={"./asistente_busqueda/" + opcion.img}
                         />
                         <CardContent>
-                          <Typography variant="subtitle1">
+                          <Typography variant="subtitle2">
                             {opcion.label}
                           </Typography>
 
@@ -357,8 +368,8 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
     backgroundColor: "#ccc",
     zIndex: 1,
     color: "#fff",
-    width: 90,
-    height: 90,
+    width: 50,
+    height: 50,
     display: "flex",
     borderRadius: "50%",
     justifyContent: "center",
@@ -377,9 +388,9 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
     const { active, completed } = props;
 
     const icons = {
-      1: <PersonIcon sx={{ fontSize: 50 }} />,
-      2: <SettingsIcon sx={{ fontSize: 50 }} />,
-      3: <MapIcon sx={{ fontSize: 50 }} />,
+      1: <PersonIcon/>,
+      2: <SettingsIcon/>,
+      3: <MapIcon/>,
     };
 
     return (
@@ -398,7 +409,7 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
   };
   const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
     [`&.${stepConnectorClasses.alternativeLabel}`]: {
-      top: 43,
+      top: 22,
     },
     [`&.${stepConnectorClasses.active}`]: {
       [`& .${stepConnectorClasses.line}`]: {
@@ -413,7 +424,7 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
       },
     },
     [`& .${stepConnectorClasses.line}`]: {
-      height: 5,
+      height: 3,
       border: 0,
       backgroundColor:
         theme.palette.mode === "dark" ? theme.palette.grey[800] : "#eaeaf0",
@@ -451,13 +462,16 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
 
   return (
     <>
-      <Typography className={classes.subTitle}>
+      <Typography className={classes.subTitle} variant="body1">
         Este <b>buscador</b>, tiene el objetivo de facilitar la búsqueda de datos anticorrupción en la Plataforma Digital Nacional.
       </Typography>
+      <Grid container justifyContent="center" alignItems="center">
+        <Grid item xs={12} md={8}>
       <Stepper
         alternativeLabel
         activeStep={activeStep}
         connector={<ColorlibConnector />}
+        className={classes.stepper} 
       >
         {steps.map((step, index) => {
           const labelProps = {};
@@ -467,7 +481,7 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
               <Typography
                 variant="caption"
                 align="center"
-                style={{ display: "block", color: "#fff" }}
+                style={{ display: "block", color: "rgb(232,214,67)" }}
               >
                 opcional
               </Typography>
@@ -496,12 +510,20 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
               }}
             >
               <StepLabel StepIconComponent={ColorlibStepIcon} {...labelProps} >
-                {step}
+                <Typography
+                  variant="caption"
+                  align="center"
+                >
+                  {step}
+                </Typography>
+                
               </StepLabel>
             </Step>
           );
         })}
       </Stepper>
+      </Grid>
+      </Grid>
       
 
       {activeStep >= steps.length - 1 ? (
@@ -518,11 +540,11 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
           </Button>
         </>
       ) : (
-        <>
-          <Typography className={classes.subTitle} paragraph>
+        <><Divider className={classes.divider} >
+          <Typography className={classes.subTitle} variant="body1" >
             {activeStep === 0 ? ("Selecciona una de las opciones siguientes:") : ("Llena los campos que consideres necesarios para realizar tu búsqueda.")}
           </Typography>
-          
+          </Divider>
           <FormProvider {...methods}>
             <form onSubmit={methods.handleSubmit(handleNext)} noValidate>
               {GetStepContent(activeStep)}

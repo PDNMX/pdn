@@ -41,6 +41,10 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogActions-root": {
     padding: theme.spacing(0),
   },
+  /* "&.MuiPaper-root": {
+    backgroundColor: "red",
+    color: "red"
+  } */
 }));
 
 const BootstrapDialogTitle = (props) => {
@@ -107,7 +111,7 @@ export default function CustomizedDialogs() {
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose} className={classes.titulo} >
           {titulo}
         </BootstrapDialogTitle>
-        <DialogContent dividers>
+        <DialogContent /* dividers */>
             <Grid
               container
               alignItems="center"
