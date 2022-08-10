@@ -48,7 +48,7 @@ function loadData2() {
     });
 }
 
-let color =  ["#52B1FF", "#DD70F0", "#07B6A5", "#FFB647", "#FF5C92", "#F97D58"];
+//let color =  ["#52B1FF", "#DD70F0", "#07B6A5", "#FFB647", "#FF5C92", "#F97D58"];
 let z = d3.scaleOrdinal()
     .range( ["#52B1FF", "#DD70F0", "#07B6A5", "#FFB647", "#FF5C92", "#F97D58"]);
 z.domain(["sancionatoria con multa e inhabilitación", "sancionatoria con multa", "sancionatoria", "absolutoria", "no especificado", "absolutoria"])

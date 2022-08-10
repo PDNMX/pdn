@@ -24,13 +24,12 @@ const estados = [
 ];
 
 const Cobertura = () => {
-
     return (<div>
-
-
-            <Grid container spacing={0} alignContent="center">
-                <Grid item xs={12}>
-                    <Typography>Cobertura</Typography>
+            <Grid container spacing={0} justifyContent="center">
+                <Grid item xs={12} style={{maxWidth: 1200}}>
+                    <Typography>
+                        Cobertura
+                    </Typography>
                     <ul>
                         {estados.map( e =>{
                             return <li><Link component={RouterLink} to={e.route}>{e.name}</Link></li>

@@ -50,7 +50,7 @@ function aux() {
         });
     });
 }
-
+/*
 let color =["#F87268", "#DC6AF0", "#B286FD", "#8A97D6",
     "#3DA2F5", "#00BCD4", "#00B3A1", "#4CAF50",
     "#8BC34A", "#FFC107", "#FF9800", "#FF7247",
@@ -58,12 +58,13 @@ let color =["#F87268", "#DC6AF0", "#B286FD", "#8A97D6",
     "#AD94D6", "#8A9BF9", "#6DBCFD", "#1C9BFD",
     "#1DE2FC", "#00DBC5", "#71E575", "#AFEE68",
     "#F9AE3E", "#FF9270", "#F2B39C"];
+ */
 
 const AnioResolucionSanciones = (props) => {
     const [hoveredCell, setHoveredCell] = React.useState(false);
     const [error, setError] = React.useState(false);
     const [methods, setMethods] = React.useState({});
-    const [configPie, setConfigPie] = React.useState({});
+    //const [configPie, setConfigPie] = React.useState({});
     const {classes} = props;
 
     React.useEffect(() => {
@@ -81,7 +82,7 @@ const AnioResolucionSanciones = (props) => {
                 setMethods({
                     data: aux,
                 });
-                setConfigPie({
+                /*setConfigPie({
                     data: aux,
                     groupBy: "anio",
                     value: function (d) {
@@ -105,7 +106,7 @@ const AnioResolucionSanciones = (props) => {
                             return color[i]
                         }
                     }
-                })
+                })*/
             }).catch(err => {
                 console.error(err);
                 setError(true);

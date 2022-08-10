@@ -1,7 +1,7 @@
 import React from 'react';
 import {withStyles} from "@mui/styles";
 import PropTypes from 'prop-types';
-import {Grid, Link, Paper, Typography} from "@mui/material";
+import {Grid, Paper} from "@mui/material";
 import AnioResolucionSanciones from "./AnioResolucionSanciones";
 import SentidoResoluciones from "./SentidoResoluciones";
 import SentidoResolucionesAnio from "./SentidoResolucionesAnio";

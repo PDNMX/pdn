@@ -46,7 +46,7 @@ function aux() {
         });
     });
 }
-
+/*
 function loadData2() {
     return new Promise((resolve, reject) => {
         let options = {
@@ -61,7 +61,7 @@ function loadData2() {
             reject(err);
         });
     });
-}
+}*/
 
 let z = d3.scaleOrdinal()
     .range( ["#F87268", "#DC6AF0", "#B286FD", "#8A97D6",
@@ -70,14 +70,14 @@ let z = d3.scaleOrdinal()
         "#E2977E", "#FD938B", "#FF85AD", "#ED85FF",
         "#AD94D6", "#8A9BF9", "#6DBCFD", "#1C9BFD",
         "#1DE2FC", "#00DBC5", "#71E575", "#AFEE68",
-       "#F9AE3E", "#FF9270", "#F2B39C"]);
+        "#F9AE3E", "#FF9270", "#F2B39C"]);
 
 
 const DependenciasSanciones = (props) => {
     const [errorG1, setErrorG1] = React.useState(false);
-    const [errorG2, setErrorG2] = React.useState(false);
+    //const [errorG2, setErrorG2] = React.useState(false);
     const [methods, setMethods] = React.useState({});
-    const [config2, setConfig2] = React.useState({});
+    //const [config2, setConfig2] = React.useState({});
 
     const {classes} = props;
     React.useEffect(() => {
@@ -122,7 +122,7 @@ const DependenciasSanciones = (props) => {
             setErrorG1(true);
         });
 
-        loadData2().then(result2 => {
+        /*loadData2().then(result2 => {
             let aux2 = result2.data.data.map(item => {
                 return {
                     "value": parseInt(item.total, 10),
@@ -160,7 +160,7 @@ const DependenciasSanciones = (props) => {
         }).catch(err => {
             console.error(err);
             setErrorG2(true);
-        });
+        });*/
     }, []);
 
     return (
@@ -229,8 +229,6 @@ const DependenciasSanciones = (props) => {
 
         </div>
     )
-
-
 }
 
 DependenciasSanciones.propTypes = {

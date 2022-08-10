@@ -52,19 +52,19 @@ function aux() {
         });
     });
 } 
-
+/*
 let color =["#F87268", "#DC6AF0", "#B286FD", "#8A97D6",
     "#3DA2F5", "#00BCD4", "#00B3A1", "#4CAF50",
     "#8BC34A", "#FFC107", "#FF9800", "#FF7247",
     "#E2977E", "#FD938B", "#FF85AD", "#ED85FF",
     "#AD94D6", "#8A9BF9", "#6DBCFD", "#1C9BFD",
     "#1DE2FC", "#00DBC5", "#71E575", "#AFEE68",
-    "#F9AE3E", "#FF9270", "#F2B39C"];
+    "#F9AE3E", "#FF9270", "#F2B39C"];*/
 
 const AnioResolucionSanciones = (props) => {
     const [error, setError] = useState(false);
     const [methods, setMethods] = useState({});
-    const [configPie, setConfigPie] = useState({});
+    //const [configPie, setConfigPie] = useState({});
     const [hoveredCell, setHoveredCell] = useState(false);
     const {classes} = props;
     const [open, setOpen] = useState(false);
@@ -80,7 +80,7 @@ const AnioResolucionSanciones = (props) => {
                     y: parseInt(item.count, 10)
                 }
             })
-            setConfigPie({
+            /*setConfigPie({
                 data: aux,
                 groupBy: "anio",
                 value: function (d) {
@@ -104,7 +104,7 @@ const AnioResolucionSanciones = (props) => {
                         return color[i]
                     }
                 }
-            });
+            });*/
             setMethods({
                 data: aux,
                 xConfig: {
