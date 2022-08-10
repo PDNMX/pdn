@@ -7,6 +7,8 @@ import ThemeV2 from "../../../../ThemeV2";
 import Autocomplete from "@mui/material/Autocomplete";
 import CircularProgress from "@mui/material/CircularProgress";
 
+import Fade from "@mui/material/Fade";
+
 const axios = require("axios");
 
 export function PersonasServidorasPublicasSancionados() {
@@ -76,141 +78,145 @@ export function PersonasServidorasPublicasSancionados() {
       - Tipo de sanción (multi select)
     */
   return (
-    <ThemeProvider theme={ThemeV2}>
-      <Controller
-        control={control}
-        name="psp-sancionados.nombres"
-        defaultValue=""
-        render={({ field }) => (
-          <TextField
-            label="Nombre(s)"
-            variant="outlined"
-            placeholder="Ingresa el nombre o nombres"
-            fullWidth
-            margin="normal"
-            {...field}
-          />
-        )}
-      />
-
-      <Controller
-        control={control}
-        name="psp-sancionados.primerApellido"
-        defaultValue=""
-        render={({ field }) => (
-          <TextField
-            label="Primer Apellido"
-            variant="outlined"
-            placeholder="Ingresa el primer apellido"
-            fullWidth
-            margin="normal"
-            {...field}
-          />
-        )}
-      />
-      <Controller
-        control={control}
-        name="psp-sancionados.segundoApellido"
-        defaultValue=""
-        render={({ field }) => (
-          <TextField
-            label="Segundo Apellido"
-            variant="outlined"
-            placeholder="Ingresa el segundo apellido"
-            fullWidth
-            margin="normal"
-            {...field}
-          />
-        )}
-      />
-      <Controller
-        name="psp-sancionados.institucion"
-        control={control}
-        defaultValue=""
-        render={({ field }) => (
-          <Autocomplete
-            {...field}
-            open={open}
-            onOpen={() => {
-              setOpen(true);
-            }}
-            onClose={() => {
-              setOpen(false);
-            }}
-            /* value={null} */
-            isOptionEqualToValue={(option, value) =>
-              option.value === value.value
-            }
-            /* getOptionLabel={(option) => option.label} */
-            options={options}
-            loading={loading}
-            onChange={(e, value) => field.onChange(value.value)}
-            renderOption={(props, option) => {
-              return (
-                <li {...props} key={option.key}>
-                  {option.label}
-                </li>
-              );
-            }}
-            renderInput={(params) => (
+    <Fade in={true} timeout={1200}>
+      <div>
+        <ThemeProvider theme={ThemeV2}>
+          <Controller
+            control={control}
+            name="psp-sancionados.nombres"
+            defaultValue=""
+            render={({ field }) => (
               <TextField
-                {...params}
-                margin={"normal"}
-                label="Institución"
-                placeholder="Ingresa la Institución"
+                label="Nombre(s)"
+                variant="outlined"
+                placeholder="Ingresa el nombre o nombres"
                 fullWidth
-                InputProps={{
-                  ...params.InputProps,
-                  endAdornment: (
-                    <>
-                      {loading ? (
-                        <CircularProgress color="inherit" size={20} />
-                      ) : null}
-                      {params.InputProps.endAdornment}
-                    </>
-                  ),
-                }}
+                margin="normal"
+                {...field}
               />
             )}
           />
-        )}
-      />
 
-      <Controller
-        name="psp-sancionados.tipoSancion"
-        control={control}
-        defaultValue={[]}
-        render={({ field: { ref, ...field }, fieldState: { error } }) => (
-          <Autocomplete
-            {...field}
-            disableClearable
-            disablePortal
-            filterSelectedOptions
-            multiple
-            getOptionDisabled={(option) => option.disabled}
-            getOptionLabel={(option) => option.label}
-            onChange={(e, value) => field.onChange(value)}
-            options={tiposSancion}
-            /* getOptionSelected={(option, value) => option === value} */
-            isOptionEqualToValue={(option, value) =>
-              option.label === value.label
-            }
-            renderInput={(params) => (
+          <Controller
+            control={control}
+            name="psp-sancionados.primerApellido"
+            defaultValue=""
+            render={({ field }) => (
               <TextField
-                margin={"normal"}
-                error={!!error}
-                helperText={error?.message}
-                label="Tipos de Sanción"
-                placeholder="Ingresa el Tipo de Sanción"
-                name="psp-sancionados.tipoSancion"
-                type="Buscar"
-                inputRef={ref}
-                {...params}
+                label="Primer Apellido"
+                variant="outlined"
+                placeholder="Ingresa el primer apellido"
+                fullWidth
+                margin="normal"
+                {...field}
               />
             )}
           />
-        )}
-      />
-    </ThemeProvider>
+          <Controller
+            control={control}
+            name="psp-sancionados.segundoApellido"
+            defaultValue=""
+            render={({ field }) => (
+              <TextField
+                label="Segundo Apellido"
+                variant="outlined"
+                placeholder="Ingresa el segundo apellido"
+                fullWidth
+                margin="normal"
+                {...field}
+              />
+            )}
+          />
+          <Controller
+            name="psp-sancionados.institucion"
+            control={control}
+            defaultValue=""
+            render={({ field }) => (
+              <Autocomplete
+                {...field}
+                open={open}
+                onOpen={() => {
+                  setOpen(true);
+                }}
+                onClose={() => {
+                  setOpen(false);
+                }}
+                /* value={null} */
+                isOptionEqualToValue={(option, value) =>
+                  option.value === value.value
+                }
+                /* getOptionLabel={(option) => option.label} */
+                options={options}
+                loading={loading}
+                onChange={(e, value) => field.onChange(value.value)}
+                renderOption={(props, option) => {
+                  return (
+                    <li {...props} key={option.key}>
+                      {option.label}
+                    </li>
+                  );
+                }}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    margin={"normal"}
+                    label="Institución"
+                    placeholder="Ingresa la Institución"
+                    fullWidth
+                    InputProps={{
+                      ...params.InputProps,
+                      endAdornment: (
+                        <>
+                          {loading ? (
+                            <CircularProgress color="inherit" size={20} />
+                          ) : null}
+                          {params.InputProps.endAdornment}
+                        </>
+                      ),
+                    }}
+                  />
+                )}
+              />
+            )}
+          />
+
+          <Controller
+            name="psp-sancionados.tipoSancion"
+            control={control}
+            defaultValue={[]}
+            render={({ field: { ref, ...field }, fieldState: { error } }) => (
+              <Autocomplete
+                {...field}
+                disableClearable
+                disablePortal
+                filterSelectedOptions
+                multiple
+                getOptionDisabled={(option) => option.disabled}
+                getOptionLabel={(option) => option.label}
+                onChange={(e, value) => field.onChange(value)}
+                options={tiposSancion}
+                /* getOptionSelected={(option, value) => option === value} */
+                isOptionEqualToValue={(option, value) =>
+                  option.label === value.label
+                }
+                renderInput={(params) => (
+                  <TextField
+                    margin={"normal"}
+                    error={!!error}
+                    helperText={error?.message}
+                    label="Tipos de Sanción"
+                    placeholder="Ingresa el Tipo de Sanción"
+                    name="psp-sancionados.tipoSancion"
+                    type="Buscar"
+                    inputRef={ref}
+                    {...params}
+                  />
+                )}
+              />
+            )}
+          />
+        </ThemeProvider>
+      </div>
+    </Fade>
   );
 }

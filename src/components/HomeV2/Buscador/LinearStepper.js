@@ -45,11 +45,13 @@ import Zoom from "@mui/material/Zoom";
 import Chip from '@mui/material/Chip';
 import Divider from '@mui/material/Divider';
 
+import Fade from '@mui/material/Fade';
+
 const KEY = "pdn.camposBusqueda";
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    margin: "3% 0%",
+    margin: "1% 0%",
     width: "100%",
     /* backgroundColor: 'rgba(29, 80, 109, 0.95)', */
   },
@@ -199,7 +201,7 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
   function GetStepContent(step) {
     switch (step) {
       case 0:
-        return <TipoBusqueda />;
+        return <Fade in={true} timeout={1200}><div><TipoBusqueda /></div></Fade>;
       case 1:
         return <FiltrosBusqueda tipoBusqueda={name} />;
       default:
@@ -304,7 +306,7 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
               className={classes.container}
             >
               {opciones.map((opcion, index) => (
-                <Grid key={index} item md={4} xs={6} sm={6} style={{display: 'flex'}}>
+                <Grid key={index} item md={4} xs={12} sm={6} style={{display: 'flex'}}>
                   <Card className={classes.card} {...field} style={{width: "100%", display: 'flex', justifyContent: 'space-between', flexDirection: 'column', "borderBottom": "0.3rem solid " + opcion.color}}>
                     <Tooltip
                       title={opcion.detalle}
@@ -436,15 +438,9 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
     if (activeStep === 0) {
       stateChanger("Asistente de búsqueda");
     }
-    //console.log(methods.getValues());
     //Runs on every render
   });
 
-  /* useEffect(() => {
-    if (activeStep === 0) {
-      stateChanger("Asistente de búsqueda");
-    }
-  }, []); */
   useEffect(() => {
     const storedCampos = JSON.parse(localStorage.getItem(KEY));
     //const values = methods.getValues();
