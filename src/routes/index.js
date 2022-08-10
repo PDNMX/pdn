@@ -16,7 +16,7 @@ import DeclaracionesEspecificaciones from '../components/Especificaciones/Declar
 import EspecificacionesSancionados from '../components/Especificaciones/Sancionados/Sancionados';
 import SpecsS2 from '../components/Especificaciones/ServidoresIntervienen/ServidoresIntervienen';
 import SpecsS6 from '../components/Especificaciones/Contrataciones/index';
-import Cobertura from '../components/Cobertura/Cobertura';
+//import Cobertura from '../components/Cobertura/Cobertura';
 
 // import DeclaracionesS1 from '../components/Declaraciones';
 import DeclaracionesS1v2 from '../components/Declaraciones2';
@@ -223,7 +223,7 @@ const pdnRoutes = [
 		color: "#f2f2f2",
 		icon: IconHelpDesk
 	},
-	{
+	/*{
 		exact: true,
 		path: '/cobertura',
 		component: Cobertura,
@@ -232,7 +232,7 @@ const pdnRoutes = [
 		shortName: "Cobertura",
 		color: "#f2f2f2",
 		icon: IconHelpDesk
-	}
+	}*/
 
 ];
 
