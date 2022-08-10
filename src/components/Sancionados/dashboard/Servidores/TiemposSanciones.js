@@ -1,7 +1,7 @@
 import React from 'react';
 import {withStyles} from "@mui/styles";
 import PropTypes from 'prop-types';
-import {Typography, Table, TableContainer, TableRow, TableBody, TableHead,TableCell} from "@mui/material";
+import {Typography} from "@mui/material";
 import {BarChart} from "d3plus-react";
 import axios from 'axios';
 import MensajeErrorDatos from "@Mensajes/MensajeErrorDatos";
