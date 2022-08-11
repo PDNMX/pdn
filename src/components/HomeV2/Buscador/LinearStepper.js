@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Typography, Step, Button, Stepper, StepLabel } from "@mui/material/";
 import { makeStyles } from "@mui/styles";
-import {
-  useForm,
-  Controller,
-  FormProvider,
-  useFormContext,
-} from "react-hook-form";
+import { useForm, Controller, FormProvider, useFormContext, } from "react-hook-form";
 
 // INPUTS PARA EL FORM
 import { PersonasServidorasPublicasSancionados } from "./InputsBusqueda/PersonasServidorasPublicasSancionados";
@@ -26,9 +21,7 @@ import { ResultadosS6v2 } from "./ResultadosBusqueda/s6/InstitucionesRealizaronC
 
 import PropTypes from "prop-types";
 import { styled } from "@mui/material/styles";
-import StepConnector, {
-  stepConnectorClasses,
-} from "@mui/material/StepConnector";
+import StepConnector, { stepConnectorClasses, } from "@mui/material/StepConnector";
 
 import PersonIcon from "@mui/icons-material/Person";
 import SettingsIcon from "@mui/icons-material/Settings";
@@ -44,8 +37,10 @@ import Zoom from "@mui/material/Zoom";
 
 import Chip from '@mui/material/Chip';
 import Divider from '@mui/material/Divider';
-
 import Fade from '@mui/material/Fade';
+
+import opcionesBusqueda from "./opcionesBusqueda";
+import defaultValues from "./defaultValues";
 
 const KEY = "pdn.camposBusqueda";
 
@@ -155,40 +150,7 @@ function FiltrosBusqueda(props) {
 const LinaerStepper = ({ stateChanger, ...rest }) => {
   const classes = useStyles();
   const methods = useForm({
-    defaultValues: {
-      "psp-sancionados": {
-        nombres: "",
-        primerApellido: "",
-        segundoApellido: "",
-        institucion: "",
-        tipoSancion: [],
-      },
-      "psp-participan": {
-        nombres: "",
-        primerApellido: "",
-        segundoApellido: "",
-        institucion: "",
-        tipoProcedimientoContratacion: [],
-      },
-      "psp-declaraciones": {
-        nombres: "",
-        primerApellido: "",
-        segundoApellido: "",
-        institucion: "",
-        empleoCargoComision: "",
-      },
-      "empresas-sancionadas": {
-        nombreRazonSocial: "",
-        institucion: "",
-        tipoSancion: [],
-      },
-      "empresas-contratos": { nombreRazonSocial: "", bienServicioOtorgado: "" },
-      "instituciones-contrataciones": {
-        institucionContratante: "",
-        bienServicioOtorgado: "",
-        tipoContratacion: "any",
-      },
-    },
+    defaultValues: defaultValues,
   });
 
   //const { getValues } = useForm();
@@ -234,62 +196,7 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
   }
 
   function TipoBusqueda() {
-    const opciones = [
-      {
-        label: "Personas servidoras públicas sancionadas",
-        value: "psp-sancionados",
-        sistema: "Sistema 3",
-        detalle:
-          "Información de personas servidoras públicas por la comisión de faltas administrativas.",
-        img: "ico_Spsancionados.svg",
-        color: "#b8aef9"
-      },
-      {
-        label: "Personas servidoras públicas que participan en contrataciones",
-        value: "psp-participan",
-        sistema: "Sistema 2",
-        detalle:
-          "Datos de personas servidoras públicas que intervienen en contrataciones públicas, otorgamiento de concesiones, enajenaciones de bienes y emisión de dictámenes.",
-        img: "ico_Spcontrataciones.svg",
-        color: "#e7a2e3"
-      },
-      {
-        label: "Personas servidoras públicas y sus declaraciones patrimoniales",
-        value: "psp-declaraciones",
-        sistema: "Sistema 1",
-        detalle:
-          "Declaraciones patrimoniales de personas servidoras públicas de todo el país.",
-        img: "ico_Spdeclaraciones.svg",
-        color: "#f9bfb4"
-      },
-      {
-        label: "Empresas sancionadas por actos corrupción",
-        value: "empresas-sancionadas",
-        sistema: "Sistema 3",
-        detalle:
-          "Información de particulares sancionados por la comisión de faltas administrativas.",
-        img: "ico_empresas_sancionadas.svg",
-        color: "#b8aef9"
-      },
-      {
-        label: "Empresas que tienen contratos con el gobierno",
-        value: "empresas-contratos",
-        sistema: "Sistema 6",
-        detalle:
-          "Información de particulares que otorgan bienes, servicios u obra pública a las instituciones públicas de todo el país.",
-        img: "ico_empresas_contratos_gob.svg",
-        color: "#8dd9f6"
-      },
-      {
-        label: "Instituciones públicas que contrataron bienes, obras o servicios",
-        value: "instituciones-contrataciones",
-        sistema: "Sistema 6",
-        detalle:
-          "Información sobre los gastos que realizan las instituciones públicas de todo el país para la adquisición de bienes, servicios u obra pública. ",
-        img: "ico_instituciones_contrataciones.svg",
-        color: "#8dd9f6"
-      },
-    ];
+    const opciones = opcionesBusqueda;
     const { control } = useFormContext();
     return (
       <>
