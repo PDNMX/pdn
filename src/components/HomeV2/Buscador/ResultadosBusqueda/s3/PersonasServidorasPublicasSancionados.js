@@ -5,14 +5,16 @@ import MensajeErrorDatos from "../../../../Mensajes/MensajeError";
 import Previos from "../Previos";
 import TablaServidoresSancionados from "../../../../Sancionados/Servidores/TablaServidoresSancionados";
 import DetalleServidorSancionado from "../../../../Sancionados/Servidores//DetalleServidorSancionado";
-
+import { makeStyles } from '@mui/styles';
 //import ReactGA from "react-ga";
 import Chips from '../Chips';
 
+import {ThemeProvider} from '@mui/material/styles';
+import ThemeV2 from "../../../../../ThemeV2";
+
 const axios = require("axios");
 
-
-const styles = (theme) => ({
+const useStyles = makeStyles(theme => ({
   formControl: {
     width: "100%",
   },
@@ -49,7 +51,8 @@ const styles = (theme) => ({
     padding: theme.spacing(1),
     fontWeight: "bold",
   },
-});
+}));
+
 
 const initialPagination = {
   page: 1,
@@ -65,6 +68,7 @@ const initialSort = {
 export function ResultadosS3s(props) {
   const dataProps = JSON.parse(props.data);
   const data = dataProps["psp-sancionados"];
+  const classes = useStyles();
   /*
   1.- Servidores publicos sancionados
   - Nombre
@@ -247,13 +251,13 @@ export function ResultadosS3s(props) {
   };
 
   return (
-    <React.Fragment>
+    <ThemeProvider theme={ThemeV2}>
       {/*Buscador*/}
       <Grid container spacing={0}>
         <Grid item xs={12}>
           {loading && (
             <Modal open={loading} disableAutoFocus={true}>
-              <CircularProgress id="spinnerLoading" size={200} />
+              <CircularProgress id="spinnerLoading" size={200} className={classes.progress} />
             </Modal>
           )}
           {error && <MensajeErrorDatos />}
@@ -298,10 +302,11 @@ export function ResultadosS3s(props) {
           servidor={selectedItem}
         />
       )}
-    </React.Fragment>
+    </ThemeProvider>
   );
 }
 
-export default withStyles(styles, { withTheme: false })(
+export default withStyles(useStyles, { withTheme: false })(
   ResultadosS3s
 );
+
