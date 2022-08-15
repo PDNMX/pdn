@@ -2,6 +2,8 @@ import React from "react";
 import TablaResultados from "./TablaResultados";
 import axios from "axios";
 
+import { Modal, CircularProgress } from '@mui/material';
+
 import Chips from '../Chips';
 
 export function ResultadosS6v1(props) {
@@ -21,7 +23,7 @@ export function ResultadosS6v1(props) {
       total: 0,
     },
     results: [],
-    loading: false,
+    loading: true,
     buyers: [],
     buyer_id: "any",
     procurementMethod: "any",
@@ -29,8 +31,6 @@ export function ResultadosS6v1(props) {
     cycle: "any",
     cycles: [],
   });
-
-  let sumaResultados = 0;
 
   React.useEffect(() => {
     //fetch data
@@ -43,9 +43,7 @@ export function ResultadosS6v1(props) {
     if (state.loading) {
       search();
     }
-  }, [
-    state.loading,
-  ]);
+  }, [state.loading]);
 
   const handleChangeRowsPerPage = (pageSize) => {
     setState({
@@ -109,8 +107,8 @@ export function ResultadosS6v1(props) {
         data: body,
         json: true,
       });
-      sumaResultados = res.data.data.length;
-      console.log(sumaResultados)
+      //sumaResultados = res.data.data.length;
+      //console.log(sumaResultados)
       setState({
         ...state,
         loading: false,
@@ -128,14 +126,19 @@ export function ResultadosS6v1(props) {
 
   return (
     <>
-      <Chips criterios={JSON.stringify(data)}/>
+      <Chips criterios={JSON.stringify(data)} />
+      {state.loading && (
+        <Modal id={"modalIsela"} open={state.loading}>
+          <CircularProgress size={200} style={{position: 'fixed', margin: 'auto', left: 0, right: 0, top: 0, bottom: 0}}/>
+        </Modal>
+      )}
       <div style={{ overflow: "auto" }}>
         <TablaResultados
           data={state.results}
           pagination={state.pagination}
           handleChangeRowsPerPage={handleChangeRowsPerPage}
           handleChangePage={handlePageChange}
-          loading={state.loading}
+          /* loading={state.loading} */
         />
       </div>
     </>

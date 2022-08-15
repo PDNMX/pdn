@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-    //lighten,
-    makeStyles
-} from '@mui/styles';
+import { makeStyles } from '@mui/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -11,6 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 //import TableSortLabel from '@mui/material/TableSortLabel';
+
 import Paper from '@mui/material/Paper';
 import LinearIndeterminate from '../../../../Sistema6/LinearIndeterminate';
 import ResponsiveDialog from '../../../../Sistema6/ResponsiveDialog';
@@ -278,9 +276,7 @@ export default function EnhancedTable(props) {
                             labelDisplayedRows={({from, to, count}) => `${from}-${to} de ${count}`}
                         />
                         </>
-                    ) : (
-                        <><h1>No se encontraron resultados para los criterios de búsqueda definidos</h1></>
-                    )}
+                    ) : (<></>)}
                 </Paper>
             }
             <ResponsiveDialog open={open} handleCloseDialog={handleCloseDialog} data ={dialogData}/>

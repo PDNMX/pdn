@@ -1,6 +1,7 @@
 import React from "react";
 import TablaResultados from "./TablaResultados";
 import axios from "axios";
+import { Modal, CircularProgress } from '@mui/material';
 
 import Chips from '../Chips';
 
@@ -24,7 +25,7 @@ export function ResultadosS6v2(props) {
       total: 0,
     },
     results: [],
-    loading: false,
+    loading: true,
     buyers: [],
     buyer_id: "any",
     procurementMethod: data.tipoContratacion.trim() || "any",
@@ -129,13 +130,18 @@ export function ResultadosS6v2(props) {
   return (
     <>
       <Chips criterios={JSON.stringify(data)}/>
+      {state.loading && (
+        <Modal id={"modalIsela"} open={state.loading}>
+          <CircularProgress size={200} style={{position: 'fixed', margin: 'auto', left: 0, right: 0, top: 0, bottom: 0}}/>
+        </Modal>
+      )}
       <div style={{ overflow: "auto" }}>
         <TablaResultados
           data={state.results}
           pagination={state.pagination}
           handleChangeRowsPerPage={handleChangeRowsPerPage}
           handleChangePage={handlePageChange}
-          loading={state.loading}
+          /* loading={state.loading} */
         />
       </div>
     </>
