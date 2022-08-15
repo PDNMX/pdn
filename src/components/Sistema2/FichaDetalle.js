@@ -7,7 +7,7 @@ import DownloadItem from "../Compartidos/DownloadItem";
 const servidores = require('../Utils/glosario.json')
 
 const Glosario = props => {
-    const data = servidores.find(e => e.id === props.id);
+    const data = servidores.servidores.find(e => e.id === props.id);
     return <React.Fragment>
         <Typography color="inherit">{data.title}</Typography>
         <em>{data.description}</em>
