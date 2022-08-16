@@ -144,7 +144,7 @@ const [state, setState] = React.useState({
 
     React.useEffect(() => {
         if (state.loading){
-            console.log("Searching...")
+            //console.log("Searching...")
             broadSearch();
         }
     }, [state.summaryData]);
@@ -153,7 +153,7 @@ const [state, setState] = React.useState({
         // al hacer click en el boton regresar: state.loading => true y state.results = []
         // state.results = [] desencadena la búsqueda
         if (state.loading) {
-            console.log('Fetching data...');
+            //console.log('Fetching data...');
             fetchData();
         }
     }, [
@@ -384,8 +384,8 @@ const [state, setState] = React.useState({
             apellidoUno,
             apellidoDos,
             tipoProcedimiento,
-            /* rowsPerPage,
-            page, */
+            rowsPerPage,
+            page,
             supplier_id
         } = state;
 
@@ -403,8 +403,8 @@ const [state, setState] = React.useState({
             json: true,
             data: {
                 ...filtros,
-                /* page: page + 1,
-                pageSize: rowsPerPage, */
+                page: page + 1,
+                pageSize: rowsPerPage,
                 supplier_id: supplier_id
             }
         };
@@ -528,7 +528,7 @@ const [state, setState] = React.useState({
                                         }}
                                         onPageChange={handleChangePage}
                                         onRowsPerPageChange={handleChangeRowsPerPage}
-                                        labelRowsPerPage='Registros por página'
+                                        labelRowsPerPage='Resultados por página'
                                         labelDisplayedRows={({from, to, count}) => {
                                             return `${from}-${to} de ${count}`;
                                         }}

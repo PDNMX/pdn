@@ -23,22 +23,12 @@ const styles = theme => ({
         marginBottom: theme.spacing(3),
         overflowX: 'auto',
     },
-    iconoVer: {
-        color: theme.palette.secundario.dark,
-        cursor: 'pointer'
-    },
     tableCell: {
         color: theme.palette.text.main
     },
     tablePagination: {
         color: theme.palette.greyColor,
         backgroundColor: theme.palette.background.tableBody
-    },
-    conectado:{
-        color: theme.palette.azulPDN
-    },
-    noconectado:{
-        color: theme.palette.greyColor
     },
     row:{
         cursor: 'pointer'
@@ -58,7 +48,7 @@ function Previos({data, classes, handleChangeSujetoObligado}) {
       let row = props.data;
       if (!row.error && row.totalRows > 0) {
         return (
-        
+            
             <TableRow
               key={row.supplier_id}
               hover
@@ -99,7 +89,6 @@ function Previos({data, classes, handleChangeSujetoObligado}) {
                           align="left"
                           variant={"head"}
                           className={classes.tableCell}
-                          style={{ width: "60%" }}
                         >
                           <Typography variant={"body1"}>
                             Proveedor de información
@@ -128,8 +117,8 @@ function Previos({data, classes, handleChangeSujetoObligado}) {
                           page * rowsPerPage,
                           page * rowsPerPage + rowsPerPage
                         ) */
-                        .map((row) => (
-                          <Renglon data={row}/>
+                        .map((row, index) => (
+                          <Renglon data={row} key={index}/>
                         ))}
                     </TableBody>
                     
