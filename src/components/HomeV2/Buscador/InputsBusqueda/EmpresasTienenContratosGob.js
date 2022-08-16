@@ -27,12 +27,12 @@ export function EmpresasTienenContratosGob() {
             name="empresas-contratos.supplier"
             defaultValue="SHCP"
             render={({ field }) => (
-              <FormControl fullWidth={true} margin={"normal"}>
+              <FormControl fullWidth margin={"normal"}>
                 <InputLabel>Proveedor de información</InputLabel>
                 <Select
                   /* value={'Tipo de contratación'} */
                   label="Selecciona el proveedor de información"
-                  autoWidth
+                  fullWidth
                   {...field}
                 >
                   <MenuItem default value="SHCP">
@@ -52,10 +52,10 @@ export function EmpresasTienenContratosGob() {
             defaultValue=""
             render={({ field }) => (
               <TextField
+              fullWidth
                 label="Nombre o razón social"
                 variant="outlined"
                 placeholder="Ingresa el nombre o razón social"
-                fullWidth
                 margin="normal"
                 {...field}
               />

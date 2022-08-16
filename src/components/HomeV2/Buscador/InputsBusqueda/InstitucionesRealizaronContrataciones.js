@@ -32,7 +32,6 @@ export function InstitucionesRealizaronContrataciones() {
                 <Select
                   /* value={'Tipo de contratación'} */
                   label="Selecciona el proveedor de información"
-                  autoWidth
                   {...field}
                 >
                   <MenuItem default value="SHCP">
@@ -81,27 +80,6 @@ export function InstitucionesRealizaronContrataciones() {
             )}
           />
 
-          {/* <Controller
-        control={control}
-        name="instituciones-contrataciones.tipoContratacion"
-        defaultValue="any"
-        render={({ field }) => (
-          <FormControl fullWidth={true} margin={"normal"}>
-            <InputLabel>Tipo de Procedimiento</InputLabel>
-            <Select
-              label="Tipo de contratación"
-              fullWidth
-              {...field}
-            >
-              <MenuItem default value="any"><em>Cualquiera</em> </MenuItem>
-              <MenuItem value="direct">Adjudicación directa</MenuItem>
-              <MenuItem value="selective">Invitación a tres</MenuItem>
-              <MenuItem value="open">Licitación pública</MenuItem>
-            </Select>
-          </FormControl>
-        )}
-      /> */}
-
           <Controller
             control={control}
             name="instituciones-contrataciones.tipoContratacion"
@@ -112,7 +90,6 @@ export function InstitucionesRealizaronContrataciones() {
                 <Select
                   /* value={'Tipo de contratación'} */
                   label="Tipo de contratación"
-                  autoWidth
                   {...field}
                 >
                   <MenuItem default value="any">
