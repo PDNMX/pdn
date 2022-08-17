@@ -14,7 +14,7 @@ const styles = theme => ({
 const bar_colors = [ '#43b9a5', '#f46c81', '#f5ca5d', '#5ccbf0', '#beF5a6' ];
 
 const VistaDetalleSistema = props => {
-    const {estado, id_sistema, sys_icon, sys_color, data, classes} = props;
+    const {estado, sys_id, sys_icon, sys_color, data, classes} = props;
 
     /* Vista detallada por Sistema */
     return <Box sx={{display: 'flex', flexWrap: "wrap", alignItems: "stretch"}} justifyContent="center">

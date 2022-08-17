@@ -17,7 +17,7 @@ const colors = {
     s3 : "#C6C1EB",
 };
 
-const data = {
+const general_data = {
     s1: {
         value: 60,
         total: 100,
@@ -114,16 +114,16 @@ const VistaDetalleEstado = props => {
                                 <Box sx={{ paddingTop: '40px', flexGrow: 1}}>
                                     <Box display='flex' onClick={() => handleSetSystem(1)} sx={{cursor: 'pointer'}}>
                                         <img src={icon_s1} alt='Sistema 1' style={{width: '40px', padding: "2px"}}/>
-                                        <CustomizedProgressBar value={data.s1.value} color={colors.s1} />
+                                        <CustomizedProgressBar value={general_data.s1.value} color={colors.s1} />
                                     </Box>
 
                                     <Box display='flex' onClick={() => handleSetSystem(2)} sx={{cursor: 'pointer'}}>
                                         <img src={icon_s2} alt='Sistema 2' style={{width: '40px', padding: "2px"}}/>
-                                        <CustomizedProgressBar value={data.s2.value} color={colors.s2}/>
+                                        <CustomizedProgressBar value={general_data.s2.value} color={colors.s2}/>
                                     </Box>
                                     <Box display="flex" onClick={() => handleSetSystem(3)} sx={{cursor: 'pointer'}}>
                                         <img src={icon_s3} alt='Sistema 3' style={{width: '40px', padding: "2px"}}/>
-                                        <CustomizedProgressBar value={data.s3.value} color={colors.s3}/>
+                                        <CustomizedProgressBar value={general_data.s3.value} color={colors.s3}/>
                                     </Box>
                                 </Box>
                             </Box>
@@ -139,24 +139,22 @@ const VistaDetalleEstado = props => {
                             </Typography>
 
                             <Typography variant="h4" color={colors.s1} sx={{fontWeight: 'bold'}}>
-                                {data.s1.value}%
+                                {general_data.s1.value}%
                             </Typography>
-                            <Typography color='white'> {data.s1.value} de {data.s1.total}</Typography>
+                            <Typography color='white'> {general_data.s1.value} de {general_data.s1.total}</Typography>
                             <Typography variant="h4" color={colors.s2} sx={{fontWeight: 'bold'}}>
-                                {data.s2.value}%
+                                {general_data.s2.value}%
                             </Typography>
-                            <Typography color='white'> {data.s2.value} de {data.s2.total} </Typography>
+                            <Typography color='white'> {general_data.s2.value} de {general_data.s2.total} </Typography>
                             <Typography variant="h4" color={colors.s3} sx={{fontWeight: 'bold'}}>
-                                {data.s3.value}%
+                                {general_data.s3.value}%
                             </Typography>
-                            <Typography color='white'> {data.s3.value} de {data.s3.total}</Typography>
+                            <Typography color='white'> {general_data.s3.value} de {general_data.s3.total}</Typography>
                         </Paper>
                     </Box>
 
-
-                        <VistaDetalleSistema estado={estado} id_sistema={system.id}
-                                             sys_icon={system.icon} sys_color={system.color} data={system.data}/>
-
+                    <VistaDetalleSistema estado={estado} sys_id={system.id} sys_icon={system.icon}
+                                         sys_color={system.color} data={system.data} />
                 </Paper>
             </Grid>
         </Grid>
