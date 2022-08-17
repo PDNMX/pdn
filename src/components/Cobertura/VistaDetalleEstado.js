@@ -5,19 +5,17 @@ import {useParams} from "react-router-dom";
 import HeaderV2 from "../HomeV2/HeaderV2";
 import pdnRoutes from "../../routes";
 import estados from "./estados.json";
-import icon_s1 from '../../assets/rediseno/ico_sistemas/ico_s1_color.svg';
 import CustomizedProgressBar from "./CustomizedProgressBar";
-import VerticalProgressBar from "./VerticalProgressBar";
+import icon_s1 from '../../assets/rediseno/ico_sistemas/ico_s1_color.svg';
 import icon_s2 from '../../assets/rediseno/ico_sistemas/ico_s2_color.svg';
 import icon_s3 from '../../assets/rediseno/ico_sistemas/ico_s3_color.svg';
+import VistaDetalleSistema from "./VistaDetalleSistema";
 
 const colors = {
     s1 : "#F8CAC4",
     s2 : "#D8ACD8",
     s3 : "#C6C1EB",
 };
-
-const bar_colors = [ '#43b9a5', '#f46c81', '#f5ca5d', '#5ccbf0', '#beF5a6' ];
 
 const data = {
     s1: {
@@ -64,6 +62,38 @@ const VistaDetalleEstado = props => {
     const estado = estados.find(e => e.route.includes(id_estado));
     const icon = require(`../../assets/Cobertura/iconos_estados/${estado.icon}`);
 
+    const [system, setSystem] = React.useState({
+        id: 1,
+        color: colors.s1,
+        data: [10, 92,30, 43,50, 90 ],
+        icon: icon_s1
+    });
+
+    const sys = [
+        {
+            id: 1,
+            color: colors.s1,
+            data: [10, 92,30, 43,50, 90 ],
+            icon: icon_s1
+        },
+        {
+            id: 2,
+            color: colors.s2,
+            data: [80, 12,45, 33,76, 23],
+            icon: icon_s2
+        },
+        {
+            id: 3,
+            color: colors.s3,
+            data: [20, 10, 30, 50, 30, 53],
+            icon: icon_s3
+        }
+    ];
+
+    const handleSetSystem = id => {
+        setSystem( sys.find( s => s.id === id) );
+    };
+
     return <div>
         <HeaderV2 section={section}/>
         <Grid container spacing={0} justifyContent='center'>
@@ -74,7 +104,6 @@ const VistaDetalleEstado = props => {
                         {estado.name}
                     </Typography>
 
-
                     <Box sx={{display: 'flex', flexWrap: "wrap", alignItems: "stretch"}} justifyContent="center">
                         <Paper elevation={15} sx={{ m: 2, p:2 }} className={classes.paper}>
                             <Box display="flex" flexWrap="wrap" justifyContent="center">
@@ -83,16 +112,16 @@ const VistaDetalleEstado = props => {
                                 </Box>
 
                                 <Box sx={{ paddingTop: '40px', flexGrow: 1}}>
-                                    <Box display='flex'>
+                                    <Box display='flex' onClick={() => handleSetSystem(1)} sx={{cursor: 'pointer'}}>
                                         <img src={icon_s1} alt='Sistema 1' style={{width: '40px', padding: "2px"}}/>
                                         <CustomizedProgressBar value={data.s1.value} color={colors.s1} />
                                     </Box>
 
-                                    <Box display='flex'>
+                                    <Box display='flex' onClick={() => handleSetSystem(2)} sx={{cursor: 'pointer'}}>
                                         <img src={icon_s2} alt='Sistema 2' style={{width: '40px', padding: "2px"}}/>
                                         <CustomizedProgressBar value={data.s2.value} color={colors.s2}/>
                                     </Box>
-                                    <Box display="flex">
+                                    <Box display="flex" onClick={() => handleSetSystem(3)} sx={{cursor: 'pointer'}}>
                                         <img src={icon_s3} alt='Sistema 3' style={{width: '40px', padding: "2px"}}/>
                                         <CustomizedProgressBar value={data.s3.value} color={colors.s3}/>
                                     </Box>
@@ -125,83 +154,8 @@ const VistaDetalleEstado = props => {
                     </Box>
 
 
-                    <Box sx={{display: 'flex', flexWrap: "wrap", alignItems: "stretch"}} justifyContent="center">
-
-                        <Paper elevation={15} sx={{ m: 2 ,p:2, maxWidth: 150, display: 'flex', alignContent: "center"}} className={classes.paper} >
-                            <img src={icon_s1} style={{minWidth:"140px", alignSelf: 'center'}} alt={estado.name}/>
-                        </Paper>
-
-                        <Paper elevation={15} sx={{ m: 2, p:2, display: 'flex', justifyContent: 'center' }} className={classes.paper}>
-                            <Box display='flex' flexWrap='wrap'>
-                                <Box p={1} textAlign="center">
-                                    <Typography variant="h5" sx={{color: bar_colors[0], fontWeight: 'bold'}}>
-                                        12.3%
-                                    </Typography>
-                                    <Typography variant="body2" color='white'>
-                                        0 de 1
-                                    </Typography>
-                                    <VerticalProgressBar color={bar_colors[0]} id='pBar1' value={12.3}/>
-                                    <Typography color="white">
-                                        Ejecutivo
-                                    </Typography>
-                                </Box>
-                                <Box p={1} textAlign="center">
-                                    <Typography variant="h5" sx={{color: bar_colors[1], fontWeight: 'bold'}}>
-                                        70%
-                                    </Typography>
-                                    <Typography variant="body2" color='white'>
-                                        0 de 1
-                                    </Typography>
-                                    <VerticalProgressBar color={bar_colors[1]} id='pBar2' value={70}/>
-                                    <Typography color="white">Legislativo</Typography>
-                                </Box>
-                                <Box p={1} textAlign="center">
-                                    <Typography variant="h5" sx={{color: bar_colors[2], fontWeight: 'bold'}}>
-                                        45%
-                                    </Typography>
-                                    <Typography variant="body2" color='white'>
-                                        0 de 1
-                                    </Typography>
-                                    <VerticalProgressBar color={bar_colors[2]} id='pBar3' value={45}/>
-                                    <Typography color="white">Judicial</Typography>
-                                </Box>
-                                <Box p={1} textAlign="center">
-                                    <Typography variant="h5" sx={{color: bar_colors[3], fontWeight: 'bold'}}>
-                                        15%
-                                    </Typography>
-                                    <Typography variant="body2" color='white'>
-                                        0 de 1
-                                    </Typography>
-                                    <VerticalProgressBar color={bar_colors[3]} id='pBar4' value={15}/>
-                                    <Typography color="white">Autónomos</Typography>
-                                </Box>
-                                <Box p={1} textAlign="center">
-                                    <Typography variant="h5" sx={{color: bar_colors[4], fontWeight: 'bold'}}>
-                                        87%
-                                    </Typography>
-                                    <Typography variant="body2" color='white'>
-                                        0 de 1
-                                    </Typography>
-                                    <VerticalProgressBar color={bar_colors[4]} id='pBar5' value={87}/>
-                                    <Typography color="white">Municipal</Typography>
-                                </Box>
-
-                                <Box p={2} textAlign="center" display='flex' alignContent="center">
-                                    {/* Radial chart */}
-                                    <Box>
-                                        <Typography variant="h3" sx={{fontWeight: 'bold'}} color={colors.s1}>
-                                            37.5%
-                                        </Typography>
-
-                                        <Typography color="white" variant="subtitle1">
-                                            113 de 210
-                                        </Typography>
-                                    </Box>
-                                </Box>
-                            </Box>
-
-                        </Paper>
-                    </Box>
+                        <VistaDetalleSistema estado={estado} id_sistema={system.id}
+                                             sys_icon={system.icon} sys_color={system.color} data={system.data}/>
 
                 </Paper>
             </Grid>

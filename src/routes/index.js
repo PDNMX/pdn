@@ -33,6 +33,7 @@ import IconEspecificaciones from "../assets/rediseno/ico_especificaciones.svg";
 import IconAbout from "../assets/rediseno/ico_que-es-PDN.svg";
 import IconHelpDesk from "../assets/rediseno/ico_mesa-ayuda.svg";
 import IconValidador from "../assets/rediseno/validador.svg";
+import IconCobertura from "../assets/rediseno/ico_cobertura.svg";
 
 
 /*
@@ -232,7 +233,7 @@ const pdnRoutes = [
 		name: "Cobertura",
 		shortName: "Cobertura",
 		color: "#f2f2f2",
-		icon: IconHelpDesk
+		icon: IconCobertura
 	},
 	{
 		exact: true,
@@ -242,7 +243,7 @@ const pdnRoutes = [
 		name: "Cobertura",
 		shortName: "Cobertura",
 		color: "#f2f2f2",
-		icon: IconHelpDesk
+		icon: IconCobertura
 	}
 ];
 

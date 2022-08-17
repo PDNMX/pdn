@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
 
-const BorderLinearProgress = styled(LinearProgress, ) (( { theme, bgColor}) => ({
+const BorderLinearProgress = styled(LinearProgress, ) (( { theme, bgcolor}) => ({
     height: 40,
     borderRadius: 30,
     [`&.${linearProgressClasses.colorPrimary}`]: {
@@ -12,7 +12,7 @@ const BorderLinearProgress = styled(LinearProgress, ) (( { theme, bgColor}) => (
     },
     [`& .${linearProgressClasses.bar}`]: {
         borderRadius: 30,
-        backgroundColor: bgColor
+        backgroundColor: bgcolor
     },
 }));
 
@@ -22,7 +22,7 @@ export default function CustomizedProgressBar(props) {
 
     return (
         <Box sx={{ flexGrow: 1 }} p={1}>
-            <BorderLinearProgress variant="determinate" value={value} bgColor={color}/>
+            <BorderLinearProgress variant="determinate" value={value} bgcolor={color}/>
         </Box>
     );
 }
