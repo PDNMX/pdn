@@ -2,8 +2,8 @@ import React from "react";
 import withStyles from '@mui/styles/withStyles';
 import {
     AppBar, Box, Typography, IconButton, Menu, MenuItem,
-    Button, List, ListItem, Collapse, Toolbar} from "@mui/material";
-import {Link} from "react-router-dom";
+    Button, List, ListItem, Collapse, Toolbar, Link} from "@mui/material";
+import {Link as RouterLink} from "react-router-dom";
 import { MoreHoriz as MoreHorizIcon} from '@mui/icons-material';
 import imgHeader from "../../assets/rediseno/logo_pdn.svg";
 import Especificaciones_logo from "../../assets/rediseno/ico_especificaciones.svg";
@@ -11,9 +11,10 @@ import Mesa_logo from "../../assets/rediseno/ico_mesa-ayuda.svg";
 import MDA_logo from "../../assets/rediseno/ico_mda.svg";
 import Interconexion_logo from "../../assets/rediseno/ico_interconexion.svg";
 import Sistemas_logo from "../../assets/rediseno/ico_sistemas_f.svg";
-import LoginIcon from "../../assets/rediseno/ico_login.svg";
+//import LoginIcon from "../../assets/rediseno/ico_login.svg";
 import legislacion_icono from "../../assets/rediseno/ico_interconexion_legislacion.svg";
-import mapa_s2s3_icono from "../../assets/rediseno/ico_interconexion_s2-s3.svg";
+import mapa_s2s3_icono from "../../assets/rediseno/ico_interconexion_s1-s3.svg";
+import icon_cobertura from "../../assets/rediseno/ico_cobertura.svg";
 
 import ReactGA from "react-ga";
 
@@ -129,10 +130,10 @@ const BannerMobile = props => {
                         PopoverClasses={classes.test}
                     >
 
-                        <MenuItem className={classes.menuItem} component={Link} to="/mesa-de-ayuda">
+                        <MenuItem className={classes.menuItem} component={RouterLink} to="/mesa-de-ayuda">
                             <Typography style={{width:'100%'}}>MESA DE AYUDA</Typography> <img src={Mesa_logo} alt="MESA DE AYUDA" className={classes.icon}/>
                         </MenuItem>
-                        <MenuItem className={classes.menuItem} component={Link} to="/especificaciones">
+                        <MenuItem className={classes.menuItem} component={RouterLink} to="/especificaciones">
                             <Typography style={{width:'100%'}}>ESPECIFICACIONES</Typography><img src={Especificaciones_logo} alt="ESPECIFICACIONES" className={classes.icon}/>
                         </MenuItem>
                         <MenuItem className={classes.menuItem} component={"a"} onClick={() => handleToggle()}>
@@ -142,7 +143,7 @@ const BannerMobile = props => {
                                 <List dense={true} component="div">
                                     {systems.map(system => {
                                         return (
-                                        <ListItem button component={Link} to={system.path} key={system.name}
+                                        <ListItem button component={RouterLink} to={system.path} key={system.name}
                                                   className={classes.nested} >
                                             <img src={system.icon} alt={system.name} className={classes.iconSistemas}/>
                                             <Typography color={system.color}>{system.name}</Typography>
@@ -159,13 +160,21 @@ const BannerMobile = props => {
                                 <ListItem button component={Button} href={'https://www.plataformadigitalnacional.org/mapa-sla/'} key={'legislacion'}
                                           className={classes.nested} onClick={()=>ReactGA.pageview('/mapa-sla')}>
                                     <img src={legislacion_icono} alt={'Legislación'} className={classes.iconSistemas}/>
-                                    <Typography color={'#b2bfc4'}>{'Legislación'}</Typography>
+                                    <Typography color={'#b2bfc4'}>Legislación</Typography>
                                 </ListItem>
                                 <ListItem button component={Button} href={'https://www.plataformadigitalnacional.org/mapa-avance/'} key={'mapa'}
                                           className={classes.nested} onClick={()=>ReactGA.pageview('/mapa-avance')}>
                                     <img src={mapa_s2s3_icono} alt={''} className={classes.iconSistemas}/>
-                                    <Typography color={'#b2bfc4'}>{'Sistemas 2 y 3'}</Typography>
+                                    <Typography color={'#b2bfc4'}>Sistemas 2 y 3</Typography>
                                 </ListItem>
+
+
+                                <ListItem button component={RouterLink} to={'/cobertura'} key={'cobertura'} className={classes.nested}>
+                                    <img src={icon_cobertura} alt={''} className={classes.iconSistemas}/>
+                                    <Typography color={'#b2bfc4'}>COBERTURA</Typography>
+                                </ListItem>
+
+
                             </List>
                         </Collapse>
                         <MenuItem className={classes.menuItem} component={Button}

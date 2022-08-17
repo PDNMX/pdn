@@ -1,8 +1,10 @@
 import React, {useEffect, useRef} from "react";
 import withStyles from '@mui/styles/withStyles';
-import {Typography} from "@mui/material";
+import {Typography, Link} from "@mui/material";
+import {Link as RouterLink} from 'react-router-dom';
 import legislacion_icono from "../../assets/rediseno/ico_interconexion_legislacion.svg";
-import mapa_s2s3_icono from "../../assets/rediseno/ico_interconexion_s2-s3.svg";
+import mapa_s2s3_icono from "../../assets/rediseno/ico_interconexion_s1-s3.svg";
+import icon_cobertura from "../../assets/rediseno/ico_cobertura.svg";
 import Box from "@mui/material/Box";
 import ReactGA from "react-ga";
 
@@ -38,7 +40,6 @@ const styles = theme => ({
         textDecoration: "none",
         color: "#b2bfc4"
     }
-
 });
 
 const InterconexionMenu = props => {
@@ -58,40 +59,53 @@ const InterconexionMenu = props => {
     }
 
     return (
-        <Box id={"interconexionMenu"} ref={innerRef}  className={classes.root}
-            sx={{
-                display: 'flex',
-                justifyContent: 'center'
-            }}
-        >
-            <a className={classes.link} href={'https://www.plataformadigitalnacional.org/mapa-sla/'} onClick={()=>ReactGA.pageview('/mapa-sla')}>
+        <Box id={"interconexionMenu"} ref={innerRef}  className={classes.root} sx={{
+            display: 'flex',
+            justifyContent: 'center'
+        }}>
 
-            <Box className={`${classes.item}`}  sx={{
-                m:1,
-                p:2,
-                color:'#34b3eb'
-            }}>
-                <div className={`${classes.opc} `}>
-                    <img src={legislacion_icono} alt="Legislación" className={classes.icon}/>
+            <Link className={classes.link} href='https://www.plataformadigitalnacional.org/mapa-sla/' onClick={()=>ReactGA.pageview('/mapa-sla')}>
+                <Box className={`${classes.item}`}  sx={{
+                    m:1,
+                    p:2,
+                    color:'#34b3eb'
+                }}>
+                    <div className={`${classes.opc} `}>
+                        <img src={legislacion_icono} alt="Legislación" className={classes.icon}/>
                         <Typography color={'#b2bfc4'}>{'Legislación'}</Typography>
 
-                </div>
-            </Box>
-            </a>
-            <a className={classes.link} href={'https://www.plataformadigitalnacional.org/mapa-avance/'} onClick={()=>ReactGA.pageview('/mapa-avance')}>
-            <Box className={`${classes.item}`}  sx={{
-                m:1,
-                p:2,
-                color:'#34b3eb'
-            }}>
-                <div className={`${classes.opc} `}>
+                    </div>
+                </Box>
+            </Link>
+
+            <Link className={classes.link} href='https://www.plataformadigitalnacional.org/mapa-avance/' onClick={()=>ReactGA.pageview('/mapa-avance')}>
+                <Box className={`${classes.item}`}  sx={{
+                    m:1,
+                    p:2,
+                    color:'#34b3eb'
+                }}>
+                    <div className={`${classes.opc} `}>
 
                         <img src={mapa_s2s3_icono} alt="Sistemas 2 y 3" className={classes.icon}/>
                         <Typography color={'#b2bfc4'}>{'Sistemas 2 y 3'}</Typography>
 
-                </div>
-            </Box>
-            </a>
+                    </div>
+                </Box>
+            </Link>
+
+            <Link className={classes.link} component={RouterLink} to='/cobertura'>
+                <Box className={`${classes.item}`}  sx={{
+                    m:1,
+                    p:2,
+                    color:'#34b3eb'
+                }}>
+                    <div className={`${classes.opc} `}>
+                        <img src={icon_cobertura} alt="Cobertura" className={classes.icon}/>
+                        <Typography color={'#b2bfc4'}>Cobertura</Typography>
+                    </div>
+                </Box>
+            </Link>
+
         </Box>
     );
 }

@@ -1,0 +1,110 @@
+[
+  {
+    "route": "/cobertura/aguascalientes",
+    "name": "Aguascalientes",
+    "icon": "ags-icono.svg",
+    "disabled": false
+  },
+  {
+    "route": "/cobertura/bcs",
+    "name": "Baja California Sur",
+    "icon": "bcs-icono.svg",
+    "disabled": false
+  },
+  {
+    "route": "/cobertura/chiapas",
+    "name": "Chiapas",
+    "icon": "chis-icono.svg",
+    "disabled": false
+  },
+  {
+    "route": "/cobertura/chihuahua",
+    "name": "Chihuahua",
+    "icon": "chih-icono.svg",
+    "disabled": false
+  },
+  {
+    "route": "/cobertura/durango",
+    "name": "Durango",
+    "icon": "dur-icono.svg",
+    "disabled": false
+  },
+  {
+    "route": "/cobertura/edomex",
+    "name": "Estado de México",
+    "icon": "mex-icono.svg",
+    "disabled": false
+  },
+  {
+    "route": "/cobertura/guanajuato",
+    "name": "Guanajuato",
+    "icon": "gto-icono.svg",
+    "disabled": false
+  },
+  {
+    "route": "/cobertura/jalisco",
+    "name": "Jalisco",
+    "icon": "jal-icono.svg",
+    "disabled": false
+  },
+  {
+    "route": "/cobertura/oaxaca",
+    "name": "Oaxaca",
+    "icon": "oax-icono.svg",
+    "disabled": false
+  },
+  {
+    "route": "/cobertura/puebla",
+    "name": "Puebla",
+    "icon": "pue-icono.svg",
+    "disabled": false
+  },
+  {
+    "route": "/cobertura/qroo",
+    "name": "Quintana Roo",
+    "icon": "qroo-icono.svg",
+    "disabled": false
+  },
+  {
+    "route": "/cobertura/slp",
+    "name": "San Luis Potosí",
+    "icon": "slp-icono.svg",
+    "disabled": false
+  },
+  {
+    "route": "/cobertura/sinaloa",
+    "name": "Sinaloa",
+    "icon": "sin-icono.svg",
+    "disabled": false
+  },
+  {
+    "route": "/cobertura/sonora",
+    "name": "Sonora",
+    "icon": "son-icono.svg",
+    "disabled": false
+  },
+  {
+    "route": "/cobertura/tabasco",
+    "name": "Tabasco",
+    "icon": "tab-icono.svg",
+    "disabled": false
+  },
+  {
+    "route": "/cobertura/tlaxcala",
+    "name": "Tlaxcala",
+    "icon": "tlax-icono.svg",
+    "disabled": false
+  },
+  {
+    "route": "/cobertura/yucatan",
+    "name": "Yucatan",
+    "icon": "yuc-icono.svg",
+    "disabled": false
+  },
+  {
+    "route": "/cobertura/zacatecas",
+    "name": "Zacatecas",
+    "icon": "zac-icono.svg",
+    "disabled": false
+  }
+]
