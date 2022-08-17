@@ -36,6 +36,7 @@ const data = {
 
 const styles = theme => ({
     rootItem: {
+        maxWidth: 1200,
         paddingTop: theme.spacing(4),
         paddingBottom: theme.spacing(4),
     },
@@ -56,7 +57,7 @@ const styles = theme => ({
     }
 });
 
-const VistaIndividual = props => {
+const VistaDetalleEstado = props => {
     const {classes} = props;
     const {id_estado} = useParams();
     const section = pdnRoutes.find(r => r.path === '/cobertura/:id_estado');
@@ -66,7 +67,7 @@ const VistaIndividual = props => {
     return <div>
         <HeaderV2 section={section}/>
         <Grid container spacing={0} justifyContent='center'>
-            <Grid item xs={12} style={{maxWidth:1200}} className={classes.rootItem}>
+            <Grid item xs={12} className={classes.rootItem}>
                 <Paper elevation={15} className={classes.rootPaper}>
 
                     <Typography variant="h3" paragraph align="center" color="white">
@@ -76,12 +77,12 @@ const VistaIndividual = props => {
 
                     <Box sx={{display: 'flex', flexWrap: "wrap", alignItems: "stretch"}} justifyContent="center">
                         <Paper elevation={15} sx={{ m: 2, p:2 }} className={classes.paper}>
-                            <Box display="flex" flexWrap="wrap">
+                            <Box display="flex" flexWrap="wrap" justifyContent="center">
                                 <Box>
                                     <img src={icon} width="260px" alt={estado.name}/>
                                 </Box>
 
-                                <Box sx={{width: '500px', paddingTop: '40px'}}>
+                                <Box sx={{ paddingTop: '40px', flexGrow: 1}}>
                                     <Box display='flex'>
                                         <img src={icon_s1} alt='Sistema 1' style={{width: '40px', padding: "2px"}}/>
                                         <CustomizedProgressBar value={data.s1.value} color={colors.s1} />
@@ -130,7 +131,7 @@ const VistaIndividual = props => {
                             <img src={icon_s1} style={{minWidth:"140px", alignSelf: 'center'}} alt={estado.name}/>
                         </Paper>
 
-                        <Paper elevation={15} sx={{ m: 2, p:2 }} className={classes.paper}>
+                        <Paper elevation={15} sx={{ m: 2, p:2, display: 'flex', justifyContent: 'center' }} className={classes.paper}>
                             <Box display='flex' flexWrap='wrap'>
                                 <Box p={1} textAlign="center">
                                     <Typography variant="h5" sx={{color: bar_colors[0], fontWeight: 'bold'}}>
@@ -184,11 +185,22 @@ const VistaIndividual = props => {
                                     <VerticalProgressBar color={bar_colors[4]} id='pBar5' value={87}/>
                                     <Typography color="white">Municipal</Typography>
                                 </Box>
+
+                                <Box p={2} textAlign="center" display='flex' alignContent="center">
+                                    {/* Radial chart */}
+                                    <Box>
+                                        <Typography variant="h3" sx={{fontWeight: 'bold'}} color={colors.s1}>
+                                            37.5%
+                                        </Typography>
+
+                                        <Typography color="white" variant="subtitle1">
+                                            113 de 210
+                                        </Typography>
+                                    </Box>
+                                </Box>
                             </Box>
 
-
                         </Paper>
-
                     </Box>
 
                 </Paper>
@@ -197,4 +209,4 @@ const VistaIndividual = props => {
     </div>
 }
 
-export default withStyles(styles)(VistaIndividual);
+export default withStyles(styles)(VistaDetalleEstado);

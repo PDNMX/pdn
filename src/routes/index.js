@@ -17,7 +17,7 @@ import EspecificacionesSancionados from '../components/Especificaciones/Sanciona
 import SpecsS2 from '../components/Especificaciones/ServidoresIntervienen/ServidoresIntervienen';
 import SpecsS6 from '../components/Especificaciones/Contrataciones/index';
 import Cobertura from '../components/Cobertura/Cobertura';
-import CoberturaVistaIndividual from "../components/Cobertura/VistaIndividual";
+import CoberturaVistaIndividual from "../components/Cobertura/VistaDetalleEstado";
 
 // import DeclaracionesS1 from '../components/Declaraciones';
 import DeclaracionesS1v2 from '../components/Declaraciones2';
