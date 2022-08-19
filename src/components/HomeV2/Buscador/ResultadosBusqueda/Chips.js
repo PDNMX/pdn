@@ -33,8 +33,8 @@ export default function ChipsArray(props) {
     if (value == "any") {
       value = "";
     }
-    //console.log(key)
-    if ( typeof value === 'string' && value.length != 0 && value != undefined && value != null ) {
+    console.log(value)
+    if (value.length != 0 && value != undefined && value != null && (value.nombre && value.nombre != null) ) {
         switch (key) {
             case "nombres":
             case "primerApellido":
@@ -42,6 +42,10 @@ export default function ChipsArray(props) {
               obj = { id: nanoid(), key: 0, label: value };
               etiquetas.push(obj);
               break;
+            case "institucionS2":
+                obj = { id: nanoid(), key: 1, label: value.nombre };
+                etiquetas.push(obj);
+                break;
             case "institucion":
             case "supplier":
             case "institucionContratante":
@@ -78,13 +82,13 @@ export default function ChipsArray(props) {
     }
   }
 
-  //console.log(etiquetas);
+  console.log(etiquetas);
   
   const [chipData, setChipData] = React.useState(etiquetas);
 
-  const handleDelete = (chipToDelete) => () => {
+  /* const handleDelete = (chipToDelete) => () => {
     setChipData((chips) => chips.filter((chip) => chip.id !== chipToDelete.id));
-  };
+  }; */
 
   return (
     <>
@@ -133,7 +137,7 @@ export default function ChipsArray(props) {
               color="info"
               icon={icon}
               label={data.label}
-              onDelete={handleDelete(data)}
+              /* onDelete={handleDelete(data)} */
             />
           </ListItem>
         );

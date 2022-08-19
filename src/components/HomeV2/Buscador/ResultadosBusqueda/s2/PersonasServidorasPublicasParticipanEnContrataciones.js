@@ -88,6 +88,7 @@ export function ResultadosS2(props) {
 
 const dataProps = JSON.parse(props.data);
 const data = dataProps["psp-participan"];
+console.log(data)
 /*
 2.- Personas servidoras pub que participan contrataciones
     - Nombre
@@ -120,8 +121,8 @@ const [state, setState] = React.useState({
     rowsPerPage: 10,
     tipoProcedimiento: data.tipoProcedimientoContratacion,//0,
     elementoSeleccionado: null,
-    entities: data.institucion.trim(),
-    current_entity: "ANY",
+    entities: [],
+    current_entity: data.institucionS2,
     loading: false,
     totalRows: 0,
     nivel: 'Todos'
@@ -164,21 +165,12 @@ const [state, setState] = React.useState({
         //state.loading
     ]);
 
-    React.useEffect(() => {
+    /* React.useEffect(() => {
         if (state.loading){
             console.log('Fetching entities..');
             loadEntities();
         }
-    },[state.nivel]);
-
-    /* const changeLevel = e => {
-        const nivel = e.target.value;
-        setState({
-            ...state,
-            loading: true,
-            nivel: nivel
-        });
-    }; */
+    },[state.nivel]); */
 
     const backButton = () => {
         setShowSummaryPanel(true);
@@ -205,19 +197,6 @@ const [state, setState] = React.useState({
         });
     };
 
-    // creo que no se usa
-    const handleRequestSort = (event, property) => {
-        const orderBy = property;
-        let order = 'desc';
-        if (state.orderBy === property && state.order === 'desc') {
-            order = 'asc';
-        }
-        setState({
-            ...state,
-            order,
-            orderBy
-        });
-    };
 
     const handleChangePage = (event, page) => {
         setState({
@@ -248,13 +227,6 @@ const [state, setState] = React.useState({
         });
     };
 
-    /* const asignarTipoProcedimiento = procedimientos => {
-        setState({
-            ...state, //
-            tipoProcedimiento: procedimientos
-        });
-    }; */
-
     const handleSearchSupplier = supplier_id => {
         setState({
             ...state,
@@ -264,62 +236,6 @@ const [state, setState] = React.useState({
             supplier_id: supplier_id,
             results: [] // limpiar resultados antes de volver a buscar
         });
-    };
-
-    /* const handleSetState = (varState, event) => {
-        setState({
-            ...state,//
-            [varState]: event ? (event.target ? event.target.value : event.value) : ''
-        });
-    }; */
-
-    /* const handleCleanAll = () => {
-        setState({
-            ...state,
-            results: null,
-            summaryData : null,
-            elementoSeleccionado: null,
-            nivel : 'Todos',
-            nombres: "",
-            tipoProcedimiento: [],//0,
-            current_entity: "ANY",
-            apellidoUno: "",
-            apellidoDos: ""
-        });
-    }; */
-
-    const loadEntities = async () => {
-        let options = {
-            url: process.env.REACT_APP_S2_BACKEND + "/api/v1/entities",
-            json: true,
-            method: "POST",
-            data: {}
-        };
-
-        if (state.nivel !== 'Todos'){
-            options.data.nivel_gobierno = state.nivel
-        }
-
-        try {
-            const res = await axios(options);
-            const entities = JSON.parse(JSON.stringify(res.data))
-
-            // handle errors and set state
-            setState({
-                ...state,
-                loading: false,
-                entities: entities[0].error ? [] : entities, //res.data,
-                current_entity: "ANY"
-            });
-        } catch (err) {
-            console.log(err);
-            setState({
-                ...state,
-                loading: false,
-                entities: [],
-                current_entity: "ANY"
-            });
-        }
     };
 
     const broadSearch = async () => {
@@ -343,7 +259,8 @@ const [state, setState] = React.useState({
         if (apellidoDos) filtros.segundoApellido = apellidoDos;
         if (tipoProcedimiento.length !== 0) filtros.tipoProcedimiento = tipoProcedimiento;
         //if (tipoProcedimiento && tipoProcedimiento !== 0) filtros.tipoProcedimiento = [tipoProcedimiento];
-        if (current_entity && current_entity !== 'ANY') filtros.institucion = current_entity;
+        if (current_entity && current_entity !== 'ANY' && Object.keys(current_entity).length !== 0) filtros.institucion = current_entity;
+        //current_entity = ''
 
         let options = {
             method: 'POST',
@@ -351,7 +268,8 @@ const [state, setState] = React.useState({
             json: true,
             data: filtros
         };
-
+        /* console.log("query de busqueda:")
+        console.log(state) */
         try {
             const res = await axios(options);
             setState({
@@ -475,7 +393,7 @@ const [state, setState] = React.useState({
                             <EnhancedTableHead
                                 order={state.order}
                                 orderBy={state.orderBy}
-                                onRequestSort={handleRequestSort}
+                                /* onRequestSort={handleRequestSort} */
                                 columnData={columnData}
                             />
                             <TableBody className={classes.tableBody}>

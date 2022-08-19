@@ -16,12 +16,19 @@ export function PersonasServidorasPublicasParticipanEnContrataciones() {
   const [options, setOptions] = React.useState([]);
   const loading = open && options.length === 0;
 
+  const [valueInstitucion, setValueInstitucion] = React.useState(null);
+
   React.useEffect(() => {
     let active = true;
 
     if (!loading) {
       return undefined;
     }
+
+    /* if (valueInstitucion === "") {
+      setOptions(valueInstitucion ? [valueInstitucion] : []);
+      return undefined;
+    } */
 
     (async () => {
       if (active) {
@@ -36,9 +43,8 @@ export function PersonasServidorasPublicasParticipanEnContrataciones() {
         axios(options)
           .then((data) => {
             data.data.forEach((item, index) => {
-              sug.push({ value: item.nombre, label: item.nombre, key: index });
+              sug.push({ ...item, key: index });
             });
-            //console.log(data.data)
             setOptions([...sug]);
           })
           .catch((err) => {
@@ -124,32 +130,41 @@ export function PersonasServidorasPublicasParticipanEnContrataciones() {
             )}
           />
           <Controller
-            name="psp-participan.institucion"
+            name="psp-participan.institucionS2"
             control={control}
-            defaultValue=""
+            defaultValue={null}
             render={({ field }) => (
               <Autocomplete
                 {...field}
-                id="institucion"
+                /* id="institucionS2" */
                 open={open}
-                onOpen={() => {
-                  setOpen(true);
-                }}
-                onClose={() => {
-                  setOpen(false);
-                }}
-                value={null}
-                isOptionEqualToValue={(option, value) =>
-                  option.value === value.value
+                value={valueInstitucion}
+                onOpen={() => { setOpen(true); }}
+                onClose={() => { setOpen(false); }}
+                getOptionLabel={(option) =>
+                  typeof option === "string" ? option : option.nombre
                 }
-                /* getOptionLabel={(option) => option.label} */
+                /* getOptionSelected={(optionA, optionB) =>
+                  optionA.nombre === optionB.nombre
+                } */
+                isOptionEqualToValue={(option, value) =>
+                  option === value.nombre
+                }
                 options={options}
                 loading={loading}
-                onChange={(e, value) => field.onChange(value.value)}
+                onChange={(e, newValue) => {
+                  //console.log(newValue, newValue);
+                  setOptions(newValue ? [newValue, ...options] : options);
+                  setValueInstitucion(newValue);
+                  field.onChange(newValue);
+                }}
+                /* onInputChange={(event, newInputValue) => {
+                  setInputValue(newInputValue);
+                }} */
                 renderOption={(props, option) => {
                   return (
                     <li {...props} key={option.key}>
-                      {option.label}
+                      {option.nombre}
                     </li>
                   );
                 }}
