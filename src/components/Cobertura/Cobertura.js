@@ -1,9 +1,10 @@
 import React from 'react';
 import {Typography,Box, Link, Grid, Paper, Tabs, Tab} from "@mui/material";
-import {Link as RouterLink, useParams} from 'react-router-dom';
+import {Link as RouterLink} from 'react-router-dom';
 import HeaderV2 from "../HomeV2/HeaderV2";
 import pdnRoutes from "../../routes";
 import estados from "./estados.json";
+import no_conectados from "./no_conectados.json";
 
 import withStyles from "@mui/styles/withStyles";
 const styles = theme => ({
@@ -15,6 +16,11 @@ const styles = theme => ({
         textDecoration: 'none'
     }
 });
+
+const handleClick = () => {
+    //
+    alert('No conectao')
+}
 
 const Cobertura = props => {
     const section = pdnRoutes.find(r => r.path === '/cobertura');
@@ -38,6 +44,21 @@ const Cobertura = props => {
                         }
                     </Box>
                     {/*</Paper>*/}
+
+
+                    <Box display="flex" flexWrap="wrap">
+                        {no_conectados.map( e =>{
+                            const icon = require(`../../assets/Cobertura/iconos_estados/${e.icon}`)
+                            return <Box textAlign="center" p={1} m={1}
+                                        className={classes.estado} sx={{cursor: 'pointer'}} onClick={handleClick}>
+                                    <img src={icon} style={{width: 100}}/>
+                                    <Typography>
+                                        {e.name}
+                                    </Typography>
+                            </Box>
+                        })
+                        }
+                    </Box>
 
                 </Grid>
             </Grid>

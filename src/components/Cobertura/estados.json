@@ -48,6 +48,12 @@
     "disabled": false
   },
   {
+    "route": "/cobertura/michoacan",
+    "name": "Michoacán",
+    "icon": "mich-icono.svg",
+    "disabled": false
+  },
+  {
     "route": "/cobertura/oaxaca",
     "name": "Oaxaca",
     "icon": "oax-icono.svg",

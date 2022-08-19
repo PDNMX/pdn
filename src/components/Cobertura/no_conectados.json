@@ -1,0 +1,54 @@
+[
+  {
+    "name": "Baja California",
+    "icon": "bc-icono.svg"
+  },
+  {
+    "name": "Campeche",
+    "icon": "camp-icono.svg"
+  },
+  {
+    "name": "Ciudad de México",
+    "icon": "cdmx-icono.svg"
+  },
+  {
+    "name": "Coahuila",
+    "icon": "coah-icono.svg"
+  },
+  {
+    "name": "Colima",
+    "icon": "col-icono.svg"
+  },
+  {
+    "name": "Guerrero",
+    "icon": "gro-icono.svg"
+  },
+  {
+    "name": "Hidalgo",
+    "icon": "hgo-icono.svg"
+  },
+  {
+    "name": "Morelos",
+    "icon": "mor-icono.svg"
+  },
+  {
+    "name": "Nayarit",
+    "icon": "nay-icono.svg"
+  },
+  {
+    "name": "Nuevo León",
+    "icon": "nl-icono.svg"
+  },
+  {
+    "name": "Querétaro",
+    "icon": "qro-icono.svg"
+  },
+  {
+    "name": "Tamaulipas",
+    "icon": "tamps-icono.svg"
+  },
+  {
+    "name": "Veracruz",
+    "icon": "ver-icono.svg"
+  }
+]
