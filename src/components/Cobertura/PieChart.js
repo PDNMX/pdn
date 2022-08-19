@@ -23,7 +23,8 @@ const PieChart = props => {
         ]);
     }, [value, color]);
 
-    return <RadialChart colorType='literal' data={data} width={180} height={180}/>
+    return <RadialChart colorType='literal' data={data} width={180} height={180}
+                        style={{ stroke: '#d3d3d3', strokeWidth: '2px'}}/>
 }
 
 export default PieChart;

@@ -52,7 +52,7 @@ const styles = theme => ({
     paper: {
         flexGrow: 1,
         background: theme.palette.background.paperChart
-    }
+    },
 });
 
 const VistaDetalleEstado = props => {
@@ -105,7 +105,7 @@ const VistaDetalleEstado = props => {
                     </Typography>
 
                     <Box sx={{display: 'flex', flexWrap: "wrap", alignItems: "stretch"}} justifyContent="center">
-                        <Paper elevation={15} sx={{ m: 2, p:2 }} className={classes.paper}>
+                        <Paper elevation={15} sx={{ m: 1, p: 2 }} className={classes.paper}>
                             <Box display="flex" flexWrap="wrap" justifyContent="center">
                                 <Box>
                                     <img src={icon} width="260px" alt={estado.name}/>
@@ -130,7 +130,7 @@ const VistaDetalleEstado = props => {
 
                         </Paper>
 
-                        <Paper elevation={15} sx={{ m:2, p: 2, textAlign: "center", maxWidth: 150 }} className={classes.paper}>
+                        <Paper elevation={15} sx={{ m:1, p: 2, textAlign: "center", maxWidth: 200 }} className={classes.paper}>
                             <Typography variant="h5" color="white" sx={{fontWeight: 'bold'}}>
                                 Cobertura
                             </Typography>

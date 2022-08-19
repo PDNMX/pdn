@@ -19,11 +19,11 @@ const VistaDetalleSistema = props => {
     /* Vista detallada por Sistema */
     return <Box sx={{display: 'flex', flexWrap: "wrap", alignItems: "stretch"}} justifyContent="center">
 
-        <Paper elevation={15} sx={{ m: 2 ,p:2, maxWidth: 150, display: 'flex', alignContent: "center"}} className={classes.paper} >
-            <img src={sys_icon} style={{minWidth:"140px", alignSelf: 'center'}} alt={estado.name}/>
+        <Paper elevation={15} sx={{ m: 1 ,p: 2, maxWidth: 200, display: 'flex', justifyContent: "center", alignContent: "center"}} className={classes.paper} >
+            <img src={sys_icon} style={{width:"120px"}} alt={estado.name}/>
         </Paper>
 
-        <Paper elevation={15} sx={{ m: 2, p:2, display: 'flex', justifyContent: 'center' }} className={classes.paper}>
+        <Paper elevation={15} sx={{ m: 1, p: 2, display: 'flex', justifyContent: 'center' }} className={classes.paper}>
             <Box display='flex' flexWrap='wrap'>
 
                 <Box p={1} textAlign="center">
@@ -91,7 +91,7 @@ const VistaDetalleSistema = props => {
                             {data[5]}%
                         </Typography>
 
-                        <Typography color="white" variant="subtitle1">
+                        <Typography color="white" variant="h6">
                             113 de 210
                         </Typography>
                     </Box>
