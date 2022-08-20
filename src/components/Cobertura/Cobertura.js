@@ -6,6 +6,7 @@ import pdnRoutes from "../../routes";
 import estados from "./estados.json";
 import no_conectados from "./no_conectados.json";
 import PropTypes from "prop-types";
+import DialogoNoConectado from './DialogoNoConectado';
 
 import withStyles from "@mui/styles/withStyles";
 const styles = theme => ({
@@ -17,34 +18,47 @@ const styles = theme => ({
         textDecoration: 'none'
     },
     tab: {
-        //background: theme.palette.background.opaque,
-        borderRadius: "10px 10px 0 0"
+        borderRadius: "10px 10px 0 0",
     },
     tabPanel1: {
         background: theme.palette.background.opaque,
-        borderRadius: "0 10px 10px 10px"
+        borderRadius: "0 10px 10px 10px",
+        borderStyle: 'solid',
+        borderColor: theme.palette.secundario.main
+        //border: "2px",
     },
     tabPanel2: {
         background: theme.palette.background.opaque,
-        borderRadius: "10px 10px 10px 10px"
+        borderRadius: "0 10px 10px 10px",
+        borderStyle: 'solid',
+        //border: "2px",
+        borderColor: theme.palette.secundario.main
     },
 });
 
-const handleClick = () => {
-    //
-    alert('No conectao')
-}
 
 const Cobertura = props => {
     const section = pdnRoutes.find(r => r.path === '/cobertura');
     const {classes} = props;
 
     const [value, setValue] = React.useState(0);
+    const [open, setOpen] = React.useState(false);
 
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
     }
+
+    const handleClick = () => {
+        setOpen(true);
+    }
+
+
+    const tabStyle = selected => ({
+        background: selected ? '#155065' : '#0d3b49',
+        border: selected ? "solid": "",
+        borderColor: selected ? "#3ab0e5" : ""
+    });
 
     return (<div>
             <HeaderV2 section={section}/>
@@ -53,10 +67,12 @@ const Cobertura = props => {
 
 
                     <Tabs value={value} onChange={handleChange}>
-                        <Tab label={<Typography color="#d3d3d3">Entidades conectadas</Typography>} id="simple-tab-0" aria-controls="simple-tabpanel-0"
-                             className={classes.tab} sx={{ background: value === 0 ? '#155065' : '#0d3b49'}}/>
-                        <Tab label={<Typography color="#d3d3d3">Entidades no conectadas</Typography>} id="simple-tab-1" aria-controls="simple-tabpanel-1"
-                             className={classes.tab} sx={{ background: value === 1 ? '#155065' : '#0d3b49'}}/>
+                        <Tab label={<Typography color="#d3d3d3">Entidades conectadas</Typography>}
+                             id="simple-tab-0" aria-controls="simple-tabpanel-0"
+                             className={classes.tab} style={tabStyle(value === 0 )}/>
+                        <Tab label={<Typography color="#d3d3d3">Entidades no conectadas</Typography>}
+                             id="simple-tab-1" aria-controls="simple-tabpanel-1"
+                             className={classes.tab} sx={tabStyle(value === 1)}/>
                     </Tabs>
 
 
@@ -97,6 +113,7 @@ const Cobertura = props => {
 
                 </Grid>
             </Grid>
+            <DialogoNoConectado open={open} setOpen={setOpen}/>
         </div>
     );
 }
