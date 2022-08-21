@@ -436,6 +436,15 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
             className={classes.btnPDN}
             disabled={activeStep === 0}
             variant="contained"
+            color="primary"
+            onClick={handleBack}
+          >
+            Regresar
+          </Button>
+          <Button
+            className={classes.btnPDN}
+            disabled={activeStep === 0}
+            variant="contained"
             /* color="primary" */
             onClick={handleRestart}
           >
