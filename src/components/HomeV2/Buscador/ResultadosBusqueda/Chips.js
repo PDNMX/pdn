@@ -42,11 +42,12 @@ export default function ChipsArray(props) {
               obj = { id: nanoid(), key: 0, label: value };
               etiquetas.push(obj);
               break;
+            case "institucion":
             case "institucionS2":
                 obj = { id: nanoid(), key: 1, label: value.nombre };
                 etiquetas.push(obj);
                 break;
-            case "institucion":
+            
             case "supplier":
             case "institucionContratante":
               obj = { id: nanoid(), key: 1, label: value };

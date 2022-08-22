@@ -3,7 +3,7 @@ const defaultValues = {
     nombres: "",
     primerApellido: "",
     segundoApellido: "",
-    institucion: "",
+    institucion: null,
     tipoSancion: [],
   },
   "psp-participan": {

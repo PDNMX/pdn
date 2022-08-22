@@ -6,9 +6,9 @@ import ThemeV2 from "../../../../ThemeV2";
 
 import Autocomplete from "@mui/material/Autocomplete";
 import CircularProgress from "@mui/material/CircularProgress";
-
 import Fade from "@mui/material/Fade";
 
+const KEY = "pdn.camposBusqueda";
 const axios = require("axios");
 
 export function PersonasServidorasPublicasSancionados() {
@@ -16,7 +16,12 @@ export function PersonasServidorasPublicasSancionados() {
   const [options, setOptions] = React.useState([]);
   const loading = open && options.length === 0;
 
-  const [valueInstitucion, setValueInstitucion] = React.useState(null);
+  const storedCampos = JSON.parse(localStorage.getItem(KEY));
+  let tempInstitucion = null
+  if (storedCampos && storedCampos["psp-sancionados"]["institucion"] && storedCampos["psp-sancionados"]["institucion"] !== null && storedCampos["psp-sancionados"]["institucion"]["nombre"]) {
+    tempInstitucion = storedCampos["psp-sancionados"]["institucion"]["nombre"]
+  } 
+  const [valueInstitucion, setValueInstitucion] = React.useState(tempInstitucion);
 
   React.useEffect(() => {
     let active = true;
@@ -39,7 +44,11 @@ export function PersonasServidorasPublicasSancionados() {
           .then((data) => {
             data.data.forEach((item, index) => {
               /* console.log(index) */
-              sug.push({ value: item.nombre, label: item.nombre, key: index });
+              if (item.nombre){
+                //console.log(item)
+                sug.push({ ...item, key: index });
+              }
+              //sug.push({ value: item.nombre, label: item.nombre, key: index });
             });
             /* console.log(sug) */
             setOptions([...sug]);
@@ -137,22 +146,27 @@ export function PersonasServidorasPublicasSancionados() {
               <Autocomplete
                 {...field}
                 open={open}
-                value={valueInstitucion}
+                value={valueInstitucion || null}
                 onOpen={() => { setOpen(true); }}
                 onClose={() => { setOpen(false); }}
                 getOptionLabel={(option) =>
-                  typeof option === "string" ? option : option.value
+                  typeof option === "string" ? option : option.nombre
                 }
                 isOptionEqualToValue={(option, value) =>
-                  option === value.value
+                  value === undefined || value === "" || option.nombre === value.nombre
                 }
                 options={options}
                 loading={loading}
-                onChange={(e, value) => field.onChange(value.value)}
+                onChange={(e, newValue) => {
+                  //console.log(newValue, newValue);
+                  setOptions(newValue ? [newValue, ...options] : options);
+                  setValueInstitucion(newValue);
+                  field.onChange(newValue);
+                }}
                 renderOption={(props, option) => {
                   return (
                     <li {...props} key={option.key}>
-                      {option.label}
+                      {option.nombre}
                     </li>
                   );
                 }}

@@ -83,7 +83,7 @@ export function ResultadosS3s(props) {
     primerApellido: data.primerApellido.trim(),
     segundoApellido: data.segundoApellido.trim(),
     tipoSancion: data.tipoSancion,
-    institucionDependencia: data.institucion.trim(),
+    institucionDependencia: data.institucion,
     nivel: "any",
     provider: "any",
   };
