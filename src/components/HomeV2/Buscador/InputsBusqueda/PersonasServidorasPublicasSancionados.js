@@ -16,6 +16,8 @@ export function PersonasServidorasPublicasSancionados() {
   const [options, setOptions] = React.useState([]);
   const loading = open && options.length === 0;
 
+  const [valueInstitucion, setValueInstitucion] = React.useState(null);
+
   React.useEffect(() => {
     let active = true;
 
@@ -130,22 +132,20 @@ export function PersonasServidorasPublicasSancionados() {
           <Controller
             name="psp-sancionados.institucion"
             control={control}
-            defaultValue=""
+            defaultValue={null}
             render={({ field }) => (
               <Autocomplete
                 {...field}
                 open={open}
-                onOpen={() => {
-                  setOpen(true);
-                }}
-                onClose={() => {
-                  setOpen(false);
-                }}
-                /* value={null} */
-                isOptionEqualToValue={(option, value) =>
-                  option.value === value.value
+                value={valueInstitucion}
+                onOpen={() => { setOpen(true); }}
+                onClose={() => { setOpen(false); }}
+                getOptionLabel={(option) =>
+                  typeof option === "string" ? option : option.value
                 }
-                /* getOptionLabel={(option) => option.label} */
+                isOptionEqualToValue={(option, value) =>
+                  option === value.value
+                }
                 options={options}
                 loading={loading}
                 onChange={(e, value) => field.onChange(value.value)}

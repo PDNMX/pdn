@@ -8,6 +8,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import Fade from "@mui/material/Fade";
 import CircularProgress from "@mui/material/CircularProgress";
 
+const KEY = "pdn.camposBusqueda";
 const axios = require("axios");
 
 export function PersonasServidorasPublicasParticipanEnContrataciones() {
@@ -16,7 +17,16 @@ export function PersonasServidorasPublicasParticipanEnContrataciones() {
   const [options, setOptions] = React.useState([]);
   const loading = open && options.length === 0;
 
-  const [valueInstitucion, setValueInstitucion] = React.useState(null);
+const storedCampos = JSON.parse(localStorage.getItem(KEY));
+
+//console.log(storedCampos["psp-participan"]["institucionS2"]["nombre"]);
+
+  let tempInstitucion = null
+
+  if (storedCampos && storedCampos["psp-participan"]["institucionS2"] && storedCampos["psp-participan"]["institucionS2"] !== null && storedCampos["psp-participan"]["institucionS2"]["nombre"]) {
+    tempInstitucion = storedCampos["psp-participan"]["institucionS2"]["nombre"]
+  } 
+  const [valueInstitucion, setValueInstitucion] = React.useState(tempInstitucion);
 
   React.useEffect(() => {
     let active = true;
@@ -43,7 +53,10 @@ export function PersonasServidorasPublicasParticipanEnContrataciones() {
         axios(options)
           .then((data) => {
             data.data.forEach((item, index) => {
-              sug.push({ ...item, key: index });
+              if (item.nombre){
+                //console.log(item)
+                sug.push({ ...item, key: index });
+              }
             });
             setOptions([...sug]);
           })
@@ -136,19 +149,15 @@ export function PersonasServidorasPublicasParticipanEnContrataciones() {
             render={({ field }) => (
               <Autocomplete
                 {...field}
-                /* id="institucionS2" */
                 open={open}
-                value={valueInstitucion}
+                value={valueInstitucion || null}
                 onOpen={() => { setOpen(true); }}
                 onClose={() => { setOpen(false); }}
                 getOptionLabel={(option) =>
                   typeof option === "string" ? option : option.nombre
                 }
-                /* getOptionSelected={(optionA, optionB) =>
-                  optionA.nombre === optionB.nombre
-                } */
                 isOptionEqualToValue={(option, value) =>
-                  option === value.nombre
+                  value === undefined || value === "" || option.nombre === value.nombre
                 }
                 options={options}
                 loading={loading}

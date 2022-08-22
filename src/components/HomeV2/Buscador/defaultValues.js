@@ -10,7 +10,7 @@ const defaultValues = {
     nombres: "",
     primerApellido: "",
     segundoApellido: "",
-    institucionS2: {},
+    institucionS2: null,
     tipoProcedimientoContratacion: [],
   },
   "psp-declaraciones": {

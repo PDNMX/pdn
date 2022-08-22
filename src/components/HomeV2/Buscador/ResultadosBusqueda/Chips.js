@@ -34,7 +34,7 @@ export default function ChipsArray(props) {
       value = "";
     }
     console.log(value)
-    if (value.length != 0 && value != undefined && value != null && (value.nombre && value.nombre != null) ) {
+    if (value != undefined && value != null && value.length != 0 && value.length != 0 && (value.nombre && value.nombre != null) ) {
         switch (key) {
             case "nombres":
             case "primerApellido":
