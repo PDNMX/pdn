@@ -60,7 +60,7 @@ const VistaDetalleEstado = props => {
     const {id_estado} = useParams();
     const section = pdnRoutes.find(r => r.path === '/cobertura/:id_estado');
     const estado = estados.find(e => e.route.includes(id_estado));
-    const icon = require(`../../assets/Cobertura/iconos_estados/${estado.icon}`);
+    const icon = require(`../../assets/Cobertura/iconos_estados/${estado.icon2}`);
 
     const [system, setSystem] = React.useState({
         id: 1,

@@ -79,9 +79,9 @@ const Cobertura = props => {
                     <TabPanel value={value} index={0} className={classes.tabPanel1}>
                         {/*<Paper elevation={15}>*/}
                         <Box display="flex" flexWrap="wrap">
-                            {estados.map( e =>{
-                                const icon = require(`../../assets/Cobertura/iconos_estados/${e.icon}`)
-                                return <Box textAlign="center" p={1} m={1} className={classes.estado}>
+                            {estados.map( (e, i) =>{
+                                const icon = require(`../../assets/Cobertura/ico_edos/${e.icon1}`)
+                                return <Box textAlign="center" p={1} m={1} key={i} className={classes.estado}>
                                     <Link component={RouterLink} to={e.route} className={classes.link}>
                                         <img src={icon} style={{width: 100}}/>
                                         <Typography>{e.name}</Typography>
@@ -96,9 +96,9 @@ const Cobertura = props => {
 
                     <TabPanel value={value} index={1} className={classes.tabPanel2}>
                         <Box display="flex" flexWrap="wrap">
-                            {no_conectados.map( e =>{
-                                const icon = require(`../../assets/Cobertura/iconos_estados/${e.icon}`)
-                                return <Box textAlign="center" p={1} m={1}
+                            {no_conectados.map( (e, i) =>{
+                                const icon = require(`../../assets/Cobertura/ico_edos/${e.icon1}`)
+                                return <Box textAlign="center" p={1} m={1} key={i}
                                             className={classes.estado} sx={{cursor: 'pointer'}} onClick={handleClick}>
                                     <img src={icon} style={{width: 100}}/>
                                     <Typography>

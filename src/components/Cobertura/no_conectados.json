@@ -1,54 +1,54 @@
 [
   {
     "name": "Baja California",
-    "icon": "bc-icono.svg"
+    "icon1": "ico-edo-bc.svg"
   },
   {
     "name": "Campeche",
-    "icon": "camp-icono.svg"
+    "icon1": "ico-edo-camp.svg"
   },
   {
     "name": "Ciudad de México",
-    "icon": "cdmx-icono.svg"
+    "icon1": "ico-edo-cdmx.svg"
   },
   {
     "name": "Coahuila",
-    "icon": "coah-icono.svg"
+    "icon1": "ico-edo-coah.svg"
   },
   {
     "name": "Colima",
-    "icon": "col-icono.svg"
+    "icon1": "ico-edo-col.svg"
   },
   {
     "name": "Guerrero",
-    "icon": "gro-icono.svg"
+    "icon1": "ico-edo-gro.svg"
   },
   {
     "name": "Hidalgo",
-    "icon": "hgo-icono.svg"
+    "icon1": "ico-edo-hgo.svg"
   },
   {
     "name": "Morelos",
-    "icon": "mor-icono.svg"
+    "icon1": "ico-edo-mor.svg"
   },
   {
     "name": "Nayarit",
-    "icon": "nay-icono.svg"
+    "icon1": "ico-edo-nay.svg"
   },
   {
     "name": "Nuevo León",
-    "icon": "nl-icono.svg"
+    "icon1": "ico-edo-nl.svg"
   },
   {
     "name": "Querétaro",
-    "icon": "qro-icono.svg"
+    "icon1": "ico-edo-qro.svg"
   },
   {
     "name": "Tamaulipas",
-    "icon": "tamps-icono.svg"
+    "icon1": "ico-edo-tamps.svg"
   },
   {
     "name": "Veracruz",
-    "icon": "ver-icono.svg"
+    "icon1": "ico-edo-ver.svg"
   }
 ]

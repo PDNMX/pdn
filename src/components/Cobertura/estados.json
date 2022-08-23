@@ -2,115 +2,134 @@
   {
     "route": "/cobertura/aguascalientes",
     "name": "Aguascalientes",
-    "icon": "ags-icono.svg",
+    "icon1": "ico-edo-ags.svg",
+    "icon2": "ags-icono.svg",
     "disabled": false
   },
   {
     "route": "/cobertura/bcs",
     "name": "Baja California Sur",
-    "icon": "bcs-icono.svg",
+    "icon1": "ico-edo-bcs.svg",
+    "icon2": "bcs-icono.svg",
     "disabled": false
   },
   {
     "route": "/cobertura/chiapas",
     "name": "Chiapas",
-    "icon": "chis-icono.svg",
+    "icon1": "ico-edo-chis.svg",
+    "icon2": "chis-icono.svg",
     "disabled": false
   },
   {
     "route": "/cobertura/chihuahua",
     "name": "Chihuahua",
-    "icon": "chih-icono.svg",
+    "icon1": "ico-edo-chih.svg",
+    "icon2": "chih-icono.svg",
     "disabled": false
   },
   {
     "route": "/cobertura/durango",
     "name": "Durango",
-    "icon": "dur-icono.svg",
+    "icon1": "ico-edo-dgo.svg",
+    "icon2": "dur-icono.svg",
     "disabled": false
   },
   {
     "route": "/cobertura/edomex",
     "name": "Estado de México",
-    "icon": "mex-icono.svg",
+    "icon1": "ico-edo-mex.svg",
+    "icon2": "mex-icono.svg",
     "disabled": false
   },
   {
     "route": "/cobertura/guanajuato",
     "name": "Guanajuato",
-    "icon": "gto-icono.svg",
+    "icon1": "ico-edo-gto.svg",
+    "icon2": "gto-icono.svg",
     "disabled": false
   },
   {
     "route": "/cobertura/jalisco",
     "name": "Jalisco",
-    "icon": "jal-icono.svg",
+    "icon1": "ico-edo-jal.svg",
+    "icon2": "jal-icono.svg",
     "disabled": false
   },
   {
     "route": "/cobertura/michoacan",
     "name": "Michoacán",
-    "icon": "mich-icono.svg",
+    "icon1": "ico-edo-mich.svg",
+    "icon2": "mich-icono.svg",
     "disabled": false
   },
   {
     "route": "/cobertura/oaxaca",
     "name": "Oaxaca",
-    "icon": "oax-icono.svg",
+    "icon1": "ico-edo-oax.svg",
+    "icon2": "oax-icono.svg",
     "disabled": false
   },
   {
     "route": "/cobertura/puebla",
     "name": "Puebla",
-    "icon": "pue-icono.svg",
+    "icon1": "ico-edo-pue.svg",
+    "icon2": "pue-icono.svg",
     "disabled": false
   },
   {
     "route": "/cobertura/qroo",
     "name": "Quintana Roo",
-    "icon": "qroo-icono.svg",
+    "icon1": "ico-edo-qroo.svg",
+    "icon2": "qroo-icono.svg",
     "disabled": false
   },
   {
     "route": "/cobertura/slp",
     "name": "San Luis Potosí",
-    "icon": "slp-icono.svg",
+    "icon1": "ico-edo-slp.svg",
+    "icon2": "slp-icono.svg",
     "disabled": false
   },
   {
     "route": "/cobertura/sinaloa",
     "name": "Sinaloa",
-    "icon": "sin-icono.svg",
+    "icon1": "ico-edo-sin.svg",
+    "icon2": "sin-icono.svg",
     "disabled": false
   },
   {
     "route": "/cobertura/sonora",
     "name": "Sonora",
-    "icon": "son-icono.svg",
+    "icon1": "ico-edo-son.svg",
+    "icon2": "son-icono.svg",
     "disabled": false
   },
   {
     "route": "/cobertura/tabasco",
     "name": "Tabasco",
-    "icon": "tab-icono.svg",
+    "icon1": "ico-edo-tab.svg",
+    "icon2": "tab-icono.svg",
     "disabled": false
   },
   {
     "route": "/cobertura/tlaxcala",
     "name": "Tlaxcala",
-    "icon": "tlax-icono.svg",
+    "icon1": "ico-edo-tlax.svg",
+    "icon2": "tlax-icono.svg",
     "disabled": false
   },
   {
     "route": "/cobertura/yucatan",
     "name": "Yucatan",
-    "icon": "yuc-icono.svg",
+    "icon1": "ico-edo-yuc.svg",
+    "icon2": "yuc-icono.svg",
     "disabled": false
   },
   {
     "route": "/cobertura/zacatecas",
     "name": "Zacatecas",
-    "icon": "zac-icono.svg",
+    "icon1": "ico-edo-zac.svg",
+    "icon2": "zac-icono.svg",
     "disabled": false
   }
 ]
