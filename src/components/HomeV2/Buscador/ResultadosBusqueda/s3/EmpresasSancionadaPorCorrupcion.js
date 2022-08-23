@@ -101,17 +101,19 @@ const initialSort = {
 };
 export function ResultadosS3p(props){
     const dataProps = JSON.parse(props.data);
-    const data = dataProps["empresas-sancionadas"]
+    const data = dataProps["empresas-sancionadas"];
     /*
     4.- Empresas sancionadas por actos de corrupción
       - Nombre / Razón social
       - Intitución donde presto el servicio
       - Tipo de sanción (select)
     */
+    //console.log(data.institucion);
+   
 
     const initialFilter = {
         nombreRazonSocial: data.nombreRazonSocial.trim(),
-        institucionDependencia: data.institucion.trim(),
+        institucionDependencia: data.institucion,
         expediente: '',
         tipoSancion: data.tipoSancion,
         tipoPersona: 'any',
@@ -141,10 +143,10 @@ export function ResultadosS3p(props){
         ReactGA.event({ category: 'busqueda-s3P-Asistente', action: 'click' });
     }, []);
 
-    React.useEffect(() => {
+    /* React.useEffect(() => {
         loadInstitutions();
         loadProviders();
-    }, [filter?.nivel]);
+    }, [filter?.nivel]); */
 
     React.useEffect(() => {
         if (provider !== 'any') {
@@ -154,11 +156,11 @@ export function ResultadosS3p(props){
         }
     }, [provider]);
 
-    React.useEffect(() => {
+    /* React.useEffect(() => {
         loadInstitutions();
-    }, [filter?.provider])
+    }, [filter?.provider]) */
 
-    const loadInstitutions = () => {
+    /* const loadInstitutions = () => {
         let instituciconesLista = [];
         let options = {
             url: process.env.REACT_APP_S3P_BACKEND + '/api/v1/entities',
@@ -179,9 +181,9 @@ export function ResultadosS3p(props){
             }).catch(err => {
             setError(true);
         });
-    }
+    } */
 
-    const loadProviders = () => {
+    /* const loadProviders = () => {
         let sug = [];
         let options = {
             url: process.env.REACT_APP_S3P_BACKEND + '/api/v1/getProviders',
@@ -200,7 +202,7 @@ export function ResultadosS3p(props){
             }).catch(err => {
             setError(true);
         });
-    }
+    } */
 
     /* const handleCleanAll = () => {
         setFilter(initialFilter);
@@ -223,10 +225,23 @@ export function ResultadosS3p(props){
         let body =
             {
                 "query": makeFiltros(),
-                "institucion": filter.institucionDependencia
+                /* "institucion": "" */
             };
         if(filter.nivel !== 'any') body.nivel_gobierno = filter.nivel;
         if(filter.proveedor !== 'any') body.proveedor = filter.proveedor;
+        /* if (
+          filter.institucionDependencia &&
+          filter.institucionDependencia !== "any" &&
+          filter.institucionDependencia.nombre
+        ) {
+          body.institucionDependencia = filter.institucionDependencia.nombre;
+          body.institucion = filter.institucionDependencia.nombre;
+        } else {
+            body.institucionDependencia = "";
+        } */
+
+        //console.log(body)
+            
 
         let options = {
             method: 'POST',
@@ -252,8 +267,19 @@ export function ResultadosS3p(props){
         if (nombreRazonSocial) filtros.nombreRazonSocial = nombreRazonSocial;
         if (expediente) filtros.expediente = expediente;
         if (tipoPersona !== 'any') filtros.tipoPersona = tipoPersona;
-        if (institucionDependencia && institucionDependencia !== 'any') filtros.institucionDependencia = institucionDependencia;
+        //if (institucionDependencia && institucionDependencia !== 'any') filtros.institucionDependencia = institucionDependencia.nombre;
+        if (
+          institucionDependencia &&
+          institucionDependencia !== "any" &&
+          institucionDependencia.nombre
+        ) {
+            filtros.institucionDependencia = institucionDependencia.nombre;
+            filtros.institucion = institucionDependencia.nombre;
+        } else {
+          institucionDependencia = "";
+        }
         if (tipoSancion.length > 0) filtros.tipoSancion = tipoSancion.map(item => item.value);
+        console.log(filtros)
         return filtros;
     };
 
@@ -273,6 +299,16 @@ export function ResultadosS3p(props){
                 "supplier_id": provider,
                 "sort": makeSort()
             };
+        
+        //setFilter({...filter, institucionDependencia: 'any'});
+        if (
+            filter.institucionDependencia &&
+            filter.institucionDependencia !== "any" &&
+            filter.institucionDependencia.nombre
+          ) {
+            setFilter({...filter, institucionDependencia: filter.institucionDependencia.nombre});
+            setFilter({...filter, institucion: filter.institucionDependencia.nombre});
+        } 
 
         let options = {
             method: 'POST',

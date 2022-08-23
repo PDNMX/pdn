@@ -88,7 +88,6 @@ export function ResultadosS2(props) {
 
 const dataProps = JSON.parse(props.data);
 const data = dataProps["psp-participan"];
-console.log(data)
 /*
 2.- Personas servidoras pub que participan contrataciones
     - Nombre

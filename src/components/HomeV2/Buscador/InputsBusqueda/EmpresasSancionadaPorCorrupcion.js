@@ -7,6 +7,8 @@ import Autocomplete from "@mui/material/Autocomplete";
 
 import Fade from "@mui/material/Fade";
 import CircularProgress from "@mui/material/CircularProgress";
+const KEY = "pdn.camposBusqueda";
+
 const axios = require("axios");
 
 export function EmpresasSancionadaPorCorrupcion() {
@@ -14,6 +16,17 @@ export function EmpresasSancionadaPorCorrupcion() {
   const [open, setOpen] = React.useState(false);
   const [options, setOptions] = React.useState([]);
   const loading = open && options.length === 0;
+
+  const storedCampos = JSON.parse(localStorage.getItem(KEY));
+
+//console.log(storedCampos["empresas-sancionadas"]["institucion"]["nombre"]);
+
+  let tempInstitucion = null
+
+  if (storedCampos && storedCampos["empresas-sancionadas"]["institucion"] && storedCampos["empresas-sancionadas"]["institucion"] !== null && storedCampos["empresas-sancionadas"]["institucion"]["nombre"]) {
+    tempInstitucion = storedCampos["empresas-sancionadas"]["institucion"]["nombre"]
+  } 
+  const [valueInstitucion, setValueInstitucion] = React.useState(tempInstitucion);
 
   React.useEffect(() => {
     let active = true;
@@ -35,7 +48,11 @@ export function EmpresasSancionadaPorCorrupcion() {
         axios(options)
           .then((data) => {
             data.data.forEach((item, index) => {
-              sug.push({ value: item.nombre, label: item.nombre, key: index });
+              //sug.push({ value: item.nombre, label: item.nombre, key: index });
+              if (item.nombre){
+                //console.log(item)
+                sug.push({ ...item, key: index });
+              }
             });
             //console.log(data.data)
             setOptions([...sug]);
@@ -98,29 +115,33 @@ export function EmpresasSancionadaPorCorrupcion() {
           <Controller
             name="empresas-sancionadas.institucion"
             control={control}
-            defaultValue=""
+            defaultValue={null}
             render={({ field }) => (
               <Autocomplete
                 {...field}
                 open={open}
-                onOpen={() => {
-                  setOpen(true);
-                }}
-                onClose={() => {
-                  setOpen(false);
-                }}
-                value={null}
+                onOpen={() => { setOpen(true); }}
+                onClose={() => { setOpen(false); }}
+                value={valueInstitucion || null}
+                getOptionLabel={(option) =>
+                  typeof option === "string" ? option : option.nombre
+                }
                 isOptionEqualToValue={(option, value) =>
-                  option.value === value.value
+                  value === undefined || value === "" || option.nombre === value.nombre
                 }
                 /* getOptionLabel={(option) => option.label} */
                 options={options}
                 loading={loading}
-                onChange={(e, value) => field.onChange(value.value)}
+                onChange={(e, newValue) => {
+                  //console.log(newValue, newValue);
+                  setOptions(newValue ? [newValue, ...options] : options);
+                  setValueInstitucion(newValue);
+                  field.onChange(newValue);
+                }}
                 renderOption={(props, option) => {
                   return (
                     <li {...props} key={option.key}>
-                      {option.label}
+                      {option.nombre}
                     </li>
                   );
                 }}

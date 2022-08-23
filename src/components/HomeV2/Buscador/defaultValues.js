@@ -22,7 +22,7 @@ const defaultValues = {
   },
   "empresas-sancionadas": {
     nombreRazonSocial: "",
-    institucion: "",
+    institucion: null,
     tipoSancion: [],
   },
   "empresas-contratos": { nombreRazonSocial: "", bienServicioOtorgado: "" },
