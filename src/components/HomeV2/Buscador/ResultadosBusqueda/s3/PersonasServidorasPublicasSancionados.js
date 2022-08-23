@@ -134,7 +134,7 @@ export function ResultadosS3s(props) {
 
     let body = {
       query: makeFiltros(),
-      institucion: filter.institucionDependencia,
+      /* institucion: filter.institucionDependencia, */
     };
 
     if (filter.nivel !== "any") body.nivel_gobierno = filter.nivel;
@@ -174,7 +174,9 @@ export function ResultadosS3s(props) {
       filter.institucionDependencia &&
       filter.institucionDependencia !== "any"
     )
-      filtros.institucionDependencia = filter.institucionDependencia;
+      filtros.institucionDependencia = filter.institucionDependencia.nombre;
+      /* filtros.institucion = filter.institucionDependencia.nombre; */
+
     if (filter.tipoSancion.length > 0)
       filtros.tipoSancion = filter.tipoSancion.map((item) => item.value);
     return filtros;
