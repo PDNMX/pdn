@@ -16,7 +16,6 @@ import { makeStyles } from "@mui/styles";
 import Chips from '../Chips';
 
 const useStyles = makeStyles((theme) => ({
-root: {},
 container: {
     marginTop: '30px',
     marginBottom: '30px',

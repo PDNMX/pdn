@@ -22,7 +22,7 @@ const ListItem = styled("li")(({ theme }) => ({
 
 export default function ChipsArray(props) {
   const dataProps = JSON.parse(props.criterios);
-  console.log(dataProps);
+  /* console.log(dataProps); */
   const etiquetas = [];
   for (let key in dataProps) {
     //let temp = [];
@@ -91,7 +91,7 @@ export default function ChipsArray(props) {
     }
   }
 
-  console.log(etiquetas);
+  /* console.log(etiquetas); */
 
   const [chipData, setChipData] = React.useState(etiquetas);
 
@@ -158,7 +158,6 @@ export default function ChipsArray(props) {
         </>
       ) : (
         <>
-        <h1>no hay filtros de busqueda</h1>
         </>
       )}
     </>
