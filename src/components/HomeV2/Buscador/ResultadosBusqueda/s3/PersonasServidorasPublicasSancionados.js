@@ -113,6 +113,14 @@ export function ResultadosS3s(props) {
     }
   }, [provider]);
 
+  React.useEffect(() => {
+    if (provider !== "any") {
+        /* setPagination({ ...pagination }); */
+        setSelectedItem(null);
+        handleSearchAPI();
+    }
+}, [pagination.page, pagination.rowsPerPage]);
+
   /*   const handleCleanAll = () => {
     setFilter(initialFilter);
     setProvidersList([]);
