@@ -31,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
   titulo: {
     color: '#fff',
     backgroundColor: 'rgba(29, 80, 109, 0.95)',
+    fontSize: "1.12rem"
   },
 
 }));
@@ -99,7 +100,7 @@ export default function CustomizedDialogs() {
         maxWidth="md"
       >
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose} className={classes.titulo} >
-          {titulo}
+          <span>{titulo}</span>
         </BootstrapDialogTitle>
         <DialogContent dividers>
             <Grid
