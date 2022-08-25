@@ -232,7 +232,7 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
             >
               {opciones.map((opcion, index) => (
                 <Grid key={index} item md={4} xs={6} sm={6} style={{display: 'flex'}}>
-                  <Card className={classes.card} {...field} style={{width: "100%", display: 'flex', justifyContent: 'space-between', flexDirection: 'column', "borderBottom": "0.3rem solid " + opcion.color}}>
+                  <Card className={classes.card} {...field} style={{width: "100%", display: 'flex', justifyContent: 'space-between', flexDirection: 'row', "borderBottom": "0.3rem solid " + opcion.color}}>
                     <Tooltip
                       title={opcion.detalle}
                       TransitionComponent={Zoom}
