@@ -34,17 +34,16 @@ export function PersonasServidorasPublicasSancionados() {
       if (active) {
         let sug = [];
         let options = {
-          url: process.env.REACT_APP_S3S_BACKEND + "/api/v1/entities",
+          url: "https://raw.githubusercontent.com/PDNMX/bulk-generator/main/Reporte%20de%20validador%20de%20buscador/reporte_s3s.json",
           json: true,
-          method: "post",
-          data: {},
+          method: "GET"
         };
 
         axios(options)
           .then((data) => {
             data.data.forEach((item, index) => {
               /* console.log(index) */
-              if (item.nombre){
+              if (item.nombre && item.status === true){
                 //console.log(item)
                 sug.push({ ...item, key: index });
               }

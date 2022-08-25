@@ -8,7 +8,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-import ScreenSearchDesktopOutlinedIcon from "@mui/icons-material/ScreenSearchDesktopOutlined";
+import SearchIcon from '@mui/icons-material/Search';
 
 import { Grid } from "@mui/material";
 import Stepper from "./LinearStepper";
@@ -89,7 +89,7 @@ export default function CustomizedDialogs() {
   return (
     <div>
       <Fab className={classes.fab} onClick={handleClickOpen} color="primary" aria-label="add" >
-          <ScreenSearchDesktopOutlinedIcon style={{ color: "#f5f8fb" }} />
+          <SearchIcon style={{ color: "#f5f8fb" }} />
         </Fab>
       <BootstrapDialog
         onClose={handleClose}

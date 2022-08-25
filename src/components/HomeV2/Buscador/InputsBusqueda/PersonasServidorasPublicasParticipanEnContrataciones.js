@@ -44,10 +44,9 @@ const storedCampos = JSON.parse(localStorage.getItem(KEY));
       if (active) {
         let sug = [];
         let options = {
-          url: process.env.REACT_APP_S2_BACKEND + "/api/v1/entities",
+          url: "https://raw.githubusercontent.com/PDNMX/bulk-generator/main/Reporte%20de%20validador%20de%20buscador/reporte_s2.json",
           json: true,
-          method: "POST",
-          data: {},
+          method: "GET",
         };
 
         axios(options)

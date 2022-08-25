@@ -39,10 +39,9 @@ export function EmpresasSancionadaPorCorrupcion() {
       if (active) {
         let sug = [];
         let options = {
-          url: process.env.REACT_APP_S3P_BACKEND + "/api/v1/entities",
+          url: "https://raw.githubusercontent.com/PDNMX/bulk-generator/main/Reporte%20de%20validador%20de%20buscador/reporte_s3p.json",
           json: true,
-          method: "POST",
-          data: {},
+          method: "GET",
         };
 
         axios(options)

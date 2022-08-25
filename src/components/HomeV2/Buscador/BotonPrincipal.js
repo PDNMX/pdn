@@ -8,7 +8,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-import ScreenSearchDesktopOutlinedIcon from "@mui/icons-material/ScreenSearchDesktopOutlined";
+import SearchIcon from '@mui/icons-material/Search';
 
 import { Grid } from "@mui/material";
 import Stepper from "./LinearStepper";
@@ -95,7 +95,7 @@ export default function CustomizedDialogs() {
         className={classes.btnPDN}
         variant="contained"
         size="large"
-        endIcon={<ScreenSearchDesktopOutlinedIcon />}
+        endIcon={<SearchIcon />}
         onClick={handleClickOpen}
         margin={"normal"}
       >
