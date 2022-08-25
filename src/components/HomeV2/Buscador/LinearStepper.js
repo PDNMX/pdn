@@ -66,7 +66,9 @@ const useStyles = makeStyles((theme) => ({
   cardMedia: {
     width: "30%",
     margin: "3% 0%",
-
+    /* [theme.breakpoints.down('sm')]: {
+      display: "none",
+    }, */
   },
   card: {
     background: "#E1E8EB",
@@ -84,10 +86,11 @@ const useStyles = makeStyles((theme) => ({
     
   },
   Tooltip: {
-    maxWidth: 250,
+    maxWidth: 200,
     backgroundColor: "rgba(38, 37, 37)",
     fontSize: 15,
     color: "white",
+    opacity: 0.8
   },
   stepper: {
     marginTop: theme.spacing(2),
@@ -110,15 +113,30 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "0.9em",
     cursor: "pointer",
     fontWeight: 450,
+    [theme.breakpoints.down('sm')]: {
+      top: 'unset',
+      left: 'unset',
+      position: 'relative',
+      margin: "3%"
+    },
   },
   divider: {
     color: "rgb(237 237 237 / 31%)",
     "&:before": {
-      borderTop: "thin solid rgb(237 237 237 / 31%)"
+      borderTop: "thin solid rgb(237 237 237 / 31%)",
+      [theme.breakpoints.down('sm')]: {
+        width: "30%"
+      }
     },
     "&:after": {
-      borderTop: "thin solid rgb(237 237 237 / 31%)"
-    }
+      borderTop: "thin solid rgb(237 237 237 / 31%)",
+      [theme.breakpoints.down('sm')]: {
+        width: "30%"
+      }
+    },[theme.breakpoints.down('sm')]: {
+      whiteSpace: "normal"
+    },
+
   }
 }));
 
