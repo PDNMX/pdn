@@ -1,20 +1,21 @@
 import React from "react";
-import { Grid, Paper, Modal } from "@mui/material";
+import { Grid, Modal } from "@mui/material";
 
 import axios from "axios";
 
-import Perfil from "../../../../Declaraciones2/Perfil";
+import Perfil from "../Perfil";
 //import styles from '../../../../Declaraciones2/style';
 
 import { error } from "../../../../Declaraciones2/utils";
 import scrollToComponent from "react-scroll-to-component";
 
-import ActiveResultProv from "../../../../Declaraciones2/ActiveResultProv";
+import ActiveResultProv from "../Resultados";
 /* import Descarga from '../../../../Compartidos/Descarga'; */
 import MantenimentResultProv from "../../../../Declaraciones2/MantenimentResultProv";
 
 import CircularProgress from "@mui/material/CircularProgress";
 import Chips from "../Chips";
+
 
 export class ResultadosS1 extends React.Component {
   /*
@@ -111,10 +112,7 @@ export class ResultadosS1 extends React.Component {
       (prevState) => ({
         ...prevState,
         dataSelect: data,
-      }),
-      () => {
-        scrollToComponent(this.perfil, { align: "top" });
-      }
+      })
     );
   };
 
@@ -343,7 +341,7 @@ export class ResultadosS1 extends React.Component {
       })
       .then(() => {
         this.setState({ loading: false });
-        console.log("terminamos los requests");
+        /* console.log("terminamos los requests"); */
       });
   };
 
@@ -427,7 +425,9 @@ export class ResultadosS1 extends React.Component {
         <Chips criterios={JSON.stringify(data)} />
         {!this.state.dataSelect && (
           <>
-            {this.state.prov
+            <Grid container margin="normal" style={{margin: "2% 0%"}}>
+              <Grid item xs={12}>
+              {this.state.prov
               .filter((p) => p.status === "ACTIVE")
               .map((p, i) => {
                 if (p.total > 0) {
@@ -448,6 +448,10 @@ export class ResultadosS1 extends React.Component {
               .map((p, i) => {
                 return <MantenimentResultProv key={"man-" + i} p={p} />;
               })}
+              </Grid>
+            </Grid>
+
+
           </>
         )}
         {this.state.dataSelect && (
