@@ -406,6 +406,7 @@ const [state, setState] = React.useState({
                                                 onClick={() => openDialog(n)}
                                                 tabIndex={-1}
                                                 key={index}
+                                                sx={{cursor: 'pointer'}}
                                             >
                                                 <TableCell component="th" scope="row" style={{width: '25%'}}
                                                             padding="normal">{nombrecompleto || `${nombres} ${primerApellido} ${segundoApellido}`}</TableCell>

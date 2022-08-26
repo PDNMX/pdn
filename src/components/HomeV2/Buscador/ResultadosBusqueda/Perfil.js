@@ -40,9 +40,9 @@ class Perfil extends React.Component {
       prevSate => {
         return { ...prevSate, menuSituacionPatrimonial: newValue };
       },
-      () => {
+      /* () => {
         scrollToComponent(this.top, { align: 'top' });
-      }
+      } */
     );
   };
 
@@ -51,9 +51,9 @@ class Perfil extends React.Component {
       prevSate => {
         return { ...prevSate, menuIntereses: newValue };
       },
-      () => {
+      /* () => {
         scrollToComponent(this.top, { align: 'top' });
-      }
+      } */
     );
   };
 

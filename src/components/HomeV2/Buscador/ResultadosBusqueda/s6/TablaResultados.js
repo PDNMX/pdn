@@ -31,7 +31,7 @@ function EnhancedTableHead(props) {
 
     return (
         <TableHead className={classes.tableHead}>
-            <TableRow>
+            <TableRow sx={{}}>
                 {headRows.map(row => (
                     <TableCell
                         key={row.id}
@@ -203,7 +203,7 @@ export default function EnhancedTable(props) {
         <div className={classes.root}>
             {props.loading?<LinearIndeterminate/>:
                 <Paper className={classes.paper}>
-                    {console.log(total)}
+                    {/* {console.log(total)} */}
                     {total > 0 ? (
                         <>
                             <div className={classes.tableWrapper}>
@@ -232,6 +232,7 @@ export default function EnhancedTable(props) {
                                                 onClick={event => handleOpenDialog(event, index)}
                                                 tabIndex={-1}
                                                 key={row.col1}
+                                                sx={{cursor: 'pointer'}}
                                             >
                                                 <TableCell component="th" id={labelId} scope="row" padding="normal">
                                                     {row.col1}

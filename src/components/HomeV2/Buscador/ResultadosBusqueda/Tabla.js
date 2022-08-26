@@ -93,7 +93,7 @@ export default function EnhancedTable({ rows, pagination, posicion, handleDataSe
               const labelId = `enhanced-table-checkbox-${index}`;
               const { datosGenerales, datosEmpleoCargoComision } = row.declaracion.situacionPatrimonial;
               return (
-                <TableRow style={{cursor: 'pointer'}} hover onClick={event => handleClick(event, row)} tabIndex={-1} key={row.nombre + '-' + index}>
+                <TableRow sx={{cursor: 'pointer'}} hover onClick={event => handleClick(event, row)} tabIndex={-1} key={row.nombre + '-' + index}>
                   <TableCell component='th' id={labelId} scope='row'>
                     {datosGenerales.nombre} {datosGenerales.primerApellido} {datosGenerales.segundoApellido}
                   </TableCell>
