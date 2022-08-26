@@ -138,6 +138,14 @@ function BusquedaServidor({classes}) {
         }
     }, [provider]);
 
+    React.useEffect(() => {
+        if (provider !== "any") {
+            /* setPagination({ ...pagination }); */
+            setSelectedItem(null);
+            handleSearchAPI();
+        }
+    }, [pagination.page, pagination.rowsPerPage]);
+
     const loadInstitutions = () => {
         let sug = [];
         let options = {
