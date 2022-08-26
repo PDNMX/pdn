@@ -137,6 +137,14 @@ function BusquedaParticular ({classes}){
         loadInstitutions();
     }, [filter?.provider])
 
+    React.useEffect(() => {
+        if (provider !== "any") {
+            /* setPagination({ ...pagination }); */
+            setSelectedItem(null);
+            handleSearch();
+        }
+    }, [pagination.page, pagination.rowsPerPage]);
+
     const loadInstitutions = () => {
         let instituciconesLista = [];
         let options = {
