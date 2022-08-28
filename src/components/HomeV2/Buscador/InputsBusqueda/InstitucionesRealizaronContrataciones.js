@@ -32,6 +32,7 @@ export function InstitucionesRealizaronContrataciones() {
                 <Select
                   /* value={'Tipo de contratación'} */
                   label="Selecciona el proveedor de información"
+                  fullWidth
                   {...field}
                 >
                   <MenuItem default value="SHCP">

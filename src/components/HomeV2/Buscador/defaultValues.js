@@ -25,11 +25,16 @@ const defaultValues = {
     institucion: null,
     tipoSancion: [],
   },
-  "empresas-contratos": { nombreRazonSocial: "", bienServicioOtorgado: "" },
+  "empresas-contratos": {
+    nombreRazonSocial: "",
+    bienServicioOtorgado: "",
+    supplier: "SHCP"
+  },
   "instituciones-contrataciones": {
     institucionContratante: "",
     bienServicioOtorgado: "",
     tipoContratacion: "any",
+    supplier: "SHCP"
   },
 };
 
