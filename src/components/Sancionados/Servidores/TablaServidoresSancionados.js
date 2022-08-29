@@ -135,6 +135,11 @@ function TablaServidoresSancionados({
                                     <TableRow>
                                         <TablePagination
                                             className={classes.tablePagination}
+                                            sx={{
+                                                ".MuiTablePagination-select": {
+                                                    color: '#666666'
+                                                }
+                                            }}
                                             colSpan={4}
                                             count={totalRows}
                                             rowsPerPage={rowsPerPage}
