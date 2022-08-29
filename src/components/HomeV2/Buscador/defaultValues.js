@@ -31,10 +31,10 @@ const defaultValues = {
     supplier: "SHCP"
   },
   "instituciones-contrataciones": {
-    institucionContratante: "",
     bienServicioOtorgado: "",
     tipoContratacion: "any",
-    supplier: "SHCP"
+    supplier: "SHCP",
+    buyer_name: null
   },
 };
 

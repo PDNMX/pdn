@@ -16,6 +16,8 @@ export function ResultadosS6v2(props) {
     mejorar coincidencias en las busquedas
     */
     //console.log(data.supplier);
+    const buyerName = data.buyer_name;
+    /* console.log(buyerName.name) */
     const [state, setState] = React.useState({
     dataSupplier: data.supplier.trim(),
     inputText: data.bienServicioOtorgado.trim(),
@@ -78,9 +80,20 @@ export function ResultadosS6v2(props) {
       pageSize: state.pagination.pageSize,
     };
 
-    if (state.buyer_id !== "any") {
+    /* if (state.buyer_id !== "any") {
       body.buyer_id = state.buyer_id;
-    }
+    } */
+
+    if (
+      buyerName &&
+      buyerName !== null &&
+      buyerName.name
+      
+    ) {
+      body.buyer_name = buyerName.name;
+    }  /* else {
+      body.buyer_name = "";
+    }  */
 
     if (state.procurementMethod !== "any") {
       body.procurementMethod = state.procurementMethod;
