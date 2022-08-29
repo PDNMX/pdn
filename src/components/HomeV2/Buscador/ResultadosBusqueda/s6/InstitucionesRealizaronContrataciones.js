@@ -34,20 +34,21 @@ export function ResultadosS6v2(props) {
     supplierName: "",
     cycle: "any",
     cycles: [],
+    terminado: false
   });
 
-  React.useEffect(() => {
+  /* React.useEffect(() => {
     //fetch data
     //const supplier_id = props.dataSupplier; //state.dataSupplier;
     //console.log(state);
     search();
-  }, []);
+  }, []); */
 
   React.useEffect(() => {
-    if (state.loading) {
+    if (state.loading !== false) {
       search();
     }
-  }, [state.loading]);
+  }, [state.pagination.pageSize, state.pagination.page]);
 
   const handleChangeRowsPerPage = (pageSize) => {
     setState({
@@ -122,15 +123,16 @@ export function ResultadosS6v2(props) {
         method: "POST",
         data: body,
         json: true,
-      });
-
-      //console.log(data)
-      setState({
-        ...state,
-        loading: false,
-        results: res.data.data,
-        pagination: res.data.pagination, //solo debe actualizarse el total
-      });
+      }).then((res) => {
+          setState({
+            /* ...state, */
+            loading: false,
+            results: res.data.data,
+            pagination: res.data.pagination, //solo debe actualizarse el total
+            terminado: true
+          });
+      })
+      
     } catch (error) {
       console.log(error);
       setState({
@@ -154,7 +156,6 @@ export function ResultadosS6v2(props) {
           pagination={state.pagination}
           handleChangeRowsPerPage={handleChangeRowsPerPage}
           handleChangePage={handlePageChange}
-          /* loading={state.loading} */
         />
       </div>
     </>

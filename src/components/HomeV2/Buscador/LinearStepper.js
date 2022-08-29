@@ -281,7 +281,7 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
-    setSkippedSteps(skippedSteps.filter((skipItem) => skipItem !== activeStep));
+    //setSkippedSteps(skippedSteps.filter((skipItem) => skipItem !== activeStep));
   };
 
   const handleBack = () => {

@@ -7,7 +7,6 @@ import Perfil from "../Perfil";
 //import styles from '../../../../Declaraciones2/style';
 
 import { error } from "../../../../Declaraciones2/utils";
-import scrollToComponent from "react-scroll-to-component";
 
 import ActiveResultProv from "../Resultados";
 /* import Descarga from '../../../../Compartidos/Descarga'; */

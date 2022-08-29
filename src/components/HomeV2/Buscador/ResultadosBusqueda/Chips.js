@@ -38,7 +38,8 @@ export default function ChipsArray(props) {
       value !== undefined &&
       value !== null ||
       value.length > 0 &&
-      value.nombre && value.nombre !== null
+      value.nombre && value.nombre !== null ||
+      value.name && value.name !== null
     ) {
       switch (key) {
         case "nombres":
@@ -52,8 +53,11 @@ export default function ChipsArray(props) {
           obj = { id: nanoid(), key: 1, label: value.nombre };
           etiquetas.push(obj);
           break;
+        case "buyer_name":
+          obj = { id: nanoid(), key: 1, label: value.name };
+          etiquetas.push(obj);
+          break;
         case "supplier":
-        case "institucionContratante":
           obj = { id: nanoid(), key: 1, label: value };
           etiquetas.push(obj);
           break;
