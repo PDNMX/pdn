@@ -2,6 +2,7 @@ import React from "react";
 import withStyles from '@mui/styles/withStyles';
 import {Button, Paper, Typography, Grid} from "@mui/material";
 import {Link} from "react-router-dom";
+import BuscadorModal from "./Buscador/BotonPrincipal";
 
 import bgPDN from '../../assets/bg.jpg';
 
@@ -9,7 +10,6 @@ const styles = theme => ({
     container: {
         padding: "5% 10%",
         backgroundColor: 'rgba(29, 80, 109, 0.95)',
-        
     },
     bg: {
         backgroundImage: `url(${bgPDN})`,
@@ -78,6 +78,7 @@ const QueEsPDN = props => {
                     <Typography className={classes.subTitle} paragraph>
                         Inteligencia <b>Anticorrupción</b>
                     </Typography>
+                    <BuscadorModal />
                 </Grid>
                 <Grid item md={6} sm={12} xs={12} align="left" >
                     <Typography className={classes.text} paragraph>
