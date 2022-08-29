@@ -115,7 +115,7 @@ export function ResultadosS6v2(props) {
     const supplier_id = data.supplier.trim();
     //console.log(body);
     try {
-      const res = await axios({
+      await axios({
         url: process.env.REACT_APP_S6_BACKEND + "/api/v1/search",
         params: {
           supplier_id,
@@ -150,7 +150,8 @@ export function ResultadosS6v2(props) {
           <CircularProgress size={200} style={{position: 'fixed', margin: 'auto', left: 0, right: 0, top: 0, bottom: 0}}/>
         </Modal>
       )}
-      <div style={{ overflow: "auto" }}>
+      {! state.terminado ? (
+        <div style={{ overflow: "auto" }}>
         <TablaResultados
           data={state.results}
           pagination={state.pagination}
@@ -158,6 +159,9 @@ export function ResultadosS6v2(props) {
           handleChangePage={handlePageChange}
         />
       </div>
+      ) : (
+        <h2 style={{color: "#efd643"}}>No se encontraron resultados para los filtros de búsqueda definidos</h2>
+      )} 
     </>
   );
 }

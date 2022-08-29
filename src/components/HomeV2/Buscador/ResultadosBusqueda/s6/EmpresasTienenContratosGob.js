@@ -30,6 +30,7 @@ export function ResultadosS6v1(props) {
     supplierName: data.nombreRazonSocial.trim(),
     cycle: "any",
     cycles: [],
+    terminado: false
   });
 
   React.useEffect(() => {
@@ -39,11 +40,11 @@ export function ResultadosS6v1(props) {
     search();
   }, []);
 
-  React.useEffect(() => {
+  /* React.useEffect(() => {
     if (state.loading) {
       search();
     }
-  }, [state.loading]);
+  }, [state.loading]); */
 
   const handleChangeRowsPerPage = (pageSize) => {
     setState({
@@ -98,7 +99,7 @@ export function ResultadosS6v1(props) {
 
     const supplier_id = data.supplier.trim();
     try {
-      const res = await axios({
+      await axios({
         url: process.env.REACT_APP_S6_BACKEND + "/api/v1/search",
         params: {
           supplier_id,
@@ -106,15 +107,23 @@ export function ResultadosS6v1(props) {
         method: "POST",
         data: body,
         json: true,
-      });
+      }).then((res) => {
+        setState({
+          /* ...state, */
+          loading: false,
+          results: res.data.data,
+          pagination: res.data.pagination, //solo debe actualizarse el total
+          terminado: true
+        });
+    });
       //sumaResultados = res.data.data.length;
       //console.log(sumaResultados)
-      setState({
+      /* setState({
         ...state,
         loading: false,
         results: res.data.data,
         pagination: res.data.pagination, //solo debe actualizarse el total
-      });
+      }); */
     } catch (error) {
       console.log(error);
       setState({
@@ -132,15 +141,18 @@ export function ResultadosS6v1(props) {
           <CircularProgress size={200} style={{position: 'fixed', margin: 'auto', left: 0, right: 0, top: 0, bottom: 0}}/>
         </Modal>
       )}
-      <div style={{ overflow: "auto" }}>
+      {! state.terminado ? (
+        <div style={{ overflow: "auto" }}>
         <TablaResultados
           data={state.results}
           pagination={state.pagination}
           handleChangeRowsPerPage={handleChangeRowsPerPage}
           handleChangePage={handlePageChange}
-          /* loading={state.loading} */
         />
       </div>
+      ) : (
+        <h2 style={{color: "#efd643"}}>No se encontraron resultados para los filtros de búsqueda definidos</h2>
+      )} 
     </>
   );
 }
