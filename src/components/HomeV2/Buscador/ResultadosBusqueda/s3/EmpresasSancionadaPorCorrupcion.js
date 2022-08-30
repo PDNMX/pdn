@@ -156,67 +156,15 @@ export function ResultadosS3p(props){
         }
     }, [provider]);
 
-    /* React.useEffect(() => {
-        loadInstitutions();
-    }, [filter?.provider]) */
+    React.useEffect(() => {
+        if (provider !== "any") {
+            /* setPagination({ ...pagination }); */
+            setSelectedItem(null);
+            handleSearch();
+        }
+    }, [pagination.page, pagination.rowsPerPage]);
 
-    /* const loadInstitutions = () => {
-        let instituciconesLista = [];
-        let options = {
-            url: process.env.REACT_APP_S3P_BACKEND + '/api/v1/entities',
-            json: true,
-            method: "post",
-            data: {}
-        };
-        if (filter.nivel !== 'any') options.data.nivel_gobierno = filter.nivel;
-        if (filter.provider !== 'any') options.data.supplier_id = filter.provider;
-
-        axios(options)
-            .then(data => {
-                data.data.forEach((item, index) => {
-                    instituciconesLista.push({value: item.nombre, label: item.nombre, key: index});
-                });
-                setInstitutionsList(instituciconesLista);
-                setFilter({...filter, institucionDependencia: 'any'});
-            }).catch(err => {
-            setError(true);
-        });
-    } */
-
-    /* const loadProviders = () => {
-        let sug = [];
-        let options = {
-            url: process.env.REACT_APP_S3P_BACKEND + '/api/v1/getProviders',
-            json: true,
-            method: "post",
-            data: { }
-        };
-        if(filter.nivel !== 'any') options.data.nivel_gobierno = filter.nivel
-        axios(options)
-            .then(data => {
-                data.data.forEach((provider) => {
-                    sug.push({value: provider.supplier_id, label: provider.supplier_name, key: provider.supplier_id});
-                });
-                setProvidersList(sug);
-                setProvider('any');
-            }).catch(err => {
-            setError(true);
-        });
-    } */
-
-    /* const handleCleanAll = () => {
-        setFilter(initialFilter);
-        setProvidersList([]);
-        setPagination(initialPagination);
-        setSort(initialSort);
-        setFilterData(null);
-        setPrevios([]);
-        setInstitutionsList([]);
-        setSelectedItem(null);
-        setView(0);
-    }; */
-
-    const handleSearchPrevios = () => {
+   const handleSearchPrevios = () => {
         setLoading(true);
         setFilterData([]);
         setSelectedItem(null);
@@ -225,22 +173,9 @@ export function ResultadosS3p(props){
         let body =
             {
                 "query": makeFiltros(),
-                /* "institucion": "" */
             };
         if(filter.nivel !== 'any') body.nivel_gobierno = filter.nivel;
         if(filter.proveedor !== 'any') body.proveedor = filter.proveedor;
-        /* if (
-          filter.institucionDependencia &&
-          filter.institucionDependencia !== "any" &&
-          filter.institucionDependencia.nombre
-        ) {
-          body.institucionDependencia = filter.institucionDependencia.nombre;
-          body.institucion = filter.institucionDependencia.nombre;
-        } else {
-            body.institucionDependencia = "";
-        } */
-
-        //console.log(body)
             
 
         let options = {
@@ -279,7 +214,7 @@ export function ResultadosS3p(props){
           institucionDependencia = "";
         }
         if (tipoSancion.length > 0) filtros.tipoSancion = tipoSancion.map(item => item.value);
-        console.log(filtros)
+        /* console.log(filtros) */
         return filtros;
     };
 
@@ -300,7 +235,6 @@ export function ResultadosS3p(props){
                 "sort": makeSort()
             };
         
-        //setFilter({...filter, institucionDependencia: 'any'});
         if (
             filter.institucionDependencia &&
             filter.institucionDependencia !== "any" &&
@@ -417,10 +351,6 @@ export function ResultadosS3p(props){
         );
 
 }
-
-/* BusquedaParticular.propTypes = {
-    classes: PropTypes.object.isRequired
-}; */
 
 export default ResultadosS3p;
 
