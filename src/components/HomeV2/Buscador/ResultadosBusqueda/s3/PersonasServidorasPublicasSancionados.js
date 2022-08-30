@@ -96,6 +96,8 @@ export function ResultadosS3s(props) {
   const [sort, setSort] = React.useState(initialSort);
   const [view, setView] = React.useState(0);
 
+  const [fixpaginador, setFixpaginador] = React.useState(false);
+
   React.useEffect(() => {
     //loadInstitutions();
     //loadProviders();
@@ -111,12 +113,12 @@ export function ResultadosS3s(props) {
   }, [provider]);
 
   React.useEffect(() => {
-    if (provider !== "any") {
+    if (provider !== "any" && fixpaginador === true)  {
         /* setPagination({ ...pagination }); */
         setSelectedItem(null);
         handleSearchAPI();
     }
-}, [pagination.page, pagination.rowsPerPage]);
+}, [fixpaginador]);
 
   /*   const handleCleanAll = () => {
     setFilter(initialFilter);
@@ -136,6 +138,7 @@ export function ResultadosS3s(props) {
     setSelectedItem(null);
     setPagination({ ...pagination, rowsPerPage: 10 });
     setProvider("any");
+    setFixpaginador(false);
 
     let body = {
       query: makeFiltros(),
@@ -222,6 +225,7 @@ export function ResultadosS3s(props) {
         });
         setError(false);
         setView(2);
+        setFixpaginador(false);
       })
       .catch((err) => {
         setLoading(false);
@@ -235,10 +239,12 @@ export function ResultadosS3s(props) {
 
   const handleChangePage = (event, page) => {
     setPagination({ ...pagination, page: page + 1 });
+    setFixpaginador(true);
   };
 
   const handleChangeRowsPerPage = (event) => {
     setPagination({ ...pagination, rowsPerPage: event.target.value, page: 1 });
+    setFixpaginador(true);
   };
 
   const verDetalle = (event, elemento) => {

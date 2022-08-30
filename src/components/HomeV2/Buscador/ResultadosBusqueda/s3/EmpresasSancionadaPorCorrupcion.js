@@ -100,6 +100,8 @@ export function ResultadosS3p(props){
     const [filter, setFilter] = React.useState(initialFilter);
     const [sort, setSort] = React.useState(initialSort);
     const [view, setView] = React.useState(0);
+
+    const [fixpaginador, setFixpaginador] = React.useState(false);
     const classes = useStyles();
 
     React.useEffect(() => {
@@ -118,18 +120,19 @@ export function ResultadosS3p(props){
     }, [provider]);
 
     React.useEffect(() => {
-        if (provider !== "any") {
+        if (provider !== "any" && fixpaginador === true)  {
             /* setPagination({ ...pagination }); */
             setSelectedItem(null);
             handleSearch();
         }
-    }, [pagination.page, pagination.rowsPerPage]);
+    }, [fixpaginador]);
 
    const handleSearchPrevios = () => {
         setLoading(true);
         setFilterData([]);
         setSelectedItem(null);
         setPagination({...pagination, rowsPerPage: 10});
+        setFixpaginador(false);
 
         let body =
             {
@@ -187,6 +190,7 @@ export function ResultadosS3p(props){
 
     const handleSearch = () => {
         setLoading(true);
+        setFixpaginador(false);
         let body =
             {
                 "query": makeFiltros(),
@@ -231,10 +235,12 @@ export function ResultadosS3p(props){
 
     const handleChangePage = (event, page) => {
         setPagination({...pagination, page: page + 1});
+        setFixpaginador(true);
     };
 
     const handleChangeRowsPerPage = event => {
         setPagination({...pagination, rowsPerPage: event.target.value, page: 1});
+        setFixpaginador(true);
     };
 
     const verDetalle = (event, elemento) => {
