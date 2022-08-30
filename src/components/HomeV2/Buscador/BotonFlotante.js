@@ -102,7 +102,7 @@ export default function CustomizedDialogs() {
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose} className={classes.titulo} >
           <span>{titulo}</span>
         </BootstrapDialogTitle>
-        <DialogContent dividers>
+        <DialogContent>
             <Grid
               container
               alignItems="flex-start"

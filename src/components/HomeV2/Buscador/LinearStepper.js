@@ -231,7 +231,7 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
               className={classes.container}
             >
               {opciones.map((opcion, index) => (
-                <Grid key={index} item md={4} xs={6} sm={6} style={{display: 'flex'}}>
+                <Grid key={index} item md={4} xs={6} sm={4} style={{display: 'flex'}}>
                   <Card className={classes.card} {...field} style={{width: "100%", display: 'flex', justifyContent: 'space-between', flexDirection: 'row', "borderBottom": "0.3rem solid " + opcion.color}}>
                     <Tooltip
                       title={opcion.detalle}
