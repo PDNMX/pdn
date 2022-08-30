@@ -11,7 +11,6 @@ import { getMoneda } from '../../../Declaraciones2/utils';
 import Button from '@mui/material/Button';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
-import scrollToComponent from 'react-scroll-to-component';
 import basicInicial from '../../../Declaraciones2/SituacionPatrimonial/00_basic_incial';
 
 class Perfil extends React.Component {

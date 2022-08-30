@@ -34,12 +34,12 @@ export default function ChipsArray(props) {
     //console.log(value)
     if (
       value &&
-      !Array.isArray(value) &&
-      value !== undefined &&
-      value !== null ||
-      value.length > 0 &&
-      value.nombre && value.nombre !== null ||
-      value.name && value.name !== null
+      (!Array.isArray(value)) &&
+      (value !== undefined )&&
+      (value !== null )||
+      (value.length > 0 ) &&
+      (value.nombre && value.nombre !== null )||
+      (value.name && value.name !== null)
     ) {
       switch (key) {
         case "nombres":
@@ -95,10 +95,6 @@ export default function ChipsArray(props) {
     }
   }
 
-  /* console.log(etiquetas); */
-
-  const [chipData, setChipData] = React.useState(etiquetas);
-
   /* const handleDelete = (chipToDelete) => () => {
     setChipData((chips) => chips.filter((chip) => chip.id !== chipToDelete.id));
   }; */
@@ -107,7 +103,6 @@ export default function ChipsArray(props) {
     <>
       {etiquetas.length > 0 ? (
         <>
-          <h1></h1>
           <Typography
             style={{ color: "#E1E8EB", fontSize: "22px", fontWeight: 500 }}
           >
@@ -126,7 +121,7 @@ export default function ChipsArray(props) {
             component="ul"
             elevation={0}
           >
-            {chipData.map((data, index) => {
+            {etiquetas.map((data, index) => {
               let icon;
               icon = <SentimentNeutralIcon />;
               if (data.key === 0) {

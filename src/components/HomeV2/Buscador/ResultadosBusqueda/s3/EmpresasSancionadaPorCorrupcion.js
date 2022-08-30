@@ -126,10 +126,10 @@ export function ResultadosS3p(props){
     const [error, setError] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
     //const [showAdvancedSearch, setShowAdvancedSearch] = React.useState(false);
-    const [institutionsList, setInstitutionsList] = React.useState([]);
+    /* const [institutionsList, setInstitutionsList] = React.useState([]); */
     const [selectedItem, setSelectedItem] = React.useState(null);
     const [provider, setProvider] = React.useState('any');
-    const [providersList, setProvidersList] = React.useState([]);
+    /* const [providersList, setProvidersList] = React.useState([]); */
     const [pagination, setPagination] = React.useState(initialPagination);
     const [filter, setFilter] = React.useState(initialFilter);
     const [sort, setSort] = React.useState(initialSort);

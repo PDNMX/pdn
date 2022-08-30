@@ -6,7 +6,7 @@ import {
   MenuItem,
   Select,
 } from "@mui/material/";
-import { Controller, useFormContext, useForm } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 import { ThemeProvider } from "@mui/material/styles";
 import ThemeV2 from "../../../../ThemeV2";
 import Fade from "@mui/material/Fade";

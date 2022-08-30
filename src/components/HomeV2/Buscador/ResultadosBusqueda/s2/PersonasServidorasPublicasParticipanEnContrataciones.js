@@ -156,7 +156,6 @@ const [state, setState] = React.useState({
             fetchData();
         }
     }, [
-        state.supplier_id,
         state.page,
         state.rowsPerPage,
         state.results
@@ -428,7 +427,7 @@ const [state, setState] = React.useState({
                                     <TablePagination
                                         sx={{
                                             ".MuiTablePagination-select": {
-                                                color: 'black'
+                                                color: '#666666'
                                             }
                                         }}
                                         className={classes.tablePagination}

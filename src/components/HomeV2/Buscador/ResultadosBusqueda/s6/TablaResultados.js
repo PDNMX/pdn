@@ -255,7 +255,7 @@ export default function EnhancedTable(props) {
                         <TablePagination
                             sx={{
                                 ".MuiTablePagination-select": {
-                                    color: 'black'
+                                    color: '#666666'
                                 }
                             }}
                             rowsPerPageOptions={[5, 10, 25]}

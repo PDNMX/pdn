@@ -174,7 +174,6 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
   //const { getValues } = useForm();
   /* const methods = useForm(); */
   const [activeStep, setActiveStep] = useState(0);
-  const [skippedSteps, setSkippedSteps] = useState([]);
   const [name, setName] = useState("");
   const steps = getSteps();
 
@@ -273,10 +272,6 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
 
   const isStepOptional = (step) => {
     return step === 1;
-  };
-
-  const isStepSkipped = (step) => {
-    return skippedSteps.includes(step);
   };
 
   const handleNext = () => {
@@ -407,9 +402,6 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
                 opcional
               </Typography>
             );
-          }
-          if (isStepSkipped(index)) {
-            stepProps.completed = false;
           }
           return (
             <Step 

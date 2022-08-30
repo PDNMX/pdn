@@ -37,13 +37,6 @@ export function ResultadosS6v2(props) {
     terminado: false
   });
 
-  /* React.useEffect(() => {
-    //fetch data
-    //const supplier_id = props.dataSupplier; //state.dataSupplier;
-    //console.log(state);
-    search();
-  }, []); */
-
   React.useEffect(() => {
     if (state.loading !== false) {
       search();
@@ -115,7 +108,7 @@ export function ResultadosS6v2(props) {
     const supplier_id = data.supplier.trim();
     //console.log(body);
     try {
-      const rest = await axios({
+      await axios({
         url: process.env.REACT_APP_S6_BACKEND + "/api/v1/search",
         params: {
           supplier_id,
