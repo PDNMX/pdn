@@ -34,11 +34,10 @@ export function ResultadosS6v1(props) {
   });
 
   React.useEffect(() => {
-    //fetch data
-    //const supplier_id = props.dataSupplier; //state.dataSupplier;
-    //console.log(state);
-    search();
-  }, []);
+    if (state.loading !== false) {
+      search();
+    }
+  }, [state.pagination.pageSize, state.pagination.page]);
 
   const handleChangeRowsPerPage = (pageSize) => {
     setState({
