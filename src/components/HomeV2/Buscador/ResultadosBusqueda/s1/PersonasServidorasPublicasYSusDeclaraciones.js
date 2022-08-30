@@ -14,7 +14,7 @@ import MantenimentResultProv from "../../../../Declaraciones2/MantenimentResultP
 
 import CircularProgress from "@mui/material/CircularProgress";
 import Chips from "../Chips";
-
+import ReactGA from "react-ga";
 
 export class ResultadosS1 extends React.Component {
   /*
@@ -390,6 +390,7 @@ export class ResultadosS1 extends React.Component {
           }),
           () => {
             this.handlerFind();
+            ReactGA.event({ category: 'wizard_psp-declaraciones', action: 'click' });
           }
         );
       })

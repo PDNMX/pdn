@@ -2,6 +2,7 @@ import React from "react";
 import TablaResultados from "./TablaResultados";
 import axios from "axios";
 import { Modal, CircularProgress } from '@mui/material';
+import ReactGA from "react-ga";
 
 import Chips from '../Chips';
 
@@ -69,25 +70,19 @@ export function ResultadosS6v2(props) {
 
   //buscar
   const search = async () => {
+    ReactGA.event({ category: 'wizard_instituciones-contrataciones', action: 'click' });
     let body = {
       page: state.pagination.page,
       pageSize: state.pagination.pageSize,
     };
 
-    /* if (state.buyer_id !== "any") {
-      body.buyer_id = state.buyer_id;
-    } */
-
     if (
       buyerName &&
       buyerName !== null &&
       buyerName.name
-      
     ) {
       body.buyer_name = buyerName.name;
-    }  /* else {
-      body.buyer_name = "";
-    }  */
+    } 
 
     if (state.procurementMethod !== "any") {
       body.procurementMethod = state.procurementMethod;

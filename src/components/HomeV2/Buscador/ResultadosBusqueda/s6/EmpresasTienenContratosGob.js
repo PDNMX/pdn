@@ -3,7 +3,7 @@ import TablaResultados from "./TablaResultados";
 import axios from "axios";
 
 import { Modal, CircularProgress } from '@mui/material';
-
+import ReactGA from "react-ga";
 import Chips from '../Chips';
 
 export function ResultadosS6v1(props) {
@@ -40,12 +40,6 @@ export function ResultadosS6v1(props) {
     search();
   }, []);
 
-  /* React.useEffect(() => {
-    if (state.loading) {
-      search();
-    }
-  }, [state.loading]); */
-
   const handleChangeRowsPerPage = (pageSize) => {
     setState({
       ...state,
@@ -72,6 +66,7 @@ export function ResultadosS6v1(props) {
 
   //buscar
   const search = async () => {
+    ReactGA.event({ category: 'wizard_empresas-contratos', action: 'click' });
     let body = {
       page: state.pagination.page,
       pageSize: state.pagination.pageSize,
@@ -116,14 +111,6 @@ export function ResultadosS6v1(props) {
           terminado: true
         });
     });
-      //sumaResultados = res.data.data.length;
-      //console.log(sumaResultados)
-      /* setState({
-        ...state,
-        loading: false,
-        results: res.data.data,
-        pagination: res.data.pagination, //solo debe actualizarse el total
-      }); */
     } catch (error) {
       console.log(error);
       setState({

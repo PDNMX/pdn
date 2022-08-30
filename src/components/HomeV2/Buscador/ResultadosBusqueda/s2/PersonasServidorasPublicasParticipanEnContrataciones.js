@@ -13,6 +13,7 @@ import Previos from "../Previos";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { makeStyles } from "@mui/styles";
 
+import ReactGA from "react-ga";
 import Chips from '../Chips';
 
 const useStyles = makeStyles((theme) => ({
@@ -95,15 +96,6 @@ const data = dataProps["psp-participan"];
     - Institución
     - Tipo de procedimiento (select)
 */
-/* const initialFilter = {
-    nombres: data.nombres,
-    primerApellido: data.primerApellido,
-    segundoApellido: data.segundoApellido,
-    tipoSancion: [],
-    institucionDependencia: data.institucion,
-    nivel: "any",
-    provider: "any",
-}; */
 
 const classes = useStyles();
 
@@ -215,7 +207,7 @@ const [state, setState] = React.useState({
     const handleBroadSearch = () => {
         setShowSummaryPanel(false);
         setShowResultsTable(false);
-
+        ReactGA.event({ category: 'wizard_psp-participan', action: 'click' });
         setState({
             ...state,
             results: null,

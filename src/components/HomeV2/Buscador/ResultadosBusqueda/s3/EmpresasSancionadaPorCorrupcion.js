@@ -55,45 +55,11 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-/* const tiposSancion = [
-    {label: 'Inhabilitado', value: 'I'},
-    {label: 'Multado', value: 'M'},
-    {label: 'Suspensión de actividades', value: 'S'},
-    {label: 'Disolución de la sociedad', value: 'D'},
-    {label: 'Amonestación', value: 'A'},
-    {
-        label: 'Indemnización por los daños y perjuicios ocasionados a la Hacienda Pública Federal, local o municipal, o al patrimonio de los entes públicos',
-        value: 'IND'
-    },
-    {label: 'Sanción económica', value: 'SE'},
-    {label: 'Otro', value: 'O'}
-]
-
-const camposOrdenamiento = [
-    {label: 'Nombre o razón social', value: 'nombreRazonSocial'},
-    {label: 'Institución', value: 'institucionDependencia'}
-]
-
-const tiposOrdenamiento = [
-    {label: 'Ascendente', value: 'asc'},
-    {label: 'Descendente', value: 'desc'}
-] */
-
 const initialPagination = {
     page: 1,
     rowsPerPage: 10,
     totalRows: 0,
 };
-/* 
-const initialFilter = {
-    nombreRazonSocial: '',
-    institucionDependencia: 'any',
-    expediente: '',
-    tipoSancion: [],
-    tipoPersona: 'any',
-    nivel: 'any',
-    provider: 'any'
-} */
 
 const initialSort = {
     campoOrden: 'any',
@@ -140,13 +106,8 @@ export function ResultadosS3p(props){
         /* loadInstitutions();
         loadProviders(); */
         handleSearchPrevios();
-        ReactGA.event({ category: 'busqueda-s3P-Asistente', action: 'click' });
+        ReactGA.event({ category: 'wizard_empresas-sancionadas', action: 'click' });
     }, []);
-
-    /* React.useEffect(() => {
-        loadInstitutions();
-        loadProviders();
-    }, [filter?.nivel]); */
 
     React.useEffect(() => {
         if (provider !== 'any') {

@@ -6,7 +6,7 @@ import Previos from "../Previos";
 import TablaServidoresSancionados from "../../../../Sancionados/Servidores/TablaServidoresSancionados";
 import DetalleServidorSancionado from "../../../../Sancionados/Servidores//DetalleServidorSancionado";
 import { makeStyles } from '@mui/styles';
-//import ReactGA from "react-ga";
+import ReactGA from "react-ga";
 import Chips from '../Chips';
 
 import {ThemeProvider} from '@mui/material/styles';
@@ -17,9 +17,6 @@ const axios = require("axios");
 const useStyles = makeStyles(theme => ({
   formControl: {
     width: "100%",
-  },
-  "&$focus": {
-    //color: theme.palette.black.color,
   },
   centrado: {
     display: "flex",
@@ -133,7 +130,7 @@ export function ResultadosS3s(props) {
     setView(0);
   }; */
   const handleSearchPrevios = () => {
-    //ReactGA.event({category: 'busqueda-s3SP', action: 'click'});
+    ReactGA.event({ category: 'wizard_psp-sancionados', action: 'click' });
     setLoading(true);
     setFilterData([]);
     setSelectedItem(null);
