@@ -244,7 +244,7 @@ export function ResultadosS3s(props) {
   const verDetalle = (event, elemento) => {
     setSelectedItem(elemento);
     setView(3);
-    setProvider("any");
+    //setProvider("any");
   };
 
   const handleChangeDetail = () => {
