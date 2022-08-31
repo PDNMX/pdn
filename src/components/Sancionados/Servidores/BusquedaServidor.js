@@ -115,6 +115,7 @@ function BusquedaServidor({classes}) {
     const [filter, setFilter] = React.useState(initialFilter);
     const [sort, setSort] = React.useState(initialSort);
     const [view, setView] = React.useState(0);
+    const [fixpaginador, setFixpaginador] = React.useState(false);
 
     React.useEffect(() => {
         loadInstitutions();
@@ -144,7 +145,7 @@ function BusquedaServidor({classes}) {
             setSelectedItem(null);
             handleSearchAPI();
         }
-    }, [pagination.page, pagination.rowsPerPage]);
+    }, [fixpaginador]);
 
     const loadInstitutions = () => {
         let sug = [];
@@ -230,6 +231,7 @@ function BusquedaServidor({classes}) {
                 setLoading(false);
                 setError(false);
                 setView(1);
+                setFixpaginador(false);
             }).catch(err => {
             setError(true);
             setLoading(false);
@@ -279,6 +281,7 @@ function BusquedaServidor({classes}) {
                 setPagination({...pagination, totalRows: resultado.pagination.totalRows})
                 setError(false);
                 setView(2)
+                setFixpaginador(false);
             }).catch(err => {
             setLoading(false);
             setError(true);
@@ -287,7 +290,8 @@ function BusquedaServidor({classes}) {
     };
 
     const handleChangeAPI = (val) => {
-        setProvider(val)
+        setProvider(val);
+        setPagination({...pagination, page: 1});
     };
 
     const handleChangePage = (event, page) => {

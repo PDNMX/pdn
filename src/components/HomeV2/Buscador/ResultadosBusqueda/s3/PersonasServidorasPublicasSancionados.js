@@ -138,7 +138,7 @@ export function ResultadosS3s(props) {
     setSelectedItem(null);
     setPagination({ ...pagination, rowsPerPage: 10 });
     setProvider("any");
-    setFixpaginador(false);
+    
 
     let body = {
       query: makeFiltros(),
@@ -159,6 +159,7 @@ export function ResultadosS3s(props) {
         setLoading(false);
         setError(false);
         setView(1);
+        setFixpaginador(false);
       })
       .catch((err) => {
         setError(true);
@@ -235,6 +236,7 @@ export function ResultadosS3s(props) {
 
   const handleChangeAPI = (val) => {
     setProvider(val);
+    setPagination({...pagination, page: 1});
   };
 
   const handleChangePage = (event, page) => {
@@ -250,7 +252,6 @@ export function ResultadosS3s(props) {
   const verDetalle = (event, elemento) => {
     setSelectedItem(elemento);
     setView(3);
-    //setProvider("any");
   };
 
   const handleChangeDetail = () => {
