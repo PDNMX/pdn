@@ -12,28 +12,28 @@ const CssDeclaraciones = theme => ({
   },
   //principal
   bgContainer: {
-    backgroundColor: theme.palette.S1.shade
+    // backgroundColor: theme.palette.S1.shade
   },
   card: {
     // backgroundColor: "#34b3eb", //theme.palette.azul.color,
-    'backgroundColor': theme.palette.S1.color,
-    'paddingLeft': theme.spacing(1),
-    'paddingRight': theme.spacing(1),
-    'paddingTop': theme.spacing(2),
-    'paddingBottom': theme.spacing(2),
+    // 'backgroundColor': theme.palette.S1.color,
+    // 'paddingLeft': theme.spacing(1),
+    // 'paddingRight': theme.spacing(1),
+    // 'paddingTop': theme.spacing(2),
+    // 'paddingBottom': theme.spacing(2),
     'margin': 0,
     '&:hover': {
       cursor: 'pointer',
-      backgroundColor: theme.palette.S1.shade,
+      // backgroundColor: theme.palette.S1.shade,
       transition: 'background 0.3s ease'
     }
   },
   cardSeleccionada: {
-    backgroundColor: theme.palette.S1.shade,
-    paddingLeft: theme.spacing(1),
-    paddingRight: theme.spacing(1),
-    paddingTop: theme.spacing(2),
-    paddingBottom: theme.spacing(2),
+    // backgroundColor: theme.palette.S1.shade,
+    // paddingLeft: theme.spacing(1),
+    // paddingRight: theme.spacing(1),
+    // paddingTop: theme.spacing(2),
+    // paddingBottom: theme.spacing(2),
     margin: 0
   },
   link: {
@@ -55,7 +55,7 @@ const CssDeclaraciones = theme => ({
   },
   sectionT: {
     /*color: theme.palette.textGrey.color,*/
-    marginTop: theme.spacing(7),
+    // marginTop: theme.spacing(7),
     maxWidth: 1200
     // margin: "0 auto",
   },
@@ -82,7 +82,7 @@ const CssDeclaraciones = theme => ({
     marginBottom: 20
   },
   paper: {
-    padding: theme.spacing(3, 2)
+    // padding: theme.spacing(3, 2)
   },
   //Secciones
   rootSeccion: {
@@ -173,7 +173,7 @@ const CssDeclaraciones = theme => ({
   },
   //Progressbar
   marginProgressbar: {
-    margin: theme.spacing(1, 0)
+    // margin: theme.spacing(1, 0)
   },
   // graficas
   listaGraficas: {
@@ -186,10 +186,10 @@ const CssDeclaraciones = theme => ({
     width: '100%'
   },
   group: {
-    margin: theme.spacing(1, 0)
+    // margin: theme.spacing(1, 0)
   },
   button: {
-    margin: theme.spacing(1),
+    // margin: theme.spacing(1),
     // color: "#FFF",
     fontWeight: 'bold'
     // backgroundColor: "#2EB2E7"
@@ -223,43 +223,43 @@ const CssDeclaraciones = theme => ({
     }
   },
   infoBusqueda: {
-    paddingRight: theme.spacing(1),
-    paddingLeft: theme.spacing(1)
+    // paddingRight: theme.spacing(1),
+    // paddingLeft: theme.spacing(1)
     //paddingBottom: theme.spacing(4),
     // paddingTop: theme.spacing(4),
     // backgroundColor: 'white'
   },
   //resultados
   resultadosRoot: {
-    width: '100%',
-    paddingBottom: theme.spacing(4),
-    paddingTop: theme.spacing(4)
+    width: '100%'
+    // paddingBottom: theme.spacing(4),
+    // paddingTop: theme.spacing(4)
   },
   resultadosHeading: {
-    fontSize: theme.typography.pxToRem(15),
-    fontWeight: theme.typography.fontWeightBold
+    // fontSize: theme.typography.pxToRem(15),
+    // fontWeight: theme.typography.fontWeightBold
   },
   resultadosTitulo: {
-    backgroundColor: theme.palette.background.opaque,
-    color: theme.palette.primario.contrastText,
+    // backgroundColor: theme.palette.background.opaque,
+    // color: theme.palette.primario.contrastText,
     borderStyle: 'solid',
-    borderWidth: 1,
-    borderColor: theme.palette.secundario.main
+    borderWidth: 1
+    // borderColor: theme.palette.secundario.main
   },
   resultadoContenido: {
     // backgroundColor: theme.palette.background.opaque,
-    backgroundColor: 'rgba(42, 116, 145)',
-    color: theme.palette.primario.contrastText,
+    backgroundColor: 'rgba(42, 116, 145)'
+    // color: theme.palette.primario.contrastText,
     // borderStyle: 'solid',
     // borderWidth: 1,
-    padding: theme.spacing(2),
-    borderLeft: `1px solid ${theme.palette.secundario.main}`,
-    borderRight: `1px solid ${theme.palette.secundario.main}`,
-    borderBottom: `1px solid ${theme.palette.secundario.main}`
+    // padding: theme.spacing(2),
+    // borderLeft: `1px solid ${theme.palette.secundario.main}`,
+    // borderRight: `1px solid ${theme.palette.secundario.main}`,
+    // borderBottom: `1px solid ${theme.palette.secundario.main}`
   },
   perfilRoot: {
-    paddingBottom: theme.spacing(2),
-    paddingTop: theme.spacing(2)
+    // paddingBottom: theme.spacing(2),
+    // paddingTop: theme.spacing(2)
   },
   alertPrimary: {
     fontWeight: 'bolder',
@@ -342,7 +342,7 @@ const CssDeclaraciones = theme => ({
     marginBottom: '1rem'
   },
   btnBack: {
-    color: theme.palette.secundario.light
+    // color: theme.palette.secundario.light
   },
   logo: {
     width: '60px'
@@ -356,10 +356,10 @@ const CssDeclaraciones = theme => ({
   },
   selectedTab: {
     borderStyle: 'solid',
-    borderColor: theme.palette.secundario.main,
+    // borderColor: theme.palette.secundario.main,
     borderRadius: '10px 10px 0px 0px',
     borderBottomStyle: 'none',
-    padding: theme.spacing(1),
+    // padding: theme.spacing(1),
     margin: 0,
     display: 'inline-block',
     float: 'left',
@@ -367,23 +367,23 @@ const CssDeclaraciones = theme => ({
     opacity: 0.7
   },
   labelCard: {
-    color: theme.palette.S1.color,
-    marginLeft: theme.spacing(1),
-    paddingTop: theme.spacing(1),
+    // color: theme.palette.S1.color,
+    // marginLeft: theme.spacing(1),
+    // paddingTop: theme.spacing(1),
     fontWeight: 500
   },
   contentsSection: {
-    color: theme.palette.secondary.contrastText,
+    // color: theme.palette.secondary.contrastText,
     maxWidth: '1200px'
   },
   paper_search: {
-    backgroundColor: theme.palette.background.opaque,
-    padding: theme.spacing(4),
-    marginBottom: theme.spacing(4),
-    color: theme.palette.primario.contrastText,
+    // backgroundColor: theme.palette.background.opaque,
+    // padding: theme.spacing(4),
+    // marginBottom: theme.spacing(4),
+    // color: theme.palette.primario.contrastText,
     borderStyle: 'solid',
     borderWidth: 1,
-    borderColor: theme.palette.secundario.main,
+    // borderColor: theme.palette.secundario.main,
     borderRadius: '0px 10px 10px 10px'
   },
   cuadroActualizacion: {
@@ -398,13 +398,13 @@ const CssDeclaraciones = theme => ({
     backgroundColor: '#D1ECF1'
   },
   paper_perfil: {
-    backgroundColor: 'rgba(42, 116, 145)',
-    padding: theme.spacing(4),
-    marginBottom: theme.spacing(4),
-    color: theme.palette.primario.contrastText
+    backgroundColor: 'rgba(42, 116, 145)'
+    // padding: theme.spacing(4),
+    // marginBottom: theme.spacing(4),
+    // color: theme.palette.primario.contrastText
   },
   text_color: {
-    color: theme.palette.primario.contrastText
+    // color: theme.palette.primario.contrastText
   },
   menulateral_fondo: {
     backgroundColor: 'rgba(42, 116, 145)'
@@ -412,15 +412,15 @@ const CssDeclaraciones = theme => ({
   enlaces: {
     'textDecoration': 'none',
     // 'color': '#b1bcc1',
-    'color': theme.palette.azulPDN,
+    // 'color': theme.palette.azulPDN,
     '&:visited': {
-      color: theme.palette.azulPDN
+      // color: theme.palette.azulPDN
     },
     '&:link': {
-      color: theme.palette.azulPDN
+      // color: theme.palette.azulPDN
     },
     '&:active': {
-      color: theme.palette.azulPDN
+      // color: theme.palette.azulPDN
     },
     '&:hover': {
       color: '#FFF',
