@@ -79,7 +79,7 @@ const ApoyosBeneficios = props => {
   const { data } = props;
 
   // const apoyo = data.apoyo.filter((i) => i.beneficiarioPrograma.clave === 'DEC');
-  const apoyo = data.apoyo;
+  const apoyo = data?.apoyo;
 
   return (
     <Grid container spacing={2} className={classes.rootPrincipal}>
@@ -89,7 +89,7 @@ const ApoyosBeneficios = props => {
         </Typography>
       </Grid>
       <Grid item xs={12}>
-        {data.ninguno ? <DatosNoRegistrados /> : apoyo.length ? <Apoyo apoyo={apoyo} /> : <DatosReservados />}
+        {typeof data === 'undefined' || data.ninguno ? <DatosNoRegistrados /> : apoyo.length ? <Apoyo apoyo={apoyo} /> : <DatosReservados />}
       </Grid>
     </Grid>
   );

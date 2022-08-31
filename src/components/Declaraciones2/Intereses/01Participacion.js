@@ -65,7 +65,7 @@ function Participacion(props) {
                 </Typography>
               </Grid>
             )}
-            <Porcentaje porcentaje={obj.porcentajeParticipacion} titulo='PORCENTAJE DE PARTICIPACIÓN DE ACUERDO A ESCRITURA' />
+            <Porcentaje porcentaje={obj.porcentajeParticipacion || 0} titulo='PORCENTAJE DE PARTICIPACIÓN DE ACUERDO A ESCRITURA' />
             <Divider />
             <Ubicacion ubicacion={obj.ubicacion} />
           </Grid>

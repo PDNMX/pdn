@@ -185,7 +185,7 @@ const Adeudo = ({ data, tipo, titulo }) => {
 
   let adeudos;
 
-  if (data.ninguno) {
+  if (typeof data === 'undefined' || data.ninguno) {
     adeudos = [];
   } else {
     adeudos = data.adeudo ? data.adeudo.filter(i => i.titular.length === 1 && i.titular[0].clave === 'DEC') : [];

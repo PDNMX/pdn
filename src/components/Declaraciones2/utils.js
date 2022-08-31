@@ -244,11 +244,11 @@ export function CompDomicilio(props) {
 						</Grid>
 						<Grid item xs={12} md={3}>
 							<Typography className={classes.cardTitle}>MUNICIPIO/ALCALDÍA</Typography>
-							<Typography className={classes.card}>{domicilioMexico.municipioAlcaldia.valor}</Typography>
+							<Typography className={classes.card}>{domicilioMexico.municipioAlcaldia?.valor}</Typography>
 						</Grid>
 						<Grid item xs={12} md={3}>
 							<Typography className={classes.cardTitle}>ENTIDAD FEDERATIVA</Typography>
-							<Typography className={classes.card}>{domicilioMexico.entidadFederativa.valor}</Typography>
+							<Typography className={classes.card}>{domicilioMexico.entidadFederativa?.valor}</Typography>
 						</Grid>
 						<Grid item xs={12} md={3}>
 							<Typography className={classes.cardTitle}>CÓDIGO POSTAL</Typography>

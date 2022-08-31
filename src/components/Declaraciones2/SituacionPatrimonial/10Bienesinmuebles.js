@@ -56,7 +56,7 @@ function BienInmuble(props) {
             <Grid item xs={12} md={4}>
               <Typography className={classes.cardTitle}>SUPERFICIE DE CONSTRUCCIÓN</Typography>
               <Typography className={classes.card}>
-                {inm.superficieConstruccion.valor} {getUnidad(inm.superficieConstruccion.unidad)}
+                {inm.superficieConstruccion?.valor} {getUnidad(inm.superficieConstruccion?.unidad)}
               </Typography>
             </Grid>
             <Grid item xs={12} md={4}>
