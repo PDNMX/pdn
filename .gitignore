@@ -30,3 +30,5 @@ yarn.lock
 
 #declaraciones-test
 data-*.json
+#declaraciones-test
+src/__mocks__/data/*.json
