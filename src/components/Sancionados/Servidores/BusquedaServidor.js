@@ -140,7 +140,7 @@ function BusquedaServidor({classes}) {
     }, [provider]);
 
     React.useEffect(() => {
-        if (provider !== "any") {
+        if (provider !== "any" && fixpaginador === true) {
             /* setPagination({ ...pagination }); */
             setSelectedItem(null);
             handleSearchAPI();
