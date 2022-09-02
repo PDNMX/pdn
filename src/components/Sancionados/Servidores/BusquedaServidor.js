@@ -296,10 +296,12 @@ function BusquedaServidor({classes}) {
 
     const handleChangePage = (event, page) => {
         setPagination({...pagination, page: page + 1});
+        setFixpaginador(true);
     };
 
     const handleChangeRowsPerPage = event => {
         setPagination({...pagination, rowsPerPage: event.target.value, page: 1});
+        setFixpaginador(true);
     };
 
     const verDetalle = (event, elemento) => {
