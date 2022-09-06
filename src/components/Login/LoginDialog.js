@@ -1,0 +1,127 @@
+import * as React from 'react';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
+import {Box, OutlinedInput, FormControl, InputLabel} from '@mui/material';
+import {logIn} from './Auth';
+import AlertaError from "./AlertaError";
+
+import {UserContext} from "./UserContext";
+
+const LoginDialog = props => {
+    const {open, setOpen} = props;
+    const theme = useTheme();
+    const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
+    const {user, setUser} = React.useContext(UserContext);
+
+    const [state, setState] = React.useState({
+        email: '',
+        password: '',
+        showPassword: false
+    });
+
+    const [alertData, setAlertData] = React.useState({
+        open: false,
+        severity: "success",
+        message: "success"
+    });
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    const handleChangeEmail = e => {
+        setState({
+            ...state,
+            email: e.target.value
+        });
+    }
+
+    const handleChangePassword = e => {
+        setState({
+            ...state,
+            password: e.target.value
+        });
+    }
+
+    const handleSubmit = async e => {
+        e.preventDefault();
+        const result =  await logIn(state.email, state.password);
+
+        if (result.success){
+            setUser({
+                loggedIn: true,
+                ...result.user
+            });
+            setOpen(false); // hide dialog
+        } else {
+            setAlertData({
+                ...alertData,
+                open: true,
+                message: result.message,
+                severity: result.success ? "success" : "error"
+            });
+        }
+    }
+
+    return (
+        <div>
+            <Dialog
+                fullScreen={fullScreen}
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="responsive-dialog-title"
+            >
+                <DialogTitle id="responsive-dialog-title">
+                    {"Inicio de sesión"}
+                </DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        Inicie sesión para acceder a las funcionalidades reservadas de la PDN.
+                    </DialogContentText>
+
+                    <Box paddingTop={3} paddingBottom={3}>
+
+                        <form onSubmit={handleSubmit}>
+
+                            <FormControl sx={{margin: 1}} fullWidth>
+                                <InputLabel htmlFor="outlined-adornment-email">E-mail</InputLabel>
+                                <OutlinedInput type="email" label="E-mail" required
+                                               value={state.email} onChange={handleChangeEmail}/>
+                            </FormControl>
+
+                            <FormControl sx={{margin: 1}} fullWidth>
+                                <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                                <OutlinedInput type={state.showPassword ? 'text' : 'password'} label="Contraseña" required
+                                               value={state.password} onChange={handleChangePassword}/>
+                            </FormControl>
+
+                            <Button variant="contained" sx={{margin: 1}} type='submit'>
+                                Enviar
+                            </Button>
+
+                        </form>
+
+                        {/*JSON.stringify(user)*/}
+                    </Box>
+
+                    <Box p={1}>
+                        <AlertaError alertData={alertData} setAlertData={setAlertData}/>
+                    </Box>
+
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose} autoFocus variant="contained">
+                        Cancelar
+                    </Button>
+                </DialogActions>
+            </Dialog>
+        </div>
+    );
+}
+export default LoginDialog;

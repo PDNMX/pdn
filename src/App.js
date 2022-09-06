@@ -11,6 +11,7 @@ import ReactGA from 'react-ga';
 import Layout from "./components/HomeV2/Layout";
 
 import BaseTheme from "./BaseTheme";
+import {UserContext} from "./components/Login/UserContext";
 
 ReactGA.initialize('UA-126837818-1');
 ReactGA.pageview(window.location.pathname + window.location.search);
@@ -19,6 +20,42 @@ const p404 = () => {
   return <P404/>;
 };
 
+const App  = props => {
+  const [user, setUser] = React.useState({loggedIn: false, name: 'Guest'});
+  const value = {user, setUser};
+
+  return (
+      <UserContext.Provider value={value}>
+        <ThemeProvider theme={BaseTheme}>
+          <StyledEngineProvider injectFirst>
+            <Router basename={process.env.PUBLIC_URL}>
+              <ScrollToTop>
+                <Layout>
+                  <Switch>
+                    {pndRoutes.map((prop, key) => {
+                      return (
+                          <Route
+                              exact={prop.exact}
+                              path={prop.path}
+                              key={key}
+                              component={prop.component}
+                          />
+                      )
+                    })}
+                    <Route component={p404}/>
+                  </Switch>
+                </Layout>
+
+              </ScrollToTop>
+            </Router>
+          </StyledEngineProvider>
+
+        </ThemeProvider>
+      </UserContext.Provider>
+  );
+}
+
+/*
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -51,10 +88,10 @@ class App extends React.Component {
             </Router>
           </StyledEngineProvider>
 
-
         </ThemeProvider>
     );
   }
 }
+*/
 
 export default App;
