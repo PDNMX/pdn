@@ -10,6 +10,9 @@ import { useTheme } from '@mui/material/styles';
 import {Box, OutlinedInput, FormControl, InputLabel, Typography} from '@mui/material';
 import {logIn, logOut} from './Auth';
 import AlertaError from "./AlertaError";
+import {InputAdornment, IconButton} from "@mui/material";
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 import {UserContext} from "./UserContext";
 
@@ -78,6 +81,18 @@ const LoginDialog = props => {
         });
     }
 
+
+    const handleClickShowPassword = () => {
+        setState({
+            ...state,
+            showPassword: !state.showPassword,
+        });
+    };
+
+    const handleMouseDownPassword = (event) => {
+        event.preventDefault();
+    };
+
     return (
         <div>
             <Dialog
@@ -96,7 +111,6 @@ const LoginDialog = props => {
                             :
                             "Inicie sesión para acceder a las funcionalidades reservadas de la PDN."
                         }
-
                     </DialogContentText>
 
                     <Box paddingTop={3} paddingBottom={3}>
@@ -122,7 +136,19 @@ const LoginDialog = props => {
                                 <FormControl sx={{margin: 1}} fullWidth>
                                     <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
                                     <OutlinedInput type={state.showPassword ? 'text' : 'password'} label="Contraseña" required
-                                                   value={state.password} onChange={handleChangePassword}/>
+                                                   value={state.password} onChange={handleChangePassword}
+                                                   endAdornment={
+                                                       <InputAdornment position="end">
+                                                           <IconButton
+                                                               aria-label="toggle password visibility"
+                                                               onClick={handleClickShowPassword}
+                                                               onMouseDown={handleMouseDownPassword}
+                                                               edge="end"
+                                                           >
+                                                               {state.showPassword ? <VisibilityOff /> : <Visibility />}
+                                                           </IconButton>
+                                                       </InputAdornment>}
+                                    />
                                 </FormControl>
 
                                 <Button variant="contained" sx={{margin: 1}} type='submit'>
