@@ -199,7 +199,12 @@ const BannerMobile = props => {
                         <img src={imgHeader} alt="PDN" style={{height: "40px"}}/>
                     </IconButton>
                     {user.loggedIn?
-                        <div>Authenticated</div>
+                        <img
+                            src={LoginIcon}
+                            className={classes.iconSesion}
+                            alt="Terminar la sesión"
+                            onClick={() => handleOpenLoginDialog()}
+                        />
                         :
                         <img
                             src={LoginIcon}

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import withStyles from '@mui/styles/withStyles';
 import {AppBar, Typography, Grid} from "@mui/material";
 import {Link as RouterLink} from "react-router-dom";
@@ -177,7 +177,20 @@ const BannerDesktop = props => {
                     </Grid>
                     <Grid item/>
                     {user.loggedIn?
-                        <div>authenticated</div>
+
+                        <Grid item style={{textAlign: 'center'}} onClick={() => handleOpenLoginDialog()}>
+                            <img
+                                src={LoginIcon}
+                                className={classes.iconSesion}
+                                alt="Usuario"
+                            />
+                            <Typography className={classes.textMenu} fontSize="small">
+                                {user.nombres}
+                            </Typography>
+                            <Typography className={classes.textMenu} fontSize="small">
+                                Cerrar sesión
+                            </Typography>
+                        </Grid>
                         :
                         <Grid item style={{textAlign: 'center'}} onClick={() => handleOpenLoginDialog()}>
                             <img
@@ -186,7 +199,7 @@ const BannerDesktop = props => {
                                 alt="Iniciar sesión"
                             />
                             <Typography className={classes.textMenu} fontSize="small">
-                                {user.name}
+                                {user.nombres}
                             </Typography>
                             <Typography className={classes.textMenu} fontSize="small">
                                Iniciar sesión

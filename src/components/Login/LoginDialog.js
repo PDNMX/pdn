@@ -7,8 +7,8 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
-import {Box, OutlinedInput, FormControl, InputLabel} from '@mui/material';
-import {logIn} from './Auth';
+import {Box, OutlinedInput, FormControl, InputLabel, Typography} from '@mui/material';
+import {logIn, logOut} from './Auth';
 import AlertaError from "./AlertaError";
 
 import {UserContext} from "./UserContext";
@@ -69,6 +69,15 @@ const LoginDialog = props => {
         }
     }
 
+    const handleLogout = () => {
+        logOut();
+        setOpen(false);
+        setUser({
+            loggedIn: false,
+            nombres: "No autenticado"
+        });
+    }
+
     return (
         <div>
             <Dialog
@@ -78,36 +87,49 @@ const LoginDialog = props => {
                 aria-labelledby="responsive-dialog-title"
             >
                 <DialogTitle id="responsive-dialog-title">
-                    {"Inicio de sesión"}
+                    {user.loggedIn? "Terminar la sesión": "Inicio de sesión"}
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        Inicie sesión para acceder a las funcionalidades reservadas de la PDN.
+                        {user.loggedIn ?
+                            `Authenticado como ${user.nombres} ${user.primerApellido} ${user.segundoApellido}`
+                            :
+                            "Inicie sesión para acceder a las funcionalidades reservadas de la PDN."
+                        }
+
                     </DialogContentText>
 
                     <Box paddingTop={3} paddingBottom={3}>
 
-                        <form onSubmit={handleSubmit}>
+                        {user.loggedIn ?
+                            <Box p={4} align="center">
+                                <Typography paragraph variant="h5">
+                                    ¿Deseas terminar la sesión?
+                                </Typography>
 
-                            <FormControl sx={{margin: 1}} fullWidth>
-                                <InputLabel htmlFor="outlined-adornment-email">E-mail</InputLabel>
-                                <OutlinedInput type="email" label="E-mail" required
-                                               value={state.email} onChange={handleChangeEmail}/>
-                            </FormControl>
+                                <Button onClick={() => handleLogout()} variant="contained">
+                                    Cerrar sesión
+                                </Button>
+                            </Box>
+                            :
+                            <form onSubmit={handleSubmit}>
+                                <FormControl sx={{margin: 1}} fullWidth>
+                                    <InputLabel htmlFor="outlined-adornment-email">E-mail</InputLabel>
+                                    <OutlinedInput type="email" label="E-mail" required
+                                                   value={state.email} onChange={handleChangeEmail}/>
+                                </FormControl>
 
-                            <FormControl sx={{margin: 1}} fullWidth>
-                                <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-                                <OutlinedInput type={state.showPassword ? 'text' : 'password'} label="Contraseña" required
-                                               value={state.password} onChange={handleChangePassword}/>
-                            </FormControl>
+                                <FormControl sx={{margin: 1}} fullWidth>
+                                    <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                                    <OutlinedInput type={state.showPassword ? 'text' : 'password'} label="Contraseña" required
+                                                   value={state.password} onChange={handleChangePassword}/>
+                                </FormControl>
 
-                            <Button variant="contained" sx={{margin: 1}} type='submit'>
-                                Enviar
-                            </Button>
-
-                        </form>
-
-                        {/*JSON.stringify(user)*/}
+                                <Button variant="contained" sx={{margin: 1}} type='submit'>
+                                    Enviar
+                                </Button>
+                            </form>
+                        }
                     </Box>
 
                     <Box p={1}>

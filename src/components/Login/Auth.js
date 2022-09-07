@@ -13,12 +13,12 @@ const logIn = async (email, password) => {
 
     try {
         // Get session data
-        const user = await axios(options);
+        const res = await axios(options);
         //show greeting alert
         return {
             success: true,
             message: 'Inicio de sesión exitoso',
-            user: user
+            user: res.data
         }
     } catch (e){
         return {
@@ -32,15 +32,14 @@ const getUser = async () => {
 
     const options = {
         method: 'POST',
+        withCredentials: true,
         url: `${process.env.REACT_APP_PDN_AUTH_URL}/user`
     };
 
-    let user = null;
-
     try {
-        user = await axios(options);
-        console.log(user);
-        return user;
+        const res = await axios(options);
+        console.log(res.data);
+        return res.data;
     } catch (e){
         console.log(e);
         return null;
@@ -49,11 +48,17 @@ const getUser = async () => {
 
 const logOut  = async () => {
     const options = {
-      method: 'POST',
-      url:`${process.env.REACT_APP_PDN_AUTH_URL}/logout`
+        method: 'POST',
+        withCredentials: true,
+        url:`${process.env.REACT_APP_PDN_AUTH_URL}/logout`
     };
 
-    return null;
+    try {
+        return await axios(options);
+    } catch(e){
+        console.log(e);
+        return null;
+    }
 }
 
 export {
