@@ -9,7 +9,7 @@ import bgPDN from '../../assets/bg.jpg';
 const styles = theme => ({
     container: {
         padding: "5% 10%",
-        backgroundColor: 'rgba(29, 80, 109, 0.95)',
+        backgroundColor: 'rgba(29, 80, 109, 0.9)',
     },
     bg: {
         backgroundImage: `url(${bgPDN})`,
