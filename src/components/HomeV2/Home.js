@@ -6,14 +6,15 @@ import Cards from './Cards/';
 import QueEsPDN from "./QueEsPDN";
 import Numeralia from "./Numeralia";
 import AlertDialog from "./Disclaimer";
+import Evolucion from "./Evolucion";
+import {UserContext} from "../Login/UserContext";
 //import Ad from "./Ad";
 
 const styles = theme => ({
     root: {
-        flexGrow :1,
+        flexGrow: 1,
         backgroundImage: `url(${bgimg})`,
         backgroundRepeat: "repeat",
-
     },
     item: {
         maxWidth: 1200
@@ -26,14 +27,14 @@ const styles = theme => ({
     },
 });
 
-
-
 const Home = props => {
     const { classes } = props;
+    const { user } = React.useContext(UserContext);
 
     return (
         <div className={classes.root}>
-            {/*<Ad/>*/}
+            { /*<Ad/>*/ }
+            { user.loggedIn && <Evolucion/> }
             <QueEsPDN/>
             <Numeralia/>
             <BlogSys/>
