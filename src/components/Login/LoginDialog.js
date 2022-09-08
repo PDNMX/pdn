@@ -28,6 +28,7 @@ const LoginDialog = props => {
         showPassword: false
     });
 
+    // TODO: hide alert on modal open
     const [alertData, setAlertData] = React.useState({
         open: false,
         severity: "success",
@@ -35,6 +36,12 @@ const LoginDialog = props => {
     });
 
     const handleClose = () => {
+        // hide alert
+        setAlertData({
+            ...alertData,
+            open:false
+        })
+        // hide dialog
         setOpen(false);
     };
 
@@ -61,7 +68,8 @@ const LoginDialog = props => {
                 loggedIn: true,
                 ...result.user
             });
-            setOpen(false); // hide dialog
+
+            handleClose(); // hide dialog
         } else {
             setAlertData({
                 ...alertData,
@@ -74,13 +82,12 @@ const LoginDialog = props => {
 
     const handleLogout = () => {
         logOut();
-        setOpen(false);
+        handleClose(); //hide dialog
         setUser({
             loggedIn: false,
             nombres: "No autenticado"
         });
     }
-
 
     const handleClickShowPassword = () => {
         setState({
