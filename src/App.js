@@ -29,19 +29,24 @@ const App  = props => {
   const value = {user, setUser};
 
   //Set user if session exists
-  React.useEffect(async () => {
-    console.log("Fetching user");
-    try {
-      const logged_user = await getUser();
-      if (logged_user){
-        setUser({
-          loggedIn: true,
-          ...logged_user
-        });
+  React.useEffect(() => {
+
+    const fetchUser = async () => {
+      console.log("Fetching user");
+      try {
+        const logged_user = await getUser();
+        if (logged_user){
+          setUser({
+            loggedIn: true,
+            ...logged_user
+          });
+        }
+      } catch (e){
+        console.log(e);
       }
-    } catch (e){
-      console.log(e);
     }
+
+    fetchUser();
   },[]);
 
   return (

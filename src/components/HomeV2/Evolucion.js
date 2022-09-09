@@ -2,7 +2,9 @@ import React from 'react';
 import {withStyles} from "@mui/styles";
 import {Box, Button, Typography} from '@mui/material';
 import DirectionsWalkIcon from '@mui/icons-material/DirectionsWalk';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
 import logo from '../../assets/ico-evolucion.svg';
+
 
 const styles = theme => ({
     root: {
@@ -42,7 +44,8 @@ const styles = theme => ({
 
 const Evolucion = props => {
     const {classes} = props;
-    const url = "https://evolucion.plataformadigitalnacional.org";
+    const url_herramienta = "https://evolucion.plataformadigitalnacional.org";
+    const url_manual = "https://evolucion.plataformadigitalnacional.org";
 
     return <div className={classes.root}>
 
@@ -58,9 +61,14 @@ const Evolucion = props => {
                     Evolucion patrimonial y de intereses
                 </Typography>
 
-                <Button className={classes.btnPDN} href={url} target='_blank' variant='contained'
+                <Button className={classes.btnPDN} href={url_herramienta} target='_blank' variant='contained'
                         startIcon={<DirectionsWalkIcon/>}>
                     Acceso
+                </Button>
+                
+                <Button className={classes.btnPDN} href={url_manual} target='_blank' variant='contained'
+                        startIcon={<MenuBookIcon/>}>
+                    Manual de usuario
                 </Button>
             </Box>
 
