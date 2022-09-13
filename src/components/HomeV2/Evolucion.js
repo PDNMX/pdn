@@ -45,7 +45,7 @@ const styles = theme => ({
 const Evolucion = props => {
     const {classes} = props;
     const url_herramienta = "https://evolucion.plataformadigitalnacional.org";
-    const url_manual = "https://evolucion.plataformadigitalnacional.org";
+    const url_manual = "https://drive.google.com/drive/u/0/folders/18kFwDWqYm_5mRPT2ww9oVs51hGI95MQa";
 
     return <div className={classes.root}>
 
@@ -65,7 +65,7 @@ const Evolucion = props => {
                         startIcon={<DirectionsWalkIcon/>}>
                     Acceso
                 </Button>
-                
+
                 <Button className={classes.btnPDN} href={url_manual} target='_blank' variant='contained'
                         startIcon={<MenuBookIcon/>}>
                     Manual de usuario
