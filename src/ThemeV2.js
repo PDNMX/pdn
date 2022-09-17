@@ -5,7 +5,7 @@ import BaseTheme from './BaseTheme';
 
 const AzulPDN = 'rgba(137, 212, 242, 1)';
 const grisBorder = 'rgba(255, 255, 255, 0.23)';
-const amarilloPDN = "rgb(232, 214, 67)";
+const amarilloPDN = 'rgb(232, 214, 67)';
 
 // const err = {
 //   'label + &': {
@@ -82,7 +82,7 @@ export default createTheme(
       MuiTableSortLabel: {
         styleOverrides: {
           root: {
-            color : '#E1E8EB',
+            'color': '#E1E8EB',
             '&:hover': {
               color: AzulPDN
             },
@@ -103,21 +103,21 @@ export default createTheme(
           input: {
             // color del texto del input
             color: 'rgba(255, 255, 255, 0.67)'
-          },
+          }
         }
       },
       MuiFormControl: {
         styleOverrides: {
           root: {
             '& .MuiOutlinedInput-root': {
-              textAlign: "initial",
+              'textAlign': 'initial',
               '&:hover fieldset': {
                 border: `1px ${AzulPDN} solid`
               },
               '& .MuiSvgIcon-root': {
-                color: amarilloPDN
+                color: AzulPDN
               }
-            },
+            }
           }
         }
       },
@@ -142,18 +142,18 @@ export default createTheme(
       MuiChip: {
         styleOverrides: {
           root: {
-            "& .MuiChip-label": {
-              color: "#E1E8EB",
+            '& .MuiChip-label': {
+              color: '#E1E8EB'
             },
-            "& .MuiChip-deleteIcon": {
-              color: amarilloPDN,
+            '& .MuiChip-deleteIcon': {
+              'color': amarilloPDN,
               '&:hover': {
-                color: "#ef5350"
+                color: '#ef5350'
               }
-            },
+            }
           }
         }
-      },
+      }
     }
   },
   esES
