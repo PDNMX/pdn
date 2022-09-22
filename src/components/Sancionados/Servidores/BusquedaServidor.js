@@ -1,20 +1,16 @@
 //PANTALLA DE BUSQUEDASERVIDOR, CON SELECT PARA SORT
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import withStyles from '@mui/styles/withStyles';
 import PropTypes from 'prop-types';
-import { Typography, Grid, MenuItem, Checkbox, FormControl, Button, ListItemText, Modal, CircularProgress, TextField } from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import { Typography, Grid, Button, Modal, CircularProgress } from '@mui/material';
 import MensajeErrorDatos from '../../Mensajes/MensajeErrorDatos';
 import Previos from '../../Compartidos/Previos';
 import TablaServidoresSancionados from './TablaServidoresSancionados';
 import DetalleServidorSancionado from './DetalleServidorSancionado';
-import { ThemeProvider } from '@mui/material/styles';
-import ThemeV2 from '../../../ThemeV2';
 
 import ReactGA from 'react-ga';
-
-const axios = require('axios');
+import { getDataAPI, getInstitutions, getProviders, getSummary } from '../utils';
+import FormServidoresSancionados from './FormServidoresSancionados';
 
 const styles = theme => ({
   'formControl': {
@@ -55,35 +51,7 @@ const styles = theme => ({
   }
 });
 
-const tiposSancion = [
-  { label: 'Inhabilitado', value: 'I' },
-  { label: 'Multado', value: 'M' },
-  { label: 'Suspensión del empleo, cargo o comisión', value: 'S' },
-  { label: 'Destitución del empleo, cargo o comisión', value: 'D' },
-  { label: 'Indemnización resarcitoria', value: 'IRSC' },
-  { label: 'Sanción económica', value: 'SE' },
-  { label: 'Otro', value: 'O' }
-];
-
-const camposOrdenamiento = [
-  { label: 'Nombre', value: 'nombres' },
-  { label: 'Apellido Uno', value: 'primerApellido' },
-  { label: 'Apellido Dos', value: 'segundoApellido' },
-  { label: 'Institución', value: 'institucionDependencia' }
-];
-
-const tiposOrdenamiento = [
-  { label: 'Ascendente', value: 'asc' },
-  { label: 'Descendente', value: 'desc' }
-];
-
-const initialPagination = {
-  page: 1,
-  rowsPerPage: 10,
-  totalRows: 0
-};
-
-const initialFilter = {
+const initialQuery = {
   nombres: '',
   primerApellido: '',
   segundoApellido: '',
@@ -93,217 +61,247 @@ const initialFilter = {
   provider: 'any'
 };
 
-const initialSort = {
-  campoOrden: 'any',
-  tipoOrden: 'any'
+const initialOrder = {
+  orderCamp: 'any',
+  orderType: 'any'
 };
 
 function BusquedaServidor({ classes }) {
-  const [filterData, setFilterData] = React.useState([]);
-  const [previos, setPrevios] = React.useState(null);
-  const [error, setError] = React.useState(false);
-  const [loading, setLoading] = React.useState(false);
-  const [showAdvancedSearch, setShowAdvancedSearch] = React.useState(false);
-  const [institutionsList, setInstitutionsList] = React.useState([]);
-  const [selectedItem, setSelectedItem] = React.useState(null);
-  const [provider, setProvider] = React.useState('any');
-  const [providersList, setProvidersList] = React.useState([]);
-  const [pagination, setPagination] = React.useState(initialPagination);
-  const [filter, setFilter] = React.useState(initialFilter);
-  const [sort, setSort] = React.useState(initialSort);
-  const [view, setView] = React.useState(0);
-  const [fixpaginador, setFixpaginador] = React.useState(false);
+  const [filterData, setFilterData] = useState({});
+  const [previos, setPrevios] = useState([]);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-  React.useEffect(() => {
-    loadInstitutions();
-    loadProviders();
+  const [institutionsList, setInstitutionsList] = useState([]);
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [providersList, setProvidersList] = useState([]);
+  const [view, setView] = useState(0);
+
+  const [query, setQuery] = useState(initialQuery);
+  const [order, setOrder] = useState(initialOrder);
+  const [activeSearch, setActiveSearch] = useState(true);
+  const [activeClean, setActiveClean] = useState(false);
+  const [provider, setProvider] = useState('');
+
+  const loadInstituciones = async query => {
+    try {
+      const data = await getInstitutions(query);
+      setInstitutionsList(data);
+    } catch (e) {
+      console.log('getInstitutions: ', e);
+      setError(true);
+    }
+    setLoading(false);
+  };
+
+  const loadProviders = async query => {
+    try {
+      const data = await getProviders(query);
+      setProvidersList(data);
+    } catch (e) {
+      console.log('getProviders: ', e);
+      setError(true);
+    }
+  };
+
+  const handleForm = e => {
+    const { name, value } = e.target;
+    setActiveClean(true);
+
+    switch (name) {
+      case 'nivel':
+        setQuery(q => {
+          const nq = { ...q, [name]: value, provider: 'any', institucionDependencia: 'any' };
+          setLoading(true);
+          loadProviders(nq);
+          loadInstituciones(nq);
+
+          return nq;
+        });
+        break;
+      case 'provider':
+        setQuery(q => {
+          const nq = { ...q, [name]: value, institucionDependencia: 'any' };
+          setLoading(true);
+          loadInstituciones(nq);
+
+          return nq;
+        });
+        break;
+      default:
+        setQuery(q => ({ ...q, [name]: value }));
+        break;
+    }
+  };
+
+  const handleOrder = e => {
+    const { name, value } = e.target;
+    setOrder(o => ({ ...o, [name]: value }));
+  };
+
+  useEffect(() => {
+    setActiveSearch(true);
+  }, [query, order]);
+
+  useEffect(() => {
+    setLoading(true);
+    loadProviders(query);
+    loadInstituciones(query);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  React.useEffect(() => {
-    loadInstitutions();
-    loadProviders();
-  }, [filter?.nivel]);
-
-  React.useEffect(() => {
-    loadInstitutions();
-  }, [filter?.provider]);
-
-  React.useEffect(() => {
-    if (provider !== 'any') {
-      setPagination({ ...pagination, page: 1 });
-      setSelectedItem(null);
-      handleSearchAPI();
-    }
-  }, [provider]);
-
-  React.useEffect(() => {
-    if (provider !== 'any' && fixpaginador === true) {
-      /* setPagination({ ...pagination }); */
-      setSelectedItem(null);
-      handleSearchAPI();
-    }
-  }, [fixpaginador]);
-
-  const loadInstitutions = () => {
-    let sug = [];
-    let options = {
-      url: process.env.REACT_APP_S3S_BACKEND + '/api/v1/entities',
-      json: true,
-      method: 'post',
-      data: {}
-    };
-    if (filter.nivel !== 'any') options.data.nivel_gobierno = filter.nivel;
-    if (filter.provider !== 'any') options.data.supplier_id = filter.provider.key;
-
-    axios(options)
-      .then(data => {
-        data.data.forEach((item, index) => {
-          sug.push({ value: item.nombre, label: item.nombre, key: index });
-        });
-        setInstitutionsList(sug);
-        setFilter({ ...filter, institucionDependencia: 'any' });
-      })
-      .catch(err => {
-        setError(true);
-      });
-  };
-
-  const loadProviders = () => {
-    let sug = [];
-    let options = {
-      url: process.env.REACT_APP_S3S_BACKEND + '/api/v1/getProviders',
-      json: true,
-      method: 'post',
-      data: {}
-    };
-    if (filter.nivel !== 'any') options.data.nivel_gobierno = filter.nivel;
-    axios(options)
-      .then(data => {
-        data.data.forEach(provider => {
-          sug.push({ value: provider.supplier_id, label: provider.supplier_name, key: provider.supplier_id });
-        });
-        setProvidersList(sug);
-        setProvider('any');
-      })
-      .catch(err => {
-        setError(true);
-      });
-  };
-
   const handleCleanAll = () => {
-    setFilter(initialFilter);
-    setProvidersList([]);
-    setPagination(initialPagination);
-    setSort(initialSort);
-    setFilterData(null);
-    setPrevios([]);
-    setInstitutionsList([]);
-    setSelectedItem(null);
+    setQuery(initialQuery);
+    setOrder(initialOrder);
+
+    setActiveClean(false);
+    setActiveSearch(true);
+
+    setFilterData({});
     setView(0);
   };
-  //10,25,50
-  const handleSearchPrevios = () => {
+
+  const getQuery = () => {
+    const camps = Object.keys(query).filter(k => query[k] !== '' && query[k] !== 'any');
+    const finalQuery = {};
+
+    camps.forEach(c => {
+      switch (c) {
+        case 'tipoSancion':
+          if (query[c].length > 0) {
+            finalQuery[c] = query[c].map(s => s.value);
+          }
+          break;
+        case 'nivel':
+          finalQuery['nivel_gobierno'] = query[c];
+          break;
+        case 'provider':
+          finalQuery['proveedor'] = query[c];
+          break;
+
+        default:
+          finalQuery[c] = query[c];
+          break;
+      }
+    });
+    return finalQuery;
+  };
+
+  const getOrder = () => {
+    const { orderCamp, orderType } = order;
+    return orderCamp !== 'any' && orderType !== 'any' ? { [orderCamp]: orderType } : {};
+  };
+
+  const createDataQuery = () => {
+    const finalQuery = getQuery();
+    const finalOrder = getOrder();
+
+    let data = {};
+
+    if (Object.keys(finalQuery).length > 0) {
+      data.query = finalQuery;
+      if (data.query.nivel_gobierno) {
+        data.nivel_gobierno = data.query.nivel_gobierno;
+        delete data.query.nivel_gobierno;
+      }
+
+      if (data.query.proveedor) {
+        data.proveedor = data.query.proveedor;
+        delete data.query.proveedor;
+      }
+
+      if (data.query.institucionDependencia) {
+        data.institucion = data.query.institucionDependencia;
+      }
+    }
+
+    if (Object.keys(finalOrder).length > 0) data.sort = finalOrder;
+
+    return data;
+  };
+
+  const handleSearchPrevios = async () => {
+    ReactGA.event({ category: 'busqueda-s3SP', action: 'click' });
+
     setLoading(true);
-    setFilterData([]);
-    setSelectedItem(null);
-    setPagination({ ...pagination, rowsPerPage: 10 });
-    setProvider('any');
+    setActiveSearch(false);
+    setActiveClean(true);
 
-    let body = {
-      query: makeFiltros(),
-      institucion: filter.institucionDependencia
-    };
+    const data = createDataQuery();
 
-    if (filter.nivel !== 'any') body.nivel_gobierno = filter.nivel;
-    if (filter.provider !== 'any') body.proveedor = filter.provider.key;
-    let options = {
-      method: 'POST',
-      url: process.env.REACT_APP_S3S_BACKEND + '/api/v1/summary',
-      json: true,
-      data: body
-    };
-    axios(options)
-      .then(res => {
-        setPrevios(res.data);
-        setLoading(false);
-        setError(false);
-        setView(1);
-        setFixpaginador(false);
-      })
-      .catch(err => {
-        setError(true);
-        setLoading(false);
-      });
+    try {
+      const datos = await getSummary(data);
+      setPrevios(datos);
+      setError(false);
+      setView(1);
+    } catch (e) {
+      console.log('handleSearchPrevios: ', e);
+      setError(true);
+    }
+
+    setLoading(false);
   };
 
-  const makeFiltros = () => {
-    let filtros = {};
-    if (filter.nombres) filtros.nombres = filter.nombres;
-    if (filter.primerApellido) filtros.primerApellido = filter.primerApellido;
-    if (filter.segundoApellido) filtros.segundoApellido = filter.segundoApellido;
-    if (filter.institucionDependencia && filter.institucionDependencia !== 'any') filtros.institucionDependencia = filter.institucionDependencia;
-    if (filter.tipoSancion.length > 0) filtros.tipoSancion = filter.tipoSancion.map(item => item.value);
-    return filtros;
-  };
-
-  const makeSort = () => {
-    let sort_ = {};
-    if (sort.campoOrden !== 'any' && sort.tipoOrden !== 'any') sort_[sort.campoOrden.value] = sort.tipoOrden.value;
-    return sort_;
-  };
-
-  const handleSearchAPI = () => {
+  const handleChangeAPI = async val => {
     setLoading(true);
-    let body = {
-      query: makeFiltros(),
-      pageSize: pagination.rowsPerPage,
-      page: pagination.page,
-      supplier_id: provider,
-      sort: makeSort()
-    };
-
-    let options = {
-      method: 'POST',
-      url: process.env.REACT_APP_S3S_BACKEND + '/api/v1/search',
-      json: true,
-      data: body
-    };
-
-    axios(options)
-      .then(res => {
-        let resultado = res.data;
-        setFilterData(resultado.results);
-        setLoading(false);
-        setPagination({ ...pagination, totalRows: resultado.pagination.totalRows });
-        setError(false);
-        setView(2);
-        setFixpaginador(false);
-      })
-      .catch(err => {
-        setLoading(false);
-        setError(true);
-      });
-  };
-
-  const handleChangeAPI = val => {
+    const data = createDataQuery();
+    data.supplier_id = val;
     setProvider(val);
-    setPagination({ ...pagination, page: 1 });
+
+    try {
+      const info = await getDataAPI(data);
+      setFilterData(info);
+      setError(false);
+      setView(2);
+    } catch (e) {
+      console.log('handleChangeAPI: ', e);
+      setError(true);
+    }
+
+    setLoading(false);
   };
 
-  const handleChangePage = (event, page) => {
-    setPagination({ ...pagination, page: page + 1 });
-    setFixpaginador(true);
+  const handleChangePage = async (event, page) => {
+    setLoading(true);
+    const data = createDataQuery();
+    data.page = page + 1;
+    data.pageSize = filterData.pagination.pageSize;
+    data.supplier_id = provider;
+    try {
+      const info = await getDataAPI(data);
+      setFilterData(info);
+      setError(false);
+      setView(2);
+    } catch (e) {
+      console.log('handleChangeAPI: ', e);
+      setError(true);
+    }
+
+    setLoading(false);
   };
 
-  const handleChangeRowsPerPage = event => {
-    setPagination({ ...pagination, rowsPerPage: event.target.value, page: 1 });
-    setFixpaginador(true);
+  const handleChangeRowsPerPage = async event => {
+    setLoading(true);
+    const data = createDataQuery();
+    data.page = 1;
+    data.pageSize = event.target.value;
+    data.supplier_id = provider;
+    try {
+      const info = await getDataAPI(data);
+      setFilterData(info);
+      setError(false);
+      setView(2);
+    } catch (e) {
+      console.log('handleChangeAPI: ', e);
+      setError(true);
+    }
+
+    setLoading(false);
   };
 
   const verDetalle = (event, elemento) => {
     setSelectedItem(elemento);
     setView(3);
-    //setProvider('any')
   };
 
   const handleChangeDetail = () => {
@@ -313,247 +311,58 @@ function BusquedaServidor({ classes }) {
 
   const returnToPrevios = () => {
     setView(1);
-    setProvider('any');
   };
 
   return (
-    <ThemeProvider theme={ThemeV2}>
-      <React.Fragment>
-        {/*Buscador*/}
-        <Grid container spacing={4}>
-          <Grid item xs={12}>
-            <Typography>
-              <b>Busca un servidor público sancionado</b>
-            </Typography>
-          </Grid>
-          <Grid item xs={12} md={2}>
-            <TextField id='nombres' label='Nombre(s)' onChange={e => setFilter({ ...filter, nombres: e.target.value })} value={filter.nombres} margin='normal' />
-          </Grid>
-          <Grid item xs={12} md={2}>
-            <TextField id='primerApellido' label='Apellido Uno' type='search' onChange={e => setFilter({ ...filter, primerApellido: e.target.value })} value={filter.primerApellido} margin='normal' />
-          </Grid>
-          <Grid item xs={12} md={2}>
-            <FormControl className={classes.formControl}>
-              <TextField id='segundoApellido' label='Apellido Dos' type='search' onChange={e => setFilter({ ...filter, segundoApellido: e.target.value })} value={filter.segundoApellido} margin='normal' />
-            </FormControl>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <FormControl className={classes.formControl}>
-              <TextField
-                id={'tipoSancion'}
-                name={'tipoSancion'}
-                margin='normal'
-                select
-                label={'Tipo sanción'}
-                SelectProps={{
-                  multiple: true,
-                  renderValue: selected => selected.map(element => element.label).join(', '),
-                  onChange: e => setFilter({ ...filter, tipoSancion: e.target.value }),
-                  value: filter.tipoSancion
-                }}
-              >
-                <MenuItem disabled value={[]}>
-                  <em>Todos</em>
-                </MenuItem>
-                {tiposSancion.map(tipo => (
-                  <MenuItem key={tipo.value} value={tipo}>
-                    <Checkbox checked={filter.tipoSancion.indexOf(tipo) > -1} />
-                    <ListItemText primary={tipo.label} />
-                  </MenuItem>
-                ))}
-              </TextField>
-              {/* <InputLabel id="tipoSancion-label">Tipo sanción</InputLabel>
-                                <Select
-                                    id="tipoSancion-checkbox"
-                                    multiple
-                                    value={tipoSancion}
-                                    onChange={e => this.handleChangeCampo('tipoSancion', e)}
-                                    input={<OutlinedInput label="Tipo sanción"/>}
-                                    renderValue={
-                                        selected => {
-                                            return selected.map(element => element.label).join(', ')
-                                        }
-                                    }
-                                    label={'Tipo sanción'}
-                                    labelId={'tipoSancion-label'}
-                                >
-                                    <MenuItem disabled value={[]}>
-                                        <em>Todos</em>
-                                    </MenuItem>
-                                    {tiposSancion.map(tipo => (
-                                        <MenuItem key={tipo.value} value={tipo}>
-                                            <Checkbox checked={tipoSancion.indexOf(tipo) > -1}/>
-                                            <ListItemText primary={tipo.label}/>
-                                        </MenuItem>
+    <React.Fragment>
+      {/*Buscador*/}
+      <Grid container spacing={4}>
+        <Grid item xs={12}>
+          <Typography>
+            <b>Busca un servidor público sancionado</b>
+          </Typography>
+        </Grid>
+        <FormServidoresSancionados handleForm={handleForm} handleOrder={handleOrder} query={query} order={order} providersList={providersList} institutionsList={institutionsList} />
 
-                                    ))}
-                                </Select> */}
-            </FormControl>
-          </Grid>
-          <Grid item xs={12} md={2}>
-            <FormControl className={classes.formControl}>
-              <TextField id={'nivel'} name={'nivel'} margin='normal' select label={'Nivel'} value={filter.nivel} onChange={e => setFilter({ ...filter, nivel: e.target.value })}>
-                <MenuItem value='any'>
-                  <em>Todos</em>
-                </MenuItem>
-                <MenuItem value={'Federal'} key={'Federal'}>
-                  {'Federal'}
-                </MenuItem>
-                <MenuItem value={'Estatal'} key={'Estatal'}>
-                  {'Estatal'}
-                </MenuItem>
-              </TextField>
-              {/* <InputLabel id="nivel-label">Nivel</InputLabel>
-                                <Select
-                                    labelId="nivel-label"
-                                    id="nivel-label-helper"
-                                    value={nivel}
-                                    label="Nivel"
-                                    onChange={(e) => this.handleChangeCampo('nivel', e)}
-                                >
-                                    <MenuItem value="any">
-                                        <em>Todos</em>
-                                    </MenuItem>
-                                    <MenuItem value={'Federal'} key={'Federal'}>
-                                        {'Federal'}
-                                    </MenuItem>
-                                    <MenuItem value={'Estatal'} key={'Estatal'}>
-                                        {'Estatal'}
-                                    </MenuItem>
-                                </Select> */}
-            </FormControl>
-          </Grid>
-          <Grid item md={4} xs={12}>
-            <FormControl className={classes.formControl}>
-              <TextField id={'proveedor'} name={'proveedor'} margin='normal' select label={'Proveedor información'} value={filter.provider} onChange={e => setFilter({ ...filter, provider: e.target.value })}>
-                <MenuItem value={'any'}>
-                  <em>Todos</em>
-                </MenuItem>
-                {providersList.map(item => {
-                  return (
-                    <MenuItem value={item} key={item.key}>
-                      {item.label}
-                    </MenuItem>
-                  );
-                })}
-              </TextField>
-            </FormControl>
-          </Grid>
-          <Grid item md={6} xs={12}>
-            <FormControl className={classes.formControl}>
-              <TextField id={'institucionDependencia'} name={'institucionDependencia'} margin='normal' select label={'Institución'} value={filter.institucionDependencia} onChange={e => setFilter({ ...filter, institucionDependencia: e.target.value })}>
-                <MenuItem value='any'>
-                  <em>Todas</em>
-                </MenuItem>
-                {institutionsList.map(item => {
-                  return (
-                    <MenuItem value={item.value} key={item.key}>
-                      {item.label}
-                    </MenuItem>
-                  );
-                })}
-              </TextField>
-            </FormControl>
-          </Grid>
-          <Grid item xs={12}>
-            <Button
-              onClick={() =>
-                setShowAdvancedSearch(prevState => {
-                  return !prevState;
-                })
-              }
-              color={'text'}
-              startIcon={showAdvancedSearch ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-            >
-              Búsqueda avanzada
-            </Button>
-          </Grid>
+        <Grid item md={10} />
 
-          {showAdvancedSearch && (
-            <Grid item xs={12} md={3}>
-              <FormControl className={classes.formControl}>
-                <TextField id={'campoOrden-checkbox'} name={'campoOrden-checkbox'} margin='normal' select label={'Ordenar por'} value={sort.campoOrden} onChange={e => setSort({ ...sort, campoOrden: e.target.value })}>
-                  <MenuItem value={'any'}>
-                    <em>Ninguno</em>
-                  </MenuItem>
-                  {camposOrdenamiento.map(tipo => {
-                    return (
-                      <MenuItem key={tipo.value} value={tipo}>
-                        <ListItemText primary={tipo.label} />
-                      </MenuItem>
-                    );
-                  })}
-                </TextField>
-              </FormControl>
-            </Grid>
+        <Grid item xs={12} md={1}>
+          <Button variant='contained' color='secundario' disabled={!activeClean} className={classes.button} onClick={() => handleCleanAll()}>
+            Limpiar
+          </Button>
+        </Grid>
+        <Grid item xs={12} md={1}>
+          <Button variant='contained' color='secundario' disabled={!activeSearch} className={classes.button} onClick={() => handleSearchPrevios()}>
+            Buscar
+          </Button>
+        </Grid>
+        <Grid item xs={12}>
+          {loading && (
+            <Modal open={loading} disableAutoFocus={true}>
+              <CircularProgress className={classes.progress} id='spinnerLoading' size={200} />
+            </Modal>
           )}
-          {showAdvancedSearch && (
-            <Grid item xs={12} md={3}>
-              <FormControl className={classes.formControl}>
-                <TextField id={'tipoOrden-checkbox'} name={'tipoOrden-checkbox'} margin='normal' select label={'Tipo ordenamiento'} value={sort.tipoOrden} onChange={e => setSort({ ...sort, tipoOrden: e.target.value })}>
-                  <MenuItem value={'any'}>
-                    <em>Ninguno</em>
-                  </MenuItem>
-                  {tiposOrdenamiento.map(tipo => {
-                    return (
-                      <MenuItem key={tipo.value} value={tipo}>
-                        <ListItemText primary={tipo.label} />
-                      </MenuItem>
-                    );
-                  })}
-                </TextField>
-              </FormControl>
-            </Grid>
-          )}
-
-          <Grid item md={10} />
-
-          <Grid item xs={12} md={1}>
-            <Button variant='contained' color='secundario' className={classes.button} onClick={() => handleCleanAll()}>
-              Limpiar
-            </Button>
-          </Grid>
-          <Grid item xs={12} md={1}>
-            <Button
-              variant='contained'
-              color='secundario'
-              className={classes.button}
-              onClick={() => {
-                handleSearchPrevios();
-                ReactGA.event({ category: 'busqueda-s3SP', action: 'click' });
-              }}
-            >
-              Buscar
-            </Button>
-          </Grid>
-          <Grid item xs={12}>
-            {loading && (
-              <Modal open={loading} disableAutoFocus={true}>
-                <CircularProgress className={classes.progress} id='spinnerLoading' size={200} />
-              </Modal>
-            )}
-            {error && <MensajeErrorDatos />}
+          {error && <MensajeErrorDatos />}
+        </Grid>
+      </Grid>
+      {/*PREVIOS*/}
+      {view === 1 && previos.length > 0 && (
+        <Grid container>
+          <Grid item xs={12} className={classes.section}>
+            <Previos data={previos} handleChangeSujetoObligado={handleChangeAPI} />
           </Grid>
         </Grid>
-        {/*PREVIOS*/}
-        {view === 1 && previos && previos.length > 0 && (
-          <Grid container>
-            <Grid item xs={12} className={classes.section}>
-              <Previos data={previos} handleChangeSujetoObligado={handleChangeAPI} />
-            </Grid>
+      )}
+      {/*TABLA*/}
+      {view === 2 && Object.keys(filterData).length > 0 && (
+        <Grid container>
+          <Grid item xs={12}>
+            <TablaServidoresSancionados info={filterData} handleChangePage={handleChangePage} handleChangeRowsPerPage={handleChangeRowsPerPage} verDetalle={verDetalle} returnToPrevios={returnToPrevios} />
           </Grid>
-        )}
-        {/*TABLA*/}
-        {view === 2 && filterData && filterData.length > 0 && selectedItem === null && (
-          <Grid container>
-            <Grid item xs={12}>
-              <TablaServidoresSancionados data={filterData} page={pagination.page} rowsPerPage={pagination.rowsPerPage} totalRows={pagination.totalRows} handleChangePage={handleChangePage} handleChangeRowsPerPage={handleChangeRowsPerPage} verDetalle={verDetalle} returnToPrevios={returnToPrevios} />
-            </Grid>
-          </Grid>
-        )}
-        {view === 3 && selectedItem !== null && <DetalleServidorSancionado handleChangeDetail={handleChangeDetail} servidor={selectedItem} />}
-      </React.Fragment>
-    </ThemeProvider>
+        </Grid>
+      )}
+      {view === 3 && selectedItem !== null && <DetalleServidorSancionado handleChangeDetail={handleChangeDetail} servidor={selectedItem} />}
+    </React.Fragment>
   );
 }
 
