@@ -60,7 +60,12 @@ const styles = theme => ({
   }
 });
 
-function TablaServidoresSancionados({ classes, data, rowsPerPage, page, totalRows, verDetalle, handleChangeRowsPerPage, handleChangePage, returnToPrevios }) {
+function TablaServidoresSancionados({ classes, info, verDetalle, handleChangeRowsPerPage, handleChangePage, returnToPrevios }) {
+  const {
+    results: data,
+    pagination: { page, totalRows, pageSize: rowsPerPage }
+  } = info;
+
   return (
     <div>
       <Grid container justifyContent='center' spacing={0} className={classes.gridTable} id={'containerTest'}>
