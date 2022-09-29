@@ -1,5 +1,6 @@
 import React from 'react';
 import {RadialChart} from "react-vis";
+import {Box} from '@mui/material';
 
 const PieChart = props => {
     const {color, value} = props;
@@ -23,8 +24,10 @@ const PieChart = props => {
         ]);
     }, [value, color]);
 
-    return <RadialChart colorType='literal' data={data} width={180} height={180}
-                        style={{ stroke: '#d3d3d3', strokeWidth: '2px'}}/>
+    return <Box display="flex" justifyContent="center" flexGrow={1}>
+        <RadialChart colorType='literal' data={data} width={180} height={180}
+                     style={{ stroke: '#d3d3d3', strokeWidth: '2px'}}/>
+    </Box>
 }
 
 export default PieChart;

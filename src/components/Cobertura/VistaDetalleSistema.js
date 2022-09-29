@@ -14,13 +14,24 @@ const styles = theme => ({
 const bar_colors = [ '#43b9a5', '#f46c81', '#f5ca5d', '#5ccbf0', '#beF5a6' ];
 
 const VistaDetalleSistema = props => {
-    const {estado, sys_id, sys_icon, sys_color, data, classes} = props;
+    const {estado, system, classes} = props;
+    const {id, icon, color, data, name} = system;
 
     /* Vista detallada por Sistema */
     return <Box sx={{display: 'flex', flexWrap: "wrap", alignItems: "stretch"}} justifyContent="center">
 
-        <Paper elevation={15} sx={{ m: 1 ,p: 2, maxWidth: 200, display: 'flex', justifyContent: "center", alignContent: "center"}} className={classes.paper} >
-            <img src={sys_icon} style={{width:"120px"}} alt={estado.name}/>
+        <Paper elevation={15} sx={{ m: 1, maxWidth: 200, display: 'flex', flexWrap: 'wrap', justifyContent: "center", alignContent: "center"}} className={classes.paper} >
+
+            <Box p={2}>
+                <img src={icon} style={{width: "120px"}} alt={estado.name}/>
+            </Box>
+
+            <Box p={2}>
+                <Typography paragraph variant="body2" color={color} align="center">
+                    {name}
+                </Typography>
+            </Box>
+
         </Paper>
 
         <Paper elevation={15} sx={{ m: 1, p: 2, display: 'flex', justifyContent: 'center' }} className={classes.paper}>
@@ -83,18 +94,23 @@ const VistaDetalleSistema = props => {
                     <Typography color="white">Municipal</Typography>
                 </Box>
 
-                <Box p={2} textAlign="center" display='flex' alignContent="center">
+                <Box p={2} textAlign="center" display='flex' flexWrap="wrap" alignContent="center" sx={{maxWidth: 300}}>
                     {/* Radial chart */}
                     <Box>
-                        <PieChart color={sys_color} value={data[5]}/>
-                        <Typography variant="h3" sx={{fontWeight: 'bold'}} color={sys_color}>
-                            {data[5]}%
+                        <Typography color="white" sx={{fontWeight: 'bold'}} variant='h6'>
+                            Total de instituciones conectadas
                         </Typography>
 
+                        <PieChart color={color} value={data[5]}/>
+
+                        <Typography variant="h3" sx={{fontWeight: 'bold'}} color={color}>
+                            {data[5]}%
+                        </Typography>
                         <Typography color="white" variant="h6">
                             113 de 210
                         </Typography>
                     </Box>
+
                 </Box>
             </Box>
 

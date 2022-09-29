@@ -62,33 +62,33 @@ const VistaDetalleEstado = props => {
     const estado = estados.find(e => e.route.includes(id_estado));
     const icon = require(`../../assets/Cobertura/iconos_estados/${estado.icon2}`);
 
-    const [system, setSystem] = React.useState({
-        id: 1,
-        color: colors.s1,
-        data: [10, 92,30, 43,50, 90 ],
-        icon: icon_s1
-    });
-
     const sys = [
         {
             id: 1,
             color: colors.s1,
             data: [10, 92,30, 43,50, 90 ],
-            icon: icon_s1
+            icon: icon_s1,
+            name: "Sistema de evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal"
         },
         {
             id: 2,
             color: colors.s2,
             data: [80, 12,45, 33,76, 23],
-            icon: icon_s2
+            icon: icon_s2,
+            name: "Sistema de los servidores públicos que intervengan en procedimientos de contrataciones públicas"
         },
         {
             id: 3,
             color: colors.s3,
             data: [20, 10, 30, 50, 30, 53],
-            icon: icon_s3
+            icon: icon_s3,
+            name: "Sistema nacional de servidores públicos y particulares sancionados"
         }
     ];
+
+    const [system, setSystem] = React.useState(
+        JSON.parse(JSON.stringify(sys[0]))
+    );
 
     const handleSetSystem = id => {
         setSystem( sys.find( s => s.id === id) );
@@ -132,11 +132,12 @@ const VistaDetalleEstado = props => {
 
                         <Paper elevation={15} sx={{ m:1, p: 2, textAlign: "center", maxWidth: 200 }} className={classes.paper}>
                             <Typography variant="h5" color="white" sx={{fontWeight: 'bold'}}>
-                                Cobertura
+                                Instituciones en la PDN
                             </Typography>
-                            <Typography variant="body2" color="white">
-                                Conectados / Total de sujetos obligados
-                            </Typography>
+
+                            {/*<Typography variant="body2" color="white">
+                                Información de instituciones en la PDN
+                            </Typography>*/}
 
                             <Typography variant="h4" color={colors.s1} sx={{fontWeight: 'bold'}}>
                                 {general_data.s1.value}%
@@ -153,8 +154,7 @@ const VistaDetalleEstado = props => {
                         </Paper>
                     </Box>
 
-                    <VistaDetalleSistema estado={estado} sys_id={system.id} sys_icon={system.icon}
-                                         sys_color={system.color} data={system.data} />
+                    <VistaDetalleSistema estado={estado} system={system} />
                 </Paper>
             </Grid>
         </Grid>
