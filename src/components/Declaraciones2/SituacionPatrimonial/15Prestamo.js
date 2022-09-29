@@ -141,7 +141,7 @@ const Prestamos = ({ data, titulo }) => {
 
   let prestamo;
 
-  if (data.ninguno) {
+  if (typeof data === 'undefined' || data.ninguno) {
     prestamo = [];
   } else {
     prestamo = data.prestamo ? data.prestamo.filter(i => i.titular && i.titular.length === 1 && i.titular[0].clave === 'DEC') : [];

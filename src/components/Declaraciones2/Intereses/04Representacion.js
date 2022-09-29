@@ -112,7 +112,7 @@ const Representaciones = props => {
   const { data } = props;
 
   // const representacion = data.representacion.filter((i) => i.tipoRelacion === 'DECLARANTE');
-  const representacion = data.representacion;
+  const representacion = data?.representacion;
 
   return (
     <Grid container spacing={2} className={classes.rootPrincipal}>
@@ -122,7 +122,7 @@ const Representaciones = props => {
         </Typography>
       </Grid>
       <Grid item xs={12}>
-        {data.ninguno ? <DatosNoRegistrados /> : representacion.length ? <Representacion representacion={representacion} /> : <DatosReservados />}
+        {typeof data === 'undefined' || data.ninguno ? <DatosNoRegistrados /> : representacion.length ? <Representacion representacion={representacion} /> : <DatosReservados />}
       </Grid>
     </Grid>
   );

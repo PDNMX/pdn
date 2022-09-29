@@ -67,7 +67,7 @@ const situacionPatrimonial = (data, tipo) => {
     bienMueble = 0;
   }
 
-  if (inversiones.ninguno) {
+  if (typeof inversiones === 'undefined' || inversiones.ninguno) {
     inversion = 0;
   } else {
     inversion = inversiones.inversion ? inversiones.inversion.filter(onlyDec) : 0;

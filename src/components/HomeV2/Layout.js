@@ -4,6 +4,7 @@ import Version from "./Version";
 import Footer from "./Footer/";
 import ChatBotPDN from "../ChatBot/ChatBotPDN";
 import Glosario from "../Glosario/";
+import AsistenteBusqueda from "../HomeV2/Buscador/BotonFlotante";
 
 import style from '../Declaraciones2/style';
 import { makeStyles } from '@mui/styles';
@@ -17,6 +18,7 @@ const Layout = ({children})=>{
                 <Banner/>
                 <Version/>
                 {children}
+                <AsistenteBusqueda/>
                 <Glosario/>
                 <ChatBotPDN />
                 <Footer/>

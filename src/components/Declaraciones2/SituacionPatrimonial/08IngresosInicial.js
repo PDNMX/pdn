@@ -33,7 +33,7 @@ const OtrosIngresos = ({ otrosIngresos }) => {
           <Grid item xs={12} md={3}>
             <Typography className={exp.heading}>
               <strong>
-                {getMoneda(otrosIngresos.remuneracionTotal.valor)} {otrosIngresos.remuneracionTotal.moneda}
+                {getMoneda(otrosIngresos.remuneracionTotal?.valor)} {otrosIngresos.remuneracionTotal?.moneda}
               </strong>
             </Typography>
           </Grid>

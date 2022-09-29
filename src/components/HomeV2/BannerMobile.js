@@ -2,7 +2,8 @@ import React from "react";
 import withStyles from '@mui/styles/withStyles';
 import {
     AppBar, Box, Typography, IconButton, Menu, MenuItem,
-    Button, List, ListItem, Collapse, Toolbar, Link} from "@mui/material";
+    Button, List, ListItemButton, Collapse, Toolbar
+} from "@mui/material";
 import {Link as RouterLink} from "react-router-dom";
 import { MoreHoriz as MoreHorizIcon} from '@mui/icons-material';
 import imgHeader from "../../assets/rediseno/logo_pdn.svg";
@@ -11,12 +12,12 @@ import Mesa_logo from "../../assets/rediseno/ico_mesa-ayuda.svg";
 import MDA_logo from "../../assets/rediseno/ico_mda.svg";
 import Interconexion_logo from "../../assets/rediseno/ico_interconexion.svg";
 import Sistemas_logo from "../../assets/rediseno/ico_sistemas_f.svg";
-//import LoginIcon from "../../assets/rediseno/ico_login.svg";
+import LoginIcon from "../../assets/rediseno/ico_login.svg";
 import legislacion_icono from "../../assets/rediseno/ico_interconexion_legislacion.svg";
-import mapa_s2s3_icono from "../../assets/rediseno/ico_interconexion_s1-s3.svg";
 import icon_cobertura from "../../assets/rediseno/ico_cobertura.svg";
-
+import mapa_s2s3_icono from "../../assets/rediseno/ico_interconexion_s2-s3.svg";
 import ReactGA from "react-ga";
+import {UserContext} from "../Login/UserContext";
 
 const styles = theme => ({
     root: {
@@ -68,12 +69,14 @@ const styles = theme => ({
 
 
 const BannerMobile = props => {
-    const {classes} = props;
+    const {classes, setOpenLoginDialog} = props;
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [dropDown, setDropDown] = React.useState(false);
     const [dropDownInterconexion, setDropDownInterconexion] = React.useState(false);
     const open = Boolean(anchorEl);
     const {systems} = props;
+
+    const {user} = React.useContext(UserContext);
 
     const handleMenu = (event) => {
         setAnchorEl(event.currentTarget);
@@ -92,6 +95,10 @@ const BannerMobile = props => {
     const handleToggleInterconexion = () => {
         setDropDownInterconexion(!dropDownInterconexion);
         setDropDown(false);
+    };
+
+    const handleOpenLoginDialog = () => {
+        setOpenLoginDialog(true);
     };
 
     return (
@@ -131,74 +138,89 @@ const BannerMobile = props => {
                     >
 
                         <MenuItem className={classes.menuItem} component={RouterLink} to="/mesa-de-ayuda">
-                            <Typography style={{width:'100%'}}>MESA DE AYUDA</Typography> <img src={Mesa_logo} alt="MESA DE AYUDA" className={classes.icon}/>
+                            <Typography style={{width:'100%'}}>MESA DE AYUDA</Typography>
+                            <img src={Mesa_logo} alt="MESA DE AYUDA" className={classes.icon}/>
                         </MenuItem>
                         <MenuItem className={classes.menuItem} component={RouterLink} to="/especificaciones">
-                            <Typography style={{width:'100%'}}>ESPECIFICACIONES</Typography><img src={Especificaciones_logo} alt="ESPECIFICACIONES" className={classes.icon}/>
+                            <Typography style={{width:'100%'}}>ESPECIFICACIONES</Typography>
+                            <img src={Especificaciones_logo} alt="ESPECIFICACIONES" className={classes.icon}/>
                         </MenuItem>
-                        <MenuItem className={classes.menuItem} component={"a"} onClick={() => handleToggle()}>
-                            <Typography style={{width:'100%'}}>SISTEMAS</Typography><img src={Sistemas_logo} alt="SISTEMAS" className={classes.icon}/>
+                        <MenuItem className={classes.menuItem} component="a" onClick={() => handleToggle()}>
+                            <Typography style={{width:'100%'}}>SISTEMAS</Typography>
+                            <img src={Sistemas_logo} alt="SISTEMAS" className={classes.icon}/>
                         </MenuItem>
-                            <Collapse in={dropDown} timeout="auto" unmountOnExit>
-                                <List dense={true} component="div">
-                                    {systems.map(system => {
-                                        return (
-                                        <ListItem button component={RouterLink} to={system.path} key={system.name}
-                                                  className={classes.nested} >
+
+                        <Collapse in={dropDown} timeout="auto" unmountOnExit>
+                            <List dense={true} component="div">
+                                {systems.map(system => {
+                                    return (
+                                        <ListItemButton component={RouterLink} to={system.path} key={system.name}
+                                                        className={classes.nested} >
                                             <img src={system.icon} alt={system.name} className={classes.iconSistemas}/>
                                             <Typography color={system.color}>{system.name}</Typography>
-                                        </ListItem>
-                                        )
-                                    })}
-                                </List>
-                            </Collapse>
-                        <MenuItem className={classes.menuItem} component={"a"} onClick={() => handleToggleInterconexion()}>
-                            <Typography style={{width:'100%'}}>INTERCONEXIÓN</Typography><img src={Interconexion_logo} alt="Interconexión subnacional" className={classes.icon}/>
-                        </MenuItem>
-                        <Collapse in={dropDownInterconexion} timeout="auto" unmountOnExit>
-                            <List dense={true} component="div">
-                                <ListItem button component={Button} href={'https://www.plataformadigitalnacional.org/mapa-sla/'} key={'legislacion'}
-                                          className={classes.nested} onClick={()=>ReactGA.pageview('/mapa-sla')}>
-                                    <img src={legislacion_icono} alt={'Legislación'} className={classes.iconSistemas}/>
-                                    <Typography color={'#b2bfc4'}>Legislación</Typography>
-                                </ListItem>
-                                <ListItem button component={Button} href={'https://www.plataformadigitalnacional.org/mapa-avance/'} key={'mapa'}
-                                          className={classes.nested} onClick={()=>ReactGA.pageview('/mapa-avance')}>
-                                    <img src={mapa_s2s3_icono} alt={''} className={classes.iconSistemas}/>
-                                    <Typography color={'#b2bfc4'}>Sistemas 2 y 3</Typography>
-                                </ListItem>
-
-
-                                <ListItem button component={RouterLink} to={'/cobertura'} key={'cobertura'} className={classes.nested}>
-                                    <img src={icon_cobertura} alt={''} className={classes.iconSistemas}/>
-                                    <Typography color={'#b2bfc4'}>COBERTURA</Typography>
-                                </ListItem>
-
+                                        </ListItemButton>
+                                    )
+                                })}
 
                             </List>
                         </Collapse>
+
+                        <MenuItem className={classes.menuItem} component="a" onClick={() => handleToggleInterconexion()}>
+                            <Typography style={{width:'100%'}}>INTERCONEXIÓN</Typography>
+                            <img src={Interconexion_logo} alt="Interconexión subnacional" className={classes.icon}/>
+                        </MenuItem>
+
+                        <Collapse in={dropDownInterconexion} timeout="auto" unmountOnExit>
+                            <List dense={true} component="div">
+                                <ListItemButton href='https://www.plataformadigitalnacional.org/mapa-sla/' key='legislacion'
+                                                className={classes.nested} onClick={()=>ReactGA.pageview('/mapa-sla')}>
+                                    <img src={legislacion_icono} alt='Legislación' className={classes.iconSistemas}/>
+                                    <Typography color={'#b2bfc4'}>Legislación</Typography>
+                                </ListItemButton>
+                                <ListItemButton href='https://www.plataformadigitalnacional.org/mapa-avance/' key='mapa'
+                                                className={classes.nested} onClick={()=>ReactGA.pageview('/mapa-avance')}>
+                                    <img src={mapa_s2s3_icono} alt='Avance' className={classes.iconSistemas}/>
+                                    <Typography color='#b2bfc4'>Sistemas 2 y 3</Typography>
+                                </ListItemButton>
+
+                                <ListItemButton component={RouterLink} to={'/cobertura'} key={'cobertura'} className={classes.nested}>
+                                    <img src={icon_cobertura} alt={''} className={classes.iconSistemas}/>
+                                    <Typography color={'#b2bfc4'}>Cobertura</Typography>
+                                </ListItemButton>
+
+                            </List>
+                        </Collapse>
+
                         <MenuItem className={classes.menuItem} component={Button}
                                   href="https://mda.plataformadigitalnacional.org/"
                                   onClick={()=>ReactGA.pageview('/mda')}>
-                            <Typography style={{width:'100%'}}>MDA</Typography><img src={MDA_logo} alt="Mercado Digital Anticorrupción" className={classes.icon}/>
+                            <Typography style={{width:'100%'}}>MDA</Typography>
+                            <img src={MDA_logo} alt="Mercado Digital Anticorrupción" className={classes.icon}/>
                         </MenuItem>
                     </Menu>
                     <IconButton sx={{flexGrow: 1}}
                                 color="inherit"
                                 aria-label="Menu"
-                                component={Link}
+                                component={RouterLink}
                                 to="/"
                                 style={{marginTop: "10px", marginBottom: "10px"}}
                                 size="large">
                         <img src={imgHeader} alt="PDN" style={{height: "40px"}}/>
                     </IconButton>
-                    {/*
-                    <img
-                        src={LoginIcon}
-                        className={classes.iconSesion}
-                        alt="Iniciar sesión"
-                    />
-                    */
+                    {user.loggedIn?
+                        <img
+                            src={LoginIcon}
+                            className={classes.iconSesion}
+                            alt="Terminar la sesión"
+                            onClick={() => handleOpenLoginDialog()}
+                        />
+                        :
+                        <img
+                            src={LoginIcon}
+                            className={classes.iconSesion}
+                            alt="Iniciar sesión"
+                            onClick={() => handleOpenLoginDialog()}
+                        />
                     }
                 </Toolbar>
             </AppBar>

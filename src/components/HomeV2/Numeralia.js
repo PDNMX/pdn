@@ -15,9 +15,6 @@ const styles = theme => ({
     Foot: {
         backgroundColor: '#3E5866',
     },
-    containerFoot: {
-        backgroundColor: '#0d3b49',
-    },
     headingText: {
         color: "#efd643",
         fontWeight: 500,
@@ -160,7 +157,7 @@ const Numeralia = props => {
                 </Grid>
             </Grid>
             </Paper>
-            <Grid container direction="row"  alignItems="flex-end" justifyContent='flex-end' className={classes.containerFoot}>
+            <Grid container direction="row"  alignItems="flex-end" justifyContent='flex-end'>
                 <Grid item md={10} sm={10} xs={12} align="right" className={classes.Foot}>
                     <Typography className={classes.textFoot} paragraph>
                         Estadística actualizada al {numeralia.values[5][1]}

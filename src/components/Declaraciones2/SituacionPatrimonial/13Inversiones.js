@@ -142,7 +142,7 @@ const Inversion = ({ data, tipo, titulo }) => {
 
   let inversiones;
 
-  if (data.ninguno) {
+  if (typeof data === 'undefined' || data.ninguno) {
     inversiones = [];
   } else {
     inversiones = data.inversion ? data.inversion.filter(i => i.titular.length === 1 && i.titular[0].clave === 'DEC') : [];

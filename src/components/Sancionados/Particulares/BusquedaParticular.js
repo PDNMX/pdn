@@ -115,6 +115,8 @@ function BusquedaParticular ({classes}){
     const [sort, setSort] = React.useState(initialSort);
     const [view, setView] = React.useState(0);
 
+    const [fixpaginador, setFixpaginador] = React.useState(false);
+
     React.useEffect(() => {
         loadInstitutions();
         loadProviders();
@@ -138,12 +140,13 @@ function BusquedaParticular ({classes}){
     }, [filter?.provider])
 
     React.useEffect(() => {
-        if (provider !== "any") {
-            /* setPagination({ ...pagination }); */
+        if (provider !== "any" && fixpaginador === true)  {
+            /* setPagination({ ...pagination });
+            setSelectedItem(null); */
             setSelectedItem(null);
             handleSearch();
         }
-    }, [pagination.page, pagination.rowsPerPage]);
+    }, [fixpaginador]);
 
     const loadInstitutions = () => {
         let instituciconesLista = [];
@@ -206,7 +209,7 @@ function BusquedaParticular ({classes}){
         setFilterData([]);
         setSelectedItem(null);
         setPagination({...pagination, rowsPerPage: 10});
-
+        
         let body =
             {
                 "query": makeFiltros(),
@@ -227,6 +230,7 @@ function BusquedaParticular ({classes}){
                 setLoading(false);
                 setError(false);
                 setView(1);
+                setFixpaginador(false);
             }).catch(err => {
                 setError(true);
                 setLoading(false);
@@ -275,6 +279,7 @@ function BusquedaParticular ({classes}){
                 setPagination({...pagination, totalRows: res.data.pagination.totalRows});
                 setError(false);
                 setView(2)
+                setFixpaginador(false);
             }).catch(err => {
             setLoading(false);
             setError(true);
@@ -283,20 +288,23 @@ function BusquedaParticular ({classes}){
 
     const handleChangeSujetoObligado = (val) => {
         setProvider(val);
+        setPagination({...pagination, page: 1});
     };
 
     const handleChangePage = (event, page) => {
         setPagination({...pagination, page: page + 1});
+        setFixpaginador(true);
     };
 
     const handleChangeRowsPerPage = event => {
         setPagination({...pagination, rowsPerPage: event.target.value, page: 1});
+        setFixpaginador(true);
     };
 
     const verDetalle = (event, elemento) => {
         setSelectedItem(elemento);
         setView(3);
-        setProvider('any');
+        //setProvider('any');
     };
 
     const hideDetalle = () => {

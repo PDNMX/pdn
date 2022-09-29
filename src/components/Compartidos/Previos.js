@@ -81,8 +81,8 @@ function Previos({data, classes, handleChangeSujetoObligado}) {
                             <Table className={classes.table}>
                                 <TableHead className={classes.tableHead}>
                                     <TableRow>
-                                        <TableCell align="left" variant={"head"} className={classes.tableCell} style={{width:'40%'}}
-                                            variant={"body1"}><Typography> Proveedor de información</Typography></TableCell>
+                                        <TableCell align="left" variant={"head"} className={classes.tableCell} style={{width:'40%'}}><Typography
+                                            variant={"body1"}> Proveedor de información</Typography></TableCell>
                                         <TableCell align="center" variant={"head"} className={classes.tableCell}><Typography
                                             variant={"body1"}>Nivel</Typography></TableCell>
                                         <TableCell align="center" variant={"head"} className={classes.tableCell}><Typography

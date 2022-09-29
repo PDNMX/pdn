@@ -18,7 +18,7 @@ let colores = ["#F87268", "#DC6AF0", "#B286FD", "#8A97D6",
     "#1DE2FC", "#00DBC5", "#71E575", "#AFEE68",
     "#F9AE3E", "#FF9270", "#F2B39C"];
 let color = colores[Math.floor(Math.random()* (colores.length-1))]
-console.log(color)
+
 const Ejercicio = props => {
     const [state, setState] = React.useState({
         error: false

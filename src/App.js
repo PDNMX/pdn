@@ -11,6 +11,8 @@ import ReactGA from 'react-ga';
 import Layout from "./components/HomeV2/Layout";
 
 import BaseTheme from "./BaseTheme";
+import {UserContext} from "./components/Login/UserContext";
+import {getUser} from "./components/Login/Auth";
 
 ReactGA.initialize('UA-126837818-1');
 ReactGA.pageview(window.location.pathname + window.location.search);
@@ -19,14 +21,36 @@ const p404 = () => {
   return <P404/>;
 };
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+const App  = props => {
+  const [user, setUser] = React.useState({
+    loggedIn: false,
+    nombres: 'No autenticado'
+  });
+  const value = {user, setUser};
 
-  render() {
-    return (
+  //Set user if session exists
+  React.useEffect(() => {
+
+    const fetchUser = async () => {
+      console.log("Fetching user");
+      try {
+        const logged_user = await getUser();
+        if (logged_user){
+          setUser({
+            loggedIn: true,
+            ...logged_user
+          });
+        }
+      } catch (e){
+        console.log(e);
+      }
+    }
+
+    fetchUser();
+  },[]);
+
+  return (
+      <UserContext.Provider value={value}>
         <ThemeProvider theme={BaseTheme}>
           <StyledEngineProvider injectFirst>
             <Router basename={process.env.PUBLIC_URL}>
@@ -51,10 +75,9 @@ class App extends React.Component {
             </Router>
           </StyledEngineProvider>
 
-
         </ThemeProvider>
-    );
-  }
+      </UserContext.Provider>
+  );
 }
 
 export default App;

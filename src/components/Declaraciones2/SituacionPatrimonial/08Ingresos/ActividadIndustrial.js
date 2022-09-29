@@ -27,7 +27,7 @@ const ActividadIndustrial = ({ actividadIndustrialComercialEmpresarial }) => {
           <Grid item xs={12} md={3}>
             <Typography className={exp.heading}>
               <strong>
-                {getMoneda(actividadIndustrialComercialEmpresarial.remuneracionTotal.valor)} {actividadIndustrialComercialEmpresarial.remuneracionTotal.moneda}
+                {getMoneda(actividadIndustrialComercialEmpresarial.remuneracionTotal?.valor)} {actividadIndustrialComercialEmpresarial.remuneracionTotal?.moneda}
               </strong>
             </Typography>
           </Grid>
@@ -44,23 +44,24 @@ const ActividadIndustrial = ({ actividadIndustrialComercialEmpresarial }) => {
           <Grid item xs={12} md={3}>
             <Typography className={classes.cardTitle}>INGRESO:</Typography>
           </Grid>
-          {actividadIndustrialComercialEmpresarial.actividades.map((act, idx) => {
-            return (
-              <Grid container spacing={1} key={'act-' + idx}>
-                <Grid item xs={12} md={5}>
-                  <Typography className={classes.card}>{act.nombreRazonSocial}</Typography>
+          {actividadIndustrialComercialEmpresarial.actividades &&
+            actividadIndustrialComercialEmpresarial.actividades.map((act, idx) => {
+              return (
+                <Grid container spacing={1} key={'act-' + idx}>
+                  <Grid item xs={12} md={5}>
+                    <Typography className={classes.card}>{act.nombreRazonSocial}</Typography>
+                  </Grid>
+                  <Grid item xs={12} md={4}>
+                    <Typography className={classes.card}>{act.tipoNegocio}</Typography>
+                  </Grid>
+                  <Grid item xs={12} md={3}>
+                    <Typography className={classes.card}>
+                      {getMoneda(act.remuneracion.valor)} {act.remuneracion.moneda}
+                    </Typography>
+                  </Grid>
                 </Grid>
-                <Grid item xs={12} md={4}>
-                  <Typography className={classes.card}>{act.tipoNegocio}</Typography>
-                </Grid>
-                <Grid item xs={12} md={3}>
-                  <Typography className={classes.card}>
-                    {getMoneda(act.remuneracion.valor)} {act.remuneracion.moneda}
-                  </Typography>
-                </Grid>
-              </Grid>
-            );
-          })}
+              );
+            })}
         </Grid>
       </BoxAccordionDetails>
     </BoxAccordion>
