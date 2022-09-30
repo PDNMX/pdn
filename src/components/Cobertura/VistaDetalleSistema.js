@@ -95,7 +95,7 @@ const VistaDetalleSistema = props => {
                     </Box>
                 </Box>
 
-                <Box p={2} textAlign="center" display='flex' flexWrap="wrap" alignContent="center" sx={{maxWidth: 300}}>
+                <Box p={1} textAlign="center" display='flex' flexWrap="wrap" alignContent="center" sx={{maxWidth: 300}}>
                     {/* Radial chart */}
                     <Box>
                         <Typography color="white" sx={{fontWeight: 'bold'}} variant='h6'>
