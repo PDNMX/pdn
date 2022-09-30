@@ -15,23 +15,21 @@ const bar_colors = [ '#43b9a5', '#f46c81', '#f5ca5d', '#5ccbf0', '#beF5a6' ];
 
 const VistaDetalleSistema = props => {
     const {estado, system, classes} = props;
-    const {id, icon, color, data, name} = system;
+    const {icon, color, data, name} = system;
 
     /* Vista detallada por Sistema */
     return <Box sx={{display: 'flex', flexWrap: "wrap", alignItems: "stretch"}} justifyContent="center">
 
-        <Paper elevation={15} sx={{ m: 1, maxWidth: 200, display: 'flex', flexWrap: 'wrap', justifyContent: "center", alignContent: "center"}} className={classes.paper} >
-
+        <Paper elevation={15} sx={{ m: 1, p:2,  maxWidth: 200, display: 'flex', flexWrap: 'wrap', justifyContent: "center", alignContent: "center"}} className={classes.paper} >
             <Box p={2}>
                 <img src={icon} style={{width: "120px"}} alt={estado.name}/>
             </Box>
 
-            <Box p={2}>
-                <Typography paragraph variant="body2" color={color} align="center">
+            <Box p={1}>
+                <Typography paragraph fontWeight="bold" color={color} align="center">
                     {name}
                 </Typography>
             </Box>
-
         </Paper>
 
         <Paper elevation={15} sx={{ m: 1, p: 2, display: 'flex', justifyContent: 'center' }} className={classes.paper}>
@@ -84,14 +82,17 @@ const VistaDetalleSistema = props => {
                 </Box>
 
                 <Box p={1} textAlign="center">
-                    <Typography variant="h5" sx={{color: bar_colors[4], fontWeight: 'bold'}}>
-                        {data[4]}%
-                    </Typography>
-                    <Typography variant="body2" color='white'>
-                        0 de 1
-                    </Typography>
-                    <VerticalProgressBar color={bar_colors[4]} value={data[4]}/>
-                    <Typography color="white">Municipal</Typography>
+                    <Box sx={{ borderColor: 'white', borderStyle: 'solid', borderWidth: '0 2px 0 2px', paddingRight: 2, paddingLeft: 2}}>
+
+                        <Typography variant="h5" sx={{color: bar_colors[4], fontWeight: 'bold'}}>
+                            {data[4]}%
+                        </Typography>
+                        <Typography variant="body2" color='white'>
+                            0 de 1
+                        </Typography>
+                        <VerticalProgressBar color={bar_colors[4]} value={data[4]}/>
+                        <Typography color="white">Municipal</Typography>
+                    </Box>
                 </Box>
 
                 <Box p={2} textAlign="center" display='flex' flexWrap="wrap" alignContent="center" sx={{maxWidth: 300}}>
