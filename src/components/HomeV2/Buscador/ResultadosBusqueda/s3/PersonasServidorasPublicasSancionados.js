@@ -218,7 +218,7 @@ export function ResultadosS3s(props) {
     axios(options)
       .then((res) => {
         let resultado = res.data;
-        setFilterData(resultado.results);
+        setFilterData(resultado);
         setLoading(false);
         setPagination({
           ...pagination,
@@ -293,15 +293,15 @@ export function ResultadosS3s(props) {
       {/*TABLA*/}
       {view === 2 &&
         filterData &&
-        filterData.length > 0 &&
+
         selectedItem === null && (
           <Grid container>
             <Grid item xs={12}>
               <TablaServidoresSancionados
-                data={filterData}
-                page={pagination.page}
+                info={filterData}
+                /* page={pagination.page}
                 rowsPerPage={pagination.rowsPerPage}
-                totalRows={pagination.totalRows}
+                totalRows={pagination.totalRows} */
                 handleChangePage={handleChangePage}
                 handleChangeRowsPerPage={handleChangeRowsPerPage}
                 verDetalle={verDetalle}
