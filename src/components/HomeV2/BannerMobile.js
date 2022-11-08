@@ -177,7 +177,7 @@ const BannerMobile = props => {
                                 <ListItemButton href='https://www.plataformadigitalnacional.org/mapa-avance/' key='mapa'
                                                 className={classes.nested} onClick={()=>ReactGA.pageview('/mapa-avance')}>
                                     <img src={mapa_s2s3_icono} alt='Avance' className={classes.iconSistemas}/>
-                                    <Typography color='#b2bfc4'>Sistemas 2 y 3</Typography>
+                                    <Typography color='#b2bfc4'>Sistemas 1, 2 y 3</Typography>
                                 </ListItemButton>
                             </List>
                         </Collapse>

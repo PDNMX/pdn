@@ -29,7 +29,8 @@ const styles = theme => ({
             backgroundColor: "#64808f"
         },
         paddingBottom: theme.spacing(2),
-        textAlign: 'center'
+        textAlign: 'center',
+        cursor: "pointer"
     },
     selected: {
         backgroundColor: "#64808f"
