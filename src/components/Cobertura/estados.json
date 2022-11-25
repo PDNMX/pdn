@@ -4,132 +4,1337 @@
     "name": "Aguascalientes",
     "icon1": "ico-edo-ags.svg",
     "icon2": "ags-icono.svg",
-    "disabled": false
+    "disabled": false,
+    "data": {
+      "s1": {
+        "ejecutivo": {
+          "tiene": 2,
+          "total": 51,
+          "avance": 3.9
+        },
+        "legislativo": {
+          "tiene": 2,
+          "total": 2,
+          "avance": 100
+        },
+        "judicial": {
+          "tiene": 4,
+          "total": 4,
+          "avance": 100
+        },
+        "ocas": {
+          "tiene": 5,
+          "total": 6,
+          "avance": 83.3
+        },
+        "municipal": {
+          "tiene": 19,
+          "total": 27,
+          "avance": 70
+        }
+      },
+      "s2": {
+        "ejecutivo": {
+          "tiene": 51,
+          "total": 51,
+          "avance": 100
+        },
+        "legislativo": {
+          "tiene": 2,
+          "total": 2,
+          "avance": 100
+        },
+        "judicial": {
+          "tiene": 4,
+          "total": 4,
+          "avance": 100
+        },
+        "ocas": {
+          "tiene": 6,
+          "total": 6,
+          "avance": 100
+        },
+        "municipal": {
+          "tiene": 27,
+          "total": 27,
+          "avance": 100
+        }
+      },
+      "s3": {
+        "s3s": true,
+        "s3p": false
+      }
+    }
   },
   {
     "route": "/cobertura/bcs",
     "name": "Baja California Sur",
     "icon1": "ico-edo-bcs.svg",
     "icon2": "bcs-icono.svg",
-    "disabled": false
+    "disabled": false,
+    "data": {
+      "s1": {
+        "ejecutivo": {
+          "tiene": 5,
+          "total": 91,
+          "avance": 5.5
+        },
+        "legislativo": {
+          "tiene": 1,
+          "total": 2,
+          "avance": 50
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 1,
+          "avance": 0
+        },
+        "ocas": {
+          "tiene": 2,
+          "total": 6,
+          "avance": 33.3
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 7,
+          "avance": 0
+        }
+      },
+      "s2": {
+        "ejecutivo": {
+          "tiene": 4,
+          "total": 91,
+          "avance": 4.4
+        },
+        "legislativo": {
+          "tiene": 1,
+          "total": 2,
+          "avance": 50
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 1,
+          "avance": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 6,
+          "avance": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 7,
+          "avance": 0
+        }
+      },
+      "s3": {
+        "s3s": false,
+        "s3p": false
+      }
+    }
   },
   {
     "route": "/cobertura/chiapas",
     "name": "Chiapas",
     "icon1": "ico-edo-chis.svg",
     "icon2": "chis-icono.svg",
-    "disabled": false
+    "disabled": false,
+    "data": {
+      "s1": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        }
+      },
+      "s2": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        }
+      },
+      "s3": {
+        "s3s": true,
+        "s3p": true
+      }
+    }
   },
   {
     "route": "/cobertura/chihuahua",
     "name": "Chihuahua",
     "icon1": "ico-edo-chih.svg",
     "icon2": "chih-icono.svg",
-    "disabled": false
+    "disabled": false,
+    "data": {
+      "s1": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        }
+      },
+      "s2": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        }
+      },
+      "s3": {
+        "s3s": true,
+        "s3p": true
+      }
+    }
   },
   {
     "route": "/cobertura/durango",
     "name": "Durango",
     "icon1": "ico-edo-dgo.svg",
     "icon2": "dur-icono.svg",
-    "disabled": false
+    "disabled": false,
+    "data": {
+      "s1": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        }
+      },
+      "s2": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        }
+      },
+      "s3": {
+        "s3s": true,
+        "s3p": true
+      }
+    }
   },
   {
     "route": "/cobertura/edomex",
     "name": "Estado de México",
     "icon1": "ico-edo-mex.svg",
     "icon2": "mex-icono.svg",
-    "disabled": false
+    "disabled": false,
+    "data": {
+      "s1": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        }
+      },
+      "s2": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        }
+      },
+      "s3": {
+        "s3s": true,
+        "s3p": true
+      }
+    }
   },
   {
     "route": "/cobertura/guanajuato",
     "name": "Guanajuato",
     "icon1": "ico-edo-gto.svg",
     "icon2": "gto-icono.svg",
-    "disabled": false
+    "disabled": false,
+    "data": {
+      "s1": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        }
+      },
+      "s2": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        }
+      },
+      "s3": {
+        "s3s": true,
+        "s3p": true
+      }
+    }
   },
   {
     "route": "/cobertura/jalisco",
     "name": "Jalisco",
     "icon1": "ico-edo-jal.svg",
     "icon2": "jal-icono.svg",
-    "disabled": false
+    "disabled": false,
+    "data": {
+      "s1": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        }
+      },
+      "s2": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        }
+      },
+      "s3": {
+        "s3s": true,
+        "s3p": true
+      }
+    }
   },
   {
     "route": "/cobertura/michoacan",
     "name": "Michoacán",
     "icon1": "ico-edo-mich.svg",
     "icon2": "mich-icono.svg",
-    "disabled": false
+    "disabled": false,
+    "data": {
+      "s1": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        }
+      },
+      "s2": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        }
+      },
+      "s3": {
+        "s3s": true,
+        "s3p": true
+      }
+    }
   },
   {
     "route": "/cobertura/oaxaca",
     "name": "Oaxaca",
     "icon1": "ico-edo-oax.svg",
     "icon2": "oax-icono.svg",
-    "disabled": false
+    "disabled": false,
+    "data": {
+      "s1": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        }
+      },
+      "s2": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        }
+      },
+      "s3": {
+        "s3s": true,
+        "s3p": true
+      }
+    }
   },
   {
     "route": "/cobertura/puebla",
     "name": "Puebla",
     "icon1": "ico-edo-pue.svg",
     "icon2": "pue-icono.svg",
-    "disabled": false
+    "disabled": false,
+    "data": {
+      "s1": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        }
+      },
+      "s2": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        }
+      },
+      "s3": {
+        "s3s": true,
+        "s3p": true
+      }
+    }
   },
   {
     "route": "/cobertura/qroo",
     "name": "Quintana Roo",
     "icon1": "ico-edo-qroo.svg",
     "icon2": "qroo-icono.svg",
-    "disabled": false
+    "disabled": false,
+    "data": {
+      "s1": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        }
+      },
+      "s2": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        }
+      },
+      "s3": {
+        "s3s": true,
+        "s3p": true
+      }
+    }
   },
   {
     "route": "/cobertura/slp",
     "name": "San Luis Potosí",
     "icon1": "ico-edo-slp.svg",
     "icon2": "slp-icono.svg",
-    "disabled": false
+    "disabled": false,
+    "data": {
+      "s1": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        }
+      },
+      "s2": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        }
+      },
+      "s3": {
+        "s3s": true,
+        "s3p": true
+      }
+    }
   },
   {
     "route": "/cobertura/sinaloa",
     "name": "Sinaloa",
     "icon1": "ico-edo-sin.svg",
     "icon2": "sin-icono.svg",
-    "disabled": false
+    "disabled": false,
+    "data": {
+      "s1": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        }
+      },
+      "s2": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        }
+      },
+      "s3": {
+        "s3s": true,
+        "s3p": true
+      }
+    }
   },
   {
     "route": "/cobertura/sonora",
     "name": "Sonora",
     "icon1": "ico-edo-son.svg",
     "icon2": "son-icono.svg",
-    "disabled": false
+    "disabled": false,
+    "data": {
+      "s1": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        }
+      },
+      "s2": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        }
+      },
+      "s3": {
+        "s3s": true,
+        "s3p": true
+      }
+    }
   },
   {
     "route": "/cobertura/tabasco",
     "name": "Tabasco",
     "icon1": "ico-edo-tab.svg",
     "icon2": "tab-icono.svg",
-    "disabled": false
+    "disabled": false,
+    "data": {
+      "s1": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        }
+      },
+      "s2": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        }
+      },
+      "s3": {
+        "s3s": true,
+        "s3p": true
+      }
+    }
   },
   {
     "route": "/cobertura/tlaxcala",
     "name": "Tlaxcala",
     "icon1": "ico-edo-tlax.svg",
     "icon2": "tlax-icono.svg",
-    "disabled": false
+    "disabled": false,
+    "data": {
+      "s1": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        }
+      },
+      "s2": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        }
+      },
+      "s3": {
+        "s3s": true,
+        "s3p": true
+      }
+    }
   },
   {
     "route": "/cobertura/yucatan",
     "name": "Yucatan",
     "icon1": "ico-edo-yuc.svg",
     "icon2": "yuc-icono.svg",
-    "disabled": false
+    "disabled": false,
+    "data": {
+      "s1": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        }
+      },
+      "s2": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        }
+      },
+      "s3": {
+        "s3s": true,
+        "s3p": true
+      }
+    }
   },
   {
     "route": "/cobertura/zacatecas",
     "name": "Zacatecas",
     "icon1": "ico-edo-zac.svg",
     "icon2": "zac-icono.svg",
-    "disabled": false
+    "disabled": false,
+    "data": {
+      "s1": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        }
+      },
+      "s2": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0,
+          "avance": 0
+        }
+      },
+      "s3": {
+        "s3s": true,
+        "s3p": true
+      }
+    }
+  },
+  {
+    "name": "Baja California",
+    "icon1": "ico-edo-bc.svg",
+    "disabled": true
+  },
+  {
+    "name": "Campeche",
+    "icon1": "ico-edo-camp.svg",
+    "disabled": true
+  },
+  {
+    "name": "Ciudad de México",
+    "icon1": "ico-edo-cdmx.svg",
+    "disabled": true
+  },
+  {
+    "name": "Coahuila",
+    "icon1": "ico-edo-coah.svg",
+    "disabled": true
+  },
+  {
+    "name": "Colima",
+    "icon1": "ico-edo-col.svg",
+    "disabled": true
+  },
+  {
+    "name": "Guerrero",
+    "icon1": "ico-edo-gro.svg",
+    "disabled": true
+  },
+  {
+    "name": "Hidalgo",
+    "icon1": "ico-edo-hgo.svg",
+    "disabled": true
+  },
+  {
+    "name": "Morelos",
+    "icon1": "ico-edo-mor.svg",
+    "disabled": true
+  },
+  {
+    "name": "Nayarit",
+    "icon1": "ico-edo-nay.svg",
+    "disabled": true
+  },
+  {
+    "name": "Nuevo León",
+    "icon1": "ico-edo-nl.svg",
+    "disabled": true
+  },
+  {
+    "name": "Querétaro",
+    "icon1": "ico-edo-qro.svg",
+    "disabled": true
+  },
+  {
+    "name": "Tamaulipas",
+    "icon1": "ico-edo-tamps.svg",
+    "disabled": true
+  },
+  {
+    "name": "Veracruz",
+    "icon1": "ico-edo-ver.svg",
+    "disabled": true
   }
 ]

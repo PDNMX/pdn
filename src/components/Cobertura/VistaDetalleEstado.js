@@ -55,6 +55,14 @@ const styles = theme => ({
     },
 });
 
+const avg = (a, b) => {
+    if (a === 0){
+        return 0;
+    } else{
+        return (a / b * 100).toFixed(1);
+    }
+};
+
 const VistaDetalleEstado = props => {
     const {classes} = props;
     const {id_estado} = useParams();
@@ -94,6 +102,29 @@ const VistaDetalleEstado = props => {
         setSystem( sys.find( s => s.id === id) );
     };
 
+    const avg_s1 = avg(
+        estado.data.s1.ejecutivo.tiene +
+        estado.data.s1.legislativo.tiene +
+        estado.data.s1.judicial.tiene +
+        estado.data.s1.municipal.tiene
+        ,
+        estado.data.s1.ejecutivo.total +
+        estado.data.s1.legislativo.total +
+        estado.data.s1.judicial.total +
+        estado.data.s1.municipal.total
+    );
+
+    const avg_s2 = avg(
+        estado.data.s2.ejecutivo.tiene +
+        estado.data.s2.legislativo.tiene +
+        estado.data.s2.judicial.tiene +
+        estado.data.s2.municipal.tiene,
+        estado.data.s2.ejecutivo.total +
+        estado.data.s2.legislativo.total +
+        estado.data.s2.judicial.total +
+        estado.data.s2.municipal.total
+    );
+
     return <div>
         <HeaderV2 section={section}/>
         <Grid container spacing={0} justifyContent='center'>
@@ -114,13 +145,14 @@ const VistaDetalleEstado = props => {
                                 <Box sx={{ paddingTop: '40px', flexGrow: 1}}>
                                     <Box display='flex' onClick={() => handleSetSystem(1)} sx={{cursor: 'pointer'}}>
                                         <img src={icon_s1} alt='Sistema 1' style={{width: '40px', padding: "2px"}}/>
-                                        <CustomizedProgressBar value={general_data.s1.value} color={colors.s1} />
+                                        <CustomizedProgressBar value={avg_s1} color={colors.s1} />
                                     </Box>
 
                                     <Box display='flex' onClick={() => handleSetSystem(2)} sx={{cursor: 'pointer'}}>
                                         <img src={icon_s2} alt='Sistema 2' style={{width: '40px', padding: "2px"}}/>
-                                        <CustomizedProgressBar value={general_data.s2.value} color={colors.s2}/>
+                                        <CustomizedProgressBar value={avg_s2} color={colors.s2}/>
                                     </Box>
+                                    {/* falta ajustar */}
                                     <Box display="flex" onClick={() => handleSetSystem(3)} sx={{cursor: 'pointer'}}>
                                         <img src={icon_s3} alt='Sistema 3' style={{width: '40px', padding: "2px"}}/>
                                         <CustomizedProgressBar value={general_data.s3.value} color={colors.s3}/>
@@ -140,21 +172,48 @@ const VistaDetalleEstado = props => {
                             </Typography>*/}
 
                             <Typography variant="h4" color={colors.s1} sx={{fontWeight: 'bold'}}>
-                                {general_data.s1.value}%
+                                {avg_s1}%
                             </Typography>
-                            <Typography color='white'> {general_data.s1.value} de {general_data.s1.total}</Typography>
+                            <Typography color='white'>
+                                {
+                                    estado.data.s1.ejecutivo.tiene +
+                                    estado.data.s1.legislativo.tiene +
+                                    estado.data.s1.judicial.tiene +
+                                    estado.data.s1.municipal.tiene
+                                } de {
+                                estado.data.s1.ejecutivo.total +
+                                estado.data.s1.legislativo.total +
+                                estado.data.s1.judicial.total +
+                                estado.data.s1.municipal.total
+                            }
+                            </Typography>
                             <Typography variant="h4" color={colors.s2} sx={{fontWeight: 'bold'}}>
-                                {general_data.s2.value}%
+                                {avg_s2}%
                             </Typography>
-                            <Typography color='white'> {general_data.s2.value} de {general_data.s2.total} </Typography>
+                            <Typography color='white'>
+                                {
+                                    estado.data.s2.ejecutivo.tiene +
+                                    estado.data.s2.legislativo.tiene +
+                                    estado.data.s2.judicial.tiene +
+                                    estado.data.s2.municipal.tiene
+                                } de {
+                                estado.data.s2.ejecutivo.total +
+                                estado.data.s2.legislativo.total +
+                                estado.data.s2.judicial.total +
+                                estado.data.s2.municipal.total
+                            }
+                            </Typography>
+
+                            {/* falta ajustar */}
                             <Typography variant="h4" color={colors.s3} sx={{fontWeight: 'bold'}}>
                                 {general_data.s3.value}%
                             </Typography>
                             <Typography color='white'> {general_data.s3.value} de {general_data.s3.total}</Typography>
+
                         </Paper>
                     </Box>
 
-                    <VistaDetalleSistema estado={estado} system={system} />
+                    <VistaDetalleSistema estado={estado} system={system} avg_s1={avg_s1} avg_s2={avg_s2}/>
                 </Paper>
             </Grid>
         </Grid>

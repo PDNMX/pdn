@@ -1,10 +1,9 @@
 import React from 'react';
-import {Typography,Box, Link, Grid, Paper, Tab, Tabs} from "@mui/material";
+import {Typography,Box, Link, Grid, Tab, Tabs} from "@mui/material";
 import {Link as RouterLink} from 'react-router-dom';
 import HeaderV2 from "../HomeV2/HeaderV2";
 import pdnRoutes from "../../routes";
 import estados from "./estados.json";
-import no_conectados from "./no_conectados.json";
 import PropTypes from "prop-types";
 import DialogoNoConectado from './DialogoNoConectado';
 
@@ -44,7 +43,6 @@ const Cobertura = props => {
     const [value, setValue] = React.useState(0);
     const [open, setOpen] = React.useState(false);
 
-
     const handleChange = (event, newValue) => {
         setValue(newValue);
     }
@@ -52,7 +50,6 @@ const Cobertura = props => {
     const handleClick = () => {
         setOpen(true);
     }
-
 
     const tabStyle = selected => ({
         background: selected ? '#155065' : '#0d3b49',
@@ -79,7 +76,7 @@ const Cobertura = props => {
                     <TabPanel value={value} index={0} className={classes.tabPanel1}>
                         {/*<Paper elevation={15}>*/}
                         <Box display="flex" flexWrap="wrap">
-                            {estados.map( (e, i) =>{
+                            {estados.filter(e => !e.disabled).map( (e, i) => {
                                 const icon = require(`../../assets/Cobertura/ico_edos/${e.icon1}`)
                                 return <Box textAlign="center" p={1} m={1} key={i} className={classes.estado}>
                                     <Link component={RouterLink} to={e.route} className={classes.link}>
@@ -93,10 +90,9 @@ const Cobertura = props => {
                         {/*</Paper>*/}
                     </TabPanel>
 
-
                     <TabPanel value={value} index={1} className={classes.tabPanel2}>
                         <Box display="flex" flexWrap="wrap">
-                            {no_conectados.map( (e, i) =>{
+                            {estados.filter(e => e.disabled).map( (e, i) =>{
                                 const icon = require(`../../assets/Cobertura/ico_edos/${e.icon1}`)
                                 return <Box textAlign="center" p={1} m={1} key={i}
                                             className={classes.estado} sx={{cursor: 'pointer'}} onClick={handleClick}>
@@ -105,11 +101,11 @@ const Cobertura = props => {
                                         {e.name}
                                     </Typography>
                                 </Box>
+
                             })
                             }
                         </Box>
                     </TabPanel>
-
 
                 </Grid>
             </Grid>
