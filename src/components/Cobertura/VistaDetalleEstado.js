@@ -17,21 +17,6 @@ const colors = {
     s3 : "#C6C1EB",
 };
 
-const general_data = {
-    s1: {
-        value: 60,
-        total: 100,
-    },
-    s2: {
-        value: 20,
-        total: 100
-    },
-    s3: {
-        value: 10,
-        total: 100
-    }
-}
-
 const styles = theme => ({
     rootItem: {
         maxWidth: 1200,
@@ -55,11 +40,11 @@ const styles = theme => ({
     },
 });
 
-const avg = (a, b) => {
+const percentage = (a, b) => {
     if (a === 0){
         return 0;
     } else{
-        return (a / b * 100).toFixed(1);
+        return (a / b * 100).toFixed(0);
     }
 };
 
@@ -102,7 +87,7 @@ const VistaDetalleEstado = props => {
         setSystem( sys.find( s => s.id === id) );
     };
 
-    const avg_s1 = avg(
+    const avance_s1 = percentage(
         estado.data.s1.ejecutivo.tiene +
         estado.data.s1.legislativo.tiene +
         estado.data.s1.judicial.tiene +
@@ -114,7 +99,7 @@ const VistaDetalleEstado = props => {
         estado.data.s1.municipal.total
     );
 
-    const avg_s2 = avg(
+    const avance_s2 = percentage(
         estado.data.s2.ejecutivo.tiene +
         estado.data.s2.legislativo.tiene +
         estado.data.s2.judicial.tiene +
@@ -124,6 +109,10 @@ const VistaDetalleEstado = props => {
         estado.data.s2.judicial.total +
         estado.data.s2.municipal.total
     );
+
+    const avance_s3 =
+        (estado.data.s3.s3s? 50 : 0) +
+        (estado.data.s3.s3p? 50 : 0);
 
     return <div>
         <HeaderV2 section={section}/>
@@ -145,17 +134,17 @@ const VistaDetalleEstado = props => {
                                 <Box sx={{ paddingTop: '40px', flexGrow: 1}}>
                                     <Box display='flex' onClick={() => handleSetSystem(1)} sx={{cursor: 'pointer'}}>
                                         <img src={icon_s1} alt='Sistema 1' style={{width: '40px', padding: "2px"}}/>
-                                        <CustomizedProgressBar value={avg_s1} color={colors.s1} />
+                                        <CustomizedProgressBar value={avance_s1} color={colors.s1} />
                                     </Box>
 
                                     <Box display='flex' onClick={() => handleSetSystem(2)} sx={{cursor: 'pointer'}}>
                                         <img src={icon_s2} alt='Sistema 2' style={{width: '40px', padding: "2px"}}/>
-                                        <CustomizedProgressBar value={avg_s2} color={colors.s2}/>
+                                        <CustomizedProgressBar value={avance_s2} color={colors.s2}/>
                                     </Box>
-                                    {/* falta ajustar */}
+
                                     <Box display="flex" onClick={() => handleSetSystem(3)} sx={{cursor: 'pointer'}}>
                                         <img src={icon_s3} alt='Sistema 3' style={{width: '40px', padding: "2px"}}/>
-                                        <CustomizedProgressBar value={general_data.s3.value} color={colors.s3}/>
+                                        <CustomizedProgressBar value={avance_s3} color={colors.s3}/>
                                     </Box>
                                 </Box>
                             </Box>
@@ -172,7 +161,7 @@ const VistaDetalleEstado = props => {
                             </Typography>*/}
 
                             <Typography variant="h4" color={colors.s1} sx={{fontWeight: 'bold'}}>
-                                {avg_s1}%
+                                {avance_s1}%
                             </Typography>
                             <Typography color='white'>
                                 {
@@ -188,7 +177,7 @@ const VistaDetalleEstado = props => {
                             }
                             </Typography>
                             <Typography variant="h4" color={colors.s2} sx={{fontWeight: 'bold'}}>
-                                {avg_s2}%
+                                {avance_s2}%
                             </Typography>
                             <Typography color='white'>
                                 {
@@ -204,16 +193,21 @@ const VistaDetalleEstado = props => {
                             }
                             </Typography>
 
-                            {/* falta ajustar */}
                             <Typography variant="h4" color={colors.s3} sx={{fontWeight: 'bold'}}>
-                                {general_data.s3.value}%
+                                {avance_s3}%
                             </Typography>
-                            <Typography color='white'> {general_data.s3.value} de {general_data.s3.total}</Typography>
+                            <Typography color="white" fontWeight="bold">Sancionados</Typography>
+                            <Typography color='white' variant="body2"> Servidores públicos: {estado.data.s3.s3s? "Sí" : "No"} </Typography>
+                            <Typography color='white' variant="body2"> Particulares: {estado.data.s3.s3p? "Sí" : "No"} </Typography>
 
                         </Paper>
                     </Box>
 
-                    <VistaDetalleSistema estado={estado} system={system} avg_s1={avg_s1} avg_s2={avg_s2}/>
+                    <VistaDetalleSistema estado={estado} system={system}
+                                         avance_s1={avance_s1}
+                                         avance_s2={avance_s2}
+                                         avance_s3={avance_s3}
+                    />
                 </Paper>
             </Grid>
         </Grid>

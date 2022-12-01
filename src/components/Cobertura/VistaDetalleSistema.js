@@ -13,11 +13,17 @@ const styles = theme => ({
 
 const bar_colors = [ '#43b9a5', '#f46c81', '#f5ca5d', '#5ccbf0', '#beF5a6' ];
 
-//falta función avg
+const percentage = (a, b) => {
+    if (a === 0){
+        return 0;
+    } else{
+        return (a / b * 100).toFixed(0);
+    }
+};
 
 const VistaDetalleSistema = props => {
-    const {estado, system, classes, avg_s1, avg_s2} = props;
-    const {icon, color, data, name} = system;
+    const {estado, system, classes, avance_s1, avance_s2} = props;
+    const {icon, color, name} = system;
 
     /* Vista detallada por Sistema */
     return <Box sx={{display: 'flex', flexWrap: "wrap", alignItems: "stretch"}} justifyContent="center">
@@ -40,12 +46,18 @@ const VistaDetalleSistema = props => {
 
                     <Box p={1} textAlign="center">
                         <Typography variant="h5" sx={{color: bar_colors[0], fontWeight: 'bold'}}>
-                            {estado.data[`s${system.id}`].ejecutivo.avance}%
+                            {percentage(
+                                estado.data[`s${system.id}`].ejecutivo.tiene,
+                                estado.data[`s${system.id}`].ejecutivo.total
+                            )}%
                         </Typography>
                         <Typography variant="body2" color='white'>
                             {estado.data[`s${system.id}`].ejecutivo.tiene} de {estado.data[`s${system.id}`].ejecutivo.total}
                         </Typography>
-                        <VerticalProgressBar color={bar_colors[0]} value={estado.data[`s${system.id}`].ejecutivo.avance}/>
+                        <VerticalProgressBar color={bar_colors[0]} value={percentage(
+                            estado.data[`s${system.id}`].ejecutivo.tiene,
+                            estado.data[`s${system.id}`].ejecutivo.total
+                        )}/>
                         <Typography color="white">
                             Ejecutivo
                         </Typography>
@@ -53,34 +65,53 @@ const VistaDetalleSistema = props => {
 
                     <Box p={1} textAlign="center">
                         <Typography variant="h5" sx={{color: bar_colors[1], fontWeight: 'bold'}}>
-                            {estado.data[`s${system.id}`].legislativo.avance}%
+                            {percentage(
+                                estado.data[`s${system.id}`].legislativo.tiene,
+                                estado.data[`s${system.id}`].legislativo.total
+                            )}%
                         </Typography>
                         <Typography variant="body2" color='white'>
                             {estado.data[`s${system.id}`].legislativo.tiene} de {estado.data[`s${system.id}`].legislativo.total}
                         </Typography>
-                        <VerticalProgressBar color={bar_colors[1]} value={estado.data[`s${system.id}`].legislativo.avance}/>
+                        <VerticalProgressBar color={bar_colors[1]} value={percentage(
+                            estado.data[`s${system.id}`].legislativo.tiene,
+                            estado.data[`s${system.id}`].legislativo.total
+                        )}/>
                         <Typography color="white">Legislativo</Typography>
                     </Box>
 
                     <Box p={1} textAlign="center">
                         <Typography variant="h5" sx={{color: bar_colors[2], fontWeight: 'bold'}}>
-                            {estado.data[`s${system.id}`].judicial.avance}%
+                            {/*estado.data[`s${system.id}`].judicial.avance*/}
+                            {percentage(
+                                estado.data[`s${system.id}`].judicial.tiene,
+                                estado.data[`s${system.id}`].judicial.total
+                            )}%
                         </Typography>
                         <Typography variant="body2" color='white'>
                             {estado.data[`s${system.id}`].judicial.tiene} de {estado.data[`s${system.id}`].judicial.total}
                         </Typography>
-                        <VerticalProgressBar color={bar_colors[2]} value={estado.data[`s${system.id}`].judicial.avance}/>
+                        <VerticalProgressBar color={bar_colors[2]} value={percentage(
+                            estado.data[`s${system.id}`].judicial.tiene,
+                            estado.data[`s${system.id}`].judicial.total
+                        )}/>
                         <Typography color="white">Judicial</Typography>
                     </Box>
 
                     <Box p={1} textAlign="center">
                         <Typography variant="h5" sx={{color: bar_colors[3], fontWeight: 'bold'}}>
-                            {estado.data[`s${system.id}`].ocas.avance}%
+                            {percentage(
+                                estado.data[`s${system.id}`].ocas.tiene,
+                                estado.data[`s${system.id}`].ocas.total
+                            )}%
                         </Typography>
                         <Typography variant="body2" color='white'>
                             {estado.data[`s${system.id}`].ocas.tiene} de {estado.data[`s${system.id}`].ocas.total}
                         </Typography>
-                        <VerticalProgressBar color={bar_colors[3]} value={estado.data[`s${system.id}`].ocas.avance}/>
+                        <VerticalProgressBar color={bar_colors[3]} value={percentage(
+                            estado.data[`s${system.id}`].ocas.tiene,
+                            estado.data[`s${system.id}`].ocas.total
+                        )}/>
                         <Typography color="white">Autónomos</Typography>
                     </Box>
 
@@ -94,12 +125,18 @@ const VistaDetalleSistema = props => {
                         }}>
 
                             <Typography variant="h5" sx={{color: bar_colors[4], fontWeight: 'bold'}}>
-                                {estado.data[`s${system.id}`].municipal.avance}%
+                                {percentage(
+                                    estado.data[`s${system.id}`].municipal.tiene,
+                                    estado.data[`s${system.id}`].municipal.total
+                                )}%
                             </Typography>
                             <Typography variant="body2" color='white'>
                                 {estado.data[`s${system.id}`].municipal.tiene} de {estado.data[`s${system.id}`].municipal.total}
                             </Typography>
-                            <VerticalProgressBar color={bar_colors[4]} value={estado.data[`s${system.id}`].municipal.avance}/>
+                            <VerticalProgressBar color={bar_colors[4]} value={percentage(
+                                estado.data[`s${system.id}`].municipal.tiene,
+                                estado.data[`s${system.id}`].municipal.total
+                            )}/>
                             <Typography color="white">Municipal</Typography>
                         </Box>
                     </Box>
@@ -111,11 +148,11 @@ const VistaDetalleSistema = props => {
                                 Total de instituciones conectadas
                             </Typography>
 
-                            <PieChart color={color} value={system.id ===1 ? avg_s1 : avg_s2}/>
+                            <PieChart color={color} value={system.id ===1 ? avance_s1 : avance_s2}/>
 
                             <Typography variant="h3" sx={{fontWeight: 'bold'}} color={color}>
                                 {/* falta */}
-                                {system.id ===1 ? avg_s1 : avg_s2}%
+                                {system.id ===1 ? avance_s1 : avance_s2}%
                             </Typography>
                             <Typography color="white" variant="h6">
                                 {
@@ -136,6 +173,15 @@ const VistaDetalleSistema = props => {
             }
 
             {/* Sistema 3 */}
+
+            {system.id ===3 &&
+                <Box display='flex' flexWrap='wrap'>
+
+
+
+                </Box>
+            }
+
         </Paper>
     </Box>;
 }
