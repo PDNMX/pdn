@@ -3,6 +3,8 @@ import withStyles from "@mui/styles/withStyles";
 import {Box, Paper, Typography} from "@mui/material";
 import VerticalProgressBar from "./VerticalProgressBar";
 import PieChart from "./PieChart";
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
 const styles = theme => ({
     paper: {
@@ -41,9 +43,9 @@ const VistaDetalleSistema = props => {
         </Paper>
 
         <Paper elevation={15} sx={{ m: 1, p: 2, display: 'flex', justifyContent: 'center' }} className={classes.paper}>
+
             {(system.id === 1 || system.id === 2) &&
                 <Box display='flex' flexWrap='wrap'>
-
                     <Box p={1} textAlign="center">
                         <Typography variant="h5" sx={{color: bar_colors[0], fontWeight: 'bold'}}>
                             {percentage(
@@ -172,16 +174,55 @@ const VistaDetalleSistema = props => {
                 </Box>
             }
 
-            {/* Sistema 3 */}
-
             {system.id ===3 &&
                 <Box display='flex' flexWrap='wrap'>
+                    <Box p={3} sx={{maxWidth: 600}}>
+                        <Typography color="white">
+                            ¿Cuenta con la información de las sanciones impuestas a personas servidoras públicas por
+                            faltas graves contempladas en los Art. 78 y 80 de la
+                            Ley General de Responsabilidades Administrativas?
+                        </Typography>
+
+                        {estado.data.s3.s3s?
+                            <Box display="flex" p={2}>
+                                <CheckCircleOutlineIcon sx={{color: "white"}}/>
+                                <Typography fontWeight="bold" color="white" paddingLeft={1}>
+                                    Sí
+                                </Typography>
+                            </Box>
+                            :
+                            <Box display="flex" p={2}>
+                                <HighlightOffIcon sx={{color: "white"}}/>
+                                <Typography fontWeight="bold" color="white" paddingLeft={1}>
+                                     No
+                                </Typography>
+                            </Box>
+                        }
 
 
+                        <Typography color='white'>
+                            ¿Cuenta con la información de las sanciones impuestas a particulares en términos del Art. 81
+                            de la Ley General de Responsalidades Administrativas?
+                        </Typography>
 
+                        {estado.data.s3.s3p?
+                            <Box display="flex" p={2}>
+                                <CheckCircleOutlineIcon sx={{color: "white"}}/>
+                                <Typography fontWeight="bold" color="white" paddingLeft={1}>
+                                    Sí
+                                </Typography>
+                            </Box>
+                            :
+                            <Box display="flex" p={2}>
+                                <HighlightOffIcon sx={{color: "white"}}/>
+                                <Typography fontWeight="bold" color="white" paddingLeft={1}>
+                                    No
+                                </Typography>
+                            </Box>
+                        }
+                    </Box>
                 </Box>
             }
-
         </Paper>
     </Box>;
 }
