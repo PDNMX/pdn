@@ -51,6 +51,7 @@ const Menu = data => {
     apoyo = apoyos.apoyo ? apoyos.apoyo.filter(onlyDec) : 0;
   }
 
+  if(representacion)
   if (representacion.ninguno) {
     representaciones = 0;
   } else {
@@ -85,7 +86,7 @@ const Menu = data => {
       valor: tomaDeciones.length
     },
     { clave: 'APOYOS O BENEFICIOS PÚBLICOS', valor: apoyo.length },
-    { clave: 'REPRESENTACIÓN', valor: representaciones.length },
+    { clave: 'REPRESENTACIÓN', valor: representaciones?representaciones.length:0 },
     { clave: 'CLIENTES PRINCIPALES', valor: cliente.length },
     { clave: 'BENEFICIOS PRIVADOS', valor: beneficio.length },
     { clave: 'FIDEICOMISOS', valor: fideicomiso.length }
@@ -152,6 +153,7 @@ export default function MenuSuperior({ data, value, setValue }) {
     data.apoyos.apoyo = apoyos.apoyo ? apoyos.apoyo.filter(i => i.beneficiarioPrograma.clave === 'DEC') : [];
   }
 
+  if(representacion)
   if (representacion.ninguno) {
     data.representacion.representacion = [];
   } else {
