@@ -124,6 +124,10 @@ const VistaDetalleEstado = props => {
                         {estado.name}
                     </Typography>
 
+                    <Typography align="center" color="white" paragraph>
+                        Información al 30 de septiembre del 2022, reportada por las Secretarías Ejecutivas del Sistema Anticorrupción Estatal
+                    </Typography>
+
                     <Box sx={{display: 'flex', flexWrap: "wrap", alignItems: "stretch"}} justifyContent="center">
                         <Paper elevation={15} sx={{ m: 1, p: 2 }} className={classes.paper}>
                             <Box display="flex" flexWrap="wrap" justifyContent="center">

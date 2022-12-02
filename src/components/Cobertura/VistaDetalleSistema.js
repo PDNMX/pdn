@@ -139,7 +139,8 @@ const VistaDetalleSistema = props => {
                                 estado.data[`s${system.id}`].municipal.tiene,
                                 estado.data[`s${system.id}`].municipal.total
                             )}/>
-                            <Typography color="white">Municipal</Typography>
+                            <Typography color="white" variant="body2">Municipios y</Typography>
+                            <Typography color="white" variant="body2">Org. Municipales</Typography>
                         </Box>
                     </Box>
 
