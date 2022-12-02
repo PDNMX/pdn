@@ -16,7 +16,8 @@ import DeclaracionesEspecificaciones from '../components/Especificaciones/Declar
 import EspecificacionesSancionados from '../components/Especificaciones/Sancionados/Sancionados';
 import SpecsS2 from '../components/Especificaciones/ServidoresIntervienen/ServidoresIntervienen';
 import SpecsS6 from '../components/Especificaciones/Contrataciones/index';
-//import Cobertura from '../components/Cobertura/Cobertura';
+import Cobertura from '../components/Cobertura/Cobertura';
+import CoberturaVistaIndividual from "../components/Cobertura/VistaDetalleEstado";
 
 // import DeclaracionesS1 from '../components/Declaraciones';
 import DeclaracionesS1v2 from '../components/Declaraciones2';
@@ -32,6 +33,7 @@ import IconEspecificaciones from "../assets/rediseno/ico_especificaciones.svg";
 import IconAbout from "../assets/rediseno/ico_que-es-PDN.svg";
 import IconHelpDesk from "../assets/rediseno/ico_mesa-ayuda.svg";
 import IconValidador from "../assets/rediseno/validador.svg";
+import IconCobertura from "../assets/rediseno/ico_cobertura.svg";
 
 
 /*
@@ -223,7 +225,7 @@ const pdnRoutes = [
 		color: "#f2f2f2",
 		icon: IconHelpDesk
 	},
-	/*{
+	{
 		exact: true,
 		path: '/cobertura',
 		component: Cobertura,
@@ -231,9 +233,18 @@ const pdnRoutes = [
 		name: "Cobertura",
 		shortName: "Cobertura",
 		color: "#f2f2f2",
-		icon: IconHelpDesk
-	}*/
-
+		icon: IconCobertura
+	},
+	{
+		exact: true,
+		path: '/cobertura/:id_estado',
+		component: CoberturaVistaIndividual,
+		private: false,
+		name: "Cobertura",
+		shortName: "Cobertura",
+		color: "#f2f2f2",
+		icon: IconCobertura
+	}
 ];
 
 export default pdnRoutes;

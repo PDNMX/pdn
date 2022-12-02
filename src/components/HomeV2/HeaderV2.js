@@ -2,12 +2,13 @@ import React from 'react';
 import {withStyles} from '@mui/styles';
 import {Breadcrumbs, Typography, Link} from "@mui/material";
 import Grid from "@mui/material/Grid";
-import {Link as RouterLink} from "react-router-dom";
+import {Link as RouterLink, useParams} from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import GrainIcon from "@mui/icons-material/Grain";
 import {useTheme} from "@emotion/react";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import ReactGA from "react-ga";
+import estados from '../Cobertura/estados.json';
+//import ReactGA from "react-ga";
 
 // FIXME checkout https://mui.com/components/use-media-query/#migrating-from-withwidth
 // const withWidth = () => (WrappedComponent) => (props) => <WrappedComponent {...props} width="xs"/>;
@@ -55,6 +56,7 @@ function useIsWidthUp(breakpoint) {
 function HeaderV2(props) {
     const {classes, section} = props;
     const isXsUp = useIsWidthUp("md");
+    const {id_estado} = useParams();
     return (
         <div className={classes.root}>
             <Grid container spacing={0} justifyContent='center'>
@@ -78,11 +80,25 @@ function HeaderV2(props) {
                             </Link>
                         }
 
+                        {section.path.includes('/:id_estado') &&
+                            <Link component={RouterLink}
+                                  underline="hover"
+                                  sx={{display: 'flex', alignItems: 'center'}}
+                                  color='#ffffff' to="/cobertura">
+                                <GrainIcon sx={{mr: 0.5}} fontSize="inherit"/>
+                                Cobertura
+                            </Link>
+                        }
+
                         <Typography color={section.color}
                                     sx={{display: 'flex', alignItems: 'center'}}>
                             <GrainIcon sx={{mr: 0.5}} fontSize="inherit"/>
-                            {section.shortName}
+                            {section.path.includes('/:id_estado')
+                                ? estados.find(e => e.route.includes(id_estado)).name
+                                : section.shortName
+                            }
                         </Typography>
+
                     </Breadcrumbs>
                 </Grid>
             </Grid>
