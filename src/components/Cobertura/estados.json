@@ -978,46 +978,46 @@
     "data": {
       "s1": {
         "ejecutivo": {
-          "tiene": 126,
-          "total": 0
+          "tiene": 0,
+          "total": 126
         },
         "legislativo": {
-          "tiene": 2,
-          "total": 0
+          "tiene": 0,
+          "total": 2
         },
         "judicial": {
-          "tiene": 5,
-          "total": 0
+          "tiene": 0,
+          "total": 5
         },
         "ocas": {
-          "tiene": 6,
-          "total": 0
+          "tiene": 0,
+          "total": 6
         },
         "municipal": {
-          "tiene": 133,
-          "total": 0
+          "tiene": 0,
+          "total": 133
         }
       },
       "s2": {
         "ejecutivo": {
-          "tiene": 126,
-          "total": 0
+          "tiene": 0,
+          "total": 126
         },
         "legislativo": {
-          "tiene": 2,
-          "total": 0
+          "tiene": 0,
+          "total": 2
         },
         "judicial": {
-          "tiene": 5,
-          "total": 0
+          "tiene": 0,
+          "total": 5
         },
         "ocas": {
-          "tiene": 6,
-          "total": 0
+          "tiene": 0,
+          "total": 6
         },
         "municipal": {
-          "tiene": 133,
-          "total": 0
+          "tiene": 0,
+          "total": 133
         }
       },
       "s3": {
