@@ -4,7 +4,7 @@ import React from 'react';
 import { readFiles } from '../../../../__mocks__/index';
 import Fideicomisos from '../../../../components/Declaraciones2/Intereses/07Fideicomisos';
 //Enzyme
-import Enzyme, { mount, shallow } from 'enzyme';
+import Enzyme, { mount } from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 
 Enzyme.configure({ adapter: new Adapter() });
