@@ -93,9 +93,9 @@ function Inversiones({ inversiones, tipo }) {
               </React.Fragment>
             )}
             {typeof obj.tercero !== 'undefined' &&
-              obj.tercero.map(tercero => {
+              obj.tercero.map((tercero, id) => {
                 return tercero.tipoPersona !== 'MORAL' ? (
-                  <Grid item xs={12}>
+                  <Grid key={'tercero-' + id} item xs={12}>
                     <Grid container spacing={1}>
                       <Grid item xs={12} md={3}>
                         <Typography className={classes.cardTitle}>TIPO PERSONA:</Typography>
@@ -112,7 +112,7 @@ function Inversiones({ inversiones, tipo }) {
                     </Grid>
                   </Grid>
                 ) : (
-                  <Grid item xs={12}>
+                  <Grid key={'tercero-' + id} item xs={12}>
                     <Grid container spacing={1}>
                       <Grid item xs={12} md={3}>
                         <Typography className={classes.cardTitle}>TIPO PERSONA:</Typography>

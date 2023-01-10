@@ -51,7 +51,7 @@ function BienMueble(props) {
             </Grid>
             <Grid item xs={12} md={4}>
               <Typography className={classes.cardTitle}>FORMA DE ADQUISICIÓN:</Typography>
-              <Typography className={classes.card}>{obj.formaAdquisicion.valor}</Typography>
+              <Typography className={classes.card}>{obj.formaAdquisicion?.valor}</Typography>
             </Grid>
             <Grid item xs={12} md={4}>
               <Typography className={classes.cardTitle}>FORMA DE PAGO:</Typography>

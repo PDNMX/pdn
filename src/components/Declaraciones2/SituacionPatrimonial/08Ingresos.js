@@ -34,7 +34,7 @@ export function ActividadFinanciera({ actividadFinanciera }) {
           <Grid item xs={12} md={3}>
             <Typography className={exp.heading}>
               <strong>
-                {getMoneda(actividadFinanciera.remuneracionTotal?.valor)} {actividadFinanciera.remuneracionTotal?.moneda}
+                {getMoneda(actividadFinanciera?.remuneracionTotal?.valor)} {actividadFinanciera?.remuneracionTotal?.moneda}
               </strong>
             </Typography>
           </Grid>
@@ -48,7 +48,7 @@ export function ActividadFinanciera({ actividadFinanciera }) {
           <Grid item xs={12} md={3}>
             <Typography className={classes.cardTitle}>INGRESO:</Typography>
           </Grid>
-          {actividadFinanciera.actividades.map((act, idx) => {
+          {actividadFinanciera?.actividades.map((act, idx) => {
             return (
               <Grid container spacing={1} key={'act-' + idx}>
                 <Grid item xs={12} md={9}>
@@ -85,7 +85,7 @@ export function ServiciosProfesionales({ serviciosProfesionales }) {
           <Grid item xs={12} md={3}>
             <Typography className={exp.heading}>
               <strong>
-                {getMoneda(serviciosProfesionales.remuneracionTotal?.valor)} {serviciosProfesionales.remuneracionTotal?.moneda}
+                {getMoneda(serviciosProfesionales?.remuneracionTotal?.valor)} {serviciosProfesionales?.remuneracionTotal?.moneda}
               </strong>
             </Typography>
           </Grid>
@@ -99,7 +99,7 @@ export function ServiciosProfesionales({ serviciosProfesionales }) {
           <Grid item xs={12} md={3}>
             <Typography className={classes.cardTitle}>INGRESO:</Typography>
           </Grid>
-          {serviciosProfesionales.servicios.map((serv, idx) => {
+          {serviciosProfesionales?.servicios.map((serv, idx) => {
             return (
               <Grid container spacing={1} key={'act-' + idx}>
                 <Grid item xs={12} md={9}>
@@ -187,7 +187,7 @@ export function OtrosIngresos({ otrosIngresos }) {
           <Grid item xs={12} md={3}>
             <Typography className={exp.heading}>
               <strong>
-                {getMoneda(otrosIngresos.remuneracionTotal?.valor)} {otrosIngresos.remuneracionTotal?.moneda}
+                {getMoneda(otrosIngresos?.remuneracionTotal?.valor)} {otrosIngresos?.remuneracionTotal?.moneda}
               </strong>
             </Typography>
           </Grid>
@@ -201,7 +201,7 @@ export function OtrosIngresos({ otrosIngresos }) {
           <Grid item xs={12} md={3}>
             <Typography className={classes.cardTitle}>INGRESO:</Typography>
           </Grid>
-          {otrosIngresos.ingresos.map((ing, idx) => {
+          {otrosIngresos?.ingresos.map((ing, idx) => {
             return (
               <Grid container spacing={1} key={'act-' + idx}>
                 <Grid item xs={12} md={9}>

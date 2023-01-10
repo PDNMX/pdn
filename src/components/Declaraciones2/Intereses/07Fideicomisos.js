@@ -159,7 +159,7 @@ const Fideicomiso = props => {
   const { data } = props;
 
   // const fideicomiso = data.fideicomiso.filter((i) => i.tipoRelacion === 'DECLARANTE');
-  const fideicomiso = data?.fideicomiso;
+  const fideicomiso = data?.fideicomiso ? data?.fideicomiso : [];
 
   return (
     <Grid container spacing={2} className={classes.rootPrincipal}>
