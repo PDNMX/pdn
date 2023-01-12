@@ -1,4 +1,4 @@
-FROM node:16-alpine
+FROM node:18-alpine
 
 MAINTAINER Sergio Rodríguez <sergio.rdzsg@gmail.com>
 
@@ -6,6 +6,7 @@ ADD . /pdn
 WORKDIR /pdn
 
 RUN yarn add global yarn \
+&& yarn add typescript \
 && yarn install \
 && yarn build \
 && yarn global add serve \
