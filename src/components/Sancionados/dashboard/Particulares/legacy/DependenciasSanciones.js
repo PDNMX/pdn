@@ -5,8 +5,8 @@ import {Typography} from "@mui/material";
 import {Treemap} from "d3plus-react";
 import axios from 'axios';
 import * as d3 from "d3";
-import MensajeErrorDatos from "../../../Mensajes/MensajeErrorDatos";
-import ContainerChart from "../../../Compartidos/Dashboards/ContainerChart";
+import MensajeErrorDatos from "../../../../Mensajes/MensajeErrorDatos";
+import ContainerChart from "../../../../Compartidos/Dashboards/ContainerChart";
 
 const styles = theme => ({
     frameChart: {

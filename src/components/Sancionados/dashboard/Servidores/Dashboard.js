@@ -2,10 +2,10 @@ import React from 'react';
 import {withStyles} from "@mui/styles";
 import PropTypes from 'prop-types';
 import {Grid, Paper} from "@mui/material";
-import CausaSanciones from "./CausaSanciones";
-import AnioResolucionSanciones from "./AnioResolucionSanciones";
-import DependenciasSanciones from "./DependenciasSanciones";
-import '../graficas.css';
+//import CausaSanciones from "./CausaSanciones";
+//import AnioResolucionSanciones from "./AnioResolucionSanciones";
+//import DependenciasSanciones from "./DependenciasSanciones";
+//import './legacy/graficas.css';
 import TotalRows from "./TotalRows"
 import TotalDependencias from "./TotalDependencias";
 import TotalSancionesFin from "./TotalSancionesFin";

@@ -3,7 +3,7 @@ import { withStyles } from '@mui/styles';
 import { Grid, Select, MenuItem, FormControl, Typography, InputLabel, Button, Alert } from '@mui/material';
 import axios from 'axios';
 import { BarChart } from 'd3plus-react';
-import ThemeV2 from '../../../ThemeV2';
+import ThemeV2 from '../../../../ThemeV2';
 import { ThemeProvider } from '@mui/material/styles';
 import ContainerChart from '@Compartidos/Dashboards/ContainerChart';
 import ModalInfo from '@Compartidos/Dashboards/ModalInfo';

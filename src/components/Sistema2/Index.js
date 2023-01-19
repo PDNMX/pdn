@@ -136,11 +136,11 @@ const Index = props => {
                             </Typography>
                         </Grid>
 
-                        <Grid item md={4} xs={12}
-                            onClick={() => {
-                                setContentId(3);
-                                ReactGA.event({ category: 'visor-s2', action: 'click' });
-                              }}
+                        {/*<Grid item md={4} xs={12}
+                               onClick={() => {
+                                   setContentId(3);
+                                   ReactGA.event({category: 'visor-s2', action: 'click'});
+                               }}
                         >
 
                             <figure className={contentId !== 3 ? classes.card : classes.cardSeleccionada}>
@@ -152,7 +152,7 @@ const Index = props => {
                                 Visor de datos
                             </Typography>
 
-                        </Grid>
+                        </Grid>*/}
 
                     </Grid>
                 </Grid>
