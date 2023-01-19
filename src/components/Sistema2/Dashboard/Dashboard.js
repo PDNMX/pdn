@@ -54,18 +54,28 @@ const Dashboard = props => {
           <Grid item xs={4}>
             <TotalRamos />
           </Grid>
-          <Grid item xs={6}>
+          {/* <Grid item xs={6}>
             <Ejercicio />
-          </Grid>
-          <Grid item xs={6}>
+          </Grid> */}
+          <Grid item xs={12}>
             <Procedimientos />
           </Grid>
+          
+          {/* 
+              s2
+              Barchart -> Ejercicio
+              Barchart -> Procedimientos
+              Treemap -> Agrupaciones
+              Barchart -> Tops
+          
+          */}
+          {/* 
           <Grid item xs={12}>
             <Agrupaciones />
           </Grid>
           <Grid item xs={12}>
             <Tops />
-          </Grid>
+          </Grid> */}
           <Grid item xs={12}>
             <FooterPage dataSet={'Registro de servidores públicos que intervienen en contrataciones públicas'} provider={'Secretaría de la Función Pública'} referenceDate={'17/05/2022'} />
           </Grid>

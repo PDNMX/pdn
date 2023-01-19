@@ -7,16 +7,16 @@ const styles = theme => ({
     paperChart: {
         backgroundColor: theme.palette.background.paperChart,
         padding: theme.spacing(1),
-        overflow: 'auto',
         color: theme.palette.text.main,
-        minHeight: 450
+        minHeight: 500,
+        height: 250
     },
     infoButton:{
         textAlign:'right'
     },
-    spaceTop:{
+    /* spaceTop:{
         height: 40
-    }
+    } */
 });
 
 const ContainerChart = (props) => {
