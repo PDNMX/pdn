@@ -264,7 +264,7 @@ export default function EnhancedTable(props) {
                                             hover
                                             onClick={event => handleOpenDialog(event, index)}
                                             tabIndex={-1}
-                                            key={row.col1}
+                                            key={index} //row.col1
                                         >
                                             <TableCell component="th" id={labelId} scope="row" padding="normal">
                                                 {row.col1}
