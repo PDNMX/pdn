@@ -162,11 +162,13 @@ const VistaDetalleSistema = props => {
                                     estado.data[`s${system.id}`].ejecutivo.tiene +
                                     estado.data[`s${system.id}`].legislativo.tiene +
                                     estado.data[`s${system.id}`].judicial.tiene +
+                                    estado.data[`s${system.id}`].ocas.tiene +
                                     estado.data[`s${system.id}`].municipal.tiene
                                 } de {
                                 estado.data[`s${system.id}`].ejecutivo.total +
                                 estado.data[`s${system.id}`].legislativo.total +
                                 estado.data[`s${system.id}`].judicial.total +
+                                estado.data[`s${system.id}`].ocas.total +
                                 estado.data[`s${system.id}`].municipal.total
                             }
                             </Typography>
