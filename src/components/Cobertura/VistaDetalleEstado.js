@@ -91,11 +91,13 @@ const VistaDetalleEstado = props => {
         estado.data.s1.ejecutivo.tiene +
         estado.data.s1.legislativo.tiene +
         estado.data.s1.judicial.tiene +
+        estado.data.s1.ocas.tiene +
         estado.data.s1.municipal.tiene
         ,
         estado.data.s1.ejecutivo.total +
         estado.data.s1.legislativo.total +
         estado.data.s1.judicial.total +
+        estado.data.s1.ocas.total +
         estado.data.s1.municipal.total
     );
 
@@ -103,10 +105,12 @@ const VistaDetalleEstado = props => {
         estado.data.s2.ejecutivo.tiene +
         estado.data.s2.legislativo.tiene +
         estado.data.s2.judicial.tiene +
+        estado.data.s2.ocas.tiene +
         estado.data.s2.municipal.tiene,
         estado.data.s2.ejecutivo.total +
         estado.data.s2.legislativo.total +
         estado.data.s2.judicial.total +
+        estado.data.s2.ocas.total +
         estado.data.s2.municipal.total
     );
 
@@ -172,11 +176,13 @@ const VistaDetalleEstado = props => {
                                     estado.data.s1.ejecutivo.tiene +
                                     estado.data.s1.legislativo.tiene +
                                     estado.data.s1.judicial.tiene +
+                                    estado.data.s1.ocas.tiene +
                                     estado.data.s1.municipal.tiene
                                 } de {
                                 estado.data.s1.ejecutivo.total +
                                 estado.data.s1.legislativo.total +
                                 estado.data.s1.judicial.total +
+                                estado.data.s1.ocas.total +
                                 estado.data.s1.municipal.total
                             }
                             </Typography>
@@ -188,11 +194,13 @@ const VistaDetalleEstado = props => {
                                     estado.data.s2.ejecutivo.tiene +
                                     estado.data.s2.legislativo.tiene +
                                     estado.data.s2.judicial.tiene +
+                                    estado.data.s2.ocas.tiene +
                                     estado.data.s2.municipal.tiene
                                 } de {
                                 estado.data.s2.ejecutivo.total +
                                 estado.data.s2.legislativo.total +
                                 estado.data.s2.judicial.total +
+                                estado.data.s2.ocas.total +
                                 estado.data.s2.municipal.total
                             }
                             </Typography>
