@@ -127,6 +127,9 @@ export function InstitucionesRealizaronContrataciones() {
                     Secretaría Ejecutiva del Sistema Estatal Anticorrupción de
                     Aguascalientes
                   </MenuItem>
+                  <MenuItem value="SESAEMM_EDOMEX">
+                    Secretaría Ejecutiva del Sistema Estatal Anticorrupción del Estado de México y Municipios
+                  </MenuItem>
                 </Select>
               </FormControl>
             )}
