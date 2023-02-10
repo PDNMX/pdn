@@ -71,8 +71,8 @@ export function PersonasServidorasPublicasSancionados() {
 
   const { control } = useFormContext();
   const tiposSancion = [
-    { label: "Inhabilitado", value: "I" },
-    { label: "Multado", value: "M" },
+    { label: "Inhabilitación", value: "I" },
+    { label: "Multa", value: "M" },
     { label: "Suspensión del empleo, cargo o comisión", value: "S" },
     { label: "Destitución del empleo, cargo o comisión", value: "D" },
     { label: "Indemnización resarcitoria", value: "IRSC" },

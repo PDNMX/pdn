@@ -85,10 +85,10 @@ const storedCampos = JSON.parse(localStorage.getItem(KEY));
       - Tipo de procedimiento (select)
     */
   const procedimientos = [
-    { key: 1, value: "Contrataciones" },
-    { key: 2, value: "Concesiones" },
-    { key: 3, value: "Enajenaciones" },
-    { key: 4, value: "Dictámenes" },
+    { key: 1, value: "Contrataciones", label: "Adjudicación de contratos" },
+    { key: 2, value: "Concesiones", label: "Otorgamiento de concesiones, licencias, permisos o autorizaciones y sus prórrogas" },
+    { key: 3, value: "Enajenaciones", label: "Enajenación de bienes muebles" },
+    { key: 4, value: "Dictámenes", label: "Emisión de dictámenes de avalúos" },
   ];
   return (
     <Fade in={true} timeout={1200}>
@@ -212,7 +212,7 @@ const storedCampos = JSON.parse(localStorage.getItem(KEY));
                 filterSelectedOptions
                 multiple
                 getOptionDisabled={(option) => option.disabled}
-                getOptionLabel={(option) => option.value}
+                getOptionLabel={(option) => option.label}
                 onChange={(e, value) => field.onChange(value)}
                 options={procedimientos}
                 /* getOptionSelected={(option, value) => option === value} */
