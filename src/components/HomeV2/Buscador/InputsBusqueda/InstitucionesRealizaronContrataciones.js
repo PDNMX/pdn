@@ -17,6 +17,8 @@ import CircularProgress from "@mui/material/CircularProgress";
 const KEY = "pdn.camposBusqueda";
 const axios = require("axios");
 
+const dataSuppliers = require("../../../Sistema6/suppliers.json");
+
 export function InstitucionesRealizaronContrataciones() {
   const { control } = useFormContext();
   const [open, setOpen] = React.useState(false);
@@ -120,16 +122,13 @@ export function InstitucionesRealizaronContrataciones() {
                     field.onChange(e);
                   }}
                 >
-                  <MenuItem default value="SHCP">
-                    Secretaría de Hacienda y Crédito Público
-                  </MenuItem>
-                  <MenuItem value="SESEA_AGS">
-                    Secretaría Ejecutiva del Sistema Estatal Anticorrupción de
-                    Aguascalientes
-                  </MenuItem>
-                  <MenuItem value="SESAEMM_EDOMEX">
-                    Secretaría Ejecutiva del Sistema Estatal Anticorrupción del Estado de México y Municipios
-                  </MenuItem>
+                  {
+                    dataSuppliers.map((s,i)=> {
+                        return <MenuItem value={s.id} key={i}>
+                            {s.name}
+                        </MenuItem>
+                    })
+                  }
                 </Select>
               </FormControl>
             )}
