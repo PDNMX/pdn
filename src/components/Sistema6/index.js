@@ -196,7 +196,7 @@ const Index = props => {
 
         <Grid container spacing={0} justifyContent="center">
             <Grid item xs={12} className={classes.item}>
-                <Descarga url="https://datos.gob.mx/busca/dataset/concentrado-de-contrataciones-abiertas-de-la-apf" tipoGA={'bulk-s6'}/>
+                <Descarga url={process.env.REACT_APP_BULK_S6} tipoGA={'bulk-s6'}/>
             </Grid>
         </Grid>
 
