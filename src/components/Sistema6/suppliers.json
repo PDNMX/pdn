@@ -22,5 +22,11 @@
     "name": "Secretaría Ejecutiva del Sistema Anticorrupción del Estado de Quintana Roo",
     "disclaimer": "",
     "download_url": ""
+  },
+  {
+    "id": "SESEA_VER",
+    "name": "Secretaría Ejecutiva del Sistema Estatal Anticorrupción de Veracruz de Ignacio de la Llave",
+    "disclaimer": "",
+    "download_url": ""
   }
 ]
