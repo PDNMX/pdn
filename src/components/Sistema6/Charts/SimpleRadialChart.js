@@ -57,6 +57,8 @@ const SimpleRadialChart = props => {
         fontFamily: 'Noto Sans SC'
     };
 
+    console.log(props.data)
+
     return (
         <RadialChart
             className={'donut-chart-example'}

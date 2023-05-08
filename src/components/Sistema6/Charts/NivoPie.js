@@ -7,7 +7,7 @@ import { ResponsivePie } from '@nivo/pie'
 // no chart will be rendered.
 // website examples showcase many properties,
 // you'll often use just a few of them.
-
+/*
 const data = [
     {
         "id": "c",
@@ -39,9 +39,9 @@ const data = [
         "value": 446,
         "color": "hsl(74, 70%, 50%)"
     }
-];
+];*/
 
-const MyResponsivePie = (/*{ data  }*/) => (
+const MyResponsivePie = ({ data }) => (
     <ResponsivePie
         data={data}
         margin={{ top: 40, right: 80, bottom: 80, left: 80 }}

@@ -110,6 +110,12 @@ const Cifras = props => {
                     {theta: selective, label: porcentaje(selective,total), color: prMethods.selective.color, type: prMethods.selective.label},
                     {theta: direct, label: porcentaje(direct, total), color: prMethods.direct.color, type: prMethods.direct.label},
                     {theta: other, label: porcentaje(other, total), color: prMethods.other.color, type: prMethods.other.label}
+                ],
+                nivoPieData: [
+                    {id: "c", label: prMethods.open.label, value: open, color: ""},
+                    {id: "python", label: prMethods.selective.label, value: selective, color: ""},
+                    {id: "erlang", label: prMethods.direct.label, value: direct, color: ""},
+                    {id: "ruby", label: prMethods.other.label, value: other, color: ""}
                 ]
             }));
 
@@ -137,6 +143,12 @@ const Cifras = props => {
                 {theta: selective, label: porcentaje(selective,total), color: prMethods.selective.color, type: prMethods.selective.label},
                 {theta: direct, label: porcentaje(direct, total), color: prMethods.direct.color, type: prMethods.direct.label},
                 {theta: other, label: porcentaje(other, total), color: prMethods.other.color, type: prMethods.other.label}
+            ],
+            nivoPieData: [
+                {id: "c", label: prMethods.open.label, value: open, color: ""},
+                {id: "python", label: prMethods.selective.label, value: selective, color: ""},
+                {id: "erlang", label: prMethods.direct.label, value: direct, color: ""},
+                {id: "ruby", label: prMethods.other.label, value: other, color: ""}
             ]
         }));
     };
@@ -194,7 +206,7 @@ const Cifras = props => {
                                 <Donutchart data={state.donutChartData} dataType={state.donutChartDataType}/>
 
                                 <div style={{ height: 400, width: 700}}>
-                                    <NivoPie/>
+                                    <NivoPie data={state.nivoPieData}/>
                                 </div>
 
                             </Grid>
