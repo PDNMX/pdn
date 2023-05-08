@@ -33,12 +33,12 @@ const data = [
         "value": 270,
         "color": "hsl(241, 70%, 50%)"
     },
-    /*{
+    {
         "id": "elixir",
         "label": "elixir",
         "value": 446,
         "color": "hsl(74, 70%, 50%)"
-    }*/
+    }
 ];
 
 const MyResponsivePie = (/*{ data  }*/) => (
@@ -49,7 +49,7 @@ const MyResponsivePie = (/*{ data  }*/) => (
         padAngle={0.7}
         cornerRadius={3}
         activeOuterRadiusOffset={8}
-        borderWidth={1}
+        borderWidth={3}
         borderColor={{
             from: 'color',
             modifiers: [
@@ -145,12 +145,12 @@ const MyResponsivePie = (/*{ data  }*/) => (
         ]}
         legends={[
             {
-                anchor: 'bottom',
-                direction: 'row',
+                anchor: 'right',
+                direction: 'column',
                 justify: false,
                 translateX: 0,
-                translateY: 56,
-                itemsSpacing: 0,
+                translateY: 0,//56,
+                itemsSpacing: 5, //0,
                 itemWidth: 100,
                 itemHeight: 18,
                 itemTextColor: '#999',

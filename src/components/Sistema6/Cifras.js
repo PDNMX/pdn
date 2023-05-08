@@ -3,7 +3,7 @@ import {withStyles} from "@mui/styles";
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Donutchart from './Charts/SimpleRadialChart'
-import RadialChart from "./Charts/NivoPie";
+import NivoPie from "./Charts/NivoPie";
 import CountUp from 'react-countup';
 import axios from 'axios';
 import LinearIndeterminate from './LinearIndeterminate';
@@ -193,8 +193,8 @@ const Cifras = props => {
                                 <CustomizedSelect handleSelectDonutData={handleSelectDonutData} dataType={state.donutChartDataType}/>
                                 <Donutchart data={state.donutChartData} dataType={state.donutChartDataType}/>
 
-                                <div style={{ height: 420}}>
-                                    <RadialChart/>
+                                <div style={{ height: 400, width: 700}}>
+                                    <NivoPie/>
                                 </div>
 
                             </Grid>
