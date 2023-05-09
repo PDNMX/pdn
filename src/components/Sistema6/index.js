@@ -123,8 +123,6 @@ const Index = props => {
                         //className={isSelected(0)?classes.selectedTab:classes.tab}
                     >
 
-
-
                         <figure className={isSelected(0)?classes.cardSeleccionada: classes.card}>
                             <img src={img1} className={classes.image} alt="explora"/>
                         </figure>

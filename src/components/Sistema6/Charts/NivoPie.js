@@ -45,7 +45,8 @@ const MyResponsivePie = ({ data, dataType }) => (
     //dataType => Counts || Amounts
     <ResponsivePie
         data={data}
-        margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+        colors={{scheme: 'set2'}}
+        margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
         innerRadius={0.5}
         padAngle={0.7}
         cornerRadius={3}
@@ -60,10 +61,14 @@ const MyResponsivePie = ({ data, dataType }) => (
                 ]
             ]
         }}
+        // arc link labels
+        enableArcLinkLabels={false}
         arcLinkLabelsSkipAngle={10}
         arcLinkLabelsTextColor="#333333"
         arcLinkLabelsThickness={2}
         arcLinkLabelsColor={{ from: 'color' }}
+        //arc labels
+        enableArcLabels={false}
         arcLabelsSkipAngle={10}
         arcLabelsTextColor={{
             from: 'color',
@@ -74,6 +79,21 @@ const MyResponsivePie = ({ data, dataType }) => (
                 ]
             ]
         }}
+        tooltip={
+            e=>{
+                let {datum:t}=e;
+                return <div style={{background: "#000000", opacity: 0.7, padding: '10px'}}>
+                    {t.label} <br/>
+                    {/*Porcentaje: {t.percent}%<br/>*/}
+                    {
+                        dataType === 'amounts'?
+                        new Intl.NumberFormat('es-MX', {style: 'currency', currency: 'MXN'}).format(t.value)
+                        :
+                        new Intl.NumberFormat('es-MX').format(t.value)
+                    }
+                </div>
+                //return n.createElement(l,{style:{color:t.color}},n.createElement(s,null,"id"),n.createElement(d,null,t.id),n.createElement(s,null,"value"),n.createElement(d,null,t.value),n.createElement(s,null,"formattedValue"),n.createElement(d,null,t.formattedValue),n.createElement(s,null,"color"),n.createElement(d,null,t.color))
+            }}
         defs={[
             {
                 id: 'dots',
@@ -97,53 +117,32 @@ const MyResponsivePie = ({ data, dataType }) => (
         fill={[
             {
                 match: {
-                    id: 'ruby'
-                },
-                id: 'dots'
-            },
-            {
-                match: {
-                    id: 'c'
-                },
-                id: 'dots'
-            },
-            {
-                match: {
-                    id: 'go'
-                },
-                id: 'dots'
-            },
-            {
-                match: {
-                    id: 'python'
-                },
-                id: 'dots'
-            },
-            {
-                match: {
-                    id: 'scala'
+                    id: 'Licitación'
                 },
                 id: 'lines'
             },
             {
                 match: {
-                    id: 'lisp'
+                    id: 'Invitación a tres'
                 },
                 id: 'lines'
             },
             {
                 match: {
-                    id: 'elixir'
+                    id: 'Adjudicación directa'
                 },
-                id: 'lines'
+                id: 'dots'
             },
             {
                 match: {
-                    id: 'javascript'
+                    id: 'Otro'
                 },
                 id: 'lines'
             }
         ]}
+        theme={{
+            legends: { text: { fontSize: 20 } }
+        }}
         legends={[
             {
                 anchor: 'right',
@@ -152,9 +151,9 @@ const MyResponsivePie = ({ data, dataType }) => (
                 translateX: 0,
                 translateY: 0,//56,
                 itemsSpacing: 5, //0,
-                itemWidth: 100,
+                itemWidth: 200,
                 itemHeight: 18,
-                itemTextColor: '#999',
+                itemTextColor: '#ffffff', //ajustar a un color menos brillante
                 itemDirection: 'left-to-right',
                 itemOpacity: 1,
                 symbolSize: 18,
@@ -163,7 +162,7 @@ const MyResponsivePie = ({ data, dataType }) => (
                     {
                         on: 'hover',
                         style: {
-                            itemTextColor: '#000'
+                            itemTextColor: '#ffffff'
                         }
                     }
                 ]

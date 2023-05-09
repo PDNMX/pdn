@@ -210,6 +210,7 @@ const MyResponsiveBar = ({ /*data, legend */ }) => {
         legends={[
             {
                 dataFrom: 'keys',
+                itemTextColor: "#ffffff",
                 anchor: 'bottom-right',
                 direction: 'column',
                 justify: false,
