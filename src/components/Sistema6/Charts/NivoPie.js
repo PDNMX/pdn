@@ -41,7 +41,8 @@ const data = [
     }
 ];*/
 
-const MyResponsivePie = ({ data }) => (
+const MyResponsivePie = ({ data, dataType }) => (
+    //dataType => Counts || Amounts
     <ResponsivePie
         data={data}
         margin={{ top: 40, right: 80, bottom: 80, left: 80 }}

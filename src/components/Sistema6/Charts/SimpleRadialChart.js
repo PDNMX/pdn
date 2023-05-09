@@ -57,7 +57,7 @@ const SimpleRadialChart = props => {
         fontFamily: 'Noto Sans SC'
     };
 
-    console.log(props.data)
+    //console.log(props.data)
 
     return (
         <RadialChart

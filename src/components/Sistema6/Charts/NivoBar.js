@@ -13,7 +13,7 @@ const data = [
         "country": "AD",
         "hot dog": 53,
         "hot dogColor": "hsl(67, 70%, 50%)",
-        "burger": 38,
+        /*"burger": 38,
         "burgerColor": "hsl(252, 70%, 50%)",
         "sandwich": 90,
         "sandwichColor": "hsl(152, 70%, 50%)",
@@ -22,13 +22,13 @@ const data = [
         "fries": 169,
         "friesColor": "hsl(138, 70%, 50%)",
         "donut": 150,
-        "donutColor": "hsl(143, 70%, 50%)"
+        "donutColor": "hsl(143, 70%, 50%)"*/
     },
     {
         "country": "AE",
         "hot dog": 126,
         "hot dogColor": "hsl(46, 70%, 50%)",
-        "burger": 55,
+        /*"burger": 55,
         "burgerColor": "hsl(259, 70%, 50%)",
         "sandwich": 101,
         "sandwichColor": "hsl(206, 70%, 50%)",
@@ -37,13 +37,13 @@ const data = [
         "fries": 131,
         "friesColor": "hsl(241, 70%, 50%)",
         "donut": 18,
-        "donutColor": "hsl(18, 70%, 50%)"
+        "donutColor": "hsl(18, 70%, 50%)"*/
     },
     {
         "country": "AF",
         "hot dog": 135,
         "hot dogColor": "hsl(122, 70%, 50%)",
-        "burger": 177,
+        /*"burger": 177,
         "burgerColor": "hsl(102, 70%, 50%)",
         "sandwich": 144,
         "sandwichColor": "hsl(48, 70%, 50%)",
@@ -52,13 +52,13 @@ const data = [
         "fries": 119,
         "friesColor": "hsl(216, 70%, 50%)",
         "donut": 176,
-        "donutColor": "hsl(204, 70%, 50%)"
+        "donutColor": "hsl(204, 70%, 50%)"*/
     },
     {
         "country": "AG",
         "hot dog": 50,
         "hot dogColor": "hsl(235, 70%, 50%)",
-        "burger": 107,
+        /*"burger": 107,
         "burgerColor": "hsl(19, 70%, 50%)",
         "sandwich": 173,
         "sandwichColor": "hsl(7, 70%, 50%)",
@@ -67,13 +67,13 @@ const data = [
         "fries": 106,
         "friesColor": "hsl(43, 70%, 50%)",
         "donut": 58,
-        "donutColor": "hsl(176, 70%, 50%)"
+        "donutColor": "hsl(176, 70%, 50%)"*/
     },
     {
         "country": "AI",
         "hot dog": 120,
         "hot dogColor": "hsl(60, 70%, 50%)",
-        "burger": 131,
+        /*"burger": 131,
         "burgerColor": "hsl(315, 70%, 50%)",
         "sandwich": 139,
         "sandwichColor": "hsl(9, 70%, 50%)",
@@ -82,13 +82,13 @@ const data = [
         "fries": 54,
         "friesColor": "hsl(178, 70%, 50%)",
         "donut": 51,
-        "donutColor": "hsl(204, 70%, 50%)"
+        "donutColor": "hsl(204, 70%, 50%)"*/
     },
     {
         "country": "AL",
         "hot dog": 5,
         "hot dogColor": "hsl(20, 70%, 50%)",
-        "burger": 58,
+        /*"burger": 58,
         "burgerColor": "hsl(311, 70%, 50%)",
         "sandwich": 162,
         "sandwichColor": "hsl(317, 70%, 50%)",
@@ -97,13 +97,13 @@ const data = [
         "fries": 48,
         "friesColor": "hsl(182, 70%, 50%)",
         "donut": 18,
-        "donutColor": "hsl(307, 70%, 50%)"
+        "donutColor": "hsl(307, 70%, 50%)"*/
     },
     {
         "country": "AM",
         "hot dog": 73,
         "hot dogColor": "hsl(331, 70%, 50%)",
-        "burger": 72,
+        /*"burger": 72,
         "burgerColor": "hsl(249, 70%, 50%)",
         "sandwich": 197,
         "sandwichColor": "hsl(24, 70%, 50%)",
@@ -112,27 +112,29 @@ const data = [
         "fries": 62,
         "friesColor": "hsl(24, 70%, 50%)",
         "donut": 198,
-        "donutColor": "hsl(212, 70%, 50%)"
+        "donutColor": "hsl(212, 70%, 50%)"*/
     }
 ];
 
-const MyResponsiveBar = ({ /*data */ }) => (
-    <ResponsiveBar
+const MyResponsiveBar = ({ /*data, legend */ }) => {
+    const legend = "Unidades compradoras";
+
+    return <ResponsiveBar
         data={data}
         keys={[
             'hot dog',
-            'burger',
+            /*'burger',
             'sandwich',
             'kebab',
             'fries',
-            'donut'
+            'donut'*/
         ]}
         indexBy="country"
-        margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
+        margin={{top: 50, right: 130, bottom: 50, left: 60}}
         padding={0.3}
-        valueScale={{ type: 'linear' }}
-        indexScale={{ type: 'band', round: true }}
-        colors={{ scheme: 'nivo' }}
+        valueScale={{type: 'linear'}}
+        indexScale={{type: 'band', round: true}}
+        colors={{scheme: 'nivo'}}
         defs={[
             {
                 id: 'dots',
@@ -182,7 +184,7 @@ const MyResponsiveBar = ({ /*data */ }) => (
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: 'country',
+            legend: legend,
             legendPosition: 'middle',
             legendOffset: 32
         }}
@@ -190,7 +192,7 @@ const MyResponsiveBar = ({ /*data */ }) => (
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: 'food',
+            legend: 'Millones de pesos',
             legendPosition: 'middle',
             legendOffset: -40
         }}
@@ -231,8 +233,8 @@ const MyResponsiveBar = ({ /*data */ }) => (
         ]}
         role="application"
         ariaLabel="Nivo bar chart demo"
-        barAriaLabel={e=>e.id+": "+e.formattedValue+" in country: "+e.indexValue}
+        barAriaLabel={e => e.id + ": " + e.formattedValue + " in country: " + e.indexValue}
     />
-)
+};
 
 export default MyResponsiveBar;
