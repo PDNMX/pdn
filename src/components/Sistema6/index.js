@@ -18,10 +18,6 @@ import pdnRoutes from "../../routes";
 import { ThemeProvider } from '@mui/material/styles';
 import ThemeV2 from '../../ThemeV2';
 
-//import LabeledHeatmap from './Charts/LabeledHeatmap';
-//import Treemap from './Charts/Treemap';
-//import ScatterPlot from "./Charts/ScatterPlot";
-
 const styles = theme => ({
     root: {
         flexGrow: 1,
@@ -200,25 +196,6 @@ const Index = props => {
             </Grid>
         </Grid>
 
-        {/*<Grid container spacing={0} justify="center" className={classes.container}>
-                    <Grid item xs={12} className={classes.item}>
-                        <ScatterPlot/>
-                    </Grid>
-                </Grid>
-
-                <Grid container spacing={0} justify="center" className={classes.container}>
-                    <Grid item xs={12} className={classes.item}>
-                        <Typography paragraph> Heatmap </Typography>
-                        <LabeledHeatmap/>
-                    </Grid>
-                </Grid>
-
-                <Grid container spacing={0} justify="center" className={classes.container}>
-                    <Grid item xs={12} className={classes.item}>
-                        <Typography paragraph> Treemap </Typography>
-                        <Treemap/>
-                    </Grid>
-                </Grid>*/}
 
     </div>);
 }

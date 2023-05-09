@@ -2,7 +2,8 @@ import React from 'react';
 import {withStyles} from "@mui/styles";
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import Donutchart from './Charts/SimpleRadialChart'
+//import Donutchart from './Charts/SimpleRadialChart'
+import NivoPie from "./Charts/NivoPie";
 import CountUp from 'react-countup';
 import axios from 'axios';
 import LinearIndeterminate from './LinearIndeterminate';
@@ -104,11 +105,17 @@ const Cifras = props => {
                 amounts: res.data.amounts,
                 gastoTotal: total,
                 donutChartDataType : 'amounts',
-                donutChartData: [
+                /*donutChartData: [
                     {theta: open, label: porcentaje(open,total), color: prMethods.open.color, type: prMethods.open.label},
                     {theta: selective, label: porcentaje(selective,total), color: prMethods.selective.color, type: prMethods.selective.label},
                     {theta: direct, label: porcentaje(direct, total), color: prMethods.direct.color, type: prMethods.direct.label},
                     {theta: other, label: porcentaje(other, total), color: prMethods.other.color, type: prMethods.other.label}
+                ],*/
+                nivoPieData: [
+                    {id: "Licitación", label: prMethods.open.label, percent: porcentaje(open,total), value: open, color: "hsl(106, 70%, 50%)"},
+                    {id: "Invitación a tres", label: prMethods.selective.label, percent: porcentaje(selective, total), value: selective, color: "hsl(358, 70%, 50%)"},
+                    {id: "Adjudicación directa", label: prMethods.direct.label, percent: porcentaje(direct, total), value: direct, color: "hsl(249, 70%, 50%)"},
+                    {id: "Otro", label: prMethods.other.label, percent: porcentaje(other, total), value: other, color: "hsl(241, 70%, 50%)"}
                 ]
             }));
 
@@ -131,11 +138,17 @@ const Cifras = props => {
         setState(s => ({
             ...s,
             donutChartDataType: p,
-            donutChartData: [
+            /*donutChartData: [
                 {theta: open, label: porcentaje(open,total), color: prMethods.open.color, type: prMethods.open.label},
                 {theta: selective, label: porcentaje(selective,total), color: prMethods.selective.color, type: prMethods.selective.label},
                 {theta: direct, label: porcentaje(direct, total), color: prMethods.direct.color, type: prMethods.direct.label},
                 {theta: other, label: porcentaje(other, total), color: prMethods.other.color, type: prMethods.other.label}
+            ],*/
+            nivoPieData: [
+                {id: "Licitación", label: prMethods.open.label, value: open, color: "hsl(106, 70%, 50%)"},
+                {id: "Invitación a tres", label: prMethods.selective.label, value: selective, color: "hsl(358, 70%, 50%)"},
+                {id: "Adjudicación directa", label: prMethods.direct.label, value: direct, color: "hsl(249, 70%, 50%)"},
+                {id: "Otro", label: prMethods.other.label, value: other, color: "hsl(241, 70%, 50%)"}
             ]
         }));
     };
@@ -188,13 +201,18 @@ const Cifras = props => {
                     <Grid item xs={12} md={12} lg={8} xl={8} className={classes.item}>
                         <Grid container spacing={0}>
 
-                            <Grid item xs={12} md={6} lg={6} xl={6} align="center" className={classes.item}>
+                            <Grid item xs={12} md={12} lg={12} xl={12} align="center" className={classes.item}>
                                 <CustomizedSelect handleSelectDonutData={handleSelectDonutData} dataType={state.donutChartDataType}/>
-                                <Donutchart data={state.donutChartData} dataType={state.donutChartDataType}/>
+                                { /*<Donutchart data={state.donutChartData} dataType={state.donutChartDataType}/>*/}
+
+                                <div style={{ height: 250, width: '100%'}}>
+                                    <NivoPie data={state.nivoPieData}/>
+                                </div>
+
                             </Grid>
 
-                            <Grid item xs={12} md={6} lg={6} xl={6} className={classes.item}>
-                                {/*<Typography variant="h6" paragraph>Tipo de contratación</Typography>*/}
+                            {/*<Grid item xs={12} md={6} lg={6} xl={6} className={classes.item}>
+
                                 <ul className={classes.ul}>
                                     {
                                         Object.entries(prMethods).map(([attr, method], i) => (
@@ -207,7 +225,8 @@ const Cifras = props => {
                                             )
                                         )}
                                 </ul>
-                            </Grid>
+                            </Grid>*/}
+
                         </Grid>
                     </Grid>
                 </Grid>
