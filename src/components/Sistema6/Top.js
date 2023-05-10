@@ -1,9 +1,10 @@
 import React from 'react';
 import {withStyles} from '@mui/styles';
 import Typography from "@mui/material/Typography";
-import BarChart from './Charts/BarChart';
+//import BarChart from './Charts/BarChart';
+//import SuppliersBarChart from './Charts/SuppliersBarChart';
 import NivoBar from "./Charts/NivoBar";
-import SuppliersBarChart from './Charts/SuppliersBarChart';
+import NivoBarSuppliers from "./Charts/NivoBarSuppliers";
 import axios from 'axios';
 import Grid from '@mui/material/Grid';
 
@@ -61,18 +62,26 @@ const Top = props =>  {
             <Grid container spacing={0}>
                 <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
                     <CustomTypography variant="h6" color="textPrimary" paragraph>Top 10 unidades compradoras</CustomTypography>
-                    {barChartData && barChartData.length > 0 &&
+                    {/*barChartData && barChartData.length > 0 &&
                         <BarChart data={barChartData}/>
-                    }
+                    */}
 
-                    {/*<div style={{height: 400}}>
-                        <NivoBar/>
-                    </div>*/}
+                    {barChartData && barChartData.length > 0 &&
+                        <div style={{height: 400}}>
+                            <NivoBar data={barChartData}/>
+                        </div>
+                    }
                 </Grid>
                 <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
                     <CustomTypography variant="h6" color="textPrimary" paragraph> Top 10 proveedores</CustomTypography>
-                    {suppliers && suppliers.length > 0 &&
+                    {/*suppliers && suppliers.length > 0 &&
                         <SuppliersBarChart data={suppliers}/>
+                    */}
+
+                    {suppliers && suppliers.length > 0 &&
+                        <div style={{height: 400}}>
+                            <NivoBarSuppliers data={suppliers}/>
+                        </div>
                     }
                 </Grid>
             </Grid>

@@ -112,10 +112,10 @@ const Cifras = props => {
                     {theta: other, label: porcentaje(other, total), color: prMethods.other.color, type: prMethods.other.label}
                 ],*/
                 nivoPieData: [
-                    {id: "Licitación", label: prMethods.open.label, percent: porcentaje(open,total), value: open, color: "hsl(106, 70%, 50%)"},
-                    {id: "Invitación a tres", label: prMethods.selective.label, percent: porcentaje(selective, total), value: selective, color: "hsl(358, 70%, 50%)"},
-                    {id: "Adjudicación directa", label: prMethods.direct.label, percent: porcentaje(direct, total), value: direct, color: "hsl(249, 70%, 50%)"},
-                    {id: "Otro", label: prMethods.other.label, percent: porcentaje(other, total), value: other, color: "hsl(241, 70%, 50%)"}
+                    {id: "Licitación", label: prMethods.open.label, value: open, color: "hsl(106, 70%, 50%)"},
+                    {id: "Invitación a tres", label: prMethods.selective.label, value: selective, color: "hsl(358, 70%, 50%)"},
+                    {id: "Adjudicación directa", label: prMethods.direct.label, value: direct, color: "hsl(249, 70%, 50%)"},
+                    {id: "Otro", label: prMethods.other.label, value: other, color: "hsl(241, 70%, 50%)"}
                 ]
             }));
 
@@ -206,7 +206,11 @@ const Cifras = props => {
                                 { /*<Donutchart data={state.donutChartData} dataType={state.donutChartDataType}/>*/}
 
                                 <div style={{ height: 250, width: '100%'}}>
-                                    <NivoPie data={state.nivoPieData}/>
+                                    <NivoPie
+                                        data={state.nivoPieData}
+                                        //total={state.gastoTotal} //falta
+                                        dataType={state.donutChartDataType}
+                                    />
                                 </div>
 
                             </Grid>

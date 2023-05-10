@@ -9,12 +9,12 @@ import { ResponsiveBar } from '@nivo/bar'
 // you'll often use just a few of them.
 
 const MyResponsiveBar = ({ data }) => {
-    const legend = "Unidades compradoras";
+    const legend = "Proveedores (RFC)";
 
     const _data = data.map(d => {
         return {
-            "id_": d._id.id,
-            "total": (d.total / 1000000).toFixed(2) //millones
+            "id_": d.data._id[0].id,
+            "total": (d.data.total / 1000000).toFixed(2) //millones
         }
     })
 
@@ -85,7 +85,8 @@ const MyResponsiveBar = ({ data }) => {
             tickRotation: -15,
             legend: legend,
             legendPosition: 'middle',
-            legendOffset: 50
+            legendOffset: 50,
+            fontSize: '30pt'
         }}
         axisLeft={{
             tickSize: 5,
