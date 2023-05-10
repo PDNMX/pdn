@@ -8,7 +8,7 @@ import { ResponsiveBar } from '@nivo/bar'
 // website examples showcase many properties,
 // you'll often use just a few of them.
 
-const data = [
+const data1 = [
     {
         "country": "AD",
         "hot dog": 53,
@@ -116,35 +116,33 @@ const data = [
     }
 ];
 
-const MyResponsiveBar = ({ /*data, legend */ }) => {
+const MyResponsiveBar = ({ data }) => {
     const legend = "Unidades compradoras";
 
+    const _data = data.map(d => {
+        return {
+            "id_": d._id.id,
+            "total": (d.total / 1000000).toFixed(2) //millones
+        }
+    })
+
     return <ResponsiveBar
-        data={data}
+        data={_data}
         keys={[
-            'hot dog',
+            'total',
             /*'burger',
             'sandwich',
             'kebab',
             'fries',
             'donut'*/
         ]}
-        indexBy="country"
-        margin={{top: 50, right: 130, bottom: 50, left: 60}}
+        indexBy="id_"
+        margin={{top: 20, right: 20, bottom: 90, left: 90}}
         padding={0.3}
         valueScale={{type: 'linear'}}
         indexScale={{type: 'band', round: true}}
         colors={{scheme: 'nivo'}}
         defs={[
-            {
-                id: 'dots',
-                type: 'patternDots',
-                background: 'inherit',
-                color: '#38bcb2',
-                size: 4,
-                padding: 1,
-                stagger: true
-            },
             {
                 id: 'lines',
                 type: 'patternLines',
@@ -153,21 +151,30 @@ const MyResponsiveBar = ({ /*data, legend */ }) => {
                 rotation: -45,
                 lineWidth: 6,
                 spacing: 10
+            },
+            {
+                id: 'dots',
+                type: 'patternDots',
+                background: 'inherit',
+                color: '#38bcb2',
+                size: 4,
+                padding: 1,
+                stagger: true
             }
         ]}
         fill={[
             {
                 match: {
+                    id: 'total'
+                },
+                id: 'lines'
+            },
+            /*{
+                match: {
                     id: 'fries'
                 },
                 id: 'dots'
-            },
-            {
-                match: {
-                    id: 'sandwich'
-                },
-                id: 'lines'
-            }
+            }*/
         ]}
         borderColor={{
             from: 'color',
@@ -183,10 +190,10 @@ const MyResponsiveBar = ({ /*data, legend */ }) => {
         axisBottom={{
             tickSize: 5,
             tickPadding: 5,
-            tickRotation: 0,
+            tickRotation: -15,
             legend: legend,
             legendPosition: 'middle',
-            legendOffset: 32
+            legendOffset: 50
         }}
         axisLeft={{
             tickSize: 5,
@@ -194,8 +201,9 @@ const MyResponsiveBar = ({ /*data, legend */ }) => {
             tickRotation: 0,
             legend: 'Millones de pesos',
             legendPosition: 'middle',
-            legendOffset: -40
+            legendOffset: -60
         }}
+        enableLabel={false}
         labelSkipWidth={12}
         labelSkipHeight={12}
         labelTextColor={{
@@ -208,7 +216,7 @@ const MyResponsiveBar = ({ /*data, legend */ }) => {
             ]
         }}
         legends={[
-            {
+            /*{
                 dataFrom: 'keys',
                 itemTextColor: "#ffffff",
                 anchor: 'bottom-right',
@@ -230,8 +238,11 @@ const MyResponsiveBar = ({ /*data, legend */ }) => {
                         }
                     }
                 ]
-            }
+            }*/
         ]}
+        theme = {{
+            axisBottom: { text: {color: '#ffffff'}}
+        }}
         role="application"
         ariaLabel="Nivo bar chart demo"
         barAriaLabel={e => e.id + ": " + e.formattedValue + " in country: " + e.indexValue}

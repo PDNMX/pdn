@@ -65,9 +65,11 @@ const Top = props =>  {
                         <BarChart data={barChartData}/>
                     }
 
-                    {/*<div style={{height: 400}}>
-                        <NivoBar/>
-                    </div>*/}
+                    {barChartData && barChartData.length > 0 &&
+                        <div style={{height: 400}}>
+                            <NivoBar data={barChartData}/>
+                        </div>
+                    }
                 </Grid>
                 <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
                     <CustomTypography variant="h6" color="textPrimary" paragraph> Top 10 proveedores</CustomTypography>
