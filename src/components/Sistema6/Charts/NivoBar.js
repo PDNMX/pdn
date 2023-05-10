@@ -148,6 +148,12 @@ const MyResponsiveBar = ({ data }) => {
                 }
             }
         }}
+        tooltip={e => {
+            return <div style={{background: "#000000", opacity: 0.7, padding: '10px'}}>
+                SIGLAS: {e.data.id_} <br/>
+                {e.data.total} MDP
+            </div>;
+        }}
         role="application"
         ariaLabel="Nivo bar chart demo"
         barAriaLabel={e => e.id + ": " + e.formattedValue + " in country: " + e.indexValue}
