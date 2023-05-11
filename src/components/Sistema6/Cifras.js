@@ -58,7 +58,7 @@ const Cifras = props => {
         instituciones: 0,
         donutChartData: [],
         periodo: {
-            start: 2021,
+            start: 2015,
             end: 2023
         },
         gastoTotal: 0
