@@ -6,7 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import DownloadIcon from '@mui/icons-material/CloudDownload';
 import PropTypes from "prop-types";
 
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 
 const styles = theme =>  ({
     root: {

@@ -5,7 +5,7 @@ import { ThemeProvider } from "styled-components";
 import IconChat from "./ico-chat.svg";
 import IconErizo from "./ico-erizo.svg";
 import steps from "./steps";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 // all available props
 const theme = {
   background: "#f5f8fb",

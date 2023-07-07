@@ -11,7 +11,7 @@ import Interconexion from "../../assets/rediseno/ico_interconexion.svg";
 import LoginIcon from "../../assets/rediseno/ico_login.svg";
 import SistemasMenu from "./SistemasMenu";
 import InterconexionMenu from "./InterconexionMenu";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 import Link from '@mui/material/Link';
 //import {getUser} from '../Login/Auth';
 import {UserContext} from "../Login/UserContext";

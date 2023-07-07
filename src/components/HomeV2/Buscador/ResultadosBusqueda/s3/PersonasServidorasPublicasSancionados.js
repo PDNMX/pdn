@@ -6,7 +6,7 @@ import Previos from "../Previos";
 import TablaServidoresSancionados from "../../../../Sancionados/Servidores/TablaServidoresSancionados";
 import DetalleServidorSancionado from "../../../../Sancionados/Servidores//DetalleServidorSancionado";
 import { makeStyles } from '@mui/styles';
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 import Chips from '../Chips';
 
 import {ThemeProvider} from '@mui/material/styles';

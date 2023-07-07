@@ -4,7 +4,7 @@ import {withStyles} from "@mui/styles";
 import BlogCard from "./BlogCard";
 import icon_blog from "../../../assets/rediseno/ico_blog.svg";
 import axios from "axios";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 
 const styles = theme => ({
     root:{

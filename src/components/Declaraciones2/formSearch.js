@@ -12,7 +12,7 @@ import makeStyles from '@mui/styles/makeStyles';
 import Ordenamiento from './Ordenamiento';
 import style from './style';
 import { withStyles } from '@mui/styles';
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 const useStyles = makeStyles(style);
 
 const CustomTypography = withStyles(theme => ({

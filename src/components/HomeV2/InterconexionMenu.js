@@ -6,7 +6,7 @@ import legislacion_icono from "../../assets/rediseno/ico_interconexion_legislaci
 import mapa_s2s3_icono from "../../assets/rediseno/ico_interconexion_s1-s3.svg";
 import icon_cobertura from "../../assets/rediseno/ico_cobertura.svg";
 import Box from "@mui/material/Box";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 
 const styles = theme => ({
     root: {
