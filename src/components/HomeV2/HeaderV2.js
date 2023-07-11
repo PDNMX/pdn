@@ -8,7 +8,7 @@ import GrainIcon from "@mui/icons-material/Grain";
 import {useTheme} from "@emotion/react";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import estados from '../Cobertura/estados.json';
-//import ReactGA from "react-ga";
+//import ReactGA from "react-ga4";
 
 // FIXME checkout https://mui.com/components/use-media-query/#migrating-from-withwidth
 // const withWidth = () => (WrappedComponent) => (props) => <WrappedComponent {...props} width="xs"/>;

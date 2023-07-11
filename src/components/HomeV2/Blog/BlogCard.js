@@ -1,7 +1,7 @@
 import React from 'react';
 import {Box, Link, Typography} from "@mui/material";
 import {withStyles} from "@mui/styles";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 
 const styles = theme => ({
     root: {

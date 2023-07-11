@@ -7,7 +7,7 @@ import Fab from '@mui/material/Fab';
 import MenuBookTwoToneIcon from '@mui/icons-material/MenuBookTwoTone';
 
 import Busqueda from './busqueda'
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 const useStyles = makeStyles((theme) => ({
     drawerPaper: {
       width: '25%',

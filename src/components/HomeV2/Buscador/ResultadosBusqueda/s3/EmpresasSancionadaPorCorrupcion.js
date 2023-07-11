@@ -9,7 +9,7 @@ import MensajeErrorDatos from "../../../../Mensajes/MensajeErrorDatos";
 import { ThemeProvider } from '@mui/material/styles';
 import ThemeV2 from "../../../../../ThemeV2";
 
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 import { makeStyles } from "@mui/styles";
 
 import Chips from '../Chips';

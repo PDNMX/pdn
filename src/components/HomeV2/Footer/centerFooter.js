@@ -6,7 +6,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
 import css from './cssFooter';
 
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 
 const useStyles = makeStyles(css);
 

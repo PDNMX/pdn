@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Typography } from '@mui/material';
 import Link from '@mui/material/Link';
 import { Link as RouterLink } from 'react-router-dom';
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 // icons
 import icon_youtube from '../../../assets/footer/ico_youtube.svg';
 import icon_twitter from '../../../assets/footer/ico_twitter.svg';

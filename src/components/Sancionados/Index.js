@@ -14,7 +14,7 @@ import Dashboard2 from './dashboard/Particulares/Dashboard';
 import classNames from 'classnames';
 import bgimg from '../../assets/rediseno/fondo_cruces_dark.png';
 import pdnRoutes from '../../routes/index';
-import ReactGA from 'react-ga';
+import ReactGA from 'react-ga4';
 
 import { ThemeProvider } from '@mui/material/styles';
 import ThemeV2 from '../../ThemeV2';

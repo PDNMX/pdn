@@ -3,7 +3,7 @@ import TablaResultados from "./TablaResultados";
 import axios from "axios";
 
 import { Modal, CircularProgress } from '@mui/material';
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 import Chips from '../Chips';
 
 export function ResultadosS6v1(props) {

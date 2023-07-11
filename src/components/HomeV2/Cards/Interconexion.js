@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import { CardHeader, Grid } from '@mui/material';
 
 import logo from '../../../assets/CardsHome/logo_interconexion.svg';
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 import { makeStyles } from '@mui/styles';
 import cssCards from './cssCards.js';
 import ButtonPDN from '../../Compartidos/ButtonPDN';
