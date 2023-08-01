@@ -80,8 +80,8 @@ export function EmpresasSancionadaPorCorrupcion() {
       - Tipo de sanción (select)
     */
   const tiposSancion = [
-    { label: "Inhabilitado", value: "I" },
-    { label: "Multado", value: "M" },
+    { label: "Inhabilitación", value: "I" },
+    { label: "Multa", value: "M" },
     { label: "Suspensión de actividades", value: "S" },
     { label: "Disolución de la sociedad", value: "D" },
     { label: "Amonestación", value: "A" },

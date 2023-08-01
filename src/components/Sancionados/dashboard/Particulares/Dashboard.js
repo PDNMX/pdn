@@ -2,11 +2,11 @@ import React from 'react';
 import {withStyles} from "@mui/styles";
 import PropTypes from 'prop-types';
 import {Grid, Paper} from "@mui/material";
-import AnioResolucionSanciones from "./AnioResolucionSanciones";
-import SentidoResoluciones from "./SentidoResoluciones";
-import SentidoResolucionesAnio from "./SentidoResolucionesAnio";
-import DependenciasSanciones from "./DependenciasSanciones";
-import '../graficas.css';
+//import AnioResolucionSanciones from "./AnioResolucionSanciones";
+//import SentidoResoluciones from "./SentidoResoluciones";
+//import SentidoResolucionesAnio from "./SentidoResolucionesAnio";
+//import DependenciasSanciones from "./DependenciasSanciones";
+//import '../graficas.css';
 import TotalRows from "./TotalRows";
 //import TotalDependencias from "./TotalDependencias";
 import TotalParticulares from "./TotalParticulares";
@@ -82,10 +82,17 @@ function Dashboard(props) {
                     <Grid item xs={4}>
                         <TotalMultas/>
                     </Grid>
-                    <Grid item xs={12} md={6}  id={"g1"}>
+                    {/* 
+                        s3p
+                        LineChart -> AnioResolucionSanciones
+                        Barchart -> SentidoResoluciones 
+                        Barchart -> SentidoResolucionesAnio
+                        Treemap -> DependenciasSanciones
+                    */}
+                    {/* <Grid item xs={12} md={6}  id={"g1"}>
                         <AnioResolucionSanciones/>
-                    </Grid>
-                    <Grid item xs={12} md={6}  id={"g2"}>
+                    </Grid> */}
+                    {/* <Grid item xs={12} md={6}  id={"g2"}>
                         <SentidoResoluciones/>
                     </Grid>
                     <Grid item xs={12}  id={"g2"}>
@@ -93,7 +100,7 @@ function Dashboard(props) {
                     </Grid>
                     <Grid item xs={12}  id={"g3"}>
                         <DependenciasSanciones/>
-                    </Grid>
+                    </Grid> */}
                     {
                         /*
                         <Grid item xs={12} >

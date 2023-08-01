@@ -2,7 +2,7 @@ import React from "react";
 import TablaResultados from "./TablaResultados";
 import axios from "axios";
 import { Modal, CircularProgress } from '@mui/material';
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 
 import Chips from '../Chips';
 

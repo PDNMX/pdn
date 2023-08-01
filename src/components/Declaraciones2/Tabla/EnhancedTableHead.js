@@ -5,6 +5,7 @@ import { TableCell, TableRow } from '@mui/material';
 
 const headCells = [
   { id: 'nombre', numeric: false, disablePadding: false, label: 'NOMBRE' },
+  { id: 'tipo', numeric: false, disablePadding: false, label: 'TIPO' },
   {
     id: 'institucion',
     numeric: false,

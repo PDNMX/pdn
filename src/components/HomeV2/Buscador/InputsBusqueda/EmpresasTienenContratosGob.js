@@ -11,6 +11,8 @@ import { ThemeProvider } from "@mui/material/styles";
 import ThemeV2 from "../../../../ThemeV2";
 
 import Fade from "@mui/material/Fade";
+const dataSuppliers = require("../../../Sistema6/suppliers.json");
+
 export function EmpresasTienenContratosGob() {
   const { control } = useFormContext();
   /*
@@ -35,13 +37,13 @@ export function EmpresasTienenContratosGob() {
                   fullWidth
                   {...field}
                 >
-                  <MenuItem default value="SHCP">
-                    Secretaría de Hacienda y Crédito Público
-                  </MenuItem>
-                  <MenuItem value="SESEA_AGS">
-                    Secretaría Ejecutiva del Sistema Estatal Anticorrupción de
-                    Aguascalientes
-                  </MenuItem>
+                  {
+                    dataSuppliers.map((s,i)=> {
+                        return <MenuItem value={s.id} key={i}>
+                            {s.name}
+                        </MenuItem>
+                    })
+                  }
                 </Select>
               </FormControl>
             )}

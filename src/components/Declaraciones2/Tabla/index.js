@@ -91,12 +91,14 @@ export default function EnhancedTable({ rows, pagination, posicion, handleDataSe
           <TableBody>
             {stableSort(rows, getSorting(order, orderBy)).map((row, index) => {
               const labelId = `enhanced-table-checkbox-${index}`;
+              const { tipo } = row.metadata;
               const { datosGenerales, datosEmpleoCargoComision } = row.declaracion.situacionPatrimonial;
               return (
                 <TableRow hover onClick={event => handleClick(event, row)} tabIndex={-1} key={row.nombre + '-' + index}>
                   <TableCell component='th' id={labelId} scope='row'>
                     {datosGenerales.nombre} {datosGenerales.primerApellido} {datosGenerales.segundoApellido}
                   </TableCell>
+                  <TableCell>{tipo}</TableCell>
                   <TableCell>{datosEmpleoCargoComision.nombreEntePublico}</TableCell>
                   <TableCell>
                     {datosEmpleoCargoComision.areaAdscripcion}

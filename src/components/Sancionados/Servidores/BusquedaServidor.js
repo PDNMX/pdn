@@ -8,7 +8,7 @@ import Previos from '../../Compartidos/Previos';
 import TablaServidoresSancionados from './TablaServidoresSancionados';
 import DetalleServidorSancionado from './DetalleServidorSancionado';
 
-import ReactGA from 'react-ga';
+import ReactGA from 'react-ga4';
 import { getDataAPI, getInstitutions, getProviders, getSummary } from '../utils';
 import FormServidoresSancionados from './FormServidoresSancionados';
 

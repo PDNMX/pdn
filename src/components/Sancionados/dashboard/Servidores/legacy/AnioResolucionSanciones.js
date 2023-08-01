@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {Grid, Typography} from "@mui/material";
 import {LinePlot} from "d3plus-react";
 import axios from 'axios';
-import MensajeErrorDatos from "../../../Mensajes/MensajeErrorDatos";
+import MensajeErrorDatos from "../../../../Mensajes/MensajeErrorDatos";
 import {FlexibleXYPlot} from "react-vis/es";
 import VerticalGridLines from "react-vis/es/plot/vertical-grid-lines";
 import HorizontalGridLines from "react-vis/es/plot/horizontal-grid-lines";
@@ -14,7 +14,7 @@ import LineMarkSeries from "react-vis/es/plot/series/line-mark-series";
 import Hint from "react-vis/es/plot/hint";
 import ContainerChart from "@Compartidos/Dashboards/ContainerChart";
 import ModalInfo from "@Compartidos/Dashboards/ModalInfo";
-import TiempoSanciones from "./TiemposSanciones";
+import TiempoSanciones from "../TiemposSanciones";
 
 const styles = theme => ({
     frameChart: {

@@ -5,7 +5,7 @@ import InputLabel from "@mui/material/InputLabel";
 //import NativeSelect from "@mui/material/NativeSelect";
 //import InputBase from "@mui/material/InputBase";
 import {Box, Grid, Select, MenuItem, TextField, Button } from '@mui/material';
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 
 const styles = theme => ({
     root: {

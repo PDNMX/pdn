@@ -13,7 +13,7 @@ import localize from "ajv-i18n";
 import Parser from "swagger-parser";
 import withStyles from '@mui/styles/withStyles';
 import PropTypes from "prop-types";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 
 const styles = (theme) => ({
   root: {

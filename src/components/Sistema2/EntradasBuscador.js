@@ -9,7 +9,7 @@ import Radio from "@mui/material/Radio";
 import TipoProcedimiento from "./TipoProcedimiento";
 import { ThemeProvider } from '@mui/material/styles';
 import themeV2 from "../../ThemeV2";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 
 const styles = theme => ({
     root: {

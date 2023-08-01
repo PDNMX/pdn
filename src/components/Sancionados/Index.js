@@ -14,7 +14,7 @@ import Dashboard2 from './dashboard/Particulares/Dashboard';
 import classNames from 'classnames';
 import bgimg from '../../assets/rediseno/fondo_cruces_dark.png';
 import pdnRoutes from '../../routes/index';
-import ReactGA from 'react-ga';
+import ReactGA from 'react-ga4';
 
 import { ThemeProvider } from '@mui/material/styles';
 import ThemeV2 from '../../ThemeV2';
@@ -111,7 +111,7 @@ const Index = ({ classes }) => {
                   Buscador de Particulares sancionados
                 </Typography>
               </Grid>
-              <Grid
+              {/*<Grid
                 item
                 md={3}
                 xs={12}
@@ -128,21 +128,22 @@ const Index = ({ classes }) => {
                 </Typography>
               </Grid>
               <Grid
-                item
-                md={3}
-                xs={12}
-                onClick={() => {
-                  setIdContent(4);
-                  ReactGA.event({ category: 'visor-s3P', action: 'click' });
-                }}
+                  item
+                  md={3}
+                  xs={12}
+                  onClick={() => {
+                    setIdContent(4);
+                    ReactGA.event({category: 'visor-s3P', action: 'click'});
+                  }}
               >
                 <figure className={classNames(idContent !== 4 ? classes.card : classes.cardSeleccionada)}>
-                  <img src={img4} alt='Visor de datos (Particulares sancionados)' className={classes.image} />
+                  <img src={img4} alt='Visor de datos (Particulares sancionados)' className={classes.image}/>
                 </figure>
-                <Typography variant='subtitle1' style={{ fontWeight: idContent === 4 ? 500 : 300 }} className={classes.labelCard}>
+                <Typography variant='subtitle1' style={{fontWeight: idContent === 4 ? 500 : 300}}
+                            className={classes.labelCard}>
                   Visor de datos (Particulares sancionados)
                 </Typography>
-              </Grid>
+              </Grid>*/}
             </Grid>
           </Grid>
         </Grid>

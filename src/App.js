@@ -7,15 +7,15 @@ import ScrollToTop from "./ScrollToTop";
 import "./components/Utils/Header.css";
 import {StyledEngineProvider} from '@mui/material/styles';
 // Google Analytics
-import ReactGA from 'react-ga';
+import ReactGA from 'react-ga4';
 import Layout from "./components/HomeV2/Layout";
 
 import BaseTheme from "./BaseTheme";
 import {UserContext} from "./components/Login/UserContext";
 import {getUser} from "./components/Login/Auth";
 
-ReactGA.initialize('UA-126837818-1');
-ReactGA.pageview(window.location.pathname + window.location.search);
+ReactGA.initialize('G-XWEKXGG46G');
+ReactGA.send(window.location.pathname + window.location.search);
 
 const p404 = () => {
   return <P404/>;

@@ -12,7 +12,7 @@ import icon_github from '../../../assets/footer/ico_github.svg';
 import { makeStyles } from '@mui/styles';
 import css from './cssFooter';
 
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 
 const useStyles = makeStyles(css);
 

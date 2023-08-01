@@ -13,7 +13,7 @@ import Previos from "../Previos";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { makeStyles } from "@mui/styles";
 
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 import Chips from '../Chips';
 
 const useStyles = makeStyles((theme) => ({

@@ -16,7 +16,7 @@ import LoginIcon from "../../assets/rediseno/ico_login.svg";
 import legislacion_icono from "../../assets/rediseno/ico_interconexion_legislacion.svg";
 import icon_cobertura from "../../assets/rediseno/ico_cobertura.svg";
 import mapa_s2s3_icono from "../../assets/rediseno/ico_interconexion_s2-s3.svg";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 import {UserContext} from "../Login/UserContext";
 
 const styles = theme => ({

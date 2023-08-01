@@ -14,7 +14,7 @@ import MantenimentResultProv from "../../../../Declaraciones2/MantenimentResultP
 
 import CircularProgress from "@mui/material/CircularProgress";
 import Chips from "../Chips";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 
 export class ResultadosS1 extends React.Component {
   /*
