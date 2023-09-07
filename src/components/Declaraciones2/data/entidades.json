@@ -1,0 +1,224 @@
+[{
+  "_id": {
+    "$oid": "64fa354940485c857241ad06"
+  },
+  "cve_agee": "01",
+  "nom_agee": "Aguascalientes"
+},
+{
+  "_id": {
+    "$oid": "64fa354940485c857241ad07"
+  },
+  "cve_agee": "02",
+  "nom_agee": "Baja California"
+},
+{
+  "_id": {
+    "$oid": "64fa354940485c857241ad08"
+  },
+  "cve_agee": "03",
+  "nom_agee": "Baja California Sur"
+},
+{
+  "_id": {
+    "$oid": "64fa354940485c857241ad09"
+  },
+  "cve_agee": "04",
+  "nom_agee": "Campeche"
+},
+{
+  "_id": {
+    "$oid": "64fa354940485c857241ad0a"
+  },
+  "cve_agee": "05",
+  "nom_agee": "Coahuila de Zaragoza"
+},
+{
+  "_id": {
+    "$oid": "64fa354940485c857241ad0b"
+  },
+  "cve_agee": "06",
+  "nom_agee": "Colima"
+},
+{
+  "_id": {
+    "$oid": "64fa354940485c857241ad0c"
+  },
+  "cve_agee": "07",
+  "nom_agee": "Chiapas"
+},
+{
+  "_id": {
+    "$oid": "64fa354940485c857241ad0d"
+  },
+  "cve_agee": "08",
+  "nom_agee": "Chihuahua"
+},
+{
+  "_id": {
+    "$oid": "64fa354940485c857241ad0e"
+  },
+  "cve_agee": "09",
+  "nom_agee": "Ciudad de México"
+},
+{
+  "_id": {
+    "$oid": "64fa354940485c857241ad0f"
+  },
+  "cve_agee": "10",
+  "nom_agee": "Durango"
+},
+{
+  "_id": {
+    "$oid": "64fa354940485c857241ad10"
+  },
+  "cve_agee": "11",
+  "nom_agee": "Guanajuato"
+},
+{
+  "_id": {
+    "$oid": "64fa354940485c857241ad11"
+  },
+  "cve_agee": "12",
+  "nom_agee": "Guerrero"
+},
+{
+  "_id": {
+    "$oid": "64fa354940485c857241ad12"
+  },
+  "cve_agee": "13",
+  "nom_agee": "Hidalgo"
+},
+{
+  "_id": {
+    "$oid": "64fa354940485c857241ad13"
+  },
+  "cve_agee": "14",
+  "nom_agee": "Jalisco"
+},
+{
+  "_id": {
+    "$oid": "64fa354940485c857241ad14"
+  },
+  "cve_agee": "15",
+  "nom_agee": "México"
+},
+{
+  "_id": {
+    "$oid": "64fa354940485c857241ad15"
+  },
+  "cve_agee": "16",
+  "nom_agee": "Michoacán de Ocampo"
+},
+{
+  "_id": {
+    "$oid": "64fa354940485c857241ad16"
+  },
+  "cve_agee": "17",
+  "nom_agee": "Morelos"
+},
+{
+  "_id": {
+    "$oid": "64fa354940485c857241ad17"
+  },
+  "cve_agee": "18",
+  "nom_agee": "Nayarit"
+},
+{
+  "_id": {
+    "$oid": "64fa354940485c857241ad18"
+  },
+  "cve_agee": "19",
+  "nom_agee": "Nuevo León"
+},
+{
+  "_id": {
+    "$oid": "64fa354940485c857241ad19"
+  },
+  "cve_agee": "20",
+  "nom_agee": "Oaxaca"
+},
+{
+  "_id": {
+    "$oid": "64fa354940485c857241ad1a"
+  },
+  "cve_agee": "21",
+  "nom_agee": "Puebla"
+},
+{
+  "_id": {
+    "$oid": "64fa354940485c857241ad1b"
+  },
+  "cve_agee": "22",
+  "nom_agee": "Querétaro"
+},
+{
+  "_id": {
+    "$oid": "64fa354940485c857241ad1c"
+  },
+  "cve_agee": "23",
+  "nom_agee": "Quintana Roo"
+},
+{
+  "_id": {
+    "$oid": "64fa354940485c857241ad1d"
+  },
+  "cve_agee": "24",
+  "nom_agee": "San Luis Potosí"
+},
+{
+  "_id": {
+    "$oid": "64fa354940485c857241ad1e"
+  },
+  "cve_agee": "25",
+  "nom_agee": "Sinaloa"
+},
+{
+  "_id": {
+    "$oid": "64fa354940485c857241ad1f"
+  },
+  "cve_agee": "26",
+  "nom_agee": "Sonora"
+},
+{
+  "_id": {
+    "$oid": "64fa354940485c857241ad20"
+  },
+  "cve_agee": "27",
+  "nom_agee": "Tabasco"
+},
+{
+  "_id": {
+    "$oid": "64fa354940485c857241ad21"
+  },
+  "cve_agee": "28",
+  "nom_agee": "Tamaulipas"
+},
+{
+  "_id": {
+    "$oid": "64fa354940485c857241ad22"
+  },
+  "cve_agee": "29",
+  "nom_agee": "Tlaxcala"
+},
+{
+  "_id": {
+    "$oid": "64fa354940485c857241ad23"
+  },
+  "cve_agee": "30",
+  "nom_agee": "Veracruz de Ignacio de la Llave"
+},
+{
+  "_id": {
+    "$oid": "64fa354940485c857241ad24"
+  },
+  "cve_agee": "31",
+  "nom_agee": "Yucatán"
+},
+{
+  "_id": {
+    "$oid": "64fa354940485c857241ad25"
+  },
+  "cve_agee": "32",
+  "nom_agee": "Zacatecas"
+}]

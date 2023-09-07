@@ -14,6 +14,10 @@ import scrollToComponent from 'react-scroll-to-component';
 import ActiveResultProv from './ActiveResultProv';
 import Descarga from '../Compartidos/Descarga';
 import MantenimentResultProv from './MantenimentResultProv';
+
+import dataEntidadesFederativas from './data/entidades.json';
+import dataMunicipios from './data/municipios.json';
+
 class Busqueda extends React.Component {
   defaultSelect = [
     {
@@ -133,6 +137,12 @@ class Busqueda extends React.Component {
 
   handleInputChange = event => {
     const { name, value } = event.target;
+    let catMunicipios = [
+      {
+        cve_agem: 0,
+        nom_agem: 'Todos'
+      }
+    ];
 
     this.setState(prevState => {
       let { query } = prevState;
@@ -140,14 +150,17 @@ class Busqueda extends React.Component {
       query[name] = value;
 
       if (name === 'entidadFederativa') {
-        this.getMunicipios(value);
+        catMunicipios = this.getMunicipios(value);
         query['municipioAlcaldia'] = '0';
+      } else {
+        catMunicipios = this.getMunicipios(query['entidadFederativa']);
       }
 
       return {
         ...prevState,
         query: query,
-        btnSearch: false
+        btnSearch: false,
+        catMunicipios
       };
     });
   };
@@ -437,7 +450,7 @@ class Busqueda extends React.Component {
   };
 
   getEntidadesFederativas = () => {
-    let url = 'https://gaia.inegi.org.mx/wscatgeo/mgee/';
+    // let url = 'https://gaia.inegi.org.mx/wscatgeo/mgee/';
 
     let defaultOps = [
       {
@@ -446,33 +459,38 @@ class Busqueda extends React.Component {
       }
     ];
 
-    axios
-      .get(url, {
-        crossdomain: true
-      })
-      .then(resp => {
-        this.setState(prevState => ({
-          ...prevState,
-          catEntidadesFederativas: [...defaultOps, ...resp.data.datos]
-        }));
-      })
-      .catch(err => {
-        this.setState(prevState => ({
-          ...prevState,
-          catEntidadesFederativas: [
-            {
-              cve_agee: -1,
-              nom_agee: 'ERROR AL CARGAR LAS ENTIDADES FEDERATIVAS'
-            }
-          ]
-        }));
+    this.setState(prevState => ({
+      ...prevState,
+      catEntidadesFederativas: [...defaultOps, ...dataEntidadesFederativas]
+    }));
+    //catEntidadesFederativas
+    // axios
+    //   .get(url, {
+    //     crossdomain: true
+    //   })
+    //   .then(resp => {
+    //     this.setState(prevState => ({
+    //       ...prevState,
+    //       catEntidadesFederativas: [...defaultOps, ...resp.data.datos]
+    //     }));
+    //   })
+    //   .catch(err => {
+    //     this.setState(prevState => ({
+    //       ...prevState,
+    //       catEntidadesFederativas: [
+    //         {
+    //           cve_agee: -1,
+    //           nom_agee: 'ERROR AL CARGAR LAS ENTIDADES FEDERATIVAS'
+    //         }
+    //       ]
+    //     }));
 
-        error('catEntidadesFederativas' + err);
-      });
+    //     error('catEntidadesFederativas' + err);
+    //   });
   };
 
   getMunicipios = cve_agee => {
-    let url = 'https://gaia.inegi.org.mx/wscatgeo/mgem/' + cve_agee;
+    // let url = 'https://gaia.inegi.org.mx/wscatgeo/mgem/' + cve_agee;
 
     let defaultOps = [
       {
@@ -481,29 +499,32 @@ class Busqueda extends React.Component {
       }
     ];
 
-    axios
-      .get(url, {
-        crossdomain: true
-      })
-      .then(resp => {
-        this.setState(prevState => ({
-          ...prevState,
-          catMunicipios: [...defaultOps, ...resp.data.datos]
-        }));
-      })
-      .catch(err => {
-        this.setState(prevState => ({
-          ...prevState,
-          catMunicipios: [
-            {
-              cve_agem: -1,
-              nom_agem: 'ERROR AL CARGAR LOS MUNICIPIOS'
-            }
-          ]
-        }));
+    return [...defaultOps, ...dataMunicipios.filter(d => d.cve_agee === cve_agee)];
 
-        error('catMunicipios' + err);
-      });
+    // catMunicipios
+    // axios
+    //   .get(url, {
+    //     crossdomain: true
+    //   })
+    //   .then(resp => {
+    //     this.setState(prevState => ({
+    //       ...prevState,
+    //       catMunicipios: [...defaultOps, ...resp.data.datos]
+    //     }));
+    //   })
+    //   .catch(err => {
+    //     this.setState(prevState => ({
+    //       ...prevState,
+    //       catMunicipios: [
+    //         {
+    //           cve_agem: -1,
+    //           nom_agem: 'ERROR AL CARGAR LOS MUNICIPIOS'
+    //         }
+    //       ]
+    //     }));
+
+    //     error('catMunicipios' + err);
+    //   });
   };
 
   componentDidMount() {
