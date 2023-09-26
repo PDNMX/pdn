@@ -54,10 +54,10 @@ li: {
 paper: {
     backgroundColor: theme.palette.background.opaque,
     padding: theme.spacing(2),
-    color: theme.palette.primario.contrastText,
+    color: theme.palette.primary.contrastText,
     borderStyle: 'solid',
     borderWidth: 1,
-    borderColor: theme.palette.secundario.main,
+    borderColor: theme.palette.secondary.main,
     borderRadius: '0px 10px 10px 10px'
 },
 tableBody: {
@@ -371,7 +371,7 @@ const [state, setState] = React.useState({
                             </Typography>
                         </Box>
 
-                        <Button onClick={() => backButton()} startIcon={<ArrowBackIcon/>} color='secundario' sx={{fontWeight: 'bold'}} >
+                        <Button onClick={() => backButton()} startIcon={<ArrowBackIcon/>} color='secondary' sx={{fontWeight: 'bold'}} >
                             Regresar
                         </Button>
                     </Box>

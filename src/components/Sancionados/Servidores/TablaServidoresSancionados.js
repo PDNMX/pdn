@@ -71,14 +71,14 @@ function TablaServidoresSancionados({ classes, info, verDetalle, handleChangeRow
       <Grid container justifyContent='center' spacing={0} className={classes.gridTable} id={'containerTest'}>
         <Grid item xs={12}>
           {data && data.length > 0 && (
-            <Typography variant={'h6'} color={'primario.contrastText'}>
+            <Typography variant={'h6'} color={'primary.contrastText'}>
               Pulsa sobre el registro para ver su detalle
               <br />
             </Typography>
           )}
         </Grid>
         <Grid item xs={12} textAlign={'right'}>
-          <Button startIcon={<ArrowBackIcon />} onClick={() => returnToPrevios()} color='secundario' className={classes.buttonBack}>
+          <Button startIcon={<ArrowBackIcon />} onClick={() => returnToPrevios()} color='secondary' className={classes.buttonBack}>
             Regresar
           </Button>
         </Grid>
@@ -91,7 +91,7 @@ function TablaServidoresSancionados({ classes, info, verDetalle, handleChangeRow
                     {columnData.map(column => {
                       return (
                         <TableCell key={column.id}>
-                          <Typography color={'primario.contrastText'} variant={'body1'}>
+                          <Typography color={'primary.contrastText'} variant={'body1'}>
                             {column.label}
                           </Typography>
                         </TableCell>

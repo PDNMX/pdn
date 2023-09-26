@@ -119,11 +119,11 @@ function ResponsiveDialog(props) {
 
                 </DialogContent>
                 <DialogActions>
-                    <Button href={handleDownload()} variant="contained" color="secundario"
+                    <Button href={handleDownload()} variant="contained" color="secondary"
                             download={(data !== null ? data.ocid : 'datos')+'.json'}
                             className={classes.button}
                     ><DownloadIcon/></Button>
-                    <Button onClick={handleCloseDialog}  variant="contained" color="secundario" autoFocus
+                    <Button onClick={handleCloseDialog}  variant="contained" color="secondary" autoFocus
                             className={classes.button}
                     >
                         Cerrar
@@ -160,7 +160,7 @@ const Document = props => {
             <Typography sx={{fontWeight: 'bold'}}>Documento {index + 1}</Typography>
             <Typography>Título: {doc.title}</Typography>
             <Typography paragraph>Descripción: {doc.description}</Typography>
-            <Button variant='contained' size='small' color='secundario' href={doc.url} target='_blank'>
+            <Button variant='contained' size='small' color='secondary' href={doc.url} target='_blank'>
                 URL
             </Button>
         </Paper>

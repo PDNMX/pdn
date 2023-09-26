@@ -9,12 +9,12 @@ import ReactGA from "react-ga4";
 const styles = theme => ({
     root:{
         padding: theme.spacing(2),
-        background: 'rgba(255,255,255,0.2)',
+        background: 'rgba(242, 240, 242, 1)',
         backgroundOpacity: ".2",
         /*borderWidth: 4,
         borderColor: "#fff",
         borderRadius: "3"*/
-        maxWidth: 500
+        maxWidth: 1920
     },
     icon:{
         width: 50,
@@ -31,8 +31,8 @@ const styles = theme => ({
 
 const CustomTypography = withStyles({
     root: {
-        color: "#FFF",
-        fontWeight: "bold"
+        color: "",
+        fontWeight: ""
     }
 })(Typography);
 
@@ -66,9 +66,9 @@ const BlogComponent = props => {
                     <img src={icon_blog} alt="Blog PDN" className={classes.icon}/>
                 </Box>
                 <Box>
-                    <CustomTypography variant="h4" paragraph>
-                        Blog
-                    </CustomTypography>
+                    
+                    <h1>Blog</h1>
+                    
                 </Box>
             </Box>
 

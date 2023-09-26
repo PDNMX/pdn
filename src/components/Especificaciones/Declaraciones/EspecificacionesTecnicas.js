@@ -10,7 +10,7 @@ const styles = theme => ({
   ul: {
     listStyle: 'none',
     paddingLeft: '20px',
-    color: theme.palette.primario.contrastText
+    color: theme.palette.primary.contrastText
   },
   li: {
     '&:before': {

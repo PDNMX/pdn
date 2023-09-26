@@ -48,10 +48,10 @@ const styles = theme => ({
         maxWidth: 1200,
         paddingTop: theme.spacing(7),
         margin: 'auto',
-        color: theme.palette.primario.contrastText,
+        color: theme.palette.primary.contrastText,
         borderStyle: 'solid',
         borderWidth: 1,
-        borderColor: theme.palette.secundario.main,
+        borderColor: theme.palette.secondary.main,
         borderRadius: '0px 10px 10px 10px'
     },
     link: {

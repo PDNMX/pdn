@@ -1,9 +1,9 @@
 import { createTheme } from '@mui/material/styles';
 import { esES } from '@mui/material/locale';
 
-import BaseTheme from './BaseTheme';
+import BaseTheme2023 from './BaseTheme2023';
 
-const AzulPDN = 'rgba(137, 212, 242, 1)';
+const AzulPDN = 'rgba(113, 57, 114, 1)';
 const grisBorder = 'rgba(255, 255, 255, 0.23)';
 const amarilloPDN = 'rgb(232, 214, 67)';
 
@@ -31,7 +31,7 @@ const amarilloPDN = 'rgb(232, 214, 67)';
 
 export default createTheme(
   {
-    ...BaseTheme,
+    ...BaseTheme2023,
     components: {
       MuiInputLabel: {
         styleOverrides: {

@@ -21,7 +21,7 @@ const useToolbarStyles = makeStyles(theme => ({
   title: {
     flex: '1 1 100%',
     backgroundColor: 'rgba(42, 116, 145)',
-    color: theme.palette.primario.contrastText
+    color: theme.palette.primary.contrastText
   }
 }));
 

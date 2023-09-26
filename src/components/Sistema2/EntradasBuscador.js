@@ -164,13 +164,13 @@ const EntradasBuscador = props => {
                 </Grid>
 
                 <Grid item xs={12} md={6} align="right">
-                    <Button variant="contained" color="secundario"
+                    <Button variant="contained" color="secondary"
                             className={classes.button}
                             onClick={() => limpiarBusqueda()}>
                         Limpiar
                     </Button>
 
-                    <Button variant="contained" color="secundario" className={classes.button} 
+                    <Button variant="contained" color="secondary" className={classes.button} 
                             onClick={() => {
                                 buscar();
                                 ReactGA.event({ category: 'busqueda-s2', action: 'click' });

@@ -40,19 +40,19 @@ const styles = theme => ({
     paper1: {
         backgroundColor: theme.palette.background.opaque,
         padding: theme.spacing(2),
-        color: theme.palette.primario.contrastText,
+        color: theme.palette.primary.contrastText,
         borderStyle: 'solid',
         borderWidth: 1,
-        borderColor: theme.palette.secundario.main,
+        borderColor: theme.palette.secondary.main,
         borderRadius: '0px 10px 10px 10px'
     },
     paper2: {
         backgroundColor: theme.palette.background.opaque,
         padding: theme.spacing(2),
-        color: theme.palette.primario.contrastText,
+        color: theme.palette.primary.contrastText,
         borderStyle: 'solid',
         borderWidth: 1,
-        borderColor: theme.palette.secundario.main,
+        borderColor: theme.palette.secondary.main,
         borderRadius: '10px 0px 10px 10px'
     },
     image: {
@@ -67,7 +67,7 @@ const styles = theme => ({
         margin: 0,
         "&:hover": {
             cursor: 'pointer',
-            borderColor: theme.palette.secundario.main,
+            borderColor: theme.palette.secondary.main,
             transition: 'background 0.3s ease',
             opacity: .7
         },
@@ -82,7 +82,7 @@ const styles = theme => ({
 
     },
     cardSeleccionada: {
-        borderColor: theme.palette.secundario.main,
+        borderColor: theme.palette.secondary.main,
         paddingLeft: theme.spacing(1),
         paddingRight: theme.spacing(1),
         paddingTop: theme.spacing(1),

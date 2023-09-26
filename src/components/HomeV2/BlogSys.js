@@ -7,8 +7,8 @@ import {withStyles} from "@mui/styles";
 const styles = theme => ({
     root: {
         //background: "#263d49",
-        padding: theme.spacing(2),
-        flexGrow: 1
+        //padding: theme.spacing(2),
+        //flexGrow: 1
     }
 });
 
@@ -16,15 +16,13 @@ const BlogSys = props => {
     const {classes} = props;
     return (
         <div className={classes.root}>
-            <Grid container spacing={2}>
-                <Grid item xs={12} md={5} lg={4} xl={4}>
-                    <BlogComponent/>
-                </Grid>
-
-                <Grid item xs={12} md={7} lg={8} xl={8}>
+            <Grid item xs={12} md={12} lg={12} xl={12}  alignItems="flex-start" justifyContent='center'>
                     <SysPDN/>
-                </Grid>
             </Grid>
+            
+
+               
+            
         </div>
     );
 }

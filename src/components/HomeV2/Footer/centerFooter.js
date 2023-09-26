@@ -13,22 +13,22 @@ const useStyles = makeStyles(css);
 const CenterFooter = props => {
   const classes = useStyles();
   return (
-    <Grid container className={classes.centerFoot}>
-      <Grid item xs={12} className={classes.centerFoot_padding}>
+    <Grid container>
+      <Grid item xs={12} >
         <Grid container direction={'row'} justifyContent={'center'} alignItems={'stretch'}>
           <Grid item xs={4}>
-            <Grid container direction='column' justifyContent='flex-start' alignItems='flex-end' className={classes.centerFoot_left}>
+            <Grid container direction='column' justifyContent='flex-start' alignItems='flex-end'>
               <Grid item style={{ textAlign: 'right' }}>
                 {/* <Typography variant='subtitle1' style={{ color: '#FFF' }}>
                   <strong>Sistemas PDN</strong>
                 </Typography> */}
-                <Typography variant='subtitle1'>
-                  <Link href='https://www.plataformadigitalnacional.org/mapa-avance/' target='_blank' underline='none' className={classes.enlaces} onClick={()=>ReactGA.pageview('/mapa-avance')}>
+                <Typography>
+                  <Link href='https://www.plataformadigitalnacional.org/mapa-avance/' target='_blank' underline='none' onClick={()=>ReactGA.pageview('/mapa-avance')}>
                     Avances de Interconexión
                   </Link>
                 </Typography>
-                <Typography variant='subtitle1'>
-                  <Link href='https://mda.plataformadigitalnacional.org/' target='_blank' underline='none' className={classes.enlaces} onClick={()=>ReactGA.pageview('/mda')}>
+                <Typography>
+                  <Link href='https://mda.plataformadigitalnacional.org/' target='_blank' underline='none' onClick={()=>ReactGA.pageview('/mda')}>
                     Mercado Digital Anticorrupción
                   </Link>
                 </Typography>
@@ -36,23 +36,23 @@ const CenterFooter = props => {
             </Grid>
           </Grid>
           <Grid item xs={1}>
-            <Grid container direction='column' justifyContent='flex-start' alignItems='flex-start' className={classes.centerFoot_center}></Grid>
+            <Grid container direction='column' justifyContent='flex-start' alignItems='flex-start'></Grid>
           </Grid>
           <Grid item>
-            <Grid container direction='column' justifyContent='flex-start' alignItems='flex-start' className={classes.centerFoot_right}>
+            <Grid container direction='column' justifyContent='flex-start' alignItems='flex-start' >
               <Grid item>
                 <Typography variant='subtitle1'>
-                  <RouterLink to={'/faq'} className={classes.enlaces}>
+                  <RouterLink to={'/faq'}>
                     Preguntas frecuentes
                   </RouterLink>
                 </Typography>
-                <Typography variant='subtitle1'>
-                  <Link href='https://www.youtube.com/channel/UCJ0nWmB2-ADfn95r5cjmLJA/' target='_blank' underline='none' className={classes.enlaces} onClick={()=>ReactGA.event({ category: 'youtube-pdn', action: 'click' })}>
+                <Typography >
+                  <Link href='https://www.youtube.com/channel/UCJ0nWmB2-ADfn95r5cjmLJA/' target='_blank' underline='none' onClick={()=>ReactGA.event({ category: 'youtube-pdn', action: 'click' })}>
                     Videos
                   </Link>
                 </Typography>
-                <Typography variant='subtitle1'>
-                  <Link href='https://drive.google.com/drive/folders/1t_vGUfagr75TAZ8-E4NZfL-fU0BcsPlZ' target='_blank' underline='none' className={classes.enlaces} onClick={()=>ReactGA.event({ category: 'boletines-prensa', action: 'click' })}>
+                <Typography >
+                  <Link href='https://drive.google.com/drive/folders/1t_vGUfagr75TAZ8-E4NZfL-fU0BcsPlZ' target='_blank' underline='none' onClick={()=>ReactGA.event({ category: 'boletines-prensa', action: 'click' })}>
                     Boletines y prensa
                   </Link>
                 </Typography>

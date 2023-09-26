@@ -16,7 +16,7 @@ const styles = theme => ({
     },
     gridTable: {
         marginBottom: theme.spacing(3),
-        color: theme.palette.primario.contrastText
+        color: theme.palette.primary.contrastText
     },
     container: {
         marginTop: theme.spacing(2),

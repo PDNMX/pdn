@@ -126,7 +126,7 @@ const useStyles = makeStyles(theme => ({
         width: 1,
     },
     tableHead: {
-        background: theme.palette.primario.main
+        background: theme.palette.primary.main
     },
     tsl:{
         color: theme.palette.text.main

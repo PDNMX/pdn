@@ -2,12 +2,12 @@ import React, {useEffect} from "react";
 import withStyles from '@mui/styles/withStyles';
 import {AppBar, Typography, Grid} from "@mui/material";
 import {Link as RouterLink} from "react-router-dom";
-import imgHeader from "../../assets/rediseno/logo_pdn.svg";
-import Espe from "../../assets/rediseno/ico_especificaciones.svg";
-import Mesa from "../../assets/rediseno/ico_mesa-ayuda.svg";
-import MDA from "../../assets/rediseno/ico_mda.svg";
-import Sistemas from "../../assets/rediseno/ico_sistemas_f.svg";
-import Interconexion from "../../assets/rediseno/ico_interconexion.svg";
+import imgHeader from "../../assets/rediseno2023/imgs/iconos/logotipos/logo_pdn-transparente.svg";
+import Espe from "../../assets/rediseno2023/imgs/iconos/menu/ico_especificaciones.svg";
+import Mesa from "../../assets/rediseno2023/imgs/iconos/menu/ico_mesa-ayuda.svg";
+import MDA from "../../assets/rediseno2023/imgs/iconos/menu/ico_mda.svg";
+import Sistemas from "../../assets/rediseno2023/imgs/iconos/menu/ico_sistemas.svg";
+import Interconexion from "../../assets/rediseno2023/imgs/iconos/menu/ico_interconexion.svg";
 import LoginIcon from "../../assets/rediseno/ico_login.svg";
 import SistemasMenu from "./SistemasMenu";
 import InterconexionMenu from "./InterconexionMenu";
@@ -17,13 +17,6 @@ import Link from '@mui/material/Link';
 import {UserContext} from "../Login/UserContext";
 
 const styles = theme => ({
-    root: {
-        flexGrow: 1,
-        backgroundColor: '#3e5866',
-    },
-    item: {
-        maxWidth: 1000
-    },
     opc: {
         "&:hover": {
             backgroundColor: "#64808f"
@@ -34,36 +27,6 @@ const styles = theme => ({
     },
     selected: {
         backgroundColor: "#64808f"
-    },
-    icon: {
-        width: theme.spacing(7),
-        paddingTop: theme.spacing(2),
-        paddingBottom: 0,
-        paddingRight: theme.spacing(7),
-        paddingLeft: theme.spacing(7)
-    },
-    link: {
-        textDecoration: "none",
-        color: "#b2bfc4"
-    },
-    textMenu: {
-        color: "#b2bfc4"
-    },
-    iconSesion: {
-        width: theme.spacing(6),
-        paddingTop: theme.spacing(2),
-        paddingBottom: 0
-    },
-    iconPDN: {
-        height: theme.spacing(7)
-    },
-    containerIconPDN: {
-        display: 'flex',
-        alignItems: 'center'
-    },
-    rootC: {
-        paddingLeft: theme.spacing(7),
-        paddingRight: theme.spacing(4)
     }
 });
 
@@ -107,108 +70,111 @@ const BannerDesktop = props => {
             <AppBar
                 position="static"
                 style={{
-                    backgroundColor: "#3e5866",
+                    background: "transparent linear-gradient(230deg, #1C7CBF 0%, #1C7CBF 4%, #9F58E2 49%, #6D4061 100%) 0% 0% no-repeat padding-box",
                     border: 0,
                     boxShadow: "none"
                 }}
             >
-                <Grid container justifyContent="space-between" className={classes.rootC}>
-                    <Grid item className={classes.containerIconPDN}>
-                        <RouterLink className={classes.link} to="/">
-                            <img src={imgHeader} alt="PDN" className={classes.iconPDN}/>
+                           
+                <div className={"encabezado"}>
+                    <div>
+                        <RouterLink to="/">
+                            <img src={imgHeader} alt="PDN"/>
                         </RouterLink>
-                    </Grid>
-                    <Grid item>
-                        <Grid container>
-                            <Grid item className={classes.opc}>
-                                <RouterLink className={classes.link} to="/mesa-de-ayuda">
-                                    <img src={Mesa} alt="PDN" className={classes.icon}/>
-                                    <Typography className={classes.textMenu}>
-                                        MESA DE AYUDA
+                    </div>
+                    <div>
+                        <nav>
+                            <ul>   
+                                <li>   
+                                    <RouterLink to="/mesa-de-ayuda">
+                                        <img src={Mesa} alt="PDN"/>
+                                        <Typography>
+                                            MESA DE AYUDA
+                                        </Typography>
+                                    </RouterLink>
+                                </li>
+                                <li>
+                                    <RouterLink  to="/especificaciones">
+                                        <img src={Espe} alt="PDN" />
+                                        <Typography>
+                                            ESPECIFICACIONES
+                                        </Typography>
+                                    </RouterLink>
+                                </li>
+
+                                
+                                <li className={`${classes.opc} ${showSistemas ? classes.selected : ""} `}
+                                onClick={() => setShowSistemas(!showSistemas)}>
+                                    <img src={Sistemas} alt="Mercado Digital Anticorrupción"/>
+                                    <Typography >
+                                        SISTEMAS
                                     </Typography>
-                                </RouterLink>
-                            </Grid>
-                            <Grid item className={classes.opc}>
-                                <RouterLink className={classes.link} to="/especificaciones">
-                                    <img src={Espe} alt="PDN" className={classes.icon}/>
-                                    <Typography className={classes.textMenu}>
-                                        ESPECIFICACIONES
+                                </li>
+                                
+                                
+                                <li className={`${classes.opc} ${showInterconexion ? classes.selected : ""}`}
+                                onClick={() => setShowInterconexion(!showInterconexion)}>
+                                    <img src={Interconexion} alt="Interconexión"/>
+                                    <Typography>
+                                        INTERCONEXIÓN
                                     </Typography>
-                                </RouterLink>
-                            </Grid>
-                            <Grid item className={`${classes.opc} ${showSistemas ? classes.selected : ""} `}
-                                  onClick={() => setShowSistemas(!showSistemas)}>
-                                <img
-                                    src={Sistemas}
-                                    className={classes.icon}
-                                    alt="Mercado Digital Anticorrupción"
-                                />
-                                <Typography className={classes.textMenu}>
-                                    SISTEMAS
-                                </Typography>
-                            </Grid>
-                            <Grid item className={`${classes.opc} ${showInterconexion ? classes.selected : ""}`}
-                                  onClick={() => setShowInterconexion(!showInterconexion)}>
-                                <img
-                                    src={Interconexion}
-                                    className={classes.icon}
-                                    alt="Interconexión"
-                                />
-                                <Typography className={classes.textMenu}>
-                                    INTERCONEXIÓN
-                                </Typography>
-                            </Grid>
-                            <Grid item className={classes.opc}>
-                                <Link href="https://mda.plataformadigitalnacional.org/"
-                                      className={classes.link}
-                                      onClick={() => ReactGA.pageview('/mda')}
-                                >
-                                    <img
-                                        src={MDA}
-                                        className={classes.icon}
-                                        alt="Mercado Digital Anticorrupción"
-                                    />
-                                    <Typography className={classes.textMenu}>
+                                </li>    
+                                
+                                
+                                <li>
+                                    <Link href="https://mda.plataformadigitalnacional.org/" 
+                                    onClick={() => ReactGA.pageview('/mda')}>
+                                    <img src={MDA} alt="Mercado Digital Anticorrupción"/>
+                                    <Typography>
                                         MERCADO DIGITAL
                                     </Typography>
-                                </Link>
+                                    </Link>
+                                </li>                                                                          
+                            </ul>
+                        </nav>
+                    </div>
+                    <div>
+                        
+                        {user.loggedIn?
+
+                            <Grid item onClick={() => handleOpenLoginDialog()}>
+                                <div className="logo-sesion">
+                                <img
+                                    src={LoginIcon}
+                                    alt="Usuario"
+                                />
+                                </div>
+                                <div className="autenticado">
+                                    <p>{user.nombres}</p> 
+                                    <p>Cerrar sesión</p>
+                                </div>
+                                
+                                
+                                   
+                                
                             </Grid>
-                        </Grid>
-
-                    </Grid>
-                    <Grid item/>
-                    {user.loggedIn?
-
-                        <Grid item style={{textAlign: 'center'}} onClick={() => handleOpenLoginDialog()}>
-                            <img
-                                src={LoginIcon}
-                                className={classes.iconSesion}
-                                alt="Usuario"
-                            />
-                            <Typography className={classes.textMenu} fontSize="small">
-                                {user.nombres}
-                            </Typography>
-                            <Typography className={classes.textMenu} fontSize="small">
-                                Cerrar sesión
-                            </Typography>
-                        </Grid>
-                        :
-                        <Grid item style={{textAlign: 'center'}} onClick={() => handleOpenLoginDialog()}>
-                            <img
-                                src={LoginIcon}
-                                className={classes.iconSesion}
-                                alt="Iniciar sesión"
-                            />
-                            <Typography className={classes.textMenu} fontSize="small">
-                                {user.nombres}
-                            </Typography>
-                            <Typography className={classes.textMenu} fontSize="small">
-                               Iniciar sesión
-                            </Typography>
-                        </Grid>
-                    }
-                </Grid>
+                            :
+                            <Grid item onClick={() => handleOpenLoginDialog()} >
+                                <div className="logo-sesion">
+                                <img
+                                    src={LoginIcon}
+                                    alt="Iniciar sesión"
+                                />
+                                </div>
+                                <div className="autenticado">
+                                    <p>{user.nombres}</p>
+                                    <p>Iniciar sesión</p>
+                                </div>
+                                <div>
+                                
+                                </div>
+                            </Grid>
+                        }  
+                    </div>     
+                </div>     
+                 
             </AppBar>
+            <section className="motivo-fondo"></section>
             {showSistemas &&
                 <SistemasMenu toogle={() => toggle()} systems={systems}/>
             }

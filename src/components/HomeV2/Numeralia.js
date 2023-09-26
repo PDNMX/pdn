@@ -9,25 +9,25 @@ const ligaDatosNumeralia = process.env.REACT_APP_NUMERALIA;
 const styles = theme => ({
     container: {
         padding: "5% 3%",
-        backgroundColor: 'rgba(42, 116, 145)',
+        backgroundColor: '#7a3d71',
         minHeight: '320px'
     },
     Foot: {
-        backgroundColor: '#3E5866',
+        backgroundColor: '#5b2f52',
     },
     headingText: {
-        color: "#efd643",
+        color: "whitesmoke",
         fontWeight: 500,
         fontSize: '45px',
     },
     text:{
         fontSize: '18px',
         fontWeight: 400,
-        color: "#efd643",
+        color: "whitesmoke",
     },
     textFoot:{
         fontSize: '15px',
-        color: theme.palette.text.main,
+        color: theme.palette.secondary.contrastText,
         margin: "5px"
     },
     

@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid } from '@mui/material';
 
 import Mercado from './Mercado';
-import Interconexion from './Interconexion';
+import BlogComponent from '../Blog/BlogComponent';
 
 const Cards = props => {
   return (
@@ -10,8 +10,8 @@ const Cards = props => {
       <Grid item>
         <Mercado />
       </Grid>
-      <Grid item>
-        <Interconexion />
+      <Grid item xs={12} md={12} lg={12} xl={12}>
+        <BlogComponent/>
       </Grid>
     </Grid>
   );

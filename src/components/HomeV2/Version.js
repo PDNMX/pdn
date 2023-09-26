@@ -5,19 +5,14 @@ import {UserContext} from "../Login/UserContext";
 
 const styles = theme => ({
     root:{
-        backgroundColor: theme.palette.azulPDN,
-        padding: 2,
-        color: '#3e5968',
-        paddingLeft: theme.spacing(8)
+
 
     },
     fecha:{
         color: '#E1E8EB'
     },
     bienvenida: {
-        backgroundColor: "#d3d3d3",
-        padding: 2,
-        paddingLeft: theme.spacing(8)
+
     }
 });
 

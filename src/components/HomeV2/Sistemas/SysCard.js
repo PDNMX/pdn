@@ -10,10 +10,10 @@ const styles = theme => ({
     box: {
         margin: theme.spacing(2),
         padding: theme.spacing(2),
-        width: 230,
+        width: 260,
         borderRadius: 2,
         //display: "flex",
-        //justifyContent: "center"
+        //justifyContent: "center",
         textAlign: "center",
         textDecoration: "none"
     },

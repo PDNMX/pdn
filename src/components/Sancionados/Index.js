@@ -22,7 +22,7 @@ import ThemeV2 from '../../ThemeV2';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    backgroundColor: theme.palette.primario.main,
+    backgroundColor: theme.palette.primary.main,
     backgroundImage: `url(${bgimg})`,
     backgroundRepeat: 'repeat',
     backgroundPosition: 'fixed'
@@ -35,7 +35,7 @@ const styles = theme => ({
     marginTop: theme.spacing(8)
   },
   sectionT: {
-    color: theme.palette.primario.contrastText
+    color: theme.palette.primary.contrastText
   },
   image: {
     width: '60px'
@@ -49,7 +49,7 @@ const styles = theme => ({
     'margin': 0,
     '&:hover': {
       cursor: 'pointer',
-      borderColor: theme.palette.secundario.main,
+      borderColor: theme.palette.secondary.main,
       transition: 'background 0.3s ease',
       opacity: 0.7
     },
@@ -63,7 +63,7 @@ const styles = theme => ({
     'marginRight': 10
   },
   cardSeleccionada: {
-    borderColor: theme.palette.secundario.main,
+    borderColor: theme.palette.secondary.main,
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
     paddingTop: theme.spacing(1),

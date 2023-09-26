@@ -1,4 +1,4 @@
-import bgimg from '../../assets/rediseno/fondo_cruces_dark.png';
+import bgimg from '../../assets/rediseno2023/imgs/fondos/motivo-graficas.svg';
 
 const CssDeclaraciones = theme => ({
   root: {
@@ -7,12 +7,12 @@ const CssDeclaraciones = theme => ({
   backgroundCruces: {
     flexGrow: 1,
     backgroundImage: `url(${bgimg})`,
-    backgroundRepeat: 'repeat',
+    backgroundRepeat: 'no-repet',
     backgroundAttachment: 'fixed'
   },
   //principal
   bgContainer: {
-    backgroundColor: theme.palette.S1.shade
+    backgroundColor: theme.palette.S1.main
   },
   card: {
     // backgroundColor: "#34b3eb", //theme.palette.azul.color,
@@ -24,12 +24,12 @@ const CssDeclaraciones = theme => ({
     'margin': 0,
     '&:hover': {
       cursor: 'pointer',
-      backgroundColor: theme.palette.S1.shade,
+      backgroundColor: theme.palette.S1.dark,
       transition: 'background 0.3s ease'
     }
   },
   cardSeleccionada: {
-    backgroundColor: theme.palette.S1.shade,
+    backgroundColor: theme.palette.S1.dark,
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
     paddingTop: theme.spacing(2),
@@ -241,21 +241,21 @@ const CssDeclaraciones = theme => ({
   },
   resultadosTitulo: {
     backgroundColor: theme.palette.background.opaque,
-    color: theme.palette.primario.contrastText,
+    color: theme.palette.primary.contrastText,
     borderStyle: 'solid',
     borderWidth: 1,
-    borderColor: theme.palette.secundario.main
+    borderColor: theme.palette.secondary.main
   },
   resultadoContenido: {
     // backgroundColor: theme.palette.background.opaque,
     backgroundColor: 'rgba(42, 116, 145)',
-    color: theme.palette.primario.contrastText,
+    color: theme.palette.primary.contrastText,
     // borderStyle: 'solid',
     // borderWidth: 1,
     padding: theme.spacing(2),
-    borderLeft: `1px solid ${theme.palette.secundario.main}`,
-    borderRight: `1px solid ${theme.palette.secundario.main}`,
-    borderBottom: `1px solid ${theme.palette.secundario.main}`
+    borderLeft: `1px solid ${theme.palette.secondary.main}`,
+    borderRight: `1px solid ${theme.palette.secondary.main}`,
+    borderBottom: `1px solid ${theme.palette.secondary.main}`
   },
   perfilRoot: {
     paddingBottom: theme.spacing(2),
@@ -342,7 +342,7 @@ const CssDeclaraciones = theme => ({
     marginBottom: '1rem'
   },
   btnBack: {
-    color: theme.palette.secundario.light
+    color: theme.palette.secondary.light
   },
   logo: {
     width: '60px'
@@ -356,7 +356,7 @@ const CssDeclaraciones = theme => ({
   },
   selectedTab: {
     borderStyle: 'solid',
-    borderColor: theme.palette.secundario.main,
+    borderColor: theme.palette.secondary.main,
     borderRadius: '10px 10px 0px 0px',
     borderBottomStyle: 'none',
     padding: theme.spacing(1),
@@ -380,10 +380,10 @@ const CssDeclaraciones = theme => ({
     backgroundColor: theme.palette.background.opaque,
     padding: theme.spacing(4),
     marginBottom: theme.spacing(4),
-    color: theme.palette.primario.contrastText,
+    color: theme.palette.primary.contrastText,
     borderStyle: 'solid',
     borderWidth: 1,
-    borderColor: theme.palette.secundario.main,
+    borderColor: theme.palette.secondary.main,
     borderRadius: '0px 10px 10px 10px'
   },
   cuadroActualizacion: {
@@ -401,10 +401,10 @@ const CssDeclaraciones = theme => ({
     backgroundColor: 'rgba(42, 116, 145)',
     padding: theme.spacing(4),
     marginBottom: theme.spacing(4),
-    color: theme.palette.primario.contrastText
+    color: theme.palette.primary.contrastText
   },
   text_color: {
-    color: theme.palette.primario.contrastText
+    color: theme.palette.primary.contrastText
   },
   menulateral_fondo: {
     backgroundColor: 'rgba(42, 116, 145)'
@@ -423,7 +423,7 @@ const CssDeclaraciones = theme => ({
       color: theme.palette.azulPDN
     },
     '&:hover': {
-      color: '#FFF',
+      color: '#FF0000',
       borderBottom: '2px solid #3ab0e5'
     }
   }

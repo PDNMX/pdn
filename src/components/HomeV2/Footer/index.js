@@ -21,7 +21,7 @@ const Footer = props => {
   const isXsUp = useIsWidthUp('lg');
 
   return isXsUp ? (
-    <Grid container className={classes.root} direction='row' alignItems='center'>
+    <Grid container className="footer" direction='row' alignItems='center'>
       <Grid item xs={4}>
         <LeftFooter />
       </Grid>

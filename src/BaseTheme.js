@@ -5,7 +5,7 @@ export default createTheme(
   {
     typography: {
       useNextVariants: true,
-      fontFamily: ['"Roboto"', 'sans-serif'].join(',')
+      fontFamily: ['"Muli"', 'sans-serif'].join(',')
     },
     palette: {
       primary: {
@@ -18,17 +18,15 @@ export default createTheme(
         light: '#ffff5c',
         dark: '#c8af00'
       },
-      primario: {
-        main: '#0d3b49',
+      primary: {
+        main: '#ffffff',
         light: '#3d6575',
-        dark: '#001621',
-        contrastText: '#E1E8EB'
+        dark: '#001621'
       },
-      secundario: {
+      secondary: {
         main: '#3ab0e5',
         light: '#79e2ff',
         dark: '#0081b3',
-        contrastText: '#0d3b49',
         linkColor: '#89d4f2'
       },
       text: {
@@ -44,7 +42,7 @@ export default createTheme(
         tableBody: '#f2f2f2',
         paperChart: '#24768f'
       },
-      azulPDN: '#0081b3',
+      azulPDN: '#ffffff',
       yellowColor: '#ffe01b',
       greyColor: '#666666',
       redColor: '#B00020',

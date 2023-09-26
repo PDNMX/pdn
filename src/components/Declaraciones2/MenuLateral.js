@@ -9,7 +9,7 @@ import withStyles from '@mui/styles/withStyles';
 const useStyles = makeStyles(theme => ({
   root: {
     'backgroundColor': 'rgba(42, 116, 145)',
-    'color': theme.palette.primario.contrastText,
+    'color': theme.palette.primary.contrastText,
     'fontSize': 12,
     'whiteSpace': 'normal',
     '&:hover': {

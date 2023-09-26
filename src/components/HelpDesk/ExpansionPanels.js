@@ -31,7 +31,7 @@ const AccordionSummary = withStyles(theme =>({
         color: theme.palette.text.main 
     },
     expandIconWrapper: {
-        color: theme.palette.secundario.main,
+        color: theme.palette.secondary.main,
     },
 }))(MuiExpansionPanelSummary);
 
@@ -40,7 +40,7 @@ const AccordionDetails = withStyles(theme => ({
         padding: theme.spacing(2),
         color: theme.palette.text.main,
         backgroundColor: theme.palette.background.opaque,
-        border: '1px solid' + theme.palette.secundario.main,
+        border: '1px solid' + theme.palette.secondary.main,
     },
 }))(MuiExpansionPanelDetails);
 

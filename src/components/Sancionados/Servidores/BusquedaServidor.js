@@ -327,12 +327,12 @@ function BusquedaServidor({ classes }) {
         <Grid item md={10} />
 
         <Grid item xs={12} md={1}>
-          <Button variant='contained' color='secundario' disabled={!activeClean} className={classes.button} onClick={() => handleCleanAll()}>
+          <Button variant='contained' color='secondary' disabled={!activeClean} className={classes.button} onClick={() => handleCleanAll()}>
             Limpiar
           </Button>
         </Grid>
         <Grid item xs={12} md={1}>
-          <Button variant='contained' color='secundario' disabled={!activeSearch} className={classes.button} onClick={() => handleSearchPrevios()}>
+          <Button variant='contained' color='secondary' disabled={!activeSearch} className={classes.button} onClick={() => handleSearchPrevios()}>
             Buscar
           </Button>
         </Grid>

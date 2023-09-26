@@ -4,7 +4,7 @@ import {withStyles} from '@mui/styles';
 
 const styles = theme => ({
     root: {
-       background: theme.palette.primario.main
+       background: theme.palette.primary.main
     },
     tableHead: {
         color: theme.palette.text.main

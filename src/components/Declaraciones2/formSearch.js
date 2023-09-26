@@ -345,7 +345,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                 className={classes.button}
                 type='reset'
                 variant='contained'
-                color='secundario'
+                color='secondary'
                 onClick={e => {
                   cleanForm();
                 }}
@@ -356,7 +356,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                 className={classes.button}
                 type='submit'
                 variant='contained'
-                color='secundario'
+                color='secondary'
                 onClick={e => {
                   handlerFind();
                   ReactGA.event({ category: 'busqueda-s1', action: 'click' });

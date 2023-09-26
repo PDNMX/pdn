@@ -81,13 +81,13 @@ function TablaParticularesSancionados({
             <Grid container justifyContent='center' spacing={0} className={classes.gridTable}>
                 <Grid item xs={12} className={classes.section}>
                     {data && data.length > 0 &&
-                    <Typography variant="h6" color={'primario.contrastText'}>Pulsa sobre el registro para ver su
+                    <Typography variant="h6" color={'primary.contrastText'}>Pulsa sobre el registro para ver su
                         detalle<br/></Typography>
                     }
                 </Grid>
                 <Grid item xs={12} textAlign={'right'}>
                     <Button startIcon={<ArrowBackIcon />} onClick={()=> returnToPrevios()}
-                            color="secundario" className={classes.buttonBack}>
+                            color="secondary" className={classes.buttonBack}>
                         Regresar
                     </Button>
                 </Grid>
@@ -101,7 +101,7 @@ function TablaParticularesSancionados({
                                         columnData.map(column => {
                                             return (
                                                 <TableCell key={column.id}>
-                                                    <Typography color={'primario.contrastText'}
+                                                    <Typography color={'primary.contrastText'}
                                                                 variant={"body1"}>
                                                         {column.label}
                                                     </Typography>

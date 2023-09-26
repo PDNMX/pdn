@@ -449,13 +449,13 @@ function BusquedaParticular ({classes}){
 
                         <Grid item md={10}/>
                         <Grid item xs={12} md={1}>
-                            <Button variant="contained" color="secundario" className={classes.button}
+                            <Button variant="contained" color="secondary" className={classes.button}
                                     onClick={() => handleCleanAll()}>
                                 Limpiar
                             </Button>
                         </Grid>
                         <Grid item xs={12} md={1}>
-                            <Button variant="contained" color="secundario" className={classes.button}
+                            <Button variant="contained" color="secondary" className={classes.button}
                                     onClick={() => {
                                         handleSearchPrevios();
                                         ReactGA.event({ category: 'busqueda-s3P', action: 'click' });

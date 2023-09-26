@@ -30,36 +30,9 @@ const styles = theme => ({
         marginTop: 0, */
     },
     paper: {
-        backgroundColor: theme.palette.background.opaque,
         padding: theme.spacing(4),
-        marginBottom: theme.spacing(4),
-        color: theme.palette.primario.contrastText,
-        borderStyle: 'solid',
-        borderWidth: 1,
-        borderColor: theme.palette.secundario.main,
-        borderRadius: '0px 10px 10px 10px'
-    },
-    text_color: {
-        color: theme.palette.primario.contrastText
-    },
-    enlaces: {
-        'textDecoration': 'none',
-        // 'color': '#b1bcc1',
-        'color': theme.palette.azulPDN,
-        '&:visited': {
-          color: theme.palette.azulPDN
-        },
-        '&:link': {
-          color: theme.palette.azulPDN
-        },
-        '&:active': {
-          color: theme.palette.azulPDN
-        },
-        '&:hover': {
-          color: '#FFF',
-          borderBottom: '2px solid #3ab0e5'
-        }
-      }
+        marginBottom: theme.spacing(4)
+    }
 });
 /* import styles from '../Declaraciones2/style'; */
 
@@ -119,7 +92,7 @@ const AlertDialog = props => {
 
                 </DialogContent>
                 <DialogActions>
-                    <ButtonPDN onClick={handleClose} style={{ color: 'rgba(0, 0, 0, 0.87)' }}>
+                    <ButtonPDN onClick={handleClose}>
                         Aceptar
                     </ButtonPDN>
                 </DialogActions>

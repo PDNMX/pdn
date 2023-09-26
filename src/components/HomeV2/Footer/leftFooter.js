@@ -41,7 +41,7 @@ const LeftFooter = props => {
           pdn@sesna.gob.mx
         </Link>
       </Grid>
-      <Grid item className={classes.acercade}>
+      <Grid item className='degradado'>
         <Grid container spacing={0} direction={'row'} justifyContent={'flex-end'} alignItems={'center'}>
           <Grid item>
             <Link href='https://creativecommons.org/licenses/by-nc/4.0/deed.es' rel='license' target='_blank' onClick={()=>ReactGA.event({ category: 'licencia-creative-commons', action: 'click' })}>

@@ -13,17 +13,17 @@ const styles = theme =>  ({
         flexGrow:1,
     },
     descarga: {
-        color: theme.palette.primario.contrastText,
+        color: theme.palette.primary.contrastText,
         fontWeight: 500,
         fontSize: '48px',
     },
     jsonLabel: {
-        color: theme.palette.primario.contrastText,
+        color: theme.palette.primary.contrastText,
         fontSize: '48px',
         paddingBottom: theme.spacing(1)
     },
     iconDownload:{
-        color: theme.palette.primario.contrastText,
+        color: theme.palette.primary.contrastText,
         fontSize: 60
     }
 });

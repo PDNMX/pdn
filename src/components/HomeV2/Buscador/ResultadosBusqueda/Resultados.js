@@ -25,7 +25,7 @@ const Resultados = props => {
           </Grid>
           {p.finding ? (
             <Grid item xs={4}>
-              <CircularProgress color='secundario' size={20} />
+              <CircularProgress color='secondary' size={20} />
             </Grid>
           ) : (
             <Grid item xs={4}>

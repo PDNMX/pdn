@@ -10,7 +10,7 @@ import {StyledEngineProvider} from '@mui/material/styles';
 import ReactGA from 'react-ga4';
 import Layout from "./components/HomeV2/Layout";
 
-import BaseTheme from "./BaseTheme";
+import BaseTheme2023 from "./BaseTheme2023";
 import {UserContext} from "./components/Login/UserContext";
 import {getUser} from "./components/Login/Auth";
 
@@ -51,7 +51,7 @@ const App  = props => {
 
   return (
       <UserContext.Provider value={value}>
-        <ThemeProvider theme={BaseTheme}>
+        <ThemeProvider theme={BaseTheme2023}>
           <StyledEngineProvider injectFirst>
             <Router basename={process.env.PUBLIC_URL}>
               <ScrollToTop>

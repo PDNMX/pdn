@@ -1,10 +1,8 @@
 const CssFooter = theme => ({
   root: {
-    flexGrow: 1,
-    height: 250,
-    color: '#b1bcc1',
-    backgroundColor: theme.palette.background.opaque,
-    marginTop: theme.spacing(6)
+    backgroundColor:'#fff',
+    borderTop:"1px solid #ccc",
+    height:"285px"
   },
   emailContacto: {
     'display': 'inline-block',
@@ -42,8 +40,6 @@ const CssFooter = theme => ({
   },
   acercade: {
     display: 'inline-block',
-    color: '#5d7b8a',
-    backgroundColor: '#bae3f7',
     with: '100%',
     height: '50px',
     marginTop: '10px',
@@ -131,35 +127,14 @@ const CssFooter = theme => ({
     paddingTop: theme.spacing(6)
   },
   //Right
-  lsesna: {
-    width: 191,
-    padding: 0,
-    margin: 0,
-    border: 0
-  },
-  lpdn: {
-    width: 242,
+  linstitucion: {
+    height: 60,
     padding: 0,
     margin: 0,
     border: 0
   },
   enlaces: {
-    'textDecoration': 'none',
-    // 'color': '#b1bcc1',
-    'color': '#666',
-    '&:visited': {
-      color: '#b1bcc1'
-    },
-    '&:link': {
-      color: '#b1bcc1'
-    },
-    '&:active': {
-      color: '#b1bcc1'
-    },
-    '&:hover': {
-      color: '#FFF',
-      borderBottom: '2px solid #3ab0e5'
-    }
+
   }
 });
 

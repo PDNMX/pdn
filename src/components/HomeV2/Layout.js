@@ -1,6 +1,5 @@
 import React from 'react';
 import Banner from './Banner';
-import Version from "./Version";
 import Footer from "./Footer/";
 import ChatBotPDN from "../ChatBot/ChatBotPDN";
 import Glosario from "../Glosario/";
@@ -15,8 +14,7 @@ const Layout = ({children})=>{
     return (
         <React.Fragment>
             <div className={classes.backgroundCruces}>
-                <Banner/>
-                <Version/>
+                <Banner/>    
                 {children}
                 <AsistenteBusqueda/>
                 <Glosario/>

@@ -19,13 +19,13 @@ const CssSeccDeclaraciones = theme => ({
     padding: theme.spacing(2),
     backgroundColor: 'rgba(42, 116, 145)',
     marginBottom: theme.spacing(4),
-    color: theme.palette.primario.contrastText
+    color: theme.palette.primary.contrastText
   },
   cardTitle: {
     fontSize: 13,
     fontWeight: 'bold',
     marginBottom: 10,
-    color: theme.palette.primario.contrastText
+    color: theme.palette.primary.contrastText
   },
   card: {
     fontSize: 14,

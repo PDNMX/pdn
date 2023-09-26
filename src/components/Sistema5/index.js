@@ -23,10 +23,10 @@ const styles = theme => ({
     paper: {
         backgroundColor: theme.palette.background.opaque,
         padding: theme.spacing(2),
-        color: theme.palette.primario.contrastText,
+        color: theme.palette.primary.contrastText,
         borderStyle: 'solid',
         borderWidth: 1,
-        borderColor: theme.palette.secundario.main,
+        borderColor: theme.palette.secondary.main,
         borderRadius: '10px 10px 10px 10px',
         display: 'flex',
         justifyContent: "center"

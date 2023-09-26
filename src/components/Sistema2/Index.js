@@ -48,7 +48,7 @@ const styles = theme => ({
         margin: 0,
         "&:hover": {
             cursor: 'pointer',
-            borderColor: theme.palette.secundario.main,
+            borderColor: theme.palette.secondary.main,
             transition: 'background 0.3s ease',
             opacity: .7
         },
@@ -63,7 +63,7 @@ const styles = theme => ({
 
     },
     cardSeleccionada: {
-        borderColor: theme.palette.secundario.main,
+        borderColor: theme.palette.secondary.main,
         paddingLeft: theme.spacing(1),
         paddingRight: theme.spacing(1),
         paddingTop: theme.spacing(1),

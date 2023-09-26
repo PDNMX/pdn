@@ -59,10 +59,7 @@ const BootstrapDialogTitle = (props) => {
           aria-label="cerrar"
           onClick={onClose}
           sx={{
-            position: "absolute",
-            right: 8,
-            top: 8,
-            color: (theme) => theme.palette.grey[500],
+
           }}
         >
           <CloseIcon />
@@ -93,12 +90,8 @@ export default function CustomizedDialogs() {
   return (
     <>
       <Button
-        className={classes.btnPDN}
-        variant="contained"
-        size="large"
         endIcon={<SearchIcon />}
         onClick={handleClickOpen}
-        margin={"normal"}
       >
         Asistente de búsqueda
       </Button>

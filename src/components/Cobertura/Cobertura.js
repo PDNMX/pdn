@@ -23,7 +23,7 @@ const styles = theme => ({
         background: theme.palette.background.opaque,
         borderRadius: "0 10px 10px 10px",
         borderStyle: 'solid',
-        borderColor: theme.palette.secundario.main
+        borderColor: theme.palette.secondary.main
         //border: "2px",
     },
     tabPanel2: {
@@ -31,7 +31,7 @@ const styles = theme => ({
         borderRadius: "0 10px 10px 10px",
         borderStyle: 'solid',
         //border: "2px",
-        borderColor: theme.palette.secundario.main
+        borderColor: theme.palette.secondary.main
     },
 });
 
