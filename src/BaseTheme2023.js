@@ -9,6 +9,7 @@ export default createTheme(
     },
     typography: {
       useNextVariants: true,
+      color:'#ff0',
       fontFamily: ['"Muli"', 'sans-serif'].join(','),
       htmlFontSize: 21,
       fontSize:24,
