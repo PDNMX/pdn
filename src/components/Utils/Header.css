@@ -75,7 +75,7 @@
     background: white;
     margin: 10px;
     border-radius: 75px;
-    padding: 0px 50px;
+    padding: 0px 30px;
   }
   
   .encabezado nav ul {
@@ -89,7 +89,7 @@
   .encabezado nav li {
     display: flex;
     align-items: center;
-    padding: 3px 10px;
+    padding: 3px 7px;
   }
   
   
@@ -212,8 +212,7 @@
   padding: 45px 2rem;
 }
 
-
-  /*...... FIN BLOG .....*/
+/*...... FIN BLOG .....*/
 
 
 
@@ -221,11 +220,136 @@
 .footer {
   background: #fff;
   border-top: 1px solid #ccc;
-  height: 285px;
+  /* height: 285px; */
+  display: flex;
+  align-items: stretch;
 }
 
-.footer .degradado {
+.footer .columna-central {
+  display: flex;
+  justify-content: center;
+}
+
+.footer .texto-izq {
+  text-align: right;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.footer .texto-der {
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.footer .columna-logos img {
+  padding: 0px 0px 15px 0px;
+  height: 62px;
+}
+
+.footer .acerca {
   background: transparent linear-gradient(230deg, #1C7CBF 0%, #1C7CBF 4%, #9F58E2 49%, #6D4061 100%) 0% 0% no-repeat padding-box;
+}
+
+.footer .redes img, .footer .cc-license img {
+  height: 30px;
+}
+
+.footer .acerca p {
+
+  text-align: right;
+  color: #e8e8e8;
+}
+
+.footer .acerca p a {
+  color: #e8e8e8;
+  text-decoration: none;
+}
+
+.footer .acerca p a:hover {
+  text-decoration: underline;
+}
+
+
+.footer p {
+  padding: 5px 10px 5px 10px;
+}
+
+
+.footer a {
+  font-size: .7em;
+  padding: 0 8px;
+  margin: 4px 0;
+}
+
+.footer .redes, .footer .cc-license {
+  margin: 10px 0;
+}
+
+.footer .redes {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+.footer .acerca {
+  margin: 0;
+}
+
+.footer li a {
+  padding: 0;
+  text-transform: none;
+}
+
+.footer li a:hover {
+  text-decoration: underline;
+}
+.footer .rellenar-altura {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer .col2 {
+  background: #815474;
+  width: 86px;
+  height: 100%;
+}
+
+.footer ul {
+  padding: 10px;
+}
+
+.footer figure {
+  margin: 0px 10px;
+}
+
+.footer .col1 li {
+  text-align: right;
+}
+
+.footer > div {
+  padding: 25px 0;
+}
+
+.footer .columna-central {
+  padding: 0;
+}
+
+.footer .acerca a {
+  color: #e8e8e8;
+  text-decoration: none;
+}
+
+.footer .acerca a:hover {
+  text-decoration: underline;
+}
+
+.footer .cc-license > div {
+  align-items: flex-start;
+  justify-content: flex-start;
+  display: flex;
 }
 
   /*.... FIN FOOTER .....*/

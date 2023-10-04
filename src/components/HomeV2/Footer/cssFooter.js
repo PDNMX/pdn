@@ -128,10 +128,7 @@ const CssFooter = theme => ({
   },
   //Right
   linstitucion: {
-    height: 60,
-    padding: 0,
-    margin: 0,
-    border: 0
+ 
   },
   enlaces: {
 

@@ -12,9 +12,9 @@ export default createTheme(
       color:'#ff0',
       fontFamily: ['"Muli"', 'sans-serif'].join(','),
       htmlFontSize: 21,
-      fontSize:24,
+      fontSize:18,
       h1: {
-        fontSize:'6rem',
+        fontSize:'2rem',
         lineHeight:'1.167' 
       },
       h2: {
