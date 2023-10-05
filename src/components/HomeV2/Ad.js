@@ -12,10 +12,10 @@ const styles = theme => ({
     root: {
         flexGrow: 1,
         height: '200px',
-        backgroundColor: '#f5f5f5',
+/*         backgroundColor: '#f5f5f5',
         backgroundImage: `url(${bgimg})`,
         backgroundSize: 'cover',
-        backgroundPosition: 'center'
+        backgroundPosition: 'center' */
     },
     logo:{
         paddingTop: theme.spacing(2),

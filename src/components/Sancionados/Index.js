@@ -22,10 +22,10 @@ import ThemeV2 from '../../ThemeV2';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    backgroundColor: theme.palette.primary.main,
+/*     backgroundColor: theme.palette.primary.main,
     backgroundImage: `url(${bgimg})`,
     backgroundRepeat: 'repeat',
-    backgroundPosition: 'fixed'
+    backgroundPosition: 'fixed' */
   },
   whiteText: {
     //color: theme.palette.textGrey.color

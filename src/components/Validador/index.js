@@ -18,9 +18,9 @@ import bgimg from "../../assets/rediseno/fondo_cruces_dark.png";
 const styles = theme => ({
     root: {
         flexGrow :1,
-        backgroundImage: `url(${bgimg})`,
+/*         backgroundImage: `url(${bgimg})`,
         backgroundRepeat: "repeat",
-        backgroundAttachment: "fixed",
+        backgroundAttachment: "fixed", */
     },
     rootItem: {
         maxWidth: "1200px",

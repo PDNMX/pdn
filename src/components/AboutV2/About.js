@@ -15,9 +15,9 @@ import S6 from "@assets/rediseno/sistemas_sin_fondo/btn-s6.svg";
 const styles = theme => ({
     root: {
         flexGrow: 1,
-        backgroundImage: `url(${bgimg})`,
+/*         backgroundImage: `url(${bgimg})`,
         backgroundRepeat: "repeat",
-        backgroundAttachment: "fixed"
+        backgroundAttachment: "fixed" */
     },
     rootItem: {
         maxWidth: "1200px",

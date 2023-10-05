@@ -41,7 +41,7 @@ export default createTheme(
           },
           formControl: {
             // texto de los inputs no focus
-            color: 'rgba(255, 255, 255, 0.67)'
+            color: 'rgba(0, 0, 0, 0.67)'
           }
         }
       },
@@ -82,7 +82,7 @@ export default createTheme(
       MuiTableSortLabel: {
         styleOverrides: {
           root: {
-            'color': '#E1E8EB',
+            'color': '#00f',
             '&:hover': {
               color: AzulPDN
             },
@@ -102,7 +102,7 @@ export default createTheme(
         styleOverrides: {
           input: {
             // color del texto del input
-            color: 'rgba(255, 255, 255, 0.67)'
+            color: '#b25fac'
           }
         }
       },
@@ -143,7 +143,7 @@ export default createTheme(
         styleOverrides: {
           root: {
             '& .MuiChip-label': {
-              color: '#E1E8EB'
+              color: '#00f'
             },
             '& .MuiChip-deleteIcon': {
               'color': amarilloPDN,

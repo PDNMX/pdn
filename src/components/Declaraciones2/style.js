@@ -6,9 +6,9 @@ const CssDeclaraciones = theme => ({
   },
   backgroundCruces: {
     flexGrow: 1,
-    backgroundImage: `url(${bgimg})`,
+/*     backgroundImage: `url(${bgimg})`,
     backgroundRepeat: 'no-repet',
-    backgroundAttachment: 'fixed'
+    backgroundAttachment: 'fixed' */
   },
   //principal
   bgContainer: {

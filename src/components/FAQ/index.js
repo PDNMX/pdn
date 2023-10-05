@@ -9,9 +9,9 @@ import Link from "@mui/material/Link";
 const styles = theme => ({
     root:{
         flexGrow: 1,
-        backgroundImage: `url(${bgimg})`,
+/*         backgroundImage: `url(${bgimg})`,
         backgroundRepeat: "repeat",
-        backgroundAttachment: "fixed"
+        backgroundAttachment: "fixed" */
     },
     item: {
         maxWidth: '1200px',

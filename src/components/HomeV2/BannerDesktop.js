@@ -43,13 +43,13 @@ const BannerDesktop = props => {
     const toggle = () => {
         setTimeout(() => {
             setShowSistemas(!showSistemas);
-        }, 10000000)
+        }, 1000)
     }
 
     const toggleInterconexion = () => {
         setTimeout(() => {
             setShowInterconexion(!showInterconexion)
-        }, 10000000)
+        }, 1000)
     }
 
     useEffect(() => {
