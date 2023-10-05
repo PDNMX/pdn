@@ -9,10 +9,10 @@ import erizoConstructor from "../../assets/rediseno/ico-espin-construction.svg";
 const styles = theme => ({
     root: {
         flexGrow: 1,
-        backgroundImage: `url(${bgimg})`,
+/*         backgroundImage: `url(${bgimg})`,
         backgroundRepeat: "repeat",
         backgroundPosition: 'fixed',
-        color: '#f2f2f2'
+        color: '#f2f2f2' */
     },
     item: {
         maxWidth: 1200,

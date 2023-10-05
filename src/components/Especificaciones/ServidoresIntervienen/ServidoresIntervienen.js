@@ -15,11 +15,11 @@ import ServiceAgreement from '../ServiceAgreement';
 const styles = theme => ({
     root: {
         flexGrow: 1,
-        backgroundColor: theme.palette.primary.main,
+/*         backgroundColor: theme.palette.primary.main,
         backgroundImage: `url(${bgimg})`,
         backgroundRepeat: "repeat",
         backgroundPosition: 'fixed',
-        color: '#f2f2f2'
+        color: '#f2f2f2' */
     },
     list: {
         width: 250,

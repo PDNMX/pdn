@@ -22,18 +22,18 @@ import CoberturaVistaIndividual from "../components/Cobertura/VistaDetalleEstado
 // import DeclaracionesS1 from '../components/Declaraciones';
 import DeclaracionesS1v2 from '../components/Declaraciones2';
 
-import IconS2 from "../assets/rediseno/ico_sistemas/ico_s2_color.svg";
-import IconS3 from "../assets/rediseno/ico_sistemas/ico_s3_color.svg";
-import IconS6 from "../assets/rediseno/ico_sistemas/ico_s6_color.svg";
-import IconS1 from "../assets/rediseno/ico_sistemas/ico_s1_color.svg";
-import IconS4 from "../assets/rediseno/ico_sistemas/ico_s4_color.svg";
-import IconS5 from "../assets/rediseno/ico_sistemas/ico_s5_color.svg";
+import IconS2 from "../assets/rediseno2023/imgs/iconos/sistemas/ico_s2.svg";
+import IconS3 from "../assets/rediseno2023/imgs/iconos/sistemas/ico_s3.svg";
+import IconS6 from "../assets/rediseno2023/imgs/iconos/sistemas/ico_s6.svg";
+import IconS1 from "../assets/rediseno2023/imgs/iconos/sistemas/ico_s1.svg";
+import IconS4 from "../assets/rediseno2023/imgs/iconos/sistemas/ico_s4.svg";
+import IconS5 from "../assets/rediseno2023/imgs/iconos/sistemas/ico_s5.svg";
 import IconFAQ from "../assets/rediseno/ico_faq.svg";
-import IconEspecificaciones from "../assets/rediseno/ico_especificaciones.svg";
-import IconAbout from "../assets/rediseno/ico_que-es-PDN.svg";
-import IconHelpDesk from "../assets/rediseno/ico_mesa-ayuda.svg";
+import IconEspecificaciones from "../assets/rediseno2023/imgs/iconos/menu/ico_especificaciones.svg";
+import IconAbout from "../assets/rediseno2023/imgs/iconos/menu/ico_que-es-pdn.svg";
+import IconHelpDesk from "../assets/rediseno2023/imgs/iconos/menu/ico_mesa-ayuda.svg";
 import IconValidador from "../assets/rediseno/validador.svg";
-import IconCobertura from "../assets/rediseno/ico_cobertura.svg";
+import IconCobertura from "../assets/rediseno2023/imgs/iconos/menu/ico_cobertura.svg";
 
 
 /*
@@ -57,7 +57,7 @@ const pdnRoutes = [
 		private: false,
 		name: "Sistema de evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal",
 		shortName: "Sistema de Declaraciones",
-		color: "#F8CAC4",
+		color: "#3a1c3a",
 		icon: IconS1,
 		disabled: false,
 		type: "system"
@@ -69,7 +69,7 @@ const pdnRoutes = [
 		private: false,
 		name: "Sistema de los servidores públicos que intervengan en procedimientos de contrataciones públicas",
 		shortName: "Sistema de Servidores Públicos en contrataciones",
-		color: "#D8ACD8",
+		color: "#3a1c3a",
 		icon: IconS2,
 		disabled: false,
 		type: "system"
@@ -81,7 +81,7 @@ const pdnRoutes = [
 		private: false,
 		name: "Sistema nacional de servidores públicos y particulares sancionados",
 		shortName: "Sistema de Sancionados",
-		color: "#C6C1EB",
+		color: "#3a1c3a",
 		icon: IconS3,
 		disabled: false,
 		type:'system'
@@ -93,7 +93,7 @@ const pdnRoutes = [
 		private: false,
 		name: "Sistema de información y comunicación del Sistema Nacional Anticorrupción y del Sistema Nacional de Fiscalización",
 		shortName: "Sistema de Fiscalización",
-		color: "#C4DDB6",
+		color: "#3a1c3a",
 		icon: IconS4,
 		disabled: true,
 		type: "system"
@@ -105,7 +105,7 @@ const pdnRoutes = [
 		private: false,
 		name: "Sistema de denuncias públicas de faltas administrativas y hechos de corrupción",
 		shortName: "Sistema de Denuncias",
-		color: "#34c9b2",
+		color: "#3a1c3a",
 		icon: IconS5,
 		disabled: true,
 		type: "system"
@@ -117,7 +117,7 @@ const pdnRoutes = [
 		private: false,
 		name: "Sistema de información pública de contrataciones",
 		shortName: "Sistema de Contrataciones",
-		color: "#B2DBEB",
+		color: "#3a1c3a",
 		icon: IconS6,
 		disabled: false,
 		type: "system"
@@ -129,7 +129,7 @@ const pdnRoutes = [
 		private: false,
 		name: "Especificaciones técnicas",
 		shortName: "Especificaciones",
-		color: "#f2f2f2",
+		color: "#713972",
 		icon: IconEspecificaciones
 	},
 	{
@@ -140,7 +140,7 @@ const pdnRoutes = [
 		name: "Sistema de evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal",
 		shortName: "Especificaciones técnicas S1",
 		subName:"Especificaciones técnicas",
-		color: "#F8CAC4",
+		color: "#3a1c3a",
 		icon: IconS1		
 	},
 	{
@@ -151,7 +151,7 @@ const pdnRoutes = [
 		name: "Sistema de los servidores públicos que intervengan en procedimientos de contrataciones públicas",
 		subName:"Especificaciones técnicas",
 		shortName: "Especificaciones técnicas S2",
-		color: "#D8ACD8",
+		color: "#3a1c3a",
 		icon: IconS2,
 	},
 	{
@@ -162,7 +162,7 @@ const pdnRoutes = [
 		name: "Sistema nacional de servidores públicos y particulares sancionados",
 		subName:"Especificaciones técnicas",
 		shortName: "Especificaciones técnicas S3",
-		color: "#BCB9E9",
+		color: "#3a1c3a",
 		icon: IconS3,
 	},
 	{
@@ -173,7 +173,7 @@ const pdnRoutes = [
 		name: "Sistema de información pública de contrataciones",
 		subName:"Especificaciones técnicas",
 		shortName: "Especificaciones técnicas S6",
-		color: "#B2DBEB",
+		color: "#3a1c3a",
 		icon: IconS6,
 	},
 	{
@@ -183,7 +183,7 @@ const pdnRoutes = [
 		private: false,
 		name: "¿Qué es la Plataforma Digital Nacional?",
 		shortName: "¿Qué es la PDN?",
-		color: "#f2f2f2",
+		color: "#713972",
 		icon: IconAbout
 	},
 	{
@@ -193,7 +193,7 @@ const pdnRoutes = [
 		private: false,
 		name: "Términos de uso",
 		shortName: "Términos de uso",
-		color: "#f2f2f2",
+		color: "#3a1c3a",
 	},
 	{
 		exact: true,
@@ -202,7 +202,7 @@ const pdnRoutes = [
 		private: false,
 		name: "Preguntas frecuentes",
 		shortName: "FAQ",
-		color: "#f2f2f2",
+		color: "#713972",
 		icon: IconFAQ
 	},
 	{
@@ -212,7 +212,7 @@ const pdnRoutes = [
 		private: false,
 		name: "Validador",
 		shortName: "Validador",
-		color: "#f2f2f2",
+		color: "#713972",
 		icon: IconValidador
 	},
 	{
@@ -222,7 +222,7 @@ const pdnRoutes = [
 		private: false,
 		name: "Mesa de ayuda",
 		shortName: "Mesa de ayuda",
-		color: "#f2f2f2",
+		color: "#713972",
 		icon: IconHelpDesk
 	},
 	{
@@ -232,7 +232,7 @@ const pdnRoutes = [
 		private: false,
 		name: "Cobertura",
 		shortName: "Cobertura",
-		color: "#f2f2f2",
+		color: "#713972",
 		icon: IconCobertura
 	},
 	{
@@ -242,7 +242,7 @@ const pdnRoutes = [
 		private: false,
 		name: "Cobertura",
 		shortName: "Cobertura",
-		color: "#f2f2f2",
+		color: "#713972",
 		icon: IconCobertura
 	}
 ];

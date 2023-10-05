@@ -24,7 +24,7 @@ const SysCard = props => {
 
     return (
         <Box border={1} className={classes.box}
-             style={{borderColor: sys.color}}
+             //style={{borderColor: sys.color}}
              component={RouterLink} to={sys.url}
         >
             <img src={sys.icon} alt={sys.name} className={classes.icon}/>

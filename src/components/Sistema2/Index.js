@@ -19,8 +19,8 @@ import ReactGA from "react-ga4";
 const styles = theme => ({
     root: {
         flexGrow: 1,
-        backgroundImage: `url(${bgimg})`,
-        backgroundRepeat: "repeat",
+/*         backgroundImage: `url(${bgimg})`,
+        backgroundRepeat: "repeat", */
     },
     container: {
         paddingTop: 90,

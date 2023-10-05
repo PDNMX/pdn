@@ -21,8 +21,8 @@ import ThemeV2 from '../../ThemeV2';
 const styles = theme => ({
     root: {
         flexGrow: 1,
-        backgroundImage: `url(${bgimg})`,
-        backgroundRepeat: "repeat",
+/*         backgroundImage: `url(${bgimg})`,
+        backgroundRepeat: "repeat", */
     },
     tabContainer: {
         paddingTop: 90,

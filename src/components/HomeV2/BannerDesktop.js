@@ -19,14 +19,17 @@ import {UserContext} from "../Login/UserContext";
 const styles = theme => ({
     opc: {
         "&:hover": {
-            backgroundColor: "#64808f"
+            backgroundColor: "#ebe9f9",
+            Color:"#0a58ca"
         },
         paddingBottom: theme.spacing(2),
         textAlign: 'center',
-        cursor: "pointer"
+        cursor: "pointer",
+        Color:"#0a58ca"
     },
     selected: {
-        backgroundColor: "#64808f"
+        backgroundColor: "#ebe9f9",
+        Color:"#0a58ca"
     }
 });
 
@@ -40,13 +43,13 @@ const BannerDesktop = props => {
     const toggle = () => {
         setTimeout(() => {
             setShowSistemas(!showSistemas);
-        }, 1000)
+        }, 10000000)
     }
 
     const toggleInterconexion = () => {
         setTimeout(() => {
             setShowInterconexion(!showInterconexion)
-        }, 1000)
+        }, 10000000)
     }
 
     useEffect(() => {

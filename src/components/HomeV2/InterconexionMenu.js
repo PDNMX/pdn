@@ -2,35 +2,38 @@ import React, {useEffect, useRef} from "react";
 import withStyles from '@mui/styles/withStyles';
 import {Typography, Link} from "@mui/material";
 import {Link as RouterLink} from 'react-router-dom';
-import legislacion_icono from "../../assets/rediseno/ico_interconexion_legislacion.svg";
-import mapa_s2s3_icono from "../../assets/rediseno/ico_interconexion_s1-s3.svg";
-import icon_cobertura from "../../assets/rediseno/ico_cobertura.svg";
+import legislacion_icono from "../../assets/rediseno2023/imgs/iconos/menu/ico_sistemas123.svg";
+import mapa_s2s3_icono from "../../assets/rediseno2023/imgs/iconos/menu/ico_legislacion.svg";
+import icon_cobertura from "../../assets/rediseno2023/imgs/iconos/menu/ico_cobertura.svg";
 import Box from "@mui/material/Box";
 import ReactGA from "react-ga4";
 
 const styles = theme => ({
     root: {
-        backgroundColor: '#364e56',
+        backgroundColor: '#f7f7f7',
         paddingTop: theme.spacing(3),
         paddingBottom: theme.spacing(3),
         position: 'absolute',
         zIndex: 2,
-        width: '100%'
+        width: '100%',
+        top:'95px'
     },
     item: {
         "&:hover": {
-            backgroundColor: "#64808f"
+            backgroundColor: "#fff"
         },
         borderStyle: 'solid',
-        borderWidth: 2,
+        borderWidth: 1,
+        borderColor: '#c0c0c0',
         minWidth: theme.spacing(25),
         transition: 'height 2s',
-        height: '70%'
+        height: '70%',
+        borderRadius:'8px'
     },
     opc: {
         marginBottom: theme.spacing(1),
         marginTop: theme.spacing(1),
-        textAlign: 'center',
+        textAlign: 'center'
     },
     icon: {
         maxWidth: theme.spacing(9),
@@ -38,7 +41,7 @@ const styles = theme => ({
     },
     link: {
         textDecoration: "none",
-        color: "#b2bfc4"
+        color: "#00f"
     }
 });
 
@@ -68,11 +71,11 @@ const InterconexionMenu = props => {
                 <Box className={`${classes.item}`}  sx={{
                     m:1,
                     p:2,
-                    color:'#34b3eb'
+                    color:'#c0c0c0'
                 }}>
                     <div className={`${classes.opc} `}>
                         <img src={legislacion_icono} alt="Legislación" className={classes.icon}/>
-                        <Typography color={'#b2bfc4'}>{'Legislación'}</Typography>
+                        <Typography color={'#3a1c3a'}>{'Legislación'}</Typography>
 
                     </div>
                 </Box>
@@ -82,12 +85,12 @@ const InterconexionMenu = props => {
                 <Box className={`${classes.item}`}  sx={{
                     m:1,
                     p:2,
-                    color:'#34b3eb'
+                    color:'#c0c0c0'
                 }}>
                     <div className={`${classes.opc} `}>
 
                         <img src={mapa_s2s3_icono} alt="Sistemas 1, 2 y 3" className={classes.icon}/>
-                        <Typography color={'#b2bfc4'}>{'Sistemas 1, 2 y 3'}</Typography>
+                        <Typography color={'#3a1c3a'}>{'Sistemas 1, 2 y 3'}</Typography>
 
                     </div>
                 </Box>
@@ -97,11 +100,11 @@ const InterconexionMenu = props => {
                 <Box className={`${classes.item}`}  sx={{
                     m:1,
                     p:2,
-                    color:'#34b3eb'
+                    color:'#c0c0c0'
                 }}>
                     <div className={`${classes.opc} `}>
                         <img src={icon_cobertura} alt="Cobertura" className={classes.icon}/>
-                        <Typography color={'#b2bfc4'}>Cobertura</Typography>
+                        <Typography color={'#3a1c3a'}>Cobertura</Typography>
                     </div>
                 </Box>
             </Link>

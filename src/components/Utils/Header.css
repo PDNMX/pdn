@@ -138,6 +138,21 @@
 }
   /*... FIN ENCABEZADO ...*/
   
+
+
+/********* MENUS **********/
+  #interconexionMenu, #sistemasMenu  {
+    border-bottom: 1px solid #ddd2da;
+    box-shadow: -2px 8px 25px 9px rgba(0,0,0,0.21);
+    -webkit-box-shadow: -2px 8px 25px 9px rgba(0,0,0,0.21);
+    -moz-box-shadow: -2px 8px 25px 9px rgba(0,0,0,0.21);
+}
+
+
+#interconexionMenu p, #sistemasMenu p {
+  text-align: center;
+}
+  /*... FIN MENUS ...*/
  
   
 
@@ -149,7 +164,44 @@
 .sistemas, figure {
   margin: 0 40px;
 }
+
+.sistemas a > p {
+  text-align: center;
+  font-weight: 700;
+}
+
+
+.sistemas a {
+  border: 1px solid #fff;
+  border-radius: 0px;
+  transition: all .3s ease-in-out;
+  margin-top:20px;
+  margin-bottom: 20px;
+}
+
+.sistemas a:hover {
+  border: 1px solid #c0c0c0;
+  border-radius: 10px;
+  background: #fff;
+  margin-top:20px;
+  margin-bottom: 15px;
+}
+
+.sistemas a > img {
+  transition: all .3s ease-in-out;
+}
+
+.sistemas a:hover > img {
+  width: 105px;
+}
   /*...... FIN SISTEMAS .....*/
+
+
+/********* SECCIÓN MDA **********/
+  .mda-home {
+    padding: 6% 10% 12% 10%;
+}
+ /*...... FIN MDA .....*/
 
 
 /********* SECCIÓN BLOG **********/
@@ -170,6 +222,8 @@
   line-height: 1.2;
   margin: 10px 0px 0 0px;
 }
+
+
 
 .blog a > div {
   border: 1px solid #f2f0f2;

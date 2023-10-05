@@ -6,27 +6,30 @@ import Box from "@mui/material/Box";
 
 const styles = theme => ({
     root: {
-        backgroundColor: '#364e56',
+        backgroundColor: '#f7f7f7',
         paddingTop: theme.spacing(3),
         paddingBottom: theme.spacing(3),
         position: 'absolute',
         zIndex: 2,
-        width: '100%'
+        width: '100%',
+        top:'95px'
     },
     item: {
         "&:hover": {
-            backgroundColor: "#64808f"
+            backgroundColor: "#FFF"
         },
         borderStyle: 'solid',
-        borderWidth: 2,
+        borderWidth: 1,
+        borderColor: '#c0c0c0',
         maxWidth: theme.spacing(25),
         transition: 'height 2s',
-        height: '70%'
+        height: '70%',
+        borderRadius:'8px'
     },
     opc: {
         marginBottom: theme.spacing(1),
         marginTop: theme.spacing(1),
-        textAlign: 'center',
+        textAlign: 'center'
     },
     icon: {
         maxWidth: theme.spacing(7),
@@ -58,8 +61,8 @@ const SistemasMenu = props => {
     return (
         <Box id={"sistemasMenu"} ref={innerRef} className={classes.root}
              sx={{
-                 display: 'flex',
-                 justifyContent: 'space-evenly'
+                display: 'flex',
+                justifyContent: 'center'
              }}>
             {
                 systems.map(system => {
