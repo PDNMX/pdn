@@ -8,7 +8,7 @@ import DialogContent from '@mui/material/DialogContent';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import {Box, Typography} from "@mui/material";
-import eri from '../../assets/rediseno/ico-espin-construction.svg';
+import WarningIcon from '@mui/icons-material/Warning';
 
 const DialogoNoConectado = (props) =>  {
 
@@ -23,36 +23,48 @@ const DialogoNoConectado = (props) =>  {
     };
 
     return (
-        <div style={{background: theme.palette.background.opaque}}>
-            <Dialog
-                fullScreen={fullScreen}
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="responsive-dialog-title"
-            >
-                {/*<DialogTitle id="responsive-dialog-title" style={{color: "#d3d3d3", background: bgColor}}>
+      <div style={{ background: theme.palette.background.opaque }}>
+        <Dialog
+          fullScreen={fullScreen}
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="responsive-dialog-title"
+        >
+          {/*<DialogTitle id="responsive-dialog-title" style={{color: "#d3d3d3", background: bgColor}}>
                     {"Cobertura"}
                 </DialogTitle>*/}
-                <DialogContent style={{background: bgColor}}>
-                    <Box display="flex" flexWrap="wrap" justifyContent="center" alignContent="center" alignItems="stretch">
-                        <Box p={1} m={1} flexGrow={1} alignSelf="center">
-                            <img src={eri} alt="Eri" width="100px"/>
-                        </Box>
-                        <Box p={1} m={1} flexGrow={1} display="flex" alignItems="stretch">
-                            <Typography color="white" alignSelf="center">
-                                La Entidad no ha reportado información a la PDN
-                            </Typography>
-                        </Box>
-                    </Box>
-                    {/*<DialogContentText> La Entidad no ha reportado información a la PDN </DialogContentText>*/}
-                </DialogContent>
-                <DialogActions style={{background: bgColor}}>
-                    <Button  variant="contained" onClick={handleClose} autoFocus>
-                        Aceptar
-                    </Button>
-                </DialogActions>
-            </Dialog>
-        </div>
+          <DialogContent style={{ background: bgColor }}>
+            <Box
+              display="flex"
+              flexWrap="wrap"
+              justifyContent="center"
+              alignContent="center"
+              alignItems="stretch"
+            >
+              <Box p={1} m={1} flexGrow={1} alignSelf="center">
+                <WarningIcon
+                  aria-label="delete"
+                  sx={{
+                    color: "orange",
+                    fontSize: '3rem'
+                  }}
+                />
+              </Box>
+              <Box p={1} m={1} flexGrow={1} display="flex" alignItems="center">
+                <Typography color="white" alignSelf="center">
+                  La Secretaría Ejecutiva del Sistema Estatal Anticorrupción no ha reportado información a la PDN
+                </Typography>
+              </Box>
+            </Box>
+            {/*<DialogContentText> La Entidad no ha reportado información a la PDN </DialogContentText>*/}
+          </DialogContent>
+          <DialogActions style={{ background: bgColor }}>
+            <Button variant="contained" onClick={handleClose} autoFocus>
+              Aceptar
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
     );
 }
 
