@@ -1264,6 +1264,85 @@
     }
   },
   {
+    "route": "/cobertura/qro",
+    "name": "Querétaro",
+    "icon1": "ico-edo-qro.svg",
+    "icon2": "qro-icono.svg",
+    "disabled": false,
+    "data": {
+      "s1": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 89
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 1
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 4
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 8
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 42
+        }
+      },
+      "s2": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 89
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 1
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 4
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 8
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 42
+        }
+      },
+      "s3": {
+        "s3s": true,
+        "s3p": true
+      },
+      "s6": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 89
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 1
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 4
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 8
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 42
+        }
+      }
+    }
+  },
+  {
     "route": "/cobertura/qroo",
     "name": "Quintana Roo",
     "icon1": "ico-edo-qroo.svg",
@@ -1505,7 +1584,7 @@
     "name": "Sonora",
     "icon1": "ico-edo-son.svg",
     "icon2": "son-icono.svg",
-    "disabled": true,
+    "disabled": false,
     "data": {
       "s1": {
         "ejecutivo": {
@@ -1994,18 +2073,8 @@
     "disabled": true
   },
   {
-    "name": "Nayarit",
-    "icon1": "ico-edo-nay.svg",
-    "disabled": true
-  },
-  {
     "name": "Nuevo León",
     "icon1": "ico-edo-nl.svg",
-    "disabled": true
-  },
-  {
-    "name": "Querétaro",
-    "icon1": "ico-edo-qro.svg",
     "disabled": true
   },
   {
