@@ -9,12 +9,14 @@ import CustomizedProgressBar from "./CustomizedProgressBar";
 import icon_s1 from '../../assets/rediseno/ico_sistemas/ico_s1_color.svg';
 import icon_s2 from '../../assets/rediseno/ico_sistemas/ico_s2_color.svg';
 import icon_s3 from '../../assets/rediseno/ico_sistemas/ico_s3_color.svg';
+import icon_s6 from '../../assets/rediseno/ico_sistemas/ico_s6_color.svg';
 import VistaDetalleSistema from "./VistaDetalleSistema";
 
 const colors = {
     s1 : "#F8CAC4",
     s2 : "#D8ACD8",
-    s3 : "#C6C1EB",
+    s3: "#C6C1EB",
+    s6: "#42A5CC",
 };
 
 const styles = theme => ({
@@ -59,23 +61,30 @@ const VistaDetalleEstado = props => {
         {
             id: 1,
             color: colors.s1,
-            data: [10, 92,30, 43,50, 90 ],
+            //data: [10, 92,30, 43,50, 90 ],
             icon: icon_s1,
             name: "Sistema de evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal"
         },
         {
             id: 2,
             color: colors.s2,
-            data: [80, 12,45, 33,76, 23],
+            //data: [80, 12,45, 33,76, 23],
             icon: icon_s2,
             name: "Sistema de los servidores públicos que intervengan en procedimientos de contrataciones públicas"
         },
         {
             id: 3,
             color: colors.s3,
-            data: [20, 10, 30, 50, 30, 53],
+            //data: [20, 10, 30, 50, 30, 53],
             icon: icon_s3,
             name: "Sistema nacional de servidores públicos y particulares sancionados"
+        },
+        {
+            id: 6,
+            color: colors.s6,
+            //data: [20, 10, 30, 50, 30, 53],
+            icon: icon_s6,
+            name: "Sistema de informacion publica de contrataciones"
         }
     ];
 
@@ -116,7 +125,20 @@ const VistaDetalleEstado = props => {
 
     const avance_s3 =
         (estado.data.s3.s3s? 50 : 0) +
-        (estado.data.s3.s3p? 50 : 0);
+        (estado.data.s3.s3p ? 50 : 0);
+    
+    const avance_s6 = percentage(
+        estado.data.s6.ejecutivo.tiene +
+        estado.data.s6.legislativo.tiene +
+        estado.data.s6.judicial.tiene +
+        estado.data.s6.ocas.tiene +
+        estado.data.s6.municipal.tiene,
+        estado.data.s6.ejecutivo.total +
+        estado.data.s6.legislativo.total +
+        estado.data.s6.judicial.total +
+        estado.data.s6.ocas.total +
+        estado.data.s6.municipal.total
+    );
 
     return <div>
         <HeaderV2 section={section}/>
@@ -136,7 +158,7 @@ const VistaDetalleEstado = props => {
                         <Paper elevation={15} sx={{ m: 1, p: 2 }} className={classes.paper}>
                             <Box display="flex" flexWrap="wrap" justifyContent="center">
                                 <Box>
-                                    <img src={icon} width="260px" alt={estado.name}/>
+                                    <img src={icon} style={{width: '280px', padding: "23px", paddingRight: "0px"}} alt={estado.name}/>
                                 </Box>
 
                                 <Box sx={{ paddingTop: '40px', flexGrow: 1}}>
@@ -153,6 +175,11 @@ const VistaDetalleEstado = props => {
                                     <Box display="flex" onClick={() => handleSetSystem(3)} sx={{cursor: 'pointer'}}>
                                         <img src={icon_s3} alt='Sistema 3' style={{width: '40px', padding: "2px"}}/>
                                         <CustomizedProgressBar value={avance_s3} color={colors.s3}/>
+                                    </Box>
+
+                                    <Box display="flex" onClick={() => handleSetSystem(6)} sx={{cursor: 'pointer'}}>
+                                        <img src={icon_s6} alt='Sistema 6' style={{width: '40px', padding: "2px"}}/>
+                                        <CustomizedProgressBar value={avance_s6} color={colors.s6}/>
                                     </Box>
                                 </Box>
                             </Box>
@@ -210,7 +237,26 @@ const VistaDetalleEstado = props => {
                             </Typography>
                             <Typography color="white" fontWeight="bold">Sancionados</Typography>
                             <Typography color='white' variant="body2"> Servidores públicos: {estado.data.s3.s3s? "Sí" : "No"} </Typography>
-                            <Typography color='white' variant="body2"> Particulares: {estado.data.s3.s3p? "Sí" : "No"} </Typography>
+                            <Typography color='white' variant="body2"> Particulares: {estado.data.s3.s3p ? "Sí" : "No"} </Typography>
+
+                            <Typography variant="h4" color={colors.s6} sx={{fontWeight: 'bold'}}>
+                                {avance_s6}%
+                            </Typography>
+                            <Typography color='white'>
+                                {
+                                    estado.data.s6.ejecutivo.tiene +
+                                    estado.data.s6.legislativo.tiene +
+                                    estado.data.s6.judicial.tiene +
+                                    estado.data.s6.ocas.tiene +
+                                    estado.data.s6.municipal.tiene
+                                } de {
+                                estado.data.s6.ejecutivo.total +
+                                estado.data.s6.legislativo.total +
+                                estado.data.s6.judicial.total +
+                                estado.data.s6.ocas.total +
+                                estado.data.s6.municipal.total
+                            }
+                            </Typography>
 
                         </Paper>
                     </Box>
@@ -219,6 +265,7 @@ const VistaDetalleEstado = props => {
                                          avance_s1={avance_s1}
                                          avance_s2={avance_s2}
                                          avance_s3={avance_s3}
+                                         avance_s6={avance_s6}
                     />
                 </Paper>
             </Grid>
