@@ -425,7 +425,7 @@
       },
       "s2": {
         "ejecutivo": {
-          "tiene": 0,
+          "tiene": 20,
           "total": 95
         },
         "legislativo": {
@@ -433,7 +433,7 @@
           "total": 2
         },
         "judicial": {
-          "tiene": 0,
+          "tiene": 1,
           "total": 7
         },
         "ocas": {
