@@ -28,5 +28,11 @@
     "name": "Secretaría Ejecutiva del Sistema Estatal Anticorrupción de Veracruz de Ignacio de la Llave",
     "disclaimer": "",
     "download_url": ""
+  },
+    {
+    "id": "SESEA_MCH",
+    "name": "Secretaría Ejecutiva del Sistema Estatal Anticorrupción del Estado de Michoacán",
+    "disclaimer": "",
+    "download_url": ""
   }
 ]
