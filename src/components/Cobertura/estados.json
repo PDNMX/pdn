@@ -562,7 +562,7 @@
       "s1": {
         "ejecutivo": {
           "tiene": 0,
-          "total": 115
+          "total": 100
         },
         "legislativo": {
           "tiene": 2,
@@ -584,7 +584,7 @@
       "s2": {
         "ejecutivo": {
           "tiene": 100,
-          "total": 115
+          "total": 100
         },
         "legislativo": {
           "tiene": 2,
@@ -610,7 +610,7 @@
       "s6": {
         "ejecutivo": {
           "tiene": 0,
-          "total": 115
+          "total": 100
         },
         "legislativo": {
           "tiene": 0,
