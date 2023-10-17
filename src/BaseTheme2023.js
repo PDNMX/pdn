@@ -48,7 +48,8 @@ export default createTheme(
         main: '#7a3d71',
         light: '#94638d',
         dark: '#552a4f',
-        contrastText:'#55575a'
+        contrastText:'#55575a',
+        prueba: '#d3d'
       },
       secondary: {
         main: '#1C7CBF',
@@ -59,7 +60,8 @@ export default createTheme(
       background: {
         paper : '#FCFCFF',
         opaque: '#EAE1EA',
-        default: '#fff'
+        default: '#fff',
+        prueba: '#d3d'
       },
       error: {
         main: '#D43864'

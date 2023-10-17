@@ -36,7 +36,7 @@ const styles = theme => ({
     },
     paper: {
         flexGrow: 1,
-        background: theme.palette.background.paperChart,
+        background: theme.palette.background.default,
         borderStyle: 'solid',
         borderWidth: 1,
         borderColor: theme.palette.primary.main,
@@ -166,7 +166,7 @@ const VistaDetalleEstado = props => {
                         </Paper>
 
                         <Paper elevation={15} sx={{ m:1, p: 2, textAlign: "center", maxWidth: 200 }} className={classes.paper}>
-                            <Typography variant="h5" color="white" sx={{fontWeight: 'bold'}}>
+                            <Typography variant="h5" color="#713972" sx={{fontWeight: 'bold'}}>
                                 Instituciones en la PDN
                             </Typography>
 
@@ -177,7 +177,7 @@ const VistaDetalleEstado = props => {
                             <Typography variant="h4" color={colors.s1} sx={{fontWeight: 'bold'}}>
                                 {avance_s1}%
                             </Typography>
-                            <Typography color='white'>
+                            <Typography color='#713972'>
                                 {
                                     estado.data.s1.ejecutivo.tiene +
                                     estado.data.s1.legislativo.tiene +
@@ -195,7 +195,7 @@ const VistaDetalleEstado = props => {
                             <Typography variant="h4" color={colors.s2} sx={{fontWeight: 'bold'}}>
                                 {avance_s2}%
                             </Typography>
-                            <Typography color='white'>
+                            <Typography color='#713972'>
                                 {
                                     estado.data.s2.ejecutivo.tiene +
                                     estado.data.s2.legislativo.tiene +
@@ -214,9 +214,9 @@ const VistaDetalleEstado = props => {
                             <Typography variant="h4" color={colors.s3} sx={{fontWeight: 'bold'}}>
                                 {avance_s3}%
                             </Typography>
-                            <Typography color="white" fontWeight="bold">Sancionados</Typography>
-                            <Typography color='white' variant="body2"> Servidores públicos: {estado.data.s3.s3s? "Sí" : "No"} </Typography>
-                            <Typography color='white' variant="body2"> Particulares: {estado.data.s3.s3p? "Sí" : "No"} </Typography>
+                            <Typography color="#713972" fontWeight="bold">Sancionados</Typography>
+                            <Typography color='#713972' variant="body2"> Servidores públicos: {estado.data.s3.s3s? "Sí" : "No"} </Typography>
+                            <Typography color='#713972' variant="body2"> Particulares: {estado.data.s3.s3p? "Sí" : "No"} </Typography>
 
                         </Paper>
                     </Box>

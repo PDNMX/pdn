@@ -11,7 +11,7 @@ import withStyles from "@mui/styles/withStyles";
 const styles = theme => ({
     estado: {
         width:"150px", borderStyle: 'solid', border: '1px', borderRadius: 10, color: '#ae95a9',
-        background: theme.palette.background.paper
+        background: theme.palette.background.default
     },
     link:{
         textDecoration: 'none'
@@ -20,14 +20,14 @@ const styles = theme => ({
         borderRadius: "10px 10px 0 0",
     },
     tabPanel1: {
-        background: theme.palette.background.paper,
+        background: theme.palette.background.opaque,
         borderRadius: "0 10px 10px 10px",
         borderStyle: 'solid',
         borderColor: theme.palette.primary.main
         //border: "2px",
     },
     tabPanel2: {
-        background: theme.palette.background.paper,
+        background: theme.palette.background.opaque,
         borderRadius: "0 10px 10px 10px",
         borderStyle: 'solid',
         //border: "2px",
