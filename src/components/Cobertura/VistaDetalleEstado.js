@@ -12,9 +12,9 @@ import icon_s3 from '../../assets/rediseno/ico_sistemas/ico_s3_color.svg';
 import VistaDetalleSistema from "./VistaDetalleSistema";
 
 const colors = {
-    s1 : "#F8CAC4",
-    s2 : "#D8ACD8",
-    s3 : "#C6C1EB",
+    s1 : "#F29888",
+    s2 : "#B25FAC",
+    s3 : "#9085DA",
 };
 
 const styles = theme => ({
@@ -24,19 +24,25 @@ const styles = theme => ({
         paddingBottom: theme.spacing(4),
     },
     rootPaper: {
-        backgroundColor: theme.palette.background.opaque,
+        backgroundColor: theme.palette.background.default,
         padding: theme.spacing(2),
         color: theme.palette.primary.contrastText,
         borderStyle: 'solid',
         borderWidth: 1,
-        borderColor: theme.palette.secondary.main,
+        borderColor: theme.palette.primary.main,
         borderRadius: '10px 10px 10px 10px',
         //display: 'flex',
         //justifyContent: "center"
     },
     paper: {
         flexGrow: 1,
-        background: theme.palette.background.paperChart
+        background: theme.palette.background.paperChart,
+        borderStyle: 'solid',
+        borderWidth: 1,
+        borderColor: theme.palette.primary.main,
+        borderRadius: '10px 10px 10px 10px',
+
+
     },
 });
 
@@ -124,11 +130,11 @@ const VistaDetalleEstado = props => {
             <Grid item xs={12} className={classes.rootItem}>
                 <Paper elevation={15} className={classes.rootPaper}>
 
-                    <Typography variant="h3" paragraph align="center" color="white">
+                    <Typography variant="h3" paragraph align="center" color="#713972">
                         {estado.name}
                     </Typography>
 
-                    <Typography align="center" color="white" paragraph>
+                    <Typography align="center" color="#959698" paragraph>
                         Información al 31 de marzo de 2023, reportada por las Secretarías Ejecutivas del Sistema Anticorrupción Estatal
                     </Typography>
 

@@ -10,8 +10,8 @@ import DialogoNoConectado from './DialogoNoConectado';
 import withStyles from "@mui/styles/withStyles";
 const styles = theme => ({
     estado: {
-        width:"150px", borderStyle: 'solid', border: '1px', borderRadius: 10, color: '#d3d3d3',
-        background: theme.palette.background.opaque
+        width:"150px", borderStyle: 'solid', border: '1px', borderRadius: 10, color: '#ae95a9',
+        background: theme.palette.background.paper
     },
     link:{
         textDecoration: 'none'
@@ -20,18 +20,18 @@ const styles = theme => ({
         borderRadius: "10px 10px 0 0",
     },
     tabPanel1: {
-        background: theme.palette.background.opaque,
+        background: theme.palette.background.paper,
         borderRadius: "0 10px 10px 10px",
         borderStyle: 'solid',
-        borderColor: theme.palette.secondary.main
+        borderColor: theme.palette.primary.main
         //border: "2px",
     },
     tabPanel2: {
-        background: theme.palette.background.opaque,
+        background: theme.palette.background.paper,
         borderRadius: "0 10px 10px 10px",
         borderStyle: 'solid',
         //border: "2px",
-        borderColor: theme.palette.secondary.main
+        borderColor: theme.palette.primary.main
     },
 });
 
@@ -52,9 +52,9 @@ const Cobertura = props => {
     }
 
     const tabStyle = selected => ({
-        background: selected ? '#155065' : '#0d3b49',
+        background: selected ? '#b25fac' : '#f2f0f2',
         border: selected ? "solid": "",
-        borderColor: selected ? "#3ab0e5" : ""
+        borderColor: selected ? "#583171" : ""
     });
 
     return (<div>
@@ -64,10 +64,10 @@ const Cobertura = props => {
 
 
                     <Tabs value={value} onChange={handleChange}>
-                        <Tab label={<Typography color="#d3d3d3">Entidades conectadas</Typography>}
+                        <Tab label={<Typography color={value == 0 ? "#f1e9f2" : "#713972"}>Entidades conectadas</Typography>}
                              id="simple-tab-0" aria-controls="simple-tabpanel-0"
                              className={classes.tab} style={tabStyle(value === 0 )}/>
-                        <Tab label={<Typography color="#d3d3d3">Entidades no conectadas</Typography>}
+                        <Tab label={<Typography color={value == 0 ? "#713972" : "#f1e9f2"}>Entidades no conectadas</Typography>}
                              id="simple-tab-1" aria-controls="simple-tabpanel-1"
                              className={classes.tab} sx={tabStyle(value === 1)}/>
                     </Tabs>

@@ -58,6 +58,7 @@ export default createTheme(
       },
       background: {
         paper : '#FCFCFF',
+        opaque: '#EAE1EA',
         default: '#fff'
       },
       error: {
