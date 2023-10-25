@@ -2,16 +2,12 @@ FROM node:18-alpine
 
 MAINTAINER Sergio Rodríguez <sergio.rdzsg@gmail.com>
 
-ADD . /pdn
-WORKDIR /pdn
+ADD . /pdn-frontend
+WORKDIR /pdn-frontend
 
-RUN yarn add global yarn \
-&& yarn add typescript \
-&& yarn install \
-&& yarn build \
-&& yarn global add serve \
-&& yarn cache clean
+RUN npm install --force \
+&& npm cache clean --force 
 
-EXPOSE 5000
+EXPOSE 5173
 
-CMD ["serve", "-s", "build", "-l", "5000"]
+CMD ["npm", "run", "dev", "--", "--host"]

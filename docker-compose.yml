@@ -1,9 +1,0 @@
-version: '3'
-services:
-  webapp:
-    build:
-      context: ./
-      dockerfile: Dockerfile
-    restart: always
-    ports:
-      - 2000:5000
