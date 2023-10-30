@@ -77,10 +77,10 @@ const Cobertura = props => {
                         {/*<Paper elevation={15}>*/}
                         <Box display="flex" flexWrap="wrap">
                             {estados.filter(e => !e.disabled).map( (e, i) => {
-                                const icon = require(`../../assets/Cobertura/ico_edos/${e.icon1}`)
+                                //const icon = import (`../../../src/assets`)
                                 return <Box textAlign="center" p={1} m={1} key={i} className={classes.estado}>
                                     <Link component={RouterLink} to={e.route} className={classes.link}>
-                                        <img src={icon} style={{width: 100}} alt="Estado"/>
+                                        <img src={`../../../src/assets/Cobertura/ico_edos/${e.icon1}`} style={{width: 100}} alt="Estado"/>
                                         <Typography>{e.name}</Typography>
                                     </Link>
                                 </Box>
@@ -93,10 +93,9 @@ const Cobertura = props => {
                     <TabPanel value={value} index={1} className={classes.tabPanel2}>
                         <Box display="flex" flexWrap="wrap">
                             {estados.filter(e => e.disabled).map( (e, i) =>{
-                                const icon = require(`../../assets/Cobertura/ico_edos/${e.icon1}`)
                                 return <Box textAlign="center" p={1} m={1} key={i}
                                             className={classes.estado} sx={{cursor: 'pointer'}} onClick={handleClick}>
-                                    <img src={icon} style={{width: 100}} alt="Estado"/>
+                                    <img src={`../../../src/assets/Cobertura/ico_edos/${e.icon1}`} style={{width: 100}} alt="Estado"/>
                                     <Typography>
                                         {e.name}
                                     </Typography>

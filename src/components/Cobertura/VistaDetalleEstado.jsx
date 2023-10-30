@@ -59,7 +59,7 @@ const VistaDetalleEstado = props => {
     const {id_estado} = useParams();
     const section = pdnRoutes.find(r => r.path === '/cobertura/:id_estado');
     const estado = estados.find(e => e.route.includes(id_estado));
-    const icon = require(`../../assets/Cobertura/iconos_estados/${estado.icon2}`);
+    //const icon = import (`../../../src/assets/Cobertura/iconos_estados/${estado.icon2}`);
 
     const sys = [
         {
@@ -142,7 +142,7 @@ const VistaDetalleEstado = props => {
                         <Paper elevation={15} sx={{ m: 1, p: 2 }} className={classes.paper}>
                             <Box display="flex" flexWrap="wrap" justifyContent="center">
                                 <Box>
-                                    <img src={icon} width="260px" alt={estado.name}/>
+                                    <img src={`../../../src/assets/Cobertura/iconos_estados/${estado.icon2}`} width="260px" alt={estado.name}/>
                                 </Box>
 
                                 <Box sx={{ paddingTop: '40px', flexGrow: 1}}>
