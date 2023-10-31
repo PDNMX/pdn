@@ -41,6 +41,7 @@ export default createTheme(
     palette: {
       mode: 'light',
       text: {
+        main: '#E1E8EB',
         primary: '#ff0000',
         secondary: '#ff0'
       },
@@ -73,7 +74,7 @@ export default createTheme(
         color: '#f29888',
         main: '#F8CAC4',
         light: '#f9eded',
-        dark: '#e28276' 
+        dark: '#e28276'
       }, 
       S2: {
         color: '#b25fac',
@@ -85,7 +86,7 @@ export default createTheme(
         color: '#9085da' ,
         main: '#b0acea',
         light: '#eae9f4', 
-        dark: '#7d76cc'
+        dark: '#7d76cc'        
       },
       S4: {
         color: '#88bc69',
