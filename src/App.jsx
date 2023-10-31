@@ -53,7 +53,7 @@ const App  = props => {
       <UserContext.Provider value={value}>
         <ThemeProvider theme={BaseTheme2023}>
           <StyledEngineProvider injectFirst>
-            <Router basename={import.meta.env.PUBLIC_URL}>
+            <Router basename={import.meta.env.BASE_URL}>
               <ScrollToTop>
                 <Layout>
                   <Switch>
