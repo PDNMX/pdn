@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  frontend:
+    restart: always
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - ${PORT_FRONTEND}:5173
