@@ -10,6 +10,7 @@ import {Link} from "react-router-dom";
 import Diagrama from "../../assets/diagrama_comunicacion_v1.1.svg";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ButtonPDN from "../Compartidos/ButtonPDN";
+import ProtocoloConexion from '../ProtocoloConexion/ProtocoloConexion';
 
 const Accordion = withStyles(theme =>({
     root: {
@@ -504,7 +505,8 @@ export default function CustomizedExpansionPanels() {
                     <Typography variant="h6">Protocolo de conexión</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <div>
+                    <ProtocoloConexion />
+                    {/* <div>
                         <Typography paragraph>
                             La Plataforma Digital Nacional (PDN) basa su funcionamiento en el uso de APIs, por medio de las cuales, se comunica con sus proveedores de información para obtener exclusivamente los datos necesarios.
                         </Typography>
@@ -541,7 +543,7 @@ export default function CustomizedExpansionPanels() {
                         <Typography>
                             Asimismo, te invitamos a probar <MuiLink href="https://www.plataformadigitalnacional.org/validapi/" target="_blank" className={classes.link}>ValidAPI</MuiLink> una aplicación web que te permitirá ejecutar de manera automatizada las validaciones de seguridad y de funcionalidad incluidas en los planes de pruebas de los sistemas 1, 2 y 3; recibiendo retroalimentación de una forma rápida. Esta herramienta se encuentra en una etapa de pilotaje, por lo que el resultado obtenido  debe considerarse una prevalidación y no como un resultado final.
                         </Typography>
-                    </div>
+                    </div> */}
                 </AccordionDetails>
             </Accordion>
 
