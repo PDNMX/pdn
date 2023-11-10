@@ -61,11 +61,11 @@ function HeaderV2(props) {
         <div className={classes.root}>
             <Grid container spacing={0} justifyContent='center'>
                 <Grid item xs={12} className={classes.breadcrumItem}>
-                    <Breadcrumbs aria-label="breadcrumb" sx={{color: '#ffffff', paddingTop: '10px'}}>
+                    <Breadcrumbs aria-label="breadcrumb" sx={{color: '#824E80', paddingTop: '10px'}}>
                         <Link component={RouterLink}
                               underline="hover"
                               sx={{display: 'flex', alignItems: 'center'}}
-                              color='#ffffff' to="/">
+                              color='#824E80' to="/">
                             <HomeIcon sx={{mr: 0.5}} fontSize="inherit"/>
                             Plataforma Digital Nacional
                         </Link>
@@ -74,7 +74,7 @@ function HeaderV2(props) {
                             <Link component={RouterLink}
                                   underline="hover"
                                   sx={{display: 'flex', alignItems: 'center'}}
-                                  color='#ffffff' to="/especificaciones">
+                                  color='#824E80' to="/especificaciones">
                                 <GrainIcon sx={{mr: 0.5}} fontSize="inherit"/>
                                 Especificaciones
                             </Link>
@@ -84,7 +84,7 @@ function HeaderV2(props) {
                             <Link component={RouterLink}
                                   underline="hover"
                                   sx={{display: 'flex', alignItems: 'center'}}
-                                  color='#ffffff' to="/cobertura">
+                                  color='#824E80' to="/cobertura">
                                 <GrainIcon sx={{mr: 0.5}} fontSize="inherit"/>
                                 Cobertura
                             </Link>
