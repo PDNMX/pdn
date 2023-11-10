@@ -62,7 +62,8 @@ export default createTheme(
         paper : '#FCFCFF',
         opaque: '#EAE1EA',
         default: '#fff',
-        prueba: '#d3d'
+        prueba: '#d3d',
+        paperChart: '#FFFFFF'
       },
       error: {
         main: '#D43864'

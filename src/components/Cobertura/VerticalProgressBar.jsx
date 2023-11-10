@@ -4,7 +4,7 @@ import {v4 as uuidv4} from 'uuid';
 
 const styles = theme => ({
     emptySpace: {
-        background: '#155065'//theme.palette.background.opaque
+        background: '#eae1ea'//theme.palette.background.opaque
     }
 })
 // Progress bar settings
@@ -42,7 +42,7 @@ const VerticalProgressBar = props => {
 
 
         //borrar el color anterior
-        ctx.fillStyle = '#155065';
+        ctx.fillStyle = '#eae1ea';
         ctx.fillRect(0, 0, width, height);
 
         // Progress

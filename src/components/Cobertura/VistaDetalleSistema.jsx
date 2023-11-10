@@ -13,7 +13,7 @@ const styles = theme => ({
     }
 });
 
-const bar_colors = [ '#43b9a5', '#f46c81', '#f5ca5d', '#5ccbf0', '#beF5a6' ];
+const bar_colors = [ '#a95879', '#e8bb59', '#b78779', '#7dade3', '#e388af' ];
 
 const percentage = (a, b) => {
     if (a === 0){
@@ -53,14 +53,14 @@ const VistaDetalleSistema = props => {
                                 estado.data[`s${system.id}`].ejecutivo.total
                             )}%
                         </Typography>
-                        <Typography variant="body2" color='white'>
+                        <Typography variant="body2" color='#707274'>
                             {estado.data[`s${system.id}`].ejecutivo.tiene} de {estado.data[`s${system.id}`].ejecutivo.total}
                         </Typography>
                         <VerticalProgressBar color={bar_colors[0]} value={percentage(
                             estado.data[`s${system.id}`].ejecutivo.tiene,
                             estado.data[`s${system.id}`].ejecutivo.total
                         )}/>
-                        <Typography color="white">
+                        <Typography color="#707274">
                             Ejecutivo
                         </Typography>
                     </Box>
@@ -72,14 +72,14 @@ const VistaDetalleSistema = props => {
                                 estado.data[`s${system.id}`].legislativo.total
                             )}%
                         </Typography>
-                        <Typography variant="body2" color='white'>
+                        <Typography variant="body2" color='#707274'>
                             {estado.data[`s${system.id}`].legislativo.tiene} de {estado.data[`s${system.id}`].legislativo.total}
                         </Typography>
                         <VerticalProgressBar color={bar_colors[1]} value={percentage(
                             estado.data[`s${system.id}`].legislativo.tiene,
                             estado.data[`s${system.id}`].legislativo.total
                         )}/>
-                        <Typography color="white">Legislativo</Typography>
+                        <Typography color="#707274">Legislativo</Typography>
                     </Box>
 
                     <Box p={1} textAlign="center">
@@ -90,14 +90,14 @@ const VistaDetalleSistema = props => {
                                 estado.data[`s${system.id}`].judicial.total
                             )}%
                         </Typography>
-                        <Typography variant="body2" color='white'>
+                        <Typography variant="body2" color='#707274'>
                             {estado.data[`s${system.id}`].judicial.tiene} de {estado.data[`s${system.id}`].judicial.total}
                         </Typography>
                         <VerticalProgressBar color={bar_colors[2]} value={percentage(
                             estado.data[`s${system.id}`].judicial.tiene,
                             estado.data[`s${system.id}`].judicial.total
                         )}/>
-                        <Typography color="white">Judicial</Typography>
+                        <Typography color="#707274">Judicial</Typography>
                     </Box>
 
                     <Box p={1} textAlign="center">
@@ -107,19 +107,19 @@ const VistaDetalleSistema = props => {
                                 estado.data[`s${system.id}`].ocas.total
                             )}%
                         </Typography>
-                        <Typography variant="body2" color='white'>
+                        <Typography variant="body2" color='#707274'>
                             {estado.data[`s${system.id}`].ocas.tiene} de {estado.data[`s${system.id}`].ocas.total}
                         </Typography>
                         <VerticalProgressBar color={bar_colors[3]} value={percentage(
                             estado.data[`s${system.id}`].ocas.tiene,
                             estado.data[`s${system.id}`].ocas.total
                         )}/>
-                        <Typography color="white">Autónomos</Typography>
+                        <Typography color="#707274">Autónomos</Typography>
                     </Box>
 
                     <Box p={1} textAlign="center">
                         <Box sx={{
-                            borderColor: 'white',
+                            borderColor: '#707274',
                             borderStyle: 'solid',
                             borderWidth: '0 2px 0 2px',
                             paddingRight: 2,
@@ -132,22 +132,22 @@ const VistaDetalleSistema = props => {
                                     estado.data[`s${system.id}`].municipal.total
                                 )}%
                             </Typography>
-                            <Typography variant="body2" color='white'>
+                            <Typography variant="body2" color='#707274'>
                                 {estado.data[`s${system.id}`].municipal.tiene} de {estado.data[`s${system.id}`].municipal.total}
                             </Typography>
                             <VerticalProgressBar color={bar_colors[4]} value={percentage(
                                 estado.data[`s${system.id}`].municipal.tiene,
                                 estado.data[`s${system.id}`].municipal.total
                             )}/>
-                            <Typography color="white" variant="body2">Municipios y</Typography>
-                            <Typography color="white" variant="body2">Org. Municipales</Typography>
+                            <Typography color="#707274" variant="body2">Municipios y</Typography>
+                            <Typography color="#707274" variant="body2">Org. Municipales</Typography>
                         </Box>
                     </Box>
 
                     <Box p={1} textAlign="center" display='flex' flexWrap="wrap" alignContent="center" sx={{maxWidth: 300}}>
                         {/* Radial chart */}
                         <Box>
-                            <Typography color="white" sx={{fontWeight: 'bold'}} variant='h6'>
+                            <Typography color="#707274" sx={{fontWeight: 'bold'}} variant='h6'>
                                 Total de instituciones conectadas
                             </Typography>
 
@@ -157,7 +157,7 @@ const VistaDetalleSistema = props => {
                                 {/* falta */}
                                 {system.id ===1 ? avance_s1 : avance_s2}%
                             </Typography>
-                            <Typography color="white" variant="h6">
+                            <Typography color="#707274" variant="h6">
                                 {
                                     estado.data[`s${system.id}`].ejecutivo.tiene +
                                     estado.data[`s${system.id}`].legislativo.tiene +
@@ -180,7 +180,7 @@ const VistaDetalleSistema = props => {
             {system.id ===3 &&
                 <Box display='flex' flexWrap='wrap'>
                     <Box p={3} sx={{maxWidth: 600}}>
-                        <Typography color="white">
+                        <Typography color="#707274">
                             ¿Cuenta con la información de las sanciones impuestas a personas servidoras públicas por
                             faltas graves contempladas en los Art. 78 y 80 de la
                             Ley General de Responsabilidades Administrativas?
@@ -188,37 +188,37 @@ const VistaDetalleSistema = props => {
 
                         {estado.data.s3.s3s?
                             <Box display="flex" p={2}>
-                                <CheckCircleOutlineIcon sx={{color: "white"}}/>
-                                <Typography fontWeight="bold" color="white" paddingLeft={1}>
+                                <CheckCircleOutlineIcon sx={{color: "#707274"}}/>
+                                <Typography fontWeight="bold" color="#707274" paddingLeft={1}>
                                     Sí
                                 </Typography>
                             </Box>
                             :
                             <Box display="flex" p={2}>
-                                <HighlightOffIcon sx={{color: "white"}}/>
-                                <Typography fontWeight="bold" color="white" paddingLeft={1}>
+                                <HighlightOffIcon sx={{color: "#707274"}}/>
+                                <Typography fontWeight="bold" color="#707274" paddingLeft={1}>
                                      No
                                 </Typography>
                             </Box>
                         }
 
 
-                        <Typography color='white'>
+                        <Typography color='#707274'>
                             ¿Cuenta con la información de las sanciones impuestas a particulares en términos del Art. 81
                             de la Ley General de Responsalidades Administrativas?
                         </Typography>
 
                         {estado.data.s3.s3p?
                             <Box display="flex" p={2}>
-                                <CheckCircleOutlineIcon sx={{color: "white"}}/>
-                                <Typography fontWeight="bold" color="white" paddingLeft={1}>
+                                <CheckCircleOutlineIcon sx={{color: "#707274"}}/>
+                                <Typography fontWeight="bold" color="#707274" paddingLeft={1}>
                                     Sí
                                 </Typography>
                             </Box>
                             :
                             <Box display="flex" p={2}>
-                                <HighlightOffIcon sx={{color: "white"}}/>
-                                <Typography fontWeight="bold" color="white" paddingLeft={1}>
+                                <HighlightOffIcon sx={{color: "#707274"}}/>
+                                <Typography fontWeight="bold" color="#707274" paddingLeft={1}>
                                     No
                                 </Typography>
                             </Box>

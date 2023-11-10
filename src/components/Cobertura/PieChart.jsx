@@ -10,7 +10,7 @@ const PieChart = props => {
         const remaining = 100 - value;
 
         setData([
-            {angle: remaining, color: '#155065'},
+            {angle: remaining, color: '#eae1ea'},
             {angle: value, color: color},
         ]);
     },[]);
@@ -19,7 +19,7 @@ const PieChart = props => {
     React.useEffect(() => {
         const remaining = 100 - value;
         setData([
-            {angle: remaining, color: '#155065'},
+            {angle: remaining, color: '#eae1ea'},
             {angle: value, color: color},
         ]);
     }, [value, color]);
