@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
       bottom: 100,
       left: 'auto',
       position: 'fixed',
-      background: '#3d6575',
+      background: '#815374',
       zIndex: 10,
     }
 }));

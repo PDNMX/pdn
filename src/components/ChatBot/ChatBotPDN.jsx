@@ -9,10 +9,10 @@ import ReactGA from "react-ga4";
 // all available props
 const theme = {
   background: "#f5f8fb",
-  headerBgColor: "#3d6575",
+  headerBgColor: "#815374",
   headerFontColor: "#fff",
   headerFontSize: "15px",
-  botBubbleColor: "#3ab0e5",
+  botBubbleColor: "#1C7CBF",
   botFontColor: "#fff",
   userBubbleColor: "#fff",
   userFontColor: "#4a4a4a",
@@ -30,7 +30,7 @@ const Example = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <ChatBot
+      <ChatBot className="chatbot"
         opened={opened}
         toggleFloating={toggleFloating}
         steps={steps}

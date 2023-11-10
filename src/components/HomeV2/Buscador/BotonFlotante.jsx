@@ -21,16 +21,16 @@ const useStyles = makeStyles((theme) => ({
     bottom: 180,
     left: 'auto',
     position: 'fixed',
-    background: '#3d6575',
+    background: '#815374',
     zIndex: 10,
   },
   container: {
     padding: "2% 3%",
-    backgroundColor: 'rgba(29, 80, 109, 0.95)',
+    backgroundColor: '#eef7ff',
   },
   titulo: {
     color: '#fff',
-    backgroundColor: 'rgba(29, 80, 109, 0.95)',
+    backgroundColor: '#ccdef2',
     fontSize: "1.12rem"
   },
 

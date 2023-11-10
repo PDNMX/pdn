@@ -14,12 +14,12 @@ export default createTheme(
       htmlFontSize: 21,
       fontSize:18,
       h1: {
-        fontSize:'2rem',
+        fontSize:'2.65rem',
         lineHeight:'1.167' 
       },
       h2: {
-        fontSize:'3.75rem',
-        lineHeight:'1.2' 
+        fontSize:'1.75rem',
+        lineHeight:'1.3' 
       },
       h3: {
         fontSize:'3rem',

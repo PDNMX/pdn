@@ -28,19 +28,14 @@ h1 {
   font-weight: 900;
   font-style: normal;
   text-transform: uppercase;
-  color: #57585A;
-  font-size: 3em;
   line-height: 1.2;
   margin-bottom: 20px;
+  color: #57585A;
 }
 
 h2 {
   font-family: "muli", sans-serif;
-  font-weight: 900;
-  font-style: normal;
-  text-transform: uppercase;
-  color: #1C7CBF;
-  font-size: 1.75em;
+
 }
 
 h2 span {

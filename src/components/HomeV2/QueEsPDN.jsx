@@ -5,7 +5,8 @@ import {Link} from "react-router-dom";
 import BuscadorModal from "./Buscador/BotonPrincipal";
 
 import bgPDN from '../../assets/rediseno2023/imgs/fondos/fondo-mapa.svg';
-
+import lgoSNA from "../../assets/rediseno2023/imgs/iconos/logotipos/logo-sna.svg";
+import lgoSESNA from "../../assets/rediseno2023/imgs/iconos/logotipos/logo-sesna.svg";
 const styles = theme => ({
     container: {
         background: `url(${bgPDN}) 10% -10px no-repeat rgb(255, 255, 255)`,
@@ -36,13 +37,17 @@ const QueEsPDN = props => {
 
     return (
         <React.Fragment>
-            
+        <div className="home">        
             <Grid container spacing={0} alignItems="flex-start" justifyContent='center' className={classes.container}>
-                <Grid item md={6} sm={12} xs={12} align="left">
+                <Grid item md={6} sm={12} xs={12} align="left" >
                        <h1>Plataforma
                         <br />
                         Digital Nacional</h1> 
                         <h2>Inteligencia <span>Anticorrupción</span></h2>
+                        <div>
+                        <img src={lgoSNA} alt="Sistema Nacional Anticorrupción"/>
+                        <img src={lgoSESNA} alt="Secretaría Ejecutiva del Sistema Nacional Anticorrupción"/>
+                        </div>
                     <BuscadorModal />
                 </Grid>
                 <Grid item md={6} sm={12} xs={12} align="left" >
@@ -62,7 +67,7 @@ const QueEsPDN = props => {
                 
                 </Grid>
             </Grid>
-            
+        </div>    
         </React.Fragment>
     );
 }
