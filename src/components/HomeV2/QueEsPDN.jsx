@@ -60,7 +60,7 @@ const QueEsPDN = props => {
                     <Grid container direction="row" justifyContent="flex-end" alignItems="flex-end">
                         <Grid item md={12} sm={12} xs={12} align="right">
                             <Link className={classes.link} to="/about">
-                                <Button>Conoce más</Button>
+                                <Button arget="_blank" style={{ color: 'white' }} >Conoce más</Button>
                             </Link>
                         </Grid>
                     </Grid>

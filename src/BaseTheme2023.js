@@ -42,7 +42,7 @@ export default createTheme(
       mode: 'light',
       text: {
         main: '#E1E8EB',
-        primary: '#ff0000',
+        primary: '#55575A',
         secondary: '#ff0'
       },
       primary: {

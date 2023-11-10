@@ -423,7 +423,7 @@ const CssDeclaraciones = theme => ({
       color: theme.palette.azulPDN
     },
     '&:hover': {
-      color: '#FF0000',
+      color: '#55575A',
       borderBottom: '2px solid #3ab0e5'
     }
   }

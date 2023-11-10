@@ -85,7 +85,7 @@ const Intro = props => {
             </Typography>
 
             <ButtonPDN href="https://standard.open-contracting.org/latest/es/"
-                       target="_blank" >
+                       target="_blank" style={{ color: 'white' }} >
                 Conoce más
             </ButtonPDN>
 

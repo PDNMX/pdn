@@ -64,6 +64,7 @@ const BlogComponent = props => {
                 <Button variant="contained"
                         href="https://www.plataformadigitalnacional.org/blog"
                         onClick={()=>ReactGA.pageview('/blog')}
+                        style={{ color: 'white' }}
                 >
                     Conoce más
                 </Button>

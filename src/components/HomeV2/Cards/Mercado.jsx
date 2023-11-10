@@ -34,7 +34,7 @@ const CardMercardo = props => {
             Cuenta con herramientas que fueron desarrolladas por diversas instituciones y que cumplen los objetivos de la PDN.
           </Typography>
           <Grid container direction={'row-reverse'}>
-            <ButtonPDN text={''} href={'https://mda.plataformadigitalnacional.org/'} onClick={()=>ReactGA.pageview('/mda')}>
+            <ButtonPDN text={''} href={'https://mda.plataformadigitalnacional.org/'} onClick={()=>ReactGA.pageview('/mda')} style={{ color: 'white' }}>
               CONOCE MÁS
             </ButtonPDN>
           </Grid>
