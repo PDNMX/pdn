@@ -13,7 +13,7 @@ import ButtonPDN from "../Compartidos/ButtonPDN";
 
 const Accordion = withStyles(theme =>({
     root: {
-        border: '1px solid' + theme.palette.background.opaque,
+        border: '1px solid' + theme.palette.background.default,
         boxShadow: 'none'
     },
     expanded: {},
@@ -21,14 +21,14 @@ const Accordion = withStyles(theme =>({
 
 const AccordionSummary = withStyles(theme =>({
     root: {
-        backgroundColor: theme.palette.background.opaque,
+        backgroundColor: theme.palette.background.default,
         /* borderBottom: '1px solid rgba(0, 0, 0, .125)', */
         /* marginBottom: -1, */
         minHeight: 56,
         '&$expanded': {
             minHeight: 56,
         },
-        color: theme.palette.text.main 
+        color: theme.palette.primary.main 
     },
     expandIconWrapper: {
         color: theme.palette.secondary.main,
@@ -38,8 +38,8 @@ const AccordionSummary = withStyles(theme =>({
 const AccordionDetails = withStyles(theme => ({
     root: {
         padding: theme.spacing(2),
-        color: theme.palette.text.main,
-        backgroundColor: theme.palette.background.opaque,
+        color: theme.palette.text.primary,
+        backgroundColor: theme.palette.background.default,
         border: '1px solid' + theme.palette.secondary.main,
     },
 }))(MuiExpansionPanelDetails);
@@ -58,7 +58,7 @@ const useStyles = makeStyles( theme => ({
     li: {
         "&:before":{
             content: '"•"',
-            color: '#5fb1e6',
+            color: '#94638d',
             fontWeight: "bold",
             display: "inline-block",
             width: "1em",
@@ -81,7 +81,7 @@ export default function CustomizedExpansionPanels() {
 
             <Accordion square expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
                 <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1d-content" id="panel1d-header">
-                    <Typography variant="h6">¿Qué es la PDN?</Typography>
+                    <Typography variant="h6" >¿Qué es la PDN?</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
 
@@ -102,19 +102,19 @@ export default function CustomizedExpansionPanels() {
                             Es importante señalar que la PDN no es generadora ni un repositorio de datos, sino que es una plataforma de interoperabilidad que consulta información de diversas fuentes.
                         </Typography>
 
-                        <ButtonPDN target="_blank" href='https://drive.google.com/file/d/1wdy8bgX9fn1yRCAWSJMhjeTYKxEOXRQv/view'>
+                        <ButtonPDN target="_blank" href='https://drive.google.com/file/d/1wdy8bgX9fn1yRCAWSJMhjeTYKxEOXRQv/view' style={{ color: 'white' }}>
                             ¿Qué es la PDN?
                         </ButtonPDN>
 
-                        <ButtonPDN target="_blank" href="https://drive.google.com/file/d/1YbkcDrRoscIUJtEiyM55GCliHsW22TkK/view">
+                        <ButtonPDN target="_blank" href="https://drive.google.com/file/d/1YbkcDrRoscIUJtEiyM55GCliHsW22TkK/view" style={{ color: 'white' }}>
                             ¿Cómo se construye?
                         </ButtonPDN>
 
-                        <ButtonPDN target="_blank" href="https://drive.google.com/file/d/1xYlY50lXttiuu0brV5CVd5H8qx96vDsK/view">
+                        <ButtonPDN target="_blank" href="https://drive.google.com/file/d/1xYlY50lXttiuu0brV5CVd5H8qx96vDsK/view" style={{ color: 'white' }}>
                             Guía desarrollo PDE
                         </ButtonPDN>
 
-                        <ButtonPDN target="_blank" href="https://drive.google.com/file/d/1-IvF3KYa5rups73BmVV4W8glT9csVGY9/view">
+                        <ButtonPDN target="_blank" href="https://drive.google.com/file/d/1-IvF3KYa5rups73BmVV4W8glT9csVGY9/view" style={{ color: 'white' }}>
                             Seguridad de la información
                         </ButtonPDN>
                     </div>
@@ -411,7 +411,7 @@ export default function CustomizedExpansionPanels() {
                             En el siguiente enlace, encontrarás una presentación que describe nuestra visión sobre el desarrollo tecnológico de las Plataformas y Sistemas Estatales.
                         </Typography>
 
-                        <ButtonPDN target="_blank" href="https://drive.google.com/file/d/1xYlY50lXttiuu0brV5CVd5H8qx96vDsK/view">
+                        <ButtonPDN target="_blank" href="https://drive.google.com/file/d/1xYlY50lXttiuu0brV5CVd5H8qx96vDsK/view" style={{ color: 'white' }}>
                             Guía desarrollo PDE
                         </ButtonPDN>
 
@@ -557,7 +557,7 @@ export default function CustomizedExpansionPanels() {
                             Plataforma Digital Nacional.
                         </Typography>
 
-                        <ButtonPDN target="_blank" href="https://drive.google.com/file/d/1wHQpaFdP5An8V4Vhnjj1a4GBbYIREMHo/view?usp=sharing">
+                        <ButtonPDN target="_blank" href="https://drive.google.com/file/d/1wHQpaFdP5An8V4Vhnjj1a4GBbYIREMHo/view?usp=sharing" style={{ color: 'white' }}>
                             Más información
                         </ButtonPDN>
                     </div>
@@ -576,7 +576,7 @@ export default function CustomizedExpansionPanels() {
                         </Typography>
                         <ButtonPDN
                             href='https://drive.google.com/file/d/1Fc0bg22fMoBXXxnihUCZBpnM77Je9Wap/view?usp=sharing'
-                            target='_blank'>
+                            target='_blank' style={{ color: 'white' }}>
                             Manual de usuario
                         </ButtonPDN>
                     </div>

@@ -43,7 +43,8 @@ export default createTheme(
       text: {
         main: '#E1E8EB',
         primary: '#55575A',
-        secondary: '#ff0'
+        secondary: '#ff0',
+        linkColor: '#7a3d71'
       },
       primary: {
         main: '#7a3d71',
@@ -53,7 +54,7 @@ export default createTheme(
         prueba: '#d3d'
       },
       secondary: {
-        main: '#1C7CBF',
+        main: '#927188',
         light: '#4996cb',
         dark: '#135685',
         contrastText:'rgba(255, 255, 255, 0.8)'

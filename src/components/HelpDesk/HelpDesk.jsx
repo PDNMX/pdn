@@ -30,7 +30,7 @@ const styles = theme => ({
         paddingBottom: theme.spacing(10),
     },
     paper: {
-        backgroundColor: theme.palette.background.opaque,
+        backgroundColor: theme.palette.background.default,
         padding: theme.spacing(2),
         color: theme.palette.primary.contrastText,
         borderStyle: 'solid',
