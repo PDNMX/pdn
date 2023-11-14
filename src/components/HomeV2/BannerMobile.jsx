@@ -6,7 +6,7 @@ import {
 } from "@mui/material";
 import {Link as RouterLink} from "react-router-dom";
 import { MoreHoriz as MoreHorizIcon} from '@mui/icons-material';
-import imgHeader from "../../assets/rediseno/logo_pdn.svg";
+import imgHeader from "../../assets/rediseno2023/imgs/iconos/logotipos/logo_pdn-transparente.svg";
 import Especificaciones_logo from "../../assets/rediseno/ico_especificaciones.svg";
 import Mesa_logo from "../../assets/rediseno/ico_mesa-ayuda.svg";
 import MDA_logo from "../../assets/rediseno/ico_mda.svg";
@@ -106,17 +106,17 @@ const BannerMobile = props => {
             <AppBar
                 position="static"
                 style={{
-                    backgroundColor: "#3e5866",
+                    background: "transparent linear-gradient(230deg, #1C7CBF 0%, #1C7CBF 4%, #9F58E2 49%, #6D4061 100%) 0% 0% no-repeat padding-box",
                     border: 0,
                     boxShadow: "none"
                 }}
             >
                 <Toolbar>
-                    <IconButton
+                    <IconButton className="burguer"
                         aria-owns={open ? "menu-appbar" : undefined}
                         aria-haspopup="true"
                         onClick={(event) => handleMenu(event)}
-                        color="inherit"
+                        color= '#fff'
                         size="large">
                         <MoreHorizIcon className={classes.iconMenu}/>
                     </IconButton>

@@ -8,7 +8,7 @@ import DialogContent from '@mui/material/DialogContent';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import {Box, Typography} from "@mui/material";
-import eri from '../../assets/rediseno/ico-espin-construction.svg';
+import WarningIcon from '@mui/icons-material/Warning';
 
 const DialogoNoConectado = (props) =>  {
 
@@ -36,7 +36,13 @@ const DialogoNoConectado = (props) =>  {
                 <DialogContent style={{background: bgColor}}>
                     <Box display="flex" flexWrap="wrap" justifyContent="center" alignContent="center" alignItems="stretch">
                         <Box p={1} m={1} flexGrow={1} alignSelf="center">
-                            <img src={eri} alt="Eri" width="100px"/>
+                        <WarningIcon
+                            aria-label="delete"
+                            sx={{
+                                color: "orange",
+                                fontSize: '3rem'
+                            }}
+                            />
                         </Box>
                         <Box p={1} m={1} flexGrow={1} display="flex" alignItems="stretch">
                             <Typography color="white" alignSelf="center">
