@@ -26,7 +26,7 @@ const CenterFooter = props => {
           
         </Grid>
         <Grid item className='texto-der'>
-          <RouterLink to={'/faq'}>
+          <RouterLink to={'/faq'} style={{ color: '#7a3d71' }}>
             Preguntas frecuentes
           </RouterLink>
           <Link href='https://www.youtube.com/channel/UCJ0nWmB2-ADfn95r5cjmLJA/' target='_blank' underline='none' onClick={()=>ReactGA.event({ category: 'youtube-pdn', action: 'click' })}>

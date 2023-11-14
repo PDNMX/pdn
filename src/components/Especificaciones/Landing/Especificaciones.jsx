@@ -43,7 +43,7 @@ const styles = theme => ({
         //paddingBottom: 60
     },
     paper: {
-        backgroundColor: theme.palette.background.opaque,
+        backgroundColor: theme.palette.background.default,
         padding: theme.spacing(2),
         color: theme.palette.primary.contrastText,
         borderStyle: 'solid',
@@ -64,7 +64,7 @@ const Especificaciones = props => {
 
     return (
         <div className={classes.root}>
-            <HeaderV2 section={section}/>
+            <HeaderV2 section={section} />
             <Grid container spacing={0} justifyContent="center">
                 <Grid item xs={12} className={classes.rootItem}>
                     <Paper className={classes.paper} elevation={15}>
