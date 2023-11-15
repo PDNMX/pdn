@@ -78,16 +78,16 @@ const CssFooter = theme => ({
     }
   },
   footerMobileSeccEnlaces: {
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(0),
     padding: theme.spacing(2),
     color: '#FFF',
-    backgroundColor: '#3e5866'
+    backgroundColor: '#815474'
   },
   footerMobileSeccLogos: {
     marginTop: theme.spacing(-1),
     padding: theme.spacing(2),
     color: '#FFF',
-    backgroundColor: '#4b6471'
+    backgroundColor: '#FFF'
   },
   mobileSESNA: {
     width: '30vw',

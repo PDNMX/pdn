@@ -10,8 +10,9 @@ import icon_facebook from '../../../assets/footer/ico_facebook.svg';
 
 import icon_github from '../../../assets/footer/ico_git.svg';
 
-import logoSESNA from '../../../assets/footer/logo_sna.svg';
-import logoPDN from '../../../assets/footer/logotipo_pdn.svg';
+import logoSESNA from '../../../assets/rediseno2023/imgs/iconos/logotipos/logo-sesna.svg';
+import logoPDN from '../../../assets/rediseno2023/imgs/iconos/logotipos/logo-pdn.svg';
+import logoSNA from '../../../assets/rediseno2023/imgs/iconos/logotipos/logo-sna.svg';
 
 import { makeStyles } from '@mui/styles';
 import css from './cssFooter';
@@ -26,21 +27,21 @@ const MobileFooter = props => {
       <Grid container spacing={2} direction={'row'} justifyContent={'center'} alignContent={'center'} className={classes.footerMobileSeccEnlaces}>
         <Grid item>
           <Typography variant='subtitle1'>
-            <RouterLink to={'/faq'} className={classes.linkMobile}>
+            <RouterLink to={'/faq'} className={classes.linkMobile}  style={{ color: 'white' }}>
               Preguntas frecuentes
             </RouterLink>
           </Typography>
         </Grid>
         <Grid item>
           <Typography variant='subtitle1'>
-            <Link href='https://drive.google.com/drive/folders/1t_vGUfagr75TAZ8-E4NZfL-fU0BcsPlZ' target='_blank' underline='none' className={classes.linkMobile} onClick={()=>ReactGA.event({ category: 'boletines-prensa', action: 'click' })}>
+            <Link href='https://drive.google.com/drive/folders/1t_vGUfagr75TAZ8-E4NZfL-fU0BcsPlZ' target='_blank' underline='none' className={classes.linkMobile} onClick={()=>ReactGA.event({ category: 'boletines-prensa', action: 'click' })} style={{ color: 'white' }}>
               Boletines y prensa
             </Link>
           </Typography>
         </Grid>
         <Grid item>
           <Typography variant='subtitle1'>
-            <Link href='https://www.youtube.com/channel/UCJ0nWmB2-ADfn95r5cjmLJA/' target='_blank' underline='none' className={classes.linkMobile} onClick={()=>ReactGA.event({ category: 'youtube-pdn', action: 'click' })}>
+            <Link href='https://www.youtube.com/channel/UCJ0nWmB2-ADfn95r5cjmLJA/' target='_blank' underline='none' className={classes.linkMobile} onClick={()=>ReactGA.event({ category: 'youtube-pdn', action: 'click' })} style={{ color: 'white' }}>
               Videos
             </Link>
           </Typography>
@@ -59,6 +60,9 @@ const MobileFooter = props => {
         </Grid>
         <Grid item>
           <img alt='Logo PDN' src={logoPDN} className={classes.mobilePDN} />
+        </Grid>
+        <Grid item>
+          <img alt='Logo SNA' src={logoSNA} className={classes.mobilePDN} />
         </Grid>
       </Grid>
       <Grid container direction={'row'} justifyContent={'center'} alignContent={'center'} className={classes.footerMobileSeccLogos}>
