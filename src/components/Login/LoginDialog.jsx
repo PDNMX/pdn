@@ -112,7 +112,7 @@ const LoginDialog = props => {
                     {user.loggedIn? "Terminar la sesión": "Inicio de sesión"}
                 </DialogTitle>
                 <DialogContent>
-                    <DialogContentText>
+                    <DialogContentText style={{ color: '#55575A' }}>
                         {user.loggedIn ?
                             `Authenticado como ${user.nombres} ${user.primerApellido} ${user.segundoApellido}`
                             :
@@ -135,13 +135,13 @@ const LoginDialog = props => {
                             :
                             <form onSubmit={handleSubmit}>
                                 <FormControl sx={{margin: 1}} fullWidth>
-                                    <InputLabel htmlFor="outlined-adornment-email">E-mail</InputLabel>
+                                    <InputLabel htmlFor="outlined-adornment-email" style={{ color: '#55575A' }}>E-mail</InputLabel>
                                     <OutlinedInput type="email" label="E-mail" required
                                                    value={state.email} onChange={handleChangeEmail}/>
                                 </FormControl>
 
                                 <FormControl sx={{margin: 1}} fullWidth>
-                                    <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                                    <InputLabel htmlFor="outlined-adornment-password" style={{ color: '#55575A' }}>Password</InputLabel>
                                     <OutlinedInput type={state.showPassword ? 'text' : 'password'} label="Contraseña" required
                                                    value={state.password} onChange={handleChangePassword}
                                                    endAdornment={
@@ -158,7 +158,7 @@ const LoginDialog = props => {
                                     />
                                 </FormControl>
 
-                                <Button variant="contained" sx={{margin: 1}} type='submit'>
+                                <Button variant="contained" sx={{margin: 1}} type='submit' style={{ color: 'white' }}>
                                     Enviar
                                 </Button>
                             </form>
@@ -171,7 +171,7 @@ const LoginDialog = props => {
 
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose} autoFocus variant="contained">
+                    <Button onClick={handleClose} autoFocus variant="contained" style={{ color: 'white' }}>
                         Cancelar
                     </Button>
                 </DialogActions>
