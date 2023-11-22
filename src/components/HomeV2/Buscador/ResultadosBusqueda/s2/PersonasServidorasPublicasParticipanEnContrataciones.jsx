@@ -44,7 +44,7 @@ ul: {
 li: {
     "&:before": {
         content: '"•"',
-        color: '#5fb1e6',
+        color: '#7A3D71',
         fontWeight: "bold",
         display: "inline-block",
         width: "1em",

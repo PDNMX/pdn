@@ -15,7 +15,7 @@ const styles = theme => ({
   li: {
     '&:before': {
       content: '"•"',
-      color: '#5fb1e6',
+      color: '#7A3D71',
       fontWeight: 'bold',
       display: 'inline-block',
       width: '1em',
@@ -40,7 +40,7 @@ class DescripcionEstandar extends React.Component {
           También puedes hacer clic en el botón que aparece a continuación, el cual <b>contiene información relevante para</b> los equipos encargados de desarrollar la <b>interconexión de su sistema de declaraciones</b> con la Plataforma Digital Nacional.
         </Typography>
         <Typography paragraph>
-          <ButtonPDN  target='_blank' href='https://drive.google.com/file/d/1wHQpaFdP5An8V4Vhnjj1a4GBbYIREMHo/view?usp=sharing'>
+          <ButtonPDN  target='_blank' href='https://drive.google.com/file/d/1wHQpaFdP5An8V4Vhnjj1a4GBbYIREMHo/view?usp=sharing' style={{ color: 'white' }}>
             Más información
           </ButtonPDN>
         </Typography>
@@ -101,7 +101,7 @@ class DescripcionEstandar extends React.Component {
         </Typography>
 
         <Typography paragraph>
-          <ButtonPDN  target='_blank' href='https://github.com/OAI/OpenAPI-Specification'>
+          <ButtonPDN  target='_blank' href='https://github.com/OAI/OpenAPI-Specification' style={{ color: 'white' }}>
             Más información
           </ButtonPDN>
         </Typography>
@@ -112,10 +112,10 @@ class DescripcionEstandar extends React.Component {
         <Typography paragraph>El acceso a las APIs que se integrarán a la PDN se gestionará a través del protocolo de autorización OAuth 2.0, el cual es un estándar ampliamente usado por la industria de Internet. El estándar OAuth 2.0 que permitirá a la PDN obtener acceso necesario a las APIs de las instituciones a través del uso de tokens de autorización.</Typography>
 
         <Typography paragraph>
-          <ButtonPDN  target='_blank' href='https://oauth.net/2/'>
+          <ButtonPDN  target='_blank' href='https://oauth.net/2/' style={{ color: 'white' }}>
             Más información
           </ButtonPDN>{' '}
-          <ButtonPDN  target='_blank' href='https://drive.google.com/file/d/17-npQleAV87gV19hbmtzgZipegl0qrIO/view?usp=sharing'>
+          <ButtonPDN  target='_blank' href='https://drive.google.com/file/d/17-npQleAV87gV19hbmtzgZipegl0qrIO/view?usp=sharing' style={{ color: 'white' }}>
             Guía de referencia
           </ButtonPDN>
         </Typography>
