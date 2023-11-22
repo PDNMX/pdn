@@ -7,15 +7,15 @@ import {
 import {Link as RouterLink} from "react-router-dom";
 import { MoreHoriz as MoreHorizIcon} from '@mui/icons-material';
 import imgHeader from "../../assets/rediseno2023/imgs/iconos/logotipos/logo_pdn-transparente.svg";
-import Especificaciones_logo from "../../assets/rediseno/ico_especificaciones.svg";
-import Mesa_logo from "../../assets/rediseno/ico_mesa-ayuda.svg";
-import MDA_logo from "../../assets/rediseno/ico_mda.svg";
-import Interconexion_logo from "../../assets/rediseno/ico_interconexion.svg";
-import Sistemas_logo from "../../assets/rediseno/ico_sistemas_f.svg";
+import Especificaciones_logo from "../../assets/rediseno2023/imgs/iconos/menu/ico_especificaciones.svg";
+import Mesa_logo from "../../assets/rediseno2023/imgs/iconos/menu/ico_mesa-ayuda.svg";
+import MDA_logo from "../../assets/rediseno2023/imgs/iconos/menu/ico_mda.svg";
+import Interconexion_logo from "../../assets/rediseno2023/imgs/iconos/menu/ico_interconexion.svg";
+import Sistemas_logo from "../../assets/rediseno2023/imgs/iconos/menu/ico_sistemas.svg";
 import LoginIcon from "../../assets/rediseno/ico_login.svg";
-import legislacion_icono from "../../assets/rediseno/ico_interconexion_legislacion.svg";
-import icon_cobertura from "../../assets/rediseno/ico_cobertura.svg";
-import mapa_s2s3_icono from "../../assets/rediseno/ico_interconexion_s2-s3.svg";
+import legislacion_icono from "../../assets/rediseno2023/imgs/iconos/menu/ico_sistemas123.svg";
+import icon_cobertura from "../../assets/rediseno2023/imgs/iconos/menu/ico_cobertura.svg";
+import mapa_s2s3_icono from "../../assets/rediseno2023/imgs/iconos/menu/ico_legislacion.svg";
 import ReactGA from "react-ga4";
 import {UserContext} from "../Login/UserContext";
 
@@ -45,17 +45,17 @@ const styles = theme => ({
     },
     menu: {
         "& .MuiPaper-root": {
-            backgroundColor: "#0d3b49",
+            backgroundColor: "#f7f7f7",
             width: '100%'
         },
     },
     menuItem: {
-        backgroundColor: "#1a4653",
+        backgroundColor: "#fff",
         marginRight: theme.spacing(1),
         marginLeft: theme.spacing(1),
         marginBottom: theme.spacing(1),
         textTransform: "none",
-        color: "#E1E8EB",
+        color: "#4a2f4b",
         justifyContent: 'space-between'
     },
     iconMenu:{
@@ -175,17 +175,17 @@ const BannerMobile = props => {
                                 <ListItemButton href='https://www.plataformadigitalnacional.org/mapa-sla/' key='legislacion'
                                                 className={classes.nested} onClick={()=>ReactGA.pageview('/mapa-sla')}>
                                     <img src={legislacion_icono} alt='Legislación' className={classes.iconSistemas}/>
-                                    <Typography color={'#b2bfc4'}>Legislación</Typography>
+                                    <Typography color={'#4a2f4b'}>Legislación</Typography>
                                 </ListItemButton>
                                 <ListItemButton href='https://www.plataformadigitalnacional.org/mapa-avance/' key='mapa'
                                                 className={classes.nested} onClick={()=>ReactGA.pageview('/mapa-avance')}>
                                     <img src={mapa_s2s3_icono} alt='Avance' className={classes.iconSistemas}/>
-                                    <Typography color='#b2bfc4'>Sistemas 1, 2 y 3</Typography>
+                                    <Typography color='#4a2f4b'>Sistemas 1, 2 y 3</Typography>
                                 </ListItemButton>
 
                                 <ListItemButton component={RouterLink} to={'/cobertura'} key={'cobertura'} className={classes.nested}>
                                     <img src={icon_cobertura} alt={''} className={classes.iconSistemas}/>
-                                    <Typography color={'#b2bfc4'}>Cobertura</Typography>
+                                    <Typography color={'#4a2f4b'}>Cobertura</Typography>
                                 </ListItemButton>
 
                             </List>

@@ -20,7 +20,7 @@ const styles = theme => ({
     li: {
         "&:before": {
             content: '"•"',
-            color: '#5fb1e6',
+            color: '#7a3d71',
             fontWeight: "bold",
             display: "inline-block",
             width: "1em",
