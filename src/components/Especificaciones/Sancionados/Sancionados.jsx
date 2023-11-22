@@ -124,7 +124,7 @@ const Sancionados = props => {
 
                             <ButtonPDN
                                     href='https://docs.google.com/spreadsheets/d/1wVaVFEJQloanwasIAASFiKGC8mbNEmeijK0F58PxgCA/edit?usp=sharing'
-                                    target='_blank'
+                                    target='_blank' style={{ color: 'white' }}
                             >
                                 Más información
                             </ButtonPDN>
@@ -135,7 +135,7 @@ const Sancionados = props => {
 
                             <ButtonPDN
                                     href="https://github.com/PDNMX/catalogos/tree/master/S3%20-%20Sancionados"
-                                    target='_blank'>
+                                    target='_blank' style={{ color: 'white' }}>
                                 Más información
                             </ButtonPDN>
 
@@ -168,7 +168,7 @@ const Sancionados = props => {
                               Seguridad
                             </Typography>
                             <Typography paragraph>
-                                <ButtonPDN  target='_blank'  href='https://drive.google.com/file/d/1-IvF3KYa5rups73BmVV4W8glT9csVGY9/view'>
+                                <ButtonPDN  target='_blank' style={{ color: 'white' }} href='https://drive.google.com/file/d/1-IvF3KYa5rups73BmVV4W8glT9csVGY9/view'>
                                     Más información
                                 </ButtonPDN>
                             </Typography>

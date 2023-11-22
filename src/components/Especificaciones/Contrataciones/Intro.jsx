@@ -147,7 +147,7 @@ const Intro = props => {
             </Typography>
 
             <ButtonPDN href="https://docs.google.com/spreadsheets/d/1DDpMvPG9S1H45YMAFlHBZy9jnJu71nU1Y9CEIbxRSRQ/edit?usp=sharing"
-                       target="_blank" >
+                       target="_blank" style={{ color: 'white' }}>
                 Diccionario de datos
             </ButtonPDN>
 
@@ -161,7 +161,7 @@ const Intro = props => {
 
             <ButtonPDN
                 href="https://standard.open-contracting.org/schema/1__1__5/release-schema.json"
-                target="_blank">
+                target="_blank" style={{ color: 'white' }}>
                 Esquema de entrega
             </ButtonPDN>
 
@@ -176,7 +176,7 @@ const Intro = props => {
 
             <ButtonPDN
                 href="https://standard.open-contracting.org/review/"
-                target="_blank">
+                target="_blank" style={{ color: 'white' }}>
                 Herramienta de revisión
             </ButtonPDN>
 
@@ -190,7 +190,7 @@ const Intro = props => {
 
             <ButtonPDN
                 href="https://standard.open-contracting.org/latest/es/"
-                target="_blank">
+                target="_blank" style={{ color: 'white' }}>
                 Estándar OCDS
             </ButtonPDN>
 
@@ -271,7 +271,7 @@ const Intro = props => {
             </Typography>
             <ButtonPDN
                 href="https://standard.open-contracting.org/latest/es/"
-                target="_blank">
+                target="_blank" style={{ color: 'white' }}>
                 Estándar OCDS
             </ButtonPDN>
 
@@ -315,7 +315,7 @@ const Intro = props => {
 
             <ButtonPDN
                 href="https://standard.open-contracting.org/latest/es/guidance/map/extensions/"
-                target="_blank"
+                target="_blank" style={{ color: 'white' }}
             >
                 Extensiones OCDS
             </ButtonPDN>

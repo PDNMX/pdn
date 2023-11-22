@@ -31,19 +31,19 @@ const styles = theme => ({
   },
   linkMobile: {
     'textDecoration': 'none',
-    'color': '#b1bcc1',
+    'color': '#fff',
     '&:visited': {
-      color: '#b1bcc1'
+      color: '#fff'
     },
     '&:link': {
-      color: '#b1bcc1'
+      color: '#fff'
     },
     '&:active': {
-      color: '#b1bcc1'
+      color: '#fff'
     },
     '&:hover': {
-      color: '#FFF',
-      borderBottom: '2px solid #3ab0e5'
+      color: '#b1bcc1',
+      borderBottom: '2px solid #7A3D71'
     }
   }
 });

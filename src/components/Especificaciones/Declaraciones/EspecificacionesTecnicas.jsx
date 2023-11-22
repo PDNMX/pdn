@@ -40,7 +40,7 @@ class EspecificacionesTecnicas extends React.Component {
         </Typography>
 
         <Typography paragraph>
-          <ButtonPDN  target='_blank' href='https://docs.google.com/spreadsheets/d/19Kyq46YwJk9wM7znYLQdLEKfAF8jTF4WmGJINXd9Lwg/edit?ts=5d88f08f#gid=0' variant='contained'>
+          <ButtonPDN  target='_blank' href='https://docs.google.com/spreadsheets/d/19Kyq46YwJk9wM7znYLQdLEKfAF8jTF4WmGJINXd9Lwg/edit?ts=5d88f08f#gid=0' variant='contained'style={{ color: 'white' }}>
             Más información
           </ButtonPDN>
         </Typography>
@@ -50,7 +50,7 @@ class EspecificacionesTecnicas extends React.Component {
         </Typography>
 
         <Typography paragraph>
-          <ButtonPDN  target='_blank'  href='https://github.com/PDNMX/catalogos/tree/master/S1%20-%20Declaraciones'>
+          <ButtonPDN  target='_blank'  href='https://github.com/PDNMX/catalogos/tree/master/S1%20-%20Declaraciones' style={{ color: 'white' }}>
             Más información
           </ButtonPDN>
         </Typography>
@@ -81,7 +81,7 @@ class EspecificacionesTecnicas extends React.Component {
           Seguridad
         </Typography>
         <Typography paragraph>
-          <ButtonPDN  target='_blank'  href='https://drive.google.com/file/d/1-IvF3KYa5rups73BmVV4W8glT9csVGY9/view'>
+          <ButtonPDN  target='_blank'  href='https://drive.google.com/file/d/1-IvF3KYa5rups73BmVV4W8glT9csVGY9/view' style={{ color: 'white' }}>
             Más información
           </ButtonPDN>
         </Typography>
@@ -90,7 +90,7 @@ class EspecificacionesTecnicas extends React.Component {
           Versionado
         </Typography>
         <Typography paragraph>
-          <ButtonPDN  target='_blank' href='https://drive.google.com/file/d/1xIPoMa-xKlCi9OZs_Uc7ffvANImaKWnK/view'>
+          <ButtonPDN  target='_blank' href='https://drive.google.com/file/d/1xIPoMa-xKlCi9OZs_Uc7ffvANImaKWnK/view' style={{ color: 'white' }}>
             Más información
           </ButtonPDN>
         </Typography>

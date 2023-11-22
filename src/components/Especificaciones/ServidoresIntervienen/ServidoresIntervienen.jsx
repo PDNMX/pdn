@@ -99,7 +99,7 @@ const ServidoresIntervienen = props => {
 
                             <ButtonPDN
                                 href='https://docs.google.com/spreadsheets/d/1fRhDfHtrBPYyR36zxpenXWind9FP1pLAQJOVS69QwUM/edit?usp=sharing'
-                                target='_blank'
+                                target='_blank' style={{ color: 'white' }}
                                 >
                                 Más información
                             </ButtonPDN>
@@ -110,7 +110,7 @@ const ServidoresIntervienen = props => {
 
                             <ButtonPDN
                                 href='https://github.com/PDNMX/catalogos/tree/master/S2%20-%20Servidores%20p%C3%BAblicos%20en%20contrataciones'
-                                target='_blank'
+                                target='_blank' style={{ color: 'white' }}
                                 >
                                 Más información
                             </ButtonPDN>
@@ -121,7 +121,7 @@ const ServidoresIntervienen = props => {
 
                             <ButtonPDN
                                 href='https://www.plataformadigitalnacional.org/oas/ui/?urls.primaryName=S2'
-                                target='_blank'
+                                target='_blank' style={{ color: 'white' }}
                                 >
                                 Más información
                             </ButtonPDN>
@@ -130,7 +130,7 @@ const ServidoresIntervienen = props => {
                               Seguridad
                             </Typography>
                             <Typography paragraph>
-                                <ButtonPDN  target='_blank'  href='https://drive.google.com/file/d/1-IvF3KYa5rups73BmVV4W8glT9csVGY9/view'>
+                                <ButtonPDN  target='_blank' style={{ color: 'white' }}  href='https://drive.google.com/file/d/1-IvF3KYa5rups73BmVV4W8glT9csVGY9/view'>
                                     Más información
                                 </ButtonPDN>
                             </Typography>

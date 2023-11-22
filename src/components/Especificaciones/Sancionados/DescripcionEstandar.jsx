@@ -96,7 +96,7 @@ const DescripcionEstandar = props => {
                 </Typography>
 
                 <p>
-                    <ButtonPDN  target="_blank" href="https://github.com/OAI/OpenAPI-Specification">Más información</ButtonPDN>
+                    <ButtonPDN  target="_blank" style={{ color: 'white' }} href="https://github.com/OAI/OpenAPI-Specification" >Más información</ButtonPDN>
                 </p>
 
                 <Typography variant="h5" id="oauth" paragraph >
@@ -111,8 +111,8 @@ const DescripcionEstandar = props => {
                 </Typography>
 
                 <p>
-                    <ButtonPDN  target="_blank" href="https://oauth.net/2/"> Más información </ButtonPDN>
-                    <ButtonPDN  target="_blank" href="https://drive.google.com/file/d/17-npQleAV87gV19hbmtzgZipegl0qrIO/view?usp=sharing"> Guía de referencia </ButtonPDN>
+                    <ButtonPDN  target="_blank" href="https://oauth.net/2/" style={{ color: 'white' }}> Más información </ButtonPDN>
+                    <ButtonPDN  target="_blank" style={{ color: 'white' }} href="https://drive.google.com/file/d/17-npQleAV87gV19hbmtzgZipegl0qrIO/view?usp=sharing"> Guía de referencia </ButtonPDN>
                 </p>
             </div>)
 

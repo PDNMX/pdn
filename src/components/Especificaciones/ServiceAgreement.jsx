@@ -28,7 +28,7 @@ const ServiceAgreement = props => {
         Una vez que las API´s de las instituciones hayan superado las validaciones de seguridad, funcionalidad, y que se haya establecido la conexión con la PDN, las instituciones adquieren la responsabilidad de monitorear y en su caso, dar mantenimiento preventivo y correctivo a las mismas, además de garantizar niveles de servicio mínimos de acuerdo al siguiente documento:
       </Typography>
 
-      <ButtonPDN href={url_doc} target='_blank'>
+      <ButtonPDN href={url_doc} target='_blank' style={{ color: 'white' }}>
         Más información
       </ButtonPDN>
       <br />
