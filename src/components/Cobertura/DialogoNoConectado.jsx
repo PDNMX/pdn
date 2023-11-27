@@ -45,7 +45,7 @@ const DialogoNoConectado = (props) =>  {
                             />
                         </Box>
                         <Box p={1} m={1} flexGrow={1} display="flex" alignItems="stretch">
-                            <Typography color="white" alignSelf="center">
+                            <Typography color="#55575A" alignSelf="center">
                                 La Entidad no ha reportado información a la PDN
                             </Typography>
                         </Box>
@@ -53,7 +53,7 @@ const DialogoNoConectado = (props) =>  {
                     {/*<DialogContentText> La Entidad no ha reportado información a la PDN </DialogContentText>*/}
                 </DialogContent>
                 <DialogActions style={{background: bgColor}}>
-                    <Button  variant="contained" onClick={handleClose} autoFocus>
+                    <Button  variant="contained" onClick={handleClose} autoFocus style={{ color: 'white' }}>
                         Aceptar
                     </Button>
                 </DialogActions>
