@@ -24,8 +24,20 @@ const percentage = (a, b) => {
 };
 
 const VistaDetalleSistema = props => {
-    const {estado, system, classes, avance_s1, avance_s2} = props;
+    const {estado, system, classes, avance_s1, avance_s2, avance_s6} = props;
     const {icon, color, name} = system;
+    const get_value = id => {
+        switch (id) {
+            case 1:
+                return avance_s1;
+            case 2:
+                return avance_s2;
+            case 6:
+                return avance_s6;
+            default:
+                return avance_s1;
+        }
+    };
 
     /* Vista detallada por Sistema */
     return <Box sx={{display: 'flex', flexWrap: "wrap", alignItems: "stretch"}} justifyContent="center">
@@ -44,7 +56,8 @@ const VistaDetalleSistema = props => {
 
         <Paper elevation={15} sx={{ m: 1, p: 2, display: 'flex', justifyContent: 'center' }} className={classes.paper}>
 
-            {(system.id === 1 || system.id === 2) &&
+{/*            {(system.id === 1 || system.id === 2) && */ }
+            {(system.id === 1 || system.id === 2 || system.id ===6) &&
                 <Box display='flex' flexWrap='wrap'>
                     <Box p={1} textAlign="center">
                         <Typography variant="h5" sx={{color: bar_colors[0], fontWeight: 'bold'}}>
@@ -53,14 +66,14 @@ const VistaDetalleSistema = props => {
                                 estado.data[`s${system.id}`].ejecutivo.total
                             )}%
                         </Typography>
-                        <Typography variant="body2" color='#707274'>
+                        <Typography variant="body2" color='#707274' textAlign="center">
                             {estado.data[`s${system.id}`].ejecutivo.tiene} de {estado.data[`s${system.id}`].ejecutivo.total}
                         </Typography>
                         <VerticalProgressBar color={bar_colors[0]} value={percentage(
                             estado.data[`s${system.id}`].ejecutivo.tiene,
                             estado.data[`s${system.id}`].ejecutivo.total
                         )}/>
-                        <Typography color="#707274">
+                        <Typography color="#707274" textAlign="center">
                             Ejecutivo
                         </Typography>
                     </Box>
@@ -72,14 +85,14 @@ const VistaDetalleSistema = props => {
                                 estado.data[`s${system.id}`].legislativo.total
                             )}%
                         </Typography>
-                        <Typography variant="body2" color='#707274'>
+                        <Typography variant="body2" color='#707274' textAlign="center">
                             {estado.data[`s${system.id}`].legislativo.tiene} de {estado.data[`s${system.id}`].legislativo.total}
                         </Typography>
                         <VerticalProgressBar color={bar_colors[1]} value={percentage(
                             estado.data[`s${system.id}`].legislativo.tiene,
                             estado.data[`s${system.id}`].legislativo.total
                         )}/>
-                        <Typography color="#707274">Legislativo</Typography>
+                        <Typography color="#707274" textAlign="center">Legislativo</Typography>
                     </Box>
 
                     <Box p={1} textAlign="center">
@@ -90,14 +103,14 @@ const VistaDetalleSistema = props => {
                                 estado.data[`s${system.id}`].judicial.total
                             )}%
                         </Typography>
-                        <Typography variant="body2" color='#707274'>
+                        <Typography variant="body2" color='#707274' textAlign="center">
                             {estado.data[`s${system.id}`].judicial.tiene} de {estado.data[`s${system.id}`].judicial.total}
                         </Typography>
                         <VerticalProgressBar color={bar_colors[2]} value={percentage(
                             estado.data[`s${system.id}`].judicial.tiene,
                             estado.data[`s${system.id}`].judicial.total
                         )}/>
-                        <Typography color="#707274">Judicial</Typography>
+                        <Typography color="#707274" textAlign="center">Judicial</Typography>
                     </Box>
 
                     <Box p={1} textAlign="center">
@@ -107,14 +120,14 @@ const VistaDetalleSistema = props => {
                                 estado.data[`s${system.id}`].ocas.total
                             )}%
                         </Typography>
-                        <Typography variant="body2" color='#707274'>
+                        <Typography variant="body2" color='#707274' textAlign="center">
                             {estado.data[`s${system.id}`].ocas.tiene} de {estado.data[`s${system.id}`].ocas.total}
                         </Typography>
                         <VerticalProgressBar color={bar_colors[3]} value={percentage(
                             estado.data[`s${system.id}`].ocas.tiene,
                             estado.data[`s${system.id}`].ocas.total
                         )}/>
-                        <Typography color="#707274">Autónomos</Typography>
+                        <Typography color="#707274" textAlign="center">Autónomos</Typography>
                     </Box>
 
                     <Box p={1} textAlign="center">
@@ -132,15 +145,15 @@ const VistaDetalleSistema = props => {
                                     estado.data[`s${system.id}`].municipal.total
                                 )}%
                             </Typography>
-                            <Typography variant="body2" color='#707274'>
+                            <Typography variant="body2" color='#707274' textAlign="center">
                                 {estado.data[`s${system.id}`].municipal.tiene} de {estado.data[`s${system.id}`].municipal.total}
                             </Typography>
                             <VerticalProgressBar color={bar_colors[4]} value={percentage(
                                 estado.data[`s${system.id}`].municipal.tiene,
                                 estado.data[`s${system.id}`].municipal.total
                             )}/>
-                            <Typography color="#707274" variant="body2">Municipios y</Typography>
-                            <Typography color="#707274" variant="body2">Org. Municipales</Typography>
+                            <Typography color="#707274" textAlign="center" variant="body2">Municipios y</Typography>
+                            <Typography color="#707274" textAlign="center" variant="body2">Org. Municipales</Typography>
                         </Box>
                     </Box>
 
@@ -151,11 +164,11 @@ const VistaDetalleSistema = props => {
                                 Total de instituciones conectadas
                             </Typography>
 
-                            <PieChart color={color} value={system.id ===1 ? avance_s1 : avance_s2}/>
+                            <PieChart color={color} value={get_value (system.id)}/>
 
                             <Typography variant="h3" sx={{fontWeight: 'bold'}} color={color}>
                                 {/* falta */}
-                                {system.id ===1 ? avance_s1 : avance_s2}%
+                                {get_value (system.id)}%
                             </Typography>
                             <Typography color="#707274" variant="h6">
                                 {
