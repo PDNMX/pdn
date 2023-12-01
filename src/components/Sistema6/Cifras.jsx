@@ -44,7 +44,7 @@ const styles = theme => ({
 
 const CustomTypography = withStyles(theme => ({
     root: {
-        color: theme.palette.text.main
+        color: theme.palette.text.primary
     }
 }))(Typography);
 

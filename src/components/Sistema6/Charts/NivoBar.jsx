@@ -110,7 +110,7 @@ const MyResponsiveBar = ({ data }) => {
         legends={[
             /*{
                 dataFrom: 'keys',
-                itemTextColor: "#ffffff",
+                itemTextColor: "#55575A",
                 anchor: 'bottom-right',
                 direction: 'column',
                 justify: false,
@@ -137,13 +137,13 @@ const MyResponsiveBar = ({ data }) => {
                 legend:{
                     text: {
                         fontSize: 12,
-                        fill: "#ffffff"
+                        fill: "#55575A"
                     }
                 },
                 ticks: {
                     text: {
                         fontSize: 12,
-                        fill: "#ffffff"
+                        fill: "#55575A"
                     }
                 }
             }

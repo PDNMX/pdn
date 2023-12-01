@@ -26,14 +26,14 @@ const styles = theme => ({
     },
     link: {
         textDecoration: "none",
-        color: '#89d4f2',//theme.palette.text.linkColor,
+        color: '#7A3D71',//theme.palette.text.linkColor,
         wordBreak: "break-all",
     },
 });
 
 const CustomTypography = withStyles(theme =>({
     root: {
-        color: theme.palette.text.main
+        color: theme.palette.text.primary
     }
 }))(Typography);
 
