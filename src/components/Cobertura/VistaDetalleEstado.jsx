@@ -9,12 +9,14 @@ import CustomizedProgressBar from "./CustomizedProgressBar";
 import icon_s1 from '../../assets/rediseno/ico_sistemas/ico_s1_color.svg';
 import icon_s2 from '../../assets/rediseno/ico_sistemas/ico_s2_color.svg';
 import icon_s3 from '../../assets/rediseno/ico_sistemas/ico_s3_color.svg';
+import icon_s6 from '../../assets/rediseno/ico_sistemas/ico_s6_color.svg';
 import VistaDetalleSistema from "./VistaDetalleSistema";
 
 const colors = {
     s1 : "#F29888",
     s2 : "#B25FAC",
     s3 : "#9085DA",
+    s6: "#42A5CC",
 };
 
 const styles = theme => ({
@@ -65,23 +67,30 @@ const VistaDetalleEstado = props => {
         {
             id: 1,
             color: colors.s1,
-            data: [10, 92,30, 43,50, 90 ],
+            //data: [10, 92,30, 43,50, 90 ],
             icon: icon_s1,
             name: "Sistema de evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal"
         },
         {
             id: 2,
             color: colors.s2,
-            data: [80, 12,45, 33,76, 23],
+            //data: [80, 12,45, 33,76, 23],
             icon: icon_s2,
             name: "Sistema de los servidores públicos que intervengan en procedimientos de contrataciones públicas"
         },
         {
             id: 3,
             color: colors.s3,
-            data: [20, 10, 30, 50, 30, 53],
+            //data: [20, 10, 30, 50, 30, 53],
             icon: icon_s3,
             name: "Sistema nacional de servidores públicos y particulares sancionados"
+        },
+        {
+            id: 6,
+            color: colors.s6,
+            //data: [20, 10, 30, 50, 30, 53],
+            icon: icon_s6,
+            name: "Sistema de informacion publica de contrataciones"
         }
     ];
 
@@ -124,6 +133,19 @@ const VistaDetalleEstado = props => {
         (estado.data.s3.s3s? 50 : 0) +
         (estado.data.s3.s3p? 50 : 0);
 
+    const avance_s6 = percentage(
+        estado.data.s6.ejecutivo.tiene +
+        estado.data.s6.legislativo.tiene +
+        estado.data.s6.judicial.tiene +
+        estado.data.s6.ocas.tiene +
+        estado.data.s6.municipal.tiene,
+        estado.data.s6.ejecutivo.total +
+        estado.data.s6.legislativo.total +
+        estado.data.s6.judicial.total +
+        estado.data.s6.ocas.total +
+        estado.data.s6.municipal.total
+    );
+
     return <div>
         <HeaderV2 section={section}/>
         <Grid container spacing={0} justifyContent='center'>
@@ -160,6 +182,10 @@ const VistaDetalleEstado = props => {
                                         <img src={icon_s3} alt='Sistema 3' style={{width: '40px', padding: "2px"}}/>
                                         <CustomizedProgressBar value={avance_s3} color={colors.s3}/>
                                     </Box>
+                                    <Box display="flex" onClick={() => handleSetSystem(6)} sx={{cursor: 'pointer'}}>
+                                        <img src={icon_s6} alt='Sistema 6' style={{width: '40px', padding: "2px"}}/>
+                                        <CustomizedProgressBar value={avance_s6} color={colors.s6}/>
+                                    </Box>
                                 </Box>
                             </Box>
 
@@ -177,7 +203,7 @@ const VistaDetalleEstado = props => {
                             <Typography variant="h4" color={colors.s1} sx={{fontWeight: 'bold'}}>
                                 {avance_s1}%
                             </Typography>
-                            <Typography color='#713972'>
+                            <Typography color='#713972' textAlign= 'center'>
                                 {
                                     estado.data.s1.ejecutivo.tiene +
                                     estado.data.s1.legislativo.tiene +
@@ -195,7 +221,7 @@ const VistaDetalleEstado = props => {
                             <Typography variant="h4" color={colors.s2} sx={{fontWeight: 'bold'}}>
                                 {avance_s2}%
                             </Typography>
-                            <Typography color='#713972'>
+                            <Typography color='#713972' textAlign= 'center'>
                                 {
                                     estado.data.s2.ejecutivo.tiene +
                                     estado.data.s2.legislativo.tiene +
@@ -214,9 +240,28 @@ const VistaDetalleEstado = props => {
                             <Typography variant="h4" color={colors.s3} sx={{fontWeight: 'bold'}}>
                                 {avance_s3}%
                             </Typography>
-                            <Typography color="#713972" fontWeight="bold">Sancionados</Typography>
-                            <Typography color='#713972' variant="body2"> Servidores públicos: {estado.data.s3.s3s? "Sí" : "No"} </Typography>
-                            <Typography color='#713972' variant="body2"> Particulares: {estado.data.s3.s3p? "Sí" : "No"} </Typography>
+                            <Typography color="#713972" textAlign= 'center' fontWeight="bold">Sancionados</Typography>
+                            <Typography color='#713972' textAlign= 'center' variant="body2"> Servidores públicos: {estado.data.s3.s3s? "Sí" : "No"} </Typography>
+                            <Typography color='#713972' textAlign= 'center' variant="body2"> Particulares: {estado.data.s3.s3p? "Sí" : "No"} </Typography>
+
+                           <Typography variant="h4" color={colors.s6} sx={{fontWeight: 'bold'}}>
+                                {avance_s6}%
+                            </Typography>
+                            <Typography color='#713972' textAlign= 'center'>
+                                {
+                                    estado.data.s6.ejecutivo.tiene +
+                                    estado.data.s6.legislativo.tiene +
+                                    estado.data.s6.judicial.tiene +
+                                    estado.data.s6.ocas.tiene +
+                                    estado.data.s6.municipal.tiene
+                                } de {
+                                estado.data.s6.ejecutivo.total +
+                                estado.data.s6.legislativo.total +
+                                estado.data.s6.judicial.total +
+                                estado.data.s6.ocas.total +
+                                estado.data.s6.municipal.total
+                            }
+                            </Typography>
 
                         </Paper>
                     </Box>
