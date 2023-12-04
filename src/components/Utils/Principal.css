@@ -262,30 +262,29 @@
 
 
 
-.blog a > div {
+/* .blog a > div {
   border: 1px solid #f2f0f2;
   border-radius: 10px;
   padding: 45px 20px;
   transition: 300ms cubic-bezier(0.39, 0.575, 0.565, 1) 0ms;
   margin: 0 2rem 30px 2rem;
-}
+} */
 
-.blog a > div:hover {
+/* .blog a > div:hover {
   border: 1px solid #ccc;
   border-radius: 10px;
   background: #fff;
-}
+} */
 
 .blog a {
-  color:#57585a;
   text-decoration: none;
-}
+} 
 
-.blog a:hover {
+/* .blog a:hover {
   color:#1C7CBF;
   text-decoration: none;
 }
-
+ */
 .blog .blog-img {
   border-radius: 0;
   border: none;
@@ -366,7 +365,6 @@
 .footer p {
   padding: 5px 10px 5px 10px;
 }
-
 
 .footer a {
   font-size: .7em;

@@ -4,7 +4,7 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import P404 from "./components/P404";
 import {ThemeProvider} from '@mui/material/styles';
 import ScrollToTop from "./ScrollToTop";
-import "./components/Utils/Header.css";
+import "./components/Utils/Principal.css";
 import {StyledEngineProvider} from '@mui/material/styles';
 // Google Analytics
 import ReactGA from 'react-ga4';

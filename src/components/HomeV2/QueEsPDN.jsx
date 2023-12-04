@@ -1,6 +1,6 @@
 import React from "react";
 import withStyles from '@mui/styles/withStyles';
-import {Button, Paper, Typography, Grid} from "@mui/material";
+import {Button, Typography, Grid} from "@mui/material";
 import {Link} from "react-router-dom";
 import BuscadorModal from "./Buscador/BotonPrincipal";
 
@@ -48,6 +48,7 @@ const QueEsPDN = props => {
                         <img src={lgoSNA} alt="Sistema Nacional Anticorrupción"/>
                         <img src={lgoSESNA} alt="Secretaría Ejecutiva del Sistema Nacional Anticorrupción"/>
                         </div>
+                        <br/>
                     <BuscadorModal />
                 </Grid>
                 <Grid item md={6} sm={12} xs={12} align="left" >

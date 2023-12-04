@@ -1,26 +1,12 @@
 import React from "react";
-import {Typography, Box, Button} from "@mui/material";
+import {Box, Button} from "@mui/material";
 import {withStyles} from "@mui/styles";
 import BlogCard from "./BlogCard";
 import axios from "axios";
 import ReactGA from "react-ga4";
 
-const styles = theme => ({
-    root:{
-
-    }
-});
-
-const CustomTypography = withStyles({
-    root: {
-        color: "",
-        fontWeight: ""
-    }
-})(Typography);
-
 const BlogComponent = props => {
     const [posts, setPosts] = React.useState([]);
-    const {classes} = props;
 
     React.useEffect( () => {
         const config = {
@@ -44,11 +30,8 @@ const BlogComponent = props => {
     return (
         <div className='blog'>
             <Box display="flex">
-                
                 <Box>
-                    
                     <h1>Blog</h1>
-                    
                 </Box>
             </Box>
             <Box display='flex'>
@@ -61,10 +44,10 @@ const BlogComponent = props => {
 
 
             <Box display='flex' flexDirection='row-reverse'>
-                <Button variant="contained"
-                        href="https://www.plataformadigitalnacional.org/blog"
-                        onClick={()=>ReactGA.pageview('/blog')}
-                        style={{ color: 'white' }}
+                <Button 
+                    variant="contained"
+                    href="https://www.plataformadigitalnacional.org/blog"
+                    onClick={()=>ReactGA.pageview('/blog')}
                 >
                     Conoce más
                 </Button>
@@ -74,4 +57,4 @@ const BlogComponent = props => {
     );
 }
 
-export default withStyles(styles)(BlogComponent);
+export default withStyles()(BlogComponent);

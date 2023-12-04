@@ -90,6 +90,7 @@ export default function CustomizedDialogs() {
   return (
     <>
       <Button
+        variant="contained"
         endIcon={<SearchIcon />}
         onClick={handleClickOpen}
       >

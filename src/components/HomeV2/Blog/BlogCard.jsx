@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box, Grid, Link, Typography} from "@mui/material";
+import {Grid, Link, Typography} from "@mui/material";
 import {withStyles} from "@mui/styles";
 import ReactGA from "react-ga4";
 
@@ -21,8 +21,7 @@ const BlogCard = props => {
                 <div className='blog-img'>
                     <img src={post.feature_image} className={classes.image}/>
                 </div>
-                   
-                <Typography>
+                <Typography >
                     {post.title}
                 </Typography>
             </div>

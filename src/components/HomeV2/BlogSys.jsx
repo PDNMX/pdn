@@ -1,5 +1,4 @@
 import React from "react";
-import BlogComponent from "./Blog/BlogComponent";
 import SysPDN from "./Sistemas/SysPDN";
 import {Grid} from "@mui/material";
 import {withStyles} from "@mui/styles";
@@ -19,9 +18,6 @@ const BlogSys = props => {
             <Grid item xs={12} md={12} lg={12} xl={12}  alignItems="flex-start" justifyContent='center'>
                     <SysPDN/>
             </Grid>
-            
-
-               
             
         </div>
     );
