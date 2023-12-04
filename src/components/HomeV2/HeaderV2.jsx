@@ -115,37 +115,6 @@ function HeaderV2(props) {
                     </Typography>}
                 </Grid>
             </Grid>
-            {
-                /*
-                <Box
-                sx={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    paddingTop: 9,
-                    paddingBottom: 9
-                }}
-            >
-                <Box className={classes.containerName}
-                     sx={{
-                         display: 'flex',
-                         justifyContent: 'space-evenly',
-                         alignItems:"center",
-                         direction:"row"
-                     }}
-                >
-                    {section.icon && <img src={section.icon} alt="PDN" className={classes.icon}/>}
-                    <div>
-                        <Typography variant="h3" paragraph color={`${section.color}`} style={{fontWeight: 100}}>
-                            {section.name}
-                        </Typography>
-                        {section.subName && <Typography variant={"h5"} color={`${section.color}`}>
-                            {section.subName}
-                        </Typography>}
-                    </div>
-                </Box>
-            </Box>
-                 */
-            }
 
         </div>
     )

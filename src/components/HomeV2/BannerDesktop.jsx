@@ -20,16 +20,16 @@ const styles = theme => ({
     opc: {
         "&:hover": {
             backgroundColor: "#ebe9f9",
-            Color:"#0a58ca"
+            color:"#55575a"
         },
         paddingBottom: theme.spacing(2),
         textAlign: 'center',
         cursor: "pointer",
-        Color:"#0a58ca"
+        color:"#55575a"
     },
     selected: {
         backgroundColor: "#ebe9f9",
-        Color:"#0a58ca"
+        color:"#55575a"
     }
 });
 
