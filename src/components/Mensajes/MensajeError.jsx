@@ -1,7 +1,6 @@
 import React from 'react';
 import {withStyles} from '@mui/styles';
 import {Grid, Typography, Modal} from "@mui/material";
-import "../../index.css";
 
 const styles = theme => ({
     text: {

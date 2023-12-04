@@ -4,11 +4,7 @@ import {Box, Paper, Divider, Grid, Tooltip, Typography, Button} from "@mui/mater
 import CloseIcon from '@mui/icons-material/Close';
 import DownloadItem from "../Compartidos/DownloadItem";
 
-//const servidores = require('../Utils/glosario.json');
-
-import servidores from "../Utils/glosario.json";
-
-
+import servidores from "../Utils/glosario.jsx";
 
 const Glosario = props => {
     const data = servidores.servidores.find(e => e.id === props.id);
