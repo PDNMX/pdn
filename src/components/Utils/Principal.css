@@ -1,11 +1,23 @@
+@font-face {
+  font-family: "Muli";
+  src: url("/fonts/Muli-Regular.woff2") format("woff2"), url("/fonts/Muli-Regular.woff") format("woff"), url("/fonts/Muli-Regular.otf") format("opentype");
+  font-display: auto;
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: normal;
+}
+
 body {
   margin: 0;
   /* font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif; */
-  font-family: "muli", sans-serif;
+  font-family: "Muli", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 1.3rem;
 }
+
+
+
 
 .breadcrumb {
   /*background: #0d3b49;*/
@@ -22,7 +34,7 @@ body {
   display: inline-block;
   list-style: none;
   margin-right: 5px;
-  font-family: Noto Sans SC, "Helvetica", "Arial", "sans-serif";
+  font-family: "Muli", "sans-serif";
 }
 
 .breadcrumb li:after {

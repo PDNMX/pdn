@@ -10,7 +10,7 @@ export default createTheme(
     typography: {
       useNextVariants: true,
       color:'#ff0',
-      fontFamily: ['"Muli"', 'sans-serif'].join(','),
+      fontFamily: "Muli",
       htmlFontSize: 21,
       fontSize:18,
       h1: {

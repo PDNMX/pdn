@@ -28,12 +28,12 @@ const styles = theme => ({
     },
     ol: {
         color: "#d0d7d9",
-        fontFamily: "Roboto",
+        fontFamily: "Muli",
         fontSize: "16px"
     },
     ul: {
         color: "#d0d7d9",
-        fontFamily: "Roboto",
+        fontFamily: "Muli",
         fontSize: "16px"
     },
     videoDiv: {
