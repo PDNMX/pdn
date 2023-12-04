@@ -100,7 +100,7 @@ export default function CustomizedDialogs() {
         maxWidth="md"
       >
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose} className={classes.titulo} >
-          <span>{titulo}</span>
+          <span style={{ color: 'black' }}>{titulo}</span>
         </BootstrapDialogTitle>
         <DialogContent>
             <Grid

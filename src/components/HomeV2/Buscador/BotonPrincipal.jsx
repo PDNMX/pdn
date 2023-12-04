@@ -16,11 +16,11 @@ import Stepper from "./LinearStepper";
 const useStyles = makeStyles((theme) => ({
   container: {
     padding: "2% 3%",
-    backgroundColor: 'rgba(29, 80, 109, 0.95)',
+    backgroundColor: '#eef7ff',
   },
   titulo: {
     color: '#fff',
-    backgroundColor: 'rgba(29, 80, 109, 0.95)',
+    backgroundColor: '#ccdef2',
     fontSize: "1.12rem"
   },
   btnPDN: {
@@ -59,7 +59,10 @@ const BootstrapDialogTitle = (props) => {
           aria-label="cerrar"
           onClick={onClose}
           sx={{
-
+            position: "absolute",
+            right: 7,
+            top: 7,
+            color: (theme) => theme.palette.grey[500],
           }}
         >
           <CloseIcon />
@@ -104,7 +107,7 @@ export default function CustomizedDialogs() {
         maxWidth="md"
       >
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose} className={classes.titulo} >
-          <span>{titulo}</span>
+          <span style={{ color: 'black' }}>{titulo}</span>
         </BootstrapDialogTitle>
         <DialogContent /* dividers */>
             <Grid
