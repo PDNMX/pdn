@@ -177,7 +177,7 @@ const BannerDesktop = props => {
                 </div>     
                  
             </AppBar>
-            <section className="motivo-fondo"></section>
+            {/* <section className="motivo-fondo"></section> */}
             {showSistemas &&
                 <SistemasMenu toogle={() => toggle()} systems={systems}/>
             }

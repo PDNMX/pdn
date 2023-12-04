@@ -1,4 +1,3 @@
-import bgimg from '../../assets/rediseno2023/imgs/fondos/motivo-graficas.svg';
 
 const CssDeclaraciones = theme => ({
   root: {

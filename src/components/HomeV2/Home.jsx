@@ -34,7 +34,6 @@ const  Home = props => {
             { /*<Ad/>*/ }
             { user.loggedIn && <Evolucion/> }
             <QueEsPDN/>
-            <Version/>
             <Numeralia/>
             <BlogSys/>
             <Cards/>
