@@ -490,3 +490,11 @@ figure {
 }
 
 /*.... FIN FOOTER .....*/
+
+/* Colores de INPUTS */
+.MuiFormLabel-root {
+  color: #94638d !important;
+}
+.MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+  border-color: #94638d !important;
+}

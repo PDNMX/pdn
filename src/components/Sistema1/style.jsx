@@ -376,9 +376,8 @@ const CssDeclaraciones = theme => ({
     maxWidth: '1200px'
   },
   paper_search: {
-    backgroundColor: theme.palette.background.opaque,
-    padding: theme.spacing(4),
-    marginBottom: theme.spacing(4),
+    backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(2),
     color: theme.palette.primary.contrastText,
     borderStyle: 'solid',
     borderWidth: 1,
@@ -400,10 +399,10 @@ const CssDeclaraciones = theme => ({
     backgroundColor: 'rgba(42, 116, 145)',
     padding: theme.spacing(4),
     marginBottom: theme.spacing(4),
-    color: theme.palette.primary.contrastText
+    color: theme.palette.text.primary
   },
   text_color: {
-    color: theme.palette.primary.contrastText
+    color: theme.palette.text.primary
   },
   menulateral_fondo: {
     backgroundColor: 'rgba(42, 116, 145)'

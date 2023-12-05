@@ -125,7 +125,7 @@ function HeaderV2(props) {
             <img src={section.icon} alt="PDN" className={classes.icon} />
           )}
           <Typography
-            variant="h3"
+            variant="h4"
             paragraph
             color={`${section.color}`}
             style={{ fontWeight: 100 }}

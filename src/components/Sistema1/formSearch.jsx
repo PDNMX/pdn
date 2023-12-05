@@ -84,7 +84,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
           <Grid container spacing={1}>
             <Grid item xs={12} md={3}>
               <FormControl className={classes.formControl}>
-                <TextField id='mui-name' label='Nombre(s)' value={nombres} name='nombres' onChange={handleInputChange} margin='normal' fullWidth />
+                <TextField id='mui-name' label='Nombre(s)' color="secondary" value={nombres} name='nombres' onChange={handleInputChange} margin='normal' fullWidth />
               </FormControl>
             </Grid>
             <Grid item xs={12} md={3}>
