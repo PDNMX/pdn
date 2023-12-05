@@ -5,7 +5,8 @@ import {UserContext} from "../Login/UserContext";
 
 const styles = theme => ({
     root:{
-        backgroundColor: "#f2f0f2",
+        backgroundColor: "#ebe9f9",
+        padding: "0px 12px"
     },
 });
 

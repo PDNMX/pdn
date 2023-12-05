@@ -18,7 +18,7 @@ const styles = theme => ({
         color: theme.palette.greyColor
     },
     icon: {
-        maxWidth: 150,
+        maxWidth: 100,
         [theme.breakpoints.up('md')]: {
             marginRight: 80
         },
@@ -39,11 +39,11 @@ const styles = theme => ({
         backgroundColor: theme.palette.background.opaque + '80', // 80 hex => 128 dec => 50%
     },
     containerName: {
-        marginBottom: theme.spacing(4),
         maxWidth: 1200,
         margin: 'auto',
-        paddingTop: theme.spacing(9),
-        paddingBottom: theme.spacing(9)
+        /* paddingTop: theme.spacing(2),
+        paddingBottom: theme.spacing(2), */
+        minHeight: 200
     }
 });
 
@@ -102,11 +102,10 @@ function HeaderV2(props) {
                     </Breadcrumbs>
                 </Grid>
             </Grid>
-            <Grid container={true} className={classes.containerName} justifyContent={"center"} alignItems={"center"} direction={"row"}>
-                <Grid item xs={12} md={3}  align = {isXsUp ? 'right':'center'}>
+            <Grid container className={classes.containerName} justifyContent={"center"} alignItems={"center"} direction={"row"}>
+                
+                <Grid item xs={12} md={9} align = {'center'}  >
                     {section.icon && <img src={section.icon} alt="PDN" className={classes.icon}/>}
-                </Grid>
-                <Grid item xs={12} md={9} align = {isXsUp ? 'left':'center'}  >
                     <Typography variant="h3" paragraph color={`${section.color}`} style={{fontWeight: 100}}>
                         {section.name}
                     </Typography>

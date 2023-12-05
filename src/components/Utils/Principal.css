@@ -17,8 +17,6 @@ body {
 }
 
 
-
-
 .breadcrumb {
   /*background: #0d3b49;*/
   padding: 24px 0 24px;
@@ -94,7 +92,7 @@ body {
 }
 
 .encabezado>div {
-  padding: 7px 12px 5px 12px;
+  padding: 7px 12px;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
