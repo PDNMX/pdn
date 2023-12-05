@@ -5,7 +5,7 @@ import Faq from '../components/FAQ/index';
 import HelpDesk from '../components/HelpDesk/HelpDesk';
 
 import Sistema2 from '../components/Sistema2/Index';
-import Sancionados from '../components/Sancionados/Index';
+import Sancionados from '../components/Sistema3/Index';
 import Sistema4 from '../components/Sistema4';
 import Sistema5 from '../components/Sistema5';
 import Sistema6 from '../components/Sistema6/index';
@@ -20,7 +20,7 @@ import Cobertura from '../components/Cobertura/Cobertura';
 import CoberturaVistaIndividual from "../components/Cobertura/VistaDetalleEstado";
 
 // import DeclaracionesS1 from '../components/Declaraciones';
-import DeclaracionesS1v2 from '../components/Declaraciones2';
+import DeclaracionesS1v2 from '../components/Sistema1';
 
 import IconS2 from "../assets/rediseno2023/imgs/iconos/sistemas/ico_s2.svg";
 import IconS3 from "../assets/rediseno2023/imgs/iconos/sistemas/ico_s3.svg";

@@ -11,7 +11,7 @@ import Herramientas from '../Herramientas';
 import pdnRoutes from '../../../routes';
 import HeaderV2 from '../../HomeV2/HeaderV2';
 
-import styles from '../../Declaraciones2/style';
+import styles from '../../Sistema1/style';
 import EspecificacionesTecnicas from './EspecificacionesTecnicas';
 import ProtocoloConexion from '../ProtocoloConexion';
 import ServiceAgreement from '../ServiceAgreement';

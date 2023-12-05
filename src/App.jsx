@@ -3,7 +3,7 @@ import pndRoutes from "./routes/index";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import P404 from "./components/P404";
 import {ThemeProvider} from '@mui/material/styles';
-import ScrollToTop from "./ScrollToTop";
+/* import ScrollToTop from "./ScrollToTop";*/
 import "./components/Utils/Principal.css";
 import {StyledEngineProvider} from '@mui/material/styles';
 // Google Analytics
@@ -54,7 +54,6 @@ const App  = props => {
         <ThemeProvider theme={BaseTheme2023}>
           <StyledEngineProvider injectFirst>
             <Router basename={import.meta.env.BASE_URL}>
-              <ScrollToTop>
                 <Layout>
                   <Switch>
                     {pndRoutes.map((prop, key) => {
@@ -70,8 +69,6 @@ const App  = props => {
                     <Route component={p404}/>
                   </Switch>
                 </Layout>
-
-              </ScrollToTop>
             </Router>
           </StyledEngineProvider>
 

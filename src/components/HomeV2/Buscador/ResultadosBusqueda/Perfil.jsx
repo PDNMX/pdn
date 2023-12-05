@@ -2,16 +2,16 @@ import React from 'react';
 import { Grid, Typography, Paper } from '@mui/material';
 import withStyles from '@mui/styles/withStyles';
 
-import MenuSuperior from '../../../Declaraciones2/MenuSuperior';
-import SituacionPatrimonial from '../../../Declaraciones2/SituacionPatrimonial';
-import Intereses from '../../../Declaraciones2/Intereses';
-import styles from '../../../Declaraciones2/style';
-import { getMoneda } from '../../../Declaraciones2/utils';
+import MenuSuperior from '../../../Sistema1/MenuSuperior';
+import SituacionPatrimonial from '../../../Sistema1/SituacionPatrimonial';
+import Intereses from '../../../Sistema1/Intereses';
+import styles from '../../../Sistema1/style';
+import { getMoneda } from '../../../Sistema1/utils';
 
 import Button from '@mui/material/Button';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
-import basicInicial from '../../../Declaraciones2/SituacionPatrimonial/00_basic_incial';
+import basicInicial from '../../../Sistema1/SituacionPatrimonial/00_basic_incial';
 
 class Perfil extends React.Component {
   state = {

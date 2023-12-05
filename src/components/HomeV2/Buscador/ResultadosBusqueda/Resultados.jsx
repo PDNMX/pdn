@@ -1,10 +1,10 @@
-import { BoxAccordion, BoxAccordionDetails, BoxAccordionSummary } from '../../../Declaraciones2/common/BoxAccordion';
+import { BoxAccordion, BoxAccordionDetails, BoxAccordionSummary } from '../../../Sistema1/common/BoxAccordion';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CircularProgress from '@mui/material/CircularProgress';
 /* import IconSunny from '@mui/icons-material/WbSunny'; */
 
 import makeStyles from '@mui/styles/makeStyles';
-import styles from '../../../Declaraciones2/style';
+import styles from '../../../Sistema1/style';
 import { Grid, Typography } from '@mui/material';
 
 import Tabla from './Tabla';

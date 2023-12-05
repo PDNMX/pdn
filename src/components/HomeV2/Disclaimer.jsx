@@ -30,8 +30,7 @@ const styles = theme => ({
         marginTop: 0, */
     },
     paper: {
-        padding: theme.spacing(4),
-        marginBottom: theme.spacing(4)
+        padding: theme.spacing(2),
     }
 });
 /* import styles from '../Declaraciones2/style'; */

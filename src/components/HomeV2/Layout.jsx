@@ -6,7 +6,7 @@ import ChatBotPDN from "../ChatBot/ChatBotPDN";
 import Glosario from "../Glosario/";
 import AsistenteBusqueda from "../HomeV2/Buscador/BotonFlotante";
 
-import style from '../Declaraciones2/style';
+import style from '../Sistema1/style';
 import { makeStyles } from '@mui/styles';
 const useStyles=makeStyles(style);
 

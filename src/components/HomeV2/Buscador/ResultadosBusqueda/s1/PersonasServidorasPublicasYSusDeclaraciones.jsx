@@ -6,11 +6,11 @@ import axios from "axios";
 import Perfil from "../Perfil";
 //import styles from '../../../../Declaraciones2/style';
 
-import { error } from "../../../../Declaraciones2/utils";
+import { error } from "../../../../Sistema1/utils";
 
 import ActiveResultProv from "../Resultados";
 /* import Descarga from '../../../../Compartidos/Descarga'; */
-import MantenimentResultProv from "../../../../Declaraciones2/MantenimentResultProv";
+import MantenimentResultProv from "../../../../Sistema1/MantenimentResultProv";
 
 import CircularProgress from "@mui/material/CircularProgress";
 import Chips from "../Chips";

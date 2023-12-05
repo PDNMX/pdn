@@ -9,7 +9,7 @@ import TableRow from '@mui/material/TableRow';
 
 import Paper from '@mui/material/Paper';
 /* import EnhancedTableToolbar from '../../../Declaraciones2/Tabla/EnhancedTableToolbar'; */
-import EnhancedTableHead from '../../../Declaraciones2/Tabla/EnhancedTableHead';
+import EnhancedTableHead from '../../../Sistema1/Tabla/EnhancedTableHead';
 
 function desc(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {

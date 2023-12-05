@@ -57,4 +57,4 @@ const BlogComponent = props => {
     );
 }
 
-export default withStyles()(BlogComponent);
+export default BlogComponent;

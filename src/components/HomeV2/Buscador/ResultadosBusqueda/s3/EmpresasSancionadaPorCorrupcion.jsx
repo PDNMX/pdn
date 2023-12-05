@@ -3,8 +3,8 @@
 import React from 'react';
 import { Grid, Modal, CircularProgress } from '@mui/material';
 import Previos from "../Previos";
-import TablaParticularesSancionados from "../../../../Sancionados/Particulares/TablaParticularesSancionados";
-import DetalleParticularSancionado from "../../../../Sancionados/Particulares/DetalleParticular";
+import TablaParticularesSancionados from "../../../../Sistema3/Particulares/TablaParticularesSancionados";
+import DetalleParticularSancionado from "../../../../Sistema3/Particulares/DetalleParticular";
 import MensajeErrorDatos from "../../../../Mensajes/MensajeErrorDatos";
 import { ThemeProvider } from '@mui/material/styles';
 import ThemeV2 from "../../../../../ThemeV2";
