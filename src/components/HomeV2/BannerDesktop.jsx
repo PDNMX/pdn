@@ -13,6 +13,7 @@ import SistemasMenu from "./SistemasMenu";
 import InterconexionMenu from "./InterconexionMenu";
 import ReactGA from "react-ga4";
 import Link from '@mui/material/Link';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 //import {getUser} from '../Login/Auth';
 import {UserContext} from "../Login/UserContext";
 
@@ -112,6 +113,7 @@ const BannerDesktop = props => {
                                     <Typography >
                                         SISTEMAS
                                     </Typography>
+                                    <ArrowDropDownIcon/>
                                 </li>
                                 
                                 
@@ -121,6 +123,7 @@ const BannerDesktop = props => {
                                     <Typography>
                                         INTERCONEXIÓN
                                     </Typography>
+                                    <ArrowDropDownIcon/>
                                 </li>    
                                 
                                 
@@ -148,8 +151,8 @@ const BannerDesktop = props => {
                                 />
                                 </div>
                                 <div className="autenticado">
-                                    <p>{user.nombres}</p> 
-                                    <p>Cerrar sesión</p>
+                                    <p><small>{user.nombres}</small></p> 
+                                    <p><small>Cerrar sesión</small></p>
                                 </div>
                                 
                                 
@@ -165,8 +168,8 @@ const BannerDesktop = props => {
                                 />
                                 </div>
                                 <div className="autenticado">
-                                    <p>{user.nombres}</p>
-                                    <p>Iniciar sesión</p>
+                                    <p><small>{user.nombres}</small></p>
+                                    <p><small>Iniciar sesión</small></p>
                                 </div>
                                 <div>
                                 

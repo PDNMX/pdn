@@ -122,6 +122,10 @@ body {
   padding: 3px 7px;
 }
 
+.encabezado nav li p {
+  display: contents;
+}
+
 
 .encabezado nav p {
   font-size: .7em;
