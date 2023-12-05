@@ -98,7 +98,7 @@ const useStyles = makeStyles((theme) => ({
   },
   subTitle:{
     fontWeight: 500,
-    color: "#E1E8EB",
+    color: "#000",
     "& b": {
         color: "#3bb1e6",
     }
@@ -287,7 +287,7 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
   };
 
   const ColorlibStepIconRoot = styled("div")(({ theme, ownerState }) => ({
-    backgroundColor: "#ccc",
+    backgroundColor: "#7f5277",
     zIndex: 1,
     color: "#fff",
     width: 50,
@@ -298,11 +298,11 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
     alignItems: "center",
     ...(ownerState.active && {
       backgroundImage:
-        "linear-gradient( 136deg, rgb(232,214,67) 0%, rgb(232,214,67) 50%, rgb(232,214,67) 100%)",
+        "linear-gradient( 136deg, rgb(127, 82, 119) 0%, rgb(127, 82, 119) 50%, rgb(127, 82, 119) 100%)",
     }),
     ...(ownerState.completed && {
       backgroundImage:
-        "linear-gradient( 136deg, rgb(200,214,67) 0%, rgb(232,214,67) 50%, rgb(232,214,67) 100%)",
+        "linear-gradient( 136deg, rgb(127, 82, 119) 0%, rgb(127, 82, 119) 50%, rgb(127, 82, 119) 100%)",
     }),
   }));
 
@@ -336,13 +336,13 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
     [`&.${stepConnectorClasses.active}`]: {
       [`& .${stepConnectorClasses.line}`]: {
         backgroundImage:
-          "linear-gradient( 136deg, rgb(232,214,67) 0%, rgb(232,214,67) 50%, rgb(232,214,67) 100%)",
+          "linear-gradient( 136deg, rgb(127, 82, 119) 0%, rgb(127, 82, 119) 50%, rgb(127, 82, 119) 100%)",
       },
     },
     [`&.${stepConnectorClasses.completed}`]: {
       [`& .${stepConnectorClasses.line}`]: {
         backgroundImage:
-          "linear-gradient( 136deg, rgb(232,214,67) 0%, rgb(232,214,67) 50%, rgb(232,214,67) 100%)",
+          "linear-gradient( 136deg, rgb(127, 82, 119) 0%, rgb(127, 82, 119) 50%, rgb(127, 82, 119) 100%)",
       },
     },
     [`& .${stepConnectorClasses.line}`]: {
@@ -397,7 +397,7 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
               <Typography
                 variant="caption"
                 align="center"
-                style={{ display: "block", color: "rgb(232,214,67)" }}
+                style={{ display: "block", color: "rgb(127, 82, 119)" }}
               >
                 opcional
               </Typography>
