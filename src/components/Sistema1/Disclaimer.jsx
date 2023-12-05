@@ -12,7 +12,7 @@ export default function Disclaimer(props) {
   const classes = useStyles();
   return (
     <Dialog open={props.open} onClose={props.handleClose} aria-labelledby='alert-dialog-title' aria-describedby='alert-dialog-description'>
-      <Paper className={classes.paper_search} style={{ margin: 0, borderRadius: 0 }}>
+      <Paper className={classes.paper_disclaimer} style={{ margin: 0, borderRadius: 0 }}>
         <DialogTitle id='alert-dialog-title' className={classes.text_color}>
           Plataforma Digital Nacional
         </DialogTitle>

@@ -37,7 +37,7 @@ class Declaraciones extends React.Component {
     const system = pdnRoutes.find(route => route.path === '/declaraciones');
 
     return (
-      <ThemeProvider theme={ThemeV2}>
+      <div>
         <HeaderV2 section={system} />
         <Grid container spacing={0}>
           <Grid item xs={12} style={{ maxWidth: 1200, margin: '0 auto', marginTop: 50 }}>
@@ -62,7 +62,7 @@ class Declaraciones extends React.Component {
           </Grid>
         </Grid>
         <Disclaimer open={this.state.open} handleClose={this.handleClose} />
-      </ThemeProvider>
+      </div>
     );
   }
 }

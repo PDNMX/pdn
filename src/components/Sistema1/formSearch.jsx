@@ -74,11 +74,11 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
         </Grid>
       </Grid>
       <Grid container spacing={0} className={classes.infoBusqueda}>
-        <Grid item xs={12}>
+        {/* <Grid item xs={12}>
           <CustomTypography variant='h6'>
             <b>Busca una persona servidora pública</b>
           </CustomTypography>
-        </Grid>
+        </Grid> */}
         {/* <Divider /> */}
         <Grid item xs={12}>
           <Grid container spacing={1}>

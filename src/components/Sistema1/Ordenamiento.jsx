@@ -5,6 +5,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
 import TableSortLabel from '@mui/material/TableSortLabel';
+import Typography from '@mui/material/Typography';
 
 import makeStyles from '@mui/styles/makeStyles';
 
@@ -52,7 +53,7 @@ const useStyles = makeStyles(theme => ({
     padding: 0,
     position: 'absolute',
     top: 20,
-    width: 1
+    width: 1,
   },
   title: {
     flex: '1 1 100%'
@@ -70,8 +71,10 @@ const Ordenamiento = ({ handleOrdenamiento, ordenamiento }) => {
             {headCells.map(headCell => (
               <TableCell key={headCell.id} padding='none' sortDirection={ordenamiento[headCell.id]}>
                 <TableSortLabel active={ordenamiento[headCell.id] ? true : false} direction={ordenamiento[headCell.id] ? ordenamiento[headCell.id] : 'asc'} onClick={e => handleOrdenamiento(e, headCell.id)}>
-                  {headCell.label}
-                  {ordenamiento[headCell.id] ? <span className={classes.visuallyHidden}>{ordenamiento[headCell.id] === 'desc' ? 'sorted descending' : 'sorted ascending'}</span> : null}
+                  <Typography color={"primary"}> 
+                    {headCell.label}
+                    {ordenamiento[headCell.id] ? <span className={classes.visuallyHidden}>{ordenamiento[headCell.id] === 'desc' ? 'sorted descending' : 'sorted ascending'}</span> : null}
+                  </Typography>
                 </TableSortLabel>
               </TableCell>
             ))}
@@ -80,8 +83,10 @@ const Ordenamiento = ({ handleOrdenamiento, ordenamiento }) => {
             {cellsEmpleo.map(headCell => (
               <TableCell key={headCell.id} padding='none' sortDirection={ordenamiento[headCell.id]}>
                 <TableSortLabel active={ordenamiento[headCell.id] ? true : false} direction={ordenamiento[headCell.id] ? ordenamiento[headCell.id] : 'asc'} onClick={e => handleOrdenamiento(e, headCell.id)}>
-                  {headCell.label}
-                  {ordenamiento[headCell.id] ? <span className={classes.visuallyHidden}>{ordenamiento[headCell.id] === 'desc' ? 'sorted descending' : 'sorted ascending'}</span> : null}
+                  <Typography color={"primary"}> 
+                    {headCell.label}
+                    {ordenamiento[headCell.id] ? <span className={classes.visuallyHidden}>{ordenamiento[headCell.id] === 'desc' ? 'sorted descending' : 'sorted ascending'}</span> : null}
+                  </Typography>
                 </TableSortLabel>
               </TableCell>
             ))}
@@ -90,8 +95,10 @@ const Ordenamiento = ({ handleOrdenamiento, ordenamiento }) => {
             {cellsInmuebles.map(headCell => (
               <TableCell key={headCell.id} padding='none' sortDirection={ordenamiento[headCell.id]}>
                 <TableSortLabel active={ordenamiento[headCell.id] ? true : false} direction={ordenamiento[headCell.id] ? ordenamiento[headCell.id] : 'asc'} onClick={e => handleOrdenamiento(e, headCell.id)}>
-                  {headCell.label}
-                  {ordenamiento[headCell.id] ? <span className={classes.visuallyHidden}>{ordenamiento[headCell.id] === 'desc' ? 'sorted descending' : 'sorted ascending'}</span> : null}
+                  <Typography color={"primary"}> 
+                    {headCell.label}
+                    {ordenamiento[headCell.id] ? <span className={classes.visuallyHidden}>{ordenamiento[headCell.id] === 'desc' ? 'sorted descending' : 'sorted ascending'}</span> : null}
+                  </Typography>
                 </TableSortLabel>
               </TableCell>
             ))}

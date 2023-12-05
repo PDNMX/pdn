@@ -240,7 +240,7 @@ const CssDeclaraciones = theme => ({
   },
   resultadosTitulo: {
     backgroundColor: theme.palette.background.opaque,
-    color: theme.palette.primary.contrastText,
+    color: theme.palette.primary.main,
     borderStyle: 'solid',
     borderWidth: 1,
     borderColor: theme.palette.secondary.main
@@ -376,7 +376,15 @@ const CssDeclaraciones = theme => ({
     maxWidth: '1200px'
   },
   paper_search: {
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: theme.palette.background.opaque,
+    padding: theme.spacing(2),
+    color: theme.palette.primary.main,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: theme.palette.secondary.main,
+    borderRadius: '0px 10px 10px 10px'
+  },
+  paper_disclaimer: {
     padding: theme.spacing(2),
     color: theme.palette.primary.contrastText,
     borderStyle: 'solid',

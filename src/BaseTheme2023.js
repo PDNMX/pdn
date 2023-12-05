@@ -9,7 +9,7 @@ export default createTheme(
     },
     typography: {
       useNextVariants: true,
-      color:'#ff0',
+      color:'#7a3d71',
       fontFamily: "Muli",
       htmlFontSize: 21,
       fontSize:18,
@@ -43,7 +43,7 @@ export default createTheme(
       text: {
         main: '#E1E8EB',
         primary: '#55575A',
-        secondary: '#ff0',
+        secondary: '#7a3d71',
         linkColor: '#7a3d71'
       },
       primary: {
