@@ -45,7 +45,7 @@ const styles = theme => ({
     paper: {
         backgroundColor: theme.palette.background.default,
         padding: theme.spacing(2),
-        color: theme.palette.primary.contrastText,
+        color: theme.palette.text.primary,
         borderStyle: 'solid',
         borderWidth: 1,
         borderColor: theme.palette.secondary.main,
@@ -69,7 +69,7 @@ const Especificaciones = props => {
                 <Grid item xs={12} className={classes.rootItem}>
                     <Paper className={classes.paper} elevation={15}>
                         <Box className={classes.box}>
-                            <Typography paragraph>
+                            <Typography>
                                 Las  especificaciones son los campos mínimos de datos que debe contener cada sistema, así como los estándares que debe de seguir cada campo para ser interoperable con la PDN. Esto es lo que permite que los sistemas de las instituciones responsables de generar los datos estén ordenados y puedan ser consultados en la PDN.
                             </Typography>
 

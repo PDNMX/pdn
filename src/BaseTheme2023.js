@@ -47,8 +47,11 @@ export default createTheme(
         linkColor: '#7a3d71'
       },
       primary: {
-        main: '#7a3d71'
-
+        main: '#7a3d71',
+        /* light: '#94638d',
+        dark: '#552a4f',
+        contrastText:'#55575a',
+        prueba: '#d3d' */
       },
       secondary: {
         main: '#927188',
@@ -105,7 +108,7 @@ export default createTheme(
         light: '#eff9f9',
         dark: '#2894b5'
       }
-    }        
+    }       
   },
   esES
 );
