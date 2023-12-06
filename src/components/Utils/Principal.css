@@ -14,6 +14,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 1.3rem;
+  font-weight: 300;
+  color: #2a2a2a;
 }
 
 
@@ -498,3 +500,57 @@ figure {
 .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
   border-color: #94638d !important;
 }
+
+/* Footer Nuevo Propuesto */
+
+.footerBorderTop {
+  border-top: 5px solid; 
+  border-image: linear-gradient(230deg, #1C7CBF 0%, #1C7CBF 4%, #9F58E2 49%, #6D4061 100%) 1 0 0 0;
+}
+
+.mt-5 {
+  margin-top: 3rem !important;
+}
+
+.mt-3 {
+  margin-top: 1rem !important;
+
+}
+.mb-3 {
+  margin-bottom: 1rem !important;
+}
+
+.footerIcon svg {
+  color: #815474;
+  font-size: 2rem;
+  min-height: 90px;
+}
+
+.footerLogos img {
+  max-height: 90px !important;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+.footerList li {
+  list-style: none;
+}
+
+.footerList a {
+  text-decoration: none;
+  color: #57585A;
+  transition: all 250ms cubic-bezier(0.39, 0.575, 0.565, 1);
+  font-size: 0.9375rem;
+}
+
+.footerList a:hover {
+  text-decoration: none;
+  color: #165ba8;
+}
+
+.footerList ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
