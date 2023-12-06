@@ -55,12 +55,12 @@ const useStyles = makeStyles((theme) => ({
   },
   btnPDN: {
     margin: theme.spacing(1),
-    background: "rgb(255,255,255,0.5)",
+    background: "#7a3e7c",
     borderRadius: "50px",
     fontWeight: "bold",
     fontStyle: "italic",
     "&:hover": {
-      backgroundColor: "#56a3bf",
+      backgroundColor: "#d3d",
     },
   },
   cardMedia: {
@@ -71,7 +71,8 @@ const useStyles = makeStyles((theme) => ({
     }, */
   },
   card: {
-    background: "#E1E8EB",
+    background: "#fff",
+    border: "1px solid",
     borderRadius: "0.6em",
     margin: "2%",
     boxShadow:
@@ -100,7 +101,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 500,
     color: "#000",
     "& b": {
-        color: "#3bb1e6",
+        color: "#d3d",
     }
   },
   labelSistema: {
@@ -298,11 +299,11 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
     alignItems: "center",
     ...(ownerState.active && {
       backgroundImage:
-        "linear-gradient( 136deg, rgb(127, 82, 119) 0%, rgb(127, 82, 119) 50%, rgb(127, 82, 119) 100%)",
+       "linear-gradient(136deg, rgb(191, 144, 167) 0%, rgb(159, 113, 135) 50%, rgb(127, 82, 119) 100%)",
     }),
     ...(ownerState.completed && {
       backgroundImage:
-        "linear-gradient( 136deg, rgb(127, 82, 119) 0%, rgb(127, 82, 119) 50%, rgb(127, 82, 119) 100%)",
+        "linear-gradient(136deg, rgb(191, 144, 167) 0%, rgb(159, 113, 135) 50%, rgb(127, 82, 119) 100%)",
     }),
   }));
 
@@ -336,13 +337,13 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
     [`&.${stepConnectorClasses.active}`]: {
       [`& .${stepConnectorClasses.line}`]: {
         backgroundImage:
-          "linear-gradient( 136deg, rgb(127, 82, 119) 0%, rgb(127, 82, 119) 50%, rgb(127, 82, 119) 100%)",
+          "linear-gradient(136deg, rgb(191, 144, 167) 0%, rgb(159, 113, 135) 50%, rgb(127, 82, 119) 100%)",
       },
     },
     [`&.${stepConnectorClasses.completed}`]: {
       [`& .${stepConnectorClasses.line}`]: {
         backgroundImage:
-          "linear-gradient( 136deg, rgb(127, 82, 119) 0%, rgb(127, 82, 119) 50%, rgb(127, 82, 119) 100%)",
+          "linear-gradient(136deg, rgb(191, 144, 167) 0%, rgb(159, 113, 135) 50%, rgb(127, 82, 119) 100%)",
       },
     },
     [`& .${stepConnectorClasses.line}`]: {
@@ -399,7 +400,7 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
                 align="center"
                 style={{ display: "block", color: "rgb(127, 82, 119)" }}
               >
-                opcional
+                (opcional)
               </Typography>
             );
           }
@@ -410,15 +411,15 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
               sx={{
                 '& .MuiStepLabel-label.Mui-completed.MuiStepLabel-alternativeLabel':
                   {
-                    color: 'grey.500', // Just text label (COMPLETED)
+                    color: '#000', // Just text label (COMPLETED)
                   },
                 '& .MuiStepLabel-label.Mui-active.MuiStepLabel-alternativeLabel':
                   {
-                    color: '#3bb1e6', // Just text label (ACTIVE)
+                    color: '#d3d', // Just text label (ACTIVE)
                   },
                 '& .MuiStepLabel-label.Mui-disabled.MuiStepLabel-alternativeLabel':
                   {
-                    color: '#fff', // Just text label (ACTIVE)
+                    color: '#000', // Just text label (ACTIVE)
                   },
               }}
             >

@@ -32,7 +32,7 @@ const styles = theme => ({
         cursor: 'pointer'
     },
     tableCell: {
-        color: theme.palette.text.main
+        color: '#fff'
     },
     tablePagination: {
         color: theme.palette.greyColor,
@@ -47,8 +47,8 @@ const styles = theme => ({
     row:{
         cursor: 'pointer'
     },
-    tableBody: {backgroundColor: '#f2f2f2'},
-    tableHead: {backgroundColor: '#0d3b49'}
+    tableBody: {backgroundColor: '#fff'},
+    tableHead: {backgroundColor: '#7c3e7c'}
 });
 
 function Previos({data, classes, handleChangeSujetoObligado}) {

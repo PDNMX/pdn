@@ -104,7 +104,7 @@ export default function ChipsArray(props) {
       {etiquetas.length > 0 ? (
         <>
           <Typography
-            style={{ color: "#E1E8EB", fontSize: "22px", fontWeight: 500 }}
+            style={{ color: "#000", fontSize: "22px", fontWeight: 500 }}
           >
             Filtros de búsqueda:
           </Typography>

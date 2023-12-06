@@ -31,7 +31,10 @@ const useStyles = makeStyles((theme) => ({
   titulo: {
     color: '#fff',
     backgroundColor: '#ccdef2',
-    fontSize: "1.12rem"
+    fontSize: "1.12rem",
+    background: 'linear-gradient(230deg, rgb(28, 124, 191) 0%, rgb(28, 124, 191) 4%, rgb(159, 88, 226) 49%, rgb(109, 64, 97) 100%) 0% 0% no-repeat padding-box padding-box transparent',
+    border: '0px',
+    boxShadow: 'none'
   },
 
 }));
@@ -59,7 +62,7 @@ const BootstrapDialogTitle = (props) => {
             position: "absolute",
             right: 7,
             top: 7,
-            color: (theme) => theme.palette.grey[500],
+            color: "white",
           }}
         >
           <CloseIcon />
@@ -100,7 +103,7 @@ export default function CustomizedDialogs() {
         maxWidth="md"
       >
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose} className={classes.titulo} >
-          <span style={{ color: 'black' }}>{titulo}</span>
+          <span style={{ color: 'white' }}>{titulo}</span>
         </BootstrapDialogTitle>
         <DialogContent>
             <Grid
