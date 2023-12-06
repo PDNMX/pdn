@@ -26,17 +26,24 @@ const styles = theme => ({
         },
         paddingBottom: theme.spacing(1)
     },
+    text: {
+        color: theme.palette.text.primary,
+        
+    },
+    title: {
+        color: theme.palette.primary.main
+    },
 });
 
 const ModeloComunicacion = props => {
     const {classes} = props;
     return (
             <Grid item xs={12}>
-                <Typography variant="h5" paragraph>
+                <Typography variant="h5" className={classes.title}  paragraph>
                     Modelo de comunicación
                 </Typography>
 
-                <Typography paragraph>
+                <Typography paragraph className={classes.text} >
                     A través de la de la PDN, los usuarios serán capaces de realizar consultas a las APIs de las
                     Instituciones,
                     dichas consultas se configurarán usando parámetros (Ver la sección Parámetros de consulta). La
@@ -49,7 +56,7 @@ const ModeloComunicacion = props => {
 
                 <img src={Diagrama} alt="Comunicación" className={classes.diagrama}/>
 
-                <Typography paragraph>
+                <Typography paragraph className={classes.text} >
                     <b>Figura 1. </b> Esquema conceptual del flujo de comunicación entre Instituciones y la
                     Plataforma Digital Nacional. De derecha a izquierda se observan usuarios con diferentes perfiles
                     accediendo a la PDN y solicitando información de acuerdo a sus atribuciones.

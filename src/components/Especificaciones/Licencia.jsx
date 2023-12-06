@@ -31,32 +31,39 @@ const styles = theme => ({
   },
   linkMobile: {
     'textDecoration': 'none',
-    'color': '#fff',
+    'color': '#7A3D71',
     '&:visited': {
-      color: '#fff'
+      color: '#7A3D71'
     },
     '&:link': {
-      color: '#fff'
+      color: '#7A3D71'
     },
     '&:active': {
-      color: '#fff'
+      color: '#7A3D71'
     },
     '&:hover': {
-      color: '#b1bcc1',
-      borderBottom: '2px solid #7A3D71'
+      color: '#d3d',
+      borderBottom: '2px solid #2e74c6'
     }
-  }
+  },
+  text: {
+    color: theme.palette.text.primary,
+    textAlign: 'justify',
+  },
+  title: {
+    color: theme.palette.primary.main
+  },
 });
 
 const Licencia = props => {
   const { classes } = props;
   return (
     <div className={classes.root}>
-      <Typography variant='h4' paragraph>
+      <Typography variant='h4' className={classes.title} paragraph>
         Licencia
       </Typography>
 
-      <Typography paragraph variant='h6'>
+      <Typography paragraph variant='h6' className={classes.text}>
         Plataforma Digital Nacional &copy; 2018 se encuentra bajo la licencia{' '}
         <Link href='https://creativecommons.org/licenses/by-nc/4.0/deed.es' rel='license' target='_blank' className={classes.linkMobile}>
           CC BY-NC 4.0

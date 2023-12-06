@@ -66,7 +66,14 @@ const styles = theme => ({
     },
     box: {
         maxWidth: '900px', paddingTop: '50px', paddingBottom: '50px'
-    }
+    },
+    text: {
+        color: theme.palette.text.primary,
+        textAlign: 'justify',
+    },
+    title: {
+        color: theme.palette.primary.main
+    },
 });
 
 const ServidoresIntervienen = props => {
@@ -89,11 +96,11 @@ const ServidoresIntervienen = props => {
 
                             <Divider className={classes.divider}/>
 
-                            <Typography variant="h4" paragraph>
+                            <Typography variant="h4" className={classes.title} paragraph>
                                 Especificaciones técnicas
                             </Typography>
 
-                            <Typography variant='h5' paragraph>
+                            <Typography variant='h5' className={classes.text} paragraph>
                                 Diccionario de datos
                             </Typography>
 
@@ -104,7 +111,7 @@ const ServidoresIntervienen = props => {
                                 Más información
                             </ButtonPDN>
 
-                            <Typography variant='h5' paragraph>
+                            <Typography variant='h5' className={classes.text} paragraph>
                                 Catálogos de claves y valores
                             </Typography>
 
@@ -115,7 +122,7 @@ const ServidoresIntervienen = props => {
                                 Más información
                             </ButtonPDN>
 
-                            <Typography variant='h5' paragraph>
+                            <Typography variant='h5' className={classes.text} paragraph>
                                 Especificaciones en formato Open API Specification
                             </Typography>
 
@@ -126,7 +133,7 @@ const ServidoresIntervienen = props => {
                                 Más información
                             </ButtonPDN>
 
-                            <Typography paragraph variant='h5'>
+                            <Typography paragraph className={classes.text} variant='h5'>
                               Seguridad
                             </Typography>
                             <Typography paragraph>

@@ -24,7 +24,8 @@ const styles = theme => ({
     'paddingBottom': theme.spacing(1)
   },
   text: {
-    color: theme.palette.text.primary
+    color: theme.palette.text.primary,
+    textAlign: 'justify',
   },
 });
 

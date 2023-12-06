@@ -33,7 +33,8 @@ const styles = theme => ({
         wordBreak: "break-all",
     },
     text: {
-        color: theme.palette.text.primary
+        color: theme.palette.text.primary,
+        textAlign: 'justify',
     },
     title:{
         color: theme.palette.primary.main

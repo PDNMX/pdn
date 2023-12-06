@@ -13,7 +13,8 @@ const styles = theme => ({
         marginBottom: theme.spacing(2),
     },
     text: {
-        color: theme.palette.text.primary
+        color: theme.palette.text.primary,
+        textAlign: 'justify',
       },
     title:{
         color: theme.palette.primary.main

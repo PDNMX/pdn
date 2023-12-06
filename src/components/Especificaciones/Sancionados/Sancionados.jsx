@@ -86,7 +86,14 @@ const styles = theme => ({
         textDecoration: "none",
         color: theme.palette.text.linkColor,
         wordBreak: "break-all",
-    }
+    },
+    text: {
+        color: theme.palette.text.primary,
+        textAlign: 'justify',
+    },
+    title: {
+        color: theme.palette.primary.main
+    },
 });
 
 const protocolos=[
@@ -114,11 +121,11 @@ const Sancionados = props => {
 
                             <Divider className={classes.divider}/>
 
-                            <Typography variant="h4" paragraph>
+                            <Typography variant="h4" className={classes.title} paragraph>
                                 Especificaciones técnicas
                             </Typography>
 
-                            <Typography paragraph variant='h5'>
+                            <Typography paragraph className={classes.text} variant='h5'>
                                 Diccionario de datos
                             </Typography>
 
@@ -128,8 +135,9 @@ const Sancionados = props => {
                             >
                                 Más información
                             </ButtonPDN>
+                            <p></p>
 
-                            <Typography paragraph variant='h5'>
+                            <Typography paragraph className={classes.text} variant='h5'>
                                 Catálogos de claves y valores
                             </Typography>
 
@@ -138,8 +146,9 @@ const Sancionados = props => {
                                     target='_blank' style={{ color: 'white' }}>
                                 Más información
                             </ButtonPDN>
+                            <p></p>
 
-                            <Typography variant='h5' paragraph>
+                            <Typography variant='h5' className={classes.text} paragraph>
                                 Especificaciones en formato Open API Specification
                             </Typography>
 
@@ -164,10 +173,10 @@ const Sancionados = props => {
                                 </li>
                             </ul>
 
-                            <Typography paragraph variant='h5'>
+                            <Typography paragraph className={classes.text} variant='h5'>
                               Seguridad
                             </Typography>
-                            <Typography paragraph>
+                            <Typography paragraph className={classes.text}>
                                 <ButtonPDN  target='_blank' style={{ color: 'white' }} href='https://drive.google.com/file/d/1-IvF3KYa5rups73BmVV4W8glT9csVGY9/view'>
                                     Más información
                                 </ButtonPDN>

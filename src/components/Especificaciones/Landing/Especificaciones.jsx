@@ -40,6 +40,7 @@ const styles = theme => ({
     },
     text: {
         color: theme.palette.greyColor,
+        textAlign: 'justify',
         //paddingBottom: 60
     },
     paper: {
