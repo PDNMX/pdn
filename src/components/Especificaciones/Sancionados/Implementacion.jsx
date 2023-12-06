@@ -32,6 +32,12 @@ const styles = theme => ({
         color: theme.palette.text.linkColor,
         wordBreak: "break-all",
     },
+    text: {
+        color: theme.palette.text.primary
+    },
+    title:{
+        color: theme.palette.primary.main
+    }
 });
 
 const Implementacion = props => {
@@ -42,8 +48,8 @@ const Implementacion = props => {
             <Grid container spacing={0}>
 
                 <Grid item xs={12}>
-                    <Typography variant="h4" paragraph>Implementación del estándar</Typography>
-                    <Typography paragraph>
+                    <Typography variant="h4" className={classes.title} paragraph>Implementación del estándar</Typography>
+                    <Typography paragraph className={classes.text} >
                         La implementación del Estándar para la Interoperabilidad de datos de Servidores Públicos y
                         Particulares Sancionados representará esfuerzos de diferente maginitud dependiendo del nivel de
                         adopción tecnológica de cada Institución. Suponiendo que una cierta Institución ya cuenta con un
@@ -53,7 +59,7 @@ const Implementacion = props => {
 
                     <ul className={classes.ul}>
                         <li className={classes.li}>
-                            <Typography paragraph display='inline'>
+                            <Typography paragraph className={classes.text}  display='inline'>
 
                                 <b>Diagnóstico:</b> Revisar y comparar los datos contenidos en su base de datos con los
                                 especificados en el <Link className={classes.link} target={'_blank'}
@@ -66,7 +72,7 @@ const Implementacion = props => {
                             </Typography>
                         </li>
                         <li className={classes.li}>
-                            <Typography paragraph display='inline'>
+                            <Typography paragraph className={classes.text}  display='inline'>
                                 <b>Diseño de arquitectura:</b> Se deberá evaluar las capacidades del sistema de
                                 información o base de datos de servidores públicos y particulares sancionados, a fin de
                                 diagnosticar su capacidad para soportar la carga de trabajo actual y al mismo tiempo la
@@ -79,7 +85,7 @@ const Implementacion = props => {
                             </Typography>
                         </li>
                         <li className={classes.li}>
-                            <Typography paragraph display='inline'>
+                            <Typography paragraph className={classes.text}  display='inline'>
                                 <b>Desarrollo:</b> El desarrollo del API de Servidores Públicos y Particulares
                                 Sancionados podrá realizarse en el lenguaje de programación que se considere más
                                 apropiado con apego a las especificaciones que se proporcionan en las siguientes

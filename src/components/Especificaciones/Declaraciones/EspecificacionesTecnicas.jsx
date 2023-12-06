@@ -23,6 +23,9 @@ const styles = theme => ({
     },
     'paddingBottom': theme.spacing(1)
   },
+  text: {
+    color: theme.palette.text.primary
+  },
 });
 
 class EspecificacionesTecnicas extends React.Component {
@@ -35,27 +38,27 @@ class EspecificacionesTecnicas extends React.Component {
           Especificaciones técnicas
         </Typography>
 
-        <Typography paragraph variant='h5'>
+        <Typography paragraph className={classes.text}  variant='h5'>
           Diccionario de datos
         </Typography>
 
-        <Typography paragraph>
+        <Typography paragraph className={classes.text} >
           <ButtonPDN  target='_blank' href='https://docs.google.com/spreadsheets/d/19Kyq46YwJk9wM7znYLQdLEKfAF8jTF4WmGJINXd9Lwg/edit?ts=5d88f08f#gid=0' variant='contained'style={{ color: 'white' }}>
             Más información
           </ButtonPDN>
         </Typography>
 
-        <Typography paragraph variant='h5'>
+        <Typography paragraph className={classes.text}  variant='h5'>
           Catálogos de códigos y valores
         </Typography>
 
-        <Typography paragraph>
+        <Typography paragraph className={classes.text} >
           <ButtonPDN  target='_blank'  href='https://github.com/PDNMX/catalogos/tree/master/S1%20-%20Declaraciones' style={{ color: 'white' }}>
             Más información
           </ButtonPDN>
         </Typography>
 
-        <Typography paragraph variant='h5'>
+        <Typography paragraph className={classes.text}  variant='h5'>
           Especificaciones en formato Open API Specification
         </Typography>
 
@@ -77,19 +80,19 @@ class EspecificacionesTecnicas extends React.Component {
           </li>
         </ul>
 
-        <Typography paragraph variant='h5'>
+        <Typography paragraph className={classes.text}  variant='h5'>
           Seguridad
         </Typography>
-        <Typography paragraph>
+        <Typography paragraph className={classes.text} >
           <ButtonPDN  target='_blank'  href='https://drive.google.com/file/d/1-IvF3KYa5rups73BmVV4W8glT9csVGY9/view' style={{ color: 'white' }}>
             Más información
           </ButtonPDN>
         </Typography>
 
-        <Typography paragraph variant='h5'>
+        <Typography paragraph className={classes.text}  variant='h5'>
           Versionado
         </Typography>
-        <Typography paragraph>
+        <Typography paragraph className={classes.text} >
           <ButtonPDN  target='_blank' href='https://drive.google.com/file/d/1xIPoMa-xKlCi9OZs_Uc7ffvANImaKWnK/view' style={{ color: 'white' }}>
             Más información
           </ButtonPDN>
