@@ -9,7 +9,16 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 const styles = theme => ({
     paper: {
         flexGrow: 1,
-        background: theme.palette.background.paperChart
+        background: theme.palette.background.default,
+        borderStyle: 'solid',
+        borderWidth: 1,
+        borderColor: theme.palette.primary.main,
+        borderRadius: '10px 10px 10px 10px',
+    },
+    text:{
+        color: theme.palette.text.primary,
+        textAlign: "center",
+        fontWeight: "bold"
     }
 });
 
@@ -66,14 +75,14 @@ const VistaDetalleSistema = props => {
                                 estado.data[`s${system.id}`].ejecutivo.total
                             )}%
                         </Typography>
-                        <Typography variant="body2" color='#707274' textAlign="center">
+                        <Typography variant="body2" className={classes.text}>
                             {estado.data[`s${system.id}`].ejecutivo.tiene} de {estado.data[`s${system.id}`].ejecutivo.total}
                         </Typography>
                         <VerticalProgressBar color={bar_colors[0]} value={percentage(
                             estado.data[`s${system.id}`].ejecutivo.tiene,
                             estado.data[`s${system.id}`].ejecutivo.total
                         )}/>
-                        <Typography color="#707274" textAlign="center">
+                        <Typography className={classes.text}>
                             Ejecutivo
                         </Typography>
                     </Box>
@@ -85,14 +94,14 @@ const VistaDetalleSistema = props => {
                                 estado.data[`s${system.id}`].legislativo.total
                             )}%
                         </Typography>
-                        <Typography variant="body2" color='#707274' textAlign="center">
+                        <Typography variant="body2" className={classes.text}>
                             {estado.data[`s${system.id}`].legislativo.tiene} de {estado.data[`s${system.id}`].legislativo.total}
                         </Typography>
                         <VerticalProgressBar color={bar_colors[1]} value={percentage(
                             estado.data[`s${system.id}`].legislativo.tiene,
                             estado.data[`s${system.id}`].legislativo.total
                         )}/>
-                        <Typography color="#707274" textAlign="center">Legislativo</Typography>
+                        <Typography className={classes.text}>Legislativo</Typography>
                     </Box>
 
                     <Box p={1} textAlign="center">
@@ -103,14 +112,14 @@ const VistaDetalleSistema = props => {
                                 estado.data[`s${system.id}`].judicial.total
                             )}%
                         </Typography>
-                        <Typography variant="body2" color='#707274' textAlign="center">
+                        <Typography variant="body2" className={classes.text}>
                             {estado.data[`s${system.id}`].judicial.tiene} de {estado.data[`s${system.id}`].judicial.total}
                         </Typography>
                         <VerticalProgressBar color={bar_colors[2]} value={percentage(
                             estado.data[`s${system.id}`].judicial.tiene,
                             estado.data[`s${system.id}`].judicial.total
                         )}/>
-                        <Typography color="#707274" textAlign="center">Judicial</Typography>
+                        <Typography className={classes.text}>Judicial</Typography>
                     </Box>
 
                     <Box p={1} textAlign="center">
@@ -120,14 +129,14 @@ const VistaDetalleSistema = props => {
                                 estado.data[`s${system.id}`].ocas.total
                             )}%
                         </Typography>
-                        <Typography variant="body2" color='#707274' textAlign="center">
+                        <Typography variant="body2" className={classes.text}>
                             {estado.data[`s${system.id}`].ocas.tiene} de {estado.data[`s${system.id}`].ocas.total}
                         </Typography>
                         <VerticalProgressBar color={bar_colors[3]} value={percentage(
                             estado.data[`s${system.id}`].ocas.tiene,
                             estado.data[`s${system.id}`].ocas.total
                         )}/>
-                        <Typography color="#707274" textAlign="center">Autónomos</Typography>
+                        <Typography className={classes.text}>Autónomos</Typography>
                     </Box>
 
                     <Box p={1} textAlign="center">
@@ -145,15 +154,15 @@ const VistaDetalleSistema = props => {
                                     estado.data[`s${system.id}`].municipal.total
                                 )}%
                             </Typography>
-                            <Typography variant="body2" color='#707274' textAlign="center">
+                            <Typography variant="body2" className={classes.text}>
                                 {estado.data[`s${system.id}`].municipal.tiene} de {estado.data[`s${system.id}`].municipal.total}
                             </Typography>
                             <VerticalProgressBar color={bar_colors[4]} value={percentage(
                                 estado.data[`s${system.id}`].municipal.tiene,
                                 estado.data[`s${system.id}`].municipal.total
                             )}/>
-                            <Typography color="#707274" textAlign="center" variant="body2">Municipios y</Typography>
-                            <Typography color="#707274" textAlign="center" variant="body2">Org. Municipales</Typography>
+                            <Typography className={classes.text} variant="body2">Municipios y</Typography>
+                            <Typography className={classes.text} variant="body2">Org. Municipales</Typography>
                         </Box>
                     </Box>
 
