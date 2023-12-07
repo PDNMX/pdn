@@ -38,10 +38,10 @@ const styles = theme => ({
     },
     itemD: {
         maxWidth: 1200,
-        paddingRight: theme.spacing(1),
+        /* paddingRight: theme.spacing(1),
         paddingLeft: theme.spacing(1),
         paddingBottom: theme.spacing(8),
-        paddingTop: theme.spacing(8)
+        paddingTop: theme.spacing(8) */
     },
     paper:{
         backgroundColor: theme.palette.background.opaque,

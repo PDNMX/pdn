@@ -12,8 +12,8 @@ import Busqueda from './Busqueda';
 // import Stats from '../Declaraciones/Estadisticas/Stats';
 
 import styles from './style';
-import { ThemeProvider } from '@mui/material/styles';
-import ThemeV2 from '../../ThemeV2';
+/* import { ThemeProvider } from '@mui/material/styles';
+import ThemeV2 from '../../ThemeV2'; */
 import pdnRoutes from '../../routes';
 import HeaderV2 from '../HomeV2/HeaderV2';
 import Disclaimer from './Disclaimer';

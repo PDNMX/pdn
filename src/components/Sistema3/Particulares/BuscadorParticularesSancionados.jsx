@@ -3,7 +3,7 @@ import {Grid, Typography, Paper} from "@mui/material";
 import {withStyles} from '@mui/styles';
 import BusquedaParticular from "./BusquedaParticular";
 import Descarga from "../../Compartidos/Descarga";
-import classNames from "classnames";
+/* import classNames from "classnames"; */
 
 const styles = theme => ({
     gridTable: {
@@ -35,10 +35,10 @@ const styles = theme => ({
     },
     itemD: {
         maxWidth: 1200,
-        paddingRight: theme.spacing(1),
+        /* paddingRight: theme.spacing(1),
         paddingLeft: theme.spacing(1),
         paddingBottom: theme.spacing(8),
-        paddingTop: theme.spacing(8)
+        paddingTop: theme.spacing(8) */
     },
     paper: {
         backgroundColor: theme.palette.background.opaque,

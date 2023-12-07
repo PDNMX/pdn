@@ -33,8 +33,8 @@ const styles = theme => ({
     },
     item: {
         maxWidth: 1200,
-        paddingTop: theme.spacing(8),
-        paddingBottom: theme.spacing(8),
+        /* paddingTop: theme.spacing(8),
+        paddingBottom: theme.spacing(8), */
         // overflow: "auto"
     },
     paper1: {

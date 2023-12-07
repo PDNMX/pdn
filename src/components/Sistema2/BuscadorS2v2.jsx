@@ -550,8 +550,8 @@ const BuscadorS2  =  props => {
             }
 
         </Paper>
-
-        <Box paddingTop={8} paddingBottom={8}>
+        
+        <Box>
             <Descarga url={import.meta.env.VITE_BULK_S2} tipoGA={'bulk-s2'}/>
         </Box>
 
