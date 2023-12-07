@@ -31,7 +31,7 @@ const styles = theme => ({
     paper: {
         backgroundColor: theme.palette.background.opaque,
         padding: theme.spacing(2),
-        color: theme.palette.primary.contrastText,
+        color: theme.palette.text.primary,
         borderStyle: 'solid',
         borderWidth: 1,
         borderColor: theme.palette.secondary.main,

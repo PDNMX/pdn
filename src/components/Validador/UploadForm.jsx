@@ -24,7 +24,7 @@ const styles = (theme) => ({
     /* marginTop: theme.spacing(1), */
     marginRight: theme.spacing(1),
     marginBottom: theme.spacing(2),
-    background: "#ffe01b",
+    /* background: "#ffe01b", */
     padding: "14.75px",
     
   },
@@ -41,7 +41,7 @@ const styles = (theme) => ({
   },
   selectEmpty: {
     marginBottom: theme.spacing(1),
-    color: theme.palette.text.main
+    color: theme.palette.text.primary
   },
 });
 
