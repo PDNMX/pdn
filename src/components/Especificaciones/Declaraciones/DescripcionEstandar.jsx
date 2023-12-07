@@ -35,6 +35,9 @@ class DescripcionEstandar extends React.Component {
 
     return (
       <div className={classes.root}>
+        <Typography variant="h5" className={classes.title} paragraph>
+          Introducción
+        </Typography>
         <Typography className={classes.text} paragraph>
           Esta guía tiene como finalidad la descripción del Estándar para la Interoperabilidad de Datos de Declaraciones, desarrollado por la Secretaría Ejecutiva del Sistema Nacional Anticorrupción (SESNA). Se presenta el modelo de interoperabilidad que deberán adoptar los diversos sistemas de declaraciones que proveerán información a la Plataforma Digital Nacional (PDN) y se proporciona una
           serie de recomendaciones para la implementación del estándar por parte de las Instituciones.

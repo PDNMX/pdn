@@ -42,7 +42,15 @@ const styles = theme => ({
     maxWidth: '900px',
     paddingTop: '50px',
     paddingBottom: '50px'
-  }
+  },
+  text: {
+    color: theme.palette.text.primary,
+    textAlign: 'justify',
+    //fontWeight: "bold"
+  },
+  title: {
+    color: theme.palette.primary.main
+  },
 });
 
 const Index = props => {
@@ -57,10 +65,10 @@ const Index = props => {
             <Box className={classes.box}>
               <Intro />
               <Divider className={classes.divider} />
-              <Typography paragraph variant='h5'>
+              <Typography paragraph variant='h5' className={classes.title}>
                 Seguridad informática
               </Typography>
-              <Typography paragraph>
+              <Typography paragraph className={classes.text}>
                 El siguiente documento responde a las principales dudas en términos de seguridad
                 informática que corresponden al: desarrollo, almacenamiento, operación, hospedaje,
                 infraestructura y mecanismos de comunicación que rodean la administración de la

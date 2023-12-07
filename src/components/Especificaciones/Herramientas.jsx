@@ -39,7 +39,7 @@ const Herramientas = props => {
     const {classes} = props;
     return (
         <div className={classes.root}>
-            <Typography variant="h4" paragraph className={classes.title}>Desarrollo web</Typography>
+            <Typography variant="h5" paragraph className={classes.title}>Desarrollo web</Typography>
 
             <Typography paragraph className={classes.text}>
                 La interoperabilidad entre los sistemas informáticos de las Instituciones y la PDN se establece a través de servicios web o APIs que intercambian información a través de Internet.

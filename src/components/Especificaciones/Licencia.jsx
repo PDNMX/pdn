@@ -59,7 +59,7 @@ const Licencia = props => {
   const { classes } = props;
   return (
     <div className={classes.root}>
-      <Typography variant='h4' className={classes.title} paragraph>
+      <Typography variant="h5" className={classes.title} paragraph>
         Licencia
       </Typography>
 

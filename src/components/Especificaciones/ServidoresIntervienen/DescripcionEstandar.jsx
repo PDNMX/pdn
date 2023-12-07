@@ -20,6 +20,9 @@ const DescripcionEstandar = props => {
     const {classes} = props;
 
     return (<div className={classes.root}>
+        <Typography variant="h5" className={classes.title} paragraph>
+            Introducción
+        </Typography>
         <Typography paragraph className={classes.text} >
             Esta guía tiene como finalidad la descripción del Estándar para la Interoperabilidad de Datos de Servidores
             Públicos que Intervienen en Contrataciones,
