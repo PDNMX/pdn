@@ -56,12 +56,6 @@ const styles = theme => ({
     }
 });
 
-const CustomTypography = withStyles(theme => ({
-    root: {
-        color: theme.palette.text.primary
-    }
-}))(Typography);
-
 function BuscadorServidoresSancionados(props) {
     const {classes} = props;
     return (
@@ -70,12 +64,12 @@ function BuscadorServidoresSancionados(props) {
             <Paper elevation={15} className={classes.paper}>
                 <Grid container className={classes.container}>
                     <Grid item xs={12} style={{maxWidth: 1200, margin: "0 auto"}}>
-                        <CustomTypography>
+                        <Typography>
                             <b>Aquí puedes consultar:</b>
-                        </CustomTypography>
+                        </Typography>
                         <ul className={classes.ul}>
-                            <li className={classes.li}><CustomTypography display='inline'>Datos de la sanción firme impuesta a la persona servidora pública como: plazo, tipo de falta y la causa.</CustomTypography></li>
-                            <li className={classes.li}><CustomTypography display='inline'>Información de la persona servidora pública sancionada como:  nombre, puesto e institución en donde se realizó la falta o hecho de corrupción.</CustomTypography></li>
+                            <li className={classes.li}><Typography display='inline'>Datos de la sanción firme impuesta a la persona servidora pública como: plazo, tipo de falta y la causa.</Typography></li>
+                            <li className={classes.li}><Typography display='inline'>Información de la persona servidora pública sancionada como:  nombre, puesto e institución en donde se realizó la falta o hecho de corrupción.</Typography></li>
                             {/* <li className={classes.li}>
                                 <Typography display='inline'>
                                     Obtén los datos de la sanción impuesta al servidor: plazo, tipo de falta,

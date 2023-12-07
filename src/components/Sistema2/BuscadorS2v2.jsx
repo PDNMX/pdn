@@ -71,12 +71,6 @@ function getSorting(order, orderBy) {
         : (a, b) => (a[orderBy] < b[orderBy] ? -1 : 1);
 }
 
-const CustomTypography = withStyles(theme => ({
-    root: {
-        color: theme.palette.text.primary
-    }
-}))(Typography);
-
 const BuscadorS2  =  props => {
 
     const {classes} = props;
@@ -412,20 +406,20 @@ const BuscadorS2  =  props => {
         <Paper className={classes.paper} elevation={15}>
             {/* Información de la búsqueda */}
             <Box p={1}>
-                <CustomTypography paragraph>
+                <Typography paragraph>
                     <b>Aquí puedes consultar:</b>
-                </CustomTypography>
+                </Typography>
                         
                 <ul className={classes.ul}>
                     <li className={classes.li}>
-                        <CustomTypography color="textPrimary" display='inline'>
+                        <Typography color="textPrimary" display='inline'>
                             Datos como: nombre, puesto e institución en la que laboran las personas servidoras públicas que intervienen en procedimientos de contratación.
-                        </CustomTypography>
+                        </Typography>
                     </li>
                     <li className={classes.li}>
-                        <CustomTypography color="textPrimary" display='inline'>
+                        <Typography color="textPrimary" display='inline'>
                             El nivel de responsabilidad que tienen las personas servidoras públicas que intervienen en procedimientos de contratación.
-                        </CustomTypography>
+                        </Typography>
                     </li>
                 </ul>
             </Box>

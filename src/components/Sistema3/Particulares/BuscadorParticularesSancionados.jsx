@@ -52,11 +52,7 @@ const styles = theme => ({
         borderRadius: '0px 10px 10px 10px'
     }
 });
-const CustomTypography = withStyles(theme => ({
-    root: {
-        color: theme.palette.text.primary
-    }
-  }))(Typography);
+
 function BuscadorParticularesSancionados({classes}) {
     return (
         <div>
@@ -64,12 +60,12 @@ function BuscadorParticularesSancionados({classes}) {
                 {/*TEXTO*/}
                 <Grid container className={classes.container}>
                     <Grid item xs={12} style={{maxWidth: 1200, margin: "0 auto"}}>
-                        <CustomTypography paragraph>
+                        <Typography paragraph>
                             <b>Aquí puedes consultar:</b>
-                        </CustomTypography>
+                        </Typography>
                         <ul className={classes.ul}>
-                            <li className={classes.li}><CustomTypography display='inline'>Datos de la sanción firme impuesta a particulares como: número de expediente, autoridad que sanciona y resolución.</CustomTypography></li>
-                            <li className={classes.li}><CustomTypography display='inline'>Información del particular sancionado como: nombre, razón social, causa y tipo de sanción.</CustomTypography></li>
+                            <li className={classes.li}><Typography display='inline'>Datos de la sanción firme impuesta a particulares como: número de expediente, autoridad que sanciona y resolución.</Typography></li>
+                            <li className={classes.li}><Typography display='inline'>Información del particular sancionado como: nombre, razón social, causa y tipo de sanción.</Typography></li>
                             {/* <li className={classes.li}>
                                 <Typography display='inline'>
                                     Obtén los datos de la sanción impuesta al particular como: expediente, hechos de la

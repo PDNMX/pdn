@@ -8,6 +8,9 @@ export default createTheme(
       danger: orange[500],
     },
     typography: {
+      allVariants: {
+        color: "#55575A"
+      },
       useNextVariants: true,
       color:'#7a3d71',
       fontFamily: "Muli",

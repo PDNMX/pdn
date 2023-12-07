@@ -29,11 +29,7 @@ const styles = theme => ({
         marginRight: theme.spacing(1),
     }
 });
-  const CustomTypography = withStyles(theme => ({
-    root: {
-        color: theme.palette.text.primary
-    }
-}))(Typography);
+
 const EntradasBuscador = props => {
     const {
         classes,
@@ -57,9 +53,9 @@ const EntradasBuscador = props => {
         <div className={classes.root}>
             <Grid container spacing={4}>
                 <Grid item xs={12}>
-                    <CustomTypography >
+                    <Typography>
                         <b>Busca servidores públicos que intervienen en contrataciones, concesiones, enajenaciones y dictámenes</b>
-                    </CustomTypography>
+                    </Typography>
                 </Grid>
 
                 <Grid item xs={12} md={4}>
