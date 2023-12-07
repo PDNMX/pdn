@@ -44,7 +44,7 @@ const styles = theme => ({
         //paddingBottom: 60
     },
     paper: {
-        backgroundColor: theme.palette.background.default,
+        backgroundColor: theme.palette.background.opaque,
         padding: theme.spacing(2),
         color: theme.palette.text.primary,
         borderStyle: 'solid',
