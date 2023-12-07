@@ -22,14 +22,17 @@ const useStyles = makeStyles((theme) => ({
   },
   abecedario: {
     wordWrap: "break-word", 
-    color: theme.palette.background.opaque
+    color: theme.palette.text.primary
   },
   palabra: {
     wordWrap: "break-word", 
     background: '#f5f8fb',
   },
   text: {
-    color: '#55575a'
+    color: theme.palette.text.primary
+  },
+  textTitulo: {
+    color: theme.palette.text.secondary
   }
 }));
 
@@ -116,7 +119,7 @@ const ResultDetail = (props) => {
         <>
         <Accordion className={classes.palabra}>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography className={classes.text}>{props[0]}</Typography>
+          <Typography className={classes.textTitulo}><b>{props[0]}</b></Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Grid container spacing={2}>
