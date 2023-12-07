@@ -41,9 +41,9 @@ const styles = (theme) => ({
   containerName: {
     maxWidth: 1200,
     margin: "auto",
-    /* paddingTop: theme.spacing(2),
-        paddingBottom: theme.spacing(2), */
     minHeight: 200,
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2)
   },
 });
 
