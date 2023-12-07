@@ -27,7 +27,7 @@ class Declaraciones extends React.Component {
             <HeaderV2 section={section} />
           </Grid>
 
-          <Grid item xs={12} style={{ maxWidth: 1190, marginTop: 50 }}>
+          <Grid item xs={12} style={{ maxWidth: 1190, marginTop: 50, marginBottom: 50}}>
             <Paper className={classes.paper_search} elevation={15}>
               <div style={{ maxWidth: 900, paddingTop: '50px', paddingBottom: '50px', margin: '0 auto' }}>
                 <DescripcionEstandar />
