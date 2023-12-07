@@ -44,7 +44,7 @@ const styles = theme => ({
     li: {
         "&:before": {
             content: '"•"',
-            color: '#7A3D71',
+            color: theme.palette.primary.main,
             fontWeight: "bold",
             display: "inline-block",
             width: "1em",

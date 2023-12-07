@@ -28,12 +28,13 @@ const styles = theme => ({
     li: {
         "&:before": {
             content: '"•"',
-            color: theme.palette.azulPDN,
+            color: theme.palette.primary.main,
             fontWeight: "bold",
             display: "inline-block",
             width: "1em",
             marginLeft: "-1em"
         },
+        color: theme.palette.text.primary
     },
     itemD: {
         maxWidth: 1200,
@@ -55,6 +56,12 @@ const styles = theme => ({
     }
 });
 
+const CustomTypography = withStyles(theme => ({
+    root: {
+        color: theme.palette.text.primary
+    }
+}))(Typography);
+
 function BuscadorServidoresSancionados(props) {
     const {classes} = props;
     return (
@@ -63,12 +70,12 @@ function BuscadorServidoresSancionados(props) {
             <Paper elevation={15} className={classes.paper}>
                 <Grid container className={classes.container}>
                     <Grid item xs={12} style={{maxWidth: 1200, margin: "0 auto"}}>
-                        <Typography paragraph>
+                        <CustomTypography>
                             <b>Aquí puedes consultar:</b>
-                        </Typography>
+                        </CustomTypography>
                         <ul className={classes.ul}>
-                            <li className={classes.li}><Typography display='inline'>Datos de la sanción firme impuesta a la persona servidora pública como: plazo, tipo de falta y la causa.</Typography></li>
-                            <li className={classes.li}><Typography display='inline'>Información de la persona servidora pública sancionada como:  nombre, puesto e institución en donde se realizó la falta o hecho de corrupción.</Typography></li>
+                            <li className={classes.li}><CustomTypography display='inline'>Datos de la sanción firme impuesta a la persona servidora pública como: plazo, tipo de falta y la causa.</CustomTypography></li>
+                            <li className={classes.li}><CustomTypography display='inline'>Información de la persona servidora pública sancionada como:  nombre, puesto e institución en donde se realizó la falta o hecho de corrupción.</CustomTypography></li>
                             {/* <li className={classes.li}>
                                 <Typography display='inline'>
                                     Obtén los datos de la sanción impuesta al servidor: plazo, tipo de falta,

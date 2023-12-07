@@ -86,6 +86,12 @@ const initialPagination = {
     totalRows: 0,
 };
 
+const CustomTypography = withStyles(theme => ({
+    root: {
+        color: theme.palette.text.primary
+    }
+  }))(Typography);
+
 const initialFilter = {
     nombreRazonSocial: '',
     institucionDependencia: 'any',
@@ -321,7 +327,7 @@ function BusquedaParticular ({classes}){
                     {/*Buscador*/}
                     <Grid container spacing={4}>
                         <Grid item xs={12}>
-                            <Typography><b>Busca un particular sancionado</b></Typography>
+                            <CustomTypography><b>Busca un particular sancionado</b></CustomTypography>
                         </Grid>
 
                         <Grid item md={4} xs={12}>

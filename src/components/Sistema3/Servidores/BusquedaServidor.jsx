@@ -313,14 +313,19 @@ function BusquedaServidor({ classes }) {
     setView(1);
   };
 
+const CustomTypography = withStyles(theme => ({
+  root: {
+      color: theme.palette.text.primary
+  }
+}))(Typography);
   return (
     <React.Fragment>
       {/*Buscador*/}
       <Grid container spacing={4}>
         <Grid item xs={12}>
-          <Typography>
+          <CustomTypography>
             <b>Busca un servidor público sancionado</b>
-          </Typography>
+          </CustomTypography>
         </Grid>
         <FormServidoresSancionados handleForm={handleForm} handleOrder={handleOrder} query={query} order={order} providersList={providersList} institutionsList={institutionsList} />
 
