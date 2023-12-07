@@ -60,7 +60,7 @@ const Cobertura = props => {
     return (<div>
             <HeaderV2 section={section}/>
             <Grid container spacing={0} justifyContent="center">
-                <Grid item xs={12} style={{maxWidth: 1200, marginBottom: "32px"}}>
+                <Grid item xs={12} style={{maxWidth: 1200, marginBottom: "32px", marginTop:"30px"}}>
 
 
                     <Tabs value={value} onChange={handleChange}>
