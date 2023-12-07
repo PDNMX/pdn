@@ -156,7 +156,7 @@ const VistaDetalleEstado = props => {
                         {estado.name}
                     </Typography>
 
-                    <Typography align="center" color="#959698" paragraph>
+                    <Typography align="center" color="#000" paragraph>
                         Información al 31 de marzo de 2023, reportada por las Secretarías Ejecutivas del Sistema Anticorrupción Estatal
                     </Typography>
 
