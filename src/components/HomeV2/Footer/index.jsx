@@ -43,13 +43,26 @@ const Footer = (props) => {
         className="mt-5 footerLogos"
       >
         <Grid item xs={12} md={3} align="center">
-          <img src={logoSESNA} alt="logo-sesna" />
-        </Grid>
-        <Grid item xs={12} md={3} align="center">
           <img src={logoSNA} alt="logo-sna" />
         </Grid>
         <Grid item xs={12} md={3} align="center">
+          <img src={logoSESNA} alt="logo-sesna" />
+        </Grid>
+        <Grid item xs={12} md={3} align="center">
           <img src={logoPDN} alt="logo-sesna" />
+        </Grid>
+      </Grid>
+
+      <Grid
+        container
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+        sx={{maxWidth: 1200, margin: 'auto'}}
+        className="mt-3"
+      >
+        <Grid item lg={12}>
+          <Divider />
         </Grid>
       </Grid>
 
@@ -77,6 +90,13 @@ const Footer = (props) => {
             <li><a href="https://www.youtube.com/channel/UCJ0nWmB2-ADfn95r5cjmLJA/">Videos</a></li>
             <li> <a href="https://drive.google.com/drive/folders/1t_vGUfagr75TAZ8-E4NZfL-fU0BcsPlZ">Boletines
                 y prensa</a></li>
+          </ul>
+        </Grid>
+        <Grid item md={3}>
+          <ul >
+            <li><a href="https://www.plataformadigitalnacional.org/mesa-de-ayuda">Mesa de ayuda</a></li>
+            <li><a href="https://www.plataformadigitalnacional.org/especificaciones">Especificaciones Técnicas</a></li>
+            <li> <a href="https://www.plataformadigitalnacional.org/blog/">Blog</a></li>
           </ul>
         </Grid>
       </Grid>
