@@ -23,8 +23,8 @@ const styles = theme => ({
     },
     rootItem: {
         maxWidth: 1200,
-        paddingTop: 90,
-        paddingBottom: 90,
+        paddingTop: 20,
+        paddingBottom: 20,
         paddingLeft: theme.spacing(1),
         paddingRight: theme.spacing(1)
 
