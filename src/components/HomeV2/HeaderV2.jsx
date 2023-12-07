@@ -19,13 +19,13 @@ const styles = (theme) => ({
   },
   icon: {
     maxWidth: 100,
-    [theme.breakpoints.up("md")]: {
+    /* [theme.breakpoints.up("md")]: {
       marginRight: 80,
     },
     [theme.breakpoints.down("md")]: {
       marginRight: 10,
       marginLeft: 10,
-    },
+    }, */
   },
   link: {
     textDecoration: "none",
