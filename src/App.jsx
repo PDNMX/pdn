@@ -14,6 +14,8 @@ import BaseTheme2023 from "./BaseTheme2023";
 import {UserContext} from "./components/Login/UserContext";
 import {getUser} from "./components/Login/Auth";
 
+import ScrollToTop from './ScrollToTop';
+
 ReactGA.initialize('G-XWEKXGG46G');
 ReactGA.send(window.location.pathname + window.location.search);
 
@@ -54,6 +56,7 @@ const App  = props => {
         <ThemeProvider theme={BaseTheme2023}>
           <StyledEngineProvider injectFirst>
             <Router basename={import.meta.env.BASE_URL}>
+            <ScrollToTop />
                 <Layout>
                   <Switch>
                     {pndRoutes.map((prop, key) => {
