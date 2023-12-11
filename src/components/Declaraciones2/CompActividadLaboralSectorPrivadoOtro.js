@@ -60,12 +60,12 @@ export default function ActividadLaboralSectorPrivadoOtro(props) {
 						</Typography>
 					</Grid>
 					<Grid item xs={12} md={3}>
-						{actividadLaboralSectorPrivadoOtro.proveedorContratistaGobierno === 'DATO RESERVADO' ? (
+						{actividadLaboralSectorPrivadoOtro.proveedorContratistaGobierno === 'NO PÚBLICO' ? (
 							<span>
 								<Typography className={classes.cardTitle}>
 									¿ES PROVEEDOR O CONTRATISTA DEL GOBIERNO?
 								</Typography>
-								<Typography className={classes.card}>DATO RESERVADO</Typography>
+								<Typography className={classes.card}>NO PÚBLICO</Typography>
 							</span>
 						) : actividadLaboralSectorPrivadoOtro.proveedorContratistaGobierno ? (
 							<Typography className={classes.cardTitle}>

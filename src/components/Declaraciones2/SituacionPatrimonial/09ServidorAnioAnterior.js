@@ -360,7 +360,7 @@ const ServidorPublicoAnioAnterior = ({ data: info, titulo }) => {
                   <Typography className={classes.cardTitle}>B.- INGRESO NETO DE LA PAREJA Y/O DEPENDIENTES ECONÓMICOS, RECIBIDO EN EL AÑO INMEDIATO ANTERIOR (DESPUÉS DE IMPUESTOS)</Typography>
                 </Grid>
                 <Grid item xs={12} md={3}>
-                  <Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
+                  <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
                 </Grid>
 
                 <Grid item xs={12} md={9}>

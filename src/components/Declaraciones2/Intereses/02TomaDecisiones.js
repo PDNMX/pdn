@@ -41,11 +41,11 @@ function Participacion(props) {
             </Grid>
             <Grid item xs={12} md={4}>
               <Typography className={classes.cardTitle}>NOMBRE DE LA INSTITUCIÓN:</Typography>
-              <Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
+              <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
             </Grid>
             <Grid item xs={12} md={3}>
               <Typography className={classes.cardTitle}>RFC:</Typography>
-              <Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
+              <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
             </Grid>
             <Grid item xs={12} md={9}>
               <Typography className={classes.cardTitle}>FECHA DE INICIO DE PARTICIPACIÓN DENTRO DE LA INSTITUCIÓN:</Typography>

@@ -120,7 +120,7 @@ const IngresosIniciales = ({ data: info, titulo }) => {
               <Typography className={classes.cardTitle}>B.- INGRESO MENSUAL NETO DE LA PAREJA Y/O DEPENDIENTES ECONÓMICOS (DESPUÉS DE IMPUESTOS)</Typography>
             </Grid>
             <Grid item xs={12} md={3}>
-              <Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
+              <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
             </Grid>
 
             <Grid item xs={12} md={9}>

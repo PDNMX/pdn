@@ -1,54 +1,54 @@
 const domicilioMexico = {
-	calle: 'DATO RESERVADO',
-	numeroExterior: 'DATO RESERVADO',
-	numeroInterior: 'DATO RESERVADO',
-	coloniaLocalidad: 'DATO RESERVADO',
+	calle: 'NO PÚBLICO',
+	numeroExterior: 'NO PÚBLICO',
+	numeroInterior: 'NO PÚBLICO',
+	coloniaLocalidad: 'NO PÚBLICO',
 	municipioAlcaldia: {
-		valor: 'DATO RESERVADO'
+		valor: 'NO PÚBLICO'
 	},
 	entidadFederativa: {
-		valor: 'DATO RESERVADO'
+		valor: 'NO PÚBLICO'
 	},
-	codigoPostal: 'DATO RESERVADO'
+	codigoPostal: 'NO PÚBLICO'
 };
 const domicilioExtranjero = {
-	calle: 'DATO RESERVADO',
-	numeroExterior: 'DATO RESERVADO',
-	numeroInterior: 'DATO RESERVADO',
-	ciudadLocalidad: 'DATO RESERVADO',
-	estadoProvincia: 'DATO RESERVADO',
-	pais: 'DATO RESERVADO',
-	codigoPostal: 'DATO RESERVADO'
+	calle: 'NO PÚBLICO',
+	numeroExterior: 'NO PÚBLICO',
+	numeroInterior: 'NO PÚBLICO',
+	ciudadLocalidad: 'NO PÚBLICO',
+	estadoProvincia: 'NO PÚBLICO',
+	pais: 'NO PÚBLICO',
+	codigoPostal: 'NO PÚBLICO'
 };
 
 const actividadLaboralSectorPublico = {
-	nivelOrdenGobierno: 'DATO RESERVADO',
-	ambitoPublico: 'DATO RESERVADO',
-	nombreEntePublico: 'DATO RESERVADO',
-	areaAdscripcion: 'DATO RESERVADO',
-	empleoCargoComision: 'DATO RESERVADO',
-	funcionPrincipal: 'DATO RESERVADO',
+	nivelOrdenGobierno: 'NO PÚBLICO',
+	ambitoPublico: 'NO PÚBLICO',
+	nombreEntePublico: 'NO PÚBLICO',
+	areaAdscripcion: 'NO PÚBLICO',
+	empleoCargoComision: 'NO PÚBLICO',
+	funcionPrincipal: 'NO PÚBLICO',
 	salarioMensualNeto: {
-		valor: 'DATO RESERVADO',
+		valor: 'NO PÚBLICO',
 		moneda: ''
 	},
-	fechaIngreso: 'DATO RESERVADO'
+	fechaIngreso: 'NO PÚBLICO'
 };
 
 const actividadLaboralSectorPrivadoOtro = {
-	nombreEmpresaSociedadAsociacion: 'DATO RESERVADO',
-	empleoCargoComision: 'DATO RESERVADO',
-	rfc: 'DATO RESERVADO',
-	fechaIngreso: 'DATO RESERVADO',
+	nombreEmpresaSociedadAsociacion: 'NO PÚBLICO',
+	empleoCargoComision: 'NO PÚBLICO',
+	rfc: 'NO PÚBLICO',
+	fechaIngreso: 'NO PÚBLICO',
 	sector: {
-		clave: 'DATO RESERVADO',
-		valor: 'DATO RESERVADO'
+		clave: 'NO PÚBLICO',
+		valor: 'NO PÚBLICO'
 	},
 	salarioMensualNeto: {
-		valor: 'DATO RESERVADO',
+		valor: 'NO PÚBLICO',
 		moneda: ''
 	},
-	proveedorContratistaGobierno: 'DATO RESERVADO'
+	proveedorContratistaGobierno: 'NO PÚBLICO'
 };
 
 export { domicilioMexico, domicilioExtranjero, actividadLaboralSectorPublico, actividadLaboralSectorPrivadoOtro };

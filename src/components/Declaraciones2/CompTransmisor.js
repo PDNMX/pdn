@@ -50,7 +50,7 @@ export default function CompTransmisor(props) {
 											</Typography>
 										</Grid>
 										<Grid item xs={12} md={4}>
-											<Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
+											<Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
 										</Grid>
 									</Grid>
 								) : (
@@ -59,13 +59,13 @@ export default function CompTransmisor(props) {
 											<Typography className={classes.card}>FÍSICA</Typography>
 										</Grid>
 										<Grid item xs={12} md={3}>
-											<Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
+											<Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
 										</Grid>
 										<Grid item xs={12} md={3}>
-											<Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
+											<Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
 										</Grid>
 										<Grid item xs={12} md={4}>
-											<Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
+											<Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
 										</Grid>
 									</Grid>
 								)}
