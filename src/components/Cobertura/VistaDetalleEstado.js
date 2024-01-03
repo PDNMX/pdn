@@ -151,7 +151,7 @@ const VistaDetalleEstado = props => {
                     </Typography>
 
                     <Typography align="center" color="white" paragraph>
-                        Información al 30 de septiembre de 2023, reportada por la Secretaría Ejecutiva del Sistema Estatal Anticorrupción 
+                        Información al {estado.informacionActualizada ? '15 de diciembre de 2023' : '30 de septiembre de 2023'}, reportada por la Secretaría Ejecutiva del Sistema Estatal Anticorrupción 
                     </Typography>
 
                     <Box sx={{display: 'flex', flexWrap: "wrap", alignItems: "stretch"}} justifyContent="center">
