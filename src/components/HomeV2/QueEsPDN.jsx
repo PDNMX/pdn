@@ -40,9 +40,9 @@ const QueEsPDN = props => {
         <div className="home">        
             <Grid container spacing={0} alignItems="flex-start" justifyContent='center' className={classes.container}>
                 <Grid item md={6} sm={12} xs={12} align="left" >
-                       <h1>Plataforma
+                       <h1>PLATAFORMA
                         <br />
-                        Digital Nacional</h1> 
+                        DIGITAL NACIONAL</h1> 
                         <h2>Inteligencia <span>Anticorrupción</span></h2>
                         <div>
                         <img src={lgoSNA} alt="Sistema Nacional Anticorrupción"/>

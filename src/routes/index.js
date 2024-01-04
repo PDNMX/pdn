@@ -200,7 +200,7 @@ const pdnRoutes = [
 		path: '/faq',
 		component: Faq,
 		private: false,
-		name: "Preguntas frecuentes",
+		name: "Preguntas Frecuentes",
 		shortName: "FAQ",
 		color: "#713972",
 		icon: IconFAQ

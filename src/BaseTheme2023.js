@@ -47,7 +47,8 @@ export default createTheme(
         main: '#E1E8EB',
         primary: '#55575A',
         secondary: '#7a3d71',
-        linkColor: '#7a3d71'
+        linkColor: '#7a3d71',
+        clear: '#fff'
       },
       primary: {
         main: '#7a3d71',

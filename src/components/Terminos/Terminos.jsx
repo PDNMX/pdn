@@ -38,8 +38,12 @@ const styles = theme => ({
             marginLeft: "-1em"
         }
     },
+    title: {
+        color: theme.palette.text.secondary
+    },
     subTitle: {
-        fontWeight: 'bolder'
+        fontWeight: 'bolder',
+        color: theme.palette.text.primary
     },
     paper: {
         backgroundColor: theme.palette.background.opaque,
@@ -121,7 +125,7 @@ const Terminos = props => {
                                 de transparencia, acceso a la información, datos abiertos y protección de datos personales.
                             </Typography>
 
-                            <Typography variant='title' paragraph>
+                            <Typography className={classes.title} variant='title' paragraph>
                                 Sobre el uso de plataformadigitalnacional.org
                             </Typography>
 

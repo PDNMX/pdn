@@ -34,7 +34,8 @@ const styles = theme => ({
         cursor: 'pointer'
     },
     tableBody: {backgroundColor: '#fff'},
-    tableHead: {backgroundColor: '#7a3e7c'}
+    tableHead: {backgroundColor: '#7a3e7c'},
+    textColor: { color: theme.palette.text.clear}
 });
 
 
@@ -90,7 +91,7 @@ function Previos({data, classes, handleChangeSujetoObligado}) {
                           variant={"head"}
                           className={classes.tableCell}
                         >
-                          <Typography variant={"body1"}>
+                          <Typography variant={"body1"} className={classes.textColor}>
                             Proveedor de información
                           </Typography>
                         </TableCell>
@@ -99,7 +100,7 @@ function Previos({data, classes, handleChangeSujetoObligado}) {
                           variant={"head"}
                           className={classes.tableCell}
                         >
-                          <Typography variant={"body1"}>Ambito</Typography>
+                          <Typography variant={"body1"} className={classes.textColor}>Ambito</Typography>
                         </TableCell>
                         
                         <TableCell
@@ -107,7 +108,7 @@ function Previos({data, classes, handleChangeSujetoObligado}) {
                           variant={"head"}
                           className={classes.tableCell}
                         >
-                          <Typography variant={"body1"}>Registros</Typography>
+                          <Typography variant={"body1"} className={classes.textColor}>Registros</Typography>
                         </TableCell>
                       </TableRow>
                     </TableHead>

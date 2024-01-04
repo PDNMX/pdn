@@ -1,7 +1,6 @@
 import React from 'react';
 import {Grid, Box, Paper, Typography} from "@mui/material"
 import { withStyles } from '@mui/styles';
-import bgimg from "../../assets/rediseno/fondo_cruces_dark.png";
 import HeaderV2 from "../HomeV2/HeaderV2";
 import pdnRoutes from "../../routes";
 import Link from "@mui/material/Link";
