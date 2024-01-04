@@ -1120,86 +1120,6 @@
     }
   },
   {
-    "route": "/cobertura/oaxaca",
-    "name": "Oaxaca",
-    "icon1": "ico-edo-oax.svg",
-    "icon2": "oax-icono.svg",
-    "disabled": false,
-    "informacionActualizada": false,
-    "data": {
-      "s1": {
-        "ejecutivo": {
-          "tiene": 0,
-          "total": 107
-        },
-        "legislativo": {
-          "tiene": 0,
-          "total": 2
-        },
-        "judicial": {
-          "tiene": 0,
-          "total": 4
-        },
-        "ocas": {
-          "tiene": 0,
-          "total": 7
-        },
-        "municipal": {
-          "tiene": 0,
-          "total": 570
-        }
-      },
-      "s2": {
-        "ejecutivo": {
-          "tiene": 0,
-          "total": 107
-        },
-        "legislativo": {
-          "tiene": 0,
-          "total": 2
-        },
-        "judicial": {
-          "tiene": 0,
-          "total": 4
-        },
-        "ocas": {
-          "tiene": 0,
-          "total": 7
-        },
-        "municipal": {
-          "tiene": 0,
-          "total": 570
-        }
-      },
-      "s3": {
-        "s3s": false,
-        "s3p": false
-      },
-      "s6": {
-        "ejecutivo": {
-          "tiene": 0,
-          "total": 107
-        },
-        "legislativo": {
-          "tiene": 0,
-          "total": 2
-        },
-        "judicial": {
-          "tiene": 0,
-          "total": 4
-        },
-        "ocas": {
-          "tiene": 0,
-          "total": 7
-        },
-        "municipal": {
-          "tiene": 0,
-          "total": 570
-        }
-      }
-    }
-  },
-  {
     "route": "/cobertura/puebla",
     "name": "Puebla",
     "icon1": "ico-edo-pue.svg",
@@ -1595,86 +1515,6 @@
         "municipal": {
           "tiene": 0,
           "total": 18
-        }
-      }
-    }
-  },
-  {
-    "route": "/cobertura/sonora",
-    "name": "Sonora",
-    "icon1": "ico-edo-son.svg",
-    "icon2": "son-icono.svg",
-    "disabled": false,
-    "informacionActualizada": false,
-    "data": {
-      "s1": {
-        "ejecutivo": {
-          "tiene": 0,
-          "total": 117
-        },
-        "legislativo": {
-          "tiene": 0,
-          "total": 1
-        },
-        "judicial": {
-          "tiene": 0,
-          "total": 6
-        },
-        "ocas": {
-          "tiene": 0,
-          "total": 7
-        },
-        "municipal": {
-          "tiene": 0,
-          "total": 72
-        }
-      },
-      "s2": {
-        "ejecutivo": {
-          "tiene": 0,
-          "total": 117
-        },
-        "legislativo": {
-          "tiene": 0,
-          "total": 1
-        },
-        "judicial": {
-          "tiene": 0,
-          "total": 6
-        },
-        "ocas": {
-          "tiene": 0,
-          "total": 7
-        },
-        "municipal": {
-          "tiene": 0,
-          "total": 72
-        }
-      },
-      "s3": {
-        "s3s": true,
-        "s3p": false
-      },
-      "s6": {
-        "ejecutivo": {
-          "tiene": 0,
-          "total": 117
-        },
-        "legislativo": {
-          "tiene": 0,
-          "total": 1
-        },
-        "judicial": {
-          "tiene": 0,
-          "total": 6
-        },
-        "ocas": {
-          "tiene": 0,
-          "total": 7
-        },
-        "municipal": {
-          "tiene": 0,
-          "total": 72
         }
       }
     }
@@ -2101,6 +1941,16 @@
   {
     "name": "Nuevo León",
     "icon1": "ico-edo-nl.svg",
+    "disabled": true
+  },
+  {
+    "name": "Oaxaca",
+    "icon1": "ico-edo-oax.svg",
+    "disabled": true
+  },
+  {
+    "name": "Sonora",
+    "icon1": "ico-edo-son.svg",
     "disabled": true
   },
   {
