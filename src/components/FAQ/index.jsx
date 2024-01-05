@@ -108,8 +108,8 @@ const Faq = props => {
                                     <Typography className={classes.question}>
                                         <b>¿Cómo se va a trabajar en la seguridad e integridad de los datos?</b><br/>
                                     </Typography>
-                                    <CustomTypography className={classes.sublist}>
-                                        Para conocer más detalles sobre la seguridad de la información de la PDN, visita el <Link href="https://drive.google.com/file/d/1-IvF3KYa5rups73BmVV4W8glT9csVGY9/view?usp=sharing" target="_blank" className={classes.link}>documento de Seguridad Informática</Link>.
+                                    <CustomTypography className={classes.sublist} whiteSpace= 'nowrap'>
+                                        Para conocer más detalles sobre la seguridad de la información de la PDN, visita el <Link href="https://drive.google.com/file/d/1-IvF3KYa5rups73BmVV4W8glT9csVGY9/view?usp=sharing" target="_blank" className={classes.link}>documento de Seguridad Informática.</Link>
                                     </CustomTypography>
                                 </li>
 

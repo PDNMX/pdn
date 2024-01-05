@@ -7,6 +7,7 @@ import BuscadorModal from "./Buscador/BotonPrincipal";
 import bgPDN from '../../assets/rediseno2023/imgs/fondos/fondo-mapa.svg';
 import lgoSNA from "../../assets/rediseno2023/imgs/iconos/logotipos/logo-sna.svg";
 import lgoSESNA from "../../assets/rediseno2023/imgs/iconos/logotipos/logo-sesna.svg";
+import ButtonPDN from "../Compartidos/ButtonPDN";
 const styles = theme => ({
     container: {
         background: `url(${bgPDN}) 10% -10px no-repeat rgb(255, 255, 255)`,
@@ -61,7 +62,7 @@ const QueEsPDN = props => {
                     <Grid container direction="row" justifyContent="flex-end" alignItems="flex-end">
                         <Grid item md={12} sm={12} xs={12} align="right">
                             <Link className={classes.link} to="/about">
-                            <Button target="_blank" style={{ backgroundColor: '#7a3c72', color: 'white' }} >Conoce más</Button>
+                            <ButtonPDN target="_blank" style={{ color: 'white' }} >Conoce más</ButtonPDN>
                             </Link>
                         </Grid>
                     </Grid>

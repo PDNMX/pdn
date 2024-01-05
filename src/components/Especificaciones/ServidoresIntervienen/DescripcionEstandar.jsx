@@ -121,16 +121,16 @@ const DescripcionEstandar = props => {
             a través del uso de tokens de autorización.
         </Typography>
 
-        <p>
-            <ButtonPDN  target={'_blank'} href="https://oauth.net/2/" style={{ color: 'white' }}>
+        <Typography className={classes.text} paragraph>
+            <ButtonPDN  target={'_blank'} href="https://oauth.net/2/" style={{ color: 'white', marginRight: '10px' }}>
                 Más información
             </ButtonPDN>
 
-            <ButtonPDN  target="_blank"
+            <ButtonPDN target="_blank"
                     href="https://drive.google.com/file/d/17-npQleAV87gV19hbmtzgZipegl0qrIO/view?usp=sharing" style={{ color: 'white' }}>
                 Guía de referencia
             </ButtonPDN>
-        </p>
+        </Typography>
     </div>);
 }
 
