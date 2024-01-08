@@ -96,7 +96,7 @@ const ServidoresIntervienen = props => {
 
                             <Divider className={classes.divider}/>
 
-                            <Typography variant="h4" className={classes.title} paragraph>
+                            <Typography variant="h5" className={classes.title} paragraph>
                                 Especificaciones técnicas
                             </Typography>
 
@@ -104,34 +104,40 @@ const ServidoresIntervienen = props => {
                                 Diccionario de datos
                             </Typography>
 
+                            <Typography className={classes.text} paragraph>
                             <ButtonPDN
                                 href='https://docs.google.com/spreadsheets/d/1fRhDfHtrBPYyR36zxpenXWind9FP1pLAQJOVS69QwUM/edit?usp=sharing'
                                 target='_blank' style={{ color: 'white' }}
                                 >
                                 Más información
                             </ButtonPDN>
+                            </Typography>
 
                             <Typography variant='h5' className={classes.text} paragraph>
                                 Catálogos de claves y valores
                             </Typography>
 
+                            <Typography className={classes.text} paragraph>
                             <ButtonPDN
                                 href='https://github.com/PDNMX/catalogos/tree/master/S2%20-%20Servidores%20p%C3%BAblicos%20en%20contrataciones'
                                 target='_blank' style={{ color: 'white' }}
                                 >
                                 Más información
                             </ButtonPDN>
+                            </Typography>
 
                             <Typography variant='h5' className={classes.text} paragraph>
                                 Especificaciones en formato Open API Specification
                             </Typography>
 
+                            <Typography className={classes.text} paragraph>
                             <ButtonPDN
                                 href='https://www.plataformadigitalnacional.org/oas/ui/?urls.primaryName=S2'
                                 target='_blank' style={{ color: 'white' }}
                                 >
                                 Más información
                             </ButtonPDN>
+                            </Typography>
 
                             <Typography paragraph className={classes.text} variant='h5'>
                               Seguridad
