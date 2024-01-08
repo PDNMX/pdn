@@ -103,21 +103,23 @@ export default function CustomizedExpansionPanels() {
                         </Typography>
                     </Grid>
                     <Grid item xs={12}>
-                        <Button variant={"contained"} target="_blank" href='https://drive.google.com/file/d/1wdy8bgX9fn1yRCAWSJMhjeTYKxEOXRQv/view' style={{ color: 'white' }}>
+                        <Typography paragraph>
+                        <Button variant={"contained"} target="_blank" href='https://drive.google.com/file/d/1wdy8bgX9fn1yRCAWSJMhjeTYKxEOXRQv/view' style={{ color: 'white', marginBottom: '10px' }}>
                             ¿Qué es la PDN?
                         </Button>{' '}
 
-                        <Button variant={"contained"} target="_blank" href="https://drive.google.com/file/d/1YbkcDrRoscIUJtEiyM55GCliHsW22TkK/view" style={{ color: 'white' }}>
+                        <Button variant={"contained"} target="_blank" href="https://drive.google.com/file/d/1YbkcDrRoscIUJtEiyM55GCliHsW22TkK/view" style={{ color: 'white', marginBottom: '10px' }}>
                             ¿Cómo se construye?
                         </Button>{' '}
 
-                        <Button variant={"contained"} target="_blank" href="https://drive.google.com/file/d/1xYlY50lXttiuu0brV5CVd5H8qx96vDsK/view" style={{ color: 'white' }}>
+                        <Button variant={"contained"} target="_blank" href="https://drive.google.com/file/d/1xYlY50lXttiuu0brV5CVd5H8qx96vDsK/view" style={{ color: 'white', marginBottom: '10px' }}>
                             Guía desarrollo PDE
                         </Button>{' '}
 
-                        <Button variant={"contained"} target="_blank" href="https://drive.google.com/file/d/1-IvF3KYa5rups73BmVV4W8glT9csVGY9/view" style={{ color: 'white' }}>
+                        <Button variant={"contained"} target="_blank" href="https://drive.google.com/file/d/1-IvF3KYa5rups73BmVV4W8glT9csVGY9/view" style={{ color: 'white', marginBottom: '10px' }}>
                             Seguridad de la información
                         </Button>
+                        </Typography>
                     </Grid>
                     <Grid item xs={4}>
                     </Grid>
