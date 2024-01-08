@@ -8,7 +8,8 @@ const url_doc = 'https://drive.google.com/file/d/1f6E1HYEf3EBcqe9iPDdS27eJcyPYuP
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    margin: '5px 0'
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2)
   },
   link: {
     textDecoration: 'none',

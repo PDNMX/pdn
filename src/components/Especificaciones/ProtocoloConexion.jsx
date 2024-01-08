@@ -10,7 +10,8 @@ import ButtonPDN from '../Compartidos/ButtonPDN';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    margin: '5px 0'
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2)
   },
   link: {
     textDecoration: 'none',

@@ -15,6 +15,8 @@ import ServiceAgreement from '../ServiceAgreement';
 const styles = theme => ({
     root: {
         flexGrow: 1,
+        paddingTop: theme.spacing(2),
+        paddingBottom: theme.spacing(2)
 /*         backgroundColor: theme.palette.primary.main,
         backgroundImage: `url(${bgimg})`,
         backgroundRepeat: "repeat",

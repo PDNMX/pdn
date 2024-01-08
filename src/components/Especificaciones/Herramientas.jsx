@@ -4,7 +4,9 @@ import withStyles from '@mui/styles/withStyles';
 
 const styles = theme => ({
     root: {
-        flexGrow: 1
+        flexGrow: 1,
+        paddingTop: theme.spacing(2),
+        paddingBottom: theme.spacing(2)
     },
     ul: {
         listStyle: 'none',

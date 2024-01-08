@@ -7,7 +7,9 @@ import ModeloComunicacion from "../ModeloComunicacion";
 
 const styles = theme =>({
     root: {
-        flexGrow: 1
+        flexGrow: 1,
+        paddingTop: theme.spacing(2),
+        paddingBottom: theme.spacing(2)
     },
     diagrama: {
         maxWidth: 900
@@ -50,7 +52,7 @@ const Implementacion = props => {
             <Grid container spacing={0}>
 
                 <Grid item xs={12}>
-                    <Typography variant="h4" className={classes.title} paragraph>Implementación del estándar</Typography>
+                    <Typography variant="h5" className={classes.title} paragraph>Implementación del estándar</Typography>
                     <Typography paragraph className={classes.text} >
                         La implementación del estándar de Datos de Servidores
                         Públicos que Intervienen en Contrataciones representará esfuerzos de diferente magnitud
