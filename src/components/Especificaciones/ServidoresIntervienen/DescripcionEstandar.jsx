@@ -122,10 +122,9 @@ const DescripcionEstandar = props => {
         </Typography>
 
         <Typography className={classes.text} paragraph>
-            <ButtonPDN  target={'_blank'} href="https://oauth.net/2/" style={{ color: 'white', marginRight: '10px' }}>
+            <ButtonPDN  target={'_blank'} href="https://oauth.net/2/" style={{ color: 'white'}}>
                 Más información
-            </ButtonPDN>
-
+            </ButtonPDN>{' '}
             <ButtonPDN target="_blank"
                     href="https://drive.google.com/file/d/17-npQleAV87gV19hbmtzgZipegl0qrIO/view?usp=sharing" style={{ color: 'white' }}>
                 Guía de referencia

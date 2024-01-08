@@ -27,6 +27,9 @@ const styles = theme => ({
     color: theme.palette.text.primary,
     textAlign: 'justify',
   },
+  title:{
+    color: theme.palette.primary.main
+  }
 });
 
 class DescripcionEstandar extends React.Component {
@@ -52,7 +55,7 @@ class DescripcionEstandar extends React.Component {
           </ButtonPDN>
         </Typography>
 
-        <Typography variant='h5' paragraph>
+        <Typography variant='h5' className={classes.title} paragraph>
           Antecedentes
         </Typography>
         <ul className={classes.ul}>
@@ -75,7 +78,7 @@ class DescripcionEstandar extends React.Component {
           </li>
         </ul>
 
-        <Typography variant='h5' paragraph>
+        <Typography variant='h5' className={classes.title} paragraph>
           Introducción
         </Typography>
 
@@ -99,7 +102,7 @@ class DescripcionEstandar extends React.Component {
           rápida y a un bajo costo.
         </Typography>
 
-        <Typography variant='h5' paragraph>
+        <Typography variant='h5' className={classes.title} paragraph>
           Open API Specification
         </Typography>
         <Typography className={classes.text} paragraph>
@@ -113,7 +116,7 @@ class DescripcionEstandar extends React.Component {
           </ButtonPDN>
         </Typography>
 
-        <Typography variant='h5' paragraph>
+        <Typography variant='h5' className={classes.title} paragraph>
           OAuth 2.0
         </Typography>
         <Typography className={classes.text} paragraph>El acceso a las APIs que se integrarán a la PDN se gestionará a través del protocolo de autorización OAuth 2.0, el cual es un estándar ampliamente usado por la industria de Internet. El estándar OAuth 2.0 que permitirá a la PDN obtener acceso necesario a las APIs de las instituciones a través del uso de tokens de autorización.</Typography>

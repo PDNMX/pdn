@@ -32,6 +32,9 @@ const styles = theme => ({
     color: theme.palette.text.primary,
     textAlign: 'justify',
   },
+  title:{
+    color: theme.palette.primary.main
+  }
 });
 
 class Recomendaciones extends React.Component {
@@ -41,7 +44,7 @@ class Recomendaciones extends React.Component {
       <div className={classes.root}>
         <Grid container spacing={0}>
           <Grid item xs={12}>
-            <Typography variant='h4' paragraph>
+            <Typography paragraph variant='h5' className={classes.title}>
               Implementación del estándar
             </Typography>
             <Typography paragraph className={classes.text} >La implementación del estándar de declaraciones representará esfuerzos de diferente magnitud dependiendo del nivel de adopción tecnológica de cada Institución. Suponiendo que una cierta Institución ya cuenta con un sistema de captura de declaraciones, el proceso de implementación del API de declaraciones puede ser dividido en los siguientes pasos:</Typography>

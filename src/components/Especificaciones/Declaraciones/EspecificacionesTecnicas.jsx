@@ -27,6 +27,9 @@ const styles = theme => ({
     color: theme.palette.text.primary,
     textAlign: 'justify',
   },
+  title:{
+    color: theme.palette.primary.main
+  }
 });
 
 class EspecificacionesTecnicas extends React.Component {
@@ -35,7 +38,7 @@ class EspecificacionesTecnicas extends React.Component {
 
     return (
       <div className={classes.root}>
-        <Typography variant='h4' paragraph>
+        <Typography variant='h5' className={classes.title} paragraph>
           Especificaciones técnicas
         </Typography>
 
