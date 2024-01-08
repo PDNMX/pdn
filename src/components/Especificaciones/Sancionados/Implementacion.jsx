@@ -49,7 +49,7 @@ const Implementacion = props => {
             <Grid container spacing={0}>
 
                 <Grid item xs={12}>
-                    <Typography variant="h4" className={classes.title} paragraph>Implementación del estándar</Typography>
+                    <Typography variant="h5" className={classes.title} paragraph>Implementación del estándar</Typography>
                     <Typography paragraph className={classes.text} >
                         La implementación del Estándar para la Interoperabilidad de datos de Servidores Públicos y
                         Particulares Sancionados representará esfuerzos de diferente maginitud dependiendo del nivel de

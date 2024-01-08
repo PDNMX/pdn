@@ -104,11 +104,11 @@ const DescripcionEstandar = props => {
             siempre que se sigan las especificaciones de manera correcta.
         </Typography>
 
-        <p>
+        <Typography className={classes.text} paragraph>
             <ButtonPDN target={'_blank'} href="https://github.com/OAI/OpenAPI-Specification" style={{ color: 'white' }}>
                 Más información
             </ButtonPDN>
-        </p>
+        </Typography>
 
         <Typography variant="h5" className={classes.title} paragraph>
             OAuth 2.0

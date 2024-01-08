@@ -86,12 +86,13 @@ const ProtocoloConexion = props => {
       <Typography paragraph className={classes.text}>Estas pruebas se ejecutan en dos ambientes: 1) desarrollo y 2) productivo. En cada uno de ellos, se verifica el funcionamiento de la API, usando datos sintéticos (falsos) y reales (omitiendo datos reservados) de manera correspondiente.</Typography>
 
       <Typography className={classes.text}>Las pruebas para la verificación de las APIs, se encuentran descritas en documentos denominados Planes de pruebas, que podrás encontrar en el siguiente enlace.</Typography>
+      
       <p></p>
       {Array.isArray(urlPlan) ? (
         urlPlan.map(url => {
           console.log(url);
           return (
-            <ButtonPDN href={url.url} style={{ color: 'white' }} target='_blank'>
+            <ButtonPDN href={url.url} style={{ color: 'white', marginRight: '10px' }} target='_blank'>
               {url.nombre}
             </ButtonPDN>
           );
@@ -101,6 +102,7 @@ const ProtocoloConexion = props => {
           Plan de pruebas
         </ButtonPDN>
       )}
+
       <p></p>
       <Typography paragraph className={classes.text}>En caso de que los resultados no sean aprobatorios, se notificará a la institución para que realice los ajustes necesarios y solicite una nueva revisión.</Typography>
 
