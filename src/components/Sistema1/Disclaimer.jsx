@@ -32,9 +32,9 @@ export default function Disclaimer(props) {
             (artículos 31 y 32).
           </DialogContentText>
           <DialogContentText paragraph id='alert-dialog-description' style={{ textAlign: 'justify' }} className={classes.text_color} >
-            <RouterLink to={'/terminos'} className={classes.enlaces}>
+            <Link to={'/terminos'} className={classes.enlaces}>
               Conoce los términos y condiciones de uso
-            </RouterLink>
+            </Link>
           </DialogContentText>
         </DialogContent>
         <DialogActions>

@@ -246,8 +246,8 @@ const CssDeclaraciones = theme => ({
     borderColor: theme.palette.secondary.main
   },
   resultadoContenido: {
-    // backgroundColor: theme.palette.background.opaque,
-    backgroundColor: 'rgba(42, 116, 145)',
+    backgroundColor: theme.palette.background.opaque,
+    // backgroundColor: 'rgba(42, 116, 145)',
     color: theme.palette.primary.contrastText,
     // borderStyle: 'solid',
     // borderWidth: 1,
@@ -404,7 +404,7 @@ const CssDeclaraciones = theme => ({
     backgroundColor: '#D1ECF1'
   },
   paper_perfil: {
-    backgroundColor: 'rgba(42, 116, 145)',
+    backgroundColor: theme.palette.background.opaque,
     padding: theme.spacing(4),
     marginBottom: theme.spacing(4),
     color: theme.palette.text.primary
@@ -413,24 +413,24 @@ const CssDeclaraciones = theme => ({
     color: theme.palette.text.primary
   },
   menulateral_fondo: {
-    backgroundColor: 'rgba(42, 116, 145)'
+    backgroundColor: theme.palette.background.opaque,
   },
   enlaces: {
     'textDecoration': 'none',
     // 'color': '#b1bcc1',
-    'color': theme.palette.azulPDN,
+    'color': theme.palette.text.linkColor,
     '&:visited': {
-      color: theme.palette.azulPDN
+      color: theme.palette.text.linkColor
     },
     '&:link': {
-      color: theme.palette.azulPDN
+      color: theme.palette.text.linkColor
     },
     '&:active': {
-      color: theme.palette.azulPDN
+      color: theme.palette.text.linkColor
     },
     '&:hover': {
       color: '#55575A',
-      borderBottom: '2px solid #3ab0e5'
+      borderBottom: '2px solid #d3d'
     }
   }
 });

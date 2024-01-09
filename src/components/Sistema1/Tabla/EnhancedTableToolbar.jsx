@@ -20,8 +20,8 @@ const useToolbarStyles = makeStyles(theme => ({
         },
   title: {
     flex: '1 1 100%',
-    backgroundColor: 'rgba(42, 116, 145)',
-    color: theme.palette.primary.contrastText
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.text.contrastText
   }
 }));
 
@@ -30,7 +30,7 @@ const EnhancedTableToolbar = () => {
 
   return (
     <Toolbar className={classes.title}>
-      <Typography paragraph variant='h6' id='tableTitle'>
+      <Typography paragraph variant='h6' style={{color: 'white'}} id='tableTitle'>
         Pulsa sobre el registro para ver su detalle
       </Typography>
     </Toolbar>

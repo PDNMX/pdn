@@ -48,7 +48,7 @@ const useStyles = makeStyles(theme => ({
     minWidth: 750
   },
   tableHead: {
-    color: theme.palette.text.main,
+    color: theme.palette.text.primary,
     backgroundColor: theme.palette.background.default
   },
   tableWrapper: {
