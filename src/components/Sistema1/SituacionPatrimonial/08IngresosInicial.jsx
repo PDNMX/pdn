@@ -26,12 +26,12 @@ const OtrosIngresos = ({ otrosIngresos }) => {
       <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
         <Grid container spacing={1}>
           <Grid item xs={12} md={9}>
-            <Typography className={exp.heading}>
+            <Typography className={exp.headingBlack}>
               <strong>II.4.- OTROS INGRESOS NO CONSIDERADOS A LOS ANTERIORES (DESPUÉS DE IMPUESTOS)</strong>
             </Typography>
           </Grid>
           <Grid item xs={12} md={3}>
-            <Typography className={exp.heading}>
+            <Typography className={exp.headingBlack}>
               <strong>
                 {getMoneda(otrosIngresos.remuneracionTotal?.valor)} {otrosIngresos.remuneracionTotal?.moneda}
               </strong>
@@ -42,10 +42,10 @@ const OtrosIngresos = ({ otrosIngresos }) => {
       <BoxAccordionDetails>
         <Grid container spacing={1}>
           <Grid item xs={12} md={9}>
-            <Typography className={classes.cardTitle}>TIPO DE INGRESO (ARRENDAMIENTO, REGALÍA, SORTEOS, CONCURSOS, DONACIONES, SEGUROS DE VIDA, ETC.)</Typography>
+            <Typography className={classes.cardTitleB}>TIPO DE INGRESO (ARRENDAMIENTO, REGALÍA, SORTEOS, CONCURSOS, DONACIONES, SEGUROS DE VIDA, ETC.)</Typography>
           </Grid>
           <Grid item xs={12} md={3}>
-            <Typography className={classes.cardTitle}>INGRESO:</Typography>
+            <Typography className={classes.cardTitleB}>INGRESO:</Typography>
           </Grid>
           {otrosIngresos.ingresos.map((ing, idx) => {
             return (

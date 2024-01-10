@@ -27,12 +27,12 @@ export function ActividadFinanciera({ actividadFinanciera }) {
       <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
         <Grid container spacing={1}>
           <Grid item xs={12} md={9}>
-            <Typography className={exp.heading}>
+            <Typography className={exp.headingBlack}>
               <strong>II.2.- POR ACTIVIDAD FINANCIERA (RENDIMIENTOS O GANANCIAS) (DESPUÉS DE IMPUESTOS)</strong>
             </Typography>
           </Grid>
           <Grid item xs={12} md={3}>
-            <Typography className={exp.heading}>
+            <Typography className={exp.headingBlack}>
               <strong>
                 {getMoneda(actividadFinanciera?.remuneracionTotal?.valor)} {actividadFinanciera?.remuneracionTotal?.moneda}
               </strong>
@@ -43,10 +43,10 @@ export function ActividadFinanciera({ actividadFinanciera }) {
       <BoxAccordionDetails>
         <Grid container spacing={1}>
           <Grid item xs={12} md={9}>
-            <Typography className={classes.cardTitle}>TIPO DE INSTRUMENTO QUE GENERÓ EL RENDIMIENTO O GANANCIA</Typography>
+            <Typography className={classes.cardTitleB}>TIPO DE INSTRUMENTO QUE GENERÓ EL RENDIMIENTO O GANANCIA</Typography>
           </Grid>
           <Grid item xs={12} md={3}>
-            <Typography className={classes.cardTitle}>INGRESO:</Typography>
+            <Typography className={classes.cardTitleB}>INGRESO:</Typography>
           </Grid>
           {actividadFinanciera?.actividades.map((act, idx) => {
             return (
@@ -78,12 +78,12 @@ export function ServiciosProfesionales({ serviciosProfesionales }) {
       <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
         <Grid container spacing={1}>
           <Grid item xs={12} md={9}>
-            <Typography className={exp.heading}>
+            <Typography className={exp.headingBlack}>
               <strong>II.3.- POR SERVICIOS PROFESIONALES, CONSEJOS, CONSULTORÍAS Y/O ASESORÍAS (DESPUÉS DE IMPUESTOS)</strong>
             </Typography>
           </Grid>
           <Grid item xs={12} md={3}>
-            <Typography className={exp.heading}>
+            <Typography className={exp.headingBlack}>
               <strong>
                 {getMoneda(serviciosProfesionales?.remuneracionTotal?.valor)} {serviciosProfesionales?.remuneracionTotal?.moneda}
               </strong>
@@ -94,10 +94,10 @@ export function ServiciosProfesionales({ serviciosProfesionales }) {
       <BoxAccordionDetails>
         <Grid container spacing={1}>
           <Grid item xs={12} md={9}>
-            <Typography className={classes.cardTitle}>TIPO DE SERVICIO PRESTADO</Typography>
+            <Typography className={classes.cardTitleB}>TIPO DE SERVICIO PRESTADO</Typography>
           </Grid>
           <Grid item xs={12} md={3}>
-            <Typography className={classes.cardTitle}>INGRESO:</Typography>
+            <Typography className={classes.cardTitleB}>INGRESO:</Typography>
           </Grid>
           {serviciosProfesionales?.servicios.map((serv, idx) => {
             return (
@@ -129,12 +129,12 @@ export function EnajenacionBienes({ enajenacionBienes }) {
       <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
         <Grid container spacing={1}>
           <Grid item xs={12} md={9}>
-            <Typography className={exp.heading}>
+            <Typography className={exp.headingBlack}>
               <strong>II.4.- POR ENAJENACIÓN DE BIENES (DESPUÉS DE IMPUESTOS)</strong>
             </Typography>
           </Grid>
           <Grid item xs={12} md={3}>
-            <Typography className={exp.heading}>
+            <Typography className={exp.headingBlack}>
               <strong>
                 {getMoneda(enajenacionBienes?.remuneracionTotal?.valor)} {enajenacionBienes?.remuneracionTotal?.moneda}
               </strong>
@@ -145,10 +145,10 @@ export function EnajenacionBienes({ enajenacionBienes }) {
       <BoxAccordionDetails>
         <Grid container spacing={1}>
           <Grid item xs={12} md={9}>
-            <Typography className={classes.cardTitle}>TIPO DE BIEN ENAJENADO</Typography>
+            <Typography className={classes.cardTitleB}>TIPO DE BIEN ENAJENADO</Typography>
           </Grid>
           <Grid item xs={12} md={3}>
-            <Typography className={classes.cardTitle}>INGRESO:</Typography>
+            <Typography className={classes.cardTitleB}>INGRESO:</Typography>
           </Grid>
           {enajenacionBienes?.bienes.map((ing, idx) => {
             return (
@@ -180,12 +180,12 @@ export function OtrosIngresos({ otrosIngresos }) {
       <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
         <Grid container spacing={1}>
           <Grid item xs={12} md={9}>
-            <Typography className={exp.heading}>
+            <Typography className={exp.headingBlack}>
               <strong>II.5.- OTROS INGRESOS NO CONSIDERADOS A LOS ANTERIORES (DESPUÉS DE IMPUESTOS)</strong>
             </Typography>
           </Grid>
           <Grid item xs={12} md={3}>
-            <Typography className={exp.heading}>
+            <Typography className={exp.headingBlack}>
               <strong>
                 {getMoneda(otrosIngresos?.remuneracionTotal?.valor)} {otrosIngresos?.remuneracionTotal?.moneda}
               </strong>
@@ -196,10 +196,10 @@ export function OtrosIngresos({ otrosIngresos }) {
       <BoxAccordionDetails>
         <Grid container spacing={1}>
           <Grid item xs={12} md={9}>
-            <Typography className={classes.cardTitle}>TIPO DE INGRESO (ARRENDAMIENTO, REGALÍA, SORTEOS, CONCURSOS, DONACIONES, SEGUROS DE VIDA, ETC.)</Typography>
+            <Typography className={classes.cardTitleB}>TIPO DE INGRESO (ARRENDAMIENTO, REGALÍA, SORTEOS, CONCURSOS, DONACIONES, SEGUROS DE VIDA, ETC.)</Typography>
           </Grid>
           <Grid item xs={12} md={3}>
-            <Typography className={classes.cardTitle}>INGRESO:</Typography>
+            <Typography className={classes.cardTitleB}>INGRESO:</Typography>
           </Grid>
           {otrosIngresos?.ingresos.map((ing, idx) => {
             return (

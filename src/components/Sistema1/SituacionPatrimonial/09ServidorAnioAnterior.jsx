@@ -27,12 +27,12 @@ const ActividadIndustrial = props => {
       <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
         <Grid container spacing={1}>
           <Grid item xs={12} md={9}>
-            <Typography className={exp.heading}>
+            <Typography className={exp.headingBlack}>
               <strong>II.1.- POR ACTIVIDAD INDUSTRIAL, COMERCIAL Y/O EMPRESARIAL (DESPUÉS DE IMPUESTOS)</strong>
             </Typography>
           </Grid>
           <Grid item xs={12} md={3}>
-            <Typography className={exp.heading}>
+            <Typography className={exp.headingBlack}>
               <strong>
                 {getMoneda(actividadIndustrialComercialEmpresarial.remuneracionTotal.valor)} {actividadIndustrialComercialEmpresarial.remuneracionTotal.moneda}
               </strong>
@@ -43,13 +43,13 @@ const ActividadIndustrial = props => {
       <BoxAccordionDetails>
         <Grid container spacing={1}>
           <Grid item xs={12} md={5}>
-            <Typography className={classes.cardTitle}>NOMBRE O RAZÓN SOCIAL:</Typography>
+            <Typography className={classes.cardTitleB}>NOMBRE O RAZÓN SOCIAL:</Typography>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Typography className={classes.cardTitle}>TIPO DE NEGOCIO:</Typography>
+            <Typography className={classes.cardTitleB}>TIPO DE NEGOCIO:</Typography>
           </Grid>
           <Grid item xs={12} md={3}>
-            <Typography className={classes.cardTitle}>INGRESO:</Typography>
+            <Typography className={classes.cardTitleB}>INGRESO:</Typography>
           </Grid>
           {typeof actividadIndustrialComercialEmpresarial.actividades !== 'undefined' &&
             actividadIndustrialComercialEmpresarial.actividades.map((act, idx) => {
@@ -87,12 +87,12 @@ const ActividadFinanciera = props => {
       <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
         <Grid container spacing={1}>
           <Grid item xs={12} md={9}>
-            <Typography className={exp.heading}>
+            <Typography className={exp.headingBlack}>
               <strong>II.2.- POR ACTIVIDAD FINANCIERA (RENDIMIENTOS O GANANCIAS) (DESPUÉS DE IMPUESTOS)</strong>
             </Typography>
           </Grid>
           <Grid item xs={12} md={3}>
-            <Typography className={exp.heading}>
+            <Typography className={exp.headingBlack}>
               <strong>
                 {getMoneda(actividadFinanciera.remuneracionTotal.valor)} {actividadFinanciera.remuneracionTotal.moneda}
               </strong>
@@ -103,10 +103,10 @@ const ActividadFinanciera = props => {
       <BoxAccordionDetails>
         <Grid container spacing={1}>
           <Grid item xs={12} md={9}>
-            <Typography className={classes.cardTitle}>TIPO DE INSTRUMENTO QUE GENERÓ EL RENDIMIENTO O GANANCIA</Typography>
+            <Typography className={classes.cardTitleB}>TIPO DE INSTRUMENTO QUE GENERÓ EL RENDIMIENTO O GANANCIA</Typography>
           </Grid>
           <Grid item xs={12} md={3}>
-            <Typography className={classes.cardTitle}>INGRESO:</Typography>
+            <Typography className={classes.cardTitleB}>INGRESO:</Typography>
           </Grid>
           {actividadFinanciera.actividades.map((act, idx) => {
             return (
@@ -140,12 +140,12 @@ const ServiciosProfesionales = props => {
       <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
         <Grid container spacing={1}>
           <Grid item xs={12} md={9}>
-            <Typography className={exp.heading}>
+            <Typography className={exp.headingBlack}>
               <strong>II.3.- POR SERVICIOS PROFESIONALES, CONSEJOS, CONSULTORÍAS Y/O ASESORÍAS (DESPUÉS DE IMPUESTOS)</strong>
             </Typography>
           </Grid>
           <Grid item xs={12} md={3}>
-            <Typography className={exp.heading}>
+            <Typography className={exp.headingBlack}>
               <strong>
                 {getMoneda(serviciosProfesionales.remuneracionTotal.valor)} {serviciosProfesionales.remuneracionTotal.moneda}
               </strong>
@@ -156,10 +156,10 @@ const ServiciosProfesionales = props => {
       <BoxAccordionDetails>
         <Grid container spacing={1}>
           <Grid item xs={12} md={9}>
-            <Typography className={classes.cardTitle}>TIPO DE SERVICIO PRESTADO</Typography>
+            <Typography className={classes.cardTitleB}>TIPO DE SERVICIO PRESTADO</Typography>
           </Grid>
           <Grid item xs={12} md={3}>
-            <Typography className={classes.cardTitle}>INGRESO:</Typography>
+            <Typography className={classes.cardTitleB}>INGRESO:</Typography>
           </Grid>
           {serviciosProfesionales.servicios.map((serv, idx) => {
             return (
@@ -193,12 +193,12 @@ const EnajenacionBienes = props => {
       <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
         <Grid container spacing={1}>
           <Grid item xs={12} md={9}>
-            <Typography className={exp.heading}>
+            <Typography className={exp.headingBlack}>
               <strong>II.4.- POR ENAJENACIÓN DE BIENES (DESPUÉS DE IMPUESTOS)</strong>
             </Typography>
           </Grid>
           <Grid item xs={12} md={3}>
-            <Typography className={exp.heading}>
+            <Typography className={exp.headingBlack}>
               <strong>
                 {getMoneda(enajenacionBienes.remuneracionTotal.valor)} {enajenacionBienes.remuneracionTotal.moneda}
               </strong>
@@ -209,10 +209,10 @@ const EnajenacionBienes = props => {
       <BoxAccordionDetails>
         <Grid container spacing={1}>
           <Grid item xs={12} md={9}>
-            <Typography className={classes.cardTitle}>TIPO DE BIEN ENAJENADO</Typography>
+            <Typography className={classes.cardTitleB}>TIPO DE BIEN ENAJENADO</Typography>
           </Grid>
           <Grid item xs={12} md={3}>
-            <Typography className={classes.cardTitle}>INGRESO:</Typography>
+            <Typography className={classes.cardTitleB}>INGRESO:</Typography>
           </Grid>
           {enajenacionBienes.bienes.map((ing, idx) => {
             return (
@@ -246,12 +246,12 @@ const OtrosIngresos = props => {
       <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
         <Grid container spacing={1}>
           <Grid item xs={12} md={9}>
-            <Typography className={exp.heading}>
+            <Typography className={exp.headingBlack}>
               <strong>II.5.- OTROS INGRESOS NO CONSIDERADOS A LOS ANTERIORES (DESPUÉS DE IMPUESTOS)</strong>
             </Typography>
           </Grid>
           <Grid item xs={12} md={3}>
-            <Typography className={exp.heading}>
+            <Typography className={exp.headingBlack}>
               <strong>
                 {getMoneda(otrosIngresos.remuneracionTotal.valor)} {otrosIngresos.remuneracionTotal.moneda}
               </strong>
@@ -262,10 +262,10 @@ const OtrosIngresos = props => {
       <BoxAccordionDetails>
         <Grid container spacing={1}>
           <Grid item xs={12} md={9}>
-            <Typography className={classes.cardTitle}>TIPO DE INGRESO (ARRENDAMIENTO, REGALÍA, SORTEOS, CONCURSOS, DONACIONES, SEGUROS DE VIDA, ETC.)</Typography>
+            <Typography className={classes.cardTitleB}>TIPO DE INGRESO (ARRENDAMIENTO, REGALÍA, SORTEOS, CONCURSOS, DONACIONES, SEGUROS DE VIDA, ETC.)</Typography>
           </Grid>
           <Grid item xs={12} md={3}>
-            <Typography className={classes.cardTitle}>INGRESO:</Typography>
+            <Typography className={classes.cardTitleB}>INGRESO:</Typography>
           </Grid>
           {otrosIngresos.ingresos.map((ing, idx) => {
             return (
@@ -304,7 +304,7 @@ const ServidorPublicoAnioAnterior = ({ data: info, titulo }) => {
       </Grid>
       {!data.servidorPublicoAnioAnterior && <DatosNoRegistrados />}
       {data.servidorPublicoAnioAnterior && (
-        <Grid container spacing={2}>
+        //<Grid container spacing={2}>
           <Grid item xs={12}>
             <Paper className={classes.paper}>
               <Grid container spacing={1}>
@@ -374,7 +374,7 @@ const ServidorPublicoAnioAnterior = ({ data: info, titulo }) => {
               </Grid>
             </Paper>
           </Grid>
-        </Grid>
+        //</Grid>
       )}
     </Grid>
   );

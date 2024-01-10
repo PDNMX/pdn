@@ -11,7 +11,7 @@ const CssSeccDeclaraciones = theme => ({
     fontWeight: 'bold'
   },
   tituloSubSeccion: {
-    color: '#2EB2E7',
+    color: theme.palette.background.select,
     fontSize: 14,
     fontWeight: 'bold'
   },
@@ -26,6 +26,12 @@ const CssSeccDeclaraciones = theme => ({
     fontWeight: 'bold',
     marginBottom: 10,
     color: theme.palette.text.clear
+  },
+  cardTitleB: {
+    fontSize: 13,
+    fontWeight: 'bold',
+    marginBottom: 10,
+    color: theme.palette.text.primary
   },
   card: {
     fontSize: 14,

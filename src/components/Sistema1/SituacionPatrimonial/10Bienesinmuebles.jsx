@@ -11,7 +11,7 @@ import Transmisor from '../CompTransmisor';
 import { getUnidad, getMoneda } from '../utils';
 import { sumary, expansion, Divider } from '../utils';
 
-import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../common/BoxAccordion';
+import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../common/AccordionBox';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import { Disclaimer } from '../utils';
@@ -27,7 +27,7 @@ function BienInmuble(props) {
   return inmuebles.map((inm, idx) => {
     return (
       <BoxAccordion key={'inm-' + idx}>
-        <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
+        <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon style={{ color: 'white'}} />} aria-controls='panel1a-content' id='panel1a-header'>
           <Typography className={exp.heading}>
             <strong>TIPO DE INMUEBLE: {inm.tipoInmueble.valor}</strong>
           </Typography>

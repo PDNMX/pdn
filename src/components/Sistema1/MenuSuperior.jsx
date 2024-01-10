@@ -32,8 +32,6 @@ const useTab = makeStyles(theme => ({
     '&.Mui-selected': {
       backgroundColor: theme.palette.background.select,
       color: theme.palette.text.clear,
-      borderColor: theme.palette.background.border,
-      border: 'solid',
       fontWeight: 'bolder'
     }
   }

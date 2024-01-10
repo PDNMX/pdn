@@ -10,7 +10,7 @@ import DatosReservados from '../DatosReservados';
 import Transmisor from '../CompTransmisor';
 import { sumary, expansion, Divider, getMoneda } from '../utils';
 
-import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../common/BoxAccordion';
+import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../common/AccordionBox';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import { Disclaimer } from '../utils';
@@ -25,7 +25,7 @@ function Vehiculo(props) {
   return vehiculos.map((obj, idx) => {
     return (
       <BoxAccordion key={'veh-' + idx}>
-        <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
+        <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon style={{ color: 'white'}} />} aria-controls='panel1a-content' id='panel1a-header'>
           <Typography className={exp.heading}>
             <strong>{obj.tipoVehiculo && obj.tipoVehiculo.valor}</strong>
           </Typography>

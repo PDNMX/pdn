@@ -245,10 +245,28 @@ const CssDeclaraciones = theme => ({
     borderWidth: 1,
     borderColor: theme.palette.secondary.main
   },
+  tituloResultados: {
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.background.opaque,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: theme.palette.secondary.main
+  },
   resultadoContenido: {
     backgroundColor: theme.palette.background.opaque,
     // backgroundColor: 'rgba(42, 116, 145)',
     color: theme.palette.primary.contrastText,
+    // borderStyle: 'solid',
+    // borderWidth: 1,
+    padding: theme.spacing(2),
+    borderLeft: `1px solid ${theme.palette.secondary.main}`,
+    borderRight: `1px solid ${theme.palette.secondary.main}`,
+    borderBottom: `1px solid ${theme.palette.secondary.main}`
+  },
+  contenidoResultado: {
+    backgroundColor: theme.palette.primary.main,
+    // backgroundColor: 'rgba(42, 116, 145)',
+    color: theme.palette.text.clear,
     // borderStyle: 'solid',
     // borderWidth: 1,
     padding: theme.spacing(2),

@@ -76,7 +76,7 @@ export default createTheme(
         paperChart: '#FFFFFF'
       },
       error: {
-        main: '#D43864'
+        main: '#f3cbe6'
       },
       success: {
         main: '#438e53',

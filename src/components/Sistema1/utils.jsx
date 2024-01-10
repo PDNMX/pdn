@@ -92,7 +92,13 @@ export const expansion = makeStyles((theme) => ({
 	},
 	heading: {
 		fontSize: theme.typography.pxToRem(15),
-		fontWeight: theme.typography.fontWeightRegular
+		fontWeight: theme.typography.fontWeightRegular,
+		color: theme.palette.text.clear
+	},
+	headingBlack: {
+		fontSize: theme.typography.pxToRem(15),
+		fontWeight: theme.typography.fontWeightRegular,
+		color: theme.palette.text.primary
 	}
 }));
 /************** Expansion *******************/

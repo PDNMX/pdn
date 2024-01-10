@@ -7,7 +7,7 @@ import style from '../styleSecciones';
 import { sumary, expansion } from '../utils';
 import DatosNoRegistrados from '../DatosNoRegistrados';
 
-import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../common/BoxAccordion';
+import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../common/AccordionBox';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const useStyles = makeStyles(style);
@@ -33,7 +33,7 @@ const ExperienciaLaboral = ({ data, titulo }) => {
           experiencia.map((expe, index) => {
             return (
               <BoxAccordion key={'exp-' + index}>
-                <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
+                <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon style={{ color: 'white' }} />} aria-controls='panel1a-content' id='panel1a-header'>
                   <Typography className={exp.heading}>
                     <strong>
                       {expe.ambitoSector.clave === 'PUB' ? (

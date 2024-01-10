@@ -11,11 +11,9 @@ export default function DatosReservados() {
 
 	return (
 		<Grid item xs={12}>
-			<Paper className={classes.paper}>
 				<Typography className={classes.alertInfo} align="center">
 					Los datos contenidos en esta seccion son de carácter reservado.
 				</Typography>
-			</Paper>
 		</Grid>
 	);
 }

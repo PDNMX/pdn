@@ -20,12 +20,12 @@ const ActividadIndustrial = ({ actividadIndustrialComercialEmpresarial }) => {
       <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
         <Grid container spacing={1}>
           <Grid item xs={12} md={9}>
-            <Typography className={exp.heading}>
+            <Typography className={exp.headingBlack}>
               <strong>II.1.- POR ACTIVIDAD INDUSTRIAL, COMERCIAL Y/O EMPRESARIAL (DESPUÉS DE IMPUESTOS)</strong>
             </Typography>
           </Grid>
           <Grid item xs={12} md={3}>
-            <Typography className={exp.heading}>
+            <Typography className={exp.headingBlack}>
               <strong>
                 {getMoneda(actividadIndustrialComercialEmpresarial.remuneracionTotal?.valor)} {actividadIndustrialComercialEmpresarial.remuneracionTotal?.moneda}
               </strong>
@@ -36,13 +36,13 @@ const ActividadIndustrial = ({ actividadIndustrialComercialEmpresarial }) => {
       <BoxAccordionDetails>
         <Grid container spacing={1}>
           <Grid item xs={12} md={5}>
-            <Typography className={classes.cardTitle}>NOMBRE O RAZÓN SOCIAL:</Typography>
+            <Typography className={classes.cardTitleB}>NOMBRE O RAZÓN SOCIAL:</Typography>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Typography className={classes.cardTitle}>TIPO DE NEGOCIO:</Typography>
+            <Typography className={classes.cardTitleB}>TIPO DE NEGOCIO:</Typography>
           </Grid>
           <Grid item xs={12} md={3}>
-            <Typography className={classes.cardTitle}>INGRESO:</Typography>
+            <Typography className={classes.cardTitleB}>INGRESO:</Typography>
           </Grid>
           {actividadIndustrialComercialEmpresarial.actividades &&
             actividadIndustrialComercialEmpresarial.actividades.map((act, idx) => {
