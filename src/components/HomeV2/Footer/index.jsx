@@ -1,10 +1,12 @@
 import { Grid } from "@mui/material";
 import { useTheme } from "@emotion/react";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import LeftFooter from "./leftFooter";
+/* import LeftFooter from "./leftFooter";
 import CenterFooter from "./centerFooter";
-import RightFooter from "./rightFooter";
+import RightFooter from "./rightFooter"; */
 import MobileFooter from "./mobileFooter";
+import CreativeIcon from '../IconCreativeCommons';
+
 
 import logoSESNA from "../../../assets/rediseno2023/imgs/iconos/logotipos/logo-sesna.svg";
 import logoPDN from "../../../assets/rediseno2023/imgs/iconos/logotipos/logo-pdn.svg";
@@ -37,7 +39,7 @@ const Footer = (props) => {
       <Grid
         container
         direction="row"
-        justifyContent="space-evenly"
+        justifyContent="space-between"
         alignItems="flex-start"
         sx={{maxWidth: 1200, margin: 'auto'}}
         className="mt-5 footerLogos"
@@ -69,10 +71,10 @@ const Footer = (props) => {
       <Grid
         container
         direction="row"
-        justifyContent="center"
-        alignItems="flex-start"
-        sx={{maxWidth: 1200, margin: 'auto'}}
-        className="mt-3 footerList"
+        justifyContent="space-between"
+        alignItems="center"
+        sx={{maxWidth: 1200, margin: 'auto', textAlign: 'center'}}
+        className="mt-2 footerList"
       >
         <Grid item md={3}>
           <ul>
@@ -107,7 +109,7 @@ const Footer = (props) => {
         justifyContent="center"
         alignItems="center"
         sx={{maxWidth: 1200, margin: 'auto'}}
-        className="mt-3"
+        className="mt-2"
       >
         <Grid item lg={12}>
           <Divider />
@@ -117,11 +119,14 @@ const Footer = (props) => {
         container
         spacing={0}
         direction="row"
-        justifyContent="center"
-        alignItems="flex-start"
+        justifyContent="space-between"
+        alignItems="center"
         sx={{maxWidth: 1200, margin: 'auto'}}
         className="mb-3 footerIcon"
       >
+        <Grid item md={2} align="center">
+          <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.es" target="_blank"><CreativeIcon/></a>
+        </Grid>
         <Grid item md={2} align="center">
           <a href="https://twitter.com/SESNAOficial" target="_blank"><TwitterIcon/></a>
         </Grid>
