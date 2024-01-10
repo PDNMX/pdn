@@ -341,7 +341,7 @@ const CssDeclaraciones = theme => ({
     marginBottom: '1rem'
   },
   btnBack: {
-    color: theme.palette.secondary.light
+    color: theme.palette.primary.main
   },
   logo: {
     width: '60px'
@@ -394,17 +394,15 @@ const CssDeclaraciones = theme => ({
   },
   cuadroActualizacion: {
     fontWeight: 'bolder',
-    color: '#0c5460',
+    color: theme.palette.text.clear,
     // backgroundColor: '#d1ecf1',
-    borderColor: '#bee5eb',
-    border: '1px solid transparent',
     borderRadius: '.25rem',
     padding: '.75rem 1.25rem',
     marginBottom: '1rem',
-    backgroundColor: '#D1ECF1'
+    backgroundColor: 'rgba(113,57,114,0.5)'
   },
   paper_perfil: {
-    backgroundColor: theme.palette.background.opaque,
+    backgroundColor: theme.palette.background.noSelect,
     padding: theme.spacing(4),
     marginBottom: theme.spacing(4),
     color: theme.palette.text.primary

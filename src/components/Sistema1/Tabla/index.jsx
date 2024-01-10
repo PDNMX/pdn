@@ -48,8 +48,8 @@ const useStyles = makeStyles(theme => ({
     minWidth: 750
   },
   tableHead: {
-    color: theme.palette.text.primary,
-    backgroundColor: theme.palette.background.default
+    color: theme.palette.text.black,
+    backgroundColor: 'rgba(113,57,114,0.25)',
   },
   tableWrapper: {
     overflowX: 'auto'

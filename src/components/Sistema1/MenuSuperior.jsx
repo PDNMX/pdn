@@ -23,15 +23,17 @@ const useTabs = makeStyles({
 
 const useTab = makeStyles(theme => ({
   root: {
-    'backgroundColor': theme.palette.background.opaque,
-    'color': theme.palette.secondary.light,
+    'backgroundColor': theme.palette.background.noSelect,
+    'color': theme.palette.primary.black,
     '&:hover': {
       fontWeight: 'bolder',
-      color: theme.palette.primary.contrastText
+      color: theme.palette.text.primary
     },
     '&.Mui-selected': {
-      backgroundColor: 'rgba(42, 116, 145)',
-      color: theme.palette.secondary.main,
+      backgroundColor: theme.palette.background.select,
+      color: theme.palette.text.clear,
+      borderColor: theme.palette.background.border,
+      border: 'solid',
       fontWeight: 'bolder'
     }
   }

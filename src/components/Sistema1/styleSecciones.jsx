@@ -6,7 +6,7 @@ const CssSeccDeclaraciones = theme => ({
     backgroundColor: theme.palette.background.opaque
   },
   tituloSeccion: {
-    color: '#2EB2E7',
+    color: theme.palette.background.select,
     fontSize: 20,
     fontWeight: 'bold'
   },
@@ -17,24 +17,24 @@ const CssSeccDeclaraciones = theme => ({
   },
   paper: {
     padding: theme.spacing(2),
-    backgroundColor: 'rgba(42, 116, 145)',
+    backgroundColor: theme.palette.primary.main,
     marginBottom: theme.spacing(4),
-    color: theme.palette.primary.contrastText
+    color: theme.palette.text.clear
   },
   cardTitle: {
     fontSize: 13,
     fontWeight: 'bold',
     marginBottom: 10,
-    color: theme.palette.primary.contrastText
+    color: theme.palette.text.clear
   },
   card: {
     fontSize: 14,
     paddingLeft: 20,
     // marginBottom: 10,
     paddingBottom: 10,
-    color: '#155724',
-    backgroundColor: '#d4edda',
-    borderColor: '#c3e6cb',
+    color: theme.palette.primary.main,
+    backgroundColor: theme.palette.background.noSelect,
+    borderColor: theme.palette.background.border,
     border: '1px solid transparent',
     borderRadius: '.25rem',
     padding: '.75rem 1.25rem',
@@ -127,7 +127,7 @@ const CssSeccDeclaraciones = theme => ({
     marginBottom: '1rem'
   },
   btnBack: {
-    color: theme.palette.primary.dark
+    color: theme.palette.primary.main
   },
   resultadosTitulo: {
     backgroundColor: 'rgb(52, 179, 235)',

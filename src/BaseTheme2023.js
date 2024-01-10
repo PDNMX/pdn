@@ -12,7 +12,7 @@ export default createTheme(
         color: "#55575A"
       },
       useNextVariants: true,
-      color:'#7a3d71',
+      color:'#713972',
       fontFamily: "Muli",
       htmlFontSize: 21,
       fontSize:18,
@@ -46,12 +46,13 @@ export default createTheme(
       text: {
         main: '#E1E8EB',
         primary: '#55575A',
-        secondary: '#7a3d71',
-        linkColor: '#7a3d71',
-        clear: '#fff'
+        secondary: '#713972',
+        linkColor: '#713972',
+        clear: '#fff',
+        black: '#000'
       },
       primary: {
-        main: '#7a3d71',
+        main: '#713972',
         /* light: '#94638d',
         dark: '#552a4f',
         contrastText:'#55575a',
@@ -65,6 +66,10 @@ export default createTheme(
       },
       background: {
         paper : '#FCFCFF',
+        light: '#94638d',
+        select: '#b25fac',
+        noSelect: '#f2f0f2',
+        border: '#583171',
         opaque: '#EAE1EA',
         default: '#fff',
         prueba: '#d3d',

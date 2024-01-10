@@ -9,7 +9,7 @@ const ligaDatosNumeralia = import.meta.env.VITE_NUMERALIA;
 const styles = theme => ({
     container: {
         padding: "5% 3%",
-        backgroundColor: '#7a3d71',
+        backgroundColor: '#713972',
         minHeight: '320px'
     },
     Foot: {

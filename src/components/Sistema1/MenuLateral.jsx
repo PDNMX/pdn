@@ -8,8 +8,8 @@ import withStyles from '@mui/styles/withStyles';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    'backgroundColor': 'rgba(42, 116, 145)',
-    'color': theme.palette.primary.contrastText,
+    'backgroundColor': theme.palette.primary.main,
+    'color': theme.palette.text.clear,
     'fontSize': 12,
     'whiteSpace': 'normal',
     '&:hover': {
@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
     }
   },
   selected: {
-    backgroundColor: theme.palette.background.opaque,
+    backgroundColor: theme.palette.background.select,
     fontWeight: 'bolder',
     color: 'white'
   }
@@ -37,7 +37,7 @@ export default function TypographyMenu(props) {
   const classes = useStyles();
 
   return (
-    <MenuList style={{ backgroundColor: 'rgba(42, 116, 145)' }}>
+    <MenuList style={{ backgroundColor: '#b25fac'}}>
       {props.opciones.map((opcion, index) => {
         return (
           <MenuItem key={'opcion-' + index} selected={props.value === index} onClick={e => props.setValue(e, index)} classes={classes}>

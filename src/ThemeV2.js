@@ -82,7 +82,7 @@ export default createTheme(
       MuiTableSortLabel: {
         styleOverrides: {
           root: {
-            'color': '#7a3d71',
+            'color': '#713972',
             '&:hover': {
               color: AzulPDN
             },
@@ -143,7 +143,7 @@ export default createTheme(
         styleOverrides: {
           root: {
             '& .MuiChip-label': {
-              color: '#7a3d71'
+              color: '#713972'
             },
             '& .MuiChip-deleteIcon': {
               'color': amarilloPDN,
