@@ -539,7 +539,10 @@ figure {
 .footerLogos img {
   max-height: 90px !important;
   max-width: 100%;
-  vertical-align: middle;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 1rem;
 }
 
 .footerList li {
@@ -562,5 +565,6 @@ figure {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
+  padding: 0px;
 }
 

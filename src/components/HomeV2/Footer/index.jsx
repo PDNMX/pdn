@@ -4,7 +4,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 /* import LeftFooter from "./leftFooter";
 import CenterFooter from "./centerFooter";
 import RightFooter from "./rightFooter"; */
-import MobileFooter from "./mobileFooter";
+/* import MobileFooter from "./mobileFooter"; */
 import CreativeIcon from '../IconCreativeCommons';
 
 
@@ -23,10 +23,10 @@ function useIsWidthUp(breakpoint) {
   const theme = useTheme();
   return useMediaQuery(theme.breakpoints.up(breakpoint));
 }
-const Footer = (props) => {
+const Footer = () => {
   //const classes = useStyles();
   const isXsUp = useIsWidthUp("lg");
-  return isXsUp ? (
+  return (
     <>
       <div className="footerBorderTop">
       {/* <Grid container className="footer" direction="row">
@@ -40,17 +40,18 @@ const Footer = (props) => {
         container
         direction="row"
         justifyContent="space-between"
-        alignItems="flex-start"
+        alignItems="center"
         sx={{maxWidth: 1200, margin: 'auto'}}
         className="mt-5 footerLogos"
+        spacing={0}
       >
-        <Grid item xs={12} md={3} align="center">
+        <Grid item sm={3} xs={12} md={3} align="center">
           <img src={logoSNA} alt="logo-sna" />
         </Grid>
-        <Grid item xs={12} md={3} align="center">
+        <Grid item sm={3} xs={12} md={3} align="center">
           <img src={logoSESNA} alt="logo-sesna" />
         </Grid>
-        <Grid item xs={12} md={3} align="center">
+        <Grid item sm={3} xs={12} md={3} align="center">
           <img src={logoPDN} alt="logo-sesna" />
         </Grid>
       </Grid>
@@ -61,22 +62,23 @@ const Footer = (props) => {
         justifyContent="center"
         alignItems="center"
         sx={{maxWidth: 1200, margin: 'auto'}}
-        className="mt-3"
+        className="mt-2"
       >
-        <Grid item lg={12}>
+        <Grid item lg={12} md={12} sm={10}>
           <Divider />
         </Grid>
       </Grid>
 
       <Grid
         container
+        spacing={0}
         direction="row"
         justifyContent="space-between"
         alignItems="center"
         sx={{maxWidth: 1200, margin: 'auto', textAlign: 'center'}}
         className="mt-2 footerList"
       >
-        <Grid item md={3}>
+        <Grid item md={3} xs={12} sm={3}>
           <ul>
             <li><a href="https://www.plataformadigitalnacional.org/about">Acerca de la PDN</a></li>
             <li><a href="https://www.plataformadigitalnacional.org/mapa-sla/">Avances de
@@ -85,7 +87,7 @@ const Footer = (props) => {
             </li>
           </ul>
         </Grid>
-        <Grid item md={3}>
+        <Grid item md={3} xs={12} sm={3}>
           <ul >
             <li><a href="https://www.plataformadigitalnacional.org/faq">Preguntas
                 frecuentes</a></li>
@@ -94,7 +96,7 @@ const Footer = (props) => {
                 y prensa</a></li>
           </ul>
         </Grid>
-        <Grid item md={3}>
+        <Grid item md={3} xs={12} sm={3}>
           <ul >
             <li><a href="https://www.plataformadigitalnacional.org/mesa-de-ayuda">Mesa de ayuda</a></li>
             <li><a href="https://www.plataformadigitalnacional.org/especificaciones">Especificaciones Técnicas</a></li>
@@ -111,7 +113,7 @@ const Footer = (props) => {
         sx={{maxWidth: 1200, margin: 'auto'}}
         className="mt-2"
       >
-        <Grid item lg={12}>
+        <Grid item lg={12} md={12} sm={10}>
           <Divider />
         </Grid>
       </Grid>
@@ -119,7 +121,7 @@ const Footer = (props) => {
         container
         spacing={0}
         direction="row"
-        justifyContent="space-between"
+        justifyContent={isXsUp ? "space-between" : "space-evenly"}
         alignItems="center"
         sx={{maxWidth: 1200, margin: 'auto'}}
         className="mb-3 footerIcon"
@@ -142,8 +144,6 @@ const Footer = (props) => {
       </Grid>
       </div>
     </>
-  ) : (
-    <MobileFooter />
-  );
+  ) 
 };
 export default Footer;
