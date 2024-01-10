@@ -39,7 +39,7 @@ const Footer = () => {
       <Grid
         container
         direction="row"
-        justifyContent="space-between"
+        justifyContent={isXsUp ? "space-between" : "space-evenly"}
         alignItems="center"
         sx={{maxWidth: 1200, margin: 'auto'}}
         className="mt-5 footerLogos"
@@ -73,7 +73,7 @@ const Footer = () => {
         container
         spacing={0}
         direction="row"
-        justifyContent="space-between"
+        justifyContent={isXsUp ? "space-between" : "space-evenly"}
         alignItems="center"
         sx={{maxWidth: 1200, margin: 'auto', textAlign: 'center'}}
         className="mt-2 footerList"
