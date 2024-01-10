@@ -14,12 +14,12 @@ const CardMercardo = props => {
   return (
     
       <Grid container className='mda-home'>
-        <Grid item xs={6} className="img-mda">
+        <Grid item xs={12} sm={6} className="img-mda">
           <figure>
             <img alt='Logo MDA' src={logoMDA} />
           </figure>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6}>
 
           <Typography variant="h6" style={{ marginTop: '30px', textAlign: 'justify' }} paragraph>
             El <strong>Mercado Digital Anticorrupción (MDA)</strong> es un espacio en el que se encuentran disponibles <strong>

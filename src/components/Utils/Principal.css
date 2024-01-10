@@ -348,6 +348,13 @@ figure {
   padding: 45px 2rem;
 }
 
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .blog #blogcards {
+    flex-direction: column;
+  }
+}
+
 /*...... FIN BLOG .....*/
 
 
@@ -545,7 +552,7 @@ figure {
 
 .footerList a:hover {
   text-decoration: none;
-  color: #713972;
+  color: #7a3d71;
 }
 
 .footerList ul {

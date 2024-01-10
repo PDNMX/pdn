@@ -29,12 +29,12 @@ const BlogComponent = props => {
 
     return (
         <div className='blog'>
-            <Box display="flex">
+            <Box display="flex" >
                 <Box>
                     <h1>Blog</h1>
                 </Box>
             </Box>
-            <Box display='flex'>
+            <Box display='flex' id='blogcards'>
                 {
                     posts.map((p, i) => {
                         return <BlogCard key={i} post={p} />

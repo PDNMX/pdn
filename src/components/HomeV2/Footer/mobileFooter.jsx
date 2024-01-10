@@ -56,13 +56,13 @@ const MobileFooter = props => {
       </Grid>
       <Grid container direction={'row'} justifyContent={'center'} alignContent={'center'} className={classes.footerMobileSeccLogos}>
         <Grid item>
+          <img alt='Logo SNA' src={logoSNA} className={classes.mobilePDN} />
+        </Grid>
+        <Grid item>
           <img alt='Logo SESNA' src={logoSESNA} className={classes.mobileSESNA} />
         </Grid>
         <Grid item>
           <img alt='Logo PDN' src={logoPDN} className={classes.mobilePDN} />
-        </Grid>
-        <Grid item>
-          <img alt='Logo SNA' src={logoSNA} className={classes.mobilePDN} />
         </Grid>
       </Grid>
       <Grid container direction={'row'} justifyContent={'center'} alignContent={'center'} className={classes.footerMobileSeccLogos}>
