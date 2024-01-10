@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
     fontStyle: "italic",
     "&:hover": {
-      backgroundColor: "#d3d",
+      backgroundColor: "#b25fac",
     },
   },
   cardMedia: {
@@ -101,7 +101,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 500,
     color: "#000",
     "& b": {
-        color: "#d3d",
+        color: "#b25fac",
     }
   },
   labelSistema: {
@@ -415,7 +415,7 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
                   },
                 '& .MuiStepLabel-label.Mui-active.MuiStepLabel-alternativeLabel':
                   {
-                    color: '#d3d', // Just text label (ACTIVE)
+                    color: '#b25fac', // Just text label (ACTIVE)
                   },
                 '& .MuiStepLabel-label.Mui-disabled.MuiStepLabel-alternativeLabel':
                   {

@@ -56,7 +56,7 @@ export default createTheme(
         /* light: '#94638d',
         dark: '#552a4f',
         contrastText:'#55575a',
-        prueba: '#d3d' */
+        prueba: '#b25fac' */
       },
       secondary: {
         main: '#927188',

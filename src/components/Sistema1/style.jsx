@@ -428,7 +428,7 @@ const CssDeclaraciones = theme => ({
     },
     '&:hover': {
       color: '#55575A',
-      borderBottom: '2px solid #d3d'
+      borderBottom: '2px solid #b25fac'
     }
   }
 });

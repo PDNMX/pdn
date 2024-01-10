@@ -44,7 +44,7 @@ const styles = theme => ({
       color: '#7A3D71'
     },
     '&:hover': {
-      color: '#d3d',
+      color: '#b25fac',
       borderBottom: '2px solid #2e74c6'
     }
   },
