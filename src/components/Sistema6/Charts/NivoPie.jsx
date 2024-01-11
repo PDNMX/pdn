@@ -153,7 +153,7 @@ const MyResponsivePie = ({ data, dataType }) => (
                 itemsSpacing: 5, //0,
                 itemWidth: 200,
                 itemHeight: 18,
-                itemTextColor: '#ffffff', //ajustar a un color menos brillante
+                itemTextColor: '#000000', //ajustar a un color menos brillante
                 itemDirection: 'left-to-right',
                 itemOpacity: 1,
                 symbolSize: 18,
@@ -162,7 +162,7 @@ const MyResponsivePie = ({ data, dataType }) => (
                     {
                         on: 'hover',
                         style: {
-                            itemTextColor: '#ffffff'
+                            itemTextColor: '#000000'
                         }
                     }
                 ]

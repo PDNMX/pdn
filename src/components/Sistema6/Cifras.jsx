@@ -38,13 +38,19 @@ const styles = theme => ({
     },
     item: {
         paddingRight: theme.spacing(1),
-        paddingLeft: theme.spacing(1)
-    }
+        paddingLeft: theme.spacing(1),
+    },
 });
 
 const CustomTypography = withStyles(theme => ({
     root: {
         color: theme.palette.text.primary
+    }
+}))(Typography);
+
+const CustomTitle = withStyles(theme => ({
+    root: {
+        color: theme.palette.background.select
     }
 }))(Typography);
 
@@ -163,32 +169,32 @@ const Cifras = props => {
                 </Grid>:
                 <Grid container spacing={0}>
                     <Grid item xs={12} md={12} lg={4} xl={4} align="center" className={classes.item}>
-                        <CustomTypography variant="h6" color="textPrimary">
+                        <CustomTitle variant="h6">
                             Procesos de contratación
-                        </CustomTypography>
+                        </CustomTitle>
 
                         <CustomTypography variant="h5" paragraph color="textPrimary">
                             <b><CountUp separator="," start={1} end={state.contrataciones}/></b>
                         </CustomTypography>
 
-                        <CustomTypography variant="h6" color="textPrimary">
+                        <CustomTitle variant="h6">
                             Instituciones
-                        </CustomTypography>
+                        </CustomTitle>
 
                         <CustomTypography variant="h5" paragraph color="textPrimary">
                             <b> <CountUp separator="," start={1} end={state.instituciones}/></b>
                         </CustomTypography>
 
-                        <CustomTypography variant="h6" color="textPrimary">Gasto total</CustomTypography>
+                        <CustomTitle variant="h6">Gasto total</CustomTitle>
 
                         <CustomTypography variant="h5" paragraph color="textPrimary">
                             <b> <CountUp separator="," decimals={2} prefix={'$'} start={1} end={state.gastoTotal}/></b>
                         </CustomTypography>
 
                         {dataSupplier && dataSupplier === 'SHCP' && <div>
-                            <CustomTypography variant="h6" color="textPrimary">
+                            <CustomTitle variant="h6">
                                 Periodo
-                            </CustomTypography>
+                            </CustomTitle>
 
                             <CustomTypography variant="h5" paragraph color="textPrimary">
                                 <b>{state.periodo.start} - {state.periodo.end}</b>
