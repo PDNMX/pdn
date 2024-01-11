@@ -45,13 +45,13 @@ const styles = theme => ({
   },
   tableHead: {
     color: theme.palette.text.main,
-    backgroundColor: theme.palette.background.default
+    backgroundColor: theme.palette.primary.main
   },
   row: {
     cursor: 'pointer'
   },
   tableBody: {
-    backgroundColor: theme.palette.background.tableBody
+    backgroundColor: theme.palette.background.default
   },
   buttonBack: {
     padding: theme.spacing(1),
@@ -71,7 +71,7 @@ function TablaServidoresSancionados({ classes, info, verDetalle, handleChangeRow
       <Grid container justifyContent='center' spacing={0} className={classes.gridTable} id={'containerTest'}>
         <Grid item xs={12}>
           {data && data.length > 0 && (
-            <Typography variant={'h6'} color={'primary.contrastText'}>
+            <Typography variant={'h6'} color={'primary.main'}>
               Pulsa sobre el registro para ver su detalle
               <br />
             </Typography>

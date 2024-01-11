@@ -20,8 +20,8 @@ const styles = theme => ({
         margin: theme.spacing(3, 2)
     },
     cuadroActualizacion: {
-        color: "#FFF",
-        backgroundColor: theme.palette.primary.dark,
+        color: theme.palette.text.clear,
+        backgroundColor: 'rgba(113,57,114,0.5)',
         fontWeight: "bold",
         padding: "5px 10px"
     },

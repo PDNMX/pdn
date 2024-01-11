@@ -72,19 +72,20 @@ const FormServidoresSancionados = ({ classes, handleForm, handleOrder, query, or
   return (
     <React.Fragment>
       <Grid item xs={12} md={2}>
-        <TextField name='nombres' label='Nombre(s)' onChange={handleForm} value={query.nombres} margin='normal' />
+        <TextField style={{ background: '#f2f0f2' }} name='nombres' label='Nombre(s)' onChange={handleForm} value={query.nombres} margin='normal' />
       </Grid>
       <Grid item xs={12} md={2}>
-        <TextField name='primerApellido' label='Apellido Uno' type='search' onChange={handleForm} value={query.primerApellido} margin='normal' />
+        <TextField style={{ background: '#f2f0f2' }} name='primerApellido' label='Apellido Uno' type='search' onChange={handleForm} value={query.primerApellido} margin='normal' />
       </Grid>
       <Grid item xs={12} md={2}>
         <FormControl className={classes.formControl}>
-          <TextField name='segundoApellido' label='Apellido Dos' type='search' onChange={handleForm} value={query.segundoApellido} margin='normal' />
+          <TextField style={{ background: '#f2f0f2' }} name='segundoApellido' label='Apellido Dos' type='search' onChange={handleForm} value={query.segundoApellido} margin='normal' />
         </FormControl>
       </Grid>
       <Grid item xs={12} md={6}>
         <FormControl className={classes.formControl}>
           <TextField
+            style={{ background: '#f2f0f2' }}
             name='tipoSancion'
             margin='normal'
             select
@@ -110,7 +111,7 @@ const FormServidoresSancionados = ({ classes, handleForm, handleOrder, query, or
       </Grid>
       <Grid item xs={12} md={2}>
         <FormControl className={classes.formControl}>
-          <TextField name={'nivel'} margin='normal' select label={'Nivel'} value={query.nivel} onChange={handleForm}>
+          <TextField style={{ background: '#f2f0f2' }} name={'nivel'} margin='normal' select label={'Nivel'} value={query.nivel} onChange={handleForm}>
             <MenuItem value='any'>
               <em>Todos</em>
             </MenuItem>
@@ -125,7 +126,7 @@ const FormServidoresSancionados = ({ classes, handleForm, handleOrder, query, or
       </Grid>
       <Grid item md={4} xs={12}>
         <FormControl className={classes.formControl}>
-          <TextField name={'provider'} margin='normal' select label={'Proveedor información'} value={query.provider} onChange={handleForm}>
+          <TextField style={{ background: '#f2f0f2' }} name={'provider'} margin='normal' select label={'Proveedor información'} value={query.provider} onChange={handleForm}>
             <MenuItem value={'any'}>
               <em>Todos</em>
             </MenuItem>
@@ -141,7 +142,7 @@ const FormServidoresSancionados = ({ classes, handleForm, handleOrder, query, or
       </Grid>
       <Grid item md={6} xs={12}>
         <FormControl className={classes.formControl}>
-          <TextField name={'institucionDependencia'} margin='normal' select label={'Institución'} value={query.institucionDependencia} onChange={handleForm}>
+          <TextField style={{ background: '#f2f0f2' }} name={'institucionDependencia'} margin='normal' select label={'Institución'} value={query.institucionDependencia} onChange={handleForm}>
             <MenuItem value='any'>
               <em>Todas</em>
             </MenuItem>
@@ -164,7 +165,7 @@ const FormServidoresSancionados = ({ classes, handleForm, handleOrder, query, or
         <React.Fragment>
           <Grid item xs={12} md={3}>
             <FormControl className={classes.formControl}>
-              <TextField name={'orderCamp'} margin='normal' select label={'Ordenar por'} value={order.orderCamp} onChange={handleOrder}>
+              <TextField style={{ background: '#f2f0f2' }} name={'orderCamp'} margin='normal' select label={'Ordenar por'} value={order.orderCamp} onChange={handleOrder}>
                 <MenuItem value={'any'}>
                   <em>Ninguno</em>
                 </MenuItem>
@@ -180,7 +181,7 @@ const FormServidoresSancionados = ({ classes, handleForm, handleOrder, query, or
           </Grid>
           <Grid item xs={12} md={3}>
             <FormControl className={classes.formControl}>
-              <TextField name={'orderType'} margin='normal' select label={'Tipo ordenamiento'} value={order.orderType} onChange={handleOrder}>
+              <TextField style={{ background: '#f2f0f2' }} name={'orderType'} margin='normal' select label={'Tipo ordenamiento'} value={order.orderType} onChange={handleOrder}>
                 <MenuItem value={'any'}>
                   <em>Ninguno</em>
                 </MenuItem>
