@@ -9,6 +9,9 @@ import dataSuppliers from "./suppliers"
 const styles = theme => ({
     root: {
         paddingTop : theme.spacing(4),
+    },
+    fondo: {
+        background: theme.palette.background.noSelect
     }
 });
 
@@ -29,7 +32,7 @@ const SelectSupplier = props => {
                 <InputLabel>
                     Selecciona el proveedor de información que deseas consultar
                 </InputLabel>
-                <Select value={dataSupplier} onChange={handleSetDataSupplier} label={'Selecciona el proveedor de información que deseas consultar'}>
+                <Select className= {classes.fondo}value={dataSupplier} onChange={handleSetDataSupplier} label={'Selecciona el proveedor de información que deseas consultar'}>
                     {
                         dataSuppliers.map((s,i)=> {
                             return <MenuItem value={s.id} key={i}>

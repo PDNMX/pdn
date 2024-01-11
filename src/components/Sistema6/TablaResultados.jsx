@@ -17,10 +17,10 @@ import ResponsiveDialog from './ResponsiveDialog';
 
 const headRows = [
     { id: 'col1', numeric: false, disablePadding: false, label: 'OCID' },
-    { id: 'col2', numeric: false, disablePadding: false, label: 'Fecha' },
-    { id: 'col3', numeric: false, disablePadding: false, label: 'Tipo' },
-    { id: 'col4', numeric: false, disablePadding: false, label: 'Título' },
-    { id: 'col5', numeric: false, disablePadding: false, label: 'Monto' },
+    { id: 'col2', numeric: false, disablePadding: false, label: 'FECHA' },
+    { id: 'col3', numeric: false, disablePadding: false, label: 'TIPO' },
+    { id: 'col4', numeric: false, disablePadding: false, label: 'TÍTULO' },
+    { id: 'col5', numeric: false, disablePadding: false, label: 'MONTO' },
 ];
 
 function EnhancedTableHead(props) {
@@ -40,7 +40,7 @@ function EnhancedTableHead(props) {
                         align={row.numeric ? 'right' : 'left'}
                         padding={row.disablePadding ? 'none' : 'normal'}
                         sortDirection={orderBy === row.id ? order : false}
-                        sx={{color: "#E1E8EB"}}
+                        sx={{color: "#FFFFFF"}}
                     >
                         {/*<TableSortLabel
                             active={orderBy === row.id}

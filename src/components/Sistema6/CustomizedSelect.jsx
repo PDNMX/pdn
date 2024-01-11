@@ -54,6 +54,9 @@ const useStyles = makeStyles(theme => ({
     margin: {
         margin: theme.spacing(1),
     },
+    fondo: {
+        background: theme.palette.background.noSelect
+    }
 }));
 
 export default function CustomizedSelect(props) {
@@ -68,6 +71,7 @@ export default function CustomizedSelect(props) {
             <FormControl className={classes.margin} fullWidth>
                 {/*<InputLabel htmlFor="age-customized-native-simple">Contrataciones</InputLabel>*/}
                 <Select
+                    className={classes.fondo}
                     value={props.dataType}
                     onChange={handleChange}
                     //input={<BootstrapInput name="age" id="age-customized-native-simple" />}

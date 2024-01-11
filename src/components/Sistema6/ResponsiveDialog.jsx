@@ -21,6 +21,9 @@ const styles = theme => ({
     },
     divider: {
         marginBottom: theme.spacing(1)
+    },
+    title:{
+        color: theme.palette.primary.main
     }
 });
 
@@ -75,7 +78,7 @@ function ResponsiveDialog(props) {
                 onClose={handleCloseDialog}
                 aria-labelledby="responsive-dialog-title"
             >
-                <DialogTitle id="responsive-dialog-title"><Typography variant='h4'>{"Detalle de la contratación"}</Typography></DialogTitle>
+                <DialogTitle id="responsive-dialog-title"><Typography className={classes.title} variant='h4'>{"Detalle de la contratación"}</Typography></DialogTitle>
                 <DialogContent>
                     {/*<DialogContentText></DialogContentText>*/}
 
@@ -122,7 +125,7 @@ function ResponsiveDialog(props) {
                     <Button href={handleDownload()} variant="contained" color="primary"
                             download={(data !== null ? data.ocid : 'datos')+'.json'}
                             className={classes.button}
-                    ><DownloadIcon/></Button>
+                    ><DownloadIcon style={{color:'white'}}/></Button>
                     <Button onClick={handleCloseDialog}  variant="contained" color="primary" autoFocus
                             className={classes.button}
                     >

@@ -19,6 +19,9 @@ const styles = theme => ({
     item: {
         paddingLeft: theme.spacing(1),
         paddingRight: theme.spacing(1)
+    },
+    fondo: {
+        background: theme.palette.background.noSelect
     }
 });
 
@@ -68,6 +71,7 @@ const SearchControls = props => {
                         <FormControl fullWidth>
                             <InputLabel htmlFor="age-customized-native-simple">Institución</InputLabel>
                             <Select
+                                className={classes.fondo}
                                 value={buyer_id}
                                 onChange={handleChangeBuyer}
                                 label = {'Institución'}
@@ -92,6 +96,7 @@ const SearchControls = props => {
                         <FormControl fullWidth>
                             <InputLabel htmlFor="age-customized-select">Tipo de contratación</InputLabel>
                             <Select
+                                className={classes.fondo}
                                 value={procurementMethod}
                                 onChange={handleChangeProcurementMethod}
                                 //input={<BootstrapInput name="age" id="age-customized-select" />}
@@ -114,6 +119,7 @@ const SearchControls = props => {
                         <FormControl fullWidth>
                             <InputLabel htmlFor="age-customized-select">Ciclo</InputLabel>
                             <Select
+                                className={classes.fondo}
                                 value={cycle}
                                 onChange={handleChangeCycle}
                                 //input={<BootstrapInput name="age" id="age-customized-select" />}
@@ -147,6 +153,7 @@ const SearchControls = props => {
                         onChange={handleChangeSupplierName}
                         onKeyDown={handleSearch}
                         value={supplierName}
+                        className={classes.fondo}
                     />
                 </Grid>
 
@@ -166,6 +173,7 @@ const SearchControls = props => {
                         onChange={handleSetInputText}
                         onKeyDown={handleSearch}
                         value={inputText}
+                        className={classes.fondo}
                     />
                 </Grid>
                 {/*
