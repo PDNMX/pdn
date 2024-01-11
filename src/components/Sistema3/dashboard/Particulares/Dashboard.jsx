@@ -55,7 +55,7 @@ const styles = theme => ({
     link: {
         textDecoration: "none",
         color: theme.palette.text.linkColor,
-        wordBreak: "break-all",
+        wordBreak: "break-word",
     },
 });
 

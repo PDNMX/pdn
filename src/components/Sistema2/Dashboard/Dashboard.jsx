@@ -34,7 +34,7 @@ const styles = theme => ({
   link: {
     textDecoration: 'none',
     color: '#89d4f2', //theme.palette.text.linkColor,
-    wordBreak: 'break-all'
+    wordBreak: 'break-word'
   }
 });
 
