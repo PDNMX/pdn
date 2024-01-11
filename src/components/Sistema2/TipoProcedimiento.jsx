@@ -58,7 +58,7 @@ const TipoProcedimiento = props => {
     return (
         <div>
             <FormControl className={classes.formControl} fullWidth>
-                <TextField id={'campoSelectInstitucion'} name={'campoSelectInstitucion-select'} margin="normal" select 
+                <TextField style={{ background: '#f2f0f2' }} id={'campoSelectInstitucion'} name={'campoSelectInstitucion-select'} margin="normal" select 
                     label={'Procedimientos'} 
                     SelectProps={{
                         multiple: true,

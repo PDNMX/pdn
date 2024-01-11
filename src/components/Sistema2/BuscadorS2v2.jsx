@@ -35,7 +35,7 @@ const styles = theme => ({
         fontSize: '0.75rem'
     },
     desc: {
-        color: theme.palette.primary.dark,
+        color: theme.palette.primary.main,
     },
     ul: {
         listStyle: "none",
@@ -61,7 +61,7 @@ const styles = theme => ({
         borderRadius: '0px 10px 10px 10px'
     },
     tableBody: {
-        background: theme.palette.background.tableBody
+        background: theme.palette.background.default
     }
 });
 
@@ -468,7 +468,7 @@ const BuscadorS2  =  props => {
                             </Typography>
                         </Box>
 
-                        <Button onClick={() => backButton()} startIcon={<ArrowBackIcon/>} color='secondary' sx={{fontWeight: 'bold'}} >
+                        <Button onClick={() => backButton()} startIcon={<ArrowBackIcon/>} color='primary' sx={{fontWeight: 'bold'}} >
                             Regresar
                         </Button>
                     </Box>

@@ -61,6 +61,7 @@ const EntradasBuscador = props => {
                 <Grid item xs={12} md={4}>
                     <FormControl className={classes.formControl}>
                         <TextField
+                            style={{ background: '#f2f0f2' }}
                             id="search"
                             label="Nombre(s)"
                             type="search"
@@ -73,6 +74,7 @@ const EntradasBuscador = props => {
                 <Grid item xs={12} md={4}>
                     <FormControl className={classes.formControl}>
                         <TextField
+                            style={{ background: '#f2f0f2' }}
                             id="search"
                             label="Primer apellido"
                             type="search"
@@ -85,6 +87,7 @@ const EntradasBuscador = props => {
                 <Grid item xs={12} md={4}>
                     <FormControl className={classes.formControl}>
                         <TextField
+                            style={{ background: '#f2f0f2' }}
                             id="search"
                             label="Segundo apellido"
                             type="search"
@@ -107,7 +110,7 @@ const EntradasBuscador = props => {
 
                 <Grid item xs={12} md={8}>
                     <FormControl className={classes.formControl}>
-                        <TextField id={'campoSelectInstitucion'} name={'campoSelectInstitucion-select'} margin="normal" select label={'Institución'} value={current_entity} onChange={(e) => handleSetState('current_entity', e)}>
+                        <TextField style={{ background: '#f2f0f2' }} id={'campoSelectInstitucion'} name={'campoSelectInstitucion-select'} margin="normal" select label={'Institución'} value={current_entity} onChange={(e) => handleSetState('current_entity', e)}>
                             <MenuItem value="ANY" key="ANY">
                                 Todas
                             </MenuItem>
@@ -164,13 +167,13 @@ const EntradasBuscador = props => {
                 </Grid>
 
                 <Grid item xs={12} md={6} align="right">
-                    <Button variant="contained" color="secondary"
+                    <Button variant="contained" color="primary"
                             className={classes.button}
                             onClick={() => limpiarBusqueda()}>
                         Limpiar
                     </Button>
 
-                    <Button variant="contained" color="secondary" className={classes.button} 
+                    <Button variant="contained" color="primary" className={classes.button} 
                             onClick={() => {
                                 buscar();
                                 ReactGA.event({ category: 'busqueda-s2', action: 'click' });

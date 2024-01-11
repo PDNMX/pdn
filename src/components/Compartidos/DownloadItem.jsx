@@ -1,4 +1,4 @@
-import {Button} from "@mui/material";
+import ButtonPDN from '../Compartidos/ButtonPDN';
 import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
 import React from "react";
 
@@ -14,9 +14,9 @@ function DownloadItem ({ item }){
 
     return (
         <div>
-            <Button variant={'outlined'} startIcon={<CloudDownloadIcon />} onClick={download}>
+            <ButtonPDN variant={'outlined'} startIcon={<CloudDownloadIcon style={{color: 'white'}} />} onClick={download}>
                 {'Descargar'}
-            </Button>
+            </ButtonPDN>
 
         </div>
     );

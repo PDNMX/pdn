@@ -49,13 +49,13 @@ const styles = theme => ({
     },
     tableHead: {
         color: theme.palette.text.main,
-        backgroundColor: theme.palette.background.default
+        backgroundColor: theme.palette.primary.main
     },
     row:{
         cursor:'pointer'
     },
     tableBody:{
-        backgroundColor:theme.palette.background.tableBody
+        backgroundColor:theme.palette.background.default
     },
     buttonBack: {
         padding: theme.spacing(1),
@@ -81,13 +81,13 @@ function TablaParticularesSancionados({
             <Grid container justifyContent='center' spacing={0} className={classes.gridTable}>
                 <Grid item xs={12} className={classes.section}>
                     {data && data.length > 0 &&
-                    <Typography variant="h6" color={'primary.contrastText'}>Pulsa sobre el registro para ver su
+                    <Typography variant="h6" color={'primary.main'}>Pulsa sobre el registro para ver su
                         detalle<br/></Typography>
                     }
                 </Grid>
                 <Grid item xs={12} textAlign={'right'}>
                     <Button startIcon={<ArrowBackIcon />} onClick={()=> returnToPrevios()}
-                            color="secondary" className={classes.buttonBack}>
+                            color="primary" className={classes.buttonBack}>
                         Regresar
                     </Button>
                 </Grid>
@@ -101,7 +101,7 @@ function TablaParticularesSancionados({
                                         columnData.map(column => {
                                             return (
                                                 <TableCell key={column.id}>
-                                                    <Typography color={'primary.contrastText'}
+                                                    <Typography color={'text.clear'}
                                                                 variant={"body1"}>
                                                         {column.label}
                                                     </Typography>

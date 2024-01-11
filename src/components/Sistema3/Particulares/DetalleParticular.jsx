@@ -12,7 +12,7 @@ const styles = theme => ({
     infoBusqueda: {
         paddingRight: theme.spacing(1),
         paddingLeft: theme.spacing(1),
-        backgroundColor: "white",
+        backgroundColor: theme.palette.background.noSelect,
         marginBottom: theme.spacing(8)
     },
     paper: {
@@ -21,7 +21,7 @@ const styles = theme => ({
     },
     cuadroActualizacion: {
         color: "#FFF",
-        backgroundColor: theme.palette.primary.dark,
+        backgroundColor: 'rgba(113,57,114,0.5)',
         fontWeight: "bold",
         padding: "5px 10px"
     },

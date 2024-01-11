@@ -27,7 +27,7 @@ const ActiveResultProv = props => {
             <Grid item xs={4}>
               <Grid container spacing={0}>
                 <Grid item xs={2}>
-                  <CircularProgress color='secondary' size={20} />
+                  <CircularProgress color='primary' size={20} />
                 </Grid>
               </Grid>
             </Grid>
@@ -37,7 +37,7 @@ const ActiveResultProv = props => {
                 <Grid item xs={4}>
                   <Typography className={classes.resultadosHeading}>
                     <Tooltip title={p.estatus ? 'Con respuesta' : 'Sin respuesta: ' + p.error.status + ' ' + p.error.statusText}>
-                      <IconSunny color={p.estatus ? 'secondary' : 'inherit'} />
+                      <IconSunny color={p.estatus ? 'primary' : 'inherit'} />
                     </Tooltip>
                   </Typography>
                 </Grid>

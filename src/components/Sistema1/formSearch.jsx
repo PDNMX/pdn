@@ -87,7 +87,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
           <Grid container spacing={1}>
             <Grid item xs={12} md={3}>
               <FormControl className={classes.formControl}>
-                <TextField style={{ background: '#f2f0f2' }} id='mui-name' label='Nombre(s)' color="secondary" value={nombres} name='nombres' onChange={handleInputChange} margin='normal' fullWidth />
+                <TextField style={{ background: '#f2f0f2' }} id='mui-name' label='Nombre(s)' color="primary" value={nombres} name='nombres' onChange={handleInputChange} margin='normal' fullWidth />
               </FormControl>
             </Grid>
             <Grid item xs={12} md={3}>
@@ -332,10 +332,10 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
               <FormControl component='fieldset' className={classes.formControl}>
                 <FormLabel component='legend'>Ámbito:</FormLabel>
                 <RadioGroup aria-label='nivelOrdenGobierno' name='nivelOrdenGobierno' className={classes.group} value={nivelOrdenGobierno} onChange={handleInputChange} row>
-                  <FormControlLabel value='' control={<Radio color='secondary' />} label='TODOS' />
-                  <FormControlLabel value='FEDERAL' control={<Radio color='secondary' />} label='FEDERAL' />
-                  <FormControlLabel value='ESTATAL' control={<Radio color='secondary' />} label='ESTATAL' />
-                  <FormControlLabel value='MUNICIPAL_ALCALDIA' control={<Radio color='secondary' />} label='MUNICIPAL/ALCALDÍA' />
+                  <FormControlLabel value='' control={<Radio color='primary' />} label='TODOS' />
+                  <FormControlLabel value='FEDERAL' control={<Radio color='primary' />} label='FEDERAL' />
+                  <FormControlLabel value='ESTATAL' control={<Radio color='primary' />} label='ESTATAL' />
+                  <FormControlLabel value='MUNICIPAL_ALCALDIA' control={<Radio color='primary' />} label='MUNICIPAL/ALCALDÍA' />
                 </RadioGroup>
               </FormControl>
             </Grid>

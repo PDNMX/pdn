@@ -327,6 +327,7 @@ function BusquedaParticular ({classes}){
                         <Grid item md={4} xs={12}>
                             <FormControl className={classes.formControl}>
                                 <TextField
+                                    style={{ background: '#f2f0f2' }}
                                     id="search"
                                     label="Nombre / Razón social"
                                     type="search"
@@ -339,6 +340,7 @@ function BusquedaParticular ({classes}){
                         <Grid item xs={12} md={2}>
                             <FormControl className={classes.formControl}>
                                 <TextField
+                                    style={{ background: '#f2f0f2' }}
                                     id="search"
                                     label="Número expediente"
                                     type="search"
@@ -351,7 +353,7 @@ function BusquedaParticular ({classes}){
                         </Grid>
                         <Grid item xs={12} md={4}>
                             <FormControl className={classes.formControl}>
-                            <TextField id={'tipoSancion'} name={'tipoSancion-select'} margin="normal" select label={'Tipo sanción'} 
+                            <TextField style={{ background: '#f2f0f2' }} id={'tipoSancion'} name={'tipoSancion-select'} margin="normal" select label={'Tipo sanción'} 
                                 SelectProps={{
                                     multiple: true,
                                     renderValue: selected => selected.map(element => element.label).join(', '),
@@ -369,7 +371,7 @@ function BusquedaParticular ({classes}){
                         </Grid>
                         <Grid item xs={12} md={2}>
                             <FormControl className={classes.formControl}>
-                                <TextField id={'tipoPersona'} name={'tipoPersona'} margin="normal" select label={'Tipo persona'} value={filter.tipoPersona} onChange={(e) => setFilter({...filter, tipoPersona: e.target.value})}>
+                                <TextField style={{ background: '#f2f0f2' }} id={'tipoPersona'} name={'tipoPersona'} margin="normal" select label={'Tipo persona'} value={filter.tipoPersona} onChange={(e) => setFilter({...filter, tipoPersona: e.target.value})}>
                                     <MenuItem value="any"><em>Todos</em></MenuItem>
                                     <MenuItem value="F" key={"F"}>Física</MenuItem>
                                     <MenuItem value="M" key={"M"}>Moral</MenuItem>
@@ -378,7 +380,7 @@ function BusquedaParticular ({classes}){
                         </Grid>
                         <Grid item md={2} xs={12}>
                             <FormControl className={classes.formControl}>
-                                <TextField id={'nivel'} name={'nivel'} margin="normal" select label={'Nivel'} value={filter.nivel} onChange={(e) => setFilter({...filter, nivel: e.target.value})}>
+                                <TextField style={{ background: '#f2f0f2' }} id={'nivel'} name={'nivel'} margin="normal" select label={'Nivel'} value={filter.nivel} onChange={(e) => setFilter({...filter, nivel: e.target.value})}>
                                     <MenuItem value={'any'} ><em>Todos</em></MenuItem>
                                     <MenuItem value={'Federal'} key={'Federal'}>{'Federal'}</MenuItem>
                                     <MenuItem value={'Estatal'} key={'Estatal'}>{'Estatal'}</MenuItem>
@@ -387,7 +389,7 @@ function BusquedaParticular ({classes}){
                         </Grid>
                         <Grid item md={4} xs={12}>
                             <FormControl className={classes.formControl}>
-                                <TextField id={'proveedor'} name={'proveedor'} margin="normal" select label={'Proveedor información'} value={filter.provider} onChange={(e) => setFilter({...filter, provider: e.target.value})}>
+                                <TextField style={{ background: '#f2f0f2' }} id={'proveedor'} name={'proveedor'} margin="normal" select label={'Proveedor información'} value={filter.provider} onChange={(e) => setFilter({...filter, provider: e.target.value})}>
                                     <MenuItem value={'any'} key={-1}><em>Todos</em></MenuItem>
                                     {providersList.map((item => {
                                         return <MenuItem value={item.value} key={item.key}>
@@ -399,7 +401,7 @@ function BusquedaParticular ({classes}){
                         </Grid>
                         <Grid item md={6} xs={12}>
                             <FormControl className={classes.formControl}>
-                                <TextField id={'institucionDependencia'} name={'institucionDependencia'} margin="normal" select label={'Institución'} value={filter.institucionDependencia} onChange={(e) => setFilter({...filter, institucionDependencia: e.target.value})}>
+                                <TextField style={{ background: '#f2f0f2' }} id={'institucionDependencia'} name={'institucionDependencia'} margin="normal" select label={'Institución'} value={filter.institucionDependencia} onChange={(e) => setFilter({...filter, institucionDependencia: e.target.value})}>
                                     <MenuItem value = 'any'><em>Todas</em></MenuItem>
                                     {institutionsList.map((item => {
                                         return <MenuItem value={item.value} key={item.key}>
@@ -420,7 +422,7 @@ function BusquedaParticular ({classes}){
 
                         {showAdvancedSearch && <Grid item xs={12} md={3}>
                             <FormControl className={classes.formControl}>
-                                <TextField id={'campoOrden'} name={'campoOrden'} margin="normal" select label={'Ordenar por'} value={sort.campoOrden} onChange={e => setSort({...sort, campoOrden: e.target.value})}>
+                                <TextField style={{ background: '#f2f0f2' }} id={'campoOrden'} name={'campoOrden'} margin="normal" select label={'Ordenar por'} value={sort.campoOrden} onChange={e => setSort({...sort, campoOrden: e.target.value})}>
                                     <MenuItem value={'any'}>
                                         <em>Ninguno</em>
                                     </MenuItem>
@@ -434,7 +436,7 @@ function BusquedaParticular ({classes}){
                         </Grid>}
                         {showAdvancedSearch && <Grid item xs={12} md={3}>
                             <FormControl className={classes.formControl}>
-                                <TextField id={'namtipoOrdene'} name={'tipoOrden'} margin="normal" select label={'Tipo ordenamiento'} value={sort.tipoOrden} onChange={e => setSort({...sort, tipoOrden: e.target.value})}>
+                                <TextField style={{ background: '#f2f0f2' }} id={'namtipoOrdene'} name={'tipoOrden'} margin="normal" select label={'Tipo ordenamiento'} value={sort.tipoOrden} onChange={e => setSort({...sort, tipoOrden: e.target.value})}>
                                     <MenuItem value={'any'}>
                                         <em>Ninguno</em>
                                     </MenuItem>
@@ -449,13 +451,13 @@ function BusquedaParticular ({classes}){
 
                         <Grid item md={10}/>
                         <Grid item xs={12} md={1}>
-                            <Button variant="contained" color="secondary" className={classes.button}
+                            <Button variant="contained" color="primary" className={classes.button}
                                     onClick={() => handleCleanAll()}>
                                 Limpiar
                             </Button>
                         </Grid>
                         <Grid item xs={12} md={1}>
-                            <Button variant="contained" color="secondary" className={classes.button}
+                            <Button variant="contained" color="primary" className={classes.button}
                                     onClick={() => {
                                         handleSearchPrevios();
                                         ReactGA.event({ category: 'busqueda-s3P', action: 'click' });

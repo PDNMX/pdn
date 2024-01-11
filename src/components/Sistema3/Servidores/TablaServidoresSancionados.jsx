@@ -78,7 +78,7 @@ function TablaServidoresSancionados({ classes, info, verDetalle, handleChangeRow
           )}
         </Grid>
         <Grid item xs={12} textAlign={'right'}>
-          <Button startIcon={<ArrowBackIcon />} onClick={() => returnToPrevios()} color='secondary' className={classes.buttonBack}>
+          <Button startIcon={<ArrowBackIcon />} onClick={() => returnToPrevios()} color='primary' className={classes.buttonBack}>
             Regresar
           </Button>
         </Grid>

@@ -371,7 +371,7 @@ const [state, setState] = React.useState({
                             </Typography>
                         </Box>
 
-                        <Button onClick={() => backButton()} startIcon={<ArrowBackIcon/>} color='secondary' sx={{fontWeight: 'bold'}} >
+                        <Button onClick={() => backButton()} startIcon={<ArrowBackIcon/>} color='primary' sx={{fontWeight: 'bold'}} >
                             Regresar
                         </Button>
                     </Box>

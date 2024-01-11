@@ -192,11 +192,11 @@ const SearchControls = props => {
 
                 <Grid item xs={12} className={classes.item}>
                     <Box m={0} sx={{ display: 'flex', justifyContent: 'flex-end'}}>
-                        <Button variant="contained" color="secondary" className={classes.button} onClick={props.cleanup}>
+                        <Button variant="contained" color="primary" className={classes.button} onClick={props.cleanup}>
                             Limpiar
                         </Button>
 
-                        <Button variant="contained" color="secondary" className={classes.button} 
+                        <Button variant="contained" color="primary" className={classes.button} 
                                 onClick={e => {
                                     props.search(e.target.value);
                                     ReactGA.event({ category: 'busqueda-s6', action: 'click' });

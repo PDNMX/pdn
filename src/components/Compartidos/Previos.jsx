@@ -32,7 +32,7 @@ const styles = theme => ({
         cursor: 'pointer'
     },
     tableCell: {
-        color: '#fff'
+        color: theme.palette.text.clear
     },
     tablePagination: {
         color: theme.palette.greyColor,
@@ -81,14 +81,14 @@ function Previos({data, classes, handleChangeSujetoObligado}) {
                             <Table className={classes.table}>
                                 <TableHead className={classes.tableHead}>
                                     <TableRow>
-                                        <TableCell align="left" variant={"head"} className={classes.tableCell} style={{width:'40%'}}><Typography
-                                            variant={"body1"}> Proveedor de información</Typography></TableCell>
-                                        <TableCell align="center" variant={"head"} className={classes.tableCell}><Typography
-                                            variant={"body1"}>Nivel</Typography></TableCell>
-                                        <TableCell align="center" variant={"head"} className={classes.tableCell}><Typography
-                                            variant={"body1"}>Estatus</Typography></TableCell>
-                                        <TableCell align="center" variant={"head"} className={classes.tableCell}><Typography
-                                            variant={"body1"}>Número de registros</Typography></TableCell>
+                                        <TableCell align="left" variant={"head"} style={{width:'40%'}}><Typography
+                                            variant={"body1"} className={classes.tableCell}> Proveedor de información</Typography></TableCell>
+                                        <TableCell align="center" variant={"head"}><Typography
+                                            variant={"body1"} className={classes.tableCell}>Nivel</Typography></TableCell>
+                                        <TableCell align="center" variant={"head"}><Typography
+                                            variant={"body1"} className={classes.tableCell}>Estatus</Typography></TableCell>
+                                        <TableCell align="center" variant={"head"}><Typography
+                                            variant={"body1"}className={classes.tableCell}>Número de registros</Typography></TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody className={classes.tableBody}>
