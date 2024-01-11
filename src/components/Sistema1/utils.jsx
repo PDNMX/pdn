@@ -309,7 +309,7 @@ export function CompDomicilio(props) {
 export function SelectElement({ formControl, value, handle, data, label, name }) {
 	return (
 		<FormControl className={formControl}>
-			<TextField id={name} name={name} margin="normal" select label={label} value={value} onChange={handle}>
+			<TextField style={{ background: '#f2f0f2' }} id={name} name={name} margin="normal" select label={label} value={value} onChange={handle}>
 				{data.map((q) => {
 					return (
 						<MenuItem key={name + q.clave} value={q.clave}>

@@ -18,6 +18,9 @@ const useStyles = makeStyles(style);
 const CustomTypography = withStyles(theme => ({
   root: {
     color: theme.palette.text.primary
+  },
+  background: {
+    backgroundColor: theme.palette.background.noSelect
   }
 }))(Typography);
 
@@ -84,17 +87,17 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
           <Grid container spacing={1}>
             <Grid item xs={12} md={3}>
               <FormControl className={classes.formControl}>
-                <TextField id='mui-name' label='Nombre(s)' color="secondary" value={nombres} name='nombres' onChange={handleInputChange} margin='normal' fullWidth />
+                <TextField style={{ background: '#f2f0f2' }} id='mui-name' label='Nombre(s)' color="secondary" value={nombres} name='nombres' onChange={handleInputChange} margin='normal' fullWidth />
               </FormControl>
             </Grid>
             <Grid item xs={12} md={3}>
               <FormControl className={classes.formControl}>
-                <TextField id='primerApellido' name='primerApellido' value={primerApellido} onChange={handleInputChange} label='Apellido uno' margin='normal' fullWidth />
+                <TextField style={{ background: '#f2f0f2' }} id='primerApellido' name='primerApellido' value={primerApellido} onChange={handleInputChange} label='Apellido uno' margin='normal' fullWidth />
               </FormControl>
             </Grid>
             <Grid item xs={12} md={3}>
               <FormControl className={classes.formControl}>
-                <TextField id='segundoApellido' name='segundoApellido' value={segundoApellido} onChange={handleInputChange} label='Apellido dos' margin='normal' fullWidth />
+                <TextField style={{ background: '#f2f0f2' }} id='segundoApellido' name='segundoApellido' value={segundoApellido} onChange={handleInputChange} label='Apellido dos' margin='normal' fullWidth />
               </FormControl>
             </Grid>
             <Grid item xs={12} md={3}>
@@ -103,23 +106,23 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
 
             <Grid item xs={12} md={4}>
               <FormControl className={classes.formControl}>
-                <TextField id='nombreEntePublico' label='Nombre del Ente Público' value={nombreEntePublico} name='nombreEntePublico' onChange={handleInputChange} margin='normal' fullWidth />
+                <TextField style={{ background: '#f2f0f2' }} id='nombreEntePublico' label='Nombre del Ente Público' value={nombreEntePublico} name='nombreEntePublico' onChange={handleInputChange} margin='normal' fullWidth />
               </FormControl>
             </Grid>
             <Grid item xs={12} md={4}>
               <FormControl className={classes.formControl}>
-                <TextField id='empleoCargoComision' label='Empleo, Cargo o Comisión' value={empleoCargoComision} name='empleoCargoComision' onChange={handleInputChange} margin='normal' fullWidth />
+                <TextField style={{ background: '#f2f0f2' }} id='empleoCargoComision' label='Empleo, Cargo o Comisión' value={empleoCargoComision} name='empleoCargoComision' onChange={handleInputChange} margin='normal' fullWidth />
               </FormControl>
             </Grid>
             <Grid item xs={12} md={4}>
               <FormControl className={classes.formControl}>
-                <TextField id='nivelEmpleoCargoComision' label='Nivel del Empleo, Cargo o Comisión' value={nivelEmpleoCargoComision} name='nivelEmpleoCargoComision' onChange={handleInputChange} margin='normal' fullWidth />
+                <TextField style={{ background: '#f2f0f2' }} id='nivelEmpleoCargoComision' label='Nivel del Empleo, Cargo o Comisión' value={nivelEmpleoCargoComision} name='nivelEmpleoCargoComision' onChange={handleInputChange} margin='normal' fullWidth />
               </FormControl>
             </Grid>
 
             <Grid item xs={12} md={4}>
               <FormControl className={classes.formControl}>
-                <TextField id='entidadFederativa' name='entidadFederativa' margin='normal' select label='Entidad Federativa' value={entidadFederativa} onChange={handleInputChange}>
+                <TextField style={{ background: '#f2f0f2' }} id='entidadFederativa' name='entidadFederativa' margin='normal' select label='Entidad Federativa' value={entidadFederativa} onChange={handleInputChange}>
                   {catEntidadesFederativas.map(q => {
                     return (
                       <MenuItem key={'entidadFederativa' + q.cve_agee} value={q.cve_agee}>
@@ -132,7 +135,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
             </Grid>
             <Grid item xs={12} md={4}>
               <FormControl className={classes.formControl}>
-                <TextField id='municipioAlcaldia' name='municipioAlcaldia' margin='normal' select label='Municipio/Alcaldía' value={municipioAlcaldia} onChange={handleInputChange}>
+                <TextField style={{ background: '#f2f0f2' }} id='municipioAlcaldia' name='municipioAlcaldia' margin='normal' select label='Municipio/Alcaldía' value={municipioAlcaldia} onChange={handleInputChange}>
                   {catMunicipios.map(q => {
                     return (
                       <MenuItem key={'municipioAlcaldia' + q.cve_agem} value={q.cve_agem}>
@@ -172,6 +175,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                 <Grid container spacing={1}>
                   <Grid item xs={6}>
                     <TextField
+                      style={{ background: '#f2f0f2' }} 
                       id='superficieConstruccionMin'
                       placeholder='mínimo'
                       value={superficieConstruccionMin}
@@ -187,6 +191,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
+                      style={{ background: '#f2f0f2' }} 
                       id='superficieConstruccionMax'
                       placeholder='máximo'
                       value={superficieConstruccionMax}
@@ -210,6 +215,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                 <Grid container spacing={1}>
                   <Grid item xs={6}>
                     <TextField
+                      style={{ background: '#f2f0f2' }} 
                       id='superficieTerrenoMin'
                       placeholder='mínimo'
                       value={superficieTerrenoMin}
@@ -225,6 +231,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
+                      style={{ background: '#f2f0f2' }} 
                       id='superficieTerrenoMax'
                       placeholder='máximo'
                       value={superficieTerrenoMax}
@@ -248,6 +255,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                 <Grid container spacing={1}>
                   <Grid item xs={6}>
                     <TextField
+                      style={{ background: '#f2f0f2' }} 
                       id='valorAdquisicionMin'
                       placeholder='mínimo'
                       value={valorAdquisicionMin}
@@ -263,6 +271,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
+                      style={{ background: '#f2f0f2' }} 
                       id='valorAdquisicionMax'
                       placeholder='máximo'
                       value={valorAdquisicionMax}
@@ -286,6 +295,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                 <Grid container spacing={1}>
                   <Grid item xs={6}>
                     <TextField
+                      style={{ background: '#f2f0f2' }} 
                       id='totalIngresosNetosMin'
                       placeholder='mínimo'
                       value={totalIngresosNetosMin}
@@ -301,6 +311,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
+                      style={{ background: '#f2f0f2' }} 
                       id='totalIngresosNetosMax'
                       placeholder='máximo'
                       value={totalIngresosNetosMax}
