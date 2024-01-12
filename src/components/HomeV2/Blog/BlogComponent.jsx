@@ -1,60 +1,72 @@
 import React from "react";
-import {Box, Button} from "@mui/material";
-import {withStyles} from "@mui/styles";
+import { Box, Button, Grid, Typography } from "@mui/material";
+import { withStyles } from "@mui/styles";
 import BlogCard from "./BlogCard";
 import axios from "axios";
-import ReactGA from "react-ga4";
 
-const BlogComponent = props => {
-    const [posts, setPosts] = React.useState([]);
+const styles = () => ({
+  container: {
+    maxWidth: 1500,
+    margin: "auto",
+    background: "#f2f0f2",
+    paddingTop: "4rem",
+    paddingBottom: "4rem",
+  },
+  root: {
+    background: "#f2f0f2",
+  },
+});
 
-    React.useEffect( () => {
-        const config = {
-            url: import.meta.env.VITE_BLOG_API_URL,
-            method: "GET",
-            params: {
-                key: import.meta.env.VITE_BLOG_API_KEY,
-                limit: 3,
-            },
-            json: true
-        };
+const BlogComponent = (props) => {
+  const { classes } = props;
+  const [posts, setPosts] = React.useState([]);
 
-        axios(config).then(data => {
-            //console.log(data);
-            setPosts(data.data.posts);
-        }).catch(error => {
-            console.log(error);
-        })
-    },[]);
+  React.useEffect(() => {
+    const config = {
+      url: import.meta.env.VITE_BLOG_API_URL,
+      method: "GET",
+      params: {
+        key: import.meta.env.VITE_BLOG_API_KEY,
+        limit: 6,
+      },
+      json: true,
+    };
 
-    return (
-        <div className='blog'>
-            <Box display="flex" >
-                <Box>
-                    <h1>Blog</h1>
-                </Box>
-            </Box>
-            <Box display='flex' id='blogcards'>
-                {
-                    posts.map((p, i) => {
-                        return <BlogCard key={i} post={p} />
-                    })
-                }
-            </Box>
+    axios(config)
+      .then((data) => {
+        //console.log(data);
+        setPosts(data.data.posts);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
+  return (
+    <div className={classes.root}>
+      <Grid
+        container
+        direction="row"
+        justifyContent="center"
+        alignItems="stretch"
+        className={classes.container}
+      >
+        <Grid item md={12}>
+          <Typography variant="h4">Blog</Typography>
+        </Grid>
 
-            <Box display='flex' flexDirection='row-reverse'>
-                <Button 
-                    variant="contained"
-                    href="https://www.plataformadigitalnacional.org/blog"
-                    onClick={()=>ReactGA.pageview('/blog')}
-                >
-                    Conoce más
-                </Button>
-            </Box>
+        <Grid item md={12}>
+          <Typography variant="h6" style={{ textAlign: "justify" }} paragraph>
+            Conoce nuestra ultimas públicaciones
+          </Typography>
+        </Grid>
 
-        </div>
-    );
-}
+        {posts.map((p, i) => {
+          return <BlogCard key={i} post={p} />;
+        })}
+      </Grid>
+    </div>
+  );
+};
 
-export default BlogComponent;
+export default withStyles(styles)(BlogComponent);
