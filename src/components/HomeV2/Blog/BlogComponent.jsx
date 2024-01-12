@@ -1,8 +1,10 @@
 import React from "react";
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Stack, Grid, Typography } from "@mui/material";
 import { withStyles } from "@mui/styles";
 import BlogCard from "./BlogCard";
 import axios from "axios";
+import ButtonPDN from "../../Compartidos/ButtonPDN";
+
 
 const styles = () => ({
   container: {
@@ -27,7 +29,7 @@ const BlogComponent = (props) => {
       method: "GET",
       params: {
         key: import.meta.env.VITE_BLOG_API_KEY,
-        limit: 6,
+        limit: 4,
       },
       json: true,
     };
@@ -51,19 +53,33 @@ const BlogComponent = (props) => {
         alignItems="stretch"
         className={classes.container}
       >
-        <Grid item md={12}>
+        <Grid item md={12} xs={12}>
           <Typography variant="h4">Blog</Typography>
         </Grid>
 
-        <Grid item md={12}>
+        <Grid item md={12} xs={12}>
           <Typography variant="h6" style={{ textAlign: "justify" }} paragraph>
-            Conoce nuestra ultimas públicaciones
+            Descubre nuestras últimas publicaciones
           </Typography>
         </Grid>
 
         {posts.map((p, i) => {
           return <BlogCard key={i} post={p} />;
         })}
+
+
+        <Grid item md={12} sm={12} mt={5}>
+        <Stack direction="row" justifyContent="end">
+        <ButtonPDN
+              text={""}
+              href={"https://www.plataformadigitalnacional.org/blog/"}
+              onClick={() => ReactGA.pageview("/blog")}
+              style={{ color: "white" }}
+            >
+              CONOCE MÁS
+            </ButtonPDN>
+        </Stack>
+        </Grid>
       </Grid>
     </div>
   );

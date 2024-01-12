@@ -12,6 +12,7 @@ const styles = () => ({
   card: {
     /* border: "1px solid",
     borderRadius: "0.6em", */
+    borderRadius: "0.6em",
     boxShadow:
       "0 13px 27px -5px hsla(240, 30.1%, 28%, 0.25), 0 8px 16px -8px hsla(0, 0%, 0%, 0.3), 0 -6px 16px -6px hsla(0, 0%, 0%, 0.03)",
     transition: "all ease 200ms",
@@ -34,7 +35,7 @@ const SysCard = (props) => {
   const { classes, sys } = props;
 
   return (
-    <Grid item md={2} p={1}>
+    <Grid item lg={2} md={4} xs={12} sm={6} p={1}>
       <Card className={classes.card}>
         <CardActionArea component={RouterLink} to={sys.url} >
           <CardMedia

@@ -73,15 +73,13 @@ const SysPDN = (props) => {
         alignItems="stretch"
         className={classes.container}
       >
-        <Grid item md={12}>
-          <Typography
-            variant="h4"
-          >
+        <Grid item md={12} sm={12}>
+          <Typography variant="h4" >
             Sistemas de la <br></br>Plataforma Digital Nacional
           </Typography>
         </Grid>
 
-        <Grid item md={12} >
+        <Grid item md={12} sm={12} >
           <Typography variant="h6" style={{ textAlign: "justify" }} paragraph>
             El desarrollo de la <b>PDN</b> considera seis sistemas que integran
             datos estratégicos para la lucha contra la corrupción, contemplados
@@ -93,6 +91,7 @@ const SysPDN = (props) => {
         {systems.map((s, i) => {
           return <SysCard key={i} sys={s} />;
         })}
+
       </Grid>
     </div>
   );
