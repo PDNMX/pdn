@@ -1,36 +1,56 @@
 import React from "react";
-import {Typography, Box} from "@mui/material";
-import {Link as RouterLink} from "react-router-dom";
-import {withStyles} from "@mui/styles";
+import { Typography, Grid } from "@mui/material";
+import { Link as RouterLink } from "react-router-dom";
+import { withStyles } from "@mui/styles";
 
-const styles = theme => ({
-    icon: {
-        width: 100
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import { CardActionArea } from "@mui/material";
+
+const styles = () => ({
+  card: {
+    /* border: "1px solid",
+    borderRadius: "0.6em", */
+    boxShadow:
+      "0 13px 27px -5px hsla(240, 30.1%, 28%, 0.25), 0 8px 16px -8px hsla(0, 0%, 0%, 0.3), 0 -6px 16px -6px hsla(0, 0%, 0%, 0.03)",
+    transition: "all ease 200ms",
+    
+    "&:hover": {
+      transform: "scale(1.03)",
+      boxShadow:
+        "0 13px 40px -5px hsla(240, 30.1%, 28%, 0.12), 0 8px 32px -8px hsla(0, 0%, 0%, 0.14), 0 -6px 32px -6px hsla(0, 0%, 0%, 0.02)",
     },
-    box: {
-        margin: theme.spacing(2),
-        padding: theme.spacing(2),
-        width: 260,
-        borderRadius: 2,
-        //display: "flex",
-        //justifyContent: "center",
-        textAlign: "center",
-        textDecoration: "none"
-    },
-})
+    
+  },
+  gridItem: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between"
+  }
+});
 
-const SysCard = props => {
-    const {classes, sys} = props;
+const SysCard = (props) => {
+  const { classes, sys } = props;
 
-    return (
-        <Box border={1} className={classes.box}
-             //style={{borderColor: sys.color}}
-             component={RouterLink} to={sys.url}
-        >
-            <img src={sys.icon} alt={sys.name} className={classes.icon}/>
-            <Typography color={sys.color}>{sys.name}</Typography>
-        </Box>
-    );
+  return (
+    <Grid item md={2} p={1}>
+      <Card className={classes.card}>
+        <CardActionArea component={RouterLink} to={sys.url} >
+          <CardMedia
+            component="img"
+            height="220"
+            image={sys.icon}
+            alt={sys.name}
+            sx={{ backgroundColor: sys.color, objectFit: "scale-down", paddingTop: '1rem', paddingBottom: '1rem' }}
+          />
+          <CardContent >
+            <Typography variant="body1">{sys.name}</Typography>
+          </CardContent>
+        </CardActionArea>
+      </Card>
+    </Grid>
+  );
 };
 
 export default withStyles(styles)(SysCard);

@@ -1,18 +1,24 @@
 import React from "react";
-import { Grid, useMediaQuery } from "@mui/material";
-import {Typography} from "@mui/material";
-import { withStyles, useTheme } from "@mui/styles";
+import { Grid, Typography } from "@mui/material";
+import { withStyles } from "@mui/styles";
 import SysCard from "./SysCard";
-import IconS1 from "../../../assets/rediseno2023/imgs/iconos/sistemas/ico_s1.svg";
-import IconS2 from "../../../assets/rediseno2023/imgs/iconos/sistemas/ico_s2.svg";
-import IconS3 from "../../../assets/rediseno2023/imgs/iconos/sistemas/ico_s3.svg";
-import IconS4 from "../../../assets/rediseno2023/imgs/iconos/sistemas/ico_s4.svg";
-import IconS5 from "../../../assets/rediseno2023/imgs/iconos/sistemas/ico_s5.svg";
-import IconS6 from "../../../assets/rediseno2023/imgs/iconos/sistemas/ico_s6.svg";
+import IconS1 from "../../../assets/rediseno2023/imgs/iconos/sistemas/ico_s1_light.svg";
+import IconS2 from "../../../assets/rediseno2023/imgs/iconos/sistemas/ico_s2_light.svg";
+import IconS3 from "../../../assets/rediseno2023/imgs/iconos/sistemas/ico_s3_light.svg";
+import IconS4 from "../../../assets/rediseno2023/imgs/iconos/sistemas/ico_s4_light.svg";
+import IconS5 from "../../../assets/rediseno2023/imgs/iconos/sistemas/ico_s5_light.svg";
+import IconS6 from "../../../assets/rediseno2023/imgs/iconos/sistemas/ico_s6_light.svg";
 
 const styles = () => ({
-  root: {
+  container: {
     maxWidth: 1500,
+    margin: 'auto',
+    background: "#f2f0f2",
+    paddingTop: '4rem',
+    paddingBottom: '4rem'
+  },
+  root: {
+    background: "#f2f0f2",
   },
 });
 
@@ -57,47 +63,38 @@ const systems = [
 
 const SysPDN = (props) => {
   const { classes } = props;
-  const theme = useTheme();
-
-  const justify = useMediaQuery(theme.breakpoints.down("md"))
-    ? "center"
-    : "space-evenly";
 
   return (
-    <>
+    <div className={classes.root}>
       <Grid
         container
         direction="row"
         justifyContent="center"
-        alignItems="center"
+        alignItems="stretch"
+        className={classes.container}
       >
-        <Grid item md={12} className={classes.root}>
-          <Typography variant="h4" style={{ marginTop: '40px', fontWeight: 'bold' }} paragraph>
+        <Grid item md={12}>
+          <Typography
+            variant="h4"
+          >
             Sistemas de la <br></br>Plataforma Digital Nacional
           </Typography>
         </Grid>
-        <Grid item md={12} className={classes.root}>
-        <Typography variant="h6" style={{ textAlign: 'justify' }}paragraph>
+
+        <Grid item md={12} >
+          <Typography variant="h6" style={{ textAlign: "justify" }} paragraph>
             El desarrollo de la <b>PDN</b> considera seis sistemas que integran
             datos estratégicos para la lucha contra la corrupción, contemplados
             en la{" "}
             <b>Ley General del Sistema Nacional Anticorrupción (LGSNA).</b>
           </Typography>
         </Grid>
-
-        <Grid
-          display="flex"
-          flexWrap="wrap"
-          justifyContent={justify}
-          className={classes.root}
-          marginTop={'10px'}
-        >
-          {systems.map((s, i) => {
-            return <SysCard key={i} sys={s} />;
-          })}
-        </Grid>
+        
+        {systems.map((s, i) => {
+          return <SysCard key={i} sys={s} />;
+        })}
       </Grid>
-    </>
+    </div>
   );
 };
 

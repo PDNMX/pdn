@@ -16,7 +16,7 @@ const Layout = ({children})=>{
         <React.Fragment>
             <div className={classes.backgroundCruces}>
                 <Banner/>
-                <Version/>    
+                {/* <Version/> */}    
                 {children}
                 <AsistenteBusqueda/>
                 <Glosario/>
