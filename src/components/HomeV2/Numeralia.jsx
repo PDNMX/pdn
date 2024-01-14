@@ -98,7 +98,7 @@ const Numeralia = props => {
         <React.Fragment>
             <Paper className={classes.bg}>
             <Grid container direction="row"  alignItems="flex-start" justifyContent='center' className={classes.container}>
-                <Grid item lg={2} md={4} sm={6} xs={12} align="center">
+                <Grid item xl={2} md={4} sm={6} xs={12} align="center">
                     <Typography className={classes.headingText} paragraph>
                         <CountUp separator="," end={numeralia.values[0][1]} duration={3} delay={0}>
                             {({ countUpRef }) => (
@@ -110,7 +110,7 @@ const Numeralia = props => {
                         Entes conectados
                     </Typography>
                 </Grid>
-                <Grid item lg={2} md={4} sm={6} xs={12} align="center">
+                <Grid item xl={2} md={4} sm={6} xs={12} align="center">
                     <Typography className={classes.headingText} paragraph>
                         <CountUp separator="," end={(numeralia.values[1][1])} duration={3} delay={0}>
                             {({ countUpRef }) => (
@@ -122,7 +122,7 @@ const Numeralia = props => {
                         Declaraciones
                     </Typography>
                 </Grid>
-                <Grid item lg={2} md={4} sm={6} xs={12} align="center">
+                <Grid item xl={2} md={4} sm={6} xs={12} align="center">
                     <Typography className={classes.headingText} paragraph>
                         <CountUp separator="," end={numeralia.values[2][1]} duration={3} delay={0}>
                             {({ countUpRef }) => (
@@ -134,7 +134,7 @@ const Numeralia = props => {
                         Procedimientos de contratación
                     </Typography>
                 </Grid>
-                <Grid item lg={2} md={4} sm={6} xs={12} align="center">
+                <Grid item xl={2} md={4} sm={6} xs={12} align="center">
                     <Typography className={classes.headingText} paragraph>
                         <CountUp separator="," end={numeralia.values[3][1]} duration={3} delay={0}>
                             {({ countUpRef }) => (
@@ -146,7 +146,7 @@ const Numeralia = props => {
                         Sanciones
                     </Typography>
                 </Grid>
-                <Grid item lg={2} md={4} sm={6} xs={12} align="center">
+                <Grid item xl={2} md={4} sm={6} xs={12} align="center">
                     <Typography className={classes.headingText} paragraph>
                         <CountUp separator="," end={numeralia.values[4][1]} duration={3} delay={0}>
                             {({ countUpRef }) => (

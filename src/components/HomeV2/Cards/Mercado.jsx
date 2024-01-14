@@ -34,12 +34,12 @@ const CardMercardo = (props) => {
         alignItems="center"
         className={classes.container}
       >
-        <Grid item xs={12} sm={2}>
-          <Stack direction="row" justifyContent="end">
+        <Grid item xs={12} lg={2}>
+          <Stack direction="row" justifyContent={{ xs: 'center', lg: 'end'}}>
             <img alt="Logo MDA" src={logoMDA} className={classes.logoMDA} />
           </Stack>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} lg={6} p={{ xs: 1, lg: 0}}>
           <Typography variant="h6" paragraph>
             El <strong>Mercado Digital Anticorrupción (MDA)</strong> es un
             espacio en el que se encuentran disponibles{" "}
@@ -51,10 +51,9 @@ const CardMercardo = (props) => {
             instituciones y que cumplen los objetivos de la PDN.
           </Typography>
         </Grid>
-        <Grid item sm={8} xs={12}>
-          <Stack direction="row" justifyContent="end">
+        <Grid item sm={12} xs={12} pr={{ xs: 0, md: 1}}>
+          <Stack direction="row" justifyContent={{ xs:'center', md:'end'}}>
             <ButtonPDN
-              text={""}
               href={"https://mda.plataformadigitalnacional.org/"}
               onClick={() => ReactGA.pageview("/mda")}
               style={{ color: "white" }}

@@ -1,10 +1,10 @@
 import React from "react";
 import withStyles from "@mui/styles/withStyles";
-import { Typography, Grid } from "@mui/material";
+import { Typography, Grid, Stack } from "@mui/material";
 import { Link } from "react-router-dom";
 import BuscadorModal from "./Buscador/BotonPrincipal";
 
-import bgPDN from "../../assets/rediseno2023/imgs/fondos/fondo-mapa.svg";
+/* import bgPDN from "../../assets/rediseno2023/imgs/fondos/fondo-mapa.svg"; */
 import lgoSNA from "../../assets/rediseno2023/imgs/iconos/logotipos/logo-sna.svg";
 import lgoSESNA from "../../assets/rediseno2023/imgs/iconos/logotipos/logo-sesna.svg";
 import ButtonPDN from "../Compartidos/ButtonPDN";
@@ -28,23 +28,32 @@ const QueEsPDN = (props) => {
       <div className="rootHome">
         <Grid
           container
-          spacing={0}
-          alignItems="flex-start"
+          alignItems="row"
           justifyContent="center"
           className={classes.container}
         >
-          <Grid item md={6} sm={12} xs={12} align="left">
-            <h1>
+          <Grid
+            item
+            md={5}
+            lg={5}
+            xs={12}
+            p={{ xs: 1, xl: 0 }}
+            sx={{ textAlign: { xs: "center", md: "left" } }}
+          >
+            <Typography variant="h1">
               PLATAFORMA
               <br />
               DIGITAL NACIONAL
-            </h1>
-            <h2>
-              Inteligencia <span>Anticorrupción</span>
-            </h2>
-            <div>
-              <img style={{marginRight: "1rem"}} src={lgoSNA} alt="Sistema Nacional Anticorrupción" />
+            </Typography>
+            <Typography variant="h2">Inteligencia Anticorrupción</Typography>
+            <div >
               <img
+              style={{ margin: "1rem" }}
+                src={lgoSNA}
+                alt="Sistema Nacional Anticorrupción"
+              />
+              <img
+              style={{ margin: "1rem" }}
                 src={lgoSESNA}
                 alt="Secretaría Ejecutiva del Sistema Nacional Anticorrupción"
               />
@@ -52,8 +61,8 @@ const QueEsPDN = (props) => {
             <br />
             <BuscadorModal />
           </Grid>
-          <Grid item md={6} sm={12} xs={12} align="left">
-            <Typography marginTop={"20px"}>
+          <Grid item lg={7} md={7} xs={12} align="left" p={{ xs: 1, lg: 0 }}>
+            <Typography>
               La <b>Plataforma Digital Nacional (PDN)</b> del Sistema Nacional
               Anticorrupción (SNA) es un <b>instrumento de inteligencia</b> que
               tiene como objetivo eliminar las barreras de información para que
@@ -74,22 +83,15 @@ const QueEsPDN = (props) => {
               <br />
               <br />
             </Typography>
-
-            <Grid
-              container
-              direction="row"
-              justifyContent="flex-end"
-              alignItems="flex-end"
-            >
-              <Grid item md={12} sm={12} xs={12} align="right">
-                <Link className={classes.link} to="/about">
-                  <ButtonPDN target="_blank" style={{ color: "white" }}>
-                    Conoce más
-                  </ButtonPDN>
-                </Link>
-              </Grid>
-            </Grid>
           </Grid>
+
+          {/* <Grid item xs={12} pr={{ xs: 0, md: 1 }}>
+            <Stack direction="row" justifyContent={{ xs: "center", md: "end" }}>
+              <Link className={classes.link} to="/about">
+                <ButtonPDN style={{ color: "white" }}>Conoce más</ButtonPDN>
+              </Link>
+            </Stack>
+          </Grid> */}
         </Grid>
       </div>
     </React.Fragment>

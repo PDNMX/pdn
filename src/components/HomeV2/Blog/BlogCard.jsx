@@ -7,6 +7,11 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 
+/* function useIsWidthUp(breakpoint) {
+  const theme = useTheme();
+  return useMediaQuery(theme.breakpoints.up(breakpoint));
+} */
+
 const styles = () => ({
   root: {
     textDecoration: "none",
@@ -31,6 +36,7 @@ const styles = () => ({
 
 const BlogCard = (props) => {
   const { classes, post } = props;
+  //const isXsUp = useIsWidthUp("lg");
   return (
     <Grid
       item
@@ -55,9 +61,10 @@ const BlogCard = (props) => {
           </Typography>
         </CardContent>
         <Stack direction="row" justifyContent="end">
+        {/* justifyContent={isXsUp ? "space-between" : "space-evenly"} */}
           <CardMedia
             component="img"
-            sx={{ width: "15rem", height: "auto" }}
+            sx={{ width: "15rem", height: "auto", display: { xs: 'none', sm: 'none', md: 'block' } }}
             image={post.feature_image}
           />
         </Stack>

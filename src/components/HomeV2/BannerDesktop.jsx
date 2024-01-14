@@ -21,7 +21,8 @@ const styles = theme => ({
     opc: {
         "&:hover": {
             backgroundColor: "#ebe9f9",
-            color:"#55575a"
+            color:"#55575a",
+            borderRadius: '75px'
         },
         paddingBottom: theme.spacing(2),
         textAlign: 'center',
@@ -30,7 +31,8 @@ const styles = theme => ({
     },
     selected: {
         backgroundColor: "#ebe9f9",
-        color:"#55575a"
+        color:"#55575a",
+        borderRadius: '75px'
     }
 });
 
@@ -89,7 +91,7 @@ const BannerDesktop = props => {
                     <div>
                         <nav>
                             <ul>   
-                                <li>   
+                                <li className={classes.opc}>   
                                     <RouterLink to="/mesa-de-ayuda">
                                         <img src={Mesa} alt="PDN"/>
                                         <Typography>
@@ -97,7 +99,7 @@ const BannerDesktop = props => {
                                         </Typography>
                                     </RouterLink>
                                 </li>
-                                <li>
+                                <li className={classes.opc}>
                                     <RouterLink  to="/especificaciones">
                                         <img src={Espe} alt="PDN" />
                                         <Typography>
@@ -127,7 +129,7 @@ const BannerDesktop = props => {
                                 </li>    
                                 
                                 
-                                <li>
+                                <li className={classes.opc}>
                                     <Link href="https://mda.plataformadigitalnacional.org/" 
                                     onClick={() => ReactGA.pageview('/mda')}>
                                     <img src={MDA} alt="Mercado Digital Anticorrupción"/>
@@ -166,11 +168,12 @@ const BannerDesktop = props => {
                                     src={LoginIcon}
                                     alt="Iniciar sesión"
                                 />
+                                <p><small>Iniciar sesión</small></p>
                                 </div>
-                                <div className="autenticado">
+                                {/* <div className="autenticado">
                                     <p><small>{user.nombres}</small></p>
                                     <p><small>Iniciar sesión</small></p>
-                                </div>
+                                </div> */}
                                 <div>
                                 
                                 </div>

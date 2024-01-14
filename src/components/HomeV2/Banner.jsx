@@ -14,7 +14,7 @@ function useIsWidthUp(breakpoint) {
 
 
 const Banner = (props) => {
-    const isXsUp = useIsWidthUp("lg");
+    const isXsUp = useIsWidthUp("xl");
     const systems = pdnRoutes.filter(route => route.type==='system')
 
     const [open, setOpen] = React.useState(false);

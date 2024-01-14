@@ -173,6 +173,12 @@ body {
   flex-direction: column;
 }
 
+.logo-sesion { 
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+
 /*... FIN ENCABEZADO ...*/
 
 

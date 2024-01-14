@@ -53,12 +53,9 @@ const BlogComponent = (props) => {
         alignItems="stretch"
         className={classes.container}
       >
-        <Grid item md={12} xs={12}>
+        <Grid item md={12} xs={12} pl={{ xs: 1, xl: 0}}>
           <Typography variant="h4">Blog</Typography>
-        </Grid>
-
-        <Grid item md={12} xs={12}>
-          <Typography variant="h6" style={{ textAlign: "justify" }} paragraph>
+          <Typography variant="h6" paragraph>
             Descubre nuestras últimas publicaciones
           </Typography>
         </Grid>
@@ -67,11 +64,9 @@ const BlogComponent = (props) => {
           return <BlogCard key={i} post={p} />;
         })}
 
-
-        <Grid item md={12} sm={12} mt={5}>
-        <Stack direction="row" justifyContent="end">
+        <Grid item md={12} sm={12} mt={5} pr={{ xs: 0, md: 1}}>
+        <Stack direction="row" justifyContent={{ xs:'center', md:'end'}}>
         <ButtonPDN
-              text={""}
               href={"https://www.plataformadigitalnacional.org/blog/"}
               onClick={() => ReactGA.pageview("/blog")}
               style={{ color: "white" }}

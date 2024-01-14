@@ -35,15 +35,15 @@ const SysCard = (props) => {
   const { classes, sys } = props;
 
   return (
-    <Grid item lg={2} md={4} xs={12} sm={6} p={1}>
+    <Grid item lg={2} sm={4} xs={6} p={1}>
       <Card className={classes.card}>
         <CardActionArea component={RouterLink} to={sys.url} >
           <CardMedia
             component="img"
-            height="220"
+            /* height="auto" */
             image={sys.icon}
             alt={sys.name}
-            sx={{ backgroundColor: sys.color, objectFit: "scale-down", paddingTop: '1rem', paddingBottom: '1rem' }}
+            sx={{ backgroundColor: sys.color, objectFit: "scale-down", padding: '2rem', width: "auto" }}
           />
           <CardContent >
             <Typography variant="body1">{sys.name}</Typography>

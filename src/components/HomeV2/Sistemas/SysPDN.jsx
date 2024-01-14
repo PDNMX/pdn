@@ -73,14 +73,11 @@ const SysPDN = (props) => {
         alignItems="stretch"
         className={classes.container}
       >
-        <Grid item md={12} sm={12}>
+        <Grid item md={12} sm={12} pl={{ xs: 1, xl: 0}}>
           <Typography variant="h4" >
             Sistemas de la <br></br>Plataforma Digital Nacional
           </Typography>
-        </Grid>
-
-        <Grid item md={12} sm={12} >
-          <Typography variant="h6" style={{ textAlign: "justify" }} paragraph>
+          <Typography variant="h6" paragraph>
             El desarrollo de la <b>PDN</b> considera seis sistemas que integran
             datos estratégicos para la lucha contra la corrupción, contemplados
             en la{" "}
