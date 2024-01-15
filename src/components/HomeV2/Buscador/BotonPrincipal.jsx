@@ -12,6 +12,7 @@ import SearchIcon from '@mui/icons-material/Search';
 
 import { Grid } from "@mui/material";
 import Stepper from "./LinearStepper";
+import ButtonPDN from "../../Compartidos/ButtonPDN";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -95,13 +96,13 @@ export default function CustomizedDialogs() {
 
   return (
     <>
-      <Button
+      <ButtonPDN
         variant="contained"
         endIcon={<SearchIcon />}
         onClick={handleClickOpen}
       >
         Asistente de búsqueda
-      </Button>
+      </ButtonPDN>
       <BootstrapDialog
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
