@@ -1,7 +1,7 @@
 import React from "react";
 import withStyles from "@mui/styles/withStyles";
 import { Typography, Grid, Stack } from "@mui/material";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import BuscadorModal from "./Buscador/BotonPrincipal";
 
 /* import bgPDN from "../../assets/rediseno2023/imgs/fondos/fondo-mapa.svg"; */

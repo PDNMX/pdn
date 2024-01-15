@@ -6,7 +6,7 @@ import CenterFooter from "./centerFooter";
 import RightFooter from "./rightFooter"; */
 /* import MobileFooter from "./mobileFooter"; */
 import CreativeIcon from '../IconCreativeCommons';
-
+import { Link } from "react-router-dom";
 
 import logoSESNA from "../../../assets/rediseno2023/imgs/iconos/logotipos/logo-sesna.svg";
 import logoPDN from "../../../assets/rediseno2023/imgs/iconos/logotipos/logo-pdn.svg";
@@ -80,7 +80,7 @@ const Footer = () => {
       >
         <Grid item md={3} xs={12} sm={3}>
           <ul>
-            <li><a href="https://www.plataformadigitalnacional.org/about">Acerca de la PDN</a></li>
+            <li><Link to="/about">Acerca de la PDN</Link></li>
             <li><a href="https://www.plataformadigitalnacional.org/mapa-sla/">Avances de
                 Interconexión</a></li>
             <li><a href="https://mda.plataformadigitalnacional.org/">Mercado Digital Anticorrupción</a>
@@ -89,8 +89,9 @@ const Footer = () => {
         </Grid>
         <Grid item md={3} xs={12} sm={3}>
           <ul >
-            <li><a href="https://www.plataformadigitalnacional.org/faq">Preguntas
-                frecuentes</a></li>
+            <li>
+                <Link to="/faq">Preguntas frecuentes</Link>
+            </li>
             <li><a href="https://www.youtube.com/channel/UCJ0nWmB2-ADfn95r5cjmLJA/">Videos</a></li>
             <li> <a href="https://drive.google.com/drive/folders/1t_vGUfagr75TAZ8-E4NZfL-fU0BcsPlZ">Boletines
                 y prensa</a></li>
@@ -98,8 +99,8 @@ const Footer = () => {
         </Grid>
         <Grid item md={3} xs={12} sm={3}>
           <ul >
-            <li><a href="https://www.plataformadigitalnacional.org/mesa-de-ayuda">Mesa de ayuda</a></li>
-            <li><a href="https://www.plataformadigitalnacional.org/especificaciones">Especificaciones Técnicas</a></li>
+            <li><Link to="/mesa-de-ayuda">Mesa de ayuda</Link></li>
+            <li><Link to="/especificaciones">Especificaciones técnicas</Link></li>
             <li> <a href="https://www.plataformadigitalnacional.org/blog/">Blog</a></li>
           </ul>
         </Grid>
