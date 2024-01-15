@@ -26,14 +26,14 @@ const styles = theme => ({
             width: "1em",
             marginLeft: "-1em"
         },
-        /* padding: theme.spacing(1),
-        marginTop: 0, */
     },
     paper: {
         padding: theme.spacing(2),
+        [theme.breakpoints.down('md')]: {
+            padding: theme.spacing(0),
+        },
     }
 });
-/* import styles from '../Declaraciones2/style'; */
 
 const AlertDialog = props => {
     const [state, setState] = React.useState({open: true});
