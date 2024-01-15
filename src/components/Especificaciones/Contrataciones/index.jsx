@@ -76,7 +76,7 @@ const Index = props => {
               </Typography>
 
               <Typography paragraph>
-                <ButtonPDN target='_blank' style={{ color: 'white' }} href='https://drive.google.com/file/d/1-IvF3KYa5rups73BmVV4W8glT9csVGY9/view'>
+                <ButtonPDN target='_blank' href='https://drive.google.com/file/d/1-IvF3KYa5rups73BmVV4W8glT9csVGY9/view'>
                   Más información
                 </ButtonPDN>
               </Typography>

@@ -91,7 +91,7 @@ const AlertDialog = props => {
 
                 </DialogContent>
                 <DialogActions>
-                    <ButtonPDN onClick={handleClose} style={{ color: 'white' }}>
+                    <ButtonPDN onClick={handleClose}>
                         Aceptar
                     </ButtonPDN>
                 </DialogActions>

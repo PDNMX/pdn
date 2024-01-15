@@ -38,10 +38,10 @@ export default function Disclaimer(props) {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <ButtonPDN component={RouterLink} to='/terminos' style={{ color: 'white' }}>
+          <ButtonPDN component={RouterLink} to='/terminos' >
             Términos
           </ButtonPDN>
-          <ButtonPDN onClick={props.handleClose} style={{ color: 'white' }}>
+          <ButtonPDN onClick={props.handleClose}>
             Aceptar
           </ButtonPDN>
         </DialogActions>

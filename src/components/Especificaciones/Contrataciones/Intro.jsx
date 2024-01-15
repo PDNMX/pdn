@@ -90,7 +90,7 @@ const Intro = props => {
             </Typography>
 
             <ButtonPDN href="https://standard.open-contracting.org/latest/es/"
-                       target="_blank" style={{ color: 'white' }}  >
+                       target="_blank">
                 Conoce más
             </ButtonPDN>
             <p></p>
@@ -166,7 +166,7 @@ const Intro = props => {
 
             <ButtonPDN
                 href="https://standard.open-contracting.org/schema/1__1__5/release-schema.json"
-                target="_blank" style={{ color: 'white', marginTop: '10px' }}>
+                target="_blank" style={{ marginTop: '10px' }}>
                 Esquema de entrega
             </ButtonPDN>
 
@@ -181,7 +181,7 @@ const Intro = props => {
 
             <ButtonPDN
                 href="https://standard.open-contracting.org/review/"
-                target="_blank" style={{ color: 'white', marginTop: '10px' }}>
+                target="_blank" style={{ marginTop: '10px' }}>
                 Herramienta de revisión
             </ButtonPDN>
 
@@ -195,7 +195,7 @@ const Intro = props => {
 
             <ButtonPDN
                 href="https://standard.open-contracting.org/latest/es/"
-                target="_blank" style={{ color: 'white', marginTop: '10px' }}>
+                target="_blank" style={{ marginTop: '10px' }}>
                 Estándar OCDS
             </ButtonPDN>
 
@@ -276,7 +276,7 @@ const Intro = props => {
             </Typography>
             <ButtonPDN
                 href="https://standard.open-contracting.org/latest/es/"
-                target="_blank" style={{ color: 'white' }}>
+                target="_blank">
                 Estándar OCDS
             </ButtonPDN>
 
@@ -320,7 +320,7 @@ const Intro = props => {
 
             <ButtonPDN
                 href="https://standard.open-contracting.org/latest/es/guidance/map/extensions/"
-                target="_blank" style={{ color: 'white', marginTop: "10px" }}
+                target="_blank" style={{ marginTop: "10px" }}
             >
                 Extensiones OCDS
             </ButtonPDN>

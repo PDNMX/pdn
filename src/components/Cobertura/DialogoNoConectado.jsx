@@ -53,7 +53,7 @@ const DialogoNoConectado = (props) =>  {
                     {/*<DialogContentText> La Entidad no ha reportado información a la PDN </DialogContentText>*/}
                 </DialogContent>
                 <DialogActions style={{background: bgColor}}>
-                    <Button  variant="contained" onClick={handleClose} autoFocus style={{ color: 'white' }}>
+                    <Button  variant="contained" onClick={handleClose} autoFocus>
                         Aceptar
                     </Button>
                 </DialogActions>

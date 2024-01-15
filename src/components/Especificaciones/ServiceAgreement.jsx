@@ -37,7 +37,7 @@ const ServiceAgreement = props => {
       </Typography>
 
       <Typography className={classes.text} paragraph>
-      <ButtonPDN href={url_doc} target='_blank' style={{ color: 'white' }}>
+      <ButtonPDN href={url_doc} target='_blank'>
         Más información
       </ButtonPDN>
       </Typography>

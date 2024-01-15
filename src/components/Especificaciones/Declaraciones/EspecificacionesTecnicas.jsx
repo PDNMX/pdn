@@ -49,7 +49,7 @@ class EspecificacionesTecnicas extends React.Component {
         </Typography>
 
         <Typography paragraph className={classes.text} >
-          <ButtonPDN  target='_blank' href='https://docs.google.com/spreadsheets/d/19Kyq46YwJk9wM7znYLQdLEKfAF8jTF4WmGJINXd9Lwg/edit?ts=5d88f08f#gid=0' variant='contained'style={{ color: 'white' }}>
+          <ButtonPDN  target='_blank' href='https://docs.google.com/spreadsheets/d/19Kyq46YwJk9wM7znYLQdLEKfAF8jTF4WmGJINXd9Lwg/edit?ts=5d88f08f#gid=0' variant='contained'>
             Más información
           </ButtonPDN>
         </Typography>
@@ -59,7 +59,7 @@ class EspecificacionesTecnicas extends React.Component {
         </Typography>
 
         <Typography paragraph className={classes.text} >
-          <ButtonPDN  target='_blank'  href='https://github.com/PDNMX/catalogos/tree/master/S1%20-%20Declaraciones' style={{ color: 'white' }}>
+          <ButtonPDN  target='_blank'  href='https://github.com/PDNMX/catalogos/tree/master/S1%20-%20Declaraciones' >
             Más información
           </ButtonPDN>
         </Typography>
@@ -90,7 +90,7 @@ class EspecificacionesTecnicas extends React.Component {
           Seguridad
         </Typography>
         <Typography paragraph className={classes.text} >
-          <ButtonPDN  target='_blank'  href='https://drive.google.com/file/d/1-IvF3KYa5rups73BmVV4W8glT9csVGY9/view' style={{ color: 'white' }}>
+          <ButtonPDN  target='_blank'  href='https://drive.google.com/file/d/1-IvF3KYa5rups73BmVV4W8glT9csVGY9/view' >
             Más información
           </ButtonPDN>
         </Typography>
@@ -99,7 +99,7 @@ class EspecificacionesTecnicas extends React.Component {
           Versionado
         </Typography>
         <Typography paragraph className={classes.text} >
-          <ButtonPDN  target='_blank' href='https://drive.google.com/file/d/1xIPoMa-xKlCi9OZs_Uc7ffvANImaKWnK/view' style={{ color: 'white' }}>
+          <ButtonPDN  target='_blank' href='https://drive.google.com/file/d/1xIPoMa-xKlCi9OZs_Uc7ffvANImaKWnK/view' >
             Más información
           </ButtonPDN>
         </Typography>

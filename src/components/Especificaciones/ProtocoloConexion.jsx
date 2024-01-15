@@ -93,7 +93,7 @@ const ProtocoloConexion = props => {
         urlPlan.map(url => {
           console.log(url);
           return (
-            <ButtonPDN href={url.url} style={{ color: 'white', marginRight: '10px' }} target='_blank'>
+            <ButtonPDN href={url.url} target='_blank'>
               {url.nombre}
             </ButtonPDN>
           );
