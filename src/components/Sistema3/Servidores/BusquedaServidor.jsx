@@ -11,6 +11,7 @@ import DetalleServidorSancionado from './DetalleServidorSancionado';
 import ReactGA from 'react-ga4';
 import { getDataAPI, getInstitutions, getProviders, getSummary } from '../utils';
 import FormServidoresSancionados from './FormServidoresSancionados';
+import ButtonPDN from '../../Compartidos/ButtonPDN';
 
 const styles = theme => ({
   'formControl': {
@@ -324,17 +325,17 @@ function BusquedaServidor({ classes }) {
         </Grid>
         <FormServidoresSancionados handleForm={handleForm} handleOrder={handleOrder} query={query} order={order} providersList={providersList} institutionsList={institutionsList} />
 
-        <Grid item md={10} />
+        <Grid item md={9.5} />
 
         <Grid item xs={12} md={1}>
-          <Button variant='contained' color='primary' disabled={!activeClean} className={classes.button} onClick={() => handleCleanAll()}>
+          <ButtonPDN variant='contained' disabled={!activeClean} onClick={() => handleCleanAll()}>
             Limpiar
-          </Button>
+          </ButtonPDN>
         </Grid>
         <Grid item xs={12} md={1}>
-          <Button variant='contained' color='primary' disabled={!activeSearch} className={classes.button} onClick={() => handleSearchPrevios()}>
+          <ButtonPDN variant='contained' disabled={!activeSearch} onClick={() => handleSearchPrevios()}>
             Buscar
-          </Button>
+          </ButtonPDN>
         </Grid>
         <Grid item xs={12}>
           {loading && (

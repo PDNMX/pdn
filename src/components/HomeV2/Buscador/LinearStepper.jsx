@@ -41,6 +41,7 @@ import Fade from '@mui/material/Fade';
 
 import opcionesBusqueda from "./opcionesBusqueda";
 import defaultValues from "./defaultValues";
+import ButtonPDN from "../../Compartidos/ButtonPDN";
 
 const KEY = "pdn.camposBusqueda";
 
@@ -49,19 +50,6 @@ const useStyles = makeStyles((theme) => ({
     margin: "1% 0%",
     width: "100%",
     /* backgroundColor: 'rgba(29, 80, 109, 0.95)', */
-  },
-  button: {
-    marginRight: theme.spacing(1),
-  },
-  btnPDN: {
-    margin: theme.spacing(1),
-    background: "#7a3e7c",
-    borderRadius: "50px",
-    fontWeight: "bold",
-    fontStyle: "italic",
-    "&:hover": {
-      backgroundColor: "#b25fac",
-    },
   },
   cardMedia: {
     width: "30%",
@@ -443,24 +431,24 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
       {activeStep >= steps.length - 1 ? (
         <>
           <ResultadosBusqueda className={classes.container} />
-          <Button
-            className={classes.btnPDN}
+          <ButtonPDN
+            
             disabled={activeStep === 0}
             variant="contained"
             color="primary"
             onClick={handleBack}
           >
             Regresar
-          </Button>
-          <Button
-            className={classes.btnPDN}
+          </ButtonPDN>
+          <ButtonPDN
+            
             disabled={activeStep === 0}
             variant="contained"
             /* color="primary" */
             onClick={handleRestart}
           >
             Reiniciar Busqueda
-          </Button>
+          </ButtonPDN>
         </>
       ) : (
         <><Divider className={classes.divider} >
@@ -473,25 +461,25 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
               {GetStepContent(activeStep)}
               {isStepOptional(activeStep) && (
                 <>
-                  <Button
-                    className={classes.btnPDN}
+                  <ButtonPDN
+                    
                     disabled={activeStep === 0}
                     variant="contained"
                     color="primary"
                     onClick={handleBack}
                   >
                     Regresar
-                  </Button>
-                  <Button
-                    className={classes.btnPDN}
+                  </ButtonPDN>
+                  <ButtonPDN
+                    
                     variant="contained"
                     color="primary"
                     onClick={() => methods.resetField(name)}
                   >
                     Limpiar
-                  </Button>
-                  <Button
-                    className={classes.btnPDN}
+                  </ButtonPDN>
+                  <ButtonPDN
+                    
                     disabled={activeStep === 0}
                     variant="contained"
                     color="primary"
@@ -500,7 +488,7 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
                   >
                     Buscar
                     {/* {activeStep >= 1 ? "Buscar" : "Siguiente"} */}
-                  </Button>
+                  </ButtonPDN>
                 </>
               )}
             </form>

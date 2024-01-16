@@ -4,6 +4,7 @@ import {Box, Button, Typography} from '@mui/material';
 import DirectionsWalkIcon from '@mui/icons-material/DirectionsWalk';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import logo from '../../assets/ico-evolucion.svg';
+import ButtonPDN from '../Compartidos/ButtonPDN';
 
 
 const styles = theme => ({
@@ -17,16 +18,6 @@ const styles = theme => ({
     },
     logo: {
         width: '130px'
-    },
-    btnPDN: {
-        margin: theme.spacing(1),
-        background: "rgb(255,255,255,0.5)",
-        borderRadius: "50px",
-        fontWeight: "bold",
-        fontStyle: "italic",
-        '&:hover': {
-            backgroundColor: "#56a3bf",
-        },
     },
     manitad:{
         paddingRight: '6px',
@@ -61,15 +52,15 @@ const Evolucion = props => {
                     Evolucion patrimonial y de intereses
                 </Typography>
 
-                <Button className={classes.btnPDN} href={url_herramienta} target='_blank' variant='contained'
+                <ButtonPDN  href={url_herramienta} target='_blank' variant='contained'
                         startIcon={<DirectionsWalkIcon/>}>
                     Acceso
-                </Button>
+                </ButtonPDN>
 
-                <Button className={classes.btnPDN} href={url_manual} target='_blank' variant='contained'
+                <ButtonPDN  href={url_manual} target='_blank' variant='contained'
                         startIcon={<MenuBookIcon/>}>
                     Manual de usuario
-                </Button>
+                </ButtonPDN>
             </Box>
 
         </Box>

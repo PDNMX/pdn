@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {Typography, Grid, Box, Button, Paper}  from '@mui/material';
 import withStyles from '@mui/styles/withStyles';
+import ButtonPDN from '../components/Compartidos/ButtonPDN'
 import bgimg from "../assets/rediseno/fondo_cruces_dark.png";
 import HeaderV2 from "./HomeV2/HeaderV2";
 
@@ -60,10 +61,10 @@ const P404 = props => {
                             <Typography variant="h4" paragraph>
                                 La URL solicitada no existe en este servidor.
                             </Typography>
-                            <Button className={classes.button} component={Link}
+                            <ButtonPDN className={classes.button} component={Link}
                                     variant="contained" to="/">
                                 Regresar
-                            </Button>
+                            </ButtonPDN>
                         </Box>
                     </Paper>
                 </Grid>

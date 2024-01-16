@@ -14,9 +14,11 @@ import Parser from "swagger-parser";
 import withStyles from '@mui/styles/withStyles';
 import PropTypes from "prop-types";
 import ReactGA from "react-ga4";
+import ButtonPDN from "../Compartidos/ButtonPDN";
 
 const styles = (theme) => ({
   root: {
+    display: 'flex',
     flexGrow: 1,
     color: theme.palette.text.main
   },
@@ -224,12 +226,11 @@ class UploadForm extends React.Component {
         <Grid container direction="row" justifyContent="center" >
         <form onSubmit={this.handleSubmit}>
           <FormControl className={classes.formControl}>
-            <Button
+            <ButtonPDN
               variant="contained"
               component="label"
               disabled={this.state.disabled}
               size="large"
-              className={classes.button2}
             >
               {/* <i className="material-icons">cloud_upload</i> */}
               Cargar Archivo
@@ -240,7 +241,7 @@ class UploadForm extends React.Component {
                 type="file"
                 style={{ display: "none" }}
               />
-            </Button>
+            </ButtonPDN>
             <div className="invalid-feedback">{formErrors.uploadJson}</div>
           </FormControl>
           <FormControl className={classes.formControl}>
@@ -272,15 +273,14 @@ class UploadForm extends React.Component {
             {/* <FormHelperText>Requerido</FormHelperText> */}
           </FormControl>
           <FormControl className={classes.formControl}>
-            <Button
+            <ButtonPDN
               variant="contained"
               type="submit"
               size="large"
-              className={classes.button}
               disabled={isSubmitting}
             >
               {isSubmitting ? "Validando..." : "Validar"}
-            </Button>
+            </ButtonPDN>
           </FormControl>
         </form>
         </Grid>

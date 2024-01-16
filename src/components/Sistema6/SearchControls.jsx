@@ -6,6 +6,7 @@ import InputLabel from "@mui/material/InputLabel";
 //import InputBase from "@mui/material/InputBase";
 import {Box, Grid, Select, MenuItem, TextField, Button } from '@mui/material';
 import ReactGA from "react-ga4";
+import ButtonPDN from '../Compartidos/ButtonPDN';
 
 const styles = theme => ({
     root: {
@@ -200,18 +201,18 @@ const SearchControls = props => {
 
                 <Grid item xs={12} className={classes.item}>
                     <Box m={0} sx={{ display: 'flex', justifyContent: 'flex-end'}}>
-                        <Button variant="contained" color="primary" className={classes.button} onClick={props.cleanup}>
+                        <ButtonPDN variant="contained" onClick={props.cleanup}>
                             Limpiar
-                        </Button>
+                        </ButtonPDN>
 
-                        <Button variant="contained" color="primary" className={classes.button} 
+                        <ButtonPDN variant="contained"
                                 onClick={e => {
                                     props.search(e.target.value);
                                     ReactGA.event({ category: 'busqueda-s6', action: 'click' });
                                   }}
                         >
                             Buscar
-                        </Button>
+                        </ButtonPDN>
                     </Box>
 
                 </Grid>

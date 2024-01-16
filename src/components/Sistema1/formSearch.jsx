@@ -13,6 +13,7 @@ import Ordenamiento from './Ordenamiento';
 import style from './style';
 import { withStyles } from '@mui/styles';
 import ReactGA from "react-ga4";
+import ButtonPDN from '../Compartidos/ButtonPDN';
 const useStyles = makeStyles(style);
 
 const CustomTypography = withStyles(theme => ({
@@ -352,8 +353,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
             )}
 
             <Grid item xs={12} style={{ textAlign: 'right' }}>
-              <Button
-                className={classes.button}
+              <ButtonPDN
                 type='reset'
                 variant='contained'
                 color='primary'
@@ -362,9 +362,8 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                 }}
               >
                 Limpiar
-              </Button>
-              <Button
-                className={classes.button}
+              </ButtonPDN>
+              <ButtonPDN
                 type='submit'
                 variant='contained'
                 color='primary'
@@ -375,7 +374,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                 disabled={btnSearch}
               >
                 Buscar
-              </Button>
+              </ButtonPDN>
             </Grid>
             {/* <Divider /> */}
           </Grid>

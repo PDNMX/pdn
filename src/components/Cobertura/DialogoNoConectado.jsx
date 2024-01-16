@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -9,6 +8,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import {Box, Typography} from "@mui/material";
 import WarningIcon from '@mui/icons-material/Warning';
+import ButtonPDN from '../Compartidos/ButtonPDN';
 
 const DialogoNoConectado = (props) =>  {
 
@@ -53,9 +53,9 @@ const DialogoNoConectado = (props) =>  {
                     {/*<DialogContentText> La Entidad no ha reportado información a la PDN </DialogContentText>*/}
                 </DialogContent>
                 <DialogActions style={{background: bgColor}}>
-                    <Button  variant="contained" onClick={handleClose} autoFocus>
+                    <ButtonPDN  variant="contained" onClick={handleClose} autoFocus>
                         Aceptar
-                    </Button>
+                    </ButtonPDN>
                 </DialogActions>
             </Dialog>
         </div>

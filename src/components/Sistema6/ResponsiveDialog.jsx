@@ -10,6 +10,7 @@ import DownloadIcon from '@mui/icons-material/CloudDownload';
 import Typography from "@mui/material/Typography";
 import withStyles from '@mui/styles/withStyles';
 import {Button, Box, Paper} from '@mui/material';
+import ButtonPDN from '../Compartidos/ButtonPDN';
 
 // FIXME checkout https://mui.com/components/use-media-query/#using-material-uis-breakpoint-helpers
 const withMobileDialog = () => (WrappedComponent) => (props) => <WrappedComponent {...props} width="lg" fullScreen={false} />;
@@ -122,15 +123,13 @@ function ResponsiveDialog(props) {
 
                 </DialogContent>
                 <DialogActions>
-                    <Button href={handleDownload()} variant="contained" color="primary"
+                    <ButtonPDN href={handleDownload()} variant="contained"
                             download={(data !== null ? data.ocid : 'datos')+'.json'}
-                            className={classes.button}
-                    ><DownloadIcon style={{color:'white'}}/></Button>
-                    <Button onClick={handleCloseDialog}  variant="contained" color="primary" autoFocus
-                            className={classes.button}
-                    >
+                            
+                    ><DownloadIcon style={{color:'white'}}/></ButtonPDN>
+                    <ButtonPDN onClick={handleCloseDialog}  variant="contained" autoFocus                    >
                         Cerrar
-                    </Button>
+                    </ButtonPDN>
                 </DialogActions>
             </Dialog>
         </div>
@@ -163,9 +162,9 @@ const Document = props => {
             <Typography sx={{fontWeight: 'bold'}}>Documento {index + 1}</Typography>
             <Typography>Título: {doc.title}</Typography>
             <Typography paragraph>Descripción: {doc.description}</Typography>
-            <Button variant='contained' size='small' color='primary' href={doc.url} target='_blank'>
+            <ButtonPDN variant='contained' size='small' href={doc.url} target='_blank'>
                 URL
-            </Button>
+            </ButtonPDN>
         </Paper>
     </Box>;
 };

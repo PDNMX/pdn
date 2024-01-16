@@ -15,6 +15,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 import {UserContext} from "./UserContext";
+import ButtonPDN from '../Compartidos/ButtonPDN';
 
 const LoginDialog = props => {
     const {open, setOpen} = props;
@@ -128,9 +129,9 @@ const LoginDialog = props => {
                                     ¿Deseas terminar la sesión?
                                 </Typography>
 
-                                <Button onClick={() => handleLogout()} variant="contained">
+                                <ButtonPDN onClick={() => handleLogout()} variant="contained">
                                     Cerrar sesión
-                                </Button>
+                                </ButtonPDN>
                             </Box>
                             :
                             <form onSubmit={handleSubmit}>
@@ -158,9 +159,9 @@ const LoginDialog = props => {
                                     />
                                 </FormControl>
 
-                                <Button variant="contained" sx={{margin: 1}} type='submit' style={{ color: 'white' }}>
+                                <ButtonPDN variant="contained" sx={{margin: 1}} type='submit' style={{ color: 'white' }}>
                                     Enviar
-                                </Button>
+                                </ButtonPDN>
                             </form>
                         }
                     </Box>
@@ -171,9 +172,9 @@ const LoginDialog = props => {
 
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose} autoFocus variant="contained" style={{ color: 'white' }}>
+                    <ButtonPDN onClick={handleClose} autoFocus variant="contained" style={{ color: 'white' }}>
                         Cancelar
-                    </Button>
+                    </ButtonPDN>
                 </DialogActions>
             </Dialog>
         </div>

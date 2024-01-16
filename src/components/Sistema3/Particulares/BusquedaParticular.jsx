@@ -17,6 +17,7 @@ import ReactGA from "react-ga4";
 
 
 import axios from 'axios';
+import ButtonPDN from '../../Compartidos/ButtonPDN';
 const styles = theme => ({
     formControl: {
         width: '100%'
@@ -449,22 +450,22 @@ function BusquedaParticular ({classes}){
                             </FormControl>
                         </Grid>}
 
-                        <Grid item md={10}/>
+                        <Grid item md={9.5}/>
                         <Grid item xs={12} md={1}>
-                            <Button variant="contained" color="primary" className={classes.button}
+                            <ButtonPDN variant="contained"
                                     onClick={() => handleCleanAll()}>
                                 Limpiar
-                            </Button>
+                            </ButtonPDN>
                         </Grid>
                         <Grid item xs={12} md={1}>
-                            <Button variant="contained" color="primary" className={classes.button}
+                            <ButtonPDN variant="contained" 
                                     onClick={() => {
                                         handleSearchPrevios();
                                         ReactGA.event({ category: 'busqueda-s3P', action: 'click' });
                                       }}
                                     >
                                 Buscar
-                            </Button>
+                            </ButtonPDN>
                         </Grid>
                         <Grid item xs={12}>
                             {

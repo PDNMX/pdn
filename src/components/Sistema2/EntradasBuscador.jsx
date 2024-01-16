@@ -10,6 +10,7 @@ import TipoProcedimiento from "./TipoProcedimiento";
 import { ThemeProvider } from '@mui/material/styles';
 import themeV2 from "../../ThemeV2";
 import ReactGA from "react-ga4";
+import ButtonPDN from '../Compartidos/ButtonPDN';
 
 const styles = theme => ({
     root: {
@@ -167,20 +168,19 @@ const EntradasBuscador = props => {
                 </Grid>
 
                 <Grid item xs={12} md={6} align="right">
-                    <Button variant="contained" color="primary"
-                            className={classes.button}
+                    <ButtonPDN variant="contained"
                             onClick={() => limpiarBusqueda()}>
                         Limpiar
-                    </Button>
+                    </ButtonPDN>
 
-                    <Button variant="contained" color="primary" className={classes.button} 
+                    <ButtonPDN variant="contained" 
                             onClick={() => {
                                 buscar();
                                 ReactGA.event({ category: 'busqueda-s2', action: 'click' });
                               }}
                     >
                         Buscar
-                    </Button>
+                    </ButtonPDN>
                 </Grid>
             </Grid>
         </div>
