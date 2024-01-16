@@ -6,7 +6,7 @@ const opciones = [
     detalle:
       "Información de personas servidoras públicas por la comisión de faltas administrativas.",
     img: "ico_Spsancionados.svg",
-    color: "#b8aef9",
+    color: "#9085da",
   },
   {
     label: "Personas servidoras públicas que participan en contrataciones",
@@ -15,7 +15,7 @@ const opciones = [
     detalle:
       "Datos de personas servidoras públicas que intervienen en contrataciones públicas, otorgamiento de concesiones, enajenaciones de bienes y emisión de dictámenes.",
     img: "ico_Spcontrataciones.svg",
-    color: "#e7a2e3",
+    color: "#b25fac",
   },
   {
     label: "Personas servidoras públicas y sus declaraciones patrimoniales",
@@ -24,7 +24,7 @@ const opciones = [
     detalle:
       "Declaraciones patrimoniales de personas servidoras públicas de todo el país.",
     img: "ico_Spdeclaraciones.svg",
-    color: "#f9bfb4",
+    color: "#f29888",
   },
   {
     label: "Empresas sancionadas por actos corrupción",
@@ -33,7 +33,7 @@ const opciones = [
     detalle:
       "Información de particulares sancionados por la comisión de faltas administrativas.",
     img: "ico_empresas_sancionadas.svg",
-    color: "#b8aef9",
+    color: "#9085da",
   },
   {
     label: "Empresas que tienen contratos con el gobierno",
@@ -42,7 +42,7 @@ const opciones = [
     detalle:
       "Información de particulares que otorgan bienes, servicios u obra pública a las instituciones públicas de todo el país.",
     img: "ico_empresas_contratos_gob.svg",
-    color: "#8dd9f6",
+    color: "#42a5cc",
   },
   {
     label: "Instituciones públicas que contrataron bienes, obras o servicios",
@@ -51,7 +51,7 @@ const opciones = [
     detalle:
       "Información sobre los gastos que realizan las instituciones públicas de todo el país para la adquisición de bienes, servicios u obra pública. ",
     img: "ico_instituciones_contrataciones.svg",
-    color: "#8dd9f6",
+    color: "#42a5cc",
   },
 ];
 

@@ -20,22 +20,12 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#eef7ff',
   },
   titulo: {
-    color: '#fff',
+  color: theme.palette.background.default,
     backgroundColor: '#ccdef2',
     fontSize: "1.12rem",
     background: 'linear-gradient(230deg, rgb(28, 124, 191) 0%, rgb(28, 124, 191) 4%, rgb(159, 88, 226) 49%, rgb(109, 64, 97) 100%) 0% 0% no-repeat padding-box padding-box transparent',
     border: '0px',
     boxShadow: 'none'
-  },
-  btnPDN: {
-    marginBottom: theme.spacing(2),
-    background: "#f230b9",
-    borderRadius: "50px",
-    fontWeight: "bold",
-    fontStyle: "italic",
-    "&:hover": {
-      backgroundColor: "#56a3bf",
-    },
   },
 }));
 
