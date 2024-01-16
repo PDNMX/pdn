@@ -18,9 +18,9 @@ const styles = (theme) => ({
   },
   rootItem: {
     maxWidth: "1200px",
-    padding: theme.spacing(1),
-    paddingTop: 90,
-    paddingBottom: 90,
+    /* padding: theme.spacing(1), */
+    /* paddingTop: 90,
+    paddingBottom: 90, */
   },
   item: {
     maxWidth: 1200,
@@ -53,7 +53,7 @@ const HelpDesk = (props) => {
   return (
     <>
       <HeaderV2 section={section} />
-      <Grid container justifyContent="center" spacing={0}>
+      <Grid container mt={7} mb={7}  justifyContent="center" spacing={0}>
         <Grid item xs={12} className={classes.rootItem}>
           <Paper className={classes.paper} elevation={15}>
             <Box className={classes.box}>

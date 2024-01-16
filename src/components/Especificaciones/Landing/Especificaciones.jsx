@@ -23,10 +23,8 @@ const styles = theme => ({
     },
     rootItem: {
         maxWidth: 1200,
-        paddingTop: 20,
-        paddingBottom: 20,
-        paddingLeft: theme.spacing(1),
-        paddingRight: theme.spacing(1)
+        /* paddingLeft: theme.spacing(1),
+        paddingRight: theme.spacing(1) */
 
     },
     sistemas: {
@@ -66,7 +64,7 @@ const Especificaciones = props => {
     return (
         <div className={classes.root}>
             <HeaderV2 section={section} />
-            <Grid container spacing={0} justifyContent="center">
+            <Grid container mt={7} mb={7} justifyContent="center">
                 <Grid item xs={12} className={classes.rootItem}>
                     <Paper className={classes.paper} elevation={15}>
                         <Box className={classes.box}>
