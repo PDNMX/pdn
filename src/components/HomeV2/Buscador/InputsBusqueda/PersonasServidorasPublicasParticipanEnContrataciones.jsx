@@ -99,6 +99,7 @@ const storedCampos = JSON.parse(localStorage.getItem(KEY));
             defaultValue=""
             render={({ field }) => (
               <TextField
+                style={{ background: '#fff' }}
                 id="nombres"
                 label="Nombre(s)"
                 variant="outlined"
@@ -116,6 +117,7 @@ const storedCampos = JSON.parse(localStorage.getItem(KEY));
             defaultValue=""
             render={({ field }) => (
               <TextField
+                style={{ background: '#fff' }}
                 label="Primer Apellido"
                 variant="outlined"
                 placeholder="Ingresa el primer apellido"
@@ -131,6 +133,7 @@ const storedCampos = JSON.parse(localStorage.getItem(KEY));
             defaultValue=""
             render={({ field }) => (
               <TextField
+                style={{ background: '#fff' }}
                 label="Segundo Apellido"
                 variant="outlined"
                 placeholder="Ingresa el segundo apellido"
@@ -177,6 +180,7 @@ const storedCampos = JSON.parse(localStorage.getItem(KEY));
                 }}
                 renderInput={(params) => (
                   <TextField
+                    style={{ background: '#fff' }}
                     {...params}
                     margin={"normal"}
                     label="Institución"
@@ -220,6 +224,7 @@ const storedCampos = JSON.parse(localStorage.getItem(KEY));
                 }
                 renderInput={(params) => (
                   <TextField
+                    style={{ background: '#fff' }}
                     margin={"normal"}
                     error={!!error}
                     helperText={error?.message}

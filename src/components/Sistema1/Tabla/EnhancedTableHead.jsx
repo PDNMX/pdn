@@ -32,7 +32,7 @@ const EnhancedTableHead = props => {
             {/* {headCell.label} */}
             {/* {orderBy === headCell.id ? <span className={classes.visuallyHidden}>{order === 'desc' ? 'sorted descending' : 'sorted ascending'}</span> : null} */}
             {/* </TableSortLabel> */}
-            <Typography color={'primary.text'} variant={'body1'}>
+            <Typography color={'white'} variant={'body1'}>
               {headCell.label}
             </Typography>
           </TableCell>

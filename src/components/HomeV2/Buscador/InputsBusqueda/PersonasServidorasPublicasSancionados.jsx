@@ -97,6 +97,7 @@ export function PersonasServidorasPublicasSancionados() {
             defaultValue=""
             render={({ field }) => (
               <TextField
+                style={{ background: '#fff' }}
                 label="Nombre(s)"
                 variant="outlined"
                 placeholder="Ingresa el nombre o nombres"
@@ -113,6 +114,7 @@ export function PersonasServidorasPublicasSancionados() {
             defaultValue=""
             render={({ field }) => (
               <TextField
+                style={{ background: '#fff' }}
                 label="Primer Apellido"
                 variant="outlined"
                 placeholder="Ingresa el primer apellido"
@@ -128,6 +130,7 @@ export function PersonasServidorasPublicasSancionados() {
             defaultValue=""
             render={({ field }) => (
               <TextField
+                style={{ background: '#fff' }}
                 label="Segundo Apellido"
                 variant="outlined"
                 placeholder="Ingresa el segundo apellido"
@@ -171,6 +174,7 @@ export function PersonasServidorasPublicasSancionados() {
                 }}
                 renderInput={(params) => (
                   <TextField
+                    style={{ background: '#fff' }}
                     {...params}
                     margin={"normal"}
                     label="Institución"
@@ -214,6 +218,7 @@ export function PersonasServidorasPublicasSancionados() {
                 }
                 renderInput={(params) => (
                   <TextField
+                    style={{ background: '#fff' }}
                     margin={"normal"}
                     error={!!error}
                     helperText={error?.message}

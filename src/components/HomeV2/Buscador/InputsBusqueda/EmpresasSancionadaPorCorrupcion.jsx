@@ -100,6 +100,7 @@ export function EmpresasSancionadaPorCorrupcion() {
             name="empresas-sancionadas.nombreRazonSocial"
             render={({ field }) => (
               <TextField
+                style={{ background: '#fff' }}
                 label="Nombre o razón social"
                 variant="outlined"
                 placeholder="Ingresa el nombre o razón social"
@@ -145,6 +146,7 @@ export function EmpresasSancionadaPorCorrupcion() {
                 }}
                 renderInput={(params) => (
                   <TextField
+                    style={{ background: '#fff' }}
                     {...params}
                     margin={"normal"}
                     label="Institución donde presto el servicio"
@@ -187,6 +189,7 @@ export function EmpresasSancionadaPorCorrupcion() {
                 }
                 renderInput={(params) => (
                   <TextField
+                  style={{ background: '#fff' }}
                     margin={"normal"}
                     error={!!error}
                     helperText={error?.message}

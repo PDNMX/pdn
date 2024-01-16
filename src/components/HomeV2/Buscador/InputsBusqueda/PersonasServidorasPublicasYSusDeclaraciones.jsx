@@ -25,6 +25,7 @@ export function PersonasServidorasPublicasYSusDeclaraciones() {
             defaultValue=""
             render={({ field }) => (
               <TextField
+                style={{ background: '#fff' }}
                 id="nombres"
                 label="Nombre(s)"
                 variant="outlined"
@@ -42,6 +43,7 @@ export function PersonasServidorasPublicasYSusDeclaraciones() {
             defaultValue=""
             render={({ field }) => (
               <TextField
+                style={{ background: '#fff' }}
                 label="Primer Apellido"
                 variant="outlined"
                 placeholder="Ingresa el primer apellido"
@@ -57,6 +59,7 @@ export function PersonasServidorasPublicasYSusDeclaraciones() {
             name="psp-declaraciones.segundoApellido"
             render={({ field }) => (
               <TextField
+                style={{ background: '#fff' }}
                 label="Segundo Apellido"
                 variant="outlined"
                 placeholder="Ingresa el segundo apellido"
@@ -73,6 +76,7 @@ export function PersonasServidorasPublicasYSusDeclaraciones() {
             name="psp-declaraciones.empleoCargoComision"
             render={({ field }) => (
               <TextField
+                style={{ background: '#fff' }}
                 id="empleoCargoComision"
                 label="Empleo, cargo o comisión"
                 variant="outlined"

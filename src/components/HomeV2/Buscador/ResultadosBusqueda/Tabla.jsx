@@ -45,11 +45,14 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(2)
   },
   table: {
-    minWidth: 750
+    minWidth: 750,
   },
+  whiteText: {
+  color: '#fff',  // Puedes ajustar este color al blanco que prefieras
+},
   tableHead: {
-    color: theme.palette.text.main,
-    backgroundColor: theme.palette.background.default
+    color: theme.palette.text.clear,
+    backgroundColor: theme.palette.primary.main
   },
   tableWrapper: {
     overflowX: 'auto'

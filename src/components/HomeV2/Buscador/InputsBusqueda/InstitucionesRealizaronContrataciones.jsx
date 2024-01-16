@@ -108,7 +108,7 @@ export function InstitucionesRealizaronContrataciones() {
             name="instituciones-contrataciones.supplier"
             defaultValue="SHCP"
             render={({ field }) => (
-              <FormControl fullWidth={true} margin={"normal"}>
+              <FormControl style={{ background: '#fff' }} fullWidth={true} margin={"normal"}>
                 <InputLabel>Proveedor de información</InputLabel>
                 <Select
                   /* value={'Tipo de contratación'} */
@@ -169,6 +169,7 @@ export function InstitucionesRealizaronContrataciones() {
                 }}
                 renderInput={(params) => (
                   <TextField
+                    style={{ background: '#fff' }}
                     {...params}
                     margin={"normal"}
                     label="Institución contratante"
@@ -197,6 +198,7 @@ export function InstitucionesRealizaronContrataciones() {
             defaultValue=""
             render={({ field }) => (
               <TextField
+                style={{ background: '#fff' }}
                 id="bienServicioOtorgado"
                 label="Bien, servicio u obra pública"
                 variant="outlined"
@@ -213,7 +215,7 @@ export function InstitucionesRealizaronContrataciones() {
             name="instituciones-contrataciones.tipoContratacion"
             defaultValue="any"
             render={({ field }) => (
-              <FormControl fullWidth={true} margin={"normal"}>
+              <FormControl style={{ background: '#fff' }} fullWidth={true} margin={"normal"}>
                 <InputLabel>Tipo de Procedimiento</InputLabel>
                 <Select
                   /* value={'Tipo de contratación'} */

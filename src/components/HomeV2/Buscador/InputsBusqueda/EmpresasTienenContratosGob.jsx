@@ -31,7 +31,7 @@ export function EmpresasTienenContratosGob() {
             name="empresas-contratos.supplier"
             defaultValue="SHCP"
             render={({ field }) => (
-              <FormControl fullWidth margin={"normal"}>
+              <FormControl style={{ background: '#fff' }} fullWidth margin={"normal"}>
                 <InputLabel>Proveedor de información</InputLabel>
                 <Select
                   /* value={'Tipo de contratación'} */
@@ -56,6 +56,7 @@ export function EmpresasTienenContratosGob() {
             defaultValue=""
             render={({ field }) => (
               <TextField
+              style={{ background: '#fff' }}
               fullWidth
                 label="Nombre o razón social"
                 variant="outlined"
@@ -72,6 +73,7 @@ export function EmpresasTienenContratosGob() {
             name="empresas-contratos.bienServicioOtorgado"
             render={({ field }) => (
               <TextField
+                style={{ background: '#fff' }}
                 label="Bien o servicio que se otorgo al gobierno"
                 variant="outlined"
                 placeholder="Ingresa el bien o servicio que se otorgo al gobierno"

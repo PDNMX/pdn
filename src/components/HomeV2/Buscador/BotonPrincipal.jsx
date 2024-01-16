@@ -17,10 +17,10 @@ import ButtonPDN from "../../Compartidos/ButtonPDN";
 const useStyles = makeStyles((theme) => ({
   container: {
     padding: "2% 3%",
-    backgroundColor: '#eef7ff',
+    backgroundColor: theme.palette.background.noSelect,
   },
   titulo: {
-  color: theme.palette.background.default,
+    color: theme.palette.background.default,
     backgroundColor: '#ccdef2',
     fontSize: "1.12rem",
     background: 'linear-gradient(230deg, rgb(28, 124, 191) 0%, rgb(28, 124, 191) 4%, rgb(159, 88, 226) 49%, rgb(109, 64, 97) 100%) 0% 0% no-repeat padding-box padding-box transparent',
