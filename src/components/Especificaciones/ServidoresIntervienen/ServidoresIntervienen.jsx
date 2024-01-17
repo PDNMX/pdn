@@ -134,7 +134,7 @@ const ServidoresIntervienen = props => {
 
                             <Typography className={classes.text} paragraph>
                             <ButtonPDN
-                                href='https://www.plataformadigitalnacional.org/oas/ui/?urls.primaryName=S2'
+                                href='/oas/ui/?urls.primaryName=S2'
                                 target='_blank' 
                                 >
                                 Más información

@@ -81,7 +81,7 @@ const Footer = () => {
         <Grid item md={3} xs={12} sm={3}>
           <ul>
             <li><Link to="/about">Acerca de la PDN</Link></li>
-            <li><a href="https://www.plataformadigitalnacional.org/mapa-sla/">Avances de
+            <li><a href="/mapa-sla/">Avances de
                 Interconexión</a></li>
             <li><a href="https://mda.plataformadigitalnacional.org/">Mercado Digital Anticorrupción</a>
             </li>
@@ -101,7 +101,7 @@ const Footer = () => {
           <ul >
             <li><Link to="/mesa-de-ayuda">Mesa de ayuda</Link></li>
             <li><Link to="/especificaciones">Especificaciones técnicas</Link></li>
-            <li> <a href="https://www.plataformadigitalnacional.org/blog/">Blog</a></li>
+            <li> <a href="/blog/">Blog</a></li>
           </ul>
         </Grid>
       </Grid>

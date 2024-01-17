@@ -70,17 +70,17 @@ class EspecificacionesTecnicas extends React.Component {
 
         <ul className={classes.ul}>
           <li className={classes.li}>
-            <Link href='https://www.plataformadigitalnacional.org/oas/ui/?urls.primaryName=S1%20-%20Inicial' target='_blank'>
+            <Link href='/oas/ui/?urls.primaryName=S1%20-%20Inicial' target='_blank'>
               <b>Formato de inicio</b>
             </Link>
           </li>
           <li className={classes.li}>
-            <Link href='https://www.plataformadigitalnacional.org/oas/ui/?urls.primaryName=S1%20-%20Modificaci%C3%B3n' target='_blank'>
+            <Link href='/oas/ui/?urls.primaryName=S1%20-%20Modificaci%C3%B3n' target='_blank'>
               <b>Formato de modificación</b>
             </Link>
           </li>
           <li className={classes.li}>
-            <Link href='https://www.plataformadigitalnacional.org/oas/ui/?urls.primaryName=%20S1%20-%20Conclusi%C3%B3n' target='_blank'>
+            <Link href='/oas/ui/?urls.primaryName=%20S1%20-%20Conclusi%C3%B3n' target='_blank'>
               <b>Formato de conclusión</b>
             </Link>
           </li>

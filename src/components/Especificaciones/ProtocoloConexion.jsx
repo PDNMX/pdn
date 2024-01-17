@@ -117,7 +117,7 @@ const ProtocoloConexion = props => {
 
       <Typography className={classes.text}>
         Asimismo, te invitamos a probar{' '}
-        <MuiLink href='https://www.plataformadigitalnacional.org/validapi/' target='_blank' className={classes.link}>
+        <MuiLink href='/validapi/' target='_blank' className={classes.link}>
           ValidAPI
         </MuiLink>{' '}
         una aplicación web que te permitirá ejecutar de manera automatizada las validaciones de seguridad y de funcionalidad incluidas en los planes de pruebas de los sistemas 1, 2 y 3; recibiendo retroalimentación de una forma rápida. Esta herramienta se encuentra en una etapa de pilotaje, por lo que el resultado obtenido debe considerarse una prevalidación y no como un resultado final.

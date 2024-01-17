@@ -172,12 +172,12 @@ const BannerMobile = props => {
 
                         <Collapse in={dropDownInterconexion} timeout="auto" unmountOnExit>
                             <List dense={true} component="div">
-                                <ListItemButton href='https://www.plataformadigitalnacional.org/mapa-sla/' key='legislacion'
+                                <ListItemButton href='/mapa-sla/' key='legislacion'
                                                 className={classes.nested} onClick={()=>ReactGA.pageview('/mapa-sla')}>
                                     <img src={legislacion_icono} alt='Legislación' className={classes.iconSistemas}/>
                                     <Typography color={'#4a2f4b'}>Legislación</Typography>
                                 </ListItemButton>
-                                <ListItemButton href='https://www.plataformadigitalnacional.org/mapa-avance/' key='mapa'
+                                <ListItemButton href='/mapa-avance/' key='mapa'
                                                 className={classes.nested} onClick={()=>ReactGA.pageview('/mapa-avance')}>
                                     <img src={mapa_s2s3_icono} alt='Avance' className={classes.iconSistemas}/>
                                     <Typography color='#4a2f4b'>Sistemas 1, 2 y 3</Typography>

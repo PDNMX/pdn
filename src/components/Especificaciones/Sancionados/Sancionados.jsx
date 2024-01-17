@@ -161,7 +161,7 @@ const Sancionados = props => {
                             <ul className={classes.ul}>
                                 <li className={classes.li}>
                                     <Link className={classes.link}
-                                        href='https://www.plataformadigitalnacional.org/oas/ui/?urls.primaryName=S3%20-%20Particulares%20Sancionados'
+                                        href='/oas/ui/?urls.primaryName=S3%20-%20Particulares%20Sancionados'
                                         target='_blank'
                                         rel="noopener noreferrer"
                                     >
@@ -170,7 +170,7 @@ const Sancionados = props => {
                                 </li>
                                 <li className={classes.li}>
                                     <Link className={classes.link}
-                                        href='https://www.plataformadigitalnacional.org/oas/ui/?urls.primaryName=S3%20-%20Servidores%20Sancionados'
+                                        href='/oas/ui/?urls.primaryName=S3%20-%20Servidores%20Sancionados'
                                         target='_blank'
                                         rel="noopener noreferrer"
                                     >

@@ -379,7 +379,7 @@ const Terminos = props => {
                             </Typography>
 
                             <Typography paragraph>
-                                El uso del portal <Link target="_blank" href="https://www.plataformadigitalnacional.org/">plataformadigitalnacional.org</Link> o
+                                El uso del portal <Link target="_blank" href="/">plataformadigitalnacional.org</Link> o
                                 de cualquiera de sus componentes,
                                 implica la aceptación expresa de los presentes “Términos y Condiciones”
                             </Typography>

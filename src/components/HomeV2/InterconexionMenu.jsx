@@ -67,7 +67,7 @@ const InterconexionMenu = props => {
             justifyContent: 'center'
         }}>
 
-            <Link className={classes.link} href='https://www.plataformadigitalnacional.org/mapa-sla/' onClick={()=>ReactGA.pageview('/mapa-sla')}>
+            <Link className={classes.link} href='/mapa-sla/' onClick={()=>ReactGA.pageview('/mapa-sla')}>
                 <Box className={`${classes.item}`}  sx={{
                     m:1,
                     p:2,
@@ -81,7 +81,7 @@ const InterconexionMenu = props => {
                 </Box>
             </Link>
 
-            <Link className={classes.link} href='https://www.plataformadigitalnacional.org/mapa-avance/' onClick={()=>ReactGA.pageview('/mapa-avance')}>
+            <Link className={classes.link} href='/mapa-avance/' onClick={()=>ReactGA.pageview('/mapa-avance')}>
                 <Box className={`${classes.item}`}  sx={{
                     m:1,
                     p:2,
