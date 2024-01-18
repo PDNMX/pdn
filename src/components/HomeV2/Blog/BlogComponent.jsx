@@ -67,7 +67,7 @@ const BlogComponent = (props) => {
         <Grid item md={12} sm={12} mt={5} pr={{ xs: 0, md: 1}}>
         <Stack direction="row" justifyContent={{ xs:'center', md:'end'}}>
         <ButtonPDN
-              href={"https://www.plataformadigitalnacional.org/blog/"}
+              href="/blog"
               onClick={() => ReactGA.pageview("/blog")}
               style={{ color: "white" }}
             >

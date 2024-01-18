@@ -83,7 +83,7 @@ const Footer = () => {
             <li><Link to="/about">Acerca de la PDN</Link></li>
             <li><a href="/mapa-sla/">Avances de
                 Interconexión</a></li>
-            <li><a href="https://mda.plataformadigitalnacional.org/">Mercado Digital Anticorrupción</a>
+            <li><a href={import.meta.env.VITE_LINK_MDA}>Mercado Digital Anticorrupción</a>
             </li>
           </ul>
         </Grid>

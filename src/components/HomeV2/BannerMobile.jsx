@@ -192,7 +192,7 @@ const BannerMobile = props => {
                         </Collapse>
 
                         <MenuItem className={classes.menuItem} component={Button}
-                                  href="https://mda.plataformadigitalnacional.org/"
+                                  href={import.meta.env.VITE_LINK_MDA}
                                   onClick={()=>ReactGA.pageview('/mda')}>
                             <Typography style={{width:'100%'}}>MDA</Typography>
                             <img src={MDA_logo} alt="Mercado Digital Anticorrupción" className={classes.icon}/>
