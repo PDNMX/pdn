@@ -27,14 +27,14 @@ function BienMueble(props) {
       <BoxAccordion key={'veh-' + idx}>
         <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
           <Typography className={exp.heading}>
-            <strong>TIPO DEL BIEN: {obj.tipoBien.valor}</strong>
+            <strong>TIPO DEL BIEN: {obj.tipoBien?.valor}</strong>
           </Typography>
         </BoxAccordionSummary>
         <BoxAccordionDetails>
           <Grid container spacing={1}>
             <Grid item xs={12} md={8}>
               <Typography className={classes.cardTitle}>TIPO DEL BIEN:</Typography>
-              <Typography className={classes.card}>{obj.tipoBien.valor}</Typography>
+              <Typography className={classes.card}>{obj.tipoBien?.valor}</Typography>
             </Grid>
             <Grid item xs={12} md={4}>
               <Typography className={classes.cardTitle}>TITULAR DEL BIEN:</Typography>
