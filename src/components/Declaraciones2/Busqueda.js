@@ -19,6 +19,7 @@ import dataEntidadesFederativas from './data/entidades.json';
 import dataMunicipios from './data/municipios.json';
 
 class Busqueda extends React.Component {
+  listado = [];
   defaultSelect = [
     {
       clave: 0,
@@ -71,6 +72,7 @@ class Busqueda extends React.Component {
   };
 
   state = {
+    listado: [],
     ordenamiento: {},
     query: { ...this.query },
     institucion: '',
@@ -92,11 +94,19 @@ class Busqueda extends React.Component {
         nom_agem: 'Todos'
       }
     ],
-    // dataSelect: inicial,
+    // dataSelect: data_test,
     dataSelect: ''
   };
 
+  print_results = p => {
+    this.listado.push({ supplier_id: p.supplier_id, total: p.total });
+    if (this.listado.length === this.state.prov.length) {
+      console.table(this.listado.sort((p, n) => p.supplier_id.localeCompare(n.supplier_id, 'es-mx')));
+    }
+  };
+
   cleanForm = () => {
+    this.listado = [];
     this.setState(prevState => ({
       ...prevState,
       btnSearch: false,
@@ -244,6 +254,7 @@ class Busqueda extends React.Component {
         let { prov } = prevState;
 
         prov[id] = p;
+        this.print_results(p);
 
         return {
           ...prevState,
@@ -288,6 +299,7 @@ class Busqueda extends React.Component {
             let { prov } = prevState;
 
             prov[id] = p;
+            this.print_results(p);
 
             return {
               ...prevState,
@@ -313,6 +325,7 @@ class Busqueda extends React.Component {
             let { prov } = prevState;
 
             prov[id] = p;
+            this.print_results(p);
 
             return {
               ...prevState,
