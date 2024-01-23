@@ -34,7 +34,7 @@ const ActividadIndustrial = props => {
           <Grid item xs={12} md={3}>
             <Typography className={exp.heading}>
               <strong>
-                {getMoneda(actividadIndustrialComercialEmpresarial.remuneracionTotal.valor)} {actividadIndustrialComercialEmpresarial.remuneracionTotal.moneda}
+                {getMoneda(actividadIndustrialComercialEmpresarial.remuneracionTotal?.valor)} {actividadIndustrialComercialEmpresarial.remuneracionTotal?.moneda}
               </strong>
             </Typography>
           </Grid>
@@ -94,7 +94,7 @@ const ActividadFinanciera = props => {
           <Grid item xs={12} md={3}>
             <Typography className={exp.heading}>
               <strong>
-                {getMoneda(actividadFinanciera.remuneracionTotal.valor)} {actividadFinanciera.remuneracionTotal.moneda}
+                {getMoneda(actividadFinanciera.remuneracionTotal?.valor)} {actividadFinanciera.remuneracionTotal?.moneda}
               </strong>
             </Typography>
           </Grid>
@@ -147,7 +147,7 @@ const ServiciosProfesionales = props => {
           <Grid item xs={12} md={3}>
             <Typography className={exp.heading}>
               <strong>
-                {getMoneda(serviciosProfesionales.remuneracionTotal.valor)} {serviciosProfesionales.remuneracionTotal.moneda}
+                {getMoneda(serviciosProfesionales.remuneracionTotal?.valor)} {serviciosProfesionales.remuneracionTotal?.moneda}
               </strong>
             </Typography>
           </Grid>
@@ -200,7 +200,7 @@ const EnajenacionBienes = props => {
           <Grid item xs={12} md={3}>
             <Typography className={exp.heading}>
               <strong>
-                {getMoneda(enajenacionBienes.remuneracionTotal.valor)} {enajenacionBienes.remuneracionTotal.moneda}
+                {getMoneda(enajenacionBienes.remuneracionTotal?.valor)} {enajenacionBienes.remuneracionTotal?.moneda}
               </strong>
             </Typography>
           </Grid>
@@ -253,7 +253,7 @@ const OtrosIngresos = props => {
           <Grid item xs={12} md={3}>
             <Typography className={exp.heading}>
               <strong>
-                {getMoneda(otrosIngresos.remuneracionTotal.valor)} {otrosIngresos.remuneracionTotal.moneda}
+                {getMoneda(otrosIngresos.remuneracionTotal?.valor)} {otrosIngresos.remuneracionTotal?.moneda}
               </strong>
             </Typography>
           </Grid>
