@@ -80,11 +80,11 @@ function BeneficiosPrivados(props) {
                   </Grid>
                   <Grid item xs={12} md={6}>
                     <Typography className={classes.cardTitle}>NOMBRE O RAZÓN SOCIAL DEL OTORGANTE:</Typography>
-                    <Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
+                    <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
                   </Grid>
                   <Grid item xs={12} md={3}>
                     <Typography className={classes.cardTitle}>RFC:</Typography>
-                    <Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
+                    <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
                   </Grid>
                 </Grid>
               </Grid>

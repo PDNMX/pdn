@@ -36,11 +36,11 @@ export default function CompTercero(props) {
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>NOMBRE DEL TERCERO O TERCEROS</Typography>
-							<Typography className={classes.card}>DATO RESERVADO</Typography>
+							<Typography className={classes.card}>NO PÚBLICO</Typography>
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Typography className={classes.cardTitle}>RFC</Typography>
-							<Typography className={classes.card}>DATO RESERVADO</Typography>
+							<Typography className={classes.card}>NO PÚBLICO</Typography>
 						</Grid>
 					</Grid>
 				)}

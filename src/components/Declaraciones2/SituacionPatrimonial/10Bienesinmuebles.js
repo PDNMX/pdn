@@ -82,7 +82,7 @@ function BienInmuble(props) {
 
             <Grid item xs={12} md={8}>
               <Typography className={classes.cardTitle}>DATOS DEL REGISTRO PÚBLICO DE LA PROPIEDAD: FOLIO REAL U OTRO DATO QUE PERMITA SU IDENTIFICACIÓN</Typography>
-              <Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
+              <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
             </Grid>
             <Grid item xs={12} md={4}>
               <Typography className={classes.cardTitle}>¿EL VALOR DE ADQUISICIÓN DEL INMUEBLE ES CONFORME A?</Typography>
@@ -94,7 +94,7 @@ function BienInmuble(props) {
             </Grid>
             <Grid item xs={12} md={4}>
               <Typography className={classes.cardTitle}>UBICACIÓN DEL INMUEBLE</Typography>
-              <Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
+              <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
             </Grid>
 
             {inm.motivoBaja && (

@@ -58,11 +58,11 @@ function Vehiculo(props) {
             </Grid>
             <Grid item xs={12} md={4}>
               <Typography className={classes.cardTitle}>NÚMERO DE SERIE O REGISTRO:</Typography>
-              <Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
+              <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
             </Grid>
             <Grid item xs={12} md={4}>
               <Typography className={classes.cardTitle}>¿DÓNDE SE ENCUENTRA REGISTRADO?:</Typography>
-              <Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
+              <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
             </Grid>
 
             <Grid item xs={12} md={4}>

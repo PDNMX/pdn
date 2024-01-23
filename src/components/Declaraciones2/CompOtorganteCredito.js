@@ -29,7 +29,7 @@ const OtorganteCredito = props => {
             </Grid>
             <Grid item xs={12} md={4}>
               <Typography className={classes.cardTitle}>RELACIÓN DEL TRANSMISOR DE LA PROPIEDAD CON EL TITULAR</Typography>
-              <Typography className={classes.card}>DATO RESERVADO</Typography>
+              <Typography className={classes.card}>NO PÚBLICO</Typography>
             </Grid>
           </Grid>
         ) : (
@@ -40,15 +40,15 @@ const OtorganteCredito = props => {
             </Grid>
             <Grid item xs={12} md={3}>
               <Typography className={classes.cardTitle}>RFC</Typography>
-              <Typography className={classes.card}>DATO RESERVADO</Typography>
+              <Typography className={classes.card}>NO PÚBLICO</Typography>
             </Grid>
             <Grid item xs={12} md={3}>
               <Typography className={classes.cardTitle}>NOMBRE O RAZÓN SOCIAL DEL TRANSMISOR DE LA PROPIEDAD</Typography>
-              <Typography className={classes.card}>DATO RESERVADO</Typography>
+              <Typography className={classes.card}>NO PÚBLICO</Typography>
             </Grid>
             <Grid item xs={12} md={4}>
               <Typography className={classes.cardTitle}>RELACIÓN DEL TRANSMISOR DE LA PROPIEDAD CON EL TITULAR</Typography>
-              <Typography className={classes.card}>DATO RESERVADO</Typography>
+              <Typography className={classes.card}>NO PÚBLICO</Typography>
             </Grid>
           </Grid>
         )}

@@ -3,6 +3,7 @@ import About from '../components/AboutV2/About';
 import Terminos from '../components/Terminos/Terminos';
 import Faq from '../components/FAQ/index';
 import HelpDesk from '../components/HelpDesk/HelpDesk';
+import ProtocoloConexion from '../components/ProtocoloConexion';
 
 import Sistema2 from '../components/Sistema2/Index';
 import Sancionados from '../components/Sancionados/Index';
@@ -244,7 +245,16 @@ const pdnRoutes = [
 		shortName: "Cobertura",
 		color: "#f2f2f2",
 		icon: IconCobertura
-	}
+	},
+	{
+		exact: true,
+		path: '/protocolo-de-conexion',
+		component: ProtocoloConexion,
+		private: false,
+		name: "Protocolo de Interconexion",
+		shortName: "Protocolo de Interconexion",
+		color: "#f2f2f2"
+	},
 ];
 
 export default pdnRoutes;

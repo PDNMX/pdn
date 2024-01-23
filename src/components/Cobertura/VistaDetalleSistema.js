@@ -24,8 +24,21 @@ const percentage = (a, b) => {
 };
 
 const VistaDetalleSistema = props => {
-    const {estado, system, classes, avance_s1, avance_s2} = props;
+    const {estado, system, classes, avance_s1, avance_s2, avance_s6} = props;
     const {icon, color, name} = system;
+
+    const get_value = id => {
+        switch (id) {
+            case 1:
+                return avance_s1;
+            case 2:
+                return avance_s2;
+            case 6:
+                return avance_s6;
+            default:
+                return avance_s1;
+        }
+    };
 
     /* Vista detallada por Sistema */
     return <Box sx={{display: 'flex', flexWrap: "wrap", alignItems: "stretch"}} justifyContent="center">
@@ -44,7 +57,9 @@ const VistaDetalleSistema = props => {
 
         <Paper elevation={15} sx={{ m: 1, p: 2, display: 'flex', justifyContent: 'center' }} className={classes.paper}>
 
-            {(system.id === 1 || system.id === 2) &&
+{/*            {(system.id === 1 || system.id === 2) && */ }
+            {(system.id === 1 || system.id === 2 || system.id ===6) &&
+                
                 <Box display='flex' flexWrap='wrap'>
                     <Box p={1} textAlign="center">
                         <Typography variant="h5" sx={{color: bar_colors[0], fontWeight: 'bold'}}>
@@ -151,11 +166,11 @@ const VistaDetalleSistema = props => {
                                 Total de instituciones conectadas
                             </Typography>
 
-                            <PieChart color={color} value={system.id ===1 ? avance_s1 : avance_s2}/>
+                            <PieChart color={color} value={get_value (system.id)}/>
 
                             <Typography variant="h3" sx={{fontWeight: 'bold'}} color={color}>
                                 {/* falta */}
-                                {system.id ===1 ? avance_s1 : avance_s2}%
+                                {get_value (system.id)}%
                             </Typography>
                             <Typography color="white" variant="h6">
                                 {

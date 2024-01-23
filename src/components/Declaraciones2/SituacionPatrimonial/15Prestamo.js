@@ -29,15 +29,15 @@ function Duenio({ obj }) {
           <Grid container spacing={1}>
             <Grid item xs={12} md={4}>
               <Typography className={classes.cardTitle}>NOMBRE DEL DUEÑO O TITULAR:</Typography>
-              <Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
+              <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
             </Grid>
             <Grid item xs={12} md={4}>
               <Typography className={classes.cardTitle}>RFC:</Typography>
-              <Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
+              <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
             </Grid>
             <Grid item xs={12} md={4}>
               <Typography className={classes.cardTitle}>RELACIÓN CON EL DUEÑO O EL TITULAR:</Typography>
-              <Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
+              <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
             </Grid>
           </Grid>
         </Grid>
@@ -86,7 +86,7 @@ function Prestamo({ prestamo }) {
                 </Grid>
                 <Grid item xs={12} md={4}>
                   <Typography className={classes.cardTitle}>UBICACIÓN DEL INMUEBLE:</Typography>
-                  <Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
+                  <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
                 </Grid>
                 <Duenio obj={obj} />
               </Grid>
@@ -120,11 +120,11 @@ function Prestamo({ prestamo }) {
                 </Grid>
                 <Grid item xs={12} md={4}>
                   <Typography className={classes.cardTitle}>NÚMERO DE SERIE O REGISTRO:</Typography>
-                  <Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
+                  <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
                 </Grid>
                 <Grid item xs={12} md={4}>
                   <Typography className={classes.cardTitle}>¿DÓNDE SE ENCUENTRA REGISTRADO?:</Typography>
-                  <Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
+                  <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
                 </Grid>
                 <Duenio obj={obj} />
               </Grid>

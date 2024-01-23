@@ -39,10 +39,10 @@ class Declaraciones extends React.Component {
     return (
       <ThemeProvider theme={ThemeV2}>
         <HeaderV2 section={system} />
-        <Grid container spacing={0}>
+        <Grid container spacing={0} style={{ maxWidth: 1200, margin: '0 auto' }}>
           <Grid item xs={12} style={{ maxWidth: 1200, margin: '0 auto', marginTop: 50 }}>
             <Grid container spacing={0}>
-              <Grid item lg={3} xs={12} style={{ display: 'flex', alignItems: 'center' }}>
+              <Grid item lg={12} xs={12} style={{ display: 'flex', alignItems: 'center' }}>
                 <figure className={classes.selectedTab}>
                   <img src={img} alt={titulo} className={classes.logo} />
                 </figure>
