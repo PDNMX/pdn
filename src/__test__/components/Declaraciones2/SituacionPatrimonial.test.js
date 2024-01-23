@@ -1,10 +1,10 @@
 import React from 'react';
 
 //componente
-import { readFiles } from '../../../__mocks__/index';
+import { readFiles } from '../../../utils/readFiles';
 import SituacionPatrimonial from '../../../components/Declaraciones2/SituacionPatrimonial';
 //Enzyme
-import Enzyme, { mount, shallow } from 'enzyme';
+import Enzyme, { mount } from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 
 Enzyme.configure({ adapter: new Adapter() });

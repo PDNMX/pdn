@@ -1,27 +1,22 @@
 import React from 'react';
 
 //componente
-import { readFiles } from '../../../../__mocks__/index';
+import { readFiles } from '../../../utils/readFiles';
 import Vehiculos from '../../../../components/Declaraciones2/SituacionPatrimonial/11Vehiculos';
 //Enzyme
-import Enzyme, { mount, shallow } from 'enzyme';
+import Enzyme, { mount } from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 
 Enzyme.configure({ adapter: new Adapter() });
+const info = readFiles();
 
-describe('Declaraciones', () => {
-  const data = readFiles();
+describe.each(info)('file $name', ({ data }) => {
+  describe.each(data)('11Vehiculos id:$id nombre:$declaracion.situacionPatrimonial.datosGenerales.nombre|$declaracion.situacionPatrimonial.datosGenerales.primerApellido|$declaracion.situacionPatrimonial.datosGenerales.segundoApellido', ({ id, declaracion }) => {
+    const { vehiculos } = declaracion.situacionPatrimonial;
 
-  data.forEach((dato, index) => {
-    const { datosGenerales, vehiculos } = dato.declaracion.situacionPatrimonial;
-    const { nombre, primerApellido, segundoApellido } = datosGenerales;
-
-    describe(`11Vehiculos id:${dato.id} nombre:${nombre}|${primerApellido}|${segundoApellido}`, () => {
-      test('montar', () => {
-        const wrapper = mount(<Vehiculos data={vehiculos} />);
-
-        expect(wrapper.length).toBe(1);
-      });
+    test('11Vehiculos', () => {
+      const wrapper = mount(<Vehiculos data={vehiculos} />);
+      expect(wrapper.length).toBe(1);
     });
   });
 });

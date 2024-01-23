@@ -1,44 +1,41 @@
 import React from 'react';
 
 //componente
-import { readFiles } from '../../../../__mocks__/index';
+import { readFiles } from '../../../utils/readFiles';
 import ServidorAnioAnterior from '../../../../components/Declaraciones2/SituacionPatrimonial/09ServidorAnioAnterior';
 //Enzyme
-import Enzyme, { mount, shallow } from 'enzyme';
+import Enzyme, { mount } from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 
 Enzyme.configure({ adapter: new Adapter() });
+const info = readFiles();
 
-describe('Declaraciones', () => {
-  const data = readFiles();
+describe.each(info)('file $name', ({ data }) => {
+  describe.each(data)('09ServidorAnioAnterior id:$id nombre:$declaracion.situacionPatrimonial.datosGenerales.nombre|$declaracion.situacionPatrimonial.datosGenerales.primerApellido|$declaracion.situacionPatrimonial.datosGenerales.segundoApellido', ({ id, metadata, declaracion }) => {
+    const { actividadAnualAnterior } = declaracion.situacionPatrimonial;
+    switch (metadata.tipo) {
+      case 'INICIAL':
+        test('09ServidorAnioAnterior Inicial', () => {
+          const wrapper = mount(<ServidorAnioAnterior data={actividadAnualAnterior} />);
 
-  data.forEach((dato, index) => {
-    const { datosGenerales, actividadAnualAnterior } = dato.declaracion.situacionPatrimonial;
-    const { nombre, primerApellido, segundoApellido } = datosGenerales;
+          expect(wrapper.length).toBe(1);
+        });
+        break;
+      case 'MODIFICACIÓN':
+        expect(metadata.tipo).toEqual('MODIFICACIÓN');
+        break;
+      case 'CONCLUSIÓN':
+        test('09ServidorAnioAnterior Conclusión', () => {
+          const wrapper = mount(<ServidorAnioAnterior data={actividadAnualAnterior} />);
 
-    describe(`08Ingresos id:${dato.id} nombre:${nombre}|${primerApellido}|${segundoApellido}`, () => {
-      switch (dato.metadata.tipo) {
-        case 'INICIAL':
-          test('montar ServidorAnioAnterior', () => {
-            const wrapper = mount(<ServidorAnioAnterior data={actividadAnualAnterior} />);
+          expect(wrapper.length).toBe(1);
+        });
+        break;
 
-            expect(wrapper.length).toBe(1);
-          });
-          break;
-        case 'MODIFICACIÓN':
-          break;
-        case 'CONCLUSIÓN':
-          test('montar ServidorAnioAnterior', () => {
-            const wrapper = mount(<ServidorAnioAnterior data={actividadAnualAnterior} />);
-
-            expect(wrapper.length).toBe(1);
-          });
-          break;
-
-        default:
-          console.log(dato.metadata.tipo);
-          break;
-      }
-    });
+      default:
+        expect(metadata.tipo).toEqual('otro');
+        console.log(metadata.tipo);
+        break;
+    }
   });
 });

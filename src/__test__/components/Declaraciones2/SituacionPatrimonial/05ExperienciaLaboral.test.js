@@ -1,27 +1,22 @@
 import React from 'react';
 
 //componente
-import { readFiles } from '../../../../__mocks__/index';
+import { readFiles } from '../../../utils/readFiles';
 import ExperienciaLaboral from '../../../../components/Declaraciones2/SituacionPatrimonial/05ExperienciaLaboral';
 //Enzyme
-import Enzyme, { mount, shallow } from 'enzyme';
+import Enzyme, { mount } from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 
 Enzyme.configure({ adapter: new Adapter() });
+const info = readFiles();
 
-describe('Declaraciones', () => {
-  const data = readFiles();
+describe.each(info)('file $name', ({ data }) => {
+  describe.each(data)('05ExperienciaLaboral id:$id nombre:$declaracion.situacionPatrimonial.datosGenerales.nombre|$declaracion.situacionPatrimonial.datosGenerales.primerApellido|$declaracion.situacionPatrimonial.datosGenerales.segundoApellido', ({ id, declaracion }) => {
+    const { experienciaLaboral } = declaracion.situacionPatrimonial;
 
-  data.forEach((dato, index) => {
-    const { datosGenerales, experienciaLaboral } = dato.declaracion.situacionPatrimonial;
-    const { nombre, primerApellido, segundoApellido } = datosGenerales;
-
-    describe(`05ExperienciaLaboral id:${dato.id} nombre:${nombre}|${primerApellido}|${segundoApellido}`, () => {
-      test('montar', () => {
-        const wrapper = mount(<ExperienciaLaboral data={experienciaLaboral} />);
-
-        expect(wrapper.length).toBe(1);
-      });
+    test('05ExperienciaLaboral', () => {
+      const wrapper = mount(<ExperienciaLaboral data={experienciaLaboral} />);
+      expect(wrapper.length).toBe(1);
     });
   });
 });

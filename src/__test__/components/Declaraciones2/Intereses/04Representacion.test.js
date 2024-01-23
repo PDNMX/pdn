@@ -1,28 +1,21 @@
 import React from 'react';
 
 //componente
-import { readFiles } from '../../../../__mocks__/index';
+import { readFiles } from '../../../utils/readFiles';
 import Representacion from '../../../../components/Declaraciones2/Intereses/04Representacion';
 //Enzyme
-import Enzyme, { mount, shallow } from 'enzyme';
+import Enzyme, { mount } from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 
 Enzyme.configure({ adapter: new Adapter() });
+const info = readFiles();
 
-describe('Declaraciones', () => {
-  const data = readFiles();
-
-  data.forEach((dato, index) => {
-    const { datosGenerales } = dato.declaracion.situacionPatrimonial;
-    const { representacion } = dato.declaracion.interes;
-    const { nombre, primerApellido, segundoApellido } = datosGenerales;
-
-    describe(`04Representacion id:${dato.id} nombre:${nombre}|${primerApellido}|${segundoApellido}`, () => {
-      test('montar', () => {
-        const wrapper = mount(<Representacion data={representacion} />);
-
-        expect(wrapper.length).toBe(1);
-      });
+describe.each(info)('file $name', ({ data }) => {
+  describe.each(data)('04Representacion id:$id nombre:$declaracion.situacionPatrimonial.datosGenerales.nombre|$declaracion.situacionPatrimonial.datosGenerales.primerApellido|$declaracion.situacionPatrimonial.datosGenerales.segundoApellido', ({ id, declaracion }) => {
+    const { representacion } = declaracion.interes;
+    test('04Representacion', () => {
+      const wrapper = mount(<Representacion data={representacion} />);
+      expect(wrapper.length).toBe(1);
     });
   });
 });

@@ -1,51 +1,50 @@
 import React from 'react';
 
 //componente
-import { readFiles } from '../../../../__mocks__/index';
+import { readFiles } from '../../../utils/readFiles';
 import IngresosInicial from '../../../../components/Declaraciones2/SituacionPatrimonial/08IngresosInicial';
 import IngresosModificacion from '../../../../components/Declaraciones2/SituacionPatrimonial/08IngresosModificacion';
 import IngresosConclusion from '../../../../components/Declaraciones2/SituacionPatrimonial/08IngresosConclusion';
 //Enzyme
-import Enzyme, { mount, shallow } from 'enzyme';
+import Enzyme, { mount } from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 
 Enzyme.configure({ adapter: new Adapter() });
+const info = readFiles();
 
-describe('Declaraciones', () => {
-  const data = readFiles();
+describe.each(info)('file $name', ({ data }) => {
+  describe.each(data)('08Ingresos id:$id nombre:$declaracion.situacionPatrimonial.datosGenerales.nombre|$declaracion.situacionPatrimonial.datosGenerales.primerApellido|$declaracion.situacionPatrimonial.datosGenerales.segundoApellido', ({ id, metadata, declaracion }) => {
+    const { ingresos } = declaracion.situacionPatrimonial;
 
-  data.forEach((dato, index) => {
-    const { datosGenerales, ingresos } = dato.declaracion.situacionPatrimonial;
-    const { nombre, primerApellido, segundoApellido } = datosGenerales;
+    switch (metadata.tipo) {
+      case 'INICIAL':
+        test('08Ingresos IngresosInicial', () => {
+          const wrapper = mount(<IngresosInicial data={ingresos} />);
 
-    describe(`08Ingresos id:${dato.id} nombre:${nombre}|${primerApellido}|${segundoApellido}`, () => {
-      switch (dato.metadata.tipo) {
-        case 'INICIAL':
-          test('montar IngresosInicial', () => {
-            const wrapper = mount(<IngresosInicial data={ingresos} />);
+          expect(wrapper.length).toBe(1);
+        });
+        break;
+      case 'MODIFICACIÓN':
+        test('08Ingresos IngresosModificacion', () => {
+          const wrapper = mount(<IngresosModificacion data={ingresos} />);
 
-            expect(wrapper.length).toBe(1);
-          });
-          break;
-        case 'MODIFICACIÓN':
-          test('montar IngresosModificacion', () => {
-            const wrapper = mount(<IngresosModificacion data={ingresos} />);
+          expect(wrapper.length).toBe(1);
+        });
+        break;
+      case 'CONCLUSIÓN':
+        test('08Ingresos IngresosConclusion', () => {
+          const wrapper = mount(<IngresosConclusion data={ingresos} />);
 
-            expect(wrapper.length).toBe(1);
-          });
-          break;
-        case 'CONCLUSIÓN':
-          test('montar IngresosConclusion', () => {
-            const wrapper = mount(<IngresosConclusion data={ingresos} />);
+          expect(wrapper.length).toBe(1);
+        });
+        break;
 
-            expect(wrapper.length).toBe(1);
-          });
-          break;
+      default:
+        test('08Ingresos Ingreso TipoDeclaracionNoExiste', () => {
+          expect(metadata.tipo).toEqual('NOEXISTE');
+        });
 
-        default:
-          console.log(dato.metadata.tipo);
-          break;
-      }
-    });
+        break;
+    }
   });
 });

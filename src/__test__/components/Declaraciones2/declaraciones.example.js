@@ -1,33 +1,21 @@
 import React from 'react';
 
 //componente
-import { readFiles } from '../../../__mocks__/index';
+import { readFiles } from '../../../utils/readFiles';
 //Enzyme
-import Enzyme, { mount, shallow } from 'enzyme';
+import Enzyme, { mount } from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 
 Enzyme.configure({ adapter: new Adapter() });
+const info = readFiles();
 
+describe.each(info)('file $name', ({ data }) => {
+  describe.each(data)('01DatosGenerales id:$id nombre:$declaracion.situacionPatrimonial.datosGenerales.nombre|$declaracion.situacionPatrimonial.datosGenerales.primerApellido|$declaracion.situacionPatrimonial.datosGenerales.segundoApellido', ({ id, declaracion }) => {
+    //const { datosGenerales } = declaracion.situacionPatrimonial;
 
-describe('mount', () => {
-  const data = readFiles();
-
-  data.forEach((dato, index) => {
-    const { nombre, primerApellido, segundoApellido } = dato.declaracion.situacionPatrimonial.datosGenerales;
-    describe(`declaracion id:${dato.id} nombre:${nombre}|${primerApellido}|${segundoApellido}`, () => {
-      test('should ', () => {});
+    test('01DatosGenerales', () => {
+      //const wrapper = mount(<DatosGenerales data={datosGenerales} titulo='Titulo' />);
+      //expect(wrapper.length).toBe(1);
     });
-  });
-  // test.each(info)('double(%d)', d => {});
-
-  test('mount Intereses', () => {
-    // const Int = mount(<Intereses></Intereses>);
-    // expect(Int.length).toBe(1);
-  });
-  test('montar', async () => {
-    const wrapper = mount(<div>aaaa</div>);
-
-    const div = wrapper.find('div');
-    expect(div.text()).toBe('aaaa');
   });
 });
