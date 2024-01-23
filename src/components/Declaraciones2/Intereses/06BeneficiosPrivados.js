@@ -35,7 +35,7 @@ function BeneficiosPrivados(props) {
             </Grid>
             <Grid item xs={12} md={4}>
               <Typography className={classes.cardTitle}>BENEFICIARIO:</Typography>
-              <Typography className={classes.card}>{obj.beneficiario[0].valor}</Typography>
+              <Typography className={classes.card}>{obj.beneficiario && obj.beneficiario[0].valor}</Typography>
             </Grid>
 
             <Grid item xs={12} md={4}>
