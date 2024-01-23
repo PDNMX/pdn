@@ -9,11 +9,11 @@ import ReactJson from 'react-json-view';
 import DownloadIcon from '@mui/icons-material/CloudDownload';
 import Typography from "@mui/material/Typography";
 import withStyles from '@mui/styles/withStyles';
-import {Button, Box, Paper} from '@mui/material';
+import { Box, Paper} from '@mui/material';
 import ButtonPDN from '../Compartidos/ButtonPDN';
 
 // FIXME checkout https://mui.com/components/use-media-query/#using-material-uis-breakpoint-helpers
-const withMobileDialog = () => (WrappedComponent) => (props) => <WrappedComponent {...props} width="lg" fullScreen={false} />;
+//const withMobileDialog = () => (WrappedComponent) => (props) => <WrappedComponent {...props} width="lg" fullScreen={false} />;
 
 const styles = theme => ({
     button: {
@@ -174,6 +174,6 @@ ResponsiveDialog.propTypes = {
     classes: PropTypes.object.isRequired
 };
 
-const ResponsiveDialogStyled = withStyles(styles)(ResponsiveDialog);
+//const ResponsiveDialogStyled = withStyles(styles)(ResponsiveDialog);
 
-export default withMobileDialog()(ResponsiveDialogStyled);
+export default withStyles(styles)(ResponsiveDialog);

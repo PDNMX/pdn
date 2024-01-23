@@ -81,9 +81,9 @@ const Footer = () => {
         <Grid item md={3} xs={12} sm={3}>
           <ul>
             <li><Link to="/about">Acerca de la PDN</Link></li>
-            <li><a href="/mapa-sla/">Avances de
+            <li><a rel="noreferrer" href="/mapa-sla/">Avances de
                 Interconexión</a></li>
-            <li><a href={import.meta.env.VITE_LINK_MDA}>Mercado Digital Anticorrupción</a>
+            <li><a rel="noreferrer" href={import.meta.env.VITE_LINK_MDA}>Mercado Digital Anticorrupción</a>
             </li>
           </ul>
         </Grid>
@@ -92,8 +92,8 @@ const Footer = () => {
             <li>
                 <Link to="/faq">Preguntas frecuentes</Link>
             </li>
-            <li><a href="https://www.youtube.com/channel/UCJ0nWmB2-ADfn95r5cjmLJA/">Videos</a></li>
-            <li> <a href="https://drive.google.com/drive/folders/1t_vGUfagr75TAZ8-E4NZfL-fU0BcsPlZ">Boletines
+            <li><a rel="noreferrer" href="https://www.youtube.com/channel/UCJ0nWmB2-ADfn95r5cjmLJA/">Videos</a></li>
+            <li> <a rel="noreferrer" href="https://drive.google.com/drive/folders/1t_vGUfagr75TAZ8-E4NZfL-fU0BcsPlZ">Boletines
                 y prensa</a></li>
           </ul>
         </Grid>
@@ -101,7 +101,7 @@ const Footer = () => {
           <ul >
             <li><Link to="/mesa-de-ayuda">Mesa de ayuda</Link></li>
             <li><Link to="/especificaciones">Especificaciones técnicas</Link></li>
-            <li> <a href="/blog/">Blog</a></li>
+            <li> <a rel="noreferrer" href="/blog/">Blog</a></li>
           </ul>
         </Grid>
       </Grid>
@@ -128,19 +128,19 @@ const Footer = () => {
         className="mb-3 footerIcon"
       >
         <Grid item md={2} align="center">
-          <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.es" target="_blank"><CreativeIcon/></a>
+          <a rel="noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/deed.es" target="_blank"><CreativeIcon/></a>
         </Grid>
         <Grid item md={2} align="center">
-          <a href="https://twitter.com/SESNAOficial" target="_blank"><TwitterIcon/></a>
+          <a rel="noreferrer" href="https://twitter.com/SESNAOficial" target="_blank"><TwitterIcon/></a>
         </Grid>
         <Grid item md={2} align="center">
-          <a href="https://www.facebook.com/SESNAOficial/" target="_blank"><FacebookIcon/></a>
+          <a rel="noreferrer" href="https://www.facebook.com/SESNAOficial/" target="_blank"><FacebookIcon/></a>
         </Grid>
         <Grid item md={2} align="center">
-          <a href="https://github.com/orgs/PDNMX/" target="_blank"><GitHubIcon/></a>
+          <a rel="noreferrer" href="https://github.com/orgs/PDNMX/" target="_blank"><GitHubIcon/></a>
         </Grid>
         <Grid item md={2} align="center">
-          <a href="https://www.youtube.com/channel/UCRUpiHth_WRkNo2sBmZIyfQ/featured" target="_blank"><YouTubeIcon/></a>
+          <a rel="noreferrer" href="https://www.youtube.com/channel/UCRUpiHth_WRkNo2sBmZIyfQ/featured" target="_blank"><YouTubeIcon/></a>
         </Grid>
       </Grid>
       </div>

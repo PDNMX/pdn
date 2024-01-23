@@ -4,7 +4,7 @@ import { withStyles } from "@mui/styles";
 import BlogCard from "./BlogCard";
 import axios from "axios";
 import ButtonPDN from "../../Compartidos/ButtonPDN";
-
+import ReactGA from "react-ga4";
 
 const styles = () => ({
   container: {

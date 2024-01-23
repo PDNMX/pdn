@@ -555,7 +555,7 @@ export default function CustomizedExpansionPanels() {
                         </Typography>
 
                         <Typography paragraph>
-                            Como apoyo para la verificar el cumplimiento de los esquemas de datos de las diferentes API 's, ponemos a su disposición un <Link to="/validador" className={classes.link}>Validador</Link>.
+                            Como apoyo para la verificar el cumplimiento de los esquemas de datos de las diferentes API&apos;s, ponemos a su disposición un <Link to="/validador" className={classes.link}>Validador</Link>.
                         </Typography>
 
                         <Typography>

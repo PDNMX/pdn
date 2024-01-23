@@ -1,8 +1,8 @@
 import React from "react";
 import SysPDN from "./Sistemas/SysPDN";
-import { withStyles } from "@mui/styles";
+//import { withStyles } from "@mui/styles";
 
-const BlogSys = (props) => {
+const BlogSys = () => {
   return (
     <>
       <SysPDN />
@@ -10,4 +10,4 @@ const BlogSys = (props) => {
   );
 };
 
-export default withStyles(styles)(BlogSys);
+export default BlogSys;

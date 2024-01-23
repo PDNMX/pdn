@@ -43,23 +43,24 @@ const Numeralia = props => {
     const [isLoading, setIsLoading] = useState(true);
     const [numeralia, setNumeralia] = useState(null);
     const [error, setError] = useState(null);
+    async function fetchData() {
+        try {
+          const response = await fetch(ligaDatosNumeralia);
+          if (response.ok) {
+            const data = await response.json();
+            setNumeralia(data);
+            setError(null);
+            setIsLoading(false);
+          } else {
+            setError("Hubo un error al obtener la información");
+          }
+        } catch (error) {
+          setError("No pudimos hacer la solicitud para obtener la información");
+        }
+      }
     useEffect(() => {
       if (isLoading) {
-        async function fetchData() {
-          try {
-            const response = await fetch(ligaDatosNumeralia);
-            if (response.ok) {
-              const data = await response.json();
-              setNumeralia(data);
-              setError(null);
-              setIsLoading(false);
-            } else {
-              setError("Hubo un error al obtener la información");
-            }
-          } catch (error) {
-            setError("No pudimos hacer la solicitud para obtener la información");
-          }
-        }
+        
         fetchData();
       }
     }, [isLoading]);

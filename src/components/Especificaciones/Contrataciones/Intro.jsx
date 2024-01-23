@@ -281,7 +281,7 @@ const Intro = props => {
             </ButtonPDN>
 
             <Typography paragraph className={classes.text} marginTop={"10px"}>
-                Asimismo, para conocer la traducción, puede consultar la especificación técnica del Sistema 6 en la sección "Implementación del EDCA".
+                Asimismo, para conocer la traducción, puede consultar la especificación técnica del Sistema 6 en la sección &quot;Implementación del EDCA&quot;.
                 {/*https://plataformadigitalnacional.org/contrataciones/especificaciones*/}
             </Typography>
 
@@ -302,7 +302,7 @@ const Intro = props => {
             </Typography>
 
             <Typography paragraph className={classes.text} marginTop={"5px"}>
-                Consultando el diccionario de datos del EDCA MX disponible en la sección "Implementación del EDCA".
+                Consultando el diccionario de datos del EDCA MX disponible en la sección &quot;Implementación del EDCA&quot;.
                 {/*https://plataformadigitalnacional.org/contrataciones/especificaciones*/}
             </Typography>
 
