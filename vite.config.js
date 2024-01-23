@@ -1,15 +1,24 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
+import checker from "vite-plugin-checker";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
-  define: {
-    'process': {
-      env: {
-        NODE_DEBUG: false
+  plugins: [
+    react(),
+    checker({
+      typescript: false,
+      eslint: {
+        lintCommand: 'eslint "./src/**/*.{js,jsx}"',
       }
-    }
+    }),
+  ],
+  define: {
+    process: {
+      env: {
+        NODE_DEBUG: false,
+      },
+    },
   },
   build: {
     chunkSizeWarningLimit: 1000,
@@ -28,6 +37,6 @@ export default defineConfig({
     },
   },
   optimizeDeps: {
-    include: ['@mui/material/Tooltip'],
+    include: ["@mui/material/Tooltip"],
   },
 });
