@@ -1,29 +1,27 @@
-import React from 'react';
-import makeStyles from '@mui/styles/makeStyles';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
+import React from 'react'
+import makeStyles from '@mui/styles/makeStyles'
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
 
-import styleSecciones from '../styleSecciones';
+import styleSecciones from '../styleSecciones'
 
-import DatosNoRegistrados from '../DatosNoRegistrados';
-import DatosReservados from '../DatosReservados';
-import { sumary, expansion, Divider } from '../utils';
+import DatosNoRegistrados from '../DatosNoRegistrados'
+import DatosReservados from '../DatosReservados'
+import { sumary, expansion, Divider, Disclaimer } from '../utils'
 
-import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../common/AccordionBox';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../common/AccordionBox'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
-import { Disclaimer } from '../utils';
+const useStyles = makeStyles(styleSecciones)
 
-const useStyles = makeStyles(styleSecciones);
-
-function Inversiones({ inversiones, tipo }) {
-  const classes = useStyles();
-  const exp = expansion();
-  const sum = sumary();
+function Inversiones ({ inversiones, tipo }) {
+  const classes = useStyles()
+  const exp = expansion()
+  const sum = sumary()
   return inversiones.map((obj, idx) => {
     return (
       <BoxAccordion key={'veh-' + idx}>
-        <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon style={{ color: 'white'}} />} aria-controls='panel1a-content' id='panel1a-header'>
+        <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon style={{ color: 'white' }} />} aria-controls='panel1a-content' id='panel1a-header'>
           <Typography className={exp.heading}>
             <strong>
               {obj.tipoInversion && obj.tipoInversion.valor} ({obj.subTipoInversion && obj.subTipoInversion.valor})
@@ -51,7 +49,7 @@ function Inversiones({ inversiones, tipo }) {
               <Typography className={classes.cardTitle}>TITULAR DE LA INVERSIÓN, CUENTA BANCARIA Y OTRO TIPO DE VALORES:</Typography>
               <Typography className={classes.card}>
                 {obj.titular.map((tit, idx) => {
-                  return <span key={'tit-' + idx}>{tit.valor}</span>;
+                  return <span key={'tit-' + idx}>{tit.valor}</span>
                 })}
               </Typography>
             </Grid>
@@ -65,17 +63,19 @@ function Inversiones({ inversiones, tipo }) {
               <Typography className={classes.card}>{obj.localizacionInversion.institucionRazonSocial}</Typography>
             </Grid>
 
-            {obj.localizacionInversion.pais === 'MX' ? (
-              <Grid item xs={12} md={4}>
-                <Typography className={classes.cardTitle}>RFC</Typography>
-                <Typography className={classes.card}>{obj.localizacionInversion.rfc}</Typography>
-              </Grid>
-            ) : (
-              <Grid item xs={12} md={4}>
-                <Typography className={classes.cardTitle}>PAÍS DÓNDE SE LOCALIZA</Typography>
-                <Typography className={classes.card}>{obj.localizacionInversion.pais}</Typography>
-              </Grid>
-            )}
+            {obj.localizacionInversion.pais === 'MX'
+              ? (
+                <Grid item xs={12} md={4}>
+                  <Typography className={classes.cardTitle}>RFC</Typography>
+                  <Typography className={classes.card}>{obj.localizacionInversion.rfc}</Typography>
+                </Grid>
+                )
+              : (
+                <Grid item xs={12} md={4}>
+                  <Typography className={classes.cardTitle}>PAÍS DÓNDE SE LOCALIZA</Typography>
+                  <Typography className={classes.card}>{obj.localizacionInversion.pais}</Typography>
+                </Grid>
+                )}
 
             {tipo !== 'INICIAL' && (
               <Grid item xs={12} md={4}>
@@ -85,67 +85,69 @@ function Inversiones({ inversiones, tipo }) {
             )}
 
             {typeof obj.tercero !== 'undefined' && (
-              <React.Fragment>
+              <>
                 <Divider />
                 <Grid item xs={12} style={{ textAlign: 'center' }}>
                   <Typography className={classes.tituloSubSeccion}>TERCERO</Typography>
                 </Grid>
-              </React.Fragment>
+              </>
             )}
             {typeof obj.tercero !== 'undefined' &&
               obj.tercero.map((tercero, id) => {
-                return tercero.tipoPersona !== 'MORAL' ? (
-                  <Grid key={'tercero-' + id} item xs={12}>
-                    <Grid container spacing={1}>
-                      <Grid item xs={12} md={3}>
-                        <Typography className={classes.cardTitle}>TIPO PERSONA:</Typography>
-                        <Typography className={classes.cardReserved}>FÍSICA</Typography>
-                      </Grid>
-                      <Grid item xs={12} md={6}>
-                        <Typography className={classes.cardTitle}>NOMBRE DEL TERCERO O TERCEROS:</Typography>
-                        <Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
-                      </Grid>
-                      <Grid item xs={12} md={3}>
-                        <Typography className={classes.cardTitle}>RFC:</Typography>
-                        <Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                ) : (
-                  <Grid key={'tercero-' + id} item xs={12}>
-                    <Grid container spacing={1}>
-                      <Grid item xs={12} md={3}>
-                        <Typography className={classes.cardTitle}>TIPO PERSONA:</Typography>
-                        <Typography className={classes.card}>MORAL</Typography>
-                      </Grid>
-                      <Grid item xs={12} md={6}>
-                        <Typography className={classes.cardTitle}>NOMBRE DEL TERCERO O TERCEROS:</Typography>
-                        <Typography className={classes.card}>{tercero.nombreRazonSocial}</Typography>
-                      </Grid>
-                      <Grid item xs={12} md={3}>
-                        <Typography className={classes.cardTitle}>RFC:</Typography>
-                        <Typography className={classes.card}>{tercero.rfc}</Typography>
+                return tercero.tipoPersona !== 'MORAL'
+                  ? (
+                    <Grid key={'tercero-' + id} item xs={12}>
+                      <Grid container spacing={1}>
+                        <Grid item xs={12} md={3}>
+                          <Typography className={classes.cardTitle}>TIPO PERSONA:</Typography>
+                          <Typography className={classes.cardReserved}>FÍSICA</Typography>
+                        </Grid>
+                        <Grid item xs={12} md={6}>
+                          <Typography className={classes.cardTitle}>NOMBRE DEL TERCERO O TERCEROS:</Typography>
+                          <Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
+                        </Grid>
+                        <Grid item xs={12} md={3}>
+                          <Typography className={classes.cardTitle}>RFC:</Typography>
+                          <Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
+                        </Grid>
                       </Grid>
                     </Grid>
-                  </Grid>
-                );
+                    )
+                  : (
+                    <Grid key={'tercero-' + id} item xs={12}>
+                      <Grid container spacing={1}>
+                        <Grid item xs={12} md={3}>
+                          <Typography className={classes.cardTitle}>TIPO PERSONA:</Typography>
+                          <Typography className={classes.card}>MORAL</Typography>
+                        </Grid>
+                        <Grid item xs={12} md={6}>
+                          <Typography className={classes.cardTitle}>NOMBRE DEL TERCERO O TERCEROS:</Typography>
+                          <Typography className={classes.card}>{tercero.nombreRazonSocial}</Typography>
+                        </Grid>
+                        <Grid item xs={12} md={3}>
+                          <Typography className={classes.cardTitle}>RFC:</Typography>
+                          <Typography className={classes.card}>{tercero.rfc}</Typography>
+                        </Grid>
+                      </Grid>
+                    </Grid>
+                    )
               })}
           </Grid>
         </BoxAccordionDetails>
       </BoxAccordion>
-    );
-  });
+    )
+  })
 }
 
 const Inversion = ({ data, tipo, titulo }) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
-  let inversiones;
+  let inversiones
 
   if (typeof data === 'undefined' || data.ninguno) {
-    inversiones = [];
+    inversiones = []
   } else {
-    inversiones = data.inversion ? data.inversion.filter(i => i.titular.length === 1 && i.titular[0].clave === 'DEC') : [];
+    inversiones = data.inversion ? data.inversion.filter(i => i.titular.length === 1 && i.titular[0].clave === 'DEC') : []
   }
 
   // const inversiones = data.ninguno
@@ -159,14 +161,16 @@ const Inversion = ({ data, tipo, titulo }) => {
           {titulo}
         </Typography>
       </Grid>
-      {data ? (
-        <Grid item xs={12}>
-          {data.ninguno ? <DatosNoRegistrados /> : inversiones.length ? <Inversiones inversiones={inversiones} tipo={tipo} /> : <DatosReservados />}
-        </Grid>
-      ) : (
-        <Disclaimer />
-      )}
+      {data
+        ? (
+          <Grid item xs={12}>
+            {data.ninguno ? <DatosNoRegistrados /> : inversiones.length ? <Inversiones inversiones={inversiones} tipo={tipo} /> : <DatosReservados />}
+          </Grid>
+          )
+        : (
+          <Disclaimer />
+          )}
     </Grid>
-  );
-};
-export default Inversion;
+  )
+}
+export default Inversion

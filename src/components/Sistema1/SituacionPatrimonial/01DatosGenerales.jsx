@@ -1,14 +1,14 @@
-import React from 'react';
-import Paper from '@mui/material/Paper';
-import makeStyles from '@mui/styles/makeStyles';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
+import React from 'react'
+import Paper from '@mui/material/Paper'
+import makeStyles from '@mui/styles/makeStyles'
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
 
-import style from '../styleSecciones';
+import style from '../styleSecciones'
 // import DatosCamposPrivados from '../DatosCamposPrivados';
-import basicInicial from './00_basic_incial';
+import basicInicial from './00_basic_incial'
 
-const useStyles = makeStyles(style);
+const useStyles = makeStyles(style)
 // const camposPrivados = [
 // 	'CURP',
 // 	'RFC',
@@ -23,12 +23,12 @@ const useStyles = makeStyles(style);
 // ];
 
 const DatosGenerales = ({ data: info, titulo }) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   const data = {
     ...basicInicial.datosGenerales,
     ...info
-  };
+  }
 
   return (
     <Grid container spacing={2} className={classes.rootPrincipal}>
@@ -104,6 +104,6 @@ const DatosGenerales = ({ data: info, titulo }) => {
         </Paper>
       </Grid>
     </Grid>
-  );
-};
-export default DatosGenerales;
+  )
+}
+export default DatosGenerales

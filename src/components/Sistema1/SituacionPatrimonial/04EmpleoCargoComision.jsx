@@ -1,22 +1,22 @@
-import React from 'react';
-import Paper from '@mui/material/Paper';
-import makeStyles from '@mui/styles/makeStyles';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
+import React from 'react'
+import Paper from '@mui/material/Paper'
+import makeStyles from '@mui/styles/makeStyles'
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
 
-import style from '../styleSecciones';
-import { Divider, CompDomicilio } from '../utils';
+import style from '../styleSecciones'
+import { Divider, CompDomicilio } from '../utils'
 
-import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../common/BoxAccordion';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../common/BoxAccordion'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
-const useStyles = makeStyles(style);
+const useStyles = makeStyles(style)
 
-function Empleo({ data }) {
-  const classes = useStyles();
+function Empleo ({ data }) {
+  const classes = useStyles()
 
   return (
-    <React.Fragment>
+    <>
       <Grid item xs={12} md={4}>
         <Typography className={classes.cardTitle}>NIVEL/ORDEN DE GOBIERNO</Typography>
         <Typography className={classes.card}>{data.nivelOrdenGobierno}</Typography>
@@ -65,12 +65,12 @@ function Empleo({ data }) {
 
       <Divider />
       <CompDomicilio domicilioMexico={data.domicilioMexico} domicilioExtranjero={data.domicilioExtranjero} />
-    </React.Fragment>
-  );
+    </>
+  )
 }
 
 const EmpleoCargoComision = ({ data, titulo }) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <Grid container spacing={2} className={classes.rootPrincipal}>
@@ -100,12 +100,12 @@ const EmpleoCargoComision = ({ data, titulo }) => {
                       </Grid>
                     </BoxAccordionDetails>
                   </BoxAccordion>
-                );
+                )
               })}
           </Grid>
         </Paper>
       </Grid>
     </Grid>
-  );
-};
-export default EmpleoCargoComision;
+  )
+}
+export default EmpleoCargoComision

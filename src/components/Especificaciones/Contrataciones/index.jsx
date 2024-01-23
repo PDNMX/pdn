@@ -1,17 +1,17 @@
-import React from 'react';
-import { Paper, Box, Divider, Grid, Typography } from '@mui/material';
-import withStyles from '@mui/styles/withStyles';
-import Intro from './Intro';
-import Licencia from '../Licencia';
-import Herramientas from '../Herramientas';
-import bgimg from '../../../assets/rediseno/fondo_cruces_dark.png';
-import pdnRoutes from '../../../routes';
-import HeaderV2 from '../../HomeV2/HeaderV2';
-import ButtonPDN from '../../Compartidos/ButtonPDN';
+import React from 'react'
+import { Paper, Box, Divider, Grid, Typography } from '@mui/material'
+import withStyles from '@mui/styles/withStyles'
+import Intro from './Intro'
+import Licencia from '../Licencia'
+import Herramientas from '../Herramientas'
+import bgimg from '../../../assets/rediseno/fondo_cruces_dark.png'
+import pdnRoutes from '../../../routes'
+import HeaderV2 from '../../HomeV2/HeaderV2'
+import ButtonPDN from '../../Compartidos/ButtonPDN'
 const styles = theme => ({
   root: {
-    flexGrow: 1,
-/*     backgroundColor: theme.palette.primary.main,
+    flexGrow: 1
+    /*     backgroundColor: theme.palette.primary.main,
     backgroundImage: `url(${bgimg})`,
     backgroundRepeat: 'repeat',
     backgroundPosition: 'fixed',
@@ -45,17 +45,17 @@ const styles = theme => ({
   },
   text: {
     color: theme.palette.text.primary,
-    textAlign: 'justify',
-    //fontWeight: "bold"
+    textAlign: 'justify'
+    // fontWeight: "bold"
   },
   title: {
     color: theme.palette.primary.main
-  },
-});
+  }
+})
 
 const Index = props => {
-  const { classes } = props;
-  const section = pdnRoutes.find(route => route.path === '/especificaciones/s6');
+  const { classes } = props
+  const section = pdnRoutes.find(route => route.path === '/especificaciones/s6')
   return (
     <div className={classes.root}>
       <HeaderV2 section={section} />
@@ -89,7 +89,7 @@ const Index = props => {
         </Grid>
       </Grid>
     </div>
-  );
-};
+  )
+}
 
-export default withStyles(styles)(Index);
+export default withStyles(styles)(Index)

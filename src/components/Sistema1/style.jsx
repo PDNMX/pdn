@@ -1,26 +1,25 @@
-
 const CssDeclaraciones = theme => ({
   root: {
     flexGrow: 1
   },
   backgroundCruces: {
-    flexGrow: 1,
-/*     backgroundImage: `url(${bgimg})`,
+    flexGrow: 1
+    /*     backgroundImage: `url(${bgimg})`,
     backgroundRepeat: 'no-repet',
     backgroundAttachment: 'fixed' */
   },
-  //principal
+  // principal
   bgContainer: {
     backgroundColor: theme.palette.S1.main
   },
   card: {
     // backgroundColor: "#34b3eb", //theme.palette.azul.color,
-    'backgroundColor': theme.palette.S1.color,
-    'paddingLeft': theme.spacing(1),
-    'paddingRight': theme.spacing(1),
-    'paddingTop': theme.spacing(2),
-    'paddingBottom': theme.spacing(2),
-    'margin': 0,
+    backgroundColor: theme.palette.S1.color,
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1),
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2),
+    margin: 0,
     '&:hover': {
       cursor: 'pointer',
       backgroundColor: theme.palette.S1.dark,
@@ -53,13 +52,13 @@ const CssDeclaraciones = theme => ({
     border: 0
   },
   sectionT: {
-    /*color: theme.palette.textGrey.color,*/
+    /* color: theme.palette.textGrey.color, */
     marginTop: theme.spacing(7),
     maxWidth: 1200
     // margin: "0 auto",
   },
   whiteText: {
-    /*color: theme.palette.textGrey.color,*/
+    /* color: theme.palette.textGrey.color, */
     padding: '10px'
   },
 
@@ -83,7 +82,7 @@ const CssDeclaraciones = theme => ({
   paper: {
     padding: theme.spacing(3, 2)
   },
-  //Secciones
+  // Secciones
   rootSeccion: {
     flexGrow: 1,
     marginTop: 30
@@ -91,7 +90,7 @@ const CssDeclaraciones = theme => ({
   sidebar: {
     background: '#2EB2E7'
   },
-  //Subsecciones
+  // Subsecciones
   rootSubseccion: {
     flexGrow: 1,
     padding: 15
@@ -170,7 +169,7 @@ const CssDeclaraciones = theme => ({
     margin: '0px 5px',
     background: '#e09d9d'
   },
-  //Progressbar
+  // Progressbar
   marginProgressbar: {
     margin: theme.spacing(1, 0)
   },
@@ -208,7 +207,7 @@ const CssDeclaraciones = theme => ({
   // informacion sobre buscar declaraciones
   ul: {
     listStyle: 'none',
-    //marginLeft: 0,
+    // marginLeft: 0,
     paddingLeft: '20px'
   },
   li: {
@@ -224,11 +223,11 @@ const CssDeclaraciones = theme => ({
   infoBusqueda: {
     paddingRight: theme.spacing(1),
     paddingLeft: theme.spacing(1)
-    //paddingBottom: theme.spacing(4),
+    // paddingBottom: theme.spacing(4),
     // paddingTop: theme.spacing(4),
     // backgroundColor: 'white'
   },
-  //resultados
+  // resultados
   resultadosRoot: {
     width: '100%',
     paddingBottom: theme.spacing(4),
@@ -429,12 +428,12 @@ const CssDeclaraciones = theme => ({
     color: theme.palette.text.primary
   },
   menulateral_fondo: {
-    backgroundColor: theme.palette.background.opaque,
+    backgroundColor: theme.palette.background.opaque
   },
   enlaces: {
-    'textDecoration': 'none',
+    textDecoration: 'none',
     // 'color': '#b1bcc1',
-    'color': theme.palette.text.linkColor,
+    color: theme.palette.text.linkColor,
     '&:visited': {
       color: theme.palette.text.linkColor
     },
@@ -449,5 +448,5 @@ const CssDeclaraciones = theme => ({
       borderBottom: '2px solid #b25fac'
     }
   }
-});
-export default CssDeclaraciones;
+})
+export default CssDeclaraciones

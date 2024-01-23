@@ -1,81 +1,81 @@
-import React from 'react';
-import { Grid, Typography, Paper } from '@mui/material';
-import withStyles from '@mui/styles/withStyles';
+import React from 'react'
+import { Grid, Typography, Paper } from '@mui/material'
+import withStyles from '@mui/styles/withStyles'
 
-import MenuSuperior from '../../../Sistema1/MenuSuperior';
-import SituacionPatrimonial from '../../../Sistema1/SituacionPatrimonial';
-import Intereses from '../../../Sistema1/Intereses';
-import styles from '../../../Sistema1/style';
-import { getMoneda } from '../../../Sistema1/utils';
+import MenuSuperior from '../../../Sistema1/MenuSuperior'
+import SituacionPatrimonial from '../../../Sistema1/SituacionPatrimonial'
+import Intereses from '../../../Sistema1/Intereses'
+import styles from '../../../Sistema1/style'
+import { getMoneda } from '../../../Sistema1/utils'
 
-import Button from '@mui/material/Button';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import Button from '@mui/material/Button'
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
 
-import basicInicial from '../../../Sistema1/SituacionPatrimonial/00_basic_incial';
+import basicInicial from '../../../Sistema1/SituacionPatrimonial/00_basic_incial'
 
 class Perfil extends React.Component {
   state = {
     menuSuperior: 0,
     menuSituacionPatrimonial: 0,
     menuIntereses: 0
-  };
+  }
 
   refPatrimonial = section => {
-    this.patrimonial = section;
-  };
+    this.patrimonial = section
+  }
 
   refIntereses = section => {
-    this.intereses = section;
-  };
+    this.intereses = section
+  }
 
   handleChangeMenuSuperior = (event, newValue) => {
     this.setState(prevSate => {
-      return { ...prevSate, menuSuperior: newValue };
-    });
-  };
+      return { ...prevSate, menuSuperior: newValue }
+    })
+  }
 
   handleChangeMenuSituacionPatrimonial = (event, newValue) => {
     this.setState(
       prevSate => {
-        return { ...prevSate, menuSituacionPatrimonial: newValue };
-      },
+        return { ...prevSate, menuSituacionPatrimonial: newValue }
+      }
       /* () => {
         scrollToComponent(this.top, { align: 'top' });
       } */
-    );
-  };
+    )
+  }
 
   handleChangeMenuIntereses = (event, newValue) => {
     this.setState(
       prevSate => {
-        return { ...prevSate, menuIntereses: newValue };
-      },
+        return { ...prevSate, menuIntereses: newValue }
+      }
       /* () => {
         scrollToComponent(this.top, { align: 'top' });
       } */
-    );
-  };
+    )
+  }
 
   getIngresos = data => {
     switch (data.metadata.tipo) {
       case 'INICIAL':
-        return getMoneda(data.declaracion.situacionPatrimonial.ingresos.ingresoMensualNetoDeclarante.valor * 12);
+        return getMoneda(data.declaracion.situacionPatrimonial.ingresos.ingresoMensualNetoDeclarante.valor * 12)
       case 'MODIFICACIÓN':
-        return getMoneda(data.declaracion.situacionPatrimonial.ingresos.ingresoAnualNetoDeclarante.valor);
+        return getMoneda(data.declaracion.situacionPatrimonial.ingresos.ingresoAnualNetoDeclarante.valor)
       case 'CONCLUSIÓN':
-        return getMoneda(data.declaracion.situacionPatrimonial.ingresos.ingresoConclusionNetoDeclarante.valor);
+        return getMoneda(data.declaracion.situacionPatrimonial.ingresos.ingresoConclusionNetoDeclarante.valor)
       default:
-        break;
+        break
     }
-  };
+  }
 
-  render() {
-    let { classes, data, handleGoBack, refPerfil } = this.props;
+  render () {
+    const { classes, data, handleGoBack, refPerfil } = this.props
 
-    let datosGenerales = {
+    const datosGenerales = {
       ...basicInicial.datosGenerales,
       ...data.declaracion.situacionPatrimonial.datosGenerales
-    };
+    }
 
     return (
       <>
@@ -86,7 +86,7 @@ class Perfil extends React.Component {
             </Button>
           </Grid>
           <Grid item xs={false} md={8} />
-          <Grid item textAlign={'center'} xs={12} md={4} className={classes.cuadroActualizacion}>
+          <Grid item textAlign='center' xs={12} md={4} className={classes.cuadroActualizacion}>
             Actualización: {data.metadata.actualizacion}
           </Grid>
           <Grid item xs={12}>
@@ -131,7 +131,7 @@ class Perfil extends React.Component {
           spacing={0}
           className={classes.perfilRoot}
           ref={section => {
-            this.top = section;
+            this.top = section
           }}
         >
           <MenuSuperior menuSuperior={this.state.menuSuperior} handleChangeMenuSuperior={this.handleChangeMenuSuperior} />
@@ -142,9 +142,9 @@ class Perfil extends React.Component {
             </Button>
           </Grid>
         </Grid>
-        </>
-    );
+      </>
+    )
   }
 }
 
-export default withStyles(styles)(Perfil);
+export default withStyles(styles)(Perfil)

@@ -1,37 +1,37 @@
-import React from "react";
-import { TextField } from "@mui/material/";
-import { Controller, useFormContext } from "react-hook-form";
-import { ThemeProvider } from "@mui/material/styles";
-import ThemeV2 from "../../../../ThemeV2";
-import Autocomplete from "@mui/material/Autocomplete";
+import React from 'react'
+import { TextField } from '@mui/material/'
+import { Controller, useFormContext } from 'react-hook-form'
+import { ThemeProvider } from '@mui/material/styles'
+import ThemeV2 from '../../../../ThemeV2'
+import Autocomplete from '@mui/material/Autocomplete'
 
-import Fade from "@mui/material/Fade";
-import CircularProgress from "@mui/material/CircularProgress";
+import Fade from '@mui/material/Fade'
+import CircularProgress from '@mui/material/CircularProgress'
+import axios from 'axios'
 
-const KEY = "pdn.camposBusqueda";
-import axios from 'axios';
-export function PersonasServidorasPublicasParticipanEnContrataciones() {
-  const { control } = useFormContext();
-  const [open, setOpen] = React.useState(false);
-  const [options, setOptions] = React.useState([]);
-  const loading = open && options.length === 0;
+const KEY = 'pdn.camposBusqueda'
+export function PersonasServidorasPublicasParticipanEnContrataciones () {
+  const { control } = useFormContext()
+  const [open, setOpen] = React.useState(false)
+  const [options, setOptions] = React.useState([])
+  const loading = open && options.length === 0
 
-const storedCampos = JSON.parse(localStorage.getItem(KEY));
+  const storedCampos = JSON.parse(localStorage.getItem(KEY))
 
-//console.log(storedCampos["psp-participan"]["institucionS2"]["nombre"]);
+  // console.log(storedCampos["psp-participan"]["institucionS2"]["nombre"]);
 
   let tempInstitucion = null
 
-  if (storedCampos && storedCampos["psp-participan"]["institucionS2"] && storedCampos["psp-participan"]["institucionS2"] !== null && storedCampos["psp-participan"]["institucionS2"]["nombre"]) {
-    tempInstitucion = storedCampos["psp-participan"]["institucionS2"]["nombre"]
-  } 
-  const [valueInstitucion, setValueInstitucion] = React.useState(tempInstitucion);
+  if (storedCampos && storedCampos['psp-participan'].institucionS2 && storedCampos['psp-participan'].institucionS2 !== null && storedCampos['psp-participan'].institucionS2.nombre) {
+    tempInstitucion = storedCampos['psp-participan'].institucionS2.nombre
+  }
+  const [valueInstitucion, setValueInstitucion] = React.useState(tempInstitucion)
 
   React.useEffect(() => {
-    let active = true;
+    let active = true
 
     if (!loading) {
-      return undefined;
+      return undefined
     }
 
     /* if (valueInstitucion === "") {
@@ -41,39 +41,39 @@ const storedCampos = JSON.parse(localStorage.getItem(KEY));
 
     (async () => {
       if (active) {
-        let sug = [];
-        let options = {
-          url: "https://raw.githubusercontent.com/PDNMX/bulk-generator/main/Reporte%20de%20validador%20de%20buscador/reporte_s2.json",
+        const sug = []
+        const options = {
+          url: 'https://raw.githubusercontent.com/PDNMX/bulk-generator/main/Reporte%20de%20validador%20de%20buscador/reporte_s2.json',
           json: true,
-          method: "GET",
-        };
+          method: 'GET'
+        }
 
         axios(options)
           .then((data) => {
             data.data.forEach((item, index) => {
-              if (item.nombre){
-                //console.log(item)
-                sug.push({ ...item, key: index });
+              if (item.nombre) {
+                // console.log(item)
+                sug.push({ ...item, key: index })
               }
-            });
-            setOptions([...sug]);
+            })
+            setOptions([...sug])
           })
           .catch((err) => {
-            //setError(true);
-          });
+            // setError(true);
+          })
       }
-    })();
+    })()
 
     return () => {
-      active = false;
-    };
-  }, [loading]);
+      active = false
+    }
+  }, [loading])
 
   React.useEffect(() => {
     if (!open) {
-      setOptions([]);
+      setOptions([])
     }
-  }, [open]);
+  }, [open])
 
   /*
     2.- Personas servidoras pub que participan contrataciones
@@ -84,28 +84,28 @@ const storedCampos = JSON.parse(localStorage.getItem(KEY));
       - Tipo de procedimiento (select)
     */
   const procedimientos = [
-    { key: 1, value: "Contrataciones", label: "Adjudicación de contratos" },
-    { key: 2, value: "Concesiones", label: "Otorgamiento de concesiones, licencias, permisos o autorizaciones y sus prórrogas" },
-    { key: 3, value: "Enajenaciones", label: "Enajenación de bienes muebles" },
-    { key: 4, value: "Dictámenes", label: "Emisión de dictámenes de avalúos" },
-  ];
+    { key: 1, value: 'Contrataciones', label: 'Adjudicación de contratos' },
+    { key: 2, value: 'Concesiones', label: 'Otorgamiento de concesiones, licencias, permisos o autorizaciones y sus prórrogas' },
+    { key: 3, value: 'Enajenaciones', label: 'Enajenación de bienes muebles' },
+    { key: 4, value: 'Dictámenes', label: 'Emisión de dictámenes de avalúos' }
+  ]
   return (
-    <Fade in={true} timeout={1200}>
+    <Fade in timeout={1200}>
       <div>
         <ThemeProvider theme={ThemeV2}>
           <Controller
             control={control}
-            name="psp-participan.nombres"
-            defaultValue=""
+            name='psp-participan.nombres'
+            defaultValue=''
             render={({ field }) => (
               <TextField
                 style={{ background: '#fff' }}
-                id="nombres"
-                label="Nombre(s)"
-                variant="outlined"
-                placeholder="Ingresa el nombre o nombres"
+                id='nombres'
+                label='Nombre(s)'
+                variant='outlined'
+                placeholder='Ingresa el nombre o nombres'
                 fullWidth
-                margin="normal"
+                margin='normal'
                 {...field}
               />
             )}
@@ -113,38 +113,38 @@ const storedCampos = JSON.parse(localStorage.getItem(KEY));
 
           <Controller
             control={control}
-            name="psp-participan.primerApellido"
-            defaultValue=""
+            name='psp-participan.primerApellido'
+            defaultValue=''
             render={({ field }) => (
               <TextField
                 style={{ background: '#fff' }}
-                label="Primer Apellido"
-                variant="outlined"
-                placeholder="Ingresa el primer apellido"
+                label='Primer Apellido'
+                variant='outlined'
+                placeholder='Ingresa el primer apellido'
                 fullWidth
-                margin="normal"
+                margin='normal'
                 {...field}
               />
             )}
           />
           <Controller
             control={control}
-            name="psp-participan.segundoApellido"
-            defaultValue=""
+            name='psp-participan.segundoApellido'
+            defaultValue=''
             render={({ field }) => (
               <TextField
                 style={{ background: '#fff' }}
-                label="Segundo Apellido"
-                variant="outlined"
-                placeholder="Ingresa el segundo apellido"
+                label='Segundo Apellido'
+                variant='outlined'
+                placeholder='Ingresa el segundo apellido'
                 fullWidth
-                margin="normal"
+                margin='normal'
                 {...field}
               />
             )}
           />
           <Controller
-            name="psp-participan.institucionS2"
+            name='psp-participan.institucionS2'
             control={control}
             defaultValue={null}
             render={({ field }) => (
@@ -152,21 +152,19 @@ const storedCampos = JSON.parse(localStorage.getItem(KEY));
                 {...field}
                 open={open}
                 value={valueInstitucion || null}
-                onOpen={() => { setOpen(true); }}
-                onClose={() => { setOpen(false); }}
+                onOpen={() => { setOpen(true) }}
+                onClose={() => { setOpen(false) }}
                 getOptionLabel={(option) =>
-                  typeof option === "string" ? option : option.nombre
-                }
+                  typeof option === 'string' ? option : option.nombre}
                 isOptionEqualToValue={(option, value) =>
-                  value === undefined || value === "" || option.nombre === value.nombre
-                }
+                  value === undefined || value === '' || option.nombre === value.nombre}
                 options={options}
                 loading={loading}
                 onChange={(e, newValue) => {
-                  //console.log(newValue, newValue);
-                  setOptions(newValue ? [newValue, ...options] : options);
-                  setValueInstitucion(newValue);
-                  field.onChange(newValue);
+                  // console.log(newValue, newValue);
+                  setOptions(newValue ? [newValue, ...options] : options)
+                  setValueInstitucion(newValue)
+                  field.onChange(newValue)
                 }}
                 /* onInputChange={(event, newInputValue) => {
                   setInputValue(newInputValue);
@@ -176,26 +174,28 @@ const storedCampos = JSON.parse(localStorage.getItem(KEY));
                     <li {...props} key={option.key}>
                       {option.nombre}
                     </li>
-                  );
+                  )
                 }}
                 renderInput={(params) => (
                   <TextField
                     style={{ background: '#fff' }}
                     {...params}
-                    margin={"normal"}
-                    label="Institución"
-                    placeholder="Ingresa la Institución"
+                    margin='normal'
+                    label='Institución'
+                    placeholder='Ingresa la Institución'
                     fullWidth
                     InputProps={{
                       ...params.InputProps,
                       endAdornment: (
                         <>
-                          {loading ? (
-                            <CircularProgress color="inherit" size={20} />
-                          ) : null}
+                          {loading
+                            ? (
+                              <CircularProgress color='inherit' size={20} />
+                              )
+                            : null}
                           {params.InputProps.endAdornment}
                         </>
-                      ),
+                      )
                     }}
                   />
                 )}
@@ -204,7 +204,7 @@ const storedCampos = JSON.parse(localStorage.getItem(KEY));
           />
 
           <Controller
-            name="psp-participan.tipoProcedimientoContratacion"
+            name='psp-participan.tipoProcedimientoContratacion'
             control={control}
             defaultValue={[]}
             render={({ field: { ref, ...field }, fieldState: { error } }) => (
@@ -220,16 +220,15 @@ const storedCampos = JSON.parse(localStorage.getItem(KEY));
                 options={procedimientos}
                 /* getOptionSelected={(option, value) => option === value} */
                 isOptionEqualToValue={(option, value) =>
-                  option.value === value.value
-                }
+                  option.value === value.value}
                 renderInput={(params) => (
                   <TextField
                     style={{ background: '#fff' }}
-                    margin={"normal"}
+                    margin='normal'
                     error={!!error}
                     helperText={error?.message}
-                    label="Tipos de Procedimiento"
-                    type="Buscar"
+                    label='Tipos de Procedimiento'
+                    type='Buscar'
                     inputRef={ref}
                     {...params}
                   />
@@ -240,5 +239,5 @@ const storedCampos = JSON.parse(localStorage.getItem(KEY));
         </ThemeProvider>
       </div>
     </Fade>
-  );
+  )
 }

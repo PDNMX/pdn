@@ -1,5 +1,5 @@
-import React from "react";
-import Typography from "@mui/material/Typography";
+import React from 'react'
+import Typography from '@mui/material/Typography'
 
 const Disclaimer = (props) => {
   return (
@@ -9,7 +9,7 @@ const Disclaimer = (props) => {
       conforman, así como un correo electrónico de apoyo en caso de no haber
       solucionado tus dudas.
     </Typography>
-  );
-};
+  )
+}
 
-export default Disclaimer;
+export default Disclaimer

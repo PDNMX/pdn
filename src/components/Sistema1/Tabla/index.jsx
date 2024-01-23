@@ -1,38 +1,38 @@
-import React from 'react';
-import makeStyles from '@mui/styles/makeStyles';
-import Table from '@mui/material/Table';
-import TableContainer from '@mui/material/TableContainer';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TablePagination from '@mui/material/TablePagination';
-import TableRow from '@mui/material/TableRow';
+import React from 'react'
+import makeStyles from '@mui/styles/makeStyles'
+import Table from '@mui/material/Table'
+import TableContainer from '@mui/material/TableContainer'
+import TableBody from '@mui/material/TableBody'
+import TableCell from '@mui/material/TableCell'
+import TablePagination from '@mui/material/TablePagination'
+import TableRow from '@mui/material/TableRow'
 
-import Paper from '@mui/material/Paper';
-import EnhancedTableToolbar from './EnhancedTableToolbar';
-import EnhancedTableHead from './EnhancedTableHead';
+import Paper from '@mui/material/Paper'
+import EnhancedTableToolbar from './EnhancedTableToolbar'
+import EnhancedTableHead from './EnhancedTableHead'
 
-function desc(a, b, orderBy) {
+function desc (a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
-    return -1;
+    return -1
   }
   if (b[orderBy] > a[orderBy]) {
-    return 1;
+    return 1
   }
-  return 0;
+  return 0
 }
 
-function stableSort(array, cmp) {
-  const stabilizedThis = array.map((el, index) => [el, index]);
+function stableSort (array, cmp) {
+  const stabilizedThis = array.map((el, index) => [el, index])
   stabilizedThis.sort((a, b) => {
-    const order = cmp(a[0], b[0]);
-    if (order !== 0) return order;
-    return a[1] - b[1];
-  });
-  return stabilizedThis.map(el => el[0]);
+    const order = cmp(a[0], b[0])
+    if (order !== 0) return order
+    return a[1] - b[1]
+  })
+  return stabilizedThis.map(el => el[0])
 }
 
-function getSorting(order, orderBy) {
-  return order === 'desc' ? (a, b) => desc(a, b, orderBy) : (a, b) => -desc(a, b, orderBy);
+function getSorting (order, orderBy) {
+  return order === 'desc' ? (a, b) => desc(a, b, orderBy) : (a, b) => -desc(a, b, orderBy)
 }
 
 const useStyles = makeStyles(theme => ({
@@ -49,7 +49,7 @@ const useStyles = makeStyles(theme => ({
   },
   tableHead: {
     color: theme.palette.text.black,
-    backgroundColor: 'rgba(113,57,114,0.25)',
+    backgroundColor: 'rgba(113,57,114,0.25)'
   },
   tableWrapper: {
     overflowX: 'auto'
@@ -65,22 +65,22 @@ const useStyles = makeStyles(theme => ({
     top: 20,
     width: 1
   }
-}));
+}))
 
-export default function EnhancedTable({ rows, pagination, posicion, handleDataSelect, handleSetPage, handleChangeRowsPerPage }) {
-  const classes = useStyles();
-  const [order, setOrder] = React.useState('asc');
-  const [orderBy, setOrderBy] = React.useState('nombres');
+export default function EnhancedTable ({ rows, pagination, posicion, handleDataSelect, handleSetPage, handleChangeRowsPerPage }) {
+  const classes = useStyles()
+  const [order, setOrder] = React.useState('asc')
+  const [orderBy, setOrderBy] = React.useState('nombres')
 
   const handleRequestSort = (event, property) => {
-    const isDesc = orderBy === property && order === 'desc';
-    setOrder(isDesc ? 'asc' : 'desc');
-    setOrderBy(property);
-  };
+    const isDesc = orderBy === property && order === 'desc'
+    setOrder(isDesc ? 'asc' : 'desc')
+    setOrderBy(property)
+  }
 
   const handleClick = (event, data) => {
-    handleDataSelect(data);
-  };
+    handleDataSelect(data)
+  }
 
   return (
     <Paper className={classes.paper}>
@@ -90,9 +90,9 @@ export default function EnhancedTable({ rows, pagination, posicion, handleDataSe
           <EnhancedTableHead classes={classes} order={order} orderBy={orderBy} onRequestSort={handleRequestSort} rowCount={pagination.totalRows} />
           <TableBody>
             {stableSort(rows, getSorting(order, orderBy)).map((row, index) => {
-              const labelId = `enhanced-table-checkbox-${index}`;
-              const { tipo } = row.metadata;
-              const { datosGenerales, datosEmpleoCargoComision } = row.declaracion.situacionPatrimonial;
+              const labelId = `enhanced-table-checkbox-${index}`
+              const { tipo } = row.metadata
+              const { datosGenerales, datosEmpleoCargoComision } = row.declaracion.situacionPatrimonial
               return (
                 <TableRow hover onClick={event => handleClick(event, row)} tabIndex={-1} key={row.nombre + '-' + index}>
                   <TableCell component='th' id={labelId} scope='row'>
@@ -106,7 +106,7 @@ export default function EnhancedTable({ rows, pagination, posicion, handleDataSe
                   </TableCell>
                   <TableCell>{datosEmpleoCargoComision.empleoCargoComision}</TableCell>
                 </TableRow>
-              );
+              )
             })}
           </TableBody>
         </Table>
@@ -126,12 +126,12 @@ export default function EnhancedTable({ rows, pagination, posicion, handleDataSe
         }}
         labelDisplayedRows={({ from, to, count }) => from + '-' + (to === -1 ? count : to) + ' de ' + count}
         onPageChange={(e, page) => {
-          handleSetPage(posicion, page);
+          handleSetPage(posicion, page)
         }}
         onRowsPerPageChange={e => {
-          handleChangeRowsPerPage(e, posicion);
+          handleChangeRowsPerPage(e, posicion)
         }}
       />
     </Paper>
-  );
+  )
 }

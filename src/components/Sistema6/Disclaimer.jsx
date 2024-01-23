@@ -1,73 +1,75 @@
-import React from 'react';
-import Typography from "@mui/material/Typography";
-import withStyles from '@mui/styles/withStyles';
-import Link from "@mui/material/Link";
+import React from 'react'
+import Typography from '@mui/material/Typography'
+import withStyles from '@mui/styles/withStyles'
+import Link from '@mui/material/Link'
 
 const styles = theme => ({
-    root: {
-        flexGrow: 1,
-        paddingBottom: 0,
-        paddingTop: 0
-    },
-    ul: {
-        listStyle: 'none',
-        paddingLeft: '20px'
-    },
-    li: {
-        "&:before":{
-            content: '"•"',
-            color: '#7A3D71',
-            fontWeight: "bold",
-            display: "inline-block",
-            width: "1em",
-            marginLeft: "-1em"
-        },
-        //paddingBottom: theme.spacing(2)
-    },
-    link: {
-        textDecoration: "none",
-        color: '#7A3D71',//theme.palette.text.linkColor,
-        wordBreak: "break-word",
-    },
-});
-
-const CustomTypography = withStyles(theme =>({
-    root: {
-        color: theme.palette.text.primary
+  root: {
+    flexGrow: 1,
+    paddingBottom: 0,
+    paddingTop: 0
+  },
+  ul: {
+    listStyle: 'none',
+    paddingLeft: '20px'
+  },
+  li: {
+    '&:before': {
+      content: '"•"',
+      color: '#7A3D71',
+      fontWeight: 'bold',
+      display: 'inline-block',
+      width: '1em',
+      marginLeft: '-1em'
     }
-}))(Typography);
+    // paddingBottom: theme.spacing(2)
+  },
+  link: {
+    textDecoration: 'none',
+    color: '#7A3D71', // theme.palette.text.linkColor,
+    wordBreak: 'break-word'
+  }
+})
+
+const CustomTypography = withStyles(theme => ({
+  root: {
+    color: theme.palette.text.primary
+  }
+}))(Typography)
 
 const Disclaimer = props => {
-    const {classes, dataSupplier} = props;
+  const { classes, dataSupplier } = props
 
-    return (
-        <div className={classes.root}>
-            <CustomTypography paragraph color="textPrimary">
-                Aquí encontrarás la siguiente información:
-            </CustomTypography>
+  return (
+    <div className={classes.root}>
+      <CustomTypography paragraph color='textPrimary'>
+        Aquí encontrarás la siguiente información:
+      </CustomTypography>
 
-            <ul className={classes.ul}>
-                <li className={classes.li}>
-                    <CustomTypography color="textPrimary" display='inline'>Cuánto gasta el gobierno federal</CustomTypography>
-                </li>
-                <li className={classes.li}>
-                    <CustomTypography color="textPrimary" display='inline'>Qué tipos de procedimientos</CustomTypography>
-                </li>
-                <li className={classes.li}>
-                    <CustomTypography color="textPrimary" display='inline'>Información sobre los proveedores que participan</CustomTypography>
-                </li>
-            </ul>
+      <ul className={classes.ul}>
+        <li className={classes.li}>
+          <CustomTypography color='textPrimary' display='inline'>Cuánto gasta el gobierno federal</CustomTypography>
+        </li>
+        <li className={classes.li}>
+          <CustomTypography color='textPrimary' display='inline'>Qué tipos de procedimientos</CustomTypography>
+        </li>
+        <li className={classes.li}>
+          <CustomTypography color='textPrimary' display='inline'>Información sobre los proveedores que participan</CustomTypography>
+        </li>
+      </ul>
 
-            { dataSupplier && dataSupplier === 'SHCP' &&
-                <CustomTypography paragraph color='textPrimary'>
-                    Los datos utilizados en esta sección fueron tomados del portal de datos abiertos
-                    del gobierno <Link className={classes.link}
-                                       href="https://datos.gob.mx/busca/organization/contrataciones-abiertas"
-                                       target="_blank">datos.gob.mx</Link>.
-                </CustomTypography>
-            }
-        </div>
-    );
+      {dataSupplier && dataSupplier === 'SHCP' &&
+        <CustomTypography paragraph color='textPrimary'>
+          Los datos utilizados en esta sección fueron tomados del portal de datos abiertos
+          del gobierno <Link
+            className={classes.link}
+            href='https://datos.gob.mx/busca/organization/contrataciones-abiertas'
+            target='_blank' rel='noreferrer'
+                       >datos.gob.mx
+          </Link>.
+        </CustomTypography>}
+    </div>
+  )
 }
 
-export default withStyles(styles)(Disclaimer);
+export default withStyles(styles)(Disclaimer)

@@ -1,20 +1,20 @@
-import React from 'react';
-import makeStyles from '@mui/styles/makeStyles';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
+import React from 'react'
+import makeStyles from '@mui/styles/makeStyles'
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
 
-import style from '../styleSecciones';
-import { sumary, expansion } from '../utils';
+import style from '../styleSecciones'
+import { sumary, expansion } from '../utils'
 
-import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../common/AccordionBox';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../common/AccordionBox'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
-const useStyles = makeStyles(style);
+const useStyles = makeStyles(style)
 
 const DatosCurriculares = ({ data, titulo }) => {
-  const classes = useStyles();
-  const exp = expansion();
-  const sum = sumary();
+  const classes = useStyles()
+  const exp = expansion()
+  const sum = sumary()
 
   return (
     <Grid container spacing={2} className={classes.rootPrincipal}>
@@ -65,10 +65,10 @@ const DatosCurriculares = ({ data, titulo }) => {
                 </Grid>
               </BoxAccordionDetails>
             </BoxAccordion>
-          );
+          )
         })}
       </Grid>
     </Grid>
-  );
-};
-export default DatosCurriculares;
+  )
+}
+export default DatosCurriculares

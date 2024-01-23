@@ -1,33 +1,30 @@
-import React from 'react';
-import makeStyles from '@mui/styles/makeStyles';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
+import React from 'react'
+import makeStyles from '@mui/styles/makeStyles'
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
 
-import styleSecciones from '../styleSecciones';
+import styleSecciones from '../styleSecciones'
 
-import DatosNoRegistrados from '../DatosNoRegistrados';
-import DatosReservados from '../DatosReservados';
-import Transmisor from '../CompTransmisor';
-import { getUnidad, getMoneda } from '../utils';
-import { sumary, expansion, Divider } from '../utils';
+import DatosNoRegistrados from '../DatosNoRegistrados'
+import DatosReservados from '../DatosReservados'
+import Transmisor from '../CompTransmisor'
+import { getUnidad, getMoneda, sumary, expansion, Divider, Disclaimer } from '../utils'
 
-import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../common/AccordionBox';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../common/AccordionBox'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
-import { Disclaimer } from '../utils';
+const useStyles = makeStyles(styleSecciones)
 
-const useStyles = makeStyles(styleSecciones);
-
-function BienInmuble(props) {
-  const classes = useStyles();
-  const exp = expansion();
-  const sum = sumary();
-  const { inmuebles } = props;
+function BienInmuble (props) {
+  const classes = useStyles()
+  const exp = expansion()
+  const sum = sumary()
+  const { inmuebles } = props
 
   return inmuebles.map((inm, idx) => {
     return (
       <BoxAccordion key={'inm-' + idx}>
-        <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon style={{ color: 'white'}} />} aria-controls='panel1a-content' id='panel1a-header'>
+        <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon style={{ color: 'white' }} />} aria-controls='panel1a-content' id='panel1a-header'>
           <Typography className={exp.heading}>
             <strong>TIPO DE INMUEBLE: {inm.tipoInmueble.valor}</strong>
           </Typography>
@@ -42,7 +39,7 @@ function BienInmuble(props) {
               <Typography className={classes.cardTitle}>TITULAR DEL INMUEBLE:</Typography>
               <Typography className={classes.card}>
                 {inm.titular.map((tit, idx) => {
-                  return <span key={'tit-' + idx}>{tit.valor}</span>;
+                  return <span key={'tit-' + idx}>{tit.valor}</span>
                 })}
               </Typography>
             </Grid>
@@ -109,19 +106,19 @@ function BienInmuble(props) {
           </Grid>
         </BoxAccordionDetails>
       </BoxAccordion>
-    );
-  });
+    )
+  })
 }
 
 const BienesInmuebles = ({ data, titulo }) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
-  let inmuebles;
+  let inmuebles
 
   if (data.ninguno) {
-    inmuebles = [];
+    inmuebles = []
   } else {
-    inmuebles = data.bienInmueble ? data.bienInmueble.filter(i => i.titular.length === 1 && i.titular[0].clave === 'DEC') : [];
+    inmuebles = data.bienInmueble ? data.bienInmueble.filter(i => i.titular.length === 1 && i.titular[0].clave === 'DEC') : []
   }
 
   // const inmuebles = data.ninguno
@@ -135,14 +132,16 @@ const BienesInmuebles = ({ data, titulo }) => {
           {titulo}
         </Typography>
       </Grid>
-      {data ? (
-        <Grid item xs={12}>
-          {data.ninguno ? <DatosNoRegistrados /> : inmuebles.length ? <BienInmuble inmuebles={inmuebles} /> : <DatosReservados />}
-        </Grid>
-      ) : (
-        <Disclaimer />
-      )}
+      {data
+        ? (
+          <Grid item xs={12}>
+            {data.ninguno ? <DatosNoRegistrados /> : inmuebles.length ? <BienInmuble inmuebles={inmuebles} /> : <DatosReservados />}
+          </Grid>
+          )
+        : (
+          <Disclaimer />
+          )}
     </Grid>
-  );
-};
-export default BienesInmuebles;
+  )
+}
+export default BienesInmuebles

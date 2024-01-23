@@ -1,217 +1,217 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import withStyles from '@mui/styles/withStyles';
-import Estandar from "./DescripcionEstandar";
-import Licencia from "../Licencia";
-import Implementacion from "./Implementacion";
-import {Typography} from "@mui/material"
-import Herramientas from "../Herramientas";
-import {Paper, Box,Grid, Divider, Link} from '@mui/material';
-import pdnRoutes from "../../../routes";
-import HeaderV2 from "../../HomeV2/HeaderV2";
-import bgimg from "../../../assets/rediseno/fondo_cruces_dark.png";
-import ButtonPDN from "../../Compartidos/ButtonPDN";
-import ProtocoloConexion from '../ProtocoloConexion';
-import ServiceAgreement from '../ServiceAgreement';
+import React from 'react'
+import PropTypes from 'prop-types'
+import withStyles from '@mui/styles/withStyles'
+import Estandar from './DescripcionEstandar'
+import Licencia from '../Licencia'
+import Implementacion from './Implementacion'
+import { Typography, Paper, Box, Grid, Divider, Link } from '@mui/material'
+import Herramientas from '../Herramientas'
+import pdnRoutes from '../../../routes'
+import HeaderV2 from '../../HomeV2/HeaderV2'
+import bgimg from '../../../assets/rediseno/fondo_cruces_dark.png'
+import ButtonPDN from '../../Compartidos/ButtonPDN'
+import ProtocoloConexion from '../ProtocoloConexion'
+import ServiceAgreement from '../ServiceAgreement'
 
 const styles = theme => ({
-    list: {
-        width: 250,
+  list: {
+    width: 250
+  },
+  fullList: {
+    width: 'auto'
+  },
+  item: {
+    maxWidth: 1200,
+    paddingRight: theme.spacing(2),
+    paddingLeft: theme.spacing(2)
+  },
+  container: {
+    background: '#fff',
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4)
+  },
+  divider: {
+    marginBottom: theme.spacing(2)
+  },
+  ul: {
+    listStyle: 'none',
+    paddingLeft: '20px',
+    color: theme.palette.text.primary
+  },
+  li: {
+    '&:before': {
+      content: '"•"',
+      color: '#7A3D71',
+      fontWeight: 'bold',
+      display: 'inline-block',
+      width: '1em',
+      marginLeft: '-1em'
     },
-    fullList: {
-        width: 'auto',
-    },
-    item: {
-        maxWidth: 1200,
-        paddingRight: theme.spacing(2),
-        paddingLeft: theme.spacing(2)
-    }, container: {
-        background: "#fff",
-        paddingTop: theme.spacing(4),
-        paddingBottom: theme.spacing(4)
-    },
-    divider: {
-        marginBottom: theme.spacing(2)
-    },
-    ul: {
-        listStyle: 'none',
-        paddingLeft: '20px',
-        color: theme.palette.text.primary
-    },
-    li: {
-        "&:before": {
-            content: '"•"',
-            color: '#7A3D71',
-            fontWeight: "bold",
-            display: "inline-block",
-            width: "1em",
-            marginLeft: "-1em"
-        },
-        paddingBottom: theme.spacing(1)
-    },
-    button: {
-        marginTop: theme.spacing(1),
-        marginRight: theme.spacing(1),
-        marginBottom: theme.spacing(2),
-    },
-    root: {
-        flexGrow: 1,
-        paddingTop: theme.spacing(2),
-        paddingBottom: theme.spacing(2)
-/*         backgroundColor: theme.palette.primary.main,
+    paddingBottom: theme.spacing(1)
+  },
+  button: {
+    marginTop: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    marginBottom: theme.spacing(2)
+  },
+  root: {
+    flexGrow: 1,
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2)
+    /*         backgroundColor: theme.palette.primary.main,
         backgroundImage: `url(${bgimg})`,
         backgroundRepeat: "repeat",
         backgroundPosition: 'fixed',
         color: '#f2f2f2' */
-    },
-    rootItem: {
-        maxWidth: "1200px",
-        padding: theme.spacing(1),
-        paddingTop: theme.spacing(8),
-        paddingBottom: theme.spacing(8),
-    },
-    paper: {
-        backgroundColor: theme.palette.background.opaque,
-        padding: theme.spacing(2),
-        color: theme.palette.primary.contrastText,
-        borderStyle: 'solid',
-        borderWidth: 1,
-        borderColor: theme.palette.secondary.main,
-        borderRadius: '10px 10px 10px 10px',
-        display: 'flex',
-        justifyContent: "center"
-    },
-    box: {
-        maxWidth: '900px', paddingTop: '50px', paddingBottom: '50px'
-    },
-    link:{
-        textDecoration: "none",
-        color: theme.palette.text.linkColor,
-        wordBreak: "break-word",
-    },
-    text: {
-        color: theme.palette.text.primary,
-        textAlign: 'justify',
-    },
-    title: {
-        color: theme.palette.primary.main
-    },
-});
+  },
+  rootItem: {
+    maxWidth: '1200px',
+    padding: theme.spacing(1),
+    paddingTop: theme.spacing(8),
+    paddingBottom: theme.spacing(8)
+  },
+  paper: {
+    backgroundColor: theme.palette.background.opaque,
+    padding: theme.spacing(2),
+    color: theme.palette.primary.contrastText,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: theme.palette.secondary.main,
+    borderRadius: '10px 10px 10px 10px',
+    display: 'flex',
+    justifyContent: 'center'
+  },
+  box: {
+    maxWidth: '900px', paddingTop: '50px', paddingBottom: '50px'
+  },
+  link: {
+    textDecoration: 'none',
+    color: theme.palette.text.linkColor,
+    wordBreak: 'break-word'
+  },
+  text: {
+    color: theme.palette.text.primary,
+    textAlign: 'justify'
+  },
+  title: {
+    color: theme.palette.primary.main
+  }
+})
 
-const protocolos=[
-    {nombre:'Servidores Sancionados',url:'https://drive.google.com/file/d/1in6bHq8rqeTl_v48BpByDjgxeF2fIIve/view'},
-    {nombre:'Particulares Sancionados',url:'https://drive.google.com/file/d/15mPsTLuW6u97cRMxBaEP8YCkAZnX32v-/view'}
-    ];
+const protocolos = [
+  { nombre: 'Servidores Sancionados', url: 'https://drive.google.com/file/d/1in6bHq8rqeTl_v48BpByDjgxeF2fIIve/view' },
+  { nombre: 'Particulares Sancionados', url: 'https://drive.google.com/file/d/15mPsTLuW6u97cRMxBaEP8YCkAZnX32v-/view' }
+]
 
 const Sancionados = props => {
-    const {classes} = props;
-    const section = pdnRoutes.find(route => route.path === '/especificaciones/s3');
+  const { classes } = props
+  const section = pdnRoutes.find(route => route.path === '/especificaciones/s3')
 
-    return (
-        <div className={classes.root}>
-            <HeaderV2 section={section}/>
-            <Grid container spacing={0} justifyContent='center'>
-                <Grid item xs={12} className={classes.rootItem}>
-                    <Paper className={classes.paper} elevation={15}>
-                        <Box className={classes.box}>
+  return (
+    <div className={classes.root}>
+      <HeaderV2 section={section} />
+      <Grid container spacing={0} justifyContent='center'>
+        <Grid item xs={12} className={classes.rootItem}>
+          <Paper className={classes.paper} elevation={15}>
+            <Box className={classes.box}>
 
-                            <Estandar/>
+              <Estandar />
 
-                            <Divider className={classes.divider}/>
+              <Divider className={classes.divider} />
 
-                            <Implementacion/>
+              <Implementacion />
 
-                            <Divider className={classes.divider}/>
+              <Divider className={classes.divider} />
 
-                            <Typography variant="h5" className={classes.title} paragraph>
-                                Especificaciones técnicas
-                            </Typography>
+              <Typography variant='h5' className={classes.title} paragraph>
+                Especificaciones técnicas
+              </Typography>
 
-                            <Typography paragraph className={classes.text} variant='h5'>
-                                Diccionario de datos
-                            </Typography>
+              <Typography paragraph className={classes.text} variant='h5'>
+                Diccionario de datos
+              </Typography>
 
-                            <Typography className={classes.text} paragraph>
-                            <ButtonPDN
-                                    href='https://docs.google.com/spreadsheets/d/1wVaVFEJQloanwasIAASFiKGC8mbNEmeijK0F58PxgCA/edit?usp=sharing'
-                                    target='_blank' 
-                            >
-                                Más información
-                            </ButtonPDN>
-                            </Typography>
-                            
+              <Typography className={classes.text} paragraph>
+                <ButtonPDN
+                  href='https://docs.google.com/spreadsheets/d/1wVaVFEJQloanwasIAASFiKGC8mbNEmeijK0F58PxgCA/edit?usp=sharing'
+                  target='_blank'
+                >
+                    Más información
+                </ButtonPDN>
+              </Typography>
 
-                            <Typography paragraph className={classes.text} variant='h5'>
-                                Catálogos de claves y valores
-                            </Typography>
+              <Typography paragraph className={classes.text} variant='h5'>
+                Catálogos de claves y valores
+              </Typography>
 
-                            <Typography className={classes.text} paragraph>
-                            <ButtonPDN
-                                    href="https://github.com/PDNMX/catalogos/tree/master/S3%20-%20Sancionados"
-                                    target='_blank' >
-                                Más información
-                            </ButtonPDN>
-                            </Typography>
-                            
+              <Typography className={classes.text} paragraph>
+                <ButtonPDN
+                  href='https://github.com/PDNMX/catalogos/tree/master/S3%20-%20Sancionados'
+                  target='_blank'
+                >
+                    Más información
+                </ButtonPDN>
+              </Typography>
 
-                            <Typography variant='h5' className={classes.text} paragraph>
-                                Especificaciones en formato Open API Specification
-                            </Typography>
+              <Typography variant='h5' className={classes.text} paragraph>
+                Especificaciones en formato Open API Specification
+              </Typography>
 
-                            <ul className={classes.ul}>
-                                <li className={classes.li}>
-                                    <Link className={classes.link}
-                                        href='/oas/ui/?urls.primaryName=S3%20-%20Particulares%20Sancionados'
-                                        target='_blank'
-                                        rel="noopener noreferrer"
-                                    >
-                                        <b>Particulares</b>
-                                    </Link>
-                                </li>
-                                <li className={classes.li}>
-                                    <Link className={classes.link}
-                                        href='/oas/ui/?urls.primaryName=S3%20-%20Servidores%20Sancionados'
-                                        target='_blank'
-                                        rel="noopener noreferrer"
-                                    >
-                                        <b>Servidores públicos</b>
-                                    </Link>
-                                </li>
-                            </ul>
+              <ul className={classes.ul}>
+                <li className={classes.li}>
+                  <Link
+                      className={classes.link}
+                      href='/oas/ui/?urls.primaryName=S3%20-%20Particulares%20Sancionados'
+                      target='_blank'
+                      rel='noopener noreferrer'
+                    >
+                      <b>Particulares</b>
+                    </Link>
+                </li>
+                <li className={classes.li}>
+                  <Link
+                      className={classes.link}
+                      href='/oas/ui/?urls.primaryName=S3%20-%20Servidores%20Sancionados'
+                      target='_blank'
+                      rel='noopener noreferrer'
+                    >
+                      <b>Servidores públicos</b>
+                    </Link>
+                </li>
+              </ul>
 
-                            <Typography paragraph className={classes.text} variant='h5'>
-                              Seguridad
-                            </Typography>
-                            <Typography paragraph className={classes.text}>
-                                <ButtonPDN  target='_blank'  href='https://drive.google.com/file/d/1-IvF3KYa5rups73BmVV4W8glT9csVGY9/view'>
-                                    Más información
-                                </ButtonPDN>
-                            </Typography>
+              <Typography paragraph className={classes.text} variant='h5'>
+                Seguridad
+              </Typography>
+              <Typography paragraph className={classes.text}>
+                <ButtonPDN target='_blank' href='https://drive.google.com/file/d/1-IvF3KYa5rups73BmVV4W8glT9csVGY9/view'>
+                  Más información
+                  </ButtonPDN>
+              </Typography>
 
-                            <ProtocoloConexion urlPlan={protocolos} />                            
+              <ProtocoloConexion urlPlan={protocolos} />
 
-                            <Divider className={classes.divider}/>
+              <Divider className={classes.divider} />
 
-                            <ServiceAgreement />
-                            
-                            <Divider className={classes.divider}/>
+              <ServiceAgreement />
 
-                            <Licencia/>
+              <Divider className={classes.divider} />
 
-                            <Divider className={classes.divider}/>
+              <Licencia />
 
-                            <Herramientas/>
-                        </Box>
-                    </Paper>
-                </Grid>
-            </Grid>
-        </div>
-    );
+              <Divider className={classes.divider} />
 
+              <Herramientas />
+            </Box>
+          </Paper>
+        </Grid>
+      </Grid>
+    </div>
+  )
 }
 
 Sancionados.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
+  classes: PropTypes.object.isRequired
+}
 
-export default withStyles(styles)(Sancionados);
+export default withStyles(styles)(Sancionados)

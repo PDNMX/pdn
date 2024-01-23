@@ -1,19 +1,19 @@
-import React from 'react';
-import Paper from '@mui/material/Paper';
-import makeStyles from '@mui/styles/makeStyles';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
+import React from 'react'
+import Paper from '@mui/material/Paper'
+import makeStyles from '@mui/styles/makeStyles'
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
 
-import styleSecciones from '../styleSecciones';
-import { Divider, getMoneda } from '../utils';
+import styleSecciones from '../styleSecciones'
+import { Divider, getMoneda } from '../utils'
 
-import { ActividadFinanciera, ServiciosProfesionales, EnajenacionBienes, OtrosIngresos } from './08Ingresos';
-import ActividadIndustrial from './08Ingresos/ActividadIndustrial';
+import { ActividadFinanciera, ServiciosProfesionales, EnajenacionBienes, OtrosIngresos } from './08Ingresos'
+import ActividadIndustrial from './08Ingresos/ActividadIndustrial'
 
-const useStyles = makeStyles(styleSecciones);
+const useStyles = makeStyles(styleSecciones)
 
 const IngresoConclusion = ({ data, titulo }) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <Grid container spacing={2} className={classes.rootPrincipal}>
@@ -78,6 +78,6 @@ const IngresoConclusion = ({ data, titulo }) => {
         </Paper>
       </Grid>
     </Grid>
-  );
-};
-export default IngresoConclusion;
+  )
+}
+export default IngresoConclusion

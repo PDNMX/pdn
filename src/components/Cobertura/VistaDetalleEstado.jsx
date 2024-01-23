@@ -1,210 +1,210 @@
-import React from 'react';
-import {Typography, Grid, Paper, Box} from "@mui/material";
-import withStyles from "@mui/styles/withStyles";
-import {useParams} from "react-router-dom";
-import HeaderV2 from "../HomeV2/HeaderV2";
-import pdnRoutes from "../../routes";
-import estados from "./estados.json";
-import CustomizedProgressBar from "./CustomizedProgressBar";
-import icon_s1 from '../../assets/rediseno/ico_sistemas/ico_s1_color.svg';
-import icon_s2 from '../../assets/rediseno/ico_sistemas/ico_s2_color.svg';
-import icon_s3 from '../../assets/rediseno/ico_sistemas/ico_s3_color.svg';
-import icon_s6 from '../../assets/rediseno/ico_sistemas/ico_s6_color.svg';
-import VistaDetalleSistema from "./VistaDetalleSistema";
+import React from 'react'
+import { Typography, Grid, Paper, Box } from '@mui/material'
+import withStyles from '@mui/styles/withStyles'
+import { useParams } from 'react-router-dom'
+import HeaderV2 from '../HomeV2/HeaderV2'
+import pdnRoutes from '../../routes'
+import estados from './estados.json'
+import CustomizedProgressBar from './CustomizedProgressBar'
+import icon_s1 from '../../assets/rediseno/ico_sistemas/ico_s1_color.svg'
+import icon_s2 from '../../assets/rediseno/ico_sistemas/ico_s2_color.svg'
+import icon_s3 from '../../assets/rediseno/ico_sistemas/ico_s3_color.svg'
+import icon_s6 from '../../assets/rediseno/ico_sistemas/ico_s6_color.svg'
+import VistaDetalleSistema from './VistaDetalleSistema'
 
 const colors = {
-    s1 : "#F29888",
-    s2 : "#B25FAC",
-    s3 : "#9085DA",
-    s6: "#42A5CC",
-};
+  s1: '#F29888',
+  s2: '#B25FAC',
+  s3: '#9085DA',
+  s6: '#42A5CC'
+}
 
 const styles = theme => ({
-    rootItem: {
-        maxWidth: 1200,
-        paddingTop: theme.spacing(4),
-        paddingBottom: theme.spacing(4),
-    },
-    rootPaper: {
-        backgroundColor: theme.palette.background.default,
-        padding: theme.spacing(2),
-        color: theme.palette.primary.contrastText,
-        borderStyle: 'solid',
-        borderWidth: 1,
-        borderColor: theme.palette.primary.main,
-        borderRadius: '10px 10px 10px 10px',
-        //display: 'flex',
-        //justifyContent: "center"
-    },
-    paper: {
-        flexGrow: 1,
-        background: theme.palette.background.default,
-        borderStyle: 'solid',
-        borderWidth: 1,
-        borderColor: theme.palette.primary.main,
-        borderRadius: '10px 10px 10px 10px',
+  rootItem: {
+    maxWidth: 1200,
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4)
+  },
+  rootPaper: {
+    backgroundColor: theme.palette.background.default,
+    padding: theme.spacing(2),
+    color: theme.palette.primary.contrastText,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: theme.palette.primary.main,
+    borderRadius: '10px 10px 10px 10px'
+    // display: 'flex',
+    // justifyContent: "center"
+  },
+  paper: {
+    flexGrow: 1,
+    background: theme.palette.background.default,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: theme.palette.primary.main,
+    borderRadius: '10px 10px 10px 10px'
 
-
-    },
-});
+  }
+})
 
 const percentage = (a, b) => {
-    if (a === 0){
-        return 0;
-    } else{
-        return (a / b * 100).toFixed(0);
-    }
-};
+  if (a === 0) {
+    return 0
+  } else {
+    return (a / b * 100).toFixed(0)
+  }
+}
 
 const VistaDetalleEstado = props => {
-    const {classes} = props;
-    const {id_estado} = useParams();
-    const section = pdnRoutes.find(r => r.path === '/cobertura/:id_estado');
-    const estado = estados.find(e => e.route.includes(id_estado));
-    //const icon = import (`../../../src/assets/Cobertura/iconos_estados/${estado.icon2}`);
+  const { classes } = props
+  const { id_estado } = useParams()
+  const section = pdnRoutes.find(r => r.path === '/cobertura/:id_estado')
+  const estado = estados.find(e => e.route.includes(id_estado))
+  // const icon = import (`../../../src/assets/Cobertura/iconos_estados/${estado.icon2}`);
 
-    const sys = [
-        {
-            id: 1,
-            color: colors.s1,
-            //data: [10, 92,30, 43,50, 90 ],
-            icon: icon_s1,
-            name: "Sistema de evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal"
-        },
-        {
-            id: 2,
-            color: colors.s2,
-            //data: [80, 12,45, 33,76, 23],
-            icon: icon_s2,
-            name: "Sistema de los servidores públicos que intervengan en procedimientos de contrataciones públicas"
-        },
-        {
-            id: 3,
-            color: colors.s3,
-            //data: [20, 10, 30, 50, 30, 53],
-            icon: icon_s3,
-            name: "Sistema nacional de servidores públicos y particulares sancionados"
-        },
-        {
-            id: 6,
-            color: colors.s6,
-            //data: [20, 10, 30, 50, 30, 53],
-            icon: icon_s6,
-            name: "Sistema de informacion publica de contrataciones"
-        }
-    ];
+  const sys = [
+    {
+      id: 1,
+      color: colors.s1,
+      // data: [10, 92,30, 43,50, 90 ],
+      icon: icon_s1,
+      name: 'Sistema de evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal'
+    },
+    {
+      id: 2,
+      color: colors.s2,
+      // data: [80, 12,45, 33,76, 23],
+      icon: icon_s2,
+      name: 'Sistema de los servidores públicos que intervengan en procedimientos de contrataciones públicas'
+    },
+    {
+      id: 3,
+      color: colors.s3,
+      // data: [20, 10, 30, 50, 30, 53],
+      icon: icon_s3,
+      name: 'Sistema nacional de servidores públicos y particulares sancionados'
+    },
+    {
+      id: 6,
+      color: colors.s6,
+      // data: [20, 10, 30, 50, 30, 53],
+      icon: icon_s6,
+      name: 'Sistema de informacion publica de contrataciones'
+    }
+  ]
 
-    const [system, setSystem] = React.useState(
-        JSON.parse(JSON.stringify(sys[0]))
-    );
+  const [system, setSystem] = React.useState(
+    JSON.parse(JSON.stringify(sys[0]))
+  )
 
-    const handleSetSystem = id => {
-        setSystem( sys.find( s => s.id === id) );
-    };
+  const handleSetSystem = id => {
+    setSystem(sys.find(s => s.id === id))
+  }
 
-    const avance_s1 = percentage(
-        estado.data.s1.ejecutivo.tiene +
+  const avance_s1 = percentage(
+    estado.data.s1.ejecutivo.tiene +
         estado.data.s1.legislativo.tiene +
         estado.data.s1.judicial.tiene +
         estado.data.s1.ocas.tiene +
         estado.data.s1.municipal.tiene
-        ,
-        estado.data.s1.ejecutivo.total +
+    ,
+    estado.data.s1.ejecutivo.total +
         estado.data.s1.legislativo.total +
         estado.data.s1.judicial.total +
         estado.data.s1.ocas.total +
         estado.data.s1.municipal.total
-    );
+  )
 
-    const avance_s2 = percentage(
-        estado.data.s2.ejecutivo.tiene +
+  const avance_s2 = percentage(
+    estado.data.s2.ejecutivo.tiene +
         estado.data.s2.legislativo.tiene +
         estado.data.s2.judicial.tiene +
         estado.data.s2.ocas.tiene +
         estado.data.s2.municipal.tiene,
-        estado.data.s2.ejecutivo.total +
+    estado.data.s2.ejecutivo.total +
         estado.data.s2.legislativo.total +
         estado.data.s2.judicial.total +
         estado.data.s2.ocas.total +
         estado.data.s2.municipal.total
-    );
+  )
 
-    const avance_s3 =
-        (estado.data.s3.s3s? 50 : 0) +
-        (estado.data.s3.s3p? 50 : 0);
+  const avance_s3 =
+        (estado.data.s3.s3s ? 50 : 0) +
+        (estado.data.s3.s3p ? 50 : 0)
 
-    const avance_s6 = percentage(
-        estado.data.s6.ejecutivo.tiene +
+  const avance_s6 = percentage(
+    estado.data.s6.ejecutivo.tiene +
         estado.data.s6.legislativo.tiene +
         estado.data.s6.judicial.tiene +
         estado.data.s6.ocas.tiene +
         estado.data.s6.municipal.tiene,
-        estado.data.s6.ejecutivo.total +
+    estado.data.s6.ejecutivo.total +
         estado.data.s6.legislativo.total +
         estado.data.s6.judicial.total +
         estado.data.s6.ocas.total +
         estado.data.s6.municipal.total
-    );
+  )
 
-    return <div>
-        <HeaderV2 section={section}/>
-        <Grid container spacing={0} justifyContent='center'>
-            <Grid item xs={12} className={classes.rootItem}>
-                <Paper elevation={15} className={classes.rootPaper}>
+  return (
+    <div>
+      <HeaderV2 section={section} />
+      <Grid container spacing={0} justifyContent='center'>
+        <Grid item xs={12} className={classes.rootItem}>
+          <Paper elevation={15} className={classes.rootPaper}>
 
-                    <Typography variant="h3" paragraph align="center" color="#713972">
-                        {estado.name}
-                    </Typography>
+            <Typography variant='h3' paragraph align='center' color='#713972'>
+              {estado.name}
+            </Typography>
 
-                    <Typography align="center" color="#000" paragraph>
-                        Información al 31 de marzo de 2023, reportada por las Secretarías Ejecutivas del Sistema Anticorrupción Estatal
-                    </Typography>
+            <Typography align='center' color='#000' paragraph>
+              Información al 31 de marzo de 2023, reportada por las Secretarías Ejecutivas del Sistema Anticorrupción Estatal
+            </Typography>
 
-                    <Box sx={{display: 'flex', flexWrap: "wrap", alignItems: "stretch"}} justifyContent="center">
-                        <Paper elevation={15} sx={{ m: 1, p: 2 }} className={classes.paper}>
-                            <Box display="flex" flexWrap="wrap" justifyContent="center">
-                                <Box>
-                                    <img src={`../../../src/assets/Cobertura/iconos_estados/${estado.icon2}`} style={{width: '280px', padding: "23px", paddingRight: "0px"}} alt={estado.name}/>
-                                </Box>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'stretch' }} justifyContent='center'>
+              <Paper elevation={15} sx={{ m: 1, p: 2 }} className={classes.paper}>
+                <Box display='flex' flexWrap='wrap' justifyContent='center'>
+                  <Box>
+                    <img src={`../../../src/assets/Cobertura/iconos_estados/${estado.icon2}`} style={{ width: '280px', padding: '23px', paddingRight: '0px' }} alt={estado.name} />
+                  </Box>
 
-                                <Box sx={{ paddingTop: '40px', flexGrow: 1}}>
-                                    <Box display='flex' onClick={() => handleSetSystem(1)} sx={{cursor: 'pointer'}}>
-                                        <img src={icon_s1} alt='Sistema 1' style={{width: '40px', padding: "2px"}}/>
-                                        <CustomizedProgressBar value={avance_s1} color={colors.s1} />
-                                    </Box>
+                  <Box sx={{ paddingTop: '40px', flexGrow: 1 }}>
+                    <Box display='flex' onClick={() => handleSetSystem(1)} sx={{ cursor: 'pointer' }}>
+                  <img src={icon_s1} alt='Sistema 1' style={{ width: '40px', padding: '2px' }} />
+                  <CustomizedProgressBar value={avance_s1} color={colors.s1} />
+                </Box>
 
-                                    <Box display='flex' onClick={() => handleSetSystem(2)} sx={{cursor: 'pointer'}}>
-                                        <img src={icon_s2} alt='Sistema 2' style={{width: '40px', padding: "2px"}}/>
-                                        <CustomizedProgressBar value={avance_s2} color={colors.s2}/>
-                                    </Box>
+                    <Box display='flex' onClick={() => handleSetSystem(2)} sx={{ cursor: 'pointer' }}>
+                  <img src={icon_s2} alt='Sistema 2' style={{ width: '40px', padding: '2px' }} />
+                  <CustomizedProgressBar value={avance_s2} color={colors.s2} />
+                </Box>
 
-                                    <Box display="flex" onClick={() => handleSetSystem(3)} sx={{cursor: 'pointer'}}>
-                                        <img src={icon_s3} alt='Sistema 3' style={{width: '40px', padding: "2px"}}/>
-                                        <CustomizedProgressBar value={avance_s3} color={colors.s3}/>
-                                    </Box>
-                                    <Box display="flex" onClick={() => handleSetSystem(6)} sx={{cursor: 'pointer'}}>
-                                        <img src={icon_s6} alt='Sistema 6' style={{width: '40px', padding: "2px"}}/>
-                                        <CustomizedProgressBar value={avance_s6} color={colors.s6}/>
-                                    </Box>
-                                </Box>
-                            </Box>
+                    <Box display='flex' onClick={() => handleSetSystem(3)} sx={{ cursor: 'pointer' }}>
+                  <img src={icon_s3} alt='Sistema 3' style={{ width: '40px', padding: '2px' }} />
+                  <CustomizedProgressBar value={avance_s3} color={colors.s3} />
+                </Box>
+                    <Box display='flex' onClick={() => handleSetSystem(6)} sx={{ cursor: 'pointer' }}>
+                  <img src={icon_s6} alt='Sistema 6' style={{ width: '40px', padding: '2px' }} />
+                  <CustomizedProgressBar value={avance_s6} color={colors.s6} />
+                </Box>
+                  </Box>
+                </Box>
 
-                        </Paper>
+              </Paper>
 
-                        <Paper elevation={15} sx={{ m:1, p: 2, textAlign: "center", maxWidth: 200 }} className={classes.paper}>
-                            <Typography variant="h5" color="#713972" sx={{fontWeight: 'bold'}}>
-                                Instituciones en la PDN
-                            </Typography>
+              <Paper elevation={15} sx={{ m: 1, p: 2, textAlign: 'center', maxWidth: 200 }} className={classes.paper}>
+                <Typography variant='h5' color='#713972' sx={{ fontWeight: 'bold' }}>
+                  Instituciones en la PDN
+                </Typography>
 
-                            {/*<Typography variant="body2" color="white">
+                {/* <Typography variant="body2" color="white">
                                 Información de instituciones en la PDN
-                            </Typography>*/}
+                            </Typography> */}
 
-                            <Typography variant="h4" color={colors.s1} sx={{fontWeight: 'bold'}}>
-                                {avance_s1}%
-                            </Typography>
-                            <Typography color='#713972' textAlign= 'center'>
-                                {
+                <Typography variant='h4' color={colors.s1} sx={{ fontWeight: 'bold' }}>
+                  {avance_s1}%
+                </Typography>
+                <Typography color='#713972' textAlign='center'>
+                  {
                                     estado.data.s1.ejecutivo.tiene +
                                     estado.data.s1.legislativo.tiene +
                                     estado.data.s1.judicial.tiene +
@@ -217,12 +217,12 @@ const VistaDetalleEstado = props => {
                                 estado.data.s1.ocas.total +
                                 estado.data.s1.municipal.total
                             }
-                            </Typography>
-                            <Typography variant="h4" color={colors.s2} sx={{fontWeight: 'bold'}}>
-                                {avance_s2}%
-                            </Typography>
-                            <Typography color='#713972' textAlign= 'center'>
-                                {
+                </Typography>
+                <Typography variant='h4' color={colors.s2} sx={{ fontWeight: 'bold' }}>
+                  {avance_s2}%
+                </Typography>
+                <Typography color='#713972' textAlign='center'>
+                  {
                                     estado.data.s2.ejecutivo.tiene +
                                     estado.data.s2.legislativo.tiene +
                                     estado.data.s2.judicial.tiene +
@@ -235,20 +235,20 @@ const VistaDetalleEstado = props => {
                                 estado.data.s2.ocas.total +
                                 estado.data.s2.municipal.total
                             }
-                            </Typography>
+                </Typography>
 
-                            <Typography variant="h4" color={colors.s3} sx={{fontWeight: 'bold'}}>
-                                {avance_s3}%
-                            </Typography>
-                            <Typography color="#713972" textAlign= 'center' fontWeight="bold">Sancionados</Typography>
-                            <Typography color='#713972' textAlign= 'center' variant="body2"> Servidores públicos: {estado.data.s3.s3s? "Sí" : "No"} </Typography>
-                            <Typography color='#713972' textAlign= 'center' variant="body2"> Particulares: {estado.data.s3.s3p? "Sí" : "No"} </Typography>
+                <Typography variant='h4' color={colors.s3} sx={{ fontWeight: 'bold' }}>
+                  {avance_s3}%
+                </Typography>
+                <Typography color='#713972' textAlign='center' fontWeight='bold'>Sancionados</Typography>
+                <Typography color='#713972' textAlign='center' variant='body2'> Servidores públicos: {estado.data.s3.s3s ? 'Sí' : 'No'} </Typography>
+                <Typography color='#713972' textAlign='center' variant='body2'> Particulares: {estado.data.s3.s3p ? 'Sí' : 'No'} </Typography>
 
-                           <Typography variant="h4" color={colors.s6} sx={{fontWeight: 'bold'}}>
-                                {avance_s6}%
-                            </Typography>
-                            <Typography color='#713972' textAlign= 'center'>
-                                {
+                <Typography variant='h4' color={colors.s6} sx={{ fontWeight: 'bold' }}>
+                  {avance_s6}%
+                </Typography>
+                <Typography color='#713972' textAlign='center'>
+                  {
                                     estado.data.s6.ejecutivo.tiene +
                                     estado.data.s6.legislativo.tiene +
                                     estado.data.s6.judicial.tiene +
@@ -261,21 +261,23 @@ const VistaDetalleEstado = props => {
                                 estado.data.s6.ocas.total +
                                 estado.data.s6.municipal.total
                             }
-                            </Typography>
+                </Typography>
 
-                        </Paper>
-                    </Box>
+              </Paper>
+            </Box>
 
-                    <VistaDetalleSistema estado={estado} system={system}
-                                         avance_s1={avance_s1}
-                                         avance_s2={avance_s2}
-                                         avance_s3={avance_s3}
-                                         avance_s6={avance_s6}
-                    />
-                </Paper>
-            </Grid>
+            <VistaDetalleSistema
+              estado={estado} system={system}
+              avance_s1={avance_s1}
+              avance_s2={avance_s2}
+              avance_s3={avance_s3}
+              avance_s6={avance_s6}
+            />
+          </Paper>
         </Grid>
+      </Grid>
     </div>
+  )
 }
 
-export default withStyles(styles)(VistaDetalleEstado);
+export default withStyles(styles)(VistaDetalleEstado)

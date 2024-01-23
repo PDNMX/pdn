@@ -1,19 +1,19 @@
-import React from 'react';
-import makeStyles from '@mui/styles/makeStyles';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
+import React from 'react'
+import makeStyles from '@mui/styles/makeStyles'
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
 
-import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../../common/BoxAccordion';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../../common/BoxAccordion'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
-import { sumary, expansion, getMoneda } from '../../utils';
-import styleSecciones from '../../styleSecciones';
-const useStyles = makeStyles(styleSecciones);
+import { sumary, expansion, getMoneda } from '../../utils'
+import styleSecciones from '../../styleSecciones'
+const useStyles = makeStyles(styleSecciones)
 
 const ActividadIndustrial = ({ actividadIndustrialComercialEmpresarial }) => {
-  const classes = useStyles();
-  const exp = expansion();
-  const sum = sumary();
+  const classes = useStyles()
+  const exp = expansion()
+  const sum = sumary()
 
   return (
     <BoxAccordion>
@@ -60,11 +60,11 @@ const ActividadIndustrial = ({ actividadIndustrialComercialEmpresarial }) => {
                     </Typography>
                   </Grid>
                 </Grid>
-              );
+              )
             })}
         </Grid>
       </BoxAccordionDetails>
     </BoxAccordion>
-  );
-};
-export default ActividadIndustrial;
+  )
+}
+export default ActividadIndustrial

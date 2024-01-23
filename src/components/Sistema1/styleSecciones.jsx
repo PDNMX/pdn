@@ -377,7 +377,7 @@ const CssSeccDeclaraciones = theme => ({
 		fontSize: theme.typography.pxToRem(15),
 		fontWeight: theme.typography.fontWeightRegular
 	},
-	
+
 	resultadoContenido: {
 		backgroundColor: 'rgb(242, 242, 242)',
 		color: '#666666'
@@ -386,7 +386,7 @@ const CssSeccDeclaraciones = theme => ({
 		paddingBottom: theme.spacing(4),
 		paddingTop: theme.spacing(4)
 	},
-	
+
     ************/
-});
-export default CssSeccDeclaraciones;
+})
+export default CssSeccDeclaraciones

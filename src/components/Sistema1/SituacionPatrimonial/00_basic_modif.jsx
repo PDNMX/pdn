@@ -50,6 +50,6 @@ const basic_modificacion = {
     },
     aclaracionesObservaciones: null
   }
-};
+}
 
-export default basic_modificacion;
+export default basic_modificacion

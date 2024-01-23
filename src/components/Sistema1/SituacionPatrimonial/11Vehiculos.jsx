@@ -1,31 +1,29 @@
-import React from 'react';
-import { makeStyles } from '@mui/styles';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
+import React from 'react'
+import { makeStyles } from '@mui/styles'
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
 
-import styleSecciones from '../styleSecciones';
+import styleSecciones from '../styleSecciones'
 
-import DatosNoRegistrados from '../DatosNoRegistrados';
-import DatosReservados from '../DatosReservados';
-import Transmisor from '../CompTransmisor';
-import { sumary, expansion, Divider, getMoneda } from '../utils';
+import DatosNoRegistrados from '../DatosNoRegistrados'
+import DatosReservados from '../DatosReservados'
+import Transmisor from '../CompTransmisor'
+import { sumary, expansion, Divider, getMoneda, Disclaimer } from '../utils'
 
-import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../common/AccordionBox';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../common/AccordionBox'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
-import { Disclaimer } from '../utils';
+const useStyles = makeStyles(styleSecciones)
 
-const useStyles = makeStyles(styleSecciones);
-
-function Vehiculo(props) {
-  const classes = useStyles();
-  const exp = expansion();
-  const sum = sumary();
-  const { vehiculos } = props;
+function Vehiculo (props) {
+  const classes = useStyles()
+  const exp = expansion()
+  const sum = sumary()
+  const { vehiculos } = props
   return vehiculos.map((obj, idx) => {
     return (
       <BoxAccordion key={'veh-' + idx}>
-        <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon style={{ color: 'white'}} />} aria-controls='panel1a-content' id='panel1a-header'>
+        <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon style={{ color: 'white' }} />} aria-controls='panel1a-content' id='panel1a-header'>
           <Typography className={exp.heading}>
             <strong>{obj.tipoVehiculo && obj.tipoVehiculo.valor}</strong>
           </Typography>
@@ -40,7 +38,7 @@ function Vehiculo(props) {
               <Typography className={classes.cardTitle}>TITULAR DEL VEHÍCULO:</Typography>
               <Typography className={classes.card}>
                 {obj.titular.map((tit, idx) => {
-                  return <span key={'tit-' + idx}>{tit.valor}</span>;
+                  return <span key={'tit-' + idx}>{tit.valor}</span>
                 })}
               </Typography>
             </Grid>
@@ -96,19 +94,19 @@ function Vehiculo(props) {
           </Grid>
         </BoxAccordionDetails>
       </BoxAccordion>
-    );
-  });
+    )
+  })
 }
 
 const Vehiculos = ({ data, titulo }) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
-  let vehiculos;
+  let vehiculos
 
   if (data.ninguno) {
-    vehiculos = [];
+    vehiculos = []
   } else {
-    vehiculos = data.vehiculo ? data.vehiculo.filter(i => i.titular.length === 1 && i.titular[0].clave === 'DEC') : [];
+    vehiculos = data.vehiculo ? data.vehiculo.filter(i => i.titular.length === 1 && i.titular[0].clave === 'DEC') : []
   }
 
   // const vehiculos = data.ninguno
@@ -122,14 +120,16 @@ const Vehiculos = ({ data, titulo }) => {
           {titulo}
         </Typography>
       </Grid>
-      {data ? (
-        <Grid item xs={12}>
-          {data.ninguno ? <DatosNoRegistrados /> : vehiculos.length ? <Vehiculo vehiculos={vehiculos} /> : <DatosReservados />}
-        </Grid>
-      ) : (
-        <Disclaimer />
-      )}
+      {data
+        ? (
+          <Grid item xs={12}>
+            {data.ninguno ? <DatosNoRegistrados /> : vehiculos.length ? <Vehiculo vehiculos={vehiculos} /> : <DatosReservados />}
+          </Grid>
+          )
+        : (
+          <Disclaimer />
+          )}
     </Grid>
-  );
-};
-export default Vehiculos;
+  )
+}
+export default Vehiculos

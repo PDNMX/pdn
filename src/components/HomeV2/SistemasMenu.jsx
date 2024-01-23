@@ -1,90 +1,94 @@
-import React, {useEffect, useRef} from "react";
-import withStyles from '@mui/styles/withStyles';
-import {Typography} from "@mui/material";
-import {Link} from "react-router-dom";
-import Box from "@mui/material/Box";
+import React, { useEffect, useRef } from 'react'
+import withStyles from '@mui/styles/withStyles'
+import { Typography } from '@mui/material'
+import { Link } from 'react-router-dom'
+import Box from '@mui/material/Box'
 
 const styles = theme => ({
-    root: {
-        backgroundColor: '#f7f7f7',
-        paddingTop: theme.spacing(3),
-        paddingBottom: theme.spacing(3),
-        position: 'absolute',
-        zIndex: 2,
-        width: '100%',
-        top:'95px'
+  root: {
+    backgroundColor: '#f7f7f7',
+    paddingTop: theme.spacing(3),
+    paddingBottom: theme.spacing(3),
+    position: 'absolute',
+    zIndex: 2,
+    width: '100%',
+    top: '95px'
+  },
+  item: {
+    '&:hover': {
+      backgroundColor: '#FFF'
     },
-    item: {
-        "&:hover": {
-            backgroundColor: "#FFF"
-        },
-        borderStyle: 'solid',
-        borderWidth: 1,
-        borderColor: '#c0c0c0',
-        maxWidth: theme.spacing(25),
-        transition: 'height 2s',
-        height: '70%',
-        borderRadius:'8px'
-    },
-    opc: {
-        marginBottom: theme.spacing(1),
-        marginTop: theme.spacing(1),
-        textAlign: 'center'
-    },
-    icon: {
-        maxWidth: theme.spacing(7),
-        paddingBottom: theme.spacing(1)
-    },
-    link: {
-        textDecoration: "none",
-        color: "#b2bfc4"
-    }
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: '#c0c0c0',
+    maxWidth: theme.spacing(25),
+    transition: 'height 2s',
+    height: '70%',
+    borderRadius: '8px'
+  },
+  opc: {
+    marginBottom: theme.spacing(1),
+    marginTop: theme.spacing(1),
+    textAlign: 'center'
+  },
+  icon: {
+    maxWidth: theme.spacing(7),
+    paddingBottom: theme.spacing(1)
+  },
+  link: {
+    textDecoration: 'none',
+    color: '#b2bfc4'
+  }
 
-});
+})
 
 const SistemasMenu = props => {
-    const {classes, systems} = props;
-    const innerRef = useRef(null);
+  const { classes, systems } = props
+  const innerRef = useRef(null)
 
-    useEffect(() => {
-        const x = document.getElementById("sistemasMenu");
-        x.addEventListener("mouseleave", toggle);
-        return () => {
-            x.removeEventListener("mouseleave", toggle);
-        };
-    }, []);
-
-    const toggle = (e) => {
-        props.toogle();
+  useEffect(() => {
+    const x = document.getElementById('sistemasMenu')
+    x.addEventListener('mouseleave', toggle)
+    return () => {
+      x.removeEventListener('mouseleave', toggle)
     }
+  }, [])
 
-    return (
-        <Box id={"sistemasMenu"} ref={innerRef} className={classes.root}
-             sx={{
-                display: 'flex',
-                justifyContent: 'center'
-             }}>
-            {
+  const toggle = (e) => {
+    props.toogle()
+  }
+
+  return (
+    <Box
+      id='sistemasMenu' ref={innerRef} className={classes.root}
+      sx={{
+        display: 'flex',
+        justifyContent: 'center'
+      }}
+    >
+      {
                 systems.map(system => {
-                    return (
-                        <Link className={classes.link} to={system.path} key={system.path}>
-                        <Box className={`${classes.item}`} sx={{
-                            m: 1,
-                            p: 2,
-                            color: system.color
-                        }} key={system.path}>
-                            <div className={`${classes.opc} `}>
+                  return (
+                    <Link className={classes.link} to={system.path} key={system.path}>
+                      <Box
+                        className={`${classes.item}`} sx={{
+                          m: 1,
+                          p: 2,
+                          color: system.color
+                        }} key={system.path}
+                      >
+                        <div className={`${classes.opc} `}>
 
-                                    <img src={system.icon} alt="PDN" className={classes.icon}/>
-                                    <Typography color={system.color}>{system.shortName}</Typography>
+                          <img src={system.icon} alt='PDN' className={classes.icon} />
+                          <Typography color={system.color}>{system.shortName}</Typography>
 
-                            </div>
-                        </Box>
-                        </Link>
-                    );
+                        </div>
+                      </Box>
+                    </Link>
+                  )
                 })
             }
-        </Box>
-    );
+    </Box>
+  )
 }
-export default withStyles(styles)(SistemasMenu);
+export default withStyles(styles)(SistemasMenu)

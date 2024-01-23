@@ -1,19 +1,19 @@
-import { BoxAccordion, BoxAccordionDetails, BoxAccordionSummary } from '../../../Sistema1/common/BoxAccordion';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import CircularProgress from '@mui/material/CircularProgress';
+import { BoxAccordion, BoxAccordionDetails, BoxAccordionSummary } from '../../../Sistema1/common/BoxAccordion'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import CircularProgress from '@mui/material/CircularProgress'
 /* import IconSunny from '@mui/icons-material/WbSunny'; */
 
-import makeStyles from '@mui/styles/makeStyles';
-import styles from '../../../Sistema1/style';
-import { Grid, Typography } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles'
+import styles from '../../../Sistema1/style'
+import { Grid, Typography } from '@mui/material'
 
-import Tabla from './Tabla';
+import Tabla from './Tabla'
 
-const useStyles = makeStyles(styles);
+const useStyles = makeStyles(styles)
 
 const Resultados = props => {
-  const classes = useStyles();
-  const { p, i, handleDataSelect, handleSetPage, handleChangeRowsPerPage } = props;
+  const classes = useStyles()
+  const { p, i, handleDataSelect, handleSetPage, handleChangeRowsPerPage } = props
 
   return (
     <BoxAccordion square key={'res-' + i}>
@@ -23,15 +23,17 @@ const Resultados = props => {
             <Typography className={classes.resultadosHeading}>{p.supplier_name}</Typography>
             <Typography className={classes.resultadosHeading}>[{p.levels.join(', ')}]</Typography>
           </Grid>
-          {p.finding ? (
-            <Grid item xs={4}>
-              <CircularProgress color='primary' size={20} />
-            </Grid>
-          ) : (
-            <Grid item xs={4}>
+          {p.finding
+            ? (
+              <Grid item xs={4}>
+                <CircularProgress color='primary' size={20} />
+              </Grid>
+              )
+            : (
+              <Grid item xs={4}>
                 <Typography className={classes.resultadosHeading}> Registros: {new Intl.NumberFormat('es-MX').format(p.total)} </Typography>
-            </Grid>
-          )}
+              </Grid>
+              )}
         </Grid>
       </BoxAccordionSummary>
       {!p.finding && (
@@ -50,7 +52,7 @@ const Resultados = props => {
         </BoxAccordionDetails>
       )}
     </BoxAccordion>
-  );
-};
+  )
+}
 
-export default Resultados;
+export default Resultados

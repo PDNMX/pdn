@@ -1,28 +1,28 @@
-import React from 'react';
-import makeStyles from '@mui/styles/makeStyles';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
+import React from 'react'
+import makeStyles from '@mui/styles/makeStyles'
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
 
-import styleSecciones from '../styleSecciones';
+import styleSecciones from '../styleSecciones'
 
-import DatosNoRegistrados from '../DatosNoRegistrados';
-import DatosReservados from '../DatosReservados';
-import { sumary, expansion, Divider, getMoneda, Porcentaje, Ubicacion } from '../utils';
+import DatosNoRegistrados from '../DatosNoRegistrados'
+import DatosReservados from '../DatosReservados'
+import { sumary, expansion, Divider, getMoneda, Porcentaje, Ubicacion } from '../utils'
 
-import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../common/AccordionBox';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../common/AccordionBox'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
-const useStyles = makeStyles(styleSecciones);
+const useStyles = makeStyles(styleSecciones)
 
-function Participacion(props) {
-  const classes = useStyles();
-  const exp = expansion();
-  const sum = sumary();
-  const { participaciones } = props;
+function Participacion (props) {
+  const classes = useStyles()
+  const exp = expansion()
+  const sum = sumary()
+  const { participaciones } = props
   return participaciones.map((obj, idx) => {
     return (
       <BoxAccordion key={'par-' + idx}>
-        <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon style={{ color: 'white'}}/>} aria-controls='panel1a-content' id='panel1a-header'>
+        <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon style={{ color: 'white' }} />} aria-controls='panel1a-content' id='panel1a-header'>
           <Typography className={exp.heading}>
             <strong>
               {obj.tipoParticipacion.valor} DE {obj.nombreEmpresaSociedadAsociacion}
@@ -71,15 +71,15 @@ function Participacion(props) {
           </Grid>
         </BoxAccordionDetails>
       </BoxAccordion>
-    );
-  });
+    )
+  })
 }
 
 const Participaciones = props => {
-  const classes = useStyles();
-  const { data } = props;
+  const classes = useStyles()
+  const { data } = props
 
-  const participaciones = data.participacion;
+  const participaciones = data.participacion
 
   return (
     <Grid container spacing={2} className={classes.rootPrincipal}>
@@ -92,6 +92,6 @@ const Participaciones = props => {
         {data.ninguno ? <DatosNoRegistrados /> : participaciones.length ? <Participacion participaciones={participaciones} /> : <DatosReservados />}
       </Grid>
     </Grid>
-  );
-};
-export default Participaciones;
+  )
+}
+export default Participaciones

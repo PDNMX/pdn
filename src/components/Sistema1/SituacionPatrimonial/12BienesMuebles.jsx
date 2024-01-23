@@ -1,31 +1,29 @@
-import React from 'react';
-import makeStyles from '@mui/styles/makeStyles';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
+import React from 'react'
+import makeStyles from '@mui/styles/makeStyles'
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
 
-import styleSecciones from '../styleSecciones';
+import styleSecciones from '../styleSecciones'
 
-import DatosNoRegistrados from '../DatosNoRegistrados';
-import DatosReservados from '../DatosReservados';
-import Transmisor from '../CompTransmisor';
-import { sumary, expansion, Divider, getMoneda } from '../utils';
+import DatosNoRegistrados from '../DatosNoRegistrados'
+import DatosReservados from '../DatosReservados'
+import Transmisor from '../CompTransmisor'
+import { sumary, expansion, Divider, getMoneda, Disclaimer } from '../utils'
 
-import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../common/AccordionBox';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../common/AccordionBox'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
-import { Disclaimer } from '../utils';
+const useStyles = makeStyles(styleSecciones)
 
-const useStyles = makeStyles(styleSecciones);
-
-function BienMueble(props) {
-  const classes = useStyles();
-  const exp = expansion();
-  const sum = sumary();
-  const { bienMueble } = props;
+function BienMueble (props) {
+  const classes = useStyles()
+  const exp = expansion()
+  const sum = sumary()
+  const { bienMueble } = props
   return bienMueble.map((obj, idx) => {
     return (
       <BoxAccordion key={'veh-' + idx}>
-        <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon style={{ color: 'white'}} />} aria-controls='panel1a-content' id='panel1a-header'>
+        <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon style={{ color: 'white' }} />} aria-controls='panel1a-content' id='panel1a-header'>
           <Typography className={exp.heading}>
             <strong>TIPO DEL BIEN: {obj.tipoBien.valor}</strong>
           </Typography>
@@ -40,7 +38,7 @@ function BienMueble(props) {
               <Typography className={classes.cardTitle}>TITULAR DEL BIEN:</Typography>
               <Typography className={classes.card}>
                 {obj.titular.map((tit, idx) => {
-                  return <span key={'tit-' + idx}>{tit.valor}</span>;
+                  return <span key={'tit-' + idx}>{tit.valor}</span>
                 })}
               </Typography>
             </Grid>
@@ -82,19 +80,19 @@ function BienMueble(props) {
           </Grid>
         </BoxAccordionDetails>
       </BoxAccordion>
-    );
-  });
+    )
+  })
 }
 
 const BienesMuebles = ({ data, titulo }) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
-  let bienMueble;
+  let bienMueble
 
   if (data.ninguno) {
-    bienMueble = [];
+    bienMueble = []
   } else {
-    bienMueble = data.bienMueble ? data.bienMueble.filter(i => i.titular.length === 1 && i.titular[0].clave === 'DEC') : [];
+    bienMueble = data.bienMueble ? data.bienMueble.filter(i => i.titular.length === 1 && i.titular[0].clave === 'DEC') : []
   }
 
   // const bienMueble = data.ninguno
@@ -108,14 +106,16 @@ const BienesMuebles = ({ data, titulo }) => {
           {titulo}
         </Typography>
       </Grid>
-      {data ? (
-        <Grid item xs={12}>
-          {data.ninguno ? <DatosNoRegistrados /> : bienMueble.length ? <BienMueble bienMueble={bienMueble} /> : <DatosReservados />}
-        </Grid>
-      ) : (
-        <Disclaimer />
-      )}
+      {data
+        ? (
+          <Grid item xs={12}>
+            {data.ninguno ? <DatosNoRegistrados /> : bienMueble.length ? <BienMueble bienMueble={bienMueble} /> : <DatosReservados />}
+          </Grid>
+          )
+        : (
+          <Disclaimer />
+          )}
     </Grid>
-  );
-};
-export default BienesMuebles;
+  )
+}
+export default BienesMuebles

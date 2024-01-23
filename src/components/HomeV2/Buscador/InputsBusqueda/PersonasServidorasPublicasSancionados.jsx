@@ -1,84 +1,84 @@
-import React from "react";
-import { TextField } from "@mui/material/";
-import { Controller, useFormContext } from "react-hook-form";
-import { ThemeProvider } from "@mui/material/styles";
-import ThemeV2 from "../../../../ThemeV2";
+import React from 'react'
+import { TextField } from '@mui/material/'
+import { Controller, useFormContext } from 'react-hook-form'
+import { ThemeProvider } from '@mui/material/styles'
+import ThemeV2 from '../../../../ThemeV2'
 
-import Autocomplete from "@mui/material/Autocomplete";
-import CircularProgress from "@mui/material/CircularProgress";
-import Fade from "@mui/material/Fade";
+import Autocomplete from '@mui/material/Autocomplete'
+import CircularProgress from '@mui/material/CircularProgress'
+import Fade from '@mui/material/Fade'
+import axios from 'axios'
 
-const KEY = "pdn.camposBusqueda";
-import axios from 'axios';
+const KEY = 'pdn.camposBusqueda'
 
-export function PersonasServidorasPublicasSancionados() {
-  const [open, setOpen] = React.useState(false);
-  const [options, setOptions] = React.useState([]);
-  const loading = open && options.length === 0;
+export function PersonasServidorasPublicasSancionados () {
+  const [open, setOpen] = React.useState(false)
+  const [options, setOptions] = React.useState([])
+  const loading = open && options.length === 0
 
-  const storedCampos = JSON.parse(localStorage.getItem(KEY));
+  const storedCampos = JSON.parse(localStorage.getItem(KEY))
   let tempInstitucion = null
-  if (storedCampos && storedCampos["psp-sancionados"]["institucion"] && storedCampos["psp-sancionados"]["institucion"] !== null && storedCampos["psp-sancionados"]["institucion"]["nombre"]) {
-    tempInstitucion = storedCampos["psp-sancionados"]["institucion"]["nombre"]
-  } 
-  const [valueInstitucion, setValueInstitucion] = React.useState(tempInstitucion);
+  if (storedCampos && storedCampos['psp-sancionados'].institucion && storedCampos['psp-sancionados'].institucion !== null && storedCampos['psp-sancionados'].institucion.nombre) {
+    tempInstitucion = storedCampos['psp-sancionados'].institucion.nombre
+  }
+  const [valueInstitucion, setValueInstitucion] = React.useState(tempInstitucion)
 
   React.useEffect(() => {
-    let active = true;
+    let active = true
 
     if (!loading) {
-      return undefined;
+      return undefined
     }
 
     (async () => {
       if (active) {
-        let sug = [];
-        let options = {
-          url: "https://raw.githubusercontent.com/PDNMX/bulk-generator/main/Reporte%20de%20validador%20de%20buscador/reporte_s3s.json",
+        const sug = []
+        const options = {
+          url: 'https://raw.githubusercontent.com/PDNMX/bulk-generator/main/Reporte%20de%20validador%20de%20buscador/reporte_s3s.json',
           json: true,
-          method: "GET"
-        };
+          method: 'GET'
+        }
 
         axios(options)
           .then((data) => {
             data.data.forEach((item, index) => {
               /* console.log(index) */
-              if (item.nombre && item.status === true){
-                //console.log(item)
-                sug.push({ ...item, key: index });
+              if (item.nombre && item.status === true) {
+                // console.log(item)
+                sug.push({ ...item, key: index })
               }
-              //sug.push({ value: item.nombre, label: item.nombre, key: index });
-            });
+              // sug.push({ value: item.nombre, label: item.nombre, key: index });
+            })
             /* console.log(sug) */
-            setOptions([...sug]);
+            setOptions([...sug])
           })
           .catch((err) => {
-            console.log(err);
-          });
+            console.log(err)
+          })
       }
-    })();
+    })()
 
     return () => {
-      active = false;
-    };
-  }, [loading]);
+      active = false
+    }
+  }, [loading])
 
   React.useEffect(() => {
     if (!open) {
-      setOptions([]);
+      setOptions([])
     }
-  }, [open]);
+  }, [open])
 
-  const { control } = useFormContext();
+  const { control } = useFormContext()
   const tiposSancion = [
-    { label: "Inhabilitación", value: "I" },
-    { label: "Multa", value: "M" },
-    { label: "Suspensión del empleo, cargo o comisión", value: "S" },
-    { label: "Destitución del empleo, cargo o comisión", value: "D" },
-    { label: "Indemnización resarcitoria", value: "IRSC" },
-    { label: "Sanción económica", value: "SE" },
-    { label: "Otro", value: "O" },
-  ];
+    { label: 'Inhabilitación', value: 'I' },
+    { label: 'Multa', value: 'M' },
+    { label: 'Suspensión del empleo, cargo o comisión', value: 'S' },
+    { label: 'Destitución del empleo, cargo o comisión', value: 'D' },
+    { label: 'Indemnización resarcitoria', value: 'IRSC' },
+    { label: 'Sanción económica', value: 'SE' },
+    { label: 'Otro', value: 'O' }
+  ]
   /*
     1.- Servidores publicos sancionados
       - Nombre
@@ -88,21 +88,21 @@ export function PersonasServidorasPublicasSancionados() {
       - Tipo de sanción (multi select)
     */
   return (
-    <Fade in={true} timeout={1200}>
+    <Fade in timeout={1200}>
       <div>
         <ThemeProvider theme={ThemeV2}>
           <Controller
             control={control}
-            name="psp-sancionados.nombres"
-            defaultValue=""
+            name='psp-sancionados.nombres'
+            defaultValue=''
             render={({ field }) => (
               <TextField
                 style={{ background: '#fff' }}
-                label="Nombre(s)"
-                variant="outlined"
-                placeholder="Ingresa el nombre o nombres"
+                label='Nombre(s)'
+                variant='outlined'
+                placeholder='Ingresa el nombre o nombres'
                 fullWidth
-                margin="normal"
+                margin='normal'
                 {...field}
               />
             )}
@@ -110,38 +110,38 @@ export function PersonasServidorasPublicasSancionados() {
 
           <Controller
             control={control}
-            name="psp-sancionados.primerApellido"
-            defaultValue=""
+            name='psp-sancionados.primerApellido'
+            defaultValue=''
             render={({ field }) => (
               <TextField
                 style={{ background: '#fff' }}
-                label="Primer Apellido"
-                variant="outlined"
-                placeholder="Ingresa el primer apellido"
+                label='Primer Apellido'
+                variant='outlined'
+                placeholder='Ingresa el primer apellido'
                 fullWidth
-                margin="normal"
+                margin='normal'
                 {...field}
               />
             )}
           />
           <Controller
             control={control}
-            name="psp-sancionados.segundoApellido"
-            defaultValue=""
+            name='psp-sancionados.segundoApellido'
+            defaultValue=''
             render={({ field }) => (
               <TextField
                 style={{ background: '#fff' }}
-                label="Segundo Apellido"
-                variant="outlined"
-                placeholder="Ingresa el segundo apellido"
+                label='Segundo Apellido'
+                variant='outlined'
+                placeholder='Ingresa el segundo apellido'
                 fullWidth
-                margin="normal"
+                margin='normal'
                 {...field}
               />
             )}
           />
           <Controller
-            name="psp-sancionados.institucion"
+            name='psp-sancionados.institucion'
             control={control}
             defaultValue={null}
             render={({ field }) => (
@@ -149,47 +149,47 @@ export function PersonasServidorasPublicasSancionados() {
                 {...field}
                 open={open}
                 value={valueInstitucion || null}
-                onOpen={() => { setOpen(true); }}
-                onClose={() => { setOpen(false); }}
+                onOpen={() => { setOpen(true) }}
+                onClose={() => { setOpen(false) }}
                 getOptionLabel={(option) =>
-                  typeof option === "string" ? option : option.nombre
-                }
+                  typeof option === 'string' ? option : option.nombre}
                 isOptionEqualToValue={(option, value) =>
-                  value === undefined || value === "" || option.nombre === value.nombre
-                }
+                  value === undefined || value === '' || option.nombre === value.nombre}
                 options={options}
                 loading={loading}
                 onChange={(e, newValue) => {
-                  //console.log(newValue, newValue);
-                  setOptions(newValue ? [newValue, ...options] : options);
-                  setValueInstitucion(newValue);
-                  field.onChange(newValue);
+                  // console.log(newValue, newValue);
+                  setOptions(newValue ? [newValue, ...options] : options)
+                  setValueInstitucion(newValue)
+                  field.onChange(newValue)
                 }}
                 renderOption={(props, option) => {
                   return (
                     <li {...props} key={option.key}>
                       {option.nombre}
                     </li>
-                  );
+                  )
                 }}
                 renderInput={(params) => (
                   <TextField
                     style={{ background: '#fff' }}
                     {...params}
-                    margin={"normal"}
-                    label="Institución"
-                    placeholder="Ingresa la Institución"
+                    margin='normal'
+                    label='Institución'
+                    placeholder='Ingresa la Institución'
                     fullWidth
                     InputProps={{
                       ...params.InputProps,
                       endAdornment: (
                         <>
-                          {loading ? (
-                            <CircularProgress color="inherit" size={20} />
-                          ) : null}
+                          {loading
+                            ? (
+                              <CircularProgress color='inherit' size={20} />
+                              )
+                            : null}
                           {params.InputProps.endAdornment}
                         </>
-                      ),
+                      )
                     }}
                   />
                 )}
@@ -198,7 +198,7 @@ export function PersonasServidorasPublicasSancionados() {
           />
 
           <Controller
-            name="psp-sancionados.tipoSancion"
+            name='psp-sancionados.tipoSancion'
             control={control}
             defaultValue={[]}
             render={({ field: { ref, ...field }, fieldState: { error } }) => (
@@ -214,18 +214,17 @@ export function PersonasServidorasPublicasSancionados() {
                 options={tiposSancion}
                 /* getOptionSelected={(option, value) => option === value} */
                 isOptionEqualToValue={(option, value) =>
-                  option.label === value.label
-                }
+                  option.label === value.label}
                 renderInput={(params) => (
                   <TextField
                     style={{ background: '#fff' }}
-                    margin={"normal"}
+                    margin='normal'
                     error={!!error}
                     helperText={error?.message}
-                    label="Tipos de Sanción"
-                    placeholder="Ingresa el Tipo de Sanción"
-                    name="psp-sancionados.tipoSancion"
-                    type="Buscar"
+                    label='Tipos de Sanción'
+                    placeholder='Ingresa el Tipo de Sanción'
+                    name='psp-sancionados.tipoSancion'
+                    type='Buscar'
                     inputRef={ref}
                     {...params}
                   />
@@ -236,5 +235,5 @@ export function PersonasServidorasPublicasSancionados() {
         </ThemeProvider>
       </div>
     </Fade>
-  );
+  )
 }

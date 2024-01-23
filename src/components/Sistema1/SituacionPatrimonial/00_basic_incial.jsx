@@ -133,5 +133,5 @@ const basic_inicial = {
     },
     aclaracionesObservaciones: null
   }
-};
-export default basic_inicial;
+}
+export default basic_inicial

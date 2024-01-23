@@ -1,11 +1,11 @@
-import { createTheme } from '@mui/material/styles';
-import { esES } from '@mui/material/locale';
+import { createTheme } from '@mui/material/styles'
+import { esES } from '@mui/material/locale'
 
-import BaseTheme2023 from './BaseTheme2023';
+import BaseTheme2023 from './BaseTheme2023'
 
-const AzulPDN = 'rgba(113, 57, 114, 1)';
-const grisBorder = 'rgba(255, 255, 255, 0.23)';
-const amarilloPDN = 'rgb(232, 214, 67)';
+const AzulPDN = 'rgba(113, 57, 114, 1)'
+const grisBorder = 'rgba(255, 255, 255, 0.23)'
+const amarilloPDN = 'rgb(232, 214, 67)'
 
 // const err = {
 //   'label + &': {
@@ -55,7 +55,7 @@ export default createTheme(
       MuiSvgIcon: {
         styleOverrides: {
           root: {
-            'color': AzulPDN,
+            color: AzulPDN,
             '&.MuiSelect-icon': {
               color: '#E1E8EB'
             }
@@ -82,7 +82,7 @@ export default createTheme(
       MuiTableSortLabel: {
         styleOverrides: {
           root: {
-            'color': '#713972',
+            color: '#713972',
             '&:hover': {
               color: AzulPDN
             },
@@ -110,7 +110,7 @@ export default createTheme(
         styleOverrides: {
           root: {
             '& .MuiOutlinedInput-root': {
-              'textAlign': 'initial',
+              textAlign: 'initial',
               '&:hover fieldset': {
                 border: `1px ${AzulPDN} solid`
               },
@@ -146,7 +146,7 @@ export default createTheme(
               color: '#713972'
             },
             '& .MuiChip-deleteIcon': {
-              'color': amarilloPDN,
+              color: amarilloPDN,
               '&:hover': {
                 color: '#ef5350'
               }
@@ -157,4 +157,4 @@ export default createTheme(
     }
   },
   esES
-);
+)

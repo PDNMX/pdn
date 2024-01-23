@@ -1,26 +1,24 @@
-import React from 'react';
-import makeStyles from '@mui/styles/makeStyles';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
+import React from 'react'
+import makeStyles from '@mui/styles/makeStyles'
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
 
-import IngresosInicial from './08IngresosInicial';
-import IngresosModificacion from './08IngresosModificacion';
-import IngresosConclusion from './08IngresosConclusion';
+import IngresosInicial from './08IngresosInicial'
+import IngresosModificacion from './08IngresosModificacion'
+import IngresosConclusion from './08IngresosConclusion'
 
-import styleSecciones from '../styleSecciones';
-import { sumary, expansion, getMoneda } from '../utils';
+import styleSecciones from '../styleSecciones'
+import { sumary, expansion, getMoneda, info } from '../utils'
 
-import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../common/BoxAccordion';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../common/BoxAccordion'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
-import { info } from '../utils';
+const useStyles = makeStyles(styleSecciones)
 
-const useStyles = makeStyles(styleSecciones);
-
-export function ActividadFinanciera({ actividadFinanciera }) {
-  const classes = useStyles();
-  const exp = expansion();
-  const sum = sumary();
+export function ActividadFinanciera ({ actividadFinanciera }) {
+  const classes = useStyles()
+  const exp = expansion()
+  const sum = sumary()
 
   return (
     <BoxAccordion>
@@ -60,18 +58,18 @@ export function ActividadFinanciera({ actividadFinanciera }) {
                   </Typography>
                 </Grid>
               </Grid>
-            );
+            )
           })}
         </Grid>
       </BoxAccordionDetails>
     </BoxAccordion>
-  );
+  )
 }
 
-export function ServiciosProfesionales({ serviciosProfesionales }) {
-  const classes = useStyles();
-  const exp = expansion();
-  const sum = sumary();
+export function ServiciosProfesionales ({ serviciosProfesionales }) {
+  const classes = useStyles()
+  const exp = expansion()
+  const sum = sumary()
 
   return (
     <BoxAccordion>
@@ -111,18 +109,18 @@ export function ServiciosProfesionales({ serviciosProfesionales }) {
                   </Typography>
                 </Grid>
               </Grid>
-            );
+            )
           })}
         </Grid>
       </BoxAccordionDetails>
     </BoxAccordion>
-  );
+  )
 }
 
-export function EnajenacionBienes({ enajenacionBienes }) {
-  const classes = useStyles();
-  const exp = expansion();
-  const sum = sumary();
+export function EnajenacionBienes ({ enajenacionBienes }) {
+  const classes = useStyles()
+  const exp = expansion()
+  const sum = sumary()
 
   return (
     <BoxAccordion>
@@ -162,18 +160,18 @@ export function EnajenacionBienes({ enajenacionBienes }) {
                   </Typography>
                 </Grid>
               </Grid>
-            );
+            )
           })}
         </Grid>
       </BoxAccordionDetails>
     </BoxAccordion>
-  );
+  )
 }
 
-export function OtrosIngresos({ otrosIngresos }) {
-  const classes = useStyles();
-  const exp = expansion();
-  const sum = sumary();
+export function OtrosIngresos ({ otrosIngresos }) {
+  const classes = useStyles()
+  const exp = expansion()
+  const sum = sumary()
 
   return (
     <BoxAccordion>
@@ -213,26 +211,26 @@ export function OtrosIngresos({ otrosIngresos }) {
                   </Typography>
                 </Grid>
               </Grid>
-            );
+            )
           })}
         </Grid>
       </BoxAccordionDetails>
     </BoxAccordion>
-  );
+  )
 }
 
 const Ingresos = ({ data, tipo, titulo }) => {
   switch (tipo) {
     case 'INICIAL':
-      return <IngresosInicial data={data} titulo={titulo} />;
+      return <IngresosInicial data={data} titulo={titulo} />
     case 'MODIFICACIÓN':
-      return <IngresosModificacion data={data} titulo={titulo} />;
+      return <IngresosModificacion data={data} titulo={titulo} />
     case 'CONCLUSIÓN':
-      return <IngresosConclusion data={data} titulo={titulo} />;
+      return <IngresosConclusion data={data} titulo={titulo} />
     default:
-      info('Tipo declaración: ' + tipo);
-      break;
+      info('Tipo declaración: ' + tipo)
+      break
   }
-};
+}
 
-export default Ingresos;
+export default Ingresos

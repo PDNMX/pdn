@@ -1,13 +1,13 @@
-import React from 'react';
-import TableContainer from '@mui/material/TableContainer';
-import Table from '@mui/material/Table';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import TableCell from '@mui/material/TableCell';
-import TableSortLabel from '@mui/material/TableSortLabel';
-import Typography from '@mui/material/Typography';
+import React from 'react'
+import TableContainer from '@mui/material/TableContainer'
+import Table from '@mui/material/Table'
+import TableHead from '@mui/material/TableHead'
+import TableRow from '@mui/material/TableRow'
+import TableCell from '@mui/material/TableCell'
+import TableSortLabel from '@mui/material/TableSortLabel'
+import Typography from '@mui/material/Typography'
 
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from '@mui/styles/makeStyles'
 
 const headCells = [
   { id: 'nombres', label: 'Nombre(s)' },
@@ -15,7 +15,7 @@ const headCells = [
   { id: 'segundoApellido', label: 'Segundo Apellido' },
   { id: 'escolaridadNivel', label: 'Escolaridad Nivel' },
   { id: 'totalIngresosNetos', label: 'Total de Ingresos Netos' }
-];
+]
 
 const cellsEmpleo = [
   { id: 'nombreEntePublico', label: 'Nombre del Ente Público' },
@@ -23,7 +23,7 @@ const cellsEmpleo = [
   { id: 'municipioAlcaldia', label: 'Municipio/Alcaldía' },
   { id: 'empleoCargoComision', label: 'Empleo, Cargo o Comisión' },
   { id: 'nivelEmpleoCargoComision', label: 'Nivel del Empleo,Cargo o Comisión' }
-];
+]
 
 const cellsInmuebles = [
   { id: 'nivelOrdenGobierno', label: 'Ámbito' },
@@ -31,7 +31,7 @@ const cellsInmuebles = [
   { id: 'superficieTerreno', label: 'Superficie del Terreno' },
   { id: 'formaAdquisicion', label: 'Forma de Adquisición' },
   { id: 'valorAdquisicion', label: 'Valor de Adquisición' }
-];
+]
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -53,15 +53,15 @@ const useStyles = makeStyles(theme => ({
     padding: 0,
     position: 'absolute',
     top: 20,
-    width: 1,
+    width: 1
   },
   title: {
     flex: '1 1 100%'
   }
-}));
+}))
 
 const Ordenamiento = ({ handleOrdenamiento, ordenamiento }) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <TableContainer>
@@ -70,8 +70,8 @@ const Ordenamiento = ({ handleOrdenamiento, ordenamiento }) => {
           <TableRow>
             {headCells.map(headCell => (
               <TableCell key={headCell.id} padding='none' sortDirection={ordenamiento[headCell.id]}>
-                <TableSortLabel active={ordenamiento[headCell.id] ? true : false} direction={ordenamiento[headCell.id] ? ordenamiento[headCell.id] : 'asc'} onClick={e => handleOrdenamiento(e, headCell.id)}>
-                  <Typography color={"primary"}> 
+                <TableSortLabel active={!!ordenamiento[headCell.id]} direction={ordenamiento[headCell.id] ? ordenamiento[headCell.id] : 'asc'} onClick={e => handleOrdenamiento(e, headCell.id)}>
+                  <Typography color='primary'>
                     {headCell.label}
                     {ordenamiento[headCell.id] ? <span className={classes.visuallyHidden}>{ordenamiento[headCell.id] === 'desc' ? 'sorted descending' : 'sorted ascending'}</span> : null}
                   </Typography>
@@ -82,8 +82,8 @@ const Ordenamiento = ({ handleOrdenamiento, ordenamiento }) => {
           <TableRow>
             {cellsEmpleo.map(headCell => (
               <TableCell key={headCell.id} padding='none' sortDirection={ordenamiento[headCell.id]}>
-                <TableSortLabel active={ordenamiento[headCell.id] ? true : false} direction={ordenamiento[headCell.id] ? ordenamiento[headCell.id] : 'asc'} onClick={e => handleOrdenamiento(e, headCell.id)}>
-                  <Typography color={"primary"}> 
+                <TableSortLabel active={!!ordenamiento[headCell.id]} direction={ordenamiento[headCell.id] ? ordenamiento[headCell.id] : 'asc'} onClick={e => handleOrdenamiento(e, headCell.id)}>
+                  <Typography color='primary'>
                     {headCell.label}
                     {ordenamiento[headCell.id] ? <span className={classes.visuallyHidden}>{ordenamiento[headCell.id] === 'desc' ? 'sorted descending' : 'sorted ascending'}</span> : null}
                   </Typography>
@@ -94,8 +94,8 @@ const Ordenamiento = ({ handleOrdenamiento, ordenamiento }) => {
           <TableRow>
             {cellsInmuebles.map(headCell => (
               <TableCell key={headCell.id} padding='none' sortDirection={ordenamiento[headCell.id]}>
-                <TableSortLabel active={ordenamiento[headCell.id] ? true : false} direction={ordenamiento[headCell.id] ? ordenamiento[headCell.id] : 'asc'} onClick={e => handleOrdenamiento(e, headCell.id)}>
-                  <Typography color={"primary"}> 
+                <TableSortLabel active={!!ordenamiento[headCell.id]} direction={ordenamiento[headCell.id] ? ordenamiento[headCell.id] : 'asc'} onClick={e => handleOrdenamiento(e, headCell.id)}>
+                  <Typography color='primary'>
                     {headCell.label}
                     {ordenamiento[headCell.id] ? <span className={classes.visuallyHidden}>{ordenamiento[headCell.id] === 'desc' ? 'sorted descending' : 'sorted ascending'}</span> : null}
                   </Typography>
@@ -106,6 +106,6 @@ const Ordenamiento = ({ handleOrdenamiento, ordenamiento }) => {
         </TableHead>
       </Table>
     </TableContainer>
-  );
-};
-export default Ordenamiento;
+  )
+}
+export default Ordenamiento

@@ -9,107 +9,108 @@ import { ResponsiveBar } from '@nivo/bar'
 // you'll often use just a few of them.
 
 const MyResponsiveBar = ({ data }) => {
-    const legend = "Proveedores (RFC)";
+  const legend = 'Proveedores (RFC)'
 
-    const _data = data.map(d => {
-        return {
-            "id_": d.data._id[0].id,
-            "total": (d.data.total / 1000000).toFixed(2) //millones
-        }
-    })
+  const _data = data.map(d => {
+    return {
+      id_: d.data._id[0].id,
+      total: (d.data.total / 1000000).toFixed(2) // millones
+    }
+  })
 
-    return <ResponsiveBar
-        data={_data}
-        keys={[
-            'total',
-            /*'burger',
+  return (
+    <ResponsiveBar
+      data={_data}
+      keys={[
+        'total'
+        /* 'burger',
             'sandwich',
             'kebab',
             'fries',
-            'donut'*/
-        ]}
-        indexBy="id_"
-        margin={{top: 20, right: 20, bottom: 90, left: 90}}
-        padding={0.3}
-        valueScale={{type: 'linear'}}
-        indexScale={{type: 'band', round: true}}
-        colors={{scheme: 'nivo'}}
-        defs={[
-            {
-                id: 'lines',
-                type: 'patternLines',
-                background: 'inherit',
-                color: '#eed312',
-                rotation: -45,
-                lineWidth: 6,
-                spacing: 10
-            },
-            {
-                id: 'dots',
-                type: 'patternDots',
-                background: 'inherit',
-                color: '#38bcb2',
-                size: 4,
-                padding: 1,
-                stagger: true
-            }
-        ]}
-        fill={[
-            {
-                match: {
-                    id: 'total'
-                },
-                id: 'lines'
-            },
-            /*{
+            'donut' */
+      ]}
+      indexBy='id_'
+      margin={{ top: 20, right: 20, bottom: 90, left: 90 }}
+      padding={0.3}
+      valueScale={{ type: 'linear' }}
+      indexScale={{ type: 'band', round: true }}
+      colors={{ scheme: 'nivo' }}
+      defs={[
+        {
+          id: 'lines',
+          type: 'patternLines',
+          background: 'inherit',
+          color: '#eed312',
+          rotation: -45,
+          lineWidth: 6,
+          spacing: 10
+        },
+        {
+          id: 'dots',
+          type: 'patternDots',
+          background: 'inherit',
+          color: '#38bcb2',
+          size: 4,
+          padding: 1,
+          stagger: true
+        }
+      ]}
+      fill={[
+        {
+          match: {
+            id: 'total'
+          },
+          id: 'lines'
+        }
+        /* {
                 match: {
                     id: 'fries'
                 },
                 id: 'dots'
-            }*/
-        ]}
-        borderColor={{
-            from: 'color',
-            modifiers: [
-                [
-                    'darker',
-                    1.6
-                ]
-            ]
-        }}
-        axisTop={null}
-        axisRight={null}
-        axisBottom={{
-            tickSize: 5,
-            tickPadding: 5,
-            tickRotation: -15,
-            legend: legend,
-            legendPosition: 'middle',
-            legendOffset: 50,
-            fontSize: '30pt'
-        }}
-        axisLeft={{
-            tickSize: 5,
-            tickPadding: 5,
-            tickRotation: 0,
-            legend: 'Millones de pesos',
-            legendPosition: 'middle',
-            legendOffset: -60
-        }}
-        enableLabel={false}
-        labelSkipWidth={12}
-        labelSkipHeight={12}
-        labelTextColor={{
-            from: 'color',
-            modifiers: [
-                [
-                    'darker',
-                    1.6
-                ]
-            ]
-        }}
-        legends={[
-            /*{
+            } */
+      ]}
+      borderColor={{
+        from: 'color',
+        modifiers: [
+          [
+            'darker',
+            1.6
+          ]
+        ]
+      }}
+      axisTop={null}
+      axisRight={null}
+      axisBottom={{
+        tickSize: 5,
+        tickPadding: 5,
+        tickRotation: -15,
+        legend,
+        legendPosition: 'middle',
+        legendOffset: 50,
+        fontSize: '30pt'
+      }}
+      axisLeft={{
+        tickSize: 5,
+        tickPadding: 5,
+        tickRotation: 0,
+        legend: 'Millones de pesos',
+        legendPosition: 'middle',
+        legendOffset: -60
+      }}
+      enableLabel={false}
+      labelSkipWidth={12}
+      labelSkipHeight={12}
+      labelTextColor={{
+        from: 'color',
+        modifiers: [
+          [
+            'darker',
+            1.6
+          ]
+        ]
+      }}
+      legends={[
+        /* {
                 dataFrom: 'keys',
                 itemTextColor: "#55575A",
                 anchor: 'bottom-right',
@@ -131,34 +132,37 @@ const MyResponsiveBar = ({ data }) => {
                         }
                     }
                 ]
-            }*/
-        ]}
-        theme = {{
-            axis: {
-                legend:{
-                    text: {
-                        fontSize: 12,
-                        fill: "#55575A"
-                    }
-                },
-                ticks: {
-                    text: {
-                        fontSize: 12,
-                        fill: "#55575A"
-                    }
-                }
+            } */
+      ]}
+      theme={{
+        axis: {
+          legend: {
+            text: {
+              fontSize: 12,
+              fill: '#55575A'
             }
-        }}
-        tooltip={e => {
-            return <div style={{background: "#000000", opacity: 0.7, padding: '10px'}}>
-                RFC: {e.data.id_} <br/>
-                {e.data.total} MDP
-            </div>;
-        }}
-        role="application"
-        ariaLabel="Nivo bar chart demo"
-        barAriaLabel={e => e.id + ": " + e.formattedValue + " in country: " + e.indexValue}
+          },
+          ticks: {
+            text: {
+              fontSize: 12,
+              fill: '#55575A'
+            }
+          }
+        }
+      }}
+      tooltip={e => {
+        return (
+          <div style={{ background: '#000000', opacity: 0.7, padding: '10px' }}>
+            RFC: {e.data.id_} <br />
+            {e.data.total} MDP
+          </div>
+        )
+      }}
+      role='application'
+      ariaLabel='Nivo bar chart demo'
+      barAriaLabel={e => e.id + ': ' + e.formattedValue + ' in country: ' + e.indexValue}
     />
-};
+  )
+}
 
-export default MyResponsiveBar;
+export default MyResponsiveBar

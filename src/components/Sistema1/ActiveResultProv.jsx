@@ -1,19 +1,19 @@
-import { BoxAccordion, BoxAccordionDetails, BoxAccordionSummary } from './common/BoxAccordion';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import CircularProgress from '@mui/material/CircularProgress';
-import IconSunny from '@mui/icons-material/WbSunny';
+import { BoxAccordion, BoxAccordionDetails, BoxAccordionSummary } from './common/BoxAccordion'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import CircularProgress from '@mui/material/CircularProgress'
+import IconSunny from '@mui/icons-material/WbSunny'
 
-import makeStyles from '@mui/styles/makeStyles';
-import styles from './style';
-import { Grid, Tooltip, Typography } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles'
+import styles from './style'
+import { Grid, Tooltip, Typography } from '@mui/material'
 
-import Tabla from './Tabla';
+import Tabla from './Tabla'
 
-const useStyles = makeStyles(styles);
+const useStyles = makeStyles(styles)
 
 const ActiveResultProv = props => {
-  const classes = useStyles();
-  const { p, i, handleDataSelect, handleSetPage, handleChangeRowsPerPage } = props;
+  const classes = useStyles()
+  const { p, i, handleDataSelect, handleSetPage, handleChangeRowsPerPage } = props
 
   return (
     <BoxAccordion square key={'res-' + i}>
@@ -23,30 +23,32 @@ const ActiveResultProv = props => {
             <Typography className={classes.resultadosHeading}>{p.supplier_name}</Typography>
             <Typography className={classes.resultadosHeading}>[{p.levels.join(', ')}]</Typography>
           </Grid>
-          {p.finding ? (
-            <Grid item xs={4}>
-              <Grid container spacing={0}>
-                <Grid item xs={2}>
-                  <CircularProgress color='primary' size={20} />
+          {p.finding
+            ? (
+              <Grid item xs={4}>
+                <Grid container spacing={0}>
+                  <Grid item xs={2}>
+                    <CircularProgress color='primary' size={20} />
+                  </Grid>
                 </Grid>
               </Grid>
-            </Grid>
-          ) : (
-            <Grid item xs={4}>
-              <Grid container spacing={0}>
-                <Grid item xs={4}>
-                  <Typography className={classes.resultadosHeading}>
-                    <Tooltip title={p.estatus ? 'Con respuesta' : 'Sin respuesta: ' + p.error.status + ' ' + p.error.statusText}>
-                      <IconSunny color={p.estatus ? 'primary' : 'inherit'} />
-                    </Tooltip>
-                  </Typography>
-                </Grid>
-                <Grid item xs={8}>
-                  <Typography className={classes.resultadosHeading}> Total de registros: {new Intl.NumberFormat('es-MX').format(p.total)} </Typography>
+              )
+            : (
+              <Grid item xs={4}>
+                <Grid container spacing={0}>
+                  <Grid item xs={4}>
+                    <Typography className={classes.resultadosHeading}>
+                      <Tooltip title={p.estatus ? 'Con respuesta' : 'Sin respuesta: ' + p.error.status + ' ' + p.error.statusText}>
+                        <IconSunny color={p.estatus ? 'primary' : 'inherit'} />
+                      </Tooltip>
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={8}>
+                    <Typography className={classes.resultadosHeading}> Total de registros: {new Intl.NumberFormat('es-MX').format(p.total)} </Typography>
+                  </Grid>
                 </Grid>
               </Grid>
-            </Grid>
-          )}
+              )}
         </Grid>
       </BoxAccordionSummary>
       {!p.finding && (
@@ -65,7 +67,7 @@ const ActiveResultProv = props => {
         </BoxAccordionDetails>
       )}
     </BoxAccordion>
-  );
-};
+  )
+}
 
-export default ActiveResultProv;
+export default ActiveResultProv

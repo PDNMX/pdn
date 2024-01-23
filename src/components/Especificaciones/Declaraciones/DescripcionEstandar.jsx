@@ -1,7 +1,7 @@
-import { Typography } from '@mui/material';
-import React from 'react';
-import withStyles from '@mui/styles/withStyles';
-import ButtonPDN from "../../Compartidos/ButtonPDN";
+import { Typography } from '@mui/material'
+import React from 'react'
+import withStyles from '@mui/styles/withStyles'
+import ButtonPDN from '../../Compartidos/ButtonPDN'
 
 const styles = theme => ({
   root: {
@@ -21,24 +21,24 @@ const styles = theme => ({
       width: '1em',
       marginLeft: '-1em'
     },
-    'paddingBottom': theme.spacing(1)
+    paddingBottom: theme.spacing(1)
   },
   text: {
     color: theme.palette.text.primary,
-    textAlign: 'justify',
+    textAlign: 'justify'
   },
-  title:{
+  title: {
     color: theme.palette.primary.main
   }
-});
+})
 
 class DescripcionEstandar extends React.Component {
-  render() {
-    const { classes } = this.props;
+  render () {
+    const { classes } = this.props
 
     return (
       <div className={classes.root}>
-        <Typography variant="h5" className={classes.title} paragraph>
+        <Typography variant='h5' className={classes.title} paragraph>
           Introducción
         </Typography>
         <Typography className={classes.text} paragraph>
@@ -50,7 +50,7 @@ class DescripcionEstandar extends React.Component {
           También puedes hacer clic en el botón que aparece a continuación, el cual <b>contiene información relevante para</b> los equipos encargados de desarrollar la <b>interconexión de su sistema de declaraciones</b> con la Plataforma Digital Nacional.
         </Typography>
         <Typography className={classes.text} paragraph>
-          <ButtonPDN  target='_blank' href='https://drive.google.com/file/d/1wHQpaFdP5An8V4Vhnjj1a4GBbYIREMHo/view?usp=sharing'>
+          <ButtonPDN target='_blank' href='https://drive.google.com/file/d/1wHQpaFdP5An8V4Vhnjj1a4GBbYIREMHo/view?usp=sharing'>
             Más información
           </ButtonPDN>
         </Typography>
@@ -60,18 +60,18 @@ class DescripcionEstandar extends React.Component {
         </Typography>
         <ul className={classes.ul}>
           <li className={classes.li}>
-            <Typography paragraph className={classes.text}  display='inline'>
+            <Typography paragraph className={classes.text} display='inline'>
               El 23 de octubre de 2018 fueron publicadas las Bases para el funcionamiento de la Plataforma Digital Nacional (PDN) en el Diario Oficial de la Federación (DOF). En el art. 6 de las Bases, se establece que para el correcto funcionamiento de cada uno de los sistemas, la SESNA emitirá los protocolos, estándares, reglamentos, especificaciones técnicas y cualquier normativa necesaria para
               la colaboración, provisión de datos y acciones, los cuales serán obligatorios para todos los proveedores, concentradores y encargados a nivel federal, estatal y municipal.
             </Typography>
           </li>
           <li className={classes.li}>
-            <Typography paragraph className={classes.text}  display='inline'>
+            <Typography paragraph className={classes.text} display='inline'>
               El 10 de julio y el 7 de agosto del 2019, sucedieron la 3º Sesión Ordinaria y la 2º Sesión Extraordinaria del Comité Coordinador del Sistema Nacional Anticorrupción. El resultado de éstas es la aprobación a las modificaciones de los formatos que los y las servidoras públicas a nivel nacional utilizaremos para declarar nuestros patrimonios e intereses.
             </Typography>
           </li>
           <li className={classes.li}>
-            <Typography paragraph className={classes.text}  display='inline'>
+            <Typography paragraph className={classes.text} display='inline'>
               La publicación en el DOF del nuevo formato de declaraciones de situación patrimonial y de intereses sucedió el 23 de septiembre del 2019. Asimismo, en el segundo transitorio del Acuerdo por el que el Comité Coordinador del Sistema Nacional Anticorrupción emite el formato, se estableció que las autoridades correspondientes deberán, en los sistemas de información para presentar las
               declaraciones, implementar el nuevo formato y garantizar la interoperabilidad con la PDN a más tardar el 31 de diciembre del 2019.
             </Typography>
@@ -111,7 +111,7 @@ class DescripcionEstandar extends React.Component {
         </Typography>
 
         <Typography className={classes.text} paragraph>
-          <ButtonPDN  target='_blank' href='https://github.com/OAI/OpenAPI-Specification' >
+          <ButtonPDN target='_blank' href='https://github.com/OAI/OpenAPI-Specification'>
             Más información
           </ButtonPDN>
         </Typography>
@@ -122,18 +122,18 @@ class DescripcionEstandar extends React.Component {
         <Typography className={classes.text} paragraph>El acceso a las APIs que se integrarán a la PDN se gestionará a través del protocolo de autorización OAuth 2.0, el cual es un estándar ampliamente usado por la industria de Internet. El estándar OAuth 2.0 que permitirá a la PDN obtener acceso necesario a las APIs de las instituciones a través del uso de tokens de autorización.</Typography>
 
         <Typography className={classes.text} paragraph>
-          <ButtonPDN  target='_blank' href='https://oauth.net/2/' >
+          <ButtonPDN target='_blank' href='https://oauth.net/2/'>
             Más información
           </ButtonPDN>{' '}
-          <ButtonPDN  target='_blank' href='https://drive.google.com/file/d/17-npQleAV87gV19hbmtzgZipegl0qrIO/view?usp=sharing'>
+          <ButtonPDN target='_blank' href='https://drive.google.com/file/d/17-npQleAV87gV19hbmtzgZipegl0qrIO/view?usp=sharing'>
             Guía de referencia
           </ButtonPDN>
         </Typography>
 
-        <p></p>
+        <p />
       </div>
-    );
+    )
   }
 }
 
-export default withStyles(styles)(DescripcionEstandar);
+export default withStyles(styles)(DescripcionEstandar)

@@ -1,11 +1,11 @@
-import React from 'react';
-import Paper from '@mui/material/Paper';
-import makeStyles from '@mui/styles/makeStyles';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
+import React from 'react'
+import Paper from '@mui/material/Paper'
+import makeStyles from '@mui/styles/makeStyles'
+import Tabs from '@mui/material/Tabs'
+import Tab from '@mui/material/Tab'
 
-import BusinessIcon from '@mui/icons-material/Business';
-import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import BusinessIcon from '@mui/icons-material/Business'
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance'
 
 const useStyles = makeStyles({
   root: {
@@ -13,18 +13,18 @@ const useStyles = makeStyles({
     width: '100%',
     backgroundColor: '#f2f2f2'
   }
-});
+})
 
 const useTabs = makeStyles({
   indicator: {
     backgroundColor: 'transparent'
   }
-});
+})
 
 const useTab = makeStyles(theme => ({
   root: {
-    'backgroundColor': theme.palette.background.noSelect,
-    'color': theme.palette.primary.black,
+    backgroundColor: theme.palette.background.noSelect,
+    color: theme.palette.primary.black,
     '&:hover': {
       fontWeight: 'bolder',
       color: theme.palette.text.primary
@@ -35,12 +35,12 @@ const useTab = makeStyles(theme => ({
       fontWeight: 'bolder'
     }
   }
-}));
+}))
 
-export default function MenuSuperior(props) {
-  const classes = useStyles();
-  const tabs = useTabs();
-  const tab = useTab();
+export default function MenuSuperior (props) {
+  const classes = useStyles()
+  const tabs = useTabs()
+  const tab = useTab()
 
   return (
     <Paper square className={classes.root}>
@@ -49,5 +49,5 @@ export default function MenuSuperior(props) {
         <Tab classes={tab} icon={<AccountBalanceIcon />} label='INTERESES' />
       </Tabs>
     </Paper>
-  );
+  )
 }

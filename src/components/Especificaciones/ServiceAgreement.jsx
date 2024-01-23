@@ -1,9 +1,9 @@
-import React from 'react';
-import { Typography } from '@mui/material';
-import withStyles from '@mui/styles/withStyles';
-import ButtonPDN from '../Compartidos/ButtonPDN';
+import React from 'react'
+import { Typography } from '@mui/material'
+import withStyles from '@mui/styles/withStyles'
+import ButtonPDN from '../Compartidos/ButtonPDN'
 
-const url_doc = 'https://drive.google.com/file/d/1f6E1HYEf3EBcqe9iPDdS27eJcyPYuPiO/view?usp=sharing';
+const url_doc = 'https://drive.google.com/file/d/1f6E1HYEf3EBcqe9iPDdS27eJcyPYuPiO/view?usp=sharing'
 
 const styles = theme => ({
   root: {
@@ -18,15 +18,15 @@ const styles = theme => ({
   },
   text: {
     color: theme.palette.text.primary,
-    textAlign: 'justify',
+    textAlign: 'justify'
   },
   title: {
     color: theme.palette.primary.main
-  },
-});
+  }
+})
 
 const ServiceAgreement = props => {
-  const { classes } = props;
+  const { classes } = props
   return (
     <div className={classes.root}>
       <Typography variant='h5' className={classes.title} paragraph>
@@ -37,13 +37,13 @@ const ServiceAgreement = props => {
       </Typography>
 
       <Typography className={classes.text} paragraph>
-      <ButtonPDN href={url_doc} target='_blank'>
-        Más información
-      </ButtonPDN>
+        <ButtonPDN href={url_doc} target='_blank'>
+          Más información
+        </ButtonPDN>
       </Typography>
       <br />
     </div>
-  );
-};
+  )
+}
 
-export default withStyles(styles)(ServiceAgreement);
+export default withStyles(styles)(ServiceAgreement)

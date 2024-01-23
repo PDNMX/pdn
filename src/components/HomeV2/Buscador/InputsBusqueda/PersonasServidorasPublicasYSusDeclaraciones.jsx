@@ -1,11 +1,11 @@
-import React from "react";
-import { TextField } from "@mui/material/";
-import { Controller, useFormContext } from "react-hook-form";
-import { ThemeProvider } from "@mui/material/styles";
-import ThemeV2 from "../../../../ThemeV2";
-import Fade from "@mui/material/Fade";
-export function PersonasServidorasPublicasYSusDeclaraciones() {
-  const { control } = useFormContext();
+import React from 'react'
+import { TextField } from '@mui/material/'
+import { Controller, useFormContext } from 'react-hook-form'
+import { ThemeProvider } from '@mui/material/styles'
+import ThemeV2 from '../../../../ThemeV2'
+import Fade from '@mui/material/Fade'
+export function PersonasServidorasPublicasYSusDeclaraciones () {
+  const { control } = useFormContext()
 
   /*
     3.- Personas servidoras pub y declaraciones patri
@@ -16,22 +16,22 @@ export function PersonasServidorasPublicasYSusDeclaraciones() {
       - Empleo, cargo, comisión
     */
   return (
-    <Fade in={true} timeout={1200}>
+    <Fade in timeout={1200}>
       <div>
         <ThemeProvider theme={ThemeV2}>
           <Controller
             control={control}
-            name="psp-declaraciones.nombres"
-            defaultValue=""
+            name='psp-declaraciones.nombres'
+            defaultValue=''
             render={({ field }) => (
               <TextField
                 style={{ background: '#fff' }}
-                id="nombres"
-                label="Nombre(s)"
-                variant="outlined"
-                placeholder="Ingresa el nombre o nombres"
+                id='nombres'
+                label='Nombre(s)'
+                variant='outlined'
+                placeholder='Ingresa el nombre o nombres'
                 fullWidth
-                margin="normal"
+                margin='normal'
                 {...field}
               />
             )}
@@ -39,32 +39,32 @@ export function PersonasServidorasPublicasYSusDeclaraciones() {
 
           <Controller
             control={control}
-            name="psp-declaraciones.primerApellido"
-            defaultValue=""
+            name='psp-declaraciones.primerApellido'
+            defaultValue=''
             render={({ field }) => (
               <TextField
                 style={{ background: '#fff' }}
-                label="Primer Apellido"
-                variant="outlined"
-                placeholder="Ingresa el primer apellido"
+                label='Primer Apellido'
+                variant='outlined'
+                placeholder='Ingresa el primer apellido'
                 fullWidth
-                margin="normal"
+                margin='normal'
                 {...field}
               />
             )}
           />
           <Controller
             control={control}
-            defaultValue=""
-            name="psp-declaraciones.segundoApellido"
+            defaultValue=''
+            name='psp-declaraciones.segundoApellido'
             render={({ field }) => (
               <TextField
                 style={{ background: '#fff' }}
-                label="Segundo Apellido"
-                variant="outlined"
-                placeholder="Ingresa el segundo apellido"
+                label='Segundo Apellido'
+                variant='outlined'
+                placeholder='Ingresa el segundo apellido'
                 fullWidth
-                margin="normal"
+                margin='normal'
                 {...field}
               />
             )}
@@ -72,17 +72,17 @@ export function PersonasServidorasPublicasYSusDeclaraciones() {
 
           <Controller
             control={control}
-            defaultValue=""
-            name="psp-declaraciones.empleoCargoComision"
+            defaultValue=''
+            name='psp-declaraciones.empleoCargoComision'
             render={({ field }) => (
               <TextField
                 style={{ background: '#fff' }}
-                id="empleoCargoComision"
-                label="Empleo, cargo o comisión"
-                variant="outlined"
-                placeholder="Ingresa el empleo, cargo o comisión"
+                id='empleoCargoComision'
+                label='Empleo, cargo o comisión'
+                variant='outlined'
+                placeholder='Ingresa el empleo, cargo o comisión'
                 fullWidth
-                margin="normal"
+                margin='normal'
                 {...field}
               />
             )}
@@ -90,5 +90,5 @@ export function PersonasServidorasPublicasYSusDeclaraciones() {
         </ThemeProvider>
       </div>
     </Fade>
-  );
+  )
 }

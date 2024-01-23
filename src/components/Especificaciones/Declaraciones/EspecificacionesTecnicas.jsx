@@ -1,7 +1,7 @@
-import { Link, Typography } from '@mui/material';
-import React from 'react';
-import withStyles from '@mui/styles/withStyles';
-import ButtonPDN from "../../Compartidos/ButtonPDN";
+import { Link, Typography } from '@mui/material'
+import React from 'react'
+import withStyles from '@mui/styles/withStyles'
+import ButtonPDN from '../../Compartidos/ButtonPDN'
 
 const styles = theme => ({
   root: {
@@ -23,20 +23,20 @@ const styles = theme => ({
       width: '1em',
       marginLeft: '-1em'
     },
-    'paddingBottom': theme.spacing(1)
+    paddingBottom: theme.spacing(1)
   },
   text: {
     color: theme.palette.text.primary,
-    textAlign: 'justify',
+    textAlign: 'justify'
   },
-  title:{
+  title: {
     color: theme.palette.primary.main
   }
-});
+})
 
 class EspecificacionesTecnicas extends React.Component {
-  render() {
-    const { classes } = this.props;
+  render () {
+    const { classes } = this.props
 
     return (
       <div className={classes.root}>
@@ -44,27 +44,27 @@ class EspecificacionesTecnicas extends React.Component {
           Especificaciones técnicas
         </Typography>
 
-        <Typography paragraph className={classes.text}  variant='h5'>
+        <Typography paragraph className={classes.text} variant='h5'>
           Diccionario de datos
         </Typography>
 
-        <Typography paragraph className={classes.text} >
-          <ButtonPDN  target='_blank' href='https://docs.google.com/spreadsheets/d/19Kyq46YwJk9wM7znYLQdLEKfAF8jTF4WmGJINXd9Lwg/edit?ts=5d88f08f#gid=0' variant='contained'>
+        <Typography paragraph className={classes.text}>
+          <ButtonPDN target='_blank' href='https://docs.google.com/spreadsheets/d/19Kyq46YwJk9wM7znYLQdLEKfAF8jTF4WmGJINXd9Lwg/edit?ts=5d88f08f#gid=0' variant='contained'>
             Más información
           </ButtonPDN>
         </Typography>
 
-        <Typography paragraph className={classes.text}  variant='h5'>
+        <Typography paragraph className={classes.text} variant='h5'>
           Catálogos de códigos y valores
         </Typography>
 
-        <Typography paragraph className={classes.text} >
-          <ButtonPDN  target='_blank'  href='https://github.com/PDNMX/catalogos/tree/master/S1%20-%20Declaraciones' >
+        <Typography paragraph className={classes.text}>
+          <ButtonPDN target='_blank' href='https://github.com/PDNMX/catalogos/tree/master/S1%20-%20Declaraciones'>
             Más información
           </ButtonPDN>
         </Typography>
 
-        <Typography paragraph className={classes.text}  variant='h5'>
+        <Typography paragraph className={classes.text} variant='h5'>
           Especificaciones en formato Open API Specification
         </Typography>
 
@@ -86,26 +86,26 @@ class EspecificacionesTecnicas extends React.Component {
           </li>
         </ul>
 
-        <Typography paragraph className={classes.text}  variant='h5'>
+        <Typography paragraph className={classes.text} variant='h5'>
           Seguridad
         </Typography>
-        <Typography paragraph className={classes.text} >
-          <ButtonPDN  target='_blank'  href='https://drive.google.com/file/d/1-IvF3KYa5rups73BmVV4W8glT9csVGY9/view' >
+        <Typography paragraph className={classes.text}>
+          <ButtonPDN target='_blank' href='https://drive.google.com/file/d/1-IvF3KYa5rups73BmVV4W8glT9csVGY9/view'>
             Más información
           </ButtonPDN>
         </Typography>
 
-        <Typography paragraph className={classes.text}  variant='h5'>
+        <Typography paragraph className={classes.text} variant='h5'>
           Versionado
         </Typography>
-        <Typography paragraph className={classes.text} >
-          <ButtonPDN  target='_blank' href='https://drive.google.com/file/d/1xIPoMa-xKlCi9OZs_Uc7ffvANImaKWnK/view' >
+        <Typography paragraph className={classes.text}>
+          <ButtonPDN target='_blank' href='https://drive.google.com/file/d/1xIPoMa-xKlCi9OZs_Uc7ffvANImaKWnK/view'>
             Más información
           </ButtonPDN>
         </Typography>
       </div>
-    );
+    )
   }
 }
 
-export default withStyles(styles)(EspecificacionesTecnicas);
+export default withStyles(styles)(EspecificacionesTecnicas)

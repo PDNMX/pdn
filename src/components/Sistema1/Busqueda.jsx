@@ -1,22 +1,22 @@
-import React from 'react';
-import { Grid, Paper } from '@mui/material';
-import withStyles from '@mui/styles/withStyles';
+import React from 'react'
+import { Grid, Paper } from '@mui/material'
+import withStyles from '@mui/styles/withStyles'
 
-import axios from 'axios';
+import axios from 'axios'
 
-import Perfil from './Perfil';
-import styles from './style';
+import Perfil from './Perfil'
+import styles from './style'
 
-import FormSearch from './formSearch';
-import { error } from './utils';
-import scrollToComponent from 'react-scroll-to-component';
+import FormSearch from './formSearch'
+import { error } from './utils'
+import scrollToComponent from 'react-scroll-to-component'
 
-import ActiveResultProv from './ActiveResultProv';
-import Descarga from '../Compartidos/Descarga';
-import MantenimentResultProv from './MantenimentResultProv';
+import ActiveResultProv from './ActiveResultProv'
+import Descarga from '../Compartidos/Descarga'
+import MantenimentResultProv from './MantenimentResultProv'
 
-import dataEntidadesFederativas from './data/entidades.json';
-import dataMunicipios from './data/municipios.json';
+import dataEntidadesFederativas from './data/entidades.json'
+import dataMunicipios from './data/municipios.json'
 
 class Busqueda extends React.Component {
   defaultSelect = [
@@ -24,7 +24,7 @@ class Busqueda extends React.Component {
       clave: 0,
       valor: 'Todos'
     }
-  ];
+  ]
 
   // query2 = {
   // 	nombres: 'Juan Pedro',
@@ -68,7 +68,7 @@ class Busqueda extends React.Component {
     formaAdquisicion: '',
     totalIngresosNetosMin: '',
     totalIngresosNetosMax: ''
-  };
+  }
 
   state = {
     ordenamiento: {},
@@ -94,7 +94,7 @@ class Busqueda extends React.Component {
     ],
     // dataSelect: inicial,
     dataSelect: ''
-  };
+  }
 
   cleanForm = () => {
     this.setState(prevState => ({
@@ -102,29 +102,29 @@ class Busqueda extends React.Component {
       btnSearch: false,
       query: { ...this.query },
       prov: []
-    }));
-  };
+    }))
+  }
 
   handleOrdenamiento = (e, property) => {
-    let ordena = this.state.ordenamiento;
+    let ordena = this.state.ordenamiento
 
     if (typeof ordena[property] === 'undefined') {
       ordena = {
         ...ordena,
         [property]: 'asc'
-      };
+      }
     } else {
       switch (ordena[property]) {
         case 'asc':
           ordena = {
             ...ordena,
             [property]: 'desc'
-          };
-          break;
+          }
+          break
 
         default:
-          delete ordena[property];
-          break;
+          delete ordena[property]
+          break
       }
     }
 
@@ -132,38 +132,38 @@ class Busqueda extends React.Component {
       ...prevState,
       btnSearch: false,
       ordenamiento: ordena
-    }));
-  };
+    }))
+  }
 
   handleInputChange = event => {
-    const { name, value } = event.target;
+    const { name, value } = event.target
     let catMunicipios = [
       {
         cve_agem: 0,
         nom_agem: 'Todos'
       }
-    ];
+    ]
 
     this.setState(prevState => {
-      let { query } = prevState;
+      const { query } = prevState
 
-      query[name] = value;
+      query[name] = value
 
       if (name === 'entidadFederativa') {
-        catMunicipios = this.getMunicipios(value);
-        query['municipioAlcaldia'] = '0';
+        catMunicipios = this.getMunicipios(value)
+        query.municipioAlcaldia = '0'
       } else {
-        catMunicipios = this.getMunicipios(query['entidadFederativa']);
+        catMunicipios = this.getMunicipios(query.entidadFederativa)
       }
 
       return {
         ...prevState,
-        query: query,
+        query,
         btnSearch: false,
         catMunicipios
-      };
-    });
-  };
+      }
+    })
+  }
 
   handleDataSelect = data => {
     // console.log('data: ', data);
@@ -173,130 +173,130 @@ class Busqueda extends React.Component {
         dataSelect: data
       }),
       () => {
-        scrollToComponent(this.perfil, { align: 'top' });
+        scrollToComponent(this.perfil, { align: 'top' })
       }
-    );
-  };
+    )
+  }
 
   handleGoBack = () => {
     this.setState(prevState => ({
       ...prevState,
       dataSelect: ''
-    }));
-  };
+    }))
+  }
 
   handleSetPage = (id, page) => {
     this.setState(
       prevState => {
-        let { prov } = prevState;
+        const { prov } = prevState
 
-        prov[id].pagination.page = page + 1;
-        prov[id].finding = true;
-        prov[id].data = [];
+        prov[id].pagination.page = page + 1
+        prov[id].finding = true
+        prov[id].data = []
 
         return {
           ...prevState,
-          prov: prov
-        };
+          prov
+        }
       },
       () => {
-        this.find(id);
+        this.find(id)
       }
-    );
-  };
+    )
+  }
 
   handleChangeRowsPerPage = (event, id) => {
-    let rowsPerPage = parseInt(event.target.value, 10);
+    const rowsPerPage = parseInt(event.target.value, 10)
 
     this.setState(
       prevState => {
-        let { prov } = prevState;
+        const { prov } = prevState
 
-        prov[id].pagination.pageSize = rowsPerPage;
-        prov[id].pagination.page = 1;
-        prov[id].finding = true;
-        prov[id].data = [];
+        prov[id].pagination.pageSize = rowsPerPage
+        prov[id].pagination.page = 1
+        prov[id].finding = true
+        prov[id].data = []
 
         return {
           ...prevState,
-          prov: prov
-        };
+          prov
+        }
       },
       () => {
-        this.find(id);
+        this.find(id)
       }
-    );
-  };
+    )
+  }
 
   find = id => {
-    let url = import.meta.env.VITE_S1_BACKEND + '/search';
-    let p = this.state.prov[id];
+    const url = import.meta.env.VITE_S1_BACKEND + '/search'
+    let p = this.state.prov[id]
 
     if (p.status === 'MANTENIMENT') {
       // defaults
-      p.finding = false;
-      p.estatus = true;
-      p.total = 0;
-      p.data = [];
-      p.pagination = {};
+      p.finding = false
+      p.estatus = true
+      p.total = 0
+      p.data = []
+      p.pagination = {}
 
       this.setState(prevState => {
-        let { prov } = prevState;
+        const { prov } = prevState
 
-        prov[id] = p;
+        prov[id] = p
 
         return {
           ...prevState,
-          prov: prov
-        };
-      });
+          prov
+        }
+      })
     }
 
     if (p.status === 'ACTIVE') {
-      let data = {
+      const data = {
         page: p.pagination.page,
         pageSize: p.pagination.pageSize,
         query: this.state.query,
         sort: this.state.ordenamiento,
         supplier_id: p.supplier_id
-      };
+      }
 
       axios
         .post(url, data)
         .then(resp => {
-          let { data } = resp;
+          const { data } = resp
 
           // defaults
-          p.finding = false;
-          p.estatus = false;
-          p.total = 0;
-          p.data = [];
-          p.pagination = {};
+          p.finding = false
+          p.estatus = false
+          p.total = 0
+          p.data = []
+          p.pagination = {}
 
           // no hay error
           if (typeof data.error === 'undefined') {
-            p.finding = false;
-            p.estatus = true;
-            p.total = data.pagination.totalRows;
-            p.data = data.results;
-            p.pagination = data.pagination;
+            p.finding = false
+            p.estatus = true
+            p.total = data.pagination.totalRows
+            p.data = data.results
+            p.pagination = data.pagination
           } else {
-            p.error = data.error;
+            p.error = data.error
           }
 
           this.setState(prevState => {
-            let { prov } = prevState;
+            const { prov } = prevState
 
-            prov[id] = p;
+            prov[id] = p
 
             return {
               ...prevState,
-              prov: prov
-            };
-          });
+              prov
+            }
+          })
         })
         .catch(err => {
-          let { status, statusText } = err.response;
+          const { status, statusText } = err.response
           p = {
             ...p,
             finding: false,
@@ -308,26 +308,26 @@ class Busqueda extends React.Component {
               status,
               statusText
             }
-          };
+          }
           this.setState(prevState => {
-            let { prov } = prevState;
+            const { prov } = prevState
 
-            prov[id] = p;
+            prov[id] = p
 
             return {
               ...prevState,
-              prov: prov
-            };
-          });
-          error('find' + err);
-        });
+              prov
+            }
+          })
+          error('find' + err)
+        })
     }
-  };
+  }
 
   handlerFind = () => {
-    let { institucion, providers } = this.state;
+    const { institucion, providers } = this.state
 
-    let prov = institucion ? providers.filter(p => p.supplier_id === institucion) : providers.filter(p => typeof p.supplier_id === 'string');
+    let prov = institucion ? providers.filter(p => p.supplier_id === institucion) : providers.filter(p => typeof p.supplier_id === 'string')
 
     prov = prov.map(p => {
       return {
@@ -337,27 +337,27 @@ class Busqueda extends React.Component {
         total: 0,
         data: [],
         pagination: []
-      };
-    });
+      }
+    })
 
     this.setState(
       prevState => ({
         ...prevState,
-        prov: prov,
+        prov,
         btnSearch: true
       }),
       () => prov.forEach((p, index) => this.find(index))
-    );
-  };
+    )
+  }
 
   getProviders = () => {
-    let defProviders = [
+    const defProviders = [
       {
         supplier_id: 0,
         supplier_name: 'Todos'
       }
-    ];
-    let url = import.meta.env.VITE_S1_BACKEND + '/providers';
+    ]
+    const url = import.meta.env.VITE_S1_BACKEND + '/providers'
 
     axios
       .get(url)
@@ -368,7 +368,7 @@ class Busqueda extends React.Component {
             providers: [...defProviders, ...resp.data]
           }),
           () => {}
-        );
+        )
       })
       .catch(err => {
         this.setState(prevState => ({
@@ -379,20 +379,20 @@ class Busqueda extends React.Component {
               supplier_name: 'ERROR AL CARGAR LOS PROVEEDORES'
             }
           ]
-        }));
-        error('getProviders' + err);
-      });
-  };
+        }))
+        error('getProviders' + err)
+      })
+  }
 
   getEscolaridadNivel = () => {
-    let url = 'https://raw.githubusercontent.com/PDNMX/catalogos/master/S1%20-%20Declaraciones/nivel.json';
+    const url = 'https://raw.githubusercontent.com/PDNMX/catalogos/master/S1%20-%20Declaraciones/nivel.json'
 
-    let defaultOps = [
+    const defaultOps = [
       {
         clave: 0,
         valor: 'Todos'
       }
-    ];
+    ]
 
     axios
       .get(url)
@@ -400,7 +400,7 @@ class Busqueda extends React.Component {
         this.setState(prevState => ({
           ...prevState,
           catEscolaridadNivel: [...defaultOps, ...resp.data]
-        }));
+        }))
       })
       .catch(err => {
         this.setState(prevState => ({
@@ -411,20 +411,20 @@ class Busqueda extends React.Component {
               valor: 'ERROR AL CARGAR LAS ESCOLARIDADES'
             }
           ]
-        }));
-        error('getEscolaridadNivel' + err);
-      });
-  };
+        }))
+        error('getEscolaridadNivel' + err)
+      })
+  }
 
   getFormaAdquisicion = () => {
-    let url = 'https://raw.githubusercontent.com/PDNMX/catalogos/master/S1%20-%20Declaraciones/formaAdquisicion.json';
+    const url = 'https://raw.githubusercontent.com/PDNMX/catalogos/master/S1%20-%20Declaraciones/formaAdquisicion.json'
 
-    let defaultOps = [
+    const defaultOps = [
       {
         clave: 0,
         valor: 'Todos'
       }
-    ];
+    ]
 
     axios
       .get(url)
@@ -432,7 +432,7 @@ class Busqueda extends React.Component {
         this.setState(prevState => ({
           ...prevState,
           catFormaAdquisicion: [...defaultOps, ...resp.data]
-        }));
+        }))
       })
       .catch(err => {
         this.setState(prevState => ({
@@ -443,27 +443,27 @@ class Busqueda extends React.Component {
               valor: 'ERROR AL CARGAR LAS FORMAS DE ADQUISICIÓN'
             }
           ]
-        }));
+        }))
 
-        error('catFormaAdquisicion' + err);
-      });
-  };
+        error('catFormaAdquisicion' + err)
+      })
+  }
 
   getEntidadesFederativas = () => {
     // let url = 'https://gaia.inegi.org.mx/wscatgeo/mgee/';
 
-    let defaultOps = [
+    const defaultOps = [
       {
         cve_agee: 0,
         nom_agee: 'Todos'
       }
-    ];
+    ]
 
     this.setState(prevState => ({
       ...prevState,
       catEntidadesFederativas: [...defaultOps, ...dataEntidadesFederativas]
-    }));
-    //catEntidadesFederativas
+    }))
+    // catEntidadesFederativas
     // axios
     //   .get(url, {
     //     crossdomain: true
@@ -487,19 +487,19 @@ class Busqueda extends React.Component {
 
     //     error('catEntidadesFederativas' + err);
     //   });
-  };
+  }
 
   getMunicipios = cve_agee => {
     // let url = 'https://gaia.inegi.org.mx/wscatgeo/mgem/' + cve_agee;
 
-    let defaultOps = [
+    const defaultOps = [
       {
         cve_agem: 0,
         nom_agem: 'Todos'
       }
-    ];
+    ]
 
-    return [...defaultOps, ...dataMunicipios.filter(d => d.cve_agee === cve_agee)];
+    return [...defaultOps, ...dataMunicipios.filter(d => d.cve_agee === cve_agee)]
 
     // catMunicipios
     // axios
@@ -525,17 +525,17 @@ class Busqueda extends React.Component {
 
     //     error('catMunicipios' + err);
     //   });
-  };
-
-  componentDidMount() {
-    this.getEscolaridadNivel();
-    this.getFormaAdquisicion();
-    this.getProviders();
-    this.getEntidadesFederativas();
   }
 
-  render() {
-    let { classes } = this.props;
+  componentDidMount () {
+    this.getEscolaridadNivel()
+    this.getFormaAdquisicion()
+    this.getProviders()
+    this.getEntidadesFederativas()
+  }
+
+  render () {
+    const { classes } = this.props
 
     return (
       <div>
@@ -561,12 +561,12 @@ class Busqueda extends React.Component {
                 {this.state.prov
                   .filter(p => p.status === 'ACTIVE')
                   .map((p, i) => {
-                    return <ActiveResultProv key={'res-' + i} p={p} i={i} handleDataSelect={this.handleDataSelect} handleSetPage={this.handleSetPage} handleChangeRowsPerPage={this.handleChangeRowsPerPage} />;
+                    return <ActiveResultProv key={'res-' + i} p={p} i={i} handleDataSelect={this.handleDataSelect} handleSetPage={this.handleSetPage} handleChangeRowsPerPage={this.handleChangeRowsPerPage} />
                   })}
                 {this.state.prov
                   .filter(p => p.status === 'MANTENIMENT')
                   .map((p, i) => {
-                    return <MantenimentResultProv key={'man-' + i} p={p} />;
+                    return <MantenimentResultProv key={'man-' + i} p={p} />
                   })}
               </div>
             </Grid>
@@ -577,19 +577,19 @@ class Busqueda extends React.Component {
             data={this.state.dataSelect}
             handleGoBack={this.handleGoBack}
             refPerfil={section => {
-              this.perfil = section;
+              this.perfil = section
             }}
           />
         )}
-        {/*DESCARGA*/}
+        {/* DESCARGA */}
         <Grid container spacing={0} justifyContent='center'>
           <Grid item xs={12} className={classes.itemD}>
-            <Descarga url={import.meta.env.VITE_S1_BULK} tipoGA={'bulk-s1'} />
+            <Descarga url={import.meta.env.VITE_S1_BULK} tipoGA='bulk-s1' />
           </Grid>
         </Grid>
       </div>
-    );
+    )
   }
 }
 
-export default withStyles(styles)(Busqueda);
+export default withStyles(styles)(Busqueda)

@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
-import TableHead from '@mui/material/TableHead';
-import Typography from '@mui/material/Typography';
-import { TableCell, TableRow } from '@mui/material';
+import PropTypes from 'prop-types'
+import TableHead from '@mui/material/TableHead'
+import Typography from '@mui/material/Typography'
+import { TableCell, TableRow } from '@mui/material'
 
 const headCells = [
   { id: 'nombre', numeric: false, disablePadding: false, label: 'NOMBRE' },
@@ -14,10 +14,10 @@ const headCells = [
   },
   { id: 'area', numeric: false, disablePadding: false, label: 'ÁREA' },
   { id: 'cargo', numeric: false, disablePadding: false, label: 'CARGO' }
-];
+]
 
 const EnhancedTableHead = props => {
-  const { classes, order, orderBy } = props;
+  const { classes, order, orderBy } = props
   // const { classes, order, orderBy, onRequestSort } = props;
   // const createSortHandler = property => event => {
   //   onRequestSort(event, property);
@@ -32,21 +32,21 @@ const EnhancedTableHead = props => {
             {/* {headCell.label} */}
             {/* {orderBy === headCell.id ? <span className={classes.visuallyHidden}>{order === 'desc' ? 'sorted descending' : 'sorted ascending'}</span> : null} */}
             {/* </TableSortLabel> */}
-            <Typography color={'white'} variant={'body1'}>
+            <Typography color='white' variant='body1'>
               {headCell.label}
             </Typography>
           </TableCell>
         ))}
       </TableRow>
     </TableHead>
-  );
-};
+  )
+}
 
 EnhancedTableHead.propTypes = {
   classes: PropTypes.object.isRequired,
   onRequestSort: PropTypes.func.isRequired,
   order: PropTypes.oneOf(['asc', 'desc']).isRequired,
   orderBy: PropTypes.string.isRequired
-};
+}
 
-export default EnhancedTableHead;
+export default EnhancedTableHead

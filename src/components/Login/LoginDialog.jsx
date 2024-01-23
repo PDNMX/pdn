@@ -1,183 +1,182 @@
-import * as React from 'react';
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import { useTheme } from '@mui/material/styles';
-import {Box, OutlinedInput, FormControl, InputLabel, Typography} from '@mui/material';
-import {logIn, logOut} from './Auth';
-import AlertaError from "./AlertaError";
-import {InputAdornment, IconButton} from "@mui/material";
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import * as React from 'react'
+import Button from '@mui/material/Button'
+import Dialog from '@mui/material/Dialog'
+import DialogActions from '@mui/material/DialogActions'
+import DialogContent from '@mui/material/DialogContent'
+import DialogContentText from '@mui/material/DialogContentText'
+import DialogTitle from '@mui/material/DialogTitle'
+import useMediaQuery from '@mui/material/useMediaQuery'
+import { useTheme } from '@mui/material/styles'
+import { Box, OutlinedInput, FormControl, InputLabel, Typography, InputAdornment, IconButton } from '@mui/material'
+import { logIn, logOut } from './Auth'
+import AlertaError from './AlertaError'
+import Visibility from '@mui/icons-material/Visibility'
+import VisibilityOff from '@mui/icons-material/VisibilityOff'
 
-import {UserContext} from "./UserContext";
-import ButtonPDN from '../Compartidos/ButtonPDN';
+import { UserContext } from './UserContext'
+import ButtonPDN from '../Compartidos/ButtonPDN'
 
 const LoginDialog = props => {
-    const {open, setOpen} = props;
-    const theme = useTheme();
-    const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
-    const {user, setUser} = React.useContext(UserContext);
+  const { open, setOpen } = props
+  const theme = useTheme()
+  const fullScreen = useMediaQuery(theme.breakpoints.down('md'))
+  const { user, setUser } = React.useContext(UserContext)
 
-    const [state, setState] = React.useState({
-        email: '',
-        password: '',
-        showPassword: false
-    });
+  const [state, setState] = React.useState({
+    email: '',
+    password: '',
+    showPassword: false
+  })
 
-    // TODO: hide alert on modal open
-    const [alertData, setAlertData] = React.useState({
-        open: false,
-        severity: "success",
-        message: "success"
-    });
+  // TODO: hide alert on modal open
+  const [alertData, setAlertData] = React.useState({
+    open: false,
+    severity: 'success',
+    message: 'success'
+  })
 
-    const handleClose = () => {
-        // hide alert
-        setAlertData({
-            ...alertData,
-            open:false
-        })
-        // hide dialog
-        setOpen(false);
-    };
+  const handleClose = () => {
+    // hide alert
+    setAlertData({
+      ...alertData,
+      open: false
+    })
+    // hide dialog
+    setOpen(false)
+  }
 
-    const handleChangeEmail = e => {
-        setState({
-            ...state,
-            email: e.target.value
-        });
+  const handleChangeEmail = e => {
+    setState({
+      ...state,
+      email: e.target.value
+    })
+  }
+
+  const handleChangePassword = e => {
+    setState({
+      ...state,
+      password: e.target.value
+    })
+  }
+
+  const handleSubmit = async e => {
+    e.preventDefault()
+    const result = await logIn(state.email, state.password)
+
+    if (result.success) {
+      setUser({
+        loggedIn: true,
+        ...result.user
+      })
+
+      handleClose() // hide dialog
+    } else {
+      setAlertData({
+        ...alertData,
+        open: true,
+        message: result.message,
+        severity: result.success ? 'success' : 'error'
+      })
     }
+  }
 
-    const handleChangePassword = e => {
-        setState({
-            ...state,
-            password: e.target.value
-        });
-    }
+  const handleLogout = () => {
+    logOut()
+    handleClose() // hide dialog
+    setUser({
+      loggedIn: false,
+      nombres: 'No autenticado'
+    })
+  }
 
-    const handleSubmit = async e => {
-        e.preventDefault();
-        const result =  await logIn(state.email, state.password);
+  const handleClickShowPassword = () => {
+    setState({
+      ...state,
+      showPassword: !state.showPassword
+    })
+  }
 
-        if (result.success){
-            setUser({
-                loggedIn: true,
-                ...result.user
-            });
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault()
+  }
 
-            handleClose(); // hide dialog
-        } else {
-            setAlertData({
-                ...alertData,
-                open: true,
-                message: result.message,
-                severity: result.success ? "success" : "error"
-            });
-        }
-    }
+  return (
+    <div>
+      <Dialog
+        fullScreen={fullScreen}
+        open={open}
+        onClose={handleClose}
+        aria-labelledby='responsive-dialog-title'
+      >
+        <DialogTitle id='responsive-dialog-title'>
+          {user.loggedIn ? 'Terminar la sesión' : 'Inicio de sesión'}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText style={{ color: '#55575A' }}>
+            {user.loggedIn
+              ? `Authenticado como ${user.nombres} ${user.primerApellido} ${user.segundoApellido}`
+              : 'Inicie sesión para acceder a las funcionalidades reservadas de la PDN.'}
+          </DialogContentText>
 
-    const handleLogout = () => {
-        logOut();
-        handleClose(); //hide dialog
-        setUser({
-            loggedIn: false,
-            nombres: "No autenticado"
-        });
-    }
+          <Box paddingTop={3} paddingBottom={3}>
 
-    const handleClickShowPassword = () => {
-        setState({
-            ...state,
-            showPassword: !state.showPassword,
-        });
-    };
+            {user.loggedIn
+              ? <Box p={4} align='center'>
+                <Typography paragraph variant='h5'>
+                  ¿Deseas terminar la sesión?
+                </Typography>
 
-    const handleMouseDownPassword = (event) => {
-        event.preventDefault();
-    };
+                <ButtonPDN onClick={() => handleLogout()} variant='contained'>
+                  Cerrar sesión
+                </ButtonPDN>
+                </Box>
+              : <form onSubmit={handleSubmit}>
+                <FormControl sx={{ margin: 1 }} fullWidth>
+                  <InputLabel htmlFor='outlined-adornment-email' style={{ color: '#55575A' }}>E-mail</InputLabel>
+                  <OutlinedInput
+                    type='email' label='E-mail' required
+                    value={state.email} onChange={handleChangeEmail}
+                  />
+                </FormControl>
 
-    return (
-        <div>
-            <Dialog
-                fullScreen={fullScreen}
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="responsive-dialog-title"
-            >
-                <DialogTitle id="responsive-dialog-title">
-                    {user.loggedIn? "Terminar la sesión": "Inicio de sesión"}
-                </DialogTitle>
-                <DialogContent>
-                    <DialogContentText style={{ color: '#55575A' }}>
-                        {user.loggedIn ?
-                            `Authenticado como ${user.nombres} ${user.primerApellido} ${user.segundoApellido}`
-                            :
-                            "Inicie sesión para acceder a las funcionalidades reservadas de la PDN."
-                        }
-                    </DialogContentText>
-
-                    <Box paddingTop={3} paddingBottom={3}>
-
-                        {user.loggedIn ?
-                            <Box p={4} align="center">
-                                <Typography paragraph variant="h5">
-                                    ¿Deseas terminar la sesión?
-                                </Typography>
-
-                                <ButtonPDN onClick={() => handleLogout()} variant="contained">
-                                    Cerrar sesión
-                                </ButtonPDN>
-                            </Box>
-                            :
-                            <form onSubmit={handleSubmit}>
-                                <FormControl sx={{margin: 1}} fullWidth>
-                                    <InputLabel htmlFor="outlined-adornment-email" style={{ color: '#55575A' }}>E-mail</InputLabel>
-                                    <OutlinedInput type="email" label="E-mail" required
-                                                   value={state.email} onChange={handleChangeEmail}/>
-                                </FormControl>
-
-                                <FormControl sx={{margin: 1}} fullWidth>
-                                    <InputLabel htmlFor="outlined-adornment-password" style={{ color: '#55575A' }}>Password</InputLabel>
-                                    <OutlinedInput type={state.showPassword ? 'text' : 'password'} label="Contraseña" required
-                                                   value={state.password} onChange={handleChangePassword}
-                                                   endAdornment={
-                                                       <InputAdornment position="end">
-                                                           <IconButton
-                                                               aria-label="toggle password visibility"
-                                                               onClick={handleClickShowPassword}
-                                                               onMouseDown={handleMouseDownPassword}
-                                                               edge="end"
-                                                           >
-                                                               {state.showPassword ? <VisibilityOff /> : <Visibility />}
-                                                           </IconButton>
-                                                       </InputAdornment>}
-                                    />
-                                </FormControl>
-
-                                <ButtonPDN variant="contained" sx={{margin: 1}} type='submit' style={{ color: 'white' }}>
-                                    Enviar
-                                </ButtonPDN>
-                            </form>
-                        }
-                    </Box>
-
-                    <Box p={1}>
-                        <AlertaError alertData={alertData} setAlertData={setAlertData}/>
-                    </Box>
-
-                </DialogContent>
-                <DialogActions>
-                    <ButtonPDN onClick={handleClose} autoFocus variant="contained" style={{ color: 'white' }}>
-                        Cancelar
-                    </ButtonPDN>
-                </DialogActions>
-            </Dialog>
-        </div>
-    );
+                <FormControl sx={{ margin: 1 }} fullWidth>
+                  <InputLabel htmlFor='outlined-adornment-password' style={{ color: '#55575A' }}>Password</InputLabel>
+                  <OutlinedInput
+                    type={state.showPassword ? 'text' : 'password'} label='Contraseña' required
+                    value={state.password} onChange={handleChangePassword}
+                    endAdornment={
+                        <InputAdornment position='end'>
+                            <IconButton
+                                aria-label='toggle password visibility'
+                                onClick={handleClickShowPassword}
+                                onMouseDown={handleMouseDownPassword}
+                                edge='end'
+                              >
+                                {state.showPassword ? <VisibilityOff /> : <Visibility />}
+                              </IconButton>
+                          </InputAdornment>
 }
-export default LoginDialog;
+                  />
+                </FormControl>
+
+                <ButtonPDN variant='contained' sx={{ margin: 1 }} type='submit' style={{ color: 'white' }}>
+                  Enviar
+                </ButtonPDN>
+                </form>}
+          </Box>
+
+          <Box p={1}>
+            <AlertaError alertData={alertData} setAlertData={setAlertData} />
+          </Box>
+
+        </DialogContent>
+        <DialogActions>
+          <ButtonPDN onClick={handleClose} autoFocus variant='contained' style={{ color: 'white' }}>
+            Cancelar
+          </ButtonPDN>
+        </DialogActions>
+      </Dialog>
+    </div>
+  )
+}
+export default LoginDialog

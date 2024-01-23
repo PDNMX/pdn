@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
-import withStyles from '@mui/styles/withStyles';
+import React, { useState } from 'react'
+import withStyles from '@mui/styles/withStyles'
 
-import { Button, Checkbox, FormControl, Grid, ListItemText, MenuItem, TextField } from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import { Button, Checkbox, FormControl, Grid, ListItemText, MenuItem, TextField } from '@mui/material'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import ExpandLessIcon from '@mui/icons-material/ExpandLess'
 
 const styles = theme => ({
-  'formControl': {
+  formControl: {
     width: '100%'
   },
   '&$focus': {
-    //color: theme.palette.black.color,
+    // color: theme.palette.black.color,
   },
-  'centrado': {
+  centrado: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'
   },
-  'progress': {
+  progress: {
     position: 'fixed',
     margin: 'auto',
     left: 0,
@@ -25,24 +25,24 @@ const styles = theme => ({
     top: 0,
     bottom: 0
   },
-  'desc': {
+  desc: {
     color: theme.palette.text.contrastText
   },
-  'container': {
+  container: {
     /* marginTop: '30px',
-        marginBottom: '30px',*/
+        marginBottom: '30px', */
     overflowX: 'auto'
   },
-  'section': {
+  section: {
     maxWidth: '1200px',
     overflowX: 'auto',
     padding: theme.spacing(1)
   },
-  'button': {
+  button: {
     padding: theme.spacing(1),
     fontWeight: 'bold'
   }
-});
+})
 
 const tiposSancion = [
   { label: 'Inhabilitado', value: 'I' },
@@ -52,25 +52,25 @@ const tiposSancion = [
   { label: 'Indemnización resarcitoria', value: 'IRSC' },
   { label: 'Sanción económica', value: 'SE' },
   { label: 'Otro', value: 'O' }
-];
+]
 
 const camposOrdenamiento = [
   { label: 'Nombre', value: 'nombres' },
   { label: 'Apellido Uno', value: 'primerApellido' },
   { label: 'Apellido Dos', value: 'segundoApellido' },
   { label: 'Institución', value: 'institucionDependencia' }
-];
+]
 
 const tiposOrdenamiento = [
   { label: 'Ascendente', value: 'asc' },
   { label: 'Descendente', value: 'desc' }
-];
+]
 
 const FormServidoresSancionados = ({ classes, handleForm, handleOrder, query, order, providersList, institutionsList }) => {
-  const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
+  const [showAdvancedSearch, setShowAdvancedSearch] = useState(false)
 
   return (
-    <React.Fragment>
+    <>
       <Grid item xs={12} md={2}>
         <TextField style={{ background: '#f2f0f2' }} name='nombres' label='Nombre(s)' onChange={handleForm} value={query.nombres} margin='normal' />
       </Grid>
@@ -89,7 +89,7 @@ const FormServidoresSancionados = ({ classes, handleForm, handleOrder, query, or
             name='tipoSancion'
             margin='normal'
             select
-            label={'Tipo sanción'}
+            label='Tipo sanción'
             SelectProps={{
               multiple: true,
               renderValue: selected => selected.map(s => s.label).join(', '),
@@ -111,23 +111,23 @@ const FormServidoresSancionados = ({ classes, handleForm, handleOrder, query, or
       </Grid>
       <Grid item xs={12} md={2}>
         <FormControl className={classes.formControl}>
-          <TextField style={{ background: '#f2f0f2' }} name={'nivel'} margin='normal' select label={'Nivel'} value={query.nivel} onChange={handleForm}>
+          <TextField style={{ background: '#f2f0f2' }} name='nivel' margin='normal' select label='Nivel' value={query.nivel} onChange={handleForm}>
             <MenuItem value='any'>
               <em>Todos</em>
             </MenuItem>
-            <MenuItem value={'Federal'} key={'Federal'}>
-              {'Federal'}
+            <MenuItem value='Federal' key='Federal'>
+              Federal
             </MenuItem>
-            <MenuItem value={'Estatal'} key={'Estatal'}>
-              {'Estatal'}
+            <MenuItem value='Estatal' key='Estatal'>
+              Estatal
             </MenuItem>
           </TextField>
         </FormControl>
       </Grid>
       <Grid item md={4} xs={12}>
         <FormControl className={classes.formControl}>
-          <TextField style={{ background: '#f2f0f2' }} name={'provider'} margin='normal' select label={'Proveedor información'} value={query.provider} onChange={handleForm}>
-            <MenuItem value={'any'}>
+          <TextField style={{ background: '#f2f0f2' }} name='provider' margin='normal' select label='Proveedor información' value={query.provider} onChange={handleForm}>
+            <MenuItem value='any'>
               <em>Todos</em>
             </MenuItem>
             {providersList.map(item => {
@@ -135,14 +135,14 @@ const FormServidoresSancionados = ({ classes, handleForm, handleOrder, query, or
                 <MenuItem value={item.value} key={item.key}>
                   {item.label}
                 </MenuItem>
-              );
+              )
             })}
           </TextField>
         </FormControl>
       </Grid>
       <Grid item md={6} xs={12}>
         <FormControl className={classes.formControl}>
-          <TextField style={{ background: '#f2f0f2' }} name={'institucionDependencia'} margin='normal' select label={'Institución'} value={query.institucionDependencia} onChange={handleForm}>
+          <TextField style={{ background: '#f2f0f2' }} name='institucionDependencia' margin='normal' select label='Institución' value={query.institucionDependencia} onChange={handleForm}>
             <MenuItem value='any'>
               <em>Todas</em>
             </MenuItem>
@@ -151,22 +151,22 @@ const FormServidoresSancionados = ({ classes, handleForm, handleOrder, query, or
                 <MenuItem value={item.value} key={item.key}>
                   {item.label}
                 </MenuItem>
-              );
+              )
             })}
           </TextField>
         </FormControl>
       </Grid>
       <Grid item xs={12}>
-        <Button onClick={() => setShowAdvancedSearch(prevState => !prevState)} color={'text'} startIcon={showAdvancedSearch ? <ExpandLessIcon /> : <ExpandMoreIcon />}>
+        <Button onClick={() => setShowAdvancedSearch(prevState => !prevState)} color='text' startIcon={showAdvancedSearch ? <ExpandLessIcon /> : <ExpandMoreIcon />}>
           Búsqueda avanzada
         </Button>
       </Grid>
       {showAdvancedSearch && (
-        <React.Fragment>
+        <>
           <Grid item xs={12} md={3}>
             <FormControl className={classes.formControl}>
-              <TextField style={{ background: '#f2f0f2' }} name={'orderCamp'} margin='normal' select label={'Ordenar por'} value={order.orderCamp} onChange={handleOrder}>
-                <MenuItem value={'any'}>
+              <TextField style={{ background: '#f2f0f2' }} name='orderCamp' margin='normal' select label='Ordenar por' value={order.orderCamp} onChange={handleOrder}>
+                <MenuItem value='any'>
                   <em>Ninguno</em>
                 </MenuItem>
                 {camposOrdenamiento.map(tipo => {
@@ -174,15 +174,15 @@ const FormServidoresSancionados = ({ classes, handleForm, handleOrder, query, or
                     <MenuItem key={tipo.value} value={tipo.value}>
                       <ListItemText primary={tipo.label} />
                     </MenuItem>
-                  );
+                  )
                 })}
               </TextField>
             </FormControl>
           </Grid>
           <Grid item xs={12} md={3}>
             <FormControl className={classes.formControl}>
-              <TextField style={{ background: '#f2f0f2' }} name={'orderType'} margin='normal' select label={'Tipo ordenamiento'} value={order.orderType} onChange={handleOrder}>
-                <MenuItem value={'any'}>
+              <TextField style={{ background: '#f2f0f2' }} name='orderType' margin='normal' select label='Tipo ordenamiento' value={order.orderType} onChange={handleOrder}>
+                <MenuItem value='any'>
                   <em>Ninguno</em>
                 </MenuItem>
                 {tiposOrdenamiento.map(tipo => {
@@ -190,15 +190,15 @@ const FormServidoresSancionados = ({ classes, handleForm, handleOrder, query, or
                     <MenuItem key={tipo.value} value={tipo.value}>
                       <ListItemText primary={tipo.label} />
                     </MenuItem>
-                  );
+                  )
                 })}
               </TextField>
             </FormControl>
           </Grid>
-        </React.Fragment>
+        </>
       )}
-    </React.Fragment>
-  );
-};
+    </>
+  )
+}
 
-export default withStyles(styles, { withTheme: true })(FormServidoresSancionados);
+export default withStyles(styles, { withTheme: true })(FormServidoresSancionados)

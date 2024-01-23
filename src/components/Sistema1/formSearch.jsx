@@ -1,20 +1,18 @@
-import React from 'react';
-import { Grid, Typography } from '@mui/material';
+import React from 'react'
+import { Grid, Typography, TextField, Radio, FormControlLabel, FormControl, MenuItem, Button, FormLabel, RadioGroup } from '@mui/material'
 
-import { SelectElement } from './utils';
+import { SelectElement } from './utils'
 
-import { TextField, Radio, FormControlLabel, FormControl, MenuItem, Button, FormLabel, RadioGroup } from '@mui/material';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
-import makeStyles from '@mui/styles/makeStyles';
-import Ordenamiento from './Ordenamiento';
-import style from './style';
-import { withStyles } from '@mui/styles';
-import ReactGA from "react-ga4";
-import ButtonPDN from '../Compartidos/ButtonPDN';
-const useStyles = makeStyles(style);
+import makeStyles from '@mui/styles/makeStyles'
+import Ordenamiento from './Ordenamiento'
+import style from './style'
+import { withStyles } from '@mui/styles'
+import ReactGA from 'react-ga4'
+import ButtonPDN from '../Compartidos/ButtonPDN'
+const useStyles = makeStyles(style)
 
 const CustomTypography = withStyles(theme => ({
   root: {
@@ -23,11 +21,11 @@ const CustomTypography = withStyles(theme => ({
   background: {
     backgroundColor: theme.palette.background.noSelect
   }
-}))(Typography);
+}))(Typography)
 
 const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdquisicion, catEntidadesFederativas, catMunicipios, btnSearch, handlerFind, cleanForm, handleOrdenamiento, ordenamiento }) => {
-  const classes = useStyles();
-  let {
+  const classes = useStyles()
+  const {
     nombres,
     primerApellido,
     segundoApellido,
@@ -47,12 +45,12 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
     totalIngresosNetosMin,
     totalIngresosNetosMax,
     formaAdquisicion
-  } = query;
+  } = query
 
-  const [checked, setChecked] = React.useState(false);
+  const [checked, setChecked] = React.useState(false)
 
   return (
-    <React.Fragment>
+    <>
       <Grid container spacing={0} className={classes.infoBusqueda}>
         <Grid item xs={12}>
           <CustomTypography paragraph>
@@ -88,7 +86,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
           <Grid container spacing={1}>
             <Grid item xs={12} md={3}>
               <FormControl className={classes.formControl}>
-                <TextField style={{ background: '#f2f0f2' }} id='mui-name' label='Nombre(s)' color="primary" value={nombres} name='nombres' onChange={handleInputChange} margin='normal' fullWidth />
+                <TextField style={{ background: '#f2f0f2' }} id='mui-name' label='Nombre(s)' color='primary' value={nombres} name='nombres' onChange={handleInputChange} margin='normal' fullWidth />
               </FormControl>
             </Grid>
             <Grid item xs={12} md={3}>
@@ -129,7 +127,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                       <MenuItem key={'entidadFederativa' + q.cve_agee} value={q.cve_agee}>
                         {q.nom_agee}
                       </MenuItem>
-                    );
+                    )
                   })}
                 </TextField>
               </FormControl>
@@ -142,7 +140,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                       <MenuItem key={'municipioAlcaldia' + q.cve_agem} value={q.cve_agem}>
                         {q.nom_agem}
                       </MenuItem>
-                    );
+                    )
                   })}
                 </TextField>
               </FormControl>
@@ -176,7 +174,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                 <Grid container spacing={1}>
                   <Grid item xs={6}>
                     <TextField
-                      style={{ background: '#f2f0f2' }} 
+                      style={{ background: '#f2f0f2' }}
                       id='superficieConstruccionMin'
                       placeholder='mínimo'
                       value={superficieConstruccionMin}
@@ -192,7 +190,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
-                      style={{ background: '#f2f0f2' }} 
+                      style={{ background: '#f2f0f2' }}
                       id='superficieConstruccionMax'
                       placeholder='máximo'
                       value={superficieConstruccionMax}
@@ -216,7 +214,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                 <Grid container spacing={1}>
                   <Grid item xs={6}>
                     <TextField
-                      style={{ background: '#f2f0f2' }} 
+                      style={{ background: '#f2f0f2' }}
                       id='superficieTerrenoMin'
                       placeholder='mínimo'
                       value={superficieTerrenoMin}
@@ -232,7 +230,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
-                      style={{ background: '#f2f0f2' }} 
+                      style={{ background: '#f2f0f2' }}
                       id='superficieTerrenoMax'
                       placeholder='máximo'
                       value={superficieTerrenoMax}
@@ -256,7 +254,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                 <Grid container spacing={1}>
                   <Grid item xs={6}>
                     <TextField
-                      style={{ background: '#f2f0f2' }} 
+                      style={{ background: '#f2f0f2' }}
                       id='valorAdquisicionMin'
                       placeholder='mínimo'
                       value={valorAdquisicionMin}
@@ -272,7 +270,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
-                      style={{ background: '#f2f0f2' }} 
+                      style={{ background: '#f2f0f2' }}
                       id='valorAdquisicionMax'
                       placeholder='máximo'
                       value={valorAdquisicionMax}
@@ -296,7 +294,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                 <Grid container spacing={1}>
                   <Grid item xs={6}>
                     <TextField
-                      style={{ background: '#f2f0f2' }} 
+                      style={{ background: '#f2f0f2' }}
                       id='totalIngresosNetosMin'
                       placeholder='mínimo'
                       value={totalIngresosNetosMin}
@@ -312,7 +310,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
-                      style={{ background: '#f2f0f2' }} 
+                      style={{ background: '#f2f0f2' }}
                       id='totalIngresosNetosMax'
                       placeholder='máximo'
                       value={totalIngresosNetosMax}
@@ -358,7 +356,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                 variant='contained'
                 color='primary'
                 onClick={e => {
-                  cleanForm();
+                  cleanForm()
                 }}
               >
                 Limpiar
@@ -368,8 +366,8 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                 variant='contained'
                 color='primary'
                 onClick={e => {
-                  handlerFind();
-                  ReactGA.event({ category: 'busqueda-s1', action: 'click' });
+                  handlerFind()
+                  ReactGA.event({ category: 'busqueda-s1', action: 'click' })
                 }}
                 disabled={btnSearch}
               >
@@ -380,7 +378,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
           </Grid>
         </Grid>
       </Grid>
-    </React.Fragment>
-  );
-};
-export default FormSearch;
+    </>
+  )
+}
+export default FormSearch

@@ -1,25 +1,25 @@
-import React from 'react';
-import Paper from '@mui/material/Paper';
-import makeStyles from '@mui/styles/makeStyles';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
+import React from 'react'
+import Paper from '@mui/material/Paper'
+import makeStyles from '@mui/styles/makeStyles'
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
 
-import styleSecciones from '../styleSecciones';
-import { sumary, expansion, Divider, getMoneda } from '../utils';
+import styleSecciones from '../styleSecciones'
+import { sumary, expansion, Divider, getMoneda } from '../utils'
 
-import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../common/BoxAccordion';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../common/BoxAccordion'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
-import { ActividadFinanciera, ServiciosProfesionales } from './08Ingresos';
-import ActividadIndustrial from './08Ingresos/ActividadIndustrial';
-import basicInicial from './00_basic_incial';
+import { ActividadFinanciera, ServiciosProfesionales } from './08Ingresos'
+import ActividadIndustrial from './08Ingresos/ActividadIndustrial'
+import basicInicial from './00_basic_incial'
 
-const useStyles = makeStyles(styleSecciones);
+const useStyles = makeStyles(styleSecciones)
 
 const OtrosIngresos = ({ otrosIngresos }) => {
-  const classes = useStyles();
-  const exp = expansion();
-  const sum = sumary();
+  const classes = useStyles()
+  const exp = expansion()
+  const sum = sumary()
 
   return (
     <BoxAccordion>
@@ -59,20 +59,20 @@ const OtrosIngresos = ({ otrosIngresos }) => {
                   </Typography>
                 </Grid>
               </Grid>
-            );
+            )
           })}
         </Grid>
       </BoxAccordionDetails>
     </BoxAccordion>
-  );
-};
+  )
+}
 
 const IngresosIniciales = ({ data: info, titulo }) => {
-  const classes = useStyles();
+  const classes = useStyles()
   const data = {
     ...basicInicial.ingresos,
     ...info
-  };
+  }
   return (
     <Grid container spacing={2} className={classes.rootPrincipal}>
       <Grid item xs={12}>
@@ -135,6 +135,6 @@ const IngresosIniciales = ({ data: info, titulo }) => {
         </Paper>
       </Grid>
     </Grid>
-  );
-};
-export default IngresosIniciales;
+  )
+}
+export default IngresosIniciales

@@ -1,16 +1,16 @@
-import { BoxAccordion, BoxAccordionDetails, BoxAccordionSummary } from './common/BoxAccordion';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Timelapse from '@mui/icons-material/Timelapse';
+import { BoxAccordion, BoxAccordionDetails, BoxAccordionSummary } from './common/BoxAccordion'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import Timelapse from '@mui/icons-material/Timelapse'
 
-import makeStyles from '@mui/styles/makeStyles';
-import styles from './style';
-import { Grid, Typography, Tooltip } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles'
+import styles from './style'
+import { Grid, Typography, Tooltip } from '@mui/material'
 
-const useStyles = makeStyles(styles);
+const useStyles = makeStyles(styles)
 
 const MantenimentResultProv = props => {
-  const classes = useStyles();
-  const { p } = props;
+  const classes = useStyles()
+  const { p } = props
   return (
     <BoxAccordion>
       <BoxAccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header' className={classes.resultadosTituloMantenimiento} style={{ backgroundColor: '#227292' }}>
@@ -23,7 +23,7 @@ const MantenimentResultProv = props => {
             <Grid container spacing={0}>
               <Grid item xs={4}>
                 <Typography className={classes.resultadosHeading}>
-                  <Tooltip title={'En mantenimiento'}>
+                  <Tooltip title='En mantenimiento'>
                     <Timelapse style={{ color: '#F7E455' }} />
                   </Tooltip>
                 </Typography>
@@ -47,7 +47,7 @@ const MantenimentResultProv = props => {
         </Grid>
       </BoxAccordionDetails>
     </BoxAccordion>
-  );
-};
+  )
+}
 
-export default MantenimentResultProv;
+export default MantenimentResultProv

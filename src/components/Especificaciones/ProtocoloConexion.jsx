@@ -1,11 +1,11 @@
-import React from 'react';
-import { Typography } from '@mui/material';
-//import IconButton from '@mui/material/IconButton';
-//import GetAppIcon from '@mui/icons-material/GetApp';
-import withStyles from '@mui/styles/withStyles';
-import { Link } from 'react-router-dom';
-import MuiLink from '@mui/material/Link';
-import ButtonPDN from '../Compartidos/ButtonPDN';
+import React from 'react'
+import { Typography } from '@mui/material'
+// import IconButton from '@mui/material/IconButton';
+// import GetAppIcon from '@mui/icons-material/GetApp';
+import withStyles from '@mui/styles/withStyles'
+import { Link } from 'react-router-dom'
+import MuiLink from '@mui/material/Link'
+import ButtonPDN from '../Compartidos/ButtonPDN'
 
 const styles = theme => ({
   root: {
@@ -24,28 +24,28 @@ const styles = theme => ({
     color: theme.palette.primary.contrastText
   },
   li: {
-    "&:before":{
-        content: '"•"',
-        color: '#7A3D71',
-        fontWeight: "bold",
-        display: "inline-block",
-        width: "1em",
-        marginLeft: "-1em"
+    '&:before': {
+      content: '"•"',
+      color: '#7A3D71',
+      fontWeight: 'bold',
+      display: 'inline-block',
+      width: '1em',
+      marginLeft: '-1em'
     },
     paddingBottom: theme.spacing(1)
   },
   text: {
     color: theme.palette.text.primary,
-    textAlign: 'justify',
+    textAlign: 'justify'
   },
   title: {
     color: theme.palette.primary.main
-  },
-});
+  }
+})
 
 const ProtocoloConexion = props => {
-  const { classes } = props;
-  const { urlPlan } = props;
+  const { classes } = props
+  const { urlPlan } = props
   return (
     <div className={classes.root}>
       <Typography variant='h5' className={classes.title} paragraph>
@@ -87,28 +87,30 @@ const ProtocoloConexion = props => {
       <Typography paragraph className={classes.text}>Estas pruebas se ejecutan en dos ambientes: 1) desarrollo y 2) productivo. En cada uno de ellos, se verifica el funcionamiento de la API, usando datos sintéticos (falsos) y reales (omitiendo datos reservados) de manera correspondiente.</Typography>
 
       <Typography className={classes.text}>Las pruebas para la verificación de las APIs, se encuentran descritas en documentos denominados Planes de pruebas, que podrás encontrar en el siguiente enlace.</Typography>
-      
-      <p></p>
-      {Array.isArray(urlPlan) ? (
-        urlPlan.map(url => {
-          console.log(url);
-          return (
-            <ButtonPDN href={url.url} target='_blank' key="btn-ProtocoloConexion">
-              {url.nombre}
-            </ButtonPDN>
-          );
-        })
-      ) : (
-        <ButtonPDN href={urlPlan} target='_blank' style={{ color: 'white' }}>
-          Plan de pruebas
-        </ButtonPDN>
-      )}
 
-      <p></p>
+      <p />
+      {Array.isArray(urlPlan)
+        ? (
+            urlPlan.map(url => {
+              console.log(url)
+              return (
+                <ButtonPDN href={url.url} target='_blank' key='btn-ProtocoloConexion'>
+                  {url.nombre}
+                </ButtonPDN>
+              )
+            })
+          )
+        : (
+          <ButtonPDN href={urlPlan} target='_blank' style={{ color: 'white' }}>
+            Plan de pruebas
+          </ButtonPDN>
+          )}
+
+      <p />
       <Typography paragraph className={classes.text}>En caso de que los resultados no sean aprobatorios, se notificará a la institución para que realice los ajustes necesarios y solicite una nueva revisión.</Typography>
 
       <Typography paragraph className={classes.text}>
-        Como apoyo para poder verificar el cumplimiento de los esquemas de datos de las diferentes API&apos;s, ponemos a su disposición un {''} 
+        Como apoyo para poder verificar el cumplimiento de los esquemas de datos de las diferentes API&apos;s, ponemos a su disposición un
         <Link to='/validador' className={classes.link}>
           Validador
         </Link>
@@ -128,7 +130,7 @@ const ProtocoloConexion = props => {
       </ButtonPDN> */}
       <br />
     </div>
-  );
-};
+  )
+}
 
-export default withStyles(styles)(ProtocoloConexion);
+export default withStyles(styles)(ProtocoloConexion)

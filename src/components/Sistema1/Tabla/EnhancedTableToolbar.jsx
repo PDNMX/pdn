@@ -1,7 +1,7 @@
-import Toolbar from '@mui/material/Toolbar';
-import { lighten } from '@mui/material/styles';
-import { Typography } from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
+import Toolbar from '@mui/material/Toolbar'
+import { lighten } from '@mui/material/styles'
+import { Typography } from '@mui/material'
+import makeStyles from '@mui/styles/makeStyles'
 
 const useToolbarStyles = makeStyles(theme => ({
   root: {
@@ -23,18 +23,18 @@ const useToolbarStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.text.contrastText
   }
-}));
+}))
 
 const EnhancedTableToolbar = () => {
-  const classes = useToolbarStyles();
+  const classes = useToolbarStyles()
 
   return (
     <Toolbar className={classes.title}>
-      <Typography paragraph variant='h6' style={{color: 'white'}} id='tableTitle'>
+      <Typography paragraph variant='h6' style={{ color: 'white' }} id='tableTitle'>
         Pulsa sobre el registro para ver su detalle
       </Typography>
     </Toolbar>
-  );
-};
+  )
+}
 
-export default EnhancedTableToolbar;
+export default EnhancedTableToolbar

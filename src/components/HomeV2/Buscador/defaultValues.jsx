@@ -1,41 +1,41 @@
 const defaultValues = {
-  "psp-sancionados": {
-    nombres: "",
-    primerApellido: "",
-    segundoApellido: "",
+  'psp-sancionados': {
+    nombres: '',
+    primerApellido: '',
+    segundoApellido: '',
     institucion: null,
-    tipoSancion: [],
+    tipoSancion: []
   },
-  "psp-participan": {
-    nombres: "",
-    primerApellido: "",
-    segundoApellido: "",
+  'psp-participan': {
+    nombres: '',
+    primerApellido: '',
+    segundoApellido: '',
     institucionS2: null,
-    tipoProcedimientoContratacion: [],
+    tipoProcedimientoContratacion: []
   },
-  "psp-declaraciones": {
-    nombres: "",
-    primerApellido: "",
-    segundoApellido: "",
-    institucion: "",
-    empleoCargoComision: "",
+  'psp-declaraciones': {
+    nombres: '',
+    primerApellido: '',
+    segundoApellido: '',
+    institucion: '',
+    empleoCargoComision: ''
   },
-  "empresas-sancionadas": {
-    nombreRazonSocial: "",
+  'empresas-sancionadas': {
+    nombreRazonSocial: '',
     institucion: null,
-    tipoSancion: [],
+    tipoSancion: []
   },
-  "empresas-contratos": {
-    nombreRazonSocial: "",
-    bienServicioOtorgado: "",
-    supplier: "SHCP"
+  'empresas-contratos': {
+    nombreRazonSocial: '',
+    bienServicioOtorgado: '',
+    supplier: 'SHCP'
   },
-  "instituciones-contrataciones": {
-    bienServicioOtorgado: "",
-    tipoContratacion: "any",
-    supplier: "SHCP",
+  'instituciones-contrataciones': {
+    bienServicioOtorgado: '',
+    tipoContratacion: 'any',
+    supplier: 'SHCP',
     buyer_name: null
-  },
-};
+  }
+}
 
-export default defaultValues;
+export default defaultValues

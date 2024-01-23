@@ -1,35 +1,35 @@
-import React from "react";
-import withStyles from "@mui/styles/withStyles";
-import { Typography, Grid, Stack } from "@mui/material";
-//import { Link } from "react-router-dom";
-import BuscadorModal from "./Buscador/BotonPrincipal";
+import React from 'react'
+import withStyles from '@mui/styles/withStyles'
+import { Typography, Grid, Stack } from '@mui/material'
+// import { Link } from "react-router-dom";
+import BuscadorModal from './Buscador/BotonPrincipal'
 
 /* import bgPDN from "../../assets/rediseno2023/imgs/fondos/fondo-mapa.svg"; */
-import lgoSNA from "../../assets/rediseno2023/imgs/iconos/logotipos/logo-sna.svg";
-import lgoSESNA from "../../assets/rediseno2023/imgs/iconos/logotipos/logo-sesna.svg";
-import ButtonPDN from "../Compartidos/ButtonPDN";
+import lgoSNA from '../../assets/rediseno2023/imgs/iconos/logotipos/logo-sna.svg'
+import lgoSESNA from '../../assets/rediseno2023/imgs/iconos/logotipos/logo-sesna.svg'
+import ButtonPDN from '../Compartidos/ButtonPDN'
 
 const styles = () => ({
   container: {
     /* background: `url(${bgPDN}) 10% -10px no-repeat rgb(255, 255, 255)`, */
     maxWidth: 1500,
-    margin: "auto",
+    margin: 'auto',
     /* background: "#f2f0f2", */
-    paddingTop: "4rem",
-    paddingBottom: "4rem",
-  },
-});
+    paddingTop: '4rem',
+    paddingBottom: '4rem'
+  }
+})
 
 const QueEsPDN = (props) => {
-  const { classes } = props;
+  const { classes } = props
 
   return (
-    <React.Fragment>
-      <div className="rootHome">
+    <>
+      <div className='rootHome'>
         <Grid
           container
-          alignItems="row"
-          justifyContent="center"
+          alignItems='row'
+          justifyContent='center'
           className={classes.container}
         >
           <Grid
@@ -38,30 +38,30 @@ const QueEsPDN = (props) => {
             lg={5}
             xs={12}
             p={{ xs: 1, xl: 0 }}
-            sx={{ textAlign: { xs: "center", md: "left" } }}
+            sx={{ textAlign: { xs: 'center', md: 'left' } }}
           >
-            <Typography variant="h1">
+            <Typography variant='h1'>
               PLATAFORMA
               <br />
               DIGITAL NACIONAL
             </Typography>
-            <Typography variant="h2">Inteligencia Anticorrupción</Typography>
-            <div >
+            <Typography variant='h2'>Inteligencia Anticorrupción</Typography>
+            <div>
               <img
-              style={{ margin: "1rem" }}
+                style={{ margin: '1rem' }}
                 src={lgoSNA}
-                alt="Sistema Nacional Anticorrupción"
+                alt='Sistema Nacional Anticorrupción'
               />
               <img
-              style={{ margin: "1rem" }}
+                style={{ margin: '1rem' }}
                 src={lgoSESNA}
-                alt="Secretaría Ejecutiva del Sistema Nacional Anticorrupción"
+                alt='Secretaría Ejecutiva del Sistema Nacional Anticorrupción'
               />
             </div>
             <br />
             <BuscadorModal />
           </Grid>
-          <Grid item lg={7} md={7} xs={12} align="left" p={{ xs: 1, lg: 0 }}>
+          <Grid item lg={7} md={7} xs={12} align='left' p={{ xs: 1, lg: 0 }}>
             <Typography>
               La <b>Plataforma Digital Nacional (PDN)</b> del Sistema Nacional
               Anticorrupción (SNA) es un <b>instrumento de inteligencia</b> que
@@ -94,7 +94,7 @@ const QueEsPDN = (props) => {
           </Grid> */}
         </Grid>
       </div>
-    </React.Fragment>
-  );
-};
-export default withStyles(styles)(QueEsPDN);
+    </>
+  )
+}
+export default withStyles(styles)(QueEsPDN)

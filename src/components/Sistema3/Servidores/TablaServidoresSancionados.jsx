@@ -1,22 +1,22 @@
-import React from 'react';
-import withStyles from '@mui/styles/withStyles';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TablePagination from '@mui/material/TablePagination';
-import TableRow from '@mui/material/TableRow';
-import TableFooter from '@mui/material/TableFooter';
-import Grid from '@mui/material/Grid';
-import { Button, Typography } from '@mui/material';
-import TableHead from '@mui/material/TableHead';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import React from 'react'
+import withStyles from '@mui/styles/withStyles'
+import Table from '@mui/material/Table'
+import TableBody from '@mui/material/TableBody'
+import TableCell from '@mui/material/TableCell'
+import TablePagination from '@mui/material/TablePagination'
+import TableRow from '@mui/material/TableRow'
+import TableFooter from '@mui/material/TableFooter'
+import Grid from '@mui/material/Grid'
+import { Button, Typography } from '@mui/material'
+import TableHead from '@mui/material/TableHead'
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 
 const columnData = [
   { id: 'expediente', label: 'Expediente' },
   { id: 'servidorPublico.nombreCompleto', label: 'Servidor público' },
   { id: 'institucion.nombre', label: 'Institución/Dependencia' },
   { id: 'tipoSancion', label: 'Tipo sanción' }
-];
+]
 
 const styles = theme => ({
   tablePagination: {
@@ -58,32 +58,32 @@ const styles = theme => ({
     fontWeight: 'bold',
     marginBottom: theme.spacing(1)
   }
-});
+})
 
-function TablaServidoresSancionados({ classes, info, verDetalle, handleChangeRowsPerPage, handleChangePage, returnToPrevios }) {
+function TablaServidoresSancionados ({ classes, info, verDetalle, handleChangeRowsPerPage, handleChangePage, returnToPrevios }) {
   const {
     results: data,
     pagination: { page, totalRows, pageSize: rowsPerPage }
-  } = info;
+  } = info
 
   return (
     <div>
-      <Grid container justifyContent='center' spacing={0} className={classes.gridTable} id={'containerTest'}>
+      <Grid container justifyContent='center' spacing={0} className={classes.gridTable} id='containerTest'>
         <Grid item xs={12}>
           {data && data.length > 0 && (
-            <Typography variant={'h6'} color={'primary.main'}>
+            <Typography variant='h6' color='primary.main'>
               Pulsa sobre el registro para ver su detalle
               <br />
             </Typography>
           )}
         </Grid>
-        <Grid item xs={12} textAlign={'right'}>
+        <Grid item xs={12} textAlign='right'>
           <Button startIcon={<ArrowBackIcon />} onClick={() => returnToPrevios()} color='primary' className={classes.buttonBack}>
             Regresar
           </Button>
         </Grid>
-        <Grid item xs={12} className={classes.container1} id={'hack1'}>
-          <div className={classes.container2} id={'hack2'}>
+        <Grid item xs={12} className={classes.container1} id='hack1'>
+          <div className={classes.container2} id='hack2'>
             {data && data.length > 0 && (
               <Table>
                 <TableHead className={classes.tableHead}>
@@ -91,11 +91,11 @@ function TablaServidoresSancionados({ classes, info, verDetalle, handleChangeRow
                     {columnData.map(column => {
                       return (
                         <TableCell key={column.id}>
-                          <Typography color={'primary.contrastText'} variant={'body1'}>
+                          <Typography color='primary.contrastText' variant='body1'>
                             {column.label}
                           </Typography>
                         </TableCell>
-                      );
+                      )
                     })}
                   </TableRow>
                 </TableHead>
@@ -110,7 +110,7 @@ function TablaServidoresSancionados({ classes, info, verDetalle, handleChangeRow
                         <TableCell>{n.institucionDependencia.nombre}</TableCell>
                         <TableCell style={{ width: '25%' }}>{n.tipoSancion.map(e => e.valor).join(', ')}</TableCell>
                       </TableRow>
-                    );
+                    )
                   })}
                 </TableBody>
                 <TableFooter>
@@ -130,7 +130,7 @@ function TablaServidoresSancionados({ classes, info, verDetalle, handleChangeRow
                       onRowsPerPageChange={handleChangeRowsPerPage}
                       labelRowsPerPage='Registros por página'
                       labelDisplayedRows={({ from, to, count }) => {
-                        return `${from}-${to} de ${count}`;
+                        return `${from}-${to} de ${count}`
                       }}
                       rowsPerPageOptions={[10, 25, 50]}
                     />
@@ -142,7 +142,7 @@ function TablaServidoresSancionados({ classes, info, verDetalle, handleChangeRow
         </Grid>
       </Grid>
     </div>
-  );
+  )
 }
 
-export default withStyles(styles)(TablaServidoresSancionados);
+export default withStyles(styles)(TablaServidoresSancionados)
