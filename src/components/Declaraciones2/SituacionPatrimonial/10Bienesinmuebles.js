@@ -29,7 +29,9 @@ function BienInmuble(props) {
       <BoxAccordion key={'inm-' + idx}>
         <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
           <Typography className={exp.heading}>
-            <strong>TIPO DE INMUEBLE: {inm.tipoInmueble.valor}</strong>
+            <strong>
+              TIPO DE INMUEBLE: {inm.tipoInmueble.valor} ({inm.tipoOperacion.replace('_', ' ')})
+            </strong>
           </Typography>
         </BoxAccordionSummary>
         <BoxAccordionDetails>
@@ -97,12 +99,11 @@ function BienInmuble(props) {
               <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
             </Grid>
 
-            {inm.motivoBaja && (
-              <Grid item xs={12} md={4}>
-                <Typography className={classes.cardTitle}>EN CASO DE BAJA DEL INMUEBLE INCLUIR MOTIVO</Typography>
-                <Typography className={classes.card}>{inm.motivoBaja.valor}</Typography>
-              </Grid>
-            )}
+            <Grid item xs={12} md={12}>
+              <Typography className={classes.cardTitle}>EN CASO DE BAJA DEL INMUEBLE INCLUIR MOTIVO</Typography>
+              <Typography className={classes.card}>{inm.motivoBaja?.valor}</Typography>
+            </Grid>
+
             <Divider />
 
             {inm.transmisor && <Transmisor transmisor={inm.transmisor} />}

@@ -27,7 +27,9 @@ function BienMueble(props) {
       <BoxAccordion key={'veh-' + idx}>
         <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
           <Typography className={exp.heading}>
-            <strong>TIPO DEL BIEN: {obj.tipoBien?.valor}</strong>
+            <strong>
+              TIPO DEL BIEN: {obj.tipoBien?.valor} ({obj.tipoOperacion.replace('_', ' ')})
+            </strong>
           </Typography>
         </BoxAccordionSummary>
         <BoxAccordionDetails>
@@ -70,12 +72,11 @@ function BienMueble(props) {
               <Typography className={classes.card}>{obj.fechaAdquisicion}</Typography>
             </Grid>
 
-            {obj.motivoBaja && (
-              <Grid item xs={12} md={4}>
-                <Typography className={classes.cardTitle}>EN CASO DE BAJA DEL MUEBLE INCLUIR MOTIVO:</Typography>
-                <Typography className={classes.card}>{obj.motivoBaja.valor}</Typography>
-              </Grid>
-            )}
+            <Grid item xs={12} md={12}>
+              <Typography className={classes.cardTitle}>EN CASO DE BAJA DEL MUEBLE INCLUIR MOTIVO:</Typography>
+              <Typography className={classes.card}>{obj.motivoBaja?.valor}</Typography>
+            </Grid>
+
             <Divider />
 
             {obj.transmisor && <Transmisor transmisor={obj.transmisor} />}
