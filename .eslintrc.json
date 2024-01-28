@@ -8,7 +8,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "react-hooks"],
+  "plugins": ["react"],
   "rules": {
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
