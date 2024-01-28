@@ -1,4 +1,3 @@
-import React from 'react'
 import { Grid, Box, Paper } from '@mui/material'
 import withStyles from '@mui/styles/withStyles'
 import { Link } from 'react-router-dom'

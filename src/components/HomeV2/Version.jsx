@@ -3,7 +3,7 @@ import withStyles from '@mui/styles/withStyles'
 import { Typography } from '@mui/material'
 import { UserContext } from '../Login/UserContext'
 
-const styles = theme => ({
+const styles = () => ({
   root: {
     backgroundColor: '#ebe9f9',
     padding: '0px 12px'

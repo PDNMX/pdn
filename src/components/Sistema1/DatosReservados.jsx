@@ -1,5 +1,4 @@
-import React from 'react'
-import { Grid, Typography, Paper } from '@mui/material'
+import { Grid, Typography } from '@mui/material'
 
 import makeStyles from '@mui/styles/makeStyles'
 

@@ -1,4 +1,3 @@
-import React from 'react'
 import { Grid, Typography } from '@mui/material'
 import { withStyles } from '@mui/styles'
 import SysCard from './SysCard'

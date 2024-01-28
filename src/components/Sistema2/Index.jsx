@@ -7,13 +7,12 @@ import Dashboard from './Dashboard/Dashboard'
 import BuscadorParticularesSancionados from '../Sistema3/Particulares/BuscadorParticularesSancionados'
 import img1 from '../../assets/rediseno/svg_iconos_azul/SVG/s2_01.svg'
 import img2 from '../../assets/rediseno/svg_iconos_azul/SVG/s2_03.svg'
-import img3 from '../../assets/rediseno/svg_iconos_azul/SVG/s2_02.svg'
 import pdnRoutes from '../../routes/index'
 
 import { ThemeProvider } from '@mui/material/styles'
 import ThemeV2 from '../../ThemeV2'
 
-import ReactGA from 'react-ga4'
+//import ReactGA from 'react-ga4'
 
 const styles = theme => ({
   root: {

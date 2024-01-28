@@ -94,7 +94,7 @@ export function ResultadosS3p (props) {
   /* const [providersList, setProvidersList] = React.useState([]); */
   const [pagination, setPagination] = React.useState(initialPagination)
   const [filter, setFilter] = React.useState(initialFilter)
-  const [sort, setSort] = React.useState(initialSort)
+  const [sort] = React.useState(initialSort)
   const [view, setView] = React.useState(0)
 
   const [fixpaginador, setFixpaginador] = React.useState(false)
@@ -148,7 +148,7 @@ export function ResultadosS3p (props) {
         setError(false)
         setView(1)
         setFixpaginador(false)
-      }).catch(err => {
+      }).catch(() => {
         setError(true)
         setLoading(false)
       })
@@ -217,7 +217,7 @@ export function ResultadosS3p (props) {
         setError(false)
         setView(2)
         setFixpaginador(false)
-      }).catch(err => {
+      }).catch(() => {
         setLoading(false)
         setError(true)
       })

@@ -1,4 +1,3 @@
-import React from 'react'
 import { withStyles } from '@mui/styles'
 import PropTypes from 'prop-types'
 import { Typography, Link } from '@mui/material'

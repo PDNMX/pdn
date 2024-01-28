@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Grid,
   LinearProgress,
@@ -52,7 +51,7 @@ const BorderLinearProgress = withStyles({
   },
 })(LinearProgress);
 
-export const getMoneda = (valor, moneda) => {
+export const getMoneda = (valor) => {
   return new Intl.NumberFormat("es-MX", {
     style: "currency",
     currency: "MXN",
@@ -84,7 +83,7 @@ export const getMorales = (elements) => {
 
 /** ************ CSS *******************/
 /** ************ Expansion *******************/
-export const sumary = makeStyles((theme) => ({
+export const sumary = makeStyles(() => ({
   root: {
     backgroundColor: "#83dfff",
     textTransform: "uppercase",

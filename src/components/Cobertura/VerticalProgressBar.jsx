@@ -2,7 +2,7 @@ import React from 'react'
 import withStyles from '@mui/styles/withStyles'
 import { v4 as uuidv4 } from 'uuid'
 
-const styles = theme => ({
+const styles = () => ({
   emptySpace: {
     background: '#eae1ea'// theme.palette.background.opaque
   }

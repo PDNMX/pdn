@@ -1,6 +1,5 @@
 import ButtonPDN from '../Compartidos/ButtonPDN'
 import CloudDownloadIcon from '@mui/icons-material/CloudDownload'
-import React from 'react'
 
 function DownloadItem ({ item }) {
   const download = () => {

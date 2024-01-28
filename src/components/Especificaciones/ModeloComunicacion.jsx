@@ -1,4 +1,3 @@
-import React from 'react'
 import Diagrama from '../../assets/diagrama_comunicacion_v1.1.svg'
 import { Typography } from '@mui/material'
 import Grid from '@mui/material/Grid'

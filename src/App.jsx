@@ -22,7 +22,7 @@ const p404 = () => {
   return <P404 />
 }
 
-const App = props => {
+const App = () => {
   const [user, setUser] = React.useState({
     loggedIn: false,
     nombres: 'No autenticado'

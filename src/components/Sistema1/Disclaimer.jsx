@@ -1,4 +1,3 @@
-import React from 'react'
 import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Paper, Link } from '@mui/material'
 import makeStyles from '@mui/styles/makeStyles'
 import { Link as RouterLink } from 'react-router-dom'

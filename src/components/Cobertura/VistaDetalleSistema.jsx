@@ -1,4 +1,3 @@
-import React from 'react'
 import withStyles from '@mui/styles/withStyles'
 import { Box, Paper, Typography } from '@mui/material'
 import VerticalProgressBar from './VerticalProgressBar'

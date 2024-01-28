@@ -10,7 +10,7 @@ const aux = () => axios({
 
 const TotalInstituciones = () => {
   const [data, setData] = useState({})
-  const [error, setError] = useState(false)
+  //const [error, setError] = useState(false)
 
   React.useEffect(() => {
     aux().then(res => {
@@ -20,7 +20,7 @@ const TotalInstituciones = () => {
       })
     }).catch(error => {
       console.error(error)
-      setError(true)
+      //setError(true)
     })
   }, [])
 

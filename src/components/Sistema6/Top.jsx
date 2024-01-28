@@ -6,7 +6,7 @@ import NivoBarSuppliers from './Charts/NivoBarSuppliers'
 import axios from 'axios'
 import Grid from '@mui/material/Grid'
 
-const styles = theme => ({
+const styles = () => ({
   root: {
     flexGrow: 1
   }
@@ -29,7 +29,7 @@ const Top = props => {
     const supplier_id = dataSupplier
 
     const _buyers = () => axios({
-      url: process.env.REACT_APP_S6_BACKEND + '/api/v1/top/10/buyers',
+      url: process.env.VITE_S6_BACKEND + '/api/v1/top/10/buyers',
       params: {
         supplier_id
       },
@@ -38,7 +38,7 @@ const Top = props => {
     })
 
     const _suppliers = () => axios({
-      url: process.env.REACT_APP_S6_BACKEND + '/api/v1/top/10/suppliers',
+      url: process.env.VITE_S6_BACKEND + '/api/v1/top/10/suppliers',
       params: {
         supplier_id
       },

@@ -355,7 +355,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                 type='reset'
                 variant='contained'
                 color='primary'
-                onClick={e => {
+                onClick={() => {
                   cleanForm()
                 }}
               >
@@ -365,7 +365,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                 type='submit'
                 variant='contained'
                 color='primary'
-                onClick={e => {
+                onClick={() => {
                   handlerFind()
                   ReactGA.event({ category: 'busqueda-s1', action: 'click' })
                 }}

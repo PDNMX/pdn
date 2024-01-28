@@ -1,7 +1,6 @@
-import React from 'react'
 import Typography from '@mui/material/Typography'
 
-const Disclaimer = (props) => {
+const Disclaimer = () => {
   return (
     <Typography>
       Consulta las dudas más frecuentes sobre el desarrollo y construcción de la

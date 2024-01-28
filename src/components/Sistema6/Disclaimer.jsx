@@ -1,9 +1,8 @@
-import React from 'react'
 import Typography from '@mui/material/Typography'
 import withStyles from '@mui/styles/withStyles'
 import Link from '@mui/material/Link'
 
-const styles = theme => ({
+const styles = () => ({
   root: {
     flexGrow: 1,
     paddingBottom: 0,

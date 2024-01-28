@@ -1,4 +1,3 @@
-import React from 'react'
 import { withStyles } from '@mui/styles'
 import { Box, Paper, Divider, Grid, Tooltip, Typography, Button } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'

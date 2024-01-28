@@ -1,4 +1,3 @@
-import React from "react";
 import makeStyles from "@mui/styles/makeStyles";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";

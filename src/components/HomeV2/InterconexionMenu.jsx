@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import withStyles from '@mui/styles/withStyles'
 import { Typography, Link } from '@mui/material'
 import { Link as RouterLink } from 'react-router-dom'
@@ -57,7 +57,7 @@ const InterconexionMenu = props => {
     }
   }, [])
 
-  const toggle = (e) => {
+  const toggle = () => {
     props.toogle()
   }
 

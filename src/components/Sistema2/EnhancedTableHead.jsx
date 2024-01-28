@@ -1,4 +1,3 @@
-import React from 'react'
 import { TableHead, TableRow, TableCell, Typography } from '@mui/material'
 import { withStyles } from '@mui/styles'
 

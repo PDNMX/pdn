@@ -77,7 +77,7 @@ export function InstitucionesRealizaronContrataciones () {
             })
             setOptions([...sug])
           })
-          .catch((err) => {
+          .catch(() => {
             // setError(true);
           })
       }

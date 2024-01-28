@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { Typography, Step, Button, Stepper, StepLabel, CardActionArea } from '@mui/material/'
+import { useState, useEffect } from 'react'
+import { Typography, Step, Stepper, StepLabel, CardActionArea } from '@mui/material/'
 import { makeStyles } from '@mui/styles'
 import { useForm, Controller, FormProvider, useFormContext } from 'react-hook-form'
 
@@ -154,7 +154,7 @@ function FiltrosBusqueda (props) {
   }
 }
 
-const LinaerStepper = ({ stateChanger, ...rest }) => {
+const LinaerStepper = ({ stateChanger }) => {
   const classes = useStyles()
   const methods = useForm({
     defaultValues
@@ -229,7 +229,7 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
                     >
                       <CardActionArea
                         value={opcion.value}
-                        onClick={(e) => {
+                        onClick={() => {
                           setName(opcion.value)
                           stateChanger(opcion.label)
                           handleNext()
@@ -275,7 +275,7 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
     setActiveStep(0)
   }
 
-  const ColorlibStepIconRoot = styled('div')(({ theme, ownerState }) => ({
+  const ColorlibStepIconRoot = styled('div')(({ ownerState }) => ({
     backgroundColor: '#7f5277',
     zIndex: 1,
     color: '#fff',

@@ -166,7 +166,7 @@ function BusquedaParticular ({ classes }) {
         })
         setInstitutionsList(instituciconesLista)
         setFilter({ ...filter, institucionDependencia: 'any' })
-      }).catch(err => {
+      }).catch(() => {
         setError(true)
       })
   }
@@ -187,7 +187,7 @@ function BusquedaParticular ({ classes }) {
         })
         setProvidersList(sug)
         setProvider('any')
-      }).catch(err => {
+      }).catch(() => {
         setError(true)
       })
   }
@@ -231,7 +231,7 @@ function BusquedaParticular ({ classes }) {
         setError(false)
         setView(1)
         setFixpaginador(false)
-      }).catch(err => {
+      }).catch(() => {
         setError(true)
         setLoading(false)
       })
@@ -280,7 +280,7 @@ function BusquedaParticular ({ classes }) {
         setError(false)
         setView(2)
         setFixpaginador(false)
-      }).catch(err => {
+      }).catch(()=> {
         setLoading(false)
         setError(true)
       })

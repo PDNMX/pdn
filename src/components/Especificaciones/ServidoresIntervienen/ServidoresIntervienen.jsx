@@ -1,4 +1,3 @@
-import React from 'react'
 import { withStyles } from '@mui/styles'
 import { Divider, Grid, Typography, Box, Paper } from '@mui/material'
 import Estandar from './DescripcionEstandar'

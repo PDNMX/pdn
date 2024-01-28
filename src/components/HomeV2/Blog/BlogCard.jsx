@@ -1,4 +1,3 @@
-import React from 'react'
 import { Grid, Link, Typography, Stack } from '@mui/material'
 import { withStyles } from '@mui/styles'
 import ReactGA from 'react-ga4'

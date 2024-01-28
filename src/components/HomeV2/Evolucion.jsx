@@ -1,6 +1,5 @@
-import React from 'react'
 import { withStyles } from '@mui/styles'
-import { Box, Button, Typography } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import DirectionsWalkIcon from '@mui/icons-material/DirectionsWalk'
 import MenuBookIcon from '@mui/icons-material/MenuBook'
 import logo from '../../assets/ico-evolucion.svg'

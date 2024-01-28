@@ -91,8 +91,8 @@ export function ResultadosS3s (props) {
   const [selectedItem, setSelectedItem] = React.useState(null)
   const [provider, setProvider] = React.useState('any')
   const [pagination, setPagination] = React.useState(initialPagination)
-  const [filter, setFilter] = React.useState(initialFilter)
-  const [sort, setSort] = React.useState(initialSort)
+  const [filter] = React.useState(initialFilter)
+  const [sort] = React.useState(initialSort)
   const [view, setView] = React.useState(0)
 
   const [fixpaginador, setFixpaginador] = React.useState(false)
@@ -159,7 +159,7 @@ export function ResultadosS3s (props) {
         setView(1)
         setFixpaginador(false)
       })
-      .catch((err) => {
+      .catch(() => {
         setError(true)
         setLoading(false)
       })
@@ -222,7 +222,7 @@ export function ResultadosS3s (props) {
         setView(2)
         setFixpaginador(false)
       })
-      .catch((err) => {
+      .catch(() => {
         setLoading(false)
         setError(true)
       })

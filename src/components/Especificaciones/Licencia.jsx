@@ -1,4 +1,3 @@
-import React from 'react'
 import withStyles from '@mui/styles/withStyles'
 import { Typography } from '@mui/material'
 import Link from '@mui/material/Link'

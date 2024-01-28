@@ -58,7 +58,7 @@ export function PersonasServidorasPublicasParticipanEnContrataciones () {
             })
             setOptions([...sug])
           })
-          .catch((err) => {
+          .catch(() => {
             // setError(true);
           })
       }

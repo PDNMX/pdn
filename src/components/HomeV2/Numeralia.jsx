@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import withStyles from '@mui/styles/withStyles'
 import { Paper, Typography, Grid } from '@mui/material'
 import CountUp from 'react-countup'

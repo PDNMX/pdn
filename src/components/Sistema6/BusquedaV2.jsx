@@ -6,7 +6,7 @@ import axios from 'axios'
 import SearchControls from './SearchControls'
 import Box from '@mui/material/Box'
 
-const styles = theme => ({
+const styles = () => ({
   root: {
     flexGrow: 1
   }

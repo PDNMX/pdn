@@ -1,4 +1,3 @@
-import React from 'react'
 import { Paper, Box, Divider, Grid, Typography } from '@mui/material'
 import withStyles from '@mui/styles/withStyles'
 import Intro from './Intro'

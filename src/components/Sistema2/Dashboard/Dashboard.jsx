@@ -1,4 +1,3 @@
-import React from 'react'
 import { withStyles } from '@mui/styles'
 import { Paper, Grid } from '@mui/material'
 /* import Ejercicio from './Ejercicio';

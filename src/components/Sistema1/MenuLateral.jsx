@@ -1,4 +1,3 @@
-import React from 'react'
 import MenuList from '@mui/material/MenuList'
 import MenuItem from '@mui/material/MenuItem'
 import makeStyles from '@mui/styles/makeStyles'

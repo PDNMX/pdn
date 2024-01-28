@@ -1,8 +1,8 @@
 // PANTALLA DE BUSQUEDASERVIDOR, CON SELECT PARA SORT
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import withStyles from '@mui/styles/withStyles'
 import PropTypes from 'prop-types'
-import { Typography, Grid, Button, Modal, CircularProgress } from '@mui/material'
+import { Typography, Grid, Modal, CircularProgress } from '@mui/material'
 import MensajeErrorDatos from '../../Mensajes/MensajeErrorDatos'
 import Previos from '../../Compartidos/Previos'
 import TablaServidoresSancionados from './TablaServidoresSancionados'
@@ -148,7 +148,6 @@ function BusquedaServidor ({ classes }) {
     setLoading(true)
     loadProviders(query)
     loadInstituciones(query)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const handleCleanAll = () => {

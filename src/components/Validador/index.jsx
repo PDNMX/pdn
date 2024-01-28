@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
@@ -52,7 +52,7 @@ class Validador extends Component {
     results: true
   }
 
-  _handleResults = (results, errorParse) => {
+  _handleResults = (results) => {
     this.setState({ results, usedForm: true })
     // console.log(results)
   }

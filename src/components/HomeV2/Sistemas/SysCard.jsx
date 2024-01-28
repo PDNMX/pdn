@@ -1,4 +1,3 @@
-import React from 'react'
 import { Typography, Grid, CardActionArea } from '@mui/material'
 import { Link as RouterLink } from 'react-router-dom'
 import { withStyles } from '@mui/styles'

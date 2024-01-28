@@ -1,4 +1,3 @@
-import React from 'react'
 import { Typography, Grid, Paper, Box } from '@mui/material'
 import withStyles from '@mui/styles/withStyles'
 // import by from '../../assets/about/by.svg';

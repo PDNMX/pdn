@@ -1,10 +1,9 @@
-import React from 'react'
 import { Grid } from '@mui/material'
 
 import Mercado from './Mercado'
 import BlogComponent from '../Blog/BlogComponent'
 
-const Cards = props => {
+const Cards = () => {
   return (
     <Grid container direction='row' justifyContent='space-evenly' alignItems='stretch'>
       <Grid item>

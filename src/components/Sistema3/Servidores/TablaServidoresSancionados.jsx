@@ -1,4 +1,3 @@
-import React from 'react'
 import withStyles from '@mui/styles/withStyles'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'

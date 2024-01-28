@@ -1,4 +1,3 @@
-import React from 'react'
 import { withStyles } from '@mui/styles'
 import { Grid, Typography } from '@mui/material'
 import IconProblem from '@mui/icons-material/ReportProblem'

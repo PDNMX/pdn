@@ -4,7 +4,7 @@
   "version": "0.5.0",
   "type": "module",
   "scripts": {
-    "dev": "rsbuild dev --open",
+    "dev": "rsbuild dev",
     "build": "rsbuild build",
     "preview": "rsbuild preview"
   },

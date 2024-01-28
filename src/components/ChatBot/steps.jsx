@@ -35,7 +35,7 @@ const steps = [
   },
   {
     id: 'goTo',
-    message: ({ previousValue, steps }) => GoToPage(previousValue)
+    message: ({ previousValue }) => GoToPage(previousValue)
   },
   {
     id: 'menuConexion',

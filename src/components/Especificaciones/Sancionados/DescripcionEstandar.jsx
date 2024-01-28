@@ -1,4 +1,3 @@
-import React from 'react'
 import { Typography } from '@mui/material'
 import ButtonPDN from '../../Compartidos/ButtonPDN'
 import withStyles from '@mui/styles/withStyles'

@@ -1,4 +1,3 @@
-import React from 'react'
 import withStyles from '@mui/styles/withStyles'
 import ExpansionPanels from './ExpansionPanels'
 import Disclaimer from './Disclaimer'
@@ -10,7 +9,7 @@ const styles = (theme) => ({
   root: {
     flexGrow: 1,
     backgroundColor: theme.palette.primary.main,
-    backgroundImage: `url(${bgimg})`,
+    /* backgroundImage: `url(${bgimg})`, */
     backgroundRepeat: 'repeat',
     backgroundPosition: 'fixed',
     color: '#f2f2f2'

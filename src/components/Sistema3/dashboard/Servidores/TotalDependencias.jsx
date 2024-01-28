@@ -10,7 +10,7 @@ const aux = () => axios({
 
 const TotalDependencias = () => {
   const [data, setData] = useState({})
-  const [error, setError] = useState(false)
+  //const [error, setError] = useState(false)
 
   React.useEffect(() => {
     aux().then(res => {
@@ -21,7 +21,7 @@ const TotalDependencias = () => {
     })
       .catch(error => {
         console.error(error)
-        setError(true)
+        //setError(true)
       })
   }, [])
 

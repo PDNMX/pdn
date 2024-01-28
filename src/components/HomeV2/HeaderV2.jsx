@@ -1,12 +1,9 @@
-import React from 'react'
 import { withStyles } from '@mui/styles'
 import { Breadcrumbs, Typography, Link } from '@mui/material'
 import Grid from '@mui/material/Grid'
 import { Link as RouterLink, useParams } from 'react-router-dom'
 import HomeIcon from '@mui/icons-material/Home'
 import GrainIcon from '@mui/icons-material/Grain'
-import { useTheme } from '@emotion/react'
-import useMediaQuery from '@mui/material/useMediaQuery'
 import estados from '../Cobertura/estados.json'
 // import ReactGA from "react-ga4";
 
@@ -47,14 +44,14 @@ const styles = (theme) => ({
   }
 })
 
-function useIsWidthUp (breakpoint) {
+/* function useIsWidthUp (breakpoint) {
   const theme = useTheme()
   return useMediaQuery(theme.breakpoints.up(breakpoint))
-}
+} */
 
 function HeaderV2 (props) {
   const { classes, section } = props
-  const isXsUp = useIsWidthUp('md')
+  //const isXsUp = useIsWidthUp('md')
   const { id_estado } = useParams()
   return (
     <div className={classes.root}>

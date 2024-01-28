@@ -1,7 +1,6 @@
 import * as React from 'react'
 import makeStyles from '@mui/styles/makeStyles'
 import PropTypes from 'prop-types'
-import Button from '@mui/material/Button'
 import { styled } from '@mui/material/styles'
 import Dialog from '@mui/material/Dialog'
 import DialogTitle from '@mui/material/DialogTitle'

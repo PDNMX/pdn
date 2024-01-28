@@ -1,4 +1,3 @@
-import React from 'react'
 import { Grid, Box, Paper, Typography } from '@mui/material'
 import { withStyles } from '@mui/styles'
 import HeaderV2 from '../HomeV2/HeaderV2'

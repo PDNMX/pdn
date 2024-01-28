@@ -55,7 +55,7 @@ export function EmpresasSancionadaPorCorrupcion () {
             // console.log(data.data)
             setOptions([...sug])
           })
-          .catch((err) => {
+          .catch(() => {
             // setError(true);
           })
       }

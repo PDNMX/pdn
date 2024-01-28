@@ -11,7 +11,7 @@ function useIsWidthUp (breakpoint) {
   return useMediaQuery(theme.breakpoints.up(breakpoint))
 }
 
-const Banner = (props) => {
+const Banner = () => {
   const isXsUp = useIsWidthUp('xl')
   const systems = pdnRoutes.filter(route => route.type === 'system')
 

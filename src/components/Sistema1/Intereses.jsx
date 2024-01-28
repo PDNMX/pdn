@@ -1,4 +1,3 @@
-import React from 'react'
 import Paper from '@mui/material/Paper'
 import makeStyles from '@mui/styles/makeStyles'
 import Grid from '@mui/material/Grid'

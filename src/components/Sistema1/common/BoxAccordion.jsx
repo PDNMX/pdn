@@ -1,4 +1,3 @@
-import React from 'react'
 import { Accordion, AccordionSummary, AccordionDetails } from '@mui/material'
 
 import style from '../style'

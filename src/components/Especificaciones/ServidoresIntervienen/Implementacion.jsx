@@ -1,4 +1,3 @@
-import React from 'react'
 import { withStyles } from '@mui/styles'
 import { Typography, Link } from '@mui/material'
 import Grid from '@mui/material/Grid'

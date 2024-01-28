@@ -130,15 +130,15 @@ const Cifras = props => {
     })
   }, [dataSupplier])
 
-  const porcentaje = (amount, total) => {
+  /* const porcentaje = (amount, total) => {
     const p = (amount * 100 / total).toFixed(3)
     return `${p}%`
-  }
+  } */
 
   const handleSelectDonutData = p => {
     // console.log(p)
     const { open, direct, selective, other } = p === 'amounts' ? state.amounts : state.counts
-    const total = p === 'amounts' ? state.amounts.total : state.contrataciones
+    //const total = p === 'amounts' ? state.amounts.total : state.contrataciones
 
     setState(s => ({
       ...s,
