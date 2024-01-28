@@ -1,7 +1,6 @@
 import React from 'react'
 import { Typography, Grid, Paper, Box } from '@mui/material'
 import { withStyles } from '@mui/styles'
-import bgimg from '../../assets/rediseno/fondo_cruces_dark.png'
 import HeaderV2 from '../HomeV2/HeaderV2'
 import pdnRoutes from '../../routes'
 import erizoConstructor from '../../assets/rediseno/ico-espin-construction.svg'

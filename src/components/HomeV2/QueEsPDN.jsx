@@ -2,7 +2,7 @@ import React from 'react'
 import withStyles from '@mui/styles/withStyles'
 import { Typography, Grid, Stack } from '@mui/material'
 // import { Link } from "react-router-dom";
-import BuscadorModal from './Buscador/BotonPrincipal'
+import BuscadorModal from './Asistente/BotonPrincipal'
 
 /* import bgPDN from "../../assets/rediseno2023/imgs/fondos/fondo-mapa.svg"; */
 import lgoSNA from '../../assets/rediseno2023/imgs/iconos/logotipos/logo-sna.svg'

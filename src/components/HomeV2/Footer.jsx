@@ -2,16 +2,13 @@ import React from 'react'
 import { Grid } from '@mui/material'
 import { useTheme } from '@emotion/react'
 import useMediaQuery from '@mui/material/useMediaQuery'
-/* import LeftFooter from "./leftFooter";
-import CenterFooter from "./centerFooter";
-import RightFooter from "./rightFooter"; */
-/* import MobileFooter from "./mobileFooter"; */
-import CreativeIcon from '../IconCreativeCommons'
-import { Link } from 'react-router-dom'
 
-import logoSESNA from '../../../assets/rediseno2023/imgs/iconos/logotipos/logo-sesna.svg'
-import logoPDN from '../../../assets/rediseno2023/imgs/iconos/logotipos/logo-pdn.svg'
-import logoSNA from '../../../assets/rediseno2023/imgs/iconos/logotipos/logo-sna.svg'
+import CreativeIcon from './IconCreativeCommons'
+import { Link } from "react-router-dom";
+
+import logoSESNA from '../../assets/rediseno2023/imgs/iconos/logotipos/logo-sesna.svg'
+import logoPDN from '../../assets/rediseno2023/imgs/iconos/logotipos/logo-pdn.svg'
+import logoSNA from '../../assets/rediseno2023/imgs/iconos/logotipos/logo-sna.svg'
 import Divider from '@mui/material/Divider'
 import TwitterIcon from '@mui/icons-material/Twitter'
 import FacebookIcon from '@mui/icons-material/Facebook'
@@ -30,13 +27,6 @@ const Footer = () => {
   return (
     <>
       <div className='footerBorderTop'>
-        {/* <Grid container className="footer" direction="row">
-      <Grid item xs={3}>
-        <LeftFooter />
-      </Grid>
-      <CenterFooter />
-      <RightFooter />
-    </Grid> */}
         <Grid
           container
           direction='row'
