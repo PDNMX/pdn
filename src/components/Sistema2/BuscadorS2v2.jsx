@@ -253,7 +253,7 @@ const BuscadorS2 = props => {
 
   const loadEntities = async () => {
     const options = {
-      url: import.meta.env.VITE_S2_BACKEND + '/api/v1/entities',
+      url: process.env.REACT_APP_S2_BACKEND + '/api/v1/entities',
       json: true,
       method: 'POST',
       data: {}
@@ -310,7 +310,7 @@ const BuscadorS2 = props => {
 
     const options = {
       method: 'POST',
-      url: import.meta.env.VITE_S2_BACKEND + '/api/v1/summary',
+      url: process.env.REACT_APP_S2_BACKEND + '/api/v1/summary',
       json: true,
       data: filtros
     }
@@ -361,7 +361,7 @@ const BuscadorS2 = props => {
 
     const options = {
       method: 'POST',
-      url: import.meta.env.VITE_S2_BACKEND + '/api/v1/search',
+      url: process.env.REACT_APP_S2_BACKEND + '/api/v1/search',
       json: true,
       data: {
         ...filtros,
@@ -553,7 +553,7 @@ const BuscadorS2 = props => {
       </Paper>
 
       <Box>
-        <Descarga url={import.meta.env.VITE_BULK_S2} tipoGA='bulk-s2' />
+        <Descarga url={process.env.REACT_APP_BULK_S2} tipoGA='bulk-s2' />
       </Box>
 
       {state.loading &&

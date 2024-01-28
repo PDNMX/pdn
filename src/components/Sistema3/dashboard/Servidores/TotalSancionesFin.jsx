@@ -3,7 +3,7 @@ import GeneralData from '../../../Compartidos/Dashboards/GeneralData'
 import axios from 'axios'
 
 const aux = () => axios({
-  url: import.meta.env.VITE_S3S_BACKEND + '/charts/getTotalSancionesFin',
+  url: process.env.REACT_APP_S3S_BACKEND + '/charts/getTotalSancionesFin',
   json: true,
   method: 'GET'
 })

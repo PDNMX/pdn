@@ -14,7 +14,7 @@ import makeStyles from '@mui/styles/makeStyles'
 import ClearIcon from '@mui/icons-material/Clear'
 import { IconButton } from '@mui/material'
 
-const glosarioData = import.meta.env.VITE_GLOSARIO
+const glosarioData = process.env.REACT_APP_GLOSARIO
 
 const useStyles = makeStyles((theme) => ({
   drawerPaper: {

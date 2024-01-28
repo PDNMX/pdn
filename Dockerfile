@@ -5,9 +5,10 @@ MAINTAINER Sergio Rodríguez <sergio.rdzsg@gmail.com>
 ADD . /pdn-frontend
 WORKDIR /pdn-frontend
 
-RUN npm install --force \
-&& npm cache clean --force 
+RUN npm i -g yarn --force \
+&& yarn install \
+&& yarn build \
+&& yarn global add serve \
+&& yarn cache clean
 
-EXPOSE 5173
-
-CMD ["npm", "run", "dev", "--", "--host"]
+CMD ["serve", "-s", "dist", "-l", "5000"]

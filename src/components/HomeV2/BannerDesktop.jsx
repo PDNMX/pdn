@@ -128,7 +128,7 @@ const BannerDesktop = (props) => {
 
                 <li className={classes.opc}>
                   <Link
-                    href={import.meta.env.VITE_LINK_MDA}
+                    href={process.env.REACT_APP_LINK_MDA}
                     onClick={() => ReactGA.pageview('/mda')}
                   >
                     <img src={MDA} alt='Mercado Digital Anticorrupción' />

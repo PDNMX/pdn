@@ -59,7 +59,7 @@ export function InstitucionesRealizaronContrataciones () {
       if (active) {
         const sug = []
         const options = {
-          url: import.meta.env.VITE_S6_BACKEND + '/api/v1/buyers',
+          url: process.env.REACT_APP_S6_BACKEND + '/api/v1/buyers',
           params: {
             supplier_id: supplier
           },

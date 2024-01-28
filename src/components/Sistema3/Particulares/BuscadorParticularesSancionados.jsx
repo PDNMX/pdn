@@ -87,7 +87,7 @@ function BuscadorParticularesSancionados ({ classes }) {
       {/* DESCARGA */}
       <Grid container spacing={0} justifyContent='center'>
         <Grid item xs={12} className={classes.itemD}>
-          <Descarga url={import.meta.env.VITE_BULK_S3_PARTICULARES} tipoGA='bulk-s3P' />
+          <Descarga url={process.env.REACT_APP_BULK_S3_PARTICULARES} tipoGA='bulk-s3P' />
         </Grid>
       </Grid>
     </div>

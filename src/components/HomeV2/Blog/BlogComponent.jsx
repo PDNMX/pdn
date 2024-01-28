@@ -25,10 +25,10 @@ const BlogComponent = (props) => {
 
   React.useEffect(() => {
     const config = {
-      url: import.meta.env.VITE_BLOG_API_URL,
+      url: process.env.REACT_APP_BLOG_API_URL,
       method: 'GET',
       params: {
-        key: import.meta.env.VITE_BLOG_API_KEY,
+        key: process.env.REACT_APP_BLOG_API_KEY,
         limit: 4
       },
       json: true

@@ -13,7 +13,7 @@
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-uses-react": "off",
-    "no-unused-vars": "off"
+    "no-unused-vars": "of"
   },
   "settings": { "react": { "version": "detect" } }
 }

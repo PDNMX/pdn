@@ -104,7 +104,7 @@ export function ResultadosS6v2 (props) {
     // console.log(body);
     try {
       await axios({
-        url: import.meta.env.VITE_S6_BACKEND + '/api/v1/search',
+        url: process.env.REACT_APP_S6_BACKEND + '/api/v1/search',
         params: {
           supplier_id
         },

@@ -144,7 +144,7 @@ export class ResultadosS1 extends React.Component {
   }
 
   find = (id) => {
-    const url = import.meta.env.VITE_S1_BACKEND + '/search'
+    const url = process.env.REACT_APP_S1_BACKEND + '/search'
     let p = this.state.prov[id]
     /* console.log(p) */
 
@@ -245,7 +245,7 @@ export class ResultadosS1 extends React.Component {
   }
 
   findAll = (providers) => {
-    const url = import.meta.env.VITE_S1_BACKEND + '/search'
+    const url = process.env.REACT_APP_S1_BACKEND + '/search'
     const dataProps = JSON.parse(this.props.data)
     const data = dataProps['psp-declaraciones']
     const requests = providers.map(function (provider) {
@@ -378,7 +378,7 @@ export class ResultadosS1 extends React.Component {
         supplier_name: 'Todos'
       }
     ]
-    const url = import.meta.env.VITE_S1_BACKEND + '/providers'
+    const url = process.env.REACT_APP_S1_BACKEND + '/providers'
 
     axios
       .get(url)

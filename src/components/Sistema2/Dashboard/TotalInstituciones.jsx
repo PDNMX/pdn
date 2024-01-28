@@ -3,7 +3,7 @@ import GeneralData from '../../Compartidos/Dashboards/GeneralData'
 import axios from 'axios'
 
 const aux = () => axios({
-  url: import.meta.env.VITE_S2_BACKEND + '/api/v0/getTotalInstituciones',
+  url: process.env.REACT_APP_S2_BACKEND + '/api/v0/getTotalInstituciones',
   json: true,
   method: 'GET'
 })

@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Muli";
-  src: url("/fonts/Muli-Regular.woff2") format("woff2"), url("/fonts/Muli-Regular.woff") format("woff"), url("/fonts/Muli-Regular.otf") format("opentype");
+  src: url("../../assets/fonts/Muli-Regular.woff2") format("woff2"), url("../../assets/fonts/Muli-Regular.woff") format("woff"), url("../../assets/fonts/Muli-Regular.otf") format("opentype");
   font-display: auto;
   font-style: normal;
   font-weight: 400;
@@ -9,7 +9,6 @@
 
 body {
   margin: 0;
-  /* font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif; */
   font-family: "Muli", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -56,7 +55,7 @@ body {
 }
 
 .motivo-fondo {
-  background: #fff url(/src/assets/rediseno2023/imgs/fondos/motivo_menu-principal.svg) left -13px no-repeat;
+  background: #fff url("../../assets/rediseno2023/imgs/fondos/motivo_menu-principal.svg") left -13px no-repeat;
   min-height: 20px;
   background-size: cover;
 }

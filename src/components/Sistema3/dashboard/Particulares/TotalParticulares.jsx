@@ -3,7 +3,7 @@ import GeneralData from '../../../Compartidos/Dashboards/GeneralData'
 import axios from 'axios'
 
 const aux = () => axios({
-  url: import.meta.env.VITE_S3P_BACKEND + '/charts/getTotalProveedores',
+  url: process.env.REACT_APP_S3P_BACKEND + '/charts/getTotalProveedores',
   json: true,
   method: 'GET'
 })

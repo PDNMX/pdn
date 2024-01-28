@@ -190,7 +190,7 @@ const Index = props => {
 
       <Grid container spacing={0} justifyContent='center'>
         <Grid item xs={12} className={classes.item}>
-          <Descarga url={import.meta.env.VITE_BULK_S6} tipoGA='bulk-s6' />
+          <Descarga url={process.env.REACT_APP_BULK_S6} tipoGA='bulk-s6' />
         </Grid>
       </Grid>
 

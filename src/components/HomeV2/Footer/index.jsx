@@ -86,7 +86,7 @@ const Footer = () => {
                 Interconexión
                   </a>
               </li>
-              <li><a rel='noreferrer' href={import.meta.env.VITE_LINK_MDA}>Mercado Digital Anticorrupción</a>
+              <li><a rel='noreferrer' href={process.env.REACT_APP_LINK_MDA}>Mercado Digital Anticorrupción</a>
               </li>
             </ul>
           </Grid>

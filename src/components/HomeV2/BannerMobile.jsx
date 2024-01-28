@@ -200,7 +200,7 @@ const BannerMobile = props => {
 
             <MenuItem
               className={classes.menuItem} component={Button}
-              href={import.meta.env.VITE_LINK_MDA}
+              href={process.env.REACT_APP_LINK_MDA}
               onClick={() => ReactGA.pageview('/mda')}
             >
               <Typography style={{ width: '100%' }}>MDA</Typography>

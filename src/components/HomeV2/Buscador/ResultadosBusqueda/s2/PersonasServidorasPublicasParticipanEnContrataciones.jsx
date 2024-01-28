@@ -250,7 +250,7 @@ export function ResultadosS2 (props) {
 
     const options = {
       method: 'POST',
-      url: import.meta.env.VITE_S2_BACKEND + '/api/v1/summary',
+      url: process.env.REACT_APP_S2_BACKEND + '/api/v1/summary',
       json: true,
       data: filtros
     }
@@ -302,7 +302,7 @@ export function ResultadosS2 (props) {
 
     const options = {
       method: 'POST',
-      url: import.meta.env.VITE_S2_BACKEND + '/api/v1/search',
+      url: process.env.REACT_APP_S2_BACKEND + '/api/v1/search',
       json: true,
       data: {
         ...filtros,

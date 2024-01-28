@@ -4,10 +4,9 @@
   "version": "0.5.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "dev": "rsbuild dev --open",
+    "build": "rsbuild build",
+    "preview": "rsbuild preview"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -40,6 +39,9 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "@rsbuild/core": "^0.3.9",
+    "@rsbuild/plugin-node-polyfill": "^0.3.9",
+    "@rsbuild/plugin-react": "^0.3.9",
     "@types/react": "^17.0.59",
     "@types/react-dom": "^17.0.20",
     "@vitejs/plugin-react-swc": "^3.4.0",

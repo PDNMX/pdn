@@ -36,7 +36,7 @@ const Busqueda = props => {
     const supplier_id = props.dataSupplier // state.dataSupplier;
 
     const _buyers = () => axios({
-      url: import.meta.env.VITE_S6_BACKEND + '/api/v1/buyers',
+      url: process.env.REACT_APP_S6_BACKEND + '/api/v1/buyers',
       params: {
         supplier_id
       },
@@ -45,7 +45,7 @@ const Busqueda = props => {
     })
 
     const _search = () => axios({
-      url: import.meta.env.VITE_S6_BACKEND + '/api/v1/search',
+      url: process.env.REACT_APP_S6_BACKEND + '/api/v1/search',
       params: {
         supplier_id
       },
@@ -54,7 +54,7 @@ const Busqueda = props => {
     })
 
     const _cycles = () => axios({
-      url: import.meta.env.VITE_S6_BACKEND + '/api/v1/cycles',
+      url: process.env.REACT_APP_S6_BACKEND + '/api/v1/cycles',
       params: {
         supplier_id
       },
@@ -112,7 +112,7 @@ const Busqueda = props => {
 
   const handleChangeDS = async dataSupplier => {
     const _buyers = await axios({
-      url: import.meta.env.VITE_S6_BACKEND + '/api/v1/buyers',
+      url: process.env.REACT_APP_S6_BACKEND + '/api/v1/buyers',
       params: {
         supplier_id: dataSupplier
       },
@@ -121,7 +121,7 @@ const Busqueda = props => {
     })
 
     const _cycles = await axios({
-      url: import.meta.env.VITE_S6_BACKEND + '/api/v1/cycles',
+      url: process.env.REACT_APP_S6_BACKEND + '/api/v1/cycles',
       params: {
         supplier_id: dataSupplier
       },
@@ -293,7 +293,7 @@ const Busqueda = props => {
     // console.log(body);
     try {
       const res = await axios({
-        url: import.meta.env.VITE_S6_BACKEND + '/api/v1/search',
+        url: process.env.REACT_APP_S6_BACKEND + '/api/v1/search',
         params: {
           supplier_id
         },

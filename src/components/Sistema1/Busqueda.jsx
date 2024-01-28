@@ -229,7 +229,7 @@ class Busqueda extends React.Component {
   }
 
   find = id => {
-    const url = import.meta.env.VITE_S1_BACKEND + '/search'
+    const url = process.env.REACT_APP_S1_BACKEND + '/search'
     let p = this.state.prov[id]
 
     if (p.status === 'MANTENIMENT') {
@@ -357,7 +357,7 @@ class Busqueda extends React.Component {
         supplier_name: 'Todos'
       }
     ]
-    const url = import.meta.env.VITE_S1_BACKEND + '/providers'
+    const url = process.env.REACT_APP_S1_BACKEND + '/providers'
 
     axios
       .get(url)
@@ -584,7 +584,7 @@ class Busqueda extends React.Component {
         {/* DESCARGA */}
         <Grid container spacing={0} justifyContent='center'>
           <Grid item xs={12} className={classes.itemD}>
-            <Descarga url={import.meta.env.VITE_S1_BULK} tipoGA='bulk-s1' />
+            <Descarga url={process.env.REACT_APP_S1_BULK} tipoGA='bulk-s1' />
           </Grid>
         </Grid>
       </div>

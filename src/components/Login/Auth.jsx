@@ -8,7 +8,7 @@ const logIn = async (email, password) => {
       password
     },
     withCredentials: true,
-    url: `${import.meta.env.VITE_PDN_AUTH_URL}/login`
+    url: `${process.env.REACT_APP_PDN_AUTH_URL}/login`
   }
 
   try {
@@ -32,7 +32,7 @@ const getUser = async () => {
   const options = {
     method: 'POST',
     withCredentials: true,
-    url: `${import.meta.env.VITE_PDN_AUTH_URL}/user`
+    url: `${process.env.REACT_APP_PDN_AUTH_URL}/user`
   }
 
   try {
@@ -49,7 +49,7 @@ const logOut = async () => {
   const options = {
     method: 'POST',
     withCredentials: true,
-    url: `${import.meta.env.VITE_PDN_AUTH_URL}/logout`
+    url: `${process.env.REACT_APP_PDN_AUTH_URL}/logout`
   }
 
   try {

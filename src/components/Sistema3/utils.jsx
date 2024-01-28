@@ -3,7 +3,7 @@ import axios from 'axios'
 export const getInstitutions = query => {
   return new Promise((resolve, reject) => {
     const options = {
-      url: import.meta.env.VITE_S3S_BACKEND + '/api/v1/entities',
+      url: process.env.REACT_APP_S3S_BACKEND + '/api/v1/entities',
       json: true,
       method: 'post',
       data: {}
@@ -20,7 +20,7 @@ export const getInstitutions = query => {
 export const getProviders = query => {
   return new Promise((resolve, reject) => {
     const options = {
-      url: import.meta.env.VITE_S3S_BACKEND + '/api/v1/getProviders',
+      url: process.env.REACT_APP_S3S_BACKEND + '/api/v1/getProviders',
       json: true,
       method: 'post',
       data: {}
@@ -37,7 +37,7 @@ export const getSummary = query => {
   return new Promise((resolve, reject) => {
     const options = {
       method: 'POST',
-      url: import.meta.env.VITE_S3S_BACKEND + '/api/v1/summary',
+      url: process.env.REACT_APP_S3S_BACKEND + '/api/v1/summary',
       json: true,
       data: query
     }
@@ -52,7 +52,7 @@ export const getDataAPI = query => {
   return new Promise((resolve, reject) => {
     const options = {
       method: 'POST',
-      url: import.meta.env.VITE_S3S_BACKEND + '/api/v1/search',
+      url: process.env.REACT_APP_S3S_BACKEND + '/api/v1/search',
       json: true,
       data: query
     }

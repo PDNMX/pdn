@@ -137,7 +137,7 @@ export function ResultadosS3p (props) {
 
     const options = {
       method: 'POST',
-      url: import.meta.env.VITE_S3P_BACKEND + '/api/v1/summary',
+      url: process.env.REACT_APP_S3P_BACKEND + '/api/v1/summary',
       json: true,
       data: body
     }
@@ -204,7 +204,7 @@ export function ResultadosS3p (props) {
 
     const options = {
       method: 'POST',
-      url: import.meta.env.VITE_S3P_BACKEND + '/api/v1/search',
+      url: process.env.REACT_APP_S3P_BACKEND + '/api/v1/search',
       json: true,
       data: body
     }

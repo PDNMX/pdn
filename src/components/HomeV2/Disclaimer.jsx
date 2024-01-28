@@ -86,7 +86,7 @@ const AlertDialog = props => {
             </Typography>
 
             <Typography paragraph align='justify'>
-              Te invitamos a revisar los <Link component={RouterLink} to='/terminos' className={classes.enlaces}>&quot;Términos y Condiciones de Uso&quot;</Link> y el <Link href='https://drive.google.com/file/d/18Y_bcTXFqwIX0j96efeLchUIBsUFfmZr/view' target='_blank' className={classes.enlaces} rel='noreferrer'>&quot;Aviso de Privacidad&quot;</Link>, así como a dejar tus comentarios sobre las funcionalidades y experiencia de usuario en la sección de <Link href={import.meta.env.VITE_LINK_GOOGLEFORM} target='_blank' className={classes.enlaces} rel='noreferrer'>&quot;Comenta&quot;</Link>.
+              Te invitamos a revisar los <Link component={RouterLink} to='/terminos' className={classes.enlaces}>&quot;Términos y Condiciones de Uso&quot;</Link> y el <Link href='https://drive.google.com/file/d/18Y_bcTXFqwIX0j96efeLchUIBsUFfmZr/view' target='_blank' className={classes.enlaces} rel='noreferrer'>&quot;Aviso de Privacidad&quot;</Link>, así como a dejar tus comentarios sobre las funcionalidades y experiencia de usuario en la sección de <Link href={process.env.REACT_APP_LINK_GOOGLEFORM} target='_blank' className={classes.enlaces} rel='noreferrer'>&quot;Comenta&quot;</Link>.
             </Typography>
 
           </DialogContent>

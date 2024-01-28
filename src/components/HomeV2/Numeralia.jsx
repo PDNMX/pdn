@@ -3,7 +3,7 @@ import withStyles from '@mui/styles/withStyles'
 import { Paper, Typography, Grid } from '@mui/material'
 import CountUp from 'react-countup'
 
-const ligaDatosNumeralia = import.meta.env.VITE_NUMERALIA
+const ligaDatosNumeralia = process.env.REACT_APP_NUMERALIA
 
 const styles = theme => ({
   container: {

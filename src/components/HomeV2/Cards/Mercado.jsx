@@ -54,7 +54,7 @@ const CardMercardo = (props) => {
         <Grid item sm={12} xs={12} pr={{ xs: 0, md: 1 }}>
           <Stack direction='row' justifyContent={{ xs: 'center', md: 'end' }}>
             <ButtonPDN
-              href={import.meta.env.VITE_LINK_MDA}
+              href={process.env.REACT_APP_LINK_MDA}
               onClick={() => ReactGA.pageview('/mda')}
               style={{ color: 'white' }}
             >

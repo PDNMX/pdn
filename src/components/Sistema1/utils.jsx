@@ -26,7 +26,7 @@ const customJSON = (log) => ({
 remote.apply(log, {
   method: "POST",
   format: customJSON,
-  url: import.meta.env.VITE_S1_BACKEND + "/logger",
+  url: process.env.REACT_APP_S1_BACKEND + "/logger",
 });
 
 log.enableAll();

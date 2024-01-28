@@ -151,7 +151,7 @@ function BusquedaParticular ({ classes }) {
   const loadInstitutions = () => {
     const instituciconesLista = []
     const options = {
-      url: import.meta.env.VITE_S3P_BACKEND + '/api/v1/entities',
+      url: process.env.REACT_APP_S3P_BACKEND + '/api/v1/entities',
       json: true,
       method: 'post',
       data: {}
@@ -174,7 +174,7 @@ function BusquedaParticular ({ classes }) {
   const loadProviders = () => {
     const sug = []
     const options = {
-      url: import.meta.env.VITE_S3P_BACKEND + '/api/v1/getProviders',
+      url: process.env.REACT_APP_S3P_BACKEND + '/api/v1/getProviders',
       json: true,
       method: 'post',
       data: { }
@@ -220,7 +220,7 @@ function BusquedaParticular ({ classes }) {
 
     const options = {
       method: 'POST',
-      url: import.meta.env.VITE_S3P_BACKEND + '/api/v1/summary',
+      url: process.env.REACT_APP_S3P_BACKEND + '/api/v1/summary',
       json: true,
       data: body
     }
@@ -267,7 +267,7 @@ function BusquedaParticular ({ classes }) {
 
     const options = {
       method: 'POST',
-      url: import.meta.env.VITE_S3P_BACKEND + '/api/v1/search',
+      url: process.env.REACT_APP_S3P_BACKEND + '/api/v1/search',
       json: true,
       data: body
     }

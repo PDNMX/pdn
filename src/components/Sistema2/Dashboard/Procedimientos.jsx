@@ -127,7 +127,7 @@ const BarTotalsLayer = (props) => {
 }
 
 const aux = () => axios({
-  url: import.meta.env.VITE_S2_BACKEND + '/api/v0/getProcedimientosPeriodo',
+  url: process.env.REACT_APP_S2_BACKEND + '/api/v0/getProcedimientosPeriodo',
   json: true,
   method: 'GET'
 })

@@ -92,7 +92,7 @@ const Cifras = props => {
   React.useEffect(() => {
     const supplier_id = dataSupplier
     axios({
-      url: import.meta.env.VITE_S6_BACKEND + '/api/v1/summary',
+      url: process.env.REACT_APP_S6_BACKEND + '/api/v1/summary',
       params: {
         supplier_id
       },

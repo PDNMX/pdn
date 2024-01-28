@@ -90,7 +90,7 @@ function BuscadorServidoresSancionados (props) {
       {/* DESCARGA */}
       <Grid container spacing={0} justifyContent='center'>
         <Grid item xs={12} className={classes.itemD}>
-          <Descarga url={import.meta.env.VITE_BULK_S3_SERVIDORES} tipoGA='bulk-s3SP' />
+          <Descarga url={process.env.REACT_APP_BULK_S3_SERVIDORES} tipoGA='bulk-s3SP' />
         </Grid>
       </Grid>
     </div>
