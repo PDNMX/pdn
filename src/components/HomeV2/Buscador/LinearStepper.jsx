@@ -239,7 +239,7 @@ const LinaerStepper = ({ stateChanger, ...rest }) => {
                         <CardMedia
                           className={classes.cardMedia}
                           component='img'
-                          image={'/asistente/' + opcion.img}
+                          image={`/img/asistente/${opcion.img}`}
                         />
                         <CardContent>
                           <Typography variant='subtitle2'>

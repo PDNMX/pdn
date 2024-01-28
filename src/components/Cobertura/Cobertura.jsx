@@ -87,7 +87,7 @@ const Cobertura = props => {
                 return (
                   <Box textAlign='center' p={1} m={1} key={i} className={classes.estado}>
                       <Link component={RouterLink} to={e.route} className={classes.link}>
-                  <img src={`../../../src/assets/Cobertura/ico_edos/${e.icon1}`} style={{ width: 100 }} alt='Estado' />
+                  <img src={`/img/cobertura/ico_edos/${e.icon1}`} style={{ width: 100 }} alt='Estado' />
                   <Typography>{e.name}</Typography>
                 </Link>
                     </Box>
@@ -105,7 +105,7 @@ const Cobertura = props => {
                       textAlign='center' p={1} m={1} key={i}
                       className={classes.estado} sx={{ cursor: 'pointer' }} onClick={handleClick}
                     >
-                      <img src={`../../../src/assets/Cobertura/ico_edos/${e.icon1}`} style={{ width: 100 }} alt='Estado' />
+                      <img src={`/img/cobertura/ico_edos/${e.icon1}`} style={{ width: 100 }} alt='Estado' />
                       <Typography>
                   {e.name}
                 </Typography>
