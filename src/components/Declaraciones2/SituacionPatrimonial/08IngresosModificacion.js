@@ -11,6 +11,7 @@ import { ActividadFinanciera, ServiciosProfesionales, EnajenacionBienes, OtrosIn
 import ActividadIndustrial from './08Ingresos/ActividadIndustrial';
 
 import basicModif from './00_basic_modif';
+import AclaracionesObservacions from '../common/AclaracionesObservaciones';
 
 const useStyles = makeStyles(styleSecciones);
 
@@ -80,6 +81,7 @@ const IngresosModificacion = ({ data: info, titulo }) => {
             </Grid>
           </Grid>
         </Paper>
+        <AclaracionesObservacions />
       </Grid>
     </Grid>
   );

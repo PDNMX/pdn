@@ -12,6 +12,7 @@ import styleSecciones from '../styleSecciones';
 
 import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../common/BoxAccordion';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import AclaracionesObservacions from '../common/AclaracionesObservaciones';
 
 const useStyles = makeStyles(styleSecciones);
 
@@ -304,76 +305,75 @@ const ServidorPublicoAnioAnterior = ({ data: info, titulo }) => {
       </Grid>
       {!data.servidorPublicoAnioAnterior && <DatosNoRegistrados />}
       {data.servidorPublicoAnioAnterior && (
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <Paper className={classes.paper}>
-              <Grid container spacing={1}>
-                <Grid item xs={12} md={6} style={{ textAlign: 'center' }}>
-                  <Typography className={classes.cardTitle}>FECHA DE INICIO</Typography>
-                  <Typography className={classes.card}>{data.fechaIngreso}</Typography>
-                </Grid>
-                <Grid item xs={12} md={6} style={{ textAlign: 'center' }}>
-                  <Typography className={classes.cardTitle}>FECHA DE CONCLUSIÓN </Typography>
-                  <Typography className={classes.card}>{data.fechaConclusion}</Typography>
-                </Grid>
-                <Divider />
-                <Grid item xs={12} md={9}>
-                  <Typography className={classes.cardTitle}>I.- REMUNERACIÓN NETA DEL DECLARANTE, RECIBIDA DURANTE EL TIEMPO EN EL QUE SE DESEMPEÑÓ COMO SERVIDOR PÚBLICO EN EL AÑO INMEDIATO ANTERIOR (POR CONCEPTO DE SUELDOS, HONORARIOS, COMPENSACIONES, BONOS, AGUINALDOS Y OTRAS PRESTACIONES) (CANTIDADES NETAS DESPUÉS DE IMPUESTOS)</Typography>
-                </Grid>
-                <Grid item xs={12} md={3}>
-                  <Typography className={classes.card}>
-                    {getMoneda(data.remuneracionNetaCargoPublico.valor)} {data.remuneracionNetaCargoPublico.moneda}
-                  </Typography>
-                </Grid>
-                <Divider />
-                <Grid item xs={12} md={9}>
-                  <Typography className={classes.cardTitle}>II.- OTROS INGRESOS DEL DECLARANTE, RECIBIDOS DURANTE EL TIEMPO EN EL QUE SE DESEMPEÑÓ COMO SERVIDOR PÚBLICO EN EL AÑO INMEDIATO ANTERIOR (SUMA DEL II.1 AL II.5)</Typography>
-                </Grid>
-                <Grid item xs={12} md={3}>
-                  <Typography className={classes.card}>
-                    {getMoneda(data.otrosIngresosTotal.valor)} {data.otrosIngresosTotal.moneda}
-                  </Typography>
-                </Grid>
-                <Grid item xs={12}>
-                  <ActividadIndustrial actividadIndustrialComercialEmpresarial={data.actividadIndustialComercialEmpresarial || data.actividadIndustrialComercialEmpresarial} />
-
-                  <ActividadFinanciera actividadFinanciera={data.actividadFinanciera} />
-
-                  <ServiciosProfesionales serviciosProfesionales={data.serviciosProfesionales} />
-
-                  <EnajenacionBienes enajenacionBienes={data.enajenacionBienes} />
-
-                  <OtrosIngresos otrosIngresos={data.otrosIngresos} />
-                </Grid>
-
-                <Divider />
-                <Grid item xs={12} md={9}>
-                  <Typography className={classes.cardTitle}>A.- INGRESO NETO DEL DECLARANTE, RECIBIDO EN EL AÑO INMEDIATO ANTERIOR (SUMA DEL NUMERAL I Y II)</Typography>
-                </Grid>
-                <Grid item xs={12} md={3}>
-                  <Typography className={classes.card}>
-                    {getMoneda(data.ingresoNetoAnualDeclarante.valor)} {data.ingresoNetoAnualDeclarante.moneda}
-                  </Typography>
-                </Grid>
-
-                <Grid item xs={12} md={9}>
-                  <Typography className={classes.cardTitle}>B.- INGRESO NETO DE LA PAREJA Y/O DEPENDIENTES ECONÓMICOS, RECIBIDO EN EL AÑO INMEDIATO ANTERIOR (DESPUÉS DE IMPUESTOS)</Typography>
-                </Grid>
-                <Grid item xs={12} md={3}>
-                  <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
-                </Grid>
-
-                <Grid item xs={12} md={9}>
-                  <Typography className={classes.cardTitle}>C.- TOTAL DE INGRESOS NETOS PERCIBIDOS POR EL DECLARANTE, PAREJA Y/O DEPENDIENTES ECONÓMICOS, EN EL AÑO INMEDIATO ANTERIOR (SUMA DE LOS APARTADOS A Y B)</Typography>
-                </Grid>
-                <Grid item xs={12} md={3}>
-                  <Typography className={classes.card}>
-                    {getMoneda(data.totalIngresosNetosAnuales.valor)} {data.totalIngresosNetosAnuales.moneda}
-                  </Typography>
-                </Grid>
+        <Grid item xs={12}>
+          <Paper className={classes.paper}>
+            <Grid container spacing={1}>
+              <Grid item xs={12} md={6} style={{ textAlign: 'center' }}>
+                <Typography className={classes.cardTitle}>FECHA DE INICIO</Typography>
+                <Typography className={classes.card}>{data.fechaIngreso}</Typography>
               </Grid>
-            </Paper>
-          </Grid>
+              <Grid item xs={12} md={6} style={{ textAlign: 'center' }}>
+                <Typography className={classes.cardTitle}>FECHA DE CONCLUSIÓN </Typography>
+                <Typography className={classes.card}>{data.fechaConclusion}</Typography>
+              </Grid>
+              <Divider />
+              <Grid item xs={12} md={9}>
+                <Typography className={classes.cardTitle}>I.- REMUNERACIÓN NETA DEL DECLARANTE, RECIBIDA DURANTE EL TIEMPO EN EL QUE SE DESEMPEÑÓ COMO SERVIDOR PÚBLICO EN EL AÑO INMEDIATO ANTERIOR (POR CONCEPTO DE SUELDOS, HONORARIOS, COMPENSACIONES, BONOS, AGUINALDOS Y OTRAS PRESTACIONES) (CANTIDADES NETAS DESPUÉS DE IMPUESTOS)</Typography>
+              </Grid>
+              <Grid item xs={12} md={3}>
+                <Typography className={classes.card}>
+                  {getMoneda(data.remuneracionNetaCargoPublico.valor)} {data.remuneracionNetaCargoPublico.moneda}
+                </Typography>
+              </Grid>
+              <Divider />
+              <Grid item xs={12} md={9}>
+                <Typography className={classes.cardTitle}>II.- OTROS INGRESOS DEL DECLARANTE, RECIBIDOS DURANTE EL TIEMPO EN EL QUE SE DESEMPEÑÓ COMO SERVIDOR PÚBLICO EN EL AÑO INMEDIATO ANTERIOR (SUMA DEL II.1 AL II.5)</Typography>
+              </Grid>
+              <Grid item xs={12} md={3}>
+                <Typography className={classes.card}>
+                  {getMoneda(data.otrosIngresosTotal.valor)} {data.otrosIngresosTotal.moneda}
+                </Typography>
+              </Grid>
+              <Grid item xs={12}>
+                <ActividadIndustrial actividadIndustrialComercialEmpresarial={data.actividadIndustialComercialEmpresarial || data.actividadIndustrialComercialEmpresarial} />
+
+                <ActividadFinanciera actividadFinanciera={data.actividadFinanciera} />
+
+                <ServiciosProfesionales serviciosProfesionales={data.serviciosProfesionales} />
+
+                <EnajenacionBienes enajenacionBienes={data.enajenacionBienes} />
+
+                <OtrosIngresos otrosIngresos={data.otrosIngresos} />
+              </Grid>
+
+              <Divider />
+              <Grid item xs={12} md={9}>
+                <Typography className={classes.cardTitle}>A.- INGRESO NETO DEL DECLARANTE, RECIBIDO EN EL AÑO INMEDIATO ANTERIOR (SUMA DEL NUMERAL I Y II)</Typography>
+              </Grid>
+              <Grid item xs={12} md={3}>
+                <Typography className={classes.card}>
+                  {getMoneda(data.ingresoNetoAnualDeclarante.valor)} {data.ingresoNetoAnualDeclarante.moneda}
+                </Typography>
+              </Grid>
+
+              <Grid item xs={12} md={9}>
+                <Typography className={classes.cardTitle}>B.- INGRESO NETO DE LA PAREJA Y/O DEPENDIENTES ECONÓMICOS, RECIBIDO EN EL AÑO INMEDIATO ANTERIOR (DESPUÉS DE IMPUESTOS)</Typography>
+              </Grid>
+              <Grid item xs={12} md={3}>
+                <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
+              </Grid>
+
+              <Grid item xs={12} md={9}>
+                <Typography className={classes.cardTitle}>C.- TOTAL DE INGRESOS NETOS PERCIBIDOS POR EL DECLARANTE, PAREJA Y/O DEPENDIENTES ECONÓMICOS, EN EL AÑO INMEDIATO ANTERIOR (SUMA DE LOS APARTADOS A Y B)</Typography>
+              </Grid>
+              <Grid item xs={12} md={3}>
+                <Typography className={classes.card}>
+                  {getMoneda(data.totalIngresosNetosAnuales.valor)} {data.totalIngresosNetosAnuales.moneda}
+                </Typography>
+              </Grid>
+            </Grid>
+          </Paper>
+          <AclaracionesObservacions />
         </Grid>
       )}
     </Grid>

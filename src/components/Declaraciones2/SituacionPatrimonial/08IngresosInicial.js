@@ -13,6 +13,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { ActividadFinanciera, ServiciosProfesionales } from './08Ingresos';
 import ActividadIndustrial from './08Ingresos/ActividadIndustrial';
 import basicInicial from './00_basic_incial';
+import AclaracionesObservacions from '../common/AclaracionesObservaciones';
 
 const useStyles = makeStyles(styleSecciones);
 
@@ -133,6 +134,7 @@ const IngresosIniciales = ({ data: info, titulo }) => {
             </Grid>
           </Grid>
         </Paper>
+        <AclaracionesObservacions />
       </Grid>
     </Grid>
   );

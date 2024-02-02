@@ -9,6 +9,7 @@ import { Divider, getMoneda } from '../utils';
 
 import { ActividadFinanciera, ServiciosProfesionales, EnajenacionBienes, OtrosIngresos } from './08Ingresos';
 import ActividadIndustrial from './08Ingresos/ActividadIndustrial';
+import AclaracionesObservacions from '../common/AclaracionesObservaciones';
 
 const useStyles = makeStyles(styleSecciones);
 
@@ -76,6 +77,7 @@ const IngresoConclusion = ({ data, titulo }) => {
             </Grid>
           </Grid>
         </Paper>
+        <AclaracionesObservacions />
       </Grid>
     </Grid>
   );

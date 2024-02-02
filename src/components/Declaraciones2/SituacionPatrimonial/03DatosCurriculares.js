@@ -8,6 +8,7 @@ import { sumary, expansion } from '../utils';
 
 import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../common/BoxAccordion';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import AclaracionesObservacions from '../common/AclaracionesObservaciones';
 
 const useStyles = makeStyles(style);
 
@@ -67,6 +68,7 @@ const DatosCurriculares = ({ data, titulo }) => {
             </BoxAccordion>
           );
         })}
+        <AclaracionesObservacions />
       </Grid>
     </Grid>
   );
