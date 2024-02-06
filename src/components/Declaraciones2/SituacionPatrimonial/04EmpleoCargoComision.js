@@ -9,6 +9,7 @@ import { Divider, CompDomicilio } from '../utils';
 
 import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../common/BoxAccordion';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import AclaracionesObservacions from '../common/AclaracionesObservaciones';
 
 const useStyles = makeStyles(style);
 
@@ -104,6 +105,7 @@ const EmpleoCargoComision = ({ data, titulo }) => {
               })}
           </Grid>
         </Paper>
+        <AclaracionesObservacions />
       </Grid>
     </Grid>
   );

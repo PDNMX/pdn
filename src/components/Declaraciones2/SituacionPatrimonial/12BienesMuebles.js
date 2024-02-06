@@ -14,6 +14,7 @@ import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../commo
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import { Disclaimer } from '../utils';
+import AclaracionesObservacions from '../common/AclaracionesObservaciones';
 
 const useStyles = makeStyles(styleSecciones);
 
@@ -22,68 +23,74 @@ function BienMueble(props) {
   const exp = expansion();
   const sum = sumary();
   const { bienMueble } = props;
-  return bienMueble.map((obj, idx) => {
-    return (
-      <BoxAccordion key={'veh-' + idx}>
-        <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
-          <Typography className={exp.heading}>
-            <strong>TIPO DEL BIEN: {obj.tipoBien?.valor}</strong>
-          </Typography>
-        </BoxAccordionSummary>
-        <BoxAccordionDetails>
-          <Grid container spacing={1}>
-            <Grid item xs={12} md={8}>
-              <Typography className={classes.cardTitle}>TIPO DEL BIEN:</Typography>
-              <Typography className={classes.card}>{obj.tipoBien?.valor}</Typography>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Typography className={classes.cardTitle}>TITULAR DEL BIEN:</Typography>
-              <Typography className={classes.card}>
-                {obj.titular.map((tit, idx) => {
-                  return <span key={'tit-' + idx}>{tit.valor}</span>;
-                })}
+  return (
+    <>
+      {bienMueble.map((obj, idx) => {
+        return (
+          <BoxAccordion key={'veh-' + idx}>
+            <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
+              <Typography className={exp.heading}>
+                <strong>
+                  TIPO DEL BIEN: {obj.tipoBien?.valor} ({obj.tipoOperacion.replace('_', ' ')})
+                </strong>
               </Typography>
-            </Grid>
+            </BoxAccordionSummary>
+            <BoxAccordionDetails>
+              <Grid container spacing={1}>
+                <Grid item xs={12} md={8}>
+                  <Typography className={classes.cardTitle}>TIPO DEL BIEN:</Typography>
+                  <Typography className={classes.card}>{obj.tipoBien?.valor}</Typography>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                  <Typography className={classes.cardTitle}>TITULAR DEL BIEN:</Typography>
+                  <Typography className={classes.card}>
+                    {obj.titular.map((tit, idx) => {
+                      return <span key={'tit-' + idx}>{tit.valor}</span>;
+                    })}
+                  </Typography>
+                </Grid>
 
-            <Grid item xs={12} md={4}>
-              <Typography className={classes.cardTitle}>DESCRIPCIÓN GENERAL DEL BIEN:</Typography>
-              <Typography className={classes.card}>{obj.descripcionGeneralBien}</Typography>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Typography className={classes.cardTitle}>FORMA DE ADQUISICIÓN:</Typography>
-              <Typography className={classes.card}>{obj.formaAdquisicion?.valor}</Typography>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Typography className={classes.cardTitle}>FORMA DE PAGO:</Typography>
-              <Typography className={classes.card}>{obj.formaPago}</Typography>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Typography className={classes.cardTitle}>VALOR DE ADQUISICIÓN DEL MUEBLE:</Typography>
-              <Typography className={classes.card}>{getMoneda(obj.valorAdquisicion.valor)}</Typography>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Typography className={classes.cardTitle}>TIPO DE MONEDA:</Typography>
-              <Typography className={classes.card}>{obj.valorAdquisicion.moneda}</Typography>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Typography className={classes.cardTitle}>FECHA DE ADQUISICIÓN:</Typography>
-              <Typography className={classes.card}>{obj.fechaAdquisicion}</Typography>
-            </Grid>
+                <Grid item xs={12} md={4}>
+                  <Typography className={classes.cardTitle}>DESCRIPCIÓN GENERAL DEL BIEN:</Typography>
+                  <Typography className={classes.card}>{obj.descripcionGeneralBien}</Typography>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                  <Typography className={classes.cardTitle}>FORMA DE ADQUISICIÓN:</Typography>
+                  <Typography className={classes.card}>{obj.formaAdquisicion?.valor}</Typography>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                  <Typography className={classes.cardTitle}>FORMA DE PAGO:</Typography>
+                  <Typography className={classes.card}>{obj.formaPago}</Typography>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                  <Typography className={classes.cardTitle}>VALOR DE ADQUISICIÓN DEL MUEBLE:</Typography>
+                  <Typography className={classes.card}>{getMoneda(obj.valorAdquisicion.valor)}</Typography>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                  <Typography className={classes.cardTitle}>TIPO DE MONEDA:</Typography>
+                  <Typography className={classes.card}>{obj.valorAdquisicion.moneda}</Typography>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                  <Typography className={classes.cardTitle}>FECHA DE ADQUISICIÓN:</Typography>
+                  <Typography className={classes.card}>{obj.fechaAdquisicion}</Typography>
+                </Grid>
 
-            {obj.motivoBaja && (
-              <Grid item xs={12} md={4}>
-                <Typography className={classes.cardTitle}>EN CASO DE BAJA DEL MUEBLE INCLUIR MOTIVO:</Typography>
-                <Typography className={classes.card}>{obj.motivoBaja.valor}</Typography>
+                <Grid item xs={12} md={12}>
+                  <Typography className={classes.cardTitle}>EN CASO DE BAJA DEL MUEBLE INCLUIR MOTIVO:</Typography>
+                  <Typography className={classes.card}>{obj.motivoBaja?.valor}</Typography>
+                </Grid>
+
+                <Divider />
+
+                {obj.transmisor && <Transmisor transmisor={obj.transmisor} />}
               </Grid>
-            )}
-            <Divider />
-
-            {obj.transmisor && <Transmisor transmisor={obj.transmisor} />}
-          </Grid>
-        </BoxAccordionDetails>
-      </BoxAccordion>
-    );
-  });
+            </BoxAccordionDetails>
+          </BoxAccordion>
+        );
+      })}
+      <AclaracionesObservacions />
+    </>
+  );
 }
 
 const BienesMuebles = ({ data, titulo }) => {

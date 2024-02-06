@@ -13,6 +13,7 @@ import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../commo
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import { Disclaimer } from '../utils';
+import AclaracionesObservacions from '../common/AclaracionesObservaciones';
 
 const useStyles = makeStyles(styleSecciones);
 
@@ -89,6 +90,7 @@ function Prestamo({ prestamo }) {
                   <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
                 </Grid>
                 <Duenio obj={obj} />
+                <AclaracionesObservacions />
               </Grid>
             </BoxAccordionDetails>
           </BoxAccordion>
@@ -131,6 +133,7 @@ function Prestamo({ prestamo }) {
             </BoxAccordionDetails>
           </BoxAccordion>
         )}
+        <AclaracionesObservacions />
       </React.Fragment>
     );
   });

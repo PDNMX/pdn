@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import style from '../styleSecciones';
 // import DatosCamposPrivados from '../DatosCamposPrivados';
 import basicInicial from './00_basic_incial';
+import AclaracionesObservacions from '../common/AclaracionesObservaciones';
 
 const useStyles = makeStyles(style);
 // const camposPrivados = [
@@ -102,6 +103,7 @@ const DatosGenerales = ({ data: info, titulo }) => {
             </Grid>
           </Grid>
         </Paper>
+        <AclaracionesObservacions />
       </Grid>
     </Grid>
   );
