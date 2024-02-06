@@ -1,5 +1,3 @@
-'use strict';
-
 const jsonfile = require('jsonfile');
 const fs = require('fs');
 
@@ -22,6 +20,7 @@ const readFiles = () => {
 
         info.push({ name: file.name, data });
       }
+      return null;
     });
   } catch (error) {
     console.log({ error });
