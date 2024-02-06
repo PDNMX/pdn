@@ -27,6 +27,7 @@ const styles = theme => ({
     background: theme.palette.background.opaque,
     borderRadius: '0 10px 10px 10px',
     borderStyle: 'solid',
+    borderWidth: 1,
     borderColor: theme.palette.primary.main
     // border: "2px",
   },
@@ -34,6 +35,7 @@ const styles = theme => ({
     background: theme.palette.background.opaque,
     borderRadius: '0 10px 10px 10px',
     borderStyle: 'solid',
+    borderWidth: 1,
     // border: "2px",
     borderColor: theme.palette.primary.main
   }
@@ -56,7 +58,8 @@ const Cobertura = props => {
 
   const tabStyle = selected => ({
     background: selected ? '#b25fac' : '#f2f0f2',
-    border: selected ? 'solid' : '',
+    border: selected ? 'solid' : 'solid',
+    borderWidth:  selected ? 1 : 1,
     borderColor: selected ? '#583171' : ''
   })
 

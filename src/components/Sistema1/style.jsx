@@ -361,7 +361,8 @@ const CssDeclaraciones = theme => ({
     color: theme.palette.primary.main
   },
   logo: {
-    width: '60px'
+    width: '60px',
+    display: 'flex'
   },
   figure_search: {
     display: 'inline-block',
@@ -377,13 +378,14 @@ const CssDeclaraciones = theme => ({
     borderBottomStyle: 'none',
     padding: theme.spacing(1),
     margin: 0,
-    display: 'inline-block',
+    display: 'flex',
     float: 'left',
     marginRight: 10,
     opacity: 0.7
   },
   labelCard: {
     color: theme.palette.S1.color,
+    display: 'flex',
     marginLeft: theme.spacing(1),
     paddingTop: theme.spacing(1),
     fontWeight: 500

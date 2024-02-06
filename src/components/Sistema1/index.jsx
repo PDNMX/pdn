@@ -43,11 +43,11 @@ class Declaraciones extends React.Component {
             <Grid container spacing={0}>
               <Grid item lg={3} xs={12} style={{ display: 'flex', alignItems: 'center' }}>
                 <figure className={classes.selectedTab}>
-                  <img src={img} alt={titulo} className={classes.logo} />
-                </figure>
+                  <img src={img} alt={titulo} className={classes.logo} />{' '}
                 <Typography variant='subtitle1' className={classes.labelCard}>
                   Buscar una persona servidora pública
                 </Typography>
+                </figure>
               </Grid>
             </Grid>
           </Grid>
