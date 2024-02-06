@@ -111,7 +111,7 @@ const Index = ({ classes }) => {
                 <figure className={isIdContent(1) ? classes.cardSeleccionada : classes.card}>
                   <img src={img1} alt='Servidores públicos sancionados' className={classes.image} />
                 <Typography variant='subtitle1' style={{ color: isIdContent(1) ? '#f1e9f2' : '#713972' }} className={classes.labelCard}>
-                  Buscador de servidores públicos sancionados
+                  Buscador de personas servidoras públicas sancionadas
                 </Typography>
                 </figure>
               </Grid>

@@ -126,7 +126,7 @@ const Index = props => {
                 variant='subtitle1' className={classes.labelCard}
                 style={{ color: isContentId(1) ? '#f1e9f2' : '#713972' }}
               >
-                Buscador de servidores que intervienen en contrataciones
+                Buscador de personas servidoras públicsa que intervienen en contrataciones
               </Typography>
               </figure>
             </Grid>
