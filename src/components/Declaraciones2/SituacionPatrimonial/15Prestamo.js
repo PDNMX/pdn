@@ -90,7 +90,6 @@ function Prestamo({ prestamo }) {
                   <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
                 </Grid>
                 <Duenio obj={obj} />
-                <AclaracionesObservacions />
               </Grid>
             </BoxAccordionDetails>
           </BoxAccordion>
