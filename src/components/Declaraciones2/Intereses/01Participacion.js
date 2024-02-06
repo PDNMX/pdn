@@ -22,8 +22,8 @@ function Participacion(props) {
   const { participaciones } = props;
   return participaciones.map((obj, idx) => {
     return (
-      <>
-        <BoxAccordion key={'par-' + idx}>
+      <React.Fragment key={'par-' + idx}>
+        <BoxAccordion>
           <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
             <Typography className={exp.heading}>
               <strong>
@@ -74,7 +74,7 @@ function Participacion(props) {
           </BoxAccordionDetails>
         </BoxAccordion>
         <AclaracionesObservacions />
-      </>
+      </React.Fragment>
     );
   });
 }
