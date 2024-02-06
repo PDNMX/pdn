@@ -59,7 +59,7 @@ const ActiveResultProv = props => {
             <Grid container spacing={1}>
               <Grid item xs={12}>
                 <Typography className={classes.alertWarning} align='center'>
-                  No se logro establecer la conexión con el proveedor, por favor intenta nuevamente mas tarde.
+                  No se logró establecer la conexión con el proveedor, por favor intenta nuevamente más tarde.
                 </Typography>
               </Grid>
             </Grid>

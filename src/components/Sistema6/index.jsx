@@ -42,7 +42,7 @@ const styles = theme => ({
     color: theme.palette.primary.contrastText,
     borderStyle: 'solid',
     borderWidth: 1,
-    borderColor: theme.palette.secondary.main,
+    borderColor: theme.palette.background.border,
     borderRadius: '0px 10px 10px 10px'
   },
   paper2: {
@@ -51,14 +51,14 @@ const styles = theme => ({
     color: theme.palette.primary.contrastText,
     borderStyle: 'solid',
     borderWidth: 1,
-    borderColor: theme.palette.secondary.main,
-    borderRadius: '10px 0px 10px 10px'
+    borderColor: theme.palette.background.border,
+    borderRadius: '0px 10px 10px 10px'
   },
   image: {
     width: '60px'
   },
   card: {
-    backgroundColor: theme.palette.background.opaque,
+    backgroundColor: theme.palette.background.noSelect,
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
     paddingTop: theme.spacing(1),
@@ -66,11 +66,11 @@ const styles = theme => ({
     margin: 0,
     '&:hover': {
       cursor: 'pointer',
-      borderColor: theme.palette.secondary.main,
+      borderColor: theme.palette.background.border,
       transition: 'background 0.3s ease',
       opacity: 0.7
     },
-    display: 'inline-block',
+    display: 'flex',
     float: 'left',
     padding: 0,
     borderStyle: 'solid',
@@ -81,7 +81,8 @@ const styles = theme => ({
 
   },
   cardSeleccionada: {
-    borderColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.background.select,
+    borderColor: theme.palette.background.border,
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
     paddingTop: theme.spacing(1),
@@ -91,10 +92,9 @@ const styles = theme => ({
 
     borderBottomStyle: 'none',
     borderRadius: '10px 10px 0px 0px',
-    display: 'inline-block',
+    display: 'flex',
     float: 'left',
     marginRight: 10,
-    opacity: 0.7
   },
   labelCard: {
     color: theme.palette.S6.color,
@@ -118,33 +118,37 @@ const Index = props => {
         <Grid item xs={12} style={{ padding: 0, maxWidth: 1200 }}>
           <Grid container spacing={0}>
             <Grid
-              item xs={12} sm={12} md={6} lg={6} xl={6}
+              item  md={3}xs={12}
+              style={{ display: 'flex', alignItems: 'center' }}
               onClick={() => handleSelectTab(0)}
               id={0}
             >
 
               <figure className={isSelected(0) ? classes.cardSeleccionada : classes.card}>
                 <img src={img1} className={classes.image} alt='explora' />
-              </figure>
+              
 
-              <Typography style={{ fontWeight: isSelected(0) ? 500 : 300, paddingTop: 15 }} className={classes.labelCard}>
-                Explora las contrataciones
+              <Typography style={{ color: isSelected(0) ? '#f1e9f2' : '#713972', paddingTop: 15 }} className={classes.labelCard}>
+                Buscador de contrataciones
               </Typography>
+              </figure>
 
             </Grid>
             <Grid
-              item xs={12} sm={12} md={6} lg={6} xl={6}
+              item  md={4}xs={12}
+              style={{ display: 'flex', alignItems: 'center' }}
               onClick={() => handleSelectTab(1)}
               id={1}
             >
 
               <figure className={isSelected(1) ? classes.cardSeleccionada : classes.card}>
                 <img src={img3} className={classes.image} alt='Visualiza' />
-              </figure>
+              
 
-              <Typography style={{ fontWeight: isSelected(1) ? 500 : 300, paddingTop: 15 }} className={classes.labelCard}>
-                Visualiza las contrataciones
+              <Typography style={{ color: isSelected(1) ? '#f1e9f2' : '#713972', paddingTop: 15 }} className={classes.labelCard}>
+                Visualizador de contrataciones
               </Typography>
+              </figure>
 
             </Grid>
           </Grid>

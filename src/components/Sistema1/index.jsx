@@ -42,10 +42,10 @@ class Declaraciones extends React.Component {
           <Grid item xs={12} style={{ maxWidth: 1200, margin: '0 auto', marginTop: 50 }}>
             <Grid container spacing={0}>
               <Grid item lg={3} xs={12} style={{ display: 'flex', alignItems: 'center' }}>
-                <figure className={classes.selectedTab}>
+                <figure className={classes.selectedTab} style={{backgroundColor: '#b25fac'}}>
                   <img src={img} alt={titulo} className={classes.logo} />{' '}
                 <Typography variant='subtitle1' className={classes.labelCard}>
-                  Buscar una persona servidora pública
+                  Buscador de una persona servidora pública
                 </Typography>
                 </figure>
               </Grid>

@@ -242,14 +242,14 @@ const CssDeclaraciones = theme => ({
     color: theme.palette.primary.main,
     borderStyle: 'solid',
     borderWidth: 1,
-    borderColor: theme.palette.secondary.main
+    borderColor: theme.palette.background.border
   },
   tituloResultados: {
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.background.opaque,
     borderStyle: 'solid',
     borderWidth: 1,
-    borderColor: theme.palette.secondary.main
+    borderColor: theme.palette.background.border
   },
   resultadoContenido: {
     backgroundColor: theme.palette.background.opaque,
@@ -373,7 +373,7 @@ const CssDeclaraciones = theme => ({
   },
   selectedTab: {
     borderStyle: 'solid',
-    borderColor: theme.palette.secondary.main,
+    borderColor: theme.palette.background.border,
     borderRadius: '10px 10px 0px 0px',
     borderBottomStyle: 'none',
     padding: theme.spacing(1),
@@ -381,10 +381,9 @@ const CssDeclaraciones = theme => ({
     display: 'flex',
     float: 'left',
     marginRight: 10,
-    opacity: 0.7
   },
   labelCard: {
-    color: theme.palette.S1.color,
+    color: theme.palette.background.default,
     display: 'flex',
     marginLeft: theme.spacing(1),
     paddingTop: theme.spacing(1),
@@ -400,7 +399,7 @@ const CssDeclaraciones = theme => ({
     color: theme.palette.primary.main,
     borderStyle: 'solid',
     borderWidth: 1,
-    borderColor: theme.palette.secondary.main,
+    borderColor: theme.palette.background.border,
     borderRadius: '0px 10px 10px 10px'
   },
   paper_disclaimer: {
@@ -408,7 +407,7 @@ const CssDeclaraciones = theme => ({
     color: theme.palette.primary.contrastText,
     borderStyle: 'solid',
     borderWidth: 1,
-    borderColor: theme.palette.secondary.main,
+    borderColor: theme.palette.background.border,
     borderRadius: '0px 10px 10px 10px'
   },
   cuadroActualizacion: {

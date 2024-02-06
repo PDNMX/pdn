@@ -1,4 +1,4 @@
-import { Grid, Typography, Paper } from '@mui/material'
+import { Grid, Typography, Box, Paper } from '@mui/material'
 import { withStyles } from '@mui/styles'
 import BusquedaParticular from './BusquedaParticular'
 import Descarga from '../../Compartidos/Descarga'
@@ -14,8 +14,8 @@ const styles = theme => ({
     paddingLeft: theme.spacing(3)
   },
   container: {
-    paddingRight: theme.spacing(4),
-    paddingLeft: theme.spacing(4)
+    paddingRight: theme.spacing(2),
+    paddingLeft: theme.spacing(2)
   },
   toolBarStyle: {
     paddingTop: theme.spacing(7),
@@ -42,7 +42,7 @@ const styles = theme => ({
   paper: {
     backgroundColor: theme.palette.background.opaque,
     maxWidth: 1200,
-    paddingTop: theme.spacing(7),
+    paddingTop: theme.spacing(2),
     margin: 'auto',
     color: theme.palette.primary.contrastText,
     borderStyle: 'solid',
@@ -55,10 +55,11 @@ const styles = theme => ({
 function BuscadorParticularesSancionados ({ classes }) {
   return (
     <div>
-      <Paper elevation={15} className={classes.paper}>
+      <Paper className={classes.paper} elevation={15} >
         {/* TEXTO */}
         <Grid container className={classes.container}>
-          <Grid item xs={12} style={{ maxWidth: 1200, margin: '0 auto' }}>
+          <Grid item xs={12} style={{ maxWidth: 1200, margin: 0 }}>
+          <Box p={1}>
             <Typography paragraph>
               <b>Aquí puedes consultar:</b>
             </Typography>
@@ -73,11 +74,12 @@ function BuscadorParticularesSancionados ({ classes }) {
                                 </Typography>
                             </li> */}
             </ul>
+            </Box>
           </Grid>
         </Grid>
 
         {/* BUSCADOR */}
-        <Grid container justifyContent='center' className={classes.container}>
+        <Grid container spacing={4} justifyContent='center' className={classes.container}>
           <Grid item xs={12}>
             <BusquedaParticular />
           </Grid>

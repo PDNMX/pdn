@@ -74,7 +74,7 @@ const styles = theme => ({
     color: theme.palette.primary.contrastText,
     borderStyle: 'solid',
     borderWidth: 1,
-    borderColor: theme.palette.secondary.main,
+    borderColor: theme.palette.background.border,
     borderRadius: '10px 10px 10px 10px',
     display: 'flex',
     justifyContent: 'center'

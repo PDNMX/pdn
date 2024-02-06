@@ -164,7 +164,7 @@ const VistaDetalleEstado = props => {
               <Paper elevation={15} sx={{ m: 1, p: 2 }} className={classes.paper}>
                 <Box display='flex' flexWrap='wrap' justifyContent='center'>
                   <Box>
-                    <img src={`../../../src/assets/Cobertura/iconos_estados/${estado.icon2}`} style={{ width: '280px', padding: '23px', paddingRight: '0px' }} alt={estado.name} />
+                    <img src={`/img/cobertura/iconos_estados/${estado.icon2}`} style={{ width: '280px', padding: '23px', paddingRight: '0px' }} alt={estado.name} />
                   </Box>
 
                   <Box sx={{ paddingTop: '40px', flexGrow: 1 }}>

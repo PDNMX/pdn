@@ -2,8 +2,8 @@ import React from 'react'
 import { withStyles } from '@mui/styles'
 import { Grid, Typography } from '@mui/material'
 import PropTypes from 'prop-types'
-import img1 from '../../assets/rediseno/svg_iconos_azul/SVG/s3_01.svg'
-import img2 from '../../assets/rediseno/svg_iconos_azul/SVG/s3_02.svg'
+import img1 from '../../assets/rediseno/svg_iconos_azul/SVG/s1_01.svg'
+import img2 from '../../assets/rediseno/svg_iconos_azul/SVG/s1_01.svg'
 import BuscadorServidoresSancionados from './Servidores/BuscadorServidoresSancionados'
 import BuscadorParticularesSancionados from './Particulares/BuscadorParticularesSancionados'
 import HeaderV2 from '../HomeV2/HeaderV2'
@@ -39,7 +39,7 @@ const styles = theme => ({
     width: '60px'
   },
   card: {
-    backgroundColor: theme.palette.background.opaque,
+    backgroundColor: theme.palette.background.noSelect,
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
     paddingTop: theme.spacing(1),
@@ -47,11 +47,11 @@ const styles = theme => ({
     margin: 0,
     '&:hover': {
       cursor: 'pointer',
-      borderColor: theme.palette.secondary.main,
+      borderColor: theme.palette.background.border,
       transition: 'background 0.3s ease',
       opacity: 0.7
     },
-    display: 'inline-block',
+    display: 'flex',
     float: 'left',
     padding: 0,
     borderStyle: 'solid',
@@ -61,53 +61,67 @@ const styles = theme => ({
     marginRight: 10
   },
   cardSeleccionada: {
-    borderColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.background.select,
+    borderColor: theme.palette.background.border,
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
     paddingTop: theme.spacing(1),
     paddingBottom: theme.spacing(1),
     margin: 0,
     borderStyle: 'solid',
+
     borderBottomStyle: 'none',
     borderRadius: '10px 10px 0px 0px',
-    display: 'inline-block',
+    display: 'flex',
     float: 'left',
     marginRight: 10,
-    opacity: 0.7
   },
   labelCard: {
-    color: theme.palette.S3.color,
+    color: theme.palette.text.clear,
     marginLeft: theme.spacing(1),
     paddingTop: theme.spacing(1)
   }
 })
-
+const TabContents = props => {
+  const { index } = props
+  switch (index) {
+    case 1:
+      return <BuscadorServidoresSancionados />
+    case 2:
+      return <BuscadorParticularesSancionados />
+//    case 3:
+//      return <Dashboard />
+    default:
+      return <Dashboard />
+  }
+}
 const Index = ({ classes }) => {
   const [idContent, setIdContent] = React.useState(1)
+  const handleIdContent = t => setIdContent(t)
+  const isIdContent = t => t === idContent
   const system = pdnRoutes.find(route => route.path === '/sancionados')
 
   return (
-    <ThemeProvider theme={ThemeV2}>
       <div className={classes.root}>
         <HeaderV2 section={system} />
         <Grid container justifyContent='center' alignItems='center'>
           <Grid item xs={12} className={classes.section}>
             <Grid container>
-              <Grid item md={3} xs={12} onClick={() => setIdContent(1)}>
-                <figure className={classNames(idContent !== 1 ? classes.card : classes.cardSeleccionada)}>
+              <Grid item md={3} xs={12} onClick={() => handleIdContent(1)}>
+                <figure className={isIdContent(1) ? classes.cardSeleccionada : classes.card}>
                   <img src={img1} alt='Servidores públicos sancionados' className={classes.image} />
-                </figure>
-                <Typography variant='subtitle1' style={{ fontWeight: idContent === 1 ? 500 : 300 }} className={classes.labelCard}>
-                  Buscador de Servidores públicos sancionados
+                <Typography variant='subtitle1' style={{ color: isIdContent(1) ? '#f1e9f2' : '#713972' }} className={classes.labelCard}>
+                  Buscador de servidores públicos sancionados
                 </Typography>
+                </figure>
               </Grid>
-              <Grid item md={3} xs={12} onClick={() => setIdContent(2)}>
-                <figure className={classNames(idContent !== 2 ? classes.card : classes.cardSeleccionada)}>
+              <Grid item md={3} xs={12} onClick={() => handleIdContent(2)}>
+                <figure className={isIdContent(2) ? classes.cardSeleccionada : classes.card}>
                   <img src={img2} alt='Particulares sancionados' className={classes.image} />
-                </figure>
-                <Typography variant='subtitle1' style={{ fontWeight: idContent === 2 ? 500 : 300 }} className={classes.labelCard}>
-                  Buscador de Particulares sancionados
+                <Typography variant='subtitle1' style={{ color: isIdContent(2) ? '#f1e9f2' : '#713972' }} className={classes.labelCard}>
+                  Buscador de particulares sancionados
                 </Typography>
+                </figure>
               </Grid>
               {/* <Grid
                 item
@@ -147,14 +161,12 @@ const Index = ({ classes }) => {
         </Grid>
         <Grid container justifyContent='center'>
           <Grid item xs={12} className={classes.sectionT}>
-            {idContent === 1 && <BuscadorServidoresSancionados />}
-            {idContent === 2 && <BuscadorParticularesSancionados />}
-            {idContent === 3 && <Dashboard />}
-            {idContent === 4 && <Dashboard2 />}
+          <ThemeProvider theme={ThemeV2}>
+            <TabContents index={idContent} />
+          </ThemeProvider>
           </Grid>
         </Grid>
       </div>
-    </ThemeProvider>
   )
 }
 

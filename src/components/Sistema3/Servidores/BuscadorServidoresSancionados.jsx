@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import withStyles from '@mui/styles/withStyles'
 import BusquedaServidor from './BusquedaServidor'
 import Grid from '@mui/material/Grid'
-import { Typography } from '@mui/material'
+import { Typography, Box } from '@mui/material'
 import Descarga from '../../Compartidos/Descarga'
 import Paper from '@mui/material/Paper'
 
@@ -16,8 +16,8 @@ const styles = theme => ({
     paddingLeft: theme.spacing(3)
   },
   container: {
-    paddingRight: theme.spacing(4),
-    paddingLeft: theme.spacing(4)
+    paddingRight: theme.spacing(2),
+    paddingLeft: theme.spacing(2)
   },
   toolBarStyle: {
     paddingTop: theme.spacing(7),
@@ -45,12 +45,12 @@ const styles = theme => ({
   paper: {
     backgroundColor: theme.palette.background.opaque,
     maxWidth: 1200,
-    paddingTop: theme.spacing(7),
+    paddingTop: theme.spacing(2),
     margin: 'auto',
     color: theme.palette.primary.contrastText,
     borderStyle: 'solid',
     borderWidth: 1,
-    borderColor: theme.palette.secondary.main,
+    borderColor: theme.palette.background.border,
     borderRadius: '0px 10px 10px 10px'
   }
 })
@@ -62,7 +62,8 @@ function BuscadorServidoresSancionados (props) {
       {/* TEXTO */}
       <Paper elevation={15} className={classes.paper}>
         <Grid container className={classes.container}>
-          <Grid item xs={12} style={{ maxWidth: 1200, margin: '0 auto' }}>
+          <Grid item xs={12} style={{ maxWidth: 1200, margin: 0 }}>
+            <Box p={1}>
             <Typography>
               <b>Aquí puedes consultar:</b>
             </Typography>
@@ -77,6 +78,7 @@ function BuscadorServidoresSancionados (props) {
                                 </Typography>
                             </li> */}
             </ul>
+            </Box>
           </Grid>
         </Grid>
         {/* BUSCADOR */}

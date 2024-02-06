@@ -32,7 +32,7 @@ const styles = theme => ({
     color: theme.palette.text.primary,
     borderStyle: 'solid',
     borderWidth: 1,
-    borderColor: theme.palette.secondary.main,
+    borderColor: theme.palette.background.border,
     borderRadius: '10px',
     display: 'flex',
     justifyContent: 'center'
