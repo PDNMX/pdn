@@ -309,7 +309,7 @@ function opcion(valor, data, tipo) {
   }
 }
 
-export default function MenuSuperior({ data, value, setValue, tipo }) {
+export default function SituacionPatrimonial({ data, value, setValue, tipo }) {
   const classes = useStyles();
   const classes2 = styles();
 
