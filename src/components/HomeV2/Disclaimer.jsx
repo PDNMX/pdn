@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState, useEffect } from 'react';
 /* import Button from '@mui/material/Button'; */
 import Dialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
@@ -35,23 +35,35 @@ const styles = theme => ({
   }
 })
 
-const AlertDialog = props => {
-  const [state, setState] = React.useState({ open: true })
-  const { classes } = props
+const AlertDialog = (props) => {
+const { classes } = props
+  const disclaimerIndex = localStorage.getItem('disclaimerIndex');
 
-  const handleClose = () => { setState({ open: false }) }
+  const [open, setOpen] = useState(!disclaimerIndex);
+
+  const handleClose = () => {
+    localStorage.setItem('disclaimerIndex', 'false');
+    setOpen(false);
+  };
+
+  useEffect(() => {
+    const hasAcceptedDialog = localStorage.getItem('disclaimerIndex');
+
+    if (!hasAcceptedDialog) {
+      setOpen(true);
+    }
+  }, []);
 
   return (
     <div>
-      {/* <Button onClick={this.handleClickOpen}>Open alert dialog</Button> */}
       <Dialog
-        open={state.open}
+        open={open}
         onClose={handleClose}
         aria-labelledby='alert-dialog-title'
         aria-describedby='alert-dialog-description'
       >
-        <Paper className={classes.paper} style={{ margin: 0, borderRadius: 0 }}>
-          <DialogTitle className={classes.text_color} id='alert-dialog-title'>Plataforma Digital Nacional</DialogTitle>
+        <Paper style={{ margin: 0, borderRadius: 0 }}>
+          <DialogTitle id='alert-dialog-title'>Plataforma Digital Nacional</DialogTitle>
           <DialogContent>
 
             <Typography paragraph align='justify'>
@@ -96,10 +108,10 @@ const AlertDialog = props => {
             </ButtonPDN>
           </DialogActions>
         </Paper>
-
       </Dialog>
     </div>
-  )
-}
+  );
+};
 
 export default withStyles(styles)(AlertDialog)
+
