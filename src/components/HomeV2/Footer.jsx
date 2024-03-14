@@ -36,13 +36,13 @@ const Footer = () => {
           spacing={0}
         >
           <Grid item sm={3} xs={12} md={3} align='center'>
-            <img src={logoSNA} alt='logo-sna' />
+            <a target="_blank" rel="noreferrer" href="https://www.sna.org.mx/"><img src={logoSNA} alt='logo-sna' /></a>
           </Grid>
           <Grid item sm={3} xs={12} md={3} align='center'>
-            <img src={logoSESNA} alt='logo-sesna' />
+          <a target="_blank" rel="noreferrer" href="https://www.sesna.gob.mx/"><img src={logoSESNA} alt='logo-sesna' /></a>
           </Grid>
           <Grid item sm={3} xs={12} md={3} align='center'>
-            <img src={logoPDN} alt='logo-sesna' />
+          <a target="_blank" rel="noreferrer" href="/"><img src={logoPDN} alt='logo-pdn' /></a>
           </Grid>
         </Grid>
 
