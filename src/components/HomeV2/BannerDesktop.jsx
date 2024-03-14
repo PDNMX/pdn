@@ -79,7 +79,8 @@ const BannerDesktop = (props) => {
           background:
             'transparent linear-gradient(230deg, #1C7CBF 0%, #1C7CBF 4%, #9F58E2 49%, #6D4061 100%) 0% 0% no-repeat padding-box',
           border: 0,
-          boxShadow: 'none'
+          boxShadow: 'none',
+        overflowX: 'auto'
         }}
       >
         <div className='encabezado'>
