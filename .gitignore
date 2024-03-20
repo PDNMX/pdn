@@ -31,4 +31,4 @@ package-lock.json
 data-*.json
 src/__test__/utils/readFiles/data/*.json
 #declaraciones-test
-src/__mocks__/data/*.json
+src/__test__/utils/readFiles/data/*/*.json
