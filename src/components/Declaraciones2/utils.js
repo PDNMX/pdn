@@ -169,7 +169,7 @@ export function Disclaimer() {
 		<Paper className={sel.rootPrincipal}>
 			<Grid container spacing={2}>
 				<Grid item xs={12}>
-					<Typography className={sel.alertSuccess}>
+					<Typography component="div" className={sel.alertSuccess}>
 						Estimado-a ciudadano-a:
 						<br />
 						<br /> De acuerdo con la{' '}
