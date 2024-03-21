@@ -1,12 +1,12 @@
-import { Typography, Grid, Paper, Box } from '@mui/material'
-import { withStyles } from '@mui/styles'
-import HeaderV2 from '../HomeV2/HeaderV2'
-import pdnRoutes from '../../routes'
-import erizoConstructor from '../../assets/rediseno/ico-espin-construction.svg'
+import { Typography, Grid, Paper, Box } from "@mui/material";
+import { withStyles } from "@mui/styles";
+import HeaderV2 from "../HomeV2/HeaderV2";
+import pdnRoutes from "../../routes";
+import working from "../../assets/rediseno2023/imgs/iconos/working.svg";
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
     /*         backgroundImage: `url(${bgimg})`,
         backgroundRepeat: "repeat",
         backgroundPosition: 'fixed',
@@ -16,71 +16,74 @@ const styles = theme => ({
     maxWidth: 1200,
     padding: theme.spacing(1),
     paddingTop: 90,
-    paddingBottom: 90
+    paddingBottom: 90,
   },
   paper: {
     backgroundColor: theme.palette.background.opaque,
     padding: theme.spacing(2),
     color: theme.palette.primary.contrastText,
-    borderStyle: 'solid',
+    borderStyle: "solid",
     borderWidth: 1,
     borderColor: theme.palette.background.border,
-    borderRadius: '10px 10px 10px 10px',
-    display: 'flex',
-    justifyContent: 'center'
+    borderRadius: "10px 10px 10px 10px",
+    display: "flex",
+    justifyContent: "center",
   },
   box: {
-    maxWidth: '900px', paddingTop: '50px', paddingBottom: '50px'
+    maxWidth: "900px",
+    paddingTop: "50px",
+    paddingBottom: "50px",
   },
   erizo: {
-    margin: theme.spacing(6),
-    width: '200px'
-  }
-})
+    width: "400px",
+  },
+});
 
-const CustomTypography = withStyles({
-  root: {
-    color: '#55575A',
-    backgroundAttachment: 'fixed'
-  }
-})(Typography)
-
-const index = props => {
-  const { classes } = props
-  const system = pdnRoutes.find(route => route.path === '/denuncias')
+const index = (props) => {
+  const { classes } = props;
+  const system = pdnRoutes.find((route) => route.path === "/denuncias");
 
   return (
     <div className={classes.root}>
       <HeaderV2 section={system} />
-      <Grid container justifyContent='center'>
+      <Grid container justifyContent="center">
         <Grid item xs={12} className={classes.item}>
           <Paper elevation={15} className={classes.paper}>
             <Box className={classes.box}>
-              <Box display='flex' flexWrap='wrap' justifyContent='center' alignItems='center'>
+              <Typography variant="h4" align="center">
+                Sistema en construcción
+              </Typography>
+              <Box
+                display="flex"
+                flexWrap="wrap"
+                justifyContent="center"
+                alignItems="center"
+              >
                 <Box>
-                  <img alt='enConstruccion' src={erizoConstructor} className={classes.erizo} />
+                  <img
+                    alt="enConstruccion"
+                    src={working}
+                    className={classes.erizo}
+                  />
                 </Box>
-                <Box sx={
-                                    {
-                                      maxWidth: '600px'
-                                    }
-                                }
+                <Box
+                  sx={{
+                    maxWidth: "800px",
+                  }}
                 >
-                  <CustomTypography variant='h4' paragraph>
-                      Sistema en construcción
-                                    </CustomTypography>
+                  <Typography paragraph>
+                    Estamos trabajando en el desarrollo del Sistema de denuncias
+                    públicas de faltas administrativas y hechos de corrupción
+                    (S5).
+                  </Typography>
 
-                  <CustomTypography paragraph>
-                      Estamos trabajando en el desarrollo del Sistema de denuncias públicas de faltas
-                      administrativas y hechos de corrupción (S5).
-                                    </CustomTypography>
-
-                  <CustomTypography paragraph>
-                      Este sistema permitirá establecer un canal único para la denuncia de faltas
-                      administrativas y hechos de corrupción y simplificará su presentación, trámite y
-                      seguimiento generando información relevante para el Sistema Nacional
-                      Anticorrupción.
-                                    </CustomTypography>
+                  <Typography paragraph>
+                    Este sistema permitirá establecer un canal único para la
+                    denuncia de faltas administrativas y hechos de corrupción y
+                    simplificará su presentación, trámite y seguimiento
+                    generando información relevante para el Sistema Nacional
+                    Anticorrupción.
+                  </Typography>
                 </Box>
               </Box>
             </Box>
@@ -88,7 +91,7 @@ const index = props => {
         </Grid>
       </Grid>
     </div>
-  )
-}
+  );
+};
 
-export default withStyles(styles)(index)
+export default withStyles(styles)(index);
