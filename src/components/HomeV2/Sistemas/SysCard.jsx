@@ -19,7 +19,11 @@ const styles = () => ({
       transform: 'scale(1.03)',
       boxShadow:
         '0 13px 40px -5px hsla(240, 30.1%, 28%, 0.12), 0 8px 32px -8px hsla(0, 0%, 0%, 0.14), 0 -6px 32px -6px hsla(0, 0%, 0%, 0.02)'
-    }
+    },
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100%',
+    textDecoration: 'none'
 
   },
   gridItem: {
@@ -34,8 +38,8 @@ const SysCard = (props) => {
 
   return (
     <Grid item lg={2} sm={4} xs={6} p={1}>
-      <Card className={classes.card}>
-        <CardActionArea component={RouterLink} to={sys.url}>
+      <Card className={classes.card} component={RouterLink} to={sys.url}>
+        <CardActionArea>
           <CardMedia
             component='img'
             /* height="auto" */
