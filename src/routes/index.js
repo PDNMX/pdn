@@ -28,6 +28,14 @@ import IconS6 from '../assets/rediseno2023/imgs/iconos/sistemas/ico_s6.svg'
 import IconS1 from '../assets/rediseno2023/imgs/iconos/sistemas/ico_s1.svg'
 import IconS4 from '../assets/rediseno2023/imgs/iconos/sistemas/ico_s4.svg'
 import IconS5 from '../assets/rediseno2023/imgs/iconos/sistemas/ico_s5.svg'
+
+import IconS2Light from '../assets/rediseno2023/imgs/iconos/sistemas/ico_s2_light.svg'
+import IconS3Light from '../assets/rediseno2023/imgs/iconos/sistemas/ico_s3_light.svg'
+import IconS6Light from '../assets/rediseno2023/imgs/iconos/sistemas/ico_s6_light.svg'
+import IconS1Light from '../assets/rediseno2023/imgs/iconos/sistemas/ico_s1_light.svg'
+import IconS4Light from '../assets/rediseno2023/imgs/iconos/sistemas/ico_s4_light.svg'
+import IconS5Light from '../assets/rediseno2023/imgs/iconos/sistemas/ico_s5_light.svg'
+
 import IconFAQ from '../assets/rediseno/ico_faq.svg'
 import IconEspecificaciones from '../assets/rediseno2023/imgs/iconos/menu/ico_especificaciones.svg'
 import IconAbout from '../assets/rediseno2023/imgs/iconos/menu/ico_que-es-pdn.svg'
@@ -56,8 +64,9 @@ const pdnRoutes = [
     private: false,
     name: 'Sistema de evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal',
     shortName: 'Sistema de Declaraciones',
-    color: '#713972',
+    color: '#F29888',
     icon: IconS1,
+    iconLight: IconS1Light,
     disabled: false,
     type: 'system'
   },
@@ -68,8 +77,9 @@ const pdnRoutes = [
     private: false,
     name: 'Sistema de los servidores públicos que intervengan en procedimientos de contrataciones públicas',
     shortName: 'Sistema de Servidores Públicos en contrataciones',
-    color: '#713972',
+    color: '#b25fac',
     icon: IconS2,
+    iconLight: IconS2Light,
     disabled: false,
     type: 'system'
   },
@@ -80,7 +90,8 @@ const pdnRoutes = [
     private: false,
     name: 'Sistema nacional de servidores públicos y particulares sancionados',
     shortName: 'Sistema de Sancionados',
-    color: '#713972',
+    color: '#9085da',
+    iconLight: IconS3Light,
     icon: IconS3,
     disabled: false,
     type: 'system'
@@ -92,8 +103,9 @@ const pdnRoutes = [
     private: false,
     name: 'Sistema de información y comunicación del Sistema Nacional Anticorrupción y del Sistema Nacional de Fiscalización',
     shortName: 'Sistema de Fiscalización',
-    color: '#713972',
+    color: '#88bc69',
     icon: IconS4,
+    iconLight: IconS3Light,
     disabled: true,
     type: 'system'
   },
@@ -104,8 +116,9 @@ const pdnRoutes = [
     private: false,
     name: 'Sistema de denuncias públicas de faltas administrativas y hechos de corrupción',
     shortName: 'Sistema de Denuncias',
-    color: '#713972',
+    color: '#34c9b2',
     icon: IconS5,
+    iconLight: IconS5Light,
     disabled: true,
     type: 'system'
   },
@@ -116,8 +129,9 @@ const pdnRoutes = [
     private: false,
     name: 'Sistema de información pública de contrataciones',
     shortName: 'Sistema de Contrataciones',
-    color: '#713972',
+    color: '#42a5cc',
     icon: IconS6,
+    iconLight: IconS6Light,
     disabled: false,
     type: 'system'
   },

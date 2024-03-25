@@ -111,7 +111,7 @@ const BannerDesktop = (props) => {
                   } `}
                   onClick={() => setShowSistemas(!showSistemas)}
                 >
-                  <img src={Sistemas} alt='Mercado Digital Anticorrupción' />
+                  <img src={Sistemas} alt='Sistemas' />
                   <Typography>SISTEMAS</Typography>
                   <ArrowDropDownIcon />
                 </li>
