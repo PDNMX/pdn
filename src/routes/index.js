@@ -43,6 +43,7 @@ import IconHelpDesk from '../assets/rediseno2023/imgs/iconos/menu/ico_mesa-ayuda
 import IconValidador from '../assets/rediseno/validador.svg'
 import IconCobertura from '../assets/rediseno2023/imgs/iconos/menu/ico_cobertura.svg'
 
+
 /*
 Para que la ruta pueda usarse con el Header genérico debe contar con:
 name: "Nombre completo de la sección",
@@ -105,7 +106,7 @@ const pdnRoutes = [
     shortName: 'Sistema de Fiscalización',
     color: '#88bc69',
     icon: IconS4,
-    iconLight: IconS3Light,
+    iconLight: IconS4Light,
     disabled: true,
     type: 'system'
   },
@@ -143,7 +144,8 @@ const pdnRoutes = [
     name: 'Especificaciones técnicas',
     shortName: 'Especificaciones',
     color: '#713972',
-    icon: IconEspecificaciones
+    icon: IconEspecificaciones,
+    type: ''
   },
   {
     exact: true,
@@ -154,7 +156,8 @@ const pdnRoutes = [
     shortName: 'Especificaciones técnicas S1',
     subName: 'Especificaciones técnicas',
     color: '#713972',
-    icon: IconS1
+    icon: IconS1,
+    type: ''
   },
   {
     exact: true,
@@ -165,7 +168,8 @@ const pdnRoutes = [
     subName: 'Especificaciones técnicas',
     shortName: 'Especificaciones técnicas S2',
     color: '#713972',
-    icon: IconS2
+    icon: IconS2,
+    type: ''
   },
   {
     exact: true,
@@ -176,7 +180,8 @@ const pdnRoutes = [
     subName: 'Especificaciones técnicas',
     shortName: 'Especificaciones técnicas S3',
     color: '#713972',
-    icon: IconS3
+    icon: IconS3,
+    type: ''
   },
   {
     exact: true,
@@ -187,7 +192,8 @@ const pdnRoutes = [
     subName: 'Especificaciones técnicas',
     shortName: 'Especificaciones técnicas S6',
     color: '#713972',
-    icon: IconS6
+    icon: IconS6,
+    type: ''
   },
   {
     exact: true,
@@ -197,7 +203,8 @@ const pdnRoutes = [
     name: '¿Qué es la Plataforma Digital Nacional?',
     shortName: '¿Qué es la PDN?',
     color: '#713972',
-    icon: IconAbout
+    icon: IconAbout,
+    type: ''
   },
   {
     exact: true,
@@ -206,7 +213,8 @@ const pdnRoutes = [
     private: false,
     name: 'Términos de uso',
     shortName: 'Términos de uso',
-    color: '#713972'
+    color: '#713972',
+    type: ''
   },
   {
     exact: true,
@@ -216,7 +224,8 @@ const pdnRoutes = [
     name: 'Preguntas Frecuentes',
     shortName: 'FAQ',
     color: '#713972',
-    icon: IconFAQ
+    icon: IconFAQ,
+    type: ''
   },
   {
     exact: true,
@@ -226,7 +235,8 @@ const pdnRoutes = [
     name: 'Validador',
     shortName: 'Validador',
     color: '#713972',
-    icon: IconValidador
+    icon: IconValidador,
+    type: ''
   },
   {
     exact: true,
@@ -236,7 +246,8 @@ const pdnRoutes = [
     name: 'Mesa de ayuda',
     shortName: 'Mesa de ayuda',
     color: '#713972',
-    icon: IconHelpDesk
+    icon: IconHelpDesk,
+    type: ''
   },
   {
     exact: true,
@@ -246,7 +257,8 @@ const pdnRoutes = [
     name: 'Cobertura',
     shortName: 'Cobertura',
     color: '#713972',
-    icon: IconCobertura
+    icon: IconCobertura,
+    type: ''
   },
   {
     exact: true,
@@ -256,7 +268,8 @@ const pdnRoutes = [
     name: 'Cobertura',
     shortName: 'Cobertura',
     color: '#713972',
-    icon: IconCobertura
+    icon: IconCobertura,
+    type: ''
   }
 ]
 

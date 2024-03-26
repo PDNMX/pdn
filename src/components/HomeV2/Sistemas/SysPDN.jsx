@@ -8,6 +8,8 @@ import IconS4 from '../../../assets/rediseno2023/imgs/iconos/sistemas/ico_s4_lig
 import IconS5 from '../../../assets/rediseno2023/imgs/iconos/sistemas/ico_s5_light.svg'
 import IconS6 from '../../../assets/rediseno2023/imgs/iconos/sistemas/ico_s6_light.svg'
 
+import pdnRoutes from '../../../routes/index'
+
 const styles = () => ({
   container: {
     maxWidth: 1500,
@@ -61,7 +63,8 @@ const systems = [
 ]
 
 const SysPDN = (props) => {
-  const { classes } = props
+  const { classes } = props;
+  let temp = pdnRoutes.filter(route => route.type === "system");
 
   return (
     <div className={classes.root}>
@@ -74,7 +77,7 @@ const SysPDN = (props) => {
       >
         <Grid item md={12} sm={12} pl={{ xs: 1, xl: 0 }}>
           <Typography variant='h4'>
-            Sistemas de la <br />Plataforma Digital Nacional
+            Sistemas de la Plataforma Digital Nacional
           </Typography>
           <Typography variant='h6' paragraph>
             El desarrollo de la <b>PDN</b> considera seis sistemas que integran
@@ -84,7 +87,7 @@ const SysPDN = (props) => {
           </Typography>
         </Grid>
 
-        {systems.map((s, i) => {
+        {temp.map((s, i) => {
           return <SysCard key={i} sys={s} />
         })}
 

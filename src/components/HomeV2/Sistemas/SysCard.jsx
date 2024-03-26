@@ -3,7 +3,6 @@ import { Link as RouterLink } from 'react-router-dom'
 import { withStyles } from '@mui/styles'
 
 import Card from '@mui/material/Card'
-import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 
 const styles = () => ({
@@ -23,8 +22,8 @@ const styles = () => ({
     display: 'flex',
     flexDirection: 'column',
     height: '100%',
-    textDecoration: 'none'
-
+    textDecoration: 'none',
+    textAlign: 'center'
   },
   gridItem: {
     display: 'flex',
@@ -38,18 +37,18 @@ const SysCard = (props) => {
 
   return (
     <Grid item lg={2} sm={4} xs={6} p={1}>
-      <Card className={classes.card} component={RouterLink} to={sys.url}>
+      <Card className={classes.card} component={RouterLink} to={sys.path} sx={{ backgroundColor: sys.color}}>
         <CardActionArea>
           <CardMedia
             component='img'
             /* height="auto" */
-            image={sys.icon}
+            image={sys.iconLight}
             alt={sys.name}
             sx={{ backgroundColor: sys.color, objectFit: 'scale-down', padding: '2rem', width: 'auto' }}
           />
-          <CardContent>
-            <Typography variant='body1'>{sys.name}</Typography>
-          </CardContent>
+          <Typography mx={1} mb={2} color="#fff" variant='body1'>{sys.name}</Typography>
+          {/* <CardContent>
+          </CardContent> */}
         </CardActionArea>
       </Card>
     </Grid>
