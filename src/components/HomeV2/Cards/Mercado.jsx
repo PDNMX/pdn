@@ -5,6 +5,8 @@ import logoMDA from '../../../assets/rediseno2023/imgs/iconos/logotipos/ico_mda.
 import ReactGA from 'react-ga4'
 import ButtonPDN from '../../Compartidos/ButtonPDN'
 
+import ScrollAnimation from '../ScrollAnimation'
+
 const styles = () => ({
   container: {
     maxWidth: 1500,
@@ -35,7 +37,9 @@ const CardMercardo = (props) => {
       >
         <Grid item xs={12} lg={2}>
           <Stack direction='row' justifyContent={{ xs: 'center', lg: 'end' }}>
-            <img alt='Logo MDA' src={logoMDA} className={classes.logoMDA} />
+            <ScrollAnimation>
+              <img alt='Logo MDA' src={logoMDA} className={classes.logoMDA} />
+            </ScrollAnimation>
           </Stack>
         </Grid>
         <Grid item xs={12} lg={6} p={{ xs: 1, lg: 0 }}>

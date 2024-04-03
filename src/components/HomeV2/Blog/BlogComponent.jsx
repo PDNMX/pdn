@@ -6,6 +6,8 @@ import axios from 'axios'
 import ButtonPDN from '../../Compartidos/ButtonPDN'
 import ReactGA from 'react-ga4'
 
+import ScrollAnimation from '../ScrollAnimation'
+
 const styles = () => ({
   container: {
     maxWidth: 1500,
@@ -66,6 +68,7 @@ const BlogComponent = (props) => {
 
         <Grid item md={12} sm={12} mt={5} pr={{ xs: 0, md: 1 }}>
           <Stack direction='row' justifyContent={{ xs: 'center', md: 'end' }}>
+            <ScrollAnimation>
             <ButtonPDN
               href='/blog'
               onClick={() => ReactGA.pageview('/blog')}
@@ -73,6 +76,7 @@ const BlogComponent = (props) => {
             >
               CONOCE MÁS
             </ButtonPDN>
+            </ScrollAnimation>
           </Stack>
         </Grid>
       </Grid>

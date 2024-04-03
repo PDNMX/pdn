@@ -1,65 +1,67 @@
-import withStyles from '@mui/styles/withStyles'
-import { Typography, Grid } from '@mui/material'
+import withStyles from "@mui/styles/withStyles";
+import { Typography, Grid } from "@mui/material";
 // import { Link } from "react-router-dom";
-import BuscadorModal from './Asistente/BotonPrincipal'
+import BuscadorModal from "./Asistente/BotonPrincipal";
 
 /* import bgPDN from "../../assets/rediseno2023/imgs/fondos/fondo-mapa.svg"; */
-import lgoSNA from '../../assets/rediseno2023/imgs/iconos/logotipos/logo-sna.svg'
-import lgoSESNA from '../../assets/rediseno2023/imgs/iconos/logotipos/logo-sesna.svg'
+import lgoSNA from "../../assets/rediseno2023/imgs/iconos/logotipos/logo-sna.svg";
+import lgoSESNA from "../../assets/rediseno2023/imgs/iconos/logotipos/logo-sesna.svg";
+
+import ScrollAnimation from "./ScrollAnimation";
 
 const styles = () => ({
   container: {
     /* background: `url(${bgPDN}) 10% -10px no-repeat rgb(255, 255, 255)`, */
     maxWidth: 1500,
-    margin: 'auto',
+    margin: "auto",
     /* background: "#f2f0f2", */
-    paddingTop: '4rem',
-    paddingBottom: '4rem'
-  }
-})
+    paddingTop: "4rem",
+    paddingBottom: "4rem",
+  },
+});
 
 const QueEsPDN = (props) => {
-  const { classes } = props
+  const { classes } = props;
 
   return (
     <>
-      <div className='rootHome'>
+      <div className="rootHome">
         <Grid
           container
-          alignItems='row'
-          justifyContent='center'
+          alignItems="row"
+          justifyContent="center"
           className={classes.container}
         >
           <Grid
             item
-            md={5}
-            lg={5}
+            md={12}
+            lg={12}
             xs={12}
             p={{ xs: 1, xl: 0 }}
-            sx={{ textAlign: { xs: 'center', md: 'left' } }}
+            sx={{ textAlign: "center" }}
           >
-            <Typography variant='h1'>
-              PLATAFORMA
+            <ScrollAnimation>
+              <Typography variant="h1">
+                PLATAFORMA DIGITAL NACIONAL
+              </Typography>
+              <Typography variant="h2">Inteligencia Anticorrupción</Typography>
+              <div>
+                <img
+                  style={{ margin: "1rem" }}
+                  src={lgoSNA}
+                  alt="Sistema Nacional Anticorrupción"
+                />
+                <img
+                  style={{ margin: "1rem" }}
+                  src={lgoSESNA}
+                  alt="Secretaría Ejecutiva del Sistema Nacional Anticorrupción"
+                />
+              </div>
               <br />
-              DIGITAL NACIONAL
-            </Typography>
-            <Typography variant='h2'>Inteligencia Anticorrupción</Typography>
-            <div>
-              <img
-                style={{ margin: '1rem' }}
-                src={lgoSNA}
-                alt='Sistema Nacional Anticorrupción'
-              />
-              <img
-                style={{ margin: '1rem' }}
-                src={lgoSESNA}
-                alt='Secretaría Ejecutiva del Sistema Nacional Anticorrupción'
-              />
-            </div>
-            <br />
-            <BuscadorModal />
+              <BuscadorModal />
+            </ScrollAnimation>
           </Grid>
-          <Grid item lg={7} md={7} xs={12} align='left' p={{ xs: 1, lg: 0 }}>
+          {/* <Grid item lg={7} md={7} xs={12} align='left' p={{ xs: 1, lg: 0 }}>
             <Typography>
               La <b>Plataforma Digital Nacional (PDN)</b> del Sistema Nacional
               Anticorrupción (SNA) es un <b>instrumento de inteligencia</b> que
@@ -81,7 +83,7 @@ const QueEsPDN = (props) => {
               <br />
               <br />
             </Typography>
-          </Grid>
+          </Grid> */}
 
           {/* <Grid item xs={12} pr={{ xs: 0, md: 1 }}>
             <Stack direction="row" justifyContent={{ xs: "center", md: "end" }}>
@@ -93,6 +95,6 @@ const QueEsPDN = (props) => {
         </Grid>
       </div>
     </>
-  )
-}
-export default withStyles(styles)(QueEsPDN)
+  );
+};
+export default withStyles(styles)(QueEsPDN);
