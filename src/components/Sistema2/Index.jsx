@@ -132,15 +132,16 @@ const Index = props => {
             </Grid>
 
             <Grid item md={4} xs={12} 
-            style={{ display: 'flex', alignItems: 'center' }} 
+            style={{ display: 'flex', alignItems: 'stretch' }} 
             onClick={() => handleContentId(2)}>
 
-              <figure className={isContentId(2) ? classes.cardSeleccionada : classes.card}>
+              <figure className={isContentId(2) ? classes.cardSeleccionada : classes.card}
+              style={{ alignItems: 'center' }} >
                 <img src={img2} alt='Particulares inhabilitados' className={classes.image} />
               <Typography
                 variant='subtitle1'
                 className={classes.labelCard}
-                style={{ color: isContentId(2) ? '#f1e9f2' : '#713972' }}
+                style={{ color: isContentId(2) ? '#f1e9f2' : '#713972'}}
               >
                 Buscador de particulares inhabilitados
               </Typography>

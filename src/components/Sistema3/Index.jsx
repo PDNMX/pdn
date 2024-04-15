@@ -115,8 +115,10 @@ const Index = ({ classes }) => {
                 </Typography>
                 </figure>
               </Grid>
-              <Grid item md={3} xs={12} onClick={() => handleIdContent(2)}>
-                <figure className={isIdContent(2) ? classes.cardSeleccionada : classes.card}>
+              <Grid item md={3} xs={12} onClick={() => handleIdContent(2)}
+              style={{ display: 'flex', alignItems: 'stretch' }} >
+                <figure className={isIdContent(2) ? classes.cardSeleccionada : classes.card}
+                style={{ alignItems: 'center' }} >
                   <img src={img2} alt='Particulares sancionados' className={classes.image} />
                 <Typography variant='subtitle1' style={{ color: isIdContent(2) ? '#f1e9f2' : '#713972' }} className={classes.labelCard}>
                   Buscador de particulares sancionados
