@@ -40,26 +40,28 @@ const QueEsPDN = (props) => {
             p={{ xs: 1, xl: 0 }}
             sx={{ textAlign: "center" }}
           >
-            <ScrollAnimation>
-              <Typography variant="h1">
-                PLATAFORMA DIGITAL NACIONAL
-              </Typography>
-              <Typography variant="h2">Inteligencia Anticorrupción</Typography>
-              <div>
-                <img
-                  style={{ margin: "1rem" }}
-                  src={lgoSNA}
-                  alt="Sistema Nacional Anticorrupción"
-                />
-                <img
-                  style={{ margin: "1rem" }}
-                  src={lgoSESNA}
-                  alt="Secretaría Ejecutiva del Sistema Nacional Anticorrupción"
-                />
-              </div>
-              <br />
-              <BuscadorModal />
-            </ScrollAnimation>
+            <div className="pdn-txt-bg">
+              <ScrollAnimation>
+                <Typography variant="h1">
+                  PLATAFORMA DIGITAL NACIONAL
+                </Typography>
+                <Typography variant="h2">Inteligencia Anticorrupción</Typography>
+                <div>
+                  <img
+                    style={{ margin: "1rem" }}
+                    src={lgoSNA}
+                    alt="Sistema Nacional Anticorrupción"
+                  />
+                  <img
+                    style={{ margin: "1rem" }}
+                    src={lgoSESNA}
+                    alt="Secretaría Ejecutiva del Sistema Nacional Anticorrupción"
+                  />
+                </div>
+                <br />
+                <BuscadorModal />
+              </ScrollAnimation>
+            </div>
           </Grid>
           {/* <Grid item lg={7} md={7} xs={12} align='left' p={{ xs: 1, lg: 0 }}>
             <Typography>
