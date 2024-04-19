@@ -41,11 +41,11 @@ const QueEsPDN = () => {
          
             <div className="pdn-txt-bg">
               <ScrollAnimation>
-                <Typography variant="h1">
+                <Typography variant="h1" style={{ fontWeight: 600, lineHeight: 1.5 }}>
                   PLATAFORMA DIGITAL NACIONAL
                 </Typography>
                 <Typography variant="h2">Inteligencia Anticorrupción</Typography>
-                <div>
+                <div style={{ marginBottom: "1rem" }}>
                   <img
                     style={{ margin: "1rem" }}
                     src={lgoSNA}
@@ -57,7 +57,7 @@ const QueEsPDN = () => {
                     alt="Secretaría Ejecutiva del Sistema Nacional Anticorrupción"
                   />
                 </div>
-                <br />
+                {/* <br /> */}
                 <BuscadorModal />
               </ScrollAnimation>
             </div>

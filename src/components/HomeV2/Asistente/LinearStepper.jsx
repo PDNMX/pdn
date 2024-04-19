@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     background: '#fff',
-    border: '1px solid',
+    border: '0px solid',
     borderRadius: '0.6em',
     margin: '2%',
     boxShadow:
