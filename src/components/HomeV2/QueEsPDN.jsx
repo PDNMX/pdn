@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import AnimatedCanvas from './AnimatedCanvas'
 import withStyles from "@mui/styles/withStyles";
 import { Typography, Grid } from "@mui/material";
@@ -27,7 +26,7 @@ const QueEsPDN = () => {
   return (
     <>
       <Grid py={5} container alignItems="row" justifyContent="center" style={{ position: 'relative' }}>
-        <Grid item xs={12} style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}>
+        <Grid item xs={12} style={{ zIndex: -1, position: 'absolute', top: 0, left: 0, width: '100%', height: 'auto' }}>
           <AnimatedCanvas />
         </Grid>
           <Grid
