@@ -11,9 +11,9 @@ const AnimatedCanvas = () => {
       range: 250,
       baseConnections: 3,
       addedConnections: 5,
-      baseSize: 5,
+      baseSize: 10,
       minSize: 1,
-      dataToConnectionSize: 0.4,
+      dataToConnectionSize: 0.25,
       sizeMultiplier: 0.7,
       allowedDist: 50,
       baseDist: 50,
@@ -23,21 +23,21 @@ const AnimatedCanvas = () => {
       baseSpeed: 0.04,
       addedSpeed: 0.05,
       baseGlowSpeed: 0.4,
-      addedGlowSpeed: 0.8,
-      rotVelX: 0.001,
-      rotVelY: 0.0009,
+      addedGlowSpeed: 0.4,
+      rotVelX: 0.0008,
+      rotVelY: 0.00009,
       repaintColor: "#fff",
       connectionColor: "hsla(193,98%,light%,alp)",
       rootColor: "hsla(299,33%,light%,alp)",
       endColor: "hsla(299,33%,light%,alp)",
       dataColor: "hsla(272,66%,light%,alp)",
-      wireframeWidth: 0.4,
+      wireframeWidth: 0.2,
       wireframeColor: "#8e8c91",
       depth: 250,
-      focalLength: 250,
+      focalLength: 300,
       vanishPoint: {
-        x: canvas.width / 2,
-        y: canvas.height / 2,
+        x: null,
+        y: null,
       },
     };
 
@@ -84,7 +84,7 @@ const AnimatedCanvas = () => {
         toDevelop[0].link();
         toDevelop.shift();
       }
-      opts.vanishPoint.x = (canvas.width = window.innerWidth) / 3.5;
+      opts.vanishPoint.x = (canvas.width = window.innerWidth) / 4;
       opts.vanishPoint.y = (canvas.height = window.innerHeight) / 6;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -335,7 +335,7 @@ const AnimatedCanvas = () => {
     }
 
     window.addEventListener("resize", () => {
-      opts.vanishPoint.x = (canvas.width = window.innerWidth) / 3.5;
+      opts.vanishPoint.x = (canvas.width = window.innerWidth) / 4;
       opts.vanishPoint.y = (canvas.height = window.innerHeight) / 6;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       init();
