@@ -33,7 +33,7 @@ const AnimatedCanvas = () => {
       dataColor: "hsla(272,66%,light%,alp)",
       wireframeWidth: 0.2,
       wireframeColor: "#8e8c91",
-      depth: 250,
+      depth: 300,
       focalLength: 300,
       vanishPoint: {
         x: null,

@@ -26,7 +26,7 @@ const QueEsPDN = () => {
   return (
     <>
       <Grid py={5} container alignItems="row" justifyContent="center" style={{ position: 'relative' }}>
-        <Grid item xs={12} style={{ opacity: 0.5, zIndex: -1, position: 'absolute', top: 0, left: 0, width: '100vw', height: '100vh' }}>
+        <Grid item xs={12} style={{ opacity: 0.5, zIndex: -1, position: 'absolute', top: -100, left: -60, width: '100vw', height: '100vh' }}>
           <AnimatedCanvas />
         </Grid>
           <Grid
