@@ -2,7 +2,7 @@ import { Typography, Grid, Paper, Box } from "@mui/material";
 import { withStyles } from "@mui/styles";
 import HeaderV2 from "../HomeV2/HeaderV2";
 import pdnRoutes from "../../routes";
-import working from "../../assets/rediseno2023/imgs/iconos/working.svg";
+import working from "../../assets/rediseno2023/imgs/iconos/ico-construccion.svg";
 
 const styles = (theme) => ({
   root: {
@@ -35,7 +35,9 @@ const styles = (theme) => ({
     paddingBottom: "50px",
   },
   erizo: {
-    minWidth: "400px",
+    width: "350px",
+    paddingTop:"50px",
+    paddingBottom:"50px",
   },
 });
 
