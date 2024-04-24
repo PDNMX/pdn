@@ -125,7 +125,7 @@ function Previos ({ data, classes, handleChangeSujetoObligado }) {
               </div>
             </>
           ) : (
-            <><h2 style={{ color: '#efd643' }}>No se encontraron resultados para los filtros de búsqueda definidos</h2></>
+            <><h2 style={{ color: '#c641c8' }}>No se encontraron resultados para los filtros de búsqueda definidos</h2></>
           )}
         </Grid>
       </Grid>

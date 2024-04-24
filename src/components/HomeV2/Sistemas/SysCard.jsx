@@ -39,7 +39,7 @@ const SysCard = (props) => {
         className={classes.card}
         component={RouterLink}
         to={sys.path}
-        sx={{ backgroundColor: sys.color }}
+        sx={{ background: sys.colorDegradado }}
       >
         <ScrollAnimation>
           <CardActionArea>
@@ -49,7 +49,7 @@ const SysCard = (props) => {
               image={sys.iconLight}
               alt={sys.name}
               sx={{
-                backgroundColor: sys.color,
+                Color: sys.color,
                 objectFit: "scale-down",
                 padding: "2rem",
                 width: "auto",
