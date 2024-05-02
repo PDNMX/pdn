@@ -249,7 +249,7 @@
     "data": {
       "s1": {
         "ejecutivo": {
-          "tiene": 1,
+          "tiene": 59,
           "total": 68
         },
         "legislativo": {
@@ -261,17 +261,17 @@
           "total": 2
         },
         "ocas": {
-          "tiene": 0,
+          "tiene": 1,
           "total": 6
         },
         "municipal": {
-          "tiene": 0,
+          "tiene": 147,
           "total": 152
         }
       },
       "s2": {
         "ejecutivo": {
-          "tiene": 1,
+          "tiene": 35,
           "total": 68
         },
         "legislativo": {
@@ -279,15 +279,15 @@
           "total": 2
         },
         "judicial": {
-          "tiene": 0,
+          "tiene": 1,
           "total": 2
         },
         "ocas": {
-          "tiene": 0,
+          "tiene": 4,
           "total": 6
         },
         "municipal": {
-          "tiene": 0,
+          "tiene": 108,
           "total": 152
         }
       },
@@ -809,11 +809,11 @@
     "data": {
       "s1": {
         "ejecutivo": {
-          "tiene": 0,
-          "total": 0
+          "tiene": 118,
+          "total": 118
         },
         "legislativo": {
-          "tiene": 1,
+          "tiene": 0,
           "total": 2
         },
         "judicial": {
@@ -825,14 +825,14 @@
           "total": 5
         },
         "municipal": {
-          "tiene": 46,
-          "total": 321
+          "tiene": 11,
+          "total": 327
         }
       },
       "s2": {
         "ejecutivo": {
-          "tiene": 0,
-          "total": 0
+          "tiene": 118,
+          "total": 118
         },
         "legislativo": {
           "tiene": 2,
@@ -847,8 +847,8 @@
           "total": 5
         },
         "municipal": {
-          "tiene": 37,
-          "total": 321
+          "tiene": 34,
+          "total": 327
         }
       },
       "s3": {
@@ -858,7 +858,7 @@
       "s6": {
         "ejecutivo": {
           "tiene": 0,
-          "total": 0
+          "total": 118
         },
         "legislativo": {
           "tiene": 0,
@@ -874,7 +874,7 @@
         },
         "municipal": {
           "tiene": 0,
-          "total": 321
+          "total": 327
         }
       }
     }
