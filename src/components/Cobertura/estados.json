@@ -1305,8 +1305,8 @@
           "total": 6
         },
         "municipal": {
-          "tiene": 10,
-          "total": 10
+          "tiene": 11,
+          "total": 11
         }
       },
       "s2": {
@@ -1328,7 +1328,7 @@
         },
         "municipal": {
           "tiene": 0,
-          "total": 10
+          "total": 11
         }
       },
       "s3": {
@@ -1354,7 +1354,7 @@
         },
         "municipal": {
           "tiene": 0,
-          "total": 10
+          "total": 11
         }
       }
     }
