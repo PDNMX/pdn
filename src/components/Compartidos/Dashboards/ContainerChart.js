@@ -8,8 +8,7 @@ const styles = theme => ({
         backgroundColor: theme.palette.background.paperChart,
         padding: theme.spacing(1),
         color: theme.palette.text.main,
-        minHeight: 500,
-        height: 250
+        minHeight: 500
     },
     infoButton:{
         textAlign:'right'

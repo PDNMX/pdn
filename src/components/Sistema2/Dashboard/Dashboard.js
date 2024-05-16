@@ -1,11 +1,11 @@
 import React from 'react';
 import { withStyles } from '@mui/styles';
 import { Paper, Grid } from '@mui/material';
-/*import Ejercicio from './Ejercicio';
-import Agrupaciones from './Agrupaciones';
-import Tops from './Tops';*/
-import Procedimientos from './Procedimientos';
-//import './graficas.css';
+import Ejercicio from './legacy/Ejercicio';
+import Agrupaciones from './legacy/Agrupaciones';
+import Tops from './legacy/Tops';
+import Procedimientos from './legacy/Procedimientos';
+import './legacy/graficas.css';
 import PropTypes from 'prop-types';
 import TotalRows from './TotalRows';
 import TotalInstituciones from './TotalInstituciones';
@@ -54,10 +54,10 @@ const Dashboard = props => {
           <Grid item xs={4}>
             <TotalRamos />
           </Grid>
-          {/* <Grid item xs={6}>
+          <Grid item xs={6}>
             <Ejercicio />
-          </Grid> */}
-          <Grid item xs={12}>
+          </Grid>
+          <Grid item xs={6}>
             <Procedimientos />
           </Grid>
           
@@ -69,13 +69,13 @@ const Dashboard = props => {
               Barchart -> Tops
           
           */}
-          {/* 
+          
           <Grid item xs={12}>
             <Agrupaciones />
           </Grid>
           <Grid item xs={12}>
             <Tops />
-          </Grid> */}
+          </Grid>
           <Grid item xs={12}>
             <FooterPage dataSet={'Registro de servidores públicos que intervienen en contrataciones públicas'} provider={'Secretaría de la Función Pública'} referenceDate={'17/05/2022'} />
           </Grid>

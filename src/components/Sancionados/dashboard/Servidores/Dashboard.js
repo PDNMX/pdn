@@ -2,10 +2,10 @@ import React from 'react';
 import {withStyles} from "@mui/styles";
 import PropTypes from 'prop-types';
 import {Grid, Paper} from "@mui/material";
-//import CausaSanciones from "./CausaSanciones";
-//import AnioResolucionSanciones from "./AnioResolucionSanciones";
-//import DependenciasSanciones from "./DependenciasSanciones";
-//import './legacy/graficas.css';
+import CausaSanciones from "./legacy/CausaSanciones";
+import AnioResolucionSanciones from "./legacy/AnioResolucionSanciones";
+import DependenciasSanciones from "./legacy/DependenciasSanciones";
+import './legacy/graficas.css';
 import TotalRows from "./TotalRows"
 import TotalDependencias from "./TotalDependencias";
 import TotalSancionesFin from "./TotalSancionesFin";
@@ -83,7 +83,7 @@ const Dashboard = (props) => {
                         DependenciasSanciones -> TreeMap
 
                     */}
-                    {/* <Grid item xs={12}  id={"g1"}>
+                    <Grid item xs={12}  id={"g1"}>
                         <AnioResolucionSanciones/>
                     </Grid>
                     <Grid item xs={12}  id={"g2"}>
@@ -91,7 +91,7 @@ const Dashboard = (props) => {
                     </Grid>
                     <Grid item xs={12}  id={"g3"}>
                         <DependenciasSanciones/>
-                    </Grid> */}
+                    </Grid>
                     <Grid item xs={12}>
                         <FooterPage  dataSet={"Servidores públicos sancionados"}
                                      provider={"Secretaría de la Función Pública"}

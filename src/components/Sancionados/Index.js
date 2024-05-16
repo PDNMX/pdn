@@ -111,7 +111,7 @@ const Index = ({ classes }) => {
                   Buscador de Particulares sancionados
                 </Typography>
               </Grid>
-              {/*<Grid
+              <Grid
                 item
                 md={3}
                 xs={12}
@@ -143,7 +143,7 @@ const Index = ({ classes }) => {
                             className={classes.labelCard}>
                   Visor de datos (Particulares sancionados)
                 </Typography>
-              </Grid>*/}
+              </Grid>
             </Grid>
           </Grid>
         </Grid>
