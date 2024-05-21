@@ -167,7 +167,7 @@ const DependenciasSanciones = (props) => {
     return (
         <div>
             <Grid container spacing={2} justifyContent='center'>
-                <Grid item xs={10}>
+                <Grid item xs={12} md={6}>
                     <ContainerChart>
                         <Typography variant={"h6"} className={classes.titulo}>
                             <b>{"Sanciones a personas servidoras públicas por Institución"}</b>

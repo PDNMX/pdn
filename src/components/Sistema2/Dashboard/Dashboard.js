@@ -54,10 +54,10 @@ const Dashboard = props => {
           <Grid item xs={4}>
             <TotalRamos />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <Ejercicio />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <Procedimientos />
           </Grid>
           

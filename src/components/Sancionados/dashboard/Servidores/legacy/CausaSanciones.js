@@ -34,7 +34,7 @@ const styles = theme => ({
         paddingLeft: theme.spacing(4),
     },
     graph: {
-        marginBottom: theme.spacing(4)
+        marginBottom: theme.spacing(0)
     }
 });
 
@@ -198,8 +198,8 @@ const CausasSanciones = (props) => {
 
     return (
         <div>
-            <Grid container spacing={3} justifyContent='center' >
-                <Grid item xs={10} >
+            <Grid container spacing={2} justifyContent='center' >
+                <Grid item xs={12} md={6}>
                     <ContainerChart>
                         <Typography variant={"h6"} className={classes.titulo}>
                             <b>Causa de las sanciones de 2013 a la fecha</b>
@@ -213,7 +213,7 @@ const CausasSanciones = (props) => {
                         }
                     </ContainerChart>
                 </Grid>
-                <Grid item xs={10}>
+                <Grid item xs={12} md={6}>
                     <ContainerChart>
                         <Typography variant={"h6"} className={classes.titulo}>
                             <b>Causa de las sanciones por año</b>
