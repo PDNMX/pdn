@@ -3,10 +3,10 @@ import { withStyles } from '@mui/styles'
 
 const styles = theme => ({
   paperChart: {
-    backgroundColor: theme.palette.background.paperChart,
+    backgroundColor: '#ffffffa3',
     padding: theme.spacing(2),
     textAlign: 'center',
-    borderRadius: '10px 50px 10px 50px'
+    borderRadius: '5px'
   },
   text: {
     textAlign: 'center',
@@ -21,7 +21,7 @@ const GeneralData = (props) => {
   const { classes, digit, text, currency } = props
   return (
     <>
-      <Paper elevation={24} className={classes.paperChart}>
+      <Paper elevation={0} className={classes.paperChart}>
         <Typography variant='h3' className={classes.digit}>
           {currency ? '$' : null} {digit ? digit.toLocaleString('en-US') : null}
         </Typography>

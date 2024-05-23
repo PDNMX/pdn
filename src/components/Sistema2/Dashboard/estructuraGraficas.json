@@ -1,0 +1,142 @@
+{
+  "s2": [
+    {
+      "nombreEnte": "Secretaria de Puebla",
+      "fechaActualización": "dateFormat",
+      "conteoServidores": 1000,
+      "conteoInstitucionesFederales": 1000,
+      "conteoRamosFederales": 1000,
+      "servidoresEnContratacionesPorAnio": [
+        {
+          "ejercicio": "2015",
+          "total": 1000
+        }
+      ],
+      "tipoDeProcedimientosPorAnio": [
+        {
+          "ejercicio": "2015",
+          "case": "ENAJENACIÓN",
+          "total": 1000
+        }
+      ],
+      "ejercioRamoInstitucion": [
+        {
+          "añoEjercicio": "2024",
+          "ramo": "Ramo",
+          "institucion": "SHCP",
+          "totalServidores": 1000
+        }
+      ],
+      "conteoTop10": [
+        {
+          "topProcedimiento": [
+            {
+              "top": "1",
+              "total": 1000,
+              "case": "procedimiento"
+            }
+          ],
+          "topInstituciones": [
+            {
+              "top": "1",
+              "total": 1000,
+              "case": "institucion"
+            }
+          ],
+          "topUnidadesResponsables": [
+            {
+              "top": "1",
+              "total": 1000,
+              "case": "Unidad Responsable"
+            }
+          ],
+          "topPuestos": [
+            {
+              "top": "1",
+              "total": 1000,
+              "case": "Puesto"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "s3": [
+    {
+      "servidores": [
+        {
+          "nivel": "Federal",
+          "nombreProveedor": "Secretaría de la Función Pública",
+          "institucion": "Banco de México",
+          "tipoSancion": "Sanción Económica",
+          "fechaActualizacion": "dateFormat",
+          "conteoSancionados": 1000,
+          "conteoInstituciones": 1000,
+          "conteoInahabilitaciones": 1000,
+          "SancionesResueltasPorAnio": [
+            {
+              "anio_resolucion": "2004",
+              "total": 1000
+            }
+          ],
+          "duracionSancionesEnAnios": [
+            {
+              "anios": 10,
+              "total": 1000
+            }
+          ],
+          "causaSanciones": [
+            {
+              "causa": "ABUSO DE AUTORIDAD",
+              "total": 1000
+            }
+          ],
+          "causaSancionesPorAnio": [
+            {
+              "anio": "2024",
+              "causa": "ABUSO DE AUTORIDAD",
+              "total": 1000
+            }
+          ]
+        }
+      ],
+      "particulares": [
+        {
+          "nivel": "Federal",
+          "nombreProveedor": "Secretaría de la Función Pública",
+          "institucion": "Banco de México",
+          "tipoSancion": "Sanción Económica",
+          "fechaActualización": "dateFormat",
+          "conteoSancionados": 1000,
+          "conteoMultas": "currencyFormat",
+          "conteoAutoridadesSancionadoras": 1000,
+          "sancionesPorAño": [
+            {
+              "anioResolucion": "2007",
+              "count": 1000
+            }
+          ],
+          "sentidoResoluciones": [
+            {
+              "sentidoDeResolucion": "SANCIONATORIA CON MULTA",
+              "total": 1000
+            }
+          ],
+          "sentidoResolucionesPorAnio": [
+            {
+              "anio": "2024",
+              "sentidoDeResolucion": "SANCIONATORIA CON MULTA",
+              "total": 1000
+            }
+          ],
+          "sancionesPorInstitucion": [
+            {
+              "institucion": "SANCIONATORIA CON MULTA",
+              "total": 1000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

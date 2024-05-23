@@ -44,7 +44,7 @@ export default createTheme(
     palette: {
       mode: 'light',
       text: {
-        main: '#E1E8EB',
+        main: '#55575A',
         primary: '#55575A',
         secondary: '#713972',
         linkColor: '#713972',

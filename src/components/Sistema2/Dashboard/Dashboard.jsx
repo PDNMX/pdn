@@ -10,6 +10,7 @@ import TotalRows from './TotalRows'
 import TotalInstituciones from './TotalInstituciones'
 import TotalRamos from './TotalRamos'
 import FooterPage from '../../Compartidos/Dashboards/FooterPage'
+import TotalEjercicio from './TotalEjercicio'
 
 const styles = theme => ({
   root: {
@@ -23,8 +24,8 @@ const styles = theme => ({
   },
   paper: {
     backgroundColor: theme.palette.background.opaque,
-    padding: theme.spacing(2),
-    color: theme.palette.primary.contrastText,
+    padding: theme.spacing(7),
+    color: theme.palette.primary,
     borderStyle: 'solid',
     borderWidth: 1,
     borderColor: theme.palette.background.border,
@@ -42,7 +43,7 @@ const Dashboard = props => {
 
   return (
     <div className={classes.root} id='s2sgraf'>
-      <Paper className={classes.paper} elevation={15}>
+      <Paper className={classes.paper} elevation={1}>
         <Grid container spacing={3}>
           <Grid item xs={4}>
             <TotalRows />
@@ -56,6 +57,9 @@ const Dashboard = props => {
           {/* <Grid item xs={6}>
             <Ejercicio />
           </Grid> */}
+          <Grid item xs={12}>
+            <TotalEjercicio />
+          </Grid>
           <Grid item xs={12}>
             <Procedimientos />
           </Grid>

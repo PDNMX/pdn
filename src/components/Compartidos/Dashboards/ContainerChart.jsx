@@ -21,7 +21,7 @@ const styles = theme => ({
 const ContainerChart = (props) => {
   const { handleOpen, children, classes } = props
   return (
-    <Paper elevation={24} className={classes.paperChart}>
+    <Paper elevation={0} className={classes.paperChart}>
       {
                 typeof handleOpen !== 'undefined'
                   ? <div className={classes.infoButton}>

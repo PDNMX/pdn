@@ -62,7 +62,7 @@ function Dashboard (props) {
   const { classes } = props
   return (
     <div id='s3pgraf' className={classes.root}>
-      <Paper elevation={15} className={classes.paper}>
+      <Paper elevation={1} className={classes.paper}>
         <Grid container spacing={3} justifyContent='center' className={classes.aux}>
           <Grid item xs={4}>
             <TotalRows />

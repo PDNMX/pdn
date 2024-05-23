@@ -70,7 +70,7 @@ const BlogCard = (props) => {
             //src={post.feature_image}
             sizes="(max-width: 1000px) 400px, 800px"
             loading="lazy"
-            srcset={`${post.feature_image} 300w,
+            srcSet={`${post.feature_image} 300w,
                   ${post.feature_image} 600w,
                   ${post.feature_image} 1000w,
                   ${post.feature_image} 2000w`}

@@ -7,6 +7,7 @@ import Dashboard from './Dashboard/Dashboard'
 import BuscadorParticularesSancionados from '../Sistema3/Particulares/BuscadorParticularesSancionados'
 import img1 from '../../assets/rediseno/svg_iconos_azul/SVG/s6_01.svg'
 import img2 from '../../assets/rediseno/svg_iconos_azul/SVG/s1_01.svg'
+import img3 from '../../assets/rediseno/svg_iconos_azul/SVG/s6_02.svg'
 import pdnRoutes from '../../routes/index'
 
 import { ThemeProvider } from '@mui/material/styles'
@@ -27,9 +28,9 @@ const styles = theme => ({
   tabText: {
     // color: theme.palette.secondary.contrastText
   },
-  tabsSection: {
-    maxWidth: 1200, 
-    padding: 0,  
+  section: {
+    maxWidth: '1200px',
+    marginTop: theme.spacing(8)
   },
   contentsSection: {
     color: theme.palette.secondary.contrastText,
@@ -91,8 +92,8 @@ const TabContents = props => {
       return <BuscadorS2 />
     case 2:
       return <BuscadorParticularesSancionados />
-//    case 3:
-//      return <Dashboard />
+    case 3:
+      return <Dashboard />
     default:
       return <BuscadorS2 />
   }
@@ -110,9 +111,9 @@ const Index = props => {
       <HeaderV2 section={system} />
 
       {/* TABS */}
-      <Grid container spacing={0} justifyContent='center' className={classes.container}>
-        <Grid item xs={12} className={classes.tabsSection}>
-          <Grid container spacing={0}>
+      <Grid container justifyContent='center' alignItems='center'>
+        <Grid item xs={12} className={classes.section}>
+          <Grid container>
             <Grid item md={4} xs={12} 
             style={{ display: 'flex', alignItems: 'center' }} 
             onClick={() => handleContentId(1)}>
@@ -147,6 +148,28 @@ const Index = props => {
               </Typography>
               </figure>
             </Grid>
+            
+            <Grid item md={4} xs={12} 
+            style={{ display: 'flex', alignItems: 'stretch' }} 
+            onClick={() => {
+              setContentId(3);
+              ReactGA.event({category: 'visor-s2', action: 'click'});
+          }}>
+
+              <figure className={isContentId(3) ? classes.cardSeleccionada : classes.card}
+              style={{ alignItems: 'center' }} >
+                <img src={img3} alt='Particulares inhabilitados' className={classes.image} />
+              <Typography
+                variant='subtitle1'
+                className={classes.labelCard}
+                style={{ color: isContentId(3) ? '#f1e9f2' : '#713972'}}
+              >
+                Visor de datos
+              </Typography>
+              </figure>
+            </Grid>
+
+
 
             {/* <Grid item md={4} xs={12}
                                onClick={() => {
@@ -168,14 +191,16 @@ const Index = props => {
 
           </Grid>
         </Grid>
-
-       <Grid item xs={12} className={classes.contentsSection}>
+      </Grid>
+      <Grid container justifyContent='center'>
+        <Grid item xs={12} className={classes.contentsSection}>
           <ThemeProvider theme={ThemeV2}>
             <TabContents index={contentId} />
           </ThemeProvider>
         </Grid>
-
       </Grid>
+      <br></br>
+      
     </div>
   )
 }

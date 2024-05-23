@@ -12,7 +12,7 @@ const themeBar = {
   fontSize: 11,
   grid: {
     line: {
-      stroke: '#f6f5f4',
+      stroke: '#583171',
       strokeWidth: 0.2
     }
   },
@@ -20,18 +20,18 @@ const themeBar = {
     title: {
       text: {
         fontSize: 11,
-        fill: '#f6f5f4'
+        fill: 'red'
       }
     },
     text: {
       fontSize: 11,
-      fill: '#f6f5f4'
+      fill: '#55575A'
     },
     ticks: {
       line: {},
       text: {
         fontSize: 10,
-        fill: '#f6f5f4'
+        fill: '#55575A'
       }
     }
   },
@@ -45,7 +45,7 @@ const themeBar = {
     legend: {
       text: {
         fontSize: 12,
-        fill: '#f6f5f4'
+        fill: '#55575A'
       }
     },
     ticks: {
@@ -55,13 +55,13 @@ const themeBar = {
       },
       text: {
         fontSize: 11,
-        fill: '#f6f5f4'
+        fill: '#55575A'
       }
     }
   },
   tooltip: {
     container: {
-      background: '#333',
+      background: '#4f274f',
       color: '#fff',
       fontSize: 12
     },
@@ -91,7 +91,7 @@ const styles = theme => ({
 })
 
 const BarTotalsLayer = (props) => {
-  const labelOffset = 10
+  const labelOffset = 2
   const labelFontSize = 12
   if (props.bars.length === 0) return null
   // compute totals for each index/bar
@@ -207,13 +207,20 @@ const Procedimiento = props => {
             data={state.data}
             keys={['enajenación', 'concesiones', 'contrataciones']}
             indexBy={['año']}
-            margin={{ top: 20, right: 20, bottom: 120, left: 75 }}
+            margin={{ top: 60, right: 20, bottom: 120, left: 75 }}
             padding={0.1}
             colors={{ scheme: 'nivo' }}
             groupMode='stacked'
 
                     /* borderColor={{ from: "color", modifiers: [["darker", 1.6]] }} */
-            axisTop={null}
+            axisTop={{
+              tickSize: 5,
+              tickPadding: 15,
+              tickRotation: 0,
+              legend: 'Tipos de Procedimientos',
+              legendPosition: 'middle',
+              legendOffset: -50
+            }}
             axisRight={null}
             axisBottom={{
               tickSize: 5,

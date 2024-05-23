@@ -4,6 +4,8 @@ import { Grid, Typography } from '@mui/material'
 import PropTypes from 'prop-types'
 import img1 from '../../assets/rediseno/svg_iconos_azul/SVG/s1_01.svg'
 import img2 from '../../assets/rediseno/svg_iconos_azul/SVG/s1_01.svg'
+import img3 from '../../assets/rediseno/svg_iconos_azul/SVG/s6_02.svg'
+import img4 from '../../assets/rediseno/svg_iconos_azul/SVG/s6_02.svg'
 import BuscadorServidoresSancionados from './Servidores/BuscadorServidoresSancionados'
 import BuscadorParticularesSancionados from './Particulares/BuscadorParticularesSancionados'
 import HeaderV2 from '../HomeV2/HeaderV2'
@@ -89,8 +91,10 @@ const TabContents = props => {
       return <BuscadorServidoresSancionados />
     case 2:
       return <BuscadorParticularesSancionados />
-//    case 3:
-//      return <Dashboard />
+    case 3:
+      return <Dashboard />
+    case 4:
+      return <Dashboard2 />      
     default:
       return <Dashboard />
   }
@@ -122,6 +126,29 @@ const Index = ({ classes }) => {
                   <img src={img2} alt='Particulares sancionados' className={classes.image} />
                 <Typography variant='subtitle1' style={{ color: isIdContent(2) ? '#f1e9f2' : '#713972' }} className={classes.labelCard}>
                   Buscador de particulares sancionados
+                </Typography>
+                </figure>
+              </Grid>
+              <Grid item md={3} xs={12} onClick={() => {
+                  setIdContent(3);
+                  ReactGA.event({ category: 'visor-s3SP', action: 'click' });
+                }}
+              style={{ display: 'flex', alignItems: 'stretch' }} >
+                <figure className={isIdContent(3) ? classes.cardSeleccionada : classes.card}
+                style={{ alignItems: 'center' }} >
+                  <img src={img3} alt='Particulares sancionados' className={classes.image} />
+                <Typography variant='subtitle1' style={{ color: isIdContent(3) ? '#f1e9f2' : '#713972' }} className={classes.labelCard}>
+                Visor de datos (Servidores públicos sancionados)
+                </Typography>
+                </figure>
+              </Grid>
+              <Grid item md={3} xs={12} onClick={() => handleIdContent(4)}
+              style={{ display: 'flex', alignItems: 'stretch' }} >
+                <figure className={isIdContent(4) ? classes.cardSeleccionada : classes.card}
+                style={{ alignItems: 'center' }} >
+                  <img src={img4} alt='Particulares sancionados' className={classes.image} />
+                <Typography variant='subtitle1' style={{ color: isIdContent(4) ? '#f1e9f2' : '#713972' }} className={classes.labelCard}>
+                Visor de datos (Particulares sancionados)
                 </Typography>
                 </figure>
               </Grid>

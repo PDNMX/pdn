@@ -1,14 +1,19 @@
 import { withStyles } from '@mui/styles'
 import PropTypes from 'prop-types'
 import { Grid, Paper } from '@mui/material'
-// import CausaSanciones from "./CausaSanciones";
-// import AnioResolucionSanciones from "./AnioResolucionSanciones";
-// import DependenciasSanciones from "./DependenciasSanciones";
-// import './legacy/graficas.css';
+import CausaSanciones from "./CausaSanciones";
+import AnioResolucionSanciones from "./AnioResolucionSanciones";
+import DependenciasSanciones from "./DependenciasSanciones";
+import './legacy/graficas.css';
 import TotalRows from './TotalRows'
 import TotalDependencias from './TotalDependencias'
 import TotalSancionesFin from './TotalSancionesFin'
 import FooterPage from '../../../Compartidos/Dashboards/FooterPage'
+import AnioSanciones from './AnioSanciones';
+import LineChart from './AnioDuracionSanciones';
+import TiemposSanciones from './TiemposSanciones';
+import AnioDuracionSanciones from './AnioDuracionSanciones';
+
 
 const styles = theme => ({
   root: {
@@ -46,6 +51,8 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.opaque,
     maxWidth: 1200,
     paddingTop: theme.spacing(7),
+    paddingLeft: theme.spacing(7),
+    paddingRight: theme.spacing(7),
     margin: 'auto',
     color: theme.palette.primary.contrastText,
     borderStyle: 'solid',
@@ -64,7 +71,7 @@ const Dashboard = (props) => {
   const { classes } = props
   return (
     <div id='s3sgraf' className={classes.root}>
-      <Paper elevation={15} className={classes.paper}>
+      <Paper elevation={0} className={classes.paper}>
         <Grid container spacing={3} justifyContent='center' className={classes.aux}>
           <Grid item xs={4}>
             <TotalRows />
@@ -75,6 +82,15 @@ const Dashboard = (props) => {
           <Grid item xs={4}>
             <TotalSancionesFin />
           </Grid>
+          <Grid item xs={12}>
+            <AnioDuracionSanciones/>
+          </Grid>
+          <Grid item xs={12}>
+            <TiemposSanciones/>
+          </Grid>
+         {/*  <Grid item xs={12}>
+            <DependenciasSanciones/>
+          </Grid> */}
           {/*
                         s3s
                         LinePlot -> AnioResolucionSanciones
