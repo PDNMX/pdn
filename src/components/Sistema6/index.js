@@ -9,7 +9,7 @@ import Disclaimer from "./Disclaimer";
 import img1 from "../../assets/rediseno/svg_iconos_azul/SVG/s6_01.svg";
 //import img2 from "../../assets/img/particulares_sancionados.svg";
 import img3 from "../../assets/rediseno/svg_iconos_azul/SVG/s6_02.svg";
-import {Grid, Paper, Typography, Box} from "@mui/material";
+import { Grid, Paper, Typography, Box } from "@mui/material";
 import SelectSupplier from "./SelectSupplier";
 import bgimg from "../../assets/rediseno/fondo_cruces_dark.png";
 import HeaderV2 from '../HomeV2/HeaderV2';
@@ -25,8 +25,15 @@ const styles = theme => ({
         backgroundRepeat: "repeat",
     },
     tabContainer: {
-        paddingTop: 90,
+        // paddingTop: 90,
         //paddingBottom: 90
+    },
+    tabsSection: {
+        maxWidth: '1200px',
+    },
+    contentsSection: {
+        color: theme.palette.secondary.contrastText,
+        maxWidth: '1200px',
     },
     tabItem: {
         maxWidth: 1200,
@@ -78,7 +85,7 @@ const styles = theme => ({
         borderColor: theme.palette.background.opaque,
         borderBottomStyle: 'none',
         borderRadius: '10px 10px 0px 0px',
-        marginRight:10
+        marginRight: 10
 
     },
     cardSeleccionada: {
@@ -94,89 +101,97 @@ const styles = theme => ({
         borderRadius: '10px 10px 0px 0px',
         display: 'inline-block',
         float: 'left',
-        marginRight:10,
-        opacity:.7
+        marginRight: 10,
+        opacity: .7
     },
-    labelCard:{
+    labelCard: {
         color: theme.palette.S6.color,
         marginLeft: theme.spacing(1),
         paddingTop: theme.spacing(1)
-    }});
+    }
+});
 
 
 const Index = props => {
-    const {classes} = props;
+    const { classes } = props;
     const [selectedTab, setSelectedTab] = React.useState(0);
-    const [dataSupplier, setDataSupplier]  = React.useState("SHCP");
+    const [dataSupplier, setDataSupplier] = React.useState("SHCP");
     const handleSelectTab = t => setSelectedTab(t);
     const isSelected = t => t === selectedTab;
-    const system = pdnRoutes.find(route => route.path==='/contrataciones');
+    const system = pdnRoutes.find(route => route.path === '/contrataciones');
 
     return (<div className={classes.root}>
-        <HeaderV2 section = {system}/>
-        <Grid container spacing={0} justifyContent="center" className={classes.tabContainer}>
-            <Grid item xs={12} style={{padding:0, maxWidth: 1200}}>
+        <HeaderV2 section={system} />
+
+
+        <Grid container spacing={0} justifyContent="center" alignItems={'center'}>
+            <Grid item xs={12} className={classes.tabsSection}>
                 <Grid container spacing={0}>
                     <Grid item xs={12} sm={12} md={6} lg={6} xl={6}
-                          onClick={() => handleSelectTab(0)}
-                          id={0}
-                        //className={isSelected(0)?classes.selectedTab:classes.tab}
+                        onClick={() => handleSelectTab(0)}
+                        id={0}
+                    //className={isSelected(0)?classes.selectedTab:classes.tab}
                     >
 
-                        <figure className={isSelected(0)?classes.cardSeleccionada: classes.card}>
-                            <img src={img1} className={classes.image} alt="explora"/>
+                        <figure className={isSelected(0) ? classes.cardSeleccionada : classes.card}>
+                            <img src={img1} className={classes.image} alt="explora" />
                         </figure>
 
-                        <Typography style={{fontWeight: isSelected(0)?500:300, paddingTop: 15}} className={classes.labelCard}>
+                        <Typography style={{ fontWeight: isSelected(0) ? 500 : 300, paddingTop: 15 }} className={classes.labelCard}>
                             Explora las contrataciones
                         </Typography>
 
                     </Grid>
                     <Grid item xs={12} sm={12} md={6} lg={6} xl={6}
-                          onClick={ () => handleSelectTab(1)}
-                          id={1}
-                        //className={isSelected(1)?classes.selectedTab:classes.tab}
+                        onClick={() => handleSelectTab(1)}
+                        id={1}
+                    //className={isSelected(1)?classes.selectedTab:classes.tab}
                     >
 
-                        <figure className={isSelected(1)? classes.cardSeleccionada: classes.card}>
-                            <img src={img3} className={classes.image} alt="Visualiza"/>
+                        <figure className={isSelected(1) ? classes.cardSeleccionada : classes.card}>
+                            <img src={img3} className={classes.image} alt="Visualiza" />
                         </figure>
 
-                        <Typography style={{fontWeight: isSelected(1)?500:300, paddingTop: 15}} className={classes.labelCard}>
+                        <Typography style={{ fontWeight: isSelected(1) ? 500 : 300, paddingTop: 15 }} className={classes.labelCard}>
                             Visualiza las contrataciones
                         </Typography>
 
                     </Grid>
                 </Grid>
+
             </Grid>
+
+        </Grid>
+        <Grid container spacing={0} justifyContent="center" className={classes.tabContainer}>
+
             <ThemeProvider theme={ThemeV2}>
-                {selectedTab === 0?
-                    <Grid item xs={12} className={classes.tabItem} style={{"overflow":"auto"}}>
+                {selectedTab === 0 ?
+                    <Grid item xs={12} className={classes.tabItem} style={{ "overflow": "auto" }}>
                         <Paper className={classes.paper1} elevation={15}>
                             <Box paddingLeft={1} paddingRight={1} paddingBottom={3}>
-                            
-                                <SelectSupplier dataSupplier={dataSupplier} setDataSupplier={setDataSupplier}/>
-                            
+
+                                <SelectSupplier dataSupplier={dataSupplier} setDataSupplier={setDataSupplier} />
+
                             </Box>
                             {/* TODO: add supplier  support*/}
-                            <Busqueda dataSupplier={dataSupplier}/>
+                            <Busqueda dataSupplier={dataSupplier} />
                         </Paper>
                     </Grid>
                     :
                     <Grid item xs={12} className={classes.tabItem}>
                         <Paper className={classes.paper2} elevation={15}>
                             <Box paddingTop={1} paddingBottom={3}>
-                                <SelectSupplier dataSupplier={dataSupplier} setDataSupplier={setDataSupplier}/>
+                                <SelectSupplier dataSupplier={dataSupplier} setDataSupplier={setDataSupplier} />
                             </Box>
 
                             {/* TODO: add supplier support*/}
-                            <Disclaimer dataSupplier={dataSupplier}/>
+                            <Disclaimer dataSupplier={dataSupplier} />
 
                             {/* TODO: add supplier support*/}
-                            <Cifras dataSupplier={dataSupplier}/>
+                            <Cifras dataSupplier={dataSupplier} />
 
-                            { dataSupplier && dataSupplier === 'SHCP' &&
-                                <Top dataSupplier={dataSupplier}/>
+                            {dataSupplier && dataSupplier === 'SHCP' &&
+                                <Top dataSupplier={dataSupplier} />
                             }
                         </Paper>
                     </Grid>
@@ -192,7 +207,7 @@ const Index = props => {
 
         <Grid container spacing={0} justifyContent="center">
             <Grid item xs={12} className={classes.item}>
-                <Descarga url={process.env.REACT_APP_BULK_S6} tipoGA={'bulk-s6'}/>
+                <Descarga url={process.env.REACT_APP_BULK_S6} tipoGA={'bulk-s6'} />
             </Grid>
         </Grid>
 
