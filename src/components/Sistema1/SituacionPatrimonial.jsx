@@ -22,7 +22,7 @@ import Prestamo from './SituacionPatrimonial/15Prestamo'
 import ErrorBoundary from './ErrorBoundary'
 
 import { info } from './utils'
-import style from './style'
+import style from '../style'
 
 const situacionPatrimonial = (data, tipo) => {
   const { datosCurricularesDeclarante, experienciaLaboral, bienesInmuebles, vehiculos, bienesMuebles, inversiones, adeudos, prestamoOComodato } = data

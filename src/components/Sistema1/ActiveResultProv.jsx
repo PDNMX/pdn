@@ -4,7 +4,7 @@ import CircularProgress from '@mui/material/CircularProgress'
 import IconSunny from '@mui/icons-material/WbSunny'
 
 import makeStyles from '@mui/styles/makeStyles'
-import styles from './style'
+import styles from '../style'
 import { Grid, Tooltip, Typography } from '@mui/material'
 
 import Tabla from './Tabla'

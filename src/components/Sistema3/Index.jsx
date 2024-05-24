@@ -18,8 +18,9 @@ import pdnRoutes from '../../routes/index'
 
 import { ThemeProvider } from '@mui/material/styles'
 import ThemeV2 from '../../ThemeV2'
+import styles from '../style'
 
-const styles = theme => ({
+const styles2 = theme => ({
   root: {
     flexGrow: 1
     /*     backgroundColor: theme.palette.primary.main,
@@ -112,19 +113,18 @@ const Index = ({ classes }) => {
           <Grid item xs={12} className={classes.section}>
             <Grid container>
               <Grid item md={3} xs={12} onClick={() => handleIdContent(1)}>
-                <figure className={isIdContent(1) ? classes.cardSeleccionada : classes.card}>
-                  <img src={img1} alt='Servidores públicos sancionados' className={classes.image} />
-                <Typography variant='subtitle1' style={{ color: isIdContent(1) ? '#f1e9f2' : '#713972' }} className={classes.labelCard}>
+                <figure className={isIdContent(1) ? classes.selectedTab : classes.card} >
+                  <img src={img1} alt='Servidores públicos sancionados' className={classes.logo}  />
+                <Typography  variant='subtitle1'  className={classes.labelCard}>
                   Buscador de personas servidoras públicas sancionadas
                 </Typography>
                 </figure>
               </Grid>
               <Grid item md={3} xs={12} onClick={() => handleIdContent(2)}
               style={{ display: 'flex', alignItems: 'stretch' }} >
-                <figure className={isIdContent(2) ? classes.cardSeleccionada : classes.card}
-                style={{ alignItems: 'center' }} >
-                  <img src={img2} alt='Particulares sancionados' className={classes.image} />
-                <Typography variant='subtitle1' style={{ color: isIdContent(2) ? '#f1e9f2' : '#713972' }} className={classes.labelCard}>
+                <figure className={isIdContent(2) ? classes.selectedTab : classes.card}>
+                  <img src={img2} alt='Particulares sancionados' className={classes.logo}  />
+                <Typography  variant='subtitle1'  className={classes.labelCard}>
                   Buscador de particulares sancionados
                 </Typography>
                 </figure>
@@ -133,21 +133,19 @@ const Index = ({ classes }) => {
                   setIdContent(3);
                   ReactGA.event({ category: 'visor-s3SP', action: 'click' });
                 }}
-              style={{ display: 'flex', alignItems: 'stretch' }} >
-                <figure className={isIdContent(3) ? classes.cardSeleccionada : classes.card}
-                style={{ alignItems: 'center' }} >
-                  <img src={img3} alt='Particulares sancionados' className={classes.image} />
-                <Typography variant='subtitle1' style={{ color: isIdContent(3) ? '#f1e9f2' : '#713972' }} className={classes.labelCard}>
+              style={{ display: 'flex',      }} >
+                <figure className={isIdContent(3) ? classes.selectedTab : classes.card}>
+                  <img src={img3} alt='Particulares sancionados' className={classes.logo}  />
+                <Typography  variant='subtitle1'  className={classes.labelCard}>
                 Visor de datos (Servidores públicos sancionados)
                 </Typography>
                 </figure>
               </Grid>
               <Grid item md={3} xs={12} onClick={() => handleIdContent(4)}
               style={{ display: 'flex', alignItems: 'stretch' }} >
-                <figure className={isIdContent(4) ? classes.cardSeleccionada : classes.card}
-                style={{ alignItems: 'center' }} >
-                  <img src={img4} alt='Particulares sancionados' className={classes.image} />
-                <Typography variant='subtitle1' style={{ color: isIdContent(4) ? '#f1e9f2' : '#713972' }} className={classes.labelCard}>
+                <figure className={isIdContent(4) ? classes.selectedTab : classes.card} >
+                  <img src={img4} alt='Particulares sancionados' className={classes.logo}  />
+                <Typography  variant='subtitle1'  className={classes.labelCard}>
                 Visor de datos (Particulares sancionados)
                 </Typography>
                 </figure>
@@ -188,6 +186,7 @@ const Index = ({ classes }) => {
             </Grid>
           </Grid>
         </Grid>
+        
         <Grid container justifyContent='center'>
           <Grid item xs={12} className={classes.sectionT}>
           <ThemeProvider theme={ThemeV2}>

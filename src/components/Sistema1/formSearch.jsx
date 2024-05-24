@@ -8,7 +8,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
 import makeStyles from '@mui/styles/makeStyles'
 import Ordenamiento from './Ordenamiento'
-import style from './style'
+import style from '../style'
 import { withStyles } from '@mui/styles'
 import ReactGA from 'react-ga4'
 import ButtonPDN from '../Compartidos/ButtonPDN'

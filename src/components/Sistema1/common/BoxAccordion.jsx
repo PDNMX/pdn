@@ -1,6 +1,6 @@
 import { Accordion, AccordionSummary, AccordionDetails } from '@mui/material'
 
-import style from '../style'
+import style from '../../style'
 import makeStyles from '@mui/styles/makeStyles'
 
 const useStyles = makeStyles(style)

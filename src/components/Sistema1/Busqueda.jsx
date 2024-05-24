@@ -5,7 +5,7 @@ import withStyles from '@mui/styles/withStyles'
 import axios from 'axios'
 
 import Perfil from './Perfil'
-import styles from './style'
+import styles from '../style'
 
 import FormSearch from './formSearch'
 import { error } from './utils'

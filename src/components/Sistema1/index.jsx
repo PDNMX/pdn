@@ -10,7 +10,7 @@ import Busqueda from './Busqueda'
 // import PerfilMaterialUI from '../Declaraciones/PerfilMaterialUI';
 // import Stats from '../Declaraciones/Estadisticas/Stats';
 
-import styles from './style'
+import styles from '../style'
 /* import { ThemeProvider } from '@mui/material/styles';
 import ThemeV2 from '../../ThemeV2'; */
 import pdnRoutes from '../../routes'
@@ -38,11 +38,11 @@ class Declaraciones extends React.Component {
     return (
       <div>
         <HeaderV2 section={system} />
-        <Grid container spacing={0}>
-          <Grid item xs={12} style={{ maxWidth: 1200, margin: '0 auto', marginTop: 50 }}>
+        <Grid container justifyContent='center' alignItems='center'>
+          <Grid item xs={12}  className={classes.section}>
             <Grid container spacing={0}>
-              <Grid item lg={3} xs={12} style={{ display: 'flex', alignItems: 'center' }}>
-                <figure className={classes.selectedTab} style={{backgroundColor: '#b25fac'}}>
+              <Grid item lg={3} xs={12} style={{ display: 'flex',  alignItems: 'stretch' }}>
+                <figure className={classes.selectedTab} >
                   <img src={img} alt={titulo} className={classes.logo} />{' '}
                 <Typography variant='subtitle1' className={classes.labelCard}>
                   Buscador de una persona servidora pública
@@ -51,7 +51,10 @@ class Declaraciones extends React.Component {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={12} className={classes.contentsSection} style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+
+        </Grid>
+
+        <Grid item xs={12} className={classes.contentsSection} style={{ marginLeft: 'auto', marginRight: 'auto' }}>
             <Switch>
               <Route exact path='/declaraciones' component={Busqueda} />
 
@@ -59,7 +62,6 @@ class Declaraciones extends React.Component {
 							<Route path="/declaraciones/estadisticas" component={Stats} /> */}
             </Switch>
           </Grid>
-        </Grid>
         <Disclaimer open={this.state.open} handleClose={this.handleClose} />
       </div>
     )

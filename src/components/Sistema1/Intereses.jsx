@@ -14,7 +14,7 @@ import Fideicomisos from './Intereses/07Fideicomisos'
 import { Disclaimer } from './utils'
 
 import ErrorBoundary from './ErrorBoundary'
-import style from './style'
+import style from '../style'
 
 const onlyDec = i => i.titular && i.titular.length === 1 && i.titular[0].clave === 'DEC'
 

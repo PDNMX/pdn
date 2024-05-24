@@ -2,6 +2,10 @@ const CssDeclaraciones = theme => ({
   root: {
     flexGrow: 1
   },
+  container: {
+    paddingTop: 90
+    // paddingBottom: 90
+  },
   backgroundCruces: {
     flexGrow: 1
     /*     backgroundImage: `url(${bgimg})`,
@@ -373,21 +377,36 @@ const CssDeclaraciones = theme => ({
   },
   selectedTab: {
     borderStyle: 'solid',
+    color: theme.palette.primary.main,
     borderColor: theme.palette.background.border,
+    backgroundColor: theme.palette.background.opaque,
     borderRadius: '10px 10px 0px 0px',
+    borderWidth:'1px',
     borderBottomStyle: 'none',
-    padding: theme.spacing(1),
-    margin: 0,
+    padding: '0px 8px 0px 5px',
+    margin: '0px 8px 5px 0px',
     display: 'flex',
     float: 'left',
+    zIndex:1,
+    marginBottom:-1,
     marginRight: 10,
+    position: 'relative'
   },
   labelCard: {
-    color: theme.palette.background.default,
+    // color: theme.palette.primary.main,
+    // color: theme.palette.S6.color,
     display: 'flex',
+    // float: 'left',
+    // borderStyle: 'solid',
+    // borderRadius: '10px 10px 0px 0px',
+    // borderWidth:'1px',
+    // borderBottomStyle: 'none',
     marginLeft: theme.spacing(1),
     paddingTop: theme.spacing(1),
-    fontWeight: 500
+    marginBottom:-1,
+    marginRight: 10,
+    fontWeight: 600,
+    alignItems:'center'
   },
   contentsSection: {
     color: theme.palette.secondary.contrastText,
@@ -448,6 +467,82 @@ const CssDeclaraciones = theme => ({
       color: '#55575A',
       borderBottom: '2px solid #b25fac'
     }
+  },
+  tabContainer: {
+    paddingTop: 90
+    // paddingBottom: 90
+  },
+  section: {
+    maxWidth: '1200px',
+    marginTop: theme.spacing(8)
+  },
+  sectionT: {
+    maxWidth: '1200px',
+    color: theme.palette.primary.contrastText
+  },
+  tabItem: {
+    maxWidth: 1200
+  },
+  item: {
+    maxWidth: 1200
+    /* paddingTop: theme.spacing(8),
+        paddingBottom: theme.spacing(8), */
+    // overflow: "auto"
+  },
+  paper1: {
+    backgroundColor: theme.palette.background.opaque,
+    padding: theme.spacing(2),
+    color: theme.palette.primary.contrastText,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: theme.palette.background.border,
+    borderRadius: '0px 10px 10px 10px'
+  },
+  paper2: {
+    backgroundColor: theme.palette.background.opaque,
+    padding: theme.spacing(2),
+    color: theme.palette.primary.contrastText,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: theme.palette.background.border,
+    borderRadius: '0px 10px 10px 10px'
+  },
+  image: {
+    width: '60px'
+  },
+  card: {
+    backgroundColor: theme.palette.background.noSelect,
+    margin: '0 8px 0px 2px',
+    '&:hover': {
+      cursor: 'pointer',
+      borderColor: theme.palette.background.border,
+      transition: 'background 0.3s ease',
+      opacity: 0.9
+    },
+    display: 'flex',
+    float: 'left',
+    padding: '0px 8px 0px 5px',
+    borderStyle: 'solid',
+    borderColor: theme.palette.background.opaque,
+    borderBottomStyle: 'none',
+    borderRadius: '10px 10px 0px 0px',
+    opacity:0.8
+  },
+  cardSeleccionada: {
+    backgroundColor: theme.palette.background.select,
+    borderColor: theme.palette.background.border,
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1),
+    paddingTop: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
+    margin: 0,
+    borderStyle: 'solid',
+
+    borderBottomStyle: 'none',
+    borderRadius: '10px 10px 0px 0px',
+    display: 'flex',
+    float: 'left',
+    marginRight: 10,
   }
 })
 export default CssDeclaraciones

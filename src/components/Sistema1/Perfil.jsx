@@ -5,7 +5,7 @@ import withStyles from '@mui/styles/withStyles'
 import MenuSuperior from './MenuSuperior'
 import SituacionPatrimonial from './SituacionPatrimonial'
 import Intereses from './Intereses'
-import styles from './style'
+import styles from '../style'
 import { getMoneda } from './utils'
 
 import Button from '@mui/material/Button'

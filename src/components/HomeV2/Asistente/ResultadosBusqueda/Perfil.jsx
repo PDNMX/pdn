@@ -5,7 +5,7 @@ import withStyles from '@mui/styles/withStyles'
 import MenuSuperior from '../../../Sistema1/MenuSuperior'
 import SituacionPatrimonial from '../../../Sistema1/SituacionPatrimonial'
 import Intereses from '../../../Sistema1/Intereses'
-import styles from '../../../Sistema1/style'
+import styles from '../../../style'
 import { getMoneda } from '../../../Sistema1/utils'
 
 import Button from '@mui/material/Button'

@@ -2,7 +2,7 @@ import { Grid, Typography } from '@mui/material'
 
 import makeStyles from '@mui/styles/makeStyles'
 
-import style from './style'
+import style from '../style'
 const useStyles = makeStyles(style)
 
 export default function DatosReservados () {

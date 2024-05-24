@@ -12,15 +12,10 @@ import pdnRoutes from '../../routes/index'
 
 import { ThemeProvider } from '@mui/material/styles'
 import ThemeV2 from '../../ThemeV2'
-
+import styles from '../style'
 //import ReactGA from 'react-ga4'
 
-const styles = theme => ({
-  root: {
-    flexGrow: 1
-    /*         backgroundImage: `url(${bgimg})`,
-        backgroundRepeat: "repeat", */
-  },
+const styles2 = theme => ({
   container: {
     paddingTop: 90
     // paddingBottom: 90
@@ -114,58 +109,45 @@ const Index = props => {
       <Grid container justifyContent='center' alignItems='center'>
         <Grid item xs={12} className={classes.section}>
           <Grid container>
-            <Grid item md={4} xs={12} 
-            style={{ display: 'flex', alignItems: 'center' }} 
-            onClick={() => handleContentId(1)}>
+            <Grid item md={4} xs={12}
+              style={{ display: 'flex', alignItems: 'stretch' }}
+              onClick={() => handleContentId(1)}>
 
-              <figure className={ isContentId(1) ? classes.cardSeleccionada : classes.card}>
-                <img
-                  src={img1} alt='Servidores que intervinen en procesos de contratacion'
-                  className={classes.image}
-                />
-              <Typography
-                variant='subtitle1' className={classes.labelCard}
-                style={{ color: isContentId(1) ? '#f1e9f2' : '#713972' }}
-              >
-                Buscador de personas servidoras públicsa que intervienen en contrataciones
-              </Typography>
+              <figure className={isContentId(1) ? classes.selectedTab : classes.card}>
+                <img src={img1} alt='Servidores que intervinen en procesos de contratacion' className={classes.logo}/>
+                <Typography variant='subtitle1' className={classes.labelCard}
+                >
+                  Buscador de personas servidoras públicsa que intervienen en contrataciones
+                </Typography>
               </figure>
             </Grid>
 
-            <Grid item md={4} xs={12} 
-            style={{ display: 'flex', alignItems: 'stretch' }} 
-            onClick={() => handleContentId(2)}>
+            <Grid item md={4} xs={12}
+              style={{ display: 'flex', alignItems: 'stretch' }}
+              onClick={() => handleContentId(2)}>
 
-              <figure className={isContentId(2) ? classes.cardSeleccionada : classes.card}
-              style={{ alignItems: 'center' }} >
-                <img src={img2} alt='Particulares inhabilitados' className={classes.image} />
-              <Typography
-                variant='subtitle1'
-                className={classes.labelCard}
-                style={{ color: isContentId(2) ? '#f1e9f2' : '#713972'}}
-              >
-                Buscador de particulares inhabilitados
-              </Typography>
+              <figure className={isContentId(2) ? classes.selectedTab : classes.card}>
+                <img src={img2} alt='Particulares inhabilitados' className={classes.logo} />
+                <Typography variant='subtitle1' className={classes.labelCard}
+                >
+                  Buscador de particulares inhabilitados
+                </Typography>
               </figure>
             </Grid>
-            
-            <Grid item md={4} xs={12} 
-            style={{ display: 'flex', alignItems: 'stretch' }} 
-            onClick={() => {
-              setContentId(3);
-              ReactGA.event({category: 'visor-s2', action: 'click'});
-          }}>
 
-              <figure className={isContentId(3) ? classes.cardSeleccionada : classes.card}
-              style={{ alignItems: 'center' }} >
-                <img src={img3} alt='Particulares inhabilitados' className={classes.image} />
-              <Typography
-                variant='subtitle1'
-                className={classes.labelCard}
-                style={{ color: isContentId(3) ? '#f1e9f2' : '#713972'}}
-              >
-                Visor de datos
-              </Typography>
+            <Grid item md={4} xs={12}
+              style={{ display: 'flex', alignItems: 'stretch' }}
+              onClick={() => {
+                setContentId(3);
+                ReactGA.event({ category: 'visor-s2', action: 'click' });
+              }}>
+
+              <figure className={isContentId(3) ? classes.selectedTab : classes.card}>
+                <img src={img3} alt='Particulares inhabilitados' className={classes.logo} />
+                <Typography variant='subtitle1' className={classes.labelCard}
+                >
+                  Visor de datos
+                </Typography>
               </figure>
             </Grid>
 
@@ -200,7 +182,7 @@ const Index = props => {
         </Grid>
       </Grid>
       <br></br>
-      
+
     </div>
   )
 }

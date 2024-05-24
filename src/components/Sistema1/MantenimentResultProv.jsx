@@ -3,7 +3,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import Timelapse from '@mui/icons-material/Timelapse'
 
 import makeStyles from '@mui/styles/makeStyles'
-import styles from './style'
+import styles from '../style'
 import { Grid, Typography, Tooltip } from '@mui/material'
 
 const useStyles = makeStyles(styles)

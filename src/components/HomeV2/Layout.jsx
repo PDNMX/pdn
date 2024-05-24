@@ -5,7 +5,7 @@ import ChatBotPDN from '../ChatBot/ChatBotPDN'
 import Glosario from '../Glosario/'
 import AsistenteBusqueda from './Asistente/BotonFlotante'
 
-import style from '../Sistema1/style'
+import style from '../style'
 import { makeStyles } from '@mui/styles'
 const useStyles = makeStyles(style)
 

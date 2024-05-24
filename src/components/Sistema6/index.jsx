@@ -16,8 +16,9 @@ import pdnRoutes from '../../routes'
 
 import { ThemeProvider } from '@mui/material/styles'
 import ThemeV2 from '../../ThemeV2'
+import styles from '../style'
 
-const styles = theme => ({
+const styles2 = theme => ({
   root: {
     flexGrow: 1
     /*         backgroundImage: `url(${bgimg})`,
@@ -26,6 +27,14 @@ const styles = theme => ({
   tabContainer: {
     paddingTop: 90
     // paddingBottom: 90
+  },
+  section: {
+    maxWidth: '1200px',
+    marginTop: theme.spacing(8)
+  },
+  sectionT: {
+    maxWidth: '1200px',
+    color: theme.palette.primary.contrastText
   },
   tabItem: {
     maxWidth: 1200
@@ -96,11 +105,7 @@ const styles = theme => ({
     float: 'left',
     marginRight: 10,
   },
-  labelCard: {
-    color: theme.palette.S6.color,
-    marginLeft: theme.spacing(1),
-    paddingTop: theme.spacing(1)
-  }
+
 })
 
 const Index = props => {
@@ -114,76 +119,80 @@ const Index = props => {
   return (
     <div className={classes.root}>
       <HeaderV2 section={system} />
-      <Grid container spacing={0} justifyContent='center' className={classes.tabContainer}>
-        <Grid item xs={12} style={{ padding: 0, maxWidth: 1200 }}>
+      <Grid container justifyContent='center' alignItems='center'>
+        <Grid item xs={12} style={{ maxWidth: 1200, margin: '0 auto', marginTop: 50 }}>
           <Grid container spacing={0}>
-            <Grid
-              item  md={3}xs={12}
-              style={{ display: 'flex', alignItems: 'center' }}
+            <Grid item lg={3} xs={12} style={{ display: 'flex',  alignItems: 'stretch' }}
               onClick={() => handleSelectTab(0)}
               id={0}
             >
 
-              <figure className={isSelected(0) ? classes.cardSeleccionada : classes.card}>
-                <img src={img1} className={classes.image} alt='explora' />
-              
+              <figure className={isSelected(0) ? classes.selectedTab : classes.card}>
+                <img src={img1} className={classes.logo} alt='explora' />
 
-              <Typography style={{ color: isSelected(0) ? '#f1e9f2' : '#713972', paddingTop: 15 }} className={classes.labelCard}>
-                Buscador de contrataciones
-              </Typography>
+
+                <Typography variant='subtitle1'  className={classes.labelCard}>
+                  Buscador de contrataciones
+                </Typography>
               </figure>
 
             </Grid>
-            <Grid
-              item  md={4}xs={12}
-              style={{ display: 'flex', alignItems: 'center' }}
+            <Grid item lg={3} xs={12} style={{ display: 'flex',  alignItems: 'stretch' }}
               onClick={() => handleSelectTab(1)}
               id={1}
             >
 
-              <figure className={isSelected(1) ? classes.cardSeleccionada : classes.card}>
-                <img src={img3} className={classes.image} alt='Visualiza' />
-              
+              <figure className={isSelected(1) ? classes.selectedTab : classes.card}>
+                <img src={img3} className={classes.logo} alt='Visualiza' />
 
-              <Typography style={{ color: isSelected(1) ? '#f1e9f2' : '#713972', paddingTop: 15 }} className={classes.labelCard}>
-                Visualizador de contrataciones
-              </Typography>
+
+                <Typography variant='subtitle1'  className={classes.labelCard}>
+                  Visualizador de contrataciones
+                </Typography>
               </figure>
 
             </Grid>
           </Grid>
         </Grid>
-        <ThemeProvider theme={ThemeV2}>
-          {selectedTab === 0
-            ? <Grid item xs={12} className={classes.tabItem} style={{ overflow: 'auto' }}>
-              <Paper className={classes.paper1} elevation={15}>
-                <Box paddingLeft={1} paddingRight={1} paddingBottom={3}>
-
-                  <SelectSupplier dataSupplier={dataSupplier} setDataSupplier={setDataSupplier} />
-
-                </Box>
-                {/* TODO: add supplier  support */}
-                <Busqueda dataSupplier={dataSupplier} />
-              </Paper>
-              </Grid>
-            : <Grid item xs={12} className={classes.tabItem}>
-              <Paper className={classes.paper2} elevation={15}>
-                <Box paddingTop={1} paddingBottom={3}>
-                  <SelectSupplier dataSupplier={dataSupplier} setDataSupplier={setDataSupplier} />
-                </Box>
-
-                {/* TODO: add supplier support */}
-                <Disclaimer dataSupplier={dataSupplier} />
-
-                {/* TODO: add supplier support */}
-                <Cifras dataSupplier={dataSupplier} />
-
-                {dataSupplier && dataSupplier === 'SHCP' &&
-                  <Top dataSupplier={dataSupplier} />}
-              </Paper>
-              </Grid>}
-        </ThemeProvider>
       </Grid>
+
+      <Grid container justifyContent='center'>
+        <Grid item xs={12} className={classes.sectionT}>
+          <Grid container spacing={0}>
+            <ThemeProvider theme={ThemeV2}>
+              {selectedTab === 0
+                ? <Grid item xs={12} className={classes.tabItem} style={{ overflow: 'auto' }}>
+                  <Paper className={classes.paper1} elevation={15}>
+                    <Box paddingLeft={1} paddingRight={1} paddingBottom={3}>
+
+                      <SelectSupplier dataSupplier={dataSupplier} setDataSupplier={setDataSupplier} />
+
+                    </Box>
+                    {/* TODO: add supplier  support */}
+                    <Busqueda dataSupplier={dataSupplier} />
+                  </Paper>
+                </Grid>
+                : <Grid item xs={12} className={classes.tabItem}>
+                  <Paper className={classes.paper2} elevation={15}>
+                    <Box paddingTop={1} paddingBottom={3}>
+                      <SelectSupplier dataSupplier={dataSupplier} setDataSupplier={setDataSupplier} />
+                    </Box>
+
+                    {/* TODO: add supplier support */}
+                    <Disclaimer dataSupplier={dataSupplier} />
+
+                    {/* TODO: add supplier support */}
+                    <Cifras dataSupplier={dataSupplier} />
+
+                    {dataSupplier && dataSupplier === 'SHCP' &&
+                      <Top dataSupplier={dataSupplier} />}
+                  </Paper>
+                </Grid>}
+            </ThemeProvider>
+          </Grid>
+        </Grid>
+      </Grid>
+
 
       {/* <Grid container spacing={0} justifyContent="center" style={{backgroundColor: "#34b3eb"}}>
             <Grid item xs={12} className={classes.item}>

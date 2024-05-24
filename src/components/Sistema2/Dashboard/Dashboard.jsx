@@ -29,7 +29,7 @@ const styles = theme => ({
     borderStyle: 'solid',
     borderWidth: 1,
     borderColor: theme.palette.background.border,
-    borderRadius: '10px 10px 10px 10px'
+    borderRadius: '0px 10px 10px 10px'
   },
   link: {
     textDecoration: 'none',

@@ -3,7 +3,7 @@ import makeStyles from '@mui/styles/makeStyles'
 import { Link as RouterLink } from 'react-router-dom'
 import ButtonPDN from '../Compartidos/ButtonPDN'
 
-import styles from './style'
+import styles from '../style'
 const useStyles = makeStyles(styles)
 
 export default function Disclaimer (props) {
