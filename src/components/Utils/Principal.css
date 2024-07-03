@@ -104,9 +104,9 @@ body {
   font-size: 1em;
   border: 1px solid #fff;
   background: white;
-  margin: 10px;
+  margin: 10px 0 10px 0;
   border-radius: 75px;
-  padding: 0px 30px;
+  padding: 0px 0px;
 }
 
 .encabezado nav ul {
@@ -120,7 +120,8 @@ body {
 .encabezado nav li {
   display: flex;
   align-items: center;
-  padding: 3px 7px;
+  padding: 1px 2px;
+  margin: 2px 2px;
 }
 
 .encabezado nav li p {
@@ -129,7 +130,7 @@ body {
 
 
 .encabezado nav p {
-  font-size: .7em;
+  font-size: .65em;
   display: inherit;
   font-weight: 700;
 }
@@ -140,7 +141,7 @@ body {
 
 .encabezado nav img {
   height: 45px;
-  margin: 5px 3px 5px 3px;
+  margin: 1px 3px 1px 3px;
 }
 
 .encabezado nav li:hover {
@@ -184,7 +185,7 @@ body {
 
 /********* MENUS **********/
 #interconexionMenu,
-#sistemasMenu {
+#sistemasMenu, #normatividadMenu {
   border-bottom: 1px solid #ddd2da;
   box-shadow: -2px 8px 25px 9px rgba(0, 0, 0, 0.21);
   -webkit-box-shadow: -2px 8px 25px 9px rgba(0, 0, 0, 0.21);

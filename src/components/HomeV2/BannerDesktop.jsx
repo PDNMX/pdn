@@ -8,9 +8,11 @@ import Mesa from '../../assets/rediseno2023/imgs/iconos/menu/ico_mesa-ayuda.svg'
 import MDA from '../../assets/rediseno2023/imgs/iconos/menu/ico_mda.svg'
 import Sistemas from '../../assets/rediseno2023/imgs/iconos/menu/ico_sistemas.svg'
 import Interconexion from '../../assets/rediseno2023/imgs/iconos/menu/ico_interconexion.svg'
+import Normatividad from '../../assets/rediseno2023/imgs/iconos/menu/ico_normatividad.svg'
 import LoginIcon from '../../assets/rediseno/ico_login.svg'
 import SistemasMenu from './SistemasMenu'
 import InterconexionMenu from './InterconexionMenu'
+import NormatividadMenu from "./NormatividadMenu"
 import ReactGA from 'react-ga4'
 import Link from '@mui/material/Link'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
@@ -40,32 +42,48 @@ const BannerDesktop = (props) => {
   const { classes, systems, setOpenLoginDialog } = props
   const [showSistemas, setShowSistemas] = React.useState(false)
   const [showInterconexion, setShowInterconexion] = React.useState(false)
+  const [showNormatividad, setShowNormatividad] = React.useState(false);
 
   const { user } = React.useContext(UserContext)
 
   const toggle = () => {
     setTimeout(() => {
-      setShowSistemas(!showSistemas)
+        setShowSistemas(!showSistemas);
     }, 1000)
-  }
+}
 
-  const toggleInterconexion = () => {
+const toggleInterconexion = () => {
     setTimeout(() => {
-      setShowInterconexion(!showInterconexion)
+        setShowInterconexion(!showInterconexion)
     }, 1000)
-  }
+}
 
-  useEffect(() => {
+const toggleNormatividad = () => {
+    setTimeout(() => {
+        setShowNormatividad(!showNormatividad)
+    }, 1000)
+}
+
+useEffect(() => {
     if (showSistemas) {
-      setShowInterconexion(false)
+        setShowInterconexion(false);
+        setShowNormatividad(false);
     }
-  }, [showSistemas])
+}, [showSistemas]);
 
-  useEffect(() => {
+useEffect(() => {
     if (showInterconexion) {
-      setShowSistemas(false)
+        setShowSistemas(false);
+        setShowNormatividad(false);
     }
-  }, [showInterconexion])
+}, [showInterconexion]);
+
+useEffect(() => {
+    if (showNormatividad) {
+        setShowSistemas(false);
+        setShowInterconexion(false);
+    }
+}, [showNormatividad]);
 
   const handleOpenLoginDialog = () => {
     setOpenLoginDialog(true)
@@ -136,6 +154,17 @@ const BannerDesktop = (props) => {
                     <Typography>MERCADO DIGITAL</Typography>
                   </Link>
                 </li>
+
+                <li
+                  className={`${classes.opc} ${
+                    showNormatividad ? classes.selected : ''
+                  }`}
+                  onClick={() => setShowNormatividad(!showNormatividad)}
+                >
+                  <img src={Normatividad} alt='Normatividad' />
+                  <Typography>NORMATIVIDAD</Typography>
+                  <ArrowDropDownIcon />
+                </li>
               </ul>
             </nav>
           </div>
@@ -178,6 +207,9 @@ const BannerDesktop = (props) => {
       )}
       {showInterconexion && (
         <InterconexionMenu toogle={() => toggleInterconexion()} />
+      )}
+      {showNormatividad && (
+        <NormatividadMenu toogle={() => toggleNormatividad()} />
       )}
     </>
   )
