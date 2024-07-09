@@ -40,5 +40,11 @@
     "name": "Secretaría Ejecutiva del Sistema Anticorrupción del Estado de Puebla",
     "disclaimer": "",
     "download_url": ""
+  },
+  {
+    "id": "SESAE_BCS",
+    "name": "Secretaría Ejecutiva del Sistema Estatal Anticorrupción de Baja California Sur",
+    "disclaimer": "",
+    "download_url": ""
   }
 ]
