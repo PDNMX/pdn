@@ -119,7 +119,7 @@ export function Ubicacion(props) {
 				{pais === 'MX' ? (
 					<Grid item xs={12} md={8}>
 						<Typography className={classes.cardTitle}>ENTIDAD FEDERATIVA:</Typography>
-						<Typography className={classes.card}>{entidadFederativa.valor}</Typography>
+						<Typography className={classes.card}>{entidadFederativa?.valor}</Typography>
 					</Grid>
 				) : (
 					<Grid item xs={12} md={8}>

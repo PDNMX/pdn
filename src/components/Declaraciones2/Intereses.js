@@ -132,58 +132,61 @@ export default function Intereses({ data, value, setValue }) {
   const classes = useStyles();
   const classes2 = styles();
 
-  let { participacion, participacionTomaDecisiones, apoyos, representacion, clientesPrincipales, beneficiosPrivados, fideicomisos } = data;
-
-  if (participacion.ninguno) {
-    data.participacion.participacion = [];
+  if (typeof data === 'undefined') {
   } else {
-    data.participacion.participacion = participacion.participacion ? participacion.participacion.filter(tipoRelacion) : [];
-  }
+    let { participacion, participacionTomaDecisiones, apoyos, representacion, clientesPrincipales, beneficiosPrivados, fideicomisos } = data;
 
-  if (participacionTomaDecisiones.ninguno) {
-    data.participacionTomaDecisiones.participacion = [];
-  } else {
-    data.participacionTomaDecisiones.participacion = participacionTomaDecisiones.participacion ? participacionTomaDecisiones.participacion.filter(tipoRelacion) : [];
-  }
-
-  if (apoyos.ninguno) {
-    data.apoyos.apoyo = [];
-  } else {
-    data.apoyos.apoyo = apoyos.apoyo ? apoyos.apoyo.filter(i => i.beneficiarioPrograma.clave === 'DEC') : [];
-  }
-
-  if (representacion)
-    if (representacion.ninguno) {
-      data.representacion.representacion = [];
+    if (participacion.ninguno) {
+      data.participacion.participacion = [];
     } else {
-      data.representacion.representacion = representacion.representacion ? representacion.representacion.filter(tipoRelacion) : [];
+      data.participacion.participacion = participacion.participacion ? participacion.participacion.filter(tipoRelacion) : [];
     }
 
-  if (clientesPrincipales.ninguno) {
-    data.clientesPrincipales.cliente = [];
-  } else {
-    data.clientesPrincipales.cliente = clientesPrincipales.cliente ? clientesPrincipales.cliente.filter(tipoRelacion) : [];
-  }
+    if (participacionTomaDecisiones.ninguno) {
+      data.participacionTomaDecisiones.participacion = [];
+    } else {
+      data.participacionTomaDecisiones.participacion = participacionTomaDecisiones.participacion ? participacionTomaDecisiones.participacion.filter(tipoRelacion) : [];
+    }
 
-  if (beneficiosPrivados.ninguno) {
-    data.beneficiosPrivados.beneficio = [];
-  } else {
-    data.beneficiosPrivados.beneficio = beneficiosPrivados.beneficio ? beneficiosPrivados.beneficio.filter(i => i.beneficiario.length === 1 && i.beneficiario[0].clave === 'DC') : [];
-  }
+    if (apoyos.ninguno) {
+      data.apoyos.apoyo = [];
+    } else {
+      data.apoyos.apoyo = apoyos.apoyo ? apoyos.apoyo.filter(i => i.beneficiarioPrograma.clave === 'DEC') : [];
+    }
 
-  if (fideicomisos.ninguno) {
-    data.fideicomisos.fideicomiso = [];
-  } else {
-    data.fideicomisos.fideicomiso = fideicomisos.fideicomiso ? fideicomisos.fideicomiso.filter(tipoRelacion) : [];
-  }
+    if (representacion)
+      if (representacion.ninguno) {
+        data.representacion.representacion = [];
+      } else {
+        data.representacion.representacion = representacion.representacion ? representacion.representacion.filter(tipoRelacion) : [];
+      }
 
-  // data.participacion.participacion = participacion.ninguno ? 0 : participacion.participacion.filter(tipoRelacion);
-  // data.participacionTomaDecisiones.participacion = participacionTomaDecisiones.ninguno ? 0 : participacionTomaDecisiones.participacion.filter(tipoRelacion);
-  // data.apoyos.apoyo = apoyos.ninguno ? 0 : apoyos.apoyo.filter((i) => i.beneficiarioPrograma.clave === 'DEC');
-  // data.representacion.representacion = representacion.ninguno	? 0	: representacion.representacion.filter(tipoRelacion);
-  // data.clientesPrincipales.cliente = clientesPrincipales.ninguno ? 0	: clientesPrincipales.cliente.filter(tipoRelacion);
-  // data.beneficiosPrivados.beneficio = beneficiosPrivados.ninguno ? 0	: beneficiosPrivados.beneficio.filter((i) => i.beneficiario.length === 1 && i.beneficiario[0].clave === 'DC');
-  // data.fideicomisos.fideicomiso = fideicomisos.ninguno ? 0 : fideicomisos.fideicomiso.filter(tipoRelacion);
+    if (clientesPrincipales.ninguno) {
+      data.clientesPrincipales.cliente = [];
+    } else {
+      data.clientesPrincipales.cliente = clientesPrincipales.cliente ? clientesPrincipales.cliente.filter(tipoRelacion) : [];
+    }
+
+    if (beneficiosPrivados.ninguno) {
+      data.beneficiosPrivados.beneficio = [];
+    } else {
+      data.beneficiosPrivados.beneficio = beneficiosPrivados.beneficio ? beneficiosPrivados.beneficio.filter(i => i.beneficiario.length === 1 && i.beneficiario[0].clave === 'DC') : [];
+    }
+
+    if (fideicomisos.ninguno) {
+      data.fideicomisos.fideicomiso = [];
+    } else {
+      data.fideicomisos.fideicomiso = fideicomisos.fideicomiso ? fideicomisos.fideicomiso.filter(tipoRelacion) : [];
+    }
+
+    // data.participacion.participacion = participacion.ninguno ? 0 : participacion.participacion.filter(tipoRelacion);
+    // data.participacionTomaDecisiones.participacion = participacionTomaDecisiones.ninguno ? 0 : participacionTomaDecisiones.participacion.filter(tipoRelacion);
+    // data.apoyos.apoyo = apoyos.ninguno ? 0 : apoyos.apoyo.filter((i) => i.beneficiarioPrograma.clave === 'DEC');
+    // data.representacion.representacion = representacion.ninguno	? 0	: representacion.representacion.filter(tipoRelacion);
+    // data.clientesPrincipales.cliente = clientesPrincipales.ninguno ? 0	: clientesPrincipales.cliente.filter(tipoRelacion);
+    // data.beneficiosPrivados.beneficio = beneficiosPrivados.ninguno ? 0	: beneficiosPrivados.beneficio.filter((i) => i.beneficiario.length === 1 && i.beneficiario[0].clave === 'DC');
+    // data.fideicomisos.fideicomiso = fideicomisos.ninguno ? 0 : fideicomisos.fideicomiso.filter(tipoRelacion);
+  }
 
   return data ? (
     <Paper square className={classes.root}>

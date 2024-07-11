@@ -111,7 +111,7 @@ const Vehiculos = ({ data, titulo }) => {
 
   let vehiculos;
 
-  if (data.ninguno) {
+  if (typeof data === 'undefined' || data.ninguno) {
     vehiculos = [];
   } else {
     vehiculos = data.vehiculo ? data.vehiculo.filter(i => i.titular.length === 1 && i.titular[0].clave === 'DEC') : [];

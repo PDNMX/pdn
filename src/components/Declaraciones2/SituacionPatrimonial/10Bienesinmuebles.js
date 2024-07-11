@@ -125,7 +125,7 @@ const BienesInmuebles = ({ data, titulo }) => {
 
   let inmuebles;
 
-  if (data.ninguno) {
+  if (typeof data === 'undefined' || data.ninguno) {
     inmuebles = [];
   } else {
     inmuebles = data.bienInmueble ? data.bienInmueble.filter(i => i.titular.length === 1 && i.titular[0].clave === 'DEC') : [];

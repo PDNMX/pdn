@@ -26,7 +26,27 @@ import { info } from './utils';
 import style from './style';
 
 const situacionPatrimonial = (data, tipo) => {
-  let { datosCurricularesDeclarante, experienciaLaboral, bienesInmuebles, vehiculos, bienesMuebles, inversiones, adeudos, prestamoOComodato } = data;
+  let { datosCurricularesDeclarante, experienciaLaboral, bienesInmuebles, vehiculos, bienesMuebles } = data;
+
+  let inversiones, adeudos, prestamoOComodato;
+
+  if (typeof data.inversionesCuentasValores === 'undefined') {
+    inversiones = data.inversiones;
+  } else {
+    inversiones = data.inversionesCuentasValores;
+  }
+
+  if (typeof data.adeudosPasivos === 'undefined') {
+    adeudos = data.adeudos;
+  } else {
+    adeudos = data.adeudosPasivos;
+  }
+
+  if (typeof data.prestamoComodato === 'undefined') {
+    prestamoOComodato = data.prestamoOComodato;
+  } else {
+    prestamoOComodato = data.prestamoComodato;
+  }
 
   const onlyDec = i => i.titular.length === 1 && i.titular[0].clave === 'DEC';
 
@@ -158,6 +178,8 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     width: '100%',
     backgroundColor: theme.palette.background.opaque
+    // width: '100%'
+    // backgroundColor: theme.palette.background.opaque
   }
 }));
 
@@ -244,11 +266,11 @@ function OpcionInicialConclusion(valor, data, tipo) {
     case 11:
       return <BienesMuebles data={data.bienesMuebles} titulo={titulo} />;
     case 12:
-      return <Inversiones data={data.inversiones} tipo={tipo} titulo={titulo} />;
+      return <Inversiones data={data.inversionesCuentasValores || data.inversiones} tipo={tipo} titulo={titulo} />;
     case 13:
-      return <Adeudos data={data.adeudos} tipo={tipo} titulo={titulo} />;
+      return <Adeudos data={data.adeudosPasivos || data.adeudos} tipo={tipo} titulo={titulo} />;
     case 14:
-      return <Prestamo data={data.prestamoOComodato} titulo={titulo} />;
+      return <Prestamo data={data.prestamoComodato || data.prestamoOComodato} titulo={titulo} />;
     default:
       break;
   }
@@ -285,11 +307,11 @@ function OpcionModificacion(valor, data, tipo) {
     case 10:
       return <BienesMuebles data={data.bienesMuebles} titulo={titulo} />;
     case 11:
-      return <Inversiones data={data.inversiones} tipo={tipo} titulo={titulo} />;
+      return <Inversiones data={data.inversionesCuentasValores || data.inversiones} tipo={tipo} titulo={titulo} />;
     case 12:
-      return <Adeudos data={data.adeudos} tipo={tipo} titulo={titulo} />;
+      return <Adeudos data={data.adeudosPasivos || data.adeudos} tipo={tipo} titulo={titulo} />;
     case 13:
-      return <Prestamo data={data.prestamoOComodato} titulo={titulo} />;
+      return <Prestamo data={data.prestamoComodato || data.prestamoOComodato} titulo={titulo} />;
     default:
       break;
   }
