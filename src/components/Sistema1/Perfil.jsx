@@ -70,7 +70,7 @@ class Perfil extends React.Component {
     }
   }
 
-  render () {
+  render() {
     const { classes, data, handleGoBack, refPerfil } = this.props
 
     const datosGenerales = {

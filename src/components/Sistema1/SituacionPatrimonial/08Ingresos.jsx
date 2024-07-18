@@ -14,7 +14,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
 const useStyles = makeStyles(styleSecciones)
 
-export function ActividadFinanciera ({ actividadFinanciera }) {
+export function ActividadFinanciera({ actividadFinanciera }) {
   const classes = useStyles()
   const exp = expansion()
   const sum = sumary()
@@ -65,7 +65,7 @@ export function ActividadFinanciera ({ actividadFinanciera }) {
   )
 }
 
-export function ServiciosProfesionales ({ serviciosProfesionales }) {
+export function ServiciosProfesionales({ serviciosProfesionales }) {
   const classes = useStyles()
   const exp = expansion()
   const sum = sumary()
@@ -116,7 +116,7 @@ export function ServiciosProfesionales ({ serviciosProfesionales }) {
   )
 }
 
-export function EnajenacionBienes ({ enajenacionBienes }) {
+export function EnajenacionBienes({ enajenacionBienes }) {
   const classes = useStyles()
   const exp = expansion()
   const sum = sumary()
@@ -167,7 +167,7 @@ export function EnajenacionBienes ({ enajenacionBienes }) {
   )
 }
 
-export function OtrosIngresos ({ otrosIngresos }) {
+export function OtrosIngresos({ otrosIngresos }) {
   const classes = useStyles()
   const exp = expansion()
   const sum = sumary()

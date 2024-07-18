@@ -7,10 +7,10 @@ import withStyles from '@mui/styles/withStyles'
 
 const useStyles = makeStyles(theme => ({
   root: {
-    backgroundColor: theme.palette.primary.main,
-    color: theme.palette.text.clear,
-    fontSize: 12,
-    whiteSpace: 'normal',
+    'backgroundColor': theme.palette.primary.main,
+    'color': theme.palette.text.clear,
+    'fontSize': 12,
+    'whiteSpace': 'normal',
     '&:hover': {
       color: 'white'
     }
@@ -32,7 +32,7 @@ const MyBadge = withStyles(theme => ({
   }
 }))(Badge)
 
-export default function TypographyMenu (props) {
+export default function TypographyMenu(props) {
   const classes = useStyles()
 
   return (

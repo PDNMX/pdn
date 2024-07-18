@@ -11,6 +11,7 @@ import styleSecciones from '../styleSecciones'
 
 import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../common/BoxAccordion'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import AclaracionesObservacions from '../common/AclaracionesObservaciones'
 
 const useStyles = makeStyles(styleSecciones)
 
@@ -146,7 +147,7 @@ const ServiciosProfesionales = props => {
           <Grid item xs={12} md={3}>
             <Typography className={exp.headingBlack}>
               <strong>
-                {getMoneda(serviciosProfesionales.remuneracionTotal.valor)} {serviciosProfesionales.remuneracionTotal.moneda}
+                {getMoneda(serviciosProfesionales.remuneracionTotal.valor)} {serviciosProfesionales.remuneracionTotal?.moneda}
               </strong>
             </Typography>
           </Grid>
@@ -199,7 +200,7 @@ const EnajenacionBienes = props => {
           <Grid item xs={12} md={3}>
             <Typography className={exp.headingBlack}>
               <strong>
-                {getMoneda(enajenacionBienes.remuneracionTotal.valor)} {enajenacionBienes.remuneracionTotal.moneda}
+                {getMoneda(enajenacionBienes.remuneracionTotal.valor)} {enajenacionBienes.remuneracionTotal?.moneda}
               </strong>
             </Typography>
           </Grid>
@@ -252,7 +253,7 @@ const OtrosIngresos = props => {
           <Grid item xs={12} md={3}>
             <Typography className={exp.headingBlack}>
               <strong>
-                {getMoneda(otrosIngresos.remuneracionTotal.valor)} {otrosIngresos.remuneracionTotal.moneda}
+                {getMoneda(otrosIngresos.remuneracionTotal.valor)} {otrosIngresos.remuneracionTotal?.moneda}
               </strong>
             </Typography>
           </Grid>
@@ -303,7 +304,6 @@ const ServidorPublicoAnioAnterior = ({ data: info, titulo }) => {
       </Grid>
       {!data.servidorPublicoAnioAnterior && <DatosNoRegistrados />}
       {data.servidorPublicoAnioAnterior && (
-      // <Grid container spacing={2}>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             <Grid container spacing={1}>
@@ -359,7 +359,7 @@ const ServidorPublicoAnioAnterior = ({ data: info, titulo }) => {
                 <Typography className={classes.cardTitle}>B.- INGRESO NETO DE LA PAREJA Y/O DEPENDIENTES ECONÓMICOS, RECIBIDO EN EL AÑO INMEDIATO ANTERIOR (DESPUÉS DE IMPUESTOS)</Typography>
               </Grid>
               <Grid item xs={12} md={3}>
-                <Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
+                <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
               </Grid>
 
               <Grid item xs={12} md={9}>
@@ -372,8 +372,8 @@ const ServidorPublicoAnioAnterior = ({ data: info, titulo }) => {
               </Grid>
             </Grid>
           </Paper>
+          <AclaracionesObservacions />
         </Grid>
-      // </Grid>
       )}
     </Grid>
   )

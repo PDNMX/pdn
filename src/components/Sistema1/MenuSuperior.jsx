@@ -22,8 +22,8 @@ const useTabs = makeStyles({
 
 const useTab = makeStyles(theme => ({
   root: {
-    backgroundColor: theme.palette.background.noSelect,
-    color: theme.palette.primary.black,
+    'backgroundColor': theme.palette.background.noSelect,
+    'color': theme.palette.primary.black,
     '&:hover': {
       fontWeight: 'bolder',
       color: theme.palette.text.primary
@@ -36,7 +36,7 @@ const useTab = makeStyles(theme => ({
   }
 }))
 
-export default function MenuSuperior (props) {
+export default function MenuSuperior(props) {
   const classes = useStyles()
   const tabs = useTabs()
   const tab = useTab()

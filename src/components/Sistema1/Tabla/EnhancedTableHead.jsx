@@ -18,10 +18,10 @@ const headCells = [
 
 const EnhancedTableHead = props => {
   const { classes, order, orderBy } = props
-  // const { classes, order, orderBy, onRequestSort } = props;
+  // const { classes, order, orderBy, onRequestSort } = props
   // const createSortHandler = property => event => {
-  //   onRequestSort(event, property);
-  // };
+  //   onRequestSort(event, property)
+  // }
 
   return (
     <TableHead className={classes.tableHead}>

@@ -12,9 +12,11 @@ import { sumary, expansion, Divider, Disclaimer } from '../utils'
 import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../common/AccordionBox'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
+import AclaracionesObservacions from '../common/AclaracionesObservaciones'
+
 const useStyles = makeStyles(styleSecciones)
 
-function Duenio ({ obj }) {
+function Duenio({ obj }) {
   const classes = useStyles()
   return (
     <>
@@ -22,48 +24,46 @@ function Duenio ({ obj }) {
       <Grid item xs={12} style={{ textAlign: 'center' }}>
         <Typography className={classes.tituloSubSeccion}>DUEÑO O TITULAR</Typography>
       </Grid>
-      {obj.duenoTitular.tipoDuenoTitular === 'FISICA'
-        ? (
-          <Grid item xs={12}>
-            <Grid container spacing={1}>
-              <Grid item xs={12} md={4}>
-                <Typography className={classes.cardTitle}>NOMBRE DEL DUEÑO O TITULAR:</Typography>
-                <Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
-              </Grid>
-              <Grid item xs={12} md={4}>
-                <Typography className={classes.cardTitle}>RFC:</Typography>
-                <Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
-              </Grid>
-              <Grid item xs={12} md={4}>
-                <Typography className={classes.cardTitle}>RELACIÓN CON EL DUEÑO O EL TITULAR:</Typography>
-                <Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
-              </Grid>
+      {obj.duenoTitular.tipoDuenoTitular === 'FISICA' ? (
+        <Grid item xs={12}>
+          <Grid container spacing={1}>
+            <Grid item xs={12} md={4}>
+              <Typography className={classes.cardTitle}>NOMBRE DEL DUEÑO O TITULAR:</Typography>
+              <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <Typography className={classes.cardTitle}>RFC:</Typography>
+              <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <Typography className={classes.cardTitle}>RELACIÓN CON EL DUEÑO O EL TITULAR:</Typography>
+              <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
             </Grid>
           </Grid>
-          )
-        : (
-          <Grid item xs={12}>
-            <Grid container spacing={1}>
-              <Grid item xs={12} md={4}>
-                <Typography className={classes.cardTitle}>NOMBRE DEL DUEÑO O TITULAR:</Typography>
-                <Typography className={classes.card}>{obj.duenoTitular.nombreTitular}</Typography>
-              </Grid>
-              <Grid item xs={12} md={4}>
-                <Typography className={classes.cardTitle}>RFC:</Typography>
-                <Typography className={classes.card}>{obj.duenoTitular.rfc}</Typography>
-              </Grid>
-              <Grid item xs={12} md={4}>
-                <Typography className={classes.cardTitle}>RELACIÓN CON EL DUEÑO O EL TITULAR:</Typography>
-                <Typography className={classes.card}>{obj.duenoTitular.relacionConTitular}</Typography>
-              </Grid>
+        </Grid>
+      ) : (
+        <Grid item xs={12}>
+          <Grid container spacing={1}>
+            <Grid item xs={12} md={4}>
+              <Typography className={classes.cardTitle}>NOMBRE DEL DUEÑO O TITULAR:</Typography>
+              <Typography className={classes.card}>{obj.duenoTitular.nombreTitular}</Typography>
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <Typography className={classes.cardTitle}>RFC:</Typography>
+              <Typography className={classes.card}>{obj.duenoTitular.rfc}</Typography>
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <Typography className={classes.cardTitle}>RELACIÓN CON EL DUEÑO O EL TITULAR:</Typography>
+              <Typography className={classes.card}>{obj.duenoTitular.relacionConTitular}</Typography>
             </Grid>
           </Grid>
-          )}
+        </Grid>
+      )}
     </>
   )
 }
 
-function Prestamo ({ prestamo }) {
+function Prestamo({ prestamo }) {
   const classes = useStyles()
   const exp = expansion()
   const sum = sumary()
@@ -86,7 +86,7 @@ function Prestamo ({ prestamo }) {
                 </Grid>
                 <Grid item xs={12} md={4}>
                   <Typography className={classes.cardTitle}>UBICACIÓN DEL INMUEBLE:</Typography>
-                  <Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
+                  <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
                 </Grid>
                 <Duenio obj={obj} />
               </Grid>
@@ -120,17 +120,18 @@ function Prestamo ({ prestamo }) {
                 </Grid>
                 <Grid item xs={12} md={4}>
                   <Typography className={classes.cardTitle}>NÚMERO DE SERIE O REGISTRO:</Typography>
-                  <Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
+                  <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
                 </Grid>
                 <Grid item xs={12} md={4}>
                   <Typography className={classes.cardTitle}>¿DÓNDE SE ENCUENTRA REGISTRADO?:</Typography>
-                  <Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
+                  <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
                 </Grid>
                 <Duenio obj={obj} />
               </Grid>
             </BoxAccordionDetails>
           </BoxAccordion>
         )}
+        <AclaracionesObservacions />
       </React.Fragment>
     )
   })
@@ -155,15 +156,13 @@ const Prestamos = ({ data, titulo }) => {
           {titulo}
         </Typography>
       </Grid>
-      {data
-        ? (
-          <Grid item xs={12}>
-            {data.ninguno ? <DatosNoRegistrados /> : prestamo.length ? <Prestamo prestamo={prestamo} /> : <DatosReservados />}
-          </Grid>
-          )
-        : (
-          <Disclaimer />
-          )}
+      {data ? (
+        <Grid item xs={12}>
+          {data.ninguno ? <DatosNoRegistrados /> : prestamo.length ? <Prestamo prestamo={prestamo} /> : <DatosReservados />}
+        </Grid>
+      ) : (
+        <Disclaimer />
+      )}
     </Grid>
   )
 }

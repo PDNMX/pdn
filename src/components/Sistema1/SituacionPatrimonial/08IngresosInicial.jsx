@@ -12,6 +12,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import { ActividadFinanciera, ServiciosProfesionales } from './08Ingresos'
 import ActividadIndustrial from './08Ingresos/ActividadIndustrial'
 import basicInicial from './00_basic_incial'
+import AclaracionesObservacions from '../common/AclaracionesObservaciones'
 
 const useStyles = makeStyles(styleSecciones)
 
@@ -119,7 +120,7 @@ const IngresosIniciales = ({ data: info, titulo }) => {
               <Typography className={classes.cardTitle}>B.- INGRESO MENSUAL NETO DE LA PAREJA Y/O DEPENDIENTES ECONÓMICOS (DESPUÉS DE IMPUESTOS)</Typography>
             </Grid>
             <Grid item xs={12} md={3}>
-              <Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
+              <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
             </Grid>
 
             <Grid item xs={12} md={9}>
@@ -132,6 +133,7 @@ const IngresosIniciales = ({ data: info, titulo }) => {
             </Grid>
           </Grid>
         </Paper>
+        <AclaracionesObservacions />
       </Grid>
     </Grid>
   )

@@ -19,6 +19,7 @@ import dataEntidadesFederativas from './data/entidades.json'
 import dataMunicipios from './data/municipios.json'
 
 class Busqueda extends React.Component {
+  listado = []
   defaultSelect = [
     {
       clave: 0,
@@ -46,7 +47,7 @@ class Busqueda extends React.Component {
   // 	formaAdquisicion: 'CSN',
   // 	totalIngresosNetosMin: 2000,
   // 	totalIngresosNetosMax: 4000
-  // };
+  // }
 
   query = {
     nombres: '',
@@ -71,6 +72,7 @@ class Busqueda extends React.Component {
   }
 
   state = {
+    listado: [],
     ordenamiento: {},
     query: { ...this.query },
     institucion: '',
@@ -96,7 +98,15 @@ class Busqueda extends React.Component {
     dataSelect: ''
   }
 
+  print_results = p => {
+    this.listado.push({ supplier_id: p.supplier_id, total: p.total })
+    if (this.listado.length === this.state.prov.length) {
+      console.table(this.listado.sort((p, n) => p.supplier_id.localeCompare(n.supplier_id, 'es-mx')))
+    }
+  }
+
   cleanForm = () => {
+    this.listado = []
     this.setState(prevState => ({
       ...prevState,
       btnSearch: false,
@@ -166,7 +176,7 @@ class Busqueda extends React.Component {
   }
 
   handleDataSelect = data => {
-    // console.log('data: ', data);
+    // console.log('data: ', data)
     this.setState(
       prevState => ({
         ...prevState,
@@ -244,6 +254,7 @@ class Busqueda extends React.Component {
         const { prov } = prevState
 
         prov[id] = p
+        this.print_results(p)
 
         return {
           ...prevState,
@@ -288,6 +299,7 @@ class Busqueda extends React.Component {
             const { prov } = prevState
 
             prov[id] = p
+            this.print_results(p)
 
             return {
               ...prevState,
@@ -313,6 +325,7 @@ class Busqueda extends React.Component {
             const { prov } = prevState
 
             prov[id] = p
+            this.print_results(p)
 
             return {
               ...prevState,
@@ -450,7 +463,7 @@ class Busqueda extends React.Component {
   }
 
   getEntidadesFederativas = () => {
-    // let url = 'https://gaia.inegi.org.mx/wscatgeo/mgee/';
+    // let url = 'https://gaia.inegi.org.mx/wscatgeo/mgee/'
 
     const defaultOps = [
       {
@@ -472,7 +485,7 @@ class Busqueda extends React.Component {
     //     this.setState(prevState => ({
     //       ...prevState,
     //       catEntidadesFederativas: [...defaultOps, ...resp.data.datos]
-    //     }));
+    //     }))
     //   })
     //   .catch(err => {
     //     this.setState(prevState => ({
@@ -483,14 +496,14 @@ class Busqueda extends React.Component {
     //           nom_agee: 'ERROR AL CARGAR LAS ENTIDADES FEDERATIVAS'
     //         }
     //       ]
-    //     }));
+    //     }))
 
-    //     error('catEntidadesFederativas' + err);
-    //   });
+    //     error('catEntidadesFederativas' + err)
+    //   })
   }
 
   getMunicipios = cve_agee => {
-    // let url = 'https://gaia.inegi.org.mx/wscatgeo/mgem/' + cve_agee;
+    // let url = 'https://gaia.inegi.org.mx/wscatgeo/mgem/' + cve_agee
 
     const defaultOps = [
       {
@@ -510,7 +523,7 @@ class Busqueda extends React.Component {
     //     this.setState(prevState => ({
     //       ...prevState,
     //       catMunicipios: [...defaultOps, ...resp.data.datos]
-    //     }));
+    //     }))
     //   })
     //   .catch(err => {
     //     this.setState(prevState => ({
@@ -521,20 +534,20 @@ class Busqueda extends React.Component {
     //           nom_agem: 'ERROR AL CARGAR LOS MUNICIPIOS'
     //         }
     //       ]
-    //     }));
+    //     }))
 
-    //     error('catMunicipios' + err);
-    //   });
+    //     error('catMunicipios' + err)
+    //   })
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.getEscolaridadNivel()
     this.getFormaAdquisicion()
     this.getProviders()
     this.getEntidadesFederativas()
   }
 
-  render () {
+  render() {
     const { classes } = this.props
 
     return (
