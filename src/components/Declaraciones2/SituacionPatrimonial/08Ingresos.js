@@ -8,12 +8,10 @@ import IngresosModificacion from './08IngresosModificacion';
 import IngresosConclusion from './08IngresosConclusion';
 
 import styleSecciones from '../styleSecciones';
-import { sumary, expansion, getMoneda } from '../utils';
+import { sumary, expansion, getMoneda, info } from '../utils';
 
 import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../common/BoxAccordion';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
-import { info } from '../utils';
 
 const useStyles = makeStyles(styleSecciones);
 
