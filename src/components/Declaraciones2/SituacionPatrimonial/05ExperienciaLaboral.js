@@ -141,7 +141,6 @@ const ExperienciaLaboral = ({ data, titulo }) => {
                         </Grid>
                       </Grid>
                     )}
-                    <AclaracionesObservacions />
                   </BoxAccordionDetails>
                 </BoxAccordion>
               );

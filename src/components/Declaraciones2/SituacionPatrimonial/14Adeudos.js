@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
 import styleSecciones from '../styleSecciones';
-import { Divider } from '../utils';
+import { Disclaimer, Divider } from '../utils';
 
 import DatosNoRegistrados from '../DatosNoRegistrados';
 import DatosReservados from '../DatosReservados';
@@ -13,7 +13,6 @@ import { sumary, expansion, getMoneda } from '../utils';
 import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../common/BoxAccordion';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-import { Disclaimer } from '../utils';
 import AclaracionesObservacions from '../common/AclaracionesObservaciones';
 
 const useStyles = makeStyles(styleSecciones);

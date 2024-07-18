@@ -5,7 +5,6 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
 import style from '../styleSecciones';
-// import DatosCamposPrivados from '../DatosCamposPrivados';
 import basicInicial from './00_basic_incial';
 import AclaracionesObservacions from '../common/AclaracionesObservaciones';
 
@@ -37,10 +36,7 @@ const DatosGenerales = ({ data: info, titulo }) => {
         <Typography className={classes.tituloSeccion} align='center'>
           {titulo}
         </Typography>
-      </Grid>
-      {/* <Grid item xs={12}>
-				<DatosCamposPrivados campos={camposPrivados} />
-			</Grid> */}
+      </Grid>      
       <Grid item xs={12}>
         <Paper className={classes.paper}>
           <Grid container spacing={1}>

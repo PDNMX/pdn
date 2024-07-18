@@ -8,12 +8,11 @@ import styleSecciones from '../styleSecciones';
 import DatosNoRegistrados from '../DatosNoRegistrados';
 import DatosReservados from '../DatosReservados';
 import Transmisor from '../CompTransmisor';
-import { sumary, expansion, Divider, getMoneda } from '../utils';
+import { sumary, expansion, Divider, getMoneda, Disclaimer } from '../utils';
 
 import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../common/BoxAccordion';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-import { Disclaimer } from '../utils';
 import AclaracionesObservacions from '../common/AclaracionesObservaciones';
 
 const useStyles = makeStyles(styleSecciones);
