@@ -120,11 +120,13 @@ function BusquedaParticular ({classes}){
     React.useEffect(() => {
         loadInstitutions();
         loadProviders();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     React.useEffect(() => {
         loadInstitutions();
         loadProviders();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [filter?.nivel]);
 
     React.useEffect(() => {
@@ -133,10 +135,12 @@ function BusquedaParticular ({classes}){
             setSelectedItem(null);
             handleSearch();
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [provider]);
 
     React.useEffect(() => {
         loadInstitutions();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [filter?.provider])
 
     React.useEffect(() => {
@@ -146,6 +150,7 @@ function BusquedaParticular ({classes}){
             setSelectedItem(null);
             handleSearch();
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [fixpaginador]);
 
     const loadInstitutions = () => {

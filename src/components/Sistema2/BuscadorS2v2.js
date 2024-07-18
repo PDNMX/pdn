@@ -111,6 +111,7 @@ const BuscadorS2  =  props => {
 
     React.useEffect(() => {
         loadEntities("Todos");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
     React.useEffect(() => {
@@ -118,6 +119,7 @@ const BuscadorS2  =  props => {
             console.log("Searching...")
             broadSearch();
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state.summaryData]);
 
     React.useEffect(() => {
@@ -127,6 +129,7 @@ const BuscadorS2  =  props => {
             console.log('Fetching data...');
             fetchData();
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [
         state.supplier_id,
         state.page,
@@ -140,6 +143,7 @@ const BuscadorS2  =  props => {
             console.log('Fetching entities..');
             loadEntities();
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[state.nivel]);
 
     const changeLevel = e => {

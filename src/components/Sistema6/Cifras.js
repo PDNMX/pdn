@@ -123,17 +123,18 @@ const Cifras = props => {
             console.log(error);
             setState({ error: true })
         });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[dataSupplier]);
 
-    const porcentaje = (amount, total) => {
-        let p = (amount * 100 / total).toFixed(3);
-        return `${p}%`
-    };
+    // const porcentaje = (amount, total) => {
+    //     let p = (amount * 100 / total).toFixed(3);
+    //     return `${p}%`
+    // };
 
     const handleSelectDonutData = p => {
         //console.log(p)
         const {open, direct, selective, other} = p ==='amounts' ? state.amounts: state.counts;
-        const total = p === 'amounts' ? state.amounts.total : state.contrataciones;
+        // const total = p === 'amounts' ? state.amounts.total : state.contrataciones;
 
         setState(s => ({
             ...s,

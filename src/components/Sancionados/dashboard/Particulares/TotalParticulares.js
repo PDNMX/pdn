@@ -10,6 +10,7 @@ const aux = () => axios({
 
 const TotalParticulares = () => {
     const [data, setData] = useState({});
+    // eslint-disable-next-line no-unused-vars
     const [error, setError] = useState(false);
 
     React.useEffect(() => {

@@ -429,6 +429,7 @@ export class ResultadosS1 extends React.Component {
               <Grid item xs={12}>
               {this.state.prov
               .filter((p) => p.status === "ACTIVE")
+              // eslint-disable-next-line array-callback-return
               .map((p, i) => {
                 if (p.total > 0) {
                   return (

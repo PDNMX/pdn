@@ -92,7 +92,9 @@ export function ResultadosS3s(props) {
   const [selectedItem, setSelectedItem] = React.useState(null);
   const [provider, setProvider] = React.useState("any");
   const [pagination, setPagination] = React.useState(initialPagination);
+  // eslint-disable-next-line no-unused-vars
   const [filter, setFilter] = React.useState(initialFilter);
+  // eslint-disable-next-line no-unused-vars
   const [sort, setSort] = React.useState(initialSort);
   const [view, setView] = React.useState(0);
 
@@ -102,6 +104,7 @@ export function ResultadosS3s(props) {
     //loadInstitutions();
     //loadProviders();
     handleSearchPrevios();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   React.useEffect(() => {
@@ -110,6 +113,7 @@ export function ResultadosS3s(props) {
       setSelectedItem(null);
       handleSearchAPI();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [provider]);
 
   React.useEffect(() => {
@@ -118,6 +122,7 @@ export function ResultadosS3s(props) {
         setSelectedItem(null);
         handleSearchAPI();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [fixpaginador]);
 
   /*   const handleCleanAll = () => {

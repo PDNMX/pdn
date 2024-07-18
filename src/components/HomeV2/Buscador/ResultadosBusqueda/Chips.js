@@ -32,11 +32,15 @@ export default function ChipsArray(props) {
       value = "";
     }
     //console.log(value)
+    // TODO: Revisar la logica y agregar parentesis
     if (
       value &&
       (!Array.isArray(value)) &&
+      // eslint-disable-next-line no-mixed-operators
       (value !== undefined )&&
-      (value !== null )||
+      // eslint-disable-next-line no-mixed-operators
+      (value !== null ) ||
+      // eslint-disable-next-line no-mixed-operators
       (value.length > 0 ) &&
       (value.nombre && value.nombre !== null )||
       (value.name && value.name !== null)

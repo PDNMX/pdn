@@ -112,6 +112,7 @@ const Agrupaciones = (props) => {
             console.log(err);
             setError(true)
         })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [ramo])
 
     useEffect(() =>{

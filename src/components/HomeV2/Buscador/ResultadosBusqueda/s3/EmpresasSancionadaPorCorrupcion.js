@@ -98,6 +98,7 @@ export function ResultadosS3p(props){
     /* const [providersList, setProvidersList] = React.useState([]); */
     const [pagination, setPagination] = React.useState(initialPagination);
     const [filter, setFilter] = React.useState(initialFilter);
+    // eslint-disable-next-line no-unused-vars
     const [sort, setSort] = React.useState(initialSort);
     const [view, setView] = React.useState(0);
 
@@ -109,6 +110,7 @@ export function ResultadosS3p(props){
         loadProviders(); */
         handleSearchPrevios();
         ReactGA.event({ category: 'wizard_empresas-sancionadas', action: 'click' });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     React.useEffect(() => {
@@ -117,6 +119,7 @@ export function ResultadosS3p(props){
             setSelectedItem(null);
             handleSearch();
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [provider]);
 
     React.useEffect(() => {
@@ -125,6 +128,7 @@ export function ResultadosS3p(props){
             setSelectedItem(null);
             handleSearch();
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [fixpaginador]);
 
    const handleSearchPrevios = () => {

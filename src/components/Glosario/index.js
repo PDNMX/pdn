@@ -39,7 +39,7 @@ export default function TemporaryDrawer() {
       return;
     }
     setState(open);
-    if (open == true){
+    if (open === true){
       ReactGA.event({ category: 'glosario', action: 'click' })
     }
   };
