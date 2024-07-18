@@ -77,12 +77,14 @@ const Busqueda = props => {
             console.log(error);
         });
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
     React.useEffect(() => {
         if (state.loading){
             search();
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [
         state.loading
         /*
@@ -107,6 +109,7 @@ const Busqueda = props => {
             console.log(`Setting data supplier to => ${props.dataSupplier}`);
             handleChangeDS(props.dataSupplier);
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[
         props.dataSupplier
     ]);

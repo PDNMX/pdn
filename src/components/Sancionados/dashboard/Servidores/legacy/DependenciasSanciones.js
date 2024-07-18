@@ -74,8 +74,10 @@ let z = d3.scaleOrdinal()
 
 const DependenciasSanciones = (props) => {
     const [errorG1, setErrorG1] = React.useState(false);
+    // eslint-disable-next-line no-unused-vars
     const [errorG2, setErrorG2] = React.useState(false);
     const [methods, setMethods] = React.useState({});
+    // eslint-disable-next-line no-unused-vars
     const [config2, setConfig2] = React.useState({});
     const {classes} = props;
 

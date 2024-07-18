@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
 import {Box, Link, Typography} from "@mui/material";
 import {withStyles} from "@mui/styles";
@@ -19,7 +20,7 @@ const styles = theme => ({
 const BlogCard = props => {
     const {classes, post} = props;
     return (
-        <Box className={classes.root} display="flex" to={post.url} component={Link} href={post.url} onClick={()=>ReactGA.pageview('/blog')}>
+        <Box className={classes.root} display="flex" to={post.url} component={Link} href={post.url} onClick={()=>ReactGA.pageview('/blog')}>            
             <img src={post.feature_image} className={classes.image}/>
             <Typography color="textPrimary">
                 {post.title}

@@ -30,6 +30,7 @@ const VerticalProgressBar = props => {
         ctx.fillStyle = '#fff000';
         ctx.fillRect(0, 0, width, 170);
         */
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
 
@@ -49,6 +50,7 @@ const VerticalProgressBar = props => {
         ctx.fillStyle = color;
 
         ctx.fillRect(0, y_value, width, fill_height);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [value]);
 
     return <canvas id={id} width={width} height={height} style={{

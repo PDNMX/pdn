@@ -68,11 +68,11 @@ const AnioResolucionSanciones = (props) => {
     const {classes} = props;
 
     React.useEffect(() => {
-            let total = 0;
+            // let total = 0;
             aux().then(result => {
                 let temp = result.data.data.slice(1);
                 let aux = temp.map(item => {
-                    total += parseInt(item.count, 10);
+                    // total += parseInt(item.count, 10);
                     return {
                         anio: item.anio_resolucion.toString(),
                         x: item.anio_resolucion,

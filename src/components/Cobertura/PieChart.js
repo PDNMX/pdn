@@ -13,6 +13,7 @@ const PieChart = props => {
             {angle: remaining, color: '#155065'},
             {angle: value, color: color},
         ]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
 

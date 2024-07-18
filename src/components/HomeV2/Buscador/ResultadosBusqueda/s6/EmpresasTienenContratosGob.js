@@ -37,6 +37,7 @@ export function ResultadosS6v1(props) {
     if (state.loading !== false) {
       search();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.pagination.pageSize, state.pagination.page]);
 
   const handleChangeRowsPerPage = (pageSize) => {

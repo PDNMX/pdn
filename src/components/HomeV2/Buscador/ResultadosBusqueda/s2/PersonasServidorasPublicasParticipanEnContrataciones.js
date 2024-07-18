@@ -131,6 +131,7 @@ const [state, setState] = React.useState({
         //loadEntities("Todos");
         //handleSearchSupplier();
         handleBroadSearch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
     React.useEffect(() => {
@@ -138,6 +139,7 @@ const [state, setState] = React.useState({
             //console.log("Searching...")
             broadSearch();
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state.summaryData]);
 
     React.useEffect(() => {
@@ -147,6 +149,7 @@ const [state, setState] = React.useState({
             //console.log('Fetching data...');
             fetchData();
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [
         state.page,
         state.rowsPerPage,
