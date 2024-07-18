@@ -8,10 +8,11 @@ import { Divider, CompDomicilio } from '../utils'
 
 import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../common/BoxAccordion'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import AclaracionesObservacions from '../common/AclaracionesObservaciones'
 
 const useStyles = makeStyles(style)
 
-function Empleo ({ data }) {
+function Empleo({ data }) {
   const classes = useStyles()
 
   return (
@@ -103,6 +104,7 @@ const EmpleoCargoComision = ({ data, titulo }) => {
               })}
           </Grid>
         </Paper>
+        <AclaracionesObservacions />
       </Grid>
     </Grid>
   )

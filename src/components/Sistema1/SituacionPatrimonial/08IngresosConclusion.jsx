@@ -8,6 +8,7 @@ import { Divider, getMoneda } from '../utils'
 
 import { ActividadFinanciera, ServiciosProfesionales, EnajenacionBienes, OtrosIngresos } from './08Ingresos'
 import ActividadIndustrial from './08Ingresos/ActividadIndustrial'
+import AclaracionesObservacions from '../common/AclaracionesObservaciones'
 
 const useStyles = makeStyles(styleSecciones)
 
@@ -62,7 +63,7 @@ const IngresoConclusion = ({ data, titulo }) => {
               <Typography className={classes.cardTitle}>B.- INGRESOS DEL AÑO EN CURSO A LA FECHA DE CONCLUSIÓN DEL EMPLEO, CARGO O COMISIÓN DE LA PAREJA Y / O DEPENDIENTES ECONÓMICOS (DESPUÉS DE IMPUESTOS)</Typography>
             </Grid>
             <Grid item xs={12} md={3}>
-              <Typography className={classes.cardReserved}>DATO RESERVADO</Typography>
+              <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
             </Grid>
 
             <Grid item xs={12} md={9}>
@@ -75,6 +76,7 @@ const IngresoConclusion = ({ data, titulo }) => {
             </Grid>
           </Grid>
         </Paper>
+        <AclaracionesObservacions />
       </Grid>
     </Grid>
   )

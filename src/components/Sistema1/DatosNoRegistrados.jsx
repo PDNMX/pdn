@@ -5,7 +5,7 @@ import makeStyles from '@mui/styles/makeStyles'
 import style from '../style'
 const useStyles = makeStyles(style)
 
-export default function DatosReservados () {
+export default function DatosReservados() {
   const classes = useStyles()
 
   return (

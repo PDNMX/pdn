@@ -25,16 +25,36 @@ import { info } from './utils'
 import style from '../style'
 
 const situacionPatrimonial = (data, tipo) => {
-  const { datosCurricularesDeclarante, experienciaLaboral, bienesInmuebles, vehiculos, bienesMuebles, inversiones, adeudos, prestamoOComodato } = data
+  let { datosCurricularesDeclarante, experienciaLaboral, bienesInmuebles, vehiculos, bienesMuebles } = data
+
+  let inversiones, adeudos, prestamoOComodato
+
+  if (typeof data.inversionesCuentasValores === 'undefined') {
+    inversiones = data.inversiones
+  } else {
+    inversiones = data.inversionesCuentasValores
+  }
+
+  if (typeof data.adeudosPasivos === 'undefined') {
+    adeudos = data.adeudos
+  } else {
+    adeudos = data.adeudosPasivos
+  }
+
+  if (typeof data.prestamoComodato === 'undefined') {
+    prestamoOComodato = data.prestamoOComodato
+  } else {
+    prestamoOComodato = data.prestamoComodato
+  }
 
   const onlyDec = i => i.titular.length === 1 && i.titular[0].clave === 'DEC'
 
   let bienInmueble, vehiculo, bienMueble, inversion, adeudo, tExperienciaLaboral, tprestamoOComodato
-  // let bienInmueble = bienesInmuebles.ninguno ? 0 : bienesInmuebles.bienInmueble.filter(onlyDec);
-  // let vehiculo = vehiculos.ninguno ? 0 : vehiculos.vehiculo.filter(onlyDec);
-  // let bienMueble = bienesMuebles.ninguno ? 0 : bienesMuebles.bienMueble.filter(onlyDec);
-  // let inversion = inversiones.ninguno ? 0 : inversiones.inversion.filter(onlyDec);
-  // let adeudo = adeudos.ninguno ? 0 : adeudos.adeudo.filter(onlyDec);
+  // let bienInmueble = bienesInmuebles.ninguno ? 0 : bienesInmuebles.bienInmueble.filter(onlyDec)
+  // let vehiculo = vehiculos.ninguno ? 0 : vehiculos.vehiculo.filter(onlyDec)
+  // let bienMueble = bienesMuebles.ninguno ? 0 : bienesMuebles.bienMueble.filter(onlyDec)
+  // let inversion = inversiones.ninguno ? 0 : inversiones.inversion.filter(onlyDec)
+  // let adeudo = adeudos.ninguno ? 0 : adeudos.adeudo.filter(onlyDec)
 
   if (bienesInmuebles) {
     if (bienesInmuebles.ninguno) {
@@ -100,9 +120,9 @@ const situacionPatrimonial = (data, tipo) => {
 
   const tDatosCurricurales = typeof datosCurricularesDeclarante === 'undefined' ? 0 : datosCurricularesDeclarante.escolaridad.length
 
-  // const tExperienciaLaboral = typeof experienciaLaboral === 'undefined' ? 0 : experienciaLaboral.experiencia.length;
+  // const tExperienciaLaboral = typeof experienciaLaboral === 'undefined' ? 0 : experienciaLaboral.experiencia.length
 
-  // const tprestamoOComodato = typeof prestamoOComodato === 'undefined' ? 0 : prestamoOComodato.prestamo.length;
+  // const tprestamoOComodato = typeof prestamoOComodato === 'undefined' ? 0 : prestamoOComodato.prestamo.length
 
   const menu = [
     { clave: 'DATOS GENERALES', valor: 0 },
@@ -215,7 +235,7 @@ const titulos = {
   ]
 }
 
-function OpcionInicialConclusion (valor, data, tipo) {
+function OpcionInicialConclusion(valor, data, tipo) {
   const titulo = titulos[tipo][valor]
   switch (valor) {
     case 0:
@@ -243,17 +263,17 @@ function OpcionInicialConclusion (valor, data, tipo) {
     case 11:
       return <BienesMuebles data={data.bienesMuebles} titulo={titulo} />
     case 12:
-      return <Inversiones data={data.inversiones} tipo={tipo} titulo={titulo} />
+      return <Inversiones data={data.inversionesCuentasValores || data.inversiones} tipo={tipo} titulo={titulo} />
     case 13:
-      return <Adeudos data={data.adeudos} tipo={tipo} titulo={titulo} />
+      return <Adeudos data={data.adeudosPasivos || data.adeudos} tipo={tipo} titulo={titulo} />
     case 14:
-      return <Prestamo data={data.prestamoOComodato} titulo={titulo} />
+      return <Prestamo data={data.prestamoComodato || data.prestamoOComodato} titulo={titulo} />
     default:
       break
   }
 }
 
-function OpcionModificacion (valor, data, tipo) {
+function OpcionModificacion(valor, data, tipo) {
   const titulo = titulos[tipo][valor]
   switch (valor) {
     case 0:
@@ -262,7 +282,7 @@ function OpcionModificacion (valor, data, tipo) {
     // 	<ErrorBoundary seccion={'DatosGenerales'}>
     // 		<DatosGenerales data={data.datosGenerales1} titulo={titulo} />
     // 	</ErrorBoundary>
-    // );
+    // )
     case 1:
       return <Domicilio titulo={titulo} />
     case 2:
@@ -284,17 +304,17 @@ function OpcionModificacion (valor, data, tipo) {
     case 10:
       return <BienesMuebles data={data.bienesMuebles} titulo={titulo} />
     case 11:
-      return <Inversiones data={data.inversiones} tipo={tipo} titulo={titulo} />
+      return <Inversiones data={data.inversionesCuentasValores || data.inversiones} tipo={tipo} titulo={titulo} />
     case 12:
-      return <Adeudos data={data.adeudos} tipo={tipo} titulo={titulo} />
+      return <Adeudos data={data.adeudosPasivos || data.adeudos} tipo={tipo} titulo={titulo} />
     case 13:
-      return <Prestamo data={data.prestamoOComodato} titulo={titulo} />
+      return <Prestamo data={data.prestamoComodato || data.prestamoOComodato} titulo={titulo} />
     default:
       break
   }
 }
 
-function opcion (valor, data, tipo) {
+function opcion(valor, data, tipo) {
   switch (tipo) {
     case 'INICIAL':
       return OpcionInicialConclusion(valor, data, tipo)
@@ -308,7 +328,7 @@ function opcion (valor, data, tipo) {
   }
 }
 
-export default function MenuSuperior ({ data, value, setValue, tipo }) {
+export default function SituacionPatrimonial({ data, value, setValue, tipo }) {
   const classes = useStyles()
   const classes2 = styles()
 

@@ -11,7 +11,7 @@ import Paper from '@mui/material/Paper'
 import EnhancedTableToolbar from './EnhancedTableToolbar'
 import EnhancedTableHead from './EnhancedTableHead'
 
-function desc (a, b, orderBy) {
+function desc(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
     return -1
   }
@@ -21,7 +21,7 @@ function desc (a, b, orderBy) {
   return 0
 }
 
-function stableSort (array, cmp) {
+function stableSort(array, cmp) {
   const stabilizedThis = array.map((el, index) => [el, index])
   stabilizedThis.sort((a, b) => {
     const order = cmp(a[0], b[0])
@@ -31,7 +31,7 @@ function stableSort (array, cmp) {
   return stabilizedThis.map(el => el[0])
 }
 
-function getSorting (order, orderBy) {
+function getSorting(order, orderBy) {
   return order === 'desc' ? (a, b) => desc(a, b, orderBy) : (a, b) => -desc(a, b, orderBy)
 }
 
@@ -67,7 +67,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default function EnhancedTable ({ rows, pagination, posicion, handleDataSelect, handleSetPage, handleChangeRowsPerPage }) {
+export default function EnhancedTable({ rows, pagination, posicion, handleDataSelect, handleSetPage, handleChangeRowsPerPage }) {
   const classes = useStyles()
   const [order, setOrder] = React.useState('asc')
   const [orderBy, setOrderBy] = React.useState('nombres')

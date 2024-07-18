@@ -23,32 +23,30 @@ const ActiveResultProv = props => {
             <Typography className={classes.resultadosHeading}>{p.supplier_name}</Typography>
             <Typography className={classes.resultadosHeading}>[{p.levels.join(', ')}]</Typography>
           </Grid>
-          {p.finding
-            ? (
-              <Grid item xs={4}>
-                <Grid container spacing={0}>
-                  <Grid item xs={2}>
-                    <CircularProgress color='primary' size={20} />
-                  </Grid>
+          {p.finding ? (
+            <Grid item xs={4}>
+              <Grid container spacing={0}>
+                <Grid item xs={2}>
+                  <CircularProgress color='primary' size={20} />
                 </Grid>
               </Grid>
-              )
-            : (
-              <Grid item xs={4}>
-                <Grid container spacing={0}>
-                  <Grid item xs={4}>
-                    <Typography className={classes.resultadosHeading}>
-                      <Tooltip title={p.estatus ? 'Con respuesta' : 'Sin respuesta: ' + p.error.status + ' ' + p.error.statusText}>
-                        <IconSunny color={p.estatus ? 'primary' : 'inherit'} />
-                      </Tooltip>
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={8}>
-                    <Typography className={classes.resultadosHeading}> Total de registros: {new Intl.NumberFormat('es-MX').format(p.total)} </Typography>
-                  </Grid>
+            </Grid>
+          ) : (
+            <Grid item xs={4}>
+              <Grid container spacing={0}>
+                <Grid item xs={4}>
+                  <Typography className={classes.resultadosHeading}>
+                    <Tooltip title={p.estatus ? 'Con respuesta' : 'Sin respuesta: ' + p.error.status + ' ' + p.error.statusText}>
+                      <IconSunny color={p.estatus ? 'primary' : 'inherit'} />
+                    </Tooltip>
+                  </Typography>
+                </Grid>
+                <Grid item xs={8}>
+                  <Typography className={classes.resultadosHeading}> Total de registros: {new Intl.NumberFormat('es-MX').format(p.total)} </Typography>
                 </Grid>
               </Grid>
-              )}
+            </Grid>
+          )}
         </Grid>
       </BoxAccordionSummary>
       {!p.finding && (

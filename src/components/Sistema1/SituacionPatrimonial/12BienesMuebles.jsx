@@ -12,75 +12,83 @@ import { sumary, expansion, Divider, getMoneda, Disclaimer } from '../utils'
 import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../common/AccordionBox'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
+import AclaracionesObservacions from '../common/AclaracionesObservaciones'
+
 const useStyles = makeStyles(styleSecciones)
 
-function BienMueble (props) {
+function BienMueble(props) {
   const classes = useStyles()
   const exp = expansion()
   const sum = sumary()
   const { bienMueble } = props
-  return bienMueble.map((obj, idx) => {
-    return (
-      <BoxAccordion key={'veh-' + idx}>
-        <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon style={{ color: 'white' }} />} aria-controls='panel1a-content' id='panel1a-header'>
-          <Typography className={exp.heading}>
-            <strong>TIPO DEL BIEN: {obj.tipoBien.valor}</strong>
-          </Typography>
-        </BoxAccordionSummary>
-        <BoxAccordionDetails>
-          <Grid container spacing={1}>
-            <Grid item xs={12} md={8}>
-              <Typography className={classes.cardTitle}>TIPO DEL BIEN:</Typography>
-              <Typography className={classes.card}>{obj.tipoBien.valor}</Typography>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Typography className={classes.cardTitle}>TITULAR DEL BIEN:</Typography>
-              <Typography className={classes.card}>
-                {obj.titular.map((tit, idx) => {
-                  return <span key={'tit-' + idx}>{tit.valor}</span>
-                })}
+  return (
+    <>
+      {bienMueble.map((obj, idx) => {
+        return (
+          <BoxAccordion key={'veh-' + idx}>
+            <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon style={{ color: 'white' }} />} aria-controls='panel1a-content' id='panel1a-header'>
+              <Typography className={exp.heading}>
+                <strong>
+                  TIPO DEL BIEN: {obj.tipoBien?.valor} ({obj.tipoOperacion.replace('_', ' ')})
+                </strong>
               </Typography>
-            </Grid>
+            </BoxAccordionSummary>
+            <BoxAccordionDetails>
+              <Grid container spacing={1}>
+                <Grid item xs={12} md={8}>
+                  <Typography className={classes.cardTitle}>TIPO DEL BIEN:</Typography>
+                  <Typography className={classes.card}>{obj.tipoBien?.valor}</Typography>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                  <Typography className={classes.cardTitle}>TITULAR DEL BIEN:</Typography>
+                  <Typography className={classes.card}>
+                    {obj.titular.map((tit, idx) => {
+                      return <span key={'tit-' + idx}>{tit.valor}</span>
+                    })}
+                  </Typography>
+                </Grid>
 
-            <Grid item xs={12} md={4}>
-              <Typography className={classes.cardTitle}>DESCRIPCIÓN GENERAL DEL BIEN:</Typography>
-              <Typography className={classes.card}>{obj.descripcionGeneralBien}</Typography>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Typography className={classes.cardTitle}>FORMA DE ADQUISICIÓN:</Typography>
-              <Typography className={classes.card}>{obj.formaAdquisicion?.valor}</Typography>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Typography className={classes.cardTitle}>FORMA DE PAGO:</Typography>
-              <Typography className={classes.card}>{obj.formaPago}</Typography>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Typography className={classes.cardTitle}>VALOR DE ADQUISICIÓN DEL MUEBLE:</Typography>
-              <Typography className={classes.card}>{getMoneda(obj.valorAdquisicion.valor)}</Typography>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Typography className={classes.cardTitle}>TIPO DE MONEDA:</Typography>
-              <Typography className={classes.card}>{obj.valorAdquisicion.moneda}</Typography>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Typography className={classes.cardTitle}>FECHA DE ADQUISICIÓN:</Typography>
-              <Typography className={classes.card}>{obj.fechaAdquisicion}</Typography>
-            </Grid>
+                <Grid item xs={12} md={4}>
+                  <Typography className={classes.cardTitle}>DESCRIPCIÓN GENERAL DEL BIEN:</Typography>
+                  <Typography className={classes.card}>{obj.descripcionGeneralBien}</Typography>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                  <Typography className={classes.cardTitle}>FORMA DE ADQUISICIÓN:</Typography>
+                  <Typography className={classes.card}>{obj.formaAdquisicion?.valor}</Typography>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                  <Typography className={classes.cardTitle}>FORMA DE PAGO:</Typography>
+                  <Typography className={classes.card}>{obj.formaPago}</Typography>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                  <Typography className={classes.cardTitle}>VALOR DE ADQUISICIÓN DEL MUEBLE:</Typography>
+                  <Typography className={classes.card}>{getMoneda(obj.valorAdquisicion.valor)}</Typography>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                  <Typography className={classes.cardTitle}>TIPO DE MONEDA:</Typography>
+                  <Typography className={classes.card}>{obj.valorAdquisicion.moneda}</Typography>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                  <Typography className={classes.cardTitle}>FECHA DE ADQUISICIÓN:</Typography>
+                  <Typography className={classes.card}>{obj.fechaAdquisicion}</Typography>
+                </Grid>
 
-            {obj.motivoBaja && (
-              <Grid item xs={12} md={4}>
-                <Typography className={classes.cardTitle}>EN CASO DE BAJA DEL MUEBLE INCLUIR MOTIVO:</Typography>
-                <Typography className={classes.card}>{obj.motivoBaja.valor}</Typography>
+                <Grid item xs={12} md={12}>
+                  <Typography className={classes.cardTitle}>EN CASO DE BAJA DEL MUEBLE INCLUIR MOTIVO:</Typography>
+                  <Typography className={classes.card}>{obj.motivoBaja?.valor}</Typography>
+                </Grid>
+
+                <Divider />
+
+                {obj.transmisor && <Transmisor transmisor={obj.transmisor} />}
               </Grid>
-            )}
-            <Divider />
-
-            {obj.transmisor && <Transmisor transmisor={obj.transmisor} />}
-          </Grid>
-        </BoxAccordionDetails>
-      </BoxAccordion>
-    )
-  })
+            </BoxAccordionDetails>
+          </BoxAccordion>
+        )
+      })}
+      <AclaracionesObservacions />
+    </>
+  )
 }
 
 const BienesMuebles = ({ data, titulo }) => {
@@ -88,7 +96,7 @@ const BienesMuebles = ({ data, titulo }) => {
 
   let bienMueble
 
-  if (data.ninguno) {
+  if (typeof data === 'undefined' || data.ninguno) {
     bienMueble = []
   } else {
     bienMueble = data.bienMueble ? data.bienMueble.filter(i => i.titular.length === 1 && i.titular[0].clave === 'DEC') : []
@@ -96,7 +104,7 @@ const BienesMuebles = ({ data, titulo }) => {
 
   // const bienMueble = data.ninguno
   // 	? []
-  // 	: data.bienMueble.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC');
+  // 	: data.bienMueble.filter((i) => i.titular.length === 1 && i.titular[0].clave === 'DEC')
 
   return (
     <Grid container spacing={2} className={classes.rootPrincipal}>
@@ -105,15 +113,13 @@ const BienesMuebles = ({ data, titulo }) => {
           {titulo}
         </Typography>
       </Grid>
-      {data
-        ? (
-          <Grid item xs={12}>
-            {data.ninguno ? <DatosNoRegistrados /> : bienMueble.length ? <BienMueble bienMueble={bienMueble} /> : <DatosReservados />}
-          </Grid>
-          )
-        : (
-          <Disclaimer />
-          )}
+      {data ? (
+        <Grid item xs={12}>
+          {data.ninguno ? <DatosNoRegistrados /> : bienMueble.length ? <BienMueble bienMueble={bienMueble} /> : <DatosReservados />}
+        </Grid>
+      ) : (
+        <Disclaimer />
+      )}
     </Grid>
   )
 }

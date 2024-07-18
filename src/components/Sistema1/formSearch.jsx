@@ -159,7 +159,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                       <MenuItem value={p.supplier_id} key={"pro-" + k}>
                         {p.supplier_name}
                       </MenuItem>
-                    );
+                    )
                   })}
                 </Select>
               </FormControl>

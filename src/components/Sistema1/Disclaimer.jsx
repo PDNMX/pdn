@@ -6,7 +6,7 @@ import ButtonPDN from '../Compartidos/ButtonPDN'
 import styles from '../style'
 const useStyles = makeStyles(styles)
 
-export default function Disclaimer (props) {
+export default function Disclaimer(props) {
   const classes = useStyles()
   return (
     <Dialog open={props.open} onClose={props.handleClose} aria-labelledby='alert-dialog-title' aria-describedby='alert-dialog-description'>
@@ -39,9 +39,7 @@ export default function Disclaimer (props) {
           <ButtonPDN component={RouterLink} to='/terminos'>
             Términos
           </ButtonPDN>
-          <ButtonPDN onClick={props.handleClose}>
-            Aceptar
-          </ButtonPDN>
+          <ButtonPDN onClick={props.handleClose}>Aceptar</ButtonPDN>
         </DialogActions>
       </Paper>
     </Dialog>
