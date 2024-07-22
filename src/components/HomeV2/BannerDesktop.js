@@ -6,11 +6,13 @@ import imgHeader from "../../assets/rediseno/logo_pdn.svg";
 import Espe from "../../assets/rediseno/ico_especificaciones.svg";
 import Mesa from "../../assets/rediseno/ico_mesa-ayuda.svg";
 import MDA from "../../assets/rediseno/ico_mda.svg";
+import Normatividad from "../../assets/rediseno/ico_normatividad.svg";
 import Sistemas from "../../assets/rediseno/ico_sistemas_f.svg";
 import Interconexion from "../../assets/rediseno/ico_interconexion.svg";
 import LoginIcon from "../../assets/rediseno/ico_login.svg";
 import SistemasMenu from "./SistemasMenu";
 import InterconexionMenu from "./InterconexionMenu";
+import NormatividadMenu from "./NormatividadMenu";
 import ReactGA from "react-ga4";
 import Link from '@mui/material/Link';
 //import {getUser} from '../Login/Auth';
@@ -71,6 +73,7 @@ const BannerDesktop = props => {
     const {classes, systems, setOpenLoginDialog} = props;
     const [showSistemas, setShowSistemas] = React.useState(false);
     const [showInterconexion, setShowInterconexion] = React.useState(false);
+    const [showNormatividad, setShowNormatividad] = React.useState(false);
 
     const {user} = React.useContext(UserContext);
 
@@ -86,17 +89,32 @@ const BannerDesktop = props => {
         }, 1000)
     }
 
+    const toggleNormatividad = () => {
+        setTimeout(() => {
+            setShowNormatividad(!showNormatividad)
+        }, 1000)
+    }
+
     useEffect(() => {
         if (showSistemas) {
             setShowInterconexion(false);
+            setShowNormatividad(false);
         }
     }, [showSistemas]);
-
+    
     useEffect(() => {
         if (showInterconexion) {
             setShowSistemas(false);
+            setShowNormatividad(false);
         }
     }, [showInterconexion]);
+    
+    useEffect(() => {
+        if (showNormatividad) {
+            setShowSistemas(false);
+            setShowInterconexion(false);
+        }
+    }, [showNormatividad]);
 
     const handleOpenLoginDialog = () => {
         setOpenLoginDialog(true);
@@ -173,6 +191,17 @@ const BannerDesktop = props => {
                                     </Typography>
                                 </Link>
                             </Grid>
+                            <Grid item className={`${classes.opc} ${showNormatividad ? classes.selected : ""}`}
+                                  onClick={() => setShowNormatividad(!showNormatividad)}>
+                                    <img
+                                        src={Normatividad}
+                                        className={classes.icon}
+                                        alt="Normatividad"
+                                    />
+                                    <Typography className={classes.textMenu}>
+                                        NORMATIVIDAD
+                                    </Typography>
+                            </Grid>
                         </Grid>
 
                     </Grid>
@@ -214,6 +243,9 @@ const BannerDesktop = props => {
             }
             {showInterconexion &&
                 <InterconexionMenu toogle={() => toggleInterconexion()}/>
+            }
+            {showNormatividad &&
+                <NormatividadMenu toogle={() => toggleNormatividad()}/>
             }
 
         </React.Fragment>
