@@ -8,7 +8,7 @@ import icon_twitter from '../../../assets/footer/ico_twitter.svg';
 import icon_facebook from '../../../assets/footer/ico_facebook.svg';
 
 import icon_github from '../../../assets/footer/ico_github.svg';
-
+import icon_cc from '../../../assets/footer/ico_cc.svg';
 import { makeStyles } from '@mui/styles';
 import css from './cssFooter';
 
@@ -43,13 +43,11 @@ const LeftFooter = props => {
       </Grid>
       <Grid item className={classes.acercade}>
         <Grid container spacing={0} direction={'row'} justifyContent={'flex-end'} alignItems={'center'}>
-          <Grid item>
-            <Link href='https://creativecommons.org/licenses/by-nc/4.0/deed.es' rel='license' target='_blank' onClick={()=>ReactGA.event({ category: 'licencia-creative-commons', action: 'click' })}>
-              <figure className={classes.figure}>
-                <img alt='Creative Commons License' style={{ borderWidth: 0, width: 110, marginRight: 40 }} src='https://i.creativecommons.org/l/by-nc/4.0/88x31.png' />
-              </figure>
-            </Link>
-          </Grid>
+        <Link href='https://creativecommons.org/licenses/by-nc/4.0/deed.es' target='_blank' onClick={()=>ReactGA.event({ category: 'cc-sesna', action: 'click' })}>
+          <figure className={classes.figure}>
+            <img alt='Creative Commons' src={icon_cc} className={classes.image} />
+          </figure>
+        </Link>
           <Grid item>
             <RouterLink to={'/about'} className={classes.acercade_enlace}>
               Acerca de la PDN

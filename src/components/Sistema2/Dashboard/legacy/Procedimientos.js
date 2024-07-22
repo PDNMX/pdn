@@ -6,6 +6,7 @@ import BarChart from "d3plus-react/es/src/BarChart";
 import * as d3 from "d3";
 import ModalInfo from "@Compartidos/Dashboards/ModalInfo";
 import ContainerChart from "@Compartidos/Dashboards/ContainerChart";
+import procedimientosData from './getProcedimientosPeriodo.json'
 
 const styles = theme => ({
     frameChart: {
@@ -25,13 +26,13 @@ const styles = theme => ({
     }
 });
 
-const aux = () => axios({
+/* const aux = () => axios({
     url: process.env.REACT_APP_S2_BACKEND + '/api/v0/getProcedimientosPeriodo',
     json: true,
     method: "GET"
 });
-
-const z = d3.scaleOrdinal().range(["#3DA2F5", "#00B3A1", "#B286FD", "#F87268"]);
+ */
+const z = d3.scaleOrdinal().range(["#3DA2F5", "#00B3A1", "#B286FD", "#F87268", "#f4b400"]);
 
 const Procedimiento = props => {
 
@@ -42,48 +43,51 @@ const Procedimiento = props => {
     const handleOpen = () => setOpen(true);
 
     React.useEffect(() => {
-        aux().then(result => {
-            let data_ = result.data.data.map(item => ({
-                "ejercicio": item.ejercicio,
-                "total": parseInt(item.total, 10),
-                "procedimiento": item.case
-            }));
-
+        try {
+            let data = procedimientosData.map(item => {
+                let obj = {
+                    "ejercicio": item.ejercicio,
+                    "procedimiento": item.case,
+                    "total": parseInt(item.total, 10),
+                };
+                console.log(obj); // Esto imprimirá el objeto completo en la consola
+                return obj;
+            });
             setState({
-                    methods: {
-                        title: 'Tipos de procedimientos',
-                        data: data_,
-                        groupBy: "procedimiento",
-                        stacked: true,
-                        x: "ejercicio",
-                        y: "total",
-                        xConfig: {
-                            title: "Ejercicio fiscal",
-                        },
-                        yConfig: {
-                            title: "Número de registros"
-                        },
-                        tooltipConfig: {
-                            title: d => d["procedimiento"],
-                            tbody: [
-                                ["Ejercicio fiscal: ", d => d["ejercicio"]],
-                                ["Número de registros: ", d => d["total"]]
-                            ]
-                        },
-                        height: 400,
-                        shapeConfig: {
-                            fill: d => z(d.procedimiento)
-                        },
-                    }
+                methods: {
+                    title: 'Tipos de procedimientos',
+                    data: data,
+                    groupBy: 'procedimiento',
+                    stacked: true,
+                    x: "ejercicio",
+                    y: "total",
+                    xConfig: {
+                        title: "Ejercicio fiscal",
+                    },
+                    yConfig: {
+                        title: "Número de registros"
+                    },
+                    tooltipConfig: {
+                        title: d => d["procedimiento"],
+                        tbody: [
+                            ["Ejercicio fiscal: ", d => d["ejercicio"]],
+                            ["Número de registros: ", d => d["total"]]
+                        ]
+                    },
+                    height: 400,
+                    shapeConfig: {
+                        fill: d => z(d.procedimiento)
+                    },
                 }
-            )
-        }).catch(error => {
+            });
+        } catch (error) {
             console.error(error)
             setState({
                 error: true
             });
-        })
+        }
     }, []);
+    
 
 
     const {classes} = props;

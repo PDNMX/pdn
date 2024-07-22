@@ -2,6 +2,7 @@ import React from 'react';
 import withStyles from '@mui/styles/withStyles';
 import { Typography } from '@mui/material';
 import Link from '@mui/material/Link';
+import icon_cc from '../../../src/assets/footer/ico_cc.svg';
 
 const styles = theme => ({
   root: {
@@ -66,7 +67,7 @@ const Licencia = props => {
       <Typography paragraph style={{ marginBottom: 30 }}>
         <Link href='https://creativecommons.org/licenses/by-nc/4.0/deed.es' rel='license' target='_blank'>
           <figure className={classes.figure}>
-            <img alt='Creative Commons License' style={{ height: '22px!important', marginLeft: 3, verticalAlign: 'text-bottom' }} src='https://i.creativecommons.org/l/by-nc/4.0/80x15.png' />
+            <img alt='Creative Commons License' style={{ height: '22px!important', marginLeft: 3, verticalAlign: 'text-bottom' }} src={icon_cc}  />
           </figure>
         </Link>
       </Typography>

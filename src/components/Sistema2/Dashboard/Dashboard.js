@@ -11,6 +11,7 @@ import TotalRows from './TotalRows';
 import TotalInstituciones from './TotalInstituciones';
 import TotalRamos from './TotalRamos';
 import FooterPage from '@Compartidos/Dashboards/FooterPage';
+import EjerciciosRamosInstituciones from './legacy/EjerciciosRamosInstituciones';
 
 const styles = theme => ({
   root: {
@@ -60,6 +61,9 @@ const Dashboard = props => {
           <Grid item xs={12} md={6}>
             <Procedimientos />
           </Grid>
+          <Grid item xs={12} md={12}>
+            <EjerciciosRamosInstituciones />
+          </Grid>
           
           {/* 
               s2
@@ -70,12 +74,12 @@ const Dashboard = props => {
           
           */}
           
-          <Grid item xs={12}>
+         {/*  <Grid item xs={12}>
             <Agrupaciones />
           </Grid>
           <Grid item xs={12}>
             <Tops />
-          </Grid>
+          </Grid> */}
           <Grid item xs={12}>
             <FooterPage dataSet={'Registro de servidores públicos que intervienen en contrataciones públicas'} provider={'Secretaría de la Función Pública'} referenceDate={'17/05/2022'} />
           </Grid>

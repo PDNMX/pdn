@@ -12,7 +12,7 @@ import icon_github from '../../../assets/footer/ico_git.svg';
 
 import logoSESNA from '../../../assets/footer/logo_sna.svg';
 import logoPDN from '../../../assets/footer/logotipo_pdn.svg';
-
+import icon_cc from '../../../assets/footer/ico_cc.svg';
 import { makeStyles } from '@mui/styles';
 import css from './cssFooter';
 const useStyles = makeStyles(css);
@@ -89,7 +89,7 @@ const MobileFooter = props => {
         <Grid item>
           <Link href='https://creativecommons.org/licenses/by-nc/4.0/deed.es' rel='license' target='_blank'>
             <figure className={classes.figure} style={{ maring: 0, padding: 0 }}>
-              <img alt='Creative Commons License' style={{ marginBottom: 10, borderWidth: 0, width: 120 }} src='https://i.creativecommons.org/l/by-nc/4.0/80x15.png' />
+              <img alt='Creative Commons License' style={{ marginBottom: 10, borderWidth: 0, width: 32 }} src={icon_cc}  />
             </figure>
           </Link>
         </Grid>

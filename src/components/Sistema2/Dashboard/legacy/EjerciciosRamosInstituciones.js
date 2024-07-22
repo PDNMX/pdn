@@ -1,29 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import ejerciciosData from './ejercicios.json';
+import ramosData from './ramos.json';
+import institucionesData from './instituciones.json';
+import agrupacionesData from './agrupaciones.json';
 import { withStyles } from '@mui/styles';
-import {
-    Grid,
-    Select,
-    MenuItem,
-    FormControl,
-    Typography,
-    InputLabel,
-    List,
-    ListItem,
-    ListItemText,
-    Button,
-    Alert
-} from '@mui/material';
-import axios from 'axios';
+import { Grid, Select, MenuItem, FormControl, Typography, InputLabel, List, ListItem, ListItemText, Button, Alert } from '@mui/material';
 import { Treemap } from "d3plus-react";
 import * as d3 from "d3";
 import { ThemeProvider } from '@mui/material/styles';
 import ThemeV2 from "../../../../ThemeV2";
 import ModalInfo from "@Compartidos/Dashboards/ModalInfo";
 import ContainerChart from "@Compartidos/Dashboards/ContainerChart";
-import institucionesData from './instituciones.json';
-import ejerciciosData from './ejercicios.json';
-import ramosData from './ramos.json'
-import agrupacionesData from './agrupaciones.json';
 
 const styles = theme => ({
     frameChart: {
@@ -58,7 +45,7 @@ let z = d3.scaleOrdinal()
         "#1DE2FC", "#00DBC5", "#71E575", "#AFEE68",
         "#F9AE3E", "#FF9270", "#F2B39C"]);
 
-const Agrupaciones = (props) => {
+const EjerciciosRamosInstituciones = (props) => {
     const [ejercicio, setEjercicio] = useState('any');
     const [ejercicios, setEjercicios] = useState([]);
     const [ramo, setRamo] = useState('any');
@@ -72,49 +59,46 @@ const Agrupaciones = (props) => {
     const handleOpen = () => setOpen(true);
 
     useEffect(() => {
-        loadEjercicios();
+        console.log('EjerciciosMike:', ejercicios);
+        // loadEjercicios();
     }, [])
 
- 
-
-    useEffect(()=> {
-        let ramos = ramosData.map((item, index) => ({id:index, ramo:item.ramo}));
+    useEffect(() => {
+        let ramosFiltrados = agrupacionesData.filter(item => ejercicio === 'any' || item.ejercicio === ejercicio);
+        let ramosUnicos = new Set(ramosFiltrados.map(item => item.ramo));
+        let ramos = Array.from(ramosUnicos).sort().map((ramo, index) => ({ id: index, ramo: ramo }));
         setRamos(ramos);
+    }, [ejercicio])
+
+    useEffect(() => {
         setRamo('any');
-    }, [ejercicio])   
+    }, [ramos])
 
     useEffect(() => {
         let filtros = [];
         if (ejercicio !== 'any') filtros.push("ejercicio='" + ejercicio + "'");
         if (ramo !== 'any') filtros.push("ramo='" + ramo + "'");
+    
+        let institucionesFiltradas = agrupacionesData.filter(item => filtros.every(filtro => item[filtro.split('=')[0].trim()] === filtro.split('=')[1].trim().replace(/'/g, "")));
+        let institucionesUnicas = new Set(institucionesFiltradas.map(item => item.institucion)); // <-- Agrega esta línea
+        let instituciones = Array.from(institucionesUnicas).sort().map((institucion, index) => ({ id: index, institucion: institucion })); // <-- Modifica esta línea
+        setInstituciones(instituciones);
+        setInstitucion('any')
+    }, [ejercicio, ramo])
 
-        let options = {
-            url: process.env.REACT_APP_S2_BACKEND + '/api/v0/getInstituciones',
-            json: true,
-            method: "post",
-            data: {
-                filtros: filtros.length > 0 ? filtros : null
-            }
-        };
-
-        axios(options).then(res => {
-            let instituciones = res.data.data.map((item, index) => ({id: index, institucion: item.institucion}));
-            setInstituciones(instituciones);
-            setInstitucion('any')
-        }).catch(err => {
-            console.log(err);
-            setError(true)
-        })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [ramo])
-
+    useEffect(() => {
+        setInstitucion('any');
+    }, [instituciones])
+    
 
     useEffect(() => {
         let filtros = [];
         if (ejercicio !== 'any') filtros.push("ejercicio='" + ejercicio + "'");
         if (ramo !== 'any') filtros.push("ramo='" + ramo + "'");
         if (institucion !== 'any') filtros.push("institucion='" + institucion + "'");
-    
+
+        console.log('FiltrosMike:', filtros);
+
         let v = "";
         if (ejercicio !== 'any' && ramo === 'any' && institucion === 'any')
             v = "group";
@@ -128,8 +112,8 @@ const Agrupaciones = (props) => {
             || (ejercicio === 'any' && ramo !== 'any' && institucion !== 'any'))
             v = "parent";
         else if (ejercicio === 'any' && ramo === 'any' && institucion === 'any')
-             v = "parent"; // Agregado para manejar el caso cuando todos los filtros están en 'any'
-    
+            v = "parent"; // Agregado para manejar el caso cuando todos los filtros están en 'any'
+
         let aux2 = agrupacionesData.filter(item => filtros.every(filtro => item[filtro.split('=')[0].trim()] === filtro.split('=')[1].trim().replace(/'/g, "")))
             .map(item => ({
                 "value": parseInt(item.total, 10),
@@ -138,7 +122,9 @@ const Agrupaciones = (props) => {
                 "parent": item.ejercicio
             }));
 
-            console.log("aux2: " + aux2); 
+
+        console.log('AgrupacionesDataMike:', agrupacionesData); // <-- Agrega esta línea
+        console.log('Datos del gráfico (aux2):', aux2); // <-- Esta línea ya la habíamos agregado antes
 
         setConfig({
             data: aux2,
@@ -169,14 +155,13 @@ const Agrupaciones = (props) => {
         })
     }, [ejercicio, ramo, institucion])
 
-   
-
-    const loadEjercicios = () => {
-        let ejercicios = ejerciciosData.map((item, index) => ({ id: (index + 1), ejercicio: item.ejercicio }));
-        setEjercicios(ejercicios);
-        setEjercicio(ejercicios[ejercicios.length - 1].ejercicio)
-    };
-
+// Modificado
+useEffect(() => {
+    let ejerciciosUnicos = new Set(agrupacionesData.map(item => item.ejercicio));
+    let ejercicios = Array.from(ejerciciosUnicos).sort().map((ejercicio, index) => ({ id: index, ejercicio: ejercicio }));
+    setEjercicios(ejercicios);
+    setEjercicio(ejercicios[ejercicios.length - 1].ejercicio)
+}, [])
 
     const limpiarBusqueda = () => {
         setEjercicio(ejercicios[ejercicios.length - 1].ejercicio);
@@ -208,7 +193,7 @@ const Agrupaciones = (props) => {
             </ModalInfo>
             <ContainerChart handleOpen={handleOpen}>
                 <Grid container>
-                    <Grid  className={classes.item}>
+                    <Grid className={classes.item}>
                         <Typography variant={"h6"} className={classes.titulo}>
                             Ejercicios, ramos e instituciones
                         </Typography>
@@ -235,7 +220,6 @@ const Agrupaciones = (props) => {
                                     })
                                 }
                             </Select>
-
                         </FormControl>
                     </Grid>
                     <Grid item md={4} xs={12}>
@@ -244,7 +228,7 @@ const Agrupaciones = (props) => {
                             <Select style={{ marginTop: '0px' }}
                                 value={ramo}
                                 onChange={(e) => setRamo(e.target.value)}
-                                label={'Ramo federal'}
+                                label='Ramo'
                             >
                                 <MenuItem key={''} value={'any'}> TODOS</MenuItem>
                                 {
@@ -255,7 +239,6 @@ const Agrupaciones = (props) => {
                                     })
                                 }
                             </Select>
-
                         </FormControl>
                     </Grid>
                     <Grid item md={4} xs={12}>
@@ -264,9 +247,9 @@ const Agrupaciones = (props) => {
                             <Select style={{ marginTop: '0px' }}
                                 value={institucion}
                                 onChange={(e) => setInstitucion(e.target.value)}
-                                label={'Institución'}
+                                label='Institución'
                             >
-                                <MenuItem key={''} value={'any'}>TODAS</MenuItem>
+                                <MenuItem key={''} value={'any'}> TODAS</MenuItem>
                                 {
                                     instituciones.map(item => {
                                         return <MenuItem key={item.institucion} value={item.institucion}>
@@ -275,7 +258,6 @@ const Agrupaciones = (props) => {
                                     })
                                 }
                             </Select>
-
                         </FormControl>
                     </Grid>
                     <Grid item xs={11} />
@@ -298,8 +280,7 @@ const Agrupaciones = (props) => {
                 </Grid>
             </ContainerChart>
         </ThemeProvider>
+    );
+};
 
-    )
-}
-
-export default withStyles(styles)(Agrupaciones);
+export default withStyles(styles)(EjerciciosRamosInstituciones);
