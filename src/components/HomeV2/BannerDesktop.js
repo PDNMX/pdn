@@ -92,7 +92,7 @@ const BannerDesktop = props => {
     const toggleNormatividad = () => {
         setTimeout(() => {
             setShowNormatividad(!showNormatividad)
-        }, 1000)
+        }, 1000000)
     }
 
     useEffect(() => {
