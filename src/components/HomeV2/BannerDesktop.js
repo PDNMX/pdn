@@ -139,14 +139,6 @@ const BannerDesktop = props => {
                     <Grid item>
                         <Grid container>
                             <Grid item className={classes.opc}>
-                                <RouterLink className={classes.link} to="/mesa-de-ayuda">
-                                    <img src={Mesa} alt="PDN" className={classes.icon}/>
-                                    <Typography className={classes.textMenu}>
-                                        MESA DE AYUDA
-                                    </Typography>
-                                </RouterLink>
-                            </Grid>
-                            <Grid item className={classes.opc}>
                                 <RouterLink className={classes.link} to="/especificaciones">
                                     <img src={Espe} alt="PDN" className={classes.icon}/>
                                     <Typography className={classes.textMenu}>
@@ -198,6 +190,14 @@ const BannerDesktop = props => {
                                         MERCADO DIGITAL
                                     </Typography>
                                 </Link>
+                            </Grid>
+                            <Grid item className={classes.opc}>
+                                <RouterLink className={classes.link} to="/mesa-de-ayuda">
+                                    <img src={Mesa} alt="PDN" className={classes.icon}/>
+                                    <Typography className={classes.textMenu}>
+                                        MESA DE AYUDA
+                                    </Typography>
+                                </RouterLink>
                             </Grid>
                             {/* <Grid item className={`${classes.opc} ${showNormatividad ? classes.selected : ""}`}
                                   onClick={() => setShowNormatividad(!showNormatividad)}>

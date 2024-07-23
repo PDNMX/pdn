@@ -15,8 +15,9 @@
     ],
     "normatividadSistemas": [
       {
-        "titulo": "Normativa General",
+        "titulo": "Plataforma Digital Nacional",
         "icono": "IconNormativa",
+        "estatus": "activo",
         "vinculo": [
           {
             "titulo": "Ley General del Sistema Nacional Anticorrupción (LGSNA)",
@@ -36,8 +37,9 @@
         ]
       },
       {
-        "titulo": "Normatividad S1",
+        "titulo": "Sistema de evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal (S1)",
         "icono": "IconS1",
+        "estatus": "activo",
         "vinculo": [
           {
             "titulo": "Lineamientos",
@@ -52,8 +54,9 @@
         ]
       },
       {
-        "titulo": "Normatividad S2",
+        "titulo": "Sistema de los servidores públicos que intervengan en procedimientos de contrataciones públicas (S2)",
         "icono": "IconS2",
+        "estatus": "",
         "vinculo": [
           {
             "titulo": "",
@@ -63,8 +66,9 @@
         ]
       },
       {
-        "titulo": "Normatividad S3",
+        "titulo": "Sistema nacional de servidores públicos y particulares sancionados (S3)",
         "icono": "IconS3",
+        "estatus": "",
         "vinculo": [
           {
             "titulo": "",
@@ -74,8 +78,9 @@
         ]
       },
       {
-        "titulo": "Normatividad S6",
+        "titulo": "Sistema de información pública de contrataciones (S6)",
         "icono": "IconS6",
+        "estatus": "",
         "vinculo": [
           {
             "titulo": "",

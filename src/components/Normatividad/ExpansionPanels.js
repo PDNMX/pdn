@@ -4,7 +4,7 @@ import withStyles from '@mui/styles/withStyles';
 import MuiExpansionPanel from '@mui/material/Accordion';
 import MuiExpansionPanelSummary from '@mui/material/AccordionSummary';
 import MuiExpansionPanelDetails from '@mui/material/AccordionDetails';
-import { Typography}  from "@mui/material";
+import { Typography } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ButtonPDN from "../Compartidos/ButtonPDN";
 import IconS1 from "@assets/rediseno/ico_sistemas/ico_s1_color.svg"
@@ -74,10 +74,15 @@ export default function CustomizedExpansionPanels() {
     };
 
     const [expanded, setExpanded] = React.useState('panel1');
-    const disabledState = { panel1: false, panel2: false, panel3: true, panel4: true, panel5: true };
+
+    const estadoDeshabilitado = normatividadData.normatividadSeccion.normatividadSistemas.reduce((acc, item, index) => {
+        const NombrePanel = `panel${index + 1}`;
+        acc[NombrePanel] = item.estatus !== "activo";
+        return acc;
+    }, {});
 
     const handleChange = (panel) => (event, isExpanded) => {
-        if (!disabledState[panel]) {
+        if (!estadoDeshabilitado[panel]) {
             setExpanded(isExpanded ? panel : false);
         }
     };
@@ -88,7 +93,7 @@ export default function CustomizedExpansionPanels() {
         <div>
             {normatividadData.normatividadSeccion.normatividadSistemas.map((item, index) => (
                 <Accordion key={index} square expanded={expanded === `panel${index + 1}`} onChange={handleChange(`panel${index + 1}`)}>
-                    <AccordionSummary classes={{ root: disabledState[`panel${index + 1}`] ? 'disabled' : '' }} expandIcon={<ExpandMoreIcon />} aria-controls={`panel${index + 1}d-content`} id={`panel${index + 1}d-header`}>
+                    <AccordionSummary classes={{ root: estadoDeshabilitado[`panel${index + 1}`] ? 'disabled' : '' }} expandIcon={<ExpandMoreIcon />} aria-controls={`panel${index + 1}d-content`} id={`panel${index + 1}d-header`}>
                         <img src={iconMap[item.icono]} alt="" className={classes.sistemas} />
                         <Typography variant="h6">{item.titulo}</Typography>
                     </AccordionSummary>
