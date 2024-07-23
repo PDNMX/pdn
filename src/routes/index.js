@@ -13,6 +13,7 @@ import Sistema6 from '../components/Sistema6/index';
 
 import Validador from '../components/Validador/index';
 import Especificaciones from '../components/Especificaciones/Landing/Especificaciones';
+import Normatividad from '../components/Normatividad/Normatividad';
 import DeclaracionesEspecificaciones from '../components/Especificaciones/Declaraciones/Declaraciones';
 import EspecificacionesSancionados from '../components/Especificaciones/Sancionados/Sancionados';
 import SpecsS2 from '../components/Especificaciones/ServidoresIntervienen/ServidoresIntervienen';
@@ -31,6 +32,7 @@ import IconS4 from "../assets/rediseno/ico_sistemas/ico_s4_color.svg";
 import IconS5 from "../assets/rediseno/ico_sistemas/ico_s5_color.svg";
 import IconFAQ from "../assets/rediseno/ico_faq.svg";
 import IconEspecificaciones from "../assets/rediseno/ico_especificaciones.svg";
+import IconNormatividad from "../assets/rediseno/ico_normatividad.svg";
 import IconAbout from "../assets/rediseno/ico_que-es-PDN.svg";
 import IconHelpDesk from "../assets/rediseno/ico_mesa-ayuda.svg";
 import IconValidador from "../assets/rediseno/validador.svg";
@@ -132,6 +134,16 @@ const pdnRoutes = [
 		shortName: "Especificaciones",
 		color: "#f2f2f2",
 		icon: IconEspecificaciones
+	},
+	{
+		exact: true,
+		path: '/normatividad',
+		component: Normatividad,
+		private: false,
+		name: "Normatividad",
+		shortName: "Normatividad",
+		color: "#f2f2f2",
+		icon: IconNormatividad
 	},
 	{
 		exact: true,

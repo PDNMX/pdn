@@ -92,7 +92,7 @@ const BannerDesktop = props => {
     const toggleNormatividad = () => {
         setTimeout(() => {
             setShowNormatividad(!showNormatividad)
-        }, 1000000)
+        }, 1000)
     }
 
     useEffect(() => {
@@ -154,6 +154,14 @@ const BannerDesktop = props => {
                                     </Typography>
                                 </RouterLink>
                             </Grid>
+                            <Grid item className={classes.opc}>
+                                <RouterLink className={classes.link} to="/normatividad">
+                                    <img src={Normatividad} alt="PDN" className={classes.icon}/>
+                                    <Typography className={classes.textMenu}>
+                                        NORMATIVIDAD
+                                    </Typography>
+                                </RouterLink>
+                            </Grid>
                             <Grid item className={`${classes.opc} ${showSistemas ? classes.selected : ""} `}
                                   onClick={() => setShowSistemas(!showSistemas)}>
                                 <img
@@ -191,7 +199,7 @@ const BannerDesktop = props => {
                                     </Typography>
                                 </Link>
                             </Grid>
-                            <Grid item className={`${classes.opc} ${showNormatividad ? classes.selected : ""}`}
+                            {/* <Grid item className={`${classes.opc} ${showNormatividad ? classes.selected : ""}`}
                                   onClick={() => setShowNormatividad(!showNormatividad)}>
                                     <img
                                         src={Normatividad}
@@ -201,7 +209,7 @@ const BannerDesktop = props => {
                                     <Typography className={classes.textMenu}>
                                         NORMATIVIDAD
                                     </Typography>
-                            </Grid>
+                            </Grid> */}
                         </Grid>
 
                     </Grid>
