@@ -13,6 +13,7 @@ import IconS3 from "@assets/rediseno/ico_sistemas/ico_s3_color.svg"
 import IconS4 from "@assets/rediseno/ico_sistemas/ico_s4_color.svg"
 import IconS5 from "@assets/rediseno/ico_sistemas/ico_s5_color.svg"
 import IconS6 from "@assets/rediseno/ico_sistemas/ico_s6_color.svg"
+import IconNormativa from "@assets/rediseno/ico_norma.svg"
 import normatividadData from './normatividad.json';
 
 const Accordion = withStyles(theme => ({
@@ -63,6 +64,7 @@ export default function CustomizedExpansionPanels() {
 
 
     const iconMap = {
+        IconNormativa,
         IconS1,
         IconS2,
         IconS3,
@@ -71,8 +73,8 @@ export default function CustomizedExpansionPanels() {
         IconS6,
     };
 
-    const [expanded, setExpanded] = React.useState(false);
-    const disabledState = { panel1: false, panel2: true, panel3: true, panel4: true };
+    const [expanded, setExpanded] = React.useState('panel1');
+    const disabledState = { panel1: false, panel2: false, panel3: true, panel4: true, panel5: true };
 
     const handleChange = (panel) => (event, isExpanded) => {
         if (!disabledState[panel]) {

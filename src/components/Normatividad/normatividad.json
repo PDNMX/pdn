@@ -1,68 +1,89 @@
 {
-"normatividadSeccion": {
+  "normatividadSeccion": {
     "descripcion": "El marco normativo está compuesto por:",
     "normatividadGeneral": [
-    {
+      {
         "titulo": "Ley General de Responsabilidades Administrativas",
         "icono": "icon_norma",
         "url": "https://www.diputados.gob.mx/LeyesBiblio/pdf/LGRA.pdf"
-    },
-    {
+      },
+      {
         "titulo": "Ley General del Sistema Nacional Anticorrupción",
         "icono": "icon_norma",
         "url": "https://www.diputados.gob.mx/LeyesBiblio/pdf/LGSNA_200521.pdf"
-    }
+      }
     ],
     "normatividadSistemas": [
-    {
+      {
+        "titulo": "Normativa General",
+        "icono": "IconNormativa",
+        "vinculo": [
+          {
+            "titulo": "Ley General del Sistema Nacional Anticorrupción (LGSNA)",
+            "icono": "icon_norma",
+            "url": "https://www.diputados.gob.mx/LeyesBiblio/pdf/LGSNA_200521.pdf"
+          },
+          {
+            "titulo": "Ley General de Responsabilidades Administrativas (LGRA)",
+            "icono": "icon_norma",
+            "url": "https://www.diputados.gob.mx/LeyesBiblio/pdf/LGRA.pdf"
+          },
+          {
+            "titulo": "Bases para el Funcionamiento de la Plataforma Digital Nacional",
+            "icono": "icon_norma",
+            "url": "https://www.dof.gob.mx/nota_detalle.php?codigo=5541802&fecha=23/10/2018"
+          }
+        ]
+      },
+      {
         "titulo": "Normatividad S1",
         "icono": "IconS1",
         "vinculo": [
-        {
-        "titulo": "Lineamientos",
-        "icono": "icon_norma",
-        "url": "https://dof.gob.mx/nota_to_doc.php?codnota=5718117"
-        },
-        {
-        "titulo": "Declaratoria de inicio de funciones",
-        "icono": "icon_norma",
-        "url": "https://dof.gob.mx/nota_to_doc.php?codnota=5729579"
-        }
+          {
+            "titulo": "Lineamientos",
+            "icono": "icon_norma",
+            "url": "https://dof.gob.mx/nota_to_doc.php?codnota=5718117"
+          },
+          {
+            "titulo": "Declaratoria de inicio de funciones",
+            "icono": "icon_norma",
+            "url": "https://dof.gob.mx/nota_to_doc.php?codnota=5729579"
+          }
         ]
-    },
-    {
+      },
+      {
         "titulo": "Normatividad S2",
         "icono": "IconS2",
         "vinculo": [
-        {
-        "titulo": "",
-        "icono": "",
-        "url": ""
-        }
+          {
+            "titulo": "",
+            "icono": "",
+            "url": ""
+          }
         ]
-    },
-    {
+      },
+      {
         "titulo": "Normatividad S3",
         "icono": "IconS3",
         "vinculo": [
-        {
-        "titulo": "",
-        "icono": "",
-        "url": ""
-        }
+          {
+            "titulo": "",
+            "icono": "",
+            "url": ""
+          }
         ]
-    },
-    {
+      },
+      {
         "titulo": "Normatividad S6",
         "icono": "IconS6",
         "vinculo": [
-        {
-        "titulo": "",
-        "icono": "",
-        "url": ""
-        }
+          {
+            "titulo": "",
+            "icono": "",
+            "url": ""
+          }
         ]
-    }
+      }
     ]
-}
+  }
 }

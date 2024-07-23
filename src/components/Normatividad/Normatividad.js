@@ -67,7 +67,7 @@ const Normatividad = props => {
                 <Grid item xs={12} className={classes.rootItem}>
                     <Paper className={classes.paper} elevation={15}>
                         <Box className={classes.box}>
-                        <div>
+                      {/*   <div>
                         <Typography variant="h6">Normativa General</Typography>
                         <hr/><br/>
                         <Typography paragraph>
@@ -93,7 +93,7 @@ const Normatividad = props => {
                                 </Typography>
                             </li>
                         </ul>
-                    </div>
+                    </div> */}
 
                             <ExpansionPanels/>
                         </Box>
