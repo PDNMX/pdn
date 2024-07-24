@@ -139,14 +139,6 @@ const BannerDesktop = props => {
                     <Grid item>
                         <Grid container>
                             <Grid item className={classes.opc}>
-                                <RouterLink className={classes.link} to="/especificaciones">
-                                    <img src={Espe} alt="PDN" className={classes.icon}/>
-                                    <Typography className={classes.textMenu}>
-                                        ESPECIFICACIONES
-                                    </Typography>
-                                </RouterLink>
-                            </Grid>
-                            <Grid item className={classes.opc}>
                                 <RouterLink className={classes.link} to="/normatividad">
                                     <img src={Normatividad} alt="PDN" className={classes.icon}/>
                                     <Typography className={classes.textMenu}>
@@ -164,6 +156,14 @@ const BannerDesktop = props => {
                                 <Typography className={classes.textMenu}>
                                     SISTEMAS
                                 </Typography>
+                            </Grid>
+                            <Grid item className={classes.opc}>
+                                <RouterLink className={classes.link} to="/especificaciones">
+                                    <img src={Espe} alt="PDN" className={classes.icon}/>
+                                    <Typography className={classes.textMenu}>
+                                        ESPECIFICACIONES
+                                    </Typography>
+                                </RouterLink>
                             </Grid>
                             <Grid item className={`${classes.opc} ${showInterconexion ? classes.selected : ""}`}
                                   onClick={() => setShowInterconexion(!showInterconexion)}>

@@ -137,11 +137,6 @@ const BannerMobile = props => {
                         className={classes.menu}
                         PopoverClasses={classes.test}
                     >
-
-                        <MenuItem className={classes.menuItem} component={RouterLink} to="/especificaciones">
-                            <Typography style={{width:'100%'}}>ESPECIFICACIONES</Typography>
-                            <img src={Especificaciones_logo} alt="ESPECIFICACIONES" className={classes.icon}/>
-                        </MenuItem>
                         <MenuItem className={classes.menuItem} component={RouterLink} to="/normatividad">
                             <Typography style={{width:'100%'}}>NORMATIVIDAD</Typography>
                             <img src={Normatividad_logo} alt="NORMATIVIDAD" className={classes.icon}/>
@@ -149,6 +144,10 @@ const BannerMobile = props => {
                         <MenuItem className={classes.menuItem} component="a" onClick={() => handleToggle()}>
                             <Typography style={{width:'100%'}}>SISTEMAS</Typography>
                             <img src={Sistemas_logo} alt="SISTEMAS" className={classes.icon}/>
+                        </MenuItem>
+                        <MenuItem className={classes.menuItem} component={RouterLink} to="/especificaciones">
+                            <Typography style={{width:'100%'}}>ESPECIFICACIONES</Typography>
+                            <img src={Especificaciones_logo} alt="ESPECIFICACIONES" className={classes.icon}/>
                         </MenuItem>
 
                         <Collapse in={dropDown} timeout="auto" unmountOnExit>
