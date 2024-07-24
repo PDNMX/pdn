@@ -4,14 +4,14 @@ import {BarChart} from "d3plus-react";
 import axios from 'axios';
 import ContainerChart from "@Compartidos/Dashboards/ContainerChart";
 
-/* const aux = () => axios({
+const aux = () => axios({
     url: process.env.REACT_APP_S2_BACKEND + '/api/v0/getAgrupacionEjercicio',
     json: true,
     method: "GET"
-}); */
+});
 
 
-const data = [
+/* const data = [
     {
         "ejercicio": "2015",
         "total": "16253"
@@ -53,7 +53,7 @@ const data = [
         "total": "2"
     }
 ];
-
+ */
 
 let colores = ["#F87268", "#DC6AF0", "#B286FD", "#8A97D6",
     "#3DA2F5", "#00BCD4", "#00B3A1", "#4CAF50",
@@ -72,7 +72,7 @@ const Ejercicio = props => {
     React.useEffect(() => {
 
 
-        /* aux().then(res => {
+        aux().then(res => {
             let aux = res.data.data.map(item => ({
                 "ejercicio": item.ejercicio,
                 "total": parseInt(item.total,10)
@@ -116,11 +116,11 @@ const Ejercicio = props => {
             setState({
                 error: true
             });
-        }); */
+        });  
 
 
 
-        let aux = data.map(item => ({
+/*         let aux = data.map(item => ({
             "ejercicio": item.ejercicio,
             "total": parseInt(item.total,10)
         }));
@@ -155,7 +155,7 @@ const Ejercicio = props => {
                 },
                 title: "Personas servidoras públicas en contrataciones por año"
             }
-        });
+        }); */
     },[]);
 
     return (
