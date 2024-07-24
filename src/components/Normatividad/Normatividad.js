@@ -1,9 +1,6 @@
 import React from 'react';
 import {Grid, Box, Paper} from '@mui/material';
 import withStyles from '@mui/styles/withStyles';
-import {Link} from 'react-router-dom';
-import Typography from "@mui/material/Typography";
-import MuiLink from "@mui/material/Link";
 
 import bgimg from "@assets/rediseno/fondo_cruces_dark.png";
 import HeaderV2 from "../HomeV2/HeaderV2";
@@ -67,34 +64,6 @@ const Normatividad = props => {
                 <Grid item xs={12} className={classes.rootItem}>
                     <Paper className={classes.paper} elevation={15}>
                         <Box className={classes.box}>
-                      {/*   <div>
-                        <Typography variant="h6">Normativa General</Typography>
-                        <hr/><br/>
-                        <Typography paragraph>
-                            El marco normativo de la PDN está compuesto por:
-                        </Typography>
-
-                        <ul>
-                            <li><Typography>
-                                <MuiLink href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LGSNA_200521.pdf" target="_blank">
-                                Ley General del Sistema Nacional Anticorrupción (LGSNA)</MuiLink> artículos 9, fracciones XII, XIII y XVI; 17; 21, fracción VII, inciso b); 35, fracciones X y XI).
-                            </Typography>
-                            </li>
-                            <li>
-                                <Typography>
-                                    <MuiLink href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LGRA.pdf" target="_blank">
-                                        Ley General de Responsabilidades Administrativas (LGRA)</MuiLink> artículos 26, 27, 30, 31, 34, 43, 44, 46, 59 y 93.
-                                </Typography>
-                            </li>
-                            <li>
-                                <Typography>
-                                    <MuiLink href="https://www.dof.gob.mx/nota_detalle.php?codigo=5541802&fecha=23/10/2018" target="_blank">
-                                        Bases para el Funcionamiento de la Plataforma Digital Nacional</MuiLink>, las cuales establecen las directrices para el funcionamiento de la PDN y de los sistemas que la conforman, buscando garantizar en todo momento la interoperabilidad, interconexión, estabilidad, uso y seguridad de la información.
-                                </Typography>
-                            </li>
-                        </ul>
-                    </div> */}
-
                             <ExpansionPanels/>
                         </Box>
                     </Paper>
