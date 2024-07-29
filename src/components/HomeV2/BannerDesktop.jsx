@@ -20,6 +20,9 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import { UserContext } from '../Login/UserContext'
 
 const styles = (theme) => ({
+  list: {
+    listStyle: 'none',
+},
   opc: {
     '&:hover': {
       backgroundColor: '#ebe9f9',
@@ -113,18 +116,11 @@ useEffect(() => {
             <nav>
               <ul>
                 <li className={classes.opc}>
-                  <RouterLink to='/mesa-de-ayuda'>
-                    <img src={Mesa} alt='PDN' />
-                    <Typography>MESA DE AYUDA</Typography>
+                  <RouterLink to='/normatividad'>
+                    <img src={Normatividad} alt='PDN' />
+                    <Typography>NORMATIVIDAD</Typography>
                   </RouterLink>
                 </li>
-                <li className={classes.opc}>
-                  <RouterLink to='/especificaciones'>
-                    <img src={Espe} alt='PDN' />
-                    <Typography>ESPECIFICACIONES</Typography>
-                  </RouterLink>
-                </li>
-
                 <li
                   className={`${classes.opc} ${
                     showSistemas ? classes.selected : ''
@@ -136,6 +132,12 @@ useEffect(() => {
                   <ArrowDropDownIcon />
                 </li>
 
+                <li className={classes.opc}>
+                  <RouterLink to='/especificaciones'>
+                    <img src={Espe} alt='PDN' />
+                    <Typography>ESPECIFICACIONES</Typography>
+                  </RouterLink>
+                </li>
                 <li
                   className={`${classes.opc} ${
                     showInterconexion ? classes.selected : ''
@@ -157,7 +159,7 @@ useEffect(() => {
                   </Link>
                 </li>
 
-                <li
+{/*                 <li
                   className={`${classes.opc} ${
                     showNormatividad ? classes.selected : ''
                   }`}
@@ -166,6 +168,12 @@ useEffect(() => {
                   <img src={Normatividad} alt='Normatividad' />
                   <Typography>NORMATIVIDAD</Typography>
                   <ArrowDropDownIcon />
+                </li> */}
+                <li className={classes.opc}>
+                  <RouterLink to='/mesa-de-ayuda'>
+                    <img src={Mesa} alt='PDN' />
+                    <Typography>MESA DE AYUDA</Typography>
+                  </RouterLink>
                 </li>
               </ul>
             </nav>

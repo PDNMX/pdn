@@ -1,0 +1,99 @@
+{
+  "normatividadSeccion": {
+    "descripcion": "El marco normativo está compuesto por:",
+    "normatividadGeneral": [
+      {
+        "titulo": "Ley General de Responsabilidades Administrativas",
+        "icono": "icon_norma",
+        "url": "https://www.diputados.gob.mx/LeyesBiblio/pdf/LGRA.pdf"
+      },
+      {
+        "titulo": "Ley General del Sistema Nacional Anticorrupción",
+        "icono": "icon_norma",
+        "url": "https://www.diputados.gob.mx/LeyesBiblio/pdf/LGSNA_200521.pdf"
+      }
+    ],
+    "normatividadSistemas": [
+      {
+        "titulo": "Plataforma Digital Nacional",
+        "icono": "IconNormativa",
+        "estatus": "activo",
+        "vinculo": [
+          {
+            "titulo": "Ley General del Sistema Nacional Anticorrupción (LGSNA)",
+            "icono": "icon_norma",
+            "url": "https://www.diputados.gob.mx/LeyesBiblio/pdf/LGSNA_200521.pdf"
+          },
+          {
+            "titulo": "Ley General de Responsabilidades Administrativas (LGRA)",
+            "icono": "icon_norma",
+            "url": "https://www.diputados.gob.mx/LeyesBiblio/pdf/LGRA.pdf"
+          },
+          {
+            "titulo": "Bases para el Funcionamiento de la Plataforma Digital Nacional",
+            "icono": "icon_norma",
+            "url": "https://www.dof.gob.mx/nota_detalle.php?codigo=5541802&fecha=23/10/2018"
+          }
+        ]
+      },
+      {
+        "titulo": "Sistema de evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal (S1)",
+        "icono": "IconS1",
+        "estatus": "activo",
+        "vinculo": [
+          {
+            "titulo": "Lineamientos",
+            "icono": "icon_norma",
+            "url": "https://dof.gob.mx/nota_to_doc.php?codnota=5718117"
+          },
+          {
+            "titulo": "Declaratoria de inicio de funciones",
+            "icono": "icon_norma",
+            "url": "https://dof.gob.mx/nota_to_doc.php?codnota=5729579"
+          },
+          {
+            "titulo": "Evaluación de Impacto",
+            "icono": "icon_norma",
+            "url": "https://sesnamx.sharepoint.com/:b:/s/DocumentosPublicos/EZxWWnTnLvxPl2uXFIS7VPQBRzMt0IRikyi4y753GPrHbw?e=Q7BndZ"
+          }
+        ]
+      },
+      {
+        "titulo": "Sistema de los servidores públicos que intervengan en procedimientos de contrataciones públicas (S2)",
+        "icono": "IconS2",
+        "estatus": "",
+        "vinculo": [
+          {
+            "titulo": "",
+            "icono": "",
+            "url": ""
+          }
+        ]
+      },
+      {
+        "titulo": "Sistema nacional de servidores públicos y particulares sancionados (S3)",
+        "icono": "IconS3",
+        "estatus": "",
+        "vinculo": [
+          {
+            "titulo": "",
+            "icono": "",
+            "url": ""
+          }
+        ]
+      },
+      {
+        "titulo": "Sistema de información pública de contrataciones (S6)",
+        "icono": "IconS6",
+        "estatus": "",
+        "vinculo": [
+          {
+            "titulo": "",
+            "icono": "",
+            "url": ""
+          }
+        ]
+      }
+    ]
+  }
+}

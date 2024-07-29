@@ -145,33 +145,35 @@ export default function CustomizedExpansionPanels () {
             </Typography>
 
             <ul className={classes.ul}>
-              <li className={classes.li}><Typography display='inline'>
+              <li className={classes.li}>
+                <Typography display='inline'>
                 Analizar y alertar a las autoridades sobre riesgos de corrupción;
-                                         </Typography>
+              </Typography>
               </li>
-              <li className={classes.li}><Typography display='inline'>
+              <li className={classes.li}>
+                <Typography display='inline'>
                 Automatizar procesos, evitar discrecionalidad y conflictos de interés;
-                                         </Typography>
+                </Typography>
               </li>
               <li className={classes.li}><Typography display='inline'>
                 Promover el uso de los datos para respaldar sanciones;
-                                         </Typography>
+              </Typography>
               </li>
               <li className={classes.li}><Typography display='inline'>
                 Dar seguimiento, en tiempo real, a los procesos y proyectos de contratación pública, y garantizar una mayor eficiencia en las compras públicas;
-                                         </Typography>
+              </Typography>
               </li>
               <li className={classes.li}><Typography display='inline'>
                 Fortalecer la participación ciudadana en el combate a la corrupción;
-                                         </Typography>
+              </Typography>
               </li>
               <li className={classes.li}><Typography display='inline'>
                 Incorporar información sobre indicadores para evaluar la Política Nacional Anticorrupción;
-                                         </Typography>
+              </Typography>
               </li>
               <li className={classes.li}><Typography display='inline'>
                 Dar evidencia para generar recomendaciones de política pública a las autoridades;
-                                         </Typography>
+              </Typography>
               </li>
             </ul>
           </div>

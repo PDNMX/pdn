@@ -9,7 +9,7 @@ export default createTheme(
     },
     typography: {
       allVariants: {
-        color: '#55575A'
+      color: '#55575A'
       },
       useNextVariants: true,
       color: '#713972',

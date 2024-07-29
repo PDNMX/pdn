@@ -8,6 +8,7 @@ import { Link as RouterLink } from 'react-router-dom'
 import { MoreHoriz as MoreHorizIcon } from '@mui/icons-material'
 import imgHeader from '../../assets/rediseno2023/imgs/iconos/logotipos/logo_pdn-transparente.svg'
 import Especificaciones_logo from '../../assets/rediseno2023/imgs/iconos/menu/ico_especificaciones.svg'
+import Normatividad_logo from "../../assets/rediseno2023/imgs/iconos/menu/ico_normatividad.svg";
 import Mesa_logo from '../../assets/rediseno2023/imgs/iconos/menu/ico_mesa-ayuda.svg'
 import MDA_logo from '../../assets/rediseno2023/imgs/iconos/menu/ico_mda.svg'
 import Interconexion_logo from '../../assets/rediseno2023/imgs/iconos/menu/ico_interconexion.svg'
@@ -137,20 +138,15 @@ const BannerMobile = props => {
             className={classes.menu}
             PopoverClasses={classes.test}
           >
+            <MenuItem className={classes.menuItem} component={RouterLink} to="/normatividad">
+                            <Typography style={{width:'100%'}}>NORMATIVIDAD</Typography>
+                            <img src={Normatividad_logo} alt="NORMATIVIDAD" className={classes.icon}/>
+            </MenuItem>
 
-            <MenuItem className={classes.menuItem} component={RouterLink} to='/mesa-de-ayuda'>
-              <Typography style={{ width: '100%' }}>MESA DE AYUDA</Typography>
-              <img src={Mesa_logo} alt='MESA DE AYUDA' className={classes.icon} />
-            </MenuItem>
-            <MenuItem className={classes.menuItem} component={RouterLink} to='/especificaciones'>
-              <Typography style={{ width: '100%' }}>ESPECIFICACIONES</Typography>
-              <img src={Especificaciones_logo} alt='ESPECIFICACIONES' className={classes.icon} />
-            </MenuItem>
             <MenuItem className={classes.menuItem} component='a' onClick={() => handleToggle()}>
               <Typography style={{ width: '100%' }}>SISTEMAS</Typography>
               <img src={Sistemas_logo} alt='SISTEMAS' className={classes.icon} />
             </MenuItem>
-
             <Collapse in={dropDown} timeout='auto' unmountOnExit>
               <List dense component='div'>
                 {systems.map(system => {
@@ -167,6 +163,10 @@ const BannerMobile = props => {
 
               </List>
             </Collapse>
+            <MenuItem className={classes.menuItem} component={RouterLink} to='/especificaciones'>
+              <Typography style={{ width: '100%' }}>ESPECIFICACIONES</Typography>
+              <img src={Especificaciones_logo} alt='ESPECIFICACIONES' className={classes.icon} />
+            </MenuItem>
 
             <MenuItem className={classes.menuItem} component='a' onClick={() => handleToggleInterconexion()}>
               <Typography style={{ width: '100%' }}>INTERCONEXIÓN</Typography>
@@ -205,6 +205,10 @@ const BannerMobile = props => {
             >
               <Typography style={{ width: '100%' }}>MDA</Typography>
               <img src={MDA_logo} alt='Mercado Digital Anticorrupción' className={classes.icon} />
+            </MenuItem>
+            <MenuItem className={classes.menuItem} component={RouterLink} to='/mesa-de-ayuda'>
+              <Typography style={{ width: '100%' }}>MESA DE AYUDA</Typography>
+              <img src={Mesa_logo} alt='MESA DE AYUDA' className={classes.icon} />
             </MenuItem>
           </Menu>
           <IconButton
