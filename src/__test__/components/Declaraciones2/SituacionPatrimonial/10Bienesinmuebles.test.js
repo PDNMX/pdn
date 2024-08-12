@@ -11,12 +11,18 @@ Enzyme.configure({ adapter: new Adapter() });
 const info = readFiles();
 
 describe.each(info)('file $name', ({ data }) => {
-  describe.each(data)('10Bienesinmuebles id:$id nombre:$declaracion.situacionPatrimonial.datosGenerales.nombre|$declaracion.situacionPatrimonial.datosGenerales.primerApellido|$declaracion.situacionPatrimonial.datosGenerales.segundoApellido', ({ id, declaracion }) => {
-    const { bienesInmuebles } = declaracion.situacionPatrimonial;
+  describe.each(data)('10Bienesinmuebles id:$id nombre:$declaracion.situacionPatrimonial.datosGenerales.nombre|$declaracion.situacionPatrimonial.datosGenerales.primerApellido|$declaracion.situacionPatrimonial.datosGenerales.segundoApellido', ({ id, declaracion, metadata }) => {
+    if (declaracion.situacionPatrimonial.hasOwnProperty('bienesInmuebles')) {
+      const { bienesInmuebles } = declaracion.situacionPatrimonial;
 
-    test('10Bienesinmuebles', () => {
-      const wrapper = mount(<Bienesinmuebles data={bienesInmuebles} />);
-      expect(wrapper.length).toBe(1);
-    });
+      test('10Bienesinmuebles', () => {
+        const wrapper = mount(<Bienesinmuebles data={bienesInmuebles} />);
+        expect(wrapper.length).toBe(1);
+      });
+    } else {
+      test('debe ser declaracionCompleta false', () => {
+        expect(metadata.declaracionCompleta).toBeFalsy();
+      });
+    }
   });
 });
