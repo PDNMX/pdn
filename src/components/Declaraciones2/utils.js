@@ -86,14 +86,14 @@ export const sumary = makeStyles(theme => ({
   }
 }));
 
-export const expansion = makeStyles(theme => ({
-  root: {
-    width: '100%'
-  },
-  heading: {
-    fontSize: theme.typography.pxToRem(15),
-    fontWeight: theme.typography.fontWeightRegular
-  }
+export const expansion = makeStyles((theme) => ({
+	root: {
+		width: '100%'
+	},
+	heading: {
+		// fontSize: theme.typography.pxToRem(15),
+		// fontWeight: theme.typography.fontWeightRegular
+	}
 }));
 /************** Expansion *******************/
 export function Ubicacion(props) {
