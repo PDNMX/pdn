@@ -52,5 +52,11 @@
     "name": "Secretaría Ejecutiva del Sistema Anticorrupción del Estado de Morelos",
     "disclaimer": "",
     "download_url": ""
+  },
+    {
+    "id": "SESAE_CHIH",
+    "name": "Secretaría Ejecutiva del Sistema Estatal Anticorrupción de Chihuahua",
+    "disclaimer": "",
+    "download_url": ""
   }
 ]
