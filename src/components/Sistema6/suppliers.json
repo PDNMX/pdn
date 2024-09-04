@@ -46,5 +46,11 @@
     "name": "Secretaría Ejecutiva del Sistema Estatal Anticorrupción de Baja California Sur",
     "disclaimer": "",
     "download_url": ""
+  },
+    {
+    "id": "SESAE_MOR",
+    "name": "Secretaría Ejecutiva del Sistema Anticorrupción del Estado de Morelos",
+    "disclaimer": "",
+    "download_url": ""
   }
 ]
