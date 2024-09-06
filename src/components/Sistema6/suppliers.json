@@ -58,5 +58,11 @@
     "name": "Secretaría Ejecutiva del Sistema Estatal Anticorrupción de Chihuahua",
     "disclaimer": "",
     "download_url": ""
+  },
+    {
+    "id": "SESAE_JAL",
+    "name": "Secretaría Ejecutiva del Sistema Estatal Anticorrupción del Estado de Jalisco",
+    "disclaimer": "",
+    "download_url": ""
   }
 ]
