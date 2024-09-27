@@ -1,18 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@mui/styles/withStyles';
 import Estandar from "./DescripcionEstandar";
 import Licencia from "../Licencia";
 import Implementacion from "./Implementacion";
-import {Typography} from "@mui/material"
+import { Typography } from "@mui/material"
 import Herramientas from "../Herramientas";
-import {Paper, Box,Grid, Divider, Link} from '@mui/material';
+import { Paper, Box, Grid, Divider, Link } from '@mui/material';
 import pdnRoutes from "../../../routes";
 import HeaderV2 from "../../HomeV2/HeaderV2";
 import bgimg from "../../../assets/rediseno/fondo_cruces_dark.png";
 import ButtonPDN from "../../Compartidos/ButtonPDN";
 import ProtocoloConexion from '../ProtocoloConexion';
 import ServiceAgreement from '../ServiceAgreement';
+import Disclaimer from './Disclaimer';
 
 const styles = theme => ({
     list: {
@@ -82,37 +83,44 @@ const styles = theme => ({
     box: {
         maxWidth: '900px', paddingTop: '50px', paddingBottom: '50px'
     },
-    link:{
+    link: {
         textDecoration: "none",
         color: theme.palette.text.linkColor,
         wordBreak: "break-all",
     }
 });
 
-const protocolos=[
-    {nombre:'Servidores Sancionados',url:'https://drive.google.com/file/d/1in6bHq8rqeTl_v48BpByDjgxeF2fIIve/view'},
-    {nombre:'Particulares Sancionados',url:'https://drive.google.com/file/d/15mPsTLuW6u97cRMxBaEP8YCkAZnX32v-/view'}
-    ];
+const protocolos = [
+    { nombre: 'Servidores Sancionados', url: 'https://drive.google.com/file/d/1in6bHq8rqeTl_v48BpByDjgxeF2fIIve/view' },
+    { nombre: 'Particulares Sancionados', url: 'https://drive.google.com/file/d/15mPsTLuW6u97cRMxBaEP8YCkAZnX32v-/view' }
+];
 
 const Sancionados = props => {
-    const {classes} = props;
+    // Manejo del estado del diálogo
+    const [open, setOpen] = useState(true);
+
+    // Función para cerrar el diálogo
+    const handleClose = () => {
+        setOpen(false);
+    };
+    const { classes } = props;
     const section = pdnRoutes.find(route => route.path === '/especificaciones/s3');
 
     return (
         <div className={classes.root}>
-            <HeaderV2 section={section}/>
+            <HeaderV2 section={section} />
             <Grid container spacing={0} justifyContent='center'>
                 <Grid item xs={12} className={classes.rootItem}>
                     <Paper className={classes.paper} elevation={15}>
                         <Box className={classes.box}>
 
-                            <Estandar/>
+                            <Estandar />
 
-                            <Divider className={classes.divider}/>
+                            <Divider className={classes.divider} />
 
-                            <Implementacion/>
+                            <Implementacion />
 
-                            <Divider className={classes.divider}/>
+                            <Divider className={classes.divider} />
 
                             <Typography variant="h4" paragraph>
                                 Especificaciones técnicas
@@ -123,8 +131,8 @@ const Sancionados = props => {
                             </Typography>
 
                             <ButtonPDN
-                                    href='https://docs.google.com/spreadsheets/d/1wVaVFEJQloanwasIAASFiKGC8mbNEmeijK0F58PxgCA/edit?usp=sharing'
-                                    target='_blank'
+                                href='https://docs.google.com/spreadsheets/d/1wVaVFEJQloanwasIAASFiKGC8mbNEmeijK0F58PxgCA/edit?usp=sharing'
+                                target='_blank'
                             >
                                 Más información
                             </ButtonPDN>
@@ -134,8 +142,8 @@ const Sancionados = props => {
                             </Typography>
 
                             <ButtonPDN
-                                    href="https://github.com/PDNMX/catalogos/tree/master/S3%20-%20Sancionados"
-                                    target='_blank'>
+                                href="https://github.com/PDNMX/catalogos/tree/master/S3%20-%20Sancionados"
+                                target='_blank'>
                                 Más información
                             </ButtonPDN>
 
@@ -165,31 +173,32 @@ const Sancionados = props => {
                             </ul>
 
                             <Typography paragraph variant='h5'>
-                              Seguridad
+                                Seguridad
                             </Typography>
                             <Typography paragraph>
-                                <ButtonPDN  target='_blank'  href='https://drive.google.com/file/d/1-IvF3KYa5rups73BmVV4W8glT9csVGY9/view'>
+                                <ButtonPDN target='_blank' href='https://drive.google.com/file/d/1-IvF3KYa5rups73BmVV4W8glT9csVGY9/view'>
                                     Más información
                                 </ButtonPDN>
                             </Typography>
 
-                            <ProtocoloConexion urlPlan={protocolos} />                            
+                            <ProtocoloConexion urlPlan={protocolos} />
 
-                            <Divider className={classes.divider}/>
+                            <Divider className={classes.divider} />
 
                             <ServiceAgreement />
-                            
-                            <Divider className={classes.divider}/>
 
-                            <Licencia/>
+                            <Divider className={classes.divider} />
 
-                            <Divider className={classes.divider}/>
+                            <Licencia />
 
-                            <Herramientas/>
+                            <Divider className={classes.divider} />
+
+                            <Herramientas />
                         </Box>
                     </Paper>
                 </Grid>
             </Grid>
+            <Disclaimer open={open} handleClose={handleClose} />
         </div>
     );
 
