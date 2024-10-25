@@ -111,8 +111,8 @@ const InterconexionMenu = props => {
         >
           <div className={`${classes.opc} `}>
 
-            <img src={mapa_s2s3_icono} alt='Sistemas 1, 2 y 3' className={classes.icon} />
-            <Typography color='#3a1c3a'>Sistemas 1, 2 y 3</Typography>
+            <img src={mapa_s2s3_icono} alt='Sistemas 1, 2, 3 y 6' className={classes.icon} />
+            <Typography color='#3a1c3a'>Sistemas 1, 2, 3 y 6</Typography>
 
           </div>
         </Box>
