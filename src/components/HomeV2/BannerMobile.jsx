@@ -57,7 +57,10 @@ const styles = theme => ({
     marginBottom: theme.spacing(1),
     textTransform: 'none',
     color: '#4a2f4b',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    textDecoration: 'none', // Add this to ensure consistent text styling
+    width: '98%', // Add this to ensure consistent width
+    padding: '6px 16px', // Add this to ensure consistent padding
   },
   iconMenu: {
     fill: theme.palette.background.default,
@@ -101,6 +104,11 @@ const BannerMobile = props => {
     setOpenLoginDialog(true)
   }
 
+  const handleMDAClick = () => {
+    ReactGA.pageview('/mda')
+    window.location.href = process.env.REACT_APP_LINK_MDA
+  }
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
@@ -139,8 +147,8 @@ const BannerMobile = props => {
             PopoverClasses={classes.test}
           >
             <MenuItem className={classes.menuItem} component={RouterLink} to="/normatividad">
-                            <Typography style={{width:'100%'}}>NORMATIVIDAD</Typography>
-                            <img src={Normatividad_logo} alt="NORMATIVIDAD" className={classes.icon}/>
+              <Typography style={{ width: '100%' }}>NORMATIVIDAD</Typography>
+              <img src={Normatividad_logo} alt="NORMATIVIDAD" className={classes.icon} />
             </MenuItem>
 
             <MenuItem className={classes.menuItem} component='a' onClick={() => handleToggle()}>
@@ -152,12 +160,12 @@ const BannerMobile = props => {
                 {systems.map(system => {
                   return (
                     <ListItemButton
-                        component={RouterLink} to={system.path} key={system.name}
-                        className={classes.nested}
-                      >
-                        <img src={system.icon} alt={system.name} className={classes.iconSistemas} />
-                        <Typography color={system.color}>{system.name}</Typography>
-                      </ListItemButton>
+                      component={RouterLink} to={system.path} key={system.name}
+                      className={classes.nested}
+                    >
+                      <img src={system.icon} alt={system.name} className={classes.iconSistemas} />
+                      <Typography color={system.color}>{system.name}</Typography>
+                    </ListItemButton>
                   )
                 })}
 
@@ -187,7 +195,7 @@ const BannerMobile = props => {
                   className={classes.nested} onClick={() => ReactGA.pageview('/mapa-avance')}
                 >
                   <img src={mapa_s2s3_icono} alt='Avance' className={classes.iconSistemas} />
-                  <Typography color='#4a2f4b'>Sistemas 1, 2 y 3</Typography>
+                  <Typography color='#4a2f4b'>Sistemas 1, 2, 3 y 6</Typography>
                 </ListItemButton>
 
                 <ListItemButton component={RouterLink} to='/cobertura' key='cobertura' className={classes.nested}>
@@ -199,9 +207,8 @@ const BannerMobile = props => {
             </Collapse>
 
             <MenuItem
-              className={classes.menuItem} component={Button}
-              href={process.env.REACT_APP_LINK_MDA}
-              onClick={() => ReactGA.pageview('/mda')}
+              className={classes.menuItem}
+              onClick={handleMDAClick}
             >
               <Typography style={{ width: '100%' }}>MDA</Typography>
               <img src={MDA_logo} alt='Mercado Digital Anticorrupción' className={classes.icon} />
@@ -224,17 +231,17 @@ const BannerMobile = props => {
           </IconButton>
           {user.loggedIn
             ? <img
-                src={LoginIcon}
-                className={classes.iconSesion}
-                alt='Terminar la sesión'
-                onClick={() => handleOpenLoginDialog()}
-              />
+              src={LoginIcon}
+              className={classes.iconSesion}
+              alt='Terminar la sesión'
+              onClick={() => handleOpenLoginDialog()}
+            />
             : <img
-                src={LoginIcon}
-                className={classes.iconSesion}
-                alt='Iniciar sesión'
-                onClick={() => handleOpenLoginDialog()}
-              />}
+              src={LoginIcon}
+              className={classes.iconSesion}
+              alt='Iniciar sesión'
+              onClick={() => handleOpenLoginDialog()}
+            />}
         </Toolbar>
       </AppBar>
     </Box>
