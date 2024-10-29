@@ -1,16 +1,64 @@
 import { Typography } from "@mui/material";
 import ButtonPDN from "../../Compartidos/ButtonPDN";
 import withStyles from "@mui/styles/withStyles";
-import { Link } from "@mui/material";
+import { Table, TableBody, TableRow, TableCell, Link } from "@mui/material";
+import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
+import FolderOpenIcon from '@mui/icons-material/FolderOpen';
+import MuiExpansionPanel from '@mui/material/Accordion';
+import MuiExpansionPanelSummary from '@mui/material/AccordionSummary';
+import MuiExpansionPanelDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import React from 'react';
+
+const Accordion = withStyles(theme => ({
+  root: {
+    border: '1px solid' + theme.palette.background.opaque,
+    boxShadow: 'none'
+  },
+  expanded: {}
+}))(MuiExpansionPanel);
+
+const AccordionSummary = withStyles(theme => ({
+  root: {
+    backgroundColor: theme.palette.background.opaque,
+    minHeight: 56,
+    position: 'relative',
+    '&$expanded': {
+      minHeight: 56
+    },
+    color: theme.palette.primary.main,
+    '&:after': {
+      content: '""',
+      position: 'absolute',
+      bottom: 0,
+      left: 0,
+      right: 0,
+      height: '2px',
+      backgroundColor: theme.palette.primary.main,
+      opacity: 0.3,
+      transition: 'opacity 0.3s ease-in-out'
+    },
+    '&$expanded:after': {
+      opacity: 1
+    }
+  },
+  expandIconWrapper: {
+    color: theme.palette.secondary.main
+  },
+  expanded: {}
+}))(MuiExpansionPanelSummary);
+
+const AccordionDetails = withStyles(theme => ({
+  root: {
+    padding: theme.spacing(2),
+    color: theme.palette.text.primary,
+    backgroundColor: theme.palette.background.opaque,
+  }
+}))(MuiExpansionPanelDetails);
 
 const styles = (theme) => ({
   root: {
     flexGrow: 1,
-  },
-  button: {
-    marginTop: theme.spacing(1),
-    marginRight: theme.spacing(1),
-    marginBottom: theme.spacing(2),
   },
   text: {
     color: theme.palette.text.primary,
@@ -19,67 +67,83 @@ const styles = (theme) => ({
   title: {
     color: theme.palette.primary.main,
   },
-  list: {
-    marginLeft: theme.spacing(3),
-    marginBottom: theme.spacing(2),
-    color: theme.palette.text.secondary,
-    counterReset: "item",
-    textAlign: "justify",
-    "& li": {
-      display: "block",
-      marginBottom: theme.spacing(1),
-      fontSize: "0.95rem",
-      fontWeight: "bold",
-      "&:before": {
-        content: 'counter(item, lower-roman) ". "',
-        counterIncrement: "item",
-        fontWeight: "bold",
-        marginRight: theme.spacing(1),
-      },
+  formatsContainer: {
+    marginTop: theme.spacing(2),
+    borderRadius: theme.shape.borderRadius,
+    border: '1px solid' + theme.palette.background.border,
+    marginBottom: theme.spacing(4),
+    backgroundColor: theme.palette.background.paper,
+    maxWidth: '100%',
+  },
+  formatRow: {
+    transition: 'background-color 0.2s ease-in-out',
+    '&:hover': {
+      backgroundColor: theme.palette.action.hover,
     },
   },
-  link: {
-    textDecoration: "none",
-    color: theme.palette.text.linkColor,
-    "&:hover": {
-      textDecoration: "underline",
+  formatCell: {
+    borderBottom: `1px solid ${theme.palette.divider}`,
+    padding: theme.spacing(2),
+  },
+  formatLink: {
+    textDecoration: 'none',
+    color: theme.palette.text.primary,
+    display: 'flex',
+    alignItems: 'center',
+    gap: theme.spacing(2),
+    '&:hover': {
+      textDecoration: 'none',
+      color: theme.palette.primary.main,
     },
+  },
+  formatIcon: {
+    color: theme.palette.primary.main,
+    fontSize: '1.5rem',
+    flexShrink: 0,
+  },
+  formatTitle: {
+    fontSize: '0.95rem',
+    fontWeight: 400,
+  },
+  accordionTitle: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: theme.spacing(2),
+    '& svg': {
+      color: theme.palette.primary.main,
+      fontSize: '1.5rem',
+    }
   },
 });
 
 const DescripcionEstandar = (props) => {
   const { classes } = props;
+  const [expanded, setExpanded] = React.useState('formatosPanel');
+
+  const handleChange = (panel) => (event, newExpanded) => {
+    setExpanded(newExpanded ? panel : false);
+  };
 
   const formatos = [
     {
-      titulo:
-        "Formato para sanciones firmes impuestas a personas servidoras públicas por faltas administrativas graves",
-      url:
-        "https://drive.google.com/file/d/1e2OxASnG-Lac9Irj4IiM5I9wqk-XGq_a/view?usp=drive_link",
+      titulo: "Formato para sanciones firmes impuestas a personas servidoras públicas por faltas administrativas graves",
+      url: "https://drive.google.com/file/d/1e2OxASnG-Lac9Irj4IiM5I9wqk-XGq_a/view?usp=drive_link",
     },
     {
-      titulo:
-        "Formato para sanciones firmes impuestas a particulares (personas físicas) por faltas administrativas graves",
-      url:
-        "https://drive.google.com/file/d/1RYiue5qRb_oIp3wQoYsE9eHa5yNiLzFK/view?usp=drive_link",
+      titulo: "Formato para sanciones firmes impuestas a particulares (personas físicas) por faltas administrativas graves",
+      url: "https://drive.google.com/file/d/1RYiue5qRb_oIp3wQoYsE9eHa5yNiLzFK/view?usp=drive_link",
     },
     {
-      titulo:
-        "Formato para sanciones firmes impuestas a particulares (personas morales) por faltas administrativas graves",
-      url:
-        "https://drive.google.com/file/d/1COs9p68_sEkeO57lMJoCFDHfUDxWHGcc/view?usp=drive_link",
+      titulo: "Formato para sanciones firmes impuestas a particulares (personas morales) por faltas administrativas graves",
+      url: "https://drive.google.com/file/d/1COs9p68_sEkeO57lMJoCFDHfUDxWHGcc/view?usp=drive_link",
     },
     {
-      titulo:
-        "Formato para sanciones firmes impuestas a personas servidoras públicas por faltas administrativas no graves",
-      url:
-        "https://drive.google.com/file/d/1nkMZblc9xg9kfl0C9ObaIfSEYvPs_r5h/view?usp=drive_link",
+      titulo: "Formato para sanciones firmes impuestas a personas servidoras públicas por faltas administrativas no graves",
+      url: "https://drive.google.com/file/d/1nkMZblc9xg9kfl0C9ObaIfSEYvPs_r5h/view?usp=drive_link",
     },
     {
-      titulo:
-        "Normas e instructivo para el registro de la información contenida en los formatos anteriores",
-      url:
-        "https://drive.google.com/file/d/1SLQYFEjPjRgf8Xfkyky-dgjJZp450NN-/view?usp=drive_link",
+      titulo: "Normas e instructivo para el registro de la información contenida en los formatos anteriores",
+      url: "https://drive.google.com/file/d/1SLQYFEjPjRgf8Xfkyky-dgjJZp450NN-/view?usp=drive_link",
     },
   ];
 
@@ -132,21 +196,48 @@ const DescripcionEstandar = (props) => {
         Mediante este acuerdo se emitieron los siguientes formatos:
       </Typography>
 
-      <ol className={classes.list}>
-        {formatos.map((formato, index) => (
-          <li key={index}>
-            <Link
-              href={formato.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={classes.link}
-            >
-              {formato.titulo}
-            </Link>
-          </li>
-        ))}
-      </ol>
-
+      <Accordion
+        square
+        expanded={expanded === 'formatosPanel'}
+        onChange={handleChange('formatosPanel')}
+      >
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="formatosPanelContent"
+          id="formatosPanelHeader"
+        >
+          <div className={classes.accordionTitle}>
+            <FolderOpenIcon />
+            <Typography variant="h6">Formatos y Documentación Normativa</Typography>
+          </div>
+        </AccordionSummary>
+        <AccordionDetails>
+          <div className={classes.formatsContainer}>
+            <Table>
+              <TableBody>
+                {formatos.map((formato, index) => (
+                  <TableRow key={index} className={classes.formatRow}>
+                    <TableCell className={classes.formatCell}>
+                      <Link
+                        href={formato.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={classes.formatLink}
+                      >
+                        <InsertDriveFileIcon className={classes.formatIcon} />
+                        <Typography className={classes.formatTitle}>
+                          {formato.titulo}
+                        </Typography>
+                      </Link>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
+        </AccordionDetails>
+      </Accordion>
+      < p />
       <Typography paragraph className={classes.text}>
         Estos formatos se utilizarán para inscribir los datos en el Sistema
         nacional de Servidores públicos y particulares sancionados de la
