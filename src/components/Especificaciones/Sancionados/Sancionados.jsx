@@ -95,16 +95,7 @@ const styles = (theme) => ({
 });
 
 const protocolos = [
-  {
-    nombre: "Servidores Sancionados",
-    url:
-      "https://drive.google.com/file/d/1in6bHq8rqeTl_v48BpByDjgxeF2fIIve/view",
-  },
-  {
-    nombre: "Particulares Sancionados",
-    url:
-      "https://drive.google.com/file/d/15mPsTLuW6u97cRMxBaEP8YCkAZnX32v-/view",
-  },
+  { nombre: 'Planes de Prueba', url: 'https://drive.google.com/drive/folders/163iT_uFwHbx86maYOa-gyCtRvRD61rpo' }
 ];
 
 const Sancionados = (props) => {

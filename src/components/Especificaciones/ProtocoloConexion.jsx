@@ -90,26 +90,26 @@ const ProtocoloConexion = props => {
       <p />
       {Array.isArray(urlPlan)
         ? (
-            urlPlan.map(url => {
-              console.log(url)
-              return (
-                <ButtonPDN href={url.url} target='_blank' key='btn-ProtocoloConexion'>
-                  {url.nombre}
-                </ButtonPDN>
-              )
-            })
-          )
+          urlPlan.map(url => {
+            console.log(url)
+            return (
+              <ButtonPDN href={url.url} target='_blank' key='btn-ProtocoloConexion'>
+                {url.nombre}
+              </ButtonPDN>
+            )
+          })
+        )
         : (
           <ButtonPDN href={urlPlan} target='_blank' style={{ color: 'white' }}>
             Plan de pruebas
           </ButtonPDN>
-          )}
+        )}
 
       <p />
       <Typography paragraph className={classes.text}>En caso de que los resultados no sean aprobatorios, se notificará a la institución para que realice los ajustes necesarios y solicite una nueva revisión.</Typography>
 
       <Typography paragraph className={classes.text}>
-        Como apoyo para poder verificar el cumplimiento de los esquemas de datos de las diferentes API&apos;s, ponemos a su disposición un
+        Como apoyo para poder verificar el cumplimiento de los esquemas de datos de las diferentes API&apos;s, ponemos a su disposición un {""}
         <Link to='/validador' className={classes.link}>
           Validador
         </Link>
