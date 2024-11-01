@@ -6,6 +6,10 @@ import HelpDesk from '../components/HelpDesk/HelpDesk'
 
 import Sistema2 from '../components/Sistema2/Index'
 import Sancionados from '../components/Sistema3/Index'
+
+// Nuecom componente de búsqueda para el s3 v2
+import SancionadosV2 from '../components/Sistema3-v2/Index'
+
 import Sistema4 from '../components/Sistema4'
 import Sistema5 from '../components/Sistema5'
 import Sistema6 from '../components/Sistema6/index'
@@ -100,6 +104,20 @@ const pdnRoutes = [
     iconLight: IconS3Light,
     icon: IconS3,
     disabled: false,
+    type: 'system'
+  },
+  {
+    exact: true,
+    path: '/sancionados/v2',
+    component: SancionadosV2,
+    private: false,
+    name: 'Sistema nacional de servidores públicos y particulares sancionados V2',
+    shortName: 'Sistema de Sancionados',
+    color: '#9085da',
+    colorDegradado: 'linear-gradient(0deg, hsla(248, 53%, 69%, 1) 43%, hsla(248, 66%, 78%, 1) 100%);',
+    iconLight: IconS3Light,
+    icon: IconS3,
+    disabled: true,
     type: 'system'
   },
   {
