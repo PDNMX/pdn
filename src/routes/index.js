@@ -92,7 +92,7 @@ const pdnRoutes = [
     disabled: false,
     type: 'system'
   },
-  {
+  /* {
     exact: true,
     path: '/sancionados',
     component: Sancionados,
@@ -105,13 +105,13 @@ const pdnRoutes = [
     icon: IconS3,
     disabled: false,
     type: 'system'
-  },
+  }, */
   {
     exact: true,
-    path: '/sancionados/v2',
+    path: '/sancionados',
     component: SancionadosV2,
     private: false,
-    name: 'Sistema nacional de servidores públicos y particulares sancionados V2',
+    name: 'Sistema nacional de servidores públicos y particulares sancionados',
     shortName: 'Sistema de Sancionados',
     color: '#9085da',
     colorDegradado: 'linear-gradient(0deg, hsla(248, 53%, 69%, 1) 43%, hsla(248, 66%, 78%, 1) 100%);',
