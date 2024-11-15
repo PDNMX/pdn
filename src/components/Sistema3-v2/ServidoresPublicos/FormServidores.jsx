@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, /* useEffect */ } from 'react';
 import { withStyles } from '@mui/styles';
 import {
   Grid,
@@ -23,6 +23,7 @@ import {
   TableRow,
 } from '@mui/material';
 import PropTypes from 'prop-types';
+import { useSearch } from '../hooks/useSearch';
 
 const styles = theme => ({
   root: {
@@ -96,14 +97,8 @@ const styles = theme => ({
   },
 });
 
-const BuscadorServidoresSancionados = ({ classes }) => {
-  const [providers, setProviders] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [searchResults, setSearchResults] = useState(null);
-  const [isSearching, setIsSearching] = useState(false);
-  const [tipoFalta, setTipoFalta] = useState('grave');
-  const [formData, setFormData] = useState({
+const FormServidores = ({ classes }) => {
+  const initialFormState = {
     nombre: '',
     apellidoUno: '',
     apellidoDos: '',
@@ -112,143 +107,25 @@ const BuscadorServidoresSancionados = ({ classes }) => {
     ambito: '',
     tipoFalta: '',
     tipoSancion: '',
-  });
-
-  useEffect(() => {
-    const fetchProviders = async () => {
-      try {
-        const response = await fetch(`${process.env.REACT_APP_S3_V2_BACKEND}/api/v1/providers`);
-        if (!response.ok) {
-          throw new Error('Error al obtener los proveedores');
-        }
-        const result = await response.json();
-        if (result.success && Array.isArray(result.data)) {
-          setProviders(result.data);
-          console.log(result.data);
-        } else {
-          throw new Error('Formato de datos inválido');
-        }
-      } catch (err) {
-        setError(err.message);
-        console.error('Error fetching providers:', err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProviders();
-  }, []);
-
-  const getEndpointBase = providerId => {
-    const baseUrl = `${process.env.REACT_APP_S3_V2_BACKEND}/api/v1`;
-    const endpoint = tipoFalta === 'grave' ? 'faltas_administrativas_graves' : 'faltas_administrativas_no_graves';
-    return `${baseUrl}/${endpoint}/${providerId}`;
   };
 
-  const buildSearchQuery = formData => {
-    const filters = [];
+  const [tipoFalta, setTipoFalta] = useState('grave');
+  const [formData, setFormData] = useState(initialFormState);
 
-    if (formData.nombre) {
-      filters.push('filter=[datosGenerales][nombres][_icontains]=' + encodeURIComponent(formData.nombre));
-    }
+  const { results, loading, error, performSearch, clearResults } = useSearch('servidores');
 
-    return filters.join('&');
-  };
+  // Opcionalmente, puedes ejecutar la búsqueda inicial al montar el componente
+  /* useEffect(() => {
+    handleInitialSearch();
+  }, []); */
 
-  const searchInProvider = async providerId => {
-    try {
-      const queryString = buildSearchQuery(formData);
-
-      if (!queryString) {
-        return null;
-      }
-
-      const searchUrl = `${process.env.REACT_APP_S3_V2_BACKEND}/api/v1/${
-        tipoFalta === 'grave' ? 'faltas_administrativas_graves' : 'faltas_administrativas_no_graves'
-      }/${providerId}?${queryString}`;
-
-      const response = await fetch(searchUrl);
-      if (!response.ok) {
-        throw new Error(`Error en proveedor ${providerId}`);
-      }
-
-      const providerData = await response.json();
-      return {
-        providerId,
-        providerData,
-      };
-    } catch (error) {
-      console.error(`Error searching in provider ${providerId}:`, error);
-      return {
-        providerId,
-        error: error.message,
-      };
-    }
-  };
-
-  const handleSearch = async () => {
-    if (!formData.nombre) {
-      setError('Por favor, ingresa al menos el nombre para buscar');
-      return;
-    }
-
-    setIsSearching(true);
-    setError(null);
-    setSearchResults(null);
-
-    try {
-      const availabilityChecks = await Promise.all(
-        providers.map(async provider => {
-          const baseEndpoint = getEndpointBase(provider.id);
-          try {
-            const response = await fetch(baseEndpoint);
-            return {
-              providerId: provider.id,
-              available: response.ok,
-            };
-          } catch (error) {
-            return {
-              providerId: provider.id,
-              available: false,
-            };
-          }
-        }),
-      );
-
-      const availableProviders = availabilityChecks.filter(check => check.available).map(check => check.providerId);
-
-      const searchResults = await Promise.all(availableProviders.map(providerId => searchInProvider(providerId)));
-
-      const validResults = searchResults.filter(result => result && !result.error);
-      setSearchResults(validResults);
-
-      const errors = searchResults
-        .filter(result => result && result.error)
-        .map(result => `${result.providerId}: ${result.error}`);
-
-      if (errors.length > 0) {
-        setError(`Errores en algunos proveedores: ${errors.join('; ')}`);
-      }
-    } catch (error) {
-      setError('Error al realizar la búsqueda: ' + error.message);
-    } finally {
-      setIsSearching(false);
-    }
-  };
+  /* const handleInitialSearch = () => {
+    performSearch({}, tipoFalta); // Búsqueda inicial sin filtros
+  }; */
 
   const handleClear = () => {
-    setFormData({
-      nombre: '',
-      apellidoUno: '',
-      apellidoDos: '',
-      entePublico: '',
-      ordenGobierno: '',
-      ambito: '',
-      tipoFalta: '',
-      tipoSancion: '',
-    });
-    setSearchResults(null);
-    setError(null);
+    setFormData(initialFormState);
+    clearResults();
   };
 
   const handleTipoFaltaChange = event => {
@@ -263,17 +140,12 @@ const BuscadorServidoresSancionados = ({ classes }) => {
     }));
   };
 
-  if (loading) {
-    return (
-      <div className={classes.loading}>
-        <CircularProgress />
-      </div>
-    );
-  }
+  const handleSearch = () => {
+    performSearch(formData, tipoFalta);
+  };
 
   const renderResults = () => {
-    console.log(searchResults)
-    if (!searchResults || searchResults.length === 0) {
+    if (!results || results.length === 0) {
       return (
         <Box className={classes.noResults}>
           <Typography>No se encontraron resultados</Typography>
@@ -281,7 +153,7 @@ const BuscadorServidoresSancionados = ({ classes }) => {
       );
     }
 
-    return searchResults.map((result, index) => (
+    return results.map((result, index) => (
       <TableContainer component={Paper} className={classes.tableContainer} key={index}>
         <Typography variant="h6" padding={2}>
           Resultados del proveedor: {result.providerId}
@@ -436,14 +308,8 @@ const BuscadorServidoresSancionados = ({ classes }) => {
         <Button variant="outlined" className={classes.clearButton} onClick={handleClear}>
           Limpiar
         </Button>
-        <Button
-          variant="contained"
-          className={classes.searchButton}
-          onClick={handleSearch}
-          disabled={isSearching}
-          disabled={isSearching}
-        >
-          {isSearching ? 'Buscando...' : 'Buscar'}
+        <Button variant="contained" className={classes.searchButton} onClick={handleSearch} disabled={loading}>
+          {loading ? 'Buscando...' : 'Buscar'}
         </Button>
       </Box>
 
@@ -453,16 +319,16 @@ const BuscadorServidoresSancionados = ({ classes }) => {
         </Box>
       )}
 
-      {isSearching ? (
+      {loading ? (
         <Box className={classes.loading}>
           <CircularProgress />
         </Box>
       ) : (
-        searchResults && (
+        results && (
           <Box className={classes.resultsContainer}>
-            <Typography variant="h6" gutterBottom>
+            {/* <Typography variant="h6" gutterBottom>
               Resultados de la búsqueda
-            </Typography>
+            </Typography> */}
             {renderResults()}
           </Box>
         )
@@ -471,8 +337,8 @@ const BuscadorServidoresSancionados = ({ classes }) => {
   );
 };
 
-BuscadorServidoresSancionados.propTypes = {
+FormServidores.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(BuscadorServidoresSancionados);
+export default withStyles(styles)(FormServidores);

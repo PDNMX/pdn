@@ -5,10 +5,9 @@ import Faq from '../components/FAQ/index'
 import HelpDesk from '../components/HelpDesk/HelpDesk'
 
 import Sistema2 from '../components/Sistema2/Index'
-import Sancionados from '../components/Sistema3/Index'
 
 // Nuecom componente de búsqueda para el s3 v2
-import SancionadosV2 from '../components/Sistema3-v2/Index'
+import SancionadosV2 from '../components/Sistema3-v2'
 
 import Sistema4 from '../components/Sistema4'
 import Sistema5 from '../components/Sistema5'

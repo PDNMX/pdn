@@ -4,7 +4,7 @@ import { Grid, Box, Tabs, Tab, Paper } from '@mui/material';
 import PropTypes from 'prop-types';
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
-import BuscadorServidoresSancionados from './ServidoresPublicos/BuscadorServidoresSancionados';
+import FormServidores from './ServidoresPublicos/FormServidores';
 import BuscadorParticularesSancionados from './Particulares/BuscadorParticularesSancionados';
 import Descarga from '../Compartidos/Descarga';
 import HeaderV2 from '../HomeV2/HeaderV2';
@@ -154,7 +154,7 @@ const Index = ({ classes }) => {
 
             <ThemeProvider theme={ThemeV2}>
               <TabPanel value={value} index={0} className={classes.tabPanel}>
-                <BuscadorServidoresSancionados />
+                <FormServidores />
               </TabPanel>
               <TabPanel value={value} index={1} className={classes.tabPanel}>
                 <BuscadorParticularesSancionados />
