@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { fetchProviders, checkProviderAvailability, searchInProvider } from '../utils/api';
+import { fetchProviders, searchInProvider } from '../utils/api';
 import { buildSearchQuery, getEndpoint } from '../utils/search';
 
-export const useSearch = (type) => {
+export const useSearch = type => {
   const [results, setResults] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -12,35 +12,24 @@ export const useSearch = (type) => {
     setError(null);
   };
 
-  const performSearch = async (formData, subtype) => {
+  const performSearch = async (formData, subtype, providers) => {
     setLoading(true);
     setError(null);
     setResults(null);
 
     try {
       const baseUrl = process.env.REACT_APP_S3_V2_BACKEND;
-      const providers = await fetchProviders(baseUrl);
       const endpoint = getEndpoint(type, subtype);
-
-      const availableProviders = (await Promise.all(
-        providers.map(provider =>
-          checkProviderAvailability(baseUrl, endpoint, provider.id)
-        )
-      )).filter(check => check.available)
-        .map(check => check.providerId);
-
-      // Construir queryString solo si hay datos en el formulario
-      const queryString = Object.values(formData).some(value => value)
-        ? buildSearchQuery(formData)
-        : '';
+      const queryString = buildSearchQuery(formData);
 
       const searchResults = await Promise.all(
-        availableProviders.map(providerId =>
-          searchInProvider(baseUrl, endpoint, providerId, queryString)
-        )
+        providers.map(provider => searchInProvider(baseUrl, endpoint, provider.id, queryString)),
       );
 
-      const validResults = searchResults.filter(result => result && !result.error);
+      const validResults = searchResults.filter(
+        result => result && !result.error && result.providerData && result.providerData.data,
+      );
+
       setResults(validResults);
 
       const errors = searchResults
@@ -62,6 +51,6 @@ export const useSearch = (type) => {
     loading,
     error,
     performSearch,
-    clearResults
+    clearResults,
   };
 };

@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { withStyles } from '@mui/styles';
-import { Grid, Box, Tabs, Tab, Paper } from '@mui/material';
+import { Grid, Box, Tabs, Tab, Paper, CircularProgress } from '@mui/material';
 import PropTypes from 'prop-types';
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
@@ -90,9 +90,7 @@ const styles = (theme) => ({
   },
 });
 
-const TabPanel = (props) => {
-  const { children, value, index, ...other } = props;
-
+const TabPanel = ({ children, value, index, ...other }) => {
   return (
     <div
       role="tabpanel"
@@ -113,12 +111,55 @@ TabPanel.propTypes = {
 };
 
 const Index = ({ classes }) => {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
+  const [providers, setProviders] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   const system = pdnRoutes.find((route) => route.path === '/sancionados');
+
+  useEffect(() => {
+    const fetchProviders = async () => {
+      try {
+        const response = await fetch(`${process.env.REACT_APP_S3_V2_BACKEND}/api/v1/providers`);
+        if (!response.ok) throw new Error('Error al obtener los proveedores');
+
+        const result = await response.json();
+        if (!result.success || !Array.isArray(result.data)) {
+          throw new Error('Formato de datos inválido');
+        }
+
+        setProviders(result.data);
+      } catch (err) {
+        setError(err.message);
+        console.error('Error fetching providers:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProviders();
+  }, []);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  if (loading) {
+    return (
+      <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
+        <CircularProgress />
+      </Box>
+    );
+  }
+
+  if (error) {
+    return (
+      <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
+        <div>Error al cargar los datos: {error}</div>
+      </Box>
+    );
+  }
 
   return (
     <div className={classes.root}>
@@ -154,15 +195,14 @@ const Index = ({ classes }) => {
 
             <ThemeProvider theme={ThemeV2}>
               <TabPanel value={value} index={0} className={classes.tabPanel}>
-                <FormServidores />
+                <FormServidores providers={providers} />
               </TabPanel>
               <TabPanel value={value} index={1} className={classes.tabPanel}>
-                <BuscadorParticularesSancionados />
+                <BuscadorParticularesSancionados providers={providers} />
               </TabPanel>
             </ThemeProvider>
           </Paper>
 
-          {/* Componente Descarga fuera del Paper principal */}
           <Box className={classes.descargaSection}>
             <Descarga
               url={value === 0 ? process.env.REACT_APP_BULK_S3_SERVIDORES : process.env.REACT_APP_BULK_S3_PARTICULARES}

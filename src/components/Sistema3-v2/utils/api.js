@@ -30,18 +30,21 @@ export const checkProviderAvailability = async (baseUrl, endpoint, providerId) =
 };
 
 export const searchInProvider = async (baseUrl, endpoint, providerId, queryString) => {
-    try {
-      let searchUrl = `${baseUrl}/api/v1/${endpoint}/${providerId}`;
-      if (queryString) {
-        searchUrl += `?${queryString}`;
-      }
-
-      const response = await fetch(searchUrl);
-      if (!response.ok) throw new Error(`Error en proveedor ${providerId}`);
-
-      const providerData = await response.json();
-      return { providerId, providerData };
-    } catch (error) {
-      return { providerId, error: error.message };
+  try {
+    let searchUrl = `${baseUrl}/api/v1/${endpoint}/${providerId}`;
+    if (queryString) {
+      searchUrl += `?${queryString}`;
     }
-  };
+
+    const response = await fetch(searchUrl);
+
+    // Si el proveedor no está disponible o hay un error, retornamos null
+    if (!response.ok) return null;
+
+    const providerData = await response.json();
+    return { providerId, providerData };
+  } catch (error) {
+    // En caso de error, retornamos null en lugar de un objeto con error
+    return null;
+  }
+};

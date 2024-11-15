@@ -12,6 +12,33 @@ export const AMBITO_TIPOS = {
   ORGANO_AUTONOMO: 'ORGANO_AUTONOMO'
 };
 
+export const FALTA_TIPOS = {
+  ABUSO_FUNCIONES: 'ABUSO_FUNCIONES',
+  COHECHO: 'COHECHO',
+  PECULADO: 'PECULADO',
+  DESVIO_RECURSOS_PUBLICOS: 'DESVIO_RECURSOS_PUBLICOS',
+  UTILIZACION_INDEBIDA_INFORMACION: 'UTILIZACION_INDEBIDA_INFORMACION',
+  CONFLICTO_INTERES: 'CONFLICTO_INTERES',
+  CONTRATACION_INDEBIDA: 'CONTRATACION_INDEBIDA',
+  ENRIQUECIMIENTO_OCULTO: 'ENRIQUECIMIENTO_OCULTO',
+  TRAFICO_INFLUENCIAS: 'TRAFICO_INFLUENCIAS',
+  SIMULACION_ACTO_JURIDICO: 'SIMULACION_ACTO_JURIDICO',
+  ENCUBRIMIENTO: 'ENCUBRIMIENTO',
+  DESACATO: 'DESACATO',
+  NEPOTISMO: 'NEPOTISMO',
+  OBSTRUCCION: 'OBSTRUCCION',
+  OTRO: 'OTRO'
+};
+
+export const SANCION_TIPOS = {
+  SUSPENSION: 'SUSPENSION',
+  DESTITUCION: 'DESTITUCION',
+  SANCION_ECONOMICA: 'SANCION_ECONOMICA',
+  INHABILITACION: 'INHABILITACION',
+  OTRO: 'OTRO'
+};
+
+
 export const buildSearchQuery = (formData) => {
   const filter = {};
 
@@ -60,11 +87,20 @@ export const buildSearchQuery = (formData) => {
       };
     }
 
+    // Falta cometida (antes tipoFalta)
+    if (isValidValue(formData.faltaCometida)) {
+      filter.faltaCometida = {
+        clave: {
+          _in: [formData.faltaCometida]
+        }
+      };
+    }
+
     // Tipo de Sanción
     if (isValidValue(formData.tipoSancion)) {
       filter.tipoSancion = {
         clave: {
-          _in: [formData.tipoSancion.trim()]
+          _in: [formData.tipoSancion]
         }
       };
     }

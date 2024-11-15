@@ -1,5 +1,6 @@
-import React, { useState, /* useEffect */ } from 'react';
+import React, { useState /* useEffect */ } from 'react';
 import { withStyles } from '@mui/styles';
+import DetailDialog from '../components/DetailDialog'
 import {
   Grid,
   Typography,
@@ -24,7 +25,7 @@ import {
 } from '@mui/material';
 import PropTypes from 'prop-types';
 import { useSearch } from '../hooks/useSearch';
-import { GOBIERNO_TIPOS, AMBITO_TIPOS } from '../utils/search';
+import { GOBIERNO_TIPOS, AMBITO_TIPOS, FALTA_TIPOS, SANCION_TIPOS } from '../utils/search';
 
 const styles = theme => ({
   root: {
@@ -96,9 +97,47 @@ const styles = theme => ({
     backgroundColor: theme.palette.error.light,
     borderRadius: theme.shape.borderRadius,
   },
+  noResults: {
+    textAlign: 'center',
+    padding: theme.spacing(4),
+    backgroundColor: '#f5f5f5',
+    borderRadius: theme.shape.borderRadius,
+    marginTop: theme.spacing(2),
+  },
+  tableRow: {
+    '&:hover': {
+      backgroundColor: 'rgba(156, 39, 176, 0.04) !important',
+    },
+  },
 });
 
-const FormServidores = ({ classes }) => {
+const FALTA_LABELS = {
+  [FALTA_TIPOS.ABUSO_FUNCIONES]: 'Abuso de funciones',
+  [FALTA_TIPOS.COHECHO]: 'Cohecho',
+  [FALTA_TIPOS.PECULADO]: 'Peculado',
+  [FALTA_TIPOS.DESVIO_RECURSOS_PUBLICOS]: 'Desvío de recursos públicos',
+  [FALTA_TIPOS.UTILIZACION_INDEBIDA_INFORMACION]: 'Utilización indebida de información',
+  [FALTA_TIPOS.CONFLICTO_INTERES]: 'Conflicto de interés',
+  [FALTA_TIPOS.CONTRATACION_INDEBIDA]: 'Contratación indebida',
+  [FALTA_TIPOS.ENRIQUECIMIENTO_OCULTO]: 'Enriquecimiento oculto',
+  [FALTA_TIPOS.TRAFICO_INFLUENCIAS]: 'Tráfico de influencias',
+  [FALTA_TIPOS.SIMULACION_ACTO_JURIDICO]: 'Simulación de acto jurídico',
+  [FALTA_TIPOS.ENCUBRIMIENTO]: 'Encubrimiento',
+  [FALTA_TIPOS.DESACATO]: 'Desacato',
+  [FALTA_TIPOS.NEPOTISMO]: 'Nepotismo',
+  [FALTA_TIPOS.OBSTRUCCION]: 'Obstrucción',
+  [FALTA_TIPOS.OTRO]: 'Otro',
+};
+
+const SANCION_LABELS = {
+  [SANCION_TIPOS.SUSPENSION]: 'Suspensión',
+  [SANCION_TIPOS.DESTITUCION]: 'Destitución',
+  [SANCION_TIPOS.SANCION_ECONOMICA]: 'Sanción económica',
+  [SANCION_TIPOS.INHABILITACION]: 'Inhabilitación',
+  [SANCION_TIPOS.OTRO]: 'Otro',
+};
+
+const FormServidores = ({ classes, providers }) => {
   const initialFormState = {
     nombre: '',
     apellidoUno: '',
@@ -106,14 +145,27 @@ const FormServidores = ({ classes }) => {
     entePublico: '',
     ordenGobierno: '',
     ambito: '',
-    tipoFalta: '',
+    faltaCometida: '',
     tipoSancion: '',
   };
 
+  const [selectedRecord, setSelectedRecord] = useState(null);
   const [tipoFalta, setTipoFalta] = useState('grave');
   const [formData, setFormData] = useState(initialFormState);
 
   const { results, loading, error, performSearch, clearResults } = useSearch('servidores');
+
+  const renderNoResults = () => (
+    <Box className={classes.noResults}>
+      <Typography variant="h6" color="textSecondary" gutterBottom>
+        No se encontraron resultados
+      </Typography>
+      <Typography color="textSecondary">
+        No se encontraron registros que coincidan con los criterios de búsqueda. Por favor, intenta con diferentes
+        términos o menos filtros.
+      </Typography>
+    </Box>
+  );
 
   // Opcionalmente, puedes ejecutar la búsqueda inicial al montar el componente
   /* useEffect(() => {
@@ -142,45 +194,72 @@ const FormServidores = ({ classes }) => {
   };
 
   const handleSearch = () => {
-    performSearch(formData, tipoFalta);
+    performSearch(formData, tipoFalta, providers);
+  };
+
+  const handleRowClick = (record) => {
+    setSelectedRecord(record);
   };
 
   const renderResults = () => {
     if (!results || results.length === 0) {
-      return (
-        <Box className={classes.noResults}>
-          <Typography>No se encontraron resultados</Typography>
-        </Box>
-      );
+      return renderNoResults();
     }
 
-    return results.map((result, index) => (
-      <TableContainer component={Paper} className={classes.tableContainer} key={index}>
-        <Typography variant="h6" padding={2}>
-          Resultados del proveedor: {result.providerId}
+    let totalRegistros = 0;
+    results.forEach(result => {
+      totalRegistros += result.providerData.data.length;
+    });
+
+    if (totalRegistros === 0) {
+      return renderNoResults();
+    }
+
+    return (
+      <>
+        <Typography variant="h6" gutterBottom>
+          Se encontraron {totalRegistros} registro(s)
         </Typography>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell className={classes.tableHeaderCell}>Nombre</TableCell>
-              <TableCell className={classes.tableHeaderCell}>Ente Público</TableCell>
-              <TableCell className={classes.tableHeaderCell}>Fecha</TableCell>
-              <TableCell className={classes.tableHeaderCell}>Expediente</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {result.providerData.data.map((item, i) => (
-              <TableRow key={i}>
-                <TableCell>{item.datosGenerales?.nombres || 'N/A'}</TableCell>
-                <TableCell>{item.empleoCargoComision?.nombreEntePublico || 'N/A'}</TableCell>
-                <TableCell>{item.fecha || 'N/A'}</TableCell>
-                <TableCell>{item.expediente || 'N/A'}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    ));
+        {results.map((result, index) => (
+          <TableContainer component={Paper} className={classes.tableContainer} key={index}>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell className={classes.tableHeaderCell}>Nombre</TableCell>
+                  <TableCell className={classes.tableHeaderCell}>Institución</TableCell>
+                  <TableCell className={classes.tableHeaderCell}>Fecha</TableCell>
+                  <TableCell className={classes.tableHeaderCell}>Expediente</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {result.providerData.data.map((item, i) => (
+                  <TableRow
+                    key={i}
+                    onClick={() => handleRowClick(item)}
+                    className={classes.tableRow}
+                    hover
+                    style={{ cursor: 'pointer' }}
+                  >
+                    <TableCell>
+                      {`${item.datosGenerales?.nombres || ''} ${item.datosGenerales?.primerApellido || ''} ${item.datosGenerales?.segundoApellido || ''}`}
+                    </TableCell>
+                    <TableCell>{item.empleoCargoComision?.nombreEntePublico || 'N/A'}</TableCell>
+                    <TableCell>{new Date(item.fecha).toLocaleDateString('es-MX')}</TableCell>
+                    <TableCell>{item.expediente || 'N/A'}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        ))}
+
+        <DetailDialog
+          open={!!selectedRecord}
+          onClose={() => setSelectedRecord(null)}
+          data={selectedRecord}
+        />
+      </>
+    );
   };
 
   return (
@@ -248,7 +327,7 @@ const FormServidores = ({ classes }) => {
         </Grid>
 
         <Grid item xs={12} md={6}>
-        <FormControl variant="outlined" className={classes.formControl} size="small" fullWidth>
+          <FormControl variant="outlined" className={classes.formControl} size="small" fullWidth>
             <InputLabel>Nivel u Orden de Gobierno</InputLabel>
             <Select
               name="ordenGobierno"
@@ -264,14 +343,9 @@ const FormServidores = ({ classes }) => {
         </Grid>
 
         <Grid item xs={12} md={6}>
-        <FormControl variant="outlined" className={classes.formControl} size="small" fullWidth>
+          <FormControl variant="outlined" className={classes.formControl} size="small" fullWidth>
             <InputLabel>Ámbito Público</InputLabel>
-            <Select
-              name="ambito"
-              value={formData.ambito}
-              onChange={handleInputChange}
-              label="Ámbito"
-            >
+            <Select name="ambito" value={formData.ambito} onChange={handleInputChange} label="Ámbito">
               <MenuItem value={AMBITO_TIPOS.EJECUTIVO}>Ejecutivo</MenuItem>
               <MenuItem value={AMBITO_TIPOS.LEGISLATIVO}>Legislativo</MenuItem>
               <MenuItem value={AMBITO_TIPOS.JUDICIAL}>Judicial</MenuItem>
@@ -282,12 +356,18 @@ const FormServidores = ({ classes }) => {
 
         <Grid item xs={12} md={6}>
           <FormControl variant="outlined" className={classes.formControl} size="small" fullWidth>
-            <InputLabel>Tipo de Falta</InputLabel>
-            <Select name="tipoFalta" value={formData.tipoFalta} onChange={handleInputChange} label="Tipo de Falta">
-              <MenuItem value="cohecho">Cohecho</MenuItem>
-              <MenuItem value="peculado">Peculado</MenuItem>
-              <MenuItem value="desvio">Desvío de recursos</MenuItem>
-              <MenuItem value="abuso">Abuso de funciones</MenuItem>
+            <InputLabel>Falta Cometida</InputLabel>
+            <Select
+              name="faltaCometida"
+              value={formData.faltaCometida}
+              onChange={handleInputChange}
+              label="Falta Cometida"
+            >
+              {Object.entries(FALTA_LABELS).map(([value, label]) => (
+                <MenuItem key={value} value={value}>
+                  {label}
+                </MenuItem>
+              ))}
             </Select>
           </FormControl>
         </Grid>
@@ -301,10 +381,11 @@ const FormServidores = ({ classes }) => {
               onChange={handleInputChange}
               label="Tipo de Sanción"
             >
-              <MenuItem value="inhabilitacion">Inhabilitación</MenuItem>
-              <MenuItem value="suspension">Suspensión</MenuItem>
-              <MenuItem value="destitucion">Destitución</MenuItem>
-              <MenuItem value="economica">Sanción Económica</MenuItem>
+              {Object.entries(SANCION_LABELS).map(([value, label]) => (
+                <MenuItem key={value} value={value}>
+                  {label}
+                </MenuItem>
+              ))}
             </Select>
           </FormControl>
         </Grid>
@@ -345,6 +426,12 @@ const FormServidores = ({ classes }) => {
 
 FormServidores.propTypes = {
   classes: PropTypes.object.isRequired,
+  providers: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired
+    })
+  ).isRequired
 };
 
 export default withStyles(styles)(FormServidores);
