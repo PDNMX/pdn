@@ -5,12 +5,12 @@ import PropTypes from 'prop-types';
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import FormServidores from './ServidoresPublicos/FormServidores';
-import BuscadorParticularesSancionados from './Particulares/BuscadorParticularesSancionados';
 import Descarga from '../Compartidos/Descarga';
 import HeaderV2 from '../HomeV2/HeaderV2';
 import pdnRoutes from '../../routes/index';
 import { ThemeProvider } from '@mui/material/styles';
 import ThemeV2 from '../../ThemeV2';
+import FormParticulares from './Particulares/FormParticulares';
 
 const styles = (theme) => ({
   root: {
@@ -195,10 +195,10 @@ const Index = ({ classes }) => {
 
             <ThemeProvider theme={ThemeV2}>
               <TabPanel value={value} index={0} className={classes.tabPanel}>
-                <FormServidores providers={providers} />
+                <FormServidores providers={providers}/>
               </TabPanel>
               <TabPanel value={value} index={1} className={classes.tabPanel}>
-                <BuscadorParticularesSancionados providers={providers} />
+                <FormParticulares providers={providers}/>
               </TabPanel>
             </ThemeProvider>
           </Paper>

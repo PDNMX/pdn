@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { fetchProviders, searchInProvider } from '../utils/api';
-import { buildSearchQuery, getEndpoint } from '../utils/search';
+import { searchInProvider } from '../utils/api';
+import { buildSearchQuery } from '../utils/search';
 
-export const useSearch = type => {
+export const useSearch = () => {
   const [results, setResults] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -12,22 +12,31 @@ export const useSearch = type => {
     setError(null);
   };
 
-  const performSearch = async (formData, subtype, providers) => {
+  const performSearch = async (formData, endpoint, providers) => {
+    if (!providers || !Array.isArray(providers)) {
+      setError('No hay proveedores disponibles');
+      return;
+    }
+
     setLoading(true);
     setError(null);
     setResults(null);
 
     try {
       const baseUrl = process.env.REACT_APP_S3_V2_BACKEND;
-      const endpoint = getEndpoint(type, subtype);
       const queryString = buildSearchQuery(formData);
 
       const searchResults = await Promise.all(
-        providers.map(provider => searchInProvider(baseUrl, endpoint, provider.id, queryString)),
+        providers.map(provider =>
+          searchInProvider(baseUrl, endpoint, provider.id, queryString)
+        )
       );
 
-      const validResults = searchResults.filter(
-        result => result && !result.error && result.providerData && result.providerData.data,
+      const validResults = searchResults.filter(result =>
+        result &&
+        !result.error &&
+        result.providerData &&
+        result.providerData.data
       );
 
       setResults(validResults);
@@ -51,6 +60,6 @@ export const useSearch = type => {
     loading,
     error,
     performSearch,
-    clearResults,
+    clearResults
   };
 };
