@@ -24,6 +24,7 @@ import {
 } from '@mui/material';
 import PropTypes from 'prop-types';
 import { useSearch } from '../hooks/useSearch';
+import { GOBIERNO_TIPOS, AMBITO_TIPOS } from '../utils/search';
 
 const styles = theme => ({
   root: {
@@ -162,7 +163,7 @@ const FormServidores = ({ classes }) => {
           <TableHead>
             <TableRow>
               <TableCell className={classes.tableHeaderCell}>Nombre</TableCell>
-              <TableCell className={classes.tableHeaderCell}>Institución</TableCell>
+              <TableCell className={classes.tableHeaderCell}>Ente Público</TableCell>
               <TableCell className={classes.tableHeaderCell}>Fecha</TableCell>
               <TableCell className={classes.tableHeaderCell}>Expediente</TableCell>
             </TableRow>
@@ -233,7 +234,7 @@ const FormServidores = ({ classes }) => {
           />
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={12}>
           <TextField
             className={classes.formControl}
             label="Ente Público"
@@ -247,34 +248,39 @@ const FormServidores = ({ classes }) => {
         </Grid>
 
         <Grid item xs={12} md={6}>
-          <FormControl variant="outlined" className={classes.formControl} size="small" fullWidth>
-            <InputLabel>Orden de Gobierno</InputLabel>
+        <FormControl variant="outlined" className={classes.formControl} size="small" fullWidth>
+            <InputLabel>Nivel u Orden de Gobierno</InputLabel>
             <Select
               name="ordenGobierno"
               value={formData.ordenGobierno}
               onChange={handleInputChange}
               label="Orden de Gobierno"
             >
-              <MenuItem value="federal">Federal</MenuItem>
-              <MenuItem value="estatal">Estatal</MenuItem>
-              <MenuItem value="municipal">Municipal</MenuItem>
+              <MenuItem value={GOBIERNO_TIPOS.FEDERAL}>Federal</MenuItem>
+              <MenuItem value={GOBIERNO_TIPOS.ESTATAL}>Estatal</MenuItem>
+              <MenuItem value={GOBIERNO_TIPOS.MUNICIPAL}>Municipal/Alcaldía</MenuItem>
             </Select>
           </FormControl>
         </Grid>
 
-        <Grid item xs={12} md={4}>
-          <FormControl variant="outlined" className={classes.formControl} size="small" fullWidth>
-            <InputLabel>Ámbito</InputLabel>
-            <Select name="ambito" value={formData.ambito} onChange={handleInputChange} label="Ámbito">
-              <MenuItem value="ejecutivo">Ejecutivo</MenuItem>
-              <MenuItem value="legislativo">Legislativo</MenuItem>
-              <MenuItem value="judicial">Judicial</MenuItem>
-              <MenuItem value="organoAutonomo">Órgano Autónomo</MenuItem>
+        <Grid item xs={12} md={6}>
+        <FormControl variant="outlined" className={classes.formControl} size="small" fullWidth>
+            <InputLabel>Ámbito Público</InputLabel>
+            <Select
+              name="ambito"
+              value={formData.ambito}
+              onChange={handleInputChange}
+              label="Ámbito"
+            >
+              <MenuItem value={AMBITO_TIPOS.EJECUTIVO}>Ejecutivo</MenuItem>
+              <MenuItem value={AMBITO_TIPOS.LEGISLATIVO}>Legislativo</MenuItem>
+              <MenuItem value={AMBITO_TIPOS.JUDICIAL}>Judicial</MenuItem>
+              <MenuItem value={AMBITO_TIPOS.ORGANO_AUTONOMO}>Órgano Autónomo</MenuItem>
             </Select>
           </FormControl>
         </Grid>
 
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={6}>
           <FormControl variant="outlined" className={classes.formControl} size="small" fullWidth>
             <InputLabel>Tipo de Falta</InputLabel>
             <Select name="tipoFalta" value={formData.tipoFalta} onChange={handleInputChange} label="Tipo de Falta">
@@ -286,7 +292,7 @@ const FormServidores = ({ classes }) => {
           </FormControl>
         </Grid>
 
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={6}>
           <FormControl variant="outlined" className={classes.formControl} size="small" fullWidth>
             <InputLabel>Tipo de Sanción</InputLabel>
             <Select
