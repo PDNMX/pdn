@@ -1,6 +1,6 @@
 import React, { useState /* useEffect */ } from 'react';
 import { withStyles } from '@mui/styles';
-import DetailDialog from '../components/DetailDialog'
+import DetailDialog from '../components/DetailDialog';
 import {
   Grid,
   Typography,
@@ -25,7 +25,7 @@ import {
 } from '@mui/material';
 import PropTypes from 'prop-types';
 import { useSearch } from '../hooks/useSearch';
-import { GOBIERNO_TIPOS, AMBITO_TIPOS, FALTA_TIPOS, SANCION_TIPOS } from '../utils/search';
+import { GOBIERNO_TIPOS, AMBITO_TIPOS, SANCION_GRAVE_LABELS, SANCION_NO_GRAVE_LABELS, FALTA_GRAVE_LABELS, FALTA_NO_GRAVE_LABELS } from '../utils/search';
 
 const styles = theme => ({
   root: {
@@ -111,32 +111,6 @@ const styles = theme => ({
   },
 });
 
-const FALTA_LABELS = {
-  [FALTA_TIPOS.ABUSO_FUNCIONES]: 'Abuso de funciones',
-  [FALTA_TIPOS.COHECHO]: 'Cohecho',
-  [FALTA_TIPOS.PECULADO]: 'Peculado',
-  [FALTA_TIPOS.DESVIO_RECURSOS_PUBLICOS]: 'Desvío de recursos públicos',
-  [FALTA_TIPOS.UTILIZACION_INDEBIDA_INFORMACION]: 'Utilización indebida de información',
-  [FALTA_TIPOS.CONFLICTO_INTERES]: 'Conflicto de interés',
-  [FALTA_TIPOS.CONTRATACION_INDEBIDA]: 'Contratación indebida',
-  [FALTA_TIPOS.ENRIQUECIMIENTO_OCULTO]: 'Enriquecimiento oculto',
-  [FALTA_TIPOS.TRAFICO_INFLUENCIAS]: 'Tráfico de influencias',
-  [FALTA_TIPOS.SIMULACION_ACTO_JURIDICO]: 'Simulación de acto jurídico',
-  [FALTA_TIPOS.ENCUBRIMIENTO]: 'Encubrimiento',
-  [FALTA_TIPOS.DESACATO]: 'Desacato',
-  [FALTA_TIPOS.NEPOTISMO]: 'Nepotismo',
-  [FALTA_TIPOS.OBSTRUCCION]: 'Obstrucción',
-  [FALTA_TIPOS.OTRO]: 'Otro',
-};
-
-const SANCION_LABELS = {
-  [SANCION_TIPOS.SUSPENSION]: 'Suspensión',
-  [SANCION_TIPOS.DESTITUCION]: 'Destitución',
-  [SANCION_TIPOS.SANCION_ECONOMICA]: 'Sanción económica',
-  [SANCION_TIPOS.INHABILITACION]: 'Inhabilitación',
-  [SANCION_TIPOS.OTRO]: 'Otro',
-};
-
 const FormServidores = ({ classes, providers }) => {
   const initialFormState = {
     nombre: '',
@@ -154,6 +128,55 @@ const FormServidores = ({ classes, providers }) => {
   const [formData, setFormData] = useState(initialFormState);
 
   const { results, loading, error, performSearch, clearResults } = useSearch('servidores');
+
+  const renderFaltaSelect = () => (
+    <FormControl variant="outlined" className={classes.formControl} size="small" fullWidth>
+      <InputLabel>Falta Cometida</InputLabel>
+      <Select
+        name="faltaCometida"
+        value={formData.faltaCometida}
+        onChange={handleInputChange}
+        label="Falta Cometida"
+      >
+        {Object.entries(tipoFalta === 'grave' ? FALTA_GRAVE_LABELS : FALTA_NO_GRAVE_LABELS)
+          .map(([value, label]) => (
+            <MenuItem key={value} value={value}>{label}</MenuItem>
+          ))}
+      </Select>
+    </FormControl>
+  );
+
+  const renderSancionSelect = () => (
+    <FormControl variant="outlined" className={classes.formControl} size="small" fullWidth>
+      <InputLabel>Tipo de Sanción</InputLabel>
+      <Select
+        name="tipoSancion"
+        value={formData.tipoSancion}
+        onChange={handleInputChange}
+        label="Tipo de Sanción"
+      >
+        {Object.entries(tipoFalta === 'grave' ? SANCION_GRAVE_LABELS : SANCION_NO_GRAVE_LABELS)
+          .map(([value, label]) => (
+            <MenuItem key={value} value={value}>{label}</MenuItem>
+          ))}
+      </Select>
+    </FormControl>
+  );
+
+  // Actualizar el handler de cambio de tipo de falta para limpiar también la sanción
+  const handleTipoFaltaChange = event => {
+    const newTipoFalta = event.target.value;
+    setTipoFalta(newTipoFalta);
+
+    setFormData(prev => ({
+      ...prev,
+      faltaCometida: '', // Limpiar falta cometida al cambiar
+      tipoSancion: '', // Limpiar tipo de sanción al cambiar
+      nombre: newTipoFalta === 'noGrave' ? '' : prev.nombre,
+      apellidoUno: newTipoFalta === 'noGrave' ? '' : prev.apellidoUno,
+      apellidoDos: newTipoFalta === 'noGrave' ? '' : prev.apellidoDos,
+    }));
+  };
 
   const renderNoResults = () => (
     <Box className={classes.noResults}>
@@ -181,10 +204,6 @@ const FormServidores = ({ classes, providers }) => {
     clearResults();
   };
 
-  const handleTipoFaltaChange = event => {
-    setTipoFalta(event.target.value);
-  };
-
   const handleInputChange = event => {
     const { name, value } = event.target;
     setFormData(prevData => ({
@@ -197,7 +216,7 @@ const FormServidores = ({ classes, providers }) => {
     performSearch(formData, tipoFalta, providers);
   };
 
-  const handleRowClick = (record) => {
+  const handleRowClick = record => {
     setSelectedRecord(record);
   };
 
@@ -225,7 +244,7 @@ const FormServidores = ({ classes, providers }) => {
             <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell className={classes.tableHeaderCell}>Nombre</TableCell>
+                  {tipoFalta === 'grave' && <TableCell className={classes.tableHeaderCell}>Nombre</TableCell>}
                   <TableCell className={classes.tableHeaderCell}>Institución</TableCell>
                   <TableCell className={classes.tableHeaderCell}>Fecha</TableCell>
                   <TableCell className={classes.tableHeaderCell}>Expediente</TableCell>
@@ -240,9 +259,13 @@ const FormServidores = ({ classes, providers }) => {
                     hover
                     style={{ cursor: 'pointer' }}
                   >
-                    <TableCell>
-                      {`${item.datosGenerales?.nombres || ''} ${item.datosGenerales?.primerApellido || ''} ${item.datosGenerales?.segundoApellido || ''}`}
-                    </TableCell>
+                    {tipoFalta === 'grave' && (
+                      <TableCell>
+                        {`${item.datosGenerales?.nombres || ''} ${item.datosGenerales?.primerApellido || ''} ${item
+                          .datosGenerales?.segundoApellido || ''}`}
+                      </TableCell>
+                    )}
+
                     <TableCell>{item.empleoCargoComision?.nombreEntePublico || 'N/A'}</TableCell>
                     <TableCell>{new Date(item.fecha).toLocaleDateString('es-MX')}</TableCell>
                     <TableCell>{item.expediente || 'N/A'}</TableCell>
@@ -253,11 +276,7 @@ const FormServidores = ({ classes, providers }) => {
           </TableContainer>
         ))}
 
-        <DetailDialog
-          open={!!selectedRecord}
-          onClose={() => setSelectedRecord(null)}
-          data={selectedRecord}
-        />
+        <DetailDialog open={!!selectedRecord} onClose={() => setSelectedRecord(null)} data={selectedRecord} />
       </>
     );
   };
@@ -276,42 +295,46 @@ const FormServidores = ({ classes, providers }) => {
       </Box>
 
       <Grid container spacing={3}>
-        <Grid item xs={12} md={4}>
-          <TextField
-            className={classes.formControl}
-            label="Nombre"
-            name="nombre"
-            value={formData.nombre}
-            onChange={handleInputChange}
-            variant="outlined"
-            size="small"
-            fullWidth
-          />
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <TextField
-            className={classes.formControl}
-            label="Apellido Uno"
-            name="apellidoUno"
-            value={formData.apellidoUno}
-            onChange={handleInputChange}
-            variant="outlined"
-            size="small"
-            fullWidth
-          />
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <TextField
-            className={classes.formControl}
-            label="Apellido Dos"
-            name="apellidoDos"
-            value={formData.apellidoDos}
-            onChange={handleInputChange}
-            variant="outlined"
-            size="small"
-            fullWidth
-          />
-        </Grid>
+        {tipoFalta === 'grave' && (
+          <>
+            <Grid item xs={12} md={4}>
+              <TextField
+                className={classes.formControl}
+                label="Nombre"
+                name="nombre"
+                value={formData.nombre}
+                onChange={handleInputChange}
+                variant="outlined"
+                size="small"
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <TextField
+                className={classes.formControl}
+                label="Apellido Uno"
+                name="apellidoUno"
+                value={formData.apellidoUno}
+                onChange={handleInputChange}
+                variant="outlined"
+                size="small"
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <TextField
+                className={classes.formControl}
+                label="Apellido Dos"
+                name="apellidoDos"
+                value={formData.apellidoDos}
+                onChange={handleInputChange}
+                variant="outlined"
+                size="small"
+                fullWidth
+              />
+            </Grid>
+          </>
+        )}
 
         <Grid item xs={12} md={12}>
           <TextField
@@ -355,39 +378,11 @@ const FormServidores = ({ classes, providers }) => {
         </Grid>
 
         <Grid item xs={12} md={6}>
-          <FormControl variant="outlined" className={classes.formControl} size="small" fullWidth>
-            <InputLabel>Falta Cometida</InputLabel>
-            <Select
-              name="faltaCometida"
-              value={formData.faltaCometida}
-              onChange={handleInputChange}
-              label="Falta Cometida"
-            >
-              {Object.entries(FALTA_LABELS).map(([value, label]) => (
-                <MenuItem key={value} value={value}>
-                  {label}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
+          {renderFaltaSelect()}
         </Grid>
 
         <Grid item xs={12} md={6}>
-          <FormControl variant="outlined" className={classes.formControl} size="small" fullWidth>
-            <InputLabel>Tipo de Sanción</InputLabel>
-            <Select
-              name="tipoSancion"
-              value={formData.tipoSancion}
-              onChange={handleInputChange}
-              label="Tipo de Sanción"
-            >
-              {Object.entries(SANCION_LABELS).map(([value, label]) => (
-                <MenuItem key={value} value={value}>
-                  {label}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
+          {renderSancionSelect()}
         </Grid>
       </Grid>
 
@@ -429,9 +424,9 @@ FormServidores.propTypes = {
   providers: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired
-    })
-  ).isRequired
+      name: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
 };
 
 export default withStyles(styles)(FormServidores);
