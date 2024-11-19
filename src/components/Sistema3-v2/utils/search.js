@@ -277,18 +277,3 @@ export const combineFilters = (filters) => {
   if (validFilters.length === 1) return validFilters[0];
   return { $and: validFilters };
 };
-
-export const getEndpoint = (type, subtype) => {
-  const endpoints = {
-    servidores: {
-      grave: 'faltas_administrativas_graves',
-      noGrave: 'faltas_administrativas_no_graves',
-    },
-    particulares: {
-      fisica: 'faltas_graves_personas_morales',
-      moral: 'faltas_graves_personas_fisicas',
-    },
-  };
-
-  return endpoints[type]?.[subtype] || '';
-};

@@ -11,32 +11,10 @@ import {
 import { Close } from '@mui/icons-material';
 import PropTypes from 'prop-types';
 import { withStyles } from '@mui/styles';
+import commonStyles from '../commonStyles';
 
 const styles = theme => ({
-  dialogTitle: {
-    backgroundColor: '#f5f5f5',
-    borderBottom: '1px solid #e0e0e0',
-  },
-  closeButton: {
-    position: 'absolute',
-    right: theme.spacing(1),
-    top: theme.spacing(1),
-  },
-  section: {
-    marginBottom: theme.spacing(3),
-  },
-  sectionTitle: {
-    color: theme.palette.primary.main,
-    marginBottom: theme.spacing(1),
-    fontWeight: 600,
-  },
-  label: {
-    fontWeight: 600,
-    color: '#666',
-  },
-  value: {
-    color: '#333',
-  },
+  ...commonStyles(theme),
 });
 
 const DetailDialogParticulares = ({ open, onClose, data, tipoPersona, classes }) => {
