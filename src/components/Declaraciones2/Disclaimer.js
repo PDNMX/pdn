@@ -7,6 +7,8 @@ import ButtonPDN from '../Compartidos/ButtonPDN';
 
 import styles from './style';
 const useStyles = makeStyles(styles);
+const avisoIntegral = 'https://drive.google.com/file/d/1Yotqc3mlHZn56-B8FO6MFMfYVf9x4RZS/view?usp=drive_link';
+const avisoSimplificado = 'https://drive.google.com/file/d/1agSv598orLnyRfQmXQthSplWwoXWwDmL/view?usp=drive_link';
 
 export default function Disclaimer(props) {
   const classes = useStyles();
@@ -35,6 +37,16 @@ export default function Disclaimer(props) {
             <RouterLink to={'/terminos'} className={classes.enlaces}>
               Conoce los términos y condiciones de uso
             </RouterLink>
+          </DialogContentText>
+          <DialogContentText paragraph id='alert-dialog-description' style={{ textAlign: 'justify' }} className={classes.text_color}>
+            Conoce nuestros Avisos de Privacidad:{' '}
+            <Link href={avisoSimplificado} target='_blank' underline='none' className={classes.enlaces}>
+              Simplificado
+            </Link>{' '}
+            e{' '}
+            <Link href={avisoIntegral} target='_blank' underline='none' className={classes.enlaces}>
+              Integral
+            </Link>
           </DialogContentText>
         </DialogContent>
         <DialogActions>
