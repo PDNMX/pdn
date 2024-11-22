@@ -108,7 +108,7 @@ export default createTheme(
       S5: {
         color: '#34c9b2',
         main: '#8befdb',
-        light: ' #f2f9f8',
+        light: '#F2F9F8',
         dark: '#46a593 '
       },
       S6: {
