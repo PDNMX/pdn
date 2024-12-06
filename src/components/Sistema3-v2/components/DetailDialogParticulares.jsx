@@ -6,7 +6,8 @@ import {
   Typography,
   Grid,
   IconButton,
-  Box
+  Box,
+  Link
 } from '@mui/material';
 import { Close } from '@mui/icons-material';
 import PropTypes from 'prop-types';
@@ -37,14 +38,14 @@ const DetailDialogParticulares = ({ open, onClose, data, tipoPersona, classes })
   return (
     <Dialog open={open} onClose={onClose} maxWidth="lg" fullWidth>
       <DialogTitle className={classes.dialogTitle}>
-        Detalles del Registro
+      <strong>Detalles del Registro</strong>
         <IconButton className={classes.closeButton} onClick={onClose}>
           <Close />
         </IconButton>
       </DialogTitle>
       <DialogContent>
-        <Box className={classes.section}>
-          <Typography variant="h6" className={classes.sectionTitle}>
+        <Box className={classes.dialogSection}>
+          <Typography variant="h6" className={classes.dialogSectionTitle}>
             {tipoPersona === 'fisica' ? 'Datos de la Persona Física' : 'Datos de la Persona Moral'}
           </Typography>
           {tipoPersona === 'fisica' ? (
@@ -61,8 +62,8 @@ const DetailDialogParticulares = ({ open, onClose, data, tipoPersona, classes })
           )}
         </Box>
 
-        <Box className={classes.section}>
-          <Typography variant="h6" className={classes.sectionTitle}>
+        <Box className={classes.dialogSection}>
+          <Typography variant="h6" className={classes.dialogSectionTitle}>
             Faltas Cometidas
           </Typography>
           {data.faltaCometida?.map((falta, index) => (
@@ -73,8 +74,8 @@ const DetailDialogParticulares = ({ open, onClose, data, tipoPersona, classes })
           ))}
         </Box>
 
-        <Box className={classes.section}>
-          <Typography variant="h6" className={classes.sectionTitle}>
+        <Box className={classes.dialogSection}>
+          <Typography variant="h6" className={classes.dialogSectionTitle}>
             Resolución
           </Typography>
           {renderField('Expediente', data.expediente)}
@@ -86,16 +87,16 @@ const DetailDialogParticulares = ({ open, onClose, data, tipoPersona, classes })
                 <Typography className={classes.label}>URL de Resolución:</Typography>
               </Grid>
               <Grid item xs={12} sm={8}>
-                <a href={data.resolucion.urlResolucion} target="_blank" rel="noopener noreferrer">
+                <Link variant="body1" href={data.resolucion.urlResolucion} underline="hover" target="_blank" rel="noopener noreferrer">
                   Ver resolución
-                </a>
+                </Link>
               </Grid>
             </Grid>
           )}
         </Box>
 
-        <Box className={classes.section}>
-          <Typography variant="h6" className={classes.sectionTitle}>
+        <Box className={classes.dialogSection}>
+          <Typography variant="h6" className={classes.dialogSectionTitle}>
             Sanciones
           </Typography>
           {data.tipoSancion?.map((sancion, index) => (

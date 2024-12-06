@@ -12,33 +12,10 @@ import {
 import { Close } from '@mui/icons-material';
 import PropTypes from 'prop-types';
 import { withStyles } from '@mui/styles';
+import commonStyles from '../commonStyles';
 
 const styles = theme => ({
-  dialogTitle: {
-    backgroundColor: '#f5f5f5',
-    borderBottom: '1px solid #e0e0e0',
-  },
-  closeButton: {
-    position: 'absolute',
-    right: theme.spacing(1),
-    top: theme.spacing(1),
-  },
-  section: {
-    marginBottom: theme.spacing(2),
-    marginTop: theme.spacing(2),
-  },
-  sectionTitle: {
-    color: theme.palette.primary.main,
-    marginBottom: theme.spacing(1),
-    fontWeight: 600,
-  },
-  label: {
-    fontWeight: 600,
-    color: '#666',
-  },
-  value: {
-    color: '#333',
-  },
+  ...commonStyles(theme),
 });
 
 const DetailDialog = ({ open, onClose, data, classes }) => {
@@ -67,8 +44,8 @@ const DetailDialog = ({ open, onClose, data, classes }) => {
         </IconButton>
       </DialogTitle>
       <DialogContent>
-        <Box className={classes.section}>
-          <Typography variant="h6" className={classes.sectionTitle}>
+        <Box className={classes.dialogSection}>
+          <Typography variant="h6" className={classes.dialogSectionTitle}>
             Datos Generales
           </Typography>
           {renderField('Nombre', `${data.datosGenerales?.nombres || ''} ${data.datosGenerales?.primerApellido || ''} ${data.datosGenerales?.segundoApellido || ''}`)}
@@ -77,8 +54,8 @@ const DetailDialog = ({ open, onClose, data, classes }) => {
           {renderField('Fecha', new Date(data.fecha).toLocaleDateString('es-MX'))}
         </Box>
 
-        <Box className={classes.section}>
-          <Typography variant="h6" className={classes.sectionTitle}>
+        <Box className={classes.dialogSection}>
+          <Typography variant="h6" className={classes.dialogSectionTitle}>
             Empleo, Cargo o Comisión
           </Typography>
           {renderField('Ente Público', data.empleoCargoComision?.nombreEntePublico)}
@@ -87,8 +64,8 @@ const DetailDialog = ({ open, onClose, data, classes }) => {
           {renderField('Área de Adscripción', data.empleoCargoComision?.areaAdscripcion)}
         </Box>
 
-        <Box className={classes.section}>
-          <Typography variant="h6" className={classes.sectionTitle}>
+        <Box className={classes.dialogSection}>
+          <Typography variant="h6" className={classes.dialogSectionTitle}>
             Falta Cometida
           </Typography>
           {data.faltaCometida?.map((falta, index) => (
@@ -99,8 +76,8 @@ const DetailDialog = ({ open, onClose, data, classes }) => {
           ))}
         </Box>
 
-        <Box className={classes.section}>
-          <Typography variant="h6" className={classes.sectionTitle}>
+        <Box className={classes.dialogSection}>
+          <Typography variant="h6" className={classes.dialogSectionTitle}>
             Resolución
           </Typography>
           {renderField('Autoridad Resolutora', data.resolucion?.autoridadResolutora)}
@@ -120,8 +97,8 @@ const DetailDialog = ({ open, onClose, data, classes }) => {
           )}
         </Box>
 
-        <Box className={classes.section}>
-          <Typography variant="h6" className={classes.sectionTitle}>
+        <Box className={classes.dialogSection}>
+          <Typography variant="h6" className={classes.dialogSectionTitle}>
             Sanciones
           </Typography>
           {data.tipoSancion?.map((sancion, index) => (

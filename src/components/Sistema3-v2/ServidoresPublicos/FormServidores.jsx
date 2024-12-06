@@ -100,6 +100,7 @@ const FormServidores = ({ classes, providers }) => {
       apellidoUno: newTipoFalta === 'noGrave' ? '' : prev.apellidoUno,
       apellidoDos: newTipoFalta === 'noGrave' ? '' : prev.apellidoDos,
     }));
+    clearResults();
   };
 
   const renderNoResults = () => (
@@ -165,55 +166,61 @@ const FormServidores = ({ classes, providers }) => {
     }
 
     return (
-      <>
-        {/* <Typography variant="h6" gutterBottom>
+      <Box sx={{ mb: 4 }}>
+        <Typography variant="h6" gutterBottom>
           Se encontraron {totalRegistros} registro(s)
-        </Typography> */}
+        </Typography>
         {results.map((result, index) => (
-          <Box key={index} sx={{ mb: 4 }}>
-            <ProviderAccordion
-              key={index}
-              provider={providers.find(p => p.id === result.providerId)}
-              loading={loading}
-              totalRegistros={result.providerData.pagination?.totalItems}
-            >
-              <TableContainer component={Paper} className={classes.tableContainer}>
-                <Table>
-                  <TableBody>
-                    {result.providerData.data.map((item, i) => (
-                      <TableRow
-                        key={i}
-                        onClick={() => handleRowClick(item)}
-                        className={classes.tableRow}
-                        hover
-                        style={{ cursor: 'pointer' }}
-                      >
-                        {tipoFalta === 'grave' && (
-                          <TableCell>
-                            {`${item.datosGenerales?.nombres || ''} ${item.datosGenerales?.primerApellido || ''} ${item
-                              .datosGenerales?.segundoApellido || ''}`}
-                          </TableCell>
-                        )}
-                        <TableCell>{item.empleoCargoComision?.nombreEntePublico || 'N/A'}</TableCell>
-                        <TableCell>{new Date(item.fecha).toLocaleDateString('es-MX')}</TableCell>
-                        <TableCell>{item.expediente || 'N/A'}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </TableContainer>
-              {pagination[result.providerId] && (
-                <PaginationControls
-                  pagination={pagination[result.providerId]}
-                  onPageChange={newPage => handlePageChange(result.providerId, newPage)}
-                />
-              )}
-            </ProviderAccordion>
-          </Box>
+          <ProviderAccordion
+            key={index}
+            provider={providers.find(p => p.id === result.providerId)}
+            loading={loading}
+            totalRegistros={result.providerData.pagination?.totalItems}
+          >
+            <TableContainer component={Paper} className={classes.tableContainer}>
+              <Table>
+                <TableHead>
+                  <TableRow>
+                    {tipoFalta === 'grave' && <TableCell className={classes.tableHeaderCell}>Nombre</TableCell>}
+                    <TableCell className={classes.tableHeaderCell}>Institución</TableCell>
+                    <TableCell className={classes.tableHeaderCell}>Fecha</TableCell>
+                    <TableCell className={classes.tableHeaderCell}>Expediente</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {result.providerData.data.map((item, i) => (
+                    <TableRow
+                      key={i}
+                      onClick={() => handleRowClick(item)}
+                      className={classes.tableRow}
+                      hover
+                      style={{ cursor: 'pointer' }}
+                    >
+                      {tipoFalta === 'grave' && (
+                        <TableCell>
+                          {`${item.datosGenerales?.nombres || ''} ${item.datosGenerales?.primerApellido || ''} ${item
+                            .datosGenerales?.segundoApellido || ''}`}
+                        </TableCell>
+                      )}
+                      <TableCell>{item.empleoCargoComision?.nombreEntePublico || 'N/A'}</TableCell>
+                      <TableCell>{new Date(item.fecha).toLocaleDateString('es-MX')}</TableCell>
+                      <TableCell>{item.expediente || 'N/A'}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+            {pagination[result.providerId] && (
+              <PaginationControls
+                pagination={pagination[result.providerId]}
+                onPageChange={newPage => handlePageChange(result.providerId, newPage)}
+              />
+            )}
+          </ProviderAccordion>
         ))}
 
         <DetailDialog open={!!selectedRecord} onClose={() => setSelectedRecord(null)} data={selectedRecord} />
-      </>
+      </Box>
     );
   };
 
