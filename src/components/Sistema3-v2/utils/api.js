@@ -29,22 +29,29 @@ export const checkProviderAvailability = async (baseUrl, endpoint, providerId) =
   }
 };
 
-export const searchInProvider = async (baseUrl, endpoint, providerId, queryString) => {
+export const searchInProvider = async (baseUrl, endpoint, providerId, filter, page = 1, limit = 50) => {
   try {
     let searchUrl = `${baseUrl}/api/v1/${endpoint}/${providerId}`;
-    if (queryString) {
-      searchUrl += `?${queryString}`;
+    const params = new URLSearchParams();
+
+    // Solo agregamos el filtro si tiene propiedades
+    if (filter && Object.keys(filter).length > 0) {
+      params.append('filter', JSON.stringify(filter));
     }
 
-    const response = await fetch(searchUrl);
+    params.append('page', page.toString());
+    params.append('limit', limit.toString());
 
-    // Si el proveedor no está disponible o hay un error, retornamos null
+    const finalUrl = `${searchUrl}?${params.toString()}`;
+
+    const response = await fetch(finalUrl);
+
     if (!response.ok) return null;
 
     const providerData = await response.json();
     return { providerId, providerData };
   } catch (error) {
-    // En caso de error, retornamos null en lugar de un objeto con error
+    console.error('Error en searchInProvider:', error);
     return null;
   }
 };

@@ -1,0 +1,56 @@
+import React from 'react';
+import {
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Typography,
+  CircularProgress,
+  Box
+} from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import LightbulbIcon from '@mui/icons-material/Lightbulb';
+
+const ProviderAccordion = ({
+  provider,
+  loading,
+  children,
+  totalRegistros
+}) => {
+  return (
+    <Accordion>
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+        aria-controls={`provider-${provider.id}-content`}
+        id={`provider-${provider.id}-header`}
+      >
+        <Box sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          width: '100%',
+          pr: 2
+        }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+            <LightbulbIcon sx={{ color: '#4fc3f7' }} />
+            <Typography>{provider.name}</Typography>
+          </Box>
+
+          <Box sx={{ display: 'flex', alignItems: 'center', ml: 'auto' }}>
+            {loading ? (
+              <CircularProgress size={20} sx={{ mr: 2 }} />
+            ) : (
+              <Typography>
+                Total de registros: {totalRegistros || 0}
+              </Typography>
+            )}
+          </Box>
+        </Box>
+      </AccordionSummary>
+      <AccordionDetails>
+        {children}
+      </AccordionDetails>
+    </Accordion>
+  );
+};
+
+export default ProviderAccordion;

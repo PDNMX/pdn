@@ -1,6 +1,8 @@
 import React, { useState /* useEffect */ } from 'react';
 import { withStyles } from '@mui/styles';
 import DetailDialog from '../components/DetailDialog';
+import PaginationControls from '../components/PaginationControls';
+import ProviderAccordion from '../components/ProviderAccordion';
 import {
   Grid,
   Typography,
@@ -25,7 +27,14 @@ import {
 } from '@mui/material';
 import PropTypes from 'prop-types';
 import { useSearch } from '../hooks/useSearch';
-import { GOBIERNO_TIPOS, AMBITO_TIPOS, SANCION_GRAVE_LABELS, SANCION_NO_GRAVE_LABELS, FALTA_GRAVE_LABELS, FALTA_NO_GRAVE_LABELS } from '../utils/search';
+import {
+  GOBIERNO_TIPOS,
+  AMBITO_TIPOS,
+  SANCION_GRAVE_LABELS,
+  SANCION_NO_GRAVE_LABELS,
+  FALTA_GRAVE_LABELS,
+  FALTA_NO_GRAVE_LABELS,
+} from '../utils/search';
 import commonStyles from '../commonStyles';
 
 const styles = theme => ({
@@ -48,21 +57,17 @@ const FormServidores = ({ classes, providers }) => {
   const [tipoFalta, setTipoFalta] = useState('grave');
   const [formData, setFormData] = useState(initialFormState);
 
-  const { results, loading, error, performSearch, clearResults } = useSearch('servidores');
+  const { results, loading, error, pagination, performSearch, clearResults } = useSearch();
 
   const renderFaltaSelect = () => (
     <FormControl variant="outlined" className={classes.formControl} size="small" fullWidth>
       <InputLabel>Falta Cometida</InputLabel>
-      <Select
-        name="faltaCometida"
-        value={formData.faltaCometida}
-        onChange={handleInputChange}
-        label="Falta Cometida"
-      >
-        {Object.entries(tipoFalta === 'grave' ? FALTA_GRAVE_LABELS : FALTA_NO_GRAVE_LABELS)
-          .map(([value, label]) => (
-            <MenuItem key={value} value={value}>{label}</MenuItem>
-          ))}
+      <Select name="faltaCometida" value={formData.faltaCometida} onChange={handleInputChange} label="Falta Cometida">
+        {Object.entries(tipoFalta === 'grave' ? FALTA_GRAVE_LABELS : FALTA_NO_GRAVE_LABELS).map(([value, label]) => (
+          <MenuItem key={value} value={value}>
+            {label}
+          </MenuItem>
+        ))}
       </Select>
     </FormControl>
   );
@@ -70,16 +75,14 @@ const FormServidores = ({ classes, providers }) => {
   const renderSancionSelect = () => (
     <FormControl variant="outlined" className={classes.formControl} size="small" fullWidth>
       <InputLabel>Tipo de Sanción</InputLabel>
-      <Select
-        name="tipoSancion"
-        value={formData.tipoSancion}
-        onChange={handleInputChange}
-        label="Tipo de Sanción"
-      >
-        {Object.entries(tipoFalta === 'grave' ? SANCION_GRAVE_LABELS : SANCION_NO_GRAVE_LABELS)
-          .map(([value, label]) => (
-            <MenuItem key={value} value={value}>{label}</MenuItem>
-          ))}
+      <Select name="tipoSancion" value={formData.tipoSancion} onChange={handleInputChange} label="Tipo de Sanción">
+        {Object.entries(tipoFalta === 'grave' ? SANCION_GRAVE_LABELS : SANCION_NO_GRAVE_LABELS).map(
+          ([value, label]) => (
+            <MenuItem key={value} value={value}>
+              {label}
+            </MenuItem>
+          ),
+        )}
       </Select>
     </FormControl>
   );
@@ -134,10 +137,13 @@ const FormServidores = ({ classes, providers }) => {
   };
 
   const handleSearch = () => {
-    const endpoint = tipoFalta === 'grave'
-        ? 'faltas_administrativas_graves'
-        : 'faltas_administrativas_no_graves';
+    const endpoint = tipoFalta === 'grave' ? 'faltas_administrativas_graves' : 'faltas_administrativas_no_graves';
     performSearch(formData, endpoint, providers);
+  };
+
+  const handlePageChange = (providerId, newPage) => {
+    const endpoint = tipoFalta === 'grave' ? 'faltas_administrativas_graves' : 'faltas_administrativas_no_graves';
+    performSearch(formData, endpoint, providers, providerId, newPage);
   };
 
   const handleRowClick = record => {
@@ -151,7 +157,7 @@ const FormServidores = ({ classes, providers }) => {
 
     let totalRegistros = 0;
     results.forEach(result => {
-      totalRegistros += result.providerData.data.length;
+      totalRegistros += result.providerData.pagination.totalItems;
     });
 
     if (totalRegistros === 0) {
@@ -160,44 +166,50 @@ const FormServidores = ({ classes, providers }) => {
 
     return (
       <>
-        <Typography variant="h6" gutterBottom>
+        {/* <Typography variant="h6" gutterBottom>
           Se encontraron {totalRegistros} registro(s)
-        </Typography>
+        </Typography> */}
         {results.map((result, index) => (
-          <TableContainer component={Paper} className={classes.tableContainer} key={index}>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  {tipoFalta === 'grave' && <TableCell className={classes.tableHeaderCell}>Nombre</TableCell>}
-                  <TableCell className={classes.tableHeaderCell}>Institución</TableCell>
-                  <TableCell className={classes.tableHeaderCell}>Fecha</TableCell>
-                  <TableCell className={classes.tableHeaderCell}>Expediente</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {result.providerData.data.map((item, i) => (
-                  <TableRow
-                    key={i}
-                    onClick={() => handleRowClick(item)}
-                    className={classes.tableRow}
-                    hover
-                    style={{ cursor: 'pointer' }}
-                  >
-                    {tipoFalta === 'grave' && (
-                      <TableCell>
-                        {`${item.datosGenerales?.nombres || ''} ${item.datosGenerales?.primerApellido || ''} ${item
-                          .datosGenerales?.segundoApellido || ''}`}
-                      </TableCell>
-                    )}
-
-                    <TableCell>{item.empleoCargoComision?.nombreEntePublico || 'N/A'}</TableCell>
-                    <TableCell>{new Date(item.fecha).toLocaleDateString('es-MX')}</TableCell>
-                    <TableCell>{item.expediente || 'N/A'}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
+          <Box key={index} sx={{ mb: 4 }}>
+            <ProviderAccordion
+              key={index}
+              provider={providers.find(p => p.id === result.providerId)}
+              loading={loading}
+              totalRegistros={result.providerData.pagination?.totalItems}
+            >
+              <TableContainer component={Paper} className={classes.tableContainer}>
+                <Table>
+                  <TableBody>
+                    {result.providerData.data.map((item, i) => (
+                      <TableRow
+                        key={i}
+                        onClick={() => handleRowClick(item)}
+                        className={classes.tableRow}
+                        hover
+                        style={{ cursor: 'pointer' }}
+                      >
+                        {tipoFalta === 'grave' && (
+                          <TableCell>
+                            {`${item.datosGenerales?.nombres || ''} ${item.datosGenerales?.primerApellido || ''} ${item
+                              .datosGenerales?.segundoApellido || ''}`}
+                          </TableCell>
+                        )}
+                        <TableCell>{item.empleoCargoComision?.nombreEntePublico || 'N/A'}</TableCell>
+                        <TableCell>{new Date(item.fecha).toLocaleDateString('es-MX')}</TableCell>
+                        <TableCell>{item.expediente || 'N/A'}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+              {pagination[result.providerId] && (
+                <PaginationControls
+                  pagination={pagination[result.providerId]}
+                  onPageChange={newPage => handlePageChange(result.providerId, newPage)}
+                />
+              )}
+            </ProviderAccordion>
+          </Box>
         ))}
 
         <DetailDialog open={!!selectedRecord} onClose={() => setSelectedRecord(null)} data={selectedRecord} />

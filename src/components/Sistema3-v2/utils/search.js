@@ -246,7 +246,7 @@ export const buildSearchQuery = (formData) => {
       };
     }
 
-    // Falta cometida (antes tipoFalta)
+    // Falta cometida
     if (isValidValue(formData.faltaCometida)) {
       filter.faltaCometida = {
         clave: {
@@ -265,9 +265,8 @@ export const buildSearchQuery = (formData) => {
     }
   }
 
-  return Object.keys(filter).length > 0
-    ? `filter=${encodeURIComponent(JSON.stringify(filter))}`
-    : '';
+  // Retornamos el objeto completo
+  return filter;
 };
 
 // Helper para combinar múltiples filtros

@@ -35,7 +35,7 @@ const DetailDialogParticulares = ({ open, onClose, data, tipoPersona, classes })
   };
 
   return (
-    <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>
+    <Dialog open={open} onClose={onClose} maxWidth="lg" fullWidth>
       <DialogTitle className={classes.dialogTitle}>
         Detalles del Registro
         <IconButton className={classes.closeButton} onClick={onClose}>

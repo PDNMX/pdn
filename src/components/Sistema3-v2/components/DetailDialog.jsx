@@ -6,6 +6,7 @@ import {
   Typography,
   Grid,
   IconButton,
+  Link,
   Box
 } from '@mui/material';
 import { Close } from '@mui/icons-material';
@@ -23,7 +24,8 @@ const styles = theme => ({
     top: theme.spacing(1),
   },
   section: {
-    marginBottom: theme.spacing(3),
+    marginBottom: theme.spacing(2),
+    marginTop: theme.spacing(2),
   },
   sectionTitle: {
     color: theme.palette.primary.main,
@@ -57,9 +59,9 @@ const DetailDialog = ({ open, onClose, data, classes }) => {
   };
 
   return (
-    <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>
+    <Dialog open={open} onClose={onClose} maxWidth="lg" fullWidth>
       <DialogTitle className={classes.dialogTitle}>
-        Detalles del Registro
+        <strong>Detalles del Registro</strong>
         <IconButton className={classes.closeButton} onClick={onClose}>
           <Close />
         </IconButton>
@@ -110,9 +112,9 @@ const DetailDialog = ({ open, onClose, data, classes }) => {
                 <Typography className={classes.label}>URL de Resolución:</Typography>
               </Grid>
               <Grid item xs={12} sm={8}>
-                <a href={data.resolucion.urlResolucion} target="_blank" rel="noopener noreferrer">
+                <Link variant="body1" href={data.resolucion.urlResolucion} underline="hover" target="_blank" rel="noopener noreferrer">
                   Ver resolución
-                </a>
+                </Link>
               </Grid>
             </Grid>
           )}

@@ -6,13 +6,15 @@ export const useSearch = () => {
   const [results, setResults] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [pagination, setPagination] = useState({});
 
   const clearResults = () => {
     setResults(null);
     setError(null);
+    setPagination({});
   };
 
-  const performSearch = async (formData, endpoint, providers) => {
+  const performSearch = async (formData, endpoint, providers, providerId = null, page = 1, limit = 50) => {
     if (!providers || !Array.isArray(providers)) {
       setError('No hay proveedores disponibles');
       return;
@@ -20,35 +22,50 @@ export const useSearch = () => {
 
     setLoading(true);
     setError(null);
-    setResults(null);
 
     try {
       const baseUrl = process.env.REACT_APP_S3_V2_BACKEND;
-      const queryString = buildSearchQuery(formData);
+      const filter = buildSearchQuery(formData);
 
-      const searchResults = await Promise.all(
-        providers.map(provider =>
-          searchInProvider(baseUrl, endpoint, provider.id, queryString)
-        )
-      );
+      console.log('Filtro construido:', filter); // Para debug
 
-      const validResults = searchResults.filter(result =>
-        result &&
-        !result.error &&
-        result.providerData &&
-        result.providerData.data
-      );
+      if (providerId) {
+        const result = await searchInProvider(baseUrl, endpoint, providerId, filter, page, limit);
 
-      setResults(validResults);
+        if (result) {
+          setResults(prevResults => {
+            const updatedResults = prevResults.map(prevResult =>
+              prevResult.providerId === providerId ? result : prevResult
+            );
+            return updatedResults;
+          });
 
-      const errors = searchResults
-        .filter(result => result?.error)
-        .map(result => `${result.providerId}: ${result.error}`);
+          setPagination(prev => ({
+            ...prev,
+            [providerId]: result.providerData.pagination
+          }));
+        }
+      } else {
+        const searchResults = await Promise.all(
+          providers.map(provider =>
+            searchInProvider(baseUrl, endpoint, provider.id, filter, page, limit)
+          )
+        );
 
-      if (errors.length) {
-        setError(`Errores en algunos proveedores: ${errors.join('; ')}`);
+        const validResults = searchResults.filter(result =>
+          result && !result.error && result.providerData && result.providerData.data
+        );
+
+        setResults(validResults);
+
+        const newPagination = {};
+        validResults.forEach(result => {
+          newPagination[result.providerId] = result.providerData.pagination;
+        });
+        setPagination(newPagination);
       }
     } catch (err) {
+      console.error('Error en performSearch:', err);
       setError('Error al realizar la búsqueda: ' + err.message);
     } finally {
       setLoading(false);
@@ -59,6 +76,7 @@ export const useSearch = () => {
     results,
     loading,
     error,
+    pagination,
     performSearch,
     clearResults
   };

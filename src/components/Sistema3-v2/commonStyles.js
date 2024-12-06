@@ -101,7 +101,8 @@ const commonStyles = theme => ({
       top: theme.spacing(1),
     },
     dialogSection: {
-      marginBottom: theme.spacing(3),
+      marginBottom: theme.spacing(2),
+      marginTop: theme.spacing(2),
     },
     dialogSectionTitle: {
       color: theme.palette.primary.main,
