@@ -2,6 +2,8 @@ import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, P
 import makeStyles from '@mui/styles/makeStyles'
 import { Link as RouterLink } from 'react-router-dom'
 import ButtonPDN from '../Compartidos/ButtonPDN'
+const avisoIntegral = 'https://drive.google.com/file/d/1Yotqc3mlHZn56-B8FO6MFMfYVf9x4RZS/view?usp=drive_link';
+const avisoSimplificado = 'https://drive.google.com/file/d/1agSv598orLnyRfQmXQthSplWwoXWwDmL/view?usp=drive_link';
 
 import styles from '../style'
 const useStyles = makeStyles(styles)
@@ -32,6 +34,16 @@ export default function Disclaimer(props) {
           <DialogContentText paragraph id='alert-dialog-description' style={{ textAlign: 'justify' }} className={classes.text_color}>
             <Link to='/terminos' className={classes.enlaces}>
               Conoce los términos y condiciones de uso
+            </Link>
+          </DialogContentText>
+          <DialogContentText paragraph id='alert-dialog-description' style={{ textAlign: 'justify' }} className={classes.text_color}>
+            Conoce nuestros Avisos de Privacidad:{' '}
+            <Link href={avisoSimplificado} target='_blank' underline='none' className={classes.enlaces}>
+              Simplificado
+            </Link>{' '}
+            e{' '}
+            <Link href={avisoIntegral} target='_blank' underline='none' className={classes.enlaces}>
+              Integral
             </Link>
           </DialogContentText>
         </DialogContent>
