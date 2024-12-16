@@ -17,6 +17,8 @@ import LoginIcon from '../../assets/rediseno/ico_login.svg'
 import legislacion_icono from '../../assets/rediseno2023/imgs/iconos/menu/ico_sistemas123.svg'
 import icon_cobertura from '../../assets/rediseno2023/imgs/iconos/menu/ico_cobertura.svg'
 import mapa_s2s3_icono from '../../assets/rediseno2023/imgs/iconos/menu/ico_legislacion.svg'
+import tablero_interconexion from '../../assets/rediseno2023/imgs/iconos/menu/ico_tablero.svg';
+
 import ReactGA from 'react-ga4'
 import { UserContext } from '../Login/UserContext'
 
@@ -183,6 +185,13 @@ const BannerMobile = props => {
 
             <Collapse in={dropDownInterconexion} timeout='auto' unmountOnExit>
               <List dense component='div'>
+              <ListItemButton
+                  href='https://cobertura.plataformadigitalnacional.org' key='tablero'
+                  className={classes.nested} onClick={() => ReactGA.pageview('/tablero-cobertura')}
+                >
+                  <img src={tablero_interconexion} alt='Tablero' className={classes.iconSistemas} />
+                  <Typography color='#4a2f4b'>Tablero Estadístico de Interconexión Nacional</Typography>
+                </ListItemButton>
                 <ListItemButton
                   href='/mapa-sla/' key='legislacion'
                   className={classes.nested} onClick={() => ReactGA.pageview('/mapa-sla')}
