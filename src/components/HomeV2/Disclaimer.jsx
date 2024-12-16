@@ -1,117 +1,124 @@
-import { useState, useEffect } from 'react';
-/* import Button from '@mui/material/Button'; */
-import Dialog from '@mui/material/Dialog'
-import DialogActions from '@mui/material/DialogActions'
-import DialogContent from '@mui/material/DialogContent'
-import DialogTitle from '@mui/material/DialogTitle'
-import withStyles from '@mui/styles/withStyles'
-import { Link as RouterLink } from 'react-router-dom'
-import Link from '@mui/material/Link'
-import Paper from '@mui/material/Paper'
-import { Typography } from '@mui/material'
-import ButtonPDN from '../Compartidos/ButtonPDN'
+import { useState } from 'react';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import { Typography, Link, List, ListItem, Box, Button, Paper, ListItemText } from '@mui/material';
+import { styled } from '@mui/system';
+import { Link as RouterLink } from 'react-router-dom';
 
-const styles = theme => ({
-  ul: {
-    listStyle: 'none',
-    paddingLeft: '20px',
-    color: theme.palette.text.primary
+const StyledDialog = styled(Dialog)(({ theme }) => ({
+  '& .MuiDialog-paper': {
+    borderRadius: theme.shape.borderRadius,
+    width: '100%',
+    maxWidth: 'sm',
+    padding: theme.spacing(1.5),
   },
-  li: {
-    '&:before': {
-      content: '"•"',
-      color: '#713972',
-      fontWeight: 'bold',
-      display: 'inline-block',
-      width: '1em',
-      marginLeft: '-1em'
-    }
+}));
+
+const Highlight = styled('span')(({ theme }) => ({
+  color: theme.palette.primary.main,
+  fontWeight: 'bold',
+}));
+
+const StyledList = styled(List)(({ theme }) => ({
+  paddingLeft: theme.spacing(2),
+  '& .MuiListItem-root': {
+    padding: theme.spacing(0.5, 0),
   },
-  paper: {
-    padding: theme.spacing(2),
-    [theme.breakpoints.down('md')]: {
-      padding: theme.spacing(0)
-    }
-  }
-})
+  '& .MuiListItemText-primary': {
+    fontSize: '0.95rem',
+    color: theme.palette.text.primary,
+  },
+}));
 
-const AlertDialog = (props) => {
-const { classes } = props
-  const disclaimerIndex = localStorage.getItem('disclaimerIndex');
-
-  const [open, setOpen] = useState(!disclaimerIndex);
+const AlertDialog = () => {
+  const [open, setOpen] = useState(true);
 
   const handleClose = () => {
-    localStorage.setItem('disclaimerIndex', 'false');
     setOpen(false);
   };
 
-  useEffect(() => {
-    const hasAcceptedDialog = localStorage.getItem('disclaimerIndex');
-
-    if (!hasAcceptedDialog) {
-      setOpen(true);
-    }
-  }, []);
-
   return (
-    <div>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby='alert-dialog-title'
-        aria-describedby='alert-dialog-description'
-      >
-        <Paper style={{ margin: 0, borderRadius: 0 }}>
-          <DialogTitle id='alert-dialog-title'>Plataforma Digital Nacional</DialogTitle>
-          <DialogContent>
-
-            <Typography paragraph align='justify'>
-              Esta es la versión 1.1 de la PDN, la cual contiene:
-            </Typography>
-
-            <ul className={classes.ul}>
-              <li className={classes.li}>
-                <Typography className={classes.text_color} display='inline'>
-                  Datos en los Sistemas: 1, 2, 3, y 6.
-                </Typography>
-              </li>
-              <li className={classes.li}>
-                <Typography className={classes.text_color} display='inline'>
-                  Nuevas secciones y funcionalidades.
-                </Typography>
-              </li>
-              <li className={classes.li}>
-                <Typography className={classes.text_color} display='inline'>
-                  Nueva imagen.
-                </Typography>
-              </li>
-              <li className={classes.li}>
-                <Typography className={classes.text_color} display='inline'>
-                  La PDN se construye de manera modular y escalable, por lo que esta versión NO debe ser vista como la última.
-                </Typography>
-              </li>
-            </ul>
-
-            <Typography paragraph align='justify'>
-              Las y los usuarios de la PDN deberán privilegiar los intereses de las personas titulares de los datos personales contenidos en los sistemas. El tratamiento de los datos no debe utilizarse para ejercer algún  tipo de discriminación, trato injusto, arbitrario o contrario a lo establecido en la Ley General de Protección de Datos Personales en Posesión de Sujetos Obligados.
-            </Typography>
-
-            <Typography paragraph align='justify'>
-              Te invitamos a revisar los <Link component={RouterLink} to='/terminos' className={classes.enlaces}>&quot;Términos y Condiciones de Uso&quot;</Link> y el <Link href='https://drive.google.com/file/d/18Y_bcTXFqwIX0j96efeLchUIBsUFfmZr/view' target='_blank' className={classes.enlaces} rel='noreferrer'>&quot;Aviso de Privacidad&quot;</Link>, así como a dejar tus comentarios sobre las funcionalidades y experiencia de usuario en la sección de <Link href={process.env.REACT_APP_LINK_GOOGLEFORM} target='_blank' className={classes.enlaces} rel='noreferrer'>&quot;Comenta&quot;</Link>.
-            </Typography>
-
-          </DialogContent>
-          <DialogActions>
-            <ButtonPDN onClick={handleClose}>
+    <StyledDialog open={open} onClose={handleClose} aria-labelledby="dialog-title">
+      <Paper>
+        <DialogTitle id="dialog-title">
+          <Typography variant="h5" component="div" textAlign="center">
+            <Highlight>La Plataforma Digital Nacional evoluciona de manera continua.</Highlight>
+          </Typography>
+        </DialogTitle>
+        <DialogContent>
+          <Typography>
+            <Highlight>Esta versión 1.2 incluye:</Highlight>
+          </Typography>
+          <StyledList>
+          <List sx={{ listStyleType: 'disc', pl: 3}}>
+            <ListItemText sx={{ display: 'list-item' }}>
+              Más datos disponibles: ampliación en la cantidad y calidad de los datos en los Sistemas 1, 2, 3 y 6.
+            </ListItemText>
+            <ListItemText sx={{ display: 'list-item' }}>
+              Nuevas secciones y funcionalidades: herramientas mejoradas para consulta y análisis.
+            </ListItemText>
+            <ListItemText sx={{ display: 'list-item' }}>
+              Tablero Estadístico de Interconexión Nacional: visualiza en tiempo real el avance de los Entes Públicos en la conexión con los sistemas de la PDN.
+            </ListItemText>
+            <ListItemText sx={{ display: 'list-item' }}>
+              Mejor experiencia de usuario: una interfaz más intuitiva y accesible diseñada para facilitar la navegación y el aprovechamiento de la plataforma.
+            </ListItemText>
+            <ListItemText sx={{ display: 'list-item' }}>
+              Nueva imagen: una paleta de colores renovada que mejora la claridad visual, haciendo que la interacción sea más amigable y moderna.
+            </ListItemText>
+          </List>
+          </StyledList>
+          <Typography paragraph>
+          <Highlight>Recuerda:</Highlight> la PDN es modular y escalable; esta versión es un paso más en su constante desarrollo y no debe considerarse como definitiva.
+          </Typography>
+          {/* <Typography>
+            <Highlight>Compromiso con la protección de datos personales</Highlight>
+          </Typography> */}
+          <Typography paragraph>
+            El uso de la PDN debe privilegiar los intereses de las personas titulares de los datos personales. Está <Highlight>prohibido el tratamiento de los datos</Highlight> para actos de discriminación, trato injusto, arbitrario o cualquier uso contrario a lo establecido en la{' '}
+            <Highlight href="https://example.com" target="_blank" rel="noopener noreferrer">
+              Ley General de Protección de Datos Personales en Posesión de Sujetos Obligados
+            </Highlight>.
+          </Typography>
+          {/* <Typography>
+            <Highlight>Conoce más y participa</Highlight>
+          </Typography> */}
+          <Typography paragraph>
+            Consulta los{' '}
+            <Link component={RouterLink} to="/terminos">
+              Términos y Condiciones de Uso
+            </Link>{' '}
+            y el{' '}
+            <Link href="https://drive.google.com/file/d/18Y_bcTXFqwIX0j96efeLchUIBsUFfmZr/view" target="_blank" rel="noopener noreferrer">
+              Aviso de Privacidad
+            </Link>{' '}
+            para comprender los lineamientos bajo los cuales se protege tu información.
+          </Typography>
+          <Typography paragraph>
+            Comparte tus comentarios y sugerencias sobre las funcionalidades o tu experiencia de usuario a través de la liga{' '}
+            <Link href={process.env.REACT_APP_LINK_GOOGLEFORM} target="_blank" rel="noopener noreferrer">
+              Comenta
+            </Link>.
+          </Typography>
+          {/* <Typography>
+            <Highlight>Aporta al desarrollo de la PDN</Highlight>
+          </Typography> */}
+          {/* <Typography>
+            Tu retroalimentación es clave para seguir construyendo una herramienta que responda a las necesidades de las personas usuarias. Además, si detectas áreas de mejora, errores o tienes ideas innovadoras, ¡no dudes en hacérnoslas saber!
+          </Typography> */}
+        </DialogContent>
+        <DialogActions>
+          <Box>
+            <Button variant="contained" color="primary" onClick={handleClose}>
               Aceptar
-            </ButtonPDN>
-          </DialogActions>
-        </Paper>
-      </Dialog>
-    </div>
+            </Button>
+          </Box>
+        </DialogActions>
+      </Paper>
+    </StyledDialog>
   );
 };
 
-export default withStyles(styles)(AlertDialog)
-
+export default AlertDialog;

@@ -22,7 +22,7 @@ function Version (props) {
   return (
     <>
       <div className={classes.root}>
-        <Typography display='inline'><b>Versión 1.1</b>&nbsp;&nbsp;</Typography>
+        <Typography display='inline'><b>Versión 1.2</b>&nbsp;&nbsp;</Typography>
       </div>
       {user.loggedIn &&
         <div className={classes.bienvenida}>
