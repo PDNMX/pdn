@@ -419,7 +419,7 @@ const CssDeclaraciones = theme => ({
     borderStyle: 'solid',
     borderWidth: 1,
     borderColor: theme.palette.background.border,
-    borderRadius: '0px 10px 10px 10px'
+    borderRadius: '10px 10px 10px 10px'
   },
   paper_disclaimer: {
     padding: theme.spacing(2),

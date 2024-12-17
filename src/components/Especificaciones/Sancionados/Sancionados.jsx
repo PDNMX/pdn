@@ -55,7 +55,6 @@ const styles = (theme) => ({
   },
   root: {
     flexGrow: 1,
-    paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(2),
   },
   rootItem: {

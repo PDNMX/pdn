@@ -22,7 +22,7 @@ class Declaraciones extends React.Component {
 
     return (
       <>
-        <Grid container spacing={0} justifyContent='center' className={classes.container}>
+        <Grid container spacing={0} justifyContent='center'>
           <Grid item xs={12}>
             <HeaderV2 section={section} />
           </Grid>

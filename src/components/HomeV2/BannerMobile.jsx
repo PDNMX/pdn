@@ -211,7 +211,6 @@ const BannerMobile = props => {
                   <img src={icon_cobertura} alt='' className={classes.iconSistemas} />
                   <Typography color='#4a2f4b'>Cobertura</Typography>
                 </ListItemButton>
-
               </List>
             </Collapse>
 
