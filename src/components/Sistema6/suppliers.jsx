@@ -1,33 +1,69 @@
 const data = [
   {
-    id: 'SHCP',
-    name: 'Secretaría de Hacienda y Crédito Público',
-    disclaimer: '',
-    download_url: ''
+    "id": "SHCP",
+    "name": "Secretaría de Hacienda y Crédito Público",
+    "disclaimer": "",
+    "download_url": ""
   },
   {
-    id: 'SESEA_AGS',
-    name: 'Secretaría Ejecutiva del Sistema Estatal Anticorrupción de Aguascalientes',
-    disclaimer: '',
-    download_url: ''
+    "id": "SESEA_AGS",
+    "name": "Secretaría Ejecutiva del Sistema Estatal Anticorrupción de Aguascalientes",
+    "disclaimer": "",
+    "download_url": ""
   },
   {
-    id: 'SESAEMM_EDOMEX',
-    name: 'Secretaría Ejecutiva del Sistema Estatal Anticorrupción del Estado de México y Municipios',
-    disclaimer: '',
-    download_url: ''
+    "id": "SESAEMM_EDOMEX",
+    "name": "Secretaría Ejecutiva del Sistema Estatal Anticorrupción del Estado de México y Municipios",
+    "disclaimer": "",
+    "download_url": ""
   },
   {
-    id: 'SESAE_QROO',
-    name: 'Secretaría Ejecutiva del Sistema Anticorrupción del Estado de Quintana Roo',
-    disclaimer: '',
-    download_url: ''
+    "id": "SESAE_QROO",
+    "name": "Secretaría Ejecutiva del Sistema Anticorrupción del Estado de Quintana Roo",
+    "disclaimer": "",
+    "download_url": ""
   },
   {
-    id: 'SESEA_VER',
-    name: 'Secretaría Ejecutiva del Sistema Estatal Anticorrupción de Veracruz de Ignacio de la Llave',
-    disclaimer: '',
-    download_url: ''
+    "id": "SESEA_VER",
+    "name": "Secretaría Ejecutiva del Sistema Estatal Anticorrupción de Veracruz de Ignacio de la Llave",
+    "disclaimer": "",
+    "download_url": ""
+  },
+    {
+    "id": "SESEA_MCH",
+    "name": "Secretaría Ejecutiva del Sistema Estatal Anticorrupción del Estado de Michoacán",
+    "disclaimer": "",
+    "download_url": ""
+  },
+    {
+    "id": "SESAE_PUE",
+    "name": "Secretaría Ejecutiva del Sistema Anticorrupción del Estado de Puebla",
+    "disclaimer": "",
+    "download_url": ""
+  },
+  {
+    "id": "SESAE_BCS",
+    "name": "Secretaría Ejecutiva del Sistema Estatal Anticorrupción de Baja California Sur",
+    "disclaimer": "",
+    "download_url": ""
+  },
+    {
+    "id": "SESAE_MOR",
+    "name": "Secretaría Ejecutiva del Sistema Anticorrupción del Estado de Morelos",
+    "disclaimer": "",
+    "download_url": ""
+  },
+    {
+    "id": "SESAE_CHIH",
+    "name": "Secretaría Ejecutiva del Sistema Estatal Anticorrupción de Chihuahua",
+    "disclaimer": "",
+    "download_url": ""
+  },
+    {
+    "id": "SESAE_JAL",
+    "name": "Secretaría Ejecutiva del Sistema Estatal Anticorrupción del Estado de Jalisco",
+    "disclaimer": "",
+    "download_url": ""
   }
 ]
 

@@ -117,7 +117,7 @@ const Index = props => {
                 <img src={img1} alt='Servidores que intervinen en procesos de contratacion' className={classes.logo}/>
                 <Typography variant='subtitle1' className={classes.labelCard}
                 >
-                  Buscador de personas servidoras públicsa que intervienen en contrataciones
+                  Buscador de personas servidoras públicas que intervienen en contrataciones
                 </Typography>
               </figure>
             </Grid>
