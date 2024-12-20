@@ -15,7 +15,7 @@ import Autocomplete from '@mui/material/Autocomplete'
 import CircularProgress from '@mui/material/CircularProgress'
 import axios from 'axios'
 
-import dataSuppliers from '../../../Sistema6/suppliers.json'
+import dataSuppliers from '../../../Sistema6/suppliers'
 
 const KEY = 'pdn.camposBusqueda'
 

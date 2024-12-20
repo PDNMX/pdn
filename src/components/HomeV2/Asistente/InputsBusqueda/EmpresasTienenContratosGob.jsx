@@ -12,7 +12,7 @@ import ThemeV2 from '../../../../ThemeV2'
 import Fade from '@mui/material/Fade'
 // const dataSuppliers = require("../../../Sistema6/suppliers.json");
 
-import dataSuppliers from '../../../Sistema6/suppliers.json'
+import dataSuppliers from '../../../Sistema6/suppliers'
 
 export function EmpresasTienenContratosGob () {
   const { control } = useFormContext()
