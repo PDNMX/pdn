@@ -11,18 +11,23 @@ Enzyme.configure({ adapter: new Adapter() });
 const info = readFiles();
 
 describe.each(info)('file $name', ({ data }) => {
-  describe.each(data)('09ServidorAnioAnterior id:$id nombre:$declaracion.situacionPatrimonial.datosGenerales.nombre|$declaracion.situacionPatrimonial.datosGenerales.primerApellido|$declaracion.situacionPatrimonial.datosGenerales.segundoApellido', ({ id, metadata, declaracion }) => {
+  describe.each(data)('09ServidorAnioAnterior id:$id tipo:$metadata.tipo nombre:$declaracion.situacionPatrimonial.datosGenerales.nombre|$declaracion.situacionPatrimonial.datosGenerales.primerApellido|$declaracion.situacionPatrimonial.datosGenerales.segundoApellido', ({ id, metadata, declaracion }) => {
+
     const { actividadAnualAnterior } = declaracion.situacionPatrimonial;
+
     switch (metadata.tipo) {
       case 'INICIAL':
-        test('09ServidorAnioAnterior Inicial', () => {
+        test('09ServidorAnioAnterior Inicial $metadata.tipo', () => {
           const wrapper = mount(<ServidorAnioAnterior data={actividadAnualAnterior} />);
 
           expect(wrapper.length).toBe(1);
         });
         break;
       case 'MODIFICACIÓN':
-        expect(metadata.tipo).toEqual('MODIFICACIÓN');
+        test('es de tipo modificación', () => {
+          expect(metadata.tipo).toEqual('MODIFICACIÓN');
+        })
+
         break;
       case 'CONCLUSIÓN':
         test('09ServidorAnioAnterior Conclusión', () => {
@@ -33,8 +38,10 @@ describe.each(info)('file $name', ({ data }) => {
         break;
 
       default:
-        expect(metadata.tipo).toEqual('otro');
-        console.log(metadata.tipo);
+        test('no debe ser de este tipo', () => {
+          expect(metadata.tipo).toEqual('otro');
+          console.log(metadata.tipo);
+        })
         break;
     }
   });
