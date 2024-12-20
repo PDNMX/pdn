@@ -102,7 +102,7 @@ const ProtocoloConexion = (props) => {
             : Para aquellas instituciones que elijan establecer una conexión
             directa a las APIs.
             <MuiLink
-              href="https://drive.google.com/file/d/1AtfiuNNYFHLIsiSgdUuu-r2ZBoUgypVo/view?usp=sharing"
+              href="https://drive.google.com/file/d/11IgN0xD7eL7e518XQY_oS5h0SFS8k88r/view?usp=sharing"
               target="_blank"
               rel="noopener"
               underline="hover"
