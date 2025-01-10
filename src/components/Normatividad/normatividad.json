@@ -42,6 +42,11 @@
         "estatus": "activo",
         "vinculo": [
           {
+            "titulo": "Acuerdo emisión Formatos Sistema 1",
+            "icono": "icon_norma",
+            "url": "https://www.dof.gob.mx/nota_detalle.php?codigo=5573194&fecha=23/09/2019#gsc.tab=0"
+          },
+          {
             "titulo": "Lineamientos",
             "icono": "icon_norma",
             "url": "https://dof.gob.mx/nota_to_doc.php?codnota=5718117"
