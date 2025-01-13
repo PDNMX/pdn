@@ -185,13 +185,7 @@ const BannerMobile = props => {
 
             <Collapse in={dropDownInterconexion} timeout='auto' unmountOnExit>
               <List dense component='div'>
-              <ListItemButton
-                  href='https://cobertura.plataformadigitalnacional.org' key='tablero'
-                  className={classes.nested} onClick={() => ReactGA.pageview('/tablero-cobertura')}
-                >
-                  <img src={tablero_interconexion} alt='Tablero' className={classes.iconSistemas} />
-                  <Typography color='#4a2f4b'>Tablero Estadístico de Interconexión Nacional</Typography>
-                </ListItemButton>
+              
                 <ListItemButton
                   href='/mapa-sla/' key='legislacion'
                   className={classes.nested} onClick={() => ReactGA.pageview('/mapa-sla')}
@@ -210,6 +204,13 @@ const BannerMobile = props => {
                 <ListItemButton component={RouterLink} to='/cobertura' key='cobertura' className={classes.nested}>
                   <img src={icon_cobertura} alt='' className={classes.iconSistemas} />
                   <Typography color='#4a2f4b'>Cobertura</Typography>
+                </ListItemButton>
+                <ListItemButton
+                  href='https://cobertura.plataformadigitalnacional.org' key='tablero'
+                  className={classes.nested} onClick={() => ReactGA.pageview('/tablero-cobertura')}
+                >
+                  <img src={tablero_interconexion} alt='Tablero' className={classes.iconSistemas} />
+                  <Typography color='#4a2f4b'>Tablero Estadístico de Interconexión Nacional</Typography>
                 </ListItemButton>
               </List>
             </Collapse>

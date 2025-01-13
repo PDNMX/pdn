@@ -88,21 +88,7 @@ const InterconexionMenu = props => {
         justifyContent: 'center',
       }}
     >
-      <Link className={classes.link} href="https://cobertura.plataformadigitalnacional.org" onClick={() => ReactGA.pageview('/tablero-cobertura')}>
-        <Box
-          className={`${classes.item}`}
-          sx={{
-            m: 1,
-            p: 2,
-            color: '#c0c0c0'
-          }}
-        >
-          <div className={`${classes.opc} `}>
-            <img src={tablero_interconexion} alt="Tablero" className={classes.icon} />
-            <Typography color="#3a1c3a">Tablero Estadístico de Interconexión Nacional</Typography>
-          </div>
-        </Box>
-      </Link>
+
 
       <Link className={classes.link} href="/mapa-sla/" onClick={() => ReactGA.pageview('/mapa-sla')}>
         <Box
@@ -148,6 +134,22 @@ const InterconexionMenu = props => {
           <div className={`${classes.opc} `}>
             <img src={icon_cobertura} alt="Cobertura" className={classes.icon} />
             <Typography color="#3a1c3a">Cobertura</Typography>
+          </div>
+        </Box>
+      </Link>
+
+      <Link className={classes.link} href="https://cobertura.plataformadigitalnacional.org" onClick={() => ReactGA.pageview('/tablero-cobertura')}>
+        <Box
+          className={`${classes.item}`}
+          sx={{
+            m: 1,
+            p: 2,
+            color: '#c0c0c0'
+          }}
+        >
+          <div className={`${classes.opc} `}>
+            <img src={tablero_interconexion} alt="Tablero" className={classes.icon} />
+            <Typography color="#3a1c3a">Tablero Estadístico de Interconexión Nacional</Typography>
           </div>
         </Box>
       </Link>
