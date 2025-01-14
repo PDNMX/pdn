@@ -122,7 +122,7 @@ const Index = props => {
               </figure>
             </Grid>
 
-            <Grid item md={4} xs={12}
+            {/* <Grid item md={4} xs={12}
               style={{ display: 'flex', alignItems: 'stretch' }}
               onClick={() => handleContentId(2)}>
 
@@ -133,7 +133,7 @@ const Index = props => {
                   Buscador de particulares inhabilitados
                 </Typography>
               </figure>
-            </Grid>
+            </Grid> */}
 
             <Grid item md={4} xs={12}
               style={{ display: 'flex', alignItems: 'stretch' }}
