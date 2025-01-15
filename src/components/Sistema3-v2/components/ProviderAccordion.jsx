@@ -47,7 +47,19 @@ const ProviderAccordion = ({
         </Box>
       </AccordionSummary>
       <AccordionDetails>
-        {children}
+        {loading ? (
+          <Box display="flex" justifyContent="center" p={2}>
+            <CircularProgress />
+          </Box>
+        ) : totalRegistros === 0 ? (
+          <Box p={2} textAlign="center">
+            <Typography color="textSecondary">
+              No se encontraron registros para este proveedor
+            </Typography>
+          </Box>
+        ) : (
+          children
+        )}
       </AccordionDetails>
     </Accordion>
   );

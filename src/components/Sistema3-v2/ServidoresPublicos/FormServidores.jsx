@@ -34,6 +34,7 @@ import {
   SANCION_NO_GRAVE_LABELS,
   FALTA_GRAVE_LABELS,
   FALTA_NO_GRAVE_LABELS,
+  ENTIDADES_FEDERATIVAS,
 } from '../utils/search';
 import commonStyles from '../commonStyles';
 
@@ -51,6 +52,7 @@ const FormServidores = ({ classes, providers }) => {
     ambito: '',
     faltaCometida: '',
     tipoSancion: '',
+    entidadFederativa: '',
   };
 
   const [selectedRecord, setSelectedRecord] = useState(null);
@@ -61,8 +63,26 @@ const FormServidores = ({ classes, providers }) => {
 
   const renderFaltaSelect = () => (
     <FormControl variant="outlined" className={classes.formControl} size="small" fullWidth>
-      <InputLabel>Falta Cometida</InputLabel>
-      <Select name="faltaCometida" value={formData.faltaCometida} onChange={handleInputChange} label="Falta Cometida">
+      <InputLabel shrink id="falta-cometida-label">
+        Falta Cometida
+      </InputLabel>
+      <Select
+        labelId="falta-cometida-label"
+        name="faltaCometida"
+        value={formData.faltaCometida}
+        onChange={handleInputChange}
+        label="Falta Cometida"
+        displayEmpty
+        notched
+        sx={{
+          '& .MuiSelect-select': {
+            backgroundColor: 'transparent',
+          },
+        }}
+      >
+        <MenuItem value="">
+          <em>Todas</em>
+        </MenuItem>
         {Object.entries(tipoFalta === 'grave' ? FALTA_GRAVE_LABELS : FALTA_NO_GRAVE_LABELS).map(([value, label]) => (
           <MenuItem key={value} value={value}>
             {label}
@@ -74,8 +94,26 @@ const FormServidores = ({ classes, providers }) => {
 
   const renderSancionSelect = () => (
     <FormControl variant="outlined" className={classes.formControl} size="small" fullWidth>
-      <InputLabel>Tipo de Sanción</InputLabel>
-      <Select name="tipoSancion" value={formData.tipoSancion} onChange={handleInputChange} label="Tipo de Sanción">
+      <InputLabel shrink id="tipo-sancion-label">
+        Tipo de Sanción
+      </InputLabel>
+      <Select
+        labelId="tipo-sancion-label"
+        name="tipoSancion"
+        value={formData.tipoSancion}
+        onChange={handleInputChange}
+        label="Tipo de Sanción"
+        displayEmpty
+        notched
+        sx={{
+          '& .MuiSelect-select': {
+            backgroundColor: 'transparent',
+          },
+        }}
+      >
+        <MenuItem value="">
+          <em>Todas</em>
+        </MenuItem>
         {Object.entries(tipoFalta === 'grave' ? SANCION_GRAVE_LABELS : SANCION_NO_GRAVE_LABELS).map(
           ([value, label]) => (
             <MenuItem key={value} value={value}>
@@ -170,54 +208,62 @@ const FormServidores = ({ classes, providers }) => {
         <Typography variant="h6" gutterBottom>
           Se encontraron {totalRegistros} registro(s)
         </Typography>
-        {results.map((result, index) => (
-          <ProviderAccordion
-            key={index}
-            provider={providers.find(p => p.id === result.providerId)}
-            loading={loading}
-            totalRegistros={result.providerData.pagination?.totalItems}
-          >
-            <TableContainer component={Paper} className={classes.tableContainer}>
-              <Table>
-                <TableHead>
-                  <TableRow>
-                    {tipoFalta === 'grave' && <TableCell className={classes.tableHeaderCell}>Nombre</TableCell>}
-                    <TableCell className={classes.tableHeaderCell}>Institución</TableCell>
-                    <TableCell className={classes.tableHeaderCell}>Fecha</TableCell>
-                    <TableCell className={classes.tableHeaderCell}>Expediente</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {result.providerData.data.map((item, i) => (
-                    <TableRow
-                      key={i}
-                      onClick={() => handleRowClick(item)}
-                      className={classes.tableRow}
-                      hover
-                      style={{ cursor: 'pointer' }}
-                    >
-                      {tipoFalta === 'grave' && (
-                        <TableCell>
-                          {`${item.datosGenerales?.nombres || ''} ${item.datosGenerales?.primerApellido || ''} ${item
-                            .datosGenerales?.segundoApellido || ''}`}
-                        </TableCell>
-                      )}
-                      <TableCell>{item.empleoCargoComision?.nombreEntePublico || 'N/A'}</TableCell>
-                      <TableCell>{new Date(item.fecha).toLocaleDateString('es-MX')}</TableCell>
-                      <TableCell>{item.expediente || 'N/A'}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
-            {pagination[result.providerId] && (
-              <PaginationControls
-                pagination={pagination[result.providerId]}
-                onPageChange={newPage => handlePageChange(result.providerId, newPage)}
-              />
-            )}
-          </ProviderAccordion>
-        ))}
+        {results.map((result, index) => {
+          const hasData = result.providerData.pagination?.totalItems > 0;
+
+          return (
+            <ProviderAccordion
+              key={index}
+              provider={providers.find(p => p.id === result.providerId)}
+              loading={loading}
+              totalRegistros={result.providerData.pagination?.totalItems}
+            >
+              {hasData ? (
+                <>
+                  <TableContainer component={Paper} className={classes.tableContainer}>
+                    <Table>
+                      <TableHead>
+                        <TableRow>
+                          {tipoFalta === 'grave' && <TableCell className={classes.tableHeaderCell}>Nombre</TableCell>}
+                          <TableCell className={classes.tableHeaderCell}>Institución</TableCell>
+                          <TableCell className={classes.tableHeaderCell}>Fecha</TableCell>
+                          <TableCell className={classes.tableHeaderCell}>Expediente</TableCell>
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        {result.providerData.data.map((item, i) => (
+                          <TableRow
+                            key={i}
+                            onClick={() => handleRowClick(item)}
+                            className={classes.tableRow}
+                            hover
+                            style={{ cursor: 'pointer' }}
+                          >
+                            {tipoFalta === 'grave' && (
+                              <TableCell>
+                                {`${item.datosGenerales?.nombres || ''} ${item.datosGenerales?.primerApellido ||
+                                  ''} ${item.datosGenerales?.segundoApellido || ''}`}
+                              </TableCell>
+                            )}
+                            <TableCell>{item.empleoCargoComision?.nombreEntePublico || 'N/A'}</TableCell>
+                            <TableCell>{new Date(item.fecha).toLocaleDateString('es-MX')}</TableCell>
+                            <TableCell>{item.expediente || 'N/A'}</TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+                  {pagination[result.providerId] && (
+                    <PaginationControls
+                      pagination={pagination[result.providerId]}
+                      onPageChange={newPage => handlePageChange(result.providerId, newPage)}
+                    />
+                  )}
+                </>
+              ) : null}
+            </ProviderAccordion>
+          );
+        })}
 
         <DetailDialog open={!!selectedRecord} onClose={() => setSelectedRecord(null)} data={selectedRecord} />
       </Box>
@@ -292,15 +338,70 @@ const FormServidores = ({ classes, providers }) => {
           />
         </Grid>
 
+        <Grid item xs={12} md={12}>
+          <FormControl variant="outlined" className={classes.formControl} size="small" fullWidth>
+            <InputLabel shrink id="entidad-federativa-label">
+              Entidad Federativa
+            </InputLabel>
+            <Select
+              labelId="entidad-federativa-label"
+              name="entidadFederativa"
+              value={formData.entidadFederativa}
+              onChange={handleInputChange}
+              label="Entidad Federativa"
+              displayEmpty
+              notched
+              sx={{
+                '& .MuiSelect-select': {
+                  backgroundColor: 'transparent',
+                },
+              }}
+              MenuProps={{
+                PaperProps: {
+                  style: {
+                    maxHeight: 500,
+                  },
+                },
+              }}
+            >
+              <MenuItem
+                value=""
+              >
+                <em>Todas las entidades</em>
+              </MenuItem>
+              {Object.entries(ENTIDADES_FEDERATIVAS)
+                .sort(([, a], [, b]) => a.localeCompare(b))
+                .map(([value, label]) => (
+                  <MenuItem key={value} value={value}>
+                    {label}
+                  </MenuItem>
+                ))}
+            </Select>
+          </FormControl>
+        </Grid>
+
         <Grid item xs={12} md={6}>
           <FormControl variant="outlined" className={classes.formControl} size="small" fullWidth>
-            <InputLabel>Nivel u Orden de Gobierno</InputLabel>
+            <InputLabel shrink id="orden-gobierno-label">
+              Nivel u Orden de Gobierno
+            </InputLabel>
             <Select
+              labelId="orden-gobierno-label"
               name="ordenGobierno"
               value={formData.ordenGobierno}
               onChange={handleInputChange}
-              label="Orden de Gobierno"
+              label="Nivel u Orden de Gobierno"
+              displayEmpty
+              notched
+              sx={{
+                '& .MuiSelect-select': {
+                  backgroundColor: 'transparent',
+                },
+              }}
             >
+              <MenuItem value="">
+                <em>Todos</em>
+              </MenuItem>
               <MenuItem value={GOBIERNO_TIPOS.FEDERAL}>Federal</MenuItem>
               <MenuItem value={GOBIERNO_TIPOS.ESTATAL}>Estatal</MenuItem>
               <MenuItem value={GOBIERNO_TIPOS.MUNICIPAL}>Municipal/Alcaldía</MenuItem>
@@ -310,8 +411,26 @@ const FormServidores = ({ classes, providers }) => {
 
         <Grid item xs={12} md={6}>
           <FormControl variant="outlined" className={classes.formControl} size="small" fullWidth>
-            <InputLabel>Ámbito Público</InputLabel>
-            <Select name="ambito" value={formData.ambito} onChange={handleInputChange} label="Ámbito">
+            <InputLabel shrink id="ambito-label">
+              Ámbito Público
+            </InputLabel>
+            <Select
+              labelId="ambito-label"
+              name="ambito"
+              value={formData.ambito}
+              onChange={handleInputChange}
+              label="Ámbito Público"
+              displayEmpty
+              notched
+              sx={{
+                '& .MuiSelect-select': {
+                  backgroundColor: 'transparent',
+                },
+              }}
+            >
+              <MenuItem value="">
+                <em>Todos</em>
+              </MenuItem>
               <MenuItem value={AMBITO_TIPOS.EJECUTIVO}>Ejecutivo</MenuItem>
               <MenuItem value={AMBITO_TIPOS.LEGISLATIVO}>Legislativo</MenuItem>
               <MenuItem value={AMBITO_TIPOS.JUDICIAL}>Judicial</MenuItem>

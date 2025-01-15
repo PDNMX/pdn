@@ -6,7 +6,7 @@ import HeaderV2 from '../HomeV2/HeaderV2'
 import Dashboard from './Dashboard/Dashboard'
 import BuscadorParticularesSancionados from '../Sistema3/Particulares/BuscadorParticularesSancionados'
 import img1 from '../../assets/rediseno/svg_iconos_azul/SVG/s6_01.svg'
-import img2 from '../../assets/rediseno/svg_iconos_azul/SVG/s1_01.svg'
+//import img2 from '../../assets/rediseno/svg_iconos_azul/SVG/s1_01.svg'
 import img3 from '../../assets/rediseno/svg_iconos_azul/SVG/s6_02.svg'
 import pdnRoutes from '../../routes/index'
 
