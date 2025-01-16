@@ -1,19 +1,19 @@
 import React from 'react';
 import { Paper, Typography, Box } from '@mui/material';
-import { EventBusy } from '@mui/icons-material';
+import { PaidOutlined } from '@mui/icons-material';
 
-// Datos estáticos en un JSON
 const staticData = {
-  total: 347,
-  descripcion: "Inhabilitaciones que terminaron en 2022"
+  total: '$ 868,559,031',
+  descripcion: "Total en multas económicas aplicadas"
 };
 
-const TotalRamos = () => {
+const TotalMultas = () => {
   return (
     <Paper 
       elevation={0} 
       sx={{
         height: '100%',
+        minHeight: '200px',
         background: 'linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%)',
         border: '1px solid #e0e0e0',
         borderRadius: 2,
@@ -26,7 +26,6 @@ const TotalRamos = () => {
         }
       }}
     >
-      {/* Decorative background icon */}
       <Box 
         sx={{
           position: 'absolute',
@@ -36,10 +35,9 @@ const TotalRamos = () => {
           transform: 'rotate(15deg)'
         }}
       >
-        <EventBusy sx={{ fontSize: 150 }} />
+        <PaidOutlined sx={{ fontSize: 150 }} />
       </Box>
-
-      {/* Content */}
+      
       <Box 
         display="flex" 
         flexDirection="column" 
@@ -50,7 +48,6 @@ const TotalRamos = () => {
           zIndex: 1
         }}
       >
-        {/* Label */}
         <Typography 
           variant="body2" 
           color="textSecondary"
@@ -61,35 +58,39 @@ const TotalRamos = () => {
             fontWeight: 500
           }}
         >
-          Inhabilitaciones Finalizadas
+          Multas Registradas
         </Typography>
 
-        {/* Number */}
         <Typography 
           variant="h3" 
           component="div" 
           sx={{ 
             fontWeight: 700,
             mb: 1,
-            color: '#963476' // Color principal del sitio
+            color: '#9085da',
+            whiteSpace: 'nowrap', // Asegura que el texto permanezca en una línea
+            overflow: 'visible' // Permite que el texto completo sea visible
           }}
         >
-          {staticData.total.toLocaleString()}
+          {staticData.total}
         </Typography>
 
-        {/* Description */}
         <Typography 
           variant="body1" 
           color="textSecondary"
           sx={{
             lineHeight: 1.5,
-            maxWidth: '90%'
+            height: '3em',
+            overflow: 'hidden',
+            display: '-webkit-box',
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: 'vertical',
+            textOverflow: 'ellipsis'
           }}
         >
           {staticData.descripcion}
         </Typography>
 
-        {/* Subtle indicator bar */}
         <Box 
           sx={{
             position: 'absolute',
@@ -97,7 +98,7 @@ const TotalRamos = () => {
             left: 0,
             width: '100%',
             height: '4px',
-            background: 'linear-gradient(90deg, #963476 0%, #2787C5 100%)', // Usando el gradiente del sitio
+            background: 'linear-gradient(90deg, #963476 0%, #2787C5 100%)',
             opacity: 0.7
           }}
         />
@@ -106,4 +107,4 @@ const TotalRamos = () => {
   );
 };
 
-export default TotalRamos;
+export default TotalMultas;

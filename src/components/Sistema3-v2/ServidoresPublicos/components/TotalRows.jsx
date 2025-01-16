@@ -1,10 +1,107 @@
 import React from 'react';
-import { Paper, Typography } from '@mui/material';
+import { Paper, Typography, Box } from '@mui/material';
+import { PeopleAlt } from '@mui/icons-material';
+
+// Datos estáticos en un JSON
+const staticData = {
+  total: 3894,
+  descripcion: "Total de registros de personas públicas sancionadas"
+};
 
 const TotalRows = () => {
   return (
-    <Paper elevation={0} sx={{ p: 2, height: '100%' }}>
-      <Typography variant="h6">Total de Registros</Typography>
+    <Paper 
+      elevation={0} 
+      sx={{
+        height: '100%',
+        background: 'linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%)',
+        border: '1px solid #e0e0e0',
+        borderRadius: 2,
+        position: 'relative',
+        overflow: 'hidden',
+        transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
+        '&:hover': {
+          transform: 'translateY(-2px)',
+          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)'
+        }
+      }}
+    >
+      {/* Decorative background icon */}
+      <Box 
+        sx={{
+          position: 'absolute',
+          right: -20,
+          top: -20,
+          opacity: 0.05,
+          transform: 'rotate(15deg)'
+        }}
+      >
+        <PeopleAlt sx={{ fontSize: 150 }} />
+      </Box>
+
+      {/* Content */}
+      <Box 
+        display="flex" 
+        flexDirection="column" 
+        alignItems="flex-start"
+        sx={{ 
+          p: 3,
+          position: 'relative',
+          zIndex: 1
+        }}
+      >
+        {/* Label */}
+        <Typography 
+          variant="body2" 
+          color="textSecondary"
+          sx={{
+            mb: 2,
+            textTransform: 'uppercase',
+            letterSpacing: '0.5px',
+            fontWeight: 500
+          }}
+        >
+          Registros Totales
+        </Typography>
+
+        {/* Number */}
+        <Typography 
+          variant="h3" 
+          component="div" 
+          sx={{ 
+            fontWeight: 700,
+            mb: 1,
+            color: '#9c27b0' // Color más distintivo para el número
+          }}
+        >
+          {staticData.total.toLocaleString()}
+        </Typography>
+
+        {/* Description */}
+        <Typography 
+          variant="body1" 
+          color="textSecondary"
+          sx={{
+            lineHeight: 1.5,
+            maxWidth: '90%'
+          }}
+        >
+          {staticData.descripcion}
+        </Typography>
+
+        {/* Subtle indicator bar */}
+        <Box 
+          sx={{
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            width: '100%',
+            height: '4px',
+            background: 'linear-gradient(90deg, #9c27b0 0%, #3949ab 100%)',
+            opacity: 0.7
+          }}
+        />
+      </Box>
     </Paper>
   );
 };
