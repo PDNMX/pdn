@@ -306,6 +306,13 @@ export const buildSearchQuery = (formData) => {
         }
       };
     }
+
+    if (isValidValue(formData.cometioFaltaEntidad)) {
+      filter.dondeCometioLaFalta = {
+        ...filter.dondeCometioLaFalta,
+        entidadFederativa: { _eq: formData.cometioFaltaEntidad }
+      };
+    }
   }
 
   // Retornamos el objeto completo

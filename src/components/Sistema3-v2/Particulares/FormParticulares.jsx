@@ -24,7 +24,13 @@ import {
 } from '@mui/material';
 import PropTypes from 'prop-types';
 import { useSearch } from '../hooks/useSearch';
-import { FALTA_FISICA_LABELS, FALTA_MORAL_LABELS, SANCION_FISICA_LABELS, SANCION_MORAL_LABELS } from '../utils/search';
+import {
+  FALTA_FISICA_LABELS,
+  FALTA_MORAL_LABELS,
+  SANCION_FISICA_LABELS,
+  SANCION_MORAL_LABELS,
+  ENTIDADES_FEDERATIVAS,
+} from '../utils/search';
 import DetailDialogParticulares from '../components/DetailDialogParticulares';
 import PaginationControls from '../components/PaginationControls';
 import ProviderAccordion from '../components/ProviderAccordion';
@@ -44,6 +50,7 @@ const FormParticulares = ({ classes, providers }) => {
     nombreRazonSocial: '',
     faltaCometida: '',
     tipoSancion: '',
+    cometioFaltaEntidad: '',
   });
   const [selectedRecord, setSelectedRecord] = useState(null);
   const { results, loading, error, pagination, performSearch, clearResults } = useSearch();
@@ -69,6 +76,7 @@ const FormParticulares = ({ classes, providers }) => {
       nombreRazonSocial: '',
       faltaCometida: '', // Limpiar al cambiar tipo de persona
       tipoSancion: '', // Limpiar al cambiar tipo de persona
+      cometioFaltaEntidad: '',
     });
     clearResults();
   };
@@ -90,6 +98,7 @@ const FormParticulares = ({ classes, providers }) => {
       nombreRazonSocial: '',
       faltaCometida: '',
       tipoSancion: '',
+      cometioFaltaEntidad: '',
     });
     clearResults();
   };
@@ -105,7 +114,7 @@ const FormParticulares = ({ classes, providers }) => {
   };
 
   const renderPersonaFisicaForm = () => (
-    <Grid container spacing={3}>
+    <>
       <Grid item xs={12} md={4}>
         <TextField
           className={classes.formControl}
@@ -142,11 +151,11 @@ const FormParticulares = ({ classes, providers }) => {
           fullWidth
         />
       </Grid>
-    </Grid>
+    </>
   );
 
   const renderPersonaMoralForm = () => (
-    <Grid container spacing={3}>
+    <>
       <Grid item xs={12} md={6}>
         <TextField
           className={classes.formControl}
@@ -171,7 +180,7 @@ const FormParticulares = ({ classes, providers }) => {
           fullWidth
         />
       </Grid>
-    </Grid>
+    </>
   );
 
   const renderCommonFields = () => {
@@ -179,16 +188,65 @@ const FormParticulares = ({ classes, providers }) => {
     const sancionTipos = tipoPersona === 'fisica' ? SANCION_FISICA_LABELS : SANCION_MORAL_LABELS;
 
     return (
-      <Grid container spacing={3}>
-        <Grid item xs={12} md={6}>
+      <>
+        <Grid item xs={12} md={12}>
           <FormControl variant="outlined" className={classes.formControl} size="small" fullWidth>
-            <InputLabel>Falta Cometida</InputLabel>
+            <InputLabel shrink id="cometio-falta-entidad-label">
+              Entidad Federativa donde se cometió la falta
+            </InputLabel>
+            <Select
+              labelId="cometio-falta-entidad-label"
+              name="cometioFaltaEntidad"
+              value={formData.cometioFaltaEntidad}
+              onChange={handleInputChange}
+              label="Entidad Federativa donde se cometió la falta"
+              displayEmpty
+              notched
+              sx={{
+                '& .MuiSelect-select': {
+                  backgroundColor: 'transparent',
+                },
+              }}
+              MenuProps={{
+                PaperProps: {
+                  style: {
+                    maxHeight: 500,
+                  },
+                },
+              }}
+            >
+              <MenuItem value="">
+                <em>Todas las entidades</em>
+              </MenuItem>
+              {Object.entries(ENTIDADES_FEDERATIVAS)
+                .sort(([, a], [, b]) => a.localeCompare(b))
+                .map(([value, label]) => (
+                  <MenuItem key={value} value={value}>
+                    {label}
+                  </MenuItem>
+                ))}
+            </Select>
+          </FormControl>
+        </Grid>
+        <Grid item xs={12} md={6} Grid>
+          <FormControl variant="outlined" className={classes.formControl} size="small" fullWidth>
+            <InputLabel shrink>Falta Cometida</InputLabel>
             <Select
               name="faltaCometida"
               value={formData.faltaCometida}
               onChange={handleInputChange}
               label="Falta Cometida"
+              displayEmpty
+              notched
+              sx={{
+                '& .MuiSelect-select': {
+                  backgroundColor: 'transparent',
+                },
+              }}
             >
+              <MenuItem value="">
+                <em>Todas</em>
+              </MenuItem>
               {Object.entries(faltaTipos).map(([value, label]) => (
                 <MenuItem key={value} value={value}>
                   {label}
@@ -199,13 +257,23 @@ const FormParticulares = ({ classes, providers }) => {
         </Grid>
         <Grid item xs={12} md={6}>
           <FormControl variant="outlined" className={classes.formControl} size="small" fullWidth>
-            <InputLabel>Tipo de Sanción</InputLabel>
+            <InputLabel shrink>Tipo de Sanción</InputLabel>
             <Select
               name="tipoSancion"
               value={formData.tipoSancion}
               onChange={handleInputChange}
               label="Tipo de Sanción"
+              displayEmpty
+              notched
+              sx={{
+                '& .MuiSelect-select': {
+                  backgroundColor: 'transparent',
+                },
+              }}
             >
+              <MenuItem value="">
+                <em>Todas</em>
+              </MenuItem>
               {Object.entries(sancionTipos).map(([value, label]) => (
                 <MenuItem key={value} value={value}>
                   {label}
@@ -214,28 +282,41 @@ const FormParticulares = ({ classes, providers }) => {
             </Select>
           </FormControl>
         </Grid>
-      </Grid>
+      </>
     );
   };
-
+  Grid;
   const renderResults = () => {
-    if (!results || results.length === 0) {
+    /* if (!results || results.length === 0) {
       return (
         <Box className={classes.noResults}>
-          <Typography>No se encontraron resultados</Typography>
+          <Typography variant="h6" color="textSecondary" gutterBottom>
+            No se encontraron resultados
+          </Typography>
+          <Typography color="textSecondary">
+            No se encontraron registros que coincidan con los criterios de búsqueda. Por favor, intenta con diferentes
+            términos o menos filtros.
+          </Typography>
         </Box>
       );
-    }
+    } */
 
-    let totalRegistros = 0;
-    results.forEach(result => {
-      totalRegistros += result.providerData.pagination.totalItems;
-    });
+    // Verificar si hay resultados en algún proveedor
+    const hasAnyResults = results.some(
+      result =>
+        result.providerData.data && result.providerData.pagination && result.providerData.pagination.totalItems > 0,
+    );
 
-    if (totalRegistros === 0) {
+    if (!hasAnyResults) {
       return (
         <Box className={classes.noResults}>
-          <Typography>No se encontraron resultados que coincidan con los criterios de búsqueda</Typography>
+          <Typography variant="h6" color="textSecondary" gutterBottom>
+            No se encontraron resultados
+          </Typography>
+          <Typography color="textSecondary">
+            No se encontraron registros que coincidan con los criterios de búsqueda. Por favor, intenta con diferentes
+            términos o menos filtros.
+          </Typography>
         </Box>
       );
     }
@@ -243,68 +324,75 @@ const FormParticulares = ({ classes, providers }) => {
     return (
       <Box sx={{ mb: 4 }}>
         <Typography variant="h6" gutterBottom>
-          Se encontraron {totalRegistros} registro(s)
+          Se encontraron{' '}
+          {results.reduce((total, result) => total + (result.providerData.pagination?.totalItems || 0), 0)} registro(s)
         </Typography>
-        {results.map((result, index) => (
-          <ProviderAccordion
-            key={index}
-            provider={providers.find(p => p.id === result.providerId)}
-            loading={loading}
-            totalRegistros={result.providerData.pagination?.totalItems}
-          >
-            <TableContainer component={Paper} className={classes.tableContainer}>
-              <Table>
-                <TableHead>
-                  <TableRow>
-                    {tipoPersona === 'fisica' ? (
-                      <TableCell className={classes.tableHeaderCell}>Nombre</TableCell>
-                    ) : (
-                      <>
-                        <TableCell className={classes.tableHeaderCell}>RFC</TableCell>
-                        <TableCell className={classes.tableHeaderCell}>Razón Social</TableCell>
-                      </>
-                    )}
-                    <TableCell className={classes.tableHeaderCell}>Expediente</TableCell>
-                    <TableCell className={classes.tableHeaderCell}>Fecha</TableCell>
-                    <TableCell className={classes.tableHeaderCell}>Tipo de Sanción</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {result.providerData.data.map((item, i) => (
-                    <TableRow
-                      key={i}
-                      onClick={() => handleRowClick(item)}
-                      className={classes.tableRow}
-                      hover
-                      style={{ cursor: 'pointer' }}
-                    >
-                      {tipoPersona === 'fisica' ? (
-                        <TableCell>
-                          {`${item.datosGenerales?.nombres || ''} ${item.datosGenerales?.primerApellido || ''} ${
-                            item.datosGenerales?.segundoApellido || ''}`}
-                        </TableCell>
-                      ) : (
-                        <>
-                          <TableCell>{item.datosGenerales?.rfc || 'N/A'}</TableCell>
-                          <TableCell>{item.datosGenerales?.nombreRazonSocial || 'N/A'}</TableCell>
-                        </>
-                      )}
-                      <TableCell>{item.expediente || 'N/A'}</TableCell>
-                      <TableCell>{new Date(item.fecha).toLocaleDateString('es-MX')}</TableCell>
-                      <TableCell>{item.tipoSancion?.map(sancion => sancion.valor).join(', ') || 'N/A'}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-              {pagination[result.providerId] && (
-                <PaginationControls
-                  pagination={pagination[result.providerId]}
-                  onPageChange={(newPage) => handlePageChange(result.providerId, newPage)}
-                />
+        {results.map((result, index) => {
+          const hasProviderData = result.providerData.pagination?.totalItems > 0;
+
+          return (
+            <ProviderAccordion
+              key={index}
+              provider={providers.find(p => p.id === result.providerId)}
+              loading={loading}
+              totalRegistros={result.providerData.pagination?.totalItems}
+            >
+              {hasProviderData && (
+                <TableContainer component={Paper} className={classes.tableContainer}>
+                  <Table>
+                    <TableHead>
+                      <TableRow>
+                        {tipoPersona === 'fisica' ? (
+                          <TableCell className={classes.tableHeaderCell}>Nombre</TableCell>
+                        ) : (
+                          <>
+                            <TableCell className={classes.tableHeaderCell}>RFC</TableCell>
+                            <TableCell className={classes.tableHeaderCell}>Razón Social</TableCell>
+                          </>
+                        )}
+                        <TableCell className={classes.tableHeaderCell}>Expediente</TableCell>
+                        <TableCell className={classes.tableHeaderCell}>Fecha</TableCell>
+                        <TableCell className={classes.tableHeaderCell}>Tipo de Sanción</TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {result.providerData.data.map((item, i) => (
+                        <TableRow
+                          key={i}
+                          onClick={() => handleRowClick(item)}
+                          className={classes.tableRow}
+                          hover
+                          style={{ cursor: 'pointer' }}
+                        >
+                          {tipoPersona === 'fisica' ? (
+                            <TableCell>
+                              {`${item.datosGenerales?.nombres || ''} ${item.datosGenerales?.primerApellido ||
+                                ''} ${item.datosGenerales?.segundoApellido || ''}`}
+                            </TableCell>
+                          ) : (
+                            <>
+                              <TableCell>{item.datosGenerales?.rfc || 'N/A'}</TableCell>
+                              <TableCell>{item.datosGenerales?.nombreRazonSocial || 'N/A'}</TableCell>
+                            </>
+                          )}
+                          <TableCell>{item.expediente || 'N/A'}</TableCell>
+                          <TableCell>{new Date(item.fecha).toLocaleDateString('es-MX')}</TableCell>
+                          <TableCell>{item.tipoSancion?.map(sancion => sancion.valor).join(', ') || 'N/A'}</TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                  {pagination[result.providerId] && (
+                    <PaginationControls
+                      pagination={pagination[result.providerId]}
+                      onPageChange={newPage => handlePageChange(result.providerId, newPage)}
+                    />
+                  )}
+                </TableContainer>
               )}
-            </TableContainer>
-          </ProviderAccordion>
-        ))}
+            </ProviderAccordion>
+          );
+        })}
 
         <DetailDialogParticulares
           open={!!selectedRecord}
@@ -328,9 +416,10 @@ const FormParticulares = ({ classes, providers }) => {
           <FormControlLabel value="moral" control={<Radio color="primary" />} label="Persona Moral" />
         </RadioGroup>
       </Box>
-
-      {tipoPersona === 'fisica' ? renderPersonaFisicaForm() : renderPersonaMoralForm()}
-      {renderCommonFields()}
+      <Grid container spacing={3}>
+        {tipoPersona === 'fisica' ? renderPersonaFisicaForm() : renderPersonaMoralForm()}
+        {renderCommonFields()}
+      </Grid>
 
       <Box className={classes.buttonContainer}>
         <Button variant="outlined" className={classes.clearButton} onClick={handleClear}>
