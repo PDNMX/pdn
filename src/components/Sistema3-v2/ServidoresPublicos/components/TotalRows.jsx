@@ -1,17 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Paper, Typography, Box } from '@mui/material';
 import { PeopleAlt } from '@mui/icons-material';
 
-// Datos estáticos en un JSON
-const staticData = {
-  total: 3894,
-  descripcion: "Total de registros de personas públicas sancionadas"
-};
-
-const TotalRows = () => {
+const TotalRows = ({ totalCases }) => {
   return (
-    <Paper 
-      elevation={0} 
+    <Paper
+      elevation={0}
       sx={{
         height: '100%',
         background: 'linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%)',
@@ -27,7 +22,7 @@ const TotalRows = () => {
       }}
     >
       {/* Decorative background icon */}
-      <Box 
+      <Box
         sx={{
           position: 'absolute',
           right: -20,
@@ -40,19 +35,19 @@ const TotalRows = () => {
       </Box>
 
       {/* Content */}
-      <Box 
-        display="flex" 
-        flexDirection="column" 
+      <Box
+        display="flex"
+        flexDirection="column"
         alignItems="flex-start"
-        sx={{ 
+        sx={{
           p: 3,
           position: 'relative',
           zIndex: 1
         }}
       >
         {/* Label */}
-        <Typography 
-          variant="body2" 
+        <Typography
+          variant="body2"
           color="textSecondary"
           sx={{
             mb: 2,
@@ -65,32 +60,32 @@ const TotalRows = () => {
         </Typography>
 
         {/* Number */}
-        <Typography 
-          variant="h3" 
-          component="div" 
-          sx={{ 
+        <Typography
+          variant="h3"
+          component="div"
+          sx={{
             fontWeight: 700,
             mb: 1,
-            color: '#9c27b0' // Color más distintivo para el número
+            color: '#9c27b0'
           }}
         >
-          {staticData.total.toLocaleString()}
+          {totalCases.toLocaleString()}
         </Typography>
 
         {/* Description */}
-        <Typography 
-          variant="body1" 
+        <Typography
+          variant="body1"
           color="textSecondary"
           sx={{
             lineHeight: 1.5,
             maxWidth: '90%'
           }}
         >
-          {staticData.descripcion}
+          Total de registros de personas públicas sancionadas
         </Typography>
 
         {/* Subtle indicator bar */}
-        <Box 
+        <Box
           sx={{
             position: 'absolute',
             bottom: 0,
@@ -104,6 +99,10 @@ const TotalRows = () => {
       </Box>
     </Paper>
   );
+};
+
+TotalRows.propTypes = {
+  totalCases: PropTypes.number.isRequired
 };
 
 export default TotalRows;
