@@ -1,13 +1,192 @@
-import React from 'react';
-import { Paper, Typography, Box } from '@mui/material';
-import { PaidOutlined } from '@mui/icons-material';
+import React, { useState, useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
+import { Paper, Typography, Box, CircularProgress } from '@mui/material';
+import { MonetizationOn } from '@mui/icons-material';
+import { searchInProvider } from '../../utils/api';
+import { buildSearchQuery } from '../../utils/search';
 
-const staticData = {
-  total: '$ 868,559,031',
-  descripcion: "Total en multas económicas aplicadas"
-};
+const TotalMultas = ({ providers }) => {
+  const [loading, setLoading] = useState(true);
+  const [totalAmount, setTotalAmount] = useState(0);
+  const isMounted = useRef(true);
+  const analysisCompleted = useRef(false);
 
-const TotalMultas = () => {
+  useEffect(() => {
+    isMounted.current = true;
+
+    const fetchAllPages = async (baseUrl, endpoint, providerId, filter) => {
+      try {
+        const firstPage = await searchInProvider(baseUrl, endpoint, providerId, filter);
+        if (!firstPage?.providerData?.pagination) return [];
+
+        const { totalItems, limit } = firstPage.providerData.pagination;
+        const totalPages = Math.ceil(totalItems / limit);
+        
+        let allData = firstPage.providerData.data || [];
+
+        if (totalPages > 1) {
+          const remainingPages = await Promise.all(
+            Array.from({ length: totalPages - 1 }, (_, i) =>
+              searchInProvider(baseUrl, endpoint, providerId, filter, i + 2, limit)
+            )
+          );
+
+          remainingPages.forEach(page => {
+            if (page?.providerData?.data) {
+              allData = [...allData, ...page.providerData.data];
+            }
+          });
+        }
+
+        return allData;
+      } catch (error) {
+        console.error('Error fetching pages:', error);
+        return [];
+      }
+    };
+
+    const procesarMultas = (item, providerId) => {
+      let multa = 0;
+      
+      if (item?.tipoSancion && Array.isArray(item.tipoSancion)) {
+        item.tipoSancion.forEach(sancion => {
+          // Verificar tanto el valor como la clave
+          const esSancionEconomica = 
+            sancion?.valor?.toLowerCase().includes('económica') || 
+            sancion?.clave === 'SANCION_ECONOMICA';
+    
+          const moneda = sancion?.sancionEconomica?.moneda?.toLowerCase() || '';
+          const esMonedaMexicana = moneda.includes('mex') || moneda === 'mxn';
+          const monto = sancion?.sancionEconomica?.monto;
+    
+          if (providerId === 'SESEA_QUINTANA_ROO') {
+            console.log('\nValidaciones para QUINTANA_ROO:');
+            console.log('- Clave de sanción:', sancion.clave);
+            console.log('- ¿Es sanción económica?:', esSancionEconomica);
+            console.log('- Moneda:', moneda);
+            console.log('- ¿Es moneda mexicana?:', esMonedaMexicana);
+            console.log('- Monto:', monto);
+          }
+    
+          if (esSancionEconomica && monto !== null && monto !== undefined && esMonedaMexicana) {
+            const montoStr = monto.toString().replace(/[^0-9.]/g, '');
+            const montoNumerico = parseFloat(montoStr);
+            
+            if (!isNaN(montoNumerico) && montoNumerico > 0) {
+              multa += montoNumerico;
+              if (providerId === 'SESEA_QUINTANA_ROO') {
+                console.log('¡Multa procesada exitosamente!');
+                console.log('Monto agregado:', montoNumerico);
+              }
+            }
+          }
+        });
+      }
+      
+      return multa;
+    };
+
+    const fetchData = async () => {
+      if (!providers?.length || analysisCompleted.current) return;
+
+      try {
+        if (isMounted.current) {
+          setLoading(true);
+        }
+
+        const baseUrl = process.env.REACT_APP_S3_V2_BACKEND;
+        const emptyFilter = buildSearchQuery({});
+
+        let totalMultas = 0;
+        
+        console.log('Iniciando procesamiento de multas con', providers.length, 'providers');
+
+        for (const provider of providers) {
+          if (!isMounted.current) return;
+
+          console.log(`\nProcesando provider: ${provider.id}`);
+
+          const [fisicaData, moralData] = await Promise.all([
+            fetchAllPages(baseUrl, 'faltas_graves_personas_fisicas', provider.id, emptyFilter),
+            fetchAllPages(baseUrl, 'faltas_graves_personas_morales', provider.id, emptyFilter)
+          ]);
+
+          console.log(`Provider ${provider.id}:`);
+          console.log('- Personas físicas:', fisicaData.length, 'registros');
+          console.log('- Personas morales:', moralData.length, 'registros');
+
+          // Procesar multas de personas físicas
+          fisicaData.forEach(item => {
+            const multaItem = procesarMultas(item, provider.id);
+            totalMultas += multaItem;
+            if (multaItem > 0) {
+              console.log(`Multa física encontrada en ${provider.id}:`, multaItem);
+            }
+          });
+
+          // Procesar multas de personas morales
+          moralData.forEach(item => {
+            const multaItem = procesarMultas(item, provider.id);
+            totalMultas += multaItem;
+            if (multaItem > 0) {
+              console.log(`Multa moral encontrada en ${provider.id}:`, multaItem);
+            }
+          });
+
+          console.log(`Total acumulado después de provider ${provider.id}:`, totalMultas);
+        }
+
+        console.log('\nTotal final de multas:', totalMultas);
+
+        if (isMounted.current) {
+          setTotalAmount(totalMultas);
+          analysisCompleted.current = true;
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        if (isMounted.current) {
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchData();
+
+    return () => {
+      isMounted.current = false;
+    };
+  }, [providers]);
+
+  const formatCurrency = (amount) => {
+    return new Intl.NumberFormat('es-MX', {
+      style: 'currency',
+      currency: 'MXN',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    }).format(amount);
+  };
+
+  if (loading) {
+    return (
+      <Paper 
+        elevation={0} 
+        sx={{
+          height: '100%',
+          minHeight: '200px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          background: 'linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%)',
+          border: '1px solid #e0e0e0',
+          borderRadius: 2
+        }}
+      >
+        <CircularProgress />
+      </Paper>
+    );
+  }
+
   return (
     <Paper 
       elevation={0} 
@@ -35,9 +214,9 @@ const TotalMultas = () => {
           transform: 'rotate(15deg)'
         }}
       >
-        <PaidOutlined sx={{ fontSize: 150 }} />
+        <MonetizationOn sx={{ fontSize: 150 }} />
       </Box>
-      
+
       <Box 
         display="flex" 
         flexDirection="column" 
@@ -58,7 +237,7 @@ const TotalMultas = () => {
             fontWeight: 500
           }}
         >
-          Multas Registradas
+          Multas Económicas
         </Typography>
 
         <Typography 
@@ -67,28 +246,20 @@ const TotalMultas = () => {
           sx={{ 
             fontWeight: 700,
             mb: 1,
-            color: '#9085da',
-            whiteSpace: 'nowrap', // Asegura que el texto permanezca en una línea
-            overflow: 'visible' // Permite que el texto completo sea visible
+            color: '#2e7d32'
           }}
         >
-          {staticData.total}
+          {formatCurrency(totalAmount)}
         </Typography>
 
         <Typography 
           variant="body1" 
           color="textSecondary"
           sx={{
-            lineHeight: 1.5,
-            height: '3em',
-            overflow: 'hidden',
-            display: '-webkit-box',
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: 'vertical',
-            textOverflow: 'ellipsis'
+            lineHeight: 1.5
           }}
         >
-          {staticData.descripcion}
+          Total de sanciones económicas en pesos mexicanos
         </Typography>
 
         <Box 
@@ -98,13 +269,17 @@ const TotalMultas = () => {
             left: 0,
             width: '100%',
             height: '4px',
-            background: 'linear-gradient(90deg, #963476 0%, #2787C5 100%)',
+            background: 'linear-gradient(90deg, #2e7d32 0%, #81c784 100%)',
             opacity: 0.7
           }}
         />
       </Box>
     </Paper>
   );
+};
+
+TotalMultas.propTypes = {
+  providers: PropTypes.array.isRequired
 };
 
 export default TotalMultas;

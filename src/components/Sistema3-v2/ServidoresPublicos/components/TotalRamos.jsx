@@ -1,14 +1,80 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Paper, Typography, Box } from '@mui/material';
 import { EventBusy } from '@mui/icons-material';
+import { searchInProvider } from '../../utils/api';
+import { buildSearchQuery } from '../../utils/search';
+import { 
+  SANCION_GRAVE_TIPOS,
+  SANCION_NO_GRAVE_TIPOS
+} from '../../utils/search';
 
-// Datos estáticos en un JSON
-const staticData = {
-  total: 347,
-  descripcion: "Inhabilitaciones que terminaron en 2022"
-};
+const TotalRamos = ({ providers }) => {
+  const [inhabilitaciones, setInhabilitaciones] = useState({
+    graves: 0,
+    noGraves: 0,
+    total: 0
+  });
+  const [loading, setLoading] = useState(true);
 
-const TotalRamos = () => {
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!providers?.length) return;
+
+      try {
+        setLoading(true);
+        const baseUrl = process.env.REACT_APP_S3_V2_BACKEND;
+
+        // Crear filtros específicos para inhabilitaciones
+        const filterGraves = buildSearchQuery({
+          tipoSancion: SANCION_GRAVE_TIPOS.INHABILITACION
+        });
+
+        const filterNoGraves = buildSearchQuery({
+          tipoSancion: SANCION_NO_GRAVE_TIPOS.INHABILITACION
+        });
+
+        // Obtener datos de ambos tipos de faltas con filtros
+        const [gravesResults, noGravesResults] = await Promise.all([
+          Promise.all(providers.map(provider => 
+            searchInProvider(baseUrl, 'faltas_administrativas_graves', provider.id, filterGraves)
+          )),
+          Promise.all(providers.map(provider => 
+            searchInProvider(baseUrl, 'faltas_administrativas_no_graves', provider.id, filterNoGraves)
+          ))
+        ]);
+
+        // Contar totales de cada tipo
+        const countGraves = gravesResults.reduce((total, result) => {
+          return total + (result?.providerData?.pagination?.totalItems || 0);
+        }, 0);
+
+        const countNoGraves = noGravesResults.reduce((total, result) => {
+          return total + (result?.providerData?.pagination?.totalItems || 0);
+        }, 0);
+
+        const totalInhabilitaciones = countGraves + countNoGraves;
+
+        console.log('Resumen de inhabilitaciones:', {
+          graves: countGraves,
+          noGraves: countNoGraves,
+          total: totalInhabilitaciones
+        });
+
+        setInhabilitaciones({
+          graves: countGraves,
+          noGraves: countNoGraves,
+          total: totalInhabilitaciones
+        });
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [providers]);
+
   return (
     <Paper 
       elevation={0} 
@@ -26,7 +92,6 @@ const TotalRamos = () => {
         }
       }}
     >
-      {/* Decorative background icon */}
       <Box 
         sx={{
           position: 'absolute',
@@ -39,7 +104,6 @@ const TotalRamos = () => {
         <EventBusy sx={{ fontSize: 150 }} />
       </Box>
 
-      {/* Content */}
       <Box 
         display="flex" 
         flexDirection="column" 
@@ -50,7 +114,6 @@ const TotalRamos = () => {
           zIndex: 1
         }}
       >
-        {/* Label */}
         <Typography 
           variant="body2" 
           color="textSecondary"
@@ -61,23 +124,21 @@ const TotalRamos = () => {
             fontWeight: 500
           }}
         >
-          Inhabilitaciones Finalizadas
+          Total de Inhabilitaciones
         </Typography>
 
-        {/* Number */}
         <Typography 
           variant="h3" 
           component="div" 
           sx={{ 
             fontWeight: 700,
             mb: 1,
-            color: '#963476' // Color principal del sitio
+            color: '#963476'
           }}
         >
-          {staticData.total.toLocaleString()}
+          {inhabilitaciones.total.toLocaleString()}
         </Typography>
 
-        {/* Description */}
         <Typography 
           variant="body1" 
           color="textSecondary"
@@ -86,10 +147,19 @@ const TotalRamos = () => {
             maxWidth: '90%'
           }}
         >
-          {staticData.descripcion}
+          {inhabilitaciones.graves.toLocaleString()} por faltas graves
+        </Typography>
+        <Typography 
+          variant="body1" 
+          color="textSecondary"
+          sx={{
+            lineHeight: 1.5,
+            maxWidth: '90%'
+          }}
+        >
+          {inhabilitaciones.noGraves.toLocaleString()} por faltas no graves
         </Typography>
 
-        {/* Subtle indicator bar */}
         <Box 
           sx={{
             position: 'absolute',
@@ -97,7 +167,7 @@ const TotalRamos = () => {
             left: 0,
             width: '100%',
             height: '4px',
-            background: 'linear-gradient(90deg, #963476 0%, #2787C5 100%)', // Usando el gradiente del sitio
+            background: 'linear-gradient(90deg, #963476 0%, #2787C5 100%)',
             opacity: 0.7
           }}
         />

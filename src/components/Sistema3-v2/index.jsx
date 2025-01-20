@@ -198,7 +198,7 @@ const Index = ({ classes }) => {
                   icon={
                     <Box className={classes.tabLabel}>
                       <BarChartOutlined className={classes.tabIcon} />
-                      <span>Visor de datos (servidores públicos sancionados)</span>
+                      <span>Visor de datos (personas servidoras públicas sancionadas)</span>
                     </Box>
                   }
                   aria-label="visor servidores públicos"

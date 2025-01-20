@@ -2,16 +2,10 @@ import React from 'react';
 import { Paper, Typography, Box } from '@mui/material';
 import { AccountBalance } from '@mui/icons-material';
 
-// Datos estáticos en un JSON
-const staticData = {
-  total: 122,
-  descripcion: "Total de instituciones con servidores públicos sancionados"
-};
-
-const TotalInstituciones = () => {
+const TotalInstituciones = ({ totalInstitutions }) => {
   return (
-    <Paper 
-      elevation={0} 
+    <Paper
+      elevation={0}
       sx={{
         height: '100%',
         background: 'linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%)',
@@ -27,7 +21,7 @@ const TotalInstituciones = () => {
       }}
     >
       {/* Decorative background icon */}
-      <Box 
+      <Box
         sx={{
           position: 'absolute',
           right: -20,
@@ -40,19 +34,19 @@ const TotalInstituciones = () => {
       </Box>
 
       {/* Content */}
-      <Box 
-        display="flex" 
-        flexDirection="column" 
+      <Box
+        display="flex"
+        flexDirection="column"
         alignItems="flex-start"
-        sx={{ 
+        sx={{
           p: 3,
           position: 'relative',
           zIndex: 1
         }}
       >
         {/* Label */}
-        <Typography 
-          variant="body2" 
+        <Typography
+          variant="body2"
           color="textSecondary"
           sx={{
             mb: 2,
@@ -65,39 +59,39 @@ const TotalInstituciones = () => {
         </Typography>
 
         {/* Number */}
-        <Typography 
-          variant="h3" 
-          component="div" 
-          sx={{ 
+        <Typography
+          variant="h3"
+          component="div"
+          sx={{
             fontWeight: 700,
             mb: 1,
-            color: '#9085da' // Color distintivo diferente al de TotalRows
+            color: '#9085da'
           }}
         >
-          {staticData.total.toLocaleString()}
+          {totalInstitutions.toLocaleString()}
         </Typography>
 
         {/* Description */}
-        <Typography 
-          variant="body1" 
+        <Typography
+          variant="body1"
           color="textSecondary"
           sx={{
             lineHeight: 1.5,
             maxWidth: '90%'
           }}
         >
-          {staticData.descripcion}
+          Total de instituciones con personas servidoras públicas sancionados
         </Typography>
 
         {/* Subtle indicator bar */}
-        <Box 
+        <Box
           sx={{
             position: 'absolute',
             bottom: 0,
             left: 0,
             width: '100%',
             height: '4px',
-            background: 'linear-gradient(90deg, #9085da 0%,rgb(99, 91, 155) 100%)', // Gradiente diferente
+            background: 'linear-gradient(90deg, #9085da 0%, rgb(99, 91, 155) 100%)',
             opacity: 0.7
           }}
         />

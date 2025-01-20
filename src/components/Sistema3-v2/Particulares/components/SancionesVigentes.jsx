@@ -1,20 +1,107 @@
-// SancionesVigentes.jsx
-import React from 'react';
-import { Paper, Typography, Box } from '@mui/material';
+import React, { useState, useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
+import { Paper, Typography, Box, CircularProgress } from '@mui/material';
 import { GavelOutlined } from '@mui/icons-material';
+import { searchInProvider } from '../../utils/api';
+import { buildSearchQuery } from '../../utils/search';
 
-const staticData = {
-  total: 10,
-  descripcion: "Total de sanciones vigentes en el 2024"
-};
+const SancionesVigentes = ({ providers }) => {
+  const [loading, setLoading] = useState(true);
+  const [total, setTotal] = useState(0);
+  const currentYear = new Date().getFullYear();
+  const analysisCompleted = useRef(false);
 
-const SancionesVigentes = () => {
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!providers?.length || analysisCompleted.current) return;
+
+      try {
+        setLoading(true);
+        const baseUrl = process.env.REACT_APP_S3_V2_BACKEND;
+        const emptyFilter = buildSearchQuery({});
+
+        // Obtener datos tanto de personas físicas como morales
+        const [fisicaResults, moralResults] = await Promise.all([
+          Promise.all(providers.map(provider => 
+            searchInProvider(baseUrl, 'faltas_graves_personas_fisicas', provider.id, emptyFilter)
+          )),
+          Promise.all(providers.map(provider => 
+            searchInProvider(baseUrl, 'faltas_graves_personas_morales', provider.id, emptyFilter)
+          ))
+        ]);
+
+        const currentDate = new Date();
+
+        // Función para contar sanciones vigentes
+        const countVigenteSanciones = (results) => {
+          let count = 0;
+          results.forEach(result => {
+            if (result?.providerData?.data) {
+              result.providerData.data.forEach(item => {
+                // Verificar si tiene sanciones de tipo inhabilitación
+                const hasInhabilitacion = item.tipoSancion?.some(sancion => 
+                  sancion.valor?.toLowerCase().includes('inhabilita')
+                );
+
+                if (hasInhabilitacion && item.fechaInicial && item.fechaFinal) {
+                  const fechaInicial = new Date(item.fechaInicial);
+                  const fechaFinal = new Date(item.fechaFinal);
+
+                  // Verificar si la sanción está vigente
+                  if (fechaInicial <= currentDate && fechaFinal >= currentDate) {
+                    count++;
+                  }
+                }
+              });
+            }
+          });
+          return count;
+        };
+
+        // Contar sanciones vigentes para ambos tipos
+        const vigenteFisicas = countVigenteSanciones(fisicaResults);
+        const vigenteMorales = countVigenteSanciones(moralResults);
+
+        // Actualizar el total
+        setTotal(vigenteFisicas + vigenteMorales);
+        analysisCompleted.current = true;
+
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [providers]);
+
+  if (loading) {
+    return (
+      <Paper 
+        elevation={0} 
+        sx={{
+          height: '100%',
+          minHeight: '200px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          background: 'linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%)',
+          border: '1px solid #e0e0e0',
+          borderRadius: 2,
+        }}
+      >
+        <CircularProgress />
+      </Paper>
+    );
+  }
+
   return (
     <Paper 
       elevation={0} 
       sx={{
         height: '100%',
-        minHeight: '200px', // Altura mínima fija
+        minHeight: '200px',
         background: 'linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%)',
         border: '1px solid #e0e0e0',
         borderRadius: 2,
@@ -59,7 +146,7 @@ const SancionesVigentes = () => {
             fontWeight: 500
           }}
         >
-          Sanciones Vigentes
+          Inhabilitaciones Vigentes
         </Typography>
 
         <Typography 
@@ -71,7 +158,7 @@ const SancionesVigentes = () => {
             color: '#963476'
           }}
         >
-          {staticData.total.toLocaleString()}
+          {total.toLocaleString()}
         </Typography>
 
         <Typography 
@@ -79,7 +166,7 @@ const SancionesVigentes = () => {
           color="textSecondary"
           sx={{
             lineHeight: 1.5,
-            height: '3em', // Altura fija para dos líneas
+            height: '3em',
             overflow: 'hidden',
             display: '-webkit-box',
             WebkitLineClamp: 2,
@@ -87,7 +174,7 @@ const SancionesVigentes = () => {
             textOverflow: 'ellipsis'
           }}
         >
-          {staticData.descripcion}
+          Total de sanciones de inhabilitación vigentes en el {currentYear}
         </Typography>
 
         <Box 
@@ -104,6 +191,10 @@ const SancionesVigentes = () => {
       </Box>
     </Paper>
   );
+};
+
+SancionesVigentes.propTypes = {
+  providers: PropTypes.array.isRequired
 };
 
 export default SancionesVigentes;

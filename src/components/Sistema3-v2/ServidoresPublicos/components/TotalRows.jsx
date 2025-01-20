@@ -81,7 +81,7 @@ const TotalRows = ({ totalCases }) => {
             maxWidth: '90%'
           }}
         >
-          Total de registros de personas públicas sancionadas
+          Total de registros de personas servidoras públicas sancionadas
         </Typography>
 
         {/* Subtle indicator bar */}
