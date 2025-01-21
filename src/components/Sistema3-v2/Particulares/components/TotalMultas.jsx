@@ -246,7 +246,7 @@ const TotalMultas = ({ providers }) => {
           sx={{ 
             fontWeight: 700,
             mb: 1,
-            color: '#2e7d32'
+            color: 'rgb(77, 204, 185)'
           }}
         >
           {formatCurrency(totalAmount)}
@@ -269,7 +269,7 @@ const TotalMultas = ({ providers }) => {
             left: 0,
             width: '100%',
             height: '4px',
-            background: 'linear-gradient(90deg, #2e7d32 0%, #81c784 100%)',
+            background: 'linear-gradient(90deg, rgb(52, 201, 178) 0%, #81c784 100%)',
             opacity: 0.7
           }}
         />

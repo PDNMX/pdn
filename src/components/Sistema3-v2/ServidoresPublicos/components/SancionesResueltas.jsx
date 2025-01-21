@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo, memo } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from "@mui/styles";
 import { Typography, Paper, CircularProgress } from "@mui/material";
 import { ResponsiveLine } from '@nivo/line';
 import { searchInProvider } from '../../utils/api';
 import { buildSearchQuery } from '../../utils/search';
+import { debounce } from 'lodash';
 
 const styles = theme => ({
     root: {
@@ -28,7 +29,7 @@ const styles = theme => ({
     }
 });
 
-const CustomTooltip = ({ point }) => {
+const CustomTooltip = memo(({ point }) => {
     return (
         <div
             style={{
@@ -43,7 +44,9 @@ const CustomTooltip = ({ point }) => {
             <div><strong>Sanciones:</strong> {point.data.y}</div>
         </div>
     );
-};
+});
+
+CustomTooltip.displayName = 'CustomTooltip';
 
 const fillMissingYears = (data) => {
     if (data.length < 2) return data;
@@ -67,45 +70,87 @@ const isValidYear = (year) => {
     return !isNaN(year) && year >= 1900 && year <= new Date().getFullYear();
 };
 
+const BATCH_SIZE = 3; // Número de providers a procesar simultáneamente
+
 const SancionesResueltas = ({ classes, providers }) => {
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);
     const isMounted = useRef(true);
     const analysisCompleted = useRef(false);
+    const dataCache = useRef(new Map());
+
+    const debouncedSetData = useRef(
+        debounce((newData) => {
+            setData(newData);
+        }, 300)
+    ).current;
+
+    const processResults = (items, yearCounts) => {
+        const years = {};
+        
+        items.reduce((acc, item) => {
+            if (item.resolucion?.fechaResolucion) {
+                const year = new Date(item.resolucion.fechaResolucion).getFullYear();
+                if (isValidYear(year)) {
+                    acc[year] = (acc[year] || 0) + 1;
+                }
+            }
+            return acc;
+        }, years);
+
+        Object.entries(years).forEach(([year, count]) => {
+            yearCounts.set(parseInt(year), (yearCounts.get(parseInt(year)) || 0) + count);
+        });
+    };
+
+    const processChartData = useMemo(() => (yearCounts) => {
+        const chartData = Array.from(yearCounts.entries())
+            .filter(([year]) => isValidYear(year))
+            .map(([year, count]) => ({ x: year, y: count }))
+            .sort((a, b) => a.x - b.x);
+
+        return fillMissingYears(chartData);
+    }, []);
+
+    const fetchAllPages = async (baseUrl, endpoint, providerId, filter) => {
+        const cacheKey = `${endpoint}-${providerId}`;
+        if (dataCache.current.has(cacheKey)) {
+            return dataCache.current.get(cacheKey);
+        }
+
+        try {
+            const firstPage = await searchInProvider(baseUrl, endpoint, providerId, filter);
+            if (!firstPage?.providerData?.pagination) return [];
+
+            const { totalItems, limit } = firstPage.providerData.pagination;
+            const totalPages = Math.ceil(totalItems / limit);
+            
+            let allData = firstPage.providerData.data || [];
+
+            if (totalPages > 1) {
+                const remainingPages = await Promise.all(
+                    Array.from({ length: totalPages - 1 }, (_, i) =>
+                        searchInProvider(baseUrl, endpoint, providerId, filter, i + 2, limit)
+                    )
+                );
+
+                remainingPages.forEach(page => {
+                    if (page?.providerData?.data) {
+                        allData = [...allData, ...page.providerData.data];
+                    }
+                });
+            }
+
+            dataCache.current.set(cacheKey, allData);
+            return allData;
+        } catch (error) {
+            console.error('Error fetching pages:', error);
+            return [];
+        }
+    };
 
     useEffect(() => {
         isMounted.current = true;
-
-        const fetchAllPages = async (baseUrl, endpoint, providerId, filter) => {
-            try {
-                const firstPage = await searchInProvider(baseUrl, endpoint, providerId, filter);
-                if (!firstPage?.providerData?.pagination) return [];
-
-                const { totalItems, limit } = firstPage.providerData.pagination;
-                const totalPages = Math.ceil(totalItems / limit);
-                
-                let allData = firstPage.providerData.data || [];
-
-                if (totalPages > 1) {
-                    const remainingPages = await Promise.all(
-                        Array.from({ length: totalPages - 1 }, (_, i) =>
-                            searchInProvider(baseUrl, endpoint, providerId, filter, i + 2, limit)
-                        )
-                    );
-
-                    remainingPages.forEach(page => {
-                        if (page?.providerData?.data) {
-                            allData = [...allData, ...page.providerData.data];
-                        }
-                    });
-                }
-
-                return allData;
-            } catch (error) {
-                console.error('Error fetching pages:', error);
-                return [];
-            }
-        };
 
         const fetchData = async () => {
             if (!providers?.length || analysisCompleted.current) return;
@@ -117,52 +162,38 @@ const SancionesResueltas = ({ classes, providers }) => {
 
                 const baseUrl = process.env.REACT_APP_S3_V2_BACKEND;
                 const emptyFilter = buildSearchQuery({});
-
-                let allGravesData = [];
-                let allNoGravesData = [];
-
-                for (const provider of providers) {
-                    if (!isMounted.current) return;
-
-                    const [gravesData, noGravesData] = await Promise.all([
-                        fetchAllPages(baseUrl, 'faltas_administrativas_graves', provider.id, emptyFilter),
-                        fetchAllPages(baseUrl, 'faltas_administrativas_no_graves', provider.id, emptyFilter)
-                    ]);
-
-                    allGravesData = [...allGravesData, ...gravesData];
-                    allNoGravesData = [...allNoGravesData, ...noGravesData];
-                }
-
                 const yearCounts = new Map();
 
-                const processResults = (items) => {
-                    items.forEach(item => {
-                        if (item.resolucion?.fechaResolucion) {
-                            const year = new Date(item.resolucion.fechaResolucion).getFullYear();
-                            if (isValidYear(year)) {
-                                yearCounts.set(year, (yearCounts.get(year) || 0) + 1);
-                            }
-                        }
-                    });
-                };
+                for (let i = 0; i < providers.length; i += BATCH_SIZE) {
+                    if (!isMounted.current) return;
 
-                processResults(allGravesData);
-                processResults(allNoGravesData);
+                    const batch = providers.slice(i, i + BATCH_SIZE);
+                    const batchResults = await Promise.all(
+                        batch.flatMap(provider => [
+                            fetchAllPages(baseUrl, 'faltas_administrativas_graves', provider.id, emptyFilter),
+                            fetchAllPages(baseUrl, 'faltas_administrativas_no_graves', provider.id, emptyFilter)
+                        ])
+                    );
 
-                const chartData = Array.from(yearCounts.entries())
-                    .filter(([year]) => isValidYear(year))
-                    .map(([year, count]) => ({ x: year, y: count }))
-                    .sort((a, b) => a.x - b.x);
+                    for (let j = 0; j < batchResults.length; j += 2) {
+                        processResults(batchResults[j], yearCounts);
+                        processResults(batchResults[j + 1], yearCounts);
+                    }
 
-                const filledData = fillMissingYears(chartData);
-                
+                    if (isMounted.current) {
+                        const chartData = processChartData(yearCounts);
+                        debouncedSetData(chartData);
+                    }
+                }
+
                 if (isMounted.current) {
-                    setData(filledData);
+                    const finalChartData = processChartData(yearCounts);
+                    setData(finalChartData);
                     analysisCompleted.current = true;
+                    setLoading(false);
                 }
             } catch (error) {
                 console.error('Error fetching data:', error);
-            } finally {
                 if (isMounted.current) {
                     setLoading(false);
                 }
@@ -173,20 +204,19 @@ const SancionesResueltas = ({ classes, providers }) => {
 
         return () => {
             isMounted.current = false;
+            debouncedSetData.cancel();
         };
-    }, [providers]);
+    }, [providers, processChartData, debouncedSetData]);
 
-    const nivoData = [
-        {
-            id: "sanciones",
-            data: data.map(d => ({
-                x: d.x,
-                y: d.y
-            }))
-        }
-    ];
+    const nivoData = useMemo(() => [{
+        id: "sanciones",
+        data: data.map(d => ({
+            x: d.x,
+            y: d.y
+        }))
+    }], [data]);
 
-    if (loading) {
+    if (loading && data.length === 0) {
         return (
             <Paper className={classes.root}>
                 <div className={classes.loadingContainer}>
@@ -204,64 +234,97 @@ const SancionesResueltas = ({ classes, providers }) => {
             <div className={classes.chartContainer}>
                 {data && data.length > 0 ? (
                     <ResponsiveLine
-                        data={nivoData}
-                        margin={{ top: 20, right: 30, bottom: 70, left: 70 }}
-                        xScale={{
-                            type: 'point'
-                        }}
-                        yScale={{
-                            type: 'linear',
-                            min: 'auto',
-                            max: 'auto',
-                        }}
-                        curve="monotoneX"
-                        axisTop={null}
-                        axisRight={null}
-                        axisBottom={{
-                            tickSize: 5,
-                            tickPadding: 5,
-                            tickRotation: -45,
-                            legend: 'Año de Resolución',
-                            legendOffset: 50,
-                            legendPosition: 'middle'
-                        }}
-                        axisLeft={{
-                            tickSize: 5,
-                            tickPadding: 5,
-                            tickRotation: 0,
-                            legend: 'Número de Sanciones',
-                            legendOffset: -50,
-                            legendPosition: 'middle'
-                        }}
-                        enableGridX={true}
-                        enableGridY={true}
-                        colors={['rgb(144, 133, 218)']}
-                        lineWidth={3}
-                        pointSize={10}
-                        pointColor={'rgb(226, 210, 247)'}
-                        pointBorderWidth={2}
-                        pointBorderColor={'rgb(144, 133, 218)'}
-                        enablePointLabel={false}
-                        useMesh={true}
-                        tooltip={({ point }) => (
-                            <CustomTooltip point={point} />
-                        )}
-                        theme={{
-                            axis: {
-                                legend: {
-                                    text: {
-                                        fontSize: 12
-                                    }
-                                }
-                            },
-                            grid: {
-                                line: {
-                                    stroke: '#ddd',
-                                    strokeWidth: 1
-                                }
-                            }
-                        }}
-                    />
+    data={nivoData}
+    margin={{ top: 20, right: 30, bottom: 70, left: 70 }}
+    layers={[
+        'grid',
+        'axes',
+        'areas',
+        'lines',
+        'points',
+        'slices',
+        'mesh',
+        'legends'
+    ]}
+    enableCrosshair={true}
+    sliceTooltip={({ slice }) => (
+        <div
+            style={{
+                background: 'white',
+                padding: '8px',
+                border: '1px solid #ccc',
+                borderRadius: '4px',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+            }}
+        >
+            {slice.points.map(point => (
+                <div key={point.id}>
+                    <strong>Año:</strong> {point.data.x}
+                    <br />
+                    <strong>Sanciones:</strong> {point.data.y}
+                </div>
+            ))}
+        </div>
+    )}
+    debugSlices={false}
+    xScale={{ type: 'point' }}
+    yScale={{ type: 'linear', min: 'auto', max: 'auto' }}
+    curve="monotoneX"
+    axisTop={null}
+    axisRight={null}
+    axisBottom={{
+        tickSize: 5,
+        tickPadding: 5,
+        tickRotation: -45,
+        legend: 'Año de Resolución',
+        legendOffset: 50,
+        legendPosition: 'middle'
+    }}
+    axisLeft={{
+        tickSize: 5,
+        tickPadding: 5,
+        tickRotation: 0,
+        legend: 'Número de Sanciones',
+        legendOffset: -50,
+        legendPosition: 'middle'
+    }}
+    enableGridX={true}
+    enableGridY={true}
+    colors={['rgb(144, 133, 218)']}
+    lineWidth={3}
+    pointSize={10}
+    pointColor={'rgb(226, 210, 247)'}
+    pointBorderWidth={2}
+    pointBorderColor={'rgb(144, 133, 218)'}
+    // Props requeridas que faltaban
+    enablePoints={true}
+    pointLabel="y"
+    enableArea={false}
+    areaOpacity={1}
+    areaBlendMode="normal"
+    areaBaselineValue={0}
+    enableSlices="x"
+    debugMesh={false}
+    isInteractive={true}
+    crosshairType="cross"
+    role="application"
+    defs={[]}
+    fill={[]}
+    enablePointLabel={false}
+    legends={[]}
+    useMesh={true}
+    tooltip={({ point }) => (
+        <CustomTooltip point={point} />
+    )}
+    theme={{
+        axis: {
+            legend: { text: { fontSize: 12 } }
+        },
+        grid: {
+            line: { stroke: '#ddd', strokeWidth: 1 }
+        }
+    }}
+/>
                 ) : (
                     <Typography variant="h6" align="center">
                         No hay datos disponibles

@@ -8,9 +8,11 @@ import TotalMultas from './components/TotalMultas';
 import SancionesVigentes from './components/SancionesVigentes';
 import TipoPersona from './components/TipoPersona';
 import FooterPage from './components/FooterPage';
+import SancionesResueltasAnio from './components/SancionesResueltasAnio';
 
 const DashboardParticulares = ({ providers }) => {
   const [totals, setTotals] = useState({
+    totalResolvedSanctions: 0,
     totalCases: 0,
     uniqueInstitutions: 0
   });
@@ -58,8 +60,11 @@ const DashboardParticulares = ({ providers }) => {
         />
       </Grid>
       <Grid item xs={12}>
+        <SancionesResueltasAnio providers={providers} />
+      </Grid>
+      <Grid item xs={12}>
         <FooterPage
-          dataSet="Sistema nacional de particulares y empresas sancionadas"
+          dataSet="Sistema nacional de servidores públicos y particulares sancionados"
           provider="Plataforma Digital Nacional"
           referenceDate={getCurrentDate()}
         />
