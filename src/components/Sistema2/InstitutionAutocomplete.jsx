@@ -1,14 +1,11 @@
 import React from 'react';
 import { Autocomplete, TextField, Typography } from '@mui/material';
 
-const InstitutionAutocomplete = ({ classes, entities, current_entity, handleSetState }) => {
+const InstitutionAutocomplete = ({ classes, entities, handleSetState }) => {
   // Analyze duplicates independently
   const checkDuplicates = (data) => {
     if (!data || !Array.isArray(data)) return;
 
-    // Log raw data for inspection
-    console.log('=== Raw Data for Inspection ===');
-    console.log(data);
 
     // Create a map of names and their occurrences
     const nameCount = {};
@@ -27,44 +24,6 @@ const InstitutionAutocomplete = ({ classes, entities, current_entity, handleSetS
       }
     });
 
-    // Always show all institutions info in console
-    console.log('\n=== Información de Instituciones ===');
-    console.log('Total de instituciones:', data.length);
-
-    // Group by supplier_id for better analysis
-    const groupedBySupplier = data.reduce((acc, curr) => {
-      const supplier = curr.supplier_id || 'Sin clasificar';
-      if (!acc[supplier]) {
-        acc[supplier] = [];
-      }
-      acc[supplier].push(curr);
-      return acc;
-    }, {});
-
-    console.log('\nInstituciones por supplier_id:');
-    Object.entries(groupedBySupplier).forEach(([supplier, institutions]) => {
-      console.log(`\n${supplier}: ${institutions.length} instituciones`);
-    });
-
-    // Detailed analysis of unclassified entities
-    const unclassified = data.filter(entity => !entity.supplier_id);
-    if (unclassified.length > 0) {
-      console.log('\n=== Detalle de Instituciones Sin Clasificar ===');
-      unclassified.forEach((entity) => {
-        console.log(entity);
-      });
-    }
-
-    // Log duplicates if found
-    if (Object.keys(duplicates).length > 0) {
-      console.log('\n=== Instituciones con Nombres Duplicados ===');
-      Object.entries(duplicates).forEach(([name, entities]) => {
-        console.log(`\nNombre: ${name}`);
-        entities.forEach(entity => {
-          console.log('ID:', entity.id, 'Clave:', entity.clave, 'Supplier:', entity.supplier_id);
-        });
-      });
-    }
   };
 
   // Call checkDuplicates whenever entities changes
