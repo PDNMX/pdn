@@ -45,12 +45,11 @@ const TotalMultas = ({ providers }) => {
       }
     };
 
-    const procesarMultas = (item, providerId) => {
+    const procesarMultas = (item) => {
       let multa = 0;
       
       if (item?.tipoSancion && Array.isArray(item.tipoSancion)) {
         item.tipoSancion.forEach(sancion => {
-          // Verificar tanto el valor como la clave
           const esSancionEconomica = 
             sancion?.valor?.toLowerCase().includes('económica') || 
             sancion?.clave === 'SANCION_ECONOMICA';
@@ -59,25 +58,12 @@ const TotalMultas = ({ providers }) => {
           const esMonedaMexicana = moneda.includes('mex') || moneda === 'mxn';
           const monto = sancion?.sancionEconomica?.monto;
     
-          if (providerId === 'SESEA_QUINTANA_ROO') {
-            console.log('\nValidaciones para QUINTANA_ROO:');
-            console.log('- Clave de sanción:', sancion.clave);
-            console.log('- ¿Es sanción económica?:', esSancionEconomica);
-            console.log('- Moneda:', moneda);
-            console.log('- ¿Es moneda mexicana?:', esMonedaMexicana);
-            console.log('- Monto:', monto);
-          }
-    
           if (esSancionEconomica && monto !== null && monto !== undefined && esMonedaMexicana) {
             const montoStr = monto.toString().replace(/[^0-9.]/g, '');
             const montoNumerico = parseFloat(montoStr);
             
             if (!isNaN(montoNumerico) && montoNumerico > 0) {
               multa += montoNumerico;
-              if (providerId === 'SESEA_QUINTANA_ROO') {
-                console.log('¡Multa procesada exitosamente!');
-                console.log('Monto agregado:', montoNumerico);
-              }
             }
           }
         });
@@ -98,45 +84,25 @@ const TotalMultas = ({ providers }) => {
         const emptyFilter = buildSearchQuery({});
 
         let totalMultas = 0;
-        
-        console.log('Iniciando procesamiento de multas con', providers.length, 'providers');
 
         for (const provider of providers) {
           if (!isMounted.current) return;
-
-          console.log(`\nProcesando provider: ${provider.id}`);
 
           const [fisicaData, moralData] = await Promise.all([
             fetchAllPages(baseUrl, 'faltas_graves_personas_fisicas', provider.id, emptyFilter),
             fetchAllPages(baseUrl, 'faltas_graves_personas_morales', provider.id, emptyFilter)
           ]);
 
-          console.log(`Provider ${provider.id}:`);
-          console.log('- Personas físicas:', fisicaData.length, 'registros');
-          console.log('- Personas morales:', moralData.length, 'registros');
-
-          // Procesar multas de personas físicas
           fisicaData.forEach(item => {
-            const multaItem = procesarMultas(item, provider.id);
+            const multaItem = procesarMultas(item);
             totalMultas += multaItem;
-            if (multaItem > 0) {
-              console.log(`Multa física encontrada en ${provider.id}:`, multaItem);
-            }
           });
 
-          // Procesar multas de personas morales
           moralData.forEach(item => {
-            const multaItem = procesarMultas(item, provider.id);
+            const multaItem = procesarMultas(item);
             totalMultas += multaItem;
-            if (multaItem > 0) {
-              console.log(`Multa moral encontrada en ${provider.id}:`, multaItem);
-            }
           });
-
-          console.log(`Total acumulado después de provider ${provider.id}:`, totalMultas);
         }
-
-        console.log('\nTotal final de multas:', totalMultas);
 
         if (isMounted.current) {
           setTotalAmount(totalMultas);

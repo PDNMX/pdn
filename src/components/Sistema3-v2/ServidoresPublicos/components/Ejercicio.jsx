@@ -15,7 +15,6 @@ import {
 import { searchInProvider } from '../../utils/api';
 import { buildSearchQuery } from '../../utils/search';
 
-// Función para normalizar nombres de instituciones
 const normalizeInstitutionName = (name) => {
   if (!name) return '';
   return name
@@ -27,7 +26,6 @@ const normalizeInstitutionName = (name) => {
     .replace(/\s+/g, ' ');
 };
 
-// Definición de estilos
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -57,10 +55,7 @@ const styles = theme => ({
   }
 });
 
-const logInstitutionAnalysis = (results, type) => {
-  console.log(`\n=== Análisis de Instituciones ${type} ===`);
-  
-  // Recolectar todas las instituciones originales
+const logInstitutionAnalysis = (results) => {
   const originalInstitutions = [];
   results.forEach(result => {
     if (result?.providerData?.data) {
@@ -72,7 +67,6 @@ const logInstitutionAnalysis = (results, type) => {
     }
   });
 
-  // Agrupar por nombre normalizado
   const groupedByNormalized = new Map();
   originalInstitutions.forEach(original => {
     const normalized = normalizeInstitutionName(original);
@@ -82,28 +76,12 @@ const logInstitutionAnalysis = (results, type) => {
     groupedByNormalized.get(normalized).add(original);
   });
 
-  // Mostrar duplicados
-  console.log('\nGrupos de nombres similares encontrados:');
-  groupedByNormalized.forEach((variations, normalized) => {
-    if (variations.size > 1) {
-      console.log('\nNombre normalizado:', normalized);
-      console.log('Variaciones encontradas:');
-      variations.forEach(v => console.log('  -', v));
-    }
-  });
-
-  console.log('\nEstadísticas:');
-  console.log('Total de nombres originales:', originalInstitutions.length);
-  console.log('Total de instituciones únicas después de normalización:', groupedByNormalized.size);
-  console.log('Duplicados eliminados:', originalInstitutions.length - groupedByNormalized.size);
-
   return {
     originalInstitutions,
     groupedByNormalized
   };
 };
 
-// Componente StatsCard
 const StatsCard = ({ title, total, subtitle, icon: Icon, gradient, color }) => (
   <Paper 
     elevation={0} 
@@ -207,7 +185,6 @@ const Ejercicio = ({ classes, providers, onDataUpdate }) => {
     }
   });
 
-  // Usar useRef para controlar si ya se hizo el análisis
   const analysisCompleted = useRef(false);
   
   useEffect(() => {
@@ -228,14 +205,12 @@ const Ejercicio = ({ classes, providers, onDataUpdate }) => {
           ))
         ]);
 
-        // Solo hacer el análisis una vez
         if (!analysisCompleted.current) {
-          logInstitutionAnalysis(gravesResults, 'Graves');
-          logInstitutionAnalysis(noGravesResults, 'No Graves');
+          logInstitutionAnalysis(gravesResults);
+          logInstitutionAnalysis(noGravesResults);
           analysisCompleted.current = true;
         }
 
-        // Process graves data
         const gravesInstitutions = new Map();
         let gravesTotal = 0;
         gravesResults.forEach(result => {
@@ -256,7 +231,6 @@ const Ejercicio = ({ classes, providers, onDataUpdate }) => {
           }
         });
 
-        // Process no graves data
         const noGravesInstitutions = new Map();
         let noGravesTotal = 0;
         noGravesResults.forEach(result => {
@@ -277,14 +251,12 @@ const Ejercicio = ({ classes, providers, onDataUpdate }) => {
           }
         });
 
-        // Calcular totales
         const totalCases = gravesTotal + noGravesTotal;
         const uniqueInstitutions = new Set([
           ...gravesInstitutions.keys(),
           ...noGravesInstitutions.keys()
         ]).size;
 
-        // Actualizar datos del componente
         setData({
           graves: {
             total: gravesTotal,
@@ -296,20 +268,11 @@ const Ejercicio = ({ classes, providers, onDataUpdate }) => {
           }
         });
 
-        // Notificar al padre de los totales
         if (onDataUpdate) {
           onDataUpdate({
             totalCases,
             uniqueInstitutions
           });
-        }
-
-        // Log resumen final (solo una vez)
-        if (!analysisCompleted.current) {
-          console.log('\n=== Resumen Final de Instituciones ===');
-          console.log('Total instituciones únicas graves:', gravesInstitutions.size);
-          console.log('Total instituciones únicas no graves:', noGravesInstitutions.size);
-          console.log('Total instituciones únicas combinadas:', uniqueInstitutions);
         }
 
       } catch (error) {
@@ -342,7 +305,6 @@ const Ejercicio = ({ classes, providers, onDataUpdate }) => {
   };
 
   return (
-    
     <Grid container spacing={3} className={classes.root}>
       <Grid item xs={12} md={6}>
         <StatsCard

@@ -42,16 +42,16 @@ const DashboardServidores = ({ providers }) => {
 
   return (
     <Grid container spacing={3} sx={{ p: 3 }}>
-      <Grid item xs={4}>
+      <Grid item xs={12} sm={12} md={4}>
         <TotalRows totalCases={totals.totalCases} />
       </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={12} sm={12} md={4}>
         <TotalInstituciones totalInstitutions={totals.uniqueInstitutions} />
       </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={12} sm={12} md={4}>
         <TotalRamos key={`total-ramos-${providers.length}`} providers={providers} />
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={12} sm={12} md={12}>
         <Ejercicio
           providers={providers}
           onDataUpdate={handleDataUpdate}
