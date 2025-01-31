@@ -188,11 +188,13 @@ const Ejercicio = ({ classes, providers, onDataUpdate }) => {
   const analysisCompleted = useRef(false);
   
   useEffect(() => {
+    let isMounted = true;
+    
     const fetchData = async () => {
       if (!providers?.length || analysisCompleted.current) return;
 
       try {
-        setLoading(true);
+        if (isMounted) setLoading(true);
         const baseUrl = process.env.REACT_APP_S3_V2_BACKEND;
         const emptyFilter = buildSearchQuery({});
 
@@ -204,6 +206,8 @@ const Ejercicio = ({ classes, providers, onDataUpdate }) => {
             searchInProvider(baseUrl, 'faltas_administrativas_no_graves', provider.id, emptyFilter)
           ))
         ]);
+
+        if (!isMounted) return;
 
         if (!analysisCompleted.current) {
           logInstitutionAnalysis(gravesResults);
@@ -251,6 +255,8 @@ const Ejercicio = ({ classes, providers, onDataUpdate }) => {
           }
         });
 
+        if (!isMounted) return;
+
         const totalCases = gravesTotal + noGravesTotal;
         const uniqueInstitutions = new Set([
           ...gravesInstitutions.keys(),
@@ -268,7 +274,7 @@ const Ejercicio = ({ classes, providers, onDataUpdate }) => {
           }
         });
 
-        if (onDataUpdate) {
+        if (isMounted && onDataUpdate) {
           onDataUpdate({
             totalCases,
             uniqueInstitutions
@@ -276,13 +282,21 @@ const Ejercicio = ({ classes, providers, onDataUpdate }) => {
         }
 
       } catch (error) {
-        console.error('Error fetching data:', error);
+        if (isMounted) {
+          console.error('Error fetching data:', error);
+        }
       } finally {
-        setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     };
 
     fetchData();
+
+    return () => {
+      isMounted = false;
+    };
   }, [providers, onDataUpdate]);
 
   if (loading) {
