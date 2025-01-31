@@ -24,7 +24,6 @@ const TotalRamos = ({ providers }) => {
         setLoading(true);
         const baseUrl = process.env.REACT_APP_S3_V2_BACKEND;
 
-        // Crear filtros específicos para inhabilitaciones
         const filterGraves = buildSearchQuery({
           tipoSancion: SANCION_GRAVE_TIPOS.INHABILITACION
         });
@@ -33,7 +32,6 @@ const TotalRamos = ({ providers }) => {
           tipoSancion: SANCION_NO_GRAVE_TIPOS.INHABILITACION
         });
 
-        // Obtener datos de ambos tipos de faltas con filtros
         const [gravesResults, noGravesResults] = await Promise.all([
           Promise.all(providers.map(provider => 
             searchInProvider(baseUrl, 'faltas_administrativas_graves', provider.id, filterGraves)
@@ -43,7 +41,6 @@ const TotalRamos = ({ providers }) => {
           ))
         ]);
 
-        // Contar totales de cada tipo
         const countGraves = gravesResults.reduce((total, result) => {
           return total + (result?.providerData?.pagination?.totalItems || 0);
         }, 0);
@@ -53,12 +50,6 @@ const TotalRamos = ({ providers }) => {
         }, 0);
 
         const totalInhabilitaciones = countGraves + countNoGraves;
-
-        console.log('Resumen de inhabilitaciones:', {
-          graves: countGraves,
-          noGraves: countNoGraves,
-          total: totalInhabilitaciones
-        });
 
         setInhabilitaciones({
           graves: countGraves,
@@ -141,7 +132,6 @@ const TotalRamos = ({ providers }) => {
           }}
         >
           {formatNumber(inhabilitaciones.total)}
-         
         </Typography>
 
         <Typography 
