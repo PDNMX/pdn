@@ -5,12 +5,15 @@ import PropTypes from 'prop-types';
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import FormServidores from './ServidoresPublicos/FormServidores';
+import DashboardServidores from './ServidoresPublicos/DashboardServidores';
 import Descarga from '../Compartidos/Descarga';
 import HeaderV2 from '../HomeV2/HeaderV2';
 import pdnRoutes from '../../routes/index';
 import { ThemeProvider } from '@mui/material/styles';
 import ThemeV2 from '../../ThemeV2';
 import FormParticulares from './Particulares/FormParticulares';
+import DashboardParticulares from './Particulares/DashboardParticulares';
+import { BarChartOutlined } from '@mui/icons-material';
 
 const styles = (theme) => ({
   root: {
@@ -190,6 +193,26 @@ const Index = ({ classes }) => {
                   }
                   aria-label="particulares"
                 />
+                <Tab
+                  className={classes.tab}
+                  icon={
+                    <Box className={classes.tabLabel}>
+                      <BarChartOutlined className={classes.tabIcon} />
+                      <span>Visor de datos (personas servidoras públicas sancionadas)</span>
+                    </Box>
+                  }
+                  aria-label="visor servidores públicos"
+                />
+                <Tab
+                  className={classes.tab}
+                  icon={
+                    <Box className={classes.tabLabel}>
+                      <BarChartOutlined className={classes.tabIcon} />
+                      <span>Visor de datos (particulares sancionados)</span>
+                    </Box>
+                  }
+                  aria-label="visor particulares"
+                />                
               </Tabs>
             </Box>
 
@@ -199,6 +222,12 @@ const Index = ({ classes }) => {
               </TabPanel>
               <TabPanel value={value} index={1} className={classes.tabPanel}>
                 <FormParticulares providers={providers}/>
+              </TabPanel>
+              <TabPanel value={value} index={2} className={classes.tabPanel}>
+                <DashboardServidores providers={providers}/>
+              </TabPanel>
+              <TabPanel value={value} index={3} className={classes.tabPanel}>
+                <DashboardParticulares providers={providers}/>
               </TabPanel>
             </ThemeProvider>
           </Paper>

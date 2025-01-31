@@ -9,6 +9,7 @@ import { ThemeProvider } from '@mui/material/styles'
 import themeV2 from '../../ThemeV2'
 import ReactGA from 'react-ga4'
 import ButtonPDN from '../Compartidos/ButtonPDN'
+import InstitutionAutocomplete from './InstitutionAutocomplete'
 
 const styles = theme => ({
   root: {
@@ -108,7 +109,7 @@ const EntradasBuscador = props => {
           </Grid>
 
           <Grid item xs={12} md={8}>
-            <FormControl className={classes.formControl}>
+            {/*<FormControl className={classes.formControl}>
               <TextField style={{ background: '#f2f0f2' }} id='campoSelectInstitucion' name='campoSelectInstitucion-select' margin='normal' select label='Institución' value={current_entity} onChange={(e) => handleSetState('current_entity', e)}>
                 <MenuItem value='ANY' key='ANY'>
                   Todas
@@ -121,7 +122,7 @@ const EntradasBuscador = props => {
                   )
                 })}
               </TextField>
-              {/* <InputLabel id={'campoSelectInstitucion'}>Institución</InputLabel>
+               <InputLabel id={'campoSelectInstitucion'}>Institución</InputLabel>
                         <Select
                             labelId = {'campoSelectInstitucion'}
                             id = {'campoSelectInstitucion-select'}
@@ -143,8 +144,17 @@ const EntradasBuscador = props => {
                                     </MenuItem>
                                 }))
                             }
-                        </Select> */}
-            </FormControl>
+                        </Select> 
+            </FormControl>*/}
+
+<FormControl className={classes.formControl}>
+    <InstitutionAutocomplete
+      classes={classes}
+      entities={entities}
+      current_entity={current_entity}
+      handleSetState={handleSetState}
+    />
+  </FormControl>
           </Grid>
 
           <Grid item md={6} xs={12}>
