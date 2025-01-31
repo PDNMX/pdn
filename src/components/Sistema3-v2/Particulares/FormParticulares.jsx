@@ -228,7 +228,7 @@ const FormParticulares = ({ classes, providers }) => {
             </Select>
           </FormControl>
         </Grid>
-        <Grid item xs={12} md={6} Grid>
+        <Grid item xs={12} md={6}>
           <FormControl variant="outlined" className={classes.formControl} size="small" fullWidth>
             <InputLabel shrink>Falta Cometida</InputLabel>
             <Select
