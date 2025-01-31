@@ -3,7 +3,14 @@ import PropTypes from 'prop-types';
 import { Paper, Typography, Box } from '@mui/material';
 import { PeopleAlt } from '@mui/icons-material';
 
+
+
 const TotalRows = ({ totalCases }) => {
+
+  const formatNumber = (number) => {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
   return (
     <Paper
       elevation={0}
@@ -69,7 +76,7 @@ const TotalRows = ({ totalCases }) => {
             color: '#9c27b0'
           }}
         >
-          {totalCases.toLocaleString()}
+           {formatNumber(totalCases)}
         </Typography>
 
         {/* Description */}

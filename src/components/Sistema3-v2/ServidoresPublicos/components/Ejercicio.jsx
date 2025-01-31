@@ -336,14 +336,19 @@ const Ejercicio = ({ classes, providers, onDataUpdate }) => {
       </Box>
     );
   }
+  
+  const formatNumber = (number) => {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
 
   return (
+    
     <Grid container spacing={3} className={classes.root}>
       <Grid item xs={12} md={6}>
         <StatsCard
           title="Personas servidoras públicas con Faltas Graves"
-          total={data.graves.total}
-          subtitle={`${data.graves.instituciones.size} instituciones involucradas`}
+          total={formatNumber(data.graves.total)}
+          subtitle={`${formatNumber(data.graves.instituciones.size)} Entes públicos involucrados`}
           icon={ErrorOutline}
           gradient="linear-gradient(90deg, #d32f2f 0%, #f37878 100%)"
           color="#f37878"
@@ -353,8 +358,8 @@ const Ejercicio = ({ classes, providers, onDataUpdate }) => {
       <Grid item xs={12} md={6}>
         <StatsCard
           title="Personas servidoras públicas con Faltas No Graves"
-          total={data.noGraves.total}
-          subtitle={`${data.noGraves.instituciones.size} instituciones involucradas`}
+          total={formatNumber(data.noGraves.total)}
+          subtitle={`${formatNumber(data.noGraves.instituciones.size)} Entes públicos involucrados`}
           icon={Warning}
           gradient="linear-gradient(90deg, #f57c00 0%, #f5b16b 100%)"
           color="#f5b16b"

@@ -3,6 +3,11 @@ import { Paper, Typography, Box } from '@mui/material';
 import { AccountBalance } from '@mui/icons-material';
 
 const TotalInstituciones = ({ totalInstitutions }) => {
+
+  const formatNumber = (number) => {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
   return (
     <Paper
       elevation={0}
@@ -55,7 +60,7 @@ const TotalInstituciones = ({ totalInstitutions }) => {
             fontWeight: 500
           }}
         >
-          Instituciones Registradas
+          Entes públicos Registrados
         </Typography>
 
         {/* Number */}
@@ -68,7 +73,7 @@ const TotalInstituciones = ({ totalInstitutions }) => {
             color: '#9085da'
           }}
         >
-          {totalInstitutions.toLocaleString()}
+          {formatNumber(totalInstitutions)}       
         </Typography>
 
         {/* Description */}
@@ -80,7 +85,7 @@ const TotalInstituciones = ({ totalInstitutions }) => {
             maxWidth: '90%'
           }}
         >
-          Total de instituciones con personas servidoras públicas sancionados
+          Total de Entes públicos con personas servidoras públicas sancionados
         </Typography>
 
         {/* Subtle indicator bar */}

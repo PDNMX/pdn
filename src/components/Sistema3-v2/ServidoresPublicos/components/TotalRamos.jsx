@@ -75,6 +75,10 @@ const TotalRamos = ({ providers }) => {
     fetchData();
   }, [providers]);
 
+  const formatNumber = (number) => {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
   return (
     <Paper 
       elevation={0} 
@@ -136,7 +140,8 @@ const TotalRamos = ({ providers }) => {
             color: '#963476'
           }}
         >
-          {inhabilitaciones.total.toLocaleString()}
+          {formatNumber(inhabilitaciones.total)}
+         
         </Typography>
 
         <Typography 
@@ -147,7 +152,7 @@ const TotalRamos = ({ providers }) => {
             maxWidth: '90%'
           }}
         >
-          {inhabilitaciones.graves.toLocaleString()} por faltas graves
+          {formatNumber(inhabilitaciones.graves)} por faltas graves
         </Typography>
         <Typography 
           variant="body1" 
@@ -157,7 +162,7 @@ const TotalRamos = ({ providers }) => {
             maxWidth: '90%'
           }}
         >
-          {inhabilitaciones.noGraves.toLocaleString()} por faltas no graves
+          {formatNumber(inhabilitaciones.noGraves)} por faltas no graves
         </Typography>
 
         <Box 

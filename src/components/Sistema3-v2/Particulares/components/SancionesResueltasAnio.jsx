@@ -285,7 +285,7 @@ const SancionesResueltasAnio = ({ providers }) => {
     return (
         <Paper className={classes.root} elevation={3}>
             <Typography variant="h6" className={classes.titulo}>
-                <b>Sanciones Resueltas por Año</b>
+                <b>Sanciones emitidas por Año</b>
             </Typography>
             <div className={classes.chartContainer}>
                 {data && data.length > 0 ? (
@@ -303,25 +303,47 @@ const SancionesResueltasAnio = ({ providers }) => {
                             'legends'
                         ]}
                         enableCrosshair={true}
-                        sliceTooltip={({ slice }) => (
-                            <div
-                                style={{
-                                    background: 'white',
-                                    padding: '8px',
-                                    border: '1px solid #ccc',
-                                    borderRadius: '4px',
-                                    boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
-                                }}
-                            >
-                                {slice.points.map(point => (
-                                    <div key={point.id}>
-                                        <strong>Año:</strong> {point.data.x}
-                                        <br />
-                                        <strong>Sanciones:</strong> {point.data.y}
-                                    </div>
-                                ))}
-                            </div>
-                        )}
+                        sliceTooltip={({ slice }) => {
+                            const formatNumber = (number) => {
+                                return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                            };
+                        
+                            return (
+                                <div
+                                    style={{
+                                        background: 'white',
+                                        padding: '15px',
+                                        margin: '25px',
+                                        border: '1px solid #ccc',
+                                        borderRadius: '4px',
+                                        boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                                        textAlign: 'center'
+                                    }}
+                                >
+                                    {slice.points.map(point => (
+                                        <div key={point.id}>
+                                            <div
+                                            style={{
+                                                background: 'rgb(255, 255, 255)',
+                                                color: 'rgb(17, 17, 17)',
+                                                padding: '5px',
+                                                borderBottom: '1px solid rgb(199, 70, 93)'
+                                            }}
+                                            >
+                                            Año: {point.data.x} </div>
+                                            <div
+                                            style={{
+                                                background: 'rgb(255, 251, 251)',
+                                                color: 'rgb(255, 68, 99)',
+                                                padding: '15px',
+                                            }}
+                                            >
+                                            {formatNumber(point.data.y)} <strong>sanciones</strong> </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            );
+                        }}
                         debugSlices={false}
                         xScale={{ type: 'point' }}
                         yScale={{ type: 'linear', min: 'auto', max: 'auto' }}
@@ -329,11 +351,11 @@ const SancionesResueltasAnio = ({ providers }) => {
                         axisTop={null}
                         axisRight={null}
                         axisBottom={{
-                            tickSize: 5,
+                            tickSize: 8,
                             tickPadding: 5,
                             tickRotation: -45,
                             legend: 'Año de Resolución',
-                            legendOffset: 50,
+                            legendOffset: 60,
                             legendPosition: 'middle'
                         }}
                         axisLeft={{
@@ -341,17 +363,17 @@ const SancionesResueltasAnio = ({ providers }) => {
                             tickPadding: 5,
                             tickRotation: 0,
                             legend: 'Número de Sanciones',
-                            legendOffset: -50,
+                            legendOffset: -60,
                             legendPosition: 'middle'
                         }}
                         enableGridX={true}
                         enableGridY={true}
                         colors={['rgb(144, 133, 218)']}
                         lineWidth={3}
-                        pointSize={10}
-                        pointColor={'rgb(226, 210, 247)'}
+                        pointSize={12}
+                        pointColor={'rgb(255, 68, 99)'}
                         pointBorderWidth={2}
-                        pointBorderColor={'rgb(144, 133, 218)'}
+                        pointBorderColor={'rgb(166, 133, 218)'}
                         enablePoints={true}
                         pointLabel="y"
                         enableArea={false}
@@ -373,7 +395,8 @@ const SancionesResueltasAnio = ({ providers }) => {
                         )}
                         theme={{
                             axis: {
-                                legend: { text: { fontSize: 12 } }
+                                legend: { text: { fontSize: 16 } },
+                                ticks: { text: { fontSize: 14 } }
                             },
                             grid: {
                                 line: { stroke: '#ddd', strokeWidth: 1 }

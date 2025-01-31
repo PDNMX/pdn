@@ -1,14 +1,16 @@
 // TotalParticulares.jsx
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Paper, Typography, Box } from '@mui/material';
 import { Business } from '@mui/icons-material';
 
-const staticData = {
-  total: 17,
-  descripcion: "Total de registros de particulares sancionados"
-};
 
-const TotalParticulares = () => {
+const TotalParticulares = ({ totalCases }) => {
+  const descripcion = "Total de registros de particulares sancionados";
+  const formatNumber = (number) => {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
   return (
     <Paper 
       elevation={0} 
@@ -71,7 +73,7 @@ const TotalParticulares = () => {
             color: '#9c27b0'
           }}
         >
-          {staticData.total.toLocaleString()}
+           {formatNumber(totalCases)}
         </Typography>
 
         <Typography 
@@ -87,7 +89,7 @@ const TotalParticulares = () => {
             textOverflow: 'ellipsis'
           }}
         >
-          {staticData.descripcion}
+          {descripcion}
         </Typography>
 
         <Box 
@@ -104,6 +106,10 @@ const TotalParticulares = () => {
       </Box>
     </Paper>
   );
+};
+
+TotalParticulares.propTypes = {
+  totalCases: PropTypes.number.isRequired
 };
 
 export default TotalParticulares;

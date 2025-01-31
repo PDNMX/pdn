@@ -237,7 +237,7 @@ const TotalMultas = ({ providers }) => {
             fontWeight: 500
           }}
         >
-          Multas Económicas
+          Sanciones económicas
         </Typography>
 
         <Typography 

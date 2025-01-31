@@ -43,16 +43,18 @@ const DashboardParticulares = ({ providers }) => {
   }
 
   return (
-    <Grid container spacing={3} sx={{ p: 3 }}>
-      <Grid item xs={4}>
+    <Grid container 
+    spacing={3} sx={{ p: 3 }}
+    >
+      <Grid item xs={6}>
         <TotalParticulares totalCases={totals.totalCases} />
       </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={6}>
         <TotalMultas providers={providers} />
       </Grid>
-      <Grid item xs={4}>
+      {/* <Grid item xs={4}>
         <SancionesVigentes providers={providers} />
-      </Grid>
+      </Grid> */}
       <Grid item xs={12}>
         <TipoPersona
           providers={providers}

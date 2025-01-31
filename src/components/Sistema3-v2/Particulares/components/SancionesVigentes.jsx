@@ -7,7 +7,8 @@ import { buildSearchQuery } from '../../utils/search';
 
 const SancionesVigentes = ({ providers }) => {
   const [loading, setLoading] = useState(true);
-  const [total, setTotal] = useState(0);
+  const [totalGeneral, setTotalGeneral] = useState(0);
+  const [totalVigentes, setTotalVigentes] = useState(0);
   const currentYear = new Date().getFullYear();
   const analysisCompleted = useRef(false);
 
@@ -20,7 +21,6 @@ const SancionesVigentes = ({ providers }) => {
         const baseUrl = process.env.REACT_APP_S3_V2_BACKEND;
         const emptyFilter = buildSearchQuery({});
 
-        // Obtener datos tanto de personas físicas como morales
         const [fisicaResults, moralResults] = await Promise.all([
           Promise.all(providers.map(provider => 
             searchInProvider(baseUrl, 'faltas_graves_personas_fisicas', provider.id, emptyFilter)
@@ -32,13 +32,28 @@ const SancionesVigentes = ({ providers }) => {
 
         const currentDate = new Date();
 
-        // Función para contar sanciones vigentes
-        const countVigenteSanciones = (results) => {
+        // Función para contar el total de inhabilitaciones
+        const contarTotalInhabilitaciones = (results) => {
+          let count = 0;
+          results.forEach(result => {
+            if (result?.providerData?.data) {
+              count += result.providerData.data.reduce((acc, item) => {
+                const hasInhabilitacion = item.tipoSancion?.some(sancion => 
+                  sancion.valor?.toLowerCase().includes('inhabilita')
+                );
+                return hasInhabilitacion ? acc + 1 : acc;
+              }, 0);
+            }
+          });
+          return count;
+        };
+
+        // Función separada para contar inhabilitaciones vigentes
+        const contarInhabilitacionesVigentes = (results) => {
           let count = 0;
           results.forEach(result => {
             if (result?.providerData?.data) {
               result.providerData.data.forEach(item => {
-                // Verificar si tiene sanciones de tipo inhabilitación
                 const hasInhabilitacion = item.tipoSancion?.some(sancion => 
                   sancion.valor?.toLowerCase().includes('inhabilita')
                 );
@@ -47,7 +62,6 @@ const SancionesVigentes = ({ providers }) => {
                   const fechaInicial = new Date(item.fechaInicial);
                   const fechaFinal = new Date(item.fechaFinal);
 
-                  // Verificar si la sanción está vigente
                   if (fechaInicial <= currentDate && fechaFinal >= currentDate) {
                     count++;
                   }
@@ -58,12 +72,14 @@ const SancionesVigentes = ({ providers }) => {
           return count;
         };
 
-        // Contar sanciones vigentes para ambos tipos
-        const vigenteFisicas = countVigenteSanciones(fisicaResults);
-        const vigenteMorales = countVigenteSanciones(moralResults);
+        // Calcular totales por separado
+        const totalFisicas = contarTotalInhabilitaciones(fisicaResults);
+        const totalMorales = contarTotalInhabilitaciones(moralResults);
+        const vigentesFisicas = contarInhabilitacionesVigentes(fisicaResults);
+        const vigentesMorales = contarInhabilitacionesVigentes(moralResults);
 
-        // Actualizar el total
-        setTotal(vigenteFisicas + vigenteMorales);
+        setTotalGeneral(totalFisicas + totalMorales);
+        setTotalVigentes(vigentesFisicas + vigentesMorales);
         analysisCompleted.current = true;
 
       } catch (error) {
@@ -76,6 +92,7 @@ const SancionesVigentes = ({ providers }) => {
     fetchData();
   }, [providers]);
 
+  // El resto del componente permanece igual...
   if (loading) {
     return (
       <Paper 
@@ -146,7 +163,7 @@ const SancionesVigentes = ({ providers }) => {
             fontWeight: 500
           }}
         >
-          Inhabilitaciones Vigentes
+          Inhabilitaciones
         </Typography>
 
         <Typography 
@@ -158,7 +175,7 @@ const SancionesVigentes = ({ providers }) => {
             color: '#963476'
           }}
         >
-          {total.toLocaleString()}
+          {totalGeneral.toLocaleString()}
         </Typography>
 
         <Typography 
@@ -174,7 +191,7 @@ const SancionesVigentes = ({ providers }) => {
             textOverflow: 'ellipsis'
           }}
         >
-          Total de sanciones de inhabilitación vigentes en el {currentYear}
+          {`${totalVigentes.toLocaleString()} Inhabilitaciones vigentes en el ${currentYear}`}
         </Typography>
 
         <Box 

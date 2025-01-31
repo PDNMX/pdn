@@ -218,7 +218,7 @@ const TipoPersona = ({ classes, providers, onDataUpdate }) => {
         <StatsCard
           title="Personas Físicas Sancionadas"
           total={data.fisica.total}
-          subtitle={`${data.fisica.providersWithData} ${data.fisica.providersWithData === 1 ? 'proveedor' : 'proveedores'} de información`}
+          // subtitle={`${data.fisica.providersWithData} ${data.fisica.providersWithData === 1 ? 'proveedor' : 'proveedores'} de información`}
           icon={Person}
           gradient="linear-gradient(90deg, #1976d2 0%, #64b5f6 100%)"
           color="#1976d2"
@@ -229,7 +229,7 @@ const TipoPersona = ({ classes, providers, onDataUpdate }) => {
         <StatsCard
           title="Personas Morales Sancionadas" 
           total={data.moral.total}
-          subtitle={`${data.moral.providersWithData} ${data.moral.providersWithData === 1 ? 'proveedor' : 'proveedores'} de información`}
+          //subtitle={`${data.moral.providersWithData} ${data.moral.providersWithData === 1 ? 'proveedor' : 'proveedores'} de información`}
           icon={Business}
           gradient="linear-gradient(90deg, #2e7d32 0%, #81c784 100%)"
           color="#2e7d32"

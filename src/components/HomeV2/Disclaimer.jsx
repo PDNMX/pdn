@@ -71,7 +71,7 @@ const AlertDialog = () => {
           </List>
           </StyledList>
           <Typography paragraph>
-          <Highlight>Recuerda:</Highlight> la PDN es modular y escalable; esta versión es un paso más en su constante desarrollo y no debe considerarse como definitiva.
+          <Highlight>Recuerda</Highlight> que la PDN es modular y escalable; esta versión es un paso más en su constante desarrollo y no debe considerarse como definitiva.
           </Typography>
           {/* <Typography>
             <Highlight>Compromiso con la protección de datos personales</Highlight>
@@ -94,7 +94,7 @@ const AlertDialog = () => {
             <Link href="https://drive.google.com/file/d/18Y_bcTXFqwIX0j96efeLchUIBsUFfmZr/view" target="_blank" rel="noopener noreferrer">
               Aviso de Privacidad
             </Link>{' '}
-            para comprender los lineamientos bajo los cuales se protege tu información.
+            para comprender los lineamientos bajo los cuales se protege la información de la PDN.
           </Typography>
           <Typography paragraph>
             Comparte tus comentarios y sugerencias sobre las funcionalidades o tu experiencia de usuario a través de la liga{' '}
