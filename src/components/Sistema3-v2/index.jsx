@@ -27,17 +27,15 @@ const styles = (theme) => ({
   },
   mainContainer: {
     backgroundColor: '#fff',
-    /* borderRadius: '12px', */
-    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)', // Sombra más pronunciada
+    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
     overflow: 'hidden',
     marginTop: theme.spacing(3),
   },
   tabsContainer: {
-    backgroundColor: '#ede7f6', // Color de fondo más distintivo
-    borderBottom: '1px solid rgba(156, 39, 176, 0.2)', // Borde con el color primario
+    backgroundColor: '#ede7f6',
+    borderBottom: '1px solid rgba(156, 39, 176, 0.2)',
     position: 'relative',
     '&::after': {
-      // Sombra sutil debajo de los tabs
       content: '""',
       position: 'absolute',
       bottom: '-1px',
@@ -52,8 +50,10 @@ const styles = (theme) => ({
       backgroundColor: '#9c27b0',
       height: '3px',
     },
-    '& .MuiTab-root': {
-      margin: '0',
+    '& .MuiTabs-flexContainer': {
+      [theme.breakpoints.down('md')]: {
+        flexDirection: 'column',
+      },
     },
   },
   tab: {
@@ -62,6 +62,8 @@ const styles = (theme) => ({
     fontSize: '0.9rem',
     fontWeight: 500,
     color: '#666',
+    flex: 1,
+    maxWidth: 'none',
     '&.Mui-selected': {
       color: '#9c27b0',
       fontWeight: 600,
@@ -70,23 +72,37 @@ const styles = (theme) => ({
       backgroundColor: 'rgba(156, 39, 176, 0.04)',
       color: '#9c27b0',
     },
-    [theme.breakpoints.up('md')]: {
-      minWidth: '300px',
+    [theme.breakpoints.down('md')]: {
+      width: '100%',
+      borderBottom: '1px solid rgba(156, 39, 176, 0.1)',
     },
   },
   tabIcon: {
     marginBottom: '0 !important',
     marginRight: theme.spacing(1),
-    color: 'inherit', // El ícono heredará el color del tab
+    color: 'inherit',
   },
   tabLabel: {
     fontSize: '0.9rem',
     textTransform: 'none',
     alignItems: 'center',
     display: 'flex',
+    whiteSpace: 'pre-wrap',
+    lineHeight: '1.2',
+    [theme.breakpoints.up('md')]: {
+      justifyContent: 'center',
+      textAlign: 'center',
+      minHeight: '40px',
+      padding: '0 8px',
+    },
+    [theme.breakpoints.down('md')]: {
+      justifyContent: 'flex-start',
+      width: '100%',
+      padding: theme.spacing(1, 2),
+    },
   },
   tabPanel: {
-    backgroundColor: '#fff', // Aseguramos fondo blanco para el contenido
+    backgroundColor: '#fff',
   },
   contentWrapper: {
     margin: theme.spacing(0, 3),
@@ -172,7 +188,15 @@ const Index = ({ classes }) => {
         <Grid item xs={12} className={classes.section}>
           <Paper className={classes.mainContainer} elevation={0}>
             <Box className={classes.tabsContainer}>
-              <Tabs value={value} onChange={handleChange} className={classes.tabs} variant="fullWidth" centered>
+            <Tabs 
+                value={value} 
+                onChange={handleChange} 
+                className={classes.tabs}
+                variant={window.innerWidth <= 960 ? 'scrollable' : 'fullWidth'}
+                scrollButtons="auto"
+                orientation={window.innerWidth <= 960 ? 'vertical' : 'horizontal'}
+                centered={window.innerWidth > 960}
+              >
                 <Tab
                   className={classes.tab}
                   icon={
@@ -214,6 +238,7 @@ const Index = ({ classes }) => {
                   aria-label="visor particulares"
                 />                
               </Tabs>
+
             </Box>
 
             <ThemeProvider theme={ThemeV2}>
