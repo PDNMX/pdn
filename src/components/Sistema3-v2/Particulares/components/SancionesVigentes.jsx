@@ -7,9 +7,11 @@ import { buildSearchQuery } from '../../utils/search';
 
 const SancionesVigentes = ({ providers }) => {
   const [loading, setLoading] = useState(true);
-  const [totalGeneral, setTotalGeneral] = useState(0);
-  const [totalVigentes, setTotalVigentes] = useState(0);
-  const currentYear = new Date().getFullYear();
+  const [inhabilitaciones, setInhabilitaciones] = useState({
+    fisica: 0,
+    moral: 0,
+    total: 0
+  });
   const analysisCompleted = useRef(false);
 
   useEffect(() => {
@@ -19,67 +21,37 @@ const SancionesVigentes = ({ providers }) => {
       try {
         setLoading(true);
         const baseUrl = process.env.REACT_APP_S3_V2_BACKEND;
-        const emptyFilter = buildSearchQuery({});
+        
+        // Construir el filtro usando la estructura correcta
+        const inhabilitacionFilter = buildSearchQuery({
+          tipoSancion: 'INHABILITACION'
+        });
 
+        // Obtener datos tanto de personas físicas como morales
         const [fisicaResults, moralResults] = await Promise.all([
           Promise.all(providers.map(provider => 
-            searchInProvider(baseUrl, 'faltas_graves_personas_fisicas', provider.id, emptyFilter)
+            searchInProvider(baseUrl, 'faltas_graves_personas_fisicas', provider.id, inhabilitacionFilter)
           )),
           Promise.all(providers.map(provider => 
-            searchInProvider(baseUrl, 'faltas_graves_personas_morales', provider.id, emptyFilter)
+            searchInProvider(baseUrl, 'faltas_graves_personas_morales', provider.id, inhabilitacionFilter)
           ))
         ]);
 
-        const currentDate = new Date();
+        // Contar totales usando pagination
+        const totalFisicas = fisicaResults.reduce((total, result) => {
+          return total + (result?.providerData?.pagination?.totalItems || 0);
+        }, 0);
 
-        // Función para contar el total de inhabilitaciones
-        const contarTotalInhabilitaciones = (results) => {
-          let count = 0;
-          results.forEach(result => {
-            if (result?.providerData?.data) {
-              count += result.providerData.data.reduce((acc, item) => {
-                const hasInhabilitacion = item.tipoSancion?.some(sancion => 
-                  sancion.valor?.toLowerCase().includes('inhabilita')
-                );
-                return hasInhabilitacion ? acc + 1 : acc;
-              }, 0);
-            }
-          });
-          return count;
-        };
+        const totalMorales = moralResults.reduce((total, result) => {
+          return total + (result?.providerData?.pagination?.totalItems || 0);
+        }, 0);
 
-        // Función separada para contar inhabilitaciones vigentes
-        const contarInhabilitacionesVigentes = (results) => {
-          let count = 0;
-          results.forEach(result => {
-            if (result?.providerData?.data) {
-              result.providerData.data.forEach(item => {
-                const hasInhabilitacion = item.tipoSancion?.some(sancion => 
-                  sancion.valor?.toLowerCase().includes('inhabilita')
-                );
+        setInhabilitaciones({
+          fisica: totalFisicas,
+          moral: totalMorales,
+          total: totalFisicas + totalMorales
+        });
 
-                if (hasInhabilitacion && item.fechaInicial && item.fechaFinal) {
-                  const fechaInicial = new Date(item.fechaInicial);
-                  const fechaFinal = new Date(item.fechaFinal);
-
-                  if (fechaInicial <= currentDate && fechaFinal >= currentDate) {
-                    count++;
-                  }
-                }
-              });
-            }
-          });
-          return count;
-        };
-
-        // Calcular totales por separado
-        const totalFisicas = contarTotalInhabilitaciones(fisicaResults);
-        const totalMorales = contarTotalInhabilitaciones(moralResults);
-        const vigentesFisicas = contarInhabilitacionesVigentes(fisicaResults);
-        const vigentesMorales = contarInhabilitacionesVigentes(moralResults);
-
-        setTotalGeneral(totalFisicas + totalMorales);
-        setTotalVigentes(vigentesFisicas + vigentesMorales);
         analysisCompleted.current = true;
 
       } catch (error) {
@@ -92,7 +64,10 @@ const SancionesVigentes = ({ providers }) => {
     fetchData();
   }, [providers]);
 
-  // El resto del componente permanece igual...
+  const formatNumber = (number) => {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
   if (loading) {
     return (
       <Paper 
@@ -175,7 +150,7 @@ const SancionesVigentes = ({ providers }) => {
             color: '#963476'
           }}
         >
-          {totalGeneral.toLocaleString()}
+          {formatNumber(inhabilitaciones.total)}
         </Typography>
 
         <Typography 
@@ -183,15 +158,21 @@ const SancionesVigentes = ({ providers }) => {
           color="textSecondary"
           sx={{
             lineHeight: 1.5,
-            height: '3em',
-            overflow: 'hidden',
-            display: '-webkit-box',
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: 'vertical',
-            textOverflow: 'ellipsis'
+            maxWidth: '90%'
           }}
         >
-          {`${totalVigentes.toLocaleString()} Inhabilitaciones vigentes en el ${currentYear}`}
+          {formatNumber(inhabilitaciones.fisica)} de personas físicas
+        </Typography>
+
+        <Typography 
+          variant="body1" 
+          color="textSecondary"
+          sx={{
+            lineHeight: 1.5,
+            maxWidth: '90%'
+          }}
+        >
+          {formatNumber(inhabilitaciones.moral)} de personas morales
         </Typography>
 
         <Box 

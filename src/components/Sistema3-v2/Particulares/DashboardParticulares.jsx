@@ -46,15 +46,15 @@ const DashboardParticulares = ({ providers }) => {
     <Grid container 
     spacing={3} sx={{ p: 3 }}
     >
-      <Grid item xs={6}>
+      <Grid item xs={12} sm={12} md={4}>
         <TotalParticulares totalCases={totals.totalCases} />
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={12} sm={12} md={4}>
         <TotalMultas providers={providers} />
       </Grid>
-      {/* <Grid item xs={4}>
+      <Grid item xs={12} sm={12} md={4}>
         <SancionesVigentes providers={providers} />
-      </Grid> */}
+      </Grid>
       <Grid item xs={12}>
         <TipoPersona
           providers={providers}
