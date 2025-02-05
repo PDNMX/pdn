@@ -17,6 +17,8 @@ const TotalRamos = ({ providers }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    let isMounted = true;
+    
     const fetchData = async () => {
       if (!providers?.length) return;
 
@@ -41,29 +43,35 @@ const TotalRamos = ({ providers }) => {
           ))
         ]);
 
-        const countGraves = gravesResults.reduce((total, result) => {
-          return total + (result?.providerData?.pagination?.totalItems || 0);
-        }, 0);
+        if (isMounted) {
+          const countGraves = gravesResults.reduce((total, result) => 
+            total + (result?.providerData?.pagination?.totalItems || 0), 0);
 
-        const countNoGraves = noGravesResults.reduce((total, result) => {
-          return total + (result?.providerData?.pagination?.totalItems || 0);
-        }, 0);
+          const countNoGraves = noGravesResults.reduce((total, result) => 
+            total + (result?.providerData?.pagination?.totalItems || 0), 0);
 
-        const totalInhabilitaciones = countGraves + countNoGraves;
-
-        setInhabilitaciones({
-          graves: countGraves,
-          noGraves: countNoGraves,
-          total: totalInhabilitaciones
-        });
+          setInhabilitaciones({
+            graves: countGraves,
+            noGraves: countNoGraves,
+            total: countGraves + countNoGraves
+          });
+        }
       } catch (error) {
-        console.error('Error fetching data:', error);
+        if (isMounted) {
+          console.error('Error fetching data:', error);
+        }
       } finally {
-        setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     };
 
     fetchData();
+
+    return () => {
+      isMounted = false;
+    };
   }, [providers]);
 
   const formatNumber = (number) => {

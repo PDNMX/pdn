@@ -93,7 +93,7 @@ const styles = (theme) => ({
       justifyContent: 'center',
       textAlign: 'center',
       minHeight: '40px',
-      padding: '0 8px',
+      padding: '0 7px',
     },
     [theme.breakpoints.down('md')]: {
       justifyContent: 'flex-start',

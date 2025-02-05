@@ -18,16 +18,24 @@ const DashboardServidores = ({ providers }) => {
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
-    if (providers && providers.length > 0) {
+    let isMounted = true;
+
+    if (providers && providers.length > 0 && isMounted) {
       setIsReady(true);
     }
+
+    return () => {
+      isMounted = false;
+    };
   }, [providers]);
 
   const handleDataUpdate = (data) => {
-    setTotals(data);
+    setTotals(prevTotals => ({
+      ...prevTotals,
+      ...data
+    }));
   };
 
-  // Formatear la fecha actual como DD/MM/YYYY
   const getCurrentDate = () => {
     const today = new Date();
     const day = String(today.getDate()).padStart(2, '0');
@@ -37,7 +45,7 @@ const DashboardServidores = ({ providers }) => {
   };
 
   if (!isReady) {
-    return null; // o un componente de carga
+    return null;
   }
 
   return (
