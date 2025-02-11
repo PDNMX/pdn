@@ -51,7 +51,7 @@ const DetailDialog = ({ open, onClose, data, classes }) => {
           {renderField('Nombre', `${data.datosGenerales?.nombres || ''} ${data.datosGenerales?.primerApellido || ''} ${data.datosGenerales?.segundoApellido || ''}`)}
           {renderField('Sexo', data.datosGenerales?.sexo)}
           {renderField('Expediente', data.expediente)}
-          {renderField('Fecha', new Date(data.fecha).toLocaleDateString('es-MX'))}
+          {renderField('Fecha', data.fecha)}
         </Box>
 
         <Box className={classes.dialogSection}>
@@ -81,8 +81,7 @@ const DetailDialog = ({ open, onClose, data, classes }) => {
             Resolución
           </Typography>
           {renderField('Autoridad Resolutora', data.resolucion?.autoridadResolutora)}
-          {renderField('Fecha de Resolución', data.resolucion?.fechaResolucion &&
-            new Date(data.resolucion.fechaResolucion).toLocaleDateString('es-MX'))}
+          {renderField('Fecha de Resolución', data.resolucion?.fechaResolucion)}
           {data.resolucion?.urlResolucion && (
             <Grid container spacing={1}>
               <Grid item xs={12} sm={4}>
@@ -107,7 +106,7 @@ const DetailDialog = ({ open, onClose, data, classes }) => {
               {sancion.inhabilitacion && (
                 <>
                   {renderField('Plazo', `${sancion.inhabilitacion.plazoAnios} años, ${sancion.inhabilitacion.plazoMeses} meses, ${sancion.inhabilitacion.plazoDias} días`)}
-                  {renderField('Periodo', `Del ${new Date(sancion.inhabilitacion.fechaInicial).toLocaleDateString('es-MX')} al ${new Date(sancion.inhabilitacion.fechaFinal).toLocaleDateString('es-MX')}`)}
+                  {renderField('Periodo', `Del ${sancion.inhabilitacion.fechaInicial} al ${sancion.inhabilitacion.fechaFinal}`)}
                 </>
               )}
             </Box>

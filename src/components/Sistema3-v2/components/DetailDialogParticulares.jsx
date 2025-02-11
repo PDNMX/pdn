@@ -79,7 +79,7 @@ const DetailDialogParticulares = ({ open, onClose, data, tipoPersona, classes })
             Resolución
           </Typography>
           {renderField('Expediente', data.expediente)}
-          {renderField('Fecha', new Date(data.fecha).toLocaleDateString('es-MX'))}
+          {renderField('Fecha', data.fecha)}
           {renderField('Autoridad Sancionadora', data.autoridadSancionadora)}
           {data.resolucion?.urlResolucion && (
             <Grid container spacing={1}>
@@ -105,8 +105,8 @@ const DetailDialogParticulares = ({ open, onClose, data, tipoPersona, classes })
               {sancion.descripcion && renderField('Descripción', sancion.descripcion)}
               {sancion.monto && renderField('Monto', `$${sancion.monto.toLocaleString('es-MX')}`)}
               {sancion.plazo && renderField('Plazo', sancion.plazo)}
-              {sancion.fechaInicial && renderField('Fecha Inicial', new Date(sancion.fechaInicial).toLocaleDateString('es-MX'))}
-              {sancion.fechaFinal && renderField('Fecha Final', new Date(sancion.fechaFinal).toLocaleDateString('es-MX'))}
+              {sancion.fechaInicial && renderField('Fecha Inicial', sancion.fechaInicial)}
+              {sancion.fechaFinal && renderField('Fecha Final', sancion.fechaFinal)}
             </Box>
           ))}
         </Box>

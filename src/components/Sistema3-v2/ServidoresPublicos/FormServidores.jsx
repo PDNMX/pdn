@@ -246,7 +246,7 @@ const FormServidores = ({ classes, providers }) => {
                               </TableCell>
                             )}
                             <TableCell>{item.empleoCargoComision?.nombreEntePublico || 'N/A'}</TableCell>
-                            <TableCell>{new Date(item.fecha).toLocaleDateString('es-MX')}</TableCell>
+                            <TableCell>{item.fecha}</TableCell>
                             <TableCell>{item.expediente || 'N/A'}</TableCell>
                           </TableRow>
                         ))}

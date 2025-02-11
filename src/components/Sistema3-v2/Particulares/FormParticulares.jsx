@@ -376,7 +376,7 @@ const FormParticulares = ({ classes, providers }) => {
                             </>
                           )}
                           <TableCell>{item.expediente || 'N/A'}</TableCell>
-                          <TableCell>{new Date(item.fecha).toLocaleDateString('es-MX')}</TableCell>
+                          <TableCell>{item.fecha}</TableCell>
                           <TableCell>{item.tipoSancion?.map(sancion => sancion.valor).join(', ') || 'N/A'}</TableCell>
                         </TableRow>
                       ))}
