@@ -47,6 +47,8 @@ import IconAbout from '../assets/rediseno2023/imgs/iconos/menu/ico_que-es-pdn.sv
 import IconHelpDesk from '../assets/rediseno2023/imgs/iconos/menu/ico_mesa-ayuda.svg'
 import IconValidador from '../assets/rediseno/validador.svg'
 import IconCobertura from '../assets/rediseno2023/imgs/iconos/menu/ico_cobertura.svg'
+import IconTableroS6 from '../assets/rediseno2023/imgs/iconos/sistemas/ico_s6.svg'
+import DashboardContrato from '../components/Sistema6/DashboardContrato'
 
 
 /*
@@ -304,6 +306,17 @@ const pdnRoutes = [
     shortName: 'Cobertura',
     color: '#713972',
     icon: IconCobertura,
+    type: ''
+  },
+  {
+    exact: true,
+    path: '/tablero-contrato',
+    component: DashboardContrato,
+    private: false,
+    name: 'Tablero de Contratos',
+    shortName: 'TableroContrato',
+    color: '#713972',
+    icon: IconTableroS6,
     type: ''
   }
 ]

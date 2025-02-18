@@ -8,6 +8,8 @@ import './components/Utils/Principal.css'
 // Google Analytics
 import ReactGA from 'react-ga4'
 import Layout from './components/HomeV2/Layout'
+import LayoutContract from './components/HomeV2/LayoutContract'
+import DashboardContrato from './components/Sistema6/DashboardContrato'
 
 import BaseTheme2023 from './BaseTheme2023'
 import { UserContext } from './components/Login/UserContext'
@@ -55,27 +57,36 @@ const App = () => {
         <StyledEngineProvider injectFirst>
           <Router basename={process.env.BASE_URL}>
             <ScrollToTop />
-            <Layout>
-              <Switch>
-                {pndRoutes.map((prop, key) => {
-                  return (
-                    <Route
-                      exact={prop.exact}
-                      path={prop.path}
-                      key={key}
-                      component={prop.component}
-                    />
-                  )
-                })}
-                <Route component={p404} />
-              </Switch>
-            </Layout>
+            <Switch>
+              <Route
+                exact
+                path="/tablero-contrato"
+                render={(props) => (
+                  <LayoutContract {...props}/>
+                   
+                )}
+              />
+              <Route path="/">
+                <Layout>
+                  <Switch>
+                    {pndRoutes.map((prop, key) => (
+                      <Route
+                        exact={prop.exact}
+                        path={prop.path}
+                        key={key}
+                        component={prop.component}
+                      />
+                    ))}
+                    <Route component={p404} />
+                  </Switch>
+                </Layout>
+              </Route>
+            </Switch>
           </Router>
         </StyledEngineProvider>
-
       </ThemeProvider>
     </UserContext.Provider>
-  )
-}
+  );
+};
 
-export default App
+export default App;

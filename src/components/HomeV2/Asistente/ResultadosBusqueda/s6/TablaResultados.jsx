@@ -278,7 +278,7 @@ export default function EnhancedTable (props) {
             </>
           ) : (<></>)}
         </Paper>}
-      <ResponsiveDialog open={open} handleCloseDialog={handleCloseDialog} data={dialogData} />
+      <ResponsiveDialog open={open} handleCloseDialog={handleCloseDialog} data={dialogData} fullScreen={true}/>
     </div>
   )
 }
