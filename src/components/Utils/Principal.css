@@ -187,17 +187,26 @@ header {
 .contratoS6 {
   background: linear-gradient(230deg, rgb(28, 124, 191) 0%, rgb(28, 124, 191) 4%, rgb(66, 165, 204) 49%, rgb(66, 165, 204) 100%) 0% 0% no-repeat padding-box padding-box transparent;
   min-height: 77px;
+  min-height: 40px;
   display: flex;
   justify-content: space-between;
+  justify-content: center;
 }
 
 .contratoS6>div {
   padding: 7px 12px;
+  padding: 5px 12px;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
   align-items: center;
+  align-items: flex-end;
 }
+.contratoS6 img {
+  width: 58px;
+}
+
+
 
 
 /*... FIN ENCABEZADO ...*/

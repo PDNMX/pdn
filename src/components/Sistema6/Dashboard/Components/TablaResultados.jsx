@@ -16,9 +16,10 @@ import ContratacionDialog from './ContratacionDialog';
 
 const styles = theme => ({
   root: {
-    width: '100%',
-    background:'linear-gradient(0deg, rgb(245, 252, 255) 43%, rgb(246, 253, 255) 43%)',
-    boxShadow: 'none'
+    background:'#e0f1f9cf',
+    boxShadow: 'none',
+    marginLeft: theme.spacing(3),
+    marginBottom: theme.spacing(12),
   },
   tableContainer: {
     maxHeight: 440,

@@ -33,15 +33,19 @@ const BannerContract = (props) => {
   return (
     <>
       <AppBar
-        position='sticky'
+        position='absolute'
         style={{
           background:
             'transparent linear-gradient(230deg, #1C7CBF 0%, #1C7CBF 4%, #42a5cc 49%, #42a5cc 100%) 0% 0% no-repeat padding-box',
           border: 0,
           boxShadow: 'none',
         overflowX: 'auto',
-        top:'0',
-        zIndex:'2'
+        top:'.7rem',
+        zIndex:'2',
+        width:'110px',
+        left:'.7rem',
+        borderRadius:'60px',
+        right:'20px',
         }}
       >
         <div className='contratoS6'>
@@ -50,8 +54,11 @@ const BannerContract = (props) => {
               <img src={imgHeader} alt='PDN' />
             </RouterLink>
           </div>
+          
         </div>
+       
       </AppBar>
+      
 
     </>
   )

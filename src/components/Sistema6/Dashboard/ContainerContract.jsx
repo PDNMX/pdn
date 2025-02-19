@@ -1,68 +1,196 @@
-// ContainerContract.jsx
-import React from 'react';
-import { Grid, Typography } from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import { Grid, Typography, Box } from '@mui/material';
 import withStyles from '@mui/styles/withStyles';
+import axios from 'axios';
 import TotalProcedimientos from './Components/TotalProcedimientos';
 import TotalPorEstado from './Components/TotalPorEstado';
 import TotalTipo from './Components/TotalTipo';
 import TotalMonto from './Components/TotalMonto';
 import TablaResultados from './Components/TablaResultados';
+import SearchButtons from './Components/SearchButtons';
 import FooterPage from './FooterPage';
+import IconoS6 from '../../../assets/rediseno2023/imgs/iconos/sistemas/ico_s6.svg';
 import { estadosData, getTotalData } from './mockData';
 
 const styles = theme => ({
   root: {
     padding: theme.spacing(3),
-    marginBottom: theme.spacing(2),
+    marginBottom: theme.spacing(0),
     minHeight: '100vh',
-    background: 'linear-gradient(135deg, #F5F7FA 0%, #c8e2f0 100%)',
-    // Alternativas de degradado que puedes probar:
-    // background: 'linear-gradient(135deg, #E3FDF5 0%, #FFE6FA 100%)',
-    // background: 'linear-gradient(135deg, #F5F7FA 0%, #B8C6DB 100%)',
-    // background: 'linear-gradient(135deg, #E0EAFC 0%, #CFDEF3 100%)',
+    background: 'linear-gradient(135deg, #F5F7FA 0%, #f6fcff 100%)',
   },
   title: {
-    color: theme.palette.text.primary,
-    marginBottom: theme.spacing(4),
+    color: '#42a5cc',
+    marginBottom: theme.spacing(3),
     fontWeight: 500,
-    // Opcional: añadir sombra al texto para mejor contraste
     textShadow: '1px 1px 2px rgba(0,0,0,0.1)'
   },
   gridContainer: {
-    // Opcional: añadir un poco de padding al contenedor de la grid
     padding: theme.spacing(2)
+  },
+  logo: {
+    maxWidth: '180px',
+  },
+  logoTitulo: { 
+    marginLeft: theme.spacing(13),
+    color: '#1b6887',
   }
 });
 
 const ContainerContract = ({ classes }) => {
-  const [selectedState, setSelectedState] = React.useState('todos');
-  
-  const getData = () => {
+  const [selectedState, setSelectedState] = useState('todos');
+  const [currentData, setCurrentData] = useState(getTotalData());
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [searchParams, setSearchParams] = useState({
+    supplier: '',
+    institution: '',
+    state: 'todos',
+    contractType: '',
+    searchId: ''
+  });
+
+  // Función para obtener datos según el estado seleccionado
+  const getStateData = () => {
     if (selectedState === 'todos') {
       return getTotalData();
     }
     return estadosData.find(estado => estado.id === selectedState) || getTotalData();
   };
 
-  const currentData = getData();
+  // Función para manejar la búsqueda
+  const handleSearch = async (searchCriteria) => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      let queryParams = {};
+
+      switch (searchCriteria.type) {
+        case 'supplier':
+          setSearchParams(prev => ({ ...prev, supplier: searchCriteria.value, institution: '' }));
+          queryParams = { supplier_id: searchCriteria.value };
+          break;
+        case 'institution':
+          setSearchParams(prev => ({ ...prev, institution: searchCriteria.value }));
+          queryParams = { 
+            supplier_id: searchCriteria.supplier,
+            buyer_id: searchCriteria.value 
+          };
+          break;
+        case 'state':
+          setSearchParams(prev => ({ ...prev, state: searchCriteria.value }));
+          setSelectedState(searchCriteria.value);
+          return setCurrentData(getStateData()); // Para estados usamos los datos mock
+        case 'contractType':
+          setSearchParams(prev => ({ ...prev, contractType: searchCriteria.value }));
+          queryParams = { 
+            procurement_method: searchCriteria.value,
+            ...searchParams.supplier && { supplier_id: searchParams.supplier },
+            ...searchParams.institution && { buyer_id: searchParams.institution }
+          };
+          break;
+        case 'searchId':
+          setSearchParams(prev => ({ ...prev, searchId: searchCriteria.value }));
+          queryParams = { search_id: searchCriteria.value };
+          break;
+        default:
+          break;
+      }
+
+      // Solo hacer la llamada API si tenemos parámetros de búsqueda
+      if (Object.keys(queryParams).length > 0) {
+        const response = await axios.post(
+          `${process.env.REACT_APP_S6_BACKEND}/api/v1/search`,
+          queryParams
+        );
+
+        if (response.data && response.data.data) {
+          // Actualizar los totales y la tabla con los datos de la API
+          const apiData = {
+            ...currentData, // Mantener la estructura existente
+            contratos: response.data.data, // Actualizar los contratos
+            totalCases: response.data.data.length,
+            monto: response.data.data.reduce((sum, contract) => sum + (contract.monto || 0), 0),
+            uniqueEstado: [...new Set(response.data.data.map(contract => contract.estado))].length,
+            uniqueTipo: [...new Set(response.data.data.map(contract => contract.tipo))].length
+          };
+          setCurrentData(apiData);
+        }
+      }
+    } catch (err) {
+      setError(err.message);
+      console.error('Error en la búsqueda:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Efecto para manejar cambios en el estado seleccionado
+  useEffect(() => {
+    if (selectedState !== searchParams.state) {
+      setCurrentData(getStateData());
+    }
+  }, [selectedState]);
+
+  // Efecto para hacer la búsqueda inicial al cargar el componente
+  useEffect(() => {
+    const fetchInitialData = async () => {
+      try {
+        const response = await axios.post(
+          `${process.env.REACT_APP_S6_BACKEND}/api/v1/search`,
+          { page: 1, pageSize: 10 }
+        );
+        
+        if (response.data && response.data.data) {
+          const initialData = {
+            ...getTotalData(),
+            contratos: response.data.data
+          };
+          setCurrentData(initialData);
+        }
+      } catch (err) {
+        console.error('Error al cargar datos iniciales:', err);
+      }
+    };
+
+    fetchInitialData();
+  }, []);
+
+  // Función para limpiar filtros
+  const handleClearFilters = () => {
+    setSearchParams({
+      supplier: '',
+      institution: '',
+      state: 'todos',
+      contractType: '',
+      searchId: ''
+    });
+    setSelectedState('todos');
+    setCurrentData(getTotalData());
+  };
 
   return (
     <div className={classes.root}>
+      <div className={classes.logoTitulo}>Plataforma Digital Nacional</div>
+      <Box align="center">
+        <img src={IconoS6} 
+          className={classes.logo}
+          alt={'Sistema 6'} 
+        />
+      </Box>
       <Typography 
         variant="h4" 
         align="center" 
         className={classes.title}
       >
-        Tablero de Contrataciones
+        Tablero de Seguimiento a la contratación pública
       </Typography>
       
       <Grid container spacing={3} className={classes.gridContainer}>
         <Grid item xs={12} sm={12} md={3}>
           <TotalProcedimientos 
             totalCases={currentData.totalCases}
-            selectedState={selectedState}
-            setSelectedState={setSelectedState}
-            estados={estadosData}
           />
         </Grid>
         <Grid item xs={12} sm={12} md={3}>
@@ -75,9 +203,21 @@ const ContainerContract = ({ classes }) => {
           <TotalTipo totalTipo={currentData.uniqueTipo} />
         </Grid>
         <Grid item xs={12}>
+          <SearchButtons 
+            selectedState={selectedState}
+            setSelectedState={setSelectedState}
+            estados={estadosData}
+            onSearch={handleSearch}
+            onClearFilters={handleClearFilters}
+            searchParams={searchParams}
+          />
+        </Grid>
+        <Grid item xs={12}>
           <TablaResultados 
             selectedState={selectedState}
             currentData={currentData}
+            loading={loading}
+            error={error}
           />
         </Grid>
         <Grid item xs={12}>

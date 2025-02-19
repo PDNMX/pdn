@@ -11,8 +11,9 @@ const styles = theme => ({
     paddingTop: theme.spacing(1),
     height: '100%',
     minHeight: 300,
-    background:'linear-gradient(0deg, hsl(197deg 100% 93.82% / 30%) 43%, hsl(0deg 0% 100% / 80%) 100%)',
-    boxShadow: 'none'
+    background:'linear-gradient(0deg, hsl(197deg 80% 91% / 86%) 43%, hsl(0deg 0% 100% / 80%) 100%)',
+    boxShadow: 'none',
+    borderTop: '2px solid #81d2f2',
   },
   chart: {
     height: 250

@@ -1,4 +1,3 @@
-// Components/Dialog.jsx
 import React from 'react';
 import { 
   Dialog, 
@@ -17,6 +16,25 @@ const styles = theme => ({
   },
   detailRow: {
     marginBottom: theme.spacing(2),
+  },
+  dialogTitle: {
+    backgroundColor: '#42a5cc',
+    color: '#fff',
+    marginBottom: theme.spacing(2),
+  },
+  dialogActions: {
+    padding: theme.spacing(1, 2),
+    justifyContent: 'center',
+    backgroundColor: '#f5f5f5',
+  },
+  button: {
+    color: '#42a5cc',
+    borderColor: '#42a5cc',
+    '&:hover': {
+      backgroundColor: '#42a5cc',
+      color: '#fff',
+      border: '1px solid #38aeff',
+    }
   }
 });
 
@@ -30,7 +48,7 @@ const ContratacionDialog = ({ classes, open, handleClose, data }) => {
       maxWidth="md"
       fullWidth
     >
-      <DialogTitle>
+      <DialogTitle className={classes.dialogTitle}>
         Detalle de Contratación
       </DialogTitle>
       <DialogContent className={classes.content}>
@@ -67,8 +85,8 @@ const ContratacionDialog = ({ classes, open, handleClose, data }) => {
           </Typography>
         </Box>
       </DialogContent>
-      <DialogActions>
-        <Button onClick={handleClose} color="primary">
+      <DialogActions className={classes.dialogActions}>
+        <Button onClick={handleClose} variant="outlined" className={classes.button}>
           Cerrar
         </Button>
       </DialogActions>
