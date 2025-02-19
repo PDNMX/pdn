@@ -301,7 +301,7 @@ const SearchButtons = ({ classes, selectedState, setSelectedState, estados, onSe
         </Collapse>
       </Grid>
  */}
-      {/* ID section remains the same */}
+      {/* ID section remains the same 
       <Grid item xs={12} sm={12} md={3}>
         <Paper 
           className={`${classes.searchButton} ${activeButton === 'id' ? classes.searchButtonActive : ''}`}
@@ -331,6 +331,7 @@ const SearchButtons = ({ classes, selectedState, setSelectedState, estados, onSe
           </Paper>
         </Collapse>
       </Grid>
+      */}
     </Grid>
   );
 };
