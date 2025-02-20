@@ -1,4 +1,4 @@
-import React, { useState, useEffect, use } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Grid, Typography, Box } from "@mui/material";
 import withStyles from "@mui/styles/withStyles";
 import axios from "axios";
@@ -52,6 +52,8 @@ const ContainerContract = ({ classes }) => {
     contractType: "",
     searchId: "",
   });
+
+  const isMounted = useRef(true); // Usamos useRef para controlar el estado de montaje
 
   // Tercer efecto para llamar a la API y mostrar datos en la consola
   const [estadosData, setEstadosData] = useState([]);
@@ -203,6 +205,7 @@ const ContainerContract = ({ classes }) => {
 
   // Efecto para hacer la búsqueda inicial al cargar el componente
   useEffect(() => {
+    isMounted.current = true;
     const fetchInitialData = async () => {
       try {
         const response = await axios.post(
@@ -210,7 +213,7 @@ const ContainerContract = ({ classes }) => {
           { page: 1, pageSize: 10 }
         );
 
-        if (response.data && response.data.data) {
+        if (response.data && response.data.data && isMounted.current) {
           const initialData = {
             ...getTotalData(),
             contratos: response.data.data,
@@ -218,11 +221,16 @@ const ContainerContract = ({ classes }) => {
           setCurrentData(initialData);
         }
       } catch (err) {
-        console.error("Error al cargar datos iniciales:", err);
+        if (isMounted.current) {
+          console.error("Error al cargar datos iniciales:", err);
+        } 
       }
     };
 
     fetchInitialData();
+    return () => {
+      isMounted.current = false; // Al desmontar el componente, cambiamos el estado de montaje
+    }
   }, []);
 
   // Función para limpiar filtros
@@ -242,16 +250,22 @@ const ContainerContract = ({ classes }) => {
   /**/
 
   const [regions , setRegions] = useState([]);
-
   const { execute, loading: api_loading, error: api_error } = useFetchApi();
 
+
+  // ESTADOS
   const handleFetch = async () => {
     try {
-      const data = await execute("/stats/regions", {});
-      console.log("newAPI", data);
-      setRegions(data.results);
+      const data = await execute("/stats/regions", {
+      });
+      if (isMounted.current) {
+        console.log("newAPI", data);
+        setRegions(data.results);
+      }
     } catch (err) {
-      console.error(err);
+      if (isMounted.current) {
+        console.error(err);
+      }
     }
   };
 
@@ -263,10 +277,14 @@ const ContainerContract = ({ classes }) => {
       const data = await execute("/stats/totalRecords", { 
         region: selectedState
       });
-      console.log("totalRecords", data);
-      setTotalRecords(data.totalProcedimientos);
+      if (isMounted.current) {
+        console.log("totalRecords", data);
+        setTotalRecords(data.totalProcedimientos);
+      }
     } catch (err) {
-      console.error(err);
+      if (isMounted.current) {
+        console.error(err);
+      }
     }
   };
 
@@ -277,10 +295,14 @@ const ContainerContract = ({ classes }) => {
       const data = await execute("/stats/montoTotalContratos", {
         region: selectedState
       });
-      console.log("montoTotalContratos", data);
-      setMontoTotalContratos(data.montoTotalContratos);
+      if (isMounted.current) {
+        console.log("montoTotalContratos", data);
+        setMontoTotalContratos(data.montoTotalContratos);
+      }
     } catch (err) {
-      console.error(err);
+      if (isMounted.current) {
+        console.error(err);
+      }
     }
   };
   
@@ -292,10 +314,14 @@ const ContainerContract = ({ classes }) => {
       const data = await execute("/stats/montoProcurementMethod", {
         region: selectedState
       });
-      console.log("montoProcurementMethod", data);
-      setMontoProcurementMethod(data.montoProcurementMethod);
+      if (isMounted.current){
+        console.log("montoProcurementMethod", data);
+        setMontoProcurementMethod(data.montoProcurementMethod);
+      }
     } catch (err) {
-      console.error(err);
+      if (isMounted.current){
+        console.error(err);
+      }
     }
   };
 
@@ -307,54 +333,90 @@ const ContainerContract = ({ classes }) => {
       const data = await execute("/stats/totalProcurementMethod", {
         region: selectedState
       });
-      console.log("totalProcurementMethod", data);
+      if (isMounted.current) {
+        console.log("totalProcurementMethod", data);
       setTotalProcurementMethod(data.totalProcurementMethod);
+      }
     } catch (err) {
-      console.error(err);
+      if (isMounted.current) {
+        console.error(err);
+      }
     }
   };
 
+  // TABLA DE RESULTADOS
   const [records, setRecords] = useState([]);
   const handrecordsFetch = async () => {
     try {
       const data = await execute("/records", {
         region: selectedState
       });
-      console.log("records", data);
-      console.log("records", data.results);
-      setRecords(data.results);
+      if (isMounted.current) {
+        console.log("records", data);
+        console.log("records", data.results);
+        setRecords(data.results);
+      }    
     } catch (err) {
-      console.error(err);
+      if (isMounted.current) {
+        console.error(err);
+      }
     }
   };
 
   useEffect(() => {
+    isMounted.current = true;
     handrecordsFetch();
+    return () => {
+      isMounted.current = false; // Al desmontar el componente, cambiamos el estado de montaje
+    }
   }, [selectedState]); // El segundo argumento [] asegura que solo se ejecute una vez al montar el componente 
 
-  useEffect(() => {     
+
+  useEffect(() => { 
+    isMounted.current = true;    
     handletotalProcurementMethodFetch();
+    return () => {
+      isMounted.current = false; 
+    }
   }, [selectedState]); // El segundo argumento [] asegura que solo se ejecute una vez al montar el componente
 
 
   useEffect(() => {
+    isMounted.current = true;
     handleMontoProcurementMethodFetch();
+    return () => {
+      isMounted.current = false;
+    }
   }, [selectedState]); // El segundo argumento [] asegura que solo se ejecute una vez al montar el componente
 
 
   useEffect(() => {
+    isMounted.current = true;
     handlemontoTotalContratosFetch();
+    return () => {
+      isMounted.current = false;
+    }
   }, [selectedState]); // El segundo argumento [] asegura que solo se ejecute una vez al montar el componente  
 
 
   useEffect(() => {
+    isMounted.current = true;
     handleTotalProcedimientosFetch();
+    return () => {
+      isMounted.current = false;
+    }
   }, [selectedState]); // El segundo argumento [] asegura que solo se ejecute una vez al montar el componente
 
+
   useEffect(() => {
+    isMounted.current = true;
     handleFetch();
+    return () => {
+      isMounted.current = false;
+    }
   }, []); // El segundo argumento [] asegura que solo se ejecute una vez al montar el componente
 
+  
   /* return (
     <div>
       {loading && <p>Cargando...</p>}
