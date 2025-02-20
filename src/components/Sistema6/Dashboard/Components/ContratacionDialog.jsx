@@ -40,7 +40,7 @@ const styles = theme => ({
 
 const ContratacionDialog = ({ classes, open, handleClose, data }) => {
   if (!data) return null;
-
+  const formatNumber = (value) => `$${value.toLocaleString('es-MX')}`;
   // Función para formatear el valor según la moneda
   const formatCurrency = (value, currency) => {
     const options = {
@@ -53,6 +53,16 @@ const ContratacionDialog = ({ classes, open, handleClose, data }) => {
     // Asegúrate de que los valores de currency son correctos
     return new Intl.NumberFormat('es-MX', options).format(value);
   };
+
+  const renderedValue = (() => {
+    if (!data.contracts || data.contracts.length === 0) {
+      return "Sin contratos";
+    }
+    return formatNumber(data.contracts.reduce((acc, contract) => acc + contract.value.amount, 0));
+  })();
+
+
+  
 
 
 
@@ -69,10 +79,10 @@ const ContratacionDialog = ({ classes, open, handleClose, data }) => {
       <DialogContent className={classes.content}>
       <Box className={classes.detailRow}>
           <Typography variant="subtitle2" color="textSecondary">
-            Título
+            Descripción
           </Typography>
           <Typography variant="body1">
-            {data.contracts[0]?.title}
+            {data.tender.description}
           </Typography>
         </Box> 
         <Box className={classes.detailRow}>
@@ -96,7 +106,7 @@ const ContratacionDialog = ({ classes, open, handleClose, data }) => {
             Monto Total
           </Typography>
           <Typography variant="body1">
-          {data.contracts[0] && formatCurrency(data.contracts[0].value.amount, data.contracts[0].value.currency)}          
+            {renderedValue}          
           </Typography>
         </Box>
         

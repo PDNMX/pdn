@@ -137,7 +137,7 @@ const TablaResultados = ({ classes, selectedState, currentData }) => {
                     {row.tender.title} 
                   </TableCell>
                   <TableCell>
-                    {formatNumber(row.contracts.reduce((acc, contract) => acc + contract.value.amount, 0))}  
+                    {(!row.contracts || row.contracts.length === 0) ? "Sin contratos" : formatNumber(row.contracts.reduce((acc, contract) => acc + contract.value.amount, 0))}  
                   </TableCell>
                   {/* {columns.map((column) => {
                     const value = row[column.id];
