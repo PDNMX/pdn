@@ -43,23 +43,31 @@ const styles = theme => ({
   }
 });
 
-const TotalMonto = ({ classes, totalMonto }) => (
+export const spanishProcurementMethod = {
+  'open': 'Pública',
+  'selective': 'Restringida',
+  'limited': 'A cuando menos tres personas',
+  'direct': 'Directa',
+  'not-specified': 'No especificado',
+};
+
+const TotalMonto = ({ classes, totalMonto, montoProcurementMethod }) => (
   <Paper className={classes.paper} elevation={3}>
     <Typography variant="h6" gutterBottom align="center">
       Monto Total de Contrataciones
     </Typography>
     <div className={classes.montoTotal}>
-      $<CountUp end={totalMonto.total} separator="," duration={2.5} decimals={2} />
+      $<CountUp end={totalMonto} separator="," duration={2.5} decimals={2} />
     </div>
     <Grid container spacing={3}>
-      {totalMonto.porTipo.map((item, index) => (
+      {montoProcurementMethod.map((item, index) => (
         <Grid item xs={12}  key={index}>
           <div className={classes.montoItem}>
             <Typography className={classes.subtitle} variant="subtitle1" gutterBottom>
-              {item.tipo}
+              {spanishProcurementMethod[item.procurementMethod]}:
             </Typography>
             <Typography className={classes.h6} variant="h6">
-              $<CountUp end={item.monto} separator="," duration={2.5} decimals={2} />
+              $<CountUp end={item.total} separator="," duration={2.5} decimals={2} />
             </Typography>
           </div>
         </Grid>

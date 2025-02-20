@@ -113,7 +113,7 @@ const SearchButtons = ({ classes, selectedState, setSelectedState, estados, onSe
   const [institutions, setInstitutions] = useState([]);
 
   // Fetch suppliers when component mounts
-  useEffect(() => {
+/*   useEffect(() => {
     const fetchSuppliers = async () => {
       try {
         const response = await axios.get(`${process.env.REACT_APP_S6_BACKEND}/api/v1/suppliers`);
@@ -123,10 +123,10 @@ const SearchButtons = ({ classes, selectedState, setSelectedState, estados, onSe
       }
     };
     fetchSuppliers();
-  }, []);
+  }, []); */
 
   // Fetch institutions when supplier changes
-  useEffect(() => {
+  /* useEffect(() => {
     const fetchInstitutions = async () => {
       if (selectedSupplier) {
         try {
@@ -142,7 +142,7 @@ const SearchButtons = ({ classes, selectedState, setSelectedState, estados, onSe
       }
     };
     fetchInstitutions();
-  }, [selectedSupplier]);
+  }, [selectedSupplier]); */
 
   const handleButtonClick = (buttonId) => {
     setActiveButton(activeButton === buttonId ? null : buttonId);
@@ -194,9 +194,9 @@ const SearchButtons = ({ classes, selectedState, setSelectedState, estados, onSe
                 label="Selecciona el estado"
               >
                 <MenuItem value="todos">Todos los Estados</MenuItem>
-                {estados.map((estado) => (
-                  <MenuItem value={estado.id} key={estado.id}>
-                    {estado.name}
+                {estados.map((estado, index) => (
+                  <MenuItem value={estado.region} key={index}>
+                    {estado.region}
                   </MenuItem>
                 ))}
               </Select>

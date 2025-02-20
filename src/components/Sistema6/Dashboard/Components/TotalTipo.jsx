@@ -3,6 +3,7 @@ import React from 'react';
 import { Paper, Typography } from '@mui/material';
 import withStyles from '@mui/styles/withStyles';
 import { ResponsiveBar } from '@nivo/bar';  // Cambiado de Bar a ResponsiveBar
+import { spanishProcurementMethod } from './TotalMonto';
 
 const styles = theme => ({
   paper: {
@@ -20,16 +21,16 @@ const styles = theme => ({
   }
 });
 
-const TotalTipo = ({ classes, totalTipo }) => (
+const TotalTipo = ({ classes, totalProcurementMethod }) => (
   <Paper className={classes.paper} elevation={3}>
     <Typography variant="h6" gutterBottom align="center">
       Tipos de Procedimientos
     </Typography>
     <div className={classes.chart}>
       <ResponsiveBar
-        data={totalTipo.map(item => ({
-          tipo: item.tipo,
-          count: item.count
+        data={totalProcurementMethod.map(item => ({
+          tipo: spanishProcurementMethod[item.procurementMethod],
+          count: item.total
         }))}
         keys={['count']}
         indexBy="tipo"

@@ -1,61 +1,105 @@
-import React, { useState, useEffect } from 'react';
-import { Grid, Typography, Box } from '@mui/material';
-import withStyles from '@mui/styles/withStyles';
-import axios from 'axios';
-import TotalProcedimientos from './Components/TotalProcedimientos';
-import TotalPorEstado from './Components/TotalPorEstado';
-import TotalTipo from './Components/TotalTipo';
-import TotalMonto from './Components/TotalMonto';
-import TablaResultados from './Components/TablaResultados';
-import SearchButtons from './Components/SearchButtons';
-import FooterPage from './FooterPage';
-import IconoS6 from '../../../assets/rediseno2023/imgs/iconos/sistemas/ico_s6.svg';
-import { estadosData, getTotalData } from './mockData';
+import React, { useState, useEffect, use } from "react";
+import { Grid, Typography, Box } from "@mui/material";
+import withStyles from "@mui/styles/withStyles";
+import axios from "axios";
+import TotalProcedimientos from "./Components/TotalProcedimientos";
+import TotalPorEstado from "./Components/TotalPorEstado";
+import TotalTipo from "./Components/TotalTipo";
+import TotalMonto from "./Components/TotalMonto";
+import TablaResultados from "./Components/TablaResultados";
+import SearchButtons from "./Components/SearchButtons";
+import FooterPage from "./FooterPage";
+import IconoS6 from "../../../assets/rediseno2023/imgs/iconos/sistemas/ico_s6.svg";
+import { estadosData, getTotalData } from "./mockData";
+import { useFetchApi } from "../../Utils/apiContratos";
+import { set } from "react-hook-form";
 
-const styles = theme => ({
+
+const styles = (theme) => ({
   root: {
     padding: theme.spacing(3),
     marginBottom: theme.spacing(0),
-    minHeight: '100vh',
-    background: 'linear-gradient(135deg, #F5F7FA 0%, #f6fcff 100%)',
+    minHeight: "100vh",
+    background: "linear-gradient(135deg, #F5F7FA 0%, #f6fcff 100%)",
   },
   title: {
-    color: '#42a5cc',
+    color: "#42a5cc",
     marginBottom: theme.spacing(3),
     fontWeight: 500,
-    textShadow: '1px 1px 2px rgba(0,0,0,0.1)'
+    textShadow: "1px 1px 2px rgba(0,0,0,0.1)",
   },
   gridContainer: {
-    padding: theme.spacing(2)
+    padding: theme.spacing(2),
   },
   logo: {
-    maxWidth: '180px',
+    maxWidth: "180px",
   },
-  logoTitulo: { 
+  logoTitulo: {
     marginLeft: theme.spacing(13),
-    color: '#1b6887',
-  }
+    color: "#1b6887",
+  },
 });
 
 const ContainerContract = ({ classes }) => {
-  const [selectedState, setSelectedState] = useState('todos');
+  const [selectedState, setSelectedState] = useState("todos");
   const [currentData, setCurrentData] = useState(getTotalData());
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [searchParams, setSearchParams] = useState({
-    supplier: '',
-    institution: '',
-    state: 'todos',
-    contractType: '',
-    searchId: ''
+    supplier: "",
+    institution: "",
+    state: "todos",
+    contractType: "",
+    searchId: "",
   });
+
+  // Tercer efecto para llamar a la API y mostrar datos en la consola
+  const [estadosData, setEstadosData] = useState([]);
+  /* useEffect(() => {
+    const fetchEstadosData = async () => {
+      try {
+        const response = await axios.get(
+          "https://dev-tablero-contrataciones.plataformadigitalnacional.org/back/api/stats/regions"
+        );
+        const estados = response.data.results.map((result) => ({
+          id: result.region,
+          name: result.region,
+        }));
+        setEstadosData(estados);
+        console.log("Estados obtenidos de la API:", estados);
+      } catch (error) {
+        console.error("Error al llamar la API:", error);
+      }
+    };
+
+    fetchEstadosData();
+  }, []);  */// El segundo argumento [] asegura que solo se ejecute una vez al montar el componente
+
+  // Cuarto efecto para llamar a la API y mostrar totalRecords en la consola
+  /* useEffect(() => {
+    const fetchTotalProcedimientos = async () => {
+      try {
+        const response = await axios.get(
+          "https://dev-tablero-contrataciones.plataformadigitalnacional.org/back/api/stats/totalRecords"
+        );
+        console.log("Datos de la API MontoTotal:", response.data);
+      } catch (error) {
+        console.error("Error al llamar la API:", error);
+      }
+    };
+
+    fetchTotalProcedimientos();
+  }, []);  */// El segundo argumento [] asegura que solo se ejecute una vez al montar el componente
 
   // Función para obtener datos según el estado seleccionado
   const getStateData = () => {
-    if (selectedState === 'todos') {
+    if (selectedState === "todos") {
       return getTotalData();
     }
-    return estadosData.find(estado => estado.id === selectedState) || getTotalData();
+    return (
+      estadosData.find((estado) => estado.id === selectedState) ||
+      getTotalData()
+    );
   };
 
   // Función para manejar la búsqueda
@@ -67,31 +111,48 @@ const ContainerContract = ({ classes }) => {
       let queryParams = {};
 
       switch (searchCriteria.type) {
-        case 'supplier':
-          setSearchParams(prev => ({ ...prev, supplier: searchCriteria.value, institution: '' }));
+        case "supplier":
+          setSearchParams((prev) => ({
+            ...prev,
+            supplier: searchCriteria.value,
+            institution: "",
+          }));
           queryParams = { supplier_id: searchCriteria.value };
           break;
-        case 'institution':
-          setSearchParams(prev => ({ ...prev, institution: searchCriteria.value }));
-          queryParams = { 
+        case "institution":
+          setSearchParams((prev) => ({
+            ...prev,
+            institution: searchCriteria.value,
+          }));
+          queryParams = {
             supplier_id: searchCriteria.supplier,
-            buyer_id: searchCriteria.value 
+            buyer_id: searchCriteria.value,
           };
           break;
-        case 'state':
-          setSearchParams(prev => ({ ...prev, state: searchCriteria.value }));
+        case "state":
+          setSearchParams((prev) => ({ ...prev, state: searchCriteria.value }));
           setSelectedState(searchCriteria.value);
           return setCurrentData(getStateData()); // Para estados usamos los datos mock
-        case 'contractType':
-          setSearchParams(prev => ({ ...prev, contractType: searchCriteria.value }));
-          queryParams = { 
+        case "contractType":
+          setSearchParams((prev) => ({
+            ...prev,
+            contractType: searchCriteria.value,
+          }));
+          queryParams = {
             procurement_method: searchCriteria.value,
-            ...searchParams.supplier && { supplier_id: searchParams.supplier },
-            ...searchParams.institution && { buyer_id: searchParams.institution }
+            ...(searchParams.supplier && {
+              supplier_id: searchParams.supplier,
+            }),
+            ...(searchParams.institution && {
+              buyer_id: searchParams.institution,
+            }),
           };
           break;
-        case 'searchId':
-          setSearchParams(prev => ({ ...prev, searchId: searchCriteria.value }));
+        case "searchId":
+          setSearchParams((prev) => ({
+            ...prev,
+            searchId: searchCriteria.value,
+          }));
           queryParams = { search_id: searchCriteria.value };
           break;
         default:
@@ -111,16 +172,23 @@ const ContainerContract = ({ classes }) => {
             ...currentData, // Mantener la estructura existente
             contratos: response.data.data, // Actualizar los contratos
             totalCases: response.data.data.length,
-            monto: response.data.data.reduce((sum, contract) => sum + (contract.monto || 0), 0),
-            uniqueEstado: [...new Set(response.data.data.map(contract => contract.estado))].length,
-            uniqueTipo: [...new Set(response.data.data.map(contract => contract.tipo))].length
+            monto: response.data.data.reduce(
+              (sum, contract) => sum + (contract.monto || 0),
+              0
+            ),
+            uniqueEstado: [
+              ...new Set(response.data.data.map((contract) => contract.estado)),
+            ].length,
+            uniqueTipo: [
+              ...new Set(response.data.data.map((contract) => contract.tipo)),
+            ].length,
           };
           setCurrentData(apiData);
         }
       }
     } catch (err) {
       setError(err.message);
-      console.error('Error en la búsqueda:', err);
+      console.error("Error en la búsqueda:", err);
     } finally {
       setLoading(false);
     }
@@ -141,16 +209,16 @@ const ContainerContract = ({ classes }) => {
           `${process.env.REACT_APP_S6_BACKEND}/api/v1/search`,
           { page: 1, pageSize: 10 }
         );
-        
+
         if (response.data && response.data.data) {
           const initialData = {
             ...getTotalData(),
-            contratos: response.data.data
+            contratos: response.data.data,
           };
           setCurrentData(initialData);
         }
       } catch (err) {
-        console.error('Error al cargar datos iniciales:', err);
+        console.error("Error al cargar datos iniciales:", err);
       }
     };
 
@@ -160,62 +228,178 @@ const ContainerContract = ({ classes }) => {
   // Función para limpiar filtros
   const handleClearFilters = () => {
     setSearchParams({
-      supplier: '',
-      institution: '',
-      state: 'todos',
-      contractType: '',
-      searchId: ''
+      supplier: "",
+      institution: "",
+      state: "todos",
+      contractType: "",
+      searchId: "",
     });
-    setSelectedState('todos');
+    setSelectedState("todos");
     setCurrentData(getTotalData());
   };
+
+  // Ejemplo de uso:
+  /**/
+
+  const [regions , setRegions] = useState([]);
+
+  const { execute, loading: api_loading, error: api_error } = useFetchApi();
+
+  const handleFetch = async () => {
+    try {
+      const data = await execute("/stats/regions", {});
+      console.log("newAPI", data);
+      setRegions(data.results);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+
+  // TOTAL DE PROCEDIMIENTOS
+  const [totalRecords, setTotalRecords] = useState([]);
+  const handleTotalProcedimientosFetch = async () => {
+    try {
+      const data = await execute("/stats/totalRecords", { 
+        region: selectedState
+      });
+      console.log("totalRecords", data);
+      setTotalRecords(data.totalProcedimientos);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  // MONTO TOTAL DE CONTRATACIONES: GENERAL
+  const [montoTotalContratos, setMontoTotalContratos] = useState([]);
+  const handlemontoTotalContratosFetch = async () => {
+    try {
+      const data = await execute("/stats/montoTotalContratos", {
+        region: selectedState
+      });
+      console.log("montoTotalContratos", data);
+      setMontoTotalContratos(data.montoTotalContratos);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  
+
+  // MONTO TOTAL DE CONTRATACIONES: PÚBLICA, RESTRINGIDA, DIRECTA 
+  const [montoProcurementMethod, setMontoProcurementMethod] = useState([]);
+  const handleMontoProcurementMethodFetch = async () => {
+    try {
+      const data = await execute("/stats/montoProcurementMethod", {
+        region: selectedState
+      });
+      console.log("montoProcurementMethod", data);
+      setMontoProcurementMethod(data.montoProcurementMethod);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+
+  //TIPOS DE PROCEDIMIENTOS
+  const [totalProcurementMethod, setTotalProcurementMethod] = useState([]);
+  const handletotalProcurementMethodFetch = async () => {
+    try {
+      const data = await execute("/stats/totalProcurementMethod", {
+        region: selectedState
+      });
+      console.log("totalProcurementMethod", data);
+      setTotalProcurementMethod(data.totalProcurementMethod);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const [records, setRecords] = useState([]);
+  const handrecordsFetch = async () => {
+    try {
+      const data = await execute("/records", {
+        region: selectedState
+      });
+      console.log("records", data);
+      console.log("records", data.results);
+      setRecords(data.results);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    handrecordsFetch();
+  }, [selectedState]); // El segundo argumento [] asegura que solo se ejecute una vez al montar el componente 
+
+  useEffect(() => {     
+    handletotalProcurementMethodFetch();
+  }, [selectedState]); // El segundo argumento [] asegura que solo se ejecute una vez al montar el componente
+
+
+  useEffect(() => {
+    handleMontoProcurementMethodFetch();
+  }, [selectedState]); // El segundo argumento [] asegura que solo se ejecute una vez al montar el componente
+
+
+  useEffect(() => {
+    handlemontoTotalContratosFetch();
+  }, [selectedState]); // El segundo argumento [] asegura que solo se ejecute una vez al montar el componente  
+
+
+  useEffect(() => {
+    handleTotalProcedimientosFetch();
+  }, [selectedState]); // El segundo argumento [] asegura que solo se ejecute una vez al montar el componente
+
+  useEffect(() => {
+    handleFetch();
+  }, []); // El segundo argumento [] asegura que solo se ejecute una vez al montar el componente
+
+  /* return (
+    <div>
+      {loading && <p>Cargando...</p>}
+      {error && <p>Error: {error.message}</p>}
+      <button onClick={handleFetch}>Obtener datos</button>
+    </div>
+  ); */
 
   return (
     <div className={classes.root}>
       <div className={classes.logoTitulo}>Plataforma Digital Nacional</div>
       <Box align="center">
-        <img src={IconoS6} 
-          className={classes.logo}
-          alt={'Sistema 6'} 
-        />
+        <img src={IconoS6} className={classes.logo} alt={"Sistema 6"} />
       </Box>
-      <Typography 
-        variant="h4" 
-        align="center" 
-        className={classes.title}
-      >
+      <Typography variant="h4" align="center" className={classes.title}>
         Tablero de Seguimiento a la contratación pública
       </Typography>
-      
+
       <Grid container spacing={3} className={classes.gridContainer}>
-        <Grid item xs={12} sm={12} md={3}>
-          <TotalProcedimientos 
-            totalCases={currentData.totalCases}
-          />
+        <Grid item xs={12} sm={12} md={4}>
+          <TotalProcedimientos totalCases={totalRecords} />
         </Grid>
-        <Grid item xs={12} sm={12} md={3}>
-          <TotalMonto totalMonto={currentData.monto} />
+        <Grid item xs={12} sm={12} md={4}>
+          <TotalMonto totalMonto={montoTotalContratos} montoProcurementMethod={montoProcurementMethod} />
         </Grid>
-        <Grid item xs={12} sm={12} md={3}>
+        {/* <Grid item xs={12} sm={12} md={3}>
           <TotalPorEstado totalEstado={currentData.uniqueEstado} />
-        </Grid>
-        <Grid item xs={12} sm={12} md={3}>
-          <TotalTipo totalTipo={currentData.uniqueTipo} />
+        </Grid> */}
+        <Grid item xs={12} sm={12} md={4}>
+          <TotalTipo totalProcurementMethod={totalProcurementMethod} />
         </Grid>
         <Grid item xs={12}>
-          <SearchButtons 
+          <SearchButtons
             selectedState={selectedState}
             setSelectedState={setSelectedState}
-            estados={estadosData}
+            estados={regions}
             onSearch={handleSearch}
             onClearFilters={handleClearFilters}
             searchParams={searchParams}
           />
         </Grid>
         <Grid item xs={12}>
-          <TablaResultados 
+          <TablaResultados
             selectedState={selectedState}
-            currentData={currentData}
+            currentData={records}
             loading={loading}
             error={error}
           />
@@ -224,7 +408,7 @@ const ContainerContract = ({ classes }) => {
           <FooterPage
             dataSet="Sistema de información pública de contrataciones"
             provider="Plataforma Digital Nacional"
-            referenceDate={new Date().toLocaleDateString('es-MX')}
+            referenceDate={new Date().toLocaleDateString("es-MX")}
           />
         </Grid>
       </Grid>

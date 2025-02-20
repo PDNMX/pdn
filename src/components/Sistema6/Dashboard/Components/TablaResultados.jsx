@@ -52,7 +52,7 @@ const columns = [
   { id: 'titulo', label: 'Título', minWidth: 170 },
   { id: 'monto', label: 'Monto', minWidth: 100, format: value => `$${value.toLocaleString('es-MX')}` },
 ];
-
+const formatNumber = (value) => `$${value.toLocaleString('es-MX')}`;
 const TablaResultados = ({ classes, selectedState, currentData }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -74,7 +74,7 @@ const TablaResultados = ({ classes, selectedState, currentData }) => {
   };
 
   // Si no hay datos o si estamos en "todos", mostrar mensaje
-  if (selectedState === 'todos' || !currentData || !currentData.contratos) {
+  if (selectedState === 'todos' || !currentData || !currentData) {
     return (
       <Paper className={classes.root}>
         <Typography className={classes.noDataMessage}>
@@ -84,7 +84,7 @@ const TablaResultados = ({ classes, selectedState, currentData }) => {
     );
   }
 
-  const contratos = currentData.contratos || [];
+  const contratos = currentData || [];
 
   // Si no hay contratos en el estado seleccionado
   if (contratos.length === 0) {
@@ -121,16 +121,31 @@ const TablaResultados = ({ classes, selectedState, currentData }) => {
                   hover 
                   key={row.id} 
                   className={classes.row}
-                  onClick={() => handleRowClick(row)}
+                 /*  onClick={() => handleRowClick(row)} */
                 >
-                  {columns.map((column) => {
+                  <TableCell>
+                    {row.id} 
+                  </TableCell>
+                  <TableCell>
+                    {row.date} 
+                  </TableCell>
+                  <TableCell>
+                    {row.tender.procurementMethod} 
+                  </TableCell>
+                  <TableCell>
+                    {row.tender.title} 
+                  </TableCell>
+                  <TableCell>
+                    {formatNumber(row.contracts.reduce((acc, contract) => acc + contract.value.amount, 0))}  
+                  </TableCell>
+                  {/* {columns.map((column) => {
                     const value = row[column.id];
                     return (
                       <TableCell key={column.id}>
                         {column.format && value != null ? column.format(value) : value}
                       </TableCell>
                     );
-                  })}
+                  })} */}
                 </TableRow>
               ))}
           </TableBody>
