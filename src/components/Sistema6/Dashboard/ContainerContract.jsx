@@ -275,7 +275,7 @@ const ContainerContract = ({ classes }) => {
   const handleTotalProcedimientosFetch = async () => {
     try {
       const data = await execute("/stats/totalRecords", { 
-        region: selectedState
+        query: {region: selectedState},
       });
       if (isMounted.current) {
         console.log("totalRecords", data);
@@ -293,7 +293,7 @@ const ContainerContract = ({ classes }) => {
   const handlemontoTotalContratosFetch = async () => {
     try {
       const data = await execute("/stats/montoTotalContratos", {
-        region: selectedState
+        query: {region: selectedState},
       });
       if (isMounted.current) {
         console.log("montoTotalContratos", data);
@@ -312,7 +312,7 @@ const ContainerContract = ({ classes }) => {
   const handleMontoProcurementMethodFetch = async () => {
     try {
       const data = await execute("/stats/montoProcurementMethod", {
-        region: selectedState
+        query: {region: selectedState},
       });
       if (isMounted.current){
         console.log("montoProcurementMethod", data);
@@ -331,7 +331,7 @@ const ContainerContract = ({ classes }) => {
   const handletotalProcurementMethodFetch = async () => {
     try {
       const data = await execute("/stats/totalProcurementMethod", {
-        region: selectedState
+        query: {region: selectedState},
       });
       if (isMounted.current) {
         console.log("totalProcurementMethod", data);
@@ -349,12 +349,14 @@ const ContainerContract = ({ classes }) => {
   const handrecordsFetch = async () => {
     try {
       const data = await execute("/records", {
-        region: selectedState
+        query: {region: selectedState}, 
+        ...paginacion
       });
       if (isMounted.current) {
         console.log("records", data);
         console.log("records", data.results);
         setRecords(data.results);
+        setTotalRows(data.pagination.totalRows);
       }    
     } catch (err) {
       if (isMounted.current) {
@@ -363,13 +365,20 @@ const ContainerContract = ({ classes }) => {
     }
   };
 
+  const [paginacion, setPaginacion] = useState({
+    page: 1,
+    pageSize: 10
+  })
+
+  const [totalRows, setTotalRows] = useState(0);
+
   useEffect(() => {
     isMounted.current = true;
     handrecordsFetch();
     return () => {
       isMounted.current = false; // Al desmontar el componente, cambiamos el estado de montaje
     }
-  }, [selectedState]); // El segundo argumento [] asegura que solo se ejecute una vez al montar el componente 
+  }, [selectedState, paginacion ]); // El segundo argumento [] asegura que solo se ejecute una vez al montar el componente 
 
 
   useEffect(() => { 
@@ -461,7 +470,9 @@ const ContainerContract = ({ classes }) => {
         <Grid item xs={12}>
           <TablaResultados
             selectedState={selectedState}
+            setPaginacion={setPaginacion}
             currentData={records}
+            totalRows={totalRows}
             loading={loading}
             error={error}
           />

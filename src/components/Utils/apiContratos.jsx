@@ -15,7 +15,7 @@ const fetchApi = async (path, body) => {
       throw new Error('El path es requerido y debe ser un string');
     }
 
-    const response = await axios.post("https://dev-tablero-contrataciones.plataformadigitalnacional.org/back/api"+ path, { query: body });
+    const response = await axios.post("https://dev-tablero-contrataciones.plataformadigitalnacional.org/back/api"+ path, { ...body });
     return response.data;
   } catch (error) {
     console.error('Error en la petición:', error);

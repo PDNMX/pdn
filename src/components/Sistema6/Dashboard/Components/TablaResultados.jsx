@@ -23,7 +23,7 @@ const styles = theme => ({
     marginBottom: theme.spacing(12),
   },
   tableContainer: {
-    maxHeight: 440,
+    //maxHeight: 440,
   },
   tableHead: {
     backgroundColor: '#ccc',
@@ -54,19 +54,21 @@ const columns = [
   { id: 'monto', label: 'Monto', minWidth: 100, format: value => `$${value.toLocaleString('es-MX')}` },
 ];
 const formatNumber = (value) => `$${value.toLocaleString('es-MX')}`;
-const TablaResultados = ({ classes, selectedState, currentData }) => {
+const TablaResultados = ({ classes, selectedState, currentData, setPaginacion, totalRows }) => {
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedContract, setSelectedContract] = useState(null);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
+    setPaginacion((prev => ({ ...prev, page: newPage+1 })));
   };
 
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
+    setPaginacion((prev => ({ ...prev, pageSize: +event.target.value })));
   };
 
   const handleRowClick = (contract) => {
@@ -75,7 +77,7 @@ const TablaResultados = ({ classes, selectedState, currentData }) => {
   };
 
   // Si no hay datos o si estamos en "todos", mostrar mensaje
-  if (selectedState === 'todos' || !currentData || !currentData) {
+  if ( !currentData || !currentData) {
     return (
       <Paper className={classes.root}>
         <Typography className={classes.noDataMessage}>
@@ -116,7 +118,7 @@ const TablaResultados = ({ classes, selectedState, currentData }) => {
           </TableHead>
           <TableBody>
             {contratos
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              //.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => (
                 <TableRow 
                   hover 
@@ -152,17 +154,18 @@ const TablaResultados = ({ classes, selectedState, currentData }) => {
           </TableBody>
         </Table>
       </TableContainer>
+      {/* */}
       <TablePagination
-        rowsPerPageOptions={[5, 10, 25]}
+        rowsPerPageOptions={[10, 25, 50, 100, 200]}
         component="div"
-        count={contratos.length}
+        count={totalRows}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
         labelRowsPerPage="Registros por página:"
         labelDisplayedRows={({ from, to, count }) => `${from}-${to} de ${count}`}
-      />
+      /> 
       <ContratacionDialog
         open={dialogOpen}
         handleClose={() => setDialogOpen(false)}
