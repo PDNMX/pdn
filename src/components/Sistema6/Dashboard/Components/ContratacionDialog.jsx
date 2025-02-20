@@ -41,6 +41,21 @@ const styles = theme => ({
 const ContratacionDialog = ({ classes, open, handleClose, data }) => {
   if (!data) return null;
 
+  // Función para formatear el valor según la moneda
+  const formatCurrency = (value, currency) => {
+    const options = {
+      style: 'currency',
+      currency: currency,
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    };
+  
+    // Asegúrate de que los valores de currency son correctos
+    return new Intl.NumberFormat('es-MX', options).format(value);
+  };
+
+
+
   return (
     <Dialog
       open={open}
@@ -52,6 +67,14 @@ const ContratacionDialog = ({ classes, open, handleClose, data }) => {
         Detalle de Contratación
       </DialogTitle>
       <DialogContent className={classes.content}>
+      <Box className={classes.detailRow}>
+          <Typography variant="subtitle2" color="textSecondary">
+            Título
+          </Typography>
+          <Typography variant="body1">
+            {data.contracts[0]?.title}
+          </Typography>
+        </Box> 
         <Box className={classes.detailRow}>
           <Typography variant="subtitle2" color="textSecondary">
             ID de Contratación
@@ -60,12 +83,12 @@ const ContratacionDialog = ({ classes, open, handleClose, data }) => {
             {data.id}
           </Typography>
         </Box>
-        <Box className={classes.detailRow}>
+         <Box className={classes.detailRow}>
           <Typography variant="subtitle2" color="textSecondary">
-            Dependencia
+            OCID
           </Typography>
           <Typography variant="body1">
-            {data.dependencia}
+            {data.ocid}
           </Typography>
         </Box>
         <Box className={classes.detailRow}>
@@ -73,17 +96,20 @@ const ContratacionDialog = ({ classes, open, handleClose, data }) => {
             Monto Total
           </Typography>
           <Typography variant="body1">
-            ${data.monto.toLocaleString('es-MX')}
+          {data.contracts[0] && formatCurrency(data.contracts[0].value.amount, data.contracts[0].value.currency)}          
           </Typography>
         </Box>
-        <Box className={classes.detailRow}>
+        
+       {/*  <Box className={classes.detailRow}>
           <Typography variant="subtitle2" color="textSecondary">
-            Descripción
+            Estatus
           </Typography>
           <Typography variant="body1">
-            {data.descripcion}
+            {data.contracts[0]?.status}
           </Typography>
-        </Box>
+        </Box>  */}
+        
+         {/**/}
       </DialogContent>
       <DialogActions className={classes.dialogActions}>
         <Button onClick={handleClose} variant="outlined" className={classes.button}>

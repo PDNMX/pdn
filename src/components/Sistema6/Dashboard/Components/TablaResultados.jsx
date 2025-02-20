@@ -122,7 +122,7 @@ const TablaResultados = ({ classes, selectedState, currentData }) => {
                   hover 
                   key={row.id} 
                   className={classes.row}
-                 /*  onClick={() => handleRowClick(row)} */
+                  onClick={() => handleRowClick(row)}
                 >
                   <TableCell>
                     {row.id} 
