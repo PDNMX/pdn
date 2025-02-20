@@ -13,6 +13,7 @@ import {
 } from '@mui/material';
 import withStyles from '@mui/styles/withStyles';
 import ContratacionDialog from './ContratacionDialog';
+import { spanishProcurementMethod } from './TotalMonto';
 
 const styles = theme => ({
   root: {
@@ -130,7 +131,7 @@ const TablaResultados = ({ classes, selectedState, currentData }) => {
                     {row.date} 
                   </TableCell>
                   <TableCell>
-                    {row.tender.procurementMethod} 
+                    {spanishProcurementMethod[row.tender.procurementMethod]} 
                   </TableCell>
                   <TableCell>
                     {row.tender.title} 
