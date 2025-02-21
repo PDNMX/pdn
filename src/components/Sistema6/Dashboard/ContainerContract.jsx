@@ -13,6 +13,7 @@ import IconoS6 from "../../../assets/rediseno2023/imgs/iconos/sistemas/ico_s6.sv
 import { estadosData, getTotalData } from "./mockData";
 import { useFetchApi } from "../../Utils/apiContratos";
 import { set } from "react-hook-form";
+import LoadingComponent from "./Components/LoadingComponent";
 
 
 const styles = (theme) => ({
@@ -45,6 +46,7 @@ const ContainerContract = ({ classes }) => {
   const [currentData, setCurrentData] = useState(getTotalData());
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [loadingData, setLoadingData] = useState(true);
   const [searchParams, setSearchParams] = useState({
     supplier: "",
     institution: "",
@@ -219,10 +221,12 @@ const ContainerContract = ({ classes }) => {
             contratos: response.data.data,
           };
           setCurrentData(initialData);
+          setLoadingData(false); // Desactivar el spinner de carga
         }
       } catch (err) {
         if (isMounted.current) {
           console.error("Error al cargar datos iniciales:", err);
+          setLoadingData(false); // Desactivar el spinner de carga
         } 
       }
     };
@@ -272,7 +276,9 @@ const ContainerContract = ({ classes }) => {
 
   // TOTAL DE PROCEDIMIENTOS
   const [totalRecords, setTotalRecords] = useState([]);
+  const [loadingTotalProcedimientos, setLoadingTotalProcedimientos] = useState(true);
   const handleTotalProcedimientosFetch = async () => {
+    setLoadingTotalProcedimientos(true); // Activar el loading al iniciar
     try {
       const data = await execute("/stats/totalRecords", { 
         query: {region: selectedState},
@@ -280,16 +286,19 @@ const ContainerContract = ({ classes }) => {
       if (isMounted.current) {
         console.log("totalRecords", data);
         setTotalRecords(data.totalProcedimientos);
+        setLoadingTotalProcedimientos(false); // Desactivar cuando los datos están listos
       }
     } catch (err) {
       if (isMounted.current) {
         console.error(err);
+        setLoadingTotalProcedimientos(false); // Desactivar en caso de error
       }
     }
   };
 
   // MONTO TOTAL DE CONTRATACIONES: GENERAL
   const [montoTotalContratos, setMontoTotalContratos] = useState([]);
+  const [loadingTotalContrataciones, setLoadingTotalContrataciones] = useState(true);
   const handlemontoTotalContratosFetch = async () => {
     try {
       const data = await execute("/stats/montoTotalContratos", {
@@ -298,10 +307,12 @@ const ContainerContract = ({ classes }) => {
       if (isMounted.current) {
         console.log("montoTotalContratos", data);
         setMontoTotalContratos(data.montoTotalContratos);
+        setLoadingTotalContrataciones(false);
       }
     } catch (err) {
       if (isMounted.current) {
         console.error(err);
+        setLoadingTotalContrataciones(false);
       }
     }
   };
@@ -328,6 +339,7 @@ const ContainerContract = ({ classes }) => {
 
   //TIPOS DE PROCEDIMIENTOS
   const [totalProcurementMethod, setTotalProcurementMethod] = useState([]);
+  const [loadingTotalTipo, setLoadingTotalTipos] = useState(true);
   const handletotalProcurementMethodFetch = async () => {
     try {
       const data = await execute("/stats/totalProcurementMethod", {
@@ -336,10 +348,12 @@ const ContainerContract = ({ classes }) => {
       if (isMounted.current) {
         console.log("totalProcurementMethod", data);
       setTotalProcurementMethod(data.totalProcurementMethod);
+      setLoadingTotalTipos(false);
       }
     } catch (err) {
       if (isMounted.current) {
         console.error(err);
+        setLoadingTotalTipos(false);
       }
     }
   };
@@ -434,8 +448,8 @@ const ContainerContract = ({ classes }) => {
     </div>
   ); */
 
-  return (
-    <div className={classes.root}>
+  return (    
+    <div className={classes.root}>      
       <div className={classes.logoTitulo}>Plataforma Digital Nacional</div>
       <Box align="center">
         <img src={IconoS6} className={classes.logo} alt={"Sistema 6"} />
@@ -446,16 +460,20 @@ const ContainerContract = ({ classes }) => {
 
       <Grid container spacing={3} className={classes.gridContainer}>
         <Grid item xs={12} sm={12} md={4}>
-          <TotalProcedimientos totalCases={totalRecords} />
+          <TotalProcedimientos totalCases={totalRecords} 
+                               isLoading={loadingTotalProcedimientos} />
         </Grid>
         <Grid item xs={12} sm={12} md={4}>
-          <TotalMonto totalMonto={montoTotalContratos} montoProcurementMethod={montoProcurementMethod} />
+          <TotalMonto totalMonto={montoTotalContratos} 
+                      montoProcurementMethod={montoProcurementMethod} 
+                      isLoading={loadingTotalContrataciones} />
         </Grid>
         {/* <Grid item xs={12} sm={12} md={3}>
           <TotalPorEstado totalEstado={currentData.uniqueEstado} />
         </Grid> */}
         <Grid item xs={12} sm={12} md={4}>
-          <TotalTipo totalProcurementMethod={totalProcurementMethod} />
+          <TotalTipo  totalProcurementMethod={totalProcurementMethod} 
+                      isLoading={loadingTotalTipo} />
         </Grid>
         <Grid item xs={12}>
           <SearchButtons

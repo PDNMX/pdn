@@ -4,6 +4,7 @@ import { Paper, Typography, Box } from '@mui/material';
 import withStyles from '@mui/styles/withStyles';
 import CountUp from 'react-countup';
 import { Business } from '@mui/icons-material';
+import LoadingComponent from './LoadingComponent';
 
 const styles = theme => ({
   paper: {
@@ -28,7 +29,7 @@ const styles = theme => ({
   }
 });
 
-const TotalProcedimientos = ({ classes, totalCases }) => {
+const TotalProcedimientos = ({ classes, totalCases, isLoading }) => {
   return (
     <Paper className={classes.paper} elevation={3}>
       <Business className={classes.icon} />
@@ -36,7 +37,11 @@ const TotalProcedimientos = ({ classes, totalCases }) => {
         Total de Procedimientos
       </Typography>
       <Box className={classes.number}>
-        <CountUp end={totalCases} separator="," duration={2.5} />
+        {isLoading ? (
+          <LoadingComponent />
+        ) : (
+          <CountUp end={totalCases || 0} separator="," duration={2.5} />
+        )}
       </Box>
     </Paper>
   );

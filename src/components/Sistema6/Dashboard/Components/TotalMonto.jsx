@@ -1,10 +1,9 @@
 // Components/TotalMonto.jsx
 import React from 'react';
-import { Paper, Typography, Grid } from '@mui/material';
+import { Paper, Typography, Grid, Box } from '@mui/material';
 import withStyles from '@mui/styles/withStyles';
 import CountUp from 'react-countup';
-import { line } from 'd3';
-import { BorderTop } from '@mui/icons-material';
+import LoadingComponent from './LoadingComponent';
 
 const styles = theme => ({
   paper: {
@@ -40,6 +39,16 @@ const styles = theme => ({
   },
   subtitle: {
     lineHeight: .6,
+  },
+  number: {
+    fontSize: '2rem',
+    fontWeight: 'bold',
+    color: '#5abbe3',
+    textAlign: 'center',
+    marginBottom: theme.spacing(3),
+    display: 'flex',
+    justifyContent: 'center',
+    minHeight: '2.5rem'
   }
 });
 
@@ -51,27 +60,36 @@ export const spanishProcurementMethod = {
   'not-specified': 'No especificado',
 };
 
-const TotalMonto = ({ classes, totalMonto, montoProcurementMethod }) => (
+const TotalMonto = ({ classes, totalMonto, montoProcurementMethod, isLoading }) => (
   <Paper className={classes.paper} elevation={3}>
     <Typography variant="h6" gutterBottom align="center">
       Monto Total de Contrataciones
     </Typography>
-    <div className={classes.montoTotal}>
-      $<CountUp end={totalMonto} separator="," duration={2.5} decimals={2} />
-    </div>
+    <Box className={classes.number}>
+      {isLoading ? (
+        <LoadingComponent />
+      ) : (
+        <div className={classes.montoTotal}>
+          $<CountUp end={totalMonto || 0} separator="," duration={2.5} decimals={2} />
+        </div>
+      )}
+    </Box>
+    
     <Grid container spacing={3}>
-      {montoProcurementMethod.map((item, index) => (
-        <Grid item xs={12}  key={index}>
-          <div className={classes.montoItem}>
-            <Typography className={classes.subtitle} variant="subtitle1" gutterBottom>
-              {spanishProcurementMethod[item.procurementMethod]}:
-            </Typography>
-            <Typography className={classes.h6} variant="h6">
-              $<CountUp end={item.total} separator="," duration={2.5} decimals={2} />
-            </Typography>
-          </div>
-        </Grid>
-      ))}
+      {!isLoading && montoProcurementMethod && montoProcurementMethod.length > 0 && 
+        montoProcurementMethod.map((item, index) => (
+          <Grid item xs={12} key={index}>
+            <div className={classes.montoItem}>
+              <Typography className={classes.subtitle} variant="subtitle1" gutterBottom>
+                {spanishProcurementMethod[item.procurementMethod] || item.procurementMethod}:
+              </Typography>
+              <Typography className={classes.h6} variant="h6">
+                $<CountUp end={item.total} separator="," duration={2.5} decimals={2} />
+              </Typography>
+            </div>
+          </Grid>
+        ))
+      }
     </Grid>
   </Paper>
 );
