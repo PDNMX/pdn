@@ -14,6 +14,7 @@ import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
 import LinearIndeterminate from './LinearIndeterminate'
 import ResponsiveDialog from './ResponsiveDialog'
+import { spanishProcurementMethod } from './DesgloseMetodoContratacion';
 
 const headRows = [
   { id: 'col1', numeric: false, disablePadding: false, label: 'OCID' },

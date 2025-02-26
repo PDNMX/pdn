@@ -1,9 +1,8 @@
 import React from 'react';
-import { Paper, Typography, Box, Chip, Divider, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import { Paper, Typography, Box, Chip, Divider, Grid, Card, CardContent, CardHeader } from '@mui/material';
 import withStyles from '@mui/styles/withStyles';
 import CountUp from 'react-countup';
 import LoadingComponent from './LoadingComponent';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const styles = theme => ({
   paper: {
@@ -11,7 +10,7 @@ const styles = theme => ({
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
     paddingTop: theme.spacing(1),
-    paddingBottom: theme.spacing(0),
+    paddingBottom: theme.spacing(2),
     background:'linear-gradient(0deg, hsl(197deg 80% 91% / 86%) 43%, hsl(0deg 0% 100% / 80%) 100%)',
     boxShadow: 'none',
     borderTop: '2px solid #81d2f2',
@@ -78,7 +77,7 @@ const styles = theme => ({
   divider: {
     margin: theme.spacing(2, 0),
   },
-  // Estilos para el acordeón y desglose
+  // Estilos para las tarjetas
   detalleContainer: {
     maxWidth: '100%',
     margin: '0 auto',
@@ -91,41 +90,32 @@ const styles = theme => ({
     fontWeight: 'bold',
     fontSize: '1.2rem',
   },
-  accordion: {
-    marginBottom: theme.spacing(1.5),
+  // Estilos para las cards
+  card: {
+    height: '100%',
     borderRadius: '6px',
-    '&.Mui-expanded': {
-      marginBottom: theme.spacing(1.5),
-    },
-    '&:before': {
-      display: 'none',
-    },
     boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
     transition: 'all 0.3s ease',
     '&:hover': {
       boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
     },
   },
-  accordionSummary: {
-    minHeight: '48px',
-    '&.Mui-expanded': {
-      minHeight: '48px',
+  cardHeader: {
+    paddingBottom: 0,
+    '& .MuiCardHeader-content': {
+      overflow: 'hidden',
     },
-    padding: theme.spacing(0, 1.5),
   },
-  accordionDetails: {
-    padding: theme.spacing(0, 1.5, 1.5, 1.5),
-  },
-  accordionHeader: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    width: '100%',
+  cardContent: {
+    paddingTop: theme.spacing(1),
   },
   methodTitle: {
     fontSize: '1.2rem',
     fontWeight: 'bold',
     color: '#3f94b8',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
   },
   contractCount: {
     backgroundColor: '#e1f5fe',
@@ -133,7 +123,7 @@ const styles = theme => ({
     fontWeight: 'bold',
   },
   currencyItem: {
-    padding: theme.spacing(1.5),
+    padding: theme.spacing(1),
     margin: theme.spacing(1, 0),
     backgroundColor: '#f8f9fa',
     borderRadius: '6px',
@@ -145,6 +135,7 @@ const styles = theme => ({
     fontWeight: 'bold',
     color: '#555',
     fontSize: '1.1rem',
+    marginLeft: theme.spacing(1),
   },
   amount: {
     fontSize: '1.1rem',
@@ -152,7 +143,6 @@ const styles = theme => ({
     color: '#0494ce',
   },
   contractChip: {
-    marginLeft: theme.spacing(1),
     backgroundColor: '#f1f8e9',
     color: '#558b2f',
     height: '20px',
@@ -183,7 +173,7 @@ export const spanishCurrency = {
   'no-specified': 'No especificado',
 };
 
-const TotalMonto = ({ classes, totalMonto, setTotalMonto, montoProcurementMethodCurrency, currency, isLoading }) => {
+const DesgloseMetodoContratacion = ({ classes, totalMonto, setTotalMonto, montoProcurementMethodCurrency, currency, isLoading }) => {
   // Depuración - Mostrar las props recibidas
   console.log("TotalMonto - Props recibidas:", {
     montoProcurementMethodCurrency,
@@ -214,38 +204,72 @@ const TotalMonto = ({ classes, totalMonto, setTotalMonto, montoProcurementMethod
 
   return (
     <Paper className={classes.paper} elevation={3}>
-      <Typography variant="h6" gutterBottom align="center">
-        Monto Total de Contrataciones
-      </Typography>
       
-      {/* Sección de Resumen */}
-      <Box className={classes.number}>
+      {/* Sección de Desglose por Método */}
+      <Box className={classes.detalleContainer}>
+        <Typography variant="h6" className={classes.detalleTitle}>
+          Monto Total por Método de Contratación
+        </Typography>
+        
         {isLoading ? (
-          <LoadingComponent />
+          <Box className={classes.loadingContainer}>
+            <LoadingComponent />
+          </Box>
+        ) : hasMethodData ? (
+          <Grid container spacing={2}>
+            {montoProcurementMethodCurrency.map((method, index) => (
+              <Grid item xs={12} sm={6} md={4} key={index}>
+                <Card className={classes.card}>
+                  <CardHeader
+                    className={classes.cardHeader}
+                    title={
+                      <Typography className={classes.methodTitle}>
+                        {spanishProcurementMethod[method._id] || method._id}
+                      </Typography>
+                    }
+                    action={
+                      <Chip 
+                        label={`${method.numero_contratos} contrato${method.numero_contratos !== 1 ? 's' : ''}`} 
+                        className={classes.contractCount}
+                        size="medium"
+                      />
+                    }
+                  />
+                  <CardContent className={classes.cardContent}>
+                    <Divider style={{ marginBottom: '12px' }} />
+                    
+                    {method.totales && method.totales.map((currencyItem, currencyIndex) => (
+                      <Box key={currencyIndex} className={classes.currencyItem}>
+                        <Box display="flex" justifyContent="flex-start" alignItems="center">
+                          <Chip 
+                            label={`${currencyItem.numero_contratos} contrato${currencyItem.numero_contratos !== 1 ? 's' : ''}`} 
+                            size="small" 
+                            className={classes.contractChip}
+                          />
+                        </Box>
+                        <Box display="flex" justifyContent="flex-end" alignItems="center"> 
+                          <Typography className={classes.amount}>
+                            $<CountUp end={currencyItem.total || 0} separator="," duration={1.5} decimals={2} />
+                          </Typography>
+                          <Typography className={classes.currencyName}>
+                          {getCurrencyDisplay(currencyItem.currency)}
+                          </Typography>
+                        </Box>
+                      </Box>
+                    ))}
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
         ) : (
-          <div>
-            {currency && currency.length > 0 && (
-              <Box>
-                {sortedCurrency.map((item, index) => (
-                  <Box key={index} className={classes.currencySection}>
-                    <>
-                      <Typography className={classes.currencyLabel}>
-                        { `Total ${item.currency === 'MXN' ? 'MXN' : getCurrencyDisplay(item.currency)}:`}
-                      </Typography>
-                      <Typography className={item.currency === 'MXN' ? classes.mxnTotal : classes.currencyAmount}>
-                        $<CountUp end={item.total || 0} separator="," duration={2.5} decimals={2} /> 
-                        {item.currency !== 'MXN' && shouldShowCurrency(item.currency) && ` ${item.currency}`}
-                      </Typography>
-                    </>
-                  </Box>
-                ))}
-              </Box>
-            )}
-          </div>
+          <Typography className={classes.noData}>
+            No hay datos disponibles de métodos de contratación.
+          </Typography>
         )}
       </Box>
     </Paper>
   );
 };
 
-export default withStyles(styles)(TotalMonto);
+export default withStyles(styles)(DesgloseMetodoContratacion);

@@ -14,6 +14,7 @@ import { estadosData, getTotalData } from "./mockData";
 import { useFetchApi } from "../../Utils/apiContratos";
 import { set } from "react-hook-form";
 import LoadingComponent from "./Components/LoadingComponent";
+import DesgloseMetodoContratacion from "./Components/DesgloseMetodoContratacion";
 
 
 const styles = (theme) => ({
@@ -497,6 +498,15 @@ const ContainerContract = ({ classes }) => {
           <TotalTipo  totalProcurementMethod={totalProcurementMethod} 
                       isLoading={loadingTotalTipo} />
         </Grid>
+
+        <Grid item xs={12} sm={12} md={12}>
+          <DesgloseMetodoContratacion totalMonto={montoTotalContratos} 
+                      setTotalMonto={setSelectedCurrency}
+                      montoProcurementMethodCurrency={montoProcurementMethodCurrency} 
+                      currency={montoTotalContratos} 
+                      isLoading={loadingTotalContrataciones} />
+        </Grid>
+
         <Grid item xs={12}>
           <SearchButtons
             selectedState={selectedState}
