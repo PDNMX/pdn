@@ -1,9 +1,9 @@
-// Components/TotalMonto.jsx
 import React from 'react';
-import { Paper, Typography, Grid, Box } from '@mui/material';
+import { Paper, Typography, Box, Chip, Divider, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import withStyles from '@mui/styles/withStyles';
 import CountUp from 'react-countup';
 import LoadingComponent from './LoadingComponent';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const styles = theme => ({
   paper: {
@@ -11,6 +11,7 @@ const styles = theme => ({
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
     paddingTop: theme.spacing(1),
+    paddingBottom: theme.spacing(2),
     background:'linear-gradient(0deg, hsl(197deg 80% 91% / 86%) 43%, hsl(0deg 0% 100% / 80%) 100%)',
     boxShadow: 'none',
     borderTop: '2px solid #81d2f2',
@@ -45,10 +46,127 @@ const styles = theme => ({
     fontWeight: 'bold',
     color: '#5abbe3',
     textAlign: 'center',
-    marginBottom: theme.spacing(3),
+    marginBottom: theme.spacing(2),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    minHeight: '2.5rem'
+  },
+  currencySection: {
+    marginBottom: theme.spacing(1),
+  },
+  currencyLabel: {
+    fontSize: '1rem',
+    fontWeight: 'bold',
+    color: '#55575A',
+  },
+  currencyAmount: {
+    fontSize: '1.1rem',
+    fontWeight: 'bold',
+    color: '#0494ce',
+    marginBottom:'2px',
+    lineHeight: 1,
+  },
+  mxnTotal: {
+    fontSize: '1.1rem',
+    fontWeight: 'bold',
+    color: '#3f94b8',
+    marginBottom: theme.spacing(2),
+    borderBottom: '1px solid #81d2f2',
+    paddingBottom: theme.spacing(0),
+  },
+  divider: {
+    margin: theme.spacing(2, 0),
+  },
+  // Estilos para el acordeón y desglose
+  detalleContainer: {
+    maxWidth: '100%',
+    margin: '0 auto',
+    marginTop: theme.spacing(1),
+  },
+  detalleTitle: {
+    marginBottom: theme.spacing(2),
+    textAlign: 'center',
+    color: '#3f94b8',
+    fontWeight: 'bold',
+    fontSize: '1.2rem',
+  },
+  accordion: {
+    marginBottom: theme.spacing(1.5),
+    borderRadius: '6px',
+    '&.Mui-expanded': {
+      marginBottom: theme.spacing(1.5),
+    },
+    '&:before': {
+      display: 'none',
+    },
+    boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+    transition: 'all 0.3s ease',
+    '&:hover': {
+      boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+    },
+  },
+  accordionSummary: {
+    minHeight: '48px',
+    '&.Mui-expanded': {
+      minHeight: '48px',
+    },
+    padding: theme.spacing(0, 1.5),
+  },
+  accordionDetails: {
+    padding: theme.spacing(0, 1.5, 1.5, 1.5),
+  },
+  accordionHeader: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
+  },
+  methodTitle: {
+    fontSize: '1.2rem',
+    fontWeight: 'bold',
+    color: '#3f94b8',
+  },
+  contractCount: {
+    backgroundColor: '#e1f5fe',
+    color: '#0277bd',
+    fontWeight: 'bold',
+  },
+  currencyItem: {
+    padding: theme.spacing(1.5),
+    margin: theme.spacing(1, 0),
+    backgroundColor: '#f8f9fa',
+    borderRadius: '6px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'baseline',
+  },
+  currencyName: {
+    fontWeight: 'bold',
+    color: '#555',
+    fontSize: '1.1rem',
+  },
+  amount: {
+    fontSize: '1.1rem',
+    fontWeight: 'bold',
+    color: '#0494ce',
+  },
+  contractChip: {
+    marginLeft: theme.spacing(1),
+    backgroundColor: '#f1f8e9',
+    color: '#558b2f',
+    height: '20px',
+  },
+  noData: {
+    textAlign: 'center',
+    padding: theme.spacing(4),
+    color: '#555',
+  },
+  loadingContainer: {
     display: 'flex',
     justifyContent: 'center',
-    minHeight: '2.5rem'
+    alignItems: 'center',
+    minHeight: '100px',
   }
 });
 
@@ -58,40 +176,146 @@ export const spanishProcurementMethod = {
   'limited': 'A cuando menos tres personas',
   'direct': 'Directa',
   'not-specified': 'No especificado',
+  'no-specified': 'No especificado',
 };
 
-const TotalMonto = ({ classes, totalMonto, montoProcurementMethod, isLoading }) => (
-  <Paper className={classes.paper} elevation={3}>
-    <Typography variant="h6" gutterBottom align="center">
-      Monto Total de Contrataciones
-    </Typography>
-    <Box className={classes.number}>
-      {isLoading ? (
-        <LoadingComponent />
-      ) : (
-        <div className={classes.montoTotal}>
-          $<CountUp end={totalMonto || 0} separator="," duration={2.5} decimals={2} />
-        </div>
-      )}
-    </Box>
-    
-    <Grid container spacing={3}>
-      {!isLoading && montoProcurementMethod && montoProcurementMethod.length > 0 && 
-        montoProcurementMethod.map((item, index) => (
-          <Grid item xs={12} key={index}>
-            <div className={classes.montoItem}>
-              <Typography className={classes.subtitle} variant="subtitle1" gutterBottom>
-                {spanishProcurementMethod[item.procurementMethod] || item.procurementMethod}:
-              </Typography>
-              <Typography className={classes.h6} variant="h6">
-                $<CountUp end={item.total} separator="," duration={2.5} decimals={2} />
-              </Typography>
-            </div>
-          </Grid>
-        ))
-      }
-    </Grid>
-  </Paper>
-);
+export const spanishCurrency = {
+  'no-specified': 'No especificado',
+};
+
+const TotalMonto = ({ classes, totalMonto, setTotalMonto, montoProcurementMethodCurrency, currency, isLoading }) => {
+  // Depuración - Mostrar las props recibidas
+  console.log("TotalMonto - Props recibidas:", {
+    montoProcurementMethodCurrency,
+    currency,
+    isLoading
+  });
+
+  // Función para obtener el nombre traducido solo en el caso especial
+  const getCurrencyDisplay = (currencyCode) => {
+    // Solo traducimos el caso especial "not-specified"
+    return spanishCurrency[currencyCode] || currencyCode;
+  };
+
+  const shouldShowCurrency = (currencyCode) => {
+    return currencyCode !== 'no-specified';
+  };
+
+  // Ordenar las monedas para que MXN aparezca primero
+  const sortedCurrency = currency ? [...currency].sort((a, b) => {
+    if (a.currency === 'MXN') return -1;
+    if (b.currency === 'MXN') return 1;
+    return a.currency.localeCompare(b.currency);
+  }) : [];
+
+  // Verificar si hay datos de métodos de contratación
+  const hasMethodData = montoProcurementMethodCurrency && montoProcurementMethodCurrency.length > 0;
+  console.log("¿Tiene datos de métodos?", hasMethodData);
+
+  return (
+    <Paper className={classes.paper} elevation={3}>
+      <Typography variant="h6" gutterBottom align="center">
+        Monto Total de Contrataciones
+      </Typography>
+      
+      {/* Sección de Resumen */}
+      <Box className={classes.number}>
+        {isLoading ? (
+          <LoadingComponent />
+        ) : (
+          <div>
+            {currency && currency.length > 0 && (
+              <Box>
+                {sortedCurrency.map((item, index) => (
+                  <Box key={index} className={classes.currencySection}>
+                    <>
+                      <Typography className={classes.currencyLabel}>
+                        { `Total ${item.currency === 'MXN' ? 'MXN' : getCurrencyDisplay(item.currency)}:`}
+                      </Typography>
+                      <Typography className={item.currency === 'MXN' ? classes.mxnTotal : classes.currencyAmount}>
+                        $<CountUp end={item.total || 0} separator="," duration={2.5} decimals={2} /> 
+                        {item.currency !== 'MXN' && shouldShowCurrency(item.currency) && ` ${item.currency}`}
+                      </Typography>
+                    </>
+                  </Box>
+                ))}
+              </Box>
+            )}
+          </div>
+        )}
+      </Box>
+      
+      {/* Divider entre resumen y desglose */}
+      <Divider className={classes.divider} />
+      
+      {/* Sección de Desglose por Método */}
+      <Box className={classes.detalleContainer}>
+        <Typography variant="h6" className={classes.detalleTitle}>
+          Desglose por Método de Contratación
+        </Typography>
+        
+        {isLoading ? (
+          <Box className={classes.loadingContainer}>
+            <LoadingComponent />
+          </Box>
+        ) : hasMethodData ? (
+          montoProcurementMethodCurrency.map((method, index) => (
+            <Accordion 
+              key={index} 
+              className={classes.accordion}
+              defaultExpanded={false} // Todos los paneles cerrados inicialmente
+            >
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls={`panel${index}-content`}
+                id={`panel${index}-header`}
+                className={classes.accordionSummary}
+              >
+                <Box className={classes.accordionHeader}>
+                  <Typography className={classes.methodTitle}>
+                    {spanishProcurementMethod[method._id] || method._id}
+                  </Typography>
+                  <Chip 
+                    label={`${method.numero_contratos} contrato${method.numero_contratos !== 1 ? 's' : ''}`} 
+                    className={classes.contractCount}
+                    size="medium"
+                  />
+                </Box>
+              </AccordionSummary>
+              
+              <AccordionDetails className={classes.accordionDetails}>
+                <Divider style={{ marginBottom: '16px' }} />
+                
+                {method.totales && method.totales.map((currencyItem, currencyIndex) => (
+                  <Box key={currencyIndex} className={classes.currencyItem}>
+                    <Box display="flex" justifyContent="flex-start" alignItems="center">
+                      <Chip 
+                        label={`${currencyItem.numero_contratos} contrato${currencyItem.numero_contratos !== 1 ? 's' : ''}`} 
+                        size="small" 
+                        className={classes.contractChip}
+                      />
+                    </Box>
+                    <Box display="flex" justifyContent="flex-end" alignItems="center"> 
+                      <Typography className={classes.amount}>
+                        $<CountUp end={currencyItem.total || 0} separator="," duration={1.5} decimals={2} />
+                      </Typography>
+                      <Typography className={classes.currencyName}>
+                          {currencyItem.currency}
+                        </Typography>
+                    </Box>
+                  </Box>
+                ))}
+              </AccordionDetails>
+            </Accordion>
+          ))
+        ) : (
+          <Typography className={classes.noData}>
+            No hay datos disponibles de métodos de contratación.
+          </Typography>
+        )}
+      </Box>
+    </Paper>
+  );
+};
 
 export default withStyles(styles)(TotalMonto);

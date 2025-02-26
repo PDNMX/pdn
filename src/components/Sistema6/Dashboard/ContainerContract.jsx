@@ -33,7 +33,7 @@ const styles = (theme) => ({
     padding: theme.spacing(2),
   },
   logo: {
-    maxWidth: "180px",
+    maxWidth: "150px",
   },
   logoTitulo: {
     marginLeft: theme.spacing(13),
@@ -299,14 +299,15 @@ const ContainerContract = ({ classes }) => {
   // MONTO TOTAL DE CONTRATACIONES: GENERAL
   const [montoTotalContratos, setMontoTotalContratos] = useState([]);
   const [loadingTotalContrataciones, setLoadingTotalContrataciones] = useState(true);
+  const [selectedCurrency, setSelectedCurrency] = useState('');
   const handlemontoTotalContratosFetch = async () => {
     try {
-      const data = await execute("/stats/montoTotalContratos", {
+      const data = await execute("/stats/montoTotalCurrency", {
         query: {region: selectedState},
       });
       if (isMounted.current) {
-        console.log("montoTotalContratos", data);
-        setMontoTotalContratos(data.montoTotalContratos);
+        console.log("montoTotalCurrency", data);
+        setMontoTotalContratos(data.montoTotalCurrency);
         setLoadingTotalContrataciones(false);
       }
     } catch (err) {
@@ -319,15 +320,15 @@ const ContainerContract = ({ classes }) => {
   
 
   // MONTO TOTAL DE CONTRATACIONES: PÚBLICA, RESTRINGIDA, DIRECTA 
-  const [montoProcurementMethod, setMontoProcurementMethod] = useState([]);
-  const handleMontoProcurementMethodFetch = async () => {
+  const [montoProcurementMethodCurrency, setMontoProcurementMethodCurrency] = useState([]);
+  const handleMontoProcurementMethodCurrencyFetch = async () => {
     try {
-      const data = await execute("/stats/montoProcurementMethod", {
+      const data = await execute("/stats/montoProcurementMethodCurrency", {
         query: {region: selectedState},
       });
       if (isMounted.current){
-        console.log("montoProcurementMethod", data);
-        setMontoProcurementMethod(data.montoProcurementMethod);
+        console.log("montoProcurementMethodCurrency", data);
+        setMontoProcurementMethodCurrency(data.montoProcurementMethodCurrency);
       }
     } catch (err) {
       if (isMounted.current){
@@ -406,7 +407,7 @@ const ContainerContract = ({ classes }) => {
 
   useEffect(() => {
     isMounted.current = true;
-    handleMontoProcurementMethodFetch();
+    handleMontoProcurementMethodCurrencyFetch();
     return () => {
       isMounted.current = false;
     }
@@ -440,6 +441,25 @@ const ContainerContract = ({ classes }) => {
   }, []); // El segundo argumento [] asegura que solo se ejecute una vez al montar el componente
 
   
+  
+  // Efecto específico para cuando cambia el array de monedas o el estado seleccionado
+  useEffect(() => {
+    // Solo ejecutar si tenemos datos
+    if (montoTotalContratos && montoTotalContratos.length > 0) {
+      // Buscar MXN o usar el primer elemento
+      const defaultCurrency = montoTotalContratos.find(
+        item => item.currency === 'MXN'
+      ) || montoTotalContratos[0];
+      
+      // Actualizar siempre al valor por defecto cuando cambia la lista de monedas
+      if (defaultCurrency) {
+        setSelectedCurrency(defaultCurrency.currency);
+      }
+    }
+  }, [montoTotalContratos]); // Solo depende del array de monedas
+
+
+
   /* return (
     <div>
       {loading && <p>Cargando...</p>}
@@ -465,7 +485,9 @@ const ContainerContract = ({ classes }) => {
         </Grid>
         <Grid item xs={12} sm={12} md={4}>
           <TotalMonto totalMonto={montoTotalContratos} 
-                      montoProcurementMethod={montoProcurementMethod} 
+                      setTotalMonto={setSelectedCurrency}
+                      montoProcurementMethodCurrency={montoProcurementMethodCurrency} 
+                      currency={montoTotalContratos} 
                       isLoading={loadingTotalContrataciones} />
         </Grid>
         {/* <Grid item xs={12} sm={12} md={3}>

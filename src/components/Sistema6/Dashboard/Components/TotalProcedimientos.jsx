@@ -19,7 +19,7 @@ const styles = theme => ({
     paddingTop: theme.spacing(1),
   },
   icon: {
-    fontSize: 48,
+    fontSize: 90,
     marginBottom: theme.spacing(2)
   },
   number: {
