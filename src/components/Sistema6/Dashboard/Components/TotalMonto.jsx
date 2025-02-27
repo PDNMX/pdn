@@ -71,8 +71,8 @@ const styles = theme => ({
     fontSize: '1.1rem',
     fontWeight: 'bold',
     color: '#3f94b8',
-    marginBottom: theme.spacing(2),
-    borderBottom: '1px solid #81d2f2',
+    marginBottom: theme.spacing(0),
+    // borderBottom: '1px solid #81d2f2',
     paddingBottom: theme.spacing(0),
   },
   divider: {
@@ -185,11 +185,11 @@ export const spanishCurrency = {
 
 const TotalMonto = ({ classes, totalMonto, setTotalMonto, montoProcurementMethodCurrency, currency, isLoading }) => {
   // Depuración - Mostrar las props recibidas
-  console.log("TotalMonto - Props recibidas:", {
+ /*  console.log("TotalMonto - Props recibidas:", {
     montoProcurementMethodCurrency,
     currency,
     isLoading
-  });
+  }); */
 
   // Función para obtener el nombre traducido solo en el caso especial
   const getCurrencyDisplay = (currencyCode) => {

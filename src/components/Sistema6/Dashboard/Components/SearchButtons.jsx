@@ -18,7 +18,9 @@ import withStyles from '@mui/styles/withStyles';
 import { 
   Business, 
   Category,
-  SearchOutlined 
+  Opacity,
+  SearchOutlined, 
+  Visibility
 } from '@mui/icons-material';
 import { SvgIcon } from '@mui/material';
 import axios from 'axios';
@@ -102,6 +104,10 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'column',
     gap: theme.spacing(1),
+  },
+  underdevelop: {   
+    opacity: 0.5,
+    pointerEvents: 'none',
   }
 });
 
@@ -167,7 +173,7 @@ const SearchButtons = ({ classes, selectedState, setSelectedState, estados, onSe
 
   return (
     <Grid container spacing={3}>
-      {/* Estado section remains the same */}
+      {/* CONTRATO POR ESTADO */}
       <Grid item xs={12} sm={12} md={3}>
         <Paper 
           className={`${classes.searchButton} ${activeButton === 'estado' ? classes.searchButtonActive : ''}`}
@@ -205,10 +211,11 @@ const SearchButtons = ({ classes, selectedState, setSelectedState, estados, onSe
         </Collapse>
       </Grid>
 
-      {/* Updated Institución section with new selects 
+     {/* CONTRATO POR PROVEEDOR  */}
       <Grid item xs={12} sm={12} md={3}>
         <Paper 
-          className={`${classes.searchButton} ${activeButton === 'empresa' ? classes.searchButtonActive : ''}`}
+          // className={`${classes.searchButton} ${classes.underdevelop} ${activeButton === 'empresa' ? classes.searchButtonActive : ''}`}
+          className={`${classes.searchButton} ${classes.underdevelop}`}
           elevation={0}
           onClick={() => handleButtonClick('empresa')}
         >
@@ -263,11 +270,12 @@ const SearchButtons = ({ classes, selectedState, setSelectedState, estados, onSe
           </Paper>
         </Collapse>
       </Grid>
-*/}
-      {/* Tipo section remains the same
+
+      {/* CONTRATO POR TIPO */}
       <Grid item xs={12} sm={12} md={3}>
         <Paper 
-          className={`${classes.searchButton} ${activeButton === 'tipo' ? classes.searchButtonActive : ''}`}
+          //className={`${classes.searchButton} ${activeButton === 'tipo' ? classes.searchButtonActive : ''}`}
+          className={`${classes.searchButton} ${classes.underdevelop}`}
           elevation={0}
           onClick={() => handleButtonClick('tipo')}
         >
@@ -300,11 +308,12 @@ const SearchButtons = ({ classes, selectedState, setSelectedState, estados, onSe
           </Paper>
         </Collapse>
       </Grid>
- */}
-      {/* ID section remains the same 
+ 
+      {/* CONTRATO POR OCID */}
       <Grid item xs={12} sm={12} md={3}>
         <Paper 
-          className={`${classes.searchButton} ${activeButton === 'id' ? classes.searchButtonActive : ''}`}
+          //className={`${classes.searchButton} ${activeButton === 'id' ? classes.searchButtonActive : ''}`}
+          className={`${classes.searchButton} ${classes.underdevelop}`}
           elevation={0}
           onClick={() => handleButtonClick('id')}
         >
@@ -314,7 +323,8 @@ const SearchButtons = ({ classes, selectedState, setSelectedState, estados, onSe
               Contrato por ID, OCID 
             </Typography>
             <Typography className={classes.subtitle}>
-              Búsqueda por identificador
+              PRÓXIMAMENTE
+              {/* Búsqueda por identificador */}
             </Typography>
           </Box>
         </Paper>
@@ -331,7 +341,7 @@ const SearchButtons = ({ classes, selectedState, setSelectedState, estados, onSe
           </Paper>
         </Collapse>
       </Grid>
-      */}
+      
     </Grid>
   );
 };

@@ -308,8 +308,8 @@ const ContainerContract = ({ classes }) => {
       });
       if (isMounted.current) {
         console.log("montoTotalCurrency", data);
-        setMontoTotalContratos(data.montoTotalCurrency);
         setLoadingTotalContrataciones(false);
+        setMontoTotalContratos(data.montoTotalCurrency);
       }
     } catch (err) {
       if (isMounted.current) {
@@ -322,6 +322,7 @@ const ContainerContract = ({ classes }) => {
 
   // MONTO TOTAL DE CONTRATACIONES: PÚBLICA, RESTRINGIDA, DIRECTA 
   const [montoProcurementMethodCurrency, setMontoProcurementMethodCurrency] = useState([]);
+  const [loadingMontoProcurementMethodCurrency, setLoadingMontoProcurementMethodCurrency] = useState(true);
   const handleMontoProcurementMethodCurrencyFetch = async () => {
     try {
       const data = await execute("/stats/montoProcurementMethodCurrency", {
@@ -329,11 +330,13 @@ const ContainerContract = ({ classes }) => {
       });
       if (isMounted.current){
         console.log("montoProcurementMethodCurrency", data);
+        setLoadingMontoProcurementMethodCurrency(false);
         setMontoProcurementMethodCurrency(data.montoProcurementMethodCurrency);
       }
     } catch (err) {
       if (isMounted.current){
         console.error(err);
+        setLoadingMontoProcurementMethodCurrency(false);
       }
     }
   };
@@ -479,6 +482,17 @@ const ContainerContract = ({ classes }) => {
         Tablero de Seguimiento a la contratación pública
       </Typography>
 
+      <Grid item xs={12}>
+          <SearchButtons
+            selectedState={selectedState}
+            setSelectedState={setSelectedState}
+            estados={regions}
+            onSearch={handleSearch}
+            onClearFilters={handleClearFilters}
+            searchParams={searchParams}
+          />
+        </Grid>
+
       <Grid container spacing={3} className={classes.gridContainer}>
         <Grid item xs={12} sm={12} md={4}>
           <TotalProcedimientos totalCases={totalRecords} 
@@ -504,19 +518,10 @@ const ContainerContract = ({ classes }) => {
                       setTotalMonto={setSelectedCurrency}
                       montoProcurementMethodCurrency={montoProcurementMethodCurrency} 
                       currency={montoTotalContratos} 
-                      isLoading={loadingTotalContrataciones} />
+                      isLoading={loadingMontoProcurementMethodCurrency} />
         </Grid>
 
-        <Grid item xs={12}>
-          <SearchButtons
-            selectedState={selectedState}
-            setSelectedState={setSelectedState}
-            estados={regions}
-            onSearch={handleSearch}
-            onClearFilters={handleClearFilters}
-            searchParams={searchParams}
-          />
-        </Grid>
+        
         <Grid item xs={12}>
           <TablaResultados
             selectedState={selectedState}

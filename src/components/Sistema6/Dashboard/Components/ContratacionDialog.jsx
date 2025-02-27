@@ -6,7 +6,10 @@ import {
   DialogActions, 
   Button,
   Typography,
-  Box 
+  Box,
+  Grid,
+  Card,
+  CardContent
 } from '@mui/material';
 import withStyles from '@mui/styles/withStyles';
 
@@ -35,12 +38,23 @@ const styles = theme => ({
       color: '#fff',
       border: '1px solid #38aeff',
     }
+  },
+  card: {
+    minWidth: 275,
+    margin: theme.spacing(1),
+  },
+  cardContent: {
+    textAlign: 'center',
   }
 });
 
 const ContratacionDialog = ({ classes, open, handleClose, data }) => {
+  // Depuración - Mostrar las props recibidas
+  console.log("DatosDialog - Props recibidas:", {
+    data,
+  });
   if (!data) return null;
-  const formatNumber = (value) => `$${value.toLocaleString('es-MX')}`;
+
   // Función para formatear el valor según la moneda
   const formatCurrency = (value, currency) => {
     const options = {
@@ -49,22 +63,9 @@ const ContratacionDialog = ({ classes, open, handleClose, data }) => {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2
     };
-  
-    // Asegúrate de que los valores de currency son correctos
+
     return new Intl.NumberFormat('es-MX', options).format(value);
   };
-
-  const renderedValue = (() => {
-    if (!data.contracts || data.contracts.length === 0) {
-      return "Sin contratos";
-    }
-    return formatNumber(data.contracts.reduce((acc, contract) => acc + contract.value.amount, 0));
-  })();
-
-
-  
-
-
 
   return (
     <Dialog
@@ -77,7 +78,7 @@ const ContratacionDialog = ({ classes, open, handleClose, data }) => {
         Detalle de Contratación
       </DialogTitle>
       <DialogContent className={classes.content}>
-      <Box className={classes.detailRow}>
+        <Box className={classes.detailRow}>
           <Typography variant="subtitle2" color="textSecondary">
             Descripción
           </Typography>
@@ -93,7 +94,7 @@ const ContratacionDialog = ({ classes, open, handleClose, data }) => {
             {data.id}
           </Typography>
         </Box>
-         <Box className={classes.detailRow}>
+        <Box className={classes.detailRow}>
           <Typography variant="subtitle2" color="textSecondary">
             OCID
           </Typography>
@@ -103,12 +104,26 @@ const ContratacionDialog = ({ classes, open, handleClose, data }) => {
         </Box>
         <Box className={classes.detailRow}>
           <Typography variant="subtitle2" color="textSecondary">
-            Monto Total
-          </Typography>
-          <Typography variant="body1">
-            {renderedValue}          
+            Monto de los contratos
           </Typography>
         </Box>
+
+        <Grid container spacing={2}>
+          {data.contracts && data.contracts.map((contract, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index}>
+              <Card className={classes.card}>
+                <CardContent className={classes.cardContent}>
+                  <Typography variant="h6">
+                    {formatCurrency(contract.value.amount, contract.value.currency)}
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary">
+                    {contract.value.currency}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
         
        {/*  <Box className={classes.detailRow}>
           <Typography variant="subtitle2" color="textSecondary">

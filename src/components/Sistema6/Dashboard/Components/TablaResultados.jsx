@@ -51,10 +51,16 @@ const columns = [
   { id: 'fecha', label: 'Fecha', minWidth: 100 },
   { id: 'tipo', label: 'Tipo', minWidth: 120 },
   { id: 'titulo', label: 'Título', minWidth: 170 },
-  { id: 'monto', label: 'Monto', minWidth: 100, format: value => `$${value.toLocaleString('es-MX')}` },
+  { id: 'contratos', label: 'No. de Contratos', minWidth: 100, format: value => `$${value.toLocaleString('es-MX')}` },
 ];
 const formatNumber = (value) => `$${value.toLocaleString('es-MX')}`;
 const TablaResultados = ({ classes, selectedState, currentData, setPaginacion, totalRows }) => {
+   // Depuración - Mostrar las props recibidas
+/*   console.log("TablaResultados - Props recibidas:", {
+    setPaginacion,
+    totalRows,
+    currentData,
+  }); */
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -139,8 +145,15 @@ const TablaResultados = ({ classes, selectedState, currentData, setPaginacion, t
                     {row.tender.title} 
                   </TableCell>
                   <TableCell>
-                    {(!row.contracts || row.contracts.length === 0) ? "Sin contratos" : formatNumber(row.contracts.reduce((acc, contract) => acc + contract.value.amount, 0))}  
+                    {row.contracts?.length || "Sin contratos"}
                   </TableCell>
+                  {/* <TableCell>
+                    {(!row.contracts || row.contracts.length === 0) ? "Sin contratos" : row.contracts.map(contract => `${contract.value.currency} ${formatNumber(contract.value.amount)}`).join(', ')}
+                  </TableCell> */}
+
+                  {/* <TableCell>
+                    {(!row.contracts || row.contracts.length === 0) ? "Sin contratos" : formatNumber(row.contracts.reduce((acc, contract) => acc + contract.value.amount, 0))}  
+                  </TableCell> */}
                   {/* {columns.map((column) => {
                     const value = row[column.id];
                     return (
