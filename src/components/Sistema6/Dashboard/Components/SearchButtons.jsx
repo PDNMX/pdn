@@ -211,11 +211,12 @@ const SearchButtons = ({ classes, selectedState, setSelectedState, estados, onSe
         </Collapse>
       </Grid>
 
-     {/* CONTRATO POR PROVEEDOR  */}
+    
+     {/* className={`${classes.searchButton} ${classes.underdevelop}`} */}
+    {/* CONTRATO POR PROVEEDOR  
       <Grid item xs={12} sm={12} md={3}>
         <Paper 
-          // className={`${classes.searchButton} ${classes.underdevelop} ${activeButton === 'empresa' ? classes.searchButtonActive : ''}`}
-          className={`${classes.searchButton} ${classes.underdevelop}`}
+          className={`${classes.searchButton} ${classes.underdevelop} ${activeButton === 'empresa' ? classes.searchButtonActive : ''}`}
           elevation={0}
           onClick={() => handleButtonClick('empresa')}
         >
@@ -270,11 +271,14 @@ const SearchButtons = ({ classes, selectedState, setSelectedState, estados, onSe
           </Paper>
         </Collapse>
       </Grid>
+      */}
 
-      {/* CONTRATO POR TIPO */}
+      
+      {/* className={`${classes.searchButton} ${activeButton === 'tipo' ? classes.searchButtonActive : ''}`} */}
+      {/* CONTRATO POR TIPO 
       <Grid item xs={12} sm={12} md={3}>
         <Paper 
-          //className={`${classes.searchButton} ${activeButton === 'tipo' ? classes.searchButtonActive : ''}`}
+          
           className={`${classes.searchButton} ${classes.underdevelop}`}
           elevation={0}
           onClick={() => handleButtonClick('tipo')}
@@ -308,12 +312,15 @@ const SearchButtons = ({ classes, selectedState, setSelectedState, estados, onSe
           </Paper>
         </Collapse>
       </Grid>
+      */}
  
-      {/* CONTRATO POR OCID */}
+      
+      {/* className={`${classes.searchButton} ${classes.underdevelop}`} */}
+      {/* CONTRATO POR OCID 
       <Grid item xs={12} sm={12} md={3}>
         <Paper 
-          //className={`${classes.searchButton} ${activeButton === 'id' ? classes.searchButtonActive : ''}`}
-          className={`${classes.searchButton} ${classes.underdevelop}`}
+          className={`${classes.searchButton} ${activeButton === 'id' ? classes.searchButtonActive : ''}`}
+          
           elevation={0}
           onClick={() => handleButtonClick('id')}
         >
@@ -323,8 +330,7 @@ const SearchButtons = ({ classes, selectedState, setSelectedState, estados, onSe
               Contrato por ID, OCID 
             </Typography>
             <Typography className={classes.subtitle}>
-              PRÓXIMAMENTE
-              {/* Búsqueda por identificador */}
+              Búsqueda por identificador
             </Typography>
           </Box>
         </Paper>
@@ -341,7 +347,7 @@ const SearchButtons = ({ classes, selectedState, setSelectedState, estados, onSe
           </Paper>
         </Collapse>
       </Grid>
-      
+      */}
     </Grid>
   );
 };
