@@ -5,7 +5,7 @@ import Faq from '../components/FAQ/index'
 import HelpDesk from '../components/HelpDesk/HelpDesk'
 
 import Sistema2 from '../components/Sistema2/Index'
-
+import ProtocoloConexion from '../components/ProtocoloConexion/';
 // Nuecom componente de búsqueda para el s3 v2
 import SancionadosV2 from '../components/Sistema3-v2'
 
@@ -305,7 +305,16 @@ const pdnRoutes = [
     color: '#713972',
     icon: IconCobertura,
     type: ''
-  }
+  },
+  {
+		exact: true,
+		path: '/protocolo-de-conexion',
+		component: ProtocoloConexion,
+		private: false,
+		name: "Protocolo de Interconexion",
+		shortName: "Protocolo de Interconexion",
+		color: "#713972"
+	},
 ]
 
 export default pdnRoutes
