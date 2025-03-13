@@ -311,8 +311,8 @@ const pdnRoutes = [
 		path: '/protocolo-de-conexion',
 		component: ProtocoloConexion,
 		private: false,
-		name: "Protocolo de Interconexion",
-		shortName: "Protocolo de Interconexion",
+		name: "Protocolo de Interconexión",
+		shortName: "Protocolo de Interconexión",
 		color: "#713972"
 	},
 ]
