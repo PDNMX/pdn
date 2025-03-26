@@ -95,9 +95,8 @@ export default function EnhancedTable({ rows, pagination, posicion, handleDataSe
               const { datosGenerales, datosEmpleoCargoComision } = row.declaracion.situacionPatrimonial
               return (
                 <TableRow hover onClick={event => handleClick(event, row)} tabIndex={-1} key={row.nombre + '-' + index}>
-                  <TableCell component='th' id={labelId} scope='row'>
-                    {datosGenerales.nombre} {datosGenerales.primerApellido} {datosGenerales.segundoApellido}
-                  </TableCell>
+                  <TableCell component='th' id={labelId} scope='row'>{row.metadata.actualizacion.split("T")[0]}</TableCell>
+                  <TableCell>{datosGenerales.nombre} {datosGenerales.primerApellido} {datosGenerales.segundoApellido}</TableCell>
                   <TableCell>{tipo}</TableCell>
                   <TableCell>{datosEmpleoCargoComision.nombreEntePublico}</TableCell>
                   <TableCell>

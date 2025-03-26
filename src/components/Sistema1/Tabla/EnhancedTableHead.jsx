@@ -4,6 +4,7 @@ import Typography from '@mui/material/Typography'
 import { TableCell, TableRow } from '@mui/material'
 
 const headCells = [
+  { id: 'fecha', numeric: false, disablePadding: false, label: 'FECHA' },
   { id: 'nombre', numeric: false, disablePadding: false, label: 'NOMBRE' },
   { id: 'tipo', numeric: false, disablePadding: false, label: 'TIPO' },
   {
