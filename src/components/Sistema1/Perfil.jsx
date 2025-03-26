@@ -1,84 +1,98 @@
-import React from 'react'
-import { Grid, Typography, Paper } from '@mui/material'
-import withStyles from '@mui/styles/withStyles'
+import React from 'react';
+import { Grid, Typography, Paper } from '@mui/material';
+import withStyles from '@mui/styles/withStyles';
 
-import MenuSuperior from './MenuSuperior'
-import SituacionPatrimonial from './SituacionPatrimonial'
-import Intereses from './Intereses'
-import styles from '../style'
-import { getMoneda } from './utils'
+import MenuSuperior from './MenuSuperior';
+import SituacionPatrimonial from './SituacionPatrimonial';
+import Intereses from './Intereses';
+import styles from '../style';
+import { getMoneda } from './utils';
 
-import Button from '@mui/material/Button'
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
+import Button from '@mui/material/Button';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
-import scrollToComponent from 'react-scroll-to-component'
-import basicInicial from './SituacionPatrimonial/00_basic_incial'
+import scrollToComponent from 'react-scroll-to-component';
+import basicInicial from './SituacionPatrimonial/00_basic_incial';
 
 class Perfil extends React.Component {
   state = {
     menuSuperior: 0,
     menuSituacionPatrimonial: 0,
     menuIntereses: 0
-  }
+  };
 
   refPatrimonial = section => {
-    this.patrimonial = section
-  }
+    this.patrimonial = section;
+  };
 
   refIntereses = section => {
-    this.intereses = section
-  }
+    this.intereses = section;
+  };
 
   handleChangeMenuSuperior = (event, newValue) => {
     this.setState(prevSate => {
-      return { ...prevSate, menuSuperior: newValue }
-    })
-  }
+      return { ...prevSate, menuSuperior: newValue };
+    });
+  };
 
   handleChangeMenuSituacionPatrimonial = (event, newValue) => {
     this.setState(
       prevSate => {
-        return { ...prevSate, menuSituacionPatrimonial: newValue }
+        return { ...prevSate, menuSituacionPatrimonial: newValue };
       },
       () => {
-        scrollToComponent(this.top, { align: 'top' })
+        scrollToComponent(this.top, { align: 'top' });
       }
-    )
-  }
+    );
+  };
 
   handleChangeMenuIntereses = (event, newValue) => {
     this.setState(
       prevSate => {
-        return { ...prevSate, menuIntereses: newValue }
+        return { ...prevSate, menuIntereses: newValue };
       },
       () => {
-        scrollToComponent(this.top, { align: 'top' })
+        scrollToComponent(this.top, { align: 'top' });
       }
-    )
-  }
+    );
+  };
+
+  calculoQuincenas = fechaTomaPosesion => {
+    const [, mes, dia] = fechaTomaPosesion.split('-');
+    const mesesRestantes = 12 - mes;
+    const quincenasMesesRestantes = mesesRestantes * 2;
+
+    const totalQuincenasRestantes = dia <= 15 ? quincenasMesesRestantes + 2 : quincenasMesesRestantes + 1;
+
+    return totalQuincenasRestantes;
+  };
 
   getIngresos = data => {
+    const fechaTomaPosesion = data.declaracion.situacionPatrimonial.datosEmpleoCargoComision.fechaTomaPosesion;
+    const numQuincenas = this.calculoQuincenas(fechaTomaPosesion);
+    console.log("numQuincenas: ", numQuincenas);
+
     switch (data.metadata.tipo) {
       case 'INICIAL':
-        return getMoneda(data.declaracion.situacionPatrimonial.ingresos.ingresoMensualNetoDeclarante.valor * 12)
+        return getMoneda((data.declaracion.situacionPatrimonial.ingresos.ingresoMensualNetoDeclarante.valor / 2) * numQuincenas);
       case 'MODIFICACIÓN':
-        return getMoneda(data.declaracion.situacionPatrimonial.ingresos.ingresoAnualNetoDeclarante.valor)
+        return getMoneda(data.declaracion.situacionPatrimonial.ingresos.ingresoAnualNetoDeclarante.valor);
       case 'CONCLUSIÓN':
-        return getMoneda(data.declaracion.situacionPatrimonial.ingresos.ingresoConclusionNetoDeclarante.valor)
+        return getMoneda(data.declaracion.situacionPatrimonial.ingresos.ingresoConclusionNetoDeclarante.valor);
       default:
-        break
+        break;
     }
-  }
+  };
 
   render() {
-    const { classes, data, handleGoBack, refPerfil } = this.props
+    const { classes, data, handleGoBack, refPerfil } = this.props;
 
     const datosGenerales = {
       ...basicInicial.datosGenerales,
       ...data.declaracion.situacionPatrimonial.datosGenerales
-    }
+    };
 
-    const tipo = data.metadata.tipo
+    const tipo = data.metadata.tipo;
 
     return (
       <Paper className={classes.paper_search} elevation={15}>
@@ -140,7 +154,7 @@ class Perfil extends React.Component {
           spacing={0}
           className={classes.perfilRoot}
           ref={section => {
-            this.top = section
+            this.top = section;
           }}
         >
           <MenuSuperior menuSuperior={this.state.menuSuperior} handleChangeMenuSuperior={this.handleChangeMenuSuperior} />
@@ -152,8 +166,8 @@ class Perfil extends React.Component {
           </Grid>
         </Grid>
       </Paper>
-    )
+    );
   }
 }
 
-export default withStyles(styles)(Perfil)
+export default withStyles(styles)(Perfil);
