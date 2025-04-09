@@ -51,8 +51,27 @@
         }
       },
       "s3": {
-        "s3s": false,
-        "s3p": false
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        },
+        "s3t": false
       },
       "s6": {
         "ejecutivo": {
@@ -130,8 +149,27 @@
         }
       },
       "s3": {
-        "s3s": false,
-        "s3p": false
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        },
+        "s3t": true
       },
       "s6": {
         "ejecutivo": {
@@ -209,8 +247,27 @@
         }
       },
       "s3": {
-        "s3s": false,
-        "s3p": false
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        },
+        "s3t": true
       },
       "s6": {
         "ejecutivo": {
@@ -288,8 +345,27 @@
         }
       },
       "s3": {
-        "s3s": false,
-        "s3p": false
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        },
+        "s3t": true
       },
       "s6": {
         "ejecutivo": {
@@ -367,8 +443,27 @@
         }
       },
       "s3": {
-        "s3s": false,
-        "s3p": false
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        },
+        "s3t": true
       },
       "s6": {
         "ejecutivo": {
@@ -446,8 +541,27 @@
         }
       },
       "s3": {
-        "s3s": true,
-        "s3p": true
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        },
+        "s3t": true
       },
       "s6": {
         "ejecutivo": {
@@ -525,8 +639,27 @@
         }
       },
       "s3": {
-        "s3s": false,
-        "s3p": false
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        },
+        "s3t": true
       },
       "s6": {
         "ejecutivo": {
@@ -604,8 +737,27 @@
         }
       },
       "s3": {
-        "s3s": false,
-        "s3p": false
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        },
+        "s3t": true
       },
       "s6": {
         "ejecutivo": {
@@ -683,8 +835,27 @@
         }
       },
       "s3": {
-        "s3s": false,
-        "s3p": false
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        },
+        "s3t": true
       },
       "s6": {
         "ejecutivo": {
@@ -762,8 +933,27 @@
         }
       },
       "s3": {
-        "s3s": false,
-        "s3p": false
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        },
+        "s3t": true
       },
       "s6": {
         "ejecutivo": {
@@ -841,8 +1031,27 @@
         }
       },
       "s3": {
-        "s3s": true,
-        "s3p": false
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        },
+        "s3t": true
       },
       "s6": {
         "ejecutivo": {
@@ -920,8 +1129,27 @@
         }
       },
       "s3": {
-        "s3s": true,
-        "s3p": true
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        },
+        "s3t": true
       },
       "s6": {
         "ejecutivo": {
@@ -999,8 +1227,27 @@
         }
       },
       "s3": {
-        "s3s": false,
-        "s3p": false
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        },
+        "s3t": true
       },
       "s6": {
         "ejecutivo": {
@@ -1078,8 +1325,27 @@
         }
       },
       "s3": {
-        "s3s": false,
-        "s3p": false
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        },
+        "s3t": true
       },
       "s6": {
         "ejecutivo": {
@@ -1157,8 +1423,27 @@
         }
       },
       "s3": {
-        "s3s": false,
-        "s3p": false
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        },
+        "s3t": true
       },
       "s6": {
         "ejecutivo": {
@@ -1236,8 +1521,27 @@
         }
       },
       "s3": {
-        "s3s": true,
-        "s3p": true
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        },
+        "s3t": true
       },
       "s6": {
         "ejecutivo": {
@@ -1315,8 +1619,27 @@
         }
       },
       "s3": {
-        "s3s": false,
-        "s3p": false
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        },
+        "s3t": true
       },
       "s6": {
         "ejecutivo": {
@@ -1394,8 +1717,27 @@
         }
       },
       "s3": {
-        "s3s": true,
-        "s3p": true
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        },
+        "s3t": true
       },
       "s6": {
         "ejecutivo": {
@@ -1473,8 +1815,27 @@
         }
       },
       "s3": {
-        "s3s": false,
-        "s3p": false
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        },
+        "s3t": true
       },
       "s6": {
         "ejecutivo": {
@@ -1552,8 +1913,27 @@
         }
       },
       "s3": {
-        "s3s": false,
-        "s3p": false
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        },
+        "s3t": true
       },
       "s6": {
         "ejecutivo": {
@@ -1631,8 +2011,27 @@
         }
       },
       "s3": {
-        "s3s": false,
-        "s3p": false
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        },
+        "s3t": true
       },
       "s6": {
         "ejecutivo": {
@@ -1710,8 +2109,27 @@
         }
       },
       "s3": {
-        "s3s": false,
-        "s3p": false
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        },
+        "s3t": true
       },
       "s6": {
         "ejecutivo": {
@@ -1789,8 +2207,27 @@
         }
       },
       "s3": {
-        "s3s": true,
-        "s3p": true
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        },
+        "s3t": true
       },
       "s6": {
         "ejecutivo": {
@@ -1868,8 +2305,27 @@
         }
       },
       "s3": {
-        "s3s": true,
-        "s3p": false
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        },
+        "s3t": true
       },
       "s6": {
         "ejecutivo": {
@@ -1947,8 +2403,27 @@
         }
       },
       "s3": {
-        "s3s": false,
-        "s3p": false
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        },
+        "s3t": true
       },
       "s6": {
         "ejecutivo": {
@@ -1975,38 +2450,689 @@
     }
   },
   {
+    "route": "/cobertura/cdmx",
     "name": "Ciudad de México",
     "icon1": "ico-edo-cdmx.svg",
-    "disabled": true
+    "icon2": "cdmx-icono.svg",
+    "disabled": true,
+    "data": {
+      "s1": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        }
+      },
+      "s2": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        }
+      },
+      "s3": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        },
+        "s3t": true
+      },
+      "s6": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        }
+      }
+    }
   },
   {
+    "route": "/cobertura/colima",
     "name": "Colima",
     "icon1": "ico-edo-col.svg",
-    "disabled": true
+    "icon2": "col-icono.svg",
+    "disabled": true,
+    "data": {
+      "s1": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        }
+      },
+      "s2": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        }
+      },
+      "s3": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        },
+        "s3t": true
+      },
+      "s6": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        }
+      }
+    }
   },
   {
+    "route": "/cobertura/hidalgo",
     "name": "Hidalgo",
     "icon1": "ico-edo-hgo.svg",
-    "disabled": true
+    "icon2": "hgo-icono.svg",
+    "disabled": true,
+    "data": {
+      "s1": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        }
+      },
+      "s2": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        }
+      },
+      "s3": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        },
+        "s3t": true
+      },
+      "s6": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        }
+      }
+    }
   },
   {
+    "route": "/cobertura/nuevo-leon",
     "name": "Nuevo León",
     "icon1": "ico-edo-nl.svg",
-    "disabled": true
+    "icon2": "nl-icono.svg",
+    "disabled": true,
+    "data": {
+      "s1": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        }
+      },
+      "s2": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        }
+      },
+      "s3": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        },
+        "s3t": true
+      },
+      "s6": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        }
+      }
+    }
   },
   {
+    "route": "/cobertura/oaxaca",
     "name": "Oaxaca",
     "icon1": "ico-edo-oax.svg",
-    "disabled": true
+    "icon2": "oax-icono.svg",
+    "disabled": true,
+    "data": {
+      "s1": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        }
+      },
+      "s2": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        }
+      },
+      "s3": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        },
+        "s3t": true
+      },
+      "s6": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        }
+      }
+    }
   },
   {
+    "route": "/cobertura/sonora",
     "name": "Sonora",
     "icon1": "ico-edo-son.svg",
-    "disabled": true
+    "icon2": "son-icono.svg",
+    "disabled": true,
+    "data": {
+      "s1": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        }
+      },
+      "s2": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        }
+      },
+      "s3": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        },
+        "s3t": true
+      },
+      "s6": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        }
+      }
+    }
   },
   {
+    "route": "/cobertura/tamaulipas",
     "name": "Tamaulipas",
     "icon1": "ico-edo-tamps.svg",
-    "disabled": true
+    "icon2": "tamps-icono.svg",
+    "disabled": true,
+    "data": {
+      "s1": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        }
+      },
+      "s2": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        }
+      },
+      "s3": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        },
+        "s3t": true
+      },
+      "s6": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 0
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 0
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        }
+      }
+    }
   }
 ]

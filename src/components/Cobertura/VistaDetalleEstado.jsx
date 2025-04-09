@@ -33,8 +33,6 @@ const styles = theme => ({
     borderWidth: 1,
     borderColor: theme.palette.primary.main,
     borderRadius: '10px 10px 10px 10px'
-    // display: 'flex',
-    // justifyContent: "center"
   },
   paper: {
     flexGrow: 1,
@@ -43,12 +41,11 @@ const styles = theme => ({
     borderWidth: 1,
     borderColor: theme.palette.primary.main,
     borderRadius: '10px 10px 10px 10px'
-
   }
 })
 
 const percentage = (a, b) => {
-  if (a === 0) {
+  if (a === 0 || b === 0) {
     return 0
   } else {
     return (a / b * 100).toFixed(0)
@@ -59,35 +56,82 @@ const VistaDetalleEstado = props => {
   const { classes } = props
   const { id_estado } = useParams()
   const section = pdnRoutes.find(r => r.path === '/cobertura/:id_estado')
-  const estado = estados.find(e => e.route.includes(id_estado))
-  // const icon = import (`../../../src/assets/Cobertura/iconos_estados/${estado.icon2}`);
+  
+  // Buscar el estado por id o por nombre
+  let estado = estados.find(e => e.route && e.route.includes(id_estado));
+  
+  // Si no se encuentra, buscar por nombre (para estados con disabled: true)
+  if (!estado) {
+    const normalizedId = id_estado.toLowerCase();
+    estado = estados.find(e => 
+      e.name.toLowerCase().replace(/\s+/g, '-').replace(/ó/g, 'o').replace(/á/g, 'a')
+        .replace(/é/g, 'e').replace(/í/g, 'i').replace(/ú/g, 'u').replace(/ñ/g, 'n') === normalizedId
+    );
+  }
+  
+  // Si aún no se encuentra, redirigir o mostrar un mensaje apropiado
+  if (!estado) {
+    console.error(`Estado no encontrado para id: ${id_estado}`);
+    // Aquí podrías manejar el caso de estado no encontrado de otra manera
+    return (
+      <div>
+        <HeaderV2 section={section} />
+        <Grid container spacing={0} justifyContent='center'>
+          <Grid item xs={12} className={classes.rootItem}>
+            <Paper elevation={15} className={classes.rootPaper}>
+              <Typography variant='h3' paragraph align='center' color='#713972'>
+                Estado no encontrado
+              </Typography>
+              <Typography align='center' color='#000' paragraph>
+                No se encontró información para el estado solicitado.
+              </Typography>
+            </Paper>
+          </Grid>
+        </Grid>
+      </div>
+    );
+  }
+
+  // Asegurarnos de que el estado tenga la nueva estructura para s3
+  if (estado.data.s3.hasOwnProperty('s3oic')) {
+    // Si tiene la estructura antigua (s3oic), convertirla a la nueva estructura
+    // Esto es solo un ejemplo, deberías adaptarlo según cómo quieras manejar la transición
+    const s3t = estado.data.s3.s3t;
+    const totalOIC = estado.data.s3.s3oic.total;
+    const tieneOIC = estado.data.s3.s3oic.tiene;
+    
+    estado.data.s3 = {
+      "ejecutivo": { "tiene": Math.round(tieneOIC * 0.4), "total": Math.round(totalOIC * 0.4) },
+      "legislativo": { "tiene": Math.round(tieneOIC * 0.1), "total": Math.round(totalOIC * 0.1) },
+      "judicial": { "tiene": Math.round(tieneOIC * 0.1), "total": Math.round(totalOIC * 0.1) },
+      "ocas": { "tiene": Math.round(tieneOIC * 0.1), "total": Math.round(totalOIC * 0.1) },
+      "municipal": { "tiene": Math.round(tieneOIC * 0.3), "total": Math.round(totalOIC * 0.3) },
+      "s3t": s3t
+    };
+  }
 
   const sys = [
     {
       id: 1,
       color: colors.s1,
-      // data: [10, 92,30, 43,50, 90 ],
       icon: icon_s1,
       name: 'Sistema de evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal'
     },
     {
       id: 2,
       color: colors.s2,
-      // data: [80, 12,45, 33,76, 23],
       icon: icon_s2,
       name: 'Sistema de los servidores públicos que intervengan en procedimientos de contrataciones públicas'
     },
     {
       id: 3,
       color: colors.s3,
-      // data: [20, 10, 30, 50, 30, 53],
       icon: icon_s3,
       name: 'Sistema nacional de servidores públicos y particulares sancionados'
     },
     {
       id: 6,
       color: colors.s6,
-      // data: [20, 10, 30, 50, 30, 53],
       icon: icon_s6,
       name: 'Sistema de informacion publica de contrataciones'
     }
@@ -128,9 +172,19 @@ const VistaDetalleEstado = props => {
         estado.data.s2.municipal.total
   )
 
-  const avance_s3 =
-        (estado.data.s3.s3s ? 50 : 0) +
-        (estado.data.s3.s3p ? 50 : 0)
+  // Nueva lógica para calcular el avance de S3 (ahora con el mismo formato que los otros sistemas)
+  const avance_s3 = percentage(
+    estado.data.s3.ejecutivo.tiene +
+        estado.data.s3.legislativo.tiene +
+        estado.data.s3.judicial.tiene +
+        estado.data.s3.ocas.tiene +
+        estado.data.s3.municipal.tiene,
+    estado.data.s3.ejecutivo.total +
+        estado.data.s3.legislativo.total +
+        estado.data.s3.judicial.total +
+        estado.data.s3.ocas.total +
+        estado.data.s3.municipal.total
+  )
 
   const avance_s6 = percentage(
     estado.data.s6.ejecutivo.tiene +
@@ -169,23 +223,24 @@ const VistaDetalleEstado = props => {
 
                   <Box sx={{ paddingTop: '40px', flexGrow: 1 }}>
                     <Box display='flex' onClick={() => handleSetSystem(1)} sx={{ cursor: 'pointer' }}>
-                  <img src={icon_s1} alt='Sistema 1' style={{ width: '40px', padding: '2px' }} />
-                  <CustomizedProgressBar value={avance_s1} color={colors.s1} />
-                </Box>
+                      <img src={icon_s1} alt='Sistema 1' style={{ width: '40px', padding: '2px' }} />
+                      <CustomizedProgressBar value={avance_s1} color={colors.s1} />
+                    </Box>
 
                     <Box display='flex' onClick={() => handleSetSystem(2)} sx={{ cursor: 'pointer' }}>
-                  <img src={icon_s2} alt='Sistema 2' style={{ width: '40px', padding: '2px' }} />
-                  <CustomizedProgressBar value={avance_s2} color={colors.s2} />
-                </Box>
+                      <img src={icon_s2} alt='Sistema 2' style={{ width: '40px', padding: '2px' }} />
+                      <CustomizedProgressBar value={avance_s2} color={colors.s2} />
+                    </Box>
 
                     <Box display='flex' onClick={() => handleSetSystem(3)} sx={{ cursor: 'pointer' }}>
-                  <img src={icon_s3} alt='Sistema 3' style={{ width: '40px', padding: '2px' }} />
-                  <CustomizedProgressBar value={avance_s3} color={colors.s3} />
-                </Box>
+                      <img src={icon_s3} alt='Sistema 3' style={{ width: '40px', padding: '2px' }} />
+                      <CustomizedProgressBar value={avance_s3} color={colors.s3} />
+                    </Box>
+
                     <Box display='flex' onClick={() => handleSetSystem(6)} sx={{ cursor: 'pointer' }}>
-                  <img src={icon_s6} alt='Sistema 6' style={{ width: '40px', padding: '2px' }} />
-                  <CustomizedProgressBar value={avance_s6} color={colors.s6} />
-                </Box>
+                      <img src={icon_s6} alt='Sistema 6' style={{ width: '40px', padding: '2px' }} />
+                      <CustomizedProgressBar value={avance_s6} color={colors.s6} />
+                    </Box>
                   </Box>
                 </Box>
 
@@ -196,71 +251,83 @@ const VistaDetalleEstado = props => {
                   Instituciones en la PDN
                 </Typography>
 
-                {/* <Typography variant="body2" color="white">
-                                Información de instituciones en la PDN
-                            </Typography> */}
-
                 <Typography variant='h4' color={colors.s1} sx={{ fontWeight: 'bold' }}>
                   {avance_s1}%
                 </Typography>
                 <Typography color='#713972' textAlign='center'>
                   {
-                                    estado.data.s1.ejecutivo.tiene +
-                                    estado.data.s1.legislativo.tiene +
-                                    estado.data.s1.judicial.tiene +
-                                    estado.data.s1.ocas.tiene +
-                                    estado.data.s1.municipal.tiene
-                                } de {
-                                estado.data.s1.ejecutivo.total +
-                                estado.data.s1.legislativo.total +
-                                estado.data.s1.judicial.total +
-                                estado.data.s1.ocas.total +
-                                estado.data.s1.municipal.total
-                            }
+                    estado.data.s1.ejecutivo.tiene +
+                    estado.data.s1.legislativo.tiene +
+                    estado.data.s1.judicial.tiene +
+                    estado.data.s1.ocas.tiene +
+                    estado.data.s1.municipal.tiene
+                  } de {
+                    estado.data.s1.ejecutivo.total +
+                    estado.data.s1.legislativo.total +
+                    estado.data.s1.judicial.total +
+                    estado.data.s1.ocas.total +
+                    estado.data.s1.municipal.total
+                  }
                 </Typography>
+
                 <Typography variant='h4' color={colors.s2} sx={{ fontWeight: 'bold' }}>
                   {avance_s2}%
                 </Typography>
                 <Typography color='#713972' textAlign='center'>
                   {
-                                    estado.data.s2.ejecutivo.tiene +
-                                    estado.data.s2.legislativo.tiene +
-                                    estado.data.s2.judicial.tiene +
-                                    estado.data.s2.ocas.tiene +
-                                    estado.data.s2.municipal.tiene
-                                } de {
-                                estado.data.s2.ejecutivo.total +
-                                estado.data.s2.legislativo.total +
-                                estado.data.s2.judicial.total +
-                                estado.data.s2.ocas.total +
-                                estado.data.s2.municipal.total
-                            }
+                    estado.data.s2.ejecutivo.tiene +
+                    estado.data.s2.legislativo.tiene +
+                    estado.data.s2.judicial.tiene +
+                    estado.data.s2.ocas.tiene +
+                    estado.data.s2.municipal.tiene
+                  } de {
+                    estado.data.s2.ejecutivo.total +
+                    estado.data.s2.legislativo.total +
+                    estado.data.s2.judicial.total +
+                    estado.data.s2.ocas.total +
+                    estado.data.s2.municipal.total
+                  }
                 </Typography>
 
                 <Typography variant='h4' color={colors.s3} sx={{ fontWeight: 'bold' }}>
                   {avance_s3}%
                 </Typography>
-                <Typography color='#713972' textAlign='center' fontWeight='bold'>Sancionados</Typography>
-                <Typography color='#713972' textAlign='center' variant='body2'> Servidores públicos: {estado.data.s3.s3s ? 'Sí' : 'No'} </Typography>
-                <Typography color='#713972' textAlign='center' variant='body2'> Particulares: {estado.data.s3.s3p ? 'Sí' : 'No'} </Typography>
+                <Typography color='#713972' textAlign='center'>
+                  {
+                    estado.data.s3.ejecutivo.tiene +
+                    estado.data.s3.legislativo.tiene +
+                    estado.data.s3.judicial.tiene +
+                    estado.data.s3.ocas.tiene +
+                    estado.data.s3.municipal.tiene
+                  } de {
+                    estado.data.s3.ejecutivo.total +
+                    estado.data.s3.legislativo.total +
+                    estado.data.s3.judicial.total +
+                    estado.data.s3.ocas.total +
+                    estado.data.s3.municipal.total
+                  }
+                </Typography>
+                <Typography color='#713972' textAlign='center' variant='body2'>
+                  Tribunal: {estado.data.s3.s3t ? 'Sí' : 'No'}
+                </Typography>
 
                 <Typography variant='h4' color={colors.s6} sx={{ fontWeight: 'bold' }}>
                   {avance_s6}%
                 </Typography>
                 <Typography color='#713972' textAlign='center'>
                   {
-                                    estado.data.s6.ejecutivo.tiene +
-                                    estado.data.s6.legislativo.tiene +
-                                    estado.data.s6.judicial.tiene +
-                                    estado.data.s6.ocas.tiene +
-                                    estado.data.s6.municipal.tiene
-                                } de {
-                                estado.data.s6.ejecutivo.total +
-                                estado.data.s6.legislativo.total +
-                                estado.data.s6.judicial.total +
-                                estado.data.s6.ocas.total +
-                                estado.data.s6.municipal.total
-                            }
+                    estado.data.s6.ejecutivo.tiene +
+                    estado.data.s6.legislativo.tiene +
+                    estado.data.s6.judicial.tiene +
+                    estado.data.s6.ocas.tiene +
+                    estado.data.s6.municipal.tiene
+                  } de {
+                    estado.data.s6.ejecutivo.total +
+                    estado.data.s6.legislativo.total +
+                    estado.data.s6.judicial.total +
+                    estado.data.s6.ocas.total +
+                    estado.data.s6.municipal.total
+                  }
                 </Typography>
 
               </Paper>
