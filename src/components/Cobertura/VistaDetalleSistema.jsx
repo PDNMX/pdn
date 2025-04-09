@@ -67,6 +67,11 @@ const VistaDetalleSistema = props => {
   // Determinar si debemos mostrar el sello del tribunal
   const mostrarSelloTribunal = system.id === 3 && estado.data.s3.s3t;
 
+  // Determinar el texto del título según el sistema
+  const tituloConexion = system.id === 3 
+    ? "Total de órganos internos de control conectados" 
+    : "Total de instituciones conectadas";
+
   /* Vista detallada por Sistema */
   return (
     <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'stretch' }} justifyContent='center'>
@@ -221,7 +226,7 @@ const VistaDetalleSistema = props => {
             {/* Radial chart */}
             <Box>
               <Typography color='#707274' sx={{ fontWeight: 'bold' }} variant='h6'>
-                Total de instituciones conectadas 
+                {tituloConexion}
               </Typography>
 
               <PieChart color={color} value={get_value(system.id)} />
