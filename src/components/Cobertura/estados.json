@@ -2035,7 +2035,7 @@
       },
       "s6": {
         "ejecutivo": {
-          "tiene": 0,
+          "tiene": 1,
           "total": 71
         },
         "legislativo": {
