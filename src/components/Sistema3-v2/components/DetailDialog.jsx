@@ -48,7 +48,7 @@ const DetailDialog = ({ open, onClose, data, classes, tipoFalta }) => {
           <Typography variant="h6" className={classes.dialogSectionTitle}>
             Datos Generales
           </Typography>
-          {renderField('Nombre', `${data.datosGenerales?.nombres || ''} ${data.datosGenerales?.primerApellido || ''} ${data.datosGenerales?.segundoApellido || ''}`)}
+          {tipoFalta === 'grave' && (renderField('Nombre', `${data.datosGenerales?.nombres || ''} ${data.datosGenerales?.primerApellido || ''} ${data.datosGenerales?.segundoApellido || ''}`))}
           {renderField('Sexo', data.datosGenerales?.sexo)}
           {tipoFalta === 'grave' && (renderField('Expediente', data.expediente))}
           {renderField('Fecha', data.fecha)}
@@ -107,6 +107,11 @@ const DetailDialog = ({ open, onClose, data, classes, tipoFalta }) => {
                 <>
                   {renderField('Plazo', `${sancion.inhabilitacion.plazoAnios} años, ${sancion.inhabilitacion.plazoMeses} meses, ${sancion.inhabilitacion.plazoDias} días`)}
                   {renderField('Periodo', `Del ${sancion.inhabilitacion.fechaInicial} al ${sancion.inhabilitacion.fechaFinal}`)}
+                </>
+              )}
+              {sancion.otro && (
+                <>
+                  {renderField('Denominación', `${sancion.otro.denominacionSancion}`)}
                 </>
               )}
             </Box>
