@@ -1598,7 +1598,7 @@
       },
       "s2": {
         "ejecutivo": {
-          "t-iene": 24,
+          "tiene": 24,
           "total": 82
         },
         "legislativo": {
@@ -1801,7 +1801,7 @@
           "tiene": 1,
           "total": 1
         },
-        "judicial-": {
+        "judicial": {
           "tiene": 1,
           "total": 1
         },
@@ -2572,7 +2572,7 @@
           "total": 9
         },
         "municipal": {
-          "ti-ene": 0,
+          "tiene": 0,
           "total": 1
         }
       },
