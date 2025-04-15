@@ -227,7 +227,8 @@ const FormServidores = ({ classes, providers }) => {
                           {tipoFalta === 'grave' && <TableCell className={classes.tableHeaderCell}>Nombre</TableCell>}
                           <TableCell className={classes.tableHeaderCell}>Institución</TableCell>
                           <TableCell className={classes.tableHeaderCell}>Fecha</TableCell>
-                          <TableCell className={classes.tableHeaderCell}>Expediente</TableCell>
+                          {/* <TableCell className={classes.tableHeaderCell}>Expediente</TableCell> */}
+                          {tipoFalta === 'grave' && <TableCell className={classes.tableHeaderCell}>Expediente</TableCell>}
                         </TableRow>
                       </TableHead>
                       <TableBody>
@@ -240,14 +241,18 @@ const FormServidores = ({ classes, providers }) => {
                             style={{ cursor: 'pointer' }}
                           >
                             {tipoFalta === 'grave' && (
+                              <>
                               <TableCell>
                                 {`${item.datosGenerales?.nombres || ''} ${item.datosGenerales?.primerApellido ||
                                   ''} ${item.datosGenerales?.segundoApellido || ''}`}
                               </TableCell>
+                              </>
                             )}
                             <TableCell>{item.empleoCargoComision?.nombreEntePublico || 'N/A'}</TableCell>
                             <TableCell>{item.fecha}</TableCell>
-                            <TableCell>{item.expediente || 'N/A'}</TableCell>
+                            {tipoFalta === 'grave' && (
+                              <TableCell>{item.expediente || 'N/A'}</TableCell>
+                            )}
                           </TableRow>
                         ))}
                       </TableBody>
@@ -265,7 +270,7 @@ const FormServidores = ({ classes, providers }) => {
           );
         })}
 
-        <DetailDialog open={!!selectedRecord} onClose={() => setSelectedRecord(null)} data={selectedRecord} />
+        <DetailDialog open={!!selectedRecord} onClose={() => setSelectedRecord(null)} data={selectedRecord} tipoFalta={tipoFalta}/>
       </Box>
     );
   };

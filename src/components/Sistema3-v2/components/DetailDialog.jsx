@@ -18,7 +18,7 @@ const styles = theme => ({
   ...commonStyles(theme),
 });
 
-const DetailDialog = ({ open, onClose, data, classes }) => {
+const DetailDialog = ({ open, onClose, data, classes, tipoFalta }) => {
   if (!data) return null;
 
   const renderField = (label, value) => {
@@ -50,7 +50,7 @@ const DetailDialog = ({ open, onClose, data, classes }) => {
           </Typography>
           {renderField('Nombre', `${data.datosGenerales?.nombres || ''} ${data.datosGenerales?.primerApellido || ''} ${data.datosGenerales?.segundoApellido || ''}`)}
           {renderField('Sexo', data.datosGenerales?.sexo)}
-          {renderField('Expediente', data.expediente)}
+          {tipoFalta === 'grave' && (renderField('Expediente', data.expediente))}
           {renderField('Fecha', data.fecha)}
         </Box>
 
