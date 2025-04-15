@@ -8,7 +8,7 @@ import {
   Box
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import LightbulbIcon from '@mui/icons-material/Lightbulb';
+import AssuredWorkloadIcon from '@mui/icons-material/AssuredWorkload';
 
 const ProviderAccordion = ({
   provider,
@@ -31,7 +31,7 @@ const ProviderAccordion = ({
           pr: 2
         }}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-            <LightbulbIcon sx={{ color: '#4fc3f7' }} />
+            <AssuredWorkloadIcon sx={{ color: '#9c27b0' }} />
             <Typography>{provider.name}</Typography>
           </Box>
 
