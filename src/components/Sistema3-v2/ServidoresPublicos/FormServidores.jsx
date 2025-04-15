@@ -203,12 +203,18 @@ const FormServidores = ({ classes, providers }) => {
       return renderNoResults();
     }
 
+    // Ordenar los resultados alfabéticamente por providerId de forma ascendente
+    const sortedResults = [...results].sort((a, b) => {
+      return a.providerId.localeCompare(b.providerId);
+    });
+    //console.log(sortedResults)
+
     return (
       <Box sx={{ mb: 4 }}>
         <Typography variant="h6" gutterBottom>
           Se encontraron {totalRegistros} registro(s)
         </Typography>
-        {results.map((result, index) => {
+        {sortedResults.map((result, index) => {
           const hasData = result.providerData.pagination?.totalItems > 0;
 
           return (
