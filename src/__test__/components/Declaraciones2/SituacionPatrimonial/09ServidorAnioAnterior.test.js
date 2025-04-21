@@ -17,7 +17,7 @@ describe.each(info)('file $name', ({ data }) => {
 
     switch (metadata.tipo) {
       case 'INICIAL':
-        test('09ServidorAnioAnterior Inicial $metadata.tipo', () => {
+        test('09ServidorAnioAnterior Inicial', () => {
           const wrapper = mount(<ServidorAnioAnterior data={actividadAnualAnterior} />);
 
           expect(wrapper.length).toBe(1);
