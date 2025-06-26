@@ -28,7 +28,7 @@ function Vehiculo(props) {
             <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon style={{ color: 'white' }} />} aria-controls='panel1a-content' id='panel1a-header'>
               <Typography className={exp.heading}>
                 <strong>
-                  {obj.tipoVehiculo && obj.tipoVehiculo.valor} ({obj.tipoOperacion.replace('_', ' ')})
+                  {obj.tipoVehiculo && obj.tipoVehiculo.valor} ({obj.tipoOperacion?.replace('_', ' ')})
                 </strong>
               </Typography>
             </BoxAccordionSummary>
