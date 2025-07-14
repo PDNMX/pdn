@@ -18,6 +18,8 @@ describe.each(info)('file $name', ({ data }) => {
   describe.each(data)('14Adeudos id:$id nombre:$declaracion.situacionPatrimonial.datosGenerales.nombre|$declaracion.situacionPatrimonial.datosGenerales.primerApellido|$declaracion.situacionPatrimonial.datosGenerales.segundoApellido', ({ id, metadata, declaracion }) => {
     const { adeudos } = declaracion.situacionPatrimonial;
 
+    // console.log("adeudos: ", adeudos.adeudo.length);
+    // console.log(`14Adeudos id:${id} nombre:${declaracion.situacionPatrimonial.datosGenerales.nombre}|${declaracion.situacionPatrimonial.datosGenerales.primerApellido}|${declaracion.situacionPatrimonial.datosGenerales.segundoApellido}`);    
     test('14Adeudos', () => {
       const wrapper = mount(<Adeudos data={adeudos} tipo={metadata.tipo} />);
       expect(wrapper.length).toBe(1);

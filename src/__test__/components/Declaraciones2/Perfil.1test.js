@@ -21,6 +21,7 @@ describe.each(info)('file $name', ({ data }) => {
     test('01DatosGenerales', () => {
       //const wrapper = mount(<DatosGenerales data={datosGenerales} titulo='Titulo' />);
       //expect(wrapper.length).toBe(1);
+      //wrapper.unmount();
     });
   });
 });

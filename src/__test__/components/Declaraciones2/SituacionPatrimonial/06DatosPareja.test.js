@@ -19,6 +19,7 @@ describe.each(info)('file $name', ({ data }) => {
     test('06DatosPareja', () => {
       const wrapper = mount(<DatosPareja />);
       expect(wrapper.length).toBe(1);
+      wrapper.unmount();
     });
   });
 });

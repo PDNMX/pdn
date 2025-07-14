@@ -19,6 +19,7 @@ describe.each(info)('file $name', ({ data }) => {
     test('07DatosDependienteEconomico', () => {
       const wrapper = mount(<DatosDependienteEconomico />);
       expect(wrapper.length).toBe(1);
+      wrapper.unmount();
     });
   });
 });

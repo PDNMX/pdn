@@ -21,6 +21,7 @@ describe.each(info)('file $name', ({ data }) => {
       test('06BeneficiosPrivados', () => {
         const wrapper = mount(<BeneficiosPrivados data={beneficiosPrivados} />);
         expect(wrapper.length).toBe(1);
+        wrapper.unmount();
       });
     } else {
       test('debe ser declaracionCompleta false', () => {

@@ -21,6 +21,7 @@ describe.each(info)('file $name', ({ data }) => {
     test('13Inversiones', () => {
       const wrapper = mount(<Inversiones data={inversiones} tipo={metadata.tipo} />);
       expect(wrapper.length).toBe(1);
+      wrapper.unmount();
     });
   });
 });

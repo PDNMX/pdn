@@ -26,6 +26,7 @@ describe.each(info)('file $name', ({ data }) => {
           const wrapper = mount(<IngresosInicial data={ingresos} />);
 
           expect(wrapper.length).toBe(1);
+          wrapper.unmount();
         });
         break;
       case 'MODIFICACIÓN':
@@ -33,6 +34,7 @@ describe.each(info)('file $name', ({ data }) => {
           const wrapper = mount(<IngresosModificacion data={ingresos} />);
 
           expect(wrapper.length).toBe(1);
+          wrapper.unmount();
         });
         break;
       case 'CONCLUSIÓN':
@@ -40,6 +42,7 @@ describe.each(info)('file $name', ({ data }) => {
           const wrapper = mount(<IngresosConclusion data={ingresos} />);
 
           expect(wrapper.length).toBe(1);
+          wrapper.unmount();
         });
         break;
 

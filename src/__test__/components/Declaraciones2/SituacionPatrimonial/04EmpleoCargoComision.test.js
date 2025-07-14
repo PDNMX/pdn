@@ -21,6 +21,7 @@ describe.each(info)('file $name', ({ data }) => {
     test('04EmpleoCargoComision', () => {
       const wrapper = mount(<EmpleoCargoComision data={datosEmpleoCargoComision} />);
       expect(wrapper.length).toBe(1);
+      wrapper.unmount();
     });
   });
 });

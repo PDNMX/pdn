@@ -20,9 +20,10 @@ describe.each(info)('file $name', ({ data }) => {
 
     describe(`SituacionPatrimonial`, () => {
       test('montar', () => {
-        const wrapper = mount(<SituacionPatrimonial value={0} setValue={() => {}} data={situacionPatrimonial} tipo={metadata.tipo} />);
+        const wrapper = mount(<SituacionPatrimonial value={0} setValue={() => { }} data={situacionPatrimonial} tipo={metadata.tipo} />);
 
         expect(wrapper.length).toBe(1);
+        wrapper.unmount();
       });
     });
   });

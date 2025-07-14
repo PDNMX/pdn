@@ -21,6 +21,7 @@ describe.each(info)('file $name', ({ data }) => {
       test('05ClientesPrincipales', () => {
         const wrapper = mount(<ClientesPrincipales data={clientesPrincipales} />);
         expect(wrapper.length).toBe(1);
+        wrapper.unmount();
       });
     } else {
       test('debe ser declaracionCompleta false', () => {

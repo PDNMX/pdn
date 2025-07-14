@@ -25,6 +25,7 @@ describe.each(info)('file $name', ({ data }) => {
           const wrapper = mount(<ServidorAnioAnterior data={actividadAnualAnterior} />);
 
           expect(wrapper.length).toBe(1);
+          wrapper.unmount();
         });
         break;
       case 'MODIFICACIÓN':
@@ -38,6 +39,7 @@ describe.each(info)('file $name', ({ data }) => {
           const wrapper = mount(<ServidorAnioAnterior data={actividadAnualAnterior} />);
 
           expect(wrapper.length).toBe(1);
+          wrapper.unmount();
         });
         break;
 
