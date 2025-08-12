@@ -67,20 +67,33 @@ class Perfil extends React.Component {
     return totalQuincenasRestantes;
   };
 
-  getIngresos = data => {
-    const fechaTomaPosesion = data.declaracion.situacionPatrimonial.datosEmpleoCargoComision.fechaTomaPosesion;
-    const numQuincenas = this.calculoQuincenas(fechaTomaPosesion);
-    console.log("numQuincenas: ", numQuincenas);
+  getTitleIngresos = tipo => {
+    switch (tipo) {
+      case 'INICIAL':
+        return 'INGRESO MENSUAL:';
+      case 'MODIFICACIÓN':
+      case 'MODIFICACION':
+        return 'INGRESO ANUAL:';
+      case 'CONCLUSIÓN':
+      case 'CONCLUSION':
+        return 'INGRESO DE CONCLUSIÓN:';
+      default:
+        return 'DECLARACIÓN NO DEFINIDA:';
+    }
+  };
 
+  getIngresos = data => {
     switch (data.metadata.tipo) {
       case 'INICIAL':
-        return getMoneda((data.declaracion.situacionPatrimonial.ingresos.ingresoMensualNetoDeclarante.valor / 2) * numQuincenas);
+        return getMoneda(data.declaracion.situacionPatrimonial.ingresos.ingresoMensualNetoDeclarante.valor);
       case 'MODIFICACIÓN':
+      case 'MODIFICACION':
         return getMoneda(data.declaracion.situacionPatrimonial.ingresos.ingresoAnualNetoDeclarante.valor);
       case 'CONCLUSIÓN':
+      case 'CONCLUSION':
         return getMoneda(data.declaracion.situacionPatrimonial.ingresos.ingresoConclusionNetoDeclarante.valor);
       default:
-        break;
+        return 'Tipo de declaración no definida';
     }
   };
 
@@ -123,7 +136,7 @@ class Perfil extends React.Component {
                 </Grid>
                 <Grid item xs={12} md={3}>
                   <Typography variant='h5' component='h3' className={classes.tituloCard}>
-                    INGRESOS ANUALES NETOS:
+                    {this.getTitleIngresos(data.metadata.tipo)}
                   </Typography>
                   <Typography className={classes.dataCard}>{this.getIngresos(data)}</Typography>
                 </Grid>
