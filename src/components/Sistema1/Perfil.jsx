@@ -85,13 +85,13 @@ class Perfil extends React.Component {
   getIngresos = data => {
     switch (data.metadata.tipo) {
       case 'INICIAL':
-        return getMoneda(data.declaracion.situacionPatrimonial.ingresos.ingresoMensualNetoDeclarante.valor);
+        return getMoneda(data.declaracion.situacionPatrimonial.ingresos?.ingresoMensualNetoDeclarante?.valor);
       case 'MODIFICACIÓN':
       case 'MODIFICACION':
-        return getMoneda(data.declaracion.situacionPatrimonial.ingresos.ingresoAnualNetoDeclarante.valor);
+        return getMoneda(data.declaracion.situacionPatrimonial.ingresos?.ingresoAnualNetoDeclarante?.valor);
       case 'CONCLUSIÓN':
       case 'CONCLUSION':
-        return getMoneda(data.declaracion.situacionPatrimonial.ingresos.ingresoConclusionNetoDeclarante.valor);
+        return getMoneda(data.declaracion.situacionPatrimonial.ingresos?.ingresoConclusionNetoDeclarante?.valor);
       default:
         return 'Tipo de declaración no definida';
     }

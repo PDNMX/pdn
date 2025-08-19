@@ -45,10 +45,15 @@ const BorderLinearProgress = withStyles({
 })(LinearProgress)
 
 export const getMoneda = valor => {
-  return new Intl.NumberFormat('es-MX', {
-    style: 'currency',
-    currency: 'MXN'
-  }).format(valor)
+  console.log("valor: ", valor);
+  if(valor !== null && valor !== undefined) {
+    return new Intl.NumberFormat('es-MX', {
+      style: 'currency',
+      currency: 'MXN'
+    }).format(valor)
+  }
+
+  return "Sin valor registrado";
 }
 
 export const getUnidad = unidad => {
