@@ -52,6 +52,8 @@ const percentage = (a, b) => {
   }
 }
 
+
+
 const VistaDetalleEstado = props => {
   const { classes } = props
   const { id_estado } = useParams()
@@ -64,15 +66,14 @@ const VistaDetalleEstado = props => {
   if (!estado) {
     const normalizedId = id_estado.toLowerCase();
     estado = estados.find(e => 
-      e.name.toLowerCase().replace(/\s+/g, '-').replace(/ó/g, 'o').replace(/á/g, 'a')
-        .replace(/é/g, 'e').replace(/í/g, 'i').replace(/ú/g, 'u').replace(/ñ/g, 'n') === normalizedId
+      e.name.toLowerCase().replace(/\s+/g, '-').replace(/Ã³/g, 'o').replace(/Ã¡/g, 'a')
+        .replace(/Ã©/g, 'e').replace(/Ã­/g, 'i').replace(/Ãº/g, 'u').replace(/Ã±/g, 'n') === normalizedId
     );
   }
   
   // Si aún no se encuentra, redirigir o mostrar un mensaje apropiado
   if (!estado) {
     console.error(`Estado no encontrado para id: ${id_estado}`);
-    // Aquí podrías manejar el caso de estado no encontrado de otra manera
     return (
       <div>
         <HeaderV2 section={section} />
@@ -95,7 +96,6 @@ const VistaDetalleEstado = props => {
   // Asegurarnos de que el estado tenga la nueva estructura para s3
   if (estado.data.s3.hasOwnProperty('s3oic')) {
     // Si tiene la estructura antigua (s3oic), convertirla a la nueva estructura
-    // Esto es solo un ejemplo, deberías adaptarlo según cómo quieras manejar la transición
     const s3t = estado.data.s3.s3t;
     const totalOIC = estado.data.s3.s3oic.total;
     const tieneOIC = estado.data.s3.s3oic.tiene;
@@ -110,7 +110,7 @@ const VistaDetalleEstado = props => {
     };
   }
 
-  const sys = [
+  const systems = [
     {
       id: 1,
       color: colors.s1,
@@ -133,17 +133,9 @@ const VistaDetalleEstado = props => {
       id: 6,
       color: colors.s6,
       icon: icon_s6,
-      name: 'Sistema de informacion publica de contrataciones'
+      name: 'Sistema de información pública de contrataciones'
     }
   ]
-
-  const [system, setSystem] = React.useState(
-    JSON.parse(JSON.stringify(sys[0]))
-  )
-
-  const handleSetSystem = id => {
-    setSystem(sys.find(s => s.id === id))
-  }
 
   const avance_s1 = percentage(
     estado.data.s1.ejecutivo.tiene +
@@ -172,7 +164,6 @@ const VistaDetalleEstado = props => {
         estado.data.s2.municipal.total
   )
 
-  // Nueva lógica para calcular el avance de S3 (ahora con el mismo formato que los otros sistemas)
   const avance_s3 = percentage(
     estado.data.s3.ejecutivo.tiene +
         estado.data.s3.legislativo.tiene +
@@ -214,6 +205,7 @@ const VistaDetalleEstado = props => {
               Información al 30 de junio de 2025, reportada por la Secretaría Ejecutiva del Sistema Estatal Anticorrupción 
             </Typography>
 
+            {/* Header con resumen general */}
             <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'stretch' }} justifyContent='center'>
               <Paper elevation={15} sx={{ m: 1, p: 2 }} className={classes.paper}>
                 <Box display='flex' flexWrap='wrap' justifyContent='center'>
@@ -222,28 +214,27 @@ const VistaDetalleEstado = props => {
                   </Box>
 
                   <Box sx={{ paddingTop: '40px', flexGrow: 1 }}>
-                    <Box display='flex' onClick={() => handleSetSystem(1)} sx={{ cursor: 'pointer' }}>
+                    <Box display='flex'>
                       <img src={icon_s1} alt='Sistema 1' style={{ width: '40px', padding: '2px' }} />
                       <CustomizedProgressBar value={avance_s1} color={colors.s1} />
                     </Box>
 
-                    <Box display='flex' onClick={() => handleSetSystem(2)} sx={{ cursor: 'pointer' }}>
+                    <Box display='flex'>
                       <img src={icon_s2} alt='Sistema 2' style={{ width: '40px', padding: '2px' }} />
                       <CustomizedProgressBar value={avance_s2} color={colors.s2} />
                     </Box>
 
-                    <Box display='flex' onClick={() => handleSetSystem(3)} sx={{ cursor: 'pointer' }}>
+                    <Box display='flex'>
                       <img src={icon_s3} alt='Sistema 3' style={{ width: '40px', padding: '2px' }} />
                       <CustomizedProgressBar value={avance_s3} color={colors.s3} />
                     </Box>
 
-                    <Box display='flex' onClick={() => handleSetSystem(6)} sx={{ cursor: 'pointer' }}>
+                    <Box display='flex'>
                       <img src={icon_s6} alt='Sistema 6' style={{ width: '40px', padding: '2px' }} />
                       <CustomizedProgressBar value={avance_s6} color={colors.s6} />
                     </Box>
                   </Box>
                 </Box>
-
               </Paper>
 
               <Paper elevation={15} sx={{ m: 1, p: 2, textAlign: 'center', maxWidth: 200 }} className={classes.paper}>
@@ -329,17 +320,24 @@ const VistaDetalleEstado = props => {
                     estado.data.s6.municipal.total
                   }
                 </Typography>
-
               </Paper>
             </Box>
 
-            <VistaDetalleSistema
-              estado={estado} system={system}
-              avance_s1={avance_s1}
-              avance_s2={avance_s2}
-              avance_s3={avance_s3}
-              avance_s6={avance_s6}
-            />
+            {/* Detalle de todos los sistemas con gráficas originales */}
+            <Box sx={{ marginTop: 3 }}>
+              {systems.map(system => (
+                <VistaDetalleSistema
+                  key={system.id}
+                  estado={estado} 
+                  system={system}
+                  avance_s1={avance_s1}
+                  avance_s2={avance_s2}
+                  avance_s3={avance_s3}
+                  avance_s6={avance_s6}
+                />
+              ))}
+            </Box>
+
           </Paper>
         </Grid>
       </Grid>
