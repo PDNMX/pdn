@@ -1,55 +1,55 @@
-import Paper from '@mui/material/Paper'
-import makeStyles from '@mui/styles/makeStyles'
-import Grid from '@mui/material/Grid'
+import Paper from '@mui/material/Paper';
+import makeStyles from '@mui/styles/makeStyles';
+import Grid from '@mui/material/Grid';
 
-import MenuLateral from './MenuLateral'
-import DatosGenerales from './SituacionPatrimonial/01DatosGenerales'
-import Domicilio from './SituacionPatrimonial/02Domicilio'
-import DatosCurriculares from './SituacionPatrimonial/03DatosCurriculares'
-import EmpleoCargoComision from './SituacionPatrimonial/04EmpleoCargoComision'
-import ExperienciaLaboral from './SituacionPatrimonial/05ExperienciaLaboral'
-import DatosPareja from './SituacionPatrimonial/06DatosPareja'
-import DependientesEconomicos from './SituacionPatrimonial/07DatosDependienteEconomico'
-import Ingresos from './SituacionPatrimonial/08Ingresos'
-import ServidorAnioAnterior from './SituacionPatrimonial/09ServidorAnioAnterior'
-import Bienesinmuebles from './SituacionPatrimonial/10Bienesinmuebles'
-import Vehiculos from './SituacionPatrimonial/11Vehiculos'
-import BienesMuebles from './SituacionPatrimonial/12BienesMuebles'
-import Inversiones from './SituacionPatrimonial/13Inversiones'
-import Adeudos from './SituacionPatrimonial/14Adeudos'
-import Prestamo from './SituacionPatrimonial/15Prestamo'
+import MenuLateral from './MenuLateral';
+import DatosGenerales from './SituacionPatrimonial/01DatosGenerales';
+import Domicilio from './SituacionPatrimonial/02Domicilio';
+import DatosCurriculares from './SituacionPatrimonial/03DatosCurriculares';
+import EmpleoCargoComision from './SituacionPatrimonial/04EmpleoCargoComision';
+import ExperienciaLaboral from './SituacionPatrimonial/05ExperienciaLaboral';
+import DatosPareja from './SituacionPatrimonial/06DatosPareja';
+import DependientesEconomicos from './SituacionPatrimonial/07DatosDependienteEconomico';
+import Ingresos from './SituacionPatrimonial/08Ingresos';
+import ServidorAnioAnterior from './SituacionPatrimonial/09ServidorAnioAnterior';
+import Bienesinmuebles from './SituacionPatrimonial/10Bienesinmuebles';
+import Vehiculos from './SituacionPatrimonial/11Vehiculos';
+import BienesMuebles from './SituacionPatrimonial/12BienesMuebles';
+import Inversiones from './SituacionPatrimonial/13Inversiones';
+import Adeudos from './SituacionPatrimonial/14Adeudos';
+import Prestamo from './SituacionPatrimonial/15Prestamo';
 
-import ErrorBoundary from './ErrorBoundary'
+import ErrorBoundary from './ErrorBoundary';
 
-import { info } from './utils'
-import style from '../style'
+import { info } from './utils';
+import style from '../style';
 
 const situacionPatrimonial = (data, tipo) => {
-  let { datosCurricularesDeclarante, experienciaLaboral, bienesInmuebles, vehiculos, bienesMuebles } = data
+  let { datosCurricularesDeclarante, experienciaLaboral, bienesInmuebles, vehiculos, bienesMuebles } = data;
 
-  let inversiones, adeudos, prestamoOComodato
+  let inversiones, adeudos, prestamoOComodato;
 
   if (typeof data.inversionesCuentasValores === 'undefined') {
-    inversiones = data.inversiones
+    inversiones = data.inversiones;
   } else {
-    inversiones = data.inversionesCuentasValores
+    inversiones = data.inversionesCuentasValores;
   }
 
   if (typeof data.adeudosPasivos === 'undefined') {
-    adeudos = data.adeudos
+    adeudos = data.adeudos;
   } else {
-    adeudos = data.adeudosPasivos
+    adeudos = data.adeudosPasivos;
   }
 
   if (typeof data.prestamoComodato === 'undefined') {
-    prestamoOComodato = data.prestamoOComodato
+    prestamoOComodato = data.prestamoOComodato;
   } else {
-    prestamoOComodato = data.prestamoComodato
+    prestamoOComodato = data.prestamoComodato;
   }
 
-  const onlyDec = i => i.titular.length === 1 && i.titular[0].clave === 'DEC'
+  const onlyDec = i => i.titular.length === 1 && i.titular[0].clave === 'DEC';
 
-  let bienInmueble, vehiculo, bienMueble, inversion, adeudo, tExperienciaLaboral, tprestamoOComodato
+  let bienInmueble, vehiculo, bienMueble, inversion, adeudo, tExperienciaLaboral, tprestamoOComodato;
   // let bienInmueble = bienesInmuebles.ninguno ? 0 : bienesInmuebles.bienInmueble.filter(onlyDec)
   // let vehiculo = vehiculos.ninguno ? 0 : vehiculos.vehiculo.filter(onlyDec)
   // let bienMueble = bienesMuebles.ninguno ? 0 : bienesMuebles.bienMueble.filter(onlyDec)
@@ -58,67 +58,67 @@ const situacionPatrimonial = (data, tipo) => {
 
   if (bienesInmuebles) {
     if (bienesInmuebles.ninguno) {
-      bienInmueble = 0
+      bienInmueble = 0;
     } else {
-      bienInmueble = bienesInmuebles.bienInmueble ? bienesInmuebles.bienInmueble.filter(onlyDec) : 0
+      bienInmueble = bienesInmuebles.bienInmueble ? bienesInmuebles.bienInmueble.filter(onlyDec) : 0;
     }
   } else {
-    bienInmueble = 0
+    bienInmueble = 0;
   }
 
   if (vehiculos) {
     if (vehiculos.ninguno) {
-      vehiculo = 0
+      vehiculo = 0;
     } else {
-      vehiculo = vehiculos.vehiculo ? vehiculos.vehiculo.filter(onlyDec) : 0
+      vehiculo = vehiculos.vehiculo ? vehiculos.vehiculo.filter(onlyDec) : 0;
     }
   } else {
-    vehiculo = 0
+    vehiculo = 0;
   }
 
   if (bienesMuebles) {
     if (bienesMuebles.ninguno) {
-      bienMueble = 0
+      bienMueble = 0;
     } else {
-      bienMueble = bienesMuebles.bienMueble ? bienesMuebles.bienMueble.filter(onlyDec) : 0
+      bienMueble = bienesMuebles.bienMueble ? bienesMuebles.bienMueble.filter(onlyDec) : 0;
     }
   } else {
-    bienMueble = 0
+    bienMueble = 0;
   }
 
   if (typeof inversiones === 'undefined' || inversiones.ninguno) {
-    inversion = 0
+    inversion = 0;
   } else {
-    inversion = inversiones.inversion ? inversiones.inversion.filter(onlyDec) : 0
+    inversion = inversiones.inversion ? inversiones.inversion.filter(onlyDec) : 0;
   }
 
   if (adeudos) {
     if (adeudos.ninguno) {
-      adeudo = 0
+      adeudo = 0;
     } else {
-      adeudo = adeudos.adeudo ? adeudos.adeudo.filter(onlyDec) : 0
+      adeudo = adeudos.adeudo ? adeudos.adeudo.filter(onlyDec) : 0;
     }
   } else {
-    adeudo = 0
+    adeudo = 0;
   }
 
   if (experienciaLaboral.ninguno) {
-    tExperienciaLaboral = 0
+    tExperienciaLaboral = 0;
   } else {
-    tExperienciaLaboral = experienciaLaboral.experiencia ? experienciaLaboral.experiencia.length : 0
+    tExperienciaLaboral = experienciaLaboral.experiencia ? experienciaLaboral.experiencia.length : 0;
   }
 
   if (prestamoOComodato) {
     if (prestamoOComodato.ninguno) {
-      tprestamoOComodato = 0
+      tprestamoOComodato = 0;
     } else {
-      tprestamoOComodato = prestamoOComodato.prestamo ? prestamoOComodato.prestamo.length : 0
+      tprestamoOComodato = prestamoOComodato.prestamo ? prestamoOComodato.prestamo.length : 0;
     }
   } else {
-    tprestamoOComodato = 0
+    tprestamoOComodato = 0;
   }
 
-  const tDatosCurricurales = typeof datosCurricularesDeclarante === 'undefined' ? 0 : datosCurricularesDeclarante.escolaridad.length
+  const tDatosCurricurales = typeof datosCurricularesDeclarante === 'undefined' ? 0 : datosCurricularesDeclarante.escolaridad.length;
 
   // const tExperienciaLaboral = typeof experienciaLaboral === 'undefined' ? 0 : experienciaLaboral.experiencia.length
 
@@ -158,19 +158,21 @@ const situacionPatrimonial = (data, tipo) => {
       clave: 'PRÉSTAMO O COMODATO POR TERCEROS',
       valor: tprestamoOComodato
     }
-  ]
+  ];
 
   switch (tipo) {
     case 'INICIAL':
     case 'CONCLUSIÓN':
-      return menu
+    case 'CONCLUSION':
+      return menu;
     case 'MODIFICACIÓN':
-      return menu.filter((op, index) => index !== 8)
+    case 'MODIFICACION':
+      return menu.filter((op, index) => index !== 8);
     default:
-      info('Tipo declaración: ' + tipo)
-      break
+      info('Tipo declaración: ' + tipo);
+      break;
   }
-}
+};
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -178,9 +180,9 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     backgroundColor: theme.palette.background.opaque
   }
-}))
+}));
 
-const styles = makeStyles(style)
+const styles = makeStyles(style);
 
 const titulos = {
   INICIAL: [
@@ -233,104 +235,140 @@ const titulos = {
     '14. ADEUDOS/PASIVOS (SITUACIÓN ACTUAL)',
     '15. PRÉSTAMO O COMODATO POR TERCEROS (SITUACIÓN ACTUAL)'
   ]
-}
+};
 
 function OpcionInicialConclusion(valor, data, tipo) {
-  const titulo = titulos[tipo][valor]
+  const titulo = [];
+
+  switch (tipo) {
+    case 'INICIAL':
+      titulo.push(...titulos.INICIAL[valor]);
+      break;
+    case 'MODIFICACIÓN':
+    case 'MODIFICACION':
+      titulo.push(...titulos.MODIFICACIÓN[valor]);
+      break;
+    case 'CONCLUSIÓN':
+    case 'CONCLUSION':
+      titulo.push(...titulos.CONCLUSIÓN[valor]);
+      break;
+    default:
+      break;
+  }
+
   switch (valor) {
     case 0:
-      return <DatosGenerales data={data.datosGenerales} titulo={titulo} />
+      return <DatosGenerales data={data.datosGenerales} titulo={titulo} />;
     case 1:
-      return <Domicilio titulo={titulo} />
+      return <Domicilio titulo={titulo} />;
     case 2:
-      return <DatosCurriculares data={data.datosCurricularesDeclarante} titulo={titulo} />
+      return <DatosCurriculares data={data.datosCurricularesDeclarante} titulo={titulo} />;
     case 3:
-      return <EmpleoCargoComision data={data.datosEmpleoCargoComision} titulo={titulo} />
+      return <EmpleoCargoComision data={data.datosEmpleoCargoComision} titulo={titulo} />;
     case 4:
-      return <ExperienciaLaboral data={data.experienciaLaboral} titulo={titulo} />
+      return <ExperienciaLaboral data={data.experienciaLaboral} titulo={titulo} />;
     case 5:
-      return <DatosPareja titulo={titulo} />
+      return <DatosPareja titulo={titulo} />;
     case 6:
-      return <DependientesEconomicos titulo={titulo} />
+      return <DependientesEconomicos titulo={titulo} />;
     case 7:
-      return <Ingresos data={data.ingresos} tipo={tipo} titulo={titulo} />
+      return <Ingresos data={data.ingresos} tipo={tipo} titulo={titulo} />;
     case 8:
-      return <ServidorAnioAnterior data={data.actividadAnualAnterior} titulo={titulo} />
+      return <ServidorAnioAnterior data={data.actividadAnualAnterior} titulo={titulo} />;
     case 9:
-      return <Bienesinmuebles data={data.bienesInmuebles} titulo={titulo} />
+      return <Bienesinmuebles data={data.bienesInmuebles} titulo={titulo} />;
     case 10:
-      return <Vehiculos data={data.vehiculos} titulo={titulo} />
+      return <Vehiculos data={data.vehiculos} titulo={titulo} />;
     case 11:
-      return <BienesMuebles data={data.bienesMuebles} titulo={titulo} />
+      return <BienesMuebles data={data.bienesMuebles} titulo={titulo} />;
     case 12:
-      return <Inversiones data={data.inversionesCuentasValores || data.inversiones} tipo={tipo} titulo={titulo} />
+      return <Inversiones data={data.inversionesCuentasValores || data.inversiones} tipo={tipo} titulo={titulo} />;
     case 13:
-      return <Adeudos data={data.adeudosPasivos || data.adeudos} tipo={tipo} titulo={titulo} />
+      return <Adeudos data={data.adeudosPasivos || data.adeudos} tipo={tipo} titulo={titulo} />;
     case 14:
-      return <Prestamo data={data.prestamoComodato || data.prestamoOComodato} titulo={titulo} />
+      return <Prestamo data={data.prestamoComodato || data.prestamoOComodato} titulo={titulo} />;
     default:
-      break
+      break;
   }
 }
 
 function OpcionModificacion(valor, data, tipo) {
-  const titulo = titulos[tipo][valor]
+  const titulo = [];
+
+  switch (tipo) {
+    case 'INICIAL':
+      titulo.push(...titulos.INICIAL[valor]);
+      break;
+    case 'MODIFICACIÓN':
+    case 'MODIFICACION':
+      titulo.push(...titulos.MODIFICACIÓN[valor]);
+      break;
+    case 'CONCLUSIÓN':
+    case 'CONCLUSION':
+      titulo.push(...titulos.CONCLUSIÓN[valor]);
+      break;
+    default:
+      break;
+  }
+
   switch (valor) {
     case 0:
-      return <DatosGenerales data={data.datosGenerales} titulo={titulo} />
+      return <DatosGenerales data={data.datosGenerales} titulo={titulo} />;
     // return (
     // 	<ErrorBoundary seccion={'DatosGenerales'}>
     // 		<DatosGenerales data={data.datosGenerales1} titulo={titulo} />
     // 	</ErrorBoundary>
     // )
     case 1:
-      return <Domicilio titulo={titulo} />
+      return <Domicilio titulo={titulo} />;
     case 2:
-      return <DatosCurriculares data={data.datosCurricularesDeclarante} titulo={titulo} />
+      return <DatosCurriculares data={data.datosCurricularesDeclarante} titulo={titulo} />;
     case 3:
-      return <EmpleoCargoComision data={data.datosEmpleoCargoComision} titulo={titulo} />
+      return <EmpleoCargoComision data={data.datosEmpleoCargoComision} titulo={titulo} />;
     case 4:
-      return <ExperienciaLaboral data={data.experienciaLaboral} titulo={titulo} />
+      return <ExperienciaLaboral data={data.experienciaLaboral} titulo={titulo} />;
     case 5:
-      return <DatosPareja titulo={titulo} />
+      return <DatosPareja titulo={titulo} />;
     case 6:
-      return <DependientesEconomicos titulo={titulo} />
+      return <DependientesEconomicos titulo={titulo} />;
     case 7:
-      return <Ingresos data={data.ingresos} tipo={tipo} titulo={titulo} />
+      return <Ingresos data={data.ingresos} tipo={tipo} titulo={titulo} />;
     case 8:
-      return <Bienesinmuebles data={data.bienesInmuebles} titulo={titulo} />
+      return <Bienesinmuebles data={data.bienesInmuebles} titulo={titulo} />;
     case 9:
-      return <Vehiculos data={data.vehiculos} titulo={titulo} />
+      return <Vehiculos data={data.vehiculos} titulo={titulo} />;
     case 10:
-      return <BienesMuebles data={data.bienesMuebles} titulo={titulo} />
+      return <BienesMuebles data={data.bienesMuebles} titulo={titulo} />;
     case 11:
-      return <Inversiones data={data.inversionesCuentasValores || data.inversiones} tipo={tipo} titulo={titulo} />
+      return <Inversiones data={data.inversionesCuentasValores || data.inversiones} tipo={tipo} titulo={titulo} />;
     case 12:
-      return <Adeudos data={data.adeudosPasivos || data.adeudos} tipo={tipo} titulo={titulo} />
+      return <Adeudos data={data.adeudosPasivos || data.adeudos} tipo={tipo} titulo={titulo} />;
     case 13:
-      return <Prestamo data={data.prestamoComodato || data.prestamoOComodato} titulo={titulo} />
+      return <Prestamo data={data.prestamoComodato || data.prestamoOComodato} titulo={titulo} />;
     default:
-      break
+      break;
   }
 }
 
 function opcion(valor, data, tipo) {
   switch (tipo) {
     case 'INICIAL':
-      return OpcionInicialConclusion(valor, data, tipo)
+      return OpcionInicialConclusion(valor, data, tipo);
     case 'MODIFICACIÓN':
-      return OpcionModificacion(valor, data, tipo)
+    case 'MODIFICACION':
+      return OpcionModificacion(valor, data, tipo);
     case 'CONCLUSIÓN':
-      return OpcionInicialConclusion(valor, data, tipo)
+    case 'CONCLUSION':
+      return OpcionInicialConclusion(valor, data, tipo);
     default:
-      info('Tipo declaración: ' + tipo)
-      break
+      info('Tipo declaración: ' + tipo);
+      break;
   }
 }
 
 export default function SituacionPatrimonial({ data, value, setValue, tipo }) {
-  const classes = useStyles()
-  const classes2 = styles()
+  const classes = useStyles();
+  const classes2 = styles();
 
   return (
     <Paper square className={classes.root}>
@@ -343,5 +381,5 @@ export default function SituacionPatrimonial({ data, value, setValue, tipo }) {
         </Grid>
       </Grid>
     </Paper>
-  )
+  );
 }

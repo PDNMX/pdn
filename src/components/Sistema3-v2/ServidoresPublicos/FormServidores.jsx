@@ -203,12 +203,18 @@ const FormServidores = ({ classes, providers }) => {
       return renderNoResults();
     }
 
+    // Ordenar los resultados alfabéticamente por providerId de forma ascendente
+    const sortedResults = [...results].sort((a, b) => {
+      return a.providerId.localeCompare(b.providerId);
+    });
+    //console.log(sortedResults)
+
     return (
       <Box sx={{ mb: 4 }}>
         <Typography variant="h6" gutterBottom>
           Se encontraron {totalRegistros} registro(s)
         </Typography>
-        {results.map((result, index) => {
+        {sortedResults.map((result, index) => {
           const hasData = result.providerData.pagination?.totalItems > 0;
 
           return (
@@ -227,7 +233,8 @@ const FormServidores = ({ classes, providers }) => {
                           {tipoFalta === 'grave' && <TableCell className={classes.tableHeaderCell}>Nombre</TableCell>}
                           <TableCell className={classes.tableHeaderCell}>Institución</TableCell>
                           <TableCell className={classes.tableHeaderCell}>Fecha</TableCell>
-                          <TableCell className={classes.tableHeaderCell}>Expediente</TableCell>
+                          {/* <TableCell className={classes.tableHeaderCell}>Expediente</TableCell> */}
+                          {tipoFalta === 'grave' && <TableCell className={classes.tableHeaderCell}>Expediente</TableCell>}
                         </TableRow>
                       </TableHead>
                       <TableBody>
@@ -240,14 +247,18 @@ const FormServidores = ({ classes, providers }) => {
                             style={{ cursor: 'pointer' }}
                           >
                             {tipoFalta === 'grave' && (
+                              <>
                               <TableCell>
                                 {`${item.datosGenerales?.nombres || ''} ${item.datosGenerales?.primerApellido ||
                                   ''} ${item.datosGenerales?.segundoApellido || ''}`}
                               </TableCell>
+                              </>
                             )}
                             <TableCell>{item.empleoCargoComision?.nombreEntePublico || 'N/A'}</TableCell>
                             <TableCell>{item.fecha}</TableCell>
-                            <TableCell>{item.expediente || 'N/A'}</TableCell>
+                            {tipoFalta === 'grave' && (
+                              <TableCell>{item.expediente || 'N/A'}</TableCell>
+                            )}
                           </TableRow>
                         ))}
                       </TableBody>
@@ -265,7 +276,7 @@ const FormServidores = ({ classes, providers }) => {
           );
         })}
 
-        <DetailDialog open={!!selectedRecord} onClose={() => setSelectedRecord(null)} data={selectedRecord} />
+        <DetailDialog open={!!selectedRecord} onClose={() => setSelectedRecord(null)} data={selectedRecord} tipoFalta={tipoFalta}/>
       </Box>
     );
   };

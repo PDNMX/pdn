@@ -5,7 +5,7 @@ import Faq from '../components/FAQ/index'
 import HelpDesk from '../components/HelpDesk/HelpDesk'
 
 import Sistema2 from '../components/Sistema2/Index'
-
+import ProtocoloConexion from '../components/ProtocoloConexion/';
 // Nuecom componente de búsqueda para el s3 v2
 import SancionadosV2 from '../components/Sistema3-v2'
 
@@ -309,6 +309,7 @@ const pdnRoutes = [
     type: ''
   },
   {
+<<<<<<< HEAD
     exact: true,
     path: '/tablero-contrato',
     component: DashboardContrato,
@@ -319,6 +320,16 @@ const pdnRoutes = [
     icon: IconTableroS6,
     type: ''
   }
+=======
+		exact: true,
+		path: '/protocolo-de-conexion',
+		component: ProtocoloConexion,
+		private: false,
+		name: "Protocolo de Interconexión",
+		shortName: "Protocolo de Interconexión",
+		color: "#713972"
+	},
+>>>>>>> rediseño2023
 ]
 
 export default pdnRoutes

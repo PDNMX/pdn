@@ -81,6 +81,12 @@ const data = [
     disclaimer: "",
     download_url: "",
   },
+    {
+    id: "SESAE_NUEVOLEON",
+    name: "Secretaría Ejecutiva del Sistema Estatal Anticorrupción de Nuevo León",
+    disclaimer: "",
+    download_url: "",
+  },
 ];
 
 export default data;

@@ -52,6 +52,7 @@ const Cobertura = props => {
     setValue(newValue)
   }
 
+  // Esta función ya no se usará pero la mantenemos por compatibilidad
   const handleClick = () => {
     setOpen(true)
   }
@@ -83,36 +84,38 @@ const Cobertura = props => {
           </Tabs>
 
           <TabPanel value={value} index={0} className={classes.tabPanel1}>
-            {/* <Paper elevation={15}> */}
             <Box display='flex' flexWrap='wrap'>
               {estados.filter(e => !e.disabled).map((e, i) => {
-                // const icon = import (`../../../src/assets`)
                 return (
                   <Box textAlign='center' p={1} m={1} key={i} className={classes.estado}>
-                      <Link component={RouterLink} to={e.route} className={classes.link}>
-                  <img src={`/img/cobertura/ico_edos/${e.icon1}`} style={{ width: 100 }} alt='Estado' />
-                  <Typography>{e.name}</Typography>
-                </Link>
-                    </Box>
+                    <Link component={RouterLink} to={e.route} className={classes.link}>
+                      <img src={`/img/cobertura/ico_edos/${e.icon1}`} style={{ width: 100 }} alt='Estado' />
+                      <Typography>{e.name}</Typography>
+                    </Link>
+                  </Box>
                 )
               })}
             </Box>
-            {/* </Paper> */}
           </TabPanel>
 
           <TabPanel value={value} index={1} className={classes.tabPanel2}>
             <Box display='flex' flexWrap='wrap'>
               {estados.filter(e => e.disabled).map((e, i) => {
                 return (
-                  <Box
-                      textAlign='center' p={1} m={1} key={i}
-                      className={classes.estado} sx={{ cursor: 'pointer' }} onClick={handleClick}
-                    >
-                      <img src={`/img/cobertura/ico_edos/${e.icon1}`} style={{ width: 100 }} alt='Estado' />
-                      <Typography>
-                  {e.name}
-                </Typography>
-                    </Box>
+                  <Box textAlign='center' p={1} m={1} key={i} className={classes.estado}>
+                    {/* Modificación clave: Ahora también usamos Link en lugar de abrir el diálogo */}
+                    {e.route ? (
+                      <Link component={RouterLink} to={e.route} className={classes.link}>
+                        <img src={`/img/cobertura/ico_edos/${e.icon1}`} style={{ width: 100 }} alt='Estado' />
+                        <Typography>{e.name}</Typography>
+                      </Link>
+                    ) : (
+                      <Box>
+                        <img src={`/img/cobertura/ico_edos/${e.icon1}`} style={{ width: 100 }} alt='Estado' />
+                        <Typography>{e.name}</Typography>
+                      </Box>
+                    )}
+                  </Box>
                 )
               })}
             </Box>
@@ -120,7 +123,8 @@ const Cobertura = props => {
 
         </Grid>
       </Grid>
-      <DialogoNoConectado open={open} setOpen={setOpen} />
+      {/* Ya no necesitamos el diálogo */}
+      {/* <DialogoNoConectado open={open} setOpen={setOpen} /> */}
     </div>
   )
 }

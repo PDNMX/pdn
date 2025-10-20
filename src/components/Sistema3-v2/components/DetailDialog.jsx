@@ -18,7 +18,7 @@ const styles = theme => ({
   ...commonStyles(theme),
 });
 
-const DetailDialog = ({ open, onClose, data, classes }) => {
+const DetailDialog = ({ open, onClose, data, classes, tipoFalta }) => {
   if (!data) return null;
 
   const renderField = (label, value) => {
@@ -48,9 +48,9 @@ const DetailDialog = ({ open, onClose, data, classes }) => {
           <Typography variant="h6" className={classes.dialogSectionTitle}>
             Datos Generales
           </Typography>
-          {renderField('Nombre', `${data.datosGenerales?.nombres || ''} ${data.datosGenerales?.primerApellido || ''} ${data.datosGenerales?.segundoApellido || ''}`)}
+          {tipoFalta === 'grave' && (renderField('Nombre', `${data.datosGenerales?.nombres || ''} ${data.datosGenerales?.primerApellido || ''} ${data.datosGenerales?.segundoApellido || ''}`))}
           {renderField('Sexo', data.datosGenerales?.sexo)}
-          {renderField('Expediente', data.expediente)}
+          {tipoFalta === 'grave' && (renderField('Expediente', data.expediente))}
           {renderField('Fecha', data.fecha)}
         </Box>
 
@@ -107,6 +107,11 @@ const DetailDialog = ({ open, onClose, data, classes }) => {
                 <>
                   {renderField('Plazo', `${sancion.inhabilitacion.plazoAnios} años, ${sancion.inhabilitacion.plazoMeses} meses, ${sancion.inhabilitacion.plazoDias} días`)}
                   {renderField('Periodo', `Del ${sancion.inhabilitacion.fechaInicial} al ${sancion.inhabilitacion.fechaFinal}`)}
+                </>
+              )}
+              {sancion.otro && (
+                <>
+                  {renderField('Denominación', `${sancion.otro.denominacionSancion}`)}
                 </>
               )}
             </Box>
