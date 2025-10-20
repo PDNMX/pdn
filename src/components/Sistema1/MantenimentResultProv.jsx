@@ -5,6 +5,7 @@ import Timelapse from '@mui/icons-material/Timelapse'
 import makeStyles from '@mui/styles/makeStyles'
 import styles from '../style'
 import { Grid, Typography, Tooltip } from '@mui/material'
+import { BorderColor } from '@mui/icons-material'
 
 const useStyles = makeStyles(styles)
 
@@ -13,11 +14,11 @@ const MantenimentResultProv = props => {
   const { p } = props
   return (
     <BoxAccordion>
-      <BoxAccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header' className={classes.resultadosTituloMantenimiento} style={{ backgroundColor: '#227292' }}>
+      <BoxAccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header' className={classes.resultadosTituloMantenimiento} style={{ backgroundColor: '#7a3e7c' }}>
         <Grid container spacing={0}>
           <Grid item xs={8}>
-            <Typography className={classes.resultadosHeading}>{p.supplier_name}</Typography>
-            <Typography className={classes.resultadosHeading}>[{p.levels.join(', ')}]</Typography>
+            <Typography className={classes.resultadosHeading} style={{ color: '#fff' }}>{p.supplier_name}</Typography>
+            <Typography className={classes.resultadosHeading} style={{ color: '#fff' }}>[{p.levels.join(', ')}]</Typography>
           </Grid>
           <Grid item xs={4}>
             <Grid container spacing={0}>
@@ -37,10 +38,10 @@ const MantenimentResultProv = props => {
           </Grid>
         </Grid>
       </BoxAccordionSummary>
-      <BoxAccordionDetails style={{ backgroundColor: '#1d5d75' }}>
+      <BoxAccordionDetails style={{ backgroundColor: '#FCFCFF' }}>
         <Grid container spacing={0}>
           <Grid item xs={12}>
-            <Typography className={classes.alertSuccess} align='center'>
+            <Typography className={classes.alertSuccess} align='center' style={{ backgroundColor: '#eae1ea' , borderColor:'#7a3e7c'} } >
               En este momento esta API se encuentra en proceso de Mantenimiento, por favor vuelve a revisar mas tarde.
             </Typography>
           </Grid>
