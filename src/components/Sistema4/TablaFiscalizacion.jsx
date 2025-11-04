@@ -23,8 +23,10 @@ import {
   Button,
   Grid,
 } from "@mui/material";
-import datosASF from "./datosASF.json";
-import datosBuenGobierno from "./datosBuenGobierno.json";
+
+// Datos vacíos - este componente es solo para el tab de "Intercambio de Información"
+const datosASF = [];
+const datosBuenGobierno = [];
 
 const styles = (theme) => ({
   root: {},

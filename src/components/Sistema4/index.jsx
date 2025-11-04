@@ -4,6 +4,8 @@ import { Grid, Typography, Box } from "@mui/material";
 import HeaderV2 from "../HomeV2/HeaderV2";
 import pdnRoutes from "../../routes/index";
 import TablaFiscalizacion from "./TablaFiscalizacion";
+import TablaAuditorias from "./TablaAuditorias";
+import TablaInformes from "./TablaInformes";
 import img1 from "../../assets/rediseno/svg_iconos_azul/SVG/s6_01.svg";
 import img3 from "../../assets/rediseno/svg_iconos_azul/SVG/s6_02.svg";
 import { ThemeProvider } from "@mui/material/styles";
@@ -77,7 +79,7 @@ const styles2 = (theme) => ({
     marginBottom: "-1px",
   },
   labelCard: {
-    color: theme.palette.text.clear,
+    color: "#000000",
     marginLeft: theme.spacing(1),
   },
   logo: {
@@ -90,13 +92,13 @@ const TabContents = (props) => {
   const { index } = props;
   switch (index) {
     case 1:
-      return <TablaFiscalizacion tipo="programa" />;
+      return <TablaAuditorias />;
     case 2:
-      return <TablaFiscalizacion tipo="informes" />;
+      return <TablaInformes />;
     case 3:
       return <TablaFiscalizacion tipo="intercambio" />;
     default:
-      return <TablaFiscalizacion tipo="programa" />;
+      return <TablaAuditorias />;
   }
 };
 
@@ -127,7 +129,9 @@ const Index = (props) => {
           <Box className={classes.tabsContainer}>
             <Box
               onClick={() => handleContentId(1)}
-              className={isContentId(1) ? classes.cardSeleccionada : classes.card}
+              className={
+                isContentId(1) ? classes.cardSeleccionada : classes.card
+              }
             >
               <img
                 src={img1}
@@ -141,10 +145,12 @@ const Index = (props) => {
 
             <Box
               onClick={() => handleContentId(2)}
-              className={isContentId(2) ? classes.cardSeleccionada : classes.card}
+              className={
+                isContentId(2) ? classes.cardSeleccionada : classes.card
+              }
             >
               <img
-                src={img3}
+                src={img1}
                 alt="Informes públicos de fiscalización"
                 className={classes.logo}
               />
@@ -155,7 +161,9 @@ const Index = (props) => {
 
             <Box
               onClick={() => handleContentId(3)}
-              className={isContentId(3) ? classes.cardSeleccionada : classes.card}
+              className={
+                isContentId(3) ? classes.cardSeleccionada : classes.card
+              }
             >
               <img
                 src={img1}

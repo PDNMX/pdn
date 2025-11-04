@@ -1,0 +1,167 @@
+[
+  {
+    "id": 1,
+    "folio": "BG-2025-001",
+    "entidad": "Secretaría Anticorrupción y Buen Gobierno",
+    "programa": "Plan Anual de Fiscalización 2025",
+    "area": "Áreas Centrales/ OIC en cada Institución",
+    "responsable": "UPDN",
+    "origenDatos": "Secretaría Anticorrupción y Buen Gobierno",
+    "hipervinculo": "https://archivos.buengobierno.gob.mx/paf/paf2025.pdf",
+    "año": "2040"
+  },
+  {
+    "id": 2,
+    "folio": "BG-2025-002",
+    "entidad": "Comisión Nacional de Derechos Humanos",
+    "programa": "Programa Anual de Auditorías CNDH",
+    "area": "Contraloría Interna",
+    "responsable": "Titular de Contraloría",
+    "origenDatos": "CNDH - Sistema Nacional",
+    "hipervinculo": "https://www.cndh.gob.mx/programa-2025",
+    "año": "2025"
+  },
+  {
+    "id": 3,
+    "folio": "ASF-2025-001",
+    "entidad": "Auditoría Superior de la Federación",
+    "programa": "Programa Anual de Auditorías 2025",
+    "area": "Auditoría Especial del Gasto Federalizado",
+    "responsable": "ASF",
+    "origenDatos": "ASF - Portal de Transparencia",
+    "hipervinculo": "https://www.asf.gob.mx/Trans/Informes/PAA2025.htm",
+    "año": "2025"
+  },
+  {
+    "id": 4,
+    "folio": "SFP-2025-001",
+    "entidad": "Secretaría de la Función Pública",
+    "programa": "Plan Anual de Auditorías SFP 2025",
+    "area": "Órgano Interno de Control",
+    "responsable": "OIC-SFP",
+    "origenDatos": "SFP - Sistema de Control",
+    "hipervinculo": "https://www.gob.mx/sfp/documentos/paa-2025",
+    "año": "2025"
+  },
+  {
+    "id": 5,
+    "folio": "INE-2025-001",
+    "entidad": "Instituto Nacional Electoral",
+    "programa": "Programa de Fiscalización Electoral 2025",
+    "area": "Contraloría General del INE",
+    "responsable": "Contraloría INE",
+    "origenDatos": "INE - Portal de Transparencia",
+    "hipervinculo": "https://www.ine.mx/transparencia/auditorias-2025/",
+    "año": "2025"
+  },
+  {
+    "id": 6,
+    "folio": "COFECE-2025-001",
+    "entidad": "Comisión Federal de Competencia Económica",
+    "programa": "Plan Anual de Control Interno",
+    "area": "Órgano Interno de Control",
+    "responsable": "Titular del OIC",
+    "origenDatos": "COFECE - Sistema de Información",
+    "hipervinculo": "https://www.cofece.mx/programa-2025",
+    "año": "2025"
+  },
+  {
+    "id": 7,
+    "folio": "BG-2024-001",
+    "entidad": "Secretaría Anticorrupción y Buen Gobierno",
+    "programa": "Plan Anual de Fiscalización 2024",
+    "area": "Áreas Centrales/ OIC en cada Institución",
+    "responsable": "UPDN",
+    "origenDatos": "Secretaría Anticorrupción y Buen Gobierno",
+    "hipervinculo": "https://archivos.buengobierno.gob.mx/paf/paf2024.pdf",
+    "año": "2024"
+  },
+  {
+    "id": 8,
+    "folio": "ASF-2024-001",
+    "entidad": "Auditoría Superior de la Federación",
+    "programa": "Programa Anual de Auditorías 2024",
+    "area": "Auditoría Especial del Desempeño",
+    "responsable": "ASF",
+    "origenDatos": "ASF - Portal de Transparencia",
+    "hipervinculo": "https://www.asf.gob.mx/Trans/Informes/PAA2024.htm",
+    "año": "2024"
+  },
+  {
+    "id": 9,
+    "folio": "SFP-2024-001",
+    "entidad": "Secretaría de la Función Pública",
+    "programa": "Plan Anual de Auditorías SFP 2024",
+    "area": "Órgano Interno de Control",
+    "responsable": "OIC-SFP",
+    "origenDatos": "SFP - Sistema de Control",
+    "hipervinculo": "https://www.gob.mx/sfp/documentos/paa-2024",
+    "año": "2024"
+  },
+  {
+    "id": 10,
+    "folio": "INE-2024-001",
+    "entidad": "Instituto Nacional Electoral",
+    "programa": "Programa Anual de Auditorías INE",
+    "area": "Contraloría General del INE",
+    "responsable": "Contraloría INE",
+    "origenDatos": "INE - Portal de Transparencia",
+    "hipervinculo": "https://www.ine.mx/transparencia/auditorias-2024/",
+    "año": "2024"
+  },
+  {
+    "id": 11,
+    "folio": "SHCP-2024-001",
+    "entidad": "Secretaría de Hacienda y Crédito Público",
+    "programa": "Plan de Auditorías Financieras 2024",
+    "area": "OIC SHCP",
+    "responsable": "Titular del OIC",
+    "origenDatos": "SHCP - Portal Institucional",
+    "hipervinculo": "https://www.gob.mx/shcp/documentos/plan-auditorias-2024",
+    "año": "2024"
+  },
+  {
+    "id": 12,
+    "folio": "CONEVAL-2024-001",
+    "entidad": "Consejo Nacional de Evaluación de la Política Social",
+    "programa": "Programa de Auditoría y Control",
+    "area": "Dirección de Evaluación",
+    "responsable": "Dirección General",
+    "origenDatos": "CONEVAL - Portal de Transparencia",
+    "hipervinculo": "https://www.coneval.gob.mx/programa-2024",
+    "año": "2024"
+  },
+  {
+    "id": 13,
+    "folio": "IFT-2024-001",
+    "entidad": "Instituto Federal de Telecomunicaciones",
+    "programa": "Plan Anual de Control y Auditoría",
+    "area": "Coordinación de Control Interno",
+    "responsable": "Coordinador General",
+    "origenDatos": "IFT - Portal de Transparencia",
+    "hipervinculo": "https://www.ift.gob.mx/programa-2024",
+    "año": "2024"
+  },
+  {
+    "id": 14,
+    "folio": "INEGI-2024-001",
+    "entidad": "Instituto Nacional de Estadística y Geografía",
+    "programa": "Programa de Auditoría Interna 2024",
+    "area": "Órgano Interno de Control",
+    "responsable": "Titular del OIC",
+    "origenDatos": "INEGI - Sistema Nacional",
+    "hipervinculo": "https://www.inegi.org.mx/programa-2024",
+    "año": "2024"
+  },
+  {
+    "id": 15,
+    "folio": "IMSS-2024-001",
+    "entidad": "Instituto Mexicano del Seguro Social",
+    "programa": "Plan Anual de Auditorías IMSS",
+    "area": "Contraloría Mayor",
+    "responsable": "Contralor Mayor",
+    "origenDatos": "IMSS - Portal Institucional",
+    "hipervinculo": "https://www.imss.gob.mx/programa-2024",
+    "año": "2024"
+  }
+]
