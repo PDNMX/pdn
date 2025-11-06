@@ -1,119 +1,211 @@
-import React from "react";
-import withStyles from "@mui/styles/withStyles";
-import { Box, Typography, Paper } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
-import datosAuditorias from "./datosAuditorias.json";
+import React, { useState, useMemo } from "react";
+import { withStyles } from "@mui/styles";
+import {
+  Box,
+  Typography,
+  TextField,
+  InputAdornment,
+} from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import { DataGrid } from '@mui/x-data-grid';
+
+// Datos en memoria con campo folio para búsqueda
+const datosAuditorias = [
+  {
+    id: 1,
+    folio: "REG-2025-001",
+    año: "2025",
+    nombreDocumento: "Plan Anual de Fiscalización 2025",
+    entePublico: "Secretaría Anticorrupción y Buen Gobierno",
+    hipervinculo: "https://archivos.buengobierno.gob.mx/paf/paf2025.pdf",
+  },
+  {
+    id: 2,
+    folio: "REG-2024-001",
+    año: "2024",
+    nombreDocumento: "Plan Anual de Fiscalización 2024",
+    entePublico: "Secretaría de la Función Pública",
+    hipervinculo:
+      "https://www.gob.mx/cms/uploads/attachment/file/901822/PAF_Inicial_2024.pdf",
+  },
+  {
+    id: 3,
+    folio: "REG-2024-002",
+    año: "2024",
+    nombreDocumento: "Modificación al Plan Anual de Fiscalización 2024",
+    entePublico: "Secretaría de la Función Pública",
+    hipervinculo:
+      "https://www.gob.mx/cms/uploads/attachment/file/914672/PAF_modificado_2024.pdf",
+  },
+  {
+    id: 4,
+    folio: "REG-2024-003",
+    año: "2024",
+    nombreDocumento: "Modificación al Plan Anual de Fiscalización 2024 (Junio)",
+    entePublico: "Secretaría de la Función Pública",
+    hipervinculo:
+      "https://www.gob.mx/cms/uploads/attachment/file/937692/PAF_modificado_2024_junio.pdf",
+  },
+  {
+    id: 5,
+    folio: "REG-2024-004",
+    año: "2024",
+    nombreDocumento:
+      "Modificación al Plan Anual de Fiscalización 2024 (Septiembre)",
+    entePublico: "Secretaría de la Función Pública",
+    hipervinculo:
+      "https://www.gob.mx/cms/uploads/attachment/file/947718/PAF_modificado_2024_septiembre.pdf",
+  },
+  {
+    id: 6,
+    folio: "REG-2024-005",
+    año: "2024",
+    nombreDocumento: "Plan Anual de Fiscalización 2024 (Definitivo)",
+    entePublico: "Secretaría de la Función Pública",
+    hipervinculo:
+      "https://www.gob.mx/cms/uploads/attachment/file/986793/PAF_2024_definitivo.pdf",
+  },
+];
 
 const styles = (theme) => ({
-  root: {},
-  paper: {
-    backgroundColor: theme.palette.background.opaque,
-    padding: theme.spacing(2),
-    color: theme.palette.primary.contrastText,
-    borderStyle: "solid",
-    borderWidth: 1,
-    borderColor: theme.palette.background.border,
-    borderRadius: "0px 10px 10px 10px",
+  root: {
+    padding: theme.spacing(3),
   },
-  ul: {
-    listStyle: "none",
-    paddingLeft: "20px",
+  sectionTitle: {
+    color: "#666",
+    marginBottom: theme.spacing(3),
   },
-  li: {
-    "&:before": {
-      content: '"•"',
-      color: theme.palette.primary.main,
-      fontWeight: "bold",
-      display: "inline-block",
-      width: "1em",
-      marginLeft: "-1em",
-    },
+  searchContainer: {
+    marginBottom: theme.spacing(3),
   },
   dataGridContainer: {
     height: 600,
     width: "100%",
-    marginTop: theme.spacing(2),
     "& .MuiDataGrid-root": {
-      border: `1px solid ${theme.palette.background.border}`,
+      border: "1px solid rgba(224, 224, 224, 1)",
     },
     "& .MuiDataGrid-columnHeaders": {
-      backgroundColor: theme.palette.primary.main,
-      color: theme.palette.primary.contrastText,
-      fontWeight: "bold",
+      backgroundColor: "#713972 !important",
+      color: "#fff !important",
+    },
+    "& .MuiDataGrid-columnHeader": {
+      backgroundColor: "#713972 !important",
+      color: "#fff !important",
     },
     "& .MuiDataGrid-columnHeaderTitle": {
-      fontWeight: "bold",
+      fontWeight: "bold !important",
+      color: "#fff !important",
     },
     "& .MuiDataGrid-cell": {
-      borderBottom: `1px solid ${theme.palette.background.border}`,
+      borderBottom: "1px solid rgba(224, 224, 224, 1)",
     },
     "& .MuiDataGrid-row:hover": {
-      backgroundColor: theme.palette.action.hover,
+      backgroundColor: "rgba(113, 57, 114, 0.04)",
     },
     "& .MuiDataGrid-footerContainer": {
-      borderTop: `2px solid ${theme.palette.primary.main}`,
+      borderTop: "2px solid #713972",
+    },
+    "& .MuiDataGrid-columnHeader .MuiIconButton-root": {
+      color: "#fff !important",
+    },
+    "& .MuiDataGrid-sortIcon": {
+      color: "#fff !important",
+    },
+    "& .MuiDataGrid-menuIconButton": {
+      color: "#fff !important",
+      opacity: "1 !important",
+      padding: "2px !important",
+      margin: "0 4px !important",
+    },
+    "& .MuiDataGrid-iconButtonContainer": {
+      visibility: "visible !important",
+      width: "auto !important",
+      marginLeft: "4px !important",
+    },
+    "& .MuiDataGrid-menuIcon": {
+      visibility: "visible !important",
+      opacity: "1 !important",
+      fontSize: "20px !important",
+    },
+    "& .MuiDataGrid-columnHeader:hover .MuiDataGrid-menuIcon": {
+      opacity: "1 !important",
+    },
+    "& .MuiDataGrid-columnHeader .MuiDataGrid-menuIcon": {
+      opacity: "1 !important",
+    },
+    "& .MuiDataGrid-columnHeader .MuiIconButton-root": {
+      color: "#fff !important",
+      padding: "4px !important",
+    },
+    "& .MuiDataGrid-columnHeader .MuiIconButton-root svg": {
+      fontSize: "1.25rem !important",
+      color: "#fff !important",
+    },
+  },
+  link: {
+    color: "#713972",
+    fontWeight: "bold",
+    textDecoration: "none",
+    "&:hover": {
+      textDecoration: "underline",
     },
   },
 });
 
-const TablaAuditorias = (props) => {
-  const { classes } = props;
+const TablaAuditorias = ({ classes }) => {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredData = useMemo(() => {
+    if (!searchTerm) return datosAuditorias;
+
+    const lowerSearch = searchTerm.toLowerCase();
+    return datosAuditorias.filter(
+      (item) =>
+        item.folio.toLowerCase().includes(lowerSearch) ||
+        item.año.toLowerCase().includes(lowerSearch) ||
+        item.nombreDocumento.toLowerCase().includes(lowerSearch) ||
+        item.entePublico.toLowerCase().includes(lowerSearch)
+    );
+  }, [searchTerm]);
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
 
   const columns = [
     {
-      field: "folio",
-      headerName: "Folio",
-      width: 150,
-      filterable: true,
-    },
-    {
       field: "año",
       headerName: "Año",
-      width: 100,
-      filterable: true,
+      flex: 0.5,
+      minWidth: 100,
+      sortable: true,
     },
     {
-      field: "entidad",
-      headerName: "Entidad",
-      width: 250,
-      filterable: true,
+      field: "entePublico",
+      headerName: "Ente Público",
+      flex: 1.5,
+      minWidth: 250,
+      sortable: true,
     },
     {
-      field: "programa",
-      headerName: "Programa",
-      width: 300,
-      filterable: true,
-    },
-    {
-      field: "area",
-      headerName: "Área",
-      width: 250,
-      filterable: true,
-    },
-    {
-      field: "responsable",
-      headerName: "Responsable",
-      width: 150,
-      filterable: true,
-    },
-    {
-      field: "origenDatos",
-      headerName: "Origen de Datos",
-      width: 250,
-      filterable: true,
+      field: "nombreDocumento",
+      headerName: "Nombre de Documento",
+      flex: 2,
+      minWidth: 300,
+      sortable: true,
     },
     {
       field: "hipervinculo",
-      headerName: "Documento",
-      width: 150,
-      filterable: false,
+      headerName: "Hipervínculo / Enlace",
+      flex: 1,
+      minWidth: 180,
       sortable: false,
       renderCell: (params) => (
         <a
           href={params.value}
           target="_blank"
           rel="noopener noreferrer"
-          style={{ color: "#713972", fontWeight: "bold" }}
+          className={classes.link}
         >
           Ver documento
         </a>
@@ -122,170 +214,60 @@ const TablaAuditorias = (props) => {
   ];
 
   return (
-    <div>
-      <Paper className={classes.paper} elevation={15}>
-        {/* Información */}
-        <Box p={1}>
-          <Typography paragraph>
-            <b>Aquí puedes consultar:</b>
-          </Typography>
+    <Box className={classes.root}>
+      <Typography variant="h6" className={classes.sectionTitle}>
+        Programas Anuales de Auditorías (Fiscalización)
+      </Typography>
 
-          <ul className={classes.ul}>
-            <li className={classes.li}>
-              <Typography color="textPrimary" display="inline">
-                Programas anuales de auditorías de las entidades fiscalizadoras.
-              </Typography>
-            </li>
-            <li className={classes.li}>
-              <Typography color="textPrimary" display="inline">
-                Detalle de cada programa incluyendo áreas responsables y fechas
-                de ejecución.
-              </Typography>
-            </li>
-            <li className={classes.li}>
-              <Typography color="textPrimary" display="inline">
-                Utiliza los filtros en cada columna para buscar información
-                específica.
-              </Typography>
-            </li>
-          </ul>
-        </Box>
+      <Box className={classes.searchContainer}>
+        <TextField
+          fullWidth
+          variant="outlined"
+          size="small"
+          placeholder="Buscar por folio, año, ente público o nombre de documento..."
+          value={searchTerm}
+          onChange={handleSearchChange}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon color="action" />
+              </InputAdornment>
+            ),
+          }}
+        />
+      </Box>
 
-        {/* DataGrid */}
-        <Box className={classes.dataGridContainer}>
-          <DataGrid
-            rows={datosAuditorias}
-            columns={columns}
-            initialState={{
-              pagination: {
-                paginationModel: { page: 0, pageSize: 10 },
-              },
-            }}
-            pageSizeOptions={[10, 25, 50, 100]}
-            disableRowSelectionOnClick
-            filterMode="client"
-            localeText={{
-              noRowsLabel: "No hay filas",
-              noResultsOverlayLabel: "No se encontraron resultados.",
-              errorOverlayDefaultLabel: "Ha ocurrido un error.",
-              toolbarDensity: "Densidad",
-              toolbarDensityLabel: "Densidad",
-              toolbarDensityCompact: "Compacta",
-              toolbarDensityStandard: "Estándar",
-              toolbarDensityComfortable: "Cómoda",
-              toolbarColumns: "Columnas",
-              toolbarColumnsLabel: "Seleccionar columnas",
-              toolbarFilters: "Filtros",
-              toolbarFiltersLabel: "Mostrar filtros",
-              toolbarFiltersTooltipHide: "Ocultar filtros",
-              toolbarFiltersTooltipShow: "Mostrar filtros",
-              toolbarFiltersTooltipActive: (count) =>
-                count !== 1
-                  ? `${count} filtros activos`
-                  : `${count} filtro activo`,
-              toolbarExport: "Exportar",
-              toolbarExportLabel: "Exportar",
-              toolbarExportCSV: "Descargar como CSV",
-              toolbarExportPrint: "Imprimir",
-              columnsPanelTextFieldLabel: "Buscar columna",
-              columnsPanelTextFieldPlaceholder: "Título de columna",
-              columnsPanelDragIconLabel: "Reordenar columna",
-              columnsPanelShowAllButton: "Mostrar todas",
-              columnsPanelHideAllButton: "Ocultar todas",
-              filterPanelAddFilter: "Agregar filtro",
-              filterPanelDeleteIconLabel: "Borrar",
-              filterPanelOperators: "Operadores",
-              filterPanelOperatorAnd: "Y",
-              filterPanelOperatorOr: "O",
-              filterPanelColumns: "Columnas",
-              filterPanelInputLabel: "Valor",
-              filterPanelInputPlaceholder: "Valor de filtro",
-              filterOperatorContains: "contiene",
-              filterOperatorEquals: "es igual a",
-              filterOperatorStartsWith: "comienza con",
-              filterOperatorEndsWith: "termina con",
-              filterOperatorIs: "es",
-              filterOperatorNot: "no es",
-              filterOperatorAfter: "después de",
-              filterOperatorOnOrAfter: "en o después de",
-              filterOperatorBefore: "antes de",
-              filterOperatorOnOrBefore: "en o antes de",
-              filterOperatorIsEmpty: "está vacío",
-              filterOperatorIsNotEmpty: "no está vacío",
-              columnMenuLabel: "Menú",
-              columnMenuShowColumns: "Mostrar columnas",
-              columnMenuFilter: "Filtrar",
-              columnMenuHideColumn: "Ocultar",
-              columnMenuUnsort: "Desordenar",
-              columnMenuSortAsc: "Ordenar ascendente",
-              columnMenuSortDesc: "Ordenar descendente",
-              columnHeaderFiltersTooltipActive: (count) =>
-                count !== 1
-                  ? `${count} filtros activos`
-                  : `${count} filtro activo`,
-              columnHeaderFiltersLabel: "Mostrar filtros",
-              columnHeaderSortIconLabel: "Ordenar",
-              footerRowSelected: (count) =>
-                count !== 1
-                  ? `${count.toLocaleString()} filas seleccionadas`
-                  : `${count.toLocaleString()} fila seleccionada`,
-              footerTotalRows: "Filas totales:",
-              footerTotalVisibleRows: (visibleCount, totalCount) =>
-                `${visibleCount.toLocaleString()} de ${totalCount.toLocaleString()}`,
-              checkboxSelectionHeaderName: "Selección",
-              booleanCellTrueLabel: "sí",
-              booleanCellFalseLabel: "no",
-              actionsCellMore: "más",
-              pinToLeft: "Anclar a la izquierda",
-              pinToRight: "Anclar a la derecha",
-              unpin: "Desanclar",
-              MuiTablePagination: {
-                labelRowsPerPage: "Filas por página:",
-                labelDisplayedRows: ({ from, to, count }) =>
-                  `${from}-${to} de ${count !== -1 ? count : `más de ${to}`}`,
-              },
-            }}
-            sx={{
-              "& .MuiDataGrid-columnHeader": {
-                backgroundColor: "#713972",
-                color: "white",
-              },
-              "& .MuiDataGrid-columnHeaderTitle": {
-                fontWeight: "bold",
-              },
-              // Hacer siempre visible el botón de menú (3 puntos)
-              "& .MuiDataGrid-menuIcon": {
-                color: "white !important",
-                visibility: "visible !important",
-                opacity: "1 !important",
-              },
-              "& .MuiDataGrid-iconButtonContainer": {
-                visibility: "visible !important",
-                width: "auto !important",
-              },
-              "& .MuiDataGrid-columnHeader .MuiIconButton-root": {
-                color: "white !important",
-                visibility: "visible !important",
-                opacity: "1 !important",
-              },
-              // Iconos de ordenamiento
-              "& .MuiDataGrid-sortIcon": {
-                color: "white !important",
-                opacity: "1 !important",
-              },
-              // Iconos de filtro
-              "& .MuiDataGrid-filterIcon": {
-                color: "white !important",
-              },
-              // Forzar visibilidad del contenedor de iconos
-              "& .MuiDataGrid-columnHeader--filledGroup .MuiDataGrid-iconButtonContainer": {
-                visibility: "visible !important",
-              },
-            }}
-          />
-        </Box>
-      </Paper>
-    </div>
+      <Box className={classes.dataGridContainer}>
+        <DataGrid
+          rows={filteredData}
+          columns={columns}
+          initialState={{
+            pagination: {
+              paginationModel: { page: 0, pageSize: 20 },
+            },
+          }}
+          pageSizeOptions={[20, 50, 100]}
+          disableRowSelectionOnClick
+          localeText={{
+            noRowsLabel: "No se encontraron resultados",
+            noResultsOverlayLabel: "No se encontraron resultados.",
+            errorOverlayDefaultLabel: "Ha ocurrido un error.",
+            footerRowSelected: (count) =>
+              count !== 1
+                ? `${count.toLocaleString()} filas seleccionadas`
+                : `${count.toLocaleString()} fila seleccionada`,
+            footerTotalRows: "Filas totales:",
+            footerTotalVisibleRows: (visibleCount, totalCount) =>
+              `${visibleCount.toLocaleString()} de ${totalCount.toLocaleString()}`,
+            MuiTablePagination: {
+              labelRowsPerPage: "Filas por página:",
+              labelDisplayedRows: ({ from, to, count }) =>
+                `${from}-${to} de ${count !== -1 ? count : `más de ${to}`}`,
+            },
+          }}
+        />
+      </Box>
+    </Box>
   );
 };
 
