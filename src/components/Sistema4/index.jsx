@@ -4,13 +4,14 @@ import { Grid, Typography, Box } from "@mui/material";
 import HeaderV2 from "../HomeV2/HeaderV2";
 import pdnRoutes from "../../routes/index";
 import TablaFiscalizacion from "./TablaFiscalizacion";
-import TablaAuditorias from "./TablaAuditorias";
-import TablaInformes from "./TablaInformes";
+import TablaAuditorias from "./TablaAuditorias/TablaAuditorias.jsx";
+import TablaInformes from "./TablaInformes/TablaInformes.jsx";
 import img1 from "../../assets/rediseno/svg_iconos_azul/SVG/s6_01.svg";
 import img3 from "../../assets/rediseno/svg_iconos_azul/SVG/s6_02.svg";
 import { ThemeProvider } from "@mui/material/styles";
 import ThemeV2 from "../../ThemeV2";
 import styles from "../style";
+import { Sistema4DataProvider } from "./shared/Sistema4DataContext";
 
 const styles2 = (theme) => ({
   container: {
@@ -110,84 +111,86 @@ const Index = (props) => {
   const system = pdnRoutes.find((route) => route.path === "/fiscalizacion");
 
   return (
-    <div className={classes.root}>
-      <HeaderV2 section={system} />
+    <Sistema4DataProvider>
+      <div className={classes.root}>
+        <HeaderV2 section={system} />
 
-      {/* TABS */}
-      <Grid container justifyContent="center" alignItems="center">
-        <Grid item xs={12} className={classes.section}>
-          {/* Leyenda de prototipo */}
-          <Box sx={{ mb: 2, textAlign: "left" }}>
-            <Typography
-              variant="body2"
-              sx={{ color: "#713972", fontWeight: "bold", fontStyle: "italic" }}
-            >
-              Prototipo versión 0.2
-            </Typography>
-          </Box>
-
-          <Box className={classes.tabsContainer}>
-            <Box
-              onClick={() => handleContentId(1)}
-              className={
-                isContentId(1) ? classes.cardSeleccionada : classes.card
-              }
-            >
-              <img
-                src={img1}
-                alt="Programa anual de actividades"
-                className={classes.logo}
-              />
-              <Typography variant="subtitle1" className={classes.labelCard}>
-                Programas Anuales de Auditorias (Fiscalización)
+        {/* TABS */}
+        <Grid container justifyContent="center" alignItems="center">
+          <Grid item xs={12} className={classes.section}>
+            {/* Leyenda de prototipo */}
+            <Box sx={{ mb: 2, textAlign: "left" }}>
+              <Typography
+                variant="body2"
+                sx={{ color: "#713972", fontWeight: "bold", fontStyle: "italic" }}
+              >
+                Prototipo versión 0.2
               </Typography>
             </Box>
 
-            <Box
-              onClick={() => handleContentId(2)}
-              className={
-                isContentId(2) ? classes.cardSeleccionada : classes.card
-              }
-            >
-              <img
-                src={img1}
-                alt="Informes públicos de fiscalización"
-                className={classes.logo}
-              />
-              <Typography variant="subtitle1" className={classes.labelCard}>
-                Informes Públicos de Fiscalización
-              </Typography>
-            </Box>
+            <Box className={classes.tabsContainer}>
+              <Box
+                onClick={() => handleContentId(1)}
+                className={
+                  isContentId(1) ? classes.cardSeleccionada : classes.card
+                }
+              >
+                <img
+                  src={img1}
+                  alt="Programa anual de actividades"
+                  className={classes.logo}
+                />
+                <Typography variant="subtitle1" className={classes.labelCard}>
+                  Programas Anuales de Auditorias (Fiscalización)
+                </Typography>
+              </Box>
 
-            <Box
-              onClick={() => handleContentId(3)}
-              className={
-                isContentId(3) ? classes.cardSeleccionada : classes.card
-              }
-            >
-              <img
-                src={img1}
-                alt="Intercambio de información"
-                className={classes.logo}
-              />
-              <Typography variant="subtitle1" className={classes.labelCard}>
-                Intercambio de Información entre los Miembros del Sistema
-                Nacional de Fiscalización (Consulta)
-              </Typography>
+              <Box
+                onClick={() => handleContentId(2)}
+                className={
+                  isContentId(2) ? classes.cardSeleccionada : classes.card
+                }
+              >
+                <img
+                  src={img1}
+                  alt="Informes públicos de fiscalización"
+                  className={classes.logo}
+                />
+                <Typography variant="subtitle1" className={classes.labelCard}>
+                  Informes Públicos de Fiscalización
+                </Typography>
+              </Box>
+
+              <Box
+                onClick={() => handleContentId(3)}
+                className={
+                  isContentId(3) ? classes.cardSeleccionada : classes.card
+                }
+              >
+                <img
+                  src={img1}
+                  alt="Intercambio de información"
+                  className={classes.logo}
+                />
+                <Typography variant="subtitle1" className={classes.labelCard}>
+                  Intercambio de Información entre los Miembros del Sistema
+                  Nacional de Fiscalización (Consulta)
+                </Typography>
+              </Box>
             </Box>
-          </Box>
+          </Grid>
         </Grid>
-      </Grid>
 
-      <Grid container justifyContent="center">
-        <Grid item xs={12} className={classes.contentsSection}>
-          <ThemeProvider theme={ThemeV2}>
-            <TabContents index={contentId} />
-          </ThemeProvider>
+        <Grid container justifyContent="center">
+          <Grid item xs={12} className={classes.contentsSection}>
+            <ThemeProvider theme={ThemeV2}>
+              <TabContents index={contentId} />
+            </ThemeProvider>
+          </Grid>
         </Grid>
-      </Grid>
-      <br />
-    </div>
+        <br />
+      </div>
+    </Sistema4DataProvider>
   );
 };
 
