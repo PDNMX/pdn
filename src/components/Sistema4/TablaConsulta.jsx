@@ -1,75 +1,21 @@
-import React, { useState, useMemo } from 'react';
-import { withStyles } from '@mui/styles';
+import React, { useState, useMemo } from "react";
+import { withStyles } from "@mui/styles";
 import {
   Box,
   Typography,
   TextField,
   InputAdornment,
   Chip,
-} from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
-import { DataGrid } from '@mui/x-data-grid';
+} from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import { DataGrid } from "@mui/x-data-grid";
 
-// Datos de ejemplo para consulta con campo folio
-const datosConsulta = [
-  {
-    id: 1,
-    folio: "CONS-2024-001",
-    año: "2024",
-    tipoIntercambio: "Solicitud de información",
-    entidadSolicitante: "Auditoría Superior de la Federación",
-    entidadReceptora: "Secretaría de la Función Pública",
-    tema: "Revisión de procesos de adquisiciones",
-    estado: "Completado",
-  },
-  {
-    id: 2,
-    folio: "CONS-2024-002",
-    año: "2024",
-    tipoIntercambio: "Colaboración técnica",
-    entidadSolicitante: "Secretaría Anticorrupción y Buen Gobierno",
-    entidadReceptora: "Auditoría Superior de la Federación",
-    tema: "Capacitación en auditoría de desempeño",
-    estado: "En proceso",
-  },
-  {
-    id: 3,
-    folio: "CONS-2023-001",
-    año: "2023",
-    tipoIntercambio: "Intercambio de mejores prácticas",
-    entidadSolicitante: "Secretaría de la Función Pública",
-    entidadReceptora: "Secretaría Anticorrupción y Buen Gobierno",
-    tema: "Sistemas de control interno",
-    estado: "Completado",
-  },
-  {
-    id: 4,
-    folio: "CONS-2023-002",
-    año: "2023",
-    tipoIntercambio: "Solicitud de información",
-    entidadSolicitante: "Auditoría Superior de la Federación",
-    entidadReceptora: "Secretaría Anticorrupción y Buen Gobierno",
-    tema: "Seguimiento de observaciones",
-    estado: "Completado",
-  },
-  {
-    id: 5,
-    folio: "CONS-2023-003",
-    año: "2023",
-    tipoIntercambio: "Coordinación de auditorías",
-    entidadSolicitante: "Secretaría de la Función Pública",
-    entidadReceptora: "Auditoría Superior de la Federación",
-    tema: "Auditoría conjunta a programas sociales",
-    estado: "Completado",
-  },
-];
-
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     padding: theme.spacing(3),
   },
   sectionTitle: {
-    color: '#666',
+    color: "#666",
     marginBottom: theme.spacing(3),
   },
   searchContainer: {
@@ -121,20 +67,21 @@ const styles = theme => ({
 });
 
 const TablaConsulta = ({ classes }) => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
   const filteredData = useMemo(() => {
     if (!searchTerm) return datosConsulta;
 
     const lowerSearch = searchTerm.toLowerCase();
-    return datosConsulta.filter(item =>
-      item.folio.toLowerCase().includes(lowerSearch) ||
-      item.año.toLowerCase().includes(lowerSearch) ||
-      item.tipoIntercambio.toLowerCase().includes(lowerSearch) ||
-      item.entidadSolicitante.toLowerCase().includes(lowerSearch) ||
-      item.entidadReceptora.toLowerCase().includes(lowerSearch) ||
-      item.tema.toLowerCase().includes(lowerSearch) ||
-      item.estado.toLowerCase().includes(lowerSearch)
+    return datosConsulta.filter(
+      (item) =>
+        item.folio.toLowerCase().includes(lowerSearch) ||
+        item.año.toLowerCase().includes(lowerSearch) ||
+        item.tipoIntercambio.toLowerCase().includes(lowerSearch) ||
+        item.entidadSolicitante.toLowerCase().includes(lowerSearch) ||
+        item.entidadReceptora.toLowerCase().includes(lowerSearch) ||
+        item.tema.toLowerCase().includes(lowerSearch) ||
+        item.estado.toLowerCase().includes(lowerSearch)
     );
   }, [searchTerm]);
 
@@ -179,14 +126,14 @@ const TablaConsulta = ({ classes }) => {
       width: 150,
       sortable: true,
       renderCell: (params) => {
-        const isCompleted = params.value === 'Completado';
+        const isCompleted = params.value === "Completado";
         return (
           <Chip
             label={params.value}
             size="small"
             sx={{
-              backgroundColor: isCompleted ? '#e8f5e9' : '#fff3e0',
-              color: isCompleted ? '#2e7d32' : '#e65100',
+              backgroundColor: isCompleted ? "#e8f5e9" : "#fff3e0",
+              color: isCompleted ? "#2e7d32" : "#e65100",
               fontWeight: 500,
             }}
           />
@@ -198,7 +145,8 @@ const TablaConsulta = ({ classes }) => {
   return (
     <Box className={classes.root}>
       <Typography variant="h6" className={classes.sectionTitle}>
-        Intercambio de Información entre los Miembros del Sistema Nacional de Fiscalización
+        Intercambio de Información entre los Miembros del Sistema Nacional de
+        Fiscalización
       </Typography>
 
       <Box className={classes.searchContainer}>
@@ -225,10 +173,10 @@ const TablaConsulta = ({ classes }) => {
           columns={columns}
           initialState={{
             pagination: {
-              paginationModel: { page: 0, pageSize: 20 },
+              paginationModel: { page: 0, pageSize: 10 },
             },
           }}
-          pageSizeOptions={[20, 50, 100]}
+          pageSizeOptions={[10, 50, 100]}
           disableRowSelectionOnClick
           localeText={{
             noRowsLabel: "No se encontraron resultados",

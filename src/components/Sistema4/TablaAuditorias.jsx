@@ -5,168 +5,40 @@ import {
   Typography,
   TextField,
   InputAdornment,
+  CircularProgress,
+  Alert,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import { DataGrid } from '@mui/x-data-grid';
-
-// Datos en memoria con campo folio para búsqueda
-const datosAuditorias = [
-  {
-    id: 1,
-    folio: "REG-2025-001",
-    año: "2025",
-    nombreDocumento: "Plan Anual de Fiscalización 2025",
-    entePublico: "Secretaría Anticorrupción y Buen Gobierno",
-    hipervinculo: "https://archivos.buengobierno.gob.mx/paf/paf2025.pdf",
-  },
-  {
-    id: 2,
-    folio: "REG-2024-001",
-    año: "2024",
-    nombreDocumento: "Plan Anual de Fiscalización 2024",
-    entePublico: "Secretaría de la Función Pública",
-    hipervinculo:
-      "https://www.gob.mx/cms/uploads/attachment/file/901822/PAF_Inicial_2024.pdf",
-  },
-  {
-    id: 3,
-    folio: "REG-2024-002",
-    año: "2024",
-    nombreDocumento: "Modificación al Plan Anual de Fiscalización 2024",
-    entePublico: "Secretaría de la Función Pública",
-    hipervinculo:
-      "https://www.gob.mx/cms/uploads/attachment/file/914672/PAF_modificado_2024.pdf",
-  },
-  {
-    id: 4,
-    folio: "REG-2024-003",
-    año: "2024",
-    nombreDocumento: "Modificación al Plan Anual de Fiscalización 2024 (Junio)",
-    entePublico: "Secretaría de la Función Pública",
-    hipervinculo:
-      "https://www.gob.mx/cms/uploads/attachment/file/937692/PAF_modificado_2024_junio.pdf",
-  },
-  {
-    id: 5,
-    folio: "REG-2024-004",
-    año: "2024",
-    nombreDocumento:
-      "Modificación al Plan Anual de Fiscalización 2024 (Septiembre)",
-    entePublico: "Secretaría de la Función Pública",
-    hipervinculo:
-      "https://www.gob.mx/cms/uploads/attachment/file/947718/PAF_modificado_2024_septiembre.pdf",
-  },
-  {
-    id: 6,
-    folio: "REG-2024-005",
-    año: "2024",
-    nombreDocumento: "Plan Anual de Fiscalización 2024 (Definitivo)",
-    entePublico: "Secretaría de la Función Pública",
-    hipervinculo:
-      "https://www.gob.mx/cms/uploads/attachment/file/986793/PAF_2024_definitivo.pdf",
-  },
-];
-
-const styles = (theme) => ({
-  root: {
-    padding: theme.spacing(3),
-  },
-  sectionTitle: {
-    color: "#666",
-    marginBottom: theme.spacing(3),
-  },
-  searchContainer: {
-    marginBottom: theme.spacing(3),
-  },
-  dataGridContainer: {
-    height: 600,
-    width: "100%",
-    "& .MuiDataGrid-root": {
-      border: "1px solid rgba(224, 224, 224, 1)",
-    },
-    "& .MuiDataGrid-columnHeaders": {
-      backgroundColor: "#713972 !important",
-      color: "#fff !important",
-    },
-    "& .MuiDataGrid-columnHeader": {
-      backgroundColor: "#713972 !important",
-      color: "#fff !important",
-    },
-    "& .MuiDataGrid-columnHeaderTitle": {
-      fontWeight: "bold !important",
-      color: "#fff !important",
-    },
-    "& .MuiDataGrid-cell": {
-      borderBottom: "1px solid rgba(224, 224, 224, 1)",
-    },
-    "& .MuiDataGrid-row:hover": {
-      backgroundColor: "rgba(113, 57, 114, 0.04)",
-    },
-    "& .MuiDataGrid-footerContainer": {
-      borderTop: "2px solid #713972",
-    },
-    "& .MuiDataGrid-columnHeader .MuiIconButton-root": {
-      color: "#fff !important",
-    },
-    "& .MuiDataGrid-sortIcon": {
-      color: "#fff !important",
-    },
-    "& .MuiDataGrid-menuIconButton": {
-      color: "#fff !important",
-      opacity: "1 !important",
-      padding: "2px !important",
-      margin: "0 4px !important",
-    },
-    "& .MuiDataGrid-iconButtonContainer": {
-      visibility: "visible !important",
-      width: "auto !important",
-      marginLeft: "4px !important",
-    },
-    "& .MuiDataGrid-menuIcon": {
-      visibility: "visible !important",
-      opacity: "1 !important",
-      fontSize: "20px !important",
-    },
-    "& .MuiDataGrid-columnHeader:hover .MuiDataGrid-menuIcon": {
-      opacity: "1 !important",
-    },
-    "& .MuiDataGrid-columnHeader .MuiDataGrid-menuIcon": {
-      opacity: "1 !important",
-    },
-    "& .MuiDataGrid-columnHeader .MuiIconButton-root": {
-      color: "#fff !important",
-      padding: "4px !important",
-    },
-    "& .MuiDataGrid-columnHeader .MuiIconButton-root svg": {
-      fontSize: "1.25rem !important",
-      color: "#fff !important",
-    },
-  },
-  link: {
-    color: "#713972",
-    fontWeight: "bold",
-    textDecoration: "none",
-    "&:hover": {
-      textDecoration: "underline",
-    },
-  },
-});
+import { DataGrid } from "@mui/x-data-grid";
+import { useSistema4Data } from "./utils/Sistema4DataContext";
+import { dataGridStyles, dataGridLocaleText } from "./styles/dataGridStyles";
+import DescargaSistema4 from "./DescargaSistema4";
 
 const TablaAuditorias = ({ classes }) => {
   const [searchTerm, setSearchTerm] = useState("");
+  const { auditorias } = useSistema4Data();
+  const { rows, loading, error } = auditorias;
+
+  console.log("TablaAuditorias - Estado:", {
+    loading,
+    error,
+    rowsCount: rows.length,
+  });
 
   const filteredData = useMemo(() => {
-    if (!searchTerm) return datosAuditorias;
+    if (!searchTerm) return rows;
 
     const lowerSearch = searchTerm.toLowerCase();
-    return datosAuditorias.filter(
+    return rows.filter(
       (item) =>
-        item.folio.toLowerCase().includes(lowerSearch) ||
-        item.año.toLowerCase().includes(lowerSearch) ||
-        item.nombreDocumento.toLowerCase().includes(lowerSearch) ||
-        item.entePublico.toLowerCase().includes(lowerSearch)
+        (item.folio && item.folio.toLowerCase().includes(lowerSearch)) ||
+        (item.año && item.año.toLowerCase().includes(lowerSearch)) ||
+        (item.nombreDocumento &&
+          item.nombreDocumento.toLowerCase().includes(lowerSearch)) ||
+        (item.entePublico &&
+          item.entePublico.toLowerCase().includes(lowerSearch))
     );
-  }, [searchTerm]);
+  }, [searchTerm, rows]);
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
@@ -213,6 +85,28 @@ const TablaAuditorias = ({ classes }) => {
     },
   ];
 
+  if (loading) {
+    return (
+      <Box
+        className={classes.root}
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        minHeight={400}
+      >
+        <CircularProgress />
+      </Box>
+    );
+  }
+
+  if (error) {
+    return (
+      <Box className={classes.root}>
+        <Alert severity="error">Error al cargar los datos: {error}</Alert>
+      </Box>
+    );
+  }
+
   return (
     <Box className={classes.root}>
       <Typography variant="h6" className={classes.sectionTitle}>
@@ -243,32 +137,18 @@ const TablaAuditorias = ({ classes }) => {
           columns={columns}
           initialState={{
             pagination: {
-              paginationModel: { page: 0, pageSize: 20 },
+              paginationModel: { page: 0, pageSize: 10 },
             },
           }}
-          pageSizeOptions={[20, 50, 100]}
+          pageSizeOptions={[10, 50, 100]}
           disableRowSelectionOnClick
-          localeText={{
-            noRowsLabel: "No se encontraron resultados",
-            noResultsOverlayLabel: "No se encontraron resultados.",
-            errorOverlayDefaultLabel: "Ha ocurrido un error.",
-            footerRowSelected: (count) =>
-              count !== 1
-                ? `${count.toLocaleString()} filas seleccionadas`
-                : `${count.toLocaleString()} fila seleccionada`,
-            footerTotalRows: "Filas totales:",
-            footerTotalVisibleRows: (visibleCount, totalCount) =>
-              `${visibleCount.toLocaleString()} de ${totalCount.toLocaleString()}`,
-            MuiTablePagination: {
-              labelRowsPerPage: "Filas por página:",
-              labelDisplayedRows: ({ from, to, count }) =>
-                `${from}-${to} de ${count !== -1 ? count : `más de ${to}`}`,
-            },
-          }}
+          localeText={dataGridLocaleText}
         />
       </Box>
+
+      <DescargaSistema4 fileName="auditorias" data={rows} />
     </Box>
   );
 };
 
-export default withStyles(styles)(TablaAuditorias);
+export default withStyles(dataGridStyles)(TablaAuditorias);

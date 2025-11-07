@@ -13,6 +13,7 @@ import TablaAuditorias from "./TablaAuditorias";
 import TablaInformes from "./TablaInformes";
 import TablaConsulta from "./TablaConsulta";
 import AlertPrototipo from "./AlertPrototipo";
+import { Sistema4DataProvider } from "./utils/Sistema4DataContext";
 
 const styles = (theme) => ({
   root: {
@@ -145,78 +146,80 @@ const Index = ({ classes }) => {
   };
 
   return (
-    <div className={classes.root}>
-      <HeaderV2 section={system} />
+    <Sistema4DataProvider>
+      <div className={classes.root}>
+        <HeaderV2 section={system} />
 
-      <Grid container justifyContent="center">
-        <Grid item xs={12} className={classes.section}>
-          <AlertPrototipo open={alertOpen} setOpen={setAlertOpen} />
-          <Paper className={classes.mainContainer} elevation={0}>
-            <Box className={classes.tabsContainer}>
-              <Tabs
-                value={value}
-                onChange={handleChange}
-                className={classes.tabs}
-                variant={window.innerWidth <= 960 ? "scrollable" : "fullWidth"}
-                scrollButtons="auto"
-                orientation={
-                  window.innerWidth <= 960 ? "vertical" : "horizontal"
-                }
-                centered={window.innerWidth > 960}
-              >
-                <Tab
-                  className={classes.tab}
-                  icon={
-                    <Box className={classes.tabLabel}>
-                      <AssessmentIcon className={classes.tabIcon} />
-                      <span>
-                        Programas Anuales de Auditorías (Fiscalización)
-                      </span>
-                    </Box>
+        <Grid container justifyContent="center">
+          <Grid item xs={12} className={classes.section}>
+            <AlertPrototipo open={alertOpen} setOpen={setAlertOpen} />
+            <Paper className={classes.mainContainer} elevation={0}>
+              <Box className={classes.tabsContainer}>
+                <Tabs
+                  value={value}
+                  onChange={handleChange}
+                  className={classes.tabs}
+                  variant={window.innerWidth <= 960 ? "scrollable" : "fullWidth"}
+                  scrollButtons="auto"
+                  orientation={
+                    window.innerWidth <= 960 ? "vertical" : "horizontal"
                   }
-                  aria-label="auditorias"
-                />
-                <Tab
-                  className={classes.tab}
-                  icon={
-                    <Box className={classes.tabLabel}>
-                      <DescriptionIcon className={classes.tabIcon} />
-                      <span>Informes Públicos de Fiscalización</span>
-                    </Box>
-                  }
-                  aria-label="informes"
-                />
-                <Tab
-                  className={classes.tab}
-                  icon={
-                    <Box className={classes.tabLabel}>
-                      <SearchIcon className={classes.tabIcon} />
-                      <span>
-                        Intercambio de Información entre los Miembros del
-                        Sistema Nacional de Fiscalización (Consulta)
-                      </span>
-                    </Box>
-                  }
-                  aria-label="consulta"
-                />
-              </Tabs>
-            </Box>
+                  centered={window.innerWidth > 960}
+                >
+                  <Tab
+                    className={classes.tab}
+                    icon={
+                      <Box className={classes.tabLabel}>
+                        <AssessmentIcon className={classes.tabIcon} />
+                        <span>
+                          Programas Anuales de Auditorías (Fiscalización)
+                        </span>
+                      </Box>
+                    }
+                    aria-label="auditorias"
+                  />
+                  <Tab
+                    className={classes.tab}
+                    icon={
+                      <Box className={classes.tabLabel}>
+                        <DescriptionIcon className={classes.tabIcon} />
+                        <span>Informes Públicos de Fiscalización</span>
+                      </Box>
+                    }
+                    aria-label="informes"
+                  />
+                  <Tab
+                    className={classes.tab}
+                    icon={
+                      <Box className={classes.tabLabel}>
+                        <SearchIcon className={classes.tabIcon} />
+                        <span>
+                          Intercambio de Información entre los Miembros del
+                          Sistema Nacional de Fiscalización (Consulta)
+                        </span>
+                      </Box>
+                    }
+                    aria-label="consulta"
+                  />
+                </Tabs>
+              </Box>
 
-            <ThemeProvider theme={ThemeV2}>
-              <TabPanel value={value} index={0} className={classes.tabPanel}>
-                <TablaAuditorias />
-              </TabPanel>
-              <TabPanel value={value} index={1} className={classes.tabPanel}>
-                <TablaInformes />
-              </TabPanel>
-              <TabPanel value={value} index={2} className={classes.tabPanel}>
-                <TablaConsulta />
-              </TabPanel>
-            </ThemeProvider>
-          </Paper>
+              <ThemeProvider theme={ThemeV2}>
+                <TabPanel value={value} index={0} className={classes.tabPanel}>
+                  <TablaAuditorias />
+                </TabPanel>
+                <TabPanel value={value} index={1} className={classes.tabPanel}>
+                  <TablaInformes />
+                </TabPanel>
+                <TabPanel value={value} index={2} className={classes.tabPanel}>
+                  <TablaConsulta />
+                </TabPanel>
+              </ThemeProvider>
+            </Paper>
+          </Grid>
         </Grid>
-      </Grid>
-    </div>
+      </div>
+    </Sistema4DataProvider>
   );
 };
 
