@@ -1,14 +1,19 @@
-import React, { useState, useMemo } from "react";
+import React from "react";
 import { withStyles } from "@mui/styles";
 import {
   Box,
   Typography,
-  TextField,
-  InputAdornment,
-  Chip,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Link,
+  Grid,
 } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
-import { DataGrid } from "@mui/x-data-grid";
+import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 
 const styles = (theme) => ({
   root: {
@@ -18,128 +23,81 @@ const styles = (theme) => ({
     color: "#666",
     marginBottom: theme.spacing(3),
   },
-  searchContainer: {
-    marginBottom: theme.spacing(3),
+  tableContainer: {
+    marginBottom: theme.spacing(4),
+    border: "1px solid rgba(224, 224, 224, 1)",
   },
-  dataGridContainer: {
-    height: 600,
-    width: "100%",
-    "& .MuiDataGrid-root": {
-      border: "1px solid rgba(224, 224, 224, 1)",
+  tableHeader: {
+    backgroundColor: "#713972",
+    "& th": {
+      color: "#fff",
+      fontWeight: "bold",
+      fontSize: "1rem",
+      padding: theme.spacing(2),
     },
-    "& .MuiDataGrid-columnHeaders": {
-      backgroundColor: "#713972 !important",
-      color: "#fff !important",
+  },
+  tableHeaderTitle: {
+    backgroundColor: "#713972",
+    color: "#fff",
+    fontWeight: "bold",
+    fontSize: "1.1rem",
+    textAlign: "center",
+    padding: theme.spacing(2),
+  },
+  tableCell: {
+    padding: theme.spacing(2),
+    borderBottom: "1px solid rgba(224, 224, 224, 1)",
+  },
+  downloadSection: {
+    marginTop: theme.spacing(4),
+    padding: theme.spacing(3),
+    backgroundColor: "#f5f5f5",
+    borderRadius: theme.spacing(1),
+  },
+  downloadTitle: {
+    color: "#713972",
+    fontWeight: "bold",
+    marginBottom: theme.spacing(2),
+  },
+  downloadLink: {
+    display: "flex",
+    alignItems: "center",
+    color: "#713972",
+    textDecoration: "none",
+    padding: theme.spacing(1.5),
+    marginBottom: theme.spacing(1),
+    backgroundColor: "#fff",
+    borderRadius: theme.spacing(0.5),
+    border: "1px solid #713972",
+    transition: "all 0.3s ease",
+    "&:hover": {
+      backgroundColor: "#713972",
+      color: "#fff",
+      "& svg": {
+        color: "#fff",
+      },
     },
-    "& .MuiDataGrid-columnHeader": {
-      backgroundColor: "#713972 !important",
-      color: "#fff !important",
-    },
-    "& .MuiDataGrid-columnHeaderTitle": {
-      fontWeight: "bold !important",
-      color: "#fff !important",
-    },
-    "& .MuiDataGrid-cell": {
-      borderBottom: "1px solid rgba(224, 224, 224, 1)",
-    },
-    "& .MuiDataGrid-row:hover": {
-      backgroundColor: "rgba(113, 57, 114, 0.04)",
-    },
-    "& .MuiDataGrid-footerContainer": {
-      borderTop: "2px solid #713972",
-    },
-    "& .MuiDataGrid-columnHeader .MuiIconButton-root": {
-      color: "#fff !important",
-    },
-    "& .MuiDataGrid-sortIcon": {
-      color: "#fff !important",
-    },
-    "& .MuiDataGrid-menuIconButton": {
-      color: "#fff !important",
-    },
-    "& .MuiDataGrid-iconButtonContainer": {
-      visibility: "visible !important",
-    },
-    "& .MuiDataGrid-menuIcon": {
-      visibility: "visible !important",
-    },
+  },
+  pdfIcon: {
+    marginRight: theme.spacing(1),
+    color: "#713972",
   },
 });
 
 const TablaConsulta = ({ classes }) => {
-  const [searchTerm, setSearchTerm] = useState("");
+  const asofisMembers = [
+    "Auditoría Superior de la Federación",
+    "Órgano Superior de Auditoría y Fiscalización Gubernamental de Colima",
+    "Auditoría Superior del Estado de Hidalgo",
+    "Auditoría Superior del Estado de Jalisco",
+    "Auditoría Superior del Estado de Sinaloa",
+  ];
 
-  const filteredData = useMemo(() => {
-    if (!searchTerm) return datosConsulta;
-
-    const lowerSearch = searchTerm.toLowerCase();
-    return datosConsulta.filter(
-      (item) =>
-        item.folio.toLowerCase().includes(lowerSearch) ||
-        item.año.toLowerCase().includes(lowerSearch) ||
-        item.tipoIntercambio.toLowerCase().includes(lowerSearch) ||
-        item.entidadSolicitante.toLowerCase().includes(lowerSearch) ||
-        item.entidadReceptora.toLowerCase().includes(lowerSearch) ||
-        item.tema.toLowerCase().includes(lowerSearch) ||
-        item.estado.toLowerCase().includes(lowerSearch)
-    );
-  }, [searchTerm]);
-
-  const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
-  };
-
-  const columns = [
-    {
-      field: "año",
-      headerName: "Año",
-      width: 100,
-      sortable: true,
-    },
-    {
-      field: "tipoIntercambio",
-      headerName: "Tipo de Intercambio",
-      width: 200,
-      sortable: true,
-    },
-    {
-      field: "entidadSolicitante",
-      headerName: "Entidad Solicitante",
-      width: 250,
-      sortable: true,
-    },
-    {
-      field: "entidadReceptora",
-      headerName: "Entidad Receptora",
-      width: 250,
-      sortable: true,
-    },
-    {
-      field: "tema",
-      headerName: "Tema",
-      width: 280,
-      sortable: true,
-    },
-    {
-      field: "estado",
-      headerName: "Estado",
-      width: 150,
-      sortable: true,
-      renderCell: (params) => {
-        const isCompleted = params.value === "Completado";
-        return (
-          <Chip
-            label={params.value}
-            size="small"
-            sx={{
-              backgroundColor: isCompleted ? "#e8f5e9" : "#fff3e0",
-              color: isCompleted ? "#2e7d32" : "#e65100",
-              fontWeight: 500,
-            }}
-          />
-        );
-      },
-    },
+  const cpcefMembers = [
+    "Secretaría de la Función Pública",
+    "Contraloría General del Estado de Baja California Sur",
+    "Secretaría de la Contraloría del Estado de Campeche",
+    "Secretaría de la Contraloría General del Estado de Sonora",
   ];
 
   return (
@@ -149,53 +107,74 @@ const TablaConsulta = ({ classes }) => {
         Fiscalización
       </Typography>
 
-      <Box className={classes.searchContainer}>
-        <TextField
-          fullWidth
-          variant="outlined"
-          size="small"
-          placeholder="Buscar por folio, año, tipo, entidad o tema..."
-          value={searchTerm}
-          onChange={handleSearchChange}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <SearchIcon color="action" />
-              </InputAdornment>
-            ),
-          }}
-        />
-      </Box>
+      <TableContainer component={Paper} className={classes.tableContainer}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell
+                colSpan={2}
+                align="center"
+                className={classes.tableHeaderTitle}
+              >
+                Comité Rector del SNF
+              </TableCell>
+            </TableRow>
+            <TableRow className={classes.tableHeader}>
+              <TableCell>ASOFIS</TableCell>
+              <TableCell>CPCE-F</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {Math.max(asofisMembers.length, cpcefMembers.length) >
+              0 &&
+              Array.from({
+                length: Math.max(asofisMembers.length, cpcefMembers.length),
+              }).map((_, index) => (
+                <TableRow key={index}>
+                  <TableCell className={classes.tableCell}>
+                    {asofisMembers[index] || ""}
+                  </TableCell>
+                  <TableCell className={classes.tableCell}>
+                    {cpcefMembers[index] || ""}
+                  </TableCell>
+                </TableRow>
+              ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
 
-      <Box className={classes.dataGridContainer}>
-        <DataGrid
-          rows={filteredData}
-          columns={columns}
-          initialState={{
-            pagination: {
-              paginationModel: { page: 0, pageSize: 10 },
-            },
-          }}
-          pageSizeOptions={[10, 50, 100]}
-          disableRowSelectionOnClick
-          localeText={{
-            noRowsLabel: "No se encontraron resultados",
-            noResultsOverlayLabel: "No se encontraron resultados.",
-            errorOverlayDefaultLabel: "Ha ocurrido un error.",
-            footerRowSelected: (count) =>
-              count !== 1
-                ? `${count.toLocaleString()} filas seleccionadas`
-                : `${count.toLocaleString()} fila seleccionada`,
-            footerTotalRows: "Filas totales:",
-            footerTotalVisibleRows: (visibleCount, totalCount) =>
-              `${visibleCount.toLocaleString()} de ${totalCount.toLocaleString()}`,
-            MuiTablePagination: {
-              labelRowsPerPage: "Filas por página:",
-              labelDisplayedRows: ({ from, to, count }) =>
-                `${from}-${to} de ${count !== -1 ? count : `más de ${to}`}`,
-            },
-          }}
-        />
+      <Box className={classes.downloadSection}>
+        <Typography variant="h6" className={classes.downloadTitle}>
+          Documentos disponibles para descarga
+        </Typography>
+        <Grid container spacing={2}>
+          <Grid item xs={12} md={6}>
+            <Link
+              href="https://www.snf.org.mx/SharedFiles/Download.aspx?pageid=13&mid=212&fileid=485"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={classes.downloadLink}
+            >
+              <PictureAsPdfIcon className={classes.pdfIcon} />
+              <Typography variant="body1">
+                Directorio EFSL v.Jul 2024.pdf
+              </Typography>
+            </Link>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Link
+              href="https://www.snf.org.mx/SharedFiles/Download.aspx?pageid=13&mid=212&fileid=486"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={classes.downloadLink}
+            >
+              <PictureAsPdfIcon className={classes.pdfIcon} />
+              <Typography variant="body1">
+                Directorio OEC v. Jul 2024.pdf
+              </Typography>
+            </Link>
+          </Grid>
+        </Grid>
       </Box>
     </Box>
   );
