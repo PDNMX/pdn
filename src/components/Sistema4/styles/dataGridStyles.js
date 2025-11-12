@@ -1,6 +1,7 @@
 export const dataGridStyles = (theme) => ({
   root: {
     padding: theme.spacing(3),
+    // paddingBottom: theme.spacing(0),
   },
   sectionTitle: {
     color: "#666",
@@ -9,8 +10,22 @@ export const dataGridStyles = (theme) => ({
   searchContainer: {
     marginBottom: theme.spacing(3),
   },
+  ul: {
+    listStyle: "none",
+    paddingLeft: "20px",
+    marginTop: theme.spacing(0),
+  },
+  li: {
+    "&:before": {
+      content: '"•"',
+      color: theme.palette.primary.main,
+      fontWeight: "bold",
+      display: "inline-block",
+      width: "1em",
+      marginLeft: "-1em",
+    },
+  },
   dataGridContainer: {
-    height: 600,
     width: "100%",
     "& .MuiDataGrid-root": {
       border: "1px solid rgba(224, 224, 224, 1)",
@@ -71,7 +86,7 @@ export const dataGridStyles = (theme) => ({
     },
   },
   link: {
-    color: "#713972",
+    color: "#000",
     fontWeight: "bold",
     textDecoration: "none",
     "&:hover": {
@@ -79,21 +94,3 @@ export const dataGridStyles = (theme) => ({
     },
   },
 });
-
-export const dataGridLocaleText = {
-  noRowsLabel: "No se encontraron resultados",
-  noResultsOverlayLabel: "No se encontraron resultados.",
-  errorOverlayDefaultLabel: "Ha ocurrido un error.",
-  footerRowSelected: (count) =>
-    count !== 1
-      ? `${count.toLocaleString()} filas seleccionadas`
-      : `${count.toLocaleString()} fila seleccionada`,
-  footerTotalRows: "Filas totales:",
-  footerTotalVisibleRows: (visibleCount, totalCount) =>
-    `${visibleCount.toLocaleString()} de ${totalCount.toLocaleString()}`,
-  MuiTablePagination: {
-    labelRowsPerPage: "Filas por página:",
-    labelDisplayedRows: ({ from, to, count }) =>
-      `${from}-${to} de ${count !== -1 ? count : `más de ${to}`}`,
-  },
-};

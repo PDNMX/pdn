@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { processSheetData } from "./sheetUtils";
+import { processSheetData } from "../services/sheetUtils";
 
 /**
  * Hook genérico para cargar datos desde una hoja de Google Sheets
@@ -30,7 +30,6 @@ export function useSheetData(apiUrl, mapFn) {
       }
     };
     fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [apiUrl]);
 
   return { rows, loading, error };

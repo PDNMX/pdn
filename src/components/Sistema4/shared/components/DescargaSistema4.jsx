@@ -11,16 +11,16 @@ const styles = (theme) => ({
     paddingBottom: theme.spacing(3),
   },
   descarga: {
-    color: "#713972",
+    color: theme.palette.primary.main,
     fontWeight: 500,
     fontSize: "1.5rem",
   },
   jsonLabel: {
-    color: "#713972",
+    color: theme.palette.secondary.main,
     fontSize: "2rem",
   },
   iconDownload: {
-    color: "#713972",
+    color: theme.palette.primary.main,
     fontSize: 60,
     padding: theme.spacing(0),
     margin: theme.spacing(0),
