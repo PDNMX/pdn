@@ -13,6 +13,7 @@ import TablaAuditorias from "./TablaAuditorias";
 import TablaInformes from "./TablaInformes";
 import TablaConsulta from "./TablaConsulta";
 import AlertPrototipo from "./AlertPrototipo";
+import DisclaimerSistema4 from "./DisclaimerSistema4";
 import { Sistema4DataProvider } from "./utils/Sistema4DataContext";
 
 const styles = (theme) => ({
@@ -138,6 +139,7 @@ TabPanel.propTypes = {
 const Index = ({ classes }) => {
   const [value, setValue] = useState(0);
   const [alertOpen, setAlertOpen] = useState(true);
+  const [disclaimerOpen, setDisclaimerOpen] = useState(true);
 
   const system = pdnRoutes.find((route) => route.path === "/fiscalizacion");
 
@@ -145,10 +147,18 @@ const Index = ({ classes }) => {
     setValue(newValue);
   };
 
+  const handleCloseDisclaimer = () => {
+    setDisclaimerOpen(false);
+  };
+
   return (
     <Sistema4DataProvider>
       <div className={classes.root}>
         <HeaderV2 section={system} />
+        <DisclaimerSistema4
+          open={disclaimerOpen}
+          handleClose={handleCloseDisclaimer}
+        />
 
         <Grid container justifyContent="center">
           <Grid item xs={12} className={classes.section}>
@@ -159,7 +169,9 @@ const Index = ({ classes }) => {
                   value={value}
                   onChange={handleChange}
                   className={classes.tabs}
-                  variant={window.innerWidth <= 960 ? "scrollable" : "fullWidth"}
+                  variant={
+                    window.innerWidth <= 960 ? "scrollable" : "fullWidth"
+                  }
                   scrollButtons="auto"
                   orientation={
                     window.innerWidth <= 960 ? "vertical" : "horizontal"
@@ -194,8 +206,7 @@ const Index = ({ classes }) => {
                       <Box className={classes.tabLabel}>
                         <SearchIcon className={classes.tabIcon} />
                         <span>
-                          Intercambio de Información entre los Miembros del
-                          Sistema Nacional de Fiscalización (Consulta)
+                          Consulta e Intercambio de Información (En validación)
                         </span>
                       </Box>
                     }

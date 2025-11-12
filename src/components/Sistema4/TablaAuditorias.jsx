@@ -110,9 +110,12 @@ const TablaAuditorias = ({ classes }) => {
   return (
     <Box className={classes.root}>
       <Typography variant="h6" className={classes.sectionTitle}>
-        Programas Anuales de Auditorías (Fiscalización)
+        ¿Qué encontrará aquí?
+        <br />
+        Los planes anuales donde cada órgano fiscalizador del país detalla qué
+        instituciones, programas y recursos públicos revisará durante el año. Es
+        como conocer el calendario de supervisión del gobierno con anticipación.
       </Typography>
-
       <Box className={classes.searchContainer}>
         <TextField
           fullWidth

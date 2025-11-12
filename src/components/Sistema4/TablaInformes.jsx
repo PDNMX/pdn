@@ -104,7 +104,11 @@ const TablaInformes = ({ classes }) => {
   return (
     <Box className={classes.root}>
       <Typography variant="h6" className={classes.sectionTitle}>
-        Informes Públicos de Fiscalización
+        ¿Qué encontrará aquí?
+        <br />
+        Los resultados reales de las auditorías realizadas: qué se encontró, qué
+        irregularidades se detectaron, qué recomendaciones se hicieron y cómo se
+        está dando seguimiento.
       </Typography>
 
       <Box className={classes.searchContainer}>

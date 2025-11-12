@@ -103,8 +103,7 @@ const TablaConsulta = ({ classes }) => {
   return (
     <Box className={classes.root}>
       <Typography variant="h6" className={classes.sectionTitle}>
-        Intercambio de Información entre los Miembros del Sistema Nacional de
-        Fiscalización
+        Miembros del Sistema Nacional de Fiscalización
       </Typography>
 
       <TableContainer component={Paper} className={classes.tableContainer}>
@@ -125,8 +124,7 @@ const TablaConsulta = ({ classes }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {Math.max(asofisMembers.length, cpcefMembers.length) >
-              0 &&
+            {Math.max(asofisMembers.length, cpcefMembers.length) > 0 &&
               Array.from({
                 length: Math.max(asofisMembers.length, cpcefMembers.length),
               }).map((_, index) => (
