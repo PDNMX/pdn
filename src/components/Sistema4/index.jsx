@@ -19,12 +19,18 @@ import styles from "./styles/styles.js";
 
 import DescargaSistema4 from "./shared/components/DescargaSistema4";
 import { useSistema4Data } from "./shared/context/Sistema4DataContext";
+import DisclaimerSistema4 from "./DisclaimerSistema4";
 
 const Index = ({ classes }) => {
   const [tab, setTab] = React.useState(0);
   const [alertOpen, setAlertOpen] = React.useState(true);
+  const [disclaimerOpen, setDisclaimerOpen] = React.useState(true);
   const handleTabChange = (i) => setTab(i);
   const system = pdnRoutes.find((route) => route.path === "/fiscalizacion");
+
+  const handleCloseDisclaimer = () => {
+    setDisclaimerOpen(false);
+  };
 
   const tabs = [
     {
@@ -53,6 +59,10 @@ const Index = ({ classes }) => {
     <Sistema4DataProvider>
       <div className={classes.root}>
         <HeaderV2 section={system} />
+        <DisclaimerSistema4
+          open={disclaimerOpen}
+          handleClose={handleCloseDisclaimer}
+        />
 
         <Grid container justifyContent="center">
           <Grid item xs={12} className={classes.section}>
