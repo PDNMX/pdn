@@ -8,7 +8,7 @@ import ThemeV2 from "../../ThemeV2";
 
 import AssessmentIcon from "@mui/icons-material/Assessment";
 import DescriptionIcon from "@mui/icons-material/Description";
-import SearchIcon from "@mui/icons-material/Search";
+import FindInPageIcon from "@mui/icons-material/FindInPage";
 
 import TablaAuditorias from "./pages/TablaAuditorias/TablaAuditorias.jsx";
 import TablaInformes from "./pages/TablaInformes/TablaInformes.jsx";
@@ -107,7 +107,7 @@ const Index = ({ classes }) => {
         content: <TablaInformes />,
       },
       {
-        icon: <SearchIcon />,
+        icon: <FindInPageIcon />,
         label:
           "Intercambio de Información entre los Miembros del Sistema Nacional de Fiscalización (Consulta)",
         aria: "consulta",
