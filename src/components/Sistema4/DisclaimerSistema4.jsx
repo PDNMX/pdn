@@ -3,7 +3,6 @@ import {
   Dialog,
   DialogTitle,
   DialogContent,
-  DialogContentText,
   DialogActions,
   Paper,
   Box,
@@ -11,163 +10,151 @@ import {
   ListItem,
   ListItemText,
   Link,
+  Typography,
+  Button,
 } from "@mui/material";
-import { withStyles } from "@mui/styles";
-import ButtonPDN from "../Compartidos/ButtonPDN";
-const snfInfoLink = "https://www.snf.org.mx/";
-const styles = (theme) => ({
-  paper: {
-    backgroundColor: "#fff",
-    border: "2px solid #713972",
-  },
-  title: {
-    color: "#713972",
-    fontWeight: "bold",
-    textAlign: "center",
-    backgroundColor: "#f5f5f5",
-    borderBottom: "2px solid #713972",
-  },
-  subtitle: {
-    color: "#713972",
-    fontWeight: "bold",
-    marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(1),
-  },
-  text: {
-    color: "#333",
-    textAlign: "justify",
-    marginBottom: theme.spacing(2),
-  },
-  enlaces: {
-    color: "#713972",
-    fontWeight: "bold",
-    textDecoration: "underline",
-    "&:hover": {
-      color: "#9c4a9d",
-    },
-  },
-  listItem: {
-    paddingLeft: theme.spacing(4),
-    paddingTop: theme.spacing(0.5),
-    paddingBottom: theme.spacing(0.5),
-  },
-  actions: {
-    padding: theme.spacing(2),
-    justifyContent: "center",
-    borderTop: "1px solid #e0e0e0",
-  },
-});
+import { styled } from "@mui/system";
 
-const DisclaimerSistema4 = ({ classes, open, handleClose }) => {
+const snfInfoLink = "https://www.snf.org.mx/";
+
+const StyledDialog = styled(Dialog)(({ theme }) => ({
+  '& .MuiDialog-paper': {
+    borderRadius: theme.shape.borderRadius,
+    width: '100%',
+    maxWidth: 'md',
+    padding: theme.spacing(1.5),
+  },
+}));
+
+const Highlight = styled('span')(({ theme }) => ({
+  color: theme.palette.primary.main,
+  fontWeight: 'bold',
+}));
+
+const StyledList = styled(List)(({ theme }) => ({
+  paddingLeft: theme.spacing(2),
+  '& .MuiListItem-root': {
+    padding: theme.spacing(0.5, 0),
+  },
+  '& .MuiListItemText-primary': {
+    fontSize: '0.95rem',
+    color: theme.palette.text.primary,
+  },
+}));
+
+const DisclaimerSistema4 = ({ open, handleClose }) => {
   return (
-    <Dialog
-      open={open}
-      onClose={handleClose}
-      maxWidth="md"
-      fullWidth
-      aria-labelledby="disclaimer-dialog-title"
-    >
-      <Paper className={classes.paper} style={{ margin: 0, borderRadius: 0 }}>
-        <DialogTitle id="disclaimer-dialog-title" className={classes.title}>
-          AVISO IMPORTANTE - PROTOTIPO EN DESARROLLO
+    <StyledDialog open={open} onClose={handleClose} aria-labelledby="disclaimer-dialog-title">
+      <Paper>
+        <DialogTitle id="disclaimer-dialog-title">
+          <Typography variant="h5" component="div" textAlign="center">
+            <Highlight>AVISO IMPORTANTE - PROTOTIPO EN DESARROLLO</Highlight>
+          </Typography>
         </DialogTitle>
         <DialogContent>
-          <DialogContentText className={classes.text}>
+          <Typography paragraph>
             El presente sistema constituye un prototipo conceptual del módulo de
             consulta y transparencia para el{" "}
-            <strong>
+            <Highlight>
               Sistema de Información y Comunicación del Sistema Nacional
               Anticorrupción y del Sistema Nacional de Fiscalización
-            </strong>
+            </Highlight>
             , integrado a la Plataforma Digital Nacional (PDN).
-          </DialogContentText>
+          </Typography>
 
-          <DialogContentText className={classes.subtitle}>
-            Naturaleza del Prototipo
-          </DialogContentText>
-          <DialogContentText className={classes.text}>
+          <Typography>
+            <Highlight>Naturaleza del Prototipo</Highlight>
+          </Typography>
+          <Typography paragraph>
             Este desarrollo se presenta como una propuesta de concepto que busca
             materializar las funcionalidades requeridas para dar cumplimiento al{" "}
-            <strong>
+            <Highlight>
               artículo 55 de la Ley General del Sistema Nacional Anticorrupción
               (LGSNA)
-            </strong>
+            </Highlight>
             , específicamente en lo concerniente a la publicación y consulta de:
-          </DialogContentText>
-          <List dense>
-            <ListItem className={classes.listItem}>
-              <ListItemText primary="• Programas Anuales de Auditoría (PAA)" />
-            </ListItem>
-            <ListItem className={classes.listItem}>
-              <ListItemText primary="• Programas Anuales de Fiscalización" />
-            </ListItem>
-            <ListItem className={classes.listItem}>
-              <ListItemText primary="• Programas Anuales de Trabajo" />
-            </ListItem>
-            <ListItem className={classes.listItem}>
-              <ListItemText primary="• Instrumentos homólogos de planeación institucional" />
-            </ListItem>
-          </List>
+          </Typography>
+          <StyledList>
+            <List sx={{ listStyleType: 'disc', pl: 3}}>
+              <ListItemText sx={{ display: 'list-item' }}>
+                Programas Anuales de Auditoría (PAA)
+              </ListItemText>
+              <ListItemText sx={{ display: 'list-item' }}>
+                Programas Anuales de Fiscalización
+              </ListItemText>
+              <ListItemText sx={{ display: 'list-item' }}>
+                Programas Anuales de Trabajo
+              </ListItemText>
+              <ListItemText sx={{ display: 'list-item' }}>
+                Instrumentos homólogos de planeación institucional
+              </ListItemText>
+            </List>
+          </StyledList>
 
-          <DialogContentText className={classes.subtitle}>
-            Consideraciones Importantes
-          </DialogContentText>
+          <Typography>
+            <Highlight>Consideraciones Importantes</Highlight>
+          </Typography>
           <Box mb={2}>
-            <DialogContentText className={classes.text}>
-              <strong>Estado de Desarrollo:</strong> La presente versión es un
+            <Typography paragraph>
+              <Highlight>Estado de Desarrollo:</Highlight> La presente versión es un
               prototipo sujeto a revisión, validación y aprobación por parte de
               las autoridades competentes del{" "}
               <Link
                 href={snfInfoLink}
                 target="_blank"
-                underline="none"
-                className={classes.enlaces}
+                rel="noopener noreferrer"
               >
                 Sistema Nacional de Fiscalización (SNF).
-              </Link>{" "}
-            </DialogContentText>
-            <DialogContentText className={classes.text}>
-              <strong>Modificaciones Esperadas:</strong> Se anticipan ajustes,
+              </Link>
+            </Typography>
+            <Typography paragraph>
+              <Highlight>Modificaciones Esperadas:</Highlight> Se anticipan ajustes,
               correcciones y especificaciones técnicas derivadas de:
-            </DialogContentText>
-            <List dense>
-              <ListItem className={classes.listItem}>
-                <ListItemText primary="• Retroalimentación del SNF y sus integrantes" />
-              </ListItem>
-              <ListItem className={classes.listItem}>
-                <ListItemText primary="• Requerimientos normativos adicionales" />
-              </ListItem>
-              <ListItem className={classes.listItem}>
-                <ListItemText primary="• Necesidades operativas identificadas durante la fase de pruebas" />
-              </ListItem>
-              <ListItem className={classes.listItem}>
-                <ListItemText primary="• Estándares técnicos de la PDN" />
-              </ListItem>
-            </List>
-            <DialogContentText className={classes.text}>
-              <strong>Compromiso de Cumplimiento:</strong> Este prototipo tiene
+            </Typography>
+            <StyledList>
+              <List sx={{ listStyleType: 'disc', pl: 3}}>
+                <ListItemText sx={{ display: 'list-item' }}>
+                  Retroalimentación del SNF y sus integrantes
+                </ListItemText>
+                <ListItemText sx={{ display: 'list-item' }}>
+                  Requerimientos normativos adicionales
+                </ListItemText>
+                <ListItemText sx={{ display: 'list-item' }}>
+                  Necesidades operativas identificadas durante la fase de pruebas
+                </ListItemText>
+                <ListItemText sx={{ display: 'list-item' }}>
+                  Estándares técnicos de la PDN
+                </ListItemText>
+              </List>
+            </StyledList>
+            <Typography paragraph>
+              <Highlight>Compromiso de Cumplimiento:</Highlight> Este prototipo tiene
               como objetivo fundamental apegarse a los lineamientos establecidos
               en el marco normativo aplicable y proporcionar productos que
               satisfagan los requerimientos del artículo 55 de la LGSNA.
-            </DialogContentText>
+            </Typography>
           </Box>
 
-          <DialogContentText className={classes.subtitle}>
-            Alcance del Prototipo
-          </DialogContentText>
-          <DialogContentText className={classes.text}>
+          <Typography>
+            <Highlight>Alcance del Prototipo</Highlight>
+          </Typography>
+          <Typography paragraph>
             Los datos, funcionalidades y resultados mostrados en este sistema
             son ilustrativos y de carácter demostrativo. La información
             definitiva estará disponible una vez que el sistema sea formalmente
             validado e implementado por las instancias correspondientes.
-          </DialogContentText>
+          </Typography>
         </DialogContent>
-        <DialogActions className={classes.actions}>
-          <ButtonPDN onClick={handleClose}>Aceptar</ButtonPDN>
+        <DialogActions>
+          <Box>
+            <Button variant="contained" color="primary" onClick={handleClose}>
+              Aceptar
+            </Button>
+          </Box>
         </DialogActions>
       </Paper>
-    </Dialog>
+    </StyledDialog>
   );
 };
 
-export default withStyles(styles)(DisclaimerSistema4);
+export default DisclaimerSistema4;

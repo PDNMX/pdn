@@ -1,3 +1,6 @@
+import React from "react";
+import { Tooltip } from "@mui/material";
+
 export const mapSheetToGridData = (item, index) => ({
   id: index + 1,
   entePublico: item.ente_publico || "",
@@ -5,6 +8,11 @@ export const mapSheetToGridData = (item, index) => ({
   grupoDeTrabajo: item.grupo_de_trabajo || "",
   filial: item.filial || "",
 });
+
+const filialTooltips = {
+  "ASOFIS": "Asociación de Organismos de Fiscalización Superior y Control Gubernamental",
+  "CPCE-F": "Comisión Permanente de Contralores Estados-Federación",
+};
 
 export const columns = [
   {
@@ -34,5 +42,13 @@ export const columns = [
     flex: 1,
     minWidth: 120,
     sortable: true,
+    renderCell: (params) => {
+      const tooltipText = filialTooltips[params.value] || params.value;
+      return (
+        <Tooltip title={tooltipText} arrow placement="top">
+          <span>{params.value}</span>
+        </Tooltip>
+      );
+    },
   },
 ];

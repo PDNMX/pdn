@@ -1,44 +1,19 @@
 import React from 'react';
-import makeStyles from '@mui/styles/makeStyles';
-import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
-import IconButton from '@mui/material/IconButton';
-import Collapse from '@mui/material/Collapse';
-import CloseIcon from '@mui/icons-material/Close';
+import { Box, Chip } from '@mui/material';
+import { styled } from '@mui/system';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '100%',
-    margin: theme.spacing(2, 0),
-  },
+const ChipContainer = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'flex-end',
+  marginTop: theme.spacing(1),
+  marginBottom: theme.spacing(2),
 }));
 
-const AlertPrototipo = ({ open, setOpen }) => {
-  const classes = useStyles();
-
+const AlertPrototipo = () => {
   return (
-    <div className={classes.root}>
-      <Collapse in={open}>
-        <Alert
-          severity="info"
-          action={
-            <IconButton
-              aria-label="close"
-              color="inherit"
-              size="small"
-              onClick={() => {
-                setOpen(false);
-              }}
-            >
-              <CloseIcon fontSize="inherit" />
-            </IconButton>
-          }
-        >
-          <AlertTitle>Información</AlertTitle>
-          Prototipo Beta versión 0.3
-        </Alert>
-      </Collapse>
-    </div>
+    <ChipContainer>
+      <Chip label="Prototipo Beta versión 0.4" color="primary" />
+    </ChipContainer>
   );
 };
 

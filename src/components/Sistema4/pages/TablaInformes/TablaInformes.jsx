@@ -150,7 +150,6 @@
 import { useSistema4Data } from "../../shared/context/Sistema4DataContext";
 import { columns } from "./columns";
 import DataGridBase from "../../shared/components/DataGridBase";
-import DescargaSistema4 from "../../shared/components/DescargaSistema4";
 
 const TablaInformes = () => {
   const { informes } = useSistema4Data();
@@ -162,14 +161,11 @@ const TablaInformes = () => {
   ];
 
   return (
-    <>
-      <DataGridBase
-        title="Aquí puedes consultar:"
-        descriptionItems={descriptionItems}
-        data={{ ...informes, columns }}
-      />
-      <DescargaSistema4 fileName="informes" data={informes.rows} />
-    </>
+    <DataGridBase
+      title="Aquí puedes consultar:"
+      descriptionItems={descriptionItems}
+      data={{ ...informes, columns }}
+    />
   );
 };
 

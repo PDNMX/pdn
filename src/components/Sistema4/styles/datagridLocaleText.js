@@ -10,6 +10,7 @@ export const dataGridLocaleText = {
   toolbarDensityComfortable: "Cómoda",
   toolbarColumns: "Columnas",
   toolbarColumnsLabel: "Seleccionar columnas",
+  toolbarColumnsManageButtonLabel: "Gestionar columnas",
   toolbarFilters: "Filtros",
   toolbarFiltersLabel: "Mostrar filtros",
   toolbarFiltersTooltipHide: "Ocultar filtros",
@@ -52,6 +53,7 @@ export const dataGridLocaleText = {
   columnMenuUnsort: "Desordenar",
   columnMenuSortAsc: "Ordenar ascendente",
   columnMenuSortDesc: "Ordenar descendente",
+  columnsPanelManageButtonLabel: "Gestionar columnas",
   columnHeaderFiltersTooltipActive: (count) =>
     count !== 1 ? `${count} filtros activos` : `${count} filtro activo`,
   columnHeaderFiltersLabel: "Mostrar filtros",
@@ -75,12 +77,13 @@ export const dataGridLocaleText = {
   //   labelDisplayedRows: ({ from, to, count }) =>
   //     `${from}-${to} de ${count !== -1 ? count : `más de ${to}`}`,
   // },
-  paginationRowsPerPage: 'Filas por página:',
+  paginationRowsPerPage: "Filas por página:",
   paginationDisplayedRows: ({ from, to, count, estimated }) => {
     if (!estimated) {
       return `${from}–${to} de ${count !== -1 ? count : `more than ${to}`}`;
     }
-    const estimatedLabel = estimated && estimated > to ? `around ${estimated}` : `more than ${to}`;
+    const estimatedLabel =
+      estimated && estimated > to ? `around ${estimated}` : `more than ${to}`;
     return `${from}–${to} de ${count !== -1 ? count : estimatedLabel}`;
   },
 };
