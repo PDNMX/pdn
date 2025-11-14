@@ -72,11 +72,7 @@ export const dataGridLocaleText = {
   pinToLeft: "Anclar a la izquierda",
   pinToRight: "Anclar a la derecha",
   unpin: "Desanclar",
-  // MuiTablePagination: {
-  //   labelRowsPerPage: "Filas por página:",
-  //   labelDisplayedRows: ({ from, to, count }) =>
-  //     `${from}-${to} de ${count !== -1 ? count : `más de ${to}`}`,
-  // },
+  columnMenuManageColumns: "Gestionar columnas",
   paginationRowsPerPage: "Filas por página:",
   paginationDisplayedRows: ({ from, to, count, estimated }) => {
     if (!estimated) {
@@ -86,4 +82,10 @@ export const dataGridLocaleText = {
       estimated && estimated > to ? `around ${estimated}` : `more than ${to}`;
     return `${from}–${to} de ${count !== -1 ? count : estimatedLabel}`;
   },
+  // Columns management text
+  columnsManagementSearchTitle: 'Buscar',
+  columnsManagementNoColumns: 'No hay columnas',
+  columnsManagementShowHideAllText: 'Mostrar/Ocultar todas',
+  columnsManagementReset: 'Restablecer',
+  columnsManagementDeleteIconLabel: 'Borrar',
 };
