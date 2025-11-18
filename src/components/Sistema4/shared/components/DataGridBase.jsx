@@ -7,14 +7,24 @@ import { dataGridLocaleText } from "../../styles/datagridLocaleText";
 import { dataGridStyles } from "../../styles/dataGridStyles";
 import { dataGridSx } from "../../styles/dataGridSx";
 
-const DataGridBase = ({ classes, title, descriptionItems, data,  enableSearch = true, searchPlaceholder = "Buscar...", searchableFields, }) => {
+const DataGridBase = ({
+  classes,
+  title,
+  descriptionItems,
+  data,
+  enableSearch = true,
+  searchPlaceholder = "Buscar...",
+  searchableFields,
+  children // Nueva prop para contenido personalizado
+}) => {
 
-  const { rows, columns, loading, error } = data;
+  // Si se pasan children, no necesitamos data
+  const { rows = [], columns = [], loading = false, error = null } = data || {};
   const [searchTerm, setSearchTerm] = React.useState("");
 
-   // 🔍 Lógica de filtrado reutilizable
+   // 🔍 Lógica de filtrado reutilizable (solo si no hay children)
   const filteredRows = React.useMemo(() => {
-    if (!enableSearch || !searchTerm) return rows;
+    if (children || !enableSearch || !searchTerm) return rows;
     const lowerSearch = searchTerm.toLowerCase();
 
     return rows.filter((row) =>
@@ -26,11 +36,11 @@ const DataGridBase = ({ classes, title, descriptionItems, data,  enableSearch = 
         );
       })
     );
-  }, [searchTerm, rows, enableSearch, searchableFields]);
+  }, [searchTerm, rows, enableSearch, searchableFields, children]);
 
-  if(loading){
+  if(loading && !children){
     return (
-      
+
       <Box
         className={classes.dataGridContainer}
         display="flex"
@@ -64,7 +74,8 @@ const DataGridBase = ({ classes, title, descriptionItems, data,  enableSearch = 
         )}
       </Box>
 
-      {enableSearch && (
+      {/* Solo mostrar búsqueda si no hay children y está habilitada */}
+      {!children && enableSearch && (
         <Box className={classes.searchContainer} mb={2}>
           <TextField
             fullWidth
@@ -84,7 +95,7 @@ const DataGridBase = ({ classes, title, descriptionItems, data,  enableSearch = 
         </Box>
       )}
 
-      {error && (
+      {error && !children && (
         <Box className={classes.errorContainer}>
           <Typography color="error">
             <b>Error al cargar los datos:</b> {error}
@@ -93,19 +104,25 @@ const DataGridBase = ({ classes, title, descriptionItems, data,  enableSearch = 
       )}
 
       <Box className={classes.dataGridContainer}>
-        <DataGrid
-          rows={filteredRows}
-          columns={columns}
-          loading={loading}
-          localeText={dataGridLocaleText}
-          initialState={{
-            pagination: { paginationModel: { page: 0, pageSize: 25 } },
-          }}
-          pageSizeOptions={[10, 25, 50, 100]}
-          disableRowSelectionOnClick
-          filterMode="client"
-          sx={dataGridSx}
-        />
+        {children ? (
+          // Renderizar contenido personalizado si se pasa children
+          children
+        ) : (
+          // Renderizar DataGrid por defecto
+          <DataGrid
+            rows={filteredRows}
+            columns={columns}
+            loading={loading}
+            localeText={dataGridLocaleText}
+            initialState={{
+              pagination: { paginationModel: { page: 0, pageSize: 25 } },
+            }}
+            pageSizeOptions={[10, 25, 50, 100]}
+            disableRowSelectionOnClick
+            filterMode="client"
+            sx={dataGridSx}
+          />
+        )}
       </Box>
     </Box>
   );

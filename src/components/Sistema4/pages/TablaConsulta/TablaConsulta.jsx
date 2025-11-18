@@ -1,7 +1,6 @@
 import { useSistema4Data } from "../../shared/context/Sistema4DataContext";
 import { columns } from "./columns";
 import DataGridBase from "../../shared/components/DataGridBase";
-import DownloadSection from "../../shared/components/DownloadSection";
 import {
   Typography,
   Link,
@@ -32,12 +31,20 @@ const StyledHeaderCell = styled(TableCell)(() => ({
   padding: "16px",
   textAlign: "center",
   borderBottom: "1px solid rgba(224, 224, 224, 1)",
+  borderRight: "1px solid rgba(255, 255, 255, 0.3)", // Separador vertical blanco semi-transparente
+  "&:last-child": {
+    borderRight: "none", // Sin borde en la última celda
+  },
 }));
 
 const StyledTableCell = styled(TableCell)(() => ({
   padding: "16px",
   textAlign: "center",
   borderBottom: "1px solid rgba(224, 224, 224, 1)",
+  borderRight: "1px solid rgba(224, 224, 224, 1)", // Separador vertical
+  "&:last-child": {
+    borderRight: "none", // Sin borde en la última celda
+  },
 }));
 
 const DownloadLink = styled(Link)(({ theme }) => ({
@@ -67,6 +74,16 @@ const TablaConsulta = () => {
     "En esta sección puede consultar los miembros del Sistema Nacional de Fiscalización (SNF) organizados por el Comité Rector y grupos de trabajo.",
     "El Comité Rector está integrado por la Auditoría Superior de la Federación (ASF) y representantes de la Asociación Nacional de Organismos de Fiscalización Superior y Control Gubernamental (ASOFIS) y la Comisión Permanente de Contralores Estados-Federación (CPCE-F).",
     "Utilice los filtros de la tabla para buscar por ente público, responsable, grupo de trabajo o filial (ASOFIS/CPCE-F).",
+  ];
+
+  const comiteRectorDescriptionItems = [
+    "El Comité Rector del Sistema Nacional de Fiscalización es el órgano de coordinación y toma de decisiones integrado por representantes de ASOFIS y CPCE-F.",
+    "ASOFIS representa a las Auditorías Superiores Locales de fiscalización del país, mientras que CPCE-F agrupa a las Contralorías Estatales.",
+  ];
+
+  const directorioDescriptionItems = [
+    "En esta sección puede descargar los directorios actualizados de las Entidades de Fiscalización Superior Locales (EFSL) y Órganos de Control Estatal (OCE).",
+    "Los directorios incluyen información de contacto y estructura organizacional de las entidades fiscalizadoras.",
   ];
 
   const comiteRectorData = {
@@ -123,7 +140,7 @@ const TablaConsulta = () => {
         data={{ ...miembrosSNF, columns }}
       />
 
-      <DownloadSection title="Comité Rector">
+      <DataGridBase title="Comité Rector" descriptionItems={comiteRectorDescriptionItems}>
         <StyledTableContainer component={Paper}>
           <Table>
             <StyledTableHead>
@@ -176,9 +193,9 @@ const TablaConsulta = () => {
             </TableBody>
           </Table>
         </StyledTableContainer>
-      </DownloadSection>
+      </DataGridBase>
 
-      <DownloadSection title="Directorio del SNF">
+      <DataGridBase title="Directorio del SNF" descriptionItems={directorioDescriptionItems}>
         <StyledTableContainer component={Paper}>
           <Table>
             <StyledTableHead>
@@ -218,7 +235,7 @@ const TablaConsulta = () => {
             </TableBody>
           </Table>
         </StyledTableContainer>
-      </DownloadSection>
+      </DataGridBase>
     </>
   );
 };
