@@ -1,8 +1,8 @@
 import { useSistema4Data } from "../../shared/context/Sistema4DataContext";
 import { columns } from "./columns";
 import DataGridBase from "../../shared/components/DataGridBase";
+import DownloadSection from "../../shared/components/DownloadSection";
 import {
-  Box,
   Typography,
   Link,
   Table,
@@ -16,31 +16,28 @@ import {
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import { styled } from "@mui/system";
 
-const DownloadSection = styled(Box)(({ theme }) => ({
-  padding: theme.spacing(3),
-}));
-
 const StyledTableContainer = styled(TableContainer)(({ theme }) => ({
-  border: `1px solid ${theme.palette.divider}`,
-  boxShadow: "none", // ✅ Esto funciona porque TableContainer renderiza Paper
+  border: `1px solid rgba(224, 224, 224, 1)`,
+  boxShadow: "none",
 }));
 
-const StyledTableHead = styled(TableHead)(({ theme }) => ({
-  backgroundColor: theme.palette.primary.main,
+const StyledTableHead = styled(TableHead)(() => ({
+  backgroundColor: "#713972", // Color consistente con DataGrid
 }));
 
-const StyledHeaderCell = styled(TableCell)(({ theme }) => ({
-  color: theme.palette.common.white,
+const StyledHeaderCell = styled(TableCell)(() => ({
+  color: "#fff",
   fontWeight: 700,
-  fontSize: "1.1rem",
-  padding: theme.spacing(2),
+  fontSize: "1rem",
+  padding: "16px",
   textAlign: "center",
+  borderBottom: "1px solid rgba(224, 224, 224, 1)",
 }));
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  padding: theme.spacing(2),
+const StyledTableCell = styled(TableCell)(() => ({
+  padding: "16px",
   textAlign: "center",
-  borderBottom: "none", // 👈 Esto elimina el borde inferior por defecto
+  borderBottom: "1px solid rgba(224, 224, 224, 1)",
 }));
 
 const DownloadLink = styled(Link)(({ theme }) => ({
@@ -121,12 +118,12 @@ const TablaConsulta = () => {
   return (
     <>
       <DataGridBase
-        title="Directorio de Miembros del SNF"
+        title="Integrantes del Comité Rector"
         descriptionItems={descriptionItems}
         data={{ ...miembrosSNF, columns }}
       />
 
-      <DownloadSection>
+      <DownloadSection title="Comité Rector">
         <StyledTableContainer component={Paper}>
           <Table>
             <StyledTableHead>
@@ -181,7 +178,7 @@ const TablaConsulta = () => {
         </StyledTableContainer>
       </DownloadSection>
 
-      <DownloadSection>
+      <DownloadSection title="Directorio del SNF">
         <StyledTableContainer component={Paper}>
           <Table>
             <StyledTableHead>

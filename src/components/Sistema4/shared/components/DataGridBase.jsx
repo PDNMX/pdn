@@ -46,9 +46,11 @@ const DataGridBase = ({ classes, title, descriptionItems, data,  enableSearch = 
   return (
     <Box className={classes.root}>
       <Box p={1}>
-        {/* <Typography paragraph>
-          <b>{title}</b>
-        </Typography> */}
+        {title && (
+          <Typography variant="h6" className={classes.sectionTitle} gutterBottom>
+            <b>{title}</b>
+          </Typography>
+        )}
         {descriptionItems && (
           <ul className={classes.ul}>
             {descriptionItems.map((text, idx) => (
