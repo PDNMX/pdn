@@ -1,19 +1,22 @@
 import React from 'react';
-import { Box, Chip } from '@mui/material';
+import { Chip } from '@mui/material';
 import { styled } from '@mui/system';
 
-const ChipContainer = styled(Box)(({ theme }) => ({
-  display: 'flex',
-  justifyContent: 'flex-end',
-  marginTop: theme.spacing(1),
-  marginBottom: theme.spacing(2),
+const FloatingChip = styled(Chip)(({ theme }) => ({
+  position: 'fixed',
+  top: theme.spacing(12),
+  right: theme.spacing(2),
+  zIndex: 1200,
+  boxShadow: theme.shadows[4],
+  fontWeight: 600,
+  fontSize: '0.875rem',
+  padding: theme.spacing(2, 1.5),
+  height: 'auto',
 }));
 
 const AlertPrototipo = () => {
   return (
-    <ChipContainer>
-      <Chip label="Prototipo Beta versión 0.4" color="primary" />
-    </ChipContainer>
+    <FloatingChip label="Prototipo Beta versión 0.4" color="primary" />
   );
 };
 

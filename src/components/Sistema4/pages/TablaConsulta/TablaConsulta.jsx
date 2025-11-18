@@ -74,22 +74,46 @@ const TablaConsulta = () => {
 
   const comiteRectorData = {
     ASOFIS: [
-      "Auditoría Superior de la Federación",
-      "Órgano Superior de Auditoría y Fiscalización Gubernamental de Colima",
-      "Auditoría Superior del Estado de Hidalgo",
-      "Auditoría Superior del Estado de Jalisco",
-      "Auditoría Superior del Estado de Sinaloa",
+      {
+        nombre: "Auditoría Superior de la Federación",
+        url: "https://www.snf.org.mx/informaci%C3%B3n-general-del-comit%C3%A9-rector.aspx",
+      },
+      {
+        nombre: "Órgano Superior de Auditoría y Fiscalización Gubernamental de Colima",
+        url: "https://www.snf.org.mx/informaci%C3%B3n-general-del-comit%C3%A9-rector.aspx",
+      },
+      {
+        nombre: "Auditoría Superior del Estado de Hidalgo",
+        url: "https://www.snf.org.mx/informaci%C3%B3n-general-del-comit%C3%A9-rector.aspx",
+      },
+      {
+        nombre: "Auditoría Superior del Estado de Jalisco",
+        url: "https://www.snf.org.mx/informaci%C3%B3n-general-del-comit%C3%A9-rector.aspx",
+      },
+      {
+        nombre: "Auditoría Superior del Estado de Sinaloa",
+        url: "https://www.snf.org.mx/informaci%C3%B3n-general-del-comit%C3%A9-rector.aspx",
+      },
     ],
     CPCEF: [
-      "Secretaría de la Función Pública",
-      "Contraloría General del Estado de Baja California Sur",
-      "Secretaría de la Contraloría del Estado de Campeche",
-      "Secretaría de la Contraloría General del Estado de Sonora",
+      {
+        nombre: "Secretaría de la Función Pública",
+        url: "https://www.snf.org.mx/informaci%C3%B3n-general-del-comit%C3%A9-rector.aspx",
+      },
+      {
+        nombre: "Contraloría General del Estado de Baja California Sur",
+        url: "https://www.snf.org.mx/informaci%C3%B3n-general-del-comit%C3%A9-rector.aspx",
+      },
+      {
+        nombre: "Secretaría de la Contraloría del Estado de Campeche",
+        url: "https://www.snf.org.mx/informaci%C3%B3n-general-del-comit%C3%A9-rector.aspx",
+      },
+      {
+        nombre: "Secretaría de la Contraloría General del Estado de Sonora",
+        url: "https://www.snf.org.mx/informaci%C3%B3n-general-del-comit%C3%A9-rector.aspx",
+      },
     ],
   };
-
-  const comiteRectorUrl =
-    "https://www.snf.org.mx/informaci%C3%B3n-general-del-comit%C3%A9-rector.aspx";
 
   return (
     <>
@@ -124,12 +148,12 @@ const TablaConsulta = () => {
                   <StyledTableCell>
                     {comiteRectorData.ASOFIS[index] && (
                       <DownloadLink
-                        href={comiteRectorUrl}
+                        href={comiteRectorData.ASOFIS[index].url}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         <Typography variant="body2">
-                          {comiteRectorData.ASOFIS[index]}
+                          {comiteRectorData.ASOFIS[index].nombre}
                         </Typography>
                       </DownloadLink>
                     )}
@@ -137,12 +161,12 @@ const TablaConsulta = () => {
                   <StyledTableCell>
                     {comiteRectorData.CPCEF[index] && (
                       <DownloadLink
-                        href={comiteRectorUrl}
+                        href={comiteRectorData.CPCEF[index].url}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         <Typography variant="body2">
-                          {comiteRectorData.CPCEF[index]}
+                          {comiteRectorData.CPCEF[index].nombre}
                         </Typography>
                       </DownloadLink>
                     )}
