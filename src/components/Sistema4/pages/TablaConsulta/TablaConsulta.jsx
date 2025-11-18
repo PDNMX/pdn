@@ -76,41 +76,44 @@ const TablaConsulta = () => {
     ASOFIS: [
       {
         nombre: "Auditoría Superior de la Federación",
-        url: "https://www.snf.org.mx/informaci%C3%B3n-general-del-comit%C3%A9-rector.aspx",
+        url: "https://www.asf.gob.mx/Default/Index",
       },
       {
-        nombre: "Órgano Superior de Auditoría y Fiscalización Gubernamental de Colima",
-        url: "https://www.snf.org.mx/informaci%C3%B3n-general-del-comit%C3%A9-rector.aspx",
+        nombre:
+          "Órgano Superior de Auditoría y Fiscalización Gubernamental de Colima",
+        url:
+          "http://admiweb.col.gob.mx/archivos_prensa/banco_img/file_5c61c1f193297_Regl_interior_del_OSAFIG.pdf",
       },
       {
         nombre: "Auditoría Superior del Estado de Hidalgo",
-        url: "https://www.snf.org.mx/informaci%C3%B3n-general-del-comit%C3%A9-rector.aspx",
+        url: "https://www.aseh.gob.mx/",
       },
       {
         nombre: "Auditoría Superior del Estado de Jalisco",
-        url: "https://www.snf.org.mx/informaci%C3%B3n-general-del-comit%C3%A9-rector.aspx",
+        url: "https://www.asej.gob.mx",
       },
       {
         nombre: "Auditoría Superior del Estado de Sinaloa",
-        url: "https://www.snf.org.mx/informaci%C3%B3n-general-del-comit%C3%A9-rector.aspx",
+        url: "https://www.ase-sinaloa.gob.mx",
       },
     ],
     CPCEF: [
       {
         nombre: "Secretaría de la Función Pública",
-        url: "https://www.snf.org.mx/informaci%C3%B3n-general-del-comit%C3%A9-rector.aspx",
+        url:
+          "https://www.gob.mx/cnts/acciones-y-programas/secretaria-de-la-funcion-publica",
       },
       {
         nombre: "Contraloría General del Estado de Baja California Sur",
-        url: "https://www.snf.org.mx/informaci%C3%B3n-general-del-comit%C3%A9-rector.aspx",
+        url: "https://contraloria.bcs.gob.mx",
       },
       {
         nombre: "Secretaría de la Contraloría del Estado de Campeche",
-        url: "https://www.snf.org.mx/informaci%C3%B3n-general-del-comit%C3%A9-rector.aspx",
+        url: "http://www.contraloria.campeche.gob.mx",
       },
       {
         nombre: "Secretaría de la Contraloría General del Estado de Sonora",
-        url: "https://www.snf.org.mx/informaci%C3%B3n-general-del-comit%C3%A9-rector.aspx",
+        url: "https://buengobierno.sonora.gob.mx/",
       },
     ],
   };
