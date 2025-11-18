@@ -72,6 +72,25 @@ const TablaConsulta = () => {
     "Utilice los filtros de la tabla para buscar por ente público, responsable, grupo de trabajo o filial (ASOFIS/CPCE-F).",
   ];
 
+  const comiteRectorData = {
+    ASOFIS: [
+      "Auditoría Superior de la Federación",
+      "Órgano Superior de Auditoría y Fiscalización Gubernamental de Colima",
+      "Auditoría Superior del Estado de Hidalgo",
+      "Auditoría Superior del Estado de Jalisco",
+      "Auditoría Superior del Estado de Sinaloa",
+    ],
+    CPCEF: [
+      "Secretaría de la Función Pública",
+      "Contraloría General del Estado de Baja California Sur",
+      "Secretaría de la Contraloría del Estado de Campeche",
+      "Secretaría de la Contraloría General del Estado de Sonora",
+    ],
+  };
+
+  const comiteRectorUrl =
+    "https://www.snf.org.mx/informaci%C3%B3n-general-del-comit%C3%A9-rector.aspx";
+
   return (
     <>
       <DataGridBase
@@ -79,6 +98,61 @@ const TablaConsulta = () => {
         descriptionItems={descriptionItems}
         data={{ ...miembrosSNF, columns }}
       />
+
+      <DownloadSection>
+        <StyledTableContainer component={Paper}>
+          <Table>
+            <StyledTableHead>
+              <TableRow>
+                <StyledHeaderCell colSpan={2}>
+                  Comité Rector del SNF
+                </StyledHeaderCell>
+              </TableRow>
+              <TableRow>
+                <StyledHeaderCell>ASOFIS</StyledHeaderCell>
+                <StyledHeaderCell>CPCE-F</StyledHeaderCell>
+              </TableRow>
+            </StyledTableHead>
+            <TableBody>
+              {Array.from({
+                length: Math.max(
+                  comiteRectorData.ASOFIS.length,
+                  comiteRectorData.CPCEF.length
+                ),
+              }).map((_, index) => (
+                <TableRow key={index}>
+                  <StyledTableCell>
+                    {comiteRectorData.ASOFIS[index] && (
+                      <DownloadLink
+                        href={comiteRectorUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Typography variant="body2">
+                          {comiteRectorData.ASOFIS[index]}
+                        </Typography>
+                      </DownloadLink>
+                    )}
+                  </StyledTableCell>
+                  <StyledTableCell>
+                    {comiteRectorData.CPCEF[index] && (
+                      <DownloadLink
+                        href={comiteRectorUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Typography variant="body2">
+                          {comiteRectorData.CPCEF[index]}
+                        </Typography>
+                      </DownloadLink>
+                    )}
+                  </StyledTableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </StyledTableContainer>
+      </DownloadSection>
 
       <DownloadSection>
         <StyledTableContainer component={Paper}>
