@@ -18,33 +18,41 @@ import { styled } from "@mui/system";
 const snfInfoLink = "https://www.snf.org.mx/";
 
 const StyledDialog = styled(Dialog)(({ theme }) => ({
-  '& .MuiDialog-paper': {
+  "& .MuiDialog-paper": {
     borderRadius: theme.shape.borderRadius,
-    width: '100%',
-    maxWidth: 'md',
+    width: "100%",
+    maxWidth: "md",
     padding: theme.spacing(1.5),
   },
 }));
 
-const Highlight = styled('span')(({ theme }) => ({
+const Highlight = styled("span")(({ theme }) => ({
   color: theme.palette.primary.main,
-  fontWeight: 'bold',
+  fontWeight: "bold",
 }));
 
 const StyledList = styled(List)(({ theme }) => ({
-  paddingLeft: theme.spacing(2),
-  '& .MuiListItem-root': {
-    padding: theme.spacing(0.5, 0),
+  paddingLeft: theme.spacing(3),
+  paddingTop: 0,
+  paddingBottom: theme.spacing(1),
+  listStyleType: "disc",
+  "& .MuiListItemText-root": {
+    display: "list-item",
+    marginLeft: theme.spacing(2),
   },
-  '& .MuiListItemText-primary': {
-    fontSize: '0.95rem',
+  "& .MuiListItemText-primary": {
+    fontSize: "0.95rem",
     color: theme.palette.text.primary,
   },
 }));
 
 const DisclaimerSistema4 = ({ open, handleClose }) => {
   return (
-    <StyledDialog open={open} onClose={handleClose} aria-labelledby="disclaimer-dialog-title">
+    <StyledDialog
+      open={open}
+      onClose={handleClose}
+      aria-labelledby="disclaimer-dialog-title"
+    >
       <Paper>
         <DialogTitle id="disclaimer-dialog-title">
           <Typography variant="h5" component="div" textAlign="center">
@@ -75,20 +83,12 @@ const DisclaimerSistema4 = ({ open, handleClose }) => {
             , específicamente en lo concerniente a la publicación y consulta de:
           </Typography>
           <StyledList>
-            <List sx={{ listStyleType: 'disc', pl: 3}}>
-              <ListItemText sx={{ display: 'list-item' }}>
-                Programas Anuales de Auditoría (PAA)
-              </ListItemText>
-              <ListItemText sx={{ display: 'list-item' }}>
-                Programas Anuales de Fiscalización
-              </ListItemText>
-              <ListItemText sx={{ display: 'list-item' }}>
-                Programas Anuales de Trabajo
-              </ListItemText>
-              <ListItemText sx={{ display: 'list-item' }}>
-                Instrumentos homólogos de planeación institucional
-              </ListItemText>
-            </List>
+            <ListItemText>Programas Anuales de Auditoría (PAA)</ListItemText>
+            <ListItemText>Programas Anuales de Fiscalización</ListItemText>
+            <ListItemText>Programas Anuales de Trabajo</ListItemText>
+            <ListItemText>
+              Instrumentos homólogos de planeación institucional
+            </ListItemText>
           </StyledList>
 
           <Typography>
@@ -96,9 +96,9 @@ const DisclaimerSistema4 = ({ open, handleClose }) => {
           </Typography>
           <Box mb={2}>
             <Typography paragraph>
-              <Highlight>Estado de Desarrollo:</Highlight> La presente versión es un
-              prototipo sujeto a revisión, validación y aprobación por parte de
-              las autoridades competentes del{" "}
+              <Highlight>Estado de Desarrollo:</Highlight> La presente versión
+              es un prototipo sujeto a revisión, validación y aprobación por
+              parte de las autoridades competentes del{" "}
               <Link
                 href={snfInfoLink}
                 target="_blank"
@@ -108,30 +108,25 @@ const DisclaimerSistema4 = ({ open, handleClose }) => {
               </Link>
             </Typography>
             <Typography paragraph>
-              <Highlight>Modificaciones Esperadas:</Highlight> Se anticipan ajustes,
-              correcciones y especificaciones técnicas derivadas de:
+              <Highlight>Modificaciones Esperadas:</Highlight> Se anticipan
+              ajustes, correcciones y especificaciones técnicas derivadas de:
             </Typography>
             <StyledList>
-              <List sx={{ listStyleType: 'disc', pl: 3}}>
-                <ListItemText sx={{ display: 'list-item' }}>
-                  Retroalimentación del SNF y sus integrantes
-                </ListItemText>
-                <ListItemText sx={{ display: 'list-item' }}>
-                  Requerimientos normativos adicionales
-                </ListItemText>
-                <ListItemText sx={{ display: 'list-item' }}>
-                  Necesidades operativas identificadas durante la fase de pruebas
-                </ListItemText>
-                <ListItemText sx={{ display: 'list-item' }}>
-                  Estándares técnicos de la PDN
-                </ListItemText>
-              </List>
+              <ListItemText>
+                Retroalimentación del SNF y sus integrantes
+              </ListItemText>
+              <ListItemText>Requerimientos normativos adicionales</ListItemText>
+              <ListItemText>
+                Necesidades operativas identificadas durante la fase de pruebas
+              </ListItemText>
+              <ListItemText>Estándares técnicos de la PDN</ListItemText>
             </StyledList>
             <Typography paragraph>
-              <Highlight>Compromiso de Cumplimiento:</Highlight> Este prototipo tiene
-              como objetivo fundamental apegarse a los lineamientos establecidos
-              en el marco normativo aplicable y proporcionar productos que
-              satisfagan los requerimientos del artículo 55 de la LGSNA.
+              <Highlight>Compromiso de Cumplimiento:</Highlight> Este prototipo
+              tiene como objetivo fundamental apegarse a los lineamientos
+              establecidos en el marco normativo aplicable y proporcionar
+              productos que satisfagan los requerimientos del artículo 55 de la
+              LGSNA.
             </Typography>
           </Box>
 
