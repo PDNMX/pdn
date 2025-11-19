@@ -21,7 +21,7 @@ const StyledTableContainer = styled(TableContainer)(({ theme }) => ({
 }));
 
 const StyledTableHead = styled(TableHead)(() => ({
-  backgroundColor: "#713972", // Color consistente con DataGrid
+  backgroundColor: "#713972",
 }));
 
 const StyledHeaderCell = styled(TableCell)(() => ({
@@ -31,9 +31,9 @@ const StyledHeaderCell = styled(TableCell)(() => ({
   padding: "16px",
   textAlign: "center",
   borderBottom: "1px solid rgba(224, 224, 224, 1)",
-  borderRight: "1px solid rgba(255, 255, 255, 0.3)", // Separador vertical blanco semi-transparente
+  borderRight: "1px solid rgba(255, 255, 255, 0.3)",
   "&:last-child": {
-    borderRight: "none", // Sin borde en la última celda
+    borderRight: "none",
   },
 }));
 
@@ -41,9 +41,9 @@ const StyledTableCell = styled(TableCell)(() => ({
   padding: "16px",
   textAlign: "center",
   borderBottom: "1px solid rgba(224, 224, 224, 1)",
-  borderRight: "1px solid rgba(224, 224, 224, 1)", // Separador vertical
+  borderRight: "1px solid rgba(224, 224, 224, 1)",
   "&:last-child": {
-    borderRight: "none", // Sin borde en la última celda
+    borderRight: "none",
   },
 }));
 
@@ -67,6 +67,16 @@ const PdfIcon = styled(PictureAsPdfIcon)(({ theme }) => ({
   fontSize: "1.5rem",
 }));
 
+const HeaderLink = styled(Link)(({ theme }) => ({
+  color: "#fff",
+  textDecoration: "none",
+  fontWeight: 700,
+  fontSize: "1rem",
+  "&:hover": {
+    textDecoration: "underline",
+  },
+}));
+
 const TablaConsulta = () => {
   const { miembrosSNF } = useSistema4Data();
 
@@ -77,12 +87,11 @@ const TablaConsulta = () => {
   ];
 
   const comiteRectorDescriptionItems = [
-    "El Comité Rector del Sistema Nacional de Fiscalización es el órgano de coordinación y toma de decisiones integrado por representantes de ASOFIS y CPCE-F.",
-    "ASOFIS representa a las Auditorías Superiores Locales de fiscalización del país, mientras que CPCE-F agrupa a las Contralorías Estatales.",
+    "El artículo 39 de la Ley General del Sistema Nacional Anticorrupción estipula que el SNF contará con un Comité Rector conformado por la Auditoría Superior de la Federación, la Secretaría de la Función Pública y siete miembros rotatorios de entre las instituciones referidas que serán elegidos por periodos de dos años, por consenso de la propia Secretaría de la Función Pública y la Auditoría Superior de la Federación, y que el Comité Rector será presidido de manera dual por el Auditor Superior de la Federación y el titular de la Secretaría de la Función Pública, o por los representantes que, de manera respectiva, designen para estos efectos.",
   ];
 
   const directorioDescriptionItems = [
-    "En esta sección puede descargar los directorios actualizados de las Entidades de Fiscalización Superior Locales (EFSL) y Órganos de Control Estatal (OCE).",
+    "En esta sección puede descargar los directorios actualizados de las Entidades Fiscalizadoras Superiores Locales (EFSL), así como las Secretarías o Instancias Homólogas encargadas del Control Interno en las Entidades Federativas (OEC).",
     "Los directorios incluyen información de contacto y estructura organizacional de las entidades fiscalizadoras.",
   ];
 
@@ -139,8 +148,10 @@ const TablaConsulta = () => {
         descriptionItems={descriptionItems}
         data={{ ...miembrosSNF, columns }}
       />
-
-      <DataGridBase title="Comité Rector" descriptionItems={comiteRectorDescriptionItems}>
+      <DataGridBase
+        title="Comité Rector"
+        descriptionItems={comiteRectorDescriptionItems}
+      >
         <StyledTableContainer component={Paper}>
           <Table>
             <StyledTableHead>
@@ -150,8 +161,24 @@ const TablaConsulta = () => {
                 </StyledHeaderCell>
               </TableRow>
               <TableRow>
-                <StyledHeaderCell>ASOFIS</StyledHeaderCell>
-                <StyledHeaderCell>CPCE-F</StyledHeaderCell>
+                <StyledHeaderCell>
+                  <HeaderLink
+                    href="http://www.asofis.org.mx/Default/Index"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    ASOFIS
+                  </HeaderLink>
+                </StyledHeaderCell>
+                <StyledHeaderCell>
+                  <HeaderLink
+                    href="https://comisioncontralores.gob.mx/2023/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    CPCE-F
+                  </HeaderLink>
+                </StyledHeaderCell>
               </TableRow>
             </StyledTableHead>
             <TableBody>
@@ -194,8 +221,10 @@ const TablaConsulta = () => {
           </Table>
         </StyledTableContainer>
       </DataGridBase>
-
-      <DataGridBase title="Directorio del SNF" descriptionItems={directorioDescriptionItems}>
+      <DataGridBase
+        title="Directorio del SNF"
+        descriptionItems={directorioDescriptionItems}
+      >
         <StyledTableContainer component={Paper}>
           <Table>
             <StyledTableHead>

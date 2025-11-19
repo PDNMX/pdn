@@ -22,6 +22,7 @@ import styles from "./styles/styles.js";
 
 import DescargaSistema4 from "./shared/components/DescargaSistema4";
 import DisclaimerSistema4 from "./DisclaimerSistema4";
+import { AccountBox } from "@mui/icons-material";
 
 // Componente interno que usa el contexto para obtener los datos
 const ContentWithDownload = ({ classes, tab, tabs }) => {
@@ -95,7 +96,7 @@ const Index = ({ classes }) => {
   const tabs = {
     list: [
       {
-        icon: <AssessmentIcon />,
+        icon: <DescriptionIcon />,
         label: "Programas Anuales de Auditorías (Fiscalización)",
         aria: "auditorias",
         content: <TablaAuditorias />,
@@ -107,7 +108,7 @@ const Index = ({ classes }) => {
         content: <TablaInformes />,
       },
       {
-        icon: <FindInPageIcon />,
+        icon: <AccountBox />,
         label:
           "Intercambio de Información entre los Miembros del Sistema Nacional de Fiscalización (Consulta)",
         aria: "consulta",
