@@ -9,10 +9,14 @@ export const mapSheetToGridData = (item, index) => ({
 });
 
 export const columns = [
-  { field: "año", headerName: "Año", width: 100 },
-  { field: "nombreInforme", headerName: "Nombre de Informe", width: 400 },
-  { field: "entePublico", headerName: "Ente Público", width: 300 },
-  { field: "numActosFiscalizacion", headerName: "Actos de Fiscalización", width: 200 },
+  { field: "año", headerName: "Año", width: 90 },
+  { field: "nombreInforme", headerName: "Nombre de Informe", width: 300 },
+  { field: "entePublico", headerName: "Ente Público", width: 250 },
+  {
+    field: "numActosFiscalizacion",
+    headerName: "Actos de Fiscalización",
+    width: 200,
+  },
   { field: "concluidos", headerName: "Concluidos", width: 150 },
   {
     field: "hipervinculo",

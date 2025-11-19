@@ -1,6 +1,12 @@
 import React from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import { Box, TextField, Typography, CircularProgress, InputAdornment} from "@mui/material";
+import {
+  Box,
+  TextField,
+  Typography,
+  CircularProgress,
+  InputAdornment,
+} from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { withStyles } from "@mui/styles";
 import { dataGridLocaleText } from "../../styles/datagridLocaleText";
@@ -13,16 +19,14 @@ const DataGridBase = ({
   descriptionItems,
   data,
   enableSearch = true,
-  searchPlaceholder = "Buscar...",
   searchableFields,
-  children // Nueva prop para contenido personalizado
+  children, // Nueva prop para contenido personalizado
 }) => {
-
   // Si se pasan children, no necesitamos data
   const { rows = [], columns = [], loading = false, error = null } = data || {};
   const [searchTerm, setSearchTerm] = React.useState("");
 
-   // 🔍 Lógica de filtrado reutilizable (solo si no hay children)
+  // Lógica de filtrado reutilizable (solo si no hay children)
   const filteredRows = React.useMemo(() => {
     if (children || !enableSearch || !searchTerm) return rows;
     const lowerSearch = searchTerm.toLowerCase();
@@ -31,16 +35,14 @@ const DataGridBase = ({
       (searchableFields || Object.keys(row)).some((key) => {
         const value = row[key];
         return (
-          typeof value === "string" &&
-          value.toLowerCase().includes(lowerSearch)
+          typeof value === "string" && value.toLowerCase().includes(lowerSearch)
         );
       })
     );
   }, [searchTerm, rows, enableSearch, searchableFields, children]);
 
-  if(loading && !children){
+  if (loading && !children) {
     return (
-
       <Box
         className={classes.dataGridContainer}
         display="flex"
@@ -52,12 +54,16 @@ const DataGridBase = ({
       </Box>
     );
   }
-  
+
   return (
     <Box className={classes.root}>
       <Box p={1}>
         {title && (
-          <Typography variant="h6" className={classes.sectionTitle} gutterBottom>
+          <Typography
+            variant="h6"
+            className={classes.sectionTitle}
+            gutterBottom
+          >
             <b>{title}</b>
           </Typography>
         )}
@@ -76,18 +82,24 @@ const DataGridBase = ({
 
       {/* Solo mostrar búsqueda si no hay children y está habilitada */}
       {!children && enableSearch && (
-        <Box className={classes.searchContainer} mb={2}>
+        <Box
+          sx={{
+            marginBottom: 3,
+            "& > :not(style)": { width: "100%" },
+          }}
+        >
           <TextField
-            fullWidth
+            id="outlined-search-field"
+            label="Buscar"
             variant="outlined"
-            size="small"
-            placeholder={searchPlaceholder}
+            fullWidth
+            margin="normal"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
-                  <SearchIcon color="action" />
+                  <SearchIcon />
                 </InputAdornment>
               ),
             }}

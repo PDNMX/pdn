@@ -21,6 +21,7 @@ import {
 import styles from "./styles/styles.js";
 
 import DescargaSistema4 from "./shared/components/DescargaSistema4";
+import DescargaSistema4CSV from "./shared/components/DescargaSistema4CSV";
 import DisclaimerSistema4 from "./DisclaimerSistema4";
 import { AccountBox } from "@mui/icons-material";
 
@@ -74,10 +75,17 @@ const ContentWithDownload = ({ classes, tab, tabs }) => {
       </Paper>
 
       <Box mt={3} textAlign="center">
-        <DescargaSistema4
-          fileName={currentData.fileName}
-          data={currentData.data}
-        />
+        {tab === 2 ? (
+          <DescargaSistema4CSV
+            fileName={currentData.fileName}
+            data={currentData.data}
+          />
+        ) : (
+          <DescargaSistema4
+            fileName={currentData.fileName}
+            data={currentData.data}
+          />
+        )}
       </Box>
     </>
   );

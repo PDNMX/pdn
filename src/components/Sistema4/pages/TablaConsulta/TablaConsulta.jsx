@@ -92,7 +92,7 @@ const TablaConsulta = () => {
 
   const directorioDescriptionItems = [
     "En esta sección puede descargar los directorios actualizados de las Entidades Fiscalizadoras Superiores Locales (EFSL), así como las Secretarías o Instancias Homólogas encargadas del Control Interno en las Entidades Federativas (OEC).",
-    "Los directorios incluyen información de contacto y estructura organizacional de las entidades fiscalizadoras.",
+    "Los directorios incluyen información de contacto.",
   ];
 
   const comiteRectorData = {
@@ -144,12 +144,12 @@ const TablaConsulta = () => {
   return (
     <>
       <DataGridBase
-        title="Integrantes del Comité Rector"
+        title="Integrantes del SNF"
         descriptionItems={descriptionItems}
         data={{ ...miembrosSNF, columns }}
       />
       <DataGridBase
-        title="Comité Rector"
+        title="Integrantes del Comité Rector"
         descriptionItems={comiteRectorDescriptionItems}
       >
         <StyledTableContainer component={Paper}>
