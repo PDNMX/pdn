@@ -87,11 +87,31 @@ const TablaConsulta = () => {
   ];
 
   const comiteRectorDescriptionItems = [
-    "El artículo 39 de la Ley General del Sistema Nacional Anticorrupción estipula que el SNF contará con un Comité Rector conformado por la Auditoría Superior de la Federación, la Secretaría de la Función Pública y siete miembros rotatorios de entre las instituciones referidas que serán elegidos por periodos de dos años, por consenso de la propia Secretaría de la Función Pública y la Auditoría Superior de la Federación, y que el Comité Rector será presidido de manera dual por el Auditor Superior de la Federación y el titular de la Secretaría de la Función Pública, o por los representantes que, de manera respectiva, designen para estos efectos.",
+    <>
+      El artículo 39 de la Ley General del Sistema Nacional Anticorrupción estipula que el SNF contará con un Comité Rector conformado por la Auditoría Superior de la Federación, la Secretaría de la Función Pública y siete miembros rotatorios de entre las instituciones referidas que serán elegidos por periodos de dos años, por consenso de la propia Secretaría de la Función Pública y la Auditoría Superior de la Federación, y que el Comité Rector será presidido de manera dual por el Auditor Superior de la Federación y el titular de la Secretaría de la Función Pública, o por los representantes que, de manera respectiva, designen para estos efectos.{" "}
+      <Link
+        href="https://www.snf.org.mx/comit%C3%A9-rector.aspx"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ fontWeight: 600 }}
+      >
+        Fuente
+      </Link>
+    </>,
   ];
 
   const directorioDescriptionItems = [
-    "En esta sección puede descargar los directorios actualizados de las Entidades Fiscalizadoras Superiores Locales (EFSL), así como las Secretarías o Instancias Homólogas encargadas del Control Interno en las Entidades Federativas (OEC).",
+    <>
+      En esta sección puede descargar los directorios actualizados de las Entidades Fiscalizadoras Superiores Locales (EFSL), así como las Secretarías o Instancias Homólogas encargadas del Control Interno en las Entidades Federativas (OEC).{" "}
+      <Link
+        href="https://www.sesna.gob.mx/2018/04/17/informe-anual-de-fiscalizacion-2017/"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ fontWeight: 600 }}
+      >
+        Fuente
+      </Link>
+    </>,
     "Los directorios incluyen información de contacto.",
   ];
 
@@ -104,8 +124,7 @@ const TablaConsulta = () => {
       {
         nombre:
           "Órgano Superior de Auditoría y Fiscalización Gubernamental de Colima",
-        url:
-          "http://admiweb.col.gob.mx/archivos_prensa/banco_img/file_5c61c1f193297_Regl_interior_del_OSAFIG.pdf",
+        url: "https://www.osaf.gob.mx/menu/quienes-somos",
       },
       {
         nombre: "Auditoría Superior del Estado de Hidalgo",
@@ -157,7 +176,13 @@ const TablaConsulta = () => {
             <StyledTableHead>
               <TableRow>
                 <StyledHeaderCell colSpan={2}>
-                  Comité Rector del SNF
+                  <HeaderLink
+                    href="https://www.snf.org.mx/informaci%C3%B3n-general-del-comit%C3%A9-rector.aspx"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Comité Rector del SNF
+                  </HeaderLink>
                 </StyledHeaderCell>
               </TableRow>
               <TableRow>
@@ -230,7 +255,13 @@ const TablaConsulta = () => {
             <StyledTableHead>
               <TableRow>
                 <StyledHeaderCell colSpan={2}>
-                  Documentos disponibles para descarga
+                  <HeaderLink
+                    href="https://www.snf.org.mx/directorio.aspx"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Documentos disponibles para descarga
+                  </HeaderLink>
                 </StyledHeaderCell>
               </TableRow>
             </StyledTableHead>

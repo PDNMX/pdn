@@ -82,28 +82,18 @@ const DataGridBase = ({
 
       {/* Solo mostrar búsqueda si no hay children y está habilitada */}
       {!children && enableSearch && (
-        <Box
-          sx={{
-            marginBottom: 3,
-            "& > :not(style)": { width: "100%" },
-          }}
-        >
-          <TextField
-            id="outlined-search-field"
-            label="Buscar"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <SearchIcon />
-                </InputAdornment>
-              ),
-            }}
-          />
+        <Box sx={{ marginTop: 1, marginBottom: 2 }}>
+          <Box sx={{ display: "flex", alignItems: "flex-end" }}>
+            <SearchIcon sx={{ color: "action.active", mr: 1, my: 0.5 }} />
+            <TextField
+              id="search-field"
+              label="Buscar"
+              variant="standard"
+              fullWidth
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </Box>
         </Box>
       )}
 
@@ -127,7 +117,7 @@ const DataGridBase = ({
             loading={loading}
             localeText={dataGridLocaleText}
             initialState={{
-              pagination: { paginationModel: { page: 0, pageSize: 25 } },
+              pagination: { paginationModel: { page: 0, pageSize: 10 } },
             }}
             pageSizeOptions={[10, 25, 50, 100]}
             disableRowSelectionOnClick
