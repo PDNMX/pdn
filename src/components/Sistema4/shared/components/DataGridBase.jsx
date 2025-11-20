@@ -82,7 +82,7 @@ const DataGridBase = ({
 
       {/* Solo mostrar búsqueda si no hay children y está habilitada */}
       {!children && enableSearch && (
-        <Box sx={{ marginTop: 1, marginBottom: 2 }}>
+        <Box sx={{ marginBottom: 2, position: "relative", top: -20 }}>
           <Box sx={{ display: "flex", alignItems: "flex-end" }}>
             <SearchIcon sx={{ color: "action.active", mr: 1, my: 0.5 }} />
             <TextField
