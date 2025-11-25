@@ -21,7 +21,7 @@ import {
 import styles from "./styles/styles.js";
 
 import DescargaSistema4 from "./shared/components/DescargaSistema4";
-import DescargaSistema4CSV from "./shared/components/DescargaSistema4CSV";
+import DescargaSistema4Excel from "./shared/components/DescargaSistema4Excel.jsx";
 import DisclaimerSistema4 from "./DisclaimerSistema4";
 import { AccountBox } from "@mui/icons-material";
 
@@ -74,18 +74,22 @@ const ContentWithDownload = ({ classes, tab, tabs }) => {
         </ThemeProvider>
       </Paper>
 
-      <Box mt={3} textAlign="center">
-        {tab === 2 ? (
-          <DescargaSistema4CSV
-            fileName={currentData.fileName}
-            data={currentData.data}
-          />
-        ) : (
-          <DescargaSistema4
-            fileName={currentData.fileName}
-            data={currentData.data}
-          />
-        )}
+      <Box mt={3}>
+        <Grid container justifyContent="center" spacing={2} alignItems="center">
+          <Grid item>
+            <DescargaSistema4
+              fileName={currentData.fileName}
+              data={currentData.data}
+            />
+          </Grid>
+
+          <Grid item>
+            <DescargaSistema4Excel
+              fileName={currentData.fileName}
+              data={currentData.data}
+            />
+          </Grid>
+        </Grid>
       </Box>
     </>
   );

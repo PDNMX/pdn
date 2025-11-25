@@ -24,7 +24,7 @@ export const columns = [
     width: 180,
     renderCell: (params) =>
       params.value ? (
-        <a href={params.value} target="_blank" rel="noopener noreferrer">
+        <a href={params.value} target="_blank" rel="noopener noreferrer" style={{ color: "#713972", fontWeight: "bold" }}>
           Ver informe
         </a>
       ) : (
