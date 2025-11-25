@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 const styles = (theme) => ({
   root: {
     flexGrow: 1,
-    paddingTop: theme.spacing(6),
+    paddingTop: theme.spacing(3),
     paddingBottom: theme.spacing(3),
   },
   descarga: {

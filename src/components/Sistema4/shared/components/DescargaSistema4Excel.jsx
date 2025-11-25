@@ -10,7 +10,7 @@ import TableViewIcon from "@mui/icons-material/TableView";
 const styles = (theme) => ({
   root: {
     flexGrow: 1,
-    paddingTop: theme.spacing(6),
+    paddingTop: theme.spacing(3),
     paddingBottom: theme.spacing(3),
   },
   descarga: {
