@@ -92,7 +92,7 @@ function ResponsiveDialog (props) {
 
               <Typography variant='h5'>Participantes</Typography>
 
-              {data.parties.map((p, i) => {
+              {data?.parties?.map((p, i) => {
                 return <Party key={i} party={p} index={i} />
               })}
 
