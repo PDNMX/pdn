@@ -383,7 +383,7 @@ const FormParticulares = ({ classes, providers }) => {
                           )}
                           <TableCell>{item.expediente || 'N/A'}</TableCell>
                           <TableCell>{item.fecha}</TableCell>
-                          <TableCell>{item.tipoSancion?.map(sancion => sancion.valor).join(', ') || 'N/A'}</TableCell>
+                          <TableCell>{item.tipoSancion?.map(sancion => sancion.clave).join(', ') || 'N/A'}</TableCell>
                         </TableRow>
                       ))}
                     </TableBody>
