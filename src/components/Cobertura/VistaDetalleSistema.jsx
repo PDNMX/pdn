@@ -1,38 +1,21 @@
 import withStyles from '@mui/styles/withStyles'
-import { Box, Paper, Typography, Badge } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import VerticalProgressBar from './VerticalProgressBar'
 import PieChart from './PieChart'
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'
-import HighlightOffIcon from '@mui/icons-material/HighlightOff'
 import GavelIcon from '@mui/icons-material/Gavel'
 
 const styles = theme => ({
-  paper: {
-    flexGrow: 1,
-    background: theme.palette.background.default,
-    borderStyle: 'solid',
-    borderWidth: 1,
-    borderColor: theme.palette.primary.main,
-    borderRadius: '10px 10px 10px 10px'
+  container: {
+    padding: theme.spacing(2),
+    borderBottom: `1px solid ${theme.palette.divider}`,
+    '&:last-child': {
+      borderBottom: 'none'
+    }
   },
   text: {
     color: theme.palette.text.primary,
     textAlign: 'center',
     fontWeight: 'bold'
-  },
-  tribunalSello: {
-    position: 'absolute',
-    right: '-15px',
-    top: '-15px',
-    backgroundColor: '#9085DA',
-    borderRadius: '50%',
-    padding: '8px',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)',
-    zIndex: 1,
-    transform: 'rotate(15deg)'
   }
 })
 
@@ -74,185 +57,198 @@ const VistaDetalleSistema = props => {
 
   /* Vista detallada por Sistema */
   return (
-    <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'stretch' }} justifyContent='center'>
-
-      <Paper elevation={15} sx={{ m: 1, p: 2, maxWidth: 200, display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignContent: 'center', position: 'relative' }} className={classes.paper}>
+    <Box className={classes.container}>
+      
+      {/* Header con ícono y nombre del sistema */}
+      <Box sx={{ 
+        display: 'flex', 
+        alignItems: 'center', 
+        gap: 1.5,
+        mb: 2,
+        pb: 1.5,
+        borderBottom: `2px solid ${color}`
+      }}>
+        <img src={icon} style={{ width: '40px', height: '40px' }} alt={`Sistema ${system.id}`} />
+        <Typography variant='subtitle1' fontWeight='bold' color={color} sx={{ flexGrow: 1, fontSize: '0.85rem' }}>
+          {name}
+        </Typography>
         
-        <Box p={2}>
-          <img src={icon} style={{ width: '120px' }} alt={estado.name} />
-        </Box>
-
-        <Box p={1}>
-          <Typography paragraph fontWeight='bold' color={color} align='center'>
-            {name}
-          </Typography>
-        </Box>
-      </Paper>
-
-      <Paper elevation={15} sx={{ m: 1, p: 2, display: 'flex', justifyContent: 'center', position: 'relative' }} className={classes.paper}>
-        {/* Si es sistema 3 y tribunal conectado, mostrar cinta o indicador */}
+        {/* Si es sistema 3 y tribunal conectado, mostrar badge */}
         {mostrarSelloTribunal && (
-          <Box 
-            sx={{
-              position: 'absolute',
-              top: '0',
-              right: '0',
-              backgroundColor: '#9085DA',
-              color: 'white',
-              padding: '4px 10px',
-              borderRadius: '0 0 0 8px',
-              fontSize: '0.8rem',
-              fontWeight: 'bold',
-              display: 'flex',
-              alignItems: 'center'
-            }}
-          >
-            <GavelIcon fontSize="small" style={{ marginRight: '4px' }} />
+          <Box sx={{
+            backgroundColor: '#9085DA',
+            color: 'white',
+            padding: '3px 10px',
+            borderRadius: '15px',
+            fontSize: '0.7rem',
+            fontWeight: 'bold',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 0.5,
+            whiteSpace: 'nowrap'
+          }}>
+            <GavelIcon fontSize="small" sx={{ fontSize: '0.9rem' }} />
             Tribunal Conectado
           </Box>
         )}
+      </Box>
 
-        {/* Contenido existente */}
-        <Box display='flex' flexWrap='wrap'>
-          <Box p={1} textAlign='center'>
-            <Typography variant='h5' sx={{ color: bar_colors[0], fontWeight: 'bold' }}>
-              {percentage(
-                estado.data[`s${system.id}`].ejecutivo.tiene,
-                estado.data[`s${system.id}`].ejecutivo.total
-              )}%
-            </Typography>
-            <Typography variant='body2' className={classes.text}>
-              {estado.data[`s${system.id}`].ejecutivo.tiene} de {estado.data[`s${system.id}`].ejecutivo.total}
-            </Typography>
-            <VerticalProgressBar
-              color={bar_colors[0]} value={percentage(
-                estado.data[`s${system.id}`].ejecutivo.tiene,
-                estado.data[`s${system.id}`].ejecutivo.total
-              )}
-            />
-            <Typography className={classes.text}>
+      {/* Contenido de las gráficas - todas en línea */}
+      <Box display='flex' flexWrap='nowrap' justifyContent='center' alignItems='flex-end' gap={1.5} sx={{ minHeight: '340px' }}>
+        
+        <Box p={0.5} textAlign='center'>
+          <Typography variant='h5' sx={{ color: bar_colors[0], fontWeight: 'bold' }}>
+            {percentage(
+              estado.data[`s${system.id}`].ejecutivo.tiene,
+              estado.data[`s${system.id}`].ejecutivo.total
+            )}%
+          </Typography>
+          <Typography variant='body2' className={classes.text}>
+            {estado.data[`s${system.id}`].ejecutivo.tiene} de {estado.data[`s${system.id}`].ejecutivo.total}
+          </Typography>
+          <VerticalProgressBar
+            color={bar_colors[0]} value={percentage(
+              estado.data[`s${system.id}`].ejecutivo.tiene,
+              estado.data[`s${system.id}`].ejecutivo.total
+            )}
+          />
+          <Box sx={{ minHeight: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <Typography className={classes.text} variant='body2'>
               Ejecutivo
             </Typography>
           </Box>
+        </Box>
 
-          <Box p={1} textAlign='center'>
-            <Typography variant='h5' sx={{ color: bar_colors[1], fontWeight: 'bold' }}>
+        <Box p={0.5} textAlign='center'>
+          <Typography variant='h5' sx={{ color: bar_colors[1], fontWeight: 'bold' }}>
+            {percentage(
+              estado.data[`s${system.id}`].legislativo.tiene,
+              estado.data[`s${system.id}`].legislativo.total
+            )}%
+          </Typography>
+          <Typography variant='body2' className={classes.text}>
+            {estado.data[`s${system.id}`].legislativo.tiene} de {estado.data[`s${system.id}`].legislativo.total}
+          </Typography>
+          <VerticalProgressBar
+            color={bar_colors[1]} value={percentage(
+              estado.data[`s${system.id}`].legislativo.tiene,
+              estado.data[`s${system.id}`].legislativo.total
+            )}
+          />
+          <Box sx={{ minHeight: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <Typography className={classes.text} variant='body2'>Legislativo</Typography>
+          </Box>
+        </Box>
+
+        <Box p={0.5} textAlign='center'>
+          <Typography variant='h5' sx={{ color: bar_colors[2], fontWeight: 'bold' }}>
+            {percentage(
+              estado.data[`s${system.id}`].judicial.tiene,
+              estado.data[`s${system.id}`].judicial.total
+            )}%
+          </Typography>
+          <Typography variant='body2' className={classes.text}>
+            {estado.data[`s${system.id}`].judicial.tiene} de {estado.data[`s${system.id}`].judicial.total}
+          </Typography>
+          <VerticalProgressBar
+            color={bar_colors[2]} value={percentage(
+              estado.data[`s${system.id}`].judicial.tiene,
+              estado.data[`s${system.id}`].judicial.total
+            )}
+          />
+          <Box sx={{ minHeight: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <Typography className={classes.text} variant='body2'>Judicial</Typography>
+          </Box>
+        </Box>
+
+        <Box p={0.5} textAlign='center'>
+          <Typography variant='h5' sx={{ color: bar_colors[3], fontWeight: 'bold' }}>
+            {percentage(
+              estado.data[`s${system.id}`].ocas.tiene,
+              estado.data[`s${system.id}`].ocas.total
+            )}%
+          </Typography>
+          <Typography variant='body2' className={classes.text}>
+            {estado.data[`s${system.id}`].ocas.tiene} de {estado.data[`s${system.id}`].ocas.total}
+          </Typography>
+          <VerticalProgressBar
+            color={bar_colors[3]} value={percentage(
+              estado.data[`s${system.id}`].ocas.tiene,
+              estado.data[`s${system.id}`].ocas.total
+            )}
+          />
+          <Box sx={{ minHeight: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <Typography className={classes.text} variant='body2'>Autónomos</Typography>
+          </Box>
+        </Box>
+
+        <Box p={0.5} textAlign='center'>
+          <Box sx={{
+            borderColor: '#707274',
+            borderStyle: 'solid',
+            borderWidth: '0 2px 0 2px',
+            paddingRight: 1.5,
+            paddingLeft: 1.5
+          }}>
+            <Typography variant='h5' sx={{ color: bar_colors[4], fontWeight: 'bold' }}>
               {percentage(
-                estado.data[`s${system.id}`].legislativo.tiene,
-                estado.data[`s${system.id}`].legislativo.total
+                estado.data[`s${system.id}`].municipal.tiene,
+                estado.data[`s${system.id}`].municipal.total
               )}%
             </Typography>
             <Typography variant='body2' className={classes.text}>
-              {estado.data[`s${system.id}`].legislativo.tiene} de {estado.data[`s${system.id}`].legislativo.total}
+              {estado.data[`s${system.id}`].municipal.tiene} de {estado.data[`s${system.id}`].municipal.total}
             </Typography>
             <VerticalProgressBar
-              color={bar_colors[1]} value={percentage(
-                estado.data[`s${system.id}`].legislativo.tiene,
-                estado.data[`s${system.id}`].legislativo.total
+              color={bar_colors[4]} value={percentage(
+                estado.data[`s${system.id}`].municipal.tiene,
+                estado.data[`s${system.id}`].municipal.total
               )}
             />
-            <Typography className={classes.text}>Legislativo</Typography>
-          </Box>
-
-          <Box p={1} textAlign='center'>
-            <Typography variant='h5' sx={{ color: bar_colors[2], fontWeight: 'bold' }}>
-              {percentage(
-                estado.data[`s${system.id}`].judicial.tiene,
-                estado.data[`s${system.id}`].judicial.total
-              )}%
-            </Typography>
-            <Typography variant='body2' className={classes.text}>
-              {estado.data[`s${system.id}`].judicial.tiene} de {estado.data[`s${system.id}`].judicial.total}
-            </Typography>
-            <VerticalProgressBar
-              color={bar_colors[2]} value={percentage(
-                estado.data[`s${system.id}`].judicial.tiene,
-                estado.data[`s${system.id}`].judicial.total
-              )}
-            />
-            <Typography className={classes.text}>Judicial</Typography>
-          </Box>
-
-          <Box p={1} textAlign='center'>
-            <Typography variant='h5' sx={{ color: bar_colors[3], fontWeight: 'bold' }}>
-              {percentage(
-                estado.data[`s${system.id}`].ocas.tiene,
-                estado.data[`s${system.id}`].ocas.total
-              )}%
-            </Typography>
-            <Typography variant='body2' className={classes.text}>
-              {estado.data[`s${system.id}`].ocas.tiene} de {estado.data[`s${system.id}`].ocas.total}
-            </Typography>
-            <VerticalProgressBar
-              color={bar_colors[3]} value={percentage(
-                estado.data[`s${system.id}`].ocas.tiene,
-                estado.data[`s${system.id}`].ocas.total
-              )}
-            />
-            <Typography className={classes.text}>Autónomos</Typography>
-          </Box>
-
-          <Box p={1} textAlign='center'>
-            <Box sx={{
-              borderColor: '#707274',
-              borderStyle: 'solid',
-              borderWidth: '0 2px 0 2px',
-              paddingRight: 2,
-              paddingLeft: 2
-            }}
-            >
-              <Typography variant='h5' sx={{ color: bar_colors[4], fontWeight: 'bold' }}>
-                {percentage(
-                  estado.data[`s${system.id}`].municipal.tiene,
-                  estado.data[`s${system.id}`].municipal.total
-                )}%
-              </Typography>
-              <Typography variant='body2' className={classes.text}>
-                {estado.data[`s${system.id}`].municipal.tiene} de {estado.data[`s${system.id}`].municipal.total}
-              </Typography>
-              <VerticalProgressBar
-                color={bar_colors[4]} value={percentage(
-                  estado.data[`s${system.id}`].municipal.tiene,
-                  estado.data[`s${system.id}`].municipal.total
-                )}
-              />
+            <Box sx={{ minHeight: '32px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <Typography className={classes.text} variant='body2'>Municipios y</Typography>
               <Typography className={classes.text} variant='body2'>Org. Municipales</Typography>
             </Box>
           </Box>
-
-          <Box p={1} textAlign='center' display='flex' flexWrap='wrap' alignContent='center' sx={{ maxWidth: 300, position: 'relative' }}>
-
-            {/* Radial chart */}
-            <Box>
-              <Typography color='#707274' sx={{ fontWeight: 'bold' }} variant='h6'>
-                {tituloConexion}
-              </Typography>
-
-              <PieChart color={color} value={get_value(system.id)} />
-
-              <Typography variant='h3' sx={{ fontWeight: 'bold' }} color={color}>
-                {get_value(system.id)}%
-              </Typography>
-              <Typography color='#707274' variant='h6'>
-                {
-                  estado.data[`s${system.id}`].ejecutivo.tiene +
-                  estado.data[`s${system.id}`].legislativo.tiene +
-                  estado.data[`s${system.id}`].judicial.tiene +
-                  estado.data[`s${system.id}`].ocas.tiene +
-                  estado.data[`s${system.id}`].municipal.tiene
-                } de {
-                  estado.data[`s${system.id}`].ejecutivo.total +
-                  estado.data[`s${system.id}`].legislativo.total +
-                  estado.data[`s${system.id}`].judicial.total +
-                  estado.data[`s${system.id}`].ocas.total +
-                  estado.data[`s${system.id}`].municipal.total
-                }
-              </Typography>
-            </Box>
-          </Box>
         </Box>
-      </Paper>
+
+        {/* Gráfica circular */}
+        <Box p={0.5} textAlign='center' sx={{ maxWidth: 300, minWidth: 240 }}>
+          <Typography color='#707274' sx={{ 
+            fontWeight: 'bold', 
+            minHeight: '50px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '0.8rem',
+            lineHeight: 1.1,
+            paddingX: 1
+          }}>
+            {tituloConexion}
+          </Typography>
+
+          <PieChart color={color} value={get_value(system.id)} />
+
+          <Typography variant='h3' sx={{ fontWeight: 'bold' }} color={color}>
+            {get_value(system.id)}%
+          </Typography>
+          <Typography color='#707274' variant='subtitle1'>
+            {
+              estado.data[`s${system.id}`].ejecutivo.tiene +
+              estado.data[`s${system.id}`].legislativo.tiene +
+              estado.data[`s${system.id}`].judicial.tiene +
+              estado.data[`s${system.id}`].ocas.tiene +
+              estado.data[`s${system.id}`].municipal.tiene
+            } de {
+              estado.data[`s${system.id}`].ejecutivo.total +
+              estado.data[`s${system.id}`].legislativo.total +
+              estado.data[`s${system.id}`].judicial.total +
+              estado.data[`s${system.id}`].ocas.total +
+              estado.data[`s${system.id}`].municipal.total
+            }
+          </Typography>
+        </Box>
+      </Box>
     </Box>
   )
 }
