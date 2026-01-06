@@ -10,6 +10,14 @@ const styles = theme => ({
     borderBottom: `1px solid ${theme.palette.divider}`,
     '&:last-child': {
       borderBottom: 'none'
+    },
+    '@media (max-width: 1450px)': {
+      paddingLeft: theme.spacing(1),
+      paddingRight: theme.spacing(1)
+    },
+    '@media (max-width: 900px)': {
+      paddingLeft: theme.spacing(0.5),
+      paddingRight: theme.spacing(0.5)
     }
   },
   text: {
@@ -94,9 +102,26 @@ const VistaDetalleSistema = props => {
       </Box>
 
       {/* Contenido de las gráficas - todas en línea */}
-      <Box display='flex' flexWrap='nowrap' justifyContent='center' alignItems='flex-end' gap={1.5} sx={{ minHeight: '340px' }}>
+      <Box display='flex' flexWrap='nowrap' justifyContent='center' alignItems='flex-end' gap={1.5} sx={{ 
+        minHeight: '340px',
+        '@media (max-width: 900px)': {
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+          gap: 3,
+          minHeight: 'auto'
+        }
+      }}>
         
-        <Box p={0.5} textAlign='center'>
+        <Box p={0.5} textAlign='center' sx={{
+          '@media (max-width: 900px)': {
+            flexBasis: 'calc(50% - 24px)',
+            minWidth: 'auto'
+          },
+          '@media (max-width: 600px)': {
+            flexBasis: 'calc(33.333% - 24px)',
+            minWidth: '100px'
+          }
+        }}>
           <Typography variant='h5' sx={{ color: bar_colors[0], fontWeight: 'bold' }}>
             {percentage(
               estado.data[`s${system.id}`].ejecutivo.tiene,
@@ -119,7 +144,16 @@ const VistaDetalleSistema = props => {
           </Box>
         </Box>
 
-        <Box p={0.5} textAlign='center'>
+        <Box p={0.5} textAlign='center' sx={{
+          '@media (max-width: 900px)': {
+            flexBasis: 'calc(50% - 24px)',
+            minWidth: 'auto'
+          },
+          '@media (max-width: 600px)': {
+            flexBasis: 'calc(33.333% - 24px)',
+            minWidth: '100px'
+          }
+        }}>
           <Typography variant='h5' sx={{ color: bar_colors[1], fontWeight: 'bold' }}>
             {percentage(
               estado.data[`s${system.id}`].legislativo.tiene,
@@ -140,7 +174,16 @@ const VistaDetalleSistema = props => {
           </Box>
         </Box>
 
-        <Box p={0.5} textAlign='center'>
+        <Box p={0.5} textAlign='center' sx={{
+          '@media (max-width: 900px)': {
+            flexBasis: 'calc(50% - 24px)',
+            minWidth: 'auto'
+          },
+          '@media (max-width: 600px)': {
+            flexBasis: 'calc(33.333% - 24px)',
+            minWidth: '100px'
+          }
+        }}>
           <Typography variant='h5' sx={{ color: bar_colors[2], fontWeight: 'bold' }}>
             {percentage(
               estado.data[`s${system.id}`].judicial.tiene,
@@ -161,7 +204,16 @@ const VistaDetalleSistema = props => {
           </Box>
         </Box>
 
-        <Box p={0.5} textAlign='center'>
+        <Box p={0.5} textAlign='center' sx={{
+          '@media (max-width: 900px)': {
+            flexBasis: 'calc(50% - 24px)',
+            minWidth: 'auto'
+          },
+          '@media (max-width: 600px)': {
+            flexBasis: 'calc(33.333% - 24px)',
+            minWidth: '100px'
+          }
+        }}>
           <Typography variant='h5' sx={{ color: bar_colors[3], fontWeight: 'bold' }}>
             {percentage(
               estado.data[`s${system.id}`].ocas.tiene,
@@ -182,7 +234,16 @@ const VistaDetalleSistema = props => {
           </Box>
         </Box>
 
-        <Box p={0.5} textAlign='center'>
+        <Box p={0.5} textAlign='center' sx={{
+          '@media (max-width: 900px)': {
+            flexBasis: 'calc(50% - 24px)',
+            minWidth: 'auto'
+          },
+          '@media (max-width: 600px)': {
+            flexBasis: 'calc(33.333% - 24px)',
+            minWidth: '110px'
+          }
+        }}>
           <Box sx={{
             borderColor: '#707274',
             borderStyle: 'solid',
@@ -213,7 +274,16 @@ const VistaDetalleSistema = props => {
         </Box>
 
         {/* Gráfica circular */}
-        <Box p={0.5} textAlign='center' sx={{ maxWidth: 300, minWidth: 240 }}>
+        <Box p={0.5} textAlign='center' sx={{ 
+          maxWidth: 300, 
+          minWidth: 240,
+          '@media (max-width: 900px)': {
+            flexBasis: '100%',
+            maxWidth: '100%',
+            minWidth: 'auto',
+            marginTop: 2
+          }
+        }}>
           <Typography color='#707274' sx={{ 
             fontWeight: 'bold', 
             minHeight: '50px',

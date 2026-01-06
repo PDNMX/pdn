@@ -41,7 +41,8 @@ const styles = theme => ({
     borderStyle: 'solid',
     borderWidth: 1,
     borderColor: theme.palette.primary.main,
-    borderRadius: '10px'
+    borderRadius: '10px',
+    overflowX: 'hidden'
   },
   headerCard: {
     flexGrow: 1,
@@ -334,7 +335,7 @@ const VistaDetalleEstado = props => {
               display: 'grid',
               gridTemplateColumns: '1fr',
               gap: 0,
-              '@media (min-width: 1300px)': {
+              '@media (min-width: 1450px)': {
                 gridTemplateColumns: '1fr 1fr'
               }
             }}>
