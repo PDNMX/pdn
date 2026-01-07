@@ -21,26 +21,36 @@ const colors = {
 
 const styles = theme => ({
   rootItem: {
-    maxWidth: 1200,
+    maxWidth: 1600, // Regresado a 1600
     paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4)
+    paddingBottom: theme.spacing(4),
+    [theme.breakpoints.down('xl')]: {
+      maxWidth: 1400
+    },
+    [theme.breakpoints.down('lg')]: {
+      maxWidth: 1200
+    },
+    [theme.breakpoints.down('md')]: {
+      maxWidth: '100%'
+    }
   },
   rootPaper: {
     backgroundColor: theme.palette.background.default,
-    padding: theme.spacing(2),
+    padding: theme.spacing(3),
     color: theme.palette.primary.contrastText,
     borderStyle: 'solid',
     borderWidth: 1,
     borderColor: theme.palette.primary.main,
-    borderRadius: '10px 10px 10px 10px'
+    borderRadius: '10px',
+    overflowX: 'hidden'
   },
-  paper: {
+  headerCard: {
     flexGrow: 1,
     background: theme.palette.background.default,
     borderStyle: 'solid',
     borderWidth: 1,
     borderColor: theme.palette.primary.main,
-    borderRadius: '10px 10px 10px 10px'
+    borderRadius: '10px'
   }
 })
 
@@ -51,8 +61,6 @@ const percentage = (a, b) => {
     return (a / b * 100).toFixed(0)
   }
 }
-
-
 
 const VistaDetalleEstado = props => {
   const { classes } = props
@@ -66,8 +74,8 @@ const VistaDetalleEstado = props => {
   if (!estado) {
     const normalizedId = id_estado.toLowerCase();
     estado = estados.find(e => 
-      e.name.toLowerCase().replace(/\s+/g, '-').replace(/Ã³/g, 'o').replace(/Ã¡/g, 'a')
-        .replace(/Ã©/g, 'e').replace(/Ã­/g, 'i').replace(/Ãº/g, 'u').replace(/Ã±/g, 'n') === normalizedId
+      e.name.toLowerCase().replace(/\s+/g, '-').replace(/ó/g, 'o').replace(/á/g, 'a')
+        .replace(/é/g, 'e').replace(/í/g, 'i').replace(/ú/g, 'u').replace(/ñ/g, 'n') === normalizedId
     );
   }
   
@@ -95,7 +103,6 @@ const VistaDetalleEstado = props => {
 
   // Asegurarnos de que el estado tenga la nueva estructura para s3
   if (estado.data.s3.hasOwnProperty('s3oic')) {
-    // Si tiene la estructura antigua (s3oic), convertirla a la nueva estructura
     const s3t = estado.data.s3.s3t;
     const totalOIC = estado.data.s3.s3oic.total;
     const tieneOIC = estado.data.s3.s3oic.tiene;
@@ -206,8 +213,8 @@ const VistaDetalleEstado = props => {
             </Typography>
 
             {/* Header con resumen general */}
-            <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'stretch' }} justifyContent='center'>
-              <Paper elevation={15} sx={{ m: 1, p: 2 }} className={classes.paper}>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'stretch', gap: 1, mb: 3 }} justifyContent='center'>
+              <Paper elevation={3} sx={{ p: 2 }} className={classes.headerCard}>
                 <Box display='flex' flexWrap='wrap' justifyContent='center'>
                   <Box>
                     <img src={`/img/cobertura/iconos_estados/${estado.icon2}`} style={{ width: '280px', padding: '23px', paddingRight: '0px' }} alt={estado.name} />
@@ -237,7 +244,7 @@ const VistaDetalleEstado = props => {
                 </Box>
               </Paper>
 
-              <Paper elevation={15} sx={{ m: 1, p: 2, textAlign: 'center', maxWidth: 200 }} className={classes.paper}>
+              <Paper elevation={3} sx={{ p: 2, textAlign: 'center', maxWidth: 200 }} className={classes.headerCard}>
                 <Typography variant='h5' color='#713972' sx={{ fontWeight: 'bold' }}>
                   Instituciones en la PDN
                 </Typography>
@@ -323,8 +330,15 @@ const VistaDetalleEstado = props => {
               </Paper>
             </Box>
 
-            {/* Detalle de todos los sistemas con gráficas originales */}
-            <Box sx={{ marginTop: 3 }}>
+            {/* Grid responsivo para 2 columnas en pantallas grandes - SIN bordes individuales */}
+            <Box sx={{ 
+              display: 'grid',
+              gridTemplateColumns: '1fr',
+              gap: 0,
+              '@media (min-width: 1450px)': {
+                gridTemplateColumns: '1fr 1fr'
+              }
+            }}>
               {systems.map(system => (
                 <VistaDetalleSistema
                   key={system.id}

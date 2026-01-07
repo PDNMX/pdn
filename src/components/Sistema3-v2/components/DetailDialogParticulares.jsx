@@ -101,7 +101,7 @@ const DetailDialogParticulares = ({ open, onClose, data, tipoPersona, classes })
           </Typography>
           {data.tipoSancion?.map((sancion, index) => (
             <Box key={index} mb={2}>
-              {renderField('Tipo', sancion.valor)}
+              {renderField('Tipo', sancion.clave)}
               {sancion.descripcion && renderField('Descripción', sancion.descripcion)}
               {sancion.monto && renderField('Monto', `$${sancion.monto.toLocaleString('es-MX')}`)}
               {sancion.plazo && renderField('Plazo', sancion.plazo)}
