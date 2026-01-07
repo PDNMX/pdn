@@ -47,8 +47,6 @@ import IconAbout from '../assets/rediseno2023/imgs/iconos/menu/ico_que-es-pdn.sv
 import IconHelpDesk from '../assets/rediseno2023/imgs/iconos/menu/ico_mesa-ayuda.svg'
 import IconValidador from '../assets/rediseno/validador.svg'
 import IconCobertura from '../assets/rediseno2023/imgs/iconos/menu/ico_cobertura.svg'
-import IconTableroS6 from '../assets/rediseno2023/imgs/iconos/sistemas/ico_s6.svg'
-import DashboardContrato from '../components/Sistema6/DashboardContrato'
 
 
 /*
@@ -309,18 +307,6 @@ const pdnRoutes = [
     type: ''
   },
   {
-<<<<<<< HEAD
-    exact: true,
-    path: '/tablero-contrato',
-    component: DashboardContrato,
-    private: false,
-    name: 'Tablero de Contratos',
-    shortName: 'TableroContrato',
-    color: '#713972',
-    icon: IconTableroS6,
-    type: ''
-  }
-=======
 		exact: true,
 		path: '/protocolo-de-conexion',
 		component: ProtocoloConexion,
@@ -329,7 +315,6 @@ const pdnRoutes = [
 		shortName: "Protocolo de Interconexión",
 		color: "#713972"
 	},
->>>>>>> rediseño2023
 ]
 
 export default pdnRoutes
