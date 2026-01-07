@@ -6,18 +6,33 @@ import GavelIcon from '@mui/icons-material/Gavel'
 
 const styles = theme => ({
   container: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     padding: theme.spacing(2),
     borderBottom: `1px solid ${theme.palette.divider}`,
     '&:last-child': {
       borderBottom: 'none'
     },
-    '@media (max-width: 1450px)': {
+    // Versión de una sola columna (entre móvil y 2 columnas)
+    '@media (min-width: 901px) and (max-width: 1849px)': {
+      paddingTop: theme.spacing(1.5),
+      paddingBottom: theme.spacing(1.5),
+      paddingLeft: theme.spacing(2),
+      paddingRight: theme.spacing(2),
+      gap: theme.spacing(3)
+    },
+    '@media (max-width: 1950px)': {
       paddingLeft: theme.spacing(1),
       paddingRight: theme.spacing(1)
     },
     '@media (max-width: 900px)': {
       paddingLeft: theme.spacing(0.5),
-      paddingRight: theme.spacing(0.5)
+      paddingRight: theme.spacing(0.5),
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+      paddingTop: theme.spacing(2),
+      paddingBottom: theme.spacing(2)
     }
   },
   text: {
@@ -60,7 +75,13 @@ const VistaDetalleSistema = props => {
 
   // Determinar el texto del título según el sistema
   const tituloConexion = system.id === 3 
-    ? "Total de órganos internos de control conectados" 
+    ? (
+      <>
+        Total de órganos internos
+        <br />
+        de control conectados
+      </>
+    )
     : "Total de instituciones conectadas";
 
   /* Vista detallada por Sistema */
@@ -69,36 +90,77 @@ const VistaDetalleSistema = props => {
       
       {/* Header con ícono y nombre del sistema */}
       <Box sx={{ 
+        textAlign: 'center',
+        maxWidth: 200,
+        minHeight: 200,
         display: 'flex', 
-        alignItems: 'center', 
-        gap: 1.5,
-        mb: 2,
-        pb: 1.5,
-        borderBottom: `2px solid ${color}`
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center', 
+        gap: 1,
+        '@media (max-width: 900px)': {
+          maxWidth: '100%',
+          minHeight: 'auto',
+          width: '100%',
+          flexDirection: 'row',
+          flexWrap: 'nowrap',
+          justifyContent: 'flex-start',
+          gap: 1.5,
+          marginBottom: 2,
+          paddingBottom: 2,
+          borderBottom: `2px solid ${color}`
+        }
       }}>
-        <img src={icon} style={{ width: '40px', height: '40px' }} alt={`Sistema ${system.id}`} />
-        <Typography variant='subtitle1' fontWeight='bold' color={color} sx={{ flexGrow: 1, fontSize: '0.85rem' }}>
-          {name}
-        </Typography>
+        <Box component="img" src={icon} alt={`Sistema ${system.id}`} sx={{
+          width: '120px',
+          height: '120px',
+          '@media (max-width: 900px)': {
+            width: '50px',
+            height: '50px',
+            flexShrink: 0
+          }
+        }} />
         
-        {/* Si es sistema 3 y tribunal conectado, mostrar badge */}
-        {mostrarSelloTribunal && (
-          <Box sx={{
-            backgroundColor: '#9085DA',
-            color: 'white',
-            padding: '3px 10px',
-            borderRadius: '15px',
-            fontSize: '0.7rem',
-            fontWeight: 'bold',
-            display: 'flex',
-            alignItems: 'center',
-            gap: 0.5,
-            whiteSpace: 'nowrap'
+        <Box sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: 0.5,
+          '@media (max-width: 900px)': {
+            flex: 1,
+            alignItems: 'flex-start'
+          }
+        }}>
+          <Typography variant='subtitle1' fontWeight='bold' color={color} sx={{ 
+            flexGrow: 1, 
+            fontSize: '1rem',
+            '@media (max-width: 900px)': {
+              fontSize: '0.85rem',
+              lineHeight: 1.2
+            }
           }}>
-            <GavelIcon fontSize="small" sx={{ fontSize: '0.9rem' }} />
-            Tribunal Conectado
-          </Box>
-        )}
+            {name}
+          </Typography>
+          
+          {/* Si es sistema 3 y tribunal conectado, mostrar badge */}
+          {mostrarSelloTribunal && (
+            <Box sx={{
+              backgroundColor: '#9085DA',
+              color: 'white',
+              padding: '3px 10px',
+              borderRadius: '15px',
+              fontSize: '0.7rem',
+              fontWeight: 'bold',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 0.5,
+              whiteSpace: 'nowrap'
+            }}>
+              <GavelIcon fontSize="small" sx={{ fontSize: '0.9rem' }} />
+              Tribunal
+            </Box>
+          )}
+        </Box>
       </Box>
 
       {/* Contenido de las gráficas - todas en línea */}

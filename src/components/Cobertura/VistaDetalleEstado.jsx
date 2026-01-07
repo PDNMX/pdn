@@ -21,9 +21,10 @@ const colors = {
 
 const styles = theme => ({
   rootItem: {
-    maxWidth: 1600, // Regresado a 1600
+    maxWidth: 2060, // Regresado a 1600
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4),
+    margin: '0 32px',
     [theme.breakpoints.down('xl')]: {
       maxWidth: 1400
     },
@@ -335,7 +336,7 @@ const VistaDetalleEstado = props => {
               display: 'grid',
               gridTemplateColumns: '1fr',
               gap: 0,
-              '@media (min-width: 1450px)': {
+              '@media (min-width: 1850px)': {
                 gridTemplateColumns: '1fr 1fr'
               }
             }}>
