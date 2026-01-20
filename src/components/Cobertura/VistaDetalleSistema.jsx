@@ -82,7 +82,7 @@ const VistaDetalleSistema = props => {
         de control conectados
       </>
     )
-    : "Total de instituciones conectadas";
+    : <>Total de instituciones <br />conectadas</>;
 
   /* Vista detallada por Sistema */
   return (
@@ -352,8 +352,8 @@ const VistaDetalleSistema = props => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            fontSize: '0.8rem',
-            lineHeight: 1.1,
+            fontSize: '0.95rem',
+            lineHeight: 1.2,
             paddingX: 1
           }}>
             {tituloConexion}

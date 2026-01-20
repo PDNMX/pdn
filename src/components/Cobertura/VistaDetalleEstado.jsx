@@ -48,10 +48,6 @@ const styles = theme => ({
   headerCard: {
     flexGrow: 1,
     background: theme.palette.background.default,
-    borderStyle: 'solid',
-    borderWidth: 1,
-    borderColor: theme.palette.primary.main,
-    borderRadius: '10px'
   }
 })
 
@@ -213,40 +209,74 @@ const VistaDetalleEstado = props => {
               Información al 31 de diciembre de 2025, reportada por la Secretaría Ejecutiva del Sistema Estatal Anticorrupción 
             </Typography>
 
-            {/* Header con resumen general */}
-            <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'stretch', gap: 1, mb: 3 }} justifyContent='center'>
-              <Paper elevation={3} sx={{ p: 2 }} className={classes.headerCard}>
-                <Box display='flex' flexWrap='wrap' justifyContent='center'>
-                  <Box>
-                    <img src={`/img/cobertura/iconos_estados/${estado.icon2}`} style={{ width: '280px', padding: '23px', paddingRight: '0px' }} alt={estado.name} />
-                  </Box>
+            {/* Header con resumen general - Unificado */}
+            <Box sx={{ 
+              display: 'flex', 
+              flexWrap: 'wrap', 
+              alignItems: 'center', 
+              justifyContent: 'center',
+              gap: 3, 
+              mb: 3,
+              p: 2,
+              '@media (max-width: 900px)': {
+                flexDirection: 'column',
+                gap: 2
+              }
+            }}>
+              {/* Icono del estado */}
+              <Box sx={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <img 
+                  src={`/img/cobertura/iconos_estados/${estado.icon2}`} 
+                  style={{ width: '280px', padding: '23px' }} 
+                  alt={estado.name} 
+                />
+              </Box>
 
-                  <Box sx={{ paddingTop: '40px', flexGrow: 1 }}>
-                    <Box display='flex'>
-                      <img src={icon_s1} alt='Sistema 1' style={{ width: '40px', padding: '2px' }} />
-                      <CustomizedProgressBar value={avance_s1} color={colors.s1} />
-                    </Box>
-
-                    <Box display='flex'>
-                      <img src={icon_s2} alt='Sistema 2' style={{ width: '40px', padding: '2px' }} />
-                      <CustomizedProgressBar value={avance_s2} color={colors.s2} />
-                    </Box>
-
-                    <Box display='flex'>
-                      <img src={icon_s3} alt='Sistema 3' style={{ width: '40px', padding: '2px' }} />
-                      <CustomizedProgressBar value={avance_s3} color={colors.s3} />
-                    </Box>
-
-                    <Box display='flex'>
-                      <img src={icon_s6} alt='Sistema 6' style={{ width: '40px', padding: '2px' }} />
-                      <CustomizedProgressBar value={avance_s6} color={colors.s6} />
-                    </Box>
-                  </Box>
+              {/* Barras de progreso */}
+              <Box sx={{ 
+                paddingTop: '40px', 
+                flexGrow: 1,
+                minWidth: '300px',
+                '@media (max-width: 900px)': {
+                  paddingTop: '20px',
+                  width: '100%'
+                }
+              }}>
+                <Box display='flex'>
+                  <img src={icon_s1} alt='Sistema 1' style={{ width: '40px', padding: '2px' }} />
+                  <CustomizedProgressBar value={avance_s1} color={colors.s1} />
                 </Box>
-              </Paper>
 
-              <Paper elevation={3} sx={{ p: 2, textAlign: 'center', maxWidth: 200 }} className={classes.headerCard}>
-                <Typography variant='h5' color='#713972' sx={{ fontWeight: 'bold' }}>
+                <Box display='flex'>
+                  <img src={icon_s2} alt='Sistema 2' style={{ width: '40px', padding: '2px' }} />
+                  <CustomizedProgressBar value={avance_s2} color={colors.s2} />
+                </Box>
+
+                <Box display='flex'>
+                  <img src={icon_s3} alt='Sistema 3' style={{ width: '40px', padding: '2px' }} />
+                  <CustomizedProgressBar value={avance_s3} color={colors.s3} />
+                </Box>
+
+                <Box display='flex'>
+                  <img src={icon_s6} alt='Sistema 6' style={{ width: '40px', padding: '2px' }} />
+                  <CustomizedProgressBar value={avance_s6} color={colors.s6} />
+                </Box>
+              </Box>
+
+              {/* Estadísticas */}
+              <Box sx={{ 
+                p: 2, 
+                textAlign: 'center', 
+                minWidth: 200,
+                '@media (max-width: 900px)': {
+                  width: '100%'
+                }
+              }}>
+                <Typography variant='h5' color='#713972' sx={{ fontWeight: 'bold', mb: 2 }}>
                   Instituciones en la PDN
                 </Typography>
 
@@ -328,7 +358,7 @@ const VistaDetalleEstado = props => {
                     estado.data.s6.municipal.total
                   }
                 </Typography>
-              </Paper>
+              </Box>
             </Box>
 
             {/* Grid responsivo para 2 columnas en pantallas grandes - SIN bordes individuales */}
