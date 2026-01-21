@@ -55,9 +55,9 @@ const tiposSancion = [
 ]
 
 const camposOrdenamiento = [
-  { label: 'Nombre', value: 'nombres' },
-  { label: 'Apellido Uno', value: 'primerApellido' },
-  { label: 'Apellido Dos', value: 'segundoApellido' },
+  { label: 'Nombre(s)', value: 'nombres' },
+  { label: 'Primer Apellido', value: 'primerApellido' },
+  { label: 'Segundo Apellido', value: 'segundoApellido' },
   { label: 'Institución', value: 'institucionDependencia' }
 ]
 
@@ -75,11 +75,11 @@ const FormServidoresSancionados = ({ classes, handleForm, handleOrder, query, or
         <TextField style={{ background: '#f2f0f2' }} name='nombres' label='Nombre(s)' onChange={handleForm} value={query.nombres} margin='normal' />
       </Grid>
       <Grid item xs={12} md={2}>
-        <TextField style={{ background: '#f2f0f2' }} name='primerApellido' label='Apellido Uno' type='search' onChange={handleForm} value={query.primerApellido} margin='normal' />
+        <TextField style={{ background: '#f2f0f2' }} name='primerApellido' label='Primer Apellido' type='search' onChange={handleForm} value={query.primerApellido} margin='normal' />
       </Grid>
       <Grid item xs={12} md={2}>
         <FormControl className={classes.formControl}>
-          <TextField style={{ background: '#f2f0f2' }} name='segundoApellido' label='Apellido Dos' type='search' onChange={handleForm} value={query.segundoApellido} margin='normal' />
+          <TextField style={{ background: '#f2f0f2' }} name='segundoApellido' label='Segundo Apellido' type='search' onChange={handleForm} value={query.segundoApellido} margin='normal' />
         </FormControl>
       </Grid>
       <Grid item xs={12} md={6}>

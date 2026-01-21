@@ -91,12 +91,12 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
             </Grid>
             <Grid item xs={12} md={3}>
               <FormControl className={classes.formControl}>
-                <TextField style={{ background: '#f2f0f2' }} id='primerApellido' name='primerApellido' value={primerApellido} onChange={handleInputChange} label='Apellido uno' margin='normal' fullWidth />
+                <TextField style={{ background: '#f2f0f2' }} id='primerApellido' name='primerApellido' value={primerApellido} onChange={handleInputChange} label='Primer Apellido' margin='normal' fullWidth />
               </FormControl>
             </Grid>
             <Grid item xs={12} md={3}>
               <FormControl className={classes.formControl}>
-                <TextField style={{ background: '#f2f0f2' }} id='segundoApellido' name='segundoApellido' value={segundoApellido} onChange={handleInputChange} label='Apellido dos' margin='normal' fullWidth />
+                <TextField style={{ background: '#f2f0f2' }} id='segundoApellido' name='segundoApellido' value={segundoApellido} onChange={handleInputChange} label='Segundo Apellido' margin='normal' fullWidth />
               </FormControl>
             </Grid>
             <Grid item xs={12} md={3}>

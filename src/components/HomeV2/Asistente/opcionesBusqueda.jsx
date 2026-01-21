@@ -1,23 +1,5 @@
 const opciones = [
   {
-    label: 'Personas servidoras públicas sancionadas',
-    value: 'psp-sancionados',
-    sistema: 'Sistema 3',
-    detalle:
-      'Información de personas servidoras públicas por la comisión de faltas administrativas.',
-    img: 'ico_Spsancionados.svg',
-    color: '#9085da'
-  },
-  {
-    label: 'Personas servidoras públicas que participan en contrataciones',
-    value: 'psp-participan',
-    sistema: 'Sistema 2',
-    detalle:
-      'Datos de personas servidoras públicas que intervienen en contrataciones públicas, otorgamiento de concesiones, enajenaciones de bienes y emisión de dictámenes.',
-    img: 'ico_Spcontrataciones.svg',
-    color: '#b25fac'
-  },
-  {
     label: 'Personas servidoras públicas y sus declaraciones patrimoniales',
     value: 'psp-declaraciones',
     sistema: 'Sistema 1',
@@ -25,6 +7,24 @@ const opciones = [
       'Declaraciones patrimoniales de personas servidoras públicas de todo el país.',
     img: 'ico_Spdeclaraciones.svg',
     color: '#f29888'
+  },
+  {
+    label: 'Personas servidoras públicas que participan en contrataciones',
+    value: 'psp-participan',
+    sistema: 'Sistema 2',
+    detalle:
+    'Datos de personas servidoras públicas que intervienen en contrataciones públicas, otorgamiento de concesiones, enajenaciones de bienes y emisión de dictámenes.',
+    img: 'ico_Spcontrataciones.svg',
+    color: '#b25fac'
+  },
+  {
+    label: 'Personas servidoras públicas sancionadas',
+    value: 'psp-sancionados',
+    sistema: 'Sistema 3',
+    detalle:
+      'Información de personas servidoras públicas por la comisión de faltas administrativas.',
+    img: 'ico_Spsancionados.svg',
+    color: '#9085da'
   },
   {
     label: 'Empresas sancionadas por actos corrupción',

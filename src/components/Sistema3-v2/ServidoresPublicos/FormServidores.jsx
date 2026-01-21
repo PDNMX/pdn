@@ -300,7 +300,7 @@ const FormServidores = ({ classes, providers }) => {
             <Grid item xs={12} md={4}>
               <TextField
                 className={classes.formControl}
-                label="Nombre"
+                label="Nombre(s)"
                 name="nombre"
                 value={formData.nombre}
                 onChange={handleInputChange}
@@ -312,7 +312,7 @@ const FormServidores = ({ classes, providers }) => {
             <Grid item xs={12} md={4}>
               <TextField
                 className={classes.formControl}
-                label="Apellido Uno"
+                label="Primer Apellido"
                 name="apellidoUno"
                 value={formData.apellidoUno}
                 onChange={handleInputChange}
@@ -324,7 +324,7 @@ const FormServidores = ({ classes, providers }) => {
             <Grid item xs={12} md={4}>
               <TextField
                 className={classes.formControl}
-                label="Apellido Dos"
+                label="Segundo Apellido"
                 name="apellidoDos"
                 value={formData.apellidoDos}
                 onChange={handleInputChange}
