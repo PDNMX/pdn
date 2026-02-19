@@ -73,7 +73,7 @@ const SurveyFloatingBanner = () => {
             <CloseIcon fontSize='small' />
           </IconButton>
         </div>
-        <Typography style={{ color: '#4b2b0b', marginTop: '6px' }}>Ya esta disponible la encuesta de la PDN. Participa y ayudanos a mejorar la plataforma.</Typography>
+        <Typography style={{ color: '#4b2b0b', marginTop: '6px' }}>Ya está disponible la encuesta de la PDN. Participa y ayúdanos a mejorar la plataforma.</Typography>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px', marginTop: '10px' }}>
           <ButtonPDN
             href={SURVEY_URL}
