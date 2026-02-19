@@ -25,7 +25,7 @@ const CustomTypography = withStyles(theme => ({
   }
 }))(Typography)
 
-const SURVEY_URL = 'https://www.google.com'
+const SURVEY_URL = 'https://forms.office.com/Pages/ResponsePage.aspx?id=Xtvls0QpN0iZ9XSIrOVDGWnfNeMo7ANNk53KKYMuMJFUOU5ZRURNWlJWMk8wMUxNMFBUWExDR1pVVi4u&origin=QRCode'
 const SURVEY_DISMISS_KEY = 's1_survey_banner_hidden'
 
 const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdquisicion, catEntidadesFederativas, catMunicipios, btnSearch, handlerFind, cleanForm, handleOrdenamiento, ordenamiento }) => {
@@ -433,13 +433,13 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <CampaignIcon style={{ color: '#9b2c2c' }} />
-                <Typography style={{ color: '#4b2b0b', fontWeight: 700 }}>Tu opinion nos ayuda</Typography>
+                <Typography style={{ color: '#4b2b0b', fontWeight: 700 }}>Encuesta de experiencia de personas usuarias</Typography>
               </div>
               <IconButton size='small' aria-label='Cerrar encuesta' onClick={handleCloseSurveyBanner}>
                 <CloseIcon fontSize='small' />
               </IconButton>
             </div>
-            <Typography style={{ color: '#4b2b0b', marginTop: '6px' }}>Toma 1 minuto y ayudanos a mejorar esta seccion.</Typography>
+            <Typography style={{ color: '#4b2b0b', marginTop: '6px' }}>Ya esta disponible la encuesta de la PDN. Participa y ayudanos a mejorar la plataforma.</Typography>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px', marginTop: '10px' }}>
               <ButtonPDN
                 href={SURVEY_URL}
@@ -451,7 +451,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                   boxShadow: '0 8px 18px rgba(122, 62, 124, 0.3)'
                 }}
               >
-                Ir a la encuesta
+                Participar en encuesta
               </ButtonPDN>
               <FormControlLabel
                 style={{ marginRight: 0 }}
