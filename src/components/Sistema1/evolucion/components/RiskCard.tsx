@@ -79,7 +79,7 @@ const RiskCard: React.FC<RiskCardProps> = ({
     <Paper
       elevation={0}
       sx={{
-        height: "100%",
+        minWidth: 0,
         p: 2.5,
         border: "1px solid",
         borderColor: config.border,
@@ -88,12 +88,13 @@ const RiskCard: React.FC<RiskCardProps> = ({
         display: "flex",
         flexDirection: "column",
         gap: 2,
+        overflow: "hidden",
       }}
     >
       <Box sx={{ display: "flex", justifyContent: "space-between", gap: 1.5 }}>
         <Typography
           variant="subtitle2"
-          sx={{ fontWeight: 700, color: "text.primary", lineHeight: 1.4 }}
+          sx={{ fontWeight: 700, color: "text.primary", lineHeight: 1.4, minWidth: 0, overflowWrap: "anywhere" }}
         >
           {title}
         </Typography>
@@ -116,7 +117,7 @@ const RiskCard: React.FC<RiskCardProps> = ({
       />
 
       {riskLevel === "none" ? (
-        <Typography variant="body2" sx={{ color: "text.secondary", mt: "auto" }}>
+        <Typography variant="body2" sx={{ color: "text.secondary", mt: "auto", overflowWrap: "anywhere" }}>
           {config.helper}
         </Typography>
       ) : (
@@ -128,7 +129,7 @@ const RiskCard: React.FC<RiskCardProps> = ({
             {count}
           </Typography>
 
-          <Typography variant="body2" sx={{ mt: 1, color: "text.secondary" }}>
+          <Typography variant="body2" sx={{ mt: 1, color: "text.secondary", overflowWrap: "anywhere" }}>
             {percentage}% de las declaraciones evaluadas en este eje.
           </Typography>
         </Box>

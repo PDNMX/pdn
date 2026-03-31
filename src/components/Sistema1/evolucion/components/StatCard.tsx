@@ -22,32 +22,45 @@ const StatCard: React.FC<Props> = ({
     <Paper
       elevation={0}
       sx={{
-        height: "100%",
-        p: 3,
+        minWidth: 0,
+        p: { xs: 2, md: 2.25 },
         border: "1px solid",
         borderColor: "background.border",
         borderRadius: 3,
         backgroundColor: "background.paper",
+        overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
       }}
     >
-      <Box sx={{ display: "flex", gap: 2, alignItems: "flex-start" }}>
-        <Box
-          sx={{
-            width: 52,
-            height: 52,
-            borderRadius: "14px",
-            backgroundColor: accentSoftColor,
-            color: accentColor,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            flexShrink: 0,
-          }}
-        >
-          <Icon />
-        </Box>
+      <Box
+        sx={{
+          width: "100%",
+          minWidth: 0,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          gap: 1.5,
+        }}
+      >
+        <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", minWidth: 0 }}>
+          <Box
+            sx={{
+              width: 52,
+              height: 52,
+              borderRadius: "14px",
+              backgroundColor: accentSoftColor,
+              color: accentColor,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexShrink: 0,
+              mb: 1.25,
+            }}
+          >
+            <Icon />
+          </Box>
 
-        <Box sx={{ minWidth: 0 }}>
           <Typography
             component="p"
             sx={{
@@ -62,26 +75,28 @@ const StatCard: React.FC<Props> = ({
 
           <Typography
             variant="subtitle2"
-            sx={{ mt: 1, fontWeight: 700, color: "text.primary" }}
+            sx={{ mt: 1, fontWeight: 700, color: "text.primary", overflowWrap: "anywhere" }}
           >
             {label}
           </Typography>
         </Box>
-      </Box>
 
-      {subLabel ? (
-        <Typography
-          variant="body2"
-          sx={{
-            mt: 2,
-            pt: 2,
-            borderTop: "1px solid rgba(88, 49, 113, 0.14)",
-            color: "text.secondary",
-          }}
-        >
-          {subLabel}
-        </Typography>
-      ) : null}
+        {subLabel ? (
+          <Typography
+            variant="body2"
+            sx={{
+              pt: 1.25,
+              borderTop: "1px solid rgba(88, 49, 113, 0.14)",
+              color: "text.secondary",
+              fontWeight: 700,
+              textAlign: "center",
+              overflowWrap: "anywhere",
+            }}
+          >
+            {subLabel}
+          </Typography>
+        ) : null}
+      </Box>
     </Paper>
   );
 };

@@ -162,23 +162,42 @@ function StatusChip({ status, label }) {
 
 function RiskPanel({ title, count, counts, rows, chipSx }) {
   return (
-    <Paper elevation={0} sx={{ p: 2.5, ...PANEL_SX, backgroundColor: "background.opaque", height: "100%" }}>
+    <Paper
+      elevation={0}
+      sx={{
+        p: 2.5,
+        ...PANEL_SX,
+        backgroundColor: "background.opaque",
+        border: PANEL_SX.border,
+        borderColor: PANEL_SX.borderColor,
+        borderRadius: PANEL_SX.borderRadius,
+        boxShadow: "none",
+        minWidth: 0,
+      }}
+    >
       <Stack direction={{ xs: "column", sm: "row" }} justifyContent="space-between" alignItems={{ xs: "flex-start", sm: "center" }} spacing={1.5} sx={{ mb: 2 }}>
         <Stack direction="row" spacing={1} alignItems="center">
-          <Typography variant="subtitle1" sx={{ color: "primary.main", fontWeight: 700 }}>{title}</Typography>
+          <Typography variant="subtitle1" sx={{ color: "primary.main", fontWeight: 700, minWidth: 0, overflowWrap: "anywhere" }}>{title}</Typography>
           <Chip size="small" label={count} sx={chipSx} />
         </Stack>
         <Tooltip title="No homologado: registros fuera del catalogo estandar, excluidos del analisis.">
-          <Typography variant="caption" color="text.secondary">Evaluadas: {counts.evaluadas}{ignoredText(counts)}</Typography>
+          <Typography variant="caption" color="text.secondary" sx={{ minWidth: 0, overflowWrap: "anywhere" }}>Evaluadas: {counts.evaluadas}{ignoredText(counts)}</Typography>
         </Tooltip>
       </Stack>
-      <Grid container spacing={2}>
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: { xs: "minmax(0, 1fr)", sm: "repeat(2, minmax(0, 1fr))" },
+          gap: 2,
+          minWidth: 0,
+        }}
+      >
         {rows.map((risk) => (
-          <Grid item xs={12} sm={6} key={risk.title}>
+          <Box key={risk.title} sx={{ minWidth: 0 }}>
             <RiskCard {...risk} />
-          </Grid>
+          </Box>
         ))}
-      </Grid>
+      </Box>
     </Paper>
   );
 }
@@ -361,9 +380,45 @@ export default function Evolucion() {
 
         <Grid item xs={12} className={baseClasses.infoBusqueda}>
           <Box sx={{ border: "1px solid", borderColor: "background.border", borderBottom: "none", borderRadius: "10px 10px 0 0", overflow: "hidden", backgroundColor: "background.noSelect" }}>
-            <Tabs value={tab} onChange={(event, value) => value && value !== tab && resetSelections(value)} variant="fullWidth" sx={{ "& .MuiTabs-indicator": { backgroundColor: "primary.main", height: 3 } }}>
-              <Tab value="institutional" icon={<BusinessIcon fontSize="small" />} iconPosition="start" label="Panorama institucional" wrapped sx={{ minHeight: 64, textTransform: "none", fontWeight: 600, color: "text.primary", backgroundColor: tab === "institutional" ? "background.opaque" : "background.noSelect", "&.Mui-selected": { color: "primary.main" } }} />
-              <Tab value="general" icon={<PublicIcon fontSize="small" />} iconPosition="start" label="Panorama nacional" wrapped sx={{ minHeight: 64, textTransform: "none", fontWeight: 600, color: "text.primary", backgroundColor: tab === "general" ? "background.opaque" : "background.noSelect", "&.Mui-selected": { color: "primary.main" } }} />
+            <Tabs value={tab} onChange={(event, value) => value && value !== tab && resetSelections(value)} variant="fullWidth" sx={{ "& .MuiTabs-indicator": { backgroundColor: "primary.main", height: 2 } }}>
+              <Tab
+                value="institutional"
+                icon={<BusinessIcon fontSize="small" />}
+                iconPosition="start"
+                label="Panorama institucional"
+                wrapped
+                sx={{
+                  minHeight: 64,
+                  textTransform: "none",
+                  fontWeight: 600,
+                  color: "text.primary",
+                  backgroundColor: "background.noSelect",
+                  borderBottom: "1px solid rgba(88,49,113,0.08)",
+                  "&.Mui-selected": {
+                    color: "primary.main",
+                    backgroundColor: "rgba(88,49,113,0.12)",
+                  },
+                }}
+              />
+              <Tab
+                value="general"
+                icon={<PublicIcon fontSize="small" />}
+                iconPosition="start"
+                label="Panorama nacional"
+                wrapped
+                sx={{
+                  minHeight: 64,
+                  textTransform: "none",
+                  fontWeight: 600,
+                  color: "text.primary",
+                  backgroundColor: "background.noSelect",
+                  borderBottom: "1px solid rgba(88,49,113,0.08)",
+                  "&.Mui-selected": {
+                    color: "primary.main",
+                    backgroundColor: "rgba(88,49,113,0.12)",
+                  },
+                }}
+              />
             </Tabs>
           </Box>
 
@@ -437,36 +492,47 @@ export default function Evolucion() {
               <Typography variant="body2" color="text.secondary">{isInstitutional ? "Obteniendo el panorama institucional y el comparativo nacional." : "Obteniendo el concentrado nacional del periodo seleccionado."}</Typography>
             </Paper>
           ) : hasResults ? (
-            <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
+            <Stack spacing={3} sx={{ minWidth: 0, pt: 2 }}>
               <Alert icon={<InsightsOutlinedIcon fontSize="inherit" />} severity="info" sx={{ backgroundColor: "#d1ecf1", color: "#0c5460", border: "1px solid #bee5eb" }}>
                 {isInstitutional ? `Resultados para ${institution} en el ejercicio ${period}.` : `Concentrado nacional para el ejercicio ${period}.`}
               </Alert>
 
-              <Grid container spacing={2}>
-                <Grid item xs={12} md={4}><StatCard value={stats.total} label="Total de declaraciones" subLabel="100% del ejercicio seleccionado" icon={DescriptionOutlinedIcon} accentColor="#713972" accentSoftColor="#f1e9f2" /></Grid>
-                <Grid item xs={12} md={4}><StatCard value={stats.complete} label="Declaraciones completas" subLabel={`${pctComplete}% del total analizado`} icon={FactCheckOutlinedIcon} accentColor="#2894b5" accentSoftColor="#eff9f9" /></Grid>
-                <Grid item xs={12} md={4}><StatCard value={stats.simplified} label="Declaraciones simplificadas" subLabel={`${pctSimplified}% del total analizado`} icon={PersonOutlineOutlinedIcon} accentColor="#e28276" accentSoftColor="#f9eded" /></Grid>
-              </Grid>
+              <Box
+                sx={{
+                  width: "100%",
+                  minWidth: 0,
+                  display: "grid",
+                  gridTemplateColumns: { xs: "minmax(0, 1fr)", md: "repeat(3, minmax(0, 1fr))" },
+                  gap: 2,
+                  alignItems: "stretch",
+                }}
+              >
+                <Box sx={{ minWidth: 0 }}>
+                  <StatCard value={stats.total} label="Total de declaraciones" subLabel="100% del ejercicio seleccionado" icon={DescriptionOutlinedIcon} accentColor="#713972" accentSoftColor="#f1e9f2" />
+                </Box>
+                <Box sx={{ minWidth: 0 }}>
+                  <StatCard value={stats.complete} label="Declaraciones completas" subLabel={`${pctComplete}% del total analizado`} icon={FactCheckOutlinedIcon} accentColor="#2894b5" accentSoftColor="#eff9f9" />
+                </Box>
+                <Box sx={{ minWidth: 0 }}>
+                  <StatCard value={stats.simplified} label="Declaraciones simplificadas" subLabel={`${pctSimplified}% del total analizado`} icon={PersonOutlineOutlinedIcon} accentColor="#e28276" accentSoftColor="#f9eded" />
+                </Box>
+              </Box>
 
-              <Paper elevation={0} sx={PANEL_SX}>
+              <Paper elevation={0} sx={{ ...PANEL_SX, minWidth: 0 }}>
                 <Typography variant="h6" sx={{ color: "primary.main", mb: 1 }}>Distribucion de hallazgos por tipo de declaracion</Typography>
                 <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>Identifica el volumen de observaciones detectadas por eje de analisis.</Typography>
-                <Grid container spacing={2}>
-                  <Grid item xs={12} lg={6}>
+                <Stack spacing={2.5} sx={{ minWidth: 0 }}>
                     <RiskPanel title="Declaraciones completas" count={stats.complete} counts={completeCounts} rows={riskRowsComplete} chipSx={{ backgroundColor: "#d1ecf1", color: "#0c5460", fontWeight: 700 }} />
-                  </Grid>
-                  <Grid item xs={12} lg={6}>
                     <RiskPanel title="Declaraciones simplificadas" count={stats.simplified} counts={simplifiedCounts} rows={riskRowsSimplified} chipSx={{ backgroundColor: "#f8d7da", color: "#721c24", fontWeight: 700 }} />
-                  </Grid>
-                </Grid>
+                </Stack>
               </Paper>
 
-              <Paper elevation={0} sx={PANEL_SX}>
+              <Paper elevation={0} sx={{ ...PANEL_SX, minWidth: 0, overflow: "hidden" }}>
                 <Typography variant="h6" sx={{ color: "primary.main", mb: 1 }}>{isInstitutional ? "Comparativo de metricas" : "Resumen nacional por eje"}</Typography>
                 <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>{isInstitutional ? "Compara el cumplimiento de la institucion seleccionada contra el promedio nacional en declaraciones completas." : "Porcentaje de cumplimiento nacional en declaraciones completas para cada eje analizado."}</Typography>
                 {comparisonRows.length ? (
-                  <TableContainer>
-                    <Table size="small">
+                  <TableContainer sx={{ width: "100%", maxWidth: "100%", overflowX: "auto" }}>
+                    <Table size="small" sx={{ minWidth: isInstitutional ? 720 : 520 }}>
                       <TableHead>
                         <TableRow>
                           <TableCell sx={{ fontWeight: 700, color: "primary.main" }}>Indice</TableCell>
@@ -491,7 +557,7 @@ export default function Evolucion() {
                   <Alert severity="info" sx={{ backgroundColor: "#d1ecf1", color: "#0c5460", border: "1px solid #bee5eb" }}>El comparativo nacional todavia no esta disponible para los filtros seleccionados.</Alert>
                 )}
               </Paper>
-            </Box>
+            </Stack>
           ) : (
             <Paper elevation={0} sx={{ p: 4, textAlign: "center", border: "1px dashed", borderColor: "background.border", backgroundColor: "background.opaque" }}>
               <CalendarMonthIcon sx={{ fontSize: 42, color: "primary.main", mb: 1 }} />
