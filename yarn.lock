@@ -4409,6 +4409,11 @@ lrucache@^1.0.3:
   resolved "https://registry.yarnpkg.com/lrucache/-/lrucache-1.0.3.tgz#3b1ded0d1ba82e188b9bdaba9eee6486f864a434"
   integrity sha512-OwQTGyq+57hmefrEv3Uhhyw4Z3l+aT/Q4nkdslVqy2n/7qIa4ML0wKnYcUUo54W1RRJYLdk2xKFsTaDGEVJLDw==
 
+lucide-react@^0.556.0:
+  version "0.556.0"
+  resolved "https://registry.yarnpkg.com/lucide-react/-/lucide-react-0.556.0.tgz#aad61a065737aef30322695a11fd21c7542c71aa"
+  integrity sha512-iOb8dRk7kLaYBZhR2VlV1CeJGxChBgUthpSP8wom9jfj79qovgG6qcSdiy6vkoREKPnbUYzJsCn4o4PtG3Iy+A==
+
 map-cache@^0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/map-cache/-/map-cache-0.2.2.tgz#c32abd0bd6525d9b051645bb4f26ac5dc98a0dbf"

@@ -1,20 +1,20 @@
-const CssDeclaraciones = theme => ({
+const CssDeclaraciones = (theme) => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   container: {
-    paddingTop: 90
+    paddingTop: 90,
     // paddingBottom: 90
   },
   backgroundCruces: {
-    flexGrow: 1
+    flexGrow: 1,
     /*     backgroundImage: `url(${bgimg})`,
     backgroundRepeat: 'no-repet',
     backgroundAttachment: 'fixed' */
   },
   // principal
   bgContainer: {
-    backgroundColor: theme.palette.S1.main
+    backgroundColor: theme.palette.S1.main,
   },
   card: {
     // backgroundColor: "#34b3eb", //theme.palette.azul.color,
@@ -24,11 +24,11 @@ const CssDeclaraciones = theme => ({
     paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(2),
     margin: 0,
-    '&:hover': {
-      cursor: 'pointer',
+    "&:hover": {
+      cursor: "pointer",
       backgroundColor: theme.palette.S1.dark,
-      transition: 'background 0.3s ease'
-    }
+      transition: "background 0.3s ease",
+    },
   },
   cardSeleccionada: {
     backgroundColor: theme.palette.S1.dark,
@@ -36,224 +36,224 @@ const CssDeclaraciones = theme => ({
     paddingRight: theme.spacing(1),
     paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(2),
-    margin: 0
+    margin: 0,
   },
   link: {
-    textDecoration: 'none',
-    color: 'inherit'
+    textDecoration: "none",
+    color: "inherit",
   },
   figure: {
-    display: 'inline-block',
-    float: 'left',
+    display: "inline-block",
+    float: "left",
     margin: 0,
     padding: 0,
-    paddingRight: '8px'
+    paddingRight: "8px",
   },
   image: {
-    width: '60px',
+    width: "60px",
     padding: 0,
     margin: 0,
-    border: 0
+    border: 0,
   },
   sectionT: {
     /* color: theme.palette.textGrey.color, */
     marginTop: theme.spacing(7),
-    maxWidth: 1200
+    maxWidth: 1200,
     // margin: "0 auto",
   },
   whiteText: {
     /* color: theme.palette.textGrey.color, */
-    padding: '10px'
+    padding: "10px",
   },
 
   h1: {
     fontSize: 21,
-    fontWeight: 700
+    fontWeight: 700,
   },
   mail: {
     fontSize: 11,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     paddingLeft: 21,
-    marginBottom: 20
+    marginBottom: 20,
   },
 
   contenido: {
     fontSize: 14,
-    color: '#313233',
+    color: "#313233",
     fontWeight: 500,
-    marginBottom: 20
+    marginBottom: 20,
   },
   paper: {
-    padding: theme.spacing(3, 2)
+    padding: theme.spacing(3, 2),
   },
   // Secciones
   rootSeccion: {
     flexGrow: 1,
-    marginTop: 30
+    marginTop: 30,
   },
   sidebar: {
-    background: '#2EB2E7'
+    background: "#2EB2E7",
   },
   // Subsecciones
   rootSubseccion: {
     flexGrow: 1,
-    padding: 15
+    padding: 15,
   },
   titulo: {
     // fontSize: 12,
-    color: '#2EB2E7',
+    color: "#2EB2E7",
     fontWeight: 500,
     fontSize: 20,
-    marginBottom: 30
+    marginBottom: 30,
   },
   tituloCard: {
     fontSize: 13,
-    fontWeight: 'bold',
-    marginBottom: 10
+    fontWeight: "bold",
+    marginBottom: 10,
   },
   dataCard: {
     fontSize: 14,
     paddingBottom: 10,
     marginBottom: 10,
-    paddingLeft: 20
+    paddingLeft: 20,
   },
   lineCard: {
-    borderBottom: '4px solid #f2f2f2'
+    borderBottom: "4px solid #f2f2f2",
   },
   tituloGeneralCard: {
     fontWeight: 600,
-    fontSize: 16
+    fontSize: 16,
     // color: "#606060",
     // paddingBottom: 10,
     // marginBottom: 10
   },
   gridCard: {
-    borderBottom: '1px solid #f2f2f2',
+    borderBottom: "1px solid #f2f2f2",
     paddingBottom: 10,
-    marginBottom: 10
+    marginBottom: 10,
   },
   gridEndCard: {
-    borderBottom: '0px solid #f2f2f2',
+    borderBottom: "0px solid #f2f2f2",
     paddingBottom: 10,
-    marginBottom: 10
+    marginBottom: 10,
   },
   declarante: {
-    display: 'inline-block',
+    display: "inline-block",
     padding: 5,
-    margin: '0px 5px',
-    background: '#83dfff'
+    margin: "0px 5px",
+    background: "#83dfff",
   },
   conyuge: {
-    display: 'inline-block',
+    display: "inline-block",
     padding: 5,
-    margin: '0px 5px',
-    background: '#e8b3e2'
+    margin: "0px 5px",
+    background: "#e8b3e2",
   },
   hijos: {
-    display: 'inline-block',
+    display: "inline-block",
     padding: 5,
-    margin: '0px 5px',
-    background: '#b3cde2'
+    margin: "0px 5px",
+    background: "#b3cde2",
   },
   padres: {
-    display: 'inline-block',
+    display: "inline-block",
     padding: 5,
-    margin: '0px 5px',
-    background: '#b3e0ce'
+    margin: "0px 5px",
+    background: "#b3e0ce",
   },
   suegros: {
-    display: 'inline-block',
+    display: "inline-block",
     padding: 5,
-    margin: '0px 5px',
-    background: '#e5e27f'
+    margin: "0px 5px",
+    background: "#e5e27f",
   },
   otro: {
-    display: 'inline-block',
+    display: "inline-block",
     padding: 5,
-    margin: '0px 5px',
-    background: '#e09d9d'
+    margin: "0px 5px",
+    background: "#e09d9d",
   },
   // Progressbar
   marginProgressbar: {
-    margin: theme.spacing(1, 0)
+    margin: theme.spacing(1, 0),
   },
   // graficas
   listaGraficas: {
-    listStyle: 'none',
-    display: 'inline-block',
-    fontSize: 14
+    listStyle: "none",
+    display: "inline-block",
+    fontSize: 14,
   },
   // formulario
   formControl: {
-    width: '100%'
+    width: "100%",
   },
   group: {
-    margin: theme.spacing(1, 0)
+    margin: theme.spacing(1, 0),
   },
   button: {
     margin: theme.spacing(1),
     // color: "#FFF",
-    fontWeight: 'bold'
+    fontWeight: "bold",
     // backgroundColor: "#2EB2E7"
   },
   expansion: {
-    backgroundColor: '#83dfff',
-    color: '#666666',
-    textTransform: 'uppercase',
+    backgroundColor: "#83dfff",
+    color: "#666666",
+    textTransform: "uppercase",
     // backgroundColor: "#2EB2E7",
     fontWeight: 1200,
-    fontSize: 16
+    fontSize: 16,
   },
   expansionpaneldetails: {
     paddingTop: 20,
-    paddingBottom: 20
+    paddingBottom: 20,
   },
   // informacion sobre buscar declaraciones
   ul: {
-    listStyle: 'none',
+    listStyle: "none",
     // marginLeft: 0,
-    paddingLeft: '20px'
+    paddingLeft: "20px",
   },
   li: {
-    '&:before': {
+    "&:before": {
       content: '"•"',
-      color: '#713972',
-      fontWeight: 'bold',
-      display: 'inline-block',
-      width: '1em',
-      marginLeft: '-1em'
-    }
+      color: "#713972",
+      fontWeight: "bold",
+      display: "inline-block",
+      width: "1em",
+      marginLeft: "-1em",
+    },
   },
   infoBusqueda: {
     paddingRight: theme.spacing(1),
-    paddingLeft: theme.spacing(1)
+    paddingLeft: theme.spacing(1),
     // paddingBottom: theme.spacing(4),
     // paddingTop: theme.spacing(4),
     // backgroundColor: 'white'
   },
   // resultados
   resultadosRoot: {
-    width: '100%',
+    width: "100%",
     paddingBottom: theme.spacing(4),
-    paddingTop: theme.spacing(4)
+    paddingTop: theme.spacing(4),
   },
   resultadosHeading: {
     fontSize: theme.typography.pxToRem(15),
-    fontWeight: theme.typography.fontWeightBold
+    fontWeight: theme.typography.fontWeightBold,
   },
   resultadosTitulo: {
     backgroundColor: theme.palette.background.opaque,
     color: theme.palette.primary.main,
-    borderStyle: 'solid',
+    borderStyle: "solid",
     borderWidth: 1,
-    borderColor: theme.palette.background.border
+    borderColor: theme.palette.background.border,
   },
   tituloResultados: {
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.background.opaque,
-    borderStyle: 'solid',
+    borderStyle: "solid",
     borderWidth: 1,
-    borderColor: theme.palette.background.border
+    borderColor: theme.palette.background.border,
   },
   resultadoContenido: {
     backgroundColor: theme.palette.background.opaque,
@@ -264,7 +264,7 @@ const CssDeclaraciones = theme => ({
     padding: theme.spacing(2),
     borderLeft: `1px solid ${theme.palette.secondary.main}`,
     borderRight: `1px solid ${theme.palette.secondary.main}`,
-    borderBottom: `1px solid ${theme.palette.secondary.main}`
+    borderBottom: `1px solid ${theme.palette.secondary.main}`,
   },
   contenidoResultado: {
     backgroundColor: theme.palette.primary.main,
@@ -275,127 +275,127 @@ const CssDeclaraciones = theme => ({
     padding: theme.spacing(2),
     borderLeft: `1px solid ${theme.palette.secondary.main}`,
     borderRight: `1px solid ${theme.palette.secondary.main}`,
-    borderBottom: `1px solid ${theme.palette.secondary.main}`
+    borderBottom: `1px solid ${theme.palette.secondary.main}`,
   },
   perfilRoot: {
     paddingBottom: theme.spacing(2),
-    paddingTop: theme.spacing(2)
+    paddingTop: theme.spacing(2),
   },
   alertPrimary: {
-    fontWeight: 'bolder',
-    color: '#004085',
-    backgroundColor: '#cce5ff',
-    borderColor: '#b8daff',
-    border: '1px solid transparent',
-    borderRadius: '.25rem',
-    padding: '.75rem 1.25rem',
-    marginBottom: '1rem'
+    fontWeight: "bolder",
+    color: "#004085",
+    backgroundColor: "#cce5ff",
+    borderColor: "#b8daff",
+    border: "1px solid transparent",
+    borderRadius: ".25rem",
+    padding: ".75rem 1.25rem",
+    marginBottom: "1rem",
   },
   alertSecondary: {
-    fontWeight: 'bolder',
-    color: '#383d41',
-    backgroundColor: '#e2e3e5',
-    borderColor: '#d6d8db',
-    border: '1px solid transparent',
-    borderRadius: '.25rem',
-    padding: '.75rem 1.25rem',
-    marginBottom: '1rem'
+    fontWeight: "bolder",
+    color: "#383d41",
+    backgroundColor: "#e2e3e5",
+    borderColor: "#d6d8db",
+    border: "1px solid transparent",
+    borderRadius: ".25rem",
+    padding: ".75rem 1.25rem",
+    marginBottom: "1rem",
   },
   alertSuccess: {
-    fontWeight: 'bolder',
-    color: '#155724',
-    backgroundColor: '#d4edda',
-    borderColor: '#c3e6cb',
-    border: '1px solid transparent',
-    borderRadius: '.25rem',
-    padding: '.75rem 1.25rem',
-    marginBottom: '1rem'
+    fontWeight: "bolder",
+    color: "#155724",
+    backgroundColor: "#d4edda",
+    borderColor: "#c3e6cb",
+    border: "1px solid transparent",
+    borderRadius: ".25rem",
+    padding: ".75rem 1.25rem",
+    marginBottom: "1rem",
   },
   alertDanger: {
-    fontWeight: 'bolder',
-    color: '#721c24',
-    backgroundColor: '#f8d7da',
-    borderColor: '#f5c6cb',
-    border: '1px solid transparent',
-    borderRadius: '.25rem',
-    padding: '.75rem 1.25rem',
-    marginBottom: '1rem'
+    fontWeight: "bolder",
+    color: "#721c24",
+    backgroundColor: "#f8d7da",
+    borderColor: "#f5c6cb",
+    border: "1px solid transparent",
+    borderRadius: ".25rem",
+    padding: ".75rem 1.25rem",
+    marginBottom: "1rem",
   },
   alertWarning: {
-    fontWeight: 'bolder',
-    color: '#856404',
-    backgroundColor: '#fff3cd',
-    borderColor: '#ffeeba',
-    border: '1px solid transparent',
-    borderRadius: '.25rem',
-    padding: '.75rem 1.25rem',
-    marginBottom: '1rem'
+    fontWeight: "bolder",
+    color: "#856404",
+    backgroundColor: "#fff3cd",
+    borderColor: "#ffeeba",
+    border: "1px solid transparent",
+    borderRadius: ".25rem",
+    padding: ".75rem 1.25rem",
+    marginBottom: "1rem",
   },
   alertInfo: {
-    fontWeight: 'bolder',
-    color: '#0c5460',
-    backgroundColor: '#d1ecf1',
-    borderColor: '#bee5eb',
-    border: '1px solid transparent',
-    borderRadius: '.25rem',
-    padding: '.75rem 1.25rem',
-    marginBottom: '1rem'
+    fontWeight: "bolder",
+    color: "#0c5460",
+    backgroundColor: "#d1ecf1",
+    borderColor: "#bee5eb",
+    border: "1px solid transparent",
+    borderRadius: ".25rem",
+    padding: ".75rem 1.25rem",
+    marginBottom: "1rem",
   },
   alertLight: {
-    fontWeight: 'bolder',
-    color: '#818182',
-    backgroundColor: '#fefefe',
-    borderColor: '#fdfdfe',
-    border: '1px solid transparent',
-    borderRadius: '.25rem',
-    padding: '.75rem 1.25rem',
-    marginBottom: '1rem'
+    fontWeight: "bolder",
+    color: "#818182",
+    backgroundColor: "#fefefe",
+    borderColor: "#fdfdfe",
+    border: "1px solid transparent",
+    borderRadius: ".25rem",
+    padding: ".75rem 1.25rem",
+    marginBottom: "1rem",
   },
   alertDark: {
-    fontWeight: 'bolder',
-    color: '#1b1e21',
-    backgroundColor: '#d6d8d9',
-    borderColor: '#c6c8ca',
-    border: '1px solid transparent',
-    borderRadius: '.25rem',
-    padding: '.75rem 1.25rem',
-    marginBottom: '1rem'
+    fontWeight: "bolder",
+    color: "#1b1e21",
+    backgroundColor: "#d6d8d9",
+    borderColor: "#c6c8ca",
+    border: "1px solid transparent",
+    borderRadius: ".25rem",
+    padding: ".75rem 1.25rem",
+    marginBottom: "1rem",
   },
   btnBack: {
-    color: theme.palette.primary.main
+    color: theme.palette.primary.main,
   },
   logo: {
-    width: '60px',
-    display: 'flex'
+    width: "60px",
+    display: "flex",
   },
   figure_search: {
-    display: 'inline-block',
-    float: 'left',
+    display: "inline-block",
+    float: "left",
     margin: 0,
     padding: 0,
-    paddingRight: '8px'
+    paddingRight: "8px",
   },
   selectedTab: {
-    borderStyle: 'solid',
+    borderStyle: "solid",
     color: theme.palette.primary.main,
     borderColor: theme.palette.background.border,
     backgroundColor: theme.palette.background.opaque,
-    borderRadius: '10px 10px 0px 0px',
-    borderWidth:'1px',
-    borderBottomStyle: 'none',
-    padding: '0px 8px 0px 5px',
-    margin: '0px 8px 5px 0px',
-    display: 'flex',
-    float: 'left',
-    zIndex:1,
-    marginBottom:-1,
+    borderRadius: "10px 10px 0px 0px",
+    borderWidth: "1px",
+    borderBottomStyle: "none",
+    padding: "0px 8px 0px 5px",
+    margin: "0px 8px 5px 0px",
+    display: "flex",
+    float: "left",
+    zIndex: 1,
+    marginBottom: -1,
     marginRight: 10,
-    position: 'relative'
+    position: "relative",
   },
   labelCard: {
     // color: theme.palette.primary.main,
     // color: theme.palette.S6.color,
-    display: 'flex',
+    display: "flex",
     // float: 'left',
     // borderStyle: 'solid',
     // borderRadius: '10px 10px 0px 0px',
@@ -403,88 +403,88 @@ const CssDeclaraciones = theme => ({
     // borderBottomStyle: 'none',
     marginLeft: theme.spacing(1),
     paddingTop: theme.spacing(1),
-    marginBottom:-1,
+    marginBottom: -1,
     marginRight: 10,
     fontWeight: 600,
-    alignItems:'center'
+    alignItems: "center",
   },
   contentsSection: {
     color: theme.palette.secondary.contrastText,
-    maxWidth: '1200px'
+    maxWidth: "1200px",
   },
   paper_search: {
     backgroundColor: theme.palette.background.opaque,
     padding: theme.spacing(2),
     color: theme.palette.primary.main,
-    borderStyle: 'solid',
+    borderStyle: "solid",
     borderWidth: 1,
     borderColor: theme.palette.background.border,
-    borderRadius: '10px 10px 10px 10px'
+    borderRadius: "0px 0px 10px 10px",
   },
   paper_disclaimer: {
     padding: theme.spacing(2),
     color: theme.palette.primary.contrastText,
-    borderStyle: 'solid',
+    borderStyle: "solid",
     borderWidth: 1,
     borderColor: theme.palette.background.border,
-    borderRadius: '0px 10px 10px 10px'
+    borderRadius: "0px 10px 10px 10px",
   },
   cuadroActualizacion: {
-    fontWeight: 'bolder',
+    fontWeight: "bolder",
     color: theme.palette.text.clear,
     // backgroundColor: '#d1ecf1',
-    borderRadius: '.25rem',
-    padding: '.75rem 1.25rem',
-    marginBottom: '1rem',
-    backgroundColor: 'rgba(113,57,114,0.5)'
+    borderRadius: ".25rem",
+    padding: ".75rem 1.25rem",
+    marginBottom: "1rem",
+    backgroundColor: "rgba(113,57,114,0.5)",
   },
   paper_perfil: {
     backgroundColor: theme.palette.background.noSelect,
     padding: theme.spacing(4),
     marginBottom: theme.spacing(4),
-    color: theme.palette.text.primary
+    color: theme.palette.text.primary,
   },
   text_color: {
-    color: theme.palette.text.primary
+    color: theme.palette.text.primary,
   },
   menulateral_fondo: {
-    backgroundColor: theme.palette.background.opaque
+    backgroundColor: theme.palette.background.opaque,
   },
   enlaces: {
-    textDecoration: 'none',
+    textDecoration: "none",
     // 'color': '#b1bcc1',
     color: theme.palette.text.linkColor,
-    '&:visited': {
-      color: theme.palette.text.linkColor
+    "&:visited": {
+      color: theme.palette.text.linkColor,
     },
-    '&:link': {
-      color: theme.palette.text.linkColor
+    "&:link": {
+      color: theme.palette.text.linkColor,
     },
-    '&:active': {
-      color: theme.palette.text.linkColor
+    "&:active": {
+      color: theme.palette.text.linkColor,
     },
-    '&:hover': {
-      color: '#55575A',
-      borderBottom: '2px solid #b25fac'
-    }
+    "&:hover": {
+      color: "#55575A",
+      borderBottom: "2px solid #b25fac",
+    },
   },
   tabContainer: {
-    paddingTop: 90
+    paddingTop: 90,
     // paddingBottom: 90
   },
   section: {
-    maxWidth: '1200px',
-    marginTop: theme.spacing(8)
+    maxWidth: "1200px",
+    marginTop: theme.spacing(8),
   },
   sectionT: {
-    maxWidth: '1200px',
-    color: theme.palette.primary.contrastText
+    maxWidth: "1200px",
+    color: theme.palette.primary.contrastText,
   },
   tabItem: {
-    maxWidth: 1200
+    maxWidth: 1200,
   },
   item: {
-    maxWidth: 1200
+    maxWidth: 1200,
     /* paddingTop: theme.spacing(8),
         paddingBottom: theme.spacing(8), */
     // overflow: "auto"
@@ -493,40 +493,40 @@ const CssDeclaraciones = theme => ({
     backgroundColor: theme.palette.background.opaque,
     padding: theme.spacing(2),
     color: theme.palette.primary.contrastText,
-    borderStyle: 'solid',
+    borderStyle: "solid",
     borderWidth: 1,
     borderColor: theme.palette.background.border,
-    borderRadius: '0px 10px 10px 10px'
+    borderRadius: "0px 10px 10px 10px",
   },
   paper2: {
     backgroundColor: theme.palette.background.opaque,
     padding: theme.spacing(2),
     color: theme.palette.primary.contrastText,
-    borderStyle: 'solid',
+    borderStyle: "solid",
     borderWidth: 1,
     borderColor: theme.palette.background.border,
-    borderRadius: '0px 10px 10px 10px'
+    borderRadius: "0px 10px 10px 10px",
   },
   image: {
-    width: '60px'
+    width: "60px",
   },
   card: {
     backgroundColor: theme.palette.background.noSelect,
-    margin: '0 8px 0px 2px',
-    '&:hover': {
-      cursor: 'pointer',
+    margin: "0 8px 0px 2px",
+    "&:hover": {
+      cursor: "pointer",
       borderColor: theme.palette.background.border,
-      transition: 'background 0.3s ease',
-      opacity: 0.9
+      transition: "background 0.3s ease",
+      opacity: 0.9,
     },
-    display: 'flex',
-    float: 'left',
-    padding: '0px 8px 0px 5px',
-    borderStyle: 'solid',
+    display: "flex",
+    float: "left",
+    padding: "0px 8px 0px 5px",
+    borderStyle: "solid",
     borderColor: theme.palette.background.opaque,
-    borderBottomStyle: 'none',
-    borderRadius: '10px 10px 0px 0px',
-    opacity:0.8
+    borderBottomStyle: "none",
+    borderRadius: "10px 10px 0px 0px",
+    opacity: 0.8,
   },
   cardSeleccionada: {
     backgroundColor: theme.palette.background.select,
@@ -536,13 +536,118 @@ const CssDeclaraciones = theme => ({
     paddingTop: theme.spacing(1),
     paddingBottom: theme.spacing(1),
     margin: 0,
-    borderStyle: 'solid',
+    borderStyle: "solid",
 
-    borderBottomStyle: 'none',
-    borderRadius: '10px 10px 0px 0px',
-    display: 'flex',
-    float: 'left',
+    borderBottomStyle: "none",
+    borderRadius: "10px 10px 0px 0px",
+    display: "flex",
+    float: "left",
     marginRight: 10,
-  }
-})
-export default CssDeclaraciones
+  },
+  borde: {
+    borderStyle: "solid",
+    borderWidth: 1,
+    borderColor: theme.palette.background.border,
+  },
+  // Tabs
+  tabsContainer: {
+    borderTopStyle: "solid",
+    borderTopWidth: 1,
+    borderTopColor: theme.palette.background.border,
+
+    borderLeftStyle: "solid",
+    borderLeftWidth: 1,
+    borderLeftColor: theme.palette.background.border,
+
+    borderRightStyle: "solid",
+    borderRightWidth: 1,
+    borderRightColor: theme.palette.background.border,
+    borderRadius: "5px 5px 0px 0px",
+    backgroundColor: "#ede7f6",
+    // borderBottom: "1px solid rgba(113, 57, 114, 0.2)",
+    position: "relative",
+    "&::after": {
+      content: '""',
+      position: "absolute",
+      bottom: "-1px",
+      left: 0,
+      right: 0,
+      height: "4px",
+      background:
+        "linear-gradient(180deg, rgba(0,0,0,0.03) 0%, rgba(0,0,0,0) 100%)",
+    },
+  },
+  tabs: {
+    "& .MuiTabs-indicator": {
+      backgroundColor: "#713972",
+      height: "3px",
+    },
+    "& .MuiTabs-flexContainer": {
+      [theme.breakpoints.down("md")]: {
+        flexDirection: "column",
+      },
+    },
+  },
+  svgIcon: {
+    width: 40,
+    height: 40,
+    filter: "grayscale(100%) brightness(0%) invert(60%)",
+    //transition: "filter 0.2s ease-in-out",
+  },
+  tab: {
+    minHeight: "64px",
+    textTransform: "none",
+    fontSize: "0.9rem",
+    fontWeight: 500,
+    color: "#666",
+    flex: 1,
+    maxWidth: "none",
+    "&.Mui-selected": {
+      color: "#713972",
+      fontWeight: 600,
+    },
+    "&:hover": {
+      backgroundColor: "rgba(113, 57, 114, 0.04)",
+      color: "#713972",
+    },
+    "&:hover $svgIcon": {
+      filter: "none", // icono vuelve a su color real
+    },
+
+    "&.Mui-selected $svgIcon": {
+      filter: "none",
+    },
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+      borderBottom: "1px solid rgba(113, 57, 114, 0.1)",
+    },
+  },
+  tabLabel: {
+    fontSize: "0.9rem",
+    textTransform: "none",
+    alignItems: "center",
+    display: "flex",
+    whiteSpace: "pre-wrap",
+    lineHeight: "1.2",
+    [theme.breakpoints.up("md")]: {
+      justifyContent: "center",
+      textAlign: "center",
+      minHeight: "40px",
+      padding: "0 7px",
+    },
+    [theme.breakpoints.down("md")]: {
+      justifyContent: "flex-start",
+      width: "100%",
+      padding: theme.spacing(1, 2),
+    },
+  },
+  tabIcon: {
+    marginBottom: "0 !important",
+    marginRight: theme.spacing(1),
+    color: "inherit",
+  },
+  tabPanel: {
+    backgroundColor: "#fff",
+  },
+});
+export default CssDeclaraciones;
