@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import {
   Alert,
+  Autocomplete,
   Box,
   Chip,
   CircularProgress,
@@ -45,14 +46,14 @@ const AXIS_LABELS = {
   datos_personales: "Congruencia en datos personales",
   flujo_financiero: "Congruencia en flujos financieros",
   congruencia_patrimonial: "Congruencia patrimonial",
-  conflicto_interes: "Conflicto de interes",
+  conflicto_interes: "Conflicto de interés",
   riesgo_global: "Riesgo global",
 };
 const RISK_LABELS = {
-  datos_personales: "Indice de congruencia en datos personales",
-  flujo_financiero: "Indice de congruencia en flujos financieros",
-  congruencia_patrimonial: "Indice de congruencia patrimonial",
-  conflicto_interes: "Indice de conflicto de interes",
+  datos_personales: "Índice de congruencia en datos personales",
+  flujo_financiero: "Índice de congruencia en flujos financieros",
+  congruencia_patrimonial: "Índice de congruencia patrimonial",
+  conflicto_interes: "Índice de conflicto de interés",
 };
 const STATUS_SX = {
   better: { icon: <CheckCircleOutlineIcon fontSize="small" />, backgroundColor: "#d4edda", color: "#155724", border: "1px solid #c3e6cb" },
@@ -60,6 +61,111 @@ const STATUS_SX = {
   worse: { icon: <WarningAmberOutlinedIcon fontSize="small" />, backgroundColor: "#fff3cd", color: "#856404", border: "1px solid #ffeeba" },
 };
 const PANEL_SX = { p: { xs: 2, md: 3 }, border: "1px solid", borderColor: "background.border", borderRadius: 3, backgroundColor: "background.paper" };
+const SELECT_FIELD_SX = {
+  backgroundColor: "background.noSelect",
+  "& .MuiOutlinedInput-root": {
+    minHeight: 56,
+    alignItems: "center",
+  },
+  "& .MuiInputBase-input": {
+    fontSize: "1rem",
+    lineHeight: 1.2,
+  },
+  "& .MuiSelect-select": {
+    display: "flex",
+    alignItems: "center",
+    height: "56px",
+    minHeight: "56px !important",
+    paddingTop: "0 !important",
+    paddingBottom: "0 !important",
+    boxSizing: "border-box",
+    fontSize: "1rem",
+    lineHeight: 1.2,
+  },
+};
+const LOCKED_SELECT_FIELD_SX = {
+  "& .MuiOutlinedInput-root.Mui-disabled": {
+    backgroundColor: "rgba(88,49,113,0.08)",
+    cursor: "not-allowed",
+  },
+  "& .MuiOutlinedInput-root.Mui-disabled .MuiOutlinedInput-notchedOutline": {
+    borderColor: "rgba(88,49,113,0.24) !important",
+    borderStyle: "dashed",
+  },
+  "& .MuiInputBase-input.Mui-disabled, & .MuiSelect-select.Mui-disabled": {
+    WebkitTextFillColor: "rgba(88,49,113,0.62)",
+    color: "rgba(88,49,113,0.62)",
+    opacity: 1,
+  },
+  "& .MuiInputLabel-root.Mui-disabled": {
+    color: "rgba(88,49,113,0.72)",
+  },
+  "& .MuiOutlinedInput-root.Mui-disabled .MuiSvgIcon-root": {
+    color: "rgba(88,49,113,0.5)",
+  },
+};
+const PANORAMA_TAB_SX = {
+  position: "relative",
+  zIndex: 1,
+  minHeight: 64,
+  textTransform: "none",
+  fontWeight: 600,
+  color: "rgba(88,49,113,0.88)",
+  backgroundColor: "rgba(88,49,113,0.12)",
+  borderTop: "3px solid transparent",
+  transform: "translateY(4px)",
+  boxShadow: "inset 0 3px 10px rgba(88,49,113,0.16), inset 0 1px 0 rgba(255,255,255,0.14)",
+  transition: "background-color 160ms ease, box-shadow 160ms ease, color 160ms ease, transform 160ms ease",
+  "&:hover": {
+    backgroundColor: "rgba(88,49,113,0.15)",
+  },
+  "&.Mui-selected": {
+    color: "primary.main",
+    fontWeight: 700,
+    zIndex: 2,
+    transform: "translateY(0)",
+    backgroundColor: "background.opaque",
+    borderTopColor: "primary.main",
+    boxShadow: "none",
+  },
+};
+
+function renderSelectValue(value, placeholder) {
+  const hasValue = value !== "" && value !== null && value !== undefined;
+  return (
+    <Box
+      component="span"
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        minHeight: "100%",
+        width: "100%",
+        color: hasValue ? "text.primary" : "text.secondary",
+        fontSize: "1rem",
+        lineHeight: 1.2,
+        fontWeight: hasValue ? 400 : 300,
+        opacity: hasValue ? 1 : 0.78,
+      }}
+    >
+      {hasValue ? String(value) : placeholder}
+    </Box>
+  );
+}
+
+function normalizeSearchText(value = "") {
+  return String(value).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+}
+
+function findInstitutionMatches(query, searchIndex, limit = 100) {
+  const normalizedQuery = normalizeSearchText(query);
+  if (normalizedQuery.length < 2 || !Array.isArray(searchIndex)) return [];
+  const matches = [];
+  for (let i = 0; i < searchIndex.length && matches.length < limit; i += 1) {
+    const entry = searchIndex[i];
+    if (entry.searchKey.includes(normalizedQuery)) matches.push(entry.label);
+  }
+  return matches;
+}
 
 function getStats(data) {
   return data?.totales ? { total: data.totales.totalDeclaraciones || 0, complete: data.totales.completas || 0, simplified: data.totales.noCompletas || 0 } : { total: 0, complete: 0, simplified: 0 };
@@ -180,8 +286,13 @@ function RiskPanel({ title, count, counts, rows, chipSx }) {
           <Typography variant="subtitle1" sx={{ color: "primary.main", fontWeight: 700, minWidth: 0, overflowWrap: "anywhere" }}>{title}</Typography>
           <Chip size="small" label={count} sx={chipSx} />
         </Stack>
-        <Tooltip title="No homologado: registros fuera del catalogo estandar, excluidos del analisis.">
-          <Typography variant="caption" color="text.secondary" sx={{ minWidth: 0, overflowWrap: "anywhere" }}>Evaluadas: {counts.evaluadas}{ignoredText(counts)}</Typography>
+        <Tooltip title="No homologado: registros fuera del catálogo estándar, excluidos del análisis.">
+          <Box component="span" sx={{ display: "inline-flex", alignItems: "center", gap: 0.75, minWidth: 0, cursor: "help", px: 1, py: 0.35, borderRadius: "999px", border: "1px solid", borderColor: "rgba(0, 0, 0, 0.23)" }}>
+            <Typography variant="caption" color="text.secondary" sx={{ minWidth: 0, overflowWrap: "anywhere", display: "inline-flex", alignItems: "center", lineHeight: 1, position: "relative", top: "1px" }}>
+              Evaluadas: {counts.evaluadas}{ignoredText(counts)}
+            </Typography>
+            <InfoOutlinedIcon sx={{ fontSize: 14, color: "text.secondary", flexShrink: 0 }} />
+          </Box>
         </Tooltip>
       </Stack>
       <Box
@@ -204,11 +315,11 @@ function RiskPanel({ title, count, counts, rows, chipSx }) {
 
 export default function Evolucion() {
   const baseClasses = useBaseStyles();
-  const cacheRef = useRef({ institutions: null, institutionalYears: {}, nationalYears: null, nationalByPeriod: {}, institutionByKey: {} });
+  const cacheRef = useRef({ institutions: null, institutionSearch: [], institutionalYears: {}, nationalYears: null, nationalByPeriod: {}, institutionByKey: {} });
   const [tab, setTab] = useState("institutional");
   const [institution, setInstitution] = useState("");
+  const [institutionInput, setInstitutionInput] = useState("");
   const [period, setPeriod] = useState("");
-  const [institutions, setInstitutions] = useState([]);
   const [years, setYears] = useState([]);
   const [institutionData, setInstitutionData] = useState(null);
   const [nationalData, setNationalData] = useState(null);
@@ -222,15 +333,15 @@ export default function Evolucion() {
     let mounted = true;
     const controller = new AbortController();
     async function loadInstitutions() {
-      if (cacheRef.current.institutions) return setInstitutions(cacheRef.current.institutions);
+      if (cacheRef.current.institutions) return;
       setLoadingInstitutions(true);
       try {
         const data = await fetchJson(`${API_BASE_URL}/evolucion/instituciones`, controller.signal);
-        const normalized = Array.isArray(data) ? [...data].sort((a, b) => a.localeCompare(b, "es")) : [];
+        const normalized = Array.isArray(data) ? [...new Set(data)].sort((a, b) => a.localeCompare(b, "es")) : [];
         cacheRef.current.institutions = normalized;
-        if (mounted) setInstitutions(normalized);
+        cacheRef.current.institutionSearch = normalized.map((item) => ({ label: item, searchKey: normalizeSearchText(item) }));
       } catch (error) {
-        if (mounted && error.name !== "AbortError") setErrorMessage("No fue posible cargar el catalogo de instituciones.");
+        if (mounted && error.name !== "AbortError") setErrorMessage("No fue posible cargar el catálogo de instituciones.");
       } finally {
         if (mounted) setLoadingInstitutions(false);
       }
@@ -256,7 +367,7 @@ export default function Evolucion() {
         cacheRef.current.institutionalYears[institution] = normalized;
         if (mounted) setYears(normalized);
       } catch (error) {
-        if (mounted && error.name !== "AbortError") setErrorMessage("No fue posible cargar los periodos de la institucion seleccionada.");
+        if (mounted && error.name !== "AbortError") setErrorMessage("No fue posible cargar los periodos de la institución seleccionada.");
       } finally {
         if (mounted) setLoadingYears(false);
       }
@@ -355,6 +466,18 @@ export default function Evolucion() {
   const comparisonRows = isInstitutional ? buildInstitutionRows(institutionData, nationalData) : buildNationalRows(nationalData);
   const loadingResults = isInstitutional ? loadingInstitutionData || loadingNationalData : loadingNationalData;
   const hasResults = isInstitutional ? Boolean(institution && period && institutionData) : Boolean(period && nationalData);
+  const institutionOptions = isInstitutional ? findInstitutionMatches(institutionInput, cacheRef.current.institutionSearch) : [];
+  const periodLocked = isInstitutional && !institution;
+  const periodDisabled = loadingYears || periodLocked;
+  const periodPlaceholder = periodLocked ? "Selecciona primero una institución" : "Seleccione un periodo fiscal";
+
+  const resetInstitutionSelection = () => {
+    setInstitution("");
+    setPeriod("");
+    setYears([]);
+    setInstitutionData(null);
+    setNationalData(null);
+  };
 
   const resetSelections = (nextTab) => {
     setErrorMessage("");
@@ -363,42 +486,34 @@ export default function Evolucion() {
     setYears([]);
     setInstitutionData(null);
     setNationalData(null);
-    if (nextTab === "general") setInstitution("");
+    if (nextTab === "general") {
+      setInstitution("");
+      setInstitutionInput("");
+    }
   };
 
   return (
-    <Paper className={baseClasses.paper_search} elevation={15}>
+    <Paper className={baseClasses.paper_search} elevation={15} sx={{ mb: 4 }}>
       <Grid container spacing={0} className={baseClasses.root}>
         <Grid item xs={12} className={baseClasses.infoBusqueda}>
-          <Typography paragraph><b>Aqui puedes consultar:</b></Typography>
+          <Typography paragraph><b>Aquí puedes consultar:</b></Typography>
           <ul className={baseClasses.ul}>
-            <li className={baseClasses.li}><Typography color="textPrimary" display="inline">El panorama institucional por ente publico y periodo fiscal.</Typography></li>
+            <li className={baseClasses.li}><Typography color="textPrimary" display="inline">El panorama institucional por ente público y periodo fiscal.</Typography></li>
             <li className={baseClasses.li}><Typography color="textPrimary" display="inline">El concentrado nacional del ejercicio seleccionado.</Typography></li>
             <li className={baseClasses.li}><Typography color="textPrimary" display="inline">Hallazgos por eje y comparativos con base en declaraciones completas y simplificadas.</Typography></li>
           </ul>
         </Grid>
 
         <Grid item xs={12} className={baseClasses.infoBusqueda}>
-          <Box sx={{ border: "1px solid", borderColor: "background.border", borderBottom: "none", borderRadius: "10px 10px 0 0", overflow: "hidden", backgroundColor: "background.noSelect" }}>
-            <Tabs value={tab} onChange={(event, value) => value && value !== tab && resetSelections(value)} variant="fullWidth" sx={{ "& .MuiTabs-indicator": { backgroundColor: "primary.main", height: 2 } }}>
+          <Box sx={{ position: "relative", zIndex: 0, isolation: "isolate", border: "1px solid", borderColor: "background.border", borderBottom: "none", borderRadius: "10px 10px 0 0", overflow: "hidden", backgroundColor: "background.noSelect" }}>
+            <Tabs value={tab} onChange={(event, value) => value && value !== tab && resetSelections(value)} variant="fullWidth" sx={{ "& .MuiTabs-indicator": { display: "none" } }}>
               <Tab
                 value="institutional"
                 icon={<BusinessIcon fontSize="small" />}
                 iconPosition="start"
                 label="Panorama institucional"
                 wrapped
-                sx={{
-                  minHeight: 64,
-                  textTransform: "none",
-                  fontWeight: 600,
-                  color: "text.primary",
-                  backgroundColor: "background.noSelect",
-                  borderBottom: "1px solid rgba(88,49,113,0.08)",
-                  "&.Mui-selected": {
-                    color: "primary.main",
-                    backgroundColor: "rgba(88,49,113,0.12)",
-                  },
-                }}
+                sx={PANORAMA_TAB_SX}
               />
               <Tab
                 value="general"
@@ -406,18 +521,7 @@ export default function Evolucion() {
                 iconPosition="start"
                 label="Panorama nacional"
                 wrapped
-                sx={{
-                  minHeight: 64,
-                  textTransform: "none",
-                  fontWeight: 600,
-                  color: "text.primary",
-                  backgroundColor: "background.noSelect",
-                  borderBottom: "1px solid rgba(88,49,113,0.08)",
-                  "&.Mui-selected": {
-                    color: "primary.main",
-                    backgroundColor: "rgba(88,49,113,0.12)",
-                  },
-                }}
+                sx={PANORAMA_TAB_SX}
               />
             </Tabs>
           </Box>
@@ -434,10 +538,10 @@ export default function Evolucion() {
                       {isInstitutional ? "Panorama institucional" : "Panorama nacional"}
                     </Typography>
                     <Typography sx={{ fontSize: { xs: "1rem", md: "1.2rem" }, lineHeight: 1.2, fontWeight: 700, color: "primary.main", wordBreak: "break-word" }}>
-                      {isInstitutional ? institution || "Selecciona una institucion" : period ? `Ejercicio ${period}` : "Selecciona un periodo fiscal"}
+                      {isInstitutional ? institution || "Selecciona una institución" : period ? `Ejercicio ${period}` : "Selecciona un periodo fiscal"}
                     </Typography>
                     <Typography variant="body2" sx={{ mt: 0.4, color: "text.secondary", maxWidth: 700 }}>
-                      {isInstitutional ? "Vista agregada por institucion con comparativo nacional del ejercicio seleccionado." : "Concentrado nacional del ejercicio fiscal seleccionado."}
+                      {isInstitutional ? "Vista agregada por institución con comparativo nacional del ejercicio seleccionado." : "Concentrado nacional del ejercicio fiscal seleccionado."}
                     </Typography>
                   </Box>
                 </Stack>
@@ -448,19 +552,69 @@ export default function Evolucion() {
             <Grid container spacing={2}>
               {isInstitutional && (
                 <Grid item xs={12} md={6}>
-                  <FormControl fullWidth>
-                    <TextField select label="Institucion" value={institution} onChange={(event) => { setErrorMessage(""); setInstitution(event.target.value); setPeriod(""); setYears([]); setInstitutionData(null); setNationalData(null); }} disabled={loadingInstitutions} sx={{ backgroundColor: "background.noSelect" }}>
-                      <MenuItem value="">Seleccione una institucion</MenuItem>
-                      {institutions.map((item) => <MenuItem key={item} value={item}>{item}</MenuItem>)}
-                    </TextField>
-                  </FormControl>
+                  <Autocomplete
+                    fullWidth
+                    options={institutionOptions}
+                    value={institution || null}
+                    inputValue={institutionInput}
+                    loading={loadingInstitutions}
+                    autoHighlight
+                    openOnFocus
+                    clearOnBlur={false}
+                    filterOptions={(options) => options}
+                    noOptionsText={institutionInput.trim().length < 2 ? "Escribe al menos 2 letras para buscar" : "No se encontraron instituciones"}
+                    onChange={(event, value) => {
+                      setErrorMessage("");
+                      setPeriod("");
+                      setYears([]);
+                      setInstitutionData(null);
+                      setNationalData(null);
+                      const nextInstitution = value || "";
+                      setInstitution(nextInstitution);
+                      setInstitutionInput(nextInstitution);
+                    }}
+                    onInputChange={(event, value, reason) => {
+                      setInstitutionInput(value);
+                      if (reason === "clear") {
+                        setErrorMessage("");
+                        resetInstitutionSelection();
+                        return;
+                      }
+                      if (reason === "input" && institution) {
+                        setErrorMessage("");
+                        resetInstitutionSelection();
+                      }
+                    }}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        label="Institución"
+                        placeholder="Escribe al menos 2 letras para buscar"
+                        InputLabelProps={{ shrink: true }}
+                        sx={SELECT_FIELD_SX}
+                      />
+                    )}
+                    ListboxProps={{ style: { maxHeight: 320 } }}
+                  />
                 </Grid>
               )}
 
               <Grid item xs={12} md={isInstitutional ? 6 : 12}>
                 <FormControl fullWidth>
-                  <TextField select label="Periodo fiscal" value={period} onChange={(event) => { setErrorMessage(""); setPeriod(event.target.value); setInstitutionData(null); setNationalData(null); }} disabled={loadingYears || (isInstitutional && !institution)} sx={{ backgroundColor: "background.noSelect" }}>
-                    <MenuItem value="">Seleccione un periodo fiscal</MenuItem>
+                  <TextField
+                    select
+                    label="Periodo fiscal"
+                    value={period}
+                    onChange={(event) => { setErrorMessage(""); setPeriod(event.target.value); setInstitutionData(null); setNationalData(null); }}
+                    disabled={periodDisabled}
+                    sx={periodLocked ? [SELECT_FIELD_SX, LOCKED_SELECT_FIELD_SX] : SELECT_FIELD_SX}
+                    InputLabelProps={{ shrink: true }}
+                    SelectProps={{
+                      displayEmpty: true,
+                      renderValue: (selected) => renderSelectValue(selected, periodPlaceholder),
+                    }}
+                  >
+                    <MenuItem value="" disabled sx={{ display: "none" }}>Seleccione un periodo fiscal</MenuItem>
                     {years.map((item) => <MenuItem key={item} value={item}>{item}</MenuItem>)}
                   </TextField>
                 </FormControl>
@@ -470,7 +624,7 @@ export default function Evolucion() {
                 <Grid item xs={12}>
                   <Stack direction="row" spacing={1.5} alignItems="center">
                     <CircularProgress size={18} />
-                    <Typography variant="body2" color="text.secondary">Actualizando catalogos disponibles...</Typography>
+                    <Typography variant="body2" color="text.secondary">Actualizando catálogos disponibles...</Typography>
                   </Stack>
                 </Grid>
               )}
@@ -519,8 +673,8 @@ export default function Evolucion() {
               </Box>
 
               <Paper elevation={0} sx={{ ...PANEL_SX, minWidth: 0 }}>
-                <Typography variant="h6" sx={{ color: "primary.main", mb: 1 }}>Distribucion de hallazgos por tipo de declaracion</Typography>
-                <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>Identifica el volumen de observaciones detectadas por eje de analisis.</Typography>
+                <Typography variant="h6" sx={{ color: "primary.main", mb: 1 }}>Distribución de hallazgos por tipo de declaración</Typography>
+                <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>Identifica el volumen de observaciones detectadas por eje de análisis.</Typography>
                 <Stack spacing={2.5} sx={{ minWidth: 0 }}>
                     <RiskPanel title="Declaraciones completas" count={stats.complete} counts={completeCounts} rows={riskRowsComplete} chipSx={{ backgroundColor: "#d1ecf1", color: "#0c5460", fontWeight: 700 }} />
                     <RiskPanel title="Declaraciones simplificadas" count={stats.simplified} counts={simplifiedCounts} rows={riskRowsSimplified} chipSx={{ backgroundColor: "#f8d7da", color: "#721c24", fontWeight: 700 }} />
@@ -528,15 +682,15 @@ export default function Evolucion() {
               </Paper>
 
               <Paper elevation={0} sx={{ ...PANEL_SX, minWidth: 0, overflow: "hidden" }}>
-                <Typography variant="h6" sx={{ color: "primary.main", mb: 1 }}>{isInstitutional ? "Comparativo de metricas" : "Resumen nacional por eje"}</Typography>
-                <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>{isInstitutional ? "Compara el cumplimiento de la institucion seleccionada contra el promedio nacional en declaraciones completas." : "Porcentaje de cumplimiento nacional en declaraciones completas para cada eje analizado."}</Typography>
+                <Typography variant="h6" sx={{ color: "primary.main", mb: 1 }}>{isInstitutional ? "Comparativo de métricas" : "Resumen nacional por eje"}</Typography>
+                <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>{isInstitutional ? "Compara el cumplimiento de la institución seleccionada contra el promedio nacional en declaraciones completas." : "Porcentaje de cumplimiento nacional en declaraciones completas para cada eje analizado."}</Typography>
                 {comparisonRows.length ? (
                   <TableContainer sx={{ width: "100%", maxWidth: "100%", overflowX: "auto" }}>
                     <Table size="small" sx={{ minWidth: isInstitutional ? 720 : 520 }}>
                       <TableHead>
                         <TableRow>
-                          <TableCell sx={{ fontWeight: 700, color: "primary.main" }}>Indice</TableCell>
-                          {isInstitutional && <TableCell align="center" sx={{ fontWeight: 700, color: "primary.main" }}>Institucion</TableCell>}
+                          <TableCell sx={{ fontWeight: 700, color: "primary.main" }}>Índice</TableCell>
+                          {isInstitutional && <TableCell align="center" sx={{ fontWeight: 700, color: "primary.main" }}>Institución</TableCell>}
                           <TableCell align="center" sx={{ fontWeight: 700, color: "primary.main" }}>{isInstitutional ? "Promedio nacional" : "Valor nacional"}</TableCell>
                           <TableCell sx={{ fontWeight: 700, color: "primary.main" }}>Lectura</TableCell>
                         </TableRow>
@@ -554,15 +708,15 @@ export default function Evolucion() {
                     </Table>
                   </TableContainer>
                 ) : (
-                  <Alert severity="info" sx={{ backgroundColor: "#d1ecf1", color: "#0c5460", border: "1px solid #bee5eb" }}>El comparativo nacional todavia no esta disponible para los filtros seleccionados.</Alert>
+                  <Alert severity="info" sx={{ backgroundColor: "#d1ecf1", color: "#0c5460", border: "1px solid #bee5eb" }}>El comparativo nacional todavía no está disponible para los filtros seleccionados.</Alert>
                 )}
               </Paper>
             </Stack>
           ) : (
-            <Paper elevation={0} sx={{ p: 4, textAlign: "center", border: "1px dashed", borderColor: "background.border", backgroundColor: "background.opaque" }}>
+            <Paper elevation={0} sx={{ mt: 2, p: 4, textAlign: "center", border: "1px dashed", borderColor: "background.border", backgroundColor: "background.opaque" }}>
               <CalendarMonthIcon sx={{ fontSize: 42, color: "primary.main", mb: 1 }} />
-              <Typography variant="h6" sx={{ color: "primary.main", mb: 1 }}>{isInstitutional ? "Selecciona una institucion y un periodo fiscal." : "Selecciona un periodo fiscal para consultar el panorama nacional."}</Typography>
-              <Typography variant="body2" color="text.secondary">Los resultados se cargan automaticamente en cuanto completes los filtros requeridos.</Typography>
+              <Typography variant="h6" sx={{ color: "primary.main", mb: 1 }}>{isInstitutional ? "Selecciona una institución y un periodo fiscal." : "Selecciona un periodo fiscal para consultar el panorama nacional."}</Typography>
+              <Typography variant="body2" color="text.secondary">Los resultados se cargan automáticamente en cuanto completes los filtros requeridos.</Typography>
             </Paper>
           )}
         </Grid>
