@@ -1,5 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
   Alert,
   Autocomplete,
   Box,
@@ -27,6 +30,7 @@ import BusinessIcon from "@mui/icons-material/Business";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import FactCheckOutlinedIcon from "@mui/icons-material/FactCheckOutlined";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import InsightsOutlinedIcon from "@mui/icons-material/InsightsOutlined";
@@ -61,6 +65,24 @@ const STATUS_SX = {
   worse: { icon: <WarningAmberOutlinedIcon fontSize="small" />, backgroundColor: "#fff3cd", color: "#856404", border: "1px solid #ffeeba" },
 };
 const PANEL_SX = { p: { xs: 2, md: 3 }, border: "1px solid", borderColor: "background.border", borderRadius: 3, backgroundColor: "background.paper" };
+const METRIC_RESULT_SX = {
+  CUMPLE: { backgroundColor: "#d4edda", color: "#155724", border: "1px solid #c3e6cb" },
+  NO_CUMPLE: { backgroundColor: "#fff3cd", color: "#856404", border: "1px solid #ffeeba" },
+  SIN_DATO: { backgroundColor: "#e2e3e5", color: "#383d41", border: "1px solid #d6d8db" },
+  NO_HOMOLOGADO: { backgroundColor: "#f8d7da", color: "#721c24", border: "1px solid #f5c6cb" },
+};
+const METRIC_CATALOG = {
+  M_1_1_06_NIVEL_VS_TIPO_DEC: {
+    title: "Nivel jerárquico vs tipo de declaración",
+    summary: "Verifica si el nivel jerárquico reportado es consistente con el tipo de declaración presentada.",
+    referenceSummary: "Cruza el nivel del empleo/cargo/comisión contra el indicador de declaración completa.",
+    referenceFields: [
+      "declaracion.situacionPatrimonial.datosEmpleoCargoComision.nivelEmpleoCargoComision",
+      "metadata.declaracionCompleta",
+    ],
+    logic: "Homologa el nivel jerárquico en dos grupos: nivel inferior y jefatura de departamento o superior. Si falta el dato, marca SIN_DATO. Si el valor existe pero no cae en el catálogo homologado, marca NO_HOMOLOGADO. Si el nivel es jefatura de departamento o superior y la declaración no es completa, marca NO_CUMPLE. En los demás casos marca CUMPLE.",
+  },
+};
 const SELECT_FIELD_SX = {
   backgroundColor: "background.noSelect",
   "& .MuiOutlinedInput-root": {
@@ -171,6 +193,53 @@ function getStats(data) {
   return data?.totales ? { total: data.totales.totalDeclaraciones || 0, complete: data.totales.completas || 0, simplified: data.totales.noCompletas || 0 } : { total: 0, complete: 0, simplified: 0 };
 }
 
+function summarizeMetricValues(values = {}) {
+  const cumple = values?.CUMPLE || 0;
+  const noCumple = values?.NO_CUMPLE || 0;
+  const sinDato = values?.SIN_DATO || 0;
+  const noHomologado = values?.NO_HOMOLOGADO || 0;
+  const evaluadas = cumple + noCumple;
+  const total = evaluadas + sinDato + noHomologado;
+  return { cumple, noCumple, sinDato, noHomologado, evaluadas, total };
+}
+
+function getMetricDoc(metricId) {
+  return METRIC_CATALOG[metricId] || {
+    title: metricId,
+    summary: "Métrica presente en los agregados del ejercicio seleccionado.",
+    referenceSummary: "La referencia específica de esta métrica aún no está documentada en esta vista.",
+    referenceFields: [],
+    logic: "La visualización ya soporta esta métrica. Cuando su ficha documental se agregue al catálogo, aquí se mostrará su lógica de evaluación.",
+  };
+}
+
+function buildMetricDetails(metricasPorEje = {}) {
+  const completeGroup = metricasPorEje?.completas || {};
+  const simplifiedGroup = metricasPorEje?.simplificadas || {};
+  const axisKeys = [...new Set([...AXES, ...Object.keys(completeGroup), ...Object.keys(simplifiedGroup)])];
+  const details = [];
+
+  axisKeys.forEach((axis) => {
+    const completeMetrics = completeGroup[axis] || {};
+    const simplifiedMetrics = simplifiedGroup[axis] || {};
+    const metricIds = [...new Set([...Object.keys(completeMetrics), ...Object.keys(simplifiedMetrics)])].sort();
+
+    metricIds.forEach((metricId) => {
+      const doc = getMetricDoc(metricId);
+      details.push({
+        metricId,
+        axis,
+        axisLabel: RISK_LABELS[axis] || AXIS_LABELS[axis] || axis,
+        ...doc,
+        complete: summarizeMetricValues(completeMetrics[metricId]),
+        simplified: summarizeMetricValues(simplifiedMetrics[metricId]),
+      });
+    });
+  });
+
+  return details;
+}
+
 function axisPct(axisData) {
   if (!axisData) return 0;
   let ok = 0;
@@ -264,6 +333,32 @@ async function fetchJson(url, signal) {
 function StatusChip({ status, label }) {
   const config = STATUS_SX[status] || STATUS_SX.equal;
   return <Chip icon={config.icon} label={label} size="small" sx={{ backgroundColor: config.backgroundColor, color: config.color, border: config.border, fontWeight: 700, borderRadius: "8px", "& .MuiChip-icon": { color: "inherit" } }} />;
+}
+
+function MetricValueSummary({ label, summary }) {
+  return (
+    <Box
+      sx={{
+        p: 2,
+        borderRadius: 2,
+        border: "1px solid",
+        borderColor: "background.border",
+        backgroundColor: "background.paper",
+        minWidth: 0,
+      }}
+    >
+      <Typography variant="subtitle2" sx={{ color: "primary.main", fontWeight: 700, mb: 0.75 }}>{label}</Typography>
+      <Typography variant="caption" color="text.secondary" sx={{ display: "block", mb: 1.25 }}>
+        Evaluadas: {summary.evaluadas} | Registros observados: {summary.total}
+      </Typography>
+      <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap">
+        <Chip size="small" label={`Cumple: ${summary.cumple}`} sx={METRIC_RESULT_SX.CUMPLE} />
+        <Chip size="small" label={`No cumple: ${summary.noCumple}`} sx={METRIC_RESULT_SX.NO_CUMPLE} />
+        <Chip size="small" label={`Sin dato: ${summary.sinDato}`} sx={METRIC_RESULT_SX.SIN_DATO} />
+        <Chip size="small" label={`No homologado: ${summary.noHomologado}`} sx={METRIC_RESULT_SX.NO_HOMOLOGADO} />
+      </Stack>
+    </Box>
+  );
 }
 
 function RiskPanel({ title, count, counts, rows, chipSx }) {
@@ -464,6 +559,7 @@ export default function Evolucion() {
   const completeCounts = getMetricCounts(sourceData?.metricasPorEje, "completas");
   const simplifiedCounts = getMetricCounts(sourceData?.metricasPorEje, "simplificadas");
   const comparisonRows = isInstitutional ? buildInstitutionRows(institutionData, nationalData) : buildNationalRows(nationalData);
+  const metricDetails = buildMetricDetails(sourceData?.metricasPorEje);
   const loadingResults = isInstitutional ? loadingInstitutionData || loadingNationalData : loadingNationalData;
   const hasResults = isInstitutional ? Boolean(institution && period && institutionData) : Boolean(period && nationalData);
   const institutionOptions = isInstitutional ? findInstitutionMatches(institutionInput, cacheRef.current.institutionSearch) : [];
@@ -711,6 +807,95 @@ export default function Evolucion() {
                   <Alert severity="info" sx={{ backgroundColor: "#d1ecf1", color: "#0c5460", border: "1px solid #bee5eb" }}>El comparativo nacional todavía no está disponible para los filtros seleccionados.</Alert>
                 )}
               </Paper>
+
+              {metricDetails.length > 0 && (
+                <Paper elevation={0} sx={{ ...PANEL_SX, minWidth: 0 }}>
+                  <Typography variant="h6" sx={{ color: "primary.main", mb: 1 }}>Detalle de métricas evaluadas</Typography>
+                  <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
+                    Cada índice se construye con una o más métricas. Aquí puedes ver qué métrica se está usando, qué campos toma como referencia y cómo se interpreta.
+                  </Typography>
+                  <Stack spacing={1.5}>
+                    {metricDetails.map((detail) => (
+                      <Accordion
+                        key={detail.metricId}
+                        disableGutters
+                        elevation={0}
+                        sx={{
+                          backgroundColor: "background.opaque",
+                          border: "1px solid",
+                          borderColor: "background.border",
+                          borderRadius: "12px !important",
+                          overflow: "hidden",
+                          "&:before": { display: "none" },
+                        }}
+                      >
+                        <AccordionSummary expandIcon={<ExpandMoreIcon />} sx={{ px: 2, py: 0.5 }}>
+                          <Stack
+                            direction={{ xs: "column", md: "row" }}
+                            spacing={1.5}
+                            justifyContent="space-between"
+                            alignItems={{ xs: "flex-start", md: "center" }}
+                            sx={{ width: "100%", minWidth: 0 }}
+                          >
+                            <Box sx={{ minWidth: 0 }}>
+                              <Typography sx={{ color: "primary.main", fontWeight: 700, overflowWrap: "anywhere" }}>{detail.title}</Typography>
+                              <Typography variant="body2" color="text.secondary" sx={{ mt: 0.35, overflowWrap: "anywhere" }}>{detail.summary}</Typography>
+                              <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap" sx={{ mt: 1 }}>
+                                <Chip size="small" label={detail.metricId} sx={{ backgroundColor: "rgba(88,49,113,0.08)", color: "primary.main", fontWeight: 700, border: "1px solid rgba(88,49,113,0.16)" }} />
+                                <Chip size="small" label={detail.axisLabel} sx={{ backgroundColor: "rgba(40,148,181,0.08)", color: "#0c5460", fontWeight: 700, border: "1px solid rgba(40,148,181,0.18)" }} />
+                              </Stack>
+                            </Box>
+                            <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap">
+                              <Chip size="small" label={`Completas evaluadas: ${detail.complete.evaluadas}`} sx={{ backgroundColor: "#d1ecf1", color: "#0c5460", fontWeight: 700 }} />
+                              <Chip size="small" label={`Simplificadas evaluadas: ${detail.simplified.evaluadas}`} sx={{ backgroundColor: "#f8d7da", color: "#721c24", fontWeight: 700 }} />
+                            </Stack>
+                          </Stack>
+                        </AccordionSummary>
+                        <AccordionDetails sx={{ px: 2, pb: 2.25, pt: 0 }}>
+                          <Stack spacing={2}>
+                            <Box
+                              sx={{
+                                display: "grid",
+                                gridTemplateColumns: { xs: "minmax(0, 1fr)", md: "repeat(2, minmax(0, 1fr))" },
+                                gap: 2,
+                                alignItems: "start",
+                              }}
+                            >
+                              <Box sx={{ p: 2, borderRadius: 2, backgroundColor: "background.paper", border: "1px solid", borderColor: "background.border", minWidth: 0, display: "flex", flexDirection: "column", minHeight: { md: 156 } }}>
+                                <Typography variant="subtitle2" sx={{ color: "primary.main", fontWeight: 700, mb: 0.75 }}>Referencia evaluada</Typography>
+                                <Typography variant="body2" color="text.secondary" sx={{ mb: detail.referenceFields?.length ? 1.25 : 0 }}>
+                                  {detail.referenceSummary}
+                                </Typography>
+                                {detail.referenceFields?.length > 0 && (
+                                  <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap">
+                                    {detail.referenceFields.map((field) => (
+                                      <Chip key={field} size="small" label={field} variant="outlined" sx={{ borderColor: "rgba(88,49,113,0.22)", color: "primary.main" }} />
+                                    ))}
+                                  </Stack>
+                                )}
+                              </Box>
+                              <Box sx={{ p: 2, borderRadius: 2, backgroundColor: "background.paper", border: "1px solid", borderColor: "background.border", minWidth: 0, display: "flex", flexDirection: "column", minHeight: { md: 156 } }}>
+                                <Typography variant="subtitle2" sx={{ color: "primary.main", fontWeight: 700, mb: 0.75 }}>Cómo funciona</Typography>
+                                <Typography variant="body2" color="text.secondary">{detail.logic}</Typography>
+                              </Box>
+                            </Box>
+                            <Box
+                              sx={{
+                                display: "grid",
+                                gridTemplateColumns: { xs: "minmax(0, 1fr)", md: "repeat(2, minmax(0, 1fr))" },
+                                gap: 2,
+                              }}
+                            >
+                              <MetricValueSummary label="Declaraciones completas" summary={detail.complete} />
+                              <MetricValueSummary label="Declaraciones simplificadas" summary={detail.simplified} />
+                            </Box>
+                          </Stack>
+                        </AccordionDetails>
+                      </Accordion>
+                    ))}
+                  </Stack>
+                </Paper>
+              )}
             </Stack>
           ) : (
             <Paper elevation={0} sx={{ mt: 2, p: 4, textAlign: "center", border: "1px dashed", borderColor: "background.border", backgroundColor: "background.opaque" }}>
