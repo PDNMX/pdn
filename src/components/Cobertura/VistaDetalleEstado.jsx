@@ -206,7 +206,7 @@ const VistaDetalleEstado = props => {
             </Typography>
 
             <Typography align='center' color='#000' paragraph>
-              Información al 31 de diciembre de 2025, reportada por la Secretaría Ejecutiva del Sistema Estatal Anticorrupción 
+              Información al 31 de marzo de 2026, reportada por la Secretaría Ejecutiva del Sistema Estatal Anticorrupción 
             </Typography>
 
             {/* Header con resumen general - Unificado */}
