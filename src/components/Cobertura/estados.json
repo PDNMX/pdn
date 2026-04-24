@@ -1170,6 +1170,103 @@
       }
     }
   },
+    {
+    "route": "/cobertura/hidalgo",
+    "name": "Hidalgo",
+    "icon1": "ico-edo-hgo.svg",
+    "icon2": "hgo-icono.svg",
+    "disabled": false,
+    "data": {
+      "s1": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 81
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 2
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 4
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 4
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 84
+        }
+      },
+      "s2": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 81
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 2
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 4
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 4
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 84
+        }
+      },
+      "s3": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 0
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 2
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 4
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 0
+        }
+      },
+      "s6": {
+        "ejecutivo": {
+          "tiene": 0,
+          "total": 81
+        },
+        "legislativo": {
+          "tiene": 0,
+          "total": 2
+        },
+        "judicial": {
+          "tiene": 0,
+          "total": 4
+        },
+        "ocas": {
+          "tiene": 0,
+          "total": 4
+        },
+        "municipal": {
+          "tiene": 0,
+          "total": 84
+        }
+      }
+    }
+  },
   {
     "route": "/cobertura/jalisco",
     "name": "Jalisco",
@@ -2823,103 +2920,6 @@
         "municipal": {
           "tiene": 0,
           "total": 1
-        }
-      }
-    }
-  },
-  {
-    "route": "/cobertura/hidalgo",
-    "name": "Hidalgo",
-    "icon1": "ico-edo-hgo.svg",
-    "icon2": "hgo-icono.svg",
-    "disabled": true,
-    "data": {
-      "s1": {
-        "ejecutivo": {
-          "tiene": 0,
-          "total": 81
-        },
-        "legislativo": {
-          "tiene": 0,
-          "total": 2
-        },
-        "judicial": {
-          "tiene": 0,
-          "total": 4
-        },
-        "ocas": {
-          "tiene": 0,
-          "total": 4
-        },
-        "municipal": {
-          "tiene": 0,
-          "total": 84
-        }
-      },
-      "s2": {
-        "ejecutivo": {
-          "tiene": 0,
-          "total": 81
-        },
-        "legislativo": {
-          "tiene": 0,
-          "total": 2
-        },
-        "judicial": {
-          "tiene": 0,
-          "total": 4
-        },
-        "ocas": {
-          "tiene": 0,
-          "total": 4
-        },
-        "municipal": {
-          "tiene": 0,
-          "total": 84
-        }
-      },
-      "s3": {
-        "ejecutivo": {
-          "tiene": 0,
-          "total": 0
-        },
-        "legislativo": {
-          "tiene": 0,
-          "total": 0
-        },
-        "judicial": {
-          "tiene": 0,
-          "total": 2
-        },
-        "ocas": {
-          "tiene": 0,
-          "total": 4
-        },
-        "municipal": {
-          "tiene": 0,
-          "total": 0
-        }
-      },
-      "s6": {
-        "ejecutivo": {
-          "tiene": 0,
-          "total": 81
-        },
-        "legislativo": {
-          "tiene": 0,
-          "total": 2
-        },
-        "judicial": {
-          "tiene": 0,
-          "total": 4
-        },
-        "ocas": {
-          "tiene": 0,
-          "total": 4
-        },
-        "municipal": {
-          "tiene": 0,
-          "total": 84
         }
       }
     }
