@@ -32,3 +32,7 @@ data-*.json
 src/__test__/utils/readFiles/data/*.json
 #declaraciones-test
 src/__test__/utils/readFiles/data/*/*.json
+
+resultados.json
+failed-tests.json
+errores.txt

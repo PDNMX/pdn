@@ -1,0 +1,4 @@
+
+obtener los errores con su tipo de error
+
+node get-failed-tests.js | grep -E 'file|Type' > errores.txt

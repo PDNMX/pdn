@@ -49,7 +49,7 @@
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
-    "test": "react-app-rewired test -w 8",
+    "test": "react-app-rewired test --watchAll -w 20 --no-colors --json --outputFile=./resultados.json",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
