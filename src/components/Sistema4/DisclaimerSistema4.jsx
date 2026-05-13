@@ -59,7 +59,7 @@ const DisclaimerSistema4 = ({ open, handleClose }) => {
             <Highlight>AVISO IMPORTANTE - PROTOTIPO EN DESARROLLO</Highlight>
           </Typography>
         </DialogTitle>
-        <DialogContent>
+        <DialogContent sx={{ textAlign: "justify" }}>
           <Typography paragraph>
             El presente sistema constituye un prototipo conceptual del módulo de
             consulta y transparencia para el{" "}
@@ -74,11 +74,9 @@ const DisclaimerSistema4 = ({ open, handleClose }) => {
             <Highlight>Naturaleza del Prototipo</Highlight>
           </Typography>
           <Typography paragraph>
-            Este desarrollo se presenta como una propuesta de concepto que busca
-            materializar las funcionalidades requeridas para dar cumplimiento al{" "}
+            Este desarrollo se presenta como una propuesta de concepto que busca materializar las funcionalidades mínimas requeridas para dar cumplimiento al{" "}
             <Highlight>
-              artículo 55 de la Ley General del Sistema Nacional Anticorrupción
-              (LGSNA)
+              artículo 55 de la Ley General del Sistema Nacional Anticorrupción (LGSNA)
             </Highlight>
             , específicamente en lo concerniente a la publicación y consulta de:
           </Typography>
@@ -96,9 +94,7 @@ const DisclaimerSistema4 = ({ open, handleClose }) => {
           </Typography>
           <Box mb={2}>
             <Typography paragraph>
-              <Highlight>Estado de Desarrollo:</Highlight> La presente versión
-              es un prototipo sujeto a revisión, validación y aprobación por
-              parte de las autoridades competentes del{" "}
+              <Highlight>Estado de Desarrollo:</Highlight> La presente versión es un prototipo sujeto a revisión, validación y aprobación por parte de las autoridades competentes del Comité Coordinador (CC) y de los integrantes del{" "}
               <Link
                 href={snfInfoLink}
                 target="_blank"
@@ -113,20 +109,16 @@ const DisclaimerSistema4 = ({ open, handleClose }) => {
             </Typography>
             <StyledList>
               <ListItemText>
-                Retroalimentación del SNF y sus integrantes
+                La retroalimentación de los integrantes del SNF
               </ListItemText>
               <ListItemText>Requerimientos normativos adicionales</ListItemText>
               <ListItemText>
-                Necesidades operativas identificadas durante la fase de pruebas
+                Necesidades operativas identificadas durante el pilotaje
               </ListItemText>
               <ListItemText>Estándares técnicos de la PDN</ListItemText>
             </StyledList>
             <Typography paragraph>
-              <Highlight>Compromiso de Cumplimiento:</Highlight> Este prototipo
-              tiene como objetivo fundamental apegarse a los lineamientos
-              establecidos en el marco normativo aplicable y proporcionar
-              productos que satisfagan los requerimientos del artículo 55 de la
-              LGSNA.
+              <Highlight>Compromiso de Cumplimiento:</Highlight> Este prototipo tiene como objetivo fundamental poder ser un precedente que contemple al menos lo mencionado en el artículo 55 de la LGSNA y las Bases para el Funcionamiento de la Plataforma Digital Nacional.
             </Typography>
           </Box>
 
@@ -134,10 +126,7 @@ const DisclaimerSistema4 = ({ open, handleClose }) => {
             <Highlight>Alcance del Prototipo</Highlight>
           </Typography>
           <Typography paragraph>
-            Los datos, funcionalidades y resultados mostrados en este sistema
-            son ilustrativos y de carácter demostrativo. La información
-            definitiva estará disponible una vez que el sistema sea formalmente
-            validado e implementado por las instancias correspondientes.
+            Los datos, funcionalidades y resultados mostrados en este sistema son ilustrativos y de carácter demostrativo. La información definitiva estará disponible una vez que el sistema sea formalmente capturado y validado por los entes públicos participantes en el pilotaje.
           </Typography>
         </DialogContent>
         <DialogActions>
