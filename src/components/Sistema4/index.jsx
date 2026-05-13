@@ -109,7 +109,7 @@ const Index = ({ classes }) => {
     list: [
       {
         icon: <DescriptionIcon />,
-        label: "Programas Anuales de Auditorías (Fiscalización)",
+        label: "Programas Anuales de Auditorías",
         aria: "auditorias",
         content: <TablaAuditorias />,
       },

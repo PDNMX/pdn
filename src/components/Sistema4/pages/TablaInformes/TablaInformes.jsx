@@ -6,9 +6,9 @@ const TablaInformes = () => {
   const { informes } = useSistema4Data();
 
   const descriptionItems = [
-    "Esta sección reúne los informes públicos generados por las entidades de control del país como resultado de sus auditorías y revisiones. A diferencia de los Programas Anuales (que son la planeación), estos documentos muestran los hallazgos, observaciones y seguimientos detectados.",
-    "Su publicación, conforme al Artículo 55 de la LGSNA, garantiza el derecho de la ciudadanía a conocer los resultados de la vigilancia y el control de los recursos públicos.",
-    "Puede filtrar los informes por año, trimestre, tipo de auditoría o entidad fiscalizadora.",
+    "Conforme al Artículo 55 de la LGSNA, se establece que, al menos, lo que también debe contemplar el sistema son los informes que deben hacerse públicos en términos de las disposiciones jurídicas aplicables.",
+    "Esta sección reúne los informes públicos generados por las entidades de control del país como resultado de sus auditorías y revisiones. Estos documentos muestran los hallazgos, observaciones y seguimientos detectados.",
+    "Puede filtrar los informes por año, nombre del informe, ente público o número de actos fiscalizados o concluidos."
   ];
 
   return (

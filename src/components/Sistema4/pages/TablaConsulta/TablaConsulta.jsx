@@ -88,15 +88,7 @@ const TablaConsulta = () => {
 
   const comiteRectorDescriptionItems = [
     <>
-      El artículo 39 de la Ley General del Sistema Nacional Anticorrupción
-      estipula que el SNF contará con un Comité Rector conformado por la
-      Auditoría Superior de la Federación, la Secretaría de la Función Pública y
-      siete miembros rotatorios de entre las instituciones referidas que serán
-      elegidos por periodos de dos años, por consenso de la propia Secretaría de
-      la Función Pública y la Auditoría Superior de la Federación, y que el
-      Comité Rector será presidido de manera dual por el Auditor Superior de la
-      Federación y el titular de la Secretaría de la Función Pública, o por los
-      representantes que, de manera respectiva, designen para estos efectos.{" "}
+      En este sentido el artículo 39 de la Ley General del Sistema Nacional Anticorrupción estipula que el SNF contará con un Comité Rector conformado por la Auditoría Superior de la Federación, la Secretaría de la Función Pública (ahora Secretaría Anticorrupción y Buen Gobierno (SABG)) y siete miembros rotatorios de entre las instituciones referidas que serán elegidos por periodos de dos años, por consenso de la propia Secretaría de la Función Pública (ahora SABG) y la Auditoría Superior de la Federación, y que el Comité Rector será presidido de manera dual por el Auditor Superior de la Federación y el titular de la Secretaría de la Función Pública (ahora SABG), o por los representantes que de manera respectiva designen para estos efectos.{" "}
       <Link
         href="https://www.snf.org.mx/comit%C3%A9-rector.aspx"
         target="_blank"

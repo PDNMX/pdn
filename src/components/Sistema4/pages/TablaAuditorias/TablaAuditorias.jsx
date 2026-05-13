@@ -8,9 +8,8 @@ const TablaAuditorias = () => {
   const { rows } = auditorias;
 
   const descriptionItems = [
-    "En esta sección puede consultar los Programas Anuales de Auditoría (PAA) y sus documentos equivalentes (como Programas Anuales de Fiscalización o de Trabajo) de los distintos órganos fiscalizadores del país.",
-    "En cumplimiento del Artículo 55 de la Ley General del Sistema Nacional Anticorrupción (LGSNA), el objetivo es transparentar la planeación de las auditorías. Esto permite a la ciudadanía conocer qué entidades públicas, programas o fondos serán revisados durante el año.",
-    "Utilice los filtros de la tabla para buscar programas por año, entidad fiscalizadora o área responsable."
+   "En cumplimiento del Artículo 55 de la Ley General del Sistema Nacional Anticorrupción (LGSNA), que establece que, al menos, lo que debe contemplar el sistema son los Programas Anuales de Auditorías de los órganos de fiscalización de los tres órdenes de gobierno.",
+   "En esta sección puede consultar los Programas Anuales de Auditoría (PAA) y sus documentos equivalentes, como son los Programas Anuales de Fiscalización o los Programas Anuales de Trabajo de los distintos órganos fiscalizadores del país.","Utilice los filtros de la tabla para buscar los programas por año, por ente público o por nombre del documento."
   ];
 
   return (
