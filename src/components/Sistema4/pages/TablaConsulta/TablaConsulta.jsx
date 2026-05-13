@@ -125,40 +125,39 @@ const TablaConsulta = () => {
         url: "https://www.asf.gob.mx/Default/Index",
       },
       {
-        nombre:
-          "Órgano Superior de Auditoría y Fiscalización Gubernamental de Colima",
-        url: "https://www.osaf.gob.mx/menu/quienes-somos",
+        nombre: "Auditoría Superior del Estado de Chiapas",
+        url: "https://www.asechiapas.gob.mx/",
       },
       {
         nombre: "Auditoría Superior del Estado de Hidalgo",
         url: "https://www.aseh.gob.mx/",
       },
       {
-        nombre: "Auditoría Superior del Estado de Jalisco",
-        url: "https://www.asej.gob.mx",
-      },
-      {
         nombre: "Auditoría Superior del Estado de Sinaloa",
-        url: "https://www.ase-sinaloa.gob.mx",
+        url: "https://www.ase-sinaloa.gob.mx/",
       },
     ],
     CPCEF: [
       {
-        nombre: "Secretaría de la Función Pública",
-        url:
-          "https://www.gob.mx/cnts/acciones-y-programas/secretaria-de-la-funcion-publica",
+        nombre: "Secretaría Anticorrupción y Buen Gobierno",
+        url: "https://www.gob.mx/buengobierno",
       },
       {
-        nombre: "Contraloría General del Estado de Baja California Sur",
-        url: "https://contraloria.bcs.gob.mx",
+        nombre: "Contraloría del Estado de Aguascalientes",
+        url: "https://www.aguascalientes.gob.mx/Contraloria/",
       },
       {
-        nombre: "Secretaría de la Contraloría del Estado de Campeche",
-        url: "http://www.contraloria.campeche.gob.mx",
+        nombre:
+          "Secretaría Anticorrupción y Buen Gobierno del Estado de Puebla",
+        url: "https://sabg.puebla.gob.mx/index.php",
       },
       {
-        nombre: "Secretaría de la Contraloría General del Estado de Sonora",
-        url: "https://buengobierno.sonora.gob.mx/",
+        nombre: "Secretaría de Contraloría del Estado de Michoacán de Ocampo",
+        url: "https://secoem.michoacan.gob.mx/",
+      },
+      {
+        nombre: "Secretaría de la Función Pública del Estado de Chihuahua",
+        url: "https://chihuahua.gob.mx/tax-portal-principal/secretaria-funcion-publica",
       },
     ],
   };
