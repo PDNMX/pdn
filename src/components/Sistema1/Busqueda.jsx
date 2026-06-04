@@ -553,7 +553,7 @@ class Busqueda extends React.Component {
     return (
       <div>
         {!this.state.dataSelect && (
-          <Paper className={classes.paper_search} elevation={15}>
+          <Paper className={classes.paper_search} elevation={15} style={{ borderRadius: '0px 10px 10px 10px' }}>
             <Grid container spacing={0} className={classes.root}>
               <FormSearch
                 query={this.state.query}
