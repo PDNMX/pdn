@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-cd files
-
 counter=1
 group=1
 
