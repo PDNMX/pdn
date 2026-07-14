@@ -398,8 +398,8 @@
     "data": {
       "s1": {
         "ejecutivo": {
-          "tiene": 69,
-          "total": 69
+          "tiene": 70,
+          "total": 70
         },
         "legislativo": {
           "tiene": 2,
@@ -420,8 +420,8 @@
       },
       "s2": {
         "ejecutivo": {
-          "tiene": 69,
-          "total": 69
+          "tiene": 70,
+          "total": 70
         },
         "legislativo": {
           "tiene": 2,
@@ -465,7 +465,7 @@
       "s6": {
         "ejecutivo": {
           "tiene": 0,
-          "total": 69
+          "total": 70
         },
         "legislativo": {
           "tiene": 0,
@@ -496,7 +496,7 @@
       "s1": {
         "ejecutivo": {
           "tiene": 0,
-          "total": 74
+          "total": 75
         },
         "legislativo": {
           "tiene": 1,
@@ -518,7 +518,7 @@
       "s2": {
         "ejecutivo": {
           "tiene": 49,
-          "total": 74
+          "total": 75
         },
         "legislativo": {
           "tiene": 2,
@@ -548,11 +548,11 @@
         },
         "judicial": {
           "tiene": 0,
-          "total": 2
+          "total": 1
         },
         "ocas": {
           "tiene": 3,
-          "total": 6
+          "total": 7
         },
         "municipal": {
           "tiene": 3,
@@ -563,7 +563,7 @@
       "s6": {
         "ejecutivo": {
           "tiene": 1,
-          "total": 74
+          "total": 75
         },
         "legislativo": {
           "tiene": 0,
@@ -706,7 +706,7 @@
           "total": 8
         },
         "municipal": {
-          "tiene": 19,
+          "tiene": 20,
           "total": 37
         }
       },
@@ -800,7 +800,7 @@
         },
         "ocas": {
           "tiene": 0,
-          "total": 8
+          "total": 6
         },
         "municipal": {
           "tiene": 0,
@@ -821,11 +821,11 @@
           "total": 2
         },
         "ocas": {
-          "tiene": 8,
-          "total": 8
+          "tiene": 6,
+          "total": 6
         },
         "municipal": {
-          "tiene": 64,
+          "tiene": 65,
           "total": 65
         }
       },
@@ -867,7 +867,7 @@
         },
         "ocas": {
           "tiene": 0,
-          "total": 8
+          "total": 6
         },
         "municipal": {
           "tiene": 0,
@@ -941,11 +941,11 @@
           "total": 1
         },
         "ocas": {
-          "tiene": 1,
+          "tiene": 5,
           "total": 7
         },
         "municipal": {
-          "tiene": 0,
+          "tiene": 105,
           "total": 125
         },
         "s3t": true
@@ -1000,7 +1000,7 @@
         },
         "municipal": {
           "tiene": 1,
-          "total": 45
+          "total": 46
         }
       },
       "s2": {
@@ -1021,8 +1021,8 @@
           "total": 7
         },
         "municipal": {
-          "tiene": 13,
-          "total": 45
+          "tiene": 15,
+          "total": 46
         }
       },
       "s3": {
@@ -1043,8 +1043,8 @@
           "total": 7
         },
         "municipal": {
-          "tiene": 29,
-          "total": 29
+          "tiene": 31,
+          "total": 46
         },
         "s3t": true
       },
@@ -1067,7 +1067,7 @@
         },
         "municipal": {
           "tiene": 0,
-          "total": 45
+          "total": 46
         }
       }
     }
@@ -1082,44 +1082,44 @@
       "s1": {
         "ejecutivo": {
           "tiene": 1,
-          "total": 73
+          "total": 57
         },
         "legislativo": {
           "tiene": 0,
-          "total": 3
+          "total": 2
         },
         "judicial": {
-          "tiene": 0,
-          "total": 0
+          "tiene": 1,
+          "total": 1
         },
         "ocas": {
-          "tiene": 3,
+          "tiene": 4,
           "total": 8
         },
         "municipal": {
-          "tiene": 14,
+          "tiene": 25,
           "total": 85
         }
       },
       "s2": {
         "ejecutivo": {
-          "tiene": 3,
-          "total": 73
+          "tiene": 4,
+          "total": 57
         },
         "legislativo": {
           "tiene": 0,
-          "total": 3
+          "total": 2
         },
         "judicial": {
           "tiene": 0,
-          "total": 0
+          "total": 1
         },
         "ocas": {
           "tiene": 3,
           "total": 8
         },
         "municipal": {
-          "tiene": 0,
+          "tiene": 2,
           "total": 85
         }
       },
@@ -1142,22 +1142,22 @@
         },
         "municipal": {
           "tiene": 2,
-          "total": 193
+          "total": 189
         },
         "s3t": true
       },
       "s6": {
         "ejecutivo": {
           "tiene": 0,
-          "total": 73
+          "total": 57
         },
         "legislativo": {
           "tiene": 0,
-          "total": 3
+          "total": 2
         },
         "judicial": {
           "tiene": 0,
-          "total": 0
+          "total": 1
         },
         "ocas": {
           "tiene": 0,
@@ -1170,7 +1170,7 @@
       }
     }
   },
-    {
+  {
     "route": "/cobertura/hidalgo",
     "name": "Hidalgo",
     "icon1": "ico-edo-hgo.svg",
@@ -1179,8 +1179,8 @@
     "data": {
       "s1": {
         "ejecutivo": {
-          "tiene": 0,
-          "total": 81
+          "tiene": 84,
+          "total": 87
         },
         "legislativo": {
           "tiene": 0,
@@ -1188,11 +1188,11 @@
         },
         "judicial": {
           "tiene": 0,
-          "total": 4
+          "total": 3
         },
         "ocas": {
-          "tiene": 0,
-          "total": 4
+          "tiene": 3,
+          "total": 5
         },
         "municipal": {
           "tiene": 0,
@@ -1202,7 +1202,7 @@
       "s2": {
         "ejecutivo": {
           "tiene": 0,
-          "total": 81
+          "total": 87
         },
         "legislativo": {
           "tiene": 0,
@@ -1210,11 +1210,11 @@
         },
         "judicial": {
           "tiene": 0,
-          "total": 4
+          "total": 3
         },
         "ocas": {
           "tiene": 0,
-          "total": 4
+          "total": 5
         },
         "municipal": {
           "tiene": 0,
@@ -1246,7 +1246,7 @@
       "s6": {
         "ejecutivo": {
           "tiene": 0,
-          "total": 81
+          "total": 87
         },
         "legislativo": {
           "tiene": 0,
@@ -1254,11 +1254,11 @@
         },
         "judicial": {
           "tiene": 0,
-          "total": 4
+          "total": 3
         },
         "ocas": {
           "tiene": 0,
-          "total": 4
+          "total": 5
         },
         "municipal": {
           "tiene": 0,
@@ -1292,7 +1292,7 @@
           "total": 5
         },
         "municipal": {
-          "tiene": 257,
+          "tiene": 259,
           "total": 316
         }
       },
@@ -1343,7 +1343,7 @@
       },
       "s6": {
         "ejecutivo": {
-          "tiene": 0,
+          "tiene": 1,
           "total": 123
         },
         "legislativo": {
@@ -1386,11 +1386,11 @@
           "total": 5
         },
         "ocas": {
-          "tiene": 1,
-          "total": 8
+          "tiene": 0,
+          "total": 7
         },
         "municipal": {
-          "tiene": 105,
+          "tiene": 130,
           "total": 159
         }
       },
@@ -1408,8 +1408,8 @@
           "total": 5
         },
         "ocas": {
-          "tiene": 7,
-          "total": 8
+          "tiene": 6,
+          "total": 7
         },
         "municipal": {
           "tiene": 98,
@@ -1418,20 +1418,20 @@
       },
       "s3": {
         "ejecutivo": {
-          "tiene": 13,
-          "total": 13
+          "tiene": 2,
+          "total": 2
         },
         "legislativo": {
-          "tiene": 1,
-          "total": 1
+          "tiene": 2,
+          "total": 2
         },
         "judicial": {
           "tiene": 1,
           "total": 1
         },
         "ocas": {
-          "tiene": 6,
-          "total": 6
+          "tiene": 7,
+          "total": 7
         },
         "municipal": {
           "tiene": 113,
@@ -1454,10 +1454,10 @@
         },
         "ocas": {
           "tiene": 0,
-          "total": 8
+          "total": 7
         },
         "municipal": {
-          "tiene": 68,
+          "tiene": 69,
           "total": 159
         }
       }
@@ -1472,8 +1472,8 @@
     "data": {
       "s1": {
         "ejecutivo": {
-          "tiene": 76,
-          "total": 76
+          "tiene": 78,
+          "total": 79
         },
         "legislativo": {
           "tiene": 2,
@@ -1488,14 +1488,14 @@
           "total": 6
         },
         "municipal": {
-          "tiene": 43,
-          "total": 62
+          "tiene": 44,
+          "total": 66
         }
       },
       "s2": {
         "ejecutivo": {
-          "tiene": 74,
-          "total": 76
+          "tiene": 73,
+          "total": 79
         },
         "legislativo": {
           "tiene": 1,
@@ -1510,8 +1510,8 @@
           "total": 6
         },
         "municipal": {
-          "tiene": 34,
-          "total": 62
+          "tiene": 35,
+          "total": 66
         }
       },
       "s3": {
@@ -1539,7 +1539,7 @@
       "s6": {
         "ejecutivo": {
           "tiene": 1,
-          "total": 76
+          "total": 79
         },
         "legislativo": {
           "tiene": 0,
@@ -1554,8 +1554,8 @@
           "total": 6
         },
         "municipal": {
-          "tiene": 0,
-          "total": 62
+          "tiene": 1,
+          "total": 66
         }
       }
     }
@@ -1657,7 +1657,7 @@
       }
     }
   },
-   {
+  {
     "route": "/cobertura/nuevo-leon",
     "name": "Nuevo León",
     "icon1": "ico-edo-nl.svg",
@@ -1723,7 +1723,7 @@
         },
         "ocas": {
           "tiene": 0,
-          "total": 0
+          "total": 1
         },
         "municipal": {
           "tiene": 0,
@@ -1779,7 +1779,7 @@
           "total": 6
         },
         "municipal": {
-          "tiene": 211,
+          "tiene": 217,
           "total": 217
         }
       },
@@ -1899,13 +1899,13 @@
           "total": 8
         },
         "municipal": {
-          "tiene": 12,
+          "tiene": 14,
           "total": 32
         }
       },
       "s3": {
         "ejecutivo": {
-          "tiene": 0,
+          "tiene": 1,
           "total": 63
         },
         "legislativo": {
@@ -1921,7 +1921,7 @@
           "total": 8
         },
         "municipal": {
-          "tiene": 0,
+          "tiene": 3,
           "total": 18
         }
       },
@@ -2165,7 +2165,7 @@
           "total": 2
         },
         "ocas": {
-          "tiene": 0,
+          "tiene": 1,
           "total": 7
         },
         "municipal": {
@@ -2197,7 +2197,7 @@
       },
       "s3": {
         "ejecutivo": {
-          "tiene": 3,
+          "tiene": 4,
           "total": 11
         },
         "legislativo": {
@@ -2251,8 +2251,8 @@
     "data": {
       "s1": {
         "ejecutivo": {
-          "tiene": 1,
-          "total": 71
+          "tiene": 63,
+          "total": 67
         },
         "legislativo": {
           "tiene": 0,
@@ -2273,53 +2273,53 @@
       },
       "s2": {
         "ejecutivo": {
-          "tiene": 55,
-          "total": 71
+          "tiene": 0,
+          "total": 67
         },
         "legislativo": {
-          "tiene": 2,
+          "tiene": 0,
           "total": 2
         },
         "judicial": {
-          "tiene": 1,
+          "tiene": 0,
           "total": 1
         },
         "ocas": {
-          "tiene": 6,
+          "tiene": 0,
           "total": 6
         },
         "municipal": {
-          "tiene": 17,
+          "tiene": 0,
           "total": 17
         }
       },
       "s3": {
         "ejecutivo": {
-          "tiene": 71,
-          "total": 71
+          "tiene": 0,
+          "total": 67
         },
         "legislativo": {
-          "tiene": 2,
+          "tiene": 0,
           "total": 2
         },
         "judicial": {
-          "tiene": 1,
+          "tiene": 0,
           "total": 1
         },
         "ocas": {
-          "tiene": 6,
+          "tiene": 0,
           "total": 6
         },
         "municipal": {
-          "tiene": 17,
+          "tiene": 0,
           "total": 17
         },
         "s3t": true
       },
       "s6": {
         "ejecutivo": {
-          "tiene": 1,
-          "total": 71
+          "tiene": 0,
+          "total": 67
         },
         "legislativo": {
           "tiene": 0,
@@ -2365,7 +2365,7 @@
           "total": 7
         },
         "municipal": {
-          "tiene": 27,
+          "tiene": 141,
           "total": 141
         }
       },
@@ -2447,19 +2447,19 @@
       "s1": {
         "ejecutivo": {
           "tiene": 0,
-          "total": 62
+          "total": 59
         },
         "legislativo": {
           "tiene": 0,
           "total": 2
         },
         "judicial": {
-          "tiene": 2,
+          "tiene": 1,
           "total": 2
         },
         "ocas": {
           "tiene": 5,
-          "total": 5
+          "total": 7
         },
         "municipal": {
           "tiene": 64,
@@ -2469,19 +2469,19 @@
       "s2": {
         "ejecutivo": {
           "tiene": 0,
-          "total": 62
+          "total": 59
         },
         "legislativo": {
           "tiene": 0,
           "total": 2
         },
         "judicial": {
-          "tiene": 2,
+          "tiene": 1,
           "total": 2
         },
         "ocas": {
           "tiene": 5,
-          "total": 5
+          "total": 7
         },
         "municipal": {
           "tiene": 64,
@@ -2498,8 +2498,8 @@
           "total": 0
         },
         "judicial": {
-          "tiene": 2,
-          "total": 2
+          "tiene": 0,
+          "total": 1
         },
         "ocas": {
           "tiene": 0,
@@ -2514,7 +2514,7 @@
       "s6": {
         "ejecutivo": {
           "tiene": 0,
-          "total": 62
+          "total": 59
         },
         "legislativo": {
           "tiene": 0,
@@ -2526,7 +2526,7 @@
         },
         "ocas": {
           "tiene": 0,
-          "total": 5
+          "total": 7
         },
         "municipal": {
           "tiene": 0,
@@ -2557,7 +2557,7 @@
         },
         "ocas": {
           "tiene": 0,
-          "total": 8
+          "total": 10
         },
         "municipal": {
           "tiene": 0,
@@ -2578,11 +2578,11 @@
           "total": 2
         },
         "ocas": {
-          "tiene": 7,
-          "total": 8
+          "tiene": 10,
+          "total": 10
         },
         "municipal": {
-          "tiene": 7,
+          "tiene": 36,
           "total": 231
         }
       },
@@ -2600,11 +2600,11 @@
           "total": 0
         },
         "ocas": {
-          "tiene": 3,
-          "total": 3
+          "tiene": 9,
+          "total": 9
         },
         "municipal": {
-          "tiene": 2,
+          "tiene": 35,
           "total": 231
         },
         "s3t": true
@@ -2624,7 +2624,7 @@
         },
         "ocas": {
           "tiene": 3,
-          "total": 8
+          "total": 10
         },
         "municipal": {
           "tiene": 0,
