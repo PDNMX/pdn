@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Typography, Step, Stepper, StepLabel, CardActionArea } from '@mui/material/'
+import { Typography, Step, Stepper, StepLabel, CardActionArea } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 import { useForm, Controller, FormProvider, useFormContext } from 'react-hook-form'
 

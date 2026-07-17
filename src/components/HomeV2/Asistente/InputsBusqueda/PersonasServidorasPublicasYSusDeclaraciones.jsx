@@ -1,4 +1,4 @@
-import { TextField } from '@mui/material/'
+import { TextField } from '@mui/material'
 import { Controller, useFormContext } from 'react-hook-form'
 import { ThemeProvider } from '@mui/material/styles'
 import ThemeV2 from '../../../../ThemeV2'
