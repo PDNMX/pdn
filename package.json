@@ -33,25 +33,26 @@
     "d3": "^7.8.1",
     "loglevel": "^1.8.1",
     "loglevel-plugin-remote": "^0.6.8",
-    "nanoid": "^5.1.6",
+    "nanoid": "^6.0.0",
     "openapi-types": "^12.1.3",
+    "path-browserify": "^1.0.1",
     "prop-types": "^15.8.1",
     "react": "^19.2.7",
     "react-countup": "^6.4.2",
     "react-dom": "^19.2.7",
     "react-ga4": "^3.0.1",
     "react-hook-form": "^7.81.0",
-    "react-router-dom": "^7.18.1"
+    "react-router-dom": "^7.18.1",
+    "util": "^0.12.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.3",
     "@rsbuild/core": "^2.1.6",
-    "@rsbuild/plugin-node-polyfill": "^1.4.6",
     "@rsbuild/plugin-react": "^2.1.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "eslint": "^9.39.3",
     "eslint-plugin-react": "^7.37.5",
-    "globals": "^16.5.0"
+    "globals": "^17.7.0"
   }
 }
