@@ -51,7 +51,7 @@ const InstitutionAutocomplete = ({ classes, entities, handleSetState }) => {
   const options = React.useMemo(() => {
     if (!entities || !Array.isArray(entities)) return [];
     
-    return entities.map((entity, index) => ({
+    return entities.map(entity => ({
       ...entity,
       groupBy: entity.supplier_id || 'Sin clasificar',
       uniqueId: createUniqueId(entity)

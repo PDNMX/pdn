@@ -4,7 +4,7 @@ import withStyles from "@mui/styles/withStyles";
 import Estandar from "./DescripcionEstandar";
 import Licencia from "../Licencia";
 import Implementacion from "./Implementacion";
-import { Typography, Paper, Box, Grid, Divider } from "@mui/material";
+import { Paper, Box, Grid, Divider } from "@mui/material";
 import Herramientas from "../Herramientas";
 import pdnRoutes from "../../../routes";
 import HeaderV2 from "../../HomeV2/HeaderV2";

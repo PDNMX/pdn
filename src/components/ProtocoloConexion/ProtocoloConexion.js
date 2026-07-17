@@ -44,7 +44,7 @@ const planesPrueba = [
   },
 ];
 
-export default function ProtocoloConexion(props) {
+export default function ProtocoloConexion() {
   const classes = useStyles();
 
   return (
@@ -83,7 +83,7 @@ export default function ProtocoloConexion(props) {
       <Typography paragraph>En caso de que los resultados no sean aprobatorios, se notificará a la institución para que realice los ajustes necesarios y solicite una nueva revisión.</Typography>
 
       <Typography paragraph>
-        Como apoyo para la verificar el cumplimiento de los esquemas de datos de las diferentes API 's, ponemos a su disposición un{' '}
+        Como apoyo para verificar el cumplimiento de los esquemas de datos de las diferentes APIs, ponemos a su disposición un{' '}
         <Link to='/validador' className={classes.link}>
           Validador
         </Link>

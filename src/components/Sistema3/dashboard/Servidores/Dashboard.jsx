@@ -1,16 +1,11 @@
 import { withStyles } from '@mui/styles'
 import PropTypes from 'prop-types'
 import { Grid, Paper } from '@mui/material'
-import CausaSanciones from "./CausaSanciones";
-import AnioResolucionSanciones from "./AnioResolucionSanciones";
-import DependenciasSanciones from "./DependenciasSanciones";
 import './legacy/graficas.css';
 import TotalRows from './TotalRows'
 import TotalDependencias from './TotalDependencias'
 import TotalSancionesFin from './TotalSancionesFin'
 import FooterPage from '../../../Compartidos/Dashboards/FooterPage'
-import AnioSanciones from './AnioSanciones';
-import LineChart from './AnioDuracionSanciones';
 import TiemposSanciones from './TiemposSanciones';
 import AnioDuracionSanciones from './AnioDuracionSanciones';
 

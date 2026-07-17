@@ -166,7 +166,7 @@ export default function EnhancedTable (props) {
       for (const c of d.contracts) {
         try {
           total += c.value.amount
-        } catch (e) {
+        } catch {
           // ignore exception
         }
       }

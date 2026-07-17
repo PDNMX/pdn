@@ -1,4 +1,3 @@
-import React from "react";
 import { Grid, Card, CardContent, Typography, Box } from "@mui/material";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import GitHubIcon from "@mui/icons-material/GitHub"; // Cambiado el ícono

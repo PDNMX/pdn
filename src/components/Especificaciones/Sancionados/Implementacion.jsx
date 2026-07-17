@@ -1,6 +1,6 @@
 import { withStyles } from "@mui/styles";
 import PropTypes from "prop-types";
-import { Typography, Link, Box, Paper, Grid } from "@mui/material";
+import { Typography, Link, Grid } from "@mui/material";
 import ModeloComunicacion from "../ModeloComunicacion";
 
 const styles = (theme) => ({

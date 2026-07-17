@@ -510,7 +510,7 @@ const Terminos = props => {
 
               <Typography paragraph>
                 El uso del portal plataformadigitalnacional.org o de cualquiera de sus componentes, implica la
-                aceptación expresa de los presentes "Términos y Condiciones".
+                aceptación expresa de los presentes &quot;Términos y Condiciones&quot;.
               </Typography>
 
               <hr />

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { withStyles } from '@mui/styles';
 import {
   Grid,
@@ -55,9 +55,9 @@ const FormParticulares = ({ classes, providers }) => {
   const [selectedRecord, setSelectedRecord] = useState(null);
   const { results, loading, error, pagination, performSearch, clearResults } = useSearch();
 
-  /* const getEndpointByTipoPersona = () => {
+  const getEndpointByTipoPersona = () => {
     return tipoPersona === 'fisica' ? 'faltas_graves_personas_fisicas' : 'faltas_graves_personas_morales';
-  }; */
+  };
 
   const handlePageChange = (providerId, newPage) => {
     const endpoint = getEndpointByTipoPersona();

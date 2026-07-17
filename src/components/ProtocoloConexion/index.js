@@ -1,4 +1,3 @@
-import React from 'react';
 import withStyles from '@mui/styles/withStyles';
 import HeaderV2 from '../HomeV2/HeaderV2';
 import pdnRoutes from '../../routes';

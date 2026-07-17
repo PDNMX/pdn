@@ -13,72 +13,7 @@ import pdnRoutes from '../../routes/index'
 import { ThemeProvider } from '@mui/material/styles'
 import ThemeV2 from '../../ThemeV2'
 import styles from '../style'
-//import ReactGA from 'react-ga4'
-
-const styles2 = theme => ({
-  container: {
-    paddingTop: 90
-    // paddingBottom: 90
-  },
-  tabText: {
-    // color: theme.palette.secondary.contrastText
-  },
-  section: {
-    maxWidth: '1200px',
-    marginTop: theme.spacing(8)
-  },
-  contentsSection: {
-    color: theme.palette.secondary.contrastText,
-    maxWidth: '1200px'
-  },
-  image: {
-    width: '60px',
-    display: 'flex'
-  },
-  card: {
-    backgroundColor: theme.palette.background.noSelect,
-    paddingLeft: theme.spacing(1),
-    paddingRight: theme.spacing(1),
-    paddingTop: theme.spacing(1),
-    paddingBottom: theme.spacing(1),
-    margin: 0,
-    '&:hover': {
-      cursor: 'pointer',
-      borderColor: theme.palette.background.border,
-      transition: 'background 0.3s ease',
-      opacity: 0.7
-    },
-    display: 'flex',
-    float: 'left',
-    padding: 0,
-    borderStyle: 'solid',
-    borderColor: theme.palette.background.opaque,
-    borderBottomStyle: 'none',
-    borderRadius: '10px 10px 0px 0px',
-    marginRight: 10
-  },
-  cardSeleccionada: {
-    backgroundColor: theme.palette.background.select,
-    borderColor: theme.palette.background.border,
-    paddingLeft: theme.spacing(1),
-    paddingRight: theme.spacing(1),
-    paddingTop: theme.spacing(1),
-    paddingBottom: theme.spacing(1),
-    margin: 0,
-    borderStyle: 'solid',
-
-    borderBottomStyle: 'none',
-    borderRadius: '10px 10px 0px 0px',
-    display: 'flex',
-    float: 'left',
-    marginRight: 10,
-  },
-  labelCard: {
-    color: theme.palette.text.clear,
-    marginLeft: theme.spacing(1),
-    paddingTop: theme.spacing(1)
-  }
-})
+import ReactGA from 'react-ga4'
 
 const TabContents = props => {
   const { index } = props

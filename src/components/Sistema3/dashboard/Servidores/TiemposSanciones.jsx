@@ -1,6 +1,6 @@
 import React from 'react'
 import { withStyles } from '@mui/styles'
-import { Typography, List, ListItem, ListItemText, Alert } from '@mui/material'
+import { Typography, Alert } from '@mui/material'
 import axios from 'axios'
 import { ResponsiveBar } from '@nivo/bar'
 import ModalInfo from '../../../Compartidos/Dashboards/ModalInfo'

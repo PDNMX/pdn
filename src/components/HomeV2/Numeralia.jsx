@@ -52,7 +52,7 @@ const Numeralia = props => {
       } else {
         setError('Hubo un error al obtener la información')
       }
-    } catch (error) {
+    } catch {
       setError('No pudimos hacer la solicitud para obtener la información')
     }
   }

@@ -1,4 +1,3 @@
-import React from 'react'
 import { Typography, Grid, Paper, Box } from '@mui/material'
 import withStyles from '@mui/styles/withStyles'
 import { useParams } from 'react-router-dom'
@@ -99,7 +98,7 @@ const VistaDetalleEstado = props => {
   }
 
   // Asegurarnos de que el estado tenga la nueva estructura para s3
-  if (estado.data.s3.hasOwnProperty('s3oic')) {
+  if (Object.prototype.hasOwnProperty.call(estado.data.s3, 's3oic')) {
     const s3t = estado.data.s3.s3t;
     const totalOIC = estado.data.s3.s3oic.total;
     const tieneOIC = estado.data.s3.s3oic.tiene;

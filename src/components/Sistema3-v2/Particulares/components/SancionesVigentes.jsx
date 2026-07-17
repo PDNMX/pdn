@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Paper, Typography, Box, CircularProgress } from '@mui/material';
 import { GavelOutlined } from '@mui/icons-material';

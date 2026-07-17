@@ -181,13 +181,13 @@ const DescripcionEstandar = (props) => {
         El Comité Coordinador del Sistema Nacional Anticorrupción, en su Tercera
         Sesión Ordinaria celebrada el 16 de agosto de 2024, aprobó el{" "}
         <em>
-          "Acuerdo por el que el Comité Coordinador del Sistema Nacional
+          &quot;Acuerdo por el que el Comité Coordinador del Sistema Nacional
           Anticorrupción emite los formatos que indican los datos que se
           inscribirán en el Sistema nacional de servidores públicos y
           particulares sancionados de la Plataforma Digital Nacional, por la
           comisión de faltas administrativas graves, faltas de particulares y
           faltas administrativas no graves, y expide las normas e instructivo
-          para el registro de la información contenida en dichos formatos"
+          para el registro de la información contenida en dichos formatos&quot;
         </em>
         .
       </Typography>

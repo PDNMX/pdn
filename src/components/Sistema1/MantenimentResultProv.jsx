@@ -5,7 +5,6 @@ import Timelapse from '@mui/icons-material/Timelapse'
 import makeStyles from '@mui/styles/makeStyles'
 import styles from '../style'
 import { Grid, Typography, Tooltip } from '@mui/material'
-import { BorderColor } from '@mui/icons-material'
 
 const useStyles = makeStyles(styles)
 

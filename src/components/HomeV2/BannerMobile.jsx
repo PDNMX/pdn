@@ -2,7 +2,7 @@ import React from 'react'
 import withStyles from '@mui/styles/withStyles'
 import {
   AppBar, Box, Typography, IconButton, Menu, MenuItem,
-  Button, List, ListItemButton, Collapse, Toolbar
+  List, ListItemButton, Collapse, Toolbar
 } from '@mui/material'
 import { Link as RouterLink } from 'react-router-dom'
 import { MoreHoriz as MoreHorizIcon } from '@mui/icons-material'

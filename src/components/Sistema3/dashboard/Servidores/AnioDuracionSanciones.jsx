@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ResponsiveLine } from '@nivo/line';
 import axios from 'axios';
-import { Typography, List, ListItem, ListItemText, Alert } from '@mui/material'
+import { Typography, Alert } from '@mui/material'
 import { withStyles } from '@mui/styles'
 import ModalInfo from '../../../Compartidos/Dashboards/ModalInfo'
 import ContainerChart from '../../../Compartidos/Dashboards/ContainerChart';

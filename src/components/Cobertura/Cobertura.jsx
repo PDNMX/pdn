@@ -5,7 +5,6 @@ import HeaderV2 from '../HomeV2/HeaderV2'
 import pdnRoutes from '../../routes'
 import estados from './estados.json'
 import PropTypes from 'prop-types'
-import DialogoNoConectado from './DialogoNoConectado'
 
 import withStyles from '@mui/styles/withStyles'
 const styles = theme => ({
@@ -46,16 +45,11 @@ const Cobertura = props => {
   const { classes } = props
 
   const [value, setValue] = React.useState(0)
-  const [open, setOpen] = React.useState(false)
 
   const handleChange = (event, newValue) => {
     setValue(newValue)
   }
 
-  // Esta función ya no se usará pero la mantenemos por compatibilidad
-  const handleClick = () => {
-    setOpen(true)
-  }
 
   const tabStyle = selected => ({
     background: selected ? '#b25fac' : '#f2f0f2',
@@ -124,7 +118,6 @@ const Cobertura = props => {
         </Grid>
       </Grid>
       {/* Ya no necesitamos el diálogo */}
-      {/* <DialogoNoConectado open={open} setOpen={setOpen} /> */}
     </div>
   )
 }

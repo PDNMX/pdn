@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Paper, Typography, Box } from '@mui/material';
 import { EventBusy } from '@mui/icons-material';
 import { searchInProvider } from '../../utils/api';
@@ -14,7 +14,6 @@ const TotalRamos = ({ providers }) => {
     noGraves: 0,
     total: 0
   });
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let isMounted = true;
@@ -23,7 +22,6 @@ const TotalRamos = ({ providers }) => {
       if (!providers?.length) return;
 
       try {
-        setLoading(true);
         const baseUrl = process.env.REACT_APP_S3_V2_BACKEND;
 
         const filterGraves = buildSearchQuery({
@@ -59,10 +57,6 @@ const TotalRamos = ({ providers }) => {
       } catch (error) {
         if (isMounted) {
           console.error('Error fetching data:', error);
-        }
-      } finally {
-        if (isMounted) {
-          setLoading(false);
         }
       }
     };

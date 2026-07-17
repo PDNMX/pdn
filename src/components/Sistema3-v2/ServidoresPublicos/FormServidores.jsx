@@ -1,4 +1,4 @@
-import React, { useState /* useEffect */ } from 'react';
+import { useState /* useEffect */ } from 'react';
 import { withStyles } from '@mui/styles';
 import DetailDialog from '../components/DetailDialog';
 import PaginationControls from '../components/PaginationControls';

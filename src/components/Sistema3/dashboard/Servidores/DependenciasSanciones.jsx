@@ -1,77 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { withStyles } from '@mui/styles'
-import { Typography, List, ListItem, ListItemText, Alert } from '@mui/material'
 import { ResponsiveTreeMap } from '@nivo/treemap'
 import axios from 'axios'
-
-
-const themeBar = {
-  /*     "background": "#ffffff", */
-  textColor: '#333333',
-  fontSize: 11,
-  grid: {
-    line: {
-      stroke: '#583171',
-      strokeWidth: 0.2
-    }
-  },
-  legends: {
-    title: {
-      text: {
-        fontSize: 14,
-        fill: 'red'
-      }
-    },
-    text: {
-      fontSize: 11,
-      fill: '#55575A'
-    },
-    ticks: {
-      line: {},
-      text: {
-        fontSize: 10,
-        fill: '#55575A'
-      }
-    }
-  },
-  axis: {
-    domain: {
-      line: {
-        stroke: '#f6f5f4',
-        strokeWidth: 1
-      }
-    },
-    legend: {
-      text: {
-        fontSize: 12,
-        fill: '#55575A'
-      }
-    },
-    ticks: {
-      line: {
-        stroke: '#f6f5f4',
-        strokeWidth: 1
-      },
-      text: {
-        fontSize: 11,
-        fill: '#55575A'
-      }
-    }
-  },
-  tooltip: {
-    container: {
-      background: '#4f274f',
-      color: '#fff',
-      fontSize: 12
-    },
-    basic: {},
-    chip: {},
-    table: {},
-    tableCell: {},
-    tableCellValue: {}
-  }
-}
-
 
 const styles = theme => ({
   frameChart: {
@@ -101,7 +31,7 @@ const aux = () => axios({
   method: 'GET'
 })
 
-const DependenciasSanciones = props => {
+const DependenciasSanciones = () => {
   const [data, setData] = useState(null)
 
   React.useEffect(() => {
@@ -119,8 +49,6 @@ const DependenciasSanciones = props => {
       })
       .catch(error => console.error(error))
   }, [])
-
-  const { classes } = props
 
   return (
     <div style={{ height: '500px' }}>
