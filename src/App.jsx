@@ -1,6 +1,6 @@
 import React from 'react'
 import pndRoutes from './routes/index'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import P404 from './components/P404'
 import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles'
 /* import ScrollToTop from "./ScrollToTop"; */
@@ -17,10 +17,6 @@ import ScrollToTop from './ScrollToTop'
 
 ReactGA.initialize('G-XWEKXGG46G')
 ReactGA.send(window.location.pathname + window.location.search)
-
-const p404 = () => {
-  return <P404 />
-}
 
 const App = () => {
   const [user, setUser] = React.useState({
@@ -56,19 +52,19 @@ const App = () => {
           <Router basename={process.env.BASE_URL}>
             <ScrollToTop />
             <Layout>
-              <Switch>
+              <Routes>
                 {pndRoutes.map((prop, key) => {
+                  const Component = prop.component
                   return (
                     <Route
-                      exact={prop.exact}
-                      path={prop.path}
+                      path={prop.exact ? prop.path : `${prop.path}/*`}
                       key={key}
-                      component={prop.component}
+                      element={<Component />}
                     />
                   )
                 })}
-                <Route component={p404} />
-              </Switch>
+                <Route path='*' element={<P404 />} />
+              </Routes>
             </Layout>
           </Router>
         </StyledEngineProvider>

@@ -34,7 +34,7 @@
     "react-dom": "^18.3.1",
     "react-ga4": "^2.1.0",
     "react-hook-form": "^7.47.0",
-    "react-router-dom": "^5.0.1",
+    "react-router-dom": "^6.30.3",
     "swagger-parser": "^10.0.3",
     "uuid": "^8.3.2"
   },
@@ -42,7 +42,6 @@
     "@rsbuild/core": "^0.3.9",
     "@rsbuild/plugin-node-polyfill": "^0.3.9",
     "@rsbuild/plugin-react": "^0.3.9",
-    "@types/react-router-dom": "^5.3.3",
     "eslint": "^8.52.0",
     "eslint-plugin-react": "^7.33.2"
   }
