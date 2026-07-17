@@ -36,9 +36,7 @@
     "react-hook-form": "^7.47.0",
     "react-json-view": "^1.21.3",
     "react-router-dom": "^5.0.1",
-    "react-scroll-to-component": "^1.0.2",
     "react-simple-chatbot": "^0.6.1",
-    "react-vis": "^1.12.1",
     "styled-components": "^4.4.1",
     "swagger-parser": "^10.0.3",
     "uuid": "^8.3.2"

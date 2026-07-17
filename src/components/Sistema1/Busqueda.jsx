@@ -9,8 +9,6 @@ import styles from '../style'
 
 import FormSearch from './formSearch'
 import { error } from './utils'
-import scrollToComponent from 'react-scroll-to-component'
-
 import ActiveResultProv from './ActiveResultProv'
 import Descarga from '../Compartidos/Descarga'
 import MantenimentResultProv from './MantenimentResultProv'
@@ -183,7 +181,7 @@ class Busqueda extends React.Component {
         dataSelect: data
       }),
       () => {
-        scrollToComponent(this.perfil, { align: 'top' })
+        this.perfil?.scrollIntoView({ block: 'start' })
       }
     )
   }

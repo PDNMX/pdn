@@ -11,7 +11,6 @@ import { getMoneda } from './utils';
 import Button from '@mui/material/Button';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
-import scrollToComponent from 'react-scroll-to-component';
 import basicInicial from './SituacionPatrimonial/00_basic_incial';
 
 class Perfil extends React.Component {
@@ -41,7 +40,7 @@ class Perfil extends React.Component {
         return { ...prevSate, menuSituacionPatrimonial: newValue };
       },
       () => {
-        scrollToComponent(this.top, { align: 'top' });
+        this.top?.scrollIntoView({ block: 'start' });
       }
     );
   };
@@ -52,7 +51,7 @@ class Perfil extends React.Component {
         return { ...prevSate, menuIntereses: newValue };
       },
       () => {
-        scrollToComponent(this.top, { align: 'top' });
+        this.top?.scrollIntoView({ block: 'start' });
       }
     );
   };
