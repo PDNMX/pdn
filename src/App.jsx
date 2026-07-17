@@ -3,6 +3,7 @@ import pndRoutes from './routes/index'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import P404 from './components/P404'
 import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles'
+import { ThemeProvider as LegacyStylesThemeProvider } from '@mui/styles'
 /* import ScrollToTop from "./ScrollToTop"; */
 import './components/Utils/Principal.css'
 // Google Analytics
@@ -48,26 +49,28 @@ const App = () => {
   return (
     <UserContext.Provider value={value}>
       <ThemeProvider theme={BaseTheme2023}>
-        <StyledEngineProvider injectFirst>
-          <Router basename={process.env.BASE_URL}>
-            <ScrollToTop />
-            <Layout>
-              <Routes>
-                {pndRoutes.map((prop, key) => {
-                  const Component = prop.component
-                  return (
-                    <Route
-                      path={prop.exact ? prop.path : `${prop.path}/*`}
-                      key={key}
-                      element={<Component />}
-                    />
-                  )
-                })}
-                <Route path='*' element={<P404 />} />
-              </Routes>
-            </Layout>
-          </Router>
-        </StyledEngineProvider>
+        <LegacyStylesThemeProvider theme={BaseTheme2023}>
+          <StyledEngineProvider injectFirst>
+            <Router basename={process.env.BASE_URL}>
+              <ScrollToTop />
+              <Layout>
+                <Routes>
+                  {pndRoutes.map((prop, key) => {
+                    const Component = prop.component
+                    return (
+                      <Route
+                        path={prop.exact ? prop.path : `${prop.path}/*`}
+                        key={key}
+                        element={<Component />}
+                      />
+                    )
+                  })}
+                  <Route path='*' element={<P404 />} />
+                </Routes>
+              </Layout>
+            </Router>
+          </StyledEngineProvider>
+        </LegacyStylesThemeProvider>
 
       </ThemeProvider>
     </UserContext.Provider>
