@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { 
   Paper,
@@ -9,7 +9,7 @@ import {
 } from '@mui/material';
 import { withStyles } from '@mui/styles';
 import {
-  ErrorOutline,
+  ErrorOutlineOutlined,
   Warning
 } from '@mui/icons-material';
 import { searchInProvider } from '../../utils/api';
@@ -325,7 +325,7 @@ const Ejercicio = ({ classes, providers, onDataUpdate }) => {
           title="Personas servidoras públicas con Faltas Graves"
           total={formatNumber(data.graves.total)}
           subtitle={`${formatNumber(data.graves.instituciones.size)} Entes públicos involucrados`}
-          icon={ErrorOutline}
+          icon={ErrorOutlineOutlined}
           gradient="linear-gradient(90deg, #d32f2f 0%, #f37878 100%)"
           color="#f37878"
         />

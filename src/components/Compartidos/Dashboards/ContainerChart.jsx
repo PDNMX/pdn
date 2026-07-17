@@ -1,6 +1,6 @@
 import { withStyles } from '@mui/styles'
 import { IconButton, Paper, Tooltip } from '@mui/material'
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
+import HelpOutlineIcon from '@mui/icons-material/HelpOutlineOutlined'
 
 const styles = theme => ({
   paperChart: {
