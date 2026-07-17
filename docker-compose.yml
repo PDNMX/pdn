@@ -1,10 +1,14 @@
-version: "3"
-
 services:
   frontend:
-    restart: always
     build:
-      context: ./
+      context: .
       dockerfile: Dockerfile
     ports:
-      - ${PORT_FRONTEND}:5000
+      - "${PORT_FRONTEND:-5000}:8080"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://127.0.0.1:8080/"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
