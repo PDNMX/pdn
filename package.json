@@ -28,6 +28,7 @@
     "framer-motion": "^6.5.1",
     "loglevel": "^1.8.1",
     "loglevel-plugin-remote": "^0.6.8",
+    "nanoid": "^5.1.6",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-countup": "^6.4.2",
@@ -39,9 +40,9 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "@rsbuild/core": "^0.3.9",
-    "@rsbuild/plugin-node-polyfill": "^0.3.9",
-    "@rsbuild/plugin-react": "^0.3.9",
+    "@rsbuild/core": "^1.7.6",
+    "@rsbuild/plugin-node-polyfill": "^1.4.6",
+    "@rsbuild/plugin-react": "^1.4.6",
     "eslint": "^8.52.0",
     "eslint-plugin-react": "^7.33.2"
   }
