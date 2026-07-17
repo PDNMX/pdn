@@ -16,9 +16,9 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
-    "@mui/icons-material": "^5.18.0",
-    "@mui/material": "^5.18.0",
-    "@mui/styles": "^5.18.0",
+    "@mui/icons-material": "^6.4.8",
+    "@mui/material": "^6.4.8",
+    "@mui/styles": "^6.4.8",
     "@nivo/bar": "^0.83.0",
     "@nivo/line": "^0.86.0",
     "@nivo/pie": "^0.83.0",
@@ -49,6 +49,8 @@
     "@rsbuild/core": "^2.1.6",
     "@rsbuild/plugin-node-polyfill": "^1.4.6",
     "@rsbuild/plugin-react": "^2.1.0",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
     "eslint": "^8.52.0",
     "eslint-plugin-react": "^7.33.2"
   }
