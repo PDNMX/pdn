@@ -40,7 +40,7 @@
     "react-dom": "^19.2.7",
     "react-ga4": "^2.1.0",
     "react-hook-form": "^7.47.0",
-    "react-router-dom": "^6.30.3",
+    "react-router-dom": "^7.18.1",
     "swagger-parser": "^10.0.3",
     "uuid": "^8.3.2"
   },
