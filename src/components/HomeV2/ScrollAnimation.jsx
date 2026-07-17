@@ -1,9 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import { motion, useAnimation } from 'framer-motion';
 
 const ScrollAnimation = ({ children }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const controls = useAnimation();
   const ref = useRef(null);
 
   useEffect(() => {
@@ -31,37 +29,17 @@ const ScrollAnimation = ({ children }) => {
     };
   }, []);
 
-  useEffect(() => {
-    if (isVisible) {
-      controls.start( {
-        opacity: 1,
-        scale: 1,
-        y: 0,
-        transition: {
-          type: "spring",
-          duration: 0.8
-        }
-      });
-    }
-  }, [isVisible, controls]);
-
   return (
     <div ref={ref}>
-      <motion.div
-        initial={{
-            opacity: 0.25,
-            scale: 0.9,
-            y: 40,
-            transition: {
-              type: "spring",
-              duration: 0.8
-            }
-          }}
-        animate={controls}
-        exit={{ opacity: 0, y: 50 }}
+      <div
+        style={{
+          opacity: isVisible ? 1 : 0.25,
+          transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(40px) scale(0.9)',
+          transition: 'opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1)'
+        }}
       >
         {children}
-      </motion.div>
+      </div>
     </div>
   );
 };
