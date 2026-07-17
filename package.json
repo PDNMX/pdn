@@ -14,6 +14,7 @@
     "preview": "rsbuild preview"
   },
   "dependencies": {
+    "@apidevtools/swagger-parser": "^12.1.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@mui/icons-material": "^9.2.0",
@@ -27,22 +28,19 @@
     "ajv-formats": "^3.0.1",
     "ajv-i18n": "^4.2.0",
     "axios": "^1.18.1",
-    "classnames": "^2.3.2",
     "core-js": "^3.47.0",
     "d3": "^7.8.1",
-    "d3plus-react": "^1.3.3",
     "loglevel": "^1.8.1",
     "loglevel-plugin-remote": "^0.6.8",
     "nanoid": "^5.1.6",
+    "openapi-types": "^12.1.3",
     "prop-types": "^15.8.1",
     "react": "^19.2.7",
     "react-countup": "^6.4.2",
     "react-dom": "^19.2.7",
     "react-ga4": "^2.1.0",
     "react-hook-form": "^7.47.0",
-    "react-router-dom": "^7.18.1",
-    "swagger-parser": "^10.0.3",
-    "uuid": "^8.3.2"
+    "react-router-dom": "^7.18.1"
   },
   "devDependencies": {
     "@rsbuild/core": "^2.1.6",

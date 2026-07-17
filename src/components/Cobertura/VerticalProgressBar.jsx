@@ -1,6 +1,5 @@
 import React from 'react'
 import withStyles from '@mui/styles/withStyles'
-import { v4 as uuidv4 } from 'uuid'
 
 const styles = () => ({
   emptySpace: {
@@ -14,9 +13,9 @@ const height = 200
 const VerticalProgressBar = props => {
   // value must be between 0 and 100
   const { value, color, classes } = props
-  const id = uuidv4()
+  const canvasRef = React.useRef(null)
   React.useEffect(() => {
-    const c = document.getElementById(id)
+    const c = canvasRef.current
     const ctx = c.getContext('2d')
 
     const fill_height = (height / 100) * value
@@ -33,7 +32,7 @@ const VerticalProgressBar = props => {
   }, [])
 
   React.useEffect(() => {
-    const c = document.getElementById(id)
+    const c = canvasRef.current
     const ctx = c.getContext('2d')
 
     const fill_height = (height / 100) * value
@@ -51,7 +50,7 @@ const VerticalProgressBar = props => {
 
   return (
     <canvas
-      id={id} width={width} height={height} style={{
+      ref={canvasRef} width={width} height={height} style={{
         border: '2px',
         borderStyle: 'solid',
         color: '#d3d3d3',
