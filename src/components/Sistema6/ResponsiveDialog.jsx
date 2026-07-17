@@ -4,7 +4,6 @@ import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
 // import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle'
-import ReactJson from 'react-json-view'
 import DownloadIcon from '@mui/icons-material/CloudDownload'
 import Typography from '@mui/material/Typography'
 import withStyles from '@mui/styles/withStyles'
@@ -26,6 +25,33 @@ const styles = theme => ({
     color: theme.palette.primary.main
   }
 })
+
+const JsonValue = ({ name, value, depth = 0 }) => {
+  const isObject = value !== null && typeof value === 'object'
+
+  if (!isObject) {
+    return (
+      <Box component='div' sx={{ pl: depth * 2, fontFamily: 'monospace', overflowWrap: 'anywhere' }}>
+        {name !== undefined && <b>{name}: </b>}
+        {JSON.stringify(value)}
+      </Box>
+    )
+  }
+
+  const entries = Object.entries(value)
+  const label = Array.isArray(value) ? `[${entries.length}]` : `{${entries.length}}`
+
+  return (
+    <Box component='details' open={depth < 1} sx={{ pl: depth * 2, fontFamily: 'monospace' }}>
+      <Box component='summary' sx={{ cursor: 'pointer' }}>
+        {name !== undefined && <b>{name}: </b>}{label}
+      </Box>
+      {entries.map(([key, child]) => (
+        <JsonValue key={key} name={key} value={child} depth={depth + 1} />
+      ))}
+    </Box>
+  )
+}
 
 function ResponsiveDialog (props) {
   const { fullScreen, open, handleCloseDialog, data, classes } = props
@@ -110,7 +136,9 @@ function ResponsiveDialog (props) {
                                   </div>}
 
               <Typography paragraph variant='h5'>Datos en formato JSON</Typography>
-              <ReactJson src={data} collapsed={1} />
+              <Box sx={{ maxWidth: '100%', overflowX: 'auto' }}>
+                <JsonValue value={data} />
+              </Box>
             </div>}
 
         </DialogContent>
