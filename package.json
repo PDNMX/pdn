@@ -8,6 +8,17 @@
     "node": ">=22.13 <23",
     "yarn": "^1.22.22"
   },
+  "resolutions": {
+    "**/@babel/runtime": "^7.29.7",
+    "ajv-formats/ajv": "^8.20.0",
+    "**/brace-expansion": "^1.1.13",
+    "**/fast-uri": "^3.1.2",
+    "**/flatted": "^3.4.2",
+    "**/js-yaml": "^4.3.0",
+    "**/lodash": "^4.18.1",
+    "**/minimatch": "^3.1.5",
+    "**/yaml": "^1.10.3"
+  },
   "scripts": {
     "dev": "rsbuild dev --host localhost",
     "build": "rsbuild build",
