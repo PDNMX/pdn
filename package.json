@@ -35,9 +35,9 @@
     "loglevel-plugin-remote": "^0.6.8",
     "nanoid": "^5.1.6",
     "prop-types": "^15.8.1",
-    "react": "^18.3.1",
+    "react": "^19.2.7",
     "react-countup": "^6.4.2",
-    "react-dom": "^18.3.1",
+    "react-dom": "^19.2.7",
     "react-ga4": "^2.1.0",
     "react-hook-form": "^7.47.0",
     "react-router-dom": "^6.30.3",
@@ -48,8 +48,8 @@
     "@rsbuild/core": "^2.1.6",
     "@rsbuild/plugin-node-polyfill": "^1.4.6",
     "@rsbuild/plugin-react": "^2.1.0",
-    "@types/react": "^18.3.31",
-    "@types/react-dom": "^18.3.7",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
     "eslint": "^8.52.0",
     "eslint-plugin-react": "^7.33.2"
   }
