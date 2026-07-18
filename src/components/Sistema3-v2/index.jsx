@@ -50,7 +50,7 @@ const styles = (theme) => ({
       backgroundColor: '#9c27b0',
       height: '3px',
     },
-    '& .MuiTabs-flexContainer': {
+    '& .MuiTabs-list': {
       [theme.breakpoints.down('md')]: {
         flexDirection: 'column',
       },
