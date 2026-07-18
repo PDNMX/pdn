@@ -51,8 +51,10 @@ const useStyles = makeStyles()((theme) => ({
     /* backgroundColor: 'rgba(29, 80, 109, 0.95)', */
   },
   cardMedia: {
+    display: 'block',
     width: '30%',
-    margin: '3% 0%'
+    margin: '3% auto',
+    objectFit: 'contain'
     /* [theme.breakpoints.down('sm')]: {
       display: "none",
     }, */
