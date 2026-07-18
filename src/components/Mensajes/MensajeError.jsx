@@ -55,7 +55,7 @@ class MensajeError extends React.Component {
           onClose={() => this.props.handleClose()}
         >
           <div style={getModalStyle()} className={classes.paperModal}>
-            <Grid container justify='center'>
+            <Grid container sx={{ justifyContent: 'center' }}>
               <Grid size={12}>
                 <Typography variant='h5' className={classes.titleError}>Error</Typography>
               </Grid>
