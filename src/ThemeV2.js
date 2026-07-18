@@ -33,6 +33,7 @@ export default createTheme(
   {
     ...BaseTheme2023,
     components: {
+      ...BaseTheme2023.components,
       MuiInputLabel: {
         styleOverrides: {
           shrink: {
